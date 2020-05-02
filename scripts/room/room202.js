@@ -264,6 +264,16 @@ room202.chatcatch = function (callback) {
             break;
         case "drinkKill":
             nav.killbutton("drink");
+            nav.killbutton("missyCross");
+            nav.button({
+                "type": "img",
+                "name": "missyCross",
+                "left": 646,
+                "top": 208,
+                "width": 771,
+                "height": 872,
+                "image": "202_sideDesk/202_crossBall.png"
+            }, 202);
             g.set("bladder", 1);
             g.altview = true;
             g.back = false;
@@ -543,7 +553,8 @@ room202.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "missy",
-            text: "Good, now take your place under my desk, footstool. ",
+            text: "Good. Now I'm going to shove this mouth gag into your mouth so none leaks out. I hate leaky furniture. " +
+                "Then take your place under my desk, footstool. ",
             button: [
                 { chatID:15, text: "[Get on all 4s]", callback: "footstool" }
             ]
@@ -800,7 +811,7 @@ room202.chat = function (chatID) {
             text: "What a sissy! I could tell you're not a normal cock hungry whore, you're going to be special. It's a good thing " +
             "you found me, I'm going to turn you into the greatest sissy cock whore ever! I have to go home now, we'll continue this later. ",
             button: [
-                { chatID: -1, text: "", callback: "openmouthfinish" }
+                { chatID: -1, text: "...", callback: "openmouthfinish" }
             ]
         },
         {

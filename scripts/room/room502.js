@@ -159,9 +159,39 @@ room502.chatcatch = function (callback) {
                 cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
                 cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
                 cl.display();
-                char.newday();
+                var newBod = char.newday();
+
+                if (newBod !== null) {
+                    nav.killall();
+                    nav.button({
+                        "type": "btn",
+                        "name": "computer",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "transform/" + newBod.type + "_" + newBod.tNew + ".gif"
+                    });
+                    if (newBod.type === "chest" && newBod.tNew === 1)
+                        chat(62, 502);
+                    else if (newBod.type === "chest" && newBod.tNew === 2)
+                        chat(63, 502);
+                    else if (newBod.type === "cock")
+                        chat(64, 502);
+                    else if (newBod.type === "chest")
+                        chat(65, 502);
+                    else if (newBod.type === "leg")
+                        chat(66, 502);
+                    else
+                        console.log(newBod, "error");
+                }
+                else
+
                 chat(10, 502);
             }
+            break;
+        case "newday":
+            char.room(502);
             break;
         case "zoeyBed":
             nav.bg("502_bedroom/sleepZoey.jpg");
@@ -811,6 +841,46 @@ room502.chat = function (chatID) {
             text: "I love you, I am going to go for a walk and let you get ready. Je vous aimerai toujours",
             button: [
                 { chatID: -1, text: "I will always love you too", callback: "wakeEnd1" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "me",
+            text: "Oh wow, all that working out has really paid off! I feel so much sexier with this new bod!",
+            button: [
+                { chatID: -1, text: "....", callback: "newday" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "me",
+            text: "Are those itty bitty tits? I think these pills are chaning my body.",
+            button: [
+                { chatID: -1, text: "....", callback: "newday" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "me",
+            text: "Oh no... is my penis getting shrinking!?!?",
+            button: [
+                { chatID: -1, text: "....", callback: "newday" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "me",
+            text: "Hahah nice, bigger titties!",
+            button: [
+                { chatID: -1, text: "....", callback: "newday" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "me",
+            text: "Check that ass out! So much to grab",
+            button: [
+                { chatID: -1, text: "....", callback: "newday" }
             ]
         },
     ];

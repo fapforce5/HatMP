@@ -837,7 +837,7 @@ cl.display = function () {
         $('#char-hair').html("");
         $('#char-buttplug').html("");
         if (g.back) {
-            var thisButthole = Math.floor(sc.c.butthole);
+            var thisButthole = Math.floor(cl.c.butthole);
             if (thisButthole > 3)
                 thisButthole = 3;
             cl.subDisplay("char-legs", "butthole" + thisButthole + ".png");

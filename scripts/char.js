@@ -127,6 +127,7 @@ char.newday = function (sendingRoom) {
     g.set("jobConstWorkToday", 0);
     g.set("energy", 70);
     g.mod('hormone', -2);
+    var thisTinyPP = g.get("shinkCock");
     g.newday();
     if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 14) {
         if (cl.c.hairLength === null)
@@ -150,7 +151,10 @@ char.newday = function (sendingRoom) {
             cl.c.chest = 1;
         }
     }
-    else if (g.get("hormone") > 60 && g.get("sissy") > 98) {
+    else if (thisTinyPP && cl.c.cock < 5) {
+        retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
+    }
+    else if (g.get("hormone") > 70 && g.get("sissy") > 98) {
         var tempC = null;
         if (Math.floor(Math.random() * (100 - g.get("hormone"))) < 5) {
             g.set("sissy", 0);
@@ -161,50 +165,40 @@ char.newday = function (sendingRoom) {
                 tempC = "chest";
             else if (cl.c.chest === 6 && cl.c.leg < 4)
                 tempC = "leg";
-            else if (Math.floor(Math.random() * 3) === 0)
+            else if (Math.floor(Math.random() * 2) === 0)
                 tempC = "leg";
             else
                 tempC = "chest";
 
-            if (tempC === null && cl.c.cock === 5)
+            if (tempC === null)
                 retData = null;
-            else if (tempC === null)
-                retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
-            else if (cl.c.cock === 4) {
-                if (tempC === "chest")
-                    retData = { type: "chest", tOld: cl.c.chest, tNew: cl.c.chest + 1 };
-                else
-                    retData = { type: "leg", tOld: cl.c.leg, tNew: cl.c.leg + 1 };
-            }
-            else if (Math.floor(Math.random() * 3) === 0)
-                retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
-            else {
-                if (tempC === "chest")
-                    retData = { type: "chest", tOld: cl.c.chest, tNew: cl.c.chest + 1 };
-                else
-                    retData = { type: "leg", tOld: cl.c.leg, tNew: cl.c.leg + 1 };
-            }
+
+            else if (tempC === "chest")
+                retData = { type: "chest", tOld: cl.c.chest, tNew: cl.c.chest + 1 };
+            else
+                retData = { type: "leg", tOld: cl.c.leg, tNew: cl.c.leg + 1 };
         }
-        if (retData !== null) {
-            switch (retData.type) {
-                case "chest":
-                    cl.c.chest = retData.tNew;
-                    break;
-                case "cock":
-                    cl.c.cock = retData.tNew;
-                    break;
-                case "leg":
-                    cl.c.leg = retData.tNew;
-                    break;
-                default:
-                    console.log(newBod, "error");
-                    break;
-            }
-            cl.display();
+    }
+    if (retData !== null) {
+        switch (retData.type) {
+            case "chest":
+                cl.c.chest = retData.tNew;
+                break;
+            case "leg":
+                cl.c.leg = retData.tNew;
+                break;
+            case "cock":
+                cl.c.cock = retData.tNew;
+                break;
+            default:
+                console.log(newBod, "error");
+                break;
         }
+        cl.display();
     }
     
     menu.save("HatMP_9", null, 9);
+    console.log(retData);
     return retData;
 };
 

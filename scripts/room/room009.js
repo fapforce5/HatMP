@@ -189,7 +189,7 @@ room9.btnclick = function (name) {
             sc.setstep("construction", 1);
             room9.btnclick("internet");
             chat(0, 9);
-            g.roomMapAccess(100, true, false);
+            g.roomMapAccess(100, true, true);
             break;
         case "jobPI":
             sc.setstep("missy", 1);

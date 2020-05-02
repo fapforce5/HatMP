@@ -16,6 +16,7 @@ sc.char = [
     { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true },
     { name: "govlady", display: "The clerk", image: "govlady.png", step: 0, max: 0, show: false, setName: false },
     { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true },
+    { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, max: 0, show: false, setName: true },
     { name: "jordan", display: "Jordan", image: "", step: 0, max: 0, show: false, setName: false },
     { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true },
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: true, setName: true },
@@ -35,10 +36,9 @@ sc.char = [
     { name: "holly", display: "Holly", image: "holly.png", step: 0, max: 0, show: false, setName: false },
     { name: "molly", display: "Molly", image: "molly.png", step: 0, max: 0, show: false, setName: false },
     { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, max: 0, show: false, setName: false },
-    { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: false },
-    { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, max: 0, show: false, setName: true },
-    { name: "bigguy", display: "Dick McCock", image: "bigguy.png", step: 0, max: 0, show: false, setName: true },
-    { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: true },
+    { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true },
+    { name: "bigguy", display: "Dick McCock", image: "bigman.png", step: 0, max: 0, show: false, setName: false },
+    { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
 ];
 

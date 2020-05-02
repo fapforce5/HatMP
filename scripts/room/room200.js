@@ -391,6 +391,7 @@ room200.chatcatch = function (callback) {
             sc.setstep("missy", 19);
             sc.setstep("jeffery", 5);
             g.set("shinkCock", true);
+            g.mod("money", 120);
             char.addtime(520);
             char.room(0);
             break;
@@ -653,7 +654,12 @@ room200.chatcatch = function (callback) {
                 "height": 483,
                 "image": "200_frontOffice/200_missy.png"
             }, 200);
-            cl.undo();
+            cl.c.shirt = "r";
+            cl.c.panties = "w";
+            cl.c.pants = "k";
+            cl.c.shoes = "fb";
+            cl.c.panties = "w";
+            cl.display();
             break;
         default:
             break;
@@ -1975,7 +1981,7 @@ room200.chat = function (chatID) {
         {
             chatID: 148,
             speaker: "missy",
-            text: "Hmmmm... So that is the largest chastity device " + sc.n("tiffany") + " carries... Well have to do something about that." +
+            text: "Hmmmm... So that is the largest chastity device " + sc.n("tiffany") + " carries... Well have to do something about that. " +
                 "Hmmmmmm",
             button: [
                 { chatID: 149, text: "...", callback: "" }
@@ -1984,7 +1990,7 @@ room200.chat = function (chatID) {
         {
             chatID: 149,
             speaker: "missy",
-            text: "Hmmmm I know... Your cage isn't too small for your cock, your cock is too large for the cage. We just need to make it smaller. " +
+            text: "......I know... Your cage isn't too small for your cock, your cock is too large for the cage. We just need to make it smaller. " +
                 "One second while I get the cream... hehe it's not that kind of cream.",
             button: [
                 { chatID: 150, text: "...", callback: "cock6" }
@@ -1993,7 +1999,7 @@ room200.chat = function (chatID) {
         {
             chatID: 150,
             speaker: "missy",
-            text: "Hmmm hmmm, oh here it is!!!",
+            text: ".............oh here it is!!!",
             button: [
                 { chatID: 151, text: "...", callback: "cock7" }
             ]
@@ -2001,7 +2007,7 @@ room200.chat = function (chatID) {
         {
             chatID: 151,
             speaker: "missy",
-            text: "Tiny PP! When your cock is just too big. One little gets you closer to a sissy clitty.",
+            text: "Tiny PP! When your cock is just too big. One little application closer to a sissy clitty.",
             button: [
                 { chatID: 152, text: "...", callback: "cock8" }
             ]

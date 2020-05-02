@@ -104,10 +104,10 @@ room204.startGame = function () {
             clock = 45;
             break;
         case 1:
-            clock = 25;
+            clock = 20;
             break;
         case 2:
-            clock = 17;
+            clock = 15;
             break;
         default:
             clock = 25;

@@ -618,6 +618,7 @@ g.initGame = function () {
             case "pissedonFemale":
             case "receiveBoobJob":
             case "giveBoobJob":
+            case "shinkCock":
                 g.st[i].t = 0;
                 break;
             case "momClosetLube":

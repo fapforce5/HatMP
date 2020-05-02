@@ -42,7 +42,7 @@ room100.main = function () {
         });
     }
     else {
-        nav.bg("100_construction/100_siteClosed.png");
+        nav.bg("100_construction/100_siteClosed.jpg", "100_construction/100_siteClosedNight.jpg");
         navList = [0];
     }
 
