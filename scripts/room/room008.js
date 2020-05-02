@@ -156,10 +156,26 @@ room8.main = function () {
                     cl.c.pj = ttype;
                     break;
                 case "chastity":
-                    cl.c.chastity = ttype;
+                    if (ttype === null)
+                        cl.c.chastity = null;
+                    else {
+                        var thisSize = cl.list[cl.where("chastity", ttype)].daring;
+                        if (thisSize > cl.c.cock)
+                            chat(11, 8);
+                        else
+                            cl.c.chastity = ttype;
+                    }
                     break;
                 case "buttplug":
-                    cl.c.buttplug = ttype;
+                    if (ttype === null)
+                        cl.c.buttplug = null;
+                    else {
+                        var thisButthole = cl.list[cl.where("buttplug", ttype)].daring;
+                        if (thisButthole > cl.c.butthole)
+                            chat(12, 8);
+                        else
+                            cl.c.buttplug = ttype;
+                    }
                     break;
                 case "accessories":
                     if (ttype === null)
@@ -333,6 +349,22 @@ room8.chat = function (chatID) {
             chatID: 10,
             speaker: "me",
             text: "Good luck, dress sharp, and remember clothes make the man.",
+            button: [
+                { chatID: -1, text: "Close", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "me",
+            text: "OMG It's so tight. My dick is way too big for this chastity device.",
+            button: [
+                { chatID: -1, text: "Close", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "me",
+            text: "My butthole is way too tight for that! I'm going to have to work on it so I can fit this in!",
             button: [
                 { chatID: -1, text: "Close", callback: "" }
             ]

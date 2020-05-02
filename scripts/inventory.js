@@ -50,7 +50,7 @@ inv.master = [
     { type: "a", name: "greenMonster", display: "Green Monster", entry: false, count: null, cost: 180, image: "butt_greenMonster.png", n: false },
     { type: "c", name: "chastCage", display: "Metal Cage", entry: false, count: null, cost: 120, image: "chast_cage.png", n: false },
     { type: "c", name: "chastPink", display: "Pink Lock", entry: false, count: null, cost: 90, image: "chast_pink.png", n: false },
-    { type: "p", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false }
+    { type: "p", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false },
     { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false }
 ];
 

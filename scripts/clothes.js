@@ -1,16 +1,20 @@
 ﻿var cl = {};
 
 cl.c = {
-    leg: 0, chest: 0, cock: 0, lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+    leg: 0, chest: 0, cock: 0, butthole: 0.0,
+    lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
-    tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false, necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
+    tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
+    necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
 };
 
 cl.init = function () {
     cl.c = {
-        leg: 0, chest: 0, cock: 0, lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+        leg: 0, chest: 0, cock: 0, butthole: 0.0,
+        lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
-        tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false, necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
+        tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
+        necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
     };
 };
 
@@ -637,7 +641,7 @@ cl.shoes = [
     { name: "fb", image: "shoes_fb.png", back: "shoes_fb_back.png" },
     { name: "fl", image: "shoes_fl.png", back: "shoes_fl_back.png" },
     { name: "hr", image: "shoes_hr.png", back: "shoes_hr_back.png" },
-    { name: "v", image: "shoes_v.png", back: "shoes_v_back.png" },
+    { name: "v", image: "shoes_v.png", back: "shoes_v_back.png" }
 ];
 
 cl.panties = [
@@ -718,7 +722,7 @@ cl.pjBottom = [
 
 cl.chastity = [
     { name: "cage", image: "cockchast_m.png" },
-    { name: "pink", image: "cockchast_p.png" },
+    { name: "pink", image: "cockchast_p.png" }
 ];
 
 cl.buttplug = [
@@ -833,7 +837,7 @@ cl.display = function () {
         $('#char-hair').html("");
         $('#char-buttplug').html("");
         if (g.back) {
-            var thisButthole = Math.floor(g.get("butthole"));
+            var thisButthole = Math.floor(sc.c.butthole);
             if (thisButthole > 3)
                 thisButthole = 3;
             cl.subDisplay("char-legs", "butthole" + thisButthole + ".png");

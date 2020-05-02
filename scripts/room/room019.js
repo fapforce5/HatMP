@@ -82,7 +82,7 @@ room19.chatcatch = function (callback) {
                 }, 19);
             }
             if (g.xxxx.butthole < 1.0) {
-                g.mod("butthole", .25);
+                sc.c.butthole += .25;
                 chat(1, 19);
             }
             else {
@@ -115,7 +115,7 @@ room19.chatcatch = function (callback) {
                 }, 19);
             }
             if (g.xxxx.butthole < 2.0) {
-                g.mod("butthole", .25);
+                sc.c.butthole += .25;
                 g.roomTimeout = setTimeout(function () {
                     chat(4, 19);
                 }, 500);
@@ -150,7 +150,7 @@ room19.chatcatch = function (callback) {
                 }, 19);
             }
             if (g.xxxx.butthole < 3.0) {
-                g.mod("butthole", .25);
+                sc.c.butthole += .25;
                 g.roomTimeout = setTimeout(function () {
                     chat(6, 19);
                 }, 500);

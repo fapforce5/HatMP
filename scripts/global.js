@@ -22,8 +22,6 @@ g.st = [
     { n: "shave", t: g.startDate, q: "date" },
     { n: "cum", t: g.startDate, q: "date" },
 
-    { n: "butthole", t: 0.0, q: "zero" },
-
     { n: "difficulty", t: 1, q: "int" },
     { n: "money", t: 450, q: "money" },
     { n: "rent", t: 200, q: "zero" },
@@ -567,9 +565,6 @@ g.initGame = function () {
                 break;
             case "cum":
                 g.st[i].t = char.addMinutes(g.startDate, -757);
-                break;
-            case "butthole":
-                g.st[i].t = 0.0;
                 break;
             case "money":
                 g.st[i].t = 450;
