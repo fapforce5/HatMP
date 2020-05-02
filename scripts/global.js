@@ -96,6 +96,7 @@ g.st = [
     { n: "momRaidCloset", t: false, q: "day" },
     { n: "tookHormonePill", t: false, q: "day" },
     { n: "gworkout", t: false, q: "day" },
+    { n: "shinkCock", t: false, q: "day" },
 ];
 
 g.i = function (name) {

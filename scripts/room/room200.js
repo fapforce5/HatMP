@@ -390,7 +390,8 @@ room200.chatcatch = function (callback) {
             sc.setstep("me", -7);
             sc.setstep("missy", 19);
             sc.setstep("jeffery", 5);
-            char.addtime(60);
+            g.set("shinkCock", true);
+            char.addtime(520);
             char.room(0);
             break;
         case "callJeffery":
@@ -613,6 +614,46 @@ room200.chatcatch = function (callback) {
                 "height": 227,
                 "image": "200_frontOffice/panty_h.png"
             }, 200);
+            break;
+        case "cock1":
+            nav.killall();
+            cl.nude();
+            cl.display();
+            nav.bg("200_frontOffice/cock1.jpg");
+            break;
+        case "cock2":
+            nav.bg("200_frontOffice/cock2.jpg");
+            break;
+        case "cock3":
+            nav.bg("200_frontOffice/cock3.jpg");
+            break;
+        case "cock4":
+            nav.bg("200_frontOffice/cock4.jpg");
+            break;
+        case "cock5":
+            nav.bg("200_frontOffice/cock5.jpg");
+            break;
+        case "cock6":
+            nav.bg("200_frontOffice/cock6.jpg");
+            break;
+        case "cock7":
+            nav.bg("200_frontOffice/cock7.jpg");
+            break;
+        case "cock8":
+            nav.bg("200_frontOffice/cock8.jpg");
+            break;
+        case "cock9":
+            nav.bg("200_frontOffice/200_frontOffice.jpg");
+            nav.button({
+                "type": "img",
+                "name": "missy",
+                "left": 872,
+                "top": 481,
+                "width": 224,
+                "height": 483,
+                "image": "200_frontOffice/200_missy.png"
+            }, 200);
+            cl.undo();
             break;
         default:
             break;
@@ -1244,7 +1285,7 @@ room200.chat = function (chatID) {
             text: "Hello " + tempGirl + " this is " + sc.n("jeffery") + ". " + sc.n("jeffery") + " has a problem that I think " +
                 "you can help him with. ",
             button: [
-                { chatID: 69, text: "Thank you mistress ", callback: "" }
+                { chatID: 69, text: "Hi " + sc.n("jeffery"), callback: "" }
             ]
         },
         {
@@ -1303,17 +1344,17 @@ room200.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "missy",
-            text: "I didn't ask for you to stammer through your excuses. You're going to have to fix this problem. Go to " +
-                "Toys 'N' Us and get a chastity cage. You'll wear that cage each time you either work for me, or work at " +
-                "the Naked Beaver. Understood?",
+            text: "I didn't ask for you to stammer through your excuses. I'm going to have to fix your problems again. Strip down " +
+                "and get over here so we can figure this out.",
             button: [
-                { chatID: 76, text: "Yes mistress", callback: "" }
+                { chatID: 143, text: "[Strip]", callback: "cock1" }
             ]
         },
         {
             chatID: 76,
             speaker: "missy",
-            text: "Good, I'm going to inform " + sc.n("jeffery") + " of our new arrangement. Now get out and stop screwing up! ",
+            text: "Good, I'm going to inform " + sc.n("jeffery") + " to only allow you to work with your chastity device on. " + 
+            "Now get out and stop screwing up! ",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "leave18" }
             ]
@@ -1883,9 +1924,125 @@ room200.chat = function (chatID) {
             chatID: 142,
             speaker: "missy",
             text: "**Laughs** Don't worry, you're not ready for Big Red here. I just wanted you to know what lies in your future. Now go clean my " +
-            "bathroom. ",
+                "bathroom. ",
             button: [
                 { chatID: -1, text: "Right away", callback: "clanBathroom" }
+            ]
+        },
+        {
+            chatID: 143,
+            speaker: "missy",
+            text: "Hmmm, I see the problem, this cock of yours is far too large. It's not clit like at all... Boys have cocks, and women have " +
+                "clits. Cocks are big dominate instruments to impale innocent pussies. Clits are cute little spots on girls and sissies that you can " +
+                "rub for pleasure. If you're going to dress like a sissy, you have to have a clit like a sissy. ",
+            button: [
+                { chatID: 144, text: "...", callback: "cock2" }
+            ]
+        },
+        {
+            chatID: 144,
+            speaker: "missy",
+            text: "Since you don't have a cute little clit, we're going to shove that cock into a smaller space so you're not running around " +
+                "shoving that cock into poor little women. Let's put on your first chastity device. I know it may look scary, but it's better for you.",
+            button: [
+                { chatID: 145, text: "...", callback: "cock3" }
+            ]
+        },
+        {
+            chatID: 145,
+            speaker: "missy",
+            text: "So we'll just slide it on your cock...",
+            button: [
+                { chatID: 146, text: "...", callback: "cock4" }
+            ]
+        },
+        {
+            chatID: 146,
+            speaker: "missy",
+            text: "JUSTTTT..... ERRRR",
+            button: [
+                { chatID: 147, text: "...", callback: "cock5" }
+            ]
+        },
+        {
+            chatID: 147,
+            speaker: "missy",
+            text: "AAAARRRGGG.... SLIDDDEEE",
+            button: [
+                { chatID: 148, text: "...", callback: "cock1" }
+            ]
+        },
+        {
+            chatID: 148,
+            speaker: "missy",
+            text: "Hmmmm... So that is the largest chastity device " + sc.n("tiffany") + " carries... Well have to do something about that." +
+                "Hmmmmmm",
+            button: [
+                { chatID: 149, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 149,
+            speaker: "missy",
+            text: "Hmmmm I know... Your cage isn't too small for your cock, your cock is too large for the cage. We just need to make it smaller. " +
+                "One second while I get the cream... hehe it's not that kind of cream.",
+            button: [
+                { chatID: 150, text: "...", callback: "cock6" }
+            ]
+        },
+        {
+            chatID: 150,
+            speaker: "missy",
+            text: "Hmmm hmmm, oh here it is!!!",
+            button: [
+                { chatID: 151, text: "...", callback: "cock7" }
+            ]
+        },
+        {
+            chatID: 151,
+            speaker: "missy",
+            text: "Tiny PP! When your cock is just too big. One little gets you closer to a sissy clitty.",
+            button: [
+                { chatID: 152, text: "...", callback: "cock8" }
+            ]
+        },
+        {
+            chatID: 152,
+            speaker: "missy",
+            text: "Just leave that overnight and and in the morning you'll be able to fit into your chastity device. Won't that be fun. " +
+                "You're taking you next big step into being my little sissy. I'm so excited for you.",
+            button: [
+                { chatID: 153, text: "But I like having a giant cock..", callback: "" },
+                { chatID: 154, text: "Oh thank you! I want so badly to have a tiny pretty little clit!", callback: "" }
+            ]
+        },
+        {
+            chatID: 153,
+            speaker: "missy",
+            text: "Oh don't be silly. You only think you like having a big cock. Soon you'll be experiencing pleasures you didn't know existed. " +
+                "Now stop whining like a petulant child and put on your cute little skirt and blouse. ",
+            button: [
+                { chatID: 155, text: "Yes mistress", callback: "cock9" }
+            ]
+        },
+        {
+            chatID: 154,
+            speaker: "missy",
+            text: "You are quite welcome. I'm glad you realize you're try purpose my little sissy. I'll take good care of you on your journey. Now put " +
+                "your pretty little skirt and blouse. ",
+            button: [
+                { chatID: 155, text: "Thank you mistress", callback: "cock9" }
+            ]
+        },
+        {
+            chatID: 155,
+            speaker: "missy",
+            text: "I'm going to give you $120 to purchase your first chastity device. In the morning your sissy dick will be small enough to " +
+                "fit in that device. " +
+                "You're still going to bave a rather large penis, so it won't fit in all devices, make sure to get the biggest device " +
+            sc.n("candy") + " has. In time you'll we'll shink that cock into a proper sissy clit. Do you understand?",
+            button: [
+                { chatID: 76, text: "Yes mistress", callback: "cock9" }
             ]
         },
     ];

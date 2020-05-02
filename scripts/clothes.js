@@ -98,8 +98,8 @@ cl.list = [
     { type: "pj", name: "paisley", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "pj", name: "gown", img: "pj_gown.png", sex: "m", inv: false, daring: 3, price: -1 },
 
-    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 4, price: 120 },
-    { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "m", inv: false, daring: 4, price: 90 },
+    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 1, price: 120 },
+    { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "m", inv: false, daring: 2, price: 90 },
 
     { type: "buttplug", name: "s", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
     { type: "buttplug", name: "n", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },

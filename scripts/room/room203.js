@@ -212,12 +212,15 @@ room203.chatcatch = function (callback) {
             if (cl.getBodyHair() !== null) {
                 chat(20, 203);
             }
-            else if ((sex === null ? "X" : sex) === "f") {
-                nav.buildnav([201, 0]);
-                chat(17, 203);
+            else if ((sex === null ? "X" : sex) !== "f") {
+                chat(16, 203);
+            }
+            else if (cl.c.chastity === null && g.get("arousal") > 90) {
+                chat(22, 203);
             }
             else {
-                chat(16, 203);
+                nav.buildnav([201, 0]);
+                chat(17, 203);
             }
             break;
         case "app":

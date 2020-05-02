@@ -378,13 +378,36 @@ room202.chatcatch = function (callback) {
             nav.bg("202_sideDesk/pose3.jpg");
             break;
         case "pose4":
+            nav.bg("202_sideDesk/pose4.jpg");
+            break;
+        case "pose5":
+            nav.bg("202_sideDesk/pose5.jpg");
+            break;
+        case "pose6":
+            nav.bg("202_sideDesk/pose6.jpg");
+            break;
+        case "pose7":
+            nav.bg("202_sideDesk/pose7.jpg");
+            break;
+        case "pose8":
+            nav.bg("202_sideDesk/pose8.jpg");
+            break;
+        case "pose9":
+            nav.bg("202_sideDesk/pose9.jpg");
+            break;
+        case "pose10":
+            nav.bg("202_sideDesk/pose10.jpg");
+            break;
+        case "pose11":
             cl.c.shirt = "r";
             cl.c.panties = "w";
             cl.c.pants = "k";
             cl.c.shoes = "fb";
             cl.display();
-            g.pass = "14end";
-            char.room(200);
+            sc.setstep("missy", 16);
+            sc.setstep("me", -9);
+            char.addtime(360);
+            char.room(0);
             break;
         case "repeatstoolend":
             g.pass = "repeatstoolendend";
@@ -829,10 +852,10 @@ room202.chat = function (chatID) {
         {
             chatID: 51,
             speaker: "missy",
-            text: "Now we're going to do more with this pose, but that will do for now. When you come back I have a big treat for " +
-            "you. It's going to be your first case and I think you're ready for it. Go ahead and get dressed.",
+            text: "You display yourself well, but looking like a sissy whore isn't all you do. It's time for you to start acting like one. " +
+            "Get on your knees again and open your mouth. I'll be right back...",
             button: [
-                { chatID: -1, text: "Yes ma'am", callback: "pose4" }
+                { chatID: 66, text: "Yes ma'am", callback: "pose4" }
             ]
         },
         {
@@ -947,7 +970,72 @@ room202.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "...", callback: "repeatstoolend" }
             ]
-        }
+        },
+        {
+            chatID: 66,
+            speaker: "me",
+            text: "I wonder what she's up to this time....",
+            button: [
+                { chatID: 67, text: "Yes ma'am", callback: "pose5" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "missy",
+            text: "I have a treat for you my little sissy. I bet you like whip cream, don't you. I like my little sissys full of cream.",
+            button: [
+                { chatID: 68, text: "huh...", callback: "" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "missy",
+            text: "I'm going to give you a taste of cream on my giant cock my little sissy. You're going to suck up all the cream on my cock. " +
+            "Since this is your first time I won't make you clean it all the way to my pussy, aren't I nice? Now open your mouth clean my cock up.",
+            button: [
+                { chatID: 69, text: "[Open your mouth]", callback: "pose6" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "missy",
+            text: "Get ready to swollow my yummy cream sissy.",
+            button: [
+                { chatID: 70, text: "aaAAAAAAA", callback: "pose7" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "missy",
+            text: "Oh yes sissy open your throat, take it deeper. You're not even halfway there.",
+            button: [
+                { chatID: 71, text: "Ughh gackkkkk ", callback: "pose8" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "missy",
+            text: "You're almost there slut, take it deeper!",
+            button: [
+                { chatID: 72, text: "Ughh gackkkkk ", callback: "pose9" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "missy",
+            text: "Is that all you have? What a failure, I'm so disappointed, but I guess it's a start. No more cream for you. ",
+            button: [
+                { chatID: 73, text: "Ughh gackkkkk ", callback: "pose10" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "missy",
+            text: "Clean yourself up and get out of my sight. I have a special assignment for you next time you come in. Now thank me and get out.",
+            button: [
+                { chatID: -1, text: "Thank you mistress ", callback: "pose11" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
