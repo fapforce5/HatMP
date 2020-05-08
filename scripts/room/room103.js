@@ -2,20 +2,45 @@
 var room103 = {};
 
 room103.main = function () {
-    var thisRand = Math.floor(Math.random() * 10);
-    if (thisRand === 1)
-        chat(1, 103);
-    else if (thisRand === 2) {
-        nav.bg("103_constSite/103_topless.png");
-        chat(3, 103);
-    }
-    else
-        chat(0, 103);
+    btnList = [
+        {
+            "type": "btn",
+            "name": "hole",
+            "left": 1302,
+            "top": 531,
+            "width": 135,
+            "height": 124,
+            "image": "103_constSite/hole.png",
+            "night": "103_constSite/holenight.png"
+        },
+        {
+            "type": "btn",
+            "name": "work",
+            "left": 315,
+            "top": 718,
+            "width": 513,
+            "height": 272,
+            "image": "103_constSite/work.png"
+        }
+    ];
+    $.each(btnList, function (i, v) {
+        nav.button(v, 14);
+    });
+    //var thisRand = Math.floor(Math.random() * 10);
+    //if (thisRand === 1)
+    //    chat(1, 103);
+    //else if (thisRand === 2) {
+    //    nav.bg("103_constSite/103_topless.png");
+    //    chat(3, 103);
+    //}
+    //else
+    //    chat(0, 103);
 };
 
 room103.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "work":
+            chat(0, 103);
             break;
         default:
             break;

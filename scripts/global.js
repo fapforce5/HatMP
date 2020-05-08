@@ -302,7 +302,7 @@ g.rooms = [
     { roomID: 100, name: "Construction Entrance", image: "100_construction/100_site.jpg", nightImage: "100_construction/100_bg_night.jpg", houseID: 100, btn: "roomBtn_100.png" },
     { roomID: 101, name: "Front Office", image: "101_constFrontOffice/101_frontoffice.jpg", nightImage: "101_constFrontOffice/101_frontoffice.jpg", houseID: 100, btn: "roomBtn_101.png" },
     { roomID: 102, name: "Boss's Office", image: "102_constBoss/102_boss.png", nightImage: "102_constBoss/102_boss.png", houseID: 100, btn: "roomBtn_102.png" },
-    { roomID: 103, name: "Work", image: "103_constSite/103_sweep.png", nightImage: "103_constSite/103_sweep.png", houseID: 100, btn: "roomBtn_103.png" },
+    { roomID: 103, name: "Work", image: "103_constSite/103_sweep.jpg", nightImage: "103_constSite/103_sweepnight.jpg", houseID: 100, btn: "roomBtn_103.png" },
 
     { roomID: 200, name: "Missy PI Entrace", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 200, btn: "roomBtn_200.png" },
     { roomID: 201, name: "Bathroom", image: "201_bathroom/201_bathroom.jpg", nightImage: "201_bathroom/201_bathroom.jpg", houseID: 200, btn: "roomBtn_201.png" },

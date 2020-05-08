@@ -43,8 +43,21 @@ room14.main = function () {
                     }];
                     break;
                 case 3:
-                    nav.bg("14_motherRoom/couple2.jpg");
-                    chat(27, 14);
+                    if (g.get("bigguy")) {
+                        btnList = [{
+                            "type": "btn",
+                            "name": "couple",
+                            "left": 737,
+                            "top": 0,
+                            "width": 714,
+                            "height": 1080,
+                            "image": "14_motherRoom/couple.png"
+                        }];
+                    }
+                    else {
+                        nav.bg("14_motherRoom/couple3.jpg");
+                        chat(27, 14);
+                    }
                     break;
                 default:
                     btnList = [{
@@ -383,6 +396,10 @@ room14.chatcatch = function (callback) {
             g.pass = "sleepSpank";
             char.room(21);
             break;
+        case "fin0":
+            g.setflag("bigguy");
+            char.addtime(60);
+            break;
         case "fin1":
             sc.setstep("bigguy", 1);
             g.setflag("bigguy");
@@ -398,6 +415,11 @@ room14.chatcatch = function (callback) {
             g.setflag("bigguy");
             char.addtime(60);
             break;
+        case "fin4":
+            sc.setstep("bigguy", 4);
+            g.setflag("bigguy");
+            char.addtime(60);
+            break;
         case "couple3a":
             nav.bg("14_motherRoom/couple3a.jpg");
             break;
@@ -409,6 +431,16 @@ room14.chatcatch = function (callback) {
             break;
         case "couple3d":
             nav.bg("14_motherRoom/couple3d.jpg");
+            break;
+        case "couple3e":
+            nav.bg("14_motherRoom/couple3e.jpg");
+            break;
+        case "couple3f":
+            nav.bg("14_motherRoom/couple3f.jpg");
+            break;
+        case "couple3g":
+            g.mod("loadSwollowed", 1);
+            nav.bg("14_motherRoom/couple3g.jpg");
             break;
         default:
             break;
@@ -664,7 +696,7 @@ room14.chat = function(chatID){
             speaker: "landlord",
             text: "Blub...",
             button: [
-                { chatID: 30, text: "...", callback: "" }
+                { chatID: 31, text: "...", callback: "" }
             ]
         },
         {
@@ -697,8 +729,65 @@ room14.chat = function(chatID){
             speaker: "landlord",
             text: "Is that what you wanted? Did you want a taste? You're a dirty boy, did you want to clean up your " + sc.n("landlord") + " ? ",
             button: [
-                { chatID: 30, text: "Oh my god NO", callback: "" },
-                { chatID: 30, text: "Ummmm well yes", callback: "" }
+                { chatID: 35, text: "I do", callback: "couple3e" },
+                { chatID: 41, text: "Oh my god NO", callback: "" }
+                
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "landlord",
+            text: "I know what a bad boy you are, clean my hand you naughty boy.",
+            button: [
+                { chatID: 36, text: "[Suck her fingers clean]", callback: "couple3f" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "landlord",
+            text: "That's right suck my fingers clean.",
+            button: [
+                { chatID: 37, text: "[Keep sucking her cum covered fingers]", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "bigguy",
+            text: "Hahahaha How's my cum taste little man? Now swollow it up for " + sc.n("landlord") + ".",
+            button: [
+                { chatID: 38, text: "[swollow it down]", callback: "couple3g" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "landlord",
+            text: "Such a dirty boy.",
+            button: [
+                { chatID: 39, text: "MMmmmmmm", callback: "couple3c" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "bigguy",
+            text: "You need to run along now boy, or I'm going to fill that ass up with cum too ",
+            button: [
+                { chatID: 40, text: "What", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "landlord",
+            text: sc.n("bigguy") + "! I'm not done with you yet. Now run along " + sc.n("me") + ".",
+            button: [
+                { chatID: -1, text: "[Run along]", callback: "fin4" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "landlord",
+            text: "Ok you naughty boy, run along so I can finish up. Now go!",
+            button: [
+                { chatID: -1, text: "[Run along]", callback: "fin0" }
             ]
         },
     ];
