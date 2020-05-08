@@ -556,6 +556,21 @@ room13.chatcatch = function (callback) {
             char.addtime(360);
             char.room(10);
             break;
+        case "peek1":
+            nav.bg("13_sisterRoom/peek1.jpg");
+            break;
+        case "peek2":
+            nav.bg("13_sisterRoom/peek2.jpg");
+            break;
+        case "peek3":
+            nav.bg("13_sisterRoom/peek3.jpg");
+            break;
+        case "peek4":
+            cl.add("panties", "w");
+            g.internal = "room10pass";
+            char.addtime(30);
+            char.room(10);
+            break;
         default:
             console.log(callback + " - miss");
             break;
@@ -1319,7 +1334,7 @@ room13.chat = function (chatID) {
         {
             chatID: 90,
             speaker: "eva",
-            text: "I've got something better. Use this vibrator on my clit while you lick my pussy.",
+            text: "I've got something better. Use this vibrator on my clit, maybe finger my butthole?",
             button: [
                 { chatID: 91, text: "Is that the sounds of a vibrator I hear?", callback: "hide3" }
             ]
@@ -1327,7 +1342,7 @@ room13.chat = function (chatID) {
         {
             chatID: 91,
             speaker: "lola",
-            text: "Oh hahah whoops, I dropped it. ",
+            text: "I love that. ....Oh hahah whoops, I dropped it. ",
             button: [
                 { chatID: 92, text: "Crap! Don't look under the bed, don't look under the bed", callback: "hide4" }
             ]
@@ -1343,7 +1358,8 @@ room13.chat = function (chatID) {
         {
             chatID: 93,
             speaker: "lola",
-            text: "Oh yes " + sc.n("eva") + " do you like that.. MMMmmmmMMMMmmmmmmmmmmmmmm",
+            text: "How's my finger, it's so warm. I'm glad you're just so naturally clean. Hehehe I can feel it vibrate all the way throgh " +
+            "you're pussy. ",
             button: [
                 { chatID: 94, text: "....", callback: "" }
             ]
@@ -1361,7 +1377,8 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "**lick** MMmmMMM **lick** mmMMMMMMMMmmmmmmmmm",
             button: [
-                { chatID: 96, text: "I wish I could take a peek", callback: "" }
+                { chatID: 96, text: "Don't peek", callback: "" },
+                { chatID: 99, text: "Take a peek", callback: "peek1" }
             ]
         },
         {
@@ -1386,6 +1403,63 @@ room13.chat = function (chatID) {
             text: "Oh good they're gone. I've got to get out of here!",
             button: [
                 { chatID: -1, text: "...", callback: "hide6" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "eva",
+            text: "ooOOooo OOOooooooooooooooooo fuuuuuuuck! I'm cumming!",
+            button: [
+                { chatID: 100, text: "...", callback: "peek2" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "lola",
+            text: sc.n("me") + "!!! What the hell!",
+            button: [
+                { chatID: 101, text: "ahh crap...", callback: "peek3" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "eva",
+            text: sc.n("me") + "!!! Way to ruin an orgasm! ",
+            button: [
+                { chatID: 102, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "lola",
+            text: "Why are you hiding under our bed! That's so rude ",
+            button: [
+                { chatID: 103, text: "oh.. uh um", callback: "" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "eva",
+            text: "He was hiding there to perv on us",
+            button: [
+                { chatID: 104, text: "well", callback: "" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "lola",
+            text: "Oh my. That's so rude.",
+            button: [
+                { chatID: 105, text: "yea", callback: "" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "eva",
+            text: "Don't worry " + sc.n("lola") + " I have a plan. " + sc.n("me") + " you go wait in your room while we get dressed. " +
+            "You better do it or we'll tell " + sc.n("landlord") + ".",
+            button: [
+                { chatID: -1, text: "sigh, ok", callback: "peek4" }
             ]
         },
     ];

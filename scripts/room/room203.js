@@ -140,12 +140,12 @@ room203.chatcatch = function (callback) {
                         "height": 518,
                         "image": "203_entrance/kneel.png"
                     }, 203);
-                    if (g.get("arousal") > 90)
-                        chat(22, 203);
-                    else if (missyStep < 9)
-                        chat(10, 203);
-                    else
+                    if (missyStep > 8)
                         chat(15, 203);
+                    else if (g.get("arousal") > 90)
+                        chat(22, 203);
+                    else 
+                        chat(10, 203);
                 }
             }
             else {

@@ -19,8 +19,10 @@ function chat(chatID, roomID) {
         if (entry !== null) {
             var thisSpeaker = privateChat.speakerInfo(entry.speaker);
             $('#room_footer').hide();
-            if (!$('#room_chatOverlay').is(":visible"))
+            if (!$('#room_chatOverlay').is(":visible")) {
                 $('#room_chatOverlay').show();
+                $('#char_charDisplay').hide();
+            }
             var counter = 0;
             $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
             $('#room_footerSpeach').html(entry.text);
@@ -91,6 +93,7 @@ $(document).ready(function () {
                 $('#room_footerSpeach').html("");
                 $('#room_chatSpeaker').html('');
                 $('#room_footer').show();
+                $('#char_charDisplay').show();
             }
             else
                 chat(chatID, roomID);

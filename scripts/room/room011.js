@@ -7,7 +7,7 @@ room11.main = function () {
         hasKey = true;
     var motherLocation = sc.mother().roomID;
     var sisterLocation = sc.sister().roomID;
-
+    var openDoor = g.hourBetween(7, 21);
     var btnList = new Array();
     var navList = [16, 10];
     //Bathroom
@@ -50,7 +50,7 @@ room11.main = function () {
     }
 
     //EL room
-    if (sisterLocation === 13 && !g.isNight()) {
+    if (sisterLocation === 13 && openDoor) {
         btnList.push({
             "type": "btn",
             "name": "sisterOpen",
@@ -77,7 +77,7 @@ room11.main = function () {
     }
 
     //Landlord's room
-    if (motherLocation === 14 && !g.isNight()) {
+    if (motherLocation === 14 && openDoor) {
         btnList.push({
             "type": "btn",
             "name": "motherOpen",

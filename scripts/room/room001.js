@@ -13,15 +13,6 @@ room1.main = function () {
         },
         {
             "type": "btn",
-            "name": "skip",
-            "left": 800,
-            "top": 529,
-            "width": 321,
-            "height": 46,
-            "image": "1_startScreen/skip.png"
-        },
-        {
-            "type": "btn",
             "name": "load",
             "left": 800,
             "top": 605,
@@ -56,14 +47,6 @@ room1.btnclick = function (name) {
     switch (name) {
         case "start":
             g.pass = "";
-            char.initGame();
-            $('.room-left').show();
-            $('#room_footer').show();
-            $(".room-topper").show();
-            char.room(3);
-            break;
-        case "skip":
-            g.pass = "skip";
             char.initGame();
             $('.room-left').show();
             $('#room_footer').show();

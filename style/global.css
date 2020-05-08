@@ -43,7 +43,8 @@ input[type=text]:disabled{
     position:absolute;
     top:0;
     left:0;
-    
+    border-right:solid #000 2px;
+    background:rgba(0,0,0,.2);
 }
 
 .room-topper{
@@ -166,7 +167,7 @@ input[type=text]:disabled{
 
 .room-chatSpeaker{
     display:inline-block;
-    width:5%;
+    width:4%;
     margin-left:2%;
 }
 
@@ -180,12 +181,6 @@ input[type=text]:disabled{
 
 .room-chatSpeaker img{
     width:100%;
-}
-#room-inv{
-    z-index:200;
-}
-#room-inv img {
-    position: absolute;
 }
 
 .room-chatBtn{
@@ -331,8 +326,12 @@ input[type=text]:disabled{
     border:#f00 thick solid;
 }
 
-#room-menu {
-    z-index: 200;
+#room-inv, #room-menu {
+    z-index: 96;
+}
+
+#room-inv img {
+    position: absolute;
 }
 
 .room-menu {

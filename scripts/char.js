@@ -3,7 +3,7 @@ var menu = {};
 char.clothesholder = null;
 
 $(document).ready(function () {
-    
+
     nav.setRatio();
     nav.buildRoom();
     cl.display();
@@ -26,7 +26,7 @@ $(document).ready(function () {
     $('#room_closeVideo').click(function () {
         nav.killvideo();
     });
-    
+
 
     $(window).on('resize', function () {
         char.resizewindow();
@@ -51,21 +51,17 @@ $(document).ready(function () {
                 "left": (l * g.ratio) + "px"
             });
         });
-        $('#char_turnaround').css({
-            height: (60 * g.ratio) + 'px',
-            width: (60 * g.ratio) + 'px',
-            left: (20 * g.ratio) + 'px',
-            top: (20 * g.ratio) + 'px'
+
+        $('.room-left').css({ height: 1080 * g.ratio + "px" });
+
+        $('.char-modBtn').css({
+            width: 75 * g.ratio + "px",
+            height: 75 * g.ratio + "px"
         });
-        $('#char_altview').css({
-            height: (60 * g.ratio) + 'px',
-            width: (60 * g.ratio) + 'px',
-            left: (220 * g.ratio) + 'px',
-            top: (20 * g.ratio) + 'px'
-        });
+
         char.menu();
     };
-   
+
     $("#menu_parent").on('click', '.menu-button', function () {
         menu.mClick($(this).data('type'));
     });
@@ -78,16 +74,6 @@ $(document).ready(function () {
     });
     $("#menu_parent").on('click', '.menu-del', function () {
         menu.saveDel($(this));
-    });
-
-    $('#char_turnaround').click(function () {
-        g.back = !g.back;
-        cl.display();
-    });
-
-    $('#char_altview').click(function () {
-        g.altview = !g.altview;
-        cl.display();
     });
 
     $("#menu_parent").on('click', '.menu-export', function () {
@@ -110,6 +96,11 @@ $(document).ready(function () {
         $('#room_export_load').show();
     });
 
+    $('.char-modBtn').click(function () {
+        g.tview = $(this).data("t");
+        cl.display();
+    });
+
     char.init();
 });
 
@@ -129,7 +120,7 @@ char.newday = function (sendingRoom) {
     g.mod('hormone', -2);
     var thisTinyPP = g.get("shinkCock");
     g.newday();
-    if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 14) {
+    if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 21) {
         if (cl.c.hairLength === null)
             cl.c.hairLength = 0;
         else if (cl.c.hairLength < 4)
@@ -273,6 +264,7 @@ char.room = function (roomID) {
     menu.makeSaves();
     nav.buildRoom();
     cl.cockDisplay();
+    cl.energydisplay();
 };
 
 char.addMinutes = function (date, minutes) {
@@ -353,7 +345,7 @@ menu.mClick = function (type) {
                 '<li><button type="button" class="menu-save" data-type="save" data-save="6">SAVE</button><div class="menu-save-line" data-save="6"></div><button type="button" class="menu-del" data-save="6" disabled="disabled">DELETE</button><button type="button" class="menu-export" data-save="6"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
                 '<li><button type="button" class="menu-save" data-type="save" data-save="7">SAVE</button><div class="menu-save-line" data-save="7"></div><button type="button" class="menu-del" data-save="7" disabled="disabled">DELETE</button><button type="button" class="menu-export" data-save="7"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
                 '<li><button type="button" class="menu-save" data-type="save" data-save="8">SAVE</button><div class="menu-save-line" data-save="8"></div><button type="button" class="menu-del" data-save="8" disabled="disabled">DELETE</button><button type="button" class="menu-export" data-save="8"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-                '<li><button type="button" class="menu-save" data-type="save" data-save="9">LOAD</button><div class="menu-save-line" data-save="9"></div> [Auto Save]</li>' +
+                '<li><button type="button" class="menu-save" data-type="save" data-save="9">LOAD</button><div class="menu-save-line" data-save="9"></div><span class="resize-text" style="font-size:.8rem">[Auto Save]</span></li>' +
                 '<li><button type="button" id="menu-import" data-type="import">IMPORT <img class="menu-export-image" src="./images/general/import.png"/></button></li>' +
                 '</ul>' +
                 '</div>');
@@ -372,7 +364,7 @@ menu.mClick = function (type) {
                     }
                 }
             }
-            $('.menu-save-line').css({ 'width': 350 * g.ratio + 'px' });
+            $('.menu-save-line').css({ 'width': 300 * g.ratio + 'px' });
             $('.menu-save-line').css({ 'font-size': 20 * g.ratio + 'px', 'margin-top': 10 * g.ratio + 'px' });
             $('.menu-save').css({ 'font-size': 20 * g.ratio + 'px', 'padding': 5 * g.ratio + "px " + 10 * g.ratio + "px" });
             $('.menu-del').css({ 'font-size': 20 * g.ratio + 'px', 'padding': 5 * g.ratio + "px " + 10 * g.ratio + "px" });
@@ -781,17 +773,14 @@ char.init = function() {
     inv.backpackIcon();
     inv.phoneIcon();
 
-    $('#char_turnaround').css({
-        height: 60 * g.ratio + 'px',
-        width: 60 * g.ratio + 'px',
-        left: 20 * g.ratio + 'px',
-        top: 20 * g.ratio + 'px'
-    });
-    $('#char_altview').css({
-        height: 60 * g.ratio + 'px',
-        width: 60 * g.ratio + 'px',
-        left: 220 * g.ratio + 'px',
-        top: 20 * g.ratio + 'px'
+    var btnWidth = 300 * g.ratio;
+    var btnHeight = 620 * g.ratio;
+    $('.char-container').css({ "width": btnWidth, "height": btnHeight });
+
+    $('.room-left').css({ height: 1080 * g.ratio + "px" });
+    $('.char-modBtn').css({
+        width: 75 * g.ratio + "px",
+        height: 75 * g.ratio + "px"
     });
 
     $('.hide-start').hide();
@@ -845,6 +834,8 @@ char.initGame = function () {
         sc.char[i].step = 0;
         sc.char[i].rel = 0;
     }
+
+    
 };
 
 char.menu = function () {

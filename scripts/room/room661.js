@@ -102,8 +102,8 @@ room661.chatcatch = function (callback) {
             char.room(651);
             break;
         case "peek":
+            g.mod("sissy", -20);
             nav.bg("661_peephole/661_peekBG.png");
-            
             chat(10, 661);
             break;
         case "changeView":

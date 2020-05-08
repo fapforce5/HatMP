@@ -16,7 +16,7 @@ var pic = {};
 //p = small pp 
 inv.isFooter = true;
 inv.leftMenu = true;
-inv.roomChange = [8, 10, 12, 201, 451, 452, 503, 552, 553];
+inv.roomChange = [10, 12, 201, 451, 452, 503, 552, 553];
 inv.master = [
     { type: "h", name: "hormone", display: "Female Hormone", entry: false, count: 0, cost: 5, image: "hormone.png", n: false },
     { type: "g", name: "lube", display: "Sex Lube", entry: false, count: 0, cost: 10, image: "lube.png", n: false },
@@ -57,7 +57,10 @@ inv.master = [
 pic.master = [
     { name: "lolaTopless", display: "Lola Topless", entry: false, image: "lolaTopless.jpg", thumb: "lolaTopless.png" },
     { name: "landlordSleep", display: "Landlord Sleep", entry: false, image: "landloardSleep.jpg", thumb: "landloardSleep.png" },
-    { name: "pantyThief", display: "Panty Theif", entry: false, image: "pantyThief.jpg", thumb: "pantyThief.png" }
+    { name: "pantyThief", display: "Panty Theif", entry: false, image: "pantyThief.jpg", thumb: "pantyThief.png" },
+    { name: "jada_b", display: "Group Photo", entry: false, image: "jada_b.jpg", thumb: "jada_b.png" },
+    { name: "jada_f", display: "Group Photo", entry: false, image: "jada_f.jpg", thumb: "jada_f.png" },
+    { name: "jada_p", display: "Group Photo", entry: false, image: "jada_p.jpg", thumb: "jada_p.png" }
 ];
 
 pic.add = function (name) {

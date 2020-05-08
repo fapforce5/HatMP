@@ -443,11 +443,11 @@ room250.chatcatch = function (callback) {
             nav.button({
                 "type": "img",
                 "name": "kill_olly",
-                "left": 964,
-                "top": 28,
-                "width": 483,
-                "height": 1052,
-                "image": "250_beaver/side_holly1.png"
+                "left": 753,
+                "top": 41,
+                "width": 558,
+                "height": 1039,
+                "image": "250_beaver/holly_side_angry.png"
             }, 250);
             break;
         case "side_dolly":
@@ -461,16 +461,16 @@ room250.chatcatch = function (callback) {
                 "image": "250_beaver/side_dolly.png"
             }, 250);
             break;
-        case "dollymad1":
+        case "dollymad":
             nav.kill("dolly");
             nav.button({
                 "type": "img",
                 "name": "kill_olly",
-                "left": 886,
-                "top": 0,
-                "width": 812,
-                "height": 1080,
-                "image": "250_beaver/side_dolly1.png"
+                "left": 753,
+                "top": 41,
+                "width": 558,
+                "height": 1039,
+                "image": "250_beaver/dolly_side_angry.png"
             }, 250);
             break;
         case "side_molly":
@@ -501,6 +501,18 @@ room250.chatcatch = function (callback) {
             if (sc.getstep("molly") < 2)
                 sc.incstep("molly", 1);
             room250.chatcatch("resetServing");
+            break;
+        case "mollymad":
+            nav.killbutton("molly");
+            nav.button({
+                "type": "img",
+                "name": "molly",
+                "left": 753,
+                "top": 41,
+                "width": 558,
+                "height": 1039,
+                "image": "250_beaver/molly_side_angry.png"
+            }, 250);
             break;
         case "allSuccess":
             sc.setstep("dolly", 3);

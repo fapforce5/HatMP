@@ -37,7 +37,7 @@ sc.char = [
     { name: "molly", display: "Molly", image: "molly.png", step: 0, max: 0, show: false, setName: false },
     { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, max: 0, show: false, setName: false },
     { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true },
-    { name: "bigguy", display: "Dick McCock", image: "bigman.png", step: 0, max: 0, show: false, setName: false },
+    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, max: 0, show: false, setName: false },
     { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
 ];
@@ -73,13 +73,18 @@ sc.events = [
     { name: "me", step: 1, txt: "Get a job and start paying rent", img: "money", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "me", step: 2, txt: "Pay rent each Sunday", img: "landlord", show: false, row: 0, col: -1, ach: false, major: false }, //hired at missy
     { name: "me", step: 3, txt: "Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
-    
+    { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
 
     { name: "landlord", step: 1, txt: "Chat about job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 2, txt: "Chat about job next day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 3, txt: "Chat about theif", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 4, txt: "Get bedroom key and make bed each morning.", img: "llkey", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 5, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "bigguy", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "bigguy", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "bigguy", step: 2, txt: "Second Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "bigguy", step: 3, txt: "Third Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "zoey", step: -4, txt: "Break up with Chloé", img: "chloecum", show: true, row: 1, col: 3, ach: false, major: false },
     { name: "zoey", step: -3, txt: "Chloé cheating", img: "zoeyCheat", show: true, row: 1, col: 2, ach: false, major: false },
@@ -503,7 +508,7 @@ sc.mother = function () {
             else if (hour.between(17, 19))
                 r = 14; //living
             else if (hour.between(19, 24))
-                r = 14; //mother
+                r = 14; //bedroom
             break;
         case 1: //monday
             if (hour.between(0, 7))
@@ -529,7 +534,7 @@ sc.mother = function () {
             if (hour.between(0, 7))
                 r = 14;
             else if (hour.between(7, 8))
-                r = 25; //diningRoom
+                r = 12;  //bathroom
             else if (hour.between(17, 19))
                 r = 25; //diningRoom
             else if (hour.between(19, 24))
@@ -546,26 +551,22 @@ sc.mother = function () {
                 r = 14;
             break;
         case 5: //friday
-            if (hour.between(0, 7))
+            if (hour.between(0, 6))
                 r = 14;
-            else if (hour.between(7, 8))
+            else if (hour.between(6, 8))
                 r = 25; //diningRoom
             else if (hour.between(17, 19))
                 r = 25; //diningRoom
             else if (hour.between(19, 24))
-                r = 14;
+                r = 14;//bedroom
             break;
         case 6: //saturday
             if (hour.between(0, 7))
                 r = 14;
-            else if (hour.between(7, 8))
-                r = 25;
-            else if (hour.between(12, 13))
-                r = 25;
-            else if (hour.between(18, 19))
-                r = 25; //diningRoom
+            else if (hour.between(7, 9))
+                r = 12;  //bathroom
             else if (hour.between(19, 24))
-                r = 14;
+                r = 14;//bedroom
             break;
     }
     return { roomID: r, thisRoom: g.roomID === r };

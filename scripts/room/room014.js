@@ -4,7 +4,7 @@ var room14 = {};
 room14.main = function () {
     var btnList = new Array();
     g.internal = { pussy: 0, asshole: 0 };
-    if (!g.hourBetween(6, 21)) {
+    if (!g.hourBetween(6, 22)) {
         nav.bg("14_motherRoom/14_motherRoomNight.jpg");
         btnList = [{
             "type": "btn",
@@ -17,15 +17,59 @@ room14.main = function () {
         }];
     }
     else if (sc.mother().thisRoom) {
-        btnList = [{
-            "type": "btn",
-            "name": "motherRobe",
-            "left": 1193,
-            "top": 42,
-            "width": 466,
-            "height": 1038,
-            "image": "14_motherRoom/14_motherRobe.png"
-        }];
+        if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
+            switch (sc.getstep("bigguy")) {
+                case 0:
+                case 1:
+                    btnList = [{
+                        "type": "btn",
+                        "name": "couple",
+                        "left": 737,
+                        "top": 0,
+                        "width": 714,
+                        "height": 1080,
+                        "image": "14_motherRoom/couple.png"
+                    }];
+                    break;
+                case 2:
+                    btnList = [{
+                        "type": "btn",
+                        "name": "couple",
+                        "left": 737,
+                        "top": 0,
+                        "width": 714,
+                        "height": 1080,
+                        "image": "14_motherRoom/couple1.png"
+                    }];
+                    break;
+                case 3:
+                    nav.bg("14_motherRoom/couple2.jpg");
+                    chat(27, 14);
+                    break;
+                default:
+                    btnList = [{
+                        "type": "btn",
+                        "name": "couple",
+                        "left": 737,
+                        "top": 0,
+                        "width": 714,
+                        "height": 1080,
+                        "image": "14_motherRoom/couple.png"
+                    }];
+                    break;
+            }
+        }
+        else {
+            btnList = [{
+                "type": "btn",
+                "name": "motherRobe",
+                "left": 1193,
+                "top": 42,
+                "width": 466,
+                "height": 1038,
+                "image": "14_motherRoom/14_motherRobe.png"
+            }];
+        }
     }
     else {
         btnList = [
@@ -171,6 +215,26 @@ room14.btnclick = function (name) {
             nav.killbutton("takePic");
             pic.add("landlordSleep");
             chat(15, 14);
+            break;
+        case "couple":
+            if (g.get("bigguy"))
+                chat(16, 14);
+            else {
+                switch (sc.getstep("bigguy")) {
+                    case 0:
+                        chat(18, 14);
+                        break;
+                    case 1:
+                        chat(23, 14);
+                        break;
+                    case 2:
+                        chat(25, 14);
+                        break;
+                    default:
+                        chat(16, 14);
+                        break;
+                }
+            }
             break;
         default:
             break;
@@ -319,6 +383,33 @@ room14.chatcatch = function (callback) {
             g.pass = "sleepSpank";
             char.room(21);
             break;
+        case "fin1":
+            sc.setstep("bigguy", 1);
+            g.setflag("bigguy");
+            char.addtime(60);
+            break;
+        case "fin2":
+            sc.setstep("bigguy", 2);
+            g.setflag("bigguy");
+            char.addtime(60);
+            break;
+        case "fin3":
+            sc.setstep("bigguy", 3);
+            g.setflag("bigguy");
+            char.addtime(60);
+            break;
+        case "couple3a":
+            nav.bg("14_motherRoom/couple3a.jpg");
+            break;
+        case "couple3b":
+            nav.bg("14_motherRoom/couple3b.jpg");
+            break;
+        case "couple3c":
+            nav.bg("14_motherRoom/couple3c.jpg");
+            break;
+        case "couple3d":
+            nav.bg("14_motherRoom/couple3d.jpg");
+            break;
         default:
             break;
     }
@@ -449,6 +540,165 @@ room14.chat = function(chatID){
             text: "Picture added to camera.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "landlord",
+            text: "Hay honey. Why don't you go play so me and " + sc.n("bigguy") + " can play adult games.",
+            button: [
+                { chatID: 17, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "bigguy",
+            text: "Hehehe... You're a cute kid.. maybe we'll let you play some time...",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "landlord",
+            text: "Hay honey, I don't think you've met my new boyfriend " + sc.n("bigguy") + ". He's just visiting for the weekend. ",
+            button: [
+                { chatID: 19, text: "Hi " + sc.n("bigguy") + "..", callback: "" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "bigguy",
+            text: "Hi little man. " + sc.n("landlord") + " has told me so much about you. You remind me of me when I was younger. " +
+                "I used to have tiny girly body. Then I decided to stop being a little girly man. You have a tiny body. You should lift weights. " +
+                "Do you like girls. Girls like big guys. I know your " + sc.n("landlord") + " likes big guys hehehe",
+            button: [
+                { chatID: 20, text: "... oh ok...", callback: "" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "landlord",
+            text: "Ugh, I have two perverts in this house, at least " + sc.n("lola") + " and " + sc.n("eva") + " are nice sweet girls that never " +
+            "do anything perverted like you too. ",
+            button: [
+                { chatID: 21, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "bigguy",
+            text: "Boys are perverts, it's in our blood, isn't that right young one. That's why your " + sc.n("landlord") + 
+            " has me over. She loves my giant perverted friend here",
+            button: [
+                { chatID: 22, text: "oh gross...", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "landlord",
+            text: "Oh stop it, " + sc.n("me") + " doesn't need to hear the things you do to me. " + sc.n("me") + " why don't you run along now " +
+            "we have some..... stuff to do",
+            button: [
+                { chatID: -1, text: "oh double gros...", callback: "fin1" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "landlord",
+            text: "You are a naughty boy, it looks like you caught us again. Why don't you run along so we can get some alone time..",
+            button: [
+                { chatID: 24, text: "oh.", callback: "" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "bigguy",
+            text: "Yea, I gotta giant problem that needs to be solved and only your " + sc.n("landlord") + " can suck it. ",
+            button: [
+                { chatID: -1, text: "oh damn it.. gross again", callback: "fin2" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "landlord",
+            text: "Oh my! " + sc.n("me") + " Just because I don't lock my door doesn't mean you can just walk right in! ",
+            button: [
+                { chatID: 26, text: "But it was slightly ajar!", callback: "" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "landlord",
+            text: "Don't even! Just run along now... ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "fin3" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "landlord",
+            text: "glug.. glug...glug...glug...glug",
+            button: [
+                { chatID: 28, text: sc.n("landlord") + "?", callback: "couple3a" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "bigguy",
+            text: "Oh fuck, I'm going to fill your throat full",
+            button: [
+                { chatID: 29, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "bigguy",
+            text: "Oh yea, take my load while " + sc.n("me") + " watches. He's likes to watch you take my giant cock.",
+            button: [
+                { chatID: 30, text: "...", callback: "couple3b" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "landlord",
+            text: "Blub...",
+            button: [
+                { chatID: 30, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "bigguy",
+            text: "Haha it's hard to talk with your mouth full of my cum. hehehe",
+            button: [
+                { chatID: 32, text: "...", callback: "couple3c" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "landlord",
+            text: "Hahaha OMG, I said don't shoot it down my throat, I know how you like to put on a show. And you " + sc.n("me") + ". " +
+            "Why do you insist on walking in on us? ",
+            button: [
+                { chatID: 33, text: "...", callback: "couple3c" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "bigguy",
+            text: "I think he wanted to take your place hehehe, he wanted to eat my cum! HAHAHAhahahah",
+            button: [
+                { chatID: 34, text: "...", callback: "couple3d" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "landlord",
+            text: "Is that what you wanted? Did you want a taste? You're a dirty boy, did you want to clean up your " + sc.n("landlord") + " ? ",
+            button: [
+                { chatID: 30, text: "Oh my god NO", callback: "" },
+                { chatID: 30, text: "Ummmm well yes", callback: "" }
             ]
         },
     ];

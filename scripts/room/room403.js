@@ -19,6 +19,13 @@ room403.btnclick = function (name) {
         case "cupDrip":
             chat(59, 403);
             break;
+        case "selfie":
+            nav.killbutton("selfie");
+            nav.bg("403_saucy/changeRoom6c.jpg");
+            pic.add("jada_" + cl.c.panties);
+            nav.killall();
+            chat(47, 403);
+            break;
         default:
             break;
     }
@@ -26,89 +33,38 @@ room403.btnclick = function (name) {
 
 room403.chatcatch = function (callback) {
     switch (callback) {
-        case "tifSummer":
-            nav.bg("403_saucy/tifSummer.jpg");
+        case "mall":
+            nav.bg("400_mall/400_mall_bg_t.jpg");
             break;
-        case "tifAlice":
-            nav.bg("403_saucy/tifAlice.jpg");
+        case "tif2":
+            nav.bg("403_saucy/tif2.jpg");
             break;
-        case "tifPurple":
-            nav.bg("403_saucy/tifPurple.jpg");
+        case "tif3":
+            nav.bg("403_saucy/tif3.jpg");
             break;
-        case "tif1":
-            nav.bg("403_saucy/tif1.jpg");
+        case "tif4":
+            nav.bg("403_saucy/tif4.jpg");
             break;
-        case "pickSummer":
-            cl.c.shirt = null;
-            cl.c.pants = null;
-            cl.c.dress = "s";
-            cl.add("dress", "s");
-            g.popUpNotice("Added Summer Dress");
-            cl.display();
+        case "tif5":
+            nav.bg("403_saucy/tif5.jpg");
             break;
-        case "pickFancy":
-            cl.c.shirt = null;
-            cl.c.pants = null;
-            cl.c.dress = "a";
-            cl.add("dress", "a");
-            g.popUpNotice("Added Alice Dress");
-            cl.display();
+        case "tif6":
+            nav.bg("403_saucy/tif6.jpg");
             break;
-        case "pickPurple":
-            cl.c.shirt = null;
-            cl.c.pants = null;
-            cl.c.dress = "p";
-            cl.add("dress", "p");
-            g.popUpNotice("Added Purple Dress");
-            cl.display();
+        case "tif7":
+            nav.bg("403_saucy/tif7.jpg");
+            break;
+        case "tif8":
+            nav.bg("403_saucy/tif8.jpg");
+            break;
+        case "tif9":
+            nav.bg("403_saucy/tif9.jpg");
+            break;
+        case "tif10":
+            nav.bg("403_saucy/tif10.jpg");
             break;
         case "shoeStore":
             nav.bg("403_saucy/shoe.jpg");
-            break;
-        case "blackflats":
-            cl.c.shoes = "fb";
-            cl.add("shoes", "fb");
-            g.popUpNotice("Added Black Flats");
-            cl.display();
-            break;
-        case "redStrappy":
-            cl.c.shoes = "fs";
-            cl.add("shoes", "fs");
-            g.popUpNotice("Added Red Strappy Flats");
-            cl.display();
-            break;
-        case "blueflats":
-            cl.c.shoes = "fl";
-            cl.add("shoes", "fl");
-            g.popUpNotice("Added Blue Flats");
-            cl.display();
-            break;
-        case "rainbow":
-            nav.bg("403_saucy/rainbow.jpg");
-            break;
-        case "shortwhite":
-            nav.bg("403_saucy/shortWhite.jpg");
-            break;
-        case "fishnet":
-            nav.bg("403_saucy/fishnet.jpg");
-            break;
-        case "pickRainbow":
-            cl.c.socks = "r";
-            cl.add("socks", "r");
-            g.popUpNotice("Added Rainbow Socks");
-            cl.display();
-            break;
-        case "pickWhitesocks":
-            cl.c.socks = "s";
-            cl.add("socks", "s");
-            g.popUpNotice("Added Little White Socks");
-            cl.display();
-            break;
-        case "pickFishnets":
-            cl.c.socks = "f";
-            cl.add("socks", "f");
-            g.popUpNotice("Added Fishnets");
-            cl.display();
             break;
         case "tifPanty1":
             nav.bg("402_mens/tifPanty1.jpg");
@@ -132,6 +88,19 @@ room403.chatcatch = function (callback) {
             if (cl.c.dress !== null)
                 cl.nude();
             nav.bg("403_saucy/changeRoom3.jpg");
+            break;
+        case "changeRoom3s":
+            cl.nude();
+            cl.display();
+            if (cl.chastity === null)
+                chat(33, 403);
+            else
+                chat(31, 403);
+            break;
+        case "changeRoom3t":
+            nav.bg("403_saucy/changeRoom3t.jpg");
+            cl.c.chastity = null;
+            cl.display();
             break;
         case "changeRoom3a":
             nav.bg("403_saucy/changeRoom3a.jpg");
@@ -158,6 +127,26 @@ room403.chatcatch = function (callback) {
         case "changeRoom6a":
             nav.bg("403_saucy/changeRoom6a.jpg");
             sc.setstep("tiffany", 13);
+            break;
+        case "changeRoom6b":
+            nav.bg("403_saucy/changeRoom6b.jpg");
+            break;
+        case "changeRoom6c":
+            nav.bg("403_saucy/changeRoom6c.jpg");
+            cl.display();
+            cl.displayMain(60, 760, .19, "panties");
+            break;
+        case "selfie":
+            nav.bg("403_saucy/changeRoom.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "selfie",
+                "left": 694,
+                "top": 381,
+                "width": 1121,
+                "height": 699,
+                "image": "403_saucy/selfie.png"
+            }, 403);
             break;
         case "changeRoom7":
             nav.bg("403_saucy/changeRoom7.jpg");
@@ -232,14 +221,17 @@ room403.chatcatch = function (callback) {
         case "pantiesBlack":
             g.internal = "pantiesBlack";
             cl.add("panties", "b");
+            cl.c.panties = "b";
             break;
         case "pantiesPink":
             g.internal = "pantiesPink";
             cl.add("panties", "p");
+            cl.c.panties = "p";
             break;
         case "pantiesFish":
             g.internal = "pantiesFish";
             cl.add("panties", "f");
+            cl.c.panties = "f";
             break;
         case "tifMap":
             g.set("map", 1);
@@ -269,413 +261,403 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "This is so exciting!!! You know the dress you choose says a lot about you. Lets see what we have....",
             button: [
-                { chatID: 1, text: "[Follow " + sc.n("tiffany") + " around the store]", callback: "tifSummer" }
+                { chatID: 1, text: "[Follow " + sc.n("tiffany") + " around the store]", callback: "tif2" }
             ]
         },
         {
             chatID: 1,
             speaker: "tiffany",
-            text: "This is the classic summer dress. If you pick the summer dress it says you're a happy go lucky girl next door.",
+            text: "Hmmmm, nope...",
             button: [
-                { chatID: 2, text: "[See the next dress]", callback: "tifAlice" }
+                { chatID: 2, text: "....", callback: "tif3" }
             ]
         },
         {
             chatID: 2,
             speaker: "tiffany",
-            text: "This is the fancy dress. It lets everyone know you're a classy lady, and won't put out on the first date.",
+            text: "Naw.... To slutty",
             button: [
-                { chatID: 3, text: "[See the next dress]", callback: "tifPurple" }
+                { chatID: 3, text: "...", callback: "tif4" }
             ]
         },
         {
             chatID: 3,
             speaker: "tiffany",
-            text: "This is the fun dress. It lets the boys know that after a few drinks they'll probably get a blow job!",
+            text: "AH HA! This is prefect for you!",
             button: [
-                { chatID: 4, text: "What?", callback: "tif1" }
+                { chatID: 4, text: "What?", callback: "tif5" }
             ]
         },
         {
             chatID: 4,
             speaker: "tiffany",
-            text: "Relax, you don't have to give boys blow jobs, it's just a dress silly! So which one are you going to go with?",
+            text: "Oh... I guess I'm used to shopping with " + sc.n("candy") + ".  Just a sec...",
             button: [
-                { chatID: 5, text: "The Summer Dress", callback: "pickSummer" },
-                { chatID: 6, text: "The Fancy Dress", callback: "pickFancy" },
-                { chatID: 7, text: "The Purple Dress", callback: "pickPurple" }
+                { chatID: 5, text: "Oh...", callback: "tif3" }
             ]
         },
         {
             chatID: 5,
             speaker: "tiffany",
-            text: "Great pick! I always thought you were a good girl next door!",
+            text: "Uhmmmm hmmmmmm",
             button: [
-                { chatID: 8, text: "Thanks! I'm a good lil girl!", callback: "" }
+                { chatID: 6, text: "....", callback: "tif6" }
             ]
         },
         {
             chatID: 6,
             speaker: "tiffany",
-            text: "I love this dress! It's like playing dress up!",
+            text: "This will work with your figure! Trust me!",
             button: [
-                { chatID: 8, text: "I'm a fancy girl!", callback: "" }
+                { chatID: 7, text: "I don't really think it's a good idea to dress up in public....", callback: "tif7" }
             ]
         },
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "I always knew there was a secret slut in there!",
+            text: "Awww Don't worry about that. You're so cute no one will think you're a boy.!",
             button: [
-                { chatID: 8, text: "It's not a secret slut, I'm a full out slut!", callback: "" }
+                { chatID: 8, text: "No, I'm manly...", callback: "tif6" }
             ]
         },
         {
             chatID: 8,
             speaker: "tiffany",
-            text: "Ok, next we need some socks and shoes! Lets go to the shoe store!!",
+            text: "Hahaha! Sure... Trust me, you're really pretty!",
             button: [
-                { chatID: 9, text: "[Follow " + sc.n("tiffany") + " to the shoe store]", callback: "shoeStore" }
+                { chatID: 9, text: "Yeah.. ok", callback: "" }
             ]
         },
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "So we need something sexy to go with that sexy dress! Have you ever worn heels?",
+            text: "I'll bring it with us! Lets shop some more!",
             button: [
-                { chatID: 10, text: "Heels? No, just regular shoes.", callback: "" }
+                { chatID: 10, text: "Ok", callback: "mall" }
             ]
         },
         {
             chatID: 10,
             speaker: "tiffany",
-            text: "I totally don't want you tripping all over yourself when we try and sneak you into my apartment. " +
-                "I'll start you off on beginner sexy shoes... how about some flats?",
+            text: "Ok... now where... Oh, you need socks!",
             button: [
-                { chatID: 11, text: "Flat shoes?", callback: "" }
+                { chatID: 11, text: "Socks?", callback: "" }
             ]
         },
         {
             chatID: 11,
             speaker: "tiffany",
-            text: "Boys are so clueless on how to be pretty! We'll go simple, like you! Pick a color, Classy black, slutty red, or " +
-                "whimsical blue",
+            text: "Yes silly, YOu need socks to match your pretty new dress! Follow me",
             button: [
-                { chatID: 12, text: "Black flats", callback: "blackflats" },
-                { chatID: 13, text: "Red strappy flats", callback: "redStrappy" },
-                { chatID: 14, text: "Whimsical blue flats", callback: "blueflats" }
+                { chatID: 12, text: "[Follow her]", callback: "tif8" }
             ]
         },
         {
             chatID: 12,
             speaker: "tiffany",
-            text: "Classy choice, you can never go wrong with black.",
+            text: "Ok... we gotta get the right pair of socks for you....",
             button: [
-                { chatID: 15, text: "Thanks", callback: "" }
+                { chatID: 13, text: "...", callback: "tif9" }
             ]
         },
         {
             chatID: 13,
             speaker: "tiffany",
-            text: "Ohhhh I like it! You feet are saying 'fuck me'",
+            text: "Hmmmmm, not seeing anything.....",
             button: [
-                { chatID: 15, text: "Yea, fuck me", callback: "" }
+                { chatID: 14, text: "....", callback: "tif10" }
             ]
         },
         {
             chatID: 14,
             speaker: "tiffany",
-            text: "Those shoes are cute on you!",
+            text: "Oh shit! Here we go! It's like they were made for your dress!",
             button: [
-                { chatID: 15, text: "Thanks!", callback: "" }
+                { chatID: 15, text: "What, they're pink.", callback: "" }
             ]
         },
         {
             chatID: 15,
             speaker: "tiffany",
-            text: "Now you have cute shoes we HAVE to do something about those socks! They are just terrible, like " +
-                "something a homeless man would wear! Here, pick one of these!",
+            text: "I know! Pink is your color! You'll look so girly in your new socks! You can wear the black flats I gave you. Little black flats go with everything. " +
+            "This is so much fun! I love shopping with you, it's like having a gay best friend!",
             button: [
-                { chatID: 17, text: "I like my socks....", callback: "rainbow" }
+                { chatID: 16, text: "Wait I'm not....", callback: "" }
             ]
         },
         {
             chatID: 16,
             speaker: "tiffany",
-            text: "",
+            text: "Let's go to the next store!",
             button: [
-                { chatID: 17, text: "I like my socks....", callback: "rainbow" }
+                { chatID: 17, text: "Ok.", callback: "mall" }
             ]
         },
         {
             chatID: 17,
             speaker: "tiffany",
-            text: "These are exciting! I wear my knee high rainbow socks when I'm in the mood for some crazy sex. One time " +
-                "when I was wearing them this girl thougt I was totally gay. She hit on me by licking her finger and rubbing my " +
-                "butthole! She could like a pussy like no man!",
+            text: "Ok, where to go next.....",
             button: [
-                { chatID: 18, text: "That's hot, I'll take them!", callback: "shortwhite" }
+                { chatID: 18, text: "Uhhh...", callback: "" }
             ]
         },
         {
             chatID: 18,
             speaker: "tiffany",
-            text: "These are great if you want don't want people to see your socks. Very girl next door.",
+            text: "Oh duh! Now we need some panties and bras to go with that dress.",
             button: [
-                { chatID: 19, text: "Ok", callback: "fishnet" }
+                { chatID: 19, text: "What? No we don't. No one will ever see my underwear.", callback: "" }
             ]
         },
         {
             chatID: 19,
             speaker: "tiffany",
-            text: "Fishnets say, I need a dick in me NOW! They'll look very sexy with your legs!",
+            text: "Oh honey.. panties are more than just something to cover you cock, it's about the feeling of soft silky goodness " +
+                "rubbing your fun stuff! Trust me you'll love a nice pair of panties in your new dress, the breeze is refreshing!",
             button: [
-                { chatID: 20, text: "Thanks", callback: "shoeStore" }
+                { chatID: 20, text: "Ok, let's get some panties", callback: "tifPanty1" }
             ]
         },
         {
             chatID: 20,
             speaker: "tiffany",
-            text: "So which one do you want?",
+            text: "Let's try and find someone to help us look for panties for you.",
             button: [
-                { chatID: 21, text: "Rainbow socks", callback: "pickRainbow" },
-                { chatID: 22, text: "Short white socks", callback: "pickWhitesocks" },
-                { chatID: 23, text: "Fishnets", callback: "pickFishnets" }
+                { chatID: 21, text: "What, no, no no no...", callback: "" }
             ]
         },
         {
             chatID: 21,
             speaker: "tiffany",
-            text: "Rainbow socks! That's so alternative of you!",
+            text: "Oh look, there's someone over there, I'll get her attention so she can help us find some panties for you.",
             button: [
-                { chatID: 24, text: "Thanks, I'm an alternative type of guy", callback: "" }
+                { chatID: 22, text: "Couldn't we just....", callback: "tifPanty2" }
             ]
         },
         {
             chatID: 22,
-            speaker: "tiffany",
-            text: "You are such a girl next door!",
+            speaker: "jada",
+            text: sc.n("me") + "! What the fuck are you doing here.... Are you getting panties?",
             button: [
-                { chatID: 24, text: "Thanks, but I'm still a guy", callback: "" }
+                { chatID: 23, text: sc.n("jada") + ".... I was... didn't.... what.....", callback: "tifPanty3" }
             ]
         },
         {
             chatID: 23,
             speaker: "tiffany",
-            text: "You SLUT!! I love it!",
+            text: "Yes, we're getting him a pair of panties to go with his new dress. Do you two know each other?",
             button: [
-                { chatID: 24, text: "Thanks, you're my hero!", callback: "" }
+                { chatID: 24, text: sc.n("jada") + " and I dated for a little bit in high school.", callback: "" }
             ]
         },
         {
             chatID: 24,
-            speaker: "tiffany",
-            text: "Now we need some panties and bras to go with that dress.",
+            speaker: "jada",
+            text: "I had no fucking idea you were a cross dresser. Did you wear dresses back in high school?",
             button: [
-                { chatID: 25, text: "What? No we don't. No one will ever see my underwear.", callback: "" }
+                { chatID: 25, text: "NO, This is just a costume to sneak into " + sc.n("tiffany") + "'s building", callback: "" }
             ]
         },
         {
             chatID: 25,
-            speaker: "tiffany",
-            text: "Oh honey.. panties are more than just something to cover you cock, it's about the feeling of soft silky goodness " +
-                "rubbing your fun stuff! Trust me you'll love a nice pair of panties in your new dress, the breeze is refreshing!",
+            speaker: "jada",
+            text: "You don't have to fucking lie to me " + sc.n("me") + ". I guess I should've known you liked wearing dresses. " +
+                "You were always really girly in school",
             button: [
-                { chatID: 26, text: "Ok, let's get some panties", callback: "tifPanty1" }
+                { chatID: 26, text: "I wasn't into cross dressing. Really it's just to sneak into her building.", callback: "" }
             ]
         },
         {
             chatID: 26,
             speaker: "tiffany",
-            text: "Let's try and find someone to help us look for panties for you.",
+            text: "He's so cute when he's flustered! So can you help us find some cute panties for this little guy?",
             button: [
-                { chatID: 27, text: "What, no, no no no...", callback: "" }
+                { chatID: 27, text: "....", callback: "" }
             ]
         },
         {
             chatID: 27,
-            speaker: "tiffany",
-            text: "Oh look, there's someone over there, I'll get her attention so she can help us find some panties for you.",
+            speaker: "jada",
+            text: "Anything for " + sc.n("me") + ". I have a few that would look really cute with that little butt of his! " +
+                "Lets go back to the changing room so he can try them on. Everyone is going to get a kick out of this when they " +
+            "find out!",
             button: [
-                { chatID: 28, text: "Couldn't we just....", callback: "tifPanty2" }
+                { chatID: 28, text: "....", callback: "changeRoom1" }
             ]
         },
         {
             chatID: 28,
-            speaker: "jada",
-            text: sc.n("me") + "! What the fuck are you doing here.... in a dress?",
+            speaker: "tiffany",
+            text: "Thanks " + sc.n("jada") + " for picking out some pretty panties for " + sc.n("me") + "! He's going to look so cute in one of these!",
             button: [
-                { chatID: 29, text: sc.n("jada") + ".... I was... didn't.... what.....", callback: "tifPanty3" }
+                { chatID: 29, text: "....", callback: "" }
             ]
         },
         {
             chatID: 29,
-            speaker: "tiffany",
-            text: "We're getting him a pair of panties to go with his new dress. Do you two know each other?",
+            speaker: "jada",
+            text: "Oh yea. He really is a cutie! I bet you'll look sexy in panties! I've got to help some other customers, I'll come back and check on you.",
             button: [
-                { chatID: 30, text: sc.n("jada") + " and I dated for a little bit in high school.", callback: "" }
+                { chatID: 30, text: "ok, later " + sc.n("jada"), callback: "changeRoom3b" }
             ]
         },
         {
             chatID: 30,
-            speaker: "jada",
-            text: "I had no fucking idea you were a cross dresser. Did you wear dresses when we dated.",
+            speaker: "tiffany",
+            text: "Ok mister, time to strip so we can see you in your new panties. ",
             button: [
-                { chatID: 31, text: "NO, This is just a costume to sneak into " + sc.n("tiffany") + "'s building", callback: "" }
+                { chatID: 31, text: "....", callback: "changeRoom3s" }
             ]
         },
         {
             chatID: 31,
-            speaker: "jada",
-            text: "You don't have to fucking lie to me " + sc.n("me") + ". I guess I should've known when we were dating that " +
-                "you were a fucking wearing dresses. I really wish you would have told me, it expains so much. ",
+            speaker: "tiffany",
+            text: "Awww is that the chastity device " + sc.n("candy") + " sold you? It's so cute you still wear that. I'm going to take it off so I can " +
+            "see your cock outline in your new panties. I love a good cock outline, it's so sexy. ",
             button: [
-                { chatID: 32, text: "I wasn't into cross dressing. Really it's just to sneak into her building.", callback: "" }
+                { chatID: 32, text: "Oh, but I....", callback: "changeRoom3t" }
             ]
         },
         {
             chatID: 32,
             speaker: "tiffany",
-            text: "He's so cute when he's flustered! So can you help us find some cute panties for this little guy?",
+            text: "Hahaha, it just slides right off! " + sc.n("missy") + " will need to hold your key for you!",
             button: [
-                { chatID: 33, text: "....", callback: "" }
+                { chatID: 34, text: "Well....", callback: "changeRoom3b" }
             ]
         },
         {
             chatID: 33,
-            speaker: "jada",
-            text: "Anything for " + sc.n("me") + ". I have a few that would look really cute with that little butt of his! " +
-                "Lets go back to the changing room so he can try them on.",
+            speaker: "tiffany",
+            text: "That's not a bad size cock. It's nice, not huge, but not tiny either. I like it.",
             button: [
-                { chatID: 34, text: "....", callback: "changeRoom1" }
+                { chatID: 34, text: "Thanks?", callback: "changeRoom3b" }
             ]
         },
         {
             chatID: 34,
-            speaker: "tiffany",
-            text: "Thanks " + sc.n("jada") + " for picking out some pretty panties for " + sc.n("me") + "! He's going to look so cute in one of these!",
+            speaker: "jada",
+            text: "So lets get to those panties mister! I wonder what " + sc.n("jada") + " brought us...",
             button: [
-                { chatID: 35, text: "....", callback: "" }
+                { chatID: 35, text: "...", callback: "changeRoom4" }
             ]
         },
         {
             chatID: 35,
-            speaker: "jada",
-            text: "Do you mind if I get a quick peek of " + sc.n("me") + "'s giant fucking cock? I do miss putting that monster cock inside me, " +
-                "most boys I let fuck are a small dick losers.",
+            speaker: "tiffany",
+            text: "It's panty time!!! This first pair " + sc.n("jada") + " got for us is the classic black thong. It says " +
+                "I'm a classy girl so put a condom on before you fuck me.",
             button: [
-                { chatID: 36, text: "....", callback: "" }
+                { chatID: 36, text: "...", callback: "changeRoom5" }
             ]
         },
         {
             chatID: 36,
             speaker: "tiffany",
-            text: "Oh of course! Come on in!",
+            text: "This second pair is a slutty pink G-string panties. These say you want a bunch of big strong men " +
+                "savagely penetrate my tender face and asshole with their giant throbbing cocks. ",
             button: [
-                { chatID: 37, text: "....", callback: "changeRoom2" }
+                { chatID: 37, text: "...", callback: "changeRoom6" }
             ]
         },
         {
             chatID: 37,
-            speaker: "jada",
-            text: "Ok, fucker, stip of that dress! ",
+            speaker: "tiffany",
+            text: "This last pair of panties let everyone know that you're cute, playful, and so very innocent. So which " +
+                "pair do you want?",
             button: [
-                { chatID: 40, text: "Oh yea!", callback: "changeRoom3" },
-                { chatID: 38, text: "What, I'm not going to strip!", callback: "changeRoom2a" }
+                { chatID: 38, text: "The classy black panties", callback: "pantiesBlack" },
+                { chatID: 39, text: "Slutty pink G-string", callback: "pantiesPink" },
+                { chatID: 40, text: "Playful piranha panties", callback: "pantiesFish" }
             ]
         },
         {
             chatID: 38,
             speaker: "tiffany",
-            text: "Oh, you're going to keep that moster hidden from your old girlfriend? ",
+            text: "I never would have taken you as a classy girl. They'll look great with a pair of black high heels!",
             button: [
-                { chatID: 39, text: "Well....", callback: "" }
+                { chatID: 41, text: "I'm a classy girl", callback: "" }
             ]
         },
         {
             chatID: 39,
-            speaker: "jada",
-            text: "Oh c'mon " + sc.n("me") + "! Just 'cause you dress like a bitch doesn't mean you have to act like a bitch",
+            speaker: "tiffany",
+            text: "Ahahaha, I knew you were an butt slut! Nothing shows off your pretty butthole like a good thong!",
             button: [
-                { chatID: 40, text: "Does a bitch have a cock this big?", callback: "changeRoom3" },
-                { chatID: 54, text: "I am a bitch, a big crossdressing bitch", callback: "changeRoom3a" }
+                { chatID: 41, text: "I'm such a butt slut", callback: "" }
             ]
         },
         {
             chatID: 40,
-            speaker: "jada",
-            text: "Fuck I miss riding that thing! Oh well I got to get back to work before my boss shits herself. ",
+            speaker: "tiffany",
+            text: "Ohhh that's so playful I love it. You'll make a great play toy!",
             button: [
-                { chatID: 41, text: "...", callback: "" }
+                { chatID: 41, text: "Thanks", callback: "" }
             ]
         },
         {
             chatID: 41,
-            speaker: "tiffany",
-            text: "Thanks for your help " + sc.n("jada") + "!",
+            speaker: "jada",
+            text: "Everything ok in there? Do you need any help?",
             button: [
-                { chatID: 42, text: "See ya " + sc.n("jada"), callback: "changeRoom4" }
+                { chatID: 42, text: "What.. Yes!, I mean no! We're good, no help", callback: "" }
             ]
         },
         {
             chatID: 42,
             speaker: "tiffany",
-            text: "It's panty time!!! This first pair " + sc.n("jada") + " got for us is the classic black thong. It says " +
-                "I'm a classy girl so put a condom on before you fuck me.",
+            text: "Oh hay " + sc.n("jada") + " c'mon in. I need your opinion on these new panties. ",
             button: [
-                { chatID: 43, text: "...", callback: "changeRoom5" }
+                { chatID: 43, text: "Wha... no, no we don't", callback: "changeRoom6b" }
             ]
         },
         {
             chatID: 43,
-            speaker: "tiffany",
-            text: "This second pair is a slutty pink G-string panties. These say you want a bunch of big strong men " +
-                "savagely penetrate my tender face and asshole with their giant throbbing cocks. ",
+            speaker: "jada",
+            text: "Holy shit, you're naked, like totally naked! ",
             button: [
-                { chatID: 44, text: "...", callback: "changeRoom6" }
+                { chatID: 44, text: "I said not to come in!", callback: "" }
             ]
         },
         {
             chatID: 44,
             speaker: "tiffany",
-            text: "This last pair of panties let everyone know that you're cute, playful, and so very innocent. So which " +
-                "pair do you want?",
+            text: "Relax " + sc.n("me") + ". She works here, she's a professional. We need to get her option on your new panties. Try them on for us and " +
+            "give us a fashion show!",
             button: [
-                { chatID: 45, text: "The classy black panties", callback: "pantiesBlack" },
-                { chatID: 46, text: "Slutty pink G-string", callback: "pantiesPink" },
-                { chatID: 47, text: "Playful piranha panties", callback: "pantiesFish" }
+                { chatID: 45, text: "Oh um... sure", callback: "changeRoom6c" },
+                { chatID: 68, text: "No! This is too much", callback: "changeRoom6a" }
             ]
         },
         {
             chatID: 45,
-            speaker: "tiffany",
-            text: "That a nice safe pair. You know... " + sc.n("jada") + " is right, you do have a great cock!",
+            speaker: "jada",
+            text: "I fucking love it! Let me take a picture! I need to share this with everyone!",
             button: [
-                { chatID: 48, text: "Really?", callback: "" }
+                { chatID: 46, text: "What.. NO, no way, not a chance", callback: "" }
             ]
         },
         {
             chatID: 46,
             speaker: "tiffany",
-            text: "You are such a slutty girl! A girl with a giant cock! " + sc.n("jada") + " was right it really is a " +
-                "great cock!",
+            text: "Oh stop it. Of course you can take a picture " + sc.n("jada") + ". You're such a pretty girl, you need to share that!",
             button: [
-                { chatID: 48, text: "Really?", callback: "" }
+                { chatID: -1, text: "Why does no one listen to me?", callback: "selfie" }
             ]
         },
         {
             chatID: 47,
-            speaker: "tiffany",
-            text: "Hahaha these panties are so emasculating, I didn't think you would pick them! You know they would look " + 
-                "really good over that giant cock of yours. " + sc.n("jada") + " was right, that is a beautiful cock",
+            speaker: "jada",
+            text: "I'm going to send you a pic! Check your phone sometime. I've got to help other customers before my boss get pissed off. " +
+            sc.n("tiffany") + " you fuckin' rock, later " + sc.n("me") + ". ",
             button: [
-                { chatID: 48, text: "Really?", callback: "" }
+                { chatID: 48, text: "Oh, don't share that photo!!!", callback: "changeRoom6a" }
             ]
         },
         {
             chatID: 48,
             speaker: "tiffany",
-            text: "Oh god yea. That's the most impressive cock I've seen from a boy in a dress! I need a taste!",
+            text: "You know playing dress up makes me soooo horny! I could really use some cock right now!",
             button: [
                 { chatID: 50, text: "Oh god yes! I can't beleive this is happening!!", callback: "changeRoom7" },
                 { chatID: 49, text: sc.n("tiffany") + " we can't do that in here, we'll get caught!", callback: "changeRoom6a" }
@@ -834,6 +816,14 @@ room403.chat = function (chatID) {
             text: "So this is our new home. " + sc.n("candy") + " picked out the color, that's why it's so pink. Let's go in.",
             button: [
                 { chatID: -1, text: "[Enter you're new home]", callback: "followTif" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "tiffany",
+            text: "Such a party pooper! ",
+            button: [
+                { chatID: 65, text: "I know...", callback: "changeRoomDressed" }
             ]
         }
     ];

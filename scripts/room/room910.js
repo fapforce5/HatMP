@@ -76,7 +76,7 @@ room910.chat = function (chatID) {
         },
         {
             chatID: 3,
-            speaker: "me",
+            speaker: "govlady",
             text: "To come later release. ",
             button: []
         },

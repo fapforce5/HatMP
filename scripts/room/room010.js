@@ -2,13 +2,28 @@
 var room10 = {};
 room10.pass = "";
 room10.main = function () {
+
     if (sc.checkevent("me", 3)) {
         sc.setstep("tiffany", 10);
         chat(8, 10);
     }
-    else if (g.hourBetween(6, 9) && !sc.checkevent("lola", -1) && cl.hasClothing("panties", "w")) {
+    else if (g.internal === "room10pass" || g.internal === "room10Underwear") {
         if (g.internal === "room10Underwear") {
-            if (cl.c.panties !== "w") {
+            if (cl.c.shirt === null && cl.c.pants === null && cl.c.panties === null && cl.c.pj === null) {
+                nav.bg("10_mainchar/bedroomStand.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "wardrobe",
+                    "left": 1684,
+                    "top": 230,
+                    "width": 236,
+                    "height": 602,
+                    "title": "Wardrobe",
+                    "image": "10_mainchar/10_wardrobe.png"
+                }, 10);
+                chat(34, 10);
+            }
+            else if (cl.c.panties !== "w") {
                 nav.bg("10_mainchar/bedroomStand.jpg");
                 nav.button({
                     "type": "btn",
@@ -298,15 +313,14 @@ room10.chatcatch = function (callback) {
         case "showerOff":
             cl.remove("panties", "u");
             cl.remove("panties", "n");
-            cl.c.shoes = "w";
-            cl.c.socks = "w";
-            cl.c.pants = "j";
-            cl.c.panties = "w";
-            cl.c.shirt = "g";
             pic.add("pantyThief");
             sc.setstep("lola", -1);
-            cl.display();
             char.addtime(60);
+            g.internal = "";
+            g.pass = "";
+            $.each(cl.saveOutfit, function (i, v) {
+                cl.saveOutfit[i].panties = "w";
+            });
             nav.room(10);
             break;
         default:
@@ -588,6 +602,22 @@ room10.chat = function(chatID){
             text: "Ok, we've go to run. You can go wash up now. Don't take any more of my panties! ",
             button: [
                 { chatID: -1, text: "ok ", callback: "showerOff" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "eva",
+            text: "UGH You pervert! We asked for your underwear, not your penis! ",
+            button: [
+                { chatID: 35, text: "[Smile]", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "lola",
+            text: "Oh my, there's subtler ways to get us to see you naked.",
+            button: [
+                { chatID: -1, text: "Yes, but this is funny", callback: "" }
             ]
         }
     ];

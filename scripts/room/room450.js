@@ -146,6 +146,10 @@ room450.btnclick = function (name) {
             char.room(460);
             break;
         case "sleep":
+            chat(14, 450);
+            
+            break;
+        case "":
             char.room(456);
             break;
         case "cult":
@@ -212,6 +216,14 @@ room450.chatcatch = function(callback){
         case "cultLeave2":
             char.addtime(60);
             nav.killbutton("cult1");
+            break;
+        case "redress":
+            cl.c.shirt = "g";
+            cl.c.pants = "j";
+            cl.c.shoes = "w";
+            cl.c.socks = "w";
+            cl.display();
+            char.room(456);
             break;
         default:
             break;
@@ -329,12 +341,20 @@ room450.chat = function(chatID){
             ]
         },
         {
-            chatID: 12,
+            chatID: 13,
             speaker: "cultjgirl",
             text: "Hello again friend. Meet us naked, in the forest so we can share our love. Only the nude body can " +
                 "can receive the gifts of our creator. ",
             button: [
                 { chatID: -1, text: "Yea, sure", callback: "cultLeave2" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "me",
+            text: "Better wear my normal clothes, it's cold out here..",
+            button: [
+                { chatID: -1, text: "...", callback: "redress" }
             ]
         },
     ];

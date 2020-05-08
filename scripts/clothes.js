@@ -2,23 +2,28 @@
 
 cl.c = {
     leg: 0, chest: 0, cock: 0, butthole: 0.0,
-    lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
-    necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
+    necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null, 
+    fingernail: null, toenail: null,
+    cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false
 };
 
 cl.init = function () {
     cl.c = {
         leg: 0, chest: 0, cock: 0, butthole: 0.0,
-        lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+        makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
-        necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
+        necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
+        fingernail: null, toenail: null,
+        cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false
     };
 };
 
 cl.set = [
+    { entry: -1, name: "Chubby" },
     { entry: 0, name: "Male" },
     { entry: 1, name: "Androgynous" },
     { entry: 2, name: "Cute" },
@@ -26,16 +31,6 @@ cl.set = [
     { entry: 4, name: "Cock Whore" }
 ];
 
-cl.hairColor = [
-    { color: "black", step: 0 },
-    { color: "auburn", step: 0 },
-    { color: "blond", step: 0 },
-    { color: "red", step: 0 },
-    { color: "pink", step: 1 },
-    { color: "rainbow", step: 1 }
-];
-
-cl.hairStyle = ["straight", "wavy", "pig", "leia"]; 
 
 cl.cTemp = {
     leg: null, chest: null, cock: null, lips: null, eyes: "brown", hairLength: null, hairColor: null, bodyhair: null, wig: null,
@@ -76,8 +71,9 @@ cl.list = [
 
     { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 3, price: 175 },
     { type: "dress", name: "s", display: "Summer Dress", img: "dress_summer.png", sex: "f", inv: false, daring: 2, price: 90 },
-    { type: "dress", name: "p", display: "Purple Dress", img: "dress_purple.png", sex: "f", inv: false, daring: 2, price: 90 },
+    { type: "dress", name: "p", display: "Purple Dress", img: "dress_purple.png", sex: "f", inv: false, daring: 3, price: 90 },
     { type: "dress", name: "a", display: "Alice Dress", img: "dress_alice.png", sex: "f", inv: false, daring: 2, price: 90 },
+    { type: "dress", name: "u", display: "Ugly Dress", img: "dress_ugly.png", sex: "f", inv: false, daring: 1, price: 30 },
     
     { type: "swimsuit", name: "red", display: "Red Swimsuit", img: "swimsuitRed.png", sex: "f", inv: false, daring: 2, price: 125 },
 
@@ -93,9 +89,10 @@ cl.list = [
 
     { type: "socks", name: "w", display: "Sweat Socks", img: "socks_white.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "socks", name: "b", display: "Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
-    { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 3, price: 75 },
+    { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 4, price: 75 },
     { type: "socks", name: "s", display: "Little White Socks", img: "socks_shortWhite.png", sex: "f", inv: false, daring: 2, price: 24 },
-    { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 2, price: 48 },
+    { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 3, price: 48 },
+    { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 2, price: 36 },
 
     { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "m", inv: false, daring: 0, price: -1 },
 
@@ -116,6 +113,10 @@ cl.list = [
 
     { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 }
 ];
+
+for (var q = 0; q < cl.list.length; q++) {
+    cl.list[q].inv = true;
+}
 
 cl.add = function (type, name) {
     var i;
@@ -375,6 +376,21 @@ cl.hasoutfit = function (type) {
     return retMissing;
 };
 
+cl.hairColor = [
+    { color: "black", step: 0 },
+    { color: "auburn", step: 0 },
+    { color: "blond", step: 0 },
+    { color: "red", step: 0 },
+    { color: "pink", step: 1 },
+    { color: "rainbow", step: 1 }
+];
+
+cl.hairStyle = ["straight", "wavy", "pig", "leia"]; 
+
+cl.makup = [
+    { name: "n", image: "body_head.png" }
+];
+
 cl.bodyhair = [
     { name: "longHair", dt: 7, image: "hairy_long.png", display: "Full Body Hair" },
     { name: "shortHair", dt: 4, image: "hairy_short.png", display: "Short Body Hair" }
@@ -569,7 +585,15 @@ cl.dressTop = [
     { name: "ps", chest: 3, image: "dress_ps_0.png", back: "dress_ps_0_back.png" },
     { name: "ps", chest: 2, image: "dress_ps_0.png", back: "dress_ps_0_back.png" },
     { name: "ps", chest: 1, image: "dress_ps_0.png", back: "dress_ps_0_back.png" },
-    { name: "ps", chest: 0, image: "dress_ps_0.png", back: "dress_ps_0_back.png" }
+    { name: "ps", chest: 0, image: "dress_ps_0.png", back: "dress_ps_0_back.png" },
+
+    { name: "u", chest: 6, image: "dress_u_t_6.png", back: "dress_u_t_6_back.png" },
+    { name: "u", chest: 5, image: "dress_u_t_5.png", back: "dress_u_t_5_back.png" },
+    { name: "u", chest: 4, image: "dress_u_t_4.png", back: "dress_u_t_4_back.png" },
+    { name: "u", chest: 3, image: "dress_u_t_3.png", back: "dress_u_t_2_back.png" },
+    { name: "u", chest: 2, image: "dress_u_t_2.png", back: "dress_u_t_2_back.png" },
+    { name: "u", chest: 1, image: "dress_u_t_0.png", back: "dress_u_t_0_back.png" },
+    { name: "u", chest: 0, image: "dress_u_t_0.png", back: "dress_u_t_0_back.png" }
 
 ];
 
@@ -596,7 +620,13 @@ cl.dressBottom = [
     { name: "ps", leg: 3, image: null, back: null },
     { name: "ps", leg: 2, image: null, back: null },
     { name: "ps", leg: 1, image: null, back: null },
-    { name: "ps", leg: 0, image: null, back: null }
+    { name: "ps", leg: 0, image: null, back: null },
+
+    { name: "u", leg: 4, image: "dress_u_b_0.png", back: "dress_u_b_4_back.png" },
+    { name: "u", leg: 3, image: "dress_u_b_0.png", back: "dress_u_b_3_back.png" },
+    { name: "u", leg: 2, image: "dress_u_b_0.png", back: "dress_u_b_0_back.png" },
+    { name: "u", leg: 1, image: "dress_u_b_0.png", back: "dress_u_b_0_back.png" },
+    { name: "u", leg: 0, image: "dress_u_b_0.png", back: "dress_u_b_0_back.png" },
 ];
 
 cl.swimsuitTop = [
@@ -629,7 +659,8 @@ cl.socks = [
     { name: "s", image: "socks_s.png", back: "socks_s_back.png" },
     { name: "w", image: "socks_w.png", back: "socks_w_back.png" },
     { name: "b", image: "socks_b.png", back: "socks_b_back.png" },
-    { name: "r", image: "socks_r.png", back: "socks_r_back.png" }
+    { name: "r", image: "socks_r.png", back: "socks_r_back.png" },
+    { name: "p", image: "socks_p.png", back: "socks_p_back.png" }
 ];
 
 cl.shoes = [
@@ -688,11 +719,11 @@ cl.panties = [
     { name: "q", leg: 1, pussy: "panty_q_1_v.png", cock: "panty_q_1.png", back: "panty_q_0_back.png", pPussy: "panty_q_1_v_pee.png", pCock: "panty_q_1_c_pee.png", pBack: "panty_q_0_back_pee.png" },
     { name: "q", leg: 0, pussy: "panty_q_0_v.png", cock: "panty_q_0.png", back: "panty_q_0_back.png", pPussy: "panty_q_0_v_pee.png", pCock: "panty_q_0_c_pee.png", pBack: "panty_q_0_back_pee.png" },
 
-    { name: "h", leg: 4, pussy: "panty_h_4_v.png", cock: "panty_h_4.png", back: "panty_h_4_back.png", pPussy: "panty_h_4_v_pee.png", pCock: "panty_h_4_c_pee.png", pBack: "panty_h_4_back_pee.png" },
-    { name: "h", leg: 3, pussy: "panty_h_3_v.png", cock: "panty_h_3.png", back: "panty_h_3_back.png", pPussy: "panty_h_3_v_pee.png", pCock: "panty_h_3_c_pee.png", pBack: "panty_h_3_back_pee.png" },
-    { name: "h", leg: 2, pussy: "panty_h_1_v.png", cock: "panty_h_1.png", back: "panty_h_2_back.png", pPussy: "panty_h_1_v_pee.png", pCock: "panty_h_1_c_pee.png", pBack: "panty_h_2_back_pee.png" },
-    { name: "h", leg: 1, pussy: "panty_h_1_v.png", cock: "panty_h_1.png", back: "panty_h_0_back.png", pPussy: "panty_h_1_v_pee.png", pCock: "panty_h_1_c_pee.png", pBack: "panty_h_0_back_pee.png" },
-    { name: "h", leg: 0, pussy: "panty_h_0_v.png", cock: "panty_h_0.png", back: "panty_h_0_back.png", pPussy: "panty_h_0_v_pee.png", pCock: "panty_h_0_c_pee.png", pBack: "panty_h_0_back_pee.png" }
+    { name: "h", leg: 4, pussy: "panty_h_4_v.png", cock: "panty_h_4.png", back: "panty_q_4_back.png", pPussy: "panty_h_4_v_pee.png", pCock: "panty_h_4_c_pee.png", pBack: "panty_q_4_back_pee.png" },
+    { name: "h", leg: 3, pussy: "panty_h_3_v.png", cock: "panty_h_3.png", back: "panty_q_3_back.png", pPussy: "panty_h_3_v_pee.png", pCock: "panty_h_3_c_pee.png", pBack: "panty_q_3_back_pee.png" },
+    { name: "h", leg: 2, pussy: "panty_h_1_v.png", cock: "panty_h_1.png", back: "panty_q_2_back.png", pPussy: "panty_h_1_v_pee.png", pCock: "panty_h_1_c_pee.png", pBack: "panty_q_2_back_pee.png" },
+    { name: "h", leg: 1, pussy: "panty_h_1_v.png", cock: "panty_h_1.png", back: "panty_q_0_back.png", pPussy: "panty_h_1_v_pee.png", pCock: "panty_h_1_c_pee.png", pBack: "panty_q_0_back_pee.png" },
+    { name: "h", leg: 0, pussy: "panty_h_0_v.png", cock: "panty_h_0.png", back: "panty_q_0_back.png", pPussy: "panty_h_0_v_pee.png", pCock: "panty_h_0_c_pee.png", pBack: "panty_q_0_back_pee.png" }
 
 ];
 
@@ -787,10 +818,11 @@ cl.displayChar = function (ratio, top, left, back) {
     top = top * g.ratio;
     left = left * g.ratio;
     var frontChange = false;
-    if (g.back !== back) {
-        $('#char_turnaround').click();
-        frontChange = true;
-    }
+    console.log(back);
+    //if (g.back !== back) {
+    //    $('#char_turnaround').click();
+    //    frontChange = true;
+    //}
 
     $('.char-layer').each(function () {
         thisImg = $(this).find('img').attr('src');
@@ -801,8 +833,8 @@ cl.displayChar = function (ratio, top, left, back) {
         }
     });
 
-    if (frontChange)
-        $('#char_turnaround').click();
+    //if (frontChange)
+    //    $('#char_turnaround').click();
 };
 
 cl.getBodyHair = function () {
@@ -817,7 +849,7 @@ cl.getBodyHair = function () {
 cl.display = function () {
     var thisHair;
     $('.bladder-box').remove();
-    if (g.altview) {
+    if (g.tview === "p" || g.tview === "a") {
         $('#char-legs').html("");
         $('#char-chest').html("");
         $('#char-head').html("");
@@ -836,35 +868,37 @@ cl.display = function () {
         $('#char-accHead').html("");
         $('#char-hair').html("");
         $('#char-buttplug').html("");
-        if (g.back) {
-            var thisButthole = Math.floor(cl.c.butthole);
-            if (thisButthole > 3)
-                thisButthole = 3;
-            cl.subDisplay("char-legs", "butthole" + thisButthole + ".png");
-        }
-        else {
-            var thisBladdeer = g.get("bladder");
-            cl.subDisplay("char-legs", "xray.png");
-            $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(40 * thisBladdeer, 40, 270 + (thisBladdeer * -40), 140) + ' position:absolute; background:#eadb3f; z-index:13;"></div>');
-            cl.subDisplay("char-head", "xray_top.png");
-        }
+    }
+    if (g.tview === "a") {
+        var thisButthole = Math.floor(cl.c.butthole);
+        if (thisButthole > 3)
+            thisButthole = 3;
+        cl.subDisplay("char-legs", "butthole" + thisButthole + ".png");
+    }
+    else if (g.tview === "p") {
+        var thisBladdeer = g.get("bladder");
+        cl.subDisplay("char-legs", "xray.png");
+        $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(40 * thisBladdeer, 40, 270 + (thisBladdeer * -40), 140) + ' position:absolute; background:#eadb3f; z-index:13;"></div>');
+        cl.subDisplay("char-head", "xray_top.png");
     }
     else {
+        var cback = g.tview === "b";
+
         //set Legs
-        cl.subDisplay("char-legs", "leg_" + cl.c.leg + (g.back ? "_back" : "") + ".png");
+        cl.subDisplay("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
         //set Chest
-        cl.subDisplay("char-chest", "top_" + cl.c.chest + (g.back ? "_back" : "") + ".png");
+        cl.subDisplay("char-chest", "top_" + cl.c.chest + (cback ? "_back" : "") + ".png");
         //set mouth
         cl.cWhere(cl.lips, cl.c.lips, "char-lips");
         //set eyes
-        cl.subDisplay("char-eyes", g.back ? null : "eyes_" + cl.c.eyes + ".png");
+        cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + ".png");
         //set cock
         if (cl.c.chastity === null)
-            cl.subDisplay("char-cock", g.back ? null : "cock_" + cl.c.cock + ".png");
+            cl.subDisplay("char-cock", cback ? null : "cock_" + cl.c.cock + ".png");
         else {
             $.each(cl.chastity, function (i, v) {
                 if (v.name === cl.c.chastity) {
-                    cl.subDisplay("char-cock", g.back ? null : v.image);
+                    cl.subDisplay("char-cock", cback ? null : v.image);
                     return false;
                 }
             });
@@ -872,7 +906,7 @@ cl.display = function () {
         if (cl.c.buttplug !== null) {
             $.each(cl.buttplug, function (i, v) {
                 if (v.name === cl.c.buttplug) {
-                    cl.subDisplay("char-buttplug", !g.back ? null : v.image);
+                    cl.subDisplay("char-buttplug", !cback ? null : v.image);
                     return false;
                 }
             });
@@ -881,19 +915,19 @@ cl.display = function () {
             cl.subDisplay("char-buttplug", null);
         //set bodyhair
         var hairy = cl.getBodyHair();
-        if (hairy === null || g.back)
+        if (hairy === null || cback)
             $('#char-bodyHair').html('');
         else
             cl.cWhere(cl.bodyhair, hairy, "char-bodyHair");
 
         //set Head
-        cl.subDisplay("char-head", g.back ? "body_head_back.png" : "body_head.png");
+        cl.subDisplay("char-head", cback ? "body_head_back.png" : "body_head.png");
 
         //set hair
         if (cl.c.wig !== null) {
             $.each(cl.wig, function (i, v) {
                 if (v.name === cl.c.wig)
-                    cl.subDisplay("char-hair", g.back ? v.back : v.image);
+                    cl.subDisplay("char-hair", cback ? v.back : v.image);
             });
         }
         else {
@@ -901,15 +935,15 @@ cl.display = function () {
                 cl.subDisplay("char-hair", null);
             else if (cl.c.hairLength < 2) {
                 thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
-                cl.subDisplay("char-hair", g.back ? thisHair + "_back.png" : thisHair + ".png");
+                cl.subDisplay("char-hair", cback ? thisHair + "_back.png" : thisHair + ".png");
             }
             else if (cl.c.hairStyle === "leia") {
                 thisHair = "hair_2_" + cl.c.hairColor + "_leia";
-                cl.subDisplay("char-hair", g.back ? thisHair + "_back.png" : thisHair + ".png");
+                cl.subDisplay("char-hair", cback ? thisHair + "_back.png" : thisHair + ".png");
             }
             else {
                 thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
-                cl.subDisplay("char-hair", g.back ? thisHair + "_back.png" : thisHair + ".png");
+                cl.subDisplay("char-hair", cback ? thisHair + "_back.png" : thisHair + ".png");
             }
         }
 
@@ -921,9 +955,9 @@ cl.display = function () {
             $.each(cl.panties, function (i, v) {
                 if (v.name === cl.c.panties && v.leg === cl.c.leg) {
                     if (cl.c.cock < 5)
-                        cl.subDisplay("char-panties", g.back ? v.back : v.cock);
+                        cl.subDisplay("char-panties", cback ? v.back : v.cock);
                     else
-                        cl.subDisplay("char-panties", g.back ? v.back : v.pussy);
+                        cl.subDisplay("char-panties", cback ? v.back : v.pussy);
                     return false;
                 }
             });
@@ -939,7 +973,7 @@ cl.display = function () {
             }
             $.each(cl.pants, function (i, v) {
                 if (v.name === cl.c.pants && v.leg === cl.c.leg) {
-                    cl.subDisplay("char-pants", g.back ? v.back : v.image);
+                    cl.subDisplay("char-pants", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -951,7 +985,7 @@ cl.display = function () {
             cl.c.pj = null;
             $.each(cl.bra, function (i, v) {
                 if (v.name === cl.c.bra && v.chest === cl.c.chest) {
-                    cl.subDisplay("char-bra", g.back ? v.back : v.image);
+                    cl.subDisplay("char-bra", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -963,7 +997,7 @@ cl.display = function () {
             cl.c.pj = null;
             $.each(cl.shirt, function (i, v) {
                 if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
-                    cl.subDisplay("char-shirt", g.back ? v.back : v.image);
+                    cl.subDisplay("char-shirt", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -981,13 +1015,13 @@ cl.display = function () {
             cl.subDisplay("char-pants", null);
             $.each(cl.dressTop, function (i, v) {
                 if (v.name === cl.c.dress && v.chest === cl.c.chest) {
-                    cl.subDisplay("char-shirt", g.back ? v.back : v.image);
+                    cl.subDisplay("char-shirt", cback ? v.back : v.image);
                     return false;
                 }
             });
             $.each(cl.dressBottom, function (i, v) {
                 if (v.name === cl.c.dress && v.leg === cl.c.leg) {
-                    cl.subDisplay("char-pants", g.back ? v.back : v.image);
+                    cl.subDisplay("char-pants", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -1006,13 +1040,13 @@ cl.display = function () {
             cl.subDisplay("char-pants", null);
             $.each(cl.swimsuitTop, function (i, v) {
                 if (v.name === cl.c.swimsuit && v.chest === cl.c.chest) {
-                    cl.subDisplay("char-shirt", g.back ? v.back : v.image);
+                    cl.subDisplay("char-shirt", cback ? v.back : v.image);
                     return false;
                 }
             });
             $.each(cl.swimsuitBottom, function (i, v) {
                 if (v.name === cl.c.swimsuit && v.leg === cl.c.leg && v.cock === cl.c.cock) {
-                    cl.subDisplay("char-pants", g.back ? v.back : v.image);
+                    cl.subDisplay("char-pants", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -1034,13 +1068,13 @@ cl.display = function () {
             cl.subDisplay("char-pants", null);
             $.each(cl.pjTop, function (i, v) {
                 if (v.name === cl.c.pj && v.chest === cl.c.chest) {
-                    cl.subDisplay("char-shirt", g.back ? v.back : v.image);
+                    cl.subDisplay("char-shirt", cback ? v.back : v.image);
                     return false;
                 }
             });
             $.each(cl.pjBottom, function (i, v) {
                 if (v.name === cl.c.pj && v.leg === cl.c.leg) {
-                    cl.subDisplay("char-pants", g.back ? v.back : v.image);
+                    cl.subDisplay("char-pants", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -1051,7 +1085,7 @@ cl.display = function () {
             cl.c.pj = null;
             $.each(cl.socks, function (i, v) {
                 if (v.name === cl.c.socks) {
-                    cl.subDisplay("char-socks", g.back ? v.back : v.image);
+                    cl.subDisplay("char-socks", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -1063,7 +1097,7 @@ cl.display = function () {
         if (cl.c.shoes !== null) {
             $.each(cl.shoes, function (i, v) {
                 if (v.name === cl.c.shoes) {
-                    cl.subDisplay("char-shoes", g.back ? v.back : v.image);
+                    cl.subDisplay("char-shoes", cback ? v.back : v.image);
                     return false;
                 }
             });
@@ -1077,7 +1111,7 @@ cl.display = function () {
         $.each(cl.c.accessories, function (i, v) {
             $.each(cl.accessories, function (j, u) {
                 if (v === u.name) {
-                    var thisAccImg = g.back ? u.back : u.image;
+                    var thisAccImg = cback ? u.back : u.image;
 
                     if (u.type === "head" && thisAccImg !== null) {
                         $('#char-accHead').append('<img src="./images/mainChar/' + thisAccImg + '" />');
@@ -1091,13 +1125,15 @@ cl.display = function () {
         });
 
         cl.cockDisplay();
+        cl.energydisplay();
     }
 };
 
 cl.cWhere = function (thisArray, entry, id) {
+    var cback = g.tview === "b";
     $.each(thisArray, function (i, v) {
         if (v.name === entry) {
-            cl.subDisplay(id, g.back ? v.back : v.image);
+            cl.subDisplay(id, cback ? v.back : v.image);
             return false;
         }
     });
@@ -1334,6 +1370,23 @@ cl.cockDisplay = function () {
     });
 };
 
+cl.energydisplay = function () {
+    var tempEnergy = g.get("energy");
+    var firstHalf = cl.appearance();
+    var secondHalf = "0";
+
+    if (tempEnergy < 25)
+        secondHalf = "0";
+    else if (tempEnergy < 50)
+        secondHalf = "25";
+    else if (tempEnergy < 75)
+        secondHalf = "50";
+    else
+        secondHalf = "75";
+
+    $("#char_charDisplay").html('<img src="./images/stat/' + firstHalf + '_' + secondHalf + '.png" style="' + g.makeCss(150, 150, 0, 0) + ' margin-left:' + 80 * g.ratio + 'px;">');
+};
+
 cl.getCum = function () {
     //1440 minutes in day
     //4320 in 3 dyas
@@ -1414,19 +1467,35 @@ cl.appearance = function () {
     var thisBody = cl.appearanceBody();
     var thisClothes = cl.appearanceClothes();
 
-    return Math.floor((thisBody + thisClothes) / 2);
+    if (thisBody === -1)
+        thisBody = -1;
+    else {
+        if (thisBody > thisClothes)
+            thisBody--;
+        else if (thisBody < thisClothes)
+            thisBody++;
+
+        if (thisBody < 0)
+            thisBody = 0;
+        if (thisBody > 4)
+            thisBody = 4;
+    }
+    return thisBody;
 };
 
 cl.appearanceClothes = function () {
     //shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     //tattoo: new Array(), buttplug: null, chastity: null, necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
     var isNude = cl.c.shoes === null && cl.c.socks === null && cl.c.pants === null && cl.c.panties === null && cl.c.bra === null && cl.c.shirt === null && cl.c.dress === null && cl.c.swimsuit === null && cl.c.pj === null;
-    var baseScore = 4;
+    var baseScore = cl.appearanceBody();
+    var bodyScore = baseScore;
     var secondaryScore = 4;
-    var pantyScore, shoeScore, sockScore, tempscore;
 
-    if (cl.isNude)
-        return 3;
+    if (isNude) {
+        if (bodyScore > 2)
+            return bodyScore + 1;
+        return bodyScore;
+    }
 
     if (cl.c.dress !== null)
         baseScore = cl.getEntry("dress", cl.c.dress).daring;
@@ -1435,19 +1504,19 @@ cl.appearanceClothes = function () {
     else if (cl.c.pj !== null)
         baseScore = cl.getEntry("pj", cl.c.pj).daring;
     else if (cl.c.shirt === null && cl.c.pants === null)
-        baseScore = 4;
+        baseScore = bodyScore;
     else if (cl.c.shirt === null)
-        baseScore = cl.getEntry("pants", cl.c.pants).daring + 1;
+        baseScore = Math.floor((cl.getEntry("pants", cl.c.pants).daring + bodyScore) / 2);
     else if (cl.c.pants === null)
-        baseScore = cl.getEntry("shirt", cl.c.shirt).daring + 2;
+        baseScore = Math.floor((cl.getEntry("shirt", cl.c.shirt).daring + bodyScore) / 2);
     else
         baseScore = Math.floor((cl.getEntry("shirt", cl.c.shirt).daring + cl.getEntry("pants", cl.c.pants).daring) / 2);
 
-    pantyScore = cl.c.panties === null ? 4 : cl.getEntry("panties", cl.c.panties).daring;
+    pantyScore = cl.c.panties === null ? baseScore : cl.getEntry("panties", cl.c.panties).daring;
     shoeScore = cl.c.shoes === null ? baseScore : cl.getEntry("shoes", cl.c.shoes).daring;
     sockScore = cl.c.socks === null ? baseScore : cl.getEntry("socks", cl.c.socks).daring;
 
-    secondaryScore = cl.c.panties + cl.c.shoes + cl.c.socks + (cl.c.chastity === null ? 0 : .5) + (cl.c.buttplug === null ? 0 : .5);
+    secondaryScore = pantyScore + shoeScore + sockScore + (cl.c.chastity === null ? 0 : .25) + (cl.c.buttplug === null ? 0 : .25);
 
     secondaryScore = Math.floor(secondaryScore / 3);
 
@@ -1464,8 +1533,10 @@ cl.appearanceClothes = function () {
 
 cl.appearanceBody = function () {
     var baseScore = 0;
+    if (cl.c.chest === 0)
+        return -1;
+
     switch (cl.c.chest) {
-        case 0:
         case 1:
             baseScore = 0;
             break;
@@ -1473,10 +1544,12 @@ cl.appearanceBody = function () {
             baseScore = 1;
             break;
         case 3:
-            baseScore = 3;
+            baseScore = 2;
             break;
         case 4:
         case 5:
+            baseScore = 3;
+            break;
         case 6:
             baseScore = 4;
             break;
@@ -1485,8 +1558,6 @@ cl.appearanceBody = function () {
         case 0:
             baseScore--;
             break;
-        case 2:
-        case 3:
         case 4:
             baseScore++;
             break;
@@ -1500,18 +1571,7 @@ cl.appearanceBody = function () {
             case 1:
                 baseScore--;
                 break;
-            case 3:
-            case 4:
-                baseScore++;
-                break;
         }
-    }
-
-    switch (cl.c.cock) {
-        case 0:
-        case 1:
-            baseScore--;
-            break;
     }
 
     if (baseScore > 4)

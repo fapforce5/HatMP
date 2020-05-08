@@ -12,6 +12,7 @@ g.notes = "v0.7.0";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
+g.tview = "f";
 g.prevRoom;
 
 g.roomID = 1;
@@ -95,6 +96,7 @@ g.st = [
     { n: "tookHormonePill", t: false, q: "day" },
     { n: "gworkout", t: false, q: "day" },
     { n: "shinkCock", t: false, q: "day" },
+    { n: "bigguy", t: false, q: "day" },
 ];
 
 g.i = function (name) {
@@ -232,6 +234,7 @@ g.checkPop = function (name, amount) {
                 g.popUpNotice("You feel more feminine");
             break;
         case "energy":
+            cl.energydisplay();
             break;
         case "arousal": //0-100
             cl.cockDisplay();
@@ -326,7 +329,7 @@ g.rooms = [
     { roomID: 425, name: "Jail", image: "425_Jail/jail.jpg", nightImage: "425_Jail/jail.jpg", houseID: 400, btn: "roomBtn_402.png" },
 
     { roomID: 450, name: "Park Entrance", image: "450_park/450_bg.jpg", nightImage: "450_park/450_bg_night.jpg", houseID: 450, btn: "roomBtn_450.png" },
-    { roomID: 451, name: "Men's Room", image: "451_parkMensRoom/451_mensRoom.png", nightImage: "451_parkMensRoom/451_mensRoom.png", houseID: 450, btn: "roomBtn_451.png" },
+    { roomID: 451, name: "Men's Room", image: "451_parkMensRoom/mensroom.jpg", nightImage: "451_parkMensRoom/mensroom.jpg", houseID: 450, btn: "roomBtn_451.png" },
     { roomID: 452, name: "Woman's Room", image: "452_parkWomansRoom/452_parkWomansRoom.png", nightImage: "452_parkWomansRoom/452_parkWomansRoom.png", houseID: 450, btn: "roomBtn_452.png" },
     { roomID: 453, name: "Stall", image: "453_stall/453_stall.png", houseID: 450, btn: "roomBtn_453.png" },
     { roomID: 454, name: "Glory Hole", image: "454_gHole/454_gHole.png", nightImage: "454_gHole/454_gHole.png", houseID: 450, btn: "roomBtn_454.png" },
@@ -402,6 +405,8 @@ g.setRatio = function () {
     var btnHeight = 620 * g.ratio;
     $('.char-container').css({ "width": btnWidth, "height": btnHeight });
     $('#char-bg').css({ "width": btnWidth, "height": btnHeight });
+
+    
 };
 
 g.error = function (id, details) {

@@ -151,13 +151,8 @@
                 <div id="room-animationFront" style="position:absolute;  top:0; left:0"></div>
             </div>
             <div class="room-left">
+
                 <div class="char-container">
-                    <button id="char_turnaround" class="char-modBtn">
-                        <img src="./images/general/turnAround.png" />
-                    </button>
-                    <button id="char_altview" class="char-modBtn">
-                        <img src="./images/general/modify.png" />
-                    </button>
                     <div class="char-layer char-bg" id="char-bg"></div>
                     <div class="char-layer char-legs" id="char-legs"></div>
                     <div class="char-layer char-buttplug" id="char-buttplug"></div>
@@ -178,11 +173,20 @@
                     <div class="char-layer char-hair" id="char-hair"></div>
                     <div class="char-layer char-accHead" id="char-accHead"></div>
                 </div>
+                <div class="char-divider"></div>
+                <button class="char-modBtn" data-t="f">
+                    <img src="./images/general/b1.png" />
+                </button><button class="char-modBtn" data-t="b">
+                    <img src="./images/general/b2.png" />
+                </button><button class="char-modBtn" data-t="p">
+                    <img src="./images/general/b3.png" />
+                </button><button class="char-modBtn" data-t="a">
+                    <img src="./images/general/b4.png" />
+                </button>
+                <div class="char-divider"></div>
                 <div class="char-statDisplay" id="char_cockDisplay"></div>
-                <label id="char-energy-label">Energy</label>
-                <div class="asset-container-outer">
-                    <div class="asset-container-inner asset-container-blue" id="char-energy"></div>
-                </div>
+                <div class="char-divider"></div>
+                <div class="char-charDisplay" id="char_charDisplay"></div>
                 <div class="char-stats" style="display:none;">
                     <label id="char-arousal-label">Arousal</label>
                     <div class="asset-container-outer">

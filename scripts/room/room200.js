@@ -164,7 +164,7 @@ room200.btnclick = function (name) {
                     chat(24, 200);
                 }
                 else if (cl.getBodyHair() === null)
-                    chat(50, 200);
+                    room200.chatcatch("turnaround1");
                 else
                     chat(48, 200);
             }
@@ -330,7 +330,7 @@ room200.chatcatch = function (callback) {
         case "turnaround1":
             //52, 53, 54
             nav.kill();
-            nav.bg("200_frontOffice/200_showPantiesBack.png", "200_frontOffice/200_showPantiesBack.png");
+            //nav.bg("200_frontOffice/200_showPantiesBack.png", "200_frontOffice/200_showPantiesBack.png");
             switch (Math.floor(Math.random() * 3)) {
                 case 0:
                     chat(52, 200);
@@ -660,6 +660,9 @@ room200.chatcatch = function (callback) {
             cl.c.shoes = "fb";
             cl.c.panties = "w";
             cl.display();
+            break;
+        case "stripPantiesHairy":
+
             break;
         default:
             break;

@@ -135,7 +135,7 @@ room7.chatcatch = function (callback) {
             break;
         case "backOwe":
             if (g.gt("rentOwed", "money")) {
-                g.set("rentOwed", -1 * g.get("money"));
+                g.mod("rentOwed", -1 * g.get("money"));
                 g.set("money", 0);
                 chat(14, 7);
             }
@@ -164,12 +164,13 @@ room7.chatcatch = function (callback) {
             cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
             cl.c.pj = cl.saveOutfit[thisEntry].pj;
             cl.display();
-            if (sc.getstep("me") > 7)
-                char.room(52);
-            else
-                char.room(10);
+            if (!sc.checkevent("lola", -1) && cl.hasClothing("panties", "w"))
+                g.internal = "room10pass";
+            char.room(10);
             break;
         case "o4":
+            if (!sc.checkevent("lola", -1) && cl.hasClothing("panties", "w"))
+                g.internal = "room10pass";
             char.room(10);
             break;
         case "shave":
@@ -275,7 +276,7 @@ room7.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "landlord",
-            text: "It's time to pay your back rent. You still owe <span class='hl'>$" + tempRent + "</span>.",
+            text: "It's time to pay your back rent. You still owe <span class='hl'>$" + tempRentOwed + "</span>.",
             button: [{ chatID: -1, text: "Pay " + sc.n("landlord") + ". ", callback: "backOwe" }]
         },
         {
