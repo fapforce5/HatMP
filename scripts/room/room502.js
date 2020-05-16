@@ -116,7 +116,9 @@ room502.chatcatch = function (callback) {
             var zoeyStep = sc.getstep("zoey");
             if (zoeyStep >= 5 && zoeyStep <= 9)
                 sc.setstep("zoey", zoeyStep + 1);
-            if (zoeyStep >= 12 && zoeyStep <= 21)
+            if (zoeyStep >= 12 && zoeyStep <= 17)
+                sc.setstep("zoey", zoeyStep + 1);
+            if (zoeyStep >= 19 && zoeyStep <= 21)
                 sc.setstep("zoey", zoeyStep + 1);
             if (zoeyStep === 10) {
                 nav.killall();
@@ -134,6 +136,23 @@ room502.chatcatch = function (callback) {
                 char.settime(4, 37);
                 nav.bg("502_bedroom/overlook.jpg");
                 chat(12, 502);
+            }
+            else if (zoeyStep === 17) {
+                nav.killall();
+                cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
+                cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
+                cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
+                cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
+                cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
+                cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
+                cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
+                cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
+                cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
+                cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
+                cl.display();
+                nav.bg("502_bedroom/single1.jpg");
+                char.settime(7, 37);
+                chat(67, 502);
             }
             else if (zoeyStep === 18 && sc.getstep("missy") >= 21) {
                 char.settime(7, 37);
@@ -322,6 +341,15 @@ room502.chatcatch = function (callback) {
             sc.events[sc.getEventIndex("zoey", -1)].ach = false;
             g.setflag("zoeyDay");
             char.room(502);
+            break;
+        case "single2":
+            nav.bg("502_bedroom/single2.jpg");
+            break;
+        case "single3":
+            nav.bg("502_bedroom/single3.jpg");
+            break;
+        case "single4":
+            nav.bg("502_bedroom/single4.jpg");
             break;
         default:
             break;
@@ -881,6 +909,46 @@ room502.chat = function (chatID) {
             text: "Check that ass out! So much to grab",
             button: [
                 { chatID: -1, text: "....", callback: "newday" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "me",
+            text: "**Snore** **Snort** I think I heard something in the living room. ",
+            button: [
+                { chatID: 68, text: "[Check out noise]", callback: "single2" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "zoey",
+            text: "This is so much fun! You're so dirty!",
+            button: [
+                { chatID: 69, text: "hmmm", callback: "single3" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "zoey",
+            text: "Oh wow... I've never done that before... Hmmm " + sc.n("me") + "?",
+            button: [
+                { chatID: 70, text: "oh... hi", callback: "single4" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "zoey",
+            text: "Hay, this is my new friend....",
+            button: [
+                { chatID: 71, text: sc.n("eva") + "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "eva",
+            text: "What, no way ",
+            button: [
+                { chatID: 71, text: "That's ok, Please continue..", callback: "" }
             ]
         },
     ];

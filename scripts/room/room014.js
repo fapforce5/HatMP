@@ -4,7 +4,7 @@ var room14 = {};
 room14.main = function () {
     var btnList = new Array();
     g.internal = { pussy: 0, asshole: 0 };
-    if (!g.hourBetween(6, 22)) {
+    if (!g.hourBetween(6, 21)) {
         nav.bg("14_motherRoom/14_motherRoomNight.jpg");
         btnList = [{
             "type": "btn",
@@ -737,7 +737,8 @@ room14.chat = function(chatID){
         {
             chatID: 35,
             speaker: "landlord",
-            text: "I know what a bad boy you are, clean my hand you naughty boy.",
+            text: "I know what a bad boy you are, clean my hand you naughty boy. I'm a cum expert and this is some really quality stuff, it's so " +
+            "thick and creamy.",
             button: [
                 { chatID: 36, text: "[Suck her fingers clean]", callback: "couple3f" }
             ]
@@ -745,7 +746,7 @@ room14.chat = function(chatID){
         {
             chatID: 36,
             speaker: "landlord",
-            text: "That's right suck my fingers clean.",
+            text: "That's right suck my fingers clean you bad boy.",
             button: [
                 { chatID: 37, text: "[Keep sucking her cum covered fingers]", callback: "" }
             ]
@@ -761,7 +762,7 @@ room14.chat = function(chatID){
         {
             chatID: 38,
             speaker: "landlord",
-            text: "Such a dirty boy.",
+            text: "It really is a waste going into your belly. I could sell if for a nice profit. That's a real man's cum you've just swallowed.",
             button: [
                 { chatID: 39, text: "MMmmmmmm", callback: "couple3c" }
             ]

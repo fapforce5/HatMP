@@ -10,6 +10,7 @@ sc.char = [
     { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true },
     { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true },
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
+    { name: "stormy", display: "Stormy", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false },
     { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true },
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
@@ -142,6 +143,7 @@ sc.events = [
     { name: "tiffany", step: 11, txt: "Box of clothing given", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 12, txt: "Meet at her house", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 13, txt: "Meet at park", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "candy", step: -1, txt: "Flash in bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "candy", step: 0, txt: "Begin Here", img: "", show: false, row: 0, col: 0, ach: true, major: false },
@@ -218,6 +220,10 @@ sc.events = [
     { name: "g", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: 1, txt: "First met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: 2, txt: "exercise", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "treyvon", step: 0, txt: "nope", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "treyvon", step: 1, txt: "Tif Scene", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "treyvon", step: 2, txt: "Can enter apartment building", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 ];
 
 sc.setMax = function () {

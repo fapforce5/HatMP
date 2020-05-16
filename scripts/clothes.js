@@ -7,7 +7,8 @@ cl.c = {
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
     necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null, 
     fingernail: null, toenail: null,
-    cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false
+    cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false,
+    locktits: false, lockbutt: false
 };
 
 cl.init = function () {
@@ -111,7 +112,8 @@ cl.list = [
     { type: "buttplug", name: "g", img: "plug_green.png", sex: "f", inv: false, daring: 1, price: 100 },
     { type: "buttplug", name: "v", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
 
-    { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 }
+    { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "wig", name: "f", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 }
 ];
 
 for (var q = 0; q < cl.list.length; q++) {
@@ -466,7 +468,8 @@ cl.pants = [
 ];
 
 cl.wig = [
-    { name: "d", image: "wig_d.png", back: "wig_g_back.png" }
+    { name: "d", image: "wig_d.png", back: "wig_g_back.png" },
+    { name: "f", image: "wig_f.png", back: "wig_f_back.png" }
 ];
 
 cl.bra = [
@@ -1165,6 +1168,10 @@ cl.displayClothed = function () {
 
 cl.displayMain = function (top, left, ratio, spec) {
     //set Chest
+
+    if (spec.indexOf("pants") > -1 || spec.indexOf("shirt") > -1)
+        spec += " clothes";
+
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
     if (spec === "mirror") {
         cl.displayMainSub("mirror/top" + cl.c.chest + ".png", top, left, ratio);
@@ -1253,7 +1260,7 @@ cl.displayMain = function (top, left, ratio, spec) {
         }
     }
     
-    if (spec.indexOf("pants") > -1) {
+    if (spec.indexOf("panties") > -1) {
         if (cl.c.panties !== null) {
             $.each(cl.panties, function (i, v) {
                 if (v.name === cl.c.panties && v.leg === cl.c.leg) {
@@ -1292,18 +1299,40 @@ cl.displayMain = function (top, left, ratio, spec) {
             });
         }
     }
-    if (spec.indexOf("pants") > -1) {
-        if (cl.c.pants !== null) {
-            $.each(cl.pants, function (i, v) {
-                if (v.name === cl.c.pants && v.leg === cl.c.leg) {
+    if (spec.indexOf("clothes") > -1) {
+        if (cl.c.dress !== null) {
+            $.each(cl.dressBottom, function (i, v) {
+                if (v.name === cl.c.dress && v.leg === cl.c.leg) {
+                    cl.displayMainSub(v.image, top, left, ratio);
+                    return false;
+                }
+            });
+            $.each(cl.dressTop, function (i, v) {
+                if (v.name === cl.c.dress && v.chest === cl.c.chest) {
+                    cl.displayMainSub(v.image, top, left, ratio);
+                    return false;
+                }
+            });
+        }
+        else {
+            if (cl.c.pants !== null) {
+                $.each(cl.pants, function (i, v) {
+                    if (v.name === cl.c.pants && v.leg === cl.c.leg) {
+                        cl.displayMainSub(v.image, top, left, ratio);
+                        return false;
+                    }
+                });
+            }
+            $.each(cl.shirt, function (i, v) {
+                if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
                     cl.displayMainSub(v.image, top, left, ratio);
                     return false;
                 }
             });
         }
     }
-    if (spec.indexOf("shirt") > -1) {
-        $.each(cl.shirt, function (i, v) {
+    if (spec.indexOf("pants") > -1 || spec.indexOf("shirt") > -1 || spec.indexOf("dress") > -1) {
+        $.each(cl.dress, function (i, v) {
             if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
                 cl.displayMainSub(v.image, top, left, ratio);
                 return false;
@@ -1375,11 +1404,11 @@ cl.energydisplay = function () {
     var firstHalf = cl.appearance();
     var secondHalf = "0";
 
-    if (tempEnergy < 25)
+    if (tempEnergy < 24)
         secondHalf = "0";
-    else if (tempEnergy < 50)
+    else if (tempEnergy < 51)
         secondHalf = "25";
-    else if (tempEnergy < 75)
+    else if (tempEnergy < 76)
         secondHalf = "50";
     else
         secondHalf = "75";

@@ -504,6 +504,7 @@ room250.chatcatch = function (callback) {
             break;
         case "mollymad":
             nav.killbutton("molly");
+            nav.killbutton("kill_olly");
             nav.button({
                 "type": "img",
                 "name": "molly",

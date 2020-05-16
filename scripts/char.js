@@ -752,6 +752,10 @@ menu.load = function (cookieName, btn, saveID) {
     char.menu();
     $('.hide-start').show();
     $('.menu-button[data-type="close"]').click();
+    $('.room-left').show();
+    $('#room_footer').show();
+    $(".room-topper").show();
+    $('.menu-tab').show();
 };
 
 menu.saveDel = function(btn) {

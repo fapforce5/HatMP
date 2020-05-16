@@ -80,7 +80,7 @@ g.st = [
     { n: "pissedonMale", t: 0, q: "int" },
     { n: "pissedonFemale", t: 0, q: "int" },
 
-    { n: "girlname", t: "piggy", q: "int" },
+    { n: "girlname", t: "Scarlett", q: "int" },
 
     { n: "jobConstGetRaise", t: false, q: "bool" },
 
@@ -290,10 +290,11 @@ g.rooms = [
     { roomID: 24, name: "Spin the bottle", image: "24_spinTheBottle/013_spinBG.jpg", nightImage: "24_spinTheBottle/013_spinBG.jpg", houseID: 10, btn: "roomBtn_24.png" },
     { roomID: 25, name: "Dining Room", image: "25_dining/025_diningRoom.jpg", nightImage: "25_dining/025_diningRoomNight.jpg", houseID: 10, btn: "roomBtn_25.png" },
 
-    { roomID: 50, name: "Living Room", image: "50_livingRoom/50_livingRoom.jpg", nightImage: "50_livingRoom/50_livingRoom_night.jpg", houseID: 50, btn: "roomBtn_50.png" },
+    { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Tiffany's Room", image: "51_tifRoom/51_tifRoom.jpg", nightImage: "51_tifRoom/51_tifRoom_night.jpg", houseID: 50, btn: "roomBtn_51.png" },
     { roomID: 52, name: "My Room", image: "52_myroom/52_myroom.jpg", nightImage: "52_myroom/52_myroom_night.jpg", houseID: 50, btn: "roomBtn_52.png" },
     { roomID: 53, name: "Candy's Room", image: "53_candy/53_candyRoom.jpg", nightImage: "53_candy/53_candyRoom_night.jpg", houseID: 50, btn: "roomBtn_52.png" },
+    { roomID: 54, name: "Living Room", image: "54_livingRoom/50_livingRoom.jpg", nightImage: "54_livingRoom/50_livingRoom_night.jpg", houseID: 50, btn: "roomBtn_54.png" },
 
     { roomID: 75, name: "Bimbo's House", image: "75_bimbo/house.jpg", nightImage: "75_bimbo/houseNight.jpg", houseID: 75, btn: "roomBtn_75.png" },
     { roomID: 76, name: "Bimbo's Room", image: "76_bimboRoom/room.jpg", nightImage: "76_bimboRoom/roomNight.jpg", houseID: 75, btn: "roomBtn_76.png" },
@@ -359,13 +360,14 @@ g.rooms = [
     { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Class Room", image: "901_classroom/901_classroom.png", nightImage: "901_classroom/901_classroom.png", houseID: 900, btn: "roomBtn_901.png" },
 
-    { roomID: 910, name: "Department Of Licenses", image: "910_gov/910_gov.png", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "roomBtn_910.png" }
+    { roomID: 910, name: "Department Of Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "bg.jpg" }
 
     //{ roomID: , name: "", image: "", houseID: , main: false, btn: "roomBtn_.png" }
 ];
 
 g.roomMap = [
     { roomID: 16, access: true, darkAccess: true, left: 818, top: 750, width: 168, height: 237, img: "map/10.png", night: "map/10_night.png", map: 1 },
+    { roomID: 50, access: true, darkAccess: true, left: 411, top: 369, width: 395, height: 311, img: "map/50.png", night: "map/50_night.png", map: 1 },
     { roomID: 75, access: false, darkAccess: false, left: 1649, top: 780, width: 178, height: 212, img: "map/75.png", night: "map/75_night.png", map: 1 },
     { roomID: 100, access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
     { roomID: 203, access: false, darkAccess: false, left: 1671, top: 370, width: 213, height: 257, img: "map/203.png", night: "map/203_night.png", map: 2 },
@@ -636,7 +638,7 @@ g.initGame = function () {
                 g.st[i].t = 0;
                 break;
             case "girlname":
-                g.st[i].t = "piggy";
+                g.st[i].t = "Scarlett";
                 break;
             case "enterSister":
             case "jobConstGetRaise":

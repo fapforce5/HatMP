@@ -24,7 +24,7 @@ room103.main = function () {
         }
     ];
     $.each(btnList, function (i, v) {
-        nav.button(v, 14);
+        nav.button(v, 103);
     });
     //var thisRand = Math.floor(Math.random() * 10);
     //if (thisRand === 1)
@@ -40,6 +40,7 @@ room103.main = function () {
 room103.btnclick = function (name) {
     switch (name) {
         case "work":
+            console.log("hi")
             chat(0, 103);
             break;
         default:

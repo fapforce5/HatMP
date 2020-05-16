@@ -36,32 +36,12 @@ room406.btnclick = function (name) {
 room406.chatcatch = function (callback) {
     switch (callback) {
         case "brown":
-            cl.c.eyes = "brown";
-            g.mod("money", -180);
-            cl.display();
-            break;
         case "blue":
-            cl.c.eyes = "blue";
-            g.mod("money", -180);
-            cl.display();
-            break;
         case "green":
-            cl.c.eyes = "green";
-            g.mod("money", -180);
-            cl.display();
-            break;
         case "gray":
-            cl.c.eyes = "gray";
-            g.mod("money", -180);
-            cl.display();
-            break;
-        case "lblue":
-            cl.c.eyes = "lightblue";
-            g.mod("money", -180);
-            cl.display();
-            break;
+        case "lightblue":
         case "hazel":
-            cl.c.eyes = "hazel";
+            cl.c.eyes = callback;
             g.mod("money", -180);
             cl.display();
             break;
@@ -121,7 +101,7 @@ room406.chat = function (chatID) {
             text: "What color do you want?",
             button: [
                 { chatID: 5, text: '<img src="./images/room/406_eyes/gray.jpg"/> Gray', callback: "gray" },
-                { chatID: 5, text: '<img src="./images/room/406_eyes/lblue.jpg"/> Light Blue', callback: "lblue" },
+                { chatID: 5, text: '<img src="./images/room/406_eyes/lblue.jpg"/> Light Blue', callback: "lightblue" },
                 { chatID: 5, text: '<img src="./images/room/406_eyes/hazel.jpg"/> Hazel', callback: "hazel" },
                 { chatID: 3, text: "See other choices", callback: "" }
             ]

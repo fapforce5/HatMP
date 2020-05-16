@@ -27,7 +27,7 @@ room500.main = function () {
 room500.btnclick = function (name) {
     switch (name) {
         case "frontDoor":
-            if (sc.getstep("zoey") > 19) {
+            if (sc.getstep("zoey") > 22) {
                 if (g.checkflag("zoeyDay")) {
                     chat(3, 500);
                 }

@@ -319,7 +319,8 @@ room10.chatcatch = function (callback) {
             g.internal = "";
             g.pass = "";
             $.each(cl.saveOutfit, function (i, v) {
-                cl.saveOutfit[i].panties = "w";
+                if (i !== 4)
+                    cl.saveOutfit[i].panties = "w";
             });
             nav.room(10);
             break;

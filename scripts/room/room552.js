@@ -13,28 +13,7 @@ room552.main = function () {
             "image": "552_boy/shower.jpg"
         }
     ];
-    if (Math.floor(Math.random() * 3) === 1) {
-        btnList.push({
-            "type": "img",
-            "name": "guy",
-            "left": 1030,
-            "top": 45,
-            "width": 706,
-            "height": 1035,
-            "image": "552_boy/552_bigman.png"
-        });
-        btnList.push({
-            "type": "btn",
-            "name": "bigguyTowel",
-            "left": 1164,
-            "top": 669,
-            "width": 459,
-            "height": 312,
-            "image": "552_boy/552_bigmanTowel.png"
-        });
-        console.log("1");
-    }
-    else if (Math.floor(Math.random() * 2) === 1) {
+   if (Math.floor(Math.random() * 2) === 1) {
         btnList.push({
             "type": "img",
             "name": "treyvon",

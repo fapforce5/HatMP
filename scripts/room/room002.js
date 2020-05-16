@@ -19,14 +19,17 @@ room2.chatcatch = function (callback) {
         var charName = $('<div/>').text($('#room_002Name').val()).html().trim();
         var ma = $('<div/>').text($('#room_002ma').val()).html().trim();
         var sisRel = $('<div/>').text($('#room_002sa').val()).html().trim();
+        var girlName = $('<div/>').text($('#room_002gn').val()).html().trim();
 
         sc.setcharname("landlord", ma);
         sc.setcharname("el", sisRel);
-        sc.n("me") = charName.length === 0 ? "Alex" : charName;
+        sc.setcharname("me", charName.length === 0 ? "Alex" : charName);
+        g.set("girlname", charName.length === 0 ? "Scarlett" : girlName);
     }
     else if (callback === "init") {
         var tempLine = '<div class="intro-wrapper"><div style="height:' + (800 * g.ratio) + 'px;" class="intro-wrapper-sub">' +
             '<div class="intro-wrapper-full"><div class="intro-wrapper-left"><img src="images/speaker/me.png"/></div><div class="intro-wrapper-right">Your Name<br /><input type="text" id="char_-1" data-name="-1" /></div></div>' +
+            '<div class="intro-wrapper-full"><div class="intro-wrapper-left"><img src="images/speaker/me_girl.png"/></div><div class="intro-wrapper-right">Girly Name<br /><input type="text" id="room_002gn"/></div></div>' +
             '<div class="intro-wrapper-full"><div class="intro-wrapper-left"><img src="images/speaker/lolaEva.png"/></div><div class="intro-wrapper-right">' + sc.n('lola') + ' and ' + sc.n('eva') + '\'s Relationship<br /><input type="text" id="room_002sa"/></div></div>';
             
 
@@ -55,7 +58,8 @@ room2.chatcatch = function (callback) {
         });
 
         $('#room_002sa').val($("<textarea/>").html(sc.n("el")).val());
-
+        $('#room_002gn').val($("<textarea/>").html(g.get("girlname")).val());
+        
         $('.intro-changeDiff').click(function () {
             var currentDiff = parseInt($('#intro_diff').data('diff'));
             var changeDiff = parseInt($(this).data('toggle'));
@@ -99,6 +103,8 @@ room2.chatcatch = function (callback) {
 
             $('#char_-1').val($("<textarea/>").html(sc.n("me")).val());
             $('#room_002sa').val($("<textarea/>").html(sc.n("el")).val());
+            $('#room_002gn').val($("<textarea/>").html(sc.n("el")).val());
+
         });
 
         $("#room_002SetName").click(function () {
@@ -110,6 +116,7 @@ room2.chatcatch = function (callback) {
 
             sc.setcharname("me", g.cleanText($('#char_-1').val()));
             sc.setcharname("el", g.cleanText($('#room_002sa').val()));
+            g.set("girlname", g.cleanText($('#room_002gn').val()));
 
             var thisDiff = parseInt($("#intro_diff").data('diff'));
             g.set("difficulty", isNaN(thisDiff) ? 1 : ((thisDiff < 0) ? 0 : ((thisDiff > 2) ? 2 : thisDiff)));

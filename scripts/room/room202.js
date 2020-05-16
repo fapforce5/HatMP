@@ -61,6 +61,8 @@ room202.main = function () {
         chat(36, 202);
     }
     else if (missyStep === 13) {
+        g.tview = "p";
+        cl.display();
         chat(11, 202);
     }
     else if (missyStep === 14) {

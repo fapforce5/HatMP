@@ -26,6 +26,9 @@ room403.btnclick = function (name) {
             nav.killall();
             chat(47, 403);
             break;
+        case "jadajackoff":
+            chat(69, 403);
+            break;
         default:
             break;
     }
@@ -169,7 +172,25 @@ room403.chatcatch = function (callback) {
                 "image": "403_saucy/402_fuck.gif"
             }, 403);
             break;
-
+        case "changeRoom11":
+            nav.killbutton("jadajackoff");
+            nav.bg("403_saucy/changeRoom11.jpg");
+            break;
+        case "changeRoom11a":
+            nav.bg("403_saucy/changeRoom3b.jpg");
+            cl.nude();
+            cl.c.dress = "u";
+            cl.c.panties = g.internal;
+            cl.c.socks = "p";
+            cl.c.shoes = "fb";
+            cl.display();
+            cl.displayMain(60, 760, .19, "panties socks shoes shirt");
+            break;
+        case "changeRoom11b":
+            cl.c.wig = "f";
+            cl.display();
+            cl.displayMain(60, 760, .19, "panties socks shoes shirt");
+            break;
         case "changeRoomX":
             nav.killbutton("cupDrip");
             nav.killbutton("fuckingDatAss");
@@ -202,52 +223,42 @@ room403.chatcatch = function (callback) {
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomCumBack.jpg");
             break;
-        case "changeRoomDressed":
-            nav.bg("403_saucy/changeRoom3b.jpg");
-            cl.undo();
-            switch (g.internal) {
-                case "pantiesBlack":
-                    cl.c.panties = "b";
-                    break;
-                case "pantiesPink":
-                    cl.c.panties = "p";
-                    break;
-                case "pantiesFish":
-                    cl.c.panties = "f";
-                    break;
-            }
-            cl.display();
-            break;
         case "pantiesBlack":
-            g.internal = "pantiesBlack";
+            g.internal = "b";
             cl.add("panties", "b");
             cl.c.panties = "b";
             break;
         case "pantiesPink":
-            g.internal = "pantiesPink";
+            g.internal = "p";
             cl.add("panties", "p");
             cl.c.panties = "p";
             break;
         case "pantiesFish":
-            g.internal = "pantiesFish";
+            g.internal = "f";
             cl.add("panties", "f");
             cl.c.panties = "f";
             break;
         case "tifMap":
             g.set("map", 1);
-            nav.bg("403_saucy/map.jpg");
-            break;
-        case "followTif":
-            sc.setstep("tiffany", 14);
             char.addtime(180);
+            sc.setstep("tiffany", 14);
+            sc.setstep("treyvon", 1);
             char.room(50);
+            break;
+        case "jadajackoff":
+            nav.bg("403_saucy/jadajackoff.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "jadajackoff",
+                "left": 519,
+                "top": 42,
+                "width": 711,
+                "height": 1038,
+                "image": "403_saucy/jada.gif"
+            }, 403);
             break;
         case "leave":
             char.room(400);
-            break;
-        case "putOnWig":
-            cl.c.wig = "d";
-            cl.display();
             break;
         default:
             break;
@@ -447,7 +458,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "Yes, we're getting him a pair of panties to go with his new dress. Do you two know each other?",
             button: [
-                { chatID: 24, text: sc.n("jada") + " and I dated for a little bit in high school.", callback: "" }
+                { chatID: 24, text: sc.n("jada") + " dated my buddy for a little bit in high school.", callback: "" }
             ]
         },
         {
@@ -626,7 +637,7 @@ room403.chat = function (chatID) {
             "give us a fashion show!",
             button: [
                 { chatID: 45, text: "Oh um... sure", callback: "changeRoom6c" },
-                { chatID: 68, text: "No! This is too much", callback: "changeRoom6a" }
+                { chatID: 70, text: "No! This is too much", callback: "changeRoom6a" }
             ]
         },
         {
@@ -666,9 +677,9 @@ room403.chat = function (chatID) {
         {
             chatID: 49,
             speaker: "tiffany",
-            text: "Awww ok, Lets get you dressed and back to our new home.",
+            text: "Awww ok, Lets get you dressed and back to our new home. Stip off those pesky male clothes!",
             button: [
-                { chatID: 65, text: "Yes", callback: "changeRoomDressed" }
+                { chatID: 65, text: "ok", callback: "changeRoom11" }
             ]
         },
         {
@@ -771,10 +782,10 @@ room403.chat = function (chatID) {
         {
             chatID: 62,
             speaker: "tiffany",
-            text: "Don't worry honey, you're not the first to do that. Now put on your panties and get dressed. It's time to take you " +
+            text: "Don't worry honey, you're not the first to do that. It's time to get you dressed up to take you " +
                 "to your new home.",
             button: [
-                { chatID: 65, text: "[Get Dressed]", callback: "changeRoomDressed" }
+                { chatID: -1, text: "...", callback: "jadajackoff" }
             ]
         },
         {
@@ -788,42 +799,58 @@ room403.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "tiffany",
-            text: "Your cock is amazing. I'm going to have to ride that again! Put on your panties and get dressed it's " +
-                "time to take you to your new home.",
+            text: "Your cock is amazing. I'm going to have to ride that again! It's time to get your all dressed up like a pretty girl and " +
+                "take you to your new home.",
             button: [
-                { chatID: 65, text: "[Get Dressed]", callback: "changeRoomDressed" }
+                { chatID: -1, text: "...", callback: "jadajackoff" }
             ]
         },
         {
             chatID: 65,
             speaker: "tiffany",
-            text: "Oh I almost forgot to give you this wig I have. I call it the dolly, you'll look so cute in it! ",
+            text: "Ok honey lets see how you look in your new clothes! I bet you'll look so pretty.",
             button: [
-                { chatID: 66, text: "[put on wig]", callback: "putOnWig" }
+                { chatID: 66, text: "[Get Dressed]", callback: "changeRoom11a" }
             ]
         },
         {
             chatID: 66,
             speaker: "tiffany",
-            text: "Ok so we're going home, let me show you the way.",
+            text: "Ooohhh don't you look so pretty, I'm going to add a wig. It will really bring out your pretty eyes!",
             button: [
-                { chatID: 67, text: "[Follow " + sc.n("tiffany") + " home]", callback: "tifMap" }
+                { chatID: 68, text: "[Put on wig]", callback: "changeRoom11b" }
             ]
         },
         {
             chatID: 67,
             speaker: "tiffany",
-            text: "So this is our new home. " + sc.n("candy") + " picked out the color, that's why it's so pink. Let's go in.",
+            text: "Oh how pretty!",
             button: [
-                { chatID: -1, text: "[Enter you're new home]", callback: "followTif" }
+                { chatID: 68, text: "[Put on wig]", callback: "changeRoom11b" }
             ]
         },
         {
             chatID: 68,
             speaker: "tiffany",
-            text: "Such a party pooper! ",
+            text: "You're my pretty girl! Let's take you home, we should be able to sneak you past the door guard.",
             button: [
-                { chatID: 65, text: "I know...", callback: "changeRoomDressed" }
+                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "tifMap" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "jada",
+            text: "Oh fuck that was hot! I wonder if he'll fuck me?",
+            button: [
+                { chatID: 65, text: "...", callback: "changeRoom11" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "tiffany",
+            text: "Oh party pooper. Ok lets get you dressed.",
+            button: [
+                { chatID: 65, text: "...", callback: "changeRoom11" }
             ]
         }
     ];

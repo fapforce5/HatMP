@@ -6,11 +6,11 @@ room910.main = function () {
         {
             "type": "btn",
             "name": "lady",
-            "left": 774,
-            "top": 102,
-            "width": 598,
-            "height": 773,
-            "image": "910_gov/lady.png"
+            "left": 775,
+            "top": 155,
+            "width": 400,
+            "height": 463,
+            "image": "910_gov/lady.jpg"
         }
     ];
     var navList = [0];
@@ -43,6 +43,23 @@ room910.chatcatch = function (callback) {
                 inv.update("pi_lic", true, null);
             }
             break;
+        case "changename":
+            if (g.get("money") < 100)
+                chat(7, 910);
+            else if (sc.getstep("govlady") > 0)
+                chat(6, 910);
+            else if (cl.appearance() > 1)
+                chat(8, 910);
+            else
+                chat(11, 910);
+            break;
+        case "changeit":
+            var temp = sc.n("me");
+            sc.setcharname("me", g.get("girlname"));
+            g.set("girlname", temp);
+            sc.setstep("govlady", 1);
+            char.addtime(30);
+            break;
         default:
             break;
     }
@@ -56,7 +73,7 @@ room910.chat = function (chatID) {
             text: "yea",
             button: [
                 { chatID: (g.get("money") < 100 ? 5: 1), text: "I would like to purchase a Private Investigator License ", callback: "" },
-                { chatID: 3, text: "I would like to change my name ", callback: "" }
+                { chatID: -1, text: "I would like to change my name ", callback: "changename" }
             ]
         },
         {
@@ -83,9 +100,9 @@ room910.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "govlady",
-            text: "yea",
+            text: "What can I do for you?",
             button: [
-                { chatID: 3, text: "I would like to change my name ", callback: "" }
+                { chatID: -1, text: "I would like to change my name ", callback: "changename" }
             ]
         },
         {
@@ -95,7 +112,65 @@ room910.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "I don't have $100 ", callback: "" }
             ]
-        }
+        },
+        {
+            chatID: 6,
+            speaker: "govlady",
+            text: "Sorry honey, you only get to change your name once.",
+            button: [
+                { chatID: -1, text: "Of course", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "govlady",
+            text: "I can change your name, it's $100",
+            button: [
+                { chatID: -1, text: "Oh, I don't have enough money.", callback: "" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "govlady",
+            text: "Name changes are $100 and you can only change your name once. It's a big step sweety. Are you sure?",
+            button: [
+                { chatID: -1, text: "Nevermind", callback: "" },
+                { chatID: 9, text: "I'm ready. Change my name to " + g.get("girlname") + ".", callback: "changeit" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "govlady",
+            text: "That should do it. How you do like your new name?",
+            button: [
+                { chatID: 10, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "I love it! " + sc.n("me") + " is so much for fitting!",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "govlady",
+            text: "Would you like to change your name?",
+            button: [
+                { chatID: -1, text: "Nope", callback: "" },
+                { chatID: 12, text: "Yes! change my name to " + g.get("girlname") + ".", callback: "" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "govlady",
+            text: "I'm sorry sir, I can't change your name to a girl's name. You're way to manly for that.",
+            button: [
+                { chatID: -1, text: "Oh, ok", callback: "" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

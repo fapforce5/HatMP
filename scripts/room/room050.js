@@ -1,57 +1,57 @@
 ﻿//Room name
 var room50 = {};
 room50.main = function () {
-
-    if (sc.getstep("me") === 7) {
-        room50.chatcatch("tifstraight candytalk");
-        chat(0, 50);
+    var btnList;
+    var navList = [0];
+    if (sc.getstep("treyvon") === 1) {
+        btnList = [
+            {
+                "type": "btn",
+                "name": "doorman",
+                "left": 826,
+                "top": 15,
+                "width": 774,
+                "height": 1065,
+                "image": "50_lobby/tif.png"
+            }
+        ];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 50);
+        });
     }
     else {
-        var navList = [52, 54, 51, 53];
-        if (g.hourBetween(6, 21) && cl.hasoutfit("public") === null)
-            navList.push(0);
+        btnList = [
+            {
+                "type": "btn",
+                "name": "doorman",
+                "left": 825,
+                "top": 15,
+                "width": 668,
+                "height": 1065,
+                "image": "50_lobby/doorman.png"
+            }
+        ];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 50);
+        });
         nav.buildnav(navList);
-        if (sc.tiffany().thisRoom && sc.candy().thisRoom()) {
-            nav.button({
-                "type": "btn",
-                "name": "tif9",
-                "left": 566,
-                "top": 15,
-                "width": 516,
-                "height": 1065,
-                "image": "50_livingRoom/tif_talk.png"
-            }, 50);
-            nav.button({
-                "type": "btn",
-                "name": "candy8",
-                "left": 1254,
-                "top": 40,
-                "width": 502,
-                "height": 1040,
-                "image": "50_livingRoom/candy_talk.png"
-            }, 50);
-        }
-        else if (sc.tiffany().thisRoom) {
-            nav.button({
-                "type": "btn",
-                "name": "tif10",
-                "left": 566,
-                "top": 15,
-                "width": 516,
-                "height": 1065,
-                "image": "50_livingRoom/tif_talk.png"
-            }, 50);
-        }
-        else if (sc.candy().thisRoom) {
-            room50.chatcatch("candytalk");
-            chat(8, 50);
-        }
     }
 };
 
 room50.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "doorman":
+            switch (sc.getstep("treyvon")) {
+                case 0:
+                    chat(0, 50);
+                    break;
+                case 1:
+                    chat(2, 50);
+                    break;
+                default:
+                    chat(0, 50);
+                    break;
+            }
             break;
         default:
             break;
@@ -59,108 +59,17 @@ room50.btnclick = function (name) {
 };
 
 room50.chatcatch = function (callback) {
-    var cArray = callback.split(" ");
-    for (i = 0; i < cArray.length; i++) {
-        switch (cArray[i]) {
-            case "tifsmile":
-                nav.killbutton("tif");
-                nav.button({
-                    "type": "btn",
-                    "name": "tif",
-                    "left": 566,
-                    "top": 15,
-                    "width": 516,
-                    "height": 1065,
-                    "image": "50_livingRoom/tif_smile.png"
-                }, 50);
-                break;
-            case "tiftalk":
-                nav.killbutton("tif");
-                nav.button({
-                    "type": "btn",
-                    "name": "tif",
-                    "left": 566,
-                    "top": 15,
-                    "width": 516,
-                    "height": 1065,
-                    "image": "50_livingRoom/tif_talk.png"
-                }, 50);
-                break;
-            case "tifstraight":
-                nav.killbutton("tif");
-                nav.button({
-                    "type": "btn",
-                    "name": "tif",
-                    "left": 566,
-                    "top": 15,
-                    "width": 516,
-                    "height": 1065,
-                    "image": "50_livingRoom/tif_straight.png"
-                }, 50);
-                break;
-            case "candysmile":
-                nav.killbutton("candy");
-                nav.button({
-                    "type": "btn",
-                    "name": "candy",
-                    "left": 1254,
-                    "top": 40,
-                    "width": 502,
-                    "height": 1040,
-                    "image": "50_livingRoom/candy_smile.png"
-                }, 50);
-                break;
-            case "candytalk":
-                nav.killbutton("candy");
-                nav.button({
-                    "type": "btn",
-                    "name": "candy",
-                    "left": 1254,
-                    "top": 40,
-                    "width": 502,
-                    "height": 1040,
-                    "image": "50_livingRoom/candy_talk.png"
-                }, 50);
-                break;
-            case "candystraight":
-                nav.killbutton("candy");
-                nav.button({
-                    "type": "btn",
-                    "name": "candy",
-                    "left": 1254,
-                    "top": 40,
-                    "width": 502,
-                    "height": 1040,
-                    "image": "50_livingRoom/candy_straight.png"
-                }, 50);
-                break;
-            case "candylaugh":
-                nav.killbutton("candy");
-                nav.button({
-                    "type": "btn",
-                    "name": "candy",
-                    "left": 1333,
-                    "top": 175,
-                    "width": 451,
-                    "height": 905,
-                    "image": "50_livingRoom/candyLaugh.png"
-                }, 50);
-                break;
-            case "goRoom":
-                char.room(52);
-                break;
-            case "candy8":
-                chat(8, 50);
-                break;
-            case "tif9":
-                chat(9, 50);
-                break;
-            case "tif10":
-                chat(10, 50);
-                break;
-            default:
-                break;
-        }
+    switch (callback) {
+        case "grab":
+            nav.killall();
+            nav.bg("50_lobby/grab.jpg");
+            break;
+        case "followtif":
+            sc.setstep("treyvon", 2);
+            char.room(54);
+            break;
+        default:
+            break;
     }
 };
 
@@ -168,92 +77,86 @@ room50.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "candy",
-            text: "Hay " + sc.n("tiffany") + ". Is this the guy that didn't catch the cum dude? Why is he in a dress? ",
+            speaker: "treyvon",
+            text: "Hay boy, you're not allowed here.",
             button: [
-                { chatID: 1, text: "Hay..", callback: "candysmile tifsmile" }
+                { chatID: -1, text: "I know", callback: "" },
+                { chatID: 1, text: "Can I rent an apartment", callback: "" }
             ]
         },
         {
             chatID: 1,
-            speaker: "tiffany",
-            text: "I told him we live in a girls only house!",
+            speaker: "treyvon",
+            text: "No, we don't rent to boys like you.",
             button: [
-                { chatID: 2, text: "...", callback: "candytalk" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
             chatID: 2,
-            speaker: "candy",
-            text: "Huh, what's a girl's only house?",
+            speaker: "treyvon",
+            text: "Hay " + sc.n("tiffany") + " welcome home. Who's this cutie you have with you?",
             button: [
-                { chatID: 3, text: "...", callback: "candystraight tiftalk" }
+                { chatID: 3, text: "...", callback: "" }
             ]
         },
         {
             chatID: 3,
             speaker: "tiffany",
-            text: "I lied to him to get him to dress up like a girl by saying we live in a girls only house!",
+            text: "This is one of my new dancers at Toys 'n Us. She's lot of fun! She'll be staying with us a while.",
             button: [
-                { chatID: 4, text: "...", callback: "candylaugh tifsmile" }
+                { chatID: 4, text: "...", callback: "" }
             ]
         },
         {
             chatID: 4,
-            speaker: "candy",
-            text: "Wha.. you beleived her? Who's ever heard of a girls only house? You've been walking around town dressed " +
-                "as a girl all day! ",
+            speaker: "treyvon",
+            text: "Ohhh you can dance for me anytime girl. With a butt like that you gotta be able to shake them hips, sexy. ",
             button: [
-                { chatID: 5, text: sc.n("tiffany") + "!", callback: "tifsmile" }
+                { chatID: 5, text: "...", callback: "" }
             ]
         },
         {
             chatID: 5,
             speaker: "tiffany",
-            text: "Sorry " + sc.n("me") + ". I couldn't help it. But we had so much fun shopping and playing dress up at the mall.",
+            text: "Oh she can totally shake it, can't you? You should feel those hips of hers!",
             button: [
-                { chatID: 6, text: sc.n("tiffany") + "!", callback: "tifstraight" }
+                { chatID: 6, text: "Wha?", callback: "grab" }
             ]
         },
         {
             chatID: 6,
-            speaker: "candy",
-            text: "You walked around like that at the mall! That would be so embarrasing! ",
+            speaker: "treyvon",
+            text: "Oh yea! That a nice ass you got there. I bet you can take a cock really good. What did you say your name was?",
             button: [
-                { chatID: 7, text: "It was! She paraded me in front of my ex!", callback: "tiftalk candysmile" }
+                { chatID: 7, text: "Oh my, that's your hand on my butt.. ", callback: "" }
             ]
         },
         {
             chatID: 7,
-            speaker: "tiffany",
-            text: "He got kicked out of his house, I told him he could crash in our extra bedroom. I'm going to show him his room. ",
+            speaker: "treyvon",
+            text: "I know. You don't sqeeze the fruit until you buy it. So what's your name girl?",
             button: [
-                { chatID: -1, text: "[Follow Tiffany to your room]", callback: "goRoom" }
+                { chatID: 8, text: "It's... ahh........ummmmm........" + g.get("girlname") + "...", callback: "" }
             ]
         },
         {
             chatID: 8,
-            speaker: "candy",
-            text: "HHay sweetie, I bet you would love to watch us fuck each other... You'll have to wait for the next release.",
-            button: []
+            speaker: "treyvon",
+            text: g.get("girlname") + ". That's are really pretty name, for a really pretty girl. I'm " + sc.n("treyvon") + ". I'm sure you read my " +
+            "name tag, but I wanted you to know what you'll be screaming later. **wink**",
+            button: [
+                { chatID: 9, text: "...", callback: "" }
+            ]
         },
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "Oh yea, I bet you would love to see me eat " + sc.n('candy') + " out, but you'll have to wait for the next release. ",
-            button: []
-        },
-        {
-            chatID: 10,
-            speaker: "tiffany",
-            text: "Sorry baby, you'll have to come visit me on the next release.",
-            button: []
-        },
-        {
-            chatID: 11,
-            speaker: "candy",
-            text: "I bet you want to watch me suck " + sc.n("chad") + "'s dick.. you'll have to wait for the next releases",
-            button: []
+            text: "You two are really hitting it off. I guess I could give you two some alone time.... Oh yea, I forgot " + sc.n("candy") + " wanted " +
+                "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + g.get("girlname") + " home. ",
+            button: [
+                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " up to her room]", callback: "followtif" }
+            ]
         }
     ];
     if (cArray.length > chatID && chatID > -1)

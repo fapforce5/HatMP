@@ -196,12 +196,20 @@ room200.btnclick = function (name) {
             cl.add("panties", "q");
             cl.c.panties = "q";
             nav.killbutton("panty_h");
+            $.each(cl.saveOutfit, function (i, v) {
+                if (i !== 4)
+                    cl.saveOutfit[i].panties = "q";
+            });
             chat(134, 200);
             break;
         case "panty_h":
             cl.add("panties", "h");
             cl.c.panties = "h";
             nav.killbutton("panty_q");
+            $.each(cl.saveOutfit, function (i, v) {
+                if (i !== 4)
+                    cl.saveOutfit[i].panties = "h";
+            });
             chat(135, 200);
             break;
         default:
@@ -1815,7 +1823,7 @@ room200.chat = function (chatID) {
         {
             chatID: 128,
             speaker: "missy",
-            text: "You just stay there while I get some work done around here. You're lucky I'm only keeping you on the rack. " +
+            text: "YYou're lucky I'm only keeping you on the rack. " +
                 "The next time you make me angry it will be soooo much worse. ",
             button: [
                 { chatID: 129, text: "MMmMMMmm", callback: "20stand" }
@@ -1993,7 +2001,7 @@ room200.chat = function (chatID) {
         {
             chatID: 149,
             speaker: "missy",
-            text: "......I know... Your cage isn't too small for your cock, your cock is too large for the cage. We just need to make it smaller. " +
+            text: "......I know... The cage isn't too small for your cock, your cock is too large for the cage. We just need to make it smaller. " +
                 "One second while I get the cream... hehe it's not that kind of cream.",
             button: [
                 { chatID: 150, text: "...", callback: "cock6" }
