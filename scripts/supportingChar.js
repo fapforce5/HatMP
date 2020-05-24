@@ -13,7 +13,6 @@ sc.char = [
     { name: "stormy", display: "Stormy", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false },
     { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true },
-    { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
     { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true },
     { name: "govlady", display: "The clerk", image: "govlady.png", step: 0, max: 0, show: false, setName: false },
     { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true },
@@ -40,6 +39,9 @@ sc.char = [
     { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true },
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, max: 0, show: false, setName: false },
     { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false },
+    { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false },
+    { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false },
+    { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
 ];
 

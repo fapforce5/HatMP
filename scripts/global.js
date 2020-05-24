@@ -97,6 +97,7 @@ g.st = [
     { n: "gworkout", t: false, q: "day" },
     { n: "shinkCock", t: false, q: "day" },
     { n: "bigguy", t: false, q: "day" },
+    { n: "cardgame", t: false, q: "day" },
 ];
 
 g.i = function (name) {
@@ -305,6 +306,9 @@ g.rooms = [
     { roomID: 102, name: "Boss's Office", image: "102_constBoss/102_boss.png", nightImage: "102_constBoss/102_boss.png", houseID: 100, btn: "roomBtn_102.png" },
     { roomID: 103, name: "Work", image: "103_constSite/103_sweep.jpg", nightImage: "103_constSite/103_sweepnight.jpg", houseID: 100, btn: "roomBtn_103.png" },
 
+    { roomID: 125, name: "Jimmy's House", image: "125_poker/basement.jpg", nightImage: "125_poker/basement_night.jpg", houseID: 125, btn: "roomBtn_125.png" },
+
+
     { roomID: 200, name: "Missy PI Entrace", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 200, btn: "roomBtn_200.png" },
     { roomID: 201, name: "Bathroom", image: "201_bathroom/201_bathroom.jpg", nightImage: "201_bathroom/201_bathroom.jpg", houseID: 200, btn: "roomBtn_201.png" },
     { roomID: 202, name: "Desk Side", image: "202_sideDesk/202_sideDesk.jpg", nightImage: "202_sideDesk/202_sideDesk.jpg", houseID: 200, btn: "roomBtn_202.png" },
@@ -370,6 +374,7 @@ g.roomMap = [
     { roomID: 50, access: true, darkAccess: true, left: 411, top: 369, width: 395, height: 311, img: "map/50.png", night: "map/50_night.png", map: 1 },
     { roomID: 75, access: false, darkAccess: false, left: 1649, top: 780, width: 178, height: 212, img: "map/75.png", night: "map/75_night.png", map: 1 },
     { roomID: 100, access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
+    { roomID: 125, access: true, darkAccess: true, left: 1194, top: 824, width: 107, height: 167, img: "map/125.png", night: "map/125_night.png", map: 1 },
     { roomID: 203, access: false, darkAccess: false, left: 1671, top: 370, width: 213, height: 257, img: "map/203.png", night: "map/203_night.png", map: 2 },
     { roomID: 250, access: true, darkAccess: false, left: 1440, top: 440, width: 230, height: 166, img: "map/250.png", night: "map/250_night.png", map: 2 },
     { roomID: 350, access: true, darkAccess: false, left: 1046, top: 773, width: 297, height: 213, img: "map/350.png", night: "map/350_night.png", map: 2 },

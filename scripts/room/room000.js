@@ -65,7 +65,7 @@ room0.btnclick = function (name) {
                 "type": "btn",
                 "name": "map_1",
                 "left": 997,
-                "top": 977,
+                "top": 900,
                 "width": 90,
                 "height": 101,
                 "image": "map/arrowDown.png"
