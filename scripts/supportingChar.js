@@ -218,6 +218,7 @@ sc.events = [
     { name: "bimbo", step: 1, txt: "Visit at home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bimbo", step: 2, txt: "Free use", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "g", step: -2, txt: "Rope Game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: -1, txt: "Back Gym", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: 1, txt: "First met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -226,6 +227,10 @@ sc.events = [
     { name: "treyvon", step: 0, txt: "nope", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "treyvon", step: 1, txt: "Tif Scene", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "treyvon", step: 2, txt: "Can enter apartment building", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "kei", step: 5, txt: "Jada visited game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "jada", step: 1, txt: "Visited card game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 ];
 
 sc.setMax = function () {
@@ -330,6 +335,8 @@ sc.removeStep = function (name, step) {
 };
 
 sc.incstep = function (name, amount) {
+    if (amount == "undefined")
+        amount = 1;
     for (var i = 0; i < sc.char.length; i++) {
         if (sc.char[i].name === name) {
             sc.setstep(name, sc.char[i].step + amount);

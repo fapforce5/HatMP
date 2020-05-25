@@ -164,13 +164,9 @@ room7.chatcatch = function (callback) {
             cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
             cl.c.pj = cl.saveOutfit[thisEntry].pj;
             cl.display();
-            if (!sc.checkevent("lola", -1) && cl.hasClothing("panties", "w"))
-                g.internal = "room10pass";
             char.room(10);
             break;
         case "o4":
-            if (!sc.checkevent("lola", -1) && cl.hasClothing("panties", "w"))
-                g.internal = "room10pass";
             char.room(10);
             break;
         case "shave":

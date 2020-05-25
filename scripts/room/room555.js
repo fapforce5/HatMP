@@ -32,10 +32,14 @@ room555.main = function () {
 room555.btnclick = function (name) {
     switch (name) {
         case "chad":
-
+            if (cl.appearance() > 1)
+                chat(7, 555);
+            else
+                chat(8, 555);
             break;
         case "g":
-
+            nav.killbutton("chad");
+            chat(9, 555);
             break;
         default:
             break;
@@ -60,6 +64,19 @@ room555.chatcatch = function (callback) {
             else
                 chat(6, 555);
             break;
+        case "rows":
+            if (!sc.checkevent("g", -2)) {
+                sc.setstep("g", -2);
+                chat(10, 555);
+            }
+            else {
+
+                chat(12, 555);
+            }
+            break;
+        case "rows1":
+            //nav.bg("")
+            break;
         default:
             break;
     }
@@ -70,7 +87,7 @@ room555.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "g",
-            text: "Clothes are allowed back here. Strip if off bitch.",
+            text: "Clothes aren't allowed back here. Strip if off bitch.",
             button: [
                 { chatID: -1, text: "[Strip]", callback: "strip" }
             ]
@@ -122,6 +139,59 @@ room555.chat = function (chatID) {
             text: "Hahaha you have such a tiny cock! I get chicks laugh at you when you pull down your pants!",
             button: [
                 { chatID: -1, text: "Oh, they do..", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "chad",
+            text: "You're looking good, but this will be a future release.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "chad",
+            text: "No way loser, I'm not training you. Maybe come back when you got some tits faggot.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "g",
+            text: "Ok champ, let's work on that puny little body of yours. What do you want to do? ",
+            button: [
+                { chatID: -1, text: "Toe Touches", callback: "" },
+                { chatID: -1, text: "Standing Rows", callback: "rows" },
+                { chatID: -1, text: "", callback: "" },
+                { chatID: -1, text: "Nevermind", callback: "" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "g",
+            text: "So this is the first time we're going to do Standing Rows. The point of this exercise is to make you back more sexy and " +
+                "give you an hourglass figure. I get so bored with the normal Standing Rows so I put in a bit of a twist, you're going to lift " +
+            "me up. The added bonus for me is that I like being tied up.",
+            button: [
+                { chatID: 11, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "g",
+            text: "I'm going to tie myself into position, you grab the ropes and lift me up. Do you think you can handle that?",
+            button: [
+                { chatID: 12, text: "I can!", callback: "rows1" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "g",
+            text: "I'm going to tie myself into position, you grab the ropes and lift me up. Do you think you can handle that?",
+            button: [
+                { chatID: -1, text: "I can!", callback: "" }
             ]
         },
     ];
