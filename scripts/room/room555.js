@@ -41,6 +41,53 @@ room555.btnclick = function (name) {
             nav.killbutton("chad");
             chat(9, 555);
             break;
+        case "row1":
+            nav.killall();
+            nav.bg("555_backgym/pull2.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "row2",
+                "left": 380,
+                "top": 0,
+                "width": 236,
+                "height": 1080,
+                "image": "555_backgym/rope2l.png"
+            }, 555);
+            nav.button({
+                "type": "btn",
+                "name": "row2",
+                "left": 1306,
+                "top": 0,
+                "width": 236,
+                "height": 1066,
+                "image": "555_backgym/rope2r.png"
+            }, 555);
+            if (g.pass === 5)
+                chat(13, 555);
+            break;
+        case "row2":
+            g.pass++;
+            nav.killall();
+            nav.bg("555_backgym/pull1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "row1",
+                "left": 0,
+                "top": 0,
+                "width": 364,
+                "height": 1080,
+                "image": "555_backgym/rope1l.png"
+            }, 555);
+            nav.button({
+                "type": "btn",
+                "name": "row1",
+                "left": 1674,
+                "top": 0,
+                "width": 246,
+                "height": 1066,
+                "image": "555_backgym/rope1r.png"
+            }, 555);
+            break;
         default:
             break;
     }
@@ -75,7 +122,58 @@ room555.chatcatch = function (callback) {
             }
             break;
         case "rows1":
-            //nav.bg("")
+            g.pass = 0;
+            nav.killall();
+            nav.bg("555_backgym/pull1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "row1",
+                "left": 0,
+                "top": 0,
+                "width": 364,
+                "height": 1080,
+                "image": "555_backgym/rope1l.png"
+            }, 555);
+            nav.button({
+                "type": "btn",
+                "name": "row1",
+                "left": 1674,
+                "top": 0,
+                "width": 246,
+                "height": 1066,
+                "image": "555_backgym/rope1r.png"
+            }, 555);
+            break;
+        case "toetouch":
+            nav.killbutton("g");
+            nav.button({
+                "type": "img",
+                "name": "toe",
+                "left": 633,
+                "top": 0,
+                "width": 952,
+                "height": 1080,
+                "image": "555_backgym/bend.gif"
+            }, 555);
+            setTimeout(function () { chat(15, 555); }, 5000);
+            break;
+        case "exitUpper":
+            g.mod("fitness", 30);
+            g.mod("energy", -50);
+            g.mod("leg", 34);
+            char.addtime(60);
+            g.setflag("gworkout");
+            cl.undo();
+            char.room(551);
+            break;
+        case "exitLower":
+            g.mod("fitness", 30);
+            g.mod("energy", -50);
+            g.mod("body", 34);
+            char.addtime(60);
+            g.setflag("gworkout");
+            cl.undo();
+            char.room(551);
             break;
         default:
             break;
@@ -162,9 +260,9 @@ room555.chat = function (chatID) {
             speaker: "g",
             text: "Ok champ, let's work on that puny little body of yours. What do you want to do? ",
             button: [
-                { chatID: -1, text: "Toe Touches", callback: "" },
+                { chatID: 14, text: "Toe Touches", callback: "" },
                 { chatID: -1, text: "Standing Rows", callback: "rows" },
-                { chatID: -1, text: "", callback: "" },
+                { chatID: -1, text: "n/a", callback: "" },
                 { chatID: -1, text: "Nevermind", callback: "" },
             ]
         },
@@ -183,15 +281,39 @@ room555.chat = function (chatID) {
             speaker: "g",
             text: "I'm going to tie myself into position, you grab the ropes and lift me up. Do you think you can handle that?",
             button: [
-                { chatID: 12, text: "I can!", callback: "rows1" }
+                { chatID: 12, text: "I can!", callback: "" }
             ]
         },
         {
             chatID: 12,
             speaker: "g",
-            text: "I'm going to tie myself into position, you grab the ropes and lift me up. Do you think you can handle that?",
+            text: "Don't drop me with those puny little arms of yours!",
             button: [
-                { chatID: -1, text: "I can!", callback: "" }
+                { chatID: -1, text: "Ok!", callback: "rows1" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "g",
+            text: "Good work out. Now hit the showers bitch.",
+            button: [
+                { chatID: -1, text: "Ok!", callback: "exitUpper" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "g",
+            text: "I like watching you do toe touches. Your pathetic little butt actually looks cute when you do it. Ready begin.",
+            button: [
+                { chatID: -1, text: "Ok!", callback: "toetouch" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "g",
+            text: "Ok slick, that's enough. Go hit the showers.",
+            button: [
+                { chatID: -1, text: "Ok!", callback: "exitLower" }
             ]
         },
     ];
