@@ -21,11 +21,9 @@ room555.main = function () {
             "image": "555_backgym/g.png"
         }
     ];
-    var navList = [0];
     $.each(btnList, function (i, v) {
         nav.button(v, 555);
     });
-    nav.buildnav(navList);
     chat(0, 555);
 };
 
@@ -87,6 +85,46 @@ room555.btnclick = function (name) {
                 "height": 1066,
                 "image": "555_backgym/rope1r.png"
             }, 555);
+            break;
+        case "thrust":
+            g.pass++;
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "thrust1",
+                "left": 231,
+                "top": 0,
+                "width": 1599,
+                "height": 1080,
+                "image": "555_backgym/thrust2.png"
+            }, 555);
+            break;
+        case "thrust1":
+            if (g.pass > 5) {
+                nav.killall();
+                nav.button({
+                    "type": "img",
+                    "name": "thrust1",
+                    "left": 231,
+                    "top": 0,
+                    "width": 1559,
+                    "height": 1080,
+                    "image": "555_backgym/thrust3.png"
+                }, 555);
+                chat(25, 555);
+            }
+            else {
+                nav.killall();
+                nav.button({
+                    "type": "btn",
+                    "name": "thrust",
+                    "left": 231,
+                    "top": 0,
+                    "width": 1559,
+                    "height": 1080,
+                    "image": "555_backgym/thrust1.png"
+                }, 555);
+            }
             break;
         default:
             break;
@@ -175,6 +213,136 @@ room555.chatcatch = function (callback) {
             cl.undo();
             char.room(551);
             break;
+        case "exitLowercum":
+            cl.doCum();
+            g.mod("fitness", 30);
+            g.mod("energy", -50);
+            g.mod("body", 34);
+            char.addtime(60);
+            g.setflag("gworkout");
+            cl.undo();
+            char.room(551);
+            break;
+        case "hips":
+            if (sc.checkevent("g", -3)) {
+                chat(16, 555);
+            }
+            else {
+                chat(16, 555);
+                sc.setstep("g", -3);
+            }
+            break;
+        case "hip1":
+            nav.killbutton("g");
+            nav.killbutton("hip");
+            nav.button({
+                "type": "img",
+                "name": "hip",
+                "left": 385,
+                "top": 529,
+                "width": 1221,
+                "height": 551,
+                "image": "555_backgym/thrust0b.png"
+            }, 555);
+            break;
+        case "hip2":
+            nav.killbutton("hip");
+            nav.button({
+                "type": "img",
+                "name": "hip",
+                "left": 385,
+                "top": 529,
+                "width": 1221,
+                "height": 551,
+                "image": "555_backgym/thrust0a.png"
+            }, 555);
+            break;
+        case "hip3":
+            nav.killbutton("hip");
+            nav.button({
+                "type": "img",
+                "name": "hip",
+                "left": 389,
+                "top": 0,
+                "width": 1234,
+                "height": 1080,
+                "image": "555_backgym/thrust0c.png"
+            }, 555);
+            break;
+        case "hip4":
+            nav.killbutton("hip");
+            nav.button({
+                "type": "img",
+                "name": "hip",
+                "left": 385,
+                "top": 0,
+                "width": 1221,
+                "height": 1080,
+                "image": "555_backgym/thrust0d.png"
+            }, 555);
+            break;
+        case "hip5":
+            g.mod("arousal", 100);
+            nav.killbutton("hip");
+            nav.button({
+                "type": "img",
+                "name": "hip",
+                "left": 231,
+                "top": 0,
+                "width": 1599,
+                "height": 1080,
+                "image": "555_backgym/thrust1.png"
+            }, 555);
+            break;
+        case "hip5Click":
+            g.pass = 0;
+            nav.killbutton("hip");
+            nav.button({
+                "type": "btn",
+                "name": "thrust",
+                "left": 231,
+                "top": 0,
+                "width": 1599,
+                "height": 1080,
+                "image": "555_backgym/thrust1.png"
+            }, 555);
+            break;
+        case "hip6":
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "hip",
+                "left": 231,
+                "top": 0,
+                "width": 1559,
+                "height": 1080,
+                "image": "555_backgym/thrust2.png"
+            }, 555);
+            break;
+        case "hip7":
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "thrust",
+                "left": 231,
+                "top": 0,
+                "width": 1559,
+                "height": 1080,
+                "image": "555_backgym/thrust4.png"
+            }, 555);
+            break;
+        case "hip8":
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "g",
+                "left": 1321,
+                "top": 86,
+                "width": 549,
+                "height": 994,
+                "image": "555_backgym/gcum.png"
+            }, 555);
+            break;
         default:
             break;
     }
@@ -262,7 +430,7 @@ room555.chat = function (chatID) {
             button: [
                 { chatID: 14, text: "Toe Touches", callback: "" },
                 { chatID: -1, text: "Standing Rows", callback: "rows" },
-                { chatID: -1, text: "n/a", callback: "" },
+                { chatID: -1, text: "Hip Thrusters", callback: "hips" },
                 { chatID: -1, text: "Nevermind", callback: "" },
             ]
         },
@@ -314,6 +482,103 @@ room555.chat = function (chatID) {
             text: "Ok slick, that's enough. Go hit the showers.",
             button: [
                 { chatID: -1, text: "Ok!", callback: "exitLower" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "g",
+            text: "Ok champ, I'm going to let you try some hip thrusters. Lay on your back with your knees up, then thrust up your hips. " +
+            "focus on squeezing your butt when you do it. Ready",
+            button: [
+                { chatID: 17, text: "I am", callback: "hip1" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "g",
+            text: "Ok, now thrust your hips up",
+            button: [
+                { chatID: 18, text: "I am", callback: "hip2" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "g",
+            text: "And down",
+            button: [
+                { chatID: 19, text: "I am", callback: "hip1" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "g",
+            text: "This is boring...",
+            button: [
+                { chatID: 20, text: "hmmm", callback: "hip3" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "g",
+            text: "Now thrust up",
+            button: [
+                { chatID: 21, text: "hmmm", callback: "hip4" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "g",
+            text: "And down",
+            button: [
+                { chatID: 22, text: "hmmm", callback: "hip3" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "g",
+            text: "You know, it's such a waste of a good cock... Let's try something a bit different....",
+            button: [
+                { chatID: 23, text: "?", callback: "hip5" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "g",
+            text: "OOooooo thrust up! thrust up",
+            button: [
+                { chatID: 24, text: "[Thrust into her ass]", callback: "hip6" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "g",
+            text: "Fuck keep going",
+            button: [
+                { chatID: -1, text: "...", callback: "hip5Click" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "g",
+            text: "I can feel your cum filling my tight ass up!",
+            button: [
+                { chatID: 26, text: "...", callback: "hip7" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "g",
+            text: "It's sooo full of your cum!",
+            button: [
+                { chatID: 27, text: "...", callback: "hip8" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "g",
+            text: "Good workout today. I love a cum filled ass. Now hit the showers champ.",
+            button: [
+                { chatID: -1, text: "...", callback: "exitLowercum" }
             ]
         },
     ];

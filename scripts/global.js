@@ -235,13 +235,15 @@ g.checkPop = function (name, amount) {
                 g.popUpNotice("You feel more feminine");
             break;
         case "energy":
+            if (amount > 0)
+                g.popUpNotice("You Gained " + amount.toString() + " Energy");
             cl.energydisplay();
             break;
         case "arousal": //0-100
             cl.cockDisplay();
             break;
         case "fitness":
-            g.popUpNotice((amount < 0 ? "Decreased" : "Increased" + " Fitness: ") + Math.abs(amount));
+            g.popUpNotice("You fitness " + (amount < 0 ? "Decreased" : "Increased" + "  by ") + Math.abs(amount));
             break;
         case "leg":
             g.popUpNotice("Your legs are more " + (amount < 0 ? "weaker" : "stonger"));
