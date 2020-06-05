@@ -223,6 +223,7 @@ room8.main = function () {
             cl.saveOutfit[entry].shirt = cl.c.shirt;
             cl.saveOutfit[entry].dress = cl.c.dress;
             cl.saveOutfit[entry].swimsuit = cl.c.swimsuit;
+            cl.saveOutfit[entry].pj = cl.c.pj;
             cl.saveOutfit[entry].accessories = cl.c.accessories;
             var newName = $('.wardrobe-quick-name[data-e=' + entry + ']').val().trim();
             if (newName.length > 20)

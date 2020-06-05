@@ -75,6 +75,7 @@ room503.chatcatch = function (callback) {
             g.set("shave", g.dt);
             cl.displayMain(0, 400, .22, "shower");
             inv.use("razor");
+            char.addtime(15);
             cl.display();
             break;
         default:

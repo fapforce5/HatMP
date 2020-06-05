@@ -15,11 +15,12 @@ room11.main = function () {
         "type": "btn",
         "name": "mainChar",
         "title": "My Room",
-        "left": 429,
-        "top": 387,
-        "width": 44,
-        "height": 429,
-        "image": "11_hallway/11_mainCharDoor.png"
+        "left": 628,
+        "top": 350,
+        "width": 99,
+        "height": 486,
+        "image": "11_hallway/11_mainCharDoor.png",
+        "night": "11_hallway/11_mainCharDoorNight.png"
     });
 
     //Bathroom
@@ -28,11 +29,12 @@ room11.main = function () {
             "type": "btn",
             "name": "bathroomClose",
             "title": "Bathroom",
-            "left": 1374,
-            "top": 179,
-            "width": 333,
-            "height": 901,
-            "image": "11_hallway/11_bathroomClosed.png"
+            "left": 1499,
+            "top": 118,
+            "width": 294,
+            "height": 962,
+            "image": "11_hallway/11_bathroomClosed.png",
+            "night": "11_hallway/11_bathroomClosedNight.png"
         });
     }
     else {
@@ -40,11 +42,12 @@ room11.main = function () {
             "type": "btn",
             "name": "bathroomOpen",
             "title": "Bathroom",
-            "left": 1374,
-            "top": 179,
-            "width": 333,
-            "height": 901,
-            "image": "11_hallway/11_bathroomOpen.png"
+            "left": 1499,
+            "top": 118,
+            "width": 294,
+            "height": 962,
+            "image": "11_hallway/11_bathroomOpen.png",
+            "night": "11_hallway/11_bathroomOpenNight.png"
         });
         navList.push(12);
     }
@@ -55,11 +58,12 @@ room11.main = function () {
             "type": "btn",
             "name": "sisterOpen",
             "title": sc.n("el") + "'s Room",
-            "left": 987,
-            "top": 412,
-            "width": 54,
-            "height": 360,
-            "image": "11_hallway/11_sisterOpen.png"
+            "left": 1276,
+            "top": 388,
+            "width": 53,
+            "height": 409,
+            "image": "11_hallway/11_sisterOpen.png",
+            "night": "11_hallway/11_sisterOpenNight.png"
         });
         navList.push(13);
     }
@@ -68,40 +72,53 @@ room11.main = function () {
             "type": "btn",
             "name": "sisterClose",
             "title": sc.n("el") + "'s Locked Room",
-            "left": 987,
-            "top": 412,
-            "width": 54,
-            "height": 360,
-            "image": "11_hallway/11_sisterClosed.png"
+            "left": 1276,
+            "top": 388,
+            "width": 53,
+            "height": 409,
+            "image": "11_hallway/11_sisterClosed.png",
+            "night": "11_hallway/11_sisterClosedNight.png"
         });
     }
 
-    //Landlord's room
-    if (motherLocation === 14 && openDoor) {
-        btnList.push({
-            "type": "btn",
-            "name": "motherOpen",
-            "title": sc.n("landlord") + "'s Room",
-            "left": 608,
-            "top": 451,
-            "width": 277,
-            "height": 241,
-            "image": "11_hallway/11_motherOpen.png"
-        });
-        navList.push(14);
-    }
-    else {
-        btnList.push({
-            "type": "btn",
-            "name": "motherClose",
-            "title": sc.n("landlord") + "'s Locked Room",
-            "left": 608,
-            "top": 451,
-            "width": 277,
-            "height": 241,
-            "image": "11_hallway/11_motherClosed.png"
-        });
-    }
+    btnList.push({
+        "type": "btn",
+        "name": "downStairs",
+        "title": "Down Stairs",
+        "left": 345,
+        "top": 88,
+        "width": 255,
+        "height": 945,
+        "image": "11_hallway/downStairs.png",
+        "night": "11_hallway/downStairsNight.png"
+    });
+
+    ////Landlord's room
+    //if (motherLocation === 14 && openDoor) {
+    //    btnList.push({
+    //        "type": "btn",
+    //        "name": "motherOpen",
+    //        "title": sc.n("landlord") + "'s Room",
+    //        "left": 608,
+    //        "top": 451,
+    //        "width": 277,
+    //        "height": 241,
+    //        "image": "11_hallway/11_motherOpen.png"
+    //    });
+    //    navList.push(14);
+    //}
+    //else {
+    //    btnList.push({
+    //        "type": "btn",
+    //        "name": "motherClose",
+    //        "title": sc.n("landlord") + "'s Locked Room",
+    //        "left": 608,
+    //        "top": 451,
+    //        "width": 277,
+    //        "height": 241,
+    //        "image": "11_hallway/11_motherClosed.png"
+    //    });
+    //}
   
     $.each(btnList, function (i, v) {
         nav.button(v, 11);
@@ -144,6 +161,9 @@ room11.btnclick = function (name) {
                 chat(4, 11);
             else
                 chat(1, 11);
+            break;
+        case "downStairs":
+            char.room(16);
             break;
         default:
             break;

@@ -1,28 +1,29 @@
 ﻿//Room name
 var room51 = {};
 room51.main = function () {
-    //var btnList = [
-    //    {
-    //        "type": "btn",
-    //        "name": "name",
-    //        "left": 1741,
-    //        "top": 618,
-    //        "width": 130,
-    //        "height": 252,
-    //        "image": "54_folder/hole.png"
-    //    }
-    //];
+    var btnList = [
+        {
+            "type": "btn",
+            "name": "hallway",
+            "left": 1033,
+            "top": 268,
+            "width": 260,
+            "height": 437,
+            "image": "51_livingRoom/hallway.png"
+        }
+    ];
 
-    //$.each(btnList, function (i, v) {
-    //    nav.button(v, 54);
-    //});
-    var navList = [50];
+    $.each(btnList, function (i, v) {
+        nav.button(v, 51);
+    });
+    var navList = [55, 0];
     nav.buildnav(navList);
 };
 
 room51.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "hallway":
+            char.room(55);
             break;
         default:
             break;

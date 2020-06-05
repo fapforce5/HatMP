@@ -16,7 +16,7 @@ room53.main = function () {
     //$.each(btnList, function (i, v) {
     //    nav.button(v, 54);
     //});
-    var navList = [50];
+    var navList = [51, 55];
     nav.buildnav(navList);
 };
 

@@ -61,17 +61,7 @@ room52.main = function () {
             }
         ];
 
-        var navList = new Array();
-
-        if (cl.c.panties === null && cl.c.pj === null && cl.c.pants === null) {
-            chat(8, 52);
-        }
-        else {
-            navList.push(50);
-            
-            if (g.hourBetween(6, 21) && cl.hasoutfit("public"))
-                navList.push(0);
-        }
+        navList = [51, 55];
        
         $.each(btnList, function (i, v) {
             nav.button(v, 52);
