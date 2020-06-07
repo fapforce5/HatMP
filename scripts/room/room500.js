@@ -93,6 +93,9 @@ room500.chatcatch = function (callback) {
         case "sleep":
             char.room(502);
             break;
+        case "leaveNoZoey":
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -130,7 +133,7 @@ room500.chat = function (chatID) {
             speaker: "me",
             text: "She must be working at the Freak Bar",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "leave" }
+                { chatID: -1, text: "[Leave]", callback: "leaveNoZoey" }
             ]
         },
         {
@@ -138,7 +141,7 @@ room500.chat = function (chatID) {
             speaker: "me",
             text: "I've already hung out with her today. I don't want her to think I'm crazy.",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "leave" }
+                { chatID: -1, text: "[Leave]", callback: "leaveNoZoey" }
             ]
         },
         {

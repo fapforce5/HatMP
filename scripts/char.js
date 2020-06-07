@@ -288,6 +288,7 @@ menu.initBuild = function (type) {
     $('#menu_parent').append('<img src="./images/phone/bMap.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 960) + '" data-type="map" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bHormone.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 1110) + '" data-type="hormone" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
+    $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 810) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bAdmin.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 660) + '" data-type="admin" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bPatreon.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 1110) + '" data-type="patreon" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
@@ -373,15 +374,52 @@ menu.mClick = function (type) {
             $('.menu-load').css({ 'font-size': 20 * g.ratio + 'px' });
             break;
         case "help":
-            $(".menu-buttonKill").remove();
-            $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(730, 585, 167, 651) + ' background:#ccc; padding:' + 15 * g.ratio + 'px;">' +
-                'Thank you for playing my game. All artwork is done by a paid artist. If you would like to support the game' +
-                'and assist with the costs of making it please visit my Patreon.' +
-                '<div style="width:100%; margin:15px 0; text-align:center;"><a href="https://www.patreon.com/FF5" target="_blank"><img src="./images/room/1_startScreen/become_a_patron_button.png" /></a></div>' +
-                'If you have a bug, or just wish to make a request you can email me at: ' +
-                '<a id="menu_emailDev" href="mailto:fapforce5@gmail.com?subject=Bug Report" style="color:#1c4d68;">fapforce5@gmail.com</a>' +
-                '<br/><br/>Version: ' + g.versionText +
-                '</div>');
+            $('.menu-buttonKill').remove();
+            $('.menu-button').remove();
+            $('.menu-phoneBG').addClass('menu-phoneBGRotate');
+            setTimeout(function () {
+                var thisImg = inv.get(inv.phone).image.split('.');
+                thisImg = thisImg[0] + "_rotate." + thisImg[1];
+                $('#menu_parent').html('<img src="./images/phone/' + thisImg + '" style="position:absolute; ' + g.makeCss(1015, 1450, 32, 235) + '" class="menu-phoneBG" />');
+                $('#menu_parent').append('<img src="./images/phone/power_rotate.png" style="position:absolute; ' + g.makeCss(131, 131, 474, 1533) + '" data-type="close" class="menu-button"/>');
+                $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
+                $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
+                g.makeCss()
+                $('#menu_parent').append('<img src="./images/phone/help/help1.jpg" style="position:absolute; ' + g.makeCss(622, 1110, 93, 417) + '" id="menu_help_display" data-help="1"/>');
+                $('#menu_parent').append('<img src="./images/general/arrowLeft.png" style="position:absolute; ' + g.makeCss(150, 233, 800, 600) + '" class="hover-display menu-help-back"/>');
+                $('#menu_parent').append('<img src="./images/general/arrowRight.png" style="position:absolute; ' + g.makeCss(150, 233, 800, 1087) + '" class="hover-display menu-help-forward"/>');
+
+                $(".menu-help-forward").click(function () {
+                    var num = parseInt($('#menu_help_display').attr('data-help'));
+                    num = num > 5 ? num = 1 : num + 1;
+                    $('#menu_help_display').prop("src", "./images/phone/help/help" + num + ".jpg").attr("data-help", num);
+                    console.log(num)
+                });
+
+                $(".menu-help-back").click(function () {
+                    var num = parseInt($('#menu_help_display').attr('data-help'));
+                    num = num < 2 ? num = 6 : num - 1;
+                    $('#menu_help_display').prop("src", "./images/phone/help/help" + num + ".jpg").attr("data-help", num);
+                });
+                //sc.buildIcons();
+
+                //$('.sc-menu-button').click(function () {
+                //    sc.buildIcons();
+                //});
+            }, 800);
+
+            //$(".menu-buttonKill").remove();
+            //$('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(730, 585, 167, 651) + ' background:#ccc; padding:' + 15 * g.ratio + 'px;">' +
+            //    'Thank you for playing my game. All artwork is done by a paid artist. If you would like to support the game' +
+            //    'and assist with the costs of making it please visit my Patreon.' +
+            //    '<div style="width:100%; margin:15px 0; text-align:center;"><a href="https://www.patreon.com/FF5" target="_blank"><img src="./images/room/1_startScreen/become_a_patron_button.png" /></a></div>' +
+            //    'If you have a bug, or just wish to make a request you can email me at: ' +
+            //    '<a id="menu_emailDev" href="mailto:fapforce5@gmail.com?subject=Bug Report" style="color:#1c4d68;">fapforce5@gmail.com</a>' +
+            //    '<br/><br/>Version: ' + g.versionText +
+            //    '</div>');
+            break;
+        case "patron":
+            window.open("https://www.patreon.com/FF5", "_blank"); 
             break;
         case "hormone":
             var tempEnergy = Math.floor((g.get("energy") / g.get("maxenergy")) * 100);

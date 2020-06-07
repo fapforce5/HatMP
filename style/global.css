@@ -701,6 +701,12 @@ input[type=text]:disabled{
 #room_export_hide:hover {
     background:#8e0000;
 }
+
+.hover-display:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+}
+
 @keyframes lolaSpin {
     0% { transform:rotate(0deg);}
 100% { transform:rotate(2160deg);}

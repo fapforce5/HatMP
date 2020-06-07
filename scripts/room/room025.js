@@ -39,7 +39,7 @@ room25.main = function () {
             "image": "25_dining/lAndE.png"
         });
     }
-    var navList = [16, 11, 0];
+    var navList = [16, 11, 14, 0];
     $.each(btnList, function (i, v) {
         nav.button(v, 25);
     });

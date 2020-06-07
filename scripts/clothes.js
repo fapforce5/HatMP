@@ -129,7 +129,7 @@ cl.list = [
     { type: "buttplug", name: "v", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
 
     { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "wig", name: "f", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 }
+    { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
 ];
 
 for (var q = 0; q < cl.list.length; q++) {

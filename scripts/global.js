@@ -661,6 +661,8 @@ g.initGame = function () {
             case "momRaidCloset":
             case "tookHormonePill":
             case "gworkout":
+            case "cardgame":
+            case "bigguy":
                 g.st[i].t = false;
                 break;
             default:

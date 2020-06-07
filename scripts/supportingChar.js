@@ -521,6 +521,8 @@ sc.mother = function () {
                 r = 14; //mother
             else if (hour.between(7, 8))
                 r = 25; //diningRoom
+            else if (hour.between(11, 13))
+                r = 15; //kitchen
             else if (hour.between(17, 19))
                 r = 14; //living
             else if (hour.between(19, 24))
@@ -531,6 +533,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 12;  //bathroom
+            else if (hour.between(8, 9))
+                r = 15;  //kitchen
             else if (hour.between(18, 20))
                 r = 25; //diningRoom
             else if (hour.between(19, 24))
@@ -541,9 +545,11 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 25; //diningRoom
+            else if (hour.between(17, 19))
+                r = 15; //kitchen
             else if (hour.between(19, 20))
                 r = 25; //diningRoom
-            else if (hour.between(19, 24))
+            else if (hour.between(20, 24))
                 r = 14;
             break;
         case 3: //wednesday
@@ -551,6 +557,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 12;  //bathroom
+            else if (hour.between(16, 17))
+                r = 15; //kitchen
             else if (hour.between(17, 19))
                 r = 25; //diningRoom
             else if (hour.between(19, 24))
@@ -561,6 +569,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 25; //diningRoom
+            else if (hour.between(16, 17))
+                r = 25; //kitchen
             else if (hour.between(19, 20))
                 r = 25; //diningRoom
             else if (hour.between(19, 24))
@@ -571,6 +581,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(6, 8))
                 r = 25; //diningRoom
+            else if (hour.between(16, 17))
+                r = 15; //kitchen
             else if (hour.between(17, 19))
                 r = 25; //diningRoom
             else if (hour.between(19, 24))
@@ -579,8 +591,10 @@ sc.mother = function () {
         case 6: //saturday
             if (hour.between(0, 7))
                 r = 14;
-            else if (hour.between(7, 9))
+            else if (hour.between(7, 8))
                 r = 12;  //bathroom
+            else if (hour.between(8, 9))
+                r = 15;  //kitchen
             else if (hour.between(19, 24))
                 r = 14;//bedroom
             break;

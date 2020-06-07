@@ -129,7 +129,7 @@ room14.main = function () {
         }
     }
 
-    navList = [11];
+    navList = [16];
     $.each(btnList, function (i, v) {
         nav.button(v, 14);
     });

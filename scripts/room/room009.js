@@ -123,7 +123,7 @@ function room9_btnList() {
         {
             "type": "btn",
             "name": "close",
-            "left": 1815,
+            "left": 450,
             "top": 53,
             "width": 42,
             "height": 42,
