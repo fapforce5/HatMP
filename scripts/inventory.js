@@ -54,6 +54,14 @@ inv.master = [
     { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false }
 ];
 
+inv.getall = function () {
+    for (var i = 0; i < inv.master.length; i++) {
+        inv.master[i].entry = true;
+        if (inv.master.count !== null)
+            inv.master[i].count = 10;
+    }
+}
+
 pic.master = [
     { name: "lolaTopless", display: "Lola Topless", entry: false, image: "lolaTopless.jpg", thumb: "lolaTopless.png" },
     { name: "landlordSleep", display: "Landlord Sleep", entry: false, image: "landloardSleep.jpg", thumb: "landloardSleep.png" },

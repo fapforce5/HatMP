@@ -339,7 +339,7 @@ g.rooms = [
 
     { roomID: 450, name: "Park Entrance", image: "450_park/450_bg.jpg", nightImage: "450_park/450_bg_night.jpg", houseID: 450, btn: "roomBtn_450.png" },
     { roomID: 451, name: "Men's Room", image: "451_parkMensRoom/mensroom.jpg", nightImage: "451_parkMensRoom/mensroom.jpg", houseID: 450, btn: "roomBtn_451.png" },
-    { roomID: 452, name: "Woman's Room", image: "452_parkWomansRoom/452_parkWomansRoom.png", nightImage: "452_parkWomansRoom/452_parkWomansRoom.png", houseID: 450, btn: "roomBtn_452.png" },
+    { roomID: 452, name: "Woman's Room", image: "452_parkWomansRoom/bathroom.jpg", nightImage: "452_parkWomansRoom/bathroom.jpg", houseID: 450, btn: "roomBtn_452.png" },
     { roomID: 453, name: "Stall", image: "453_stall/453_stall.png", houseID: 450, btn: "roomBtn_453.png" },
     { roomID: 454, name: "Glory Hole", image: "454_gHole/454_gHole.png", nightImage: "454_gHole/454_gHole.png", houseID: 450, btn: "roomBtn_454.png" },
     { roomID: 456, name: "Park Bench", image: "456_bench/456_bg.jpg", nightImage: "456_bench/456_bg_night.jpg", houseID: 450, btn: "roomBtn_454.png" },

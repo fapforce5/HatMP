@@ -8,30 +8,39 @@ room451.main = function () {
             {
                 "type": "btn",
                 "name": "stall1",
-                "left": 880,
-                "top": 155,
-                "width": 233,
-                "height": 703,
+                "left": 1225,
+                "top": 172,
+                "width": 166,
+                "height": 546,
                 "image": "451_parkMensRoom/451_stall1.png"
             },
             {
                 "type": "btn",
                 "name": "stall2",
-                "left": 1170,
-                "top": 185,
-                "width": 206,
-                "height": 661,
+                "left": 1001,
+                "top": 149,
+                "width": 184,
+                "height": 586,
                 "image": "451_parkMensRoom/451_stall2.png"
             },
             {
                 "type": "btn",
                 "name": "stall3",
-                "left": 1427,
-                "top": 211,
-                "width": 185,
-                "height": 623,
+                "left": 750,
+                "top": 118,
+                "width": 207,
+                "height": 632,
                 "image": "451_parkMensRoom/451_stall3.png"
-            }
+            },
+            {
+                "type": "btn",
+                "name": "mirror",
+                "left": 1621,
+                "top": 76,
+                "width": 233,
+                "height": 490,
+                "image": "451_parkMensRoom/sink.png"
+            },
         ];
 
         var navList = [450];
@@ -50,11 +59,50 @@ room451.main = function () {
 
 room451.btnclick = function (name) {
     switch (name) {
-        case "stall1":
-        case "stall2":
         case "stall3":
-            nav_roomPass = { name: name, room: "men" };
-            char.room(453);
+            nav.killall();
+            nav.bg("451_parkMensRoom/stall.jpg");
+            nav.buildnav([451]);
+            break;
+        case "stall2":
+            nav.killall();
+            nav.bg("451_parkMensRoom/gloryHoleInsert.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "insert",
+                "left": 1649,
+                "top": 158,
+                "width": 124,
+                "height": 218,
+                "image": "451_parkMensRoom/insert.png"
+            }, 451);
+            nav.buildnav([451]);
+            break;
+        case "stall1":
+            nav.killall();
+            nav.bg("451_parkMensRoom/gloryHole.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "gloryhole",
+                "left": 385,
+                "top": 158,
+                "width": 124,
+                "height": 218,
+                "image": "451_parkMensRoom/gloryhole.png"
+            }, 451);
+            nav.buildnav([451]);
+            break;
+        case "mirror":
+            nav.killall();
+            nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
+            cl.displayMirror();
+            chat(3, 451);
+            break;
+        case "insert":
+            chat(1, 451);
+            break;
+        case "gloryhole":
+            chat(2, 451);
             break;
         default:
             break;
@@ -63,7 +111,8 @@ room451.btnclick = function (name) {
 
 room451.chatcatch = function (callback) {
     switch (callback) {
-        case "":
+        case "reloadRoom":
+            char.room(451);
             break;
         default:
             break;
@@ -77,6 +126,26 @@ room451.chat = function(chatID){
             speaker: "me",
             text: "I can't go out like this. I need my " + g.internal + ". ",
             button: []
+        },
+        {
+            chatID: 1,
+            speaker: "me",
+            text: "I'm not going to stick my dick in that...",
+            button: []
+        },
+        {
+            chatID: 2,
+            speaker: "me",
+            text: "I'm not going put my mouth there.",
+            button: []
+        },
+        {
+            chatID: 3,
+            speaker: "me",
+            text: "Looking good",
+            button: [
+                { chatID: -1, text: "...", callback: "reloadRoom" }
+            ]
         }
     ];
 

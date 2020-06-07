@@ -91,6 +91,18 @@ room452.chatcatch = function(callback){
             g.pass = "jail";
             char.room(425);
             break;
+        case "woman1":
+            nav.killbutton("woman")
+            nav.button({
+                "type": "img",
+                "name": "woman",
+                "left": 1273,
+                "top": 48,
+                "width": 410,
+                "height": 1057,
+                "image": "452_parkWomansRoom/woman1.png"
+            }, 452);
+            break;
         default:
             break;
     }
@@ -107,8 +119,8 @@ room452.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "random",
-            text: "AAAAAAAAAaaaaaaaaaaaaaaaaa GET OUT OF THE WOMAN'S BATHROOM PERVERT! ",
-            button: [{ chatID: -1, text: "Oh....", callback: "leave" }]
+            text: "AAAAAAAAAaaaaaaaaaaaaaaaaa WHAT ARE YOU DOING IN HERE! ",
+            button: [{ chatID: 7, text: "Oh....", callback: "woman1" }]
         },
         {
             chatID: 2,
@@ -139,6 +151,12 @@ room452.chat = function (chatID) {
             speaker: "cop2",
             text: "And you know what they do to pretty boys like you in jail, right... hehehehe",
             button: [{ chatID: -1, text: "Ewwwww", callback: "tojail" }]
+        },
+        {
+            chatID: 1,
+            speaker: "random",
+            text: "GET OUT GET OUT GET OUT!!!",
+            button: [{ chatID: -1, text: "Oh....", callback: "leave" }]
         },
     ];
     return cArray[chatID];

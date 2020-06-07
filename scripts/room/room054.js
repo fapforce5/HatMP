@@ -2,7 +2,7 @@
 var room54 = {};
 room54.main = function () {
 
-    if (sc.getstep("tiffany") === 7) {
+    if (!sc.getstep("tiffany") === 7) {
         room54.chatcatch("tifstraight candytalk");
         chat(0, 54);
     }
