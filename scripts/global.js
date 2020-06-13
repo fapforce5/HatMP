@@ -98,6 +98,7 @@ g.st = [
     { n: "shinkCock", t: false, q: "day" },
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
+    { n: "momchat", t: false, q: "day" },
 ];
 
 g.i = function (name) {
@@ -281,7 +282,7 @@ g.rooms = [
     { roomID: 12, name: "Bathroom", image: "12_bathroom/12_bathroom.png", nightImage: "12_bathroom/12_bathroom.png", houseID: 10, btn: "roomBtn_12.png" },
     { roomID: 13, name: "Girl's Room", image: "13_sisterRoom/13_sisterRoom.png", nightImage: "13_sisterRoom/13_sisterRoomNight.png", houseID: 10, btn: "roomBtn_13.png" },
     { roomID: 14, name: "Master Bedroom", image: "14_motherRoom/14_motherRoom.jpg", nightImage: "14_motherRoom/14_motherRoomNight.jpg", houseID: 10, btn: "roomBtn_14.png" },
-    { roomID: 15, name: "Kitchen", image: "15_kitchen/15_kitchen.png", nightImage: "15_kitchen/15_kitchen.png", houseID: 10, btn: "roomBtn_15.png" },
+    { roomID: 15, name: "Kitchen", image: "15_kitchen/day.jpg", nightImage: "15_kitchen/night.jpg", houseID: 10, btn: "roomBtn_15.png" },
     { roomID: 16, name: "1st Floor", image: "16_livingRoom/16_downStairs.jpg", nightImage: "16_livingRoom/16_downStairsNight.jpg", houseID: 10, btn: "roomBtn_16.png" },
     { roomID: 17, name: "Mom's Closet", image: "17_motherCloset/017_motherCloset.png", nightImage: "17_motherCloset/017_motherCloset.png", houseID: 10, btn: "roomBtn_17.png" },
     { roomID: 18, name: "Nightstand Drawer", image: "18_bedroomDrawer/018_drawer.jpg", nightImage: "18_bedroomDrawer/018_drawer.jpg", houseID: 10, btn: "roomBtn_18.png" },
@@ -292,6 +293,7 @@ g.rooms = [
     { roomID: 23, name: "Truth or Dare", image: "24_spinTheBottle/013_spinBG.jpg", nightImage: "24_spinTheBottle/013_spinBG.jpg", houseID: 10, btn: "roomBtn_23.png" },
     { roomID: 24, name: "Spin the bottle", image: "24_spinTheBottle/013_spinBG.jpg", nightImage: "24_spinTheBottle/013_spinBG.jpg", houseID: 10, btn: "roomBtn_24.png" },
     { roomID: 25, name: "Dining Room", image: "25_dining/025_diningRoom.jpg", nightImage: "25_dining/025_diningRoomNight.jpg", houseID: 10, btn: "roomBtn_25.png" },
+    { roomID: 26, name: "Living Room", image: "26_livingRoom/dayTable.jpg", nightImage: "26_livingRoom/night.jpg", houseID: 10, btn: "roomBtn_25.png" },
 
     { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Living Room", image: "51_livingRoom/livingroom.jpg", nightImage: "51_livingRoom/livingroom.jpg", houseID: 50, btn: "roomBtn_51.png" },
@@ -663,6 +665,7 @@ g.initGame = function () {
             case "gworkout":
             case "cardgame":
             case "bigguy":
+            case "momchat":
                 g.st[i].t = false;
                 break;
             default:

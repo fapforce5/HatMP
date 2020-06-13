@@ -28,9 +28,9 @@ room350.main = function () {
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
-            if (sc.getstep("landlord") === 5)
+            if (sc.checkevent("landlord", -1))
                 chat(9, 350);
-            else if (sc.getstep("landlord") > 3) {
+            else if (sc.getstep("landlord") > 2) {
                 if (cl.getCum() < .75)
                     chat(3, 350);
                 else

@@ -44,6 +44,7 @@ room503.btnclick = function (name) {
                 chat(2, 503);
             else {
                 nav.killall();
+                cl.c.cumface = false;
                 cl.nude();
                 cl.displayMain(0, 400, .22, "shower");
                 nav.bg("503_bathroom/shower.jpg");
@@ -78,6 +79,11 @@ room503.chatcatch = function (callback) {
             char.addtime(15);
             cl.display();
             break;
+        case "cleanFace":
+            cl.c.cumface = false;
+            cl.displayMirror();
+            cl.display();
+            break;
         default:
             break;
     }
@@ -92,6 +98,7 @@ room503.chat = function (chatID) {
             button: [
                 { chatID: 1, text: "Apply Makeup", callback: "" },
                 { chatID: 1, text: "Apply Lipstick", callback: "" },
+                { chatID: 6, text: "Clean Your Face", callback: "cleanFace" },
                 { chatID: -1, text: "Finish", callback: "reloadRoom" }
             ]
         },
@@ -134,6 +141,14 @@ room503.chat = function (chatID) {
             text: "You shaved your body",
             button: [
                 { chatID: -1, text: "Finish showering", callback: "finishShowering" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "me",
+            text: "My face is so clean.",
+            button: [
+                { chatID: -1, text: "...", callback: "reloadRoom" }
             ]
         }
     ];

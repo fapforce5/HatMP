@@ -431,7 +431,6 @@ room202.chatcatch = function (callback) {
 };
 
 room202.chat = function (chatID) {
-    var tempGirl = g.get("girlname");
     var cArray = [
         {
             chatID: 0,
@@ -503,7 +502,7 @@ room202.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "missy",
-            text: "Good " + tempGirl + ". You're working out very well.",
+            text: "Good Airhead. You're working out very well.",
             button: [
                 { chatID: -1, text: "[Leave for the day]", callback: "leaveReward" }
             ]
@@ -511,7 +510,7 @@ room202.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "missy",
-            text: "Good " + tempGirl + ". You're learning. Ready for you're reward?",
+            text: "Good Airhead. You're learning. Ready for you're reward?",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "reward" }
             ]

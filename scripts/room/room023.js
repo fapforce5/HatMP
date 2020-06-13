@@ -451,7 +451,7 @@ room23.chatcatch = function (callback) {
                 break;
             case "leave":
                 sc.setstep("me", 3);
-                sc.setstep("landlord", 5);
+                sc.setstep("landlord", -1);
                 sc.setstep("lola", 8);
                 sc.setstep("eva", 7);
                 char.settime(23, 47);

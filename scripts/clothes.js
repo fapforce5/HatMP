@@ -89,7 +89,7 @@ cl.list = [
     { type: "dress", name: "u", display: "Ugly Dress", img: "dress_ugly.png", sex: "f", inv: false, daring: 1, price: 30 },
     { type: "dress", name: "m", display: "Mesh Dress", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: 210 },
 
-    { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "f", inv: false, daring: 0, price: 45 },
+    { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
     { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
     { type: "swimsuit", name: "r", display: "Red Swimsuit", img: "swim_red.png", sex: "f", inv: false, daring: 3, price: 140 },
     { type: "swimsuit", name: "p", display: "Pink Swimsuit", img: "swim_pink.png", sex: "f", inv: false, daring: 4, price: 80 },
@@ -1026,6 +1026,7 @@ cl.display = function () {
         $('#char-cock').html("");
         $('#char-accBody').html("");
         $('#char-bodyHair').html("");
+        $('#char-cum').html("");
         $('#char-panties').html("");
         $('#char-bra').html("");
         $('#char-socks').html("");
@@ -1089,6 +1090,11 @@ cl.display = function () {
             $('#char-bodyHair').html('');
         else
             cl.cWhere(cl.bodyhair, hairy, "char-bodyHair");
+
+        cl.subDisplay("char-cum", null);
+        if (cl.c.cumface) {
+            cl.subDisplay("char-cum", cback ? null : "cum_face.png");
+        }
 
         //set Head
         cl.subDisplay("char-head", cback ? "body_head_back.png" : "body_head.png");
@@ -1329,7 +1335,7 @@ cl.displayMirror = function () {
 };
 
 cl.displayMissy = function () {
-    cl.displayMain(-60, 750, .15, "panties socks shoes shirt");
+    cl.displayMain(-60, 750, .15, "panties socks shoes shirt sanspants");
 };
 
 cl.displayClothed = function () {
@@ -1380,6 +1386,11 @@ cl.displayMain = function (top, left, ratio, spec) {
     cl.displayMainWhere(cl.lips, cl.c.lips, top, left, ratio);
     //set eyes
     cl.displayMainSub("eyes_" + cl.c.eyes + ".png", top, left, ratio);
+
+    //set cum
+    if (cl.c.cumface)
+        cl.displayMainSub("cum_face.png", top, left, ratio);
+
     //set hair
     if (cl.c.wig !== null) {
         $.each(cl.wig, function (i, v) {
@@ -1469,7 +1480,17 @@ cl.displayMain = function (top, left, ratio, spec) {
             });
         }
     }
-    if (spec.indexOf("clothes") > -1) {
+    if (spec.indexOf("sanspants") > -1) {
+        if (cl.c.shirt !== null) {
+            $.each(cl.shirt, function (i, v) {
+                if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
+                    cl.displayMainSub(v.image, top, left, ratio);
+                    return false;
+                }
+            });
+        }
+    }
+    else if (spec.indexOf("clothes") > -1) {
         if (cl.c.dress !== null) {
             $.each(cl.dressBottom, function (i, v) {
                 if (v.name === cl.c.dress && v.leg === cl.c.leg) {

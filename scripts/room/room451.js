@@ -114,6 +114,11 @@ room451.chatcatch = function (callback) {
         case "reloadRoom":
             char.room(451);
             break;
+        case "cleanface":
+            cl.c.cumface = false;
+            cl.displayMirror();
+            cl.display();
+            break;
         default:
             break;
     }
@@ -141,6 +146,15 @@ room451.chat = function(chatID){
         },
         {
             chatID: 3,
+            speaker: "me",
+            text: "Looking good",
+            button: [
+                { chatID: 4, text: "Clean your face", callback: "cleanface" },
+                { chatID: -1, text: "...", callback: "reloadRoom" }
+            ]
+        },
+        {
+            chatID: 4,
             speaker: "me",
             text: "Looking good",
             button: [

@@ -10,7 +10,7 @@ sc.char = [
     { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true },
     { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true },
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
-    { name: "stormy", display: "Stormy", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
+    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: true, setName: true },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false },
     { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true },
     { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true },
@@ -78,6 +78,7 @@ sc.events = [
     { name: "me", step: 3, txt: "Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
 
+    { name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 1, txt: "Chat about job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 2, txt: "Chat about job next day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 3, txt: "Chat about theif", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -520,11 +521,15 @@ sc.mother = function () {
             if (hour.between(0, 7))
                 r = 14; //mother
             else if (hour.between(7, 8))
-                r = 25; //diningRoom
-            else if (hour.between(11, 13))
                 r = 15; //kitchen
-            else if (hour.between(17, 19))
-                r = 14; //living
+            else if (hour.between(8, 9))
+                r = 25; //kitchen
+            else if (hour.between(9, 17))
+                r = 26; //kitchen
+            else if (hour.between(17, 18))
+                r = 15; //living
+            else if (hour.between(18, 19))
+                r = 25; //living
             else if (hour.between(19, 24))
                 r = 14; //bedroom
             break;
@@ -534,59 +539,59 @@ sc.mother = function () {
             else if (hour.between(7, 8))
                 r = 12;  //bathroom
             else if (hour.between(8, 9))
-                r = 15;  //kitchen
-            else if (hour.between(18, 20))
-                r = 25; //diningRoom
-            else if (hour.between(19, 24))
+                r = 25;  //kitchen
+            else if (hour.between(17, 18))
+                r = 15; //diningRoom
+            else if (hour.between(18, 22))
+                r = 26; //diningRoom
+            else if (hour.between(22, 24))
                 r = 14;
             break; 
         case 2: //tuesday
             if (hour.between(0, 7))
                 r = 14;
             else if (hour.between(7, 8))
-                r = 25; //diningRoom
-            else if (hour.between(17, 19))
-                r = 15; //kitchen
-            else if (hour.between(19, 20))
-                r = 25; //diningRoom
-            else if (hour.between(20, 24))
+                r = 25;  //bathroom
+            else if (hour.between(17, 18))
+                r = 15; //diningRoom
+            else if (hour.between(18, 22))
+                r = 26; //diningRoom
+            else if (hour.between(22, 24))
                 r = 14;
             break;
         case 3: //wednesday
             if (hour.between(0, 7))
                 r = 14;
             else if (hour.between(7, 8))
-                r = 12;  //bathroom
-            else if (hour.between(16, 17))
-                r = 15; //kitchen
-            else if (hour.between(17, 19))
-                r = 25; //diningRoom
-            else if (hour.between(19, 24))
+                r = 25;  //bathroom
+            else if (hour.between(17, 18))
+                r = 15; //diningRoom
+            else if (hour.between(18, 22))
+                r = 26; //diningRoom
+            else if (hour.between(22, 24))
                 r = 14;
             break;
         case 4: //thursday
             if (hour.between(0, 7))
                 r = 14;
             else if (hour.between(7, 8))
-                r = 25; //diningRoom
-            else if (hour.between(16, 17))
-                r = 25; //kitchen
-            else if (hour.between(19, 20))
-                r = 25; //diningRoom
-            else if (hour.between(19, 24))
+                r = 25;  //bathroom
+            else if (hour.between(17, 18))
+                r = 15; //diningRoom
+            else if (hour.between(18, 22))
+                r = 26; //diningRoom
+            else if (hour.between(22, 24))
                 r = 14;
             break;
         case 5: //friday
-            if (hour.between(0, 6))
+            if (hour.between(0, 7))
                 r = 14;
-            else if (hour.between(6, 8))
-                r = 25; //diningRoom
-            else if (hour.between(16, 17))
-                r = 15; //kitchen
-            else if (hour.between(17, 19))
-                r = 25; //diningRoom
+            else if (hour.between(7, 8))
+                r = 25;  //bathroom
+            else if (hour.between(18, 19))
+                r = 26; //diningRoom
             else if (hour.between(19, 24))
-                r = 14;//bedroom
+                r = 14;
             break;
         case 6: //saturday
             if (hour.between(0, 7))
@@ -594,9 +599,11 @@ sc.mother = function () {
             else if (hour.between(7, 8))
                 r = 12;  //bathroom
             else if (hour.between(8, 9))
-                r = 15;  //kitchen
+                r = 15;  //bathroom
+            else if (hour.between(9, 19))
+                r = 26;  //bathroom
             else if (hour.between(19, 24))
-                r = 14;//bedroom
+                r = 14;  //kitchen
             break;
     }
     return { roomID: r, thisRoom: g.roomID === r };
@@ -659,10 +666,10 @@ sc.sister = function () {
         case 6: //saturday
             if (hour.between(0, 7))
                 r = 13;
+            if (hour.between(7, 8))
+                r = 25;
             else if (hour.between(8, 11))
                 r = 13;
-            else if (hour.between(11, 12))
-                r = 25;
             else if (hour.between(12, 24)) //kitchen night
                 r = 13;
             else

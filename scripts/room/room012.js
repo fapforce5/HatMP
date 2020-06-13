@@ -209,6 +209,7 @@ room12.btnclick = function (name) {
                 chat(12, 12);
             else {
                 nav.killall();
+                cl.c.cumface = false;
                 cl.nude();
                 cl.displayMain(0, 400, .22, "shower");
                 nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");

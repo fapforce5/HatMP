@@ -648,8 +648,14 @@ menu.mClick = function (type) {
                 "contributing $10 a month to its making! <br />" +
                 "<div style='font-size:.8rem; color:#666; margin-bottom:10px;'>Listed in alphabetical order:</div>" +
                 "Arothiel<br/>" +
+                "Discretlysinful (Aaron M ) <br /> " +
                 "John R. (AngryJ)<br />" +
                 "Krueschen <br />" +
+                "Kylie V. <br/>" +
+                "Merchanto<br/>" +
+                "Orrin <br/>" +
+                "reverseclipse<br/>" +
+                "Wild86willie<br/>" +
                 '</div>');
             break;
     }

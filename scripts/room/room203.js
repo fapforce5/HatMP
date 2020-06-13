@@ -196,17 +196,17 @@ room203.chatcatch = function (callback) {
                 if (v.type === "panties" && v.name === cl.c.panties)
                     sex = v.sex;
             });
-            
-                nav.killall();
-                cl.displayMissy();
-                nav.button({
-                    "type": "img",
-                    "name": "recepLook",
-                    "left": 1060,
-                    "top": 562,
-                    "width": 731,
-                    "height": 518,
-                    "image": "203_entrance/kneel.png"
+
+            nav.killall();
+            cl.displayMissy();
+            nav.button({
+                "type": "img",
+                "name": "recepLook",
+                "left": 1060,
+                "top": 562,
+                "width": 731,
+                "height": 518,
+                "image": "203_entrance/kneel.png"
             }, 203);
 
             if (cl.getBodyHair() !== null) {

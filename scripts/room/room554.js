@@ -11,6 +11,7 @@ room554.main = function () {
         chat(0, 554);
     else {
         nav.killall();
+        cl.c.cumface = false;
         cl.nude();
         cl.displayMain(120, 1200, .15, "shower");
         chat(1, 554);

@@ -15,6 +15,43 @@ room25.main = function () {
     var thisSister = sc.sister();
     var thisMother = sc.mother();
 
+    if (thisMother.roomID === 26) {
+        btnList.push({
+            "type": "btn",
+            "name": "livingroom",
+            "left": 275,
+            "top": 12,
+            "width": 455,
+            "height": 375,
+            "image": "25_dining/livingroomM.png",
+            "night": "25_dining/livingroomMN.png",
+        });
+    }
+    else if (thisSister.roomID === 26) {
+        btnList.push({
+            "type": "btn",
+            "name": "livingroom",
+            "left": 275,
+            "top": 12,
+            "width": 455,
+            "height": 375,
+            "image": "25_dining/livingroomS.png",
+            "night": "25_dining/livingroomSN.png",
+        });
+    }
+    else {
+        btnList.push({
+            "type": "btn",
+            "name": "livingroom",
+            "left": 275,
+            "top": 12,
+            "width": 455,
+            "height": 375,
+            "image": "25_dining/livingroom.png",
+            "night": "25_dining/livingroomN.png",
+        });
+    }
+
     if (thisMother.thisRoom) {
         nav.bg("25_dining/025_diningRoomMom.jpg");
         btnList.push({
@@ -27,6 +64,7 @@ room25.main = function () {
             "image": "25_dining/momCoffee.png"
         });
     }
+    
     if (thisSister.thisRoom) {
         nav.bg("25_dining/025_diningRoomLandE.jpg");
         btnList.push({
@@ -39,7 +77,10 @@ room25.main = function () {
             "image": "25_dining/lAndE.png"
         });
     }
-    var navList = [16, 11, 14, 0];
+
+
+
+    var navList = [16];
     $.each(btnList, function (i, v) {
         nav.button(v, 25);
     });
@@ -53,24 +94,24 @@ room25.btnclick = function (name) {
             break;
         case "mom":
             var ll = sc.getstep("landlord");
-            if (!sc.checkevent("me", 2))
-                chat(1, 25);
-            else if (ll === 0)
-                chat(2, 25);
-            else if (ll === 1) {
-                if (g.hourBetween(6, 13))
+            if (g.get("momchat")) {
+                if (!sc.checkevent("me", 2))
+                    chat(1, 25);
+                else if (ll === 0)
+                    chat(2, 25);
+                else if (ll === 1)
                     chat(3, 25);
+                else if (ll === 2)
+                    chat(7, 25);
+                else if (ll === 3)
+                    chat(4, 25);
+                else if (ll === 4)
+                    chat(42, 25);
                 else
-                    chat(40, 25);
+                    chat(6, 25);
             }
-            else if (ll === 2)
-                chat(4, 25);
-            else if (ll === 3)
-                chat(7, 25);
-            else if (g.hourBetween(0, 13))
-                chat(6, 25);
             else
-                chat(41, 25);
+                chat(6, 25);
             break;
         case "lolaAndEva":
             var le = sc.getstep("lola");
@@ -94,6 +135,9 @@ room25.btnclick = function (name) {
                     chat(37, 25);
                     break;
             }
+            break;
+        case "livingroom":
+            char.room(26);
             break;
         default:
             break;
@@ -119,6 +163,7 @@ room25.chatcatch = function (callback) {
             room25.chatcatch("motherPassTime");
             break;
         case "passtime5":
+            sc.setstep("landlord", 5);
             room25.chatcatch("motherPassTime");
             break;
         case "motherPassTime":
@@ -202,13 +247,13 @@ room25.chat = function (chatID) {
             speaker: "landlord",
             text: "So much sperm moving in and out of my office... Gotta get to work.",
             button: [
-                { chatID: -1, text: "Have fun at work " + sc.n("landlord"), callback: "passtime5" }
+                { chatID: -1, text: "Have fun at work " + sc.n("landlord"), callback: "motherPassTime" }
             ]
         },
         {
             chatID: 7,
             speaker: "landlord",
-            text: "Good morning honey. So the weirdest thing happend today... Someone has been stealing sperm from work! At least " +
+            text: "Good morning honey. So the weirdest thing happend yesterday... Someone has been stealing sperm from work! At least " +
             "50 differt samples have disappeared without a trace. I mean who would steal all that sperm?! I bet it was that damned " +
             "sex cult that lives in the woods. I've heard they sit around and drink sperm in their rituals. ",
             button: [
@@ -497,7 +542,24 @@ room25.chat = function (chatID) {
             speaker: "landlord",
             text: "So much sperm moving in and out of my office. I just love all those big huge cocks I play with... Off to masturbate!",
             button: [
-                { chatID: -1, text: "Oh. Have fun " + sc.n("landlord"), callback: "passtime5" }
+                { chatID: -1, text: "Oh. Have fun " + sc.n("landlord"), callback: "motherPassTime" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "landlord",
+            text: "Good morning sweetie. You should be proud of how hard you've worked so far. Maybe I'll have you help me out sometime at the " +
+            "sperm store. You seem like the kind of boy that would like that.. hahahah. ",
+            button: [
+                { chatID: 43, text: "Oh gross", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "landlord",
+            text: "You don't have to pretend with me honey. I know you're an odd little boy. ",
+            button: [
+                { chatID: -1, text: sc.n("landlord"), callback: "passtime5" }
             ]
         },
     ];

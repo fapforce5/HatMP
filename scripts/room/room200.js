@@ -411,16 +411,12 @@ room200.chatcatch = function (callback) {
             else
                 chat(82, 200);
             break;
-        case "airhead":
-            g.set("girlname", "Airhead");
-            break;
         case "dataentry":
             g.pass = "hypno1";
             nav.room(205);
             break;
         case "finish11":
             sc.setstep("missy", 12);
-            g.set("girlname", "Sissy in Training");
             char.room(0);
             break;
         case "12leave20":
@@ -678,9 +674,8 @@ room200.chatcatch = function (callback) {
 };
 
 room200.chat = function (chatID) {
-    var tempSissy, tempGirl;
+    var tempSissy;
     tempSissy = g.get("sissy");
-    tempGirl = g.get("girlname");
     var cArray = [
         {
             chatID: 0,
@@ -797,7 +792,7 @@ room200.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "missy",
-            text: "While we're at it. I don't like the name " + sc.n("me") + ". From now on you'll be called " + tempGirl + ". Oink for me " + tempGirl + ".",
+            text: "While we're at it. I don't like the name " + sc.n("me") + ". From now on you'll be called Piggy. Oink for me Piggy.",
             button: [
                 { chatID: 13, text: "Oink Oink ma'am", callback: "" }
             ]
@@ -805,7 +800,7 @@ room200.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "missy",
-            text: "Good " + tempGirl + ". Here's what's going to happen. <br />" +
+            text: "Good Piggy. Here's what's going to happen. <br />" +
                 "Your job is to do the shit work I don't want to do. Each day you come in I'll give you a task. " +
                 "Sometimes it will be stalking a house for a client, sometimes it will be cleaning my toilet for 8 hours. " +
                 "If you want to work here you will do exactly what I tell you to do when I tell you to do it.<br /><br />" +
@@ -853,7 +848,7 @@ room200.chat = function (chatID) {
             text: "I'm glad to see you can follow simple instructions like dressing yourself. Your first task of the day " +
                 "will be to clean my bathroom. As an investigator you have to be able to spend long hours watching every detail. " +
                 "There are cleaning supplies in the closet, I expect every inch of that bathroom to be spotless. " +
-                "If you clean it really good I'll give you a reward. Now get to work " + tempGirl,
+                "If you clean it really good I'll give you a reward. Now get to work Piggy",
             button: [
                 { chatID: -1, text: "[Clean the Bathroom]", callback: "clanBathroom" }
             ]
@@ -877,7 +872,7 @@ room200.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "missy",
-            text: "So " + tempGirl + ", last time you were here you were unable to properly clean a bathroom, and failed to address me properly. " +
+            text: "So Piggy, last time you were here you were unable to properly clean a bathroom, and failed to address me properly. " +
                 "I promised you would receive a proper punishment, and I always keep my word. " +
                 "Right now you're chubby, not fat but not attractive. Take your shirt off.",
             button: [
@@ -896,7 +891,7 @@ room200.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "missy",
-            text: "Hahahahah " + tempGirl + " don't you look ridiculous. I don't believe in punishment without some kind of reward. " +
+            text: "Hahahahah Piggy don't you look ridiculous. I don't believe in punishment without some kind of reward. " +
                 "Once you lose the weight to prove you can commit to something I will let you start working some cases. " +
                 "Until then I suggest you start running in the park, or get a gym pass. ",
             button: [
@@ -924,7 +919,7 @@ room200.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "missy",
-            text: tempGirl + " I'm going to have you file today.",
+            text: "Airhead I'm going to have you file today.",
             button: [
                 { chatID: -1, text: "[Start Filing]", callback: "jobFile" }
             ]
@@ -948,16 +943,16 @@ room200.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "missy",
-            text: "Allright " + tempGirl + " I see you've lost the weight, you're actually looking not terrible; I can work with this. " +
-                "You are no longer " + tempGirl + ", you are now Airhead. No longer fat, but still an idiot.",
+            text: "Allright Piggy I see you've lost the weight, you're actually looking not terrible; I can work with this. " +
+                "You are no longer Piggy, you are now Airhead. No longer fat, but still an idiot.",
             button: [
-                { chatID: 29, text: "Thank you ma'am", callback: "airhead" }
+                { chatID: 29, text: "Thank you ma'am", callback: "" }
             ]
         },
         {
             chatID: 29,
             speaker: "missy",
-            text: "You're welcome " + tempGirl + ". I guess it's time for your first real case. A friend of mine at " +
+            text: "You're welcome Airhead. I guess it's time for your first real case. A friend of mine at " +
                 "The Toy Store has an ongoing  " +
                 "series of run-ins with some crazy cum beast. It seems that some one goes into their wack-off booths " +
                 "and just covers it in their cum. It wouldn't be a problem if they paid for a show, but then just enter and " +
@@ -990,7 +985,7 @@ room200.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "missy",
-            text: "You got it " + tempGirl + ", now head over to the toy store and take care of it. ",
+            text: "You got it Airhed, now head over to the toy store and take care of it. ",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "toyStore" }
             ]
@@ -998,7 +993,7 @@ room200.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "missy",
-            text: "Sooooo " + tempGirl + ". Your first big case and instead of working it you decide to watch my friend Tiffany " +
+            text: "Sooooo Airhead. Your first big case and instead of working it you decide to watch my friend Tiffany " +
                 "while she's getting ready for a show... I'm not mad at you, I'm actually mad at myself.",
             button: [
                 { chatID: 34, text: "...", callback: "" }
@@ -1053,7 +1048,7 @@ room200.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "missy",
-            text: "Nice " + tempGirl + ". Those panties make you look good on you, I'm proud you've started realizing who you really are. ",
+            text: "Nice Sissy. Those panties make you look good on you, I'm proud you've started realizing who you really are. ",
             button: [
                 { chatID: 40, text: "Yes ma'am", callback: "" }
             ]
@@ -1093,7 +1088,7 @@ room200.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "missy",
-            text: "That bathroom is a mess " + tempGirl + ", you need to clean it up.",
+            text: "That bathroom is a mess Sissy, you need to clean it up.",
             button: [
                 { chatID: -1, text: "[Clean bathroom]", callback: "clanBathroom" }
             ]
@@ -1120,7 +1115,7 @@ room200.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "missy",
-            text: "Hahahahah " + tempGirl + " don't you look ridiculous. Make sure you wear that next time you come in " +
+            text: "Hahahahah Sissy don't you look ridiculous. Make sure you wear that next time you come in " +
                 "my lil' piggy boy.",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "leaveAddHours" }
@@ -1188,7 +1183,7 @@ room200.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "missy",
-            text: "So my little " + tempGirl + ", are you ready for another menial task that is worthy of your boorish behaviour? ",
+            text: "So my little Sissy, are you ready for another menial task that is worthy of your boorish behaviour? ",
             button: [
                 { chatID: 56, text: "Well mistress, I was hoping for something better.", callback: "" }
             ]
@@ -1265,7 +1260,7 @@ room200.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "missy",
-            text: "Now come over and kneel at my feet " + tempGirl + ".",
+            text: "Now come over and kneel at my feet Sissy.",
             button: [
                 { chatID: -1, text: "Yes mistress ", callback: "202Pass" }
             ]
@@ -1299,7 +1294,7 @@ room200.chat = function (chatID) {
         {
             chatID: 68,
             speaker: "missy",
-            text: "Hello " + tempGirl + " this is " + sc.n("jeffery") + ". " + sc.n("jeffery") + " has a problem that I think " +
+            text: "Hello " + sc.n("me") + " this is " + sc.n("jeffery") + ". " + sc.n("jeffery") + " has a problem that I think " +
                 "you can help him with. ",
             button: [
                 { chatID: 69, text: "Hi " + sc.n("jeffery"), callback: "" }
@@ -1308,7 +1303,7 @@ room200.chat = function (chatID) {
         {
             chatID: 69,
             speaker: "jeffery",
-            text: "H-H-H-H-H-Hello " + tempGirl + " I'm hoping you can h-h-help me with catch the waitress that has been stealing " +
+            text: "H-H-H-H-H-Hello " + sc.n("me") + " I'm hoping you can h-h-help me with catch the waitress that has been stealing " +
                 "from me. You'll need to pose as a waitress in my restaurant to gain their trust to try and catch the theif. " +
                 "Do you think you can do that?",
             button: [
@@ -1318,7 +1313,7 @@ room200.chat = function (chatID) {
         {
             chatID: 70,
             speaker: "missy",
-            text: "As you can see " + tempGirl + " is well qualified and will fit that part nicely. I have full trust that " +
+            text: "As you can see Sissy is well qualified and will fit that part nicely. I have full trust that " +
                 "he will do well, because if he doesn't he'll find out what a St. Andrew's Cross is used for. ",
             button: [
                 { chatID: 71, text: "I can do it ", callback: "" }
@@ -1379,7 +1374,7 @@ room200.chat = function (chatID) {
         {
             chatID: 77,
             speaker: "missy",
-            text: "Oh good " + tempGirl + ", you're here. Let me call " + sc.n("jeffery") + " here. ",
+            text: "Oh good Sissy, you're here. Let me call " + sc.n("jeffery") + " here. ",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "callJeffery" }
             ]
@@ -1486,7 +1481,7 @@ room200.chat = function (chatID) {
         {
             chatID: 89,
             speaker: "missy",
-            text: "You, " + tempGirl + ", are a sissy, even if you don't fully realize it. Do you know how I know you're a " +
+            text: "You, Slut, are a sissy, even if you don't fully realize it. Do you know how I know you're a " +
                 "sissy?",
             button: [
                 { chatID: 90, text: "How?", callback: "" }
@@ -1534,7 +1529,7 @@ room200.chat = function (chatID) {
         {
             chatID: 94,
             speaker: "missy",
-            text: "You know " + tempGirl + " you look absolutly ridiculous in that outfit. Your nipples are hanging " +
+            text: "You know Sissy you look absolutly ridiculous in that outfit. Your nipples are hanging " +
                 "out like some kind of street whore. But I guess you need to dress for the job you want, not the job you have. ",
             button: [
                 { chatID: 95, text: "yes mistress", callback: "" }
@@ -1621,7 +1616,7 @@ room200.chat = function (chatID) {
         {
             chatID: 104,
             speaker: "missy",
-            text: "Oh " + tempGirl + " before you put on your cute little skirt I just want you to know that you look " +
+            text: "Oh Sissy before you put on your cute little skirt I just want you to know that you look " +
                 "cute in those panties. They really suit you. You look so cute in girl's clothes I feel it's a shame to that you " +
                 "don't let others see you. You're next case we'll fix that. We'll let everyone see how cute you are!",
             button: [
@@ -1664,7 +1659,7 @@ room200.chat = function (chatID) {
         {
             chatID: 109,
             speaker: "missy",
-            text: "I need to to do some data entry, " + tempGirl + ". Now get to it.",
+            text: "I need to to do some data entry, Sissy. Now get to it.",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "repeatHypno" }
             ]
@@ -1738,7 +1733,7 @@ room200.chat = function (chatID) {
         {
             chatID: 118,
             speaker: "missy",
-            text: "That seems fitting, " + tempGirl + " give " + sc.n("jeffery") + " your panties. NOW!",
+            text: "That seems fitting, Sissy give " + sc.n("jeffery") + " your panties. NOW!",
             button: [
                 { chatID: 119, text: "[Give " + sc.n("jeffery") + " your panties]", callback: "givepanties20" }
             ]

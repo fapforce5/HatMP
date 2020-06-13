@@ -31,6 +31,7 @@ room401.main = function () {
             room401.makeClothing("panties", "m", true);
             room401.makeClothing("pants", "m", true);
             room401.makeClothing("shirt", "m", true);
+            room401.makeClothing("swimsuit", "m", true);
             break;
         case "salon":
             nav.bg("401_purchase/salon.jpg", "401_purchase/salon.jpg");

@@ -351,6 +351,20 @@ room502.chatcatch = function (callback) {
         case "single4":
             nav.bg("502_bedroom/single4.jpg");
             break;
+        case "single5":
+            nav.bg("502_bedroom/single5.jpg");
+            break;
+        case "single6":
+            nav.bg("502_bedroom/single6.jpg");
+            break;
+        case "single7":
+            nav.bg("502_bedroom/single7.jpg");
+            break;
+        case "singleReset":
+            nav.killall();
+            nav.bg("502_bedroom/bedroomnight.jpg");
+            room502.chatcatch("sleep");
+            break;
         default:
             break;
     }
@@ -922,33 +936,75 @@ room502.chat = function (chatID) {
         {
             chatID: 68,
             speaker: "zoey",
-            text: "This is so much fun! You're so dirty!",
+            text: "c'est trop amusant! You are so dirty!",
             button: [
-                { chatID: 69, text: "hmmm", callback: "single3" }
+                { chatID: 69, text: "Hmm?", callback: "single3" }
             ]
         },
         {
             chatID: 69,
             speaker: "zoey",
-            text: "Oh wow... I've never done that before... Hmmm " + sc.n("me") + "?",
+            text: "You taste amazing! Je pourrais te manger toute la nuit!",
             button: [
-                { chatID: 70, text: "oh... hi", callback: "single4" }
+                { chatID: 70, text: "....", callback: "" }
             ]
         },
         {
             chatID: 70,
-            speaker: "zoey",
-            text: "Hay, this is my new friend....",
+            speaker: "stormy",
+            text: "HHhhmmmMMmmmm ",
             button: [
-                { chatID: 71, text: sc.n("eva") + "...", callback: "" }
+                { chatID: 71, text: "...", callback: "single4" }
             ]
         },
         {
             chatID: 71,
-            speaker: "eva",
-            text: "What, no way ",
+            speaker: "stormy",
+            text: "Huh?",
             button: [
-                { chatID: 71, text: "That's ok, Please continue..", callback: "" }
+                { chatID: 72, text: "Oh hi", callback: "single5" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "zoey",
+            text: "Oh.." + sc.n("me") + " sorry we were so loud, we get carried away sometimes... This is my friend " + sc.n("stormy") + ".",
+            button: [
+                { chatID: 73, text: "That's ok, Please continue..", callback: "single6" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "stormy",
+            text: "The pervy roommate I've heard so much about. " + sc.n("zoey") + " says you like to watch. So what do you think?",
+            button: [
+                { chatID: 74, text: "I uhhh. what?", callback: "" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "zoey",
+            text: "Oh " + sc.n("stormy") + "! Tu as promis. You would not say anything if he caught us!",
+            button: [
+                { chatID: 75, text: "Wait, what did you tell her? You are the one that's always naked!", callback: "" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "zoey",
+            text: "Haha I know. Well, I think that's the end of our fun for the night. Au revoir " + sc.n("stormy") + ". Next time we'll " +
+            "go to your house!",
+            button: [
+                { chatID: 76, text: "You don't have to leave.", callback: "single7" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "stormy",
+            text: "You are a perv! I love it! But I'm going to get going. I'm sure I'll see you again. " + sc.n("me") + ". " + sc.n("zoey") + 
+            " I'll see you again soon!",
+            button: [
+                { chatID: -1, text: "By " + sc.n("stormy") + " good night " + sc.n("zoey") + ".", callback: "singleReset" }
             ]
         },
     ];

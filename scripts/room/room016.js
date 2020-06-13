@@ -51,7 +51,75 @@ room16.main = function () {
         });
     }
 
-    var navList = [11, 25, 15];
+    if (thisMomRoomID.roomID === 15) {
+        btnList.push({
+            "type": "btn",
+            "name": "kitchen",
+            "left": 0,
+            "top": 0,
+            "width": 1102,
+            "height": 829,
+            "image": "16_livingRoom/kitchenM.png",
+            "night": "16_livingRoom/kitchenMN.png"
+        });
+    }
+    else {
+        btnList.push({
+            "type": "btn",
+            "name": "kitchen",
+            "left": 0,
+            "top": 0,
+            "width": 1102,
+            "height": 829,
+            "image": "16_livingRoom/kitchen.png",
+            "night": "16_livingRoom/kitchenN.png"
+        });
+    }
+
+    if (thisMomRoomID.roomID === 26) {
+        btnList.push({
+            "type": "btn",
+            "name": "living",
+            "left": 1059,
+            "top": 200,
+            "width": 351,
+            "height": 385,
+            "image": "16_livingRoom/livingM.png",
+            "night": "16_livingRoom/livingMN.png"
+        });
+    }
+    else if (thisSisterRoomID.roomID === 26) {
+        btnList.push({
+            "type": "btn",
+            "name": "living",
+            "left": 1059,
+            "top": 200,
+            "width": 351,
+            "height": 385,
+            "image": "16_livingRoom/livingT.png",
+            "night": "16_livingRoom/livingTN.png"
+        });
+    }
+    else {
+        btnList.push({
+            "type": "btn",
+            "name": "living",
+            "left": 1059,
+            "top": 200,
+            "width": 351,
+            "height": 385,
+            "image": "16_livingRoom/living.png",
+            "night": "16_livingRoom/livingN.png"
+        });
+    }
+
+    var hour = g.gethourdecimal();
+    var navList = [15, 26, 25, 11];
+    if (inv.has("landlordKey"))
+        navList.push(14);
+    else if (hour.hourBetween(7, 22) && thisMomRoomID === 14)
+        navList.push(14);
+
     if(g.hourBetween(6, 21))
         navList.push(0);
     $.each(btnList, function (i, v) {
@@ -66,20 +134,11 @@ room16.btnclick = function (name) {
         case "dining":
             char.room(25);
             break;
-        case "frontDoor":
-            if (g.hourBetween(22, 24) || g.hourBetween(0, 6)) 
-                chat(1, 16);
-            else
-                char.room(0);
+        case "living":
+            char.room(26);
             break;
-        case "motherSit":
-            chat(2, 16);
-            break;
-        case "tv":
-            chat(3, 16);
-            break;
-        case "sisterSit":
-            chat(4, 16);
+        case "kitchen":
+            char.room(15);
             break;
         default:
             break;

@@ -206,6 +206,7 @@ room450.chatcatch = function(callback){
             }, 450);
             break;
         case "killCop":
+            nav.buildnav([0]);
             nav.killbutton("cop");
             break;
         case "cultLeave1":
