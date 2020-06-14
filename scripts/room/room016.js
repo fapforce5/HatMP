@@ -117,7 +117,7 @@ room16.main = function () {
     var navList = [15, 26, 25, 11];
     if (inv.has("landlordKey"))
         navList.push(14);
-    else if (hour.hourBetween(7, 22) && thisMomRoomID === 14)
+    else if (hour.between(7, 22) && thisMomRoomID === 14)
         navList.push(14);
 
     if(g.hourBetween(6, 21))
