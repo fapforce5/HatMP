@@ -3,31 +3,17 @@ var room19 = {};
 
 room19.main = function () {
 
-    var btnList = [];
-    var i;
-    if (cl.c.cock === 'v') {
-        btnList.push({
-            "type": "img",
-            "name": "finger1",
-            "left": 0,
-            "top": 0,
-            "width": 1920,
-            "height": 1080,
-            "image": "19_layInBed/19_1finger_pussy.gif"
-        });
-    }
-    else {
-        btnList.push({
-            "type": "img",
-            "name": "spread",
-            "left": 278,
-            "top": 0,
-            "width": 1642,
-            "height": 1080,
-            "image": "19_layInBed/spread.png"
-        });
-    }
-    char.saveclothes(true, false, true);
+    var btnList = [{
+        "type": "btn",
+        "name": "butt",
+        "left": 298,
+        "top": 0,
+        "width": 1447,
+        "height": 1080,
+        "image": "19_layInBed/0.png"
+    }];
+
+    cl.nude();
     $('#room_footer').hide();
 
     $.each(btnList, function (i, v) {
@@ -38,12 +24,63 @@ room19.main = function () {
     if (g.internal === "lube") {
         chat(0, 19);
     }
-
+    else
+        chat(1, 19);
 };
 
 room19.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "finger":
+            if (g.internal.s === 2) {
+                if (g.internal.in)
+                    g.internal.s = 3;
+                else
+                    g.internal.s = 1;
+            }
+            else if (g.internal.s === 3) {
+                g.internal.in = false;
+                g.internal.s = 2;
+            }
+            else if (g.internal.s === 1) {
+                g.internal.in = true;
+                g.internal.s = 2;
+                g.internal.i++;
+            }
+            else
+                g.internal.s = 1;
+            nav.killbutton("finger");
+            nav.button({
+                "type": "btn",
+                "name": "finger",
+                "left": 298,
+                "top": 0,
+                "width": 1447,
+                "height": 1080,
+                "image": "19_layInBed/" + g.internal.f + "_" + g.internal.s + ".png"
+            }, 19);
+            //console.log(g.internal, "19_layInBed/" + g.internal.f + "_" + g.internal.s + ".png");
+            if (g.internal.i > 3) {
+                if (Math.ceil(cl.c.butthole) < g.internal.f) {
+                    if (sc.checkevent("me", -10) && cl.c.butthole > .9 && g.internal.f > 1)
+                        chat(6, 19)
+                    else {
+                        cl.c.butthole += .1;
+                        chat(2, 19);
+                    }
+                }
+                else {
+                    if (sc.checkevent("me", -10))
+                        chat(3, 19);
+                    else {
+                        if (cl.c.butthole > .9 && g.internal.f > 1) {
+                            chat(6, 19);
+                        }
+                        else {
+                            chat(3, 19);
+                        }
+                    }
+                }
+            }
             break;
         default:
             break;
@@ -51,10 +88,57 @@ room19.btnclick = function (name) {
 };
 
 room19.chatcatch = function (callback) {
+    
     switch (callback) {
+        case "fingerStart":
+            if (cl.c.butthole < 2) {
+                g.internal = { f: 1, s: 0, i: 0, in: true };
+                nav.killbutton("butt");
+                nav.button({
+                    "type": "btn",
+                    "name": "finger",
+                    "left": 298,
+                    "top": 0,
+                    "width": 1447,
+                    "height": 1080,
+                    "image": "19_layInBed/1_0.png"
+                }, 19);
+                console.log(g.internal);
+            }
+            else if (cl.c.butthole < 3) {
+                var b;
+            }
+            else if (cl.c.butthole < 4) {
+                var c;
+            }
+            else {
+                var d;
+            }
+            break;
+        case "addFinger":
+            g.internal.f += 1;
+            g.internal.in = true;
+            g.internal.i = 0;
+            g.internal.s = 0;
+            nav.killbutton("finger");
+            nav.button({
+                "type": "btn",
+                "name": "finger",
+                "left": 298,
+                "top": 0,
+                "width": 1447,
+                "height": 1080,
+                "image": "19_layInBed/" + g.internal.f + "_0.png"
+            }, 19);
+            break;
         case "Stop":
-            char.saveclothes(false, true, false);
+            if (!sc.checkevent("me", -10) && cl.c.butthole > 1)
+                cl.c.butthole = 1;
+            var temp = cl.c.butthole;
+            cl.undo();
+            cl.c.butthole = temp;
             char.room(g.pass);
+            g.setflag("buttholeplay");
             break;
         case "1finger":
             nav.killbutton("finger1");
@@ -167,22 +251,21 @@ room19.chatcatch = function (callback) {
 };
 
 room19.chat = function (chatID) {
-    //if (g.xxxx.butthole < 1)
-    //    var chatID2 =  
     var cArray = [
         {
             chatID: 0,
             speaker: "me",
-            text: "....",
+            text: "I need to warm up first",
             button: [
-                { chatID: -1, text: "Slip a finger in my asshole", callback: "1finger" },
+                { chatID: -1, text: "Slip a finger in my asshole", callback: "fingerStart" },
+                { chatID: -1, text: "Use a toy", callback: "toyStart" },
                 { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
         },
         {
             chatID: 1,
             speaker: "me",
-            text: "This feels pretty good. ",
+            text: "I need to get some lube",
             button: [
                 { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
@@ -190,9 +273,8 @@ room19.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "me",
-            text: "Ooooo, my butthole feels pretty full. I better stop here.",
+            text: "That's as much as I can do. ",
             button: [
-                { chatID: 3, text: "Give into your lust and slip in another finger", callback: "break" },
                 { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
             ]
         },
@@ -201,7 +283,7 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "Ooooo, my butthole is so hungry, it's begging for more fingers...",
             button: [
-                { chatID: 4, text: "Give into your lust and slip in another finger", callback: "2finger" },
+                { chatID: -1, text: "Give into your lust and slip in another finger", callback: "addFinger" },
                 { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
             ]
         },
@@ -221,7 +303,15 @@ room19.chat = function (chatID) {
                 { chatID: -1, text: "Give into your lust and slip in another finger", callback: "3finger" },
                 { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
             ]
-        }
+        },
+        {
+            chatID: 6,
+            speaker: "me",
+            text: "Two fingers is as much as I feel comfortable with. I should get a toy if I want to go bigger. ",
+            button: [
+                { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
+            ]
+        },
     ];
 
     return cArray[chatID];

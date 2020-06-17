@@ -99,6 +99,7 @@ g.st = [
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
     { n: "momchat", t: false, q: "day" },
+    { n: "buttholeplay", t: false, q: "day" },
 ];
 
 g.i = function (name) {
@@ -286,7 +287,7 @@ g.rooms = [
     { roomID: 16, name: "1st Floor", image: "16_livingRoom/16_downStairs.jpg", nightImage: "16_livingRoom/16_downStairsNight.jpg", houseID: 10, btn: "roomBtn_16.png" },
     { roomID: 17, name: "Mom's Closet", image: "17_motherCloset/017_motherCloset.png", nightImage: "17_motherCloset/017_motherCloset.png", houseID: 10, btn: "roomBtn_17.png" },
     { roomID: 18, name: "Nightstand Drawer", image: "18_bedroomDrawer/018_drawer.jpg", nightImage: "18_bedroomDrawer/018_drawer.jpg", houseID: 10, btn: "roomBtn_18.png" },
-    { roomID: 19, name: "On Bed", image: "19_layInBed/19_bed.png", nightImage: "19_layInBed/19_bed.png", houseID: 10, btn: "roomBtn_19.png" },
+    { roomID: 19, name: "On Bed", image: "19_layInBed/bg.jpg", nightImage: "19_layInBed/bg.jpg", houseID: 10, btn: "roomBtn_19.png" },
     { roomID: 20, name: "Dishes", image: "20_dishes/20_dishes.png", nightImage: "20_dishes/20_dishes.png", houseID: 10, btn: "roomBtn_20.png" },
     { roomID: 21, name: "Mother's Room Spanking", image: "21_motherSpank/021_spankBG.jpg", nightImage: "21_motherSpank/021_spankBG.jpg", houseID: 10, btn: "roomBtn_21.png" },
     { roomID: 22, name: "Toilet", image: "22_toilet/022_pee_dick.png", nightImage: "22_toilet/022_pee_dick.png", houseID: 10, btn: "roomBtn_22.png" },
@@ -666,6 +667,7 @@ g.initGame = function () {
             case "cardgame":
             case "bigguy":
             case "momchat":
+            case "buttholeplay":
                 g.st[i].t = false;
                 break;
             default:

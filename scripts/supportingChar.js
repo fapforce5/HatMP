@@ -63,7 +63,8 @@ sc.flag = [
 ];
 
 sc.events = [
-    { name: "me", step: -9, txt: "Give Blowjobs", img: "plug", show: true, row: 1, col: 5, ach: false, major: false },
+    { name: "me", step: -10, txt: "Stretch Butthole bigger than 1", img: "", show: false, row: 1, col: 5, ach: false, major: false },
+    { name: "me", step: -9, txt: "Give Blowjobs", img: "plug", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -8, txt: "Buy and wear buttplug", img: "plug", show: true, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -7, txt: "Buy and wear chastity", img: "chastity", show: true, row: 1, col: 4, ach: false, major: false },
     { name: "me", step: -6, txt: "No Panties", img: "", show: false, row: 1, col: 3, ach: false, major: false },

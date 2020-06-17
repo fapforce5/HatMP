@@ -60,10 +60,10 @@ room18.main = function () {
 room18.btnclick = function (name) {
     switch (name) {
         case "lube":
-            if (true)
-                chat(2, 18);
-            else
+            if (g.get("buttholeplay"))
                 chat(1, 18);
+            else
+                chat(2, 18);
             break;
         default:
             break;
@@ -94,7 +94,7 @@ room18.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: "I'm way to manly to be playing with that stuff. I jack off the old fashioned way: lesbian domination porn.",
+            text: "I think I've played with my butthole enough today.",
             button: []
         },
         {
