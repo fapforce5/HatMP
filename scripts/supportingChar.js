@@ -148,6 +148,7 @@ sc.events = [
     { name: "tiffany", step: 12, txt: "Meet at her house", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 13, txt: "Meet at park", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 15, txt: "First time home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "candy", step: -1, txt: "Flash in bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "candy", step: 0, txt: "Begin Here", img: "", show: false, row: 0, col: 0, ach: true, major: false },

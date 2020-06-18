@@ -240,7 +240,7 @@ room403.chatcatch = function (callback) {
             break;
         case "tifMap":
             g.set("map", 1);
-            char.addtime(180);
+            char.settime(19, 36);
             sc.setstep("tiffany", 14);
             sc.setstep("treyvon", 1);
             char.room(50);

@@ -66,7 +66,8 @@ room50.chatcatch = function (callback) {
             break;
         case "followtif":
             sc.setstep("treyvon", 2);
-            char.room(54);
+            sc.setstep("tiffany", 15);
+            char.room(51);
             break;
         default:
             break;
@@ -103,7 +104,7 @@ room50.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "tiffany",
-            text: "This is one of my new dancers at Toys 'n Us. She's lot of fun! She'll be staying with us a while.",
+            text: "This is my new friend, She's lot of fun! She'll be staying with us a while.",
             button: [
                 { chatID: 4, text: "...", callback: "" }
             ]
@@ -111,7 +112,7 @@ room50.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "treyvon",
-            text: "Ohhh you can dance for me anytime girl. With a butt like that you gotta be able to shake them hips, sexy. ",
+            text: "Ohhh you lookin' good baby girl. With a butt like that you gotta be able to shake them hips, sexy. ",
             button: [
                 { chatID: 5, text: "...", callback: "" }
             ]
@@ -135,7 +136,7 @@ room50.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "treyvon",
-            text: "I know. You don't sqeeze the fruit until you buy it. So what's your name girl?",
+            text: "I know. You don't sqeeze the fruit until you buy it hehe. So what's your name girl?",
             button: [
                 { chatID: 8, text: "It's... ahh........ummmmm........" + g.get("girlname") + "...", callback: "" }
             ]
@@ -143,8 +144,8 @@ room50.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "treyvon",
-            text: g.get("girlname") + ". That's are really pretty name, for a really pretty girl. I'm " + sc.n("treyvon") + ". I'm sure you read my " +
-            "name tag, but I wanted you to know what you'll be screaming later. **wink**",
+            text: g.get("girlname") + ". That's are really pretty name, for a really pretty girl. I'm " + sc.n("treyvon") + ". " +
+            "I'll get you anything you need just scream my name. **wink**",
             button: [
                 { chatID: 9, text: "...", callback: "" }
             ]
@@ -155,7 +156,7 @@ room50.chat = function (chatID) {
             text: "You two are really hitting it off. I guess I could give you two some alone time.... Oh yea, I forgot " + sc.n("candy") + " wanted " +
                 "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + g.get("girlname") + " home. ",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " up to her room]", callback: "followtif" }
+                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "followtif" }
             ]
         }
     ];
