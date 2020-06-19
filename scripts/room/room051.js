@@ -1,8 +1,11 @@
 ﻿//Room name
 var room51 = {};
 room51.main = function () {
+    g.internal = "";
     if (sc.getstep("tiffany") === 15) {
         nav.bg("51_livingRoom/t1.jpg");
+        $('.room-left').hide();
+        cl.c.wig = null;
         chat(0, 51);
     }
     else {
@@ -85,6 +88,35 @@ room51.chatcatch = function (callback) {
             break;
         case "t13":
             nav.bg("51_livingRoom/t13.jpg");
+            cl.displayface();
+            if (cl.getBodyHair() !== null)
+                chat(19, 51);
+            else
+                chat(22, 51);
+            break;
+        case "t14":
+            nav.killall();
+            nav.bg("51_livingRoom/t14.jpg");
+            break;
+        case "t15":
+            g.set("shave", g.dt);
+            nav.bg("51_livingRoom/t15.jpg");
+            break;
+        case "t16":
+            nav.bg("51_livingRoom/t13.jpg");
+            cl.displayface();
+            break;
+        case "t17":
+            cl.c.makeup = "light";
+            cl.displayface();
+            break;
+
+        case "red":
+        case "pink":
+        case "purple":
+            cl.c.lips = callback;
+            g.internal = callback;
+            cl.displayface();
             break;
         default:
             break;
@@ -105,7 +137,7 @@ room51.chat = function (chatID) {
             chatID: 1,
             speaker: "candy",
             text: "Oh awesome it's " + sc.n("me") + "! I was hoping we could play with him! He looked like so much fun at the store! What is that " +
-            "thing he's wearing?",
+            "thing he's wearing? ................",
             button: [
                 { chatID: 2, text: "...", callback: "t3" }
             ]
@@ -154,59 +186,187 @@ room51.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "The poor little guy doesn't have any place to go. I was going to put him in Bambi's old room. I going to go show him " +
-            "where he lives now. Follow me down the hallway " + sc.n("me") + ", I know you've had a busy day.",
+            text: "The poor little guy doesn't have any place to go. I was going to put him in Bambi's old room. ",
             button: [
-                { chatID: 8, text: "[Follow " + sc.n("tiffany") + "]", callback: "t7" }
+                { chatID: 8, text: "...", callback: "tf7" }
             ]
         },
         {
             chatID: 8,
-            speaker: "tiffany",
-            text: "Our apartment is pretty tiny. Your room is straight forward. Our old roommate Bambi got really angry one day and ripped the door " +
-            "right off the hinges, so you won't have a door. " + sc.n("candy") + "'s door is on the right and I'll show you my room.",
+            speaker: "candy",
+            text: "Aww the poor little guy. You know he's got such a pretty face. He's really pulling off that dress. So " + sc.n("me") + " you want " +
+                "to show me what you have under there?",
             button: [
-                { chatID: 9, text: "[Follow " + sc.n("tiffany") + "]", callback: "t8" }
+                { chatID: 9, text: "I uhhhhh", callback: "t8" }
             ]
         },
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "So this is my room. It's not much, but it's all mine, what do you think?",
+            text: "Yeah, show " + sc.n("candy") + " what you got! Take off your dress!",
             button: [
-                { chatID: 10, text: "It's really nice", callback: "t9" },
+                { chatID: 10, text: "But.. Shouldn't you take off your clothes?", callback: "t9" },
             ]
         },
         {
             chatID: 10,
             speaker: "candy",
-            text: "So I was thinking about something.. come here",
+            text: "Hahaha, we're not going to take off our clothes for you! You should be happy just being here with us. We both can fuck " +
+                "much hotter and manlier men than you. " + sc.n("tiffany") + " brought you here cause we get bored fucking big hot guys all the time, " + 
+                "she thought you might be fun.",
             button: [
-                { chatID: 11, text: "...", callback: "t10" },
+                { chatID: 11, text: "What?", callback: "" },
             ]
         },
         {
             chatID: 11,
-            speaker: "candy",
-            text: "[Whispers in her ear....]",
+            speaker: "tiffany",
+            text: "Oh yea, " + sc.n("missy") + " told me what a sissy you were! I've always wanted to have a sissy best friend that I could dress up " +
+            "tease, and play with. That's why I brought you here!",
             button: [
-                { chatID: 12, text: "What are you two whispering about?", callback: "t11" },
+                { chatID: 12, text: "I'm not a sissy...", callback: "t10" },
+                { chatID: 14, text: "I am such a sissy boy, please play with me", callback: "" },
             ]
         },
         {
             chatID: 12,
             speaker: "tiffany",
-            text: "[Whispers in her ear....]",
+            text: "AHahaha haha hahhaaha You so are! You don't need to lie to us. Just release your inner slut! You don't even have to do anything, just " +
+            "let us take control.",
             button: [
-                { chatID: 13, text: "Hay", callback: "t12" },
+                { chatID: 13, text: "Hay", callback: "" },
             ]
         },
         {
             chatID: 13,
             speaker: "candy",
-            text: "Since you're here and we're both really horny we should have some fun!",
+            text: "Haha yea silly boy, just relax and we'll help you release your inner sissy!",
             button: [
-                { chatID: -1, text: "Oh fuck yea!", callback: "t13" },
+                { chatID: 15, text: "Oh", callback: "t11" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "candy",
+            text: "Don't worry our little slut, we're going to make you into such a cock hungry whore!",
+            button: [
+                { chatID: 15, text: "Oh fuck yea!", callback: "t11" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "candy",
+            text: "Lets get this dress off of your first.",
+            button: [
+                { chatID: 16, text: "huh", callback: "t12" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "candy",
+            text: "Not bad. You know he would look really cute with some makeup.",
+            button: [
+                { chatID: 17, text: "huh", callback: "" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "tiffany",
+            text: "You're right! Come here, we're going to make you a pretty girl!",
+            button: [
+                { chatID: 18, text: "huh", callback: "t13" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "tiffany",
+            text: "You're right! Come here, we're going to make you a pretty girl!",
+            button: [
+                { chatID: -1, text: "huh", callback: "" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "candy",
+            text: "Oh gross! body hair! We need to get rid of that! " + sc.n("tiffany") + " go grab your hair removal cream!",
+            button: [
+                { chatID: 20, text: "But I like it...", callback: "t14" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "tiffany",
+            text: "So hairy! You really need our help to make you a prety girl!",
+            button: [
+                { chatID: 21, text: "It's ichy..", callback: "t15" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "tiffany",
+            text: "That looks soooo much better! Such a pretty girl!",
+            button: [
+                { chatID: 22, text: "It's ichy..", callback: "t16" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "tiffany",
+            text: "Lets put some makeup on him! I bet he'll look really pretty with some makeup!",
+            button: [
+                { chatID: 23, text: "But I don't want makeup", callback: "" },
+                { chatID: 24, text: "Oh yes! Please make me a pretty girl!", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "candy",
+            text: "Oh shush! I'm going to make you pretty!",
+            button: [
+                { chatID: 25, text: "[Grumpy]", callback: "t17" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "candy",
+            text: "I'm so excited! You're going to be so pretty!",
+            button: [
+                { chatID: 25, text: "Thank you!", callback: "t17" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "candy",
+            text: "I'm so excited! You're going to be so pretty!",
+            button: [
+                { chatID: 26, text: "Thank you!", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "tiffany",
+            text: "OOHHH MMMYYY GGGOOODDDD You really are a pretty girl... Needs something more...",
+            button: [
+                { chatID: 27, text: "Oh wow", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "candy",
+            text: "Oh course she does! She needs pretty lips! I'm not sure what your color is. What color do you want? When I pick which color " +
+            "cI always think about what would look prettiest wrapped around a big meaty cock!",
+            button: [
+                { chatID: 28, text: "Classic Red Lips", callback: "red" },
+                { chatID: 28, text: "Sissy Pink", callback: "pink" },
+                { chatID: 28, text: "Rebellious Purple", callback: "purple" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "tiffany",
+            text: "Oh " + g.internal + " really is your color! You really know how to make yourself a pretty girl!",
+            button: [
+                { chatID: -1, text: "Oh wow", callback: "" },
             ]
         },
     ];
