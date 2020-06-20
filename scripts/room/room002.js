@@ -12,7 +12,26 @@ room2.main = function () {
 
 };
 
-room2.btnclick = function (name) { };
+room2.btnclick = function (name) {
+    if (name === "click") {
+        nav.button({
+            "type": "btn",
+            "name": "click1",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1_startScreen/chapter1.jpg"
+        }, 2);
+    }
+    else if (name === "click1") {
+        $('.room-left').show();
+        $('#room_footer').show();
+        $(".room-topper").show();
+        $('.hide-start').show();
+        char.room(7);
+    }
+};
 
 room2.chatcatch = function (callback) {
     if (callback === "doit") {
@@ -120,21 +139,24 @@ room2.chatcatch = function (callback) {
 
             var thisDiff = parseInt($("#intro_diff").data('diff'));
             g.set("difficulty", isNaN(thisDiff) ? 1 : ((thisDiff < 0) ? 0 : ((thisDiff > 2) ? 2 : thisDiff)));
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "click",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1_startScreen/help.jpg"
+            }, 2);
             
-            $('#room-buttons').html('<div style="width:80%; position:fixed; top:100px; left:50%; margin-left:-40%;color:#fff; font-size:1.5rem;">' +
-                '<h1>Hermaphrodity and the Mystery of the Mad Pooper</h1>' +
-                'This is the story of an unremarkable young lad. After gradutating high school he attempted ' +
-                'college before realizing he had to attend class all the time, which lead to his dropping out.<br/><br/>' +
-                'Today we join ' + sc.n("me") + ' the day after his firing from The Burger Joint for failing to show up for work. ' +
-                '<button type="button" id="room_002Start" style="width:100%; background:#3B5998; color:#fff; font-size:2em; margin-top:15px; border-radius:5px; padding:5px; border:solid #000 2px; cursor:pointer;">Begin Your Adventure</button>' +
-                '</div>');
-            $('#room_002Start').click(function () {
-                $('.room-left').show();
-                $('#room_footer').show();
-                $(".room-topper").show();
-                $('.hide-start').show();
-                char.room(7);
-            });
+            //$('#room_002Start').click(function () {
+            //    $('.room-left').show();
+            //    $('#room_footer').show();
+            //    $(".room-topper").show();
+            //    $('.hide-start').show();
+            //    char.room(7);
+            //});
 
         });
     }

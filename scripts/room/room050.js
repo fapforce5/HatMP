@@ -3,7 +3,8 @@ var room50 = {};
 room50.main = function () {
     var btnList;
     var navList = [0];
-    if (sc.getstep("treyvon") === 1) {
+    var treyvonStep = sc.getstep("treyvon");
+    if (treyvonStep === 1) {
         btnList = [
             {
                 "type": "btn",
@@ -19,6 +20,7 @@ room50.main = function () {
             nav.button(v, 50);
         });
     }
+   
     else {
         btnList = [
             {
@@ -48,6 +50,12 @@ room50.btnclick = function (name) {
                 case 1:
                     chat(2, 50);
                     break;
+                case 2:
+                    if (cl.appearance() > 0)
+                        chat(10, 50);
+                    else
+                        chat(0, 50);
+                    break;
                 default:
                     chat(0, 50);
                     break;
@@ -67,6 +75,9 @@ room50.chatcatch = function (callback) {
         case "followtif":
             sc.setstep("treyvon", 2);
             sc.setstep("tiffany", 15);
+            char.room(51);
+            break;
+        case "gohome":
             char.room(51);
             break;
         default:
@@ -157,6 +168,14 @@ room50.chat = function (chatID) {
                 "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + g.get("girlname") + " home. ",
             button: [
                 { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "followtif" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "treyvon",
+            text: "Hay sexy. It's getting boring down here, want to show me that booty of yours?",
+            button: [
+                { chatID: -1, text: "No, just going home", callback: "gohome" }
             ]
         }
     ];

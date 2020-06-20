@@ -63,6 +63,7 @@ sc.flag = [
 ];
 
 sc.events = [
+    { name: "me", step: -11, txt: "Free to roam as a girl", img: "", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -10, txt: "Stretch Butthole bigger than 1", img: "", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -9, txt: "Give Blowjobs", img: "plug", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -8, txt: "Buy and wear buttplug", img: "plug", show: true, row: 1, col: 5, ach: false, major: false },
@@ -78,6 +79,7 @@ sc.events = [
     { name: "me", step: 2, txt: "Pay rent each Sunday", img: "landlord", show: false, row: 0, col: -1, ach: false, major: false }, //hired at missy
     { name: "me", step: 3, txt: "Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
+    { name: "me", step: 8, txt: "Transformation", img: "", show: false, row: 0, col: 1, ach: false, major: false },
 
     { name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 1, txt: "Chat about job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -85,6 +87,8 @@ sc.events = [
     { name: "landlord", step: 3, txt: "Chat about theif", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 4, txt: "Get bedroom key and make bed each morning.", img: "llkey", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 5, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 6, txt: "Can Work", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 7, txt: "Offered Job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "bigguy", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -106,6 +110,7 @@ sc.events = [
     { name: "zoey", step: 18, txt: "Ready for kick out", img: "", show: true, row: 0, col: 3, ach: false, major: false },
     { name: "zoey", step: 19, txt: "3 days", img: "", show: false, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 23, txt: "Need some space", img: "zoeyLock", show: true, row: 0, col: 4, ach: false, major: false },
+    { name: "zoey", step: 24, txt: "transformation", img: "", show: false, row: 0, col: 4, ach: false, major: false },
 
     { name: "missy", step: 0, txt: "Not applied yet.", img: "pc", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 1, txt: "Get Private Investigator's license and interview.", img: "pi_lic", show: true, row: 0, col: 0, ach: false, major: false },
@@ -149,9 +154,11 @@ sc.events = [
     { name: "tiffany", step: 13, txt: "Meet at park", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 15, txt: "First time home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 16, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "candy", step: -1, txt: "Flash in bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "candy", step: 0, txt: "Begin Here", img: "", show: false, row: 0, col: 0, ach: true, major: false },
+    { name: "candy", step: 1, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: true, major: false },
 
     { name: "chad", step: -2, txt: "Give Chad a picture of Lola's tits", img: "chad_pic", show: true, row: 1, col: 0, ach: false, major: false },
     { name: "chad", step: -1, txt: "Pay $500", img: "money", show: true, row: -1, col: 0, ach: false, major: false },

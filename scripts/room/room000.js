@@ -108,7 +108,7 @@ room0.btnclick = function (name) {
     }
     else {
         var roomnum = parseInt(name);
-        if (cl.isCrossdressing()) {
+        if (cl.isCrossdressing() && !sc.checkevent("me", -11)) {
             if (roomnum === 203 || roomnum === 500 || roomnum === 250 || roomnum === 450) {
                 $('.room-left').show();
                 char.addtime(20);

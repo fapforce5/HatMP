@@ -146,8 +146,10 @@ room450.btnclick = function (name) {
             char.room(460);
             break;
         case "sleep":
-            chat(14, 450);
-            
+            if (sc.checkevent("me", 7))
+                char.room(456);
+            else
+                chat(14, 450);
             break;
         case "":
             char.room(456);

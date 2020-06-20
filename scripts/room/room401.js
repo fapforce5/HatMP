@@ -11,20 +11,22 @@ room401.main = function () {
     switch (g.pass) {
         case "purse":
             nav.bg("401_purchase/purse.jpg", "401_purchase/purse.jpg");
-            room401.makeInv(["b"]);
+            room401.makeInv(["b"], sc.checkevent("me", 7));
             break;
         case "saucy":
             nav.bg("401_purchase/saucy.jpg", "401_purchase/saucy.jpg");
-            room401.makeClothing("pants", "f", false);
-            room401.makeClothing("shirt", "f", false);
-            room401.makeClothing("dress", "f", false);
+            room401.makeClothing("pants", "f", true);
+            room401.makeClothing("shirt", "f", true);
+            room401.makeClothing("dress", "f", true);
+            room401.makeClothing("swimsuit", "f", true);
             break;
         case "shoe":
+            var buyGirls = sc.checkevent("me", 7);
             nav.bg("401_purchase/shoe.jpg", "401_purchase/shoe.jpg");
             room401.makeClothing("shoes", "m", true);
-            room401.makeClothing("shoes", "f", false);
+            room401.makeClothing("shoes", "f", buyGirls);
             room401.makeClothing("socks", "m", true);
-            room401.makeClothing("socks", "f", false);
+            room401.makeClothing("socks", "f", buyGirls);
             break;
         case "mens":
             nav.bg("401_purchase/mens.jpg", "401_purchase/mens.jpg");
@@ -42,8 +44,9 @@ room401.main = function () {
             break;
         case "bra":
             nav.bg("401_purchase/bra.jpg", "401_purchase/bra.jpg");
-            room401.makeClothing("bra", "f", false);
-            room401.makeClothing("panties", "f", false);
+            room401.makeClothing("bra", "f", true);
+            room401.makeClothing("panties", "f", true);
+            room401.makeClothing("pj", "f", true);
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");

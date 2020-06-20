@@ -7,7 +7,7 @@ room54.main = function () {
         chat(0, 54);
     }
     else {
-        var navList = [52, 54, 51, 53];
+        var navList = [51, 55];
         if (g.hourBetween(6, 21) && cl.hasoutfit("public") === null)
             navList.push(0);
         nav.buildnav(navList);

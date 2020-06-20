@@ -35,7 +35,7 @@ room56.btnclick = function (name) {
                 chat(0, 56);
             else {
                 nav.killall();
-                cl.c.cumface = false;
+                cl.clean("all");
                 cl.nude();
                 cl.displayMain(0, 400, .22, "shower");
                 nav.bg("56_bathroom/shower.jpg", "56_bathroom/shower.jpg");
@@ -74,6 +74,10 @@ room56.chatcatch = function (callback) {
             break;
         case "reloadRoom":
             char.room(56);
+            break;
+        case "wash":
+            cl.clean("face");
+            cl.displayMirror();
             break;
         default:
             break;
@@ -120,6 +124,7 @@ room56.chat = function (chatID) {
             button: [
                 { chatID: 5, text: "Apply Makeup", callback: "" },
                 { chatID: 5, text: "Apply Lipstick", callback: "" },
+                { chatID: 6, text: "Wash Face", callback: "wash" },
                 { chatID: -1, text: "Finish", callback: "reloadRoom" }
             ]
         },
@@ -127,6 +132,14 @@ room56.chat = function (chatID) {
             chatID: 5,
             speaker: "me",
             text: "I don't have that.",
+            button: [
+                { chatID: -1, text: "Finish", callback: "reloadRoom" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "me",
+            text: "All Clean",
             button: [
                 { chatID: -1, text: "Finish", callback: "reloadRoom" }
             ]

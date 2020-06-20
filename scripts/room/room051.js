@@ -6,6 +6,9 @@ room51.main = function () {
         nav.bg("51_livingRoom/t1.jpg");
         $('.room-left').hide();
         cl.c.wig = null;
+        char.settime(19, 37);
+        cl.add("dress", "u");
+        cl.add("socks", "p");
         chat(0, 51);
     }
     else {
@@ -33,7 +36,16 @@ room51.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 51);
         });
-        var navList = [55, 0];
+        var navList = [55];
+        var missingClothing = cl.hasoutfit("public");
+
+        if (missingClothing === null)
+            navList.push(0);
+        else {
+            g.internal = missingClothing;
+            chat(50, 51);
+        }
+
         nav.buildnav(navList);
     }
 };
@@ -44,7 +56,14 @@ room51.btnclick = function (name) {
             char.room(55);
             break;
         case "reddoor":
-            chat(0, 51);
+            chat(49, 51);
+            break;
+        case "t19":
+            chat(30, 51);
+            break;
+        case "chapter2":
+            $('.room-left').show();
+            char.room(51);
             break;
         default:
             break;
@@ -52,6 +71,7 @@ room51.btnclick = function (name) {
 };
 
 room51.chatcatch = function (callback) {
+    var i;
     switch (callback) {
         case "t2":
             nav.bg("51_livingRoom/t2.jpg");
@@ -110,7 +130,136 @@ room51.chatcatch = function (callback) {
             cl.c.makeup = "light";
             cl.displayface();
             break;
-
+        case "t18":
+            nav.bg("51_livingRoom/livingroom.jpg");
+            nav.killall();
+            cl.nude();
+            cl.displayMain(20, 650, .20, "");
+            nav.button({
+                "type": "btn",
+                "name": "t19",
+                "left": 364,
+                "top": 0,
+                "width": 487,
+                "height": 1080,
+                "image": "51_livingRoom/t18Candy.png"
+            }, 51);
+            nav.button({
+                "type": "btn",
+                "name": "t19",
+                "left": 1191,
+                "top": 17,
+                "width": 519,
+                "height": 1063,
+                "image": "51_livingRoom/t18tif.png"
+            }, 51);
+            break;
+        case "t19":
+            nav.killall();
+            nav.bg("51_livingRoom/t19.jpg");
+            break;
+        case "t20":
+            nav.bg("51_livingRoom/t20.jpg");
+            break;
+        case "t21":
+            nav.bg("51_livingRoom/t21.jpg");
+            break;
+        case "t22":
+            nav.bg("51_livingRoom/t22.jpg");
+            break;
+        case "t23":
+            nav.bg("51_livingRoom/t23.jpg");
+            break;
+        case "t24":
+            nav.bg("51_livingRoom/t24.jpg");
+            break;
+        case "t25":
+            nav.bg("51_livingRoom/t25.jpg");
+            break;
+        case "t26":
+            nav.bg("51_livingRoom/t26.jpg");
+            break;
+        case "t27":
+            nav.killall();
+            char.settime(21, 8);
+            nav.bg("51_livingRoom/livingroom.jpg");
+            cl.displayMain(20, 650, .20, "");
+            nav.button({
+                "type": "img",
+                "name": "t19",
+                "left": 364,
+                "top": 0,
+                "width": 487,
+                "height": 1080,
+                "image": "51_livingRoom/t18Candy.png"
+            }, 51);
+            nav.button({
+                "type": "img",
+                "name": "t19",
+                "left": 1191,
+                "top": 17,
+                "width": 519,
+                "height": 1063,
+                "image": "51_livingRoom/t27tif.png"
+            }, 51);
+            break;
+        case "t28":
+            cl.add("pj", "gown");
+            cl.c.pj = "gown";
+            nav.killall();
+            cl.displayMain(20, 650, .20, "clothes");
+            nav.button({
+                "type": "img",
+                "name": "t19",
+                "left": 364,
+                "top": 0,
+                "width": 487,
+                "height": 1080,
+                "image": "51_livingRoom/t18Candy.png"
+            }, 51);
+            nav.button({
+                "type": "img",
+                "name": "t19",
+                "left": 1191,
+                "top": 17,
+                "width": 519,
+                "height": 1063,
+                "image": "51_livingRoom/t18tif.png"
+            }, 51);
+            break;
+        case "t29":
+            
+            cl.display();
+            for (i = 0; i < cl.list.length; i++) {
+                if (cl.list[i].sex === "m")
+                    cl.list[i].inv = false;
+            }
+            cl.saveOutfit = [
+                { name: "Outfit 1", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+                { name: "Outfit 2", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+                { name: "Outfit 3", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+                { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+                { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
+            ];
+            sc.setstep("me", -10);
+            sc.setstep("me", -11);
+            sc.setstep("me", 8);
+            sc.setstep("tiffany", 16);
+            sc.setstep("candy", 1);
+            sc.setstep("missy", 24);
+            sc.setstep("landlord", 6);
+            char.settime(23, 57);
+            nav.button({
+                "type": "btn",
+                "name": "chapter2",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "51_livingRoom/t29.jpg"
+            }, 51);
+            //char.room(51);
+            break;
         case "red":
         case "pink":
         case "purple":
@@ -240,7 +389,7 @@ room51.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "candy",
-            text: "Haha yea silly boy, just relax and we'll help you release your inner sissy!",
+            text: "Haha yea silly boy, just relax and we'll help you release your inner girl!",
             button: [
                 { chatID: 15, text: "Oh", callback: "t11" },
             ]
@@ -366,8 +515,183 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "Oh " + g.internal + " really is your color! You really know how to make yourself a pretty girl!",
             button: [
-                { chatID: -1, text: "Oh wow", callback: "" },
+                { chatID: 29, text: "Oh wow", callback: "" },
             ]
+        },
+        {
+            chatID: 29,
+            speaker: "candy",
+            text: "She really does make a pretty girl! Let's take a look at you.",
+            button: [
+                { chatID: -1, text: "I look pretty?", callback: "t18" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "candy",
+            text: "Hmmmm...",
+            button: [
+                { chatID: 31, text: "...", callback: "t19" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "candy",
+            text: "You're pretty, but there's something I can't put my finger on....",
+            button: [
+                { chatID: 32, text: "...", callback: "t20" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "candy",
+            text: "Oh, haha I can put my finger on it!",
+            button: [
+                { chatID: 33, text: "...", callback: "t21" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "candy",
+            text: "Hahaha these things are so much fun, but it's not a good look for you.. hmmm. Should we cut it off?",
+            button: [
+                { chatID: 34, text: "What!! No!!", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "tiffany",
+            text: sc.n("candy") + "!!! You're going to scare the poor boy! No one is cutting off you boy cock. Let's see the back side, " +
+            "turn around girl.",
+            button: [
+                { chatID: 35, text: "[Turn around]", callback: "t23" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "candy",
+            text: "I like it! Lets see how tight she is.",
+            button: [
+                { chatID: 36, text: "huh", callback: "t24" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "candy",
+            text: "Do you like it when I play with your girl hole?",
+            button: [
+                { chatID: 37, text: "*moan*", callback: "t25" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "candy",
+            text: "Oh you are a tight one!",
+            button: [
+                { chatID: 38, text: "*moan*", callback: "t26" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "candy",
+            text: "But with just a little work your gril hole opens right up!",
+            button: [
+                { chatID: 39, text: "*moan*", callback: "t25" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "tiffany",
+            text: "I can tell you like that, don't you? You are such a little slut! Lets play some dress up with this slut!",
+            button: [
+                { chatID: 40, text: "But we already played that....", callback: "t26" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "candy",
+            text: "Oh I like dress up! We're going to play that!",
+            button: [
+                { chatID: 41, text: "Groan", callback: "t27" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "tiffany",
+            text: "Before we play we have to do something with all these boy clothes of yours...",
+            button: [
+                { chatID: 42, text: "Huh, those are my clothes.", callback: "" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "candy",
+            text: "Sorry, but this is a girls only building. We can't have you accidently exposing to " + sc.n("treyvon") + " we snunk a boy in here.",
+            button: [
+                { chatID: 43, text: "I won't wear them out, I promise", callback: "" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "candy",
+            text: "You don't have to promise, we're just going to throw them all out. From now on it's just girls clothes for you since you're living here. ",
+            button: [
+                { chatID: 44, text: "Please, you can't do that, they're mine!", callback: "" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "tiffany",
+            text: "I told you we would have to dress you up like a girl at the bench and you said you were in. I don't even know why we're having an argument.",
+            button: [
+                { chatID: 45, text: "but, but...", callback: "t18" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "candy",
+            text: "Now you don't have any boy pajamas, you can use mine till you buy new clothes. You'll love it, try it on!",
+            button: [
+                { chatID: 46, text: "but, but...", callback: "t28" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "tiffany",
+            text: "Oh My God! You are sooooo pretty! I'm so happy we picked you to come live here. I don't think I've seen anything more pretty!",
+            button: [
+                { chatID: 47, text: "really?", callback: "" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "candy",
+            text: "Well I'm tired, I'm going to bed. We'll play more with you later, our new pretty girl!",
+            button: [
+                { chatID: 48, text: "You're just going to leave me like this?", callback: "" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "tiffany",
+            text: "*Yawn* yes. We'll have time tomorrow to play some more. Your room is at the end of the hallway. Good night " + sc.n("me") + ".",
+            button: [
+                { chatID: -1, text: "Humph!", callback: "t29" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "me",
+            text: "Hmmm, it's locked. I wonder what's behind the red door?",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "me",
+            text: "Before I leave I need to get dressed. <span class='hl'>I'm missing my " + g.internal + ".</span>",
+            button: []
         },
     ];
     if (cArray.length > chatID && chatID > -1)
