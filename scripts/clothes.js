@@ -71,7 +71,7 @@ cl.list = [
 
     { type: "shirt", name: "g", display: "Gray T-Shirt", img: "shirt_tgray.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "shirt", name: "c", display: "Cock T-Shirt", img: "shirt_tcock.png", sex: "m", inv: true, daring: 0, price: 50 },
-    { type: "shirt", name: "p", display: "I ♥ Cock T-Shirt", img: "shirt_tpink.png", sex: "m", inv: true, daring: 1, price: 50 },
+    { type: "shirt", name: "p", display: "I ♥ Cock T-Shirt", img: "shirt_tpink.png", sex: "f", inv: true, daring: 1, price: 50 },
     { type: "shirt", name: "s", display: "Suit Top", img: "shirt_suit.png", sex: "m", inv: false, daring: 0, price: 90 },
     { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 1, price: 12 },
     { type: "shirt", name: "v", display: "Naked Beaver Shirt", img: "shirt_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
@@ -112,13 +112,13 @@ cl.list = [
     { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 3, price: 48 },
     { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 2, price: 36 },
 
-    { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "m", inv: false, daring: 0, price: -1 },
+    { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
 
     { type: "pj", name: "paisley", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "pj", name: "gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
 
-    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 1, price: 120 },
-    { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "m", inv: false, daring: 2, price: 90 },
+    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "f", inv: false, daring: 1, price: 120 },
+    { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
 
     { type: "buttplug", name: "s", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
     { type: "buttplug", name: "n", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },

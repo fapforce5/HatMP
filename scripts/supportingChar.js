@@ -10,7 +10,7 @@ sc.char = [
     { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true },
     { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true },
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
-    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: true, setName: true },
+    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false },
     { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true },
     { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true },

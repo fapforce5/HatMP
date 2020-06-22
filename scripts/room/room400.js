@@ -117,8 +117,10 @@ room400.btnclick = function (name) {
     else if (g.pass === "happyGirl") {
         if (sc.getstep("me") < 8)
             chat(1, 400);
-        else
-            chat(2, 400);
+        else {
+            g.pass = "happyGirl";
+            char.room(401);
+        }
     }
     else
         char.room(401);

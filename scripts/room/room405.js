@@ -24,7 +24,7 @@ room405.btnclick = function (name) {
         case "red":
             if (cl.c.hairLength === null)
                 chat(0, 405);
-            if (cl.c.hairLength < 3)
+            if (cl.c.hairLength < 2)
                 chat(1, 405);
             else
                 chat(2, 405);

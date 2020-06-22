@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//My Room
 var room52 = {};
 room52.main = function () {
 
@@ -48,6 +48,19 @@ room52.main = function () {
             "night": "52_myroom/computerNight.png"
         }
     ];
+
+    var painting = g.get("painting");
+    if (painting !== "") {
+        btnList.push({
+            "type": "img",
+            "name": "painting",
+            "left": 280,
+            "top": 220,
+            "width": 457,
+            "height": 253,
+            "image": "52_myroom/" + painting + ".png",
+        });
+    }
 
     navList = [51, 55];
 

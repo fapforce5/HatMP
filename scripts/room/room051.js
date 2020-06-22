@@ -6,7 +6,7 @@ room51.main = function () {
         nav.bg("51_livingRoom/t1.jpg");
         $('.room-left').hide();
         cl.c.wig = null;
-        char.settime(19, 37);
+        char.settime(17, 37);
         cl.add("dress", "u");
         cl.add("socks", "p");
         chat(0, 51);
@@ -181,7 +181,7 @@ room51.chatcatch = function (callback) {
             break;
         case "t27":
             nav.killall();
-            char.settime(21, 8);
+            char.settime(18, 8);
             nav.bg("51_livingRoom/livingroom.jpg");
             cl.displayMain(20, 650, .20, "");
             nav.button({
@@ -241,6 +241,8 @@ room51.chatcatch = function (callback) {
                 { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
                 { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
             ];
+            sc.setstep("me", -7);
+            sc.setstep("me", -8);
             sc.setstep("me", -10);
             sc.setstep("me", -11);
             sc.setstep("me", 8);
@@ -248,7 +250,8 @@ room51.chatcatch = function (callback) {
             sc.setstep("candy", 1);
             sc.setstep("missy", 24);
             sc.setstep("landlord", 6);
-            char.settime(23, 57);
+            sc.setstep("me", -5);
+            char.settime(19, 57);
             nav.button({
                 "type": "btn",
                 "name": "chapter2",

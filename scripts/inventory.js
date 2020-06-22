@@ -14,6 +14,7 @@ var pic = {};
 //c = chastity
 //h = hormone
 //p = small pp 
+//r = room painting
 inv.isFooter = true;
 inv.leftMenu = true;
 inv.roomChange = [10, 12, 201, 451, 452, 503, 552, 553];
@@ -31,7 +32,7 @@ inv.master = [
     { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false },
     { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false },
     { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false },
-    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 0, image: "breifcase.png", n: false },
+    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false },
     { type: "b", name: "slutPurse", display: "Slutty Pink Purse", entry: false, count: null, cost: 100, image: "purse_slut.png", n: false },
     { type: "b", name: "pinkPurse", display: "Pink Purse", entry: false, count: null, cost: 100, image: "purse_pink.png", n: false },
     { type: "p", name: "phoneBasic", display: "Basic Phone", entry: true, count: null, cost: -1, image: "phone_basic.png", n: false },
@@ -51,7 +52,10 @@ inv.master = [
     //{ type: "c", name: "chastCage", display: "Metal Cage", entry: false, count: null, cost: 120, image: "chast_cage.png", n: false },
     //{ type: "c", name: "chastPink", display: "Pink Lock", entry: false, count: null, cost: 90, image: "chast_pink.png", n: false },
     { type: "p", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false },
-    { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false }
+    { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false },
+    { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false },
+    { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false },
+    { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false }
 ];
 
 inv.getall = function () {
@@ -227,6 +231,8 @@ inv.display = function () {
                 $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-energyChange');
             if (inv.master[i].type === "h")
                 $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-hormoneChange');
+            if (inv.master[i].type === "r")
+                $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-paintChange');
             counter++;
         }
         inv.master[i].n = false;
@@ -247,6 +253,10 @@ inv.display = function () {
     $('.inv-backpackChange').click(function () {
         inv.backpack = $(this).data('name');
         inv.backpackIcon();
+        inv.close();
+    });
+    $('.inv-paintChange').click(function () {
+        g.set("painting", $(this).data("name"));
         inv.close();
     });
     $('.inv-phoneChange').click(function () {

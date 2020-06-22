@@ -46,6 +46,7 @@ g.st = [
     { n: "momClosetLube", t: 3, q: "int" },
     { n: "momClosetMoney", t: 7, q: "int" },
     { n: "bladder", t: 0, q: "zero" },
+    { n: "painting", t: "", q: "string" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -596,6 +597,9 @@ g.initGame = function () {
                 break;
             case "maxenergy":
                 g.st[i].t = 100;
+                break;
+            case "painting":
+                g.st[i].t = "";
                 break;
             case "rentOwed":
             case "arousal":

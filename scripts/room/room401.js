@@ -58,9 +58,13 @@ room401.main = function () {
             break;
         case "fuckMyDirtyAssholeHard":
             nav.bg("650_toyStore/650_front.jpg", "650_toyStore/650_front.jpg");
-            room401.makeClothing("chastity", "m", sc.checkevent("me", -7));
+            room401.makeClothing("chastity", "f", sc.checkevent("me", -7));
             room401.makeClothing("buttplug", "f", sc.checkevent("me", -8));
             navList = [650, 0];
+            break;
+        case "happyGirl":
+            room401.makeInv(["r"], true);
+            nav.bg("401_purchase/paint.jpg", "401_purchase/paint.jpg");
             break;
         default:
             g.error("g.pass", g.pass);
