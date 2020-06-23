@@ -598,9 +598,6 @@ g.initGame = function () {
             case "maxenergy":
                 g.st[i].t = 100;
                 break;
-            case "painting":
-                g.st[i].t = "";
-                break;
             case "rentOwed":
             case "arousal":
             case "rentKnockOff":
@@ -652,6 +649,9 @@ g.initGame = function () {
                 break;
             case "bladder":
                 g.st[i].t = 0;
+                break;
+            case "painting":
+                g.st[i].t = "";
                 break;
             case "girlname":
                 g.st[i].t = "Scarlett";
