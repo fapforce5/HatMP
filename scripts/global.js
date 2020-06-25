@@ -20,7 +20,6 @@ g.dt = g.startDate;
 
 g.st = [
     { n: "shower", t: g.startDate, q: "date" },
-    { n: "shave", t: g.startDate, q: "date" },
     { n: "cum", t: g.startDate, q: "date" },
 
     { n: "difficulty", t: 1, q: "int" },
@@ -47,6 +46,7 @@ g.st = [
     { n: "momClosetMoney", t: 7, q: "int" },
     { n: "bladder", t: 0, q: "zero" },
     { n: "painting", t: "", q: "string" },
+    { n: "bodyhair", t: 0, q: "zero" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -580,9 +580,6 @@ g.initGame = function () {
             case "shower":
                 g.st[i].t = char.addMinutes(g.startDate, -4320);
                 break;
-            case "shave":
-                g.st[i].t = char.addMinutes(g.startDate, -99999);
-                break;
             case "cum":
                 g.st[i].t = char.addMinutes(g.startDate, -757);
                 break;
@@ -648,6 +645,9 @@ g.initGame = function () {
                 g.st[i].t = 7;
                 break;
             case "bladder":
+                g.st[i].t = 0;
+                break;
+            case "bodyhair":
                 g.st[i].t = 0;
                 break;
             case "painting":

@@ -111,6 +111,7 @@ char.addtime = function (minutes) {
 
 char.newday = function (sendingRoom) {
     var retData = null;
+    var hormoneLevel = g.get("hormone");
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
@@ -120,6 +121,7 @@ char.newday = function (sendingRoom) {
     g.mod('hormone', -2);
     var thisTinyPP = g.get("shinkCock");
     g.newday();
+    cl.hairgrowth();
     if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 21) {
         if (cl.c.hairLength === null)
             cl.c.hairLength = 0;
@@ -136,6 +138,7 @@ char.newday = function (sendingRoom) {
     }
 
     //check Transformation
+
     if (cl.c.chest === 0) {
         if (g.get("fitnessLevel") > 0) {
             retData = { type: "chest", tOld: 0, tNew: 1 };
@@ -145,9 +148,9 @@ char.newday = function (sendingRoom) {
     else if (thisTinyPP && cl.c.cock < 5) {
         retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
     }
-    else if (g.get("hormone") > 70 && g.get("sissy") > 98) {
+    else if (hormoneLevel > 70 && g.get("sissy") > 98) {
         var tempC = null;
-        if (Math.floor(Math.random() * (100 - g.get("hormone"))) < 5) {
+        if (Math.floor(Math.random() * (100 - hormoneLevel)) < 5) {
             g.set("sissy", 0);
             g.mod("sissyLevel", 1);
             if (cl.c.leg === 4 && cl.c.chest === 6)

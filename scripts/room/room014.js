@@ -6,15 +6,29 @@ room14.main = function () {
     g.internal = { pussy: 0, asshole: 0 };
     if (!g.hourBetween(6, 21)) {
         nav.bg("14_motherRoom/14_motherRoomNight.jpg");
-        btnList = [{
-            "type": "btn",
-            "name": "motherSleep",
-            "left": 1031,
-            "top": 779,
-            "width": 591,
-            "height": 114,
-            "image": "14_motherRoom/14_motherAsleep.png"
-        }];
+        if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
+            //14_motherAsleepDick.png
+            btnList = [{
+                "type": "btn",
+                "name": "dickSleep",
+                "left": 986,
+                "top": 696,
+                "width": 713,
+                "height": 193,
+                "image": "14_motherRoom/14_motherAsleepDick.png"
+            }];
+        }
+        else {
+            btnList = [{
+                "type": "btn",
+                "name": "motherSleep",
+                "left": 1031,
+                "top": 779,
+                "width": 591,
+                "height": 114,
+                "image": "14_motherRoom/14_motherAsleep.png"
+            }];
+        }
     }
     else if (sc.mother().thisRoom) {
         if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
@@ -193,6 +207,9 @@ room14.btnclick = function (name) {
                     "image": "14_motherRoom/camera.png"
                 }, 14);
             }
+            break;
+        case "dickSleep":
+            chat(42, 14);
             break;
         case "sleepPussy":
             nav.killbutton("sleepPussy");
@@ -789,6 +806,14 @@ room14.chat = function(chatID){
             text: "Ok you naughty boy, run along so I can finish up. Now go!",
             button: [
                 { chatID: -1, text: "[Run along]", callback: "fin0" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "me",
+            text: "I'm not fucking with " + sc.n("bigguy") + "!",
+            button: [
+                { chatID: -1, text: "[Run along]", callback: "" }
             ]
         },
     ];

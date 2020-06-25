@@ -1015,12 +1015,25 @@ cl.displayChar = function (ratio, top, left, back) {
     //    $('#char_turnaround').click();
 };
 
+cl.hairgrowth = function () {
+    var h = g.get("hormone")
+    if (h > 80)
+        g.mod("bodyhair", 2);
+    else if (h > 60)
+        g.mod("bodyhair", 4);
+    else if (h > 50)
+        g.mod("bodyhair", 7);
+    else
+        g.mod("bodyhair", 10);
+};
+
 cl.getBodyHair = function () {
-    var daysDiff = g.diffDatesByDays(g.dt, g.st[g.i("shave")].t);
-    if (daysDiff > 6)
+    var h = g.get("bodyhair");
+    if (h > 80)
         return "longHair";
-    else if (daysDiff > 3)
+    if (h > 50)
         return "shortHair";
+
     return null;
 };
 

@@ -151,7 +151,7 @@ room10.btnclick = function (name) {
             break;
         case "nightStand":
             g.pass = 10;
-            char.room(18);
+            char.room(19);
             break;
         default:
             break;

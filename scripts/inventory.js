@@ -10,8 +10,7 @@ var pic = {};
 //phone = p
 //a = ass toys
 //z = other
-//a = ass toys
-//c = chastity
+//d = dildo
 //h = hormone
 //p = small pp 
 //r = room painting
@@ -39,18 +38,9 @@ inv.master = [
     { type: "p", name: "phoneTr", display: "Phone Sexy", entry: false, count: null, cost: 100, image: "phone_tr.png", n: false },
     { type: "p", name: "phonePink", display: "Pink Phone", entry: false, count: null, cost: 100, image: "phone_pink.png", n: false },
     { type: "p", name: "phoneLips", display: "Pink Purse", entry: false, count: null, cost: 100, image: "phone_lips.png", n: false },
-    //{ type: "a", name: "plugDGreen", display: "Butt Plug", entry: false, count: null, cost: 120, image: "butt_plugGreenDiamond.png", n: false },
-    //{ type: "a", name: "plugDBlue", display: "Butt Plug", entry: false, count: null, cost: 120, image: "butt_plugBlueDiamond.png", n: false },
-    //{ type: "a", name: "plugDRed", display: "Butt Plug", entry: false, count: null, cost: 120, image: "butt_plugRedDiamond.png", n: false },
-    //{ type: "a", name: "plugHPink", display: "Butt Plug", entry: false, count: null, cost: 150, image: "butt_plugHeart.png", n: false },
-    //{ type: "a", name: "plugSPink", display: "Small Butt Plug", entry: false, count: null, cost: 80, image: "butt_pinkSoft.png", n: false },
-    //{ type: "a", name: "plugMBlack", display: "Medium Butt Plug", entry: false, count: null, cost: 150, image: "butt_blackMed.png", n: false },
-    //{ type: "a", name: "plugLBlack", display: "Large Butt Plug", entry: false, count: null, cost: 210, image: "butt_blackLarge.png", n: false },
-    //{ type: "a", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: 180, image: "butt_blackCock.png", n: false },
-    //{ type: "a", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 180, image: "butt_whiteCock.png", n: false },
-    //{ type: "a", name: "greenMonster", display: "Green Monster", entry: false, count: null, cost: 180, image: "butt_greenMonster.png", n: false },
-    //{ type: "c", name: "chastCage", display: "Metal Cage", entry: false, count: null, cost: 120, image: "chast_cage.png", n: false },
-    //{ type: "c", name: "chastPink", display: "Pink Lock", entry: false, count: null, cost: 90, image: "chast_pink.png", n: false },
+    //{ type: "d", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: 180, image: "butt_blackCock.png", n: false },
+    //{ type: "d", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 180, image: "butt_whiteCock.png", n: false },
+    //{ type: "d", name: "greenMonster", display: "Green Monster", entry: false, count: null, cost: 180, image: "butt_greenMonster.png", n: false },
     { type: "p", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false },
     { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false },
     { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false },
@@ -132,6 +122,15 @@ inv.get = function (name) {
     }
     return null;
 };
+
+inv.gettype = function (type) {
+    var typeList = new Array();
+    for (var i = 0; i < inv.master.length; i++) {
+        if (inv.master[i].type === type && inv.master[i].entry)
+            typeList.push({ name: inv.master[i].name, entry: inv.master[i].entry, count: inv.master[i].count });
+    }
+    return typeList;
+}
 
 inv.has = function (name) {
     return inv.get(name).entry;

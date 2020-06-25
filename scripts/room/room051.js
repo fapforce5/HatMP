@@ -119,7 +119,7 @@ room51.chatcatch = function (callback) {
             nav.bg("51_livingRoom/t14.jpg");
             break;
         case "t15":
-            g.set("shave", g.dt);
+            g.set("bodyhair", 0);
             nav.bg("51_livingRoom/t15.jpg");
             break;
         case "t16":

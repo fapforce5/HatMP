@@ -342,7 +342,7 @@ room12.chatcatch = function (callback) {
             }, 12);
             break;
         case "shaveBody":
-            g.set("shave", g.dt);
+            g.set("bodyhair", 0);
             inv.use("razor");
             cl.display();
             break;
