@@ -84,6 +84,8 @@ g.st = [
     { n: "girlname", t: "Scarlett", q: "int" },
 
     { n: "jobConstGetRaise", t: false, q: "bool" },
+    { n: "lockboobs", t: false, q: "bool" },
+    { n: "lockbutt", t: false, q: "bool" },
 
     { n: "enterSister", t: false, q: "day" },
     { n: "evaDayEvent", t: false, q: "day" },
@@ -636,6 +638,7 @@ g.initGame = function () {
             case "receiveBoobJob":
             case "giveBoobJob":
             case "shinkCock":
+            case "bodyhair":
                 g.st[i].t = 0;
                 break;
             case "momClosetLube":
@@ -645,9 +648,6 @@ g.initGame = function () {
                 g.st[i].t = 7;
                 break;
             case "bladder":
-                g.st[i].t = 0;
-                break;
-            case "bodyhair":
                 g.st[i].t = 0;
                 break;
             case "painting":

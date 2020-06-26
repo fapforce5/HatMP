@@ -22,7 +22,7 @@ room452.main = function () {
         chat(2, 452);
     }
     else {
-        if (Math.floor(Math.random() * 3 ) === 0) {
+        if (Math.floor(Math.random() * 4) === 0) {
             nav.button({
                 "type": "img",
                 "name": "cop",
@@ -34,7 +34,7 @@ room452.main = function () {
             }, 452);
             chat(5, 452);
         }
-        else {
+        else if (Math.floor(Math.random() * 3) === 0) {
             nav.button({
                 "type": "img",
                 "name": "woman",
@@ -45,6 +45,61 @@ room452.main = function () {
                 "image": "452_parkWomansRoom/woman.png"
             }, 452);
             chat(1, 452);
+        }
+        else {
+            var canGoOut = cl.hasoutfit("public");
+            if (canGoOut === null) {
+                var btnList = [
+                    {
+                        "type": "btn",
+                        "name": "stall1",
+                        "left": 1225,
+                        "top": 172,
+                        "width": 166,
+                        "height": 546,
+                        "image": "451_parkMensRoom/451_stall1.png"
+                    },
+                    {
+                        "type": "btn",
+                        "name": "stall2",
+                        "left": 1001,
+                        "top": 149,
+                        "width": 184,
+                        "height": 586,
+                        "image": "451_parkMensRoom/451_stall2.png"
+                    },
+                    {
+                        "type": "btn",
+                        "name": "stall3",
+                        "left": 750,
+                        "top": 118,
+                        "width": 207,
+                        "height": 632,
+                        "image": "451_parkMensRoom/451_stall3.png"
+                    },
+                    {
+                        "type": "btn",
+                        "name": "mirror",
+                        "left": 1621,
+                        "top": 76,
+                        "width": 233,
+                        "height": 490,
+                        "image": "451_parkMensRoom/sink.png"
+                    },
+                ];
+
+                var navList1 = [450];
+
+                $.each(btnList, function (i, v) {
+                    nav.button(v, 451);
+                });
+
+                nav.buildnav(navList1);
+            }
+            else {
+                g.internal = canGoOut;
+                chat(0, 451);
+            }
         }
     }
 };

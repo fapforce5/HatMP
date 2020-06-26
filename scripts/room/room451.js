@@ -116,6 +116,8 @@ room451.chatcatch = function (callback) {
             break;
         case "cleanface":
             cl.c.cumface = false;
+            cl.c.lips = "thin";
+            cl.c.makeup = "n";
             cl.displayMirror();
             cl.display();
             break;

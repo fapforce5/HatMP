@@ -124,6 +124,8 @@ room405.chatcatch = function (callback) {
                 $('#menu-bg_1').html('<img src="./images/room/405_reds/style_' + styleTemp + '.png" data-name="' + styleTemp + '" data-type="style" class="hair-change"/>');
                 styleTemp = 'pig';
                 $('#menu-bg_2').html('<img src="./images/room/405_reds/style_' + styleTemp + '.png" data-name="' + styleTemp + '" data-type="style" class="hair-change"/>');
+                styleTemp = 'bang';
+                $('#menu-bg_2').html('<img src="./images/room/405_reds/style_' + styleTemp + '.png" data-name="' + styleTemp + '" data-type="style" class="hair-change"/>');
                 styleTemp = 'leia';
                 $('#menu-bg_3').html('<img src="./images/room/405_reds/style_' + styleTemp + '.png" data-name="' + styleTemp + '" data-type="style" class="hair-change"/>');
                 $('#menu-bg_4').html('<img src="./images/room/405_reds/cancel.png" data-name="cancel" data-type="cancel" class="hair-change"/>');

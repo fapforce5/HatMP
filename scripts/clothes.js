@@ -64,7 +64,7 @@ cl.list = [
     { type: "pants", name: "v", display: "Naked Beaver Skirt", img: "pants_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "pants", name: "k", display: "Office Skirt", img: "pants_skirt.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "pants", name: "p", display: "Prison Pants", img: "pants_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
-    { type: "pants", name: "dd", display: "Daisy Dukes", img: "pants_daisyDukes.png", sex: "f", inv: false, daring: 3, price: 160 },
+    { type: "pants", name: "dd", display: "Daisy Dukes", img: "pants_daisyDukes.png", sex: "f", inv: false, daring: 4, price: 160 },
     { type: "pants", name: "d", display: "Polka Dot Dress", img: "pants_polka.png", sex: "f", inv: false, daring: 2, price: 160 },
     { type: "pants", name: "bs", display: "Blue Skirt", img: "pants_blue.png", sex: "f", inv: false, daring: 2, price: 60 },
     { type: "pants", name: "ps", display: "Pink Shorts", img: "pants_pinkshorts.png", sex: "f", inv: false, daring: 2, price: 78 },
@@ -79,7 +79,7 @@ cl.list = [
     { type: "shirt", name: "r", display: "Red Blouse", img: "shirt_redBlouse.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "shirt", name: "j", display: "Prison Shirt", img: "shirt_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
     { type: "shirt", name: "y", display: "Sun Top", img: "shirt_yellow.png", sex: "f", inv: false, daring: 3, price: 90 },
-    { type: "shirt", name: "k", display: "Kitty Kat", img: "shirt_kitty.png", sex: "f", inv: false, daring: 3, price: 75 },
+    { type: "shirt", name: "k", display: "Kitty Kat", img: "shirt_kitty.png", sex: "f", inv: false, daring: 4, price: 75 },
     { type: "shirt", name: "x", display: "X", img: "shirt_x.png", sex: "f", inv: false, daring: 4, price: 40 },
     { type: "shirt", name: "pt", display: "Pink Tank Top", img: "shirt_crop.png", sex: "f", inv: false, daring: 2, price: 30 },
 
@@ -141,10 +141,7 @@ cl.add = function (type, name) {
     var i;
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].name === name) {
-            if (cl.list[i].inv)
-                console.log("has inv: " + type + ", " + name);
-            else
-                cl.list[i].inv = true;
+            cl.list[i].inv = true;
             i = cl.c.length;
         }
     }
@@ -404,7 +401,7 @@ cl.hairColor = [
     { color: "rainbow", step: 1 }
 ];
 
-cl.hairStyle = ["straight", "wavy", "pig", "leia"]; 
+cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia"]; 
 
 cl.makeup = [
     { name: "n", image: "body_head.png" },
@@ -1807,10 +1804,13 @@ cl.appearanceClothes = function () {
 
     secondaryScore = Math.floor(secondaryScore / 3);
 
-    if (secondaryScore < baseScore)
+    //console.log(baseScore, secondaryScore, pantyScore, shoeScore, sockScore);
+
+    if ((secondaryScore + 1) < baseScore)
         baseScore = baseScore - 1;
     else if (secondaryScore > baseScore)
         baseScore = baseScore + 1;
+
     if (baseScore < 0)
         baseScore = 0;
     if (baseScore > 4)
