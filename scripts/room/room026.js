@@ -46,10 +46,28 @@ room26.btnclick = function (name) {
                     chat(9, 26)
                 else if (ll === 6)
                     chat(11, 26);
+                else if (ll === 7)
+                    chat(30, 26);
+                else if (ll === 8)
+                    chat(43, 26);
                 else if (ll < 4)
                     chat(11, 26);
                 else 
                     chat(2, 26);
+            }
+            break;
+        case "butthole":
+            g.pass++;
+            if (g.pass === 1)
+                chat(20, 26);
+            if (g.pass === 2)
+                chat(21, 26);
+            if (g.pass === 3)
+                chat(22, 26);
+            if (g.pass === 4) {
+                nav.killbutton("butthole");
+                nav.bg("26_livingRoom/passtime6g.jpg");
+                chat(23, 26);
             }
             break;
         default:
@@ -112,10 +130,93 @@ room26.chatcatch = function (callback) {
         case "passtime6b":
             nav.bg("26_livingRoom/passtime6b.jpg");
             break;
+        case "passtime6c":
+            nav.killbutton("landlord");
+            nav.bg("26_livingRoom/passtime6c.jpg");
+            cl.nude();
+            break;
+        case "passtime6c1":
+            nav.bg("26_livingRoom/passtime6c.jpg");
+            break;
+        case "passtime6d":
+            nav.bg("26_livingRoom/passtime6d.jpg");
+            g.pass = 0;
+            nav.button({
+                "type": "tongue",
+                "name": "butthole",
+                "left": 1214,
+                "top": 588,
+                "width": 174,
+                "height": 174,
+                "image": "26_livingRoom/butthole.png"
+            }, 26);
+            break;
+        case "passtime6e":
+            nav.bg("26_livingRoom/passtime6e.jpg");
+            break;
+        case "passtime6f":
+            nav.bg("26_livingRoom/passtime6f.jpg");
+            break;
+        case "passtime6g":
+            nav.bg("26_livingRoom/passtime6g.jpg");
+            break;
+        case "passtime6h":
+            nav.bg("26_livingRoom/passtime6h.jpg");
+            break;
+        case "passtime6i":
+            g.mod("arousal", 100);
+            nav.bg("26_livingRoom/passtime6i.jpg");
+            break;
+        case "passtime6j":
+            char.addtime(69);
+            cl.undo();
+            sc.setstep("landlord", 7);
+            g.setflag("momchat");
+            char.room(16);
+            break;
+        case "passtime7":
+            nav.bg("26_livingRoom/passtime7.jpg");
+            break;
+        case "passtime7a":
+            nav.bg("26_livingRoom/passtime7a.jpg");
+            break;
+        case "passtime7b":
+            nav.bg("26_livingRoom/passtime7b.jpg");
+            break;
+        case "passtime7c":
+            nav.bg("26_livingRoom/passtime7c.jpg");
+            break;
+        case "passtime7d":
+            char.addtime(69);
+            cl.undo();
+            sc.setstep("landlord", 8);
+            g.setflag("momchat");
+            char.room(16);
+            break;
+        case "passtime8":
+            nav.killbutton("landlord");
+            nav.bg("26_livingRoom/passtime8.jpg");
+            break;
+        case "passtime8a":
+            nav.bg("26_livingRoom/passtime8a.jpg");
+            break;
+        case "passtime8b":
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg")
+            nav.button({
+                "type": "btn",
+                "name": "landlord",
+                "left": 764,
+                "top": 58,
+                "width": 701,
+                "height": 930,
+                "image": "26_livingRoom/ll.png"
+            }, 26);
+            break;
         default:
             break;
     }
 };
+
 
 room26.chat = function (chatID) {
     var cArray = [
@@ -224,8 +325,8 @@ room26.chat = function (chatID) {
             speaker: "landlord",
             text: "You know staring at your " + sc.n("landlord") + "'s pussy is wrong don't you?",
             button: [
+                { chatID: 12, text: sc.n("landlord") + "?", callback: "" },
                 { chatID: -1, text: "Sorry " + sc.n("landlord"), callback: "passtimeStop" },
-                { chatID: 12, text: sc.n("landlord") + "?", callback: "" }
             ]
         },
         {
@@ -248,9 +349,277 @@ room26.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "landlord",
-            text: "To be continued",
+            text: "Do you like my pussy? I bet you want us to take off our clothes, let you play with my pussy?",
             button: [
-                { chatID: -1, text: "...", callback: "passtime6" }
+                { chatID: 15, text: "Yes " + sc.n("landlord") + " I want to play with your pussy!", callback: "passtime6c" },
+                { chatID: -1, text: "No that's too much", callback: "passtimeStop" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "landlord",
+            text: "You do have a wonderful cock. Before I make your cock feel good you have to make me feel good. Do you want to make me feel good?",
+            button: [
+                { chatID: 16, text: "OH Yes!", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "landlord",
+            text: "Before I let you eat my pussy you have to eat my ass. I love a good ass eating. Start by licking around my hole before really eating me.",
+            button: [
+                { chatID: 17, text: "Wait, what? Your ass?", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "landlord",
+            text: "Oh yes. Good boys always do what their told, come to " + sc.n("landlord") + ".",
+            button: [
+                { chatID: 18, text: "Yes..", callback: "passtime6e" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "landlord",
+            text: "Look at this cute little face. It looks so hungry, now stick out your tongue.",
+            button: [
+                { chatID: 19, text: "Yes..", callback: "passtime6f" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "landlord",
+            text: "Oh yes good boy, nice and wet... are you ready?",
+            button: [
+                { chatID: -1, text: "uh huh", callback: "passtime6d" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "landlord",
+            text: "Oh yes, that's a good boy.",
+            button: [
+                { chatID: -1, text: "hmmmmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "landlord",
+            text: "Oh yeah.. keep licking " + sc.n("landlord") + "'s asshole.",
+            button: [
+                { chatID: -1, text: "uuuhhhuh", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "landlord",
+            text: "Oh yeah, I need it deeper..",
+            button: [
+                { chatID: -1, text: "slup lick lick", callback: "" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "landlord",
+            text: "Oh yes, you're good for something.. Deeper!!",
+            button: [
+                { chatID: 29, text: "sssllluuurrrrppp", callback: "passtime6h" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "landlord",
+            text: "I'm so close!!!! Keep going!!!",
+            button: [
+                { chatID: 25, text: "lick probe slrup", callback: "passtime6i" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "landlord",
+            text: "AAhaahhaAHHAHAHA AAHHAHAH aHaA hH AHAHAHHA HAH A HAHahHAhAhaHA HA",
+            button: [
+                { chatID: 26, text: "Slurppppppp", callback: "passtime6c1" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "landlord",
+            text: "Oh wow, that was good. I guess you want your reward....",
+            button: [
+                { chatID: 27, text: "Oh Yeah!", callback: "" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "landlord",
+            text: "Well that's too bad. I'm busy catching up on my shows, now scamper along..",
+            button: [
+                { chatID: 28, text: "But....", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "landlord",
+            text: "Nope, now go before I punish those fargile little balls of yours!",
+            button: [
+                { chatID: -1, text: "Ok...", callback: "passtime6j" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "landlord",
+            text: "Oh yes keep eating my ass!",
+            button: [
+                { chatID: 24, text: "MmmMMMMMMM", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "landlord",
+            text: "Yes?",
+            button: [
+                { chatID: 31, text: "I was... uh wondering.. uh", callback: "" },
+                { chatID: -1, text: "Nothing", callback: "passtimeStop" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "landlord",
+            text: "You were wondering if I could play with your little weiner weren't you?",
+            button: [
+                { chatID: 32, text: "Umm well...", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "landlord",
+            text: "Sigh... Let me take this off, you stip down too.",
+            button: [
+                { chatID: 33, text: "Grin", callback: "passtime6c" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "landlord",
+            text: "I bet you want me to put that thing in my mouth, huh. That's not going to happen... Hmmmm... Have you ever had a hand job before?",
+            button: [
+                { chatID: 34, text: "No", callback: "" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "landlord",
+            text: "I'll let you eat my pussy, and if you're really good.. and I mean really good I just may give you a hand job. ",
+            button: [
+                { chatID: 35, text: "Oh YEA!", callback: "passtime7" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "landlord",
+            text: "That's right honey, focus on my clit. It's where the magic happens..",
+            button: [
+                { chatID: 36, text: "[Bury your face in " + sc.n("landlord") + "'s pussy]", callback: "passtime7a" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "lola",
+            text: sc.n("me") + " .... " + sc.n("landlord") + " what's going on???",
+            button: [
+                { chatID: 37, text: "No", callback: "passtime7b" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "landlord",
+            text: "Girls... remember when I sat with you two and went over your no no parts. ",
+            button: [
+                { chatID: 38, text: "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "landlord",
+            text: "Well I was just going over boy and girl parts with " + sc.n("me") + " here. So he knows what the no no spots are. Now I know " +
+            "you two have never seen a penis before... Take a look at " + sc.n("me") + "'s penis.",
+            button: [
+                { chatID: 39, text: "...", callback: "passtime7c" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "landlord",
+            text: "That's what I told you about. Penises are bad, I know you girls stay away from penises, don't you girls? ",
+            button: [
+                { chatID: 40, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "eva",
+            text: "Oh yes " + sc.n("landlord") + ". We don't go near those nasty things!",
+            button: [
+                { chatID: 41, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "lola",
+            text: "I would never touch one of those.",
+            button: [
+                { chatID: 42, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "landlord",
+            text: "That's good girls. Now run along all, I'm going to get back to my shows. ",
+            button: [
+                { chatID: -1, text: "[Run along]", callback: "passtime7d" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "landlord",
+            text: "Are you really coming back to interrupt my shows asking for a hand job again?",
+            button: [
+                { chatID: 44, text: "Yes I am", callback: "" },
+                { chatID: -1, text: "no", callback: "passtimeStop" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "landlord",
+            text: "Sigh... Give me your penis.",
+            button: [
+                { chatID: 45, text: "[pull out your penis]", callback: "passtime8" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "landlord",
+            text: "Do you like it when I touch your penis?",
+            button: [
+                { chatID: 46, text: "Oh yes!", callback: "passtime8a" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "landlord",
+            text: "Idiot!",
+            button: [
+                { chatID: 47, text: "AAAAAAaaaaaaaa!!!!", callback: "passtime8b" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "landlord",
+            text: "Get that thing out of here! I'm trying to watch my shows.",
+            button: [
+                { chatID: -1, text: "[Whimpter away]", callback: "passtimeStop" },
             ]
         },
     ];

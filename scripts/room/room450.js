@@ -49,6 +49,16 @@ room450.main = function () {
             else {
                 btnList.push({
                     "type": "btn",
+                    "name": "further",
+                    "left": 603,
+                    "top": 0,
+                    "width": 314,
+                    "height": 401,
+                    "image": "450_park/450_further.png",
+                    "night": "450_park/450_further_night.png"
+                });
+                btnList.push({
+                    "type": "btn",
                     "name": "sleep",
                     "left": 306,
                     "top": 406,

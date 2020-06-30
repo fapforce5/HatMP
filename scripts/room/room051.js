@@ -242,7 +242,6 @@ room51.chatcatch = function (callback) {
                 { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
             ];
             sc.setstep("me", -7);
-            sc.setstep("me", -8);
             sc.setstep("me", -10);
             sc.setstep("me", -11);
             sc.setstep("me", 8);

@@ -94,9 +94,9 @@ room460.chat = function (chatID) {
             speaker: "me",
             text: "",
             button: [
-                { chatID: -1, text: "Run on main path.", callback: "runNext" },
+                { chatID: -1, text: "Take the darkened side path", callback: "dark" },
                 { chatID: -1, text: "Return to Carnalville Park ", callback: "Complete" },
-                { chatID: -1, text: "Take the darkened side path", callback: "dark" }
+                { chatID: -1, text: "Run on main path.", callback: "runNext" }
             ]
         },
         {

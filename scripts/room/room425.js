@@ -13,6 +13,8 @@ room425.main = function () {
             "image": "425_Jail/cell.png"
         }
     ];
+    cl.c.swimsuit = null;
+    cl.c.dress = null;
     cl.c.pants = "p";
     cl.c.shirt = "j";
     cl.display();

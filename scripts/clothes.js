@@ -34,9 +34,7 @@ cl.set = [
 
 
 cl.cTemp = {
-    leg: null, chest: null, cock: null, lips: null, eyes: "brown", hairLength: null, hairColor: null, bodyhair: null, wig: null,
-    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
-    tattoo: new Array(), buttplug: null, chastity: null, necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
+    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null
 };
 
 cl.list = [
@@ -57,7 +55,7 @@ cl.list = [
     { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: -1 },
 
     { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "pants", name: "r", display: "Red Shorts", img: "pants_redShort.png", sex: "m", inv: false, daring: 1, price: 60 },
+    { type: "pants", name: "r", display: "Red Shorts", img: "pants_redShort.png", sex: "m", inv: false, daring: 0, price: 60 },
     { type: "pants", name: "b", display: "Blue Shorts", img: "pants_blueShort.png", sex: "m", inv: false, daring: 0, price: 55 },
     { type: "pants", name: "s", display: "Black Suit Pants", img: "pants_suit.png", sex: "m", inv: false, daring: 0, price: 80 },
     { type: "pants", name: "h", display: "Holdiay Skirt", img: "pants_holiday.png", sex: "f", inv: false, daring: 4, price: 80 },
@@ -73,7 +71,7 @@ cl.list = [
     { type: "shirt", name: "c", display: "Cock T-Shirt", img: "shirt_tcock.png", sex: "m", inv: true, daring: 0, price: 50 },
     { type: "shirt", name: "p", display: "I ♥ Cock T-Shirt", img: "shirt_tpink.png", sex: "f", inv: true, daring: 1, price: 50 },
     { type: "shirt", name: "s", display: "Suit Top", img: "shirt_suit.png", sex: "m", inv: false, daring: 0, price: 90 },
-    { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 1, price: 12 },
+    { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 0, price: 12 },
     { type: "shirt", name: "v", display: "Naked Beaver Shirt", img: "shirt_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "shirt", name: "b", display: "Blouse", img: "shirt_blouse.png", sex: "f", inv: false, daring: 2, price: 30 },
     { type: "shirt", name: "r", display: "Red Blouse", img: "shirt_redBlouse.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -237,7 +235,16 @@ cl.remove = function (type, name) {
 };
 
 cl.nude = function () {
-    cl.cTemp = $.extend(true, {}, cl.c);
+    cl.cTemp.shoes = cl.c.shoes;
+    cl.cTemp.socks = cl.c.socks;
+    cl.cTemp.pants = cl.c.pants;
+    cl.cTemp.panties = cl.c.panties;
+    cl.cTemp.bra = cl.c.bra;
+    cl.cTemp.shirt = cl.c.shirt;
+    cl.cTemp.dress = cl.c.dress;
+    cl.cTemp.swimsuit = cl.c.swimsuit;
+    cl.cTemp.pj = cl.c.pj;
+    
     cl.c.shoes = null;
     cl.c.socks = null;
     cl.c.pants = null;
@@ -247,32 +254,24 @@ cl.nude = function () {
     cl.c.dress = null;
     cl.c.swimsuit = null;
     cl.c.pj = null;
-    cl.c.accessories = new Array();
     cl.display();
 };
 
 cl.changeClothing = function (p) {
-    //p = {
-    //    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array();
-    //};
-
-    cl.cTemp = $.extend(true, {}, cl.c);
-    cl.c.shoes = p.shoes;
-    cl.c.socks = p.socks;
-    cl.c.pants = p.pants;
-    cl.c.panties = p.panties;
-    cl.c.bra = p.bra;
-    cl.c.shirt = p.shirt;
-    cl.c.dress = p.dress;
-    cl.c.swimsuit = p.swimsuit;
-    cl.c.pj = p.pj;
-    cl.c.accessories = $.extend(true, {}, p.accessories);
+    cl.c.shoes = cl.cTemp.shoes;
+    cl.c.socks = cl.cTemp.socks;
+    cl.c.pants = cl.cTemp.pants;
+    cl.c.panties = cl.cTemp.panties;
+    cl.c.bra = cl.cTemp.bra;
+    cl.c.shirt = cl.cTemp.shirt;
+    cl.c.dress = cl.cTemp.dress;
+    cl.c.swimsuit = cl.cTemp.swimsuit;
+    cl.c.pj = cl.cTemp.pj;
     cl.display();
 };
 
 cl.undo = function(){
-    cl.c = $.extend(true, {}, cl.cTemp);
-    cl.display();
+    cl.changeClothing();
 };
 
 cl.save = function () {

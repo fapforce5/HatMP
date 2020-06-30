@@ -14,7 +14,7 @@ room101.main = function () {
             "width": 439,
             "height": 711,
             "image": "101_constFrontOffice/sit1.png"
-        });
+        }, 101);
             navList = [100];
         chat(5, 101);
     }

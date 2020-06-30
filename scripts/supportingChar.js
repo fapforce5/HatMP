@@ -88,7 +88,8 @@ sc.events = [
     { name: "landlord", step: 4, txt: "Get bedroom key and make bed each morning.", img: "llkey", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 5, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 6, txt: "Can Work", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "landlord", step: 7, txt: "Offered Job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 7, txt: "Ate that ass", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 8, txt: "Caught", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "bigguy", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -242,6 +243,7 @@ sc.events = [
     { name: "kei", step: 5, txt: "Jada visited game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "jada", step: 1, txt: "Visited card game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "jada", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 ];
 
 sc.setMax = function () {

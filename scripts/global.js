@@ -349,7 +349,7 @@ g.rooms = [
     { roomID: 453, name: "Stall", image: "453_stall/453_stall.png", houseID: 450, btn: "roomBtn_453.png" },
     { roomID: 454, name: "Glory Hole", image: "454_gHole/454_gHole.png", nightImage: "454_gHole/454_gHole.png", houseID: 450, btn: "roomBtn_454.png" },
     { roomID: 456, name: "Park Bench", image: "456_bench/456_bg.jpg", nightImage: "456_bench/456_bg_night.jpg", houseID: 450, btn: "roomBtn_454.png" },
-    { roomID: 460, name: "Forest Path", image: "460_parkRun/460_run1.png", nightImage: "460_parkRun/460_run1.png", houseID: 450, btn: "roomBtn_460.png" },
+    { roomID: 460, name: "Forest Path", image: "460_parkRun/path1.jpg", nightImage: "460_parkRun/path1Night.jpg", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 475, name: "Fight", image: "475_fight/475_path_1.jpg", nightImage: "475_fight/475_path_1.jpg", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 476, name: "Wander", image: "475_fight/475_fightScene0.png", nightImage: "475_fight/475_fightScene0.png", houseID: 450, btn: "roomBtn_460.png" },
 
@@ -476,7 +476,7 @@ g.shuffleArray = function (array) {
 };
 
 g.isNight = function () {
-    if (g.hourBetween(6, 20))
+    if (g.hourBetween(6, 19))
         return false;
     return true;
 };

@@ -7,6 +7,8 @@ room401.main = function () {
     $('#wardrobe_body').css({ 'width': (1920 * g.ratio) + 'px', 'top': (100 * g.ratio) + 'px' });
     g.internal = 0;
     var navList = [400];
+    if (g.pass === "bra")
+        navList = [402];
     inv.createElements();
     switch (g.pass) {
         case "purse":
@@ -15,10 +17,14 @@ room401.main = function () {
             break;
         case "saucy":
             nav.bg("401_purchase/saucy.jpg", "401_purchase/saucy.jpg");
-            room401.makeClothing("pants", "f", true);
-            room401.makeClothing("shirt", "f", true);
-            room401.makeClothing("dress", "f", true);
-            room401.makeClothing("swimsuit", "f", true);
+            room401.makeClothingDaring("pants", [1, 2, 3], true);
+            room401.makeClothingDaring("pants", [4], false);
+            room401.makeClothingDaring("shirt", [1, 2, 3], true);
+            room401.makeClothingDaring("shirt", [4], false);
+            room401.makeClothingDaring("dress", [1, 2, 3], true);
+            room401.makeClothingDaring("dress", [4], false);
+            room401.makeClothingDaring("swimsuit", [1, 2, 3], true);
+            room401.makeClothingDaring("swimsuit", [4], false);
             break;
         case "shoe":
             var buyGirls = sc.checkevent("me", 7);
@@ -113,6 +119,8 @@ room401.main = function () {
             $('#' + thisID).append('<img src="./images/inv/sold.png"/>');
             $(this).removeAttr("data-name").removeAttr("data-type").removeClass("store-clothing");
         }
+        if (g.pass === "bra")
+            g.internal = "purchased"
         
     });
 };
@@ -132,6 +140,26 @@ room401.makeClothing = function (type, sex, canbuy) {
             if (!cl.list[i].inv)
                 $('#menu-bg_' + g.internal).append('<div>$' + cl.list[i].price + '</div>');
             
+            g.internal++;
+        }
+    }
+};
+
+room401.makeClothingDaring = function (type, daring, canbuy) {
+    var i;
+    for (i = 0; i < cl.list.length; i++) {
+        if (cl.list[i].type === type && daring.includes(cl.list[i].daring) && cl.list[i].price > 0) {
+            if (!canbuy || cl.list[i].inv)
+                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '"/>');
+            else
+                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" class="store-clothing"/>');
+            if (cl.list[i].inv)
+                $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png"/>');
+            else if (!canbuy)
+                $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+            if (!cl.list[i].inv)
+                $('#menu-bg_' + g.internal).append('<div>$' + cl.list[i].price + '</div>');
+
             g.internal++;
         }
     }

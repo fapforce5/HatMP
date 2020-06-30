@@ -236,15 +236,19 @@ inv.display = function () {
         }
         inv.master[i].n = false;
     }
-    
-    for (i = 0; i < 4; i++) {
-        $('#menu-bg_' + counter).html(inv.displayClothes(i));
-        $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="clothing_' + i + '">' + cl.saveOutfit[i].name + '</div>');
-        counter++;
-    }
-    $('#menu-bg_' + counter).html(inv.displayClothes(-1));
-    $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="clothing_-1">Current</div>');
+
+    $('#menu-bg_' + counter).html('<img src="./images/inv/change.png" title="Change Clothes">');
+    $('#menu-bg_' + counter).attr('data-name', "changeclothes").addClass('inv-changeclothes');
     counter++;
+
+    //for (i = 0; i < 4; i++) {
+    //    $('#menu-bg_' + counter).html(inv.displayClothes(i));
+    //    $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="clothing_' + i + '">' + cl.saveOutfit[i].name + '</div>');
+    //    counter++;
+    //}
+    //$('#menu-bg_' + counter).html(inv.displayClothes(-1));
+    //$('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="clothing_-1">Current</div>');
+    //counter++;
 
     inv.isFooter = $('#room_footer').is(":visible");
     if (inv.isFooter) { $('#room_footer').hide(); }
@@ -299,41 +303,50 @@ inv.display = function () {
         }
     });
 
-    $('.inv-clothingChange').click(function () {
-        var entry = parseInt($(this).data('num'));
+    $('.inv-changeclothes').click(function () {
         if (inv.roomChange.includes(g.roomID)) {
-
-            if (entry < 0) {
-                cl.c.shoes = cl.cTemp.shoes;
-                cl.c.socks = cl.cTemp.socks;
-                cl.c.pants = cl.cTemp.pants;
-                cl.c.panties = cl.cTemp.panties;
-                cl.c.bra = cl.cTemp.bra;
-                cl.c.shirt = cl.cTemp.shirt;
-                cl.c.dress = cl.cTemp.dress;
-                cl.c.swimsuit = cl.cTemp.swimsuit;
-                cl.c.accessories = cl.cTemp.accessories;
-                cl.c.pj = cl.cTemp.pj;
-            }
-            else {
-                cl.c.shoes = cl.saveOutfit[entry].shoes;
-                cl.c.socks = cl.saveOutfit[entry].socks;
-                cl.c.pants = cl.saveOutfit[entry].pants;
-                cl.c.panties = cl.saveOutfit[entry].panties;
-                cl.c.bra = cl.saveOutfit[entry].bra;
-                cl.c.shirt = cl.saveOutfit[entry].shirt;
-                cl.c.dress = cl.saveOutfit[entry].dress;
-                cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
-                cl.c.accessories = cl.saveOutfit[entry].accessories;
-                cl.c.pj = cl.saveOutfit[entry].pj;
-            }
-            cl.display();
-            char.room(g.roomID);
+            g.pass = g.roomID;
+            char.room(8);
         }
-        else {
+        else
             g.popUpNotice("You can only change in your room or a bathroom. ");
-        }
     });
+
+    //$('.inv-clothingChange').click(function () {
+    //    var entry = parseInt($(this).data('num'));
+    //    if (inv.roomChange.includes(g.roomID)) {
+
+    //        if (entry < 0) {
+    //            cl.c.shoes = cl.cTemp.shoes;
+    //            cl.c.socks = cl.cTemp.socks;
+    //            cl.c.pants = cl.cTemp.pants;
+    //            cl.c.panties = cl.cTemp.panties;
+    //            cl.c.bra = cl.cTemp.bra;
+    //            cl.c.shirt = cl.cTemp.shirt;
+    //            cl.c.dress = cl.cTemp.dress;
+    //            cl.c.swimsuit = cl.cTemp.swimsuit;
+    //            cl.c.accessories = cl.cTemp.accessories;
+    //            cl.c.pj = cl.cTemp.pj;
+    //        }
+    //        else {
+    //            cl.c.shoes = cl.saveOutfit[entry].shoes;
+    //            cl.c.socks = cl.saveOutfit[entry].socks;
+    //            cl.c.pants = cl.saveOutfit[entry].pants;
+    //            cl.c.panties = cl.saveOutfit[entry].panties;
+    //            cl.c.bra = cl.saveOutfit[entry].bra;
+    //            cl.c.shirt = cl.saveOutfit[entry].shirt;
+    //            cl.c.dress = cl.saveOutfit[entry].dress;
+    //            cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
+    //            cl.c.accessories = cl.saveOutfit[entry].accessories;
+    //            cl.c.pj = cl.saveOutfit[entry].pj;
+    //        }
+    //        cl.display();
+    //        char.room(g.roomID);
+    //    }
+    //    else {
+    //        g.popUpNotice("You can only change in your room or a bathroom. ");
+    //    }
+    //});
 
     w = 1800 * g.ratio;
     h = 50 * g.ratio;
