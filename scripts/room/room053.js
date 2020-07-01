@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//Candy name
 var room53 = {};
 room53.main = function () {
     //var btnList = [
@@ -16,6 +16,9 @@ room53.main = function () {
     //$.each(btnList, function (i, v) {
     //    nav.button(v, 54);
     //});
+    if (sc.candy().thisRoom) {
+        nav.bg("53_candy/53_candyRoom_night_sleep.jpg")
+    }
     var navList = [51, 55];
     nav.buildnav(navList);
 };

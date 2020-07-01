@@ -765,73 +765,73 @@ sc.tiffany = function () {
     switch (g.dt.getDay()) {
         case 0: //sunday
             if (hour.between(0, 7))
-                r = 51; //Room
+                r = 54; //Room
             else if (hour.between(7, 10))
                 r = 54; //bathroom
             else if (hour.between(10, 23))
                 r = 1001; //unk
             else if (hour.between(23, 24))
-                r = 51; //Room
+                r = 54; //Room
             break;
         case 1: //monday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 54; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 54;
             break;
         case 2: //tuesday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 54; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 54;
             break;
         case 3: //wednesday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 54; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 54;
             break;
         case 4: //thursday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 54; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 54;
             break;
         case 5: //friday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 54; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 54;
             break;
         case 6: //saturday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 54; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 54;
             break;
     }
     return { roomID: r, thisRoom: g.roomID === r };
@@ -844,73 +844,73 @@ sc.candy = function () {
     switch (g.dt.getDay()) {
         case 0: //sunday
             if (hour.between(0, 7))
-                r = 51; //Room
+                r = 53; //Room
             else if (hour.between(7, 10))
                 r = 54; //bathroom
             else if (hour.between(10, 23))
                 r = 1001; //unk
             else if (hour.between(23, 24))
-                r = 51; //Room
+                r = 53; //Room
             break;
         case 1: //monday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 53; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 53;
             break;
         case 2: //tuesday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 53; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 53;
             break;
         case 3: //wednesday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 53; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 53;
             break;
         case 4: //thursday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 53; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 53;
             break;
         case 5: //friday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 53; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 53;
             break;
         case 6: //saturday
             if (hour.between(0, 7))
-                r = 51; //room
+                r = 53; //room
             else if (hour.between(7, 20))
                 r = 650;  //toystore
             else if (hour.between(20, 22))
                 r = 50; //living room
             else if (hour.between(22, 24))
-                r = 51;
+                r = 53;
             break;
     }
     return { roomID: r, thisRoom: g.roomID === r };
