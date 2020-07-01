@@ -57,6 +57,55 @@ room402.btnclick = function (name) {
             nav.killbutton("plug");
             chat(9, 402);
             break;
+        case "butthole":
+            nav.killbutton("butthole");
+            nav.button({
+                "type": "tongue",
+                "name": "butthole1",
+                "left": 927,
+                "top": 476,
+                "width": 119,
+                "height": 119,
+                "image": "402_mens/bhole1.png"
+            }, 402);
+            break;
+        case "butthole1":
+            nav.killbutton("butthole1");
+            nav.button({
+                "type": "tongue",
+                "name": "butthole2",
+                "left": 927,
+                "top": 476,
+                "width": 119,
+                "height": 119,
+                "image": "402_mens/bhole2.png"
+            }, 402);
+            break;
+        case "butthole2":
+            nav.killbutton("butthole2");
+            nav.button({
+                "type": "tongue",
+                "name": "butthole3",
+                "left": 927,
+                "top": 476,
+                "width": 119,
+                "height": 119,
+                "image": "402_mens/bhole3.png"
+            }, 402);
+            break;
+        case "butthole3":
+            nav.killbutton("butthole3");
+            nav.button({
+                "type": "img",
+                "name": "butthole4",
+                "left": 927,
+                "top": 476,
+                "width": 119,
+                "height": 119,
+                "image": "402_mens/bhole4.png"
+            }, 402);
+            chat(11, 402);
+            break;
         default:
             break;
     }
@@ -83,8 +132,21 @@ room402.chatcatch = function (callback) {
                 "image": "402_mens/plug.png"
             }, 402);
             break;
+        case "jada3":
+            nav.killbutton("butthole4");
+            nav.bg("402_mens/jada1.jpg");
+            break;
         case "points":
             g.mod("sissy", 50);
+            nav.button({
+                "type": "tongue",
+                "name": "butthole",
+                "left": 927,
+                "top": 476,
+                "width": 119,
+                "height": 119,
+                "image": "402_mens/bhole.png"
+            }, 402);
             break;
         case "plug":
             cl.add("buttplug", "s");
@@ -179,7 +241,7 @@ room402.chat = function (chatID) {
             "You look like the kind of girl that loves to lick cum straight from the ass!",
             button: [
                 { chatID: 10, text: "Oh.. gross no way", callback: "jada1" },
-                { chatID: 10, text: "Maybe just a taste", callback: "points" },
+                { chatID: -1, text: "Maybe just a taste", callback: "points" },
             ]
         },
         {
@@ -188,6 +250,22 @@ room402.chat = function (chatID) {
             text: "That's ok, I know you'll learn to love cum! That plug is all yours now! When you wear it think of me! I've got to get back to work.",
             button: [
                 { chatID: -1, text: "Oh thanks! See you later " + sc.n("jada") + ".", callback: "plug" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "jada",
+            text: "All done back there?",
+            button: [
+                { chatID: 12, text: "Oh yeah. I can still taste your ass and " + sc.n("jimmy") + "'s cum on my tongue!", callback: "jada3" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "jada",
+            text: "You're so fucking cute, I love it! That plug is all yours my fucking cum queen! I've got to get back to work. ",
+            button: [
+                { chatID: -1, text: "Thank you for lunch!", callback: "plug" },
             ]
         },
     ];

@@ -73,7 +73,7 @@ input[type=text]:disabled{
 }
 .room-btn-tongue{
     position:absolute;
-    cursor:url('../images/general/tongue.png'), auto;
+    cursor:url('../images/general/t.png'), auto;
 }
 .room-btn:hover, .room-btn-lips:hover, .room-btn-tongue:hover{
     filter: brightness(1.2);
