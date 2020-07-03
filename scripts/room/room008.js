@@ -7,9 +7,15 @@ room8.main = function () {
     var navList = [g.pass];
     if (g.pass === 52) 
         nav.bg("8_wardrobe/52_wardrobe.jpg");
-    if (g.pass === 502)
+    else if (g.pass === 502)
         nav.bg("8_wardrobe/502_wardrobe.jpg");
-    
+    else if (g.pass === 201)
+        nav.bg("8_wardrobe/201.jpg");
+    else if (g.pass === 451)
+        nav.bg("8_wardrobe/451.jpg");
+    else if (g.pass === 552)
+        nav.bg("8_wardrobe/552.jpg");
+
     nav.buildnav(navList);
 
     var quickList = "";

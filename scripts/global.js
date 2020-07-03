@@ -21,6 +21,7 @@ g.dt = g.startDate;
 g.st = [
     { n: "shower", t: g.startDate, q: "date" },
     { n: "cum", t: g.startDate, q: "date" },
+    { n: "knockedup", t: null, q: "date" },
 
     { n: "difficulty", t: 1, q: "int" },
     { n: "money", t: 450, q: "money" },
@@ -46,7 +47,7 @@ g.st = [
     { n: "momClosetMoney", t: 7, q: "int" },
     { n: "bladder", t: 0, q: "zero" },
     { n: "painting", t: "", q: "string" },
-    { n: "bodyhair", t: 0, q: "zero" },
+    { n: "bodyhair", t: 100, q: "zero" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -233,7 +234,7 @@ g.checkPop = function (name, amount) {
                 g.popUpNotice("You received<br />$" + amount);
             break;
         case "jobConstructionPay":
-            g.popUpNotice("You got a<br />$" + amount + "raise");
+            g.popUpNotice("You got a<br />$" + amount + " raise");
             break;
         case "hormone":
             if (amount > 0)
@@ -318,6 +319,7 @@ g.rooms = [
 
     { roomID: 125, name: "Jimmy's House", image: "125_poker/basement.jpg", nightImage: "125_poker/basement_night.jpg", houseID: 125, btn: "roomBtn_125.png" },
 
+    { roomID: 150, name: "My Jones", image: "150_jones/frontdoor.jpg", nightImage: "150_jones/frontdoorNight.jpg", houseID: 150, btn: "roomBtn_125.png" },
 
     { roomID: 200, name: "Missy PI Entrace", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 200, btn: "roomBtn_200.png" },
     { roomID: 201, name: "Bathroom", image: "201_bathroom/201_bathroom.jpg", nightImage: "201_bathroom/201_bathroom.jpg", houseID: 200, btn: "roomBtn_201.png" },
@@ -385,6 +387,7 @@ g.roomMap = [
     { roomID: 75, access: false, darkAccess: false, left: 1649, top: 780, width: 178, height: 212, img: "map/75.png", night: "map/75_night.png", map: 1 },
     { roomID: 100, access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
     { roomID: 125, access: true, darkAccess: true, left: 1194, top: 824, width: 107, height: 167, img: "map/125.png", night: "map/125_night.png", map: 1 },
+    { roomID: 150, access: false, darkAccess: false, left: 395, top: 62, width: 406, height: 208, img: "map/150.png", night: "map/150_night.png", map: 1 },
     { roomID: 203, access: false, darkAccess: false, left: 1671, top: 370, width: 213, height: 257, img: "map/203.png", night: "map/203_night.png", map: 2 },
     { roomID: 250, access: true, darkAccess: false, left: 1440, top: 440, width: 230, height: 166, img: "map/250.png", night: "map/250_night.png", map: 2 },
     { roomID: 350, access: true, darkAccess: false, left: 1046, top: 773, width: 297, height: 213, img: "map/350.png", night: "map/350_night.png", map: 2 },
@@ -548,6 +551,7 @@ g.save = function () {
 
 g.load = function (rma) {
     var i, j;
+    g.initGame();
     g.roomID = rma.roomID;
     g.dt = new Date(rma.dt);
     for (i = 0; i < rma.roomMap.length; i++) {
@@ -579,6 +583,9 @@ g.initGame = function () {
     g.dt = char.addMinutes(g.startDate, 757);
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
+            case "knockedup":
+                g.st[i].t = null;
+                break;
             case "shower":
                 g.st[i].t = char.addMinutes(g.startDate, -4320);
                 break;
@@ -638,8 +645,10 @@ g.initGame = function () {
             case "receiveBoobJob":
             case "giveBoobJob":
             case "shinkCock":
-            case "bodyhair":
                 g.st[i].t = 0;
+                break;
+            case "bodyhair":
+                g.st[i].t = 100;
                 break;
             case "momClosetLube":
                 g.st[i].t = 3;
@@ -656,6 +665,8 @@ g.initGame = function () {
             case "girlname":
                 g.st[i].t = "Scarlett";
                 break;
+            case "lockboobs":
+            case "lockbutt":
             case "enterSister":
             case "jobConstGetRaise":
             case "evaDayEvent":

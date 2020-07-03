@@ -4,7 +4,7 @@ room10.pass = "";
 room10.main = function () {
 
     if (sc.checkevent("me", 3)) {
-        sc.setstep("tiffany", 10);
+        //sc.setstep("tiffany", 10);
         chat(8, 10);
     }
     else if (g.internal === "room10pass" || g.internal === "room10Underwear") {

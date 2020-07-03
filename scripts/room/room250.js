@@ -223,6 +223,30 @@ room250.chatcatch = function (callback) {
                 "height": 573,
                 "image": "250_beaver/bent.png"
             }, 250);
+            if (sc.getstep("me") > 7) {
+                if (sc.getstep("jones") === 0) {
+                    sc.setstep("jones", 1);
+                    g.roomMapAccess(150, true, true);
+                    chat(85, 250);
+                }
+                else
+                    chat(93, 250);
+            }
+            else {
+                chat(22, 250);
+            }
+            break;
+        case "wait2a":
+            nav.killbutton("getbent");
+            nav.bg("250_beaver/wait2a.jpg");
+            break;
+        case "wait2b":
+            nav.bg("250_beaver/wait2b.jpg");
+            break;
+        case "wait2c":
+            nav.bg("250_beaver/wait2c.jpg");
+            if (sc.getstep("jones") === 0)
+                chat(88, 250);
             break;
         case "unbent":
             nav.kill("getbent");
@@ -721,16 +745,16 @@ room250.chat = function (chatID) {
         },
         {
             chatID: 21,
-            speaker: "random",
+            speaker: "jones",
             text: "Oh hay pretty lady, I think I dropped my napkin, could you get it for me?",
             button: [
-                { chatID: 22, text: "Sure!", callback: "getbent" },
+                { chatID: -1, text: "Sure!", callback: "getbent" },
                 { chatID: 24, text: "Get it yourself..", callback: "" }
             ]
         },
         {
             chatID: 22,
-            speaker: "random",
+            speaker: "jones",
             text: "You are the prettiest waitress ever and so obedient",
             button: [
                 { chatID: 23, text: "...", callback: "unbent" }
@@ -738,7 +762,7 @@ room250.chat = function (chatID) {
         },
         {
             chatID: 23,
-            speaker: "random",
+            speaker: "jones",
             text: "If you catch me at the bar, I'll buy you a drink!",
             button: [
                 { chatID: -1, text: "Deal [Take order]", callback: "break40" }
@@ -746,7 +770,7 @@ room250.chat = function (chatID) {
         },
         {
             chatID: 24,
-            speaker: "random",
+            speaker: "jones",
             text: "You're as exciting as an old grape.",
             button: [
                 { chatID: -1, text: "Well... your face! [Take order]", callback: "break10" }
@@ -1321,7 +1345,103 @@ room250.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "You're such a slut! I love it!", callback: "resetServing" }
             ]
-        }
+        },
+        {
+            chatID: 85,
+            speaker: "me",
+            text: "...where's that napkin?",
+            button: [
+                { chatID: 86, text: "....", callback: "wait2a" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "jones",
+            text: "It's down there....",
+            button: [
+                { chatID: 87, text: "...", callback: "wait2b" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "jones",
+            text: "Keep looking slut",
+            button: [
+                { chatID: 88, text: "....", callback: "wait2c" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "jones",
+            text: "I want you to come to my house. I'm going to make you my slutty house whore. ",
+            button: [
+                { chatID: 89, text: "mmmmmMmmmMMM", callback: "" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "jones",
+            text: "You'll bend over to clean my floors then clean my cock. I bet you'll like that slut.",
+            button: [
+                { chatID: 90, text: "oh yeaaa", callback: "" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "jones",
+            text: "Say it, say you're my little slut.",
+            button: [
+                { chatID: 91, text: "I'm your little slut", callback: "" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "jones",
+            text: "That's a good slut. Come to my house. I'm going to make you my barefoot pregnant wife, slut. Say 'Yes Daddy'",
+            button: [
+                { chatID: 92, text: "Yes Daddy", callback: "" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "jones",
+            text: "That's a good slut, now serve me my food.",
+            button: [
+                { chatID: -1, text: "Yes Daddy", callback: "break40" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "jones",
+            text: "....",
+            button: [
+                { chatID: 94, text: "....", callback: "wait2a" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "jones",
+            text: "You love sicking your ass out don't you...",
+            button: [
+                { chatID: 95, text: "Yeessss daddy", callback: "wait2b" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "jones",
+            text: "I'm going to fill your slutty ass till my cum leaks down your leg.",
+            button: [
+                { chatID: 96, text: "Oh yeaaaaa", callback: "wait2c" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "jones",
+            text: "That's a good slut, now serve me my food.",
+            button: [
+                { chatID: -1, text: "Yes Daddy", callback: "break40" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

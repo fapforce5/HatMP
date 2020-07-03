@@ -9,28 +9,6 @@ room456.main = function () {
         sc.setstep("cop", 1);
         room456.chatcatch("morning");
     }
-
-
-
-    
-
-    //if (sc.getstep("me") === 5) {
-    //    nav.bg("456_bench/sleep.jpg");
-    //    chat(0, 456);
-    //}
-    //else if (g.isNight()) {
-    //    nav.bg("456_bench/cop1.jpg");
-    //    chat(14, 456);
-    //}
-    //else {
-    //    if (sc.getstep("me") === 6) {
-    //        nav.bg("456_bench/456_tif.jpg", "456_bench/456_tif.jpg");
-    //        chat(13, 46);
-    //    }
-    //    else {
-    //        nav.room(450);
-    //    }
-    //}
 };
 
 room456.btnclick = function (name) {
@@ -75,6 +53,9 @@ room456.chatcatch = function (callback) {
         case "leave7":
             sc.setstep("me", 7);
             g.pass = 0;
+            cl.c.accessories = new Array();
+            cl.c.cumface = false;
+            cl.display();
             char.room(400);
             break;
         case "run":

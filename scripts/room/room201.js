@@ -3,7 +3,13 @@ var room201 = {};
 room201.main = function () {
 
     if (g.internal === "201 change") {
-        nav.buildnav([203]);
+        var canGoOut = cl.hasoutfit("public");
+        if (canGoOut === null)
+            nav.buildnav([203]);
+        else {
+            g.pass = canGoOut;
+            chat(11, 201);
+        }
     }
     else if (g.pass === "repeatBathroom") {
         nav.button({
@@ -216,6 +222,12 @@ room201.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "[Continue Cleaning]", callback: "repeatLeave" }
             ]
+        },
+        {
+            chatID: 11,
+            speaker: "me",
+            text: "I can't go out like this. I need my " + g.pass + ". ",
+            button: []
         },
     ];
     if (cArray.length > chatID && chatID > -1)

@@ -1662,7 +1662,7 @@ cl.energydisplay = function () {
     else
         secondHalf = "75";
 
-    $("#char_charDisplay").html('<img src="./images/stat/' + firstHalf + '_' + secondHalf + '.png" style="' + g.makeCss(150, 150, 0, 0) + ' margin-left:' + 80 * g.ratio + 'px;">');
+    $("#char_charDisplay").html('<img src="./images/stat/' + firstHalf + '_' + secondHalf + '.png" style="' + g.makeCss(150, 150, 0, 0) + ' margin-left:' + 80 * g.ratio + 'px;" title="' + cl.set[firstHalf + 1].name + '">');
 };
 
 cl.getCum = function () {

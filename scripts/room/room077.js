@@ -14,7 +14,7 @@ room77.main = function () {
         }
     ];
     if (sc.bimbo().thisRoom) {
-        nav.bg("77_bimboLiving/livingRoomx.jpg", "77_bimboLiving/livingRoomNightx");
+        nav.bg("77_bimboLiving/livingRoomx.jpg", "77_bimboLiving/livingRoomNightx.jpg");
         btnList.push({
             "type": "btn",
             "name": "bimbo",
@@ -169,6 +169,7 @@ room77.chatcatch = function (callback) {
             nav.bg("77_bimboLiving/p5.jpg");
             break;
         case "pussy6":
+            nav.killbutton("tube");
             g.mod("fuckPussy", 1);
             cl.doCum(false);
             nav.bg("77_bimboLiving/p6.jpg");
@@ -176,8 +177,35 @@ room77.chatcatch = function (callback) {
         case "pussy7":
             g.mod("fuckPussy", 1);
             cl.doCum(false);
-            nav.bg("77_bimboLiving/p1.gif");
-            sc.setstep("bimbo", -1);
+            nav.bg("77_bimboLiving/p1.jpg");
+            nav.button({
+                "type": "img",
+                "name": "tube",
+                "left": 0,
+                "top": 276,
+                "width": 1920,
+                "height": 400,
+                "image": "77_bimboLiving/p1.gif"
+            }, 77);
+            if (g.get("knockedup") === null) {
+                g.set("knockedup", g.startDate);
+                chat(29, 77);
+            }
+            else {
+                chat(32, 77);
+            }
+            break;
+        case "pussy7a":
+            nav.killbutton("tube");
+            nav.bg("77_bimboLiving/p1a.jpg");
+            break;
+        case "pussy7a1":
+            nav.killbutton("tube");
+            nav.bg("77_bimboLiving/p1a1.jpg");
+            break;
+        case "pussy7a2":
+            nav.killbutton("tube");
+            nav.bg("77_bimboLiving/p1a2.jpg");
             break;
         case "end":
             nav.buildnav([76, 0]);
@@ -468,7 +496,7 @@ room77.chat = function (chatID) {
             speaker: "bimbo",
             text: "Are you cumming in me?!?",
             button: [
-                { chatID: 27, text: "MMmmmmm", callback: "pussy7" }
+                { chatID: -1, text: "MMmmmmm", callback: "pussy7" }
             ]
         },
         {
@@ -486,10 +514,42 @@ room77.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "...", callback: "end" }
             ]
+        },
+        {
+            chatID: 29,
+            speaker: "bimbo",
+            text: "....",
+            button: [
+                { chatID: 30, text: "...", callback: "pussy7a" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "bimbo",
+            text: "....",
+            button: [
+                { chatID: 31, text: "...", callback: "pussy7a1" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "bimbo",
+            text: "....",
+            button: [
+                { chatID: 27, text: "...", callback: "pussy7a2" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "bimbo",
+            text: "Ooooo i love the feeling of a cum filled pussy!",
+            button: [
+                { chatID: 28, text: "...", callback: "pussy6" }
+            ]
         }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
     else
         return [];
-};
+}; 
