@@ -29,6 +29,7 @@ inv.master = [
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false },
     { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false },
     { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false },
+    { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, image: "redroom.png", n: false },
     { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false },
     { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false },
     { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false },

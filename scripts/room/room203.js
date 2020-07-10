@@ -41,7 +41,8 @@ room203.main = function () {
     }
     else if (sc.cecilia().thisRoom) {
         g.internal = "201 change";
-        navList = [201, 0];
+        g.pass = "203Elevator";
+        navList = [201, 207, 0];
         btnList = [{
             "type": "btn",
             "name": "recep",
@@ -85,6 +86,9 @@ room203.btnclick = function (name) {
             }
             else if (misssyStep === 7) {
                 chat(13, 203);
+            }
+            else if (misssyStep > 24) {
+                chat(27, 203);
             }
             else if (misssyStep < 1000) {
                 if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {
@@ -251,6 +255,9 @@ room203.chatcatch = function (callback) {
             nav.killbutton("handjob");
             nav.bg("203_entrance/hjCum.jpg");
             cl.doCum(false);
+            break;
+        case "reload":
+            char.room(203);
             break;
         default:
             break;
@@ -485,6 +492,14 @@ room203.chat = function (chatID) {
             text: "Thank you! You may go see " + sc.n("missy") + " now.",
             button: [
                 { chatID: -1, text: "[Go see " + sc.n("missy") + "]", callback: "enter" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "cecilia",
+            text: "Sorry " + sc.n("me") + " no new casses. You have to earn them in the rooms. ",
+            button: [
+                { chatID: -1, text: "Oh, thanks.", callback: "reload" }
             ]
         },
     ];

@@ -127,7 +127,7 @@ room51.chatcatch = function (callback) {
             cl.displayface();
             break;
         case "t17":
-            cl.c.makeup = "light";
+            cl.c.makeup = "mb";
             cl.displayface();
             break;
         case "t18":

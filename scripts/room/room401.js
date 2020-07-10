@@ -130,9 +130,9 @@ room401.makeClothing = function (type, sex, canbuy) {
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
             if (!canbuy || cl.list[i].inv)
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '"/>');
+                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
             else
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" class="store-clothing"/>');
+                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" class="store-clothing" title="' + type + '"/>');
             if (cl.list[i].inv)
                 $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png"/>');
             else if (!canbuy)
@@ -150,9 +150,9 @@ room401.makeClothingDaring = function (type, daring, canbuy) {
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && daring.includes(cl.list[i].daring) && cl.list[i].price > 0) {
             if (!canbuy || cl.list[i].inv)
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '"/>');
+                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
             else
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" class="store-clothing"/>');
+                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" class="store-clothing" title="' + type + '"/>');
             if (cl.list[i].inv)
                 $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png"/>');
             else if (!canbuy)
@@ -174,28 +174,28 @@ room401.makeInv = function (typeArray, canbuy) {
             if ((inv.master[i].type === type && !(inv.master[i].entry && inv.master[i].count === null)) && inv.master[i].cost > 0) {
                 if (inv.master[i].name === "razor") {
                     if (sc.checkevent("me", -1)) {
-                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"/>');
+                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv" title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                     }
                     else {
-                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"/>');
+                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                     }
                 }
                 else if (inv.master[i].name === "lube") {
-                    if (inv.has("lube")) {
-                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"/>');
+                    if (sc.getstep("missy") > 14) {
+                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                     }
                     else {
-                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"/>');
+                        $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                     }
                 }
                 else {
-                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"/>');
+                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
                     $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                 }
                 g.internal++;

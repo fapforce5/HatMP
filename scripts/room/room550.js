@@ -151,7 +151,7 @@ room550.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "chad",
-            text: "Yea, just get me a picture of " + sc.n('eva') + "'s naked tits and the gym pass is yours, " +
+            text: "Yea, just get me a picture of " + sc.n('lola') + "'s naked tits and the gym pass is yours, " +
                 "or pay me $500, the choice is yours.",
             button: [
                 { chatID: -1, text: "...", callback: "chadInit" }
@@ -160,7 +160,7 @@ room550.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "chad",
-            text: "Sup bro. You got that titty picture of " + sc.n('eva') + '?',
+            text: "Sup bro. You got that titty picture of " + sc.n('lola') + '?',
             button: [
                 { chatID: 8, text: "Yes, here you go", callback: "tittyPic" },
                 { chatID: -1, text: "No, I'm just going to pay your $500", callback: "pay500" },
@@ -170,7 +170,7 @@ room550.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "chad",
-            text: "Sup bro. You got that titty picture of " + sc.n('eva') + '?',
+            text: "Sup bro. You got that titty picture of " + sc.n('lola') + '?',
             button: [
                 { chatID: -1, text: "No, I'm just going to pay your $500", callback: "pay500" },
                 { chatID: -1, text: "No", callback: "" }

@@ -404,7 +404,15 @@ cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia"];
 
 cl.makeup = [
     { name: "n", image: "body_head.png" },
-    { name: "light", image: "body_head_light.png" }
+    { name: "light", image: "body_head_med_black.png" },
+    { name: "lb", image: "body_head_light_black.png" },
+    { name: "lp", image: "body_head_light_purple.png" },
+    { name: "mb", image: "body_head_med_black.png" },
+    { name: "mp", image: "body_head_med_purple.png" },
+    { name: "hb", image: "body_head_heavy_black.png" },
+    { name: "hp", image: "body_head_heavy_purple.png" },
+    { name: "rb", image: "body_head_ruin_black.png" },
+    { name: "rp", image: "body_head_ruin_purple.png" }
 ];
 
 cl.bodyhair = [
@@ -417,6 +425,10 @@ cl.lips = [
     { name: "red", image: "lips_red.png" },
     { name: "purple", image: "lips_purple.png" },
     { name: "pink", image: "lips_pink.png" },
+    { name: "big", image: "lips_big.png" },
+    { name: "bigred", image: "lips_big_red.png" },
+    { name: "bigpink", image: "lips_big_purple.png" },
+    { name: "bigpurple", image: "lips_big_pink.png" },
 ];
 
 cl.eyes = [
@@ -1606,6 +1618,40 @@ cl.displayMainSub = function (thisImage, top, left, ratio) {
     top = top * g.ratio;
     left = left * g.ratio;
     $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+};
+
+cl.kneel = function (top, left, ratio, mod) {
+    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+
+    cl.kneelSub("b" + (cl.c.chest === 1 ? 0 : cl.c.chest) + ".png", top, left, ratio);
+    if (mod.indexOf("open") > -1)
+        cl.kneelSub("headOpen.png", top, left, ratio);
+    else
+        cl.kneelSub("headClose.png", top, left, ratio);
+
+    if (cl.c.hairLength !== null) {
+        if (cl.c.hairLength < 2) {
+            thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
+            cl.kneelSub(thisHair + ".png", top, left, ratio);
+        }
+        else if (cl.c.hairStyle === "leia") {
+            thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+            cl.kneelSub(thisHair + ".png", top, left, ratio);
+        }
+        else {
+            thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
+            cl.kneelSub(thisHair + ".png", top, left, ratio);
+        }
+    }
+};
+
+cl.kneelSub = function (thisImage, top, left, ratio) {
+    var btnWidth, btnHeight;
+    btnWidth = 1500 * ratio * g.ratio;
+    btnWidth = 1800 * ratio * g.ratio;
+    top = top * g.ratio;
+    left = left * g.ratio;
+    $('#room-buttons').append('<img src="./images/mainChar/bj/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 };
 
 cl.cockDisplay = function () {

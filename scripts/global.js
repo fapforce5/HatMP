@@ -48,6 +48,7 @@ g.st = [
     { n: "bladder", t: 0, q: "zero" },
     { n: "painting", t: "", q: "string" },
     { n: "bodyhair", t: 100, q: "zero" },
+    { n: "reddoorloc", t: 1, q: "int" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -104,6 +105,7 @@ g.st = [
     { n: "cardgame", t: false, q: "day" },
     { n: "momchat", t: false, q: "day" },
     { n: "buttholeplay", t: false, q: "day" },
+    { n: "reddoor", t: false, q: "day" },
 ];
 
 g.i = function (name) {
@@ -307,6 +309,7 @@ g.rooms = [
     { roomID: 54, name: "Tiffany's Room", image: "54_tif/tif.jpg", nightImage: "54_tif/tifNight.jpg", houseID: 50, btn: "roomBtn_54.png" },
     { roomID: 55, name: "Hallway", image: "55_hallway/hallway.jpg", nightImage: "55_hallway/hallway.jpg", houseID: 50, btn: "roomBtn_55.png" },
     { roomID: 56, name: "Bathroom", image: "56_bathroom/bathroom.jpg", nightImage: "56_bathroom/bathroom.jpg", houseID: 50, btn: "roomBtn_56.png" },
+    { roomID: 57, name: "Pussy Palace", image: "57_pussyPalace/bathroom.jpg", nightImage: "57_pussyPalace/bathroom.jpg", houseID: 50, btn: "roomBtn_57.png" },
 
     { roomID: 75, name: "Bimbo's House", image: "75_bimbo/house.jpg", nightImage: "75_bimbo/houseNight.jpg", houseID: 75, btn: "roomBtn_75.png" },
     { roomID: 76, name: "Bimbo's Room", image: "76_bimboRoom/room.jpg", nightImage: "76_bimboRoom/roomNight.jpg", houseID: 75, btn: "roomBtn_76.png" },
@@ -328,6 +331,8 @@ g.rooms = [
     { roomID: 204, name: "Card Game", image: "204_cardgame/402_bg.jpg", nightImage: "204_cardgame/402_bg.jpg", houseID: 200, btn: "roomBtn_204.png" },
     { roomID: 205, name: "Computer Work", image: "205_computerWork/205_computerWork.png", nightImage: "205_computerWork/205_computerWork.png", houseID: 200, btn: "roomBtn_204.png" },
     { roomID: 206, name: "Questions", image: "206_questions/white.jpg", nightImage: "206_questions/white.jpg", houseID: 200, btn: "roomBtn_200.png" },
+    { roomID: 207, name: "Elevator", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 200, btn: "roomBtn_207.png" },
+    { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 200, btn: "roomBtn_208.png" },
 
     { roomID: 250, name: "Naked Beaver Diner", image: "250_beaver/250_beaver.jpg", nightImage: "250_beaver/250_beaver.jpg", houseID: 250, btn: "roomBtn_250.png" },
     { roomID: 251, name: "Back Office", image: "251_office/office.jpg", nightImage: "251_office/office.jpg", houseID: 250, btn: "roomBtn_251.png" },
@@ -683,7 +688,11 @@ g.initGame = function () {
             case "bigguy":
             case "momchat":
             case "buttholeplay":
+            case "reddoor":
                 g.st[i].t = false;
+                break;
+            case "reddoorloc":
+                g.st[i].t = Math.floor(Math.random() * 8);
                 break;
             default:
                 console.log("unknown load: " + g.st[i].n);

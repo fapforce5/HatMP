@@ -1038,7 +1038,7 @@ room250.chat = function (chatID) {
             chatID: 51,
             speaker: "dolly",
             text: "I'm glad to see you're still toughing it out sugar! They just don't pay enough here to cover rent! " +
-            "That " + sc.n("jeffery") + " only cares about perving on pretty little things. He doens't seem to care at all about " +
+                "That " + sc.n("jeffery") + " only cares about perving on pretty little things. He doesn't seem to care at all about " +
             "us getting enough to get by.",
             button: [
                 { chatID: 47, text: "Did you want to make a few extra bucks, I'll buy your panties?", callback: "dollymad" },
@@ -1052,17 +1052,17 @@ room250.chat = function (chatID) {
             text: "Oh honey, I just give them an extra big smile when I bring out the food and the tips just start rolling in. " +
             "Most people here are really nice to me! I have a few that come in just to see me because they care so much for me. " +
             "They always ask me about my life and what I like. One guy even brought me flowers on my birthday, he's such a great " +
-            "fried.",
+            "friend.",
             button: [
                 { chatID: 47, text: "You know that guy wants to fuck you right?", callback: "dollymad" },
                 { chatID: 53, text: "I should try smiling too!", callback: "dollymad" },
-                { chatID: 47, text: "It's not your smile, it's your huge tits they like", callback: "" }
+                { chatID: 47, text: "It's not your smile, it's your huge tits they like", callback: "dollymad" }
             ]
         },
         {
             chatID: 53,
             speaker: "dolly",
-            text: "That's the spirit! My momma always said there's no medicin so sour that a bit of sugar couldn't help. You know with " +
+            text: "That's the spirit! My momma always said there's no medicine so sour that a bit of sugar couldn't help. You know with " +
             "a little bit of makeup we could really bring out the big pretty eyes of yours. They're so cute! ",
             button: [
                 { chatID: 54, text: "Only if you make my eyes as pretty as yours", callback: "" },
@@ -1197,7 +1197,7 @@ room250.chat = function (chatID) {
         {
             chatID: 67,
             speaker: "dolly",
-            text: "You see sugar, the cash register has a secret function, a fried of ours installed it",
+            text: "You see sugar, the cash register has a secret function, a friend of ours installed it",
             button: [
                 { chatID: 68, text: "...", callback: "" }
             ]

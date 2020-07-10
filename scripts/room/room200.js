@@ -157,6 +157,9 @@ room200.btnclick = function (name) {
             else if (thisStep === 21) {
                 room200.btnclick("revolve");
             }
+            else if (thisStep === 24) {
+                chat(156, 200);
+            }
             else { //thisstep = 10
                 if (g.pass === "finishComputer") {
                     g.pass = null;
@@ -667,6 +670,23 @@ room200.chatcatch = function (callback) {
             break;
         case "stripPantiesHairy":
 
+            break;
+        case "strip24":
+            nav.killall();
+            cl.nude();
+            nav.bg("200_frontOffice/202_sideDesk.jpg");
+            cl.kneel(500, 1000, .3, "");
+            break;
+        case "leave24":
+            cl.undo();
+            char.addtime(180);
+            char.room(0);
+            break;
+        case "24progress":
+            cl.undo();
+            sc.setstep("missy", 25);
+            char.addtime(200);
+            char.room(0);
             break;
         default:
             break;
@@ -1365,8 +1385,8 @@ room200.chat = function (chatID) {
         {
             chatID: 76,
             speaker: "missy",
-            text: "Good, I'm going to inform " + sc.n("jeffery") + " to only allow you to work with your chastity device on. " + 
-            "Now get out and stop screwing up! ",
+            text: "Good, I'm going to inform " + sc.n("jeffery") + " to only allow you to work with your chastity device on. " +
+                "Now get out and stop screwing up! ",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "leave18" }
             ]
@@ -2052,9 +2072,76 @@ room200.chat = function (chatID) {
             text: "I'm going to give you $120 to purchase your first chastity device. In the morning your sissy dick will be small enough to " +
                 "fit in that device. " +
                 "You're still going to bave a rather large penis, so it won't fit in all devices, make sure to get the biggest device " +
-            sc.n("candy") + " has. In time you'll we'll shink that cock into a proper sissy clit. Do you understand?",
+                sc.n("candy") + " has. In time you'll we'll shink that cock into a proper sissy clit. Do you understand?",
             button: [
                 { chatID: 76, text: "Yes mistress", callback: "cock9" }
+            ]
+        },
+        {
+            chatID: 156,
+            speaker: "missy",
+            text: "Strip down and kneel before me.",
+            button: [
+                { chatID: 157, text: "Yes mistress.", callback: "strip24" }
+            ]
+        },
+        {
+            chatID: 157,
+            speaker: "missy",
+            text: "I suppose you're ready for the real training. To take part you must give into me, fully and completely. If I allow you to " +
+                "serve me and partake in the full sissy training you must do what I say, when I say it without questions. You will be my slave, my " +
+                "braindead, slutty slave. Do you agree to be my personal slut?",
+            button: [
+                { chatID: 158, text: "I have a question.", callback: "" },
+                { chatID: 158, text: "No, I'm not ready", callback: "" },
+                { chatID: 158, text: "What's the training?", callback: "" },
+                { chatID: 159, text: "Yes mistress.", callback: "" }
+            ]
+        },
+        {
+            chatID: 158,
+            speaker: "missy",
+            text: "You are not ready. Leave me until you can learn to serve without question.",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "leave24" },
+            ]
+        },
+        {
+            chatID: 159,
+            speaker: "missy",
+            text: "Good, those are the only words a slave needs. I can't keep having you piss on my floor. Your training will continue in " +
+                "my training rooms. Because I am a good Mistress I shall allow you to choose your training. Each floor will have a different " +
+                "type of training for you to choose from. ",
+            button: [
+                { chatID: 160, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 160,
+            speaker: "missy",
+            text: "Going forward you will only be allowed in here if I have a case for you, and all future cases will be based on your " +
+            "progression in my program. ",
+            button: [
+                { chatID: 161, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 161,
+            speaker: "missy",
+            text: "I will let the elevator operator know you can now use it. Simply go into the hallway and use the elevator. Press the button " +
+                "for the floor you want. I'll let you enter the Red Room of Disicpline, but the other two you'll have to earn. Since I have only have " +
+            "so much time in my day you'll have to arrive by 10:00 each day you wish to progress. Do you understand?",
+            button: [
+                { chatID: 160, text: "Sorry mistress, can you repeat that", callback: "" },
+                { chatID: 162, text: "Yes mistress.", callback: "" },
+            ]
+        },
+        {
+            chatID: 162,
+            speaker: "missy",
+            text: "Good now go. ",
+            button: [
+                { chatID: -1, text: "yes mistress", callback: "24progress" },
             ]
         },
     ];

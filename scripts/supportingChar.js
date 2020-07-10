@@ -30,6 +30,7 @@ sc.char = [
     { name: "fightman", display: "Bad Motherfucker", image: "fightMan.png", step: 0, max: 0, show: false, setName: false },
     { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, max: 0, show: false, setName: false },
     { name: "fighttrans", display: "Bad Motherfucker", image: "fightTrans.png", step: 0, max: 0, show: false, setName: false },
+    { name: "cult", display: "Cult", image: "cult.png", step: 0, max: 0, show: false, setName: false },
     { name: "cultjgirl", display: "Cult Member", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false },
     { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false },
     { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, max: 0, show: false, setName: false },
@@ -136,6 +137,7 @@ sc.events = [
     { name: "missy", step: 19, txt: "Work at Naked Beaver to Missy's - post chastity", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 20, txt: "Report to Missy - post Naked Beaver", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 21, txt: "Post Naked Beaver Report", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "missy", step: 24, txt: "Begin Red Room", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "tiffany", step: -6, txt: "Return Trip", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -5, txt: "Peeked during show", img: "dildo", show: true, row: 1, col: 1, ach: false, major: true },
