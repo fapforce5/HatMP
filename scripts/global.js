@@ -1,6 +1,7 @@
 ﻿var g = {}; //global
 g.ratio = 1;// nav_ratio = 1;
 g.roomTimeout = null;// var nav_roomTimout = null;
+g.roomTimeout2 = null;
 g.pass = null;//var nav_roomPass = null;
 g.internal = null;
 g.roomAdd = new Array();

@@ -117,6 +117,7 @@ cl.list = [
 
     { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "f", inv: false, daring: 1, price: 120 },
     { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
+    { type: "chastity", name: "metal", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
 
     { type: "buttplug", name: "s", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
     { type: "buttplug", name: "n", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },
@@ -939,7 +940,8 @@ cl.pjBottom = [
 
 cl.chastity = [
     { name: "cage", image: "cockchast_m.png" },
-    { name: "pink", image: "cockchast_p.png" }
+    { name: "pink", image: "cockchast_p.png" },
+    { name: "metal", image: "cockchast_s.png" }
 ];
 
 cl.buttplug = [
@@ -1403,10 +1405,12 @@ cl.displayMain = function (top, left, ratio, spec) {
     }
     else {
         //set Legs
-        if (spec.indexOf("armsup") === -1)
-            cl.displayMainSub("top_" + cl.c.chest + ".png", top, left, ratio);
-        else
+        if (spec.indexOf("armsup") > -1)
             cl.displayMainSub("top_" + cl.c.chest + "_up.png", top, left, ratio);
+        else if (spec.indexOf("behind") > -1) 
+            cl.displayMainSub("top_" + cl.c.chest + "_behind.png", top, left, ratio);
+        else
+            cl.displayMainSub("top_" + cl.c.chest + ".png", top, left, ratio);
         cl.displayMainSub("leg_" + cl.c.leg + ".png", top, left, ratio);
     }
     //set Head

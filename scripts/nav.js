@@ -15,6 +15,10 @@ nav.buildRoom = function () {
         clearTimeout(g.roomTimeout);
         g.roomTimeout = null;
     }
+    if (g.roomTimeout2 !== null) {
+        clearTimeout(g.roomTimeout2);
+        g.roomTimeout2 = null;
+    }
     $('#room-animationFront').html('');
     $('#room-animationStandby').html('');
 
@@ -49,6 +53,10 @@ nav.killall = function () {
         clearTimeout(g.roomTimeout);
         g.roomTimeout = null;
     }
+    if (g.roomTimeout2 !== null) {
+        clearTimeout(g.roomTimeout2);
+        g.roomTimeout2 = null;
+    }
     $('#room-buttons').html("");
     $('#room_footer').html('');
 };
@@ -57,6 +65,10 @@ nav.kill = function () {
     if (g.roomTimeout !== null) {
         clearTimeout(g.roomTimeout);
         g.roomTimeout = null;
+    }
+    if (g.roomTimeout2 !== null) {
+        clearTimeout(g.roomTimeout2);
+        g.roomTimeout2 = null;
     }
     $('#room-buttons').html("");
 };
@@ -107,6 +119,14 @@ nav.button = function (btn, roomNum) {
         $('#room-buttons').append(line);
     }
     $('img').on('dragstart', function (event) { event.preventDefault(); });
+};
+
+nav.modbutton = function (name, newImage, newName, newType) {
+    if (newName === null)
+        newName = name;
+    $('img[data-name="' + name + '"]').attr("src", "./images/room/" + newImage).attr("data-name", newName);
+    if (newType === "img")
+        $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").addClass("room-img");
 };
 
 nav.flash = function (thisImage, length) {

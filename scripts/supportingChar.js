@@ -115,6 +115,7 @@ sc.events = [
     { name: "zoey", step: 23, txt: "Need some space", img: "zoeyLock", show: true, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 24, txt: "transformation", img: "", show: false, row: 0, col: 4, ach: false, major: false },
 
+    { name: "missy", step: -1, txt: "Red Challenge Complete", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 0, txt: "Not applied yet.", img: "pc", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 1, txt: "Get Private Investigator's license and interview.", img: "pi_lic", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 2, txt: "Report for first day on job with a suit, black socks, and black shoes.", img: "suit", show: true, row: 0, col: 1, ach: false, major: false },
@@ -138,6 +139,7 @@ sc.events = [
     { name: "missy", step: 20, txt: "Report to Missy - post Naked Beaver", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 21, txt: "Post Naked Beaver Report", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 24, txt: "Begin Red Room", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "missy", step: 25, txt: "All Challenges Complete?", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "tiffany", step: -6, txt: "Return Trip", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -5, txt: "Peeked during show", img: "dildo", show: true, row: 1, col: 1, ach: false, major: true },
