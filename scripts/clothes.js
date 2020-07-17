@@ -117,7 +117,7 @@ cl.list = [
 
     { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "f", inv: false, daring: 1, price: 120 },
     { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
-    { type: "chastity", name: "metal", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "chastity", name: "metal", img: "chastity_metal.png", sex: "f", inv: false, daring: 1, price: -1 },
 
     { type: "buttplug", name: "s", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
     { type: "buttplug", name: "n", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },
@@ -373,6 +373,24 @@ cl.hasoutfit = function (type) {
                 if (cl.c.panties === null && !sc.checkevent("me", -6))
                     missingClothing.push("underwear");
             }
+            break;
+        case "nude":
+            if (cl.c.swimsuit !== null)
+                missingClothing.push("swimsuit");
+            if (cl.c.dress !== null)
+                missingClothing.push("dress");
+            if (cl.c.shirt !== null)
+                missingClothing.push("shirt");
+            if (cl.c.pants !== null)
+                missingClothing.push("pants");
+            if (cl.c.panties !== null)
+                missingClothing.push("panties");
+            if (cl.c.socks !== null)
+                missingClothing.push("socks");
+            if (cl.c.pj !== null)
+                missingClothing.push("PJs");
+            if (cl.c.bra !== null)
+                missingClothing.push("bra");
             break;
     }
     var retMissing = null;

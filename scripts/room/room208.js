@@ -251,6 +251,7 @@ room208.chatcatch = function (callback) {
             if (cl.c.chastity === "metal")
                 chat(18, 208);
             else {
+                cl.add("chastity", "metal");
                 chat(19, 208);
                 cl.c.chastity = "metal";
             }
@@ -330,6 +331,23 @@ room208.chatcatch = function (callback) {
             //$('#room-buttons').append('<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
             g.roomTimeout = setTimeout(function () { room208.btnclick("th") }, (Math.random() * 500) + 500);
             break;
+        case "tri1":
+            $('.room-left').hide();
+            nav.killbutton("missy");
+            nav.button({
+                "type": "btn",
+                "name": "missy",
+                "left": 538,
+                "top": 0,
+                "width": 1093,
+                "height": 1080,
+                "image": "208_red/tri1.png"
+            }, 208);
+            break;
+        case "tri2":
+            nav.killbutton("missy");
+            nav.bg("208_red/tri2.jpg");
+            break;
         case "reset":
             nav.killall();
             nav.bg("208_red/red.jpg");
@@ -377,7 +395,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "I will present to you three challenges.<br/>" +
                 "The first is the challenge of servatude. To properly serve your mistress you must know your mistress. I have " +
-            "painted my toes in order and you must know me to guess that order. Kiss my toes correctly and your shall pass.",
+                "painted my toes in order and you must know me to guess that order. Kiss my toes correctly and your shall pass.",
             button: [
                 { chatID: 4, text: "[Keep silent]", callback: "" },
                 { chatID: 3, text: "Ask for a hint", callback: "" },
@@ -387,7 +405,7 @@ room208.chat = function (chatID) {
             chatID: 3,
             speaker: "missy",
             text: "I demand order in all that you do. To pass the first test you must first kiss my <span style='color:#ff0000'>Red</span>" +
-            "toe nail then proceed to my <span style='color:#ff6000'>Orange</span> toenail. You must find the order yourself after that.",
+                "toe nail then proceed to my <span style='color:#ff6000'>Orange</span> toenail. You must find the order yourself after that.",
             button: [
                 { chatID: 4, text: "[Keep silent]", callback: "" }
             ]
@@ -395,8 +413,9 @@ room208.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "missy",
-            text: "The next is the challenge of hardship. To prove your devotion to me you must give your body completely to me. " + 
-            "You must push through the pain of the rod and come to me.",
+            text: "The next is the challenge of hardship. To prove your devotion to me you must give your body completely to me. " +
+                "I will tie your arms behind your back and have you walk down an electrified pole. If you misstep or lower your balls onto " +
+                "my pole be prepared for a shocking time. If you get shocked too many times you fail!",
             button: [
                 { chatID: 6, text: "[Keep silent]", callback: "" },
                 { chatID: 5, text: "Ask for a hint", callback: "" },
@@ -405,7 +424,9 @@ room208.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "missy",
-            text: "Hint for pole game",
+            text: "Your initial energy is you actual energy. So if you start the game with high energy you'll have more chances to fail. " +
+                "On the right you'll see your feet and balls light up. When they light up click them to move forward. If you just can't do it " +
+                "you can raise your energy by working out and gaining more energy. Be sure to max it out!",
             button: [
                 { chatID: 6, text: "[Keep silent]", callback: "" },
             ]
@@ -413,7 +434,7 @@ room208.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "missy",
-            text: "The last is the challenge of restraint (balance?). You must sit on a giant dildo and stuff.. working on this.",
+            text: "The last is the challenge of capacity. You must sit on a giant dildo and stuff.. working on this.",
             button: [
                 { chatID: 8, text: "[Keep silent]", callback: "" },
                 { chatID: 7, text: "Ask for a hint", callback: "" },
@@ -431,7 +452,7 @@ room208.chat = function (chatID) {
             chatID: 8,
             speaker: "missy",
             text: "These are the challenges you must pass to prove you are worthy of another case. Complete these and I'll allow " +
-            "you to continue. ",
+                "you to continue. ",
             button: [
                 { chatID: 2, text: "Tell it to me again.", callback: "" },
                 { chatID: 9, text: "I'm ready to begin mistress.", callback: "" }
@@ -444,10 +465,10 @@ room208.chat = function (chatID) {
             button: [
                 { chatID: g.pass.first ? 11 : 12, text: g.pass.first ? "COMPLETE" : "The challenge of servatude", callback: "" },
                 { chatID: g.pass.second ? 11 : 16, text: g.pass.second ? "COMPLETE" : "the challenge of hardship", callback: "" },
-                { chatID: g.pass.third ? 11 : 0, text: g.pass.third ? "COMPLETE" : "The challenge of restraint", callback: "" },
+                { chatID: g.pass.third ? 11 : 23, text: g.pass.third ? "COMPLETE" : "The challenge of capacity", callback: "" },
                 { chatID: 10, text: "I give up", callback: "" },
             ]
-        }, 
+        },
         {
             chatID: 10,
             speaker: "missy",
@@ -476,7 +497,7 @@ room208.chat = function (chatID) {
             chatID: 13,
             speaker: "missy",
             text: "This challenge will test your ability to serve me in an orderly manner.Kiss each of my toes " +
-            "in an order that is pleasing to me. Don't displease me.",
+                "in an order that is pleasing to me. Don't displease me.",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "feet2" },
             ]
@@ -533,7 +554,7 @@ room208.chat = function (chatID) {
             chatID: 20,
             speaker: "missy",
             text: "Now to put you on the pole, careful with that metal chastity device, the current will shock you right up your little " +
-            "pee pee.. hehehehe",
+                "pee pee.. hehehehe",
             button: [
                 { chatID: -1, text: "...", callback: "t4" },
             ]
@@ -552,6 +573,40 @@ room208.chat = function (chatID) {
             text: "Awww did you shock your little pee pee? I hope it hurts as much as my dissapointment in you. Get going. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "missy",
+            text: "The challenge of capacity. ",
+            button: [
+                { chatID: 24, text: "...", callback: "tri1" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "missy",
+            text: "To pass the challenge of capacity you must be able to sit flat on my tower of power. ",
+            button: [
+                { chatID: 25, text: "Wha....", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "missy",
+            text: "Being a sissy is about the effort you put into being the biggest slut you can be. You don't just wake up and be a little " +
+                "slut, it takes time and effort in all things. If you're going to be my sissy you're going to have to take this tower of power deep " +
+                "into your gurl pussy.",
+            button: [
+                { chatID: 26, text: "...", callback: "tri2" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "missy",
+            text: "Art in progress.... ",
+            button: [
+                { chatID: 1, text: "oh fudge", callback: "rest" }
             ]
         },
     ];

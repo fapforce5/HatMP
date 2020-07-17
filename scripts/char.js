@@ -525,7 +525,7 @@ menu.mClick = function (type) {
             break;
         case "time":
             $(".menu-buttonKill").remove();
-            var gr = [0, 8, 10, 11, 16, 50, 52, 100, 450, 500];
+            var gr = [0, 8, 10, 11, 16, 50, 52, 55, 100, 450, 500];
             if (!gr.includes(g.roomID)) {
                 var places = "";
                 $.each(g.rooms, function (i, v) {

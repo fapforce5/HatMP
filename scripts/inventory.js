@@ -441,6 +441,11 @@ inv.save = function () {
 //need to set values to false and 0 on new load
 inv.load = function (ia) {
     var i, j;
+    for (i = 0; i < inv.master.length; i++) {
+        if (inv.master[i].count !== null)
+            inv.master[i].count = 0;
+        inv.master[i].entry = false;
+    }
     for (i = 0; i < ia.master.length; i++) {
         for (j = 0; j < inv.master.length; j++) {
             if (ia.master[i].name === inv.master[j].name) {
