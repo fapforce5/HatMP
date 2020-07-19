@@ -1,35 +1,52 @@
 ﻿//girl's change room
 var room553 = {};
 room553.main = function () {
-    g.pass = "girl";
-    var navList = [551, 0];
+    var navList = new Array();
     var btnList = new Array();
 
-    if (!sc.checkevent("candy", -1)) {
-        btnList.push({
-            "type": "img",
-            "name": "candy",
-            "left": 996,
-            "top": 41,
-            "width": 591,
-            "height": 1039,
-            "image": "553_girl/candy.png"
-        });
-        chat(0, 553);
+    if (cl.appearance() > 2) {
+        g.pass = "girl";
+        navList = [551, 0];
+        if (!sc.checkevent("candy", -1)) {
+            btnList.push({
+                "type": "img",
+                "name": "candy",
+                "left": 996,
+                "top": 41,
+                "width": 591,
+                "height": 1039,
+                "image": "553_girl/candy.png"
+            });
+            chat(0, 553);
+        }
+        else {
+            btnList.push({
+                "type": "img",
+                "name": "candy",
+                "left": 957,
+                "top": 0,
+                "width": 823,
+                "height": 1080,
+                "image": "553_girl/candy3.png"
+            });
+            chat(4, 553);
+        }
     }
     else {
-        btnList.push({
-            "type": "img",
-            "name": "candy",
-            "left": 957,
-            "top": 0,
-            "width": 823,
-            "height": 1080,
-            "image": "553_girl/candy3.png"
-        });
-        chat(4, 553);
+        g.pass = "girl";
+        btnList = [
+            {
+                "type": "btn",
+                "name": "shower",
+                "left": 874,
+                "top": 279,
+                "width": 187,
+                "height": 393,
+                "image": "553_girl/shower.jpg"
+            }
+        ];
+        navList = [551, 0];
     }
-
     
     $.each(btnList, function (i, v) {
         nav.button(v, 553);
@@ -39,7 +56,8 @@ room553.main = function () {
 
 room553.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "shower":
+            char.room(554);
             break;
         default:
             break;

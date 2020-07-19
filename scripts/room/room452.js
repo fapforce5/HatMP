@@ -22,7 +22,8 @@ room452.main = function () {
         chat(2, 452);
     }
     else {
-        if (Math.floor(Math.random() * 4) === 0) {
+        var thisApp = cl.appearance();
+        if (Math.floor(Math.random() * 4) === 0 && thisApp < 2) {
             nav.button({
                 "type": "img",
                 "name": "cop",
@@ -34,7 +35,7 @@ room452.main = function () {
             }, 452);
             chat(5, 452);
         }
-        else if (Math.floor(Math.random() * 3) === 0) {
+        else if (Math.floor(Math.random() * 3) === 0 && thisApp < 2) {
             nav.button({
                 "type": "img",
                 "name": "woman",
@@ -91,14 +92,14 @@ room452.main = function () {
                 var navList1 = [450];
 
                 $.each(btnList, function (i, v) {
-                    nav.button(v, 451);
+                    nav.button(v, 452);
                 });
 
                 nav.buildnav(navList1);
             }
             else {
                 g.internal = canGoOut;
-                chat(0, 451);
+                chat(0, 452);
             }
         }
     }
@@ -111,8 +112,15 @@ room452.btnclick = function (name) {
         case "stall3":
         case "stall4":
         case "stall5":
-            nav_roomPass = { name: name, room: "girl" };
-            char.room(453);
+            nav.killall();
+            nav.buildnav([452]);
+            nav.bg("451_parkMensRoom/stall.jpg");
+            break;
+        case "mirror":
+            nav.killall();
+            nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
+            cl.displayMirror();
+            chat(9, 452);
             break;
         default:
             break;
@@ -157,6 +165,16 @@ room452.chatcatch = function(callback){
                 "height": 1057,
                 "image": "452_parkWomansRoom/woman1.png"
             }, 452);
+            break;
+        case "reloadRoom":
+            char.room(452);
+            break;
+        case "cleanface":
+            cl.c.cumface = false;
+            cl.c.lips = "thin";
+            cl.c.makeup = "n";
+            cl.displayMirror();
+            cl.display();
             break;
         default:
             break;
@@ -208,11 +226,34 @@ room452.chat = function (chatID) {
             button: [{ chatID: -1, text: "Ewwwww", callback: "tojail" }]
         },
         {
-            chatID: 1,
+            chatID: 7,
             speaker: "random",
             text: "GET OUT GET OUT GET OUT!!!",
             button: [{ chatID: -1, text: "Oh....", callback: "leave" }]
         },
+        {
+            chatID: 8,
+            speaker: "me",
+            text: "Work in progress",
+            button: [{ chatID: -1, text: "...", callback: "" }]
+        },
+        {
+            chatID: 9,
+            speaker: "me",
+            text: "Looking good",
+            button: [
+                { chatID: 10, text: "Clean your face", callback: "cleanface" },
+                { chatID: -1, text: "...", callback: "reloadRoom" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "Looking good",
+            button: [
+                { chatID: -1, text: "...", callback: "reloadRoom" }
+            ]
+        }
     ];
     return cArray[chatID];
 };

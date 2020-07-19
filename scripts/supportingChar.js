@@ -161,11 +161,14 @@ sc.events = [
     { name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 15, txt: "First time home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 16, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 16, txt: "Watch masturbate", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 17, txt: "Masturbate like a girl", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "candy", step: -1, txt: "Flash in bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "candy", step: 0, txt: "Begin Here", img: "", show: false, row: 0, col: 0, ach: true, major: false },
     { name: "candy", step: 1, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: true, major: false },
     { name: "candy", step: 2, txt: "Ate your own cum!", img: "", show: false, row: 0, col: 0, ach: true, major: false },
+    { name: "candy", step: 3, txt: "Ate Brad's Cum", img: "", show: false, row: 0, col: 0, ach: true, major: false },
 
     { name: "chad", step: -2, txt: "Give Chad a picture of Lola's tits", img: "chad_pic", show: true, row: 1, col: 0, ach: false, major: false },
     { name: "chad", step: -1, txt: "Pay $500", img: "money", show: true, row: -1, col: 0, ach: false, major: false },
@@ -773,69 +776,69 @@ sc.tiffany = function () {
                 r = 54; //Room
             else if (hour.between(7, 10))
                 r = 54; //bathroom
-            else if (hour.between(10, 23))
+            else if (hour.between(10, 18))
                 r = 1001; //unk
-            else if (hour.between(23, 24))
+            else if (hour.between(18, 24))
                 r = 54; //Room
             break;
         case 1: //monday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 20))
+            else if (hour.between(7, 18))
                 r = 650;  //toystore
-            else if (hour.between(20, 22))
+            else if (hour.between(18, 20))
                 r = 50; //living room
-            else if (hour.between(22, 24))
+            else if (hour.between(20, 24))
                 r = 54;
             break;
         case 2: //tuesday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 20))
+            else if (hour.between(7, 18))
                 r = 650;  //toystore
-            else if (hour.between(20, 22))
+            else if (hour.between(18, 19))
                 r = 50; //living room
-            else if (hour.between(22, 24))
+            else if (hour.between(19, 24))
                 r = 54;
             break;
         case 3: //wednesday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 20))
+            else if (hour.between(7, 16))
                 r = 650;  //toystore
-            else if (hour.between(20, 22))
+            else if (hour.between(16, 17))
                 r = 50; //living room
-            else if (hour.between(22, 24))
+            else if (hour.between(17, 24))
                 r = 54;
             break;
         case 4: //thursday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 20))
+            else if (hour.between(7, 18))
                 r = 650;  //toystore
-            else if (hour.between(20, 22))
+            else if (hour.between(18, 20))
                 r = 50; //living room
-            else if (hour.between(22, 24))
+            else if (hour.between(20, 24))
                 r = 54;
             break;
         case 5: //friday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 20))
+            else if (hour.between(7, 18))
                 r = 650;  //toystore
-            else if (hour.between(20, 22))
+            else if (hour.between(18, 19))
                 r = 50; //living room
-            else if (hour.between(22, 24))
+            else if (hour.between(19, 24))
                 r = 54;
             break;
         case 6: //saturday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 20))
+            else if (hour.between(7, 18))
                 r = 650;  //toystore
-            else if (hour.between(20, 22))
+            else if (hour.between(18, 17))
                 r = 50; //living room
-            else if (hour.between(22, 24))
+            else if (hour.between(17, 24))
                 r = 54;
             break;
     }

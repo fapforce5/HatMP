@@ -1,44 +1,48 @@
 ﻿//Room name
 var room552 = {};
 room552.main = function () {
-    g.pass = "boy";
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "shower",
-            "left": 874,
-            "top": 279,
-            "width": 187,
-            "height": 393,
-            "image": "552_boy/shower.jpg"
+    if (cl.hasoutfit("public") === null) {
+        g.pass = "boy";
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "shower",
+                "left": 874,
+                "top": 279,
+                "width": 187,
+                "height": 393,
+                "image": "552_boy/shower.jpg"
+            }
+        ];
+        if (Math.floor(Math.random() * 2) === 1) {
+            btnList.push({
+                "type": "img",
+                "name": "treyvon",
+                "left": 1011,
+                "top": 119,
+                "width": 724,
+                "height": 961,
+                "image": "552_boy/treyvon.png"
+            });
+            btnList.push({
+                "type": "btn",
+                "name": "treyvonTowel",
+                "left": 1163,
+                "top": 717,
+                "width": 431,
+                "height": 345,
+                "image": "552_boy/treyvonTowel.png"
+            });
+            console.log("2");
         }
-    ];
-   if (Math.floor(Math.random() * 2) === 1) {
-        btnList.push({
-            "type": "img",
-            "name": "treyvon",
-            "left": 1011,
-            "top": 119,
-            "width": 724,
-            "height": 961,
-            "image": "552_boy/treyvon.png"
+        var navList = [551, 554, 0];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 552);
         });
-        btnList.push({
-            "type": "btn",
-            "name": "treyvonTowel",
-            "left": 1163,
-            "top": 717,
-            "width": 431,
-            "height": 345,
-            "image": "552_boy/treyvonTowel.png"
-        });
-        console.log("2");
+        nav.buildnav(navList);
     }
-    var navList = [551, 554, 0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 552);
-    });
-    nav.buildnav(navList);
+    else
+        chat(8, 552);
 };
 
 room552.btnclick = function (name) {
@@ -144,6 +148,14 @@ room552.chat = function (chatID) {
             chatID: 7,
             speaker: "treyvon",
             text: "Suck cock",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "me",
+            text: "I can't go out like this.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

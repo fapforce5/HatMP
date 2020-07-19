@@ -35,7 +35,7 @@ room55.main = function () {
             "image": "55_hallway/tif.png"
         });
     }
-    if (sc.candy().roomID === 54) {
+    if (sc.candy().roomID === 53) {
         btnList.push({
             "type": "btn",
             "name": "candy",

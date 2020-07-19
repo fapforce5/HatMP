@@ -5,20 +5,31 @@ room554.main = function () {
     if (g.pass === "girl") {
         nav.bg("554_shower/showerGirl.jpg");
         navList = [0, 553];
+        nav.button({
+            "type": "btn",
+            "name": "ohno",
+            "left": 588,
+            "top": 0,
+            "width": 642,
+            "height": 1080,
+            "image": "554_shower/ohno.png"
+        }, 554);
+        chat(2, 554);
     }
-    
-    if (g.diffDatesByDays(g.dt, g.get("shower")) === 0)
-        chat(0, 554);
     else {
-        nav.killall();
-        cl.c.cumface = false;
-        cl.nude();
-        cl.displayMain(120, 1200, .15, "shower");
-        chat(1, 554);
+        if (g.diffDatesByDays(g.dt, g.get("shower")) === 0)
+            chat(0, 554);
+        else {
+            nav.killall();
+            cl.c.cumface = false;
+            cl.nude();
+            cl.displayMain(120, 1200, .15, "shower");
+            chat(1, 554);
+        }
+        //$.each(btnList, function (i, v) {
+        //    nav.button(v, 554);
+        //});
     }
-    //$.each(btnList, function (i, v) {
-    //    nav.button(v, 554);
-    //});
     nav.buildnav(navList);
 };
 
@@ -49,6 +60,9 @@ room554.chatcatch = function (callback) {
             else
                 char.room(553);
             break;
+        case "thatsapenis":
+            char.room(553);
+            break;
         default:
             break;
     }
@@ -70,6 +84,14 @@ room554.chat = function (chatID) {
             text: "Finished Showering",
             button: [
                 { chatID: -1, text: "[Leave]", callback: "leaveShower" }
+            ]
+        },
+        {
+            chatID: 554,
+            speaker: "random",
+            text: "That's a penis!!!!!!!!! AAAAAaaaaaaa",
+            button: [
+                { chatID: -1, text: "[Run away]", callback: "thatsapenis" }
             ]
         }
     ];

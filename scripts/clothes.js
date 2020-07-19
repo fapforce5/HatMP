@@ -448,6 +448,10 @@ cl.lips = [
     { name: "bigred", image: "lips_big_red.png" },
     { name: "bigpink", image: "lips_big_purple.png" },
     { name: "bigpurple", image: "lips_big_pink.png" },
+    { name: "sb", image: "lips_sb.png" },
+    { name: "sbred", image: "lips_sb_red.png" },
+    { name: "sbpink", image: "lips_sb_purple.png" },
+    { name: "sbpurple", image: "lips_sb_pink.png" },
 ];
 
 cl.eyes = [
@@ -1909,9 +1913,7 @@ cl.appearanceBody = function () {
             break;
     }
     switch (cl.c.leg) {
-        case 0:
-            baseScore--;
-            break;
+        case 3:
         case 4:
             baseScore++;
             break;
@@ -1925,6 +1927,7 @@ cl.appearanceBody = function () {
             case 1:
                 baseScore--;
                 break;
+
         }
     }
 
