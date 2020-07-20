@@ -1032,7 +1032,7 @@ room24.chat = function (chatID) {
         {
             chatID: 85,
             speaker: "lola",
-            text: "Yea you do! I mean... uh whaaa, the bottle's empty",
+            text: "Yes you do! I mean... uh whaaa, the bottle's empty",
             button: [
                 { chatID: 86, text: "Oh no, we can still play", callback: "evaTalk lolaSit" }
             ]
@@ -1113,7 +1113,7 @@ room24.chat = function (chatID) {
         {
             chatID: 95,
             speaker: "eva",
-            text: "Yea pervert. It's time for us to get ready for bed. ",
+            text: "Yeah pervert. It's time for us to get ready for bed. ",
             button: [
                 { chatID: -1, text: "I had fun too, good night", callback: "spinEnd" }
             ]

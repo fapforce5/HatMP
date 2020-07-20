@@ -353,7 +353,7 @@ room203.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "cecilia",
-            text: "Oh yea you look good. you may enter",
+            text: "Oh yeah you look good. you may enter",
             button: [
                 { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
             ]
@@ -459,7 +459,7 @@ room203.chat = function (chatID) {
             "when you huge erection is sticking out of your pants. Do you want me jerk you off? I love filling my mouth with cum!",
             button: [
                 { chatID: 23, text: "No, I'll take care of it", callback: "" },
-                { chatID: 24, text: "Oh, yea please jerk me off", callback: "" }
+                { chatID: 24, text: "Oh, yeah please jerk me off", callback: "" }
             ]
         },
         {

@@ -1063,7 +1063,7 @@ room13.chat = function (chatID) {
         {
             chatID: 57,
             speaker: "eva",
-            text: "Yea dummy. So if you want one take off your clothes and sit down.",
+            text: "Yeah dummy. So if you want one take off your clothes and sit down.",
             button: [
                 { chatID: 58, text: "Oh! OK [Take off clothes]", callback: "footjob1" }
             ]
@@ -1153,7 +1153,7 @@ room13.chat = function (chatID) {
         {
             chatID: 68,
             speaker: "eva",
-            text: "Oh yea cum for me you sick twisted panty sniffer!",
+            text: "Oh yeah cum for me you sick twisted panty sniffer!",
             button: [
                 { chatID: 69, text: "...", callback: "footjob4" }
             ]

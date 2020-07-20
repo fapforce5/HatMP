@@ -391,7 +391,7 @@ room51.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "candy",
-            text: "Haha yea silly boy, just relax and we'll help you release your inner girl!",
+            text: "Haha you silly boy, just relax and we'll help you release your inner girl!",
             button: [
                 { chatID: 15, text: "Oh", callback: "t11" },
             ]

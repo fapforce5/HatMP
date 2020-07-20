@@ -357,7 +357,7 @@ room77.chat = function (chatID) {
             speaker: "bimbo",
             text: "MMmmmmmmm I love the taste of your cum!",
             button: [
-                { chatID: -1, text: "Yea you do", callback: "" }
+                { chatID: -1, text: "yeah you do", callback: "" }
             ]
         },
         {

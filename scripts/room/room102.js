@@ -109,7 +109,7 @@ room102.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "construction",
-            text: "oh.. hay " + sc.n("me") + " so you want to clean up shit on the site? The job starts at $40 per day. If you can make me laugh I'll give you a raise each week. Sound good?",
+            text: "oh.. hey " + sc.n("me") + " so you want to clean up shit on the site? The job starts at $40 per day. If you can make me laugh I'll give you a raise each week. Sound good?",
             button: [
                 { chatID: 3, text: "yes sir", callback: "" },
                 { chatID: 4, text: "No, I want more money to start.", callback: "" }

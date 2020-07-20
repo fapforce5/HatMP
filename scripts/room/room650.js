@@ -208,7 +208,7 @@ room650.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "charlie",
-            text: "Hay kid, you lookin to jam somethin up yo ass?",
+            text: "Hay kid, you lookin' to jam somethin up yo ass?",
             button: [
                 { chatID: -1, text: "Yes, what toys do yo have", callback: "toys" },
                 { chatID: -1, text: "No...", callback: "" }

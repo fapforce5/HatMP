@@ -746,7 +746,7 @@ room250.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "jones",
-            text: "Oh hay pretty lady, I think I dropped my napkin, could you get it for me?",
+            text: "Oh hey pretty lady, I think I dropped my napkin, could you get it for me?",
             button: [
                 { chatID: -1, text: "Sure!", callback: "getbent" },
                 { chatID: 24, text: "Get it yourself..", callback: "" }
@@ -795,7 +795,7 @@ room250.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "spanky",
-            text: "Oh hay dude, I didn't know you liked to dress like a chick dude.",
+            text: "Oh hey dude, I didn't know you liked to dress like a chick.",
             button: [
                 { chatID: 28, text: "Oh, I had to", callback: "" }
             ]
@@ -803,17 +803,17 @@ room250.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "spanky",
-            text: "It's cool bro.. I mean bro-ette, some of my best customers dress like chicks too. Some of them have " +
+            text: "It's cool bro... I mean bro-ette, some of my best customers dress like chicks, too. Some of them have " +
             "truly excellent boobs, and what's better is that they like showing them off. I love big titties! All chicks " +
-                "shoudl show them boobies, know what I mean?",
+                "should show them boobies, know what I mean?",
             button: [
-                { chatID: 29, text: "Yea, totally", callback: "" }
+                { chatID: 29, text: "Yeah, totally", callback: "" }
             ]
         },
         {
             chatID: 29,
             speaker: "spanky",
-            text: "soo, are you cool man?",
+            text: "Soooooo, are you cool, man?",
             button: [
                 { chatID: 30, text: "uh.. yea, sure", callback: "" }
             ]
@@ -843,7 +843,7 @@ room250.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "spanky",
-            text: "Yea one of the dudes says his dick shunk up to the size of a penny, but his titties are huge! This one time " +
+            text: "yeah one of the dudes says his dick shunk up to the size of a penny, but his titties are huge! This one time " +
             "this big titty dude comes in and just flashes me to show how awesome his titties are, just bare ass chest in my face. " +
             "I don't care, 'cause titties, so I just start sucking them expecting that at any minute he's going to slap me, but get this " +
             "he just lets me suck on them titties and shit, just letting me go to town, so I think what the hell and I slide my hand into " +
@@ -1062,8 +1062,8 @@ room250.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "dolly",
-            text: "That's the spirit! My momma always said there's no medicine so sour that a bit of sugar couldn't help. You know with " +
-            "a little bit of makeup we could really bring out the big pretty eyes of yours. They're so cute! ",
+            text: "That's the spirit! My momma always said, \"There's no medicine so sour that a bit of sugar couldn't help\". You know, with " +
+            "a little bit of makeup, we could really bring out the big pretty eyes of yours. They're so cute! ",
             button: [
                 { chatID: 54, text: "Only if you make my eyes as pretty as yours", callback: "" },
                 { chatID: 47, text: "Awesome, can you come over and dress me in pretty outfits too?", callback: "dollymad" },
@@ -1197,7 +1197,7 @@ room250.chat = function (chatID) {
         {
             chatID: 67,
             speaker: "dolly",
-            text: "You see sugar, the cash register has a secret function, a friend of ours installed it",
+            text: "You see, sugar, the cash register has a secret function; a friend of ours installed it.",
             button: [
                 { chatID: 68, text: "...", callback: "" }
             ]

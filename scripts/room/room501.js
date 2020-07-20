@@ -551,7 +551,7 @@ room501.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "zoey",
-            text: "HAHAHA yea she does, I'm so jealous. I'm so totally in love!",
+            text: "HAHAHA yeah she does, I'm so jealous. I'm so totally in love!",
             button: [
                 { chatID: 5, text: "Aww. I'm happy for your " + sc.n("zoey"), callback: "zLook" }
             ]

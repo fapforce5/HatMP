@@ -449,7 +449,7 @@ room10.chat = function(chatID){
         {
             chatID: 15,
             speaker: "me",
-            text: "Oh no... is my penis getting shrinking!?!?",
+            text: "Oh no... is my penis shrinking!?!?",
             button: [
                 { chatID: -1, text: "....", callback: "newday" }
             ]

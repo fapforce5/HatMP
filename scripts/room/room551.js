@@ -462,7 +462,7 @@ room551.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "chad",
-            text: "Yea he'll hurt himself if he even tries. " + sc.n("me") + " you should probably just go. You don't belong here.",
+            text: "yeah he'll hurt himself if he even tries. " + sc.n("me") + " you should probably just go. You don't belong here.",
             button: [
                 { chatID: 12, text: "But I want to work out....", callback: "" }
             ]

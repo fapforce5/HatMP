@@ -117,7 +117,7 @@ room450.main = function () {
             "image": "450_park/450_further.png",
             "night": "450_park/450_further_night.png"
         });
-        navList = [460, 451, 452, 0];
+        navList = [460, 452, 451, 0];
     }
     
 

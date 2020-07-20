@@ -617,7 +617,7 @@ room403.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "tiffany",
-            text: "Oh hay " + sc.n("jada") + " c'mon in. I need your opinion on these new panties. ",
+            text: "Oh hey " + sc.n("jada") + " c'mon in. I need your opinion on these new panties. ",
             button: [
                 { chatID: 43, text: "Wha... no, no we don't", callback: "changeRoom6b" }
             ]

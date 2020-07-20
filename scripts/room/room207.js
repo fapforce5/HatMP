@@ -138,10 +138,10 @@ room207.btnclick = function (name) {
                 {
                     "type": "btn",
                     "name": name + "_char",
-                    "left": 512,
-                    "top": 308,
-                    "width": 350,
-                    "height": 772,
+                    "left": 534,
+                    "top": 669,
+                    "width": 481,
+                    "height": 411,
                     "title": "Front Office",
                     "image": "207_door/" + name + "_char.png"
                 }
@@ -178,7 +178,7 @@ room207.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "cult",
+            speaker: "random",
             text: "Welcome to the Pink Level of Pleasure. To enter you you must be your most beautiful self. [In progress]",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -186,7 +186,7 @@ room207.chat = function (chatID) {
         },
         {
             chatID: 1,
-            speaker: "cult",
+            speaker: "random",
             text: "Welcome to the Red Level of Discipline. To enter you must prove your worth to " + sc.n("missy") + " our Mistress.",
             button: [
                 { chatID: 3, text: "I have Proven my worth, may I enter?", callback: "" },
@@ -195,7 +195,7 @@ room207.chat = function (chatID) {
         },
         {
             chatID: 2,
-            speaker: "cult",
+            speaker: "random",
             text: "Welcome to the Black Level of Pain. To enter you must show you accept that pain is pleasure. [In progress]",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -203,7 +203,7 @@ room207.chat = function (chatID) {
         },
         {
             chatID: 3,
-            speaker: "cult",
+            speaker: "random",
             text: "You have proven yourself worthy. You may enter to serve your Mistress.",
             button: [
                 { chatID: -1, text: "Cool", callback: "enterRed" },

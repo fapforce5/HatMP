@@ -762,7 +762,7 @@ room23.chat = function (chatID) {
                 chatID: 37,
                 speaker: "eva",
                 text: "At least he's not a chicken " + sc.n("lola") + "! Do your dare.",
-                button: [{ chatID: 38, text: "Yea " + sc.n("lola") + " do your dare!", callback: "lolaStrip evaSit" }]
+                button: [{ chatID: 38, text: "YEAH " + sc.n("lola") + " do your dare!", callback: "lolaStrip evaSit" }]
             },
             {
                 chatID: 38,

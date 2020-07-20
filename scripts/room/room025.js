@@ -318,7 +318,7 @@ room25.chat = function (chatID) {
             speaker: "eva",
             text: "I hate going to class sooooo much. Its sooo boring.",
             button: [
-                { chatID: 15, text: "yea it is", callback: "" }
+                { chatID: 15, text: "Yeah it is", callback: "" }
             ]
         },
         {
@@ -514,7 +514,7 @@ room25.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "eva",
-            text: "Yea I do and I don't care who knows it!",
+            text: "Yes I do and I don't care who knows it!",
             button: [
                 { chatID: 39, text: "Awwww", callback: "" }
             ]

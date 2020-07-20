@@ -3,51 +3,56 @@ var room553 = {};
 room553.main = function () {
     var navList = new Array();
     var btnList = new Array();
+    if (cl.hasoutfit("public") === null) {
+        if (cl.appearance() < 2) {
 
-    if (cl.appearance() > 2) {
-        g.pass = "girl";
-        navList = [551, 0];
-        if (!sc.checkevent("candy", -1)) {
-            btnList.push({
-                "type": "img",
-                "name": "candy",
-                "left": 996,
-                "top": 41,
-                "width": 591,
-                "height": 1039,
-                "image": "553_girl/candy.png"
-            });
-            chat(0, 553);
+            g.pass = "girl";
+            navList = [551, 0];
+            if (!sc.checkevent("candy", -1)) {
+                btnList.push({
+                    "type": "img",
+                    "name": "candy",
+                    "left": 996,
+                    "top": 41,
+                    "width": 591,
+                    "height": 1039,
+                    "image": "553_girl/candy.png"
+                });
+                chat(0, 553);
+            }
+            else {
+                btnList.push({
+                    "type": "img",
+                    "name": "candy",
+                    "left": 957,
+                    "top": 0,
+                    "width": 823,
+                    "height": 1080,
+                    "image": "553_girl/candy3.png"
+                });
+                chat(4, 553);
+            }
+
         }
         else {
-            btnList.push({
-                "type": "img",
-                "name": "candy",
-                "left": 957,
-                "top": 0,
-                "width": 823,
-                "height": 1080,
-                "image": "553_girl/candy3.png"
-            });
-            chat(4, 553);
+            g.pass = "girl";
+            btnList = [
+                {
+                    "type": "btn",
+                    "name": "shower",
+                    "left": 874,
+                    "top": 279,
+                    "width": 187,
+                    "height": 393,
+                    "image": "553_girl/shower.jpg"
+                }
+            ];
+            navList = [551, 0];
         }
     }
-    else {
-        g.pass = "girl";
-        btnList = [
-            {
-                "type": "btn",
-                "name": "shower",
-                "left": 874,
-                "top": 279,
-                "width": 187,
-                "height": 393,
-                "image": "553_girl/shower.jpg"
-            }
-        ];
-        navList = [551, 0];
-    }
-    
+    else
+        chat(5, 553);
+
     $.each(btnList, function (i, v) {
         nav.button(v, 553);
     });
@@ -169,6 +174,14 @@ room553.chat = function (chatID) {
             text: "I thought I told you to stop coming in the girl's bathroom. Get out of here before I make you my bitch!",
             button: [
                 { chatID: -1, text: "[Squeal like a girl and run]", callback: "runawayx" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "me",
+            text: "I can't go out like this!",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         }
     ];

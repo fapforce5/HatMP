@@ -195,7 +195,7 @@ room205.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "cecilia",
-            text: "Pssst, hay " + sc.n("me") + ".",
+            text: "Pssst, hey " + sc.n("me") + ".",
             button: [
                 { chatID: 4, text: "Ask " + sc.n("cecilia") + " what she wants", callback: "changeBG1" }
             ]
@@ -300,7 +300,7 @@ room205.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "me",
-            text: "oh yea Cecilia that feels soooo good.",
+            text: "oh yeah Cecilia that feels soooo good.",
             button: [
                 { chatID: 17, text: "...", callback: "changeBG4" }
             ]
