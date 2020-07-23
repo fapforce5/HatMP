@@ -67,30 +67,48 @@ room451.btnclick = function (name) {
         case "stall2":
             nav.killall();
             nav.bg("451_parkMensRoom/gloryHoleInsert.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "insert",
-                "left": 1649,
-                "top": 158,
-                "width": 124,
-                "height": 218,
-                "image": "451_parkMensRoom/insert.png"
-            }, 451);
+            if (g.dt.getDay() === 0 || g.dt.getDay() === 6) {
+                nav.button({
+                    "type": "btn",
+                    "name": "insert_1",
+                    "left": 1649,
+                    "top": 158,
+                    "width": 124,
+                    "height": 218,
+                    "image": "451_parkMensRoom/insert_1.png"
+                }, 451);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "insert",
+                    "left": 1649,
+                    "top": 158,
+                    "width": 124,
+                    "height": 218,
+                    "image": "451_parkMensRoom/insert.png"
+                }, 451);
+            }
             nav.buildnav([451]);
             break;
         case "stall1":
-            nav.killall();
-            nav.bg("451_parkMensRoom/gloryHole.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "gloryhole",
-                "left": 385,
-                "top": 158,
-                "width": 124,
-                "height": 218,
-                "image": "451_parkMensRoom/gloryhole.png"
-            }, 451);
-            nav.buildnav([451]);
+            if (g.dt.getDay() === 0 || g.dt.getDay() === 6) {
+                chat(5, 451);
+            }
+            else {
+                nav.killall();
+                nav.bg("451_parkMensRoom/gloryHole.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "gloryhole",
+                    "left": 385,
+                    "top": 158,
+                    "width": 124,
+                    "height": 218,
+                    "image": "451_parkMensRoom/gloryhole.png"
+                }, 451);
+                nav.buildnav([451]);
+            }
             break;
         case "mirror":
             nav.killall();
@@ -101,8 +119,19 @@ room451.btnclick = function (name) {
         case "insert":
             chat(1, 451);
             break;
+        case "insert_1":
+            nav.killall();
+            nav.bg("451_parkMensRoom/bj1.jpg");
+            if (sc.getstep("missy") < 2)
+                chat(6, 451);
+            else
+                chat(7, 451);
+            break;
         case "gloryhole":
             chat(2, 451);
+            break;
+        case "bj2":
+            nav.bg("451_parkMensRoom/bj2.jpg");
             break;
         default:
             break;
@@ -162,7 +191,31 @@ room451.chat = function(chatID){
             button: [
                 { chatID: -1, text: "...", callback: "reloadRoom" }
             ]
-        }
+        },
+        {
+            chatID: 5,
+            speaker: "me",
+            text: "It's locked. I guess someone is in there.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "cecilia",
+            text: "Hey stanger, I love getting my mouth filled with cock. Can I suck yours?",
+            button: [
+                { chatID: 8, text: "Sure, why not", callback: "bj2" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "cecilia",
+            text: "Oh " + sc.n("me") + ", I'm so happy you're here. Want to shove you cock down my throat?",
+            button: [
+                { chatID: -1, text: "Yes I do", callback: "reloadRoom" }
+            ]
+        },
     ];
 
     return cArray[chatID];

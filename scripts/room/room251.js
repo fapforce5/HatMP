@@ -12,11 +12,13 @@ room251.main = function () {
             "image": g.pass === "work" ? "251_office/jeff1.png" : "251_office/jeff.png"
         }
     ];
-    var navList = [0];
     $.each(btnList, function (i, v) {
         nav.button(v, 251);
     });
-    nav.buildnav(navList);
+    if (g.pass !== "FinishLoop") {
+        var navList = [0];
+        nav.buildnav(navList);
+    }
 };
 
 room251.btnclick = function (name) {

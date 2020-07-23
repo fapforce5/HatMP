@@ -66,6 +66,7 @@ room401.main = function () {
             nav.bg("650_toyStore/650_front.jpg", "650_toyStore/650_front.jpg");
             room401.makeClothing("chastity", "f", sc.checkevent("me", -7));
             room401.makeClothing("buttplug", "f", sc.checkevent("me", -8));
+            room401.makeInv(["d"], sc.checkevent("me", -8));
             navList = [650, 0];
             break;
         case "happyGirl":

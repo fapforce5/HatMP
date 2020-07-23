@@ -120,6 +120,7 @@ room54.chatcatch = function (callback) {
             sc.setstep("tiffany", 17);
             g.setflag("tiffanyDayEvent");
             sc.setstep("me", -8);
+            inv.add("pinkDildo");
             char.room(54);
             break;
         default:
