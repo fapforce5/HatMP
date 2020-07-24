@@ -652,7 +652,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "I'm really busy, do you mind coming back sometime?",
             button: [
-                { chatID: -1, text: "Oh yea, sure. Later ", callback: "leave" }
+                { chatID: -1, text: "Sure. Later ", callback: "leave" }
             ]
         },
         {
@@ -774,7 +774,7 @@ room501.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "chloe",
-            text: "Oh yea, I love grinding my pussy into your little mouth, it feels so good. ",
+            text: "I love grinding my pussy into your little mouth, it feels so good. ",
             button: [
                 { chatID: 32, text: "....", callback: "" }
             ]
@@ -872,7 +872,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "You remember Emily. She was in our senior science class.",
             button: [
-                { chatID: 44, text: "Oh yea, I remember her; she was always so friendly. I think she was dating Billy.", callback: "" }
+                { chatID: 44, text: "I remember her; she was always so friendly. I think she was dating Billy.", callback: "" }
             ]
         },
         {
@@ -989,7 +989,7 @@ room501.chat = function (chatID) {
             speaker: "chloe",
             text: "No dude, be cool.",
             button: [
-                { chatID: 58, text: "Yea, I guess it was funny", callback: "" }
+                { chatID: 58, text: "I guess it was funny", callback: "" }
             ]
         },
         {
@@ -997,7 +997,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "Pardonne moi " + sc.n("me") + ", I didn't think you would get so upset. I promise never to tell anyone ever again.",
             button: [
-                { chatID: 62, text: "Yea, I shouldn't have blown up at you. You're good ", callback: "" }
+                { chatID: 62, text: "I shouldn't have blown up at you. You're good ", callback: "" }
             ]
         },
         {

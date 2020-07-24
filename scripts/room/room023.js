@@ -110,7 +110,7 @@ room23.main = function () {
             id: 17,
             q: "Have you ever sent a naked selfie?",
             l: "Maybeeee.....",
-            e: "hehehe yea, a few times. "
+            e: "hehehe yeah, a few times. "
         },
         {
             id: 18,
@@ -200,7 +200,7 @@ room23.main = function () {
         },
         {
             q: "Would you ever let someone lick your butthole?",
-            b: [{ chatID: 9, text: "oh yea, do you know anyone?", callback: "evaTalk" },
+            b: [{ chatID: 9, text: "oh yeah, do you know anyone?", callback: "evaTalk" },
             { chatID: -1, text: "Hell no!", callback: "" }]
         },
         {
@@ -668,7 +668,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "lola",
-                text: "Oh yea, " + sc.n("eva") + "! Truth or dare, and don't ba a chicken!",
+                text: "Oh yeah, " + sc.n("eva") + "! Truth or dare, and don't ba a chicken!",
                 button: [{ chatID: 23, text: "...", callback: "lolaSit evaTalk" }]
             },
             {

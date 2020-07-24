@@ -619,7 +619,7 @@ room26.chat = function (chatID) {
             speaker: "landlord",
             text: "Get that thing out of here! I'm trying to watch my shows.",
             button: [
-                { chatID: -1, text: "[Whimpter away]", callback: "passtimeStop" },
+                { chatID: -1, text: "[Whimper away]", callback: "passtimeStop" },
             ]
         },
     ];

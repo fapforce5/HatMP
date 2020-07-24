@@ -278,7 +278,7 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "So are you going to feed me your cum?",
             button: [
-                { chatID: -1, text: "Oh yea, here it comes!", callback: "titfuck2" }
+                { chatID: -1, text: "Oh yeah, here it comes!", callback: "titfuck2" }
             ]
         },
         {

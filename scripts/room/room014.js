@@ -663,7 +663,7 @@ room14.chat = function(chatID){
         {
             chatID: 24,
             speaker: "bigguy",
-            text: "Yea, I gotta giant problem that needs to be solved and only your " + sc.n("landlord") + " can suck it. ",
+            text: "Yeah, I gotta giant problem that needs to be solved and only your " + sc.n("landlord") + " can suck it. ",
             button: [
                 { chatID: -1, text: "oh damn it.. gross again", callback: "fin2" }
             ]
@@ -703,7 +703,7 @@ room14.chat = function(chatID){
         {
             chatID: 29,
             speaker: "bigguy",
-            text: "Oh yea, take my load while " + sc.n("me") + " watches. He's likes to watch you take my giant cock.",
+            text: "Oh yeah, take my load while " + sc.n("me") + " watches. He's likes to watch you take my giant cock.",
             button: [
                 { chatID: 30, text: "...", callback: "couple3b" }
             ]

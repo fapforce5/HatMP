@@ -108,7 +108,7 @@ room500.chat = function (chatID) {
             speaker: "zoey",
             text: "Hay " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
             button: [
-                { chatID: -1, text: "Oh, yea, of course. ", callback: "leave0" }
+                { chatID: -1, text: "Of course. ", callback: "leave0" }
             ]
         },
         {

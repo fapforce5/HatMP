@@ -371,7 +371,7 @@ room77.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "bimbo",
-            text: "Oh yea, I haven't been fucked like this since my bondage gang bang!",
+            text: "I haven't been fucked like this since my bondage gang bang!",
             button: [
                 { chatID: -1, text: "Yes I will", callback: "pussy2" }
             ]

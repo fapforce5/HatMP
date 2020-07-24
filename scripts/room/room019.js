@@ -310,15 +310,15 @@ room19.chat = function (chatID) {
             text: "Ooooo, my butthole is so hungry, it's begging for more fingers...",
             button: [
                 { chatID: -1, text: "Give into your lust and slip in another finger", callback: "addFinger" },
-                { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
+                { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
         },
         {
             chatID: 4,
             speaker: "me",
-            text: "Ooooo, my butthole feels pretty full. I better stop here.",
+            text: "Oooooh, my butthole feels pretty full. I better stop here.",
             button: [
-                { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
+                { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
         },
         {
@@ -327,7 +327,7 @@ room19.chat = function (chatID) {
             text: "Ooooo, my butthole is so hungry, it's begging for more fingers...",
             button: [
                 { chatID: -1, text: "Give into your lust and slip in another finger", callback: "3finger" },
-                { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
+                { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
         },
         {
@@ -335,7 +335,7 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "Two fingers is as much as I feel comfortable with. I should get a toy if I want to go bigger. ",
             button: [
-                { chatID: -1, text: "Stop playing my asshole", callback: "Stop" }
+                { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
         },
         {

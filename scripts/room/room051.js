@@ -372,7 +372,7 @@ room51.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "tiffany",
-            text: "Oh yea, " + sc.n("missy") + " told me what a sissy you were! I've always wanted to have a sissy best friend that I could dress up " +
+            text: sc.n("missy") + " told me what a sissy you were! I've always wanted to have a sissy best friend that I could dress up " +
             "tease, and play with. That's why I brought you here!",
             button: [
                 { chatID: 12, text: "I'm not a sissy...", callback: "t10" },

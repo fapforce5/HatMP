@@ -149,7 +149,7 @@ room910.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "me",
-            text: "I love it! " + sc.n("me") + " is so much for fitting!",
+            text: "I love it! " + sc.n("me") + " is so much more fitting!",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

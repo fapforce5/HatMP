@@ -291,7 +291,7 @@ room25.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "eva",
-            text: "Yea, we were talking about what a big ol' butt head you are!",
+            text: "Yeah, we were talking about what a big ol' butt head you are!",
             button: [
                 { chatID: 13, text: "Me?", callback: "" }
             ]
@@ -333,7 +333,7 @@ room25.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "eva",
-            text: "Yea, she didn't even get mad at me when she caught me sneaking in after dark. Thanks for taking one for the team!",
+            text: "Yeah, she didn't even get mad at me when she caught me sneaking in after dark. Thanks for taking one for the team!",
             button: [
                 { chatID: 17, text: "Sure " + sc.n('eva'), callback: "" }
             ]
@@ -341,7 +341,7 @@ room25.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "lola",
-            text: "Hahah yea, you're so lucky " + sc.n('eva') + ". We're going to head out. I know great things will happen for you " +
+            text: "Hahah yeah, you're so lucky " + sc.n('eva') + ". We're going to head out. I know great things will happen for you " +
                 sc.n("me") + ".",
             button: [
                 { chatID: -1, text: "Thanks " + sc.n("lola") +". ", callback: "passTimeLE" }
@@ -376,7 +376,7 @@ room25.chat = function (chatID) {
             speaker: "eva",
             text: "You kow who needs a good massage, Lola. She's been whining ever since Jamie dumped her.",
             button: [
-                { chatID: 22, text: "Yea, Jamie is such an ass.", callback: "" }
+                { chatID: 22, text: "Yeah, Jamie is such an ass.", callback: "" }
             ]
         },
         {
@@ -399,7 +399,7 @@ room25.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "lola",
-            text: "Yea, I really thought he was the one, but I guess not.",
+            text: "I really thought he was the one, but I guess not.",
             button: [
                 { chatID: 25, text: "You'll find the guy, you just have to keep looking.", callback: "" },
                 { chatID: 27, text: "I'm the guy you've been looking for.", callback: "" }
@@ -416,7 +416,7 @@ room25.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "eva",
-            text: "Yea, lets head out",
+            text: "Lets head out",
             button: [
                 { chatID: 26, text: "...", callback: "" }
             ]
@@ -441,7 +441,7 @@ room25.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "lola",
-            text: "Yea, I've only drank twice before, and only " + sc.n("eva") + " knows about what happened one of those times.",
+            text: "I've only drank twice before, and only " + sc.n("eva") + " knows about what happened one of those times.",
             button: [
                 { chatID: 30, text: "Oh really, what happened?", callback: "" }
             ]

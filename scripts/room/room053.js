@@ -531,8 +531,8 @@ room53.chat = function (chatID) {
             speaker: "candy",
             text: "Oh yeah, I've been saving it all day and I know you'll love it! Do you know " + sc.n("chad") + "?",
             button: [
-                { chatID: 21, text: "Oh yea, I know him. He's kinda a dick", callback: "" },
-                { chatID: 22, text: "Oh yea, he's so dreamy..", callback: "" }
+                { chatID: 21, text: "I know him. He's kinda a dick", callback: "" },
+                { chatID: 22, text: "He's so dreamy..", callback: "" }
             ]
         },
         {

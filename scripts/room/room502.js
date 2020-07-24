@@ -422,7 +422,7 @@ room502.chat = function (chatID) {
             speaker: "zoey",
             text: "She kicked you out at this time of night?",
             button: [
-                { chatID: 6, text: "Yea, she was mad I didn't pay her.", callback: "" }
+                { chatID: 6, text: "She was mad I didn't pay her.", callback: "" }
             ]
         },
         {
@@ -561,7 +561,7 @@ room502.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "zoey",
-            text: "Oh fuck yea, I am almost there! Keep going!!",
+            text: "Oh fuck yeah, I am almost there! Keep going!!",
             button: [
                 { chatID: 23, text: sc.n("zoey") + "! " + sc.n("chloe") + " is cheating on you! I found proof!", callback: "" }
             ]
@@ -610,7 +610,7 @@ room502.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "chloe",
-            text: "But.... yea, I'm not going to apologize for being me, we never said we were exclusive. If you want to " +
+            text: "But.... I'm not going to apologize for being me, we never said we were exclusive. If you want to " +
                 "break up, fine, but I'm the best you'll ever have.",
             button: [
                 { chatID: 29, text: "Whatever! You... ", callback: "" }

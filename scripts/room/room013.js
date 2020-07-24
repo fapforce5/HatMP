@@ -906,7 +906,7 @@ room13.chat = function (chatID) {
             chatID: 38,
             speaker: "lola",
             text: "Slow down " + sc.n("eva") + ". How about we play a game? How about spin the bottle? I've always wanted to play, but no one's ever " +
-                "invited to to play with them.",
+                "invited me to play with them.",
             button: [
                 { chatID: 39, text: "Sounds like fun, are you in " + sc.n("eva") + "?", callback: "" }
             ]
@@ -964,7 +964,7 @@ room13.chat = function (chatID) {
             chatID: 45,
             speaker: "eva",
             text: "I've always wanted to see what it's like to get my toes sucked. If you take off your shirt I'll let " +
-                "you suck them. I know a pervert like you wants to like my toes",
+                "you suck them. I know a pervert like you wants to taste my toes",
             button: [
                 { chatID: 46, text: "Don't you think it will be weird to suck your toes in from of " + sc.n('lola'), callback: "" }
             ]
@@ -1046,7 +1046,7 @@ room13.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "lola",
-            text: "Yea, you've been so nice, we thought you deserve a little something extra.",
+            text: "Yeah, you've been so nice, we thought you deserve a little something extra.",
             button: [
                 { chatID: 56, text: "...", callback: "" }
             ]
@@ -1080,7 +1080,7 @@ room13.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "eva",
-            text: "What ever you do just don't cum on me, I've already taken a shower?",
+            text: "Whatever you do, just don't cum on me; I've already taken a shower.",
             button: [
                 { chatID: 60, text: "I promise", callback: "footjob3" }
             ]
@@ -1088,7 +1088,7 @@ room13.chat = function (chatID) {
         {
             chatID: 60,
             speaker: "me",
-            text: "oooOOooo mmmMMMMmmmmmmmmmmmm",
+            text: "oooOOooohh mmmMMMMmmmmmmmmmmmm",
             button: [
                 { chatID: 61, text: "[Cum]", callback: "footjob4" }
             ]
@@ -1367,7 +1367,7 @@ room13.chat = function (chatID) {
         {
             chatID: 94,
             speaker: "eva",
-            text: "OOOoooOOOooooo yyyyyyeeesssssssssssss",
+            text: "OOOoooOOOooooohhh yyyyyyeeesssssssssssss",
             button: [
                 { chatID: 95, text: "....", callback: "" }
             ]
@@ -1384,7 +1384,7 @@ room13.chat = function (chatID) {
         {
             chatID: 96,
             speaker: "eva",
-            text: "ooOOooo OOOooooooooooooooooo fuck! I'm cumming, can you feel my pussy tighten around your tongue? Fuck you are good!",
+            text: "ooOOooohhh OOOooooooooooooooooohhh fuck! I'm cumming, can you feel my pussy tighten around your tongue? Fuck you are good!",
             button: [
                 { chatID: 97, text: "...", callback: "" }
             ]
@@ -1408,7 +1408,7 @@ room13.chat = function (chatID) {
         {
             chatID: 99,
             speaker: "eva",
-            text: "ooOOooo OOOooooooooooooooooo fuuuuuuuck! I'm cumming!",
+            text: "ooOOooohhh OOOooooooooooooooooohhh fuuuuuuuck! I'm cumming!",
             button: [
                 { chatID: 100, text: "...", callback: "peek2" }
             ]

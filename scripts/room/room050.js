@@ -164,7 +164,7 @@ room50.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "You two are really hitting it off. I guess I could give you two some alone time.... Oh yea, I forgot " + sc.n("candy") + " wanted " +
+            text: "You two are really hitting it off. I guess I could give you two some alone time.... Oh yeah, I forgot " + sc.n("candy") + " wanted " +
                 "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + g.get("girlname") + " home. ",
             button: [
                 { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "followtif" }

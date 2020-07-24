@@ -446,7 +446,7 @@ room24.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "lola",
-            text: "Shit up " + sc.n("eva") + "! No one knows that! I really hope it land on your THIS time!",
+            text: "Shut up " + sc.n("eva") + "! No one knows that! I really hope it land on you THIS time!",
             button: [
                 { chatID: 16, text: "...", callback: "topbg evaTop lolaTop" }
             ]
@@ -510,8 +510,8 @@ room24.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "eva",
-            text: sc.n('chad') + " isn't smart enough to use the internet and " + sc.n("me") + " would never do that to you " +
-                " would you " + sc.n("me") + "?",
+            text: sc.n('chad') + " isn't smart enough to use the internet and " + sc.n("me") + " would never do that to you. " +
+                " Would you " + sc.n("me") + "?",
             button: [
                 { chatID: 23, text: "No, I would never do that", callback: "evaSit lolaTalk" }
             ]
@@ -625,7 +625,7 @@ room24.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "eva",
-            text: "Yea, you big chicken. I was hoping to see what you're packing down there. ",
+            text: "Yeah, you big chicken. I was hoping to see what you're packing down there. ",
             button: [
                 { chatID: 37, text: "...", callback: "lolaTalk evaSit" }
             ]
@@ -832,7 +832,7 @@ room24.chat = function (chatID) {
         {
             chatID: 61,
             speaker: "lola",
-            text: "Haha yea, this game needed some excitement.",
+            text: "Haha yeah, this game needed some excitement.",
             button: [
                 { chatID: 62, text: "...", callback: "topbg evaTop lolaTop" }
             ]
@@ -866,7 +866,7 @@ room24.chat = function (chatID) {
         {
             chatID: 65,
             speaker: "lola",
-            text: "My secret is that its my fantasy is to be felt up while I sleep. He'll gently slide my clothes off " +
+            text: "My secret fantasy is to be felt up while I sleep. He'll gently slide my clothes off " +
                 "baring my body for him. Then he'll run his hands over my body, starting with my breasts before he glides his" +
                 "powerful hands down my stomach to my... ",
             button: [
@@ -876,7 +876,7 @@ room24.chat = function (chatID) {
         {
             chatID: 66,
             speaker: "eva",
-            text: "OK " + sc.n("lola") + "! We get it you're secretly a slut, just spin the bottle!",
+            text: "OK " + sc.n("lola") + "! We get it! You're secretly a slut, just spin the bottle!",
             button: [
                 { chatID: 67, text: "...", callback: "topbg evaTop lolaTop" }
             ]
@@ -900,8 +900,8 @@ room24.chat = function (chatID) {
         {
             chatID: 69,
             speaker: "eva",
-            text: "OK, I'll admit it, I have the same fantasy too. Waking up to my clit being licked while he slides a finger " +
-                "into butthole. I'm starting to get wet just thinking about it! ",
+            text: "OK, I'll admit it, I have the same fantasy, too. Waking up to my clit being licked while he slides a finger " +
+                "into butthole... I'm starting to get wet just thinking about it! ",
             button: [
                 { chatID: 70, text: "...", callback: "evaSit lolaTalk" }
             ]
@@ -909,7 +909,7 @@ room24.chat = function (chatID) {
         {
             chatID: 70,
             speaker: "lola",
-            text: "I know! Sometimes I wake up soaking because I dream someone what playing with me while I sleep!",
+            text: "I know! Sometimes I'll wake up soaking, because I dreamed someone was playing with me while I slept!",
             button: [
                 { chatID: 71, text: "...", callback: "topbg evaTop lolaTop" }
             ]
@@ -975,7 +975,7 @@ room24.chat = function (chatID) {
         {
             chatID: 78,
             speaker: "lola",
-            text: "Oh my. Well I've always wondered what kind of kisser your are " + sc.n("me") + ". ",
+            text: "Oh my. Well, I've always wondered what kind of kisser your are, " + sc.n("me") + ". ",
             button: [
                 { chatID: 79, text: "...", callback: "bg evaSit lolaKiss" }
             ]
@@ -1049,7 +1049,7 @@ room24.chat = function (chatID) {
         {
             chatID: 87,
             speaker: "lola",
-            text: "Yea, I'm starting to get tired too. One last spin.",
+            text: "Yeah, I'm starting to get tired too. One last spin.",
             button: [
                 { chatID: 88, text: "...", callback: "topbg evaTop lolaTop" }
             ]

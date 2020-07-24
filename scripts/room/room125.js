@@ -741,7 +741,7 @@ room125.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "jimmy",
-            text: "Yea, see you tonight babe!",
+            text: "See you tonight babe!",
             button: [
                 { chatID: -1, text: "...", callback: "jada4" }
             ]

@@ -151,7 +151,7 @@ room405.chat = function (chatID) {
             speaker: "red",
             text: "Hay honey! You know I can't do a lot with a bald head?",
             button: [
-                { chatID: -1, text: "Oh yea, I'm such an air head!", callback: "" }
+                { chatID: -1, text: "I'm such an air head!", callback: "" }
             ]
         },
         {

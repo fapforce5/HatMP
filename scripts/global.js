@@ -379,7 +379,7 @@ g.rooms = [
     { roomID: 600, name: "For Testing", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
 
     { roomID: 650, name: "The Toy Store", image: "650_toyStore/650_front.jpg", nightImage: "650_toyStore/650_front.jpg", houseID: 650, btn: "roomBtn_650.png" },
-    { roomID: 651, name: "Hallway", image: "651_wackHallway/651_hallway.png", nightImage: "651_wackHallway/651_hallway.png", houseID: 650, btn: "roomBtn_651.png" },
+    { roomID: 651, name: "Hallway", image: "651_wackHallway/651_hallway.jpg", nightImage: "651_wackHallway/651_hallway.jpg", houseID: 650, btn: "roomBtn_651.png" },
     { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.png", nightImage: "661_peephole/661_backroom.png", houseID: 650, btn: "roomBtn_661.png" },
 
     { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },

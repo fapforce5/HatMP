@@ -122,7 +122,7 @@ room552.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "treyvon",
-            text: "I see you're a horny sock slut, you like looking at a big juicy cock?",
+            text: "I see you're a horny cock slut, you like looking at a big juicy cock?",
             button: [
                 { chatID: 5, text: "I do", callback: "" },
                 { chatID: 6, text: "I don't know why I did that", callback: "" }

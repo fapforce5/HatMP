@@ -151,7 +151,7 @@ room550.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "chad",
-            text: "Yea, just get me a picture of " + sc.n('lola') + "'s naked tits and the gym pass is yours, " +
+            text: "Just get me a picture of " + sc.n('lola') + "'s naked tits and the gym pass is yours, " +
                 "or pay me $500, the choice is yours.",
             button: [
                 { chatID: -1, text: "...", callback: "chadInit" }

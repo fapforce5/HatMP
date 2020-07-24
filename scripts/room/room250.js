@@ -815,7 +815,7 @@ room250.chat = function (chatID) {
             speaker: "spanky",
             text: "Soooooo, are you cool, man?",
             button: [
-                { chatID: 30, text: "uh.. yea, sure", callback: "" }
+                { chatID: 30, text: "uh.. yeah, sure", callback: "" }
             ]
         },
         {
@@ -825,7 +825,7 @@ room250.chat = function (chatID) {
             "I'll sell some to you if you come by. My guy says to just take one a day, for you I'll give you a good deal " +
                 "cool?",
             button: [
-                { chatID: 34, text: "yea, cool", callback: "" },
+                { chatID: 34, text: "Cool", callback: "" },
                 { chatID: 31, text: "Tell me more about these pills", callback: "" }
             ]
         },
@@ -858,7 +858,7 @@ room250.chat = function (chatID) {
             text: "He starts moaning like a bitch in heat, so I'm like, what the hell and press my finger into his butthole and he's all " +
             "like twerking on my finger, so I go what the hell and whip out my dick. This crazy bitch drops down and starts sucking my " +
             "dick then turns around and shoves it right in his ass hole, no lube or nothin, just shoves it in and start fucking me like " +
-            "I'm the last dick on earth. That bitch was the best fuck I ever had. So yea, if you want them pills I got some",
+            "I'm the last dick on earth. That bitch was the best fuck I ever had. If you want them pills I got some",
             button: [
                 { chatID: 34, text: "oh..", callback: "" }
             ]
@@ -916,7 +916,7 @@ room250.chat = function (chatID) {
             text: "I know, he keeps insisting we change in front of him! I thought" + sc.n("dolly") + " was going to puch him! " +
             "Of course none of us ever change with him in the room, you would have to be a total spineless slut to do that!",
             button: [
-                { chatID: 40, text: "Yea, I would never change in front of him!", callback: "" },
+                { chatID: 40, text: "I would never change in front of him!", callback: "" },
                 { chatID: 37, text: "I didn't know I had a choice! I totally changed in front of him.", callback: "hollymad" }
             ]
         },
@@ -1009,7 +1009,7 @@ room250.chat = function (chatID) {
             text: "I was just chattin with " + sc.n("holly") + " and she was sayin you was the boy that had the little incident " +
             "here the other day. Bless my heart I wouldn't have the gumption to show my face to the world if that happened to me!",
             button: [
-                { chatID: 49, text: "Oh, yea, well I really need the money for rent ", callback: "" },
+                { chatID: 49, text: "Well I really need the money for rent ", callback: "" },
                 { chatID: 47, text: "What? You're not wearing any panties..", callback: "dollymad" },
                 { chatID: 47, text: "I have the gumption to show it to you if you want", callback: "dollymad" }
             ]
@@ -1083,7 +1083,7 @@ room250.chat = function (chatID) {
             speaker: "molly",
             text: "Aw shit, you're that new chick with a dick!",
             button: [
-                { chatID: 57, text: "Yea, you want to play with it?", callback: "" },
+                { chatID: 57, text: "Yeah, you want to play with it?", callback: "" },
                 { chatID: 56, text: "Oh my, that's rather bold", callback: "mollymad" },
                 { chatID: 56, text: "Yes, I'm the new girl here. I'm so excitied to work here", callback: "mollymad" }
             ]

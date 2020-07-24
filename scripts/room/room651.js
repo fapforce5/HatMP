@@ -19,38 +19,29 @@ room651.main = function () {
             {
                 "type": "btn",
                 "name": "door1",
-                "left": 832,
-                "top": 356,
-                "width": 72,
-                "height": 340,
+                "left": 676,
+                "top": 353,
+                "width": 121,
+                "height": 487,
                 "image": "651_wackHallway/door1.png"
             },
             {
                 "type": "btn",
                 "name": "door2",
                 "left": 914,
-                "top": 294,
-                "width": 120,
-                "height": 458,
+                "top": 163,
+                "width": 261,
+                "height": 903,
                 "image": "651_wackHallway/door2.png"
             },
             {
                 "type": "btn",
                 "name": "door3",
-                "left": 1059,
-                "top": 167,
-                "width": 242,
-                "height": 698,
-                "image": "651_wackHallway/door3.png"
-            },
-            {
-                "type": "btn",
-                "name": "door4",
-                "left": 1355,
+                "left": 1397,
                 "top": 0,
-                "width": 565,
+                "width": 523,
                 "height": 1080,
-                "image": "651_wackHallway/door4.png"
+                "image": "651_wackHallway/door3.png"
             }
         ];
         var navList = [650];
@@ -66,7 +57,6 @@ room651.btnclick = function (name) {
         case "door1":
         case "door2":
         case "door3":
-        case "door4":
             chat(0, 651);
             break;
         default:
@@ -133,7 +123,7 @@ room651.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "tiffany",
-            text: "Oh yea, I remember it was always so weirdly thin and runny, and every time he came he always " +
+            text: "I remember it was always so weirdly thin and runny, and every time he came he always " +
                 "made shooter pistols with his fingers... Bryce was a weird dude.",
             button: [
                 { chatID: 6, text: "....", callback: "" }
@@ -142,7 +132,7 @@ room651.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "candy",
-            text: "Oh yea, but he knew how to work it, it's the only reason I would sleep with him. That and his big pecs. So " +
+            text: "But he knew how to work it, it's the only reason I would sleep with him. That and his big pecs. So " +
                 "is this the guy that's going to watch for the booths for us?",
             button: [
                 { chatID: 7, text: "....", callback: "" }
@@ -151,7 +141,7 @@ room651.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "Yea, " + sc.n("missy") + " sent him over. I'm going to take him to the back so he can watch the booths. ",
+            text: "Yeah, " + sc.n("missy") + " sent him over. I'm going to take him to the back so he can watch the booths. ",
             button: [
                 { chatID: -1, text: "[Follow " + sc.n("tiffany") + " behind the Employee's Only' Door]", callback: "onDuty" }
             ]

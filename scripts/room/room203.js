@@ -403,7 +403,7 @@ room203.chat = function (chatID) {
             speaker: "cecilia",
             text: "Sorry, Missy said 'no panties, no enter.' ",
             button: [
-                { chatID: -1, text: "Oh yea, I guess I'll get a pair.", callback: "leave" }
+                { chatID: -1, text: "I guess I'll get a pair.", callback: "leave" }
             ]
         },
         {
@@ -439,7 +439,7 @@ room203.chat = function (chatID) {
             text: "You're getting a little hairy " + sc.n("me") + ". " + sc.n("missy") + " isn't going to like that. You " +
                 "need to go home and shave that nasty body hair all off.",
             button: [
-                { chatID: -1, text: "Oh yea, I guess I'll go and shave.", callback: "leave" }
+                { chatID: -1, text: "I guess I'll go and shave.", callback: "leave" }
             ]
         },
         {
@@ -481,7 +481,7 @@ room203.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "cecilia",
-            text: "Oh yea, shoot it in my mouth!",
+            text: "Shoot it in my mouth!",
             button: [
                 { chatID: 26, text: "CUM", callback: "handjobcum" }
             ]

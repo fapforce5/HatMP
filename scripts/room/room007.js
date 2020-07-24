@@ -310,8 +310,8 @@ room7.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "eva",
-            text: sc.n("me") + "Holy crap " + sc.n("me") + "! You're hairier than a furball, if you want to get " +
-                "the ladies you need to knock some of that off with a week wacker. ",
+            text: "Holy crap " + sc.n("me") + "! You're hairier than a furball, if you want to get " +
+                "the ladies you need to knock some of that off with a weed wacker. ",
             button: [
                 { chatID: 18, text: "Wha... do girls really not like a hairy guy? ", callback: "" }
             ]
@@ -319,8 +319,8 @@ room7.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "eva",
-            text: sc.n("me") + "Gross, no. There's nothing worse than running your tongue down someone's chest " +
-                "and getting a mouthful of hair. Don't be gross butthead, shave that shag carpeting off.",
+            text: sc.n("me") + " Gross, no. There's nothing worse than running your tongue down someone's chest " +
+                "and getting a mouthful of hair. Don't be gross, butthead, shave that shag carpeting off.",
             button: [
                 { chatID: 15, text: "Thanks for the tip Eva.", callback: "shave" }
             ]

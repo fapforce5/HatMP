@@ -307,7 +307,7 @@ room450.chat = function(chatID){
         {
             chatID: 7,
             speaker: "cop",
-            text: "Yea, the bench is all yours",
+            text: "The bench is all yours",
             button: [
                 { chatID: -1, text: "Thanks.", callback: "killCop" }
             ]
@@ -359,7 +359,7 @@ room450.chat = function(chatID){
             text: "Hello again friend. Meet us naked, in the forest so we can share our love. Only the nude body can " +
                 "can receive the gifts of our creator. ",
             button: [
-                { chatID: -1, text: "Yea, sure", callback: "cultLeave2" }
+                { chatID: -1, text: "Sure", callback: "cultLeave2" }
             ]
         },
         {
