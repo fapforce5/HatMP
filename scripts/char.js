@@ -196,6 +196,22 @@ char.newday = function (sendingRoom) {
     return retData;
 };
 
+char.newdayfake = function () {
+    if (g.dt.getHours() > 6)
+        g.dt.setDate(g.dt.getDate() + 1);
+    g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
+
+    g.newday();
+    nav.buildclock();
+    cl.hairgrowth();
+    g.set("energy", 10);
+    g.set("jobConstWorkToday", 0);
+    g.mod('hormone', -2);
+    cl.energydisplay();
+    g.set("arousal", 0);
+    cl.cockDisplay();
+}
+
 char.settime = function (newTimeHour, newTimeMinute) {
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), newTimeHour, newTimeMinute, 0, 0);
     nav.buildclock();

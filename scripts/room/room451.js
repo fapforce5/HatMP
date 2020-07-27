@@ -213,6 +213,14 @@ room451.chat = function(chatID){
             speaker: "cecilia",
             text: "Oh " + sc.n("me") + ", I'm so happy you're here. Want to shove you cock down my throat?",
             button: [
+                { chatID: 8, text: "Yes I do ", callback: "bj2" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "cecilia",
+            text: "Shove it in, and don't be nice.",
+            button: [
                 { chatID: -1, text: "Yes I do ", callback: "reloadRoom" }
             ]
         },

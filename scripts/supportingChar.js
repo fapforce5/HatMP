@@ -31,7 +31,8 @@ sc.char = [
     { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, max: 0, show: false, setName: false },
     { name: "fighttrans", display: "Bad Motherfucker", image: "fightTrans.png", step: 0, max: 0, show: false, setName: false },
     { name: "cult", display: "Cult", image: "cult.png", step: 0, max: 0, show: false, setName: false },
-    { name: "cultjgirl", display: "Cult Member", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false },
+    { name: "cultboy", display: "Cult", image: "cult_j_b.png", step: 0, max: 0, show: false, setName: false },
+    { name: "cultjgirl", display: "Cult", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false },
     { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false },
     { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, max: 0, show: false, setName: false },
     { name: "holly", display: "Holly", image: "holly.png", step: 0, max: 0, show: false, setName: false },
@@ -44,6 +45,7 @@ sc.char = [
     { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false },
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false },
+    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
 ];
 
