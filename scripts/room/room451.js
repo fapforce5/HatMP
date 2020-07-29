@@ -67,7 +67,7 @@ room451.btnclick = function (name) {
         case "stall2":
             nav.killall();
             nav.bg("451_parkMensRoom/gloryHoleInsert.jpg");
-            if (g.dt.getDay() === 0 || g.dt.getDay() === 6) {
+            if ((g.dt.getDay() === 0 || g.dt.getDay() === 6) && g.hourBetween(8, 17)) {
                 nav.button({
                     "type": "btn",
                     "name": "insert_1",
@@ -130,9 +130,68 @@ room451.btnclick = function (name) {
         case "gloryhole":
             chat(2, 451);
             break;
-        case "bj2":
-            nav.bg("451_parkMensRoom/bj2.jpg");
+        case "bj4":
+            nav.killbutton("bj4");
+            nav.button({
+                "type": "img",
+                "name": "bjx",
+                "left": 725,
+                "top": 103,
+                "width": 890,
+                "height": 874,
+                "image": "451_parkMensRoom/bj3.png"
+            }, 451);
+            nav.button({
+                "type": "btn",
+                "name": "bj5",
+                "left": 975,
+                "top": 840,
+                "width": 405,
+                "height": 905,
+                "image": "451_parkMensRoom/cock.png"
+            }, 451);
             break;
+        case "bj5":
+            nav.killbutton("bj5");
+            nav.button({
+                "type": "btn",
+                "name": "bj6",
+                "left": 975,
+                "top": 770,
+                "width": 405,
+                "height": 905,
+                "image": "451_parkMensRoom/cock.png"
+            }, 451);
+            break;
+        case "bj6":
+            nav.killbutton("bj6");
+            nav.button({
+                "type": "btn",
+                "name": "bj7",
+                "left": 975,
+                "top": 680,
+                "width": 405,
+                "height": 905,
+                "image": "451_parkMensRoom/cock.png"
+            }, 451);
+            break;
+        case "bj7":
+            nav.killbutton("bj7");
+            nav.killbutton("bjx");
+            nav.bg("451_parkMensRoom/bj0.jpg");
+            nav.button({
+                "type": "img",
+                "name": "bj8",
+                "left": 665,
+                "top": 0,
+                "width": 1017,
+                "height": 1080,
+                "image": "451_parkMensRoom/bj8.gif"
+            }, 451);
+            g.roomTimeout = setTimeout(function () { chat(10, 451); }, 3000);
+            
+            break;
+      
         default:
             break;
     }
@@ -149,6 +208,52 @@ room451.chatcatch = function (callback) {
             cl.c.makeup = "n";
             cl.displayMirror();
             cl.display();
+            break;
+        case "bj2":
+            nav.bg("451_parkMensRoom/bj2.jpg");
+            break;
+        case "bj3":
+            if (cl.c.chastity === null) {
+                nav.button({
+                    "type": "btn",
+                    "name": "bj4",
+                    "left": 725,
+                    "top": 103,
+                    "width": 890,
+                    "height": 874,
+                    "image": "451_parkMensRoom/bj3.png"
+                }, 451);
+            }
+            else {
+                nav.bg("451_parkMensRoom/bj2a.jpg");
+                chat(9, 451);
+            }
+            break;
+        case "bj8":
+            nav.killbutton("bj8");
+            nav.bg("451_parkMensRoom/bj8.jpg");
+            break;
+        case "bj9":
+            nav.button({
+                "type": "img",
+                "name": "bj9",
+                "left": 665,
+                "top": 0,
+                "width": 1017,
+                "height": 1080,
+                "image": "451_parkMensRoom/bj9.gif"
+            }, 451);
+            g.roomTimeout = setTimeout(function () { chat(12, 451); }, 2400);
+            break;
+        case "bj10":
+            nav.killbutton("bj9");
+            nav.bg("451_parkMensRoom/bj10.jpg");
+            break;
+        case "bj11":
+            char.addtime(60);
+            g.mod("receiveOralMale", 1);
+            cl.doCum(false);
+            char.room(451);
             break;
         default:
             break;
@@ -205,7 +310,7 @@ room451.chat = function(chatID){
             speaker: "cecilia",
             text: "Hey stanger, I love getting my mouth filled with cock. Can I suck yours?",
             button: [
-                { chatID: 8, text: "Sure, why not", callback: "bj2" }
+                { chatID: 8, text: "huh?", callback: "bj2" }
             ]
         },
         {
@@ -213,7 +318,7 @@ room451.chat = function(chatID){
             speaker: "cecilia",
             text: "Oh " + sc.n("me") + ", I'm so happy you're here. Want to shove you cock down my throat?",
             button: [
-                { chatID: 8, text: "Yes I do ", callback: "bj2" }
+                { chatID: 8, text: "Hmmmm", callback: "bj2" }
             ]
         },
         {
@@ -221,7 +326,48 @@ room451.chat = function(chatID){
             speaker: "cecilia",
             text: "Shove it in, and don't be nice.",
             button: [
-                { chatID: -1, text: "Yes I do ", callback: "reloadRoom" }
+                { chatID: -1, text: "Here it comes", callback: "bj3" },
+                { chatID: -1, text: "Oh, I'd rather not.", callback: "reloadRoom" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "cecilia",
+            text: "Awww you're all locked up. Maybe later cutie!",
+            button: [
+                { chatID: -1, text: "I guess no blowjob for me.", callback: "reloadRoom" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "cecilia",
+            text: "GLUK GLUK GLUK",
+            button: [
+                { chatID: 11, text: "Cum down her throat", callback: "bj8" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "cecilia",
+            text: "!!!",
+            button: [
+                { chatID: -1, text: "....", callback: "bj9" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "cecilia",
+            text: "GULP",
+            button: [
+                { chatID: 13, text: "....", callback: "bj10" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "cecilia",
+            text: "I love you cum! Thank you sexy!",
+            button: [
+                { chatID: -1, text: "[Finish up]", callback: "bj11" }
             ]
         },
     ];

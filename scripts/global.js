@@ -7,9 +7,9 @@ g.internal = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 7.0;
-g.versionText = "0.7.0 - 18 HUN 2020";
-g.notes = "v0.7.0";
+g.version = 8.0;
+g.versionText = "0.8.0 - 29 JUL 2020";
+g.notes = "v0.8.0";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
@@ -694,6 +694,7 @@ g.initGame = function () {
             case "momchat":
             case "buttholeplay":
             case "reddoor":
+            case "cultrun":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":
