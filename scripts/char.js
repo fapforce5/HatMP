@@ -148,7 +148,7 @@ char.newday = function (sendingRoom) {
     else if (thisTinyPP && cl.c.cock < 5) {
         retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
     }
-    else if (hormoneLevel > 70 && g.get("sissy") > 98) {
+    else if (hormoneLevel > 65 && g.get("sissy") > 95) {
         var tempC = null;
         if (Math.floor(Math.random() * (100 - hormoneLevel)) < 5) {
             g.set("sissy", 0);
@@ -541,7 +541,7 @@ menu.mClick = function (type) {
             break;
         case "time":
             $(".menu-buttonKill").remove();
-            var gr = [0, 8, 10, 11, 16, 50, 52, 55, 100, 450, 500];
+            var gr = [0, 8, 10, 11, 16, 50, 51, 52, 55, 100, 450, 500];
             if (!gr.includes(g.roomID)) {
                 var places = "";
                 $.each(g.rooms, function (i, v) {
@@ -674,6 +674,7 @@ menu.mClick = function (type) {
                 "Merchanto<br/>" +
                 "Orrin <br/>" +
                 "reverseclipse<br/>" +
+                "WendyJ<br/>" +
                 "Wild86willie<br/>" +
                 '</div>');
             break;

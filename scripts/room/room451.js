@@ -111,10 +111,12 @@ room451.btnclick = function (name) {
             }
             break;
         case "mirror":
-            nav.killall();
-            nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
-            cl.displayMirror();
-            chat(3, 451);
+            g.pass = 451;
+            char.room(27);
+            //nav.killall();
+            //nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
+            //cl.displayMirror();
+            //chat(3, 451);
             break;
         case "insert":
             chat(1, 451);

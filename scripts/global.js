@@ -50,6 +50,7 @@ g.st = [
     { n: "painting", t: "", q: "string" },
     { n: "bodyhair", t: 100, q: "zero" },
     { n: "reddoorloc", t: 1, q: "int" },
+    { n: "makeup", t: 0, q: "int"},
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -304,6 +305,7 @@ g.rooms = [
     { roomID: 24, name: "Spin the bottle", image: "24_spinTheBottle/013_spinBG.jpg", nightImage: "24_spinTheBottle/013_spinBG.jpg", houseID: 10, btn: "roomBtn_24.png" },
     { roomID: 25, name: "Dining Room", image: "25_dining/025_diningRoom.jpg", nightImage: "25_dining/025_diningRoomNight.jpg", houseID: 10, btn: "roomBtn_25.png" },
     { roomID: 26, name: "Living Room", image: "26_livingRoom/dayTable.jpg", nightImage: "26_livingRoom/night.jpg", houseID: 10, btn: "roomBtn_25.png" },
+    { roomID: 27, name: "Mirror", image: "12_bathroom/012_brushTeeth.jpg", nightImage: "12_bathroom/012_brushTeeth.jpg", houseID: 10, btn: "roomBtn_25.png" },
 
     { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Living Room", image: "51_livingRoom/livingroom.jpg", nightImage: "51_livingRoom/livingroom.jpg", houseID: 50, btn: "roomBtn_51.png" },
@@ -312,7 +314,8 @@ g.rooms = [
     { roomID: 54, name: "Tiffany's Room", image: "54_tif/tif.jpg", nightImage: "54_tif/tifNight.jpg", houseID: 50, btn: "roomBtn_54.png" },
     { roomID: 55, name: "Hallway", image: "55_hallway/hallway.jpg", nightImage: "55_hallway/hallway.jpg", houseID: 50, btn: "roomBtn_55.png" },
     { roomID: 56, name: "Bathroom", image: "56_bathroom/bathroom.jpg", nightImage: "56_bathroom/bathroom.jpg", houseID: 50, btn: "roomBtn_56.png" },
-    { roomID: 57, name: "Pussy Palace", image: "57_pussyPalace/bathroom.jpg", nightImage: "57_pussyPalace/bathroom.jpg", houseID: 50, btn: "roomBtn_57.png" },
+    { roomID: 57, name: "Pussy Palace", image: "57_pussyPalace/bg.jpg", nightImage: "57_pussyPalace/bg.jpg", houseID: 50, btn: "roomBtn_57.png" },
+    { roomID: 58, name: "Cam Whore", image: "58_camwhore/bg.jpg", nightImage: "58_camwhore/bg.jpg", houseID: 50, btn: "roomBtn_58.png" },
 
     { roomID: 75, name: "Bimbo's House", image: "75_bimbo/house.jpg", nightImage: "75_bimbo/houseNight.jpg", houseID: 75, btn: "roomBtn_75.png" },
     { roomID: 76, name: "Bimbo's Room", image: "76_bimboRoom/room.jpg", nightImage: "76_bimboRoom/roomNight.jpg", houseID: 75, btn: "roomBtn_76.png" },
@@ -347,7 +350,7 @@ g.rooms = [
     { roomID: 401, name: "Purchase", image: "401_purchase/401_buy.jpg", nightImage: "401_purchase/401_buy.jpg", houseID: 400, btn: "roomBtn_401.png" },
     { roomID: 402, name: "Popular Girl", image: "402_mens/interior.jpg", nightImage: "402_mens/interior.jpg", houseID: 400, btn: "roomBtn_402.png" },
     { roomID: 403, name: "Saucy", image: "403_saucy/403_saucy.jpg", nightImage: "403_saucy/403_saucy.jpg", houseID: 400, btn: "roomBtn_402.png" },
-    { roomID: 404, name: "Spanky\'s", image: "404_spankys/404_bodega.jpg", nightImage: "404_spankys/404_bodega.jpg", houseID: 404, btn: "roomBtn_404.png" },
+    { roomID: 404, name: "Spanky's", image: "404_spankys/404_bodega.jpg", nightImage: "404_spankys/404_bodega.jpg", houseID: 404, btn: "roomBtn_404.png" },
     { roomID: 405, name: "Reds", image: "405_reds/405_stylist.jpg", nightImage: "405_reds/405_stylist.jpg", houseID: 400, btn: "roomBtn_402.png" },
     { roomID: 406, name: "I Like Your Eyes", image: "406_eyes/bg.jpg", nightImage: "406_eyes/bg.jpg", houseID: 400, btn: "roomBtn_402.png" },
 
@@ -613,6 +616,9 @@ g.initGame = function () {
             case "maxenergy":
                 g.st[i].t = 100;
                 break;
+            case "map":
+                g.st[i].t = "map_1";
+                break;
             case "rentOwed":
             case "arousal":
             case "rentKnockOff":
@@ -625,7 +631,6 @@ g.initGame = function () {
             case "bodyLevel":
             case "fitnessLevel":
             case "sissyLevel":
-            case "map":
             case "jobConstructionPay":
             case "jobConstWorkToday":
             case "giveOralMale":
@@ -654,6 +659,7 @@ g.initGame = function () {
             case "receiveBoobJob":
             case "giveBoobJob":
             case "shinkCock":
+            case "makeup":
                 g.st[i].t = 0;
                 break;
             case "bodyhair":

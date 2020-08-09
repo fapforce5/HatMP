@@ -12,17 +12,31 @@ room51.main = function () {
         chat(0, 51);
     }
     else {
-        var btnList = [
-            {
+        var navList = [55];
+        var btnList =
+        [{
+            "type": "btn",
+            "name": "hallway",
+            "left": 1033,
+            "top": 268,
+            "width": 260,
+            "height": 437,
+            "image": "51_livingRoom/hallway.png"
+        }];
+        if (sc.tiffany().roomID === 57 || sc.candy().roomID === 57) {
+            btnList.push({
                 "type": "btn",
-                "name": "hallway",
-                "left": 1033,
-                "top": 268,
-                "width": 260,
-                "height": 437,
-                "image": "51_livingRoom/hallway.png"
-            },
-            {
+                "name": "reddooropen",
+                "left": 1664,
+                "top": 214,
+                "width": 250,
+                "height": 603,
+                "image": "51_livingRoom/reddooropen.png"
+            });
+            navList.push(57);
+        }
+        else {
+            btnList.push({
                 "type": "btn",
                 "name": "reddoor",
                 "left": 1664,
@@ -30,13 +44,12 @@ room51.main = function () {
                 "width": 250,
                 "height": 603,
                 "image": "51_livingRoom/reddoor.png"
-            },
-        ];
-
+            });
+        }
         $.each(btnList, function (i, v) {
             nav.button(v, 51);
         });
-        var navList = [55];
+        
         var missingClothing = cl.hasoutfit("public");
 
         if (missingClothing === null)
@@ -56,7 +69,13 @@ room51.btnclick = function (name) {
             char.room(55);
             break;
         case "reddoor":
-            chat(49, 51);
+            if (inv.has('reddoor'))
+                char.room(57);
+            else
+                chat(49, 51);
+            break;
+        case "reddooropen":
+            char.room(57);
             break;
         case "t19":
             chat(30, 51);

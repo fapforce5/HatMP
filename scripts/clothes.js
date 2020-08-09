@@ -446,12 +446,12 @@ cl.lips = [
     { name: "pink", image: "lips_pink.png" },
     { name: "big", image: "lips_big.png" },
     { name: "bigred", image: "lips_big_red.png" },
-    { name: "bigpink", image: "lips_big_purple.png" },
-    { name: "bigpurple", image: "lips_big_pink.png" },
+    { name: "bigpink", image: "lips_big_pink.png" },
+    { name: "bigpurple", image: "lips_big_purple.png" },
     { name: "sb", image: "lips_sb.png" },
     { name: "sbred", image: "lips_sb_red.png" },
-    { name: "sbpink", image: "lips_sb_purple.png" },
-    { name: "sbpurple", image: "lips_sb_pink.png" },
+    { name: "sbpink", image: "lips_sb_pink.png" },
+    { name: "sbpurple", image: "lips_sb_purple.png" },
 ];
 
 cl.eyes = [
@@ -1950,3 +1950,34 @@ cl.clean = function (type) {
 
     cl.display();
 }
+
+cl.lipsize = function () {
+    var thissize = "thin";
+    if (cl.c.lips === "big" || cl.c.lips === "bigred" || cl.c.lips === "bigpink" || cl.c.lips === "bigpurple")
+        thissize = "big";
+    if (cl.c.lips === "sb" || cl.c.lips === "sbred" || cl.c.lips === "sbpink" || cl.c.lips === "sbpurple")
+        thissize = "sb";
+    return thissize;
+};
+
+cl.applyLipstick = function (color) {
+    var thisLip = cl.lipsize();
+    if (color === null || color === "thin" || color === "big" || color === "sb")
+        culor = "nude";
+    switch (color) {
+        case "nude":
+                cl.c.lips = thisLip;
+            break;
+        case "red":
+        case "purple":
+        case "pink":
+            if (thisLip === "thin")
+                cl.c.lips = color;
+            else
+                cl.c.lips = thisLip + color;
+            break;
+        default:
+            console.log("lipNotFound");
+            break;
+    }
+};

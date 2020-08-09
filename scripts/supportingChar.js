@@ -67,6 +67,7 @@ sc.flag = [
 ];
 
 sc.events = [
+    { name: "me", step: -12, txt: "Can wear makeup", img: "", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -11, txt: "Free to roam as a girl", img: "", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -10, txt: "Stretch Butthole bigger than 1", img: "", show: false, row: 1, col: 5, ach: false, major: false },
     { name: "me", step: -9, txt: "Give Blowjobs", img: "plug", show: false, row: 1, col: 5, ach: false, major: false },
@@ -117,6 +118,7 @@ sc.events = [
     { name: "zoey", step: 23, txt: "Need some space", img: "zoeyLock", show: true, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 24, txt: "transformation", img: "", show: false, row: 0, col: 4, ach: false, major: false },
 
+    { name: "missy", step: -2, txt: "Red Challenge Case Complete", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: -1, txt: "Red Challenge Complete", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 0, txt: "Not applied yet.", img: "pc", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 1, txt: "Get Private Investigator's license and interview.", img: "pi_lic", show: true, row: 0, col: 0, ach: false, major: false },
@@ -143,6 +145,7 @@ sc.events = [
     { name: "missy", step: 24, txt: "Begin Red Room", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 25, txt: "All Challenges Complete?", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "tiffany", step: -7, txt: "Pink Pussy First Time", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -6, txt: "Return Trip", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -5, txt: "Peeked during show", img: "dildo", show: true, row: 1, col: 1, ach: false, major: true },
     { name: "tiffany", step: -4, txt: "Fell asleep", img: "nap", show: true, row: -1, col: 1, ach: false, major: true },
@@ -786,50 +789,60 @@ sc.tiffany = function () {
         case 1: //monday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = -1; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 20))
-                r = 50; //living room
-            else if (hour.between(20, 24))
+            else if (hour.between(17, 19))
+                r = 57; //living room
+            else if (hour.between(19, 24))
                 r = 54;
             break;
         case 2: //tuesday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = 53; //bathroom
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 19))
-                r = 50; //living room
+            else if (hour.between(17, 19))
+                r = 57; //living room
             else if (hour.between(19, 24))
                 r = 54;
             break;
         case 3: //wednesday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 16))
+            if (hour.between(7, 8))
+                r = 53; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(16, 17))
-                r = 50; //living room
-            else if (hour.between(17, 24))
+            else if (hour.between(17, 19))
+                r = 57; //living room
+            else if (hour.between(19, 24))
                 r = 54;
             break;
         case 4: //thursday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = -1; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 20))
-                r = 50; //living room
-            else if (hour.between(20, 24))
+            else if (hour.between(17, 19))
+                r = 57; //living room
+            else if (hour.between(19, 24))
                 r = 54;
             break;
         case 5: //friday
             if (hour.between(0, 7))
                 r = 54; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = 53; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 19))
-                r = 50; //living room
+            else if (hour.between(17, 19))
+                r = 57; //living room
             else if (hour.between(19, 24))
                 r = 54;
             break;
@@ -865,50 +878,60 @@ sc.candy = function () {
         case 1: //monday
             if (hour.between(0, 7))
                 r = 53; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = 53; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 20))
-                r = 50; //living room
-            else if (hour.between(20, 24))
+            else if (hour.between(17, 19))
+                r = 57; //living room
+            else if (hour.between(19, 24))
                 r = 53;
             break;
         case 2: //tuesday
             if (hour.between(0, 7))
+                r = -1; //room
+            if (hour.between(7, 8))
                 r = 53; //room
-            else if (hour.between(7, 18))
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 19))
-                r = 50; //living room
+            else if (hour.between(17, 19))
+                r = 57; //living room
             else if (hour.between(19, 24))
                 r = 53;
             break;
         case 3: //wednesday
             if (hour.between(0, 7))
                 r = 53; //room
-            else if (hour.between(7, 16))
+            if (hour.between(7, 8))
+                r = 53; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(16, 17))
-                r = 50; //living room
-            else if (hour.between(17, 24))
+            else if (hour.between(17, 19))
+                r = 57; //living room
+            else if (hour.between(19, 24))
                 r = 53;
             break;
         case 4: //thursday
             if (hour.between(0, 7))
                 r = 53; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = 53; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 20))
-                r = 50; //living room
-            else if (hour.between(20, 24))
+            else if (hour.between(17, 19))
+                r = 57; //living room
+            else if (hour.between(19, 24))
                 r = 53;
             break;
         case 5: //friday
             if (hour.between(0, 7))
                 r = 53; //room
-            else if (hour.between(7, 18))
+            if (hour.between(7, 8))
+                r = -1; //room
+            else if (hour.between(8, 17))
                 r = 650;  //toystore
-            else if (hour.between(18, 19))
-                r = 50; //living room
+            else if (hour.between(17, 19))
+                r = 57; //living room
             else if (hour.between(19, 24))
                 r = 53;
             break;

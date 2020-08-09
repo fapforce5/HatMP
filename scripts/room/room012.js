@@ -220,10 +220,12 @@ room12.btnclick = function (name) {
             }
             break;
         case "mirror":
-            nav.killall();
-            nav.bg("12_bathroom/012_brushTeeth.jpg", "12_bathroom/012_brushTeeth.jpg");
-            cl.displayMirror();
-            chat(13, 12);
+            g.pass = 12;
+            char.room(27);
+            //nav.killall();
+            //nav.bg("12_bathroom/012_brushTeeth.jpg", "12_bathroom/012_brushTeeth.jpg");
+            //cl.displayMirror();
+            //chat(13, 12);
             break;
         default:
             break;

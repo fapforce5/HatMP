@@ -33,6 +33,10 @@ room54.btnclick = function (name) {
                         chat(3, 54);
                     else if (tifstep === 17)
                         chat(13, 54);
+                    else if (tifstep === 18)
+                        chat(26, 54);
+                    else if (tifstep > 18)
+                        chat(32, 54);
                     else
                         chat(2, 54);
                 }
@@ -117,11 +121,51 @@ room54.chatcatch = function (callback) {
             g.mod("receiveAnalFemale", 1);
             cl.c.butthole += .2;
             char.addtime(60);
-            sc.setstep("tiffany", 17);
+            sc.setstep("tiffany", 18);
             g.setflag("tiffanyDayEvent");
             sc.setstep("me", -8);
             inv.add("pinkDildo");
             char.room(54);
+            break;
+        case "p1":
+            nav.kill();
+            nav.bg("51_livingRoom/livingroom.jpg");
+            nav.button({
+                "type": "img",
+                "name": "tif",
+                "left": 711,
+                "top": 0,
+                "width": 638,
+                "height": 1080,
+                "image": "54_tif/tif2.png"
+            }, 54);
+            break;
+        case "p2":
+            nav.bg("57_pussyPalace/bg.jpg");
+            break;
+        case "p3":
+            nav.killbutton("tif");
+            nav.button({
+                "type": "img",
+                "name": "tif",
+                "left": 711,
+                "top": 28,
+                "width": 690,
+                "height": 1052,
+                "image": "54_tif/tif3.png"
+            }, 54);
+            break;
+        case "p4":
+            nav.killbutton("tif");
+            nav.bg("57_pussyPalace/p4.jpg");
+            break;
+        case "p5":
+            g.pass = -1;
+            char.room(27);
+            break;
+        case "iMakeup":
+            g.pass = -2;
+            char.room(27);
             break;
         default:
             console.log("invalid callback: " + callback);
@@ -340,6 +384,67 @@ room54.chat = function (chatID) {
             "some toys!",
             button: [
                 { chatID: -1, text: "Sweet! thank you so much!", callback: "b11" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "tiffany",
+            text: "Oh my you must really love me, or you just want me to play with you some more.",
+            button: [
+                { chatID: 27, text: "Oh.. I love you, but I also want to play some more.", callback: "" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "tiffany",
+            text: "Hahaha, lets keep playing my favorite game: Make you into a pretty little girl. Follow me.",
+            button: [
+                { chatID: 28, text: "Oh, ok", callback: "p1" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "tiffany",
+            text: sc.n("candy") + " and I have our cam room and makeup room behind this door. We keep it locked because some " +
+                "pervert broke into our house and masturbated all over our bed. It would have been hot if he wasn't so homeless looking. " +
+            "The old gross pervert still grosses me out. Lets go in.",
+            button: [
+                { chatID: 29, text: "...", callback: "p2" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "tiffany",
+            text: "This is the Pussy Palace. In the middle is where we put on our cam shows and on the right is where we keep all our " +
+            "makeup. You're free to use any of it to make yourself pretty. Have you ever put on your own makeup?",
+            button: [
+                { chatID: 30, text: "On, no, I haven't", callback: "p3" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "tiffany",
+            text: "WHAT!! How have you never put on your own makeup! Take a seat honey, we're going to teach you how to make yourself " +
+            "into a pretty girl!",
+            button: [
+                { chatID: 31, text: "Well...", callback: "p4" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "tiffany",
+            text: "Come here, I'll teach you how to make yourself a pretty girl. ",
+            button: [
+                { chatID: -1, text: "....", callback: "p5" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "tiffany",
+            text: "Did you want me to show you how to improve your makeup?",
+            button: [
+                { chatID: -1, text: "Yes I do", callback: "iMakeup" },
+                { chatID: -1, text: "Some other time", callback: "" }
             ]
         },
     ];

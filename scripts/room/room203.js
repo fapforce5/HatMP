@@ -88,7 +88,14 @@ room203.btnclick = function (name) {
                 chat(13, 203);
             }
             else if (misssyStep > 24) {
-                chat(27, 203);
+                if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2)) {
+                    if (g.hourBetween(7, 10))
+                        chat(10, 203);
+                    else
+                        chat(6, 203);
+                }
+                else
+                    chat(27, 203);
             }
             else if (misssyStep < 1000) {
                 if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {

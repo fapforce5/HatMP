@@ -64,7 +64,7 @@ room19.btnclick = function (name) {
                         chat(3, 19);
                     else {
                         cl.c.butthole += .15;
-                        g.mod("sissy", 5);
+                        g.mod("sissy", 3);
                         chat(4, 19);
                     }
                 }, 2000);
@@ -142,7 +142,7 @@ room19.btnclick = function (name) {
                 "image": "19_layInBed/" + name + tempBG + ".gif"
             }, 19);
 
-            g.roomTimeout = setTimeout(function () { chat(9, 19); }, 2500);
+            g.roomTimeout = setTimeout(function () { g.mod("sissy", 5); chat(9, 19); }, 2500);
             break;
         default:
             break;

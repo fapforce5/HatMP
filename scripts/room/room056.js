@@ -46,10 +46,8 @@ room56.btnclick = function (name) {
             }
             break;
         case "mirror":
-            nav.killall();
-            nav.bg("56_bathroom/mirror.jpg", "56_bathroom/mirror.jpg");
-            cl.displayMirror();
-            chat(4, 56);
+            g.pass = 56;
+            char.room(27);
             break;
         default:
             break;

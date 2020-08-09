@@ -33,7 +33,6 @@ room208.btnclick = function (name) {
             nav.modbutton(m + "t", "208_red/t" + m + "_1.png", null, null);
             g.internal.step = m;
             g.roomTimeout = setTimeout(function () { room208.btnclick("tj") }, g.internal.timex);
-            console.log(g.roomTimeout2);
             break;
         case "tj":
             nav.modbutton(g.internal.step + "t", "208_red/t0.png", null, null);
@@ -114,6 +113,9 @@ room208.btnclick = function (name) {
         case "9":
         case "10":
             var tempInt = parseInt(name);
+            if ($(".room-img[data-name='helper']").length > 0 && tempInt < 10) {
+                nav.modbutton("helper", "208_red/" + (tempInt + 1) + "h.png", null, null);
+            }
             if (tempInt === g.internal) {
                 nav.modbutton(name, "208_red/" + name + "kill.png", "x", "img");
                 g.internal++;
@@ -128,6 +130,114 @@ room208.btnclick = function (name) {
                 chat(14, 208);
             }
             break;
+        case "jerkIncrease":
+            g.internal.t = g.internal.t - (g.internal.i * g.ratio);
+            g.internal.h = g.internal.h + (g.internal.i * g.ratio);
+            g.internal.i += g.internal.c;
+            $('.room-img[data-name="jcum"]').css({ "height": g.internal.h + "px", "top": g.internal.t + "px" });
+
+            if (g.internal.t < (150 * g.ratio)) {
+                nav.killbutton("jerkStop");
+                nav.killbutton("jerk");
+                nav.button({
+                    "type": "img",
+                    "name": "jerk",
+                    "left": 692,
+                    "top": 0,
+                    "width": 1000,
+                    "height": 1080,
+                    "image": "208_red/jerkCum.jpg"
+                }, 208);
+                chat(26, 208);
+            }
+            
+            else {
+                g.roomTimeout = setTimeout(function () { room208.btnclick("jerkIncrease"); }, 20);
+            }
+            break;
+        case "jerkStart":
+            g.internal.t = 770 * g.ratio;
+            g.internal.h = 20 * g.ratio;
+            var thisDif = g.get("difficulty");
+            var thisAr = g.get("arousal");
+            g.internal.i = Math.floor(thisAr / 5) + ((thisDif + 1) * 3);
+            g.internal.c = (thisAr / 100) + .3;
+            nav.killbutton("jerkStart");
+            nav.killbutton("jerk");
+            nav.killbutton("jcum");
+            nav.button({
+                "type": "img",
+                "name": "jcum",
+                "left": 450,
+                "top": 770,
+                "width": 20,
+                "height": 20,
+                "image": "208_red/jerkCum.png"
+            }, 208);
+            nav.button({
+                "type": "btn",
+                "name": "jerkStop",
+                "left": 370,
+                "top": 834,
+                "width": 200,
+                "height": 200,
+                "image": "208_red/jerkStop.png"
+            }, 208);
+            nav.button({
+                "type": "img",
+                "name": "jerk",
+                "left": 692,
+                "top": 0,
+                "width": 1000,
+                "height": 1080,
+                "image": "208_red/jerk.gif"
+            }, 208);
+            room208.btnclick("jerkIncrease");
+            break;
+        case "jerkStop":
+            clearTimeout(g.roomTimeout);
+            if (g.internal.t < 300 * g.ratio) {
+                g.internal.n++;
+                if (g.internal.n < 3) {
+                    chat(27, 208);
+                    room208.btnclick("jerkReset");
+                }
+                else {
+                    g.pass.third = true;
+                    chat(29, 208);
+                }
+            }
+            else {
+                chat(28, 208);
+                room208.btnclick("jerkReset");
+            }
+            
+            
+            break;
+        case "jerkReset":
+            nav.killbutton("jerk");
+            nav.killbutton("jerkStop");
+            g.mod("arousal", 15);
+            nav.button({
+                "type": "img",
+                "name": "jerk",
+                "left": 692,
+                "top": 0,
+                "width": 1000,
+                "height": 1080,
+                "image": "208_red/jerkHold.jpg"
+            }, 208);
+            nav.button({
+                "type": "btn",
+                "name": "jerkStart",
+                "left": 370,
+                "top": 834,
+                "width": 200,
+                "height": 200,
+                "image": "208_red/jerkStart.png"
+            }, 208);
+            
+            break;
         default:
             break;
     }
@@ -139,9 +249,23 @@ room208.chatcatch = function (callback) {
             nav.killall();
             nav.bg("208_red/feeta.jpg");
             break;
+        case "feet2a":
+            g.internal = "foot";
+            room208.chatcatch("feet2");
+            break;
         case "feet2":
             nav.killall();
-            
+            if (g.internal === "foot") {
+                nav.button({
+                    "type": "img",
+                    "name": "helper",
+                    "left": 1002,
+                    "top": 631,
+                    "width": 50,
+                    "height": 50,
+                    "image": "208_red/1h.png"
+                }, 208);
+            }
             nav.bg("208_red/feet.jpg");
             var btnListf = [
                 {
@@ -296,9 +420,9 @@ room208.chatcatch = function (callback) {
                 "type": "img",
                 "name": "tc",
                 "left": 44,
-                "top": 0,
-                "width": 149,
-                "height": 281,
+                "top": -2,
+                "width": 210,
+                "height": 283,
                 "image": "208_red/tc.png"
             }, 208);
             nav.button({
@@ -365,6 +489,91 @@ room208.chatcatch = function (callback) {
             char.addtime(180);
             char.room(0);
             break;
+        case "jerk":
+            g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0 };
+            nav.killall();
+            nav.bg("208_red/jerk.jpg")
+            nav.button({
+                "type": "img",
+                "name": "jerk",
+                "left": 692,
+                "top": 0,
+                "width": 1000,
+                "height": 1080,
+                "image": "208_red/jerkHold.jpg"
+            }, 208);
+            nav.button({
+                "type": "img",
+                "name": "jcock",
+                "left": 387,
+                "top": 42,
+                "width": 181,
+                "height": 943,
+                "image": "208_red/jerkCock.png"
+            }, 208);
+            nav.button({
+                "type": "img",
+                "name": "jcum",
+                "left": 450,
+                "top": 770,
+                "width": 20,
+                "height": 20,
+                "image": "208_red/jerkCum.png"
+            }, 208);
+            nav.button({
+                "type": "btn",
+                "name": "jerkStart",
+                "left": 370,
+                "top": 834,
+                "width": 200,
+                "height": 200,
+                "image": "208_red/jerkStart.png"
+            }, 208);
+            break;
+        case "jerkChastity":
+            cl.c.chastity = null;
+            cl.display();
+            $('.room-left').show();
+            break;
+        case "checkem":
+            g.internal = null;
+            if (g.pass.first && g.pass.second && g.pass.third) {
+                nav.killall();
+                nav.bg("208_red/red.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "missy",
+                    "left": 863,
+                    "top": 45,
+                    "width": 688,
+                    "height": 1035,
+                    "image": "208_red/missy.png"
+                }, 208);
+                if (!sc.checkevent("missy", -1)) {
+                    sc.setstep("missy", -1)
+                    chat(30, 208);
+                }
+                else if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2))
+                    chat(30, 208);
+                else
+                    chat(31, 208)
+            }
+            else {
+                nav.killall();
+                nav.bg("208_red/red.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "missy",
+                    "left": 863,
+                    "top": 45,
+                    "width": 688,
+                    "height": 1035,
+                    "image": "208_red/missy.png"
+                }, 208);
+                chat(9, 208);
+            }
+
+            break;
         default:
             break;
     }
@@ -386,7 +595,7 @@ room208.chat = function (chatID) {
             text: "Welcom to the Red Room of Disipline. Do you require an explanation of your duties for this room?",
             button: [
                 { chatID: 2, text: "Yes mistress, please guide me", callback: "" },
-                { chatID: 9, text: "No mistress, I'm ready to begin", callback: "" },
+                { chatID: -1, text: "No mistress, I'm ready to begin", callback: "checkem" },
                 { chatID: 10, text: "I don't know why I'm here. I would like to go.", callback: "" }
             ]
         },
@@ -434,7 +643,8 @@ room208.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "missy",
-            text: "The last is the challenge of capacity. You must sit on a giant dildo and stuff.. working on this.",
+            text: "The last is the challenge of control. You must get edged 3 times to prove you can control your orgasms. If you " +
+                "stop me too early it doensn't count and we'll have to start again. ",
             button: [
                 { chatID: 8, text: "[Keep silent]", callback: "" },
                 { chatID: 7, text: "Ask for a hint", callback: "" },
@@ -443,7 +653,9 @@ room208.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "missy",
-            text: "Hint for butt strectching game",
+            text: "The hornier you are, the quicker it will take for you to cum. If you keep failing you should come in right. " +
+                "after you've cum and your little clitty is soft. " +
+                "Also each time you try you'll get a little bit hornier, so it's better not to stop me too early too many times.",
             button: [
                 { chatID: 8, text: "[Keep silent]", callback: "" },
             ]
@@ -455,7 +667,7 @@ room208.chat = function (chatID) {
                 "you to continue. ",
             button: [
                 { chatID: 2, text: "Tell it to me again.", callback: "" },
-                { chatID: 9, text: "I'm ready to begin mistress.", callback: "" }
+                { chatID: -1, text: "I'm ready to begin mistress.", callback: "checkem" }
             ]
         },
         {
@@ -465,7 +677,7 @@ room208.chat = function (chatID) {
             button: [
                 { chatID: g.pass.first ? 11 : 12, text: g.pass.first ? "COMPLETE" : "The challenge of servatude", callback: "" },
                 { chatID: g.pass.second ? 11 : 16, text: g.pass.second ? "COMPLETE" : "the challenge of hardship", callback: "" },
-                { chatID: g.pass.third ? 11 : 23, text: g.pass.third ? "COMPLETE" : "The challenge of capacity", callback: "" },
+                { chatID: g.pass.third ? 11 : 23, text: g.pass.third ? "COMPLETE" : "The challenge of control", callback: "" },
                 { chatID: 10, text: "I give up", callback: "" },
             ]
         },
@@ -482,7 +694,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "You have already completed that task. To properly serve me you cannot dwell in the past, but look to my future. ",
             button: [
-                { chatID: 9, text: "...", callback: "" },
+                { chatID: -1, text: "...", callback: "checkem" },
             ]
         },
         {
@@ -500,6 +712,7 @@ room208.chat = function (chatID) {
                 "in an order that is pleasing to me. Don't displease me.",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "feet2" },
+                { chatID: -1, text: "I'm such an airhead, can you give me hints?", callback: "feet2a" },
             ]
         },
         {
@@ -515,7 +728,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "What a good sissy you are! You know how much I like order and you're learning your colors! ",
             button: [
-                { chatID: 9, text: "Thank you mistress", callback: "reset" },
+                { chatID: -1, text: "Thank you mistress", callback: "checkem" },
             ]
         },
         {
@@ -578,35 +791,77 @@ room208.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "missy",
-            text: "The challenge of capacity. ",
+            text: "The challenge of control. ",
             button: [
-                { chatID: 24, text: "...", callback: "tri1" },
+                { chatID: 24, text: "...", callback: "jerkChastity" },
             ]
         },
         {
             chatID: 24,
             speaker: "missy",
-            text: "To pass the challenge of capacity you must be able to sit flat on my tower of power. ",
+            text: "To pass the challenge of control I'm going to take you to the edge. Stop me right before you're on the edge of " +
+                "cumming, but not before or you'll have to do it again. If you can edge three times you'll pass this challenge. If you " +
+                "stop me too early we'll start again. And if you cum on me you're done. Ready my little slave?",
             button: [
-                { chatID: 25, text: "Wha....", callback: "" },
+                { chatID: 25, text: "Yes mistress", callback: "" },
             ]
         },
         {
             chatID: 25,
             speaker: "missy",
-            text: "Being a sissy is about the effort you put into being the biggest slut you can be. You don't just wake up and be a little " +
-                "slut, it takes time and effort in all things. If you're going to be my sissy you're going to have to take this tower of power deep " +
-                "into your gurl pussy.",
+            text: "ok, we will begin.",
             button: [
-                { chatID: 26, text: "...", callback: "tri2" },
+                { chatID: -1, text: "[Begin]", callback: "jerk" }
             ]
         },
         {
             chatID: 26,
             speaker: "missy",
-            text: "Art in progress.... ",
+            text: "You made a mess all over my tits, slut. ",
             button: [
-                { chatID: 1, text: "oh fudge", callback: "rest" }
+                { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "missy",
+            text: "That's a good sissy. Control your orgasm. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "missy",
+            text: "That's too early, you we're even close. This one doesn't count.",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "missy",
+            text: "You have passed the challenge of control. You're learning that your orgasm dosn't matter. You're just a toy " +
+                "for others to play with and enjoy.",
+            button: [
+                { chatID: -1, text: "...", callback: "checkem" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "missy",
+            text: "You've passed all the test. You are a disciplined little servant. Come by my office tomrrow and I will have a new " +
+            "task for you. ",
+            button: [
+                { chatID: -1, text: "Yes mistress", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "missy",
+            text: "You've passed all the test. You are a disciplined little servant.",
+            button: [
+                { chatID: -1, text: "Yes mistress", callback: "leave" },
             ]
         },
     ];

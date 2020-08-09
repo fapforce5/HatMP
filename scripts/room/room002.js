@@ -122,8 +122,7 @@ room2.chatcatch = function (callback) {
 
             $('#char_-1').val($("<textarea/>").html(sc.n("me")).val());
             $('#room_002sa').val($("<textarea/>").html(sc.n("el")).val());
-            $('#room_002gn').val($("<textarea/>").html(sc.n("el")).val());
-
+            $('#room_002gn').val($("<textarea/>").html("Scarlett").val());
         });
 
         $("#room_002SetName").click(function () {
