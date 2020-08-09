@@ -160,6 +160,9 @@ room200.btnclick = function (name) {
             else if (thisStep === 24) {
                 chat(156, 200);
             }
+            else if (thisStep === 25) {
+                chat(163, 200);
+            }
             else { //thisstep = 10
                 if (g.pass === "finishComputer") {
                     g.pass = null;
@@ -2142,6 +2145,14 @@ room200.chat = function (chatID) {
             text: "Good now go. ",
             button: [
                 { chatID: -1, text: "yes mistress", callback: "24progress" },
+            ]
+        },
+        {
+            chatID: 163,
+            speaker: "missy",
+            text: "Adventure in the sewer. Not complete yet.",
+            button: [
+                { chatID: -1, text: "yes mistress", callback: "leave" },
             ]
         },
     ];
