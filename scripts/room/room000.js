@@ -12,6 +12,7 @@ room0.main = function () {
         room0.btnclick("map_2");
     else
         room0.btnclick("map_1");
+    setTimeout(function () { $('#room_footer').hide(); $('.room-left').hide();}, 200)
 };
 
 room0.btnclick = function (name) {

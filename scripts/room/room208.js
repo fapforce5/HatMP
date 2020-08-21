@@ -584,9 +584,9 @@ room208.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "missy",
-            text: "All Challenges complete.. more to come later...",
+            text: "All Challenges are complete.. See me in my office",
             button: [
-                { chatID: -1, text: "", callback: "" }
+                { chatID: -1, text: "Yes mistress", callback: "" }
             ]
         },
         {

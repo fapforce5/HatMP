@@ -17,42 +17,60 @@ var pic = {};
 inv.isFooter = true;
 inv.leftMenu = true;
 inv.roomChange = [10, 12, 201, 451, 452, 503, 552, 553];
+
+inv.t = [
+    { t: "b", n: "Backpack" },
+    { t: "c", n: "Closet" },
+    { t: "d", n: "Dildo" },
+    { t: "e", n: "Energy Snack" },
+    { t: "g", n: "General Item" },
+    { t: "h", n: "Female Hormone" },
+    { t: "m", n: "Makeup" },
+    { t: "o", n: "Key" },
+    { t: "p", n: "Phone Case" },
+    { t: "r", n: "Room Decoration" },
+    { t: "t", n: "Penis Cream" },
+    { t: "z", n: "Gift" },
+    
+];
+
 inv.master = [
-    { type: "h", name: "hormone", display: "Female Hormone", entry: false, count: 0, cost: 5, image: "hormone.png", n: false },
-    { type: "g", name: "lube", display: "Sex Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false },
-    { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false },
-    { type: "g", name: "wine", display: "Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false },
-    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 30, image: "acia.png", n: false },
-    { type: "e", name: "soda", display: "Energy Soda", entry: false, count: 0, cost: 60, image: "energyCola.png", n: false },
-    { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false },
-    { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false },
-    { type: "m", name: "makeup", display: "Makeup", entry: false, count: null, cost: 180, image: "makeup.png", n: false },
-    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: null, cost: 30, image: "redl.png", n: false },
-    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: null, cost: 30, image: "pinkl.png", n: false },
-    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: null, cost: 30, image: "purplel.png", n: false },
-    { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false },
-    { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false },
-    { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, image: "redroom.png", n: false },
-    { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false },
-    { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false },
-    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false },
-    { type: "b", name: "slutPurse", display: "Slutty Pink Purse", entry: false, count: null, cost: 100, image: "purse_slut.png", n: false },
-    { type: "b", name: "pinkPurse", display: "Pink Purse", entry: false, count: null, cost: 100, image: "purse_pink.png", n: false },
-    { type: "p", name: "phoneBasic", display: "Basic Phone", entry: true, count: null, cost: -1, image: "phone_basic.png", n: false },
-    { type: "p", name: "phoneTr", display: "Phone Sexy", entry: false, count: null, cost: 100, image: "phone_tr.png", n: false },
-    { type: "p", name: "phonePink", display: "Pink Phone", entry: false, count: null, cost: 100, image: "phone_pink.png", n: false },
-    { type: "p", name: "phoneLips", display: "Pink Purse", entry: false, count: null, cost: 100, image: "phone_lips.png", n: false },
-    { type: "g", name: "screwdriver", display: "Screwdriver", entry: false, count: null, cost: 50, image: "screwdriver.png", n: false },
-    { type: "d", name: "purpleDildo", display: "Purple Dildo", entry: false, count: null, cost: 100, image: "dildoPurple.png", n: false },
-    { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false },
+    { type: "h", name: "hormone", display: "Sissy Bimbo Pills", entry: false, count: 0, cost: 5, image: "hormone.png", n: false, desc: "Take 1 pill a day to increase your female hormone level" },
+    { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
+    { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
+    { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
+    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 30, image: "acia.png", n: false, desc: "Add 15 energy" },
+    { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 60, image: "energyCola.png", n: false, desc: "Add 50 energy and lose 15 fitness points" },
+    { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
+    { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
+    { type: "m", name: "makeup", display: "Makeup", entry: false, count: null, cost: 180, image: "makeup.png", n: false, desc: "Make your face pretty" },
+    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: null, cost: 30, image: "redl.png", n: false, desc: "Red Lipstick" },
+    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: null, cost: 30, image: "pinkl.png", n: false, desc: "Pink Lipstick" },
+    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: null, cost: 30, image: "purplel.png", n: false, desc: "Purple Lipstick" },
+    { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false, desc: "Landlord's Key" },
+    { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false, desc: "Co-Tenant's Key" },
+    { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, image: "redroom.png", n: false, desc: "Red Door Key" },
+    { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
+    { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false, desc: "Default Backpack" },
+    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false, desc: "Boring ol' briefase" },
+    { type: "b", name: "slutPurse", display: "Slutty Pink Purse", entry: false, count: null, cost: 100, image: "purse_slut.png", n: false, desc: "Only a true slut can use this" },
+    { type: "b", name: "pinkPurse", display: "Pink Purse", entry: false, count: null, cost: 100, image: "purse_pink.png", n: false, desc: "A cute purse" },
+    { type: "p", name: "phoneBasic", display: "Basic Phone", entry: true, count: null, cost: -1, image: "phone_basic.png", n: false, desc: "Default phone case" },
+    { type: "p", name: "phoneTr", display: "Strong Woman", entry: false, count: null, cost: 100, image: "phone_tr.png", n: false, desc: "" },
+    { type: "p", name: "phonePink", display: "Pink", entry: false, count: null, cost: 100, image: "phone_pink.png", n: false, desc: "" },
+    { type: "p", name: "phoneLips", display: "Purple Lips", entry: false, count: null, cost: 100, image: "phone_lips.png", n: false, desc: "" },
+    { type: "g", name: "screwdriver", display: "Screwdriver", entry: false, count: null, cost: 50, image: "screwdriver.png", n: false, desc: "Go screw yourself" },
+    { type: "d", name: "purpleDildo", display: "Purple Dildo", entry: false, count: null, cost: 100, image: "dildoPurple.png", n: false, desc: "Small Dildo" },
+    { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },
     //{ type: "d", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: 180, image: "butt_blackCock.png", n: false },
     //{ type: "d", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 180, image: "butt_whiteCock.png", n: false },
     //{ type: "d", name: "greenMonster", display: "Green Monster", entry: false, count: null, cost: 180, image: "butt_greenMonster.png", n: false },
-    { type: "t", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false },
-    { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false },
-    { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false },
-    { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false },
-    { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false }
+    { type: "t", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false, desc: "Shrink your pp" },
+    { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false, desc: "Go home and chek it out" },
+    { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false, desc: "" },
+    { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false, desc: "" },
+    { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false, desc: "" },
+    { type: "c", name: "closet", display: "Change Clothes", entry: true, count: null, cost: 90, image: "change.png", n: false, desc: "Change your clothes. Can only use in a bathroom." }
 ];
 
 inv.getall = function () {
@@ -61,7 +79,7 @@ inv.getall = function () {
         if (inv.master.count !== null)
             inv.master[i].count = 10;
     }
-}
+};
 
 pic.master = [
     { name: "lolaTopless", display: "Lola Topless", entry: false, image: "lolaTopless.jpg", thumb: "lolaTopless.png" },
@@ -122,10 +140,28 @@ $(document).ready(function () {
     $('#room-inv').click(function () { inv.display(); });
 });
 
+
+inv.gett = function (t) {
+    var i;
+    for (i = 0; i < inv.t.length; i++) {
+        if (inv.t[i].t === t)
+            return inv.t[i].n;
+    }
+    return "NOT FOUND";
+};
+
 inv.get = function (name) {
     for (var i = 0; i < inv.master.length; i++) {
         if (inv.master[i].name === name)
             return inv.master[i];
+    }
+    return null;
+};
+
+inv.getIndex = function (name) {
+    for (var i = 0; i < inv.master.length; i++) {
+        if (inv.master[i].name === name)
+            return i;
     }
     return null;
 };
@@ -224,135 +260,141 @@ inv.display = function () {
     var i, prevI;
     for (i = 0; i < inv.master.length; i++) {
         if (inv.master[i].entry) {
-            $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" title="' + inv.master[i].display + '">');
+            $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
             if (inv.master[i].n)
                 $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3" title="' + inv.master[i].display + '">');
             if (inv.master[i].count !== null)
                 $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
-            if (inv.master[i].type === "b")
-                $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-backpackChange');
-            if (inv.master[i].type === "p")
-                $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-phoneChange');
-            if (inv.master[i].type === "e")
-                $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-energyChange');
-            if (inv.master[i].type === "h")
-                $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-hormoneChange');
-            if (inv.master[i].type === "r")
-                $('#menu-bg_' + counter).attr('data-name', inv.master[i].name).addClass('inv-paintChange');
             counter++;
         }
         inv.master[i].n = false;
     }
 
-    $('#menu-bg_' + counter).html('<img src="./images/inv/change.png" title="Change Clothes">');
-    $('#menu-bg_' + counter).attr('data-name', "changeclothes").addClass('inv-changeclothes');
     counter++;
-
-    //for (i = 0; i < 4; i++) {
-    //    $('#menu-bg_' + counter).html(inv.displayClothes(i));
-    //    $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="clothing_' + i + '">' + cl.saveOutfit[i].name + '</div>');
-    //    counter++;
-    //}
-    //$('#menu-bg_' + counter).html(inv.displayClothes(-1));
-    //$('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="clothing_-1">Current</div>');
-    //counter++;
 
     inv.isFooter = $('#room_footer').is(":visible");
     if (inv.isFooter) { $('#room_footer').hide(); }
     $('.kill-invNew').remove();
-    $('.inv-backpackChange').click(function () {
-        inv.backpack = $(this).data('name');
-        inv.backpackIcon();
-        inv.close();
-    });
-    $('.inv-paintChange').click(function () {
-        g.set("painting", $(this).data("name"));
-        inv.close();
-    });
-    $('.inv-phoneChange').click(function () {
-        inv.phone = $(this).data("name");
-        inv.phoneIcon();
-        inv.close();
-    });
-    $('.inv-hormoneChange').click(function () {
-        if (!g.checkflag("tookHormonePill"))
-            g.mod("hormone", 30);
-        g.setflag("tookHormonePill");
-        inv.use("hormone");
-        inv.close();
-    });
-    $('.inv-energyChange').click(function () {
-        var thisItem = $(this).data("name");
-        var j;
-        for (j = 0; j < inv.master.length; j++) {
-            if (inv.master[j].name === thisItem) {
-                if (inv.master[j].count > 0) {
-                    inv.master[j].count--;
-                    switch (thisItem) {
-                        case "acia":
-                            g.mod("energy", 15);
-                            break;
-                        case "soda":
-                            g.mod("energy", 50);
-                            g.mod("fitness", -15);
-                            break;
-                        default:
-                            console.log("UNK energy: " + thisItem);
-                    }
-                    $('.menu-popup-count[data-name="' + thisItem + '"]').text(inv.master[j].count);
-                    if (inv.master[j].count < 1) {
-                        inv.master[j].count = 0;
-                        inv.master[j].entry = false;
-                    }
-                }
-                j = 1000;
-            }
-        }
-    });
 
-    $('.inv-changeclothes').click(function () {
-        if (inv.roomChange.includes(g.roomID)) {
-            g.pass = g.roomID;
-            char.room(8);
-        }
-        else
-            g.popUpNotice("You can only change in your room or a bathroom. ");
-    });
+    $('.menu-select').click(function () {
+        var thisName = $(this).attr("data-inv");
+        var thisItem = inv.get(thisName);
 
-    //$('.inv-clothingChange').click(function () {
-    //    var entry = parseInt($(this).data('num'));
+        $('#menu_displayIcon').html('<img src="./images/inv/' + thisItem.image + '"/>');
+        $("#menu_displayCost").html(thisItem.count === null ? "" : "Count: " + thisItem.count);
+        $("#menu_displayName").html(thisItem.display);
+        $('#menu_displayType').html(inv.gett(thisItem.type));
+        $("#menu_displayDesc").html(thisItem.desc);
+
+        $("#menu_displayInfo").html("");
+       
+
+        $("#menu_displayCount").html("1");
+        $("#menu_displayUp").attr("data-price", thisItem.cost);
+        $("#menu_displayDown").attr("data-price", thisItem.cost);
+
+        switch (thisItem.type) {
+            case "b"://backpack
+                $("#menu_displayAction").attr("data-itype", "bag");
+                $("#menu_displayAction").attr("data-type", thisItem.type);
+                $("#menu_displayAction").attr("data-name", thisItem.name);
+                $("#menu_displayAction").html("Change Bag");
+                $("#menu_displayAction").show();
+                break;
+            case "c": //closet
+                $("#menu_displayAction").attr("data-itype", "bag");
+                $("#menu_displayAction").attr("data-type", thisItem.type);
+                $("#menu_displayAction").attr("data-name", thisItem.name);
+                $("#menu_displayAction").html("Change Clothes");
+                $("#menu_displayAction").show();
+                break;
+            case "e"://energy snack
+                $("#menu_displayAction").attr("data-itype", "bag");
+                $("#menu_displayAction").attr("data-type", thisItem.type);
+                $("#menu_displayAction").attr("data-name", thisItem.name);
+                $("#menu_displayAction").html("Snack Attack");
+                $("#menu_displayDesc").append(" - Max Energy: " + g.get("maxenergy"));
+                $("#menu_displayAction").show();
+                break;
+            case "p"://phone case
+                $("#menu_displayAction").attr("data-itype", "bag");
+                $("#menu_displayAction").attr("data-type", thisItem.type);
+                $("#menu_displayAction").attr("data-name", thisItem.name);
+                $("#menu_displayAction").html("Change Phone Case");
+                $("#menu_displayAction").show();
+                break;
+            case "r"://room decoration
+                $("#menu_displayAction").attr("data-itype", "bag");
+                $("#menu_displayAction").attr("data-type", thisItem.type);
+                $("#menu_displayAction").attr("data-name", thisItem.name);
+                $("#menu_displayAction").html("Change Room Decoration");
+                $("#menu_displayAction").show();
+                break;
+            default:
+                $("#menu_displayAction").hide();
+                break;
+        };
+    });
+    $("#menu_displayAction").click(function () {
+
+    });
+    //$('.inv-backpackChange').click(function () {
+    //    inv.backpack = $(this).data('name');
+    //    inv.backpackIcon();
+    //    inv.close();
+    //});
+    //$('.inv-paintChange').click(function () {
+    //    g.set("painting", $(this).data("name"));
+    //    inv.close();
+    //});
+    //$('.inv-phoneChange').click(function () {
+    //    inv.phone = $(this).data("name");
+    //    inv.phoneIcon();
+    //    inv.close();
+    //});
+    //$('.inv-hormoneChange').click(function () {
+    //    if (!g.checkflag("tookHormonePill"))
+    //        g.mod("hormone", 30);
+    //    g.setflag("tookHormonePill");
+    //    inv.use("hormone");
+    //    inv.close();
+    //});
+    //$('.inv-energyChange').click(function () {
+    //    var thisItem = $(this).data("name");
+    //    var j;
+    //    for (j = 0; j < inv.master.length; j++) {
+    //        if (inv.master[j].name === thisItem) {
+    //            if (inv.master[j].count > 0) {
+    //                inv.master[j].count--;
+    //                switch (thisItem) {
+    //                    case "acia":
+    //                        g.mod("energy", 15);
+    //                        break;
+    //                    case "soda":
+    //                        g.mod("energy", 50);
+    //                        g.mod("fitness", -15);
+    //                        break;
+    //                    default:
+    //                        console.log("UNK energy: " + thisItem);
+    //                }
+    //                $('.menu-popup-count[data-name="' + thisItem + '"]').text(inv.master[j].count);
+    //                if (inv.master[j].count < 1) {
+    //                    inv.master[j].count = 0;
+    //                    inv.master[j].entry = false;
+    //                }
+    //            }
+    //            j = 1000;
+    //        }
+    //    }
+    //});
+
+    //$('.inv-changeclothes').click(function () {
     //    if (inv.roomChange.includes(g.roomID)) {
-
-    //        if (entry < 0) {
-    //            cl.c.shoes = cl.cTemp.shoes;
-    //            cl.c.socks = cl.cTemp.socks;
-    //            cl.c.pants = cl.cTemp.pants;
-    //            cl.c.panties = cl.cTemp.panties;
-    //            cl.c.bra = cl.cTemp.bra;
-    //            cl.c.shirt = cl.cTemp.shirt;
-    //            cl.c.dress = cl.cTemp.dress;
-    //            cl.c.swimsuit = cl.cTemp.swimsuit;
-    //            cl.c.accessories = cl.cTemp.accessories;
-    //            cl.c.pj = cl.cTemp.pj;
-    //        }
-    //        else {
-    //            cl.c.shoes = cl.saveOutfit[entry].shoes;
-    //            cl.c.socks = cl.saveOutfit[entry].socks;
-    //            cl.c.pants = cl.saveOutfit[entry].pants;
-    //            cl.c.panties = cl.saveOutfit[entry].panties;
-    //            cl.c.bra = cl.saveOutfit[entry].bra;
-    //            cl.c.shirt = cl.saveOutfit[entry].shirt;
-    //            cl.c.dress = cl.saveOutfit[entry].dress;
-    //            cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
-    //            cl.c.accessories = cl.saveOutfit[entry].accessories;
-    //            cl.c.pj = cl.saveOutfit[entry].pj;
-    //        }
-    //        cl.display();
-    //        char.room(g.roomID);
+    //        g.pass = g.roomID;
+    //        char.room(8);
     //    }
-    //    else {
+    //    else
     //        g.popUpNotice("You can only change in your room or a bathroom. ");
-    //    }
     //});
 
     w = 1800 * g.ratio;
@@ -417,12 +459,241 @@ inv.createElements = function () {
     counter = 0;
     $('#room-menuButtons').css({ 'background': 'none' }).show().html('');
     for (var i = 0; i < 5; i++) {
-        for (var j = 0; j < 9; j++) {
+        for (var j = 0; j < 6; j++) {
             $('#room-menuButtons').append('<div id="menu-bg_' + counter + '" class="menu-popup" style="width: ' + w + 'px; height: ' + w + 'px; top: ' + ((s * i) + t) + 'px; left: ' + ((s * j) + l) + 'px; "> </div>');
             counter++;
         }
     }
+    //500x840
+    $('#room-menuButtons').append('<div id="menu_display" class="menu-display" style="width: ' + 500 * g.ratio + 'px; height: ' + 840 * g.ratio + 'px; top: ' + t + 'px; left: ' + ((6 * s) + l) + 'px; "> </div>');
+    $('#menu_display').html('<div id="menu_displayIcon" style="width: ' + 300 * g.ratio + 'px; height: ' + 300 * g.ratio + 'px; margin-top:' + 100 * g.ratio + 'px; margin-left:' + 100 * g.ratio + 'px; "></div>' +
+        '<div id="menu_displayCost" class="menu-line" style="' + g.cssText(12) + ' margin-top:' + 30 * g.ratio + 'px;">Cost</div>' +
+        '<div id="menu_displayName" class="menu-line" style="' + g.cssText(12) + ' margin-top:' + 10 * g.ratio + 'px;">Name</div>' +
+        '<div id="menu_displayType" class="menu-line" style="' + g.cssText(12) + ' margin-top:' + 10 * g.ratio + 'px;">Type</div>' +
+        '<div id="menu_displayDesc" class="menu-line-desc" style="' + g.cssText(9) + ' margin-top:' + 10 * g.ratio + 'px;">Description</div>' +
+        '<div id="menu_displayAdditional" class="menu-line-desc" style="' + g.cssText(9) + ' margin-top:' + 10 * g.ratio + 'px;"></div>' +
+        '<div id="menu_displayCountLine" class="menu-line" style="' + g.cssText(12) + ' margin-top:' + 10 * g.ratio + 'px;">' +
+        '<button id="menu_displayUp" class="menu-lineB" data-price="0">▲</button>' +
+        '<span id="menu_displayCount">0</span>' +
+        '<button id="menu_displayDown" class="menu-lineB" data-price="0">▼</button>' +
+        '<div class="menu-line" style="' + g.cssText(8) + ' margin-top:' + 10 * g.ratio + 'px;">How Many</div>' +
+        '</div>' +
+        '<div id="menu_displayInfo" class="menu-line-desc" style="' + g.cssText(9) + ' margin-top:' + 10 * g.ratio + 'px;"></div>' +
+        '<button id="menu_displayAction" class="menu-action" data-itype="" data-type="" data-name="" style="' + g.cssText(12) + ' margin-top:' + 10 * g.ratio + 'px; padding:' + 5 * g.ratio + 'px;">Action</button>');
 
+    $("#menu_displayCountLine").hide();
+    $('#menu_displayAction').hide();
+
+    $("#menu_displayUp").click(function () {
+        var thisCost = parseInt($('#menu_displayUp').attr("data-price"));
+        var thisCount = parseInt($('#menu_displayCount').html()) + 1;
+        var thisCash = g.get("money");
+        if (thisCount * thisCost < thisCash) {
+            $("#menu_displayCount").html(thisCount);
+            $("#menu_displayAction").html("BUY - $" + thisCount * thisCost);
+        }
+    });
+    $("#menu_displayDown").click(function () {
+        var thisCost = parseInt($(this).attr("data-price"));
+        var thisCount = parseInt($('#menu_displayCount').html()) - 1;
+        if (thisCount > 0) {
+            $("#menu_displayCount").html(thisCount);
+            $("#menu_displayAction").html("BUY - $" + thisCount * thisCost);
+        }
+    });
+
+    $("#menu_displayAction").click(function () {
+        var thisIType = $(this).attr("data-itype");
+        var thisType = $(this).attr("data-type");
+        var thisName = $(this).attr("data-name");
+
+        if (thisIType === "inv") {
+            
+            var ti = inv.getIndex(thisName);
+            if (ti !== null) {
+                var thisInv = inv.master[ti];
+                if (thisInv.count === null) {
+                    inv.add(thisName);
+                    g.mod("money", (-1 * thisInv.cost));
+                    $("#menu_displayAction").hide();
+                    $('#menu_displayInfo').html("PURCHASED");
+                }
+                else {
+                    var thisCount = parseInt($("#menu_displayCount").html());
+                    if (isNaN(thisCount))
+                        thisCount = 1;
+                    var totalMoney = -1 * thisCount * thisInv.cost;
+                    inv.master[ti].count += thisCount;
+                    inv.master[ti].entry = true;
+                    g.mod("money", totalMoney);
+                    $("#menu_displayAction").hide();
+                    $("#menu_displayCountLine").hide();
+                    $('#menu_displayInfo').html("PURCHASED");
+                    $("#menu_displayAdditional").html("In Inventory: " + inv.master[ti].count); 
+                }
+            }
+            else
+                console.log("Can't find " + ti);
+        }
+        else if (thisIType === "clothing") {
+            var tic = cl.where(thisType, thisName);
+            
+            if (tic !== null) {
+                if (cl.list[tic].inv) {
+                    $('#menu_displayInfo').html("Already Purchased");
+                    $("#menu_displayAction").hide();
+                    $("#menu_displayCountLine").hide();
+                }
+                else {
+                    var thisMoney = g.get("money");
+                    if (cl.list[i].price > thisMoney) {
+                        $('#menu_displayInfo').html("Can't Afford");
+                        $("#menu_displayAction").hide();
+                        $("#menu_displayCountLine").hide();
+                    }
+                    else {
+                        cl.list[tic].inv = true;
+                        g.mod("money", -1 * cl.list[i].price);
+                        $("#menu_displayAction").hide();
+                        $("#menu_displayCountLine").hide();
+                        $('#menu_displayInfo').html("PURCHASED");
+                    }
+                }
+            }
+        }
+        else if (thisIType === "bag") {
+           
+    //$('.inv-paintChange').click(function () {
+    //    g.set("painting", $(this).data("name"));
+    //    inv.close();
+    //});
+    //$('.inv-phoneChange').click(function () {
+    //    inv.phone = $(this).data("name");
+    //    inv.phoneIcon();
+    //    inv.close();
+    //});
+    //$('.inv-hormoneChange').click(function () {
+    //    if (!g.checkflag("tookHormonePill"))
+    //        g.mod("hormone", 30);
+    //    g.setflag("tookHormonePill");
+    //    inv.use("hormone");
+    //    inv.close();
+    //});
+    //$('.inv-energyChange').click(function () {
+    //    var thisItem = $(this).data("name");
+    //    var j;
+    //    for (j = 0; j < inv.master.length; j++) {
+    //        if (inv.master[j].name === thisItem) {
+    //            if (inv.master[j].count > 0) {
+    //                inv.master[j].count--;
+    //                switch (thisItem) {
+    //                    case "acia":
+    //                        g.mod("energy", 15);
+    //                        break;
+    //                    case "soda":
+    //                        g.mod("energy", 50);
+    //                        g.mod("fitness", -15);
+    //                        break;
+    //                    default:
+    //                        console.log("UNK energy: " + thisItem);
+    //                }
+    //                $('.menu-popup-count[data-name="' + thisItem + '"]').text(inv.master[j].count);
+    //                if (inv.master[j].count < 1) {
+    //                    inv.master[j].count = 0;
+    //                    inv.master[j].entry = false;
+    //                }
+    //            }
+    //            j = 1000;
+    //        }
+    //    }
+    //});
+
+    //$('.inv-changeclothes').click(function () {
+    //    if (inv.roomChange.includes(g.roomID)) {
+    //        g.pass = g.roomID;
+    //        char.room(8);
+    //    }
+    //    else
+    //        g.popUpNotice("You can only change in your room or a bathroom. ");
+    //});
+
+            switch (thisType) {
+                case "b"://backpack
+                    inv.backpack = thisName;
+                    inv.backpackIcon();
+                    $("#menu_displayInfo").html("UPDATED");
+                    $("#menu_displayAction").hide();
+                    inv.close();
+                    break;
+                case "c": //closet
+                    if (inv.roomChange.includes(g.roomID)) {
+                        g.pass = g.roomID;
+                        inv.close();
+                        char.room(8);
+                    }
+                    else{
+                        $("#menu_displayInfo").html("You can only change in your room or a bathroom. ");
+                        $("#menu_displayAction").hide();
+                    }
+                    break;
+                case "e"://energy snack
+                    var eindex = inv.getIndex(thisName);
+                    if (inv.master[eindex].count > 0) {
+                        inv.master[eindex].count--;
+                        switch (thisName) {
+                            case "acia":
+                                g.mod("energy", 15);
+                                break;
+                            case "soda":
+                                g.mod("energy", 50);
+                                g.mod("fitness", -15);
+                                break;
+                            default:
+                                console.log("UNK energy: " + thisName);
+                        }
+
+                        $("#menu_displayInfo").html("Energy: " + g.get("energy"));
+                        if (inv.master[eindex].count === 0)
+                            $("#menu_displayAction").hide();
+                        $("#menu_displayCost").html("Count: " + inv.master[eindex].count);
+
+                        if (inv.master[eindex].count < 1) {
+                            inv.master[eindex].count = 0;
+                            inv.master[eindex].entry = false;
+                        }
+                    }
+                    break;
+                case "p"://phone case
+                    inv.phone = thisName;
+                    inv.phoneIcon();
+                    inv.close();
+                    break;
+                case "r"://room decoration
+                    g.set("painting", thisName);
+                    if (g.roomID === 52) {
+                        if ($('.room-img[data-name="painting"').length > 0)
+                            nav.modbutton("painting", "52_myroom/" + thisName + ".png", null, null);
+                        else
+                            nav.button({
+                                "type": "img",
+                                "name": "painting",
+                                "left": 280,
+                                "top": 220,
+                                "width": 457,
+                                "height": 253,
+                                "image": "52_myroom/" + thisName + ".png",
+                            }, 52);
+                    }
+                    $("#menu_displayInfo").html("UPDATED");
+                    $("#menu_displayAction").hide();
+                    inv.close();
+                    break;
+            }
+        }
+        else {
+            console.log("wrong button i type");
+        }
+    });
 };
 
 //{ type: "l", name: "lube", entry: false, count: 0, cost: 0, image: "lube.png", n: false },
@@ -462,6 +733,7 @@ inv.load = function (ia) {
             }
         }
     }
+    inv.add("closet");
     inv.backpack = ia.backpack;
     if (typeof ia.phone != "undefined")
         inv.phone = ia.phone;

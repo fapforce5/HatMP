@@ -1,66 +1,83 @@
 ﻿//Cecillia close up
 var room203 = {};
 room203.main = function () {
-    
-    var navList = [0];
-    var btnList = new Array();
-    if (g.pass === "takeItBitch") {
-        nav.bg("203_entrance/203_frontDeskCloseup.jpg");
-        btnList = [{
-            "type": "btn",
-            "name": "fooIgnore",
-            "left": 685,
-            "top": 302,
-            "width": 452,
-            "height": 593,
-            "image": "203_entrance/203_enterRecepClose.png"
-        }];
-        chat(5, 203);
-        g.pass = "";
-        $.each(btnList, function (i, v) {
-            nav.button(v, 203);
-        });
-    }
-    else if (g.pass === "leave11") {
-        g.pass = "";
-        g.internal = "201 change";
-        navList = [201, 0];
-        btnList = [{
-            "type": "btn",
-            "name": "recep",
-            "left": 1145,
-            "top": 352,
-            "width": 162,
-            "height": 197,
-            "image": "203_entrance/203_enterRecep.png"
-        }];
-        $.each(btnList, function (i, v) {
-            nav.button(v, 203);
-        });
-        chat(19, 203);
-    }
-    else if (sc.cecilia().thisRoom) {
-        g.internal = "201 change";
-        g.pass = "203Elevator";
-        navList = [201, 207, 0];
-        btnList = [{
-            "type": "btn",
-            "name": "recep",
-            "left": 1145,
-            "top": 352,
-            "width": 162,
-            "height": 197,
-            "image": "203_entrance/203_enterRecep.png"
-        }];
-        $.each(btnList, function (i, v) {
-            nav.button(v, 203);
-        });
-    }
-    else
-        chat(0, 203);
+    var missyStep = sc.getstep("missy");
 
-    
-    nav.buildnav(navList);
+    if (missyStep > 24 && sc.checkevent("missy", -1)) {
+        if (g.hourBetween(7, 12)) {
+            nav.button({
+                "type": "btn",
+                "name": "door",
+                "left": 390,
+                "top": 189,
+                "width": 414,
+                "height": 509,
+                "image": "203_entrance/door.png"
+            }, 203);
+        }
+        nav.buildnav([201, 207, 0]);
+    }
+    else {
+        var navList = [0];
+        var btnList = new Array();
+        if (g.pass === "takeItBitch") {
+            nav.bg("203_entrance/203_frontDeskCloseup.jpg");
+            btnList = [{
+                "type": "btn",
+                "name": "fooIgnore",
+                "left": 685,
+                "top": 302,
+                "width": 452,
+                "height": 593,
+                "image": "203_entrance/203_enterRecepClose.png"
+            }];
+            chat(5, 203);
+            g.pass = "";
+            $.each(btnList, function (i, v) {
+                nav.button(v, 203);
+            });
+        }
+        else if (g.pass === "leave11") {
+            g.pass = "";
+            g.internal = "201 change";
+            navList = [201, 0];
+            btnList = [{
+                "type": "btn",
+                "name": "recep",
+                "left": 1145,
+                "top": 352,
+                "width": 162,
+                "height": 197,
+                "image": "203_entrance/203_enterRecep.png"
+            }];
+            $.each(btnList, function (i, v) {
+                nav.button(v, 203);
+            });
+            chat(19, 203);
+        }
+        else if (sc.cecilia().thisRoom) {
+            g.internal = "201 change";
+            g.pass = "203Elevator";
+            navList = [201, 207, 0];
+            btnList = [{
+                "type": "btn",
+                "name": "recep",
+                "left": 1145,
+                "top": 352,
+                "width": 162,
+                "height": 197,
+                "image": "203_entrance/203_enterRecep.png"
+            }];
+            $.each(btnList, function (i, v) {
+                nav.button(v, 203);
+            });
+        }
+        else
+            chat(0, 203);
+
+
+        nav.buildnav(navList);
+    }
 };
 
 room203.btnclick = function (name) {
@@ -109,6 +126,9 @@ room203.btnclick = function (name) {
                     chat(6, 203);
                 }
             }
+            break;
+        case "door":
+            char.room(200);
             break;
         default:
             break;
@@ -384,7 +404,7 @@ room203.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "cecilia",
-            text: "Have you solved the cum caper at The Toy Box yet?",
+            text: "Have you solved the cum caper at Toys 'N Us yet?",
             button: [
                 { chatID: 14, text: "Not yet.", callback: "" }
             ]

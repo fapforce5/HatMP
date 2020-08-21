@@ -29,7 +29,7 @@ cl.set = [
     { entry: 1, name: "Androgynous" },
     { entry: 2, name: "Cute" },
     { entry: 3, name: "Sexy" },
-    { entry: 4, name: "Cock Whore" }
+    { entry: 4, name: "Bimbo Slut" }
 ];
 
 

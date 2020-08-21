@@ -340,6 +340,8 @@ g.rooms = [
     { roomID: 207, name: "Elevator", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 200, btn: "roomBtn_207.png" },
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 200, btn: "roomBtn_208.png" },
 
+    { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 650, btn: "roomBtn_225.png" },
+
     { roomID: 250, name: "Naked Beaver Diner", image: "250_beaver/250_beaver.jpg", nightImage: "250_beaver/250_beaver.jpg", houseID: 250, btn: "roomBtn_250.png" },
     { roomID: 251, name: "Back Office", image: "251_office/office.jpg", nightImage: "251_office/office.jpg", houseID: 250, btn: "roomBtn_251.png" },
 
@@ -385,7 +387,7 @@ g.rooms = [
     { roomID: 651, name: "Hallway", image: "651_wackHallway/651_hallway.jpg", nightImage: "651_wackHallway/651_hallway.jpg", houseID: 650, btn: "roomBtn_651.png" },
     { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.png", nightImage: "661_peephole/661_backroom.png", houseID: 650, btn: "roomBtn_661.png" },
 
-    { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
+        { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Class Room", image: "901_classroom/901_classroom.png", nightImage: "901_classroom/901_classroom.png", houseID: 900, btn: "roomBtn_901.png" },
 
     { roomID: 910, name: "Department Of Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "bg.jpg" }
@@ -400,18 +402,24 @@ g.roomMap = [
     { roomID: 100, access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
     { roomID: 125, access: true, darkAccess: true, left: 1194, top: 824, width: 107, height: 167, img: "map/125.png", night: "map/125_night.png", map: 1 },
     { roomID: 150, access: false, darkAccess: false, left: 395, top: 62, width: 406, height: 208, img: "map/150.png", night: "map/150_night.png", map: 1 },
-    { roomID: 203, access: false, darkAccess: false, left: 1671, top: 370, width: 213, height: 257, img: "map/203.png", night: "map/203_night.png", map: 2 },
-    { roomID: 250, access: true, darkAccess: false, left: 1440, top: 440, width: 230, height: 166, img: "map/250.png", night: "map/250_night.png", map: 2 },
-    { roomID: 350, access: true, darkAccess: false, left: 1046, top: 773, width: 297, height: 213, img: "map/350.png", night: "map/350_night.png", map: 2 },
-    { roomID: 400, access: true, darkAccess: false, left: 531, top: 10, width: 312, height: 214, img: "map/400.png", night: "map/400_night.png", map: 2 },
+    { roomID: 203, access: false, darkAccess: false, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
+    { roomID: 225, access: false, darkAccess: false, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
+    { roomID: 250, access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
+    { roomID: 350, access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
+    { roomID: 400, access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
     { roomID: 404, access: true, darkAccess: true, left: 798, top: 502, width: 130, height: 172, img: "map/404.png", night: "map/404_night.png", map: 1 },
-    { roomID: 405, access: true, darkAccess: false, left: 240, top: 475, width: 169, height: 135, img: "map/405.png", night: "map/405_night.png", map: 2 },
-    { roomID: 406, access: true, darkAccess: false, left: 515, top: 331, width: 240, height: 249, img: "map/406.png", night: "map/406_night.png", map: 2 },
+    { roomID: 405, access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
+    { roomID: 406, access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
     { roomID: 450, access: true, darkAccess: true, left: 1513, top: 638, width: 138, height: 126, img: "map/450.png", night: "map/450_night.png", map: 0 },
     { roomID: 500, access: true, darkAccess: false, left: 496, top: 784, width: 294, height: 214, img: "map/500.png", night: "map/500_night.png", map: 1 },
-    { roomID: 550, access: true, darkAccess: false, left: 1097, top: 85, width: 241, height: 185, img: "map/550.png", night: "map/550_night.png", map: 2 },
-    { roomID: 650, access: true, darkAccess: false, left: 1456, top: 779, width: 228, height: 221, img: "map/650.png", night: "map/650_night.png", map: 2 },
-    { roomID: 910, access: true, darkAccess: false, left: 918, top: 225, width: 259, height: 143, img: "map/910.png", night: "map/910_night.png", map: 1 }
+    { roomID: 550, access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
+    { roomID: 650, access: true, darkAccess: false, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
+    { roomID: 910, access: true, darkAccess: false, left: 918, top: 225, width: 259, height: 143, img: "map/910.png", night: "map/910_night.png", map: 1 },
+
+
+    { roomID: 1001, access: false, darkAccess: false, left: 531, top: 688, width: 206, height: 194, img: "map/1001.png", night: "map/1001_night.png", map: 1 },
+    { roomID: 1002, access: false, darkAccess: false, left: 506, top: 246, width: 392, height: 282, img: "map/1001.png", night: "map/1001_night.png", map: 1 },
+    { roomID: 1001, access: false, darkAccess: false, left: 531, top: 688, width: 206, height: 194, img: "map/1001.png", night: "map/1001_night.png", map: 1 },
     //{ roomID: 100, access: false, left: 500, top: 300, width: 300, height: 150, activeImg: "map/constructionSite.png", inactiveImg: "map/inactive.png" },
 ];
 
@@ -427,6 +435,18 @@ g.roomMapAccess = function (roomID, access, darkAccess) {
             g.roomMap[i].darkAccess = darkAccess;
         }
     }
+};
+
+g.hasAccess = function (roomID) {
+    var retVal = { access: false, darkAccess: false };
+    var i;
+    for (i = 0; i < g.roomMap.length; i++) {
+        if (g.roomMap[i].roomID === roomID) {
+            retVal.access = g.roomMap[i].access;
+            retVal.darkAccess = g.roomMap[i].darkAccess;
+        }
+    }
+    return retVal;
 };
 
 g.setRatio = function () {

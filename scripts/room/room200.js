@@ -1,7 +1,9 @@
 ﻿//Room name
 var room200 = {};
 room200.main = function () {
-
+    if (sc.getstep("missy") > 24) {
+        nav.bg("200_frontOffice/200_25.jpg")
+    }
     g.internal = "";
     var btnList = [
         {
@@ -160,8 +162,11 @@ room200.btnclick = function (name) {
             else if (thisStep === 24) {
                 chat(156, 200);
             }
-            else if (thisStep === 25) {
-                chat(163, 200);
+            else if (thisStep > 24) {
+                if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2))
+                    chat(164, 200);
+                else
+                    chat(163, 200);
             }
             else { //thisstep = 10
                 if (g.pass === "finishComputer") {
@@ -691,6 +696,21 @@ room200.chatcatch = function (callback) {
             char.addtime(200);
             char.room(0);
             break;
+        case "25ChstityCheck":
+            if (cl.c.chastity === "pink")
+                chat(0, 200);
+            else
+                chat(166, 200);
+            break;
+        case "25a":
+        case "25b":
+        case "25c":
+
+            
+            //{ chatID: -1, text: "Tell me what I need to do", callback: "25a" },
+            //{ chatID: -1, text: "Help me become a sissy", callback: "25b" },
+            //{ chatID: -1, text: "I've got it [Leave]", callback: "25c" },
+            break;
         default:
             break;
     }
@@ -994,7 +1014,7 @@ room200.chat = function (chatID) {
             button: [
                 { chatID: 31, text: "Go to the mall and buy new shoes", callback: "" },
                 { chatID: 31, text: "Go home and masturbate to Hentai", callback: "" },
-                { chatID: 32, text: "Going straight to the Toy Box and follow Tiffany's orders", callback: "" }
+                { chatID: 32, text: "Going straight to Toys 'N Us and follow Tiffany's orders", callback: "" }
             ]
         },
         {
@@ -2123,7 +2143,7 @@ room200.chat = function (chatID) {
             chatID: 160,
             speaker: "missy",
             text: "Going forward you will only be allowed in here if I have a case for you, and all future cases will be based on your " +
-            "progression in my program. ",
+                "progression in my program. ",
             button: [
                 { chatID: 161, text: "...", callback: "" },
             ]
@@ -2133,7 +2153,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: "I will let the elevator operator know you can now use it. Simply go into the hallway and use the elevator. Press the button " +
                 "for the floor you want. I'll let you enter the Red Room of Disicpline, but the other two you'll have to earn. Since I have only have " +
-            "so much time in my day you'll have to arrive by 10:00 each day you wish to progress. Do you understand?",
+                "so much time in my day you'll have to arrive by 10:00 each day you wish to progress. Do you understand?",
             button: [
                 { chatID: 160, text: "Sorry mistress, can you repeat that", callback: "" },
                 { chatID: 162, text: "Yes mistress.", callback: "" },
@@ -2150,11 +2170,59 @@ room200.chat = function (chatID) {
         {
             chatID: 163,
             speaker: "missy",
-            text: "Adventure in the sewer. Not complete yet.",
+            text: "You must go to sewer",
             button: [
                 { chatID: -1, text: "yes mistress", callback: "leave" },
             ]
         },
+        {
+            chatID: 164,
+            speaker: "missy",
+            text: "Your trial of discipline is almost complete. For this next trial I'm need you to fetch something that was stolen from " +
+                "me some time ago. I'll need you to traverse the sewers of this city.",
+            button: [
+                { chatID: -1, text: "Tell me what I need to do", callback: "25a" },
+                { chatID: -1, text: "Help me become a sissy", callback: "25b" },
+                { chatID: -1, text: "I've got it [Leave]", callback: "25c" },
+            ]
+        },
+        {
+            chatID: 165,
+            speaker: "missy",
+            text: "I need you to come in wearing a pink chastity device. Pink is a fitting color for a sissy. ",
+            button: [
+                { chatID: -1, text: "Yes mistress", callback: "25ChstityCheck" },
+            ]
+        },
+        {
+            chatID: 166,
+            speaker: "missy",
+            text: "So tell me sissy are you wearing a pink chastity device?",
+            button: [
+                { chatID: 167, text: "No mistress", callback: "" },
+            ]
+        },
+        {
+            chatID: 167,
+            speaker: "missy",
+            text: "Go and get the device from Toys 'N Us and put it on. Don't return until you are wearing it. It's a bit more snug than " +
+                "the last one I gave you. If you need to shrink you pee pee I suggest taking some hormone pills. If you are taking the pills " +
+            "and aren't transforming it's because you don't want to be a sissy. Pills alone won't don't make a sissy.",
+            button: [
+                { chatID: 168, text: "What else makes a sissy mistress?", callback: "" },
+            ]
+        },
+        {
+            chatID: 167,
+            speaker: "missy",
+            text: "You actions show what's truely in your heart. You must go out and act like a sissy to earn it. Earning the title " +
+                "of sissy can be done in different ways, like pleasuring a cock, vagina, asshole, feet, or other body part. " +
+            "No matter what you serve, it about the pleasure of others with no promise of being pleased in returned. ",
+            button: [
+                { chatID: 168, text: "So service mistress?", callback: "" },
+            ]
+        },
+
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
