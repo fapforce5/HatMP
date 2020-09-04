@@ -52,13 +52,69 @@ $(document).ready(function () {
             });
         });
 
+        $(".resize").each(function () {
+            var w = $(this).css("width").replace('px', '') / ogRatio;
+            var h = $(this).css("height").replace('px', '') / ogRatio;
+            var t = $(this).css("top").replace('px', '') / ogRatio;
+            var l = $(this).css("left").replace('px', '') / ogRatio;
+            $(this).css({
+                "width": (w * g.ratio) + "px",
+                "height": (h * g.ratio) + "px",
+                "top": (t * g.ratio) + "px",
+                "left": (l * g.ratio) + "px"
+            });
+        });
+
         $('.room-left').css({ height: 1080 * g.ratio + "px" });
+
+        $('.char-container').css({ "height": 670 * g.ratio + "px" });
 
         $('.char-modBtn').css({
             width: 75 * g.ratio + "px",
             height: 75 * g.ratio + "px"
         });
-
+        $(".rl-change[data-type='body']").css({
+            left: "0px",
+            top: "0px",
+            width: 75 * g.ratio + "px",
+            height: 50 * g.ratio + "px"
+        });
+        $(".rl-change[data-type='map']").css({
+            left: 75 * g.ratio + "px",
+            top: "0px",
+            width: 75 * g.ratio + "px",
+            height: 50 * g.ratio + "px"
+        });
+        $(".rl-change[data-type='graph']").css({
+            left: 150 * g.ratio + "px",
+            top: "0px",
+            width: 75 * g.ratio + "px",
+            height: 50 * g.ratio + "px"
+        });
+        $(".rl-change[data-type='hide']").css({
+            left: 225 * g.ratio + "px",
+            top: "0px",
+            width: 75 * g.ratio + "px",
+            height: 50 * g.ratio + "px"
+        });
+        $(".left-menu").css({
+            width: 300 * g.ratio + "px",
+        });
+        $(".char-12").css({
+            "font-size": 12 * g.ratio + "px"
+        });
+        $(".char-20").css({
+            "font-size": 20 * g.ratio + "px"
+        });
+        $(".mt-10").css({
+            "margin-top": 10 * g.ratio + "px"
+        });
+        $(".mt-60").css({
+            "margin-top": 60 * g.ratio + "px"
+        });
+        $(".resize-height").css({
+            height: 20 * g.ratio + "px"
+        });
         char.menu();
     };
 
@@ -100,9 +156,104 @@ $(document).ready(function () {
         g.tview = $(this).data("t");
         cl.display();
     });
+    $(".rl-change[data-type='body']").css({
+        left: "0px",
+        top: "0px",
+        width: 75 * g.ratio + "px",
+        height: 50 * g.ratio + "px"
+    });
+    $(".rl-change[data-type='map']").css({
+        left: 75 * g.ratio + "px",
+        top: "0px",
+        width: 75 * g.ratio + "px",
+        height: 50 * g.ratio + "px"
+    });
+    $(".rl-change[data-type='graph']").css({
+        left: 150 * g.ratio + "px",
+        top: "0px",
+        width: 75 * g.ratio + "px",
+        height: 50 * g.ratio + "px"
+    });
+    $(".rl-change[data-type='hide']").css({
+        left: 225 * g.ratio + "px",
+        top: "0px",
+        width: 75 * g.ratio + "px",
+        height: 50 * g.ratio + "px"
+    });
+    $(".left-menu").css({
+        width: 300 * g.ratio + "px",
+    }).hide();
+    $(".rl-change").click(function () {
+        char.changeMenu($(this).data("type"));
+    });
+    $(".char-12").css({
+        "font-size": 12 * g.ratio + "px"
+    });
+    $(".char-20").css({
+        "font-size": 20 * g.ratio + "px"
+    });
+    $(".mt-10").css({
+        "margin-top": 10 * g.ratio + "px"
+    });
+    $(".mt-60").css({
+        "margin-top": 60 * g.ratio + "px"
+    });
+    $(".resize-height").css({
+        height: 20 * g.ratio + "px"
+    });
+    //$(".width-l").css({
+    //    width: 300 * g.ratio + "px"
+    //});
+    //$("#left_change").css({
+    //    width: 75 * g.ratio + "px",
+    //    height: 75 * g.ratio + "px"
+    //});
+    //$("#left_change").click(function () {
+    //    if (g.lview === "b") {
+    //        g.lview = "m";
+    //        $("#left_change").find("img").attr("src", "./images/general/cbod.png");
+    //        $("#room_left_char").hide();
+    //        $("#room_left_map").show();
+    //    }
+    //    else {
+    //        g.lview = "b";
+    //        $("#left_change").find("img").attr("src", "./images/general/cmap.png");
+    //        $("#room_left_char").show();
+    //        $("#room_left_map").hide();
+    //    }
+    //});
 
     char.init();
 });
+
+char.changeMenu = function (menu) {
+    switch (menu) {
+        case "body":
+            $("#room_left_char").show();
+            $("#room_left_map").hide();
+            $("#room_left_graph").hide();
+            break;
+        case "map":
+            $("#room_left_char").hide();
+            $("#room_left_map").show();
+            $("#room_left_graph").hide();
+            break;
+        case "graph":
+            $("#room_left_char").hide();
+            $("#room_left_map").hide();
+            $("#room_left_graph").show();
+            char.makeGraph();
+            break;
+        case "hide":
+            $("#room_left_char").hide();
+            $("#room_left_map").hide();
+            $("#room_left_graph").hide();
+            break;
+        default:
+            console.log("invalid menu: " + menu);
+            break;
+    };
+};
 
 char.addtime = function (minutes) {
     g.dt = char.addMinutes(g.dt, minutes);
@@ -110,90 +261,91 @@ char.addtime = function (minutes) {
 };
 
 char.newday = function (sendingRoom) {
-    var retData = null;
-    var hormoneLevel = g.get("hormone");
-    if (g.dt.getHours() > 6)
-        g.dt.setDate(g.dt.getDate() + 1);
-    g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
-    nav.buildclock();
-    g.set("jobConstWorkToday", 0);
-    g.set("energy", 70);
-    g.mod('hormone', -2);
-    var thisTinyPP = g.get("shinkCock");
-    g.newday();
-    cl.hairgrowth();
-    if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 21) {
-        if (cl.c.hairLength === null)
-            cl.c.hairLength = 0;
-        else if (cl.c.hairLength < 4)
-            cl.c.hairLength++;
-        cl.c.lastHairCut = g.dt;
-    }
+    //var retData = null;
+    //var hormoneLevel = g.get("hormone");
+    //if (g.dt.getHours() > 6)
+    //    g.dt.setDate(g.dt.getDate() + 1);
+    //g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
+    //nav.buildclock();
+    //g.set("jobConstWorkToday", 0);
+    //g.set("energy", 70);
+    //g.mod('hormone', -2);
+    //var thisTinyPP = g.get("shinkCock");
+    //g.newday();
+    //cl.hairgrowth();
+    //if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 21) {
+    //    if (cl.c.hairLength === null)
+    //        cl.c.hairLength = 0;
+    //    else if (cl.c.hairLength < 4)
+    //        cl.c.hairLength++;
+    //    cl.c.lastHairCut = g.dt;
+    //}
 
-    if (g.get("fitness") > 98) {
-        g.set("fitness", 0);
-        g.mod("fitnessLevel", 1);
-        g.mod("maxenergy", 3);
-        g.popUpNotice("Your fitness level increased");
-    }
+    //if (g.get("fitness") > 98) {
+    //    g.set("fitness", 0);
+    //    g.mod("fitnessLevel", 1);
+    //    g.mod("maxenergy", 3);
+    //    g.popUpNotice("Your fitness level increased");
+    //}
 
-    //check Transformation
+    ////check Transformation
 
-    if (cl.c.chest === 0) {
-        if (g.get("fitnessLevel") > 0) {
-            retData = { type: "chest", tOld: 0, tNew: 1 };
-            cl.c.chest = 1;
-        }
-    }
-    else if (thisTinyPP && cl.c.cock < 5) {
-        retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
-    }
-    else if (hormoneLevel > 65 && g.get("sissy") > 95) {
-        var tempC = null;
-        if (Math.floor(Math.random() * (100 - hormoneLevel)) < 5) {
-            g.set("sissy", 0);
-            g.mod("sissyLevel", 1);
-            if (cl.c.leg === 4 && cl.c.chest === 6)
-                tempC = null;
-            else if (cl.c.leg === 4 && cl.c.chest < 6)
-                tempC = "chest";
-            else if (cl.c.chest === 6 && cl.c.leg < 4)
-                tempC = "leg";
-            else if (Math.floor(Math.random() * 2) === 0)
-                tempC = "leg";
-            else
-                tempC = "chest";
+    //if (cl.c.chest === 0) {
+    //    if (g.get("fitnessLevel") > 0) {
+    //        retData = { type: "chest", tOld: 0, tNew: 1 };
+    //        cl.c.chest = 1;
+    //    }
+    //}
+    //else if (thisTinyPP && cl.c.cock < 5) {
+    //    retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
+    //}
+    //else if (hormoneLevel > 65 && g.get("sissy") > 95) {
+    //    var tempC = null;
+    //    if (Math.floor(Math.random() * (100 - hormoneLevel)) < 5) {
+    //        g.set("sissy", 0);
+    //        g.mod("sissyLevel", 1);
+    //        if (cl.c.leg === 4 && cl.c.chest === 6)
+    //            tempC = null;
+    //        else if (cl.c.leg === 4 && cl.c.chest < 6)
+    //            tempC = "chest";
+    //        else if (cl.c.chest === 6 && cl.c.leg < 4)
+    //            tempC = "leg";
+    //        else if (Math.floor(Math.random() * 2) === 0)
+    //            tempC = "leg";
+    //        else
+    //            tempC = "chest";
 
-            if (tempC === null)
-                retData = null;
+    //        if (tempC === null)
+    //            retData = null;
 
-            else if (tempC === "chest")
-                retData = { type: "chest", tOld: cl.c.chest, tNew: cl.c.chest + 1 };
-            else
-                retData = { type: "leg", tOld: cl.c.leg, tNew: cl.c.leg + 1 };
-        }
-    }
-    if (retData !== null) {
-        switch (retData.type) {
-            case "chest":
-                cl.c.chest = retData.tNew;
-                break;
-            case "leg":
-                cl.c.leg = retData.tNew;
-                break;
-            case "cock":
-                cl.c.cock = retData.tNew;
-                break;
-            default:
-                console.log(newBod, "error");
-                break;
-        }
-        cl.display();
-    }
+    //        else if (tempC === "chest")
+    //            retData = { type: "chest", tOld: cl.c.chest, tNew: cl.c.chest + 1 };
+    //        else
+    //            retData = { type: "leg", tOld: cl.c.leg, tNew: cl.c.leg + 1 };
+    //    }
+    //}
+    //if (retData !== null) {
+    //    switch (retData.type) {
+    //        case "chest":
+    //            cl.c.chest = retData.tNew;
+    //            break;
+    //        case "leg":
+    //            cl.c.leg = retData.tNew;
+    //            break;
+    //        case "cock":
+    //            cl.c.cock = retData.tNew;
+    //            break;
+    //        default:
+    //            console.log(newBod, "error");
+    //            break;
+    //    }
+    //    cl.display();
+    //}
     
-    menu.save("HatMP_9", null, 9);
-    console.log(retData);
-    return retData;
+    //menu.save("HatMP_9", null, 9);
+    //console.log(retData);
+    //return retData;
+    console.log("noooooo")
 };
 
 char.newdayfake = function () {
@@ -842,7 +994,7 @@ char.init = function() {
     inv.phoneIcon();
 
     var btnWidth = 300 * g.ratio;
-    var btnHeight = 620 * g.ratio;
+    var btnHeight = 670 * g.ratio;
     $('.char-container').css({ "width": btnWidth, "height": btnHeight });
 
     $('.room-left').css({ height: 1080 * g.ratio + "px" });
@@ -928,6 +1080,107 @@ char.menu = function () {
     $('.resize-text').css({
         "font-size": 1.5 * g.ratio + "rem"
     });
+};
+
+char.makeGraph = function () {
+    //if ($("#room_left_graph").is(":visible")) {
+    var i;
+    var energy, maxenergy, oral, cock, anal, sissy, hormone;
+    oral = cock = anal = 0;
+    for (i = 0; i < g.st.length; i++) {
+        switch (g.st[i].n) {
+            case "energy":
+                energy = g.st[i].t;
+                break;
+            case "maxenergy":
+                maxenergy = g.st[i].t;
+                break;
+            case "leg":
+                $(".rl-bar[data-name='leg']").css({ width: g.st[i].t + "%" });
+                break;
+            case "legLevel":
+                $("#rl_kick").html("Kick: +" + g.st[i].t);
+                break;
+            case "body":
+                $(".rl-bar[data-name='body']").css({ width: g.st[i].t + "%" });
+                break;
+            case "bodyLevel":
+                $("#rl_punch").html("Punch: +" + g.st[i].t);
+                break;
+            case "d":
+                $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
+                break;
+            case "dLevel":
+                $("#rl_d").html("Defense: +" + g.st[i].t);
+                break;
+            case "fitness":
+                $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
+                break;
+            case "fitnessLevel":
+                $("#rl_fitness").html("Fitness: +" + g.st[i].t);
+                break;
+            case "giveOralMale":
+                oral += g.st[i].t;
+                break;
+            case "giveOralFemale":
+                oral += g.st[i].t;
+                break;
+            case "giveAnalMale":
+                cock += g.st[i].t;
+                break;
+            case "giveAnalFemale":
+                cock += g.st[i].t;
+                break;
+            case "fuckPussy":
+                cock += g.st[i].t;
+                break;
+            case "receiveAnalMale":
+                anal += g.st[i].t;
+                break;
+            case "receiveAnalFemale":
+                anal += g.st[i].t;
+                break;
+            case "hormone":
+                hormone = g.st[i].t;
+                $(".rl-bar[data-name='hormone']").css({ width: g.st[i].t + "%" });
+                break;
+            case "sissy":
+                sissy = g.st[i].t;
+                $(".rl-bar[data-name='sissy']").css({ width: g.st[i].t + "%" });
+                break;
+            case "sissyLevel":
+                $("#rl_sissy").html("Sissy: " + g.st[i].t);
+                break;
+        }
+    }
+
+    $("#rl_energy").html(" &nbsp;&nbsp;Energy/Max: " + energy + "/" + maxenergy);
+    $(".rl-bar[data-name='energy']").css({ width: ((energy / maxenergy) * 100) + "%" });
+    console.log(oral)
+    $("#rl_oral").html(" &nbsp;&nbsp;Oral: +" + Math.floor(oral / 10));
+    $(".rl-bar[data-name='oral']").css({ width: ((oral % 10) * 10) + "%" });
+    $("#rl_cock").html(" &nbsp;&nbsp;Sex: +" + Math.floor(cock / 10));
+    $(".rl-bar[data-name='cock']").css({ width: ((cock % 10) * 10) + "%" });
+    $("#rl_anal").html(" &nbsp;&nbsp;Anal: +" + Math.floor(anal / 10));
+    $(".rl-bar[data-name='anal']").css({ width: ((anal % 10) * 10) + "%" });
+
+    if (sissy < 95 && hormone < 75) {
+        $("#rl_hormone").html(" &nbsp;&nbsp;Take your pills");
+        $("#rl_sis").html(" &nbsp;&nbsp;Serve More");
+    }
+    else if (sissy < 95) {
+        $("#rl_hormone").html(" &nbsp;&nbsp;Feminine");
+        $("#rl_sis").html(" &nbsp;&nbsp;Serve More");
+    }
+    else if (hormone < 75) {
+        $("#rl_hormone").html(" &nbsp;&nbsp;Take your pills");
+        $("#rl_sis").html(" &nbsp;&nbsp;You Slut!");
+    }
+    else {
+        $("#rl_hormone").html(" &nbsp;&nbsp;Transformation Possible");
+        $("#rl_sis").html(" &nbsp;&nbsp;Transformation Possible");
+    }
+
 };
 
 char.export = function (saveID) {

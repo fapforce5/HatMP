@@ -3,7 +3,7 @@ var room203 = {};
 room203.main = function () {
     var missyStep = sc.getstep("missy");
 
-    if (missyStep > 24 && sc.checkevent("missy", -1)) {
+    if (missyStep > 25) {
         if (g.hourBetween(7, 12)) {
             nav.button({
                 "type": "btn",
@@ -161,7 +161,7 @@ room203.chatcatch = function (callback) {
                     nav.killall();
                     nav.bg("203_entrance/203_enter.jpg");
                     nav.killbutton("zzz-clothing-kill");
-                    cl.displayClothed();
+                    zcl.displayClothed();
                     nav.button({
                         "type": "img",
                         "name": "recepLook",
@@ -190,7 +190,7 @@ room203.chatcatch = function (callback) {
                     else {
                         nav.killall();
                         nav.bg("203_entrance/203_enter.jpg");
-                        cl.displayClothed();
+                        zcl.displayClothed();
                         nav.button({
                             "type": "img",
                             "name": "recepLook",
@@ -207,7 +207,7 @@ room203.chatcatch = function (callback) {
                     nav.killall();
                     nav.bg("203_entrance/203_enter.jpg");
                     nav.killbutton("zzz-clothing-kill");
-                    cl.displayClothed();
+                    zcl.displayClothed();
                     nav.button({
                         "type": "img",
                         "name": "recepLook",
@@ -229,7 +229,7 @@ room203.chatcatch = function (callback) {
             });
 
             nav.killall();
-            cl.displayMissy();
+            zcl.displayMissy();
             nav.button({
                 "type": "img",
                 "name": "recepLook",

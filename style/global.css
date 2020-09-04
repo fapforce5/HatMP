@@ -47,11 +47,25 @@ input[type=text]:disabled{
     background:rgba(0,0,0,.2);
 }
 
-.room-topper{
-    position:absolute;
-    top:0;
-    right:0;
-    z-index:100;
+.rl-change {
+    padding: 0;
+    margin: 0;
+    z-index: 30;
+    border: none;
+    background: none;
+    position: absolute;
+    cursor:pointer;
+}
+
+.rl-change:hover{
+    filter: brightness(1.1);
+}
+
+.room-topper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
 }
 
 .room-background img{
@@ -81,6 +95,10 @@ input[type=text]:disabled{
 
 .room-btnflat:hover {
     filter: brightness(1);
+}
+
+.room-zindex{
+    z-index: 2;
 }
 
 .pos-abs {

@@ -11,6 +11,10 @@ room502.main = function () {
         nav.bg("502_bedroom/eat1.jpg");
         chat(22, 502);
     }
+    else if (g.pass === 502) {
+        g.pass = "";
+        chat(10, 502);
+    }
     else if (sc.checkevent("me", 3) && !sc.checkevent("zoey", -1) && zoeyStep < 22) {
         nav.bg("502_bedroom/homeless.jpg");
         chat(1, 502);
@@ -178,35 +182,10 @@ room502.chatcatch = function (callback) {
                 cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
                 cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
                 cl.display();
-                var newBod = char.newday();
 
-                if (newBod !== null) {
-                    nav.killall();
-                    nav.button({
-                        "type": "btn",
-                        "name": "computer",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "transform/" + newBod.type + "_" + newBod.tNew + ".gif"
-                    });
-                    if (newBod.type === "chest" && newBod.tNew === 1)
-                        chat(62, 502);
-                    else if (newBod.type === "chest" && newBod.tNew === 2)
-                        chat(63, 502);
-                    else if (newBod.type === "cock")
-                        chat(64, 502);
-                    else if (newBod.type === "chest")
-                        chat(65, 502);
-                    else if (newBod.type === "leg")
-                        chat(66, 502);
-                    else
-                        console.log(newBod, "error");
-                }
-                else
-
-                chat(10, 502);
+                g.pass = 502;
+                char.room(28);
+                
             }
             break;
         case "newday":
@@ -217,8 +196,7 @@ room502.chatcatch = function (callback) {
             break;
         case "firstNewDay":
             sc.setstep("zoey", -1);
-            char.newday();
-            char.room(502);
+            char.room(28);
             break;
         case "o0":
         case "o1":
@@ -236,6 +214,9 @@ room502.chatcatch = function (callback) {
             cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
             cl.c.pj = cl.saveOutfit[thisEntry].pj;
             cl.display();
+            char.room(502);
+            break;
+        case "o4":
             char.room(502);
             break;
         case "overLook1":
@@ -312,7 +293,7 @@ room502.chatcatch = function (callback) {
         case "dressup":
             cl.nude();
             nav.killbutton("zoey");
-            cl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra");
+            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra");
             break;
         case "dressup1":
             cl.c.shirt = "r";
@@ -320,7 +301,7 @@ room502.chatcatch = function (callback) {
             cl.c.pants = "k";
             cl.c.shoes = "fb";
             cl.display();
-            cl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra");
+            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra");
             break;
         case "zoeyLeave":
             nav.room(502);

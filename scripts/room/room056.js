@@ -37,7 +37,7 @@ room56.btnclick = function (name) {
                 nav.killall();
                 cl.clean("all");
                 cl.nude();
-                cl.displayMain(0, 400, .22, "shower");
+                zcl.displayMain(0, 400, .22, "shower");
                 nav.bg("56_bathroom/shower.jpg", "56_bathroom/shower.jpg");
                 if (inv.get("razor").count > 0)
                     chat(1, 56);
@@ -58,7 +58,7 @@ room56.chatcatch = function (callback) {
     switch (callback) {
         case "shaveBody":
             g.set("bodyhair", 0);
-            cl.displayMain(0, 400, .22, "shower");
+            zcl.displayMain(0, 400, .22, "shower");
             inv.use("razor");
             char.addtime(15);
             cl.display();
@@ -75,7 +75,7 @@ room56.chatcatch = function (callback) {
             break;
         case "wash":
             cl.clean("face");
-            cl.displayMirror();
+            zcl.displayMirror();
             break;
         default:
             break;

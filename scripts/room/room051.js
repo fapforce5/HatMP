@@ -127,7 +127,7 @@ room51.chatcatch = function (callback) {
             break;
         case "t13":
             nav.bg("51_livingRoom/t13.jpg");
-            cl.displayface();
+            zcl.displayface();
             if (cl.getBodyHair() !== null)
                 chat(19, 51);
             else
@@ -143,17 +143,17 @@ room51.chatcatch = function (callback) {
             break;
         case "t16":
             nav.bg("51_livingRoom/t13.jpg");
-            cl.displayface();
+            zcl.displayface();
             break;
         case "t17":
             cl.c.makeup = "mb";
-            cl.displayface();
+            zcl.displayface();
             break;
         case "t18":
             nav.bg("51_livingRoom/livingroom.jpg");
             nav.killall();
             cl.nude();
-            cl.displayMain(20, 650, .20, "");
+            zcl.displayMain(20, 650, .20, "");
             nav.button({
                 "type": "btn",
                 "name": "t19",
@@ -202,7 +202,7 @@ room51.chatcatch = function (callback) {
             nav.killall();
             char.settime(18, 8);
             nav.bg("51_livingRoom/livingroom.jpg");
-            cl.displayMain(20, 650, .20, "");
+            zcl.displayMain(20, 650, .20, "");
             nav.button({
                 "type": "img",
                 "name": "t19",
@@ -226,7 +226,7 @@ room51.chatcatch = function (callback) {
             cl.add("pj", "gown");
             cl.c.pj = "gown";
             nav.killall();
-            cl.displayMain(20, 650, .20, "clothes");
+            zcl.displayMain(20, 650, .20, "clothes");
             nav.button({
                 "type": "img",
                 "name": "t19",
@@ -286,7 +286,7 @@ room51.chatcatch = function (callback) {
         case "purple":
             cl.c.lips = callback;
             g.internal = callback;
-            cl.displayface();
+            zcl.displayface();
             break;
         default:
             break;

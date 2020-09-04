@@ -137,7 +137,7 @@ room403.chatcatch = function (callback) {
         case "changeRoom6c":
             nav.bg("403_saucy/changeRoom6c.jpg");
             cl.display();
-            cl.displayMain(60, 760, .19, "panties");
+            zcl.displayMain(60, 760, .19, "panties");
             break;
         case "selfie":
             nav.bg("403_saucy/changeRoom.jpg");
@@ -184,12 +184,12 @@ room403.chatcatch = function (callback) {
             cl.c.socks = "p";
             cl.c.shoes = "fb";
             cl.display();
-            cl.displayMain(60, 760, .19, "panties socks shoes shirt");
+            zcl.displayMain(60, 760, .19, "panties socks shoes shirt");
             break;
         case "changeRoom11b":
             cl.c.wig = "f";
             cl.display();
-            cl.displayMain(60, 760, .19, "panties socks shoes shirt");
+            zcl.displayMain(60, 760, .19, "panties socks shoes shirt");
             break;
         case "changeRoomX":
             nav.killbutton("cupDrip");

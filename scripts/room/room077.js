@@ -188,11 +188,15 @@ room77.chatcatch = function (callback) {
                 "image": "77_bimboLiving/p1.gif"
             }, 77);
             if (g.get("knockedup") === null) {
-                g.set("knockedup", g.startDate);
+                g.set("knockedup", g.dt);
+                chat(29, 77);
+            }
+            else if (g.get("knockedup").getFullYear() < 2000) {
+                g.set("knockedup", g.dt);
                 chat(29, 77);
             }
             else {
-                chat(32, 77);
+                chat(27, 77);
             }
             break;
         case "pussy7a":
@@ -208,6 +212,7 @@ room77.chatcatch = function (callback) {
             nav.bg("77_bimboLiving/p1a2.jpg");
             break;
         case "end":
+            char.addtime(60);
             nav.buildnav([76, 0]);
             break;
         case "ass":
@@ -373,7 +378,7 @@ room77.chat = function (chatID) {
             speaker: "bimbo",
             text: "I haven't been fucked like this since my bondage gang bang!",
             button: [
-                { chatID: -1, text: "Yes I will", callback: "pussy2" }
+                { chatID: -1, text: "*GROAN*", callback: "pussy2" }
             ]
         },
         {
@@ -438,7 +443,7 @@ room77.chat = function (chatID) {
             speaker: "bimbo",
             text: "Oh fuck, oh fuck, oh fuck, oh fuck fuck fuck fuck fuckfuckfucfkfukfuk",
             button: [
-                { chatID: 20, text: "Yes I am", callback: "ass2" }
+                { chatID: 20, text: "*GROAN*", callback: "ass2" }
             ]
         },
         {
@@ -540,11 +545,11 @@ room77.chat = function (chatID) {
             ]
         },
         {
-            chatID: 31,
+            chatID: 32,
             speaker: "bimbo",
             text: "Ooooo i love the feeling of a cum filled pussy!",
             button: [
-                { chatID: 28, text: "...", callback: "pussy6" }
+                { chatID: 28, text: "...", callback: "pussy7" }
             ]
         }
     ];

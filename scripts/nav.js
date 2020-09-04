@@ -112,6 +112,11 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn-tongue rom-event";
         else if (btn.type === "btnflat")
             classes = "room-btnflat room-btn rom-event";
+        else if (btn.type === "zimg")
+            classes = "room-img room-zindex";
+        else if (btn.type === "zbtn")
+            classes = "room-btn rom-event room-zindex";
+
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
         line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
@@ -119,6 +124,41 @@ nav.button = function (btn, roomNum) {
         $('#room-buttons').append(line);
     }
     $('img').on('dragstart', function (event) { event.preventDefault(); });
+};
+
+nav.text = function (btn, roomNum) {
+    var top = btn.top * g.ratio;
+    var left = btn.left * g.ratio;
+
+    var classes = "room-img";
+    var charAttr = "";
+    var thisHex = "#000000";
+    if (g.isNight() && (typeof btn.night !== "undefined"))
+        thisImage = btn.night;
+
+    if (btn.type === "btn")
+        classes = "room-btn rom-event";
+    else if (btn.type === "kiss")
+        classes = "room-btn-lips rom-event";
+    else if (btn.type === "tongue")
+        classes = "room-btn-tongue rom-event";
+    else if (btn.type === "btnflat")
+        classes = "room-btnflat room-btn rom-event";
+    else if (btn.type === "zimg")
+        classes = "room-img room-zindex";
+    else if (btn.type === "zbtn")
+        classes = "room-btn rom-event room-zindex";
+
+    if (btn.font === 12)
+        classes += " char-12 resize ";
+    else if (btn.font === 20)
+        classes += " char-20 resize ";
+    if ("hex" in btn)
+        thisHex = "#ffffff";
+
+    line = '<div class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
+
+    $('#room-buttons').append(line);
 };
 
 nav.modbutton = function (name, newImage, newName, newType) {

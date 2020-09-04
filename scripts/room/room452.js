@@ -119,7 +119,7 @@ room452.btnclick = function (name) {
         case "mirror":
             nav.killall();
             nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             chat(9, 452);
             break;
         default:
@@ -173,7 +173,7 @@ room452.chatcatch = function(callback){
             cl.c.cumface = false;
             cl.c.lips = "thin";
             cl.c.makeup = "n";
-            cl.displayMirror();
+            zcl.displayMirror();
             cl.display();
             break;
         default:

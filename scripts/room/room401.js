@@ -6,17 +6,58 @@ room401.main = function () {
         '<div class="wardrobe-line" id="wardrobe-line-buy"></div></div>');
     $('#wardrobe_body').css({ 'width': (1920 * g.ratio) + 'px', 'top': (100 * g.ratio) + 'px' });
     g.internal = 0;
-    var navList = [400];
-    if (g.pass === "bra")
+    var switchName = g.pass;
+
+    if (switchName === "bra")
         navList = [402];
+    else
+        navList = [400];
+
     inv.createElements();
-    switch (g.pass) {
+
+    g.pass = {
+        roomID: switchName === "bra" ? 402 : 400,
+        changeClothes: false,
+        shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null
+    };
+
+    if (switchName === "saucy" || switchName === "shoe" || switchName === "mens" || switchName === "bra") {
+        g.pass.shoes = cl.c.shoes;
+        g.pass.socks = cl.c.socks;
+        g.pass.pants = cl.c.pants;
+        g.pass.panties = cl.c.panties;
+        g.pass.bra = cl.c.bra;
+        g.pass.shirt = cl.c.shirt;
+        g.pass.dress = cl.c.dress;
+        g.pass.swimsuit = cl.c.swimsuit;
+        g.pass.pj = cl.c.pj;
+        $("#room_footer").hide();
+        $.each(g.rooms, function (j, u) {
+            if (u.roomID === 400) {
+                nav.button({
+                    "type": "zbtn",
+                    "name": "roomChange",
+                    "left": 350,
+                    "top": 980,
+                    "width": 200,
+                    "height": 75,
+                    "image": "navBtn/" + u.btn 
+                }, 401);
+                return false;
+            }
+        });
+    }
+
+    switch (switchName) {
         case "purse":
+            navList = [400];
             nav.bg("401_purchase/purse.jpg", "401_purchase/purse.jpg");
             room401.makeInv(["b"], sc.checkevent("me", 7));
             break;
         case "saucy":
-            cl.nude();
+            navList = [];
+            g.pass.roomID = 400;
+            g.pass.changeClothes = true;
             nav.bg("401_purchase/saucy.jpg", "401_purchase/saucy.jpg");
             room401.makeClothingDaring("pants", [1, 2, 3], true);
             room401.makeClothingDaring("pants", [4], false);
@@ -28,7 +69,11 @@ room401.main = function () {
             room401.makeClothingDaring("swimsuit", [4], false);
             break;
         case "shoe":
-            cl.nude();
+            navList = [];
+            g.pass.roomID = 400;
+            g.pass.changeClothes = true;
+            cl.c.shoes = null;
+            cl.display();
             var buyGirls = sc.checkevent("me", 7);
             nav.bg("401_purchase/shoe.jpg", "401_purchase/shoe.jpg");
             room401.makeClothing("shoes", "m", true);
@@ -37,7 +82,9 @@ room401.main = function () {
             room401.makeClothing("socks", "f", buyGirls);
             break;
         case "mens":
-            cl.nude();
+            navList = [];
+            g.pass.roomID = 400;
+            g.pass.changeClothes = true;
             nav.bg("401_purchase/mens.jpg", "401_purchase/mens.jpg");
             room401.makeClothing("panties", "m", true);
             room401.makeClothing("pants", "m", true);
@@ -45,21 +92,27 @@ room401.main = function () {
             room401.makeClothing("swimsuit", "m", true);
             break;
         case "salon":
+            navList = [405];
             nav.bg("401_purchase/salon.jpg", "401_purchase/salon.jpg");
             break;
         case "electronic":
+            navList = [400];
             room401.makeInv(["p"], true);
             nav.bg("401_purchase/electronic.jpg", "401_purchase/electronic.jpg");
             break;
         case "bra":
-            cl.nude();
+            navList = [];
+            g.pass.roomID = 400;
+            g.pass.changeClothes = true;
+            cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+            cl.display();
             nav.bg("401_purchase/bra.jpg", "401_purchase/bra.jpg");
             room401.makeClothing("bra", "f", true);
             room401.makeClothing("panties", "f", true);
             room401.makeClothing("pj", "f", true);
             break;
         case "general":
-            nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
+            nav.bgs("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
             if (sc.checkevent("spanky", 3))
                 room401.makeInv(["h", "e", "g"], true);
             else
@@ -74,6 +127,7 @@ room401.main = function () {
             navList = [650, 0];
             break;
         case "happyGirl":
+            navList = [400];
             room401.makeInv(["r"], true);
             nav.bg("401_purchase/paint.jpg", "401_purchase/paint.jpg");
             break;
@@ -125,27 +179,6 @@ room401.main = function () {
                 $("#menu_displayCountLine").show();
             }
         }
-        
-        /*
-        if (g.get("money") < thisItem.cost) {
-            $('#' + thisID).append('<img src="./images/inv/afford.png"/>');
-        }
-        else if (!thisCanBuy) {
-            $('#' + thisID).append('<img src="./images/inv/tooGirly.png"/>');
-        }
-        else {
-            g.mod("money", -1 * thisItem.cost);
-            g.popUpNotice("Purchased " + thisItem.display);
-            if (thisItem.count === null) {
-                inv.update(thisItem.name, true, null);
-                $('#' + thisID).append('<img src="./images/inv/sold.png"/>');
-                $(this).removeClass('store-inv');
-            }
-            else {
-                inv.update(thisItem.name, true, 1);
-            }
-        }
-        */
     });
 
     $('.store-clothing').click(function () {
@@ -249,21 +282,6 @@ room401.main = function () {
                 $("#menu_displayCountLine").show();
             }
         }
-        //var thisID = $(this).closest('.menu-popup').attr('id');
-
-        //if (g.get("money") < cl.list[cli].price) {
-        //    $('#' + thisID).append('<img src="./images/inv/afford.png"/>');
-        //}
-        //else {
-        //    g.mod("money", -1 * cl.list[cli].price);
-        //    g.popUpNotice("Purchased " + cl.list[cli].display);
-        //    cl.list[cli].inv = true;
-        //    $('#' + thisID).append('<img src="./images/inv/sold.png"/>');
-        //    $(this).removeAttr("data-name").removeAttr("data-type").removeClass("store-clothing");
-        //}
-        //if (g.pass === "bra")
-        //    g.internal = "purchased"
-        
     });
 };
 
@@ -350,7 +368,19 @@ room401.makeInv = function (typeArray, canbuy) {
 
 room401.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "roomChange":
+            cl.c.shoes = g.pass.shoes;
+            cl.c.socks = g.pass.socks;
+            cl.c.pants = g.pass.pants;
+            cl.c.panties = g.pass.panties;
+            cl.c.bra = g.pass.bra;
+            cl.c.shirt = g.pass.shirt;
+            cl.c.dress = g.pass.dress;
+            cl.c.swimsuit = g.pass.swimsuit;
+            cl.c.pj = g.pass.pj;
+            cl.display();
+            $("#room_footer").show();
+            char.room(g.pass.roomID);
             break;
         default:
             break;

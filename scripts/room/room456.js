@@ -43,7 +43,7 @@ room456.chatcatch = function (callback) {
             nav.bg("456_bench/sleepdark.jpg", "456_bench/sleepdark.jpg");
             break;
         case "wake":
-            char.newday();
+            char.newdayfake();
             nav.bg("456_bench/456_tif.jpg", "456_bench/456_tif.jpg");
             break;
         case "leave6":
@@ -110,34 +110,9 @@ room456.chatcatch = function (callback) {
             //    chat(13, 456);
             //}
             //else {
-            var newBod = char.newday();
+            char.newdayfake();
             nav.bg("456_bench/456_bg.jpg", "456_bench/456_bg_night.jpg");
-            if (newBod !== null) {
-                nav.killall();
-                nav.button({
-                    "type": "img",
-                    "name": "trans",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "transform/" + newBod.type + "_" + newBod.tNew + ".gif"
-                });
-
-                if (newBod.type === "chest" && newBod.tNew === 2)
-                    chat(28, 456);
-                else if (newBod.type === "cock")
-                    chat(29, 456);
-                else if (newBod.type === "chest")
-                    chat(30, 456);
-                else if (newBod.type === "leg")
-                    chat(31, 456);
-                else
-                    console.log(newBod, "error");
-            }
-            else {
-                chat(32, 456);
-            }
+            chat(32, 456);
             break;
         case "newday":
             if (sc.getstep("tiffany") === 13) {

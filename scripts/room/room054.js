@@ -84,7 +84,7 @@ room54.chatcatch = function (callback) {
         case "b1":
             nav.killbutton("tif");
             nav.bg("54_tif/b1.jpg");
-            cl.displayMain(0, 400, .30, "");
+            zcl.displayMain(0, 400, .30, "");
             break;
         case "b2":
             nav.killall();

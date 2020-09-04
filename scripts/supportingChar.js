@@ -118,8 +118,6 @@ sc.events = [
     { name: "zoey", step: 23, txt: "Need some space", img: "zoeyLock", show: true, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 24, txt: "transformation", img: "", show: false, row: 0, col: 4, ach: false, major: false },
 
-    { name: "missy", step: -2, txt: "Red Challenge Case Complete", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "missy", step: -1, txt: "Red Challenge Complete", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 0, txt: "Not applied yet.", img: "pc", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 1, txt: "Get Private Investigator's license and interview.", img: "pi_lic", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 2, txt: "Report for first day on job with a suit, black socks, and black shoes.", img: "suit", show: true, row: 0, col: 1, ach: false, major: false },
@@ -144,6 +142,11 @@ sc.events = [
     { name: "missy", step: 21, txt: "Post Naked Beaver Report", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 24, txt: "Begin Red Room", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 25, txt: "All Challenges Complete?", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "missy", step: 26, txt: "Red Challenge Complete", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "missy", step: 27, txt: "Receive Sewer Mission", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "cecilia", step: 0, txt: "Met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "cecilia", step: 1, txt: "Tied Up", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "tiffany", step: -7, txt: "Pink Pussy First Time", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -6, txt: "Return Trip", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -247,7 +250,9 @@ sc.events = [
     { name: "g", step: -1, txt: "Back Gym", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "g", step: 1, txt: "First met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "g", step: 2, txt: "exercise", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "g", step: 2, txt: "Exercise", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "g", step: 3, txt: "Training", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "g", step: 4, txt: "Spar", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "treyvon", step: 0, txt: "nope", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "treyvon", step: 1, txt: "Tif Scene", img: "", show: false, row: 0, col: 0, ach: false, major: false },

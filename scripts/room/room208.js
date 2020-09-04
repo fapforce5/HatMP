@@ -385,7 +385,7 @@ room208.chatcatch = function (callback) {
             break;
         case "t4":
             nav.bg("208_red/t4.jpg");
-            //cl.displayMain(-100, 600, .22, "behind");
+            //zcl.displayMain(-100, 600, .22, "behind");
             $('.room-left').hide();
             $('.room_footer').hide();
 
@@ -549,8 +549,8 @@ room208.chatcatch = function (callback) {
                     "height": 1035,
                     "image": "208_red/missy.png"
                 }, 208);
-                if (!sc.checkevent("missy", -1)) {
-                    sc.setstep("missy", -1)
+                if (!sc.getstep("missy") < 26) {
+                    sc.setstep("missy", 26)
                     chat(30, 208);
                 }
                 else if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2))

@@ -182,33 +182,8 @@ room10.chatcatch = function (callback) {
             char.room(10);
             break;
         case "nap_sleep":
-            var newBod = char.newday();
-            if (newBod !== null) {
-                nav.killall();
-                nav.button({
-                    "type": "btn",
-                    "name": "computer",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "transform/" + newBod.type + "_" + newBod.tNew + ".gif"
-                });
-                if (newBod.type === "chest" && newBod.tNew === 1)
-                    chat(13, 10);
-                else if (newBod.type === "chest" && newBod.tNew === 2)
-                    chat(14, 10);
-                else if (newBod.type === "cock")
-                    chat(15, 10);
-                else if (newBod.type === "chest")
-                    chat(16, 10);
-                else if (newBod.type === "leg")
-                    chat(17, 10);
-                else
-                    console.log(newBod, "error");
-            }
-            else
-                char.room(7);
+            g.pass = 7;
+            char.room(28);
             break;
         case "kickOut1":
             cl.c.shoes = "w",
@@ -336,7 +311,7 @@ room10.chat = function(chatID){
             speaker: "me",
             text: "How Long do you want to sleep?",
             button: [
-                { chatID: 4, text: "Sleep till morning", callback: "nap_sleep" },
+                { chatID: -1, text: "Sleep till morning", callback: "nap_sleep" },
                 { chatID: -1, text: "Cancel", callback: "" }
             ]
         },
@@ -358,7 +333,7 @@ room10.chat = function(chatID){
             text: "How Long do you want to sleep?",
             button: [
                 { chatID: 1, text: "Nap for 1 hour.", callback: "nap_1hour" },
-                { chatID: 4, text: "Sleep till morning", callback: "nap_sleep" },
+                { chatID: -1, text: "Sleep till morning", callback: "nap_sleep" },
                 { chatID: -1, text: "Don't Sleep", callback: "" }
             ]
         },
@@ -373,7 +348,7 @@ room10.chat = function(chatID){
             speaker: "me",
             text: "Sleep for the night?",
             button: [
-                { chatID: 4, text: "Sleep till morning", callback: "nap_sleep" },
+                { chatID: -1, text: "Sleep till morning", callback: "nap_sleep" },
                 { chatID: -1, text: "Don't Sleep", callback: "" }
             ]
         },

@@ -15,29 +15,29 @@ room27.main = function () {
     switch (g.pass) {
         case 12:
             nav.bg("12_bathroom/012_brushTeeth.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             chat(0, 27);
             break;
         case 56:
             nav.bg("56_bathroom/mirror.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             chat(0, 27);
             break;
         case 57:
             nav.bg("57_pussyPalace/makeup.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             chat(12, 27);
             break;
         case 451:
         case 452:
             nav.bg("451_parkMensRoom/mirror.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             chat(0, 27);
             break;
         case -1:
             case -2:
             nav.bg("57_pussyPalace/makeup.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             nav.button({
                 "type": "img",
                 "name": "tif",
@@ -63,7 +63,7 @@ room27.main = function () {
 room27.btnclick = function (name) {
     switch (name) {
         case "buildChar":
-            cl.displayMirror();
+            zcl.displayMirror();
             break;
         default:
             break;
@@ -96,11 +96,11 @@ room27.chatcatch = function (callback) {
             break;
         case "wash":
             cl.clean("face");
-            cl.displayMirror();
+            zcl.displayMirror();
             break;
         case "light":
             cl.c.makeup = "lb";
-            cl.displayMirror();
+            zcl.displayMirror();
             nav.killbutton("tif");
             nav.button({
                 "type": "img",
@@ -117,7 +117,7 @@ room27.chatcatch = function (callback) {
         case "pink":
             cl.applyLipstick(callback);
             cl.display();
-            cl.displayMirror();
+            zcl.displayMirror();
             if (g.pass === -1) {
                 nav.killbutton("tif");
                 nav.button({
@@ -164,7 +164,7 @@ room27.chatcatch = function (callback) {
         case "hp":
             cl.c.makeup = callback;
             cl.display();
-            cl.displayMirror();
+            zcl.displayMirror();
             if (g.pass === -2) {
                 nav.killbutton("tif");
                 nav.button({

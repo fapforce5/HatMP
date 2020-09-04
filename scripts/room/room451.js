@@ -67,7 +67,7 @@ room451.btnclick = function (name) {
         case "stall2":
             nav.killall();
             nav.bg("451_parkMensRoom/gloryHoleInsert.jpg");
-            if ((g.dt.getDay() === 0 || g.dt.getDay() === 6) && g.hourBetween(8, 17)) {
+            if ((g.dt.getDay() === 0 || g.dt.getDay() === 6) && g.hourBetween(8, 17) && sc.getstep("cecilia") === 0) {
                 nav.button({
                     "type": "btn",
                     "name": "insert_1",
@@ -92,7 +92,7 @@ room451.btnclick = function (name) {
             nav.buildnav([451]);
             break;
         case "stall1":
-            if (g.dt.getDay() === 0 || g.dt.getDay() === 6) {
+            if ((g.dt.getDay() === 0 || g.dt.getDay() === 6) && g.hourBetween(8, 17) && sc.getstep("cecilia") === 0) {
                 chat(5, 451);
             }
             else {
@@ -115,7 +115,7 @@ room451.btnclick = function (name) {
             char.room(27);
             //nav.killall();
             //nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
-            //cl.displayMirror();
+            //zcl.displayMirror();
             //chat(3, 451);
             break;
         case "insert":
@@ -208,7 +208,7 @@ room451.chatcatch = function (callback) {
             cl.c.cumface = false;
             cl.c.lips = "thin";
             cl.c.makeup = "n";
-            cl.displayMirror();
+            zcl.displayMirror();
             cl.display();
             break;
         case "bj2":

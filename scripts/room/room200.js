@@ -162,11 +162,14 @@ room200.btnclick = function (name) {
             else if (thisStep === 24) {
                 chat(156, 200);
             }
-            else if (thisStep > 24) {
-                if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2))
-                    chat(164, 200);
-                else
+            else if (thisStep === 25) {
                     chat(163, 200);
+            }
+            else if (thisStep === 26) {
+                chat(164, 200);
+            }
+            else if (thisStep === 27) {
+                chat(181, 200);
             }
             else { //thisstep = 10
                 if (g.pass === "finishComputer") {
@@ -509,7 +512,7 @@ room200.chatcatch = function (callback) {
             break;
         case "rack20":
             nav.bg("200_frontOffice/cross.jpg");
-            cl.displayMain(0, 810, .18, "armsup");
+            zcl.displayMain(0, 810, .18, "armsup");
 
             nav.button({
                 "type": "btn",
@@ -533,7 +536,7 @@ room200.chatcatch = function (callback) {
                 "image": "200_frontOffice/200_missy.png"
             }, 200);
             nav.bg("200_frontOffice/200_frontOffice.jpg");
-            cl.displayMain(445, 1380, .05, "armsup");
+            zcl.displayMain(445, 1380, .05, "armsup");
             nav.button({
                 "type": "img",
                 "name": "tiedown",
@@ -683,7 +686,7 @@ room200.chatcatch = function (callback) {
             nav.killall();
             cl.nude();
             nav.bg("200_frontOffice/202_sideDesk.jpg");
-            cl.kneel(500, 1000, .3, "");
+            zcl.kneel(500, 1000, .3, "");
             break;
         case "leave24":
             cl.undo();
@@ -703,13 +706,26 @@ room200.chatcatch = function (callback) {
                 chat(166, 200);
             break;
         case "25a":
+            if (sc.checkevent("tiffany", -5))
+                chat(166, 200);
+            else
+                chat(165, 200);
+            break;
         case "25b":
+            if (sc.checkevent("holly", -1))
+                chat(167, 200);
+            else
+                chat(168, 200);
+            break;
         case "25c":
-
-            
-            //{ chatID: -1, text: "Tell me what I need to do", callback: "25a" },
-            //{ chatID: -1, text: "Help me become a sissy", callback: "25b" },
-            //{ chatID: -1, text: "I've got it [Leave]", callback: "25c" },
+            sc.setstep("missy", 27);
+            sc.setstep("cecilia", 1);
+            char.addtime(180);
+            char.room(0);
+            break;
+        case "leaveRoom0":
+            char.addtime(30);
+            char.room(0);
             break;
         default:
             break;
@@ -2170,7 +2186,7 @@ room200.chat = function (chatID) {
         {
             chatID: 163,
             speaker: "missy",
-            text: "You must go to sewer",
+            text: "You still need to pass the red room of discipline. ",
             button: [
                 { chatID: -1, text: "yes mistress", callback: "leave" },
             ]
@@ -2178,51 +2194,173 @@ room200.chat = function (chatID) {
         {
             chatID: 164,
             speaker: "missy",
-            text: "Your trial of discipline is almost complete. For this next trial I'm need you to fetch something that was stolen from " +
-                "me some time ago. I'll need you to traverse the sewers of this city.",
+            text: "Your trial is complete, you have proven yourself a worthy sissy. As you may have guessed by now I did not hire " +
+            "you to simply file paperwork and assist with menial cases. The cases were to test you, see how you would react.",
             button: [
-                { chatID: -1, text: "Tell me what I need to do", callback: "25a" },
-                { chatID: -1, text: "Help me become a sissy", callback: "25b" },
-                { chatID: -1, text: "I've got it [Leave]", callback: "25c" },
+                { chatID: -1, text: "huh?", callback: "25a" },
             ]
         },
         {
             chatID: 165,
             speaker: "missy",
-            text: "I need you to come in wearing a pink chastity device. Pink is a fitting color for a sissy. ",
+            text: "When I assigned you to help " + sc.n("tiffany") + " find the person covering her booths in cum I assumed you would " +
+            "peek on her like an untrained sex starved boy, but you suprised me with your self discipline. I must applaud your resilience. ",
             button: [
-                { chatID: -1, text: "Yes mistress", callback: "25ChstityCheck" },
+                { chatID: -1, text: "...", callback: "25b" },
             ]
         },
         {
             chatID: 166,
             speaker: "missy",
-            text: "So tell me sissy are you wearing a pink chastity device?",
+            text: "When I assigned you to help " + sc.n("tiffany") + " find the person covering her booths in cum I knew you wouldn't " +
+                "be able to help yourself. Like a young male pervert you had to peek. You needed to look at her pussy. I need you to " +
+            "know that about yourself. Your lust, if used improperly will be your downfall.",
             button: [
-                { chatID: 167, text: "No mistress", callback: "" },
-            ]
-        },
-        {
-            chatID: 167,
-            speaker: "missy",
-            text: "Go and get the device from Toys 'N Us and put it on. Don't return until you are wearing it. It's a bit more snug than " +
-                "the last one I gave you. If you need to shrink you pee pee I suggest taking some hormone pills. If you are taking the pills " +
-            "and aren't transforming it's because you don't want to be a sissy. Pills alone won't don't make a sissy.",
-            button: [
-                { chatID: 168, text: "What else makes a sissy mistress?", callback: "" },
-            ]
-        },
-        {
-            chatID: 167,
-            speaker: "missy",
-            text: "You actions show what's truely in your heart. You must go out and act like a sissy to earn it. Earning the title " +
-                "of sissy can be done in different ways, like pleasuring a cock, vagina, asshole, feet, or other body part. " +
-            "No matter what you serve, it about the pleasure of others with no promise of being pleased in returned. ",
-            button: [
-                { chatID: 168, text: "So service mistress?", callback: "" },
+                { chatID: -1, text: "...", callback: "25b" },
             ]
         },
 
+        {
+            chatID: 167,
+            speaker: "missy",
+            text: "Then when you helped " + sc.n("jeffery") + " find who was stealing from him, I will admit I didn't expect you to rat " +
+            "out those poor girls. I honestly thought you had a conscious. It's that kind of heartlessness that may serve me well.  ",
+            button: [
+                { chatID: 169, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 168,
+            speaker: "missy",
+            text: "Then when you helped " + sc.n("jeffery") + " find who was stealing from him, I knew you would fail. I had already figured " +
+                "out what happened before I assigned you to the case. Those girls are so careless in how they rob the diner. The true " +
+            "purpose was to show you that you have such feminine features you could crossdress in public.  ",
+            button: [
+                { chatID: 169, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 169,
+            speaker: "missy",
+            text: "And finally you've shown yourself to have the discipline it takes to help me against this cities biggest problem, those " +
+            "damn cultists! They have been a scourge upon this city for far too long, sucking in innocent boys and girls in to their ranks. ",
+            button: [
+                { chatID: 170, text: "The cult?", callback: "" },
+            ]
+        },
+        {
+            chatID: 170,
+            speaker: "missy",
+            text: "Yes, surely you've come across them by now. They prey on those without self esteem and suck them in, give them a false " +
+                "sense of self worth, but only if you follow their leader to the fullest. He pulls them in and devours their individuality; " +
+            "makes them his servents. That's where you come in.",
+            button: [
+                { chatID: 171, text: "Me?", callback: "" },
+            ]
+        },
+        {
+            chatID: 171,
+            speaker: "missy",
+            text: "Yes. There are many of them, and the path to the cult's door is difficult filled my many different challenges. When " +
+                "you walked in I felt you may just be the one. I needed someone that can move between genders, someone that can both fight and " +
+                "fuck their way out of a situation. More importantly I need someone that can follow my direction without question. You're the " +
+            "sissy I need to help take them down.",
+            button: [
+                { chatID: 172, text: "I CAN DO IT!!!!", callback: "" },
+                { chatID: 173, text: "I don't know, it seems kinda hard", callback: "" },
+            ]
+        },
+        {
+            chatID: 172,
+            speaker: "missy",
+            text: "Slow down. You're no where near ready for the cult. You'll either get sucked in or become a victim of the cult. ",
+            button: [
+                { chatID: 174, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 173,
+            speaker: "missy",
+            text: "Don't be silly. You're stronger than you think if you just apply yourself. ",
+            button: [
+                { chatID: 174, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 174,
+            speaker: "missy",
+            text: "Deep in the sewers of this city there's a group that calls themselves the Burlesque Clan. They stole something of mine " +
+            "that I can use to help prepare you for the long difficult road ahead. I need you to get me that item.",
+            button: [
+                { chatID: 175, text: "What is it ma'am?", callback: "" },
+            ]
+        },
+        {
+            chatID: 175,
+            speaker: "missy",
+            text: "I wouldn't want to ruin the suprise; you'll know it when you see it. Now you're not yet ready to take on the " +
+                "Burlesque Clan yet. You need to go to the gym and receive training from " + sc.n("g") + ". She will teach you the " +
+            "basics of fighting. ",
+            button: [
+                { chatID: 176, text: "Fighting ma'am?", callback: "" },
+            ]
+        },
+        {
+            chatID: 176,
+            speaker: "missy",
+            text: "Yes. There are many ways to defeat your enemies. I know your true strength is your sissy assets, but you need to " +
+                "be more than just a fuckhole if we're going to bring down the cult. If I wanted a whore I would've hired one. You need " +
+                "to be able to use all your skills to your best ability. Some enemies can be brought down with your sissy ass, but some " +
+            "have to be brought down with your fists. ",
+            button: [
+                { chatID: 177, text: "Gulp", callback: "" },
+            ]
+        },
+        {
+            chatID: 177,
+            speaker: "missy",
+            text: "Once you receive your first lesson " + sc.n("g") + " will give you the sewer lid opener. Make your way to the rear of the " +
+            "sewer and retreive my item. It will be in a red box. Keep it closed until you return to me. ",
+            button: [
+                { chatID: 178, text: "Yes ma'am!", callback: "" },
+            ]
+        },
+        {
+            chatID: 178,
+            speaker: "missy",
+            text: "To help you out I'll allow you to continue your training. The pink room of pleasure will help you be better with your " +
+            "sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
+            button: [
+                { chatID: 179, text: "Yes why is " + sc.n("cecilia") + " tied up ma'am?", callback: "" },
+                { chatID: 180, text: "No ma'am", callback: "" },
+            ]
+        },
+        {
+            chatID: 178,
+            speaker: "missy",
+            text: sc.n("cecilia") + " has been busy spending all her time sucking cock and not enough time working on her " +
+                "duties. Let " + sc.n("cecilia") + " be a lesson to you. Your duty is to obey, and serve me first, or you will pay for " +
+            "your discretions",
+            button: [
+                { chatID: 180, text: "Yes ma'am", callback: "" },
+            ]
+        },
+        {
+            chatID: 180,
+            speaker: "missy",
+            text: "Now go, and get my package. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "25c" },
+            ]
+        },
+        {
+            chatID: 181,
+            speaker: "missy",
+            text: "Come back when you have my package. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "leaveRoom0" },
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

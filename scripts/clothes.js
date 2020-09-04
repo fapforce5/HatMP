@@ -1072,6 +1072,9 @@ cl.getBodyHair = function () {
 cl.display = function () {
     var thisHair;
     $('.bladder-box').remove();
+    $(".char-layer").css({
+        "top": 50 * g.ratio + "px"
+    });
     if (g.tview === "p" || g.tview === "a") {
         $('#char-legs').html("");
         $('#char-chest').html("");
@@ -1381,304 +1384,17 @@ cl.cWhere = function (thisArray, entry, id) {
 
 cl.subDisplay = function (id, image) {
     if (image !== null) {
-        var top = 20 * g.ratio;
-        var left = 20 * g.ratio;
+        //var top = 20 * g.ratio;
+        //var left = 20 * g.ratio;
         var btnWidth = 300 * g.ratio;
         var btnHeight = 600 * g.ratio;
-        $('#' + id).html('<img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+        $('#' + id).html('<img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:0px; left:0px;" />');
     }
     else
         $('#' + id).html('');
 };
 
-cl.displayMirror = function () {
-    cl.displayMain(-50, 100, .45, "mirror");
-};
 
-cl.displayface = function () {
-    cl.displayMain(-50, 100, .50, "mirror");
-};
-
-cl.displayMissy = function () {
-    cl.displayMain(-60, 750, .15, "panties socks shoes shirt sanspants");
-};
-
-cl.displayClothed = function () {
-    cl.displayMain(-60, 750, .15, "panties shirt pants socks shoes bra");
-};
-
-cl.displayMain = function (top, left, ratio, spec) {
-    //set Chest
-    var displayCock = true;
-
-    if (spec.indexOf("pants") > -1 || spec.indexOf("shirt") > -1)
-        spec += " clothes";
-
-    if (spec === "mirror")
-        displayCock = false;
-    if (spec.indexOf("panties") !== -1 && cl.c.panties !== null)
-        displayCock = false;
-    if (spec.indexOf("clothes") !== -1 && cl.c.pj !== null)
-        displayCock = false;
-
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
-    if (spec === "mirror") {
-        cl.displayMainSub("mirror/top" + cl.c.chest + ".png", top, left, ratio);
-    }
-    else {
-        //set Legs
-        if (spec.indexOf("armsup") > -1)
-            cl.displayMainSub("top_" + cl.c.chest + "_up.png", top, left, ratio);
-        else if (spec.indexOf("behind") > -1) 
-            cl.displayMainSub("top_" + cl.c.chest + "_behind.png", top, left, ratio);
-        else
-            cl.displayMainSub("top_" + cl.c.chest + ".png", top, left, ratio);
-        cl.displayMainSub("leg_" + cl.c.leg + ".png", top, left, ratio);
-    }
-    //set Head
-    if (cl.c.makeup === null)
-        cl.c.makeup = "n";
-    else {
-        $.each(cl.makeup, function (i, v) {
-            if (v.name === cl.c.makeup)
-                cl.displayMainSub(v.image, top, left, ratio);
-        });
-    }
-
-    if (displayCock) {
-        if (cl.c.chastity === null) {
-            cl.displayMainSub("cock_" + cl.c.cock + ".png", top, left, ratio);
-        }
-        else {
-            $.each(cl.chastity, function (i, v) {
-                if (v.name === cl.c.chastity) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-    }
-    //set bodyhair
-    var hairy = cl.getBodyHair();
-    if (hairy !== null)
-        cl.displayMainWhere(cl.bodyhair, hairy, top, left, ratio);
-
-    
-    //set mouth
-    cl.displayMainWhere(cl.lips, cl.c.lips, top, left, ratio);
-    //set eyes
-    cl.displayMainSub("eyes_" + cl.c.eyes + ".png", top, left, ratio);
-
-    //set cum
-    if (cl.c.cumface)
-        cl.displayMainSub("cum_face.png", top, left, ratio);
-
-    //set hair
-    if (cl.c.wig !== null) {
-        $.each(cl.wig, function (i, v) {
-            if (v.name === cl.c.wig)
-                cl.displayMainSub(v.image, top, left, ratio);
-        });
-    }
-    else {
-        if (cl.c.hairLength !== null) {
-            if (cl.c.hairLength < 2) {
-                thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
-                cl.displayMainSub(thisHair + ".png", top, left, ratio);
-            }
-            else if (cl.c.hairStyle === "leia") {
-                thisHair = "hair_2_" + cl.c.hairColor + "_leia";
-                cl.displayMainSub(thisHair + ".png", top, left, ratio);
-            }
-            else {
-                thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
-                cl.displayMainSub(thisHair + ".png", top, left, ratio);
-            }
-        }
-    }
-    if (spec.indexOf("panties") > -1) {
-        if (cl.c.panties !== null) {
-            $.each(cl.panties, function (i, v) {
-                if (v.name === cl.c.panties && v.leg === cl.c.leg) {
-                    if (cl.c.cock < 5)
-                        cl.displayMainSub(v.cock, top, left, ratio);
-                    else
-                        cl.displayMainSub(v.pussy, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-        else {
-            if (cl.c.chastity === null) {
-                cl.displayMainSub("cock_" + cl.c.cock + ".png", top, left, ratio);
-            }
-            else {
-                $.each(cl.chastity, function (i, v) {
-                    if (v.name === cl.c.chastity) {
-                        cl.displayMainSub(v.image, top, left, ratio);
-                        return false;
-                    }
-                });
-            }
-        }
-    }
-    
-    if (spec.indexOf("panties") > -1) {
-        if (cl.c.panties !== null) {
-            $.each(cl.panties, function (i, v) {
-                if (v.name === cl.c.panties && v.leg === cl.c.leg) {
-                    if (cl.c.cock < 5)
-                        cl.displayMainSub(v.cock, top, left, ratio);
-                    else
-                        cl.displayMainSub(v.pussy, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-    }
-    if (spec.indexOf("bra") > -1) {
-        $.each(cl.bra, function (i, v) {
-            if (v.name === cl.c.bra && v.chest === cl.c.chest) {
-                cl.displayMainSub(v.image, top, left, ratio);
-                return false;
-            }
-        });
-    }
-    if (spec.indexOf("socks") > -1) {
-        $.each(cl.socks, function (i, v) {
-            if (v.name === cl.c.socks) {
-                cl.displayMainSub(v.image, top, left, ratio);
-                return false;
-            }
-        });
-    }
-    if (spec.indexOf("shoes") > -1) {
-        if (cl.c.shoes !== null) {
-            $.each(cl.shoes, function (i, v) {
-                if (v.name === cl.c.shoes) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-    }
-    if (spec.indexOf("sanspants") > -1) {
-        if (cl.c.shirt !== null) {
-            $.each(cl.shirt, function (i, v) {
-                if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-    }
-    else if (spec.indexOf("clothes") > -1) {
-        if (cl.c.dress !== null) {
-            $.each(cl.dressBottom, function (i, v) {
-                if (v.name === cl.c.dress && v.leg === cl.c.leg) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-            $.each(cl.dressTop, function (i, v) {
-                if (v.name === cl.c.dress && v.chest === cl.c.chest) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-        else if (cl.c.pj !== null) {
-            $.each(cl.pjBottom, function (i, v) {
-                if (v.name === cl.c.pj && v.leg === cl.c.leg) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-            $.each(cl.pjTop, function (i, v) {
-                if (v.name === cl.c.pj && v.chest === cl.c.chest) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-        else {
-            if (cl.c.pants !== null) {
-                $.each(cl.pants, function (i, v) {
-                    if (v.name === cl.c.pants && v.leg === cl.c.leg) {
-                        cl.displayMainSub(v.image, top, left, ratio);
-                        return false;
-                    }
-                });
-            }
-            $.each(cl.shirt, function (i, v) {
-                if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
-                    cl.displayMainSub(v.image, top, left, ratio);
-                    return false;
-                }
-            });
-        }
-    }
-    if (spec.indexOf("pants") > -1 || spec.indexOf("shirt") > -1 || spec.indexOf("dress") > -1) {
-        $.each(cl.dress, function (i, v) {
-            if (v.name === cl.c.shirt && v.chest === cl.c.chest) {
-                cl.displayMainSub(v.image, top, left, ratio);
-                return false;
-            }
-        });
-    }
-};
-
-cl.displayMainWhere = function (thisArray, entry, top, left, ratio) {
-    $.each(thisArray, function (i, v) {
-        if (v.name === entry) {
-            cl.displayMainSub(v.image, top, left, ratio);
-            return false;
-        }
-    });
-};
-
-cl.displayMainSub = function (thisImage, top, left, ratio) {
-    var btnWidth, btnHeight;
-    btnWidth = 2075 * ratio * g.ratio;
-    btnWidth = 4200 * ratio * g.ratio;
-    top = top * g.ratio;
-    left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
-};
-
-cl.kneel = function (top, left, ratio, mod) {
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
-
-    cl.kneelSub("b" + (cl.c.chest === 1 ? 0 : cl.c.chest) + ".png", top, left, ratio);
-    if (mod.indexOf("open") > -1)
-        cl.kneelSub("headOpen.png", top, left, ratio);
-    else
-        cl.kneelSub("headClose.png", top, left, ratio);
-
-    if (cl.c.hairLength !== null) {
-        if (cl.c.hairLength < 2) {
-            thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
-            cl.kneelSub(thisHair + ".png", top, left, ratio);
-        }
-        else if (cl.c.hairStyle === "leia") {
-            thisHair = "hair_2_" + cl.c.hairColor + "_leia";
-            cl.kneelSub(thisHair + ".png", top, left, ratio);
-        }
-        else {
-            thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
-            cl.kneelSub(thisHair + ".png", top, left, ratio);
-        }
-    }
-};
-
-cl.kneelSub = function (thisImage, top, left, ratio) {
-    var btnWidth, btnHeight;
-    btnWidth = 1500 * ratio * g.ratio;
-    btnWidth = 1800 * ratio * g.ratio;
-    top = top * g.ratio;
-    left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/bj/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
-};
 
 cl.cockDisplay = function () {
     $("#char_cockDisplay").html('<img src="./images/mainChar/cock/erec_body_ball.png" />');
@@ -1958,6 +1674,19 @@ cl.lipsize = function () {
     if (cl.c.lips === "sb" || cl.c.lips === "sbred" || cl.c.lips === "sbpink" || cl.c.lips === "sbpurple")
         thissize = "sb";
     return thissize;
+};
+
+cl.lipColor = function () {
+    if (cl.c.lips === "thin" || cl.c.lips === "big" || cl.c.lips === "sb")
+        return "nude";
+    else if (cl.c.lips === "red" || cl.c.lips === "bigred" || cl.c.lips === "sbred")
+        return "red";
+    else if (cl.c.lips === "purple" || cl.c.lips === "bigpurple" || cl.c.lips === "sbpurple")
+        return "purple";
+    else if (cl.c.lips === "pink" || cl.c.lips === "bigpink" || cl.c.lips === "sbpink")
+        return "pink";
+    console.log("invlaid lip color");
+    return null;
 };
 
 cl.applyLipstick = function (color) {

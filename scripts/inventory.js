@@ -39,8 +39,8 @@ inv.master = [
     { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
-    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 30, image: "acia.png", n: false, desc: "Add 15 energy" },
-    { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 60, image: "energyCola.png", n: false, desc: "Add 50 energy and lose 15 fitness points" },
+    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Add 15 energy" },
+    { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 20, image: "energyCola.png", n: false, desc: "Add 50 energy and lose 15 fitness points" },
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "m", name: "makeup", display: "Makeup", entry: false, count: null, cost: 180, image: "makeup.png", n: false, desc: "Make your face pretty" },
@@ -70,6 +70,7 @@ inv.master = [
     { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false, desc: "" },
     { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false, desc: "" },
     { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false, desc: "" },
+    { type: "g", name: "sewer", display: "Sewer Lid Opener", entry: false, count: null, cost: -1, image: "sewer.png", n: false, desc: "Use this ot open the sewer lid next to the dance club." },
     { type: "c", name: "closet", display: "Change Clothes", entry: true, count: null, cost: 90, image: "change.png", n: false, desc: "Change your clothes. Can only use in a bathroom." }
 ];
 
@@ -338,64 +339,6 @@ inv.display = function () {
     $("#menu_displayAction").click(function () {
 
     });
-    //$('.inv-backpackChange').click(function () {
-    //    inv.backpack = $(this).data('name');
-    //    inv.backpackIcon();
-    //    inv.close();
-    //});
-    //$('.inv-paintChange').click(function () {
-    //    g.set("painting", $(this).data("name"));
-    //    inv.close();
-    //});
-    //$('.inv-phoneChange').click(function () {
-    //    inv.phone = $(this).data("name");
-    //    inv.phoneIcon();
-    //    inv.close();
-    //});
-    //$('.inv-hormoneChange').click(function () {
-    //    if (!g.checkflag("tookHormonePill"))
-    //        g.mod("hormone", 30);
-    //    g.setflag("tookHormonePill");
-    //    inv.use("hormone");
-    //    inv.close();
-    //});
-    //$('.inv-energyChange').click(function () {
-    //    var thisItem = $(this).data("name");
-    //    var j;
-    //    for (j = 0; j < inv.master.length; j++) {
-    //        if (inv.master[j].name === thisItem) {
-    //            if (inv.master[j].count > 0) {
-    //                inv.master[j].count--;
-    //                switch (thisItem) {
-    //                    case "acia":
-    //                        g.mod("energy", 15);
-    //                        break;
-    //                    case "soda":
-    //                        g.mod("energy", 50);
-    //                        g.mod("fitness", -15);
-    //                        break;
-    //                    default:
-    //                        console.log("UNK energy: " + thisItem);
-    //                }
-    //                $('.menu-popup-count[data-name="' + thisItem + '"]').text(inv.master[j].count);
-    //                if (inv.master[j].count < 1) {
-    //                    inv.master[j].count = 0;
-    //                    inv.master[j].entry = false;
-    //                }
-    //            }
-    //            j = 1000;
-    //        }
-    //    }
-    //});
-
-    //$('.inv-changeclothes').click(function () {
-    //    if (inv.roomChange.includes(g.roomID)) {
-    //        g.pass = g.roomID;
-    //        char.room(8);
-    //    }
-    //    else
-    //        g.popUpNotice("You can only change in your room or a bathroom. ");
-    //});
 
     w = 1800 * g.ratio;
     h = 50 * g.ratio;
@@ -562,61 +505,6 @@ inv.createElements = function () {
             }
         }
         else if (thisIType === "bag") {
-           
-    //$('.inv-paintChange').click(function () {
-    //    g.set("painting", $(this).data("name"));
-    //    inv.close();
-    //});
-    //$('.inv-phoneChange').click(function () {
-    //    inv.phone = $(this).data("name");
-    //    inv.phoneIcon();
-    //    inv.close();
-    //});
-    //$('.inv-hormoneChange').click(function () {
-    //    if (!g.checkflag("tookHormonePill"))
-    //        g.mod("hormone", 30);
-    //    g.setflag("tookHormonePill");
-    //    inv.use("hormone");
-    //    inv.close();
-    //});
-    //$('.inv-energyChange').click(function () {
-    //    var thisItem = $(this).data("name");
-    //    var j;
-    //    for (j = 0; j < inv.master.length; j++) {
-    //        if (inv.master[j].name === thisItem) {
-    //            if (inv.master[j].count > 0) {
-    //                inv.master[j].count--;
-    //                switch (thisItem) {
-    //                    case "acia":
-    //                        g.mod("energy", 15);
-    //                        break;
-    //                    case "soda":
-    //                        g.mod("energy", 50);
-    //                        g.mod("fitness", -15);
-    //                        break;
-    //                    default:
-    //                        console.log("UNK energy: " + thisItem);
-    //                }
-    //                $('.menu-popup-count[data-name="' + thisItem + '"]').text(inv.master[j].count);
-    //                if (inv.master[j].count < 1) {
-    //                    inv.master[j].count = 0;
-    //                    inv.master[j].entry = false;
-    //                }
-    //            }
-    //            j = 1000;
-    //        }
-    //    }
-    //});
-
-    //$('.inv-changeclothes').click(function () {
-    //    if (inv.roomChange.includes(g.roomID)) {
-    //        g.pass = g.roomID;
-    //        char.room(8);
-    //    }
-    //    else
-    //        g.popUpNotice("You can only change in your room or a bathroom. ");
-    //});
-
             switch (thisType) {
                 case "b"://backpack
                     inv.backpack = thisName;

@@ -36,7 +36,7 @@ room503.btnclick = function (name) {
         case "mirror":
             nav.killall();
             nav.bg("503_bathroom/mirror.jpg");
-            cl.displayMirror();
+            zcl.displayMirror();
             chat(0, 503);
             break;
         case "shower":
@@ -46,7 +46,7 @@ room503.btnclick = function (name) {
                 nav.killall();
                 cl.c.cumface = false;
                 cl.nude();
-                cl.displayMain(0, 400, .22, "shower");
+                zcl.displayMain(0, 400, .22, "shower");
                 nav.bg("503_bathroom/shower.jpg");
                 if (inv.get("razor").count > 0)
                     chat(3, 503);
@@ -74,14 +74,14 @@ room503.chatcatch = function (callback) {
             break;
         case "shaveBody":
             g.set("bodyhair", 0);
-            cl.displayMain(0, 400, .22, "shower");
+            zcl.displayMain(0, 400, .22, "shower");
             inv.use("razor");
             char.addtime(15);
             cl.display();
             break;
         case "cleanFace":
             cl.c.cumface = false;
-            cl.displayMirror();
+            zcl.displayMirror();
             cl.display();
             break;
         default:

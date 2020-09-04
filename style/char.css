@@ -124,7 +124,7 @@
 }
 
 .char-statDisplay {
-    z-index: 10;
+    z-index: 1;
     margin-top: 5px;
     border-radius: 20px;
     position:relative;

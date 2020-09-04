@@ -211,7 +211,7 @@ room12.btnclick = function (name) {
                 nav.killall();
                 cl.c.cumface = false;
                 cl.nude();
-                cl.displayMain(0, 400, .22, "shower");
+                zcl.displayMain(0, 400, .22, "shower");
                 nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");
                 if (inv.get("razor").count > 0)
                     chat(15, 12);
@@ -224,7 +224,7 @@ room12.btnclick = function (name) {
             char.room(27);
             //nav.killall();
             //nav.bg("12_bathroom/012_brushTeeth.jpg", "12_bathroom/012_brushTeeth.jpg");
-            //cl.displayMirror();
+            //zcl.displayMirror();
             //chat(13, 12);
             break;
         default:
