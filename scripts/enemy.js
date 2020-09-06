@@ -1,6 +1,9 @@
 var tEnemy = {};
-
-tEnemy.init = function (enemyName, bg, thisRoomID) {
+//add difficulty -------------------------------------------------------------
+//add difficulty -------------------------------------------------------------
+//add difficulty -------------------------------------------------------------
+//add difficulty -------------------------------------------------------------
+tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
     var retVar;
     var charVar;
     switch (enemyName) {
@@ -10,7 +13,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 displayName: sc.n("g"),
                 energy: 200,
                 maxEnergy: 200,
-                horny: 0,
+                horny: 90,
                 arousalGrowth: 5,
                 sheild: 0,
                 pPower: 10,
@@ -24,13 +27,13 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 cock: false,
                 nextMove: "",
                 undress: 0,
-                eventStep: 0,
+                eventStep: 9999,
                 eventType: "",
                 pose: { i0: "227_fight/g_pose.png", i1: null, w: 716, h: 1080 },
-                punch: { i0: "227_fight/g_punch.png", i1: null, w: 716, h: 1080 },
-                kick: { i0: "227_fight/g_kick.png", i1: null, w: 716, h: 1080 },
-                block: { i0: "227_fight/g_block.png", i1: null, w: 716, h: 1080 },
-                recoil: { i0: "227_fight/g_recoil.png", i1: null, w: 716, h: 1080 },
+                punch: { i0: "227_fight/g_punch.png", i1: null, w: 894, h: 1080 },
+                kick: { i0: "227_fight/g_kick.png", i1: null, w: 1172, h: 1080 },
+                block: { i0: "227_fight/g_block.png", i1: null, w: 680, h: 1080 },
+                recoil: { i0: "227_fight/g_recoil.png", i1: null, w: 1212, h: 1080 },
                 defeat: { i0: "227_fight/g_recoil.png", i1: null, w: 864, h: 1080 },
                 avatar: "227_fight/g_avatar.png"
             }
@@ -41,7 +44,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 displayName: "Burlesque Clan",
                 energy: 20,
                 maxEnergy: 20,
-                horny: 45,
+                horny: 90,
                 arousalGrowth: 10,
                 sheild: 0,
                 pPower: 5,
@@ -55,7 +58,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 cock: true,
                 nextMove: "",
                 undress: 0,
-                eventStep: 0,
+                eventStep: 9999,
                 eventType: "",
                 pose: { i0: "227_fight/r_pose.png", i1: null, w: 736, h: 1080 },
                 punch: { i0: "227_fight/r_punch.png", i1: null, w: 970, h: 1046 },
@@ -71,9 +74,9 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
             charVar = {
                 name: "futaYellow",
                 displayName: "Burlesque Clan",
-                energy: 50,
+                energy: 10, //UPDATE THIS-------------------------------------------------------------- 22
                 maxEnergy: 50,
-                horny: 45,
+                horny: 90,
                 arousalGrowth: 10,
                 sheild: 0,
                 pPower: 7,
@@ -87,7 +90,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 cock: true,
                 nextMove: "",
                 undress: 0,
-                eventStep: 0,
+                eventStep: 9999,
                 eventType: "",
                 pose: { i0: "227_fight/y_pose.png", i1: null, w: 736, h: 1080 },
                 punch: { i0: "227_fight/y_punch.png", i1: null, w: 970, h: 1046 },
@@ -96,16 +99,16 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 recoil: { i0: "227_fight/y_recoil.png", i1: null, w: 1375, h: 1080 },
                 defeat: { i0: "227_fight/y_defeat.png", i1: null, w: 864, h: 1080 },
                 avatar: "227_fight/y_avatar.png",
-                loss: "I am at your service."
+                loss: "I am your whore"
             };
             break;
         case "clownQueen":
             charVar = {
                 name: "clownQueen",
                 displayName: "Burlesque Clan Leader",
-                energy: 100,
+                energy: 5, //------------------------------100
                 maxEnergy: 100,
-                horny: 30,
+                horny: 90,
                 arousalGrowth: 8,
                 sheild: 0,
                 pPower: 10,
@@ -119,7 +122,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 cock: true,
                 nextMove: "",
                 undress: 1,
-                eventStep: 0,
+                eventStep: 9999,
                 eventType: "",
                 pose: { i0: "227_fight/c_pose.png", i1: "227_fight/c_pose1.png", w: 1159, h: 1080 },
                 punch: { i0: "227_fight/c_punch.png", i1: "227_fight/c_punch1.png", w: 1050, h: 1046 },
@@ -128,7 +131,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
                 recoil: { i0: "227_fight/c_recoil.png", i1: "227_fight/c_recoil1.png", w: 1397, h: 1080 },
                 defeat: { i0: "227_fight/c_defeat.png", i1: "227_fight/c_defeat1.png", w: 492, h: 1080 },
                 avatar: "227_fight/c_avatar.png",
-                loss: "I am at your service."
+                loss: "HONK.. damn...."
             };
             break;
         default:
@@ -146,13 +149,40 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
             evasion: Math.round(g.get("fitness")),
             pPower: 10 + Math.round(g.get("bodyLevel") / 2),
             kPower: 10 + Math.round(g.get("legLevel") / 2),
+            punchCount: 0,
+            kickCount: 0,
+            goodBlockCount: 0,
+            sissyAction: 0,
             prev1: null,
             prev2: null,
             nextMove: "",
-        }
+        },
+        chat: {
+            text: "",
+            btn1: "",
+            btn2: ""
+        },
+        returnRoomID: returnRoomID
     };
    
+    switch (bg) {
+        case "gym":
+            nav.bg("555_backgym/gym.jpg");
+            break;
+        case "sewer":
+            nav.bg("227_fight/sewer.jpg");
+            break;
+        default:
+            console.log("Unkown BG: " + bg + " in enemy");
+            break;
+    };
 
+    tEnemy.drawRoom(retVar.enemy, retVar.me, thisRoomID);
+
+    return retVar;
+};
+
+tEnemy.drawRoom = function (eArray, mArray, thisRoomID) {
     var btnListx = [
         {
             "type": "zimg",
@@ -179,7 +209,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
             "top": 739,
             "width": 300,
             "height": 300,
-            "image": retVar.enemy.avatar
+            "image": eArray.avatar
         }
     ];
     $.each(btnListx, function (i, v) {
@@ -193,7 +223,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
         top: 963,
         font: 20,
         hex: "#ffffff",
-        text: retVar.enemy.displayName
+        text: eArray.displayName
     });
     nav.text({
         type: "zimg",
@@ -205,22 +235,8 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
         text: sc.n("me")
     });
 
-    switch (bg) {
-        case "gym":
-            nav.bg("555_backgym/gym.jpg");
-            break;
-        case "sewer":
-            nav.bg("227_fight/sewer.jpg");
-            break;
-        default:
-            console.log("Unkown BG: " + bg + " in enemy");
-            break;
-    };
-
-
-
-    var thisEnergy = (retVar.enemy.energy / retVar.enemy.maxEnergy) * 280 * g.ratio;
-    var thisHorney = (retVar.enemy.horny / 100) * 280 * g.ratio;
+    var thisEnergy = (eArray.energy / eArray.maxEnergy) * 280 * g.ratio;
+    var thisHorney = (eArray.horny / 100) * 280 * g.ratio;
     $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 990, 1330) + '  background: #333; border-radius:10px;" ></div>');
     $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 1330) + '  background: #ff3333; border-radius:10px;" ></div>');
     $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 1330) + '  background: #33ff33; border-radius:10px;" ></div>');
@@ -239,10 +255,8 @@ tEnemy.init = function (enemyName, bg, thisRoomID) {
     $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 180, 1008, 310) + '  background: #E976E5; border-radius:10px;" ></div>');
 
     tEnemy.drawButtons("init", thisRoomID);
-    tEnemy.drawEnemy(retVar.enemy, "pose");
+    tEnemy.drawEnemy(eArray, "pose");
     tEnemy.myClothesDraw();
-
-    return retVar;
 };
 
 tEnemy.drawButtons = function (btn, thisRoomID, eArray) {
@@ -325,8 +339,8 @@ tEnemy.drawButtons = function (btn, thisRoomID, eArray) {
         case "submit":
             btnListBtn = [
                 { "name": "invalidBtn", "image": "227_fight/invalid.png" },
-                { "name": "bj", "image": "227_fight/bj.png" },
-                { "name": "ass", "image": "227_fight/ass.png" },
+                { "name": "submitBJ", "image": "227_fight/bj.png" },
+                { "name": "submitAss", "image": "227_fight/ass.png" },
                 { "name": "cancel", "image": "227_fight/cancel.png" }
             ];
             break;
@@ -955,34 +969,70 @@ tEnemy.makeInventory = function () {
         }
     }
 
-    
-}
 
-tEnemy.sissySlut = function (eArray, sType) {
-    
-    if (sType === "bj")
-        tEnemy.sissySlutFace(eArray);
-    else if (sType === "ass")
-        tEnemy.sissySlutAss(eArray);
-    else
-        console.log("Invalid sType:" + sType);
 };
 
-tEnemy.sissySlutAss = function (eArray) {
-    nav.killall();
+tEnemy.updatePlayerStats = function (mArray, money, win) {
+    var i;
+    var popUpText = "";
 
-    zcl.assup(450, 350, 1, "");
-    nav.button({
-        "type": "img",
-        "name": "futa",
-        "left": 556,
-        "top": 0,
-        "width": 1364,
-        "height": 967,
-        "image": "227_fight/futa1.gif"
-    }, 9999);
-};
+    for (i = 0; i < g.st.length; i++) {
+        if (g.st[i].n === "energy") {
+            if (mArray.energy < 0)
+                mArray.energy = 0;
+            else if (mArray.energy > mArray.maxEnergy)
+                mArray.energy = mArray.maxEnergy;
+            g.st[i].t = mArray.energy;
+        }
+        else if (g.st[i].n === "fitness") {
+            console.log(g.st[i].t);
+            g.st[i].t += (mArray.punchCount + mArray.kickCount);
+            console.log(g.st[i].t);
+            if (g.st[i].t > 100)
+                g.st[i] = 100;
+            if ((mArray.punchCount + mArray.kickCount) > 0)
+                popUpText += "Fitness increased: " + (mArray.punchCount + mArray.kickCount) + "<br/>";
+        }
+        else if (g.st[i].n === "leg") {
+            g.st[i].t += (mArray.kickCount * 2);
+            if (g.st[i].t > 100)
+                g.st[i].t = 100;
+            if (mArray.kickCount > 0)
+                popUpText += "Your legs are stonger <br/>";
+        }
+        else if (g.st[i].n === "body") {
+            g.st[i].t += (mArray.punchCount * 2);
+            if (g.st[i].t > 100)
+                g.st[i].t = 100;
+            if (mArray.punchCount > 0)
+                popUpText += "Your arms are stonger <br/>";
+        }
+        else if (g.st[i].n === "sissy") {
+            g.st[i].t += mArray.sissyAction;
+            if (g.st[i].t > 100)
+                g.st[i].t = 100;
+            if (mArray.sissyAction > 0)
+                popUpText += "You are sluttier <br/>";
+        }
+        else if (g.st[i].n === "d") {
+            g.st[i].t += mArray.goodBlockCount;
+            if (g.st[i].t > 100)
+                g.st[i].t = 100;
+            if (mArray.goodBlockCount > 0)
+                popUpText += "Your defense increased <br/>";
+        }
+        else if (g.st[i].n === "money") {
+            if (money > 0) {
+                g.st[i].t += money;
+                if (g.st[i].t < 0)
+                    g.st[i].t = 0;
+                popUpText += "You earned $" + money + " <br/>";
+                $('#char_money').text('$' + g.st[i].t);
+            }
+        }
+    }
 
-tEnemy.sissySlutFace = function (eArray) {
-
+    if (popUpText.length > 0)
+        g.popUpNotice(popUpText);
+    char.makeGraph();
 };

@@ -53,7 +53,10 @@ g.st = [
     { n: "painting", t: "", q: "string" },
     { n: "bodyhair", t: 100, q: "zero" },
     { n: "reddoorloc", t: 1, q: "int" },
-    { n: "makeup", t: 0, q: "int"},
+    { n: "makeup", t: 0, q: "int" },
+    { n: "sewerMap", t: "", q: "string" },
+    { n: "sewerEnd", t: 0, q: "int" },
+    { n: "sewerID", t: 0, q: "int" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -248,20 +251,32 @@ g.checkPop = function (name, amount) {
         case "hormone":
             if (amount > 0)
                 g.popUpNotice("You feel more feminine");
+            char.makeGraph();
             break;
         case "energy":
             if (amount > 0)
                 g.popUpNotice("You Gained " + amount.toString() + " Energy");
             cl.energydisplay();
+            char.makeGraph();
             break;
         case "arousal": //0-100
             cl.cockDisplay();
             break;
         case "fitness":
             g.popUpNotice("You fitness " + (amount < 0 ? "Decreased" : "Increased" + "  by ") + Math.abs(amount));
+            char.makeGraph();
             break;
         case "leg":
-            g.popUpNotice("Your legs are more " + (amount < 0 ? "weaker" : "stonger"));
+            g.popUpNotice("Your legs are " + (amount < 0 ? "weaker" : "stonger"));
+            char.makeGraph();
+            break;
+        case "body":
+            g.popUpNotice("Your arms are " + (amount < 0 ? "weaker" : "stonger"));
+            char.makeGraph();
+            break;
+        case "sissy":
+            g.popUpNotice("Your are " + (amount < 0 ? "less slutty" : "sluttier"));
+            char.makeGraph();
             break;
     }
 };
@@ -386,6 +401,7 @@ g.rooms = [
     { roomID: 553, name: "Girls Locker", image: "553_girl/553_girl.jpg", nightImage: "552_running/553_girl.jpg", houseID: 550, btn: "roomBtn_553.png" },
     { roomID: 554, name: "Gym Shower", image: "554_shower/552_shower.jpg", nightImage: "554_shower/552_shower.jpg", houseID: 550, btn: "roomBtn_554.png" },
     { roomID: 555, name: "Back Gym", image: "555_backgym/gym.jpg", nightImage: "555_backgym/gym.jpg", houseID: 550, btn: "roomBtn_555.png" },
+    { roomID: 556, name: "Spar Training", image: "555_backgym/gym.jpg", nightImage: "555_backgym/gym.jpg", houseID: 550, btn: "roomBtn_555.png" },
 
     { roomID: 600, name: "For Testing", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
 
@@ -689,6 +705,8 @@ g.initGame = function () {
             case "giveBoobJob":
             case "shinkCock":
             case "makeup":
+            case "sewerEnd":
+            case "sewerID":
                 g.st[i].t = 0;
                 break;
             case "bodyhair":
@@ -704,6 +722,7 @@ g.initGame = function () {
                 g.st[i].t = 0;
                 break;
             case "painting":
+            case "sewerMap":
                 g.st[i].t = "";
                 break;
             case "girlname":
@@ -734,6 +753,8 @@ g.initGame = function () {
                 break;
             case "reddoorloc":
                 g.st[i].t = Math.floor(Math.random() * 8);
+                break;
+            case "difficulty":
                 break;
             default:
                 console.log("unknown load: " + g.st[i].n);

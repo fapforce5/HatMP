@@ -3,6 +3,9 @@
 //sissy transform: 95!!
 var room28 = {};
 room28.main = function () {
+    g.internal = g.pass;
+    g.pass = "endSleepyTime";
+
     var i;
     var hormoneLevel, thisTinyPP, fitnesslevel;
 
@@ -168,8 +171,7 @@ room28.main = function () {
             }];
     }
     else {
-        console.log("xxx")
-        g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 1000);
+        g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 1000);
     }
 
     if (btnList !== null) {
@@ -187,7 +189,7 @@ room28.btnclick = function (name) {
                 cl.c.chest = tempChest;
                 nav.killall();
                 nav.bg("28_transformation/chest_" + cl.c.chest + ".gif");
-                g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 4000);
+                g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 4000);
             }
 
             break;
@@ -197,7 +199,7 @@ room28.btnclick = function (name) {
                 cl.c.leg = tempAss;
                 nav.killall();
                 nav.bg("28_transformation/leg_" + cl.c.leg + ".gif");
-                g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 5000);
+                g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 5000);
             }
             break;
         case "cock":
@@ -206,7 +208,7 @@ room28.btnclick = function (name) {
                 cl.c.cock = tempCock;
                 nav.killall();
                 nav.bg("28_transformation/cock_" + cl.c.cock + ".gif");
-                g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 5000);
+                g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 5000);
             }
             break;
         case "lips":
@@ -220,10 +222,10 @@ room28.btnclick = function (name) {
                 nav.bg("28_transformation/lip_" + tempLips + ".gif");
             }
 
-            g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 5000);
+            g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 5000);
             break;
         case "cancel":
-            char.room(g.pass);
+            char.room(g.internal);
             break;
         default:
             break;

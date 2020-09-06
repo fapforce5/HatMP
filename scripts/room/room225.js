@@ -52,7 +52,7 @@ room225.btnclick = function (name) {
             char.room(225);
             break;
         case "in":
-            g.pass = "";
+            g.pass = "foo";
             char.room(226);
             break;
         default:

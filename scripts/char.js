@@ -1114,7 +1114,7 @@ char.makeGraph = function () {
                 $("#rl_d").html("Defense: +" + g.st[i].t);
                 break;
             case "fitness":
-                $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
+                $(".rl-bar[data-name='fitness']").css({ width: g.st[i].t + "%" });
                 break;
             case "fitnessLevel":
                 $("#rl_fitness").html("Fitness: +" + g.st[i].t);

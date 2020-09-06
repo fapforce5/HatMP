@@ -2214,7 +2214,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: "When I assigned you to help " + sc.n("tiffany") + " find the person covering her booths in cum I knew you wouldn't " +
                 "be able to help yourself. Like a young male pervert you had to peek. You needed to look at her pussy. I need you to " +
-            "know that about yourself. Your lust, if used improperly will be your downfall.",
+            "know that about yourself. Your lust, if used improperly, will be your downfall.",
             button: [
                 { chatID: -1, text: "...", callback: "25b" },
             ]
@@ -2232,7 +2232,7 @@ room200.chat = function (chatID) {
         {
             chatID: 168,
             speaker: "missy",
-            text: "Then when you helped " + sc.n("jeffery") + " find who was stealing from him, I knew you would fail. I had already figured " +
+            text: "When I assigned you to help " + sc.n("jeffery") + " find who was stealing from him, I knew you would fail. I had already figured " +
                 "out what happened before I assigned you to the case. Those girls are so careless in how they rob the diner. The true " +
             "purpose was to show you that you have such feminine features you could crossdress in public.  ",
             button: [
@@ -2261,7 +2261,7 @@ room200.chat = function (chatID) {
         {
             chatID: 171,
             speaker: "missy",
-            text: "Yes. There are many of them, and the path to the cult's door is difficult filled my many different challenges. When " +
+            text: "Yes. There are many of them, and the path to the cult's door is difficult filled with many different challenges. When " +
                 "you walked in I felt you may just be the one. I needed someone that can move between genders, someone that can both fight and " +
                 "fuck their way out of a situation. More importantly I need someone that can follow my direction without question. You're the " +
             "sissy I need to help take them down.",
@@ -2289,7 +2289,7 @@ room200.chat = function (chatID) {
         {
             chatID: 174,
             speaker: "missy",
-            text: "Deep in the sewers of this city there's a group that calls themselves the Burlesque Clan. They stole something of mine " +
+            text: "Deep in the sewers of this city there's a group that calls themselves the Clown Clan. They stole something of mine " +
             "that I can use to help prepare you for the long difficult road ahead. I need you to get me that item.",
             button: [
                 { chatID: 175, text: "What is it ma'am?", callback: "" },
@@ -2299,7 +2299,7 @@ room200.chat = function (chatID) {
             chatID: 175,
             speaker: "missy",
             text: "I wouldn't want to ruin the suprise; you'll know it when you see it. Now you're not yet ready to take on the " +
-                "Burlesque Clan yet. You need to go to the gym and receive training from " + sc.n("g") + ". She will teach you the " +
+                "Clown Clan yet. You need to go to the gym and receive training from " + sc.n("g") + ". She will teach you the " +
             "basics of fighting. ",
             button: [
                 { chatID: 176, text: "Fighting ma'am?", callback: "" },

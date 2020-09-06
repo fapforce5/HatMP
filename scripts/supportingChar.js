@@ -46,6 +46,9 @@ sc.char = [
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false },
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false },
+    { name: "clownQueen", display: "Clown Queen", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false },
+    { name: "futaYellow", display: "Clown Clan", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false },
+    { name: "futaRed", display: "Clown Clan", image: "futaRed.png", step: 0, max: 0, show: false, setName: false },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
 ];
 

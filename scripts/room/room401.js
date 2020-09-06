@@ -112,7 +112,7 @@ room401.main = function () {
             room401.makeClothing("pj", "f", true);
             break;
         case "general":
-            nav.bgs("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
+            nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
             if (sc.checkevent("spanky", 3))
                 room401.makeInv(["h", "e", "g"], true);
             else

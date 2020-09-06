@@ -39,6 +39,7 @@ inv.master = [
     { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
+    { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
     { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Add 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 20, image: "energyCola.png", n: false, desc: "Add 50 energy and lose 15 fitness points" },
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },

@@ -16,6 +16,10 @@ zcl.displayClothed = function () {
     zcl.displayMain(-60, 750, .15, "panties shirt pants socks shoes bra");
 };
 
+zcl.kill = function () {
+    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+};
+
 zcl.displayMain = function (top, left, ratio, spec) {
     //set Chest
     var displayCock = true;

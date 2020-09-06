@@ -14,7 +14,7 @@ room52.main = function () {
         }, 52);
         chat(2, 52);
     }
-    else if (g.pass === 52) {
+    else if (g.pass === "endSleepyTime") {
         g.pass = "";
         chat(1, 52);
     }
@@ -204,6 +204,10 @@ room52.chatcatch = function (callback) {
                     i = 99999;
                 }
             }
+            char.room(52);
+            break;
+        case "o4":
+            g.pass = "";
             char.room(52);
             break;
         case "p1":

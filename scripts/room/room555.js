@@ -37,7 +37,10 @@ room555.btnclick = function (name) {
             break;
         case "g":
             nav.killbutton("chad");
-            chat(9, 555);
+            if (sc.getstep("missy") > 26)
+                chat(28, 555);
+            else
+                chat(9, 555);
             break;
         case "row1":
             nav.killall();
@@ -343,6 +346,23 @@ room555.chatcatch = function (callback) {
                 "image": "555_backgym/gcum.png"
             }, 555);
             break;
+        case "resetLeave":
+            cl.undo();
+            char.room(551);
+            break;
+        case "spar":
+            if (inv.has("sewer"))
+                chat(30, 555);
+            else
+                chat(29, 555);
+            break;
+        case "training":
+            char.room(556);
+            break;
+        case "fight":
+            g.internal = { name: "g", bg: "gym", returnRoom: 556 };
+            char.room(227);
+            break;
         default:
             break;
     }
@@ -431,7 +451,7 @@ room555.chat = function (chatID) {
                 { chatID: 14, text: "Toe Touches", callback: "" },
                 { chatID: -1, text: "Standing Rows", callback: "rows" },
                 { chatID: -1, text: "Hip Thrusters", callback: "hips" },
-                { chatID: -1, text: "Nevermind", callback: "" },
+                { chatID: -1, text: "Oh, sorry I'm going to go.", callback: "resetLeave" },
             ]
         },
         {
@@ -579,6 +599,35 @@ room555.chat = function (chatID) {
             text: "Good workout today. I love a cum filled ass. Now hit the showers champ.",
             button: [
                 { chatID: -1, text: "...", callback: "exitLowercum" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "g",
+            text: "What will it be today shrimp?",
+            button: [
+                { chatID: 9, text: "Workout", callback: "" },
+                { chatID: -1, text: "Spar", callback: "spar" },
+                { chatID: -1, text: "Oh, sorry I'm going to go.", callback: "resetLeave" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "g",
+            text: "Ok wimp, I'm going to train you how to fight.",
+            button: [
+                { chatID: -1, text: "[Begin training]", callback: "training" },
+                { chatID: -1, text: "Oh, sorry I'm going to go.", callback: "resetLeave" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "g",
+            text: "What will it be today shrimp?",
+            button: [
+                { chatID: -1, text: "[Begin training]", callback: "training" },
+                { chatID: -1, text: "[Spar]", callback: "fight" },
+                { chatID: -1, text: "Oh, sorry I'm going to go.", callback: "resetLeave" },
             ]
         },
     ];

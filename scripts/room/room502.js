@@ -11,7 +11,7 @@ room502.main = function () {
         nav.bg("502_bedroom/eat1.jpg");
         chat(22, 502);
     }
-    else if (g.pass === 502) {
+    else if (g.pass === "endSleepyTime") {
         g.pass = "";
         chat(10, 502);
     }
