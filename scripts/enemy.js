@@ -13,7 +13,7 @@ tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
                 displayName: sc.n("g"),
                 energy: 200,
                 maxEnergy: 200,
-                horny: 90,
+                horny: 5,
                 arousalGrowth: 5,
                 sheild: 0,
                 pPower: 10,
@@ -42,9 +42,9 @@ tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
             charVar = {
                 name: "futaRed",
                 displayName: "Burlesque Clan",
-                energy: 20,
-                maxEnergy: 20,
-                horny: 90,
+                energy: 30,
+                maxEnergy: 30,
+                horny: 25,
                 arousalGrowth: 10,
                 sheild: 0,
                 pPower: 5,
@@ -74,13 +74,13 @@ tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
             charVar = {
                 name: "futaYellow",
                 displayName: "Burlesque Clan",
-                energy: 10, //UPDATE THIS-------------------------------------------------------------- 22
+                energy: 50,
                 maxEnergy: 50,
-                horny: 90,
+                horny: 45,
                 arousalGrowth: 10,
                 sheild: 0,
-                pPower: 7,
-                kPower: 5,
+                pPower: 12,
+                kPower: 8,
                 defense: 0,
                 bp: 2,
                 bk: 7,
@@ -106,9 +106,9 @@ tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
             charVar = {
                 name: "clownQueen",
                 displayName: "Burlesque Clan Leader",
-                energy: 5, //------------------------------100
+                energy: 100,
                 maxEnergy: 100,
-                horny: 90,
+                horny: 20,
                 arousalGrowth: 8,
                 sheild: 0,
                 pPower: 10,
@@ -162,9 +162,19 @@ tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
             btn1: "",
             btn2: ""
         },
-        returnRoomID: returnRoomID
+        bg: bg,
+        returnRoomID: returnRoomID,
+        thisRoomID: thisRoomID
     };
    
+
+    tEnemy.drawBackground(bg);
+    tEnemy.drawRoom(retVar.enemy, retVar.me, thisRoomID);
+
+    return retVar;
+};
+
+tEnemy.drawBackground = function (bg) {
     switch (bg) {
         case "gym":
             nav.bg("555_backgym/gym.jpg");
@@ -176,13 +186,11 @@ tEnemy.init = function (enemyName, bg, thisRoomID, returnRoomID) {
             console.log("Unkown BG: " + bg + " in enemy");
             break;
     };
-
-    tEnemy.drawRoom(retVar.enemy, retVar.me, thisRoomID);
-
-    return retVar;
-};
+}
 
 tEnemy.drawRoom = function (eArray, mArray, thisRoomID) {
+
+
     var btnListx = [
         {
             "type": "zimg",
@@ -436,7 +444,6 @@ tEnemy.drawButtons = function (btn, thisRoomID, eArray) {
         }
     ];
 
-    console.log(thisRoomID);
     $.each(btnListBtnDraw, function (i, v) {
         nav.button(v, thisRoomID);
     });
@@ -962,20 +969,71 @@ tEnemy.makeInventory = function () {
     counter = 0;
     inv.createElements();
     for (i = 0; i < inv.master.length; i++) {
-        if ((inv.master[i].type === "e" || inv.master[i].type === "d")) {
-            console.log("hasdfs");
-            $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
+        if ((inv.master[i].type === "e" || inv.master[i].type === "d") && inv.master[i].entry) {
+            $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select fight-inventory" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
             counter++;
         }
     }
+    $(".fight-inventory").click(function () {
+        tEnemy.displayInventory($(this).data("inv"));
+    });
+};
 
+tEnemy.displayInventory = function (thisName) {
+    var thisItem = inv.get(thisName);
 
+    $('#menu_displayIcon').html('<img src="./images/inv/' + thisItem.image + '"/>');
+
+    $("#menu_displayCost").html("");
+    $("#menu_displayName").html(thisItem.display + ": " + thisItem.count);
+    $('#menu_displayType').html(inv.gett(thisItem.type));
+    $("#menu_displayDesc").html(thisItem.desc + (thisItem.type === "e" ? "" : "<br/> Item not in use yet."));
+    //$("#menu_displayInfo").html("info");
+
+    //$("#menu_displayUp").attr("data-price", thisItem.cost);
+    //$("#menu_displayDown").attr("data-price", thisItem.cost);
+    if (thisItem.type === "e") {
+        $("#menu_displayAction").html("Use Item");
+        $("#menu_displayAction").attr("data-itype", "tEnemy");
+        $("#menu_displayAction").attr("data-name", thisName);
+        $("#menu_displayAction").attr("data-type", thisItem.type);
+        $("#menu_displayAction").show();
+    }
+    else {
+        $("#menu_displayAction").hide();
+    }
+};
+
+tEnemy.invClickCatch = function (thisName) {
+    var i = inv.getIndex(thisName);
+    if (inv.master[i].type === "e") {
+        if (inv.master[i].count < 1) {
+            g.popUpNotice("No " + inv.master[i].displayName + " in inventory.");
+        }
+        else {
+            inv.master[i].count--;
+            switch (thisName) {
+                case "acia":
+                    g.popUpNotice("You gained 15 energy");
+                    room227.btnclick("energyUsed15");
+                    break;
+                case "soda":
+                    g.internal.me.energy += 50;
+                    g.popUpNotice("You gained 50 energy");
+                    room227.btnclick("energyUsed50");
+                    break;
+                default:
+                    g.popUpNotice("No " + inv.master[i].displayName + " in inventory.");
+                    break;
+            }
+        }
+    }
 };
 
 tEnemy.updatePlayerStats = function (mArray, money, win) {
     var i;
     var popUpText = "";
-
+    console.log(mArray, money, win);
     for (i = 0; i < g.st.length; i++) {
         if (g.st[i].n === "energy") {
             if (mArray.energy < 0)
@@ -985,9 +1043,7 @@ tEnemy.updatePlayerStats = function (mArray, money, win) {
             g.st[i].t = mArray.energy;
         }
         else if (g.st[i].n === "fitness") {
-            console.log(g.st[i].t);
             g.st[i].t += (mArray.punchCount + mArray.kickCount);
-            console.log(g.st[i].t);
             if (g.st[i].t > 100)
                 g.st[i] = 100;
             if ((mArray.punchCount + mArray.kickCount) > 0)

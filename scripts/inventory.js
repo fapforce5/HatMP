@@ -579,8 +579,12 @@ inv.createElements = function () {
                     break;
             }
         }
+        else if (thisIType === "tEnemy") {
+            tEnemy.invClickCatch(thisName);
+        }
         else {
-            console.log("wrong button i type");
+            console.log("wrong button i type" + thisIType);
+            console.log(thisType, thisName, thisIType)
         }
     });
 };

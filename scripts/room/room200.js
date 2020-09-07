@@ -169,7 +169,12 @@ room200.btnclick = function (name) {
                 chat(164, 200);
             }
             else if (thisStep === 27) {
-                chat(181, 200);
+                if (inv.has("redbox"))
+                    chat(183, 200);
+                if (inv.has("sewer"))
+                    chat(181, 200);
+                else
+                    chat(182, 200);
             }
             else { //thisstep = 10
                 if (g.pass === "finishComputer") {
@@ -2195,7 +2200,7 @@ room200.chat = function (chatID) {
             chatID: 164,
             speaker: "missy",
             text: "Your trial is complete, you have proven yourself a worthy sissy. As you may have guessed by now I did not hire " +
-            "you to simply file paperwork and assist with menial cases. The cases were to test you, see how you would react.",
+                "you to simply file paperwork and assist with menial cases. The cases were to test you, see how you would react.",
             button: [
                 { chatID: -1, text: "huh?", callback: "25a" },
             ]
@@ -2204,7 +2209,7 @@ room200.chat = function (chatID) {
             chatID: 165,
             speaker: "missy",
             text: "When I assigned you to help " + sc.n("tiffany") + " find the person covering her booths in cum I assumed you would " +
-            "peek on her like an untrained sex starved boy, but you suprised me with your self discipline. I must applaud your resilience. ",
+                "peek on her like an untrained sex starved boy, but you suprised me with your self discipline. I must applaud your resilience. ",
             button: [
                 { chatID: -1, text: "...", callback: "25b" },
             ]
@@ -2214,7 +2219,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: "When I assigned you to help " + sc.n("tiffany") + " find the person covering her booths in cum I knew you wouldn't " +
                 "be able to help yourself. Like a young male pervert you had to peek. You needed to look at her pussy. I need you to " +
-            "know that about yourself. Your lust, if used improperly, will be your downfall.",
+                "know that about yourself. Your lust, if used improperly, will be your downfall.",
             button: [
                 { chatID: -1, text: "...", callback: "25b" },
             ]
@@ -2224,7 +2229,7 @@ room200.chat = function (chatID) {
             chatID: 167,
             speaker: "missy",
             text: "Then when you helped " + sc.n("jeffery") + " find who was stealing from him, I will admit I didn't expect you to rat " +
-            "out those poor girls. I honestly thought you had a conscious. It's that kind of heartlessness that may serve me well.  ",
+                "out those poor girls. I honestly thought you had a conscious. It's that kind of heartlessness that may serve me well.  ",
             button: [
                 { chatID: 169, text: "...", callback: "" },
             ]
@@ -2234,7 +2239,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: "When I assigned you to help " + sc.n("jeffery") + " find who was stealing from him, I knew you would fail. I had already figured " +
                 "out what happened before I assigned you to the case. Those girls are so careless in how they rob the diner. The true " +
-            "purpose was to show you that you have such feminine features you could crossdress in public.  ",
+                "purpose was to show you that you have such feminine features you could crossdress in public.  ",
             button: [
                 { chatID: 169, text: "...", callback: "" },
             ]
@@ -2243,7 +2248,7 @@ room200.chat = function (chatID) {
             chatID: 169,
             speaker: "missy",
             text: "And finally you've shown yourself to have the discipline it takes to help me against this cities biggest problem, those " +
-            "damn cultists! They have been a scourge upon this city for far too long, sucking in innocent boys and girls in to their ranks. ",
+                "damn cultists! They have been a scourge upon this city for far too long, sucking in innocent boys and girls in to their ranks. ",
             button: [
                 { chatID: 170, text: "The cult?", callback: "" },
             ]
@@ -2253,7 +2258,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: "Yes, surely you've come across them by now. They prey on those without self esteem and suck them in, give them a false " +
                 "sense of self worth, but only if you follow their leader to the fullest. He pulls them in and devours their individuality; " +
-            "makes them his servents. That's where you come in.",
+                "makes them his servents. That's where you come in.",
             button: [
                 { chatID: 171, text: "Me?", callback: "" },
             ]
@@ -2264,7 +2269,7 @@ room200.chat = function (chatID) {
             text: "Yes. There are many of them, and the path to the cult's door is difficult filled with many different challenges. When " +
                 "you walked in I felt you may just be the one. I needed someone that can move between genders, someone that can both fight and " +
                 "fuck their way out of a situation. More importantly I need someone that can follow my direction without question. You're the " +
-            "sissy I need to help take them down.",
+                "sissy I need to help take them down.",
             button: [
                 { chatID: 172, text: "I CAN DO IT!!!!", callback: "" },
                 { chatID: 173, text: "I don't know, it seems kinda hard", callback: "" },
@@ -2290,7 +2295,7 @@ room200.chat = function (chatID) {
             chatID: 174,
             speaker: "missy",
             text: "Deep in the sewers of this city there's a group that calls themselves the Clown Clan. They stole something of mine " +
-            "that I can use to help prepare you for the long difficult road ahead. I need you to get me that item.",
+                "that I can use to help prepare you for the long difficult road ahead. I need you to get me that item.",
             button: [
                 { chatID: 175, text: "What is it ma'am?", callback: "" },
             ]
@@ -2300,7 +2305,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: "I wouldn't want to ruin the suprise; you'll know it when you see it. Now you're not yet ready to take on the " +
                 "Clown Clan yet. You need to go to the gym and receive training from " + sc.n("g") + ". She will teach you the " +
-            "basics of fighting. ",
+                "basics of fighting. ",
             button: [
                 { chatID: 176, text: "Fighting ma'am?", callback: "" },
             ]
@@ -2311,7 +2316,7 @@ room200.chat = function (chatID) {
             text: "Yes. There are many ways to defeat your enemies. I know your true strength is your sissy assets, but you need to " +
                 "be more than just a fuckhole if we're going to bring down the cult. If I wanted a whore I would've hired one. You need " +
                 "to be able to use all your skills to your best ability. Some enemies can be brought down with your sissy ass, but some " +
-            "have to be brought down with your fists. ",
+                "have to be brought down with your fists. ",
             button: [
                 { chatID: 177, text: "Gulp", callback: "" },
             ]
@@ -2320,7 +2325,7 @@ room200.chat = function (chatID) {
             chatID: 177,
             speaker: "missy",
             text: "Once you receive your first lesson " + sc.n("g") + " will give you the sewer lid opener. Make your way to the rear of the " +
-            "sewer and retreive my item. It will be in a red box. Keep it closed until you return to me. ",
+                "sewer and retreive my item. It will be in a red box. Keep it closed until you return to me. ",
             button: [
                 { chatID: 178, text: "Yes ma'am!", callback: "" },
             ]
@@ -2329,7 +2334,7 @@ room200.chat = function (chatID) {
             chatID: 178,
             speaker: "missy",
             text: "To help you out I'll allow you to continue your training. The pink room of pleasure will help you be better with your " +
-            "sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
+                "sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
             button: [
                 { chatID: 179, text: "Yes why is " + sc.n("cecilia") + " tied up ma'am?", callback: "" },
                 { chatID: 180, text: "No ma'am", callback: "" },
@@ -2340,7 +2345,7 @@ room200.chat = function (chatID) {
             speaker: "missy",
             text: sc.n("cecilia") + " has been busy spending all her time sucking cock and not enough time working on her " +
                 "duties. Let " + sc.n("cecilia") + " be a lesson to you. Your duty is to obey, and serve me first, or you will pay for " +
-            "your discretions",
+                "your discretions",
             button: [
                 { chatID: 180, text: "Yes ma'am", callback: "" },
             ]
@@ -2359,6 +2364,24 @@ room200.chat = function (chatID) {
             text: "Come back when you have my package. ",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "leaveRoom0" },
+            ]
+        },
+        {
+            chatID: 182,
+            speaker: "missy",
+            text: "You need to meet " + sc.n("g") + " at the gym. Make sure you're fit enough to get invited to the back gym. There " +
+                "you'll have to take sparring training from her, then you can go to the sewer and get my box.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "leaveRoom0" },
+            ]
+        },
+        {
+            chatID: 183,
+            speaker: "missy",
+            text: "What's in the box!!! You'll have to tune into next releases exciting conclusion to find out! Or vote for it on my " +
+            "Patreon. Thanks for playing, this is the end of this release.",
+            button: [
+                { chatID: -1, text: "Drat! Till next time you fiend!!", callback: "leaveRoom0" },
             ]
         },
     ];

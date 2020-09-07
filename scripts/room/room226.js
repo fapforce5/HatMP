@@ -5,398 +5,418 @@ room226.main = function () {
     $("#rl_map").attr("src", "./images/general/map_266.jpg");
     char.changeMenu("map");
     setTimeout(function () { $("#room_footer").hide(); }, 200);
-    if (g.pass === "foo") {
-        var i;
-        g.pass = {
-            id: 0,
-            l: [
-                {
-                    id: 0,
-                    left: 60,
-                    top: 924,
-                    t: "y",
-                    b: null,
-                    l: 1,
-                    r: 2,
-                    e: null,
-                    v: true
-                },
-                {
-                    id: 1,
-                    left: 133,
-                    top: 776,
-                    t: "sl",
-                    b: 0,
-                    l: 5,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 2,
-                    left: 24,
-                    top: 836,
-                    t: "y",
-                    b: 0,
-                    l: 3,
-                    r: 4,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 3,
-                    left: 97,
-                    top: 777,
-                    t: "l",
-                    b: 2,
-                    l: 6,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 4,
-                    left: 24,
-                    top: 777,
-                    t: "l",
-                    b: 2,
-                    l: 7,
-                    r: null,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 5,
-                    left: 175,
-                    top: 688,
-                    t: "y",
-                    b: 1,
-                    l: 8,
-                    r: 9,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 6,
-                    left: 60,
-                    top: 688,
-                    t: "y",
-                    b: 3,
-                    l: 10,
-                    r: 11,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 7,
-                    left: 22,
-                    top: 717,
-                    t: "e",
-                    b: 4,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 8,
-                    left: 168,
-                    top: 540,
-                    t: "sr",
-                    b: 5,
-                    l: 14,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 9,
-                    left: 173,
-                    top: 628,
-                    t: "e",
-                    b: 5,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 10,
-                    left: 133,
-                    top: 628,
-                    t: "l",
-                    b: 6,
-                    l: 12,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 11,
-                    left: 60,
-                    top: 628,
-                    t: "l",
-                    b: 6,
-                    l: 13,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 12,
-                    left: 131,
-                    top: 569,
-                    t: "e",
-                    b: 10,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 13,
-                    left: 23,
-                    top: 541,
-                    t: "y",
-                    b: 11,
-                    l: 15,
-                    r: 16,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 14,
-                    left: 131,
-                    top: 453,
-                    t: "y",
-                    b: 8,
-                    l: 19,
-                    r: 20,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 15,
-                    left: 96,
-                    top: 482,
-                    t: "l",
-                    b: 13,
-                    l: 17,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 16,
-                    left: 23,
-                    top: 482,
-                    t: "l",
-                    b: 13,
-                    l: 18,
-                    r: null,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 17,
-                    left: 94,
-                    top: 423,
-                    t: "e",
-                    b: 15,
-                    l: null,
-                    r: null,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 18,
-                    left: 24,
-                    top: 334,
-                    t: "sl",
-                    b: 16,
-                    l: 22,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 19,
-                    left: 204,
-                    top: 394,
-                    t: "l",
-                    b: 14,
-                    l: 21,
-                    r: null,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 20,
-                    left: 129,
-                    top: 393,
-                    t: "e",
-                    b: 14,
-                    l: null,
-                    r: null,
-                    e: "f",
-                    v: false
-                },
-                {
-                    id: 21,
-                    left: 167,
-                    top: 306,
-                    t: "y",
-                    b: 19,
-                    l: 23,
-                    r: 24,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 22,
-                    left: 66,
-                    top: 246,
-                    t: "y",
-                    b: 18,
-                    l: 27,
-                    r: 28,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 23,
-                    left: 240,
-                    top: 246,
-                    t: "l",
-                    b: 21,
-                    l: 25,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 24,
-                    left: 167,
-                    top: 246,
-                    t: "l",
-                    b: 21,
-                    l: 26,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 25,
-                    left: 240,
-                    top: 187,
-                    t: "l",
-                    b: 23,
-                    l: 29,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 26,
-                    left: 165,
-                    top: 186,
-                    t: "e",
-                    b: 24,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 27,
-                    left: 138,
-                    top: 187,
-                    t: "l",
-                    b: 22,
-                    l: 30,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 28,
-                    left: 66,
-                    top: 187,
-                    t: "l",
-                    b: 22,
-                    l: 31,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 29,
-                    left: 238,
-                    top: 127,
-                    t: "e",
-                    b: 25,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 30,
-                    left: 136,
-                    top: 127,
-                    t: "e",
-                    b: 27,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-                {
-                    id: 31,
-                    left: 64,
-                    top: 127,
-                    t: "e",
-                    b: 28,
-                    l: null,
-                    r: null,
-                    e: null,
-                    v: false
-                },
-            ]
-        };
-
-        var bmap = g.get("sewerMap").split(' ');
-        for (i = 0; i < bmap.length; i++) {
-            var tempThis = parseInt(bmap[i]);
-            if (!isNaN(tempThis)) {
-                g.pass.l[tempThis].v = true;
-            }
-        }
-
-        var sewerend = g.get("sewerEnd");
-            
-        if(sewerend === 0) {
-            var thisOne = Math.floor(Math.random() * 4);
-            if (thisOne === 0)
-                sewerend = 26;
-            else if (thisOne === 1)
-                sewerend = 31;
-            else if (thisOne === 2)
-                sewerend = 30;
-            else
-                sewerend = 29;
-            g.set("sewerEnd", sewerend);
-        }
-
-        g.pass.l[sewerend].t = "s";
-        g.set("sewerID", g.pass.id);
-        g.pass.l[g.pass.l[sewerend].b].e = "c";
-        room226.btnclick("drawMap");
+    if (g.internal === "fightLoser") {
+        g.internal = "nofight";
+        g.pass = "insideTheSewer";
+        char.room(225);
+    }
+    else if (g.internal === "runaway") {
+        g.internal = "nofight";
+        var backRoom = g.pass.l[g.pass.id].b;
+        if (backRoom === null)
+            backRoom = 0;
+        backRoom = g.pass.l[backRoom].b;
+        g.pass.id = backRoom;
+        char.room(226);
+    }
+    else if (g.internal === "win") {
+        g.internal = "nofight";
+        char.room(226);
     }
     else {
-        room226.btnclick("drawMap");
+        if (g.pass === "foo") {
+            var i;
+            g.pass = {
+                id: 0,
+                l: [
+                    {
+                        id: 0,
+                        left: 60,
+                        top: 924,
+                        t: "y",
+                        b: null,
+                        l: 1,
+                        r: 2,
+                        e: null,
+                        v: true
+                    },
+                    {
+                        id: 1,
+                        left: 133,
+                        top: 776,
+                        t: "sl",
+                        b: 0,
+                        l: 5,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 2,
+                        left: 24,
+                        top: 836,
+                        t: "y",
+                        b: 0,
+                        l: 3,
+                        r: 4,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 3,
+                        left: 97,
+                        top: 777,
+                        t: "l",
+                        b: 2,
+                        l: 6,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 4,
+                        left: 24,
+                        top: 777,
+                        t: "l",
+                        b: 2,
+                        l: 7,
+                        r: null,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 5,
+                        left: 175,
+                        top: 688,
+                        t: "y",
+                        b: 1,
+                        l: 8,
+                        r: 9,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 6,
+                        left: 60,
+                        top: 688,
+                        t: "y",
+                        b: 3,
+                        l: 10,
+                        r: 11,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 7,
+                        left: 22,
+                        top: 717,
+                        t: "e",
+                        b: 4,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 8,
+                        left: 168,
+                        top: 540,
+                        t: "sr",
+                        b: 5,
+                        l: 14,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 9,
+                        left: 173,
+                        top: 628,
+                        t: "e",
+                        b: 5,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 10,
+                        left: 133,
+                        top: 628,
+                        t: "l",
+                        b: 6,
+                        l: 12,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 11,
+                        left: 60,
+                        top: 628,
+                        t: "l",
+                        b: 6,
+                        l: 13,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 12,
+                        left: 131,
+                        top: 569,
+                        t: "e",
+                        b: 10,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 13,
+                        left: 23,
+                        top: 541,
+                        t: "y",
+                        b: 11,
+                        l: 15,
+                        r: 16,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 14,
+                        left: 131,
+                        top: 453,
+                        t: "y",
+                        b: 8,
+                        l: 19,
+                        r: 20,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 15,
+                        left: 96,
+                        top: 482,
+                        t: "l",
+                        b: 13,
+                        l: 17,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 16,
+                        left: 23,
+                        top: 482,
+                        t: "l",
+                        b: 13,
+                        l: 18,
+                        r: null,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 17,
+                        left: 94,
+                        top: 423,
+                        t: "e",
+                        b: 15,
+                        l: null,
+                        r: null,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 18,
+                        left: 24,
+                        top: 334,
+                        t: "sl",
+                        b: 16,
+                        l: 22,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 19,
+                        left: 204,
+                        top: 394,
+                        t: "l",
+                        b: 14,
+                        l: 21,
+                        r: null,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 20,
+                        left: 129,
+                        top: 393,
+                        t: "e",
+                        b: 14,
+                        l: null,
+                        r: null,
+                        e: "f",
+                        v: false
+                    },
+                    {
+                        id: 21,
+                        left: 167,
+                        top: 306,
+                        t: "y",
+                        b: 19,
+                        l: 23,
+                        r: 24,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 22,
+                        left: 66,
+                        top: 246,
+                        t: "y",
+                        b: 18,
+                        l: 27,
+                        r: 28,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 23,
+                        left: 240,
+                        top: 246,
+                        t: "l",
+                        b: 21,
+                        l: 25,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 24,
+                        left: 167,
+                        top: 246,
+                        t: "l",
+                        b: 21,
+                        l: 26,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 25,
+                        left: 240,
+                        top: 187,
+                        t: "l",
+                        b: 23,
+                        l: 29,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 26,
+                        left: 165,
+                        top: 186,
+                        t: "e",
+                        b: 24,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 27,
+                        left: 138,
+                        top: 187,
+                        t: "l",
+                        b: 22,
+                        l: 30,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 28,
+                        left: 66,
+                        top: 187,
+                        t: "l",
+                        b: 22,
+                        l: 31,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 29,
+                        left: 238,
+                        top: 127,
+                        t: "e",
+                        b: 25,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 30,
+                        left: 136,
+                        top: 127,
+                        t: "e",
+                        b: 27,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                    {
+                        id: 31,
+                        left: 64,
+                        top: 127,
+                        t: "e",
+                        b: 28,
+                        l: null,
+                        r: null,
+                        e: null,
+                        v: false
+                    },
+                ]
+            };
+
+            var bmap = g.get("sewerMap").split(' ');
+            for (i = 0; i < bmap.length; i++) {
+                var tempThis = parseInt(bmap[i]);
+                if (!isNaN(tempThis)) {
+                    g.pass.l[tempThis].v = true;
+                }
+            }
+
+            var sewerend = g.get("sewerEnd");
+
+            if (sewerend === 0) {
+                var thisOne = Math.floor(Math.random() * 4);
+                if (thisOne === 0)
+                    sewerend = 26;
+                else if (thisOne === 1)
+                    sewerend = 31;
+                else if (thisOne === 2)
+                    sewerend = 30;
+                else
+                    sewerend = 29;
+                g.set("sewerEnd", sewerend);
+            }
+
+            g.pass.l[sewerend].t = "s";
+            g.set("sewerID", g.pass.id);
+            g.pass.l[g.pass.l[sewerend].b].e = "c";
+            room226.btnclick("drawMap");
+        }
+        else {
+            room226.btnclick("drawMap");
+        }
+        room226.btnclick("midSave");
     }
-    room226.btnclick("midSave");
 }; 
 
 room226.btnclick = function (name) {
@@ -547,7 +567,7 @@ room226.btnclick = function (name) {
                 }, 226);
 
                 if (g.pass.l[g.pass.id].e !== null) {
-                    if (g.internal === "retx")
+                    if (g.internal === "nofight")
                         g.internal = null;
                     else {
                         var thisEnemy;
@@ -559,6 +579,12 @@ room226.btnclick = function (name) {
                         char.room(227);
                     }
                 }
+                //else if (g.internal !== "nofight") {
+                //    g.internal = "";
+                //    if (Math.floor(Math.random() * 4) === 0)
+                //        g.internal = { enemy: (Math.floor(Math.random() * 2) === 0 ? "futaRed" : "futaYellow"), bg: "sewer", roomID: 226 };
+                //    char.room(227);
+                //}
             }
             break;
         case "left":

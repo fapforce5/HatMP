@@ -5,12 +5,23 @@ room227.main = function () {
     char.changeMenu("hide");
     setTimeout(function () { $("#room-inv").hide(); }, 250);
     //g.internal = { enemy: thisEnemy, bg: "sewer", roomID: 227 };
-    var enemy, bg, roomID;
-    enemy = g.internal.enemy;
-    bg = g.internal.bg;
-    roomID = g.internal.roomID;
-
-    g.internal = tEnemy.init(enemy, bg, 227, roomID);
+    if (!(typeof g.internal === 'string' || g.internal instanceof String)) {
+        if ("roomID" in g.internal) {
+            var enemy, bg, roomID;
+            enemy = g.internal.enemy;
+            bg = g.internal.bg;
+            roomID = g.internal.roomID;
+            g.internal = tEnemy.init(enemy, bg, 227, roomID);
+        }
+        else {
+            tEnemy.drawBackground(g.internal.bg);
+            tEnemy.drawRoom(g.internal.enemy, g.internal.me, 227);
+        }
+    }
+    else {
+        tEnemy.drawBackground(g.internal.bg);
+        tEnemy.drawRoom(g.internal.enemy, g.internal.me, 227);
+    }
 };
 
 room227.btnclick = function (name) {
@@ -35,11 +46,11 @@ room227.btnclick = function (name) {
                 tEnemy.drawMe(name);
                 g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, Math.round((name === "punch" ? g.internal.me.pPower : g.internal.me.kPower) * .2));
                 if (g.internal.enemy.energy < 1)
-                    g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 1500);
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 2000);
                 else if (Math.floor(Math.random() * 3) === 0)
-                    g.roomTimeout = setTimeout(function () { room227.btnclick(nextMove === "p" ? "reactionPunch" : "reactionKick"); }, 1500);
+                    g.roomTimeout = setTimeout(function () { room227.btnclick(nextMove === "punch" ? "reactionPunch" : "reactionKick"); }, 2000);
                 else
-                    g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 1500);
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 2000);
             }
             else {
                 if (nextMove === "bp" || nextMove === "bk") {
@@ -52,9 +63,9 @@ room227.btnclick = function (name) {
                     tEnemy.drawMe(name);
                     g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
                     if (g.internal.enemy.energy < 1)
-                        g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 1500);
+                        g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 2000);
                     else
-                        g.roomTimeout = setTimeout(function () { room227.btnclick(nextMove === "p" ? "reactionPunch" : "reactionKick"); }, 1500);
+                        g.roomTimeout = setTimeout(function () { room227.btnclick(nextMove === "punch" ? "reactionPunch" : "reactionKick"); }, 2000);
                 });
             }
             g.internal.me.prev2 = g.internal.me.prev1;
@@ -66,50 +77,57 @@ room227.btnclick = function (name) {
 
             var nextMovex = tEnemy.blindNextMove(g.internal.enemy, g.internal.me);
             
-            if (nextMovex === "p" && name === "blockPunch" || nextMovex === "k" && name === "blockKick") {
-                console.log("block");
-                tEnemy.drawEnemy(g.internal.enemy, nextMovex === "p" ? "punch" : "kick");
+            if (nextMovex === "punch" && name === "blockPunch" || nextMovex === "kick" && name === "blockKick") {
+                tEnemy.drawEnemy(g.internal.enemy, nextMovex);
                 tEnemy.drawAction("block");
                 tEnemy.drawMe(name);
-                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, nextMovex === "p" ? Math.round(g.internal.enemy.pPower * .2) : Math.round(g.internal.enemy.kPower * .2));
-                if (Math.floor(Math.random() * 3) === 0) {
-                    g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawAction("epow");
-                        tEnemy.drawEnemy(g.internal.enemy, "recoil");
-                        tEnemy.drawMe("punch");
-                        g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
-                        if (g.internal.enemy.energy < 1)
-                            g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 1500);
-                        else
-                            g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 1500);
-                    }, 1500);
+                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, nextMovex === "punch" ? Math.round(g.internal.enemy.pPower * .2) : Math.round(g.internal.enemy.kPower * .2));
+                if (g.internal.me.energy < 1) {
+                    room227.btnclick("lost");
                 }
                 else {
-                    g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 1500);
+                    if (Math.floor(Math.random() * 3) === 0) {
+                        g.roomTimeout = setTimeout(function () {
+                            tEnemy.drawAction("epow");
+                            tEnemy.drawEnemy(g.internal.enemy, "recoil");
+                            tEnemy.drawMe("punch");
+                            g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
+                            if (g.internal.enemy.energy < 1)
+                                g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 2000);
+                            else
+                                g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 2000);
+                        }, 2000);
+                    }
+                    else {
+                        g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 2000);
+                    }
                 }
             }
-            else if (nextMovex === "p" || nextMovex === "k") {
-                console.log("strike");
+            else if (nextMovex === "punch" || nextMovex === "kick") {
                 tEnemy.drawAction("epow");
-                tEnemy.drawEnemy(g.internal.enemy, nextMovex === "p" ? "punch" : "kick");
+                tEnemy.drawEnemy(g.internal.enemy, nextMovex);
                 tEnemy.drawMe("blockmiss");
-                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, nextMovex === "p" ? g.internal.enemy.pPower : g.internal.enemy.kPower);
-                g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 1500);
+                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, nextMovex === "punch" ? g.internal.enemy.pPower : g.internal.enemy.kPower);
+                if (g.internal.me.energy < 1) {
+                    room227.btnclick("lost");
+                }
+                else {
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 2000);
+                }
             }
             else {
-                console.log("both block");
                 tEnemy.drawEnemy(g.internal.enemy, "block");
                 tEnemy.myEnergy(g.internal.me, 0);
                 tEnemy.enemyEnergy(g.internal.enemy, 0);
                 tEnemy.drawMe("blockmiss");
-                g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 1500);
+                g.roomTimeout = setTimeout(function () { room227.btnclick("reset") }, 2000);
             }
             g.internal.me.prev2 = g.internal.me.prev1;
             g.internal.me.prev1 = name[0];
             break;
         case "inventory":
             tEnemy.drawButtons("inventoryKill", 227, g.internal.enemy);
-            inv.createElements();
+            tEnemy.makeInventory(227);
             break;
         case "inventoryKill":
             inv.close();
@@ -121,6 +139,8 @@ room227.btnclick = function (name) {
         case "teaseDance":
         case "teaseAss":
         case "teaseCock":
+            g.internal.me.energy = tEnemy.myEnergy(g.internal.me, 5);
+
             tEnemy.drawButtons("clear", 227, g.internal.enemy);
             var counterAction = tEnemy.sexyNextMove(g.internal.enemy, g.internal.me);
             var hornyAdd;
@@ -149,28 +169,32 @@ room227.btnclick = function (name) {
             else {
                 hornyAdd = g.internal.enemy.arousalGrowth * 2;
             }
-            console.log("counterAction");
 
-            g.internal.enemy.horny = tEnemy.enemyHorny(g.internal.enemy, hornyAdd);
+            if (g.internal.me.energy < 1) {
+                room227.btnclick("lost");
+            }
+            else {
+                g.internal.enemy.horny = tEnemy.enemyHorny(g.internal.enemy, hornyAdd);
 
-            if (counterAction === "punch" || counterAction === "kick" || counterAction === "punch")
-                tEnemy.drawEnemy(g.internal.enemy, "pose");
-            else if (counterAction === "blockPunch" || counterAction === "blockKick")
-                tEnemy.drawEnemy(g.internal.enemy, counterAction);
-            tEnemy.chibi(name);
-            if(counterAction === "punch")
-                g.roomTimeout = setTimeout(function () { room227.btnclick("reactionPunch"); }, 1500);
-            else if (counterAction === "kick")
-                g.roomTimeout = setTimeout(function () { room227.btnclick("reactionKick"); }, 1500);
-            else
-                g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 1500);
+                if (counterAction === "punch" || counterAction === "kick" || counterAction === "punch")
+                    tEnemy.drawEnemy(g.internal.enemy, "pose");
+                else if (counterAction === "blockPunch" || counterAction === "blockKick")
+                    tEnemy.drawEnemy(g.internal.enemy, counterAction);
+                tEnemy.chibi(name);
+                if (counterAction === "punch")
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("reactionPunch"); }, 2000);
+                else if (counterAction === "kick")
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("reactionKick"); }, 2000);
+                else
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 2000);
 
-            g.internal.me.prev2 = g.internal.me.prev1;
-            g.internal.me.prev1 = name;
-
+                g.internal.me.prev2 = g.internal.me.prev1;
+                g.internal.me.prev1 = name;
+            }
             break;
         case "submitBJ":
         case "submitAss":
+            g.internal.me.energy = tEnemy.myEnergy(g.internal.me, 20);
             g.internal.enemy.eventType = name;
             nav.killall();
             var thisEntry = enemyEnd.end(g.internal.enemy);
@@ -182,20 +206,44 @@ room227.btnclick = function (name) {
                 chat(1, 227);
             }
             else if (thisEntry.type === "cp") {
-                g.roomTimeout = setTimeout(function () { chat(1, 227); }, 1500);
+                g.roomTimeout = setTimeout(function () { chat(1, 227); }, 2000);
             };
+            break;
+        case "flee":
+            chat(5, 227);
+            break;
+        case "energyUsed15":
+        case "energyUsed50":
+            tEnemy.drawButtons("clear", 227, g.internal.enemy);
+            inv.close();
+            g.internal.me.energy = tEnemy.myEnergy(g.internal.me, name === "energyUsed15" ? -15 : -50);
+            var nextMovee = tEnemy.blindNextMove(g.internal.enemy, g.internal.me);
+            if (nextMovee === "punch")
+                g.roomTimeout = setTimeout(function () { room227.btnclick("reactionPunch"); }, 2000);
+            else if (nextMovee === "kick")
+                g.roomTimeout = setTimeout(function () { room227.btnclick("reactionKick"); }, 2000);
+            else
+                g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 2000);
+
+            g.internal.me.prev2 = g.internal.me.prev1;
+            g.internal.me.prev1 = "i";
             break;
         case "reactionPunch":
         case "reactionKick":
             if (g.internal.enemy.energy < 1) {
-                g.roomTimeout = setTimeout(function () { room227.btnclick("enemyLose"); }, 1500);
+                g.roomTimeout = setTimeout(function () { roomf227.btnclick("enemyLose"); }, 2000);
             }
             else {
                 tEnemy.drawAction("epow");
                 tEnemy.drawEnemy(g.internal.enemy, name === "reactionPunch" ? "punch" : "kick");
                 tEnemy.drawMe("clear");
                 g.internal.me.energy = tEnemy.myEnergy(g.internal.me, name === "reactionPunch" ? g.internal.enemy.pPower : g.internal.enemy.kPower);
-                g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 1500);
+                if (g.internal.me.energy < 1) {
+                    room227.btnclick("lost");
+                }
+                else {
+                    g.roomTimeout = setTimeout(function () { room227.btnclick("reset"); }, 2000);
+                }
             }
             break;
         case "enemyLose":
@@ -220,6 +268,9 @@ room227.btnclick = function (name) {
             else
                 room227.btnclick("reset");
             break;
+        case "lost":
+            chat(4, 227);
+            break;
         case "reset":
             tEnemy.drawButtons("init", 227, g.internal.enemy);
             tEnemy.drawAction("clear");
@@ -232,9 +283,10 @@ room227.btnclick = function (name) {
 room227.chatcatch = function (callback) {
     switch (callback) {
         case "money":
-            g.mod("money", g.internal.enemy.money);
             var retRoom = g.internal.returnRoomID;
-            g.internal = "retx";
+            tEnemy.updatePlayerStats(g.internal.me, g.internal.enemy.money, true);
+            g.internal = "win";
+            $("#room-inv").show();
             char.room(retRoom);
             break;
         case "service":
@@ -249,7 +301,7 @@ room227.chatcatch = function (callback) {
                 chat(1, 227);
             }
             else if (thisEntry.type === "cp") {
-                g.roomTimeout = setTimeout(function () { chat(1, 227); }, 1500);
+                g.roomTimeout = setTimeout(function () { chat(1, 227); }, 2000);
             };
             break;
         case "enemyEnd":
@@ -266,7 +318,7 @@ room227.chatcatch = function (callback) {
                     chat(1, 227);
                 }
                 else if (thisEntrye.type === "cp") {
-                    g.roomTimeout = setTimeout(function () { chat(1, 227); }, 1500);
+                    g.roomTimeout = setTimeout(function () { chat(1, 227); }, 2000);
                 };
             }
             break;
@@ -277,8 +329,24 @@ room227.chatcatch = function (callback) {
             break;
         case "goodEnd":
             var retRoomx = g.internal.returnRoomID;
-            g.internal = "retx";
+            tEnemy.updatePlayerStats(g.internal.me, 0, "win");
+            g.internal = "win";
+            $("#room-inv").show();
             char.room(retRoomx);
+            break;
+        case "leaveSewer":
+            var retRooml = g.internal.returnRoomID;
+            tEnemy.updatePlayerStats(g.internal.me, 0, "loss");
+            g.internal = "fightLoser";
+            $("#room-inv").show();
+            char.room(retRooml);
+            break;
+        case "runaway":
+            var retRoomr = g.internal.returnRoomID;
+            tEnemy.updatePlayerStats(g.internal.me, 0, "loss");
+            g.internal = "runaway";
+            $("#room-inv").show();
+            char.room(retRoomr);
             break;
         default:
             break;
@@ -325,6 +393,26 @@ room227.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Your Money", callback: "money" },
                 { chatID: -1, text: "Stip slut", callback: "strip" }
+            ]
+        };
+    }
+    if (chatID === 4) { //win strip clothing 
+        return {
+            chatID: 0,
+            speaker: g.internal.enemy.name,
+            text: "You have been defeated! Now leave the Clown Clan's hideout!",
+            button: [
+                { chatID: -1, text: "[Leave the sewer]", callback: "leaveSewer" },
+            ]
+        };
+    }
+    if (chatID === 5) { //win strip clothing 
+        return {
+            chatID: 0,
+            speaker: g.internal.enemy.name,
+            text: "Turn tail and run, I prefer watching your butt as you flee",
+            button: [
+                { chatID: -1, text: "[Run away]", callback: "runaway" },
             ]
         };
     }
