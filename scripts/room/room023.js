@@ -466,7 +466,6 @@ room23.chatcatch = function (callback) {
 };
 
 room23.chat = function (chatID) {
-    console.log(chatID)
     var retEntry;
     if (chatID === "evaClick") { //clickEva
         if (g.internal.eva === 0) {

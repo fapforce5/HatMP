@@ -826,6 +826,7 @@ menu.mClick = function (type) {
                 "Merchanto<br/>" +
                 "Orrin <br/>" +
                 "reverseclipse<br/>" +
+                "SirGuren (Contributor)<br/>" +
                 "WendyJ<br/>" +
                 "Wild86willie<br/>" +
                 '</div>');

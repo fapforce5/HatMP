@@ -1,7 +1,7 @@
 ﻿//Room name
 var room57 = {};
 room57.main = function () {
-    if (sc.tiffany().thisRoom && sc.candy().thisRoom()) {
+    if (sc.tiffany().thisRoom && sc.candy().thisRoom) {
         nav.bg("57_pussyPalace/fuckbg.jpg");
         nav.button({
             "type": "img",

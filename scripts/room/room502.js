@@ -196,6 +196,7 @@ room502.chatcatch = function (callback) {
             break;
         case "firstNewDay":
             sc.setstep("zoey", -1);
+            g.pass = 502;
             char.room(28);
             break;
         case "o0":

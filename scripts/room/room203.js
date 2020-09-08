@@ -16,6 +16,7 @@ room203.main = function () {
             }, 203);
         }
         nav.buildnav([201, 207, 0]);
+        g.internal = "201 change";
     }
     else {
         var navList = [0];

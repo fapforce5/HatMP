@@ -71,7 +71,7 @@ inv.master = [
     { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false, desc: "" },
     { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false, desc: "" },
     { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false, desc: "" },
-    { type: "g", name: "sewer", display: "Sewer Lid Opener", entry: false, count: null, cost: -1, image: "sewer.png", n: false, desc: "Use this ot open the sewer lid next to the dance club." },
+    { type: "g", name: "sewer", display: "Sewer Lid Opener", entry: false, count: null, cost: -1, image: "sewer.png", n: false, desc: "Use this to open the sewer lid next to the dance club." },
     { type: "c", name: "closet", display: "Change Clothes", entry: true, count: null, cost: 90, image: "change.png", n: false, desc: "Change your clothes. Can only use in a bathroom." }
 ];
 
@@ -332,6 +332,18 @@ inv.display = function () {
                 $("#menu_displayAction").html("Change Room Decoration");
                 $("#menu_displayAction").show();
                 break;
+            case "h":
+                if (!g.get("tookHormonePill")) {
+                    $("#menu_displayAction").attr("data-itype", "bag");
+                    $("#menu_displayAction").attr("data-type", thisItem.type);
+                    $("#menu_displayAction").attr("data-name", thisItem.name);
+                    $("#menu_displayAction").html("Take Your Pill");
+                    $("#menu_displayAction").show();
+                }
+                else {
+                    $("#menu_displayDesc").append("<br/>I'm such an air head! I already took my pill for today.");
+                }
+                break;
             default:
                 $("#menu_displayAction").hide();
                 break;
@@ -576,6 +588,20 @@ inv.createElements = function () {
                     $("#menu_displayInfo").html("UPDATED");
                     $("#menu_displayAction").hide();
                     inv.close();
+                    break;
+                case "h":
+                    if (!g.get("tookHormonePill")) {
+                        g.setflag("tookHormonePill");
+                        var myPill = inv.getIndex("hormone");
+                        g.mod("hormone", 30);
+                        inv.use("hormone");
+                        $("#menu_displayCost").html(inv.master[myPill].count === 0 ? "All out, better get more." : "Count: " + inv.master[myPill].count);
+                        $("#menu_displayAction").hide();
+                    }
+                    else {
+                        $("#menu_displayAction").hide();
+                        $("#menu_displayDesc").append("<br/>I'm such an air head! I already took my pill for today.");
+                    }
                     break;
             }
         }

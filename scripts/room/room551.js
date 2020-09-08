@@ -323,8 +323,19 @@ room551.chatcatch = function (callback) {
         case "endDay":
             g.mod("shower", -1440);
             g.mod("energy", -50);
-            g.mod("fitness", 30);
             g.setflag("gworkout");
+            if (g.pass === "squat") {
+                g.mod("leg", 15);
+                g.mod("fitness", 20);
+            }
+            else if (g.pass === "push") {
+                g.mod("body", 15);
+                g.mod("fitness", 20);
+            }
+            else { //situp
+                g.mod("fitness", 35);
+            }
+
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");
             var btnList1 = [

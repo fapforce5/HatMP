@@ -132,14 +132,22 @@ room501.btnclick = function (name) {
                     room501.chatcatch("zLook");
                 }
                 else {
-                    chat(63, 501);
+                    if (cl.isCrossdressing())
+                        chat((Math.floor(Math.random() * 2) === 0 ? 75 : 76), 501);
+                    else
+                        chat(63, 501);
                     room501.chatcatch("zLook");
                 }
                 g.setflag("zoeyDay");
             }
             else {
-                if (sc.checkevent("zoey", -1))
-                    chat(63, 501);
+                if (sc.checkevent("zoey", -1)) {
+                    if (cl.isCrossdressing())
+                        chat((Math.floor(Math.random() * 2) === 0 ? 75 : 76), 501);
+                    else
+                        chat(63, 501);
+                    room501.chatcatch("zLook");
+                }
                 else
                     chat(16, 501);
             }
@@ -1133,6 +1141,30 @@ room501.chat = function (chatID) {
             text: "I'm not going to go through " + sc.n("chloe") + "'s purse. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "zoey",
+            text: "Such a pretty girl. You're cute enough that I may accidently pick you up in a bar and take you home",
+            button: [
+                { chatID: -1, text: "I'm pretty", callback: "lookForward" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "zoey",
+            text: "Je suis excitée. If you had la chatte I would lick it till you orgasmed all over my face! ",
+            button: [
+                { chatID: 77, text: "I can orgasm all over your face now....", callback: "lookForward" }
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "zoey",
+            text: "Hahaha, you're so funny " + sc.n("me") + "!",
+            button: [
+                { chatID: -1, text: "[Sad noises]", callback: "" }
             ]
         }
     ];

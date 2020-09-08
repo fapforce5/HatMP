@@ -312,8 +312,8 @@ room101.chat = function (chatID) {
             speaker: "tina",
             text: "Here you go",
             button: [
+                { chatID: 13, text: "Flirt with " + sc.n("tina"), callback: "" },
                 { chatID: -1, text: "Thanks babe", callback: "" },
-                { chatID: 13, text: "Flirt with " + sc.n("tina"), callback: "" }
             ]
         },
         {

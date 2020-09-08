@@ -57,6 +57,7 @@ g.st = [
     { n: "sewerMap", t: "", q: "string" },
     { n: "sewerEnd", t: 0, q: "int" },
     { n: "sewerID", t: 0, q: "int" },
+    { n: "shinkCock", t: false, q: "bool" }, 
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -96,7 +97,6 @@ g.st = [
     { n: "jobConstGetRaise", t: false, q: "bool" },
     { n: "lockboobs", t: false, q: "bool" },
     { n: "lockbutt", t: false, q: "bool" },
-
     { n: "enterSister", t: false, q: "day" },
     { n: "evaDayEvent", t: false, q: "day" },
     { n: "lolaDayEvent", t: false, q: "day" },
@@ -109,7 +109,7 @@ g.st = [
     { n: "momRaidCloset", t: false, q: "day" },
     { n: "tookHormonePill", t: false, q: "day" },
     { n: "gworkout", t: false, q: "day" },
-    { n: "shinkCock", t: false, q: "day" },
+    
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
     { n: "momchat", t: false, q: "day" },

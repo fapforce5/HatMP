@@ -18,7 +18,7 @@ room20.chatcatch = function (callback) {
         case "finish":
             g.mod("rentKnockOff", 5);
             g.setflag("choreDishes");
-            char.addtime(58);
+            char.addtime(20);
             char.room(15);
             break;
         default:

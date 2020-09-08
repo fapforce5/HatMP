@@ -171,7 +171,7 @@ room200.btnclick = function (name) {
             else if (thisStep === 27) {
                 if (inv.has("redbox"))
                     chat(183, 200);
-                if (inv.has("sewer"))
+                else if (inv.has("sewer"))
                     chat(181, 200);
                 else
                     chat(182, 200);

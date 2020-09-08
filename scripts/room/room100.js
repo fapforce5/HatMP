@@ -5,7 +5,7 @@ room100.main = function () {
     var btnList = new Array();
     var navList = new Array();
     
-    if (g.hourBetween(6, 9) && sc.getstep("construction") > 1 && g.dt.getDay() !== 0) {
+    if (g.hourBetween(6, 12) && sc.getstep("construction") > 1 && g.dt.getDay() !== 0) {
         if(g.get("energy") < 60)
             navList = [101, 0];
         else

@@ -37,9 +37,9 @@ room26.btnclick = function (name) {
                 else if (ll === 1)
                     chat(3, 26);
                 else if (ll === 2)
-                    chat(4, 25);
+                    chat(4, 26);
                 else if (ll === 3)
-                    chat(7, 25);
+                    chat(7, 26);
                 else if (ll === 4)
                     chat(9, 26)
                 else if (ll === 5)
@@ -50,8 +50,6 @@ room26.btnclick = function (name) {
                     chat(30, 26);
                 else if (ll === 8)
                     chat(43, 26);
-                else if (ll < 4)
-                    chat(11, 26);
                 else 
                     chat(2, 26);
             }

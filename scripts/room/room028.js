@@ -97,7 +97,7 @@ room28.main = function () {
             "width": 256,
             "height": 256,
             "title": "Cancel",
-            "image": "28_transformation/boobs" + cl.c.chest < 4 ? "" : "Cancel" + ".png"
+            "image": "28_transformation/cock.png"
         }];
         chat(1, 28);
     }
@@ -169,6 +169,7 @@ room28.main = function () {
                 "title": "Cancel",
                 "image": "28_transformation/lips" + (cl.lipsize() !== "sb" ? "" : "Cancel") + ".png"
             }];
+        chat(2, 28);
     }
     else {
         g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 1000);
@@ -265,6 +266,14 @@ room28.chat = function (chatID) {
             text: "Oh no! I can feel that pee pee shrinking cream working! My penis is getting smaller!",
             button: [
                 { chatID: -1, text: "[Shrink my pee pee]", callback: "" }
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "me",
+            text: "I must be dreaming.... I can feel as though my body wants to change.......",
+            button: [
+                { chatID: -1, text: ".....", callback: "" }
             ]
         }
     ];

@@ -6,7 +6,7 @@ room14.main = function () {
     g.internal = { pussy: 0, asshole: 0 };
     if (!g.hourBetween(6, 21)) {
         nav.bg("14_motherRoom/14_motherRoomNight.jpg");
-        if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
+        if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
             //14_motherAsleepDick.png
             btnList = [{
                 "type": "btn",

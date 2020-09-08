@@ -53,6 +53,7 @@ room103.chatcatch = function (callback) {
         case "complete":
             char.addtime(540);
             g.mod("energy", -60);
+            g.mod("fitness", 10);
             g.set("jobConstWorkToday", 1);
             char.room(101);
             break;
