@@ -67,10 +67,8 @@ room225.main = function () {
                     nav.button(v, 225);
                 });
             }
-
-
-            nav.buildnav(navList);
         }
+        nav.buildnav(navList);
     }
 };
 
