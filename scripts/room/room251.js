@@ -91,18 +91,18 @@ room251.chatcatch = function (callback) {
             cl.c.shoes = cl.c.socks = cl.c.pants = cl.c.panties = cl.c.bra = cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
             cl.c.shoes = cl.c.shirt = cl.c.pants = 'v';
             cl.display();
-            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra");
+            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             break;
         case "jeff5":
             nav.killbutton("zzz-clothing-kill");
             cl.c.cock = 5;
             cl.display();
-            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra");
+            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             break;
         case "jeff6":
             cl.c.wig = "d";
             cl.display();
-            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra");
+            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             break;
         case "startWork":
             g.pass = "working";
@@ -140,7 +140,7 @@ room251.chatcatch = function (callback) {
             cl.c.shoes = cl.c.shirt = cl.c.pants = 'v';
             cl.c.wig = "d";
             cl.display();
-            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra");
+            zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             break;
         case "leave0":
             char.room(0);

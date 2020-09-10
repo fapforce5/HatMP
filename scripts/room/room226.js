@@ -6,9 +6,9 @@ room226.main = function () {
     char.changeMenu("map");
     setTimeout(function () { $("#room_footer").hide(); }, 200);
     if (g.internal === "fightLoser") {
-        g.internal = "nofight";
-        g.pass = "insideTheSewer";
-        char.room(225);
+        g.internal = "";
+        g.pass = "";
+        char.room(228);
     }
     else if (g.internal === "runaway") {
         g.internal = "nofight";
@@ -602,7 +602,7 @@ room226.btnclick = function (name) {
         case "back":
             if (g.pass.id === 0) {
                 $("#room_left_map").html('<img src="./images/general/map_ov.png" class="width-l" id="rl_map" style="width:100%" />');
-                char.room(225);
+                char.room(228);
             }
             else {
                 g.pass.id = g.pass.l[g.pass.id].b;

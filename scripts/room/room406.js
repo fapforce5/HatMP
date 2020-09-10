@@ -46,7 +46,7 @@ room406.chatcatch = function (callback) {
             cl.display();
             break;
         case "look":
-            zcl.displayMain(-60, -200, .65, "panties shirt pants socks shoes bra");
+            zcl.displayMain(-60, -200, .65, "panties shirt pants socks shoes bra", false);
             break;
         case "kill":
             nav.killbutton("zzz-clothing-kill");

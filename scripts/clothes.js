@@ -1105,7 +1105,7 @@ cl.display = function () {
     else if (g.tview === "p") {
         var thisBladdeer = g.get("bladder");
         cl.subDisplay("char-legs", "xray.png");
-        $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(40 * thisBladdeer, 40, 270 + (thisBladdeer * -40), 140) + ' position:absolute; background:#eadb3f; z-index:13;"></div>');
+        $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(38 * thisBladdeer, 40, 320 + (thisBladdeer * -40), 135) + ' position:absolute; background:#eadb3f; z-index:13;"></div>');
         cl.subDisplay("char-head", "xray_top.png");
     }
     else {

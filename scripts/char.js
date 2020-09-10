@@ -545,39 +545,40 @@ menu.mClick = function (type) {
             $('.menu-load').css({ 'font-size': 20 * g.ratio + 'px' });
             break;
         case "help":
-            $('.menu-buttonKill').remove();
-            $('.menu-button').remove();
-            $('.menu-phoneBG').addClass('menu-phoneBGRotate');
-            setTimeout(function () {
-                var thisImg = inv.get(inv.phone).image.split('.');
-                thisImg = thisImg[0] + "_rotate." + thisImg[1];
-                $('#menu_parent').html('<img src="./images/phone/' + thisImg + '" style="position:absolute; ' + g.makeCss(1015, 1450, 32, 235) + '" class="menu-phoneBG" />');
-                $('#menu_parent').append('<img src="./images/phone/power_rotate.png" style="position:absolute; ' + g.makeCss(131, 131, 474, 1533) + '" data-type="close" class="menu-button"/>');
-                $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
-                $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
-                g.makeCss()
-                $('#menu_parent').append('<img src="./images/phone/help/help1.jpg" style="position:absolute; ' + g.makeCss(622, 1110, 93, 417) + '" id="menu_help_display" data-help="1"/>');
-                $('#menu_parent').append('<img src="./images/general/arrowLeft.png" style="position:absolute; ' + g.makeCss(150, 233, 800, 600) + '" class="hover-display menu-help-back"/>');
-                $('#menu_parent').append('<img src="./images/general/arrowRight.png" style="position:absolute; ' + g.makeCss(150, 233, 800, 1087) + '" class="hover-display menu-help-forward"/>');
+            window.open("http://fapforce5.com"); 
+            //$('.menu-buttonKill').remove();
+            //$('.menu-button').remove();
+            //$('.menu-phoneBG').addClass('menu-phoneBGRotate');
+            //setTimeout(function () {
+            //    var thisImg = inv.get(inv.phone).image.split('.');
+            //    thisImg = thisImg[0] + "_rotate." + thisImg[1];
+            //    $('#menu_parent').html('<img src="./images/phone/' + thisImg + '" style="position:absolute; ' + g.makeCss(1015, 1450, 32, 235) + '" class="menu-phoneBG" />');
+            //    $('#menu_parent').append('<img src="./images/phone/power_rotate.png" style="position:absolute; ' + g.makeCss(131, 131, 474, 1533) + '" data-type="close" class="menu-button"/>');
+            //    $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
+            //    $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
+            //    g.makeCss()
+            //    $('#menu_parent').append('<img src="./images/phone/help/help1.jpg" style="position:absolute; ' + g.makeCss(622, 1110, 93, 417) + '" id="menu_help_display" data-help="1"/>');
+            //    $('#menu_parent').append('<img src="./images/general/arrowLeft.png" style="position:absolute; ' + g.makeCss(150, 233, 800, 600) + '" class="hover-display menu-help-back"/>');
+            //    $('#menu_parent').append('<img src="./images/general/arrowRight.png" style="position:absolute; ' + g.makeCss(150, 233, 800, 1087) + '" class="hover-display menu-help-forward"/>');
 
-                $(".menu-help-forward").click(function () {
-                    var num = parseInt($('#menu_help_display').attr('data-help'));
-                    num = num > 5 ? num = 1 : num + 1;
-                    $('#menu_help_display').prop("src", "./images/phone/help/help" + num + ".jpg").attr("data-help", num);
-                    console.log(num)
-                });
+            //    $(".menu-help-forward").click(function () {
+            //        var num = parseInt($('#menu_help_display').attr('data-help'));
+            //        num = num > 5 ? num = 1 : num + 1;
+            //        $('#menu_help_display').prop("src", "./images/phone/help/help" + num + ".jpg").attr("data-help", num);
+            //        console.log(num)
+            //    });
 
-                $(".menu-help-back").click(function () {
-                    var num = parseInt($('#menu_help_display').attr('data-help'));
-                    num = num < 2 ? num = 6 : num - 1;
-                    $('#menu_help_display').prop("src", "./images/phone/help/help" + num + ".jpg").attr("data-help", num);
-                });
-                //sc.buildIcons();
+            //    $(".menu-help-back").click(function () {
+            //        var num = parseInt($('#menu_help_display').attr('data-help'));
+            //        num = num < 2 ? num = 6 : num - 1;
+            //        $('#menu_help_display').prop("src", "./images/phone/help/help" + num + ".jpg").attr("data-help", num);
+            //    });
+            //    //sc.buildIcons();
 
-                //$('.sc-menu-button').click(function () {
-                //    sc.buildIcons();
-                //});
-            }, 800);
+            //    //$('.sc-menu-button').click(function () {
+            //    //    sc.buildIcons();
+            //    //});
+            //}, 800);
 
             //$(".menu-buttonKill").remove();
             //$('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(730, 585, 167, 651) + ' background:#ccc; padding:' + 15 * g.ratio + 'px;">' +

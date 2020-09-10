@@ -5,11 +5,7 @@ var room452 = {};
 room452.main = function () {
 
     //if (true) {
-    if (g.isNight()) {
-        var navList = [450];
-        nav.buildnav(navList);
-    }
-    else if (sc.getstep("bimbo") === 0) {
+    if (sc.getstep("bimbo") === 0 && !g.isNight()) {
         nav.button({
             "type": "img",
             "name": "bimbo",
@@ -23,7 +19,7 @@ room452.main = function () {
     }
     else {
         var thisApp = cl.appearance();
-        if (Math.floor(Math.random() * 4) === 0 && thisApp < 2) {
+        if (Math.floor(Math.random() * 4) === 0 && thisApp < 2 && !g.isNight()) {
             nav.button({
                 "type": "img",
                 "name": "cop",
@@ -35,7 +31,7 @@ room452.main = function () {
             }, 452);
             chat(5, 452);
         }
-        else if (Math.floor(Math.random() * 3) === 0 && thisApp < 2) {
+        else if (Math.floor(Math.random() * 3) === 0 && thisApp < 2 && !g.isNight()) {
             nav.button({
                 "type": "img",
                 "name": "woman",
@@ -117,10 +113,8 @@ room452.btnclick = function (name) {
             nav.bg("451_parkMensRoom/stall.jpg");
             break;
         case "mirror":
-            nav.killall();
-            nav.bg("451_parkMensRoom/mirror.jpg", "451_parkMensRoom/mirror.jpg");
-            zcl.displayMirror();
-            chat(9, 452);
+            g.pass = 451;
+            char.room(27);
             break;
         default:
             break;

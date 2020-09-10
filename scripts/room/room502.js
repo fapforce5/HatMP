@@ -260,9 +260,9 @@ room502.chatcatch = function (callback) {
         case "chloeGoneSleepReset":
             sc.setstep("zoey", -4);
             sc.setstep("zoey", 12);
-            char.settime(15, 37);
-            g.pass = "";
-            char.room(502);
+            //char.settime(15, 37);
+            g.pass = 502;
+            char.room(28);
             break;
         case "newClothing":
             nav.button({
@@ -294,7 +294,7 @@ room502.chatcatch = function (callback) {
         case "dressup":
             cl.nude();
             nav.killbutton("zoey");
-            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra");
+            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra", false);
             break;
         case "dressup1":
             cl.c.shirt = "r";
@@ -302,7 +302,7 @@ room502.chatcatch = function (callback) {
             cl.c.pants = "k";
             cl.c.shoes = "fb";
             cl.display();
-            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra");
+            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra", false);
             break;
         case "zoeyLeave":
             nav.room(502);

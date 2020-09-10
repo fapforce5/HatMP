@@ -137,7 +137,7 @@ room403.chatcatch = function (callback) {
         case "changeRoom6c":
             nav.bg("403_saucy/changeRoom6c.jpg");
             cl.display();
-            zcl.displayMain(60, 760, .19, "panties");
+            zcl.displayMain(60, 760, .19, "panties", false);
             break;
         case "selfie":
             nav.bg("403_saucy/changeRoom.jpg");
@@ -184,12 +184,12 @@ room403.chatcatch = function (callback) {
             cl.c.socks = "p";
             cl.c.shoes = "fb";
             cl.display();
-            zcl.displayMain(60, 760, .19, "panties socks shoes shirt");
+            zcl.displayMain(60, 760, .19, "panties socks shoes shirt", false);
             break;
         case "changeRoom11b":
             cl.c.wig = "f";
             cl.display();
-            zcl.displayMain(60, 760, .19, "panties socks shoes shirt");
+            zcl.displayMain(60, 760, .19, "panties socks shoes shirt", false);
             break;
         case "changeRoomX":
             nav.killbutton("cupDrip");
@@ -205,6 +205,7 @@ room403.chatcatch = function (callback) {
             break;
         case "changeRoomPussyCum":
             sc.setstep("tiffany", 11);
+            g.mod("fuckPussy", 1);
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomPussyCum.jpg");
             nav.button({
@@ -220,6 +221,7 @@ room403.chatcatch = function (callback) {
             break;
         case "changeRoomCumBack":
             sc.setstep("tiffany", 12);
+            g.mod("fuckPussy", 1);
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomCumBack.jpg");
             break;

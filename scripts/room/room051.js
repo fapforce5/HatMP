@@ -153,7 +153,7 @@ room51.chatcatch = function (callback) {
             nav.bg("51_livingRoom/livingroom.jpg");
             nav.killall();
             cl.nude();
-            zcl.displayMain(20, 650, .20, "");
+            zcl.displayMain(20, 650, .20, "", false);
             nav.button({
                 "type": "btn",
                 "name": "t19",
@@ -202,7 +202,7 @@ room51.chatcatch = function (callback) {
             nav.killall();
             char.settime(18, 8);
             nav.bg("51_livingRoom/livingroom.jpg");
-            zcl.displayMain(20, 650, .20, "");
+            zcl.displayMain(20, 650, .20, "", false);
             nav.button({
                 "type": "img",
                 "name": "t19",
@@ -226,7 +226,7 @@ room51.chatcatch = function (callback) {
             cl.add("pj", "gown");
             cl.c.pj = "gown";
             nav.killall();
-            zcl.displayMain(20, 650, .20, "clothes");
+            zcl.displayMain(20, 650, .20, "clothes", false);
             nav.button({
                 "type": "img",
                 "name": "t19",

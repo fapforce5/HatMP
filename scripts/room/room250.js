@@ -5,7 +5,7 @@ room250.main = function () {
         g.pass = "";
         if (sc.getstep("jeffery") === 3) {
             nav.bg("250_beaver/wait1.jpg");
-            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             chat(12, 250);
         }
         else {
@@ -56,25 +56,25 @@ room250.btnclick = function (name) {
     switch (name) {
         case "1":
             nav.bg("250_beaver/wait1.jpg");
-            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             g.pass.shift();
             chat(19, 250);
             break;
         case "2":
             nav.bg("250_beaver/wait2.jpg");
-            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             g.pass.shift();
             chat(21, 250);
             break;
         case "3":
             nav.bg("250_beaver/wait3.jpg");
-            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             g.pass.shift();
             chat(26, 250);
             break;
         case "4":
             nav.bg("250_beaver/wait4.jpg");
-            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             g.pass.shift();
             if (sc.getstep("spanky") < 3) {
                 chat(27, 250);
@@ -202,7 +202,7 @@ room250.chatcatch = function (callback) {
         case "cockfall":
             cl.c.cock = 0;
             cl.display();
-            zcl.displayMain(50, 1000, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 1000, .17, "panties shirt pants socks shoes bra", false);
             break;
         case "cockLeave":
             nav.killbutton("zzz-clothing-kill");
@@ -250,7 +250,7 @@ room250.chatcatch = function (callback) {
             break;
         case "unbent":
             nav.kill("getbent");
-            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra");
+            zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             break;
         case "break10":
             if (sc.checkevent("holly", -1))

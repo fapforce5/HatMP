@@ -25,7 +25,7 @@ room101.main = function () {
         else if (tinaRel < 10)
             image = "sit2.png";
         else if (Math.floor(Math.random() * 5) === 0) {
-            image = "101_jackit.png";
+            image = "jackit1.png";
             name = "jackit";
         }
         else {

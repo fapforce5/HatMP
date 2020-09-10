@@ -23,7 +23,7 @@ room554.main = function () {
             nav.killall();
             cl.c.cumface = false;
             cl.nude();
-            zcl.displayMain(120, 1200, .15, "shower");
+            zcl.displayMain(120, 1200, .15, "shower", false);
             chat(1, 554);
         }
         //$.each(btnList, function (i, v) {

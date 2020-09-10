@@ -517,7 +517,7 @@ room200.chatcatch = function (callback) {
             break;
         case "rack20":
             nav.bg("200_frontOffice/cross.jpg");
-            zcl.displayMain(0, 810, .18, "armsup");
+            zcl.displayMain(0, 810, .18, "armsup", false);
 
             nav.button({
                 "type": "btn",
@@ -541,7 +541,7 @@ room200.chatcatch = function (callback) {
                 "image": "200_frontOffice/200_missy.png"
             }, 200);
             nav.bg("200_frontOffice/200_frontOffice.jpg");
-            zcl.displayMain(445, 1380, .05, "armsup");
+            zcl.displayMain(445, 1380, .05, "armsup", false);
             nav.button({
                 "type": "img",
                 "name": "tiedown",

@@ -18,7 +18,7 @@ room425.main = function () {
     cl.c.pants = "p";
     cl.c.shirt = "j";
     cl.display();
-    zcl.displayMain(180, 980, .09, "panties shirt pants socks shoes bra");
+    zcl.displayMain(180, 980, .09, "panties shirt pants socks shoes bra", false);
     $.each(btnList, function (i, v) {
         nav.button(v, 425);
     });

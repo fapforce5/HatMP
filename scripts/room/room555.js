@@ -612,7 +612,7 @@ room555.chat = function (chatID) {
             ]
         },
         {
-            chatID: 28,
+            chatID: 29,
             speaker: "g",
             text: "Ok wimp, I'm going to train you how to fight.",
             button: [
@@ -621,13 +621,21 @@ room555.chat = function (chatID) {
             ]
         },
         {
-            chatID: 28,
+            chatID: 30,
             speaker: "g",
             text: "What will it be today shrimp?",
             button: [
                 { chatID: -1, text: "[Begin training]", callback: "training" },
-                { chatID: -1, text: "[Spar]", callback: "fight" },
+                { chatID: 31, text: "[Spar]", callback: "" },
                 { chatID: -1, text: "Oh, sorry I'm going to go.", callback: "resetLeave" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "g",
+            text: "Future release will include a full walkthrough and spar",
+            button: [
+                { chatID: 30, text: "Oh well...", callback: "" },
             ]
         },
     ];

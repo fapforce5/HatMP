@@ -444,6 +444,7 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/couple3b.jpg");
             break;
         case "couple3c":
+            g.mod("sissy", 20);
             nav.bg("14_motherRoom/couple3c.jpg");
             break;
         case "couple3d":

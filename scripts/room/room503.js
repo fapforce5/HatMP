@@ -46,7 +46,7 @@ room503.btnclick = function (name) {
                 nav.killall();
                 cl.c.cumface = false;
                 cl.nude();
-                zcl.displayMain(0, 400, .22, "shower");
+                zcl.displayMain(0, 400, .22, "shower", false);
                 nav.bg("503_bathroom/shower.jpg");
                 if (inv.get("razor").count > 0)
                     chat(3, 503);
@@ -74,7 +74,7 @@ room503.chatcatch = function (callback) {
             break;
         case "shaveBody":
             g.set("bodyhair", 0);
-            zcl.displayMain(0, 400, .22, "shower");
+            zcl.displayMain(0, 400, .22, "shower", false);
             inv.use("razor");
             char.addtime(15);
             cl.display();
