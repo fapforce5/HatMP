@@ -191,9 +191,9 @@ room451.btnclick = function (name) {
                 "image": "451_parkMensRoom/bj8.gif"
             }, 451);
             g.roomTimeout = setTimeout(function () { chat(10, 451); }, 3000);
-            
+
             break;
-      
+
         default:
             break;
     }
@@ -205,9 +205,7 @@ room451.chatcatch = function (callback) {
             char.room(451);
             break;
         case "cleanface":
-            cl.c.cumface = false;
-            cl.c.lips = "thin";
-            cl.c.makeup = "n";
+            cl.clean("face");
             zcl.displayMirror();
             cl.display();
             break;
