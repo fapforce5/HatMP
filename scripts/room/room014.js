@@ -289,7 +289,7 @@ room14.chatcatch = function (callback) {
             break;
         case "rub":
             $('#room_footer').hide();
-            g.internal.pussy = g.internal.pussy < 1 ? 1 : g.internal.pussy; 
+            g.internal.pussy = g.internal.pussy < 1 ? 1 : g.internal.pussy;
             nav.button({
                 "type": "img",
                 "name": "pussyPlay",
@@ -444,7 +444,6 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/couple3b.jpg");
             break;
         case "couple3c":
-            g.mod("sissy", 20);
             nav.bg("14_motherRoom/couple3c.jpg");
             break;
         case "couple3d":
@@ -457,6 +456,7 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/couple3f.jpg");
             break;
         case "couple3g":
+            g.mod("sissy", 20);
             g.mod("loadSwollowed", 1);
             nav.bg("14_motherRoom/couple3g.jpg");
             break;
@@ -560,7 +560,7 @@ room14.chat = function(chatID){
         {
             chatID: 12,
             speaker: "landlord",
-            text: "I can't believe you thought you could get away with sticking your dirty fingers inside me while I'm " + 
+            text: "I can't believe you thought you could get away with sticking your dirty fingers inside me while I'm " +
                 "sleeping, what gets in your head.",
             button: [
                 { chatID: -1, text: "ohhh uhhhh, I don't know", callback: "sleepSpank" }
@@ -638,7 +638,7 @@ room14.chat = function(chatID){
         {
             chatID: 21,
             speaker: "bigguy",
-            text: "Boys are perverts, it's in our blood, isn't that right young one. That's why your " + sc.n("landlord") + 
+            text: "Boys are perverts, it's in our blood, isn't that right young one. That's why your " + sc.n("landlord") +
             " has me over. She loves my giant perverted friend here",
             button: [
                 { chatID: 22, text: "oh gross...", callback: "" }
@@ -749,7 +749,7 @@ room14.chat = function(chatID){
             button: [
                 { chatID: 35, text: "I do", callback: "couple3e" },
                 { chatID: 41, text: "Oh my god NO", callback: "" }
-                
+
             ]
         },
         {
