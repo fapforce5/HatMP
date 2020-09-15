@@ -139,6 +139,7 @@ room208.btnclick = function (name) {
             if (g.internal.t < (150 * g.ratio)) {
                 nav.killbutton("jerkStop");
                 nav.killbutton("jerk");
+                cl.doCum(true);
                 nav.button({
                     "type": "img",
                     "name": "jerk",

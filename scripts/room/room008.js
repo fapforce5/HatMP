@@ -4,21 +4,8 @@ var room8 = {};
 
 room8.main = function () {
 
-    var navList = [g.pass];
-    if (g.pass === 52) 
-        nav.bg("8_wardrobe/52_wardrobe.jpg");
-    else if (g.pass === 502)
-        nav.bg("8_wardrobe/502_wardrobe.jpg");
-    else if (g.pass === 201)
-        nav.bg("8_wardrobe/201.jpg");
-    else if (g.pass === 451)
-        nav.bg("8_wardrobe/451.jpg");
-    else if (g.pass === 452)
-        nav.bg("8_wardrobe/452.jpg");
-    else if (g.pass === 552)
-        nav.bg("8_wardrobe/552.jpg");
-
-    nav.buildnav(navList);
+    
+    
 
     var quickList = "";
     $.each(cl.saveOutfit, function (i, v) {
@@ -239,12 +226,45 @@ room8.main = function () {
             cl.saveOutfit[entry].name = g.cleanText(newName);
             chat(0, 8);
         }
-        g.pass = "";
     });
     if (!sc.checkevent("me", -4)) {
         sc.setstep("me", -4);
         chat(1, 8);
     }
+
+    if (g.pass === 52)
+        nav.bg("8_wardrobe/52_wardrobe.jpg");
+    else if (g.pass === 502)
+        nav.bg("8_wardrobe/502_wardrobe.jpg");
+    else if (g.pass === 201)
+        nav.bg("8_wardrobe/201.jpg");
+    else if (g.pass === 451)
+        nav.bg("8_wardrobe/451.jpg");
+    else if (g.pass === 452)
+        nav.bg("8_wardrobe/452.jpg");
+    else if (g.pass === 552)
+        nav.bg("8_wardrobe/552.jpg");
+
+    if (isNaN(g.pass)) {
+        g.pass = 451;
+    }
+    else {
+        switch (g.pass) {
+            case 52:
+            case 502:
+            case 201:
+            case 451:
+            case 452:
+            case 552:
+                break;
+            default:
+                g.pass = 451;
+                break;
+        }
+    }
+    console.log(g.pass)
+    var navList = [g.pass];
+    nav.buildnav(navList);
 };
 
 room8.btnclick = function(name){

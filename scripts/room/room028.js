@@ -27,7 +27,7 @@ room28.main = function () {
             cl.c.hairLength++;
         cl.c.lastHairCut = g.dt;
     }
-    
+
     var maxE = g.get("maxenergy");
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
@@ -75,23 +75,22 @@ room28.main = function () {
                     g.st[i].t -= 2;
                 break;
             case "shinkCock":
-                thisTinyPP = g.st[i].t;
-                g.st[i].t = false;
+                if (cl.c.cock < 4) {
+                    thisTinyPP = g.st[i].t;
+                    g.st[i].t = false;
+                }
                 break;
         }
     }
 
-
-
     //check Transformation
 
-    
     var btnList = null;
     if (thisTinyPP) {
         console.log("tinyPP")
         btnList = [{
             "type": "btn",
-            "name": cl.c.chest < 4 ? "cock" : "invalid",
+            "name": "cock",
             "left": 1418,
             "top": 457,
             "width": 256,
@@ -118,12 +117,38 @@ room28.main = function () {
     else if (hormoneLevel > 65 && g.get("sissy") > 95) {
         g.set("sissy", 0);
         g.mod("sissyLevel", 1);
-        btnList = [
+        room28.btnclick("init");
+        chat(2, 28);
+    }
+    else {
+        g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 1000);
+    }
+
+    if (btnList !== null) {
+        $.each(btnList, function (i, v) {
+            nav.button(v, 28);
+        });
+    }
+};
+
+room28.btnclick = function (name) {
+    switch (name) {
+        case "init":
+            btnList = [{
+                "type": "btn",
+                "name": "brain",
+                "left": 671,
+                "top": 144,
+                "width": 256,
+                "height": 256,
+                "title": "Cancel",
+                "image": "28_transformation/brain.png"
+            },
             {
                 "type": "btn",
                 "name": "cancel",
-                "left": 671,
-                "top": 144,
+                "left": 542,
+                "top": 457,
                 "width": 256,
                 "height": 256,
                 "title": "Cancel",
@@ -169,21 +194,11 @@ room28.main = function () {
                 "title": "Cancel",
                 "image": "28_transformation/lips" + (cl.lipsize() !== "sb" ? "" : "Cancel") + ".png"
             }];
-        chat(2, 28);
-    }
-    else {
-        g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 1000);
-    }
 
-    if (btnList !== null) {
-        $.each(btnList, function (i, v) {
-            nav.button(v, 28);
-        });
-    }
-};
-
-room28.btnclick = function (name) {
-    switch (name) {
+            $.each(btnList, function (i, v) {
+                nav.button(v, 28);
+            });
+            break;
         case "boobs":
             var tempChest = cl.c.chest + 1;
             if (tempChest < 7) {
@@ -225,8 +240,155 @@ room28.btnclick = function (name) {
 
             g.roomTimeout = setTimeout(function () { char.room(g.internal) }, 5000);
             break;
+        case "brain":
+            nav.killbutton("brain");
+            nav.killbutton("boobs");
+            nav.killbutton("butt");
+            nav.killbutton("cock");
+            nav.killbutton("lips");
+            nav.killbutton("cancel");
+
+            nav.t({
+                type: "img",
+                name: "header",
+                left: 500,
+                top: 120,
+                font: 20,
+                hex: "#ffffff",
+                text: "Beginner"
+            });
+            nav.t({
+                type: "img",
+                name: "header",
+                left: 1060,
+                top: 120,
+                font: 20,
+                hex: "#ffffff",
+                text: "Risqué"
+            });
+            nav.t({
+                type: "img",
+                name: "header",
+                left: 1620,
+                top: 120,
+                font: 20,
+                hex: "#ffffff",
+                text: "Bimbo Slut"
+            });
+
+            nav.button({
+                "type": "img",
+                "name": "grid",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "28_transformation/grid.png"
+            }, 28);
+
+            //fight 200
+            nav.button({
+                "type": "btn",
+                "name": "strip",
+                "left": 356,
+                "top": 200,
+                "width": 400,
+                "height": 100,
+                "title": "Strip (Fight)",
+                "image": "28_transformation/b_strip.png"
+            }, 28);
+            nav.button({
+                "type": "btn",
+                "name": "dance",
+                "left": 910,
+                "top": 200,
+                "width": 400,
+                "height": 100,
+                "title": "Dance (Fight)",
+                "image": "28_transformation/b_dance.png"
+            }, 28);
+            nav.button({
+                "type": "btn",
+                "name": "shakecock",
+                "left": 910,
+                "top": 350,
+                "width": 400,
+                "height": 100,
+                "title": "Wave Cock (Fight)",
+                "image": "28_transformation/b_shakecock.png"
+            }, 28);
+            nav.button({
+                "type": "btn",
+                "name": "displayhole",
+                "left": 1460,
+                "top": 200,
+                "width": 400,
+                "height": 100,
+                "title": "Display Asshole (Fight)",
+                "image": "28_transformation/b_displayhole.png"
+            }, 28);
+
+            //glory hole 400
+            nav.button({
+                "type": "btn",
+                "name": "gloryholebj",
+                "left": 356,
+                "top": 500,
+                "width": 400,
+                "height": 100,
+                "title": "Strip (Fight)",
+                "image": "28_transformation/b_gloryholebj.png"
+            }, 28);
+            nav.button({
+                "type": "btn",
+                "name": "gloryholeanal",
+                "left": 910,
+                "top": 500,
+                "width": 400,
+                "height": 100,
+                "title": "Dance (Fight)",
+                "image": "28_transformation/b_gloryholeanal.png"
+            }, 28);
+            nav.button({
+                "type": "btn",
+                "name": "gloryholefriends",
+                "left": 1460,
+                "top": 500,
+                "width": 400,
+                "height": 100,
+                "title": "Display Asshole (Fight)",
+                "image": "28_transformation/b_gloryholefriends.png"
+            }, 28);
+
+
+
+            nav.button({
+                "type": "btn",
+                "name": "return",
+                "left": 1200,
+                "top": 800,
+                "width": 256,
+                "height": 256,
+                "title": "Cancel",
+                "image": "28_transformation/cancel.png"
+            }, 28);
+            break;
         case "cancel":
             char.room(g.internal);
+            break;
+        case "return":
+            nav.killbutton("return");
+            nav.killbutton("header");
+            nav.killbutton("grid");
+            nav.killbutton("strip");
+            nav.killbutton("dance");
+            nav.killbutton("shakecock");
+            nav.killbutton("displayhole");
+            nav.killbutton("gloryholebj");
+            nav.killbutton("gloryholeanal");
+            nav.killbutton("gloryholefriends");
+            room28.btnclick("init");
+
             break;
         default:
             break;

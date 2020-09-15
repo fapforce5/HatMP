@@ -4,6 +4,8 @@ g.roomTimeout = null;// var nav_roomTimout = null;
 g.roomTimeout2 = null;
 g.pass = null;//var nav_roomPass = null;
 g.internal = null;
+g.fight = null;
+g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
@@ -43,6 +45,7 @@ g.st = [
     { n: "bodyLevel", t: 0, q: "zero" },
     { n: "fitnessLevel", t: 0, q: "zero" },
     { n: "sissyLevel", t: 0, q: "zero" },
+    { n: "sissyPoints", t: 0, q: "zero" },
     { n: "dLevel", t: 0, q: "zero" },
     { n: "map", t: 0, q: "int" },
     { n: "jobConstructionPay", t: 0, q: "zero" },
@@ -57,7 +60,10 @@ g.st = [
     { n: "sewerMap", t: "", q: "string" },
     { n: "sewerEnd", t: 0, q: "int" },
     { n: "sewerID", t: 0, q: "int" },
-    { n: "shinkCock", t: false, q: "bool" }, 
+    { n: "shinkCock", t: false, q: "bool" },
+
+    { n: "bimboMoves", t: "", q: "string" },
+    { n: "fighttimer", t: 2000, q: "int" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -109,7 +115,7 @@ g.st = [
     { n: "momRaidCloset", t: false, q: "day" },
     { n: "tookHormonePill", t: false, q: "day" },
     { n: "gworkout", t: false, q: "day" },
-    
+
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
     { n: "momchat", t: false, q: "day" },
@@ -709,7 +715,11 @@ g.initGame = function () {
             case "makeup":
             case "sewerEnd":
             case "sewerID":
+            case "sissyPoints":
                 g.st[i].t = 0;
+                break;
+            case "bimboMoves":
+                g.st[i].t = "";
                 break;
             case "bodyhair":
                 g.st[i].t = 100;

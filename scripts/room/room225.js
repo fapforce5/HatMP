@@ -53,7 +53,6 @@ room225.btnclick = function (name) {
         case "lid":
             char.room(228);
             break;
-       
         default:
             break;
     }

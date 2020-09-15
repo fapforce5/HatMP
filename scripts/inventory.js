@@ -16,7 +16,7 @@ var pic = {};
 //r = room painting
 inv.isFooter = true;
 inv.leftMenu = true;
-inv.roomChange = [10, 12, 201, 451, 452, 503, 552, 553];
+inv.roomChange = [10, 12, 56, 201, 451, 452, 503, 552, 553];
 
 inv.t = [
     { t: "b", n: "Backpack" },
@@ -40,8 +40,9 @@ inv.master = [
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
-    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Add 15 energy" },
-    { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 20, image: "energyCola.png", n: false, desc: "Add 50 energy and lose 15 fitness points" },
+    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Gain 15 energy" },
+    { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
+    { type: "e", name: "cumjar", display: "A Jar Full of cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "m", name: "makeup", display: "Makeup", entry: false, count: null, cost: 180, image: "makeup.png", n: false, desc: "Make your face pretty" },

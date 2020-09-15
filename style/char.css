@@ -35,6 +35,10 @@
     filter: brightness(1.2);
 }
 
+.img-dark{
+    filter: brightness(.6);
+}
+
 .char-bg {
     z-index: 10;
 }

@@ -575,7 +575,7 @@ room226.btnclick = function (name) {
                             thisEnemy = "clownQueen";
                         else
                             thisEnemy = Math.floor(Math.random() * 2) === 0 ? "futaRed" : "futaYellow";
-                        g.internal = { enemy: thisEnemy, bg: "sewer", roomID: 226 };
+                        g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "sewer", roomID: 226 };
                         char.room(227);
                     }
                 }

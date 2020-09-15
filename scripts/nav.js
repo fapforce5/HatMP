@@ -104,6 +104,8 @@ nav.button = function (btn, roomNum) {
         if (g.isNight() && (typeof btn.night !== "undefined"))
             thisImage = btn.night;
 
+        if (btn.type === "dark")
+            classes = "room-img img-dark";
         if (btn.type === "btn")
             classes = "room-btn rom-event";
         else if (btn.type === "kiss")
@@ -126,7 +128,7 @@ nav.button = function (btn, roomNum) {
     $('img').on('dragstart', function (event) { event.preventDefault(); });
 };
 
-nav.text = function (btn, roomNum) {
+nav.t = function (btn, roomNum) {
     var top = btn.top * g.ratio;
     var left = btn.left * g.ratio;
 

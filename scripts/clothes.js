@@ -29,7 +29,8 @@ cl.set = [
     { entry: 1, name: "Androgynous" },
     { entry: 2, name: "Cute" },
     { entry: 3, name: "Sexy" },
-    { entry: 4, name: "Bimbo Slut" }
+    { entry: 4, name: "Bimbo Slut" },
+    { entry: 4, name: "Cum Dumpster" }
 ];
 
 
@@ -1709,4 +1710,31 @@ cl.applyLipstick = function (color) {
             console.log("lipNotFound");
             break;
     }
+};
+
+cl.wearing = function () {
+    var retVal = {
+        underwear: false,
+        top: false,
+        bottom: false,
+        footwear: false,
+        usableCock: false,
+        chastity: false,
+        tinyDick: false,
+        nude: false,
+        lewd: false,
+        superlewd: false
+    };
+
+    retVal.underwear = (cl.c.panties !== null || cl.c.bra !== null);
+    retVal.top = (cl.c.dress !== null || cl.c.swimsuit !== null || cl.c.pj !== null || cl.c.shirt !== null);
+    retVal.bottom = (cl.c.dress !== null || cl.c.swimsuit !== null || cl.c.pj !== null || cl.c.shirt !== null);
+    retVal.footwear = (cl.c.shoes !== null || cl.c.socks !== null);
+    retVal.chastity = cl.c.chastity !== null;
+    retVal.tinyDick = cl.c.cock < 4;
+    cl.c.nude = !retVal.underwear && !retVal.top && !retVal.bottom && !retVal.footwear;
+    cl.c.lewd = (!cl.c.underwear && !cl.c.bottom) || (!cl.c.shirt && cl.c.chest > 1);
+    cl.c.usableCock = !(retVal.chastity || retVal.tinyDick);
+    cl.c.superlewd = !retVal.underwear && !retVal.top && !retVal.bottom;
+    return retVal;
 };
