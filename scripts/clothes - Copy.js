@@ -5,7 +5,7 @@ cl.c = {
     makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
-    necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null, 
+    necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
     fingernail: null, toenail: null,
     cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false,
     locktits: false, lockbutt: false
@@ -246,7 +246,7 @@ cl.nude = function () {
     cl.cTemp.dress = cl.c.dress;
     cl.cTemp.swimsuit = cl.c.swimsuit;
     cl.cTemp.pj = cl.c.pj;
-    
+
     cl.c.shoes = null;
     cl.c.socks = null;
     cl.c.pants = null;
@@ -420,7 +420,7 @@ cl.hairColor = [
     { color: "rainbow", step: 1 }
 ];
 
-cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia"]; 
+cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia"];
 
 cl.makeup = [
     { name: "n", image: "body_head.png" },
@@ -1663,7 +1663,7 @@ cl.appearanceBody = function () {
 cl.clean = function (type) {
     cl.c.cumface = null;
     cl.c.makeup = "n";
-    cl.c.lips = "thin";
+    cl.c.lips = cl.lipsize();
 
     cl.display();
 }
@@ -1711,6 +1711,7 @@ cl.applyLipstick = function (color) {
             break;
     }
 };
+<<<<<<< HEAD
 
 cl.wearing = function () {
     var retVal = {
@@ -1738,3 +1739,5 @@ cl.wearing = function () {
     cl.c.superlewd = !retVal.underwear && !retVal.top && !retVal.bottom;
     return retVal;
 };
+=======
+>>>>>>> 0a95007dc33f29bf06a20550c1d78bc56ff0855d

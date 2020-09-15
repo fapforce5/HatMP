@@ -164,9 +164,7 @@ room452.chatcatch = function(callback){
             char.room(452);
             break;
         case "cleanface":
-            cl.c.cumface = false;
-            cl.c.lips = "thin";
-            cl.c.makeup = "n";
+            cl.clean("face")
             zcl.displayMirror();
             cl.display();
             break;

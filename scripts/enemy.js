@@ -49,8 +49,8 @@ tEnemy.init = function (e0, e1, e2, bg, returnRoomID, thisRoomID) {
         returnRoomID: returnRoomID,
         thisRoomID: thisRoomID,
         lock: false,
-        enemyRotation = 0,
-        fighttimer = g.get("fighttimer")
+        enemyRotation: 0,
+        fighttimer: g.get("fighttimer")
     };
 
     g.fight.e[0].active = true;
