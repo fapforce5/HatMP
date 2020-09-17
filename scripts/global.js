@@ -124,6 +124,11 @@ g.st = [
     { n: "cultrun", t: false, q: "day" },
 ];
 
+g.sissy = [
+    { id: 0, pID: null, icon: "", name: "", description: "", points: 1 },
+    { id: 1, pID: 0, icon: "", name: "", description: "", points: 1 }
+];
+
 g.i = function (name) {
     var thisIndex = -1;
     for (i = 0; i < g.st.length; i++) {

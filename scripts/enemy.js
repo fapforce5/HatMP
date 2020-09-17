@@ -317,25 +317,25 @@ tEnemy.drawRoom = function () {
     thisEnergy = (g.fight.me.energy / g.fight.me.maxEnergy) * 280 * g.ratio;
     thisHorney = (g.fight.me.horny / 100) * 280 * g.ratio;
 
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 990, 310) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 310) + '  background: #ff3333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 310) + '  background: #33ff33; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 990, 310) + '  background: #333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 310) + '  background: #ff3333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 310) + '  background: #33ff33; border-radius:10px;" ></div>');
 
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1008, 310) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisHorney, 1008, 310) + '  background: #edb7eb; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny" data-t="horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisHorney, 1008, 310) + '  background: #E976E5; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1008, 310) + '  background: #333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisHorney, 1008, 310) + '  background: #edb7eb; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisHorney, 1008, 310) + '  background: #E976E5; border-radius:10px;" ></div>');
 
     topx = 980;
     for (i = 0; i < g.fight.e.length; i++) {
         thisEnergy = (g.fight.e[i].energy / g.fight.e[i].maxEnergy) * 280;
         thisHorney = (g.fight.e[i].horny / 100) * 280 * g.ratio;
-        $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-name="myenergybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, topx, 1380) + '  background: #333; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="damage" data-name="enemyenergy' + i + '" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, topx, 1380) + '  background: #ff3333; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemyenergy' + i + '" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, topx, 1380) + '  background: #33ff33; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-name="myenergybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, topx, 1380) + '  background: #333; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-t="damage" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, topx, 1380) + '  background: #ff3333; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-t="energy" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, topx, 1380) + '  background: #33ff33; border-radius:10px;" ></div>');
 
-        $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" ata-name="myhorneybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, (topx + 18), 1380) + '  background: #333; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="horny" ata-name="enemyhorny' + i + '" data-room="9999" style=" ' + g.makeCss(10, thisHorney, (topx + 18), 1380) + '  background: #edb7eb; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="damage" ata-name="enemyhorny' + i + '" data-room="9999" style=" ' + g.makeCss(10, thisHorney, (topx + 18), 1380) + '  background: #E976E5; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-name="myhorneybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, (topx + 18), 1380) + '  background: #333; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-t="horny" data-room="9999" style=" ' + g.makeCss(10, thisHorney, (topx + 18), 1380) + '  background: #edb7eb; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-t="damage" data-room="9999" style=" ' + g.makeCss(10, thisHorney, (topx + 18), 1380) + '  background: #E976E5; border-radius:10px;" ></div>');
 
         nav.t({
             type: "zimg",
@@ -527,9 +527,6 @@ tEnemy.setNextMove = function (move, num) {
     //case "e_soda":
     //case "e_cumjar":
 
-    g.fight.me.nextMove = move;
-    g.fight.me.nextMoveEnemy = num;
-
     if (num !== null) {
         tEnemy.setEnemyAction(num, move);
     }
@@ -559,6 +556,14 @@ tEnemy.setNextMove = function (move, num) {
         case "e_cumjar": img = "cumjar.png"; break;
     }
     nav.modbutton("myactive", "227_fight/" + img, null, null);
+
+    if (move === "e_punch")
+        move = "punch";
+    else if (move === "e_kick")
+        move = "kick";
+
+    g.fight.me.nextMove = move;
+    g.fight.me.nextMoveEnemy = num;
 };
 
 tEnemy.drawEnemyActionSub = function (btn, num) {
@@ -845,25 +850,36 @@ tEnemy.drawAction = function (action) {
     };
 };
 
+tEnemy.drawSingleEnemy = function (xi, pose) {
+    var i;
+    for (i = 0; i < g.fight.e.length; i++) {
+        g.fight.e[i].active = false;
+        g.fight.e[i].p = "pose";
+    }
+    g.fight.e[xi].active = true;
+    g.fight.e[xi].p = pose;
+    tEnemy.drawEnemy();
+};
+
 tEnemy.drawEnemy = function () {
     var i;
     
     var background = new Array();
     var foreground;
 
-    nav.killbutton("char");
-
     for (i = 0; i < g.fight.e.length; i++) {
         if (g.fight.e[i].active)
             foreground = i;
         else
             background.push(i);
+        nav.killbutton("char" + i);
     }
 
-    for (i = 0; i < background.length; i++) {
+    for (i = 0; i < background.length; i++) 
         tEnemy.drawEnemySub(500 * ((i * 1.8) + 1), 1080, .9, background[i], "dark");
-    }
-    tEnemy.drawEnemySub(960, 1080, 1, foreground, "img");
+    
+    tEnemy.drawEnemySub(960, 1080, 1, i, "img", foreground, "img");
+    console.log("-------------------")
 };
 
 tEnemy.drawEnemySub = function (ls, ts, r, j, classes) {
@@ -905,9 +921,10 @@ tEnemy.drawEnemySub = function (ls, ts, r, j, classes) {
             console.log("unable to find: " + pose + " pose");
             break;
     };
+    console.log(j + " --");
     nav.button({
         "type": classes,
-        "name": "char",
+        "name": "char" + j,
         "left": ls - ((width * r) / 2),
         "top": ts - (height * r),
         "width": width * r,
@@ -974,25 +991,47 @@ tEnemy.drawMe = function (pose) {
 };
 
 tEnemy.enemyEnergy = function (thisDamage, thisArousal, xi) {
+    var newEnergyDisplay, preEnergyDisplay, preDamage;
 
+    if (thisDamage !== null) {
+        preDamage = g.fight.e[xi].energy;
+        g.fight.e[xi].energy += thisDamage;
 
-    var damageSustain = (eArray.energy / eArray.maxEnergy) * 280;
-    var newEnergy = eArray.energy - thisDamage;
+        if (g.fight.e[xi].energy < 0)
+            g.fight.e[xi].energy = 0;
+        if (g.fight.e[xi].energy > g.fight.e[xi].maxEnergy)
+            g.fight.e[xi].energy = g.fight.e[xi].maxEnergy;
 
-    if (newEnergy < 0)
-        newEnergy = 0;
-    if (newEnergy > eArray.maxEnergy)
-        newEnergy = eArray.maxEnergy;
+        newEnergyDisplay = (g.fight.e[xi].energy / g.fight.e[xi].maxEnergy) * 280;
+        preEnergyDisplay = (preDamage / g.fight.e[xi].maxEnergy) * 280;
 
-    newEnergyDisplay = (newEnergy / eArray.maxEnergy) * 280;
+        $(".enemy-life" + xi + "[data-t='damage'").css({
+            width: preEnergyDisplay * g.ratio + "px"
+        });
+        $(".enemy-life" + xi + "[data-t='energy'").css({
+            width: newEnergyDisplay * g.ratio + "px"
+        });
+    }
+    if (thisArousal !== null) {
+        preDamage = g.fight.e[xi].horny;
 
-    $(".enemy-life[data-t='damage'").css({
-        width: damageSustain * g.ratio + "px"
-    });
-    $(".enemy-life[data-t='energy'").css({
-        width: newEnergyDisplay * g.ratio + "px"
-    });
-    return newEnergy;
+        g.fight.e[xi].horny += thisDamage;
+
+        if (g.fight.e[xi].horny < 0)
+            g.fight.e[xi].horny = 0;
+        if (g.fight.e[xi].horny > 100)
+            g.fight.e[xi].horny = 100;
+
+        newEnergyDisplay = (g.fight.e[xi].horny / 100) * 280;
+        preEnergyDisplay = (preDamage / 100) * 280;
+
+        $(".my-horny[data-t='damage'").css({
+            width: preEnergyDisplay * g.ratio + "px"
+        });
+        $(".my-horny[data-t='horney'").css({
+            width: newEnergyDisplay * g.ratio + "px"
+        });
+    }
 };
 
 tEnemy.myEnergy = function (thisDamage, thisArousal) {
@@ -1294,7 +1333,7 @@ tEnemy.blindNextMove = function (xi, myaction) {
     for (var i = 0; i < 10; i++) {
         if (i < g.fight.e[xi].bp)
             moveChance.push("punch");
-        else if (i < g.fight.e[xi].bp + eArray.bk)
+        else if (i < g.fight.e[xi].bp + g.fight.e[xi].bk)
             moveChance.push("kick");
         else
             moveChance.push("b");
@@ -1314,7 +1353,7 @@ tEnemy.blindNextMove = function (xi, myaction) {
     }
     
     if (g.fight.e[xi].nextMove === null) {
-        returnMove = moveChance[Math.floor(Math.random() * 10)];
+        g.fight.e[xi].nextMove = moveChance[Math.floor(Math.random() * 10)];
     }
     if (g.fight.e[xi].nextMove === "b")
         g.fight.e[xi].nextMove = Math.floor(Math.random() * 2) === 0 ? "blockPunch" : "blockKick";

@@ -123,31 +123,33 @@ room227.btnclick = function (name) {
             break;
         case "punch":
         case "kick":
-            tEnemy.blindNextMove(g.fight.me.nextMoveEnemy, name);
-            var nextMove = g.fight.e[g.fight.me.nextMoveEnemy].nextMove;
-            tEnemy.drawEnemyActionActive(g.fight.me.nextMoveEnemy);
-            if (name === "punch")
-                g.fight.me.punchCount++;
-            else
-                g.fight.me.kickCount++;
+            //tEnemy.blindNextMove(g.fight.me.nextMoveEnemy, name);
+            //var nextMove = g.fight.e[g.fight.me.nextMoveEnemy].nextMove;
+            //tEnemy.drawEnemyActionActive(g.fight.me.nextMoveEnemy);
+            //if (name === "punch")
+            //    g.fight.me.punchCount++;
+            //else
+            //    g.fight.me.kickCount++;
 
-            if (nextMove === "blockpunch" || nextMove === "blockpunch")
-                g.fight.e[g.fight.me.nextMoveEnemy].myaction = "noop";
+            //console.log(nextMove);
 
-            if (nextMove === "blockpunch" && name === "punch" || nextMove === "blockkick" && name === "kick") {
-                tEnemy.drawAction("block");
-                tEnemy.drawEnemy("block");
+            //if (nextMove === "blockpunch" || nextMove === "blockpunch")
+            //    g.fight.e[g.fight.me.nextMoveEnemy].myaction = "noop";
+
+            //if (nextMove === "blockpunch" && name === "punch" || nextMove === "blockkick" && name === "kick") {
+            //    tEnemy.drawAction("block");
+            //    tEnemy.drawEnemy("block");
+            //    tEnemy.drawMe(name);
+            //    tEnemy.enemyEnergy(-5, null, g.fight.me.nextMoveEnemy);
+            //    g.roomTimeout = setTimeout(function () { room227.btnclick("enemymove"); }, g.fight.fighttimer);
+            //}
+            //else {
+                tEnemy.drawAction("pow");
+                tEnemy.drawSingleEnemy(g.fight.me.nextMoveEnemy, "block");
                 tEnemy.drawMe(name);
-                tEnemy.enemyEnergy(-5, null, g.fight.me.nextMoveEnemy);
-                g.roomTimeout = setTimeout(function () { room227.btnclick("enemymove"); }, g.fight.fighttimer);
-            }
-            else {
-                    tEnemy.drawAction("pow");
-                    tEnemy.drawEnemy("block");
-                    tEnemy.drawMe(name);
-                    tEnemy.enemyEnergy(name === "punch" ? g.fight.me.pPower : g.fight.me.kPower, null, g.fight.me.nextMoveEnemy);
-                    g.roomTimeout = setTimeout(function () { room227.btnclick("enemymove"); }, g.fight.fighttimer);
-            }
+                tEnemy.enemyEnergy(name === "punch" ? g.fight.me.pPower : g.fight.me.kPower, null, g.fight.me.nextMoveEnemy);
+              //  g.roomTimeout = setTimeout(function () { room227.btnclick("enemymove"); }, g.fight.fighttimer);
+            //}
 
             break;
         case "blockPunch":

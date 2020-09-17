@@ -1711,7 +1711,6 @@ cl.applyLipstick = function (color) {
             break;
     }
 };
-<<<<<<< HEAD
 
 cl.wearing = function () {
     var retVal = {
@@ -1739,5 +1738,3 @@ cl.wearing = function () {
     cl.c.superlewd = !retVal.underwear && !retVal.top && !retVal.bottom;
     return retVal;
 };
-=======
->>>>>>> 0a95007dc33f29bf06a20550c1d78bc56ff0855d
