@@ -30,10 +30,10 @@ room206.chatcatch = function (callback) {
     var ia = new Array();
     switch (g.internal) {
         case 0:
-            t = "<h2>Questionairre for Junior Detective</h2> Being a junior detective may put you in " +
-                "some situations that are new to you. The following questionairre will asses " +
+            t = "<h2>Questionnaire for Junior Detective</h2> Being a junior detective may put you in " +
+                "some situations that are new to you. The following questionnaire will assess " +
                 "your potential for employment. Please answer the following questions honestly so I may " +
-                "evaluate your potenial employment with this agency.";
+                "evaluate your potential employment with this agency.";
             b.push({ t: "Continue", a: 0});
             break;
         case 1:
@@ -53,7 +53,7 @@ room206.chatcatch = function (callback) {
             b.push({ t: "I agree to follow and obey " + sc.n("missy") + " at all times. ", a: 2 });
             break;
         case 3:
-            t = "The next set of questions is asses your personality and see if you'll be a good fit here.";
+            t = "The next set of questions will assess your personality and see if you'll be a good fit here.";
             b.push({ t: "Continue", a: 0 });
             break;
         case 4:
