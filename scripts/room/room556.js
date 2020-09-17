@@ -302,8 +302,8 @@ room556.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "g",
-            text: "Good. You can follow instructions. Notice how I blocked your punch. If I sucessfully block your punch there's a " +
-                "chance I could get a counter attack so make sure you don't just do one move or your opponant will be able to predict " +
+            text: "Good. You can follow instructions. Notice how I blocked your punch. If I successfully block your punch there's a " +
+                "chance I could get a counter attack so make sure you don't just do one move or your opponent will be able to predict " +
                 "your moves. ",
             button: [
                 { chatID: 3, text: "ok, don't do the same move", callback: "reset" }
@@ -383,7 +383,7 @@ room556.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "g",
-            text: "Nice punch. If you can block an opponets punch or kick there's a chance you get to do a counter attack. " +
+            text: "Nice punch. If you can block an opponents punch or kick there's a chance you get to do a counter attack. " +
                 "You have the basics for fighting now. Don't worry if you lose a few fights, in time you'll get better. ",
             button: [
                 { chatID: 12, text: "How do I get better?", callback: "" }
@@ -421,7 +421,7 @@ room556.chat = function (chatID) {
             speaker: "g",
             text: "Sigh... no. I only teach you how to win! I'm not going to teach you how to be a fuck toy. I'm sure you'll figure that " +
                 "out on your own. You're welcome to come back and spar. Oh also " + sc.n("missy") + " told me to give you " +
-                "this. It's a crowbar so you can open the manhold cover in the alley near the dance club. Make yourself proud " +
+                "this. It's a crowbar so you can open the manhole cover in the alley near the dance club. Make yourself proud " +
             "and fight your way through.",
             button: [
                 { chatID: -1, text: "ok, thanks!", callback: "leave" }

@@ -11,7 +11,7 @@ room25.main = function () {
         "image": "25_dining/upstairs.png",
         "night": "25_dining/upstairsNight.png"
     }];
-    
+
     var thisSister = sc.sister();
     var thisMother = sc.mother();
 
@@ -64,7 +64,7 @@ room25.main = function () {
             "image": "25_dining/momCoffee.png"
         });
     }
-    
+
     if (thisSister.thisRoom) {
         nav.bg("25_dining/025_diningRoomLandE.jpg");
         btnList.push({
@@ -253,8 +253,8 @@ room25.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "landlord",
-            text: "Good morning honey. So the weirdest thing happend yesterday... Someone has been stealing sperm from work! At least " +
-            "50 differt samples have disappeared without a trace. I mean who would steal all that sperm?! I bet it was that damned " +
+            text: "Good morning honey. So the weirdest thing happened yesterday... Someone has been stealing sperm from work! At least " +
+            "50 different samples have disappeared without a trace. I mean who would steal all that sperm?! I bet it was that damned " +
             "sex cult that lives in the woods. I've heard they sit around and drink sperm in their rituals. ",
             button: [
                 { chatID: 8, text: "That's weird....", callback: "" }
@@ -449,7 +449,7 @@ room25.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "eva",
-            text: "She totally lost her panties at a party! " + sc.n("lola") + " the virgin can't keep her panties on when she's " + 
+            text: "She totally lost her panties at a party! " + sc.n("lola") + " the virgin can't keep her panties on when she's " +
                 "drunk!",
             button: [
                 { chatID: 31, text: sc.n("lola") + "...", callback: "" }

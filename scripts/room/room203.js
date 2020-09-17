@@ -176,7 +176,7 @@ room203.chatcatch = function (callback) {
                         chat(15, 203);
                     else if (g.get("arousal") > 90)
                         chat(22, 203);
-                    else 
+                    else
                         chat(10, 203);
                 }
             }
@@ -277,7 +277,7 @@ room203.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "203_entrance/203_jerkoff.gif"
             }, 203);
-            
+
             break;
         case "handjobcum":
             nav.killbutton("handjob");
@@ -525,7 +525,7 @@ room203.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "cecilia",
-            text: "Sorry " + sc.n("me") + " no new casses. You have to earn them in the rooms. ",
+            text: "Sorry " + sc.n("me") + " no new cases. You have to earn them in the rooms. ",
             button: [
                 { chatID: -1, text: "Oh, thanks.", callback: "reload" }
             ]

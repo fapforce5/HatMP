@@ -413,7 +413,7 @@ room454.chat = function(chatID){
         {
             chatID: 8,
             speaker: "me",
-            text: "My face is all dirty with man cumm",
+            text: "My face is all dirty with man cum",
             button: [
                 { chatID: -1, text: "close", callback: "manMouth4Face" }
             ]

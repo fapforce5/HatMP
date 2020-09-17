@@ -67,7 +67,7 @@ room425.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "me",
-            text: "I can't beleive I've been in this cell for 3 days...",
+            text: "I can't believe I've been in this cell for 3 days...",
             button: [
                 { chatID: 1, text: "...", callback: "callcop" }
             ]

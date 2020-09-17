@@ -4,8 +4,8 @@ var room8 = {};
 
 room8.main = function () {
 
-    
-    
+
+
 
     var quickList = "";
     $.each(cl.saveOutfit, function (i, v) {
@@ -79,7 +79,7 @@ room8.main = function () {
                 mb_makeButtons(ctype);
                 break;
         }
-        
+
         function mb_makeButtons(mb_ctype) {
             $('#wardrobe-line-selection').html('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="' + mb_ctype + '" data-ttype="null"><img src="./images/mainChar/remove.png" /></button>');
             $.each(cl.list, function (i, v) {
@@ -393,7 +393,7 @@ room8.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "me",
-            text: "My butthole is way too tight for that! I'm going to have to work on it so I can fit this in!",
+            text: "My butt-hole is way too tight for that! I'm going to have to work on it so I can fit this in!",
             button: [
                 { chatID: -1, text: "Close", callback: "" }
             ]

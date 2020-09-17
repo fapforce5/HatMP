@@ -463,7 +463,7 @@ room57.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "tiffany",
-            text: "Look at that hungry pussy eating my strapon! You slut!",
+            text: "Look at that hungry pussy eating my strap-on! You slut!",
             button: [
                 { chatID: 31, text: "mmmm", callback: "" },
             ]
@@ -495,7 +495,7 @@ room57.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "candy",
-            text: "hehehe sorry I didn't warn you that sometime I pee when I cum! ",
+            text: "Hehehe sorry I didn't warn you that sometime I pee when I cum! ",
             button: [
                 { chatID: 35, text: "GAH!!!", callback: "" },
             ]

@@ -416,7 +416,7 @@ room10.chat = function(chatID){
         {
             chatID: 14,
             speaker: "me",
-            text: "Are those itty bitty tits? I think these pills are chaning my body.",
+            text: "Are those itty bitty tits? I think these pills are changing my body.",
             button: [
                 { chatID: -1, text: "....", callback: "newday" }
             ]
@@ -456,7 +456,7 @@ room10.chat = function(chatID){
         {
             chatID: 19,
             speaker: "eva",
-            text: "Don't do that you panty theif! You probably took them to masturbate on you disgusting pervert! ",
+            text: "Don't do that you panty thief! You probably took them to masturbate on you disgusting pervert! ",
             button: [
                 { chatID: 20, text: "No, nonono. " + sc.n("missy") + "'s making me wear panties to work.", callback: "" }
             ]
@@ -493,7 +493,7 @@ room10.chat = function(chatID){
             speaker: "lola",
             text: "Anything? ",
             button: [
-                { chatID: 24, text: "Anyting.", callback: "bothSmile" }
+                { chatID: 24, text: "Anything.", callback: "bothSmile" }
             ]
         },
         {
@@ -567,7 +567,7 @@ room10.chat = function(chatID){
         {
             chatID: 32,
             speaker: "eva",
-            text: "Now for the picture! Smile pretty so you can see what kind of panty theif you are.",
+            text: "Now for the picture! Smile pretty so you can see what kind of panty thief you are.",
             button: [
                 { chatID: 33, text: "Awww man ", callback: "shirtTakeOff" }
             ]
