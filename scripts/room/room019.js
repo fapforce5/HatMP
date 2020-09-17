@@ -8,9 +8,9 @@ room19.main = function () {
     var lubeLevel = inv.get("lube").count;
     var thisImg = "0";
 
-    if (g.pass === 52) 
+    if (g.pass === 52)
         nav.bg("19_layInBed/bg52.jpg");
-    else 
+    else
         nav.bg("19_layInBed/bg.jpg");
 
         if (lubeLevel === 0)
@@ -80,7 +80,7 @@ room19.btnclick = function (name) {
                     "height": 1080,
                     "image": "19_layInBed/" + g.internal.f + "_" + g.internal.i + ".png"
                 }, 19);
-                
+
             }
             break;
         case "cancel":
@@ -127,7 +127,7 @@ room19.btnclick = function (name) {
         case "screwdrivery":
         case "purpleDildoy":
         case "pinkDildoy":
-            
+
             var tempBG = "_b";
             if (g.pass === 52)
                 tempBG = "_a";
@@ -307,7 +307,7 @@ room19.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "me",
-            text: "Ooooo, my butthole is so hungry, it's begging for more fingers...",
+            text: "Ooooo, my butt-hole is so hungry, it's begging for more fingers...",
             button: [
                 { chatID: -1, text: "Give into your lust and slip in another finger", callback: "addFinger" },
                 { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
@@ -316,7 +316,7 @@ room19.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "me",
-            text: "Oooooh, my butthole feels pretty full. I better stop here.",
+            text: "Oooooh, my butt-hole feels pretty full. I better stop here.",
             button: [
                 { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
@@ -324,7 +324,7 @@ room19.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "me",
-            text: "Ooooo, my butthole is so hungry, it's begging for more fingers...",
+            text: "Ooooo, my butt-hole is so hungry, it's begging for more fingers...",
             button: [
                 { chatID: -1, text: "Give into your lust and slip in another finger", callback: "3finger" },
                 { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }

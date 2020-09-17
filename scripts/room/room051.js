@@ -49,7 +49,7 @@ room51.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 51);
         });
-        
+
         var missingClothing = cl.hasoutfit("public");
 
         if (missingClothing === null)
@@ -247,7 +247,7 @@ room51.chatcatch = function (callback) {
             }, 51);
             break;
         case "t29":
-            
+
             cl.display();
             for (i = 0; i < cl.list.length; i++) {
                 if (cl.list[i].sex === "m")
@@ -382,7 +382,7 @@ room51.chat = function (chatID) {
             chatID: 10,
             speaker: "candy",
             text: "Hahaha, we're not going to take off our clothes for you! You should be happy just being here with us. We both can fuck " +
-                "much hotter and manlier men than you. " + sc.n("tiffany") + " brought you here cause we get bored fucking big hot guys all the time, " + 
+                "much hotter and manlier men than you. " + sc.n("tiffany") + " brought you here cause we get bored fucking big hot guys all the time, " +
                 "she thought you might be fun.",
             button: [
                 { chatID: 11, text: "What?", callback: "" },
@@ -466,7 +466,7 @@ room51.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "tiffany",
-            text: "So hairy! You really need our help to make you a prety girl!",
+            text: "So hairy! You really need our help to make you a pretty girl!",
             button: [
                 { chatID: 21, text: "It's ichy..", callback: "t15" },
             ]
@@ -615,7 +615,7 @@ room51.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "candy",
-            text: "But with just a little work your gril hole opens right up!",
+            text: "But with just a little work your girl hole opens right up!",
             button: [
                 { chatID: 39, text: "*moan*", callback: "t25" },
             ]
@@ -647,7 +647,7 @@ room51.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "candy",
-            text: "Sorry, but this is a girls only building. We can't have you accidently exposing to " + sc.n("treyvon") + " we snunk a boy in here.",
+            text: "Sorry, but this is a girls only building. We can't have you accidentally exposing to " + sc.n("treyvon") + " we snuck a boy in here.",
             button: [
                 { chatID: 43, text: "I won't wear them out, I promise", callback: "" },
             ]

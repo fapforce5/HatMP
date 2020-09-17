@@ -15,7 +15,7 @@ room26.main = function () {
             "image": "26_livingRoom/ll.png"
         });
     }
-    
+
     var navList = [16];
     $.each(btnList, function (i, v) {
         nav.button(v, 26);
@@ -50,7 +50,7 @@ room26.btnclick = function (name) {
                     chat(30, 26);
                 else if (ll === 8)
                     chat(43, 26);
-                else 
+                else
                     chat(2, 26);
             }
             break;
@@ -221,7 +221,7 @@ room26.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "landlord",
-            text: "Stop straing at my pussy and go get a job!",
+            text: "Stop staring at my pussy and go get a job!",
             button: [
                 { chatID: -1, text: "...", callback: "passtime" }
             ]
@@ -256,8 +256,8 @@ room26.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "landlord",
-            text: "Hi honey. So the weirdest thing happend today... Someone has been stealing sperm from work! At least " +
-                "50 differt samples have disappeared without a trace. I mean who would steal all that sperm?! I bet it was that damned " +
+            text: "Hi honey. So the weirdest thing happened today... Someone has been stealing sperm from work! At least " +
+                "50 different samples have disappeared without a trace. I mean who would steal all that sperm?! I bet it was that damned " +
                 "sex cult that lives in the woods. I've heard they sit around and drink sperm in their rituals. ",
             button: [
                 { chatID: 5, text: "That's weird....", callback: "" }
@@ -460,7 +460,7 @@ room26.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "landlord",
-            text: "Nope, now go before I punish those fargile little balls of yours!",
+            text: "Nope, now go before I punish those fragile little balls of yours!",
             button: [
                 { chatID: -1, text: "Ok...", callback: "passtime6j" }
             ]
@@ -485,7 +485,7 @@ room26.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "landlord",
-            text: "You were wondering if I could play with your little weiner weren't you?",
+            text: "You were wondering if I could play with your little wiener weren't you?",
             button: [
                 { chatID: 32, text: "Umm well...", callback: "" }
             ]
@@ -493,7 +493,7 @@ room26.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "landlord",
-            text: "Sigh... Let me take this off, you stip down too.",
+            text: "Sigh... Let me take this off, you strip down too.",
             button: [
                 { chatID: 33, text: "Grin", callback: "passtime6c" }
             ]

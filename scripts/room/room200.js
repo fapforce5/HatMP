@@ -1491,7 +1491,7 @@ room200.chat = function (chatID) {
         {
             chatID: 83,
             speaker: "jeffery",
-            text: "He was t-t-t-terrible! Absolutly the worst detective I know. Good waitress though. He's welcome to come back and keep " +
+            text: "He was t-t-t-terrible! Absolutley the worst detective I know. Good waitress though. He's welcome to come back and keep " +
                 "working anytime he wants... as a waitress, but a terrible detective.",
             button: [
                 { chatID: 84, text: "...", callback: "" }

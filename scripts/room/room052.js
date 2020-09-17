@@ -178,7 +178,7 @@ room52.chatcatch = function (callback) {
             //$.each(btnList, function (i, v) {
             //    nav.button(v, 52);
             //});
-            
+
             break;
         case "o0":
         case "o1":
@@ -314,7 +314,7 @@ room52.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "candy",
-            text: "You see the secrect to being a pretty girl",
+            text: "You see the secret to being a pretty girl",
             button: [
                 { chatID: 8, text: "...", callback: "p2" }
             ]

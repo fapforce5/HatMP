@@ -274,7 +274,7 @@ room24.chatcatch = function (callback) {
                     room24.chatcatch("bg lolaTalk evaSit");
                     chat(35, 24);
                 }
-                
+
                 break;
             case "killWine":
                 nav.killbutton("lolaWine");
@@ -644,7 +644,7 @@ room24.chat = function (chatID) {
             text: "So what's your secret?",
             button: [
                 { chatID: 39, text: "I have a foot fetish", callback: "" },
-                { chatID: 41, text: "I like wearing woment's panties", callback: "evaTalk lolaSit" },
+                { chatID: 41, text: "I like wearing women's panties", callback: "evaTalk lolaSit" },
                 { chatID: 42, text: "I'm into domination ", callback: "" }
             ]
         },
@@ -717,7 +717,7 @@ room24.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "eva",
-            text: "Beign peed on is not that bad. Sometimes it can be pretty hot.",
+            text: "Being peed on is not that bad. Sometimes it can be pretty hot.",
             button: [
                 { chatID: -1, text: "...", callback: "meEnd" }
             ]
@@ -741,7 +741,7 @@ room24.chat = function (chatID) {
         {
             chatID: 50,
             speaker: "eva",
-            text: "Shut up " + sc.n('lola') + " the perver doesn't need to know that. He's probably going to " +
+            text: "Shut up " + sc.n('lola') + " the pervert doesn't need to know that. He's probably going to " +
                 "peek on us more.",
             button: [
                 { chatID: 51, text: "I never peek!", callback: "lolaTalk evaSit" }
@@ -759,7 +759,7 @@ room24.chat = function (chatID) {
         {
             chatID: 52,
             speaker: "lola",
-            text: "Oooo I like that, but not too hard. It's sexy when a man takes charge, but doen't hurt me.",
+            text: "Oooo I like that, but not too hard. It's sexy when a man takes charge, but doesn't hurt me.",
             button: [
                 { chatID: 51, text: "...", callback: "meEnd" }
             ]
@@ -767,7 +767,7 @@ room24.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "me",
-            text: "Ok, time to spint that bottle",
+            text: "Ok, time to spin that bottle",
             button: [
                 { chatID: 54, text: "[Spin the bottle]", callback: "spinBottleEva" }
             ]
@@ -901,7 +901,7 @@ room24.chat = function (chatID) {
             chatID: 69,
             speaker: "eva",
             text: "OK, I'll admit it, I have the same fantasy, too. Waking up to my clit being licked while he slides a finger " +
-                "into butthole... I'm starting to get wet just thinking about it! ",
+                "into butt-hole... I'm starting to get wet just thinking about it! ",
             button: [
                 { chatID: 70, text: "...", callback: "evaSit lolaTalk" }
             ]
@@ -925,7 +925,7 @@ room24.chat = function (chatID) {
         {
             chatID: 72,
             speaker: "eva",
-            text: "OOoooo me again! I gues " + sc.n("lola") + " can't be the only topless girl here!",
+            text: "OOoooo me again! I guess " + sc.n("lola") + " can't be the only topless girl here!",
             button: [
                 { chatID: 73, text: "...", callback: "bg evaTopless lolaTalk evaSit" }
             ]
@@ -941,7 +941,7 @@ room24.chat = function (chatID) {
         {
             chatID: 74,
             speaker: "lola",
-            text: "I'm just suprised you kept your top on so long, usually you're the first one naked! ",
+            text: "I'm just surprised you kept your top on so long, usually you're the first one naked! ",
             button: [
                 { chatID: 75, text: "...", callback: "topbg evaTop lolaTop" }
             ]
@@ -1023,7 +1023,7 @@ room24.chat = function (chatID) {
         {
             chatID: 84,
             speaker: "eva",
-            text: "So my secret is that I love it when someone licks my butthole from behind. It sends little electric feelings " +
+            text: "So my secret is that I love it when someone licks my butt-hole from behind. It sends little electric feelings " +
                 "up my spine!",
             button: [
                 { chatID: 85, text: "...", callback: "evaSit lolaTalk" }
@@ -1040,7 +1040,7 @@ room24.chat = function (chatID) {
         {
             chatID: 86,
             speaker: "eva",
-            text: "Not going to happen pervert! You'll have to work harder to get me and " + sc.n('lola') + 
+            text: "Not going to happen pervert! You'll have to work harder to get me and " + sc.n('lola') +
                 " naked and making out with you. I'll spin the bottle one last time.",
             button: [
                 { chatID: 87, text: "...", callback: "evaSit lolaTalk" }
@@ -1105,7 +1105,7 @@ room24.chat = function (chatID) {
         {
             chatID: 94,
             speaker: "lola",
-            text: "That was fun. We'll have to do it agian some time. ",
+            text: "That was fun. We'll have to do it again some time. ",
             button: [
                 { chatID: 95, text: "...", callback: "evaTalk lolaSit" }
             ]
