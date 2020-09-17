@@ -240,7 +240,7 @@ room251.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "jeffery",
-            text: "No, I treid viewing the security footage, but she's just too good, I've even moved the camera, but she knew! I need " +
+            text: "No, I tried viewing the security footage, but she's just too good, I've even moved the camera, but she knew! I need " +
             "you to work as a waitress along side them, get to know them, be their friend, then catch them in the act and bring them " +
             "to me! I'm going to <span class='hl-red'>make her suffer!!!</span>",
             button: [
@@ -250,8 +250,8 @@ room251.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "jeffery",
-            text: "You're going to work with all 3 of them as a waitress. I've been watching them closly for a while now and they " +
-            "share everything with their co-workers, doens't matter who it is; it's like a clique, once you're a waitress " +
+            text: "You're going to work with all 3 of them as a waitress. I've been watching them closely for a while now and they " +
+            "share everything with their co-workers, doesn't matter who it is; it's like a clique, once you're a waitress " +
             "you're on the inside. I need to the one stealing before they steal more money are you ready to start now?",
             button: [
                 { chatID: 4, text: "Yes I can", callback: "jeff1" }
@@ -428,7 +428,7 @@ room251.chat = function (chatID) {
             chatID: 24,
             speaker: "jeffery",
             text: "W-W-W-Wait, " + sc.n("missy") + " said you have to wear a chasity device if you're going to work here. Please " +
-                "get it so everone doesn't see your p-p-p-penis.",
+                "get it so everyone doesn't see your p-p-p-penis.",
             button: [
                 { chatID: -1, text: "Oh right, sorry.", callback: "leave0" }
             ]

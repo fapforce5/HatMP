@@ -229,7 +229,7 @@ room456.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "tiffany",
-            text: "OK sweety, I go running here each morning if you change your mind.",
+            text: "OK sweetie, I go running here each morning if you change your mind.",
             button: [
                 { chatID: -1, text: "Ok, see you later", callback: "leave6" }
             ]
@@ -271,7 +271,7 @@ room456.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "me",
-            text: "Oh man! I can't beleive that cop was going to make me suck his dick... I better hide our here for the night. " +
+            text: "Oh man! I can't believe that cop was going to make me suck his dick... I better hide our here for the night. " +
                 "I can't ever go back to that bench!",
             button: [
                 { chatID: -1, text: "...", callback: "morning" }
@@ -369,7 +369,7 @@ room456.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "me",
-            text: "Are those itty bitty tits? I think these pills are chaning my body.",
+            text: "Are those itty bitty tits? I think these pills are changing my body.",
             button: [
                 { chatID: 32, text: "....", callback: "" }
             ]

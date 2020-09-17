@@ -527,8 +527,8 @@ room202.chat = function (chatID) {
             chatID: 11,
             speaker: "missy",
             text: "This lesson is about knowing your place in the world. You seem to believe that your life has some " +
-                "significance, that you are meaningful in some way, but that would be incorrect. You exist simply for " +   
-                "service. You're lucky because you get to serve me. You'll learn to serve me in many differnt ways, but today " +
+                "significance, that you are meaningful in some way, but that would be incorrect. You exist simply for " +
+                "service. You're lucky because you get to serve me. You'll learn to serve me in many different ways, but today " +
                 "you will serve as my foot stool for the remainder of the day. ",
             button: [
                 { chatID: 12, text: "How do I do that?", callback: "" }
@@ -605,7 +605,7 @@ room202.chat = function (chatID) {
             speaker: "missy",
             text: "[Continues to work]",
             button: [
-                { chatID: 21, text: "You are bladder is sreaming in pain. You're going to have to pee!", callback: "passtime" }
+                { chatID: 21, text: "You are bladder is screaming in pain. You're going to have to pee!", callback: "passtime" }
             ]
         },
         {
@@ -628,7 +628,7 @@ room202.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "missy",
-            text: "Quiet furniture doens't speak, and it certainly doesn't move.",
+            text: "Quiet furniture doesn't speak, and it certainly doesn't move.",
             button: [
                 { chatID: 28, text: "[Just let it flow...]", callback: "peeSelf0" },
                 { chatID: 24, text: "[Try to fight it...]", callback: "" }
@@ -677,7 +677,7 @@ room202.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "missy",
-            text: "Did you just pee youself!",
+            text: "Did you just pee yourself!?",
             button: [
                 { chatID: 30, text: "...yes, I couldn't help it", callback: "" }
             ]
@@ -1011,7 +1011,7 @@ room202.chat = function (chatID) {
         {
             chatID: 69,
             speaker: "missy",
-            text: "Get ready to swollow my yummy cream sissy.",
+            text: "Get ready to swallow my yummy cream sissy.",
             button: [
                 { chatID: 70, text: "aaAAAAAAA", callback: "pose7" }
             ]

@@ -27,7 +27,7 @@ room501.main = function () {
             "title": "Peek",
             "image": "501_jadaGame/door.png"
         });
-        
+
         btnList.push({
             "type": "btn",
             "name": "chair11",
@@ -105,7 +105,7 @@ room501.btnclick = function (name) {
     switch (name) {
         case "zoey":
             if (!g.checkflag("zoeyDay")) {
-                
+
                 var zoeyy = sc.getstep("zoey");
                 if (zoeyy === 0) {
                     nav.killall();
@@ -244,7 +244,7 @@ room501.btnclick = function (name) {
                 //
                 'want to be friends and moved her ' +
                 ' hands to her hips pointing her pink nipples right at me and asked if I liked what ' +
-                'I see. I don\'t know what came over me, I just went to her and burried my face into her boobs and started ' +
+                'I see. I don\'t know what came over me, I just went to her and buried my face into her boobs and started ' +
                 'licking her nipples. She let out a little gasp as I circled my tongue around her hard nipples. She reached for ' +
                 'my top and peeled it off me then ran her fingernails from ' +
                 '</div>');
@@ -256,13 +256,13 @@ room501.btnclick = function (name) {
                 'such voracity by a girl before, it was so hot when she peeled down my short revealing my bare pussy. ' +
                 'She then pulled down her own panties and rubbed her clit and stuck her fingers inside her lubricating her own ' +
                 'fingers before moving to my clit and playfully rubbing it. I couldn\'t take it anymore, I had to sit on her ' +
-                'face!! I pushed her head down to my horny little clit and she just burried her face into my wet pussy! ' +
+                'face!! I pushed her head down to my horny little clit and she just buried her face into my wet pussy! ' +
                 'It felt soooo good, I had to taste her pussy. I kneeled down to give her a kiss and I could taste myself ' +
                 'on her lips, I taste sooo good.I then pulled her down on her back and moved into a 69 with me on top. ' +
                 'I\'ve slept with plenty of boys, but I\'ve never cum harder than with ' + sc.n('zoey') + '\'s face ' +
-                'burried into my pussy as' +
+                'buried into my pussy as' +
                 '</div>');
-            
+
             chat(69, 501);
             break;
         case "cancelPeek":
@@ -397,18 +397,18 @@ room501.chatcatch = function (callback) {
         case "leave0":
             sc.setstep("zoey", 1);
             g.setflag("zoeyDay");
-            if (g.hourBetween(0, 16)) 
+            if (g.hourBetween(0, 16))
                 char.addtime(180);
-            else 
+            else
                 char.addtime(120);
             char.room(500);
             break;
         case "leave1":
             sc.setstep("zoey", 2);
             g.setflag("zoeyDay");
-            if (g.hourBetween(0, 16)) 
+            if (g.hourBetween(0, 16))
                 char.addtime(180);
-            else 
+            else
                 char.addtime(120);
             char.room(500);
             break;
@@ -439,7 +439,7 @@ room501.chatcatch = function (callback) {
             if (sc.checkevent("zoey", 7)) {
                 nav.killbutton("ddduo");
             }
-            else 
+            else
                 char.room(0);
             break;
         case "lookForward":
@@ -462,7 +462,7 @@ room501.chatcatch = function (callback) {
             $('#room-buttons').append('<div class="zoey11KillMe" style="position:absolute; ' + g.makeCss(800, 500, 150, 450) + g.cssText("m") + ' z-index:100000; text-align:left; width">' +
                 'I ate her out. We made out for an hour after that both of our faces wet with ' +
                 'each other\'s cum! I had to have her more!<br/><br/><br/>' +
-                'Saw ' + sc.n('zoey') + ' again... I sat on her face for an hour. I think I had 5 differnt orgasms that night.' +
+                'Saw ' + sc.n('zoey') + ' again... I sat on her face for an hour. I think I had 5 different orgasms that night.' +
                 'I\'ve never met someone who loves pussy like her!' +
                 '<br/><br/><br/>' +
                 'Went out with ' + sc.n('zoey') + ' to the Hard Cock Café. We had so many men drooling over us! ' +
@@ -479,14 +479,14 @@ room501.chatcatch = function (callback) {
                 'we went into her tub and I peed all over her, I even got some on her face by accident! We showered off ' +
                 'and she rewarded me. It was weird, but I kinda liked it, I may do it again.' +
                 '<br/><br/><br/>' +
-                sc.n('priapus') + ' demanded more cum! What a selfish asshole. I had to jerk off 7 men to get enought cum ' +
+                sc.n('priapus') + ' demanded more cum! What a selfish asshole. I had to jerk off 7 men to get enough cum ' +
                 'for him! My wrist was sooo sore when I was done I made ' + sc.n('priapus') + ' pay me $150 for all that cum!' +
                 '</div>');
             break;
         case "notbook11-2":
             $('.zoey11KillMe').remove();
             $('#room-buttons').append('<div class="zoey11KillMe" style="position:absolute; ' + g.makeCss(800, 500, 150, 450) + g.cssText("m") + ' z-index:100000; text-align:left; width">' +
-                'Just got the sexiest fuzzy green boots! They really make my ass pop out and ' + sc.n('zoey') + ' absolutly loved them' +
+                'Just got the sexiest fuzzy green boots! They really make my ass pop out and ' + sc.n('zoey') + ' absolutely loved them' +
                 '<br/><br/><br/>' +
                 sc.n('priapus') + ' offered me $500 to sit in the middle of his free love cult and have the guys bust their nuts in my ' +
                 'mouth. He promised it was only going to take an hour, but after the 30th cult follower finished in my mouth I had been sitting ' +
@@ -586,7 +586,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "I don't whoop ass, girls never fart! I do, however beat your ass at video games!",
             button: [
-                { chatID: 9, text: "Haha, you liar, I heard you squeek one out 5 minutes ago!", callback: "" }
+                { chatID: 9, text: "Haha, you liar, I heard you squeak one out 5 minutes ago!", callback: "" }
             ]
         },
         {
@@ -594,7 +594,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "I don't whoop ass, girls never fart! I do, however beat your ass at video games!",
             button: [
-                { chatID: 9, text: "Haha, you liar, I heard you squeek one out 5 minutes ago!", callback: "zLook" }
+                { chatID: 9, text: "Haha, you liar, I heard you squeak one out 5 minutes ago!", callback: "zLook" }
             ]
         },
         {
@@ -668,17 +668,17 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "Hay Chloé is here, she's sleeping in the other room. I hope you don't mind.",
             button: [
-                { chatID: 18, text: "Only if she doens't mind that I steal you away form some games.", callback: "zForward" }
+                { chatID: 18, text: "Only if she doesn't mind that I steal you away form some games.", callback: "zForward" }
             ]
         },
         {
             chatID: 18,
             speaker: "zoey",
-            text: "She doens't mind, she likes how happy I am when after I kick you in the ass.",
+            text: "She doesn't mind, she likes how happy I am when after I kick you in the ass.",
             button: [
                 {
                     chatID: 19, text: "Dammit it " + sc.n("zoey") + ", its 'kick your ass.' Kick you in the ass " +
-                        "sounds like you're putting your foot in my butthole. ", callback: "zShock"
+                        "sounds like you're putting your foot in my butt-hole. ", callback: "zShock"
                 }
             ]
         },
@@ -1060,7 +1060,7 @@ room501.chat = function (chatID) {
         {
             chatID: 65,
             speaker: "me",
-            text: "Hmmm I wonder if " + sc.n("zoey") + " would mind if I peeped just for a second... I know " + sc.n("chloe") + 
+            text: "Hmmm I wonder if " + sc.n("zoey") + " would mind if I peeped just for a second... I know " + sc.n("chloe") +
                 " wouldn't care.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -1146,7 +1146,7 @@ room501.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "zoey",
-            text: "Such a pretty girl. You're cute enough that I may accidently pick you up in a bar and take you home",
+            text: "Such a pretty girl. You're cute enough that I may accidentally pick you up in a bar and take you home",
             button: [
                 { chatID: -1, text: "I'm pretty", callback: "lookForward" }
             ]

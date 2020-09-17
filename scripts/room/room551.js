@@ -497,7 +497,7 @@ room551.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "g",
-            text: "You're back. I didn't expct you to return. ",
+            text: "You're back. I didn't expect you to return. ",
             button: [
                 { chatID: 15, text: "Yes, I wanted to get a lesson", callback: "squat3" }
             ]
@@ -593,7 +593,7 @@ room551.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "g",
-            text: "You've only done 5 and I can see the sweat on your forhead, you lumpy piece of crap. Give me one more.",
+            text: "You've only done 5 and I can see the sweat on your forehead, you lumpy piece of crap. Give me one more.",
             button: [
                 { chatID: 27, text: "[Sit up]", callback: "situp2" }
             ]
@@ -677,7 +677,7 @@ room551.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "g",
-            text: "You're done, fuckoff",
+            text: "You're done, fuck off",
             button: [
                 { chatID: -1, text: "...", callback: "endDay" }
             ]

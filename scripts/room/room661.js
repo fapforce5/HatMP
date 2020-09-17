@@ -23,7 +23,7 @@ room661.main = function () {
         chat(2, 661);
     }
     g.internal = 0;
-    
+
 };
 
 room661.btnclick = function (name) {
@@ -74,7 +74,7 @@ room661.chatcatch = function (callback) {
             char.addtime(60);
             g.internal++;
             if (g.internal > 0 && sc.getstep("tiffany") > 3) {
-                
+
                 chat(17, 661);
             }
             else if (g.internal < 5) {
@@ -226,7 +226,7 @@ room661.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "tiffany",
-            text: "So, like, there's this peep hole in this door. You can use it watch for poeple going into the booths.",
+            text: "So, like, there's this peep hole in this door. You can use it watch for people going into the booths.",
             button: [
                 { chatID: 1, text: "...", callback: "" }
             ]

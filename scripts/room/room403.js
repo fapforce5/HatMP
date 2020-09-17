@@ -4,7 +4,7 @@ room403.main = function () {
     if (sc.getstep("me") === 7) {
         nav.bg("403_saucy/tif1.jpg");
         chat(0, 403);
-        
+
     }
     else {
         chat(60, 403);
@@ -217,7 +217,7 @@ room403.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "403_saucy/cumDrip.png"
             }, 403);
-            
+
             break;
         case "changeRoomCumBack":
             sc.setstep("tiffany", 12);
@@ -595,7 +595,7 @@ room403.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "tiffany",
-            text: "Ahahaha, I knew you were an butt slut! Nothing shows off your pretty butthole like a good thong!",
+            text: "Ahahaha, I knew you were an butt slut! Nothing shows off your pretty butt-hole like a good thong!",
             button: [
                 { chatID: 41, text: "I'm such a butt slut", callback: "" }
             ]
@@ -672,14 +672,14 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "You know playing dress up makes me soooo horny! I could really use some cock right now!",
             button: [
-                { chatID: 50, text: "Oh god yes! I can't beleive this is happening!!", callback: "changeRoom7" },
+                { chatID: 50, text: "Oh god yes! I can't believe this is happening!!", callback: "changeRoom7" },
                 { chatID: 49, text: sc.n("tiffany") + " we can't do that in here, we'll get caught!", callback: "changeRoom6a" }
             ]
         },
         {
             chatID: 49,
             speaker: "tiffany",
-            text: "Awww ok, Lets get you dressed and back to our new home. Stip off those pesky male clothes!",
+            text: "Awww ok, Lets get you dressed and back to our new home. Strip off those pesky male clothes!",
             button: [
                 { chatID: 65, text: "ok", callback: "changeRoom11" }
             ]

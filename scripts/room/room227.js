@@ -70,7 +70,7 @@ room227.btnclick = function (name) {
         case "e_flee":
             if (!g.fight.lock) {
                 g.fight.lock = true;
-               
+
                 chat(5, 227);
             }
             break;
@@ -157,7 +157,7 @@ room227.btnclick = function (name) {
             tEnemy.drawButtons("clear", 227, g.fight.enemy);
 
             var nextMovex = tEnemy.blindNextMove(g.fight.enemy, g.fight.me);
-            
+
             if (nextMovex === "punch" && name === "blockPunch" || nextMovex === "kick" && name === "blockKick") {
                 tEnemy.drawEnemy(g.fight.enemy, nextMovex);
                 tEnemy.drawAction("block");
@@ -434,7 +434,7 @@ room227.chatcatch = function (callback) {
 };
 
 room227.chat = function (chatID) {
-    if (chatID === 0) { //win 
+    if (chatID === 0) { //win
         return {
             chatID: 0,
             speaker: g.fight.enemy.name,
@@ -465,18 +465,18 @@ room227.chat = function (chatID) {
             ]
         };
     }
-    if (chatID === 3) { //win strip clothing 
+    if (chatID === 3) { //win strip clothing
         return {
             chatID: 0,
             speaker: g.fight.enemy.name,
-            text: "You have bested my this round. You can have either my money or go another round. I'll even stip off some clothing if you want to go another round...",
+            text: "You have bested my this round. You can have either my money or go another round. I'll even strip off some clothing if you want to go another round...",
             button: [
                 { chatID: -1, text: "Your Money", callback: "money" },
                 { chatID: -1, text: "Stip slut", callback: "strip" }
             ]
         };
     }
-    if (chatID === 4) { //win strip clothing 
+    if (chatID === 4) { //win strip clothing
         return {
             chatID: 0,
             speaker: g.fight.enemy.name,
@@ -486,7 +486,7 @@ room227.chat = function (chatID) {
             ]
         };
     }
-    if (chatID === 5) { //win strip clothing 
+    if (chatID === 5) { //win strip clothing
         return {
             chatID: 0,
             speaker: g.fight.e[0].name,
@@ -496,11 +496,11 @@ room227.chat = function (chatID) {
             ]
         };
     }
-    if (chatID === 6) { //win strip clothing 
+    if (chatID === 6) { //win strip clothing
         return {
             chatID: 0,
             speaker: "me",
-            text: "I'm too embarrased to do that in public!! I need to work on my sissy brain and get some more moves when I sleep.",
+            text: "I'm too embarrassed to do that in public!! I need to work on my sissy brain and get some more moves when I sleep.",
             button: [
                 { chatID: -1, text: "[Get more moves at night]", callback: "" },
             ]
