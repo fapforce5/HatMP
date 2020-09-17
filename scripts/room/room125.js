@@ -243,7 +243,7 @@ room125.chatcatch = function (callback) {
                     nav.button(v, 125);
                 });
 
-                
+
 
                 room125.chatcatch("ralphPlay");
             }
@@ -310,7 +310,7 @@ room125.chatcatch = function (callback) {
             }
 
             break;
-        
+
         case "ralphfold":
             nav.killbutton("ralphback");
             nav.killbutton("ralphcard");
@@ -750,8 +750,8 @@ room125.chat = function (chatID) {
             chatID: 27,
             speaker: "kei",
             text: "This here is a simple enough game. Highest pair wins. To play you toss $1 into the pot. " +
-                "Each player is delt 2 cards, the first one is delt face down, the " +
-                "second one is delt face up. You try to guess if your two cards total up to the highest amount. ",
+                "Each player is dealt 2 cards, the first one is dealt face down, the " +
+                "second one is dealt face up. You try to guess if your two cards total up to the highest amount. ",
             button: [
                 { chatID: 28, text: "...", callback: "" }
             ]
@@ -767,7 +767,7 @@ room125.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "kei",
-            text: "He knows that " + sc.n("ralph") + ", everyone know that. Now stop interrupting. In thie case I have the Ace and " +
+            text: "He knows that " + sc.n("ralph") + ", everyone know that. Now stop interrupting. In this case I have the Ace and " +
                 "you're showing only the 7, so I'm showing the best card. You can fold, in which case you'll only lose $1, or call and bet $5 to see " +
             "if you win. ",
             button: [
