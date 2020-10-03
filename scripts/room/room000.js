@@ -76,7 +76,7 @@ room0.btnclick = function (name) {
             btnList.push({
                 "type": "btn",
                 "name": "map_2",
-                "left": 995,
+                "left": 418,
                 "top": 900,
                 "width": 90,
                 "height": 101,
@@ -85,8 +85,8 @@ room0.btnclick = function (name) {
             btnList.push({
                 "type": "btn",
                 "name": "map_0",
-                "left": 995,
-                "top": 2,
+                "left": 418,
+                "top": 50,
                 "width": 90,
                 "height": 101,
                 "image": "map/arrowUp.png"

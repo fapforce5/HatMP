@@ -451,6 +451,10 @@ input[type=text]:disabled{
     color:#e18e8e;
 }
 
+.hl-pink {
+    color: #d43fb6;
+}
+
 .menu-fileSave{
     margin-top:100px;
     width:100%;

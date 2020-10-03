@@ -59,14 +59,10 @@ room401.main = function () {
             g.pass.roomID = 400;
             g.pass.changeClothes = true;
             nav.bg("401_purchase/saucy.jpg", "401_purchase/saucy.jpg");
-            room401.makeClothingDaring("pants", [1, 2, 3], true);
-            room401.makeClothingDaring("pants", [4], false);
-            room401.makeClothingDaring("shirt", [1, 2, 3], true);
-            room401.makeClothingDaring("shirt", [4], false);
-            room401.makeClothingDaring("dress", [1, 2, 3], true);
-            room401.makeClothingDaring("dress", [4], false);
-            room401.makeClothingDaring("swimsuit", [1, 2, 3], true);
-            room401.makeClothingDaring("swimsuit", [4], false);
+            room401.makeClothing("pants", "f");
+            room401.makeClothing("shirt", "f");
+            room401.makeClothing("dress", "f");
+            room401.makeClothing("swimsuit", "f");
             break;
         case "shoe":
             navList = [];
@@ -74,22 +70,21 @@ room401.main = function () {
             g.pass.changeClothes = true;
             cl.c.shoes = null;
             cl.display();
-            var buyGirls = sc.checkevent("me", 7);
             nav.bg("401_purchase/shoe.jpg", "401_purchase/shoe.jpg");
-            room401.makeClothing("shoes", "m", true);
-            room401.makeClothing("shoes", "f", buyGirls);
-            room401.makeClothing("socks", "m", true);
-            room401.makeClothing("socks", "f", buyGirls);
+            room401.makeClothing("shoes", "m");
+            room401.makeClothing("shoes", "f");
+            room401.makeClothing("socks", "m");
+            room401.makeClothing("socks", "f");
             break;
         case "mens":
             navList = [];
             g.pass.roomID = 400;
             g.pass.changeClothes = true;
             nav.bg("401_purchase/mens.jpg", "401_purchase/mens.jpg");
-            room401.makeClothing("panties", "m", true);
-            room401.makeClothing("pants", "m", true);
-            room401.makeClothing("shirt", "m", true);
-            room401.makeClothing("swimsuit", "m", true);
+            room401.makeClothing("panties", "m");
+            room401.makeClothing("pants", "m");
+            room401.makeClothing("shirt", "m");
+            room401.makeClothing("swimsuit", "m");
             break;
         case "salon":
             navList = [405];
@@ -107,9 +102,9 @@ room401.main = function () {
             cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
             cl.display();
             nav.bg("401_purchase/bra.jpg", "401_purchase/bra.jpg");
-            room401.makeClothing("bra", "f", true);
-            room401.makeClothing("panties", "f", true);
-            room401.makeClothing("pj", "f", true);
+            room401.makeClothing("bra", "f");
+            room401.makeClothing("panties", "f");
+            room401.makeClothing("pj", "f");
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
@@ -121,8 +116,8 @@ room401.main = function () {
             break;
         case "fuckMyDirtyAssholeHard":
             nav.bg("650_toyStore/650_front.jpg", "650_toyStore/650_front.jpg");
-            room401.makeClothing("chastity", "f", sc.checkevent("me", -7));
-            room401.makeClothing("buttplug", "f", sc.checkevent("me", -8));
+            room401.f("chastity", "f");
+            room401.makeClothing("buttplug", "f");
             room401.makeInv(["d"], sc.checkevent("me", -8));
             navList = [650, 0];
             break;
@@ -285,19 +280,31 @@ room401.main = function () {
     });
 };
 
-room401.makeClothing = function (type, sex, canbuy) {
-    var i;
+room401.makeClothing = function (type, sex) {
+    var i, lewdlevel, canbuy, inInv;
+
+    if (g.sissy[33].ach)
+        lewdlevel = [0, 1, 2, 3, 4];
+    else if (g.sissy[31].ach)
+        lewdlevel = [0, 1, 2, 3];
+    else if (sc.checkevent("me", 7))
+        lewdlevel = [0, 1, 2];
+    else
+        lewdlevel = [0] 
+
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
-            if (!canbuy || cl.list[i].inv)
+            canbuy = lewdlevel.includes(cl.list[i].daring)
+            inInv = cl.list[i].inv
+            if (!canbuy || inInv)
                 $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
             else
                 $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
-            if (cl.list[i].inv)
+            if (inInv)
                 $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
             else if (!canbuy)
                 $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
-            if (!cl.list[i].inv)
+            if (!inInv)
                 $('#menu-bg_' + g.internal).append('<div>$' + cl.list[i].price + '</div>');
             
             g.internal++;
@@ -306,25 +313,27 @@ room401.makeClothing = function (type, sex, canbuy) {
     
 };
 
-room401.makeClothingDaring = function (type, daring, canbuy) {
-    var i;
-    for (i = 0; i < cl.list.length; i++) {
-        if (cl.list[i].type === type && daring.includes(cl.list[i].daring) && cl.list[i].price > 0) {
-            if (!canbuy || cl.list[i].inv)
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
-            else
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
-            if (cl.list[i].inv)
-                $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
-            else if (!canbuy)
-                $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
-            if (!cl.list[i].inv)
-                $('#menu-bg_' + g.internal).append('<div>$' + cl.list[i].price + '</div>');
+//room401.makeClothingDaring = function (type, daring, canbuy) {
+//    var i;
+//    var sexyc = g.sissy[31].ach;
+//    var sluttyc = g.sissy[33].ach;
+//    for (i = 0; i < cl.list.length; i++) {
+//        if (cl.list[i].type === type && daring.includes(cl.list[i].daring) && cl.list[i].price > 0) {
+//            if (!canbuy || cl.list[i].inv)
+//                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
+//            else
+//                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
+//            if (cl.list[i].inv)
+//                $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
+//            else if (!canbuy)
+//                $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
+//            if (!cl.list[i].inv)
+//                $('#menu-bg_' + g.internal).append('<div>$' + cl.list[i].price + '</div>');
 
-            g.internal++;
-        }
-    }
-};
+//            g.internal++;
+//        }
+//    }
+//};
 
 room401.makeInv = function (typeArray, canbuy) {
     var i, j;

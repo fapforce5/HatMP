@@ -37,8 +37,9 @@ room350.btnclick = function (name) {
                     chat(0, 350);
             }
             else if (sc.getstep("landlord") > 6) {
-                if (cl.appearance() > 1)
+                if (cl.appearance() > 1) {
                     chat(16, 350);
+                }
                 else
                     chat(15, 350);
             }

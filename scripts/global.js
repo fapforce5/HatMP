@@ -62,8 +62,7 @@ g.st = [
     { n: "sewerID", t: 0, q: "int" },
     { n: "shinkCock", t: false, q: "bool" },
 
-    { n: "bimboMoves", t: "", q: "string" },
-    { n: "fighttimer", t: 2000, q: "int" },
+    { n: "fighttimer", t: 4000, q: "int" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -125,9 +124,54 @@ g.st = [
 ];
 
 g.sissy = [
-    { id: 0, pID: null, icon: "", name: "", description: "", points: 1 },
-    { id: 1, pID: 0, icon: "", name: "", description: "", points: 1 }
+    { id: 0, pID: null, icon: "chest1", x: 910, y: 490, name: "Man's chest", description: "The first step of your transformation", group: "Chest" , ach: false, active: true },
+    { id: 1, pID: 0, icon: "chest2", x: 997, y: 402, name: "A Cups", description: "Awwww you've spouted cute little buds", group: "Breasts" , ach: false, active: true },
+    { id: 2, pID: 1, icon: "chest3", x: 1086, y: 313, name: "B Cups", description: "A nice pair for a nice girl", group: "Breasts" , ach: false, active: true },
+    { id: 3, pID: 2, icon: "chest4", x: 1174, y: 225, name: "C Cups", description: "Any girl would be proud of these titties", group: "Breasts" , ach: false, active: true },
+    { id: 4, pID: 3, icon: "chest5", x: 1263, y: 136, name: "DD Cups", description: "Ok.. Now they're getting a bit big", group: "Breasts" , ach: false, active: true },
+    { id: 5, pID: 4, icon: "chest6", x: 1351, y: 48, name: "Giant Titties", description: "Only a complete bimbo whore would go this big", group: "Breasts" , ach: false, active: true },
+
+    { id: 6, pID: 0, icon: "leg1", x: 998, y: 577, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", group: "Booty" , ach: false, active: true },
+    { id: 7, pID: 6, icon: "leg2", x: 1086, y: 665, name: "Tight Booty", description: "Men will start to notice a nice butt like this", group: "Booty" , ach: false, active: true },
+    { id: 8, pID: 7, icon: "leg3", x: 1175, y: 754, name: "Big Booty", description: "Women will notice a big booty like this", group: "Booty" , ach: false, active: true },
+    { id: 9, pID: 8, icon: "leg4", x: 1263, y: 842, name: "Phat Ass", description: "Everyone wants to slap a booty this big", group: "Booty" , ach: false, active: true },
+    { id: 10, pID: 9, icon: "leg5", x: 1352, y: 931, name: "Porn Star Ass", description: "An ass built for cock", group: "Booty", ach: false, active: true },
+
+    { id: 11, pID: 0, icon: "cock1", x: 822, y: 577, name: "Average Size Cock", description: "Just enough to still please women", group: "Cock" , ach: false, active: true },
+    { id: 12, pID: 11, icon: "cock2", x: 734, y: 665, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", group: "Cock" , ach: false, active: true },
+    { id: 13, pID: 12, icon: "cock3", x: 645, y: 754, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", group: "Cock" , ach: false, active: true },
+    { id: 14, pID: 13, icon: "cock4", x: 557, y: 842, name: "It's a Clitty", description: "You're no longer a man, sissy", group: "Cock" , ach: false, active: true },
+    { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy" , ach: false, active: false },
+
+    { id: 16, pID: 0, icon: "makeup0", x: 823, y: 402, name: "Makeup", description: "You can go out wearing makeup", group: "Makeup", ach: false, active: true },
+    { id: 17, pID: 16, icon: "makeup1", x: 734, y: 313, name: "Piercing", description: "You can get piercings (Not implimented yet)", group: "Makeup", ach: false, active: true },
+    { id: 18, pID: 17, icon: "makeup2", x: 646, y: 225, name: "Tattoos", description: "You can get tattoos (Not implimented yet)", group: "Makeup", ach: false, active: true },
+    { id: 19, pID: 18, icon: "lip1", x: 558, y: 137, name: "Girl's Lips", description: "What a purdy mouth you have", group: "Lips" , ach: false, active: true },
+    { id: 20, pID: 19, icon: "lip2", x: 469, y: 48, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", group: "Lips" , ach: false, active: true },
+
+    { id: 21, pID: 0, icon: "fight0", x: 1096, y: 490, name: "Strip", description: "You can strip your clothes in a fight", group: "Fight" , ach: false, active: true },
+    { id: 22, pID: 21, icon: "fight1", x: 1221, y: 490, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", group: "Fight" , ach: false, active: true },
+    { id: 23, pID: 22, icon: "fight2", x: 1347, y: 490, name: "Sexy Dance", description: "You can do a sexy dance during a fight", group: "Fight" , ach: false, active: true },
+    { id: 24, pID: 23, icon: "fight3", x: 1471, y: 490, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", group: "Fight" , ach: false, active: true },
+
+    { id: 25, pID: 0, icon: "gloryhole0", x: 910, y: 304, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole", group: "Glory Hole" , ach: false, active: false },
+    { id: 26, pID: 25, icon: "gloryhole1", x: 910, y: 179, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole", group: "Glory Hole" , ach: false, active: false },
+    { id: 27, pID: 26, icon: "gloryhole2", x: 910, y: 53, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are", group: "Whore" , ach: false, active: false },
+
+    { id: 28, pID: 0, icon: "date0", x: 910, y: 677, name: "Firendly Oral", description: "Go down on your dates and friends", group: "Date" , ach: false, active: false },
+    { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends", group: "Date" , ach: false, active: false },
+    { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want", group: "Date" , ach: false, active: false },
+
+    { id: 31, pID: 0, icon: "clothes0", x: 723, y: 490, name: "Sexy Clothes", description: "You can buy sexy clothes", group: "Clothes" , ach: false, active: true },
+    { id: 32, pID: 31, icon: "clothes1", x: 598, y: 490, name: "Panties?", description: "You don't have to wear panties or bra", group: "Clothes" , ach: false, active: true },
+    { id: 33, pID: 32, icon: "clothes2", x: 473, y: 490, name: "Slutty Clothes", description: "You can buy slutty clothes", group: "Clothes" , ach: false, active: true },
+    { id: 34, pID: 33, icon: "clothes3", x: 348, y: 490, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", group: "Clothes" , ach: false, active: false }
 ];
+
+g.supersissy = function () {
+    for (var i = 0; i < g.sissy.length; i++)
+        g.sissy[i].ach = true;
+};
 
 g.i = function (name) {
     var thisIndex = -1;
@@ -422,6 +466,12 @@ g.rooms = [
     { roomID: 651, name: "T'n U Hallway", image: "651_wackHallway/651_hallway.jpg", nightImage: "651_wackHallway/651_hallway.jpg", houseID: 650, btn: "roomBtn_651.png" },
     { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.png", nightImage: "661_peephole/661_backroom.png", houseID: 650, btn: "roomBtn_661.png" },
 
+    { roomID: 700, name: "Waiting Room", image: "700_waitingroom/waitingroom.jpg", nightImage: "700_waitingroom/night.jpg", houseID: 700, btn: "roomBtn_700.png" },
+    { roomID: 701, name: "Hospital Room", image: "701_hospitalroom/room.jpg", nightImage: "701_hospitalroom/night.jpg", houseID: 700, btn: "roomBtn_701.png" },
+
+    { roomID: 725, name: "Bar", image: "725_club/club.jpg", nightImage: "725_club/club.jpg", houseID: 725, btn: "roomBtn_725.png" },
+    { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
+
     { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Class Room", image: "901_classroom/901_classroom.png", nightImage: "901_classroom/901_classroom.png", houseID: 900, btn: "roomBtn_901.png" },
 
@@ -431,30 +481,32 @@ g.rooms = [
 ];
 
 g.roomMap = [
-    { roomID: 16, access: true, darkAccess: true, left: 818, top: 750, width: 168, height: 237, img: "map/10.png", night: "map/10_night.png", map: 1 },
-    { roomID: 50, access: true, darkAccess: true, left: 411, top: 369, width: 395, height: 311, img: "map/50.png", night: "map/50_night.png", map: 1 },
-    { roomID: 75, access: false, darkAccess: false, left: 1649, top: 780, width: 178, height: 212, img: "map/75.png", night: "map/75_night.png", map: 1 },
+    { roomID: 16, access: true, darkAccess: true, left: 1425, top: 399, width: 102, height: 146, img: "map/10.png", night: "map/10_night.png", map: 1 },
+    { roomID: 50, access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
+    { roomID: 75, access: false, darkAccess: false, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
     { roomID: 100, access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
-    { roomID: 125, access: true, darkAccess: true, left: 1194, top: 824, width: 107, height: 167, img: "map/125.png", night: "map/125_night.png", map: 1 },
-    { roomID: 150, access: false, darkAccess: false, left: 395, top: 62, width: 406, height: 208, img: "map/150.png", night: "map/150_night.png", map: 1 },
+    { roomID: 125, access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
+    { roomID: 150, access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
     { roomID: 203, access: false, darkAccess: false, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
     { roomID: 225, access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
     { roomID: 250, access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
     { roomID: 350, access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
     { roomID: 400, access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
-    { roomID: 404, access: true, darkAccess: true, left: 798, top: 502, width: 130, height: 172, img: "map/404.png", night: "map/404_night.png", map: 1 },
+    { roomID: 404, access: true, darkAccess: true, left: 530, top: 375, width: 93, height: 126, img: "map/404.png", night: "map/404_night.png", map: 1 },
     { roomID: 405, access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
     { roomID: 406, access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
     { roomID: 450, access: true, darkAccess: true, left: 1513, top: 638, width: 138, height: 126, img: "map/450.png", night: "map/450_night.png", map: 0 },
-    { roomID: 500, access: true, darkAccess: false, left: 496, top: 784, width: 294, height: 214, img: "map/500.png", night: "map/500_night.png", map: 1 },
+    { roomID: 500, access: true, darkAccess: false, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
     { roomID: 550, access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
     { roomID: 650, access: true, darkAccess: false, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
-    { roomID: 910, access: true, darkAccess: false, left: 918, top: 225, width: 259, height: 143, img: "map/910.png", night: "map/910_night.png", map: 1 },
+    { roomID: 700, access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
+    { roomID: 725, access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
+    { roomID: 901, access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
+    { roomID: 910, access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
-
-    { roomID: 1001, access: false, darkAccess: false, left: 531, top: 688, width: 206, height: 194, img: "map/1001.png", night: "map/1001_night.png", map: 1 },
-    { roomID: 1002, access: false, darkAccess: false, left: 506, top: 246, width: 392, height: 282, img: "map/1001.png", night: "map/1001_night.png", map: 1 },
-    { roomID: 1001, access: false, darkAccess: false, left: 531, top: 688, width: 206, height: 194, img: "map/1001.png", night: "map/1001_night.png", map: 1 },
+    { roomID: 2000, access: false, darkAccess: false, left: 539, top: 683, width: 140, height: 258, img: "map/2000.png", night: "map/2000_night.png", map: 1 },
+    { roomID: 2001, access: false, darkAccess: false, left: 879, top: 630, width: 225, height: 235, img: "map/2001.png", night: "map/2001_night.png", map: 1 },
+    { roomID: 2003, access: false, darkAccess: false, left: 1144, top: 399, width: 135, height: 113, img: "map/2003.png", night: "map/2003_night.png", map: 1 },
     //{ roomID: 100, access: false, left: 500, top: 300, width: 300, height: 150, activeImg: "map/constructionSite.png", inactiveImg: "map/inactive.png" },
 ];
 
@@ -591,12 +643,14 @@ g.shuffleArray = function (array) {
 
 g.save = function () {
     var i;
-
+    var g_sissy = null;
+    var g_sissyString = "";
     var retArra = {
         st: new Array(),
         roomMap: new Array(),
         roomID: g.roomID,
-        dt: g.dt
+        dt: g.dt, 
+        sissy: new Array()
     };
 
     for (i = 0; i < g.st.length; i++) {
@@ -613,14 +667,20 @@ g.save = function () {
         });
     }
 
+    for (i = 0; i < g.sissy.length; i++) {
+        if (g.sissy[i].ach)
+            retArra.sissy.push(i);
+    }
+
     return retArra;
 };
 
 g.load = function (rma) {
-    var i, j;
+    var i, j, ksissy;
     g.initGame();
     g.roomID = rma.roomID;
     g.dt = new Date(rma.dt);
+    
     for (i = 0; i < rma.roomMap.length; i++) {
         for (j = 0; j < g.roomMap.length; j++) {
             if (rma.roomMap[i].roomID === g.roomMap[j].roomID) {
@@ -633,6 +693,8 @@ g.load = function (rma) {
 
     for (i = 0; i < rma.st.length; i++) {
         for (j = 0; j < g.st.length; j++) {
+            if (g.st[j] === "g_sissy")
+                ksissy = j;
             if (rma.st[i].n === g.st[j].n) {
                 if (g.st[j].q === "date")
                     g.st[j].t = new Date(rma.st[i].t);
@@ -641,6 +703,12 @@ g.load = function (rma) {
                 j = 999999;
             }
         }
+    }
+    for (i = 0; i < g.sissy.length; i++)
+        g.sissy[i].ach = false;
+    if ("sissy" in rma) {
+        for (i = 0; i < rma.sissy.length; i++)
+            g.sissy[rma.sissy[i]].ach = true;
     }
 };
 
@@ -723,9 +791,6 @@ g.initGame = function () {
             case "sissyPoints":
                 g.st[i].t = 0;
                 break;
-            case "bimboMoves":
-                g.st[i].t = "";
-                break;
             case "bodyhair":
                 g.st[i].t = 100;
                 break;
@@ -772,6 +837,7 @@ g.initGame = function () {
                 g.st[i].t = Math.floor(Math.random() * 8);
                 break;
             case "difficulty":
+            case "fighttimer":
                 break;
             default:
                 console.log("unknown load: " + g.st[i].n);

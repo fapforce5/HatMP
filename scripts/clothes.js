@@ -30,7 +30,7 @@ cl.set = [
     { entry: 2, name: "Cute" },
     { entry: 3, name: "Sexy" },
     { entry: 4, name: "Bimbo Slut" },
-    { entry: 4, name: "Cum Dumpster" }
+    { entry: 5, name: "Cum Dumpster" }
 ];
 
 
@@ -74,13 +74,14 @@ cl.list = [
     { type: "shirt", name: "s", display: "Suit Top", img: "shirt_suit.png", sex: "m", inv: false, daring: 0, price: 90 },
     { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 0, price: 12 },
     { type: "shirt", name: "v", display: "Naked Beaver Shirt", img: "shirt_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "shirt", name: "b", display: "Blouse", img: "shirt_blouse.png", sex: "f", inv: false, daring: 2, price: 30 },
+    { type: "shirt", name: "b", display: "Blouse", img: "shirt_blouse.png", sex: "f", inv: false, daring: 1, price: 30 },
     { type: "shirt", name: "r", display: "Red Blouse", img: "shirt_redBlouse.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "shirt", name: "j", display: "Prison Shirt", img: "shirt_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
     { type: "shirt", name: "y", display: "Sun Top", img: "shirt_yellow.png", sex: "f", inv: false, daring: 3, price: 90 },
     { type: "shirt", name: "k", display: "Kitty Kat", img: "shirt_kitty.png", sex: "f", inv: false, daring: 4, price: 75 },
     { type: "shirt", name: "x", display: "X", img: "shirt_x.png", sex: "f", inv: false, daring: 4, price: 40 },
     { type: "shirt", name: "pt", display: "Pink Tank Top", img: "shirt_crop.png", sex: "f", inv: false, daring: 2, price: 30 },
+    { type: "shirt", name: "gg", display: "Good Girl Tank", img: "shirt_gg.png", sex: "f", inv: false, daring: 2, price: 30 },
 
     { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 4, price: 175 },
     { type: "dress", name: "s", display: "Summer Dress", img: "dress_summer.png", sex: "f", inv: false, daring: 2, price: 90 },
@@ -106,9 +107,9 @@ cl.list = [
 
     { type: "socks", name: "w", display: "Sweat Socks", img: "socks_white.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "socks", name: "b", display: "Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
-    { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 4, price: 75 },
+    { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 3, price: 75 },
     { type: "socks", name: "s", display: "Little White Socks", img: "socks_shortWhite.png", sex: "f", inv: false, daring: 2, price: 24 },
-    { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 3, price: 48 },
+    { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 2, price: 48 },
     { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 2, price: 36 },
 
     { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
@@ -356,23 +357,25 @@ cl.hasoutfit = function (type) {
         case "workout":
             if (!(cl.c.shoes === "pr" || cl.c.shoes === "br"))
                 missingClothing.push("running shoes");
-            if (!(cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w" || cl.c.shirt === "pt"))
+            if (!(cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w" || cl.c.shirt === "pt" || cl.c.shirt === "gg"))
                 missingClothing.push("t-shirt");
             if (!(cl.c.pants === "r" || cl.c.pants === "b" || cl.c.pants === "ps"))
                 missingClothing.push("shorts");
             break;
         case "public":
-            if (cl.c.swimsuit === null) {
-                if (cl.c.shoes === null)
-                    missingClothing.push("shoes");
-                if (cl.c.dress === null) {
-                    if (cl.c.shirt === null)
-                        missingClothing.push("shirt");
-                    if (cl.c.pants === null)
-                        missingClothing.push("pants");
+            if (!g.sissy[34].ach) {
+                if (cl.c.swimsuit === null) {
+                    if (cl.c.shoes === null)
+                        missingClothing.push("shoes");
+                    if (cl.c.dress === null) {
+                        if (cl.c.shirt === null)
+                            missingClothing.push("shirt");
+                        if (cl.c.pants === null)
+                            missingClothing.push("pants");
+                    }
+                    if (cl.c.panties === null && !g.sissy[32].ach)
+                        missingClothing.push("panties");
                 }
-                if (cl.c.panties === null && !sc.checkevent("me", -6))
-                    missingClothing.push("underwear");
             }
             break;
         case "nude":
@@ -699,6 +702,14 @@ cl.shirt = [
     { name: "pt", chest: 2, image: "shirt_pt_2.png", back: "shirt_pt_2_back.png" },
     { name: "pt", chest: 1, image: "shirt_pt_0.png", back: "shirt_pt_0_back.png" },
     { name: "pt", chest: 0, image: "shirt_pt_0.png", back: "shirt_pt_0_back.png" },
+
+    { name: "gg", chest: 6, image: "shirt_gg_6.png", back: "shirt_gg_6_back.png" },
+    { name: "gg", chest: 5, image: "shirt_gg_5.png", back: "shirt_gg_5_back.png" },
+    { name: "gg", chest: 4, image: "shirt_gg_4.png", back: "shirt_gg_4_back.png" },
+    { name: "gg", chest: 3, image: "shirt_gg_3.png", back: "shirt_gg_3_back.png" },
+    { name: "gg", chest: 2, image: "shirt_gg_2.png", back: "shirt_gg_2_back.png" },
+    { name: "gg", chest: 1, image: "shirt_gg_0.png", back: "shirt_gg_0_back.png" },
+    { name: "gg", chest: 0, image: "shirt_gg_0.png", back: "shirt_gg_0_back.png" },
 ];
 
 //s=summer; p=purple; a=alice

@@ -1,7 +1,7 @@
 ﻿
 var sc = {};
 
-//g.char
+//g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.char = [
     { name: "me", display: "Alex", image: "me.png", step: 0, max: 0, show: true, setName: false },
     { name: "landlord", display: "Land Lord", image: "mom.png", step: 0, max: 0, show: true, setName: true },
@@ -46,9 +46,9 @@ sc.char = [
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false },
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false },
-    { name: "clownQueen", display: "Clown Queen", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false },
-    { name: "futaYellow", display: "Clown Clan", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false },
-    { name: "futaRed", display: "Clown Clan", image: "futaRed.png", step: 0, max: 0, show: false, setName: false },
+    { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false },
+    { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false },
+    { name: "futared", display: "Red", image: "futaRed.png", step: 0, max: 0, show: false, setName: false },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
 ];
 
@@ -89,6 +89,7 @@ sc.events = [
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 8, txt: "Transformation", img: "", show: false, row: 0, col: 1, ach: false, major: false },
 
+    { name: "landlord", step: -2, txt: "First working at sperm store", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 1, txt: "Chat about job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 2, txt: "Chat about job next day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -973,6 +974,8 @@ sc.bimbo = function () {
                 r = 77; //living room
             else if (hour.between(22, 24))
                 r = 76;
+            else
+                r = 700;
             break;
         default: //Saturday / Sunday
             if (hour.between(0, 6))
@@ -981,6 +984,8 @@ sc.bimbo = function () {
                 r = 77; //living room
             else if (hour.between(22, 24))
                 r = 76;
+            else 
+                r = 700
             break;
     }
     return { roomID: r, thisRoom: g.roomID === r };

@@ -231,7 +231,6 @@ room8.main = function () {
         sc.setstep("me", -4);
         chat(1, 8);
     }
-
     if (g.pass === 52)
         nav.bg("8_wardrobe/52_wardrobe.jpg");
     else if (g.pass === 502)
@@ -244,25 +243,12 @@ room8.main = function () {
         nav.bg("8_wardrobe/452.jpg");
     else if (g.pass === 552)
         nav.bg("8_wardrobe/552.jpg");
+    else
+        console.log("unk room: " + g.pass);
 
-    if (isNaN(g.pass)) {
+    if (isNaN(g.pass)) 
         g.pass = 451;
-    }
-    else {
-        switch (g.pass) {
-            case 52:
-            case 502:
-            case 201:
-            case 451:
-            case 452:
-            case 552:
-                break;
-            default:
-                g.pass = 451;
-                break;
-        }
-    }
-    console.log(g.pass)
+    
     var navList = [g.pass];
     nav.buildnav(navList);
 };

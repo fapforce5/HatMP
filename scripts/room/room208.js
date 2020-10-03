@@ -1,7 +1,7 @@
 ﻿//Room name
 var room208 = {};
 room208.main = function () {
-    g.pass = { "first": false, "second": false, "third": false };
+    g.pass = { "first": false, "second": false, "third": false, "h1": false, "h2": false, "h3": false };
     g.internal = null;
     var btnList = [
         {
@@ -53,7 +53,9 @@ room208.btnclick = function (name) {
             if (thisName === g.internal.step) {
                 var currentpos = parseInt($(".room-img[data-name='tc']").css("left").replace("px"));
                 if (currentpos < 1700 * g.ratio) {
-                    $(".room-img[data-name='tc']").css({ "left": (currentpos + (50 * g.ratio)) + "px" });
+                    var thisRat = g.pass.h2 ? 50 : 280;
+
+                    $(".room-img[data-name='tc']").css({ "left": (currentpos + (thisRat * g.ratio)) + "px" });
 
                     nav.modbutton(g.internal.step + "t", "208_red/t0.png", null, null);
                     g.internal.step = 0;
@@ -251,6 +253,7 @@ room208.chatcatch = function (callback) {
             nav.bg("208_red/feeta.jpg");
             break;
         case "feet2a":
+            g.pas.h1 = true;
             g.internal = "foot";
             room208.chatcatch("feet2");
             break;
@@ -384,6 +387,10 @@ room208.chatcatch = function (callback) {
         case "t3":
             nav.bg("208_red/t3.jpg");
             break;
+        case "t4a":
+            g.pass.h2 = true;
+            room208.chatcatch("t4");
+            break;
         case "t4":
             nav.bg("208_red/t4.jpg");
             //zcl.displayMain(-100, 600, .22, "behind");
@@ -440,6 +447,10 @@ room208.chatcatch = function (callback) {
             //bar 0 = 1017 t 1h
             var td = g.get("difficulty");
             g.internal = { step: 0, maxEnergy: g.get("maxenergy"), hot: false, bh: true, energy: (td === 0 ? -10 : td === 1 ? -20 : -50), timex: (td === 0 ? 800 : td === 1 ? 600 : 450) };
+            if (!g.pass.h2) {
+                g.internal.timex = 5000; 
+
+            }
             var energy = g.get("energy");
             var maxEnergy = g.get("maxenergy");
             var height = (energy / maxEnergy) * 673;
@@ -770,7 +781,7 @@ room208.chat = function (chatID) {
             text: "Now to put you on the pole, careful with that metal chastity device, the current will shock you right up your little " +
                 "pee pee.. hehehehe",
             button: [
-                { chatID: -1, text: "...", callback: "t4" },
+                { chatID: 32, text: "...", callback: "" },
             ]
         },
         {
@@ -802,9 +813,9 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "To pass the challenge of control I'm going to take you to the edge. Stop me right before you're on the edge of " +
                 "cumming, but not before or you'll have to do it again. If you can edge three times you'll pass this challenge. If you " +
-                "stop me too early we'll start again. And if you cum on me you're done. Ready my little slave?",
+                "stop me too early we'll start again. And if you cum on me you're done.",
             button: [
-                { chatID: 25, text: "Yes mistress", callback: "" },
+                { chatID: 33, text: "Yes mistress", callback: "" },
             ]
         },
         {
@@ -863,6 +874,36 @@ room208.chat = function (chatID) {
             text: "You've passed all the test. You are a disciplined little servant.",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "missy",
+            text: "I'm going to give you a choice slut. You can either ride the entire length of the pole like a true sissy or " +
+            "just the tip?",
+            button: [
+                { chatID: -1, text: "Just the tip mistress [Easy]", callback: "t4" },
+                { chatID: -1, text: "I want the entire pole mistress. Make it hard!", callback: "t4a" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "missy",
+            text: "Since I'm a nice mistress I'm going to give you a choice, you can either show me how obedient you are by not cumming " +
+            "on your own, or you beg and I'll help you. ",
+            button: [
+                { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "" },
+                { chatID: 34, text: "I don't need your help. I can do this mistress", callback: "xe1" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "missy",
+            text: "Since I'm a nice mistress I'm going to give you a choice, you can either show me how obedient you are by not cumming " +
+                "on your own, or you beg and I'll help you. ",
+            button: [
+                { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "" },
+                { chatID: 34, text: "I don't need your help. I can do this mistress", callback: "t4a" },
             ]
         },
     ];
