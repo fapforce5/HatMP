@@ -168,7 +168,7 @@ room402.chat = function (chatID) {
             ]
         },
         {
-            chatID: 1, 
+            chatID: 1,
             speaker: "jada",
             text: "Just here to look around right?",
             button: [
@@ -228,7 +228,7 @@ room402.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "jada",
-            text: "Actually my ass is filled with his cum from this morning! I pluged it up so it doens't drip down my legs while I'm at work. " +
+            text: "Actually my ass is filled with his cum from this morning! I plugged it up so it doesn't drip down my legs while I'm at work. " +
             "Want to see? It's ok, we're both girls!",
             button: [
                 { chatID: -1, text: "...", callback: "jada2" }
@@ -237,7 +237,7 @@ room402.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "jada",
-            text: "Oooops hahaha I shold've known his cum would leak out, it's been in there all morning. You can lick it if you want. " +
+            text: "Oooops hahaha I should've known his cum would leak out, it's been in there all morning. You can lick it if you want. " +
             "You look like the kind of girl that loves to lick cum straight from the ass!",
             button: [
                 { chatID: 10, text: "Oh.. gross no way", callback: "jada1" },

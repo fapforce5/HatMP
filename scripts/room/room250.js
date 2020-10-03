@@ -18,7 +18,7 @@ room250.main = function () {
                 g.pass[0] = g.pass[1];
                 g.pass[1] = tempVar;
             }
-            
+
             room250.btnclick(g.pass[0].toString());
         }
     }
@@ -43,7 +43,7 @@ room250.main = function () {
                 "height": 999,
                 "image": "250_beaver/holly_stand.png"
             }];
-            
+
         var navList = [0];
         $.each(btnList, function (i, v) {
             nav.button(v, 250);
@@ -448,7 +448,7 @@ room250.chatcatch = function (callback) {
                         break;
                 }
             }
-            
+
 
             break;
         case "side_holly":
@@ -595,7 +595,7 @@ room250.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "holly",
-            text: "Sorry, it donsn't look like you have enough money.",
+            text: "Sorry, it doesn't look like you have enough money.",
             button: [
                 { chatID: -1, text: "Oh, I'm an idiot.", callback: "" }
             ]
@@ -647,7 +647,7 @@ room250.chat = function (chatID) {
             speaker: "holly",
             text: "No you're not, or you would know " + sc.n("jeffery") + " only interviews in the morning before 10AM. ",
             button: [
-                { chatID: -1, text: "Oh I guess I'll come back tomrrow. " , callback: "" }
+                { chatID: -1, text: "Oh I guess I'll come back tomorrow. " , callback: "" }
             ]
         },
         {
@@ -680,7 +680,7 @@ room250.chat = function (chatID) {
             chatID: 13,
             speaker: "random",
             text: "I hope so! I've been waiting here for over 10 minutes for you to take my order! This place always has the " +
-                "worse sevice in town!",
+                "worse service in town!",
             button: [
                 { chatID: 14, text: "I uh...", callback: "" }
             ]
@@ -843,7 +843,7 @@ room250.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "spanky",
-            text: "yeah one of the dudes says his dick shunk up to the size of a penny, but his titties are huge! This one time " +
+            text: "Yeah one of the dudes says his dick shrunk up to the size of a penny, but his titties are huge! This one time " +
             "this big titty dude comes in and just flashes me to show how awesome his titties are, just bare ass chest in my face. " +
             "I don't care, 'cause titties, so I just start sucking them expecting that at any minute he's going to slap me, but get this " +
             "he just lets me suck on them titties and shit, just letting me go to town, so I think what the hell and I slide my hand into " +
@@ -855,9 +855,9 @@ room250.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "spanky",
-            text: "He starts moaning like a bitch in heat, so I'm like, what the hell and press my finger into his butthole and he's all " +
+            text: "He starts moaning like a bitch in heat, so I'm like, what the hell and press my finger into his butt-hole and he's all " +
             "like twerking on my finger, so I go what the hell and whip out my dick. This crazy bitch drops down and starts sucking my " +
-            "dick then turns around and shoves it right in his ass hole, no lube or nothin, just shoves it in and start fucking me like " +
+            "dick then turns around and shoves it right in his ass hole, no lube or nothin', just shoves it in and start fucking me like " +
             "I'm the last dick on earth. That bitch was the best fuck I ever had. If you want them pills I got some",
             button: [
                 { chatID: 34, text: "oh..", callback: "" }
@@ -913,7 +913,7 @@ room250.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "holly",
-            text: "I know, he keeps insisting we change in front of him! I thought" + sc.n("dolly") + " was going to puch him! " +
+            text: "I know, he keeps insisting we change in front of him! I thought" + sc.n("dolly") + " was going to punch him! " +
             "Of course none of us ever change with him in the room, you would have to be a total spineless slut to do that!",
             button: [
                 { chatID: 40, text: "I would never change in front of him!", callback: "" },
@@ -1006,7 +1006,7 @@ room250.chat = function (chatID) {
         {
             chatID: 48,
             speaker: "dolly",
-            text: "I was just chattin with " + sc.n("holly") + " and she was sayin you was the boy that had the little incident " +
+            text: "I was just chattin' with " + sc.n("holly") + " and she was sayin' you was the boy that had the little incident " +
             "here the other day. Bless my heart I wouldn't have the gumption to show my face to the world if that happened to me!",
             button: [
                 { chatID: 49, text: "Well I really need the money for rent ", callback: "" },
@@ -1085,7 +1085,7 @@ room250.chat = function (chatID) {
             button: [
                 { chatID: 57, text: "Yeah, you want to play with it?", callback: "" },
                 { chatID: 56, text: "Oh my, that's rather bold", callback: "mollymad" },
-                { chatID: 56, text: "Yes, I'm the new girl here. I'm so excitied to work here", callback: "mollymad" }
+                { chatID: 56, text: "Yes, I'm the new girl here. I'm so excited to work here", callback: "mollymad" }
             ]
         },
         {
@@ -1121,7 +1121,7 @@ room250.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "molly",
-            text: "Ohhh I bet he loved that. If you feel him stick his finger in your butthole just let him. He's safe and his tips " +
+            text: "Ohhh I bet he loved that. If you feel him stick his finger in your butt-hole just let him. He's safe and his tips " +
             "are awesome! Not like " + sc.n("jeffery") + " at all! He offered me $10 for my panties! I told him my panties cost like " +
             "$30 new, he was going to have to cough up like $50 for them. So I sold them to him, caught him sniffing them in his office. ",
             button: [
@@ -1133,7 +1133,7 @@ room250.chat = function (chatID) {
         {
             chatID: 60,
             speaker: "molly",
-            text: "Sex and semen! I had sex with my boyfriend ealier and some of him dripped into my panties on my way to work. " +
+            text: "Sex and semen! I had sex with my boyfriend earlier and some of him dripped into my panties on my way to work. " +
             "I bet he even licked them! What an idiot. I got to get back to my tables before my regular loses his boner. You " +
             "stay slutty!",
             button: [
@@ -1143,7 +1143,7 @@ room250.chat = function (chatID) {
         {
             chatID: 61,
             speaker: "molly",
-            text: "Hay slut! How's your butthole, did he stick his fingers in yet!",
+            text: "Hay slut! How's your butt-hole, did he stick his fingers in yet!",
             button: [
                 { chatID: 62, text: "No. Dammit", callback: "" },
                 { chatID: 56, text: "There's no way I would let him do that!", callback: "mollymad" },

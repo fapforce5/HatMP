@@ -49,7 +49,7 @@ room7.main = function () {
                 }];
             g.set("rent", g.get("rent") - g.get("rentKnockOff") + g.get("rentOwed"));
             g.set("rentOwed", 0);
-            
+
             if (g.get("rent") <= g.get("money"))
                 chat(7, 7);
             else
@@ -90,7 +90,7 @@ room7.main = function () {
     $.each(btnList, function (i, v) {
         nav.button(v, 7);
     });
-    
+
 };
 
 room7.btnclick = function (name) {
@@ -188,7 +188,7 @@ room7.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "landlord",
-            text: "Wake up " + sc.n("me") + "! You're late again with the rent! I can't beleive I allow you to live here, you lazy lay loafer! " +
+            text: "Wake up " + sc.n("me") + "! You're late again with the rent! I can't believe I allow you to live here, you lazy lay loafer! " +
                 "First you failed out of college, then you get fired from The Burger Joint, and now you just lay around doing nothing! " +
                 " .... NOTHING!",
             button: [{ chatID: 1, text: "but ....", callback: "" }]
@@ -205,7 +205,7 @@ room7.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "landlord",
-            text: "Here's the deal " + sc.n("me") + ", you act like a child and I'm going to treat you like a child, you act like an adult " + 
+            text: "Here's the deal " + sc.n("me") + ", you act like a child and I'm going to treat you like a child, you act like an adult " +
                 "and I'll treat you like one. You're going to get a new job so you can continue to pay me each week or you'll " +
                 "find yourself out on the streets! Since I know you can't save enough money to pay me monthly you'll start paying me " +
                 "weekly. <span class= 'hl'>Each week I'll come in on Sunday to collect my $200</span> starting now. " +
@@ -310,7 +310,7 @@ room7.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "eva",
-            text: "Holy crap " + sc.n("me") + "! You're hairier than a furball, if you want to get " +
+            text: "Holy crap " + sc.n("me") + "! You're hairier than a fur-ball, if you want to get " +
                 "the ladies you need to knock some of that off with a weed wacker. ",
             button: [
                 { chatID: 18, text: "Wha... do girls really not like a hairy guy? ", callback: "" }
@@ -320,7 +320,7 @@ room7.chat = function (chatID) {
             chatID: 18,
             speaker: "eva",
             text: sc.n("me") + " Gross, no. There's nothing worse than running your tongue down someone's chest " +
-                "and getting a mouthful of hair. Don't be gross, butthead, shave that shag carpeting off.",
+                "and getting a mouthful of hair. Don't be gross, butt-head, shave that shag carpeting off.",
             button: [
                 { chatID: 15, text: "Thanks for the tip Eva.", callback: "shave" }
             ]

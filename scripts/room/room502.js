@@ -78,7 +78,7 @@ room502.main = function () {
                 "night": "502_bedroom/bedN.png"
             });
         }
-        
+
         $.each(btnList, function (i, v) {
             nav.button(v, 502);
         });
@@ -185,7 +185,7 @@ room502.chatcatch = function (callback) {
 
                 g.pass = 502;
                 char.room(28);
-                
+
             }
             break;
         case "newday":
@@ -537,7 +537,7 @@ room502.chat = function (chatID) {
             speaker: "zoey",
             text: "ooooooooohhhhh right there",
             button: [
-                { chatID: -1, text: "[Silenty leave]", callback: "room501" }
+                { chatID: -1, text: "[Silently leave]", callback: "room501" }
             ]
         },
         {
@@ -610,7 +610,7 @@ room502.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "chloe",
-            text: "I know.. goodby. You will be in my thoughts..",
+            text: "I know.. goodbye. You will be in my thoughts..",
             button: [
                 { chatID: 31, text: "...", callback: "chloeGone" }
             ]
@@ -878,7 +878,7 @@ room502.chat = function (chatID) {
         {
             chatID: 63,
             speaker: "me",
-            text: "Are those itty bitty tits? I think these pills are chaning my body.",
+            text: "Are those itty bitty tits? I think these pills are changing my body.",
             button: [
                 { chatID: -1, text: "....", callback: "newday" }
             ]
@@ -983,7 +983,7 @@ room502.chat = function (chatID) {
         {
             chatID: 76,
             speaker: "stormy",
-            text: "You are a perv! I love it! But I'm going to get going. I'm sure I'll see you again. " + sc.n("me") + ". " + sc.n("zoey") + 
+            text: "You are a perv! I love it! But I'm going to get going. I'm sure I'll see you again. " + sc.n("me") + ". " + sc.n("zoey") +
             " I'll see you again soon!",
             button: [
                 { chatID: -1, text: "By " + sc.n("stormy") + " good night " + sc.n("zoey") + ".", callback: "singleReset" }

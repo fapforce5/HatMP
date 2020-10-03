@@ -569,7 +569,7 @@ room14.chat = function(chatID){
         {
             chatID: 13,
             speaker: "me",
-            text: "What do you want to do to that butthole?",
+            text: "What do you want to do to that butt-hole?",
             button: [
                 { chatID: -1, text: "Give " + sc.n("landlord") + " a rimjob. ", callback: "rimjob" },
                 { chatID: -1, text: "Lube up your finger and slide in in her bum", callback: "fingerButtholeLube" },

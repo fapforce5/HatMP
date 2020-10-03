@@ -694,7 +694,7 @@ room13.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "lola",
-            text: "A little hectic and scary. I accidently went to the wrong classroom and I was midway through the lecture before I " +
+            text: "A little hectic and scary. I accidentally went to the wrong classroom and I was midway through the lecture before I " +
                 "figured it out. On my way out I tripped over some boys bag and the entire classroom started laughing at me!",
             button: [
                 { chatID: 14, text: "oh no..", callback: "" }
@@ -756,7 +756,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: sc.n("me") + " I could really go for a back rub, if you don't mind.",
             button: [
-                { chatID: 21, text: "I'ld love to", callback: "br1" },
+                { chatID: 21, text: "I'd love to", callback: "br1" },
                 { chatID: -1, text: "Naw.. got stuff to do", callback: "" }
             ]
         },
@@ -781,7 +781,7 @@ room13.chat = function (chatID) {
             speaker: "eva",
             text: "Hay loser. ",
             button: [
-                { chatID: 25, text: "Hay butthead", callback: "" },
+                { chatID: 25, text: "Hay butt-head", callback: "" },
                 { chatID: 24, text: "That's not nice", callback: "" }
             ]
         },
@@ -822,8 +822,8 @@ room13.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "lola",
-            text: "You were sooo right about a backrub being better without a shirt in the way. Is it ok if you " +
-                "give me a backrub without my shirt on?",
+            text: "You were sooo right about a back rub being better without a shirt in the way. Is it ok if you " +
+                "give me a back rub without my shirt on?",
             button: [
                 { chatID: 29, text: "Of course", callback: "br3" },
                 { chatID: -1, text: "No, I'm pretty busy right now", callback: "" }
@@ -832,7 +832,7 @@ room13.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "lola",
-            text: "You really are the best " + sc.n("me") + "! That was absolutly wonderful",
+            text: "You really are the best " + sc.n("me") + "! That was absolutley wonderful",
             button: [
                 { chatID: -1, text: "Awwww, you're wonderful", callback: "reset" }
             ]
@@ -840,7 +840,7 @@ room13.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "lola",
-            text: "I feel guilty about getting so many backrubs. You should give some attention to " + sc.n("eva"),
+            text: "I feel guilty about getting so many back rubs. You should give some attention to " + sc.n("eva"),
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -1120,7 +1120,7 @@ room13.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "eva",
-            text: "Did you want me to rub your weiner with my feet again pervert?",
+            text: "Did you want me to rub your wiener with my feet again pervert?",
             button: [
                 { chatID: 65, text: "Oh yes!", callback: "" },
                 { chatID: -1, text: "No, gotta run", callback: "" }
@@ -1212,7 +1212,7 @@ room13.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "eva",
-            text: "Hay panty theif, me and " + sc.n("lola") + " wanted to play truth or dare. Are you down for a game?",
+            text: "Hay panty thief, me and " + sc.n("lola") + " wanted to play truth or dare. Are you down for a game?",
             button: [
                 { chatID: 76, text: "Oh course!!!", callback: "" },
                 { chatID: -1, text: "I'm pretty busy, some other time maybe. ", callback: "" }
@@ -1334,7 +1334,7 @@ room13.chat = function (chatID) {
         {
             chatID: 90,
             speaker: "eva",
-            text: "I've got something better. Use this vibrator on my clit, maybe finger my butthole?",
+            text: "I've got something better. Use this vibrator on my clit, maybe finger my butt-hole?",
             button: [
                 { chatID: 91, text: "Is that the sounds of a vibrator I hear?", callback: "hide3" }
             ]
@@ -1358,7 +1358,7 @@ room13.chat = function (chatID) {
         {
             chatID: 93,
             speaker: "lola",
-            text: "How's my finger, it's so warm. I'm glad you're just so naturally clean. Hehehe I can feel it vibrate all the way throgh " +
+            text: "How's my finger, it's so warm. I'm glad you're just so naturally clean. Hehehe I can feel it vibrate all the way through " +
             "you're pussy. ",
             button: [
                 { chatID: 94, text: "....", callback: "" }

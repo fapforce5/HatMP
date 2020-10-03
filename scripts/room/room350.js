@@ -123,7 +123,7 @@ room350.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "landlord",
-            text: "You bring great shame to your family, you truely are a filthy pig...",
+            text: "You bring great shame to your family, you truly are a filthy pig...",
             button: []
         },
         {
@@ -138,7 +138,7 @@ room350.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "landlord",
-            text: "sigh.... you're lucky our stocks are so low due to this damned sperm theif. Go into waiting room 1, disrobe, and I'll be right in.",
+            text: "sigh.... you're lucky our stocks are so low due to this damned sperm thief. Go into waiting room 1, disrobe, and I'll be right in.",
             button: [
                 { chatID: -1, text: "Yes " + sc.n('landlord') + ". [Go to waiting room]", callback: "waitingRoom" }
             ]
@@ -215,7 +215,7 @@ room350.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "landlord",
-            text: "Comming in the future....",
+            text: "Coming in the future....",
             button: [
                 { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "" }
             ]

@@ -145,7 +145,7 @@ room553.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "candy",
-            text: "You know... I could use a good fuck! Why don't you pull that cock of your's out and fill me up?",
+            text: "You know... I could use a good fuck! Why don't you pull that cock of yours out and fill me up?",
             button: [
                 { chatID: 2, text: "Oh yes! [Pull your cock out]", callback: "candy1a" },
                 { chatID: 3, text: "We can't do that here!", callback: "candy2" }

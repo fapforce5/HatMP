@@ -45,7 +45,7 @@ room54.btnclick = function (name) {
                 chat(1, 54);
             }
             break;
-        
+
         default:
             break;
     }
@@ -211,7 +211,7 @@ room54.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "tiffany",
-            text: "No silly, not like a boy, like a girl. The trick is to rub it with finess, not jerk it like a jock! Here I'll show you. ",
+            text: "No silly, not like a boy, like a girl. The trick is to rub it with fitness, not jerk it like a jock! Here I'll show you. ",
             button: [
                 { chatID: 5, text: "Oh yeah!", callback: "a1" }
             ]
@@ -251,7 +251,7 @@ room54.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "Oh god I'm cuming",
+            text: "Oh god I'm cumming",
             button: [
                 { chatID: 10, text: "...", callback: "a6" }
             ]
@@ -275,7 +275,7 @@ room54.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "tiffany",
-            text: "hehe. My wrist is sore, how about your come back later and I'll give you a hands on demonstration on how to " + 
+            text: "Hehe. My wrist is sore, how about your come back later and I'll give you a hands on demonstration on how to " +
             "masturbate like a girl! Kisses",
             button: [
                 { chatID: -1, text: "You bet!", callback: "a8" }
@@ -348,7 +348,7 @@ room54.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "tiffany",
-            text: "Now your pussy is nice and wet I'm going to show you how to masturbte like a girl.",
+            text: "Now your pussy is nice and wet I'm going to show you how to masturbate like a girl.",
             button: [
                 { chatID: -1, text: "OooooOOOoooo", callback: "b7" }
             ]

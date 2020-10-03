@@ -251,7 +251,7 @@ room23.main = function () {
     ];
     var myDare = [
         {
-            q: "Take your shirt off and let us write Panty Boy on your chest!",
+            q: "Take your shirt off and let us write 'Panty Boy' on your chest!",
             b: [{ chatID: 14, text: "Awww Really? [Take Shirt off]", callback: "lolaTalk pantyBoy" }]
         },
         {
@@ -619,7 +619,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "lola",
-                text: "Hahaha panty theif! Never steal my panties!",
+                text: "Hahaha panty thief! Never steal my panties!",
                 button: [{ chatID: -1, text: "I know. ", callback: "" }]
             },
             {

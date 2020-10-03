@@ -132,7 +132,7 @@ room910.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "govlady",
-            text: "Name changes are $100 and you can only change your name once. It's a big step sweety. Are you sure?",
+            text: "Name changes are $100 and you can only change your name once. It's a big step sweetie. Are you sure?",
             button: [
                 { chatID: -1, text: "Nevermind", callback: "" },
                 { chatID: 9, text: "I'm ready. Change my name to " + g.get("girlname") + ".", callback: "changeit" }

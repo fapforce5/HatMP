@@ -47,6 +47,19 @@ room227.btnclick = function (name) {
             if (g.fight.enemyRotation >= g.fight.e.length) {
                 g.fight.enemyRotation = 0;
                 tEnemy.drawEnemyAction("e_endturn");
+<<<<<<< HEAD
+=======
+            break;
+        case "flee":
+            if (!g.fight.lock)
+                tEnemy.drawEnemyAction("flee");
+            break;
+        case "e_flee":
+            if (!g.fight.lock) {
+                g.fight.lock = true;
+
+                chat(5, 227);
+>>>>>>> 06b7157a62e7a00086ca5315935afd3b5c656dfe
             }
             else {
                 tEnemy.drawEnemyAction("e_back");
@@ -273,6 +286,7 @@ room227.btnclick = function (name) {
             }
 
             break;
+<<<<<<< HEAD
         case "steal":
             xi = g.fight.enemyRotation;
             tEnemy.drawAction("nick");
@@ -294,6 +308,21 @@ room227.btnclick = function (name) {
             if (name === "stripshirt") {
                 if (!tc.top) {
                     name = "stripskirt";
+=======
+        case "blockPunch":
+        case "blockKick":
+            tEnemy.drawButtons("clear", 227, g.fight.enemy);
+
+            var nextMovex = tEnemy.blindNextMove(g.fight.enemy, g.fight.me);
+
+            if (nextMovex === "punch" && name === "blockPunch" || nextMovex === "kick" && name === "blockKick") {
+                tEnemy.drawEnemy(g.fight.enemy, nextMovex);
+                tEnemy.drawAction("block");
+                tEnemy.drawMe(name);
+                g.fight.me.energy = tEnemy.myEnergy(g.fight.me, nextMovex === "punch" ? Math.round(g.fight.enemy.pPower * .2) : Math.round(g.fight.enemy.kPower * .2));
+                if (g.fight.me.energy < 1) {
+                    room227.btnclick("lost");
+>>>>>>> 06b7157a62e7a00086ca5315935afd3b5c656dfe
                 }
                 else {
                     cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
@@ -543,17 +572,29 @@ room227.chat = function (chatID) {
             ]
         };
     }
+<<<<<<< HEAD
     else if (chatID === 3) { //me horny
         return {
             chatID: 0,
             speaker: g.fight.enemy.name,
             text: "I'm so horny I can't help it! My stupid sissy brain just needs to to be fucked! Please fuck me!",
+=======
+    if (chatID === 3) { //win strip clothing
+        return {
+            chatID: 0,
+            speaker: g.fight.enemy.name,
+            text: "You have bested my this round. You can have either my money or go another round. I'll even strip off some clothing if you want to go another round...",
+>>>>>>> 06b7157a62e7a00086ca5315935afd3b5c656dfe
             button: [
                 { chatID: -1, text: "[Give into your lust]", callback: "showSubmit" }
             ]
         };
     }
+<<<<<<< HEAD
     else if (chatID === 4) { //Me energy low
+=======
+    if (chatID === 4) { //win strip clothing
+>>>>>>> 06b7157a62e7a00086ca5315935afd3b5c656dfe
         return {
             chatID: 0,
             speaker: g.fight.e[0].name,
@@ -563,7 +604,11 @@ room227.chat = function (chatID) {
             ]
         };
     }
+<<<<<<< HEAD
     else if (chatID === 5) { //me flee
+=======
+    if (chatID === 5) { //win strip clothing
+>>>>>>> 06b7157a62e7a00086ca5315935afd3b5c656dfe
         return {
             chatID: 0,
             speaker: g.fight.e[0].name,
@@ -573,7 +618,11 @@ room227.chat = function (chatID) {
             ]
         };
     }
+<<<<<<< HEAD
     else if (chatID === 6) { //thme horny
+=======
+    if (chatID === 6) { //win strip clothing
+>>>>>>> 06b7157a62e7a00086ca5315935afd3b5c656dfe
         return {
             chatID: 0,
             speaker: "me",

@@ -323,7 +323,7 @@ room461.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "me",
-            text: "Oh man! I can't beleive that cultist was going to attack me. I better hide our here for the night. " +
+            text: "Oh man! I can't believe that cultist was going to attack me. I better hide our here for the night. " +
                 "I can't ever run in the forest at night!",
             button: [
                 { chatID: 14, text: "...", callback: "morning" }

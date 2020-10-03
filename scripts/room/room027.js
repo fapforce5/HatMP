@@ -11,7 +11,7 @@ room27.main = function () {
         g.internal.push({ chatID: nextChat, text: "Purple lipstick", callback: "purple" });
     if (g.internal.length === 0)
         g.internal.push({ chatID: g.pass === 57 ? 12 : 0, text: "I don't have any lipstick", callback: "" });
-   
+
     switch (g.pass) {
         case 12:
             nav.bg("12_bathroom/012_brushTeeth.jpg");
@@ -278,7 +278,7 @@ room27.chat = function (chatID) {
             chatID: 8,
             speaker: "tiffany",
             text: "I'm going to give you the key to the Pussy Palace. Feel free to use it anytime you want. Careful the webcam is always " +
-                "on, so everything you do in here is broadcasted to thousands of hony perverts. Haha, they can even watch you put on " +
+                "on, so everything you do in here is broadcasted to thousands of horny perverts. Haha, they can even watch you put on " +
             "you pretty makeup! Say hi to everyone out there!",
             button: [
                 { chatID: 9, text: "What... I'm on camera?", callback: "killkey" }

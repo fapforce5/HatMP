@@ -124,8 +124,8 @@ room351.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "landlord",
-            text: "I'm not going to touch that filthy litte thing. We're going to do an alternate way of sperm donation. " +
-                "Get up and place you're hands agains the wall. ",
+            text: "I'm not going to touch that filthy little thing. We're going to do an alternate way of sperm donation. " +
+                "Get up and place you're hands against the wall. ",
             button: [
                 { chatID: 2, text: "Yes " + sc.n("landlord"), callback: "n2" }
             ]

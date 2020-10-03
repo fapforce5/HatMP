@@ -62,7 +62,7 @@ room150.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "jones",
-            text: "If you serve me know I will not give a fuck about you your boundries, or your dignity. I will slap your ass when you walk by and laugh " +
+            text: "If you serve me know I will not give a fuck about you your boundaries, or your dignity. I will slap your ass when you walk by and laugh " +
                 "when you tell me to stop. Put you in whatever clothes I want. I'll jerk off into your food as you eat it. I'll pull your sissy clit out when you try talk. Casually spit in your " +
                 "face everytime we go out. Piss on you while you sleep and take you whenever I want. You aren't my equal, I will never respect you. I will treat " +
                 "you like my inferior play thing to use and discard as I see fit. Are you ready my toy?",
