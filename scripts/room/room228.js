@@ -5,6 +5,7 @@ room228.main = function () {
     $("#room_left_map").html('<img src="./images/general/map_ov.png" class="width-l" id="rl_map" style="width:100%" />');
     char.changeMenu("body");
     g.pass = "";
+    g.set("sewerID", 0);
     g.map = null;
     g.fight = null;
     zcl.displayMain(550, 1250, .03, "clothes", true);

@@ -57,8 +57,8 @@ g.st = [
     { n: "bodyhair", t: 100, q: "zero" },
     { n: "reddoorloc", t: 1, q: "int" },
     { n: "makeup", t: 0, q: "int" },
-    { n: "sewerMap", t: "", q: "string" },
     { n: "sewerEnd", t: 0, q: "int" },
+    { n: "sewerMap", t: "", q: "string" },
     { n: "sewerID", t: 0, q: "int" },
     { n: "shinkCock", t: false, q: "bool" },
 
@@ -381,6 +381,8 @@ g.rooms = [
     { roomID: 27, name: "Mirror", image: "12_bathroom/012_brushTeeth.jpg", nightImage: "12_bathroom/012_brushTeeth.jpg", houseID: 10, btn: "roomBtn_25.png" },
     { roomID: 28, name: "Sleep", image: "28_transformation/sleep.jpg", nightImage: "28_transformation/sleep.jpg", houseID: 10, btn: "roomBtn_25.png" },
 
+    { roomID: 29, name: "Back yard", image: "29_backyard/bg.jpg", nightImage: "29_backyard/night.jpg", houseID: 10, btn: "roomBtn_29.png" },
+
     { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Tif's Living Room", image: "51_livingRoom/livingroom.jpg", nightImage: "51_livingRoom/livingroom.jpg", houseID: 50, btn: "roomBtn_51.png" },
     { roomID: 52, name: "Girly Room", image: "52_myroom/52_myroom.jpg", nightImage: "52_myroom/52_myroom_night.jpg", houseID: 50, btn: "roomBtn_52.png" },
@@ -473,7 +475,7 @@ g.rooms = [
     { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
 
     { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
-    { roomID: 901, name: "Class Room", image: "901_classroom/901_classroom.png", nightImage: "901_classroom/901_classroom.png", houseID: 900, btn: "roomBtn_901.png" },
+    { roomID: 901, name: "Pool", image: "901_pool/pool.jpg", nightImage: "901_pool/pool.jpg", houseID: 901, btn: "roomBtn_901.png" },
 
     { roomID: 910, name: "Department Of Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "bg.jpg" }
 
@@ -482,6 +484,7 @@ g.rooms = [
 
 g.roomMap = [
     { roomID: 16, access: true, darkAccess: true, left: 1425, top: 399, width: 102, height: 146, img: "map/10.png", night: "map/10_night.png", map: 1 },
+    { roomID: 29, access: true, darkAccess: true, left: 1353, top: 393, width: 70, height: 158, img: "map/29.png", night: "map/29_night.png", map: 1 },
     { roomID: 50, access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
     { roomID: 75, access: false, darkAccess: false, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
     { roomID: 100, access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
@@ -787,8 +790,8 @@ g.initGame = function () {
             case "shinkCock":
             case "makeup":
             case "sewerEnd":
-            case "sewerID":
             case "sissyPoints":
+            case "sewerID":
                 g.st[i].t = 0;
                 break;
             case "bodyhair":

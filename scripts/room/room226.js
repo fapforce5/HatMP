@@ -2,31 +2,8 @@
 var room226 = {};
 var tree = new Array();
 room226.main = function () {
-    $("#rl_map").attr("src", "./images/general/map_266.jpg");
-    char.changeMenu("map");
-    setTimeout(function () { $("#room_footer").hide(); }, 200);
-    if (g.get("energy") < 3) {
-        g.internal = "";
-        g.pass = "";
-        g.map = null;
-        chat(2, 226);
-    }
-    else if (g.pass === "runaway") {
-        g.internal = "nofight";
-        var backRoom = g.map.l[g.map.id].b;
-        if (backRoom === null)
-            backRoom = 0;
-        backRoom = g.map.l[backRoom].b;
-        if (backRoom === null)
-            backRoom = 0;
-        g.map.id = backRoom;
-        //char.room(226);
-    }
-    else if (g.pass === "win") {
-        g.internal = "nofight";
-        //char.room(226);
-    }
-    else if (g.map === null) {
+    if (g.map === null) {
+        $("#rl_map").attr("src", "./images/general/map_266.jpg");
         g.map = {
             id: 0,
             l: [
@@ -385,16 +362,9 @@ room226.main = function () {
             ]
         };
 
-
-        var bmap = g.get("sewerMap").split(' ');
-        for (i = 0; i < bmap.length; i++) {
-            var tempThis = parseInt(bmap[i]);
-            if (!isNaN(tempThis)) {
-                g.map.l[tempThis].v = true;
-            }
-        }
-
         var sewerend = g.get("sewerEnd");
+        var thisSewerID = g.get("sewerID");
+        var bmap = g.get("sewerMap").split(' ');
 
         if (sewerend === 0) {
             var thisOne = Math.floor(Math.random() * 4);
@@ -410,13 +380,45 @@ room226.main = function () {
         }
 
         g.map.l[sewerend].t = "s";
-        g.set("sewerID", g.map.id);
         g.map.l[g.map.l[sewerend].b].e = "c";
-        room226.btnclick("drawMap");
+        g.map.id = thisSewerID;
+        
+        for (i = 0; i < bmap.length; i++) {
+            var tempThis = parseInt(bmap[i]);
+            if (!isNaN(tempThis)) {
+                g.map.l[tempThis].v = true;
+            }
+        }
+
     }
     else {
-        room226.btnclick("drawMap");
+        if (g.pass === "runaway") {
+            g.internal = "nofight";
+            var backRoom = g.map.l[g.map.id].b;
+            if (backRoom === null)
+                backRoom = 0;
+            backRoom = g.map.l[backRoom].b;
+            if (backRoom === null)
+                backRoom = 0;
+            g.map.id = backRoom;
+            //char.room(226);
+        }
+        else if (g.pass === "win") {
+            g.internal = "nofight";
+            //char.room(226);
+        }
     }
+
+    
+    char.changeMenu("map");
+    
+    if (g.get("energy") < 3) {
+        chat(2, 226);
+    }
+    else
+        setTimeout(function () { $("#room_footer").hide(); }, 200);
+
+    room226.btnclick("drawMap");
     room226.btnclick("midSave");
 }; 
 
@@ -628,6 +630,7 @@ room226.btnclick = function (name) {
             }
             g.set("sewerMap", sewerMapString);
             g.set("sewerID", g.map.id);
+
             menu.makeSaves();
             break;
         case "redbox":

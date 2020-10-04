@@ -1743,9 +1743,9 @@ cl.wearing = function () {
     retVal.footwear = (cl.c.shoes !== null || cl.c.socks !== null);
     retVal.chastity = cl.c.chastity !== null;
     retVal.tinyDick = cl.c.cock < 4;
-    cl.c.nude = !retVal.underwear && !retVal.top && !retVal.bottom && !retVal.footwear;
-    cl.c.lewd = (!cl.c.underwear && !cl.c.bottom) || (!cl.c.shirt && cl.c.chest > 1);
-    cl.c.usableCock = !(retVal.chastity || retVal.tinyDick);
-    cl.c.superlewd = !retVal.underwear && !retVal.top && !retVal.bottom;
+    retVal.nude = !retVal.underwear && !retVal.top && !retVal.bottom && !retVal.footwear;
+    retVal.lewd = (!retVal.underwear && !retVal.bottom) || (!retVal.shirt && retVal.chest > 1);
+    retVal.usableCock = !(retVal.chastity || retVal.tinyDick);
+    retVal.superlewd = !retVal.underwear && !retVal.top && !retVal.bottom;
     return retVal;
 };

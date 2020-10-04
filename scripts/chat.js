@@ -18,7 +18,6 @@ function chat(chatID, roomID) {
         var entry = window[g.room(roomID)]["chat"](chatID);
         if (entry !== null) {
             var thisSpeaker = privateChat.speakerInfo(entry.speaker);
-            console.log(entry.speaker, thisSpeaker);
             $('#room_footer').hide();
             if (!$('#room_chatOverlay').is(":visible")) {
                 $('#room_chatOverlay').show();

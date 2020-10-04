@@ -991,6 +991,19 @@ sc.bimbo = function () {
     return { roomID: r, thisRoom: g.roomID === r };
 };
 
+sc.swimgirl = function () {
+    var r = 0;
+    switch (g.dt.getDay()) {
+        case 0: //monday
+        case 5: //tuesday
+        case 6: //wednesday
+        case 7: //thursday
+            r = 901;
+            break;
+    }
+    return { roomID: r, thisRoom: g.roomID === r };
+};
+
 sc.c = function (name) {
     var retName = "UNK";
     $.each(g.char, function (i, v) {

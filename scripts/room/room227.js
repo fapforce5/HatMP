@@ -435,21 +435,21 @@ room227.chatcatch = function (callback) {
             g.internal = thisMoney;
             room227.chatcatch("returnRoom");
             break;
-        //case "service":
-        //    g.fight.e[0].eventType = "win";
-        //    nav.killall();
-        //    var thisEntry = enemyEnd.end(g.fight.e[0]);
-        //    g.fight.e[0].eventStep = thisEntry.eventStep;
-        //    g.fight.chat.text = thisEntry.chat;
-        //    g.fight.chat.btn1 = thisEntry.r;
-        //    g.fight.chat.btn2 = null;
-        //    if (thisEntry.type === "c") {
-        //        chat(1, 227);
-        //    }
-        //    else if (thisEntry.type === "cp") {
-        //        g.roomTimeout = setTimeout(function () { chat(1, 227); }, g.fight.fighttimer);
-        //    };
-        //    break;
+        case "service":
+            g.fight.e[0].eventType = "win";
+            nav.killall();
+            var thisEntry = enemyEnd.end(g.fight.e[0]);
+            g.fight.e[0].eventStep = thisEntry.eventStep;
+            g.fight.chat.text = thisEntry.chat;
+            g.fight.chat.btn1 = thisEntry.r;
+            g.fight.chat.btn2 = null;
+            if (thisEntry.type === "c") {
+                chat(1, 227);
+            }
+            else if (thisEntry.type === "cp") {
+                g.roomTimeout = setTimeout(function () { chat(1, 227); }, g.fight.fighttimer);
+            };
+            break;
         case "enemyEnd":
             if (g.fight.e[0].eventStep === 0) {
                 chat(2, 227);
