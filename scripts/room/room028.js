@@ -335,6 +335,7 @@ room28.btnclick = function (name) {
                     nav.killall();
                     cl.c.chest = id;
                     nav.bg("28_transformation/chest_" + id + ".gif");
+                    cl.display();
                     g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
                 }
                 else if (g.internal < 11) {
@@ -342,6 +343,7 @@ room28.btnclick = function (name) {
                     nav.killall();
                     cl.c.leg = id;
                     nav.bg("28_transformation/leg_" + id + ".gif");
+                    cl.display();
                     g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
                 }
                 else if (g.internal < 16) {
@@ -349,6 +351,7 @@ room28.btnclick = function (name) {
                     nav.killall();
                     cl.c.cock = id;
                     nav.bg("28_transformation/cock_" + id + ".gif");
+                    cl.display();
                     g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
                 }
                 else if (g.internal === 19 || g.transform === 20) {
@@ -358,6 +361,7 @@ room28.btnclick = function (name) {
                     cl.c.lips = g.internal === 19 ? "big" : "sb";
                     cl.applyLipstick(tText);
                     nav.bg("28_transformation/" + (g.internal === 19 ? "lip_big" : "lip_sb") + ".gif");
+                    cl.display();
                     g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
                 }
                 else {

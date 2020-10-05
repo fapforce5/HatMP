@@ -46,10 +46,14 @@ sc.char = [
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false },
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false },
+
+    { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, max: 0, show: false, setName: false },
+    { name: "tim", display: "Tim", image: "tim.png", step: 0, max: 0, show: false, setName: false },
+
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false },
     { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false },
     { name: "futared", display: "Red", image: "futaRed.png", step: 0, max: 0, show: false, setName: false },
-    { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false }
+    { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false },
 ];
 
 sc.changes = [

@@ -351,9 +351,9 @@ cl.gimmieAll = function () {
         cl.list[i].inv = true;
 };
 
-cl.hasoutfit = function (type) {
+cl.hasoutfit = function (ctype) {
     var missingClothing = new Array();
-    switch (type.toLowerCase()) {
+    switch (ctype) {
         case "workout":
             if (!(cl.c.shoes === "pr" || cl.c.shoes === "br"))
                 missingClothing.push("running shoes");
@@ -395,6 +395,11 @@ cl.hasoutfit = function (type) {
                 missingClothing.push("PJs");
             if (cl.c.bra !== null)
                 missingClothing.push("bra");
+            break;
+        case "swim":
+        case "swimsuit":
+            if (cl.c.swimsuit === null)
+                missingClothing.push("bikini");
             break;
     }
     var retMissing = null;
