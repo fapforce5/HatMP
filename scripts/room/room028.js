@@ -83,18 +83,7 @@ room28.main = function () {
     //check Transformation
 
     var btnList = null;
-    if (thisTinyPP) {
-        console.log("tinyPP")
-        btnList = [{
-            "type": "btn",
-            "name": "cock",
-            "left": 1418,
-            "top": 457,
-            "width": 256,
-            "height": 256,
-            "title": "Cancel",
-            "image": "28_transformation/cock.png"
-        }];
+    if (thisTinyPP && cl.c.cock < 5) {
         chat(1, 28);
     }
     else if (cl.c.chest === 0 && fitnesslevel > 0) {
@@ -336,7 +325,11 @@ room28.btnclick = function (name) {
                     cl.c.chest = id;
                     nav.bg("28_transformation/chest_" + id + ".gif");
                     cl.display();
-                    g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
+                    g.roomTimeout = setTimeout(function () {
+                        returnRoomID = g.pass;
+                        g.pass = "endSleepyTime";
+                        char.room(returnRoomID);
+                    }, 6000);
                 }
                 else if (g.internal < 11) {
                     id = g.internal - 5;
@@ -344,7 +337,11 @@ room28.btnclick = function (name) {
                     cl.c.leg = id;
                     nav.bg("28_transformation/leg_" + id + ".gif");
                     cl.display();
-                    g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
+                    g.roomTimeout = setTimeout(function () {
+                        returnRoomID = g.pass;
+                        g.pass = "endSleepyTime";
+                        char.room(returnRoomID);
+                    }, 6000);
                 }
                 else if (g.internal < 16) {
                     id = g.internal - 10;
@@ -352,7 +349,11 @@ room28.btnclick = function (name) {
                     cl.c.cock = id;
                     nav.bg("28_transformation/cock_" + id + ".gif");
                     cl.display();
-                    g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
+                    g.roomTimeout = setTimeout(function () {
+                        returnRoomID = g.pass;
+                        g.pass = "endSleepyTime";
+                        char.room(returnRoomID);
+                    }, 6000);
                 }
                 else if (g.internal === 19 || g.transform === 20) {
                     id = g.internal + 11;
@@ -362,7 +363,11 @@ room28.btnclick = function (name) {
                     cl.applyLipstick(tText);
                     nav.bg("28_transformation/" + (g.internal === 19 ? "lip_big" : "lip_sb") + ".gif");
                     cl.display();
-                    g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 6000);
+                    g.roomTimeout = setTimeout(function () {
+                        returnRoomID = g.pass;
+                        g.pass = "endSleepyTime";
+                        char.room(returnRoomID);
+                    }, 6000);
                 }
                 else {
                     nav.modbutton(g.sissy[g.internal].icon, "28_transformation/" + g.sissy[g.internal].icon + ".png")
@@ -383,12 +388,27 @@ room28.chatcatch = function (callback) {
                 cl.c.chest = tempChest;
                 nav.killall();
                 nav.bg("28_transformation/chest_" + cl.c.chest + ".gif");
-                g.roomTimeout = setTimeout(function () { char.room(g.pass) }, 4000);
+                g.roomTimeout = setTimeout(function () {
+                    returnRoomID = g.pass;
+                    g.pass = "endSleepyTime";
+                    char.room(returnRoomID);
+                }, 6000);
             }
 
             break;
         case "returnToRoom":
             char.room(g.pass);
+            break;
+        case "tinypp":
+            nav.killall();
+            cl.c.cock++;
+            nav.bg("28_transformation/cock_" + cl.c.cock + ".gif");
+            cl.display();
+            g.roomTimeout = setTimeout(function () {
+                returnRoomID = g.pass;
+                g.pass = "endSleepyTime";
+                char.room(returnRoomID);
+            }, 6000);
             break;
         default:
             break;
@@ -421,7 +441,7 @@ room28.chat = function (chatID) {
                 speaker: "me",
                 text: "Oh no! I can feel that pee pee shrinking cream working! My penis is getting smaller!",
                 button: [
-                    { chatID: -1, text: "[Shrink my pee pee]", callback: "" }
+                    { chatID: -1, text: "[Shrink my pee pee]", callback: "tinypp" }
                 ]
             },
             {

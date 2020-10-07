@@ -195,6 +195,7 @@ sc.events = [
     { name: "construction", step: 1, txt: "Interview at the construction site.", img: "const1", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "construction", step: 2, txt: "Work construction. - Need to arrive before 9:00 AM in a t-shirt and jeans. ", img: "sweep", show: true, row: 0, col: 1, ach: false, major: false },
 
+    { name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: 0, txt: "Ask for a book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: 1, txt: "Rubbed back with clothes", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -661,6 +662,8 @@ sc.sister = function () {
         case 1: //monday
             if (hour.between(0, 7))
                 r = 13;
+            else if (hour.between(15, 17))
+                r = 901;
             else if (hour.between(17, 18))
                 r = 25;
             else if (hour.between(18, 24))//room night
@@ -671,6 +674,8 @@ sc.sister = function () {
                 r = 13;
             else if (hour.between(7, 9)) //morning shower
                 r = 12;
+            else if (hour.between(15, 17))
+                r = 901;
             else if (hour.between(17, 19))//Dining Room
                 r = 25;
             else if (hour.between(18, 24))
@@ -681,6 +686,8 @@ sc.sister = function () {
                 r = 13;
             else if (hour.between(7, 8))
                 r = 15;
+            else if (hour.between(15, 17))
+                r = 901;
             else if (hour.between(17, 24))//room night
                 r = 13;
             break;
@@ -689,6 +696,8 @@ sc.sister = function () {
                 r = 13;
             else if (hour.between(7, 9))//morning shower
                 r = 12;
+            else if (hour.between(15, 17))
+                r = 901;
             else if (hour.between(17, 19))//living room night
                 r = 25;
             else if (hour.between(18, 24))
@@ -697,7 +706,9 @@ sc.sister = function () {
         case 5: //friday
             if (hour.between(0, 10))
                 r = 13;
-            else if (hour.between(13, 24))//room night
+            else if (hour.between(15, 17))
+                r = 901;
+            else if (hour.between(17, 24))//room night
                 r = 13;
             break;
         case 6: //saturday

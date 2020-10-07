@@ -12,7 +12,7 @@ room903.main = function () {
             "image": "903_folder/hole.png"
         }
     ];
-    var navList = [0];
+    var navList = [0, 901];
     $.each(btnList, function (i, v) {
         nav.button(v, 903);
     });

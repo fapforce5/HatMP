@@ -133,6 +133,8 @@ room208.btnclick = function (name) {
             }
             break;
         case "jerkIncrease":
+            if (g.internal.easy && g.internal.t < 150)
+                g.internal.i = .5;
             g.internal.t = g.internal.t - (g.internal.i * g.ratio);
             g.internal.h = g.internal.h + (g.internal.i * g.ratio);
             g.internal.i += g.internal.c;
@@ -253,7 +255,7 @@ room208.chatcatch = function (callback) {
             nav.bg("208_red/feeta.jpg");
             break;
         case "feet2a":
-            g.pas.h1 = true;
+            g.pass.h1 = true;
             g.internal = "foot";
             room208.chatcatch("feet2");
             break;
@@ -501,8 +503,15 @@ room208.chatcatch = function (callback) {
             char.addtime(180);
             char.room(0);
             break;
+        case "jerk0":
+            g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0, easy: true };
+            room208.chatcatch("jerk");
+            break;
+        case "jerk1":
+            g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0, easy: false };
+            room208.chatcatch("jerk");
+            break;
         case "jerk":
-            g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0 };
             nav.killall();
             nav.bg("208_red/jerk.jpg")
             nav.button({
@@ -724,7 +733,7 @@ room208.chat = function (chatID) {
                 "in an order that is pleasing to me. Don't displease me.",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "feet2" },
-                { chatID: -1, text: "I'm such an airhead, can you give me hints?", callback: "feet2a" },
+                { chatID: -1, text: "I'm such an airhead, can you give me hints? [Easy]", callback: "feet2a" },
             ]
         },
         {
@@ -892,12 +901,12 @@ room208.chat = function (chatID) {
             text: "Since I'm a nice mistress I'm going to give you a choice, you can either show me how obedient you are by not cumming " +
             "on your own, or you beg and I'll help you. ",
             button: [
-                { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "" },
-                { chatID: 34, text: "I don't need your help. I can do this mistress", callback: "xe1" },
+                { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "jerk0" },
+                { chatID: -1, text: "I don't need your help. I can do this mistress", callback: "jerk1" },
             ]
         },
         {
-            chatID: 33,
+            chatID: 34,
             speaker: "missy",
             text: "Since I'm a nice mistress I'm going to give you a choice, you can either show me how obedient you are by not cumming " +
                 "on your own, or you beg and I'll help you. ",

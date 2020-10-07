@@ -36,6 +36,20 @@ room902.main = function () {
 room902.btnclick = function (name) {
     switch (name) {
         case "lolalocker":
+            nav.killbutton("lolalocker");
+            nav.bg("902_girl/locker.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "lock",
+                "left": 1078,
+                "top": 850,
+                "width": 136,
+                "height": 198,
+                "image": "902_girl/lock.png"
+            }, 902);
+            
+            break;
+        case "lock":
             if (inv.has("lolalocker")) {
                 //locker
             }

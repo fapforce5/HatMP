@@ -3,42 +3,75 @@
 var room901 = {};
 
 room901.main = function () {
-    if (cl.hasoutfit(("swim") === null)){
-        nav.button({
-            "type": "btn",
-            "name": "changeroom",
-            "left": 385,
-            "top": 273,
-            "width": 665,
-            "height": 151,
-            "title": "Change Room",
-            "image": "901_pool/changeroom.png"
-        }, 901);
-        if (sc.swimgirl().thisRoom) {
+    var cindyStep = sc.getstep("cindy");
+    if (cl.hasoutfit("swim") === null) {
+        if (cindyStep === 2 && g.dt.getDay() === 3 && g.gethourdecimal().between(15, 17)) {
             nav.button({
-                "type": "btn",
-                "name": "girl",
-                "left": 87,
-                "top": 453,
-                "width": 626,
-                "height": 627,
-                "title": "Dat Booty!!!",
-                "image": "901_pool/girl1.png"
+                "type": "img",
+                "name": "girlchallenge",
+                "left": 651,
+                "top": 0,
+                "width": 816,
+                "height": 1080,
+                "image": "901_pool/girl2.png"
             }, 901);
         }
         else {
             nav.button({
                 "type": "btn",
-                "name": "boy",
-                "left": 1570,
-                "top": 334,
-                "width": 127,
-                "height": 342,
-                "title": "Soooo tan",
-                "image": "901_pool/boy1.png"
+                "name": "swimming",
+                "left": 0,
+                "top": 409,
+                "width": 1575,
+                "height": 575,
+                "image": "901_pool/swim.png"
             }, 901);
+            nav.button({
+                "type": "btn",
+                "name": "changeroom",
+                "left": 385,
+                "top": 273,
+                "width": 665,
+                "height": 151,
+                "title": "Change Room",
+                "image": "901_pool/changeroom.png"
+            }, 901);
+            if (sc.swimgirl().thisRoom) {
+                nav.button({
+                    "type": "btn",
+                    "name": "girl",
+                    "left": 87,
+                    "top": 453,
+                    "width": 626,
+                    "height": 627,
+                    "title": "Dat Booty!!!",
+                    "image": "901_pool/girl1.png"
+                }, 901);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "boy",
+                    "left": 1570,
+                    "top": 334,
+                    "width": 127,
+                    "height": 342,
+                    "title": "Soooo tan",
+                    "image": "901_pool/boy1.png"
+                }, 901);
+            }
+            if (sc.sister().thisRoom) {
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 573,
+                    "top": 65,
+                    "width": 288,
+                    "height": 1015,
+                    "image": "901_pool/lola.png"
+                }, 901);
+            }
         }
-        nav.buildnav([0]);
     }
     else {
         nav.bg("901_pool/bathroom.jpg");
@@ -60,7 +93,17 @@ room901.main = function () {
             "height": 546,
             "image": "901_pool/bgirl.png"
         }, 901);
+        nav.t({
+            type: "img",
+            name: "warning",
+            left: 400,
+            top: 100,
+            font: 20,
+            hex: "#ffffff",
+            text: "I've got to wear a swimsuit to go swimming."
+        });
     }
+    nav.buildnav([0, 902, 903]);
 };
 
 room901.btnclick = function (name) {
@@ -88,6 +131,7 @@ room901.btnclick = function (name) {
             break;
         case "boy":
             nav.killbutton("boy");
+            nav.killbutton("lola");
             nav.button({
                 "type": "img",
                 "name": "boy",
@@ -98,9 +142,31 @@ room901.btnclick = function (name) {
                 "image": "901_pool/boy2a.png"
             }, 901);
             break;
+        case "lola":
+            nav.killbutton("boy");
+            var lolaStep = sc.getstep("lola");
+            if (lolaStep < 8)
+                chat(9, 901);
+            else if (lolaStep === 8) {
+                if (sc.checkevent("lola", -2))
+                    chat(12, 901);
+                else
+                    chat(16, 901);
+            }
+            else
+                chat(17, 901);
+            break;
+        case "girlchallenge":
+            if (cl.c.chest === 1 && cl.c.leg === 0 && cl.lipsize() === "thin")
+                chat(17, 901);
+            else
+                chat(2, 901);
+            break;
         case "changeroom":
             nav.killbutton("boy");
             nav.killbutton("girl");
+            nav.killbutton("swimming");
+            nav.killbutton("lola");
             nav.killbutton("changeroom");
             nav.bg("901_pool/bathroom.jpg");
             nav.button({
@@ -128,6 +194,9 @@ room901.btnclick = function (name) {
             break;
         case "bgirl":
             char.room(902);
+            break;
+        case "swimming":
+
             break;
         default:
             break;
@@ -158,6 +227,11 @@ room901.chatcatch = function (callback) {
         case "cindyInc2":
             sc.setstep("cindy", 1);
             room901.chatcatch("reset");
+            break;
+        case "lola-2":
+            sc.setstep("lola", -2);
+            char.addtime(120);
+            char.room(901);
             break;
     }
 };
@@ -238,6 +312,101 @@ room901.chat = function(chatID){
             button: [
                 { chatID: -1, text: "I wanted to ask you out on a date.", callback: "cindy0" },
                 { chatID: -1, text: "Oh sorry, I didn't mean to poke your butt with my finger.", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "lola",
+            text: "Hay " + sc.n("me") + "! Getting some laps in?",
+            button: [
+                { chatID: 10, text: "Oh yeah!", callback: "" },
+                { chatID: 11, text: "Nope, just here to check you out in a swimsuit", callback: "" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "lola",
+            text: "Good for you. I'm here during the week from 3:00 pm till 5:00 pm to keep fit too",
+            button: [
+                { chatID: -1, text: "And you look great!", callback: "" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "lola",
+            text: "Oh " + sc.n("me") + "! You're too much. I'll see you at home *wink",
+            button: [
+                { chatID: -1, text: "Ok see you", callback: "" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "lola",
+            text: "Oh my god " + sc.n("me") + "! I'm sooooo sorry you got kicked out! " + sc.n("eva") + " and I have just been " +
+                "the saddest ever. It's so terrible you're not here. I just want to smuggle you and take you in!",
+            button: [
+                { chatID: 13, text: "I know I miss you two too", callback: "" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "lola",
+            text: "I just want to tackle you and squeeze you, but that lifeguard is a real butthead. Where did you go after? ",
+            button: [
+                { chatID: 14, text: sc.n("zoey") + " was nice enough to take me in. [Tell " + sc.n("lola") + " your story. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "lola",
+            text: "Oh I'm so happy " + sc.n("lola") + " was able to take you in. She's such a great friend. " +
+                + sc.n("eva") + " and I will keep working on " + sc.n("landlord") + " to get you back in.We really miss " +
+                "you. Also ever since you left " + sc.n("bigguy") + " has been acting really creepy. He's been staring at us, and I " +
+                "swear he was licking his lips. We told " + sc.n("landlord") + ", but she just said we were being weird. ",
+            button: [
+                { chatID: 15, text: "That's horrible. I'll try to find a way to get back in and look out for you two.", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "lola",
+            text: "I hope so. You know " + sc.n("landlord") + ". She'll get mad, but give her some time and she'll get over it. " +
+            "I'm going to get my laps in, it's good seeing you. Love you!",
+            button: [
+                { chatID: -1, text: "You too I'm going to get some laps too", callback: "lola-2" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "lola",
+            text: "Hay " + sc.n("me") + "! I'm so happy every time I see you. We're still working on " + sc.n("landlord") + ". " +
+            "She said maybe, you'll have to earn her trust. Just keep working on her. I know you'll get back in. ",
+            button: [
+                { chatID: -1, text: "I will. Thanks " + sc.n("lola") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "lola",
+            text: "If you keep swimming like this you're going to turn into a fish!",
+            button: [
+                { chatID: -1, text: "You're a fish!", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "cindy",
+            text: "Oh so you decided to show your face? You know I'm going to destroy you. No one can swim like me!",
+            button: [
+                { chatID: 18, text: "You're on! And if I win you're going on that date!", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "cindy",
+            text: "Slow down turbo! You have to beat me first.",
+            button: [
+                { chatID: -1, text: "Lets go!", callback: "swimfan" }
             ]
         },
     ];
