@@ -5,9 +5,9 @@ var room901 = {};
 room901.main = function () {
     var cindyStep = sc.getstep("cindy");
     if (cl.hasoutfit("swim") === null) {
-        if (cindyStep === 2 && g.dt.getDay() === 3 && g.gethourdecimal().between(15, 17)) {
+        if (cindyStep === 1 && g.dt.getDay() === 3 && g.gethourdecimal().between(15, 17)) {
             nav.button({
-                "type": "img",
+                "type": "btn",
                 "name": "girlchallenge",
                 "left": 651,
                 "top": 0,
@@ -107,6 +107,7 @@ room901.main = function () {
 };
 
 room901.btnclick = function (name) {
+    var i;
     switch (name) {
         case "girl":
             var cindy = sc.getstep("cindy");
@@ -126,6 +127,12 @@ room901.btnclick = function (name) {
                     break;
                 case 1:
                     chat(8, 901);
+                    break;
+                case 2:
+                    if (cl.c.chest === 1 && cl.c.leg === 0 && cl.c.lips === "thin")
+                        chat(31, 901);
+                    else
+                        chat(32, 901);
                     break;
             }
             break;
@@ -158,7 +165,7 @@ room901.btnclick = function (name) {
             break;
         case "girlchallenge":
             if (cl.c.chest === 1 && cl.c.leg === 0 && cl.lipsize() === "thin")
-                chat(17, 901);
+                chat(18, 901);
             else
                 chat(2, 901);
             break;
@@ -196,6 +203,113 @@ room901.btnclick = function (name) {
             char.room(902);
             break;
         case "swimming":
+            if (g.get("energy") < 30) {
+                chat(21, 901);
+            }
+            else {
+                nav.killall();
+                nav.bg("901_pool/race.jpg");
+                char.changeMenu("hide");
+                g.internal = 150;
+                nav.button({
+                    "type": "img",
+                    "name": "swimman",
+                    "left": g.internal,
+                    "top": 540,
+                    "width": 209,
+                    "height": 70,
+                    "image": "901_pool/swimman.png"
+                }, 901);
+                nav.button({
+                    "type": "btn",
+                    "name": "stroke",
+                    "left": 717,
+                    "top": 826,
+                    "width": 486,
+                    "height": 200,
+                    "image": "901_pool/stroke1.png"
+                }, 901);
+            }
+            break;
+        case "stroke":
+            g.internal += 100 + (g.get("bodyLevel") * 10);
+            if (g.internal > 1600)
+                g.internal = 1600;
+            $('.room-img[data-name="swimman"]').css({ "left": (g.internal * g.ratio) + "px" });
+            if (g.internal === 1600) {
+                chat(22, 901);
+            }
+            else {
+                nav.modbutton("stroke", "901_pool/stroke0.png", "strokepause", "");
+                g.roomTimeout = setTimeout(function () {
+                    nav.modbutton("strokepause", "901_pool/stroke1.png", "stroke", "");
+                }, 500);
+                var xi;
+                for (i = 0; i < g.st.length; i++) {
+                    if (g.st[i].n === "energy") {
+                        xi = i;
+                        i = 9999;
+                    }
+                }
+                g.st[xi].t -= 5;
+                if (g.st[xi].t < 1) {
+                    g.st[xi].t = 0;
+                    nav.killbutton("stroke");
+                    chat(20, 901);
+                }
+            }
+            break;
+        case "stroke_r":
+            var girlAhead;
+            g.internal.m += 100 + (g.get("bodyLevel") * 10);
+            g.internal.f += 148.017;
+            girlAhead = g.internal.f > g.internal.m;
+
+            if (g.internal.m > 1600)
+                g.internal.m = 1600;
+            if (g.internal.f > 1600)
+                g.internal.f = 1600;
+            
+            if (g.internal.m === 1600 || g.internal.f === 1600) {
+                if (girlAhead) {
+                    g.internal.f = 1600;
+                    if (g.internal.m >= 1600)
+                        g.internal.m = 1550;
+                    $('.room-img[data-name="swimman"]').css({ "left": (g.internal.m * g.ratio) + "px" });
+                    $('.room-img[data-name="swimgirl"]').css({ "left": (g.internal.f * g.ratio) + "px" });
+                    chat(24, 901);
+                }
+                else {
+                    g.internal.m = 1600;
+                    if (g.internal.f >= 1600)
+                        g.internal.f = 1550;
+                    $('.room-img[data-name="swimman"]').css({ "left": (g.internal.m * g.ratio) + "px" });
+                    $('.room-img[data-name="swimgirl"]').css({ "left": (g.internal.f * g.ratio) + "px" });
+                    chat(26, 901);
+                }
+            }
+            else {
+                $('.room-img[data-name="swimman"]').css({ "left": (g.internal.m * g.ratio) + "px" });
+                $('.room-img[data-name="swimgirl"]').css({ "left": (g.internal.f * g.ratio) + "px" });
+
+                nav.modbutton("stroke_r", "901_pool/stroke0.png", "strokepause", "");
+                g.roomTimeout = setTimeout(function () {
+                    nav.modbutton("strokepause", "901_pool/stroke1.png", "stroke_r", "");
+                }, 500);
+                var yi;
+                for (i = 0; i < g.st.length; i++) {
+                    if (g.st[i].n === "energy") {
+                        yi = i;
+                        i = 9999;
+                    }
+                }
+                g.st[yi].t -= 8;
+                if (g.st[yi].t < 1) {
+                    g.st[yi].t = 0;
+                    nav.killbutton("stroke");
+                    chat(23, 901);
+                }
+            }
 
             break;
         default:
@@ -217,7 +331,7 @@ room901.chatcatch = function (callback) {
                 chat(2, 901);
             break;
         case "reset":
-            char.addtime(20);
+            char.addtime(30);
             char.room(901);
             break;
         case "cindyInc1":
@@ -232,6 +346,79 @@ room901.chatcatch = function (callback) {
             sc.setstep("lola", -2);
             char.addtime(120);
             char.room(901);
+            break;
+        case "swimbadend":
+            var badFitness = Math.round(g.internal / 200);
+            g.mod("fitness", badFitness);
+            g.mod("body", badFitness * 2);
+            char.room(901);
+            break;
+        case "swimgoodend":
+            g.mod("fitness", 30);
+            g.mod("body", 45);
+            char.room(901);
+            break;
+        case "swimfan":
+            nav.killall();
+            nav.bg("901_pool/race.jpg");
+            char.changeMenu("hide");
+            g.internal = { m: 150, f: 150 };
+            nav.button({
+                "type": "img",
+                "name": "swimman",
+                "left": g.internal.m,
+                "top": 540,
+                "width": 209,
+                "height": 70,
+                "image": "901_pool/swimman.png"
+            }, 901);
+            nav.button({
+                "type": "img",
+                "name": "swimgirl",
+                "left": g.internal.f,
+                "top": 300,
+                "width": 209,
+                "height": 70,
+                "image": "901_pool/swimgirl.png"
+            }, 901);
+            nav.button({
+                "type": "btn",
+                "name": "stroke_r",
+                "left": 717,
+                "top": 826,
+                "width": 486,
+                "height": 200,
+                "image": "901_pool/stroke1.png"
+            }, 901);
+            break;
+        case "swimLose":
+            nav.killall();
+            nav.bg("901_pool/pool.jpg");
+            nav.button({
+                "type": "img",
+                "name": "girl",
+                "left": 651,
+                "top": 0,
+                "width": 816,
+                "height": 1080,
+                "image": "901_pool/girl2.png"
+            }, 901);
+
+            break;
+        case "swimwin":
+            nav.killbutton("girl");
+            nav.button({
+                "type": "img",
+                "name": "girl",
+                "left": 111,
+                "top": 0,
+                "width": 1545,
+                "height": 1080,
+                "title": "Dat Booty!!!",
+                "image": "901_pool/girl1peek.png"
+            }, 901);
+            sc.setstep("cindy", 2);
+            char.addtime(100);
             break;
     }
 };
@@ -394,22 +581,126 @@ room901.chat = function(chatID){
             ]
         },
         {
-            chatID: 17,
+            chatID: 18,
             speaker: "cindy",
             text: "Oh so you decided to show your face? You know I'm going to destroy you. No one can swim like me!",
             button: [
-                { chatID: 18, text: "You're on! And if I win you're going on that date!", callback: "" }
+                { chatID: 19, text: "You're on! And if I win you're going on that date!", callback: "" }
             ]
         },
         {
-            chatID: 17,
+            chatID: 19,
             speaker: "cindy",
             text: "Slow down turbo! You have to beat me first.",
             button: [
                 { chatID: -1, text: "Lets go!", callback: "swimfan" }
             ]
         },
+        {
+            chatID: 20,
+            speaker: "me",
+            text: "Ohhh man swimming is hard. I need to keep working on my upper body to get across this entire pool.",
+            button: [
+                { chatID: -1, text: "Give up", callback: "swimbadend" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "me",
+            text: "I'm too tired to swim.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "me",
+            text: "I love doing laps!",
+            button: [
+                { chatID: -1, text: "...", callback: "swimgoodend" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "me",
+            text: "Oh crap I ran out of energy!",
+            button: [
+                { chatID: 25, text: "...", callback: "swimLose" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "cindy",
+            text: "Haha I won!",
+            button: [
+                { chatID: 25, text: "Damn I need to work on my upper body strength", callback: "swimLose" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "cindy",
+            text: "I can't respect a man that I'm stronger and faster than. Maybe next time turbo!",
+            button: [
+                { chatID: -1, text: "ouch", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "cindy",
+            text: "You totally beat me!",
+            button: [
+                { chatID: 27, text: "YES! I won", callback: "swimLose" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "cindy",
+            text: "Well I guess I owe you a date. There's nothing that turns me on more than a man who's stronger than me. ",
+            button: [
+                { chatID: 28, text: "Well with muscles like these", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "cindy",
+            text: "They are great muscles, you need to show me how well you use them. Meet me at the club. You can find me there on the weekend.",
+            button: [
+                { chatID: 29, text: "Nice I'll let you see all my muscles at our date.", callback: "swimwin" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "cindy",
+            text: "You better. Here's a sneak peak of your dinner.",
+            button: [
+                { chatID: 30, text: "I'm hungry for a snack now...", callback: "swimLose" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "cindy",
+            text: "Ok turbo, slow it down. Meet me at the club and I'll let you eat the entire thing. I've gotta run. You stay sexy.",
+            button: [
+                { chatID: -1, text: "Ok. See you this weekend at the club.", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "cindy",
+            text: "Hay sexy meet me at the club this weekind.",
+            button: [
+                { chatID: -1, text: "Cool see you there.", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "cindy",
+            text: "Ewwww gross! what happened to you! I only like manly men, you look like a chick! Don't talk to me.",
+            button: [
+                { chatID: -1, text: "Oh.. ouch", callback: "reset" }
+            ]
+        },
     ];
 
     return cArray[chatID];
-}
+};
