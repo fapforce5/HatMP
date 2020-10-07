@@ -282,6 +282,7 @@ room203.chatcatch = function (callback) {
         case "handjobcum":
             nav.killbutton("handjob");
             nav.bg("203_entrance/hjCum.jpg");
+            g.mod("receiveHandjobMale", 1);
             cl.doCum(false);
             break;
         case "reload":
