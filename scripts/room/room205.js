@@ -116,6 +116,7 @@ room205.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "205_computerWork/205_blow5.png"
             }, 205);
+            g.mod("receiveOralMale", 1);
             nav.killbutton("bj3");
             nav.killbutton("bj4");
             break;
