@@ -14,11 +14,11 @@ cl.c = {
 cl.init = function () {
     cl.c = {
         leg: 0, chest: 0, cock: 0, butthole: 0.0,
-        makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
         necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
-        fingernail: null, toenail: null, lipstick: "",
+        fingernail: null, toenail: null, lipstick: null,
         cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false
     };
 };
@@ -117,7 +117,7 @@ cl.list = [
     { type: "pj", name: "paisley", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "pj", name: "gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
 
-    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "f", inv: false, daring: 1, price: 120 },
+    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 1, price: 120 },
     { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
     { type: "chastity", name: "metal", img: "chastity_metal.png", sex: "f", inv: false, daring: 1, price: -1 },
 

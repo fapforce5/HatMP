@@ -116,6 +116,7 @@ room401.main = function () {
             break;
         case "fuckMyDirtyAssholeHard":
             nav.bg("650_toyStore/650_front.jpg", "650_toyStore/650_front.jpg");
+            room401.makeClothing("chastity", "m");
             room401.makeClothing("chastity", "f");
             room401.makeClothing("buttplug", "f");
             room401.makeInv(["d"], sc.checkevent("me", -8));
@@ -289,8 +290,10 @@ room401.makeClothing = function (type, sex) {
         lewdlevel = [0, 1, 2, 3];
     else if (sc.checkevent("me", 7))
         lewdlevel = [0, 1, 2];
+    else if (type === "chastity" && sex === "m")
+        lewdlevel = [0, 1];
     else
-        lewdlevel = [0] 
+        lewdlevel = [0];
 
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
