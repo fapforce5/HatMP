@@ -129,7 +129,7 @@ g.sissy = [
     { id: 2, pID: 1, icon: "chest3", x: 1086, y: 313, name: "B Cups", description: "A nice pair for a nice girl", group: "Breasts" , ach: false, active: true },
     { id: 3, pID: 2, icon: "chest4", x: 1174, y: 225, name: "C Cups", description: "Any girl would be proud of these titties", group: "Breasts" , ach: false, active: true },
     { id: 4, pID: 3, icon: "chest5", x: 1263, y: 136, name: "DD Cups", description: "Ok.. Now they're getting a bit big", group: "Breasts" , ach: false, active: true },
-    { id: 5, pID: 4, icon: "chest6", x: 1351, y: 48, name: "Giant Titties", description: "Only a complete bimbo whore would go this big", group: "Breasts" , ach: false, active: true },
+    { id: 5, pID: 4, icon: "chest6", x: 1351, y: 48, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", group: "Breasts" , ach: false, active: true },
 
     { id: 6, pID: 0, icon: "leg1", x: 998, y: 577, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", group: "Booty" , ach: false, active: true },
     { id: 7, pID: 6, icon: "leg2", x: 1086, y: 665, name: "Tight Booty", description: "Men will start to notice a nice butt like this", group: "Booty" , ach: false, active: true },
@@ -144,8 +144,8 @@ g.sissy = [
     { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy" , ach: false, active: false },
 
     { id: 16, pID: 0, icon: "makeup0", x: 823, y: 402, name: "Makeup", description: "You can go out wearing makeup", group: "Makeup", ach: false, active: true },
-    { id: 17, pID: 16, icon: "makeup1", x: 734, y: 313, name: "Piercing", description: "You can get piercings (Not implimented yet)", group: "Makeup", ach: false, active: true },
-    { id: 18, pID: 17, icon: "makeup2", x: 646, y: 225, name: "Tattoos", description: "You can get tattoos (Not implimented yet)", group: "Makeup", ach: false, active: true },
+    { id: 17, pID: 16, icon: "makeup1", x: 734, y: 313, name: "Piercing", description: "You can get piercings  [Not Implemented]", group: "Makeup", ach: false, active: true },
+    { id: 18, pID: 17, icon: "makeup2", x: 646, y: 225, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", group: "Makeup", ach: false, active: true },
     { id: 19, pID: 18, icon: "lip1", x: 558, y: 137, name: "Girl's Lips", description: "What a purdy mouth you have", group: "Lips" , ach: false, active: true },
     { id: 20, pID: 19, icon: "lip2", x: 469, y: 48, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", group: "Lips" , ach: false, active: true },
 
@@ -154,13 +154,13 @@ g.sissy = [
     { id: 23, pID: 22, icon: "fight2", x: 1347, y: 490, name: "Sexy Dance", description: "You can do a sexy dance during a fight", group: "Fight" , ach: false, active: true },
     { id: 24, pID: 23, icon: "fight3", x: 1471, y: 490, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", group: "Fight" , ach: false, active: true },
 
-    { id: 25, pID: 0, icon: "gloryhole0", x: 910, y: 304, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole", group: "Glory Hole" , ach: false, active: false },
-    { id: 26, pID: 25, icon: "gloryhole1", x: 910, y: 179, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole", group: "Glory Hole" , ach: false, active: false },
-    { id: 27, pID: 26, icon: "gloryhole2", x: 910, y: 53, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are", group: "Whore" , ach: false, active: false },
+    { id: 25, pID: 0, icon: "gloryhole0", x: 910, y: 304, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole [Not Implemented]", group: "Glory Hole" , ach: false, active: false },
+    { id: 26, pID: 25, icon: "gloryhole1", x: 910, y: 179, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", group: "Glory Hole" , ach: false, active: false },
+    { id: 27, pID: 26, icon: "gloryhole2", x: 910, y: 53, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", group: "Whore" , ach: false, active: false },
 
-    { id: 28, pID: 0, icon: "date0", x: 910, y: 677, name: "Firendly Oral", description: "Go down on your dates and friends", group: "Date" , ach: false, active: false },
-    { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends", group: "Date" , ach: false, active: false },
-    { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want", group: "Date" , ach: false, active: false },
+    { id: 28, pID: 0, icon: "date0", x: 910, y: 677, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", group: "Date" , ach: false, active: false },
+    { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", group: "Date" , ach: false, active: false },
+    { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", group: "Date" , ach: false, active: false },
 
     { id: 31, pID: 0, icon: "clothes0", x: 723, y: 490, name: "Sexy Clothes", description: "You can buy sexy clothes", group: "Clothes" , ach: false, active: true },
     { id: 32, pID: 31, icon: "clothes1", x: 598, y: 490, name: "Panties?", description: "You don't have to wear panties or bra", group: "Clothes" , ach: false, active: true },
@@ -187,7 +187,12 @@ g.i = function (name) {
 
 g.set = function (name, amount) {
     var index = g.i(name);
+    var oldAmount, newAmount;
+    oldAmount = g.st[index].t;
     g.st[index].t = amount;
+
+    newAmount = amount - oldAmount;
+    g.checkPop(name, newAmount);
 };
 
 g.get = function (name) {

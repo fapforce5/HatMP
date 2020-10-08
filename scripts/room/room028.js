@@ -355,13 +355,11 @@ room28.btnclick = function (name) {
                         char.room(returnRoomID);
                     }, 6000);
                 }
-                else if (g.internal === 19 || g.transform === 20) {
-                    id = g.internal + 11;
+                else if (g.internal === 19 || g.internal === 20) {
+                    id = g.internal - 18;
                     nav.killall();
-                    tText = cl.lipColor();
-                    cl.c.lips = g.internal === 19 ? "big" : "sb";
-                    cl.applyLipstick(tText);
-                    nav.bg("28_transformation/" + (g.internal === 19 ? "lip_big" : "lip_sb") + ".gif");
+                    cl.c.lips = id;
+                    nav.bg("28_transformation/lip_" + id + ".gif");
                     cl.display();
                     g.roomTimeout = setTimeout(function () {
                         returnRoomID = g.pass;

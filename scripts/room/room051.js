@@ -284,7 +284,7 @@ room51.chatcatch = function (callback) {
         case "red":
         case "pink":
         case "purple":
-            cl.c.lips = callback;
+            cl.c.lipstick = callback;
             g.internal = callback;
             zcl.displayface();
             break;

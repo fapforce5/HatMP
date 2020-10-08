@@ -18,7 +18,7 @@ cl.init = function () {
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
         necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
-        fingernail: null, toenail: null,
+        fingernail: null, toenail: null, lipstick: "",
         cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false
     };
 };
@@ -312,6 +312,24 @@ cl.load = function (ra) {
     cl.c = $.extend(true, {}, ra.current);
     cl.c.lastHairCut = new Date(cl.c.lastHairCut);
     cl.saveOutfit = $.extend(true, {}, ra.saveOutfit);
+
+    if (!("lipstick" in cl.c)) 
+        cl.c.lipstick = null;
+    
+    if (cl.c.lips.includes("red"))
+        cl.c.lipstick = "red";
+    else if (cl.c.lips.includes("pink"))
+        cl.c.lipstick = "pink";
+    else if (cl.c.lips.includes("purple"))
+        cl.c.lipstick = "purple";
+
+    if (cl.c.lips.includes("big"))
+        cl.c.lips = 1;
+    else if (cl.c.lips.includes("sb"))
+        cl.c.lips = 2;
+    else
+        cl.c.lips = 0;
+
 };
 
 
@@ -448,20 +466,20 @@ cl.bodyhair = [
     { name: "shortHair", dt: 4, image: "hairy_short.png", display: "Short Body Hair" }
 ];
 
-cl.lips = [
-    { name: "thin", image: "lips_man.png" },
-    { name: "red", image: "lips_red.png" },
-    { name: "purple", image: "lips_purple.png" },
-    { name: "pink", image: "lips_pink.png" },
-    { name: "big", image: "lips_big.png" },
-    { name: "bigred", image: "lips_big_red.png" },
-    { name: "bigpink", image: "lips_big_pink.png" },
-    { name: "bigpurple", image: "lips_big_purple.png" },
-    { name: "sb", image: "lips_sb.png" },
-    { name: "sbred", image: "lips_sb_red.png" },
-    { name: "sbpink", image: "lips_sb_pink.png" },
-    { name: "sbpurple", image: "lips_sb_purple.png" },
-];
+//cl.lips = [
+//    { name: "thin", image: "lips_man.png" },
+//    { name: "red", image: "lips_red.png" },
+//    { name: "purple", image: "lips_purple.png" },
+//    { name: "pink", image: "lips_pink.png" },
+//    { name: "big", image: "lips_big.png" },
+//    { name: "bigred", image: "lips_big_red.png" },
+//    { name: "bigpink", image: "lips_big_pink.png" },
+//    { name: "bigpurple", image: "lips_big_purple.png" },
+//    { name: "sb", image: "lips_sb.png" },
+//    { name: "sbred", image: "lips_sb_red.png" },
+//    { name: "sbpink", image: "lips_sb_pink.png" },
+//    { name: "sbpurple", image: "lips_sb_purple.png" },
+//];
 
 cl.eyes = [
     { name: "brown", image: "body_eyes_brown.png", back: null },
@@ -1133,7 +1151,7 @@ cl.display = function () {
         //set Chest
         cl.subDisplay("char-chest", "top_" + cl.c.chest + (cback ? "_back" : "") + ".png");
         //set mouth
-        cl.cWhere(cl.lips, cl.c.lips, cback ? null : "char-lips");
+        cl.subDisplay("char-lips", cback ? null : "lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png");
         //set eyes
         cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + ".png");
         //set cock
@@ -1622,110 +1640,45 @@ cl.appearanceClothes = function () {
     return baseScore;
 };
 
+//cl.set = [
+//    { entry: -1, name: "Chubby" },
+//    { entry: 0, name: "Male" },
+//    { entry: 1, name: "Androgynous" },
+//    { entry: 2, name: "Cute" },
+//    { entry: 3, name: "Sexy" },
+//    { entry: 4, name: "Bimbo Slut" },
+//    { entry: 5, name: "Cum Dumpster" }
+//];
+
 cl.appearanceBody = function () {
-    var baseScore = 0;
+    var smoothslut = cl.getBodyHair() === null;
+    var returnVal;
+
     if (cl.c.chest === 0)
-        return -1;
+        returnVal = -1;
+    else if (cl.c.chest === 1 && cl.c.leg === 0 && cl.c.hairLength < 2 && cl.c.lips === 0 && cl.c.lipstick === null)
+        returnVal = 0;
+    else if (cl.c.chest > 4 && cl.c.leg > 4 && cl.c.lips === 2 && cl.c.lipstick !== null && cl.c.hairLength > 2 && smoothslut)
+        returnVal = 4;
+    else if (cl.c.chest > 3 && cl.c.leg > 2 && (cl.c.lips > 0 || cl.c.lipstick !== null) && cl.c.hairLength > 2 && smoothslut)
+        returnVal = 3;
+    else if (cl.c.chest > 2 && cl.c.leg > 1 && (cl.c.lips > 0 || cl.c.lipstick !== null) && cl.c.hairLength > 1)
+        returnVal = 2;
+    else
+        returnVal = 1;
 
-    switch (cl.c.chest) {
-        case 1:
-            baseScore = 0;
-            break;
-        case 2:
-            baseScore = 1;
-            break;
-        case 3:
-            baseScore = 2;
-            break;
-        case 4:
-        case 5:
-            baseScore = 3;
-            break;
-        case 6:
-            baseScore = 4;
-            break;
-    }
-    switch (cl.c.leg) {
-        case 3:
-        case 4:
-            baseScore++;
-            break;
-    }
-    if (cl.c.hairLength === null) {
-        baseScore--;
-    }
-    else {
-        switch (cl.c.hairLength) {
-            case 0:
-            case 1:
-                baseScore--;
-                break;
+    if (!smoothslut && returnVal > 0)
+        returnVal--;
 
-        }
-    }
-
-    if (baseScore > 4)
-        baseScore = 4;
-    if (cl.getBodyHair() !== null) {
-        baseScore -= 2;
-    }
-
-    if (baseScore < 0)
-        baseScore = 0;
-
-    return baseScore;
+    return returnVal;
 };
 
 cl.clean = function (type) {
     cl.c.cumface = null;
     cl.c.makeup = "n";
-    cl.c.lips = cl.lipsize();
+    cl.c.lipsstick = null;
 
     cl.display();
-}
-
-cl.lipsize = function () {
-    var thissize = "thin";
-    if (cl.c.lips === "big" || cl.c.lips === "bigred" || cl.c.lips === "bigpink" || cl.c.lips === "bigpurple")
-        thissize = "big";
-    if (cl.c.lips === "sb" || cl.c.lips === "sbred" || cl.c.lips === "sbpink" || cl.c.lips === "sbpurple")
-        thissize = "sb";
-    return thissize;
-};
-
-cl.lipColor = function () {
-    if (cl.c.lips === "thin" || cl.c.lips === "big" || cl.c.lips === "sb")
-        return "nude";
-    else if (cl.c.lips === "red" || cl.c.lips === "bigred" || cl.c.lips === "sbred")
-        return "red";
-    else if (cl.c.lips === "purple" || cl.c.lips === "bigpurple" || cl.c.lips === "sbpurple")
-        return "purple";
-    else if (cl.c.lips === "pink" || cl.c.lips === "bigpink" || cl.c.lips === "sbpink")
-        return "pink";
-    console.log("invlaid lip color");
-    return null;
-};
-
-cl.applyLipstick = function (color) {
-    var thisLip = cl.lipsize();
-    if (color === null || color === "thin" || color === "big" || color === "sb")
-        culor = "nude";
-    switch (color) {
-        case "nude":
-                cl.c.lips = thisLip;
-            break;
-        case "red":
-        case "purple":
-        case "pink":
-            if (thisLip === "thin")
-                cl.c.lips = color;
-            else
-                cl.c.lips = thisLip + color;
-            break;
-        default:
-            console.log("lipNotFound");
-            break;
-    }
 };
 
 cl.wearing = function () {

@@ -98,7 +98,8 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
 
     //set mouth
     if (!dback) {
-        cl.displayMainWhere(cl.lips, cl.c.lips, top, left, ratio, dback);
+        zcl.displayMainSub(("lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png"), top, left, ratio);
+        //cl.displayMainWhere(cl.lips, cl.c.lips, top, left, ratio, dback);
         //set eyes
         zcl.displayMainSub("eyes_" + cl.c.eyes + ".png", top, left, ratio);
 

@@ -115,7 +115,7 @@ room27.chatcatch = function (callback) {
         case "red":
         case "purple":
         case "pink":
-            cl.applyLipstick(callback);
+            cl.c.lipstick = callback;
             cl.display();
             zcl.displayMirror();
             if (g.pass === -1) {

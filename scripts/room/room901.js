@@ -129,7 +129,7 @@ room901.btnclick = function (name) {
                     chat(8, 901);
                     break;
                 case 2:
-                    if (cl.c.chest === 1 && cl.c.leg === 0 && cl.c.lips === "thin")
+                    if (cl.appearance() === 0)
                         chat(31, 901);
                     else
                         chat(32, 901);
@@ -148,6 +148,18 @@ room901.btnclick = function (name) {
                 "height": 1080,
                 "image": "901_pool/boy2a.png"
             }, 901);
+            if (cl.appearanceBody() < 1)
+                chat(33, 901);
+            else if (cl.appearanceBody() < 3)
+                chat(34, 901);
+            else {
+                var boyStep = sc.getstep("tim");
+                if (boyStep === 0)
+                    chat(36, 901);
+                else if (boyStep === 1)
+                    chat(42, 901);
+
+            }
             break;
         case "lola":
             nav.killbutton("boy");
@@ -164,7 +176,7 @@ room901.btnclick = function (name) {
                 chat(17, 901);
             break;
         case "girlchallenge":
-            if (cl.c.chest === 1 && cl.c.leg === 0 && cl.lipsize() === "thin")
+            if (cl.appearance() === 0)
                 chat(18, 901);
             else
                 chat(2, 901);
@@ -320,7 +332,7 @@ room901.btnclick = function (name) {
 room901.chatcatch = function (callback) {
     switch (callback) {
         case "cindy0":
-            if (cl.c.chest === 1 && cl.c.leg === 0 && cl.lipsize() === "thin") {
+            if (cl.appearance() === 0) {
                 var cstep = sc.getstep("cindy");
                 if (cstep === 0)
                     chat(1, 901);
@@ -419,6 +431,29 @@ room901.chatcatch = function (callback) {
             }, 901);
             sc.setstep("cindy", 2);
             char.addtime(100);
+            break;
+        case "checkboy":
+            var checkboy = sc.getstep("tim");
+            if (checkboy === 0)
+                chat(37, 901);
+
+            break;
+        case "boycock":
+            nav.killbutton("boy");
+            nav.button({
+                "type": "img",
+                "name": "boy",
+                "left": 774,
+                "top": 0,
+                "width": 920,
+                "height": 1080,
+                "title": "Soooo tan",
+                "image": "901_pool/boy3.png"
+            }, 901);
+            break;
+        case "boy1":
+            sc.setstep("tim", 1);
+            room901.chatcatch("reset");
             break;
     }
 };
@@ -558,7 +593,7 @@ room901.chat = function(chatID){
             chatID: 15,
             speaker: "lola",
             text: "I hope so. You know " + sc.n("landlord") + ". She'll get mad, but give her some time and she'll get over it. " +
-            "I'm going to get my laps in, it's good seeing you. Love you!",
+                "I'm going to get my laps in, it's good seeing you. Love you!",
             button: [
                 { chatID: -1, text: "You too I'm going to get some laps too", callback: "lola-2" }
             ]
@@ -567,7 +602,7 @@ room901.chat = function(chatID){
             chatID: 16,
             speaker: "lola",
             text: "Hay " + sc.n("me") + "! I'm so happy every time I see you. We're still working on " + sc.n("landlord") + ". " +
-            "She said maybe, you'll have to earn her trust. Just keep working on her. I know you'll get back in. ",
+                "She said maybe, you'll have to earn her trust. Just keep working on her. I know you'll get back in. ",
             button: [
                 { chatID: -1, text: "I will. Thanks " + sc.n("lola") + ".", callback: "" }
             ]
@@ -698,6 +733,90 @@ room901.chat = function(chatID){
             text: "Ewwww gross! what happened to you! I only like manly men, you look like a chick! Don't talk to me.",
             button: [
                 { chatID: -1, text: "Oh.. ouch", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "tim",
+            text: "Hay dude I can't chat now. Gotta keep people safe bro.",
+            button: [
+                { chatID: -1, text: "oh yeah", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "tim",
+            text: "Hay what's up?",
+            button: [
+                { chatID: 35, text: "Just seeing how you're doing cutie", callback: "" },
+                { chatID: -1, text: "Oh nothing. Stop talking to me", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "tim",
+            text: "I'm going to stop you there. I look way too good to waste time on someone like you.",
+            button: [
+                { chatID: -1, text: "Ouch", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "tim",
+            text: "You must be a swimmer 'cause it looks like you've mastered the brest stroke.",
+            button: [
+                { chatID: -1, text: "haha stop, you're embarrassing me.", callback: "checkboy" },
+                { chatID: -1, text: "Nevermind", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "tim",
+            text: "So I haven't seen you around here before. If you want some swim lessons I can show you how to stroke it. ",
+            button: [
+                { chatID: 38, text: "I'm sure you're a master at stroking it", callback: "" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "tim",
+            text: "With a body like this I never have to stroke it. But I am great at diving, ever girl has complimented me when I " +
+                "go down.",
+            button: [
+                { chatID: 39, text: "You may be good, but my blowjob.. er I mean going down.. crap. I want to suck your dick.", callback: "" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "tim",
+            text: "I know. You should catch me at the club I may let you suck my cock in the bathroom. If you do a good job I may " +
+            "just rock your world. ",
+            button: [
+                { chatID: 40, text: "How do I know you won't chicken out?", callback: "boycock" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "tim",
+            text: "Does this looks like a chicken? If you wrap your lips around it, it grows way bigger. ",
+            button: [
+                { chatID: 41, text: "It's such a cute penis. You better bring it to the club this weekend.", callback: "" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "tim",
+            text: "You know it. Wear something sexy for me, and skip dinner, I'll be feeding you snacks all night.",
+            button: [
+                { chatID: -1, text: "Hahah ok, see you this weekend. ", callback: "boy1" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "tim",
+            text: "Hay sexy, I can't wait to see you at the club!",
+            button: [
+                { chatID: -1, text: "I'll see you there", callback: "reset" },
             ]
         },
     ];
