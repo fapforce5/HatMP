@@ -315,21 +315,22 @@ cl.load = function (ra) {
 
     if (!("lipstick" in cl.c)) 
         cl.c.lipstick = null;
-    
-    if (cl.c.lips.includes("red"))
-        cl.c.lipstick = "red";
-    else if (cl.c.lips.includes("pink"))
-        cl.c.lipstick = "pink";
-    else if (cl.c.lips.includes("purple"))
-        cl.c.lipstick = "purple";
 
-    if (cl.c.lips.includes("big"))
-        cl.c.lips = 1;
-    else if (cl.c.lips.includes("sb"))
-        cl.c.lips = 2;
-    else
-        cl.c.lips = 0;
+    if (isNaN(cl.c.lips)) {
+        if (cl.c.lips.includes("red"))
+            cl.c.lipstick = "red";
+        else if (cl.c.lips.includes("pink"))
+            cl.c.lipstick = "pink";
+        else if (cl.c.lips.includes("purple"))
+            cl.c.lipstick = "purple";
 
+        if (cl.c.lips.includes("big"))
+            cl.c.lips = 1;
+        else if (cl.c.lips.includes("sb"))
+            cl.c.lips = 2;
+        else
+            cl.c.lips = 0;
+    }
 };
 
 
