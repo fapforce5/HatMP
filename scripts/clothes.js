@@ -134,9 +134,9 @@ cl.list = [
     { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
 ];
 
-for (var q = 0; q < cl.list.length; q++) {
-    cl.list[q].inv = true;
-}
+//for (var q = 0; q < cl.list.length; q++) {
+//    cl.list[q].inv = true;
+//}
 
 cl.add = function (type, name) {
     var i;

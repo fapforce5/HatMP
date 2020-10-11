@@ -2369,7 +2369,7 @@ room200.chat = function (chatID) {
         {
             chatID: 182,
             speaker: "missy",
-            text: "You need to meet " + sc.n("g") + " at the gym. Make sure you're fit enough to get invited to the back gym. There " +
+            text: "You need to meet " + sc.n("g") + " at the gym. There " +
                 "you'll have to take sparring training from her, then you can go to the sewer and get my box.",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "leaveRoom0" },

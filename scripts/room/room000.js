@@ -4,7 +4,8 @@ room0.chatInput;
 room0.main = function () {
     
     $('#room_footer').hide();
-    $('.room-left').hide();
+    if (!$('#room_left_map').is(":visible"))
+        char.changeMenu("hide");
     var tempMap = g.get("map");
     if (tempMap === 0)
         room0.btnclick("map_0");
@@ -12,7 +13,7 @@ room0.main = function () {
         room0.btnclick("map_2");
     else
         room0.btnclick("map_1");
-    setTimeout(function () { $('#room_footer').hide(); $('.room-left').hide();}, 200)
+    setTimeout(function () { $('#room_footer').hide(); }, 200)
 };
 
 room0.btnclick = function (name) {

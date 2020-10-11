@@ -237,6 +237,7 @@ char.changeMenu = function (menu) {
             $("#room_left_char").hide();
             $("#room_left_map").show();
             $("#room_left_graph").hide();
+            char.map();
             break;
         case "graph":
             $("#room_left_char").hide();
@@ -260,92 +261,40 @@ char.addtime = function (minutes) {
     nav.buildclock();
 };
 
-char.newday = function (sendingRoom) {
-    //var retData = null;
-    //var hormoneLevel = g.get("hormone");
-    //if (g.dt.getHours() > 6)
-    //    g.dt.setDate(g.dt.getDate() + 1);
-    //g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
-    //nav.buildclock();
-    //g.set("jobConstWorkToday", 0);
-    //g.set("energy", 70);
-    //g.mod('hormone', -2);
-    //var thisTinyPP = g.get("shinkCock");
-    //g.newday();
-    //cl.hairgrowth();
-    //if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 21) {
-    //    if (cl.c.hairLength === null)
-    //        cl.c.hairLength = 0;
-    //    else if (cl.c.hairLength < 4)
-    //        cl.c.hairLength++;
-    //    cl.c.lastHairCut = g.dt;
-    //}
-
-    //if (g.get("fitness") > 98) {
-    //    g.set("fitness", 0);
-    //    g.mod("fitnessLevel", 1);
-    //    g.mod("maxenergy", 3);
-    //    g.popUpNotice("Your fitness level increased");
-    //}
-
-    ////check Transformation
-
-    //if (cl.c.chest === 0) {
-    //    if (g.get("fitnessLevel") > 0) {
-    //        retData = { type: "chest", tOld: 0, tNew: 1 };
-    //        cl.c.chest = 1;
-    //    }
-    //}
-    //else if (thisTinyPP && cl.c.cock < 5) {
-    //    retData = { type: "cock", tOld: cl.c.cock, tNew: cl.c.cock + 1 };
-    //}
-    //else if (hormoneLevel > 65 && g.get("sissy") > 95) {
-    //    var tempC = null;
-    //    if (Math.floor(Math.random() * (100 - hormoneLevel)) < 5) {
-    //        g.set("sissy", 0);
-    //        g.mod("sissyLevel", 1);
-    //        if (cl.c.leg === 4 && cl.c.chest === 6)
-    //            tempC = null;
-    //        else if (cl.c.leg === 4 && cl.c.chest < 6)
-    //            tempC = "chest";
-    //        else if (cl.c.chest === 6 && cl.c.leg < 4)
-    //            tempC = "leg";
-    //        else if (Math.floor(Math.random() * 2) === 0)
-    //            tempC = "leg";
-    //        else
-    //            tempC = "chest";
-
-    //        if (tempC === null)
-    //            retData = null;
-
-    //        else if (tempC === "chest")
-    //            retData = { type: "chest", tOld: cl.c.chest, tNew: cl.c.chest + 1 };
-    //        else
-    //            retData = { type: "leg", tOld: cl.c.leg, tNew: cl.c.leg + 1 };
-    //    }
-    //}
-    //if (retData !== null) {
-    //    switch (retData.type) {
-    //        case "chest":
-    //            cl.c.chest = retData.tNew;
-    //            break;
-    //        case "leg":
-    //            cl.c.leg = retData.tNew;
-    //            break;
-    //        case "cock":
-    //            cl.c.cock = retData.tNew;
-    //            break;
-    //        default:
-    //            console.log(newBod, "error");
-    //            break;
-    //    }
-    //    cl.display();
-    //}
-    
-    //menu.save("HatMP_9", null, 9);
-    //console.log(retData);
-    //return retData;
-    console.log("noooooo")
+char.map = function () {
+    var proom, top, left;
+    $('#room_left_map').html('<img src="./images/general/map0.jpg" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(169, 300, 100, 0) + '" />');
+    $('#room_left_map').append('<img src="./images/general/map1.jpg" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(169, 300, 269, 0) + '" />');
+    $('#room_left_map').append('<img src="./images/general/map2.jpg" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(169, 300, 438, 0) + '" />');
+    proom = null;
+    if (g.prevRoom !== null) {
+        if (g.roomID === 0 || g.roomID === 8) {
+            $.each(g.rooms, function (i, v) {
+                if (v.roomID === g.prevRoom) {
+                    proom = v.houseID;
+                    return;
+                }
+            });
+        }
+        else {
+            $.each(g.rooms, function (i, v) {
+                if (v.roomID === g.roomID) {
+                    proom = v.houseID;
+                    return;
+                }
+            });
+        }
+    }
+    if (proom !== null) {
+        $.each(g.roomMap, function (i, v) {
+            if (v.roomID === proom) {
+                top = 100 + (v.map * 169) + ((v.top + (v.height / 2)) * .1564);
+                left = ((v.left + (v.width / 2)) * .1564);
+                $('#room_left_map').append('<img src="./images/general/spot.gif" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(20, 20, top, left) + '" />');
+                return;
+            }
+        });
+    }
 };
 
 char.newdayfake = function () {
@@ -436,6 +385,8 @@ char.room = function (roomID) {
     nav.buildRoom();
     cl.cockDisplay();
     cl.energydisplay();
+    if ($('#room_left_map').is(":visible"))
+        char.map();
 };
 
 char.addMinutes = function (date, minutes) {
@@ -964,6 +915,7 @@ menu.load = function (cookieName, btn, saveID) {
     catch (err) {
         var thisIsfoobar = 1;
     }
+    char.map();
     cl.display();
     char.room(g.roomID);
     m.load();

@@ -1,279 +1,578 @@
-﻿//Room name
+﻿//Fight Room
 var room556 = {};
 room556.main = function () {
+    g.pass = { enemy0: "g", enemy1: null, enemy2: null, bg: "gym", roomID: 551 };
     $("#room-inv").hide();
     char.changeMenu("hide");
     setTimeout(function () { $("#room-inv").hide(); }, 250);
-    g.internal = tEnemy.init("g", "gym", 556, 551);
-    g.pass = 0;
-    chat(0, 556);
+
+    tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.enemy2, g.pass.bg, g.pass.roomID, 556);
+    tEnemy.drawBackground(g.pass.bg);
+    tEnemy.drawRoom();
+    tEnemy.drawEnemy(["pose", "pose", "pose"]);
+    tEnemy.drawButtons("init");
+
+    //g.roomTimeout = setTimeout(function () { tEnemy.drawEnemyAction("init"); }, 1000);
+    chat(500, 556);
 };
 
 room556.btnclick = function (name) {
+    var i, xi, mymove, enemymove;
+
     switch (name) {
-        case "fight":
-        case "fuck":
-        case "cancel":
-        case "block":
-        case "undress":
-        case "submit":
-        case "tease":
-            tEnemy.drawButtons(name, 556, g.internal.enemy);
+        case "e_begin":
+        case "e_inventory":
+        case "e_flee":
+        case "e_startover":
+        case "e_energy":
+        case "e_dominate":
+        case "e_sub":
+        case "e_back":
+            if (g.internal === 0 || g.internal === 1) {
+                if (name === "e_begin" || name === "e_dominate")
+                    tEnemy.drawEnemyAction(name);
+                else
+                    chat(550, 556);
+            }
+            
+            break;
+        case "e_punch":
+        case "e_kick":
+        case "e_blockpunch":
+        case "e_blockkick":
+        case "e_steal":
+        case "e_flirtass":
+        case "e_flirtcock":
+        case "e_flirtdance":
+        case "e_bottoms":
+        case "e_panties":
+        case "e_shirt":
+        case "e_noop":
+            if ((g.internal === 0 && name === "e_punch") || (g.internal === 1 && name === "e_blockpunch")) {
+                tEnemy.setEnemyAction(name);
+                g.fight.enemyRotation++;
+                if (g.fight.enemyRotation >= g.fight.e.length) {
+                    g.fight.enemyRotation = 0;
+                    tEnemy.drawEnemyAction("e_endturn");
+                }
+                else {
+                    tEnemy.drawEnemyAction("e_back");
+                }
+            }
+            else
+                chat(550, 556);
+
+            break;
+        case "e_endturnconfirm":
+        case "e_quickstart":
+            if (name === "e_endturnconfirm") {
+                g.fight.enemyRotation = 0;
+                tEnemy.drawEnemyAction("clear");
+                for (i = 0; i < g.fight.e.length; i++)
+                    g.fight.e[i].nextMove = null;
+                room556.btnclick("mymove");
+            }
+            else
+                chat(550, 556);
+            break;
+        case "e_fleeconfirm":
+            chat(5, 556);
+            break;
+        case "checkwin":
+            if (g.internal === 0) {
+                tEnemy.drawSingleEnemy(0, "pose");
+                tEnemy.drawEnemyAction("init");
+                tEnemy.drawMe("clear");
+                chat(520, 556);
+                g.internal = 1;
+            }
+            else {
+                tEnemy.drawAction("clear");
+                tEnemy.drawMe("clear");
+                var hornyCounter, zeroEnergyCounter, totalEnemy;
+                hornyCounter = zeroEnergyCounter = 0;
+                totalEnemy = g.fight.e.length;
+                xi = g.fight.enemyRotation;
+
+                for (i = 0; i < totalEnemy; i++) {
+                    if (g.fight.e[i].energy < 1)
+                        zeroEnergyCounter++;
+                    if (g.fight.e[i].horny > 99)
+                        hornyCounter++;
+                }
+
+                if ($('#room_chatOverlay').is(":visible")) {
+                    $('.room-chatBtnClick').click();
+                }
+
+                if (g.fight.me.energy < 1) {
+                    chat(4, 556);
+                }
+                else if (g.fight.me.horny > 99) {
+                    g.fight.enemyRotation = 0;
+                    tEnemy.drawSingleEnemy(0, "pose");
+                    chat(9, 556);
+                }
+                else if (totalEnemy === zeroEnergyCounter) {
+                    tEnemy.drawSingleEnemy(null, "defeat");
+                    chat(0, 556);
+                }
+                else if (totalEnemy === hornyCounter) {
+                    g.fight.enemyRotation = 0;
+                    tEnemy.drawSingleEnemy(0, "pose");
+                    chat(10, 556);
+                }
+                else {
+                    if (g.fight.e[xi].nextMove !== null)
+                        room556.btnclick("enemymove");
+                    else {
+                        g.fight.enemyRotation++;
+                        if (g.fight.enemyRotation >= g.fight.e.length) {
+                            g.fight.enemyRotation = 0;
+                            tEnemy.drawEnemyAction("e_startover");
+                        }
+                        else
+                            room556.btnclick("mymove");
+                    }
+                }
+            }
+            break;
+        case "mymove":
+            switch (g.fight.e[g.fight.enemyRotation].myaction) {
+                case "punch":
+                case "kick":
+                    tEnemy.blindNextMove(true);
+                    room556.btnclick(g.fight.e[g.fight.enemyRotation].myaction);
+                    break
+                case "blockpunch":
+                case "blockkick":
+                    tEnemy.blindNextMove(false);
+                    room556.btnclick("enemymove");
+                    break;
+                case "teaseass":
+                case "teasecock":
+                case "teasedance":
+                case "stripskirt":
+                case "strippanties":
+                case "stripshirt":
+                    tEnemy.blindNextMove(false);
+                    room556.btnclick(g.fight.e[g.fight.enemyRotation].myaction);
+                    break;
+                case "noop":
+                    tEnemy.blindNextMove(false);
+                    room556.btnclick("checkwin");
+                    break;
+                case "steal":
+                    tEnemy.blindNextMove(false);
+                    room556.btnclick("steal");
+                    break;
+                default:
+                    room556.btnclick("enemymove");
+                    break;
+            }
+            break;
+
+        case "enemymove":
+            if (g.internal === 1) {
+                xi = g.fight.enemyRotation;
+                g.fight.e[xi].nextMove = "punch";
+
+                tEnemy.drawAction("block");
+                tEnemy.drawSingleEnemy(0, "punch");
+                tEnemy.drawMe("blockPunch");
+                tEnemy.myEnergy(-5, null);
+                g.roomTimeout = setTimeout(function () {
+                    tEnemy.drawAction("pow");
+                    tEnemy.drawSingleEnemy(0, "recoil");
+                    tEnemy.drawMe("punch");
+                    tEnemy.enemyEnergy(-1 * g.fight.me.pPower, null, 0);
+                    g.roomTimeout = setTimeout(function () {
+                        tEnemy.drawAction("clear");
+                        tEnemy.drawSingleEnemy(0, "pose");
+                        tEnemy.drawMe("clear");
+                        chat(530, 556);
+                    }, g.fight.fighttimer);
+                }, g.fight.fighttimer);
+            }
+            //if (2 === 3) {
+            //    xi = g.fight.enemyRotation;
+            //    if (g.fight.e[xi].energy < 1) {
+            //        tEnemy.drawSingleEnemy(xi, "defeat");
+            //        g.fight.e[xi].nextMove = null;
+            //        g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer / 2);
+            //    }
+            //    else {
+            //        switch (g.fight.e[xi].nextMove) {
+            //            case "punch":
+            //            case "kick":
+            //                var tempPower = -1 * (g.fight.e[xi].nextMove === "punch" ? g.fight.e[xi].pPower : g.fight.e[xi].kPower);
+            //                if ((g.fight.e[xi].myaction === "blockpunch" && g.fight.e[xi].nextMove === "punch") || (g.fight.e[xi].myaction === "blockkick" && g.fight.e[xi].nextMove === "kick")) {
+            //                    tEnemy.drawAction("punch");
+            //                    tEnemy.drawSingleEnemy(xi, g.fight.e[xi].nextMove);
+            //                    tEnemy.drawMe("blockPunch");
+            //                    tEnemy.myEnergy(Math.floor(tempPower * .2), null);
+            //                    if (Math.floor(Math.random() * 3 > 0)) {
+            //                        g.roomTimeout = setTimeout(function () {
+            //                            var recactRando = Math.floor(Math.random() * 2) === 0 ? "punch" : "kick";
+            //                            tEnemy.drawAction("counter");
+            //                            tEnemy.drawSingleEnemy(xi, "recoil");
+            //                            tEnemy.drawMe(recactRando);
+            //                            tEnemy.enemyEnergy(-1 * (recactRando === "punch" ? g.fight.me.pPower : g.fight.me.kPower), null, xi);
+            //                            g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            //                        }, g.fight.fighttimer);
+            //                    }
+            //                }
+            //                else if (g.fight.e[xi].myaction === "blockpunch" || g.fight.e[xi].myaction === "blockkick") {
+            //                    tEnemy.drawAction("epow");
+            //                    tEnemy.drawSingleEnemy(xi, g.fight.e[xi].nextMove);
+            //                    tEnemy.drawMe("blockmiss");
+            //                    tEnemy.myEnergy(tempPower, null);
+            //                    g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            //                }
+            //                else {
+            //                    tEnemy.drawAction("epow");
+            //                    tEnemy.drawSingleEnemy(xi, g.fight.e[xi].nextMove);
+            //                    tEnemy.drawMe("clear");
+            //                    tEnemy.myEnergy(tempPower, null);
+            //                    g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            //                }
+            //                break;
+            //            case "blockpunch":
+            //            case "blockkick":
+            //                tEnemy.drawAction("clear");
+            //                tEnemy.drawSingleEnemy(xi, "block");
+            //                tEnemy.drawMe("clear");
+            //                g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            //                break;
+            //            case "sexy":
+            //                var thisClothing = cl.wearing();
+            //                if (thisClothing.top || thisClothing.bottom) {
+            //                    tEnemy.drawSingleEnemy(xi, "pose");
+            //                    cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+            //                    if (thisClothing.underwear)
+            //                        tEnemy.chibi("strip1");
+            //                    else
+            //                        tEnemy.chibi("strip0");
+            //                    tEnemy.clothingDisplay();
+            //                    tEnemy.enemyEnergyAll(null, 10, xi);
+            //                    tEnemy.enemyEnergy(null, 20, xi);
+            //                    tEnemy.myEnergy(0, 10);
+            //                }
+            //                else if (thisClothing.underwear) {
+            //                    cl.c.panties = cl.c.bra = null;
+            //                    tEnemy.drawSingleEnemy(xi, "pose");
+            //                    tEnemy.chibi("strip0");
+            //                    tEnemy.clothingDisplay();
+            //                    tEnemy.enemyEnergyAll(null, 15, xi);
+            //                    tEnemy.enemyEnergy(null, 30, xi);
+            //                    tEnemy.myEnergy(0, 15);
+            //                }
+            //                else {
+            //                    tEnemy.drawSingleEnemy(xi, "pose");
+            //                    tEnemy.chibi("hum");
+            //                    tEnemy.enemyEnergyAll(null, 20, xi);
+            //                    tEnemy.enemyEnergy(null, 40, xi);
+            //                    tEnemy.myEnergy(0, 20);
+            //                }
+
+            //                g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            //                break;
+            //            case "defeat":
+            //                tEnemy.drawSingleEnemy(xi, "defeat");
+            //                g.fight.e[xi].nextMove = null;
+            //                g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer / 2);
+            //                break;
+            //            default:
+            //                console.log("invalid 'checkwin' enemyMove i:" + i);
+            //                break;
+            //        }
+            //        g.fight.e[xi].nextMove = null;
+            //    }
+            //}
             break;
         case "punch":
         case "kick":
-            if (g.pass === 0) {
-                if (name === "punch") {
-                    g.pass = 1;
-                    tEnemy.drawAction("block");
-                    tEnemy.drawEnemy(g.internal.enemy, "block");
-                    tEnemy.drawMe(name);
-                    g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, Math.round(g.internal.me.pPower * .2));
-                    tEnemy.drawButtons("clear", 556, g.internal.enemy);
-                    g.roomTimeout = setTimeout(function () { chat(2, 556); }, 1500);
-                }
-                else
-                    chat(1, 556);
+            xi = g.fight.enemyRotation;
+            mymove = g.fight.e[xi].myaction;
+            enemymove = g.fight.e[xi].nextMove;
 
-            }
-            else if (g.pass === 1) {
-                if (name === "punch") {
-                    g.pass = 2;
-                    tEnemy.drawAction("pow");
-                    tEnemy.drawEnemy(g.internal.enemy, "recoil");
-                    tEnemy.drawMe(name);
-                    g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
-                    tEnemy.drawButtons("clear", 556, g.internal.enemy);
-                    g.roomTimeout = setTimeout(function () { room556.btnclick("reset"); chat(4, 556); }, 1500);
-                }
-                else
-                    chat(1, 556);
-            }
-            else if (g.pass === 2) {
+            if (mymove === "punch")
+                g.fight.me.punchCount++;
+            else
+                g.fight.me.kickCount++;
+            if (enemymove === "blockpunch" || enemymove === "blockkick")
+                g.fight.e[xi].nextMove = null;
+
+            if (enemymove === "blockpunch" && mymove === "punch" || enemymove === "blockkick" && mymove === "kick") {
                 tEnemy.drawAction("block");
-                tEnemy.drawEnemy(g.internal.enemy, "block");
+                tEnemy.drawSingleEnemy(g.fight.me.nextMoveEnemy, "block");
                 tEnemy.drawMe(name);
-                tEnemy.drawButtons("clear", 556, g.internal.enemy);
-                g.roomTimeout = setTimeout(function () { room556.btnclick("reset"); chat(10, 556); }, 1500);
+                tEnemy.enemyEnergy(-5, null, xi);
+                g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
             }
             else {
-                chat(1, 556);
-            }
-            /*
-            tEnemy.drawButtons("clear", 556, g.internal.enemy);
-            var nextMove = tEnemy.blindNextMove(g.internal.enemy, g.internal.me);
-
-            if (nextMove === "bp" && name === "punch" || nextMove === "bk" && name === "kick") {
-                tEnemy.drawAction("block");
-                tEnemy.drawEnemy(g.internal.enemy, "block");
+                tEnemy.drawAction("pow");
+                tEnemy.drawSingleEnemy(xi, "recoil");
                 tEnemy.drawMe(name);
-                g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, Math.round((name === "punch" ? g.internal.me.pPower : g.internal.me.kPower) * .2));
-                if (g.internal.enemy.energy < 1)
-                    g.roomTimeout = setTimeout(function () { room556.btnclick("enemyLose"); }, 1500);
-                else if (Math.floor(Math.random() * 3) === 0)
-                    g.roomTimeout = setTimeout(function () { room556.btnclick(nextMove === "p" ? "reactionPunch" : "reactionKick"); }, 1500);
-                else
-                    g.roomTimeout = setTimeout(function () { room556.btnclick("reset"); }, 1500);
+                tEnemy.enemyEnergy(-1 * (name === "punch" ? g.fight.me.pPower : g.fight.me.kPower), null, xi);
+                g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
             }
-            else {
-                if (nextMove === "bp" || nextMove === "bk") {
-                    tEnemy.drawAction("pow");
-                    tEnemy.drawEnemy(g.internal.enemy, "block");
+
+            break;
+        case "steal":
+            xi = g.fight.enemyRotation;
+            tEnemy.drawAction("nick");
+            tEnemy.drawSingleEnemy(xi, "steal");
+            tEnemy.drawMe("clear");
+            tEnemy.myEnergy(null, 5);
+            tEnemy.enemyEnergy(0, 15, xi);
+            g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            break;
+        case "teaseass":
+        case "teasecock":
+        case "teasedance":
+        case "stripskirt":
+        case "strippanties":
+        case "stripshirt":
+        case "noop":
+            xi = g.fight.enemyRotation;
+            var tc = cl.wearing();
+            if (name === "stripshirt") {
+                if (!tc.top) {
+                    name = "stripskirt";
                 }
-                g.roomTimeout = setTimeout(function () {
-                    tEnemy.drawAction("pow");
-                    tEnemy.drawEnemy(g.internal.enemy, "recoil");
-                    tEnemy.drawMe(name);
-                    g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
-                    if (g.internal.enemy.energy < 1)
-                        g.roomTimeout = setTimeout(function () { room556.btnclick("enemyLose"); }, 1500);
+                else {
+                    cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+                    tEnemy.drawButtons();
+                    tEnemy.enemyEnergyAll(null, 10, xi);
+                    tEnemy.enemyEnergy(null, 20, xi);
+                    tEnemy.myEnergy(0, 10);
+                }
+            }
+            if (name === "stripskirt") {
+                if (!tc.bottom) {
+                    if (tc.top) {
+                        cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+                        tEnemy.drawButtons();
+                        tEnemy.enemyEnergyAll(null, 10, xi);
+                        tEnemy.enemyEnergy(null, 20, xi);
+                        tEnemy.myEnergy(0, 10);
+                    }
                     else
-                        g.roomTimeout = setTimeout(function () { room556.btnclick(nextMove === "p" ? "reactionPunch" : "reactionKick"); }, 1500);
-                });
-            }
-            g.internal.me.prev2 = g.internal.me.prev1;
-            g.internal.me.prev1 = name;
-            */
-            break;
-        case "blockPunch":
-        case "blockKick":
-            if (g.pass === 2) {
-                if (name === "blockKick")
-                    chat(9, 556);
+                        name = "strippanties";
+                }
                 else {
-                    tEnemy.drawAction("block");
-                    tEnemy.drawEnemy(g.internal.enemy, "punch");
-                    tEnemy.drawMe(name);
-                    g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawAction("pow");
-                        tEnemy.drawEnemy(g.internal.enemy, "recoil");
-                        tEnemy.drawMe("punch");
-                        g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
-                        g.roomTimeout = setTimeout(function () { room556.btnclick("reset"); chat(11, 556); }, 1500);
-                    }, 1500);
+                    cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+                    tEnemy.drawButtons();
+                    tEnemy.enemyEnergyAll(null, 10, xi);
+                    tEnemy.enemyEnergy(null, 20, xi);
+                    tEnemy.myEnergy(0, 10);
                 }
             }
-            else {
+
+            if (name === "strippanties") {
+                if (!tc.underwear) {
+                    name = "noop";
+                }
+                else {
+                    cl.c.panties = cl.c.bra = null;
+                    tEnemy.drawButtons();
+                    tEnemy.enemyEnergyAll(null, 15, xi);
+                    tEnemy.enemyEnergy(null, 30, xi);
+                    tEnemy.myEnergy(0, 15);
+                }
+            }
+            else if (name !== "noop") {
+                tEnemy.enemyEnergyAll(null, 20, xi);
+                tEnemy.enemyEnergy(null, 40, xi);
+                tEnemy.myEnergy(0, 20);
+            }
+            if (name !== "noop") {
+                tEnemy.drawSingleEnemy(xi, "pose");
+                tEnemy.chibi(name);
+            }
+            g.roomTimeout = setTimeout(function () { room556.btnclick("checkwin"); }, g.fight.fighttimer);
+            break;
+
+        case "e_acia":
+        case "e_soda":
+        case "e_cumjar":
+            switch (name) {
+                case "e_acia":
+                    tEnemy.myEnergy(15, null);
+                    g.internal = "Gained 15 energy";
+                    chat(8, 556);
+                    break;
+                case "e_soda":
+                    tEnemy.myEnergy(50, null);
+                    g.internal = "Gained 50 energy";
+                    chat(8, 556);
+                    break;
+                case "e_cumjar":
+                    tEnemy.myEnergy(100, null);
+                    g.internal = "Gained 100 energy";
+                    chat(8, 556);
+                    break;
+            }
+            tEnemy.drawEnemyAction("e_startover");
+            break;
+
+        case "e_submitbj":
+        case "e_submitass":
+            tEnemy.drawEnemyAction("clear");
+            //g.fight.me.energy = tEnemy.myEnergy(g.fight.me, 20);
+            g.fight.e[0].eventType = (name === "e_submitbj" ? "submitBJ" : "submitAss");
+
+            nav.killall();
+            var thisEntry = enemyEnd.end(g.fight.e[0]);
+            g.fight.e[0].eventStep = thisEntry.eventStep;
+            g.fight.chat.text = thisEntry.chat;
+            g.fight.chat.btn1 = thisEntry.r;
+            g.fight.chat.btn2 = null;
+            if (thisEntry.type === "c") {
                 chat(1, 556);
             }
-            /*
-            tEnemy.drawButtons("clear", 556, g.internal.enemy);
-
-            var nextMovex = tEnemy.blindNextMove(g.internal.enemy, g.internal.me);
-
-            if (nextMovex === "p" && name === "blockPunch" || nextMovex === "k" && name === "blockKick") {
-                console.log("block");
-                tEnemy.drawEnemy(g.internal.enemy, nextMovex === "p" ? "punch" : "kick");
-                tEnemy.drawAction("block");
-                tEnemy.drawMe(name);
-                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, nextMovex === "p" ? Math.round(g.internal.enemy.pPower * .2) : Math.round(g.internal.enemy.kPower * .2));
-                if (Math.floor(Math.random() * 3) === 0) {
-                    g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawAction("epow");
-                        tEnemy.drawEnemy(g.internal.enemy, "recoil");
-                        tEnemy.drawMe("punch");
-                        g.internal.enemy.energy = tEnemy.enemyEnergy(g.internal.enemy, g.internal.me.pPower);
-                        if (g.internal.enemy.energy < 1)
-                            g.roomTimeout = setTimeout(function () { room556.btnclick("enemyLose"); }, 1500);
-                        else
-                            g.roomTimeout = setTimeout(function () { room556.btnclick("reset") }, 1500);
-                    }, 1500);
-                }
-                else {
-                    g.roomTimeout = setTimeout(function () { room556.btnclick("reset") }, 1500);
-                }
-            }
-            else if (nextMovex === "p" || nextMovex === "k") {
-                console.log("strike");
-                tEnemy.drawAction("epow");
-                tEnemy.drawEnemy(g.internal.enemy, nextMovex === "p" ? "punch" : "kick");
-                tEnemy.drawMe("blockmiss");
-                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, nextMovex === "p" ? g.internal.enemy.pPower : g.internal.enemy.kPower);
-                g.roomTimeout = setTimeout(function () { room556.btnclick("reset") }, 1500);
-            }
-            else {
-                console.log("both block");
-                tEnemy.drawEnemy(g.internal.enemy, "block");
-                tEnemy.myEnergy(g.internal.me, 0);
-                tEnemy.enemyEnergy(g.internal.enemy, 0);
-                tEnemy.drawMe("blockmiss");
-                g.roomTimeout = setTimeout(function () { room556.btnclick("reset") }, 1500);
-            }
-            g.internal.me.prev2 = g.internal.me.prev1;
-            g.internal.me.prev1 = name[0];
-            */
+            else if (thisEntry.type === "cp") {
+                g.roomTimeout = setTimeout(function () { chat(1, 556); }, g.fight.fighttimer);
+            };
             break;
-        case "inventory":
-            chat(1, 556);
-            break;
-        case "inventoryKill":
-            inv.close();
-            tEnemy.drawButtons("init", 556, g.internal.enemy);
-            break;
-        case "pantiesRemove":
-        case "shirtRemove":
-        case "skirtRemove":
-        case "teaseDance":
-        case "teaseAss":
-        case "teaseCock":
-            console.log("h")
-            chat(17, 556);
-            break;
-        case "submitBJ":
-        case "submitAss":
-            chat(17, 56);
-            break;
-        case "flee":
-            chat(16, 556);
-            break;
-        case "reactionPunch":
-        case "reactionKick":
-            if (g.internal.enemy.energy < 1) {
-                g.roomTimeout = setTimeout(function () { room556.btnclick("enemyLose"); }, 1500);
-            }
-            else {
-                tEnemy.drawAction("epow");
-                tEnemy.drawEnemy(g.internal.enemy, name === "reactionPunch" ? "punch" : "kick");
-                tEnemy.drawMe("clear");
-                g.internal.me.energy = tEnemy.myEnergy(g.internal.me, name === "reactionPunch" ? g.internal.enemy.pPower : g.internal.enemy.kPower);
-                g.roomTimeout = setTimeout(function () { room556.btnclick("reset"); }, 1500);
-            }
-            break;
-        case "enemyLose":
-            tEnemy.drawEnemy(g.internal.enemy, "defeat");
-            tEnemy.drawMe("clear");
-
-            if (g.internal.me.punchCount > g.internal.me.kickCount)
-                g.mod("body", 10);
-            else if (g.internal.me.punchCount < g.internal.me.kickCount)
-                g.mod("leg", 10);
-            else
-                g.mod("fitness", 10);
-            if (g.internal.enemy.undress === 0)
-                chat(0, 556);
-            else
-                chat(3, 556);
-            break;
-        case "stripReaction":
-            g.internal.enemy.horny += 5;
-            if (g.internal.enemy.horny < 50)
-                room556.btnclick("reaction");
-            else
-                room556.btnclick("reset");
-            break;
-        case "reset":
-            tEnemy.drawButtons("init", 556, g.internal.enemy);
-            tEnemy.drawAction("clear");
-            tEnemy.drawEnemy(g.internal.enemy, "pose");
-            tEnemy.drawMe("clear");
+        case "lost":
+            chat(4, 556);
             break;
     };
 };
 
 room556.chatcatch = function (callback) {
+    var i;
+
     switch (callback) {
-        case "reset":
-            room556.btnclick("reset");
+        case "money":
+            var thisMoney = 0;
+            for (i = 0; i < g.fight.e.length; i++)
+                thisMoney += g.fight.e[i].money;
+            g.internal = thisMoney;
+            room556.chatcatch("returnRoom");
             break;
-        case "reset2":
-            room556.btnclick("reset");
-            tEnemy.drawButtons("clear", 556, g.internal.enemy);
-            setTimeout(function () { if (g.internal.me.energy > 60) chat(5, 556); else chat(6, 556); }, 2000);
+        case "service":
+            g.fight.e[0].eventType = "win";
+            nav.killall();
+            var thisEntry = enemyEnd.end(g.fight.e[0]);
+            g.fight.e[0].eventStep = thisEntry.eventStep;
+            g.fight.chat.text = thisEntry.chat;
+            g.fight.chat.btn1 = thisEntry.r;
+            g.fight.chat.btn2 = null;
+            if (thisEntry.type === "c") {
+                chat(1, 556);
+            }
+            else if (thisEntry.type === "cp") {
+                g.roomTimeout = setTimeout(function () { chat(1, 556); }, g.fight.fighttimer);
+            };
             break;
-        case "reset2a":
-            room556.btnclick("reset");
-            break;
-        case "sewer":
-            inv.add("sewer");
-            nav.button({
-                "type": "img",
-                "name": "me",
-                "left": 751,
-                "top": 263,
-                "width": 531,
-                "height": 473,
-                "image": "227_fight/sewer.png"
-            }, 556);
-            break;
-        case "leave":
-            g.internal.me.punchCount = 10;
-            g.internal.me.kickCount = 0;
-            g.internal.me.sissyAction = 0;
-            g.internal.me.goodBlockCount = 5;
-            g.internal.me.energy -= 15;
-            tEnemy.updatePlayerStats(g.internal.me, 0, true);
-            g.setflag("gworkout");
-            cl.undo();
-            $("#room-inv").show();
-            char.room(551);
-            break;
-        case "sewerNext":
-            if (inv.has("sewer")) {
-                chat(18, 556);
+        case "enemyEnd":
+            if (g.fight.e[0].eventStep === 0) {
+                chat(2, 556);
             }
             else {
-                chat(13, 556);
+                var thisEntrye = enemyEnd.end(g.fight.e[0]);
+                g.fight.e[0].eventStep = thisEntrye.eventStep;
+                g.fight.chat.text = thisEntrye.chat;
+                g.fight.chat.btn1 = thisEntrye.r;
+                g.fight.chat.btn2 = null;
+                if (thisEntrye.type === "c") {
+                    chat(1, 556);
+                }
+                else if (thisEntrye.type === "cp") {
+                    g.roomTimeout = setTimeout(function () { chat(1, 556); }, 2000);
+                };
             }
+            break;
+        case "showSubmit":
+            tEnemy.drawEnemyAction("e_submit");
+            break;
+        //case "strip":
+        //    g.fight.enemy.energy = Math.floor(g.fight.enemy.maxEnergy / 3);
+        //    g.fight.enemy.undress--;
+        //    tEnemy.drawRoom(g.fight.enemy, g.fight.me, 556);
+        //    break;
+        case "goodEnd":
+            g.internal = 0;
+            room556.chatcatch("returnRoom");
+            break;
+        case "leaveSewer":
+            g.internal = 0;
+            room556.chatcatch("returnRoom");
+            break;
+        case "runaway":
+            g.internal = -999;
+            room556.chatcatch("returnRoom");
+            break;
+        case "sparEnd":
+            var returnRoomse = g.fight.returnRoomID;
+            g.pass = "win";
+            $("#room-inv").show();
+            g.internal = 0;
+            g.fight = null;
+            char.room(returnRoomse);
+            break;
+        case "returnRoom":
+            var returnRoom = g.fight.returnRoomID;
+            var money = g.internal;
+            if (money === -999) {
+                tEnemy.updatePlayerStats(0);
+                tEnemy.myEnergy(-15, null);
+                g.popUpNotice("You lost 15 energy");
+                g.pass = "runaway";
+            }
+            else {
+                tEnemy.updatePlayerStats(money);
+                g.pass = "win";
+            }
+            $("#room-inv").show();
+            g.internal = 0;
+            g.fight = null;
+            char.room(returnRoom);
+            break;
+        case "spar1":
+        case "spar2":
+        case "spar3":
+        case "spar4":
+        case "spar5":
+        case "spar6":
+        case "spar7":
+            nav.killbutton('spar');
+            nav.button({
+                "type": "zimg",
+                "name": "spar",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "556_spar/" + callback + ".jpg"
+            }, 556);
+            break;
+        case "sparx":
+            nav.killbutton('spar');
+            tEnemy.drawEnemyAction("init");
+            g.internal = 0;
+            break;
+        case "checkcrowbar":
+            if (inv.has("sewer")) {
+                chat(532, 556);
+            }
+            else {
+                inv.add("sewer");
+                nav.button({
+                    "type": "zimg",
+                    "name": "spar",
+                    "left": 695,
+                    "top": 305,
+                    "width": 531,
+                    "height": 473,
+                    "image": "556_spar/sewer.png"
+                }, 556);
+                chat(533, 556);
+            }
+
             break;
         default:
             break;
@@ -281,180 +580,327 @@ room556.chatcatch = function (callback) {
 };
 
 room556.chat = function (chatID) {
-    var cArray = [
-        {
+    if (chatID === 0) { //win
+        return {
+            chatID: 0,
+            speaker: g.fight.e[0].name,
+            text: g.fight.e[0].loss,
+            button: [
+                { chatID: -1, text: "Your Money", callback: "money" },
+                { chatID: -1, text: "You", callback: "service" }
+            ]
+        };
+    }
+    else if (chatID === 1) {
+        return {
+            chatID: 0,
+            speaker: g.fight.e[0].name,
+            text: g.fight.chat.text,
+            button: [
+                { chatID: -1, text: g.fight.chat.btn1, callback: "enemyEnd" },
+            ]
+        };
+    }
+    else if (chatID === 2) {
+        return {
+            chatID: 0,
+            speaker: "me",
+            text: "[Continue Journey]",
+            button: [
+                { chatID: -1, text: "...", callback: "goodEnd" },
+            ]
+        };
+    }
+    else if (chatID === 3) { //me horny
+        return {
+            chatID: 0,
+            speaker: g.fight.enemy.name,
+            text: "I'm so horny I can't help it! My stupid sissy brain just needs to to be fucked! Please fuck me!",
+            button: [
+                { chatID: -1, text: "[Give into your lust]", callback: "showSubmit" }
+            ]
+        };
+    }
+    else if (chatID === 4) { //Me energy low
+        return {
+            chatID: 0,
+            speaker: g.fight.e[0].name,
+            text: g.fight.e[0].win,
+            button: [
+                { chatID: -1, text: "[You've lost the fight. You're energy is too low]", callback: "leaveSewer" },
+            ]
+        };
+    }
+    else if (chatID === 5) { //me flee
+        return {
+            chatID: 0,
+            speaker: g.fight.e[0].name,
+            text: "Turn tail and run, I prefer watching your butt as you flee.",
+            button: [
+                { chatID: -1, text: "[Run away]", callback: "runaway" },
+            ]
+        };
+    }
+    else if (chatID === 6) { //thme horny
+        return {
+            chatID: 0,
+            speaker: "me",
+            text: "I'm too embarrassed to do that in public!! I need to work on my sissy brain and get some more moves when I sleep.",
+            button: [
+                { chatID: -1, text: "[Get more moves at night]", callback: "" },
+            ]
+        };
+    }
+    else if (chatID === 7) { //win strip clothing 
+        return {
+            chatID: 0,
+            speaker: g.fight.e[g.fight.enemyRotation].name,
+            text: g.internal,
+            button: [
+                { chatID: -1, text: "[Close]", callback: "" },
+            ]
+        };
+    }
+    else if (chatID === 8) { //win strip clothing 
+        return {
+            chatID: 0,
+            speaker: "me",
+            text: g.internal,
+            button: [
+                { chatID: -1, text: "[Close]", callback: "" },
+            ]
+        };
+    }
+    else if (chatID === 9 || chatID === 10) { //win strip clothing 
+        if (chatID === 9)
+            return {
+                chatID: 0,
+                speaker: "me",
+                text: "I'm so horny I can't help it! My stupid sissy brain just needs to to be fucked! Please fuck me!",
+                button: [
+                    { chatID: -1, text: "[Give into your lust]", callback: "showSubmit" }
+                ]
+            };
+        else
+            return {
+                chatID: 0,
+                speaker: g.fight.e[0].name,
+                text: g.fight.e[0].submit,
+                button: [
+                    { chatID: -1, text: "[Submit to their lust]", callback: "showSubmit" }
+                ]
+            };
+    }
+    else if (chatID === 500) {
+        return {
             chatID: 0,
             speaker: "g",
-            text: "ok shrimp, I'm going to teach you how to fight. We'll start easy. Punch me. To punch me click the 'spar' button, then the " +
-                "punch button on the bottom left. ",
+            text: "Ok. I'm going to teach you how to fight. ",
             button: [
-                { chatID: -1, text: "Ok, click the spar button then the punch button. ", callback: "" }
+                { chatID: 501, text: "Ok", callback: "" },
+                { chatID: 530, text: "Skip it, I already know how to fight", callback: "" }
             ]
-        },
-        {
-            chatID: 1,
+        };
+    }
+    else if (chatID === 501) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "No, dumbass. I said punch me.",
+            text: "There's three outcomes to every fight. The first way is that you defeat your enemy, or enemies in striaght combat. " +
+            "that means you either use an inventory item, kick, or punch them into submission and drop their energy to zero.",
             button: [
-                { chatID: -1, text: "Ohhhh, punch", callback: "" }
+                { chatID: 502, text: "...", callback: "" }
             ]
-        },
-        {
-            chatID: 2,
+        };
+    }
+    else if (chatID === 502) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Good. You can follow instructions. Notice how I blocked your punch. If I successfully block your punch there's a " +
-                "chance I could get a counter attack so make sure you don't just do one move or your opponent will be able to predict " +
-                "your moves. ",
+            text: "The second way is they beat you into submission when your energy drops to zero. When you do get beat down you are of " +
+            "no use to anyone. Your tiny little defeated body will be tossed aside.",
             button: [
-                { chatID: 3, text: "ok, don't do the same move", callback: "reset" }
+                { chatID: 503, text: "...", callback: "" }
             ]
-        },
-        {
-            chatID: 3,
+        };
+    }
+    else if (chatID === 503) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Now I'm going to have you punch me again, but this time I'm going to take it, but I'm going to punch you back. Pay " +
-                "attention to the energy bars at the bottom. ",
+            text: "The last outcome... let's just say that you are a pretty little bitch and I can tell you just loved to get used. " + 
+                "If you get too horny your body just takes over and presents itself to the superior fighter. If your little bitch body " +
+                "turns on your opponent they'll make you their bitch, so if you don't want to get used keep your clothes on. ",
             button: [
-                { chatID: -1, text: "Crap.. ok", callback: "" }
+                { chatID: 504, text: "I do like to get used... ", callback: "" }
             ]
-        },
-        {
-            chatID: 4,
+        };
+    }
+    else if (chatID === 504) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Now take a look at the life bars, both yours and mine.. go ahead I'll wait... They are at the bottom.",
+            text: "The final way is when everyone is just to horny to fight. . When you encounter someone and they get so horny during the fight, they'll forget " +
+                "all about the fight and toss you down and use your poor little sissy holes. Also if you get too aroused during a fight You'll give " +
+                "up those holes of yours. ",
             button: [
-                { chatID: -1, text: "ok", callback: "reset2" }
+                { chatID: 505, text: "Ok show me how to fight. ", callback: "spar1" }
             ]
-        },
-        {
-            chatID: 5,
+        };
+    }
+    else if (chatID === 505) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "So you came to the fight with a good amount of energy. We're learning to fight, not to kill. You can fight until " +
-                "either you or your opponent runs out of energy. ",
+            text: "On the bottom you'll see your energy, your enemies energy, and how horny both of you are. The green line is the " +
+            "energy line, the pink is the horny line. You'll want to pay attention to this line. ",
             button: [
-                { chatID: 7, text: "ok", callback: "" }
+                { chatID: 506, text: "OK ", callback: "spar2" }
             ]
-        },
-        {
-            chatID: 6,
+        };
+    }
+    else if (chatID === 506) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Notice how low your energy is? When you go out for a fight you want to make sure you start the fight with as much energy " +
-                "as you can. We're learning to fight, not to kill. You can fight until either you or your opponent runs out of energy.",
+            text: "Next is your clothing display. If you are naked your enemy may have other plans for your body.  ",
             button: [
-                { chatID: 7, text: "ok", callback: "" }
+                { chatID: 507, text: "OK ", callback: "spar3" }
             ]
-        },
-        {
-            chatID: 7,
+        };
+    }
+    else if (chatID === 507) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "If you are low on energy you can go into your inventory and eat an energy snack. If you need some more snacks you can " +
-                "buy them it from Spanky. Next I'm going to teach you how to block. You can either block my punch, or block  " +
-                "my kick. ",
+            text: "You can do a quick start. If you do a quick start you'll do what ever action is tied to that fighter. Think of " +
+            "it as a repeat action. ",
             button: [
-                { chatID: 8, text: "oh, so I can block high to block a punch and block low to block a kick.", callback: "" }
+                { chatID: 508, text: "OK ", callback: "spar4" }
             ]
-        },
-        {
-            chatID: 8,
+        };
+    }
+    else if (chatID === 508) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "You're learning. If you guess right you'll block most of the damage to your energy and have a chance to counter attack. " +
-                "If you guess wrong you'll get either punched in the face or kicked in the balls. So only use the block if you notice a pattern " +
-                "in your opponent's attack. I'm going to punch you, so block my punch.",
+            text: "Since we don't want to just stand there looking sexy, we're going to begin the fight. ",
             button: [
-                { chatID: -1, text: "Ok, I'm going to block your punch.", callback: "reset2a" }
+                { chatID: 509, text: "OK ", callback: "spar5" }
             ]
-        },
-        {
-            chatID: 9,
+        };
+    }
+    else if (chatID === 509) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Almost. You're setup to block my kick, not my punch. Try again.",
+            text: "You'll have to pick between a dominate or submissive action. I'm going to pretend you're not a little bitch " +
+            "and you'll choose to be dominate. ",
             button: [
-                { chatID: -1, text: "Ok, Block your punch", callback: "" }
+                { chatID: 510, text: "OK ", callback: "spar6" }
             ]
-        },
-        {
-            chatID: 10,
+        };
+    }
+    else if (chatID === 510) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "You make a better bimbo than a fighter. You need to think when you fight. Try again, but block my punch this time. ",
+            text: "You're going to try and punch me. You can alos choose to block. If you block my punch or kick there's a chance you'll " +
+            "get a counter attack in.",
             button: [
-                { chatID: -1, text: "Ok, Block your punch", callback: "" }
+                { chatID: 511, text: "OK ", callback: "spar7" }
             ]
-        },
-        {
-            chatID: 11,
+        };
+    }
+    else if (chatID === 511) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Nice punch. If you can block an opponents punch or kick there's a chance you get to do a counter attack. " +
-                "You have the basics for fighting now. Don't worry if you lose a few fights, in time you'll get better. ",
+            text: "Once you choose your action it will appear next to my name. ",
             button: [
-                { chatID: 12, text: "How do I get better?", callback: "" }
+                { chatID: 512, text: "OK ", callback: "sparx" }
             ]
-        },
-        {
-            chatID: 12,
+        };
+    }
+    else if (chatID === 512) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "The best way is to keep training. If you want to punch better do upper body workouts like pushups. To kick better work " +
-                "on that ass with exercises like squats. With enough workouts you'll slowly get better and punch or kick harder. ",
+            text: "OK. now try to punch me.",
             button: [
-                { chatID: -1, text: "What if I can't win a fight?", callback: "sewerNext" }
+                { chatID: -1, text: "Ok, I'll punch you. ", callback: "" }
             ]
-        },
-        {
-            chatID: 13,
+        };
+    }
+    else if (chatID === 520) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Welllll I guess you could fuck the energy out of them. You could strip down and shake that ass of yours. It's not " +
-                "very honorable, volunteering to be someone's bitch.",
+            text: "That's a good punch. You'll notice my energy has gone down a bit. Each person you come accross will have different " +
+            "energy levels. Next I'm going to punch you. You'll block my punch. ",
             button: [
-                { chatID: 14, text: "So I could just fuck my way through my problems?", callback: "" }
+                { chatID: -1, text: "Oh, I'm going to block your punch", callback: "" }
             ]
-        },
-        {
-            chatID: 14,
+        };
+    }
+    else if (chatID === 530) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "You could just be a slut and fuck you way out of your problems, but you'll find that taking cock and eating pussy takes " +
-                "a lot more energy and should only be used when you have to. ",
+            text: "When ever you successfully block a punch you have a chance to do a counter attack. Some people will mix up their " +
+            "attacks, but others will mostly do the same attack, either a kick or a punch. ",
             button: [
-                { chatID: 15, text: "Will you show me how to fuck my way out of a fight?", callback: "sewer" }
+                { chatID: 531, text: "...", callback: "" }
             ]
-        },
-        {
-            chatID: 15,
+        };
+    }
+    else if (chatID === 531) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "Sigh... no. I only teach you how to win! I'm not going to teach you how to be a fuck toy. I'm sure you'll figure that " +
-                "out on your own. You're welcome to come back and spar. Oh also " + sc.n("missy") + " told me to give you " +
-                "this. It's a crowbar so you can open the manhole cover in the alley near the dance club. Make yourself proud " +
-            "and fight your way through.",
+            text: "If you get low on energy don't be afraid to use items from your inventory. If you want to do more submissive actions " +
+            "you'll have to work on your sissy mind. ",
             button: [
-                { chatID: -1, text: "ok, thanks!", callback: "leave" }
+                { chatID: -1, text: "...", callback: "checkcrowbar" }
             ]
-        },
-        {
-            chatID: 16,
+        };
+    }
+    else if (chatID === 532) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "You can't run away from your training. Now do as I tell you shrimp.",
+            text: "Feel free to challenge me if you want to fight. I'm going to beat your ass like a red-headed step child.",
             button: [
-                { chatID: -1, text: "ok", callback: "" }
+                { chatID: -1, text: "ok, you're on!", callback: "sparEnd" }
             ]
-        },
-        {
-            chatID: 17,
+        };
+    }
+    else if (chatID === 533) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "You need to focus on your training. You won't be able to suck cock out of every situation. Now do as I tell you slut.",
+            text: "Oh, " + sc.n("missy") + " told me to give you this. You can use it to get into the sewer next to the club" ,
             button: [
-                { chatID: -1, text: "ok", callback: "" }
+                { chatID: -1, text: "Oh, ok", callback: "sparEnd" }
             ]
-        },
-        {
-            chatID: 18,
+        };
+    }
+    else if (chatID === 550) {
+        return {
+            chatID: 0,
             speaker: "g",
-            text: "By now you've figured you can eat a pussy or take a cock. If you need energy you can always purchase some energy snacks to " +
-            "raise your energy. ",
+            text: "That's not what I said to do",
             button: [
-                { chatID: -1, text: "ok", callback: "leave" }
+                { chatID: -1, text: "Oh, I'm such an airhead", callback: "" }
             ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+        };
+    }
+    return {
+        chatID: 0,
+        speaker: "me",
+        text: "INVALID CHAT NUMBER: " + chatID,
+        button: [
+            { chatID: -1, text: "INVALID", callback: "invalid" },
+        ]
+    };
 };

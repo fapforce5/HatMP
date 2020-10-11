@@ -132,6 +132,8 @@ room551.btnclick = function (name) {
                     chat(32, 551);
                 else if (sc.getstep("g") === 1)
                     chat(14, 551);
+                else if (sc.getstep("missy") > 26)
+                    chat(42, 551);
                 else
                     chat(33, 551);
             }
@@ -376,6 +378,20 @@ room551.chatcatch = function (callback) {
             break;
         case "setBackGym":
             sc.setstep("g", -1);
+            break;
+        case "checkSpar":
+            if (inv.has("sewer"))
+                chat(44, 551);
+            else
+                chat(43, 551); 
+
+            break;
+        case "sparTrain":
+            char.room(556);
+            break;
+        case "spar":
+            g.pass = { enemy0: "g", enemy1: null, enemy2: null, bg: "gym", roomID: 551 };
+            char.room(227);
             break;
         default:
             break;
@@ -725,7 +741,38 @@ room551.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Oh, ok", callback: "killDoor" }
             ]
-        }
+        },
+        {
+            chatID: 42,
+            speaker: "g",
+            text: "You want to work that sissy body of yours? Do you want to spar, or workout?",
+            button: [
+                { chatID: -1, text: "Spar", callback: "checkSpar" },
+                { chatID: 34, text: "Sit-ups", callback: "eSit" },
+                { chatID: 34, text: "Push-ups", callback: "ePush" },
+                { chatID: 34, text: "Squats", callback: "eSquat" },
+                { chatID: -1, text: "Never mind", callback: "" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "g",
+            text: "I'm going to make you squeel like the bitch you are.",
+            button: [
+                { chatID: -1, text: "Training", callback: "sparTrain" },
+                { chatID: -1, text: "Never mind", callback: "" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "g",
+            text: "I'm going to make you squeel like the bitch you are.",
+            button: [
+                { chatID: -1, text: "Training", callback: "sparTrain" },
+                { chatID: -1, text: "Spar", callback: "spar" },
+                { chatID: -1, text: "Never mind", callback: "" },
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

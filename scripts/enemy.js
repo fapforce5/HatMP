@@ -78,19 +78,21 @@ tEnemy.initEnemy = function (enemyName) {
                 money: 20 + Math.floor(Math.random() * 20),
                 cock: false,
                 nextMove: "",
-                undress: 0,
+                undress: 2,
                 eventStep: 9999,
                 eventType: "",
                 p: "pose",
                 myaction: "noop",
                 prev1: null,
                 prev2: null,
-                pose: { i0: "227_fight/g_pose.png", i1: null, i2: null, w: 716, h: 1080 },
-                punch: { i0: "227_fight/g_punch.png", i1: null, i2: null, w: 894, h: 1080 },
-                kick: { i0: "227_fight/g_kick.png", i1: null, i2: null, w: 1172, h: 1080 },
-                block: { i0: "227_fight/g_block.png", i1: null, i2: null, w: 680, h: 1080 },
-                recoil: { i0: "227_fight/g_recoil.png", i1: null, i2: null, w: 1212, h: 1080 },
-                defeat: { i0: "227_fight/g_recoil.png", i1: null, i2: null, w: 864, h: 1080 },
+                pose: { i0: "227_fight/g_pose0.png", i1: "227_fight/g_pose1.png", i2: "227_fight/g_pose2.png", w: 716, h: 1080 },
+                punch: { i0: "227_fight/g_punch0.png", i1: "227_fight/g_punch1.png", i2: "227_fight/g_punch2.png", w: 909, h: 1080 },
+                kick: { i0: "227_fight/g_kick0.png", i1: "227_fight/g_kick1.png", i2: "227_fight/g_kick2.png", w: 1272, h: 1080 },
+                block: { i0: "227_fight/g_block0.png", i1: "227_fight/g_block1.png", i2: "227_fight/g_block2.png", w: 551, h: 1080 },
+                recoil: { i0: "227_fight/g_recoil0.png", i1: "227_fight/g_recoil1.png", i2: "227_fight/g_recoil2.png", w: 1260, h: 1080 },
+                defeat: { i0: "227_fight/g_defeat.png", i1: "227_fight/g_defeat.png", i2: "227_fight/g_defeat.png", w: 874, h: 1080 },
+                strip1: { i0: "227_fight/g_strip1.png", w: 653, h: 1080 },
+                strip2: { i0: "227_fight/g_strip2.png", w: 722, h: 1080 },
                 avatar: "227_fight/g_avatar.png",
                 loss: "Damn I've been bested!",
                 win: "You need to work out more and stop being such a loser.",
@@ -227,7 +229,7 @@ tEnemy.initEnemy = function (enemyName) {
 tEnemy.drawBackground = function (bg) {
     switch (bg) {
         case "gym":
-            nav.bg("555_backgym/gym.jpg");
+            nav.bg("555_backgym/ring.jpg");
             break;
         case "sewer":
             nav.bg("227_fight/sewer.jpg");
@@ -1032,6 +1034,7 @@ tEnemy.drawMe = function (pose) {
                 "image": "227_fight/mKick.png"
             }, 9999);
             break;
+        case "block":
         case "blockPunch":
         case "blockKick":
             nav.button({

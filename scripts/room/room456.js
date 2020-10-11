@@ -104,12 +104,6 @@ room456.chatcatch = function (callback) {
             nav.bg("456_bench/sleepdark.jpg", "456_bench/sleepdark.jpg");
             break;
         case "morning":
-            //if (sc.getstep("me") === 6) {
-            //    nav.bg("456_bench/456_tif.jpg", "456_bench/456_tif.jpg");
-            //    char.newday();
-            //    chat(13, 456);
-            //}
-            //else {
             char.newdayfake();
             nav.bg("456_bench/456_bg.jpg", "456_bench/456_bg_night.jpg");
             chat(32, 456);
