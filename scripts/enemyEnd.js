@@ -17,15 +17,69 @@ enemyEnd.end = function (eArray) {
 enemyEnd.g = function (eArray) {
 	var step = eArray.eventStep - 1;
 	if (eArray.eventType === "submitAss") {
-
+		if (eArray.eventStep === 9999) {
+			//
+        }
 	}
 	else if (eArray.eventType === "submitBJ") {
+		if (eArray.eventStep === 9999) {
+			nav.button({
+				"type": "img",
+				"name": "char",
+				"left": 740,
+				"top": 0,
+				"width": 751,
+				"height": 1080,
+				"image": "227_fight/g_bj_back0.png"
+			}, 9999);
+			zcl.kneel(0, 400, 1, "open");
+			nav.button({
+				"type": "img",
+				"name": "char",
+				"left": 740,
+				"top": 196,
+				"width": 384,
+				"height": 884,
+				"image": "227_fight/g_bj_front0.png"
+			}, 9999);
+			retVar = { eventStep: 2, type: "c", chat: "I love a soft slutty tonge on my clit ", r: "hmmmm", p: null };
+		}
+		else if (eArray.eventStep === 2) {
 
+			nav.button({
+				"type": "img",
+				"name": "char",
+				"left": 69,
+				"top": 143,
+				"width": 843,
+				"height": 843,
+				"image": "227_fight/g_bj_1.png"
+			}, 9999);
+			retVar = { eventStep: 1, type: "c", chat: "mmmm eat that pussy bitch", r: "nom nom nom nom", p: null };
+		}
+		else if (eArray.eventStep === 1) {
+
+			nav.button({
+				"type": "img",
+				"name": "char",
+				"left": 69,
+				"top": 143,
+				"width": 843,
+				"height": 843,
+				"image": "227_fight/g_bj_2.png"
+			}, 9999);
+			retVar = { eventStep: 0, type: "c", chat: "Oooooo fuck you're a great little pussy eater.", r: "...", p: null };
+		}
+	}
+	else if (eArray.eventType === "win") {
+		if (eArray.eventStep === 9999) {
+			//
+		}
 	}
 	else {
 		console.log("enemyEnd invalid eventType: " + eArray.eventType);
 	}
-	return step;
+	return retVar;
 };
 
 enemyEnd.futaRed = function (eArray) {

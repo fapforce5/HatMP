@@ -262,38 +262,41 @@ char.addtime = function (minutes) {
 };
 
 char.map = function () {
-    var proom, top, left;
-    $('#room_left_map').html('<img src="./images/general/map0.jpg" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(169, 300, 100, 0) + '" />');
-    $('#room_left_map').append('<img src="./images/general/map1.jpg" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(169, 300, 269, 0) + '" />');
-    $('#room_left_map').append('<img src="./images/general/map2.jpg" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(169, 300, 438, 0) + '" />');
-    proom = null;
-    if (g.prevRoom !== null) {
-        if (g.roomID === 0 || g.roomID === 8) {
-            $.each(g.rooms, function (i, v) {
-                if (v.roomID === g.prevRoom) {
-                    proom = v.houseID;
-                    return;
-                }
-            });
-        }
-        else {
-            $.each(g.rooms, function (i, v) {
-                if (v.roomID === g.roomID) {
-                    proom = v.houseID;
-                    return;
-                }
-            });
-        }
-    }
-    if (proom !== null) {
-        $.each(g.roomMap, function (i, v) {
-            if (v.roomID === proom) {
-                top = 100 + (v.map * 169) + ((v.top + (v.height / 2)) * .1564);
-                left = ((v.left + (v.width / 2)) * .1564);
-                $('#room_left_map').append('<img src="./images/general/spot.gif" class="width-l resize" id="rl_map" style="position:absolute; ' + g.makeCss(20, 20, top, left) + '" />');
-                return;
+    var exRoom = [226, 227];
+    if (!(exRoom.includes(g.roomID))) {
+        var proom, top, left;
+        $('#room_left_map').html('<img src="./images/general/map0.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 100, 0) + '" />');
+        $('#room_left_map').append('<img src="./images/general/map1.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 269, 0) + '" />');
+        $('#room_left_map').append('<img src="./images/general/map2.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 438, 0) + '" />');
+        proom = null;
+        if (g.prevRoom !== null) {
+            if (g.roomID === 0 || g.roomID === 8) {
+                $.each(g.rooms, function (i, v) {
+                    if (v.roomID === g.prevRoom) {
+                        proom = v.houseID;
+                        return;
+                    }
+                });
             }
-        });
+            else {
+                $.each(g.rooms, function (i, v) {
+                    if (v.roomID === g.roomID) {
+                        proom = v.houseID;
+                        return;
+                    }
+                });
+            }
+        }
+        if (proom !== null) {
+            $.each(g.roomMap, function (i, v) {
+                if (v.roomID === proom) {
+                    top = 100 + (v.map * 169) + ((v.top + (v.height / 2)) * .1564);
+                    left = ((v.left + (v.width / 2)) * .1564);
+                    $('#room_left_map').append('<img src="./images/general/spot.gif" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(20, 20, top, left) + '" />');
+                    return;
+                }
+            });
+        }
     }
 };
 

@@ -2,7 +2,7 @@
 var room228 = {};
 room228.main = function () {
     var navList = [0];
-    $("#room_left_map").html('<img src="./images/general/map_ov.png" class="width-l" id="rl_map" style="width:100%" />');
+    char.map();
     char.changeMenu("body");
     g.pass = "";
     g.set("sewerID", 0);

@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//boy's changing room
 var room552 = {};
 room552.main = function () {
     if (cl.hasoutfit("public") === null) {

@@ -3,7 +3,7 @@ var room226 = {};
 var tree = new Array();
 room226.main = function () {
     if (g.map === null) {
-        $("#rl_map").attr("src", "./images/general/map_266.jpg");
+        $("#room_left_map").attr("src", "./images/general/map_266.jpg");
         g.map = {
             id: 0,
             l: [
@@ -470,6 +470,7 @@ room226.btnclick = function (name) {
             th = 0; 
             tw = 0;
             $(".rlm-icon").remove();
+            $(".killmap").remove();
             for (i = 0; i < g.map.l.length; i++) {
                 for (j = 0; j < iconList.length; j++) {
                     if ((iconList[j].name === g.map.l[i].t) && g.map.l[i].v) {
@@ -605,7 +606,7 @@ room226.btnclick = function (name) {
             break;
         case "back":
             if (g.map.id === 0) {
-                $("#room_left_map").html('<img src="./images/general/map_ov.png" class="width-l" id="rl_map" style="width:100%" />');
+                char.map();
                 char.room(228);
             }
             else {

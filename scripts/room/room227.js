@@ -203,6 +203,7 @@ room227.btnclick = function (name) {
                         if (thisClothing.top || thisClothing.bottom) {
                             tEnemy.drawSingleEnemy(xi, "pose");
                             cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+                            cl.display();
                             if (thisClothing.underwear)
                                 tEnemy.chibi("strip1");
                             else
@@ -214,6 +215,7 @@ room227.btnclick = function (name) {
                         }
                         else if (thisClothing.underwear) {
                             cl.c.panties = cl.c.bra = null;
+                            cl.display();
                             tEnemy.drawSingleEnemy(xi, "pose");
                             tEnemy.chibi("strip0");
                             tEnemy.clothingDisplay();
@@ -297,6 +299,7 @@ room227.btnclick = function (name) {
                 }
                 else {
                     cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+                    cl.display();
                     tEnemy.drawButtons();
                     tEnemy.enemyEnergyAll(null, 10, xi);
                     tEnemy.enemyEnergy(null, 20, xi);
@@ -307,6 +310,7 @@ room227.btnclick = function (name) {
                 if (!tc.bottom) {
                     if (tc.top) {
                         cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+                        cl.display();
                         tEnemy.drawButtons();
                         tEnemy.enemyEnergyAll(null, 10, xi);
                         tEnemy.enemyEnergy(null, 20, xi);
@@ -317,6 +321,7 @@ room227.btnclick = function (name) {
                 }
                 else {
                     cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+                    cl.display();
                     tEnemy.drawButtons();
                     tEnemy.enemyEnergyAll(null, 10, xi);
                     tEnemy.enemyEnergy(null, 20, xi);
@@ -330,6 +335,7 @@ room227.btnclick = function (name) {
                 }
                 else {
                     cl.c.panties = cl.c.bra = null;
+                    cl.display();
                     tEnemy.drawButtons();
                     tEnemy.enemyEnergyAll(null, 15, xi);
                     tEnemy.enemyEnergy(null, 30, xi);
@@ -379,6 +385,7 @@ room227.btnclick = function (name) {
 
             nav.killall();
             var thisEntry = enemyEnd.end(g.fight.e[0]);
+            console.log(thisEntry);
             g.fight.e[0].eventStep = thisEntry.eventStep;
             g.fight.chat.text = thisEntry.chat;
             g.fight.chat.btn1 = thisEntry.r;

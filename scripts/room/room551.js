@@ -1,66 +1,76 @@
 ﻿//Room name
 var room551 = {};
 room551.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "bathroom",
-            "left": 1705,
-            "top": 112,
-            "width": 215,
-            "height": 392,
-            "image": "551_gymInside/bathroom.png"
-        },
-        {
-            "type": "btn",
-            "name": "exit",
-            "left": 1080,
-            "top": 160,
-            "width": 98,
-            "height": 120,
-            "image": "551_gymInside/exit.png"
-        },
-        {
-            "type": "btn",
-            "name": "emp",
-            "left": 563,
-            "top": 154,
-            "width": 65,
-            "height": 160,
-            "image": "551_gymInside/empDoor.png"
-        }
-    ];
-    if (!g.checkflag("gworkout")) {
-        if (Math.floor(Math.random() * 2) === 0) {
-            btnList.push({
-                "type": "btn",
-                "name": "squat",
-                "left": 549,
-                "top": 332,
-                "width": 809,
-                "height": 746,
-                "image": "551_gymInside/551_squat.png"
-            });
-        }
-        else {
-            btnList.push({
-                "type": "btn",
-                "name": "squat",
-                "left": 550,
-                "top": 27,
-                "width": 811,
-                "height": 1053,
-                "image": "551_gymInside/551_squat1.png"
-            });
-        }
+    if (g.pass === "runaway" || g.pass === "win" && cl.wearing().lewd) {
+        g.pass = "";
+        char.room(552);
     }
-    var navList = [0, 552, 553];
-    if (sc.checkevent("g", -1) && !g.checkflag("gworkout"))
-        navList.push(555);
-    $.each(btnList, function (i, v) {
-        nav.button(v, 551);
-    });
-    nav.buildnav(navList);
+    else {
+        if (g.pass === "runaway" || g.pass === "win") {
+            g.pass = "";
+        }
+
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "bathroom",
+                "left": 1705,
+                "top": 112,
+                "width": 215,
+                "height": 392,
+                "image": "551_gymInside/bathroom.png"
+            },
+            {
+                "type": "btn",
+                "name": "exit",
+                "left": 1080,
+                "top": 160,
+                "width": 98,
+                "height": 120,
+                "image": "551_gymInside/exit.png"
+            },
+            {
+                "type": "btn",
+                "name": "emp",
+                "left": 563,
+                "top": 154,
+                "width": 65,
+                "height": 160,
+                "image": "551_gymInside/empDoor.png"
+            }
+        ];
+        if (!g.checkflag("gworkout")) {
+            if (Math.floor(Math.random() * 2) === 0) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "squat",
+                    "left": 549,
+                    "top": 332,
+                    "width": 809,
+                    "height": 746,
+                    "image": "551_gymInside/551_squat.png"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "squat",
+                    "left": 550,
+                    "top": 27,
+                    "width": 811,
+                    "height": 1053,
+                    "image": "551_gymInside/551_squat1.png"
+                });
+            }
+        }
+        var navList = [0, 552, 553];
+        if (sc.checkevent("g", -1) && !g.checkflag("gworkout"))
+            navList.push(555);
+        $.each(btnList, function (i, v) {
+            nav.button(v, 551);
+        });
+        nav.buildnav(navList);
+    }
 };
 
 room551.btnclick = function (name) {

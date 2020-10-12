@@ -2,7 +2,7 @@
 var room225 = {};
 room225.main = function () {
     var navList = [0];
-    $("#room_left_map").html('<img src="./images/general/map_ov.png" class="width-l" id="rl_map" style="width:100%" />');
+    char.map();
 
     if (inv.has("sewer")) {
         if (cl.c.dress === null && cl.c.swimsuit === null && cl.c.pj === null && (cl.c.shirt === null || cl.c.pants === null)) {

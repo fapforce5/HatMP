@@ -1657,7 +1657,7 @@ cl.appearanceBody = function () {
 
     if (cl.c.chest === 0)
         returnVal = -1;
-    else if (cl.c.chest === 1 && cl.c.leg === 0 && cl.c.hairLength < 2 && cl.c.lips === 0 && cl.c.lipstick === null)
+    else if (cl.c.chest === 1 && cl.c.leg < 2 && cl.c.hairLength < 2 && cl.c.lips === 0 && cl.c.lipstick === null)
         returnVal = 0;
     else if (cl.c.chest > 4 && cl.c.leg > 4 && cl.c.lips === 2 && cl.c.lipstick !== null && cl.c.hairLength > 2 && smoothslut)
         returnVal = 4;
