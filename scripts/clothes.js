@@ -1677,7 +1677,7 @@ cl.appearanceBody = function () {
 cl.clean = function (type) {
     cl.c.cumface = null;
     cl.c.makeup = "n";
-    cl.c.lipsstick = null;
+    cl.c.lipstick = null;
 
     cl.display();
 };

@@ -805,7 +805,7 @@ room556.chat = function (chatID) {
         return {
             chatID: 0,
             speaker: "g",
-            text: "You're going to try and punch me. You can alos choose to block. If you block my punch or kick there's a chance you'll " +
+            text: "You're going to try and punch me. You can also choose to block. If you block my punch or kick there's a chance you'll " +
             "get a counter attack in.",
             button: [
                 { chatID: 511, text: "OK ", callback: "spar7" }

@@ -32,8 +32,12 @@ room401.main = function () {
         g.pass.swimsuit = cl.c.swimsuit;
         g.pass.pj = cl.c.pj;
         $("#room_footer").hide();
+        var changeRoomID = 400;
+        if (switchName === "bra" && sc.getstep("jada") < 2)
+            changeRoomID = 402;
         $.each(g.rooms, function (j, u) {
-            if (u.roomID === 400) {
+
+            if (u.roomID === changeRoomID) {
                 nav.button({
                     "type": "zbtn",
                     "name": "roomChange",
@@ -96,8 +100,8 @@ room401.main = function () {
             nav.bg("401_purchase/electronic.jpg", "401_purchase/electronic.jpg");
             break;
         case "bra":
-            navList = [];
-            g.pass.roomID = 400;
+            navList = [402];
+            g.pass.roomID = 402;
             g.pass.changeClothes = true;
             cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
             cl.display();
@@ -392,6 +396,8 @@ room401.btnclick = function (name) {
             cl.c.pj = g.pass.pj;
             cl.display();
             $("#room_footer").show();
+            if (g.pass.roomID === 402)
+                g.internal = "purchased";
             char.room(g.pass.roomID);
             break;
         default:

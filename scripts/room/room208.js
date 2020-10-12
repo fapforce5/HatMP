@@ -732,8 +732,9 @@ room208.chat = function (chatID) {
             text: "This challenge will test your ability to serve me in an orderly manner.Kiss each of my toes " +
                 "in an order that is pleasing to me. Don't displease me.",
             button: [
-                { chatID: -1, text: "Yes mistress", callback: "feet2" },
                 { chatID: -1, text: "I'm such an airhead, can you give me hints? [Easy]", callback: "feet2a" },
+                { chatID: -1, text: "Yes mistress", callback: "feet2" },
+                
             ]
         },
         {
@@ -904,17 +905,7 @@ room208.chat = function (chatID) {
                 { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "jerk0" },
                 { chatID: -1, text: "I don't need your help. I can do this mistress", callback: "jerk1" },
             ]
-        },
-        {
-            chatID: 34,
-            speaker: "missy",
-            text: "Since I'm a nice mistress I'm going to give you a choice, you can either show me how obedient you are by not cumming " +
-                "on your own, or you beg and I'll help you. ",
-            button: [
-                { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "" },
-                { chatID: 34, text: "I don't need your help. I can do this mistress", callback: "t4a" },
-            ]
-        },
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

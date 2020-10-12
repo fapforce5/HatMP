@@ -1,7 +1,8 @@
-﻿//Fashionable Male
+﻿//Panty Store
 var room402 = {};
 room402.main = function () {
     if (g.internal === "purchased") {
+        g.internal = "";
         nav.bg("402_mens/jada1.jpg");
         if (sc.getstep("jada") < 2) {
             chat(3, 402);
@@ -150,6 +151,7 @@ room402.chatcatch = function (callback) {
             break;
         case "plug":
             cl.add("buttplug", "s");
+            sc.setstep("jada", 2);
             char.room(400);
             break;
         default:
