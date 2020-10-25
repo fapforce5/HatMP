@@ -335,7 +335,16 @@ inv.display = function () {
                 $("#menu_displayAction").show();
                 break;
             case "h":
-                if (!g.get("tookHormonePill")) {
+                var xh = g.get("autohormone");
+
+                if (xh) {
+                    $("#menu_displayAction").attr("data-itype", "bag");
+                    $("#menu_displayAction").attr("data-type", thisItem.type);
+                    $("#menu_displayAction").attr("data-name", thisItem.name);
+                    $("#menu_displayAction").html("Stop Auto Taking Pill");
+                    $("#menu_displayAction").show();
+                }
+                else if (!g.get("tookHormonePill")) {
                     $("#menu_displayAction").attr("data-itype", "bag");
                     $("#menu_displayAction").attr("data-type", thisItem.type);
                     $("#menu_displayAction").attr("data-name", thisItem.name);
@@ -343,7 +352,11 @@ inv.display = function () {
                     $("#menu_displayAction").show();
                 }
                 else {
-                    $("#menu_displayDesc").append("<br/>I'm such an air head! I already took my pill for today.");
+                    $("#menu_displayAction").attr("data-itype", "bag");
+                    $("#menu_displayAction").attr("data-type", thisItem.type);
+                    $("#menu_displayAction").attr("data-name", thisItem.name);
+                    $("#menu_displayAction").html("Auto Take Pill");
+                    $("#menu_displayAction").show();
                 }
                 break;
             default:
@@ -592,18 +605,37 @@ inv.createElements = function () {
                     inv.close();
                     break;
                 case "h":
-                    if (!g.get("tookHormonePill")) {
+                    var xh = g.get("autohormone");
+
+                    if ($("#menu_displayAction").html() === "Take Your Pill") {
                         g.setflag("tookHormonePill");
                         var myPill = inv.getIndex("hormone");
                         g.mod("hormone", 30);
                         inv.use("hormone");
                         $("#menu_displayCost").html(inv.master[myPill].count === 0 ? "All out, better get more." : "Count: " + inv.master[myPill].count);
-                        $("#menu_displayAction").hide();
+                        //$("#menu_displayAction").hide();
+
+                        if (xh) {
+                            $("#menu_displayAction").html("Stop Auto Taking Pill");
+                        }
+                        else {
+                            $("#menu_displayAction").html("Auto Take Pill");
+                        }
+                    }
+                    else if ($("#menu_displayAction").html() === "Auto Take Pill") {
+                        g.set("autohormone", true);
+                        $("#menu_displayAction").html("Stop Auto Taking Pill");
                     }
                     else {
-                        $("#menu_displayAction").hide();
-                        $("#menu_displayDesc").append("<br/>I'm such an air head! I already took my pill for today.");
+                        g.set("autohormone", false);
+                        $("#menu_displayAction").html("Auto Take Pill");
                     }
+
+                    
+                    //else {
+                    //    $("#menu_displayAction").hide();
+                    //    $("#menu_displayDesc").append("<br/>I'm such an air head! I already took my pill for today.");
+                    //}
                     break;
             }
         }

@@ -26,6 +26,7 @@ room28.main = function () {
     }
 
     var maxE = g.get("maxenergy");
+    var thisautohormone, hix, tix;
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "fitness":
@@ -67,6 +68,7 @@ room28.main = function () {
                 g.st[i].t = Math.floor(maxE * .75);
                 break;
             case "hormone":
+                hix = i;
                 hormoneLevel = g.st[i].t;
                 if (g.st[i].t > 15)
                     g.st[i].t -= 2;
@@ -77,6 +79,30 @@ room28.main = function () {
                     g.st[i].t = false;
                 }
                 break;
+            case "autohormone":
+                thisautohormone = g.st[i].t;
+                break;
+            case "tookHormonePill":
+                tix = i;
+                break;
+        }
+    }
+
+    if (thisautohormone) {
+        var hx = inv.getIndex("hormone");
+        if (hormoneLevel < 90) {
+            if (inv.master[hx].count > 0) {
+                inv.master[hx].count--;
+                if (inv.master[hx].count < 1) {
+                    inv.master[hx].entry = false;
+                    inv.master[hx].count = 0;
+                }
+                g.st[hix].t += 30;
+                if (g.st[hix].t > 100)
+                    g.st[hix].t = 100;
+                g.st[tix].t = true;
+                g.popUpNotice("Took your hormone pill" + (inv.master[hx].entry ? "" : " - Out of pills"));
+            }
         }
     }
 
@@ -130,6 +156,7 @@ room28.btnclick = function (name) {
                     case "leg2":
                     case "leg3":
                     case "leg4":
+                    case "leg5":
                         g.sissy[i].ach = parseInt(g.sissy[i].icon.substring(3)) <= cl.c.leg;
                         break;
                     case "cock1":
@@ -186,6 +213,7 @@ room28.btnclick = function (name) {
         case "leg2":
         case "leg3":
         case "leg4":
+            case "leg5":
         case "cock1":
         case "cock2":
         case "cock3":

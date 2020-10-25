@@ -691,7 +691,7 @@ room200.chatcatch = function (callback) {
             nav.killall();
             cl.nude();
             nav.bg("200_frontOffice/202_sideDesk.jpg");
-            zcl.kneel(500, 1000, .3, "");
+            zcl.kneel(500, 1000, .3, "", false);
             break;
         case "leave24":
             cl.undo();

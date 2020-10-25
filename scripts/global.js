@@ -18,6 +18,7 @@ g.altview = false;
 g.tview = "f";
 g.lview = "b";
 g.prevRoom;
+g.prevview = null;
 
 g.roomID = 1;
 g.dt = g.startDate;
@@ -37,6 +38,7 @@ g.st = [
     { n: "maxenergy", t: 100, q: "zero" },
     { n: "fitness", t: 0, q: "hundred" },
     { n: "hormone", t: 0, q: "hundred" },
+    { n: "autohormone", t: false, q: "bool" },
     { n: "leg", t: 0, q: "hundred" },
     { n: "body", t: 0, q: "hundred" },
     { n: "d", t: 0, q: "hundred" },
@@ -52,6 +54,7 @@ g.st = [
     { n: "jobConstWorkToday", t: 0, q: "int" },
     { n: "momClosetLube", t: 3, q: "int" },
     { n: "momClosetMoney", t: 7, q: "int" },
+    { n: "momearnbackhome", t: 0, q: "int" },
     { n: "bladder", t: 0, q: "zero" },
     { n: "painting", t: "", q: "string" },
     { n: "bodyhair", t: 100, q: "zero" },
@@ -327,11 +330,11 @@ g.checkPop = function (name, amount) {
             char.makeGraph();
             break;
         case "leg":
-            g.popUpNotice("Your legs are " + (amount < 0 ? "weaker" : "stonger"));
+            g.popUpNotice("Your legs are " + (amount < 0 ? "weaker" : "stronger"));
             char.makeGraph();
             break;
         case "body":
-            g.popUpNotice("Your arms are " + (amount < 0 ? "weaker" : "stonger"));
+            g.popUpNotice("Your arms are " + (amount < 0 ? "weaker" : "stronger"));
             char.makeGraph();
             break;
         case "sissy":
@@ -431,7 +434,8 @@ g.rooms = [
     { roomID: 251, name: "Back Office", image: "251_office/office.jpg", nightImage: "251_office/office.jpg", houseID: 250, btn: "roomBtn_251.png" },
 
     { roomID: 350, name: "Sperm Bank", image: "350_spermBank/350_spermbank.jpg", nightImage: "350_spermBank/350_spermbank.jpg", houseID: 350, btn: "roomBtn_350.png" },
-    { roomID: 351, name: "Sperm Bank", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
+    { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
+    { roomID: 352, name: "Jack 'Em", image: "352_jackoff/bg.jpg", nightImage: "352_jackoff/bg.jpg", houseID: 350, btn: "roomBtn_352.png" },
 
     { roomID: 400, name: "Mall", image: "400_mall/400_mall_bg.jpg", nightImage: "400_mall/400_mall_bg.jpg", houseID: 400, btn: "roomBtn_400.png" },
     { roomID: 401, name: "Purchase", image: "401_purchase/401_buy.jpg", nightImage: "401_purchase/401_buy.jpg", houseID: 400, btn: "roomBtn_401.png" },
@@ -690,7 +694,8 @@ g.load = function (rma) {
     g.initGame();
     g.roomID = rma.roomID;
     g.dt = new Date(rma.dt);
-    
+    g.prevview = null;
+
     for (i = 0; i < rma.roomMap.length; i++) {
         for (j = 0; j < g.roomMap.length; j++) {
             if (rma.roomMap[i].roomID === g.roomMap[j].roomID) {
@@ -799,6 +804,7 @@ g.initGame = function () {
             case "sewerEnd":
             case "sissyPoints":
             case "sewerID":
+            case "momearnbackhome":
                 g.st[i].t = 0;
                 break;
             case "bodyhair":
@@ -841,6 +847,7 @@ g.initGame = function () {
             case "buttholeplay":
             case "reddoor":
             case "cultrun":
+            case "autohormone":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

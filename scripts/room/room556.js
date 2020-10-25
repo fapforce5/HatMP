@@ -3,7 +3,7 @@ var room556 = {};
 room556.main = function () {
     g.pass = { enemy0: "g", enemy1: null, enemy2: null, bg: "gym", roomID: 551 };
     $("#room-inv").hide();
-    char.changeMenu("hide");
+    char.changeMenu("hide", false);
     setTimeout(function () { $("#room-inv").hide(); }, 250);
 
     tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.enemy2, g.pass.bg, g.pass.roomID, 556);

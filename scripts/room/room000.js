@@ -5,7 +5,7 @@ room0.main = function () {
     
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
-        char.changeMenu("hide");
+        char.changeMenu("hide", false);
     var tempMap = g.get("map");
     if (tempMap === 0)
         room0.btnclick("map_0");

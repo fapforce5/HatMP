@@ -32,7 +32,7 @@ enemyEnd.g = function (eArray) {
 				"height": 1080,
 				"image": "227_fight/g_bj_back0.png"
 			}, 9999);
-			zcl.kneel(0, 400, 1, "open");
+			zcl.kneel(0, 400, 1, "open", false);
 			nav.button({
 				"type": "img",
 				"name": "char",
@@ -141,7 +141,7 @@ enemyEnd.futaRed = function (eArray) {
 	}
 	else if (eArray.eventType === "submitBJ") {
 		if (eArray.eventStep === 9999) {
-			zcl.kneel(0, 200, 1.2, "open");
+			zcl.kneel(0, 200, 1.2, "open", false);
 			nav.button({
 				"type": "img",
 				"name": "char",
@@ -272,7 +272,7 @@ enemyEnd.futaYellow = function (eArray) {
 	}
 	else if (eArray.eventType === "submitBJ") {
 		if (eArray.eventStep === 9999) {
-			zcl.kneel(100, 700, .55, "open");
+			zcl.kneel(100, 700, .55, "open", false);
 			nav.killbutton("char");
 			nav.button({
 				"type": "img",
@@ -430,7 +430,7 @@ enemyEnd.clownQueen = function (eArray) {
 				"height": 1080,
 				"image": "227_fight/c_bj3.png"
 			}, 9999);
-			zcl.kneel(300, 300, .5, "open");
+			zcl.kneel(300, 300, .5, "open", false);
 			retVar = { eventStep: 2, type: "c", chat: "HEHEHE you want to eat my pussy? So silly", r: "um hmmmm", p: null };
 		}
 		else if (eArray.eventStep === 2) {

@@ -410,7 +410,7 @@ room226.main = function () {
     }
 
     
-    char.changeMenu("map");
+    char.changeMenu("map", false);
     
     if (g.get("energy") < 3) {
         chat(2, 226);

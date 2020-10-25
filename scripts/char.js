@@ -184,7 +184,7 @@ $(document).ready(function () {
         width: 300 * g.ratio + "px",
     }).hide();
     $(".rl-change").click(function () {
-        char.changeMenu($(this).data("type"));
+        char.changeMenu($(this).data("type"), true);
     });
     $(".char-12").css({
         "font-size": 12 * g.ratio + "px"
@@ -226,7 +226,9 @@ $(document).ready(function () {
     char.init();
 });
 
-char.changeMenu = function (menu) {
+char.changeMenu = function (menu, update) {
+    if (update)
+        g.prevview = menu;
     switch (menu) {
         case "body":
             $("#room_left_char").show();
@@ -382,6 +384,8 @@ char.room = function (roomID) {
     if ($('#room-menuButtons').is(":visible"))
         inv.close();
     g.prevRoom = g.roomID;
+
+
     g.roomID = roomID;
     g.dt = char.addMinutes(g.dt, 2);
     menu.makeSaves();
@@ -390,15 +394,21 @@ char.room = function (roomID) {
     cl.energydisplay();
     if ($('#room_left_map').is(":visible"))
         char.map();
+    if (g.prevRoom === 0 || g.prevRoom === 28){
+        if (g.prevview !== null)
+            char.changeMenu(g.prevview, false);
+    }
+    else if(!(g.roomID === 0 || g.roomID === 28))
+        g.prevview = $("#room_left_char").is(":visible") ? "body" : ($("#room_left_map").is(":visible") ? "map" : ($("#room_left_graph").is(":visible") ? "graph" : "hide"));
 };
 
 char.addMinutes = function (date, minutes) {
     return new Date(date.getTime() + (minutes * 60000));
 };
 
-char.addDays = function (date, day, staticHour, staticMinute) {
+char.addDays = function (days) {
     var tDate = date;
-    tDate.setDate(date.getDate() + day);
+    g.dt.setDate(g.dt.getDate() + day);
     return new Date(tDate.getFullYear(), tDate.getMonth(), tDate.getDate(), staticHour, staticMinute, 0, 0);
 };
 

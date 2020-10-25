@@ -108,25 +108,27 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             zcl.displayMainSub("cum_face.png", top, left, ratio);
     }
     //set hair
-    if (cl.c.wig !== null) {
-        $.each(cl.wig, function (i, v) {
-            if (v.name === cl.c.wig)
-                zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
-        });
-    }
-    else {
-        if (cl.c.hairLength !== null) {
-            if (cl.c.hairLength < 2) {
-                thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
-                zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
-            }
-            else if (cl.c.hairStyle === "leia") {
-                thisHair = "hair_2_" + cl.c.hairColor + "_leia";
-                zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
-            }
-            else {
-                thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
-                zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+    if (!dback) {
+        if (cl.c.wig !== null) {
+            $.each(cl.wig, function (i, v) {
+                if (v.name === cl.c.wig)
+                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+            });
+        }
+        else {
+            if (cl.c.hairLength !== null) {
+                if (cl.c.hairLength < 2) {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
+                    zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
+                }
+                else if (cl.c.hairStyle === "leia") {
+                    thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+                else {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
             }
         }
     }
@@ -234,6 +236,31 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             }
         });
     }
+
+    if (dback) {
+        if (cl.c.wig !== null) {
+            $.each(cl.wig, function (i, v) {
+                if (v.name === cl.c.wig)
+                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+            });
+        }
+        else {
+            if (cl.c.hairLength !== null) {
+                if (cl.c.hairLength < 2) {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
+                    zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
+                }
+                else if (cl.c.hairStyle === "leia") {
+                    thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+                else {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+            }
+        }
+    }
 };
 
 cl.displayMainWhere = function (thisArray, entry, top, left, ratio, dback) {
@@ -254,38 +281,38 @@ zcl.displayMainSub = function (thisImage, top, left, ratio) {
     $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 };
 
-zcl.kneel = function (top, left, ratio, mod) {
+zcl.kneel = function (top, left, ratio, mod, reverse) {
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
 
-    zcl.kneelSub("b" + (cl.c.chest === 1 ? 0 : cl.c.chest) + ".png", top, left, ratio);
+    zcl.kneelSub("b" + (cl.c.chest === 1 ? 0 : cl.c.chest) + ".png", top, left, ratio, reverse);
     if (mod.indexOf("open") > -1)
-        zcl.kneelSub("headOpen.png", top, left, ratio);
+        zcl.kneelSub("headOpen.png", top, left, ratio, reverse);
     else
-        zcl.kneelSub("headClose.png", top, left, ratio);
+        zcl.kneelSub("headClose.png", top, left, ratio, reverse);
 
     if (cl.c.hairLength !== null) {
         if (cl.c.hairLength < 2) {
             thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
-            zcl.kneelSub(thisHair + ".png", top, left, ratio);
+            zcl.kneelSub(thisHair + ".png", top, left, ratio, reverse);
         }
         else if (cl.c.hairStyle === "leia") {
             thisHair = "hair_2_" + cl.c.hairColor + "_leia";
-            zcl.kneelSub(thisHair + ".png", top, left, ratio);
+            zcl.kneelSub(thisHair + ".png", top, left, ratio, reverse);
         }
         else {
             thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
-            zcl.kneelSub(thisHair + ".png", top, left, ratio);
+            zcl.kneelSub(thisHair + ".png", top, left, ratio, reverse);
         }
     }
 };
 
-zcl.kneelSub = function (thisImage, top, left, ratio) {
+zcl.kneelSub = function (thisImage, top, left, ratio, reverse) {
     var btnWidth, btnHeight;
     btnWidth = 1500 * ratio * g.ratio;
     btnWidth = 1800 * ratio * g.ratio;
     top = top * g.ratio;
     left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/bj/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+    $('#room-buttons').append('<img src="./images/mainChar/bj/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
 };
 
 zcl.assup = function (top, left, ratio, mod) {
