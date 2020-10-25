@@ -3,7 +3,6 @@ var room10 = {};
 room10.pass = "";
 room10.main = function () {
 
-    }
     if (sc.checkevent("me", 3) && !sc.checkevent("me", -13)) {
         chat(8, 10);
     }
