@@ -23,6 +23,7 @@ room29.main = function () {
 room29.btnclick = function (name) {
     switch (name) {
         case "ladder":
+            char.room(30);
             break;
         default:
             break;
