@@ -64,6 +64,7 @@ g.st = [
     { n: "sewerMap", t: "", q: "string" },
     { n: "sewerID", t: 0, q: "int" },
     { n: "shinkCock", t: false, q: "bool" },
+    { n: "lockdrawer", t: false, q: "bool" },
 
     { n: "fighttimer", t: 4000, q: "int" },
 
@@ -849,6 +850,7 @@ g.initGame = function () {
             case "reddoor":
             case "cultrun":
             case "autohormone":
+            case "lockdrawer":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

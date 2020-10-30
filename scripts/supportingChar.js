@@ -211,6 +211,8 @@ sc.events = [
     { name: "lola", step: 7, txt: "Rinse and repeat", img: "", show: false, row: 0, col: 3, ach: false, major: false },
     { name: "lola", step: 8, txt: "Truth or Dare", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
     { name: "lola", step: 9, txt: "Back In", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 10, txt: "Bed time confession", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 11, txt: "UNK", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
 
     { name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "eva", step: 0, txt: "Ask for book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -222,6 +224,8 @@ sc.events = [
     { name: "eva", step: 6, txt: "Rinse and repeat", img: "", show: false, row: 0, col: 4, ach: false, major: false },
     { name: "eva", step: 7, txt: "Truth or Dare", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 8, txt: "Back In", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 10, txt: "UNK", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
 
     { name: "tina", step: 1, txt: "Meet Tina the slut", img: "const1", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "tina", step: 5, txt: "She likes it when you look at her panties", img: "tina5", show: true, row: 0, col: 1, ach: false, major: false },

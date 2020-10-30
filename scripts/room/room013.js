@@ -4,7 +4,28 @@ var room13 = {};
 room13.main = function () {
     var btnList = new Array();
 
-    if (g.hourBetween(22, 25) || g.hourBetween(0, 5)) {
+    if (sc.getstep("lola") === 9) {
+        nav.button({
+            "type": "img",
+            "name": "welcomeHome",
+            "left": 192,
+            "top": 121,
+            "width": 1416,
+            "height": 338,
+            "image": "13_sisterRoom/welcome.png"
+        }, 13);
+        nav.button({
+            "type": "img",
+            "name": "welcomeGirls",
+            "left": 842,
+            "top": 174,
+            "width": 915,
+            "height": 906,
+            "image": "13_sisterRoom/welcome1.png"
+        }, 13);
+        chat(110, 13);
+    }
+    else if (g.hourBetween(22, 25) || g.hourBetween(0, 5)) {
         nav.bg("13_sisterRoom/13_sisterRomSleep.png", "13_sisterRoom/13_sisterRomSleep.png");
         btnList = [{
             "type": "btn",
@@ -96,9 +117,13 @@ room13.btnclick = function (name) {
                 chat(5, 13);
             break;
         case "dresser":
-            nav.killall();
-            nav.bg("13_sisterRoom/013_pantyDrawer.png");
-            chat(0, 13);
+            if (g.get("lockdrawer"))
+                chat(109, 13);
+            else {
+                nav.killall();
+                nav.bg("13_sisterRoom/013_pantyDrawer.png");
+                chat(0, 13);
+            }
             break;
         case "lola":
             var lolaSetp = sc.getstep("lola");
@@ -148,6 +173,11 @@ room13.btnclick = function (name) {
                         }
 
                         break;
+                    case 10:
+                    case 11:
+                    case 12:
+                        chat(135, 13);
+                        break;
                 }
             }
             break;
@@ -194,6 +224,11 @@ room13.btnclick = function (name) {
                         else {
                             chat(64, 13);
                         }
+                        break;
+                    case 9:
+                    case 10:
+                    case 11:
+                        chat(136, 13);
                         break;
                     default:
                         break;
@@ -571,6 +606,68 @@ room13.chatcatch = function (callback) {
             char.addtime(30);
             char.room(10);
             break;
+        case "sniff1":
+            nav.bg("13_sisterRoom/sniff1.jpg");
+            break;
+        case "sniff2":
+            if (cl.c.chastity !== null)
+                chat(107, 13);
+            else {
+                if (cl.c.cock > 1)
+                    nav.bg("13_sisterRoom/sniff2a.jpg");
+                else
+                    nav.bg("13_sisterRoom/sniff2.jpg");
+                chat(108, 13);
+            }
+            g.set("lockdrawer", true);
+            break;
+        case "welcome2":
+            nav.killbutton("welcomeGirls");
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 1449,
+                "top": 260,
+                "width": 215,
+                "height": 820,
+                "image": "13_sisterRoom/13_lola_reading.png"
+            }, 13);
+            nav.button({
+                "type": "img",
+                "name": "eva",
+                "left": 760,
+                "top": 295,
+                "width": 291,
+                "height": 785,
+                "image": "13_sisterRoom/13_eva_sitting.png"
+            }, 13);
+
+            if (cl.appearanceBody > 1)
+                chat(115, 13);
+            else if (cl.isCrossdressing())
+                chat(117, 13);
+            else
+                chat(119, 13);
+
+            break;
+        case "motherMother":
+            nav.button({
+                "type": "img",
+                "name": "m",
+                "left": 1093,
+                "top": 175,
+                "width": 321,
+                "height": 905,
+                "image": "13_sisterRoom/m.png"
+            }, 13);
+
+            break;
+        case "end9":
+            char.addtime(60);
+            sc.setstep("lola", 10);
+            sc.setstep("eva", 9);
+            char.room(13);
+            break;
         default:
             console.log(callback + " - miss");
             break;
@@ -588,7 +685,8 @@ room13.chat = function (chatID) {
             speaker: "me",
             text: "So many panties...",
             button: [
-                { chatID: 1, text: "Check out " + sc.n("eva") + "'s and " + sc.n("lola") + "'s panties ", callback: "checkPanties" }
+                { chatID: 106, text: "Sniff " + sc.n("eva") + "'s and " + sc.n("lola") + "'s panties", callback: "sniff1" },
+                { chatID: -1, text: "Close the drawer.", callback: "reset" }
             ]
         },
         {
@@ -1462,7 +1560,263 @@ room13.chat = function (chatID) {
                 { chatID: -1, text: "sigh, ok", callback: "peek4" }
             ]
         },
+        {
+            chatID: 106,
+            speaker: "me",
+            text: "These panties smell just like " + sc.n("lola") + ", maybe I could just jack off really quick.",
+            button: [
+                { chatID: -1, text: "...", callback: "sniff2" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "me",
+            text: "Oh yeah... I'm totally wearing my chastity cage. ",
+            button: [
+                { chatID: 1, text: "...", callback: "checkPanties" }
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "me",
+            text: "I'm totally going to jack off with these panties and cum all in them.",
+            button: [
+                { chatID: 1, text: "...", callback: "checkPanties" }
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "me",
+            text: "Dammit! They locked their panty drawer. Try to jack off into their panties once and you're locked out forever.",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "eva",
+            text: sc.n("me") + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+            button: [
+                { chatID: 111, text: sc.n("eva") + "!!!!", callback: "" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "lola",
+            text: "WE TOTALLY MISSED YOU SOOOOOO MUCH!!!!!!!!!!!!!!!!!!!!!!",
+            button: [
+                { chatID: 112, text: sc.n("lola") + "!!!!", callback: "" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "eva",
+            text: "Don't ever leave us again! I was sooooo sad!",
+            button: [
+                { chatID: 113, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "lola",
+            text: "Yeah, we've been so sad with your gone. You really bring us all together. ",
+            button: [
+                { chatID: 114, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "eva",
+            text: "You really do. You're a weird pervert, but you're our weird pervert. ",
+            button: [
+                { chatID: -1, text: "...", callback: "welcome2" }
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "eva",
+            text: "So... aaaahhhh has your body changed? You look like a girl.",
+            button: [
+                { chatID: 116, text: "Oh yeah", callback: "" }
+            ]
+        },
+        {
+            chatID: 116,
+            speaker: "lola",
+            text: "Yeah, it looks like we're all sisters now! You look really cute! I'll miss having a brother, but I'm " +
+            "happy to have gained a sister.",
+            button: [
+                { chatID: 120, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 117,
+            speaker: "lola",
+            text: "I love your new look. It's so cute. ",
+            button: [
+                { chatID: 118, text: "Thank you", callback: "" }
+            ]
+        },
+        {
+            chatID: 118,
+            speaker: "eva",
+            text: "You just want to wear dresses so you can have easy access to flash everyone pervert.",
+            button: [
+                { chatID: 120, text: "oh well maybe.", callback: "" }
+            ]
+        },
+        {
+            chatID: 119,
+            speaker: "eva",
+            text: "You haven't changed a bit. I've really missed messing with you.",
+            button: [
+                { chatID: 120, text: "I do like the way you mess me with", callback: "" }
+            ]
+        },
+        {
+            chatID: 120,
+            speaker: "lola",
+            text: "We've been working on " + sc.n("landlord") + " the entire time you've been gone! She was sooooo mad.",
+            button: [
+                { chatID: 121, text: "Really", callback: "" }
+            ]
+        },
+        {
+            chatID: 121,
+            speaker: "eva",
+            text: "Oh My God yeah she was. Crazy mad. She threatened to lock us both up until we turn 30. She then demanded to know " +
+            "if we we're still virgins. I had to lie my ass off. ",
+            button: [
+                { chatID: 122, text: "Oh wow", callback: "" }
+            ]
+        },
+        {
+            chatID: 122,
+            speaker: "lola",
+            text: "Luckily I didn't have to lie. Boys don't like me like they like " + sc.n("eva") + ". ",
+            button: [
+                { chatID: 123, text: "They do, you're just uptight.", callback: "" }
+            ]
+        },
+        {
+            chatID: 123,
+            speaker: "eva",
+            text: "Hahaha you are uptight! Remember when Johnny B. tried to grab your boob and you ran away. You were talking " +
+            "him for months and when he made a move you disappeared like a fart in church!",
+            button: [
+                { chatID: 124, text: "What does that even mean?", callback: "" }
+            ]
+        },
+        {
+            chatID: 124,
+            speaker: "eva",
+            text: "I don't know, I thought it was a saying. You know, 'cause you don't fart in church. ",
+            button: [
+                { chatID: 125, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 125,
+            speaker: "lola",
+            text: "That is so not a saying. Also don't compare me to a fart. You're a fart!",
+            button: [
+                { chatID: 126, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 126,
+            speaker: "eva",
+            text: "Hahaha see we missed you. We need you around. We'll be more careful next time. No yelling out again " + sc.n("lola") +
+            ". You screamed out like a fart in church! And that's a saying",
+            button: [
+                { chatID: 127, text: "Stop trying to make 'Fart like a church' happen. It's not going to happen.", callback: "" }
+            ]
+        },
+        {
+            chatID: 127,
+            speaker: "lola",
+            text: "Haha. Once " + sc.n("eva") + " gets something in her head it never leaves. ",
+            button: [
+                { chatID: 128, text: "Oh I know.", callback: "" }
+            ]
+        },
+        {
+            chatID: 128,
+            speaker: "eva",
+            text: sc.n("lola") + "'s right. You know what been on my mind? I want to see your penis again. There's something so " +
+                "wrong, yet so right about it. I loved how you squirmed when I rubbed it with my feet, I haven't been able to get it out " +
+            "of my mind. Show it to us!",
+            button: [
+                { chatID: 129, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 129,
+            speaker: "lola",
+            text: "Oh yeah. I kinda want to see it too.",
+            button: [
+                { chatID: 130, text: "Well...", callback: "motherMother" }
+            ]
+        },
+        {
+            chatID: 130,
+            speaker: "landlord",
+            text: "Hay kids, just checking up on you three. Making sure we don't have a repeat of the last little incident.",
+            button: [
+                { chatID: 131, text: "Oh no", callback: "motherMother" }
+            ]
+        },
+        {
+            chatID: 131,
+            speaker: "lola",
+            text: "Oh " + sc.n("landlord") + ". We won't do anything like that again. I promised you it was just a little game that " +
+            "just got out of control. You know I wouldn't break my promise to you.",
+            button: [
+                { chatID: 132, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 132,
+            speaker: "landlord",
+            text: "I trust you " + sc.n("lola") + ". I just don't trust " + sc.n("eva") + " and " + sc.n("me") + ". ",
+            button: [
+                { chatID: 133, text: "Whaaa", callback: "" }
+            ]
+        },
+        {
+            chatID: 133,
+            speaker: "eva",
+            text: "HAY!!!! ",
+            button: [
+                { chatID: 134, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 134,
+            speaker: "landlord",
+            text: "I know you two well enough to know you're up to no good. At least my little angle, " + sc.n("lola") + 
+            ", is here to keep an eye on you both. Now be good you three. I'm going to keep an eye on you.",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "end9" }
+            ]
+        },
+        {
+            chatID: 135,
+            speaker: "lola",
+            text: "We promised " + sc.n("landlord") + " we wouldn't do anything to get in trouble again. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 136,
+            speaker: "eva",
+            text: sc.n("lola") + " the prude made me promise we'ld be good. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
     ];
-
+    //checkPanties
     return cArray[chatID];
 };

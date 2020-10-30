@@ -31,7 +31,6 @@ room352.main = function () {
         cl.c.shoes = "nu";
         cl.display();
         if (sc.getstep("landlord") === 9) {
-
             nav.button({
                 "type": "btn",
                 "name": "ll",
