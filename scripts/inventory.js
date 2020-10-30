@@ -517,14 +517,14 @@ inv.createElements = function () {
                 }
                 else {
                     var thisMoney = g.get("money");
-                    if (cl.list[i].price > thisMoney) {
+                    if (cl.list[tic].price > thisMoney) {
                         $('#menu_displayInfo').html("Can't Afford");
                         $("#menu_displayAction").hide();
                         $("#menu_displayCountLine").hide();
                     }
                     else {
                         cl.list[tic].inv = true;
-                        g.mod("money", -1 * cl.list[i].price);
+                        g.mod("money", -1 * cl.list[tic].price);
                         $("#menu_displayAction").hide();
                         $("#menu_displayCountLine").hide();
                         $('#menu_displayInfo').html("PURCHASED");

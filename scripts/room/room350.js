@@ -37,7 +37,7 @@ room350.btnclick = function (name) {
                 else
                     chat(0, 350);
             }
-            else if (llStep > 8 && llStep < 15) {
+            else if (llStep > 8) {
                 if (g.hourBetween(6, 10)) {
                     if (cl.getBodyHair() !== null)
                         chat(30, 350);
@@ -47,13 +47,11 @@ room350.btnclick = function (name) {
                         chat(32, 350);
                     else if(llStep < 15)
                         chat(33, 350);
-
+                    else
+                        chat(41, 350)
                 }
                 else
                     chat(29, 350);
-            }
-            else if (llStep >= 15) {
-
             }
             else if (sc.getstep("landlord") > 6) {
                 if (cl.appearance() > 1) {
@@ -470,6 +468,15 @@ room350.chat = function (chatID) {
             text: "Not only are you lazy, but you're a liar too. Run along.",
             button: [
                 { chatID: -1, text: "Oh.. ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "landlord",
+            text: "Such a wonderful girl coming back into work and helping your " + sc.n("landlord") + ". Are you excited to get to work?",
+            button: [
+                { chatID: -1, text: "Yes I am", callback: "follow352" },
+                { chatID: -1, text: "Oh no. Maybe later", callback: "" },
             ]
         },
     ];

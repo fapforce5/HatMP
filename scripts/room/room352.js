@@ -97,12 +97,12 @@ room352.main = function () {
                 else
                     s = 5;
 
-                r = Math.floor(Math.random() * 4);
+                r = Math.floor(Math.random() * 3);
                 if (r === 0) t = "boob";
                 else if (r === 1) t = "butt";
                 else t = "mouth";
 
-                g.internal.events.push({ t: t, s: s, c: Math.floor(Math.round() * 2), x: null });
+                g.internal.events.push({ t: t, s: s, c: Math.floor(Math.random() * 2), x: null });
                 nav.bg("352_jackoff/waitroom.jpg");
                 chat(4, 352);
             }
@@ -212,6 +212,7 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
+                g.mod("money", 20);
                 g.mod("sissy", 10);
                 chat(13, 352);
             }
@@ -256,8 +257,9 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
-                chat(20, 352);
+                g.mod("money", 20);
                 g.mod("sissy", 10);
+                chat(20, 352);
             }
             else {
                 g.mod("sissy", 5);
@@ -435,6 +437,7 @@ room352.chatcatch = function (callback) {
             break;
         case "l1":
             nav.killall();
+            g.mod("money", 20);
             g.mod("sissy", 15);
             nav.bg(g.internal.events[0].c === 0 ? "352_jackoff/wl1.jpg" : "352_jackoff/bl1.jpg");
             break;

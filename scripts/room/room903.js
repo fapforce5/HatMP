@@ -1,21 +1,22 @@
 ﻿//Boys lockerroom
 var room903 = {};
 room903.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "name",
-            "left": 1741,
-            "top": 618,
-            "width": 130,
-            "height": 252,
-            "image": "903_folder/hole.png"
-        }
-    ];
+    //var btnList = [
+    //    {
+    //        "type": "btn",
+    //        "name": "name",
+    //        "left": 1741,
+    //        "top": 618,
+    //        "width": 130,
+    //        "height": 252,
+    //        "image": "903_folder/hole.png"
+    //    }
+    //];
+    
+    //$.each(btnList, function (i, v) {
+    //    nav.button(v, 903);
+    //});
     var navList = [0, 901];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 903);
-    });
     nav.buildnav(navList);
 };
 
