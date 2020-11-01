@@ -38,7 +38,7 @@ room350.btnclick = function (name) {
                     chat(0, 350);
             }
             else if (llStep > 8) {
-                if (g.hourBetween(6, 10)) {
+                if (g.hourBetween(6, 9)) {
                     if (cl.getBodyHair() !== null)
                         chat(30, 350);
                     else if (cl.c.hairLength < 2)
@@ -53,7 +53,7 @@ room350.btnclick = function (name) {
                 else
                     chat(29, 350);
             }
-            else if (sc.getstep("landlord") > 6) {
+            else if (llStep > 6) {
                 if (cl.appearance() > 1) {
                     chat(16, 350);
                 }

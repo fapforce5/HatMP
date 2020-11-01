@@ -56,19 +56,17 @@ room352.main = function () {
             var i, s, t, q, r, howmanyReally;
             switch (howMany) {
                 case 0:
-                    howmanyReally = 0;
-                    break;
                 case 1:
                 case 2:
                 case 3:
-                case 4:
                     howmanyReally = 1;
                     break;
+                case 4:
                 case 5:
                 case 6:
-                case 7:
                     howmanyReally = 2;
                     break;
+                case 7:
                 case 8:
                     howmanyReally = 3;
                     break;
@@ -186,8 +184,8 @@ room352.chatcatch = function (callback) {
 
             break;
         case "showTittes":
-            zcl.displayMain(-500, 100, .40, "panties socks shoes bra", false);
-            if (cl.c.chest <= g.internal.events[0].s) {
+            //zcl.displayMain(-500, 100, .40, "panties socks shoes", false);
+            if (cl.c.chest >= g.internal.events[0].s) {
                 nav.killbutton("donor");
                 zcl.kneel(-1000, -1000, 1.6, "", true);
                 if (g.internal.events[0].c === 0) {
@@ -232,9 +230,10 @@ room352.chatcatch = function (callback) {
                 "image": "352_jackoff/butt.png"
             }, 352);
 
-            if (cl.c.leg <= g.internal.events[0].s) {
+            if (cl.c.leg >= g.internal.events[0].s) {
                 nav.killbutton("donor");
-                zcl.kneel(-1000, -1000, 1.6, "", true);
+                zcl.kill();
+                //zcl.kneel(-1000, -1000, 1.6, "", true);
                 if (g.internal.events[0].c === 0) {
                     nav.button({
                         "type": "zbtn",
@@ -267,6 +266,7 @@ room352.chatcatch = function (callback) {
             }
             break;
         case "getLandlord":
+            zcl.kill();
             nav.button({
                 "type": "btn",
                 "name": "ll",
@@ -279,10 +279,9 @@ room352.chatcatch = function (callback) {
             break;
         case "breakroomFail":
             g.internal.fail++;
-            if (g.internal.events.length > 1) {
+            if (g.internal.events.length !== 0) 
                 g.internal.events.splice(0, 1);
-
-            }
+            room352.chatcatch("waitroom");
             break;
         case "endRotation":
 
