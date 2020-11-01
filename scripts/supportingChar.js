@@ -112,6 +112,8 @@ sc.events = [
     { name: "bigguy", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 2, txt: "Second Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 3, txt: "Third Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "bigguy", step: 4, txt: "Cum licker", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "bigguy", step: 5, txt: "Eat all the cum - both", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "zoey", step: -4, txt: "Break up with Chloé", img: "chloecum", show: true, row: 1, col: 3, ach: false, major: false },
     { name: "zoey", step: -3, txt: "Chloé cheating", img: "zoeyCheat", show: true, row: 1, col: 2, ach: false, major: false },

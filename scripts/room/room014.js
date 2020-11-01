@@ -2,10 +2,12 @@
 var room14 = {};
 
 room14.main = function () {
+    if (g.hourBetween(20, 21)) 
+        nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
+
     var btnList = new Array();
     g.internal = { pussy: 0, asshole: 0 };
     if (!g.hourBetween(6, 21)) {
-        nav.bg("14_motherRoom/14_motherRoomNight.jpg");
         if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
             //14_motherAsleepDick.png
             btnList = [{
@@ -260,10 +262,160 @@ room14.btnclick = function (name) {
                     case 2:
                         chat(25, 14);
                         break;
+                    case 4:
+                        if (sc.getstep("me") > 7)
+                            chat(43, 14);
+                        else
+                            chat(16, 14);
+                        break;
                     default:
                         chat(16, 14);
                         break;
                 }
+            }
+            break;
+        case "4man":
+            nav.killall();
+            nav.bg("14_motherRoom/bg4_11.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum1",
+                "left": 787,
+                "top": 24,
+                "width": 292,
+                "height": 869,
+                "image": "14_motherRoom/4cum1.png"
+            }, 14);
+            break;
+        case "4cum1":
+            nav.killbutton("4cum1");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum2",
+                "left": 787,
+                "top": 24,
+                "width": 292,
+                "height": 869,
+                "image": "14_motherRoom/4cum2.png"
+            }, 14);
+            break;
+        case "4cum2":
+            nav.killbutton("4cum2");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum3",
+                "left": 787,
+                "top": 24,
+                "width": 292,
+                "height": 869,
+                "image": "14_motherRoom/4cum3.png"
+            }, 14);
+            break;
+        case "4cum3":
+            nav.killbutton("4cum3");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum4",
+                "left": 787,
+                "top": 24,
+                "width": 292,
+                "height": 869,
+                "image": "14_motherRoom/4cum4.png"
+            }, 14);
+            break;
+        case "4cum4":
+            nav.killbutton("4cum4");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum5",
+                "left": 787,
+                "top": 24,
+                "width": 292,
+                "height": 869,
+                "image": "14_motherRoom/4cum5.png"
+            }, 14);
+            break;
+        case "4cum5":
+            g.internal.m = true;
+            nav.killbutton("4cum5");
+            if (!g.internal.f)
+                chat(58, 14);
+            else {
+                nav.killall();
+                nav.bg("14_motherRoom/bg4_12.jpg");
+                chat(60, 14);
+            }
+            break;
+        case "4girl":
+            nav.killall();
+            nav.bg("14_motherRoom/bg4_11w.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum1w",
+                "left": 997,
+                "top": 586,
+                "width": 342,
+                "height": 492,
+                "image": "14_motherRoom/4cum1w.png"
+            }, 14);
+            break;
+        case "4cum1w":
+            nav.killbutton("4cum1w");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum2w",
+                "left": 997,
+                "top": 586,
+                "width": 342,
+                "height": 492,
+                "image": "14_motherRoom/4cum2w.png"
+            }, 14);
+            break;
+        case "4cum2w":
+            nav.killbutton("4cum2w");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum3w",
+                "left": 997,
+                "top": 586,
+                "width": 342,
+                "height": 492,
+                "image": "14_motherRoom/4cum3w.png"
+            }, 14);
+            break;
+        case "4cum3w":
+            nav.killbutton("4cum3w");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum4w",
+                "left": 997,
+                "top": 586,
+                "width": 342,
+                "height": 492,
+                "image": "14_motherRoom/4cum4w.png"
+            }, 14);
+            break;
+        case "4cum4w":
+            nav.killbutton("4cum4w");
+            nav.button({
+                "type": "tongue",
+                "name": "4cum5w",
+                "left": 997,
+                "top": 586,
+                "width": 342,
+                "height": 492,
+                "image": "14_motherRoom/4cum5w.png"
+            }, 14);
+            break;
+        case "4cum5w":
+            g.internal.f = true;
+            nav.killbutton("4cum5w");
+            if (!g.internal.m)
+                chat(59, 14);
+            else {
+                nav.killall();
+                nav.bg("14_motherRoom/bg4_12.jpg");
+                chat(60, 14);
             }
             break;
         default:
@@ -459,6 +611,91 @@ room14.chatcatch = function (callback) {
             g.mod("sissy", 20);
             g.mod("loadSwollowed", 1);
             nav.bg("14_motherRoom/couple3g.jpg");
+            break;
+        case "bg4_1":
+            nav.killall();
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "bg4_2":
+        case "bg4_3":
+        case "bg4_4":
+        case "bg4_5":
+        case "bg4_6":
+        case "bg4_7":
+        case "bg4_8":
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "bg4_9":
+            g.internal = { m: false, f: false }
+            nav.bg("14_motherRoom/bedSleep.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "4man",
+                "left": 0,
+                "top": 0,
+                "width": 1100,
+                "height": 1080,
+                "image": "14_motherRoom/bg4_9_man.png"
+            }, 14);
+            nav.button({
+                "type": "btn",
+                "name": "4girl",
+                "left": 1100,
+                "top": 0,
+                "width": 920,
+                "height": 1080,
+                "image": "14_motherRoom/bg4_9_w.png"
+            }, 14);
+            break;
+        case "bg4_9w":
+            nav.killall();
+            nav.bg("14_motherRoom/bedSleep.jpg");
+            nav.button({
+                "type": "img",
+                "name": "4manx",
+                "left": 0,
+                "top": 0,
+                "width": 1100,
+                "height": 1080,
+                "image": "14_motherRoom/bg4_9_manx.png"
+            }, 14);
+            nav.button({
+                "type": "btn",
+                "name": "4girl",
+                "left": 1100,
+                "top": 0,
+                "width": 920,
+                "height": 1080,
+                "image": "14_motherRoom/bg4_9_w.png"
+            }, 14);
+            break;
+        case "bg4_9m":
+            nav.bg("14_motherRoom/bedSleep.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "4man",
+                "left": 0,
+                "top": 0,
+                "width": 1100,
+                "height": 1080,
+                "image": "14_motherRoom/bg4_9_man.png"
+            }, 14);
+            nav.button({
+                "type": "img",
+                "name": "4girl",
+                "left": 1100,
+                "top": 0,
+                "width": 920,
+                "height": 1080,
+                "image": "14_motherRoom/bg4_9_wx.png"
+            }, 14);
+            break;
+        case "bg4_end":
+            g.mod("sissy", 30);
+            g.setflag("bigguy");
+            char.addtime(60);
+            sc.setstep("bigguy", 5);
+            char.room(14);
             break;
         default:
             break;
@@ -815,6 +1052,169 @@ room14.chat = function(chatID){
             text: "I'm not fucking with " + sc.n("bigguy") + "!",
             button: [
                 { chatID: -1, text: "[Run along]", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "bigguy",
+            text: "Hahahaha. You just keep coming back don't you. ",
+            button: [
+                { chatID: 44, text: "Oh yeah...", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "landlord",
+            text: "Now " + sc.n("bigguy") + " I told you she is going through a lot. A lot of questions running through her head.",
+            button: [
+                { chatID: 45, text: "Huh", callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "bigguy",
+            text: "There's something I want to run through her head... and by head I mean mouth. ",
+            button: [
+                { chatID: 46, text: "Oooooo", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "landlord",
+            text: "You know, since your really connecting with your femanine side you need to know how to act like a lady in " +
+            "the bedroom. Just stand back and " + sc.n("landlord") + " is going to show you how to embrace your femanine side. ",
+            button: [
+                { chatID: 47, text: "huh?", callback: "bg4_1" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "landlord",
+            text: "The first thing is to let your man lay back and get comfortable.",
+            button: [
+                { chatID: 48, text: "...", callback: "bg4_2" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "landlord",
+            text: "Before you slide in, rub your breasts in his face.",
+            button: [
+                { chatID: 49, text: "...", callback: "bg4_3" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "landlord",
+            text: "Give him a flash of your pussy and ass as you slide down on his cock",
+            button: [
+                { chatID: 50, text: "...", callback: "bg4_4" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "landlord",
+            text: "OOoooooo fuck it feels so good.",
+            button: [
+                { chatID: 51, text: "[Thinking: This is kinda weird right?]", callback: "bg4_5" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "landlord",
+            text: "Oh fuck",
+            button: [
+                { chatID: 52, text: "[I'm sitting here watching my " + sc.n("landlord") + " getting absolutely filled by her boyfried.]", callback: "bg4_4" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "landlord",
+            text: "You're so fucking huge Ooooo fuck fuck fuck",
+            button: [
+                { chatID: 53, text: "[Somehow I just can't stop watching. I guess I may be a bit jealous]", callback: "bg4_5" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "landlord",
+            text: "fuck fuck fuck fuck fuck fuck fuck fuck",
+            button: [
+                { chatID: 54, text: "[I'm just not sure which one I'm jealous of]", callback: "bg4_6" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "landlord",
+            text: "Oh fuck... I'm cumming fuck fuck fuck",
+            button: [
+                { chatID: 55, text: "[I wish I could cum like that. It looks amazing.]", callback: "bg4_7" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "landlord",
+            text: "Now it's your turn big guy.",
+            button: [
+                { chatID: 56, text: "[It's amazing how she just hops back on that thing. She really is a cowgirl]", callback: "bg4_8" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "landlord",
+            text: "Oh fuck. I love how it drips out of me. Do you love how the cum drips from me?",
+            button: [
+                { chatID: 57, text: "I uhhhhh", callback: "bg4_9" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "landlord",
+            text: "Look at you. You're drooling all over yourself. I can tell you're hungry, it's the slutty girl in you. All this time " +
+                "I thought I was raising a dead beat boy, but it turns out I raised a cum hungry slut. So are you going to keep staring at " +
+            "it or are you going to eat it?",
+            button: [
+                { chatID: -1, text: "uh huh", callback: "" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "bigguy",
+            text: "You're such a good cock cleaner. Now clean up your " + sc.n("landlord") + ".",
+            button: [
+                { chatID: -1, text: "MMmmmm", callback: "bg4_9w" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "landlord",
+            text: "You did such a good job sweety. Now clean up " + sc.n("bigguy") + ".",
+            button: [
+                { chatID: -1, text: "MMmmmm", callback: "bg4_9m" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "landlord",
+            text: "You did such a good job eating all that cum. You know if you eat enough cum it will really make your skin glow. ",
+            button: [
+                { chatID: 61, text: "Really?", callback: "" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "bigguy",
+            text: "Hahaha I'll make you skin glow every morning little girl. ",
+            button: [
+                { chatID: 62, text: "Oh " + sc.n("bigguy") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "landlord",
+            text: "Well we're going to bed. Run along.",
+            button: [
+                { chatID: -1, text: "Ok, bye", callback: "bg4_end" }
             ]
         },
     ];
