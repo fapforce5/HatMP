@@ -191,16 +191,18 @@ room28.btnclick = function (name) {
                 "image": "28_transformation/cancel.png"
             }, 28);
             $.each(g.sissy, function (i, v) {
-                nav.button({
-                    "type": "btn",
-                    "name": v.icon,
-                    "left": v.x,
-                    "top": v.y,
-                    "width": 100,
-                    "height": 100,
-                    "title": v.name,
-                    "image": "28_transformation/" + v.icon + (v.ach ? "" : "_u") + ".png"
-                }, 28);
+                if (v.active) {
+                    nav.button({
+                        "type": "btn",
+                        "name": v.icon,
+                        "left": v.x,
+                        "top": v.y,
+                        "width": 100,
+                        "height": 100,
+                        "title": v.name,
+                        "image": "28_transformation/" + v.icon + (v.ach ? "" : "_u") + ".png"
+                    }, 28);
+                }
             });
             break;
         case "chest1":

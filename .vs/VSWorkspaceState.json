@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\scripts",
+    "\\scripts\\room"
   ],
+  "SelectedNode": "\\scripts\\room\\room028.js",
   "PreviewInSolutionExplorer": false
 }
