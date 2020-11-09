@@ -26,7 +26,7 @@ room13.main = function () {
         chat(110, 13);
     }
     else if (g.hourBetween(22, 25) || g.hourBetween(0, 5)) {
-        nav.bg("13_sisterRoom/13_sisterRomSleep.png", "13_sisterRoom/13_sisterRomSleep.png");
+        nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
         btnList = [{
             "type": "btn",
             "name": "bed",
@@ -69,7 +69,18 @@ room13.main = function () {
                     "height": 315,
                     "image": "13_sisterRoom/13_dresser.png",
                     "night": "13_sisterRoom/13_dresserNight.png"
-                }];
+                },
+                {
+                    "type": "btn",
+                    "name": "puter",
+                    "left": 295,
+                    "top": 551,
+                    "width": 295,
+                    "height": 260,
+                    "image": "13_sisterRoom/puter.png",
+                    "night": "13_sisterRoom/puterNight.png"
+                },
+            ];
             if (!cl.hasClothing("panties", "w")){
                 btnList.push({
                     "type": "btn",
@@ -124,6 +135,9 @@ room13.btnclick = function (name) {
                 nav.bg("13_sisterRoom/013_pantyDrawer.png");
                 chat(0, 13);
             }
+            break;
+        case "puter":
+            char.room(31);
             break;
         case "lola":
             var lolaSetp = sc.getstep("lola");
@@ -406,6 +420,11 @@ room13.chatcatch = function (callback) {
         case "killPantyIcon":
             nav.killbutton("panties");
             break;
+        case "killPantyIconx":
+            nav.killbutton("panties");
+            if (sc.getstep("me" < 3))
+                chat(86, 13);
+            break;
         case "checkPanties":
             nav.bg("13_sisterRoom/013_angryCaught.png");
             break;
@@ -585,7 +604,7 @@ room13.chatcatch = function (callback) {
             nav.bg("13_sisterRoom/floor4.jpg");
             break;
         case "hide5":
-            nav.bg("13_sisterRoom/13_sisterRoom.png");
+            nav.bg("13_sisterRoom/room.jpg");
             break;
         case "hide6":
             char.addtime(360);
@@ -743,7 +762,7 @@ room13.chat = function (chatID) {
             speaker: "me",
             text: "[Panties added to Inventory]",
             button: [
-                { chatID: 86, text: "...", callback: "killPantyIcon" }
+                { chatID: -1, text: "...", callback: "killPantyIconx" }
             ]
         },
         {

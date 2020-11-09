@@ -65,6 +65,7 @@ g.st = [
     { n: "sewerID", t: 0, q: "int" },
     { n: "shinkCock", t: false, q: "bool" },
     { n: "lockdrawer", t: false, q: "bool" },
+    { n: "puter", t: false, q: "bool" },
 
     { n: "fighttimer", t: 4000, q: "int" },
 
@@ -373,7 +374,7 @@ g.rooms = [
     { roomID: 10, name: "My Room", image: "10_mainchar/10_bedroom.png", nightImage: "10_mainchar/10_bedroomNight.png", houseID: 16, btn: "roomBtn_10.png" },
     { roomID: 11, name: "2nd Floor", image: "11_hallway/11_hallway.jpg", nightImage: "11_hallway/11_hallwayNight.jpg", houseID: 16, btn: "roomBtn_11.png" },
     { roomID: 12, name: "Bathroom", image: "12_bathroom/12_bathroom.png", nightImage: "12_bathroom/12_bathroom.png", houseID: 16, btn: "roomBtn_12.png" },
-    { roomID: 13, name: "Girl's Room", image: "13_sisterRoom/13_sisterRoom.png", nightImage: "13_sisterRoom/13_sisterRoomNight.png", houseID: 16, btn: "roomBtn_13.png" },
+    { roomID: 13, name: "Girl's Room", image: "13_sisterRoom/room.jpg", nightImage: "13_sisterRoom/roomNight.jpg", houseID: 16, btn: "roomBtn_13.png" },
     { roomID: 14, name: "Master Bedroom", image: "14_motherRoom/14_motherRoom.jpg", nightImage: "14_motherRoom/14_motherRoomNight.jpg", houseID: 16, btn: "roomBtn_14.png" },
     { roomID: 15, name: "Kitchen", image: "15_kitchen/day.jpg", nightImage: "15_kitchen/night.jpg", houseID: 16, btn: "roomBtn_15.png" },
     { roomID: 16, name: "1st Floor", image: "16_livingRoom/16_downStairs.jpg", nightImage: "16_livingRoom/16_downStairsNight.jpg", houseID: 16, btn: "roomBtn_16.png" },
@@ -391,7 +392,7 @@ g.rooms = [
     { roomID: 28, name: "Sleep", image: "28_transformation/sleep.jpg", nightImage: "28_transformation/sleep.jpg", houseID: 16, btn: "roomBtn_25.png" },
     { roomID: 29, name: "Back yard", image: "29_backyard/bg.jpg", nightImage: "29_backyard/night.jpg", houseID: 29, btn: "roomBtn_29.png" },
     { roomID: 30, name: "Girl's Room Peak", image: "30_peek/bg.jpg", nightImage: "30_peek/bgnight.jpg", houseID: 29, btn: "roomBtn_29.png" },
-
+    { roomID: 31, name: "Lola's Puter", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 16, btn: "roomBtn_31.png" },
 
     { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Tif's Living Room", image: "51_livingRoom/livingroom.jpg", nightImage: "51_livingRoom/livingroom.jpg", houseID: 50, btn: "roomBtn_51.png" },
@@ -851,6 +852,7 @@ g.initGame = function () {
             case "cultrun":
             case "autohormone":
             case "lockdrawer":
+            case "puter":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

@@ -364,9 +364,9 @@ inv.display = function () {
                 break;
         };
     });
-    $("#menu_displayAction").click(function () {
+    //$("#menu_displayAction").click(function () {
 
-    });
+    //});
 
     w = 1800 * g.ratio;
     h = 50 * g.ratio;
@@ -481,8 +481,13 @@ inv.createElements = function () {
         if (thisIType === "inv") {
             
             var ti = inv.getIndex(thisName);
+
             if (ti !== null) {
                 var thisInv = inv.master[ti];
+                if (!inv.master[ti].entry) {
+                    inv.master[ti].n = true;
+                    inv.backpackIcon();
+                }
                 if (thisInv.count === null) {
                     inv.add(thisName);
                     g.mod("money", (-1 * thisInv.cost));

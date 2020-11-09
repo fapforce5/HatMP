@@ -431,10 +431,33 @@ room14.chatcatch = function (callback) {
             char.room(14);
             break;
         case "search":
-            if (inv.has("flatmateKey"))
-                chat(6, 14);
+            nav.bg("14_motherRoom/14_motherRoom.jpg", "14_motherRoom/14_motherRoomNight.jpg");
+            nav.button({
+                "type": "img",
+                "name": "pussyPlay",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "14_motherRoom/panty1.png"
+            }, 14);
+            if (sc.checkevent("me", -2)) {
+                if (cl.c.leg < 2)
+                    chat(7, 14);
+                else if (cl.hasClothing("panty", "c"))
+                    chat(63, 14);
+                else
+                    chat(64, 14);
+                    
+            }
             else
-                chat(7, 14);
+                chat(6, 14);
+
+            
+            //if (inv.has("flatmateKey"))
+            //    chat(6, 14);
+            //else
+            //    chat(7, 14);
             break;
         case "ret":
             char.room(14);
@@ -697,6 +720,9 @@ room14.chatcatch = function (callback) {
             sc.setstep("bigguy", 5);
             char.room(14);
             break;
+        case "stealPanties":
+            cl.add("panties", "c");
+            break;
         default:
             break;
     }
@@ -748,18 +774,17 @@ room14.chat = function(chatID){
         {
             chatID: 6,
             speaker: "me",
-            text: "Nothing here.. and I feel dirty for going through " + sc.n("landlord") + "'s panties...",
+            text: sc.n("landlord") + "'s panties! I feel so dirty for even touching them.",
             button: [
-                { chatID: -1, text: "Close Dresser Drawer", callback: "ret" },
+                { chatID: -1, text: "[Put the panties back]", callback: "ret" },
             ]
         },
         {
             chatID: 7,
             speaker: "me",
-            text: "There's a key in here, I wonder where it goes to?",
+            text: "There's no way I'll fit into " + sc.n("landlord") + "'s panties! My ass is way too small.",
             button: [
-                { chatID: -1, text: "Leave key", callback: "ret" },
-                { chatID: -1, text: "Take Key", callback: "takekey" }
+                { chatID: -1, text: "[Put the panties back]", callback: "ret" },
             ]
         },
         {
@@ -1215,6 +1240,31 @@ room14.chat = function(chatID){
             text: "Well we're going to bed. Run along.",
             button: [
                 { chatID: -1, text: "Ok, bye", callback: "bg4_end" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "me",
+            text: "My " + sc.n("landlord") + " has such great taste in panties.",
+            button: [
+                { chatID: -1, text: "[Put them back]", callback: "ret" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "me",
+            text: "These are kinda sexy, in an older lady kinda way.",
+            button: [
+                { chatID: 65, text: "Steal " + sc.n("landlord") + "'s panties", callback: "stealPanties" },
+                { chatID: -1, text: "Put them back", callback: "ret" }
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "me",
+            text: sc.n("landlord") + "'s panties added to inventory.",
+            button: [
+                { chatID: -1, text: "...", callback: "ret" }
             ]
         },
     ];

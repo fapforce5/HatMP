@@ -775,7 +775,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 33,
                 speaker: "landlord",
-                text: "You know very well what. You may be dressing like a girl, but I know your penis still controls you. I won't " +
+                text: "You know very well what. You may be dressing like a girl, but I know your penis still controls you and I won't " +
                 "let your penis anywhere near my sweet innocent girls",
                 button: [
                     { chatID: 34, text: "Oh, it won't", callback: "" },
@@ -785,7 +785,7 @@ room352.chat = function (chatID) {
                 chatID: 34,
                 speaker: "landlord",
                 text: "I don't believe you. I'm going to be watching you like a hawk when you're in my home. You WILL NOT lay " +
-                "your dirty fingers or penis on " + sc.n("lola") + " or " + sc.n("eva") + ". Can I trust you in my house again?",
+                "your dirty fingers, or penis, on " + sc.n("lola") + " or " + sc.n("eva") + ". Can I trust you in my house again?",
                 button: [
                     { chatID: 35, text: "Oh yeah. I'll keep my penis.. err fingers off of them.", callback: "" },
                 ]

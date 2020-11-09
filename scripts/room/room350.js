@@ -433,14 +433,13 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Really? If you're so rich you'll pay me for all that time you were freeloading off me. ",
             button: [
-                { chatID: 37, text: "I'm tottally rich enough to do that, how much?", callback: "" },
+                { chatID: 37, text: "I'm totally rich enough to do that, how much?", callback: "" },
             ]
         },
         {
             chatID: 37,
             speaker: "landlord",
-            text: "I added it after you left. It comes out to $158,349. But for you I'll only charge you $500 because I'm your " +
-            sc.n("landlord") + ".",
+            text: "I added it after you left. It comes out to $158,349. But for you I'll only charge you $500 because I love you.",
             button: [
                 { chatID: -1, text: "I can totally pay you $500", callback: "checkCash" },
                 { chatID: 38, text: "I don't have enough to pay you $500", callback: "" },
@@ -457,7 +456,7 @@ room350.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "landlord",
-            text: "Oh wow, I'm rearely suprised, but you have done just that. I'll take that back rent. Follow me into the break room.",
+            text: "Oh wow, I'm rarely suprised, but you have done just that. I'll take that back rent. Follow me into the break room.",
             button: [
                 { chatID: -1, text: "Pay your " + sc.n("landlord") + " $500", callback: "follow352Chastity" },
             ]

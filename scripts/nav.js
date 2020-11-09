@@ -156,7 +156,7 @@ nav.t = function (btn, roomNum) {
     else if (btn.font === 20)
         classes += " char-20 resize ";
     if ("hex" in btn)
-        thisHex = "#ffffff";
+        thisHex = btn.hex;
 
     line = '<div class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
 
