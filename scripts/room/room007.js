@@ -95,6 +95,19 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/lola0.jpg");
         chat(27, 7);
     }
+    else if (evaStep === 10 && (g.dt.getDay() === 1 || g.dt.getDay() === 3)) {
+        btnList = [
+            {
+                "type": "img",
+                "name": "eva",
+                "left": 734,
+                "top": 18,
+                "width": 561,
+                "height": 1000,
+                "image": "7_mainCharRoomAlt/eva0.png"
+            }];
+        chat(31, 7);
+    }
     else {
         chat(15, 7);
         navList = [10];
@@ -109,7 +122,21 @@ room7.main = function () {
 
 room7.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "eva10b2":
+            zcl.displayMain(220, -150, .47, "", true);
+            chat(42, 7);
+            break;
+        case "eva10b3a":
+            if (g.internal === 0)
+                nav.bg("7_mainCharRoomAlt/eva10b3a.jpg");
+            else if (g.internal === 1)
+                nav.bg("7_mainCharRoomAlt/eva10b3b.jpg");
+            else if (g.internal === 2) {
+                nav.bg("7_mainCharRoomAlt/eva10b3c.jpg");
+                nav.killbutton("eva10b3a");
+                chat(43, 7);
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -222,6 +249,77 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
             sc.setstep("lola", 11);
             char.addtime(30);
+            break;
+        case "eva30":
+            nav.killbutton("eva");
+            char.addtime(30);
+            sc.setstep("eva", 30);
+            break;
+        case "eva10a":
+            nav.modbutton("eva", "7_mainCharRoomAlt/eva2.png", null, null);
+            break;
+        case "eva10b":
+
+            if (cl.c.chastity !== null) {
+                chat(38, 7);
+            }
+            else if (cl.c.cock < 3) {
+                nav.killall();
+                nav.bg("7_mainCharRoomAlt/eva10b.jpg");
+                chat(41, 7);
+            }
+            else {
+                nav.killall();
+                nav.bg("7_mainCharRoomAlt/eva10c.jpg");
+                chat(34, 7);
+            }
+            break;
+        case "eva10d":
+            nav.bg("7_mainCharRoomAlt/eva10d.jpg");
+
+            break;
+        case "eva10b1":
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "eva10b2",
+                "left": 622,
+                "top": 0,
+                "width": 1289,
+                "height": 1080,
+                "image": "7_mainCharRoomAlt/eva10b1.png"
+            }, 7);
+            break;
+        case "evaaaaa":
+            zcl.displayMain(370, 70, .4, "", true)
+            break;
+        case "eva10b3":
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/eva10b3.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "eva10b3a",
+                "left": 956,
+                "top": 758,
+                "width": 135,
+                "height": 135,
+                "image": "7_mainCharRoomAlt/eva10b3.png"
+            }, 7);
+            g.internal = 0;
+            break;
+        case "eva10b4":
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/eva10b4.jpg")
+            nav.button({
+                "type": "btn",
+                "name": "eva10b5",
+                "left": 164,
+                "top": 69,
+                "width": 1700,
+                "height": 994,
+                "image": "7_mainCharRoomAlt/eva10b4.gif"
+            }, 7);
             break;
         default:
             break;
@@ -472,23 +570,129 @@ room7.chat = function (chatID) {
             chatID: 30,
             speaker: "lola",
             text: "Thank you. I know you feel you need to say that. I'm going to go. Please don't tell " + sc.n("eva") + ". I made " +
-            "her promise we wouldn't do anything to get in trouble with " + sc.n("landlord") + ". I'll be thinking about you. ",
+                "her promise we wouldn't do anything to get in trouble with " + sc.n("landlord") + ". I'll be thinking about you. ",
             button: [
                 { chatID: 15, text: "I'll be thinking about you too.", callback: "lola1" }
             ]
         },
+        {
+            chatID: 31,
+            speaker: "eva",
+            text: "So have I been on your mind like you've been on mine?",
+            button: [
+                { chatID: 33, text: "Oh yeah! I've been waiting for you.", callback: "eva10a" },
+                { chatID: 32, text: "Oh naw. I think we're better friends", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "eva",
+            text: "Awww ok. Sleep well friend.",
+            button: [
+                { chatID: 15, text: "See you " + sc.n("eva") + ".", callback: "eva30" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "eva",
+            text: "I know you like looking at my naked body, let me see yours! I think you have the biggest cock I've ever seen!",
+            button: [
+                { chatID: -1, text: "[Show your cock]", callback: "eva10b" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "eva",
+            text: "Oh... it's so tiny. I remember it being bigger. If I knew it was so small I wouldn't have bothered. I " +
+            "didn't even know dicks could be so tiny. ",
+            button: [
+                { chatID: 35, text: "We could try?", callback: "eva10d" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "eva",
+            text: "I'll try licking it, see if it get bigger?",
+            button: [
+                { chatID: 36, text: "", callback: "eva10d" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "eva",
+            text: "Nope, still tiny, let me stroke it.",
+            button: [
+                { chatID: 37, text: "", callback: "eva10e" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "eva",
+            text: "In progress",
+            button: [
+                { chatID: 15, text: "", callback: "" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "eva",
+            text: "What is your penis in that thing? That's so weird, do you not like sex anymore?",
+            button: [
+                { chatID: 39, text: "I ahhh well no, I just don't use my penis.", callback: "" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "eva",
+            text: "Oh. You're a weird one. I'm going to get going, I need to get ready and stuff.",
+            button: [
+                { chatID: 40, text: "Oh wait...", callback: "" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "eva",
+            text: "I always knew you were a weird pervert, but this is too much. I'm going to go.",
+            button: [
+                { chatID: 15, text: "Oh ok", callback: "eva30" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "eva",
+            text: "Before you stick that giant thing in me I need you to get me nice and wet. ",
+            button: [
+                { chatID: -1, text: "Oh Yeah!", callback: "eva10b1" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "eva",
+            text: "OOoooo yeah, lick my clit " + sc.n("me") + ", lick it good.",
+            button: [
+                { chatID: -1, text: "**SSSLLLUUURRRPPPPP", callback: "eva10b3" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "eva",
+            text: "You're really good at that! I'm so wet.",
+            button: [
+                { chatID: 44, text: "Wet enough to take this dick?", callback: "" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "eva",
+            text: "Oh please, I need it now! [In development]",
+            button: [
+                { chatID: 15, text: "[This is so hot! I can't beleive I'm about to fuck " + sc.n("eva") + "!!]", callback: "eva10b4" },
+            ]
+        },
     ];
+
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
     else
         return [];
 };
-
- //if (sc.getstep("me") > 7) {
-        //    console.log(g.pass)
-        //    nav.bg("52_myroom/52_myroom.jpg", "52_myroom/52_myroom_night.jpg");
-        //    chat(15, 7);
-        //    navList = [52];
-        //    nav.buildnav(navList);
-        //}
-        //else

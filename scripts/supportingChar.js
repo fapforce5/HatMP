@@ -227,7 +227,9 @@ sc.events = [
     { name: "eva", step: 7, txt: "Truth or Dare", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 8, txt: "Back In", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 10, txt: "UNK", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 10, txt: "Next meeting in room", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
+
+    { name: "eva", step: 30, txt: "End of the Eva line", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
 
     { name: "tina", step: 1, txt: "Meet Tina the slut", img: "const1", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "tina", step: 5, txt: "She likes it when you look at her panties", img: "tina5", show: true, row: 0, col: 1, ach: false, major: false },

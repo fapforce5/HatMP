@@ -82,7 +82,7 @@ room902.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...",
+            text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...[In development]",
             button: [{ chatID: -1, text: "...", callback: "" }]
         },
     ];
