@@ -95,7 +95,8 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/lola0.jpg");
         chat(27, 7);
     }
-    else if (evaStep === 10 && (g.dt.getDay() === 1 || g.dt.getDay() === 3)) {
+    else if (evaStep === 10 && g.pass === "phonecall") {
+        cl.nude();
         btnList = [
             {
                 "type": "img",
@@ -137,6 +138,19 @@ room7.btnclick = function (name) {
                 chat(43, 7);
             }
             g.internal++;
+            break;
+        case "eva10b3f":
+            nav.killbutton("eva10b3f");
+            nav.button({
+                "type": "img",
+                "name": "eva10b5",
+                "left": 164,
+                "top": 69,
+                "width": 1700,
+                "height": 994,
+                "image": "7_mainCharRoomAlt/eva10b4.gif"
+            }, 7);
+            g.roomTimeout = setTimeout(function () { chat(49, 7) }, 2000);
             break;
         default:
             break;
@@ -242,6 +256,7 @@ room7.chatcatch = function (callback) {
             break;
         case "eva7":
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
+            g.setflag("evaDayEvent");
             sc.setstep("eva", 10);
             char.addtime(30);
             break;
@@ -308,18 +323,38 @@ room7.chatcatch = function (callback) {
             }, 7);
             g.internal = 0;
             break;
-        case "eva10b4":
+        case "eva10b3d":
             nav.killall();
-            nav.bg("7_mainCharRoomAlt/eva10b4.jpg")
+            nav.bg("7_mainCharRoomAlt/eva10b3d.jpg");
+            break;
+        case "eva10b3e":
+            pic.add("evapussy");
+            nav.bg("7_mainCharRoomAlt/eva10b3e.jpg");
+            break;
+        case "eva10b3f":
+            nav.bg("7_mainCharRoomAlt/eva10b4.jpg");
             nav.button({
                 "type": "btn",
-                "name": "eva10b5",
+                "name": "eva10b3f",
                 "left": 164,
                 "top": 69,
                 "width": 1700,
                 "height": 994,
-                "image": "7_mainCharRoomAlt/eva10b4.gif"
+                "image": "7_mainCharRoomAlt/eva10b3f.png"
             }, 7);
+            break;
+        case "eva10b3g":
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/eva10b3g.jpg");
+            break;
+        case "eva10b3h":
+            sc.setstep("eva", 11);
+            cl.doCum(true);
+            g.mod("giveOralFemale", 1);
+            g.mod("fuckPussy", 1);
+            g.setflag("evaDayEvent");
+            char.addtime(60);
+            char.room(10);
             break;
         default:
             break;
@@ -327,10 +362,16 @@ room7.chatcatch = function (callback) {
 };
 
 room7.chat = function (chatID) {
+    
     var tempRent, tempMoney, tempRentOwed;
-    tempRent = g.get("rent");
-    tempMoney = g.get("money");
-    tempRentOwed = g.get("rentOwed");
+    if (chatID < 15) {
+        tempRent = g.get("rent");
+        tempMoney = g.get("money");
+        tempRentOwed = g.get("rentOwed");
+    }
+    else {
+        tempRent = tempMoney = tempRentOwed = 0;
+    }
     var cArray = [
         {
             chatID: 0,
@@ -578,10 +619,9 @@ room7.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "eva",
-            text: "So have I been on your mind like you've been on mine?",
+            text: "I'm so glad you texted me! I know what's on your mind!",
             button: [
                 { chatID: 33, text: "Oh yeah! I've been waiting for you.", callback: "eva10a" },
-                { chatID: 32, text: "Oh naw. I think we're better friends", callback: "" },
             ]
         },
         {
@@ -678,19 +718,78 @@ room7.chat = function (chatID) {
             speaker: "eva",
             text: "You're really good at that! I'm so wet.",
             button: [
-                { chatID: 44, text: "Wet enough to take this dick?", callback: "" },
+                { chatID: 44, text: "Wet enough to take this dick?", callback: "eva10b3d" },
             ]
         },
         {
             chatID: 44,
             speaker: "eva",
-            text: "Oh please, I need it now! [In development]",
+            text: "So pervert? Do you like what you see? I've seen the way to stare at me. I've even noticed your boner when you stare. " +
+            "Do you like this pose? Want to take a picture of it so you can masturbate yourself to it later?",
             button: [
-                { chatID: 15, text: "[This is so hot! I can't beleive I'm about to fuck " + sc.n("eva") + "!!]", callback: "eva10b4" },
+                { chatID: 45, text: "[This is so hot! I'm totally going to jack it to her later!]", callback: "eva10b3e" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "eva",
+            text: "So you do you have any other naked pictures of me that I don't know about pervert?",
+            button: [
+                { chatID: 46, text: "This is the first, but hopefully not the last!", callback: "eva10b3d" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "eva",
+            text: "So it's my first time, do you promise to be gentle?",
+            button: [
+                { chatID: 47, text: "Oh wow. Really? You're first time?", callback: "" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "eva",
+            text: "Hahaha no! Sex feels way to good not to do it! Unlike " + sc.n("lola") + " I can have sex without love.",
+            button: [
+                { chatID: 48, text: "You got me", callback: "" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "eva",
+            text: "So lets stop talking and start humping!",
+            button: [
+                { chatID: -1, text: "Oh yeah!", callback: "eva10b3f" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "thinking",
+            text: "I can't belive I'm fucking my own " + g.makeSingular(sc.n("el")) + ". This is just so crazy! I've been dreaming about " +
+            "this for so long! I've done some sick things, but this is the craziest! ",
+            button: [
+                { chatID: 50, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "eva",
+            text: "Oh fuck, that is amazing! You can cum in me, I'm on the pill.",
+            button: [
+                { chatID: 51, text: "Fuck yeah! Here it comes!", callback: "eva10b3g" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "eva",
+            text: "That's going to be dripping out of me all day! I love you cock so much. Just text me anytime you're in your room and " +
+            "we'll play some more. [end this content]",
+            button: [
+                { chatID: -1, text: "Ok cool", callback: "eva10b3h" },
             ]
         },
     ];
-
+    
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
     else

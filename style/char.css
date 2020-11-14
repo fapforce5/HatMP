@@ -250,3 +250,30 @@
     padding-left:20px;
     font-size:1.2em;
 }
+
+.hover-pointer{
+    cursor:pointer;
+}
+
+.hover-pointer:hover{
+   filter: brightness(1.2);
+}
+
+.phone-chat {
+    width: 80%;
+    padding:2% 5%;
+    margin-top:2%;
+    text-align:left;
+}
+
+.eva-phone {
+    background: #eb9b54;
+    color: #000;
+}
+
+.me-phone{
+    background:#333333;
+    color:#ffffff;
+    margin-left:10%;
+    text-align:right;
+}

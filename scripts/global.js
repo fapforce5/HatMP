@@ -658,6 +658,15 @@ g.shuffleArray = function (array) {
     return array;
 };
 
+g.makeSingular = function (text) {
+    text = text.trim();
+    if (text.substr(text.length - 1).toLowerCase() === "s")
+        text = text.slice(-1);
+    if (text.substr(0, text.length - 1) === "'")
+        text = text.slice(-1);
+    return text;
+}
+
 g.save = function () {
     var i;
     var g_sissy = null;

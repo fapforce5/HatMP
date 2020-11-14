@@ -3,57 +3,58 @@ var sc = {};
 
 //g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.char = [
-    { name: "me", display: "Alex", image: "me.png", step: 0, max: 0, show: true, setName: false },
-    { name: "landlord", display: "Land Lord", image: "mom.png", step: 0, max: 0, show: true, setName: true },
-    { name: "el", display: "Co-Tenants", image: "lolaEva.png", step: 0, max: 0, show: false, setName: false },
-    { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true },
-    { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true },
-    { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true },
-    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true },
-    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true },
-    { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false },
-    { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true },
-    { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true },
-    { name: "govlady", display: "The clerk", image: "govlady.png", step: 0, max: 0, show: false, setName: false },
-    { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true },
-    { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, max: 0, show: false, setName: true },
-    { name: "jordan", display: "Jordan", image: "", step: 0, max: 0, show: false, setName: false },
-    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true },
-    { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: true, setName: true },
-    { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true },
-    { name: "charlie", display: "Charlie", image: "charlie.png", step: 0, max: 0, show: false, setName: false },
-    { name: "cop", display: "Cop", image: "cop.png", step: 0, max: 0, show: false, setName: false },
-    { name: "cop2", display: "Cop", image: "cop2.png", step: 0, max: 0, show: false, setName: false },
-    { name: "jada", display: "Jada", image: "jada.png", step: 0, max: 0, show: false, setName: true },
-    { name: "red", display: "Red", image: "red.png", step: 0, max: 0, show: false, setName: false },
-    { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, max: 0, show: false, setName: false },
-    { name: "fightman", display: "Bad Motherfucker", image: "fightMan.png", step: 0, max: 0, show: false, setName: false },
-    { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, max: 0, show: false, setName: false },
-    { name: "fighttrans", display: "Bad Motherfucker", image: "fightTrans.png", step: 0, max: 0, show: false, setName: false },
-    { name: "cult", display: "Cult", image: "cult.png", step: 0, max: 0, show: false, setName: false },
-    { name: "cultboy", display: "Cult", image: "cult_j_b.png", step: 0, max: 0, show: false, setName: false },
-    { name: "cultjgirl", display: "Cult", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false },
-    { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false },
-    { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, max: 0, show: false, setName: false },
-    { name: "holly", display: "Holly", image: "holly.png", step: 0, max: 0, show: false, setName: false },
-    { name: "molly", display: "Molly", image: "molly.png", step: 0, max: 0, show: false, setName: false },
-    { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, max: 0, show: false, setName: false },
-    { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true },
-    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, max: 0, show: false, setName: false },
-    { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false },
-    { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false },
-    { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false },
-    { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false },
-    { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false },
-    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false },
+    { name: "me", display: "Alex", image: "me.png", step: 0, max: 0, show: true, setName: false, phone: -1 },
+    { name: "landlord", display: "Land Lord", image: "mom.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
+    { name: "el", display: "Co-Tenants", image: "lolaEva.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
+    { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
+    { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2 },
+    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
+    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true, phone: 12 },
+    { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
+    { name: "govlady", display: "The clerk", image: "govlady.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
+    { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "jordan", display: "Jordan", image: "", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
+    { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
+    { name: "charlie", display: "Charlie", image: "charlie.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "cop", display: "Cop", image: "cop.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "cop2", display: "Cop", image: "cop2.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "jada", display: "Jada", image: "jada.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "red", display: "Red", image: "red.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "fightman", display: "Bad Motherfucker", image: "fightMan.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "fighttrans", display: "Bad Motherfucker", image: "fightTrans.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "cult", display: "Cult", image: "cult.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "cultboy", display: "Cult", image: "cult_j_b.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "cultjgirl", display: "Cult", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "holly", display: "Holly", image: "holly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "molly", display: "Molly", image: "molly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 
-    { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, max: 0, show: false, setName: false },
-    { name: "tim", display: "Tim", image: "tim.png", step: 0, max: 0, show: false, setName: false },
+    { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "tim", display: "Tim", image: "tim.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 
-    { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false },
-    { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false },
-    { name: "futared", display: "Red", image: "futaRed.png", step: 0, max: 0, show: false, setName: false },
-    { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false },
+    { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "futared", display: "Red", image: "futaRed.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 ];
 
 sc.changes = [
@@ -1199,3 +1200,113 @@ sc.changesDifferntText = function (who, whatNum) {
     }
     return comment[whatNum];
 };
+
+sc.phone = function (char) {
+    var step = sc.getstep(char);
+    var clist
+    switch (char) {
+        case "eva":
+            if (step < 3) {
+                clist = [
+                    { s: "me", t: "Hay what's up?" },
+                    { s: "eva", t: "Nothing you pervert!" }
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 3) {
+                clist = [
+                    { s: "me", t: "What was I supposed to do?" },
+                    { s: "eva", t: "Get us some alcohol weird-o" }
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step < 7) {
+                clist = [
+                    { s: "me", t: "You are so hot!" },
+                    { s: "eva", t: "You are so weird and perverted! I bet" }
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 7) {
+                clist = [
+                    { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
+                    { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
+                    { s: "me", t: "Oh no I didn't mean to be weird" },
+                    { s: "eva", t: "whatever. " + sc.n("lola") + " and me want to play truth or dare, come by tonight." }
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 8) {
+                clist = [
+                    { s: "me", t: "That totally sucked!" },
+                    { s: "eva", t: "I know! I'm so sorry! " + sc.n("landlord") + " got soooooo mad. I'm not even supposed to talk to you." },
+                    { s: "me", t: "That's lame" },
+                    { s: "eva", t: "I know! Also I totally want to see that giant cock of yours! " },
+                    { s: "eva", t: "It's just soooo big. I wanted to play with it. You need to smooth things over with " + sc.n("landlord") }
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 9) {
+                clist = [
+                    { s: "me", t: "I'm so excited to be back in the house!" },
+                    { s: "eva", t: "I'm going to give you a big suprise... just wait for it!" },
+                    { s: "me", t: "What suprise?" },
+                    { s: "eva", t: "If I tell you, it won't a suprise!" },
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 10) {
+                if (g.get("evaDayEvent")) {
+                    clist = [
+                        { s: "me", t: "Hay, been thinking about my dick?" },
+                        { s: "eva", t: "I'm busy today, try me tomorrow!" },
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                else if (g.roomID === 10) {
+                    g.pass = "phonecall";
+                    menu.mClick("close");
+                    room7.main();
+                }
+                else {
+                    clist = [
+                        { s: "me", t: "Hay, been thinking about my dick?" },
+                        { s: "eva", t: "Oh yeah! Text me when you're in your room!" },
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                
+            }
+            else if (step === 11) {
+                clist = [
+                    { s: "me", t: "This is the end for this release" },
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 30) {
+                clist = [
+                    { s: "me", t: "Soooo what's up?" },
+                    { s: "eva", t: "I think we're better friends. I like you, i just need a manly cock" },
+                ];
+                sc.phoneChat(clist, char);
+            }
+            break;
+    }
+
+
+};
+
+sc.phoneChat = function (chatList, char) {
+    var ts = "";
+    var thisCar = sc.get(char);
+    var thisImg = 'style="height: ' + 100 * g.ratio + 'px; width: ' + 100 * g.ratio + 'px; display:inline-block; vertical-align: top;"';
+    $.each(chatList, function (i, v) {
+        ts += '<div class="phone-chat char-20 ' + v.s + '-phone" style="' + g.cssText(20) + ' border-radius:' + 10 * g.ratio + 'px;">' + v.t + '</div>'; 
+    });
+
+
+
+    $('.contact-body').html('<img src="./images/phone/char/' + thisCar.image + '" ' + thisImg + '/>' +
+        '<div style="display:inline-block; font-weight:bold; vertical-align: top; padding-top:' + 10 * g.ratio + 'px; font-size:' + 40 * g.ratio + 'px;">' + thisCar.display + '</div><hr/>' + ts);
+};
+

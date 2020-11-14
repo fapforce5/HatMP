@@ -721,11 +721,26 @@ menu.mClick = function (type) {
 
             break;
         case "contact":
+            var contacTop, contactLeft;
+            var contactCounter = 0;
+            var contactList = "";
+            for (i = 0; i < sc.char.length; i++) {
+                if (sc.char[i].phone <= sc.char[i].step && sc.char[i].phone > -1) {
+                    contacTop = (Math.floor(contactCounter / 4) * 150) + 150
+                    contactLeft = (contactCounter % 4) * 150;
+                    contactList += '<img src="./images/phone/char/' + sc.char[i].image + '" style="position:absolute; ' + g.makeCss(150, 150, contacTop, contactLeft) +
+                        '" data-name="' + sc.char[i].name + '" class="hover-pointer phone-contact"/>';
+                    contactCounter++;
+                }
+            }
             $(".menu-buttonKill").remove();
-            $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-                "<h2>Contacts</h2>" +
-                "Sorry, this is still in development. " +
-                "</div>");
+            $('#menu_parent').append('<div class="contact-body" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
+                '<h2>Contacts</h2>' + 
+                contactList +
+                '</div>');
+            $('.phone-contact').click(function () {
+                sc.phone($(this).data("name"));
+            });
             break;
         case "pic":
             $(".menu-buttonKill").remove();
