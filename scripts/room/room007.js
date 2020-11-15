@@ -660,7 +660,7 @@ room7.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "eva",
-            text: "I'm so glad you texted me! I know what's on your mind!",
+            text: "I'm so glad you texted me! Now I know what's on your mind!",
             button: [
                 { chatID: 33, text: "Oh yeah! I've been waiting for you.", callback: "eva10a" },
             ]
@@ -765,16 +765,16 @@ room7.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "eva",
-            text: "So pervert? Do you like what you see? I've seen the way to stare at me. I've even noticed your boner when you stare. " +
-            "Do you like this pose? Want to take a picture of it so you can masturbate yourself to it later?",
+            text: "So pervert? Do you like what you see? I've seen the way you stare at me. I've even noticed your boner when you stare. " +
+            "So do you like this pose? Want to take a picture of it so you can masturbate yourself to it later?",
             button: [
-                { chatID: 45, text: "[This is so hot! I'm totally going to jack it to her later!]", callback: "eva10b3e" },
+                { chatID: 45, text: "[This is so hot! I'm totally going to jack off to her later!]", callback: "eva10b3e" },
             ]
         },
         {
             chatID: 45,
             speaker: "eva",
-            text: "So you do you have any other naked pictures of me that I don't know about pervert?",
+            text: "So you do you have any other naked pictures of me that I don't know about, pervert?",
             button: [
                 { chatID: 46, text: "This is the first, but hopefully not the last!", callback: "eva10b3d" },
             ]
@@ -784,7 +784,7 @@ room7.chat = function (chatID) {
             speaker: "eva",
             text: "So it's my first time, do you promise to be gentle?",
             button: [
-                { chatID: 47, text: "Oh wow. Really? You're first time?", callback: "" },
+                { chatID: 47, text: "Oh wow. Really? Your first time?", callback: "" },
             ]
         },
         {

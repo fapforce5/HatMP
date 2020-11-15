@@ -623,38 +623,60 @@ menu.mClick = function (type) {
             break;
         case "admin":
             $(".menu-buttonKill").remove();
-            $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-                '<h2>Cheat Menu</h2>Thank you for your support!<hr/><br />' +
-                '<button type="button" class="admin-mod menu-blueButton" data-type="money">+$1000</button> Add Money <br/><br />' +
-                '<button type="button" class="admin-mod menu-blueButton" data-type="horneyp">+</button> Horney <button type="button" class="admin-mod menu-blueButton" data-type="horneyd">-</button><br/><br />' +
-                '<button type="button" class="admin-mod menu-blueButton" data-type="energyp">+</button> Energy <button type="button" class="admin-mod menu-blueButton" data-type="energyd">-</button><br/><br />' +
-                '<div id="admin-mod-message"></div>' +
+            $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
+                '<h2>Cheat Menu</h2>' +
+                '<label>Password</label> ' +
+                '<span id="cheat_message" style="color:#aa3333;"></span>' +
+                '<input style="width:92%;" type="text" id="cheat_input"/><br/>' +
+                '<button type="button" class="intro-button" id="cheat_passwordSubmit">Submit</button>' +
+                'This cheat menu is a thank you to all the great support I\'ve received from my $5 anf $10 Patrons.<br/>Thank you so much for playing.' +
                 '</div>');
-            $(".admin-mod").click(function () {
-                switch ($(this).data("type")) {
-                    case "money":
-                        if (g.get("money") < 1000000000)
-                            g.mod("money", 1000);
-                        $("#admin-mod-message").text("New balance: $" + g.get("money"));
-                        break;
-                    case "energyp":
-                        g.mod("energy", 10);
-                        $("#admin-mod-message").text("New Energy: " + g.get("energy"));
-                        break;
-                    case "energyd":
-                        g.mod("energy", -10);
-                        $("#admin-mod-message").text("New Energy: " + g.get("energy"));
-                        break;
-                    case "horneyp":
-                        g.mod("arousal", 10);
-                        $("#admin-mod-message").text("New Horney: " + g.get("arousal"));
-                        break;
-                    case "horneyd":
-                        g.mod("arousal", -10);
-                        $("#admin-mod-message").text("New Horney: " + g.get("arousal"));
-                        break;
+            $('#cheat_passwordSubmit').click(function () {
+                var cheatString = $("#cheat_input").val().replace(/\W/g, '').toLowerCase();
+                $("#cheat_message").html("");
+
+                if (btoa(cheatString) === g.pw) {
+                    $("#cheat_Killme").remove();
+                    $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
+                        '<h2>Cheat Menu</h2>Thank you for your support!<hr/><br />' +
+                        '<button type="button" class="admin-mod menu-blueButton" data-type="money">+$1000</button> Add Money <br/><br />' +
+                        '<button type="button" class="admin-mod menu-blueButton" data-type="horneyp">+</button> Sissy <button type="button" class="admin-mod menu-blueButton" data-type="horneyd">-</button><br/><br />' +
+                        '<button type="button" class="admin-mod menu-blueButton" data-type="energyp">+</button> Energy <button type="button" class="admin-mod menu-blueButton" data-type="energyd">-</button><br/><br />' +
+                        '<div id="admin-mod-message"></div>' +
+                        '</div>');
+                    $(".admin-mod").click(function () {
+                        switch ($(this).data("type")) {
+                            case "money":
+                                if (g.get("money") < 1000000000)
+                                    g.mod("money", 1000);
+                                $("#admin-mod-message").text("New balance: $" + g.get("money"));
+                                break;
+                            case "energyp":
+                                g.mod("energy", 10);
+                                $("#admin-mod-message").text("New Energy: " + g.get("energy"));
+                                break;
+                            case "energyd":
+                                g.mod("energy", -10);
+                                $("#admin-mod-message").text("New Energy: " + g.get("energy"));
+                                break;
+                            case "horneyp":
+                                g.mod("sissy", 10);
+                                $("#admin-mod-message").text("New Sissy: " + g.get("sissy"));
+                                break;
+                            case "horneyd":
+                                g.mod("sissy", -10);
+                                $("#admin-mod-message").text("New Sissy: " + g.get("sissy"));
+                                break;
+                        }
+                    });
+                } else {
+                    $("#cheat_message").html("It appears the pawword doesn't work. If you're a $5 or $10 Patron it should be in the posts. ");
                 }
+
+
+
             });
+
             break;
         case "time":
             $(".menu-buttonKill").remove();

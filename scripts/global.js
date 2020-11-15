@@ -19,6 +19,8 @@ g.tview = "f";
 g.lview = "b";
 g.prevRoom;
 g.prevview = null;
+g.pw = "dGhhbmt5b3U=";
+
 
 g.roomID = 1;
 g.dt = g.startDate;
