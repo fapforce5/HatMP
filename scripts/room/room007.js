@@ -19,6 +19,7 @@ room7.main = function () {
     var lolaStep = sc.getstep("lola");
     var evaStep = sc.getstep("eva");
     var meStep = sc.getstep("me");
+    var bigguyStep = sc.getstep("bigguy");
 
     if (meStep === 0) {
         btnList = [
@@ -108,6 +109,10 @@ room7.main = function () {
                 "image": "7_mainCharRoomAlt/eva0.png"
             }];
         chat(31, 7);
+    }
+    else if (bigguyStep === 5 && (g.dt.getDay() === 0 || g.dt.getDay() === 6)) {
+        nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
+        chat(55, 7);
     }
     else {
         chat(15, 7);
@@ -268,7 +273,6 @@ room7.chatcatch = function (callback) {
         case "eva30":
             nav.killbutton("eva");
             char.addtime(30);
-            sc.setstep("eva", 30);
             break;
         case "eva10a":
             nav.modbutton("eva", "7_mainCharRoomAlt/eva2.png", null, null);
@@ -286,12 +290,13 @@ room7.chatcatch = function (callback) {
             else {
                 nav.killall();
                 nav.bg("7_mainCharRoomAlt/eva10c.jpg");
-                chat(34, 7);
+                g.roomTimeout = setTimeout(function () { chat(34, 7); }, 4000);
+                
             }
             break;
         case "eva10d":
             nav.bg("7_mainCharRoomAlt/eva10d.jpg");
-
+            g.roomTimeout = setTimeout(function () { chat(36, 7); }, 4000);
             break;
         case "eva10b1":
             nav.killall();
@@ -355,6 +360,42 @@ room7.chatcatch = function (callback) {
             g.setflag("evaDayEvent");
             char.addtime(60);
             char.room(10);
+            break;
+        case "eva10b3ht":
+            nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
+            nav.button({
+                "type": "img",
+                "name": "eva10b3ht",
+                "left": 0,
+                "top": 280,
+                "width": 1920,
+                "height": 800,
+                "image": "7_mainCharRoomAlt/eva10b3ht.gif"
+            }, 7);
+            g.roomTimeout = setTimeout(function () { room7.chatcatch("eva10it"); }, 4000);
+            break;
+        case "eva10it":
+            nav.killbutton("eva10b3ht");
+            nav.bg("7_mainCharRoomAlt/eva10it.jpg");
+            chat(53, 7);
+            break;
+        case "eva10jt":
+            nav.bg("7_mainCharRoomAlt/eva10jt.jpg");
+            break;
+        case "eva10kt":
+            char.addtime(30);
+            g.setflag("evaDayEvent");
+            cl.doCum(true);
+            g.mod("receiveHandjobFemale", 1);
+            g.mod("sissy", 5);
+            g.pass = "";
+            break;
+        case "eva10e":
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/eva10e.jpg");
+            break;
+        case "eva10f":
+            nav.bg("7_mainCharRoomAlt/eva10f.jpg");
             break;
         default:
             break;
@@ -646,7 +687,7 @@ room7.chat = function (chatID) {
             text: "Oh... it's so tiny. I remember it being bigger. If I knew it was so small I wouldn't have bothered. I " +
             "didn't even know dicks could be so tiny. ",
             button: [
-                { chatID: 35, text: "We could try?", callback: "eva10d" },
+                { chatID: 35, text: "We could try?", callback: "" },
             ]
         },
         {
@@ -654,23 +695,23 @@ room7.chat = function (chatID) {
             speaker: "eva",
             text: "I'll try licking it, see if it get bigger?",
             button: [
-                { chatID: 36, text: "", callback: "eva10d" },
+                { chatID: -1, text: "Oh yeah, try that.", callback: "eva10d" },
             ]
         },
         {
             chatID: 36,
             speaker: "eva",
-            text: "Nope, still tiny, let me stroke it.",
+            text: "Nope. Still tiny. Let me stroke it.",
             button: [
-                { chatID: 37, text: "", callback: "eva10e" },
+                { chatID: 37, text: "...", callback: "eva10e" },
             ]
         },
         {
             chatID: 37,
             speaker: "eva",
-            text: "In progress",
+            text: "Hmmmm. I can't get a grip on it.... Let me try something else.",
             button: [
-                { chatID: 15, text: "", callback: "" },
+                { chatID: 52, text: "what?", callback: "eva10f" },
             ]
         },
         {
@@ -786,6 +827,39 @@ room7.chat = function (chatID) {
             "we'll play some more. [end this content]",
             button: [
                 { chatID: -1, text: "Ok cool", callback: "eva10b3h" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "eva",
+            text: "If I grab it with just my finger tips I think I can stroke it for you. ",
+            button: [
+                { chatID: -1, text: "Ok cool", callback: "eva10b3ht" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "eva",
+            text: "Oh hahah you came really quick!",
+            button: [
+                { chatID: 54, text: "UUUGGGHHH", callback: "eva10jt" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "eva",
+            text: "Hahaha gross, there's cum all over your belly. I hope you enjoyed yourself, I just wish you were bigger so I could " +
+            "enjoy myself too. Oh well, gotta go.",
+            button: [
+                { chatID: 15, text: "Oh yeah, See ya.", callback: "eva10kt" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "bigguy",
+            text: "In development",
+            button: [
+                { chatID: 15, text: "In dev", callback: "" },
             ]
         },
     ];

@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\scripts",
-    "\\scripts\\room"
+    "\\scripts\\room",
+    "\\style"
   ],
-  "SelectedNode": "\\scripts\\room\\room018.js",
+  "SelectedNode": "\\scripts\\room\\room010.js",
   "PreviewInSolutionExplorer": false
 }

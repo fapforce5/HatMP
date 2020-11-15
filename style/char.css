@@ -266,9 +266,19 @@
     text-align:left;
 }
 
-.eva-phone {
+.eva-phone, .lola-phone {
     background: #eb9b54;
     color: #000;
+}
+
+.missy-phone {
+    background: #000000;
+    color: #ffffff;
+}
+
+.zoey-phone {
+    background: #38494d;
+    color: #ffffff;
 }
 
 .me-phone{

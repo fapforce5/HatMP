@@ -202,6 +202,8 @@ sc.events = [
     { name: "construction", step: 1, txt: "Interview at the construction site.", img: "const1", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "construction", step: 2, txt: "Work construction. - Need to arrive before 9:00 AM in a t-shirt and jeans. ", img: "sweep", show: true, row: 0, col: 1, ach: false, major: false },
 
+    { name: "lola", step: -4, txt: "Just play", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "lola", step: -3, txt: "Professed Love", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: 0, txt: "Ask for a book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -212,10 +214,11 @@ sc.events = [
     { name: "lola", step: 5, txt: "Rubbed back in panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: 6, txt: "Rubbed back spread pussy", img: "lolaMass1", show: true, row: 0, col: 2, ach: false, major: false },
     { name: "lola", step: 7, txt: "Rinse and repeat", img: "", show: false, row: 0, col: 3, ach: false, major: false },
-    { name: "lola", step: 8, txt: "Truth or Dare", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
-    { name: "lola", step: 9, txt: "Back In", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
-    { name: "lola", step: 10, txt: "Bed time confession", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
-    { name: "lola", step: 11, txt: "UNK", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 8, txt: "Truth or Dare", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 9, txt: "Back In", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 10, txt: "Bed time confession", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 11, txt: "Waiting on text", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 12, txt: "Next - UNK", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
 
     { name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "eva", step: 0, txt: "Ask for book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -225,10 +228,11 @@ sc.events = [
     { name: "eva", step: 4, txt: "Toe Suck", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "eva", step: 5, txt: "Foot Job", img: "evaFootjob", show: true, row: 0, col: 3, ach: false, major: false },
     { name: "eva", step: 6, txt: "Rinse and repeat", img: "", show: false, row: 0, col: 4, ach: false, major: false },
-    { name: "eva", step: 7, txt: "Truth or Dare", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 8, txt: "Back In", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 10, txt: "Next meeting in room", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 7, txt: "Truth or Dare", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 8, txt: "Back In", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 10, txt: "Next meeting in room", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 11, txt: "Had the sex - phone contacts", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
 
     { name: "eva", step: 30, txt: "End of the Eva line", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
 
@@ -1220,14 +1224,14 @@ sc.phone = function (char) {
                 ];
                 sc.phoneChat(clist, char);
             }
-            else if (step < 7) {
+            else if (step < 6) {
                 clist = [
                     { s: "me", t: "You are so hot!" },
                     { s: "eva", t: "You are so weird and perverted! I bet" }
                 ];
                 sc.phoneChat(clist, char);
             }
-            else if (step === 7) {
+            else if (step === 6) {
                 clist = [
                     { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
                     { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
@@ -1236,7 +1240,7 @@ sc.phone = function (char) {
                 ];
                 sc.phoneChat(clist, char);
             }
-            else if (step === 8) {
+            else if (step === 7) {
                 clist = [
                     { s: "me", t: "That totally sucked!" },
                     { s: "eva", t: "I know! I'm so sorry! " + sc.n("landlord") + " got soooooo mad. I'm not even supposed to talk to you." },
@@ -1286,22 +1290,127 @@ sc.phone = function (char) {
             else if (step === 30) {
                 clist = [
                     { s: "me", t: "Soooo what's up?" },
-                    { s: "eva", t: "I think we're better friends. I like you, i just need a manly cock" },
+                    { s: "eva", t: "Hayyyy buddy. I like you, i just need a manly cock" },
                 ];
                 sc.phoneChat(clist, char);
             }
+            break;
+        case "lola":
+            if (step === 0)
+                sc.phoneChat([
+                    { s: "me", t: "Hay " + sc.n("lola") + "!" },
+                    { s: "lola", t: "You should come by our room! We like hanging out with you." },
+                ], char);
+            else if (step < 4)
+                sc.phoneChat([
+                    { s: "me", t: "Soooo what's up?" },
+                    { s: "lola", t: "I'm so sore from swimming, I could use a massage." },
+                ], char);
+            else if (step < 4)
+                sc.phoneChat([
+                    { s: "me", t: "Hay " + sc.n("lola") },
+                    { s: "lola", t: "Hay " + sc.n("eva") + " wanted to play a game. Could you get some alcohol?" },
+                ], char);
+            else if (step < 7)
+                sc.phoneChat([
+                    { s: "me", t: "Soooo what's up?" },
+                    { s: "lola", t: "My legs are so tight from swimming. Could you give them a rub down?" },
+                ], char);
+            else if (step === 7)
+                sc.phoneChat([
+                    { s: "me", t: "Soooo what's up?" },
+                    { s: "lola", t: sc.n("eva") + " said something about a game. Sounds like fun, we should play." },
+                ], char);
+            else if (step === 8)
+                sc.phoneChat([
+                    { s: "me", t: "That was so crazy, I'm so sorry" },
+                    { s: "lola", t: "I know! " + sc.n("landlord") + " made us promise not to see you again." },
+                    { s: "me", t: "That's terrible. I miss seeing you" },
+                    { s: "lola", t: "I'm working on her to try and get you back into the house. You should see her at work and work on it too. She's really mad" },
+                ], char);
+            else if (step === 9)
+                sc.phoneChat([
+                    { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                    { s: "lola", t: "It really is. I really missed you." },
+                ], char);
+            else if (step === 10)
+                sc.phoneChat([
+                    { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                    { s: "lola", t: "It really is. I really missed you." },
+                ], char);
+            else if (step === 11) {
+                if (g.roomID === 450) {
+                    if (g.isNight()) {
+                        sc.phoneChat([
+                            { s: "me", t: "Hay " + sc.n("lola") + " I'm at the park " },
+                            { s: "lola", t: "It's so late, how about we meet up during the day. " },
+                            { s: "me", t: "Oh yeah, of course. I'll text you during the day." },
+                        ], char);
+                    }
+                    else {
+                        menu.mClick("close");
+                        menu.mClick("close");
+                        room450.btnclick("lolaPark");
+                    }
+                }
+                else {
+                    sc.phoneChat([
+                        { s: "me", t: "Hay " + sc.n("lola") + " we should talk " },
+                        {
+                            s: "lola", t: "I'm so glad you texted me. We should talk, but I can't let " + sc.n("landlord") + " or " +
+                                sc.n("eva") + " know I'm breaking the rules. "
+                        },
+                        { s: "me", t: "Ok. I'll text you from the park. We'll have a date." },
+                        { s: "lola", t: "I'm so glad! I'll see you there. " },
+                    ], char);
+                }
+            }
+            else if (step === 12) {
+                sc.phoneChat([
+                    { s: "me", t: "In Development" },
+                ], char);
+            }
+            break;
+        case "missy":
+
+            sc.phoneChat([
+                { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                { s: "missy", t: "In progress" },
+            ], char);
+
+            break;
+        case "zoey":
+            sc.phoneChat([
+                { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                { s: "zoey", t: "In progress" },
+            ], char);
             break;
     }
 
 
 };
 
+//{ name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: 0, txt: "Ask for a book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: 1, txt: "Rubbed back with clothes", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: 2, txt: "Rubbed back shirt pulled up", img: "lolaMass", show: true, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: 3, txt: "Rubbed back topless", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: 4, txt: "Waiting on liquor", img: "spinBottle", show: true, row: 0, col: 1, ach: false, major: true },
+//{ name: "lola", step: 5, txt: "Rubbed back in panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+//{ name: "lola", step: 6, txt: "Rubbed back spread pussy", img: "lolaMass1", show: true, row: 0, col: 2, ach: false, major: false },
+//{ name: "lola", step: 7, txt: "Rinse and repeat", img: "", show: false, row: 0, col: 3, ach: false, major: false },
+//{ name: "lola", step: 8, txt: "Truth or Dare", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+//{ name: "lola", step: 9, txt: "Back In", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+//{ name: "lola", step: 10, txt: "Bed time confession", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+//{ name: "lola", step: 11, txt: "UNK", img: "evaLolaBlow", show: true, row: 0, col: 3, ach: false, major: true },
+
 sc.phoneChat = function (chatList, char) {
     var ts = "";
     var thisCar = sc.get(char);
     var thisImg = 'style="height: ' + 100 * g.ratio + 'px; width: ' + 100 * g.ratio + 'px; display:inline-block; vertical-align: top;"';
     $.each(chatList, function (i, v) {
-        ts += '<div class="phone-chat char-20 ' + v.s + '-phone" style="' + g.cssText(20) + ' border-radius:' + 10 * g.ratio + 'px;">' + v.t + '</div>'; 
+        ts += '<div class="phone-chat char-20 ' + v.s + '-phone" style="' + g.cssText(20) + ' border-radius:' + 10 * g.ratio + 'px;">' + v.t + '</div>';
     });
 
 
@@ -1309,4 +1418,3 @@ sc.phoneChat = function (chatList, char) {
     $('.contact-body').html('<img src="./images/phone/char/' + thisCar.image + '" ' + thisImg + '/>' +
         '<div style="display:inline-block; font-weight:bold; vertical-align: top; padding-top:' + 10 * g.ratio + 'px; font-size:' + 40 * g.ratio + 'px;">' + thisCar.display + '</div><hr/>' + ts);
 };
-

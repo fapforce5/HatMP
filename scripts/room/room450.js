@@ -180,6 +180,20 @@ room450.btnclick = function (name) {
             else
                 chat(13, 450);
             break;
+        case "lolaPark":
+            nav.killall();
+            nav.bg("450_park/lola0.jpg");
+            chat(15, 450);
+            break;
+        case "lola2":
+            chat(21, 450);
+            break;
+        case "lola4":
+            chat(23, 450);
+            break;
+        case "lola5":
+            chat(24, 450);
+            break;
         default:
             break;
     }
@@ -237,6 +251,71 @@ room450.chatcatch = function(callback){
             cl.c.socks = "w";
             cl.display();
             char.room(456);
+            break;
+        case "lola1":
+            nav.bg("450_park/lola1.jpg");
+            break;
+        case "lola2":
+            nav.bg("450_park/450_bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "lola2",
+                "left": 1706,
+                "top": 233,
+                "width": 41,
+                "height": 87,
+                "image": "450_park/lola2.png"
+            }, 450);
+            break;
+        case "lola3":
+            nav.killall();
+            nav.bg("450_park/lola3.jpg");
+            break;
+        case "lola4":
+            nav.bg("450_park/lola4.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "lola4",
+                "left": 1665,
+                "top": 298,
+                "width": 110,
+                "height": 392,
+                "image": "450_park/lola4.png"
+            }, 450);
+            break;
+        case "lola5":
+            nav.killall();
+            nav.bg("450_park/lola5.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "lola5",
+                "left": 414,
+                "top": 486,
+                "width": 41,
+                "height": 161,
+                "image": "450_park/lola5.png"
+            }, 450);
+            break;
+        case "lola6":
+            nav.killall();
+            nav.bg("450_park/lola6.jpg");
+            break;
+        case "lola6kiss":
+            nav.bg("450_park/lola6kiss.jpg");
+            break;
+        case "lola7a":
+            sc.setstep("lola", -3);
+            sc.setstep("lola", 12);
+            g.setflag("lolaDayEvent");
+            char.addtime(120);
+            char.room(450);
+            break;
+        case "lola7b":
+            sc.setstep("lola", -4);
+            sc.setstep("lola", 12);
+            g.setflag("lolaDayEvent");
+            char.addtime(120);
+            char.room(450);
             break;
         default:
             break;
@@ -368,6 +447,202 @@ room450.chat = function(chatID){
             text: "Better wear my normal clothes, it's cold out here..",
             button: [
                 { chatID: -1, text: "...", callback: "redress" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "lola",
+            text: "I'm so glad you called me out here on a date! I've been dreaming of this day for years, just you and me " +
+                "alone together. I can't believe you've waited this ong to ask me out.",
+            button: [
+                { chatID: 16, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "This is so crazy! Should I even be doing this? This is wrong, but it feels so right. I don't care what anyone " +
+                "says, I'm going to go on a date with " + sc.n("lola") + " and I'm going to enjoy it.",
+            button: [
+                { chatID: 17, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "lola",
+            text: "I can tell you're thinking about something. I've known you way too long and I've seen that look before. Is " +
+                "it good thoughts?",
+            button: [
+                { chatID: 18, text: "Oh yea, the best of thoughts, I'm glad we're on this date.", callback: "" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "lola",
+            text: "I'm so relieved! I was afraid I was packing this picnic basket for nothing. I have a secrect place in the " +
+                "forest I want to go and have our picnic.",
+            button: [
+                { chatID: 19, text: "Oh sweet, where is it?", callback: "" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "lola",
+            text: "I can't tell you silly, 'cause then it wouldn't be a secret. I'll tell you what, I'll run and hide, and you have " +
+                "to find me.",
+            button: [
+                { chatID: 20, text: "Huh?", callback: "lola1" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "lola",
+            text: "FIND ME!",
+            button: [
+                { chatID: -1, text: "Whaaaa...", callback: "lola2" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "lola",
+            text: "You found me!",
+            button: [
+                { chatID: 22, text: "ok", callback: "lola3" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "lola",
+            text: "Find me again!",
+            button: [
+                { chatID: -1, text: "ok", callback: "lola4" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "lola",
+            text: "Hahahaha you found me again! One more time!",
+            button: [
+                { chatID: -1, text: "ok", callback: "lola5" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "lola",
+            text: "Got me again! I guess you deserve a reward...",
+            button: [
+                { chatID: 25, text: "I like rewards...", callback: "lola6" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "lola",
+            text: "A picnic!!!! I made this all for you!",
+            button: [
+                { chatID: 26, text: "Oh, not what I was expecting, but still nice.", callback: "" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "lola",
+            text: "So I brought you out here so we could talk about us.",
+            button: [
+                { chatID: 27, text: "Ok...", callback: "" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "lola",
+            text: "I was going to wait for you to say something, but I just can't. My stomach is fluttering with butterflies. I'm " +
+                "just so nervous since I put it all out there. So.... What's what do you think about me?",
+            button: [
+                { chatID: 28, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "thinking",
+            text: "Oh man. " + sc.n("lola") + " is really serious about this. I've never seen her show any interest in any boy, for the " +
+                "longest time I just thought she was a lesbian. I know that she's going to want someone who is true to her, and there's no way " +
+                "I can be true to just her. On the other hand if I didn't return her feelings it would just break her. How do I keep her happy, " +
+                "but not mislead her?",
+            button: [
+                { chatID: 29, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "lola",
+            text: "You've been pretty quiet over there. I'm afraid of what that means.",
+            button: [
+                { chatID: 30, text: "I want to tell you that I also have deep real feelings for you.", callback: "" },
+                { chatID: 34, text: "I care about you very much, but I'm not really at a stage that I can remain monogamous ", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "lola",
+            text: "Oh thank god! I was afraid you would think this was weird or gross. I've been sweating all week wondering what you " +
+            "were thinking of me. I'm so relieved. Kiss me you fool!",
+            button: [
+                { chatID: 31, text: "[Kiss her]", callback: "lola6kiss" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "lola",
+            text: "**KISS**",
+            button: [
+                { chatID: 32, text: "...", callback: "lola6" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "lola",
+            text: "[Proceed to make small talk for a while and enjoy a delicious lunch] ",
+            button: [
+                { chatID: 33, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "lola",
+            text: "I've got to get going. I had a great time. We should do this again. Call me when next time you find yourself in the park. ",
+            button: [
+                { chatID: -1, text: "I will, This was great.", callback: "lola7a" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "lola",
+            text: "Oh hahaha. We don't have to get married right now. Maybe we take thing casually for a little while, see where  " +
+            "it goes. ",
+            button: [
+                { chatID: 35, text: "Yeah, I can do that", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "lola",
+            text: "Ok, in the mean time lets enjoy this picnic I packed all the way out here. ",
+            button: [
+                { chatID: 36, text: "Yea, I'm so hungry", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "lola",
+            text: "[Proceed to make small talk for a while and enjoy a delicious lunch] ",
+            button: [
+                { chatID: 37, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "lola",
+            text: "I'm going to go. If you want to meet up again just text me when you're in the park. ",
+            button: [
+                { chatID: -1, text: "ok. Later", callback: "lola7b" }
             ]
         },
     ];
