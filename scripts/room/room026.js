@@ -1,11 +1,8 @@
-﻿//Room name
+﻿//Living Room
 var room26 = {};
 room26.main = function () {
-    var btnList = new Array();
-
-    if (sc.mother().thisRoom) {
-        nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg")
-        btnList.push({
+    if (g.prevRoom === 8 && g.pass === 26) {
+        nav.button({
             "type": "btn",
             "name": "landlord",
             "left": 764,
@@ -13,14 +10,36 @@ room26.main = function () {
             "width": 701,
             "height": 930,
             "image": "26_livingRoom/ll.png"
-        });
+        }, 26);
+        if (cl.c.panties === "c" && cl.c.shirt === null && cl.c.pants === null && cl.c.socks === null && cl.c.shoes === null && cl.c.dress === null) {
+            zcl.displayMain(-250, 200, .25, "panties", true);
+            chat(52, 26);
+        }
+        else
+            chat(51, 26);
     }
+    else {
+        var btnList = new Array();
 
-    var navList = [16];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 26);
-    });
-    nav.buildnav(navList);
+        if (sc.mother().thisRoom) {
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg")
+            btnList.push({
+                "type": "btn",
+                "name": "landlord",
+                "left": 764,
+                "top": 58,
+                "width": 701,
+                "height": 930,
+                "image": "26_livingRoom/ll.png"
+            });
+        }
+
+        var navList = [16];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 26);
+        });
+        nav.buildnav(navList);
+    }
 };
 
 room26.btnclick = function (name) {
@@ -50,6 +69,16 @@ room26.btnclick = function (name) {
                     chat(30, 26);
                 else if (ll === 8)
                     chat(43, 26);
+                else if (ll > 15) {
+                    if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2)) {
+                        chat(48, 26);
+                    }
+                    else if (!inv.has("landlordKey")) {
+                        console.log("add stuff");
+                    }
+                    else
+                        chat(2, 26);
+                }
                 else
                     chat(2, 26);
             }
@@ -67,6 +96,11 @@ room26.btnclick = function (name) {
                 nav.bg("26_livingRoom/passtime6g.jpg");
                 chat(23, 26);
             }
+            break;
+        case "panties2":
+            nav.killbutton("panties2");
+            nav.bg("26_livingRoom/passtime6g.jpg");
+            chat(54, 26);
             break;
         default:
             break;
@@ -209,6 +243,54 @@ room26.chatcatch = function (callback) {
                 "height": 930,
                 "image": "26_livingRoom/ll.png"
             }, 26);
+            break;
+        case "closet":
+            g.pass = 26;
+            char.room(8);
+            break;
+        case "panties1":
+            cl.c.panties = null;
+            nav.killbutton("landlord");
+            nav.bg("26_livingRoom/panties1.jpg")
+            zcl.displayMain(-1550, -900, .5, "panties", true);
+            break;
+        case "panties2":
+            nav.killall();
+            nav.bg("26_livingRoom/panties2.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "panties2",
+                "left": 807,
+                "top": 307,
+                "width": 361,
+                "height": 625,
+                "image": "26_livingRoom/panties2.png"
+            }, 26);
+            break;
+        case "panties3":
+            nav.bg("26_livingRoom/passtime6h.jpg");
+            break;
+        case "panties4":
+            nav.bg("26_livingRoom/panties4.jpg");
+            break;
+        case "panties5":
+            nav.bg("26_livingRoom/panties5.jpg");
+            break;
+        case "panties6":
+            nav.bg("26_livingRoom/panties6.jpg");
+            break;
+        case "panties7":
+            cl.c.panties = "c";
+            nav.bg("26_livingRoom/passtime6a.jpg")
+            zcl.displayMain(-1550, -900, .5, "panties", true);
+            break;
+        case "panties8":
+            g.pass = 10;
+            sc.setstep("landlord", -2);
+            g.setflag("momchat");
+            char.addtime(60);
+            g.mod("sissy", 30);
+            char.room(8);
             break;
         default:
             break;
@@ -542,7 +624,7 @@ room26.chat = function (chatID) {
             chatID: 38,
             speaker: "landlord",
             text: "Well I was just going over boy and girl parts with " + sc.n("me") + " here. So he knows what the no no spots are. Now I know " +
-            "you two have never seen a penis before... Take a look at " + sc.n("me") + "'s penis.",
+                "you two have never seen a penis before... Take a look at " + sc.n("me") + "'s penis.",
             button: [
                 { chatID: 39, text: "...", callback: "passtime7c" }
             ]
@@ -618,6 +700,119 @@ room26.chat = function (chatID) {
             text: "Get that thing out of here! I'm trying to watch my shows.",
             button: [
                 { chatID: -1, text: "[Whimper away]", callback: "passtimeStop" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "landlord",
+            text: "I seem to be missing my favorite pair of panties. You don't know anything about that do you?",
+            button: [
+                { chatID: 49, text: sc.n("eva") + " probably took them. ", callback: "" },
+                { chatID: 50, text: "Oh. You caught me, I stole them.", callback: "" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "landlord",
+            text: "Don't lie to me girl. " + sc.n("eva") + "'s ass is way too skinny to fit into my panties. Your ass on the other hand " +
+                "fits my panties perfectly. ",
+            button: [
+                { chatID: 50, text: "Oh, yeah, that was a stupid lie", callback: "" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "landlord",
+            text: "I need you to go upstairs and come back down in just my panties and nothing else. Now go!",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n('landlord'), callback: "closet" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "landlord",
+            text: "Try again. Go up and put on just my panties then come back down. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n('landlord'), callback: "closet" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "landlord",
+            text: "That's my slutty little girl. You did make one mistake though. You stole a pair of " + sc.n("landlord") + "'s " +
+                " clean panties. The clean panties don't have my sweet pussy smell in them. Give me those panties so I can make them smell " +
+                "yummy for you. ",
+            button: [
+                { chatID: 53, text: "[Give " + sc.n('landlord') + " back her panties.]", callback: "panties1" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "landlord",
+            text: "Now the first step in making a great scent for these panties is to get the pussy juices flowing. Come here and " +
+                "eat my pussy little girl, make my juicy.",
+            button: [
+                { chatID: -1, text: "[Eat her pussy]", callback: "panties2" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "landlord",
+            text: "Don't just lick it, really get in there and eat my pussy!",
+            button: [
+                { chatID: 55, text: "Deeper!", callback: "panties3" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "thinking",
+            text: sc.n("landlord") + "'s pussy is so wet, I can feel her juices drip into my mouth. And the smell is so strong, I love " +
+                "the smell of her pussy!",
+            button: [
+                { chatID: 56, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "landlord",
+            text: "Oh yeah! Good boy!",
+            button: [
+                { chatID: 57, text: "MMMmMMmmmmmMMMMMMMMMmmmmmmmm", callback: "panties4" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "landlord",
+            text: "See how creamy that is. That's what makes a good panty smell. Now stuff my panties in my pussy so they get a " +
+                "good scent in them. Shove them in deep.",
+            button: [
+                { chatID: 58, text: "[Shove " + sc.n("landlord") + "'s panties in her pussy]", callback: "panties5" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "landlord",
+            text: "You lucky girl, these panties are going to smell so good. Anyone that walks by will be able to smell them and they'll " +
+            "be thinking of your pussy. ",
+            button: [
+                { chatID: 59, text: "OOoooo", callback: "panties6" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "thinking",
+            text: "Those are so dirty with " + sc.n("landlord") + "'s pussy juice, I can smell them from here. That smell is never " +
+            "coming out. When ever I wear them everyone's going to smell her scent on me.",
+            button: [
+                { chatID: 60, text: "...", callback: "panties7" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "landlord",
+            text: "Now run up to your room and put on some clothes. ",
+            button: [
+                { chatID: -1, text: "Thank you " + sc.n("landlord") , callback: "panties8" },
             ]
         },
     ];

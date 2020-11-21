@@ -3,7 +3,15 @@ var room30 = {};
 room30.main = function () {
     if (!g.isNight()) {
         if (sc.sister().roomID === 13) {
-            nav.bg("30_peek/pillow.jpg");
+            var overhear = Math.floor(Math.random() * 5) === 0;
+            if (!g.get("puter"))
+                overhear = !(Math.floor(Math.random() * 3) === 0);
+            if (overhear) {
+                nav.bg("30_peek/password.jpg");
+                chat(2, 30);
+            }
+            else
+                nav.bg("30_peek/pillow.jpg");
         }
     }
     var btnList = [
@@ -59,9 +67,41 @@ room30.chat = function (chatID) {
             ]
         },
         {
-            chatID: 0,
+            chatID: 1,
             speaker: "me",
             text: "THEY'RE RIGHT THERE DUMBASS. I can't sneak in now.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "lola",
+            text: ".... always forget",
+            button: [
+                { chatID: 3, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "eva",
+            text: "I have to get my report done. Please just tell me again.",
+            button: [
+                { chatID: 4, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "lola",
+            text: "The password is unicorn. You know it's my favorite animal.",
+            button: [
+                { chatID: 5, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "eva",
+            text: "Thanks butthead! Was that sooooo hard?",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

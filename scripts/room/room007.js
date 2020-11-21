@@ -96,19 +96,34 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/lola0.jpg");
         chat(27, 7);
     }
-    else if (evaStep === 10 && g.pass === "phonecall") {
-        cl.nude();
-        btnList = [
-            {
-                "type": "img",
-                "name": "eva",
-                "left": 734,
-                "top": 18,
-                "width": 561,
-                "height": 1000,
-                "image": "7_mainCharRoomAlt/eva0.png"
-            }];
-        chat(31, 7);
+    else if ((evaStep === 10 || evaStep === 11) && g.pass === "phonecall") {
+        if (evaStep === 10) {
+            cl.nude();
+            btnList = [
+                {
+                    "type": "img",
+                    "name": "eva",
+                    "left": 734,
+                    "top": 18,
+                    "width": 561,
+                    "height": 1000,
+                    "image": "7_mainCharRoomAlt/eva0.png"
+                }];
+            chat(31, 7);
+        }
+        else {
+            btnList = [
+                {
+                    "type": "img",
+                    "name": "eva",
+                    "left": 734,
+                    "top": 18,
+                    "width": 561,
+                    "height": 1000,
+                    "image": "7_mainCharRoomAlt/eva0.png"
+                }];
+            chat(56, 7);
+        }
     }
     else if (bigguyStep === 5 && (g.dt.getDay() === 0 || g.dt.getDay() === 6)) {
         nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
@@ -383,12 +398,14 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/eva10jt.jpg");
             break;
         case "eva10kt":
-            char.addtime(30);
-            g.setflag("evaDayEvent");
+            sc.setstep("eva", 11);
             cl.doCum(true);
+            g.setflag("evaDayEvent");
+            char.addtime(60);
             g.mod("receiveHandjobFemale", 1);
             g.mod("sissy", 5);
             g.pass = "";
+            char.room(10);
             break;
         case "eva10e":
             nav.killall();
@@ -396,6 +413,10 @@ room7.chatcatch = function (callback) {
             break;
         case "eva10f":
             nav.bg("7_mainCharRoomAlt/eva10f.jpg");
+            break;
+        case "eva11a":
+            cl.nude();
+            zcl.displayMain(0, 1000, .23, "", true);
             break;
         default:
             break;
@@ -824,7 +845,7 @@ room7.chat = function (chatID) {
             chatID: 51,
             speaker: "eva",
             text: "That's going to be dripping out of me all day! I love you cock so much. Just text me anytime you're in your room and " +
-            "we'll play some more. [end this content]",
+            "we'll play some more.",
             button: [
                 { chatID: -1, text: "Ok cool", callback: "eva10b3h" },
             ]
@@ -849,7 +870,7 @@ room7.chat = function (chatID) {
             chatID: 54,
             speaker: "eva",
             text: "Hahaha gross, there's cum all over your belly. I hope you enjoyed yourself, I just wish you were bigger so I could " +
-            "enjoy myself too. Oh well, gotta go.",
+            "enjoy myself too. Oh well, gotta go. Text me tomorrow, we'll play some more.",
             button: [
                 { chatID: 15, text: "Oh yeah, See ya.", callback: "eva10kt" },
             ]
@@ -860,6 +881,31 @@ room7.chat = function (chatID) {
             text: "In development",
             button: [
                 { chatID: 15, text: "In dev", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "eva",
+            text: "Hay " + sc.n("me") + ", I want to try something. Strip mister!",
+            button: [
+                { chatID: 57, text: "ok!", callback: "eva11a" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "eva",
+            text: "So pervert, I've always wanted to get sucked off. I know what a giant weirdo you are, so I know you'll love to suck me!",
+            button: [
+                { chatID: 58, text: "Wait, what?", callback: "" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "eva",
+            text: "My toes. I need you to suck on my toes. I read somewhere that some girls can orgasm if their toes get sucked " +
+            "just right. I want to try it!",
+            button: [
+                { chatID: -1, text: "Oh Cool ok!", callback: "" },
             ]
         },
     ];

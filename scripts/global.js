@@ -121,6 +121,7 @@ g.st = [
     { n: "momRaidCloset", t: false, q: "day" },
     { n: "tookHormonePill", t: false, q: "day" },
     { n: "gworkout", t: false, q: "day" },
+    { n: "tim", t: false, q: "day" },
 
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
@@ -148,7 +149,7 @@ g.sissy = [
     { id: 12, pID: 11, icon: "cock2", x: 734, y: 665, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", group: "Cock" , ach: false, active: true },
     { id: 13, pID: 12, icon: "cock3", x: 645, y: 754, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", group: "Cock" , ach: false, active: true },
     { id: 14, pID: 13, icon: "cock4", x: 557, y: 842, name: "It's a Clitty", description: "You're no longer a man, sissy", group: "Cock" , ach: false, active: true },
-    { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy" , ach: false, active: false },
+    { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy", ach: false, active: true },
 
     { id: 16, pID: 0, icon: "makeup0", x: 823, y: 402, name: "Makeup", description: "You can go out wearing makeup", group: "Makeup", ach: false, active: true },
     { id: 17, pID: 16, icon: "makeup1", x: 734, y: 313, name: "Piercing", description: "You can get piercings  [Not Implemented]", group: "Makeup", ach: false, active: true },
@@ -161,18 +162,18 @@ g.sissy = [
     { id: 23, pID: 22, icon: "fight2", x: 1347, y: 490, name: "Sexy Dance", description: "You can do a sexy dance during a fight", group: "Fight" , ach: false, active: true },
     { id: 24, pID: 23, icon: "fight3", x: 1471, y: 490, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", group: "Fight" , ach: false, active: true },
 
-    { id: 25, pID: 0, icon: "gloryhole0", x: 910, y: 304, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole [Not Implemented]", group: "Glory Hole" , ach: false, active: false },
-    { id: 26, pID: 25, icon: "gloryhole1", x: 910, y: 179, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", group: "Glory Hole" , ach: false, active: false },
-    { id: 27, pID: 26, icon: "gloryhole2", x: 910, y: 53, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", group: "Whore" , ach: false, active: false },
+    { id: 25, pID: 0, icon: "gloryhole0", x: 910, y: 304, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole [Not Implemented]", group: "Glory Hole" , ach: false, active: true },
+    { id: 26, pID: 25, icon: "gloryhole1", x: 910, y: 179, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", group: "Glory Hole", ach: false, active: true },
+    { id: 27, pID: 26, icon: "gloryhole2", x: 910, y: 53, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", group: "Whore", ach: false, active: true },
 
-    { id: 28, pID: 0, icon: "date0", x: 910, y: 677, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", group: "Date" , ach: false, active: false },
-    { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", group: "Date" , ach: false, active: false },
-    { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", group: "Date" , ach: false, active: false },
+    { id: 28, pID: 0, icon: "date0", x: 910, y: 677, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", group: "Date", ach: false, active: true },
+    { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", group: "Date", ach: false, active: true },
+    { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", group: "Date", ach: false, active: true },
 
     { id: 31, pID: 0, icon: "clothes0", x: 723, y: 490, name: "Sexy Clothes", description: "You can buy sexy clothes", group: "Clothes" , ach: false, active: true },
     { id: 32, pID: 31, icon: "clothes1", x: 598, y: 490, name: "Panties?", description: "You don't have to wear panties or bra", group: "Clothes" , ach: false, active: true },
     { id: 33, pID: 32, icon: "clothes2", x: 473, y: 490, name: "Slutty Clothes", description: "You can buy slutty clothes", group: "Clothes" , ach: false, active: true },
-    { id: 34, pID: 33, icon: "clothes3", x: 348, y: 490, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", group: "Clothes" , ach: false, active: false }
+    { id: 34, pID: 33, icon: "clothes3", x: 348, y: 490, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", group: "Clothes", ach: false, active: true }
 ];
 
 g.supersissy = function () {
@@ -487,6 +488,7 @@ g.rooms = [
 
     { roomID: 725, name: "Bar", image: "725_club/club.jpg", nightImage: "725_club/club.jpg", houseID: 725, btn: "roomBtn_725.png" },
     { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
+    { roomID: 727, name: "Unisex Bathroom", image: "727_bathroom/bg.jpg", nightImage: "727_bathroom/bg.jpg", houseID: 725, btn: "roomBtn_726.png" },
 
     { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Pool", image: "901_pool/pool.jpg", nightImage: "901_pool/pool.jpg", houseID: 901, btn: "roomBtn_901.png" },

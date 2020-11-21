@@ -33,10 +33,9 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
     else if (spec === "mirror")
         displayCock = false;
     else if (spec.indexOf("panties") > -1 || spec.indexOf("clothes") > -1) {
-        if(cl.c.panties !== null)
+        if (cl.c.panties !== null || cl.c.swimsuit !== null || cl.c.pj !== null)
         displayCock = false;
     }
-
     if (displayCock) {
         if (spec.indexOf("clothes") > -1 || spec.indexOf("pants") > -1) {
             if (cl.c.pants !== null) {
@@ -107,31 +106,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         if (cl.c.cumface && !dback)
             zcl.displayMainSub("cum_face.png", top, left, ratio);
     }
-    //set hair
-    if (!dback) {
-        if (cl.c.wig !== null) {
-            $.each(cl.wig, function (i, v) {
-                if (v.name === cl.c.wig)
-                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
-            });
-        }
-        else {
-            if (cl.c.hairLength !== null) {
-                if (cl.c.hairLength < 2) {
-                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
-                    zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
-                }
-                else if (cl.c.hairStyle === "leia") {
-                    thisHair = "hair_2_" + cl.c.hairColor + "_leia";
-                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
-                }
-                else {
-                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
-                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
-                }
-            }
-        }
-    }
+    
     if (spec.indexOf("panties") > -1 || spec.indexOf("clothes") > -1) {
         if (cl.c.panties !== null) {
             $.each(cl.panties, function (i, v) {
@@ -197,6 +172,20 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
                 }
             });
         }
+        else if (cl.c.swimsuit !== null) {
+            $.each(cl.swimsuitBottom, function (i, v) {
+                if (v.name === cl.c.swimsuit && v.leg === cl.c.leg) {
+                    zcl.displayMainSub((dback ? v.back : (cl.c.cock === 5 ?  v.pussy : v.cock)), top, left, ratio);
+                    return false;
+                }
+            });
+            $.each(cl.swimsuitTop, function (i, v) {
+                if (v.name === cl.c.swimsuit && v.chest === cl.c.chest) {
+                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+                    return false;
+                }
+            });
+        }
         else if (cl.c.pj !== null) {
             $.each(cl.pjBottom, function (i, v) {
                 if (v.name === cl.c.pj && v.leg === cl.c.leg) {
@@ -236,7 +225,31 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             }
         });
     }
-
+    //set hair
+    if (!dback) {
+        if (cl.c.wig !== null) {
+            $.each(cl.wig, function (i, v) {
+                if (v.name === cl.c.wig)
+                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+            });
+        }
+        else {
+            if (cl.c.hairLength !== null) {
+                if (cl.c.hairLength < 2) {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
+                    zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
+                }
+                else if (cl.c.hairStyle === "leia") {
+                    thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+                else {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+            }
+        }
+    }
     if (dback) {
         if (cl.c.wig !== null) {
             $.each(cl.wig, function (i, v) {

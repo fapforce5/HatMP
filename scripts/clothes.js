@@ -1123,7 +1123,6 @@ cl.displayChar = function (ratio, top, left, back) {
     top = top * g.ratio;
     left = left * g.ratio;
     var frontChange = false;
-    console.log(back);
     //if (g.back !== back) {
     //    $('#char_turnaround').click();
     //    frontChange = true;
@@ -1656,7 +1655,7 @@ cl.appearance = function () {
             returnVal--;
         else if (thisClothes < thisBody)
             returnVal++;
-        console.log("total:" + returnVal, " - clothing: " + thisClothes + " - body: " + thisBody);
+        //console.log("total:" + returnVal, " - clothing: " + thisClothes + " - body: " + thisBody);
     }
 
     return returnVal;

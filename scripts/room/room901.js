@@ -5,7 +5,7 @@ var room901 = {};
 room901.main = function () {
     var cindyStep = sc.getstep("cindy");
     if (cl.hasoutfit("swim") === null) {
-        if (cindyStep === 1 && g.dt.getDay() === 3 && g.gethourdecimal().between(15, 17)) {
+        if (cindyStep === 1 && g.dt.getDay() === 3 && g.gethourdecimal().between(15, 18)) {
             nav.button({
                 "type": "btn",
                 "name": "girlchallenge",

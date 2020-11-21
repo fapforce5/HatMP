@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//Zoey bedroom
 var room502 = {};
 room502.main = function () {
     var zoeyStep = sc.getstep("zoey");
@@ -806,7 +806,7 @@ room502.chat = function (chatID) {
         {
             chatID: 54,
             speaker: "zoey",
-            text: "Trois jours? I am so sorry, but 3 days should be good, you are working so you can afford a new place.",
+            text: "Trois jours? I am so sorry, but a few days should be good, you are working so you can afford a new place.",
             button: [
                 { chatID: 55, text: "It's ok. I'll look for a new place.", callback: "" }
             ]

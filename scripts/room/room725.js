@@ -12,7 +12,8 @@ room725.main = function () {
     //        "image": "725_folder/hole.png"
     //    }
     //];
-    var navList = [0, 726];
+    g.pass = "";
+    var navList = [0, 726, 727];
     //$.each(btnList, function (i, v) {
     //    nav.button(v, 725);
     //});

@@ -95,7 +95,7 @@ sc.events = [
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 8, txt: "Transformation", img: "", show: false, row: 0, col: 1, ach: false, major: false },
     
-
+    { name: "landlord", step: -2, txt: "Caught with Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 1, txt: "Chat about job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 2, txt: "Chat about job next day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -290,6 +290,9 @@ sc.events = [
 
     { name: "jada", step: 1, txt: "Visited card game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jada", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "tim", step: 1, txt: "Flashed cock at pool.", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tim", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 ];
 
 sc.setMax = function () {
@@ -1259,7 +1262,7 @@ sc.phone = function (char) {
                 ];
                 sc.phoneChat(clist, char);
             }
-            else if (step === 10) {
+            else if (step === 10 || step === 11) {
                 if (g.get("evaDayEvent")) {
                     clist = [
                         { s: "me", t: "Hay, been thinking about my dick?" },
@@ -1280,12 +1283,6 @@ sc.phone = function (char) {
                     sc.phoneChat(clist, char);
                 }
                 
-            }
-            else if (step === 11) {
-                clist = [
-                    { s: "me", t: "This is the end for this release" },
-                ];
-                sc.phoneChat(clist, char);
             }
             else if (step === 30) {
                 clist = [

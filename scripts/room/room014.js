@@ -224,9 +224,13 @@ room14.btnclick = function (name) {
             chat(13, 14);
             break;
         case "dresser":
-            nav.bg("14_motherRoom/014_dresserDrawer.jpg");
-            nav.killall();
-            chat(5, 14);
+            if (!cl.hasClothing("panties", "c")) {
+                nav.bg("14_motherRoom/014_dresserDrawer.jpg");
+                nav.killall();
+                chat(5, 14);
+            }
+            else
+                chat(66, 14);
             break;
         case "bedMessy":
             nav.killbutton("bedMessy");
@@ -448,12 +452,12 @@ room14.chatcatch = function (callback) {
                     chat(63, 14);
                 else
                     chat(64, 14);
-                    
+
             }
             else
                 chat(6, 14);
 
-            
+
             //if (inv.has("flatmateKey"))
             //    chat(6, 14);
             //else
@@ -1263,6 +1267,14 @@ room14.chat = function(chatID){
             chatID: 65,
             speaker: "me",
             text: sc.n("landlord") + "'s panties added to inventory.",
+            button: [
+                { chatID: -1, text: "...", callback: "ret" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "me",
+            text: "I already stole a pair of her panties. Can't risk stealing more.",
             button: [
                 { chatID: -1, text: "...", callback: "ret" }
             ]
