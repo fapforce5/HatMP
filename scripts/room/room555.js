@@ -201,7 +201,7 @@ room555.chatcatch = function (callback) {
         case "exitUpper":
             g.mod("fitness", 30);
             g.mod("energy", -50);
-            g.mod("leg", 34);
+            g.mod("body", 34);
             char.addtime(60);
             g.setflag("gworkout");
             cl.undo();
@@ -210,7 +210,7 @@ room555.chatcatch = function (callback) {
         case "exitLower":
             g.mod("fitness", 30);
             g.mod("energy", -50);
-            g.mod("body", 34);
+            g.mod("leg", 34);
             char.addtime(60);
             g.setflag("gworkout");
             cl.undo();
@@ -220,7 +220,7 @@ room555.chatcatch = function (callback) {
             cl.doCum();
             g.mod("fitness", 30);
             g.mod("energy", -50);
-            g.mod("body", 34);
+            g.mod("leg", 34);
             char.addtime(60);
             g.setflag("gworkout");
             cl.undo();

@@ -20,7 +20,7 @@ g.lview = "b";
 g.prevRoom;
 g.prevview = null;
 g.pw = "dGhhbmt5b3U=";
-
+g.passtime = [0, 8, 10, 11, 16, 50, 51, 52, 55, 100, 450, 500];
 
 g.roomID = 1;
 g.dt = g.startDate;
@@ -748,6 +748,10 @@ g.initGame = function () {
     g.roomID = 7;
     //$("#room_left_map").hide();
     g.dt = char.addMinutes(g.startDate, 757);
+    $("#char_time").css({
+        "width": 25 * g.ratio + "px",
+        "height": 25 * g.ratio + "px",
+    });
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "knockedup":

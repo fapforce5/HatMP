@@ -31,7 +31,7 @@ room550.btnclick = function (name) {
                 chat(0, 550);
             }
             else if (sc.step('chad') === 1) {
-                if (pic.has("lolaTopless"))
+                if (pic.has("lolaTopless") || pic.has("lolaMast"))
                     chat(6, 550);
                 else
                     chat(7, 550);

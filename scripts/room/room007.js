@@ -418,6 +418,13 @@ room7.chatcatch = function (callback) {
             cl.nude();
             zcl.displayMain(0, 1000, .23, "", true);
             break;
+        case "bigguy5a":
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/bigguy5a.jpg");
+            break;
+        case "bigguy5b":
+            nav.bg("7_mainCharRoomAlt/bigguy5b.jpg");
+            break;
         default:
             break;
     }
@@ -878,9 +885,9 @@ room7.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "bigguy",
-            text: "In development",
+            text: "Hay little guy! Sleep well?",
             button: [
-                { chatID: 15, text: "In dev", callback: "" },
+                { chatID: 59, text: "Huh?", callback: "" },
             ]
         },
         {
@@ -906,6 +913,39 @@ room7.chat = function (chatID) {
             "just right. I want to try it!",
             button: [
                 { chatID: -1, text: "Oh Cool ok!", callback: "" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "bigguy",
+            text: "I see you way you watch me while I fuck your " + sc.n("landlord") + ". I love how you licked my cock clean like " +
+            "a hungry little cum slut. Well now you're going to get a lot more than just a taste, you're going to get the whole thing!",
+            button: [
+                { chatID: 60, text: "what whole thing...", callback: "" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "bigguy",
+            text: "Oh yeah slut you love my cock",
+            button: [
+                { chatID: 61, text: "Huh? Want what?", callback: "bigguy5a" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "me",
+            text: "Aaahhh what are you doing!",
+            button: [
+                { chatID: 62, text: "....", callback: "bigguy5b" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "bigguy",
+            text: "You can't talk if if fill your mouth!",
+            button: [
+                { chatID: 15, text: "aaacckkkk", callback: "" },
             ]
         },
     ];

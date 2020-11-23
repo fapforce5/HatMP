@@ -724,6 +724,12 @@ room14.chatcatch = function (callback) {
             sc.setstep("bigguy", 5);
             char.room(14);
             break;
+        case "bg4_end_loop":
+            g.mod("sissy", 15);
+            g.setflag("bigguy");
+            char.addtime(60);
+            char.room(14);
+            break;
         case "stealPanties":
             cl.add("panties", "c");
             break;
@@ -1219,7 +1225,8 @@ room14.chat = function(chatID){
             speaker: "landlord",
             text: "You did such a good job sweety. Now clean up " + sc.n("bigguy") + ".",
             button: [
-                { chatID: -1, text: "MMmmmm", callback: "bg4_9m" }
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "bg4_9m" },
+                { chatID: 67, text: sc.n("landlord") + " I don't want to do that. It's icky", callback: "bg4_9m" }
             ]
         },
         {
@@ -1273,10 +1280,19 @@ room14.chat = function(chatID){
         },
         {
             chatID: 66,
-            speaker: "me",
+            speaker: "thinking",
             text: "I already stole a pair of her panties. Can't risk stealing more.",
             button: [
                 { chatID: -1, text: "...", callback: "ret" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "landlord",
+            text: "Well I thought differently of you, but a girl is free to choose what is right for them. You can go now.",
+            button: [
+                { chatID: -1, text: "Thank you " + sc.n("landlord"), callback: "bg4_end_loop" },
+                { chatID: -1, text: "I changed my mind, I want to clean that cock with my mouth.", callback: "" }
             ]
         },
     ];

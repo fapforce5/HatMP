@@ -400,6 +400,11 @@ char.room = function (roomID) {
     }
     else if(!(g.roomID === 0 || g.roomID === 28))
         g.prevview = $("#room_left_char").is(":visible") ? "body" : ($("#room_left_map").is(":visible") ? "map" : ($("#room_left_graph").is(":visible") ? "graph" : "hide"));
+    if (g.passtime.includes(g.roomID))
+        $("#char_time").show();
+    else
+        $("#char_time").hide();
+
 };
 
 char.addMinutes = function (date, minutes) {
@@ -680,11 +685,10 @@ menu.mClick = function (type) {
             break;
         case "time":
             $(".menu-buttonKill").remove();
-            var gr = [0, 8, 10, 11, 16, 50, 51, 52, 55, 100, 450, 500];
-            if (!gr.includes(g.roomID)) {
+            if (!g.passtime.includes(g.roomID)) {
                 var places = "";
                 $.each(g.rooms, function (i, v) {
-                    if (gr.includes(v.roomID))
+                    if (g.passtime.includes(v.roomID))
                         places = places.concat("<br/>" + v.name);
                 });
                 $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +

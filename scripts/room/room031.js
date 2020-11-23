@@ -214,6 +214,10 @@ room31.btnclick = function (name) {
                 "height": 90,
                 "image": "9_computer/09_close.png"
             }, 31);
+            if (!pic.has("lolaMast")) {
+                pic.add("lolaMast");
+                chat(0, 31);
+            }
             break;
         case "powerOff":
             char.room(13);
@@ -446,10 +450,11 @@ room31.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "thinking",
+            text: "Oh wow! I had no idea " + sc.n("lola") + " had suck dirty pictures. " + sc.n("eva") + " must have taken it since " +
+            "I know " + sc.n("lola") + "'s never dated a guy, or even had sex with a guy. I should take a copy of this for my phone. ",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         }
     ];

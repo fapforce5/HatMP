@@ -86,6 +86,7 @@ inv.getall = function () {
 };
 
 pic.master = [
+    { name: "lolaMast", display: "Lola Masturbating", entry: false, image: "lolaMast.jpg", thumb: "lolaMast.png" },
     { name: "lolaTopless", display: "Lola Topless", entry: false, image: "lolaTopless.jpg", thumb: "lolaTopless.png" },
     { name: "landlordSleep", display: "Landlord Sleep", entry: false, image: "landloardSleep.jpg", thumb: "landloardSleep.png" },
     { name: "pantyThief", display: "Panty Theif", entry: false, image: "pantyThief.jpg", thumb: "pantyThief.png" },
@@ -93,7 +94,6 @@ pic.master = [
     { name: "jada_f", display: "Group Photo", entry: false, image: "jada_f.jpg", thumb: "jada_f.png" },
     { name: "jada_p", display: "Group Photo", entry: false, image: "jada_p.jpg", thumb: "jada_p.png" },
     { name: "evapussy", display: "Eva Wet and Waiting", entry: false, image: "evapussy.jpg", thumb: "evapussy.png" },
-    
 ];
 
 pic.add = function (name) {

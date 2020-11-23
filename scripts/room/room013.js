@@ -3,7 +3,10 @@ var room13 = {};
 
 room13.main = function () {
     var btnList = new Array();
-
+    var lockdrawer = g.get("lockdrawer");
+    if (lockdrawer) 
+        nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+    
     if (sc.getstep("lola") === 9) {
         nav.button({
             "type": "img",
@@ -59,17 +62,8 @@ room13.main = function () {
             }];
         }
         else {
+            
             btnList = [
-                {
-                    "type": "btn",
-                    "name": "dresser",
-                    "left": 907,
-                    "top": 288,
-                    "width": 226,
-                    "height": 315,
-                    "image": "13_sisterRoom/13_dresser.png",
-                    "night": "13_sisterRoom/13_dresserNight.png"
-                },
                 {
                     "type": "btn",
                     "name": "puter",
@@ -80,7 +74,41 @@ room13.main = function () {
                     "image": "13_sisterRoom/puter.png",
                     "night": "13_sisterRoom/puterNight.png"
                 },
+                {
+                    "type": "btn",
+                    "name": "nightstand",
+                    "left": 1577,
+                    "top": 562,
+                    "width": 318,
+                    "height": 236,
+                    "image": "13_sisterRoom/nightstand.png",
+                    "night": "13_sisterRoom/nightstandNight.png"
+                },
             ];
+            if (lockdrawer) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "dresser",
+                    "left": 907,
+                    "top": 288,
+                    "width": 226,
+                    "height": 315,
+                    "image": "13_sisterRoom/13_dresserl.png",
+                    "night": "13_sisterRoom/13_dresserNightl.png"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "dresser",
+                    "left": 907,
+                    "top": 288,
+                    "width": 226,
+                    "height": 315,
+                    "image": "13_sisterRoom/13_dresser.png",
+                    "night": "13_sisterRoom/13_dresserNight.png"
+                });
+            }
             if (!cl.hasClothing("panties", "w")){
                 btnList.push({
                     "type": "btn",
@@ -120,6 +148,37 @@ room13.btnclick = function (name) {
                 }, 13);
             else
                 chat(4, 13);
+            break;
+        case "nightstand":
+            nav.killall();
+            nav.bg("13_sisterRoom/drawer.jpg");
+            if (!inv.has("flatmateKey"))
+                nav.button({
+                    "type": "btn",
+                    "name": "flatmateKey",
+                    "left": 1205,
+                    "top": 267,
+                    "width": 378,
+                    "height": 509,
+                    "image": "13_sisterRoom/key.png"
+                }, 13);
+            nav.button({
+                "type": "btn",
+                "name": "closenightstand",
+                "left": 915,
+                "top": 850,
+                "width": 90,
+                "height": 90,
+                "image": "9_computer/09_close.png"
+            }, 13);
+            break;
+        case "flatmateKey":
+            inv.add("flatmateKey");
+            nav.killbutton("flatmateKey");
+            chat(137, 13);
+            break;
+        case "closenightstand":
+            char.room(13);
             break;
         case "panties":
             if (sc.checkevent("me", -2))
@@ -422,8 +481,7 @@ room13.chatcatch = function (callback) {
             break;
         case "killPantyIconx":
             nav.killbutton("panties");
-            if (sc.getstep("me" < 3))
-                chat(86, 13);
+            chat(86, 13);
             break;
         case "checkPanties":
             nav.bg("13_sisterRoom/013_angryCaught.png");
@@ -734,7 +792,7 @@ room13.chat = function (chatID) {
         },
         {
             chatID: 4,
-            speaker: "me",
+            speaker: "thinking",
             text: "Nothing in here but dirty clothes...",
             button: [
                 { chatID: -1, text: "Close", callback: "killPantyIcon" }
@@ -742,7 +800,7 @@ room13.chat = function (chatID) {
         },
         {
             chatID: 5,
-            speaker: "me",
+            speaker: "thinking",
             text: "Ewww gross... " + sc.n("lola") + "'s dirty panties.",
             button: [
                 { chatID: -1, text: "Close", callback: "killPantyIcon" }
@@ -750,7 +808,7 @@ room13.chat = function (chatID) {
         },
         {
             chatID: 6,
-            speaker: "me",
+            speaker: "thinking",
             text: "Should I take " + sc.n("lola") + "'s dirty panties?",
             button: [
                 { chatID: -1, text: "Gross... no", callback: "killPantyIcon" },
@@ -759,7 +817,7 @@ room13.chat = function (chatID) {
         },
         {
             chatID: 7,
-            speaker: "me",
+            speaker: "thinking",
             text: "[Panties added to Inventory]",
             button: [
                 { chatID: -1, text: "...", callback: "killPantyIconx" }
@@ -1833,6 +1891,14 @@ room13.chat = function (chatID) {
             text: sc.n("lola") + " the prude made me promise we'ld be good. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 137,
+            speaker: "thinking",
+            text: "Nice, this must be the key to their room!",
+            button: [
+                { chatID: -1, text: "Key added to inventory", callback: "" }
             ]
         },
     ];

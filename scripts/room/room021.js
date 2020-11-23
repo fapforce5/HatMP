@@ -108,8 +108,8 @@ room21.chat = function (chatID) {
         },
         {
             chatID: 4,
-            speaker: "me",
-            text: "[I can't believe I'm getting turned on by this...]",
+            speaker: "thinking",
+            text: "I can't believe I'm getting turned on by this...",
             button: [
                 { chatID: 5, text: "...", callback: "" }
             ]
