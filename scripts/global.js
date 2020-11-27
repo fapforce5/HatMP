@@ -122,6 +122,7 @@ g.st = [
     { n: "tookHormonePill", t: false, q: "day" },
     { n: "gworkout", t: false, q: "day" },
     { n: "tim", t: false, q: "day" },
+    { n: "cindy", t: false, q: "day" },
 
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
@@ -870,6 +871,8 @@ g.initGame = function () {
             case "autohormone":
             case "lockdrawer":
             case "puter":
+            case "tim":
+            case "cindy":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

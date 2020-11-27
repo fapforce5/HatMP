@@ -10,15 +10,17 @@ room726.main = function () {
         "height": 491,
         "image": "726_dance/dgirl1.png"
     }, 726);
-    nav.button({
-        "type": "btn",
-        "name": "lifeguardGirl",
-        "left": 184,
-        "top": 451,
-        "width": 433,
-        "height": 629,
-        "image": "726_dance/lifeguardGirl1.png"
-    }, 726);
+    if (!g.get("cindy")) {
+        nav.button({
+            "type": "btn",
+            "name": "lifeguardGirl",
+            "left": 184,
+            "top": 451,
+            "width": 433,
+            "height": 629,
+            "image": "726_dance/lifeguardGirl1.png"
+        }, 726);
+    }
     if (!g.get("tim")) {
         nav.button({
             "type": "btn",
@@ -79,10 +81,10 @@ room726.btnclick = function (name) {
             else if (mybody > 0) {
                 chat(5, 726);
             }
-            else if (cindyStep === 0) {
+            else if (cindyStep < 2) {
                 chat(6, 726);
             }
-            else if (cindyStep === 1) {
+            else if (cindyStep === 2) {
                 chat(10, 726);
             }
             break;
@@ -136,12 +138,13 @@ room726.chatcatch = function (callback) {
             }, 726);
             break;
         case "cindy3a":
-            nav.modbutton("lifeguardGirl", "lifeguardGirl3a.png", null, null);
+            nav.modbutton("lifeguardGirl", "726_dance/lifeguardGirl3a.png", null, null);
             break;
         case "cindy3":
-            nav.modbutton("lifeguardGirl", "lifeguardGirl3.png", null, null);
+            nav.modbutton("lifeguardGirl", "726_dance/lifeguardGirl3.png", null, null);
             break;
         case "killcindy":
+            g.setflag("cindy");
             nav.killbutton("lifeguardGirl");
             break;
         case "tim2":
@@ -169,6 +172,10 @@ room726.chatcatch = function (callback) {
                 g.mod("sissy", 5);
                 chat(21, 726);
             }
+            break;
+        case "supriseSex":
+            g.pass = "supriseSex";
+            char.room(727);
             break;
         default:
             break;
@@ -287,17 +294,16 @@ room726.chat = function (chatID) {
             speaker: "cindy",
             text: "Thank! I have to go powder my nose. I'll see you back out here.",
             button: [
-                { chatID: -1, text: "Yeah, I'll see you when you get back", callback: "killcindy" },
-                { chatID: 14, text: "Maybe. [That girl wants my cock bad!]", callback: "killcindy" }
+                { chatID: 14, text: "Maybe I'll see you here. [That girl wants my cock bad!]", callback: "killcindy" },
+                { chatID: -1, text: "Yeah, I'll see you when you get back", callback: "killcindy" }
             ]
         },
         {
             chatID: 14,
             speaker: "thinking",
-            text: sc.n("cindy") + " totally wants my cock now! I should sneak into the girls bathroom and suprise her in the stall.",
+            text: sc.n("cindy") + " totally wants my cock now! I should sneak into the coed bathroom and suprise her in the stall.",
             button: [
                 { chatID: -1, text: "Yeah, that's what I'll do. She wants suprise sex!", callback: "supriseSex" },
-                { chatID: -1, text: "What am I thinking! That's crazy. I'm not going to sneak into the girls bathroom.", callback: "killcindy" }
             ]
         },
         {

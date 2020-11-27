@@ -27,6 +27,20 @@ room727.main = function () {
             chat(0, 727);
         }
     }
+    else if (g.pass === "supriseSex") {
+        nav.button({
+            "type": "btn",
+            "name": "supriseSex",
+            "left": 599,
+            "top": 64,
+            "width": 135,
+            "height": 1016,
+            "image": "727_bathroom/stall.png"
+        }, 727);
+        g.setflag("cindy");
+        chat(9, 727);
+        nav.buildnav([725, 726, 0]);
+    }
     else {
         var btnList = [
             {
@@ -88,6 +102,10 @@ room727.btnclick = function (name) {
             nav.killbutton("tim2cock");
             nav.modbutton("tim", "727_bathroom/tim2a.png", null, null);
             chat(2, 727);
+            break;
+        case "supriseSex":
+            nav.killall();
+            nav.bg("727_bathroom/toilettall.jpg");
             break;
         default:
             break;
@@ -245,6 +263,14 @@ room727.chat = function (chatID) {
             text: "I'm going to take off. You do look beautiful wearing my cum. You should totally wear that home! ",
             button: [
                 { chatID: -1, text: "You're right, I'm beautiful in my cum.", callback: "tim2end" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "thinking",
+            text: "She's probably in the stall. I'll just walk right in, or I can chicken out.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];
