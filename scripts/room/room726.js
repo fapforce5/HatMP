@@ -74,7 +74,7 @@ room726.btnclick = function (name) {
                 "height": 1080,
                 "image": "726_dance/lifeguardGirl2.png"
             }, 726);
-            
+
             if (mybody === -1) {
                 chat(4, 726);
             }
@@ -123,7 +123,7 @@ room726.chatcatch = function (callback) {
     switch (callback) {
         case "reset":
             char.addtime(15);
-            char.room(726); 
+            char.room(726);
             break;
         case "cindy2":
             nav.killbutton("lifeguardGirl");
@@ -160,7 +160,16 @@ room726.chatcatch = function (callback) {
             }, 726);
             break;
         case "tim2a":
-            nav.modbutton("lifeguardGuy1", "726_dance/tim2a.png", null, null);
+            nav.killbutton("lifeguardGuy1");
+            nav.button({
+                "type": "img",
+                "name": "lifeguardGuy1",
+                "left": 405,
+                "top": 0,
+                "width": 1070,
+                "height": 1080,
+                "image": "726_dance/tim2.png"
+            }, 726);
             break;
         case "timeBathroom":
             if (g.sissy[28].ach) {
@@ -303,7 +312,7 @@ room726.chat = function (chatID) {
             speaker: "thinking",
             text: sc.n("cindy") + " totally wants my cock now! I should sneak into the coed bathroom and suprise her in the stall.",
             button: [
-                { chatID: -1, text: "Yeah, that's what I'll do. She wants suprise sex!", callback: "supriseSex" },
+                { chatID: -1, text: "Yeah, that's what I'll do. She wants suprise sex!", callback: "supriseSex" }
             ]
         },
         {
@@ -329,7 +338,7 @@ room726.chat = function (chatID) {
             speaker: "tim",
             text: "You like these moves? I bet you've never danced with someone this good before. ",
             button: [
-                { chatID: 18, text: "You are such a good dancer", callback: "tim2a" },
+                { chatID: 18, text: "You are such a good dancer", callback: "tim2a" }
             ]
         },
         {
@@ -337,27 +346,27 @@ room726.chat = function (chatID) {
             speaker: "tim",
             text: "How about this little change up. Sexy right?",
             button: [
-                { chatID: 19, text: "You're so sexy my pussy is dripping wet", callback: "tim2" },
+                { chatID: 19, text: "You're so sexy my pussy is dripping wet", callback: "tim2" }
             ]
         },
         {
             chatID: 19,
             speaker: "tim",
             text: "I do that to all the girls. Since you're so sexy I'll let you take me to the bathroom and suck my dick. " +
-            "I don't do this with all the girls, it's just 'casue you're so sexy.",
+                "I don't do this with all the girls, it's just 'casue you're so sexy.",
             button: [
                 { chatID: -1, text: "I would love to!", callback: "timeBathroom" },
-                { chatID: -1, text: "Nah, I've already had a snack", callback: "reset" },
+                { chatID: -1, text: "Nah, I've already had a snack", callback: "reset" }
             ]
         },
         {
             chatID: 20,
             speaker: "tim",
             text: "Hay slut, I remember you. You liked what you saw didn't you. Since you're such a sexy chick I'll let you suck " +
-            "my dick in the bathroom. You're welcome",
+                "my dick in the bathroom. You're welcome",
             button: [
                 { chatID: -1, text: "I would love to!", callback: "timeBathroom" },
-                { chatID: -1, text: "Nah, I've already had a snack", callback: "reset" },
+                { chatID: -1, text: "Nah, I've already had a snack", callback: "reset" }
             ]
         },
         {
@@ -365,7 +374,7 @@ room726.chat = function (chatID) {
             speaker: "tim",
             text: "I know. I'm going to fuck your face which my awesome cock. ",
             button: [
-                { chatID: -1, text: "Oh! I just remembered I have to do that other thing.. I'm not ready to meet strange men in the bathroom. [Need to unlock dating blowjob]", callback: "reset" },
+                { chatID: -1, text: "Oh! I just remembered I have to do that other thing.. I'm not ready to meet strange men in the bathroom. [Need to unlock dating blowjob]", callback: "reset" }
             ]
         },
         {
@@ -373,7 +382,7 @@ room726.chat = function (chatID) {
             speaker: "tim",
             text: "The 'Trap' is in development.",
             button: [
-                { chatID: -1, text: "...", callback: "reset" },
+                { chatID: -1, text: "...", callback: "reset" }
             ]
         },
     ];

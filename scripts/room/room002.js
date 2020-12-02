@@ -45,6 +45,17 @@ room2.chatcatch = function (callback) {
         sc.setcharname("me", charName.length === 0 ? "Alex" : charName);
         g.set("girlname", charName.length === 0 ? "Scarlett" : girlName);
     }
+    else if (callback === "proceed") {
+        nav.button({
+            "type": "btn",
+            "name": "click1",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1_startScreen/chapter1.jpg"
+        }, 2);
+    }
     else if (callback === "init") {
         var tempLine = '<div class="intro-wrapper"><div style="height:' + (800 * g.ratio) + 'px;" class="intro-wrapper-sub">' +
             '<div class="intro-wrapper-full"><div class="intro-wrapper-left"><img src="images/speaker/me.png"/></div><div class="intro-wrapper-right">Your Name<br /><input type="text" id="char_-1" data-name="-1" /></div></div>' +
@@ -140,7 +151,7 @@ room2.chatcatch = function (callback) {
             g.set("difficulty", isNaN(thisDiff) ? 1 : ((thisDiff < 0) ? 0 : ((thisDiff > 2) ? 2 : thisDiff)));
             nav.killall();
             nav.button({
-                "type": "btn",
+                "type": "img",
                 "name": "click",
                 "left": 0,
                 "top": 0,
@@ -148,7 +159,7 @@ room2.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "1_startScreen/help.jpg"
             }, 2);
-            
+            chat(0, 2);
             //$('#room_002Start').click(function () {
             //    $('.room-left').show();
             //    $('#room_footer').show();
@@ -162,5 +173,20 @@ room2.chatcatch = function (callback) {
 };
 
 room2.chat = function(chatID){
-    return [];
+    var cArray = [
+        {
+            chatID: 0,
+            speaker: "thinking",
+            text: "Thank you for playing my little game. If you get stuck or need help click the 'HELP' button in your phone. " +
+                "It will open a new tab that takes you to my website and walk through at " +
+                "<a href='http://fapforce5.com' target='_blank'>http://fapforce5.com</a>. ",
+            button: [
+                { chatID: -1, text: "CONTINUE", callback: "proceed" }
+            ]
+        },
+    ];
+    if (cArray.length > chatID && chatID > -1)
+        return cArray[chatID];
+    else
+        return [];
 };

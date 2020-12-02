@@ -248,6 +248,7 @@ room7.chatcatch = function (callback) {
             nav.killbutton("eva");
             sc.setstep("eva", 2);
             sc.setstep("me", -1);
+            scc.love("eva", 5, null);
             break;
         case "eva1":
             nav.modbutton("eva", "7_mainCharRoomAlt/eva1.png", null, null);

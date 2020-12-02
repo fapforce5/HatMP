@@ -17,7 +17,6 @@ sc.char = [
     { name: "govlady", display: "The clerk", image: "govlady.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
     { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-    { name: "jordan", display: "Jordan", image: "", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
     { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
@@ -55,23 +54,6 @@ sc.char = [
     { name: "futared", display: "Red", image: "futaRed.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-];
-
-sc.changes = [
-    { name: "zoey", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "lola", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "eva", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "landloard", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "tiffany", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "missy", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "jada", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "red", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "tina", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-    { name: "cecilia", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 }
-];
-
-sc.flag = [
-   
 ];
 
 sc.events = [
@@ -397,8 +379,6 @@ sc.removeStep = function (name, step) {
 };
 
 sc.incstep = function (name, amount) {
-    if (amount == "undefined")
-        amount = 1;
     for (var i = 0; i < sc.char.length; i++) {
         if (sc.char[i].name === name) {
             sc.setstep(name, sc.char[i].step + amount);
@@ -477,9 +457,7 @@ sc.save = function () {
     var i;
     var retArra = {
         char: new Array(),
-        events: new Array(),
-        flag: new Array(),
-        changes: $.extend(true, {}, sc.changes)
+        events: new Array()
     };
     // { name: "me", display: "Me", image: "me.png", step: 0, show: true, setName: false },
     for (i = 0; i < sc.char.length; i++) {
@@ -496,10 +474,6 @@ sc.save = function () {
             step: sc.events[i].step,
             ach: sc.events[i].ach
         });
-    }
-    for (i = 0; i < sc.flag.length; i++) {
-        if (sc.flag[i].flag)
-            retArra.flag = sc.flag[i].name;
     }
     
     return retArra;
@@ -528,38 +502,7 @@ sc.load = function (ra) {
             }
         }
     }
-    for (i = 0; i < sc.changes; i++) {
-        sc.changes[i].xdress = false;
-        sc.changes[i].chest = 0;
-        sc.changes[i].legs = 0;
-        sc.changes[i].hair = 0;
-        sc.changes[i].cock = 0;
-    }
-    if (ra.changes !== undefined) {
-        for (i = 0; i < ra.changes.length; i++) {
-            for (j = 0; j < sc.changes.length; j++) {
-                if (ra.changes[i].name === sc.changes[j].name) {
-                    sc.changes[j].xdress = ra.changes[i].xdress;
-                    sc.changes[j].chest = ra.changes[i].chest;
-                    sc.changes[j].legs = ra.changes[i].legs;
-                    sc.changes[j].hair = ra.changes[i].hair;
-                    sc.changes[j].cock = ra.changes[i].cock;
-                    j = 10000;
-                }
-            }
-        }
-    }
-    for (i = 0; i < sc.flag.length; i++) {
-        sc.flag[i].flag = false;
-    }
-    for (i = 0; i < ra.flag.length; i++) {
-        for (j = 0; j < sc.flag.length; j++) {
-            if (ra.flag[i] === sc.flag[j].name) {
-                sc.flag[j].flag = true;
-                j = 999999;
-            }
-        }
-    }
+    
     sc.setMax();
 };
 
@@ -1061,151 +1004,6 @@ sc.step = function (name) {
         }
     }
     return retStep;
-};
-
-// { name: "zoey", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0 },
-sc.changesDiffernt = function (name, cock) {
-    var i;
-    var returnString = null;
-    for (i = 0; sc.changes.length; i++) {
-        if (sc.changes[i].name === name)
-            break;
-    }
-    if (i < sc.changes.length) {
-        if (cl.isCrossdressing() && !sc.changes[i].xdress);
-        {
-            returnString += sc.changesDifferntText(name, 0);
-            sc.changes[i].xdress = true;
-        }
-        if (cl.c.chest !== sc.changes[i].chest);
-        {
-            returnString += sc.changesDifferntText(name, 1);
-            sc.changes[i].chest = cl.c.chest;
-        }
-        if (cl.c.leg !== sc.changes[i].leg);
-        {
-            returnString += sc.changesDifferntText(name, 2);
-            sc.changes[i].leg = cl.c.leg;
-        }
-        if (cl.c.hairLength > sc.changes[i].hair);
-        {
-            returnString += sc.changesDifferntText(name, 3);
-            sc.changes[i].hair = cl.c.hairLength;
-        }
-        if (cl.c.hairLength < sc.changes[i].hair);
-        {
-            returnString += sc.changesDifferntText(name, 4);
-            sc.changes[i].hair = cl.c.hairLength;
-        }
-        if (cl.c.cock < sc.changes[i].cock && cock);
-        {
-            returnString += sc.changesDifferntText(name, 5);
-            sc.changes[i].cock = cl.c.cock;
-        }
-    }
-    if (returnString.length < 3)
-        returnString = null;
-
-    return returnString;
-};
-
-//
-sc.changesDifferntText = function (who, whatNum) {
-    var comment = null;
-    switch (who) {
-        case "example":
-            comment = [
-                "0 xdress",
-                "1 titties",
-                "2 ass",
-                "3 longer hair ",
-                "4 shorter hair ",
-                "5 cock"
-            ];
-            break;
-        case "zoey":
-            comment = [
-                "Ooooo I love your new clothes! You're so sexy! ",
-                "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "! ",
-                "I don't know what you're doing but your butt looks so much better! ",
-                "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer. ",
-                "Is your penis getting smaller? It's so much cuter! "
-            ];
-            break;
-        case "eva":
-        case "lola":
-            comment = [
-                "Are you wearing girls clothes.. I thought wearing girls panties was weird, but I guess it makes sense now. ",
-                "Are you growing boobs? Your chest looks bigger. ",
-                "I think your butt is bigger. ",
-                "Your hair looks so much prettier now. ",
-                "That's a more boyish hair cut! ",
-                "Is your penis getting smaller? I liked it bigger. "
-            ];
-            break;
-        case "landloard":
-            comment = [
-                "Why are you wearing girls clothes! That's disgusting! ",
-                "Your chest is disgusting, you look less like my little boy and more like a girl each day. ",
-                "You need to go on a diet, you ass is getting fat. ",
-                "Go get your hair cut, you look like a girl. ",
-                "I like your new haircut, it's more like a boy. ",
-                "Why is your dick shrinking? "
-            ];
-            break;
-        case "tiffany":
-            comment = [
-                "Ooooo I love your new clothes! You're so sexy! ",
-                "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "! ",
-                "I don't know what you're doing but your butt looks so much better! ",
-                "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer. ",
-                "Is your penis getting smaller? It's so much cuter! "
-            ];
-            break;
-        case "missy":
-            comment = [
-                "",
-                "I like your new " + cl.cupsize() + " cups, they look good on you. ",
-                "That a nice " + cl.buttsize() + " butt. It fits your well. ",
-                "You look bood with longer hair. ",
-                "",
-                "Is your penis getting smaller? You're getting more pathetic each day. "
-            ];
-            break;
-        case "red":
-            comment = [
-                "Ooooo I love your new clothes! You're so sexy!",
-                "Cute chest! ",
-                "I love your bigger butt! ",
-                "",
-                "",
-                ""
-            ];
-            break;
-        case "tina":
-            comment = [
-                "Ooooo I love your new clothes! You're so sexy!",
-                "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
-                "I don't know what you're doing but your butt looks so much better!",
-                "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer",
-                "Is your penis getting smaller? It's so much cuter! "
-            ];
-            break;
-        case "cecilia":
-            comment = [
-                "Ooooo I love your new clothes! You're so sexy!",
-                "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
-                "I don't know what you're doing but your butt looks so much better!",
-                "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer",
-                "Is your penis getting smaller? It's so much cuter! "
-            ];
-            break;
-    }
-    return comment[whatNum];
 };
 
 sc.phone = function (char) {

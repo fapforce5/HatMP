@@ -2,7 +2,7 @@
 
 cl.c = {
     leg: 0, chest: 0, cock: 0, butthole: 0.0,
-    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: "longHair", wig: null,
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
     necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
@@ -14,7 +14,7 @@ cl.c = {
 cl.init = function () {
     cl.c = {
         leg: 0, chest: 0, cock: 0, butthole: 0.0,
-        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: g.dt, bodyhair: "longHair", wig: null,
+        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: "longHair", wig: null,
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
         necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
@@ -314,7 +314,7 @@ cl.load = function (ra) {
         }
     }
     cl.c = $.extend(true, {}, ra.current);
-    cl.c.lastHairCut = new Date(cl.c.lastHairCut);
+    //cl.c.lastHairCut = new Date(cl.c.lastHairCut);
     cl.saveOutfit = $.extend(true, {}, ra.saveOutfit);
 
     if (!("lipstick" in cl.c)) 

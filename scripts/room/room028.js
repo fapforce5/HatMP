@@ -16,15 +16,6 @@ room28.main = function () {
     g.newday();
     cl.hairgrowth();
 
-    //growhair
-    if (g.diffDatesByDays(g.dt, cl.c.lastHairCut) > 21) {
-        if (cl.c.hairLength === null)
-            cl.c.hairLength = 0;
-        else if (cl.c.hairLength < 4)
-            cl.c.hairLength++;
-        cl.c.lastHairCut = g.dt;
-    }
-
     var maxE = g.get("maxenergy");
     var thisautohormone, hix, tix;
     for (i = 0; i < g.st.length; i++) {
@@ -87,6 +78,24 @@ room28.main = function () {
                 break;
         }
     }
+
+    //growhair
+    var initHairGrowth = 2;
+    if (hormoneLevel > 39) {
+        initHairGrowth = Math.round(hormoneLevel / 10) - 3;
+    }
+    if (initHairGrowth < 3)
+        initHairGrowth = 2;
+
+    cl.c.lastHairCut += initHairGrowth;
+    if (cl.c.lastHairCut > 99) {
+        if (cl.c.hairLength === null)
+            cl.c.hairLength = 0;
+        else if (cl.c.hairLength < 4)
+            cl.c.hairLength++;
+        cl.c.lastHairCut = 0;
+    }
+    
 
     if (thisautohormone) {
         var hx = inv.getIndex("hormone");

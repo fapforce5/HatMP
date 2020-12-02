@@ -199,114 +199,128 @@ room13.btnclick = function (name) {
             char.room(31);
             break;
         case "lola":
-            var lolaSetp = sc.getstep("lola");
-            if (g.checkflag("lolaDayEvent")) {
+            if (scc.changesDiffernt("lola", false)) {
+                chat(139, 13);
+            }
+            else if (g.checkflag("lolaDayEvent")) {
                 chat(17, 13);
             }
             else {
-                switch (lolaSetp) {
-                    case 0:
-                        chat(11, 13);
-                        break;
-                    case 1:
-                        chat(12, 13);
-                        break;
-                    case 2:
-                        chat(20, 13);
-                        break;
-                    case 3:
-                        chat(28, 13);
-                        break;
-                    case 4:
-                        var hour = g.dt.getHours() + (g.dt.getMinutes() / 60);
-                        if (sc.step("eva") < 3)
-                            chat(30, 13);
-                        else if (!inv.has("wine"))
-                            chat(32, 13);
-                        else if (hour.between(17, 22))
-                            chat(36, 13);
-                        else
-                            chat(34, 13);
-                        break;
-                    case 5:
-                        chat(40, 13);
-                        break;
-                    case 6:
-                        chat(49, 13);
-                        break;
-                    case 7:
-                        if (cl.hasClothing("panties", "w")) {
-                            if (g.hourBetween(17, 23))
-                                chat(75, 13);
-                            else
-                                chat(74, 13);
-                        }
-                        else {
-                            chat(70, 13);
-                        }
-
-                        break;
-                    case 10:
-                    case 11:
-                    case 12:
-                        chat(135, 13);
-                        break;
-                }
+                room13.btnclick("lolaChat");
             }
             break;
+        case "lolaChat":
+            var lolaSetp = sc.getstep("lola");
+            switch (lolaSetp) {
+                case 0:
+                    chat(11, 13);
+                    break;
+                case 1:
+                    chat(12, 13);
+                    break;
+                case 2:
+                    chat(20, 13);
+                    break;
+                case 3:
+                    chat(28, 13);
+                    break;
+                case 4:
+                    var hour = g.dt.getHours() + (g.dt.getMinutes() / 60);
+                    if (sc.step("eva") < 3)
+                        chat(30, 13);
+                    else if (!inv.has("wine"))
+                        chat(32, 13);
+                    else if (hour.between(17, 22))
+                        chat(36, 13);
+                    else
+                        chat(34, 13);
+                    break;
+                case 5:
+                    chat(40, 13);
+                    break;
+                case 6:
+                    chat(49, 13);
+                    break;
+                case 7:
+                    if (cl.hasClothing("panties", "w")) {
+                        if (g.hourBetween(17, 23))
+                            chat(75, 13);
+                        else
+                            chat(74, 13);
+                    }
+                    else {
+                        chat(70, 13);
+                    }
+
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                    chat(135, 13);
+                    break;
+            }
+
+            break;
         case "eva":
-            var evaStep = sc.getstep("eva");
-            if (g.checkflag("evaDayEvent")) {
+            if (scc.changesDiffernt("eva", false)) {
+                chat(138, 13);
+            }
+            else if (g.checkflag("evaDayEvent")) {
                 chat(19, 13);
             }
             else {
-                switch (evaStep) {
-                    case 0:
-                        chat(8, 13);
-                        break;
-                    case 1:
-                        chat(18, 13);
-                        break;
-                    case 2:
-                        chat(23, 13);
-                        break;
-                    case 3:
-                        var hour3 = g.dt.getHours() + (g.dt.getMinutes() / 60);
-                        if (sc.step("lola") < 4)
-                            chat(31, 13);
-                        else if (!inv.has("wine"))
-                            chat(32, 13);
-                        else if (hour3.between(17, 22))
-                            chat(36, 13);
-                        else
-                            chat(34, 13);
-                        break;
-                    case 4:
-                        chat(42, 13);
-                        break;
-                    case 5:
-                        chat(54, 13);
-                        break;
-                    case 6:
-                        if (cl.hasClothing("panties", "w")) {
-                            if (g.hourBetween(17, 23))
-                                chat(75, 13);
-                            else
-                                chat(73, 13);
-                        }
-                        else {
-                            chat(64, 13);
-                        }
-                        break;
-                    case 9:
-                    case 10:
-                    case 11:
-                        chat(136, 13);
-                        break;
-                    default:
-                        break;
-                }
+                room13.btnclick("evaChat");
             }
+            break;
+        case "evaChat":
+            var evaStep = sc.getstep("eva");
+            switch (evaStep) {
+                case 0:
+                    chat(8, 13);
+                    break;
+                case 1:
+                    chat(18, 13);
+                    break;
+                case 2:
+                    chat(23, 13);
+                    break;
+                case 3:
+                    var hour3 = g.dt.getHours() + (g.dt.getMinutes() / 60);
+                    if (sc.step("lola") < 4)
+                        chat(31, 13);
+                    else if (!inv.has("wine"))
+                        chat(32, 13);
+                    else if (hour3.between(17, 22))
+                        chat(36, 13);
+                    else
+                        chat(34, 13);
+                    break;
+                case 4:
+                    chat(42, 13);
+                    break;
+                case 5:
+                    chat(54, 13);
+                    break;
+                case 6:
+                    if (cl.hasClothing("panties", "w")) {
+                        if (g.hourBetween(17, 23))
+                            chat(75, 13);
+                        else
+                            chat(73, 13);
+                    }
+                    else {
+                        chat(64, 13);
+                    }
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    chat(136, 13);
+                    break;
+                default:
+                    break;
+            }
+
             break;
         case "bed":
             nav.killbutton("bed");
@@ -745,6 +759,16 @@ room13.chatcatch = function (callback) {
             sc.setstep("eva", 9);
             char.room(13);
             break;
+        case "evachangeText":
+            room13.btnclick("evaChat");
+            break;
+        case "lolachangeText":
+            room13.btnclick("lolaChat");
+            break;
+        case "angry10":
+            scc.love("eva", -10);
+            scc.love("lola", -10);
+            break;
         default:
             console.log(callback + " - miss");
             break;
@@ -771,7 +795,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: sc.n("me") + "!!!! what are your doing. Are you going through our panties!!!",
             button: [
-                { chatID: 2, text: "....", callback: "" }
+                { chatID: 2, text: "....", callback: "angry10" }
             ]
         },
         {
@@ -1899,6 +1923,22 @@ room13.chat = function (chatID) {
             text: "Nice, this must be the key to their room!",
             button: [
                 { chatID: -1, text: "Key added to inventory", callback: "" }
+            ]
+        },
+        {
+            chatID: 138,
+            speaker: "eva",
+            text: scc.changeText,
+            button: [
+                { chatID: -1, text: "Butthead!", callback: "evachangeText" }
+            ]
+        },
+        {
+            chatID: 139,
+            speaker: "lola",
+            text: scc.changeText,
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "lolachangeText" }
             ]
         },
     ];
