@@ -92,7 +92,8 @@ room406.chat = function (chatID) {
                 { chatID: 5, text: '<img src="./images/room/406_eyes/brown.jpg"/> Brown', callback: "brown" },
                 { chatID: 5, text: '<img src="./images/room/406_eyes/blue.jpg"/> Blue', callback: "blue" },
                 { chatID: 5, text: '<img src="./images/room/406_eyes/green.jpg"/> Green', callback: "green" },
-                { chatID: 4, text: "See other choices", callback: "" }
+                { chatID: 4, text: "See other choices", callback: "" },
+                { chatID: -1, text: "Cancel", callback: "" }
             ]
         },
         {
@@ -103,7 +104,8 @@ room406.chat = function (chatID) {
                 { chatID: 5, text: '<img src="./images/room/406_eyes/gray.jpg"/> Gray', callback: "gray" },
                 { chatID: 5, text: '<img src="./images/room/406_eyes/lblue.jpg"/> Light Blue', callback: "lightblue" },
                 { chatID: 5, text: '<img src="./images/room/406_eyes/hazel.jpg"/> Hazel', callback: "hazel" },
-                { chatID: 3, text: "See other choices", callback: "" }
+                { chatID: 3, text: "See other choices", callback: "" },
+                { chatID: -1, text: "Cancel", callback: "" }
             ]
         },
         {

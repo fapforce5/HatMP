@@ -1591,7 +1591,7 @@ cl.doCum = function (bigCum) {
 cl.fillballs = function () {
     g.set("cum", char.addMinutes(g.dt, -4320));
     cl.cockDisplay();
-}
+};
 
 cl.horny = function (howHorny) {
     g.mod("arousal", howHorny);

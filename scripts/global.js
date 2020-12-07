@@ -9,9 +9,9 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 9.0;
-g.versionText = "0.9.0 - 04 OCT 2020";
-g.notes = "v0.9.0";
+g.version = 10.0;
+g.versionText = "0.10.0 - 28 JAN 2021";
+g.notes = "v0.10.0";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
@@ -309,10 +309,12 @@ g.newday = function () {
 g.checkPop = function (name, amount) {
     switch (name) {
         case "money":
-            if (amount < 0)
-                g.popUpNotice("You spent<br />$" + Math.abs(amount));
-            else
-                g.popUpNotice("You received<br />$" + amount);
+            if (amount !== 0) {
+                if (amount < 0)
+                    g.popUpNotice("You spent<br />$" + Math.abs(amount));
+                else
+                    g.popUpNotice("You received<br />$" + amount);
+            }
             break;
         case "jobConstructionPay":
             g.popUpNotice("You got a<br />$" + amount + " raise");

@@ -732,6 +732,32 @@ room200.chatcatch = function (callback) {
             char.addtime(30);
             char.room(0);
             break;
+        case "questionairre":
+            if (g.fight === null)
+                g.fight = 10;
+            if (g.fight > 54) {
+                scc.love("missy", 10, 50);
+                chat(3, 200);
+            }
+            else if (g.fight > 10) {
+                scc.love("missy", 5, 50);
+                chat(6, 200);
+            }
+            else {
+                if (g.fight < 2)
+                    scc.love("missy", -10, 100);
+                else
+                    scc.love("missy", -5, 100);
+                chat(7, 200);
+            }
+            g.fight = null;
+            break;
+        case "mlike":
+            scc.love("missy", 2, 50);
+            break;
+        case "mhate":
+            scc.love("missy", -2, 50);
+            break;
         default:
             break;
     }
@@ -763,7 +789,7 @@ room200.chat = function (chatID) {
             text: "Stop!<br />You're boring me. If you're going to waste my time you can at least be interesting.<br />" +
                 "Let's look over your application..",
             button: [
-                { chatID: tempSissy > 54 ? 3 : (tempSissy > 10 ? 6 : 7), text: "Yes..", callback: "" }
+                { chatID: -1, text: "Yes..", callback: "questionairre" }
             ]
         },
         {
@@ -811,14 +837,14 @@ room200.chat = function (chatID) {
                 "change you're in for a really miserable time. Do you think you can change or do you want to be more than white rice " +
                 "and tofu? ",
             button: [
-                { chatID: 8, text: "My quiz wasn't the real me, I'm ready for change. ", callback: "" }
+                { chatID: 8, text: "I think I can change. ", callback: "" }
             ]
         },
         {
             chatID: 8,
             speaker: "missy",
             text: "HHHHmmmmmmmmmmmmmmmmmm. Like they say the harder the task, the more rewarding it is when it's complete. I'll " +
-                "give you a chance kid, but you'll owe. I should just get rid of you right now. I'll start with your looks. " +
+                "give you a chance kid, but you'll owe me. I should just get rid of you right now. I'll start with your looks. " +
                 "You look like a mix of dog vomit and a pile of trash. I'll have to change you're looks. ",
             button: [
                 { chatID: 9, text: "What's wrong with the way I look?", callback: "" }
@@ -832,8 +858,8 @@ room200.chat = function (chatID) {
                 "First off I have to have someone that will follow all orders I give without question. " +
                 "If I tell you to do something you don't ask why, you just do it. Is this something you can do?",
             button: [
-                { chatID: 11, text: "Yes " + sc.n("missy") + ", I can do that.", callback: "" },
-                { chatID: 10, text: "What?? No. You make me uncomfortable. ", callback: "" }
+                { chatID: 11, text: "Yes " + sc.n("missy") + ", I can do that.", callback: "mlike" },
+                { chatID: 10, text: "What?? No. You make me uncomfortable. ", callback: "mhate" }
             ]
         },
         {

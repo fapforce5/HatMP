@@ -199,7 +199,10 @@ room13.btnclick = function (name) {
             char.room(31);
             break;
         case "lola":
-            if (scc.changesDiffernt("lola", false)) {
+            if (cl.c.cumface) {
+                chat(140, 13);
+            }
+            else if (scc.changesDiffernt("lola", false)) {
                 chat(139, 13);
             }
             else if (g.checkflag("lolaDayEvent")) {
@@ -262,7 +265,10 @@ room13.btnclick = function (name) {
 
             break;
         case "eva":
-            if (scc.changesDiffernt("eva", false)) {
+            if (cl.c.cumface) {
+                chat(141, 13);
+            }
+            else if (scc.changesDiffernt("eva", false)) {
                 chat(138, 13);
             }
             else if (g.checkflag("evaDayEvent")) {
@@ -436,6 +442,7 @@ room13.chatcatch = function (callback) {
             nav.killall();
             cl.horny(30);
             sc.setstep("eva", 3);
+            scc.love("eva", 5, 50);
             break;
         case "footrub1":
             g.setflag("evaDayEvent");
@@ -502,6 +509,8 @@ room13.chatcatch = function (callback) {
             break;
         case "kickOutRoom":
             g.set("enterSister", true);
+            scc.love("eva", -5, 100);
+            scc.love("lola", -5, 100);
             char.room(11);
             break;
         case "pullDown":
@@ -520,6 +529,8 @@ room13.chatcatch = function (callback) {
         case "LeaveKickOut":
             char.addtime(30);
             char.room(11);
+            scc.love("eva", -5, 100);
+            scc.love("lola", -5, 100);
             break;
         case "reset":
             char.room(13);
@@ -559,6 +570,7 @@ room13.chatcatch = function (callback) {
             }, 13);
             g.setflag("lolaDayEvent");
             sc.setstep("lola", 2);
+            scc.love("lola", 5, 50);
             cl.horny(15);
             break;
         case "br2":
@@ -591,6 +603,7 @@ room13.chatcatch = function (callback) {
             }, 13);
             g.setflag("lolaDayEvent");
             cl.horny(45);
+            scc.love("lola", 5, 50);
             sc.setstep("lola", 4);
             break;
         case "br4":
@@ -766,8 +779,14 @@ room13.chatcatch = function (callback) {
             room13.btnclick("lolaChat");
             break;
         case "angry10":
-            scc.love("eva", -10);
-            scc.love("lola", -10);
+            scc.love("eva", -10, 100);
+            scc.love("lola", -10, 100);
+            break;
+        case "lhate":
+            scc.love("lola", -2, 100);
+            break;
+        case "ehate":
+            scc.love("eva", -2, 100);
             break;
         default:
             console.log(callback + " - miss");
@@ -989,8 +1008,8 @@ room13.chat = function (chatID) {
             speaker: "eva",
             text: "Grow a pair sissy boy and rub my feet!",
             button: [
-                { chatID: -1, text: "I'm not touching those smelly things", callback: "" },
-                { chatID: 26, text: "Sure!", callback: "footrub" }
+                { chatID: 26, text: "Sure!", callback: "footrub" },
+                { chatID: -1, text: "I'm not touching those smelly things", callback: "ehate" }
             ]
         },
         {
@@ -998,8 +1017,8 @@ room13.chat = function (chatID) {
             speaker: "eva",
             text: "Hay why don't you make yourself useful and rub my feet. ",
             button: [
-                { chatID: -1, text: "I'm not touching those smelly things", callback: "" },
-                { chatID: 26, text: "Sure!", callback: "footrub" }
+                { chatID: 26, text: "Sure!", callback: "footrub" },
+                { chatID: -1, text: "I'm not touching those smelly things", callback: "ehate" }
             ]
         },
         {
@@ -1939,6 +1958,22 @@ room13.chat = function (chatID) {
             text: scc.changeText,
             button: [
                 { chatID: -1, text: "Thanks!", callback: "lolachangeText" }
+            ]
+        },
+        {
+            chatID: 140,
+            speaker: "lola",
+            text: "oh, uhhhhh, it appears you have something on your face.",
+            button: [
+                { chatID: -1, text: "Thanks, I'll go lick it off!", callback: "lhate" }
+            ]
+        },
+        {
+            chatID: 141,
+            speaker: "eva",
+            text: "hahaha gross, someone came all over your face!",
+            button: [
+                { chatID: -1, text: "Thanks, I'll go lick it off!", callback: "" }
             ]
         },
     ];

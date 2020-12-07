@@ -98,17 +98,14 @@ sc.events = [
     { name: "bigguy", step: 4, txt: "Cum licker", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 5, txt: "Eat all the cum - both", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
-    { name: "zoey", step: -4, txt: "Break up with Chloé", img: "chloecum", show: true, row: 1, col: 3, ach: false, major: false },
-    { name: "zoey", step: -3, txt: "Chloé cheating", img: "zoeyCheat", show: true, row: 1, col: 2, ach: false, major: false },
-    { name: "zoey", step: -2, txt: "Chloé not cheating", img: "zoeyAllgood", show: true, row: -1, col: 2, ach: false, major: false },
-    { name: "zoey", step: -1, txt: "Can Crash at her home", img: "zoeyBed", show: true, row: 1, col: 0, ach: false, major: false },
     { name: "zoey", step: 0, txt: "Play some video games. ", img: "zoeyGame", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 1, txt: "Define Relationship ", img: "zoeyGame", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 2, txt: "Meet Chloé", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 3, txt: "Eat Chloé", img: "zoeyLick", show: true, row: 0, col: 1, ach: false, major: false },
     { name: "zoey", step: 4, txt: "Talk to Zoey about Chloé", img: "", show: false, row: 0, col: 1, ach: false, major: false },
-    { name: "zoey", step: 5, txt: "Talked about cheating", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
-    { name: "zoey", step: 11, txt: "Night Visitor begin", img: "", show: false, row: 0, col: 3, ach: false, major: false },
+    { name: "zoey", step: 5, txt: "Chloé  Cheating", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
+    { name: "zoey", step: 6, txt: "Chloé Not Cheating / not spying", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
+    { name: "zoey", step: 10, txt: "Based on love", img: "", show: false, row: 0, col: 3, ach: false, major: false },
     { name: "zoey", step: 12, txt: "Night Visitor", img: "zoeyEat", show: true, row: 0, col: 3, ach: false, major: false },
     { name: "zoey", step: 18, txt: "Ready for kick out", img: "", show: true, row: 0, col: 3, ach: false, major: false },
     { name: "zoey", step: 19, txt: "3 days", img: "", show: false, row: 0, col: 4, ach: false, major: false },
@@ -275,6 +272,9 @@ sc.events = [
 
     { name: "tim", step: 1, txt: "Flashed cock at pool.", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tim", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "chloe", step: 1, txt: "Cheated on Zoey with you", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "chloe", step: 2, txt: "Zoey confrontation", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 ];
 
 sc.setMax = function () {

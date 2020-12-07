@@ -57,7 +57,22 @@ room651.btnclick = function (name) {
         case "door1":
         case "door2":
         case "door3":
-            chat(0, 651);
+            nav.killall();
+            nav.bg("651_wackHallway/661_interior.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "pay",
+                "left": 961,
+                "top": 164,
+                "width": 642,
+                "height": 630,
+                "image": "651_wackHallway/hole.png"
+            }, 651);
+
+            //chat(0, 651);
+            break;
+        case "pay":
+            chat(8, 651);
             break;
         default:
             break;
@@ -74,6 +89,43 @@ room651.chatcatch = function (callback) {
         case "changePic":
             nav.bg("651_wackHallway/651_boothCandyBack1.png");
             //651_boothCandyBack1.png
+            break;
+        case "reset":
+            char.room(651);
+            break;
+        case "pay50":
+            if (g.get("money") < 50)
+                chat(9, 651);
+            else {
+                g.mod("money", -50);
+                nav.killbutton("pay");
+                nav.bg("651_wackHallway/jo1.jpg");
+                chat(10, 651);
+            }
+            break;
+        case "jo2":
+            nav.bg("651_wackHallway/jo2.jpg");
+            if (sc.getstep("missy") > 5)
+                chat(11, 651);
+            else
+                chat(12, 651);
+            break;
+        case "checkjo2":
+            if (cl.c.chastity === null)
+                chat(14, 651);
+            else
+                chat(13, 651);
+            break;
+        case "jo2chastity":
+            cl.horny(50);
+            char.room(651);
+            break;
+        case "jo3":
+            nav.bg("651_wackHallway/jo3.jpg");
+            cl.doCum(false);
+            break;
+        case "jo3end":
+            char.room(651);
             break;
         default:
             break;
@@ -144,6 +196,71 @@ room651.chat = function (chatID) {
             text: "Yeah, " + sc.n("missy") + " sent him over. I'm going to take him to the back so he can watch the booths. ",
             button: [
                 { chatID: -1, text: "[Follow " + sc.n("tiffany") + " behind the Employee's Only' Door]", callback: "onDuty" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "thinking",
+            text: "Am I really going to sit in the public booth and jack off?",
+            button: [
+                { chatID: -1, text: "Pay $50 to see the nudie booth show?", callback: "pay50" },
+                { chatID: -1, text: "Save my money", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "thinking",
+            text: "Damn, I don't have $50.",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "thinking",
+            text: "Oh Fuck yeah! I'm so going to jack off!",
+            button: [
+                { chatID: -1, text: "...", callback: "jo2" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "tiffany",
+            text: "Oh hi " + sc.n("me") + ". Did you come in to jack off to my pussy?",
+            button: [
+                { chatID: -1, text: "Oh yeah!", callback: "checkjo2" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "tiffany",
+            text: "Oh hi sexy. Did you like it when I play with my pussy?",
+            button: [
+                { chatID: -1, text: "Oh yeah!", callback: "checkjo2" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "thinking",
+            text: "Oh. I'm wearing a chastity cage. Well this was pointless...",
+            button: [
+                { chatID: -1, text: "...", callback: "jo2chastity" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "thinking",
+            text: "Oh fuck I'm going to cum!",
+            button: [
+                { chatID: 15, text: "...", callback: "jo3" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "tiffany",
+            text: "Cumming on the glass is like applause for my pussy! ",
+            button: [
+                { chatID: -1, text: "Thanks", callback: "jo3end" }
             ]
         },
     ];

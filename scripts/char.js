@@ -887,6 +887,7 @@ menu.makeSaves = function () {
         inv: inv.save(),
         cl: cl.save(),
         sc: sc.save(),
+        scc: scc.save(),
         pic: pic.save()
     };
 };
@@ -942,6 +943,7 @@ g.saveState = {
     inv: inv.save(),
     cl: cl.save(),
     sc: sc.save(),
+    scc: scc.save(),
     pic: pic.save()
 };
 menu.load = function (cookieName, btn, saveID) {
@@ -963,6 +965,7 @@ menu.load = function (cookieName, btn, saveID) {
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
+    scc.load(tp.scc);
     try {
         pic.load(tp.pic);
     }
@@ -1074,7 +1077,7 @@ char.menu = function () {
         "left": 1800 * g.ratio + "px"
     });
     $('#room-numbers').css({
-        "width": 325 * g.ratio + "px",
+        "width": 370 * g.ratio + "px",
         "height": 50 * g.ratio + "px",
         "top": 10 * g.ratio + "px",
         "left": 400 * g.ratio + "px"

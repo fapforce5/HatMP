@@ -97,7 +97,7 @@ tEnemy.initEnemy = function (enemyName) {
                 loss: "Damn I've been bested!",
                 win: "You need to work out more and stop being such a loser.",
                 submit: "You pathitic bitch. I'm tired of fighting you, I'm just going to fuck you."
-            }
+            };
             break;
         case "futaRed":
             charVar = {
@@ -222,9 +222,9 @@ tEnemy.initEnemy = function (enemyName) {
         default:
             charVar = null;
             break;
-    };
+    }
     return charVar;
-}
+};
 
 tEnemy.drawBackground = function (bg) {
     switch (bg) {
@@ -237,7 +237,7 @@ tEnemy.drawBackground = function (bg) {
         default:
             console.log("Unkown BG: " + bg + " in enemy");
             break;
-    };
+    }
 };
 
 tEnemy.drawRoom = function () {
@@ -521,7 +521,7 @@ tEnemy.drawEnemyAction = function (btn) {
             break;
         case "clear":
             break;
-    };
+    }
 };
 
 tEnemy.drawEnemyActionSub = function (btn, num) {
@@ -565,12 +565,14 @@ tEnemy.drawEnemyActionSub = function (btn, num) {
         //case "e_blockkick": img = "lb_blockkick"; break;
         //case "e_endturn": img = "lb_endturn"; break;
         //case "e_endturnconfirm": img = "lb_endturnconfirm"; break;
-       
+
         //case "e_earnmoves": img = "lb_earnmoves"; break;
-        
+
         //case "e_noop": img = "lb_noop"; break;
 
-        default: console.log("invalid drawEnemyActionSub: " + btn); break;
+        default:
+            console.log("invalid drawEnemyActionSub: " + btn);
+            break;
     }
     nav.button({
         "type": "zbtn",
@@ -885,7 +887,7 @@ tEnemy.drawAction = function (action) {
             break;
         default:
             console.log("invalid Action: " + action);
-    };
+    }
 };
 
 tEnemy.drawSingleEnemy = function (xi, pose) {
@@ -997,7 +999,7 @@ tEnemy.drawEnemySub = function (ls, ts, r, j, classes) {
         default:
             console.log("unable to find: " + pose + " pose");
             break;
-    };
+    }
     nav.button({
         "type": classes,
         "name": "char" + j,
@@ -1064,7 +1066,7 @@ tEnemy.drawMe = function (pose) {
         default:
             console.log("drawMe pose not found: " + pose);
             break;
-    };
+    }
 };
 
 tEnemy.enemyEnergyAll = function (thisDamage, thisArousal, exception) {

@@ -215,6 +215,9 @@ room204.chatcatch = function (callback) {
         case "MissyStep5":
             char.room(200);
             break;
+        case "mhate":
+            scc.love("missy", -2, 100);
+            break;
         default:
             break;
     }
@@ -285,7 +288,7 @@ room204.chat = function (chatID) {
             speaker: "missy",
             text: "Idiot, that's Ralph Zurich. Click 'Allen Waters' picture since his name is alphabetically before Ralph. ",
             button: [
-                { chatID: -1, text: "Try again.", callback: "" }
+                { chatID: -1, text: "Try again.", callback: "mhate" }
             ]
         },
         {
@@ -293,7 +296,7 @@ room204.chat = function (chatID) {
             speaker: "missy",
             text: "No dummy, that's Samual Shepard the piss bag. You need to click on Allen since his name is alphabetically before Samual. ",
             button: [
-                { chatID: -1, text: "Try again.", callback: "" }
+                { chatID: -1, text: "Try again.", callback: "mhate" }
             ]
         },
         {
@@ -311,7 +314,7 @@ room204.chat = function (chatID) {
                 "I can't tell if you're as big of an airhead as " + sc.n('cecilia') + ", or you just don't pay attention. The alphabet goes o, p, q, r, s, t... " +
                 "so Ralph comes before Samual the piss sucker. Select the picture with Ralph. ",
             button: [
-                { chatID: -1, text: "Try Again", callback: "" }
+                { chatID: -1, text: "Try Again", callback: "mhate" }
             ]
         },
         {

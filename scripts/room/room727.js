@@ -77,6 +77,8 @@ room727.btnclick = function (name) {
             char.room(27);
             break;
         case "stall":
+            nav.killbutton("stall");
+            nav.killbutton("mirror");
             if (g.pass === "slutfuck") {
                 //fuck slut
             }

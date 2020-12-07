@@ -16,46 +16,16 @@ room501.main = function () {
         }, 501);
         chat(53, 501);
     }
-    else if (zoeyStep === 11) {
-        btnList.push({
-            "type": "btn",
-            "name": "door",
-            "left": 580,
-            "top": 29,
-            "width": 354,
-            "height": 721,
-            "title": "Peek",
-            "image": "501_jadaGame/door.png"
-        });
+    //else if (zoeyStep === 11) {
 
-        btnList.push({
-            "type": "btn",
-            "name": "chair11",
-            "left": 973,
-            "top": 449,
-            "width": 780,
-            "height": 485,
-            "title": sc.n("chloe") + "'s purse",
-            "image": "501_jadaGame/chair.png"
-        });
-        btnList.push({
-            "type": "btn",
-            "name": "purse11",
-            "left": 1476,
-            "top": 608,
-            "width": 151,
-            "height": 100,
-            "title": "Sleep",
-            "image": "501_jadaGame/purse.png"
-        });
-        $.each(btnList, function (i, v) {
-            nav.button(v, 501);
-        });
-        if (sc.checkevent("zoey", -3))
-            chat(64, 501);
-        else
-            chat(65, 501);
-    }
+    //    $.each(btnList, function (i, v) {
+    //        nav.button(v, 501);
+    //    });
+    //    if (sc.checkevent("zoey", -3))
+    //        chat(64, 501);
+    //    else
+    //        chat(65, 501);
+    //}
     else if (zoeyStep > 22) {
         nav.button({
             "type": "btn",
@@ -131,25 +101,19 @@ room501.btnclick = function (name) {
                     chat(40, 501);
                     room501.chatcatch("zLook");
                 }
-                else {
-                    if (cl.isCrossdressing())
-                        chat((Math.floor(Math.random() * 2) === 0 ? 75 : 76), 501);
-                    else
-                        chat(63, 501);
-                    room501.chatcatch("zLook");
+                else if (zoeyy === 5) {
+                    chat(64, 501);
+                }
+                else if (zoeyy === 6) {
+                    chat(100, 501);
+                }
+                else if (zoeyy === 10) {
+                    chat(103, 501);
                 }
                 g.setflag("zoeyDay");
             }
             else {
-                if (sc.checkevent("zoey", -1)) {
-                    if (cl.isCrossdressing())
-                        chat((Math.floor(Math.random() * 2) === 0 ? 75 : 76), 501);
-                    else
-                        chat(63, 501);
-                    room501.chatcatch("zLook");
-                }
-                else
-                    chat(16, 501);
+                chat(16, 501);
             }
             break;
         case "door":
@@ -161,55 +125,51 @@ room501.btnclick = function (name) {
             chat(66, 501);
             break;
         case "purse11":
-            if (sc.checkevent("zoey", -3)) {
-                nav.killall();
-                nav.bg("501_jadaGame/purse.jpg");
-                var p11 = [{
-                    "type": "btn",
-                    "name": "notbook11",
-                    "left": 340,
-                    "top": 562,
-                    "width": 769,
-                    "height": 207,
-                    "image": "501_jadaGame/notebook.png"
-                },
-                {
-                    "type": "btn",
-                    "name": "phone11",
-                    "left": 714,
-                    "top": 199,
-                    "width": 414,
-                    "height": 193,
-                    "image": "501_jadaGame/cPhone.png"
-                },
-                {
-                    "type": "btn",
-                    "name": "pocketbook11",
-                    "left": 1014,
-                    "top": 434,
-                    "width": 906,
-                    "height": 372,
-                    "image": "501_jadaGame/pocketbook.png"
-                },
-                {
-                    "type": "btn",
-                    "name": "cancelPeek",
-                    "left": 1432,
-                    "top": 93,
-                    "width": 298,
-                    "height": 298,
-                    "title": "Cancel",
-                    "image": "501_jadaGame/cancel.png"
-                }];
-                $.each(p11, function (i, v) {
-                    nav.button(v, 501);
-                });
-            }
-            else
-                chat(74, 501);
+            nav.killall();
+            nav.bg("501_jadaGame/purse.jpg");
+            var p11 = [{
+                "type": "btn",
+                "name": "notbook11",
+                "left": 340,
+                "top": 562,
+                "width": 769,
+                "height": 207,
+                "image": "501_jadaGame/notebook.png"
+            },
+            {
+                "type": "btn",
+                "name": "phone11",
+                "left": 714,
+                "top": 199,
+                "width": 414,
+                "height": 193,
+                "image": "501_jadaGame/cPhone.png"
+            },
+            {
+                "type": "btn",
+                "name": "pocketbook11",
+                "left": 1014,
+                "top": 434,
+                "width": 906,
+                "height": 372,
+                "image": "501_jadaGame/pocketbook.png"
+            },
+            {
+                "type": "btn",
+                "name": "cancelPeek",
+                "left": 1432,
+                "top": 93,
+                "width": 298,
+                "height": 298,
+                "title": "Cancel",
+                "image": "501_jadaGame/cancel.png"
+            }];
+            $.each(p11, function (i, v) {
+                nav.button(v, 501);
+            });
             break;
         case "pocketbook11":
-            chat(67, 501);
+            chat(80, 501);
             break;
         case "phone11":
             nav.button({
@@ -221,7 +181,7 @@ room501.btnclick = function (name) {
                 "height": 963,
                 "image": "501_jadaGame/cPhone_big.png"
             }, 501);
-            chat(68, 501);
+            chat(78, 501);
             break;
         case "notbook11":
             nav.button({
@@ -263,7 +223,10 @@ room501.btnclick = function (name) {
                 'buried into my pussy as' +
                 '</div>');
 
-            chat(69, 501);
+            chat(81, 501);
+            break;
+        case "door11":
+
             break;
         case "cancelPeek":
             nav.room(501);
@@ -360,6 +323,7 @@ room501.chatcatch = function (callback) {
         case "vaginaHide":
             nav.killbutton("vagina");
             room501.chatcatch("zForward");
+            scc.love("zoey", -5, 100);
             break;
         case "munchTheTwat":
             nav.killbutton("vagina");
@@ -397,6 +361,7 @@ room501.chatcatch = function (callback) {
         case "leave0":
             sc.setstep("zoey", 1);
             g.setflag("zoeyDay");
+            scc.love("zoey", 5, 50);
             if (g.hourBetween(0, 16))
                 char.addtime(180);
             else
@@ -406,6 +371,7 @@ room501.chatcatch = function (callback) {
         case "leave1":
             sc.setstep("zoey", 2);
             g.setflag("zoeyDay");
+            scc.love("zoey", 5, 50);
             if (g.hourBetween(0, 16))
                 char.addtime(180);
             else
@@ -422,14 +388,12 @@ room501.chatcatch = function (callback) {
             char.room(500);
             break;
         case "cheat":
-            sc.setstep("zoey", -3);
             sc.setstep("zoey", 5);
             room501.chatcatch("zLook");
             g.setflag("zoeyDay");
             break;
         case "noCheat":
-            sc.setstep("zoey", -2);
-            sc.setstep("zoey", 5);
+            sc.setstep("zoey", 6);
             room501.chatcatch("zLook");
             g.setflag("zoeyDay");
             break;
@@ -505,17 +469,108 @@ room501.chatcatch = function (callback) {
             nav.killbutton("notebookKill");
             break;
         case "tellZoey":
-            g.pass = "tellZoey";
-            char.room(502);
+            nav.killall();
+            nav.bg("502_bedroom/eat1.jpg");
             break;
-        case "takeANap":
-            char.settime(7, 12);
-            chat(73, 501);
+        case "tellZoey1":
+            nav.bg("502_bedroom/eat3.jpg");
             break;
-        case "zoey11To12":
-            sc.setstep("zoey", 12);
-            g.pass = "";
-            char.room(502);
+        case "zhate":
+            scc.love("zoey", -5, 100);
+            break;
+        case "zlove":
+            scc.love("zoey", 5, 100);
+            break;
+        case "5endbad":
+            sc.setstep("zoey", 6);
+            char.addtime(120);
+            g.setflag("zoeyDay");
+            char.room(0);
+            break;
+        case "5midway":
+            g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 23, 0, 0, 0);
+            char.addtime(10);
+            room501.chatcatch("zShock");
+            break;
+        case "peek0":
+            nav.killall();
+            nav.bg("500_jada/peek0.jpg");
+            break;
+        case "peek1":
+            nav.bg("500_jada/peek1.jpg");
+            break;
+        case "peek2":
+            nav.killall();
+            nav.bg("501_jadaGame/501_game.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "door11",
+                "left": 580,
+                "top": 29,
+                "width": 354,
+                "height": 721,
+                "title": "Peek",
+                "image": "501_jadaGame/door.png"
+            }, 501);
+            nav.button({
+                "type": "btn",
+                "name": "purse11",
+                "left": 1476,
+                "top": 608,
+                "width": 151,
+                "height": 100,
+                "title": "Sleep",
+                "image": "501_jadaGame/purse.png"
+            }, 501);
+
+            break;
+        case "phoneRandom":
+        case "phone69":
+            nav.killbutton("code");
+            var code = (callback === "phone69" ? 6969 : Math.floor(Math.random() * 9999)).toString();
+            nav.t({
+                type: "img",
+                name: "code",
+                left: 940,
+                top: 170,
+                font: 100,
+                hex: "#ffffff",
+                text: code
+            });
+            nav.modbutton("phone11Kill", "501_jadaGame/cPhone_bigx.png");
+            chat(79, 501);
+            break;
+        case "fuckingcheater":
+            if (sc.getstep("chloe") === 1)
+                chat(98, 501)//fucking chater
+            else
+                chat(92, 501);
+            break;
+        case "zoeyCry":
+            nav.bg("502_bedroom/zoeyCry.jpg");
+            break;
+        case "zoeySleep":
+            nav.bg("502_bedroom/sleepZoey.jpg");
+            scc.love("zoey", 40, 60);
+            sc.setstep("zoey", 10);
+            sc.setstep("chloe", 2);
+            g.roomTimeout = setTimeout(function () {
+                g.pass = 502;
+                char.room(28);
+            }, 500);
+            break;
+        case "zoeyDestroy":
+            scc.love("zoey", -999, 100);
+            sc.setstep("zoey", 10);
+            sc.setstep("chloe", 2);
+            g.setflag("zoeyDay");
+            char.addtime(147);
+            char.room(0);
+            break;
+        case "repeat6":
+            g.setflag("zoeyDay");
+            char.addtime(78);
+            char.room(0);
             break;
         default:
             break;
@@ -570,7 +625,7 @@ room501.chat = function (chatID) {
             text: "Thanks " + sc.n("me") + ", you're the best friend any girl could want. " +
                 "It's been fun I'm going to get ready for my date tonight.",
             button: [
-                { chatID: -1, text: "I had fun too. Night " + sc.n("zoey") , callback: "leave0" }
+                { chatID: -1, text: "I had fun too. Night " + sc.n("zoey"), callback: "leave0" }
             ]
         },
         {
@@ -824,7 +879,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "I hope you didn't mind seeing that. ",
             button: [
-                { chatID: 37, text: "Of course not! Feel free to eat her out anytime I'm around!", callback: "" }
+                { chatID: 37, text: "Of course not! Feel free to eat her out anytime I'm around!", callback: "zlove" }
             ]
         },
         {
@@ -915,7 +970,8 @@ room501.chat = function (chatID) {
             button: [
                 {
                     chatID: 48, text: "Your side. I'm always on your side. I'm only trying to help. If you need help going " +
-                    "through her phone I'm there. ", callback: "zLook" }
+                        "through her phone I'm there. ", callback: "zLook"
+                }
             ]
         },
         {
@@ -981,7 +1037,7 @@ room501.chat = function (chatID) {
                 "you made fun of Stacy on the lunch room and she kicked you in the balls so hard it looked like she broke them!",
             button: [
                 { chatID: 59, text: "ohhh, hahaha yea. They're better now, but feel free to check them.", callback: "" },
-                { chatID: 56, text: sc.n("zoey") + "!! I can't believe your told her that! So rude." , callback: "" }
+                { chatID: 56, text: sc.n("zoey") + "!! I can't believe your told her that! So rude.", callback: "zhate" }
             ]
         },
         {
@@ -1029,7 +1085,7 @@ room501.chat = function (chatID) {
             speaker: "chloe",
             text: "Hahaha " + sc.n("zoey") + ". I'm just kidding you know my pussy only aches for you.",
             button: [
-                { chatID: 62, text: "...", callback: "" }
+                { chatID: 62, text: "...", callback: "zlove" }
             ]
         },
         {
@@ -1050,123 +1106,346 @@ room501.chat = function (chatID) {
         },
         {
             chatID: 64,
-            speaker: "me",
-            text: "Oh, it's " + sc.n("chloe") + "'s purse, I wonder if there's any  proof that she's cheeting in there.... " +
-                "or I could peep on those two.",
+            speaker: "zoey",
+            text: "I saw Emily and " + sc.n("chloe") + " hanging out at the mall. They were a little too coquine. ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: 65, text: "Did you talk to them?", callback: "zShock" }
             ]
         },
         {
             chatID: 65,
-            speaker: "me",
-            text: "Hmmm I wonder if " + sc.n("zoey") + " would mind if I peeped just for a second... I know " + sc.n("chloe") +
-                " wouldn't care.",
+            speaker: "zoey",
+            text: "OH NO!!I would never! I'm too shy. I don't know what to do. ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: 66, text: "Maybe you could just break up with her?", callback: "zSuprise" }
             ]
         },
         {
             chatID: 66,
-            speaker: "me",
-            text: "Should I call it a night?",
+            speaker: "zoey",
+            text: "Oh no I can't do that without knowing... Wait I have a plan, but I need your help. ",
             button: [
-                { chatID: -1, text: "Take a nap until morning", callback: "takeANap" },
-                { chatID: -1, text: "Never mind, I still have stuff to do", callback: "" }
+                { chatID: 67, text: "Me? What can I do? ", callback: "zLook" }
             ]
         },
         {
             chatID: 67,
-            speaker: "me",
-            text: "That's her pocketbook, I'm not going to steal from " + sc.n("chloe") + ".",
+            speaker: "zoey",
+            text: "So " + sc.n("chloe") + " is going to come by tonight. I need you to sneak in and look through her purse to " +
+                "see if " + sc.n("chloe") + "'s flirter avec Emily. ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: 68, text: "That's crazy! ", callback: "zLook" }
             ]
         },
         {
             chatID: 68,
-            speaker: "me",
-            text: "Fuck!!! I have no idea what to press! ",
+            speaker: "thinking",
+            text: "Oh man! " + sc.n("zoey") + "'s gone crazy over this girl. I haven't seen her this stressed before. I want to " +
+                "help her, but is it right to go through " + sc.n("chloe") + "'s stuff? This could backfire REALLY BIG!",
             button: [
-                { chatID: -1, text: "...", callback: "killPhone11" }
+                { chatID: 69, text: "...", callback: "" }
             ]
         },
         {
             chatID: 69,
-            speaker: "me",
-            text: ".",
+            speaker: "zoey",
+            text: "I know it's crazy, but I just have to know! Will you do it?",
             button: [
-                { chatID: -1, text: "Close Book", callback: "killNotebook11" },
-                { chatID: 70, text: "Turn Page", callback: "notbook11-1" }
+                { chatID: 71, text: "You're my best friend, of course I'll do it. ", callback: "zSuprise" },
+                { chatID: 70, text: "No, you just need to talk with her. Relationships are about communication ", callback: "" }
             ]
         },
         {
             chatID: 70,
-            speaker: "me",
-            text: "..",
+            speaker: "zoey",
+            text: "Tu as raison. She'll be coming by shortly. I've got to get ready. I'll see you later.",
             button: [
-                { chatID: 72, text: "Close Book", callback: "killNotebook11" },
-                { chatID: 71, text: "Turn Page", callback: "notbook11-2" }
+                { chatID: -1, text: "okay. Talk to her. I'm sure she'll tell you the truth. ", callback: "5endbad" }
             ]
         },
         {
             chatID: 71,
-            speaker: "me",
-            text: "...",
+            speaker: "zoey",
+            text: "Tu es mon meilleur ami!!! She'll be here tonight. We'll play some games then you need to hide in the bushes. " +
+                "She always leaves her purse in the salon, er living room. That's such a weird way to call this room. I'll leave the " +
+                "door unlocked for you. You sneak in, read her phone, then let me know!",
             button: [
-                { chatID: 72, text: "Close Book", callback: "killNotebook11" },
+                { chatID: 72, text: "I just have one condition. I get to pick the video game.", callback: "" }
             ]
         },
         {
             chatID: 72,
-            speaker: "me",
-            text: "Oh wow " + sc.n("chloe") + " really is cheating on " + sc.n("zoey") + "! " +
-                (sc.checkevent("zoey", -3) ? "I knew it, I have to tell " + sc.n("zoey") + "!" :
-                " I can't believe how stupid I was! I need to tell " + sc.n("zoey") + "!"),
+            speaker: "zoey",
+            text: "Tu es le meilleur ami de tous les temps! I'm going to eat the floor on you, no matte which game your pick!",
             button: [
-                { chatID: -1, text: "Tell " + sc.n("zoey"), callback: "tellZoey" }
+                { chatID: 73, text: "[Play video games until nightfall]", callback: "5midway" }
             ]
         },
         {
             chatID: 73,
-            speaker: "me",
-            text: "That chair is horrible to sleep in. Oh well I need to change and get ready for my day!",
+            speaker: "zoey",
+            text: "Oh no! Look at the time! " + sc.n("chloe") + "'s going to be here any minute! Quick go to the bushes!",
             button: [
-                { chatID: -1, text: "[Go to " + sc.n("zoey") + "'s room and change]", callback: "zoey11To12" }
+                { chatID: 74, text: "[Hide outside in the bushes]", callback: "peek0" }
             ]
         },
         {
             chatID: 74,
-            speaker: "me",
-            text: "I'm not going to go through " + sc.n("chloe") + "'s purse. ",
+            speaker: "thinking",
+            text: "I wonder how long I'll have to wait and hide in these bushes... hopefully not long.",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: 75, text: "[A few minutes pass]", callback: "peek1" }
             ]
         },
         {
             chatID: 75,
-            speaker: "zoey",
-            text: "Such a pretty girl. You're cute enough that I may accidentally pick you up in a bar and take you home",
+            speaker: "chloe",
+            text: "Hay sexy, *HICUP* You want to invite me in?",
             button: [
-                { chatID: -1, text: "I'm pretty", callback: "lookForward" }
+                { chatID: 76, text: "...", callback: "" }
             ]
         },
         {
             chatID: 76,
             speaker: "zoey",
-            text: "Je suis excitée. If you had la chatte I would lick it till you orgasmed all over my face! ",
+            text: "Oh yes! c'mon in! WE SHOULD GO DIRECTLY TO MY ROOM!",
             button: [
-                { chatID: 77, text: "I can orgasm all over your face now....", callback: "lookForward" }
+                { chatID: 77, text: "[Wait a few minutes for them to get to " + sc.n("zoey") + "'s room to sneak in]", callback: "peek2" }
             ]
         },
         {
             chatID: 77,
-            speaker: "zoey",
-            text: "Hahaha, you're so funny " + sc.n("me") + "!",
+            speaker: "thinking",
+            text: "I need to find proof that either " + sc.n("chloe") + "'s cheating or " + sc.n("zoey") + "'s crazy jealous.",
             button: [
-                { chatID: -1, text: "[Sad noises]", callback: "" }
+                { chatID: -1, text: "[Look for clues]", callback: "" }
             ]
-        }
+        },
+        {
+            chatID: 78,
+            speaker: "thinking",
+            text: "Fuck!!! I have no idea what to press! ",
+            button: [
+                { chatID: -1, text: "Give Up", callback: "peek2" },
+                { chatID: -1, text: "Random Buttons", callback: "phoneRandom" },
+                { chatID: -1, text: "6969", callback: "phone69" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "thinking",
+            text: "Fuck, that didn't work.. ",
+            button: [
+                { chatID: -1, text: "Give Up", callback: "peek2" },
+                { chatID: -1, text: "Random Buttons", callback: "phoneRandom" },
+                { chatID: -1, text: "6969", callback: "phone69" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "thinking",
+            text: "That's her pocketbook. If I get caught it will look like I'm trying to steal from " + sc.n("chloe") + ".",
+            button: [
+                { chatID: -1, text: "...", callback: "peek2" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "me",
+            text: ".",
+            button: [
+                { chatID: -1, text: "Close Book", callback: "killNotebook11" },
+                { chatID: 82, text: "Turn Page", callback: "notbook11-1" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "me",
+            text: "..",
+            button: [
+                { chatID: 84, text: "Close Book", callback: "killNotebook11" },
+                { chatID: 83, text: "Turn Page", callback: "notbook11-2" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "me",
+            text: "...",
+            button: [
+                { chatID: 84, text: "Close Book", callback: "killNotebook11" },
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "me",
+            text: "Oh wow " + sc.n("chloe") + " really is cheating on " + sc.n("zoey") + "! " +
+                (sc.checkevent("zoey", -3) ? "I knew it, I have to tell " + sc.n("zoey") + "!" :
+                    " I can't believe how stupid I was! I need to tell " + sc.n("zoey") + "!"),
+            button: [
+                { chatID: 85, text: "Tell " + sc.n("zoey"), callback: "tellZoey" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "zoey",
+            text: "Oh fuck yeah, I am almost there! Keep going!!",
+            button: [
+                { chatID: 86, text: sc.n("zoey") + "! " + sc.n("chloe") + " is cheating on you! I found proof!", callback: "" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "chloe",
+            text: "mmmMMmmmMMMMMM ........wha",
+            button: [
+                { chatID: 87, text: "...", callback: "tellZoey1" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "zoey",
+            text: "What is going on " + sc.n("me") + "?",
+            button: [
+                { chatID: 88, text: "Tell them everything you've read...", callback: "" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "zoey",
+            text: sc.n("chloe") + " is this true?",
+            button: [
+                { chatID: 89, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "chloe",
+            text: "OMG... yes, but only with guys and only for money. I don't like them, but I love you. ",
+            button: [
+                { chatID: 90, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "zoey",
+            text: "I knew it! I knew you were sleeping with other people! I totally knew it! Tu triche pute! I knew it.",
+            button: [
+                { chatID: 91, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "chloe",
+            text: "Why are you getting all crazy " + sc.n("zoey") + "? We never said we were exclusive. Before I started dating you " +
+                "I told you I have an immense sexual appitite, one lover is never enough. I'm sorry if you thought you were " +
+                "the only one, but I never said you were the only one. ",
+            button: [
+                { chatID: -1, text: "...", callback: "fuckingcheater" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "zoey",
+            text: "You're right. I am crazy. Crazy about you. Au moins j'étais fou de toi. But I'm not anymore. I always thought we " +
+            "we're going to be something I know now we will never be.", 
+            button: [
+                { chatID: 93, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "chloe",
+            text: "What's that?",
+            button: [
+                { chatID: 94, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "zoey",
+            text: "L'amour de ma vie. My life partner together forever. You just need to go. I don't ever want to see you again.",
+            button: [
+                { chatID: 95, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "chloe",
+            text: "I did not mean to hurt you. You were there for me when times were tough. I will always have " +
+            "a spot in my heart for you. Au revoir. ",
+            button: [
+                { chatID: 96, text: "...", callback: "zoeyCry" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "zoey",
+            text: "That was so hard. Thank you so much for helping me. You really are my best friend in the world. ",
+            button: [
+                { chatID: 97, text: "That's becuase you're my best friend in the world.", callback: "" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "zoey",
+            text: "I don't think I can sleep alone tongiht, I'm too sad. Could you sleep with me?",
+            button: [
+                { chatID: -1, text: "Of course " + sc.n("zoey") + ". Lets get some sleep.", callback: "zoeySleep" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "chloe",
+            text: "What's even worse is that " + sc.n("me") + " knows that and he played games to 'catch me' by going through " +
+                "my stuff! I can't believe you two. " + sc.n("zoey") + " you should've talked to me, and " + sc.n("me") + " should " +
+            "have been honest and told her you fucked me. This is stupid, I'm out of here!",
+            button: [
+                { chatID: 99, text: "Ooooooohhhhhhh", callback: "zoeyCry" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "zoey",
+            text: "I can't even right now. I don't think I can ever look you in the face. You need to go.. just go.",
+            button: [
+                { chatID: -1, text: "I know. I'm so sorry.", callback: "zoeyDestroy" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "me",
+            text: "So how's things with " + sc.n("chloe") + "?",
+            button: [
+                { chatID: 101, text: "...", callback: "zlook" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "zoey",
+            text: "Phénoménale! She's so amazing! I have such a lightening bolt for " + sc.n("chloe") + ". " +
+                "I'm so glad you talked me out of doing crazy. ",
+            button: [
+                { chatID: 102, text: "of course", callback: "zForward" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "zoey",
+            text: "I'm going to get back to killing these noobs! You should stop by the bar sometime.",
+            button: [
+                { chatID: -1, text: "Yeah, that'd be cool", callback: "repeat6" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "zoey",
+            text: "In progress",
+            button: [
+                { chatID: -1, text: "...", callback: "repeat6" }
+            ]
+        },
+
+
     ];
     //chloe - there is no good or bad, only fun and not fun
     if (cArray.length > chatID && chatID > -1)

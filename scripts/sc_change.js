@@ -34,14 +34,14 @@ scc.changeText = "";
 //];
 
 scc.changes = [
-    { name: "zoey", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "eva", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "lola", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "landloard", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "tiffany", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "missy", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "tina", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
-    { name: "cecilia", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
+    { name: "zoey", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "eva", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "lola", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "landloard", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "tiffany", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "missy", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "tina", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "cecilia", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
 
 ];
 
@@ -190,9 +190,6 @@ scc.changesDifferntText = function (who, whatNum) {
 };
 
 scc.save = function () {
-
-    //scc.changes = [
-    //    { name: "zoey", xdress: false, chest: 0, legs: 0, hair: 0, cock: 0, love: 0 },
     return $.extend(true, {}, scc.changes);
 };
 
@@ -201,25 +198,25 @@ scc.load = function (ra) {
 
     for (i = 0; i < scc.changes.length; i++) {
         scc.changes[i].xdress = false;
-        scc.changes[i].chest = scc.changes[i].legs = scc.changes[i].hair = scc.changes[i].cock = scc.changes[i].love = 0;
+        scc.changes[i].chest = scc.changes[i].leg = scc.changes[i].hair = scc.changes[i].cock = scc.changes[i].love = 0;
     }
-
-    for (i = 0; i < ra.length; i++) {
+    $.each(ra, function (i, v) {
         for (j = 0; j < scc.changes.length; j++) {
-            if (ra.char[i].name === scc.changes[j].name) {
+            if (ra[i].name === scc.changes[j].name) {
                 scc.changes[j].xdress = ra[i].xdress;
                 scc.changes[j].chest = ra[i].chest;
-                scc.changes[j].legs = ra[i].legs;
+                scc.changes[j].leg = ra[i].leg;
                 scc.changes[j].hair = ra[i].hair;
                 scc.changes[j].cock = ra[i].cock;
                 scc.changes[j].love = ra[i].love;
+                j = 99999;
             }
         }
-    }
+    });
 };
 
 scc.love = function (name, amount, max) {
-    var i, xi;
+    var i, xi, chageOccured;
     xi = null;
     for (i = 0; i < scc.changes.length; i++) {
         if (scc.changes[i].name === name) {
@@ -233,16 +230,35 @@ scc.love = function (name, amount, max) {
     else {
         if (max === null)
             max = 100;
+        if (max > 100)
+            max === 100;
+
         if (scc.changes[xi].love < max) {
             scc.changes[xi].love += amount;
             if (scc.changes[xi].love < -100)
                 scc.changes[xi].love = -100;
-            if (scc.changes[xi].love > 100)
-                scc.changes[xi].love = 100;
-            if (amount > 0)
+            if (scc.changes[xi].love > max)
+                scc.changes[xi].love = max;
+
+             if (amount > 9)
+                g.popUpNotice(sc.n(name) + " loved that ALOT ❤️❤️❤️ ");
+            else if (amount > 0)
                 g.popUpNotice(sc.n(name) + " loved that ❤️❤️❤️ ");
-            else
+            else if(amount < -9)
+                g.popUpNotice(sc.n(name) + " REALLY hated that 😡😡😡 ");
+            else 
                 g.popUpNotice(sc.n(name) + " hated that 😡😡😡 ");
         }
     }
+};
+
+scc.get = function (name) {
+    var retVar = null;
+    $.each(scc.changes, function (i, v) {
+        if (v.name === name) {
+            retVar = v;
+            return true;
+        }
+    });
+    return retVar;
 };

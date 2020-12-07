@@ -5,9 +5,9 @@ var room28 = {};
 room28.main = function () {
     var i;
     var hormoneLevel, thisTinyPP, fitnesslevel;
-
+    if (g.pass === 502)
+        nav.bg("502_bedroom/sleepZoey.jpg");
     menu.save("HatMP_9", null, 9);
-
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
@@ -116,13 +116,23 @@ room28.main = function () {
     }
 
     //check Transformation
-
+    if (cl.c.chest === 0 && fitnesslevel > 0) {
+        chat(0, 28);
+    }
+    else {
+        g.roomTimeout = setTimeout(function () {
+            var returnRoomID = g.pass;
+            g.pass = "endSleepyTime";
+            char.room(returnRoomID);
+        }, 1000);
+    }
+    /*
     var btnList = null;
     if (thisTinyPP && cl.c.cock < 5) {
         chat(1, 28);
     }
     else if (cl.c.chest === 0 && fitnesslevel > 0) {
-        console.log("fit")
+        console.log("fit");
         room28.btnclick("init");
         chat(0, 28);
     }
@@ -145,6 +155,7 @@ room28.main = function () {
             nav.button(v, 28);
         });
     }
+    */
 };
 
 room28.btnclick = function (name) {
@@ -447,9 +458,20 @@ room28.chatcatch = function (callback) {
                 char.room(returnRoomID);
             }, 6000);
             break;
+        case "chest0":
+            cl.c.chest = 1;
+            nav.bg("28_transformation/chest_1.gif");
+            cl.display();
+            g.roomTimeout = setTimeout(function () {
+                returnRoomID = g.pass;
+                g.pass = "endSleepyTime";
+                char.room(returnRoomID);
+            }, 6000);
+            break;
         default:
             break;
     }
+    
 };
 
 room28.chat = function (chatID) {
@@ -470,7 +492,7 @@ room28.chat = function (chatID) {
                 speaker: "me",
                 text: "All that working out has given me a sexier body! " + sc.n("missy") + " is going to be so happy to see the new me!",
                 button: [
-                    { chatID: -1, text: "[Click the chest]", callback: "" }
+                    { chatID: -1, text: "You feel more in shape", callback: "chest0" }
                 ]
             },
             {

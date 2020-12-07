@@ -10,7 +10,7 @@ room206.main = function () {
     f = 36 * g.ratio;
     $("#room-buttons").append('<div style="position:absolute; left:' + l + 'px; top:' + t + 'px;' +
         ' width:' + w + 'px; height: ' + h + 'px; font-size:' + f + 'px;" id="q206"></div>');
-    g.internal = g.pass = 0;
+    g.internal = g.pass = g.fight = 0;
     room206.chatcatch("");
     $('#room_footer').hide();
 };
@@ -37,17 +37,35 @@ room206.chatcatch = function (callback) {
             b.push({ t: "Continue", a: 0});
             break;
         case 1:
-            var p = {
-                shoes: "hr", socks: "f", pants: null, panties: null, bra: null, shirt: null, dress: "ps", swimsuit: null, pj: null, accessories: new Array()
-            };
-            cl.changeClothing(p);
+            cl.cTemp.shoes = cl.c.shoes;
+            cl.cTemp.socks = cl.c.socks;
+            cl.cTemp.pants = cl.c.pants;
+            cl.cTemp.panties = cl.c.panties;
+            cl.cTemp.bra = cl.c.bra;
+            cl.cTemp.shirt = cl.c.shirt;
+            cl.cTemp.dress = cl.c.dress;
+            cl.cTemp.swimsuit = cl.c.swimsuit;
+            cl.cTemp.pj = cl.c.pj;
+            cl.c.shoes = "fb";
+            cl.c.pants = cl.c.shirt = cl.c.swimsuit = cl.c.socks = cl.c.pj = null;
+            cl.c.dress = "a";
+            cl.display();
             t = "As a junior detective you aren't smart enough to know how to dress yourself for " +
                 "office and undercover work. You agree to wear what " + sc.n("missy") + " instructs " +
                 "you to wear, whether it be a suit, dress, or fully nude.";
             b.push({ t: "I agree to wear whatever " + sc.n("missy") + " tells me to wear. ", a: 2 });
             break;
         case 2:
-            cl.undo();
+            cl.c.shoes = cl.cTemp.shoes;
+            cl.c.socks = cl.cTemp.socks;
+            cl.c.pants = cl.cTemp.pants;
+            cl.c.panties = cl.cTemp.panties;
+            cl.c.bra = cl.cTemp.bra;
+            cl.c.shirt = cl.cTemp.shirt;
+            cl.c.dress = cl.cTemp.dress;
+            cl.c.swimsuit = cl.cTemp.swimsuit;
+            cl.c.pj = cl.cTemp.pj;
+            cl.display();
             t = "Junior detectives also need to be trained to correctly carry out their appointed duties. " +
                 "Do you agree to accept any and all punishments " + sc.n("missy") + " assigns you without question? ";
             b.push({ t: "I agree to follow and obey " + sc.n("missy") + " at all times. ", a: 2 });
@@ -146,7 +164,8 @@ room206.chatcatch = function (callback) {
         $('.q206-btn').click(function () {
             var thisEntry = parseInt($(this).data('a'));
             //console.log(g.internal, thisEntry);
-            g.mod("sissy", thisEntry);
+            //g.mod("sissy", thisEntry);
+            g.fight += thisEntry;
             g.pass += thisEntry;
             g.internal++;
             room206.chatcatch("");
