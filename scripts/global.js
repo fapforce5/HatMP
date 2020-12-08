@@ -68,6 +68,7 @@ g.st = [
     { n: "shinkCock", t: false, q: "bool" },
     { n: "lockdrawer", t: false, q: "bool" },
     { n: "puter", t: false, q: "bool" },
+    { n: "slimeMonsters", t: true, q: "bool" },
 
     { n: "fighttimer", t: 4000, q: "int" },
 
@@ -104,7 +105,7 @@ g.st = [
     { n: "pissedonMale", t: 0, q: "int" },
     { n: "pissedonFemale", t: 0, q: "int" },
 
-    { n: "girlname", t: "Scarlett", q: "int" },
+    { n: "girlname", t: "Scarlett", q: "string" },
 
     { n: "jobConstGetRaise", t: false, q: "bool" },
     { n: "lockboobs", t: false, q: "bool" },
@@ -757,6 +758,9 @@ g.initGame = function () {
     });
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
+            case "slimeMonsters":
+                g.st[i].t = true;
+                break;
             case "knockedup":
                 g.st[i].t = null;
                 break;

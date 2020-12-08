@@ -6,6 +6,7 @@ room226.main = function () {
         $("#room_left_map").attr("src", "./images/general/map_266.jpg");
         g.map = {
             id: 0,
+            slime: false,
             l: [
                 {
                     id: 0,
@@ -361,7 +362,7 @@ room226.main = function () {
                 },
             ]
         };
-
+        g.map.slime = !g.get("slimeMonsters");
         var sewerend = g.get("sewerEnd");
         var thisSewerID = g.get("sewerID");
         var bmap = g.get("sewerMap").split(' ');
@@ -433,38 +434,38 @@ room226.btnclick = function (name) {
                     "name": "y",
                     "width": 103,
                     "height": 98,
-                    "image": "225_sewer/p_y.png",
+                    "image": "225_sewer/p_y.png"
                 },
                 {
                     "name": "sl",
                     "width": 109,
                     "height": 148,
-                    "image": "225_sewer/p_sl.png",
+                    "image": "225_sewer/p_sl.png"
                 },
                 {
                     "name": "sr",
                     "width": 109,
                     "height": 148,
-                    "image": "225_sewer/p_sr.png",
+                    "image": "225_sewer/p_sr.png"
                 },
                 {
                     "name": "e",
                     "width": 34,
                     "height": 60,
-                    "image": "225_sewer/p_e.png",
+                    "image": "225_sewer/p_e.png"
                 },
                 {
                     "name": "s",
                     "width": 34,
                     "height": 60,
-                    "image": "225_sewer/p_s.png",
+                    "image": "225_sewer/p_s.png"
                 },
                 {
                     "name": "l",
                     "width": 30,
                     "height": 59,
-                    "image": "225_sewer/p_l.png",
-                },
+                    "image": "225_sewer/p_l.png"
+                }
             ];
             var th, tw;
             th = 0; 
@@ -584,6 +585,17 @@ room226.btnclick = function (name) {
                         char.room(227);
                     }
                 }
+                else if (g.map.l[g.map.id].t === "e" && !g.map.slime) {
+                    if (Math.floor(Math.random() * 3) === 0) {
+                        nav.killbutton("back");
+                        g.map.slime = true;
+                        nav.bg("225_sewer/slime1.jpg");
+                        if (cl.c.chastity === null)
+                            chat(3, 226);
+                        else
+                            chat(14, 226);
+                    }
+                }
                 //else if (g.internal !== "nofight") {
                 //    g.internal = "";
                 //    if (Math.floor(Math.random() * 4) === 0)
@@ -650,6 +662,40 @@ room226.chatcatch = function (callback) {
             g.map = g.fight = null;
             char.room(228);
             break;
+        case "slime1":
+        case "slime2":
+        case "slime3":
+        case "slime6":
+        case "slime7":
+        case "slime8":
+        case "slime9":
+        case "slime10":
+            nav.bg("225_sewer/" + callback + ".jpg");
+            break;
+        case "slime4":
+            nav.bg("225_sewer/slime4.jpg");
+            zcl.displayMain(0, 300, .30, "armsup", false);
+            nav.button({
+                "type": "img",
+                "name": "slime",
+                "left": 336,
+                "top": 132,
+                "width": 1161,
+                "height": 948,
+                "image": "225_sewer/slime4.png"
+            }, 226);
+            break;
+        case "slime5":
+            zcl.kill();
+            nav.killbutton("slime");
+            nav.bg("225_sewer/slime5.jpg");
+            break;
+        case "slimereset":
+            room226.btnclick("drawMap");
+            g.mod("fuckPussy", 1);
+            g.mod("sissy", 20);
+            cl.doCum(false);
+            break;
         default:
             break;
     }
@@ -680,7 +726,143 @@ room226.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Give up.", callback: "leaveSewer" }
             ]
-        }
+        },
+        {
+            chatID: 3,
+            speaker: "slime",
+            text: "What is it doing in my sewer?",
+            button: [
+                { chatID: 4, text: "Oh gross, is the slime talking?", callback: "slime2" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "slime",
+            text: "Gross? It thinks I'm gross? ",
+            button: [
+                { chatID: 5, text: "No, I'm going to get going.", callback: "slime3" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "slime",
+            text: "It's not going anywhere. Come here my toy.",
+            button: [
+                { chatID: 6, text: "AAkkkk", callback: "slime4" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "slime",
+            text: "hmmm.. I wonder what it tastes like? ",
+            button: [
+                { chatID: 7, text: "Wha... no, don't eat me!", callback: "slime5" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "slime",
+            text: "Eat you? No, I'm going to take your slime ",
+            button: [
+                { chatID: 8, text: "My what?", callback: "slime6" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "slime",
+            text: "Oh yes Gimmie your slime!",
+            button: [
+                { chatID: 9, text: "Oh shit that's tight", callback: "slime7" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "slime",
+            text: "Aaaaaa",
+            button: [
+                { chatID: 10, text: "...", callback: "slime8" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "slime",
+            text: "mmmm Gimmie the slime!",
+            button: [
+                { chatID: 11, text: "...", callback: "slime9" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "slime",
+            text: "Oh yes, it's filling me",
+            button: [
+                { chatID: 12, text: "...", callback: "slime10" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "slime",
+            text: "Yummy, I like it's slime in my belly.",
+            button: [
+                { chatID: 13, text: "...", callback: "slimereset" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "me",
+            text: "What, where did the slime creature go? How odd.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "slime",
+            text: "What is it doing in my sewer?",
+            button: [
+                { chatID: 15, text: "Oh gross, is the slime talking?", callback: "slime2" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "slime",
+            text: "Gross? It thinks I'm gross? ",
+            button: [
+                { chatID: 16, text: "No, I'm going to get going.", callback: "slime3" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "slime",
+            text: "It's not going anywhere. Come here my toy.",
+            button: [
+                { chatID: 17, text: "AAkkkk", callback: "slime4" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "slime",
+            text: "Oh no, it's slime hose is locked. It's no fun.",
+            button: [
+                { chatID: 18, text: "Hmmmm", callback: "slime5" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "slime",
+            text: "I'm going to play with the clowns, they are more fun. ",
+            button: [
+                { chatID: 19, text: "...", callback: "slimereset" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "slime",
+            text: "That was weird, oh well.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
