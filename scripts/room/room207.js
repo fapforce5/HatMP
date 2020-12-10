@@ -1,7 +1,11 @@
 ﻿//Room name
 var room207 = {};
 room207.main = function () {
-    room207.btnclick("purple");
+    if (g.pass === "207blue") {
+        room207.btnclick("blue");
+    }
+    else
+        room207.btnclick("purple");
 };
 
 room207.btnclick = function (name) {
@@ -10,83 +14,64 @@ room207.btnclick = function (name) {
             char.room(203);
             break;
         case "elevator":
-            if (sc.getstep("missy") < 25) {
-                nav.killbutton("elevator");
-                nav.button({
-                    "type": "img",
+            nav.bg("207_door/buttons.jpg");
+            nav.killall();
+            var btnListx = [
+                {
+                    "type": "btn",
                     "name": "purple",
-                    "left": 1125,
-                    "top": 180,
-                    "width": 433,
-                    "height": 900,
-                    "image": "207_door/c.png"
-                }, 207);
-                chat(4, 207);
-            }
-            else {
-                if (g.hourBetween(6, 10)) {
-                    nav.bg("207_door/buttons.jpg");
-                    nav.killall();
-                    var btnListx = [
-                        {
-                            "type": "btn",
-                            "name": "purple",
-                            "left": 925,
-                            "top": 742,
-                            "width": 163,
-                            "height": 165,
-                            "title": "1st Floor",
-                            "image": "207_door/purple.png"
-                        },
-                        {
-                            "type": "btn",
-                            "name": "pink",
-                            "left": 925,
-                            "top": 553,
-                            "width": 163,
-                            "height": 165,
-                            "title": "1st Floor",
-                            "image": "207_door/pink.png"
-                        },
-                        {
-                            "type": "btn",
-                            "name": "red",
-                            "left": 925,
-                            "top": 364,
-                            "width": 163,
-                            "height": 165,
-                            "title": "1st Floor",
-                            "image": "207_door/red.png"
-                        },
-                        {
-                            "type": "btn",
-                            "name": "black",
-                            "left": 925,
-                            "top": 175,
-                            "width": 163,
-                            "height": 165,
-                            "title": "1st Floor",
-                            "image": "207_door/black.png"
-                        },
-                    ];
-                    $.each(btnListx, function (i, v) {
-                        nav.button(v, 207);
-                    });
-                }
-                else {
-                    nav.killbutton("elevator");
-                    nav.button({
-                        "type": "img",
-                        "name": "purple",
-                        "left": 1125,
-                        "top": 180,
-                        "width": 433,
-                        "height": 900,
-                        "image": "207_door/c.png"
-                    }, 207);
-                    chat(5, 207);
-                }
-            }
+                    "left": 925,
+                    "top": 645,
+                    "width": 163,
+                    "height": 165,
+                    "title": "1st Floor",
+                    "image": "207_door/purple.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "pink",
+                    "left": 925,
+                    "top": 458,
+                    "width": 163,
+                    "height": 165,
+                    "title": "1st Floor",
+                    "image": "207_door/pink.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "red",
+                    "left": 925,
+                    "top": 269,
+                    "width": 163,
+                    "height": 165,
+                    "title": "1st Floor",
+                    "image": "207_door/red.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "black",
+                    "left": 925,
+                    "top": 80,
+                    "width": 163,
+                    "height": 165,
+                    "title": "1st Floor",
+                    "image": "207_door/black.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "blue",
+                    "left": 925,
+                    "top": 834,
+                    "width": 163,
+                    "height": 165,
+                    "title": "1st Floor",
+                    "image": "207_door/blue.png"
+                },
+            ];
+            $.each(btnListx, function (i, v) {
+                nav.button(v, 207);
+            });
+
             break;
         case "purple":
             nav.killall();
@@ -150,14 +135,44 @@ room207.btnclick = function (name) {
                 nav.button(v, 207);
             });
             break;
+        case "blue":
+            nav.killall();
+            nav.bg("207_door/" + name + ".jpg");
+            nav.button({
+                "type": "btn",
+                "name": "elevator",
+                "left": 1138,
+                "top": 198,
+                "width": 563,
+                "height": 836,
+                "title": "Elevator",
+                "image": "207_door/elevator.png"
+            }, 207);
+            nav.button({
+                "type": "btn",
+                "name": "blueDoor",
+                "left": 537,
+                "top": 356,
+                "width": 177,
+                "height": 223,
+                "title": "Elevator",
+                "image": "207_door/blue_door.png"
+            }, 207);
+            break;
         case "pink_char":
             chat(0, 207);
             break;
         case "red_char":
-            chat(1, 207);
+            if (sc.getstep("missy") > 100)
+                chat(1, 207);
+            else
+                chat(6, 207);
             break;
         case "black_char":
             chat(2, 207);
+            break;
+        case "blueDoor":
+            char.room(209);
             break;
         default:
             break;
@@ -223,6 +238,14 @@ room207.chat = function (chatID) {
             text: "Sorry honey. You know you have to come in before 10:00.",
             button: [
                 { chatID: -1, text: "oh... yea...", callback: "" },
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "random",
+            text: "You must prove your worth of service before entering.",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

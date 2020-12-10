@@ -433,6 +433,7 @@ g.rooms = [
     { roomID: 206, name: "Questions", image: "206_questions/white.jpg", nightImage: "206_questions/white.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 207, name: "Elevator", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 203, btn: "roomBtn_207.png" },
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 209, name: "Basement", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
 
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },
