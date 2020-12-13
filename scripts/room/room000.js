@@ -2,7 +2,7 @@
 var room0 = {};
 room0.chatInput;
 room0.main = function () {
-    
+    g.pass = g.internal = "";
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
         char.changeMenu("hide", false);

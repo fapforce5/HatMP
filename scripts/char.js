@@ -427,8 +427,9 @@ menu.initBuild = function (type) {
     $('#menu_parent').append('<img src="./images/phone/bPic.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 810) + '" data-type="pic" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bMap.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 960) + '" data-type="map" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bHormone.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 1110) + '" data-type="hormone" class="menu-button menu-buttonKill"/>');
-    $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
-    $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 810) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
+    if (g.get("sissyApp"))
+        $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
+    $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 960) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bAdmin.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 660) + '" data-type="admin" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bPatreon.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 1110) + '" data-type="patreon" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
@@ -605,26 +606,33 @@ menu.mClick = function (type) {
 
             break;
         case "stats":
-            $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
-                '<h2>My Digital Hormone Levels</h2>' +
-                '<div>Blowjobs Given: ' + g.get("giveOralMale") + '</div>' +
-                '<div>Pussy Eaten: ' + g.get("giveOralFemale") + '</div>' +
-                '<div>Blowjobs Received: ' + (g.get("receiveOralMale") + g.get("receiveOralFemale")) + '</div>' +
-                '<hr/>' +
-                '<div>Girls Fucked: ' + g.get("fuckPussy") + '</div>' +
-                '<div>Girls fucked in ass: ' + g.get("giveAnalFemale") + '</div>' +
-                '<hr/>' +
-                '<div>Fucked by dudes: ' + g.get("receiveAnalMale") + '</div>' +
-                '<div>Dudes fucked: ' + g.get("giveAnalMale") + '</div>' +
-                '<hr/>' +
-                '<div>Girls fingered: ' + g.get("giveFingerFemale") + '</div>' +
-                '<div>Dudes jacked off: ' + g.get("giveHandjobMale") + '</div>' +
-                '<div>Jacked off: ' + (g.get("receiveHandjobMale") + g.get("receiveHandjobFemale")) + '</div>' +
-                '<hr/>' +
-                '<div>Footjobs Received: ' + (g.get("receiveFootjobMale") + g.get("receiveFootjobFemale")) + '</div>' +
-                '<hr/>' +
-                '<div>Pissed on: ' + (g.get("pissedonMale") + g.get("pissedonFemale")) + '</div>' +
-                '</div>');
+            $('#menu_parent').append('<img src="./images/phone/sissy.jpg" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + '"/>');
+            $('#menu_parent').append('<div style="color:#e1018f; position:absolute; ' + g.makeCss(250, 500, 650, 700) + ' font-size:' + (40 * g.ratio) + 'px;">' +
+                '<table style="width:100%;">' +
+                '<tr><td>SISSY Points: </td><td> ' + g.get("sissy") + '</td></tr>' +
+                '<tr><td>Points Needed: </td><td> ' + g.get("sissyPoints") + '</td></tr>' +
+                '<tr><td>Total Lessons: </td><td> ' + g.get("sissyLevel") + '</td></tr>' +
+                '</table></div>');
+            //$('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
+            //    '<h2>My Digital Hormone Levels</h2>' +
+            //    '<div>Blowjobs Given: ' + g.get("giveOralMale") + '</div>' +
+            //    '<div>Pussy Eaten: ' + g.get("giveOralFemale") + '</div>' +
+            //    '<div>Blowjobs Received: ' + (g.get("receiveOralMale") + g.get("receiveOralFemale")) + '</div>' +
+            //    '<hr/>' +
+            //    '<div>Girls Fucked: ' + g.get("fuckPussy") + '</div>' +
+            //    '<div>Girls fucked in ass: ' + g.get("giveAnalFemale") + '</div>' +
+            //    '<hr/>' +
+            //    '<div>Fucked by dudes: ' + g.get("receiveAnalMale") + '</div>' +
+            //    '<div>Dudes fucked: ' + g.get("giveAnalMale") + '</div>' +
+            //    '<hr/>' +
+            //    '<div>Girls fingered: ' + g.get("giveFingerFemale") + '</div>' +
+            //    '<div>Dudes jacked off: ' + g.get("giveHandjobMale") + '</div>' +
+            //    '<div>Jacked off: ' + (g.get("receiveHandjobMale") + g.get("receiveHandjobFemale")) + '</div>' +
+            //    '<hr/>' +
+            //    '<div>Footjobs Received: ' + (g.get("receiveFootjobMale") + g.get("receiveFootjobFemale")) + '</div>' +
+            //    '<hr/>' +
+            //    '<div>Pissed on: ' + (g.get("pissedonMale") + g.get("pissedonFemale")) + '</div>' +
+            //    '</div>');
             break;
         case "admin":
             $(".menu-buttonKill").remove();
@@ -1175,23 +1183,14 @@ char.makeGraph = function () {
     $("#rl_anal").html(" &nbsp;&nbsp;Anal: +" + Math.floor(anal / 10));
     $(".rl-bar[data-name='anal']").css({ width: ((anal % 10) * 10) + "%" });
 
-    if (sissy < 95 && hormone < 75) {
-        $("#rl_hormone").html(" &nbsp;&nbsp;Take your pills");
-        $("#rl_sis").html(" &nbsp;&nbsp;Serve More");
-    }
-    else if (sissy < 95) {
+    if (hormone < 10) 
+        $("#rl_hormone").html(" &nbsp;&nbsp;Hairy Boy");
+    else if (hormone < 50) 
+        $("#rl_hormone").html(" &nbsp;&nbsp;Boyish");
+    else if (sissy < 75) 
         $("#rl_hormone").html(" &nbsp;&nbsp;Feminine");
-        $("#rl_sis").html(" &nbsp;&nbsp;Serve More");
-    }
-    else if (hormone < 75) {
-        $("#rl_hormone").html(" &nbsp;&nbsp;Take your pills");
-        $("#rl_sis").html(" &nbsp;&nbsp;You Slut!");
-    }
-    else {
-        $("#rl_hormone").html(" &nbsp;&nbsp;Transformation Possible");
-        $("#rl_sis").html(" &nbsp;&nbsp;Transformation Possible");
-    }
-
+    else 
+        $("#rl_hormone").html(" &nbsp;&nbsp;Girly");
 };
 
 char.export = function (saveID) {

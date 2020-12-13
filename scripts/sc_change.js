@@ -218,6 +218,8 @@ scc.load = function (ra) {
 scc.love = function (name, amount, max) {
     var i, xi, chageOccured;
     xi = null;
+    if (max == "undefined")
+        max = null;
     for (i = 0; i < scc.changes.length; i++) {
         if (scc.changes[i].name === name) {
             xi = i;

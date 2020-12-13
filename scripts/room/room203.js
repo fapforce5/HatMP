@@ -16,7 +16,6 @@ room203.main = function () {
             }, 203);
         }
         nav.buildnav([201, 207, 0]);
-        g.internal = "201 change";
     }
     else {
         var navList = [0];
@@ -40,7 +39,6 @@ room203.main = function () {
         }
         else if (g.pass === "leave11") {
             g.pass = "";
-            g.internal = "201 change";
             navList = [201, 0];
             btnList = [{
                 "type": "btn",
@@ -57,7 +55,6 @@ room203.main = function () {
             chat(19, 203);
         }
         else if (sc.cecilia().thisRoom) {
-            g.internal = "201 change";
             g.pass = "203Elevator";
             navList = [201, 207, 0];
             btnList = [{
@@ -99,21 +96,17 @@ room203.btnclick = function (name) {
             nav.buildnav([201, 0]);
             break;
         case "recepClose":
-            if (misssyStep === 1) {
+            if (g.internal === "gettea") {
+                chat(29, 203);
+            }
+            else if (misssyStep === 1) {
                 chat(1, 203);
             }
             else if (misssyStep === 7) {
                 chat(13, 203);
             }
-            else if (misssyStep > 24) {
-                if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2)) {
-                    if (g.hourBetween(7, 10))
-                        chat(10, 203);
-                    else
-                        chat(6, 203);
-                }
-                else
-                    chat(27, 203);
+            else if (misssyStep > 9) {
+                chat(28, 203);
             }
             else if (misssyStep < 1000) {
                 if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {
@@ -127,6 +120,17 @@ room203.btnclick = function (name) {
                     chat(6, 203);
                 }
             }
+            //else if (misssyStep > 24) {
+            //    if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2)) {
+            //        if (g.hourBetween(7, 10))
+            //            chat(10, 203);
+            //        else
+            //            chat(6, 203);
+            //    }
+            //    else
+            //        chat(27, 203);
+            //}
+            
             break;
         case "door":
             char.room(200);
@@ -287,6 +291,39 @@ room203.chatcatch = function (callback) {
             break;
         case "reload":
             char.room(203);
+            break;
+        case "tea0":
+            nav.killall();
+            g.roomTimeout = setTimeout(function () { char.addtime(10); chat(31, 203); }, 2000);
+            break;
+        case "tea1":
+            g.roomTimeout = setTimeout(function () {
+                char.addtime(5);
+                nav.button({
+                    "type": "img",
+                    "name": "fooIgnore",
+                    "left": 685,
+                    "top": 302,
+                    "width": 452,
+                    "height": 593,
+                    "image": "203_entrance/203_enterRecepClose.png"
+                }, 203);
+                nav.button({
+                    "type": "img",
+                    "name": "fooIgnore",
+                    "left": 600,
+                    "top": 755,
+                    "width": 522,
+                    "height": 325,
+                    "image": "209_classroom/tea.png"
+                }, 203);
+                chat(32, 203);
+            }, 1000);
+            break;
+        case "sugar0":
+        case "sugar1":
+        case "sugar2":
+            g.internal = callback;
             break;
         default:
             break;
@@ -529,6 +566,58 @@ room203.chat = function (chatID) {
             text: "Sorry " + sc.n("me") + " no new cases. You have to earn them in the rooms. ",
             button: [
                 { chatID: -1, text: "Oh, thanks.", callback: "reload" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "cecilia",
+            text: "Sorry " + sc.n("me") + " no new cases. " + sc.n("missy") + " said you'll have to go to school in the basement. " +
+                "Just head to the elevators, then take it to the basement.",
+            button: [
+                { chatID: -1, text: "Oh, thanks.", callback: "reload" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "cecilia",
+            text: "Sorry, the day has already started. ",
+            button: [
+                { chatID: 30, text: "Oh, " + sc.n("missy") + " sent me up here to get some tea", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "cecilia",
+            text: "OH HOW EXCITING!! Most boys quit when they read the contract. Not you! I knew you had it in you " +
+                "to keep going! I know it's just started, but you're going to love the school! Let me go grab your tea.",
+            button: [
+                { chatID: -1, text: "Ok.", callback: "tea0" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "thinking",
+            text: "Where did she go? This is taking way too long. " + sc.n("missy") + " is gong to be mad at me for taking too long.",
+            button: [
+                { chatID: -1, text: "Keep waiting", callback: "tea1" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "cecilia",
+            text: "Here's the tea sexy. Sorry it took so long, I forgot to plug in the kettle. How much sugar did she ask for?",
+            button: [
+                { chatID: 33, text: "She didn't ask for sugar", callback: "sugar0" },
+                { chatID: 33, text: "1 lump", callback: "sugar1" },
+                { chatID: 33, text: "2 lumps", callback: "sugar2" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "cecilia",
+            text: "Here you go. Good luck on your tests!",
+            button: [
+                { chatID: -1, text: "Thanks", callback: "reload" },
             ]
         },
     ];

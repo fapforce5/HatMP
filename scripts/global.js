@@ -44,12 +44,13 @@ g.st = [
     { n: "leg", t: 0, q: "hundred" },
     { n: "body", t: 0, q: "hundred" },
     { n: "d", t: 0, q: "hundred" },
-    { n: "sissy", t: 0, q: "hundred" },
+    { n: "sissy", t: 0, q: "sissy" },
+    { n: "sissyLevel", t: 0, q: "zero" },
+    { n: "sissyPoints", t: 0, q: "zero" },
+    { n: "sissyApp", t: false, q: "bool" },
     { n: "legLevel", t: 0, q: "zero" },
     { n: "bodyLevel", t: 0, q: "zero" },
     { n: "fitnessLevel", t: 0, q: "zero" },
-    { n: "sissyLevel", t: 0, q: "zero" },
-    { n: "sissyPoints", t: 0, q: "zero" },
     { n: "dLevel", t: 0, q: "zero" },
     { n: "map", t: 0, q: "int" },
     { n: "jobConstructionPay", t: 0, q: "zero" },
@@ -266,6 +267,15 @@ g.mod = function (name, amount) {
             case "date":
                 g.st[index].t = new Date(g.st[index].t.getTime() + (amount * 60000));
                 break;
+            case "sissy":
+                if (g.get("sissyApp")) {
+                    g.st[index].t += amount;
+                    if (amount > 0)
+                        g.popUpNotice("You've earned extra credit SISSY POINTS");
+                    else if (amount < 0)
+                        g.popUpNotice("You've lost extra credit SISSY POINTS");
+                }
+                break;
             default:
                 console.log("unknown g.mod type: " + type + ", name: " + name);
                 break;
@@ -344,10 +354,6 @@ g.checkPop = function (name, amount) {
             break;
         case "body":
             g.popUpNotice("Your arms are " + (amount < 0 ? "weaker" : "stronger"));
-            char.makeGraph();
-            break;
-        case "sissy":
-            g.popUpNotice("Your are " + (amount < 0 ? "less slutty" : "sluttier"));
             char.makeGraph();
             break;
     }
@@ -433,7 +439,7 @@ g.rooms = [
     { roomID: 206, name: "Questions", image: "206_questions/white.jpg", nightImage: "206_questions/white.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 207, name: "Elevator", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 203, btn: "roomBtn_207.png" },
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
-    { roomID: 209, name: "Basement", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 209, name: "Basement", image: "209_classroom/bg.jpg", nightImage: "209_classroom/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
 
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },
@@ -674,12 +680,10 @@ g.makeSingular = function (text) {
     if (text.substr(0, text.length - 1) === "'")
         text = text.slice(-1);
     return text;
-}
+};
 
 g.save = function () {
     var i;
-    var g_sissy = null;
-    var g_sissyString = "";
     var retArra = {
         st: new Array(),
         roomMap: new Array(),
@@ -880,6 +884,7 @@ g.initGame = function () {
             case "puter":
             case "tim":
             case "cindy":
+            case "sissyApp":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":
