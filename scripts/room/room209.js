@@ -128,15 +128,36 @@ room209.main = function () {
             case 3:
                 room209.btnclick("bb1");
                 room209.btnclick("poster0");
-                room209.btnclick("dmissy");
                 room209.btnclick("charsit");
-                chat(25, 209)
+                nav.button({
+                    "type": "btn",
+                    "name": "missy",
+                    "left": 1013,
+                    "top": 210,
+                    "width": 466,
+                    "height": 870,
+                    "image": "209_classroom/missy0.png"
+                }, 209);
+                break;
+            case 4:
+                room209.btnclick("bb1");
+                room209.btnclick("poster0");
+                room209.btnclick("charsit");
+                nav.button({
+                    "type": "btn",
+                    "name": "missy",
+                    "left": 1013,
+                    "top": 210,
+                    "width": 466,
+                    "height": 870,
+                    "image": "209_classroom/missy0.png"
+                }, 209);
                 break;
         }
 
     }
 };
-
+ 
 room209.btnclick = function (name) {
     switch (name) {
         case "exit":
@@ -214,6 +235,12 @@ room209.btnclick = function (name) {
             switch (ppoints) {
                 case 1:
                     chat(17, 209);
+                    break;
+                case 3:
+                    chat(25, 209);
+                    break;
+                case 4:
+                    chat(39, 209);
                     break;
             }
             break;
@@ -299,11 +326,18 @@ room209.chatcatch = function (callback) {
         case "strip":
             nav.killbutton('chair');
             zcl.displayMain(-400, 400, .3, "panties", true);
-            if (cl.getEntry("panties", cl.c.panties).sex === "f")
-                chat(19, 209);
+            if (cl.getEntry("panties", cl.c.panties).sex === "f") {
+                if (sc.getstep('p') < 3)
+                    chat(19, 209);
+                else if (sc.getstep("p") === 3)
+                    chat(27, 209);
+            }
             else {
                 scc.love("missy", -5, 100);
-                chat(18, 209);
+                if (sc.getstep('p') < 3)
+                    chat(18, 209);
+                else
+                    chat(26, 209);
             }
             break;
         case "charsit":
@@ -333,9 +367,58 @@ room209.chatcatch = function (callback) {
             scc.love("missy", 5, 100);
             sc.setstep("p", 3);
             char.addtime(180);
-            char.room(209);
+            g.pass = "207blue";
+            char.room(207);
             break;
         case "leave":
+            char.room(203);
+            break;
+        case "leavebad":
+            char.addtime(190);
+            char.room(203);
+            break;
+        case "p3_0":
+            nav.killall();
+            nav.bg("209_classroom/p3_0.jpg");
+            break;
+        case "p3_1":
+            nav.bg("209_classroom/p3_1.jpg");
+            break;
+        case "p3_2":
+            nav.bg("209_classroom/p3_2.jpg");
+            break;
+        case "p3_3":
+            char.addtime(30);
+            nav.bg("209_classroom/p3_3.jpg");
+            break;
+        case "p3_4x":
+            nav.bg("209_classroom/p3_4.jpg");
+            break;
+        case "p3_4":
+            char.addtime(60);
+            g.roomTimeout = setTimeout(function () { chat(32, 209); }, 2000);
+            break;
+        case "p3_5":
+            char.addtime(120);
+            g.roomTimeout = setTimeout(function () { chat(33, 209); }, 2000);
+            break;
+        case "p3_6":
+            nav.bg("209_classroom/p3_6.jpg");
+            break;
+        case "end3":
+            g.mod("sissy", 60);
+            g.mod("money", 40);
+            sc.setstep("p", 4);
+            char.addtime(60);
+            char.room(203);
+            break;
+        case "p3_x":
+            nav.bg("209_classroom/p3_x.jpg");
+            break;
+        case "end3bad":
+            g.mod("sissy", -60);
+            sc.setstep("p", 4);
+            char.addtime(60);
             char.room(203);
             break;
         default:
@@ -579,9 +662,129 @@ room209.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "missy",
+            text: "We shall continue with out lessons on service. I like my boys in panties, go ahead and strip down.",
+            button: [
+                { chatID: -1, text: "[Strip down]", callback: "strip" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "missy",
+            text: "You don't seem to be able to follow simple instructions. Get out and get your panties.",
+            button: [
+                { chatID: -1, text: "I'm sorry ma'am", callback: "leavebad" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "missy",
+            text: "Today we shall continue with out lessons on service. Lucky for you I'm feeling quite horny so " +
+                "you will get to service me. Come here and kneel.",
+            button: [
+                { chatID: 28, text: "Nice!", callback: "p3_0" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "missy",
+            text: "You're going to be my vibrator cleaner and holder today.",
+            button: [
+                { chatID: 29, text: "...", callback: "p3_1" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "missy",
+            text: "Let me just pull this out.",
+            button: [
+                { chatID: 30, text: "...", callback: "p3_2" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "missy",
+            text: "There. Aren't you the cutest dildo holder. Just sit there and don't move. I'm going to my office to do some work.",
+            button: [
+                { chatID: 31, text: "...", callback: "p3_3" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "thinking",
+            text: "Did she just leave? This vibrator tasted yummy, but I've swallowed all the juices. It just tastes like " +
+                "hard plastic now. Should I get up and leave, this is really too much.",
+            button: [
+                { chatID: -1, text: "[Wait a bit longer]", callback: "p3_4" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "thinking",
+            text: "What the fuck! I've been waiting over an hour now. This is absolute crap! What does " + sc.n("missy") + " think " +
+                "I am? It's like she doesn't respect me at all. I'm sure she got stuck or forgot about me. I should go up and check.",
+            button: [
+                { chatID: -1, text: "[Wait longer]", callback: "p3_5" },
+                { chatID: 36, text: "[Check on " + sc.n("missy") + "]", callback: "p3_x" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "thinking",
+            text: "OK she totally forgot. I've been kneeling here almost 4 hours! This is just too much. " + sc.n("missy") + " doesn't " +
+                "care about me at all! I'm going to go up there and really tell her what I think!",
+            button: [
+                { chatID: 34, text: "[Wait longer]", callback: "p3_6" },
+                { chatID: 36, text: "[Check on " + sc.n("missy") + "]", callback: "p3_x" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "missy",
+            text: "I see you can follow directions, that's a good boy. For successfully passing your first real assignment I'll award " +
+                "you 60 SISSY POINTS. ",
+            button: [
+                { chatID: 35, text: "hank aakkk oooo", callback: "p3_4x" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "missy",
+            text: "You are free to go. Let me just take back my favorite vibrator.",
+            button: [
+                { chatID: -1, text: "Thank you ma'am", callback: "end3" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "missy",
+            text: "<span class='hl-red'>Why are you standing, and why isn't my vibrator in your mouth?</span>",
+            button: [
+                { chatID: 37, text: "Oh uhhhh, I thought you forgot about me.", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "missy",
+            text: "No, I didn't forget about you! You failed this lesson. I award you no points, and may god have mercy on your soul. ",
+            button: [
+                { chatID: 38, text: "What?", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "missy",
+            text: "You failed. If you want to get anywhere you need to find the discipline within yourself or you'll never be a " +
+                "junior detective. I'm deducting 60 points. Now get out of my classroom.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "end3bad" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "missy",
             text: "In progress",
             button: [
-                { chatID: -1, text: "Thank you ma'am", callback: "leave" }
+                { chatID: -1, text: "Yes ma'am", callback: "leave" }
             ]
         },
     ];
