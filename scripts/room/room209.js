@@ -1,8 +1,8 @@
 ﻿//Room name
 var room209 = {};
 room209.main = function () {
-    var pstep = sc.getstep("p");
-    if (sc.getstep("missy") < 10) {
+    var mstep = sc.getstep("missy");
+    if (mstep < 10) {
         nav.bg("209_classroom/dark.jpg");
         nav.button({
             "type": "btn",
@@ -28,7 +28,7 @@ room209.main = function () {
         }, 209);
         chat(1, 209);
     }
-    else if (pstep === 2) {
+    else if (mstep === 12) {
         if (g.internal === "sugar1") {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
@@ -102,59 +102,75 @@ room209.main = function () {
         chat(2, 209);
     }
     else {
-        switch (sc.getstep("p")) {
-            case 0:
-                room209.btnclick("bb0");
-                room209.btnclick("poster0");
-                room209.btnclick("dmissy");
-                room209.btnclick("charsit");
-                chat(3, 209);
-                break;
-            case 1:
-                room209.btnclick("bb1");
-                room209.btnclick("poster0");
-                room209.btnclick("dmissy");
-                room209.btnclick("charsit");
-                nav.button({
-                    "type": "btn",
-                    "name": "missy",
-                    "left": 1013,
-                    "top": 210,
-                    "width": 466,
-                    "height": 870,
-                    "image": "209_classroom/missy0.png"
-                }, 209);
-                break;
-            case 3:
-                room209.btnclick("bb1");
-                room209.btnclick("poster0");
-                room209.btnclick("charsit");
-                nav.button({
-                    "type": "btn",
-                    "name": "missy",
-                    "left": 1013,
-                    "top": 210,
-                    "width": 466,
-                    "height": 870,
-                    "image": "209_classroom/missy0.png"
-                }, 209);
-                break;
-            case 4:
-                room209.btnclick("bb1");
-                room209.btnclick("poster0");
-                room209.btnclick("charsit");
-                nav.button({
-                    "type": "btn",
-                    "name": "missy",
-                    "left": 1013,
-                    "top": 210,
-                    "width": 466,
-                    "height": 870,
-                    "image": "209_classroom/missy0.png"
-                }, 209);
-                break;
+        if (mstep === 10) {
+            room209.btnclick("bb0");
+            room209.btnclick("poster0");
+            room209.btnclick("dmissy");
+            room209.btnclick("charsit");
+            chat(3, 209);
         }
-
+        if (mstep === 11) {
+                room209.btnclick("bb1");
+                room209.btnclick("poster0");
+                room209.btnclick("dmissy");
+                room209.btnclick("charsit");
+                nav.button({
+                    "type": "btn",
+                    "name": "missy",
+                    "left": 1013,
+                    "top": 210,
+                    "width": 466,
+                    "height": 870,
+                    "image": "209_classroom/missy0.png"
+                }, 209);
+        }
+        if (mstep === 13) {
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("charsit");
+            nav.button({
+                "type": "btn",
+                "name": "missy",
+                "left": 1013,
+                "top": 210,
+                "width": 466,
+                "height": 870,
+                "image": "209_classroom/missy0.png"
+            }, 209);
+            chat(39, 209);
+        }
+        if (mstep === 14) {
+            room209.btnclick("bb1");
+            
+            nav.button({
+                "type": "img",
+                "name": "void",
+                "left": 277,
+                "top": 251,
+                "width": 269,
+                "height": 321,
+                "image": "209_classroom/posterx.jpg"
+            }, 209);
+            nav.button({
+                "type": "btn",
+                "name": "missy",
+                "left": 900,
+                "top": 210,
+                "width": 466,
+                "height": 870,
+                "image": "209_classroom/missy0.png"
+            }, 209);
+            nav.button({
+                "type": "img",
+                "name": "p",
+                "left": 1300,
+                "top": 210,
+                "width": 466,
+                "height": 888,
+                "image": "209_classroom/p0.png"
+            }, 209);
+            room209.btnclick("charsit");
+        }
     }
 };
  
@@ -198,6 +214,17 @@ room209.btnclick = function (name) {
                 "image": "209_classroom/" + name + ".jpg"
             }, 209);
             break;
+        case "posterx":
+            nav.button({
+                "type": "btn",
+                "name": "t0",
+                "left": 277,
+                "top": 251,
+                "width": 269,
+                "height": 321,
+                "image": "209_classroom/posterx.jpg"
+            }, 209);
+            break;
         case "poster0":
             nav.button({
                 "type": "img",
@@ -228,21 +255,34 @@ room209.btnclick = function (name) {
             chat(10, 209);
             break;
         case "missy":
-            var ppoints = sc.getstep("p");
+            var ppoints = sc.getstep("missy");
             //check love 100pts = sissy points
             //check points
             //check clothing
             switch (ppoints) {
-                case 1:
+                case 11:
                     chat(17, 209);
                     break;
-                case 3:
+                case 13:
                     chat(25, 209);
                     break;
-                case 4:
+                case 14:
                     chat(39, 209);
                     break;
             }
+            break;
+        case "t0":
+            var si, scounter;
+            nav.killall();
+            nav.bg("209_classroom/dark.jpg");
+            room28.btnclick("init");
+            scounter = 0;
+            for (si = 0; si < g.sissy.length; si++) {
+                if (g.sissy[si].ach)
+                    scounter++;
+            }
+            if (scounter === 1)
+                chat(39, 209);
             break;
         default:
             break;
@@ -320,21 +360,21 @@ room209.chatcatch = function (callback) {
             g.set("sissy", 0);
             g.set("sissyApp", true);
             char.addtime(480);
-            sc.setstep("p", 1);
+            sc.setstep("missy", 11);
             char.room(207);
             break;
         case "strip":
             nav.killbutton('chair');
             zcl.displayMain(-400, 400, .3, "panties", true);
             if (cl.getEntry("panties", cl.c.panties).sex === "f") {
-                if (sc.getstep('p') < 3)
+                if (sc.getstep('missy') < 13)
                     chat(19, 209);
-                else if (sc.getstep("p") === 3)
+                else if (sc.getstep("missy") === 13)
                     chat(27, 209);
             }
             else {
                 scc.love("missy", -5, 100);
-                if (sc.getstep('p') < 3)
+                if (sc.getstep("missy") < 13)
                     chat(18, 209);
                 else
                     chat(26, 209);
@@ -344,7 +384,7 @@ room209.chatcatch = function (callback) {
             room209.btnclick("charsit");
             break;
         case "gettea":
-            sc.setstep("p", 2);
+            sc.setstep("missy", 12);
             g.internal = "gettea";
             char.addtime(240);
             nav.button({
@@ -365,7 +405,7 @@ room209.chatcatch = function (callback) {
         case "end2":
             g.mod("money", 20);
             scc.love("missy", 5, 100);
-            sc.setstep("p", 3);
+            sc.setstep("missy", 13);
             char.addtime(180);
             g.pass = "207blue";
             char.room(207);
@@ -408,7 +448,7 @@ room209.chatcatch = function (callback) {
         case "end3":
             g.mod("sissy", 60);
             g.mod("money", 40);
-            sc.setstep("p", 4);
+            sc.setstep("missy", 14);
             char.addtime(60);
             char.room(203);
             break;
@@ -417,8 +457,56 @@ room209.chatcatch = function (callback) {
             break;
         case "end3bad":
             g.mod("sissy", -60);
-            sc.setstep("p", 4);
+            sc.setstep("missy", 14);
             char.addtime(60);
+            char.room(203);
+            break;
+        case "m14_0":
+            nav.killbutton("p");
+            nav.button({
+                "type": "img",
+                "name": "p",
+                "left": 855,
+                "top": 0,
+                "width": 1031,
+                "height": 1080,
+                "image": "209_classroom/p1.png"
+            }, 209);
+            break;
+        case "m14_1":
+            nav.killbutton("p");
+            zcl.kill();
+            nav.button({
+                "type": "img",
+                "name": "p",
+                "left": 1300,
+                "top": 210,
+                "width": 466,
+                "height": 888,
+                "image": "209_classroom/p0.png"
+            }, 209);
+            zcl.displayMain(-400, 400, .3, "panties", true);
+            if (cl.getEntry("panties", cl.c.panties).sex === "f") {
+                chat(44, 209);
+            }
+            else {
+                chat(42, 209);
+            }
+            break;
+        case "m14_1x":
+            cl.list[cl.where("panties", cl.c.panties)].inv = false;
+            cl.c.panties = null;
+            zcl.displayMain(-400, 400, .3, "panties", true);
+            break;
+        case "takeSeat":
+            zcl.kill();
+            room209.btnclick("charsit");
+            break;
+        case "endm14":
+            sc.setstep("missy", 15);
+            sc.setstep("p", 1);
+            char.addtime(420);
+            g.mod("money", 40);
             char.room(203);
             break;
         default:
@@ -782,9 +870,99 @@ room209.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "missy",
-            text: "In progress",
+            text: "Today I have a treat for you. Meet " + sc.n("p") + ". She'll be my assistant trainer. Normally she runs the " +
+                "pink room, but she is going to help me with your training. Specifically she'll be your femininity trainer. Say " +
+                "hello to " + sc.n("p") + ".",
             button: [
-                { chatID: -1, text: "Yes ma'am", callback: "leave" }
+                { chatID: 40, text: "Hello " + sc.n("p") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "p",
+            text: "Tehehehe! Hi " + sc.n("me") + ". " + sc.n("missy") + " has told me about you. I've only worked with sissies in the pink " +
+                "room of pleasure. You'll be my first to bring all the way up; I'm so excited! ",
+            button: [
+                { chatID: 41, text: "...", callback: "m14_0" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "p",
+            text: "Now strip to your panties you little slut!",
+            button: [
+                { chatID: -1, text: "Yelp! [Strip to your panties]", callback: "m14_1" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "p",
+            text: "Boy's panties.. how disappointing. No more boy's panties for you, gimme those. ",
+            button: [
+                { chatID: 43, text: "Give " + sc.n("p") + " your boy panties.", callback: "m14_1x" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "p",
+            text: "I don't want to see you in boy panties ever again. They aren't for you!",
+            button: [
+                { chatID: 44, text: "Yes " + sc.n("p") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "missy",
+            text: "Good, now get dreseed and take your seat while I continue.",
+            button: [
+                { chatID: 45, text: "Take your seat.", callback: "takeSeat" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "missy",
+            text: "Now that you have met " + sc.n("p") + " I'm going to introduce you to the chart on the wall. ",
+            button: [
+                { chatID: 46, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "missy",
+            text: "We will give you the mandatory classes you'll need to prepare yourself to take down the cult, but to my left are " +
+                "extracurricular classes. Some you will need, some will help, and some are completely optional, it's up to you to " +
+                "decide which ones to do. ",
+            button: [
+                { chatID: 47, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "missy",
+            text: "With those extracurricular classes we also have some body modification choices. A scientist friend of mine has " +
+                "developed a pill that can target specific areas of your body and make them more feminine. These pills are very " +
+                "expensive so you'll have to earn them. ",
+            button: [
+                { chatID: 48, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "missy",
+            text: "Each morning you come in you'll have the choice to either pick an extracurricular class or body modification, ask " +
+                sc.n("p") + " to give you a femininity lesson, or ask me to give you a discipline and sexuality lesson. If you " +
+                "follow direction and behave like a good sissy " + sc.n("p") + " or myself just may give you bonus points for your " +
+                "extracurricular clases and modifications. ",
+            button: [
+                { chatID: 49, text: "So each morning I choose either the extracurricular class or body modification, a lesson by " + sc.n("p") + " or a lesson by you, ma'am.", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "missy",
+            text: "Correct. Tomorrow begins the first day of the rest of your life. Sleep well and don't forget your panties. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "endm14" }
             ]
         },
     ];
