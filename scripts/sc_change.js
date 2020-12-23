@@ -254,6 +254,16 @@ scc.love = function (name, amount, max) {
     }
 };
 
+scc.setlove = function (name, amount) {
+    var i;
+    for (i = 0; i < scc.changes.length; i++) {
+        if (scc.changes[i].name === name) {
+            scc.changes[i].love = amount;
+            i = 999999;
+        }
+    }
+};
+
 scc.get = function (name) {
     var retVar = null;
     $.each(scc.changes, function (i, v) {

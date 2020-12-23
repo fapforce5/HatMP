@@ -18,6 +18,7 @@ room28.main = function () {
 
     var maxE = g.get("maxenergy");
     var thisautohormone, hix, tix;
+    var thisTransform = null;
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "fitness":
@@ -76,6 +77,12 @@ room28.main = function () {
             case "tookHormonePill":
                 tix = i;
                 break;
+            case "pill":
+                if (g.st[i].t !== null) {
+                    thisTransform = g.st[i].t;
+                    g.st[i].t = null;
+                }
+                break;
         }
     }
 
@@ -118,6 +125,35 @@ room28.main = function () {
     //check Transformation
     if (cl.c.chest === 0 && fitnesslevel > 0) {
         chat(0, 28);
+    }
+    else if (thisTransform !== null) {
+        var thisImg = "";
+        switch (thisTransform) {
+            case "boob":
+                cl.c.chest++;
+                thisImg = "chest_" + cl.c.chest + ".gif";
+                break;
+            case "leg":
+                cl.c.leg++;
+                thisImg = "leg_" + cl.c.leg + ".gif";
+                break;
+            case "cock":
+                cl.c.cock++;
+                thisImg = "cock_" + cl.c.cock + ".gif";
+                break;
+            case "lip":
+                cl.c.lip++;
+                thisImg = "lip_" + cl.c.lip + ".gif";
+                break;
+        }
+        nav.bg("28_transformation/" + thisImg);
+        cl.display();
+        g.roomTimeout = setTimeout(function () {
+            returnRoomID = g.pass;
+            g.pass = "endSleepyTime";
+            char.room(returnRoomID);
+        }, 6000);
+
     }
     else {
         g.roomTimeout = setTimeout(function () {
@@ -210,6 +246,16 @@ room28.btnclick = function (name) {
                 "title": "Cancel",
                 "image": "28_transformation/cancel.png"
             }, 28);
+            nav.button({
+                "type": "btn",
+                "name": "money",
+                "left": 392,
+                "top": 251,
+                "width": 100,
+                "height": 100,
+                "title": "Money",
+                "image": "28_transformation/money.png"
+            }, 28);
             $.each(g.sissy, function (i, v) {
                 if (v.active) {
                     nav.button({
@@ -235,7 +281,7 @@ room28.btnclick = function (name) {
         case "leg2":
         case "leg3":
         case "leg4":
-            case "leg5":
+        case "leg5":
         case "cock1":
         case "cock2":
         case "cock3":
@@ -260,7 +306,6 @@ room28.btnclick = function (name) {
         case "clothes1":
         case "clothes2":
         case "clothes3":
-            
             $.each(g.sissy, function (i, v) {
                 if (v.icon === name) {
                     id = v.id;
@@ -285,46 +330,55 @@ room28.btnclick = function (name) {
             xleft = 1634 * g.ratio;
             xwidth = 271 * g.ratio;
             tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
-            if (g.sissy[id].ach)
+            if (name === "clothes0")
+                tText += '<div style="color: #ffcccc; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">PREREQUISITE</div>Attend ' + sc.n('p') + '\'s crossdressing class</div>';
+            else if (name === "fight0")
+                tText += '<div style="color: #ffcccc; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">PREREQUISITE</div>Prove yourself worthy of the Red Room</div>';
+            else if (g.sissy[id].ach)
                 tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px;">Unlocked</div>';
             else if (pid !== null) {
-                if (!g.sissy[pid].ach)
-                    tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px;">Unlock Preceding </div>';
+                if (!g.sissy[pid].ach) {
+                    tText += '<div style="color: #ffcccc; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">PREREQUISITE</div>' + g.sissy[g.sissy[id].pID].name + '</div>';
+                }
             }
 
             xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
-            
+
             $('#room-buttons').append(xline);
 
-            if (!g.sissy[id].ach) {
-                if (pid !== null) {
-                    if (g.sissy[pid].ach) {
-                        nav.button({
-                            "type": "btn",
-                            "name": "unlock",
-                            "left": 1634,
-                            "top": 850,
-                            "width": 271,
-                            "height": 72,
-                            "title": "Unlock",
-                            "image": "28_transformation/unlock.png"
-                        }, 28);
+            if (g.get("sissyPoints") <= g.get("sissy")) {
+                if (name !== "clothes0" && name !== "fight0") {
+                    if (!g.sissy[id].ach) {
+                        if (pid !== null) {
+                            if (g.sissy[pid].ach) {
+                                nav.button({
+                                    "type": "btn",
+                                    "name": "unlock",
+                                    "left": 1634,
+                                    "top": 850,
+                                    "width": 271,
+                                    "height": 72,
+                                    "title": "Unlock",
+                                    "image": "28_transformation/unlock.png"
+                                }, 28);
+                            }
+                        }
+                        else {
+                            nav.button({
+                                "type": "btn",
+                                "name": "unlock",
+                                "left": 1634,
+                                "top": 850,
+                                "width": 271,
+                                "height": 72,
+                                "title": "Unlock",
+                                "image": "28_transformation/unlock.png"
+                            }, 28);
+                        }
                     }
                 }
-                else {
-                    nav.button({
-                        "type": "btn",
-                        "name": "unlock",
-                        "left": 1634,
-                        "top": 850,
-                        "width": 271,
-                        "height": 72,
-                        "title": "Unlock",
-                        "image": "28_transformation/unlock.png"
-                    }, 28);
-                }
             }
-
+            
             break;
         case "cancel":
             g.internal = null;
@@ -343,7 +397,7 @@ room28.btnclick = function (name) {
             xtop = 600 * g.ratio;
             xleft = 1634 * g.ratio;
             xwidth = 271 * g.ratio;
-            tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Cancel</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Cancel transformation and lose progress?</div>';
+            tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Cancel</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Cancel and return to class</div>';
 
             xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
 
@@ -351,7 +405,7 @@ room28.btnclick = function (name) {
 
             nav.button({
                 "type": "btn",
-                "name": "unlock",
+                "name": "cancelcancel",
                 "left": 1634,
                 "top": 850,
                 "width": 271,
@@ -360,6 +414,49 @@ room28.btnclick = function (name) {
                 "image": "28_transformation/cancel_b.png"
             }, 28);
 
+            break;
+        case "money":
+            g.internal = null;
+            nav.killbutton("bigDisplay");
+            nav.killbutton("unlock");
+            nav.button({
+                "type": "img",
+                "name": "bigDisplay",
+                "left": 1645,
+                "top": 153,
+                "width": 250,
+                "height": 400,
+                "image": "28_transformation/money_d.png"
+            }, 28);
+
+            xtop = 600 * g.ratio;
+            xleft = 1634 * g.ratio;
+            xwidth = 271 * g.ratio;
+            tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Money</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Trade 100 Sissy Points for $100</div>';
+            if (g.get("sissy") > 100) {
+                nav.button({
+                    "type": "btn",
+                    "name": "moneymoney",
+                    "left": 1634,
+                    "top": 850,
+                    "width": 271,
+                    "height": 72,
+                    "title": "Unlock",
+                    "image": "28_transformation/money_b.png"
+                }, 28);
+            }
+            else
+                tText += '<div style="color: #ffffff; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">Not enough points</div>You only have ' + g.get('sissy') + ' sissy points</div>';
+            xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
+            $('#room-buttons').append(xline);
+            break;
+        case "moneymoney":
+            g.mod("sissy", -100);
+            g.mod("money", 100);
+            char.room(209);
+            break;
+        case "cancelcancel":
+            char.room(209);
             break;
         case "unlock":
             if (g.internal === null) {
@@ -372,54 +469,66 @@ room28.btnclick = function (name) {
                 if (g.internal < 6) {
                     id = g.internal + 1;
                     nav.killall();
-                    cl.c.chest = id;
-                    nav.bg("28_transformation/chest_" + id + ".gif");
-                    cl.display();
-                    g.roomTimeout = setTimeout(function () {
-                        returnRoomID = g.pass;
-                        g.pass = "endSleepyTime";
-                        char.room(returnRoomID);
-                    }, 6000);
+                    g.set("pill", "boob");
+                    nav.bg("28_transformation/pill.jpg");
+                    chat(1000, 28);
+                    //cl.c.chest = id;
+                    //nav.bg("28_transformation/chest_" + id + ".gif");
+                    //cl.display();
+                    //g.roomTimeout = setTimeout(function () {
+                    //    returnRoomID = g.pass;
+                    //    g.pass = "endSleepyTime";
+                    //    char.room(returnRoomID);
+                    //}, 6000);
                 }
                 else if (g.internal < 11) {
                     id = g.internal - 5;
                     nav.killall();
-                    cl.c.leg = id;
-                    nav.bg("28_transformation/leg_" + id + ".gif");
-                    cl.display();
-                    g.roomTimeout = setTimeout(function () {
-                        returnRoomID = g.pass;
-                        g.pass = "endSleepyTime";
-                        char.room(returnRoomID);
-                    }, 6000);
+                    g.set("pill", "leg");
+                    nav.bg("28_transformation/pill.jpg");
+                    chat(1001, 28);
+                    //cl.c.leg = id;
+                    //nav.bg("28_transformation/leg_" + id + ".gif");
+                    //cl.display();
+                    //g.roomTimeout = setTimeout(function () {
+                    //    returnRoomID = g.pass;
+                    //    g.pass = "endSleepyTime";
+                    //    char.room(returnRoomID);
+                    //}, 6000);
                 }
                 else if (g.internal < 16) {
                     id = g.internal - 10;
                     nav.killall();
-                    cl.c.cock = id;
-                    nav.bg("28_transformation/cock_" + id + ".gif");
-                    cl.display();
-                    g.roomTimeout = setTimeout(function () {
-                        returnRoomID = g.pass;
-                        g.pass = "endSleepyTime";
-                        char.room(returnRoomID);
-                    }, 6000);
+                    g.set("pill", "cock");
+                    nav.bg("28_transformation/pill.jpg");
+                    chat(1002, 28);
+                    //cl.c.cock = id;
+                    //nav.bg("28_transformation/cock_" + id + ".gif");
+                    //cl.display();
+                    //g.roomTimeout = setTimeout(function () {
+                    //    returnRoomID = g.pass;
+                    //    g.pass = "endSleepyTime";
+                    //    char.room(returnRoomID);
+                    //}, 6000);
                 }
                 else if (g.internal === 19 || g.internal === 20) {
                     id = g.internal - 18;
                     nav.killall();
-                    cl.c.lips = id;
-                    nav.bg("28_transformation/lip_" + id + ".gif");
-                    cl.display();
-                    g.roomTimeout = setTimeout(function () {
-                        returnRoomID = g.pass;
-                        g.pass = "endSleepyTime";
-                        char.room(returnRoomID);
-                    }, 6000);
+                    g.set("pill", "lip");
+                    nav.bg("28_transformation/pill.jpg");
+                    chat(1003, 28);
+                    //cl.c.lips = id;
+                    //nav.bg("28_transformation/lip_" + id + ".gif");
+                    //cl.display();
+                    //g.roomTimeout = setTimeout(function () {
+                    //    returnRoomID = g.pass;
+                    //    g.pass = "endSleepyTime";
+                    //    char.room(returnRoomID);
+                    //}, 6000);
                 }
                 else {
-                    nav.modbutton(g.sissy[g.internal].icon, "28_transformation/" + g.sissy[g.internal].icon + ".png")
-                    chat(999, 28);
+                    //nav.modbutton(g.sissy[g.internal].icon, "28_transformation/" + g.sissy[g.internal].icon + ".png");
+                    //chat(999, 28);
                 }
             }
             break;
@@ -468,6 +577,14 @@ room28.chatcatch = function (callback) {
                 char.room(returnRoomID);
             }, 6000);
             break;
+        case "endPills":
+            g.mod("energy", -100);
+            scc.love("missy", 5);
+            g.mod("sissy", g.get("sissyPoints") * -1);
+            g.mod("sissyPoints", 5);
+            char.addtime(220);
+            char.room(203);
+            break;
         default:
             break;
     }
@@ -482,6 +599,26 @@ room28.chat = function (chatID) {
             text: "You've unlocked <span class='hl-pink'>" + g.sissy[g.internal].name + "</span>.",
             button: [
                 { chatID: -1, text: "Sweet", callback: "returnToRoom" }
+            ]
+        };
+    }
+    else if (chatID > 999) {
+        var thisChat = "";
+        if (chatID === 1000)
+            thisChat = "Take one of these experimental pills and you'll see some growth in your chest my little sissy in training.";
+        else if (chatID === 1001)
+            thisChat = "Take one of these experimental pills and you'll wake up with a more feminine butt my little sissy in training.";
+        else if (chatID === 1002)
+            thisChat = "So my little sissy in training wants to shrink their little clitty so they'll be forced to only use her " +
+                "sissy pussy. Take this pill tonight my slut.";
+        else
+            thisChat = "You'll look so pretty with dick sucking lips! I'm so glad you know what a slut you are. ";
+        return {
+            chatID: 998,
+            speaker: "missy",
+            text: thisChat,
+            button: [
+                { chatID: 3, text: "Sweet", callback: "" }
             ]
         };
     }
@@ -509,6 +646,15 @@ room28.chat = function (chatID) {
                 text: "I must be dreaming.... I can feel as though my body wants to change.......",
                 button: [
                     { chatID: -1, text: ".....", callback: "" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "missy",
+                text: "These pills take a toll on you, suck down your energy. The doctor that made them is still perfecting them, " +
+                    "but when you wake up you'll find that they work well. Take the rest of the day, relax go to bed.",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "endPills" }
                 ]
             }
         ];

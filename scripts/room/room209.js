@@ -141,7 +141,6 @@ room209.main = function () {
         }
         if (mstep === 14) {
             room209.btnclick("bb1");
-            
             nav.button({
                 "type": "img",
                 "name": "void",
@@ -171,11 +170,111 @@ room209.main = function () {
             }, 209);
             room209.btnclick("charsit");
         }
+        else {
+            room209.btnclick("bbday");
+            room209.btnclick("posterx");
+            nav.button({
+                "type": "btn",
+                "name": "missystart",
+                "left": 900,
+                "top": 210,
+                "width": 466,
+                "height": 870,
+                "image": "209_classroom/missy0.png"
+            }, 209);
+            nav.button({
+                "type": "btn",
+                "name": "pstart",
+                "left": 1300,
+                "top": 210,
+                "width": 466,
+                "height": 888,
+                "image": "209_classroom/p0.png"
+            }, 209);
+            nav.button({
+                "type": "btn",
+                "name": "posterstart",
+                "left": 277,
+                "top": 251,
+                "width": 269,
+                "height": 321,
+                "image": "209_classroom/posterx.jpg"
+            }, 209);
+            room209.btnclick("charsit");
+            
+        }
     }
 };
  
 room209.btnclick = function (name) {
     switch (name) {
+        case "missystart":
+        case "pstart":
+        case "posterstart":
+            g.internal = name;
+            room209.btnclick("appearancestart");
+            break;
+        case "appearancestart":
+            var hasSuit = cl.c.shoes === "d" && cl.c.pants === "s" && cl.c.shirt === "s" && cl.c.socks === "b";
+            var hasGirlSuit = cl.c.shoes === "fb" && cl.c.pants === "k" && cl.c.shirt === "r" && cl.c.socks === null;
+            var hasPanties = cl.getEntry("panties", cl.c.panties);
+            var isShaved = cl.getBodyHair() === null;
+            if (hasSuit && hasPanties && isShaved) {
+                room209.btnclick("checklovestart");
+            }
+            else if (!hasSuit)
+                chat(51, 209);
+            else if (hasPanties.sex === "m")
+                chat(52, 209);
+            else if (!isShaved)
+                chat(54, 209);
+            break;
+        case "checklovestart":
+            if (scc.get("missy").love > 99)
+                chat(55, 209);
+            else
+                room209.btnclick("activecasesstart");
+            break;
+        case "activecasesstart":
+            room209.btnclick("startstart");
+            break;
+        case "startstart":
+            if (g.internal === "posterstart") {
+                var si, scounter;
+                nav.killall();
+                nav.bg("209_classroom/dark.jpg");
+                room28.btnclick("init");
+                scounter = 0;
+                for (si = 0; si < g.sissy.length; si++) {
+                    if (g.sissy[si].ach)
+                        scounter++;
+                }
+                if (scounter === 1)
+                    chat(50, 209);
+            }
+            else if (g.internal === "pstart") {
+                nav.killbutton("posterstart");
+                switch (sc.getstep("p")) {
+                    case 1:
+                        nav.modbutton("bb", "209_classroom/bbf1.jpg", null, null);
+                        nav.killbutton("missystart");
+                        chat(56, 209);
+                        break;
+                    case 2:
+                        nav.modbutton("bb", "209_classroom/bbf1.jpg", null, null);
+                        nav.killbutton("missy");
+                        chat(60, 209);
+                }
+            }
+            else if (g.internal === "missystart") {
+                nav.killbutton("posterstart");
+                switch (sc.getstep("missy")) {
+                    default:
+                        console.log("missy miss - step: " + sc.getstep("missy"));
+                        break;
+                }
+            }
+            break;
         case "exit":
             g.pass = "207blue";
             char.room(207);
@@ -214,10 +313,21 @@ room209.btnclick = function (name) {
                 "image": "209_classroom/" + name + ".jpg"
             }, 209);
             break;
+        case "bbday":
+            nav.button({
+                "type": "img",
+                "name": "bb",
+                "left": 605,
+                "top": 225,
+                "width": 868,
+                "height": 368,
+                "image": "209_classroom/bbday.jpg"
+            }, 209);
+            break;
         case "posterx":
             nav.button({
                 "type": "btn",
-                "name": "t0",
+                "name": "posterstart",
                 "left": 277,
                 "top": 251,
                 "width": 269,
@@ -270,19 +380,6 @@ room209.btnclick = function (name) {
                     chat(39, 209);
                     break;
             }
-            break;
-        case "t0":
-            var si, scounter;
-            nav.killall();
-            nav.bg("209_classroom/dark.jpg");
-            room28.btnclick("init");
-            scounter = 0;
-            for (si = 0; si < g.sissy.length; si++) {
-                if (g.sissy[si].ach)
-                    scounter++;
-            }
-            if (scounter === 1)
-                chat(39, 209);
             break;
         default:
             break;
@@ -507,6 +604,31 @@ room209.chatcatch = function (callback) {
             sc.setstep("p", 1);
             char.addtime(420);
             g.mod("money", 40);
+            char.room(203);
+            break;
+        case "badend":
+            scc.love("missy", -10, 100);
+            char.addtime(225);
+            char.room(203);
+            break;
+        case "pantycheck":
+            nav.killbutton('chair');
+            zcl.displayMain(-400, 400, .3, "panties", true);
+            break;
+        case "points!":
+            scc.setlove("missy", 0);
+            g.mod("sissy", 100);
+            room209.btnclick("activecasesstart");
+            break;
+        case "ptif8":
+            g.roomMapAccess(650, true, true);
+            sc.setstep("tiffany", -8);
+            break;
+        case "pinc1":
+            sc.incstep("p", 1);
+            g.mod("money", 40);
+            g.mod("sissy", 25);
+            char.addtime(480);
             char.room(203);
             break;
         default:
@@ -963,6 +1085,102 @@ room209.chat = function (chatID) {
             text: "Correct. Tomorrow begins the first day of the rest of your life. Sleep well and don't forget your panties. ",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "endm14" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "missy",
+            text: "This is the first time you're looking through the extracurricular classes and body modification tree. " +
+                "The bright entries you have already taken, the dark ones you haven't taken yet. Some things you can start " +
+                "right away, but others you'll need to take the mandatory class first. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "missy",
+            text: "You need to wear your suit top, suit pants, black socks, and black shoes until I tell you otherwise. You " +
+                "have failed your lessons for the day.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "badend" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "missy",
+            text: "It's time for your panty check, strip it down.",
+            button: [
+                { chatID: 53, text: "Yes ma'am", callback: "pantycheck" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "missy",
+            text: "You know better than to wear those disgusting things here. You have failed your lessons for the day.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "badend" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "missy",
+            text: "I just threw up in my mouth a little bit. You need to shave your disgusting body. Now!",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "badend" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "missy",
+            text: "I have to admit, you've been doing well in class. I'm going to give you 100 bonus points. ",
+            button: [
+                { chatID: -1, text: "Thank you ma'am", callback: "points!" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "p",
+            text: "Heheheh, so you want to be more girly? I'm going to start with the basics. Sitting. You're sitting there like " +
+                "some kind of knuckle dragging opressor with you genitials on full display. A proper lady crosser her legs when " +
+                "seated. ",
+            button: [
+                { chatID: 57, text: "My legs?", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "p",
+            text: "Yes, you will need to always cross your legs when you sit. Also with sitting you need to sit to pee from now on. ",
+            button: [
+                { chatID: 58, text: "Lol what?", callback: "" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "p",
+            text: "Boys are so discourteous when it comes to simple bathroom etiquette. You get your little spashes on the toilet " +
+                "like some kind of untrained dog hehehe. Sitting to pee is most importatnt from now on. ",
+            button: [
+                { chatID: 59, text: "ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "p",
+            text: "This is the end of your first lesson. Next we're going to learn how to dress! How exciting!",
+            button: [
+                { chatID: 60, text: "Yeah!", callback: "ptif8" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "p",
+            text: "Oh my... You don't have any sissy clothes. We need to fix that! " + sc.n("missy") + " told me you know " +
+                sc.n("tiffany") + ". She has a nice girly business outfit you can wear. <span class='hl-red'>" +
+                "Stop by her place to pick it up!</span>",
+            button: [
+                { chatID: -1, text: "Ok. I'll stop by " + sc.n("tiffany") + "'s place to pick it up!", callback: "pinc1" }
             ]
         },
     ];

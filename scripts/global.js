@@ -48,6 +48,7 @@ g.st = [
     { n: "sissyLevel", t: 0, q: "zero" },
     { n: "sissyPoints", t: 0, q: "zero" },
     { n: "sissyApp", t: false, q: "bool" },
+    { n: "pill", t: null, q: "string" },
     { n: "legLevel", t: 0, q: "zero" },
     { n: "bodyLevel", t: 0, q: "zero" },
     { n: "fitnessLevel", t: 0, q: "zero" },
@@ -152,7 +153,7 @@ g.sissy = [
     { id: 12, pID: 11, icon: "cock2", x: 734, y: 665, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", group: "Cock" , ach: false, active: true },
     { id: 13, pID: 12, icon: "cock3", x: 645, y: 754, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", group: "Cock" , ach: false, active: true },
     { id: 14, pID: 13, icon: "cock4", x: 557, y: 842, name: "It's a Clitty", description: "You're no longer a man, sissy", group: "Cock" , ach: false, active: true },
-    { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy", ach: false, active: true },
+    { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy", ach: false, active: false },
 
     { id: 16, pID: 0, icon: "makeup0", x: 823, y: 402, name: "Makeup", description: "You can go out wearing makeup", group: "Makeup", ach: false, active: true },
     { id: 17, pID: 16, icon: "makeup1", x: 734, y: 313, name: "Piercing", description: "You can get piercings  [Not Implemented]", group: "Makeup", ach: false, active: true },
@@ -173,10 +174,12 @@ g.sissy = [
     { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", group: "Date", ach: false, active: true },
     { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", group: "Date", ach: false, active: true },
 
-    { id: 31, pID: 0, icon: "clothes0", x: 723, y: 490, name: "Sexy Clothes", description: "You can buy sexy clothes", group: "Clothes" , ach: false, active: true },
-    { id: 32, pID: 31, icon: "clothes1", x: 598, y: 490, name: "Panties?", description: "You don't have to wear panties or bra", group: "Clothes" , ach: false, active: true },
-    { id: 33, pID: 32, icon: "clothes2", x: 473, y: 490, name: "Slutty Clothes", description: "You can buy slutty clothes", group: "Clothes" , ach: false, active: true },
-    { id: 34, pID: 33, icon: "clothes3", x: 348, y: 490, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", group: "Clothes", ach: false, active: true }
+    { id: 31, pID: 0, icon: "clothes0", x: 723, y: 490, name: "Cross dress", description: "You can cross dress", group: "Clothes", ach: false, active: true },
+    { id: 32, pID: 31, icon: "clothes0", x: 723, y: 490, name: "Conservative Clothes", description: "You can buy conservative clothes", group: "Clothes", ach: false, active: true },
+    { id: 33, pID: 32, icon: "clothes0", x: 723, y: 490, name: "Sexy Clothes", description: "You can buy sexy clothes", group: "Clothes" , ach: false, active: true },
+    { id: 34, pID: 33, icon: "clothes1", x: 598, y: 490, name: "Panties?", description: "You don't have to wear panties or bra", group: "Clothes" , ach: false, active: true },
+    { id: 35, pID: 34, icon: "clothes2", x: 473, y: 490, name: "Slutty Clothes", description: "You can buy slutty clothes", group: "Clothes" , ach: false, active: true },
+    { id: 36, pID: 35, icon: "clothes3", x: 348, y: 490, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", group: "Clothes", ach: false, active: true },
 ];
 
 g.supersissy = function () {
@@ -764,8 +767,7 @@ g.initGame = function () {
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "slimeMonsters":
-                g.st[i].t = true;
-                break;
+            case "pill":
             case "knockedup":
                 g.st[i].t = null;
                 break;
