@@ -57,6 +57,8 @@ room203.main = function () {
         else if (sc.cecilia().thisRoom) {
             g.pass = "203Elevator";
             navList = [201, 207, 0];
+            if (g.sissy[54].ach)
+                navList = [201, 207, 209, 0];
             btnList = [{
                 "type": "btn",
                 "name": "recep",
@@ -96,7 +98,7 @@ room203.btnclick = function (name) {
             nav.buildnav([201, 0]);
             break;
         case "recepClose":
-            if (g.internal === "gettea") {
+            if (g.internal === "teatime") {
                 chat(29, 203);
             }
             else if (misssyStep === 1) {
@@ -609,7 +611,7 @@ room203.chat = function (chatID) {
             button: [
                 { chatID: 33, text: "She didn't ask for sugar", callback: "sugar0" },
                 { chatID: 33, text: "1 lump", callback: "sugar1" },
-                { chatID: 33, text: "2 lumps", callback: "sugar2" },
+                { chatID: 33, text: "2 lumps", callback: "sugar2" }
             ]
         },
         {

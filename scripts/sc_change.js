@@ -39,7 +39,7 @@ scc.changes = [
     { name: "lola", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "landloard", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "tiffany", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "missy", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "missy", xdress: false, chest: 1, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "tina", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "cecilia", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
 
@@ -199,6 +199,8 @@ scc.load = function (ra) {
     for (i = 0; i < scc.changes.length; i++) {
         scc.changes[i].xdress = false;
         scc.changes[i].chest = scc.changes[i].leg = scc.changes[i].hair = scc.changes[i].cock = scc.changes[i].love = 0;
+        if (scc.changes[i].name === "missy")
+            scc.changes[i].chest = 1;
     }
     $.each(ra, function (i, v) {
         for (j = 0; j < scc.changes.length; j++) {

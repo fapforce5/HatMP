@@ -47,7 +47,6 @@ g.st = [
     { n: "sissy", t: 0, q: "sissy" },
     { n: "sissyLevel", t: 0, q: "zero" },
     { n: "sissyPoints", t: 0, q: "zero" },
-    { n: "sissyApp", t: false, q: "bool" },
     { n: "pill", t: null, q: "string" },
     { n: "legLevel", t: 0, q: "zero" },
     { n: "bodyLevel", t: 0, q: "zero" },
@@ -136,50 +135,80 @@ g.st = [
 ];
 
 g.sissy = [
-    { id: 0, pID: null, icon: "chest1", x: 910, y: 490, name: "Man's chest", description: "The first step of your transformation", group: "Chest" , ach: false, active: true },
-    { id: 1, pID: 0, icon: "chest2", x: 997, y: 402, name: "A Cups", description: "Awwww you've spouted cute little buds", group: "Breasts" , ach: false, active: true },
-    { id: 2, pID: 1, icon: "chest3", x: 1086, y: 313, name: "B Cups", description: "A nice pair for a nice girl", group: "Breasts" , ach: false, active: true },
-    { id: 3, pID: 2, icon: "chest4", x: 1174, y: 225, name: "C Cups", description: "Any girl would be proud of these titties", group: "Breasts" , ach: false, active: true },
-    { id: 4, pID: 3, icon: "chest5", x: 1263, y: 136, name: "DD Cups", description: "Ok.. Now they're getting a bit big", group: "Breasts" , ach: false, active: true },
-    { id: 5, pID: 4, icon: "chest6", x: 1351, y: 48, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", group: "Breasts" , ach: false, active: true },
+    
+    { id: 0, pID: 54, icon: "missy1", x: 2, y: 7, name: "Tea Time", description: "Follow Instructions", ach: false, active: true },
+    { id: 1, pID: 0, icon: "missy2", x: 3, y: 7, name: "Patience", description: "Follow Instructions", ach: false, active: true },
+    { id: 2, pID: 20, icon: "missy3", x: 4, y: 9, name: "Patience", description: "Follow Instructions", ach: false, active: true },
 
-    { id: 6, pID: 0, icon: "leg1", x: 998, y: 577, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", group: "Booty" , ach: false, active: true },
-    { id: 7, pID: 6, icon: "leg2", x: 1086, y: 665, name: "Tight Booty", description: "Men will start to notice a nice butt like this", group: "Booty" , ach: false, active: true },
-    { id: 8, pID: 7, icon: "leg3", x: 1175, y: 754, name: "Big Booty", description: "Women will notice a big booty like this", group: "Booty" , ach: false, active: true },
-    { id: 9, pID: 8, icon: "leg4", x: 1263, y: 842, name: "Phat Ass", description: "Everyone wants to slap a booty this big", group: "Booty" , ach: false, active: true },
-    { id: 10, pID: 9, icon: "leg5", x: 1352, y: 931, name: "Porn Star Ass", description: "An ass built for cock", group: "Booty", ach: false, active: true },
+    { id: 3, pID: 2, icon: "hypno0", x: 5, y: 9, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true },
+    { id: 4, pID: 3, icon: "hypno1", x: 5, y: 10, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true },
+    { id: 5, pID: 4, icon: "hypno2", x: 5, y: 11, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true },
 
-    { id: 11, pID: 0, icon: "cock1", x: 822, y: 577, name: "Average Size Cock", description: "Just enough to still please women", group: "Cock" , ach: false, active: true },
-    { id: 12, pID: 11, icon: "cock2", x: 734, y: 665, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", group: "Cock" , ach: false, active: true },
-    { id: 13, pID: 12, icon: "cock3", x: 645, y: 754, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", group: "Cock" , ach: false, active: true },
-    { id: 14, pID: 13, icon: "cock4", x: 557, y: 842, name: "It's a Clitty", description: "You're no longer a man, sissy", group: "Cock" , ach: false, active: true },
-    { id: 15, pID: 14, icon: "cock5", x: 469, y: 930, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", group: "Pussy", ach: false, active: false },
+    { id: 6, pID: 3, icon: "chastity", x: 6, y: 9, name: "Chastity Training", description: "What a worthless flag of skin you have", ach: false, active: true },
+    { id: 7, pID: 6, icon: "cock1", x: 6, y: 10, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: true },
+    { id: 8, pID: 7, icon: "cock2", x: 6, y: 11, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", ach: false, active: true },
+    { id: 9, pID: 8, icon: "cock3", x: 6, y: 12, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", ach: false, active: true },
+    { id: 10, pID: 9, icon: "cock4", x: 6, y: 13, name: "It's a Clitty", description: "You're no longer a man, sissy", ach: false, active: true },
+    { id: 11, pID: 51, icon: "cock5", x: 20, y: 9, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", ach: false, active: false },
 
-    { id: 16, pID: 0, icon: "makeup0", x: 823, y: 402, name: "Makeup", description: "You can go out wearing makeup", group: "Makeup", ach: false, active: true },
-    { id: 17, pID: 16, icon: "makeup1", x: 734, y: 313, name: "Piercing", description: "You can get piercings  [Not Implemented]", group: "Makeup", ach: false, active: true },
-    { id: 18, pID: 17, icon: "makeup2", x: 646, y: 225, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", group: "Makeup", ach: false, active: true },
-    { id: 19, pID: 18, icon: "lip1", x: 558, y: 137, name: "Girl's Lips", description: "What a purdy mouth you have", group: "Lips" , ach: false, active: true },
-    { id: 20, pID: 19, icon: "lip2", x: 469, y: 48, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", group: "Lips" , ach: false, active: true },
+    { id: 12, pID: 6, icon: "bj", x: 7, y: 9, name: "Blow Me", description: "Work on your BJ skills", ach: false, active: true },
+    { id: 13, pID: 12, icon: "gloryhole0", x: 7, y: 8, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole [Not Implemented]", ach: false, active: true },
+    { id: 14, pID: 12, icon: "date0", x: 7, y: 10, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", ach: false, active: true },
 
-    { id: 21, pID: 0, icon: "fight0", x: 1096, y: 490, name: "Strip", description: "You can strip your clothes in a fight", group: "Fight" , ach: false, active: true },
-    { id: 22, pID: 21, icon: "fight1", x: 1221, y: 490, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", group: "Fight" , ach: false, active: true },
-    { id: 23, pID: 22, icon: "fight2", x: 1347, y: 490, name: "Sexy Dance", description: "You can do a sexy dance during a fight", group: "Fight" , ach: false, active: true },
-    { id: 24, pID: 23, icon: "fight3", x: 1471, y: 490, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", group: "Fight" , ach: false, active: true },
+    { id: 15, pID: 12, icon: "redroom", x: 8, y: 9, name: "Red Room", description: "Prove your Worth", ach: false, active: true },
 
-    { id: 25, pID: 0, icon: "gloryhole0", x: 910, y: 304, name: "Suck Anonymous Cock", description: "Present your mouth at a glory hole [Not Implemented]", group: "Glory Hole" , ach: false, active: true },
-    { id: 26, pID: 25, icon: "gloryhole1", x: 910, y: 179, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", group: "Glory Hole", ach: false, active: true },
-    { id: 27, pID: 26, icon: "gloryhole2", x: 910, y: 53, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", group: "Whore", ach: false, active: true },
+    { id: 16, pID: 15, icon: "takeit", x: 9, y: 9, name: "Take It Slut", description: "Bend over and serve", ach: false, active: true },
+    { id: 17, pID: 16, icon: "gloryhole1", x: 9, y: 8, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", ach: false, active: true },
+    { id: 18, pID: 16, icon: "date1", x: 9, y: 10, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", ach: false, active: true },
 
-    { id: 28, pID: 0, icon: "date0", x: 910, y: 677, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", group: "Date", ach: false, active: true },
-    { id: 29, pID: 28, icon: "date1", x: 910, y: 801, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", group: "Date", ach: false, active: true },
-    { id: 30, pID: 29, icon: "date2", x: 910, y: 926, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", group: "Date", ach: false, active: true },
+    { id: 19, pID: 16, icon: "sewer", x: 10, y: 9, name: "Sewer Search", description: "Search the sewer", ach: false, active: true },
 
-    { id: 31, pID: 0, icon: "clothes0", x: 723, y: 490, name: "Cross dress", description: "You can cross dress", group: "Clothes", ach: false, active: true },
-    { id: 32, pID: 31, icon: "clothes0", x: 723, y: 490, name: "Conservative Clothes", description: "You can buy conservative clothes", group: "Clothes", ach: false, active: true },
-    { id: 33, pID: 32, icon: "clothes0", x: 723, y: 490, name: "Sexy Clothes", description: "You can buy sexy clothes", group: "Clothes" , ach: false, active: true },
-    { id: 34, pID: 33, icon: "clothes1", x: 598, y: 490, name: "Panties?", description: "You don't have to wear panties or bra", group: "Clothes" , ach: false, active: true },
-    { id: 35, pID: 34, icon: "clothes2", x: 473, y: 490, name: "Slutty Clothes", description: "You can buy slutty clothes", group: "Clothes" , ach: false, active: true },
-    { id: 36, pID: 35, icon: "clothes3", x: 348, y: 490, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", group: "Clothes", ach: false, active: true },
+    { id: 20, pID: 1, icon: "p0", x: 4, y: 7, name: "Meet and Greet", description: "Meet your new instructor", ach: false, active: true },
+    { id: 21, pID: 20, icon: "p1", x: 4, y: 5, name: "Sit Like A Lady", description: "How to sit like a proper lady", ach: false, active: true },
+    { id: 22, pID: 21, icon: "p2", x: 4, y: 4, name: "How to Pee", description: "How to pee like a lady", ach: false, active: true },
+    { id: 23, pID: 22, icon: "p3", x: 4, y: 3, name: "Dress", description: "How to dress like a lady", ach: false, active: true },
+
+    { id: 24, pID: 23, icon: "cross0", x: 4, y: 3, name: "Cross dress", description: "Cross Dressing Class", ach: false, active: true },
+    { id: 25, pID: 23, icon: "heels", x: 3, y: 3, name: "High Heels", description: "Learn how to walk in high heels", ach: false, active: true },
+    { id: 26, pID: 23, icon: "makeup0", x: 4, y: 2, name: "Makeup", description: "You can go out wearing makeup", ach: false, active: true },
+    { id: 27, pID: 26, icon: "makeup1", x: 4, y: 1, name: "Piercing", description: "You can get piercings", ach: false, active: true },
+
+    { id: 28, pID: 24, icon: "diner", x: 5, y: 3, name: "Diner", description: "Diner Case", ach: false, active: true },
+
+    { id: 29, pID: 28, icon: "cross1", x: 6, y: 3, name: "Cross dress", description: "You can cross dress in public", ach: false, active: true },
+
+    { id: 30, pID: 29, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", ach: false, active: true },
+
+    { id: 31, pID: 29, icon: "clothes0", x: 7, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true },
+    { id: 32, pID: 550, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: true },
+    { id: 33, pID: 551, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: true },
+    { id: 34, pID: 552, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true },
+
+    { id: 35, pID: 29, icon: "chest2", x: 8, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true },
+    { id: 36, pID: 560, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true },
+    { id: 37, pID: 561, icon: "chest4", x: 10, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true },
+    { id: 38, pID: 562, icon: "chest5", x: 11, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true },
+    { id: 39, pID: 563, icon: "chest6", x: 12, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true },
+
+    { id: 40, pID: 29, icon: "leg1", x: 8, y: 4, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true },
+    { id: 41, pID: 6, icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true },
+    { id: 42, pID: 7, icon: "leg3", x: 10, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true },
+    { id: 43, pID: 8, icon: "leg4", x: 11, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true },
+    { id: 44, pID: 9, icon: "leg5", x: 12, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true },
+    
+    { id: 45, pID: 29, icon: "lip1", x: 7, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true },
+    { id: 46, pID: 45, icon: "lip2", x: 8, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true },
+
+    { id: 47, pID: 19, icon: "fight0", x: 10, y: 10, name: "Strip", description: "You can strip your clothes in a fight", ach: false, active: true },
+    { id: 48, pID: 47, icon: "fight1", x: 10, y: 11, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", ach: false, active: true },
+    { id: 49, pID: 48, icon: "fight2", x: 10, y: 12, name: "Sexy Dance", description: "You can do a sexy dance during a fight", ach: false, active: true },
+    { id: 50, pID: 49, icon: "fight3", x: 10, y: 13, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", ach: false, active: true },
+
+    { id: 51, pID: 19, icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false },
+    { id: 52, pID: 51, icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false },
+    { id: 53, pID: 52, icon: "date2", x: 11, y: 10, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", ach: false, active: false },
+
+    { id: 54, pID: null, icon: "missy0", x: 1, y: 7, name: "Contract", description: "Introduction", ach: false, active: true },
 ];
 
 g.supersissy = function () {
@@ -271,7 +300,7 @@ g.mod = function (name, amount) {
                 g.st[index].t = new Date(g.st[index].t.getTime() + (amount * 60000));
                 break;
             case "sissy":
-                if (g.get("sissyApp")) {
+                if (g.sissy[0].ach) {
                     g.st[index].t += amount;
                     if (amount > 0)
                         g.popUpNotice("You've earned extra credit SISSY POINTS");
@@ -886,7 +915,6 @@ g.initGame = function () {
             case "puter":
             case "tim":
             case "cindy":
-            case "sissyApp":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

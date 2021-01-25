@@ -316,7 +316,7 @@ char.newdayfake = function () {
     cl.energydisplay();
     g.set("arousal", 0);
     cl.cockDisplay();
-}
+};
 
 char.settime = function (newTimeHour, newTimeMinute) {
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), newTimeHour, newTimeMinute, 0, 0);
@@ -427,7 +427,7 @@ menu.initBuild = function (type) {
     $('#menu_parent').append('<img src="./images/phone/bPic.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 810) + '" data-type="pic" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bMap.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 960) + '" data-type="map" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bHormone.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 1110) + '" data-type="hormone" class="menu-button menu-buttonKill"/>');
-    if (g.get("sissyApp"))
+    if (g.sissy[0].ach)
         $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 960) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bAdmin.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 660) + '" data-type="admin" class="menu-button menu-buttonKill"/>');

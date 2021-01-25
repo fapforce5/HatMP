@@ -114,6 +114,7 @@ sc.events = [
     { name: "zoey", step: 23, txt: "Need some space", img: "zoeyLock", show: true, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 24, txt: "transformation", img: "", show: false, row: 0, col: 4, ach: false, major: false },
 
+    { name: "missy", step: -1, txt: "Get the Tea", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 0, txt: "Not applied yet.", img: "pc", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 1, txt: "Get Private Investigator's license and interview.", img: "pi_lic", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: 2, txt: "Report for first day on job with a suit, black socks, and black shoes.", img: "suit", show: true, row: 0, col: 1, ach: false, major: false },
@@ -125,11 +126,11 @@ sc.events = [
     { name: "missy", step: 8, txt: "Report your failings.", img: "tiffanyMad", show: true, row: 0, col: 5, ach: false, major: false },
     { name: "missy", step: 9, txt: "Report for work in a pair of panties", img: "panties", show: true, row: 0, col: 6, ach: false, major: false },
     { name: "missy", step: 10, txt: "First Day of Sissy School", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "missy", step: 11, txt: "First lesson on obedience", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "missy", step: 12, txt: "Failed lesson - if leave office", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "missy", step: 13, txt: "Dildo in mouth", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "missy", step: 14, txt: "Exlain sissy school", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "missy", step: 15, txt: "Explain", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "missy", step: 11, txt: "First lesson on obedience", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "missy", step: 12, txt: "Failed lesson - if leave office", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "missy", step: 13, txt: "Dildo in mouth", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "missy", step: 14, txt: "Exlain sissy school", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "missy", step: 15, txt: "Explain", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     //{ name: "missy", step: 11, txt: "Hypno Time", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     //{ name: "missy", step: 12, txt: "Start wearing girly clothes", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     //{ name: "missy", step: 13, txt: "Took the pussy juice cock", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -351,6 +352,16 @@ sc.setstep = function (name, step) {
     for (j = 0; j < sc.events.length; j++) {
         if (sc.events[j].step === step && sc.events[j].name === name) {
             sc.events[j].ach = true;
+            j = 100000;
+        }
+    }
+};
+
+sc.revokeStep = function(name, step){
+    var i, j;
+    for (j = 0; j < sc.events.length; j++) {
+        if (sc.events[j].step === step && sc.events[j].name === name) {
+            sc.events[j].ach = false;
             j = 100000;
         }
     }
