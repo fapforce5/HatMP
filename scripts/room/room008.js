@@ -150,13 +150,8 @@ room8.main = function () {
                 case "chastity":
                     if (ttype === null)
                         cl.c.chastity = null;
-                    else {
-                        var thisSize = cl.list[cl.where("chastity", ttype)].daring;
-                        if (thisSize > cl.c.cock)
-                            chat(11, 8);
-                        else
-                            cl.c.chastity = ttype;
-                    }
+                    else
+                        cl.c.chastity = ttype;
                     break;
                 case "buttplug":
                     if (ttype === null)

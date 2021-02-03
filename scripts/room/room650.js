@@ -47,7 +47,13 @@ room650.btnclick = function (name) {
     switch (name) {
         case "tiffany":
             var tstep = sc.getstep("tiffany");
-            if (tstep === 0) {
+            if (sc.checkevent("tiffany", -8)){
+                chat(8, 650);
+            }
+            else if (g.get("oncase") === "shopping") {
+                chat(13, 650);
+            }
+            else if (tstep === 0) {
                 nav.killbutton("tiffany");
                 nav.button({
                     "type": "btn",
@@ -75,9 +81,6 @@ room650.btnclick = function (name) {
             }
             else if (tstep < 10) {
                 chat(2, 650);
-            }
-            else if (tstep === 10) {
-                chat(8, 650);
             }
             else if (tstep === 11) {
                 chat(12, 650);
@@ -133,9 +136,14 @@ room650.chatcatch = function (callback) {
             }, 650);
             break;
         case "tifLeave":
-            sc.setstep("tiffany", 11);
+            sc.revokeStep("tiffany", -8);
             nav.killbutton("tiffany");
             inv.add("tifgift");
+            break;
+        case "h_29":
+            sc.setstep("tiffany", -9);
+            char.room(400);
+
             break;
         default:
             break;
@@ -256,6 +264,23 @@ room650.chat = function (chatID) {
             text: "Hay cutie! You look so cute I want to dress you up.",
             button: [
                 { chatID: -1, text: "You too!", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "tiffany",
+            text: "Hay cutie! " + sc.n("missy") + " asked me to take you out on a shopping trip! I'm so excited to take that cute " +
+                "little butt of yours out in public!",
+            button: [
+                { chatID: 14, text: "Shopping trip?", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "tiffany",
+            text: "Yeah you cute little slut! Let's go shopping! Follow me!",
+            button: [
+                { chatID: -1, text: "[Follow " + sc.n("tiffany") + "]", callback: "h_29" }
             ]
         },
     ];

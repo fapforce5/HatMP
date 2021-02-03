@@ -108,7 +108,17 @@ room203.btnclick = function (name) {
                 chat(13, 203);
             }
             else if (misssyStep > 9) {
-                chat(28, 203);
+                var oncase = g.get("oncase");
+                if (oncase === null)
+                    chat(28, 203);
+                else if (oncase === "diner")
+                    chat(34, 203);
+                else if (oncase === "dinerfail" || oncase === "dinersuccess")
+                    chat(35, 203);
+                else {
+                    alert("forgot one");
+                    char.room(0);
+                }
             }
             else if (misssyStep < 1000) {
                 if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {
@@ -524,7 +534,7 @@ room203.chat = function (chatID) {
             chatID: 22,
             speaker: "cecilia",
             text: "Oh my " + sc.n("me") + "! I can't let you go in there like that! " + sc.n("missy") + " does not like it " +
-            "when you huge erection is sticking out of your pants. Do you want me jerk you off? I love filling my mouth with cum!",
+                "when you huge erection is sticking out of your pants. Do you want me jerk you off? I love filling my mouth with cum!",
             button: [
                 { chatID: 23, text: "No, I'll take care of it", callback: "" },
                 { chatID: 24, text: "Oh, yeah please jerk me off", callback: "" }
@@ -622,6 +632,32 @@ room203.chat = function (chatID) {
                 { chatID: -1, text: "Thanks", callback: "reload" },
             ]
         },
+        {
+            chatID: 34,
+            speaker: "cecilia",
+            text: sc.n("missy") + " said you should be at the diner working right now. The Naked Beaver Diner " +
+                "<img src='./images/room/map/250.png' style='height:" + (50 * g.ratio) + "px; width:" + (70 * g.ratio) +
+                "px;'/> is on the west side of town. ",
+            button: [
+                { chatID: -1, text: "Thanks", callback: "reload" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "cecilia",
+            text: sc.n("missy") + " said you should be at the diner working right now and not to allow you in until you finish. ",
+            button: [
+                { chatID: 36, text: "Oh, I finished it. I'm here to see " + sc.n('missy'), callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "cecilia",
+            text: "Good for you! I'll let you in! ",
+            button: [
+                { chatID: -1, text: "Thanks", callback: "enter" }
+            ]
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

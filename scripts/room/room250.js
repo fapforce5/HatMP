@@ -200,9 +200,15 @@ room250.chatcatch = function (callback) {
             char.room(251);
             break;
         case "cockfall":
-            cl.c.cock = 0;
-            cl.display();
-            zcl.displayMain(50, 1000, .17, "panties shirt pants socks shoes bra", false);
+            cl.c.panties = null;
+            if (cl.c.cock < 2) {
+                cl.display();
+                zcl.displayMain(50, 1000, .17, "panties shirt pants socks shoes bra", false);
+                chat(15, 250);
+            }
+            else {
+                chat(97, 250);
+            }
             break;
         case "cockLeave":
             nav.killbutton("zzz-clothing-kill");
@@ -210,6 +216,10 @@ room250.chatcatch = function (callback) {
             break;
         case "stageRight":
             g.pass = "initcock";
+            char.room(251);
+            break;
+        case "stageRightx":
+            g.pass = "initcockx";
             char.room(251);
             break;
         case "getbent":
@@ -690,7 +700,7 @@ room250.chat = function (chatID) {
             speaker: "random",
             text: "And another thing, you are the weirdest looking waitress I have ever seen!",
             button: [
-                { chatID: 15, text: "What?", callback: "cockfall" }
+                { chatID: -1, text: "What?", callback: "cockfall" }
             ]
         },
         {
@@ -917,7 +927,7 @@ room250.chat = function (chatID) {
             "Of course none of us ever change with him in the room, you would have to be a total spineless slut to do that!",
             button: [
                 { chatID: 40, text: "I would never change in front of him!", callback: "" },
-                { chatID: 37, text: "I didn't know I had a choice! I totally changed in front of him.", callback: "hollymad" }
+                { chatID: 37, text: "Oh, I don't know about spineless. It's not that bad.", callback: "hollymad" }
             ]
         },
         {
@@ -930,7 +940,6 @@ room250.chat = function (chatID) {
                 { chatID: 37, text: "I'll give you $50 for your used panties", callback: "hollymad" },
                 { chatID: 37, text: "I wonder if he'll give me $50 for my panties", callback: "hollymad" },
                 { chatID: 41, text: "You probably don't even wear panties", callback: "" },
-                { chatID: 37, text: "That's so disgusting why does any man want to buy panties!", callback: "hollymad" }
             ]
         },
         {
@@ -1440,6 +1449,24 @@ room250.chat = function (chatID) {
             text: "That's a good slut, now serve me my food.",
             button: [
                 { chatID: -1, text: "Yes Daddy", callback: "break40" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "random",
+            text: "You heard me you weird slut. You're so ugly I've lost my appetite. I know " + sc.n("jeffery") + ". " +
+                "I'm going to tell him to fire you! <span style='text-transform: uppercase;'>" + sc.n("jeffery") + "!! " +
+                "this waitress needs to get fired! she's the worst!</span>",
+            button: [
+                { chatID: 98, text: "Yes Daddy", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "jeffery",
+            text: sc.n("me") + " what are you doing! Report to my office. ",
+            button: [
+                { chatID: -1, text: "Comming", callback: "stageRightx" }
             ]
         },
     ];

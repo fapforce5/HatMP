@@ -70,6 +70,7 @@ g.st = [
     { n: "lockdrawer", t: false, q: "bool" },
     { n: "puter", t: false, q: "bool" },
     { n: "slimeMonsters", t: true, q: "bool" },
+    { n: "oncase", t: null, q: "string" },
 
     { n: "fighttimer", t: 4000, q: "int" },
 
@@ -166,35 +167,35 @@ g.sissy = [
     { id: 20, pID: 1, icon: "p0", x: 4, y: 7, name: "Meet and Greet", description: "Meet your new instructor", ach: false, active: true },
     { id: 21, pID: 20, icon: "p1", x: 4, y: 5, name: "Sit Like A Lady", description: "How to sit like a proper lady", ach: false, active: true },
     { id: 22, pID: 21, icon: "p2", x: 4, y: 4, name: "How to Pee", description: "How to pee like a lady", ach: false, active: true },
-    { id: 23, pID: 22, icon: "p3", x: 4, y: 3, name: "Dress", description: "How to dress like a lady", ach: false, active: true },
+    { id: 23, pID: 24, icon: "p3", x: 4, y: 3, name: "Dress", description: "How to dress like a lady", ach: false, active: true },
 
-    { id: 24, pID: 23, icon: "cross0", x: 4, y: 3, name: "Cross dress", description: "Cross Dressing Class", ach: false, active: true },
-    { id: 25, pID: 23, icon: "heels", x: 3, y: 3, name: "High Heels", description: "Learn how to walk in high heels", ach: false, active: true },
-    { id: 26, pID: 23, icon: "makeup0", x: 4, y: 2, name: "Makeup", description: "You can go out wearing makeup", ach: false, active: true },
+    { id: 24, pID: 22, icon: "cross0", x: 4, y: 3, name: "Cross dress", description: "Cross Dressing Class", ach: false, active: true },
+    { id: 25, pID: 24, icon: "heels", x: 3, y: 3, name: "High Heels", description: "Learn how to walk in high heels", ach: false, active: false },
+    { id: 26, pID: 24, icon: "makeup0", x: 4, y: 2, name: "Makeup", description: "You can go out wearing makeup", ach: false, active: true },
     { id: 27, pID: 26, icon: "makeup1", x: 4, y: 1, name: "Piercing", description: "You can get piercings", ach: false, active: true },
 
-    { id: 28, pID: 24, icon: "diner", x: 5, y: 3, name: "Diner", description: "Diner Case", ach: false, active: true },
+    { id: 28, pID: 24, icon: "diner", x: 6, y: 3, name: "Diner", description: "Diner Case", ach: false, active: true },
 
-    { id: 29, pID: 28, icon: "cross1", x: 6, y: 3, name: "Cross dress", description: "You can cross dress in public", ach: false, active: true },
+    { id: 29, pID: 28, icon: "cross1", x: 7, y: 3, name: "Cross dress", description: "You can cross dress in public", ach: false, active: true },
 
-    { id: 30, pID: 29, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", ach: false, active: true },
+    { id: 30, pID: 28, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", ach: false, active: true },
 
     { id: 31, pID: 29, icon: "clothes0", x: 7, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true },
-    { id: 32, pID: 550, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: true },
-    { id: 33, pID: 551, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: true },
-    { id: 34, pID: 552, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true },
+    { id: 32, pID: 31, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: true },
+    { id: 33, pID: 32, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: true },
+    { id: 34, pID: 33, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true },
 
     { id: 35, pID: 29, icon: "chest2", x: 8, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true },
-    { id: 36, pID: 560, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true },
-    { id: 37, pID: 561, icon: "chest4", x: 10, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true },
-    { id: 38, pID: 562, icon: "chest5", x: 11, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true },
-    { id: 39, pID: 563, icon: "chest6", x: 12, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true },
+    { id: 36, pID: 35, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true },
+    { id: 37, pID: 36, icon: "chest4", x: 10, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true },
+    { id: 38, pID: 37, icon: "chest5", x: 11, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true },
+    { id: 39, pID: 38, icon: "chest6", x: 12, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true },
 
     { id: 40, pID: 29, icon: "leg1", x: 8, y: 4, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true },
-    { id: 41, pID: 6, icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true },
-    { id: 42, pID: 7, icon: "leg3", x: 10, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true },
-    { id: 43, pID: 8, icon: "leg4", x: 11, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true },
-    { id: 44, pID: 9, icon: "leg5", x: 12, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true },
+    { id: 41, pID: 40, icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true },
+    { id: 42, pID: 41, icon: "leg3", x: 10, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true },
+    { id: 43, pID: 42, icon: "leg4", x: 11, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true },
+    { id: 44, pID: 43, icon: "leg5", x: 12, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true },
     
     { id: 45, pID: 29, icon: "lip1", x: 7, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true },
     { id: 46, pID: 45, icon: "lip2", x: 8, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true },
@@ -798,6 +799,7 @@ g.initGame = function () {
             case "slimeMonsters":
             case "pill":
             case "knockedup":
+            case "oncase":
                 g.st[i].t = null;
                 break;
             case "shower":

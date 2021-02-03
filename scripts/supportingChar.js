@@ -60,14 +60,14 @@ sc.char = [
 
 sc.events = [
     { name: "me", step: -13, txt: "Back In", img: "", show: false, row: 0, col: 1, ach: false, major: false },
-    { name: "me", step: -12, txt: "Can wear makeup", img: "", show: false, row: 1, col: 5, ach: false, major: false },
-    { name: "me", step: -11, txt: "Free to roam as a girl", img: "", show: false, row: 1, col: 5, ach: false, major: false },
-    { name: "me", step: -10, txt: "Stretch Butthole bigger than 1", img: "", show: false, row: 1, col: 5, ach: false, major: false },
-    { name: "me", step: -9, txt: "Give Blowjobs", img: "plug", show: false, row: 1, col: 5, ach: false, major: false },
-    { name: "me", step: -8, txt: "Buy and wear buttplug", img: "plug", show: true, row: 1, col: 5, ach: false, major: false },
-    { name: "me", step: -7, txt: "Buy and wear chastity", img: "chastity", show: true, row: 1, col: 4, ach: false, major: false },
-    { name: "me", step: -6, txt: "No Panties", img: "", show: false, row: 1, col: 3, ach: false, major: false },
-    { name: "me", step: -5, txt: "Can dye hair girly colors", img: "girlyDye", show: true, row: 1, col: 3, ach: false, major: false },
+    //{ name: "me", step: -12, txt: "Can wear makeup", img: "", show: false, row: 1, col: 5, ach: false, major: false },
+    //{ name: "me", step: -11, txt: "Free to roam as a girl", img: "", show: false, row: 1, col: 5, ach: false, major: false },
+    //{ name: "me", step: -10, txt: "Stretch Butthole bigger than 1", img: "", show: false, row: 1, col: 5, ach: false, major: false },
+    //{ name: "me", step: -9, txt: "Give Blowjobs", img: "plug", show: false, row: 1, col: 5, ach: false, major: false },
+    //{ name: "me", step: -8, txt: "Buy and wear buttplug", img: "plug", show: true, row: 1, col: 5, ach: false, major: false },
+    //{ name: "me", step: -7, txt: "Buy and wear chastity", img: "chastity", show: true, row: 1, col: 4, ach: false, major: false },
+    //{ name: "me", step: -6, txt: "No Panties", img: "", show: false, row: 1, col: 3, ach: false, major: false },
+    //{ name: "me", step: -5, txt: "Can dye hair girly colors", img: "girlyDye", show: true, row: 1, col: 3, ach: false, major: false },
     { name: "me", step: -4, txt: "First time in wardrobe", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "me", step: -3, txt: "Can wear lipstick", img: "lipstick", show: true, row: 1, col: 2, ach: false, major: false },
     { name: "me", step: -2, txt: "You're ok with wearing panties", img: "panties", show: true, row: 1, col: 1, ach: false, major: false }, //hired at missy
@@ -77,7 +77,6 @@ sc.events = [
     { name: "me", step: 2, txt: "Pay rent each Sunday", img: "landlord", show: false, row: 0, col: -1, ach: false, major: false }, //hired at missy
     { name: "me", step: 3, txt: "Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
-    { name: "me", step: 8, txt: "Transformation", img: "", show: false, row: 0, col: 1, ach: false, major: false },
     
     { name: "landlord", step: -2, txt: "Caught with Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -154,6 +153,8 @@ sc.events = [
     { name: "cecilia", step: 0, txt: "Met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "cecilia", step: 1, txt: "Tied Up", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "tiffany", step: -9, txt: "Shopping", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: -8, txt: "Give Box", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -7, txt: "Pink Pussy First Time", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -6, txt: "Return Trip", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: -5, txt: "Peeked during show", img: "dildo", show: true, row: 1, col: 1, ach: false, major: true },
@@ -168,13 +169,13 @@ sc.events = [
     { name: "tiffany", step: 4, txt: "Napper", img: "nap", show: false, row: -1, col: 1, ach: false, major: true },
     { name: "tiffany", step: 5, txt: "Kicked out of toy store", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 6, txt: "Home for the first time", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 10, txt: "Give box of clothing", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 11, txt: "Box of clothing given", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 12, txt: "Meet at her house", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 13, txt: "Meet at park", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 15, txt: "First time home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "tiffany", step: 16, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 10, txt: "UNK", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "tiffany", step: 11, txt: "Box of clothing given", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "tiffany", step: 12, txt: "Meet at her house", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "tiffany", step: 13, txt: "Meet at park", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    //{ name: "tiffany", step: 15, txt: "First time home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "tiffany", step: 16, txt: "First In House", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 16, txt: "Watch masturbate", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tiffany", step: 17, txt: "Masturbate like a girl", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
@@ -248,7 +249,7 @@ sc.events = [
     { name: "jeffery", step: 1, txt: "Applied", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jeffery", step: 2, txt: "Denied", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jeffery", step: 3, txt: "Can work", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "jeffery", step: 4, txt: "Fired", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "jeffery", step: 4, txt: "NOT USED", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jeffery", step: 5, txt: "Now with extra chastity", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jeffery", step: 6, txt: "Before the choice", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jeffery", step: 7, txt: "The choice has been made", img: "", show: false, row: 0, col: 0, ach: false, major: false },

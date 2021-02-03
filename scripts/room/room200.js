@@ -1,39 +1,45 @@
 ﻿//Room name
 var room200 = {};
 room200.main = function () {
-    if (sc.getstep("missy") > 24) {
-        nav.bg("200_frontOffice/200_25.jpg")
-    }
-    g.internal = "";
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "missy",
-            "left": 872,
-            "top": 481,
-            "width": 224,
-            "height": 483,
-            "image": "200_frontOffice/200_missy.png"
-        }
-    ];
-    $("#room_footer").hide();
-    var navList = [0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 200);
-    });
-    var missyStep = sc.getstep("missy");
-    var dontDisplay = [3, 5];
-    if (dontDisplay.indexOf(missyStep) === -1)
-        nav.buildnav(navList);
-    if (sc.getstep("missy") === 16)
+    //var oncase = g.get("oncase");
+    if (g.pass === "h28_x") {
         nav.bg("200_frontOffice/200_frontOfficeJeffery.jpg");
+        chat(67, 200);
+    }
+    else {
+        if (sc.getstep("missy") > 24) {
+            nav.bg("200_frontOffice/200_25.jpg");
+        }
+        g.internal = "";
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "missy",
+                "left": 872,
+                "top": 481,
+                "width": 224,
+                "height": 483,
+                "image": "200_frontOffice/200_missy.png"
+            }
+        ];
+        $("#room_footer").hide();
+        var navList = [0];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 200);
+        });
+        var missyStep = sc.getstep("missy");
+        var dontDisplay = [3, 5];
+        if (dontDisplay.indexOf(missyStep) === -1)
+            nav.buildnav(navList);
+    }
 };
 
 room200.btnclick = function (name) {
     switch (name) {
         case "missy":
             var thisStep = sc.getstep("missy");
-           if (thisStep === 0) {
+           
+            if (thisStep === 0) {
                 char.room(0);
             }
             else if (thisStep === 1) {
@@ -85,7 +91,11 @@ room200.btnclick = function (name) {
             else if (thisStep === 9) {
                 chat(56, 200);
             }
-            
+            else {
+                var oncase = g.get("oncase");
+                if (oncase === "dinerfail" || oncase === "dinersuccess")
+                    chat(77, 200);
+            }
             break;
         case "revolve":
             var doingList = ["bathroom", "dildomouth", "hypno", "stool", "card"];
@@ -118,7 +128,7 @@ room200.btnclick = function (name) {
                 if (i !== 4)
                     cl.saveOutfit[i].panties = "q";
             });
-            chat(134, 200);
+            chat(105, 200);
             break;
         case "panty_h":
             cl.add("panties", "h");
@@ -128,7 +138,7 @@ room200.btnclick = function (name) {
                 if (i !== 4)
                     cl.saveOutfit[i].panties = "h";
             });
-            chat(135, 200);
+            chat(106, 200);
             break;
         default:
             break;
@@ -489,14 +499,13 @@ room200.chatcatch = function (callback) {
             }, 200);
             break;
         case "20End":
-            cl.c.shirt = "r";
-            cl.c.pants = "k";
-            cl.c.shoes = "fb";
+            cl.undo();
             cl.remove("panties", "w");
             cl.display();
-            char.addtime(800);
-            sc.setstep("missy", 21);
+            char.settime(23, 12);
             sc.setstep("jeffery", 8);
+            g.sissy[28].ach = true;
+            g.set("oncase", null); 
             g.roomMapAccess(250, true, true);
             char.room(0);
             break;
@@ -663,6 +672,22 @@ room200.chatcatch = function (callback) {
             sc.setstep("missy", 10);
             char.addtime(360);
             char.room(0);
+            break;
+        case "h28_1":
+            cl.c.shirt = null;
+            zcl.displayMain(0, 400, .22, "clothes", true);
+            break;
+        case "h28_2":
+            cl.c.pants = null;
+            zcl.displayMain(0, 400, .22, "clothes", true);
+            break;
+        case "h28_3":
+            g.set("oncase", "diner");
+            sc.setstep("jeffery", 3);
+            char.addtime(400);
+            g.internal = "201 change";
+            g.pass = "";
+            char.room(201);
             break;
         default:
             break;
@@ -1279,7 +1304,364 @@ room200.chat = function (chatID) {
                 { chatID: -1, text: "Yes Mistress.", callback: "end9" }
             ]
         },
+        {
+            chatID: 67,
+            speaker: "missy",
+            text: "Hello " + sc.n("me") + " this is " + sc.n("jeffery") + ". " + sc.n("jeffery") + " has a problem that I think " +
+                "you can help him with. ",
+            button: [
+                { chatID: 68, text: "Hi " + sc.n("jeffery"), callback: "" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "jeffery",
+            text: "H-H-H-H-H-Hello " + sc.n("me") + " I'm hoping you can h-h-help me with catch the waitress that has been stealing " +
+                "from me. You'll need to pose as a waitress in my restaurant to gain their trust to try and catch the thief. " +
+                "Do you think you can do that?",
+            button: [
+                { chatID: 69, text: "Of course I can! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "missy",
+            text: "As you can see my sissy is well qualified and will fit that part nicely. I have full trust that " +
+                "he will do well, because if he doesn't he'll find out what a St. Andrew's Cross is used for. ",
+            button: [
+                { chatID: 70, text: "I can do it ", callback: "" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "jeffery",
+            text: "I-I-I-I don't know. She doesn't seem sexy enough to work at my store.",
+            button: [
+                { chatID: 71, text: "huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "missy",
+            text: "Her sexiest trait is her obedience. Watch this. Sissy strip off your shirt. ",
+            button: [
+                { chatID: 72, text: "Yes ma'am", callback: "h28_1" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "jeffery",
+            text: "Oh my! C-c-c-can she strip off her skirt too?",
+            button: [
+                { chatID: 73, text: "*groan*", callback: "" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "missy",
+            text: "Yes she can. Sissy strip off your skirt.",
+            button: [
+                { chatID: 74, text: "Yes ma'am", callback: "h28_2" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "jeffery",
+            text: "I love it! Tell her to strip of her panties!",
+            button: [
+                { chatID: 75, text: "*GROAN* again", callback: "" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "missy",
+            text: "I'm paying him as an investigator, not a prostitute. If he fails you, you can have his panties. ",
+            button: [
+                { chatID: 76, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "missy",
+            text: "Sissy. Get dressed. Tomorrow report to the Naked Beaver Diner and start invistigating the staff to see who and " +
+                "how they are stealing form " + sc.n("jeffery") + " here. When you're done report back to me.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "h28_3" }
+            ]
+        },
 
+
+
+
+
+
+        {
+            chatID: 77,
+            speaker: "missy",
+            text: "Oh good Sissy, you're here. Let me call " + sc.n("jeffery") + " here. ",
+            button: [
+                { chatID: -1, text: "Yes mistress", callback: "callJeffery" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "missy",
+            text: "So " + sc.n("jeffery") + " how did my little detective do?",
+            button: [
+                { chatID: 79, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "jeffery",
+            text: "He did great! Not only did he figure out how they've been stealing from me, but he's a great little " +
+                "waitress! If you ever need to pick up some extra money you're welcome to work some shifts at the Naked Beaver!",
+            button: [
+                { chatID: 80, text: "Thanks mister!", callback: "" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "missy",
+            text: "I am surprised! I guess you're ready for more responsibility around here. I think a bonus is in order for " +
+                "all your hard work! I'll grant your $500 for not screwing up. I also have a little reward for you. " +
+                sc.n("jeffery") + "I'm done with you, you may go now.",
+            button: [
+                { chatID: 81, text: "Yes mistress! Thank you mistress. ", callback: "20jeffgo" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "missy",
+            text: "Sissies need to be rewarded as well and punished. Today sissy you've earned a reward for your work. I will " +
+                "allow you to eat my ass. I don't often allow a sissy to eat my ass, but I'm so surprised with you I think you " +
+                "deserve it.",
+            button: [
+                { chatID: -1, text: "Yes mistress !!!!", callback: "20eatass" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "missy",
+            text: "So " + sc.n("jeffery") + " how did my little detective do?",
+            button: [
+                { chatID: 83, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "jeffery",
+            text: "He was t-t-t-terrible! Absolutely the worst detective I know. Good waitress though. He's welcome to come back and keep " +
+                "working anytime he wants... as a waitress, but a terrible detective.",
+            button: [
+                { chatID: 84, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "missy",
+            text: "Well " + sc.n("jeffery") + " we don't tolerate failure here. Since he failed you how do you want to see " +
+                "him punished?",
+            button: [
+                { chatID: 85, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "jeffery",
+            text: "I w-w-w-want to see him n-n-n-naked. Can you make him get naked? ",
+            button: [
+                { chatID: 86, text: "What?", callback: "" }
+            ]
+        },
+
+
+        {
+            chatID: 86,
+            speaker: "missy",
+            text: "Stop. Sissies don't get to say no. Take off your clothes.",
+            button: [
+                { chatID: 88, text: "Yes mistress [disrobe]", callback: "disrobe20b" },
+                { chatID: 87, text: "You can't make me do that!", callback: "" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "missy",
+            text: "I did not hire you so you could act like a spoiled child and throw a temper tantrum. Now take off your " +
+                "clothes or you're fired!",
+            button: [
+                { chatID: 88, text: "Yes mistress", callback: "disrobe20b" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "jeffery",
+            text: "uuuhhhh well I think he should also give me his p-p-p-p-panties.  ",
+            button: [
+                { chatID: 89, text: "huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "missy",
+            text: "I did promise hime your panties. Sissy give " + sc.n("jeffery") + " your panties. NOW!",
+            button: [
+                { chatID: 90, text: "[Give " + sc.n("jeffery") + " your panties]", callback: "givepanties20" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "jeffery",
+            text: "ooooOOooooOOhhh yesssss, that's so fresh! I love your scent! Can I keep these.. I'm going to keep these.",
+            button: [
+                { chatID: 91, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "missy",
+            text: "Yes " + sc.n("jeffery") + " you can keep them. Now kindly put those in your pocket as we continue.",
+            button: [
+                { chatID: 92, text: "...", callback: "pocket20" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "missy",
+            text: "Now We'll put you on the punishment rack. It's where bad sissies go for punishment. Come over to the rack and " +
+                "place your arms against the wood.",
+            button: [
+                { chatID: 93, text: "...", callback: "rack20" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "jeffery",
+            text: "ooOOooo can I touch him? I want to touch him.",
+            button: [
+                { chatID: 94, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "missy",
+            text: "You can touch him. You can touch him however you want, my little sissy likes to be molested. If you object " +
+                "my little sissy just say so.",
+            button: [
+                { chatID: 95, text: "MMmmmMMmmmmmm", callback: "" },
+                { chatID: 95, text: "uuuuUUHhhhmmmMMMMMMMM", callback: "" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "missy",
+            text: "See he wants to be molested, he already moaning like a whore. But not today. Today he's going to work on " +
+                "being wall decoration. You may go, when he's ready for you I'll let you know, for now I have to get back to work. ",
+            button: [
+                { chatID: 96, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "jeffery",
+            text: "ok fine. Bb-b-b-b-b-b-but when he's ready p-p-p-p-please let me know, I'm so excited, do you want to see my " +
+                "penis, it's so horny right now.",
+            button: [
+                { chatID: 97, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "missy",
+            text: "UGH, " + sc.n("jeffery") + " if you pull that thing out I'm going to punch it. Now get out, I have work to do",
+            button: [
+                { chatID: 98, text: "...", callback: "jeffleave20" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "missy",
+            text: "You just stay there while I get some work done around here. ",
+            button: [
+                { chatID: 99, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "missy",
+            text: "YYou're lucky I'm only keeping you on the rack. " +
+                "The next time you make me angry it will be soooo much worse. ",
+            button: [
+                { chatID: 100, text: "MMmMMMmm", callback: "20stand" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "missy",
+            text: "[Continues to work]",
+            button: [
+                { chatID: 101, text: "...", callback: "20stand1" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "missy",
+            text: "[Continues to work]",
+            button: [
+                { chatID: 102, text: "...", callback: "20stand2" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "missy",
+            text: "[Continues to work]",
+            button: [
+                { chatID: 103, text: "...", callback: "20stand3" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "missy",
+            text: "I think you've been up there long enough. Don't fail me again or you're going to regret it!",
+            button: [
+                { chatID: 104, text: "Yes mistress", callback: "" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "missy",
+            text: "Since you're now down a pair of panties, I'll let you have some that have been left over from previous sissies. I'll let you pick one to " +
+                "take home. ",
+            button: [
+                { chatID: -1, text: "Thank you mistress", callback: "20Pick" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "missy",
+            text: "Oh, so you're a 'cum queen.' I had a feeling you would love to be fucked and filled by big hard cocks in your little mouth and ass. Don't worry " +
+                "sissy, in time you will be.",
+            button: [
+                { chatID: 107, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "missy",
+            text: "How cute. You like the handcuffs you bondage slut. I knew you would be a great victim.",
+            button: [
+                { chatID: 107, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "missy",
+            text: "New take your new panties and go. I'm sick of listening to you breath",
+            button: [
+                { chatID: -1, text: "Yes mistress", callback: "20End" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

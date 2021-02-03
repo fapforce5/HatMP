@@ -343,9 +343,9 @@ room202.chatcatch = function (callback) {
             g.mod("arousal", 50);
             break;
         case "endbent":
-
             char.addtime(360);
-            sc.setstep("missy", 21);
+            g.sissy[28].ach = true;
+            g.set("oncase", null);
             sc.setstep("jeffery", 8);
             g.roomMapAccess(250, true, true);
             char.room(0);

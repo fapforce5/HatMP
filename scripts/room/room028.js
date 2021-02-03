@@ -19,6 +19,7 @@ room28.main = function () {
     var maxE = g.get("maxenergy");
     var thisautohormone, hix, tix;
     var thisTransform = null;
+    var sissyTrans = g.get("oncase");
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "fitness":
@@ -126,25 +127,33 @@ room28.main = function () {
     if (cl.c.chest === 0 && fitnesslevel > 0) {
         chat(0, 28);
     }
-    else if (thisTransform !== null) {
+    else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips") {
         var thisImg = "";
-        switch (thisTransform) {
-            case "boob":
+        g.set("oncase", null);
+        switch (sissyTrans) {
+            case "bigboobs":
                 cl.c.chest++;
                 thisImg = "chest_" + cl.c.chest + ".gif";
+                g.sissy[cl.c.chest + 33].ach = true;
                 break;
-            case "leg":
+            case "bigass":
                 cl.c.leg++;
                 thisImg = "leg_" + cl.c.leg + ".gif";
+                g.sissy[cl.c.leg + 39].ach = true;
                 break;
-            case "cock":
-                cl.c.cock++;
-                thisImg = "cock_" + cl.c.cock + ".gif";
+            case "dslLips":
+                cl.c.lips++;
+                thisImg = "lip_" + cl.c.lips + ".gif";
+                g.sissy[cl.c.lips + 44].ach = true;
                 break;
-            case "lip":
-                cl.c.lip++;
-                thisImg = "lip_" + cl.c.lip + ".gif";
-                break;
+            //case "cock":
+            //cl.c.cock++;
+            //thisImg = "cock_" + cl.c.cock + ".gif";
+            //break;
+            //case "lip":
+            //cl.c.lip++;
+            //thisImg = "lip_" + cl.c.lip + ".gif";
+            //break;
         }
         nav.bg("28_transformation/" + thisImg);
         cl.display();

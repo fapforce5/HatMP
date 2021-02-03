@@ -2,8 +2,10 @@
 var room10 = {};
 room10.pass = "";
 room10.main = function () {
-
-    if (sc.checkevent("me", 3) && !sc.checkevent("me", -13)) {
+    if (inv.has("tifgift")) {
+        chat(36, 10);
+    }
+    else if (sc.checkevent("me", 3) && !sc.checkevent("me", -13)) {
         chat(8, 10);
     }
     else if (g.internal === "room10pass" || g.internal === "room10Underwear") {
@@ -297,6 +299,24 @@ room10.chatcatch = function (callback) {
                     cl.saveOutfit[i].panties = "w";
             });
             nav.room(10);
+            break;
+        case "openbag":
+            nav.button({
+                "type": "img",
+                "name": "newClothing",
+                "left": 905,
+                "top": 183,
+                "width": 423,
+                "height": 646,
+                "image": "502_bedroom/newClothing.png"
+            }, 10);
+            break;
+        case "endbag":
+            cl.add("shirt", "r");
+            cl.add("pants", "k");
+            cl.add("shoes", "fb");
+            inv.update("tifgift", false, null);
+            char.room(10);
             break;
         default:
             break;
@@ -593,6 +613,24 @@ room10.chat = function(chatID){
             text: "Oh my, there's subtler ways to get us to see you naked.",
             button: [
                 { chatID: -1, text: "Yes, but this is funny", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "thinking",
+            text: "OK! Lets see what " + sc.n("tiffany") + " got for me!",
+            button: [
+                { chatID: 37, text: "Open bag!", callback: "openbag" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "thinking",
+            text: "Somehow I knew what I was getting, but I'm still scared to wear it in public. Luckily I can change in the " +
+                "classroom so I won't have to wear it out and about. I'll bet " + sc.n("missy") + " will want me to wear it " +
+                "before I start class.",
+            button: [
+                { chatID: -1, text: "Hide the girly clothes in you closet", callback: "endbag" }
             ]
         }
     ];

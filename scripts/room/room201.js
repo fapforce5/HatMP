@@ -57,8 +57,6 @@ room201.main = function () {
         });
         if (missyStep === 2)
             chat(0, 201);
-        else if (missyStep === 16)
-            chat(7, 201);
         else 
             chat(5, 201);
     } 

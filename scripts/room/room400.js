@@ -3,7 +3,7 @@ var room400 = {};
 
 room400.main = function () {
 
-    if (sc.getstep("me") === 7 && g.pass === 0) {
+    if (sc.checkevent("tiffany", -9)) {
         nav.button({
             "type": "btn",
             "name": "tiffany0",

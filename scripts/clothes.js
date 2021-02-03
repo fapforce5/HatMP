@@ -50,6 +50,7 @@ cl.list = [
     { type: "panties", name: "r", display: "Red Panties", img: "panties_red.png", sex: "f", inv: false, daring: 2, price: 45 },
     { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
     { type: "panties", name: "c", display: "Cheetah Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
 
     { type: "bra", name: "f", display: "Purple Bra", img: "bra_fancy.png", sex: "f", inv: false, daring: 3, price: 65 },
     { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
@@ -376,6 +377,7 @@ cl.gimmieAll = function () {
 
 cl.hasoutfit = function (ctype) {
     var missingClothing = new Array();
+    
     switch (ctype) {
         case "workout":
             if (!(cl.c.shoes === "pr" || cl.c.shoes === "br"))
@@ -425,6 +427,7 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("bikini");
             break;
     }
+   
     var retMissing = null;
     if (missingClothing.length === 1)
         retMissing = missingClothing;
@@ -436,6 +439,11 @@ cl.hasoutfit = function (ctype) {
             retMissing += missingClothing[i] + ", ";
         }
         retMissing = retMissing + "and " + missingClothing[i];
+    }
+
+    if (!g.sissy[29].ach) {
+        if (cl.isCrossdressing())
+            retMissing = ' <span class="hl">self aweness! I can\'t wear girly clothes!</span>';
     }
     if (retMissing !== null)
         retMissing = ' <span class="hl">' + retMissing + '</span>';
@@ -1158,7 +1166,7 @@ cl.displayChar = function (ratio, top, left, back) {
 };
 
 cl.hairgrowth = function () {
-    var h = g.get("hormone")
+    var h = g.get("hormone");
     if (h > 80)
         g.mod("bodyhair", 2);
     else if (h > 60)
@@ -1632,7 +1640,7 @@ cl.cupsize = function () {
 };
 
 cl.buttsize = function () {
-    var sizes = ["manly", "tiny", "nice", "phat", "super plump"];
+    var sizes = ["manly", "tiny", "nice", "phat", "super plump", "porn star"];
     return sizes[cl.c.leg];
 };
 

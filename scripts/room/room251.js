@@ -31,6 +31,9 @@ room251.btnclick = function (name) {
             else if (g.pass === "initcock") {
                 chat(20, 251);
             }
+            else if (g.pass === "initcockx") {
+                chat(39, 251);
+            }
             else if (g.pass === "work") {
                 chat(22, 251);
             }
@@ -94,8 +97,8 @@ room251.chatcatch = function (callback) {
             zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             break;
         case "jeff5":
+            cl.c.panties = "inv";
             nav.killbutton("zzz-clothing-kill");
-            cl.c.cock = 5;
             cl.display();
             zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             break;
@@ -109,7 +112,7 @@ room251.chatcatch = function (callback) {
             char.room(250);
             break;
         case "getDressed":
-            sc.setstep("jeffery", 4);
+            sc.setstep("jeffery", 5);
             char.addtime(257);
             cl.c.socks = g.internal.socks;
             cl.c.pants = g.internal.pants;
@@ -136,11 +139,18 @@ room251.chatcatch = function (callback) {
                 "image": "251_office/jeff.png"
             }, 251);
             g.internal = { shoes: cl.c.shoes, socks: cl.c.socks, pants: cl.c.pants, panties: cl.c.panties, bra: cl.c.bra, shirt: cl.c.shirt, dress: cl.c.dress, swimsuit: cl.c.swimsuit };
-            cl.c.shoes = cl.c.socks = cl.c.pants = cl.c.panties = cl.c.bra = cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
+            cl.c.shoes = cl.c.socks = cl.c.pants = cl.c.bra = cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = null;
             cl.c.shoes = cl.c.shirt = cl.c.pants = 'v';
             cl.c.wig = "d";
             cl.display();
             zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
+            if (cl.c.cock < 2 && cl.c.chastity === null)
+                chat(13, 251);
+
+            else if (sc.getstep("jeffery") > 4)
+                chat(27, 251);
+            else
+                chat(16, 251);
             break;
         case "leave0":
             char.room(0);
@@ -160,7 +170,7 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "jeffFail":
-            sc.setstep("missy", 20);
+            g.set("oncase", "dinerfail");
             sc.setstep("holly", 3);
             sc.setstep("dolly", 4);
             sc.setstep("molly", 4);
@@ -180,7 +190,7 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "jeffsuccess":
-            sc.setstep("missy", 20);
+            g.set("oncase", "dinersuccess");
             sc.setstep("holly", -1);
             sc.setstep("jeffery", 7);
             sc.setstep("jeffery", -1);
@@ -403,9 +413,10 @@ room251.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "jeffery",
-            text: "You're fired, Get your clothes on and get out!",
+            text: "You need to fix your cock! If you want to work here you need to stuff that thing in something so it doens't " +
+                "hang down anymore! Next time you come in I don't want to see your cock!",
             button: [
-                { chatID: -1, text: "Aw crap.", callback: "getDressed" }
+                { chatID: 36, text: "Can't I just wear panties?", callback: "" }
             ]
         },
         {
@@ -413,7 +424,7 @@ room251.chat = function (chatID) {
             speaker: "jeffery",
             text: "Ready to work?",
             button: [
-                { chatID: cl.c.chastity === null ? 23 : 25, text: "Yep. [Get Dressed]", callback: "jeff2" }
+                { chatID: (cl.c.chastity === null && cl.c.cock < 2) ? 23 : 25, text: "Yep. [Get Dressed]", callback: "jeff2" }
             ]
         },
         {
@@ -427,8 +438,8 @@ room251.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "jeffery",
-            text: "W-W-W-Wait, " + sc.n("missy") + " said you have to wear a chasity device if you're going to work here. Please " +
-                "get it so everyone doesn't see your p-p-p-penis.",
+            text: "W-W-W-Wait, I can still see your penis! You need to hide it. Please " +
+                "hide it so everyone doesn't see your p-p-p-penis.",
             button: [
                 { chatID: -1, text: "Oh right, sorry.", callback: "leave0" }
             ]
@@ -523,6 +534,41 @@ room251.chat = function (chatID) {
             text: "You may be a terrible detective, but your panties smell so good. I sniffed them today, I l-l-l-love you scent.",
             button: [
                 { chatID: -1, text: "Oh, thanks?", callback: "jeffEnd" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "jeffery",
+            text: "P-P-P-p-p-panties! No one wears panties here! This isn't a mom an pop eatery, this is the Naked Beaver! " +
+                "I don't care what you do, but you need to hide and lock that thing up!",
+            button: [
+                { chatID: 37, text: "But how?", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "jeffery",
+            text: "I don't care! Get out until you figure it out!",
+            button: [
+                { chatID: 38, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "thinking",
+            text: sc.n("jeffery") + " is such a weird asshole. How am I going to hide my giant cock! " + sc.n("missy") + " won't " +
+                "let me back in until I finish this case, maybe " + sc.n("tiffany") + " or " + sc.n("candy") + " can help...",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "getDressed" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "jeffery",
+            text: "This has got to be the worst first day on the job. You're lucky you're hear to find the thief or I would fire you. " +
+                "You need to step it up out there! Get out of my office and try again tomorrow!",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "getDressed" }
             ]
         },
     ];
