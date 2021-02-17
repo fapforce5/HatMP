@@ -127,7 +127,13 @@ room551.btnclick = function (name) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat2.png"
             }, 551);
-            if (sc.getstep("g") === 0)
+            if (g.get("oncase") === "sewer" && !sc.checkevent("g", -4)) {
+                if (sc.getstep("g") === 0)
+                    chat(45, 551);
+                else
+                    chat(46, 551);
+            }
+            else if (sc.getstep("g") === 0)
                 chat(1, 551);
             else if (g.get("fitnessLevel") > 2 && !sc.checkevent("g", -1)) {
                 chat(37, 551);
@@ -142,7 +148,7 @@ room551.btnclick = function (name) {
                     chat(32, 551);
                 else if (sc.getstep("g") === 1)
                     chat(14, 551);
-                else if (sc.getstep("missy") > 26)
+                else if (g.sissy[19].ach)
                     chat(42, 551);
                 else
                     chat(33, 551);
@@ -394,7 +400,6 @@ room551.chatcatch = function (callback) {
                 chat(44, 551);
             else
                 chat(43, 551); 
-
             break;
         case "sparTrain":
             char.room(556);
@@ -402,6 +407,10 @@ room551.chatcatch = function (callback) {
         case "spar":
             g.pass = { enemy0: "g", enemy1: null, enemy2: null, bg: "gym", roomID: 551 };
             char.room(227);
+            break;
+        case "sparExplain":
+            sc.setstep("g", 2);
+            sc.setstep("g", -4);
             break;
         default:
             break;
@@ -659,8 +668,7 @@ room551.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "g",
-            text: "Hay idiot. I told you to wear workout clothes. You're missing " + g.internal + ". You can change in the bathroom if you have " +
-                "any in your backpack. ",
+            text: "Hay idiot. I told you to wear workout clothes. You're missing " + g.internal + ". You can change in the bathroom. ",
             button: [
                 { chatID: -1, text: "......", callback: "" }
             ]
@@ -781,6 +789,31 @@ room551.chat = function (chatID) {
                 { chatID: -1, text: "Training", callback: "sparTrain" },
                 { chatID: -1, text: "Spar", callback: "spar" },
                 { chatID: -1, text: "Never mind", callback: "" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "g",
+            text: "Hay runt. I'm " + sc.n("g") + " I'm guessing you're here 'cause " + sc.n("missy") + " sent you to get trained. ",
+            button: [
+                { chatID: 47, text: "Yes", callback: "" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "g",
+            text: "So you've had some gains, now it's time to use them! ",
+            button: [
+                { chatID: 47, text: "Yes", callback: "" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "g",
+            text: "When you're ready to train and spar, come talk to me and I'll take you to the ring. Make sure to bring your workout " +
+                "clothes. ",
+            button: [
+                { chatID: -1, text: "Ok", callback: "sparExplain" },
             ]
         },
     ];

@@ -3,7 +3,7 @@ var room203 = {};
 room203.main = function () {
     var missyStep = sc.getstep("missy");
 
-    if (missyStep > 25) {
+    if (g.sissy[16].ach) {
         if (g.hourBetween(7, 12)) {
             nav.button({
                 "type": "btn",
@@ -115,6 +115,8 @@ room203.btnclick = function (name) {
                     chat(34, 203);
                 else if (oncase === "dinerfail" || oncase === "dinersuccess")
                     chat(35, 203);
+                else if (oncase === "gloryholebj")
+                    chat(38, 203);
                 else {
                     alert("forgot one");
                     char.room(0);
@@ -145,7 +147,10 @@ room203.btnclick = function (name) {
             
             break;
         case "door":
-            char.room(200);
+            if (inv.has("redbox"))
+                char.room(200);
+            else
+                chat(37, 203);
             break;
         default:
             break;
@@ -656,6 +661,23 @@ room203.chat = function (chatID) {
             text: "Good for you! I'll let you in! ",
             button: [
                 { chatID: -1, text: "Thanks", callback: "enter" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "thinking",
+            text: "I'm not going to just walk in there! That's crazy! ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "cecilia",
+            text: "I'm so excited I get to work with you! See me in the park bathroom on the weekends and I'll show you how to suck " +
+                "some cock!",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "" }
             ]
         }
     ];

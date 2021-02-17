@@ -163,7 +163,7 @@ room207.btnclick = function (name) {
             chat(0, 207);
             break;
         case "red_char":
-            if (sc.getstep("missy") > 100)
+            if (g.get("oncase") === "redroom")
                 chat(1, 207);
             else
                 chat(6, 207);
@@ -183,6 +183,12 @@ room207.chatcatch = function (callback) {
     switch (callback) {
         case "enterRed":
             char.room(208);
+            break;
+        case "checkTime":
+            if (g.dt.getHours() < 11)
+                chat(3, 207);
+            else
+                chat(5, 207);
             break;
         default:
             break;
@@ -204,7 +210,7 @@ room207.chat = function (chatID) {
             speaker: "random",
             text: "Welcome to the Red Level of Discipline. To enter you must prove your worth to " + sc.n("missy") + " our Mistress.",
             button: [
-                { chatID: 3, text: "I have Proven my worth, may I enter?", callback: "" },
+                { chatID: -1, text: "I have Proven my worth, may I enter?", callback: "checkTime" },
                 { chatID: -1, text: "No, not right now", callback: "" },
             ]
         },

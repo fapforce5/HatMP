@@ -331,14 +331,14 @@ zcl.kneelSub = function (thisImage, top, left, ratio, reverse) {
 zcl.assup = function (top, left, ratio, mod) {
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
 
-    var hairLength = "2_"
+    var hairLength = "2_";
     if (cl.c.chest < 3)
         cl.assupSub("body_male.png", top, left, ratio);
     else
         cl.assupSub("body_female.png", top, left, ratio);
 
     if (cl.c.hairLength < 3)
-        hairLength = "1_"
+        hairLength = "1_";
 
     cl.assupSub(hairLength + cl.c.hairColor + ".png", top, left, ratio);
 

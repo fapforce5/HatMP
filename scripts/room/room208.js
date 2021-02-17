@@ -1,7 +1,10 @@
 ﻿//Room name
 var room208 = {};
 room208.main = function () {
-    g.pass = { "first": false, "second": false, "third": false, "h1": false, "h2": false, "h3": false };
+    g.pass = {
+        "first": false, "second": false, "third": false, "h1": false, "h2": false, "h3": false,
+        hard1: false, hard2: false, hard3: false
+    };
     g.internal = null;
     var btnList = [
         {
@@ -272,6 +275,9 @@ room208.chatcatch = function (callback) {
                     "image": "208_red/1h.png"
                 }, 208);
             }
+            else
+                g.pass.hard1 = true;
+
             nav.bg("208_red/feet.jpg");
             var btnListf = [
                 {
@@ -391,6 +397,7 @@ room208.chatcatch = function (callback) {
             break;
         case "t4a":
             g.pass.h2 = true;
+            g.pass.hard2 = true;
             room208.chatcatch("t4");
             break;
         case "t4":
@@ -509,6 +516,7 @@ room208.chatcatch = function (callback) {
             break;
         case "jerk1":
             g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0, easy: false };
+            g.pass.hard3 = true;
             room208.chatcatch("jerk");
             break;
         case "jerk":
@@ -558,42 +566,55 @@ room208.chatcatch = function (callback) {
             break;
         case "checkem":
             g.internal = null;
-            if (g.pass.first && g.pass.second && g.pass.third) {
-                nav.killall();
-                nav.bg("208_red/red.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "missy",
-                    "left": 863,
-                    "top": 45,
-                    "width": 688,
-                    "height": 1035,
-                    "image": "208_red/missy.png"
-                }, 208);
-                if (!sc.getstep("missy") < 26) {
-                    sc.setstep("missy", 26)
-                    chat(30, 208);
+            if (g.pass.hard1 && g.pass.hard2 && g.pass.hard3) {
+                g.pass.hard1 = g.pass.hard2 = g.pass.hard3 = false;
+                if (sc.checkevent("missy", -2)) {
+                    sc.setstep("missy", -2);
+                    g.mod("sissy", 300);
+                    chat(34, 208);
                 }
-                else if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2))
-                    chat(30, 208);
-                else
-                    chat(31, 208)
+                else {
+                    g.mod("sissy", 30);
+                    chat(35, 208);
+                }
             }
             else {
-                nav.killall();
-                nav.bg("208_red/red.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "missy",
-                    "left": 863,
-                    "top": 45,
-                    "width": 688,
-                    "height": 1035,
-                    "image": "208_red/missy.png"
-                }, 208);
-                chat(9, 208);
+                if (g.pass.first && g.pass.second && g.pass.third) {
+                    nav.killall();
+                    nav.bg("208_red/red.jpg");
+                    nav.button({
+                        "type": "btn",
+                        "name": "missy",
+                        "left": 863,
+                        "top": 45,
+                        "width": 688,
+                        "height": 1035,
+                        "image": "208_red/missy.png"
+                    }, 208);
+                    if (g.get("oncase") === "redroom") {
+                        g.set("oncase", null);
+                        g.sissy[15].ach = true;
+                        scc.love("missy", 20, 100);
+                        chat(30, 208);
+                    }
+                    else
+                        chat(31, 208);
+                }
+                else {
+                    nav.killall();
+                    nav.bg("208_red/red.jpg");
+                    nav.button({
+                        "type": "btn",
+                        "name": "missy",
+                        "left": 863,
+                        "top": 45,
+                        "width": 688,
+                        "height": 1035,
+                        "image": "208_red/missy.png"
+                    }, 208);
+                    chat(9, 208);
+                }
             }
-
             break;
         default:
             break;
@@ -628,7 +649,7 @@ room208.chat = function (chatID) {
                 "painted my toes in order and you must know me to guess that order. Kiss my toes correctly and your shall pass.",
             button: [
                 { chatID: 4, text: "[Keep silent]", callback: "" },
-                { chatID: 3, text: "Ask for a hint", callback: "" },
+                { chatID: 3, text: "Ask for a hint", callback: "" }
             ]
         },
         {
@@ -648,7 +669,7 @@ room208.chat = function (chatID) {
                 "my pole be prepared for a shocking time. If you get shocked too many times you fail!",
             button: [
                 { chatID: 6, text: "[Keep silent]", callback: "" },
-                { chatID: 5, text: "Ask for a hint", callback: "" },
+                { chatID: 5, text: "Ask for a hint", callback: "" }
             ]
         },
         {
@@ -658,7 +679,7 @@ room208.chat = function (chatID) {
                 "On the right you'll see your feet and balls light up. When they light up click them to move forward. If you just can't do it " +
                 "you can raise your energy by working out and gaining more energy. Be sure to max it out!",
             button: [
-                { chatID: 6, text: "[Keep silent]", callback: "" },
+                { chatID: 6, text: "[Keep silent]", callback: "" }
             ]
         },
         {
@@ -668,7 +689,7 @@ room208.chat = function (chatID) {
                 "stop me too early it doesn't count and we'll have to start again. ",
             button: [
                 { chatID: 8, text: "[Keep silent]", callback: "" },
-                { chatID: 7, text: "Ask for a hint", callback: "" },
+                { chatID: 7, text: "Ask for a hint", callback: "" }
             ]
         },
         {
@@ -678,7 +699,7 @@ room208.chat = function (chatID) {
                 "after you've cum and your little clitty is soft. " +
                 "Also each time you try you'll get a little bit hornier, so it's better not to stop me too early too many times.",
             button: [
-                { chatID: 8, text: "[Keep silent]", callback: "" },
+                { chatID: 8, text: "[Keep silent]", callback: "" }
             ]
         },
         {
@@ -699,7 +720,7 @@ room208.chat = function (chatID) {
                 { chatID: g.pass.first ? 11 : 12, text: g.pass.first ? "COMPLETE" : "The challenge of servatude", callback: "" },
                 { chatID: g.pass.second ? 11 : 16, text: g.pass.second ? "COMPLETE" : "the challenge of hardship", callback: "" },
                 { chatID: g.pass.third ? 11 : 23, text: g.pass.third ? "COMPLETE" : "The challenge of control", callback: "" },
-                { chatID: 10, text: "I give up", callback: "" },
+                { chatID: 10, text: "I give up", callback: "" }
             ]
         },
         {
@@ -707,7 +728,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "You disgust me. You must work harder to be worthy to serve me. Go!",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "leave" },
+                { chatID: -1, text: "[Leave]", callback: "leave" }
             ]
         },
         {
@@ -715,7 +736,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "You have already completed that task. To properly serve me you cannot dwell in the past, but look to my future. ",
             button: [
-                { chatID: -1, text: "...", callback: "checkem" },
+                { chatID: -1, text: "...", callback: "checkem" }
             ]
         },
         {
@@ -723,7 +744,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "The challenge of servitude. ",
             button: [
-                { chatID: 13, text: "...", callback: "feet1" },
+                { chatID: 13, text: "...", callback: "feet1" }
             ]
         },
         {
@@ -733,7 +754,7 @@ room208.chat = function (chatID) {
                 "in an order that is pleasing to me. Don't displease me.",
             button: [
                 { chatID: -1, text: "I'm such an airhead, can you give me hints? [Easy]", callback: "feet2a" },
-                { chatID: -1, text: "Yes mistress", callback: "feet2" },
+                { chatID: -1, text: "Yes mistress", callback: "feet2" }
                 
             ]
         },
@@ -742,7 +763,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "You have selected incorrectly and have failed the challenge of servitude. Go!",
             button: [
-                { chatID: -1, text: "Sorry mistress", callback: "leave" },
+                { chatID: -1, text: "Sorry mistress", callback: "leave" }
             ]
         },
         {
@@ -750,7 +771,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "What a good sissy you are! You know how much I like order and you're learning your colors! ",
             button: [
-                { chatID: -1, text: "Thank you mistress", callback: "checkem" },
+                { chatID: -1, text: "Thank you mistress", callback: "checkem" }
             ]
         },
         {
@@ -758,7 +779,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "The challenge of hardship!",
             button: [
-                { chatID: 17, text: "...", callback: "t1" },
+                { chatID: 17, text: "...", callback: "t1" }
             ]
         },
         {
@@ -766,7 +787,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "Let me tie these arms up...",
             button: [
-                { chatID: -1, text: "...", callback: "t2" },
+                { chatID: -1, text: "...", callback: "t2" }
             ]
         },
         {
@@ -774,7 +795,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "Nice and tight, now to put on the metal chastity device...",
             button: [
-                { chatID: 20, text: "...", callback: "t3" },
+                { chatID: 20, text: "...", callback: "t3" }
             ]
         },
         {
@@ -782,7 +803,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "Nice and tight. Oh good are you wearing your metal chastity device?",
             button: [
-                { chatID: 20, text: "...", callback: "t3" },
+                { chatID: 20, text: "...", callback: "t3" }
             ]
         },
         {
@@ -791,7 +812,7 @@ room208.chat = function (chatID) {
             text: "Now to put you on the pole, careful with that metal chastity device, the current will shock you right up your little " +
                 "pee pee.. hehehehe",
             button: [
-                { chatID: 32, text: "...", callback: "" },
+                { chatID: 32, text: "...", callback: "" }
             ]
         },
         {
@@ -799,7 +820,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "Good job slut. You can really work a pole. ",
             button: [
-                { chatID: 9, text: "...", callback: "" },
+                { chatID: 9, text: "...", callback: "" }
             ]
         },
         {
@@ -807,7 +828,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "Awww did you shock your little pee pee? I hope it hurts as much as my disappointment in you. Get going. ",
             button: [
-                { chatID: -1, text: "...", callback: "leave" },
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         },
         {
@@ -815,7 +836,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "The challenge of control. ",
             button: [
-                { chatID: 24, text: "...", callback: "jerkChastity" },
+                { chatID: 24, text: "...", callback: "jerkChastity" }
             ]
         },
         {
@@ -825,7 +846,7 @@ room208.chat = function (chatID) {
                 "cumming, but not before or you'll have to do it again. If you can edge three times you'll pass this challenge. If you " +
                 "stop me too early we'll start again. And if you cum on me you're done.",
             button: [
-                { chatID: 33, text: "Yes mistress", callback: "" },
+                { chatID: 33, text: "Yes mistress", callback: "" }
             ]
         },
         {
@@ -841,7 +862,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "You made a mess all over my tits, slut. ",
             button: [
-                { chatID: -1, text: "...", callback: "leave" },
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         },
         {
@@ -849,7 +870,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "That's a good sissy. Control your orgasm. ",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
@@ -857,7 +878,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "That's too early, you we're even close. This one doesn't count.",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
@@ -866,16 +887,15 @@ room208.chat = function (chatID) {
             text: "You have passed the challenge of control. You're learning that your orgasm doesn't matter. You're just a toy " +
                 "for others to play with and enjoy.",
             button: [
-                { chatID: -1, text: "...", callback: "checkem" },
+                { chatID: -1, text: "...", callback: "checkem" }
             ]
         },
         {
             chatID: 30,
             speaker: "missy",
-            text: "You've passed all the test. You are a disciplined little servant. Come by my office tomorrow and I will have a new " +
-            "task for you. ",
+            text: "You've passed all the test. You are a disciplined little servant. I'm proud of how far you've come. ",
             button: [
-                { chatID: -1, text: "Yes mistress", callback: "leave" },
+                { chatID: -1, text: "Thank you  mistress", callback: "leave" }
             ]
         },
         {
@@ -883,7 +903,7 @@ room208.chat = function (chatID) {
             speaker: "missy",
             text: "You've passed all the test. You are a disciplined little servant.",
             button: [
-                { chatID: -1, text: "Yes mistress", callback: "leave" },
+                { chatID: -1, text: "Yes mistress", callback: "leave" }
             ]
         },
         {
@@ -893,7 +913,7 @@ room208.chat = function (chatID) {
             "just the tip?",
             button: [
                 { chatID: -1, text: "Just the tip mistress [Easy]", callback: "t4" },
-                { chatID: -1, text: "I want the entire pole mistress. Make it hard!", callback: "t4a" },
+                { chatID: -1, text: "I want the entire pole mistress. Make it hard!", callback: "t4a" }
             ]
         },
         {
@@ -903,7 +923,23 @@ room208.chat = function (chatID) {
             "on your own, or you beg and I'll help you. ",
             button: [
                 { chatID: -1, text: "Help me not prematurely ejaculate [Easy]", callback: "jerk0" },
-                { chatID: -1, text: "I don't need your help. I can do this mistress", callback: "jerk1" },
+                { chatID: -1, text: "I don't need your help. I can do this mistress", callback: "jerk1" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "missy",
+            text: "You are a true sissy! It takes a lot of work to serve like you have. I award you 100 extra credit points! ",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "checkem" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "missy",
+            text: "You've already proved your sissyness, but this is still impressive. I'll give you 30 extra credit points. ",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "checkem" }
             ]
         }
     ];

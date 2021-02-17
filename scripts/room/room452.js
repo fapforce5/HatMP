@@ -149,7 +149,7 @@ room452.chatcatch = function(callback){
             char.room(425);
             break;
         case "woman1":
-            nav.killbutton("woman")
+            nav.killbutton("woman");
             nav.button({
                 "type": "img",
                 "name": "woman",

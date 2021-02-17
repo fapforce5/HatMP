@@ -55,26 +55,38 @@ room202.main = function () {
         g.dt.setHours(18);
         chat(6, 202);
     }
-    else if (missyStep === 12) {
-        nav.kill("missyCross");
-        nav.bg("202_sideDesk/openmouth1.jpg");
-        chat(36, 202);
-    }
-    else if (missyStep === 13) {
+    else if (g.pass === "g2_furniture") {
         g.tview = "p";
         cl.display();
+        char.changeMenu("body", false);
         chat(11, 202);
     }
-    else if (missyStep === 14) {
-        nav.killall();
-        nav.bg("202_sideDesk/pose1.jpg");
-        chat(46, 202);
+    else if (g.pass === "h12_cock") {
+        zcl.displayMain(-1100, -200, .5, "clothes", true);
+        chat(74, 202);
+        //nav.killall();
+        //nav.bg("202_sideDesk/pose1.jpg");
+        //chat(46, 202);
     }
-    else if (missyStep === 14) {
-        chat(32, 202);
-    }
-
-    if (missyStep === 9)
+    //else if (missyStep === 12) {
+    //    nav.kill("missyCross");
+    //    nav.bg("202_sideDesk/openmouth1.jpg");
+    //    chat(36, 202);
+    //}
+    //else if (missyStep === 13) {
+    //    g.tview = "p";
+    //    cl.display();
+    //    chat(11, 202);
+    //}
+    //else if (missyStep === 14) {
+    //    nav.killall();
+    //    nav.bg("202_sideDesk/pose1.jpg");
+    //    chat(46, 202);
+    //}
+    //else if (missyStep === 14) {
+    //    chat(32, 202);
+    //}
+    else if (missyStep === 9)
         sc.setstep("missy", 10);
 
 };
@@ -298,7 +310,7 @@ room202.chatcatch = function (callback) {
             break;
         case "endpeepee":
             cl.undo();
-            g.pass = "13end";
+            g.pass = "g2_furniture_1";
             char.room(200);
             break;
         case "passtime":
@@ -383,6 +395,10 @@ room202.chatcatch = function (callback) {
             g.pass = "repeatdildomouthfinish";
             char.room(200);
             break;
+        case "pose0":
+            nav.killall();
+            nav.bg("202_sideDesk/pose1.jpg");
+            break;
         case "pose2":
             nav.bg("202_sideDesk/pose2.jpg");
             break;
@@ -411,15 +427,11 @@ room202.chatcatch = function (callback) {
             nav.bg("202_sideDesk/pose10.jpg");
             break;
         case "pose11":
-            cl.c.shirt = "r";
-            cl.c.panties = "w";
-            cl.c.pants = "k";
-            cl.c.shoes = "fb";
-            cl.display();
-            sc.setstep("missy", 16);
-            sc.setstep("me", -9);
-            char.addtime(360);
-            char.room(0);
+            g.sissy[12].ach = true;
+            g.mod("sissy", 40);
+            g.mod("money", 50);
+            scc.love("missy", 20, 100);
+            room209.chatcatch("end");
             break;
         case "repeatstoolend":
             g.pass = "repeatstoolendend";
@@ -818,7 +830,7 @@ room202.chat = function (chatID) {
         {
             chatID: 46,
             speaker: "missy",
-            text: "So you may think your best asset is your large cock, but as my sissy your cock only exists as decoration. What " +
+            text: "So you may think your best asset is your cock, but as my sissy your cock only exists as decoration. What " +
             "I'm more interested in is that ass. Now bend over and spread your cheeks, show me your sissy ass. ",
             button: [
                 { chatID: 47, text: "yes ma'am", callback: "pose2" }
@@ -1046,6 +1058,14 @@ room202.chat = function (chatID) {
             text: "Clean yourself up and get out of my sight. I have a special assignment for you next time you come in. Now thank me and get out.",
             button: [
                 { chatID: -1, text: "Thank you mistress ", callback: "pose11" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "missy",
+            text: "Strip Slut",
+            button: [
+                { chatID: 46, text: "[Stip]", callback: "pose0" }
             ]
         },
     ];

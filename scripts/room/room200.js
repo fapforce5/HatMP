@@ -7,7 +7,7 @@ room200.main = function () {
         chat(67, 200);
     }
     else {
-        if (sc.getstep("missy") > 24) {
+        if (g.sissy[16].ach) {
             nav.bg("200_frontOffice/200_25.jpg");
         }
         g.internal = "";
@@ -90,6 +90,18 @@ room200.btnclick = function (name) {
             }
             else if (thisStep === 9) {
                 chat(56, 200);
+            }
+            else if (g.pass === "g2_furniture") {
+                chat(108, 200);
+            }
+            else if (g.pass === "g2_furniture_1") {
+                chat(110, 200);
+            }
+            else if (g.pass === "h_19_sewer") {
+                chat(111, 200);
+            }
+            else if (inv.has("redbox")) {
+                chat(124, 200);
             }
             else {
                 var oncase = g.get("oncase");
@@ -673,6 +685,20 @@ room200.chatcatch = function (callback) {
             char.addtime(360);
             char.room(0);
             break;
+        case "h_19":
+            g.sissy[19].ach = true;
+            g.set("oncase", "sewer");
+            room209.chatcatch("end");
+            break;
+        case "endRedBox":
+            g.set("oncase", null);
+            g.sissy[19].ach = true;
+            g.mod("money", 100);
+            scc.love("missy", 20);
+            inv.use("redbox");
+            char.addtime(30);
+            char.room(0);
+            break;
         case "h28_1":
             cl.c.shirt = null;
             zcl.displayMain(0, 400, .22, "clothes", true);
@@ -688,6 +714,16 @@ room200.chatcatch = function (callback) {
             g.internal = "201 change";
             g.pass = "";
             char.room(201);
+            break;
+        case "g2_furniture":
+            g.pass = "g2_furniture";
+            char.room(202);
+            break;
+        case "g2_furniture_1":
+            g.mod("money", 20);
+            g.mod("sissy", 30);
+            g.sissy[2].ach = true;
+            room209.chatcatch("end");
             break;
         default:
             break;
@@ -1474,8 +1510,6 @@ room200.chat = function (chatID) {
                 { chatID: 86, text: "What?", callback: "" }
             ]
         },
-
-
         {
             chatID: 86,
             speaker: "missy",
@@ -1657,11 +1691,178 @@ room200.chat = function (chatID) {
         {
             chatID: 107,
             speaker: "missy",
-            text: "New take your new panties and go. I'm sick of listening to you breath",
+            text: "Now take your new panties and go. I'm sick of listening to you breath",
             button: [
                 { chatID: -1, text: "Yes mistress", callback: "20End" }
             ]
         },
+        {
+            chatID: 108,
+            speaker: "missy",
+            text: "Now it's time for your next lesson, learning your place. Strip off your girly clothes.",
+            button: [
+                { chatID: 109, text: "Yes mistress [disrobe]", callback: "nude" }
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "missy",
+            text: "Now come over and kneel at my feet Sissy.",
+            button: [
+                { chatID: -1, text: "Yes mistress ", callback: "g2_furniture" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "missy",
+            text: "You did a terrible job at being furniture. I'll expect better from you " +
+                "in the future. Now go.",
+            button: [
+                { chatID: -1, text: "Yes mistress ", callback: "g2_furniture_1" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "missy",
+            text: "I think you are ready to start working some real cases and dirty jobs. When I first took you in, you were just " +
+                "a pile of undisciplined goo. ",
+            button: [
+                { chatID: 112, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "missy",
+            text: "Now finally you've shown yourself to have the discipline it takes to help me against this cities biggest problem, those " +
+                "damn cultists! They have been a scourge upon this city for far too long, sucking in innocent boys and girls in to their ranks. ",
+            button: [
+                { chatID: 113, text: "The cult?", callback: "" }
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "missy",
+            text: "Yes, surely you've come across them by now. They prey on those without self esteem and suck them in, give them a false " +
+                "sense of self worth, but only if you follow their leader to the fullest. He pulls them in and devours their individuality; " +
+                "makes them his servants. That's where you come in.",
+            button: [
+                { chatID: 114, text: "Me?", callback: "" }
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "missy",
+            text: "Yes. There are many of them, and the path to the cult's door is difficult filled with many different challenges. When " +
+                "you walked in I felt you may just be the one. I needed someone that can move between genders, someone that can both fight and " +
+                "fuck their way out of a situation. More importantly I need someone that can follow my direction without question. You're the " +
+                "sissy I need to help take them down.",
+            button: [
+                { chatID: 115, text: "I CAN DO IT!!!!", callback: "" },
+                { chatID: 116, text: "I don't know, it seems kinda hard", callback: "" }
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "missy",
+            text: "Slow down. You're no where near ready for the cult. You'll either get sucked in or become a victim of the cult. ",
+            button: [
+                { chatID: 117, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 116,
+            speaker: "missy",
+            text: "Don't be silly. You're stronger than you think if you just apply yourself. ",
+            button: [
+                { chatID: 117, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 117,
+            speaker: "missy",
+            text: "Deep in the sewers of this city there's a group that calls themselves the Clown Clan. They stole something of mine " +
+                "that I can use to help prepare you for the long difficult road ahead. I need you to get me that item.",
+            button: [
+                { chatID: 118, text: "What is it ma'am?", callback: "" }
+            ]
+        },
+        {
+            chatID: 118,
+            speaker: "missy",
+            text: "I wouldn't want to ruin the surprise; you'll know it when you see it. Now you're not yet ready to take on the " +
+                "Clown Clan yet. You need to go to the gym and receive training from " + sc.n("g") + ". She will teach you the " +
+                "basics of fighting. ",
+            button: [
+                { chatID: 119, text: "Fighting ma'am?", callback: "" }
+            ]
+        },
+        {
+            chatID: 119,
+            speaker: "missy",
+            text: "Yes. There are many ways to defeat your enemies. I know your true strength is your sissy assets, but you need to " +
+                "be more than just a fuck-hole if we're going to bring down the cult. If I wanted a whore I would've hired one. You need " +
+                "to be able to use all your skills to your best ability. Some enemies can be brought down with your sissy ass, but some " +
+                "have to be brought down with your fists. ",
+            button: [
+                { chatID: 120, text: "Gulp", callback: "" }
+            ]
+        },
+        {
+            chatID: 120,
+            speaker: "missy",
+            text: "Once you receive your first lesson " + sc.n("g") + " will give you the sewer lid opener. Make your way to the rear of the " +
+                "sewer and retrieve my item. It will be in a red box. Keep it closed until you return to me. ",
+            button: [
+                { chatID: 121, text: "Yes ma'am!", callback: "" }
+            ]
+        },
+        {
+            chatID: 121,
+            speaker: "missy",
+            text: "To help you out I'll allow you to continue your training once you've returned. " +
+                "The pink room of pleasure will help you be better with your " +
+                "sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
+            button: [
+                { chatID: 122, text: "Yes why is " + sc.n("cecilia") + " tied up ma'am?", callback: "" },
+                { chatID: 123, text: "No ma'am", callback: "" }
+            ]
+        },
+        {
+            chatID: 122,
+            speaker: "missy",
+            text: sc.n("cecilia") + " has been busy spending all her time sucking cock and not enough time working on her " +
+                "duties. Let " + sc.n("cecilia") + " be a lesson to you. Your duty is to obey, and serve me first, or you will pay for " +
+                "your discretions",
+            button: [
+                { chatID: 123, text: "Yes ma'am", callback: "" }
+            ]
+        },
+        {
+            chatID: 123,
+            speaker: "missy",
+            text: "Now go, and get my package. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "h_19" }
+            ]
+        },
+        {
+            chatID: 124,
+            speaker: "missy",
+            text: "So you've brought me my box?",
+            button: [
+                { chatID: 125, text: "Yes ma'am", callback: "" }
+            ]
+        },
+        {
+            chatID: 125,
+            speaker: "missy",
+            text: "Good, leave it on my desk. You're next lesson I'll show you what's in the box. You may go now.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "endRedBox" }
+            ]
+        },
+
+
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
