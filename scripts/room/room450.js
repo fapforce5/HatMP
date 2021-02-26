@@ -10,24 +10,50 @@ room450.main = function () {
     var btnList = new Array();
     
     if (g.isNight()) {
-
-        if (sc.getstep("me") < 3) {
+        if (sc.getstep("cop") > 0) {
             btnList.push({
-                "type": "img",
-                "name": "cop",
-                "left": 666,
+                "type": "btn",
+                "name": "further",
+                "left": 603,
                 "top": 0,
-                "width": 1000,
-                "height": 1080,
-                "image": "450_park/cop1.png"
+                "width": 314,
+                "height": 401,
+                "image": "450_park/450_further.png",
+                "night": "450_park/450_further_night.png"
             });
-            chat(2, 450);
-            navList = [0];
+            btnList.push({
+                "type": "btn",
+                "name": "sleep",
+                "left": 306,
+                "top": 406,
+                "width": 148,
+                "height": 122,
+                "image": "450_park/sleep.png"
+            });
+            btnList.push({
+                "type": "btn",
+                "name": "gbroom",
+                "left": 1288,
+                "top": 271,
+                "width": 63,
+                "height": 125,
+                "image": "450_park/450_girlBroom.png"
+            });
+            btnList.push({
+                "type": "btn",
+                "name": "bbroom",
+                "left": 1594,
+                "top": 273,
+                "width": 65,
+                "height": 126,
+                "image": "450_park/450_boyBroom.png"
+            });
+            navList = [451, 452, 0];
         }
         else {
             if (!sc.checkevent("cop", 1)) {
                 btnList.push({
-                    "type": "img",
+                    "type": "btn",
                     "name": "cop",
                     "left": 666,
                     "top": 0,
@@ -35,56 +61,15 @@ room450.main = function () {
                     "height": 1080,
                     "image": "450_park/cop1.png"
                 });
-                btnList.push({
-                    "type": "btn",
-                    "name": "sleep",
-                    "left": 306,
-                    "top": 406,
-                    "width": 148,
-                    "height": 122,
-                    "image": "450_park/sleep.png"
-                });
-                chat(3, 450);
-            }
-            else {
-                btnList.push({
-                    "type": "btn",
-                    "name": "further",
-                    "left": 603,
-                    "top": 0,
-                    "width": 314,
-                    "height": 401,
-                    "image": "450_park/450_further.png",
-                    "night": "450_park/450_further_night.png"
-                });
-                btnList.push({
-                    "type": "btn",
-                    "name": "sleep",
-                    "left": 306,
-                    "top": 406,
-                    "width": 148,
-                    "height": 122,
-                    "image": "450_park/sleep.png"
-                });
-                btnList.push({
-                    "type": "btn",
-                    "name": "gbroom",
-                    "left": 1288,
-                    "top": 271,
-                    "width": 63,
-                    "height": 125,
-                    "image": "450_park/450_girlBroom.png"
-                });
-                btnList.push({
-                    "type": "btn",
-                    "name": "bbroom",
-                    "left": 1594,
-                    "top": 273,
-                    "width": 65,
-                    "height": 126,
-                    "image": "450_park/450_boyBroom.png"
-                });
-                navList = [451, 452, 0];
+                //btnList.push({
+                //    "type": "btn",
+                //    "name": "sleep",
+                //    "left": 306,
+                //    "top": 406,
+                //    "width": 148,
+                //    "height": 122,
+                //    "image": "450_park/sleep.png"
+                //});
             }
         }
     }
@@ -194,6 +179,12 @@ room450.btnclick = function (name) {
         case "lola5":
             chat(24, 450);
             break;
+        case "cop":
+            if (g.hasAccess(16).darkAccess)
+                chat(2, 450);
+            else
+                chat(3, 450);
+            break;
         default:
             break;
     }
@@ -234,6 +225,10 @@ room450.chatcatch = function(callback){
         case "killCop":
             nav.buildnav([0]);
             nav.killbutton("cop");
+            break;
+        case "killCopx":
+            sc.setstep("cop", 1);
+            char.room(450);
             break;
         case "cultLeave1":
             char.addtime(60);
@@ -372,7 +367,7 @@ room450.chat = function(chatID){
             text: "Hahah maybe not today, but if I catch you in my park after dark you will. Go ahead and sleep on the bench. This is " +
                 "your freebie.",
             button: [
-                { chatID: -1, text: "Thanks?....", callback: "killCop" }
+                { chatID: -1, text: "Thanks?....", callback: "killCopx" }
             ]
         },
         {

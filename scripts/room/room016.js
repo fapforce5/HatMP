@@ -6,17 +6,20 @@ room16.main = function () {
     var thisSisterRoomID = sc.sister();
     var thisMomRoomID = sc.mother();
 
-    if (sc.getstep("lola") === 9) {
-        nav.button({
-            "type": "img",
-            "name": "x",
-            "left": 853,
-            "top": 260,
-            "width": 215,
-            "height": 820,
-            "image": "13_sisterRoom/13_lola_reading.png"
-        }, 16);
-        chat(5, 16);
+    //if (sc.getstep("lola") === 9) {
+    //    nav.button({
+    //        "type": "img",
+    //        "name": "x",
+    //        "left": 853,
+    //        "top": 260,
+    //        "width": 215,
+    //        "height": 820,
+    //        "image": "13_sisterRoom/13_lola_reading.png"
+    //    }, 16);
+    //    chat(5, 16);
+    //}
+    if (!sc.checkevent("lola", -5) && (cl.isCrossdressing() || cl.c.chest > 2)) {
+        //busted
     }
     else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {

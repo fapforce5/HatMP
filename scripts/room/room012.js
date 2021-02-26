@@ -274,6 +274,12 @@ room12.chatcatch = function (callback) {
             cl.nude();
             nav.button(room12.showerScene("sisterButt", 12));
             break;
+        case "sisterCheckFuckThem":
+            // add minimum love here
+            scc.love("lola", -10, 100);
+            scc.love("eva", -10, 100);
+            chat(23, 12);
+            break;
         case "sisterRetreat":
             char.addtime(20);
             sc.setstep("eva", -1);
@@ -552,7 +558,7 @@ room12.chat = function(chatID){
             speaker: "lola",
             text: "Oh wow",
             button: [
-                { chatID: 23, text: "You like?", callback: "" }
+                { chatID: -1, text: "You like?", callback: "sisterCheckFuckThem" }
             ]
         },
         {

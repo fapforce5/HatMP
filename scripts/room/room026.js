@@ -20,7 +20,6 @@ room26.main = function () {
     }
     else {
         var btnList = new Array();
-
         if (sc.mother().thisRoom) {
             nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg")
             btnList.push({
@@ -45,42 +44,35 @@ room26.main = function () {
 room26.btnclick = function (name) {
     switch (name) {
         case "landlord":
-            if (g.get("momchat"))
-                chat(2, 26)
+            var ll = sc.getstep("landlord");
+            if (ll < 6) {
+                room25.btnclick("mom");
+            }
             else {
-                var ll = sc.getstep("landlord");
-                if (!sc.checkevent("me", 2))
-                    chat(0, 26);
-                else if (ll === 0)
-                    chat(1, 26);
-                else if (ll === 1)
-                    chat(3, 26);
-                else if (ll === 2)
-                    chat(4, 26);
-                else if (ll === 3)
-                    chat(7, 26);
-                else if (ll === 4)
-                    chat(9, 26)
-                else if (ll === 5)
-                    chat(9, 26)
-                else if (ll === 6)
-                    chat(11, 26);
-                else if (ll === 7)
-                    chat(30, 26);
-                else if (ll === 8)
-                    chat(43, 26);
-                else if (ll > 15) {
-                    if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2)) {
-                        chat(48, 26);
-                    }
-                    else if (!inv.has("landlordKey")) {
-                        console.log("add stuff");
+                if (g.get("momchat"))
+                    chat(2, 26);
+                else {
+                    if (ll === 5)
+                        chat(9, 26);
+                    else if (ll === 6)
+                        chat(11, 26);
+                    else if (ll === 7)
+                        chat(30, 26);
+                    else if (ll === 8)
+                        chat(43, 26);
+                    else if (ll > 15) {
+                        if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2)) {
+                            chat(48, 26);
+                        }
+                        else if (!inv.has("landlordKey")) {
+                            console.log("add stuff");
+                        }
+                        else
+                            chat(2, 26);
                     }
                     else
                         chat(2, 26);
                 }
-                else
-                    chat(2, 26);
             }
             break;
         case "butthole":

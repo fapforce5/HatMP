@@ -107,6 +107,8 @@ room25.btnclick = function (name) {
                     chat(4, 25);
                 else if (ll === 4)
                     chat(42, 25);
+                else if (ll === 5)
+                    chat(44, 25);
                 else
                     chat(6, 25);
             }
@@ -148,30 +150,38 @@ room25.chatcatch = function (callback) {
     switch (callback) {
         case "passtime1":
             sc.setstep("landlord", 1);
+            g.setflag("momchat");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime2":
             sc.setstep("landlord", 2);
+            g.setflag("momchat");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime3":
             sc.setstep("landlord", 3);
+            sc.setstep("landlord", -3);
+            g.setflag("momchat");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime4":
             sc.setstep("landlord", 4);
+            g.setflag("momchat");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime5":
             sc.setstep("landlord", 5);
+            g.setflag("momchat");
+            room25.chatcatch("motherPassTime");
+            break;
+        case "passtime6":
+            sc.setstep("landlord", 6);
+            g.setflag("momchat");
             room25.chatcatch("motherPassTime");
             break;
         case "motherPassTime":
-            if (g.hourBetween(0, 12))
-                char.addtime(60);
-            else
-                char.addtime(120);
-            char.room(25);
+            char.addtime(60);
+            char.room(g.roomID);
             break;
         case "takekey":
             inv.update("landlordKey", true, null);
@@ -208,8 +218,9 @@ room25.chat = function (chatID) {
             chatID: 2,
             speaker: "landlord",
             text: "Hay " + sc.n("me") + ", I'm happy you're trying to improve yourself. It's what I've always wanted. " +
-            "I've got to get ready to work at the ol' Helping Hands Sperm Bank, we've got a big delivery due in today " +
-            "and I need to get them in the cryo unit. Be good today ok sweetie.",
+                "I've got to get ready to work at the ol' Helping Hands Sperm Bank, we've got a big delivery due in today " +
+                "and I need to get them in the cryo unit. I think you would be impressed with the amount of sperm we have, lol. " +
+                "You keep working hard and maybe you won't have to be covered in sperm so make a buck.",
             button: [
                 { chatID: -1, text: "I will " + sc.n("landlord"), callback: "passtime1" }
             ]
@@ -217,11 +228,11 @@ room25.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "landlord",
-            text: "Morning Sweetie. It's so busy at the Sperm Bank! I don't know if it's something in the air, or just that time of year, but " +
+            text: "Hay Sweetie. It's so busy at the Sperm Bank! I don't know if it's something in the air, or just that time of year, but " +
             "we're going through about a gallon of sperm each day. I swear you could paint a house with all the sperm where " +
-            "putting out! Well I've got to get to work, so busy....",
+            "putting out!",
             button: [
-                { chatID: -1, text: "Have fun at work.", callback: "passtime2" }
+                { chatID: -1, text: "Cool", callback: "passtime2" }
             ]
         },
         {
@@ -245,15 +256,15 @@ room25.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "landlord",
-            text: "So much sperm moving in and out of my office... Gotta get to work.",
+            text: "So much sperm moving in and out of my office... Run along I need my rest.",
             button: [
-                { chatID: -1, text: "Have fun at work " + sc.n("landlord"), callback: "motherPassTime" }
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "motherPassTime" }
             ]
         },
         {
             chatID: 7,
             speaker: "landlord",
-            text: "Good morning honey. So the weirdest thing happened yesterday... Someone has been stealing sperm from work! At least " +
+            text: "Hi honey. So the weirdest thing happened yesterday... Someone has been stealing sperm from work! At least " +
             "50 different samples have disappeared without a trace. I mean who would steal all that sperm?! I bet it was that damned " +
             "sex cult that lives in the woods. I've heard they sit around and drink sperm in their rituals. ",
             button: [
@@ -560,6 +571,23 @@ room25.chat = function (chatID) {
             text: "You don't have to pretend with me honey. I know you're an odd little boy. ",
             button: [
                 { chatID: -1, text: sc.n("landlord"), callback: "passtime5" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "landlord",
+            text: "You know my boyfriend " + sc.n("bigguy") + " is such a great lover. Maybe he could show you some tricks to attract a pretty girl " +
+                "or whatever you're into. I bet you could make a girl very happy. ",
+            button: [
+                { chatID: 45, text: sc.n("landlord"), callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "landlord",
+            text: "Oh hahaha I'm only kidding... run along now, " + sc.n("landlord") + " has some fantasies to get back to. ",
+            button: [
+                { chatID: -1, text: "ok " + sc.n("landlord"), callback: "passtime6" }
             ]
         },
     ];

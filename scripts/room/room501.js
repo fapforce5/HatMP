@@ -389,13 +389,15 @@ room501.chatcatch = function (callback) {
             break;
         case "cheat":
             sc.setstep("zoey", 5);
-            room501.chatcatch("zLook");
+            scc.love("zoey", 10, 100);
             g.setflag("zoeyDay");
+            room501.chatcatch("zLook");
             break;
         case "noCheat":
-            sc.setstep("zoey", 6);
-            room501.chatcatch("zLook");
+            sc.setstep("zoey", 5);
+            scc.love("zoey", -20, 100);
             g.setflag("zoeyDay");
+            room501.chatcatch("zLook");
             break;
         case "chloeLeave":
             g.setflag("zoeyDay");

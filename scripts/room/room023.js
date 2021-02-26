@@ -450,11 +450,11 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/caught1.jpg");
                 break;
             case "leave":
-                sc.setstep("me", 3);
                 sc.setstep("landlord", -1);
                 sc.setstep("lola", 8);
                 sc.setstep("eva", 7);
                 char.settime(23, 47);
+                g.pass = "kickOutTorD";
                 char.room(10);
                 break;
             default:

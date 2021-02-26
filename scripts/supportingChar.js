@@ -50,6 +50,10 @@ sc.char = [
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "tim", display: "Tim", image: "tim.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 
+    { name: "poppy", display: "Poppy", image: "poppy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "orchid", display: "Orchid", image: "orchid.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "juniper", display: "Juniper", image: "juniper.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "futared", display: "Red", image: "futaRed.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -78,6 +82,7 @@ sc.events = [
     { name: "me", step: 3, txt: "Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     
+    { name: "landlord", step: -3, txt: "Can donate sperm", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -2, txt: "Caught with Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 1, txt: "Chat about job", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -87,10 +92,12 @@ sc.events = [
     { name: "landlord", step: 5, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 6, txt: "Can Work", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 7, txt: "Ate that ass", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "landlord", step: 8, txt: "Caught", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 8, txt: "Dick Slap Rerun", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
     { name: "landlord", step: 9, txt: "First day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 15, txt: "Work Complete - Invited back", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 16, txt: "Back In", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 100, txt: "Sissy Path", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "bigguy", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -105,6 +112,7 @@ sc.events = [
     { name: "zoey", step: 3, txt: "Eat Chloé", img: "zoeyLick", show: true, row: 0, col: 1, ach: false, major: false },
     { name: "zoey", step: 4, txt: "Talk to Zoey about Chloé", img: "", show: false, row: 0, col: 1, ach: false, major: false },
     { name: "zoey", step: 5, txt: "Chloé  Cheating", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
+
     { name: "zoey", step: 6, txt: "Chloé Not Cheating / not spying", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
     { name: "zoey", step: 10, txt: "Based on love", img: "", show: false, row: 0, col: 3, ach: false, major: false },
     { name: "zoey", step: 12, txt: "Night Visitor", img: "zoeyEat", show: true, row: 0, col: 3, ach: false, major: false },
@@ -195,6 +203,7 @@ sc.events = [
     { name: "construction", step: 1, txt: "Interview at the construction site.", img: "const1", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "construction", step: 2, txt: "Work construction. - Need to arrive before 9:00 AM in a t-shirt and jeans. ", img: "sweep", show: true, row: 0, col: 1, ach: false, major: false },
 
+    { name: "lola", step: -5, txt: "Caught doing sissy stuff", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: -4, txt: "Just play", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: -3, txt: "Professed Love", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -212,6 +221,7 @@ sc.events = [
     { name: "lola", step: 10, txt: "Bed time confession", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
     { name: "lola", step: 11, txt: "Waiting on text", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
     { name: "lola", step: 12, txt: "Next - UNK", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 100, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
 
     { name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "eva", step: 0, txt: "Ask for book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -226,6 +236,7 @@ sc.events = [
     { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 10, txt: "Next meeting in room", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 11, txt: "Had the sex - phone contacts", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 100, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
 
     { name: "eva", step: 30, txt: "End of the Eva line", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
 
@@ -242,7 +253,8 @@ sc.events = [
     { name: "cultjgirl", step: 1, txt: "Met first time", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "cop", step: 0, txt: "Just met", img: "", show: false, row: 0, col: 0, ach: true, major: false },
-    { name: "cop", step: 1, txt: "Will let you blow him", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "cop", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "cop", step: 2, txt: "Will let you blow him", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "jeffery", step: -2, txt: "Failed investiagion", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "jeffery", step: -1, txt: "Dimed out the waitresses", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -568,6 +580,8 @@ sc.mother = function () {
                 r = 12;  //bathroom
             else if (hour.between(8, 9))
                 r = 25;  //kitchen
+            else if (hour.between(9, 17))
+                r = 350;
             else if (hour.between(17, 18))
                 r = 15; //diningRoom
             else if (hour.between(18, 22))
@@ -580,6 +594,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 25;  //bathroom
+            else if (hour.between(9, 17))
+                r = 350;
             else if (hour.between(17, 18))
                 r = 15; //diningRoom
             else if (hour.between(18, 22))
@@ -592,6 +608,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 25;  //bathroom
+            else if (hour.between(9, 17))
+                r = 350;
             else if (hour.between(17, 18))
                 r = 15; //diningRoom
             else if (hour.between(18, 22))
@@ -604,6 +622,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 25;  //bathroom
+            else if (hour.between(9, 17))
+                r = 350;
             else if (hour.between(17, 18))
                 r = 15; //diningRoom
             else if (hour.between(18, 22))
@@ -616,6 +636,8 @@ sc.mother = function () {
                 r = 14;
             else if (hour.between(7, 8))
                 r = 25;  //bathroom
+            else if (hour.between(9, 17))
+                r = 350;
             else if (hour.between(18, 19))
                 r = 26; //diningRoom
             else if (hour.between(19, 24))

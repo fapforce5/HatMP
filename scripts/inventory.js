@@ -30,7 +30,7 @@ inv.t = [
     { t: "p", n: "Phone Case" },
     { t: "r", n: "Room Decoration" },
     { t: "t", n: "Penis Cream" },
-    { t: "z", n: "Gift" },
+    { t: "z", n: "Gift" }
     
 ];
 

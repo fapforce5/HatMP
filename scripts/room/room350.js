@@ -2,34 +2,49 @@
 
 var room350 = {};
 room350.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "nurse",
-            "left": 1038,
-            "top": 455,
-            "width": 166,
-            "height": 292,
-            "image": "350_spermBank/nurse.png"
+    if (sc.mother().thisRoom || g.pass === "350_nursePay") {
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "nurse",
+                "left": 1038,
+                "top": 455,
+                "width": 166,
+                "height": 292,
+                "image": "350_spermBank/nurse.png"
+            }
+        ];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 350);
+        });
+        if (g.pass === "350_nursePay") {
+            g.pass = null;
+            chat(8, 350);
         }
-    ];
-    var navList = [0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 350);
-    });
-    nav.buildnav(navList);
-
-    if (g.pass === "350_nursePay") {
-        g.pass = null;
-        chat(8, 350);
     }
+    else {
+        chat(42, 350);
+    }
+    var navList = [0];
+   
+    nav.buildnav(navList);
+    
 };
 
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
             var llStep = sc.getstep("landlord");
-            if (llStep === 6) {
+            if (!g.hasAccess(16).access) {
+                chat(43, 350);
+            }
+            else if (sc.checkevent("landlord", -3)) {
+                if (cl.getCum() < .75)
+                    chat(3, 350);
+                else
+                    chat(6, 350);
+            }
+            else if (llStep === 6) {
                 if (cl.appearance() > 0) {
                     sc.setstep("landlord", 7);
                     chat(11, 350);
@@ -45,10 +60,10 @@ room350.btnclick = function (name) {
                         chat(31, 350);
                     else if (llStep === 9)
                         chat(32, 350);
-                    else if(llStep < 15)
+                    else if (llStep < 15)
                         chat(33, 350);
                     else
-                        chat(41, 350)
+                        chat(41, 350);
                 }
                 else
                     chat(29, 350);
@@ -60,14 +75,9 @@ room350.btnclick = function (name) {
                 else
                     chat(15, 350);
             }
+            
             else if (sc.checkevent("landlord", -1))
                 chat(9, 350);
-            else if (sc.getstep("landlord") > 2) {
-                if (cl.getCum() < .75)
-                    chat(3, 350);
-                else
-                    chat(6, 350);
-            }
             else
                 chat(0, 350);
             break;
@@ -107,6 +117,9 @@ room350.chatcatch = function (callback) {
             g.pass = "follow352Chastity";
             g.mod("money", -500);
             char.room(352);
+            break;
+        case "doctor":
+
             break;
         default:
             break;
@@ -255,7 +268,7 @@ room350.chat = function (chatID) {
             text: "Well don't you look like a pretty little whore. I bet you're here to work as my assistant and extract cum?",
             button: [
                 { chatID: 17, text: "Yes I would!", callback: "" },
-                { chatID: -1, text: "Oh, what.. No, gross", callback: "" },
+                { chatID: -1, text: "Oh, what.. No, gross", callback: "" }
             ]
         },
         {
@@ -264,7 +277,7 @@ room350.chat = function (chatID) {
             text: "You know, I've watched you be a puddle of dissapointment for most of your life. After you graduated high school " +
                 "you've just been a lazy lazy waste of space. But now, but now look at you.",
             button: [
-                { chatID: 18, text: "...yes...", callback: "" },
+                { chatID: 18, text: "...yes...", callback: "" }
             ]
         },
         {
@@ -274,7 +287,7 @@ room350.chat = function (chatID) {
                 "on anything in your life. Maybe it was my fault for hoping you'll become a proper and successful young man when all the time " +
                 "you've just been a slutty whorish girl.",
             button: [
-                { chatID: 19, text: "Not the whole time", callback: "" },
+                { chatID: 19, text: "Not the whole time", callback: "" }
             ]
         },
         {
@@ -284,7 +297,7 @@ room350.chat = function (chatID) {
                 "From the looks of it, it seems too late to go down that path, this is the path you're on. As your " + sc.n("landlord") + 
             " I suppose it's my resonsiblility to help you on your path.",
             button: [
-                { chatID: 20, text: "Help me?", callback: "" },
+                { chatID: 20, text: "Help me?", callback: "" }
             ]
         },
         {
@@ -294,7 +307,7 @@ room350.chat = function (chatID) {
                 "I'm going to make you my new project. What kind of girl are trying to be?",
             button: [
                 { chatID: 21, text: "A nice sweet innocent girl", callback: "" },
-                { chatID: 22, text: "A cum slut", callback: "" },
+                { chatID: 22, text: "A cum slut", callback: "" }
             ]
         },
         {
@@ -304,7 +317,7 @@ room350.chat = function (chatID) {
                 "on the first date. " + sc.n("lola") + " is the sweet innocent type. You're more like " + sc.n("eva") + ", but even more " +
             "so. ",
             button: [
-                { chatID: 23, text: "oh.", callback: "" },
+                { chatID: 23, text: "oh.", callback: "" }
             ]
         },
         {
@@ -312,7 +325,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "That was just a test. I knew what a dirty dirty girl you are. I just wasn't sure if you knew yourself.",
             button: [
-                { chatID: 23, text: "oh.", callback: "" },
+                { chatID: 23, text: "oh.", callback: "" }
             ]
         },
         {
@@ -321,7 +334,7 @@ room350.chat = function (chatID) {
             text: "What you were doing with your " + sc.n("el") + " was unforgiveable, but I'm willing to give you a second chance. " +
             "I'll let you back into my home if you help me out around here. ",
             button: [
-                { chatID: 24, text: "ok, that could be fun.", callback: "" },
+                { chatID: 24, text: "ok, that could be fun.", callback: "" }
             ]
         },
         {
@@ -330,7 +343,7 @@ room350.chat = function (chatID) {
             text: "You're going to do all the things I hate doing. Organizing samples, greeting customers, and most importantly " +
             "assisting the donors. ",
             button: [
-                { chatID: 25, text: "Assisting the donors?", callback: "" },
+                { chatID: 25, text: "Assisting the donors?", callback: "" }
             ]
         },
         {
@@ -339,7 +352,7 @@ room350.chat = function (chatID) {
             text: "Some men come in and have a hard time creating a donation, so it will be your responsibility to assit them. Some " +
             "just need a peek at your boobs, some need to check out your butt, and others need a help hand.",
             button: [
-                { chatID: 26, text: "Helping hand, do you mean...", callback: "checkNext" },
+                { chatID: 26, text: "Helping hand, do you mean...", callback: "checkNext" }
             ]
         },
         {
@@ -349,7 +362,7 @@ room350.chat = function (chatID) {
             "Anything else will ruin the sample. ",
             button: [
                 { chatID: 27, text: "I don't know if I can jack off stange men", callback: "" },
-                { chatID: 28, text: "I will be the best sperm collecter you've seen!", callback: "" },
+                { chatID: 28, text: "I will be the best sperm collecter you've seen!", callback: "" }
             ]
         },
         {
@@ -358,7 +371,7 @@ room350.chat = function (chatID) {
             text: "I didn't ask you to tell me what a selfish little girl you are. This is your chance to actually do some work and " +
             "help your " + sc.n("landlord") + ". I'll be expecting you before 10:00 each morning. Now get out.",
             button: [
-                { chatID: -1, text: ".... ok", callback: "leave9" },
+                { chatID: -1, text: ".... ok", callback: "leave9" }
             ]
         },
         {
@@ -367,7 +380,7 @@ room350.chat = function (chatID) {
             text: "I know. I suppose deep down I've always known. Now run along and come back before 10:00 to help " + sc.n("landlord") +
             " out. ",
             button: [
-                { chatID: -1, text: ".... ok", callback: "leave9" },
+                { chatID: -1, text: ".... ok", callback: "leave9" }
             ]
         },
         {
@@ -375,7 +388,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Stop being a dissapointment. Come in on time.",
             button: [
-                { chatID: -1, text: ".... ok", callback: "leave" },
+                { chatID: -1, text: ".... ok", callback: "leave" }
             ]
         },
         {
@@ -383,7 +396,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Oh gross. You look disgusting. Barf. You need to shave before working here, no one wants a hairly little girl.",
             button: [
-                { chatID: -1, text: ".... ok", callback: "leave" },
+                { chatID: -1, text: ".... ok", callback: "leave" }
             ]
         },
         {
@@ -391,7 +404,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Oh dear. Your hair looks like a boy. You need to grow it out more if you want to service these men. ",
             button: [
-                { chatID: -1, text: ".... ok", callback: "leave" },
+                { chatID: -1, text: ".... ok", callback: "leave" }
             ]
         },
         {
@@ -399,7 +412,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "I'm glad to see you can come in on time. I'm going to help you get ready for your first day of work. Follow me.",
             button: [
-                { chatID: -1, text: "[Follow her]", callback: "follow352" },
+                { chatID: -1, text: "[Follow her]", callback: "follow352" }
             ]
         },
         {
@@ -409,7 +422,7 @@ room350.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Yes I am", callback: "follow352" },
                 { chatID: -1, text: "Oh no. Maybe later", callback: "" },
-                { chatID: 34, text: "I'm working hard, isn't there some other way I could earn your trust back?", callback: "" },
+                { chatID: 34, text: "I'm working hard, isn't there some other way I could earn your trust back?", callback: "" }
             ]
         },
         {
@@ -417,7 +430,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "You know I should have expected you to try and get out working. You haven't changed at all have you? ",
             button: [
-                { chatID: 35, text: "I have, I just didn't want to do that...", callback: "" },
+                { chatID: 35, text: "I have, I just didn't want to do that...", callback: "" }
             ]
         },
         {
@@ -425,7 +438,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Oh, so you're Miss Hardworking Moneybags now? You haven't the slightest idea on how to do a good honest day's work.",
             button: [
-                { chatID: 36, text: "I've changed. I've made all kinds of money. A ton of money.", callback: "" },
+                { chatID: 36, text: "I've changed. I've made all kinds of money. A ton of money.", callback: "" }
             ]
         },
         {
@@ -433,7 +446,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Really? If you're so rich you'll pay me for all that time you were freeloading off me. ",
             button: [
-                { chatID: 37, text: "I'm totally rich enough to do that, how much?", callback: "" },
+                { chatID: 37, text: "I'm totally rich enough to do that, how much?", callback: "" }
             ]
         },
         {
@@ -442,7 +455,7 @@ room350.chat = function (chatID) {
             text: "I added it after you left. It comes out to $158,349. But for you I'll only charge you $500 because I love you.",
             button: [
                 { chatID: -1, text: "I can totally pay you $500", callback: "checkCash" },
-                { chatID: 38, text: "I don't have enough to pay you $500", callback: "" },
+                { chatID: 38, text: "I don't have enough to pay you $500", callback: "" }
             ]
         },
         {
@@ -450,7 +463,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "I know. That's why you need to work. I'm willing to let you continue working here to show me that you've made a change. ",
             button: [
-                { chatID: -1, text: "Thank you", callback: "" },
+                { chatID: -1, text: "Thank you", callback: "" }
             ]
         },
         {
@@ -458,7 +471,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Oh wow, I'm rarely suprised, but you have done just that. I'll take that back rent. Follow me into the break room.",
             button: [
-                { chatID: -1, text: "Pay your " + sc.n("landlord") + " $500", callback: "follow352Chastity" },
+                { chatID: -1, text: "Pay your " + sc.n("landlord") + " $500", callback: "follow352Chastity" }
             ]
         },
         {
@@ -466,7 +479,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Not only are you lazy, but you're a liar too. Run along.",
             button: [
-                { chatID: -1, text: "Oh.. ", callback: "leave" },
+                { chatID: -1, text: "Oh.. ", callback: "leave" }
             ]
         },
         {
@@ -475,7 +488,43 @@ room350.chat = function (chatID) {
             text: "Such a wonderful girl coming back into work and helping your " + sc.n("landlord") + ". Are you excited to get to work?",
             button: [
                 { chatID: -1, text: "Yes I am", callback: "follow352" },
-                { chatID: -1, text: "Oh no. Maybe later", callback: "" },
+                { chatID: -1, text: "Oh no. Maybe later", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "thinking",
+            text: sc.n("landlord") + " must not be in yet. ",
+            button: [
+                { chatID: -1, text: "Leave", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "landlord",
+            text: "So you thought you would show your face here did you. I guess you've come to grovel to let you back in the house. " +
+                "Well I don't think I can trust you with my girls. Just a layabout with no motivation. ",
+            button: [
+                { chatID: 44, text: "..but that was...", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "landlord",
+            text: "Don't even try to explain yourself. I'm not going to leave you homeless. You'll have to earn your way back in. " +
+                "I'll tell you what. We're desperate for more sperm. If you can find me a new sperm donor then you can come " +
+                "back in. I need a doctor so I can sell it. ",
+            button: [
+                { chatID: 45, text: "Got it!", callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "landlord",
+            text: "I hope so. Also there will be new rules once you get back. I got to keep you dick out of " + sc.n("lola") + 
+                " and " + sc.n("eva") + ".",
+            button: [
+                { chatID: -1, text: "ok. I'm going to go find you a doctor to donate sperm.", callback: "doctor" }
             ]
         },
     ];

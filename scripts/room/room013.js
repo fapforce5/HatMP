@@ -28,7 +28,7 @@ room13.main = function () {
         }, 13);
         chat(110, 13);
     }
-    else if (g.hourBetween(22, 25) || g.hourBetween(0, 5)) {
+    else if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
         nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
         btnList = [{
             "type": "btn",
@@ -245,16 +245,14 @@ room13.btnclick = function (name) {
                     chat(49, 13);
                     break;
                 case 7:
-                    if (cl.hasClothing("panties", "w")) {
-                        if (g.hourBetween(17, 23))
-                            chat(75, 13);
-                        else
-                            chat(74, 13);
-                    }
-                    else {
-                        chat(70, 13);
-                    }
+                    if (g.hourBetween(17, 23))
+                        chat(75, 13);
+                    else
+                        chat(74, 13);
 
+                    break;
+                case 8:
+                    chat(142, 13);
                     break;
                 case 10:
                 case 11:
@@ -308,15 +306,13 @@ room13.btnclick = function (name) {
                     chat(54, 13);
                     break;
                 case 6:
-                    if (cl.hasClothing("panties", "w")) {
-                        if (g.hourBetween(17, 23))
-                            chat(75, 13);
-                        else
-                            chat(73, 13);
-                    }
-                    else {
-                        chat(64, 13);
-                    }
+                    if (g.hourBetween(17, 23))
+                        chat(75, 13);
+                    else
+                        chat(73, 13);
+                    break;
+                case 7:
+                    chat(142, 13);
                     break;
                 case 9:
                 case 10:
@@ -787,6 +783,17 @@ room13.chatcatch = function (callback) {
             break;
         case "ehate":
             scc.love("eva", -2, 100);
+            break;
+        case "9present":
+            nav.modbutton("eva", "13_sisterRoom/13_eva_sittingt.png", null, null);
+            nav.modbutton("lola", "13_sisterRoom/13_lola_readingt.png", null, null);
+            break;
+        case "9presentx":
+            g.setflag("lolaDayEvent");
+            scc.love("lola", 5, 75);
+            scc.love("eva", 5, 75);
+            char.addtime(60); 
+            char.room(29);
             break;
         default:
             console.log(callback + " - miss");
@@ -1974,6 +1981,47 @@ room13.chat = function (chatID) {
             text: "hahaha gross, someone came all over your face!",
             button: [
                 { chatID: -1, text: "Thanks, I'll go lick it off!", callback: "" }
+            ]
+        },
+        {
+            chatID: 142,
+            speaker: "lola",
+            text: "We're really sorry for getting your kicked out!",
+            button: [
+                { chatID: 143, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 143,
+            speaker: "eva",
+            text: "Oh yeah! We're working on " + sc.n("landlord") + " on getting you back in. She's really really mad. " +
+                "I don't think I've seen her so mad before. ",
+            button: [
+                { chatID: 144, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 144,
+            speaker: "lola",
+            text: "I bet if you visit " + sc.n("landlord") + " at her work and are really nice, she may let you back in. ",
+            button: [
+                { chatID: 145, text: "OK! I'll  try that.", callback: "" }
+            ]
+        },
+        {
+            chatID: 145,
+            speaker: "eva",
+            text: "Since we feel so guilty here's a present for you! ",
+            button: [
+                { chatID: 146, text: "OK! I'll  try that.", callback: "9present" }
+            ]
+        },
+        {
+            chatID: 146,
+            speaker: "lola",
+            text: "Hopefully you like them! You need to get out of here before " + sc.n("landlord") + " gets back though.",
+            button: [
+                { chatID: -1, text: "Ok! see you later!", callback: "9presentx" }
             ]
         },
     ];

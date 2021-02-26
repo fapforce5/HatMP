@@ -1,12 +1,12 @@
 ﻿//Room name
 var room456 = {};
 room456.main = function () {
-    if (sc.checkevent("cop", 1)) {
+    if (sc.getstep("cop") > 1) {
         nav.bg("456_bench/cop1.jpg");
         chat(14, 456);
     }
     else {
-        sc.setstep("cop", 1);
+        sc.setstep("cop", 2);
         room456.chatcatch("morning");
     }
 };
@@ -98,7 +98,7 @@ room456.chatcatch = function (callback) {
             break;
         case "cop11":
             g.mod("giveOralMale", 1);
-            g.mod("sissy", 15);
+            g.mod("sissy", 10);
             sc.setstep("me", -9);
             cl.c.cumface = true;
             nav.bg("456_bench/sleepdark.jpg", "456_bench/sleepdark.jpg");
