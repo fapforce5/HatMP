@@ -39,7 +39,7 @@ room501.main = function () {
         nav.buildnav([0]);
     }
     else {
-        if (sc.checkevent("zoey", -1)) {
+        if (sc.checkevent("zoey", -2)) {
             navList.push(502);
             navList.push(503);
             btnList.push({
@@ -484,7 +484,7 @@ room501.chatcatch = function (callback) {
             scc.love("zoey", 5, 100);
             break;
         case "5endbad":
-            sc.setstep("zoey", 6);
+            sc.setstep("zoey", 300);
             char.addtime(120);
             g.setflag("zoeyDay");
             char.room(0);

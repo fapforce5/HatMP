@@ -163,7 +163,8 @@ room502.btnclick = function (name) {
             char.room(8);
             break;
         case "bed":
-            chat(0, 502);
+            g.pass = 502;
+            char.room(28);
             break;
         default:
             break;

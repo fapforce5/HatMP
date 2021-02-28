@@ -18,10 +18,10 @@ room16.main = function () {
     //    }, 16);
     //    chat(5, 16);
     //}
-    if (!sc.checkevent("lola", -5) && (cl.isCrossdressing() || cl.c.chest > 2)) {
-        //busted
-    }
-    else {
+    //if (!sc.checkevent("lola", -5) && (cl.isCrossdressing() || cl.c.chest > 2)) {
+    //    //busted
+    //}
+    //else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {
             btnList.push({
                 "type": "btn",
@@ -143,7 +143,7 @@ room16.main = function () {
         });
 
         nav.buildnav(navList);
-    }
+    //}
 };
 
 room16.btnclick = function (name) {

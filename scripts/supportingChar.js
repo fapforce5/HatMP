@@ -106,12 +106,15 @@ sc.events = [
     { name: "bigguy", step: 4, txt: "Cum licker", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 5, txt: "Eat all the cum - both", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "zoey", step: -2, txt: "Can Sleep Over", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "zoey", step: -1, txt: "First meet at bar", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 0, txt: "Play some video games. ", img: "zoeyGame", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 1, txt: "Define Relationship ", img: "zoeyGame", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 2, txt: "Meet Chloé", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 3, txt: "Eat Chloé", img: "zoeyLick", show: true, row: 0, col: 1, ach: false, major: false },
     { name: "zoey", step: 4, txt: "Talk to Zoey about Chloé", img: "", show: false, row: 0, col: 1, ach: false, major: false },
     { name: "zoey", step: 5, txt: "Chloé  Cheating", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
+
 
     { name: "zoey", step: 6, txt: "Chloé Not Cheating / not spying", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
     { name: "zoey", step: 10, txt: "Based on love", img: "", show: false, row: 0, col: 3, ach: false, major: false },
@@ -120,6 +123,8 @@ sc.events = [
     { name: "zoey", step: 19, txt: "3 days", img: "", show: false, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 23, txt: "Need some space", img: "zoeyLock", show: true, row: 0, col: 4, ach: false, major: false },
     { name: "zoey", step: 24, txt: "transformation", img: "", show: false, row: 0, col: 4, ach: false, major: false },
+
+    { name: "zoey", step: 300, txt: "No help, endless loop", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
 
     { name: "missy", step: -2, txt: "Got Red Room bonus once", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "missy", step: -1, txt: "Get the Tea", img: "", show: false, row: 0, col: 0, ach: false, major: false },

@@ -27,25 +27,13 @@ room500.main = function () {
 room500.btnclick = function (name) {
     switch (name) {
         case "frontDoor":
-            if (sc.getstep("zoey") > 22) {
-                if (g.checkflag("zoeyDay")) {
-                    chat(3, 500);
-                }
-                else {
-                    chat(1, 500);
-                }
-            }
-            else if (sc.checkevent("zoey", -1)) {
+            if (sc.checkevent("zoey", -2)) {
                 char.room(501);
             }
-            else if (sc.checkevent("me", 3) && !sc.checkevent("zoey", -1)) {
+            else if (!g.hasAccess(16).access) {
                 nav.killall();
                 nav.bg("500_jada/500_doorOpen2.jpg");
                 chat(5, 500);
-            }
-            
-            else if (sc.checkevent("zoey", -1)) {
-                char.room(501);
             }
             else if (g.checkflag("zoeyDay")) {
                 nav.killall();
@@ -91,10 +79,19 @@ room500.chatcatch = function (callback) {
             char.room(501);
             break;
         case "sleep":
-            char.room(502);
+            nav.killall();
+            nav.bg("502_bedroom/homeless.jpg");
             break;
         case "leaveNoZoey":
             char.room(0);
+            break;
+        case "zoeyLike":
+            scc.love("zoey", 5, 100);
+            break;
+        case "zoeyBed":
+            sc.setstep("zoey", -2);
+            g.pass = 502;
+            char.room(28);
             break;
         default:
             break;
@@ -157,7 +154,76 @@ room500.chat = function (chatID) {
             speaker: "zoey",
             text: "That is terrible, come in so we can talk.",
             button: [
-                { chatID: -1, text: "Thank you soooo much " + sc.n("zoey") + "!", callback: "sleep" }
+                { chatID: 7, text: "Thank you soooo much " + sc.n("zoey") + "!", callback: "sleep" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "zoey",
+            text: "So what happened?",
+            button: [
+                { chatID: 8, text: "Tell the truth", callback: "" },
+                { chatID: 10, text: "Lie", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "me",
+            text: "So.. I was playing truth or dare with " + sc.n("eva") + " and " + sc.n("lola") +
+                " and my " + sc.n("landlord") + " walked in on us right when they were licking my dick... she " +
+                "go mad at me and kicked me out!",
+            button: [
+                { chatID: 9, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "zoey",
+            text: "You are such a pervert messing around with your " + sc.n("el") + "! I like it you " +
+                "little weird-o.",
+            button: [
+                { chatID: 11, text: "really?", callback: "zoeyLike" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "My " + sc.n("landlord") + " had me paying rent and I just couldn't cover it so she kicked me out. ",
+            button: [
+                { chatID: 5, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "zoey",
+            text: "She kicked you out at this time of night?",
+            button: [
+                { chatID: 12, text: "She was mad I didn't pay her.", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "zoey",
+            text: "Awwww you poor thing.",
+            button: [
+                { chatID: 13, text: "Yes, poor me..", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "zoey",
+            text: "You can stay here, I will give you a key to my apartment so you can come and go when you please. " +
+                "I sleep in late so do not wake me up before you go go.",
+            button: [
+                { chatID: 14, text: "You're the best!", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "zoey",
+            text: "Awww you look like you have had a rough time, come to bed we can snuggle the bad day away.",
+            button: [
+                { chatID: -1, text: "That would be nice. ", callback: "zoeyBed" }
             ]
         },
     ];
