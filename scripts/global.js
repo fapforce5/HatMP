@@ -110,9 +110,11 @@ g.st = [
 
     { n: "girlname", t: "Scarlett", q: "string" },
 
+    
     { n: "jobConstGetRaise", t: false, q: "bool" },
     { n: "lockboobs", t: false, q: "bool" },
     { n: "lockbutt", t: false, q: "bool" },
+    { n: "chloe", t: false, q: "day" },
     { n: "enterSister", t: false, q: "day" },
     { n: "evaDayEvent", t: false, q: "day" },
     { n: "lolaDayEvent", t: false, q: "day" },

@@ -27,7 +27,10 @@ room500.main = function () {
 room500.btnclick = function (name) {
     switch (name) {
         case "frontDoor":
-            if (sc.checkevent("zoey", -2)) {
+            if (sc.getstep("zoey") > 300) {
+                chat(15, 500);
+            }
+            else if (sc.checkevent("zoey", -2)) {
                 char.room(501);
             }
             else if (!g.hasAccess(16).access) {
@@ -190,7 +193,7 @@ room500.chat = function (chatID) {
             speaker: "me",
             text: "My " + sc.n("landlord") + " had me paying rent and I just couldn't cover it so she kicked me out. ",
             button: [
-                { chatID: 5, text: "...", callback: "" }
+                { chatID: 11, text: "...", callback: "" }
             ]
         },
         {
@@ -224,6 +227,14 @@ room500.chat = function (chatID) {
             text: "Awww you look like you have had a rough time, come to bed we can snuggle the bad day away.",
             button: [
                 { chatID: -1, text: "That would be nice. ", callback: "zoeyBed" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "zoey",
+            text: sc.n("zoey") + " said never to come back. She's still really mad. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

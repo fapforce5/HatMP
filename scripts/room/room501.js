@@ -75,7 +75,6 @@ room501.btnclick = function (name) {
     switch (name) {
         case "zoey":
             if (!g.checkflag("zoeyDay")) {
-
                 var zoeyy = sc.getstep("zoey");
                 if (zoeyy === 0) {
                     nav.killall();
@@ -104,11 +103,14 @@ room501.btnclick = function (name) {
                 else if (zoeyy === 5) {
                     chat(64, 501);
                 }
-                else if (zoeyy === 6) {
+                else if (zoeyy > 5 && zoeyy < 11) {
                     chat(100, 501);
                 }
-                else if (zoeyy === 10) {
-                    chat(103, 501);
+                else if (zoeyy === 11) {
+                    chat(100, 501);
+                }
+                else if (zoeyy === 300) {
+                    chat(105, 501);
                 }
                 g.setflag("zoeyDay");
             }
@@ -226,10 +228,12 @@ room501.btnclick = function (name) {
             chat(81, 501);
             break;
         case "door11":
-
+            nav.killall();
+            nav.bg("502_bedroom/eat2.jpg");
+            chat(104, 501);
             break;
         case "cancelPeek":
-            nav.room(501);
+            room501.chatcatch("peek2");
             break;
         default:
             break;
@@ -498,6 +502,9 @@ room501.chatcatch = function (callback) {
             nav.killall();
             nav.bg("500_jada/peek0.jpg");
             break;
+        case "door11":
+            char.room(501);
+            break;
         case "peek1":
             nav.bg("500_jada/peek1.jpg");
             break;
@@ -543,7 +550,7 @@ room501.chatcatch = function (callback) {
             chat(79, 501);
             break;
         case "fuckingcheater":
-            if (sc.getstep("chloe") === 1)
+            if (sc.getstep("chloe") > 0)
                 chat(98, 501)//fucking chater
             else
                 chat(92, 501);
@@ -554,8 +561,9 @@ room501.chatcatch = function (callback) {
         case "zoeySleep":
             nav.bg("502_bedroom/sleepZoey.jpg");
             scc.love("zoey", 40, 60);
-            sc.setstep("zoey", 10);
-            sc.setstep("chloe", 2);
+            sc.setstep("zoey", 6);
+            sc.setstep("zoey", -2);
+            sc.setstep("chloe", 3);
             g.roomTimeout = setTimeout(function () {
                 g.pass = 502;
                 char.room(28);
@@ -563,8 +571,8 @@ room501.chatcatch = function (callback) {
             break;
         case "zoeyDestroy":
             scc.love("zoey", -999, 100);
-            sc.setstep("zoey", 10);
-            sc.setstep("chloe", 2);
+            sc.setstep("zoey", 301);
+            sc.setstep("chloe", 3);
             g.setflag("zoeyDay");
             char.addtime(147);
             char.room(0);
@@ -717,7 +725,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "I'm really busy, do you mind coming back sometime?",
             button: [
-                { chatID: -1, text: "Sure. Later ", callback: "leave" }
+                { chatID: -1, text: "Sure. Later ", callback: "" }
             ]
         },
         {
@@ -1162,7 +1170,8 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "Tu as raison. She'll be coming by shortly. I've got to get ready. I'll see you later.",
             button: [
-                { chatID: -1, text: "okay. Talk to her. I'm sure she'll tell you the truth. ", callback: "5endbad" }
+                { chatID: -1, text: "okay. Talk to her. I'm sure she'll tell you the truth. ", callback: "5endbad" },
+                { chatID: 71, text: "You know... I changed my mind. I'm in. You're my best friend and I trust you.", callback: "" }
             ]
         },
         {
@@ -1281,8 +1290,8 @@ room501.chat = function (chatID) {
             chatID: 84,
             speaker: "me",
             text: "Oh wow " + sc.n("chloe") + " really is cheating on " + sc.n("zoey") + "! " +
-                (sc.checkevent("zoey", -3) ? "I knew it, I have to tell " + sc.n("zoey") + "!" :
-                    " I can't believe how stupid I was! I need to tell " + sc.n("zoey") + "!"),
+                (sc.getstep("chloe") === 0 ? "I knew it, I have to tell " + sc.n("zoey") + "!" :
+                    "I can't believe I wasn't the only one she tried to cheat with. I should tell " + sc.n("zoey") + "!"),
             button: [
                 { chatID: 85, text: "Tell " + sc.n("zoey"), callback: "tellZoey" }
             ]
@@ -1349,7 +1358,7 @@ room501.chat = function (chatID) {
             chatID: 92,
             speaker: "zoey",
             text: "You're right. I am crazy. Crazy about you. Au moins j'étais fou de toi. But I'm not anymore. I always thought we " +
-            "we're going to be something I know now we will never be.", 
+                "we're going to be something I know now we will never be.",
             button: [
                 { chatID: 93, text: "...", callback: "" }
             ]
@@ -1374,7 +1383,7 @@ room501.chat = function (chatID) {
             chatID: 95,
             speaker: "chloe",
             text: "I did not mean to hurt you. You were there for me when times were tough. I will always have " +
-            "a spot in my heart for you. Au revoir. ",
+                "a spot in my heart for you. Au revoir. ",
             button: [
                 { chatID: 96, text: "...", callback: "zoeyCry" }
             ]
@@ -1400,7 +1409,7 @@ room501.chat = function (chatID) {
             speaker: "chloe",
             text: "What's even worse is that " + sc.n("me") + " knows that and he played games to 'catch me' by going through " +
                 "my stuff! I can't believe you two. " + sc.n("zoey") + " you should've talked to me, and " + sc.n("me") + " should " +
-            "have been honest and told her you fucked me. This is stupid, I'm out of here!",
+                "have been honest and told her were fucking around with me. This is stupid, I'm out of here!",
             button: [
                 { chatID: 99, text: "Ooooooohhhhhhh", callback: "zoeyCry" }
             ]
@@ -1408,17 +1417,18 @@ room501.chat = function (chatID) {
         {
             chatID: 99,
             speaker: "zoey",
-            text: "I can't even right now. I don't think I can ever look you in the face. You need to go.. just go.",
+            text: "I can't even right now. I don't think I can ever look you in the face. You need to go.. just go. Never come back " +
+                "here again! We'll never be friends!",
             button: [
                 { chatID: -1, text: "I know. I'm so sorry.", callback: "zoeyDestroy" }
             ]
         },
         {
             chatID: 100,
-            speaker: "me",
-            text: "So how's things with " + sc.n("chloe") + "?",
+            speaker: "zoey",
+            text: "I'm so glad you're around. You can lick my ass in video games! ",
             button: [
-                { chatID: 101, text: "...", callback: "zlook" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
@@ -1446,8 +1456,39 @@ room501.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "repeat6" }
             ]
         },
-
-
+        {
+            chatID: 104,
+            speaker: "zoey",
+            text: "ooooooooohhhhh right there",
+            button: [
+                { chatID: -1, text: "[Silently leave]", callback: "peek2" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "zoey",
+            text: "I just found out " + sc.n("chloe") + " has been cheating on me. I confronted her about it and she admitted everything. ",
+            button: [
+                { chatID: 106, text: "oh", callback: "" }
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "zoey",
+            text: "I can't believe my best friend wouldn't support me. Tu ne me fais pas confiance. My best friend has to support me and  " +
+                "since you can't support me, we aren't friends anymore. You should go now. I don't think I can look at you again. ",
+            button: [
+                { chatID: 107, text: "but...", callback: "" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "zoey",
+            text: "No, not my butt. We're done. Goodbye.",
+            button: [
+                { chatID: -1, text: "Sad whimper.", callback: "zoeyDestroy" }
+            ]
+        },
     ];
     //chloe - there is no good or bad, only fun and not fun
     if (cArray.length > chatID && chatID > -1)
