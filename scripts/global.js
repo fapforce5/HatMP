@@ -21,6 +21,7 @@ g.prevRoom;
 g.prevview = null;
 g.pw = "dGhhbmt5b3U=";
 g.passtime = [0, 8, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500];
+g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
 
 g.roomID = 1;
 g.dt = g.startDate;
@@ -129,6 +130,7 @@ g.st = [
     { n: "gworkout", t: false, q: "day" },
     { n: "tim", t: false, q: "day" },
     { n: "cindy", t: false, q: "day" },
+    { n: "doc", t: false, q: "day" },
 
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
@@ -145,25 +147,25 @@ g.sissy = [
     { id: 2, pID: 20, icon: "missy3", x: 4, y: 9, name: "Furniture", description: "You will learn to know your place.", ach: false, active: true, points: false },
 
     { id: 3, pID: 2, icon: "hypno0", x: 5, y: 9, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: false },
-    { id: 4, pID: 3, icon: "hypno1", x: 5, y: 10, name: "Hypno", description: "Watch the hypno tube", ach: false, active: false, points: false },
-    { id: 5, pID: 4, icon: "hypno2", x: 5, y: 11, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: false },
+    { id: 4, pID: 3, icon: "hypno1", x: 5, y: 10, name: "Hypno", description: "Watch the hypno tube", ach: false, active: false, points: true },
+    { id: 5, pID: 4, icon: "hypno2", x: 5, y: 11, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: true },
 
     { id: 6, pID: 3, icon: "chastity", x: 6, y: 9, name: "Chastity Training", description: "What a worthless flag of skin you have", ach: false, active: true, points: false },
-    { id: 7, pID: 6, icon: "cock1", x: 6, y: 10, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: false, points: false },
-    { id: 8, pID: 7, icon: "cock2", x: 6, y: 11, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", ach: false, active: true, points: false },
-    { id: 9, pID: 8, icon: "cock3", x: 6, y: 12, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", ach: false, active: true, points: false },
-    { id: 10, pID: 9, icon: "cock4", x: 6, y: 13, name: "It's a Clitty", description: "You're no longer a man, sissy", ach: false, active: true, points: false },
-    { id: 11, pID: 51, icon: "cock5", x: 20, y: 9, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", ach: false, active: false, points: false },
+    { id: 7, pID: 6, icon: "cock1", x: 6, y: 10, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: false, points: true },
+    { id: 8, pID: 7, icon: "cock2", x: 6, y: 11, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", ach: false, active: true, points: true },
+    { id: 9, pID: 8, icon: "cock3", x: 6, y: 12, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", ach: false, active: true, points: true },
+    { id: 10, pID: 9, icon: "cock4", x: 6, y: 13, name: "It's a Clitty", description: "You're no longer a man, sissy", ach: false, active: true, points: true },
+    { id: 11, pID: 51, icon: "cock5", x: 20, y: 9, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", ach: false, active: false, points: true },
 
     { id: 12, pID: 6, icon: "bj", x: 7, y: 9, name: "Blow Me", description: "Work on your BJ skills", ach: false, active: true, points: false },
     { id: 13, pID: 12, icon: "gloryhole0", x: 7, y: 8, name: "Glory Hole Slut", description: "Present your mouth at a glory hole", ach: false, active: true, points: true },
-    { id: 14, pID: 12, icon: "date0", x: 7, y: 10, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", ach: false, active: false, points: false },
+    { id: 14, pID: 12, icon: "date0", x: 7, y: 10, name: "Firendly Oral", description: "Go down on your dates and friends [Not Implemented]", ach: false, active: false, points: true },
 
     { id: 15, pID: 12, icon: "redroom", x: 8, y: 9, name: "Red Room", description: "Prove your Worth", ach: false, active: true, points: false },
 
     { id: 16, pID: 15, icon: "takeit", x: 9, y: 9, name: "Take It Slut", description: "Bend over and serve", ach: false, active: true },
-    { id: 17, pID: 16, icon: "gloryhole1", x: 9, y: 8, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", ach: false, active: true, points: false },
-    { id: 18, pID: 16, icon: "date1", x: 9, y: 10, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", ach: false, active: true, points: false },
+    { id: 17, pID: 16, icon: "gloryhole1", x: 9, y: 8, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole [Not Implemented]", ach: false, active: true, points: true },
+    { id: 18, pID: 16, icon: "date1", x: 9, y: 10, name: "Make Your Date Happy", description: "Offer your sissy hole to your dates and friends [Not Implemented]", ach: false, active: true, points: true },
 
     { id: 19, pID: 16, icon: "sewer", x: 10, y: 9, name: "Sewer Search", description: "Search the sewer", ach: false, active: true, points: false },
 
@@ -173,48 +175,49 @@ g.sissy = [
     { id: 23, pID: 24, icon: "p3", x: 4, y: 3, name: "Dress", description: "How to dress like a lady", ach: false, active: true, points: false },
 
     { id: 24, pID: 22, icon: "cross0", x: 4, y: 3, name: "Cross dress", description: "Cross Dressing Class", ach: false, active: true, points: false },
-    { id: 25, pID: 24, icon: "heels", x: 3, y: 3, name: "High Heels", description: "Learn how to walk in high heels", ach: false, active: false, points: false },
-    { id: 26, pID: 24, icon: "makeup0", x: 4, y: 2, name: "Makeup", description: "You can go out wearing makeup", ach: false, active: false, points: false },
-    { id: 27, pID: 26, icon: "makeup1", x: 4, y: 1, name: "Piercing", description: "You can get piercings", ach: false, active: false, points: false },
+    { id: 25, pID: 24, icon: "heels", x: 3, y: 3, name: "High Heels", description: "Learn how to walk in high heels", ach: false, active: false, points: true },
+    { id: 26, pID: 24, icon: "makeup0", x: 4, y: 2, name: "Makeup", description: "You can go out wearing makeup", ach: false, active: false, points: true },
+    { id: 27, pID: 26, icon: "makeup1", x: 4, y: 1, name: "Piercing", description: "You can get piercings", ach: false, active: false, points: true },
 
     { id: 28, pID: 24, icon: "diner", x: 6, y: 3, name: "Diner", description: "Diner Case", ach: false, active: true, points: false },
 
     { id: 29, pID: 28, icon: "cross1", x: 7, y: 3, name: "Cross dress", description: "You can cross dress in public", ach: false, active: true, points: false },
 
-    { id: 30, pID: 28, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", ach: false, active: false, points: false },
+    { id: 30, pID: 28, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos  [Not Implemented]", ach: false, active: false, points: true },
 
-    { id: 31, pID: 29, icon: "clothes0", x: 7, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: false, points: false },
-    { id: 32, pID: 31, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: true, points: false },
-    { id: 33, pID: 32, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: true, points: false },
-    { id: 34, pID: 33, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true, points: false },
+    { id: 31, pID: 29, icon: "clothes0", x: 7, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true, points: true },
+    { id: 32, pID: 31, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: true, points: true },
+    { id: 33, pID: 32, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: true, points: true },
+    { id: 34, pID: 33, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true, points: true },
 
-    { id: 35, pID: 29, icon: "chest2", x: 8, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: false },
-    { id: 36, pID: 35, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: false },
-    { id: 37, pID: 36, icon: "chest4", x: 10, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true, points: false },
-    { id: 38, pID: 37, icon: "chest5", x: 11, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true, points: false },
-    { id: 39, pID: 38, icon: "chest6", x: 12, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true, points: false },
+    { id: 35, pID: 29, icon: "chest2", x: 8, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: true },
+    { id: 36, pID: 35, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: true },
+    { id: 37, pID: 36, icon: "chest4", x: 10, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true, points: true },
+    { id: 38, pID: 37, icon: "chest5", x: 11, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true, points: true },
+    { id: 39, pID: 38, icon: "chest6", x: 12, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true, points: true },
 
-    { id: 40, pID: 29, icon: "leg1", x: 8, y: 4, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true, points: false },
-    { id: 41, pID: 40, icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true, points: false },
-    { id: 42, pID: 41, icon: "leg3", x: 10, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true, points: false },
-    { id: 43, pID: 42, icon: "leg4", x: 11, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true, points: false },
-    { id: 44, pID: 43, icon: "leg5", x: 12, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true, points: false },
+    { id: 40, pID: 29, icon: "leg1", x: 8, y: 4, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true, points: true },
+    { id: 41, pID: 40, icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true, points: true },
+    { id: 42, pID: 41, icon: "leg3", x: 10, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true, points: true },
+    { id: 43, pID: 42, icon: "leg4", x: 11, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true, points: true },
+    { id: 44, pID: 43, icon: "leg5", x: 12, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true, points: true },
     
-    { id: 45, pID: 29, icon: "lip1", x: 7, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: false },
-    { id: 46, pID: 45, icon: "lip2", x: 8, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: false },
+    { id: 45, pID: 29, icon: "lip1", x: 7, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: true },
+    { id: 46, pID: 45, icon: "lip2", x: 8, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: true },
 
-    { id: 47, pID: 19, icon: "fight0", x: 10, y: 10, name: "Strip", description: "You can strip your clothes in a fight", ach: false, active: true, points: false },
-    { id: 48, pID: 47, icon: "fight1", x: 10, y: 11, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", ach: false, active: true, points: false },
-    { id: 49, pID: 48, icon: "fight2", x: 10, y: 12, name: "Sexy Dance", description: "You can do a sexy dance during a fight", ach: false, active: true, points: false },
-    { id: 50, pID: 49, icon: "fight3", x: 10, y: 13, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", ach: false, active: true, points: false },
+    { id: 47, pID: 19, icon: "fight0", x: 10, y: 10, name: "Strip", description: "You can strip your clothes in a fight", ach: false, active: true, points: true },
+    { id: 48, pID: 47, icon: "fight1", x: 10, y: 11, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", ach: false, active: true, points: true },
+    { id: 49, pID: 48, icon: "fight2", x: 10, y: 12, name: "Sexy Dance", description: "You can do a sexy dance during a fight", ach: false, active: true, points: true },
+    { id: 50, pID: 49, icon: "fight3", x: 10, y: 13, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", ach: false, active: true, points: true },
 
-    { id: 51, pID: 19, icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false, points: false },
-    { id: 52, pID: 51, icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false, points: false },
-    { id: 53, pID: 52, icon: "date2", x: 11, y: 10, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", ach: false, active: false, points: false },
+    { id: 51, pID: 19, icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false, points: true },
+    { id: 52, pID: 51, icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false, points: true },
+    { id: 53, pID: 52, icon: "date2", x: 11, y: 10, name: "Submissive Slut", description: "Full slut. Your date can use you however they want [Not Implemented]", ach: false, active: false, points: true },
 
     { id: 54, pID: null, icon: "missy0", x: 1, y: 7, name: "Contract", description: "Introduction", ach: false, active: true, points: false },
 
     { id: 55, pID: 19, icon: "redbox", x: 11, y: 9, name: "What's in the box", description: "Discover what's in the box!", ach: false, active: false, points: false },
+    { id: 56, pID: 0, icon: "cancel", x: 19, y: 2, name: "Cancel", description: "Cancel and leave the classroom", ach: false, active: true, points: false}
 ];
 
 g.supersissy = function () {
@@ -434,7 +437,7 @@ g.rooms = [
     { roomID: 19, name: "On Bed", image: "19_layInBed/bg.jpg", nightImage: "19_layInBed/bg.jpg", houseID: 16, btn: "roomBtn_19.png" },
     { roomID: 20, name: "Dishes", image: "20_dishes/20_dishes.png", nightImage: "20_dishes/20_dishes.png", houseID: 16, btn: "roomBtn_20.png" },
     { roomID: 21, name: "Mother's Room Spanking", image: "21_motherSpank/021_spankBG.jpg", nightImage: "21_motherSpank/021_spankBG.jpg", houseID: 16, btn: "roomBtn_21.png" },
-    { roomID: 22, name: "Toilet", image: "22_toilet/022_pee_dick.png", nightImage: "22_toilet/022_pee_dick.png", houseID: 10, btn: "roomBtn_22.png" },
+    { roomID: 22, name: "Toilet", image: "22_toilet/12.jpg", nightImage: "22_toilet/12.jpg", houseID: 10, btn: "roomBtn_22.png" },
     { roomID: 23, name: "Truth or Dare", image: "24_spinTheBottle/013_spinBG.jpg", nightImage: "24_spinTheBottle/013_spinBG.jpg", houseID: 16, btn: "roomBtn_23.png" },
     { roomID: 24, name: "Spin the bottle", image: "24_spinTheBottle/013_spinBG.jpg", nightImage: "24_spinTheBottle/013_spinBG.jpg", houseID: 16, btn: "roomBtn_24.png" },
     { roomID: 25, name: "Dining Room", image: "25_dining/025_diningRoom.jpg", nightImage: "25_dining/025_diningRoomNight.jpg", houseID: 16, btn: "roomBtn_25.png" },
@@ -533,7 +536,7 @@ g.rooms = [
 
     { roomID: 650, name: "Toys 'n Us", image: "650_toyStore/650_front.jpg", nightImage: "650_toyStore/650_front.jpg", houseID: 650, btn: "roomBtn_650.png" },
     { roomID: 651, name: "T'n U Hallway", image: "651_wackHallway/651_hallway.jpg", nightImage: "651_wackHallway/651_hallway.jpg", houseID: 650, btn: "roomBtn_651.png" },
-    { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.png", nightImage: "661_peephole/661_backroom.png", houseID: 650, btn: "roomBtn_661.png" },
+    { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.jpg", nightImage: "661_peephole/661_backroom.jpg", houseID: 650, btn: "roomBtn_661.png" },
 
     { roomID: 700, name: "Waiting Room", image: "700_waitingroom/waitingroom.jpg", nightImage: "700_waitingroom/night.jpg", houseID: 700, btn: "roomBtn_700.png" },
     { roomID: 701, name: "Hospital Room", image: "701_hospitalroom/room.jpg", nightImage: "701_hospitalroom/night.jpg", houseID: 700, btn: "roomBtn_701.png" },
@@ -541,6 +544,8 @@ g.rooms = [
     { roomID: 725, name: "Bar", image: "725_club/club.jpg", nightImage: "725_club/club.jpg", houseID: 725, btn: "roomBtn_725.png" },
     { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
     { roomID: 727, name: "Unisex Bathroom", image: "727_bathroom/bg.jpg", nightImage: "727_bathroom/bg.jpg", houseID: 725, btn: "roomBtn_726.png" },
+
+    { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_726.png" },
 
     { roomID: 900, name: "College Entrance", image: "900_college/900_college.png", nightImage: "900_college/900_college.png", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Pool", image: "901_pool/pool.jpg", nightImage: "901_pool/pool.jpg", houseID: 901, btn: "roomBtn_901.png" },
@@ -575,6 +580,7 @@ g.roomMap = [
     { roomID: 650, access: true, darkAccess: false, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
     { roomID: 700, access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
     { roomID: 725, access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
+    { roomID: 750, access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
     { roomID: 901, access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
     { roomID: 910, access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
@@ -799,10 +805,6 @@ g.initGame = function () {
     g.roomID = 7;
     //$("#room_left_map").hide();
     g.dt = char.addMinutes(g.startDate, 757);
-    $("#char_time").css({
-        "width": 25 * g.ratio + "px",
-        "height": 25 * g.ratio + "px",
-    });
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "slimeMonsters":

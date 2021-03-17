@@ -360,6 +360,15 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(61, 209);
             break;
+        case "h_31":
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displayMissybtn");
+            chat(126, 209);
+            break;
         case "h_35":
         case "h_36":
         case "h_37":
@@ -398,6 +407,10 @@ room209.btnclick = function (name) {
             room209.btnclick("displayChairsit");
             room209.btnclick("displayMissybtn");
             chat(63, 209);
+            break;
+        case "h_56":
+            char.addtime(20);
+            char.room(201);
             break;
         default:
             break;
@@ -834,13 +847,53 @@ room209.chatcatch = function (callback) {
             g.sissy[20].ach = true;
             room209.chatcatch("end");
             break;
+        case "h_21_1":
+            nav.killall();
+            nav.bg("209_classroom/h21_1.jpg");
+            break;
+        case "h_21_2":
+            nav.bg("209_classroom/h21_2.jpg");
+            break;
         case "h_21_end":
             g.mod("sissy", 10);
             g.mod("money", 40);
             g.sissy[21].ach = true;
             room209.chatcatch("end");
             break;
-        case "h_22_end":
+        case "h_22_1":
+            nav.killall();
+            nav.bg("209_classroom/h22_1.jpg");
+            break;
+        case "h_22_2":
+            nav.bg("209_classroom/h22_2.jpg");
+            break;
+        case "h_22_3":
+            nav.bg("209_classroom/h22_3.jpg");
+            break;
+        case "h_22_4":
+            nav.bg("22_toilet/s_201.jpg");
+            if (cl.c.chastity === null)
+                peecock = "s_hairy.png";
+            else {
+                if (cl.c.chastity === "metal")
+                    peecock = "s_metal.png";
+                else if (cl.c.chastity === "cage")
+                    peecock = "s_cage.png";
+                else
+                    peecock = "s_pink.png";
+            }
+            nav.button({
+                "type": "img",
+                "name": "cock",
+                "left": 722,
+                "top": 0,
+                "width": 698,
+                "height": 1080,
+                "image": "22_toilet/" + peecock
+            }, 22);
+            g.roomTimeout = setTimeout(function () { chat(124, 209); }, 1500);
+            break;
+        case "h_22_5":
             g.mod("sissy", 10);
             g.mod("money", 40);
             g.sissy[22].ach = true;
@@ -910,6 +963,10 @@ room209.chatcatch = function (callback) {
             char.addtime(60);
             g.internal = "201 change";
             char.room(201);
+            break;
+        case "h_31_end":
+            g.sissy[31].ach = true;
+            room209.chatcatch("end");
             break;
         case "h_40":
             nav.killall();
@@ -1043,8 +1100,8 @@ room209.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "missy",
-                text: "Welcome to the first day of your class. Being that you completely bungled your only simple case I've decided to rush " +
-                    "you into my personal training. ",
+                text: "Welcome to the first day of your class. That cult is really getting out of hand and needs to be stopped! " +
+                    "Because of this immediate need I'm going to rush you into my personal training. ",
                 button: [
                     { chatID: 4, text: "...", callback: "" }
                 ]
@@ -1443,17 +1500,19 @@ room209.chat = function (chatID) {
             {
                 chatID: 47,
                 speaker: "p",
-                text: "With artist",
+                text: "So you want to be more feminine? Like most boys you probably think that if you put your self in a dress, " +
+                    "slap some tits on your chest and you're a girl. Being a girl is not about your body, it's about your mind. " +
+                    "Take a look at how you're sitting.",
                 button: [
-                    { chatID: -1, text: "skip", callback: "h_21_end" }
+                    { chatID: 115, text: "How am I sitting?", callback: "h_21_1" }
                 ]
             },
             {
                 chatID: 48,
                 speaker: "p",
-                text: "With artist",
+                text: "So now that you know how to sit, you need to know when to sit. Follow me to the powder room.",
                 button: [
-                    { chatID: -1, text: "skip", callback: "h_22_end" }
+                    { chatID: 119, text: "ok", callback: "h_22_1" }
                 ]
             },
             {
@@ -1790,7 +1849,7 @@ room209.chat = function (chatID) {
                 text: "Good, those are the only words a slave needs. Your training will continue in " +
                     "my training room, specifically the Red Room.",
                 button: [
-                    { chatID: 88, text: "...", callback: "" },
+                    { chatID: 88, text: "...", callback: "" }
                 ]
             },
             {
@@ -1801,7 +1860,7 @@ room209.chat = function (chatID) {
                     "so much time in my day you'll have to arrive by 10:00 each day you wish to progress. Do you understand?",
                 button: [
                     { chatID: 87, text: "Sorry mistress, can you repeat that", callback: "" },
-                    { chatID: 89, text: "Yes mistress.", callback: "" },
+                    { chatID: 89, text: "Yes mistress.", callback: "" }
                 ]
             },
             {
@@ -1809,7 +1868,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Good now go. ",
                 button: [
-                    { chatID: -1, text: "Yes mistress", callback: "h12_1_end" },
+                    { chatID: -1, text: "Yes mistress", callback: "h12_1_end" }
                 ]
             },
             {
@@ -1817,7 +1876,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "So, you feel you're ready to be bent over and made a slut? Stand up.",
                 button: [
-                    { chatID: 91, text: "Yes mistress", callback: "h16_1" },
+                    { chatID: 91, text: "Yes mistress", callback: "h16_1" }
                 ]
             },
             {
@@ -1825,7 +1884,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "Oooo I want to play too! Strip to your panties!",
                 button: [
-                    { chatID: 92, text: "[Strip]", callback: "h16_2" },
+                    { chatID: 92, text: "[Strip]", callback: "h16_2" }
                 ]
             },
             {
@@ -1833,7 +1892,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "I think a sissy in panties is so sexy! I need to see that cute butt of yours!",
                 button: [
-                    { chatID: 93, text: "Thank you?", callback: "h16_3" },
+                    { chatID: 93, text: "Thank you?", callback: "h16_3" }
                 ]
             },
             {
@@ -1841,7 +1900,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "Such a nice butt! It really needs to be spread open! Strip down those panties mister!",
                 button: [
-                    { chatID: 94, text: "[Remove your panties]", callback: "h16_4" },
+                    { chatID: 94, text: "[Remove your panties]", callback: "h16_4" }
                 ]
             },
             {
@@ -1849,7 +1908,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "Oh yes! Really nice! Breaking that in is going to be amazing.",
                 button: [
-                    { chatID: 95, text: "....", callback: "h16_5" },
+                    { chatID: 95, text: "....", callback: "h16_5" }
                 ]
             },
             {
@@ -1857,7 +1916,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Oh yes. Big red here has been itching for that ass.",
                 button: [
-                    { chatID: 96, text: "....", callback: "" },
+                    { chatID: 96, text: "....", callback: "" }
                 ]
             },
             {
@@ -1866,7 +1925,7 @@ room209.chat = function (chatID) {
                 text: "Oh no! There's no way that is fitting in! I've never had anything like that in me, it will hurt so " +
                     "so much! I can't believe I asked for this. Surly she can't really use that on me.",
                 button: [
-                    { chatID: 97, text: "....", callback: "" },
+                    { chatID: 97, text: "....", callback: "" }
                 ]
             },
             {
@@ -1874,7 +1933,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "Don't worry honey, we'll be gental. Now bend over and spread those little cheeks of yours.",
                 button: [
-                    { chatID: 98, text: "[Bend and spread]", callback: "h16_6" },
+                    { chatID: 98, text: "[Bend and spread]", callback: "h16_6" }
                 ]
             },
             {
@@ -1882,7 +1941,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "That looks hungry for dick doesn't it?",
                 button: [
-                    { chatID: 99, text: "*Whimper*", callback: "" },
+                    { chatID: 99, text: "*Whimper*", callback: "" }
                 ]
             },
             {
@@ -1890,7 +1949,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "So very hungry. Shall we reward him with lube, or go dry?",
                 button: [
-                    { chatID: 100, text: "*Whimper More*", callback: "" },
+                    { chatID: 100, text: "*Whimper More*", callback: "" }
                 ]
             },
             {
@@ -1898,7 +1957,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "I'm going to lube this slut up!",
                 button: [
-                    { chatID: 101, text: "...", callback: "h16_7" },
+                    { chatID: 101, text: "...", callback: "h16_7" }
                 ]
             },
             {
@@ -1906,7 +1965,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Oh yeah, get in there girl.",
                 button: [
-                    { chatID: 102, text: "*Moan*", callback: "h16_8" },
+                    { chatID: 102, text: "*Moan*", callback: "h16_8" }
                 ]
             },
             {
@@ -1914,7 +1973,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "There nice and drippy!",
                 button: [
-                    { chatID: 103, text: "...", callback: "h16_9" },
+                    { chatID: 103, text: "...", callback: "h16_9" }
                 ]
             },
             {
@@ -1922,7 +1981,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Let me get your sissy pussy ready.",
                 button: [
-                    { chatID: 104, text: "...", callback: "h16_10" },
+                    { chatID: 104, text: "...", callback: "h16_10" }
                 ]
             },
             {
@@ -1930,7 +1989,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "This pussy really grips my finger",
                 button: [
-                    { chatID: 105, text: "*Moan*", callback: "" },
+                    { chatID: 105, text: "*Moan*", callback: "" }
                 ]
             },
             {
@@ -1938,7 +1997,7 @@ room209.chat = function (chatID) {
                 speaker: "thinking",
                 text: "Oh wow! That really feels good. Why does that feel so good? Am I really a butt slut sissy?",
                 button: [
-                    { chatID: 106, text: "...", callback: "h16_11" },
+                    { chatID: 106, text: "...", callback: "h16_11" }
                 ]
             },
             {
@@ -1946,7 +2005,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Are you ready to get split open? Bend over face down, ass up slut!",
                 button: [
-                    { chatID: 107, text: "Oh no!", callback: "h16_12" },
+                    { chatID: 107, text: "Oh no!", callback: "h16_12" }
                 ]
             },
             {
@@ -1955,7 +2014,7 @@ room209.chat = function (chatID) {
                 text: "Don't worry my little sissy, I'm only going to use this little dildo on you. You're aren't sissy " +
                     "enough for " + sc.n("missy") + "'s cock just yet. ",
                 button: [
-                    { chatID: 108, text: "Sigh in relief", callback: "h16_13" },
+                    { chatID: 108, text: "Sigh in relief", callback: "h16_13" }
                 ]
             },
             {
@@ -1964,7 +2023,7 @@ room209.chat = function (chatID) {
                 text: "Don't worry my little sissy, I'm only going to use this little dildo on you. You're aren't sissy " +
                     "enough for " + sc.n("missy") + "'s cock just yet. ",
                 button: [
-                    { chatID: 109, text: "Sigh in relief", callback: "h16_14" },
+                    { chatID: 109, text: "Sigh in relief", callback: "h16_14" }
                 ]
             },
             {
@@ -1972,7 +2031,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Take it slut",
                 button: [
-                    { chatID: 110, text: "Grunt", callback: "h16_15" },
+                    { chatID: 110, text: "Grunt", callback: "h16_15" }
                 ]
             },
             {
@@ -1980,7 +2039,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "Oh yes, Grip my rubber dick sissy!",
                 button: [
-                    { chatID: 111, text: "Grunt", callback: "h16_16" },
+                    { chatID: 111, text: "Grunt", callback: "h16_16" }
                 ]
             },
             {
@@ -1988,7 +2047,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "You'll make a great sissy hole in my pink room. Can't wait to see you there!",
                 button: [
-                    { chatID: 112, text: "Groan..", callback: "" },
+                    { chatID: 112, text: "Groan..", callback: "" }
                 ]
             },
             {
@@ -1996,7 +2055,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "You've really come a long way. You'll be a full on sissy before you even realize it.",
                 button: [
-                    { chatID: -1, text: "Thank you ma'am", callback: "h16_end" },
+                    { chatID: -1, text: "Thank you ma'am", callback: "h16_end" }
                 ]
             },
             {
@@ -2004,7 +2063,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Let us talk about this new case in my office. Follow me my sissy butt slut.",
                 button: [
-                    { chatID: -1, text: "[Follow her]", callback: "h_19" },
+                    { chatID: -1, text: "[Follow her]", callback: "h_19" }
                 ]
             },
             {
@@ -2014,6 +2073,113 @@ room209.chat = function (chatID) {
                     "She'll show you how to suck a cock like the sissy you are. She likes to hang out in the toilets. ",
                 button: [
                     { chatID: -1, text: "Ok. I'll see " + sc.n("cecilia") + " in the park bathroom this weekend. ", callback: "h_13" },
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "p",
+                text: "You're sitting on that chair like your dickis on display " +
+                    "for everyone to partake. You're hunched over almost like you're taking a shit on my chair, and your face " +
+                    "is about as exciting and interesting as a box of woodchips. ",
+                button: [
+                    { chatID: 116, text: "ouch", callback: "" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "p",
+                text: "So here's your first lesson with me. When ever you sit, picture a pretty little pussy between your legs. " +
+                    "Unlike a cock that gets shoved in everyone's face, your pussy is a treasure that you need to protect from " +  
+                    "all the cocks in this world. That is why you're going to cross your legs when you sit from now on. ",
+                button: [
+                    { chatID: 117, text: "ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "p",
+                text: "Also no more glum boring faces. A glum boring girl never gets asked to dance. Your face needs to " +
+                    "be inviting becuase your legs are not. You need a warm, inviting and happy face that looks up, not " + 
+                    "scans the floor beneth your feet. Go ahead try it.",
+                button: [
+                    { chatID: 118, text: "ok", callback: "h_21_2" }
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "p",
+                text: "Oh wow! That's perfect. You see, even your your body hasn't changed, you look like a girl by just changing " +
+                    "the way you sit and present yourself. I may even mistake your for a boyish lesbian when you sit like that. " +
+                    "when you come back next week we will go further in how to properly sit. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "h_21_end" }
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "p",
+                text: "Now you need to go up to the toilet and pee for me.",
+                button: [
+                    { chatID: 120, text: "What?!", callback: "" }
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "p",
+                text: "Don't act all proper. You know you want to pull your dick out in front of me. Now piss for me!",
+                button: [
+                    { chatID: 121, text: "Ok, here goes!", callback: "h_22_2" }
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "p",
+                text: "Now stop right there. Notice how your dicks out pointing at the toilet? ",
+                button: [
+                    { chatID: 122, text: "hmmm?", callback: "" }
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "p",
+                text: "Like all boys you just whip your dick out and spray your piss everywhere! You boys really are disgusting " +
+                    "when it comes to using using a toilet. You're no longer a boy, you're a girl. You have to sit to pee now everytime.",
+                button: [
+                    { chatID: 123, text: "Sit to pee?", callback: "h_22_3" }
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "p",
+                text: "Yes you sissy girl! Sit to pee! From now on everytime you pee you'll picture yourself as a pretty little " +
+                    "girl with big boobs when you sit to pee. NOW SIT AND PEE SLUT!",
+                button: [
+                    { chatID: -1, text: "Squeal", callback: "h_22_4" }
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "p",
+                text: "There aren't you a pretty little pee pee girl. From now on you will sit when you pee my pretty little pee pee " +
+                    "slut. ",
+                button: [
+                    { chatID: 125, text: "Yes. I will sit to pee from now on. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "p",
+                text: "That's a good girl! You're really progressing! Such a good girl. ",
+                button: [
+                    { chatID: -1, text: "Thank you. I am a good girl. ", callback: "h_22_5" }
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "p",
+                text: "Work in progress, but here you go!",
+                button: [
+                    { chatID: -1, text: "I can dress sexy", callback: "h_31_end" }
                 ]
             },
         ];

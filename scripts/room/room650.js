@@ -80,7 +80,7 @@ room650.btnclick = function (name) {
                 chat(0, 650);
             }
             else if (tstep < 10) {
-                chat(2, 650);
+                chat(4, 650);
             }
             else if (tstep === 11) {
                 chat(12, 650);

@@ -349,7 +349,7 @@ input[type=text]:disabled{
     border:#f00 thick solid;
 }
 
-#room-inv, #room-menu {
+#room-inv, #room-menu, #room-change, #room-time {
     z-index: 96;
 }
 
@@ -360,7 +360,6 @@ input[type=text]:disabled{
 .room-menu {
     position: absolute;
     cursor: pointer;
-    
 }
 
 .room-menu img{

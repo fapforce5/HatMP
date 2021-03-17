@@ -201,6 +201,15 @@ $(document).ready(function () {
     $(".resize-height").css({
         height: 20 * g.ratio + "px"
     });
+    $("#room-change").click(function () {
+        g.pass = g.roomID;
+        char.room(8);
+    });
+    $("#room-time").click(function () {
+        $("#room-menu").click();
+        menu.mClick("time");
+
+    });
     //$(".width-l").css({
     //    width: 300 * g.ratio + "px"
     //});
@@ -376,7 +385,7 @@ char.saveclothes = function (saveClothes, loadClothes, removeAll) {
 };
 
 char.room = function (roomID) {
-    if (inv.roomChange.includes(roomID) && roomID !== g.roomID)
+    if (g.roomChange.includes(roomID) && roomID !== g.roomID)
         cl.cTemp = $.extend(true, {}, cl.c);
 
     if (!$('#room_footer').is(":visible"))
@@ -400,11 +409,16 @@ char.room = function (roomID) {
     }
     else if(!(g.roomID === 0 || g.roomID === 28))
         g.prevview = $("#room_left_char").is(":visible") ? "body" : ($("#room_left_map").is(":visible") ? "map" : ($("#room_left_graph").is(":visible") ? "graph" : "hide"));
-    if (g.passtime.includes(g.roomID))
-        $("#char_time").show();
-    else
-        $("#char_time").hide();
 
+    if (g.roomChange.includes(g.roomID)) 
+        $("#room-change").show();
+    else 
+        $("#room-change").hide();
+
+    if (g.passtime.includes(g.roomID))
+        $("#room-time").show();
+    else
+        $("#room-time").hide();
 };
 
 char.addMinutes = function (date, minutes) {
@@ -991,6 +1005,15 @@ menu.load = function (cookieName, btn, saveID) {
     $('#room_footer').show();
     $(".room-topper").show();
     $('.menu-tab').show();
+    if (g.roomChange.includes(g.roomID)) 
+        $("#room-change").show();
+    else 
+        $("#room-change").hide();
+
+    if (g.passtime.includes(g.roomID))
+        $("#room-time").show();
+    else
+        $("#room-time").hide();
 };
 
 menu.saveDel = function(btn) {
@@ -1095,6 +1118,18 @@ char.menu = function () {
         "height": 100 * g.ratio + "px",
         "top": 10 * g.ratio + "px",
         "left": 1650 * g.ratio + "px"
+    });
+    $('#room-change').css({
+        "width": 100 * g.ratio + "px",
+        "height": 100 * g.ratio + "px",
+        "top": 10 * g.ratio + "px",
+        "left": 1500 * g.ratio + "px"
+    });
+    $('#room-time').css({
+        "width": 100 * g.ratio + "px",
+        "height": 100 * g.ratio + "px",
+        "top": 10 * g.ratio + "px",
+        "left": 1350 * g.ratio + "px"
     });
     $('.resize-text').css({
         "font-size": 1.5 * g.ratio + "rem"

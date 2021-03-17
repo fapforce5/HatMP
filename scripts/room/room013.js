@@ -259,6 +259,9 @@ room13.btnclick = function (name) {
                 case 12:
                     chat(135, 13);
                     break;
+                case 200:
+                    chat(147, 13);
+                    break;
             }
 
             break;
@@ -318,6 +321,9 @@ room13.btnclick = function (name) {
                 case 10:
                 case 11:
                     chat(136, 13);
+                    break;
+                case 200:
+                    chat(148, 13);
                     break;
                 default:
                     break;
@@ -2022,6 +2028,22 @@ room13.chat = function (chatID) {
             text: "Hopefully you like them! You need to get out of here before " + sc.n("landlord") + " gets back though.",
             button: [
                 { chatID: -1, text: "Ok! see you later!", callback: "9presentx" }
+            ]
+        },
+        {
+            chatID: 147,
+            speaker: "lola",
+            text: "We're going to have so much sister time fun! Coming in a future release.",
+            button: [
+                { chatID: -1, text: "Ok! see you later!", callback: "" }
+            ]
+        },
+        {
+            chatID: 148,
+            speaker: "eva",
+            text: "I can't wait to have some girly fun with you! Coming in a future release.",
+            button: [
+                { chatID: -1, text: "Ok! see you later!", callback: "" }
             ]
         },
     ];

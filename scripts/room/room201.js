@@ -11,55 +11,36 @@ room201.main = function () {
             chat(11, 201);
         }
     }
+    else if (g.pass === "cleanbathroom") {
+        g.pass = "";
+        nav.button({
+            "type": "btn",
+            "name": "clothes",
+            "left": 1019,
+            "top": 746,
+            "width": 184,
+            "height": 334,
+            "image": "201_bathroom/201_panties.png"
+        }, 201);
+        chat(0, 201);
+    }
     else if (g.pass === "repeatBathroom") {
         nav.button({
-                "type": "btn",
-                "name": "clothes",
-                "left": 1019,
-                "top": 746,
-                "width": 184,
-                "height": 334,
-                "image": "201_bathroom/201_panties.png"
+            "type": "btn",
+            "name": "clothes",
+            "left": 1019,
+            "top": 746,
+            "width": 184,
+            "height": 334,
+            "image": "201_bathroom/201_panties.png"
         }, 201);
         chat(9, 201);
     }
     else {
-        var missyStep = sc.getstep("missy");
-        var btnList = [];
-        if (missyStep < 9) {
-            btnList = [
-                {
-                    "type": "btn",
-                    "name": "clothes",
-                    "left": 1019,
-                    "top": 746,
-                    "width": 184,
-                    "height": 334,
-                    "image": "201_bathroom/201_clothes.png"
-                }
-            ];
-        }
-        else {
-            btnList = [
-                {
-                    "type": "btn",
-                    "name": "clothes",
-                    "left": 1019,
-                    "top": 746,
-                    "width": 184,
-                    "height": 334,
-                    "image": "201_bathroom/201_panties.png"
-                }
-            ];
-        }
-        $.each(btnList, function (i, v) {
-            nav.button(v, 201);
-        });
-        if (missyStep === 2)
-            chat(0, 201);
-        else 
-            chat(5, 201);
-    } 
+        var navList = [203];
+        nav.buildnav(navList);
+    }
+    
 };
 
 room201.btnclick = function (name) {

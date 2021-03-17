@@ -35,7 +35,9 @@ room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
             var llStep = sc.getstep("landlord");
-            if (!g.hasAccess(16).access) {
+            if (sc.checkevent("landlord", -5) && !sc.checkevent("landlord", -6)) 
+                chat(47, 350);
+            else if (!g.hasAccess(16).access) {
                 chat(43, 350);
             }
             else if (sc.checkevent("landlord", -3)) {
@@ -119,7 +121,17 @@ room350.chatcatch = function (callback) {
             char.room(352);
             break;
         case "doctor":
-
+            sc.setstep("landlord", -4);
+            char.addtime(15);
+            break;
+        case "homecoming":
+            g.roomMapAccess(16, true, true);
+            //sc.setstep("landlord", 16);
+            sc.setstep("lola", 9);
+            sc.setstep("eva", 8);
+            char.addtime(60);
+            char.room(0);
+            //sc.setstep("me", -13);
             break;
         default:
             break;
@@ -524,7 +536,53 @@ room350.chat = function (chatID) {
             text: "I hope so. Also there will be new rules once you get back. I got to keep you dick out of " + sc.n("lola") + 
                 " and " + sc.n("eva") + ".",
             button: [
-                { chatID: -1, text: "ok. I'm going to go find you a doctor to donate sperm.", callback: "doctor" }
+                { chatID: 46, text: "ok. I'm going to go find you a doctor to donate sperm.", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "thinking",
+            text: "Have I run across anyone who said they were a doctor? Who the fuck is a doctor?",
+            button: [
+                { chatID: -1, text: "I need to find him!", callback: "doctor" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "landlord",
+            text: "Ok, I'll admit I did not expect you to find a doctor, but you did. He was the smelliest doctor I've " +
+                "ever come across, but he is a doctor. I'm still not sure about letting you around " + sc.n("lola") + " and " +
+                sc.n("eva") + ". You're still a pervert.",
+            button: [
+                { chatID: 48, text: "I'll be better!", callback: "" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "landlord",
+            text: "No you won't, you're still ruled by your dick. To help you keep your dirty dick beaters to yourself I'm " +
+                "willing to jack you off when ever you need it. Just stop by my room at night when " + sc.n("bigguy") + " isn't " +
+                "visiting. If I jack you off, you have to keep you hands to yourself. Deal?",
+            button: [
+                { chatID: 50, text: "Oh yes! I promise I'll never be perverted to " + sc.n("lola") + " or " + sc.n("eva") + " again. ", callback: "" },
+                { chatID: 49, text: "But I love them, I can't do it ", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "landlord",
+            text: "I figured. You won't be allowed back until you can promise to keep your hands to yourself. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "landlord",
+            text: "Good. Anytime you get horny just visit me in my room and " + sc.n("landlord") + " will take care of your evil " +
+                "peepee. You're free to return home. ",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "homecoming" }
             ]
         },
     ];

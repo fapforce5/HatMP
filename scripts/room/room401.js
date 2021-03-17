@@ -292,8 +292,8 @@ room401.makeClothing = function (type, sex) {
         lewdlevel = [0, 1, 2, 3, 4];
     else if (g.sissy[31].ach)
         lewdlevel = [0, 1, 2, 3];
-    else if (sc.checkevent("me", 7))
-        lewdlevel = [0, 1, 2];
+    else if (g.sissy[29].ach)
+        lewdlevel = [0, 1];
     else if (type === "chastity" && sex === "m")
         lewdlevel = [0, 1];
     else
@@ -301,8 +301,8 @@ room401.makeClothing = function (type, sex) {
 
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
-            canbuy = lewdlevel.includes(cl.list[i].daring)
-            inInv = cl.list[i].inv
+            canbuy = lewdlevel.includes(cl.list[i].daring);
+            inInv = cl.list[i].inv;
             if (!canbuy || inInv)
                 $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
             else

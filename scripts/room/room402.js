@@ -13,10 +13,10 @@ room402.main = function () {
     }
     else {
         g.internal = "";
-        if (sc.getstep("me") < 7) {
+        if (!g.sissy[29].ach) {
             chat(0, 402);
         }
-        else if (sc.getstep("me") > 7) {
+        else {
             nav.button({
                 "type": "btn",
                 "name": "change",

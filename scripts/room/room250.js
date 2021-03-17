@@ -1084,7 +1084,7 @@ room250.chat = function (chatID) {
             speaker: "dolly",
             text: "Awww shucks! You are such a cutie and you don't even know it! oh well back to serving the tables!",
             button: [
-                { chatID: -1, text: "Is that a pickup line?", callback: "dollysuccess" }
+                { chatID: -1, text: "Yeah, back to work.", callback: "dollysuccess" }
             ]
         },
         {

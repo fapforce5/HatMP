@@ -60,7 +60,7 @@ room26.btnclick = function (name) {
                         chat(30, 26);
                     else if (ll === 8)
                         chat(43, 26);
-                    else if (ll > 15) {
+                    else if (ll > 15 && ll < 200) {
                         if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2)) {
                             chat(48, 26);
                         }
@@ -70,6 +70,8 @@ room26.btnclick = function (name) {
                         else
                             chat(2, 26);
                     }
+                    else if (ll === 200)
+                        chat(61, 200);
                     else
                         chat(2, 26);
                 }
@@ -805,6 +807,14 @@ room26.chat = function (chatID) {
             text: "Now run up to your room and put on some clothes. ",
             button: [
                 { chatID: -1, text: "Thank you " + sc.n("landlord") , callback: "panties8" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "landlord",
+            text: "The sissy line hasn't been built yet, to come.",
+            button: [
+                { chatID: -1, text: "Damn", callback: "" },
             ]
         },
     ];

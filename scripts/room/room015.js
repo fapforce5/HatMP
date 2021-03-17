@@ -55,6 +55,16 @@ room15.main = function () {
                 "night": "15_kitchen/dishesNight.png"
             });
         }
+        btnList.push({
+            "type": "btn",
+            "name": "water",
+            "left": 1468,
+            "top": 420,
+            "width": 118,
+            "height": 192,
+            "image": "15_kitchen/water.png"
+        });
+
     }
 
     var navList = [16];
@@ -93,6 +103,29 @@ room15.btnclick = function (name) {
             else
                 chat(2, 15);
             break;
+        case "water":
+            var thisBladder = g.get("bladder");
+            if (thisBladder > .98)
+                chat(3, 15);
+            else {
+                nav.killbutton("water");
+                nav.button({
+                    "type": "img",
+                    "name": "drink",
+                    "left": 632,
+                    "top": 233,
+                    "width": 635,
+                    "height": 614,
+                    "image": "15_kitchen/drink.png"
+                }, 15);
+                g.mod("bladder", .3);
+                cl.display();
+                if (thisBladder > .68)
+                    chat(4, 15);
+                else
+                    chat(5, 15);
+            }
+            break;
         default:
             break;
     }
@@ -127,6 +160,9 @@ room15.chatcatch = function (callback) {
         case "takekey":
             inv.update("landlordKey", true, null);
             break;
+        case "drinkDown":
+            nav.killbutton("drink");
+            break;
         default:
             break;
     }
@@ -151,6 +187,28 @@ room15.chat = function (chatID) {
             speaker: "me",
             text: sc.n("landlord") + " locked the door.. Must figure out a way to get the key!",
             button: []
+        },
+        {
+            chatID: 3,
+            speaker: "thinking",
+            text: "My bladder is already so full! There's no way I can drink anymore. I should go pee.",
+            button: []
+        },
+        {
+            chatID: 4,
+            speaker: "thinking",
+            text: "Oh no! I better go pee before wet my pants!",
+            button: [
+                { chatID: -1, text: ".... ", callback: "drinkDown" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "thinking",
+            text: "Refreshing!",
+            button: [
+                { chatID: -1, text: ".... ", callback: "drinkDown" }
+            ]
         },
     ];
     if (cArray.length > chatID && chatID > -1)

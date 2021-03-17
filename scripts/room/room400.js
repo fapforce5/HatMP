@@ -104,7 +104,7 @@ room400.btnclick = function (name) {
     if (g.pass === "bra")
         char.room(402);
     else if (g.pass === "saucy") {
-        if (sc.getstep("me") > 7) {
+        if (g.sissy[29].ach) {
             g.pass = "saucy";
             char.room(401);
         }
@@ -115,7 +115,7 @@ room400.btnclick = function (name) {
     else if (g.pass === "tiffany0")
         chat(0, 400);
     else if (g.pass === "happyGirl") {
-        if (sc.getstep("me") < 8)
+        if (g.sissy[29].ach)
             chat(1, 400);
         else {
             g.pass = "happyGirl";

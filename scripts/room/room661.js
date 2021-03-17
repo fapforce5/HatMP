@@ -6,10 +6,10 @@ room661.main = function () {
             {
                 "type": "img",
                 "name": "tiffany",
-                "left": 891,
-                "top": 87,
-                "width": 565,
-                "height": 993,
+                "left": 648,
+                "top": 223,
+                "width": 487,
+                "height": 857,
                 "image": "661_peephole/661_tiffany.png"
             }
         ];
@@ -19,7 +19,7 @@ room661.main = function () {
         chat(0, 661);
     }
     else {
-        nav.bg("661_peephole/661_peephole.png");
+        nav.bg("661_peephole/661_peephole.jpg");
         chat(2, 661);
     }
     g.internal = 0;
@@ -39,58 +39,39 @@ room661.chatcatch = function (callback) {
     switch (callback) {
         case "takePlace":
             nav.killall();
-            nav.bg("661_peephole/661_peephole.png");
+            nav.bg("661_peephole/661_peephole.jpg");
             chat(2, 661);
             break;
         case "makePerson":
-            if (Math.floor(Math.random() * 2) === 0) {
-                nav.button({
-                    "type": "img",
-                    "name": "person",
-                    "left": 613,
-                    "top": 395,
-                    "width": 122,
-                    "height": 483,
-                    "image": "661_peephole/661_person0.png"
-                }, 661);
-            }
-            else {
-                nav.button({
-                    "type": "img",
-                    "name": "person",
-                    "left": 712,
-                    "top": 418,
-                    "width": 102,
-                    "height": 343,
-                    "image": "661_peephole/661_person1.png"
-                }, 661);
-            }
+            if (Math.floor(Math.random() * 2) === 0)
+                nav.bg("661_peephole/661_peephole0.jpg");
+            else
+                nav.bg("661_peephole/661_peephole1.jpg");
             break;
         case "check":
-            nav.killbutton("person");
             nav.bg("661_peephole/661_interior.png");
             break;
         case "recycle":
             char.addtime(60);
             g.internal++;
             if (g.internal > 0 && sc.getstep("tiffany") > 3) {
-
+                nav.bg("661_peephole/662_peephole2.jpg");
                 chat(17, 661);
             }
             else if (g.internal < 5) {
-                nav.bg("661_peephole/661_peephole.png");
+                nav.bg("661_peephole/661_peephole.jpg");
                 chat(2, 661);
             }
             else {
-                nav.bg("651_wackHallway/651_hallway.png");
+                nav.bg("661_peephole/661_backroom.jpg");
                 nav.button({
                     "type": "img",
-                    "name": "tiffany",
-                    "left": 592,
-                    "top": 227,
-                    "width": 504,
-                    "height": 853,
-                    "image": "661_peephole/651_tiffany.png"
+                    "name": "tifAngry",
+                    "left": 648,
+                    "top": 223,
+                    "width": 487,
+                    "height": 857,
+                    "image": "661_peephole/661_tiffany.png"
                 }, 661);
                 chat(9, 661);
             }
@@ -101,13 +82,13 @@ room661.chatcatch = function (callback) {
                 sc.incstep("tiffany", 1);
             char.room(651);
             break;
-        case "peek":
-            g.mod("sissy", -20);
-            nav.bg("661_peephole/661_peekBG.png");
-            chat(10, 661);
+        case "peek1":
+            nav.bg("661_peephole/peek1.jpg");
+            zcl.displayMain(-200, 500, .40, "clothes", true);
             break;
-        case "changeView":
-            nav.bg("661_peephole/661_peek2BG.png");
+        case "peek2":
+            nav.bg("661_peephole/peek2.jpg");
+            zcl.kill();
             nav.button({
                 "type": "img",
                 "name": "tiffany1",
@@ -118,50 +99,18 @@ room661.chatcatch = function (callback) {
                 "image": "661_peephole/661_masterbate.gif"
             }, 661);
             break;
-        case "changeView1":
+        case "peek3":
             nav.killbutton("tiffany1");
-            nav.button({
-                "type": "img",
-                "name": "tiffany1a",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "661_peephole/peek1a.png"
-            }, 661);
+            nav.bg("661_peephole/peek3.jpg");
             break;
-        case "changeView2":
-            nav.killbutton("tiffany1a");
-            nav.button({
-                "type": "img",
-                "name": "tiffany2",
-                "left": 785,
-                "top": 24,
-                "width": 690,
-                "height": 1058,
-                "image": "661_peephole/peek2.png"
-            }, 661);
+        case "peek4":
+            nav.bg("661_peephole/peek4.jpg");
+            zcl.displayMain(-200, -100, .35, "clothes", true);
             break;
-        case "changeView3":
-            nav.killbutton("tiffany2");
-            nav.button({
-                "type": "img",
-                "name": "tiffany2",
-                "left": 657,
-                "top": 65,
-                "width": 598,
-                "height": 1015,
-                "image": "661_peephole/peek3.png"
-            }, 661);
-            break;
-        case "kickedout":
-            if (g.dt.getHours() < 11)
-                g.dt.setHours(12);
-            else
-                char.addtime(60);
+        case "peek5":
+            char.addtime(360);
             sc.setstep("tiffany", -5);
-            sc.setstep("tiffany", 8);
-            sc.setstep("tiffany", 10);
+            sc.setstep("tiffany", 5);
             sc.setstep("missy", 8);
             g.roomMapAccess(650, false, false);
             char.room(0);
@@ -170,26 +119,26 @@ room661.chatcatch = function (callback) {
             nav.bg("661_peephole/661_black.jpg");
             break;
         case "wakeUp":
-            nav.bg("661_peephole/661_backroom.png");
+            nav.bg("661_peephole/661_backroom.jpg");
             nav.button({
-                    "type": "img",
-                    "name": "tifAngry",
-                    "left": 891,
-                    "top": 87,
-                    "width": 565,
-                    "height": 993,
-                    "image": "661_peephole/661_tiffanyangry.png"
-                }, 661);
+                "type": "img",
+                "name": "tifAngry",
+                "left": 648,
+                "top": 223,
+                "width": 487,
+                "height": 857,
+                "image": "661_peephole/661_tiffanyangry.png"
+            }, 661);
             break;
         case "changeEx":
             nav.killbutton("tifAngry");
             nav.button({
                 "type": "img",
                 "name": "tifAngry1",
-                "left": 891,
-                "top": 87,
-                "width": 565,
-                "height": 993,
+                "left": 648,
+                "top": 223,
+                "width": 487,
+                "height": 857,
                 "image": "661_peephole/661_tiffany.png"
             }, 661);
             break;
@@ -197,23 +146,44 @@ room661.chatcatch = function (callback) {
             nav.button({
                 "type": "img",
                 "name": "tifAngry",
-                "left": 891,
-                "top": 87,
-                "width": 565,
-                "height": 993,
+                "left": 648,
+                "top": 223,
+                "width": 487,
+                "height": 857,
                 "image": "661_peephole/661_tiffanyangry.png"
             }, 661);
             break;
-        case "kickOutPussy":
-            if (g.dt.getHours() < 11)
-                g.dt.setHours(12);
-            else
-                char.addtime(60);
+        
+        case "caught":
+            nav.bg("661_peephole/caught.jpg");
+            break;
+        case "caught1":
+            nav.bg("661_peephole/caught1.jpg");
+            break;
+        case "caught2":
+            nav.bg("661_peephole/661_black.jpg");
+            break;
+        case "caught3":
+            nav.bg("661_peephole/caught3.jpg");
+            break;
+        case "caught4":
+            nav.bg("661_peephole/caught4.jpg");
+            break;
+        case "caught5":
+            nav.bg("661_peephole/caught5.jpg");
+            break;
+        case "caught6":
+            nav.bg("661_peephole/caught6.jpg");
+            g.roomTimeout = setTimeout(function () { chat(25, 661); }, 1000);
+            break;
+        case "caught7":
+            nav.bg("661_peephole/caught7.jpg");
+            break;
+        case "caught8":
+            char.addtime(360);
             sc.setstep("tiffany", -4);
-            sc.setstep("tiffany", 9);
-            sc.setstep("tiffany", 10);
+            sc.setstep("tiffany", 5);
             sc.setstep("missy", 8);
-            g.roomMapAccess(650, false, false);
             char.room(0);
             break;
         default:
@@ -262,7 +232,7 @@ room661.chat = function (chatID) {
             speaker: "me",
             text: "I wonder what " + sc.n("tiffany") + " is up to...",
             button: [
-                { chatID: 10, text: "[Take a quick peek]", callback: "peek" },
+                { chatID: 10, text: "[Take a quick peek]", callback: "peek1" },
                 { chatID: 5, text: "[Continue Working]", callback: "" }
             ]
         },
@@ -271,7 +241,7 @@ room661.chat = function (chatID) {
             speaker: "me",
             text: "sooo boring....",
             button: [
-                { chatID: 10, text: "[Take a quick peek]", callback: "peek" },
+                { chatID: 10, text: "[Take a quick peek]", callback: "peek1" },
                 { chatID: 6, text: "[Continue Working]", callback: "makePerson" }
             ]
         },
@@ -310,9 +280,9 @@ room661.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "me",
-            text: "No good, I can't see anything, I need to get a better view.",
+            text: "That is so hot! I need a closer look!",
             button: [
-                { chatID: 11, text: "[Get a better view]", callback: "changeView" }
+                { chatID: 11, text: "[Get a better view]", callback: "peek2" }
             ]
         },
         {
@@ -320,7 +290,7 @@ room661.chat = function (chatID) {
             speaker: "me",
             text: "Nice....",
             button: [
-                { chatID: 12, text: "[Continue to perv on Tiffany]", callback: "changeView1" }
+                { chatID: 12, text: "[Continue to perv on Tiffany]", callback: "peek3" }
             ]
         },
         {
@@ -328,7 +298,7 @@ room661.chat = function (chatID) {
             speaker: "tiffany",
             text: "hmmmmm.....",
             button: [
-                { chatID: 13, text: "Oh shit, did she see me?", callback: "changeView2" }
+                { chatID: 13, text: "Oh shit, did she see me?", callback: "peek4" }
             ]
         },
         {
@@ -336,13 +306,13 @@ room661.chat = function (chatID) {
             speaker: "tiffany",
             text: "What the fuck!!!",
             button: [
-                { chatID: 14, text: "I'm so sorry Tiffany.. I thought I heard a noise...", callback: "" }
+                { chatID: 14, text: "I'm so sorry " + sc.n("tiffany") + ".. I thought I heard a noise...", callback: "" }
             ]
         },
         {
             chatID: 14,
             speaker: "tiffany",
-            text: "You're totally lying, you're perving on me. ",
+            text: "You're totally lying, you're perving on me instead of trying to catch the cum monster! ",
             button: [
                 { chatID: 15, text: "...uhhhh", callback: "" }
             ]
@@ -360,31 +330,31 @@ room661.chat = function (chatID) {
             speaker: "tiffany",
             text: "No, I'm so mad right now.. Just go you filthy little fuck!!",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "kickedout" }
+                { chatID: -1, text: "[Leave]", callback: "peek5" }
             ]
         },
         {
             chatID: 17,
             speaker: "me",
-            text: "I'm so bored, and that guy never comes. This is so stupid.",
+            text: "What is going on with that? Is that one of those cult people? I bet he's the one!",
             button: [
-                { chatID: 18, text: "...", callback: "" }
+                { chatID: 18, text: "Go check", callback: "caught" }
             ]
         },
         {
             chatID: 18,
-            speaker: "me",
-            text: "I'm sure no one will notice if I take a little nap, really quick.",
+            speaker: "cultjgirl",
+            text: "Who dares interrupt the extraction process?",
             button: [
-                { chatID: 19, text: "[Grab a quick nap]", callback: "nap" }
+                { chatID: 19, text: "Huh?", callback: "caught1" }
             ]
         },
         {
             chatID: 19,
-            speaker: "me",
-            text: "ZZZZZzzzzzz",
+            speaker: "cultjgirl",
+            text: "Cult PUNCH",
             button: [
-                { chatID: 20, text: "[sleep]", callback: "" }
+                { chatID: 20, text: "OOooofffff", callback: "caught2" }
             ]
         },
         {
@@ -392,7 +362,7 @@ room661.chat = function (chatID) {
             speaker: "me",
             text: "ZZZZZzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
             button: [
-                { chatID: 21, text: "[sleep]", callback: "" }
+                { chatID: 21, text: "...", callback: "caught3" }
             ]
         },
         {
@@ -400,7 +370,7 @@ room661.chat = function (chatID) {
             speaker: "tiffany",
             text: "WHAT THE FUCK!!",
             button: [
-                { chatID: 22, text: "wha....", callback: "wakeUp" }
+                { chatID: 22, text: "wha....", callback: "" }
             ]
         },
         {
@@ -408,23 +378,39 @@ room661.chat = function (chatID) {
             speaker: "tiffany",
             text: "Are you sleeping! ",
             button: [
-                { chatID: 23, text: "wha....  no", callback: "changeEx" }
+                { chatID: 23, text: "wha....  no... I caught her. [Tell " + sc.n("tiffany") + " what happened]", callback: "caught4" }
             ]
         },
         {
             chatID: 23,
             speaker: "tiffany",
-            text: "Oh it looked like you were sleeping, I'm so sorry. wait.... You totally were sleeping!",
+            text: "Oh I'm so sorry! It looked like you were sleeping. I feel terrible! Are you ok?",
             button: [
-                { chatID: 24, text: "I know, please don't tell " + sc.n("missy"), callback: "angryAgain" }
+                { chatID: 24, text: "Just a little woozy", callback: "caught5" }
             ]
         },
         {
             chatID: 24,
             speaker: "tiffany",
-            text: "I think you should go. ",
+            text: "I suppose you deserve an apology for me being so mean.",
             button: [
-                { chatID: -1, text: "Ok [Leave]", callback: "kickOutPussy" }
+                { chatID: -1, text: "huh", callback: "caught6" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "tiffany",
+            text: "Here's a free peek. I hope you don't mind a drippy pussy, I'm always horny. ",
+            button: [
+                { chatID: 26, text: "oh yeah", callback: "caught7" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "tiffany",
+            text: "I'll let " + sc.n("missy") + " know what a big help you were! Those cultist are always trouble! You're the best! ",
+            button: [
+                { chatID: -1, text: "Thanks! [Leave]", callback: "caught8" }
             ]
         },
     ];

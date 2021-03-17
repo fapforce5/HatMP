@@ -16,11 +16,10 @@ var pic = {};
 //r = room painting
 inv.isFooter = true;
 inv.leftMenu = true;
-inv.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
+
 
 inv.t = [
     { t: "b", n: "Backpack" },
-    { t: "c", n: "Closet" },
     { t: "d", n: "Dildo" },
     { t: "e", n: "Energy Snack" },
     { t: "g", n: "General Item" },
@@ -74,7 +73,6 @@ inv.master = [
     { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false, desc: "" },
     { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false, desc: "" },
     { type: "g", name: "sewer", display: "Sewer Lid Opener", entry: false, count: null, cost: -1, image: "sewer.png", n: false, desc: "Use this to open the sewer lid next to the dance club." },
-    { type: "c", name: "closet", display: "Change Clothes", entry: true, count: null, cost: 90, image: "change.png", n: false, desc: "Change your clothes. Can only use in a bathroom." }
 ];
 
 inv.getall = function () {
@@ -305,13 +303,6 @@ inv.display = function () {
                 $("#menu_displayAction").attr("data-type", thisItem.type);
                 $("#menu_displayAction").attr("data-name", thisItem.name);
                 $("#menu_displayAction").html("Change Bag");
-                $("#menu_displayAction").show();
-                break;
-            case "c": //closet
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Change Clothes");
                 $("#menu_displayAction").show();
                 break;
             case "e"://energy snack
@@ -547,17 +538,6 @@ inv.createElements = function () {
                     $("#menu_displayInfo").html("UPDATED");
                     $("#menu_displayAction").hide();
                     inv.close();
-                    break;
-                case "c": //closet
-                    if (inv.roomChange.includes(g.roomID)) {
-                        g.pass = g.roomID;
-                        inv.close();
-                        char.room(8);
-                    }
-                    else{
-                        $("#menu_displayInfo").html("You can only change in your room or a bathroom. ");
-                        $("#menu_displayAction").hide();
-                    }
                     break;
                 case "e"://energy snack
                     var eindex = inv.getIndex(thisName);

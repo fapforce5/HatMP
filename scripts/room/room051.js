@@ -263,6 +263,7 @@ room51.chatcatch = function (callback) {
             sc.setstep("tiffany", 16);
             sc.setstep("candy", 1);
             sc.revokeStep("tiffany", -1);
+            sc.revokeStep("tiffany", -9);
             g.sissy[29].ach = true;
             g.set("oncase", null);
             char.settime(19, 57);

@@ -18,10 +18,18 @@ room16.main = function () {
     //    }, 16);
     //    chat(5, 16);
     //}
-    //if (!sc.checkevent("lola", -5) && (cl.isCrossdressing() || cl.c.chest > 2)) {
-    //    //busted
-    //}
-    //else {
+    if ((cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
+        nav.button({
+            "type": "btn",
+            "name": "caught",
+            "left": 513,
+            "top": 0,
+            "width": 1065,
+            "height": 1080,
+            "image": "16_livingRoom/allthree.png"
+        }, 16);
+    }
+    else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {
             btnList.push({
                 "type": "btn",
@@ -143,7 +151,7 @@ room16.main = function () {
         });
 
         nav.buildnav(navList);
-    //}
+    }
 };
 
 room16.btnclick = function (name) {
@@ -156,6 +164,10 @@ room16.btnclick = function (name) {
             break;
         case "kitchen":
             char.room(15);
+            break;
+        case "caught":
+            nav.modbutton("caught", "16_livingRoom/allthree1.png", null, null);
+            chat(6, 16);
             break;
         default:
             break;
@@ -177,6 +189,43 @@ room16.chatcatch = function (callback) {
             break;
         case "upstairs":
             char.room(13);
+            break;
+        case "girl1":
+            nav.killall();
+            nav.bg("14_motherRoom/14_motherRoom.jpg", "14_motherRoom/14_motherRoomNightLight.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "dressup",
+                "left": 1193,
+                "top": 42,
+                "width": 466,
+                "height": 1038,
+                "image": "14_motherRoom/14_mother.png"
+            }, 16);
+            zcl.displayMain(150, 300, .19, "clothes", true);
+            break;
+        case "girl2":
+            cl.nude();
+            nav.modbutton("dressup", "14_motherRoom/14_motherRobe.png", null, null);
+            zcl.displayMain(150, 300, .19, "clothes", true);
+            break;
+        case "girl3":
+            cl.c.pj = "b";
+            cl.display();
+            zcl.displayMain(150, 300, .19, "clothes", true);
+            break;
+        case "girl4":
+            zcl.displayMain(150, 300, .19, "clothes", false);
+            break;
+        case "girl5":
+            sc.setstep("lola", 200);
+            sc.setstep("eva", 200);
+            sc.setstep("landlord", 200);
+            g.roomMapAccess(16, true, true);
+            g.mod("sissy", 100);
+            cl.add("pj", "b");
+            g.set("rentOwed", 0);
+            char.room(10);
             break;
         default:
             break;
@@ -227,7 +276,135 @@ room16.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Follow Lola", callback: "upstairs" }
             ]
-        }
+        },
+        {
+            chatID: 6,
+            speaker: "landlord",
+            text: "Oh my. " + sc.n("me") + " there's something different about you. ",
+            button: [
+                { chatID: 7, text: "oh, hahaha, what? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "eva",
+            text: "You're a girl! Why are you a girl? When did you become a girl?",
+            button: [
+                { chatID: 8, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "landlord",
+            text: "I am quite shocked. You were a boy yesterday, but today it looks like you've become a girl. ",
+            button: [
+                { chatID: 9, text: "Well, it's something I've been exploring", callback: "" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "lola",
+            text: "I support you! We should have known this entire time. I'm so happy now I have two " + sc.n("el") + 
+                ". I feel so bad I never knew until now. It must have been so hard having these feeling and not telling anyone. ",
+            button: [
+                { chatID: 10, text: "Oh well, thank you " + sc.n("lola") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "eva",
+            text: "I don't believe it! You're too perverted to be a girl. This must be some kind of trick!",
+            button: [
+                { chatID: 11, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "lola",
+            text: sc.n("eva") + "!! Don't be mean! " + sc.n("me") + " is going through a lot right now and you're just being a " +
+                "butt...",
+            button: [
+                { chatID: 12, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "landlord",
+            text: "Enough you too. " + sc.n("me") + "I'm sorry, you are going through a lot right now. We all support you, don't we " +
+                sc.n("eva") + "?",
+            button: [
+                { chatID: 13, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "eva",
+            text: "yes " + sc.n("landlord") + ".",
+            button: [
+                { chatID: 14, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "landlord",
+            text: "I know this is hard, but we all are going to help you with your change. I'm so happy to have a house full of girls. " +
+                "We're going to help you on your journey on becoming our little girl. Girls, I'm going to take " + sc.n("me") +
+                " and help her start her journey. You girls run along. ",
+            button: [
+                { chatID: 15, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "lola",
+            text: "Yes " + sc.n("landlord") + ". " + sc.n("me") + " we're really happy to have a new girl around the house and we'll help " +
+                "you with anything you need!",
+            button: [
+                { chatID: 16, text: "Thanks " + sc.n("lola") + " I'm glad you support me. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "landlord",
+            text: "Ok, follow me. ",
+            button: [
+                { chatID: 17, text: "ok", callback: "girl1" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "landlord",
+            text: "Squeel!! I'm so excited to have another girl in the house! We're going to play dress up! I'm going to put on my night " +
+                "gown, you strip off those nasty clothes!",
+            button: [
+                { chatID: 18, text: "Yes!", callback: "girl2" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "landlord",
+            text: "You know, you make a very pretty girl, and pretty girls need something sexy to sleep in! I have an extra night gown " +
+                "from when I was much slimmer you can have. Try it on, let me see it!",
+            button: [
+                { chatID: 19, text: "Yes!", callback: "girl3" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "landlord",
+            text: "You are a pretty girl, turn around!",
+            button: [
+                { chatID: 20, text: "Yes!", callback: "girl4" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "landlord",
+            text: "We're going to have so much fun! I can't wait to help you on your journey.",
+            button: [
+                { chatID: -1, text: "I'm looking forward to it too!", callback: "girl5" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

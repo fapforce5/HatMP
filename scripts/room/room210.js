@@ -43,7 +43,12 @@ room210.btnclick = function (name) {
     pid = g.sissy[id].pID;
     tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
 
-    if (g.sissy[id].ach)
+    if (g.sissy[id].points)
+        tText += "<br/>Requires points, but free for this release. <br/>";
+
+    if (id === 56) 
+        tText += '<img src="./images/room/28_transformation/cancel_b.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+    else if (g.sissy[id].ach)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
     else if (!g.sissy[id].active)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';

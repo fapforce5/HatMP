@@ -70,16 +70,10 @@ room200.btnclick = function (name) {
                     chat(28, 200);
                 }
                 else {
-                    var getTask = Math.floor(Math.random() * 10);
-                    if (getTask < 6) { //card game
+                    if (Math.floor(Math.random() * 10) < 6)
                         chat(25, 200);
-                    }
-                    else if (getTask < 12) { //computer
+                    else 
                         chat(26, 200);
-                    }
-                    else { //clean bathroom --future
-                        chat(26, 200);
-                    }
                 }
             }
             else if (thisStep === 8) {
@@ -178,6 +172,7 @@ room200.chatcatch = function (callback) {
             char.room(0);
             break;
         case "clanBathroom":
+            g.pass = "cleanbathroom";
             char.room(201);
             break;
         case "kneesStep3":
@@ -229,6 +224,10 @@ room200.chatcatch = function (callback) {
             sc.setstep("missy", 7);
             sc.setstep("tiffany", 1);
             char.room(0);
+            break;
+        case "pantiesReward":
+            g.mod("money", 300);
+            scc.love("missy", 20, 100);
             break;
         case "leavePanties":
             char.addtime(180);
@@ -1232,19 +1231,22 @@ room200.chat = function (chatID) {
         {
             chatID: 54,
             speaker: "missy",
-            text: "I can't believe you fell asleep on the job. In a sex shop, no less. You're so lethargic, you need something around you all the time to " +
-                "keep your attention.... Hmmmmmmm",
+            text: "I can't believe you solved the case! It's those damned cultist again! This is just one more case of them " +
+                "bringing their debauchery outside of their compound. You know the city made a deal with them that if they " +
+                "left the city and it's people alone they would let them continue to practice their sexual practices in peace. " +
+                "For your great effort I'm going to reward you. $300 should cover it.",
             button: [
-                { chatID: 55, text: "Yes mistress?", callback: "" }
+                { chatID: 55, text: "...", callback: "pantiesReward" }
             ]
         },
         {
             chatID: 55,
             speaker: "missy",
-            text: "I'm going to have you start wearing panties. That should put a little jolt in your system. Having your cock wrapped in some silky smooth fabric. " +
-                " Nothing to provocative, " + sc.n("cecilia") + " doesn't need to see your balls hanging out.",
+            text: "This is proof they're branching out into this city. I need you to help stop them. Infiltrating the cult is " +
+                "going to be hard and dangerous so you're going to start small. I need you to get a pair of panties and start " +
+                "wearing them everytime you come in.",
             button: [
-                { chatID: 36, text: "Yes mistress?", callback: "" }
+                { chatID: 36, text: "Panties?", callback: "" }
             ]
         },
         {

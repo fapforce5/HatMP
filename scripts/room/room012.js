@@ -24,16 +24,16 @@ room12.main = function () {
                 "width": 387,
                 "height": 675,
                 "image": "12_bathroom/12_mirror.png"
+            },
+            {
+                "type": "btn",
+                "name": "toilet",
+                "left": 297,
+                "top": 729,
+                "width": 491,
+                "height": 351,
+                "image": "12_bathroom/12_toilet.png"
             }
-            //{
-            //    "type": "btn",
-            //    "name": "toilet",
-            //    "left": 297,
-            //    "top": 729,
-            //    "width": 491,
-            //    "height": 351,
-            //    "image": "12_bathroom/12_toilet.png"
-            //}
         ];
 
         var hit = false;
@@ -202,6 +202,7 @@ room12.showerScene = function (scene) {
 room12.btnclick = function (name) {
     switch (name) {
         case "toilet":
+            g.pass = 12;
             char.room(22);
             break;
         case "shower":

@@ -109,6 +109,8 @@ room25.btnclick = function (name) {
                     chat(42, 25);
                 else if (ll === 5)
                     chat(44, 25);
+                else if (ll > 199)
+                    chat(46, 25);
                 else
                     chat(6, 25);
             }
@@ -588,6 +590,14 @@ room25.chat = function (chatID) {
             text: "Oh hahaha I'm only kidding... run along now, " + sc.n("landlord") + " has some fantasies to get back to. ",
             button: [
                 { chatID: -1, text: "ok " + sc.n("landlord"), callback: "passtime6" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "landlord",
+            text: "I'm going to have so much fun making you into a pretty girl, but right now I need my coffee so run along.",
+            button: [
+                { chatID: -1, text: "ok " + sc.n("landlord"), callback: "" }
             ]
         },
     ];

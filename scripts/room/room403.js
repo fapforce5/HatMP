@@ -139,6 +139,9 @@ room403.chatcatch = function (callback) {
             cl.display();
             zcl.displayMain(60, 760, .19, "panties", false);
             break;
+        case "changeRoom6bra":
+            nav.bg("403_saucy/changeRoom6bra.jpg");
+            break;
         case "selfie":
             nav.bg("403_saucy/changeRoom.jpg");
             nav.button({
@@ -152,6 +155,7 @@ room403.chatcatch = function (callback) {
             }, 403);
             break;
         case "changeRoom7":
+            g.mod("sissy", 30);
             nav.bg("403_saucy/changeRoom7.jpg");
             break;
         case "changeRoom8":
@@ -180,10 +184,12 @@ room403.chatcatch = function (callback) {
             nav.bg("403_saucy/changeRoom3b.jpg");
             cl.nude();
             cl.c.dress = "u";
+            cl.c.bra = "p";
             cl.c.panties = g.internal;
             cl.c.socks = "p";
             cl.c.shoes = "fb";
             cl.display();
+            cl.add("bra", "p");
             zcl.displayMain(60, 760, .19, "panties socks shoes shirt", false);
             break;
         case "changeRoom11b":
@@ -589,7 +595,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "I never would have taken you as a classy girl. They'll look great with a pair of black high heels!",
             button: [
-                { chatID: 41, text: "I'm a classy girl", callback: "" }
+                { chatID: 71, text: "I'm a classy girl", callback: "changeRoom6bra" }
             ]
         },
         {
@@ -597,7 +603,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "Ahahaha, I knew you were an butt slut! Nothing shows off your pretty butt-hole like a good thong!",
             button: [
-                { chatID: 41, text: "I'm such a butt slut", callback: "" }
+                { chatID: 71, text: "I'm such a butt slut", callback: "changeRoom6bra" }
             ]
         },
         {
@@ -605,7 +611,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "Ohhh that's so playful I love it. You'll make a great play toy!",
             button: [
-                { chatID: 41, text: "Thanks", callback: "" }
+                { chatID: 71, text: "Thanks", callback: "changeRoom6bra" }
             ]
         },
         {
@@ -854,7 +860,16 @@ room403.chat = function (chatID) {
             button: [
                 { chatID: 65, text: "...", callback: "changeRoom11" }
             ]
+        },
+        {
+            chatID: 71,
+            speaker: "tiffany",
+            text: "And here's a bra to top it off! All pretty girls need bras.",
+            button: [
+                { chatID: 41, text: "oh fun", callback: "" }
+            ]
         }
+
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

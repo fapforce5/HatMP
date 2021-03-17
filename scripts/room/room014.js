@@ -255,6 +255,8 @@ room14.btnclick = function (name) {
         case "couple":
             if (g.get("bigguy"))
                 chat(16, 14);
+            else if (sc.getstep("landlord") < 200)
+                chat(68, 14);
             else {
                 switch (sc.getstep("bigguy")) {
                     case 0:
@@ -267,10 +269,7 @@ room14.btnclick = function (name) {
                         chat(25, 14);
                         break;
                     case 4:
-                        if (sc.getstep("me") > 7)
-                            chat(43, 14);
-                        else
-                            chat(16, 14);
+                        chat(43, 14);
                         break;
                     default:
                         chat(16, 14);
@@ -732,6 +731,9 @@ room14.chatcatch = function (callback) {
             break;
         case "stealPanties":
             cl.add("panties", "c");
+            break;
+        case "leave":
+            char.room(16);
             break;
         default:
             break;
@@ -1293,6 +1295,14 @@ room14.chat = function(chatID){
             button: [
                 { chatID: -1, text: "Thank you " + sc.n("landlord"), callback: "bg4_end_loop" },
                 { chatID: -1, text: "I changed my mind, I want to clean that cock with my mouth.", callback: "" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "landlord",
+            text: "There's my perverted boy. " + sc.n("bigguy") + " and I are going to have some adult time. Why don't you run along. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "leave" }
             ]
         },
     ];
