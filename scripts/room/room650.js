@@ -79,6 +79,9 @@ room650.btnclick = function (name) {
                 }, 650);
                 chat(0, 650);
             }
+            else if (tstep === 3 || tstep === 4) {
+                chat(2, 650);  
+            }
             else if (tstep < 10) {
                 chat(4, 650);
             }
@@ -219,6 +222,7 @@ room650.chat = function (chatID) {
             text: "Hay kid, you lookin' to jam somethin' up yo ass?",
             button: [
                 { chatID: -1, text: "Yes, what toys do yo have", callback: "toys" },
+                { chatID: 15, text: "Where are the girls?", callback: "" },
                 { chatID: -1, text: "No...", callback: "" }
             ]
         },
@@ -281,6 +285,14 @@ room650.chat = function (chatID) {
             text: "Yeah you cute little slut! Let's go shopping! Follow me!",
             button: [
                 { chatID: -1, text: "[Follow " + sc.n("tiffany") + "]", callback: "h_29" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "charlie",
+            text: "Oh, the whores? They work during the week during the day. Even whores needs a break. ",
+            button: [
+                { chatID: -1, text: "oh, odd. ok", callback: "" }
             ]
         },
     ];

@@ -1,4 +1,4 @@
-﻿//mom closet
+﻿//closet
 //c - 24 (money)
 //b - 11 (lube)
 var room17 = {};
@@ -470,25 +470,25 @@ room17.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "me",
-            text: "huh.... I guess I'll take some of my mom's lube. It may come in handy. I'm suppose I'm pretty weird. I'll put it in my nightstand. ",
+            text: "huh.... I guess I'll take some of my " + sc.n("landlord") + "'s lube. It may come in handy. I'm suppose I'm pretty weird. I'll put it in my nightstand. ",
             button: [{ chatID: -1, text: "Close", callback: "killLube" }]
         },
         {
             chatID: 4,
             speaker: "me",
-            text: "eeewwwww..... It's bad enough I'm face to face with my mom's dildo, but there's no way I'm touching that thing, even worse using that thing. ",
+            text: "eeewwwww..... It's bad enough I'm face to face with my " + sc.n("landlord") + "'s dildo, but there's no way I'm touching that thing, even worse using that thing. ",
             button: []
         },
         {
             chatID: 5,
             speaker: "me",
-            text: "Those are my mom's shoes... Not sure what I would do with them... ",
+            text: "Those are my " + sc.n("landlord") + "'s shoes... Not sure what I would do with them... ",
             button: []
         },
         {
             chatID: 6,
             speaker: "me",
-            text: "I would look soooo sexy in those, but my mom's feet are too small and I'm not cutting off my toes to be fabulous. ",
+            text: "I would look soooo sexy in those, but my " + sc.n("landlord") + "'s feet are too small and I'm not cutting off my toes to be fabulous. ",
             button: []
         }
     ];

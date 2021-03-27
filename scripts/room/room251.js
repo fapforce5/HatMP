@@ -95,6 +95,12 @@ room251.chatcatch = function (callback) {
             cl.c.shoes = cl.c.shirt = cl.c.pants = 'v';
             cl.display();
             zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
+            if (cl.c.chastity !== null || cl.c.cock > 2) {
+                sc.setstep("jeffery", 5);
+                chat(16, 251);
+            }
+            else
+                chat(13, 251);
             break;
         case "jeff5":
             cl.c.panties = "inv";

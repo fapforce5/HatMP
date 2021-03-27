@@ -160,7 +160,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "",
                 "I like your new " + cl.cupsize() + " cups, they look good on you. ",
                 "That a nice " + cl.buttsize() + " butt. It fits your well. ",
-                "You look bood with longer hair. ",
+                "You look better with longer hair. ",
                 "",
                 "Is your penis getting smaller? You're getting more pathetic each day. "
             ];

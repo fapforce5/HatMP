@@ -262,6 +262,9 @@ room13.btnclick = function (name) {
                 case 200:
                     chat(147, 13);
                     break;
+                case 201:
+                    chat(174, 13);
+                    break;
             }
 
             break;
@@ -324,6 +327,9 @@ room13.btnclick = function (name) {
                     break;
                 case 200:
                     chat(148, 13);
+                    break;
+                case 201:
+                    chat(174, 13);
                     break;
                 default:
                     break;
@@ -801,6 +807,53 @@ room13.chatcatch = function (callback) {
             char.addtime(60); 
             char.room(29);
             break;
+        case "200_1":
+            nav.killall();
+            nav.bg("13_sisterRoom/200_1.jpg");
+            break;
+        case "200_2":
+            nav.bg("13_sisterRoom/200_2.jpg");
+            break;
+        case "200_3":
+            nav.bg("13_sisterRoom/200_3.jpg");
+            zcl.displayMain(-100, 500, .28, "clothes", true);
+            break;
+        case "200_4":
+            cl.nude();
+            zcl.displayMain(-100, 500, .28, "", true);
+            if (cl.c.chastity !== null)
+                chat(155, 13);
+            else if (cl.c.cock > 2)
+                chat(160, 13);
+            else
+                chat(162, 13);
+            break;
+        case "200_5":
+            nav.bg("13_sisterRoom/200_5.jpg");
+            break;
+        case "200_6":
+            cl.c.panties = "m";
+            cl.c.bra = "l";
+            cl.display();
+            zcl.displayMain(-100, 500, .28, "clothes", true);
+            g.roomTimeout = setTimeout(function () { chat(167, 13); }, 2000);
+            break;
+        case "200_7":
+            zcl.displayMain(-100, 500, .28, "clothes", false);
+            g.roomTimeout = setTimeout(function () { chat(169, 13); }, 2000);
+            break;
+        case "200_8":
+            zcl.displayMain(-100, 500, .28, "clothes", true);
+            break;
+        case "200_9":
+            cl.add("panties", "m");
+            cl.add("bra", "l");
+            sc.setstep("eva", 201);
+            sc.setstep("lola", 201);
+            g.setflag("lolaDayEvent");
+            g.setflag("evaDayEvent");
+            char.room(10);
+            break;
         default:
             console.log(callback + " - miss");
             break;
@@ -961,7 +1014,7 @@ room13.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "lola",
-            text: "Thank you sooo much for the massage " + sc.n("me") + "! Maybe you can give me another tomorrow! ",
+            text: "Thank you sooo much! Maybe we can talk tomorrow! ",
             button: [
                 { chatID: -1, text: "You're welcome " + sc.n("lola"), callback: "" }
             ]
@@ -2033,17 +2086,232 @@ room13.chat = function (chatID) {
         {
             chatID: 147,
             speaker: "lola",
-            text: "We're going to have so much sister time fun! Coming in a future release.",
+            text: "We're going to have so much sister time fun! I can't believe I didn't see it before!",
             button: [
-                { chatID: -1, text: "Ok! see you later!", callback: "" }
+                { chatID: 149, text: "Squeel", callback: "" }
             ]
         },
         {
             chatID: 148,
             speaker: "eva",
-            text: "I can't wait to have some girly fun with you! Coming in a future release.",
+            text: "I still think you're just doing this to see us naked some more, but I'm willing to help you out.",
             button: [
-                { chatID: -1, text: "Ok! see you later!", callback: "" }
+                { chatID: 149, text: "I'm really a sissy girl.", callback: "" }
+            ]
+        },
+        {
+            chatID: 149,
+            speaker: "lola",
+            text: "Well, I guess since we're all girls here we can play dress up!",
+            button: [
+                { chatID: 150, text: "OOoo I love dress up", callback: "200_1" }
+            ]
+        },
+        {
+            chatID: 150,
+            speaker: "eva",
+            text: "I'm in. I love dress up, but we have to play it the right way! Dress all the way up; like we used to!",
+            button: [
+                { chatID: 151, text: "All the way?", callback: "" }
+            ]
+        },
+        {
+            chatID: 151,
+            speaker: "lola",
+            text: "I don't know about that. *whipser* I mean I don't like being naked in front of boys.",
+            button: [
+                { chatID: 152, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 152,
+            speaker: "eva",
+            text: "He's not a boy, you said so yourself, just three girls here so it's ok if she sees us naked. Besides " +
+                "we need to make sure her panties are cute. Now strip and stop complaining you wet blanket.",
+            button: [
+                { chatID: 153, text: "...", callback: "200_2" }
+            ]
+        },
+        {
+            chatID: 153,
+            speaker: "lola",
+            text: "Fine, but no funny business, and only because we're all girls here. ",
+            button: [
+                { chatID: 154, text: "nice!", callback: "200_3" }
+            ]
+        },
+        {
+            chatID: 154,
+            speaker: "eva",
+            text: "What are you smirking about, you need to strip too girl! ",
+            button: [
+                { chatID: -1, text: "Oh. Yeah, of course.", callback: "200_4" }
+            ]
+        },
+        {
+            chatID: 155,
+            speaker: "lola",
+            text: "What is that thing on you penis?",
+            button: [
+                { chatID: 156, text: "huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 156,
+            speaker: "eva",
+            text: sc.n("lola") + " you can't just ask a girl what's on their penis! So rude. It's obviously a fake vagina. ",
+            button: [
+                { chatID: 157, text: "Oh, it's a chastity cage...", callback: "" }
+            ]
+        },
+        {
+            chatID: 157,
+            speaker: "lola",
+            text: "Oh, I've heard of those. It's so you can't have sex. I've always wondered why someone would wear one of those.",
+            button: [
+                { chatID: 158, text: "I can still have sex, I just use my sissy pussy, aka my butthole", callback: "" },
+                { chatID: 159, text: "I just wear it as a joke", callback: "" }
+            ]
+        },
+        {
+            chatID: 158,
+            speaker: "eva",
+            text: "You really are a girl now. Anal really is awesome, but my pussy will always win. ",
+            button: [
+                { chatID: 164, text: "Yeah, maybe some day I'll have a pussy too.", callback: "" }
+            ]
+        },
+        {
+            chatID: 159,
+            speaker: "eva",
+            text: "That's not really funny, but I guess girls don't have cocks.",
+            button: [
+                {
+                    chatID: 164, text: "I know.", callback: ""
+                }
+            ]
+        },
+        {
+            chatID: 160,
+            speaker: "eva",
+            text: "Haha. You're a girl 'cause of your tiny cock huh? It's so tiny you couldn't get a girl, just boys yeah!",
+            button: [
+                { chatID: 161, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 161,
+            speaker: "lola",
+            text: "That's so rude " + sc.n("eva") + ".",
+            button: [
+                { chatID: 164, text: "It's ok, I do have a tiny cock. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 162,
+            speaker: "eva",
+            text: "You know, it really is a shame you're a girl now, because that is one amazing cock!",
+            button: [
+                { chatID: 163, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 163,
+            speaker: "lola",
+            text: sc.n("eva") + "! She's a girl now, you shouldn't talk about her penis. ",
+            button: [
+                { chatID: 164, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 164,
+            speaker: "lola",
+            text: "So what should we start with?",
+            button: [
+                { chatID: 165, text: "Start with?", callback: "" }
+            ]
+        },
+        {
+            chatID: 165,
+            speaker: "eva",
+            text: "I like red! Everyone put on red panties and bra. ",
+            button: [
+                { chatID: 166, text: "I didn't ", callback: "200_5" }
+            ]
+        },
+        {
+            chatID: 166,
+            speaker: "lola",
+            text: "Don't worry " + sc.n("me") + " you can wear a set of mine. I'll give you my sexiest pair. ",
+            button: [
+                { chatID: -1, text: "I didn't ", callback: "200_6" }
+            ]
+        },
+        {
+            chatID: 167,
+            speaker: "eva",
+            text: "Not gunna lie, you do make a sexy chick!",
+            button: [
+                { chatID: 168, text: "Thanks", callback: "" }
+            ]
+        },
+        {
+            chatID: 168,
+            speaker: "lola",
+            text: "I love it. Turn around let us see that butt. Hehehe",
+            button: [
+                { chatID: 169, text: "Oh yeah!", callback: "200_7" }
+            ]
+        },
+        {
+            chatID: 169,
+            speaker: "lola",
+            text: "I love it. With those matching panties and bra you make a sexy girl. ",
+            button: [
+                { chatID: 170, text: "Thanks", callback: "200_8" }
+            ]
+        },
+        {
+            chatID: 170,
+            speaker: "lola",
+            text: "You know, every girl needs some matching panties and bra to make herself feel good. You can keep those. " +
+                "I don't really wear them anyways. ",
+            button: [
+                { chatID: 171, text: "Oh wow. Really?", callback: "" }
+            ]
+        },
+        {
+            chatID: 171,
+            speaker: "eva",
+            text: "We just want to make you feel good. We're all " + sc.n("el") + " and " + sc.n("el") + " look out for each other. " +
+                "We just want to make sure you know you're loved, even if your now a girl pervert. ",
+            button: [
+                { chatID: 172, text: "You're ok " + sc.n("eva") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 172,
+            speaker: "lola",
+            text: "We love you and want you to feel accepted. ",
+            button: [
+                { chatID: 173, text: "I love you too " + sc.n("lola") + ". ", callback: "" }
+            ]
+        },
+        {
+            chatID: 173,
+            speaker: "eva",
+            text: "We better change back before " + sc.n("landlord") + " comes in. I don't know if she'll be happy with all of " +
+                "us in our sexy panties. ",
+            button: [
+                { chatID: -1, text: "Yeah. Catch you two later. ", callback: "200_9" }
+            ]
+        },
+        {
+            chatID: 174,
+            speaker: "el",
+            text: "That's the end of this path. Stay tuned!",
+            button: [
+                { chatID: -1, text: "Drat! I'm going to vote for the sissy path on Patreon!", callback: "" }
             ]
         },
     ];

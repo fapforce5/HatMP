@@ -6,10 +6,10 @@ room750.main = function () {
             {
                 "type": "btn",
                 "name": "doc",
-                "left": 1011,
-                "top": 434,
-                "width": 229,
-                "height": 456,
+                "left": 1176,
+                "top": 295,
+                "width": 303,
+                "height": 710,
                 "image": "750_homeless/doctor.png"
             }
         ];
@@ -25,6 +25,7 @@ room750.btnclick = function (name) {
     switch (name) {
         case "doc":
             if (!g.get("doc")) {
+                nav.killbutton("doc");
                 nav.button({
                     "type": "btn",
                     "name": "doc",
@@ -84,9 +85,19 @@ room750.chatcatch = function (callback) {
             break;
         case "doc2a":
             nav.killbutton("doc");
-            nav.bg("750_homeless/doc2b.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "barf",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "750_homeless/doc2b.png"
+            }, 750);
+            //nav.bg("750_homeless/doc2b.jpg");
             break;
         case "doc2b":
+            nav.killbutton("barf");
             nav.bg("661_peephole/661_black.jpg");
             break;
         case "doc2c":

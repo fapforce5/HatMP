@@ -20,7 +20,7 @@ g.lview = "b";
 g.prevRoom;
 g.prevview = null;
 g.pw = "dGhhbmt5b3U=";
-g.passtime = [0, 8, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500];
+g.passtime = [0, 8, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
 
 g.roomID = 1;
@@ -217,7 +217,9 @@ g.sissy = [
     { id: 54, pID: null, icon: "missy0", x: 1, y: 7, name: "Contract", description: "Introduction", ach: false, active: true, points: false },
 
     { id: 55, pID: 19, icon: "redbox", x: 11, y: 9, name: "What's in the box", description: "Discover what's in the box!", ach: false, active: false, points: false },
-    { id: 56, pID: 0, icon: "cancel", x: 19, y: 2, name: "Cancel", description: "Cancel and leave the classroom", ach: false, active: true, points: false}
+    { id: 56, pID: 0, icon: "cancel", x: 19, y: 2, name: "Cancel", description: "Cancel and leave the classroom", ach: false, active: true, points: false },
+
+    { id: 57, pID: 34, icon: "stripper", x: 13, y: 1, name: "Stripper", description: "Work as a stripper on a case", ach: false, active: false, points: false }
 ];
 
 g.supersissy = function () {
@@ -929,6 +931,8 @@ g.initGame = function () {
             case "puter":
             case "tim":
             case "cindy":
+            case "doc":
+            case "chloe":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

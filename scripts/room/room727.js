@@ -107,7 +107,9 @@ room727.btnclick = function (name) {
             break;
         case "supriseSex":
             nav.killall();
-            nav.bg("727_bathroom/toilettall.jpg");
+            nav.bg("727_bathroom/girl1.jpg");
+            cl.horny(100);
+            g.roomTimeout = setTimeout(function () { chat(10, 727); }, 2000);
             break;
         default:
             break;
@@ -184,6 +186,59 @@ room727.chatcatch = function (callback) {
             g.mod("sissy", 30);
             g.setflag("tim");
             sc.setstep("tim", 2);
+            char.addtime(60);
+            char.room(727);
+            break;
+        case "girl2":
+            nav.bg("727_bathroom/girl2.jpg");
+            break;
+        case "girl3":
+            cl.changeClothingSave();
+            cl.c.panties = null;
+            cl.c.pants = null;
+            cl.c.swimsuit = null;
+            cl.c.pj = null;
+            zcl.displayMain(-800, -150, .4, "clothes", true);
+            if (cl.c.chastity !== null)
+                chat(12, 727);
+            else if (cl.c.cock > 2)
+                chat(14, 727);
+            else
+                chat(15, 727);
+            break;
+        case "girl3a":
+            nav.killall();
+            nav.bg("727_bathroom/girl3.jpg");
+            break;
+        case "girl4":
+            nav.bg("727_bathroom/girl4.jpg");
+            break;
+        case "girl5":
+            nav.bg("727_bathroom/girl5.jpg");
+            break;
+        case "girl6":
+            nav.bg("727_bathroom/girl6.jpg");
+            break;
+        case "girl7":
+            cl.doCum(false);
+            nav.bg("727_bathroom/girl7.jpg");
+            break;
+        case "girl8":
+            cl.changeClothing();
+            cl.display();
+            g.pass = g.internal = null;
+            g.mod("sissy", 20);
+            g.mod("fuckPussy", 1);
+            g.setflag("cindy");
+            char.addtime(60);
+            sc.setstep("cindy", 3);
+            char.room(727);
+            break;
+        case "girlBad":
+            cl.changeClothing();
+            cl.display();
+            g.pass = g.internal = null;
+            g.setflag("cindy");
             char.addtime(60);
             char.room(727);
             break;
@@ -273,6 +328,103 @@ room727.chat = function (chatID) {
             text: "She's probably in the stall. I'll just walk right in, or I can chicken out.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "cindy",
+            text: "...",
+            button: [
+                { chatID: 11, text: "Oh... hi... I thought you...", callback: "girl2" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "cindy",
+            text: "I was hoping to see you again, just didn't think it would be here... So what do ya got, let's see it.",
+            button: [
+                { chatID: -1, text: "[Pull out your cock]", callback: "girl3" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "cindy",
+            text: "Awww. Did you break your penis, it looks like it's got a cast. Poor little penis. ",
+            button: [
+                { chatID: 13, text: "Oh yeah... It's got a cast.", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "cindy",
+            text: "That's ok. We can do this later when your penis is better. ",
+            button: [
+                { chatID: -1, text: "*Sad noises* ok, bye.", callback: "girlBad" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "cindy",
+            text: "You're kidding right? I like to enjoy getting fucked, and that little thing isn't going to please anyone. " +
+                "You should look into growing your penis little man, then maybe we can do this. ",
+            button: [
+                { chatID: 13, text: "*Sad noises* ok, bye.", callback: "" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "cindy",
+            text: "That is a beautiful penis, I love it! Do you know how to use it? ",
+            button: [
+                { chatID: 16, text: "Let me show you!", callback: "girl3a" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "cindy",
+            text: "Oh my my ",
+            button: [
+                { chatID: 17, text: "Grunt", callback: "girl4" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "cindy",
+            text: "Yes! Yes! YES! YES! ",
+            button: [
+                { chatID: 18, text: "Groan", callback: "girl5" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "cindy",
+            text: "I'm so close! Don't you dare cum yet!",
+            button: [
+                { chatID: 19, text: "MMmmmMMMMm", callback: "girl6" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "cindy",
+            text: "Fuck you're good! You can cum now!",
+            button: [
+                { chatID: 20, text: "Groan", callback: "girl7" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "cindy",
+            text: "Thanks! You're a good fuck!",
+            button: [
+                { chatID: 21, text: "You're welcome", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "cindy",
+            text: "Come back and fuck me anytime!",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "girl8" }
             ]
         },
     ];

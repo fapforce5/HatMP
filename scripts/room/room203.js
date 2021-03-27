@@ -149,8 +149,21 @@ room203.btnclick = function (name) {
         case "door":
             if (inv.has("redbox"))
                 char.room(200);
-            else
-                chat(37, 203);
+            else {
+                var oncasex = g.get("oncase");
+                if (oncasex === null)
+                    chat(39, 203);
+                else if (oncasex === "diner")
+                    chat(40, 203);
+                else if (oncasex === "dinerfail" || oncase === "dinersuccess")
+                    char.room(200);
+                else if (oncasex === "gloryholebj")
+                    chat(40, 203);
+                else {
+                    chat(37, 203);
+                }
+                
+            }
             break;
         default:
             break;
@@ -679,7 +692,23 @@ room203.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Sweet!", callback: "" }
             ]
-        }
+        },
+        {
+            chatID: 39,
+            speaker: "thinking",
+            text: "I can't go in there, I'm supposed to be going to sissy school.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "thinking",
+            text: "I can't go in there, I'm supposed to be working my case.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

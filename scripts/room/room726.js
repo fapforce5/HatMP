@@ -87,6 +87,9 @@ room726.btnclick = function (name) {
             else if (cindyStep === 2) {
                 chat(10, 726);
             }
+            else {
+                chat(23, 726);
+            }
             break;
         case "lifeguardGuy":
             var timstep = sc.getstep("tim");
@@ -185,6 +188,85 @@ room726.chatcatch = function (callback) {
         case "supriseSex":
             g.pass = "supriseSex";
             char.room(727);
+            break;
+        case "tim3_1":
+            nav.killall();
+            nav.bg("726_dance/tim3_1.jpg");
+            break;
+        case "tim3_2":
+            nav.bg("726_dance/tim3_2.jpg");
+            zcl.displayMain(400, 500, .35, "clothes", true);
+            break;
+        case "tim3_3":
+            nav.bg("726_dance/tim3_3.jpg");
+            zcl.displayMain(100, 900, .19, "clothes", true);
+            break;
+        case "tim3_4":
+            nav.bg("726_dance/tim3_4.jpg");
+            zcl.displayMain(-1900, -200, .6, "clothes", true);
+            nav.button({
+                "type": "img",
+                "name": "lifeguardGuy1",
+                "left": 1156,
+                "top": 0,
+                "width": 565,
+                "height": 682,
+                "image": "726_dance/tim3_4.png"
+            }, 726);
+            break;
+        case "tim3_5":
+            cl.horny(10);
+            nav.killall();
+            nav.bg("726_dance/tim3_5.jpg");
+            break;
+        case "tim3_6":
+            cl.horny(20);
+            nav.killall();
+            nav.bg("726_dance/tim3_6.jpg");
+            break;
+        case "tim3_7":
+            nav.killall();
+            nav.bg("726_dance/tim3_7.jpg");
+            break;
+        case "tim3_8":
+            nav.killall();
+            nav.bg("726_dance/tim3_8.jpg");
+            zcl.displayMain(500, 0, .6, "clothes", true);
+            break;
+        case "tim3_9":
+            nav.killall();
+            nav.bg("726_dance/tim3_9.jpg");
+            zcl.displayMain(700, 0, .6, "clothes", true);
+            break;
+        case "tim3_10":
+            nav.killall();
+            nav.bg("726_dance/tim3_10.jpg");
+            break;
+        case "tim3_11":
+            nav.bg("726_dance/tim3_11.jpg");
+            break;
+        case "tim3_12":
+            cl.horny(100);
+            nav.bg("726_dance/tim3_12.jpg");
+            break;
+        case "tim3_13":
+            nav.bg("726_dance/tim3_13.jpg");
+            break;
+        case "tim3_14":
+            nav.bg("726_dance/tim3_14.jpg");
+            break;
+        case "tim3_15":
+            nav.bg("726_dance/tim3_15.jpg");
+            break;
+        case "tim3_16":
+            g.mod("sissy", 50);
+            g.mod("giveOralMale", 1);
+            g.mod("giveAnalMale", 1);
+            g.mod("creamPied", 1);
+            g.setflag("tim");
+            sc.setstep("tim", 3);
+            char.addtime(72);
+            char.room(726);
             break;
         default:
             break;
@@ -380,9 +462,163 @@ room726.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "tim",
-            text: "The 'Trap' is in development.",
+            text: "Hay sexy, couldn't stay away from this dick huh?",
+            button: [
+                { chatID: 24, text: "Nope, I need it!", callback: "" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "cindy",
+            text: "In development.",
             button: [
                 { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "tim",
+            text: "How about we skit the song and dance and I just fuck you in the bathroom?",
+            button: [
+                { chatID: 25, text: "Oh Please!", callback: "tim3_1" },
+                { chatID: -1, text: "Nah, I'm busy.", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "tim",
+            text: "Let's not waste time, you know what I want slut. Get suckin'.",
+            button: [
+                { chatID: 26, text: "Slurp!", callback: "tim3_2" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "tim",
+            text: "Oh yeah! You've got a great mouth. I love to have my neck licked, come up and lick it. ",
+            button: [
+                { chatID: 27, text: "Oh yes ", callback: "tim3_3" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "tim",
+            text: "I love it, keep licking.",
+            button: [
+                { chatID: 28, text: "Slurp", callback: "tim3_4" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "tim",
+            text: "I love your ass baby. I need this ass",
+            button: [
+                { chatID: 29, text: "lick suck", callback: "tim3_5" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "tim",
+            text: "Such a hungry butthole",
+            button: [
+                { chatID: 30, text: "*moan*", callback: "tim3_6" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "tim",
+            text: "It's so hungry. I bet your pussy is dripping wet you slut. ",
+            button: [
+                { chatID: 31, text: "*Girly noises*", callback: "tim3_7" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "tim",
+            text: "hmmmmmm ",
+            button: [
+                { chatID: 32, text: "Gasp", callback: "tim3_7" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "tim",
+            text: "??? What's this??? ",
+            button: [
+                { chatID: 33, text: "...", callback: "tim3_8" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "tim",
+            text: "???",
+            button: [
+                { chatID: 34, text: "...", callback: "tim3_9" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "tim",
+            text: "THOSE ARE BALLS!!! YOU HAVE BALLS!!! WHY DO YOU HAVE BALLS??? OH NO, NO NO NONONONONONONONO!!!!! I DON'T FUCK BOYS!!!!",
+            button: [
+                { chatID: 35, text: "...", callback: "tim3_9" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "me",
+            text: "I'm not a boy though, I'm a sissy. Have you ever fucked a sissy's pussy? It's warm, soft, and you never have to " +
+                "pull out. Best of all you can fuck me whenever and however you want and I'll never complain or say no.",
+            button: [
+                { chatID: 36, text: "...", callback: "tim3_10" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "tim",
+            text: "....",
+            button: [
+                { chatID: 37, text: "Do you like my pussy? It's hungry for cock.", callback: "tim3_11" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "tim",
+            text: "Hmmm, I've never fucked a sissy before, and you do have a beautiful sissy pussy. I just ...",
+            button: [
+                { chatID: 38, text: "You know you want it. Just shove it in already.", callback: "tim3_12" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "tim",
+            text: "*GROAN* It's so tight!",
+            button: [
+                { chatID: 39, text: "*Moan*", callback: "tim3_13" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "tim",
+            text: "Oh fuck I love sissy pussy! I love it soooo much!",
+            button: [
+                { chatID: 40, text: "Pant", callback: "tim3_14" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "tim",
+            text: "Oh my god I'm never fucking anything excepty sissy pussy again!",
+            button: [
+                { chatID: 41, text: "Groan", callback: "tim3_15" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "tim",
+            text: "My cum looks so good oozing out of your ass. See me again, I got to have more!",
+            button: [
+                { chatID: -1, text: "I will. I love a cream filling", callback: "tim3_16" }
             ]
         },
     ];

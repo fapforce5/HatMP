@@ -178,7 +178,7 @@ room209.btnclick = function (name) {
         case "appearnceStart":
             var hasSuit = cl.c.shoes === "d" && cl.c.pants === "s" && cl.c.shirt === "s" && cl.c.socks === "b";
             var hasGirlSuit = cl.c.shoes === "fb" && cl.c.pants === "k" && cl.c.shirt === "r" && cl.c.socks === null;
-            var hasPanties = cl.getEntry("panties", cl.c.panties).sex === "f";
+            var hasPanties = cl.c.panties === null ? true : (cl.getEntry("panties", cl.c.panties).sex === "f");
             if (g.sissy[24].ach) {
                 if (hasGirlSuit && hasPanties)
                     room209.btnclick("pointsStart");

@@ -16,8 +16,15 @@ room903.main = function () {
     //$.each(btnList, function (i, v) {
     //    nav.button(v, 903);
     //});
-    var navList = [0, 901];
-    nav.buildnav(navList);
+    var haso = cl.hasoutfit("public");
+    if (haso === null) {
+        var navList = [0, 901];
+        nav.buildnav(navList);
+    }
+    else {
+        g.internal = haso;
+        chat(999, 903);
+    }
 };
 
 room903.btnclick = function (name) {
@@ -40,16 +47,26 @@ room903.chatcatch = function (callback) {
 };
 
 room903.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "random",
-            text: "AAAAAAAAAaaaaaaaaaaaaaaaaa WHAT ARE YOU DOING IN HERE! GET OUT!!!!",
-            button: [{ chatID: -1, text: "Oh crap! I'm not a dirty pervert! Sorry", callback: "leave" }]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+    if (chatID === 999) {
+        return {
+            chatID: 999,
+            speaker: "thinking",
+            text: "I can't go out like this. " + g.internal,
+            button: [{ chatID: -1, text: "Get Dressed", callback: "" }]
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "random",
+                text: "AAAAAAAAAaaaaaaaaaaaaaaaaa WHAT ARE YOU DOING IN HERE! GET OUT!!!!",
+                button: [{ chatID: -1, text: "Oh crap! I'm not a dirty pervert! Sorry", callback: "leave" }]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

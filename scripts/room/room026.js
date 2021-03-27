@@ -71,7 +71,7 @@ room26.btnclick = function (name) {
                             chat(2, 26);
                     }
                     else if (ll === 200)
-                        chat(61, 200);
+                        chat(61, 26);
                     else
                         chat(2, 26);
                 }

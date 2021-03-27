@@ -652,7 +652,7 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/" + callback + ".jpg");
             break;
         case "bg4_9":
-            g.internal = { m: false, f: false }
+            g.internal = { m: false, f: false };
             nav.bg("14_motherRoom/bedSleep.jpg");
             nav.button({
                 "type": "btn",
@@ -740,7 +740,7 @@ room14.chatcatch = function (callback) {
     }
 };
 
-room14.chat = function(chatID){
+room14.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
@@ -788,7 +788,7 @@ room14.chat = function(chatID){
             speaker: "me",
             text: sc.n("landlord") + "'s panties! I feel so dirty for even touching them.",
             button: [
-                { chatID: -1, text: "[Put the panties back]", callback: "ret" },
+                { chatID: -1, text: "[Put the panties back]", callback: "ret" }
             ]
         },
         {
@@ -796,7 +796,7 @@ room14.chat = function(chatID){
             speaker: "me",
             text: "There's no way I'll fit into " + sc.n("landlord") + "'s panties! My ass is way too small.",
             button: [
-                { chatID: -1, text: "[Put the panties back]", callback: "ret" },
+                { chatID: -1, text: "[Put the panties back]", callback: "ret" }
             ]
         },
         {
@@ -869,7 +869,7 @@ room14.chat = function(chatID){
         {
             chatID: 16,
             speaker: "landlord",
-            text: "Hay honey. Why don't you go play so me and " + sc.n("bigguy") + " can play adult games.",
+            text: "Hey honey... Why don't you go play, so me and " + sc.n("bigguy") + " can play adult games?",
             button: [
                 { chatID: 17, text: "...", callback: "" }
             ]
@@ -893,9 +893,9 @@ room14.chat = function(chatID){
         {
             chatID: 19,
             speaker: "bigguy",
-            text: "Hi little man. " + sc.n("landlord") + " has told me so much about you. You remind me of me when I was younger. " +
-                "I used to have tiny girly body. Then I decided to stop being a little girly man. You have a tiny body. You should lift weights. " +
-                "Do you like girls. Girls like big guys. I know your " + sc.n("landlord") + " likes big guys hehehe",
+            text: "Hi little man. " + sc.n("landlord") + " has told me so much about you. You remind me of me when I was younger, " +
+                "I used to have tiny girly body, then I decided to stop being a little girly man. You have a tiny body! You should lift weights. " +
+                "Do you like girls? Girls like big guys. I know your " + sc.n("landlord") + " likes big guys. Hahahaha",
             button: [
                 { chatID: 20, text: "... oh ok...", callback: "" }
             ]
@@ -904,7 +904,7 @@ room14.chat = function(chatID){
             chatID: 20,
             speaker: "landlord",
             text: "Ugh, I have two perverts in this house, at least " + sc.n("lola") + " and " + sc.n("eva") + " are nice sweet girls that never " +
-            "do anything perverted like you too. ",
+                "do anything perverted like you two. ",
             button: [
                 { chatID: 21, text: "...", callback: "" }
             ]
@@ -912,8 +912,8 @@ room14.chat = function(chatID){
         {
             chatID: 21,
             speaker: "bigguy",
-            text: "Boys are perverts, it's in our blood, isn't that right young one. That's why your " + sc.n("landlord") +
-            " has me over. She loves my giant perverted friend here",
+            text: "Boys are perverts, it's in our blood, isn't that right young one? That's why your " + sc.n("landlord") +
+                " has me over. She loves my giant perverted friend here!",
             button: [
                 { chatID: 22, text: "oh gross...", callback: "" }
             ]
@@ -921,10 +921,10 @@ room14.chat = function(chatID){
         {
             chatID: 22,
             speaker: "landlord",
-            text: "Oh stop it, " + sc.n("me") + " doesn't need to hear the things you do to me. " + sc.n("me") + " why don't you run along now " +
-            "we have some..... stuff to do",
+            text: "Oh stop. " + sc.n("me") + " doesn't need to hear the things you do to me. Run along  " +
+                "now, we have some ... stuff ... to do.",
             button: [
-                { chatID: -1, text: "oh double gros...", callback: "fin1" }
+                { chatID: -1, text: "Oh, double gross!", callback: "fin1" }
             ]
         },
         {
@@ -1003,7 +1003,7 @@ room14.chat = function(chatID){
             chatID: 32,
             speaker: "landlord",
             text: "Hahaha OMG, I said don't shoot it down my throat, I know how you like to put on a show. And you " + sc.n("me") + ". " +
-            "Why do you insist on walking in on us? ",
+                "Why do you insist on walking in on us? ",
             button: [
                 { chatID: 33, text: "...", callback: "couple3c" }
             ]
@@ -1030,7 +1030,7 @@ room14.chat = function(chatID){
             chatID: 35,
             speaker: "landlord",
             text: "I know what a bad boy you are, clean my hand you naughty boy. I'm a cum expert and this is some really quality stuff, it's so " +
-            "thick and creamy.",
+                "thick and creamy.",
             button: [
                 { chatID: 36, text: "[Suck her fingers clean]", callback: "couple3f" }
             ]
@@ -1119,7 +1119,7 @@ room14.chat = function(chatID){
             chatID: 46,
             speaker: "landlord",
             text: "You know, since your really connecting with your femanine side you need to know how to act like a lady in " +
-            "the bedroom. Just stand back and " + sc.n("landlord") + " is going to show you how to embrace your femanine side. ",
+                "the bedroom. Just stand back and " + sc.n("landlord") + " is going to show you how to embrace your femanine side. ",
             button: [
                 { chatID: 47, text: "huh?", callback: "bg4_1" }
             ]
@@ -1209,7 +1209,7 @@ room14.chat = function(chatID){
             speaker: "landlord",
             text: "Look at you. You're drooling all over yourself. I can tell you're hungry, it's the slutty girl in you. All this time " +
                 "I thought I was raising a dead beat boy, but it turns out I raised a cum hungry slut. So are you going to keep staring at " +
-            "it or are you going to eat it?",
+                "it or are you going to eat it?",
             button: [
                 { chatID: -1, text: "uh huh", callback: "" }
             ]
@@ -1308,4 +1308,4 @@ room14.chat = function(chatID){
     ];
 
     return cArray[chatID];
-}
+};

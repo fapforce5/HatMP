@@ -1014,6 +1014,10 @@ menu.load = function (cookieName, btn, saveID) {
         $("#room-time").show();
     else
         $("#room-time").hide();
+
+    //Remove later, unfound bug, maybe old save
+    if (sc.getstep("missy") > 1)
+        g.roomMapAccess(203, true, true);
 };
 
 menu.saveDel = function(btn) {

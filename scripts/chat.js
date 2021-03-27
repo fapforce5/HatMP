@@ -74,9 +74,11 @@ privateChat.speakerInfo = function (charName) {
 $(document).ready(function () {
     $(document).bind('keyup', function (e) {
         if (e.which === 32) {//space bar
-            if ($('#room_chatBtn0').is(":visible")) {
-                if (!$('#room_chatBtn1').is(":visible") && !$('#room_chatBtn2').is(":visible")) {
-                    $('#room_chatBtn0').click();
+            if (g.roomTimeout === null && g.roomTimeout2 === null) {
+                if ($('#room_chatBtn0').is(":visible")) {
+                    if (!$('#room_chatBtn1').is(":visible") && !$('#room_chatBtn2').is(":visible")) {
+                        $('#room_chatBtn0').click();
+                    }
                 }
             }
         }

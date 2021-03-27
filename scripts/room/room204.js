@@ -45,6 +45,7 @@ room204.btnclick = function (name) {
             nav.killbutton(name);
         }
         else {
+            scc.love("missy", -2, 100);
             $('.room-btn[data-name=' + name + ']').addClass("room-204fail");
 
         }

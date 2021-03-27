@@ -20,6 +20,8 @@ room28.main = function () {
     var thisautohormone, hix, tix;
     var thisTransform = null;
     var sissyTrans = g.get("oncase");
+    var arousal, energyIndex;
+    var message;
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "fitness":
@@ -58,7 +60,11 @@ room28.main = function () {
                 g.st[i].t = 0;
                 break;
             case "energy":
-                g.st[i].t = Math.floor(maxE * .75);
+                energyIndex = i;
+                //g.st[i].t = Math.floor(maxE * .75);
+                break;
+            case "arousal":
+                arousal = g.st[i].t;
                 break;
             case "hormone":
                 hix = i;
@@ -86,6 +92,21 @@ room28.main = function () {
                 break;
         }
     }
+
+    //energy as propotion to horny
+    if (arousal > 97) {
+        g.st[energyIndex].t = 30;
+        message = "You're so horny you didn't recove much energy. ";
+    }
+    else if (arousal > 50) {
+        g.st[energyIndex].t = 70;
+        message = "You're starting to get horny and are a little restless.";
+    }
+    else {
+        g.st[energyIndex].t = 85;
+        message = "You got a good night's sleep. ";
+    }
+    g.popUpNotice(message);
 
     //growhair
     var initHairGrowth = 2;

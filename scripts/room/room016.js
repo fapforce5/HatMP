@@ -185,7 +185,7 @@ room16.chatcatch = function (callback) {
                 "width": 1440,
                 "height": 1080,
                 "image": "16_livingRoom/016_kungfu.mp4"
-            }, 454);
+            }, 16);
             break;
         case "upstairs":
             char.room(13);

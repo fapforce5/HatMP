@@ -101,7 +101,7 @@ sc.events = [
     { name: "landlord", step: 9, txt: "First day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 15, txt: "Work Complete - Invited back", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 16, txt: "Back In", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "landlord", step: 100, txt: "Sissy Path", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 200, txt: "Sissy Path", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "bigguy", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -230,7 +230,8 @@ sc.events = [
     { name: "lola", step: 10, txt: "Bed time confession", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
     { name: "lola", step: 11, txt: "Waiting on text", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
     { name: "lola", step: 12, txt: "Next - UNK", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
-    { name: "lola", step: 100, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 200, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
+    { name: "lola", step: 201, txt: "Gave panties", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true },
 
     { name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "eva", step: 0, txt: "Ask for book", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -245,7 +246,8 @@ sc.events = [
     { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 10, txt: "Next meeting in room", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
     { name: "eva", step: 11, txt: "Had the sex - phone contacts", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 100, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 200, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 201, txt: "Gave panties", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
 
     { name: "eva", step: 30, txt: "End of the Eva line", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
 

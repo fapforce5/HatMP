@@ -291,7 +291,7 @@ zcl.displayMainSub = function (thisImage, top, left, ratio) {
     btnWidth = 4200 * ratio * g.ratio;
     top = top * g.ratio;
     left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+    $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 };
 
 zcl.kneel = function (top, left, ratio, mod, reverse) {
