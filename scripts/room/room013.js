@@ -448,7 +448,7 @@ room13.chatcatch = function (callback) {
             g.setflag("evaDayEvent");
             nav.bg("13_sisterRoom/013_footrubLarge.gif");
             nav.killall();
-            cl.horny(30);
+            g.mod("arousal", 30);
             sc.setstep("eva", 3);
             scc.love("eva", 5, 50);
             break;
@@ -456,7 +456,7 @@ room13.chatcatch = function (callback) {
             g.setflag("evaDayEvent");
             nav.bg("13_sisterRoom/013_footrubLarge.gif");
             nav.killall();
-            cl.horny(30);
+            g.mod("arousal", 30);
             sc.setstep("eva", 4);
             break;
         case "sucktoes":
@@ -465,7 +465,7 @@ room13.chatcatch = function (callback) {
             g.internal = cl.c.shirt;
             cl.c.shirt = null;
             cl.display();
-            cl.horny(30);
+            g.mod("arousal", 30);
             break;
         case "finishSuckToes":
             cl.c.shirt = g.internal;
@@ -579,7 +579,7 @@ room13.chatcatch = function (callback) {
             g.setflag("lolaDayEvent");
             sc.setstep("lola", 2);
             scc.love("lola", 5, 50);
-            cl.horny(15);
+            g.mod("arousal", 15);
             break;
         case "br2":
             nav.killall();
@@ -594,7 +594,7 @@ room13.chatcatch = function (callback) {
                 "image": "13_sisterRoom/013_backrub_001_5.gif"
             }, 13);
             g.setflag("lolaDayEvent");
-            cl.horny(30);
+            g.mod("arousal", 30);
             sc.setstep("lola", 3);
             break;
         case "br3":
@@ -610,7 +610,7 @@ room13.chatcatch = function (callback) {
                 "image": "13_sisterRoom/013_backrub_002.gif"
             }, 13);
             g.setflag("lolaDayEvent");
-            cl.horny(45);
+            g.mod("arousal", 45);
             scc.love("lola", 5, 50);
             sc.setstep("lola", 4);
             break;

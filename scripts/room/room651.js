@@ -117,7 +117,7 @@ room651.chatcatch = function (callback) {
                 chat(13, 651);
             break;
         case "jo2chastity":
-            cl.horny(50);
+            g.mod("arousal", 50);
             char.room(651);
             break;
         case "jo3":

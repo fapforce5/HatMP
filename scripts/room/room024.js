@@ -40,283 +40,285 @@ room24.btnclick = function (name) {
 room24.chatcatch = function (callback) {
     var cArray = callback.split(" ");
     for (i = 0; i < cArray.length; i++) {
-        switch (cArray[i]) {
-            case "bg":
-                nav.bg("24_spinTheBottle/013_spinBG.jpg");
-                nav.killbutton("bottle");
-                break;
-            case "topbg":
-                nav.killbutton("lolaWine");
-                nav.killbutton("evaWine");
-                nav.bg("24_spinTheBottle/013_spinBottle_floor.jpg");
-                nav.button({
-                    "type": "img",
-                    "name": "bottle",
-                    "left": 960,
-                    "top": 812,
-                    "width": 222,
-                    "height": 223,
-                    "image": "24_spinTheBottle/bottleStop.png"
-                }, 13);
-                break;
-            case "black":
-                nav.killall();
-                nav.bg("24_spinTheBottle/black.jpg");
-                break;
-            case "lolaSit":
-                nav.killbutton("lola");
-                nav.button({
-                    "type": "img",
-                    "name": "lola",
-                    "left": 1192,
-                    "top": 0,
-                    "width": 728,
-                    "height": 1071,
-                    "image": "24_spinTheBottle/013_spinLolaSit" + g.internal.lolaNude + ".png"
-                }, 13);
-                room24.btnclick("lolaWine");
-                break;
-            case "evaSit":
-                nav.killbutton("eva");
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 448,
-                    "top": 44,
-                    "width": 711,
-                    "height": 1036,
-                    "image": "24_spinTheBottle/013_spinEvaSitNoTalk" + g.internal.evaNude + ".png"
-                }, 13);
-                room24.btnclick("evaWine");
-                break;
-            case "lolaDrink":
-                nav.killbutton("lola");
-                nav.button({
-                    "type": "img",
-                    "name": "lola",
-                    "left": 1192,
-                    "top": 0,
-                    "width": 728,
-                    "height": 1071,
-                    "image": "24_spinTheBottle/013_spinLolaDrink" + g.internal.lolaNude + ".png"
-                }, 13);
-                nav.killbutton("lola_glass");
-                break;
-            case "evaDrink":
-                nav.killbutton("eva");
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 448,
-                    "top": 44,
-                    "width": 711,
-                    "height": 1036,
-                    "image": "24_spinTheBottle/013_spinEvaDrink" + g.internal.evaNude + ".png"
-                }, 13);
-                nav.killbutton("eva_glass");
-                break;
-            case "lolaTalk":
-                nav.killbutton("lola");
-                nav.button({
-                    "type": "img",
-                    "name": "lola",
-                    "left": 1192,
-                    "top": 0,
-                    "width": 728,
-                    "height": 1071,
-                    "image": "24_spinTheBottle/013_spinLolaTalk" + g.internal.lolaNude + ".png"
-                }, 13);
-                room24.btnclick("lolaWine");
-                break;
-            case "evaTalk":
-                nav.killbutton("eva");
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 448,
-                    "top": 44,
-                    "width": 711,
-                    "height": 1036,
-                    "image": "24_spinTheBottle/013_spinEvaSit" + g.internal.evaNude + ".png"
-                }, 13);
-                room24.btnclick("evaWine");
-                break;
-            case "lolaKiss":
-                nav.killbutton("lola");
-                nav.button({
-                    "type": "img",
-                    "name": "lola",
-                    "left": 1159,
-                    "top": 0,
-                    "width": 716,
-                    "height": 1073,
-                    "image": "24_spinTheBottle/013_spinLolaKiss" + g.internal.lolaNude + ".png"
-                }, 13);
-                cl.horny(30);
-                break;
-            case "evaKiss":
-                nav.killbutton("eva");
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 448,
-                    "top": 44,
-                    "width": 711,
-                    "height": 1036,
-                    "image": "24_spinTheBottle/013_spinEvaKiss" + g.internal.evaNude + ".png"
-                }, 13);
-                cl.horny(30);
-                break;
-            case "bothKiss":
-                nav.killbutton("eva");
-                nav.killbutton("lola");
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 432,
-                    "top": 24,
-                    "width": 1355,
-                    "height": 1056,
-                    "image": "24_spinTheBottle/013_spinLolaEvaKiss.png"
-                }, 13);
-                cl.horny(60);
-                break;
-            case "lolaTop":
-                nav.killbutton("lola");
-                nav.button({
-                    "type": "img",
-                    "name": "lola",
-                    "left": 1251,
-                    "top": 1,
-                    "width": 605,
-                    "height": 872,
-                    "image": "24_spinTheBottle/lolaTop" + g.internal.lolaNude + ".png"
-                }, 13);
-                break;
-            case "evaTop":
-                nav.killbutton("eva");
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 310,
-                    "top": 6,
-                    "width": 591,
-                    "height": 806,
-                    "image": "24_spinTheBottle/evaTop" + g.internal.evaNude + ".png"
-                }, 13);
-                break;
-            case "lolaTopless":
-                g.internal.lolaNude = "Nude";
-                break;
-            case "evaTopless":
-                g.internal.evaNude = "Nude";
-                break;
-            case "meFirst":
-                g.internal.meNextChat = 53;
-                break;
-            case "meSecond":
-                g.internal.meNextChat = 64;
-                break;
-            case "meThird":
-                g.internal.meNextChat = 77;
-                break;
-            case "meEnd":
-                room24.chatcatch("topbg evaTop lolaTop");
-                chat(g.internal.meNextChat, 24);
-                break;
-            case "meSecret":
-                if (g.internal.meSecret === 0) {
-                    room24.chatcatch("bg evaSit lolaSit");
-                    g.internal.meSecret = 1;
-                    chat(18, 24);
-                }
-                else if (g.internal.meSecret === 1) {
-                    room24.chatcatch("bg evaSit lolaTalk");
-                    g.internal.meSecret = 1;
-                    chat(38, 24);
-                }
-                break;
-            case "lolaPic":
-                pic.add("lolaTopless");
-                break;
-            case "meKissLola":
-                room24.chatcatch("bg evaSit lolaKiss");
-                chat(27, 24);
-                break;
-            case "meKissEva":
-                room24.chatcatch("bg lolaSit evaKiss");
-                chat(29, 24);
-                break;
-            case "meNaked":
-                if (g.internal.meNaked === 0) {
-                    g.pass.push(cl.c.shirt);
-                    cl.c.shirt = null;
-                    cl.display();
-                    g.internal.meNaked = 1;
-                    room24.chatcatch("bg evaSit lolaTalk");
-                    chat(31, 24);
-                }
-                else if (g.internal.meNaked === 1) {
-                    g.pass.push(cl.c.pants);
-                    cl.c.pants = null;
-                    cl.display();
-                    g.internal.meNaked = 2;
-                    room24.chatcatch("bg evaTalk lolaSit");
-                    chat(33, 24);
-                }
-                else if (g.internal.meNaked === 2) {
-                    g.pass.push(cl.c.shoes);
-                    g.pass.push(cl.c.socks);
-                    cl.c.shoes = null;
-                    cl.c.socks = null;
-                    cl.display();
-                    g.internal.meNaked = 3;
-                    room24.chatcatch("bg lolaTalk evaSit");
-                    chat(35, 24);
-                }
+        if (cArray[i] !== "") {
+            switch (cArray[i]) {
+                case "bg":
+                    nav.bg("24_spinTheBottle/013_spinBG.jpg");
+                    nav.killbutton("bottle");
+                    break;
+                case "topbg":
+                    nav.killbutton("lolaWine");
+                    nav.killbutton("evaWine");
+                    nav.bg("24_spinTheBottle/013_spinBottle_floor.jpg");
+                    nav.button({
+                        "type": "img",
+                        "name": "bottle",
+                        "left": 960,
+                        "top": 812,
+                        "width": 222,
+                        "height": 223,
+                        "image": "24_spinTheBottle/bottleStop.png"
+                    }, 13);
+                    break;
+                case "black":
+                    nav.killall();
+                    nav.bg("24_spinTheBottle/black.jpg");
+                    break;
+                case "lolaSit":
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1192,
+                        "top": 0,
+                        "width": 728,
+                        "height": 1071,
+                        "image": "24_spinTheBottle/013_spinLolaSit" + g.internal.lolaNude + ".png"
+                    }, 13);
+                    room24.btnclick("lolaWine");
+                    break;
+                case "evaSit":
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 448,
+                        "top": 44,
+                        "width": 711,
+                        "height": 1036,
+                        "image": "24_spinTheBottle/013_spinEvaSitNoTalk" + g.internal.evaNude + ".png"
+                    }, 13);
+                    room24.btnclick("evaWine");
+                    break;
+                case "lolaDrink":
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1192,
+                        "top": 0,
+                        "width": 728,
+                        "height": 1071,
+                        "image": "24_spinTheBottle/013_spinLolaDrink" + g.internal.lolaNude + ".png"
+                    }, 13);
+                    nav.killbutton("lola_glass");
+                    break;
+                case "evaDrink":
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 448,
+                        "top": 44,
+                        "width": 711,
+                        "height": 1036,
+                        "image": "24_spinTheBottle/013_spinEvaDrink" + g.internal.evaNude + ".png"
+                    }, 13);
+                    nav.killbutton("eva_glass");
+                    break;
+                case "lolaTalk":
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1192,
+                        "top": 0,
+                        "width": 728,
+                        "height": 1071,
+                        "image": "24_spinTheBottle/013_spinLolaTalk" + g.internal.lolaNude + ".png"
+                    }, 13);
+                    room24.btnclick("lolaWine");
+                    break;
+                case "evaTalk":
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 448,
+                        "top": 44,
+                        "width": 711,
+                        "height": 1036,
+                        "image": "24_spinTheBottle/013_spinEvaSit" + g.internal.evaNude + ".png"
+                    }, 13);
+                    room24.btnclick("evaWine");
+                    break;
+                case "lolaKiss":
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1159,
+                        "top": 0,
+                        "width": 716,
+                        "height": 1073,
+                        "image": "24_spinTheBottle/013_spinLolaKiss" + g.internal.lolaNude + ".png"
+                    }, 13);
+                    //g.mod("arousal", 30);
+                    break;
+                case "evaKiss":
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 448,
+                        "top": 44,
+                        "width": 711,
+                        "height": 1036,
+                        "image": "24_spinTheBottle/013_spinEvaKiss" + g.internal.evaNude + ".png"
+                    }, 13);
+                    //g.mod("arousal", 30);
+                    break;
+                case "bothKiss":
+                    nav.killbutton("eva");
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 432,
+                        "top": 24,
+                        "width": 1355,
+                        "height": 1056,
+                        "image": "24_spinTheBottle/013_spinLolaEvaKiss.png"
+                    }, 13);
+                    //g.mod("arousal", 60);
+                    break;
+                case "lolaTop":
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1251,
+                        "top": 1,
+                        "width": 605,
+                        "height": 872,
+                        "image": "24_spinTheBottle/lolaTop" + g.internal.lolaNude + ".png"
+                    }, 13);
+                    break;
+                case "evaTop":
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 310,
+                        "top": 6,
+                        "width": 591,
+                        "height": 806,
+                        "image": "24_spinTheBottle/evaTop" + g.internal.evaNude + ".png"
+                    }, 13);
+                    break;
+                case "lolaTopless":
+                    g.internal.lolaNude = "Nude";
+                    break;
+                case "evaTopless":
+                    g.internal.evaNude = "Nude";
+                    break;
+                case "meFirst":
+                    g.internal.meNextChat = 53;
+                    break;
+                case "meSecond":
+                    g.internal.meNextChat = 64;
+                    break;
+                case "meThird":
+                    g.internal.meNextChat = 77;
+                    break;
+                case "meEnd":
+                    room24.chatcatch("topbg evaTop lolaTop");
+                    chat(g.internal.meNextChat, 24);
+                    break;
+                case "meSecret":
+                    if (g.internal.meSecret === 0) {
+                        room24.chatcatch("bg evaSit lolaSit");
+                        g.internal.meSecret = 1;
+                        chat(18, 24);
+                    }
+                    else if (g.internal.meSecret === 1) {
+                        room24.chatcatch("bg evaSit lolaTalk");
+                        g.internal.meSecret = 1;
+                        chat(38, 24);
+                    }
+                    break;
+                case "lolaPic":
+                    pic.add("lolaTopless");
+                    break;
+                case "meKissLola":
+                    room24.chatcatch("bg evaSit lolaKiss");
+                    chat(27, 24);
+                    break;
+                case "meKissEva":
+                    room24.chatcatch("bg lolaSit evaKiss");
+                    chat(29, 24);
+                    break;
+                case "meNaked":
+                    if (g.internal.meNaked === 0) {
+                        g.pass.push(cl.c.shirt);
+                        cl.c.shirt = null;
+                        cl.display();
+                        g.internal.meNaked = 1;
+                        room24.chatcatch("bg evaSit lolaTalk");
+                        chat(31, 24);
+                    }
+                    else if (g.internal.meNaked === 1) {
+                        g.pass.push(cl.c.pants);
+                        cl.c.pants = null;
+                        cl.display();
+                        g.internal.meNaked = 2;
+                        room24.chatcatch("bg evaTalk lolaSit");
+                        chat(33, 24);
+                    }
+                    else if (g.internal.meNaked === 2) {
+                        g.pass.push(cl.c.shoes);
+                        g.pass.push(cl.c.socks);
+                        cl.c.shoes = null;
+                        cl.c.socks = null;
+                        cl.display();
+                        g.internal.meNaked = 3;
+                        room24.chatcatch("bg lolaTalk evaSit");
+                        chat(35, 24);
+                    }
 
-                break;
-            case "killWine":
-                nav.killbutton("lolaWine");
-                nav.killbutton("evaWine");
-                break;
-            case "lolaHalf":
-                g.internal.lola = "glass_half.png";
-                break;
-            case "evaHalf":
-                g.internal.eva = "glass_half.png";
-                break;
-            case "lolaEmpty":
-                g.internal.lola = "glass_empty.png";
-                break;
-            case "evaEmpty":
-                g.internal.eva = "glass_empty.png";
-                break;
-            case "spinBottleEva":
-                $('.room-img[data-name="bottle"]').addClass('evaSpin');
-                $('.room-chatBox').hide();
-                setTimeout(function () { $('.room-chatBox').show(); }, 3000);
-                break;
-            case "spinBottleLola":
-                $('.room-img[data-name="bottle"]').addClass('lolaSpin');
-                $('.room-chatBox').hide();
-                setTimeout(function () { $('.room-chatBox').show(); }, 3000);
-                break;
-            case "spinBottleMe":
-                $('.room-img[data-name="bottle"]').addClass('meSpin');
-                $('.room-chatBox').hide();
-                setTimeout(function () { $('.room-chatBox').show(); }, 3000);
-                break;
-            case "spinEnd":
-                char.settime(22, 37);
-                sc.setstep("eva", 4);
-                sc.setstep("lola", 5);
-                inv.use("wine");
-                char.room(11);
-                break;
-            default:
-                console.log(callback + " - miss");
-                break;
+                    break;
+                case "killWine":
+                    nav.killbutton("lolaWine");
+                    nav.killbutton("evaWine");
+                    break;
+                case "lolaHalf":
+                    g.internal.lola = "glass_half.png";
+                    break;
+                case "evaHalf":
+                    g.internal.eva = "glass_half.png";
+                    break;
+                case "lolaEmpty":
+                    g.internal.lola = "glass_empty.png";
+                    break;
+                case "evaEmpty":
+                    g.internal.eva = "glass_empty.png";
+                    break;
+                case "spinBottleEva":
+                    $('.room-img[data-name="bottle"]').addClass('evaSpin');
+                    $('.room-chatBox').hide();
+                    setTimeout(function () { $('.room-chatBox').show(); }, 3000);
+                    break;
+                case "spinBottleLola":
+                    $('.room-img[data-name="bottle"]').addClass('lolaSpin');
+                    $('.room-chatBox').hide();
+                    setTimeout(function () { $('.room-chatBox').show(); }, 3000);
+                    break;
+                case "spinBottleMe":
+                    $('.room-img[data-name="bottle"]').addClass('meSpin');
+                    $('.room-chatBox').hide();
+                    setTimeout(function () { $('.room-chatBox').show(); }, 3000);
+                    break;
+                case "spinEnd":
+                    char.settime(22, 37);
+                    sc.setstep("eva", 4);
+                    sc.setstep("lola", 5);
+                    inv.use("wine");
+                    char.room(11);
+                    break;
+                default:
+                    console.log(callback + " - miss");
+                    break;
+            }
         }
     }
 };
@@ -503,8 +505,8 @@ room24.chat = function (chatID) {
             chatID: 21,
             speaker: "lola",
             text: "I don't know. I don't want my boobs all over the internet with lewd perverts touching themselves to me. ",
-                button: [
-                    { chatID: 22, text: "...", callback: "evaTalk lolaSit" }
+            button: [
+                { chatID: 22, text: "...", callback: "evaTalk lolaSit" }
             ]
         },
         {
@@ -960,7 +962,7 @@ room24.chat = function (chatID) {
             text: "Oh damn it landed on " + sc.n("me") + "!",
             button: [
                 { chatID: -1, text: "Tell a secret", callback: "meThird meSecret" },
-                { chatID: -1, text: "Kiss " + sc.n('lola'), callback: "meThird meKissEva" },
+                { chatID: -1, text: "Kiss " + sc.n('eva'), callback: "meThird meKissEva" },
                 { chatID: -1, text: "Remove an item of clothing", callback: "meThird meNaked" }
             ]
         },
@@ -1119,6 +1121,5 @@ room24.chat = function (chatID) {
             ]
         }
     ];
-
     return cArray[chatID];
-}
+};

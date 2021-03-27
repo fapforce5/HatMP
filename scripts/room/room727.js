@@ -108,7 +108,7 @@ room727.btnclick = function (name) {
         case "supriseSex":
             nav.killall();
             nav.bg("727_bathroom/girl1.jpg");
-            cl.horny(100);
+            g.mod("arousal", 100);
             g.roomTimeout = setTimeout(function () { chat(10, 727); }, 2000);
             break;
         default:

@@ -1636,17 +1636,11 @@ cl.doCum = function (bigCum) {
     if (g.get("cum") > g.dt)
         g.set("cum", g.dt);
 
-    cl.horny(-1000);
-    cl.cockDisplay();
+    g.mod("arousal", -1000);
 };
 
 cl.fillballs = function () {
     g.set("cum", char.addMinutes(g.dt, -4320));
-    cl.cockDisplay();
-};
-
-cl.horny = function (howHorny) {
-    g.mod("arousal", howHorny);
     cl.cockDisplay();
 };
 

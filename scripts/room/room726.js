@@ -215,12 +215,12 @@ room726.chatcatch = function (callback) {
             }, 726);
             break;
         case "tim3_5":
-            cl.horny(10);
+            g.mod("arousal", 10);
             nav.killall();
             nav.bg("726_dance/tim3_5.jpg");
             break;
         case "tim3_6":
-            cl.horny(20);
+            g.mod("arousal", 20);
             nav.killall();
             nav.bg("726_dance/tim3_6.jpg");
             break;
@@ -246,7 +246,7 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_11.jpg");
             break;
         case "tim3_12":
-            cl.horny(100);
+            g.mod("arousal", 100);
             nav.bg("726_dance/tim3_12.jpg");
             break;
         case "tim3_13":

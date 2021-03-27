@@ -338,7 +338,7 @@ room501.chatcatch = function (callback) {
             nav.bg("501_jadaGame/zoeyMunch2.jpg");
             break;
         case "munchTheTwat2":
-            cl.horny(50);
+            g.mod("arousal", 50);
             nav.bg("501_jadaGame/zoeyMunch3.jpg");
             break;
         case "munchTheTwat3":

@@ -354,7 +354,7 @@ room53.chatcatch = function (callback) {
             g.mod("sissy", 40);
             sc.setstep("candy", 3);
             char.addtime(60);
-            cl.horny(100);
+            g.mod("arousal", 100);
             char.room(53);
             break;
         default:

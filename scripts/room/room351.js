@@ -3,7 +3,7 @@ var room351 = {};
 room351.main = function () {
 
     if (g.pass === "landlord") {
-        cl.horny(200);
+        g.mod("arousal", 200);
         nav.button({
             "type": "img",
             "name": "nurse",
@@ -100,7 +100,7 @@ room351.chatcatch = function (callback) {
                 "image": "351_spermJackoff/nurse6.jpg"
             }, 351);
             cl.doCum(true);
-            cl.horny(-200);
+            g.mod("arousal", -1000);
             break;
         case "n7":
             g.pass = "350_nursePay";

@@ -540,12 +540,12 @@ room209.chatcatch = function (callback) {
             break;
         case "h6_1":
             cl.nude();
-            cl.horny(20);
+            g.mod("arousal", 20);
             nav.killbutton("chair");
             zcl.displayMain(-100, 600, .25, "clothes", true);
             break;
         case "h6_2":
-            cl.horny(50);
+            g.mod("arousal", 50);
             nav.killall();
             nav.bg("209_classroom/h6_2.jpg");
             break;

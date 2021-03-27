@@ -69,7 +69,7 @@ room54.chatcatch = function (callback) {
             char.addtime(60);
             g.setflag("tiffanyDayEvent");
             sc.setstep("tiffany", 17);
-            cl.horny(75);
+            g.mod("arousal", 75);
             nav.bg("54_tif/tif.jpg", "54_tif/tifNight.jpg");
             nav.button({
                 "type": "btn",
@@ -94,7 +94,7 @@ room54.chatcatch = function (callback) {
             nav.bg("54_tif/b3.jpg");
             break;
         case "b4":
-            cl.horny(100);
+            g.mod("arousal", 100);
             nav.bg("54_tif/b4.jpg");
             break;
         case "b5":
