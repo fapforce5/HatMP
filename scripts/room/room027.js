@@ -2,7 +2,7 @@
 var room27 = {};
 room27.main = function () {
     g.internal = new Array();
-    var nextChat = g.pass === 57 ? 19 : 20
+    var nextChat = g.pass === 57 ? 19 : 20;
     if (inv.has("redl") || g.pass === 57)
         g.internal.push({ chatID: nextChat, text: "Red lipstick", callback: "red" });
     if (inv.has("pinkl") || g.pass === 57)
@@ -57,6 +57,12 @@ room27.main = function () {
             else
                 chat(22, 27);
             break;
+        default:
+            g.pass = 451;
+            nav.bg("451_parkMensRoom/mirror.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
+            break;
     }
     //var navList = [0];
     //$.each(btnList, function (i, v) {
@@ -69,6 +75,9 @@ room27.btnclick = function (name) {
     switch (name) {
         case "buildChar":
             zcl.displayMirror();
+            break;
+        case "closeView":
+            char.room(27);
             break;
         default:
             break;
@@ -198,6 +207,199 @@ room27.chatcatch = function (callback) {
             else
                 chat(26, 27);
             break;
+        case "checkem":
+            nav.bg("27_mirror/charDisplay.jpg");
+            char.changeMenu("hide");
+            var allc = cl.appearancex();
+            var thisBody = allc.abody;
+            var tc = allc.acl;
+            console.log(tc);
+            zcl.displayMain(100, 1380, .1, "", false);
+            nav.t({
+                type: "img",
+                name: "me",
+                left: 1000,
+                top: 400,
+                font: 20,
+                hex: "#ffffff",
+                text: thisBody.exp
+            }, 27);
+
+            nav.button({
+                "type": "img",
+                "name": "tif",
+                "left": 1000,
+                "top": 100,
+                "width": 200,
+                "height": 200,
+                "image": "../stat/" + thisBody.val + "_75.png"
+            }, 27);
+            nav.t({
+                type: "img",
+                name: "me",
+                left: 1000,
+                top: 310,
+                font: 20,
+                hex: "#ffffff",
+                text: "Overall Body: " + cl.getSet(thisBody.val)
+            }, 27);
+
+
+            nav.t({
+                type: "img",
+                name: "me",
+                left: 650,
+                top: 400,
+                font: 20,
+                hex: "#ffffff",
+                text: tc.exp
+            }, 27);
+
+            nav.button({
+                "type": "img",
+                "name": "tif",
+                "left": 650,
+                "top": 100,
+                "width": 200,
+                "height": 200,
+                "image": "../stat/" + tc.val + "_75.png"
+            }, 27);
+            nav.t({
+                type: "img",
+                name: "me",
+                left: 650,
+                top: 310,
+                font: 20,
+                hex: "#ffffff",
+                text: "Overall Clothing: " + cl.getSet(tc.val)
+            }, 27);
+
+
+            if(tc.clist.top !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 100,
+                    "top": 100,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.top 
+                }, 27);
+
+            if (tc.clist.bottom !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 100,
+                    "top": 320,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.bottom 
+                }, 27);
+
+            if (tc.clist.socks !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 100,
+                    "top": 540,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.socks
+                }, 27);
+
+            if (tc.clist.shoes !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 100,
+                    "top": 760,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.shoes
+                }, 27);
+
+            if (tc.clist.bra !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 320,
+                    "top": 100,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.bra
+                }, 27);
+
+            if (tc.clist.panties !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 320,
+                    "top": 320,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.panties
+                }, 27);
+
+            if (tc.clist.chastity !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 320,
+                    "top": 540,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.chastity
+                }, 27);
+
+            if (tc.clist.buttplug !== null)
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 320,
+                    "top": 760,
+                    "width": 200,
+                    "height": 200,
+                    "image": "../mainChar/icons/" + tc.clist.buttplug
+                }, 27);
+
+
+            nav.t({
+                type: "img",
+                name: "me",
+                left: 1000,
+                top: 700,
+                font: 20,
+                hex: "#ffffff",
+                text: allc.valString
+            }, 27);
+
+            nav.button({
+                "type": "img",
+                "name": "tif",
+                "left": 650,
+                "top": 700,
+                "width": 200,
+                "height": 200,
+                "image": "../stat/" + allc.val + "_75.png"
+            }, 27);
+
+            nav.button({
+                "type": "btn",
+                "name": "closeView",
+                "left": 650,
+                "top": 900,
+                "width": 200,
+                "height": 50,
+                "image": "27_mirror/close.png"
+            }, 27);
+
+            break;
+        case "killReset":
+            nav.killall();
+            nav.bg("27_mirror/727.jpg");
+            zcl.displayMirror();
+            break;
         default:
             break;
     }
@@ -213,6 +415,7 @@ room27.chat = function (chatID) {
                 { chatID: -1, text: "Apply Makeup", callback: "makeup" },
                 { chatID: 21, text: "Apply Lipstick", callback: "" },
                 { chatID: 3, text: "Wash Face", callback: "wash" },
+                { chatID: -1, text: "Check Self", callback: "checkem" },
                 { chatID: -1, text: "Finish", callback: "return" }
             ]
         },
@@ -331,7 +534,7 @@ room27.chat = function (chatID) {
             speaker: "me",
             text: "I need to get with " + sc.n("tiffany") + " and learn how improve my makeup skills.",
             button: [
-                { chatID: 16, text: "Apply Light Makeup", callback: "" },
+                { chatID: 16, text: "Apply Light Makeup", callback: "" }
             ]
         },
         {
@@ -340,7 +543,7 @@ room27.chat = function (chatID) {
             text: "I need to get with " + sc.n("tiffany") + " some more and learn more tips!",
             button: [
                 { chatID: 16, text: "Apply Light Makeup", callback: "" },
-                { chatID: 17, text: "Apply Normal Makeup", callback: "" },
+                { chatID: 17, text: "Apply Normal Makeup", callback: "" }
             ]
         },
         {
@@ -350,7 +553,7 @@ room27.chat = function (chatID) {
             button: [
                 { chatID: 16, text: "Apply Light Makeup", callback: "" },
                 { chatID: 17, text: "Apply Normal Makeup", callback: "" },
-                { chatID: 18, text: "Apply Bimbo Makeup", callback: "" },
+                { chatID: 18, text: "Apply Bimbo Makeup", callback: "" }
             ]
         },
         {
@@ -359,7 +562,7 @@ room27.chat = function (chatID) {
             text: "What color of light makeup should I choose?",
             button: [
                 { chatID: -1, text: "Black", callback: "lb" },
-                { chatID: -1, text: "Purple", callback: "lp" },
+                { chatID: -1, text: "Purple", callback: "lp" }
             ]
         },
         {
@@ -368,7 +571,7 @@ room27.chat = function (chatID) {
             text: "What color of makeup should I choose?",
             button: [
                 { chatID: -1, text: "Black", callback: "mb" },
-                { chatID: -1, text: "Purple", callback: "mp" },
+                { chatID: -1, text: "Purple", callback: "mp" }
             ]
         },
         {
@@ -377,7 +580,7 @@ room27.chat = function (chatID) {
             text: "What color of bimbo makeup should I choose?",
             button: [
                 { chatID: -1, text: "Black", callback: "hb" },
-                { chatID: -1, text: "Purple", callback: "hp" },
+                { chatID: -1, text: "Purple", callback: "hp" }
             ]
         },
         {
@@ -386,7 +589,7 @@ room27.chat = function (chatID) {
             text: "Such a pretty girl.",
             button: [
                 { chatID: 12, text: "Do something else.", callback: "" },
-                { chatID: -1, text: "Leave", callback: "return" },
+                { chatID: -1, text: "Leave", callback: "return" }
             ]
         },
         {
@@ -395,7 +598,7 @@ room27.chat = function (chatID) {
             text: "Such a pretty girl.",
             button: [
                 { chatID: 0, text: "Do something else.", callback: "" },
-                { chatID: -1, text: "Leave", callback: "return" },
+                { chatID: -1, text: "Leave", callback: "return" }
             ]
         },
         {
@@ -442,6 +645,15 @@ room27.chat = function (chatID) {
             text: "Now you're a true bimbo! You've learned all I have to teach.",
             button: [
                 { chatID: -1, text: "I am a stupid bimbo!", callback: "hb" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "me",
+            text: " ",
+            button: [
+                { chatID: 0, text: "Do something else", callback: "killReset" },
+                { chatID: -1, text: "Finish", callback: "return" }
             ]
         },
     ];

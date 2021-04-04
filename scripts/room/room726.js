@@ -112,7 +112,7 @@ room726.btnclick = function (name) {
                 if (timstep === 0)
                     chat(15, 726);
                 else if (timstep === 1)
-                    chat(20, 901);
+                    chat(20, 726);
                 else if (timstep === 2)
                     chat(22, 726);
             }

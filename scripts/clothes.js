@@ -33,6 +33,14 @@ cl.set = [
     { entry: 5, name: "Cum Dumpster" }
 ];
 
+cl.getSet = function (entry) {
+    var i;
+    for (i = 0; i < cl.set.length; i++) {
+        if (cl.set[i].entry === entry)
+            return cl.set[i].name;
+    }
+    return "UNK";
+};
 
 cl.cTemp = {
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null
@@ -488,6 +496,45 @@ cl.makeup = [
     { name: "rb", image: "body_head_ruin_black.png" },
     { name: "rp", image: "body_head_ruin_purple.png" }
 ];
+
+cl.getmakeup = function () {
+    var i, ret;
+    ret = "";
+    if (cl.c.makeup === null || cl.c.makeup === "n")
+        return "none";
+    if (cl.c.makeup === "light")
+        return "Light Black";
+
+    $.each(cl.makeup, function (i, v) {
+
+        if (cl.c.makeup === v.name) {
+            switch (v.name[0]) {
+                case "l":
+                    ret = "Light ";
+                    break;
+                case "m":
+                    ret = "Medium ";
+                    break;
+                case "h":
+                    ret = "Bimbo ";
+                    break;
+                case "r":
+                    ret = "Ruined ";
+                    break;
+            }
+            switch (v.name[1]) {
+                case "b":
+                    ret += "Black";
+                    break;
+                case "p":
+                    ret += "Purple";
+                    break;
+            }
+            return;
+        }
+    });
+    return ret;
+};
 
 cl.bodyhair = [
     { name: "longHair", dt: 7, image: "hairy_long.png", display: "Full Body Hair" },
@@ -1694,21 +1741,7 @@ cl.appearance = function () {
     var thisBody = cl.appearanceBody();
     var thisClothes = cl.appearanceClothes();
     var returnVal;
-
-    //if (thisBody === -1)
-    //    thisBody = -1;
-    //else {
-    //    if (thisBody > thisClothes)
-    //        thisBody--;
-    //    else if (thisBody < thisClothes)
-    //        thisBody++;
-
-    //    if (thisBody < 0)
-    //        thisBody = 0;
-    //    if (thisBody > 4)
-    //        thisBody = 4;
-    //}
-
+    
     returnVal = thisClothes;
     if (thisBody === -1)
         returnVal = -1;
@@ -1722,76 +1755,364 @@ cl.appearance = function () {
 
     return returnVal;
 };
+cl.appearancex = function () {
+    var thisBody = cl.appearanceBodyExplain();
+    var thisClothes = cl.appearanceClothesx();
+    var returnVal;
+    var returnString = "Base Score: " + cl.getSet(thisClothes.val) + "<br />";
+
+    returnVal = thisClothes.val;
+    if (thisBody === -1) {
+        returnVal = -1;
+        returnString += "Need to work out. <br/>";
+    }
+    else {
+        if (thisClothes.val > thisBody.val) {
+            returnVal--;  
+            returnString += "Lost a level. <br/>";
+        }
+        else if (thisClothes.val < thisBody.val) {
+            returnVal++;
+            returnString += "Gained a level. <br/>";
+        }
+    }
+    if (returnVal > 6)
+        returnVal = 6;
+    else if (returnVal < -1)
+        returnVal = -1;
+
+    return { abody: thisBody, acl: thisClothes, val: returnVal, valString: returnString };
+};
 
 cl.appearanceClothes = function () {
+    return cl.appearanceClothesx().val;
+};
+
+cl.appearanceClothesx = function () {
+    /*{ entry: -1, name: "Chubby" },
+    { entry: 0, name: "Male" },
+    { entry: 1, name: "Androgynous" },
+    { entry: 2, name: "Cute" },
+    { entry: 3, name: "Sexy" },
+    { entry: 4, name: "Bimbo Slut" },
+    { entry: 5, name: "Cum Dumpster" }*/
+
     //shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     //tattoo: new Array(), buttplug: null, chastity: null, necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null
     var isNude = cl.c.shoes === null && cl.c.socks === null && cl.c.pants === null && cl.c.panties === null && cl.c.bra === null && cl.c.shirt === null && cl.c.dress === null && cl.c.swimsuit === null && cl.c.pj === null;
     var baseScore = cl.appearanceBody();
     var bodyScore = baseScore;
     var secondaryScore = 4;
+    var returnExplain = "";
+    var sockShoeScore, pantyBraScore;
+    sockShoeScore = null;
+    bonusScore = 0;
+    var rc = {
+        top: null,
+        bottom: null,
+        panties: null,
+        bra: null,
+        socks: null,
+        shoes: null,
+        chastity: null,
+        buttplug: null
+    };
+    var tc;
 
     if (isNude) {
-        if (bodyScore > 2)
-            return bodyScore + 1;
-        return bodyScore;
+        return { val: 5, exp: cl.getSet(5), clist: rc };
     }
 
-    if (cl.c.dress !== null)
-        baseScore = cl.getEntry("dress", cl.c.dress).daring;
-    else if (cl.c.swimsuit !== null)
-        baseScore = cl.getEntry("swimsuit", cl.c.swimsuit).daring;
-    else if (cl.c.pj !== null)
-        baseScore = cl.getEntry("pj", cl.c.pj).daring;
-    else if (cl.c.shirt === null && cl.c.pants === null)
+    if (cl.c.dress !== null) {
+        tc = cl.getEntry("dress", cl.c.dress);
+        rc.top = tc.img;
+        baseScore = tc.daring;
+        returnExplain += "Dress: " + cl.getSet(baseScore) + "<br/>";
+    }
+    else if (cl.c.swimsuit !== null) {
+        tc = cl.getEntry("swimsuit", cl.c.swimsuit);
+        rc.top = tc.img;
+        baseScore = tc.daring;
+        returnExplain += "Swimsuit: " + cl.getSet(baseScore) + "<br/>";
+    }
+    else if (cl.c.pj !== null) {
+        tc = cl.getEntry("pj", cl.c.pj);
+        rc.top = tc.img;
+        baseScore = tc.daring;
+        returnExplain += "PJs: " + cl.getSet(baseScore) + "<br/>";
+    }
+    else if (cl.c.shirt === null && cl.c.pants === null) {
         baseScore = bodyScore;
-    else if (cl.c.shirt === null)
-        baseScore = Math.floor((cl.getEntry("pants", cl.c.pants).daring + bodyScore) / 2);
-    else if (cl.c.pants === null)
-        baseScore = Math.floor((cl.getEntry("shirt", cl.c.shirt).daring + bodyScore) / 2);
+        returnExplain += "Base Body: " + cl.getSet(baseScore) + "<br/>";
+    }
+    else if (cl.c.shirt !== null && cl.c.pants !== null) {
+        tc = cl.getEntry("shirt", cl.c.shirt);
+        rc.top = tc.img;
+        baseScore = tc.daring;
+        returnExplain += "Top: " + cl.getSet(baseScore) + "<br/>";
+
+        tc = cl.getEntry("pants", cl.c.pants);
+        rc.bottom = tc.img;
+        baseScore += tc.daring;
+        returnExplain += "Bottoms: " + cl.getSet(tc.daring) + "<br/>";
+        baseScore = Math.ceil(baseScore / 2);
+        returnExplain += "Outfit: " + cl.getSet(baseScore) + "<br/>";
+    }
+    else if (cl.c.shirt === null) {
+        switch (cl.c.chest) {
+            case 0:
+                baseScore = -1;
+                break;
+            case 1:
+                baseScore = 0;
+                break;
+            case 2:
+                baseScore = 2;
+                break;
+            case 3:
+                baseScore = 5;
+                break;
+            case 4:
+                baseScore = 5;
+                break;
+            default:
+                baseScore = 5;
+        }
+        if (cl.getBodyHair() === null) {
+            if (cl.c.bra !== null) {
+                tc = cl.getEntry("bra", cl.c.bra);
+                if (tc.daring > baseScore)
+                    baseScore++;
+                else if (tc.daring < baseScore)
+                    baseScore--;
+                if (baseScore > 5)
+                    baseScore = 5;
+                else if (baseScore < -1)
+                    baseScore = -1;
+
+                returnExplain += "Top: " + cl.getSet(baseScore) + "<br/>";
+            }
+            else {
+                returnExplain += "Naked Boobies: " + cl.getSet(baseScore) + "<br/>";
+            }
+        }
+        else {
+            baseScore = 0;
+            returnExplain += "Gross Hairy Boobies: " + cl.getSet(baseScore) + "<br/>";
+        }
+
+        tc = cl.getEntry("pants", cl.c.pj);
+        rc.bottom = tc.img;
+        baseScore += tc.daring;
+        returnExplain += "Bottoms: " + cl.getSet(tc.daring) + "<br/>";
+        baseScore = Math.round(baseScore / 2);
+        returnExplain += "Outfit: " + cl.getSet(baseScore) + "<br/>";
+    }
+    else if (cl.c.pants === null) {
+        baseScore = cl.c.leg;
+        if (cl.c.chastity !== null || cl.c.cock > 3)
+            baseScore += 2;
+        if (baseScore > 5)
+            baseScore = 5;
+
+        if (cl.getBodyHair() === null)
+            returnExplain += "Clitty and Ass: " + cl.getSet(baseScore) + "<br/>";
+        else {
+            baseScore = 0;
+            returnExplain += "Gross Hairy Legs: " + cl.getSet(baseScore) + "<br/>";
+        }
+
+        tc = cl.getEntry("shirt", cl.c.shirt);
+        rc.top = tc.img;
+        baseScore += tc.daring;
+        returnExplain += "Top: " + cl.getSet(tc.daring) + "<br/>";
+        baseScore = Math.round(baseScore / 2);
+        returnExplain += "Outfit: " + cl.getSet(baseScore) + "<br/>";
+    }
+
+    //end base score
+    if (cl.c.bra === null) {
+        if (cl.c.chest > 2)
+            pantyBraScore = cl.c.chest - 1;
+        else
+            pantyBraScore = 0;
+    }
+    else {
+        tc = cl.getEntry("bra", cl.c.bra);
+        rc.bra = tc.img;
+        pantyBraScore = tc.daring;
+        returnExplain += "Bra: " + cl.getSet(baseScore) + "<br/>";
+    }
+
+    if (cl.c.panties === null) {
+        pantyBraScore = Math.ceil((pantyBraScore + 5) / 2);
+        returnExplain += "Panties: " + cl.getSet(5) + "<br/>";
+    }
+    else {
+        tc = cl.getEntry("panties", cl.c.panties);
+        rc.panties = tc.img;
+        pantyBraScore = Math.ceil((pantyBraScore + tc.daring) / 2);
+        returnExplain += "Panties: " + cl.getSet(baseScore) + "<br/>";
+    }
+
+    if (cl.c.chastity !== null) {
+        tc = cl.getEntry("chastity", cl.c.chastity);
+        rc.chastity = tc.img;
+        returnExplain += "Clitty Locked Up<br/>";
+    }
     else
-        baseScore = Math.floor((cl.getEntry("shirt", cl.c.shirt).daring + cl.getEntry("pants", cl.c.pants).daring) / 2);
+        returnExplain += "Clitty Not Locked<br/>";
 
-    pantyScore = cl.c.panties === null ? baseScore : cl.getEntry("panties", cl.c.panties).daring;
-    shoeScore = cl.c.shoes === null ? baseScore : cl.getEntry("shoes", cl.c.shoes).daring;
-    sockScore = cl.c.socks === null ? baseScore : cl.getEntry("socks", cl.c.socks).daring;
+    if (cl.c.buttplug !== null) {
+        tc = cl.getEntry("buttplug", cl.c.buttplug);
+        rc.buttplug = tc.img;
+        returnExplain += "Plug Size: " + cl.getSet(tc.daring) + "<br/>";
+    }
+    else
+        returnExplain += "Buttplug: None<br/>";
 
-    secondaryScore = pantyScore + shoeScore + sockScore + (cl.c.chastity === null ? 0 : .25) + (cl.c.buttplug === null ? 0 : .25);
+    
 
-    secondaryScore = Math.floor(secondaryScore / 3);
+    if (cl.c.socks === null) {
+        returnExplain += "Socks: None<br/>";
+    }
+    else {
+        tc = cl.getEntry("socks", cl.c.socks);
+        rc.socks = tc.img;
+        sockShoeScore = tc.daring;
+        returnExplain += "Socks: " + cl.getSet(baseScore) + "<br/>";
+    }
 
-    //console.log(baseScore, secondaryScore, pantyScore, shoeScore, sockScore);
+    if (cl.c.shoes === null) {
+        returnExplain += "Shoes: None<br/>";
+    }
+    else {
+        tc = cl.getEntry("shoes", cl.c.shoes);
+        rc.shoes = tc.img;
+        if (sockShoeScore !== null) {
+            sockShoeScore = Math.ceil((sockShoeScore + tc.daring) / 2);
+        }
+        returnExplain += "Shoes: " + cl.getSet(tc.daring) + "<br/>";
+    }
 
-    if ((secondaryScore + 1) < baseScore)
-        baseScore = baseScore - 1;
-    else if (secondaryScore > baseScore)
-        baseScore = baseScore + 1;
+
+    if (sockShoeScore !== null) {
+        if (baseScore > sockShoeScore)
+            baseScore++;
+        else if (baseScore < sockShoeScore)
+            baseScore--;
+    }
+
+    if (pantyBraScore > baseScore)
+        baseScore++;
+    else if (pantyBraScore < baseScore)
+        baseScore--;
+
+    secondaryScore = (cl.c.chastity !== null ? .25 : 0) +
+        (cl.c.buttplug !== null ? .25 : 0) +
+        (cl.c.cumface !== null ? .25 : 0);
+
+
+    console.log(baseScore, secondaryScore, pantyBraScore, sockShoeScore);
+
+    baseScore = Math.round(baseScore + secondaryScore);
 
     if (baseScore < 0)
         baseScore = 0;
-    if (baseScore > 4)
-        baseScore = 4;
-    return baseScore;
+    if (baseScore > 5)
+        baseScore = 5;
+    //console.log(baseScore);
+    return { val: baseScore, exp: returnExplain, clist: rc };
 };
 
-//cl.set = [
-//    { entry: -1, name: "Chubby" },
-//    { entry: 0, name: "Male" },
-//    { entry: 1, name: "Androgynous" },
-//    { entry: 2, name: "Cute" },
-//    { entry: 3, name: "Sexy" },
-//    { entry: 4, name: "Bimbo Slut" },
-//    { entry: 5, name: "Cum Dumpster" }
-//];
-
 cl.appearanceBody = function () {
-    var smoothslut = cl.getBodyHair() === null;
-    var returnVal;
+    
 
-    if (cl.c.chest === 0)
+    return cl.appearanceBodyExplain().returnVal;
+};
+
+cl.appearanceBodyExplain = function () {
+    
+
+    var smoothslut = cl.getBodyHair() === null;
+    var returnVal, i;
+    var returnExplain = "";
+    var thisChest, thisLeg, thisHair, thisLips;
+
+    //Hair
+    switch (cl.c.hairLength) {
+        case 0:
+        case 1:
+            thisHair = 0;
+            break;
+        case 2:
+            thisHair = 1;
+            break;
+        case 3:
+            thisHair = 2;
+            break;
+        default:
+            thisHair = 3;
+            break;
+    }
+    returnExplain += "Hair: ";
+    if (cl.c.hairColor === "pink" || cl.c.hairColor === "rainbow") {
+        thisHair++;
+        returnExplain += " [Color Bonus] ";
+    }
+    returnExplain += cl.getSet(thisHair) + "<br/>";
+
+    if (cl.c.makeup === null || cl.c.makeup === "n")
+        returnExplain += "Makeup: None <br/>";
+    else {
+        returnExplain += "Makeup: " + cl.getmakeup() + " <br/>";
+    }
+
+
+    //Lips
+    if (cl.c.lips === 0)
+        thisLips = 0;
+    else if (cl.c.lips === 1)
+        thisLips = 3;
+    else
+        thisLips = 4;
+
+    if (cl.c.lipstick === null)
+        returnExplain += "Lips: [Need Lipstick] " + cl.getSet(thisLips) + "<br/>";
+    else
+        returnExplain += "Lips: [Lipstick Bonus] " + cl.getSet(thisLips + 1) + "<br/>";
+
+    //chest
+    thisChest = cl.c.chest -1;
+    returnExplain += "Chest: " + cl.getSet(thisChest) + "<br/>";
+
+    //butt
+    thisLeg = cl.c.leg;
+    returnExplain += "Ass: " + cl.getSet(thisLeg) + "<br/>";
+
+    //cock
+    if (cl.c.cock === 0)
+        returnExplain += "Cock: Monster Cock<br/>";
+    else
+        returnExplain += "Cock: " + g.sissy[cl.c.cock + 6].name + "<br/>";
+
+    //bodyhair
+    if (!smoothslut)
+        returnExplain += "Body Hair: Gross<br/>";
+    else
+        returnExplain += "Body Hair: Sissy Smooth<br/>";
+
+    if (cl.c.cumface)
+        returnExplain += "Wash your face cock whore<br/>";
+
+
+    if (cl.c.chest === 0) {
         returnVal = -1;
-    else if (cl.c.chest === 1 && cl.c.leg < 2 && cl.c.hairLength < 2 && cl.c.lips === 0 && cl.c.lipstick === null)
+        returnExplain += "You need to lose some weight<br/>Maybe try exercising";
+    }
+    else if (cl.c.chest === 1 && cl.c.leg < 2 && cl.c.hairLength < 2 && cl.c.lips === 0 && cl.c.lipstick === null) {
         returnVal = 0;
+    }
     else if (cl.c.chest > 4 && cl.c.leg > 3 && cl.c.lips === 2 && cl.c.lipstick !== null && cl.c.hairLength > 2 && smoothslut)
         returnVal = 4;
     else if (cl.c.chest > 3 && cl.c.leg > 2 && (cl.c.lips > 0 || cl.c.lipstick !== null) && cl.c.hairLength > 2 && smoothslut)
@@ -1807,7 +2128,7 @@ cl.appearanceBody = function () {
     if (cl.c.chest > 4 && returnVal < 2)
         returnVal = 2;
 
-    return returnVal;
+    return { val: returnVal, exp: returnExplain };
 };
 
 cl.clean = function (type) {

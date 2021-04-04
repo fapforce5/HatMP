@@ -162,7 +162,12 @@ room14.btnclick = function (name) {
                 chat(1, 14);
             break;
         case "motherRobe":
-            if (sc.getstep("me") > 1)
+            if (sc.getstep("landlord") > 199) {
+                chat(69, 14);
+            }
+            if (sc.getstep("lola") >= 9) 
+                chat(70, 14);
+            else if (sc.getstep("me") > 1)
                 chat(3, 14);
             else
                 chat(2, 14);
@@ -731,6 +736,42 @@ room14.chatcatch = function (callback) {
             break;
         case "stealPanties":
             cl.add("panties", "c");
+            break;
+        case "jo0":
+            if (cl.c.chastity !== null)
+                chat(71, 14);
+            else if (cl.c.cock > 3) {
+                nav.modbutton("motherRobe", "14_motherRoom/14_motherRobeLaugh.png", null, null);
+                chat(72, 14);
+            }
+            else {
+                nav.killall();
+                nav.bg("14_motherRoom/jo0a.jpg");
+                chat(73, 14);
+            }
+            break;
+        case "jo1":
+            nav.bg("14_motherRoom/jo1.jpg");
+            break;
+        case "jo2":
+            cl.nude();
+            nav.bg("14_motherRoom/jo2.jpg");
+            break;
+        case "jo3":
+            nav.bg("14_motherRoom/jo3.jpg");
+            break;
+        case "jo4":
+            nav.bg("14_motherRoom/jo4.jpg");
+            break;
+        case "jo5":
+            nav.bg("14_motherRoom/jo5.jpg");
+            break;
+        case "jo6":
+            cl.doCum(false);
+            char.addtime(60);
+            cl.undo();
+            g.mod("receiveHandjobFemale", 1);
+            char.room(16);
             break;
         case "leave":
             char.room(16);
@@ -1303,6 +1344,90 @@ room14.chat = function (chatID) {
             text: "There's my perverted boy. " + sc.n("bigguy") + " and I are going to have some adult time. Why don't you run along. ",
             button: [
                 { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "leave" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "landlord",
+            text: "Content in the future." ,
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "leave" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "landlord",
+            text: "Hi honey. You're not doing anything naught with the girls are you? ",
+            button: [
+                { chatID: -1, text: "Nope, but could you take care of my cock?", callback: "jo0" },
+                { chatID: -1, text: "Nope. Just came by to say hi.", callback: "" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "landlord",
+            text: "Since you seem to have fixed that problem yourself with your chastity cage, I would say my work is done. " +
+                "I am proud that you have taken your perversions into your own hand. ",
+            button: [
+                { chatID: -1, text: "Oh yeah. I have a chastity cage on. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "landlord",
+            text: "Hahahaha, No one is going to try and have sex with you! I can't believe what a tiny tiny dick you have! " +
+                "You can go, I'm not worried about you doing anything naughty with that tiny thing!",
+            button: [
+                { chatID: -1, text: "Oh. Sad.", callback: "" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "landlord",
+            text: "So you want " + sc.n("landlord") + " to get you off? Strip down. ",
+            button: [
+                { chatID: 74, text: "Sweet!", callback: "jo1" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "landlord",
+            text: "Do you like how the pussy lips on this pocket pussy looks? ",
+            button: [
+                { chatID: 75, text: "oh uhhhhh!", callback: "jo2" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "landlord",
+            text: "Let me lube this up so you don't hurt your penis. Do you like?",
+            button: [
+                { chatID: 76, text: "Oh Yeah!", callback: "jo3" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "landlord",
+            text: "Now bring that cock of yours over here so I can jack your penis honey. ",
+            button: [
+                { chatID: 77, text: "Oh yeah!", callback: "jo4" }
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "landlord",
+            text: "Relax while " + sc.n("landlord") + " strokes you honey. It's ok, just cum for " + sc.n("landlord") + ". " +
+                "Fill my pussy with your cum.",
+            button: [
+                { chatID: 78, text: "UNGH. That's so tight I'm going to cum!", callback: "jo5" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "landlord",
+            text: "That's a good boy. My pocket pussy is full of your cum. ",
+            button: [
+                { chatID: -1, text: "Thanks " + sc.n("landlord") + ". You're the best. ", callback: "jo6" }
             ]
         },
     ];

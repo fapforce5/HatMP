@@ -21,7 +21,7 @@ room26.main = function () {
     else {
         var btnList = new Array();
         if (sc.mother().thisRoom) {
-            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg")
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");""
             btnList.push({
                 "type": "btn",
                 "name": "landlord",
@@ -812,9 +812,11 @@ room26.chat = function (chatID) {
         {
             chatID: 61,
             speaker: "landlord",
-            text: "The sissy line hasn't been built yet, to come.",
+            text: "Hi honey. You're pretty enough to start working for me at the sperm bank. Make sure you make yourself up " +
+                "we only use pretty nurses. Also this weekend we should go on a picnic. See be before 5:00 pm and we'll go " +
+                "to the park. ",
             button: [
-                { chatID: -1, text: "Damn", callback: "" },
+                { chatID: -1, text: "Cool", callback: "" }
             ]
         },
     ];

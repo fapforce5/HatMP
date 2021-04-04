@@ -67,6 +67,16 @@ room12.main = function () {
         }
     }
     else {
+
+        nav.button({
+            "type": "btn",
+            "name": "mirror",
+            "left": 1533,
+            "top": 0,
+            "width": 387,
+            "height": 675,
+            "image": "12_bathroom/12_mirror.png"
+        }, 12);
         g.internal = canGoOut;
         chat(18, 12);
     }

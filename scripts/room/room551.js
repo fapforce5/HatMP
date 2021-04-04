@@ -411,6 +411,7 @@ room551.chatcatch = function (callback) {
         case "sparExplain":
             sc.setstep("g", 2);
             sc.setstep("g", -4);
+            char.room(556);
             break;
         default:
             break;

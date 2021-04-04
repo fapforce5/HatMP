@@ -75,7 +75,6 @@ room203.main = function () {
         else
             chat(0, 203);
 
-
         nav.buildnav(navList);
     }
 };
@@ -155,7 +154,7 @@ room203.btnclick = function (name) {
                     chat(39, 203);
                 else if (oncasex === "diner")
                     chat(40, 203);
-                else if (oncasex === "dinerfail" || oncase === "dinersuccess")
+                else if (oncasex === "dinerfail" || oncasex === "dinersuccess")
                     char.room(200);
                 else if (oncasex === "gloryholebj")
                     chat(40, 203);
