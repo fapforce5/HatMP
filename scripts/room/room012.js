@@ -134,6 +134,16 @@ room12.showerScene = function (scene) {
                 "height": 783,
                 "image": "12_bathroom/12_sister5.png"
             };
+        case "sister8":
+            return {
+                "type": "img",
+                "name": "sister4",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "12_bathroom/12_sister8.jpg"
+            };
         case "joinSisters":
             return {
                 "type": "img",
@@ -276,10 +286,27 @@ room12.chatcatch = function (callback) {
             nav.button(room12.showerScene("sister5", 12));
             break;
         case "joinSisters":
-            nav.killbutton("sister4");
-            nav.killbutton("sister3");
-            nav.killbutton("sister5");
-            nav.button(room12.showerScene("joinSisters", 12));
+            if (sc.getstep("lola") < 200) {
+                nav.killbutton("sister4");
+                nav.killbutton("sister3");
+                nav.killbutton("sister5");
+                nav.button(room12.showerScene("joinSisters", 12));
+                chat(21, 12);
+            }
+            else {
+                if (scc.get("lola").love < 50) {
+                    nav.killbutton("sister4");
+                    nav.killbutton("sister3");
+                    nav.killbutton("sister5");
+                    nav.button(room12.showerScene("joinSisters", 12));
+                    chat(25, 12);
+                }
+                else {
+                    nav.killall();
+                    nav.button(room12.showerScene("sister8", 12));
+                    chat(27, 12);
+                }
+            }
             break;
         case "sisterGetNaked":
             cl.nude();
@@ -361,7 +388,8 @@ room12.chatcatch = function (callback) {
             }, 12);
             break;
         case "shaveBody":
-            g.set("bodyhair", 0);
+            if (g.get("bodyhair") > 0)
+                g.set("bodyhair", 0);
             inv.use("razor");
             cl.display();
             break;
@@ -373,6 +401,86 @@ room12.chatcatch = function (callback) {
             char.room(12);
             break;
         case "reloadRoom":
+            char.room(12);
+            break;
+        case "200_1":
+            if (g.get("bodyhair") > 50) {
+                nav.killall();
+                zcl.displayMain(0, 500, .199, "", false);
+                g.set("bodyhair", 0);
+                cl.nude();
+                nav.bg("12_bathroom/200_1.jpg");
+                
+                nav.button({
+                    "type": "img",
+                    "name": "200_1",
+                    "left": 406,
+                    "top": 372,
+                    "width": 688,
+                    "height": 708,
+                    "image": "12_bathroom/200_1.png"
+                }, 12);
+                chat(29, 12);
+            }
+            else {
+                cl.nude();
+                room12.chatcatch("200_2");
+            }
+            break;
+        case "200_2":
+            nav.killall();
+            nav.bg("12_bathroom/200.jpg");
+            zcl.displayMain(0, 500, .199, "", true);
+            nav.button({
+                "type": "img",
+                "name": "200_1",
+                "left": 425,
+                "top": 168,
+                "width": 1111,
+                "height": 912,
+                "image": "12_bathroom/200_2.png"
+            }, 12);
+            chat(30, 12);
+            break;
+        case "200_3":
+            nav.killall();
+            nav.bg("12_bathroom/200_3.jpg");
+            zcl.displayMain(-50, 1200, .25, "", true)
+            break;
+        case "200_4":
+            nav.bg("12_bathroom/200_4.jpg");
+            break;
+        case "200_5":
+            nav.killall();
+            nav.bg("12_bathroom/200_5.jpg");
+            break;
+        case "200_6":
+            nav.bg("12_bathroom/200_6.jpg");
+            zcl.displayMain(-1400, 0, .45, "", false);
+            nav.button({
+                "type": "img",
+                "name": "200_1",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "12_bathroom/200_6.png"
+            }, 12);
+            if (cl.c.chastity !== null)
+                chat(34, 12);
+            else
+                chat(36, 12);
+            break;
+        case "200_finish0":
+            scc.love("lola", 5, 100);
+            scc.love("eva", 5, 100);
+            room12.chatcatch("200_finish1");
+            break;
+        case "200_finish1":
+            char.addtime(120);
+            g.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
+            cl.c.cumface = false;
+            cl.undo();
             char.room(12);
             break;
         default:
@@ -543,7 +651,7 @@ room12.chat = function(chatID){
             text: "",
             button: [
                 { chatID: 20, text: "Continue watching your " + sc.n("el"), callback: "sister4" },
-                { chatID: 21, text: "Join them", callback: "joinSisters" }
+                { chatID: -1, text: "Join them", callback: "joinSisters" }
             ]
         },
         {
@@ -552,7 +660,7 @@ room12.chat = function(chatID){
             text: "",
             button: [
                 { chatID: 2, text: "Continue watching your " + sc.n("el"), callback: "sister5" },
-                { chatID: 21, text: "Join them", callback: "joinSisters" }
+                { chatID: -1, text: "Join them", callback: "joinSisters" }
             ]
         },
         {
@@ -582,13 +690,127 @@ room12.chat = function(chatID){
             ]
         },
         {
-            chatID: 23,
+            chatID: 24,
             speaker: "eva",
             text: "Don't think, get out!",
             button: [
                 { chatID: -1, text: "[Retreat to your bedroom]", callback: "sisterRetreat" }
             ]
-        }
+        },
+        {
+            chatID: 25,
+            speaker: "lola",
+            text: "If you've been nicer to us we may have let your shower with us. ",
+            button: [
+                { chatID: 26, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "eva",
+            text: "Yeah butthead get out!",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "sisterRetreat" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "lola",
+            text: "Oh hay " + sc.n("me") + ". Since we're all girls I guess you can join us in the shower. What do you say " + sc.n("eva") +
+                "?",
+            button: [
+                { chatID: 28, text: "...?", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "eva",
+            text: "Sure come on in! Girl showers are the best!",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "200_1" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "eva",
+            text: "First we have to do is shave your hairy body! ",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "200_2" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "eva",
+            text: "You're going to love this soap. It makes you smell like candy. All the boys turn turn their head to " +
+                "look at me when I walk by 'cause I smell so yummy!",
+            button: [
+                { chatID: 31, text: "Sweet!", callback: "200_3" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "lola",
+            text: "It so is! It just does something to me where I can't help myself.",
+            button: [
+                { chatID: 32, text: "...", callback: "200_4" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "lola",
+            text: "Oh yeah, taste us, we're so yummy!",
+            button: [
+                { chatID: 33, text: "oh yeah!", callback: "200_5" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "el",
+            text: "MmmMMMmmmm Yeahhhhh You're so good!",
+            button: [
+                { chatID: -1, text: "oh yeah!", callback: "200_6" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "lola",
+            text: "I'm so glad your penis isn't hanging out. This is so much more fun when we're all girls. ",
+            button: [
+                { chatID: 35, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "eva",
+            text: "Yeah, and we know you won't perv on us. See you next shower!",
+            button: [
+                { chatID: -1, text: "Oh Yeah", callback: "200_finish0" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "me",
+            text: "So do you girls want a taste of me?",
+            button: [
+                { chatID: 37, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "lola",
+            text: "No. Shower time is girl time. ",
+            button: [
+                { chatID: 38, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "eva",
+            text: "Yeah pervert. Don't point that cock at us. Way to ruin it. We're done. ",
+            button: [
+                { chatID: -1, text: "Awww", callback: "200_finish1" }
+            ]
+        },
     ];
 
     return cArray[chatID];

@@ -153,8 +153,18 @@ $(document).ready(function () {
     });
 
     $('.char-modBtn').click(function () {
-        g.tview = $(this).data("t");
-        cl.display();
+        var td = $(this).data('t');
+        if (td === "a") {
+            if (g.cockDisplay === "a")
+                g.cockDisplay = "c";
+            else
+                g.cockDisplay = "a";
+            cl.cockDisplay();
+        }
+        else {
+            g.tview = $(this).data("t");
+            cl.display();
+        }
     });
     $(".rl-change[data-type='body']").css({
         left: "0px",
@@ -210,27 +220,25 @@ $(document).ready(function () {
         menu.mClick("time");
 
     });
-    //$(".width-l").css({
-    //    width: 300 * g.ratio + "px"
-    //});
-    //$("#left_change").css({
-    //    width: 75 * g.ratio + "px",
-    //    height: 75 * g.ratio + "px"
-    //});
-    //$("#left_change").click(function () {
-    //    if (g.lview === "b") {
-    //        g.lview = "m";
-    //        $("#left_change").find("img").attr("src", "./images/general/cbod.png");
-    //        $("#room_left_char").hide();
-    //        $("#room_left_map").show();
-    //    }
-    //    else {
-    //        g.lview = "b";
-    //        $("#left_change").find("img").attr("src", "./images/general/cmap.png");
-    //        $("#room_left_char").show();
-    //        $("#room_left_map").hide();
-    //    }
-    //});
+
+    $('#char_cockDisplay').click(function () {
+        if ($('.room-btn[data-name="killassholeDisplayZ"]').length > 0) {
+            nav.killbutton("killassholeDisplayZ");
+        }
+        else {
+            if (g.cockDisplay === "a") {
+                nav.button({
+                    "type": "btn",
+                    "name": "killassholeDisplayZ",
+                    "left": 400,
+                    "top": 300,
+                    "width": 1200,
+                    "height": 585,
+                    "image": "../mainChar/asshole/a" + Math.floor(cl.c.butthole) + ".png"
+                }, 1);
+            }
+        }
+    });
 
     char.init();
 });

@@ -63,6 +63,9 @@ room1.btnclick = function (name) {
         case "patron":
             window.open("https://www.patreon.com/FF5", '_blank');
             break;
+        case "killassholeDisplayZ":
+            nav.killbutton("killassholeDisplayZ");
+            break;
         default:
             break;
     }

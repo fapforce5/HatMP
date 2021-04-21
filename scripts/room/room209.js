@@ -408,9 +408,27 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(63, 209);
             break;
+        case "h_51":
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(132, 209);
+            break;
         case "h_56":
             char.addtime(20);
             char.room(201);
+            break;
+        case "h_58":
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displayMissybtn");
+            chat(127, 209);
             break;
         default:
             break;
@@ -1025,6 +1043,30 @@ room209.chatcatch = function (callback) {
             break;
         case "h_40_3":
             g.mod("money", 20);
+            room209.chatcatch("end");
+            break;
+        case "h_51":
+            g.sissy[51].ach = true;
+            sc.setstep("spanky", 3);
+            inv.addMulti("hormone", 10);
+            room209.chatcatch("end");
+            break;
+        case "h_58_1":
+            nav.killall();
+            nav.bg("209_classroom/h58_1.jpg");
+            break;
+        case "h_58_2":
+            nav.bg("209_classroom/h58_2.jpg");
+            break;
+        case "h_58_3":
+            nav.bg("209_classroom/h58_3.jpg");
+            break;
+        case "h_58_4":
+            nav.bg("209_classroom/h58_4.jpg");
+            break;
+        case "h_58_5":
+            inv.addMulti("lube", 10);
+            g.sissy[58].ach = true;
             room209.chatcatch("end");
             break;
         case "selectStart":
@@ -2180,6 +2222,80 @@ room209.chat = function (chatID) {
                 text: "Work in progress, but here you go!",
                 button: [
                     { chatID: -1, text: "I can dress sexy", callback: "h_31_end" }
+                ]
+            },
+            {
+                chatID: 127,
+                speaker: "missy",
+                text: "So you want to learn how to use your little sissy pussy? Aren't we impetuous. Stip and bend over slut.",
+                button: [
+                    { chatID: 128, text: "I am a slut.", callback: "h_58_1" }
+                ]
+            },
+            {
+                chatID: 128,
+                speaker: "missy",
+                text: "So eager it's disgusting. I am going to give you a great sissy lesson on lube. ",
+                button: [
+                    { chatID: 129, text: "Yes!", callback: "h_58_2" }
+                ]
+            },
+            {
+                chatID: 129,
+                speaker: "missy",
+                text: "Now the sissy pussy has a weakness. It does not self lubricate. Now this if fine for whom ever is using it at " +
+                    "the time, but constant repeated use without lube will make the sissy pussy unsable. And a sissy's pussy needs to " + 
+                    "always be ready for use. ",
+                button: [
+                    { chatID: 130, text: "oh...", callback: "h_58_3" }
+                ]
+            },
+            {
+                chatID: 130,
+                speaker: "missy",
+                text: "You'll notice as I lube this up your wet warm pussy opens up to take me. Lube makes it hungry. ",
+                button: [
+                    { chatID: 131, text: "mmmMMMmmmm...", callback: "h_58_4" }
+                ]
+            },
+            {
+                chatID: 131,
+                speaker: "missy",
+                text: "I'm going to give you some lube, if you are running low you need to go purchase more. A sissy " +
+                    "needs to always play with their pussy. ",
+                button: [
+                    { chatID: -1, text: "Yes mistress", callback: "h_58_5" }
+                ]
+            },
+            {
+                chatID: 132,
+                speaker: "p",
+                text: "I'm going to talk to you about hormones today. You see your body betrays your true self. You want to look, " +
+                    "act, even taste like a girl. Have a smooth body, long hair, plump butt, and even some boobies. You body " +
+                    "won't let you do this thing you want to much, so you need help. ",
+                button: [
+                    { chatID: 133, text: "Help?", callback: "" }
+                ]
+            },
+            {
+                chatID: 133,
+                speaker: "p",
+                text: "Yes. You need your body to stop pumping your body full of testosterone and start filling it with estrogen. " +
+                    "Lucky for you " + sc.n("spanky") + " has a solution with his special little pills. Take the pills so that " +
+                    "your body can match your mind. ",
+                button: [
+                    { chatID: 134, text: "ok!", callback: "" }
+                ]
+            },
+            {
+                chatID: 134,
+                speaker: "p",
+                text: "To continue to be trained by me, you must take your pills to rid yourself of that dirty testosterone and " +
+                    "fill yourself with lovely estrogen. I'll give you 10 pills to start. I recommend taking them every day. It will " +
+                    "take some time to raise your levels. You'll also find some great added bonuses like slowed body hair growth " +
+                    "as your body accepts its sissyness. ",
+                button: [
+                    { chatID: -1, text: "I'll take my pills", callback: "h_51" }
                 ]
             },
         ];

@@ -233,24 +233,20 @@ room250.chatcatch = function (callback) {
                 "height": 573,
                 "image": "250_beaver/bent.png"
             }, 250);
-            if (sc.getstep("me") > 7) {
-                if (sc.getstep("jones") === 0) {
-                    sc.setstep("jones", 1);
-                    g.roomMapAccess(150, true, true);
-                    chat(85, 250);
-                }
-                else
-                    chat(93, 250);
+            if (sc.getstep("jones") === 0) {
+                sc.setstep("jones", 1);
+                g.roomMapAccess(150, true, true);
+                chat(85, 250);
             }
-            else {
-                chat(22, 250);
-            }
+            else
+                chat(93, 250);
             break;
         case "wait2a":
             nav.killbutton("getbent");
             nav.bg("250_beaver/wait2a.jpg");
             break;
         case "wait2b":
+            scc.love("jones", 5, 100);
             nav.bg("250_beaver/wait2b.jpg");
             break;
         case "wait2c":

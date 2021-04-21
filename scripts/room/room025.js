@@ -112,7 +112,7 @@ room25.btnclick = function (name) {
                 else if (ll > 199)
                     chat(46, 25);
                 else if (ll === 200)
-                    chat(47, 25);
+                    chat(61, 26);
                 else
                     chat(6, 25);
             }
@@ -602,16 +602,7 @@ room25.chat = function (chatID) {
                 { chatID: -1, text: "ok " + sc.n("landlord"), callback: "" }
             ]
         },
-        {
-            chatID: 47,
-            speaker: "landlord",
-            text: "Hi honey. You're pretty enough to start working for me at the sperm bank. Make sure you make yourself up " +
-                "we only use pretty nurses. Also this weekend we should go on a picnic. See be before 5:00 pm and we'll go " +
-                "to the park. ",
-            button: [
-                { chatID: -1, text: "Cool", callback: "" }
-            ]
-        },
+       
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

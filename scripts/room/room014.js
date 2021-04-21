@@ -9,7 +9,6 @@ room14.main = function () {
     g.internal = { pussy: 0, asshole: 0 };
     if (!g.hourBetween(6, 21)) {
         if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
-            //14_motherAsleepDick.png
             btnList = [{
                 "type": "btn",
                 "name": "dickSleep",
@@ -165,7 +164,7 @@ room14.btnclick = function (name) {
             if (sc.getstep("landlord") > 199) {
                 chat(69, 14);
             }
-            if (sc.getstep("lola") >= 9) 
+            else if (sc.getstep("lola") >= 9) 
                 chat(70, 14);
             else if (sc.getstep("me") > 1)
                 chat(3, 14);
@@ -426,6 +425,48 @@ room14.btnclick = function (name) {
                 chat(60, 14);
             }
             break;
+        case "screwdriver":
+        case "purpleDildo":
+        case "pinkDildo":
+        case "whiteDildo":
+        case "blackDildo":
+        case "blackBallsDildo":
+        case "towerDildo":
+        case "pinkFatDildo":
+        case "horseDildo":
+            if (cl.minButt(name, null).fit) {
+                if (name !== "screwdriver")
+                    nav.killbutton("screwdriver");
+                if (name !== "purpleDildo")
+                    nav.killbutton("purpleDildo");
+                if (name !== "pinkDildo")
+                    nav.killbutton("pinkDildo");
+                if (name !== "whiteDildo")
+                    nav.killbutton("whiteDildo");
+                if (name !== "blackDildo")
+                    nav.killbutton("blackDildo");
+                if (name !== "blackBallsDildo")
+                    nav.killbutton("blackBallsDildo");
+                if (name !== "towerDildo")
+                    nav.killbutton("towerDildo");
+                if (name !== "pinkFatDildo")
+                    nav.killbutton("pinkFatDildo");
+                if (name !== "horseDildo")
+                    nav.killbutton("horseDildo");
+                g.internal = name;
+                nav.killall();
+                nav.bg("14_motherRoom/butt1.jpg");
+                if (name === "horseDildo" || name === "pinkFatDildo" || name === "towerDildo")
+                    chat(81, 14);
+                else
+                    chat(80, 14);
+            }
+            else
+                chat(82, 14);
+            break;
+        case "cancelDildo":
+            char.room(14);
+            break;
         default:
             break;
     }
@@ -591,6 +632,9 @@ room14.chatcatch = function (callback) {
             break;
         case "sleepReset":
             room14.btnclick("motherSleep");
+            break;
+        case "reset":
+            char.room(14);
             break;
         case "sleepSpank":
             g.pass = "sleepSpank";
@@ -771,6 +815,142 @@ room14.chatcatch = function (callback) {
             char.addtime(60);
             cl.undo();
             g.mod("receiveHandjobFemale", 1);
+            char.room(16);
+            break;
+        case "butt0":
+            nav.killall();
+            nav.bg("14_motherRoom/butt0.jpg");
+            break;
+        case "butt1":
+            if (inv.has("screwdriver"))
+                nav.button({
+                    "type": "btn",
+                    "name": "screwdriver",
+                    "left": 371,
+                    "top": 544,
+                    "width": 87,
+                    "height": 400,
+                    "image": "19_layInBed/screwdriverDildo.png"
+                }, 14);
+            if (inv.has("purpleDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "purpleDildo",
+                    "left": 475,
+                    "top": 639,
+                    "width": 69,
+                    "height": 302,
+                    "image": "19_layInBed/purpleDildo.png"
+                }, 14);
+            if (inv.has("pinkDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "pinkDildo",
+                    "left": 561,
+                    "top": 567,
+                    "width": 70,
+                    "height": 374,
+                    "image": "19_layInBed/pinkDildo.png"
+                }, 14);
+            if (inv.has("whiteDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "whiteDildo",
+                    "left": 648,
+                    "top": 478,
+                    "width": 184,
+                    "height": 466,
+                    "image": "19_layInBed/whiteDildo.png"
+                }, 14);
+            if (inv.has("blackDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "blackDildo",
+                    "left": 849,
+                    "top": 390,
+                    "width": 301,
+                    "height": 564,
+                    "image": "19_layInBed/blackDildo.png"
+                }, 14);
+            if (inv.has("pinkFatDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "pinkFatDildo",
+                    "left": 1167,
+                    "top": 485,
+                    "width": 200,
+                    "height": 469,
+                    "image": "19_layInBed/pinkFatDildo.png"
+                }, 14);
+            if (inv.has("blackBallsDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "blackBallsDildo",
+                    "left": 1384,
+                    "top": 478,
+                    "width": 261,
+                    "height": 449,
+                    "image": "19_layInBed/blackBallsDildo.png"
+                }, 14);
+            if (inv.has("towerDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "towerDildo",
+                    "left": 1106,
+                    "top": 110,
+                    "width": 631,
+                    "height": 228,
+                    "image": "19_layInBed/towerDildo.png"
+                }, 14);
+            if (inv.has("horseDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "horseDildo",
+                    "left": 218,
+                    "top": 98,
+                    "width": 789,
+                    "height": 311,
+                    "image": "19_layInBed/horseDildo.png"
+                }, 14);
+            nav.button({
+                "type": "btn",
+                "name": "cancelDildo",
+                "left": 1700,
+                "top": 478,
+                "width": 146,
+                "height": 146,
+                "image": "19_layInBed/cancel.png"
+            }, 14);
+            break;
+        case "butt2":
+            nav.killall();
+            nav.bg("14_motherRoom/butt" + g.internal + ".jpg");
+            g.roomTimeout = setTimeout(function () { chat(83, 14); }, 2000);
+            break;
+        case "butt3":
+            nav.bg("14_motherRoom/butt3bg.jpg");
+            zcl.displayMirror();
+            nav.button({
+                "type": "btn",
+                "name": "buttOface",
+                "left": 874,
+                "top": 295,
+                "width": 321,
+                "height": 287,
+                "image": "14_motherRoom/butt3.png"
+            }, 14);
+            break;
+        case "butt4":
+            nav.killall();
+            nav.bg("14_motherRoom/butt4.jpg");
+            cl.doCum(false);
+            cl.stretchButt(g.internal);
+            g.mod("sissy", 10);
+            g.mod("receiveAnalFemale", 1);
+            g.mod("sissygasm", 1);
+            break;
+        case "butt5":
+            char.addtime(120);
             char.room(16);
             break;
         case "leave":
@@ -1349,8 +1529,9 @@ room14.chat = function (chatID) {
         {
             chatID: 69,
             speaker: "landlord",
-            text: "Content in the future." ,
+            text: "If it isn't my sweet little girl. What are you doing in " + sc.n("landlord") + "'s room so late at night?",
             button: [
+                { chatID: 79, text: "I'm so horny " + sc.n("landlord") + ".", callback: "butt0" },
                 { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "leave" }
             ]
         },
@@ -1428,6 +1609,64 @@ room14.chat = function (chatID) {
             text: "That's a good boy. My pocket pussy is full of your cum. ",
             button: [
                 { chatID: -1, text: "Thanks " + sc.n("landlord") + ". You're the best. ", callback: "jo6" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "landlord",
+            text: "Awww. " + sc.n("landlord") + " can help you with that. Show me all your girly dildos and I'll help you orgasm " +
+                "like a real girl. ",
+            button: [
+                { chatID: -1, text: "[Show your dildos] ", callback: "butt1" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "landlord",
+            text: "Such a cute dildo. Ready for " + sc.n("landlord") + " to fill your little butt?",
+            button: [
+                { chatID: -1, text: "Oh yes! ", callback: "butt2" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "landlord",
+            text: "Oh wow, such a little slut. Your girly pussy is so big and gaping from taking so many big cocks. ",
+            button: [
+                { chatID: -1, text: "I am such a butt slut!", callback: "butt2" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "landlord",
+            text: "You silly girl. This is way to big for your tight little pussy. You should get something smaller. ",
+            button: [
+                { chatID: -1, text: "I know. I'm so tight!", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "landlord",
+            text: "You really like dicks in your pussy don't you? You're twitching like you're going to orgasm from your " +
+                "girly pussy. ",
+            button: [
+                { chatID: 84, text: "UNGH", callback: "butt3" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "me",
+            text: "OOooooOOoo UNGH FUCK",
+            button: [
+                { chatID: 85, text: "Cum like a sissy", callback: "butt4" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "landlord",
+            text: "Awww, you had a girl orgasm. How cute. Now run along " + sc.n("landlord") + " needs some sleep. ",
+            button: [
+                { chatID: -1, text: "ok.", callback: "butt5" }
             ]
         },
     ];

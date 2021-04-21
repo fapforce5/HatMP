@@ -2,18 +2,13 @@
 var room19 = {};
 
 room19.main = function () {
-    g.tview = "a";
-    cl.display();
+    g.cockDisplay = "a";
+    cl.cockDisplay();
     g.internal = "";
     var lubeLevel = inv.get("lube").count;
     var thisImg = "0";
 
-    if (g.pass === 52)
-        nav.bg("19_layInBed/bg52.jpg");
-    else
-        nav.bg("19_layInBed/bg.jpg");
-
-        if (lubeLevel === 0)
+    if (lubeLevel === 0)
         thisImg = "19_layInBed/l0.png";
     else if (lubeLevel < 3)
         thisImg = "19_layInBed/l1.png";
@@ -55,7 +50,7 @@ room19.btnclick = function (name) {
                     "top": 0,
                     "width": 1447,
                     "height": 1080,
-                    "image": "19_layInBed/" + g.internal.f + "_" + g.pass + ".gif"
+                    "image": "19_layInBed/" + g.internal.f + "_52.gif"
                 }, 19);
                 g.roomTimeout = setTimeout(function () {
                     if (g.internal.f > 2)
@@ -89,60 +84,46 @@ room19.btnclick = function (name) {
         case "screwdriver":
         case "purpleDildo":
         case "pinkDildo":
-            var minButtholeSize = 1;
-
-            if (name === "screwdriver" || name === "purpleDildo" || name === "pinkDildo")
-                minButtholeSize = 1;
-
-            if (minButtholeSize > cl.c.butthole)
+        case "whiteDildo":
+        case "blackDildo":
+        case "blackBallsDildo":
+        case "towerDildo":
+        case "pinkFatDildo":
+        case "horseDildo":
+            var dildoCheck = cl.minButt(name, null);
+            if (!dildoCheck.fit)
                 chat(10, 19);
             else {
-                g.tview = "a";
-                $('.room-left').show();
-                var tempBH = Math.floor(cl.c.butthole);
-                if (tempBH === minButtholeSize)
-                    cl.c.butthole += .2;
-                else if (tempBH === minButtholeSize + 1)
-                    cl.c.butthole += .1;
-
-                inv.use("lube");
+                nav.bg("19_layInBed/bg52.jpg");
                 nav.killall();
-                if (g.pass === 52)
-                    nav.bg("19_layInBed/bg52.jpg");
-                else
-                    nav.bg("19_layInBed/bg.jpg");
-
+                inv.use("lube");
+                g.internal = name;
+                
                 nav.button({
                     "type": "btn",
-                    "name": name + "y",
+                    "name": "stuffAss2",
                     "left": 298,
                     "top": 0,
                     "width": 1447,
                     "height": 1080,
-                    "image": "19_layInBed/" + name + "x.png"
+                    "image": "19_layInBed/" + g.internal + "x.png"
                 }, 19);
                 chat(8, 19);
             }
             break;
-        case "screwdrivery":
-        case "purpleDildoy":
-        case "pinkDildoy":
-
-            var tempBG = "_b";
-            if (g.pass === 52)
-                tempBG = "_a";
+        case "stuffAss2":
             nav.killbutton(name);
             nav.button({
                 "type": "img",
-                "name": name + "y",
+                "name": g.internal.toy + "y",
                 "left": 298,
                 "top": 0,
                 "width": 1447,
                 "height": 1080,
-                "image": "19_layInBed/" + name + tempBG + ".gif"
+                "image": "19_layInBed/" + g.internal + "y.gif"
             }, 19);
 
-            g.roomTimeout = setTimeout(function () { g.mod("sissy", 5); chat(9, 19); }, 2500);
+            g.roomTimeout = setTimeout(function () { g.mod("sissy", 5); cl.stretchButt(g.internal, null); chat(9, 19); }, 2500);
             break;
         default:
             break;
@@ -156,13 +137,13 @@ room19.chatcatch = function (callback) {
             var lubeLevel = inv.get("lube").count;
             var thisImg = "0";
             nav.killall();
-            nav.bg("19_layInBed/drawer.jpg")
+            nav.bg("19_layInBed/drawer.jpg");
             $('.room-left').hide();
             nav.button({
                 "type": "btn",
                 "name": "cancel",
-                "left": 213,
-                "top": 208,
+                "left": 10,
+                "top": 200,
                 "width": 146,
                 "height": 146,
                 "image": "19_layInBed/cancel.png"
@@ -191,7 +172,7 @@ room19.chatcatch = function (callback) {
                 nav.button({
                     "type": "btn",
                     "name": "screwdriver",
-                    "left": 454,
+                    "left": 371,
                     "top": 544,
                     "width": 87,
                     "height": 400,
@@ -201,7 +182,7 @@ room19.chatcatch = function (callback) {
                 nav.button({
                     "type": "btn",
                     "name": "purpleDildo",
-                    "left": 641,
+                    "left": 475,
                     "top": 639,
                     "width": 69,
                     "height": 302,
@@ -211,21 +192,78 @@ room19.chatcatch = function (callback) {
                 nav.button({
                     "type": "btn",
                     "name": "pinkDildo",
-                    "left": 810,
+                    "left": 561,
                     "top": 567,
                     "width": 70,
                     "height": 374,
                     "image": "19_layInBed/pinkDildo.png"
+                }, 19);
+            if (inv.has("whiteDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "whiteDildo",
+                    "left": 648,
+                    "top": 478,
+                    "width": 184,
+                    "height": 466,
+                    "image": "19_layInBed/whiteDildo.png"
+                }, 19);
+            if (inv.has("blackDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "blackDildo",
+                    "left": 849,
+                    "top": 390,
+                    "width": 301,
+                    "height": 564,
+                    "image": "19_layInBed/blackDildo.png"
+                }, 19);
+            if (inv.has("pinkFatDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "pinkFatDildo",
+                    "left": 1167,
+                    "top": 485,
+                    "width": 200,
+                    "height": 469,
+                    "image": "19_layInBed/pinkFatDildo.png"
+                }, 19);
+            if (inv.has("blackBallsDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "blackBallsDildo",
+                    "left": 1384,
+                    "top": 478,
+                    "width": 261,
+                    "height": 449,
+                    "image": "19_layInBed/blackBallsDildo.png"
+                }, 19);
+            if (inv.has("towerDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "towerDildo",
+                    "left": 1106,
+                    "top": 110,
+                    "width": 631,
+                    "height": 228,
+                    "image": "19_layInBed/towerDildo.png"
+                }, 19);
+            if (inv.has("horseDildo"))
+                nav.button({
+                    "type": "btn",
+                    "name": "horseDildo",
+                    "left": 218,
+                    "top": 98,
+                    "width": 789,
+                    "height": 311,
+                    "image": "19_layInBed/horseDildo.png"
                 }, 19);
 
             break;
         case "fingerStart":
             inv.use("lube");
             nav.killall();
-            if (g.pass === 10)
-                nav.bg("19_layInBed/bg.jpg");
-            else
-                nav.bg("19_layInBed/bg52.jpg");
+            nav.bg("19_layInBed/bg52.jpg");
 
             var buttholesize = Math.floor(cl.c.butthole);
             if (buttholesize > 3)
@@ -257,7 +295,6 @@ room19.chatcatch = function (callback) {
             }, 19);
             break;
         case "Stop":
-            g.tview = "a";
             cl.display();
             g.setflag("buttholeplay");
             $('.room-left').show();
@@ -348,7 +385,7 @@ room19.chat = function (chatID) {
         },
         {
             chatID: 8,
-            speaker: "me",
+            speaker: "thinking",
             text: "I'm such a dirty dirty slut...",
             button: [
                 { chatID: -1, text: "Fuck my own ass", callback: "" }

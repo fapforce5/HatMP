@@ -361,7 +361,7 @@ room401.makeInv = function (typeArray, canbuy) {
                     }
                 }
                 else if (inv.master[i].name === "lube") {
-                    if (sc.getstep("missy") > 14) {
+                    if (g.sissy[58].ach) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                     }

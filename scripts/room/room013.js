@@ -6,8 +6,12 @@ room13.main = function () {
     var lockdrawer = g.get("lockdrawer");
     if (lockdrawer) 
         nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
-    
-    if (sc.getstep("lola") === 9) {
+    if (g.pass === "endSleepyTime") {
+        g.pass = "";
+        nav.bg("28_transformation/twin.jpg");
+        chat(176, 13);
+    }
+    else if (sc.getstep("lola") === 9) {
         nav.button({
             "type": "img",
             "name": "welcomeHome",
@@ -263,7 +267,10 @@ room13.btnclick = function (name) {
                     chat(147, 13);
                     break;
                 case 201:
-                    chat(174, 13);
+                    if (cl.appearance() > 1)
+                        chat(174, 13);
+                    else
+                        chat(177, 13);
                     break;
             }
 
@@ -329,12 +336,14 @@ room13.btnclick = function (name) {
                     chat(148, 13);
                     break;
                 case 201:
-                    chat(174, 13);
+                    if (cl.appearance() > 1)
+                        chat(174, 13);
+                    else
+                        chat(177, 13);
                     break;
                 default:
                     break;
             }
-
             break;
         case "bed":
             nav.killbutton("bed");
@@ -397,8 +406,15 @@ room13.btnclick = function (name) {
             break;
         case "pjs":
             nav.killbutton("pjs");
-            nav.bg("13_sisterRoom/trouble_pj1.jpg");
-            chat(63, 13);
+            var lolaStep = sc.getstep("lola");
+            if (lolaStep > 199) {
+                nav.bg("13_sisterRoom/sleep200_0.jpg");
+                chat(175, 13);
+            }
+            else {
+                nav.bg("13_sisterRoom/trouble_pj1.jpg");
+                chat(63, 13);
+            }
             break;
         case "br5Panties1":
             nav.killbutton("br5Panties1");
@@ -541,6 +557,19 @@ room13.chatcatch = function (callback) {
             scc.love("lola", -5, 100);
             break;
         case "reset":
+            char.room(13);
+            break;
+        case "resetlolalove":
+            scc.love("lola", 5, 100);
+            char.room(13);
+            break;
+        case "resetevalove":
+            scc.love("eva", 5, 100);
+            char.room(13);
+            break;
+        case "resetellove":
+            scc.love("lola", 5, 100);
+            scc.love("eva", 5, 100);
             char.room(13);
             break;
         case "tord":
@@ -796,6 +825,10 @@ room13.chatcatch = function (callback) {
         case "ehate":
             scc.love("eva", -2, 100);
             break;
+        case "love10":
+            scc.love("eva", 10, 100);
+            scc.love("lola", 10, 100);
+            break;
         case "9present":
             nav.modbutton("eva", "13_sisterRoom/13_eva_sittingt.png", null, null);
             nav.modbutton("lola", "13_sisterRoom/13_lola_readingt.png", null, null);
@@ -853,6 +886,107 @@ room13.chatcatch = function (callback) {
             g.setflag("lolaDayEvent");
             g.setflag("evaDayEvent");
             char.room(10);
+            break;
+        case "sleep":
+            g.pass = 13;
+            char.room(28);
+            break;
+        case "returnRoom10":
+            char.room(10);
+            break;
+        case "201_1":
+            nav.killall();
+            char.changeMenu("hide");
+            nav.bg("13_sisterRoom/201_1.jpg");
+            break;
+        case "201_2":
+            var mollybad = sc.checkevent("holly", -1);
+            nav.button({
+                "type": "img",
+                "name": "molly",
+                "left": 1214,
+                "top": 0,
+                "width": 706,
+                "height": 1080,
+                "image": "13_sisterRoom/201_2" + (mollybad ? "b" : "a") + ".png"
+            }, 13);
+            if (mollybad)
+                chat(182, 13);
+            else
+                chat(189, 13);
+            break;
+        case "201_1c":
+            nav.modbutton("molly", "13_sisterRoom/201_2c.png", null, null);
+            break;
+        case "201_1d":
+            sc.setstep("lola", 202);
+            sc.setstep("eva", 202);
+            scc.love("lola", -10, 100);
+            scc.love("eva", -10, 100);
+            g.setflag("lolaDayEvent");
+            g.setflag("evaDayEvent");
+            char.addtime(45);
+            char.room(0);
+            break;
+        case "201_3":
+            if (sc.getstep("holly") > 2)
+                chat(191, 13);
+            else {
+                if (g.get("money") > 29)
+                    chat(192, 13);
+                else
+                    chat(193, 13);
+            }
+            break;
+        case "201_4a":
+            nav.killall();
+            nav.bg("13_sisterRoom/201_4.jpg");
+            scc.love("lola", 10, 100);
+            scc.love("eva", 10, 100);
+            break;
+        case "201_4b":
+            nav.killall();
+            nav.bg("13_sisterRoom/201_4.jpg");
+            g.mod("money", -30);
+            scc.love("lola", 10, 100);
+            scc.love("eva", 10, 100);
+            break;
+        case "201_4c":
+            nav.killall();
+            nav.bg("13_sisterRoom/201_4.jpg");
+            scc.love("lola", -5, 100);
+            scc.love("eva", -5, 100);
+            break;
+        case "201_4":
+            nav.killall();
+            nav.bg("13_sisterRoom/201_4.jpg");
+            break;
+        case "201_5":
+            nav.bg("13_sisterRoom/201_5.jpg");
+            break;
+        case "201_6":
+            nav.bg("13_sisterRoom/201_6.jpg");
+            break;
+        case "201_6a":
+            scc.love("jones", 10, 100);
+            scc.love("lola", -5, 100);
+            scc.love("eva", -5, 100);
+            g.mod("sissy", 20);
+            nav.bg("13_sisterRoom/201_6a.jpg");
+            break;
+        case "201_7":
+            sc.setstep("lola", 202);
+            sc.setstep("eva", 202);
+            char.addtime(127);
+            g.setflag("lolaDayEvent");
+            g.setflag("evaDayEvent");
+            char.room(0);
+            break;
+        case "201_6b":
+            scc.love("jones", -10, 100);
+            scc.love("lola", 5, 100);
+            g.mod("sissy", -10);
+            nav.bg("13_sisterRoom/201_6a.jpg");
             break;
         default:
             console.log(callback + " - miss");
@@ -1008,7 +1142,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "MMMmmmmm that feels soooo good " + sc.n("me") + ". Thank you.",
             button: [
-                { chatID: -1, text: "You're welcome", callback: "reset" }
+                { chatID: -1, text: "You're welcome", callback: "resetlolalove" }
             ]
         },
         {
@@ -1100,7 +1234,7 @@ room13.chat = function (chatID) {
             speaker: "eva",
             text: "Ok butt sniffer. My feet feel great, you're done.. for now.",
             button: [
-                { chatID: -1, text: "Haha ok. [Finish]", callback: "reset" }
+                { chatID: -1, text: "Haha ok. [Finish]", callback: "resetevalove" }
             ]
         },
         {
@@ -1118,7 +1252,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really are the best " + sc.n("me") + "! That was absolutley wonderful",
             button: [
-                { chatID: -1, text: "Awwww, you're wonderful", callback: "reset" }
+                { chatID: -1, text: "Awwww, you're wonderful", callback: "resetlolalove" }
             ]
         },
         {
@@ -1314,7 +1448,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really are the best, thanks for being a gentleman. ",
             button: [
-                { chatID: -1, text: "[Finish the butt massage]", callback: "reset" }
+                { chatID: -1, text: "[Finish the butt massage]", callback: "resetlolalove" }
             ]
         },
         {
@@ -1474,7 +1608,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really know how to work a butt!",
             button: [
-                { chatID: -1, text: "You bet I do", callback: "reset" }
+                { chatID: -1, text: "You bet I do", callback: "resetlolalove" }
             ]
         },
         {
@@ -2309,9 +2443,304 @@ room13.chat = function (chatID) {
         {
             chatID: 174,
             speaker: "el",
-            text: "That's the end of this path. Stay tuned!",
+            text: "We're in the mood for ice cream! Do you want to go to the Naked Beaver and get some ice cream with us!",
             button: [
-                { chatID: -1, text: "Drat! I'm going to vote for the sissy path on Patreon!", callback: "" }
+                { chatID: 178, text: "Yes I do! I love ice cream!", callback: "" },
+                { chatID: -1, text: "Naw, I'm not in the mood for ice cream. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 175,
+            speaker: "eva",
+            text: "Hay " + sc.n("me") + ". Did you want to cuddle with us and sleep?",
+            button: [
+                { chatID: -1, text: "Yes I do.", callback: "sleep" },
+                { chatID: -1, text: "Nope, just being a pervert.", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 176,
+            speaker: "thinking",
+            text: "What a lovely sleep . I better get back to my room. ",
+            button: [
+                { chatID: -1, text: "[Return to room]", callback: "returnRoom10" }
+            ]
+        },
+        {
+            chatID: 177,
+            speaker: "lola",
+            text: "Awww, you look like a boy. We want to go out with you, but as your true self. You should put on something pretty.",
+            button: [
+                { chatID: -1, text: "Oh yeah. I should wear pretty clothes!", callback: "" }
+            ]
+        },
+        {
+            chatID: 178,
+            speaker: "eva",
+            text: "Sweet! Lets head down now I can't wait!",
+            button: [
+                { chatID: 179, text: "[Head to the Naked Beaver Diner] ", callback: "201_1" }
+            ]
+        },
+        {
+            chatID: 179,
+            speaker: "lola",
+            text: "You look so pretty today, I'm kinda jealous how well you pull off that outfit. ",
+            button: [
+                { chatID: 180, text: "Thanks ", callback: "" }
+            ]
+        },
+        {
+            chatID: 180,
+            speaker: "eva",
+            text: "It's cause she's knows what perverts like to look at! ",
+            button: [
+                { chatID: 181, text: "... ", callback: "" }
+            ]
+        },
+        {
+            chatID: 181,
+            speaker: "lola",
+            text: "Hay be nice. She's going through a lot right now. It's a big change. Almost as big as the ice cream I'm about to order. ",
+            button: [
+                { chatID: -1, text: "... ", callback: "201_2" }
+            ]
+        },
+        {
+            chatID: 182,
+            speaker: "molly",
+            text: "Oh, it's you. Did you come here to narc on us some more?",
+            button: [
+                { chatID: 183, text: "... ", callback: "" }
+            ]
+        },
+        {
+            chatID: 183,
+            speaker: "lola",
+            text: "Huh? We're just here for some ice cream.",
+            button: [
+                { chatID: 184, text: "... ", callback: "" }
+            ]
+        },
+        {
+            chatID: 184,
+            speaker: "molly",
+            text: "I don't serve ice cream to assholes. You all should leave.",
+            button: [
+                { chatID: 185, text: "but... ", callback: "" }
+            ]
+        },
+        {
+            chatID: 185,
+            speaker: "eva",
+            text: "Did you perv on her? Why do we have to go?",
+            button: [
+                { chatID: 186, text: "No. She was stealing.", callback: "201_1c" }
+            ]
+        },
+        {
+            chatID: 186,
+            speaker: "dolly",
+            text: "We trusted you, and you fucked us. Just get out. ",
+            button: [
+                { chatID: 187, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 187,
+            speaker: "lola",
+            text: "We should just go. They don't seem to like us. ",
+            button: [
+                { chatID: 188, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 188,
+            speaker: "eva",
+            text: "Yeah. You ruined ice cream day, way to go pervert. We're going.",
+            button: [
+                { chatID: -1, text: "Awww damn", callback: "201_1d" }
+            ]
+        },
+        {
+            chatID: 189,
+            speaker: "molly",
+            text: "Why hello my favorite customers. What can I get you?",
+            button: [
+                { chatID: 190, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 190,
+            speaker: "el",
+            text: "ICE CREAM!",
+            button: [
+                { chatID: -1, text: "Ice Cream!", callback: "201_3" }
+            ]
+        },
+        {
+            chatID: 191,
+            speaker: "molly",
+            text: "Comming right up, and since " + sc.n("me") + " is such a terrific girl it's on the house. I was just telling " +
+                sc.n("molly") + " how great you are. We heard what " + sc.n("jeffery") + " did. He's such a terrible pervert. Free " +
+                "ice cream is the least we could do for such a wonderful girl.",
+            button: [
+                { chatID: 194, text: "Awesome Thanks!", callback: "201_4a" }
+            ]
+        },
+        {
+            chatID: 192,
+            speaker: "molly",
+            text: "Sure, It'll be $30 for everyone.",
+            button: [
+                { chatID: 194, text: "I'll get it", callback: "201_4b" },
+                { chatID: 194, text: "I'm a bit light, can you get this?", callback: "201_4c" },
+            ]
+        },
+        {
+            chatID: 193,
+            speaker: "molly",
+            text: "Sure, It'll be $30 for everyone.",
+            button: [
+                { chatID: 194, text: "I'm a bit light, can you get this?", callback: "201_4c" },
+            ]
+        },
+        {
+            chatID: 194,
+            speaker: "lola",
+            text: "Is it wrong how excited I am for this ice cream? I haven't had any sweets for two weeks now. Staying skinny " +
+                "is just too much work sometimes. Maybe I should just chuck it all and eat ice cream all day. ",
+            button: [
+                { chatID: 195, text: "That would be the life", callback: "" },
+            ]
+        },
+        {
+            chatID: 195,
+            speaker: "eva",
+            text: "You liar, we had ice cream a couple days ago in the school cafeteria. When we started eating it you said the exact " +
+                "same thing. You're addicted to swimming, and eating healthy, and always doing the right thing, admit it.",
+            button: [
+                { chatID: 196, text: "Oh", callback: "" },
+            ]
+        },
+        {
+            chatID: 196,
+            speaker: "lola",
+            text: "Oh yeah, I guess we did have ice cream. I'm such an airhead sometimes. *groan* ", 
+            button: [
+                { chatID: 197, text: "You're not an airhead. You're the smartest girl I know. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 197,
+            speaker: "eva",
+            text: "Shut up white knight. Speaking of air heads, did you hear " + sc.n("jada") + " was dating " + sc.n("jimmy") +
+                " again. I swear I don't see what she sees in him. All he does is play cards with those losers down the street. " +
+                "She could do so much better than him. ",
+            button: [
+                { chatID: 198, text: "Hay!", callback: "" },
+            ]
+        },
+        {
+            chatID: 198,
+            speaker: "lola",
+            text: "I don't know, he's kinda cute you know. When I was younger I had such a crush on him. He's really good at rugby. ",
+            button: [
+                { chatID: 199, text: "Yeah, they are good together. ", callback: "201_5" },
+            ]
+        },
+        {
+            chatID: 199,
+            speaker: "jones",
+            text: "Hi slut. Enjoying a day out with the girls? When you're done here you should stop by my house " +
+                "and service my cock. You can even bring these two if you want. ",
+            button: [
+                { chatID: 200, text: "Wha...?", callback: "" },
+            ]
+        },
+        {
+            chatID: 200,
+            speaker: "lola",
+            text: "Do you know this man?",
+            button: [
+                { chatID: 201, text: "Yes, I know him", callback: "" },
+                { chatID: 207, text: "Nope, never seen him before. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 201,
+            speaker: "jones",
+            text: "Yeah you do. Now show me your tits slut. ",
+            button: [
+                { chatID: 202, text: "Yes sir [Flash your titties]", callback: "201_6" },
+                { chatID: 207, text: "I'm not doing that! You can go.", callback: "" },
+            ]
+        },
+        {
+            chatID: 202,
+            speaker: "jones",
+            text: "Good girl. I like a girl that knows how to obey. I look forward to you serving me. Now thank me.",
+            button: [
+                { chatID: 203, text: "Thank you sir.", callback: "201_6a" },
+            ]
+        },
+        {
+            chatID: 203,
+            speaker: "eva",
+            text: "What the fuck was that!",
+            button: [
+                { chatID: 204, text: "Well, ummmm, ", callback: "201_6a" }
+            ]
+        },
+        {
+            chatID: 204,
+            speaker: "lola",
+            text: "That was crazy. I've never seen such a lack of respect before. Just because you're now a girl doesn't give " +
+                "any man the right to treat you like that. You're so much better than this. ",
+            button: [
+                { chatID: 205, text: "I know. Thank you ", callback: "" }
+            ]
+        },
+        {
+            chatID: 205,
+            speaker: "eva",
+            text: "If he did that to me I would have just punched him in the dick. What an asshole. You don't have to do what he " +
+                "says. I've lost my appetite. Do you want to go?",
+            button: [
+                { chatID: 206, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 206,
+            speaker: "lola",
+            text: "Yes, let's go. You need to respect yourself more. We love you too much to see you belittled like this. ",
+            button: [
+                { chatID: -1, text: "I know. Bye", callback: "201_7" }
+            ]
+        },
+        {
+            chatID: 207,
+            speaker: "jones",
+            text: "So that's how it is. I'll break your spirit and turn you into my slut someday. 'til then...",
+            button: [
+                { chatID: 208, text: "...", callback: "201_6b" }
+            ]
+        },
+        {
+            chatID: 208,
+            speaker: "lola",
+            text: "That has got to be the worst man I've ever met. Good for you for standing up to him. ",
+            button: [
+                { chatID: 209, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 208,
+            speaker: "eva",
+            text: "Yeah. That was so weird, it's like we're in some kind of strange porn game where people do weird sexual " +
+                "things in public without any realistic consequences. We're going to head home now, see you later. ",
+            button: [
+                { chatID: -1, text: "...", callback: "201_7" }
             ]
         },
     ];

@@ -7,6 +7,8 @@ room28.main = function () {
     var hormoneLevel, thisTinyPP, fitnesslevel;
     if (g.pass === 502)
         nav.bg("502_bedroom/sleepZoey.jpg");
+    else if (g.pass === 13)
+        nav.bg("28_transformation/twin.jpg");
     menu.save("HatMP_9", null, 9);
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
@@ -22,6 +24,7 @@ room28.main = function () {
     var sissyTrans = g.get("oncase");
     var arousal, energyIndex;
     var message;
+    var buttholePlay;
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "fitness":
@@ -90,9 +93,12 @@ room28.main = function () {
                     g.st[i].t = null;
                 }
                 break;
+            case "buttholePlay":
+                buttholePlay = g.st[i].t;
+                break;
         }
     }
-
+    cl.c.butthole -= .05;
     //energy as propotion to horny
     if (arousal > 97) {
         g.st[energyIndex].t = 30;

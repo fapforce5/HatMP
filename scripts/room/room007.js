@@ -20,7 +20,6 @@ room7.main = function () {
     var evaStep = sc.getstep("eva");
     var meStep = sc.getstep("me");
     var bigguyStep = sc.getstep("bigguy");
-
     if (meStep === 0) {
         btnList = [
             {
@@ -33,6 +32,37 @@ room7.main = function () {
                 "image": "7_mainCharRoomAlt/7_angryMom.png"
             }];
         chat(0, 7);
+    }
+    else if ((evaStep === 10 || evaStep === 11) && g.pass === "phonecall") {
+        if (evaStep === 10) {
+            cl.nude();
+            nav.killall();
+            nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
+            btnList = [
+                {
+                    "type": "img",
+                    "name": "eva",
+                    "left": 734,
+                    "top": 18,
+                    "width": 561,
+                    "height": 1000,
+                    "image": "7_mainCharRoomAlt/eva0.png"
+                }];
+            chat(31, 7);
+        }
+        else {
+            btnList = [
+                {
+                    "type": "img",
+                    "name": "eva",
+                    "left": 734,
+                    "top": 18,
+                    "width": 561,
+                    "height": 1000,
+                    "image": "7_mainCharRoomAlt/eva0.png"
+                }];
+            chat(56, 7);
+        }
     }
     else if (g.dt.getDay() === 0) {
         btnList = [
@@ -59,7 +89,7 @@ room7.main = function () {
             chat(63, 7);
         }
     }
-    else if (g.get("rentOwed") > 0 && meStep < 8) {
+    else if (g.get("rentOwed") > 0 && meStep < 200) {
         btnList = [
             {
                 "type": "btn",
@@ -102,35 +132,7 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/lola0.jpg");
         chat(27, 7);
     }
-    else if ((evaStep === 10 || evaStep === 11) && g.pass === "phonecall") {
-        if (evaStep === 10) {
-            cl.nude();
-            btnList = [
-                {
-                    "type": "img",
-                    "name": "eva",
-                    "left": 734,
-                    "top": 18,
-                    "width": 561,
-                    "height": 1000,
-                    "image": "7_mainCharRoomAlt/eva0.png"
-                }];
-            chat(31, 7);
-        }
-        else {
-            btnList = [
-                {
-                    "type": "img",
-                    "name": "eva",
-                    "left": 734,
-                    "top": 18,
-                    "width": 561,
-                    "height": 1000,
-                    "image": "7_mainCharRoomAlt/eva0.png"
-                }];
-            chat(56, 7);
-        }
-    }
+    
     else if (bigguyStep === 5 && (g.dt.getDay() === 0 || g.dt.getDay() === 6)) {
         nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
         chat(55, 7);

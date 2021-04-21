@@ -103,6 +103,8 @@ cl.list = [
     { type: "dress", name: "m", display: "Mesh Dress", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: 210 },
     { type: "dress", name: "nu", display: "Nurse Uniform", img: "dress_nurse.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "dress", name: "r", display: "Red Dress", img: "dress_red.png", sex: "f", inv: false, daring: 3, price: 180 },
+    { type: "dress", name: "rt", display: "Red Ruffle", img: "dress_RedRuffle.png", sex: "f", inv: false, daring: 3, price: 150 },
+    { type: "dress", name: "pd", display: "Polka Dot", img: "dress_polkadot.png", sex: "f", inv: false, daring: 2, price: 47 },
 
     { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
     { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
@@ -894,7 +896,23 @@ cl.dressTop = [
     { name: "r", chest: 3, image: "dress_r_t_3.png", back: "dress_r_t_3_back.png" },
     { name: "r", chest: 2, image: "dress_r_t_2.png", back: "dress_r_t_2_back.png" },
     { name: "r", chest: 1, image: "dress_r_t_0.png", back: "dress_r_t_0_back.png" },
-    { name: "r", chest: 0, image: "dress_r_t_0.png", back: "dress_r_t_0_back.png" }
+    { name: "r", chest: 0, image: "dress_r_t_0.png", back: "dress_r_t_0_back.png" },
+
+    { name: "rt", chest: 6, image: "dress_rt_6.png", back: "dress_rt_6_back.png" },
+    { name: "rt", chest: 5, image: "dress_rt_5.png", back: "dress_rt_5_back.png" },
+    { name: "rt", chest: 4, image: "dress_rt_3.png", back: "dress_rt_4_back.png" },
+    { name: "rt", chest: 3, image: "dress_rt_3.png", back: "dress_rt_3_back.png" },
+    { name: "rt", chest: 2, image: "dress_rt_2.png", back: "dress_rt_2_back.png" },
+    { name: "rt", chest: 1, image: "dress_rt_0.png", back: "dress_rt_0_back.png" },
+    { name: "rt", chest: 0, image: "dress_rt_0.png", back: "dress_rt_0_back.png" },
+
+    { name: "pd", chest: 6, image: "dress_pd_6.png", back: "dress_pd_6_back.png" },
+    { name: "pd", chest: 5, image: "dress_pd_5.png", back: "dress_pd_5_back.png" },
+    { name: "pd", chest: 4, image: "dress_pd_3.png", back: "dress_pd_4_back.png" },
+    { name: "pd", chest: 3, image: "dress_pd_3.png", back: "dress_pd_3_back.png" },
+    { name: "pd", chest: 2, image: "dress_pd_2.png", back: "dress_pd_2_back.png" },
+    { name: "pd", chest: 1, image: "dress_pd_0.png", back: "dress_pd_0_back.png" },
+    { name: "pd", chest: 0, image: "dress_pd_0.png", back: "dress_pd_0_back.png" }
 
 ];
 
@@ -1606,43 +1624,54 @@ cl.subDisplay = function (id, image) {
 
 
 cl.cockDisplay = function () {
-    $("#char_cockDisplay").html('<img src="./images/mainChar/cock/erec_body_ball.png" />');
-    var cumHeight = 35 * cl.getCum();
-    $("#char_cockDisplay").append('<div style="' + g.makeCss(cumHeight, 25, 60 + (35 - cumHeight), 165) + ' background:rgba(255, 255, 255, 1); position:absolute; border-radius:' + 8 * g.ratio + 'px;"></div>');
 
-    $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_body.png" />');
+    if (g.cockDisplay === "c") {
+        $("#char_cockDisplay").html('<img src="./images/mainChar/cock/erec_body_ball.png" />');
+        var cumHeight = 35 * cl.getCum();
+        $("#char_cockDisplay").append('<div style="' + g.makeCss(cumHeight, 25, 60 + (35 - cumHeight), 165) + ' background:rgba(255, 255, 255, 1); position:absolute; border-radius:' + 8 * g.ratio + 'px;"></div>');
 
-    if (cl.c.chastity !== null) {
-        $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("chastity", cl.c.chastity).img + '" />');
+        $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_body.png" />');
+
+        if (cl.c.chastity !== null) {
+            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("chastity", cl.c.chastity).img + '" />');
+        }
+        else {
+            var thisArousal = g.get("arousal");
+            if (thisArousal < 15)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_6.png" />');
+            else if (thisArousal < 25)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_5.png" />');
+            else if (thisArousal < 45)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_4.png" />');
+            else if (thisArousal < 65)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_3.png" />');
+            else if (thisArousal < 85)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_2.png" />');
+            else
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_1.png" />');
+        }
+
+        if (cl.c.buttplug !== null) {
+            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("buttplug", cl.c.buttplug).img + '" />');
+        }
+
+        $("#char_cockDisplay").css({
+            height: 146 * g.ratio + "px",
+            width: 300 * g.ratio + "px"
+        });
+        $("#char_cockDisplay1").css({
+            height: 146 * g.ratio + "px",
+            width: 300 * g.ratio + "px"
+        });
     }
-    else {
-        var thisArousal = g.get("arousal");
-        if (thisArousal < 15)
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_6.png" />');
-        else if (thisArousal < 25)
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_5.png" />');
-        else if (thisArousal < 45)
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_4.png" />');
-        else if (thisArousal < 65)
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_3.png" />');
-        else if (thisArousal < 85)
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_2.png" />');
-        else
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_1.png" />');
+    else if (g.cockDisplay === "a") {
+        var bhole = Math.floor(cl.c.butthole);
+        if (bhole < 0)
+            bhole = 0;
+        else if (bhole > 6)
+            bhole = 6;
+        $("#char_cockDisplay").html('<img src="./images/mainChar/asshole/a' + bhole + '.png" />');
     }
-
-    if (cl.c.buttplug !== null) {
-        $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("buttplug", cl.c.buttplug).img + '" />');
-    }
-
-    $("#char_cockDisplay").css({
-        height: 146 * g.ratio + "px",
-        width: 300 * g.ratio + "px"
-    });
-    $("#char_cockDisplay1").css({
-        height: 146 * g.ratio + "px",
-        width: 300 * g.ratio + "px"
-    });
 };
 
 cl.energydisplay = function () {
@@ -1720,8 +1749,8 @@ cl.isCrossdressing = function () {
 };
 
 cl.cupsize = function () {
-    var sizes = ["fat", "muscle", "A", "B", "C", "D", "Fucking Huge"];
-    return sizes[cl.c.chest];
+    var sizes = ["fat", "A", "A", "B", "C", "D", "Fucking Huge"];
+    return sizes[cl.c.chest + 1];
 };
 
 cl.buttsize = function () {
@@ -1901,7 +1930,7 @@ cl.appearanceClothesx = function () {
             returnExplain += "Gross Hairy Boobies: " + cl.getSet(baseScore) + "<br/>";
         }
 
-        tc = cl.getEntry("pants", cl.c.pj);
+        tc = cl.getEntry("pants", cl.c.pants);
         rc.bottom = tc.img;
         baseScore += tc.daring;
         returnExplain += "Bottoms: " + cl.getSet(tc.daring) + "<br/>";
@@ -2012,9 +2041,6 @@ cl.appearanceClothesx = function () {
         (cl.c.buttplug !== null ? .25 : 0) +
         (cl.c.cumface !== null ? .25 : 0);
 
-
-    console.log(baseScore, secondaryScore, pantyBraScore, sockShoeScore);
-
     baseScore = Math.round(baseScore + secondaryScore);
 
     if (baseScore < 0)
@@ -2026,9 +2052,7 @@ cl.appearanceClothesx = function () {
 };
 
 cl.appearanceBody = function () {
-    
-
-    return cl.appearanceBodyExplain().returnVal;
+    return cl.appearanceBodyExplain().val;
 };
 
 cl.appearanceBodyExplain = function () {
@@ -2164,4 +2188,79 @@ cl.wearing = function () {
     retVal.usableCock = !(retVal.chastity || retVal.tinyDick);
     retVal.superlewd = !retVal.underwear && !retVal.top && !retVal.bottom;
     return retVal;
+};
+
+cl.minButt = function (invItem, sizeItem) {
+    var returnItem = { minSize: 0, fit: false };
+    if (invItem !== null) {
+        switch (invItem) {
+            case "screwdriver":
+                returnItem.minSize = 0;
+                break;
+            case "purpleDildo":
+            case "pinkDildo":
+                returnItem.minSize = 1;
+                break;
+            case "whiteDildo":
+                returnItem.minSize = 2;
+                break;
+            case "blackDildo":
+            case "blackBallsDildo":
+            case "towerDildo":
+                returnItem.minSize = 3;
+                break;
+            case "pinkFatDildo":
+            case "horseDildo":
+                returnItem.minSize = 4;
+                break;
+            default:
+                console.log("cl.minButt::Need: " + invItem);
+        }
+    }
+    else if (sizeItem !== null) {
+        if (sizeItem < 0)
+            sizeItem = 0;
+        else if (sizeItem > 6)
+            sizeItem = 6;
+        returnItem.minSize = sizeItem;
+    }
+    else {
+        console.log("cl.minButt::No invItem or sizeItem - both null.");
+    }
+    returnItem.fit = returnItem.minSize <= cl.c.butthole;
+    return returnItem;
+};
+
+cl.stretchButt = function (invItem, sizeItem) {
+    var thisItem = cl.minButt(invItem, sizeItem);
+    var oldBhole = Math.floor(cl.c.butthole);
+    var retSize = 0;
+    var startLine = "";
+
+    if (cl.c.butthole >= thisItem.minSize + 2) {
+        retSize = 0;    
+    }
+    else if (cl.c.butthole >= thisItem.minSize + 1) {
+        retSize = .17;
+    }
+    else if (cl.c.butthole >= thisItem.minSize) {
+        retSize += .34;
+    }
+    else {
+        retSize += .34;
+    }
+    if (retSize > 0)
+        cl.c.butthole += retSize;
+    if (oldBhole < Math.floor(cl.c.butthole)) {
+        cl.cockDisplay();
+        startLine = "Your butthole increased in size (Slut)<br/>";
+    }
+    if (retSize === .17) {
+        g.popUpNotice(startLine + "Your butthole stretched a little. ");
+    }
+    else if (retSize > .17) {
+        g.popUpNotice(startLine + "Your butthole stretched a lot. ");
+    }
+    g.setflag("buttholePlay");
+    return retSize;
 };

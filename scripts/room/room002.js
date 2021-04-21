@@ -148,6 +148,7 @@ room2.chatcatch = function (callback) {
             g.set("girlname", g.cleanText($('#room_002gn').val()));
 
             var thisDiff = parseInt($("#intro_diff").data('diff'));
+            console.log(thisDiff)
             g.set("difficulty", isNaN(thisDiff) ? 1 : ((thisDiff < 0) ? 0 : ((thisDiff > 2) ? 2 : thisDiff)));
             nav.killall();
             nav.button({

@@ -100,7 +100,7 @@ room351.chatcatch = function (callback) {
                 "image": "351_spermJackoff/nurse6.jpg"
             }, 351);
             cl.doCum(true);
-            g.mod("arousal", -1000);
+            g.mod('sissygasm', 1);
             break;
         case "n7":
             g.pass = "350_nursePay";

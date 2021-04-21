@@ -97,6 +97,8 @@ sc.events = [
     { name: "landlord", step: 6, txt: "Can Work", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 7, txt: "Ate that ass", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 8, txt: "Dick Slap Rerun", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 200, txt: "Caught in girl's clothes", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: 201, txt: "Picnic", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "landlord", step: 9, txt: "First day", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: 15, txt: "Work Complete - Invited back", img: "", show: false, row: 0, col: 0, ach: false, major: false },

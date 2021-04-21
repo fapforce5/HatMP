@@ -244,7 +244,7 @@ room901.btnclick = function (name) {
             }
             break;
         case "stroke":
-            g.internal += 100 + (g.get("bodyLevel") * 10);
+            g.internal += 100 + (g.get("bodyLevel") * 28);
             if (g.internal > 1600)
                 g.internal = 1600;
             $('.room-img[data-name="swimman"]').css({ "left": (g.internal * g.ratio) + "px" });
@@ -273,7 +273,7 @@ room901.btnclick = function (name) {
             break;
         case "stroke_r":
             var girlAhead;
-            g.internal.m += 100 + (g.get("bodyLevel") * 10);
+            g.internal.m += 100 + (g.get("bodyLevel") * 28);
             g.internal.f += 148.017;
             girlAhead = g.internal.f > g.internal.m;
 

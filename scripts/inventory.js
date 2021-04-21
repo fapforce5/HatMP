@@ -64,9 +64,13 @@ inv.master = [
     { type: "g", name: "screwdriver", display: "Screwdriver", entry: false, count: null, cost: 50, image: "screwdriver.png", n: false, desc: "Go screw yourself" },
     { type: "d", name: "purpleDildo", display: "Purple Dildo", entry: false, count: null, cost: 100, image: "dildoPurple.png", n: false, desc: "Small Dildo" },
     { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },
-    //{ type: "d", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: 180, image: "butt_blackCock.png", n: false },
-    //{ type: "d", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 180, image: "butt_whiteCock.png", n: false },
-    //{ type: "d", name: "greenMonster", display: "Green Monster", entry: false, count: null, cost: 180, image: "butt_greenMonster.png", n: false },
+    { type: "d", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 180, image: "butt_whiteCock.png", n: false },
+    { type: "d", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: 180, image: "butt_blackCock.png", n: false },
+    { type: "d", name: "pinkFatDildo", display: "Fat Pink Dildo", entry: false, count: null, cost: 180, image: "butt_fat.png", n: false },
+    { type: "d", name: "blackBallsDildo", display: "Anal Beads", entry: false, count: null, cost: 180, image: "butt_balls.png", n: false },
+    { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 180, image: "butt_tower.png", n: false },
+    { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false },
+
     { type: "t", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false, desc: "Shrink your pp" },
     { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false, desc: "Go home and chek it out" },
     { type: "r", name: "paint1", display: "Painting 1", entry: false, count: null, cost: 80, image: "paint1.png", n: false, desc: "" },
@@ -177,7 +181,7 @@ inv.gettype = function (type) {
             typeList.push({ name: inv.master[i].name, entry: inv.master[i].entry, count: inv.master[i].count });
     }
     return typeList;
-}
+};
 
 inv.has = function (name) {
     return inv.get(name).entry;
@@ -190,6 +194,20 @@ inv.add = function (name) {
             inv.master[i].entry = true;
             if (inv.master[i].count !== null)
                 inv.master[i].count = inv.master[i].count + 1;
+            i = 9999999;
+        }
+    }
+};
+
+inv.addMulti = function (name, count) {
+    var i;
+    for (i = 0; i < inv.master.length; i++) {
+        if (inv.master[i].name === name) {
+            inv.master[i].entry = true;
+            if (inv.master[i].count !== null) {
+                inv.master[i].count = inv.master[i].count + count;
+                g.popUpNotice("You receved " + count + " " + inv.master[i].display);
+            }
             i = 9999999;
         }
     }

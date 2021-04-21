@@ -42,6 +42,7 @@ scc.changes = [
     { name: "missy", xdress: false, chest: 1, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "tina", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "cecilia", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "jones", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
 
 ];
 
@@ -176,6 +177,15 @@ scc.changesDifferntText = function (who, whatNum) {
             ];
             break;
         case "cecilia":
+            comment = [
+                "Ooooo I love your new clothes! You're so sexy!",
+                "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
+                "I don't know what you're doing but your butt looks so much better!",
+                "I love the longer hair! It's so pretty! ",
+                "Did you get a hair cut? I think it looks prettier longer",
+                "Is your penis getting smaller? It's so much cuter! "
+            ];
+        case "jones":
             comment = [
                 "Ooooo I love your new clothes! You're so sexy!",
                 "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
