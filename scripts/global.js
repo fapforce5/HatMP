@@ -19,7 +19,7 @@ g.tview = "f";
 g.cockDisplay = "c";
 g.prevRoom;
 g.prevview = null;
-g.pw = "dGhhbmt5b3U=";
+g.pw = "c2lzc3k=";
 g.passtime = [0, 8, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
 
@@ -191,7 +191,7 @@ g.sissy = [
     { id: 31, pID: 51, icon: "clothes0", x: 7, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
     { id: 32, pID: 31, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: false, points: 2, h: true },
     { id: 33, pID: 32, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: false, points: 3, h: true },
-    { id: 34, pID: 33, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: false, points: 4, h: true },
+    { id: 34, pID: 33, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: false, points: 5, h: true },
 
     { id: 35, pID: 51, icon: "chest2", x: 8, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: 1, h: true },
     { id: 36, pID: 35, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: 2, h: true },
@@ -226,9 +226,13 @@ g.sissy = [
     { id: 57, pID: 34, icon: "stripper", x: 13, y: 1, name: "Stripper", description: "Work as a stripper on a case", ach: false, active: false, points: 0, h: true },
 
     { id: 58, pID: 0, icon: "lube", x: 2, y: 8, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
+    { id: 59, pID: 58, icon: "dildos", x: 2, y: 9, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 59, pID: 999, icon: "daria", x: 2, y: 8, name: "Daria's dissapearance", description: "Investigate Daria's dissappearance", ach: false, active: true, points: 1, h: false },
+    { id: 60, pID: 19, icon: "daria", x: 14, y: 8, name: "Daria's dissapearance", description: "Investigate Daria's dissappearance", ach: false, active: false, points: 0, h: false },
 
+    { id: 61, pID: 0, icon: "money", x: 19, y: 4, name: "Money", description: "Trade Sissy Points for money", ach: false, active: true, points: 0, h: false },
+
+    
 ];
 
 g.supersissy = function () {

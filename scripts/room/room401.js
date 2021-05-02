@@ -123,7 +123,7 @@ room401.main = function () {
             room401.makeClothing("chastity", "m");
             room401.makeClothing("chastity", "f");
             room401.makeClothing("buttplug", "f");
-            room401.makeInv(["d"], sc.checkevent("me", -8));
+            room401.makeInv(["d"], g.sissy[59].ach);
             navList = [650, 0];
             break;
         case "happyGirl":
@@ -302,6 +302,8 @@ room401.makeClothing = function (type, sex) {
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
             canbuy = lewdlevel.includes(cl.list[i].daring);
+            if (cl.list[i].type === "buttplug")
+                canbuy = g.sissy[59].ach;
             inInv = cl.list[i].inv;
             if (!canbuy || inInv)
                 $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
@@ -370,6 +372,11 @@ room401.makeInv = function (typeArray, canbuy) {
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                     }
+                }
+                else if (!canbuy) {
+                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
+                    $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                    $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
                 }
                 else {
                     $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');

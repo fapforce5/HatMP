@@ -146,7 +146,7 @@ room7.main = function () {
     $.each(btnList, function (i, v) {
         nav.button(v, 7);
     });
-
+    g.pass = "";
 };
 
 room7.btnclick = function (name) {

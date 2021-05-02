@@ -439,7 +439,7 @@ room203.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "cecilia",
-            text: "I like your clothes, but I can't let you in unless you're wearing suit pants and jacket, black shoes, and black socks. " +
+            text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
                 "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
             button: [
                 { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }

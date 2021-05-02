@@ -182,8 +182,13 @@ room209.btnclick = function (name) {
             if (g.sissy[24].ach) {
                 if (hasGirlSuit && hasPanties)
                     room209.btnclick("pointsStart");
-                else
-                    chat(18, 209);
+                else {
+                    if (cl.hasClothing("pants", "k") && hasPanties) {
+                        chat(135, 209);
+                    }
+                    else
+                        chat(18, 209);
+                }
             }
             else {
                 if (hasSuit && hasPanties)
@@ -429,6 +434,11 @@ room209.btnclick = function (name) {
             room209.btnclick("displayChairsit");
             room209.btnclick("displayMissybtn");
             chat(127, 209);
+            break;
+        case "h_59":
+            nav.bg("209_classroom/h_59_1.jpg");
+            nav.killall();
+            chat(136, 209);
             break;
         default:
             break;
@@ -1069,6 +1079,14 @@ room209.chatcatch = function (callback) {
             g.sissy[58].ach = true;
             room209.chatcatch("end");
             break;
+        case "h_59":
+            nav.bg("209_classroom/h_59_2.jpg");
+            break;
+        case "h_59_1":
+            inv.add("pinkDildo");
+            g.sissy[59].ach = true;
+            room209.chatcatch("end");
+            break;
         case "selectStart":
             room209.btnclick("selectStart");
             break;
@@ -1096,6 +1114,15 @@ room209.chatcatch = function (callback) {
             break;
         case "hate":
             scc.love("missy", -10);
+            break;
+        case "outfitChange":
+            cl.c.shoes = "fb";
+            cl.c.pants = "k";
+            cl.c.shirt = "r";
+            cl.c.socks = null;
+            cl.display();
+            room209.btnclick("displayChairsit");
+            room209.btnclick("pointsStart");
             break;
         default:
             break;
@@ -2296,6 +2323,51 @@ room209.chat = function (chatID) {
                     "as your body accepts its sissyness. ",
                 button: [
                     { chatID: -1, text: "I'll take my pills", callback: "h_51" }
+                ]
+            },
+            {
+                chatID: 135,
+                speaker: "thinking",
+                text: "I forgot to change into my outfit. Let me do that really quick. ",
+                button: [
+                    { chatID: -1, text: "Change into the correct outfit. ", callback: "outfitChange" }
+                ]
+            },
+            {
+                chatID: 136,
+                speaker: "missy",
+                text: "So you want to shove fake dicks in your asshole? That's a good sissy. Dildos are an excellent way to stretch " +
+                    "that pussy of yours. Like most sluts I'm sure you're going to go out and buy the biggest dildo you can get your " +
+                    "hands on, but your pussy is not ready for that. ",
+                button: [
+                    { chatID: 137, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 137,
+                speaker: "missy",
+                text: "Start small and work your way up. The girls you see in porn taking a fist up to their elbo didn't start like " +
+                    "that. They got there over months or years of shoving incresingly bigger things into their asshole. Start with " +
+                    "your fingers then work up to bigger dildos. Once you have a good stretch you'll need to increase your dildo size. ",
+                button: [
+                    { chatID: 138, text: "...", callback: "h_59" }
+                ]
+            },
+            {
+                chatID: 138,
+                speaker: "missy",
+                text: "Take this home. It's a good starter dildo. You'll find it in your nightstand next to your bed. If it's too " +
+                    "big use your fingers for a bit. Keep working that sissy hole with increasing bigger toys. ",
+                button: [
+                    { chatID: 139, text: "Aren't you going to use it on me?", callback: "" }
+                ]
+            },
+            {
+                chatID: 139,
+                speaker: "missy",
+                text: "No. You can strech your own pussy. The journey of self discovery is sometimes best done alone. ",
+                button: [
+                    { chatID: -1, text: "Ok, thanks for the dildo ma'am.", callback: "h_59_1" }
                 ]
             },
         ];

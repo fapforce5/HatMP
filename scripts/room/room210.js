@@ -17,59 +17,140 @@ room210.main = function () {
 };
 
 room210.btnclick = function (name) {
-    var id, pid;
-    var level = g.get("difficulty");
-    var basePoints = level === 0 ? 30 : (level === 1 ? 65 : 100);
-   
-    nav.killbutton("bigDisplay");
-    nav.button({
-        "type": "img",
-        "name": "bigDisplay",
-        "left": 1645,
-        "top": 153,
-        "width": 250,
-        "height": 400,
-        "image": "28_transformation/" + name + "_d.png"
-    }, 210);
+    if (name === "btnUp" || name === "btnDown" || name === "btnBuy") {
+        if (name === "btnBuy") {
+            if (g.internal > 0) {
+                g.mod("sissy", -1 * g.internal);
+                g.mod("money", g.internal);
+                g.internal = 0;
+                nav.killbutton("btnMoney");
+                nav.t({
+                    type: "img",
+                    name: "btnMoney",
+                    "left": 1750,
+                    "top": 750,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: g.internal
+                });
+            }
+        }
+        else {
+            var sissyPoints = g.get("sissy");
+            if (name === "btnUp")
+                g.internal += 10;
+            else if (name === "btnDown")
+                g.internal -= 10;
+            if (g.internal < 0)
+                g.internal = 0;
+            else if (g.internal > sissyPoints)
+                g.internal = sissyPoints;
 
-    xtop = 600 * g.ratio;
-    xleft = 1634 * g.ratio;
-    xwidth = 271 * g.ratio;
-
-    for (i = 0; i < g.sissy.length; i++) {
-        if (g.sissy[i].icon === name) {
-            id = i;
-            i = 9999;
+            nav.killbutton("btnMoney");
+            nav.t({
+                type: "img",
+                name: "btnMoney",
+                "left": 1750,
+                "top": 750,
+                font: 30,
+                hex: "#ffffff",
+                text: g.internal
+            });
         }
     }
-    
-    pid = g.sissy[id].pID;
-    tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
+    else {
+        nav.killbutton("btnUp");
+        nav.killbutton("btnDown");
+        nav.killbutton("btnMoney");
+        nav.killbutton("btnBuy");
+        var id, pid;
+        var level = g.get("difficulty");
+        var basePoints = level === 0 ? 30 : (level === 1 ? 65 : 100);
 
-    if (g.sissy[id].points > 0)
-        tText += "<br/>Requires " + (g.sissy[id].points * basePoints) + " points, but free for this release. <br/>";
+        nav.killbutton("bigDisplay");
+        nav.button({
+            "type": "img",
+            "name": "bigDisplay",
+            "left": 1645,
+            "top": 153,
+            "width": 250,
+            "height": 400,
+            "image": "28_transformation/" + name + "_d.png"
+        }, 210);
 
-    if (id === 56) 
-        tText += '<img src="./images/room/28_transformation/cancel_b.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
-    else if (g.sissy[id].ach)
-        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
-    else if (!g.sissy[id].active)
-        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';
-    else if (g.sissy[id].h && g.get("hormone") < 85)
-        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
-    else if (g.sissy[pid].ach)
-        tText += '<img src="./images/room/28_transformation/unlock.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
-    else
-        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to<br/>Unlock<br/>Previous</div>';
+        xtop = 600 * g.ratio;
+        xleft = 1634 * g.ratio;
+        xwidth = 271 * g.ratio;
 
-    xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
-    $('#room-buttons').append(xline);
-    //switch (name) {
-    //    case "":
-    //        break;
-    //    default:
-    //        break;
-    //}
+        for (i = 0; i < g.sissy.length; i++) {
+            if (g.sissy[i].icon === name) {
+                id = i;
+                i = 9999;
+            }
+        }
+
+        pid = g.sissy[id].pID;
+        tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
+
+        if (g.sissy[id].points > 0)
+            tText += "<br/>Requires " + (g.sissy[id].points * basePoints) + " points, but free for this release. <br/>";
+
+        if (id === 56)
+            tText += '<img src="./images/room/28_transformation/cancel_b.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+        else if (id === 61) {
+            g.internal = 0;
+            nav.button({
+                "type": "btn",
+                "name": "btnUp",
+                "left": 1650,
+                "top": 750,
+                "width": 30,
+                "height": 20,
+                "image": "28_transformation/btnUp.jpg"
+            }, 210);
+            nav.t({
+                type: "img",
+                name: "btnMoney",
+                "left": 1750,
+                "top": 750,
+                font: 30,
+                hex: "#ffffff",
+                text: "0"
+            });
+            nav.button({
+                "type": "btn",
+                "name": "btnDown",
+                "left": 1850,
+                "top": 750,
+                "width": 30,
+                "height": 20,
+                "image": "28_transformation/btnDown.jpg"
+            }, 210);
+            nav.button({
+                "type": "btn",
+                "name": "btnBuy",
+                "left": 1645,
+                "top": 825,
+                "width": 271,
+                "height": 72,
+                "image": "28_transformation/money_b.png"
+            }, 210);
+
+        }
+        else if (g.sissy[id].ach)
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
+        else if (!g.sissy[id].active)
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';
+        else if (g.sissy[id].h && g.get("hormone") < 85)
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
+        else if (g.sissy[pid].ach)
+            tText += '<img src="./images/room/28_transformation/unlock.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+        else
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to<br/>Unlock<br/>Previous</div>';
+
+        xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
+        $('#room-buttons').append(xline);
+    }
 };
 
 room210.chatcatch = function (callback) {

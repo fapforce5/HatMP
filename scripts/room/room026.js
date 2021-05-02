@@ -78,8 +78,12 @@ room26.btnclick = function (name) {
                             else
                                 chat(63, 26);
                         }
-                        chat(61, 26);
+                        else
+                            chat(61, 26);
 
+                    }
+                    else if (ll === 201) {
+                        chat(83, 26);
                     }
                     else
                         chat(2, 26);
@@ -316,6 +320,50 @@ room26.chatcatch = function (callback) {
             sc.setstep("landlord", 201);
             char.settime(18, 12);
             char.room(450);
+            break;
+        case "201_1":
+            char.addtime(15);
+            nav.killall();
+            nav.bg("14_motherRoom/14_motherRoom.jpg", "14_motherRoom/14_motherRoomNightLight.jpg");
+            nav.button({
+                "type": "img",
+                "name": "201_1",
+                "left": 650,
+                "top": 72,
+                "width": 946,
+                "height": 1008,
+                "image": "26_livingRoom/201.png"
+            }, 26);
+            break;
+        case "201_2":
+            nav.killbutton("201_1");
+            nav.button({
+                "type": "img",
+                "name": "201_1",
+                "left": 650,
+                "top": 72,
+                "width": 1155,
+                "height": 1008,
+                "image": "26_livingRoom/201_2.png"
+            }, 26);
+            break;
+        case "201_3":
+            nav.killbutton("201_1");
+            nav.button({
+                "type": "img",
+                "name": "201_1",
+                "left": 650,
+                "top": 72,
+                "width": 946,
+                "height": 1008,
+                "image": "26_livingRoom/201.png"
+            }, 26);
+            break;
+        case "201_4":
+            sc.setstep("landlord", 202);
+            char.addtime(60);
+            g.setflag("momchat");
+            char.room(16);
             break;
         default:
             break;
@@ -964,7 +1012,7 @@ room26.chat = function (chatID) {
         {
             chatID: 74,
             speaker: "landlord",
-            text: "You look like a " + cl.cupsize + ". I had that nice young girl at Popular Girl measure me. She's really good. ",
+            text: "You look like a " + cl.cupsize() + ". I had that nice young girl at Popular Girl measure me. She's really good. ",
             button: [
                 { chatID: 72, text: "I have more questions", callback: "" },
                 { chatID: 76, text: "Nothing", callback: "" }
@@ -1043,6 +1091,91 @@ room26.chat = function (chatID) {
             text: "I like you better as a girl. I know you'll discover your true self. ",
             button: [
                 { chatID: -1, text: "Thanks!", callback: "ll200_2" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "landlord",
+            text: "Oooo, I have a suprise for you! I've known a sissy for a while that comes into the sperm bank and thought it " +
+                "would be neat for you two to meet. Let me call him over. He's very obedient. ",
+            button: [
+                { chatID: 84, text: "Oh, what, no. Thank's ok. I don't...", callback: "" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "landlord",
+            text: "Don't be silly. I've already texted him. He'll be here in 15 minutes. Let's go to my room for some privacy.",
+            button: [
+                { chatID: 85, text: "Oh, what, no. Thank's ok.", callback: "201_1" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "landlord",
+            text: "This is " + sc.n("ralph") + ". He's a sissy too. ",
+            button: [
+                { chatID: 86, text: sc.n("ralph") + "!!!!", callback: "" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "ralph",
+            text: "Your " + sc.n("landlord") + ". convinced me to come here. She said we have a lot in common, but she didn't say " +
+                "I was going to be outed as a sissy to my friend. ",
+            button: [
+                { chatID: 87, text: "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "landlord",
+            text: "Oh now " + sc.n("ralph") + " don't be shy. You've never been a shy one at the Sperm Bank. Show him. Show my " +
+                "little girl your sissy side. It will be cathartic. ",
+            button: [
+                { chatID: 88, text: "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "ralph",
+            text: "Promise not to laugh?",
+            button: [
+                { chatID: 89, text: "I promise", callback: "201_2" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "ralph",
+            text: "Here it is. The real me!",
+            button: [
+                { chatID: 90, text: "Oh wow!", callback: "" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "landlord",
+            text: "Such a cute little girl, not a cute as my little girl though. Now put that away. ",
+            button: [
+                { chatID: 91, text: "...", callback: "201_3" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "landlord",
+            text: "Now that both of your secrets are out you two can play together. I know when I was exploring my sexuality my " +
+                "best friend Ruth and I would experiment with all kinds of toys and boys. We would dress each other op, trade " + 
+                "clothes and makeup tips, then head out on the town. Ruth and I had so much fun back then...",
+            button: [
+                { chatID: 92, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "landlord",
+            text: "Well, anyways, you two sissies run along and play at " + sc.n("ralph") + "'s place. (Future release). ",
+            button: [
+                { chatID: -1, text: "Oh yes!", callback: "201_4" }
             ]
         },
     ];

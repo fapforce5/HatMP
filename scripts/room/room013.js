@@ -272,6 +272,9 @@ room13.btnclick = function (name) {
                     else
                         chat(177, 13);
                     break;
+                case 202:
+                    chat(210, 13);
+                    break;
             }
 
             break;
@@ -340,6 +343,9 @@ room13.btnclick = function (name) {
                         chat(174, 13);
                     else
                         chat(177, 13);
+                    break;
+                case 202:
+                    chat(210, 13);
                     break;
                 default:
                     break;
@@ -429,9 +435,33 @@ room13.btnclick = function (name) {
             }, 13);
             break;
         case "br5Panties2":
-            nav.killbutton("br5Panties2");
-            nav.bg("13_sisterRoom/013_bedBr5pullUp.jpg");
-            chat(85, 13);
+            if (sc.getstep("lola") === 202) {
+                var llove = scc.get("lola").love;
+                if (llove < 25) {
+                    nav.killbutton("br5Panties2");
+                    nav.bg("13_sisterRoom/013_bedBr5pullUp.jpg");
+                    chat(85, 13);
+                }
+                else { 
+                    nav.killbutton("br5Panties2");
+                    nav.bg("13_sisterRoom/013_bedBr6.jpg");
+                    nav.button({
+                        "type": "btn",
+                        "name": "br5Panties6",
+                        "left": 780,
+                        "top": 851,
+                        "width": 965,
+                        "height": 217,
+                        "image": "13_sisterRoom/br5Panties3.png "
+                    }, 13);
+                }
+
+            }
+            else {
+                nav.killbutton("br5Panties2");
+                nav.bg("13_sisterRoom/013_bedBr5pullUp.jpg");
+                chat(85, 13);
+            }
             break;
         case "br5Panties3":
             nav.killall();
@@ -453,6 +483,47 @@ room13.btnclick = function (name) {
                 chat(53, 13);
             }
             break;
+        case "br5Panties6":
+            nav.killbutton("br5Panties6");
+            nav.button({
+                "type": "btn",
+                "name": "br5Panties7",
+                "left": 1160,
+                "top": 403,
+                "width": 198,
+                "height": 198,
+                "image": "13_sisterRoom/br5Panties7.png"
+            }, 13);
+            break;
+        case "br5Panties7":
+            scc.love("lola", 10, 100);
+            nav.bg("13_sisterRoom/013_bedBr7.jpg");
+            nav.button({
+                "type": "img",
+                "name": "br5Panties7",
+                "left": 815,
+                "top": 236,
+                "width": 889,
+                "height": 844,
+                "image": "13_sisterRoom/013_backrub_007.gif"
+            }, 13);
+            if (scc.get("lola").love > 50) {
+                g.roomTimeout = setTimeout(function () {
+                    chat(212, 13);
+                }, 2000);
+            }
+            else {
+                g.roomTimeout = setTimeout(function () {
+                    g.setflag("lolaDayEvent");
+                    nav.killall();
+                    nav.bg("13_sisterRoom/013_backrub_008.jpg");
+                    chat(211, 13);
+                }, 3000);
+            }
+            break;
+        case "br11":
+
+            break;  
         default:
             break;
     }
@@ -685,11 +756,54 @@ room13.chatcatch = function (callback) {
                 "image": "13_sisterRoom/bedBr5Panties1.png "
             }, 13);
             break;
+        case "br8":
+            nav.modbutton("br5Panties7", "13_sisterRoom/013_backrub_008.gif");
+            if (scc.get("lola").love < 75) {
+                g.setTimeout = setTimeout(function () {
+                    nav.killall();
+                    nav.bg("13_sisterRoom/013_backrub_008.jpg");
+                    chat(211, 13);
+                }, 3000);
+            }
+            else
+                g.setTimeout = setTimeout(function () {
+                    chat(213, 13);
+                }, 3000);
+                
+            break;
+        case "br9":
+            nav.killall();
+            nav.bg("13_sisterRoom/br9.jpg");
+            break;
+        case "br10":
+            nav.bg("13_sisterRoom/br10.jpg");
+            break;
+        case "br9Bad":
+            scc.love("lola", -25, 100);
+            scc.love("eva", -15, 100);
+            g.setflag("lolaDayEvent");
+            g.setflag("evaDayEvent");
+            char.addtime(60);
+            char.room(11);
+            break;
+        case "br11":
+            nav.bg("13_sisterRoom/br11.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "br11",
+                "left": 923,
+                "top": 561,
+                "width": 370,
+                "height": 370,
+                "image": "13_sisterRoom/br11.png"
+            }, 13);
+            break;
         case "spinTheBottle":
             char.room(24);
             break;
         case "buttRubPantiesOn":
             nav.killall();
+            scc.love("lola", 5, 100);
             nav.bg("13_sisterRoom/013_bedZoom.jpg");
             nav.button({
                 "type": "img",
@@ -1142,7 +1256,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "MMMmmmmm that feels soooo good " + sc.n("me") + ". Thank you.",
             button: [
-                { chatID: -1, text: "You're welcome", callback: "resetlolalove" }
+                { chatID: -1, text: "You're welcome", callback: "reset" }
             ]
         },
         {
@@ -1252,7 +1366,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really are the best " + sc.n("me") + "! That was absolutley wonderful",
             button: [
-                { chatID: -1, text: "Awwww, you're wonderful", callback: "resetlolalove" }
+                { chatID: -1, text: "Awwww, you're wonderful", callback: "rest" }
             ]
         },
         {
@@ -1448,7 +1562,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really are the best, thanks for being a gentleman. ",
             button: [
-                { chatID: -1, text: "[Finish the butt massage]", callback: "resetlolalove" }
+                { chatID: -1, text: "[Finish the butt massage]", callback: "reset" }
             ]
         },
         {
@@ -1608,7 +1722,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really know how to work a butt!",
             button: [
-                { chatID: -1, text: "You bet I do", callback: "resetlolalove" }
+                { chatID: -1, text: "You bet I do", callback: "reset" }
             ]
         },
         {
@@ -2735,12 +2849,73 @@ room13.chat = function (chatID) {
             ]
         },
         {
-            chatID: 208,
+            chatID: 209,
             speaker: "eva",
             text: "Yeah. That was so weird, it's like we're in some kind of strange porn game where people do weird sexual " +
                 "things in public without any realistic consequences. We're going to head home now, see you later. ",
             button: [
                 { chatID: -1, text: "...", callback: "201_7" }
+            ]
+        },
+        {
+            chatID: 210,
+            speaker: "lola",
+            text: "So how about another massage?",
+            button: [
+                { chatID: -1, text: "Oh Yeah!", callback: "br5" },
+                { chatID: -1, text: "nah", callback: "" }
+            ]
+        },
+        {
+            chatID: 211,
+            speaker: "lola",
+            text: "That felt good. almost too good. Thank you.",
+            button: [
+                { chatID: -1, text: "Of course", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 212,
+            speaker: "thinking",
+            text: "She's not stopping me this time. ",
+            button: [
+                { chatID: -1, text: "Go further...", callback: "br8" },
+                { chatID: -1, text: "I better stop here. Don't want to go too far.", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 213,
+            speaker: "lola",
+            text: "I know it's wrong, but I just can't help it, I need more. I've been so flustered with dirty dirty lust. " +
+                "Please don't think less of me, I've tried to be good, but I need you now!",
+            button: [
+                { chatID: 214, text: "Oh yeah! [Start pulling off your clothes]", callback: "br9" }
+            ]
+        },
+        {
+            chatID: 214,
+            speaker: "lola",
+            text: "No, I made a promise we wouldn't have sex, but I could keep that promise if you used your mouth. After all " +
+                "kissing me down there isn't sex..",
+            button: [
+                { chatID: 216, text: "Sure!", callback: "br10" },
+                { chatID: 215, text: "No way you dirty dirty tease. You'll take my dick and like it!", callback: "" }
+            ]
+        },
+        {
+            chatID: 215,
+            speaker: "lola",
+            text: "I can't believe I let you get this far! Get out. Get out now!!!",
+            button: [
+                { chatID: -1, text: "Drat! I don't know what I was thinking.", callback: "br9Bad" }
+            ]
+        },
+        {
+            chatID: 216,
+            speaker: "lola",
+            text: "Please lick me, I need it soooo bad. I need you more than I've needed anything. ",
+            button: [
+                { chatID: -1, text: "Help her out", callback: "br11" }
             ]
         },
     ];

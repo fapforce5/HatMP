@@ -116,10 +116,9 @@ room28.main = function () {
 
     //growhair
     var initHairGrowth = 2;
-    if (hormoneLevel > 39) {
-        initHairGrowth = Math.round(hormoneLevel / 10) - 3;
-    }
-    if (initHairGrowth < 3)
+    if (hormoneLevel > 50)
+        Math.floor(hormoneLevel / 10) - 3;
+    if (initHairGrowth < 2)
         initHairGrowth = 2;
 
     cl.c.lastHairCut += initHairGrowth;
