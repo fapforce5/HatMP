@@ -82,7 +82,9 @@ sc.events = [
     { name: "me", step: 2, txt: "Pay rent each Sunday", img: "landlord", show: false, row: 0, col: -1, ach: false, major: false }, //hired at missy
     { name: "me", step: 3, txt: "Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
     { name: "me", step: 7, txt: "Shopping at the mall!", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false }, //TorD complete kicked out of house
-    
+
+    { name: "landlord", step: -8, txt: "Em bare ass", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "landlord", step: -7, txt: "First Day at the Sperm Bank", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -6, txt: "Back in!", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -5, txt: "Doctor donated", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "landlord", step: -4, txt: "Doctor Sperm", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -243,13 +245,15 @@ sc.events = [
     { name: "eva", step: 4, txt: "Toe Suck", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "eva", step: 5, txt: "Foot Job", img: "evaFootjob", show: true, row: 0, col: 3, ach: false, major: false },
     { name: "eva", step: 6, txt: "Rinse and repeat", img: "", show: false, row: 0, col: 4, ach: false, major: false },
-    { name: "eva", step: 7, txt: "Truth or Dare", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 8, txt: "Back In", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 9, txt: "In bed confession", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 10, txt: "Next meeting in room", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 11, txt: "Had the sex - phone contacts", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 200, txt: "Sissy Path", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
-    { name: "eva", step: 201, txt: "Gave panties", img: "evaLolaBlow", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 7, txt: "Truth or Dare", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 8, txt: "Back In", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 9, txt: "In bed confession", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 10, txt: "Next meeting in room", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 11, txt: "Had the sex - phone contacts", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 200, txt: "Sissy Path", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 201, txt: "Gave panties", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 202, txt: "Lunch", img: "", show: false, row: 0, col: 4, ach: false, major: true },
+    { name: "eva", step: 203, txt: "Doggy 1", img: "", show: false, row: 0, col: 4, ach: false, major: true },
 
     { name: "eva", step: 30, txt: "End of the Eva line", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true },
 
@@ -1078,12 +1082,19 @@ sc.phone = function (char) {
                     ];
                     sc.phoneChat(clist, char);
                 }
-                
+
             }
             else if (step === 30) {
                 clist = [
                     { s: "me", t: "Soooo what's up?" },
                     { s: "eva", t: "Hayyyy buddy. I like you, i just need a manly cock" },
+                ];
+                sc.phoneChat(clist, char);
+            }
+            else if (step === 203) {
+                clist = [
+                    { s: "me", t: "You told me to text you." },
+                    { s: "eva", t: "I did. The artist is working on the images. We'll have to wait till the next release doggy." },
                 ];
                 sc.phoneChat(clist, char);
             }

@@ -258,6 +258,19 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(73, 209);
             break;
+        case "h_7":
+        case "h_8":
+        case "h_9":
+        case "h_10":
+            g.set("oncase", "smolpp");
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displayMissybtn");
+            chat(140, 209);
+            break;
         case "h_12":
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
@@ -608,6 +621,27 @@ room209.chatcatch = function (callback) {
             cl.undo();
             g.sissy[6].ach = true;
             room209.chatcatch("end");
+            break;
+        case "h_8_1":
+            nav.killall();
+            nav.bg("209_classroom/h_8_1.jpg");
+            break;
+        case "h_8_2":
+            nav.bg("209_classroom/bgBack.jpg");
+            zcl.displayMain(100, 600, .18, "shirt", false)
+            nav.button({
+                "type": "img",
+                "name": "missy",
+                "left": 621,
+                "top": 393,
+                "width": 727,
+                "height": 687,
+                "image": "209_classroom/h_8.png"
+            }, 209);
+            if (cl.c.chastity !== null)
+                chat(142, 209);
+            else
+                chat(143, 209);
             break;
         case "h12_1":
             g.pass = "h12_cock";
@@ -2368,6 +2402,40 @@ room209.chat = function (chatID) {
                 text: "No. You can strech your own pussy. The journey of self discovery is sometimes best done alone. ",
                 button: [
                     { chatID: -1, text: "Ok, thanks for the dildo ma'am.", callback: "h_59_1" }
+                ]
+            },
+            {
+                chatID: 140,
+                speaker: "missy",
+                text: "I'm so glad you know you were never a man. Only a true sissy girl would want a smaller clit. ",
+                button: [
+                    { chatID: 141, text: "Mmmm clitty...", callback: "h_8_1" }
+                ]
+            },
+            {
+                chatID: 141,
+                speaker: "missy",
+                text: "Now just hold still while I pull out your clitty. ",
+                button: [
+                    { chatID: -1, text: "Yes misstress", callback: "h_8_2" }
+                ]
+            },
+            {
+                chatID: 142,
+                speaker: "missy",
+                text: "Let me just remove this chastity cage really quick to put on your Tiny PP cream, and in the morning your " +
+                    "your little PP will be smaller. ",
+                button: [
+                    { chatID: -1, text: "Thank you mistress. I want a clitty!", callback: "end" }
+                ]
+            },
+            {
+                chatID: 143,
+                speaker: "missy",
+                text: "Let me just put on your Tiny PP cream, and in the morning your " +
+                    "your little PP will be smaller. ",
+                button: [
+                    { chatID: -1, text: "Thank you mistress. I want a clitty!", callback: "end" }
                 ]
             },
         ];

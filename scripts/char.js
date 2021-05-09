@@ -596,7 +596,7 @@ menu.mClick = function (type) {
 
                 '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Sissyness</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("sissy") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + g.sissyPoints() + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
                 '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Appearance</div>' +
@@ -631,9 +631,9 @@ menu.mClick = function (type) {
             $('#menu_parent').append('<img src="./images/phone/sissy.jpg" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + '"/>');
             $('#menu_parent').append('<div style="color:#e1018f; position:absolute; ' + g.makeCss(250, 500, 650, 700) + ' font-size:' + (40 * g.ratio) + 'px;">' +
                 '<table style="width:100%;">' +
-                '<tr><td>SISSY Points: </td><td> ' + g.get("sissy") + '</td></tr>' +
-                '<tr><td>Points Needed: </td><td> ' + g.get("sissyPoints") + '</td></tr>' +
-                '<tr><td>Total Lessons: </td><td> ' + g.get("sissyLevel") + '</td></tr>' +
+                '<tr><td>SISSY Points: </td><td> ' + g.sissyPoints() + '</td></tr>' +
+                '<tr><td>Total Points: </td><td> ' + g.get("totalSissyPoints") + '</td></tr>' +
+                '<tr><td>Total Lessons: </td><td> WIP</td></tr>' +
                 '</table></div>');
             //$('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
             //    '<h2>My Digital Hormone Levels</h2>' +
@@ -1214,9 +1214,9 @@ char.makeGraph = function () {
                 sissy = g.st[i].t;
                 $(".rl-bar[data-name='sissy']").css({ width: g.st[i].t + "%" });
                 break;
-            case "sissyLevel":
-                $("#rl_sissy").html("Sissy: " + g.st[i].t);
-                break;
+            //case "sissyLevel":
+            //    $("#rl_sissy").html("Sissy: " + g.st[i].t);
+            //    break;
         }
     }
 

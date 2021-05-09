@@ -353,7 +353,7 @@ room51.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "The poor little guy doesn't have any place to go. I was going to put him in Bambi's old room. ",
+            text: "The poor little guy is just visiting. I was going to put him in Bambi's old room. ",
             button: [
                 { chatID: 8, text: "...", callback: "tf7" }
             ]
@@ -361,7 +361,7 @@ room51.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "candy",
-            text: "Aww the poor little guy. You know he's got such a pretty face. He's really pulling off that dress. So " + sc.n("me") + " you want " +
+            text: "Aww you poor thing. You know he's got such a pretty face. He's really pulling off that dress. So " + sc.n("me") + " you want " +
                 "to show me what you have under there?",
             button: [
                 { chatID: 9, text: "I uhhhhh", callback: "t8" }
@@ -372,7 +372,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "Yeah, show " + sc.n("candy") + " what you got! Take off your dress!",
             button: [
-                { chatID: 10, text: "But.. Shouldn't you take off your clothes?", callback: "t9" },
+                { chatID: 10, text: "But.. Shouldn't you take off your clothes?", callback: "t9" }
             ]
         },
         {
@@ -382,7 +382,7 @@ room51.chat = function (chatID) {
                 "much hotter and manlier men than you. " + sc.n("tiffany") + " brought you here cause we get bored fucking big hot guys all the time, " +
                 "she thought you might be fun.",
             button: [
-                { chatID: 11, text: "What?", callback: "" },
+                { chatID: 11, text: "What?", callback: "" }
             ]
         },
         {
@@ -392,7 +392,7 @@ room51.chat = function (chatID) {
             "tease, and play with. That's why I brought you here!",
             button: [
                 { chatID: 12, text: "I'm not a sissy...", callback: "t10" },
-                { chatID: 14, text: "I am such a sissy boy, please play with me", callback: "" },
+                { chatID: 14, text: "I am such a sissy boy, please play with me", callback: "" }
             ]
         },
         {
@@ -401,7 +401,7 @@ room51.chat = function (chatID) {
             text: "AHahaha haha hahhaaha You so are! You don't need to lie to us. Just release your inner slut! You don't even have to do anything, just " +
             "let us take control.",
             button: [
-                { chatID: 13, text: "Hay", callback: "" },
+                { chatID: 13, text: "Hay", callback: "" }
             ]
         },
         {
@@ -409,7 +409,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Haha you silly boy, just relax and we'll help you release your inner girl!",
             button: [
-                { chatID: 15, text: "Oh", callback: "t11" },
+                { chatID: 15, text: "Oh", callback: "t11" }
             ]
         },
         {
@@ -417,7 +417,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Don't worry our little slut, we're going to make you into such a cock hungry whore!",
             button: [
-                { chatID: 15, text: "Oh fuck yea!", callback: "t11" },
+                { chatID: 15, text: "Oh fuck yea!", callback: "t11" }
             ]
         },
         {
@@ -425,7 +425,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Lets get this dress off of your first.",
             button: [
-                { chatID: 16, text: "huh", callback: "t12" },
+                { chatID: 16, text: "huh", callback: "t12" }
             ]
         },
         {
@@ -433,7 +433,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Not bad. You know he would look really cute with some makeup.",
             button: [
-                { chatID: 17, text: "huh", callback: "" },
+                { chatID: 17, text: "huh", callback: "" }
             ]
         },
         {
@@ -441,7 +441,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "You're right! Come here, we're going to make you a pretty girl!",
             button: [
-                { chatID: 18, text: "huh", callback: "t13" },
+                { chatID: 18, text: "huh", callback: "t13" }
             ]
         },
         {
@@ -449,7 +449,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "You're right! Come here, we're going to make you a pretty girl!",
             button: [
-                { chatID: -1, text: "huh", callback: "" },
+                { chatID: -1, text: "huh", callback: "" }
             ]
         },
         {
@@ -457,7 +457,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Oh gross! body hair! We need to get rid of that! " + sc.n("tiffany") + " go grab your hair removal cream!",
             button: [
-                { chatID: 20, text: "But I like it...", callback: "t14" },
+                { chatID: 20, text: "But I like it...", callback: "t14" }
             ]
         },
         {
@@ -465,7 +465,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "So hairy! You really need our help to make you a pretty girl!",
             button: [
-                { chatID: 21, text: "It's ichy..", callback: "t15" },
+                { chatID: 21, text: "It's ichy..", callback: "t15" }
             ]
         },
         {
@@ -473,7 +473,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "That looks soooo much better! Such a pretty girl!",
             button: [
-                { chatID: 22, text: "It's ichy..", callback: "t16" },
+                { chatID: 22, text: "It's ichy..", callback: "t16" }
             ]
         },
         {
@@ -482,7 +482,7 @@ room51.chat = function (chatID) {
             text: "Lets put some makeup on him! I bet he'll look really pretty with some makeup!",
             button: [
                 { chatID: 23, text: "But I don't want makeup", callback: "" },
-                { chatID: 24, text: "Oh yes! Please make me a pretty girl!", callback: "" },
+                { chatID: 24, text: "Oh yes! Please make me a pretty girl!", callback: "" }
             ]
         },
         {
@@ -490,7 +490,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Oh shush! I'm going to make you pretty!",
             button: [
-                { chatID: 25, text: "[Grumpy]", callback: "t17" },
+                { chatID: 25, text: "[Grumpy]", callback: "t17" }
             ]
         },
         {
@@ -498,7 +498,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "I'm so excited! You're going to be so pretty!",
             button: [
-                { chatID: 25, text: "Thank you!", callback: "t17" },
+                { chatID: 25, text: "Thank you!", callback: "t17" }
             ]
         },
         {
@@ -506,7 +506,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "I'm so excited! You're going to be so pretty!",
             button: [
-                { chatID: 26, text: "Thank you!", callback: "" },
+                { chatID: 26, text: "Thank you!", callback: "" }
             ]
         },
         {
@@ -514,7 +514,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "OOHHH MMMYYY GGGOOODDDD You really are a pretty girl... Needs something more...",
             button: [
-                { chatID: 27, text: "Oh wow", callback: "" },
+                { chatID: 27, text: "Oh wow", callback: "" }
             ]
         },
         {
@@ -525,7 +525,7 @@ room51.chat = function (chatID) {
             button: [
                 { chatID: 28, text: "Classic Red Lips", callback: "red" },
                 { chatID: 28, text: "Sissy Pink", callback: "pink" },
-                { chatID: 28, text: "Rebellious Purple", callback: "purple" },
+                { chatID: 28, text: "Rebellious Purple", callback: "purple" }
             ]
         },
         {
@@ -533,7 +533,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "Oh " + g.internal + " really is your color! You really know how to make yourself a pretty girl!",
             button: [
-                { chatID: 29, text: "Oh wow", callback: "" },
+                { chatID: 29, text: "Oh wow", callback: "" }
             ]
         },
         {
@@ -541,7 +541,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "She really does make a pretty girl! Let's take a look at you.",
             button: [
-                { chatID: -1, text: "I look pretty?", callback: "t18" },
+                { chatID: -1, text: "I look pretty?", callback: "t18" }
             ]
         },
         {
@@ -549,7 +549,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Hmmmm...",
             button: [
-                { chatID: 31, text: "...", callback: "t19" },
+                { chatID: 31, text: "...", callback: "t19" }
             ]
         },
         {
@@ -557,7 +557,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "You're pretty, but there's something I can't put my finger on....",
             button: [
-                { chatID: 32, text: "...", callback: "t20" },
+                { chatID: 32, text: "...", callback: "t20" }
             ]
         },
         {
@@ -565,7 +565,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Oh, haha I can put my finger on it!",
             button: [
-                { chatID: 33, text: "...", callback: "t21" },
+                { chatID: 33, text: "...", callback: "t21" }
             ]
         },
         {
@@ -573,7 +573,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Hahaha these things are so much fun, but it's not a good look for you.. hmmm. Should we cut it off?",
             button: [
-                { chatID: 34, text: "What!! No!!", callback: "" },
+                { chatID: 34, text: "What!! No!!", callback: "" }
             ]
         },
         {
@@ -582,7 +582,7 @@ room51.chat = function (chatID) {
             text: sc.n("candy") + "!!! You're going to scare the poor boy! No one is cutting off you boy cock. Let's see the back side, " +
             "turn around girl.",
             button: [
-                { chatID: 35, text: "[Turn around]", callback: "t23" },
+                { chatID: 35, text: "[Turn around]", callback: "t23" }
             ]
         },
         {
@@ -590,7 +590,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "I like it! Lets see how tight she is.",
             button: [
-                { chatID: 36, text: "huh", callback: "t24" },
+                { chatID: 36, text: "huh", callback: "t24" }
             ]
         },
         {
@@ -598,7 +598,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Do you like it when I play with your girl hole?",
             button: [
-                { chatID: 37, text: "*moan*", callback: "t25" },
+                { chatID: 37, text: "*moan*", callback: "t25" }
             ]
         },
         {
@@ -606,7 +606,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Oh you are a tight one!",
             button: [
-                { chatID: 38, text: "*moan*", callback: "t26" },
+                { chatID: 38, text: "*moan*", callback: "t26" }
             ]
         },
         {
@@ -614,7 +614,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "But with just a little work your girl hole opens right up!",
             button: [
-                { chatID: 39, text: "*moan*", callback: "t25" },
+                { chatID: 39, text: "*moan*", callback: "t25" }
             ]
         },
         {
@@ -622,7 +622,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "I can tell you like that, don't you? You are such a little slut! Lets play some dress up with this slut!",
             button: [
-                { chatID: 40, text: "But we already played that....", callback: "t26" },
+                { chatID: 40, text: "But we already played that....", callback: "t26" }
             ]
         },
         {
@@ -630,7 +630,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Oh I like dress up! We're going to play that!",
             button: [
-                { chatID: 41, text: "Groan", callback: "t27" },
+                { chatID: 41, text: "Groan", callback: "t27" }
             ]
         },
         {
@@ -638,31 +638,31 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "Before we play we have to do something with all these boy clothes of yours...",
             button: [
-                { chatID: 42, text: "Huh, those are my clothes.", callback: "" },
+                { chatID: 42, text: "Huh, those are my clothes.", callback: "" }
             ]
         },
         {
             chatID: 42,
             speaker: "candy",
-            text: "Sorry, but this is a girls only building. We can't have you accidentally exposing to " + sc.n("treyvon") + " we snuck a boy in here.",
+            text: "Sorry, but this is a girls only building. We can't have you accidentally letting " + sc.n("treyvon") + " know we snuck a boy in here.",
             button: [
-                { chatID: 43, text: "I won't wear them out, I promise", callback: "" },
+                { chatID: 43, text: "I won't wear them out, I promise", callback: "" }
             ]
         },
         {
             chatID: 43,
             speaker: "candy",
-            text: "You don't have to promise, we're just going to throw them all out. From now on it's just girls clothes for you since you're living here. ",
+            text: "You don't have to promise, we're just going to throw them all out. From now on it's just girls clothes for you. ",
             button: [
-                { chatID: 44, text: "Please, you can't do that, they're mine!", callback: "" },
+                { chatID: 44, text: "Please, you can't do that, they're mine!", callback: "" }
             ]
         },
         {
             chatID: 44,
             speaker: "tiffany",
-            text: "I told you we would have to dress you up like a girl at the bench and you said you were in. I don't even know why we're having an argument.",
+            text: "You volunteered to dress up like a girl. I don't even know why we're having an argument.",
             button: [
-                { chatID: 45, text: "but, but...", callback: "t18" },
+                { chatID: 45, text: "but, but...", callback: "t18" }
             ]
         },
         {
@@ -670,15 +670,15 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Now you don't have any boy pajamas, you can use mine till you buy new clothes. You'll love it, try it on!",
             button: [
-                { chatID: 46, text: "but, but...", callback: "t28" },
+                { chatID: 46, text: "but, but...", callback: "t28" }
             ]
         },
         {
             chatID: 46,
             speaker: "tiffany",
-            text: "Oh My God! You are sooooo pretty! I'm so happy we picked you to come live here. I don't think I've seen anything more pretty!",
+            text: "Oh My God! You are sooooo pretty! I'm so happy you chose to become a girl. I don't think I've seen such a pretty boy!",
             button: [
-                { chatID: 47, text: "really?", callback: "" },
+                { chatID: 47, text: "really?", callback: "" }
             ]
         },
         {
@@ -686,7 +686,7 @@ room51.chat = function (chatID) {
             speaker: "candy",
             text: "Well I'm tired, I'm going to bed. We'll play more with you later, our new pretty girl!",
             button: [
-                { chatID: 48, text: "You're just going to leave me like this?", callback: "" },
+                { chatID: 48, text: "You're just going to leave me like this?", callback: "" }
             ]
         },
         {
@@ -694,7 +694,7 @@ room51.chat = function (chatID) {
             speaker: "tiffany",
             text: "*Yawn* yes. We'll have time tomorrow to play some more. Your room is at the end of the hallway. Good night " + sc.n("me") + ".",
             button: [
-                { chatID: -1, text: "Humph!", callback: "t29" },
+                { chatID: -1, text: "Humph!", callback: "t29" }
             ]
         },
         {
@@ -702,7 +702,7 @@ room51.chat = function (chatID) {
             speaker: "me",
             text: "Hmmm, it's locked. I wonder what's behind the red door?",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {

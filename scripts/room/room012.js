@@ -294,7 +294,7 @@ room12.chatcatch = function (callback) {
                 chat(21, 12);
             }
             else {
-                if (scc.get("lola").love < 50) {
+                if (scc.get("lola").love < 50 || scc.get("eva").love < 50) {
                     nav.killbutton("sister4");
                     nav.killbutton("sister3");
                     nav.killbutton("sister5");

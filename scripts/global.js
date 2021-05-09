@@ -20,7 +20,7 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.prevview = null;
 g.pw = "c2lzc3k=";
-g.passtime = [0, 8, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901];
+g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
 
 g.roomID = 1;
@@ -47,8 +47,7 @@ g.st = [
     { n: "body", t: 0, q: "hundred" },
     { n: "d", t: 0, q: "hundred" },
     { n: "sissy", t: 0, q: "sissy" },
-    { n: "sissyLevel", t: 0, q: "zero" },
-    { n: "sissyPoints", t: 0, q: "zero" },
+    { n: "totalSissyPoints", t: 0, q: "zero" },
     { n: "pill", t: null, q: "string" },
     { n: "legLevel", t: 0, q: "zero" },
     { n: "bodyLevel", t: 0, q: "zero" },
@@ -154,9 +153,9 @@ g.sissy = [
     { id: 5, pID: 4, icon: "hypno2", x: 5, y: 11, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: 0, h: false },
 
     { id: 6, pID: 3, icon: "chastity", x: 6, y: 9, name: "Chastity Training", description: "What a worthless flag of skin you have", ach: false, active: true, points: 0, h: false },
-    { id: 7, pID: 6, icon: "cock1", x: 6, y: 10, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: false, points: 1, h: false },
-    { id: 8, pID: 7, icon: "cock2", x: 6, y: 11, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", ach: false, active: true, points: 1, h: false },
-    { id: 9, pID: 8, icon: "cock3", x: 6, y: 12, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", ach: false, active: true, points: 1, h: false },
+    { id: 7, pID: 6, icon: "cock1", x: 6, y: 10, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: true, points: 1, h: false },
+    { id: 8, pID: 7, icon: "cock2", x: 6, y: 11, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", ach: true, active: true, points: 1, h: false },
+    { id: 9, pID: 8, icon: "cock3", x: 6, y: 12, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", ach: true, active: true, points: 1, h: false },
     { id: 10, pID: 9, icon: "cock4", x: 6, y: 13, name: "It's a Clitty", description: "You're no longer a man, sissy", ach: false, active: true, points: 1, h: false },
     { id: 11, pID: 51, icon: "cock5", x: 20, y: 9, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", ach: false, active: false, points: 2, h: false },
 
@@ -188,25 +187,25 @@ g.sissy = [
 
     { id: 30, pID: 28, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos", ach: false, active: false, points: 2, h: false },
 
-    { id: 31, pID: 51, icon: "clothes0", x: 7, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
-    { id: 32, pID: 31, icon: "clothes1", x: 8, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: false, points: 2, h: true },
-    { id: 33, pID: 32, icon: "clothes2", x: 9, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: false, points: 3, h: true },
-    { id: 34, pID: 33, icon: "clothes3", x: 10, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: false, points: 5, h: true },
+    { id: 31, pID: 29, icon: "clothes0", x: 8, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
+    { id: 32, pID: 31, icon: "clothes1", x: 9, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: false, points: 2, h: true },
+    { id: 33, pID: 32, icon: "clothes2", x: 10, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: false, points: 3, h: true },
+    { id: 34, pID: 33, icon: "clothes3", x: 11, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: false, points: 5, h: true },
 
-    { id: 35, pID: 51, icon: "chest2", x: 8, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: 1, h: true },
-    { id: 36, pID: 35, icon: "chest3", x: 9, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: 2, h: true },
-    { id: 37, pID: 36, icon: "chest4", x: 10, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true, points: 3, h: true },
-    { id: 38, pID: 37, icon: "chest5", x: 11, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true, points: 4, h: true },
-    { id: 39, pID: 38, icon: "chest6", x: 12, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true, points: 5, h: true },
+    { id: 35, pID: 29, icon: "chest2", x: 9, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: 1, h: true },
+    { id: 36, pID: 35, icon: "chest3", x: 10, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: 2, h: true },
+    { id: 37, pID: 36, icon: "chest4", x: 11, y: 2, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true, points: 3, h: true },
+    { id: 38, pID: 37, icon: "chest5", x: 12, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true, points: 4, h: true },
+    { id: 39, pID: 38, icon: "chest6", x: 13, y: 2, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true, points: 5, h: true },
 
-    { id: 40, pID: 51, icon: "leg1", x: 8, y: 4, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true, points: 1, h: true },
-    { id: 41, pID: 40, icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true, points: 2, h: true },
-    { id: 42, pID: 41, icon: "leg3", x: 10, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true, points: 3, h: true },
-    { id: 43, pID: 42, icon: "leg4", x: 11, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true, points: 4, h: true },
-    { id: 44, pID: 43, icon: "leg5", x: 12, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true, points: 5, h: true },
+    { id: 40, pID: 29, icon: "leg1", x: 9, y: 4, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true, points: 1, h: true },
+    { id: 41, pID: 40, icon: "leg2", x: 10, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true, points: 2, h: true },
+    { id: 42, pID: 41, icon: "leg3", x: 11, y: 4, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true, points: 3, h: true },
+    { id: 43, pID: 42, icon: "leg4", x: 12, y: 4, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true, points: 4, h: true },
+    { id: 44, pID: 43, icon: "leg5", x: 13, y: 4, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true, points: 5, h: true },
     
-    { id: 45, pID: 51, icon: "lip1", x: 7, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: 1, h: true },
-    { id: 46, pID: 45, icon: "lip2", x: 8, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: 2, h: true },
+    { id: 45, pID: 29, icon: "lip1", x: 8, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: 1, h: true },
+    { id: 46, pID: 45, icon: "lip2", x: 9, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: 2, h: true },
 
     { id: 47, pID: 19, icon: "fight0", x: 10, y: 10, name: "Strip", description: "You can strip your clothes in a fight", ach: false, active: true, points: 1, h: false },
     { id: 48, pID: 47, icon: "fight1", x: 10, y: 11, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", ach: false, active: true, points: 1, h: false },
@@ -234,6 +233,38 @@ g.sissy = [
 
     
 ];
+
+g.sissyPoints = function () {
+    var sissyPoints = null;
+    var diffulty = null;
+    var divisor;
+    var i;
+    for (i = 0; i < g.st.length; i++) {
+        if (g.st[i].n === "difficulty" || g.st[i].n === "sissy") {
+            if (g.st[i].n === "sissy")
+                sissyPoints = g.st[i].t;
+            else
+                diffulty = g.st[i].t;
+            if (sissyPoints !== null && diffulty !== null)
+                i = 99999;
+        }
+    }
+    switch (diffulty) {
+        case 0:
+            divisor = 35;
+            break;
+        case 1:
+            divisor = 65;
+            break;
+        case 2:
+            divisor = 105;
+            break;
+        default:
+            console.log("bad diffulty");
+            break;
+    }
+    return Math.round((sissyPoints / divisor) * 10) / 10;
+};
 
 g.supersissy = function () {
     for (var i = 0; i < g.sissy.length; i++)
@@ -331,6 +362,7 @@ g.mod = function (name, amount) {
                     else if (amount < 0)
                         g.popUpNotice("You've lost " + Math.abs(amount) + " extra credit SISSY POINTS");
                 }
+                g.mod("totalSissyPoints", amount);
                 break;
             default:
                 console.log("unknown g.mod type: " + type + ", name: " + name);
@@ -861,7 +893,6 @@ g.initGame = function () {
             case "legLevel":
             case "bodyLevel":
             case "fitnessLevel":
-            case "sissyLevel":
             case "dLevel":
             case "jobConstructionPay":
             case "jobConstWorkToday":
@@ -894,7 +925,7 @@ g.initGame = function () {
             case "shinkCock":
             case "makeup":
             case "sewerEnd":
-            case "sissyPoints":
+            case "totalSissyPoints":
             case "sewerID":
             case "momearnbackhome":
                 g.st[i].t = 0;

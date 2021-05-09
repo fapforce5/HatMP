@@ -153,7 +153,7 @@ room28.main = function () {
     if (cl.c.chest === 0 && fitnesslevel > 0) {
         chat(0, 28);
     }
-    else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips") {
+    else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp") {
         var thisImg = "";
         g.set("oncase", null);
         switch (sissyTrans) {
@@ -172,10 +172,11 @@ room28.main = function () {
                 thisImg = "lip_" + cl.c.lips + ".gif";
                 g.sissy[cl.c.lips + 44].ach = true;
                 break;
-            //case "cock":
-            //cl.c.cock++;
-            //thisImg = "cock_" + cl.c.cock + ".gif";
-            //break;
+            case "smolpp":
+                cl.c.cock++;
+                thisImg = "cock_" + cl.c.cock + ".gif";
+                g.sissy[cl.c.cock + 6].ach = true;
+            break;
             //case "lip":
             //cl.c.lip++;
             //thisImg = "lip_" + cl.c.lip + ".gif";
@@ -381,38 +382,38 @@ room28.btnclick = function (name) {
 
             $('#room-buttons').append(xline);
 
-            if (g.get("sissyPoints") <= g.get("sissy")) {
-                if (name !== "clothes0" && name !== "fight0") {
-                    if (!g.sissy[id].ach) {
-                        if (pid !== null) {
-                            if (g.sissy[pid].ach) {
-                                nav.button({
-                                    "type": "btn",
-                                    "name": "unlock",
-                                    "left": 1634,
-                                    "top": 850,
-                                    "width": 271,
-                                    "height": 72,
-                                    "title": "Unlock",
-                                    "image": "28_transformation/unlock.png"
-                                }, 28);
-                            }
-                        }
-                        else {
-                            nav.button({
-                                "type": "btn",
-                                "name": "unlock",
-                                "left": 1634,
-                                "top": 850,
-                                "width": 271,
-                                "height": 72,
-                                "title": "Unlock",
-                                "image": "28_transformation/unlock.png"
-                            }, 28);
-                        }
-                    }
-                }
-            }
+            //if (g.get("sissyPoints") <= g.get("sissy")) {
+            //    if (name !== "clothes0" && name !== "fight0") {
+            //        if (!g.sissy[id].ach) {
+            //            if (pid !== null) {
+            //                if (g.sissy[pid].ach) {
+            //                    nav.button({
+            //                        "type": "btn",
+            //                        "name": "unlock",
+            //                        "left": 1634,
+            //                        "top": 850,
+            //                        "width": 271,
+            //                        "height": 72,
+            //                        "title": "Unlock",
+            //                        "image": "28_transformation/unlock.png"
+            //                    }, 28);
+            //                }
+            //            }
+            //            else {
+            //                nav.button({
+            //                    "type": "btn",
+            //                    "name": "unlock",
+            //                    "left": 1634,
+            //                    "top": 850,
+            //                    "width": 271,
+            //                    "height": 72,
+            //                    "title": "Unlock",
+            //                    "image": "28_transformation/unlock.png"
+            //                }, 28);
+            //            }
+            //        }
+            //    }
+            //}
             
             break;
         case "cancel":
@@ -615,8 +616,8 @@ room28.chatcatch = function (callback) {
         case "endPills":
             g.mod("energy", -100);
             scc.love("missy", 5);
-            g.mod("sissy", g.get("sissyPoints") * -1);
-            g.mod("sissyPoints", 5);
+            //g.set("sissy", 0);
+            //g.mod("sissy", 5);
             char.addtime(220);
             char.room(203);
             break;

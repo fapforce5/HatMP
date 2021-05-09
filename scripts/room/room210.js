@@ -64,8 +64,6 @@ room210.btnclick = function (name) {
         nav.killbutton("btnMoney");
         nav.killbutton("btnBuy");
         var id, pid;
-        var level = g.get("difficulty");
-        var basePoints = level === 0 ? 30 : (level === 1 ? 65 : 100);
 
         nav.killbutton("bigDisplay");
         nav.button({
@@ -93,7 +91,7 @@ room210.btnclick = function (name) {
         tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
 
         if (g.sissy[id].points > 0)
-            tText += "<br/>Requires " + (g.sissy[id].points * basePoints) + " points, but free for this release. <br/>";
+            tText += "<br/>Requires " + g.sissy[id].points + " points, but free for this release. <br/>";
 
         if (id === 56)
             tText += '<img src="./images/room/28_transformation/cancel_b.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';

@@ -425,6 +425,8 @@ cl.hasoutfit = function (ctype) {
                     }
                     if (cl.c.panties === null && !g.sissy[32].ach)
                         missingClothing.push("panties");
+                    if (cl.c.bra === null && !g.sissy[32].ach && g.sissy[29].ach)
+                        missingClothing.push("bra");
                 }
             }
             break;
@@ -1312,6 +1314,7 @@ cl.display = function () {
         $('#char-cum').html("");
         $('#char-panties').html("");
         $('#char-bra').html("");
+        $('#char-necklace').html("");
         $('#char-socks').html("");
         $('#char-shoes').html("");
         $('#char-pants').html("");

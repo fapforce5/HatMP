@@ -23,6 +23,12 @@ room350.main = function () {
         }
     }
     else {
+        var thisDay = g.dt.getDay();
+        if (thisDay === 0 || thisDay === 6)
+            chat(58, 350);
+        else if (g.gethourdecimal() > 9)
+            chat(59, 350);
+        else
         chat(42, 350);
     }
     var navList = [0];
@@ -35,9 +41,10 @@ room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
             var llStep = sc.getstep("landlord");
-            if (sc.checkevent("landlord", -5) && !sc.checkevent("landlord", -6)) 
+            var access16 = g.hasAccess(16).access;
+            if (sc.checkevent("landlord", -5) && !sc.checkevent("landlord", -6) && !access16) 
                 chat(47, 350);
-            else if (!g.hasAccess(16).access) {
+            else if (!access16) {
                 chat(43, 350);
             }
             else if (sc.checkevent("landlord", -3)) {
@@ -54,30 +61,26 @@ room350.btnclick = function (name) {
                 else
                     chat(0, 350);
             }
-            else if (llStep > 8) {
-                if (g.hourBetween(6, 9)) {
+            else if (llStep > 200) {
+                if (g.hourBetween(6, 10)) {
                     if (cl.getBodyHair() !== null)
                         chat(30, 350);
                     else if (cl.c.hairLength < 2)
                         chat(31, 350);
-                    else if (llStep === 9)
-                        chat(32, 350);
-                    else if (llStep < 15)
-                        chat(33, 350);
+                    else if (!sc.checkevent("landlord", -7)) {
+                        sc.setstep("landlord", -7);
+                        chat(16, 350);
+                    }
+                    else if (!sc.checkevent("landlord", -8)) {
+                        
+                        chat(51, 350);
+                    }
                     else
                         chat(41, 350);
                 }
                 else
                     chat(29, 350);
             }
-            else if (llStep > 6) {
-                if (cl.appearance() > 1) {
-                    chat(16, 350);
-                }
-                else
-                    chat(15, 350);
-            }
-            
             else if (sc.checkevent("landlord", -1))
                 chat(9, 350);
             else
@@ -104,6 +107,10 @@ room350.chatcatch = function (callback) {
             sc.setstep("landlord", 9);
             char.addtime(182);
             char.room(0);
+            break;
+        case "wait":
+            char.settime(9, 2);
+            char.room(350);
             break;
         case "follow352":
             g.pass = "";
@@ -132,6 +139,34 @@ room350.chatcatch = function (callback) {
             char.addtime(60);
             char.room(0);
             //sc.setstep("me", -13);
+            break;
+        case "box1":
+            nav.killall();
+            nav.bg("352_jackoff/waitroom1.jpg");
+            break;
+        case "box2":
+            g.pass = {
+                shirt: cl.c.shirt,
+                pants: cl.c.pants,
+                dress: cl.c.dress,
+                swimsuit: cl.c.swimsuit,
+                pj: cl.c.pj,
+                socks: cl.c.socks,
+                shoes: cl.c.shoes
+            };
+            cl.c.shirt = cl.c.pants = cl.c.swimsuit = cl.c.pj = null;
+            cl.c.dress = "nu";
+            cl.c.socks = "s";
+            cl.c.shoes = "nu";
+            cl.display();
+            zcl.displayMain(150, 500, .18, "clothes", false);
+            break;
+        case "box3":
+            nav.killall();
+            nav.bg("350_spermBank/box3.jpg");
+            break;
+        case "box4":
+            nav.bg("350_spermBank/box4.jpg");
             break;
         default:
             break;
@@ -315,7 +350,7 @@ room350.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "landlord",
-            text: "Yes. I'm going to help you honey. AFter all I've been a girl for far longer than you, so I know a thing or two. " +
+            text: "Yes. I'm going to help you honey. After all I've been a girl for far longer than you, so I know a thing or two. " +
                 "I'm going to make you my new project. What kind of girl are trying to be?",
             button: [
                 { chatID: 21, text: "A nice sweet innocent girl", callback: "" },
@@ -337,7 +372,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "That was just a test. I knew what a dirty dirty girl you are. I just wasn't sure if you knew yourself.",
             button: [
-                { chatID: 23, text: "oh.", callback: "" }
+                { chatID: 24, text: "oh.", callback: "" }
             ]
         },
         {
@@ -373,8 +408,8 @@ room350.chat = function (chatID) {
             text: "Yes, I mean you'll have to jack off their cocks. Now I know how much you love cum, but you can only use your hands. " +
             "Anything else will ruin the sample. ",
             button: [
-                { chatID: 27, text: "I don't know if I can jack off stange men", callback: "" },
-                { chatID: 28, text: "I will be the best sperm collecter you've seen!", callback: "" }
+                { chatID: 28, text: "I will be the best sperm collecter you've seen!", callback: "" },
+                { chatID: 27, text: "I don't know if I can jack off stange men", callback: "" }
             ]
         },
         {
@@ -508,6 +543,7 @@ room350.chat = function (chatID) {
             speaker: "thinking",
             text: sc.n("landlord") + " must not be in yet. ",
             button: [
+                { chatID: -1, text: "Wait for her to come in.", callback: "wait" },
                 { chatID: -1, text: "Leave", callback: "leave" }
             ]
         },
@@ -583,6 +619,81 @@ room350.chat = function (chatID) {
                 "peepee. You're free to return home. ",
             button: [
                 { chatID: -1, text: "Sweet!", callback: "homecoming" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "landlord",
+            text: "Welcome to your first day. I'll show you the break room where you can change. ",
+            button: [
+                { chatID: 52, text: "ok", callback: "box1" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "landlord",
+            text: "You can change into your nurses outfit here. Only employees can come in here and we're all girls. ",
+            button: [
+                { chatID: 53, text: "[Change into nurse outfit]", callback: "box2" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "landlord",
+            text: "You look really pretty. The guys will love you. Now I've got to move the new shipment of empty jars to the back. ",
+            button: [
+                { chatID: 54, text: "[Follow her]", callback: "box3" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "me",
+            text: "Let me give you a hand moving those boxes.",
+            button: [
+                { chatID: 55, text: "[Help her move the boxes]", callback: "box4" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "landlord",
+            text: "Oh hahahaha. Don't be silly, I need a man to move these boxes. There's no way you're strong enough. Mike " +
+                "here is going to move them for us. ",
+            button: [
+                { chatID: 56, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "random",
+            text: "Don't worry little girl, I've got this. Wouldn't want you to strain those little arms of yours. Let a " +
+                "real man do the work. ",
+            button: [
+                { chatID: 57, text: "oh my", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "landlord",
+            text: "Yes honey, I wouldn't want you to hurt yourself lifting these big heavy boxes. Come to the back, I have " +
+                "some work better suited for those weak girly arms of yours. Follow me back to the donation room. ",
+            button: [
+                { chatID: -1, text: "Groan...", callback: "follow352" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "thinking",
+            text: "I'm so dumb. It's the weekend, no one is coming in today. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "thinking",
+            text: "The sperm bank must be closed for the day. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         },
     ];

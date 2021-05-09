@@ -366,7 +366,7 @@ room403.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "tiffany",
-            text: "Yes silly, YOu need socks to match your pretty new dress! Follow me",
+            text: "Yes silly, You need socks to match your pretty new dress! Follow me",
             button: [
                 { chatID: 12, text: "[Follow her]", callback: "tif8" }
             ]
@@ -434,7 +434,7 @@ room403.chat = function (chatID) {
             text: "Oh honey.. panties are more than just something to cover you cock, it's about the feeling of soft silky goodness " +
                 "rubbing your fun stuff! Trust me you'll love a nice pair of panties in your new dress, the breeze is refreshing!",
             button: [
-                { chatID: 20, text: "Ok, let's get some panties", callback: "tifPanty1" }
+                { chatID: 20, text: "Ok, let's get some panties and a bra", callback: "tifPanty1" }
             ]
         },
         {
@@ -474,7 +474,7 @@ room403.chat = function (chatID) {
             speaker: "jada",
             text: "I had no fucking idea you were a cross dresser. Did you wear dresses back in high school?",
             button: [
-                { chatID: 25, text: "NO, This is just a costume to sneak into " + sc.n("tiffany") + "'s building", callback: "" }
+                { chatID: 25, text: "NO! This is just a costume for " + sc.n("tiffany") + ". ", callback: "" }
             ]
         },
         {

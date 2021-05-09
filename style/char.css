@@ -74,7 +74,10 @@
 .char-bra{
     z-index:18;
 }
-.char-socks{
+.char-necklace{
+    z-index:18;
+}
+.char-socks {
     z-index: 19;
 }
 .char-shoes{

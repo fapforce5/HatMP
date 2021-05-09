@@ -345,7 +345,10 @@ room13.btnclick = function (name) {
                         chat(177, 13);
                     break;
                 case 202:
-                    chat(210, 13);
+                    chat(219, 13);
+                    break;
+                case 203:
+                    chat(245, 13);
                     break;
                 default:
                     break;
@@ -522,8 +525,24 @@ room13.btnclick = function (name) {
             }
             break;
         case "br11":
-
-            break;  
+            nav.bg("13_sisterRoom/br11_" + g.internal + ".jpg");
+            if (g.internal === 4) {
+                nav.killall();
+                chat(217, 13);
+            }
+            g.internal++;
+            break;
+        case "lick2Feet":
+            nav.killall();
+            nav.bg("13_sisterRoom/lick3.jpg");
+            g.setflag("evaDayEvent"); 
+            chat(225, 13);
+            break;
+        case "lick2Pussy":
+            nav.killall();
+            nav.bg("13_sisterRoom/lick5.jpg");
+            chat(228, 13);
+            break;
         default:
             break;
     }
@@ -787,6 +806,7 @@ room13.chatcatch = function (callback) {
             char.room(11);
             break;
         case "br11":
+            g.internal = 2;
             nav.bg("13_sisterRoom/br11.jpg");
             nav.button({
                 "type": "tongue",
@@ -798,6 +818,31 @@ room13.chatcatch = function (callback) {
                 "image": "13_sisterRoom/br11.png"
             }, 13);
             break;
+        case "br12":
+            nav.bg("13_sisterRoom/room.jpg", "13_sisterRoom/roomNight.jpg");
+            btnListxx = [{
+                "type": "btn",
+                "name": "lola",
+                "left": 1449,
+                "top": 260,
+                "width": 215,
+                "height": 820,
+                "image": "13_sisterRoom/br12.png"
+            },
+            {
+                "type": "btn",
+                "name": "eva",
+                "left": 760,
+                "top": 295,
+                "width": 291,
+                "height": 785,
+                "image": "13_sisterRoom/13_eva_sitting.png"
+            }];
+            $.each(btnListxx, function (i, v) {
+                nav.button(v, 13);
+            });
+            nav.buildnav([11]);
+            break; 
         case "spinTheBottle":
             char.room(24);
             break;
@@ -1101,6 +1146,129 @@ room13.chatcatch = function (callback) {
             scc.love("lola", 5, 100);
             g.mod("sissy", -10);
             nav.bg("13_sisterRoom/201_6a.jpg");
+            break;
+        case "lick1":
+            var lickLove = scc.get("eva").love;
+            if (lickLove < 25) {
+                nav.killall();
+                nav.bg("13_sisterRoom/013_toeSuck.gif");
+                g.roomTimeout = setTimeout(function () {
+                    scc.love("eva", 5, 100);
+                    g.setflag("evaDayEvent");
+                    chat(222, 13);
+                }, 3000);
+            }
+            else {
+                nav.modbutton("eva", "13_sisterRoom/evalick1.png", null, null);
+                chat(223, 13);
+            }
+            break;
+        case "lick2":
+            nav.killall();
+            
+            nav.bg("13_sisterRoom/lick2.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "lick2Feet",
+                "left": 1018,
+                "top": 162,
+                "width": 650,
+                "height": 710,
+                "image": "13_sisterRoom/lick2Feet.png"
+            }, 13);
+            nav.button({
+                "type": "kiss",
+                "name": "lick2Pussy",
+                "left": 1137,
+                "top": 873,
+                "width": 213,
+                "height": 199,
+                "image": "13_sisterRoom/lick2Pussy.png"
+            }, 13);
+            setTimeout(function () {
+                $("#room_footer").hide();
+            }, 1000 );
+            setTimeout(function () {
+                $("#room_footer").hide();
+            }, 2000);
+            break;
+        case "lick4":
+            nav.bg("13_sisterRoom/room.jpg", "13_sisterRoom/roomNight.jpg");
+            btnListxx = [{
+                "type": "btn",
+                "name": "lola",
+                "left": 1449,
+                "top": 260,
+                "width": 215,
+                "height": 820,
+                "image": "13_sisterRoom/13_lola_reading.png"
+            },
+            {
+                "type": "btn",
+                "name": "eva",
+                "left": 570,
+                "top": 103,
+                "width": 596,
+                "height": 977,
+                "image": "13_sisterRoom/lick4.png"
+            }];
+            $.each(btnListxx, function (i, v) {
+                nav.button(v, 13);
+            });
+            nav.buildnav([11]);
+            break;
+        case "lick6":
+            nav.bg("13_sisterRoom/room.jpg", "13_sisterRoom/roomNight.jpg");
+            btnListxx = [{
+                "type": "img",
+                "name": "eva",
+                "left": 930,
+                "top": 278,
+                "width": 233,
+                "height": 802,
+                "image": "13_sisterRoom/lick6.png"
+            },
+            {
+                "type": "img",
+                "name": "lola",
+                "left": 1449,
+                "top": 260,
+                "width": 215,
+                "height": 820,
+                "image": "13_sisterRoom/13_lola_reading.png"
+            }];
+            $.each(btnListxx, function (i, v) {
+                nav.button(v, 13);
+            });
+            nav.buildnav([11]);
+            break;
+        case "lick7":
+            zcl.displayMain(200, 600, .16, "", true);
+            break;
+        case "lick8":
+            nav.killall();
+            nav.bg("13_sisterRoom/lick8.jpg");
+            break;
+        case "lick9":
+            nav.bg("13_sisterRoom/lick9.jpg");
+            scc.love("eva", 5, 100);
+            break;
+        case "lick10":
+            nav.bg("13_sisterRoom/lick10.jpg");
+            scc.love("eva", 5, 100);
+            break;
+        case "lick11":
+            nav.bg("13_sisterRoom/lick11.jpg");
+            scc.love("eva", 5, 100);
+            break;
+        case "lick12":
+            var evaLove = 50 - scc.get("eva").love;
+            nav.bg("13_sisterRoom/lick12.jpg");
+            if (evaLove > 0)
+                scc.love("eva", evaLove, 100);
+            
+            sc.setstep("eva", 203);
+            g.setflag("evaDayEvent");
             break;
         default:
             console.log(callback + " - miss");
@@ -2708,7 +2876,7 @@ room13.chat = function (chatID) {
             text: "Sure, It'll be $30 for everyone.",
             button: [
                 { chatID: 194, text: "I'll get it", callback: "201_4b" },
-                { chatID: 194, text: "I'm a bit light, can you get this?", callback: "201_4c" },
+                { chatID: 194, text: "I'm a bit light, can you get this?", callback: "201_4c" }
             ]
         },
         {
@@ -2716,7 +2884,7 @@ room13.chat = function (chatID) {
             speaker: "molly",
             text: "Sure, It'll be $30 for everyone.",
             button: [
-                { chatID: 194, text: "I'm a bit light, can you get this?", callback: "201_4c" },
+                { chatID: 194, text: "I'm a bit light, can you get this?", callback: "201_4c" }
             ]
         },
         {
@@ -2725,7 +2893,7 @@ room13.chat = function (chatID) {
             text: "Is it wrong how excited I am for this ice cream? I haven't had any sweets for two weeks now. Staying skinny " +
                 "is just too much work sometimes. Maybe I should just chuck it all and eat ice cream all day. ",
             button: [
-                { chatID: 195, text: "That would be the life", callback: "" },
+                { chatID: 195, text: "That would be the life", callback: "" }
             ]
         },
         {
@@ -2734,7 +2902,7 @@ room13.chat = function (chatID) {
             text: "You liar, we had ice cream a couple days ago in the school cafeteria. When we started eating it you said the exact " +
                 "same thing. You're addicted to swimming, and eating healthy, and always doing the right thing, admit it.",
             button: [
-                { chatID: 196, text: "Oh", callback: "" },
+                { chatID: 196, text: "Oh", callback: "" }
             ]
         },
         {
@@ -2742,7 +2910,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "Oh yeah, I guess we did have ice cream. I'm such an airhead sometimes. *groan* ", 
             button: [
-                { chatID: 197, text: "You're not an airhead. You're the smartest girl I know. ", callback: "" },
+                { chatID: 197, text: "You're not an airhead. You're the smartest girl I know. ", callback: "" }
             ]
         },
         {
@@ -2752,7 +2920,7 @@ room13.chat = function (chatID) {
                 " again. I swear I don't see what she sees in him. All he does is play cards with those losers down the street. " +
                 "She could do so much better than him. ",
             button: [
-                { chatID: 198, text: "Hay!", callback: "" },
+                { chatID: 198, text: "Hay!", callback: "" }
             ]
         },
         {
@@ -2760,7 +2928,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "I don't know, he's kinda cute you know. When I was younger I had such a crush on him. He's really good at rugby. ",
             button: [
-                { chatID: 199, text: "Yeah, they are good together. ", callback: "201_5" },
+                { chatID: 199, text: "Yeah, they are good together. ", callback: "201_5" }
             ]
         },
         {
@@ -2769,7 +2937,7 @@ room13.chat = function (chatID) {
             text: "Hi slut. Enjoying a day out with the girls? When you're done here you should stop by my house " +
                 "and service my cock. You can even bring these two if you want. ",
             button: [
-                { chatID: 200, text: "Wha...?", callback: "" },
+                { chatID: 200, text: "Wha...?", callback: "" }
             ]
         },
         {
@@ -2778,7 +2946,7 @@ room13.chat = function (chatID) {
             text: "Do you know this man?",
             button: [
                 { chatID: 201, text: "Yes, I know him", callback: "" },
-                { chatID: 207, text: "Nope, never seen him before. ", callback: "" },
+                { chatID: 207, text: "Nope, never seen him before. ", callback: "" }
             ]
         },
         {
@@ -2787,7 +2955,7 @@ room13.chat = function (chatID) {
             text: "Yeah you do. Now show me your tits slut. ",
             button: [
                 { chatID: 202, text: "Yes sir [Flash your titties]", callback: "201_6" },
-                { chatID: 207, text: "I'm not doing that! You can go.", callback: "" },
+                { chatID: 207, text: "I'm not doing that! You can go.", callback: "" }
             ]
         },
         {
@@ -2795,7 +2963,7 @@ room13.chat = function (chatID) {
             speaker: "jones",
             text: "Good girl. I like a girl that knows how to obey. I look forward to you serving me. Now thank me.",
             button: [
-                { chatID: 203, text: "Thank you sir.", callback: "201_6a" },
+                { chatID: 203, text: "Thank you sir.", callback: "201_6a" }
             ]
         },
         {
@@ -2916,6 +3084,246 @@ room13.chat = function (chatID) {
             text: "Please lick me, I need it soooo bad. I need you more than I've needed anything. ",
             button: [
                 { chatID: -1, text: "Help her out", callback: "br11" }
+            ]
+        },
+        {
+            chatID: 217,
+            speaker: "lola",
+            text: "Oh FFFFFFFFFF!",
+            button: [
+                { chatID: 218, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 218,
+            speaker: "lola",
+            text: "Oh my, you're really good at that. I don't think I've ever cum that hard!",
+            button: [
+                { chatID: -1, text: "Thanks.", callback: "br12" }
+            ]
+        },
+        {
+            chatID: 219,
+            speaker: "eva",
+            text: "I still think you're a pervert, I don't care that you now wear panties. ",
+            button: [
+                { chatID: 221, text: "I know. I am such a pervert.", callback: "" },
+                { chatID: 220, text: "I'm not a pervert. I'm a sweet little girl. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 220,
+            speaker: "eva",
+            text: "*GROAN* Whatever. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 221,
+            speaker: "eva",
+            text: "I'll let you lick my feet. That's all perverts get. ",
+            button: [
+                { chatID: -1, text: "Yes!", callback: "lick1" },
+                { chatID: -1, text: "Oh, I'm busy... with stuff", callback: "" }
+            ]
+        },
+        {
+            chatID: 222,
+            speaker: "eva",
+            text: "Hahaha it tickles. That's enough. I'm getting your slobber all over my feet weird-o. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 223,
+            speaker: "eva",
+            text: "You know you're a pervert, but I like that about you. I'll let you look at my vag while you lick my feet. " + 
+                "Don't say I never do nothing for ya!",
+            button: [
+                { chatID: 224, text: "sweet", callback: "lick2" }
+            ]
+        },
+        {
+            chatID: 224,
+            speaker: "eva",
+            text: "You know you're a pervert, but I like that about you. I'll let you look at my vag while you lick my feet. " +
+                "Don't say I never do nothing for ya!",
+            button: [
+                { chatID: -1, text: "sweet", callback: "" }
+            ]
+        },
+        {
+            chatID: 225,
+            speaker: "me",
+            text: "SLURP!",
+            button: [
+                { chatID: 226, text: "...", callback: "lick4" }
+            ]
+        },
+        {
+            chatID: 226,
+            speaker: "eva",
+            text: "That's so gross. I feel like a dog slobbered all over my feet you weird-o.",
+            button: [
+                { chatID: 227, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 227,
+            speaker: "thinking",
+            text: "I better do something else if I'm going to get her to like me more. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 228,
+            speaker: "eva",
+            text: "Hay I said you could lick my feet, not munch my box! You know if I tell " + sc.n("landlord") + " she'll kick " +
+                "you out of this place so fast!",
+            button: [
+                { chatID: 229, text: "Oh! I'm sorry, I thought...", callback: "" }
+            ]
+        },
+        {
+            chatID: 229,
+            speaker: "eva",
+            text: "I know what you thought! You're not a girl, you're still a pervert! ",
+            button: [
+                { chatID: 230, text: "Please don't tell! She'll kick me out for good. I'll do anything.", callback: "lick6" }
+            ]
+        },
+        {
+            chatID: 230,
+            speaker: "eva",
+            text: "Anything?",
+            button: [
+                { chatID: 231, text: "Yes. Please just don't tell on me. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 231,
+            speaker: "eva",
+            text: "ok, ummm, I've never had a slave before... Strip slave.",
+            button: [
+                { chatID: 232, text: "ok", callback: "lick7" }
+            ]
+        },
+        {
+            chatID: 232,
+            speaker: "eva",
+            text: "Oh.. um ok, kiss my feet. ",
+            button: [
+                { chatID: 233, text: "Absolutly!", callback: "lick8" }
+            ]
+        },
+        {
+            chatID: 233,
+            speaker: "eva",
+            text: "Hahah wow! You're like a doggy on all fours. Roll over. ",
+            button: [
+                { chatID: 234, text: "Huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 234,
+            speaker: "eva",
+            text: "Roll over. You're my doggy now, and doggies do tricks. Do it or I'm telling " + sc.n("landlord") + ".",
+            button: [
+                { chatID: 235, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 235,
+            speaker: "thinking",
+            text: "Oh wow. This is so embarrassing, especially in front of " + sc.n("lola") + ", but " +
+                "I really don't want her to tell on me. ",
+            button: [
+                { chatID: 237, text: "I should do what she says and play doggy. ", callback: "lick9" },
+                { chatID: 243, text: "Ask " + sc.n("lola") + " for help. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 236,
+            speaker: "eva",
+            text: "Roll over. You're my doggy now, and doggies do tricks. Do it or I'm telling " + sc.n("landlord") + ".",
+            button: [
+                { chatID: 237, text: "ok, ok", callback: "lick9" }
+            ]
+        },
+        {
+            chatID: 237,
+            speaker: "eva",
+            text: "Good doggy! Now bark for me like a happy doggy. ",
+            button: [
+                { chatID: 238, text: "Ruf", callback: "lick10" }
+            ]
+        },
+        {
+            chatID: 238,
+            speaker: "eva",
+            text: "Do you like it when I rub my feet on your doggy dick? Bark doggy. ",
+            button: [
+                { chatID: 239, text: "Ruf", callback: "" }
+            ]
+        },
+        {
+            chatID: 239,
+            speaker: "eva",
+            text: "Now beg for me. Beg like a good doggy. ",
+            button: [
+                { chatID: 240, text: "[Beg]", callback: "lick11" }
+            ]
+        },
+        {
+            chatID: 240,
+            speaker: "eva",
+            text: "Awww good doggy. ",
+            button: [
+                { chatID: 241, text: "Ruf", callback: "lick12" }
+            ]
+        },
+        {
+            chatID: 241,
+            speaker: "lola",
+            text: "That's so embarrasing, she's had enough. Both of you should get dressed before we all get in trouble again. ",
+            button: [
+                { chatID: 242, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 242,
+            speaker: "eva",
+            text: "Awwww ok. Text me doggy and we'll play somewhere else so we don't get in trouble. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 243,
+            speaker: "lola",
+            text: sc.n("me") + "'s right.  You shouldn't tease him like this. We're not going to tell, but you shouldn't " +
+                "lick her vag like that. I exptected you to be better since you're a girl now. ",
+            button: [
+                { chatID: 244, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 244,
+            speaker: "eva",
+            text: "UGH! I won't tell this time, but do it again and I just may. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 245,
+            speaker: "eva",
+            text: "I promised " + sc.n("lola") + " that we wouldn't do anything at home. Call me from your phone. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];
