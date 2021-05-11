@@ -99,6 +99,8 @@ room28.main = function () {
         }
     }
     cl.c.butthole -= .05;
+    if (cl.c.butthole < 0)
+        cl.c.butthole = 0;
     //energy as propotion to horny
     if (arousal > 97) {
         g.st[energyIndex].t = 30;

@@ -346,6 +346,9 @@ cl.load = function (ra) {
     if (!("lipstick" in cl.c)) 
         cl.c.lipstick = null;
 
+    if (cl.c.butthole < 0)
+        cl.c.butthole = 0;
+
     if (isNaN(cl.c.lips)) {
         if (cl.c.lips.includes("red"))
             cl.c.lipstick = "red";

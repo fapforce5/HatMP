@@ -1534,7 +1534,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "You really are the best " + sc.n("me") + "! That was absolutley wonderful",
             button: [
-                { chatID: -1, text: "Awwww, you're wonderful", callback: "rest" }
+                { chatID: -1, text: "Awwww, you're wonderful", callback: "reset" }
             ]
         },
         {
