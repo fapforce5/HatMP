@@ -47,6 +47,14 @@ cl.cTemp = {
 };
 
 cl.list = [
+    { type: "necklace", name: "c", display: "Choker", img: "necklace_c.png", sex: "f", inv: false, daring: 3, price: 30 },
+    { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_c.png", sex: "f", inv: false, daring: 2, price: 180 },
+    { type: "necklace", name: "a", display: "Diamond Necklack", img: "necklace_a.png", sex: "f", inv: false, daring: 2, price: 165 },
+    { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
+    { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 35 },
+    { type: "necklace", name: "e", display: "Simple Choker", img: "necklace_e.png", sex: "f", inv: false, daring: 3, price: 25 },
+    { type: "necklace", name: "g", display: "Mister T", img: "necklace_g.png", sex: "f", inv: false, daring: 2, price: 135 },
+
     { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "panties", name: "w", display: "White Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -713,6 +721,16 @@ cl.bra = [
     { name: "l", chest: 2, image: "bra_l_2.png", back: "bra_l_2_back.png" },
     { name: "l", chest: 1, image: "bra_l_0.png", back: "bra_l_0_back.png" },
     { name: "l", chest: 0, image: "bra_l_0.png", back: "bra_l_0_back.png" }
+];
+
+cl.necklace = [
+    { name: "c", image: "necklace_c_front.png", back: "" },
+    { name: "b", image: "necklace_b_front.png", back: "" },
+    { name: "a", image: "necklace_a_front.png", back: "" },
+    { name: "d", image: "necklace_d_front.png", back: "" },
+    { name: "s", image: "necklace_s_front.png", back: "" },
+    { name: "e", image: "necklace_e_front.png", back: "" },
+    { name: "g", image: "necklace_g_front.png", back: "" },
 ];
 
 cl.shirt = [
