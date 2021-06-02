@@ -103,15 +103,15 @@ room28.main = function () {
         cl.c.butthole = 0;
     //energy as propotion to horny
     if (arousal > 97) {
-        g.st[energyIndex].t = 30;
-        message = "You're so horny you didn't recove much energy. ";
+        g.st[energyIndex].t = maxE * .5;
+        message = "You're so horny you didn't recover much energy. ";
     }
     else if (arousal > 50) {
-        g.st[energyIndex].t = 70;
+        g.st[energyIndex].t = maxE * .75;
         message = "You're starting to get horny and are a little restless.";
     }
     else {
-        g.st[energyIndex].t = 85;
+        g.st[energyIndex].t = maxE;
         message = "You got a good night's sleep. ";
     }
     g.popUpNotice(message);

@@ -549,6 +549,7 @@ g.rooms = [
     { roomID: 404, name: "Spanky's", image: "404_spankys/404_bodega.jpg", nightImage: "404_spankys/404_bodega.jpg", houseID: 404, btn: "roomBtn_404.png" },
     { roomID: 405, name: "Reds", image: "405_reds/405_stylist.jpg", nightImage: "405_reds/405_stylist.jpg", houseID: 400, btn: "roomBtn_402.png" },
     { roomID: 406, name: "I Like Your Eyes", image: "406_eyes/bg.jpg", nightImage: "406_eyes/bg.jpg", houseID: 400, btn: "roomBtn_402.png" },
+    { roomID: 407, name: "Makeup and Jewelry", image: "407_makeup/bg.jpg", nightImage: "407_makeup/bg.jpg", houseID: 400, btn: "roomBtn_402.png" },
 
     { roomID: 425, name: "Jail", image: "425_Jail/jail.jpg", nightImage: "425_Jail/jail.jpg", houseID: 225, btn: "roomBtn_402.png" },
 
@@ -619,6 +620,7 @@ g.roomMap = [
     { roomID: 400, access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
     { roomID: 404, access: true, darkAccess: true, left: 530, top: 375, width: 93, height: 126, img: "map/404.png", night: "map/404_night.png", map: 1 },
     { roomID: 405, access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
+    { roomID: 407, access: false, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
     { roomID: 406, access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
     { roomID: 450, access: true, darkAccess: true, left: 1513, top: 638, width: 138, height: 126, img: "map/450.png", night: "map/450_night.png", map: 0 },
     { roomID: 500, access: true, darkAccess: false, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },

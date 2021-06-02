@@ -56,7 +56,7 @@ room401.main = function () {
         case "purse":
             navList = [400];
             nav.bg("401_purchase/purse.jpg", "401_purchase/purse.jpg");
-            room401.makeInv(["b"], sc.checkevent("me", 7));
+            room401.makeInv(["b"], g.sissy[0].ach);
             break;
         case "saucy":
             navList = [];
@@ -109,6 +109,7 @@ room401.main = function () {
             room401.makeClothing("bra", "f");
             room401.makeClothing("panties", "f");
             room401.makeClothing("pj", "f");
+            room401.makeClothing("necklace", "f");
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
@@ -129,7 +130,14 @@ room401.main = function () {
         case "happyGirl":
             navList = [400];
             room401.makeInv(["r"], true);
+            room401.makeClothing("chastity", "m");
             nav.bg("401_purchase/paint.jpg", "401_purchase/paint.jpg");
+            break;
+        case "makeup":
+            navList = [0];
+            room401.makeInv(["m"], true);
+            
+            nav.bg("407_makeup/bg.jpg");
             break;
         default:
             g.error("g.pass", g.pass);
@@ -278,7 +286,7 @@ room401.main = function () {
             $('#menu_displayAction').show();
             $('#menu_displayInfo').html("");
             if (cli.inv) {
-                $("#menu_displayAdditional").html("In Inventory: " + thisItem.count)
+                $("#menu_displayAdditional").html("In Inventory: " + thisItem.count);
                 $("#menu_displayCountLine").show();
             }
         }

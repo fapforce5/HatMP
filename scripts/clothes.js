@@ -47,12 +47,12 @@ cl.cTemp = {
 };
 
 cl.list = [
-    { type: "necklace", name: "c", display: "Choker", img: "necklace_c.png", sex: "f", inv: false, daring: 3, price: 30 },
-    { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_c.png", sex: "f", inv: false, daring: 2, price: 180 },
-    { type: "necklace", name: "a", display: "Diamond Necklack", img: "necklace_a.png", sex: "f", inv: false, daring: 2, price: 165 },
-    { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
-    { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 35 },
     { type: "necklace", name: "e", display: "Simple Choker", img: "necklace_e.png", sex: "f", inv: false, daring: 3, price: 25 },
+    { type: "necklace", name: "c", display: "Choker", img: "necklace_c.png", sex: "f", inv: false, daring: 3, price: 30 },
+    { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_s.png", sex: "f", inv: false, daring: 4, price: 35 },
+    { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
+    { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_b.png", sex: "f", inv: false, daring: 2, price: 180 },
+    { type: "necklace", name: "a", display: "Diamond Necklack", img: "necklace_a.png", sex: "f", inv: false, daring: 2, price: 165 },
     { type: "necklace", name: "g", display: "Mister T", img: "necklace_g.png", sex: "f", inv: false, daring: 2, price: 135 },
 
     { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: -1 },
