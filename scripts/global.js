@@ -133,6 +133,7 @@ g.st = [
     { n: "cindy", t: false, q: "day" },
     { n: "doc", t: false, q: "day" },
     { n: "buttholePlay", t: false, q: "day" },
+    { n: "zbar", t: false, q: "day" },
 
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
@@ -571,6 +572,7 @@ g.rooms = [
 
     { roomID: 525, name: "Zoey's Bar", image: "525_entrance/bg.jpg", nightImage: "525_entrance/bgNight.jpg", houseID: 525, btn: "roomBtn_500.png" },
     { roomID: 526, name: "Inside Bar", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
+    { roomID: 527, name: "Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
     { roomID: 550, name: "Gym Front Desm", image: "550_gymFront/550_gymFront.png", nightImage: "550_gymFront/550_gymFront.png", houseID: 550, btn: "roomBtn_550.png" },
     { roomID: 551, name: "Gym", image: "551_gymInside/551_gym.jpg", nightImage: "551_gymInside/551_gym.jpg", houseID: 550, btn: "roomBtn_551.png" },
@@ -981,6 +983,7 @@ g.initGame = function () {
             case "doc":
             case "chloe":
             case "buttholePlay":
+            case "zbar":
                 g.st[i].t = false;
                 break;
             case "reddoorloc":

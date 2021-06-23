@@ -6,10 +6,10 @@ room525.main = function () {
             {
                 "type": "btn",
                 "name": "cindy",
-                "left": 451,
-                "top": 200,
-                "width": 721,
-                "height": 827,
+                "left": 554,
+                "top": 303,
+                "width": 370,
+                "height": 747,
                 "image": "525_entrance/cindy.png"
             }
         ];

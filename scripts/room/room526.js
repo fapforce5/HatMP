@@ -9,9 +9,20 @@ room526.main = function () {
         "width": 318,
         "height": 140,
         "image": "526_bar/barmaid.jpg"
+    },
+    {
+        "type": "btn",
+        "name": "bathroom",
+        "left": 546,
+        "top": 135,
+        "width": 53,
+        "height": 436,
+        "image": "526_bar/bathroom.png"
     }];
+
     if (sc.getstep("poppy") === 0) {
         sc.setstep("poppy", 1);
+        g.setflag("zbar");
         btnList.push({
             "type": "btn",
             "name": "group",
@@ -23,15 +34,31 @@ room526.main = function () {
         });
         chat(0, 526);
     }
+    else {
+        if (!g.get("zbar")) {
+            btnList.push({
+                "type": "btn",
+                "name": "g1",
+                "left": 1055,
+                "top": 0,
+                "width": 865,
+                "height": 1080,
+                "image": "526_bar/g1.png"
+            });
+        }
+    }
     $.each(btnList, function (i, v) {
         nav.button(v, 526);
     });
 
-    nav.buildnav([0]);
+    nav.buildnav([527, 0]);
 };
 
 room526.btnclick = function (name) {
     switch (name) {
+        case "bathroom":
+            char.room(527);
+            break;
         case "group2":
             nav.killbutton("group2");
             nav.bg("526_bar/group3.jpg");
@@ -91,6 +118,33 @@ room526.btnclick = function (name) {
             if (!sc.checkevent("zoey", -1)) {
                 sc.setstep("zoey", -1);
                 chat(16, 526);
+            }
+            break;
+        case "g1":
+                chat(19, 526);
+            break;
+        case "g1_big2":
+            if (g.internal < 6) {
+                nav.bg("526_bar/g1_big" + g.internal + ".jpg");
+                g.internal++;
+            }
+            else {
+                nav.killbutton("g1_big2");
+                g.mod("giveOralMale", 1);
+                zcl.displayMain(-200, 1000, .25, "clothes", true);
+                nav.bg("526_bar/g1_big6.jpg");
+                chat(25, 526);
+            }
+            break;
+        case "g1_smol2":
+            nav.bg("526_bar/g1_smol" + g.internal + ".jpg");
+            if (g.internal < 5) {
+                g.internal++;
+            }
+            else {
+                nav.killbutton("g1_smol2");
+                g.mod("receiveAnalMale", 1);
+                chat(30, 526);
             }
             break;
         default:
@@ -158,6 +212,74 @@ room526.chatcatch = function (callback) {
         case "seeZoey":
             room526.btnclick("zoey");
             room526.btnclick("close");
+            break;
+        case "killem":
+            nav.killbutton("g1");
+            break;
+        case "g1_1":
+            nav.killall();
+            char.changeMenu("hide", false);
+            if (cl.c.chastity !== null) {
+                nav.bg("526_bar/g1_chastity.jpg");
+                chat(27, 526);
+            }
+            else if (cl.c.cock < 2) {
+                nav.bg("526_bar/g1_big.jpg");
+                chat(21, 526);
+            }
+            else {
+                nav.bg("526_bar/g1_smol.jpg");
+                chat(34, 526);
+            }
+            break;
+        case "g1_big1":
+            nav.bg("526_bar/g1_big1.jpg");
+            break;
+        case "g1_big2":
+            g.internal = 3;
+            nav.bg("526_bar/g1_big2.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "g1_big2",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 526);
+            break;
+        case "g1_small1":
+            nav.killall();
+            g.internal = 2;
+            nav.bg("526_bar/g1_smol1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "g1_smol2",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 526);
+            
+            break;
+        case "g1_end":
+            sc.setstep("poppy", 2);
+            g.setflag("zbar");
+            char.addtime(75);
+            char.room(526);
+            break;
+        case "g1_small2":
+            nav.bg("526_bar/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "juniper",
+                "left": 1055,
+                "top": 0,
+                "width": 460,
+                "height": 1080,
+                "image": "526_bar/juniper.png"
+            }, 256);
             break;
         default:
             break;
@@ -320,6 +442,135 @@ room526.chat = function (chatID) {
             text: "Tu me rends excitée. Don't be a stranger!",
             button: [
                 { chatID: -1, text: "I won't", callback: "" },
+            ]
+        }, 
+        {
+            chatID: 19,
+            speaker: "juniper",
+            text: "Hay honey, you want to play a game?",
+            button: [
+                { chatID: 20, text: "I sure do!", callback: "" },
+                { chatID: -1, text: "No, not right now. ", callback: "killem" }
+            ]
+        }, 
+        {
+            chatID: 20,
+            speaker: "juniper",
+            text: "Oh fun! We're going to play our favorite game; who has the smallest cock. Strip it off honey!",
+            button: [
+                { chatID: -1, text: "ok! ", callback: "g1_1" }
+            ]
+        }, 
+        {
+            chatID: 21,
+            speaker: "orchid",
+            text: "Oh man, am I the smallest again!",
+            button: [
+                { chatID: 22, text: "...", callback: "" }
+            ]
+        }, 
+        {
+            chatID: 22,
+            speaker: "poppy",
+            text: "Yep, you're the smallest. You know what that means...",
+            button: [
+                { chatID: 23, text: "...", callback: "" }
+            ]
+        }, 
+        {
+            chatID: 23,
+            speaker: "orchid",
+            text: "Sigh... I know...",
+            button: [
+                { chatID: 24, text: "...", callback: "g1_big1" }
+            ]
+        }, 
+        {
+            chatID: 24,
+            speaker: "orchid",
+            text: "...don't be gentle.",
+            button: [
+                { chatID: -1, text: "...", callback: "g1_big2" }
+            ]
+        }, 
+        {
+            chatID: 25,
+            speaker: "orchid",
+            text: "I'm going to be farting cum for a week. It will be glorius!",
+            button: [
+                { chatID: 26, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "poppy",
+            text: "Yeah. We play this game all the time. Feel free to cum back!",
+            button: [
+                { chatID: -1, text: "I will!", callback: "g1_end" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "juniper",
+            text: "We have a chastity slut girls! You know what that means.",
+            button: [
+                { chatID: 28, text: "Huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "orchid",
+            text: "It means I didn't lose, you do!",
+            button: [
+                { chatID: 29, text: "Lose?", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "poppy",
+            text: "Oh yeah, get ready honey.",
+            button: [
+                { chatID: -1, text: "Ready?", callback: "g1_small1" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "juniper",
+            text: "FFFuuuuuu",
+            button: [
+                { chatID: 31, text: "UGH", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "poppy",
+            text: "Ooooo Yeah",
+            button: [
+                { chatID: 32, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "orchid",
+            text: "Such a great ass",
+            button: [
+                { chatID: 33, text: "UGH! I'm so full.", callback: "g1_small2" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "juniper",
+            text: "You were great! Stop by again, we play this game every night.",
+            button: [
+                { chatID: -1, text: "I will, it's my favorite game. ", callback: "g1_end" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "juniper",
+            text: "Awww it's so small. You know what that means...",
+            button: [
+                { chatID: 28, text: "Huh?", callback: "" }
             ]
         },
     ];
