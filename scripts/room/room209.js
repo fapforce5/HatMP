@@ -355,7 +355,13 @@ room209.btnclick = function (name) {
             chat(49, 209);
             break;
         case "h_26":
-            //makeup
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displayMissybtn");
+            chat(144, 209);
             break;
         case "h_25":
             //heels
@@ -1157,6 +1163,9 @@ room209.chatcatch = function (callback) {
             cl.display();
             room209.btnclick("displayChairsit");
             room209.btnclick("pointsStart");
+            break;
+        case "reset":
+            char.room(209);
             break;
         default:
             break;
@@ -2436,6 +2445,15 @@ room209.chat = function (chatID) {
                     "your little PP will be smaller. ",
                 button: [
                     { chatID: -1, text: "Thank you mistress. I want a clitty!", callback: "end" }
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "missy",
+                text: "I promised " + sc.n("tiffany") + " we would let her teach you how to wear makup. Go see her in her " +
+                    "apartment and she'll give you some lessons. ",
+                button: [
+                    { chatID: -1, text: "Ok, I'll go see " + sc.n("tiffany") + ".", callback: "reset" }
                 ]
             },
         ];

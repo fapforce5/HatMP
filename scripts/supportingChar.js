@@ -114,8 +114,9 @@ sc.events = [
     { name: "bigguy", step: 4, txt: "Cum licker", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "bigguy", step: 5, txt: "Eat all the cum - both", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "zoey", step: -3, txt: "First Bar", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: -2, txt: "Can Sleep Over", img: "", show: false, row: 0, col: 0, ach: false, major: false },
-    { name: "zoey", step: -1, txt: "First meet at bar", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "zoey", step: -1, txt: "First Sleep Over", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 0, txt: "Play some video games. ", img: "zoeyGame", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 1, txt: "Define Relationship ", img: "zoeyGame", show: true, row: 0, col: 0, ach: false, major: false },
     { name: "zoey", step: 2, txt: "Meet Chloé", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -124,7 +125,7 @@ sc.events = [
     { name: "zoey", step: 5, txt: "Chloé  Cheating", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
     { name: "zoey", step: 6, txt: "sleep repeat", img: "bff", show: true, row: 0, col: 2, ach: false, major: false },
     { name: "zoey", step: 10, txt: "Night visitor", img: "", show: false, row: 0, col: 3, ach: false, major: false },
-    { name: "zoey", step: 12, txt: "Night visitor end -- need new", img: "zoeyEat", show: true, row: 0, col: 3, ach: false, major: false },
+    { name: "zoey", step: 11, txt: "Night visitor end -- need new", img: "zoeyEat", show: true, row: 0, col: 3, ach: false, major: false },
 
     { name: "zoey", step: 18, txt: "Ready for kick out", img: "", show: true, row: 0, col: 3, ach: false, major: false },
     { name: "zoey", step: 19, txt: "3 days", img: "", show: false, row: 0, col: 4, ach: false, major: false },

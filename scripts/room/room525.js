@@ -1,7 +1,7 @@
 ﻿//Room name
 var room525 = {};
 room525.main = function () {
-    if (g.isNight()) {
+    if (g.gethourdecimal() > 18 || g.gethourdecimal < 2) {
         var btnList = [
             {
                 "type": "btn",
@@ -22,6 +22,7 @@ room525.main = function () {
         nav.buildnav(navList);
     }
     else {
+        nav.bg("525_entrance/closed.jpg");
         nav.buildnav([0]);
     }
 };

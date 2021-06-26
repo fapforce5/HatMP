@@ -158,12 +158,16 @@ room54.chatcatch = function (callback) {
         case "p4":
             nav.killbutton("tif");
             nav.bg("57_pussyPalace/p4.jpg");
+            g.sissy[26].ach = true;
+            g.roomMapAccess(407, true, false);
             break;
         case "p5":
             g.pass = -1;
             char.room(27);
             break;
         case "iMakeup":
+            g.sissy[26].ach = true;
+            g.roomMapAccess(407, true, false);
             g.pass = -2;
             char.room(27);
             break;

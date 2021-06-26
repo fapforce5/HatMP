@@ -32,7 +32,21 @@ room527.chatcatch = function (callback) {
                     var thisr = Math.floor(Math.random() * 10);
                     if (app > thisr) {
                         if (Math.floor(Math.random() * 2) === 0) {
-                            g.roomTimeout = setTimeout(function () {
+                            if (sc.getstep("zoey") < 300) {
+                                g.roomTimeout = setTimeout(function () {
+                                    nav.button({
+                                        "type": "img",
+                                        "name": "trouble",
+                                        "left": 744,
+                                        "top": 0,
+                                        "width": 722,
+                                        "height": 1080,
+                                        "image": "527_bathroom/zoey.png"
+                                    }, 526);
+                                    chat(6, 527);
+                                }, 500);
+                            }
+                            else {
                                 nav.button({
                                     "type": "img",
                                     "name": "trouble",
@@ -42,8 +56,8 @@ room527.chatcatch = function (callback) {
                                     "height": 1080,
                                     "image": "527_bathroom/zoey.png"
                                 }, 526);
-                                chat(6, 527);
-                            }, 500);
+                                chat(13, 527);
+                            }
                         }
                         else {
                             g.roomTimeout = setTimeout(function () {
@@ -108,6 +122,7 @@ room527.chatcatch = function (callback) {
             nav.bg("527_bathroom/z2.jpg");
             break;
         case "z3":
+            scc.love("zoey", 5, 100); 
             g.mod("pissedonFemale", 1);
             nav.bg("527_bathroom/z3.jpg");
             break;
@@ -223,6 +238,14 @@ room527.chat = function (chatID) {
             text: "Ok, I've got to get back to work. Later ma petite amie.",
             button: [
                 { chatID: -1, text: "See ya. ", callback: "leave60" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "zoey",
+            text: "je vais pisser. Get out.",
+            button: [
+                { chatID: -1, text: "Ok", callback: "leave60" }
             ]
         },
     ];

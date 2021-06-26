@@ -114,10 +114,16 @@ room526.btnclick = function (name) {
             nav.buildnav([526, 0]);
             break;
         case "close":
-
-            if (!sc.checkevent("zoey", -1)) {
-                sc.setstep("zoey", -1);
+            var zoeyStep = sc.getstep("zoey");
+            if (!sc.checkevent("zoey", -3)) {
+                sc.setstep("zoey", -3);
                 chat(16, 526);
+            }
+            else if (zoeyStep < 300) {
+                chat(36, 526);
+            }
+            else {
+                chat(35, 526);
             }
             break;
         case "g1":
@@ -197,7 +203,7 @@ room526.chatcatch = function (callback) {
             break;
         case "group9":
             nav.killbutton("group8");
-            scc.love("zoey", -5, 100);
+            scc.love("zoey", -5, 80);
             zcl.displayMain(-100, 600, .23, "clothes", false);
             nav.button({
                 "type": "img",
@@ -281,6 +287,39 @@ room526.chatcatch = function (callback) {
                 "image": "526_bar/juniper.png"
             }, 256);
             break;
+        case "wash":
+            nav.killall();
+            nav.bg("526_bar/wash.jpg");
+            break;
+        case "wash1":
+            scc.love("zoey", 10, 80);
+            if (g.gethourdecimal() > 12) {
+                g.dt.setDate(g.dt.getDate() + 1);
+            }
+            char.settime(2, 30);
+            nav.killall();
+            nav.bg("526_bar/bgclose.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 1222,
+                "top": 374,
+                "width": 194,
+                "height": 290,
+                "image": "526_bar/close.png"
+            }, 526);
+            if (scc.get("zoey").love > 80 && sc.getstep("zoey") >  10) {
+                nav.killall();
+                nav.bg("526_bar/z1.jpg");
+                chat(40, 526);
+            }
+            else {
+                chat(39, 526);
+            }
+            break;
+        case "leave":
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -315,7 +354,7 @@ room526.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "poppy",
-            text: "Zoey's bar you silly sissy. The best damn bar in this town! So did you want to take a turn with " + 
+            text: "Zoey's bar you silly sissy. The best damn bar in this town! So did you want to take a turn with " +
                 sc.n("orchid") + "? I bet you fuck like a freight train.",
             button: [
                 { chatID: -1, text: "Fuck Yes!", callback: "checkCock" },
@@ -443,7 +482,7 @@ room526.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "I won't", callback: "" },
             ]
-        }, 
+        },
         {
             chatID: 19,
             speaker: "juniper",
@@ -452,7 +491,7 @@ room526.chat = function (chatID) {
                 { chatID: 20, text: "I sure do!", callback: "" },
                 { chatID: -1, text: "No, not right now. ", callback: "killem" }
             ]
-        }, 
+        },
         {
             chatID: 20,
             speaker: "juniper",
@@ -460,7 +499,7 @@ room526.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "ok! ", callback: "g1_1" }
             ]
-        }, 
+        },
         {
             chatID: 21,
             speaker: "orchid",
@@ -468,7 +507,7 @@ room526.chat = function (chatID) {
             button: [
                 { chatID: 22, text: "...", callback: "" }
             ]
-        }, 
+        },
         {
             chatID: 22,
             speaker: "poppy",
@@ -476,7 +515,7 @@ room526.chat = function (chatID) {
             button: [
                 { chatID: 23, text: "...", callback: "" }
             ]
-        }, 
+        },
         {
             chatID: 23,
             speaker: "orchid",
@@ -484,7 +523,7 @@ room526.chat = function (chatID) {
             button: [
                 { chatID: 24, text: "...", callback: "g1_big1" }
             ]
-        }, 
+        },
         {
             chatID: 24,
             speaker: "orchid",
@@ -492,7 +531,7 @@ room526.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "...", callback: "g1_big2" }
             ]
-        }, 
+        },
         {
             chatID: 25,
             speaker: "orchid",
@@ -571,6 +610,71 @@ room526.chat = function (chatID) {
             text: "Awww it's so small. You know what that means...",
             button: [
                 { chatID: 28, text: "Huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "zoey",
+            text: "What do you want?",
+            button: [
+                { chatID: -1, text: "Oh, nothing", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "zoey",
+            text: "If it isn't my favorite person in the world! What's up?",
+            button: [
+                { chatID: 37, text: "Oh, nothing. Just enjoying your bar.", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "zoey",
+            text: "Do you want to help me clean up?",
+            button: [
+                { chatID: 38, text: "Sure", callback: "wash" },
+                { chatID: -1, text: "Nope. Got stuff to do.", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "me",
+            text: "Wash wash washing dishes.",
+            button: [
+                { chatID: 39, text: "Complete", callback: "wash1" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "zoey",
+            text: "Thanks so much! It's late, I'm going to head home. Au revoir mon ami.",
+            button: [
+                { chatID: -1, text: "See you.", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "zoey",
+            text: "So... It's just the two of us and I'm feeling a bit horny. Do you want to mange ma chatte?",
+            button: [
+                { chatID: 41, text: "Huh?", callback: "" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "zoey",
+            text: "Do you want to uhhh, what's the word, dinner my pussy?",
+            button: [
+                { chatID: 42, text: "Oh lol. Yes I do, but what about " + sc.n("stormy") + "?", callback: "" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "zoey",
+            text: "Oh, we are just doing to sex, she is not mon petite amie. So do you want a dinner?",
+            button: [
+                { chatID: 42, text: " " + sc.n("stormy") + "?", callback: "" },
             ]
         },
     ];
