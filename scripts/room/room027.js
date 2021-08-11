@@ -210,190 +210,96 @@ room27.chatcatch = function (callback) {
         case "checkem":
             nav.bg("27_mirror/charDisplay.jpg");
             char.changeMenu("hide");
-            var allc = cl.appearancex();
-            var thisBody = allc.abody;
-            var tc = allc.acl;
-            console.log(tc);
+            var c = cl.appearanceClothes();
+            var b = cl.appearanceBody();
+            var bcTotal = c.totalPoints + b.totalPoints;
+            var bcEarned = c.earnedPoints + b.earnedPoints;
+            var tw = cl.appearance();
+
             zcl.displayMain(100, 1380, .1, "", false);
-            nav.t({
-                type: "img",
-                name: "me",
-                left: 1000,
-                top: 400,
-                font: 20,
-                hex: "#ffffff",
-                text: thisBody.exp
-            }, 27);
-
-            nav.button({
-                "type": "img",
-                "name": "tif",
-                "left": 1000,
-                "top": 100,
-                "width": 200,
-                "height": 200,
-                "image": "../stat/" + thisBody.val + "_75.png"
-            }, 27);
-            nav.t({
-                type: "img",
-                name: "me",
-                left: 1000,
-                top: 310,
-                font: 20,
-                hex: "#ffffff",
-                text: "Overall Body: " + cl.getSet(thisBody.val)
-            }, 27);
-
-
-            nav.t({
-                type: "img",
-                name: "me",
-                left: 650,
-                top: 400,
-                font: 20,
-                hex: "#ffffff",
-                text: tc.exp
-            }, 27);
-
-            nav.button({
-                "type": "img",
-                "name": "tif",
-                "left": 650,
-                "top": 100,
-                "width": 200,
-                "height": 200,
-                "image": "../stat/" + tc.val + "_75.png"
-            }, 27);
-            nav.t({
-                type: "img",
-                name: "me",
-                left: 650,
-                top: 310,
-                font: 20,
-                hex: "#ffffff",
-                text: "Overall Clothing: " + cl.getSet(tc.val)
-            }, 27);
-
-
-            if(tc.clist.top !== null)
+            
+            var top = 100;
+            for (i = 0; i < c.ps.length; i++) {
                 nav.button({
                     "type": "img",
                     "name": "x",
                     "left": 100,
-                    "top": 100,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.top 
+                    "top": top,
+                    "width": 80,
+                    "height": 80,
+                    "image": "../mainChar/icons/" + c.ps[i].image
                 }, 27);
-
-            if (tc.clist.bottom !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 100,
-                    "top": 320,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.bottom 
+                nav.t({
+                    type: "img",
+                    name: "x",
+                    left: 200,
+                    top: top + 10,
+                    font: 20,
+                    hex: "#ffffff",
+                    text: c.ps[i].n.capitalize() + ": " + c.ps[i].an + " [" + c.ps[i].earned + "/" + c.ps[i].total + "]"
                 }, 27);
-
-            if (tc.clist.socks !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 100,
-                    "top": 540,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.socks
+                $('#room-buttons').append('<div style="background:#ccc; ' + g.makeCss(20, 200, top + 50, 200) + ' position:absolute; border-radius:50px;"></div>');
+                $('#room-buttons').append('<div style="background:#b51db0; ' + g.makeCss(20, 200 * (c.ps[i].earned / c.ps[i].total), top + 50, 200) + ' position:absolute; border-radius:50px;"></div>');
+                top += 100;
+            }
+            top = 100;
+            for (i = 0; i < b.ps.length; i++) {
+                nav.t({
+                    type: "img",
+                    name: "x",
+                    left: 660,
+                    top: top + 10,
+                    font: 20,
+                    hex: "#ffffff",
+                    text: b.ps[i].n.capitalize() + " [" + b.ps[i].earned + "/" + b.ps[i].total + "]"
                 }, 27);
-
-            if (tc.clist.shoes !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 100,
-                    "top": 760,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.shoes
-                }, 27);
-
-            if (tc.clist.bra !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 320,
-                    "top": 100,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.bra
-                }, 27);
-
-            if (tc.clist.panties !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 320,
-                    "top": 320,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.panties
-                }, 27);
-
-            if (tc.clist.chastity !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 320,
-                    "top": 540,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.chastity
-                }, 27);
-
-            if (tc.clist.buttplug !== null)
-                nav.button({
-                    "type": "img",
-                    "name": "x",
-                    "left": 320,
-                    "top": 760,
-                    "width": 200,
-                    "height": 200,
-                    "image": "../mainChar/icons/" + tc.clist.buttplug
-                }, 27);
-
-
-            nav.t({
-                type: "img",
-                name: "me",
-                left: 1000,
-                top: 700,
-                font: 20,
-                hex: "#ffffff",
-                text: allc.valString
-            }, 27);
-
-            nav.button({
-                "type": "img",
-                "name": "tif",
-                "left": 650,
-                "top": 700,
-                "width": 200,
-                "height": 200,
-                "image": "../stat/" + allc.val + "_75.png"
-            }, 27);
-
+                
+                $('#room-buttons').append('<div style="background:#ccc; ' + g.makeCss(20, 200, top + 50, 660) + ' position:absolute; border-radius:50px;"></div>');
+                $('#room-buttons').append('<div style="background:#b51db0; ' + g.makeCss(20, 200 * (b.ps[i].earned / b.ps[i].total), top + 50, 660) + ' position:absolute; border-radius:50px;"></div>');
+                top += 100;
+            }
+            
             nav.button({
                 "type": "btn",
                 "name": "closeView",
-                "left": 650,
+                "left": 1600,
                 "top": 900,
                 "width": 200,
                 "height": 50,
                 "image": "27_mirror/close.png"
             }, 27);
-
+            var bottomUp = 900 * (bcEarned / bcTotal);
+            $('#room-buttons').append('<div style="background:#ccc; ' + g.makeCss(900, 20, 100, 1000) + ' position:absolute; border-radius:50px;"></div>');
+            $('#room-buttons').append('<div style="background:#b51db0; ' + g.makeCss(bottomUp, 20, 100 + 900 - bottomUp, 1000) + ' position:absolute; border-radius:50px;"></div>');
+            nav.t({
+                type: "img",
+                name: "x",
+                left: 900,
+                top: 50,
+                font: 20,
+                hex: "#ffffff",
+                text: bcEarned + "/" + bcTotal
+            }, 27);
+            for (i = 1; i < cl.set.length; i++) {
+                nav.t({
+                    type: "img",
+                    name: "x",
+                    left: 1120,
+                    top: 990 - cl.set[i].p,
+                    font: cl.set[i].entry === tw ? 40 : 20,
+                    hex: cl.set[i].entry === tw ? "#ffffff" : "#666666",
+                    text: cl.set[i].name
+                }, 27);
+                nav.button({
+                    "type": "img",
+                    "name": "x",
+                    "left": 1030,
+                    "top": 960 - cl.set[i].p,
+                    "width": 80,
+                    "height": 80,
+                    "image": "../stat/" + cl.set[i].entry + (cl.set[i].entry === tw ? "_75.png" : "_0.png")
+                }, 27);
+            }
             break;
         case "killReset":
             nav.killall();

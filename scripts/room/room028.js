@@ -117,11 +117,11 @@ room28.main = function () {
     g.popUpNotice(message);
 
     //growhair
-    var initHairGrowth = 2;
+    var initHairGrowth = 3;
     if (hormoneLevel > 50)
         Math.floor(hormoneLevel / 10) - 3;
-    if (initHairGrowth < 2)
-        initHairGrowth = 2;
+    if (initHairGrowth < 3)
+        initHairGrowth = 3;
 
     cl.c.lastHairCut += initHairGrowth;
     if (cl.c.lastHairCut > 99) {

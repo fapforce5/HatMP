@@ -1,159 +1,72 @@
 ﻿//Zoey bedroom
 var room502 = {};
 room502.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "dresser",
-            "left": 1192,
-            "top": 0,
-            "width": 541,
-            "height": 426,
-            "image": "502_bedroom/dresser.png",
-            "night": "502_bedroom/dresserN.png"
-        }];
-    if (sc.zoey().thisRoom) {
-        nav.bg("502_bedroom/bedroomZoey.jpg", "502_bedroom/bedroomnightZoey.jpg");
-        btnList.push({
-            "type": "btn",
-            "name": "bed",
-            "left": 568,
-            "top": 77,
-            "width": 751,
-            "height": 927,
-            "image": "502_bedroom/bedZoey.png",
-            "night": "502_bedroom/bedNZoey.png"
-        });
+    if (sc.getstep("zoey") === 12) {
+        nav.bg("502_bedroom/s1.jpg");
+        chat(23, 502);
     }
     else {
-        btnList.push({
-            "type": "btn",
-            "name": "bed",
-            "left": 568,
-            "top": 77,
-            "width": 751,
-            "height": 927,
-            "image": "502_bedroom/bed.png",
-            "night": "502_bedroom/bedN.png"
-        });
-    }
-
-    $.each(btnList, function (i, v) {
-        nav.button(v, 502);
-    });
-    if (g.pass === "endSleepyTime") {
-        g.pass = "";
-        chat(0, 502);
-    }
-    else if (inv.has("tifgift")) {
-            chat(2, 502);
-    }
-    else {
-        var canGotOut = cl.hasoutfit("public");
-        if (canGotOut === null) {
-            var navList = [501, 503, 0];
-            nav.buildnav(navList);
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "dresser",
+                "left": 1192,
+                "top": 0,
+                "width": 541,
+                "height": 426,
+                "image": "502_bedroom/dresser.png",
+                "night": "502_bedroom/dresserN.png"
+            }];
+        if (sc.zoey().thisRoom) {
+            nav.bg("502_bedroom/bedroomZoey.jpg", "502_bedroom/bedroomnightZoey.jpg");
+            btnList.push({
+                "type": "btn",
+                "name": "bed",
+                "left": 568,
+                "top": 77,
+                "width": 751,
+                "height": 927,
+                "image": "502_bedroom/bedZoey.png",
+                "night": "502_bedroom/bedNZoey.png"
+            });
         }
         else {
-            g.internal = canGotOut;
+            btnList.push({
+                "type": "btn",
+                "name": "bed",
+                "left": 568,
+                "top": 77,
+                "width": 751,
+                "height": 927,
+                "image": "502_bedroom/bed.png",
+                "night": "502_bedroom/bedN.png"
+            });
+        }
+
+        $.each(btnList, function (i, v) {
+            nav.button(v, 502);
+        });
+        if (g.pass === "endSleepyTime") {
             g.pass = "";
-            g.pass = "I'm missing my " + canGotOut + ". I need to get dressed before I go out. ";
-            chat(999, 502);
+            chat(0, 502);
+        }
+        else if (inv.has("tifgift")) {
+            chat(2, 502);
+        }
+        else {
+            var canGotOut = cl.hasoutfit("public");
+            if (canGotOut === null) {
+                var navList = [501, 503, 0];
+                nav.buildnav(navList);
+            }
+            else {
+                g.internal = canGotOut;
+                g.pass = "";
+                g.pass = "I'm missing my " + canGotOut + ". I need to get dressed before I go out. ";
+                chat(999, 502);
+            }
         }
     }
-    //var zoeyStep = sc.getstep("zoey");
-
-    //if (g.pass === "zoeyLickPussy") {
-    //    nav.bg("502_bedroom/eat2.jpg");
-    //    chat(20, 502);
-    //}
-    //else if (g.pass === "tellZoey") {
-    //    nav.bg("502_bedroom/eat1.jpg");
-    //    chat(22, 502);
-    //}
-    //else if (g.pass === "endSleepyTime") {
-    //    g.pass = "";
-    //    chat(10, 502);
-    //}
-    //else if (sc.checkevent("me", 3) && !sc.checkevent("zoey", -1) && zoeyStep < 22) {
-    //    nav.bg("502_bedroom/homeless.jpg");
-    //    chat(1, 502);
-    //}
-    //else if (zoeyStep > 22) {
-    //    nav.button({
-    //        "type": "btn",
-    //        "name": "dresser",
-    //        "left": 1192,
-    //        "top": 0,
-    //        "width": 541,
-    //        "height": 426,
-    //        "image": "502_bedroom/dresser.png",
-    //        "night": "502_bedroom/dresserN.png"
-    //    }, 502);
-    //    var canGotOut1 = cl.hasoutfit("public");
-    //    if (canGotOut1 === null) {
-    //        nav.buildnav([501, 503, 0]);
-    //    }
-    //    else {
-    //        g.internal = canGotOut;
-    //        g.pass = "";
-    //        g.pass = "I'm missing my " + canGotOut1 + ". I need to get dressed before I go out. ";
-    //        chat(11, 502);
-    //    }
-    //}
-    //else {
-    //    var btnList = [
-    //        {
-    //            "type": "btn",
-    //            "name": "dresser",
-    //            "left": 1192,
-    //            "top": 0,
-    //            "width": 541,
-    //            "height": 426,
-    //            "image": "502_bedroom/dresser.png",
-    //            "night": "502_bedroom/dresserN.png"
-    //        }];
-    //    if (sc.zoey().thisRoom) {
-    //        nav.bg("502_bedroom/bedroomZoey.jpg", "502_bedroom/bedroomnightZoey.jpg");
-    //        btnList.push({
-    //            "type": "btn",
-    //            "name": "bed",
-    //            "left": 568,
-    //            "top": 77,
-    //            "width": 751,
-    //            "height": 927,
-    //            "image": "502_bedroom/bedZoey.png",
-    //            "night": "502_bedroom/bedNZoey.png"
-    //        });
-    //    }
-    //    else {
-    //        btnList.push({
-    //            "type": "btn",
-    //            "name": "bed",
-    //            "left": 568,
-    //            "top": 77,
-    //            "width": 751,
-    //            "height": 927,
-    //            "image": "502_bedroom/bed.png",
-    //            "night": "502_bedroom/bedN.png"
-    //        });
-    //    }
-
-    //    $.each(btnList, function (i, v) {
-    //        nav.button(v, 502);
-    //    });
-    //    var canGotOut = cl.hasoutfit("public");
-    //    if (canGotOut === null) {
-    //        var navList = [501, 503, 0];
-    //        nav.buildnav(navList);
-    //    }
-    //    else {
-    //        g.internal = canGotOut;
-    //        g.pass = "";
-    //        g.pass = "I'm missing my " + canGotOut + ". I need to get dressed before I go out. ";
-    //        chat(11, 502);
-    //    }
-    //}
 };
 
 room502.btnclick = function (name) {
@@ -434,6 +347,60 @@ room502.chatcatch = function (callback) {
             g.pass = 502;
             char.room(28);
             break;
+        case "s2":
+            nav.bg("502_bedroom/s2.jpg");
+            zcl.displayMain(100, 800, .18, "", false);
+            nav.button({
+                "type": "img",
+                "name": "zoey",
+                "left": 573,
+                "top": 27,
+                "width": 1153,
+                "height": 1053,
+                "image": "502_bedroom/s2.png"
+            }, 502);
+            break;
+        case "s3":
+            nav.killall();
+            nav.bg("502_bedroom/s3.jpg");
+            break;
+        case "s4":
+            nav.killall();
+            nav.bg("502_bedroom/s4.jpg");
+            break;
+        case "s5":
+            nav.bg("502_bedroom/s5.jpg");
+            break;
+        case "s6":
+            nav.bg("502_bedroom/s6.jpg");
+            break;
+        case "s7":
+            nav.bg("502_bedroom/s7.jpg");
+            break;
+        case "s8":
+            nav.bg("502_bedroom/s8.jpg");
+            break;
+        case "s9":
+            nav.bg("502_bedroom/s9.jpg");
+            break;
+        case "s10":
+            nav.bg("502_bedroom/s10.jpg");
+            break;
+        case "s11":
+            nav.bg("502_bedroom/s11.jpg");
+            break;
+        case "s12":
+            nav.bg("502_bedroom/s12.jpg");
+            break;
+        case "s13":
+            nav.bg("502_bedroom/s13.jpg");
+            break;
+        case "s14":
+            sc.setstep("zoey", 13);
+            scc.love("zoey", 10, 100);
+            char.addtime(60);
+            char.room(502);
+            break;
         default:
             break;
     }
@@ -460,6 +427,15 @@ room502.chat = function (chatID) {
                     { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
                     { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
                     { chatID: -1, text: "Get Up", callback: "o4" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "zoey",
+                text: "So what happened?",
+                button: [
+                    { chatID: 2, text: "Tell the truth", callback: "" },
+                    { chatID: 5, text: "Lie", callback: "" }
                 ]
             },
             {
@@ -630,267 +606,171 @@ room502.chat = function (chatID) {
                 text: "You are a perv! I love it! But I'm going to get going. I'm sure I'll see you again. " + sc.n("me") + ". " + sc.n("zoey") +
                     " I'll see you again soon!",
                 button: [
-                    { chatID: -1, text: "By " + sc.n("stormy") + " good night " + sc.n("zoey") + ".", callback: "singleReset" }
+                    { chatID: -1, text: "Bye " + sc.n("stormy") + " good night " + sc.n("zoey") + ".", callback: "singleReset" }
                 ]
             },
-
-            //{
-            //    chatID: 12,
-            //    speaker: "zoey",
-            //    text: "ZZZZZzzzzzz",
-            //    button: [
-            //        { chatID: 13, text: "...", callback: "overLook1" }
-            //    ]
-            //},
-            //{
-            //    chatID: 13,
-            //    speaker: "me",
-            //    text: "ZZZZZzzzzzz",
-            //    button: [
-            //        { chatID: 14, text: "...", callback: "overLook2" }
-            //    ]
-            //},
-            //{
-            //    chatID: 14,
-            //    speaker: "zoey",
-            //    text: "huh",
-            //    button: [
-            //        { chatID: 15, text: "...", callback: "overLook3" }
-            //    ]
-            //},
-            //{
-            //    chatID: 15,
-            //    speaker: "zoey",
-            //    text: sc.n("chloe") + ".....?",
-            //    button: [
-            //        { chatID: 16, text: "...", callback: "overLook4" }
-            //    ]
-            //},
-            //{
-            //    chatID: 16,
-            //    speaker: "chloe",
-            //    text: "I need you...",
-            //    button: [
-            //        { chatID: 17, text: "...", callback: "overLook5" }
-            //    ]
-            //},
-            //{
-            //    chatID: 17,
-            //    speaker: "chloe",
-            //    text: "Sorry " + sc.n("me") + ". I didn't know you were here, I need to borrow " + sc.n("zoey") + " for a sec. " +
-            //        "My clit is aching and needs some attention.",
-            //    button: [
-            //        { chatID: 18, text: "...", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 18,
-            //    speaker: "zoey",
-            //    text: "Sorry " + sc.n("me") + ", do you mind giving " + sc.n("chloe") + " and I some time. I promised her an " +
-            //        "orgasm earlier today. S'il vous plaît",
-            //    button: [
-            //        { chatID: 19, text: "Oh, of course, I'll let you two ...talk", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 19,
-            //    speaker: "zoey",
-            //    text: "Merci mon amour. You are the best friend ever!",
-            //    button: [
-            //        { chatID: -1, text: "[Go to the living room]", callback: "leave11" }
-            //    ]
-            //},
-            
-            //},
-            //{
-            //    chatID: 33,
-            //    speaker: "me",
-            //    text: "zzzZZZzzz",
-            //    button: [
-            //        { chatID: -1, text: "...", callback: "chloeGoneSleepReset" }
-            //    ]
-            //},
-            
-            //{
-            //    chatID: 45,
-            //    speaker: "zoey",
-            //    text: "ZZzzZZzzz **snort**",
-            //    button: [
-            //        { chatID: 46, text: "zzZZzzz", callback: "wake1" }
-            //    ]
-            //},
-            //{
-            //    chatID: 46,
-            //    speaker: "zoey",
-            //    text: sc.n("me") + " are you awake...",
-            //    button: [
-            //        { chatID: 47, text: "zzZZzzz zzzZZZzzz", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 47,
-            //    speaker: "zoey",
-            //    text: sc.n("me") + "!!!",
-            //    button: [
-            //        { chatID: 48, text: "zzZZzzz **snort** huh?", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 48,
-            //    speaker: "zoey",
-            //    text: "Oh good, you are awake. There is something I have wanted to talk to you about.",
-            //    button: [
-            //        { chatID: 49, text: "Huh, yes?", callback: "talk" }
-            //    ]
-            //},
-            //{
-            //    chatID: 49,
-            //    speaker: "zoey",
-            //    text: "So first of all you know I love you, oui?",
-            //    button: [
-            //        { chatID: 50, text: "Of course, I love you too.", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 50,
-            //    speaker: "zoey",
-            //    text: "Do you remember when you first came here? ",
-            //    button: [
-            //        { chatID: 51, text: "Yes", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 51,
-            //    speaker: "zoey",
-            //    text: "J'aime être tout seul... I like sleeping alone. I love when girls stop by and we have sex, but I always kick them out. " +
-            //        "I have never slept with someone as long as we have slept together. Weirdly you are my longest relationship, mon amant secret. ",
-            //    button: [
-            //        { chatID: 52, text: "That's sweet", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 52,
-            //    speaker: "zoey",
-            //    text: "Je suis vraiment désolé, I have to have the place back to myself. I do not like sharing my bed everynight. " +
-            //        "I hope you do not hate me, I will " +
-            //        "always love you, and you can come visit me anytime. I just have to have my privacy back again. I am so sorry.",
-            //    button: [
-            //        { chatID: 53, text: "You want me to leave?", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 53,
-            //    speaker: "zoey",
-            //    text: "Just stop sleeping here everynight. You can always come visit. I love it when you visit, but I need my space back. ",
-            //    button: [
-            //        { chatID: 54, text: "When do you want me to leave?", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 54,
-            //    speaker: "zoey",
-            //    text: "Trois jours? I am so sorry, but a few days should be good, you are working so you can afford a new place.",
-            //    button: [
-            //        { chatID: 55, text: "It's ok. I'll look for a new place.", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 55,
-            //    speaker: "zoey",
-            //    text: "I tried to not want you to leave, I tried to share my space, but I need it, I will always love you.",
-            //    button: [
-            //        { chatID: 56, text: "I love you too, thank you for letting me stay for as long as you did.", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 56,
-            //    speaker: "zoey",
-            //    text: "I love you too. You are always free to visit.",
-            //    button: [
-            //        { chatID: -1, text: "I love you.", callback: "wakeEnd" }
-            //    ]
-            //},
-            //{
-            //    chatID: 57,
-            //    speaker: "zoey",
-            //    text: "Hay... hay",
-            //    button: [
-            //        { chatID: 58, text: "zzzZZZzzz", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 58,
-            //    speaker: "zoey",
-            //    text: sc.n("me") + ". Are you awake....",
-            //    button: [
-            //        { chatID: 59, text: "zzzZZZzzz", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 59,
-            //    speaker: "zoey",
-            //    text: "Hay...... Bonjour",
-            //    button: [
-            //        { chatID: 60, text: "zzzZZZzzz  **snort**", callback: "wake1" }
-            //    ]
-            //},
-            //{
-            //    chatID: 60,
-            //    speaker: "zoey",
-            //    text: "C'est aujourd'hui le jour.. You are not mad are you?",
-            //    button: [
-            //        { chatID: 61, text: "Of course not, I understand", callback: "" }
-            //    ]
-            //},
-            //{
-            //    chatID: 61,
-            //    speaker: "zoey",
-            //    text: "I love you, I am going to go for a walk and let you get ready. Je vous aimerai toujours",
-            //    button: [
-            //        { chatID: -1, text: "I will always love you too", callback: "wakeEnd1" }
-            //    ]
-            //},
-            //{
-            //    chatID: 62,
-            //    speaker: "me",
-            //    text: "Oh wow, all that working out has really paid off! I feel so much sexier with this new bod!",
-            //    button: [
-            //        { chatID: -1, text: "....", callback: "newday" }
-            //    ]
-            //},
-            //{
-            //    chatID: 63,
-            //    speaker: "me",
-            //    text: "Are those itty bitty tits? I think these pills are changing my body.",
-            //    button: [
-            //        { chatID: -1, text: "....", callback: "newday" }
-            //    ]
-            //},
-            //{
-            //    chatID: 64,
-            //    speaker: "me",
-            //    text: "Oh no... is my penis getting shrinking!?!?",
-            //    button: [
-            //        { chatID: -1, text: "....", callback: "newday" }
-            //    ]
-            //},
-            //{
-            //    chatID: 64,
-            //    speaker: "me",
-            //    text: "Hahah nice, bigger titties!",
-            //    button: [
-            //        { chatID: -1, text: "....", callback: "newday" }
-            //    ]
-            //},
-            //{
-            //    chatID: 66,
-            //    speaker: "me",
-            //    text: "Check that ass out! So much to grab",
-            //    button: [
-            //        { chatID: -1, text: "....", callback: "newday" }
-            //    ]
-            //},
-            
+            {
+                chatID: 23,
+                speaker: "stormy",
+                text: "So, are you down?",
+                button: [
+                    { chatID: 24, text: "Down?", callback: "" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "zoey",
+                text: "Mort de rire, hahaha. He is as you say, down. Pull down your pants and show her your appareil de chasteté. ",
+                button: [
+                    { chatID: 25, text: "Sure", callback: "s2" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "stormy",
+                text: "I'm so wet right now! I've always wanted my own cuck, and you are such a cute cuck! Ever since you caught us " +
+                    "I haven't been able to get it out of my mind. It's just so naughty! ",
+                button: [
+                    { chatID: 26, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "zoey",
+                text: "You have caught me twice now, so what is a third time? ",
+                button: [
+                    { chatID: 27, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "stormy",
+                text: "So, do you bring the handcuffs? ",
+                button: [
+                    { chatID: 28, text: "I did [Hand them over]", callback: "s3" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "stormy",
+                text: "Come here my cuck!",
+                button: [
+                    { chatID: 29, text: "Huh!", callback: "s4" }
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "stormy",
+                text: "I'm going to lock you up so you don't try anything.",
+                button: [
+                    { chatID: 30, text: "Ouch, that hurts", callback: "s5" }
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "stormy",
+                text: "Sooo... What should we start with first?",
+                button: [
+                    { chatID: 31, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "zoey",
+                text: "Tu sais ce que je veux.",
+                button: [
+                    { chatID: 32, text: "...", callback: "s6" }
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "stormy",
+                text: "mmmMMMmmmmm slurp lick slobber",
+                button: [
+                    { chatID: 33, text: "...", callback: "s7" }
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "zoey",
+                text: "ooOOOOOoooo fuck yes!",
+                button: [
+                    { chatID: 34, text: "...", callback: "s8" }
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "zoey",
+                text: "Nom nom nom",
+                button: [
+                    { chatID: 35, text: "...", callback: "s9" }
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "stormy",
+                text: "OOoooo yeah! You like what you see cuck!",
+                button: [
+                    { chatID: 36, text: "...", callback: "s10" }
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "stormy",
+                text: "I love you way you lust after us. ",
+                button: [
+                    { chatID: 37, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "zoey",
+                text: "I want to do the soixante-neuf again. I love that so much",
+                button: [
+                    { chatID: 38, text: "...", callback: "s11" }
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "stormy",
+                text: "Oh fuck! Oh fuck, oh fuck, oh fuck. I'm going to cum again all over your face!",
+                button: [
+                    { chatID: 39, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "zoey",
+                text: "Oh ouiiii. Je vais aussi. ",
+                button: [
+                    { chatID: 40, text: "...", callback: "s12" }
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "stormy",
+                text: "Does our little cuck want a taste? I'll be you do. You can smell the sex coming from my pussy can't you. " + 
+                    "just reach your tongue out and have a taste. ",
+                button: [
+                    { chatID: 41, text: "[Try to lick her pussy]", callback: "s13" }
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "zoey",
+                text: "He has had enough. I'm going to free him. " + sc.n("me") + ", merci de nous faire plaisir. ",
+                button: [
+                    { chatID: 42, text: "Oh yeah, sure. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "zoey",
+                text: "I will return the favor, but it is late and I am tired now. Good night everyone. ",
+                button: [
+                    { chatID: -1, text: "Bonne nuit", callback: "s14" }
+                ]
+            },
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

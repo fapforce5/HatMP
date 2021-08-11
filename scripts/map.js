@@ -1,31 +1,120 @@
 ﻿var m = {};
-m.fmap = new Array();
-m.direction = [
-    { n: 0, d: 'n', display: 'north', img: '475_path_1_n.png', l: 712, t: 0, w: 458, h: 489 },
-    { n: 0, d: 'e', display: 'east', img: '475_path_1_e.png', l: 1170, t: 316, w: 750, h: 440 },
-    { n: 0, d: 's', display: 'south', img: '475_path_1_s.png', l: 712, t: 489, w: 458, h: 591 },
-    { n: 0, d: 'w', display: 'west', img: '475_path_1_w.png', l: 0, t: 316, w: 712, h: 440 },
-
-
-];
-
-m.drawMap = function () {
-
-    var c = 0;
-    var isize = 30;
-    var right, top;
-    right = 600;
-    top = 250;
-    for (i = (m.fmap.length - 1); i > -1; i--) {
-        for (j = 0; j < m.fmap[i].length; j++) {
-            console.log('hit');
-            $('#menu_parent').append('<img class="dot_' + i + '_' + j + '" src="./images/room/475_fight/map_' + m.fmap[i][j].visited + '.png" style="position:absolute; ' + g.makeCss(30, 30, (30 * c) + top, (isize * j) + right) + '" />');
-        }
-        c++;
+m.fmap = null;
+m.row = 80;
+m.col = 20;
+m.drawBackground = function (row, col) {
+    nav.killall();
+    if (m.fmap[row][col].used === 'b') {
+        nav.bg("475_fight/b.jpg");
+        nav.button({
+            "type": "btn",
+            "name": "south",
+            "title": "South",
+            "left": 0,
+            "top": 718,
+            "width": 1920,
+            "height": 362,
+            "image": "475_fight/b_s.jpg"
+        }, 475);
+        chat(0, 475);
     }
-    if (g.pass === "combat") {
-        $(".dot_" + g.internal.row + "_" + g.internal.col).remove();
-        $('#menu_parent').append('<img class="dot_' + i + '_' + j + '" src="./images/room/475_fight/map_me.gif" style="position:absolute; ' + g.makeCss(30, 30, (isize * (Math.abs(g.internal.row - m.fmap.length) - 1)) + top, (isize * g.internal.col) + right) + '" />');
+    else {
+        var bg = m.drawBackgroundSub(row, col);
+
+        nav.bg("475_fight/" + bg + ".jpg");
+        if (row > 0) {
+            if (m.fmap[row - 1][col].used !== 'x')
+                nav.button({
+                    "type": "btn",
+                    "name": "north",
+                    "title": "North",
+                    "left": 712,
+                    "top": 0,
+                    "width": 458,
+                    "height": 489,
+                    "image": "475_fight/" + bg + "_n.jpg"
+                }, 475);
+        }
+        if (row < m.row - 1) {
+            if (m.fmap[row + 1][col].used !== 'x')
+                nav.button({
+                    "type": "btn",
+                    "name": "south",
+                    "title": "South",
+                    "left": 712,
+                    "top": 489,
+                    "width": 458,
+                    "height": 591,
+                    "image": "475_fight/" + bg + "_s.jpg"
+                }, 475);
+        }
+        if (col > 0) {
+            if (m.fmap[row][col - 1].used !== 'x')
+                nav.button({
+                    "type": "btn",
+                    "name": "west",
+                    "title": "West",
+                    "left": 0,
+                    "top": 316,
+                    "width": 712,
+                    "height": 440,
+                    "image": "475_fight/" + bg + "_w.jpg"
+                }, 475);
+        }
+        if (col < m.col - 1) {
+            if (m.fmap[row][col + 1].used !== 'x')
+                nav.button({
+                    "type": "btn",
+                    "name": "east",
+                    "title": "East",
+                    "left": 1170,
+                    "top": 316,
+                    "width": 750,
+                    "height": 440,
+                    "image": "475_fight/" + bg + "_e.jpg"
+                }, 475);
+        }
+    }
+    
+};
+
+m.drawBackgroundSub = function (row, col) {
+    var bg = "f1";
+    if (row > 67) {
+        bg = (col + row) % 2 === 0 ? "f0" : "f1";
+    }
+    else if (row > 57) {
+        if (row % 2 === 0)
+            bg = (col + row) % 2 === 0 ? "f0" : "f1";
+        else
+            bg = (col + row) % 2 === 0 ? "o0" : "o1";
+    }
+    else {
+        bg = (col + row) % 2 === 0 ? "o0" : "o1";
+    }
+    return bg + (g.isNight() ? "n" : "");
+};
+
+m.drawMap = function (r, c) {
+    
+    char.changeMenu("map", false);
+
+    var i, j;
+    var st = "";
+    $('#room_left_map').html('<div class="resize" style="margin-top:' + 100 * g.ratio + 'px; "></div>');
+    var style = 'style="width: ' + 11 * g.ratio + 'px; height: ' + 11 * g.ratio + 'px;" ';
+    for (i = 0; i < m.row; i++) {
+        st = '<div class="resize" style="margin:0; padding:0; height: ' + 11 * g.ratio + 'px; margin-left: ' + 20 * g.ratio + 'px;" >';
+        for (j = 0; j < m.col; j++) {
+            if (i === r && c === j)
+                st = st.concat('<div class="map-box map-tile-q resize" title="' + i + ', ' + j + '" ' + style + '></div>');
+            else if (!m.fmap[i][j].visited)
+                st = st.concat('<div class="map-box resize" title="' + i + ', ' + j + '" ' + style + '></div>');
+            else
+                st = st.concat('<div class="resize map-box map-tile-' + m.fmap[i][j].used + '" title="' + i + ', ' + j + '" ' + style + '></div>');
+        }
+        st = st.concat("</div>");
+        $('#room_left_map').append(st);
     }
 };
 
@@ -48,280 +137,220 @@ m.getDir = function (n, d) {
         }
     }
     return ret;
-}
-
-m.save = function () {
-    return "";
-}
-
-m.load = function () {
-    m.createFmap();
-}
-
+};
 
 m.createFmap = function () {
-    var row, col, i, j, tf;
-    row = 17;
-    col = 22;
-    m.fmap = new Array();
-    var thisUpdate;
+    var i, j, k, l, c, r, tf;
 
-    var fill0 = [
-        { row: 1, col: 9 },
-        { row: 2, col: 9 },
-        { row: 2, col: 8 },
-        { row: 3, col: 9 },
-        { row: 2, col: 7 },
-        { row: 4, col: 9 },
-        { row: 2, col: 6 },
-        { row: 4, col: 10 },
-        { row: 4, col: 11 },
-        { row: 1, col: 6 },
-        { row: 1, col: 5 },
-        { row: 1, col: 4 },
-        { row: 2, col: 4 },
-        { row: 3, col: 4 },
-        { row: 4, col: 4 },
-        { row: 5, col: 4 },
-        { row: 5, col: 3 },
-        { row: 6, col: 3 },
-        { row: 7, col: 3 },
-        { row: 7, col: 4 },
-        { row: 7, col: 5 },
-        { row: 8, col: 5 },
-        { row: 9, col: 5 },
-        { row: 10, col: 5 },
-        { row: 11, col: 5 },
-        { row: 11, col: 4 },
-        { row: 11, col: 6 },
-        { row: 11, col: 3 },
-        { row: 11, col: 7 },
-        { row: 12, col: 7 },
-        { row: 12, col: 7 },
-        { row: 14, col: 7 },
-        { row: 3, col: 12 },
-        { row: 3, col: 13 },
-        { row: 2, col: 13 },
-        { row: 1, col: 13 },
-        { row: 0, col: 13 },
-        { row: 3, col: 14 },
-        { row: 4, col: 14 },
-        { row: 5, col: 14 },
-        { row: 5, col: 15 },
-        { row: 6, col: 15 },
-        { row: 7, col: 15 },
-        { row: 8, col: 15 },
-        { row: 8, col: 14 },
-        { row: 9, col: 14 },
-        { row: 9, col: 13 },
-        { row: 10, col: 13 },
-        { row: 11, col: 13 },
-        { row: 12, col: 13 },
-        { row: 12, col: 14 },
-        { row: 12, col: 15 },
-        { row: 12, col: 16 },
-        { row: 12, col: 17 },
-        { row: 13, col: 7 },
-        { row: 4, col: 12 }
-    ];
-
-    var fill1 = [
-        { row: 1, col: 9 },
-        { row: 1, col: 8 },
-        { row: 1, col: 10 },
-        { row: 1, col: 7 },
-        { row: 1, col: 11 },
-        { row: 1, col: 6 },
-        { row: 1, col: 5 },
-        { row: 1, col: 4 },
-        { row: 2, col: 5 },
-        { row: 1, col: 3 },
-        { row: 2, col: 2 },
-        { row: 1, col: 2 },
-        { row: 3, col: 2 },
-        { row: 4, col: 2 },
-        { row: 5, col: 2 },
-        { row: 5, col: 1 },
-        { row: 5, col: 3 },
-        { row: 5, col: 0 },
-        { row: 6, col: 0 },
-        { row: 7, col: 0 },
-        { row: 8, col: 0 },
-        { row: 8, col: 1 },
-        { row: 9, col: 1 },
-        { row: 10, col: 1 },
-        { row: 11, col: 1 },
-        { row: 11, col: 2 },
-        { row: 11, col: 3 },
-        { row: 11, col: 4 },
-        { row: 12, col: 4 },
-        { row: 13, col: 4 },
-        { row: 2, col: 11 },
-        { row: 3, col: 11 },
-        { row: 4, col: 11 },
-        { row: 5, col: 11 },
-        { row: 6, col: 11 },
-        { row: 6, col: 10 },
-        { row: 6, col: 9 },
-        { row: 5, col: 9 },
-        { row: 6, col: 9 },
-        { row: 9, col: 9 },
-        { row: 9, col: 9 },
-        { row: 10, col: 10 },
-        { row: 11, col: 10 },
-        { row: 11, col: 11 },
-        { row: 11, col: 12 },
-        { row: 11, col: 13 },
-        { row: 6, col: 12 },
-        { row: 6, col: 13 },
-        { row: 6, col: 14 },
-        { row: 6, col: 15 },
-        { row: 6, col: 16 },
-        { row: 6, col: 17 },
-        { row: 6, col: 1 },
-        { row: 7, col: 1 },
-        { row: 8, col: 1 },
-        { row: 6, col: 18 },
-        { row: 7, col: 18 },
-        { row: 8, col: 18 },
-        { row: 9, col: 18 },
-        { row: 9, col: 19 },
-        { row: 10, col: 19 },
-        { row: 11, col: 19 },
-        { row: 12, col: 19 },
-    ];
-
-    var fill2 = [
-        { row: 1, col: 9 },
-        { row: 1, col: 8 },
-        { row: 1, col: 7 },
-        { row: 2, col: 7 },
-        { row: 3, col: 7 },
-        { row: 2, col: 7 },
-        { row: 4, col: 6 },
-        { row: 4, col: 5 },
-        { row: 5, col: 5 },
-        { row: 6, col: 5 },
-        { row: 7, col: 5 },
-        { row: 7, col: 4 },
-        { row: 7, col: 3 },
-        { row: 7, col: 2 },
-        { row: 7, col: 1 },
-        { row: 7, col: 0 },
-        { row: 6, col: 0 },
-        { row: 5, col: 0 },
-        { row: 4, col: 0 },
-        { row: 3, col: 0 },
-        { row: 2, col: 0 },
-        { row: 2, col: 9 },
-        { row: 3, col: 9 },
-        { row: 4, col: 9 },
-        { row: 5, col: 9 },
-        { row: 6, col: 9 },
-        { row: 6, col: 10 },
-        { row: 6, col: 11 },
-        { row: 6, col: 12 },
-        { row: 6, col: 13 },
-        { row: 5, col: 13 },
-        { row: 4, col: 13 },
-        { row: 4, col: 14 },
-        { row: 4, col: 15 },
-        { row: 3, col: 15 },
-        { row: 3, col: 16 },
-        { row: 3, col: 17 },
-        { row: 3, col: 18 },
-        { row: 4, col: 18 },
-        { row: 5, col: 18 },
-        { row: 6, col: 18 },
-        { row: 7, col: 18 },
-        { row: 8, col: 18 },
-        { row: 9, col: 18 },
-        { row: 9, col: 19 },
-        { row: 10, col: 19 },
-        { row: 11, col: 19 },
-        { row: 12, col: 19 },
-        { row: 13, col: 19 },
-        { row: 13, col: 18 },
-        { row: 7, col: 9 },
-        { row: 8, col: 9 },
-        { row: 9, col: 9 },
-        { row: 10, col: 9 },
-        { row: 11, col: 9 },
-        { row: 12, col: 9 },
-        { row: 3, col: 6 }
-    ];
-    if (g.rand(0, 2)) {
-        thisUpdate = 0;
-        tf = fill0;
-    }
-    else if (g.rand(0, 1)) {
-        thisUpdate = 1;
-        tf = fill1;
-    }
+    var x = g.get("forestMap");
+    if (x === null)
+        m.createFmapNew();
     else {
-        thisUpdate = 2;
-        tf = fill2;
+        var y = g.get("forestVisit");
+        var z = g.get("forestID");
+        //var xa = x.split(",");
+        var ya = y.split(",");
+        m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));
+        for (i = 0; i < m.row; i++) {
+            for (j = 0; j < m.col; j++)
+                m.fmap[i][j] = {
+                    used: 'x',
+                    visited: false
+                };
+        }
+
+        for (i = 0; i < x.length; i++) {
+            k = Math.floor(i / 18) + 1;
+            l = (i % 18) + 1;
+            m.fmap[k][l].used = x[i];
+        }
+        for (i = 0; i < ya.length; i++) {
+            c = m.revGetNum(ya[i]);
+            if (c !== null)
+                m.fmap[c.row][c.col].visited = true;
+        }
+
+        m.fmap[79][10].used = 's';
+        m.fmap[49][0].used = 's';
+        m.fmap[24][0].used = 's';
+    }
+};
+
+m.createFmapNew = function () {
+    var i, j, k, l, c, r;
+    var trow, tcol, goRight, howMany;
+
+    m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));
+    var thisUpdate;
+    var prevDir = Math.floor(Math.random() * 2) === 1;
+    var tf = new Array();
+    trow = 78;
+    tcol = 10;
+    while (trow > 1) {
+        if (prevDir) {
+            var moveAhead = (Math.floor(Math.random() * 6)) + 2;
+            for (moveAhead; moveAhead > 0; moveAhead--) {
+                if (trow > 0) {
+                    trow--;
+                    tf.push({ row: trow, col: tcol });
+                }
+            }
+        }
+        else {
+            if (tcol < 4)
+                goRight = true;
+            else if (tcol > 15)
+                goRight = false;
+            else
+                goRight = Math.floor(Math.random() * 2) === 1;
+            howMany = Math.floor(Math.random() * 10) + 3;
+            for (howMany; howMany > 0; howMany--) {
+                if (goRight) {
+                    if (tcol < 17)
+                        tcol++;
+                }
+                else {
+                    if (tcol > 2)
+                        tcol--;
+                }
+                tf.push({ row: trow, col: tcol });
+            }
+        }
+        prevDir = !prevDir;
     }
 
-    for (i = 0; i < row; i++) {
-        m.fmap.push(new Array())
-        for (j = 0; j < col; j++) {
-            m.fmap[i][j] = {
-                used: 'x',
-                t: (i * row) + j,
-                visited: 'u'
-            };
+    
+    for (i = 0; i < 15; i++) {
+        j = Math.floor(Math.random() * tf.length);
+        r = tf[j].row;
+        c = tf[j].col;
+        l = Math.floor(Math.random() * 2);
+        for (j = 0; j < 10; j++) {
+            k = Math.floor(Math.random() * 8);
+            if (k === 0 && r > 0)
+                r--;
+            else if (k === 1 && r < 48)
+                r++;
+            else if (k === 3 && c > 1)
+                c--;
+            else if (k === 4 && c < 18)
+                c++;
+            else if (l === 0 && c > 1)
+                c--;
+            else if (c < 18)
+                c++;
+            tf.push({ row: r, col: c });
         }
     }
 
+    for (i = 0; i < m.row; i++) {
+        for (j = 0; j < m.col; j++) {
+            m.fmap[i][j] = {
+                used: 'x',
+                visited: false
+            };
+        }
+    }
     for (i = 0; i < tf.length; i++) {
         m.fmap[tf[i].row][tf[i].col].used = 'm';
     }
 
-    for (i = 0; i < Math.floor((col * row) / 1.8); i++) {
-        var tc = g.rand(0, col);
-        var tr = g.rand(0, row);
-        if (m.fmap[tr][tc].used != 'm')
+    for (i = 0; i < Math.floor((m.col * m.row) / 3); i++) {
+        var tc = g.rand(1, m.col - 1);
+        var tr = g.rand(1, m.row - 1);
+        if (m.fmap[tr][tc].used !== 'm')
             m.fmap[tr][tc].used = 'm'; //make u for test
     }
-    for (i = 0; i < row; i++) {
-        m.fmap[i][0].used = 'x';
-        m.fmap[i][col - 1].used = 'x';
-    }
-    for (i = 0; i < col; i++) {
+
+    for (i = 1; i < m.col - 1; i++) {
+        m.fmap[50][i].used = 'x';
+        m.fmap[51][i].used = 'm';
+        m.fmap[49][i].used = 'm';
+
+        m.fmap[25][i].used = 'x';
+        m.fmap[26][i].used = 'm';
+        m.fmap[24][i].used = 'm';
+
         m.fmap[0][i].used = 'x';
-        m.fmap[row - 1][i].used = 'x';
+        m.fmap[1][i].used = 'm';
+
+        m.fmap[59][i].used = 'm';
+        m.fmap[32][i].used = 'm';
+        m.fmap[12][i].used = 'm';
     }
 
-    m.fmap[g.rand(3, 15)][g.rand(1, 20)].used = 'b';
-    m.fmap[g.rand(3, 15)][g.rand(1, 20)].used = 'b';
-    m.fmap[g.rand(3, 15)][g.rand(1, 20)].used = 'g';
-    m.fmap[g.rand(3, 15)][g.rand(1, 20)].used = 'g';
+    
+    m.fmap[50][Math.floor(Math.random() * 16) + 2].used = 'b';
+    m.fmap[25][Math.floor(Math.random() * 16) + 2].used = 'c';
+    m.fmap[0][Math.floor(Math.random() * 16) + 2].used = 'd';
 
-    switch (thisUpdate) {
-        case 0:
-            m.fmap[15][7].used = 'h';
-            m.fmap[13][17].used = 'h';
-            m.fmap[11][7].used = 'b';
-            m.fmap[12][13].used = 'b';
-            m.fmap[7][5].used = 'g';
-            m.fmap[8][15].used = 'g';
-            break;
-        case 1:
-            m.fmap[12][20].used = 'h';
-            m.fmap[13][3].used = 'h';
-            m.fmap[11][4].used = 'b';
-            m.fmap[9][19].used = 'b';
-            m.fmap[5][2].used = 'g';
-            m.fmap[6][14].used = 'g';
-            break;
-        case 2:
-            m.fmap[8][1].used = 'h';
-            m.fmap[14][18].used = 'h';
-            m.fmap[7][5].used = 'b';
-            m.fmap[9][19].used = 'b';
-            m.fmap[4][5].used = 'g';
-            m.fmap[3][18].used = 'g';
-            break;
+    var goldHouseLoc = Math.floor(Math.random() * 2) === 1;
+    var close = goldHouseLoc ? 2 : 17;
+    var far = !goldHouseLoc ? 2 : 17;
+    m.fmap[59][close].used = 'g';
+    m.fmap[32][far].used = 'g';
+    m.fmap[12][close].used = 'g';
+
+    m.fmap[58][far].used = 'm';
+    m.fmap[59][far].used = 'm';
+    m.fmap[60][far].used = 'm';
+    m.fmap[61][far].used = 'm';
+    m.fmap[62][far].used = 'i';
+
+    m.fmap[33][close].used = 'm';
+    m.fmap[34][close].used = 'm';
+    m.fmap[35][close].used = 'm';
+    m.fmap[36][close].used = 'j';
+
+    m.fmap[13][far].used = 'm';
+    m.fmap[14][far].used = 'm';
+    m.fmap[15][far].used = 'm';
+    m.fmap[16][far].used = 'k';
+
+    m.fmap[49][0].used = 's';
+    m.fmap[24][0].used = 's';
+    
+    m.fmap[78][10].used = 'm';
+    m.fmap[79][10].used = 's';
+    m.fmap[79][10].visited = true;
+    var tx = "";
+    for (i = 0; i < m.row; i++) {
+        for (j = 0; j < m.col; j++) {
+            if (m.fmap[i][j].visited)
+                tx += m.getNum(i, j) + ",";
+        }
     }
-}
+    g.set("forestVisit", tx);
+    var forestString = "";
+
+    for (i = 1; i < 79; i++) {
+        for (j = 1; j < 19; j++)
+            forestString += m.fmap[i][j].used;
+    }
+    g.set("forestMap", forestString);
+};
+
+m.updateVisit = function () {
+    var tx = "";
+    var i, j;
+    for (i = 0; i < m.row; i++) {
+        for (j = 0; j < m.col; j++) {
+            if (m.fmap[i][j].visited)
+                tx += m.getNum(i, j) + ",";
+        }
+    }
+    g.set("forestVisit", tx);
+};
+
+m.getNum = function (i, j) {
+    return (i * 20) + j;
+};
+m.revGetNum = function (x) {
+    var n = parseInt(x);
+    if (!isNaN(n)) {
+        var m = Math.floor(n / 20);
+        var o = n % 20;
+        return { row: m, col: o };
+    }
+    return null;
+};

@@ -441,6 +441,36 @@ room209.btnclick = function (name) {
             room209.btnclick("displaypbtn");
             chat(132, 209);
             break;
+        case "h_55":
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            nav.button({
+                "type": "img",
+                "name": "h55_1",
+                "left": 450,
+                "top": 108,
+                "width": 745,
+                "height": 972,
+                "image": "209_classroom/h55_1.png"
+            }, 209);
+            room209.btnclick("displayChairsit");
+            chat(145, 209);
+            break;
+        case "h55_15":
+            chat(174, 209);
+            break;
+        case "h55_17":
+            nav.killall();
+            nav.bg("205_computerWork/blackBg.jpg");
+            g.set("oncase", "cult0");
+            
+            g.internal = { day: 0, interval: 0, cleaned: false, constDayDirty: 0 };
+            g.pass = 950;
+            char.room(28); 
+            
+            break;
         case "h_56":
             char.addtime(20);
             char.room(201);
@@ -1100,6 +1130,149 @@ room209.chatcatch = function (callback) {
             sc.setstep("spanky", 3);
             inv.addMulti("hormone", 10);
             room209.chatcatch("end");
+            break;
+        case "h55_2":
+            nav.killbutton("h55_1");
+            nav.killbutton("chair");
+            nav.button({
+                "type": "img",
+                "name": "h55_2",
+                "left": 800,
+                "top": 108,
+                "width": 470,
+                "height": 1023,
+                "image": "209_classroom/h55_2.png"
+            }, 209);
+            room209.btnclick("displayChairsit");
+            break;
+        case "h55_3":
+            nav.killall();
+            cl.c.shirt = cl.c.pants = cl.c.shoes = cl.c.socks = cl.c.pj = cl.c.swimsuit = null;
+            cl.c.dress = "robe";
+            zcl.displayMain(-50, 750, .2, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "missy",
+                "left": 524,
+                "top": 0,
+                "width": 672,
+                "height": 1080,
+                "image": "209_classroom/h6_6.png"
+            }, 209);
+            break;
+        case "h55_4":
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "bb",
+                "left": 605,
+                "top": 225,
+                "width": 868,
+                "height": 368,
+                "image": "209_classroom/bb55_0.jpg"
+            }, 209);
+            
+            nav.button({
+                "type": "btn",
+                "name": "appearnceStart",
+                "left": 1013,
+                "top": 210,
+                "width": 466,
+                "height": 870,
+                "image": "209_classroom/missy0.png"
+            }, 209);
+            room209.btnclick("displayChairsit");
+            break;
+        case "55_5":
+            nav.modbutton("bb", "209_classroom/bb55_1.jpg", null, null);
+            break;
+        case "55_6":
+            nav.modbutton("bb", "209_classroom/bb55_2.jpg", null, null);
+            break;
+        case "55_7":
+            nav.killall();
+            nav.bg("451_parkMensRoom/stall.jpg");
+            char.addtime(30);
+            break;
+        case "55_8":
+            char.addtime(45);
+            break;
+        case "h55_9":
+            nav.killall();
+            nav.bg("452_parkWomansRoom/bathroom.jpg");
+            scc.love("missy", -10, 100);
+            nav.button({
+                "type": "btn",
+                "name": "h55_9",
+                "left": 1082,
+                "top": 24,
+                "width": 465,
+                "height": 1056,
+                "image": "209_classroom/h55_9.png"
+            }, 209);
+            break;
+        case "55_10":
+            nav.killall();
+            nav.bg("451_parkMensRoom/stall.jpg");
+            char.settime(22, 3);
+            g.popUpNotice("Time has passed");
+            break;
+        case "h55_11":
+            nav.bg("209_classroom/h55_11.jpg");
+            break;
+        case "h55_12":
+            nav.bg("450_park/450_bg_night.jpg");
+            zcl.displayMain(300, 1000, .08, "clothes", false);
+            nav.button({
+                "type": "btn",
+                "name": "h55_12",
+                "left": 633,
+                "top": 291,
+                "width": 1185,
+                "height": 789,
+                "image": "209_classroom/h55_12.png"
+            }, 209);
+            break;
+        case "h55_13":
+            nav.killall();
+            nav.bg("209_classroom/h55_13.jpg");
+            break;
+        case "h55_14":
+            $("#room-menu").hide();
+            $("#room-inv").hide();
+            $("#room-change").hide();
+            cl.c.chastity = cl.c.buttplug = null;
+            cl.nude();
+            nav.bg("24_spinTheBottle/black.jpg");
+            break;
+        case "h55_15":
+            nav.bg("209_classroom/h55_15.jpg");
+            break; 
+        case "h55_16":
+            nav.button({
+                "type": "btn",
+                "name": "h55_15",
+                "left": 414,
+                "top": 0,
+                "width": 1105,
+                "height": 1067,
+                "image": "209_classroom/h55_15.png"
+            }, 209);
+            nav.bg("209_classroom/h55_16.jpg");
+            break; 
+        case "h55_17":
+            nav.killall();
+            
+            nav.bg("950_cell/cell.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "h55_17",
+                "left": 994,
+                "top": 685,
+                "width": 684,
+                "height": 103,
+                "image": "950_cell/bed.png"
+            }, 209);
             break;
         case "h_58_1":
             nav.killall();
@@ -2454,6 +2627,309 @@ room209.chat = function (chatID) {
                     "apartment and she'll give you some lessons. ",
                 button: [
                     { chatID: -1, text: "Ok, I'll go see " + sc.n("tiffany") + ".", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "missy",
+                text: "So you're probably wondering what's in this red box? ",
+                button: [
+                    { chatID: 146, text: "?", callback: "h55_2" }
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "missy",
+                text: "It's your next case. Put on this robe. ",
+                button: [
+                    { chatID: 147, text: "Yes ma'am", callback: "h55_3" }
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "missy",
+                text: "That will work. Have a seat while I go over your assignment. ",
+                button: [
+                    { chatID: 148, text: "[Sit]", callback: "h55_4" }
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "missy",
+                text: "I have a very important, very real case for you involving the cult. The cult has been infecting this town " +
+                    "for over a decade. They started slowly with just a few members out at the old military fort, but over the years " +
+                    "their numbers have grown into the hundreds. ",
+                button: [
+                    { chatID: 149, text: "...", callback: "55_5" }
+                ]
+            },
+            {
+                chatID: 149,
+                speaker: "missy",
+                text: "The cult calls themselves the Carnal Union of Mortals or CUM. for short. It's lead by a man named Ubel. " +
+                    "Not a lot is known about him, he just showed up with a small collection of followers, bought the land that the " +
+                    "fort is on in cash, and has been leading CUM ever since. ",
+                button: [
+                    { chatID: 150, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 150,
+                speaker: "missy",
+                text: "I have an informant on the inside. I can't tell you his name, but he's a low level follower and hasn't been able " + 
+                    "to infiltrate the high level priests so I don't know about the inner workings of the cult. What I do know is that " +
+                    "they are truly evil. There's boys chained to walls milked for their cum five times a day by milk maids. " +
+                    "They collect it for the milk bath rituals where they take hermaphrodites to be bathed and bred by all " +
+                    "the male worshippers. This can last for days where her only sustenance is the cum from the bath surrounding her " +
+                    "and the cocks in her mouth. ",
+                button: [
+                    { chatID: 151, text: "What about the police?", callback: "" }
+                ]
+            },
+            {
+                chatID: 151,
+                speaker: "missy",
+                text: "The reason the police don't get involved is that it's all voluntary. They've been brainwashed into believing " +
+                    "that if the hermaphrodite is able to conceive they will give birth to Azreal, the Angel of Death. " +
+                    "They believe that once Azreal is upon the earth he will " +
+                    "destroy all mankind except for the followers of CUM who will now rule over all. ",
+                button: [
+                    { chatID: 152, text: "...", callback: "55_6" }
+                ]
+            },
+            {
+                chatID: 152,
+                speaker: "missy",
+                text: "Now this is Jen. She's just a milkmaid, and one of Ubel's main girls. That was until Ubel discarded " +
+                    "her for another girl. Now Jen's mad and we may be able to turn her from the cult and get information from her to " +
+                    "help us in our fight against them. This is where you come in. ",
+                button: [
+                    { chatID: 153, text: "Am I going to infiltrate the cult?", callback: "" }
+                ]
+            },
+            {
+                chatID: 153,
+                speaker: "missy",
+                text: "Hahahaha, you silly sissy. You are no where near ready to deal with the cult. I need you to meet with Jen " +
+                    "and deliver a note. That's all. They know who " + sc.n("cecilia") + " and I are, as well as all the police in " +
+                    "this town, so we can't jeopardize a meeting with Jen. However, they don't know you. I need you to meet her in the " +
+                    "park tonight with this note and pass it to her. ",
+                button: [
+                    { chatID: 154, text: "ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 154,
+                speaker: "missy",
+                text: "You are not to talk to anyone else, just hide in the last bathroom stall in the girls bathroom " +
+                    "and wait. She'll come in and say 'I hate this crappy toilet paper.' You'll reply with 'I know, It's going " +
+                    "to knock the hell out of my hemorrhoids.' Then pass the note under the stall. Wait for her to leave " +
+                    "then leave yourself. Make sure you're not being followed then meet me back here in my office. I'll stay " +
+                    "late to make sure you're ok. ",
+                button: [
+                    { chatID: 155, text: "Yes ma'am", callback: "" }
+                ]
+            },
+            {
+                chatID: 155,
+                speaker: "missy",
+                text: "So what does she say to initiate the greeting? ",
+                button: [
+                    { chatID: 156, text: "I hate this crappy toilet paper.", callback: "" }
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "missy",
+                text: "Good, and what's your reply?",
+                button: [
+                    {
+                        chatID: 157, text: "I know, It's going to knock the hell out of my hemorrhoids.", callback: "" }
+                ]
+            },
+            {
+                chatID: 157,
+                speaker: "missy",
+                text: "Then come back to my office where I'll be waiting for you. You'll wear the cult robe so as not to " +
+                    "arouse suspicion when you leave. That park is crawling with cult members at night. ",
+                button: [
+                    {
+                        chatID: 158, text: "Yes ma'am", callback: ""
+                    }
+                ]
+            },
+            {
+                chatID: 158,
+                speaker: "missy",
+                text: "Ok, now head to the last bathroom stall in the girl's bathroom and wait for tonight. Jen will be by around " +
+                    "10:00 PM tonight. Don't talk to anyone, don't look at anyone, just go to the stall and wait in your robe. Take " +
+                    "this note with you. ",
+                button: [
+                    {
+                        chatID: 159, text: "[Take note and go to the park bathroom]", callback: "55_7"
+                    }
+                ]
+            },
+            {
+                chatID: 159,
+                speaker: "thinking",
+                text: "Oh wow, it's still so early. I should have packed a lunch. I guess I'll just sit here and wait....",
+                button: [
+                    {
+                        chatID: 160, text: "[Wait...]", callback: "55_8"
+                    }
+                ]
+            },
+            {
+                chatID: 160,
+                speaker: "random",
+                text: "Hay, you in the stall next door. You've been in there a while. You want to have some fun while you wait? " +
+                    "My oral skills are amazing. ",
+                button: [
+                    {
+                        chatID: 161, text: "...", callback: ""
+                    }
+                ]
+            },
+            {
+                chatID: 161,
+                speaker: "thinking",
+                text: "Oh wow, that girl in the next stall sounds hot. It's still really early. I bet I could fuck her really quick " +
+                    "and continue to wait. I have so much time still. ",
+                button: [
+                    { chatID: 162, text: "Yeah, come over, I want to see your oral skills! ", callback: "" },
+                    { chatID: 165, text: "[Stay silent]", callback: "" }
+                ]
+            },
+            {
+                chatID: 162,
+                speaker: "missy",
+                text: "Oh I'll show you my oral skills! Get out here RIGHT now!",
+                button: [
+                    { chatID: 163, text: sc.n("missy") + "...", callback: "h55_9" }
+                ]
+            },
+            {
+                chatID: 163,
+                speaker: "missy",
+                text: "I told you not to talk to anyone. You're going to blow this entire thing, and you've only been here for an hour! " +
+                    "Now get back in there and stop goofing off. This is more important than you know you little pervert! ",
+                button: [
+                    { chatID: 164, text: "I'm so sorry, I just...", callback: "" }
+                ]
+            },
+            {
+                chatID: 164,
+                speaker: "missy",
+                text: "Don't apologize, just get in there and do your job. NOW! ",
+                button: [
+                    { chatID: 166, text: "Yes ma'am", callback: "55_10" }
+                ]
+            },
+            {
+                chatID: 165,
+                speaker: "thinking",
+                text: "There's no way I'm saying anything. I'm just going to sit here and wait. ",
+                button: [
+                    { chatID: 166, text: "...", callback: "55_10" }
+                ]
+            },
+            {
+                chatID: 166,
+                speaker: "random",
+                text: "I hate this crappy toilet paper.",
+                button: [
+                    { chatID: 167, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 167,
+                speaker: "thinking",
+                text: "Oh shit, that's for me! I better pass the note.. What was my line. Oh yeah, hemorrhoids. What a strange " +
+                    "line. I bet she did that just to embarrass me. Oh well, here goes. ",
+                button: [
+                    { chatID: 168, text: "I know, It's going to knock the hell out of my hemorrhoids.", callback: "h55_11" }
+                ]
+            },
+            {
+                chatID: 168,
+                speaker: "thinking",
+                text: "That was easy. Now I'll wait for 10 minutes and return to the agency. ",
+                button: [
+                    { chatID: 169, text: "[Wait 10 minutes and go back]", callback: "h55_12" }
+                ]
+            },
+            {
+                chatID: 169,
+                speaker: "me",
+                text: "Oh! Hi fellow cult members. Lovely night isn't it.",
+                button: [
+                    { chatID: 170, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 170,
+                speaker: "me",
+                text: "Oh my look at the time. I better go get some more cum. I sure do love cum!",
+                button: [
+                    { chatID: 171, text: "...", callback: "h55_13" }
+                ]
+            },
+            {
+                chatID: 171,
+                speaker: "me",
+                text: "Oooooofffffffff",
+                button: [
+                    { chatID: 172, text: "...", callback: "h55_14" }
+                ]
+            },
+            {
+                chatID: 172,
+                speaker: "thinking",
+                text: "...",
+                button: [
+                    { chatID: 173, text: "...", callback: "h55_15" }
+                ]
+            },
+            {
+                chatID: 173,
+                speaker: "me",
+                text: "*Groan*",
+                button: [
+                    { chatID: -1, text: "...", callback: "h55_16" }
+                ]
+            },
+            {
+                chatID: 174,
+                speaker: "Ubel",
+                text: "So the drudge awakes. Did you really think my favorite pet, Jen here, would turn on me?",
+                button: [
+                    { chatID: 175, text: "Oh... uh...", callback: "" }
+                ]
+            },
+            {
+                chatID: 175,
+                speaker: "Ubel",
+                text: "Shhhhh. I was hoping I would catch a bigger fish, but you'll do. If you behave yourself you may just get " +
+                    "to be one of my cum cows. If not then we slaughter you like a cow and feast on your flesh. ",
+                button: [
+                    { chatID: 176, text: "Let me out! This is kidnapping!", callback: "" }
+                ]
+            },
+            {
+                chatID: 176,
+                speaker: "Ubel",
+                text: "Yell all you want. You're in the deepest part of the fort. No one will ever hear you again. ",
+                button: [
+                    { chatID: 177, text: "Please...", callback: "" }
+                ]
+            },
+            {
+                chatID: 177,
+                speaker: "Ubel",
+                text: "I've spent enough time with you. Sleep little cow, tomorrow is going to be busy. ",
+                button: [
+                    { chatID: -1, text: "whimper", callback: "h55_17" }
                 ]
             },
         ];

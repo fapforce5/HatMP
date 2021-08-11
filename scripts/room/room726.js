@@ -63,7 +63,7 @@ room726.btnclick = function (name) {
             break;
         case "lifeguardGirl":
             var cindyStep = sc.getstep("cindy");
-            var mybody = cl.appearanceBody();
+            var mybody = cl.appearance();
             nav.killbutton("lifeguardGirl");
             nav.button({
                 "type": "img",

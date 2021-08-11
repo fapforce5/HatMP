@@ -6,25 +6,17 @@ room900.main = function () {
     var btnList = [
         {
             "type": "btn",
-            "name": "collegeOfMath",
-            "left": 1238,
-            "top": 30,
-            "width": 682,
-            "height": 704,
-            "image": "900_college/900_collegeOfMath.png"
-        },
-        {
-            "type": "btn",
-            "name": "studentCenter",
-            "left": 92,
-            "top": 0,
-            "width": 1119,
-            "height": 596,
-            "image": "900_college/900_studentCenter.png"
+            "name": "building",
+            "left": 525,
+            "top": 403,
+            "width": 864,
+            "height": 582,
+            "image": "900_college/college.png",
+            "night": "900_college/collegeNight.png"
         }
     ];
 
-    var navList = [901, 0];
+    var navList = [0];
 
     if (sc.getstep("me") === 1)
         navList.unshift(902);
@@ -38,17 +30,27 @@ room900.main = function () {
 
 room900.btnclick = function (name) {
     switch (name) {
-        case "collegeOfMath":
-            if(sc.getstep("me") === 1)
-                char.room(901);
-            else
-                chat(0, 900);
+        case "building":
+            nav.killall();
+            nav.bg("900_college/frontDesk.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "lib",
+                "left": 978,
+                "top": 326,
+                "width": 185,
+                "height": 324,
+                "image": "900_college/lib.png"
+            }, 900);
+            nav.buildnav([0]);
             break;
-        case "studentCenter":
-            if (sc.getstep("me") === 1)
-                chat(0, 900);
-            else
+        case "lib":
+            if (inv.has("studentid")) {
                 chat(2, 900);
+            }
+            else {
+                chat(1, 900);
+            }
             break;
         default:
             break;
@@ -57,7 +59,11 @@ room900.btnclick = function (name) {
 
 room900.chatcatch = function(callback){
     switch (callback) {
-        case "":
+        case "showid":
+            if (cl.c.hairColor === "blond")
+                chat(4, 900);
+            else
+                chat(3, 900);
             break;
         default:
             break;
@@ -74,16 +80,38 @@ room900.chat = function(chatID){
         },
         {
             chatID: 1,
-            speaker: "me",
-            text: "I've already finished my final. I don't have any classes there",
-            button: []
+            speaker: "random",
+            text: "Only students can enter the school library. You need to have a student ID. ",
+            button: [
+                { chatID: -1, text: "Drat!", callback: "resest" }
+                ]
         },
+
         {
             chatID: 2,
-            speaker: "me",
-            text: "I don't need to sign up for classes right now.",
-            button: []
-        }
+            speaker: "random",
+            text: "Only students can enter the school library. You need to have a student ID. ",
+            button: [
+                { chatID: -1, text: "Yes I do. [Show her your school ID]", callback: "showid" },
+                { chatID: -1, text: "ok. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "random",
+            text: "You fucking liar. This person has blonde hair you have " + cl.c.hairColor + " hair. Fuck out of here. ",
+            button: [
+                { chatID: -1, text: "ok. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "random",
+            text: "Work in progress.  ",
+            button: [
+                { chatID: -1, text: "ok. ", callback: "" }
+            ]
+        },
     ];
 
     return cArray[chatID];

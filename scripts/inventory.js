@@ -20,6 +20,7 @@ inv.leftMenu = true;
 
 inv.t = [
     { t: "b", n: "Backpack" },
+    { t: "c", n: "Restraints" },
     { t: "d", n: "Dildo" },
     { t: "e", n: "Energy Snack" },
     { t: "g", n: "General Item" },
@@ -29,8 +30,8 @@ inv.t = [
     { t: "p", n: "Phone Case" },
     { t: "r", n: "Room Decoration" },
     { t: "t", n: "Penis Cream" },
+    { t: "x", n: "ID Card" },
     { t: "z", n: "Gift" }
-    
 ];
 
 inv.master = [
@@ -43,6 +44,7 @@ inv.master = [
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
     { type: "e", name: "cumjar", display: "A Jar Full of cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
+    { type: "x", name: "studentid", display: "Student ID", entry: false, count: null, cost: 0, image: "sudentid.png", n: false, desc: "Stolen Student ID" },
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 1, image: "makeup.png", n: false, desc: "Make your face pretty" },
     { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 1, image: "redl.png", n: false, desc: "Red Lipstick" },
@@ -76,6 +78,7 @@ inv.master = [
     { type: "d", name: "blackBallsDildo", display: "Anal Beads", entry: false, count: null, cost: 40, image: "butt_balls.png", n: false, desc: "Balls you put in your ass" },
     { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 90, image: "butt_tower.png", n: false, desc: "Stretch that sissy hole" },
     { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false, desc: "You'll blow your ass out" },
+    { type: "c", name: "handcuff", display: "Handcuffs", entry: false, count: null, cost: 36, image: "handcuffs.png", n: false, desc: "Handcuffs, you know, for your hands" },
 
     { type: "t", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false, desc: "Shrink your pp" },
     { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false, desc: "Go home and chek it out" },
@@ -372,7 +375,7 @@ inv.display = function () {
                     $("#menu_displayAction").attr("data-itype", "bag");
                     $("#menu_displayAction").attr("data-type", thisItem.type);
                     $("#menu_displayAction").attr("data-name", thisItem.name);
-                    $("#menu_displayAction").html("Auto Take Pill");
+                    $("#menu_displayAction").html("Auto Take Pill<br/>When Hormone < 90");
                     $("#menu_displayAction").show();
                 }
                 break;
@@ -575,6 +578,9 @@ inv.createElements = function () {
                                 g.mod("energy", 50);
                                 g.mod("fitness", -15);
                                 break;
+                            case "cumjar":
+                                g.mod("energy", 100);
+                                break;
                             default:
                                 console.log("UNK energy: " + thisName);
                         }
@@ -630,16 +636,16 @@ inv.createElements = function () {
                             $("#menu_displayAction").html("Stop Auto Taking Pill");
                         }
                         else {
-                            $("#menu_displayAction").html("Auto Take Pill");
+                            $("#menu_displayAction").html("Auto Take Pill<br/>When Hormone < 90");
                         }
                     }
-                    else if ($("#menu_displayAction").html() === "Auto Take Pill") {
+                    else if ($("#menu_displayAction").text() === "Auto Take PillWhen Hormone < 90") {
                         g.set("autohormone", true);
                         $("#menu_displayAction").html("Stop Auto Taking Pill");
                     }
                     else {
                         g.set("autohormone", false);
-                        $("#menu_displayAction").html("Auto Take Pill");
+                        $("#menu_displayAction").html("Auto Take Pill<br/>When Hormone < 90");
                     }
 
                     

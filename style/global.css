@@ -44,7 +44,7 @@ input[type=text]:disabled{
     top:0;
     left:0;
     border-right:solid #000 2px;
-    background:rgba(0,0,0,.2);
+    background:rgba(0,0,0,.4);
 }
 
 .rl-change {
@@ -262,7 +262,7 @@ input[type=text]:disabled{
 
 .wardrobe-icon{
     display:inline-block;
-    width:7%;
+    width:6%;
     vertical-align:top;
     margin:0;
     background:none;
@@ -782,9 +782,95 @@ input[type=text]:disabled{
     filter: brightness(1.2);
 }
 
+.map-box {
+    display: inline-block;
+    background: #404040;
+    padding: 0;
+    margin: 0;
+}
+
+.map-tile-m {
+    background: #efac70;
+}
+.map-tile-s {
+    background: #dd1111;
+}
+.map-tile-b {
+    background: #FF0000;
+}
+.map-tile-e {
+    background: #660000;
+}
+.map-tile-q {
+    animation-name: tile-q;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+.map-tile-g{
+    background:#ffff00;
+}
+.map-tile-x {
+    background: #000;
+}
+.map-tile-i, .map-tile-j, .map-tile-k {
+    background: #ce2281;
+}
+
+.switch-field {
+    display: flex;
+    margin-bottom: 36px;
+    overflow: hidden;
+}
+
+    .switch-field input {
+        position: absolute !important;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
+    }
+
+    .switch-field label {
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+    }
+
+        .switch-field label:hover {
+            cursor: pointer;
+        }
+
+    .switch-field input:checked + label {
+        background-color: #a5dc86;
+        box-shadow: none;
+    }
+
+    .switch-field label:first-of-type {
+        border-radius: 4px 0 0 4px;
+    }
+
+    .switch-field label:last-of-type {
+        border-radius: 0 4px 4px 0;
+    }
+
 @keyframes lolaSpin {
     0% { transform:rotate(0deg);}
 100% { transform:rotate(2160deg);}
+}
+
+@keyframes tile-q {
+    0% { background: #66ff66; }
+    50% { background: #003300; }
+    100% { background: #66ff66; }
 }
 
 @keyframes evaSpin{

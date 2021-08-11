@@ -232,6 +232,7 @@ room200.chatcatch = function (callback) {
         case "leavePanties":
             char.addtime(180);
             sc.setstep("missy", 9);
+            sc.setstep("me", -1);
             sc.setstep("me", -2);
             char.room(0);
             break;

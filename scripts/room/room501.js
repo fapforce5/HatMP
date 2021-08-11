@@ -16,16 +16,6 @@ room501.main = function () {
         }, 501);
         chat(53, 501);
     }
-    //else if (zoeyStep === 11) {
-
-    //    $.each(btnList, function (i, v) {
-    //        nav.button(v, 501);
-    //    });
-    //    if (sc.checkevent("zoey", -3))
-    //        chat(64, 501);
-    //    else
-    //        chat(65, 501);
-    //}
     else if (zoeyStep > 22) {
         nav.button({
             "type": "btn",
@@ -107,6 +97,19 @@ room501.btnclick = function (name) {
                     chat(100, 501);
                 }
                 else if (zoeyy === 11) {
+                    if (scc.get("zoey").love > 89) {
+                        if (cl.c.chastity !== null && inv.has("handcuff"))
+                            chat(112, 501);
+                        else
+                            chat(111, 501);
+                    }
+                    else
+                        chat(100, 501);
+                }
+                else if (zoeyy === 13) {
+                    chat(114, 501);
+                }
+                else if (zoeyy === 14) {
                     chat(100, 501);
                 }
                 else if (zoeyy === 300) {
@@ -393,13 +396,13 @@ room501.chatcatch = function (callback) {
             break;
         case "cheat":
             sc.setstep("zoey", 5);
-            scc.love("zoey", 10, 100);
+            scc.love("zoey", 10, 90);
             g.setflag("zoeyDay");
             room501.chatcatch("zLook");
             break;
         case "noCheat":
             sc.setstep("zoey", 5);
-            scc.love("zoey", -20, 100);
+            scc.love("zoey", -20, 90);
             g.setflag("zoeyDay");
             room501.chatcatch("zLook");
             break;
@@ -485,7 +488,7 @@ room501.chatcatch = function (callback) {
             scc.love("zoey", -5, 100);
             break;
         case "zlove":
-            scc.love("zoey", 5, 100);
+            scc.love("zoey", 5, 90);
             break;
         case "5endbad":
             sc.setstep("zoey", 300);
@@ -570,7 +573,7 @@ room501.chatcatch = function (callback) {
             }, 500);
             break;
         case "zoeyDestroy":
-            scc.love("zoey", -999, 100);
+            scc.love("zoey", -999, 90);
             sc.setstep("zoey", 301);
             sc.setstep("chloe", 3);
             g.setflag("zoeyDay");
@@ -581,6 +584,23 @@ room501.chatcatch = function (callback) {
             g.setflag("zoeyDay");
             char.addtime(78);
             char.room(0);
+            break;
+        case "checkLove":
+            nav.killall();
+            nav.bg("501_jadaGame/game.jpg");
+            chat(110, 501);
+            break;
+        case "gameEnd":
+            scc.love("zoey", 5, 90);
+            char.addtime(180);
+            char.room(501);
+            break;
+        case "gotohouse":
+            if (g.dt.getHours() < 24)
+                char.addDays(1);
+            char.settime(2, 0);
+            sc.setstep("zoey", 12);
+            char.room(502);
             break;
         default:
             break;
@@ -1428,7 +1448,8 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "I'm so glad you're around. You can lick my ass in video games! ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: -1, text: "Sure, I'll lick your ass good", callback: "checkLove" },
+                { chatID: -1, text: "Sorry, Gotta run.", callback: "" },
             ]
         },
         {
@@ -1487,6 +1508,67 @@ room501.chat = function (chatID) {
             text: "No, not my butt. We're done. Goodbye.",
             button: [
                 { chatID: -1, text: "Sad whimper.", callback: "zoeyDestroy" }
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "zoey",
+            text: "Soooo, I'm pretty bored, do you want to eat my chatte?",
+            button: [
+                { chatID: 109, text: "What about your friend?", callback: "" },
+                { chatID: -1, text: "No. I've got to run", callback: "" }
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "zoey",
+            text: "Oh, we are just doing la sex, she is not mon petite amie, just an amie with benifits. Sooo, do you want a taste?",
+            button: [
+                { chatID: -1, text: "Yes I do!", callback: "gotohouse" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "zoey",
+            text: "Merci. I had a lot of fun!",
+            button: [
+                { chatID: -1, text: "Me too", callback: "gameEnd" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "zoey",
+            text: "So, " + sc.n("stormy") + " wants you to watch us have sex, and I though the idea was sexy. If you want to " +
+                "do that she has some rules. You have to wear a appareil de chasteté and bring some handcuffs. If you do not want " +
+                "to, I am understanding. ",
+            button: [
+                { chatID: -1, text: "Oh, cool.", callback: "" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "zoey",
+            text: "So, " + sc.n("stormy") + " wants you to watch us have sex like a cocue. I think it's kind of sexy, but I " +
+                "am understanding if you do not want to. ",
+            button: [
+                { chatID: 113, text: "Oh yes! I totally do", callback: "" },
+                { chatID: -1, text: "No, I think I'll pass", callback: "" }
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "zoey",
+            text: "Ça le fait! Wait while I call her to come over.",
+            button: [
+                { chatID: -1, text: "Sweet", callback: "gotohouse" }
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "zoey",
+            text: "I'm busy making this person eat my salad. You should catch me at the bar. ",
+            button: [
+                { chatID: -1, text: "Ok, cool.", callback: "" }
             ]
         },
     ];

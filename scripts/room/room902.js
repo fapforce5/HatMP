@@ -25,6 +25,17 @@ room902.main = function () {
                 "image": "902_girl/lolalocker.png"
             }
         ];
+        if (!inv.has("studentid")) {
+            btnList.push({
+                "type": "btn",
+                "name": "sudentid",
+                "left": 552,
+                "top": 666,
+                "width": 84,
+                "height": 18,
+                "image": "902_girl/studentid.png"
+            });
+        }
         var navList = [0, 901];
         $.each(btnList, function (i, v) {
             nav.button(v, 902);
@@ -49,6 +60,20 @@ room902.btnclick = function (name) {
             }, 902);
             
             break;
+        case "sudentid":
+            nav.killall();
+            inv.add("studentid");
+            nav.button({
+                "type": "img",
+                "name": "sudentid1",
+                "left": 618,
+                "top": 207,
+                "width": 684,
+                "height": 507,
+                "image": "902_girl/studentid1.png"
+            }, 902);
+            chat(2, 902);
+            break;
         case "lock":
             if (inv.has("lolalocker")) {
                 //locker
@@ -65,6 +90,10 @@ room902.chatcatch = function (callback) {
     switch (callback) {
         case "leave":
             char.room(901);
+            break;
+        case "resest":
+            
+            char.room(902);
             break;
         default:
             break;
@@ -84,6 +113,12 @@ room902.chat = function (chatID) {
             speaker: "me",
             text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...[In development]",
             button: [{ chatID: -1, text: "...", callback: "" }]
+        },
+        {
+            chatID: 2,
+            speaker: "me",
+            text: "Oh, Cindy left her student ID here. Maybe I'll just hold onto this for now. ",
+            button: [{ chatID: -1, text: "...", callback: "resest" }]
         },
     ];
     if (cArray.length > chatID && chatID > -1)

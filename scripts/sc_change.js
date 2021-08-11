@@ -37,7 +37,7 @@ scc.changes = [
     { name: "zoey", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "eva", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "lola", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "landloard", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "landlord", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "tiffany", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "missy", xdress: false, chest: 1, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "tina", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
@@ -185,6 +185,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Did you get a hair cut? I think it looks prettier longer",
                 "Is your penis getting smaller? It's so much cuter! "
             ];
+            break;
         case "jones":
             comment = [
                 "Ooooo I love your new clothes! You're so sexy!",
@@ -285,4 +286,22 @@ scc.get = function (name) {
         }
     });
     return retVar;
+};
+
+scc.buildIcons = function () {
+    var i;
+    var top = -180;
+    var left;
+    for (i = 0; i < scc.changes.length; i++) {
+        var tc = sc.get(scc.changes[i].name);
+        if (i % 4 === 0)
+            top += 300;
+        left = ((i % 4) * 275) + 450;
+        $('#menu_parent').append('<img src="./images/speaker/' + tc.image + '" style="position:absolute; ' + g.makeCss(150, 150, top, left + 30) + '" class="resize"  />');
+        $('#menu_parent').append('<div style="background:#333; position:absolute; border-radius:50px; ' + g.makeCss(20, 200, top + 140, left) + '"</div>');
+        if (scc.changes[i].love > 0)
+            $('#menu_parent').append('<div style="background:#20c000; position:absolute; border-radius:0 50px 50px 0; ' + g.makeCss(20, scc.changes[i].love, top + 140, left + 100) + '"</div>');
+        else if (scc.changes[i].love < 0)
+            $('#menu_parent').append('<div style="background:#c02000; position:absolute; border-radius:50px 0 0 50px; ' + g.makeCss(20, Math.abs(scc.changes[i].love), top + 140, left + 100 + scc.changes[i].love ) + '"</div>');
+    }
 };

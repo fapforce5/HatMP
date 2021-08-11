@@ -113,7 +113,7 @@ room401.main = function () {
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
-            if (sc.checkevent("spanky", 3))
+            if (sc.checkevent("spanky", 3) || g.sissy[51].ach)
                 room401.makeInv(["h", "e", "g"], true);
             else
                 room401.makeInv(["e", "g"], true);
@@ -125,6 +125,7 @@ room401.main = function () {
             room401.makeClothing("chastity", "f");
             room401.makeClothing("buttplug", "f");
             room401.makeInv(["d"], g.sissy[59].ach);
+            room401.makeInv(["c"], true);
             navList = [650, 0];
             break;
         case "happyGirl":

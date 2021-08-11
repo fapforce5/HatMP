@@ -153,6 +153,24 @@ room526.btnclick = function (name) {
                 chat(30, 526);
             }
             break;
+        case "z13":
+            nav.killall();
+            nav.bg("526_bar/z13_2.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "z131",
+                "left": 874,
+                "top": 461,
+                "width": 114,
+                "height": 295,
+                "image": "526_bar/z13_2click.png"
+            }, 526);
+            break;
+        case "z131":
+            nav.killall();
+            nav.bg("526_bar/z13_3.jpg");
+            chat(47, 526);
+            break;
         default:
             break;
     }
@@ -293,6 +311,7 @@ room526.chatcatch = function (callback) {
             break;
         case "wash1":
             scc.love("zoey", 10, 80);
+            var zoeyy = sc.getstep("zoey");
             if (g.gethourdecimal() > 12) {
                 g.dt.setDate(g.dt.getDate() + 1);
             }
@@ -308,14 +327,59 @@ room526.chatcatch = function (callback) {
                 "height": 290,
                 "image": "526_bar/close.png"
             }, 526);
-            if (scc.get("zoey").love > 80 && sc.getstep("zoey") >  10) {
+            if (scc.get("zoey").love > 80 && zoeyy === 11) {
                 nav.killall();
                 nav.bg("526_bar/z1.jpg");
                 chat(40, 526);
             }
+            else if (zoeyy === 13) {
+                nav.killall();
+                nav.bg("526_bar/z1.jpg");
+                chat(45, 526);
+            }
             else {
                 chat(39, 526);
             }
+            break;
+        case "checkHouse":
+            var hashc = inv.has("handcuff");
+            var hasc = cl.c.chastity !== null;
+            if (hashc && hasc) {
+                chat(43, 526);
+            }
+            else {
+                chat(44, 526);
+            }
+            break;
+        case "gotohouse":
+            sc.setstep("zoey", 12);
+            char.room(502);
+            break;
+        case "z13_1":
+            nav.killall();
+            nav.button({
+                "type": "tongue",
+                "name": "z13",
+                "left": 889,
+                "top": 707,
+                "width": 200,
+                "height": 200,
+                "image": "526_bar/z13_1click.jpg"
+            }, 526);
+            nav.bg("526_bar/z13_1.jpg");
+            break;
+        case "z13_4":
+            nav.bg("526_bar/z13_4.jpg");
+            break;
+        case "z13_5":
+            nav.killall();
+            sc.setstep("zoey", 14);
+            scc.love("zoey", 100, 100);
+            nav.bg("502_bedroom/sleepZoey.jpg");
+            g.pass = 502;
+            g.roomTimeout = setTimeout(function () {
+                char.room(28);
+            }, 500);
             break;
         case "leave":
             char.room(0);
@@ -642,7 +706,7 @@ room526.chat = function (chatID) {
             speaker: "me",
             text: "Wash wash washing dishes.",
             button: [
-                { chatID: 39, text: "Complete", callback: "wash1" },
+                { chatID: 39, text: "Complete", callback: "wash1" }
             ]
         },
         {
@@ -650,15 +714,15 @@ room526.chat = function (chatID) {
             speaker: "zoey",
             text: "Thanks so much! It's late, I'm going to head home. Au revoir mon ami.",
             button: [
-                { chatID: -1, text: "See you.", callback: "leave" },
+                { chatID: -1, text: "See you.", callback: "leave" }
             ]
         },
         {
             chatID: 40,
             speaker: "zoey",
-            text: "So... It's just the two of us and I'm feeling a bit horny. Do you want to mange ma chatte?",
+            text: "So... It's just the two of us and I'm feeling a bit horny. Do you want to watch " + sc.n("stormy") + " mange ma chatte?",
             button: [
-                { chatID: 41, text: "Huh?", callback: "" },
+                { chatID: 41, text: "Huh?", callback: "" }
             ]
         },
         {
@@ -666,15 +730,117 @@ room526.chat = function (chatID) {
             speaker: "zoey",
             text: "Do you want to uhhh, what's the word, dinner my pussy?",
             button: [
-                { chatID: 42, text: "Oh lol. Yes I do, but what about " + sc.n("stormy") + "?", callback: "" },
+                { chatID: 42, text: "Oh lol. Yes I do. ", callback: "" }
             ]
         },
         {
             chatID: 42,
             speaker: "zoey",
-            text: "Oh, we are just doing to sex, she is not mon petite amie. So do you want a dinner?",
+            text: "Oh yeah. " + sc.n("stormy") + " et moi want to be watched while we have sex we are just a pair of exhibitionniste " +
+                "with a cocue fétiche. We would love you watch, but you have to wear a appareil de chasteté and menottes... er... hand cuffs. ",
             button: [
-                { chatID: 42, text: " " + sc.n("stormy") + "?", callback: "" },
+                { chatID: -1, text: "Cool, I'm in", callback: "checkHouse" },
+                { chatID: -1, text: "No, I've got to get home. ", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "zoey",
+            text: "Follow me home. I'm not putting my cul nu on this cum covered floor.",
+            button: [
+                { chatID: -1, text: "Sweet! ", callback: "gotohouse" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "zoey",
+            text: "Oh you need wear a chastity device and have a set of handcuffs. You can also stop by my house if you want to play. ",
+            button: [
+                { chatID: -1, text: "Oh, ok. We'll see ya.", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "zoey",
+            text: "So, we need to talk. I'm just so cornée, I need you now. ",
+            button: [
+                { chatID: 46, text: "Oh wow, really? I thought you were a lesbian.", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "zoey",
+            text: "No questions, just eat my warm baby kitten.",
+            button: [
+                { chatID: -1, text: "Fuck yeah?", callback: "z13_1" }
+            ]
+        }, 
+        {
+            chatID: 47,
+            speaker: "zoey",
+            text: "Oh oui! Oui, oui, oui! Arrêter, I can not take anymore. Oh là là that was good.",
+            button: [
+                { chatID: 48, text: "...", callback: "z13_4" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "zoey",
+            text: "Oh wow. You are amazing, I can not believe we have not done this before. ",
+            button: [
+                { chatID: 49, text: "So why me, why now? I thought you were a lesbian.", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "zoey",
+            text: "So did I, but I remembered when I began my attraction to women. When I was younger je suis tombé amoureux with " +
+                "this boy. I would follow him around our park hoping he would notice me, but he never did. " +
+                "One day I was following bêtement him and one of his friends m'a fait remarquer and stared se moquant de moi. Then his " +
+                "other friends staring to laugh at me too. ",
+            button: [
+                { chatID: 50, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "zoey",
+            text: "When the boys were laughing the boy I loved turn his head to me. I feel shame and I hoped he would get " +
+                "the other boys to stop my shame and " +
+                "stop laughing at me. But he laughed also and said it looks like the fantôme effrayant is back following him. Then all " +
+                "the boys chanted fantôme effrayant at me. I have never been more sad and terrible in my life. I was a girl broken.",
+            button: [
+                { chatID: 51, text: "That's terrible.", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "zoey",
+            text: "I just wanted to die, hearing the boy I thoguht I loved laugh at me with his friends. That night my best friend, Amélie, " +
+                "heard what had happened and came over to my room. I was so sad I just wanted to lay in bed and die. Amélie curled next to " +
+                "me and snuggled with me all night. I have never felt loved like that my entire life. She was so soft and caring I " +
+                "realized this is what I want. Not some garçon stupide, but a nice warm loving person. ",
+            button: [
+                { chatID: 52, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "zoey",
+            text: "Seeing you here, helping me and supporting me all this time made me realize I was not in love with just girls, but " +
+                "I love someone who loves me back. No one has shown me as much l'amour as you. J'ai été si aveugle. I have been chasing " +
+                "these girls who only want sex, but it is not what I want. I want you, mon meilleur ami.",
+            button: [
+                { chatID: 53, text: "Oh wow. I guess I've always felt the same about you. It's the reason I keep coming back. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "zoey",
+            text: "I am so sorry for everything I have put you through. I guess I was searching for myself. But I've found you, and " +
+                "you are perfect for me. So do you want to come to my house and cuddle me to sleep?",
+            button: [
+                { chatID: -1, text: "Yes I do. ", callback: "z13_5" }
             ]
         },
     ];

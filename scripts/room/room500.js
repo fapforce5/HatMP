@@ -173,7 +173,7 @@ room500.chat = function (chatID) {
             chatID: 8,
             speaker: "me",
             text: "So.. I was playing truth or dare with " + sc.n("eva") + " and " + sc.n("lola") +
-                " and my " + sc.n("landlord") + " walked in on us right when they were licking my dick... she " +
+                " and my " + sc.n("landlord") + " walked in on us right when we we're all naked... she " +
                 "go mad at me and kicked me out!",
             button: [
                 { chatID: 9, text: "...", callback: "" }
@@ -185,7 +185,7 @@ room500.chat = function (chatID) {
             text: "You are such a pervert messing around with your " + sc.n("el") + "! I like it you " +
                 "little weird-o.",
             button: [
-                { chatID: 11, text: "really?", callback: "zoeyLike" }
+                { chatID: 13, text: "really?", callback: "zoeyLike" }
             ]
         },
         {

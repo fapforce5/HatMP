@@ -20,16 +20,19 @@ room0.btnclick = function (name) {
     if (name === "map_0") {
         nav.bg("map/map0.jpg", "map/map0_night.jpg");
         g.set("map", 0);
+        char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "map_1") {
         nav.bg("map/map1.jpg", "map/map1_night.jpg");
         g.set("map", 1);
+        char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "map_2") {
         nav.bg("map/map2.jpg", "map/map2_night.jpg");
         g.set("map", 2);
+        char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "redrawIcons") {

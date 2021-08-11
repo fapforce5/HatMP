@@ -106,7 +106,17 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         if (cl.c.cumface && !dback)
             zcl.displayMainSub("cum_face.png", top, left, ratio);
     }
-    
+
+    //necklace
+    if (cl.c.necklace !== null) {
+        $.each(cl.necklace, function (i, v) {
+            if (v.name === cl.c.necklace) {
+                zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+                return false;
+            }
+        });
+    }
+
     if (spec.indexOf("panties") > -1 || spec.indexOf("clothes") > -1) {
         if (cl.c.panties !== null) {
             $.each(cl.panties, function (i, v) {
@@ -286,12 +296,14 @@ cl.displayMainWhere = function (thisArray, entry, top, left, ratio, dback) {
 };
 
 zcl.displayMainSub = function (thisImage, top, left, ratio) {
-    var btnWidth, btnHeight;
-    btnWidth = 2075 * ratio * g.ratio;
-    btnWidth = 4200 * ratio * g.ratio;
-    top = top * g.ratio;
-    left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+    if (thisImage !== null) {
+        var btnWidth, btnHeight;
+        btnWidth = 2075 * ratio * g.ratio;
+        btnWidth = 4200 * ratio * g.ratio;
+        top = top * g.ratio;
+        left = left * g.ratio;
+        $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+    }
 };
 
 zcl.kneel = function (top, left, ratio, mod, reverse) {

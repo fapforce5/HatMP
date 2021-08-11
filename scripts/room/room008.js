@@ -29,14 +29,16 @@ room8.main = function () {
         '<img src="./images/wardrobe/underwear.png" />' +
          '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="bra">' +
         '<img src="./images/wardrobe/bra.png" />' +
-         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="socks">' +
-        '<img src="./images/wardrobe/socks.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="pants">' +
         '<img src="./images/wardrobe/pants.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="shirt">' +
         '<img src="./images/wardrobe/shirt.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="dress">' +
         '<img src="./images/wardrobe/dress.png" />' +
+        '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="necklace">' +
+        '<img src="./images/wardrobe/necklace.png" />' +
+        '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="socks">' +
+        '<img src="./images/wardrobe/socks.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="shoes">' +
         '<img src="./images/wardrobe/shoes.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="swimsuit">' +
@@ -117,6 +119,10 @@ room8.main = function () {
                     cl.c.dress = null;
                     cl.c.pj = null;
                     cl.c.swimsuit = ttype;
+                    break;
+                case "necklace":
+                    cl.c.pj = null;
+                    cl.c.necklace = ttype;
                     break;
                 case "bra":
                     cl.c.swimsuit = null;

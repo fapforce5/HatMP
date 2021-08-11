@@ -17,7 +17,17 @@ room750.main = function () {
             nav.button(v, 750);
         });
     }
-    var navList = [0];
+    nav.button({
+        "type": "btn",
+        "name": "crystal",
+        "left": 431,
+        "top": 409,
+        "width": 326,
+        "height": 250,
+        "image": "750_homeless/crystal.png",
+        "night": "750_homeless/crystalnight.png"
+    }, 750);
+    var navList = [751, 0];
     nav.buildnav(navList);
 };
 
@@ -45,6 +55,9 @@ room750.btnclick = function (name) {
             }
             else
                 chat(5, 750);
+            break;
+        case "crystal":
+            char.room(751);
             break;
         default:
             break;
@@ -157,7 +170,7 @@ room750.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "doc",
-            text: "She wasn't *hic* conscience at the time",
+            text: "She wasn't *hic* conscious at the time",
             button: [
                 { chatID: -1, text: "ok... [back away slowly]", callback: "doc0" }
             ]

@@ -251,7 +251,7 @@ room23.main = function () {
     ];
     var myDare = [
         {
-            q: "Take your shirt off and let us write 'Panty Boy' on your chest!",
+            q: "Take your shirt off and show off your chest!",
             b: [{ chatID: 14, text: "Awww Really? [Take Shirt off]", callback: "lolaTalk pantyBoy" }]
         },
         {
@@ -371,14 +371,13 @@ room23.chatcatch = function (callback) {
                 var left = 20 * g.ratio;
                 var btnWidth = 300 * g.ratio;
                 var btnHeight = 600 * g.ratio;
-                g.internal.pantyBoy = true;
-                $('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+                //$('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 
                 break;
             case "removePants":
                 cl.c.pants = null;
                 cl.display();
-                $('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+                //$('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
                 break;
             case "evaStrip":
                 if (g.internal.evaNude > 1) {
@@ -619,7 +618,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "lola",
-                text: "Hahaha panty thief! Never steal my panties!",
+                text: "You look better without clothes! ",
                 button: [{ chatID: -1, text: "I know. ", callback: "" }]
             },
             {
@@ -748,31 +747,31 @@ room23.chat = function (chatID) {
             {
                 chatID: 35,
                 speaker: "eva",
-                text: "Hahahaha, you're still wearing panties! You are such a panty boy!",
+                text: "Hahahaha, you're still covering your penis! Chicken!",
                 button: [{ chatID: 36, text: "....", callback: "lolaTalk evaSit" }]
             },
             {
                 chatID: 36,
                 speaker: "lola",
-                text: "That's what you get for stealing my panties!",
+                text: "This is getting crazy.  ",
                 button: [{ chatID: 37, text: "....", callback: "evaTalk lolaSit" }]
             },
             {
                 chatID: 37,
                 speaker: "eva",
-                text: "At least he's not a chicken " + sc.n("lola") + "! Do your dare.",
+                text: "That's why we play truth or dare " + sc.n("lola") + "! Now do your dare.",
                 button: [{ chatID: 38, text: "YEAH " + sc.n("lola") + " do your dare!", callback: "lolaStrip evaSit" }]
             },
             {
                 chatID: 38,
                 speaker: "lola",
-                text: "This is as far as I'm going. There's no way I'm going to be naked with " + sc.n("me"),
+                text: "This is as far as I'm going. There's no way I'm going to be naked with " + sc.n("me") + " in the room. ",
                 button: [{ chatID: 39, text: "What, you can't do that, a dare's a dare", callback: "pantyStrip1" }]
             },
             {
                 chatID: 39,
                 speaker: "eva",
-                text: "Take those of you prude!! " + sc.n("me") + "Help me strip these off!",
+                text: "Take those of you prude!! " + sc.n("me") + " Help me strip these off!",
                 button: [{ chatID: 40, text: "[Smile]", callback: "pantyStrip2" }]
             },
             {
@@ -784,15 +783,14 @@ room23.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "landlord",
-                text: "I heard you screaming all the way downstairs! What is going on and why is " + sc.n("me") +
-                    " wearing your panties " + sc.n("lola") + "?",
+                text: "I heard you screaming all the way downstairs! What is going on and why is everyone naked!",
                 button: [{ chatID: 42, text: "I uhhhh ", callback: "momHi1" }]
             },
             {
                 chatID: 42,
                 speaker: "landlord",
-                text: "I don't know what I'm going to do with you! I find you in a pair of panties with your " + sc.n("el") +
-                    "! If I hadn't walked in what would have happened!??",
+                text: "I don't know what I'm going to do with you! Naked with your " + sc.n("el") + "? If I didn't " +
+                    "come in when I did I'm not sure what would have happened!",
                 button: [{ chatID: 43, text: "Nothing... Nothing would have happened", callback: "" }]
             },
             {

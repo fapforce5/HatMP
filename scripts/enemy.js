@@ -1213,7 +1213,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 798,
                 "image": "227_fight/chibi_panties.png"
             }, 9999);
-            g.internal = "Let me show you my slutty hole."
+            g.internal = "Let me show you my slutty hole.";
             chat(8, g.fight.thisRoomID);
         }
             break;
@@ -1227,7 +1227,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 914,
                 "image": "227_fight/chibi_shirt.png"
             }, 9999);
-            g.internal = "Do my titties turn you on?"
+            g.internal = "Do my titties turn you on?";
             chat(8, g.fight.thisRoomID);
         }
             break;
@@ -1241,7 +1241,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 798,
                 "image": "227_fight/chibi_pants.png"
             }, 9999);
-            g.internal = "Why am I stripping during a fight ? Oh yeah, I'm a slut that wants to get fucked!"
+            g.internal = "Why am I stripping during a fight ? Oh yeah, I'm a slut that wants to get fucked!";
             chat(8, g.fight.thisRoomID);
         }
             break;
@@ -1255,7 +1255,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 1000,
                 "image": "227_fight/chibi_dance.png"
             }, 9999);
-            g.internal = "I'm such a dirty dirty whore!"
+            g.internal = "I'm such a dirty dirty whore!";
             chat(8, g.fight.thisRoomID);
         }
             break;
@@ -1269,7 +1269,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 693,
                 "image": "227_fight/chibi_cock.png"
             }, 9999);
-            g.internal = "You like looking at my cock?"
+            g.internal = "You like looking at my cock?";
             chat(8, g.fight.thisRoomID);
         }
             break;
@@ -1283,7 +1283,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 481,
                 "image": "227_fight/chibi_ass.png"
             }, 9999);
-            g.internal = "Why am I showing them my sissy pussy hole? I'm such a slut!"
+            g.internal = "Why am I showing them my sissy pussy hole? I'm such a slut!";
             chat(8, g.fight.thisRoomID);
         }
             break;
@@ -1297,7 +1297,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 1000,
                 "image": "227_fight/chibi_strip1.png"
             }, 9999);
-            g.internal = "Sluts don't deserve clothes!"
+            g.internal = "Sluts don't deserve clothes!";
             chat(7, g.fight.thisRoomID);
         }
             break;
@@ -1311,7 +1311,7 @@ tEnemy.chibi = function (thischibi) {
                 "height": 1000,
                 "image": "227_fight/chibi_strip0.png"
             }, 9999);
-            g.internal = "Sluts don't deserve panties."
+            g.internal = "Sluts don't deserve panties.";
             chat(7, g.fight.thisRoomID);
         }
             break;
@@ -1327,7 +1327,7 @@ tEnemy.chibi = function (thischibi) {
                     "height": 800,
                     "image": "227_fight/chibi_hum1.png"
                 }, 9999);
-                g.internal = "Bad girl deserve an ass slap!"
+                g.internal = "Bad girl deserve an ass slap!";
                 chat(7, g.fight.thisRoomID);
             }
             else if (humiliationRandom === 1) {
@@ -1340,7 +1340,7 @@ tEnemy.chibi = function (thischibi) {
                     "height": 860,
                     "image": "227_fight/chibi_hum2.png"
                 }, 9999);
-                g.internal = "You like it when my cock rubs against your sissy pussy?"
+                g.internal = "You like it when my cock rubs against your sissy pussy?";
                 chat(7, g.fight.thisRoomID);
             }
             else {
@@ -1353,7 +1353,7 @@ tEnemy.chibi = function (thischibi) {
                     "height": 800,
                     "image": "227_fight/chibi_hum3.png"
                 }, 9999);
-                g.internal = "I know you like facials... Here's a spit facial."
+                g.internal = "I know you like facials... Here's a spit facial.";
                 chat(7, g.fight.thisRoomID);
             }
             break;
