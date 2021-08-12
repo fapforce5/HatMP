@@ -30,8 +30,14 @@ room950.main = function () {
     }
     else if (g.internal.interval === 3) {
         g.internal.interval = 4;
-        nav.bg("950_cell/milk0.jpg");
-        chat(2, 950);
+        if (g.internal.day === 0) {
+            nav.bg("950_cell/milk0.jpg");
+            chat(2, 950);
+        }
+        else {
+            nav.bg("950_cell/milk0.jpg");
+            chat(17, 950);
+        }
     }
     else {
         if (g.internal.constDayDirty > 3) {
@@ -43,7 +49,7 @@ room950.main = function () {
         else if (g.internal.constDayDirty > 1) {
             nav.bg("950_cell/cell1.jpg");
         }
-        char.changeMenu("hide", false);
+        //char.changeMenu("hide", false);
         var btnList = [
             {
                 "type": "btn",
@@ -123,6 +129,7 @@ room950.btnclick = function (name) {
             nav.killall();
             g.internal.interval = 0;
             g.internal.constDayDirty++;
+            g.internal.day++;
             g.internal.cleaned = false;
             g.pass = 950;
             char.room(28);
@@ -214,6 +221,12 @@ room950.chatcatch = function (callback) {
             break;
         case "milk8":
             nav.bg("950_cell/milk8.jpg");
+            break;
+        case "milk9":
+            nav.bg("950_cell/milk9.jpg");
+            break;
+        case "milk10":
+            room950.btnclick("increment");
             break;
         default:
             break;
@@ -340,7 +353,7 @@ room950.chat = function (chatID) {
             speaker: "me",
             text: "UNGH!",
             button: [
-                { chatID: 15, text: "", callback: "milk8" }
+                { chatID: 15, text: "...", callback: "milk8" }
             ]
         },
         {
@@ -348,15 +361,47 @@ room950.chat = function (chatID) {
             speaker: "random",
             text: "First! ",
             button: [
-                { chatID: 16, text: "What are you doing with my cum?", callback: "" }
+                { chatID: 16, text: "What are you doing with my cum?", callback: "milk9" }
             ]
         },
         {
             chatID: 16,
-            speaker: "me",
-            text: "First! ",
+            speaker: "cult",
+            text: "Back to your cell slave. ",
             button: [
-                { chatID: -1, text: "", callback: "" }
+                { chatID: -1, text: "...", callback: "milk10" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "cult",
+            text: "It's time for your offering. ",
+            button: [
+                { chatID: 18, text: "...", callback: "milk6" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "Well, here it comes. ",
+            button: [
+                { chatID: 19, text: "...", callback: "milk7" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "random",
+            text: "UNGH! ",
+            button: [
+                { chatID: 20, text: "...", callback: "milk8" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "thinking",
+            text: "First again! He comes so easily!",
+            button: [
+                { chatID: -1, text: "...", callback: "milk10" }
             ]
         },
     ];
