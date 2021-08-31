@@ -1052,7 +1052,7 @@ room26.chat = function (chatID) {
         {
             chatID: 78,
             speaker: "landlord",
-            text: "I need a delivery girl on the weekends. I had a girl, Daria, delivering it, but she just stopped coming in one day. " +
+            text: "I need a delivery girl on the weekends. I had a girl, D.M., delivering it, but she just stopped coming in one day. " +
                 "She was always irresponsible, but I just don't trust that cult. I think they are responsible for her disappearance. " +
                 "Now that you're such a cute girl I need to warn you to stay away from them. Bad things happen. I've made them promise " +
                 "not to go near your " + sc.n("el") + ". I just don't know what to do. I think the cops in this town are working for them.",
@@ -1063,7 +1063,7 @@ room26.chat = function (chatID) {
         {
             chatID: 79,
             speaker: "landlord",
-            text: "You know you're right. Maybe I can work with her to find Daria. She was odd, but a lovely girl. I would hate to " +
+            text: "You know you're right. Maybe I can work with her to find D.M. She was odd, but a lovely girl. I would hate to " +
                 "think she got mixed up with that cult. I'm just hoping she met a boy and ran off with him somewhere. ",
             button: [
                 { chatID: 80, text: "...", callback: "" }

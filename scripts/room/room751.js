@@ -96,6 +96,10 @@ room751.chatcatch = function (callback) {
                 case "smolpp":
                     oncasetext = "Go home and go to sleep. When you wake up you'll see your changes. ";
                     break;
+                case "clothes0":
+                    oncasetext = "You must go to " + sc.n("jones") + "'s house. He lives in the north east section of the residential " +
+                        "neighborhood. Go there before dark. ";
+                    break;
             }
             if (oncasetext !== "") {
                 g.pass = oncasetext;

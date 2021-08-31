@@ -387,10 +387,18 @@ room209.btnclick = function (name) {
         case "h_31":
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
-            room209.btnclick("bb1");
+            nav.button({
+                "type": "img",
+                "name": "bb",
+                "left": 605,
+                "top": 225,
+                "width": 868,
+                "height": 368,
+                "image": "209_classroom/bb31.jpg"
+            }, 209);
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            room209.btnclick("displayMissybtn");
+            room209.btnclick("displaypbtn");
             chat(126, 209);
             break;
         case "h_35":
@@ -466,7 +474,7 @@ room209.btnclick = function (name) {
             nav.bg("205_computerWork/blackBg.jpg");
             g.set("oncase", "cult0");
             
-            g.internal = { day: 0, interval: 0, cleaned: false, constDayDirty: 0 };
+            g.internal = { day: 0, interval: 0, cleaned: false, constDayDirty: 0, jo: false, box: 0 };
             g.pass = 950;
             char.room(28); 
             
@@ -1063,7 +1071,8 @@ room209.chatcatch = function (callback) {
             char.room(201);
             break;
         case "h_31_end":
-            g.sissy[31].ach = true;
+            g.set("oncase", "clothes0");
+            g.roomMapAccess(150, true, false);
             room209.chatcatch("end");
             break;
         case "h_40":
@@ -2462,9 +2471,10 @@ room209.chat = function (chatID) {
             {
                 chatID: 126,
                 speaker: "p",
-                text: "Work in progress, but here you go!",
+                text: "Ooooo. This is going to be so fun! I'm going to loan you to out " + sc.n("jones") + " for a little fashion show. " +
+                    "I've circled his house on this map so you know where to go. Stop by before nightfall. ",
                 button: [
-                    { chatID: -1, text: "I can dress sexy", callback: "h_31_end" }
+                    { chatID: 178, text: "What should I wear. ", callback: "" }
                 ]
             },
             {
@@ -2930,6 +2940,14 @@ room209.chat = function (chatID) {
                 text: "I've spent enough time with you. Sleep little cow, tomorrow is going to be busy. ",
                 button: [
                     { chatID: -1, text: "whimper", callback: "h55_17" }
+                ]
+            },
+            {
+                chatID: 178,
+                speaker: "p",
+                text: "Doesn't matter. He'll dress you as he sees fit. He may be a bit abrasive, but his shows are the best. See you there. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "h_31_end" }
                 ]
             },
         ];

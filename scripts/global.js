@@ -9,15 +9,16 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 10.0;
-g.versionText = "0.10.0 - 28 JAN 2021";
-g.notes = "v0.10.0";
+g.version = 13.0;
+g.versionText = "0.13.0 - 1 SEPT 2021";
+g.notes = "v0.13.0 - alpha";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
 g.tview = "f";
 g.cockDisplay = "c";
 g.prevRoom;
+g.displaymenu = true;
 g.prevview = null;
 g.pw = "c2lzc3k=";
 g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901];
@@ -74,6 +75,7 @@ g.st = [
     { n: "puter", t: false, q: "bool" },
     { n: "slimeMonsters", t: true, q: "bool" },
     { n: "oncase", t: null, q: "string" },
+    { n: "displayMenu", t: true, q: "bool" },
 
     { n: "fighttimer", t: 4000, q: "int" },
 
@@ -231,7 +233,7 @@ g.sissy = [
     { id: 58, pID: 0, icon: "lube", x: 2, y: 8, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
     { id: 59, pID: 58, icon: "dildos", x: 2, y: 9, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 60, pID: 19, icon: "daria", x: 14, y: 8, name: "Daria's dissapearance", description: "Investigate Daria's dissappearance", ach: false, active: false, points: 0, h: false },
+    { id: 60, pID: 19, icon: "daria", x: 14, y: 8, name: "D.M.'s dissapearance", description: "Investigate D.M.'s dissappearance", ach: false, active: false, points: 0, h: false },
 
     { id: 61, pID: 0, icon: "money", x: 19, y: 4, name: "Money", description: "Trade Sissy Points for money", ach: false, active: true, points: 0, h: false },
 
@@ -521,6 +523,7 @@ g.rooms = [
     { roomID: 125, name: "Jimmy's House", image: "125_poker/basement.jpg", nightImage: "125_poker/basement_night.jpg", houseID: 125, btn: "roomBtn_125.png" },
 
     { roomID: 150, name: "Jones Home", image: "150_jones/frontdoor.jpg", nightImage: "150_jones/frontdoorNight.jpg", houseID: 150, btn: "roomBtn_125.png" },
+    { roomID: 151, name: "Main", image: "151_jones/main.jpg", nightImage: "151_jones/main.jpg", houseID: 150, btn: "roomBtn_125.png" },
 
     { roomID: 200, name: "Missy PI Entrace", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 201, name: "Missy's Bathroom", image: "201_bathroom/201_bathroom.jpg", nightImage: "201_bathroom/201_bathroom.jpg", houseID: 203, btn: "roomBtn_201.png" },
@@ -535,7 +538,7 @@ g.rooms = [
 
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },
-    { roomID: 227, name: "Fight", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },
+    { roomID: 227, name: "Fight", image: "227_fight/welcome.jpg", nightImage: "227_fight/welcome.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 228, name: "Sewer Entrace", image: "225_sewer/sewer.jpg", nightImage: "225_sewer/sewer.jpg", houseID: 225, btn: "roomBtn_225.png" },
 
 
@@ -608,7 +611,8 @@ g.rooms = [
 
     { roomID: 910, name: "Department Of Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "bg.jpg" },
 
-    { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" }
+    { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
+    { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" }
     //{ roomID: , name: "", image: "", houseID: , main: false, btn: "roomBtn_.png" }
 ];
 

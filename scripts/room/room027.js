@@ -2,12 +2,12 @@
 var room27 = {};
 room27.main = function () {
     g.internal = new Array();
-    var nextChat = g.pass === 57 ? 19 : 20;
-    if (inv.has("redl") || g.pass === 57)
+    var nextChat = (g.pass === 57 || g.pass === 151) ? 19 : 20;
+    if (inv.has("redl") || g.pass === 57 || g.pass === 151)
         g.internal.push({ chatID: nextChat, text: "Red lipstick", callback: "red" });
-    if (inv.has("pinkl") || g.pass === 57)
+    if (inv.has("pinkl") || g.pass === 57 || g.pass === 151)
         g.internal.push({ chatID: nextChat, text: "Pink lipstick", callback: "pink" });
-    if (inv.has("purplel") || g.pass === 57)
+    if (inv.has("purplel") || g.pass === 57 || g.pass === 151)
         g.internal.push({ chatID: nextChat, text: "Purple lipstick", callback: "purple" });
     if (g.internal.length === 0)
         g.internal.push({ chatID: g.pass === 57 ? 12 : 0, text: "I don't have any lipstick", callback: "" });
@@ -27,6 +27,11 @@ room27.main = function () {
             nav.bg("57_pussyPalace/makeup.jpg");
             zcl.displayMirror();
             chat(12, 27);
+            break;
+        case 151:
+            nav.bg("151_jones/mirror.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
             break;
         case 451:
         case 452:
@@ -93,7 +98,7 @@ room27.chatcatch = function (callback) {
                 char.room(24);
             break;
         case "makeup":
-            if (inv.has("makeup") || g.pass === 57) {
+            if (inv.has("makeup") || g.pass === 57 || g.pass === 151) {
                 var makeUpLevel = g.get("makeup");
                 if (makeUpLevel < 2)
                     chat(13, 27);

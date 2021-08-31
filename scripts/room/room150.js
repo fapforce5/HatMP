@@ -30,9 +30,14 @@ room150.btnclick = function (name) {
                 "top": 107,
                 "width": 515,
                 "height": 973,
-                "image": "150_jones/jones.png",
+                "image": "150_jones/jones.png"
             }, 150);
-            chat(0, 150);
+            if (g.get("oncase") === "clothes0") {
+                chat(3, 150);
+            }
+            else {
+                chat(0, 150);
+            }
             break;
         default:
             break;
@@ -41,7 +46,9 @@ room150.btnclick = function (name) {
 
 room150.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "enter":
+            g.pass = "";
+            char.room(151);
             break;
         default:
             break;
@@ -77,6 +84,14 @@ room150.chat = function (chatID) {
             text: "**Note from the developer: You degenerate slut! I love you! If you want to see this story line vote for it.",
             button: [
                 { chatID: -1, text: "You got me, I'm such a dirty dirty slut!", callback: "" },
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "jones",
+            text: sc.n("p") + " told me you were participating. Come in. ",
+            button: [
+                { chatID: -1, text: "Yes sir. ", callback: "enter" },
             ]
         },
     ];
