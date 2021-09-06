@@ -46,6 +46,15 @@ room151.chatcatch = function (callback) {
                 "image": "151_jones/mirror.png"
             }, 151);
             break;
+        case "changeRoomxd":
+            nav.bg("151_jones/changeRoomxd.jpg");
+            break;
+        case "changeRoomxd1":
+            cl.c.shirt = cl.c.pants = cl.c.swimsuit = cl.c.pj = null;
+            cl.c.dress = "rose";
+            cl.display();
+            nav.bg("151_jones/changeRoomx.jpg");
+            break;
         default:
             break;
     }
@@ -99,7 +108,32 @@ room151.chat = function (chatID) {
             speaker: "govlady",
             text: "I suppose that will work.  ",
             button: [
-                { chatID: -1, text: "ok", callback: "" }
+                { chatID: 6, text: "ok", callback: "changeRoomxd" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "govlady",
+            text: "Now put this on. ",
+            button: [
+                { chatID: 7, text: "[Put on dress]", callback: "changeRoomxd1" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "govlady",
+            text: "Ok. Follow me to your place. " + sc.n("p") + " told me you already had training on how to walk like a lady. " +
+                "remember that training and make this dress sexy. ",
+            button: [
+                { chatID: 6, text: "Oh.. but...", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "govlady",
+            text: "I told you I don't have time for your jibber-jabber. Follow me and stay sexy. ",
+            button: [
+                { chatID: 8, text: "[Follow her]", callback: "changeRoomxd2" }
             ]
         },
     ];
