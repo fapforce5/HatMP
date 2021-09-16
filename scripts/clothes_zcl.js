@@ -235,6 +235,18 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             }
         });
     }
+    //set acc
+    if (cl.c.accessories.length > 0 && !dback) {
+        $.each(cl.c.accessories, function (i, v) {
+            $.each(cl.accessories, function (j, w) {
+                if (w.name === v) {
+                    zcl.displayMainSub(w.image, top, left, ratio);
+                    return false;
+                }
+            });
+        });
+    }
+
     //set hair
     if (!dback) {
         if (cl.c.wig !== null) {

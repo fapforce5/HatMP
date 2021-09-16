@@ -47,6 +47,26 @@ room350.btnclick = function (name) {
             else if (!access16) {
                 chat(43, 350);
             }
+            else if (llStep > 200) {
+                if (g.hourBetween(6, 10)) {
+                    if (cl.getBodyHair() !== null)
+                        chat(30, 350);
+                    else if (cl.c.hairLength < 2)
+                        chat(31, 350);
+                    else if (!sc.checkevent("landlord", -7)) {
+                        sc.setstep("landlord", -7);
+                        chat(16, 350);
+                    }
+                    else if (!sc.checkevent("landlord", -8)) {
+
+                        chat(51, 350);
+                    }
+                    else
+                        chat(41, 350);
+                }
+                else
+                    chat(29, 350);
+            }
             else if (sc.checkevent("landlord", -3)) {
                 if (cl.getCum() < .75)
                     chat(3, 350);
@@ -61,26 +81,7 @@ room350.btnclick = function (name) {
                 else
                     chat(0, 350);
             }
-            else if (llStep > 200) {
-                if (g.hourBetween(6, 10)) {
-                    if (cl.getBodyHair() !== null)
-                        chat(30, 350);
-                    else if (cl.c.hairLength < 2)
-                        chat(31, 350);
-                    else if (!sc.checkevent("landlord", -7)) {
-                        sc.setstep("landlord", -7);
-                        chat(16, 350);
-                    }
-                    else if (!sc.checkevent("landlord", -8)) {
-                        
-                        chat(51, 350);
-                    }
-                    else
-                        chat(41, 350);
-                }
-                else
-                    chat(29, 350);
-            }
+            
             else if (sc.checkevent("landlord", -1))
                 chat(9, 350);
             else

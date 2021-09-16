@@ -193,10 +193,10 @@ g.sissy = [
 
     { id: 30, pID: 28, icon: "makeup2", x: 6, y: 6, name: "Tattoos", description: "You can get tattoos", ach: false, active: false, points: 2, h: false },
 
-    { id: 31, pID: 29, icon: "clothes0", x: 8, y: 1, name: "Sexy Clothes", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
-    { id: 32, pID: 31, icon: "clothes1", x: 9, y: 1, name: "Panties?", description: "You don't have to wear panties or bra", ach: false, active: false, points: 2, h: true },
-    { id: 33, pID: 32, icon: "clothes2", x: 10, y: 1, name: "Slutty Clothes", description: "You can buy slutty clothes", ach: false, active: false, points: 3, h: true },
-    { id: 34, pID: 33, icon: "clothes3", x: 11, y: 1, name: "Nudist", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: false, points: 5, h: true },
+    { id: 31, pID: 29, icon: "clothes0", x: 8, y: 1, name: "Modeling 1", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
+    { id: 32, pID: 31, icon: "clothes1", x: 9, y: 1, name: "Modeling 2", description: "You don't have to wear panties or bra", ach: false, active: true, points: 2, h: true },
+    { id: 33, pID: 32, icon: "clothes2", x: 10, y: 1, name: "Modeling 3", description: "You can buy slutty clothes", ach: false, active: true, points: 3, h: true },
+    { id: 34, pID: 33, icon: "clothes3", x: 11, y: 1, name: "Modeling 4", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true, points: 5, h: true },
 
     { id: 35, pID: 29, icon: "chest2", x: 9, y: 2, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: 1, h: true },
     { id: 36, pID: 35, icon: "chest3", x: 10, y: 2, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: 2, h: true },

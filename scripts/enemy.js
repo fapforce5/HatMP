@@ -54,7 +54,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID) {
         returnRoomID: returnRoomID,
         lock: false,
         enemyRotation: 0,
-        fighttimer: g.get("fighttimer")
+        fighttimer: 1250// g.get("fighttimer")
     };
 
     nav.t({
@@ -128,7 +128,6 @@ tEnemy.initEnemy = function (enemyName) {
                 money: 5 + Math.floor(Math.random() * 5),
                 cock: true,
                 nextMove: "",
-                undress: 2,
                 eventStep: 9999,
                 eventType: "",
                 p: "pose",
@@ -159,7 +158,6 @@ tEnemy.initEnemy = function (enemyName) {
                 money: 7 + Math.floor(Math.random() * 7),
                 cock: true,
                 nextMove: "",
-                undress: 2,
                 eventStep: 9999,
                 eventType: "",
                 p: "pose",
@@ -190,7 +188,6 @@ tEnemy.initEnemy = function (enemyName) {
                 money: 50 + Math.floor(Math.random() * 50),
                 cock: false,
                 nextMove: "",
-                undress: 1,
                 eventStep: 9999,
                 eventType: "",
                 p: "pose",
@@ -568,6 +565,16 @@ tEnemy.drawChar = function (pose) {
             thischar.hair = "3";
             thischar.fif = null;
             break;
+        case "bjpose":
+            thischar.body = cl.c.chest > 2 ? "g_bjpose_f" : "g_bjpose_m";
+            thischar.dick = "g_bjpose";
+            thischar.displayc = true;
+            thischar.hair = "6";
+            thischar.fif = null;
+            break;
+        case "asspose":
+
+            break;
         case "stripclothes":
             if (g.fight.me.clothes !== null) {
                 g.fight.me.clothes = null;
@@ -674,7 +681,93 @@ tEnemy.getEnemyAction = function () {
     return g.fight.e[0].p;
 };
 
+tEnemy.myEnergy = function (thisDamage, thisArousal) {
+    var newEnergyDisplay, preEnergyDisplay, preDamage;
 
+    if (thisDamage !== null) {
+        preDamage = g.fight.me.energy;
+        g.fight.me.energy += thisDamage;
+
+        if (g.fight.me.energy < 0)
+            g.fight.me.energy = 0;
+        if (g.fight.me.energy > g.fight.me.maxEnergy)
+            g.fight.me.energy = g.fight.me.maxEnergy;
+
+        newEnergyDisplay = (g.fight.me.energy / g.fight.me.maxEnergy) * 280;
+        preEnergyDisplay = (preDamage / g.fight.me.maxEnergy) * 280;
+
+        $(".my-life[data-t='damage'").css({
+            width: preEnergyDisplay * g.ratio + "px"
+        });
+        $(".my-life[data-t='energy'").css({
+            width: newEnergyDisplay * g.ratio + "px"
+        });
+    }
+    if (thisArousal !== null) {
+        preDamage = g.fight.me.horny;
+
+        g.fight.me.horny += thisArousal;
+
+        if (g.fight.me.horny < 0)
+            g.fight.me.horny = 0;
+        if (g.fight.me.horny > 100)
+            g.fight.me.horny = 100;
+
+        newEnergyDisplay = (g.fight.me.horny / 100) * 280;
+        preEnergyDisplay = (preDamage / 100) * 280;
+
+        $(".my-horny[data-t='damage'").css({
+            width: preEnergyDisplay * g.ratio + "px"
+        });
+        $(".my-horny[data-t='horny'").css({
+            width: newEnergyDisplay * g.ratio + "px"
+        });
+    }
+};
+
+tEnemy.enemyEnergy = function (thisDamage, thisArousal, xi) {
+    var newEnergyDisplay, preEnergyDisplay, preDamage;
+
+    if (thisDamage !== null) {
+        preDamage = g.fight.e[xi].energy;
+        g.fight.e[xi].energy += thisDamage;
+
+        if (g.fight.e[xi].energy < 0)
+            g.fight.e[xi].energy = 0;
+        if (g.fight.e[xi].energy > g.fight.e[xi].maxEnergy)
+            g.fight.e[xi].energy = g.fight.e[xi].maxEnergy;
+
+        newEnergyDisplay = (g.fight.e[xi].energy / g.fight.e[xi].maxEnergy) * 280;
+        preEnergyDisplay = (preDamage / g.fight.e[xi].maxEnergy) * 280;
+
+        $(".enemy-life" + xi + "[data-t='damage'").css({
+            width: preEnergyDisplay * g.ratio + "px"
+        });
+        $(".enemy-life" + xi + "[data-t='energy'").css({
+            width: newEnergyDisplay * g.ratio + "px"
+        });
+    }
+    if (thisArousal !== null) {
+        preDamage = g.fight.e[xi].horny;
+
+        g.fight.e[xi].horny += thisArousal;
+
+        if (g.fight.e[xi].horny < 0)
+            g.fight.e[xi].horny = 0;
+        if (g.fight.e[xi].horny > 100)
+            g.fight.e[xi].horny = 100;
+
+        newEnergyDisplay = (g.fight.e[xi].horny / 100) * 280;
+        preEnergyDisplay = (preDamage / 100) * 280;
+
+        $(".enemy-horny" + xi + "[data-t='damage'").css({
+            width: preEnergyDisplay * g.ratio + "px"
+        });
+        $(".enemy-horny" + xi + "[data-t='horny'").css({
+            width: newEnergyDisplay * g.ratio + "px"
+        });
+    }
+};
 
 
 tEnemy.updatePlayerStats = function (money) {

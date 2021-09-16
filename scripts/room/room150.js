@@ -32,8 +32,18 @@ room150.btnclick = function (name) {
                 "height": 973,
                 "image": "150_jones/jones.png"
             }, 150);
-            if (g.get("oncase") === "clothes0") {
+            var onc = g.get("oncase");
+            if (onc === "clothes0") {
                 chat(3, 150);
+            }
+            else if (onc === "clothes1") {
+                chat(4, 150);
+            }
+            else if (onc === "clothes2" || onc === "clothes3") {
+                if (cl.c.panties === null && cl.c.bra === null)
+                    chat(4, 150);
+                else
+                    chat(5, 150);
             }
             else {
                 chat(0, 150);
@@ -92,6 +102,22 @@ room150.chat = function (chatID) {
             text: sc.n("p") + " told me you were participating. Come in. ",
             button: [
                 { chatID: -1, text: "Yes sir. ", callback: "enter" },
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "jones",
+            text: "I knew you would return, whore. Report downstairs for your next assignment. ",
+            button: [
+                { chatID: -1, text: "Yes sir. ", callback: "enter" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "jones",
+            text: "I can see your panty line. Go away. ",
+            button: [
+                { chatID: -1, text: "Oh, sorry, yes sir. ", callback: "" }
             ]
         },
     ];

@@ -401,6 +401,30 @@ room209.btnclick = function (name) {
             room209.btnclick("displaypbtn");
             chat(126, 209);
             break;
+        case "h_32":
+        case "h_33":
+        case "h_34":
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "bb",
+                "left": 605,
+                "top": 225,
+                "width": 868,
+                "height": 368,
+                "image": "209_classroom/bb31.jpg"
+            }, 209);
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            if (name === "h_32")
+                chat(179, 209);
+            else if (name === "h_33")
+                chat(180, 209);
+            else
+                chat(181, 209);
+            break;
         case "h_35":
         case "h_36":
         case "h_37":
@@ -1073,6 +1097,20 @@ room209.chatcatch = function (callback) {
         case "h_31_end":
             g.set("oncase", "clothes0");
             g.roomMapAccess(150, true, false);
+            room209.chatcatch("end");
+            break;
+        case "h_32_end":
+            g.set("oncase", "clothes1");
+            g.roomMapAccess(150, true, false);
+            room209.chatcatch("end");
+            break;
+        case "h_33_end":
+            g.set("oncase", "clothes2");
+            g.roomMapAccess(150, true, false);
+            room209.chatcatch("end");
+            break;
+        case "h_34_end":
+            g.set("oncase", "clothes3");
             room209.chatcatch("end");
             break;
         case "h_40":
@@ -2948,6 +2986,30 @@ room209.chat = function (chatID) {
                 text: "Doesn't matter. He'll dress you as he sees fit. He may be a bit abrasive, but his shows are the best. See you there. ",
                 button: [
                     { chatID: -1, text: "ok", callback: "h_31_end" }
+                ]
+            },
+            {
+                chatID: 179,
+                speaker: "p",
+                text: "So you like modeling? Report back to " + sc.n("jones") + ". He has more work for you. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "h_32_end" }
+                ]
+            },
+            {
+                chatID: 180,
+                speaker: "p",
+                text: "So you like modeling? Report back to " + sc.n("jones") + ". He has more work for you. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "h_33_end" }
+                ]
+            },
+            {
+                chatID: 180,
+                speaker: "p",
+                text: "So you like modeling? Report back to " + sc.n("jones") + ". He has more work for you. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "h_34_end" }
                 ]
             },
         ];

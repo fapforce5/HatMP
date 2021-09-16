@@ -87,6 +87,7 @@ cl.list = [
     { type: "pants", name: "d", display: "Polka Dot Dress", img: "pants_polka.png", sex: "f", inv: false, daring: 2, price: 160 },
     { type: "pants", name: "bs", display: "Blue Skirt", img: "pants_blue.png", sex: "f", inv: false, daring: 2, price: 60 },
     { type: "pants", name: "ps", display: "Pink Shorts", img: "pants_pinkshorts.png", sex: "f", inv: false, daring: 1, price: 78 },
+    { type: "pants", name: "co", display: "Corset Skirt", img: "pants_co.png", sex: "f", inv: false, daring: 4, price: -1 },
 
     { type: "shirt", name: "g", display: "Gray T-Shirt", img: "shirt_tgray.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "shirt", name: "c", display: "Cock T-Shirt", img: "shirt_tcock.png", sex: "m", inv: true, daring: 0, price: 50 },
@@ -102,6 +103,7 @@ cl.list = [
     { type: "shirt", name: "x", display: "X", img: "shirt_x.png", sex: "f", inv: false, daring: 4, price: 40 },
     { type: "shirt", name: "pt", display: "Pink Tank Top", img: "shirt_crop.png", sex: "f", inv: false, daring: 2, price: 30 },
     { type: "shirt", name: "gg", display: "Good Girl Tank", img: "shirt_gg.png", sex: "f", inv: false, daring: 2, price: 30 },
+    { type: "shirt", name: "cor", display: "Red Corset", img: "dress_cor.png", sex: "f", inv: false, daring: 4, price: -1 },
 
     { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 4, price: 175 },
     { type: "dress", name: "s", display: "Summer Dress", img: "dress_summer.png", sex: "f", inv: false, daring: 2, price: 90 },
@@ -116,8 +118,7 @@ cl.list = [
     { type: "dress", name: "robe", display: "Cult Robe", img: "dress_robe.png", sex: "m", inv: false, daring: 0, price: -1 },
     { type: "dress", name: "rose", display: "Pink Rose Dress", img: "dress_rose.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "dress", name: "maid", display: "Maid Outfit", img: "dress_maid.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "dress", name: "cor", display: "Red Corset", img: "dress_cor.png", sex: "f", inv: false, daring: 4, price: -1 },
-
+    
     { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
     { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
     { type: "swimsuit", name: "r", display: "Red Swimsuit", img: "swim_red.png", sex: "f", inv: false, daring: 3, price: 140 },
@@ -142,6 +143,7 @@ cl.list = [
     { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 1, price: 36 },
 
     { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
+    { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
 
     { type: "pj", name: "paisley", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "pj", name: "gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
@@ -621,89 +623,96 @@ cl.eyebrows = [
 ];
 
 cl.pants = [
-    { name: "j", leg: 5, image: "pants_j_4.png", back: "pants_j_5_back.png", p: "pants_j_5_pee.png", pBack: "" },
-    { name: "j", leg: 4, image: "pants_j_4.png", back: "pants_j_4_back.png", p: "pants_j_4_pee.png", pBack: "" },
-    { name: "j", leg: 3, image: "pants_j_3.png", back: "pants_j_3_back.png", p: "pants_j_3_pee.png", pBack: "" },
-    { name: "j", leg: 2, image: "pants_j_1.png", back: "pants_j_2_back.png", p: "pants_j_1_pee.png", pBack: "" },
-    { name: "j", leg: 1, image: "pants_j_1.png", back: "pants_j_0_back.png", p: "pants_j_1_pee.png", pBack: "" },
-    { name: "j", leg: 0, image: "pants_j_0.png", back: "pants_j_0_back.png", p: "pants_j_0_pee.png", pBack: "" },
+    { name: "j", leg: 5, image: "pants_j_4.png", back: "pants_j_5_back.png" },
+    { name: "j", leg: 4, image: "pants_j_4.png", back: "pants_j_4_back.png" },
+    { name: "j", leg: 3, image: "pants_j_3.png", back: "pants_j_3_back.png" },
+    { name: "j", leg: 2, image: "pants_j_1.png", back: "pants_j_2_back.png" },
+    { name: "j", leg: 1, image: "pants_j_1.png", back: "pants_j_0_back.png" },
+    { name: "j", leg: 0, image: "pants_j_0.png", back: "pants_j_0_back.png" },
 
-    { name: "b", leg: 5, image: "pants_b_5.png", back: "pants_b_5_back.png", p: ".png", pBack: "" },
-    { name: "b", leg: 4, image: "pants_b_4.png", back: "pants_b_4_back.png", p: ".png", pBack: "" },
-    { name: "b", leg: 3, image: "pants_b_3.png", back: "pants_b_3_back.png", p: ".png", pBack: "" },
-    { name: "b", leg: 2, image: "pants_b_0.png", back: "pants_b_2_back.png", p: ".png", pBack: "" },
-    { name: "b", leg: 1, image: "pants_b_0.png", back: "pants_b_0_back.png", p: ".png", pBack: "" },
-    { name: "b", leg: 0, image: "pants_b_0.png", back: "pants_b_0_back.png", p: ".png", pBack: "" },
+    { name: "b", leg: 5, image: "pants_b_5.png", back: "pants_b_5_back.png" },
+    { name: "b", leg: 4, image: "pants_b_4.png", back: "pants_b_4_back.png" },
+    { name: "b", leg: 3, image: "pants_b_3.png", back: "pants_b_3_back.png" },
+    { name: "b", leg: 2, image: "pants_b_0.png", back: "pants_b_2_back.png" },
+    { name: "b", leg: 1, image: "pants_b_0.png", back: "pants_b_0_back.png" },
+    { name: "b", leg: 0, image: "pants_b_0.png", back: "pants_b_0_back.png" },
 
-    { name: "r", leg: 5, image: "pants_r_5.png", back: "pants_r_5_back.png", p: ".png", pBack: "" },
-    { name: "r", leg: 4, image: "pants_r_4.png", back: "pants_r_4_back.png", p: ".png", pBack: "" },
-    { name: "r", leg: 3, image: "pants_r_0.png", back: "pants_r_3_back.png", p: ".png", pBack: "" },
-    { name: "r", leg: 2, image: "pants_r_0.png", back: "pants_r_2_back.png", p: ".png", pBack: "" },
-    { name: "r", leg: 1, image: "pants_r_0.png", back: "pants_r_0_back.png", p: ".png", pBack: "" },
-    { name: "r", leg: 0, image: "pants_r_0.png", back: "pants_r_0_back.png", p: ".png", pBack: "" },
+    { name: "r", leg: 5, image: "pants_r_5.png", back: "pants_r_5_back.png" },
+    { name: "r", leg: 4, image: "pants_r_4.png", back: "pants_r_4_back.png" },
+    { name: "r", leg: 3, image: "pants_r_0.png", back: "pants_r_3_back.png" },
+    { name: "r", leg: 2, image: "pants_r_0.png", back: "pants_r_2_back.png" },
+    { name: "r", leg: 1, image: "pants_r_0.png", back: "pants_r_0_back.png" },
+    { name: "r", leg: 0, image: "pants_r_0.png", back: "pants_r_0_back.png" },
 
-    { name: "s", leg: 5, image: "pants_s_5.png", back: "pants_s_5_back.png", p: "pants_s_5_pee.png", pBack: "" },
-    { name: "s", leg: 4, image: "pants_s_4.png", back: "pants_s_4_back.png", p: "pants_s_4_pee.png", pBack: "" },
-    { name: "s", leg: 3, image: "pants_s_3.png", back: "pants_s_3_back.png", p: "pants_s_3_pee.png", pBack: "" },
-    { name: "s", leg: 2, image: "pants_s_1.png", back: "pants_s_2_back.png", p: "pants_s_1_pee.png", pBack: "" },
-    { name: "s", leg: 1, image: "pants_s_1.png", back: "pants_s_0_back.png", p: "pants_s_1_pee.png", pBack: "" },
-    { name: "s", leg: 0, image: "pants_s_0.png", back: "pants_s_0_back.png", p: "pants_s_0_pee.png", pBack: "" },
+    { name: "s", leg: 5, image: "pants_s_5.png", back: "pants_s_5_back.png" },
+    { name: "s", leg: 4, image: "pants_s_4.png", back: "pants_s_4_back.png" },
+    { name: "s", leg: 3, image: "pants_s_3.png", back: "pants_s_3_back.png" },
+    { name: "s", leg: 2, image: "pants_s_1.png", back: "pants_s_2_back.png" },
+    { name: "s", leg: 1, image: "pants_s_1.png", back: "pants_s_0_back.png" },
+    { name: "s", leg: 0, image: "pants_s_0.png", back: "pants_s_0_back.png" },
 
-    { name: "v", leg: 5, image: "pants_v_5.png", back: "pants_v_5_back.png", p: "pants_v_5.png", pBack: "" },
-    { name: "v", leg: 4, image: "pants_v_4.png", back: "pants_v_4_back.png", p: "pants_v_4.png", pBack: "" },
-    { name: "v", leg: 3, image: "pants_v_0.png", back: "pants_v_3_back.png", p: "pants_v_3.png", pBack: "" },
-    { name: "v", leg: 2, image: "pants_v_0.png", back: "pants_v_2_back.png", p: "pants_v_2.png", pBack: "" },
-    { name: "v", leg: 1, image: "pants_v_0.png", back: "pants_v_0_back.png", p: "pants_v_1.png", pBack: "" },
-    { name: "v", leg: 0, image: "pants_v_0.png", back: "pants_v_0_back.png", p: "pants_v_0.png", pBack: "" },
+    { name: "v", leg: 5, image: "pants_v_5.png", back: "pants_v_5_back.png" },
+    { name: "v", leg: 4, image: "pants_v_4.png", back: "pants_v_4_back.png" },
+    { name: "v", leg: 3, image: "pants_v_0.png", back: "pants_v_3_back.png" },
+    { name: "v", leg: 2, image: "pants_v_0.png", back: "pants_v_2_back.png" },
+    { name: "v", leg: 1, image: "pants_v_0.png", back: "pants_v_0_back.png" },
+    { name: "v", leg: 0, image: "pants_v_0.png", back: "pants_v_0_back.png" },
 
-    { name: "k", leg: 5, image: "pants_k_5.png", back: "pants_k_5_back.png", p: "pants_k_5.png", pBack: "" },
-    { name: "k", leg: 4, image: "pants_k_4.png", back: "pants_k_4_back.png", p: "pants_k_4.png", pBack: "" },
-    { name: "k", leg: 3, image: "pants_k_3.png", back: "pants_k_3_back.png", p: "pants_k_3.png", pBack: "" },
-    { name: "k", leg: 2, image: "pants_k_1.png", back: "pants_k_2_back.png", p: "pants_k_2.png", pBack: "" },
-    { name: "k", leg: 1, image: "pants_k_1.png", back: "pants_k_0_back.png", p: "pants_k_1.png", pBack: "" },
-    { name: "k", leg: 0, image: "pants_k_0.png", back: "pants_k_0_back.png", p: "pants_k_0.png", pBack: "" },
+    { name: "k", leg: 5, image: "pants_k_5.png", back: "pants_k_5_back.png" },
+    { name: "k", leg: 4, image: "pants_k_4.png", back: "pants_k_4_back.png" },
+    { name: "k", leg: 3, image: "pants_k_3.png", back: "pants_k_3_back.png" },
+    { name: "k", leg: 2, image: "pants_k_1.png", back: "pants_k_2_back.png" },
+    { name: "k", leg: 1, image: "pants_k_1.png", back: "pants_k_0_back.png" },
+    { name: "k", leg: 0, image: "pants_k_0.png", back: "pants_k_0_back.png" },
 
-    { name: "p", leg: 5, image: "pants_p_5.png", back: "pants_p_5_back.png", p: "pants_p_5.png", pBack: "" },
-    { name: "p", leg: 4, image: "pants_p_4.png", back: "pants_p_4_back.png", p: "pants_p_4.png", pBack: "" },
-    { name: "p", leg: 3, image: "pants_p_3.png", back: "pants_p_3_back.png", p: "pants_p_3.png", pBack: "" },
-    { name: "p", leg: 2, image: "pants_p_1.png", back: "pants_p_2_back.png", p: "pants_p_2.png", pBack: "" },
-    { name: "p", leg: 1, image: "pants_p_1.png", back: "pants_p_0_back.png", p: "pants_p_1.png", pBack: "" },
-    { name: "p", leg: 0, image: "pants_p_0.png", back: "pants_p_0_back.png", p: "pants_p_0.png", pBack: "" },
+    { name: "p", leg: 5, image: "pants_p_5.png", back: "pants_p_5_back.png" },
+    { name: "p", leg: 4, image: "pants_p_4.png", back: "pants_p_4_back.png" },
+    { name: "p", leg: 3, image: "pants_p_3.png", back: "pants_p_3_back.png" },
+    { name: "p", leg: 2, image: "pants_p_1.png", back: "pants_p_2_back.png" },
+    { name: "p", leg: 1, image: "pants_p_1.png", back: "pants_p_0_back.png" },
+    { name: "p", leg: 0, image: "pants_p_0.png", back: "pants_p_0_back.png" },
 
-    { name: "dd", leg: 5, image: "pants_dd_4.png", back: "pants_dd_5_back.png", p: "pants_dd_5.png", pBack: "" },
-    { name: "dd", leg: 4, image: "pants_dd_4.png", back: "pants_dd_4_back.png", p: "pants_dd_4.png", pBack: "" },
-    { name: "dd", leg: 3, image: "pants_dd_3.png", back: "pants_dd_3_back.png", p: "pants_dd_3.png", pBack: "" },
-    { name: "dd", leg: 2, image: "pants_dd_0.png", back: "pants_dd_2_back.png", p: "pants_dd_2.png", pBack: "" },
-    { name: "dd", leg: 1, image: "pants_dd_0.png", back: "pants_dd_0_back.png", p: "pants_dd_1.png", pBack: "" },
-    { name: "dd", leg: 0, image: "pants_dd_0.png", back: "pants_dd_0_back.png", p: "pants_dd_0.png", pBack: "" },
+    { name: "dd", leg: 5, image: "pants_dd_4.png", back: "pants_dd_5_back.png" },
+    { name: "dd", leg: 4, image: "pants_dd_4.png", back: "pants_dd_4_back.png" },
+    { name: "dd", leg: 3, image: "pants_dd_3.png", back: "pants_dd_3_back.png" },
+    { name: "dd", leg: 2, image: "pants_dd_0.png", back: "pants_dd_2_back.png" },
+    { name: "dd", leg: 1, image: "pants_dd_0.png", back: "pants_dd_0_back.png" },
+    { name: "dd", leg: 0, image: "pants_dd_0.png", back: "pants_dd_0_back.png" },
 
-    { name: "d", leg: 5, image: "pants_d_5.png", back: "pants_d_4_back.png", p: "pants_d_4.png", pBack: "" },
-    { name: "d", leg: 4, image: "pants_d_4.png", back: "pants_d_4_back.png", p: "pants_d_4.png", pBack: "" },
-    { name: "d", leg: 3, image: "pants_d_3.png", back: "pants_d_3_back.png", p: "pants_d_3.png", pBack: "" },
-    { name: "d", leg: 2, image: "pants_d_0.png", back: "pants_d_0_back.png", p: "pants_d_2.png", pBack: "" },
-    { name: "d", leg: 1, image: "pants_d_0.png", back: "pants_d_0_back.png", p: "pants_d_1.png", pBack: "" },
-    { name: "d", leg: 0, image: "pants_d_0.png", back: "pants_d_0_back.png", p: "pants_d_0.png", pBack: "" },
+    { name: "d", leg: 5, image: "pants_d_5.png", back: "pants_d_4_back.png" },
+    { name: "d", leg: 4, image: "pants_d_4.png", back: "pants_d_4_back.png" },
+    { name: "d", leg: 3, image: "pants_d_3.png", back: "pants_d_3_back.png" },
+    { name: "d", leg: 2, image: "pants_d_0.png", back: "pants_d_0_back.png" },
+    { name: "d", leg: 1, image: "pants_d_0.png", back: "pants_d_0_back.png" },
+    { name: "d", leg: 0, image: "pants_d_0.png", back: "pants_d_0_back.png" },
 
-    { name: "bs", leg: 5, image: "pants_bs_0.png", back: "pants_bs_0_back.png", p: "pants_bs_0.png", pBack: "" },
-    { name: "bs", leg: 4, image: "pants_bs_0.png", back: "pants_bs_0_back.png", p: "pants_bs_0.png", pBack: "" },
-    { name: "bs", leg: 3, image: "pants_bs_0.png", back: "pants_bs_0_back.png", p: "pants_bs_0.png", pBack: "" },
-    { name: "bs", leg: 2, image: "pants_bs_0.png", back: "pants_bs_0_back.png", p: "pants_bs_0.png", pBack: "" },
-    { name: "bs", leg: 1, image: "pants_bs_0.png", back: "pants_bs_0_back.png", p: "pants_bs_0.png", pBack: "" },
-    { name: "bs", leg: 0, image: "pants_bs_0.png", back: "pants_bs_0_back.png", p: "pants_bs_0.png", pBack: "" },
+    { name: "bs", leg: 5, image: "pants_bs_0.png", back: "pants_bs_0_back.png" },
+    { name: "bs", leg: 4, image: "pants_bs_0.png", back: "pants_bs_0_back.png" },
+    { name: "bs", leg: 3, image: "pants_bs_0.png", back: "pants_bs_0_back.png" },
+    { name: "bs", leg: 2, image: "pants_bs_0.png", back: "pants_bs_0_back.png" },
+    { name: "bs", leg: 1, image: "pants_bs_0.png", back: "pants_bs_0_back.png" },
+    { name: "bs", leg: 0, image: "pants_bs_0.png", back: "pants_bs_0_back.png" },
 
-    { name: "h", leg: 5, image: "pants_h_5.png", back: "pants_h_5_back.png", p: "pants_h_3.png", pBack: "" },
-    { name: "h", leg: 4, image: "pants_h_4.png", back: "pants_h_4_back.png", p: "pants_h_3.png", pBack: "" },
-    { name: "h", leg: 3, image: "pants_h_3.png", back: "pants_h_3_back.png", p: "pants_h_2.png", pBack: "" },
-    { name: "h", leg: 2, image: "pants_h_1.png", back: "pants_h_2_back.png", p: "pants_h_1.png", pBack: "" },
-    { name: "h", leg: 1, image: "pants_h_1.png", back: "pants_h_0_back.png", p: "pants_h_1.png", pBack: "" },
-    { name: "h", leg: 0, image: "pants_h_0.png", back: "pants_h_0_back.png", p: "pants_h_0.png", pBack: "" },
+    { name: "h", leg: 5, image: "pants_h_5.png", back: "pants_h_5_back.png" },
+    { name: "h", leg: 4, image: "pants_h_4.png", back: "pants_h_4_back.png" },
+    { name: "h", leg: 3, image: "pants_h_3.png", back: "pants_h_3_back.png" },
+    { name: "h", leg: 2, image: "pants_h_1.png", back: "pants_h_2_back.png" },
+    { name: "h", leg: 1, image: "pants_h_1.png", back: "pants_h_0_back.png" },
+    { name: "h", leg: 0, image: "pants_h_0.png", back: "pants_h_0_back.png" },
 
-    { name: "ps", leg: 5, image: "pants_ps_5.png", back: "pants_ps_5_back.png", p: "pants_h_3.png", pBack: "" },
-    { name: "ps", leg: 4, image: "pants_ps_4.png", back: "pants_ps_4_back.png", p: "pants_h_3.png", pBack: "" },
-    { name: "ps", leg: 3, image: "pants_ps_0.png", back: "pants_ps_3_back.png", p: "pants_h_2.png", pBack: "" },
-    { name: "ps", leg: 2, image: "pants_ps_1.png", back: "pants_ps_2_back.png", p: "pants_h_1.png", pBack: "" },
-    { name: "ps", leg: 1, image: "pants_ps_1.png", back: "pants_ps_0_back.png", p: "pants_h_1.png", pBack: "" },
-    { name: "ps", leg: 0, image: "pants_ps_0.png", back: "pants_ps_0_back.png", p: "pants_h_0.png", pBack: "" }
+    { name: "ps", leg: 5, image: "pants_ps_5.png", back: "pants_ps_5_back.png" },
+    { name: "ps", leg: 4, image: "pants_ps_4.png", back: "pants_ps_4_back.png" },
+    { name: "ps", leg: 3, image: "pants_ps_0.png", back: "pants_ps_3_back.png" },
+    { name: "ps", leg: 2, image: "pants_ps_1.png", back: "pants_ps_2_back.png" },
+    { name: "ps", leg: 1, image: "pants_ps_1.png", back: "pants_ps_0_back.png" },
+    { name: "ps", leg: 0, image: "pants_ps_0.png", back: "pants_ps_0_back.png" },
+
+    { name: "co", leg: 5, image: "pants_co_5.png", back: "pants_co_5_back.png" },
+    { name: "co", leg: 4, image: "pants_co_4.png", back: "pants_co_4_back.png" },
+    { name: "co", leg: 3, image: "pants_co_0.png", back: "pants_co_3_back.png" },
+    { name: "co", leg: 2, image: "pants_co_1.png", back: "pants_co_2_back.png" },
+    { name: "co", leg: 1, image: "pants_co_1.png", back: "pants_co_0_back.png" },
+    { name: "co", leg: 0, image: "pants_co_0.png", back: "pants_co_0_back.png" }
 ];
 
 cl.wig = [
@@ -883,6 +892,14 @@ cl.shirt = [
     { name: "gg", chest: 2, image: "shirt_gg_2.png", back: "shirt_gg_2_back.png" },
     { name: "gg", chest: 1, image: "shirt_gg_0.png", back: "shirt_gg_0_back.png" },
     { name: "gg", chest: 0, image: "shirt_gg_0.png", back: "shirt_gg_0_back.png" },
+
+    { name: "cor", chest: 6, image: "dress_cor_6.png", back: "dress_cor_2_back.png" },
+    { name: "cor", chest: 5, image: "dress_cor_5.png", back: "dress_cor_2_back.png" },
+    { name: "cor", chest: 4, image: "dress_cor_4.png", back: "dress_cor_2_back.png" },
+    { name: "cor", chest: 3, image: "dress_cor_3.png", back: "dress_cor_2_back.png" },
+    { name: "cor", chest: 2, image: "dress_cor_2.png", back: "dress_cor_2_back.png" },
+    { name: "cor", chest: 1, image: "dress_cor_0.png", back: "dress_cor_0_back.png" },
+    { name: "cor", chest: 0, image: "dress_cor_0.png", back: "dress_cor_0_back.png" }
 ];
 
 //s=summer; p=purple; a=alice
@@ -991,13 +1008,7 @@ cl.dressTop = [
     { name: "maid", chest: 1, image: "dress_maid_0.png", back: "dress_maid_0_back.png" },
     { name: "maid", chest: 0, image: "dress_maid_0.png", back: "dress_maid_0_back.png" },
 
-    { name: "cor", chest: 6, image: "dress_cor_6.png", back: "dress_cor_2_back.png" },
-    { name: "cor", chest: 5, image: "dress_cor_5.png", back: "dress_cor_2_back.png" },
-    { name: "cor", chest: 4, image: "dress_cor_4.png", back: "dress_cor_2_back.png" },
-    { name: "cor", chest: 3, image: "dress_cor_3.png", back: "dress_cor_2_back.png" },
-    { name: "cor", chest: 2, image: "dress_cor_2.png", back: "dress_cor_2_back.png" },
-    { name: "cor", chest: 1, image: "dress_cor_0.png", back: "dress_cor_0_back.png" },
-    { name: "cor", chest: 0, image: "dress_cor_0.png", back: "dress_cor_0_back.png" }
+    
 ];
 
 cl.dressBottom = [
@@ -1357,7 +1368,8 @@ cl.buttplug = [
 ];
 
 cl.accessories = [
-    { name: "piggy", type: "head", image: "acc_piggy.png", back: null }
+    { name: "piggy", type: "head", image: "acc_piggy.png", back: null },
+    { name: "ballgag", type: "head", image: "acc_ballgag.png", back: null }
 ];
 
 cl.displayChar = function (ratio, top, left, back) {
