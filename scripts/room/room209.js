@@ -498,7 +498,7 @@ room209.btnclick = function (name) {
             nav.bg("205_computerWork/blackBg.jpg");
             g.set("oncase", "cult0");
             
-            g.internal = { day: 0, interval: 0, cleaned: false, constDayDirty: 0, jo: false, box: 0 };
+            g.internal = { day: 0, interval: 0, constDayDirty: 0, jo: false, box: 0, brick: 0 };
             g.pass = 950;
             char.room(28); 
             
@@ -2738,8 +2738,8 @@ room209.chat = function (chatID) {
                 chatID: 151,
                 speaker: "missy",
                 text: "The reason the police don't get involved is that it's all voluntary. They've been brainwashed into believing " +
-                    "that if the hermaphrodite is able to conceive they will give birth to Azreal, the Angel of Death. " +
-                    "They believe that once Azreal is upon the earth he will " +
+                    "that if the hermaphrodite is able to conceive they will give birth to Azrael, the Angel of Death. " +
+                    "They believe that once Azrael is upon the earth he will " +
                     "destroy all mankind except for the followers of CUM who will now rule over all. ",
                 button: [
                     { chatID: 152, text: "...", callback: "55_6" }

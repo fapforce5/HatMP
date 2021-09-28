@@ -351,6 +351,15 @@ tEnemy.drawRoom = function () {
 
     var btnListx = [
         {
+            "type": "img",
+            "name": "pow",
+            "left": 840,
+            "top": 0,
+            "width": 1080,
+            "height": 1080,
+            "image": "227_fight/blank.png"
+        },
+        {
             "type": "zimg",
             "name": "mystatus",
             "left": 15,
@@ -573,7 +582,11 @@ tEnemy.drawChar = function (pose) {
             thischar.fif = null;
             break;
         case "asspose":
-
+            thischar.body = cl.c.chest > 2 ? "g_asspose" : "g_asspose";
+            thischar.dick = "g_asspose";
+            thischar.displayc = true;
+            thischar.hair = "7";
+            thischar.fif = null;
             break;
         case "stripclothes":
             if (g.fight.me.clothes !== null) {
@@ -681,48 +694,38 @@ tEnemy.getEnemyAction = function () {
     return g.fight.e[0].p;
 };
 
-tEnemy.myEnergy = function (thisDamage, thisArousal) {
-    var newEnergyDisplay, preEnergyDisplay, preDamage;
+tEnemy.myEnergy = function () {
 
-    if (thisDamage !== null) {
-        preDamage = g.fight.me.energy;
-        g.fight.me.energy += thisDamage;
+    if (g.fight.me.energy < 0)
+        g.fight.me.energy = 0;
+    if (g.fight.me.energy > g.fight.me.maxEnergy)
+        g.fight.me.energy = g.fight.me.maxEnergy;
 
-        if (g.fight.me.energy < 0)
-            g.fight.me.energy = 0;
-        if (g.fight.me.energy > g.fight.me.maxEnergy)
-            g.fight.me.energy = g.fight.me.maxEnergy;
+    newEnergyDisplay = (g.fight.me.energy / g.fight.me.maxEnergy) * 280;
+    preEnergyDisplay = (preDamage / g.fight.me.maxEnergy) * 280;
 
-        newEnergyDisplay = (g.fight.me.energy / g.fight.me.maxEnergy) * 280;
-        preEnergyDisplay = (preDamage / g.fight.me.maxEnergy) * 280;
+    $(".my-life[data-t='damage'").css({
+        width: preEnergyDisplay * g.ratio + "px"
+    });
+    $(".my-life[data-t='energy'").css({
+        width: newEnergyDisplay * g.ratio + "px"
+    });
 
-        $(".my-life[data-t='damage'").css({
-            width: preEnergyDisplay * g.ratio + "px"
-        });
-        $(".my-life[data-t='energy'").css({
-            width: newEnergyDisplay * g.ratio + "px"
-        });
-    }
-    if (thisArousal !== null) {
-        preDamage = g.fight.me.horny;
+    if (g.fight.me.horny < 0)
+        g.fight.me.horny = 0;
+    if (g.fight.me.horny > 100)
+        g.fight.me.horny = 100;
 
-        g.fight.me.horny += thisArousal;
+    newEnergyDisplay = (g.fight.me.horny / 100) * 280;
+    preEnergyDisplay = (preDamage / 100) * 280;
 
-        if (g.fight.me.horny < 0)
-            g.fight.me.horny = 0;
-        if (g.fight.me.horny > 100)
-            g.fight.me.horny = 100;
+    $(".my-horny[data-t='damage'").css({
+        width: preEnergyDisplay * g.ratio + "px"
+    });
+    $(".my-horny[data-t='horny'").css({
+        width: newEnergyDisplay * g.ratio + "px"
+    });
 
-        newEnergyDisplay = (g.fight.me.horny / 100) * 280;
-        preEnergyDisplay = (preDamage / 100) * 280;
-
-        $(".my-horny[data-t='damage'").css({
-            width: preEnergyDisplay * g.ratio + "px"
-        });
-        $(".my-horny[data-t='horny'").css({
-            width: newEnergyDisplay * g.ratio + "px"
-        });
-    }
 };
 
 tEnemy.enemyEnergy = function (thisDamage, thisArousal, xi) {
@@ -769,6 +772,44 @@ tEnemy.enemyEnergy = function (thisDamage, thisArousal, xi) {
     }
 };
 
+
+tEnemy.playerhit = function (blocked, eid, attackType) {
+    hitstrenght = 0;
+    switch (attackType) {
+        case "punch":
+            hitstrenght = g.fight.e[eid].pPower;
+            break;
+        case "kick":
+            hitstrenght = g.fight.e[eid].kPower;
+            break;
+        default:
+            hitstrenght = g.fight.e[eid].pPower + g.fight.e[eid].kPower;
+            break;
+    }
+    if (blocked)
+        hitstrenght = Math.floor(hitstrenght / 5);
+    g.fight.me.energy -= hitstrenght;
+    tEnemy.enemyEnergy();
+};
+
+tEnemy.enemyHit = function (blocked, eid, attackType) {
+    hitstrenght = 0;
+    switch (attackType) {
+        case "punch":
+            hitstrenght = g.fight.me.pPower;
+            break;
+        case "kick":
+            hitstrenght = g.fight.me.kPower;
+            break;
+        default:
+            hitstrenght = g.fight.e[eid].pPower + g.fight.e[eid].kPower;
+            break;
+    }
+    if (blocked)
+        hitstrenght = Math.floor(hitstrenght / 5);
+    g.fight.e[eid].energy -= hitstrenght;
+    tEnemy.myEnergy();
+};
 
 tEnemy.updatePlayerStats = function (money) {
 

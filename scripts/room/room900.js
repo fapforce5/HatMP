@@ -60,8 +60,10 @@ room900.btnclick = function (name) {
 room900.chatcatch = function(callback){
     switch (callback) {
         case "showid":
-            if (cl.c.hairColor === "blond")
-                chat(4, 900);
+            if (cl.c.hairColor === "blond") {
+                alert("fix this - add event");
+
+            }
             else
                 chat(3, 900);
             break;

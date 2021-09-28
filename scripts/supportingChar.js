@@ -53,6 +53,7 @@ sc.char = [
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "crystal", display: "Crystal", image: "crystal.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "bodhi", display: "Bodhi", image: "bodhi.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "tim", display: "Tim", image: "tim.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -1042,187 +1043,193 @@ sc.step = function (name) {
 sc.phone = function (char) {
     var step = sc.getstep(char);
     var clist;
-    switch (char) {
-        case "eva":
-            if (step < 3) {
-                clist = [
-                    { s: "me", t: "Hay what's up?" },
-                    { s: "eva", t: "Nothing you pervert!" }
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step === 3) {
-                clist = [
-                    { s: "me", t: "What was I supposed to do?" },
-                    { s: "eva", t: "Get us some alcohol weird-o" }
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step < 6) {
-                clist = [
-                    { s: "me", t: "You are so hot!" },
-                    { s: "eva", t: "You are so weird and perverted! I bet" }
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step === 6) {
-                clist = [
-                    { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
-                    { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
-                    { s: "me", t: "Oh no I didn't mean to be weird" },
-                    { s: "eva", t: "whatever. " + sc.n("lola") + " and me want to play truth or dare, come by tonight." }
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step === 7) {
-                clist = [
-                    { s: "me", t: "That totally sucked!" },
-                    { s: "eva", t: "I know! I'm so sorry! " + sc.n("landlord") + " got soooooo mad. I'm not even supposed to talk to you." },
-                    { s: "me", t: "That's lame" },
-                    { s: "eva", t: "I know! Also I totally want to see that giant cock of yours! " },
-                    { s: "eva", t: "It's just soooo big. I wanted to play with it. You need to smooth things over with " + sc.n("landlord") }
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step === 9) {
-                clist = [
-                    { s: "me", t: "I'm so excited to be back in the house!" },
-                    { s: "eva", t: "I'm going to give you a big suprise... just wait for it!" },
-                    { s: "me", t: "What suprise?" },
-                    { s: "eva", t: "If I tell you, it won't a suprise!" },
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step === 10 || step === 11) {
-                if (g.get("evaDayEvent")) {
+    var nophone = [950, 951];
+    if (nophone.includes(g.roomID)) {
+        g.popUpNotice("No reciption here. Damn!");
+    }
+    else {
+        switch (char) {
+            case "eva":
+                if (step < 3) {
                     clist = [
-                        { s: "me", t: "Hay, been thinking about my dick?" },
-                        { s: "eva", t: "I'm busy today, try me tomorrow!" },
+                        { s: "me", t: "Hay what's up?" },
+                        { s: "eva", t: "Nothing you pervert!" }
                     ];
                     sc.phoneChat(clist, char);
                 }
-                else if (g.roomID === 10) {
-                    g.pass = "phonecall";
-                    menu.mClick("close");
-                    room7.main();
-                }
-                else {
+                else if (step === 3) {
                     clist = [
-                        { s: "me", t: "Hay, been thinking about my dick?" },
-                        { s: "eva", t: "Oh yeah! Text me when you're in your room!" },
+                        { s: "me", t: "What was I supposed to do?" },
+                        { s: "eva", t: "Get us some alcohol weird-o" }
                     ];
                     sc.phoneChat(clist, char);
                 }
-
-            }
-            else if (step === 30) {
-                clist = [
-                    { s: "me", t: "Soooo what's up?" },
-                    { s: "eva", t: "Hayyyy buddy. I like you, i just need a manly cock" },
-                ];
-                sc.phoneChat(clist, char);
-            }
-            else if (step === 203) {
-                clist = [
-                    { s: "me", t: "You told me to text you." },
-                    { s: "eva", t: "I did. The artist is working on the images. We'll have to wait till the next release doggy." },
-                ];
-                sc.phoneChat(clist, char);
-            }
-            break;
-        case "lola":
-            if (step === 0)
-                sc.phoneChat([
-                    { s: "me", t: "Hay " + sc.n("lola") + "!" },
-                    { s: "lola", t: "You should come by our room! We like hanging out with you." },
-                ], char);
-            else if (step < 4)
-                sc.phoneChat([
-                    { s: "me", t: "Soooo what's up?" },
-                    { s: "lola", t: "I'm so sore from swimming, I could use a massage." },
-                ], char);
-            else if (step < 4)
-                sc.phoneChat([
-                    { s: "me", t: "Hay " + sc.n("lola") },
-                    { s: "lola", t: "Hay " + sc.n("eva") + " wanted to play a game. Could you get some alcohol?" },
-                ], char);
-            else if (step < 7)
-                sc.phoneChat([
-                    { s: "me", t: "Soooo what's up?" },
-                    { s: "lola", t: "My legs are so tight from swimming. Could you give them a rub down?" },
-                ], char);
-            else if (step === 7)
-                sc.phoneChat([
-                    { s: "me", t: "Soooo what's up?" },
-                    { s: "lola", t: sc.n("eva") + " said something about a game. Sounds like fun, we should play." },
-                ], char);
-            else if (step === 8)
-                sc.phoneChat([
-                    { s: "me", t: "That was so crazy, I'm so sorry" },
-                    { s: "lola", t: "I know! " + sc.n("landlord") + " made us promise not to see you again." },
-                    { s: "me", t: "That's terrible. I miss seeing you" },
-                    { s: "lola", t: "I'm working on her to try and get you back into the house. You should see her at work and work on it too. She's really mad" },
-                ], char);
-            else if (step === 9)
-                sc.phoneChat([
-                    { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
-                    { s: "lola", t: "It really is. I really missed you." },
-                ], char);
-            else if (step === 10)
-                sc.phoneChat([
-                    { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
-                    { s: "lola", t: "It really is. I really missed you." },
-                ], char);
-            else if (step === 11) {
-                if (g.roomID === 450) {
-                    if (g.isNight()) {
-                        sc.phoneChat([
-                            { s: "me", t: "Hay " + sc.n("lola") + " I'm at the park " },
-                            { s: "lola", t: "It's so late, how about we meet up during the day. " },
-                            { s: "me", t: "Oh yeah, of course. I'll text you during the day." },
-                        ], char);
+                else if (step < 6) {
+                    clist = [
+                        { s: "me", t: "You are so hot!" },
+                        { s: "eva", t: "You are so weird and perverted! I bet" }
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                else if (step === 6) {
+                    clist = [
+                        { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
+                        { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
+                        { s: "me", t: "Oh no I didn't mean to be weird" },
+                        { s: "eva", t: "whatever. " + sc.n("lola") + " and me want to play truth or dare, come by tonight." }
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                else if (step === 7) {
+                    clist = [
+                        { s: "me", t: "That totally sucked!" },
+                        { s: "eva", t: "I know! I'm so sorry! " + sc.n("landlord") + " got soooooo mad. I'm not even supposed to talk to you." },
+                        { s: "me", t: "That's lame" },
+                        { s: "eva", t: "I know! Also I totally want to see that giant cock of yours! " },
+                        { s: "eva", t: "It's just soooo big. I wanted to play with it. You need to smooth things over with " + sc.n("landlord") }
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                else if (step === 9) {
+                    clist = [
+                        { s: "me", t: "I'm so excited to be back in the house!" },
+                        { s: "eva", t: "I'm going to give you a big suprise... just wait for it!" },
+                        { s: "me", t: "What suprise?" },
+                        { s: "eva", t: "If I tell you, it won't a suprise!" },
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                else if (step === 10 || step === 11) {
+                    if (g.get("evaDayEvent")) {
+                        clist = [
+                            { s: "me", t: "Hay, been thinking about my dick?" },
+                            { s: "eva", t: "I'm busy today, try me tomorrow!" },
+                        ];
+                        sc.phoneChat(clist, char);
+                    }
+                    else if (g.roomID === 10) {
+                        g.pass = "phonecall";
+                        menu.mClick("close");
+                        room7.main();
                     }
                     else {
-                        menu.mClick("close");
-                        menu.mClick("close");
-                        room450.btnclick("lolaPark");
+                        clist = [
+                            { s: "me", t: "Hay, been thinking about my dick?" },
+                            { s: "eva", t: "Oh yeah! Text me when you're in your room!" },
+                        ];
+                        sc.phoneChat(clist, char);
+                    }
+
+                }
+                else if (step === 30) {
+                    clist = [
+                        { s: "me", t: "Soooo what's up?" },
+                        { s: "eva", t: "Hayyyy buddy. I like you, i just need a manly cock" },
+                    ];
+                    sc.phoneChat(clist, char);
+                }
+                else if (step === 203) {
+                    if (g.roomID !== 999) {
+                        clist = [
+                            { s: "me", t: "You told me to text you." },
+                            { s: "eva", t: "I did. Text me when you get in the library. And wear a doggy collar. " },
+                        ];
+                        sc.phoneChat(clist, char);
                     }
                 }
-                else {
+                break;
+            case "lola":
+                if (step === 0)
                     sc.phoneChat([
-                        { s: "me", t: "Hay " + sc.n("lola") + " we should talk " },
-                        {
-                            s: "lola", t: "I'm so glad you texted me. We should talk, but I can't let " + sc.n("landlord") + " or " +
-                                sc.n("eva") + " know I'm breaking the rules. "
-                        },
-                        { s: "me", t: "Ok. I'll text you from the park. We'll have a date." },
-                        { s: "lola", t: "I'm so glad! I'll see you there. " },
+                        { s: "me", t: "Hay " + sc.n("lola") + "!" },
+                        { s: "lola", t: "You should come by our room! We like hanging out with you." },
+                    ], char);
+                else if (step < 4)
+                    sc.phoneChat([
+                        { s: "me", t: "Soooo what's up?" },
+                        { s: "lola", t: "I'm so sore from swimming, I could use a massage." },
+                    ], char);
+                else if (step < 4)
+                    sc.phoneChat([
+                        { s: "me", t: "Hay " + sc.n("lola") },
+                        { s: "lola", t: "Hay " + sc.n("eva") + " wanted to play a game. Could you get some alcohol?" },
+                    ], char);
+                else if (step < 7)
+                    sc.phoneChat([
+                        { s: "me", t: "Soooo what's up?" },
+                        { s: "lola", t: "My legs are so tight from swimming. Could you give them a rub down?" },
+                    ], char);
+                else if (step === 7)
+                    sc.phoneChat([
+                        { s: "me", t: "Soooo what's up?" },
+                        { s: "lola", t: sc.n("eva") + " said something about a game. Sounds like fun, we should play." },
+                    ], char);
+                else if (step === 8)
+                    sc.phoneChat([
+                        { s: "me", t: "That was so crazy, I'm so sorry" },
+                        { s: "lola", t: "I know! " + sc.n("landlord") + " made us promise not to see you again." },
+                        { s: "me", t: "That's terrible. I miss seeing you" },
+                        { s: "lola", t: "I'm working on her to try and get you back into the house. You should see her at work and work on it too. She's really mad" },
+                    ], char);
+                else if (step === 9)
+                    sc.phoneChat([
+                        { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                        { s: "lola", t: "It really is. I really missed you." },
+                    ], char);
+                else if (step === 10)
+                    sc.phoneChat([
+                        { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                        { s: "lola", t: "It really is. I really missed you." },
+                    ], char);
+                else if (step === 11) {
+                    if (g.roomID === 450) {
+                        if (g.isNight()) {
+                            sc.phoneChat([
+                                { s: "me", t: "Hay " + sc.n("lola") + " I'm at the park " },
+                                { s: "lola", t: "It's so late, how about we meet up during the day. " },
+                                { s: "me", t: "Oh yeah, of course. I'll text you during the day." },
+                            ], char);
+                        }
+                        else {
+                            menu.mClick("close");
+                            menu.mClick("close");
+                            room450.btnclick("lolaPark");
+                        }
+                    }
+                    else {
+                        sc.phoneChat([
+                            { s: "me", t: "Hay " + sc.n("lola") + " we should talk " },
+                            {
+                                s: "lola", t: "I'm so glad you texted me. We should talk, but I can't let " + sc.n("landlord") + " or " +
+                                    sc.n("eva") + " know I'm breaking the rules. "
+                            },
+                            { s: "me", t: "Ok. I'll text you from the park. We'll have a date." },
+                            { s: "lola", t: "I'm so glad! I'll see you there. " },
+                        ], char);
+                    }
+                }
+                else if (step === 12) {
+                    sc.phoneChat([
+                        { s: "me", t: "In Development" },
                     ], char);
                 }
-            }
-            else if (step === 12) {
+                break;
+            case "missy":
+
                 sc.phoneChat([
-                    { s: "me", t: "In Development" },
+                    { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                    { s: "missy", t: "In progress" },
                 ], char);
-            }
-            break;
-        case "missy":
 
-            sc.phoneChat([
-                { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
-                { s: "missy", t: "In progress" },
-            ], char);
-
-            break;
-        case "zoey":
-            sc.phoneChat([
-                { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
-                { s: "zoey", t: "In progress" },
-            ], char);
-            break;
+                break;
+            case "zoey":
+                sc.phoneChat([
+                    { s: "me", t: "Hay " + sc.n("lola") + " it was sooo good to see you! " },
+                    { s: "zoey", t: "In progress" },
+                ], char);
+                break;
+        }
     }
-
-
 };
 
 //{ name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false },

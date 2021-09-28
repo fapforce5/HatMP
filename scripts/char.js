@@ -1040,6 +1040,8 @@ menu.mClick = function (type) {
                 ' Difficulty' +
                 '</div>' +
                 '</div>');
+            $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
+            $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
             break;
         case "patreon":
             $(".menu-buttonKill").remove();

@@ -43,7 +43,7 @@ scc.changes = [
     { name: "tina", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "cecilia", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "jones", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-
+    { name: "cult", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
 ];
 
 scc.changesDiffernt = function (name, cock) {

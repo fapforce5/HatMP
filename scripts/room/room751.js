@@ -39,6 +39,7 @@ room751.btnclick = function (name) {
     }
     g.pass = { name: te.display, thisStep: thisStep, nextStep: nextStep };
     chat(998, 751);
+    nav.bg("751_crystal/bg1.jpg");
 };
 
 room751.chatcatch = function (callback) {

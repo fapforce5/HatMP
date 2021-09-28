@@ -44,15 +44,29 @@ room501.main = function () {
             });
         }
         if (sc.zoey().thisRoom) {
-            btnList.push({
-                "type": "btn",
-                "name": "zoey",
-                "left": 1035,
-                "top": 288,
-                "width": 549,
-                "height": 524,
-                "image": "501_jadaGame/zoeySit.png"
-            });
+            if (zoeyStep > 13) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "zoey",
+                    "left": 1035,
+                    "top": 288,
+                    "width": 549,
+                    "height": 524,
+                    "image": "501_jadaGame/zoeySitx.png"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "zoey",
+                    "left": 1035,
+                    "top": 288,
+                    "width": 549,
+                    "height": 524,
+                    "image": "501_jadaGame/zoeySit.png"
+                });
+            }
+            
         }
         $.each(btnList, function (i, v) {
             nav.button(v, 501);

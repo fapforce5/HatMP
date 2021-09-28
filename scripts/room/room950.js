@@ -1,8 +1,13 @@
 ﻿//Room name
 var room950 = {};
 room950.main = function () {
+    $('#room-menu').show();
+    if (sc.getstep("daria") < 2) {
+        $('#room-menu').hide();
+    }
     if (g.internal.interval > 3) {
         if (g.internal.constDayDirty > 3) {
+            nav.bg("950_cell/cell3.jpg");
             zcl.kneel(400, 900, .4, "");
             nav.button({
                 "type": "img",
@@ -13,20 +18,23 @@ room950.main = function () {
                 "height": 1080,
                 "image": "950_cell/cult_side.png"
             }, 950);
+            chat(44, 950);
         }
+        else {
 
 
-        nav.bg("950_cell/cell_dark.jpg");
-        nav.button({
-            "type": "btn",
-            "name": "sleep",
-            "title": "Sleep",
-            "left": 994,
-            "top": 685,
-            "width": 684,
-            "height": 103,
-            "image": "950_cell/bed_night.png"
-        }, 950);
+            nav.bg("950_cell/cell_dark.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "sleep",
+                "title": "Sleep",
+                "left": 994,
+                "top": 685,
+                "width": 684,
+                "height": 103,
+                "image": "950_cell/bed_night.png"
+            }, 950);
+        }
     }
     else if (g.internal.interval === 3) {
         g.internal.interval = 4;
@@ -86,14 +94,24 @@ room950.main = function () {
                 "type": "btn",
                 "name": "cock",
                 "title": "Play with your pp",
-                "left": 1508,
-                "top": 142,
-                "width": 134,
-                "height": 243,
+                "left": 1680,
+                "top": 150,
+                "width": 200,
+                "height": 150,
                 "image": "950_cell/cock.png"
             });
+            btnList.push({
+                "type": "btn",
+                "name": "brick",
+                "title": "Loose Stone",
+                "left": 832,
+                "top": 511,
+                "width": 132,
+                "height": 79,
+                "image": "950_cell/brick.png"
+            });
         }
-        if (!g.internal.cleaned) {
+        if (g.internal.constDayDirty > 0) {
             btnList.push({
                 "type": "btn",
                 "name": "clean",
@@ -110,20 +128,20 @@ room950.main = function () {
                 "type": "btn",
                 "name": "squat",
                 "title": "Do Squats",
-                "left": 1160,
-                "top": 130,
-                "width": 153,
-                "height": 256,
+                "left": 1480,
+                "top": 150,
+                "width": 200,
+                "height": 150,
                 "image": "950_cell/squat.png"
             });
             btnList.push({
                 "type": "btn",
                 "name": "pushup",
                 "title": "Do Pushups",
-                "left": 699,
-                "top": 193,
-                "width": 256,
-                "height": 130,
+                "left": 1280,
+                "top": 150,
+                "width": 200,
+                "height": 150,
                 "image": "950_cell/pushup.png"
             });
         }
@@ -140,7 +158,6 @@ room950.btnclick = function (name) {
             g.internal.interval = 0;
             g.internal.constDayDirty++;
             g.internal.day++;
-            g.internal.cleaned = false;
             g.internal.jo = false;
             g.pass = 950;
             char.room(28);
@@ -154,13 +171,35 @@ room950.btnclick = function (name) {
             }, 1000);
             break;
         case "squat":
+            nav.killall();
+            nav.bg("950_cell/pubg.jpg");
+            nav.button({
+                "type": "img",
+                "name": "pu",
+                "left": 160,
+                "top": 0,
+                "width": 1200,
+                "height": 1080,
+                "image": "950_cell/squat.gif"
+            }, 950);
             chat(0, 950);
             break;
         case "pushup":
+            nav.killall();
+            nav.bg("950_cell/pubg.jpg");
+            nav.button({
+                "type": "img",
+                "name": "pu",
+                "left": 197,
+                "top": 0,
+                "width": 1000,
+                "height": 1080,
+                "image": "950_cell/pu.gif"
+            }, 950);
             chat(1, 950);
             break;
         case "window":
-            if (g.internal.day > 1 || g.get("cindy")) {
+            if (g.internal.day < 1 || g.get("cindy")) {
                 nav.killall();
                 nav.bg("950_cell/view.jpg");
                 chat(27, 950);
@@ -178,6 +217,23 @@ room950.btnclick = function (name) {
                     nav.bg("950_cell/viewd.jpg");
                     chat(36, 950);
                 }
+                else if (dariaStep === 2) {
+                    if (g.internal.brick > 0) {
+                        nav.killall();
+                        nav.bg("950_cell/viewd.jpg");
+                        chat(50, 950);
+                    }
+                    else {
+                        nav.killall();
+                        nav.bg("950_cell/view.jpg");
+                        chat(27, 950);
+                    }
+                }
+                else if (dariaStep === 3) {
+                    nav.killall();
+                    nav.bg("950_cell/viewd.jpg");
+                    chat(52, 950);
+                }
                 else {
                     nav.killall();
                     nav.bg("950_cell/view.jpg");
@@ -190,18 +246,24 @@ room950.btnclick = function (name) {
             char.room(950);
             break;
         case "clean":
-            g.internal.cleaned = true;
             g.internal.constDayDirty = 0;
             nav.killall();
             nav.bg("950_cell/clean.jpg");
-            g.setTimeout = setTimeout(function () {
-                room950.btnclick("increment");
-            }, 1000);
+            if (g.internal.jo) {
+                nav.killall();
+                nav.bg("950_cell/celljo.jpg");
+                chat(43, 950);
+            }
+            else {
+                g.setTimeout = setTimeout(function () {
+                    room950.btnclick("increment");
+                }, 1000);
+            }
             break;
         case "cock":
             nav.killall();
             nav.bg("950_cell/jobg.jpg");
-            btnList.push({
+            nav.button({
                 "type": "btn",
                 "name": "jo",
                 "left": 823,
@@ -209,13 +271,72 @@ room950.btnclick = function (name) {
                 "width": 631,
                 "height": 490,
                 "image": "950_cell/jo.png"
-            });
+            }, 950);
             break;
         case "jo":
             nav.killall();
             nav.bg("950_cell/jobg1.jpg");
             cl.doCum();
             g.internal.jo = true;
+            chat(42, 950);
+            break;
+        case "eatit":
+            nav.bg("950_cell/eatit2.jpg");
+            zcl.displayMain(400, 150, .4, "", true);
+            chat(46, 950);
+            break;
+        case "brick":
+            if (g.internal.brick < 4) {
+                if (inv.has("chisel")) {
+                    if (g.get("bodyLevel") < 3) {
+                        chat(49, 950);
+                    }
+                    else {
+                        g.internal.brick++;
+                        nav.killall();
+                        nav.bg("950_cell/chisel.jpg");
+                        chat(53, 950);
+                    }
+                }
+
+                else {
+                    g.internal.brick = 1;
+                    chat(48, 950);
+                }
+            }
+            else {
+                var bodhiStep = sc.getstep("bodhi");
+                switch (bodhiStep) {
+                    case 0:
+                        g.internal.brick++;
+                        nav.killall();
+                        nav.bg("950_cell/chisel.jpg");
+                        chat(54, 950);
+                        break;
+                    case 1:
+                        if (scc.get("cult").love < 50) {
+                            nav.killall();
+                            nav.button({
+                                "type": "img",
+                                "name": "face",
+                                "left": 836,
+                                "top": 515,
+                                "width": 124,
+                                "height": 71,
+                                "image": "950_cell/face.png",
+                                "title": "Hole in the wall"
+                            }, 950);
+                            chat(61, 950);
+                        }
+                        else {
+                            var xxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+                            //add next step here
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
             break;
         default:
             break;
@@ -225,13 +346,13 @@ room950.btnclick = function (name) {
 room950.chatcatch = function (callback) {
     switch (callback) {
         case "finishSquats":
-            g.mod("leg", 17);
+            g.mod("leg", 34);
             g.mod("fitness", 20);
             g.mod("energy", -50);
             room950.btnclick("increment");
             break;
         case "finsihPushups":
-            g.mod("body", 17);
+            g.mod("body", 34);
             g.mod("fitness", 20);
             g.mod("energy", -50);
             room950.btnclick("increment");
@@ -265,6 +386,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/milk9.jpg");
             break;
         case "milk10":
+            scc.love("cult", 5, 50);
             room950.btnclick("increment");
             break;
         case "jo0":
@@ -276,19 +398,19 @@ room950.chatcatch = function (callback) {
             break;
         case "jo2":
             nav.bg("205_computerWork/blackBg.jpg");
-            g.internal.interval = 0;
             g.internal.constDayDirty = 0;
             g.internal.day++;
-            g.internal.cleaned = true;
+            g.internal.constDayDirty = 0;
             g.internal.jo = false;
             char.changeMenu("hide", false);
+            scc.love("cult", -10, 100);
             g.roomTimeout = setTimeout(function () {
-                nav.bg("950_cell/box.jpg");
+                nav.bg("951_box/box.jpg");
                 chat(24, 950);
             }, 1000);
             break;
         case "box":
-            g.internal.box = 0;
+            g.internal.interval++;
             char.room(951);
             break;
         case "resetWindow":
@@ -305,7 +427,58 @@ room950.chatcatch = function (callback) {
             $('#room-menu').show();
             room950.btnclick("increment");
             break;
+        case "daria3":
+            sc.setstep("daria", 3);
+            room950.btnclick("increment");
+            break;
+        case "daria4":
+            sc.setstep("daria", 4);
+            inv.add("chisel");
+            break;
         case "reset":
+            room950.btnclick("increment");
+            break;
+        case "clean1":
+            nav.killall();
+            nav.button({
+                "type": "tongue",
+                "name": "eatit",
+                "left": 888,
+                "top": 623,
+                "width": 204,
+                "height": 203,
+                "image": "950_cell/eatit1.png",
+                "title": "Eat the pussy"
+            }, 950);
+            nav.bg("950_cell/eatit1.jpg");
+            scc.love("cult", -5, 100);
+            break;
+        case "clean3":
+            nav.killall();
+            nav.bg("950_cell/eatit3.jpg");
+            g.mod('giveOralFemale', 1);
+            break;
+        case "clean4":
+            room950.btnclick("clean");
+            break;
+        case "brick1":
+            nav.bg("950_cell/cell.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "faceno",
+                "left": 836,
+                "top": 515,
+                "width": 124,
+                "height": 71,
+                "image": "950_cell/faceno.png",
+                "title": "Hole in the wall"
+            }, 950);
+            break;
+        case "brick2":
+            nav.mod("faceno", "950_cell/face.png", null, null);
+            break;
+        case "b1":
+            sc.setstep("brodhi", 1);
             room950.btnclick("increment");
             break;
         default:
@@ -603,7 +776,7 @@ room950.chat = function (chatID) {
             speaker: "thinking",
             text: "That was weird. I wonder what she's doing out there. ",
             button: [
-                { chatID: 35, text: "...", callback: "daria1" }
+                { chatID: -1, text: "...", callback: "daria1" }
             ]
         },
         {
@@ -654,6 +827,171 @@ room950.chat = function (chatID) {
                 "catches me. ",
             button: [
                 { chatID: -1, text: "Thanks!", callback: "daria2" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "thinking",
+            text: "Well that was better than just sitting around. Now what.",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "thinking",
+            text: "Oh crap, that cum isn't coming out! Gross.",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "cult",
+            text: "This cell is a mess. Only cleanliness is the holy grail for Azrael. You must pay the price for your transgression. ",
+            button: [
+                { chatID: 45, text: "*GULP*", callback: "clean1" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "cult",
+            text: "You must cleanse yourself of your sins by cleaning my pussy. Now eat it!",
+            button: [
+                { chatID: -1, text: "MMmmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "cult",
+            text: "Oh fuck! You are awesome! I'm going to cum all over your face! ",
+            button: [
+                { chatID: 47, text: "*lick* *lick* *lick*", callback: "clean3" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "cult",
+            text: "Now clean up this mess bitch!",
+            button: [
+                { chatID: -1, text: "Right away!", callback: "clean4" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "thinking",
+            text: "This stone is loose. If only I had a something to help pry it loose. Where am I going to get something to pry it? " +
+                "It also looks heavy. I hope I'm strong enough to move it. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "thinking",
+            text: "I've chiseled it loose, but I'm not strong enough to move it. I should do some pushups. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "daria",
+            text: "Hello. Sorry you're trapped in here. I wish there was something I could do, but there's so much security all over. ",
+            button: [
+                { chatID: 51, text: "There is something. Can you get my stuff. Also a pick axe or something to break away this stone maybe?", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "daria",
+            text: "I'll see what I can do.",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "daria3" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "daria",
+            text: "I got your bag. I also slipped a little gift in there for you; a chisel I found laying around. Maybe you can use it to " +
+                "break out. I've got to run, I don't want them to see me helping you. Also you didn't get that from me if you get caught! ",
+            button: [
+                { chatID: -1, text: "I will not talk; Bye.", callback: "daria4" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "This is pretty loose. It shouldn't take me too long. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "thinking",
+            text: "Almost got it... Yes I broke through! It's too tight to squeeze through. I wonder what's on the other side. ",
+            button: [
+                { chatID: 55, text: "...", callback: "brick1" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "me",
+            text: "Hello? Is there anyone there?",
+            button: [
+                { chatID: 56, text: "...", callback: "brick2" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "bodhi",
+            text: "Oh hay dude! WAZZZ UP! Are you stuck in here too?",
+            button: [
+                { chatID: 57, text: "Hi. Yes I am", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "bodhi",
+            text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
+                "ever!",
+            button: [
+                { chatID: 58, text: "But aren't you trapped in there?", callback: "" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "bodhi",
+            text: "Trapped? No, way José. Why would they trap us? This is the best thing ever! ",
+            button: [
+                { chatID: 59, text: "Oh. I'm trapped. How do I get out?", callback: "" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "bodhi",
+            text: "Oh totally lame. Have you tried being awesome and not being a douche? I'll talk to my amiga see if she'll let " +
+                "you out. ",
+            button: [
+                { chatID: 60, text: "Sweet! Thanks! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "bodhi",
+            text: "No problema! I'm going to catch some Z's. Take is sleazy! ",
+            button: [
+                { chatID: -1, text: "Oh, yeah. Totally bro, sure. ", callback: "b1" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "bodhi",
+            text: "Hay Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
+                "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
+            button: [
+                { chatID: 59, text: "So, just do what they say. ", callback: "reset" }
             ]
         },
     ];
