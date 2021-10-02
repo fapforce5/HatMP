@@ -464,6 +464,17 @@ g.popUpNotice = function (notice) {
     }
 };
 
+g.popUpNoticeBottom = function (notice) {
+    if ($('#char_alert_bottom').is(":visible")) {
+        $('#char_alert_bottom').append("<hr />" + notice);
+    }
+    else {
+        $('#char_alert_bottom').html(notice).fadeIn(200, function () {
+            $('#char_alert_bottom').fadeOut(2000);
+        });
+    }
+};
+
 g.gethourdecimal = function () {
     return g.dt.getHours() + (g.dt.getMinutes() / 60);
 };

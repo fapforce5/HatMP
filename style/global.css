@@ -323,6 +323,23 @@ input[type=text]:disabled{
         background: #974960;
     }
 
+.char-alert-bottom {
+    position: fixed;
+    width: 60%;
+    left: 15%;
+    top: 80vh;
+    background: #e75480;
+    color: #fff;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    display: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    z-index: 999;
+}
+
 .room-close{
     font-family: 'Helvetica', 'Arial', sans-serif;
     position:absolute; 

@@ -39,29 +39,9 @@ room227.btnclick = function (name) {
         case "lb_punch":
         case "lb_kick":
             tEnemy.drawButtonList([]);
+            tEnemy.drawBox();
             var thisAction = name.substring(3);
-
             g.fight.me.action = thisAction;
-            tEnemy.drawChar(thisAction);
-            if (tEnemy.successfulBlock()) {
-                nav.modbutton("pow", "227_fight/b_pow.png", null, null);
-                g.fight.e[0].p = "recoil";
-                tEnemy.drawEnemy();
-            }
-            else {
-                nav.modbutton("pow", "227_fight/b_block.png", null, null);
-                g.fight.e[0].p = "block";
-                tEnemy.drawEnemy();
-            }
-            g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_takeit", "lb_cancel"]);
-                nav.modbutton("pow", "227_fight/blank.png", null, null);
-                tEnemy.updateMePrevAction();
-                g.fight.e[0].p = "pose";
-                tEnemy.drawEnemy();
-                tEnemy.drawChar("pose");
-            }, g.fight.fighttimer);
-            //tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_takeit", "lb_cancel"]);
             break;
         case "lb_grapple":
             if (g.fight.e[0].clothingLevel > 0) {
@@ -77,7 +57,7 @@ room227.btnclick = function (name) {
             tEnemy.drawEnemy();
             g.fight.e[0].clothingLevel--;
             g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_takeit", "lb_cancel"]);
+                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_blockgrapple", "lb_takeit", "lb_cancel"]);
                 tEnemy.updateMePrevAction();
                 g.fight.e[0].p = "pose";
                 tEnemy.drawEnemy();
@@ -102,7 +82,7 @@ room227.btnclick = function (name) {
             g.fight.me.action = name.substring(3);
             tEnemy.drawChar(g.fight.me.action);
             g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_takeit", "lb_cancel"]);
+                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_blockgrapple", "lb_takeit", "lb_cancel"]);
                 tEnemy.updateMePrevAction();
                 g.fight.e[0].p = "pose";
                 tEnemy.drawEnemy();
@@ -111,20 +91,50 @@ room227.btnclick = function (name) {
             break;
         case "lb_blockkick":
         case "lb_blockpunch":
+        case "lb_blockgrapple":
         case "lb_takeit":
             g.fight.me.counterAction = name.substring(3);
             tEnemy.drawButtonList([]);
-            var enemyAction = tEnemy.getEnemyAction();
-            console.log(name, enemyAction);
-            if ((name === "lb_blockkick" && enemyAction === "kick") || (name === "lb_blockpunch" && enemyAction === "punch")) {
-                tEnemy.playerhit(true, 0, g.fight.e[0].p);
+            var ea = tEnemy.getEnemyAction();
+            console.log(name, ea);
+            if ((name === "lb_blockkick" && ea.a === "kick")
+                || (name === "lb_blockpunch" && ea.a === "punch")
+                || (name === "lb_blockgrapple" && ea.a === "grapple" || name === "lb_blockgrapple" && ea.a === "strip")) {
                 nav.modbutton("pow", "227_fight/b_block.png", null, null);
                 tEnemy.drawChar("block");
+                var blockDmg = ea.p * .1 > 1 ? 1 : ea.p * .1;
+                tEnemy.changeEnergy(blockDmg * (-1), null, 0);
+                g.popUpNoticeBottom("Blocked " + ea.a + " for " + blockDmg + " damage. ");
             }
-            else {
-                tEnemy.playerhit(false, 0, g.fight.e[0].p);
+            else if (ea.a === "punch" || ea.a === "kick") {
+                //tEnemy.playerhit(false, 0, g.fight.e[0].p);
                 nav.modbutton("pow", "227_fight/b_ePow.png", null, null);
                 tEnemy.drawChar("recoil");
+                tEnemy.changeEnergy(ea.p * (-1), null, ea.c);
+                g.popUpNoticeBottom(ea.a.charAt(0).toUpperCase() + ea.a.slice(1) + " for " + ea.p + " damage. ");
+
+            }
+            else if (ea.a === "strip") {
+                nav.modbutton("pow", "227_fight/b_strip.png", null, null);
+                tEnemy.drawChar("striprip");
+                tEnemy.changeEnergy(ea.p * (-1), null, ea.c);
+                g.fight.e[0].p = "punch";
+                g.popUpNoticeBottom("Oh no! You've been stripped!");
+            }
+            else if (ea.a === "grapple") {
+                if (g.fight.e[0].clothingLevel > 0) {
+                    g.fight.e[0].clothingLevel = 0;
+                    nav.modbutton("pow", "227_fight/b_strip.png", null, null);
+                    tEnemy.drawChar("pose");
+                    g.fight.e[0].p = "strip";
+                }
+                else {
+                    nav.modbutton("pow", "227_fight/b_groan.png", null, null);
+                    g.fight.e[0].p = "grapple";
+                    tEnemy.changeEnergy(ea.p * (-1), null, ea.c);
+                    tEnemy.drawChar("bent");
+                    g.popUpNoticeBottom(g.fight.e[0].submit);
+                }
             }
             tEnemy.drawEnemy();
             g.roomTimeout = setTimeout(function () {
@@ -221,6 +231,51 @@ room227.btnclick = function (name) {
                 tEnemy.drawEnemy();
                 tEnemy.drawChar("pose");
             }, g.fight.fighttimer);
+            break;
+        case "box0":
+        case "box1":
+        case "box2":
+        case "box3":
+        case "box4":
+        case "box5":
+        case "box6":
+        case "box7":
+        case "box8":
+        case "box9":
+            var damageMult = tEnemy.selectBox(name);
+            var preDamage = g.fight.me.action === "punch" ? g.fight.me.pPower : g.fight.me.kPower;
+            var totalDamage = Math.floor(preDamage * damageMult);
+            if (totalDamage < 1)
+                totalDamage = 1;
+
+            g.roomTimeout = setTimeout(function () {
+                nav.killbutton("box");
+                tEnemy.drawChar(g.fight.me.action);
+                tEnemy.changeEnergy(totalDamage, null, 0);
+                if (damageMult === .1) {
+                    nav.modbutton("pow", "227_fight/b_block.png", null, null);
+                    g.fight.e[0].p = "block";
+                    g.popUpNoticeBottom("Blocked for " + totalDamage + " damage. ");
+                    tEnemy.changeEnergy(null, totalDamage * -1, null);
+                }
+                else {
+                    nav.modbutton("pow", "227_fight/b_pow.png", null, null);
+                    g.fight.e[0].p = "recoil";
+                    g.popUpNoticeBottom(g.fight.me.action.charAt(0).toUpperCase() + g.fight.me.action.slice(1) + " for " + totalDamage + " damage. ");
+                }
+                tEnemy.drawEnemy();
+                g.roomTimeout2 = setTimeout(function () {
+                    tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_blockgrapple", "lb_takeit", "lb_cancel"]);
+                    nav.modbutton("pow", "227_fight/blank.png", null, null);
+                    //tEnemy.updateMePrevAction();
+                    g.fight.e[0].p = "pose";
+                    tEnemy.drawEnemy();
+                    tEnemy.drawChar("pose");
+                    tEnemy.changeEnergy(null, totalDamage * -1, -20);
+                }, g.fight.fighttimer);
+            }, g.fight.fighttimer);
+
+
             break;
         default:
             alert("bad entry");

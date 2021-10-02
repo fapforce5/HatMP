@@ -6,8 +6,6 @@ var tEnemy = {};
 
 //bimbo moves: a = shake ass, c = shake cock, d = dance 
 tEnemy.init = function (e0, e1, bg, returnRoomID) {
-    var enemyName = "sc";
-
     eax = new Array();
 
     e0x = tEnemy.initEnemy(e0);
@@ -21,10 +19,11 @@ tEnemy.init = function (e0, e1, bg, returnRoomID) {
     g.fight = {
         enemayCount: eax.length,
         e: eax,
+        box: ["b", "b", "b", "h", "1", "1", "1", "1", "2", "2"],
+        cPower: 0,
         me: {
             energy: g.get("energy"),
             maxEnergy: g.get("maxenergy"),
-            horny: g.get("arousal"),
             damage: 0,
             shield: g.get("dLevel"),
             evasion: Math.round(g.get("fitness")),
@@ -85,14 +84,11 @@ tEnemy.initEnemy = function (enemyName) {
                 displayName: sc.n("g"),
                 energy: 200,
                 maxEnergy: 200,
-                horny: 5,
-                arousalGrowth: 5,
                 sheild: 0,
                 pPower: 10,
                 kPower: 12,
                 defense: .5,
-                bp: 5,
-                bk: 5,
+                offense: ["p", "k"],
                 clothingLevel: 1,
                 money: 20 + Math.floor(Math.random() * 20),
                 cock: false,
@@ -116,14 +112,11 @@ tEnemy.initEnemy = function (enemyName) {
                 displayName: "Clown Clan",
                 energy: 30,
                 maxEnergy: 30,
-                horny: 25,
-                arousalGrowth: 10,
                 sheild: 0,
                 pPower: 5,
                 kPower: 20,
                 defense: 0,
-                bp: 3,
-                bk: 7,
+                offense: ["p", "p", "k", "g"],
                 clothingLevel: 0,
                 money: 5 + Math.floor(Math.random() * 5),
                 cock: true,
@@ -146,14 +139,11 @@ tEnemy.initEnemy = function (enemyName) {
                 displayName: "Clown Clan",
                 energy: 50,
                 maxEnergy: 50,
-                horny: 45,
-                arousalGrowth: 10,
                 sheild: 0,
                 pPower: 12,
                 kPower: 8,
                 defense: 0,
-                bp: 5,
-                bk: 5,
+                offense: ["p", "k", "g", "g"],
                 clothingLevel: 0,
                 money: 7 + Math.floor(Math.random() * 7),
                 cock: true,
@@ -176,14 +166,11 @@ tEnemy.initEnemy = function (enemyName) {
                 displayName: "Clown Clan Leader",
                 energy: 100,
                 maxEnergy: 100,
-                horny: 20,
-                arousalGrowth: 8,
                 sheild: 0,
                 pPower: 10,
                 kPower: 10,
                 defense: 0,
-                bp: 3,
-                bk: 7,
+                offense: ["g"],//["p", "k", "k", "k", "g"],
                 clothingLevel: 2,
                 money: 50 + Math.floor(Math.random() * 50),
                 cock: false,
@@ -305,38 +292,38 @@ tEnemy.drawButtons = function (btn) {
     btnListBtnDraw = [
         {
             "type": "zimg",
-            "name": btnListBtn[0].name,
-            "left": 282,
-            "top": 854,
-            "width": 100,
-            "height": 100,
+            "name": "myshirt",
+            "left": 190,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
             "image": btnListBtn[0].image
         },
         {
             "type": "zimg",
-            "name": btnListBtn[1].name,
-            "left": 239,
-            "top": 749,
-            "width": 100,
-            "height": 100,
+            "name": "myskirt",
+            "left": 190 + 60,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
             "image": btnListBtn[1].image
         },
         {
             "type": "zimg",
-            "name": btnListBtn[2].name,
-            "left": 132,
-            "top": 704,
-            "width": 100,
-            "height": 100,
+            "name": "mypanties",
+            "left": 190 + 120,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
             "image": btnListBtn[2].image
         },
         {
             "type": "zimg",
-            "name": btnListBtn[3].name,
-            "left": 26,
-            "top": 748,
-            "width": 100,
-            "height": 100,
+            "name": "mycock",
+            "left": 190 + 180,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
             "image": btnListBtn[3].image
         }
     ];
@@ -347,9 +334,18 @@ tEnemy.drawButtons = function (btn) {
 };
 
 tEnemy.drawRoom = function () {
-    var thisEnergy, thisHorney, topx, iconx;
+    var thisEnergy;
 
     var btnListx = [
+        {
+            "type": "zimg",
+            "name": "bottom",
+            "left": 0,
+            "top": 902,
+            "width": 1920,
+            "height": 178,
+            "image": "227_fight/bottom.png"
+        },
         {
             "type": "img",
             "name": "pow",
@@ -358,15 +354,6 @@ tEnemy.drawRoom = function () {
             "width": 1080,
             "height": 1080,
             "image": "227_fight/blank.png"
-        },
-        {
-            "type": "zimg",
-            "name": "mystatus",
-            "left": 15,
-            "top": 693,
-            "width": 616,
-            "height": 372,
-            "image": "227_fight/my_status.png"
         },
         {
             "type": "zimg",
@@ -388,42 +375,37 @@ tEnemy.drawRoom = function () {
         },
     ];
 
-    topx = 860 - ((g.fight.e.length - 1) * 260);
-    iconx = "enemy_status.png";
-    $.each(g.fight.e, function (i, v) {
-
+    if (g.fight.e[0].clothingLevel > 1) {
         btnListx.push({
             "type": "zimg",
-            "name": "mystatus" + i,
-            "left": 1344,
-            "top": topx - 27,
-            "width": 551,
-            "height": 222,
-            "image": "227_fight/" + iconx
+            "name": "enemyClothes",
+            "left": 1680 - 120,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
+            "image": "227_fight/shirt.png"
         });
-
         btnListx.push({
             "type": "zimg",
-            "name": "charAvatar",
-            "left": 1700,
-            "top": topx,
-            "width": 170,
-            "height": 170,
-            "image": "227_fight/" + v.base + "_avatar.png"
+            "name": "enemyClothes",
+            "left": 1680 - 60,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
+            "image": "227_fight/skirt.png"
         });
-
+    }
+    if (g.fight.e[0].clothingLevel > 0) {
         btnListx.push({
-            "type": "zbtn",
-            "name": "eaction" + i,
-            "left": 1652,
-            "top": topx - 9,
-            "width": 100,
-            "height": 100,
-            "image": "227_fight/noop.png"
+            "type": "zimg",
+            "name": "enemyClothes",
+            "left": 1680,
+            "top": 1025,
+            "width": 50,
+            "height": 50,
+            "image": "227_fight/panties.png"
         });
-        topx += 260;
-        iconx = "enemy_inactive.png";
-    });
+    }
 
     $.each(btnListx, function (i, v) {
         nav.button(v, 227);
@@ -433,50 +415,106 @@ tEnemy.drawRoom = function () {
     nav.t({
         type: "zimg",
         name: "name",
-        left: 323,
-        top: 963,
+        left: 190,
+        top: 985,
         font: 20,
         hex: "#ffffff",
         text: sc.n("me")
     });
 
     thisEnergy = (g.fight.me.energy / g.fight.me.maxEnergy) * 280 * g.ratio;
-    thisHorney = (g.fight.me.horny / 100) * 280 * g.ratio;
+    //thisHorney = (g.fight.me.horny / 100) * 280 * g.ratio;
 
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 990, 310) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 310) + '  background: #ff3333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 990, 310) + '  background: #33ff33; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1010, 190) + '  background: #333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 1010, 190) + '  background: #ff3333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 1010, 190) + '  background: #33ff33; border-radius:10px;" ></div>');
 
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1008, 310) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisHorney, 1008, 310) + '  background: #edb7eb; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, thisHorney, 1008, 310) + '  background: #E976E5; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-hornyx" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1060, 680) + '  background: #333; border-radius:10px 0 0 10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-horny" data-t="horny" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 0, 1060, 680) + '  background: #E976E5; border-radius:10px 0 0 10px;" ></div>');
 
-    topx = 980;
     for (i = (g.fight.e.length - 1); i >= 0; i--) {
         thisEnergy = (g.fight.e[i].energy / g.fight.e[i].maxEnergy) * 280;
-        thisHorney = (g.fight.e[i].horny / 100) * 280 * g.ratio;
-        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-name="myenergybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, topx, 1380) + '  background: #333; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-t="damage" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, topx, 1380) + '  background: #ff3333; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-t="energy" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, topx, 1380) + '  background: #33ff33; border-radius:10px;" ></div>');
+        //thisHorney = (g.fight.e[i].horny / 100) * 280 * g.ratio;
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-name="myenergybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, 1010, 1450) + '  background: #333; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-t="damage" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 1010, 1450) + '  background: #ff3333; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life' + i + '" data-t="energy" data-room="9999" style=" ' + g.makeCss(10, thisEnergy, 1010, 1450) + '  background: #33ff33; border-radius:10px;" ></div>');
 
-        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-name="myhorneybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, (topx + 18), 1380) + '  background: #333; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-t="horny" data-room="9999" style=" ' + g.makeCss(10, thisHorney, (topx + 18), 1380) + '  background: #edb7eb; border-radius:10px;" ></div>');
-        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-t="damage" data-room="9999" style=" ' + g.makeCss(10, thisHorney, (topx + 18), 1380) + '  background: #E976E5; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-hornyx' + i + '" data-name="myhorneybase' + i + '" data-room="9999" style=" ' + g.makeCss(10, 280, 1060, 960) + '  background: #333; border-radius:0 10px 10px 0;" ></div>');
+        $('#room-buttons').append('<div class="room-img room-zindex resize enemy-horny' + i + '" data-t="horny" data-room="9999" style=" ' + g.makeCss(10, 0, 1060, 960) + '  background: #edb7eb; border-radius:0 10px 10px 0;" ></div>');
 
         nav.t({
             type: "zimg",
             name: "charName",
-            left: 1380,
-            top: topx - 27,
+            left: 1450,
+            top: 985,
             font: 20,
             hex: "#ffffff",
             text: g.fight.e[i].displayName
         });
-
-        topx -= 260;
     }
     //tEnemy.drawButtons("init", thisRoomID);
     //tEnemy.myClothesDraw();
+};
+
+tEnemy.drawBox = function () {
+    var i, j;
+    j = g.fight.box.length;
+    for (i = 0; i < j; i++) {
+        var k = Math.floor(Math.random() * j);
+        var l = g.fight.box[i];
+        g.fight.box[i] = g.fight.box[k];
+        g.fight.box[k] = l;
+    }
+    for (i = 0; i < j; i++) {
+        nav.button({
+            "type": "btn",
+            "name": "box" + i,
+            "left": 400 + (i * 120),
+            "top": 400,
+            "width": 100,
+            "height": 100,
+            "image": "227_fight/box.png"
+        }, 227);
+    }
+};
+
+tEnemy.selectBox = function (box) {
+    var i, retvalue;
+    var boxentry = parseInt(box.substring(3));
+    var img = "";
+    for (i = 0; i < g.fight.box.length; i++) {
+        nav.killbutton("box" + i);
+    }
+
+    switch (g.fight.box[boxentry]) {
+        case "b":
+            img = "box_block";
+            retvalue = .1;
+            break;
+        case "h":
+            img = "box_half";
+            retvalue = .5;
+            break;
+        case "1":
+            img = "box_one";
+            retvalue = 1;
+            break;
+        case "2":
+            img = "box_two";
+            retvalue = 2;
+            break;
+    }
+
+    nav.button({
+        "type": "img",
+        "name": "box",
+        "left": 400 + (boxentry * 120),
+        "top": 400,
+        "width": 100,
+        "height": 100,
+        "image": "227_fight/" + img + ".png"
+    }, 227);
+    return retvalue;
 };
 
 tEnemy.drawStage = function () {
@@ -513,6 +551,8 @@ tEnemy.drawStage = function () {
 
 tEnemy.drawEnemy = function (pose) {
     nav.killbutton("enemy");
+    //if (g.fight.e[0].p === "strip")
+    //    g.fight.e[0].p = "punch";
     for (i = 0; i < g.fight.e.length; i++) {
         nav.button({
             "type": "img",
@@ -608,6 +648,28 @@ tEnemy.drawChar = function (pose) {
             thischar.fif = null;
             cl.display();
             break;
+        case "striprip":
+            if (g.fight.me.clothes !== null) {
+                g.fight.me.clothes = null;
+                cl.c.pants = cl.c.shirt = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+                thischar.body = cl.c.chest > 2 ? "g_stripripclothes_f" : "g_stripripclothes_m";
+                thischar.dick = "g_stripripclothes";
+                thischar.displayc = true;
+                thischar.hair = "8";
+            }
+            else {
+                g.fight.me.panties = false;
+                thischar.body = cl.c.chest > 2 ? "g_striprippanties_f" : "g_striprippanties_m";
+                thischar.hair = "8";
+                thischar.dick = null;
+                thischar.displayc = false;
+            }
+            break;
+        case "bent":
+            thischar.body = cl.c.chest > 2 ? "g_bent_f" : "g_bent_m";
+            thischar.displayc = false;
+            thischar.hair = "9";
+            break;
     }
     if (thischar.displayc) {
         if (g.fight.me.clothes === "m" || g.fight.me.clothes === "f")
@@ -670,145 +732,117 @@ tEnemy.successfulBlock = function () {
     return Math.random() * 100 > blockChance;
 };
 
-tEnemy.updateMePrevAction = function () {
-    g.fight.me.p2 = g.fight.me.p1;
-    g.fight.me.p1 = g.fight.me.p0;
-    g.fight.me.p0 = g.fight.me.action;
+tEnemy.getControl = function (action) {
+    switch (action) {
+        case "punch":
+        case "kick":
+            return 10;
+        case "grapple":
+            return 50;
+        case "strip":
+            return 25;
+        default:
+            return 0;
+    }
 };
 
 tEnemy.getEnemyAction = function () {
-    var violent = 0;
-    if (g.fight.me.p0 === "punch" || g.fight.me.p1 === "kick")
-        violent += 50;
-    violent += 100 - Math.floor(g.fight.e[0].horny);
-
-    if (Math.random() * 100 < violent) {
-        if (Math.random() * 10 <= g.fight.e[0].bp)
+    var p, c;
+    var entry = g.fight.e[0].offense[Math.floor(Math.random() * g.fight.e[0].offense.length)];
+    switch (entry) {
+        case "p":
             g.fight.e[0].p = "punch";
-        else
+            p = g.fight.e[0].pPower;
+            c = tEnemy.getControl("punch");
+            break;
+        case "k":
             g.fight.e[0].p = "kick";
-    }
-    else {
-        g.fight.e[0].p = "block";
-    }
-    return g.fight.e[0].p;
-};
-
-tEnemy.myEnergy = function () {
-
-    if (g.fight.me.energy < 0)
-        g.fight.me.energy = 0;
-    if (g.fight.me.energy > g.fight.me.maxEnergy)
-        g.fight.me.energy = g.fight.me.maxEnergy;
-
-    newEnergyDisplay = (g.fight.me.energy / g.fight.me.maxEnergy) * 280;
-    preEnergyDisplay = (preDamage / g.fight.me.maxEnergy) * 280;
-
-    $(".my-life[data-t='damage'").css({
-        width: preEnergyDisplay * g.ratio + "px"
-    });
-    $(".my-life[data-t='energy'").css({
-        width: newEnergyDisplay * g.ratio + "px"
-    });
-
-    if (g.fight.me.horny < 0)
-        g.fight.me.horny = 0;
-    if (g.fight.me.horny > 100)
-        g.fight.me.horny = 100;
-
-    newEnergyDisplay = (g.fight.me.horny / 100) * 280;
-    preEnergyDisplay = (preDamage / 100) * 280;
-
-    $(".my-horny[data-t='damage'").css({
-        width: preEnergyDisplay * g.ratio + "px"
-    });
-    $(".my-horny[data-t='horny'").css({
-        width: newEnergyDisplay * g.ratio + "px"
-    });
-
-};
-
-tEnemy.enemyEnergy = function (thisDamage, thisArousal, xi) {
-    var newEnergyDisplay, preEnergyDisplay, preDamage;
-
-    if (thisDamage !== null) {
-        preDamage = g.fight.e[xi].energy;
-        g.fight.e[xi].energy += thisDamage;
-
-        if (g.fight.e[xi].energy < 0)
-            g.fight.e[xi].energy = 0;
-        if (g.fight.e[xi].energy > g.fight.e[xi].maxEnergy)
-            g.fight.e[xi].energy = g.fight.e[xi].maxEnergy;
-
-        newEnergyDisplay = (g.fight.e[xi].energy / g.fight.e[xi].maxEnergy) * 280;
-        preEnergyDisplay = (preDamage / g.fight.e[xi].maxEnergy) * 280;
-
-        $(".enemy-life" + xi + "[data-t='damage'").css({
-            width: preEnergyDisplay * g.ratio + "px"
-        });
-        $(".enemy-life" + xi + "[data-t='energy'").css({
-            width: newEnergyDisplay * g.ratio + "px"
-        });
-    }
-    if (thisArousal !== null) {
-        preDamage = g.fight.e[xi].horny;
-
-        g.fight.e[xi].horny += thisArousal;
-
-        if (g.fight.e[xi].horny < 0)
-            g.fight.e[xi].horny = 0;
-        if (g.fight.e[xi].horny > 100)
-            g.fight.e[xi].horny = 100;
-
-        newEnergyDisplay = (g.fight.e[xi].horny / 100) * 280;
-        preEnergyDisplay = (preDamage / 100) * 280;
-
-        $(".enemy-horny" + xi + "[data-t='damage'").css({
-            width: preEnergyDisplay * g.ratio + "px"
-        });
-        $(".enemy-horny" + xi + "[data-t='horny'").css({
-            width: newEnergyDisplay * g.ratio + "px"
-        });
-    }
-};
-
-
-tEnemy.playerhit = function (blocked, eid, attackType) {
-    hitstrenght = 0;
-    switch (attackType) {
-        case "punch":
-            hitstrenght = g.fight.e[eid].pPower;
+            p = g.fight.e[0].kPower;
+            c = tEnemy.getControl("kick");
             break;
-        case "kick":
-            hitstrenght = g.fight.e[eid].kPower;
+        case "g":
+            p = Math.round((g.fight.e[0].kPower + g.fight.e[0].pPower) / 4);
+            if (g.fight.me.clothes === null && !g.fight.me.panties) {
+                c = tEnemy.getControl("grapple");
+                g.fight.e[0].p = "grapple";
+            }
+            else {
+                c = tEnemy.getControl("strip");
+                g.fight.e[0].p = "strip";
+            }
             break;
         default:
-            hitstrenght = g.fight.e[eid].pPower + g.fight.e[eid].kPower;
+            alert("error in get enemy action");
             break;
     }
-    if (blocked)
-        hitstrenght = Math.floor(hitstrenght / 5);
-    g.fight.me.energy -= hitstrenght;
-    tEnemy.enemyEnergy();
+
+    return {a: g.fight.e[0].p, p: p, c: c };
 };
 
-tEnemy.enemyHit = function (blocked, eid, attackType) {
-    hitstrenght = 0;
-    switch (attackType) {
-        case "punch":
-            hitstrenght = g.fight.me.pPower;
-            break;
-        case "kick":
-            hitstrenght = g.fight.me.kPower;
-            break;
-        default:
-            hitstrenght = g.fight.e[eid].pPower + g.fight.e[eid].kPower;
-            break;
+tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
+    var prevEnergy, newEnergy;
+    if (myEnergy !== null) {
+        prevEnergy = g.fight.me.energy;
+        g.fight.me.energy += myEnergy;
+        if (g.fight.me.energy < 0)
+            g.fight.me.energy = 0;
+        else if (g.fight.me.energy > g.fight.me.maxEnergy)
+            g.fight.me.energy = g.fight.me.maxEnergy;
+
+        prevEnergy = (prevEnergy / g.fight.me.maxEnergy) * 280;
+        newEnergy = (g.fight.me.energy / g.fight.me.maxEnergy) * 280;
+        $(".my-life[data-t='damage']").css({
+            width: prevEnergy * g.ratio + "px"
+        });
+        $(".my-life[data-t='energy']").css({
+            width: newEnergy * g.ratio + "px"
+        });
     }
-    if (blocked)
-        hitstrenght = Math.floor(hitstrenght / 5);
-    g.fight.e[eid].energy -= hitstrenght;
-    tEnemy.myEnergy();
+    if (enemyEnergy !== null) {
+        prevEnergy = g.fight.e[0].energy;
+        g.fight.e[0].energy += enemyEnergy;
+        if (g.fight.e[0].energy < 0)
+            g.fight.e[0].energy = 0;
+        else if (g.fight.e[0].energy > g.fight.e[0].maxEnergy)
+            g.fight.e[0].energy = g.fight.e[0].maxEnergy;
+
+        prevEnergy = (prevEnergy / g.fight.e[0].maxEnergy) * 280;
+        newEnergy = (g.fight.e[0].energy / g.fight.e[0].maxEnergy) * 280;
+        $(".enemy-life0[data-t='damage']").css({
+            width: prevEnergy * g.ratio + "px"
+        });
+        $(".enemy-life0[data-t='energy']").css({
+            width: newEnergy * g.ratio + "px"
+        });
+    }
+    if (controlChange !== null) {
+        prevEnergy = g.fight.cPower;
+        g.fight.cPower += controlChange;
+
+        if (g.fight.cPower > 100)
+            g.fight.cPower = 100;
+        else if (g.fight.cPower < -100)
+            g.fight.cPower = -100;
+
+        if (g.fight.cPower > 0) {
+            $(".enemy-horny0").css({
+                width: (g.fight.cPower / 100) * g.ratio * 280 + "px"
+            });
+            $(".my-horny").css({
+                width: "0px"
+            });
+        }
+        else if (g.fight.cPower < 0) {
+            var cpowWidth = (g.fight.cPower / 100) * g.ratio * (-280);
+            $(".my-horny").css({
+                width: cpowWidth + "px",
+                left: (960 * g.ratio) - cpowWidth + "px"
+            });
+            $(".enemy-horny0").css({
+                width: "0px"
+            });
+        }
+    }
 };
 
 tEnemy.updatePlayerStats = function (money) {
