@@ -21,6 +21,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID) {
         e: eax,
         box: ["b", "b", "b", "h", "1", "1", "1", "1", "2", "2"],
         cPower: 0,
+        prevMenu: "",
         me: {
             energy: g.get("energy"),
             maxEnergy: g.get("maxenergy"),
@@ -31,6 +32,8 @@ tEnemy.init = function (e0, e1, bg, returnRoomID) {
             kPower: 7 + Math.round(g.get("legLevel") / 2),
             punchCount: 0,
             kickCount: 0,
+            grappleCount: 0,
+            superPunch: g.get("superPunch"),
             goodBlockCount: 0,
             sissyAction: 0,
             pose: "pose",
@@ -170,7 +173,7 @@ tEnemy.initEnemy = function (enemyName) {
                 pPower: 10,
                 kPower: 10,
                 defense: 0,
-                offense: ["g"],//["p", "k", "k", "k", "g"],
+                offense: ["p", "p", "k", "k", "k", "g", "g", "g" ],
                 clothingLevel: 2,
                 money: 50 + Math.floor(Math.random() * 50),
                 cock: false,
@@ -181,10 +184,16 @@ tEnemy.initEnemy = function (enemyName) {
                 myaction: "noop",
                 prev1: null,
                 prev2: null,
+                weakspot: [0],
                 base: "f_sc",
+                domination: { pose: "kneel", pose1: "kneel", gif: "gif_buttholelick.gif", gif1: "png_buttholelick.png", stats: ["giveOralFemale"] },
+                domFuckem: { pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
+                domPowerbottom: { pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] },
+                domMenu: ["lb_domFuckem", "lb_domPowerbottom"],
                 loss: "HONK.. damn....",
+                intro: "I will HONK you in the HONK with my HONK!!",
                 win: "HAHAHAHAHAHAHAHAHA It's funny how you lose HONK",
-                submit: "HONK HONK SLUT HONK"
+                submit: "Eat ass slut HONK"
             };
             break;
         default:
@@ -217,44 +226,263 @@ tEnemy.drawBackground = function (bg) {
     }
 };
 
-tEnemy.drawButtonList = function (btn) {
+tEnemy.drawGif = function (gif) {
+    this.drawButtonList("close");
+    nav.killbutton("gif");
+    nav.button({
+        "type": "img",
+        "name": "gif",
+        "left": 1550,
+        "top": 200,
+        "width": 350,
+        "height": 350,
+        "image": "227_fight/" + gif,
+    }, 227);
+};
+
+tEnemy.drawButtonList = function (displayMenu) {
+    var i, btnList, tHeader, tFooter;
+    tHeader = tFooter = "";
+    btnList = new Array();
     $('.room-btn').each(function () {
         if ($(this).data('name').includes("lb_")) {
             $(this).remove();
         }
     });
-    $('.room-zindex').each(function () {
+    $('.room-img').each(function () {
         if ($(this).attr("data-name") !== undefined) {
             if ($(this).data('name').includes("lb_")) {
                 $(this).remove();
             }
         }
     });
-    var i;
-    for (i = 0; i < btn.length; i++) {
-        if (btn[i].startsWith("lb_header")) {
-            nav.button({
-                "type": "zimg",
-                "name": btn[i],
-                "left": 1500,
-                "top": 120 + (i * 110),
-                "width": 400,
-                "height": 100,
-                "image": "227_fight/" + btn[i] + ".png"
-            }, 227);
-        }
-        else {
-            nav.button({
-                "type": "zbtn",
-                "name": btn[i],
-                "left": 1500,
-                "top": 120 + (i * 110),
-                "width": 400,
-                "height": 100,
-                "image": "227_fight/" + btn[i] + ".png"
-            }, 227);
+    $('.fight-hover-element').remove();
+
+    nav.killbutton("menuItem");
+    if (displayMenu === "cancel") {
+        switch (g.fight.prevMenu) {
+            case "fight": displayMenu = "main"; break;
+            case "grapple": displayMenu = "fight"; break;
+            case "slut": displayMenu = "main"; break;
+            case "flee": displayMenu = "main"; break;
+            case "weapon": displayMenu = "fight"; break;
+            case "inventory": displayMenu = "main"; break;
+            case "humiliation": displayMenu = "slut"; break;
+            default: alert("baddisplay"); break;
         }
     }
+    switch (displayMenu) {
+        case "begin":
+            tHeader = g.fight.e[0].displayName;
+            tFooter = g.fight.e[0].intro;
+            btnList.push(
+                { t: "Begin", l: "lb_begin", title: "Begin your adventure. " },
+            );
+            
+            break;
+        case "main":
+            btnList.push(
+                { t: "Fight", l: "lb_fight", title: "Dominate your enemy. " },
+                { t: "Slut", l: "lb_slut", title: "Be a submissive slut. " },
+                { t: "Inventory", l: "lb_inventory", title: "Use your inventory to gain life or modify the battle. " },
+                { t: "Run Away", l: "lb_flee", title: "Run away like a little bitch. " },
+            );
+            tHeader = "Main Menu";
+            tFooter = "Select your action. ";
+            break;
+        case "fight":
+            btnList.push(
+                { t: "Punch", l: "lb_punch", title: "Punch your enemy. " },
+                { t: "Kick", l: "lb_kick", title: "Kick your enemy. " },
+                { t: "Grapple", l: "lb_grapple", title: "Dominate your enemy. " },
+                { t: "Weapon", l: "lb_weapon", title: "Use a weapon from your inventory. " },
+            );
+            if (g.fight.me.superPunch > 3)
+                btnList.push({ t: "Super Punch x" + g.fight.me.superPunch, l: "lb_superpunch", title: "Do a super punch. You can only use this once ever few battles. " });
+            btnList.push({ t: "Back", l: "lb_cancel", title: "Return to main menu. " });
+            tHeader = "Fight!";
+            tFooter = "Fight your opponent. ";
+            break;
+        case "grapple":
+            if (g.fight.e[0].clothingLevel > 0) {
+                btnList.push(
+                    { t: "Steal Clothing", l: "lb_steal", title: "Strip off your enemy's clothing. " },
+                    { t: "Go Back", l: "lb_cancel", title: "Return to the Fight menu." }
+                );
+            }
+            else {
+                btnList.push(
+                    { t: "Tea bag", l: "lb_teabag", title: "I'm going to dip my balls in it!" },
+                    { t: "Go Back", l: "lb_cancel", title: "Go back to the Fight menu. " }
+                );
+            }
+            tHeader = "Grapple";
+            tFooter = "Dominate your opponent.";
+            break;
+        case "slut":
+            if (g.fight.me.clothes !== null) {
+                btnList.push(
+                    { t: "Strip Clothing", l: "lb_stripshirt", title: "Take your clothes off. " },
+                    { t: "Go Back", l: "lb_cancel", title: "Return to the main menu. " }
+                );
+            }
+            else if (g.fight.me.panties) {
+                btnList.push(
+                    { t: "Strip Panties", l: "lb_strippanties", title: "Remove your panties. " },
+                    { t: "Go Back", l: "lb_cancel", title: "Return to the main menu. " }
+                );
+            }
+            else {
+                btnList.push(
+                    { t: "On your knees", l: "lb_submitbj", title: "Present your mouth. " },
+                    { t: "Face Down Ass Up", l: "lb_submitass", title: "Face down, ass up, that's the way you like to get fucked. " },
+                    { t: "Humiliate Yourself", l: "lb_humiliation", title: "Humiliate yourself" },
+                    { t: "Go Back", l: "lb_cancel", title: "Return to the main menu. " }
+                );
+            }
+            tHeader = "Slut";
+            tFooter = "Show the enemy what a submissive little slut you are.";
+            break;
+        case "flee":
+            btnList.push(
+                { t: "Are you sure?", l: "lb_fleeconfirm", title: "Run away!" },
+                { t: "Go Back", l: "lb_cancel", title: "Return to the main menu. " }
+            );
+            tHeader = "Run Away";
+            tFooter = "Be a little bitch?";
+            break;
+        case "inventory":
+            if (inv.has("acia"))
+                btnList.push({ t: "Acia +15", l: "lb_acia", title: "Gain some energy. " });
+            if (inv.has("soda"))
+                btnList.push({ t: "Soda +50", l: "lb_soda", title: "Gain some energy. " });
+            if (inv.has("cumjar"))
+                btnList.push({ t: "Jar of Cum + 100", l: "lb_cumjar", title: "Drink a thick jar of cum to gain some energy. " });
+            btnList.push({ t: "Cancel", l: "lb_cancel", title: "Return to the main menu. " });
+            tHeader = "Inventory";
+            tFooter = "Use inventory item?";
+            break;
+        case "counterAction":
+            btnList.push(
+                { t: "Block Punch", l: "lb_blockpunch", title: "Block their punch. " },
+                { t: "Block Kick", l: "lb_blockkick", title: "Block their kick. " },
+                { t: "Block Grapple", l: "lb_blockgrapple", title: "Block an attempt to dominate you. " },
+                { t: "Take It", l: "lb_takeit", title: "Allow yourself to be hit or dominated. " }
+            );
+            tHeader = "Counter";
+            tFooter = "Brace yourself for the enemy. ";
+            break;
+        case "weapon":
+            btnList.push(
+                { t: "Take It", l: "lb_cancel", title: "Return to the main menu. " }
+            );
+            tHeader = "Weapon";
+            tFooter = "Future Release";
+            break;
+        case "humiliation":
+            btnList.push(
+                { t: "Cancel", l: "lb_cancel", title: "Return to the main menu. " }
+            );
+            tHeader = "Humiliation";
+            tFooter = "Humiliate yourself like a pathetic slut";
+            break;
+        case "box":
+            tHeader = g.fight.prevMenu;
+            tFooter = "Select where you're going to hit.";
+            break;
+        case "domination":
+            $.each(g.fight.e[0].domMenu, function (i, v) {
+                switch (v) {
+                    case "lb_domUseMouth":
+                        if (cl.c.chastity !== null)
+                            btnList.push({ t: "Fuck Their Face", l: "lb_domUseMouth", title: "Receive Oral" });
+                        break;
+                    case "lb_domFuckem":
+                        if (cl.c.chastity !== null)
+                            btnList.push({ t: "Fuck 'em", l: "lb_domFuckem", title: "Fuck them in their sloppy hole." });
+                        break;
+                    case "lb_domPowerbottom":
+                        btnList.push({ t: "Power Bottom", l: "lb_domPowerbottom", title: "Have them fuck you." });
+                        break;
+                }
+            });
+            btnList.push({ t: "Skip Domination", l: "lb_domSkip", title: "Skip it." });
+            tHeader = "Domination!";
+            tFooter = "Dominate your enemy!";
+            break;
+    }
+    if (displayMenu === "close") {
+        $('.room-img[data-name="menu"]').slideUp("fast");
+    }
+    else {
+        nav.killbutton("menuItem");
+        $('.room-img[data-name="menu"]').slideDown("fast", function () {
+            nav.t({
+                type: "zimg",
+                name: "menuItem",
+                left: 1620,
+                top: 170,
+                font: 20,
+                hex: "#ffffff",
+                text: tHeader
+            }, 227);
+            nav.t({
+                type: "zimg",
+                name: "menuItem",
+                left: 1620,
+                top: 760,
+                font: 20,
+                hex: "#ffffff",
+                text: g.newLine(tFooter, 26)// tFooter.replace(/(.{20})/g, "$1<br>")
+            }, 227);
+            for (i = 0; i < btnList.length; i++) {
+                nav.t({
+                    type: "btnhover",
+                    name: btnList[i].l,
+                    left: 1660,
+                    top: 280 + (i * 50) + 12,
+                    font: 20,
+                    hex: "#ffffff",
+                    text: btnList[i].t
+                }, 227);
+                nav.button({
+                    "type": "btnhover",
+                    "name": btnList[i].l,
+                    "left": 1653,
+                    "top": 280 + (i * 50),
+                    "width": 242,
+                    "height": 46,
+                    "image": "227_fight/" + btnList[i].l + ".png",
+                    "title": btnList[i].title
+                }, 227);
+                
+
+                nav.button({
+                    "type": "imghover",
+                    "name": btnList[i].l,
+                    "left": 1600,
+                    "top": 280 + (i * 50),
+                    "width": 40,
+                    "height": 38,
+                    "image": "227_fight/arrow.png"
+                }, 227);
+            }
+            $('.fight-hover-element').hide();
+        });
+    }
+
+    $('.fight-hover-element').hide();
+    setTimeout(function () {
+        $('.fight-hover-element').hide();
+        $('.fight-hover').hover(function () {
+            $('.fight-hover-element').hide();
+            $('.fight-hover-element[data-name="' + $(this).data('name') + '"]').show();
+        }, function () {
+            $('.fight-hover-element').hide();
+        });
+    }, 300);
+    
+    g.fight.prevMenu = displayMenu;
 };
 
 tEnemy.drawEnemyActionSubClear = function(){
@@ -357,22 +585,22 @@ tEnemy.drawRoom = function () {
         },
         {
             "type": "zimg",
-            "name": "charAvatar",
-            "left": 1700,
-            "top": 860,
-            "width": 170,
-            "height": 170,
-            "image": "227_fight/c_avatar.png"
+            "name": "enemyAvatar",
+            "left": 1763,
+            "top": 923,
+            "width": 140,
+            "height": 140,
+            "image": "227_fight/" + g.fight.e[0].base + "_avatar.png"
         },
         {
-            "type": "zimg",
-            "name": "myactive",
-            "left": 25,
-            "top": 625,
-            "width": 100,
-            "height": 100,
-            "image": "227_fight/unk.png"
-        },
+            "type": "img",
+            "name": "menu",
+            "left": 1597,
+            "top": 147,
+            "width": 306,
+            "height": 712,
+            "image": "227_fight/menu.png"
+        }
     ];
 
     if (g.fight.e[0].clothingLevel > 1) {
@@ -411,7 +639,7 @@ tEnemy.drawRoom = function () {
         nav.button(v, 227);
     });
 
-
+    $('.room-img[data-name="menu"]').hide();
     nav.t({
         type: "zimg",
         name: "name",
@@ -458,33 +686,142 @@ tEnemy.drawRoom = function () {
 
 tEnemy.drawBox = function () {
     var i, j;
-    j = g.fight.box.length;
-    for (i = 0; i < j; i++) {
-        var k = Math.floor(Math.random() * j);
-        var l = g.fight.box[i];
-        g.fight.box[i] = g.fight.box[k];
-        g.fight.box[k] = l;
+
+    nav.button({
+        "type": "img",
+        "name": "boxtarget",
+        "left": 1662,
+        "top": 271,
+        "width": 226,
+        "height": 447,
+        "image": "227_fight/boxtarget.png"
+    }, 227);
+
+
+    nav.button({
+        "type": "btn",
+        "name": "box0",
+        "left": 1750,
+        "top": 287,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box1",
+        "left": 1706,
+        "top": 396,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box2",
+        "left": 1794,
+        "top": 396,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box3",
+        "left": 1721,
+        "top": 513,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box4",
+        "left": 1779,
+        "top": 513,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box5",
+        "left": 1671,
+        "top": 563,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box6",
+        "left": 1829,
+        "top": 563,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box7",
+        "left": 1750,
+        "top": 588,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box8",
+        "left": 1713,
+        "top": 645,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    nav.button({
+        "type": "btn",
+        "name": "box9",
+        "left": 1788,
+        "top": 645,
+        "width": 50,
+        "height": 50,
+        "image": "227_fight/box.png"
+    }, 227);
+    g.fight.box = ["b", "b", "b", "h", "1", "1", "1", "1", "2", "2"];
+    if (g.fight.me.action === "superpunch")
+        g.fight.box = ["2", "1", "2", "2", "1", "1", "1", "1", "2", "2"];
+    for (j = 0; j < 2; j++) {
+        for (i = 0; i < 10; i++) {
+            var k = Math.floor(Math.random() * 10);
+            var l = g.fight.box[i];
+            g.fight.box[i] = g.fight.box[k];
+            g.fight.box[k] = l;
+        }
     }
-    for (i = 0; i < j; i++) {
-        nav.button({
-            "type": "btn",
-            "name": "box" + i,
-            "left": 400 + (i * 120),
-            "top": 400,
-            "width": 100,
-            "height": 100,
-            "image": "227_fight/box.png"
-        }, 227);
+    var thisMult = ["3", "3", "4", "4", "10"];
+    for (i = 0; i < g.fight.e[0].weakspot.length; i++) {
+        if (Math.random() < .5) {
+            g.fight.box[i] = thisMult[Math.floor(Math.random() * 5)];
+        }
     }
+
 };
 
 tEnemy.selectBox = function (box) {
     var i, retvalue;
     var boxentry = parseInt(box.substring(3));
     var img = "";
+    var x, y;
+
+    x = Math.round($('.room-btn[data-name="' + box + '"]').css("left").replace("px", "") / g.ratio);
+    y = Math.round($('.room-btn[data-name="' + box + '"]').css("top").replace("px", "") / g.ratio);
+    
     for (i = 0; i < g.fight.box.length; i++) {
         nav.killbutton("box" + i);
     }
+
+
 
     switch (g.fight.box[boxentry]) {
         case "b":
@@ -503,15 +840,27 @@ tEnemy.selectBox = function (box) {
             img = "box_two";
             retvalue = 2;
             break;
+        case "3":
+            img = "box_three";
+            retvalue = 3;
+            break;
+        case "4":
+            img = "box_four";
+            retvalue = 4;
+            break;
+        case "10":
+            img = "box_ten";
+            retvalue = 10;
+            break;
     }
-
+    console.log(x, y)
     nav.button({
         "type": "img",
         "name": "box",
-        "left": 400 + (boxentry * 120),
-        "top": 400,
-        "width": 100,
-        "height": 100,
+        "left": x,
+        "top": y,
+        "width": 50,
+        "height": 50,
         "image": "227_fight/" + img + ".png"
     }, 227);
     return retvalue;
@@ -568,21 +917,19 @@ tEnemy.drawEnemy = function (pose) {
 
 tEnemy.drawChar = function (pose) {
     nav.killbutton("me");
-    var thischar = { body: "blank", hair: "blank", clothes: "blank", panties: "blank", dick: "blank", displayc: false, fif: null };
+    var thischar = { body: "blank", hair: "blank", clothes: null, panties: "blank", dick: null, displayc: false, fif: null };
     switch (pose) {
         case "pose":
             thischar.body = cl.c.chest > 2 ? "g_pose_f" : "g_pose_m";
             thischar.dick = "g_block";
             thischar.hair = "0";
             thischar.displayc = true;
-            thischar.fif = null;
             break;
         case "block":
             thischar.body = cl.c.chest > 2 ? "g_block_f" : "g_block_m";
             thischar.dick = "g_block";
             thischar.displayc = true;
             thischar.hair = "4";
-            thischar.fif = null;
             break;
         case "acia":
         case "soda":
@@ -598,42 +945,45 @@ tEnemy.drawChar = function (pose) {
             thischar.dick = "g_punch";
             thischar.displayc = true;
             thischar.hair = "1";
-            thischar.fif = null;
+            break;
+        case "superpunch":
+            g.fight.me.superPunch = 0;
+            g.set("superPunch", 0);
+            thischar.body = cl.c.chest > 2 ? "g_punch_f" : "g_punch_m";
+            thischar.dick = "g_punch";
+            thischar.displayc = true;
+            thischar.hair = "1";
+            thischar.fif = "g_superpunch";
             break;
         case "kick":
             thischar.body = cl.c.chest > 2 ? "g_kick_f" : "g_kick_m";
             thischar.dick = "g_kick";
             thischar.displayc = true;
             thischar.hair = "2";
-            thischar.fif = null;
             break;
         case "recoil":
             thischar.body = cl.c.chest > 2 ? "g_recoil_f" : "g_recoil_m";
             thischar.dick = "g_recoil";
             thischar.displayc = true;
             thischar.hair = "3";
-            thischar.fif = null;
             break;
         case "bjpose":
             thischar.body = cl.c.chest > 2 ? "g_bjpose_f" : "g_bjpose_m";
             thischar.dick = "g_bjpose";
             thischar.displayc = true;
             thischar.hair = "6";
-            thischar.fif = null;
             break;
         case "asspose":
             thischar.body = cl.c.chest > 2 ? "g_asspose" : "g_asspose";
             thischar.dick = "g_asspose";
             thischar.displayc = true;
             thischar.hair = "7";
-            thischar.fif = null;
             break;
         case "stripclothes":
             if (g.fight.me.clothes !== null) {
                 g.fight.me.clothes = null;
                 cl.c.pants = cl.c.shirt = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
                 thischar.body = cl.c.chest > 2 ? "g_stripclothes_f" : "g_stripclothes_m";
-                thischar.dick = null;
                 thischar.displayc = true;
                 thischar.hair = null;
             }
@@ -641,11 +991,9 @@ tEnemy.drawChar = function (pose) {
                 g.fight.me.panties = false;
                 cl.c.panties = cl.c.bra = null;
                 thischar.body = "g_strippanties";
-                thischar.dick = null;
                 thischar.displayc = true;
                 thischar.hair = "5";
             }
-            thischar.fif = null;
             cl.display();
             break;
         case "striprip":
@@ -661,7 +1009,6 @@ tEnemy.drawChar = function (pose) {
                 g.fight.me.panties = false;
                 thischar.body = cl.c.chest > 2 ? "g_striprippanties_f" : "g_striprippanties_m";
                 thischar.hair = "8";
-                thischar.dick = null;
                 thischar.displayc = false;
             }
             break;
@@ -670,30 +1017,77 @@ tEnemy.drawChar = function (pose) {
             thischar.displayc = false;
             thischar.hair = "9";
             break;
+        case "teabag":
+            thischar.body = cl.c.chest > 2 ? "g_teabag_f" : "g_teabag_m";
+            thischar.hair = "10";
+            thischar.displayc = false;
+            break;
+        case "lick":
+            thischar.body = "g_lick";
+            thischar.hair = "11";
+            thischar.displayc = false;
+            break;
+        case "defeat":
+            thischar.body = cl.c.chest > 2 ? "g_defeat_f" : "g_defeat_m";
+            thischar.dick = "g_defeat";
+            thischar.hair = null;
+            thischar.displayc = true;
+            break;
+        case "victory":
+            thischar.body = cl.c.chest > 2 ? "g_victory_f" : "g_victory_m";
+            thischar.dick = "g_victory";
+            thischar.hair = "8";
+            thischar.displayc = true;
+            break;
+        case "fuck":
+            thischar.body = cl.c.chest > 2 ? "g_fuck_f" : "g_fuck_m";
+            thischar.hair = "13";
+            break;
+        case "fuck1":
+            thischar.body = cl.c.chest > 2 ? "g_fuck1_f" : "g_fuck1_m";
+            thischar.hair = "13";
+            break;
+        case "kneel":
+            thischar.body = cl.c.chest > 2 ? "g_kneel_f" : "g_kneel_m";
+            thischar.hair = "12";
+            thischar.displayc = false;
+            break;
+        case "takeit":
+            thischar.body = cl.c.chest > 2 ? "g_takeit" : "g_takeit";
+            thischar.dick = "g_takeit";
+            thischar.hair = "14";
+            break;
+        case "takeit1":
+            thischar.body = cl.c.chest > 2 ? "g_takeit1" : "g_takeit1";
+            thischar.dick = "g_takeit1";
+            thischar.hair = "14";
+            break;
     }
     if (thischar.displayc) {
         if (g.fight.me.clothes === "m" || g.fight.me.clothes === "f")
             thischar.clothes = thischar.body + (g.fight.me.clothes === "f" ? "_d" : "_t");
         else if (g.fight.me.panties)
             thischar.clothes = thischar.body + "_p";
-        else if (thischar.dick !== null) {
-            if (cl.c.chastity !== null)
-                thischar.clothes = thischar.dick + "_d_c";
-            else if (cl.c.cock < 3)
-                thischar.clothes = thischar.dick + "_d_b";
-            else
-                thischar.clothes = thischar.dick + "_d_s";
-        }
+    }
+
+    console.log(thischar.clothes, thischar.dick)
+    if (thischar.clothes === null && thischar.dick !== null) {
+        if (cl.c.chastity !== null)
+            thischar.clothes = thischar.dick + "_d_c";
+        else if (cl.c.cock < 3)
+            thischar.clothes = thischar.dick + "_d_b";
+        else
+            thischar.clothes = thischar.dick + "_d_s";
     }
     
     var hl = cl.c.hairLength > 2 ? "_long" : "_short";
     //back of hair
 
-    if (thischar.hair !== null) {
-        if (cl.c.hairLength > 2)
-            nav.modbutton("me0", "227_fight/h_" + thischar.hair + "_long_back.png", null, null);
-        else
-            nav.modbutton("me0", "227_fight/blank.png", null, null);
+    if (thischar.hair !== null && cl.c.hairLength !== null) {
+            if (cl.c.hairLength > 2)
+                nav.modbutton("me0", "227_fight/h_" + thischar.hair + "_long_back.png", null, null);
+            else
+                nav.modbutton("me0", "227_fight/blank.png", null, null);
     }
     else
         nav.modbutton("me0", "227_fight/blank.png", null, null);
@@ -701,10 +1095,11 @@ tEnemy.drawChar = function (pose) {
     nav.modbutton("me1", "227_fight/" + thischar.body + ".png", null, null);
 
     //clothing
-    nav.modbutton("me2", "227_fight/" + thischar.clothes + ".png", null, null);
+    nav.modbutton("me2", "227_fight/" + (thischar.clothes ?? "blank") + ".png", null, null);
 
     //hair
-    if (thischar.hair !== null) {
+    
+    if (thischar.hair !== null && cl.c.hairLength !== null) {
         nav.modbutton("me3", "227_fight/h_" + thischar.hair + hl + ".png", null, null);
     }
     else
@@ -732,42 +1127,33 @@ tEnemy.successfulBlock = function () {
     return Math.random() * 100 > blockChance;
 };
 
-tEnemy.getControl = function (action) {
-    switch (action) {
-        case "punch":
-        case "kick":
-            return 10;
-        case "grapple":
-            return 50;
-        case "strip":
-            return 25;
-        default:
-            return 0;
-    }
-};
-
 tEnemy.getEnemyAction = function () {
-    var p, c;
-    var entry = g.fight.e[0].offense[Math.floor(Math.random() * g.fight.e[0].offense.length)];
+    var p;
+    var entry = "p";
+    var weakestHit = g.fight.e[0].pPower < g.fight.e[0].kPower ? g.fight.e[0].pPower : g.fight.e[0].kPower;
+
+    if (g.fight.me.energy <= weakestHit) 
+        entry = Math.random() < .5 ? "p" : "k";
+    else if ((g.fight.cPower < 90 && g.fight.cPower > 50) || g.fight.cPower < -50) 
+        entry = Math.random() < .75 ? "g" : g.fight.e[0].offense[Math.floor(Math.random() * g.fight.e[0].offense.length)];
+    else
+        entry = g.fight.e[0].offense[Math.floor(Math.random() * g.fight.e[0].offense.length)];
+
     switch (entry) {
         case "p":
             g.fight.e[0].p = "punch";
             p = g.fight.e[0].pPower;
-            c = tEnemy.getControl("punch");
             break;
         case "k":
             g.fight.e[0].p = "kick";
             p = g.fight.e[0].kPower;
-            c = tEnemy.getControl("kick");
             break;
         case "g":
             p = Math.round((g.fight.e[0].kPower + g.fight.e[0].pPower) / 4);
             if (g.fight.me.clothes === null && !g.fight.me.panties) {
-                c = tEnemy.getControl("grapple");
                 g.fight.e[0].p = "grapple";
             }
             else {
-                c = tEnemy.getControl("strip");
                 g.fight.e[0].p = "strip";
             }
             break;
@@ -776,7 +1162,7 @@ tEnemy.getEnemyAction = function () {
             break;
     }
 
-    return {a: g.fight.e[0].p, p: p, c: c };
+    return {a: g.fight.e[0].p, p: p };
 };
 
 tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
@@ -816,8 +1202,18 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
         });
     }
     if (controlChange !== null) {
+        var conPow = 0;
+        switch (controlChange.t) {
+            case "hit": conPow = 10; break;
+            case "grapple": conPow = 50; break;
+            case "block": conPow = 0; break;
+            case "steal": conPow = 25; break;
+            default: alert(controlChange.t + " missing");
+        }
+        if (controlChange.me)
+            conPow *= -1;
         prevEnergy = g.fight.cPower;
-        g.fight.cPower += controlChange;
+        g.fight.cPower += conPow;
 
         if (g.fight.cPower > 100)
             g.fight.cPower = 100;
@@ -842,17 +1238,24 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
                 width: "0px"
             });
         }
+        else {
+            $(".my-horny").css({
+                width: "0px"
+            });
+            $(".enemy-horny0").css({
+                width: "0px"
+            });
+        }
     }
 };
 
 tEnemy.updatePlayerStats = function (money) {
 
-    /*
     var i;
     var popUpText = "";
     for (i = 0; i < g.st.length; i++) {
         if (g.st[i].n === "energy") {
-            if (g.fight.me.energy < 0)
+            if (g.fight.me.energy < 1)
                 g.fight.me.energy = 0;
             else if (g.fight.me.energy > g.fight.me.maxEnergy)
                 g.fight.me.energy = g.fight.me.maxEnergy;
@@ -912,5 +1315,4 @@ tEnemy.updatePlayerStats = function (money) {
     if (popUpText.length > 0)
         g.popUpNotice(popUpText);
     char.makeGraph();
-    */
 };

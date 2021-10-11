@@ -78,6 +78,11 @@ g.st = [
     { n: "displayMenu", t: true, q: "bool" },
 
     { n: "fighttimer", t: 4000, q: "int" },
+    { n: "fightWon", t: 0, q: "int" },
+    { n: "fightLost", t: 0, q: "int" },
+    { n: "fightControlWon", t: 0, q: "int" },
+    { n: "fightControlLost", t: 0, q: "int" },
+    { n: "superPunch", t: 8, q: "int" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -470,7 +475,10 @@ g.popUpNoticeBottom = function (notice) {
     }
     else {
         $('#char_alert_bottom').html(notice).fadeIn(200, function () {
-            $('#char_alert_bottom').fadeOut(2000);
+            setTimeout(function () {
+                $('#char_alert_bottom').fadeOut(1000);
+            }, 2000 );
+            
         });
     }
 };
@@ -809,6 +817,25 @@ g.makeSingular = function (text) {
     if (text.substr(0, text.length - 1) === "'")
         text = text.slice(-1);
     return text;
+};
+
+g.newLine = function (str, maxLength) {
+    var stringArray = str.split(" ");
+    var counter = 0;
+    var i;
+    var newString = "";
+    for (i = 0; i < stringArray.length; i++) {
+        if (counter + stringArray[i].length > maxLength) {
+            newString += "</br>" + stringArray[i] + " ";
+            counter = stringArray[i].length + 1;
+            console.log(counter + "?");
+        }
+        else {
+            newString += stringArray[i] + " ";
+            counter += stringArray[i].length + 1;
+        }
+    }
+    return newString;
 };
 
 g.save = function () {

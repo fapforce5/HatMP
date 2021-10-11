@@ -5,7 +5,9 @@ room227.main = function () {
     char.changeMenu("hide", false);
     tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.bg, g.pass.roomID);
     tEnemy.drawButtons("init");
-    tEnemy.drawButtonList(["lb_headerBegin", "lb_begin"]);
+    tEnemy.drawButtonList("begin");
+    $("#room-inv").hide();
+    $("#room-menu").hide();
 };
 
 room227.btnclick = function (name) {
@@ -14,12 +16,12 @@ room227.btnclick = function (name) {
             nav.killbutton("e0");
             nav.killbutton("e1");
             nav.bg("227_fight/" + g.pass.bg + ".jpg");
-            tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
+            tEnemy.drawButtonList("main");
             tEnemy.drawStage();
             break;
         case "lb_flee":
             tEnemy.drawEnemyActionSubClear();
-            tEnemy.drawButtonList(["lb_headerFlee", "lb_fleeconfirm", "lb_cancel"]);
+            tEnemy.drawButtonList("flee");
             break;
         case "lb_fleeconfirm":
             g.popUpNotice("You ran away");
@@ -27,66 +29,46 @@ room227.btnclick = function (name) {
             room227.chatcatch("returnRoom");
             break;
         case "lb_fight":
-            tEnemy.drawButtonList(["lb_headerFight", "lb_punch", "lb_kick", "lb_grapple", "lb_weapon", "lb_cancel"]);
+            tEnemy.drawButtonList("fight");
             break;
         case "lb_weapon":
-            tEnemy.drawButtonList(["lb_cancel"]);
+            tEnemy.drawButtonList("weapon");
             break;
         case "lb_cancel":
             g.fight.me.action = g.fight.me.counterAction = null;
-            tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
+            tEnemy.drawButtonList("cancel");
             break;
         case "lb_punch":
         case "lb_kick":
-            tEnemy.drawButtonList([]);
+        case "lb_superpunch":
+            tEnemy.drawButtonList("box");
             tEnemy.drawBox();
             var thisAction = name.substring(3);
             g.fight.me.action = thisAction;
             break;
         case "lb_grapple":
-            if (g.fight.e[0].clothingLevel > 0) {
-                tEnemy.drawButtonList(["lb_headerGrapple", "lb_steal", "lb_cancel"]);
-            }
-            else
-                tEnemy.drawButtonList(["lb_headerGrapple", "lb_cancel"]);
+            tEnemy.drawButtonList("grapple");
             break;
-        case "lb_steal":
-            tEnemy.drawButtonList([]);
-            tEnemy.drawChar("punch");
-            g.fight.e[0].p = "steal";
-            tEnemy.drawEnemy();
-            g.fight.e[0].clothingLevel--;
-            g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_blockgrapple", "lb_takeit", "lb_cancel"]);
-                tEnemy.updateMePrevAction();
-                g.fight.e[0].p = "pose";
-                tEnemy.drawEnemy();
-                tEnemy.drawChar("pose");
-            }, g.fight.fighttimer);
-            break;
+        
         case "lb_inventory":
-            var invArray = new Array();
-            if (inv.has("acia"))
-                invArray.push("lb_acia");
-            if (inv.has("soda"))
-                invArray.push("lb_soda");
-            if (inv.has("cumjar"))
-                invArray.push("lb_cumjar");
-            invArray.push("lb_cancel");
-            tEnemy.drawButtonList(invArray);
+            tEnemy.drawButtonList("inventory");
             break;
         case "lb_acia":
         case "lb_soda":
         case "lb_cumjar":
-            tEnemy.drawButtonList([]);
+            tEnemy.drawButtonList("close");
             g.fight.me.action = name.substring(3);
             tEnemy.drawChar(g.fight.me.action);
+            var energyGains = 0;
+            switch (name) {
+                case "lb_acia": energyGains = 15; inv.use("acia"); break;
+                case "lb_soda": energyGains = 50; inv.use("soda"); break;
+                case "lb_cumjar": energyGains = 100; inv.use("cumjar"); break;
+            }
+            tEnemy.changeEnergy(energyGains, null, null);
+            g.popUpNoticeBottom("You gained " + energyGains + " energy. ");
             g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_blockgrapple", "lb_takeit", "lb_cancel"]);
-                tEnemy.updateMePrevAction();
-                g.fight.e[0].p = "pose";
-                tEnemy.drawEnemy();
-                tEnemy.drawChar("pose");
+                room227.chatcatch("counterAction");
             }, g.fight.fighttimer);
             break;
         case "lb_blockkick":
@@ -94,7 +76,7 @@ room227.btnclick = function (name) {
         case "lb_blockgrapple":
         case "lb_takeit":
             g.fight.me.counterAction = name.substring(3);
-            tEnemy.drawButtonList([]);
+            tEnemy.drawButtonList("close");
             var ea = tEnemy.getEnemyAction();
             console.log(name, ea);
             if ((name === "lb_blockkick" && ea.a === "kick")
@@ -103,25 +85,26 @@ room227.btnclick = function (name) {
                 nav.modbutton("pow", "227_fight/b_block.png", null, null);
                 tEnemy.drawChar("block");
                 var blockDmg = ea.p * .1 > 1 ? 1 : ea.p * .1;
-                tEnemy.changeEnergy(blockDmg * (-1), null, 0);
+                tEnemy.changeEnergy(blockDmg * (-1), null, { t: "block", me: false });
                 g.popUpNoticeBottom("Blocked " + ea.a + " for " + blockDmg + " damage. ");
+                g.fight.e[0].p = "punch";
             }
             else if (ea.a === "punch" || ea.a === "kick") {
-                //tEnemy.playerhit(false, 0, g.fight.e[0].p);
                 nav.modbutton("pow", "227_fight/b_ePow.png", null, null);
                 tEnemy.drawChar("recoil");
-                tEnemy.changeEnergy(ea.p * (-1), null, ea.c);
+                tEnemy.changeEnergy(ea.p * (-1), null, { t: "hit", me: false });
                 g.popUpNoticeBottom(ea.a.charAt(0).toUpperCase() + ea.a.slice(1) + " for " + ea.p + " damage. ");
 
             }
             else if (ea.a === "strip") {
                 nav.modbutton("pow", "227_fight/b_strip.png", null, null);
                 tEnemy.drawChar("striprip");
-                tEnemy.changeEnergy(ea.p * (-1), null, ea.c);
+                tEnemy.changeEnergy(ea.p * (-1), null, { t: "steal", me: false });
                 g.fight.e[0].p = "punch";
                 g.popUpNoticeBottom("Oh no! You've been stripped!");
             }
             else if (ea.a === "grapple") {
+                //if enemy returns grapple, but is wearing clothes, remove those clothes
                 if (g.fight.e[0].clothingLevel > 0) {
                     g.fight.e[0].clothingLevel = 0;
                     nav.modbutton("pow", "227_fight/b_strip.png", null, null);
@@ -131,36 +114,24 @@ room227.btnclick = function (name) {
                 else {
                     nav.modbutton("pow", "227_fight/b_groan.png", null, null);
                     g.fight.e[0].p = "grapple";
-                    tEnemy.changeEnergy(ea.p * (-1), null, ea.c);
+                    tEnemy.changeEnergy(ea.p * (-1), null, { t: "grapple", me: false });
                     tEnemy.drawChar("bent");
                     g.popUpNoticeBottom(g.fight.e[0].submit);
                 }
             }
             tEnemy.drawEnemy();
             g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
-                nav.modbutton("pow", "227_fight/blank.png", null, null);
-                g.fight.e[0].p = "pose";
-                tEnemy.drawEnemy();
-                tEnemy.drawChar("pose");
+                room227.chatcatch("main");
             }, g.fight.fighttimer);
             break;
         case "lb_slut":
-            if (g.fight.me.clothes !== null) {
-                tEnemy.drawButtonList(["lb_headerSlut", "lb_stripshirt", "lb_cancel"]);
-            }
-            else if (g.fight.me.panties) {
-                tEnemy.drawButtonList(["lb_headerSlut", "lb_strippanties", "lb_cancel"]);
-            }
-            else {
-                tEnemy.drawButtonList(["lb_headerSlut", "lb_submitass", "lb_submitbj", "lb_humiliation", "lb_cancel" ]);
-            }
+            tEnemy.drawButtonList("slut");
             break;
         case "lb_humiliation":
-            tEnemy.drawButtonList(["lb_headerhumiliation", "lb_cancel"]);
+            tEnemy.drawButtonList("humiliation");
             break;
         case "lb_submitbj":
-            tEnemy.drawButtonList([]);
+            tEnemy.drawButtonList("close");
             tEnemy.drawChar("bjpose");
 
             if (g.fight.e[0].clothingLevel > 0) {
@@ -172,27 +143,23 @@ room227.btnclick = function (name) {
                 g.roomTimeout = setTimeout(function () {
                     g.fight.e[0].p = "bjpose";
                     tEnemy.drawEnemy();
+                    tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                     g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
-                        g.fight.e[0].p = "pose";
-                        tEnemy.drawEnemy();
+                        room227.chatcatch("main-tain");
                     }, g.fight.fighttimer);
                 }, g.fight.fighttimer);
             }
             else {
                 g.fight.e[0].p = "bjpose";
                 tEnemy.drawEnemy();
+                tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                 g.roomTimeout = setTimeout(function () {
-                    tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
-                    g.fight.e[0].p = "pose";
-                    tEnemy.drawEnemy();
+                    room227.chatcatch("main-tain");
                 }, g.fight.fighttimer);
             }
-            //f_sc_strip_0.png
-
             break;
         case "lb_submitass":
-            tEnemy.drawButtonList([]);
+            tEnemy.drawButtonList("close");
             tEnemy.drawChar("asspose");
 
             if (g.fight.e[0].clothingLevel > 0) {
@@ -204,32 +171,48 @@ room227.btnclick = function (name) {
                 g.roomTimeout = setTimeout(function () {
                     g.fight.e[0].p = "bjpose";
                     tEnemy.drawEnemy();
+                    tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                     g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
-                        g.fight.e[0].p = "pose";
-                        tEnemy.drawEnemy();
+                        room227.chatcatch("main-tain");
                     }, g.fight.fighttimer);
                 }, g.fight.fighttimer);
             }
             else {
                 g.fight.e[0].p = "bjpose";
                 tEnemy.drawEnemy();
+                tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                 g.roomTimeout = setTimeout(function () {
-                    tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
-                    g.fight.e[0].p = "pose";
-                    tEnemy.drawEnemy();
+                    room227.chatcatch("main-tain");
                 }, g.fight.fighttimer);
             }
             break;
         case "lb_stripshirt":
         case "lb_strippanties":
-            tEnemy.drawButtonList([]);
+            tEnemy.drawButtonList("close");
             tEnemy.drawChar("stripclothes");
             g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList(["lb_headerAction", "lb_fight", "lb_slut", "lb_inventory", "lb_flee"]);
-                g.fight.e[0].p = "pose";
-                tEnemy.drawEnemy();
-                tEnemy.drawChar("pose");
+                room227.chatcatch("main");
+            }, g.fight.fighttimer);
+            break;
+        case "lb_teabag":
+            tEnemy.drawButtonList("close");
+            tEnemy.drawChar("teabag");
+            g.fight.e[0].p = "teabag";
+            tEnemy.drawEnemy();
+            tEnemy.changeEnergy(null, -10, { t: "grapple", me: true });
+            g.roomTimeout = setTimeout(function () {
+                room227.chatcatch("counterAction");
+            }, g.fight.fighttimer);
+                        break;
+        case "lb_steal":
+            tEnemy.drawButtonList("close");
+            tEnemy.drawChar("punch");
+            g.fight.e[0].p = "steal";
+            tEnemy.drawEnemy();
+            g.fight.e[0].clothingLevel--;
+            tEnemy.changeEnergy(null, null, { t: "steal", me: true });
+            g.roomTimeout = setTimeout(function () {
+                room227.chatcatch("counterAction");
             }, g.fight.fighttimer);
             break;
         case "box0":
@@ -243,39 +226,100 @@ room227.btnclick = function (name) {
         case "box8":
         case "box9":
             var damageMult = tEnemy.selectBox(name);
-            var preDamage = g.fight.me.action === "punch" ? g.fight.me.pPower : g.fight.me.kPower;
+            var preDamage = g.fight.me.action === "superpunch" ? g.fight.me.pPower * g.fight.me.superPunch :
+                (g.fight.me.action === "punch" ? g.fight.me.pPower : g.fight.me.kPower);
             var totalDamage = Math.floor(preDamage * damageMult);
             if (totalDamage < 1)
                 totalDamage = 1;
 
+            if (g.fight.me.action === "punch")
+                g.fight.me.punchCount++;
+            else if(g.fight.me.action === "kick")
+                g.fight.me.kickCount ++;
+
+
             g.roomTimeout = setTimeout(function () {
                 nav.killbutton("box");
+                tEnemy.drawButtonList("close");
+                nav.killbutton("boxtarget");
                 tEnemy.drawChar(g.fight.me.action);
-                tEnemy.changeEnergy(totalDamage, null, 0);
+
                 if (damageMult === .1) {
                     nav.modbutton("pow", "227_fight/b_block.png", null, null);
                     g.fight.e[0].p = "block";
                     g.popUpNoticeBottom("Blocked for " + totalDamage + " damage. ");
-                    tEnemy.changeEnergy(null, totalDamage * -1, null);
+                    tEnemy.changeEnergy(null, totalDamage * -1, { t: "block", me: true });
                 }
                 else {
                     nav.modbutton("pow", "227_fight/b_pow.png", null, null);
                     g.fight.e[0].p = "recoil";
                     g.popUpNoticeBottom(g.fight.me.action.charAt(0).toUpperCase() + g.fight.me.action.slice(1) + " for " + totalDamage + " damage. ");
+                    tEnemy.changeEnergy(null, totalDamage * -1, { t: "hit", me: true });
                 }
                 tEnemy.drawEnemy();
                 g.roomTimeout2 = setTimeout(function () {
-                    tEnemy.drawButtonList(["lb_headerCounterAction", "lb_blockpunch", "lb_blockkick", "lb_blockgrapple", "lb_takeit", "lb_cancel"]);
-                    nav.modbutton("pow", "227_fight/blank.png", null, null);
-                    //tEnemy.updateMePrevAction();
-                    g.fight.e[0].p = "pose";
-                    tEnemy.drawEnemy();
-                    tEnemy.drawChar("pose");
-                    tEnemy.changeEnergy(null, totalDamage * -1, -20);
+                    room227.chatcatch("counterAction");
                 }, g.fight.fighttimer);
             }, g.fight.fighttimer);
-
-
+            break;
+        case "lb_domFuckem":
+            g.fight.e[0].clothingLevel = 0;
+            tEnemy.drawChar(g.fight.e[0].domFuckem.pose);
+            g.fight.e[0].p = "fuck";
+            tEnemy.drawEnemy();
+            tEnemy.drawGif(g.fight.e[0].domFuckem.gif);
+            nav.button({
+                "type": "btn",
+                "name": "lb_domFuckem1",
+                "left": 1550,
+                "top": 550,
+                "width": 350,
+                "height": 103,
+                "image": "227_fight/cum.png",
+                "title": "Make them cum, slut"
+            }, 227);
+            break;
+        case "lb_domFuckem1":
+            nav.killbutton("lb_domFuckem1");
+            tEnemy.drawChar(g.fight.e[0].domFuckem.pose1);
+            g.fight.e[0].p = "fuck1";
+            tEnemy.drawEnemy();
+            tEnemy.drawGif(g.fight.e[0].domFuckem.gif1);
+            chat(999, 227);
+            break;
+        case "domination1":
+            g.fight.e[0].p = "domination1";
+            tEnemy.drawChar(g.fight.e[0].domination.pose1);
+            tEnemy.drawGif(g.fight.e[0].domination.gif1);
+            tEnemy.drawEnemy();
+            nav.killbutton("domination1");
+            chat(998, 227);
+            break;
+        case "lb_domPowerbottom":
+            g.fight.e[0].clothingLevel = 0;
+            tEnemy.drawChar(g.fight.e[0].domPowerbottom.pose);
+            g.fight.e[0].p = "powerbottom";
+            tEnemy.drawEnemy();
+            tEnemy.drawGif(g.fight.e[0].domPowerbottom.gif);
+            nav.button({
+                "type": "btn",
+                "name": "domPowerbottom1",
+                "left": 1550,
+                "top": 550,
+                "width": 350,
+                "height": 103,
+                "image": "227_fight/cum.png",
+                "title": "Make them cum, slut"
+            }, 227);
+            break;
+        case "domPowerbottom1":
+            nav.killbutton("domPowerbottom1");
+            g.fight.e[0].p = "powerbottom1";
+            tEnemy.drawChar(g.fight.e[0].domPowerbottom.pose1);
+            tEnemy.drawGif(g.fight.e[0].domPowerbottom.gif1);
+            tEnemy.drawEnemy();
+            nav.killbutton("domPowerbottom1");
+            chat(998, 227);
             break;
         default:
             alert("bad entry");
@@ -303,6 +347,107 @@ room227.chatcatch = function (callback) {
             g.fight = null;
             char.room(returnRoom);
             break;
+        case "main":
+        case "main-tain":
+        case "counterAction":
+            if (g.fight.me.energy < 1) {
+                g.fight.e[0].p = "win";
+                tEnemy.drawChar("defeat");
+                tEnemy.drawEnemy();
+                //return defeat
+            }
+            else if (g.fight.e[0].energy < 1) {
+                g.fight.e[0].p = "defeat";
+                tEnemy.drawChar("victory");
+                tEnemy.drawEnemy();
+                //get money and stats
+            }
+            else if (g.fight.cPower > 99) {
+                tEnemy.changeEnergy(-50, null, null);
+                g.fight.e[0].clothingLevel = 0;
+                g.fight.e[0].p = "domination";
+                tEnemy.drawChar(g.fight.e[0].domination.pose);
+                tEnemy.drawGif(g.fight.e[0].domination.gif);
+                tEnemy.drawEnemy();
+                nav.button({
+                    "type": "btn",
+                    "name": "domination1",
+                    "left": 1550,
+                    "top": 550,
+                    "width": 350,
+                    "height": 103,
+                    "image": "227_fight/cum.png",
+                    "title": "Make them cum, slut"
+                }, 227);
+                g.popUpNoticeBottom("You've been dominated!");
+                //they control
+            }
+            else if (g.fight.cPower < -99) {
+                tEnemy.drawButtonList("domination");
+            }
+            else {
+                if (callback === "main-tain") {
+                    callback = "main";
+                }
+                else {
+                    tEnemy.drawChar("pose");
+                }
+                nav.modbutton("pow", "227_fight/blank.png", null, null);
+                g.fight.e[0].p = "pose";
+                tEnemy.drawEnemy();
+                
+
+                tEnemy.drawButtonList(callback);
+            }
+
+            break;
+        case "dominationComplete":
+
+            break;
     }
 };
 
+room227.chat = function (chatID) {
+    if (chatID === 998) {
+        return {
+            chatID: 998,
+            speaker: "random",
+            text: g.fight.e[0].submit,
+            button: [{ chatID: -1, text: "...", callback: "dominationComplete" }]
+        };
+    }
+    if (chatID === 999) {
+        return {
+            chatID: 999,
+            speaker: "random",
+            text: g.fight.e[0].loss,
+            button: [{ chatID: -1, text: "...", callback: "dominationComplete" }]
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "random",
+                text: "AAAAAAAAAaaaaaaaaaaaaaaaaa WHAT ARE YOU DOING IN HERE! GET OUT!!!!",
+                button: [{ chatID: -1, text: "Oh crap! I'm not a dirty pervert! Sorry", callback: "leave" }]
+            },
+            {
+                chatID: 1,
+                speaker: "me",
+                text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...[In development]",
+                button: [{ chatID: -1, text: "...", callback: "" }]
+            },
+            {
+                chatID: 2,
+                speaker: "me",
+                text: "Oh, Cindy left her student ID here. Maybe I'll just hold onto this for now. ",
+                button: [{ chatID: -1, text: "...", callback: "resest" }]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
+};

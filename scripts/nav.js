@@ -106,7 +106,7 @@ nav.button = function (btn, roomNum) {
 
         if (btn.type === "dark")
             classes = "room-img img-dark";
-        if (btn.type === "btn")
+        else if (btn.type === "btn")
             classes = "room-btn rom-event";
         else if (btn.type === "kiss")
             classes = "room-btn-lips rom-event";
@@ -118,6 +118,10 @@ nav.button = function (btn, roomNum) {
             classes = "room-img room-zindex";
         else if (btn.type === "zbtn")
             classes = "room-btn rom-event room-zindex";
+        else if (btn.type === "btnhover")
+            classes = "room-btn rom-event fight-hover";
+        else if (btn.type === "imghover")
+            classes = "room-img fight-hover-element";
 
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
@@ -150,6 +154,8 @@ nav.t = function (btn, roomNum) {
         classes = "room-img room-zindex";
     else if (btn.type === "zbtn")
         classes = "room-btn rom-event room-zindex";
+    else if(btn.type === "btnhover")
+        classes = "room-btn rom-event fight-hover";
 
     if (btn.font === 12)
         classes += " char-12 resize ";
