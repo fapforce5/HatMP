@@ -117,10 +117,11 @@ g.st = [
     { n: "pissedonMale", t: 0, q: "int" },
     { n: "pissedonFemale", t: 0, q: "int" },
 
+    { n: "footLicker", t: 0, q: "int" },
+
     { n: "sissygasm", t: 0, q: "int" },
 
     { n: "girlname", t: "Scarlett", q: "string" },
-
     
     { n: "jobConstGetRaise", t: false, q: "bool" },
     { n: "lockboobs", t: false, q: "bool" },

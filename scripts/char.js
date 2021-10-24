@@ -280,7 +280,7 @@ char.changeMenu = function (menu, update) {
         default:
             console.log("invalid menu: " + menu);
             break;
-    };
+    }
 };
 
 char.addtime = function (minutes) {

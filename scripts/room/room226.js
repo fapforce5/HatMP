@@ -1,6 +1,5 @@
 ﻿//Room name
 var room226 = {};
-var tree = new Array();
 room226.main = function () {
     if (g.map === null) {
         $("#room_left_map").attr("src", "./images/general/map_266.jpg");
@@ -410,7 +409,6 @@ room226.main = function () {
         }
     }
 
-    
     char.changeMenu("map", false);
     
     if (g.get("energy") < 3) {
@@ -579,7 +577,7 @@ room226.btnclick = function (name) {
                         if (g.map.l[g.map.id].e === "c")
                             thisEnemy = "clownQueen";
                         else
-                            thisEnemy = Math.floor(Math.random() * 2) === 0 ? "futaRed" : "futaYellow";
+                            thisEnemy = Math.floor(Math.random() * 2) === 0 ? "fr" : "fy";
                         //{ enemy0: "futaRed", enemy1: "futaYellow", enemy2: null, bg: "sewer", roomID: 0 };
                         g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "sewer", roomID: 226 };
                         char.room(227);
@@ -596,12 +594,6 @@ room226.btnclick = function (name) {
                             chat(14, 226);
                     }
                 }
-                //else if (g.internal !== "nofight") {
-                //    g.internal = "";
-                //    if (Math.floor(Math.random() * 4) === 0)
-                //        g.internal = { enemy: (Math.floor(Math.random() * 2) === 0 ? "futaRed" : "futaYellow"), bg: "sewer", roomID: 226 };
-                //    char.room(227);
-                //}
             }
             break;
         case "left":

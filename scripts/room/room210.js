@@ -1,7 +1,21 @@
 ﻿//Room name
 var room210 = {};
 room210.main = function () {
+    var i, j, offset;
     nav.bg("28_transformation/grid.jpg");
+
+    //chest
+    offset = 33;
+    for (i = 2; i < 7; i++) {
+        j = i + offset;
+        g.sissy[j].ach = i <= cl.c.chest;
+    }
+    offset = 39;
+    for (i = 1; i < 6; i++) {
+        j = i + offset;
+        g.sissy[j].ach = i <= cl.c.leg;
+    }
+
     $.each(g.sissy, function (i, v) {
         nav.button({
             "type": "btn",
