@@ -575,7 +575,7 @@ room226.btnclick = function (name) {
                     else {
                         var thisEnemy;
                         if (g.map.l[g.map.id].e === "c")
-                            thisEnemy = "clownQueen";
+                            thisEnemy = "sc";
                         else
                             thisEnemy = Math.floor(Math.random() * 2) === 0 ? "fr" : "fy";
                         //{ enemy0: "futaRed", enemy1: "futaYellow", enemy2: null, bg: "sewer", roomID: 0 };

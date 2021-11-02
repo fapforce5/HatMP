@@ -3,7 +3,7 @@ var room227 = {};
 room227.main = function () {
     //g.pass = { enemy0: "g", enemy1: null, bg: "sewer", roomID: 226 };
     char.changeMenu("hide", false);
-    tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.bg, g.pass.roomID);
+    tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.bg, g.pass.roomID, 227);
     tEnemy.drawButtons("init");
     tEnemy.drawButtonList("begin");
     $("#room-inv").hide();
@@ -16,7 +16,6 @@ room227.btnclick = function (name) {
         case "lb_begin":
             nav.killbutton("e0");
             nav.killbutton("e1");
-            nav.bg("227_fight/" + g.pass.bg + ".jpg");
             tEnemy.drawButtonList("main");
             tEnemy.drawStage();
             break;
@@ -261,8 +260,8 @@ room227.btnclick = function (name) {
 
             g.roomTimeout = setTimeout(function () {
                 nav.killbutton("box");
-                tEnemy.drawButtonList("close");
                 nav.killbutton("boxtarget");
+                tEnemy.drawButtonList("close");
                 tEnemy.drawChar(g.fight.me.action);
 
                 if (damageMult === .1) {
@@ -342,7 +341,32 @@ room227.btnclick = function (name) {
             tEnemy.drawEnemy();
             chat(998, 227);
             break;
-        case "lb_domFoot":
+        case "lb_domfacefuck":
+            g.fight.e[0].clothingLevel = 0;
+            tEnemy.drawChar(g.fight.e[0].domfacefuck.pose);
+            g.fight.e[0].p = "facefuck";
+            tEnemy.drawEnemy();
+            tEnemy.drawGif(g.fight.e[0].domfacefuck.gif);
+            nav.button({
+                "type": "btn",
+                "name": "domfacefuck1",
+                "left": 1550,
+                "top": 550,
+                "width": 350,
+                "height": 103,
+                "image": "227_fight/cum.png",
+                "title": "Cum in their mouth"
+            }, 227);
+            break;
+        case "domfacefuck1":
+            nav.killbutton("domPowerbottom1");
+            g.fight.e[0].p = "facefuck1";
+            tEnemy.drawChar(g.fight.e[0].domfacefuck.pose1);
+            tEnemy.drawGif(g.fight.e[0].domfacefuck.gif1);
+            tEnemy.drawEnemy();
+            chat(998, 227);
+            break;
+        case "lb_domfoot":
             g.fight.e[0].clothingLevel = 0;
             tEnemy.drawChar(g.fight.e[0].domFoot.pose);
             g.fight.e[0].p = "foot";
@@ -350,7 +374,7 @@ room227.btnclick = function (name) {
             tEnemy.drawGif(g.fight.e[0].domFoot.gif);
             nav.button({
                 "type": "btn",
-                "name": "domFoot1",
+                "name": "domfoot1",
                 "left": 1550,
                 "top": 550,
                 "width": 350,
@@ -359,11 +383,36 @@ room227.btnclick = function (name) {
                 "title": "Make them cum, slut"
             }, 227);
             break;
-        case "domFoot1":
-            nav.killbutton("domFoot1");
+        case "domfoot1":
+            nav.killbutton("domfoot1");
             g.fight.e[0].p = "foot1";
             tEnemy.drawChar(g.fight.e[0].domFoot.pose1);
             tEnemy.drawGif(g.fight.e[0].domFoot.gif1);
+            tEnemy.drawEnemy();
+            chat(998, 227);
+            break;
+        case "lb_domFist":
+            g.fight.e[0].clothingLevel = 0;
+            tEnemy.drawChar(g.fight.e[0].domFist.pose);
+            g.fight.e[0].p = "fist";
+            tEnemy.drawEnemy();
+            tEnemy.drawGif(g.fight.e[0].domFist.gif);
+            nav.button({
+                "type": "btn",
+                "name": "domFist1",
+                "left": 1550,
+                "top": 550,
+                "width": 350,
+                "height": 103,
+                "image": "227_fight/cum.png",
+                "title": "Make them cum, slut"
+            }, 227);
+            break;
+        case "domFist1":
+            nav.killbutton("domFist1");
+            g.fight.e[0].p = "fist1";
+            tEnemy.drawChar(g.fight.e[0].domFist.pose1);
+            tEnemy.drawGif(g.fight.e[0].domFist.gif1);
             tEnemy.drawEnemy();
             chat(998, 227);
             break;

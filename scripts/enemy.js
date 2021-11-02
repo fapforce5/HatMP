@@ -5,7 +5,7 @@ var tEnemy = {};
 //add difficulty -------------------------------------------------------------
 
 //bimbo moves: a = shake ass, c = shake cock, d = dance 
-tEnemy.init = function (e0, e1, bg, returnRoomID) {
+tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
     eax = new Array();
 
     e0x = tEnemy.initEnemy(e0);
@@ -55,6 +55,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID) {
         },
         bg: bg,
         returnRoomID: returnRoomID,
+        callingRoomID: callingRoomID,
         lock: false,
         enemyRotation: 0,
         fighttimer: 1250// g.get("fighttimer")
@@ -69,7 +70,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID) {
         hex: "#ffffff",
         text: sc.n("me")
     });
-
+    tEnemy.drawBackground(bg);
     tEnemy.drawRoom();
 };
 
@@ -90,31 +91,31 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 500,
                 pPower: 30,
                 kPower: 50,
-                offense: ["p", "k", "g", "g"],
-                clothingLevel: 2,
+                offense: ["p", "k", "g"],
+                clothingLevel: 1,
                 money: 300 + Math.floor(Math.random() * 500),
                 p: "pose",
                 weakspot: [8],
                 base: "f_g",
-                grapple: "fysubmit",
-                domination: { pose: "takeit", pose1: "takeit1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] },
-                domFuckem: { pose: "fuck", pose1: "fuck1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["giveAnalMale"] },
-                domPowerbottom: { pose: "takeit", pose1: "takeit1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] },
-                domMenu: ["lb_domFuckem", "lb_domPowerbottom"],
+                grapple: "hair_18",
+                domination: { pose: "kneel", pose1: "kneel", gif: "gif_pussylick.gif", gif1: "png_pussylick.png", stats: ["giveOralFemale"] },
+                domFist: { pose: "assout", pose1: "assout", gif: "gif_fist.gif", gif1: "png_sissygasm.png", stats: ["sissygasm", "receiveFistFemale"] },
+                domfacefuck: { pose: "upsidedowng", pose1: "upsidedowng", gif: "gif_bj.gif", gif1: "png_bj.png", stats: ["giveOralFemale", "receiveOralFemale"] },
+                domMenu: ["lb_domfacefuck", "lb_domfist"],
                 intro: "A puny wimp like you has no chance!",
                 loss: "I am such your slut!",
                 win: "Only a fool thinks they can win against me.",
-                submit: "Have you ever tasted girl cock slut? I'm going to fuck you so good you'll only want girl cock in you!"
+                submit: "You are a fucking  wimpy slut."
             };
             break;
         case "fr":
             charVar = {
                 name: "futaRed",
                 displayName: "Clown Clan",
-                energy: 50,
-                maxEnergy: 50,
-                pPower: 15,
-                kPower: 10,
+                energy: 75,
+                maxEnergy: 75,
+                pPower: 5,
+                kPower: 15,
                 offense: ["k", "k", "k", "p", "g", "g", "g"],
                 clothingLevel: 1,
                 money: 7 + Math.floor(Math.random() * 7),
@@ -126,7 +127,7 @@ tEnemy.initEnemy = function (enemyName) {
                     pose: "lick", pose1: "lick", gif: "gif_bootlicker.gif", gif1: "png_cummouth.png", stats: ["loadSwollowed", "footLicker"] },
                 domPowerbottom: { pose: "rcowgirl", pose1: "rcowgirl1", gif: "gif_rcowgirl.gif", gif1: "png_rcowgirl.png", status: [""] },
                 domFoot: { pose: "blank", pose1: "blank", gif: "gif_heel.gif", gif1: "png_heel.png", status: [""] },
-                domMenu: ["lb_domFoot", "lb_domPowerbottom"],
+                domMenu: ["lb_domfoot", "lb_domPowerbottom"],
                 intro: "Look at my cock and fear me!",
                 loss: "I really wanted to taste your feet...",
                 win: "Only a fool thinks they can win against me.",
@@ -137,9 +138,9 @@ tEnemy.initEnemy = function (enemyName) {
             charVar = {
                 name: "futaYellow",
                 displayName: "Clown Clan",
-                energy: 50,
-                maxEnergy: 50,
-                pPower: 15,
+                energy: 75,
+                maxEnergy: 75,
+                pPower: 10,
                 kPower: 10,
                 offense: ["p", "k", "g", "g"],
                 clothingLevel: 2,
@@ -162,8 +163,8 @@ tEnemy.initEnemy = function (enemyName) {
             charVar = {
                 name: "clownQueen",
                 displayName: "Clown Clan Leader",
-                energy: 100,
-                maxEnergy: 100,
+                energy: 120,
+                maxEnergy: 120,
                 pPower: 10,
                 kPower: 10,
                 offense: ["p", "p", "k", "k", "k", "g", "g", "g" ],
@@ -195,7 +196,7 @@ tEnemy.initEnemy = function (enemyName) {
 tEnemy.drawBackground = function (bg) {
     switch (bg) {
         case "gym":
-            nav.bg("555_backgym/ring.jpg");
+            nav.bg("227_fight/bg_ring.jpg");
             break;
         case "sewer":
             nav.bg("227_fight/sewer.jpg");
@@ -363,14 +364,14 @@ tEnemy.drawButtonList = function (displayMenu) {
             break;
         case "weapon":
             btnList.push(
-                { t: "Take It", l: "lb_cancel", title: "Return to the main menu. " }
+                { t: "Go Back", l: "lb_cancel", title: "Return to the main menu. " }
             );
             tHeader = "Weapon";
             tFooter = "Future Release";
             break;
         case "humiliation":
             btnList.push(
-                { t: "Cancel", l: "lb_cancel", title: "Return to the main menu. " }
+                { t: "Go Back", l: "lb_cancel", title: "Return to the main menu. " }
             );
             tHeader = "Humiliation";
             tFooter = "Humiliate yourself like a pathetic slut";
@@ -393,8 +394,14 @@ tEnemy.drawButtonList = function (displayMenu) {
                     case "lb_domPowerbottom":
                         btnList.push({ t: "Power Bottom", l: "lb_domPowerbottom", title: "Have them fuck you." });
                         break;
-                    case "lb_domFoot":
+                    case "lb_domfoot":
                         btnList.push({ t: "Foot Fetish", l: "lb_domFoot", title: "Fuck their feet *pervert* " });
+                        break;
+                    case "lb_domfacefuck":
+                        btnList.push({ t: "Blow Job", l: "lb_domfacefuck", title: "Fuck their face. " });
+                        break;
+                    case "lb_domfist":
+                        btnList.push({ t: "Fisting", l: "lb_domFist", title: "Get fisted in the Sissy Pussy" });
                         break;
                 }
             });
@@ -417,7 +424,7 @@ tEnemy.drawButtonList = function (displayMenu) {
                 font: 20,
                 hex: "#ffffff",
                 text: tHeader
-            }, 227);
+            }, g.fight.callingRoomID);
             nav.t({
                 type: "zimg",
                 name: "menuItem",
@@ -426,7 +433,7 @@ tEnemy.drawButtonList = function (displayMenu) {
                 font: 20,
                 hex: "#ffffff",
                 text: g.newLine(tFooter, 26)// tFooter.replace(/(.{20})/g, "$1<br>")
-            }, 227);
+            }, g.fight.callingRoomID);
             for (i = 0; i < btnList.length; i++) {
                 nav.t({
                     type: "btnhover",
@@ -436,7 +443,7 @@ tEnemy.drawButtonList = function (displayMenu) {
                     font: 20,
                     hex: "#ffffff",
                     text: btnList[i].t
-                }, 227);
+                }, g.fight.callingRoomID);
                 nav.button({
                     "type": "btnhover",
                     "name": btnList[i].l,
@@ -446,7 +453,7 @@ tEnemy.drawButtonList = function (displayMenu) {
                     "height": 46,
                     "image": "227_fight/" + btnList[i].l + ".png",
                     "title": btnList[i].title
-                }, 227);
+                }, g.fight.callingRoomID);
                 
 
                 nav.button({
@@ -457,7 +464,7 @@ tEnemy.drawButtonList = function (displayMenu) {
                     "width": 40,
                     "height": 38,
                     "image": "227_fight/arrow.png"
-                }, 227);
+                }, g.fight.callingRoomID);
             }
             $('.fight-hover-element').hide();
         });
@@ -637,7 +644,7 @@ tEnemy.drawRoom = function () {
     }
 
     $.each(btnListx, function (i, v) {
-        nav.button(v, 227);
+        nav.button(v, g.fight.callingRoomID);
     });
 
     $('.room-img[data-name="menu"]').hide();
@@ -696,7 +703,7 @@ tEnemy.drawBox = function () {
         "width": 226,
         "height": 447,
         "image": "227_fight/boxtarget.png"
-    }, 227);
+    }, g.fight.callingRoomID);
 
 
     nav.button({
@@ -707,7 +714,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box1",
@@ -716,7 +723,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box2",
@@ -725,7 +732,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box3",
@@ -734,7 +741,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box4",
@@ -743,7 +750,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box5",
@@ -752,7 +759,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box6",
@@ -761,7 +768,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box7",
@@ -770,7 +777,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box8",
@@ -779,7 +786,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     nav.button({
         "type": "btn",
         "name": "box9",
@@ -788,7 +795,7 @@ tEnemy.drawBox = function () {
         "width": 50,
         "height": 50,
         "image": "227_fight/box.png"
-    }, 227);
+    }, g.fight.callingRoomID);
     g.fight.box = ["b", "b", "b", "h", "1", "1", "1", "1", "2", "2"];
     if (g.fight.me.action === "superpunch")
         g.fight.box = ["2", "1", "2", "2", "1", "1", "1", "1", "2", "2"];
@@ -854,7 +861,7 @@ tEnemy.selectBox = function (box) {
             retvalue = 10;
             break;
     }
-    console.log(x, y)
+    
     nav.button({
         "type": "img",
         "name": "box",
@@ -863,7 +870,7 @@ tEnemy.selectBox = function (box) {
         "width": 50,
         "height": 50,
         "image": "227_fight/" + img + ".png"
-    }, 227);
+    }, g.fight.callingRoomID);
     return retvalue;
 };
 
@@ -881,7 +888,7 @@ tEnemy.drawStage = function () {
             "width": 1080,
             "height": 1080,
             "image": "227_fight/blank.png"
-        }, 227);
+        }, g.fight.callingRoomID);
     }
 
     for (i = 0; i < g.fight.e.length; i++) {
@@ -893,7 +900,7 @@ tEnemy.drawStage = function () {
             "width": 1080,
             "height": 1080,
             "image": "227_fight/" + g.fight.e[i].base + "_" + g.fight.e[i].p + "_" + g.fight.e[i].clothingLevel + ".png"
-        }, 227);
+        }, g.fight.callingRoomID);
     }
     tEnemy.drawEnemy();
     tEnemy.drawChar("pose");
@@ -911,7 +918,7 @@ tEnemy.drawEnemy = function () {
                 "width": 1080,
                 "height": 1080,
                 "image": "227_fight/" + g.fight.e[i].base + "_" + g.fight.e[i].p + "_" + g.fight.e[i].clothingLevel + ".png"
-            }, 227);
+            }, g.fight.callingRoomID);
         }
 
     }
@@ -1091,6 +1098,18 @@ tEnemy.drawChar = function (pose) {
             thischar.body = "g_fysubmit";
             thischar.hair = "17";
             break;
+        case "hair_18":
+            thischar.body = null;
+            thischar.hair = "18";
+            break;
+        case "upsidedowng":
+            thischar.body = cl.c.chest > 2 ? "g_upsidedowng_f" : "g_upsidedowng_m";
+            thischar.hair = "19";
+            break;
+        case "assout":
+            thischar.body = cl.c.chest > 2 ? "g_assout_f" : "g_assout_m";
+            thischar.hair = "20";
+            break;
     }
     if (thischar.displayc) {
         if (g.fight.me.clothes === "m" || g.fight.me.clothes === "f")
@@ -1109,19 +1128,23 @@ tEnemy.drawChar = function (pose) {
             thischar.clothes = thischar.dick + "_d_s";
     }
     
-    var hl = cl.c.hairLength > 2 ? "_long" : "_short";
+    
     //back of hair
 
     if (thischar.hair !== null && cl.c.hairLength !== null) {
-            if (cl.c.hairLength > 2)
-                nav.modbutton("me0", "227_fight/h_" + thischar.hair + "_long_back.png", null, null);
-            else
-                nav.modbutton("me0", "227_fight/blank.png", null, null);
+        var noback = ["9", "10", "17", "18", "19"];
+        if (cl.c.hairLength > 2)
+            nav.modbutton("me0", "227_fight/h_" + thischar.hair + "_long_back.png", null, null);
+        else
+            nav.modbutton("me0", "227_fight/blank.png", null, null);
     }
     else
         nav.modbutton("me0", "227_fight/blank.png", null, null);
     //body
-    nav.modbutton("me1", "227_fight/" + thischar.body + ".png", null, null);
+    if (thischar.body !== null)
+        nav.modbutton("me1", "227_fight/" + thischar.body + ".png", null, null);
+    else
+        nav.modbutton("me1", "227_fight/blank.png", null, null);
 
     //clothing
     nav.modbutton("me2", "227_fight/" + (thischar.clothes === null ? "blank" : thischar.clothes) + ".png", null, null);
@@ -1129,6 +1152,7 @@ tEnemy.drawChar = function (pose) {
     //hair
     
     if (thischar.hair !== null && cl.c.hairLength !== null) {
+        var hl = cl.c.hairLength > 2 ? "_long" : "_short";
         nav.modbutton("me3", "227_fight/h_" + thischar.hair + hl + ".png", null, null);
     }
     else
@@ -1241,8 +1265,19 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
             case "steal": conPow = 25; break;
             default: alert(controlChange.t + " missing");
         }
-        if (controlChange.me)
+        if (controlChange.me) {
+            if (g.fight.e[0].energy > 100)
+                conPow *= .5;
+            else if (g.fight.e[0].energy < 50)
+                conPow *= 2;
             conPow *= -1;
+        }
+        else {
+            if (g.fight.me.energy > 100)
+                conPow *= .5;
+            else if (g.fight.me.energy < 50)
+                conPow *= 2;
+        }
         prevEnergy = g.fight.cPower;
         g.fight.cPower += conPow;
 

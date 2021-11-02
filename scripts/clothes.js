@@ -57,6 +57,7 @@ cl.list = [
 
     { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: -1 },
+    { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: true, daring: 1, price: 12 },
     { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
     { type: "panties", name: "w", display: "White Soiled Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "q", display: "Cum Queen Panties", img: "panties_cumQueen.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -1270,6 +1271,13 @@ cl.panties = [
     { name: "m", leg: 2, pussy: "panty_m_1_v.png", cock: "panty_m_1_c.png", back: "panty_m_2_back.png" },
     { name: "m", leg: 1, pussy: "panty_m_1_v.png", cock: "panty_m_1_c.png", back: "panty_m_0_back.png" },
     { name: "m", leg: 0, pussy: "panty_m_0_v.png", cock: "panty_m_0_c.png", back: "panty_m_0_back.png" },
+
+    { name: "boi", leg: 5, pussy: "panty_boi_5_v.png", cock: "panty_boi_5_c.png", back: "panty_boi_5_back.png" },
+    { name: "boi", leg: 4, pussy: "panty_boi_4_v.png", cock: "panty_boi_4_c.png", back: "panty_boi_4_back.png" },
+    { name: "boi", leg: 3, pussy: "panty_boi_3_v.png", cock: "panty_boi_3_c.png", back: "panty_boi_3_back.png" },
+    { name: "boi", leg: 2, pussy: "panty_boi_1_v.png", cock: "panty_boi_1_c.png", back: "panty_boi_2_back.png" },
+    { name: "boi", leg: 1, pussy: "panty_boi_1_v.png", cock: "panty_boi_1_c.png", back: "panty_boi_0_back.png" },
+    { name: "boi", leg: 0, pussy: "panty_boi_0_v.png", cock: "panty_boi_0_c.png", back: "panty_boi_0_back.png" },
 ];
 
 cl.pjTop = [

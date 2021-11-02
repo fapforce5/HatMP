@@ -106,6 +106,9 @@ g.st = [
     { n: "receiveHandjobMale", t: 0, q: "int" },
     { n: "receiveHandjobFemale", t: 0, q: "int" },
 
+    { n: "receiveFistMale", t: 0, q: "int" },
+    { n: "receiveFistFemale", t: 0, q: "int" },
+
     { n: "giveFootjobMale", t: 0, q: "int" },
     { n: "giveFootjobFemale", t: 0, q: "int" },
     { n: "receiveFootjobMale", t: 0, q: "int" },
@@ -231,7 +234,7 @@ g.sissy = [
 
     { id: 54, pID: null, icon: "missy0", x: 1, y: 7, name: "Contract", description: "Introduction", ach: false, active: true, points: 0, h: false },
 
-    { id: 55, pID: 19, icon: "redbox", x: 11, y: 9, name: "What's in the box", description: "Discover what's in the box!", ach: false, active: true, points: 0, h: false },
+    { id: 55, pID: 19, icon: "redbox", x: 11, y: 9, name: "[IN PROGRESS] What's in the box", description: "[IN PROGRESS - WILL GET STUCK] Discover what's in the box!", ach: false, active: true, points: 0, h: false },
     { id: 56, pID: 0, icon: "cancel", x: 19, y: 2, name: "Cancel", description: "Cancel and leave the classroom", ach: false, active: true, points: 0, h: false },
 
     { id: 57, pID: 34, icon: "stripper", x: 13, y: 1, name: "Stripper", description: "Work as a stripper on a case", ach: false, active: false, points: 0, h: true },
