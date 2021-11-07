@@ -2,6 +2,8 @@
 var room0 = {};
 room0.chatInput;
 room0.main = function () {
+    if (cl.appearance() === 5)
+        chat(6, 0);
     g.pass = g.internal = "";
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
@@ -179,6 +181,12 @@ room0.chat = function (chatID) {
             chatID: 5,
             speaker: "me",
             text: "There's NO way I would go in there dressed like this!",
+            button: []
+        },
+        {
+            chatID: 6,
+            speaker: "thinking",
+            text: "I'm naked! I have to be careful of where I go.",
             button: []
         }
     ];

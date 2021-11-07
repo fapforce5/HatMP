@@ -1803,8 +1803,8 @@ room200.chat = function (chatID) {
             chatID: 119,
             speaker: "missy",
             text: "Yes. There are many ways to defeat your enemies. I know your true strength is your sissy assets, but you need to " +
-                "be more than just a fuck-hole if we're going to bring down the cult. If I wanted a whore I would've hired one. You need " +
-                "to be able to use all your skills to your best ability. Some enemies can be brought down with your sissy ass, but some " +
+                "be more than just a fuck-hole if we're going to bring down the cult. If I wanted a whore I would've hired one. " +
+                " Some enemies can be brought down with your sissy ass, but some " +
                 "have to be brought down with your fists. ",
             button: [
                 { chatID: 120, text: "Gulp", callback: "" }
@@ -1822,12 +1822,11 @@ room200.chat = function (chatID) {
         {
             chatID: 121,
             speaker: "missy",
-            text: "To help you out I'll allow you to continue your training once you've returned. " +
-                "The pink room of pleasure will help you be better with your " +
-                "sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
+            text: "To help you out I'll allow you to continue your training once you've returned. ",
+                //"The pink room of pleasure will help you be better with your " +
+                //"sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
             button: [
-                { chatID: 122, text: "Yes why is " + sc.n("cecilia") + " tied up ma'am?", callback: "" },
-                { chatID: 123, text: "No ma'am", callback: "" }
+                { chatID: 122, text: "Yes why is " + sc.n("cecilia") + " tied up ma'am?", callback: "" }
             ]
         },
         {

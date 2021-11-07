@@ -53,6 +53,8 @@ sc.char = [
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "crystal", display: "Crystal", image: "crystal.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+
     { name: "bodhi", display: "Bodhi", image: "bodhi.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -297,6 +299,8 @@ sc.events = [
     { name: "treyvon", step: 1, txt: "Tif Scene", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "treyvon", step: 2, txt: "Can enter apartment building", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "kei", step: -2, txt: "Actually Blew everyone", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "kei", step: -1, txt: "Blowjobs for everyone", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "kei", step: 0, txt: "Meet at his home", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "kei", step: 5, txt: "Jada visited game", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
@@ -1129,10 +1133,17 @@ sc.phone = function (char) {
                     sc.phoneChat(clist, char);
                 }
                 else if (step === 203) {
-                    if (g.roomID !== 999) {
+                    if (g.roomID !== 900) {
                         clist = [
                             { s: "me", t: "You told me to text you." },
                             { s: "eva", t: "I did. Text me when you get in the library. And wear a doggy collar. " },
+                        ];
+                        sc.phoneChat(clist, char);
+                    }
+                    else {
+                        clist = [
+                            { s: "me", t: "You told me to text you." },
+                            { s: "eva", t: "I did. AND I TOLD YOU TO WEAR A DOGGY COLLAR!" }
                         ];
                         sc.phoneChat(clist, char);
                     }

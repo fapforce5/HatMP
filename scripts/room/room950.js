@@ -306,37 +306,41 @@ room950.btnclick = function (name) {
             }
             else {
                 var bodhiStep = sc.getstep("bodhi");
+                nav.killall();
                 switch (bodhiStep) {
                     case 0:
                         g.internal.brick++;
-                        nav.killall();
                         nav.bg("950_cell/chisel.jpg");
                         chat(54, 950);
                         break;
                     case 1:
-                        if (scc.get("cult").love < 50) {
-                            nav.killall();
-                            nav.button({
-                                "type": "img",
-                                "name": "face",
-                                "left": 836,
-                                "top": 515,
-                                "width": 124,
-                                "height": 71,
-                                "image": "950_cell/face.png",
-                                "title": "Hole in the wall"
-                            }, 950);
-                            chat(61, 950);
-                        }
-                        else {
-                            var xxxxxxxxxxxxxxxxxxxxxxxxxxxx;
-                            //add next step here
-                        }
+                        zcl.displayMain(-200, -1000, .8, "", true);
+                        nav.bg("950_cell/b3.jpg");
+                        chat(61, 950);
+                        break;
+                    case 2:
+                        nav.bg("950_cell/bb0.jpg");
+                        chat(68, 950);
                         break;
                     default:
                         break;
                 }
             }
+            break;
+        case "bb0":
+            nav.killall();
+            nav.bg("950_cell/bb1.jpg");
+            chat(69, 950);
+            break;
+        case "bb2":
+            nav.modbutton("bb2", null, "bb3", null);
+            chat(71, 950);
+            break;
+        case "bb3":
+            nav.killall();
+            nav.bg("950_cell/b2.jpg");
+            scc.love("bodhi", 10);
+            chat(72, 950);
             break;
         default:
             break;
@@ -434,6 +438,7 @@ room950.chatcatch = function (callback) {
         case "daria4":
             sc.setstep("daria", 4);
             inv.add("chisel");
+            room950.btnclick("increment");
             break;
         case "reset":
             room950.btnclick("increment");
@@ -462,24 +467,48 @@ room950.chatcatch = function (callback) {
             room950.btnclick("clean");
             break;
         case "brick1":
-            nav.bg("950_cell/cell.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "faceno",
-                "left": 836,
-                "top": 515,
-                "width": 124,
-                "height": 71,
-                "image": "950_cell/faceno.png",
-                "title": "Hole in the wall"
-            }, 950);
+            zcl.displayMain(-200, -1000, .8, "", true);
+            nav.bg("950_cell/b1.jpg");
             break;
-        case "brick2":
-            nav.mod("faceno", "950_cell/face.png", null, null);
+        case "b2":
+            nav.bg("950_cell/b2.jpg");
             break;
         case "b1":
-            sc.setstep("brodhi", 1);
+            sc.setstep("bodhi", 1);
             room950.btnclick("increment");
+            break;
+        case "b4":
+            nav.bg("950_cell/b4.jpg");
+            break;
+        case "bodhi2":
+            sc.setstep("bodhi", 2);
+            room950.btnclick("increment");
+            break;
+        case "bb0":
+            nav.button({
+                "type": "btn",
+                "name": "bb0",
+                "left": 998,
+                "top": 302,
+                "width": 652,
+                "height": 561,
+                "image": "950_cell/bb0.png",
+                "title": "poke his butt"
+            }, 950);
+            break;
+        case "bb2":
+            nav.killall();
+            nav.bg("950_cell/bb2.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "bb2",
+                "left": 1205,
+                "top": 539,
+                "width": 186,
+                "height": 186,
+                "image": "950_cell/bb2.png",
+                "title": "Eat it sissy"
+            }, 950);
             break;
         default:
             break;
@@ -938,9 +967,9 @@ room950.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "me",
-            text: "Hello? Is there anyone there?",
+            text: "Hello?",
             button: [
-                { chatID: 56, text: "...", callback: "brick2" }
+                { chatID: 56, text: "...", callback: "b2" }
             ]
         },
         {
@@ -948,7 +977,7 @@ room950.chat = function (chatID) {
             speaker: "bodhi",
             text: "Oh hay dude! WAZZZ UP! Are you stuck in here too?",
             button: [
-                { chatID: 57, text: "Hi. Yes I am", callback: "" }
+                { chatID: 57, text: "Oh hi and yes I am", callback: "" }
             ]
         },
         {
@@ -971,27 +1000,124 @@ room950.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "bodhi",
-            text: "Oh totally lame. Have you tried being awesome and not being a douche? I'll talk to my amiga see if she'll let " +
-                "you out. ",
+            text: "Oh totally lame. Have you tried being awesome and not being a douche? Just enjoy the stay",
             button: [
-                { chatID: 60, text: "Sweet! Thanks! ", callback: "" }
+                { chatID: 60, text: "Groan. I need to get out. ", callback: "" }
             ]
         },
         {
             chatID: 60,
             speaker: "bodhi",
-            text: "No problema! I'm going to catch some Z's. Take is sleazy! ",
+            text: "No can do! I'm going to catch some Z's. Take is sleazy! ",
             button: [
                 { chatID: -1, text: "Oh, yeah. Totally bro, sure. ", callback: "b1" }
             ]
         },
         {
             chatID: 61,
+            speaker: "me",
+            text: "*whisper* Hay " + sc.n("bodhi") + ". Over here.",
+            button: [
+                { chatID: 62, text: "...", callback: "b4" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "bodhi",
+            text: "Huh? Oh, you again. What's up?",
+            button: [
+                { chatID: 63, text: "Do you still want to stay here forever?", callback: "b2" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "bodhi",
+            text: "Oh no way dude. Forever is so long. It's cool for now. ",
+            button: [
+                { chatID: 64, text: "But you're trapped in here and you have no choice. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "bodhi",
+            text: "I'm trapped in the best place. You should try being good so they let you out. I'll show you around. ",
+            button: [
+                { chatID: 65, text: "Grrr. ok. How do I get out. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "bodhi",
+            text: "It's so easy dude. Just clean your cell and give them your cum. How do you not do that?",
+            button: [
+                { chatID: 66, text: "Fine! I'll give that a try. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "bodhi",
+            text: "Cool. Just learn to enjoy it here.  ",
+            button: [
+                { chatID: 67, text: "Enjoy it? I'm trapped!", callback: "bodhi2" }
+            ]
+        },
+        {
+            chatID: 67,
             speaker: "bodhi",
             text: "Hay Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
                 "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
             button: [
-                { chatID: 59, text: "So, just do what they say. ", callback: "reset" }
+                { chatID: -1, text: "Fine", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "thinking",
+            text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can suprise him..",
+            button: [
+                { chatID: -1, text: "Suprise him", callback: "bb0" },
+                { chatID: 73, text: "Call out", callback: "b2" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "bodhi",
+            text: "<span class='hl-pink'>MOAN</span>",
+            button: [
+                { chatID: 70, text: "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "bodhi",
+            text: "That's so nice. Lick it.",
+            button: [
+                { chatID: -1, text: "", callback: "bb2" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "bodhi",
+            text: "<span class='hl-pink'>Hahah Again!</span>",
+            button: [
+                { chatID: -1, text: "", callback: "" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "bodhi",
+            text: "I liked that. I've never had someone lick my ass before. It's totally sweet. I think we just became friends!",
+            button: [
+                { chatID: 73, text: "Sweet", callback: "" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "bodhi",
+            text: "So I was talking to my owner and she said she'll put in for a job outside the cell. If you do well, they " +
+                "might let you do other jobs. ",
+            button: [
+                { chatID: 73, text: "Sweet", callback: "" }
             ]
         },
     ];

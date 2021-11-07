@@ -304,7 +304,7 @@ room401.makeClothing = function (type, sex) {
     else if (g.sissy[29].ach)
         lewdlevel = [0, 1];
     else if (type === "chastity" && sex === "m")
-        lewdlevel = [0, 1];
+        lewdlevel = [0, 1, 2];
     else
         lewdlevel = [0];
 

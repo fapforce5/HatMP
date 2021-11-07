@@ -54,6 +54,13 @@ room125.main = function () {
         }
     }
     nav.buildnav(navList);
+    if (cl.c.chest > 2 && !sc.checkevent("kei", -1)) {
+        char.changeMenu("hide", false);
+        nav.killall();
+        nav.bg("125_poker/t1.jpg");
+        sc.setstep("kei", -1);
+        chat(32, 125);
+    }
 };
 
 room125.btnclick = function (name) {
@@ -508,6 +515,51 @@ room125.chatcatch = function (callback) {
         case "howto3":
             nav.killbutton("howto");
             break;
+        case "trun":
+            g.setflag("cardgame");
+            g.mod("sissy", -20);
+            char.room(0);
+            break;
+        case "t1":
+            char.changeMenu("hide", false);
+            break;
+        case "t2":
+            nav.bg("125_poker/t2.jpg");
+            break;
+        case "t3":
+            nav.bg("125_poker/t3.jpg");
+            break;
+        case "t4":
+            nav.bg("125_poker/t4.jpg");
+            break;
+        case "t5":
+            nav.bg("125_poker/t5.jpg");
+            break;
+        case "t6":
+            nav.bg("125_poker/t6.jpg");
+            break;
+        case "t7":
+            nav.bg("125_poker/t7.jpg");
+            break;
+        case "t8":
+            nav.bg("125_poker/t8.jpg");
+            break;
+        case "t9":
+            nav.bg("125_poker/t9.jpg");
+            break;
+        case "t10":
+            nav.bg("125_poker/t10.jpg");
+            break;
+        case "t11":
+            nav.bg("125_poker/t11.jpg");
+            break;
+        case "t12":
+            g.mod("giveOralMale", 3);
+            g.mod("sissy", 50);
+            sc.setstep("kei", -2);
+            g.setflag("cardgame");
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -789,6 +841,168 @@ room125.chat = function (chatID) {
             text: "So " + sc.n("ralph") + " has 14, I have 15, " + sc.n("jimmy") + " has 16, and you have 18, so you win. You would take all the money.",
             button: [
                 { chatID: 3, text: "ok", callback: "howto3" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "kei",
+            text: "WAIT WAIT WAIT! Are those boobs!",
+            button: [
+                { chatID: 33, text: "maybe...", callback: "t1" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "ralph",
+            text: "Those boobs are the most amazing boobs I've ever seen!",
+            button: [
+                { chatID: 34, text: "...", callback: "t2" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "kei",
+            text: "We need to see them!",
+            button: [
+                { chatID: 35, text: "Hay!", callback: "t3" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "jimmy",
+            text: "No fair! Stop covering them up!",
+            button: [
+                { chatID: 36, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "ralph",
+            text: "Yeah. Friends share their toys!",
+            button: [
+                { chatID: 37, text: "What?", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "kei",
+            text: "Your new tits look amazing! Let us see them.",
+            button: [
+                { chatID: 38, text: "Fine! Then will you leave me alone!", callback: "t4" },
+                { chatID: -1, text: "No way! [Run away]", callback: "trun" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "me",
+            text: "See. They're just tits! Wait... are you all getting boners from looking at my tits?",
+            button: [
+                { chatID: 39, text: "...", callback: "t5" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "me",
+            text: "Wait! You just said you only wanted to look at my tits!",
+            button: [
+                { chatID: 40, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "ralph",
+            text: "I can't help it. You make me so horny!",
+            button: [
+                { chatID: 41, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "jimmy",
+            text: "You're so hot! Just don't tell " + sc.n("jada") + ".",
+            button: [
+                { chatID: 42, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "kei",
+            text: "Oh please! If I was a hot chick I would blow you!",
+            button: [
+                { chatID: 43, text: "oh well. Here goes...", callback: "t6" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "me",
+            text: "MMmmmMMMmmm",
+            button: [
+                { chatID: 44, text: "...", callback: "t7" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "me",
+            text: "Slurp! Gobble",
+            button: [
+                { chatID: 45, text: "...", callback: "t8" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "me",
+            text: "Slurp! Gobble",
+            button: [
+                { chatID: 46, text: "...", callback: "t9" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "me",
+            text: "AAAAAaaaaa",
+            button: [
+                { chatID: 47, text: "...", callback: "t10" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "thinking",
+            text: "Holy shit! I just blew all my frinds. What the hell am I becomming. And they are spraying my face with their cum, " +
+                "and I LOVE it. I am such a sissy slut!",
+            button: [
+                { chatID: 48, text: "...", callback: "t11" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "kei",
+            text: "I know we've known you since grade school, but I had no idea how amazing at giving head you are! ",
+            button: [
+                { chatID: 49, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "ralph",
+            text: "Yeah. You're our friend and all, but I just want you to blow me all the time now. ",
+            button: [
+                { chatID: 50, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "jimmy",
+            text: "Yeah buddy. Just don't tell " + sc.n("jada") + " about this. ",
+            button: [
+                { chatID: 51, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "me",
+            text: "I won't, but blowing all three of you is so much work. Maybe next time we'll do something else. ",
+            button: [
+                { chatID: -1, text: "Later guys!", callback: "t12" }
             ]
         },
     ];

@@ -69,8 +69,10 @@ room460.btnclick = function (name) {
             }
             break;
         case "path3":
+            chat(3, 460);
+            /*
             g.internal = { count: 0, lastGold: 0, lastFight: 0, row: 78, col: 10 };
-            char.room(475);
+            char.room(475);*/
             break;
         default:
             break;
@@ -110,6 +112,14 @@ room460.chat = function (chatID) {
             speaker: "me",
             text: "I can't run in this! I'm missing my " + g.pass + ". I can change in the men's bathroom if I saved " +
                 "a set of running clothes in my wardrobe saves. ",
+            button: [
+                { chatID: -1, text: "......", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "me",
+            text: "Future release. Probably v14 - coming soon.",
             button: [
                 { chatID: -1, text: "......", callback: "" }
             ]

@@ -355,7 +355,7 @@ room951.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "cult",
-            text: "Hahaha! Same time cum dumps are the best!",
+            text: "Hahaha! Sissy cum dumps are the best!",
             button: [
                 { chatID: 25, text: "UUUuuuugh", callback: "" }
             ]

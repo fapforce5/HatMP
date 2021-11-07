@@ -127,11 +127,11 @@ room551.btnclick = function (name) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat2.png"
             }, 551);
-            if (g.get("oncase") === "sewer" && !sc.checkevent("g", -4)) {
-                if (sc.getstep("g") === 0)
-                    chat(45, 551);
-                else
-                    chat(46, 551);
+            if (g.get("oncase") === "sewer" && !inv.has("sewer")){
+                chat(45, 551);
+            }
+            else if (g.get("oncase") === "sewer" && !sc.checkevent("g", -4)) {
+                chat(46, 551);
             }
             else if (sc.getstep("g") === 0)
                 chat(1, 551);
@@ -412,6 +412,21 @@ room551.chatcatch = function (callback) {
             sc.setstep("g", 2);
             sc.setstep("g", -4);
             char.room(556);
+            break;
+        case "crowbar":
+            inv.add("sewer");
+            nav.button({
+                "type": "zimg",
+                "name": "spar",
+                "left": 695,
+                "top": 305,
+                "width": 531,
+                "height": 473,
+                "image": "556_spar/sewer.png"
+            }, 556);
+            break;
+        case "reset":
+            char.room(551);
             break;
         default:
             break;
@@ -797,7 +812,7 @@ room551.chat = function (chatID) {
             speaker: "g",
             text: "Hay runt. I'm " + sc.n("g") + " I'm guessing you're here 'cause " + sc.n("missy") + " sent you to get trained. ",
             button: [
-                { chatID: 47, text: "Yes", callback: "" },
+                { chatID: 48, text: "Yes", callback: "crowbar" },
             ]
         },
         {
@@ -809,12 +824,23 @@ room551.chat = function (chatID) {
             ]
         },
         {
-            chatID: 46,
+            chatID: 47,
             speaker: "g",
             text: "When you're ready to train and spar, come talk to me and I'll take you to the ring. Make sure to bring your workout " +
                 "clothes. ",
             button: [
                 { chatID: -1, text: "Ok", callback: "sparExplain" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "g",
+            text: "She told me to give you this crowbar to open the sewer grate next to the club. See me if you need any training, I'll " + 
+                "teach you how not to be a little bitch in a fight. If you already feel you can go and kick some ass, good luck, and " +
+                "try not to be some bad man's fuck toy",
+            button: [
+                { chatID: -1, text: "Thanks! Please train me", callback: "sparExplain" },
+                { chatID: -1, text: "I'm good. I know what I'm doing. ", callback: "reset" },
             ]
         },
     ];

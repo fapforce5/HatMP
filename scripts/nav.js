@@ -172,7 +172,11 @@ nav.t = function (btn, roomNum) {
 nav.modbutton = function (name, newImage, newName, newType) {
     if (newName === null)
         newName = name;
-    $('img[data-name="' + name + '"]').attr("src", "./images/room/" + newImage).attr("data-name", newName);
+    if(newImage !== null)
+        $('img[data-name="' + name + '"]').attr("src", "./images/room/" + newImage).attr("data-name", newName);
+    else
+        $('img[data-name="' + name + '"]').attr("data-name", newName);
+
     if (newType === "img")
         $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").addClass("room-img");
 };

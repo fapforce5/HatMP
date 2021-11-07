@@ -82,7 +82,7 @@ g.st = [
     { n: "fightLost", t: 0, q: "int" },
     { n: "fightControlWon", t: 0, q: "int" },
     { n: "fightControlLost", t: 0, q: "int" },
-    { n: "superPunch", t: 8, q: "int" },
+    { n: "superPunch", t: 0, q: "int" },
 
     { n: "giveOralMale", t: 0, q: "int" },
     { n: "giveOralFemale", t: 0, q: "int" },
@@ -222,10 +222,10 @@ g.sissy = [
     { id: 45, pID: 29, icon: "lip1", x: 8, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: 1, h: true },
     { id: 46, pID: 45, icon: "lip2", x: 9, y: 5, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: 2, h: true },
 
-    { id: 47, pID: 19, icon: "fight0", x: 10, y: 10, name: "Strip", description: "You can strip your clothes in a fight", ach: false, active: true, points: 1, h: false },
-    { id: 48, pID: 47, icon: "fight1", x: 10, y: 11, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", ach: false, active: false, points: 1, h: false },
-    { id: 49, pID: 48, icon: "fight2", x: 10, y: 12, name: "Sexy Dance", description: "You can do a sexy dance during a fight", ach: false, active: true, points: 1, h: false },
-    { id: 50, pID: 49, icon: "fight3", x: 10, y: 13, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", ach: false, active: true, points: 2, h: false },
+    { id: 47, pID: 19, icon: "fight0", x: 10, y: 10, name: "Strip", description: "You can strip your clothes in a fight", ach: false, active: true, points: 1, h: true },
+    { id: 48, pID: 47, icon: "fight1", x: 10, y: 11, name: "Shake Your Cock", description: "You can shake your cock at your fight opponent", ach: false, active: false, points: 1, h: true },
+    { id: 49, pID: 48, icon: "fight2", x: 10, y: 12, name: "Sexy Dance", description: "You can do a sexy dance during a fight", ach: false, active: true, points: 1, h: true },
+    { id: 50, pID: 49, icon: "fight3", x: 10, y: 13, name: "Present Your Sissy Hole", description: "You can present your sissy hole during a fight", ach: false, active: true, points: 2, h: true },
 
     { id: 51, pID: 28, icon: "hormone", x: 7, y: 3, name: "Sissy Bimbo Pills", description: "Pills are good", ach: false, active: true, points: 0, h: false },
 

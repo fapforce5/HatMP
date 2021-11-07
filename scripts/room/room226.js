@@ -1,6 +1,8 @@
 ﻿//Room name
 var room226 = {};
 room226.main = function () {
+    $("#room-inv").show();
+    $("#room-menu").show(); 
     if (g.map === null) {
         $("#room_left_map").attr("src", "./images/general/map_266.jpg");
         g.map = {

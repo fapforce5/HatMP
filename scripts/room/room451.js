@@ -731,8 +731,9 @@ room451.chat = function (chatID) {
             speaker: "thinking",
             text: "Should I wait around and suck some stange cock?",
             button: [
-                { chatID: -1, text: "No", callback: "reset" },
-                { chatID: -1, text: "Yes, feed me the cum!", callback: "suck1" }
+                { chatID: -1, text: "Yes, feed me the cum!", callback: "suck1" },
+                { chatID: -1, text: "No", callback: "reset" }
+                
             ]
         },
         {

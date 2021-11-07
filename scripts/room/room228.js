@@ -38,6 +38,8 @@ room228.main = function () {
         "image": "225_sewer/in.png",
     }, 228);
     nav.buildnav(navList);
+    $("#room-inv").show();
+    $("#room-menu").show();
 };
 
 room228.btnclick = function (name) {

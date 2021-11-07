@@ -363,7 +363,7 @@ room556.chat = function (chatID) {
             speaker: "g",
             text: "And that's what happens when you choose wrong. You tried to block my punch, but I decided to kick and was able to kick you.  ",
             button: [
-                { chatID: -1, text: "Unfair! ", callback: "" }
+                { chatID: 14, text: "Unfair! ", callback: "" }
             ]
         },
         {
