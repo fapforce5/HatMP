@@ -9,9 +9,9 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 13.0;
-g.versionText = "0.13.0 - 1 SEPT 2021";
-g.notes = "v0.13.0 - alpha";
+g.version = 14.0;
+g.versionText = "0.14.0 - 14 DEC 2021";
+g.notes = "v0.14.0 - alpha";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
@@ -76,6 +76,7 @@ g.st = [
     { n: "slimeMonsters", t: true, q: "bool" },
     { n: "oncase", t: null, q: "string" },
     { n: "displayMenu", t: true, q: "bool" },
+    { n: "daysCult", t: 0, q: "int" },
 
     { n: "fighttimer", t: 4000, q: "int" },
     { n: "fightWon", t: 0, q: "int" },
@@ -635,7 +636,9 @@ g.rooms = [
     { roomID: 910, name: "Department Of Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "bg.jpg" },
 
     { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
-    { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" }
+    { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" },
+    { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
+    { roomID: 953, name: "Chaple", image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "bg.jpg" },
     //{ roomID: , name: "", image: "", houseID: , main: false, btn: "roomBtn_.png" }
 ];
 

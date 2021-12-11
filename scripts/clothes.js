@@ -33,6 +33,16 @@ cl.set = [
     { entry: 5, name: "Cum Dumpster", p: 900 }
 ];
 
+cl.fem = [
+    { e: 0, name: "Chubby" },
+    { e: 0, name: "Masculine" },
+    { e: 1, name: "Androgynous" },
+    { e: 2, name: "Girly" },
+    { e: 3, name: "Womanly" },
+    { e: 4, name: "Voluptuous" },
+    { e: 5, name: "Bimbo" }
+];
+
 cl.getSet = function (entry) {
     var i;
     for (i = 0; i < cl.set.length; i++) {
@@ -47,8 +57,8 @@ cl.cTemp = {
 };
 
 cl.list = [
-    { type: "necklace", name: "g", display: "Mister T", img: "necklace_g.png", sex: "f", inv: false, daring: 2, price: 135 },
-    { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_b.png", sex: "f", inv: false, daring: 2, price: 180 },
+    { type: "necklace", name: "g", display: "Mister T", img: "necklace_g.png", sex: "f", fem: 0, inv: false, daring: 2, price: 135 },
+    { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_b.png", fem: 0, sex: "f", inv: false, daring: 2, price: 180 },
     { type: "necklace", name: "a", display: "Diamond Necklack", img: "necklace_a.png", sex: "f", inv: false, daring: 2, price: 165 },
     { type: "necklace", name: "e", display: "Simple Choker", img: "necklace_e.png", sex: "f", inv: false, daring: 3, price: 25 },
     { type: "necklace", name: "c", display: "Choker", img: "necklace_c.png", sex: "f", inv: false, daring: 3, price: 30 },
@@ -2133,18 +2143,22 @@ cl.minButt = function (invItem, sizeItem) {
     if (invItem !== null) {
         switch (invItem) {
             case "screwdriver":
+            case "foodCarrot":
                 returnItem.minSize = 0;
                 break;
             case "purpleDildo":
             case "pinkDildo":
+            case "foodBanana":
                 returnItem.minSize = 1;
                 break;
             case "whiteDildo":
+            case "foodCucumber":
                 returnItem.minSize = 2;
                 break;
             case "blackDildo":
             case "blackBallsDildo":
             case "towerDildo":
+            case "foodApple":
                 returnItem.minSize = 3;
                 break;
             case "pinkFatDildo":

@@ -529,7 +529,7 @@ room57.chat = function (chatID) {
             speaker: "candy",
             text: "It's too bad you're all locked up or we would make you cum all over us! Oh well, see you around sexy! ",
             button: [
-                { chatID: 38, text: "Oh yea, bye.", callback: "runaway" },
+                { chatID: -1, text: "Oh yea, bye.", callback: "runaway" }
             ]
         },
     ];

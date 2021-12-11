@@ -4,7 +4,7 @@ var sc = {};
 //g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.char = [
     { name: "me", display: "Alex", image: "me.png", step: 0, max: 0, show: true, setName: false, phone: -1 },
-    { name: "landlord", display: "Land Lord", image: "mom.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
+    { name: "landlord", display: "Landlady", image: "mom.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
     { name: "el", display: "Co-Tenants", image: "lolaEva.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
     { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
@@ -35,7 +35,7 @@ sc.char = [
     { name: "cultboy", display: "Cult", image: "cult_j_b.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "cultjgirl", display: "Cult", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-    { name: "daria", display: "D.M.", image: "daria.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "daria", display: "D.M.", image: "daria.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
     { name: "jen", display: "Jen", image: "jen.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "ubel", display: "Ubel", image: "ubel.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 
@@ -63,8 +63,6 @@ sc.char = [
     { name: "poppy", display: "Poppy", image: "poppy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "orchid", display: "Orchid", image: "orchid.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "juniper", display: "Juniper", image: "juniper.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-
-    
 
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -312,10 +310,22 @@ sc.events = [
     { name: "tim", step: 1, txt: "Flashed cock at pool.", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "tim", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
+    { name: "daria", step: -2, txt: "Got the key", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "daria", step: -1, txt: "Plan", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "daria", step: 0, txt: "Not met yet. ", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "daria", step: 4, txt: "Received chisel ", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "daria", step: 5, txt: "3 some with bodhi", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "daria", step: 6, txt: "keys ", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "daria", step: 7, txt: "escape ", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
     { name: "chloe", step: 0, txt: "Meet at Zoey's or the Bar", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "chloe", step: 1, txt: "Tried to Fucked Chloe - chastity / small dick", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "chloe", step: 2, txt: "Fucked Chloe", img: "", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "chloe", step: 3, txt: "Zoey confrontation", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+
+    { name: "ubel", step: -1, txt: "First Nightly whipping", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "ubel", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "ubel", step: 1, txt: "Escape", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 ];
 
 sc.setMax = function () {

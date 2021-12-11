@@ -498,7 +498,7 @@ room209.btnclick = function (name) {
             nav.bg("205_computerWork/blackBg.jpg");
             g.set("oncase", "cult0");
             
-            g.internal = { day: 0, interval: 0, constDayDirty: 0, jo: false, box: 0, brick: 0 };
+            g.internal = { day: 0, interval: 0, constDayDirty: 0, jo: false, eat: false, box: 0, brick: 0, chaple: 0, wander: false, job: 0, nightEvent: false };
             g.pass = 950;
             char.room(28); 
             
@@ -1921,7 +1921,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "Well slut, do you have anything to say?",
                 button: [
-                    { chatID: 58, text: "I'm so sorry ma'am, I can do it!", callback: "" }
+                    { chatID: 58, text: "I'm so sorry ma'am, I can't do it!", callback: "" }
                 ]
             },
             {
@@ -2726,7 +2726,7 @@ room209.chat = function (chatID) {
                 speaker: "missy",
                 text: "I have an informant on the inside. I can't tell you his name, but he's a low level follower and hasn't been able " + 
                     "to infiltrate the high level priests so I don't know about the inner workings of the cult. What I do know is that " +
-                    "they are truly evil. There's boys chained to walls milked for their cum five times a day by milk maids. " +
+                    "they are truly evil. There's boys chained to walls milked for their cum by milk maids. " +
                     "They collect it for the milk bath rituals where they take hermaphrodites to be bathed and bred by all " +
                     "the male worshippers. This can last for days where her only sustenance is the cum from the bath surrounding her " +
                     "and the cocks in her mouth. ",

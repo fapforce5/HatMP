@@ -185,6 +185,32 @@ tEnemy.initEnemy = function (enemyName) {
                 submit: "Eat ass slut HONK"
             };
             break;
+        case "goo":
+            charVar = {
+                name: "goo",
+                displayName: "Goo Girl",
+                energy: 250,
+                maxEnergy: 250,
+                pPower: 20,
+                kPower: 20,
+                offense: ["p", "k"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                clothingLevel: 0,
+                money: 200 + Math.floor(Math.random() * 200),
+                cock: false,
+                p: "pose",
+                weakspot: [0],
+                base: "f_goo",
+                grapple: "bent",
+                domination: { pose: "kneel", pose1: "kneel", gif: "gif_buttholelick.gif", gif1: "png_buttholelick.png", stats: ["giveOralFemale"] },
+                domFuckem: { pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
+                domPowerbottom: { pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] },
+                domMenu: ["lb_domFuckem", "lb_domPowerbottom"],
+                loss: "HONK.. damn....",
+                intro: "I will HONK you in the HONK with my HONK!!",
+                win: "HAHAHAHAHAHAHAHAHA It's funny how you lose HONK",
+                submit: "Eat ass slut HONK"
+            };
+            break;
         default:
             charVar = null;
             break;

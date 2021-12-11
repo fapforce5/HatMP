@@ -163,7 +163,7 @@ room207.btnclick = function (name) {
             chat(0, 207);
             break;
         case "red_char":
-            if (g.get("oncase") === "redroom")
+            if (g.get("oncase") === "redroom" || g.sissy[15].ach)
                 chat(1, 207);
             else
                 chat(6, 207);
