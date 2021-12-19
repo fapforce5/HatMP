@@ -1187,8 +1187,8 @@ menu.load = function (cookieName, btn, saveID) {
     g.pass = tp.pass;
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
-
-    g.load(tp.g);
+    
+    g.load(tp.g, tp.version);
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
@@ -1457,7 +1457,7 @@ char.import = function () {
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
 
-    g.load(tp.g);
+    g.load(tp.g, tp.version);
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);

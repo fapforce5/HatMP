@@ -53,7 +53,7 @@ room950.main = function () {
                     g.internal.job = 3;
                     chat(122, 950);
                 }
-                else if (!g.internal.wander && scc.get("cult").love > 85) {
+                else if (!g.internal.wander && scc.get("cult").love > 85 && g.internal.chaple > 0) {
                     g.internal.wander = true;
                     nav.killall();
                     nav.bg("950_cell/work0.jpg");
@@ -723,6 +723,7 @@ room950.chatcatch = function (callback) {
             break;
         case "mp10":
             nav.bg("950_cell/mp10.jpg");
+            g.internal.constDayDirty = 4;
             zcl.assup(700, 400, .6, "");
             break;
         case "mp11":
@@ -1497,7 +1498,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 72,
                 speaker: "bodhi",
-                text: "I liked that. I've never had someone lick my ass before. It's totally sweet. I think we just became friends!",
+                text: "I love a good sissy pussy licking! It's totally sweet. I think we just became friends!",
                 button: [
                     { chatID: 73, text: "Sweet", callback: "" }
                 ]
@@ -1848,7 +1849,7 @@ room950.chat = function (chatID) {
                 chatID: 114,
                 speaker: "thinking",
                 text: "Those keys are so BIG! I need to stretch my ass out more if I want to fit them in! Maybe I'll use " +
-                    "those vegitables to stretch me out more. ",
+                    "those vegetables to stretch me out more. ",
                 button: [
                     { chatID: 113, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
                 ]

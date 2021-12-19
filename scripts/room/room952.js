@@ -71,6 +71,10 @@ room952.btnclick = function (name) {
             nav.bg("952_hallway/escape3.jpg");
             chat(18, 952);
             break;
+        case "butt2":
+            chat(40, 952);
+            nav.killbutton("butt2");
+            break;
         default:
             break;
     }
@@ -82,6 +86,9 @@ room952.chatcatch = function (callback) {
             g.internal.interval++;
             char.room(950);
             break;
+        case "reset":
+            char.room(952);
+            break;
         case "bodhi":
             if (g.internal.chaple > 0 && !sc.checkevent("daria", -1)) {
                 nav.killall();
@@ -89,9 +96,17 @@ room952.chatcatch = function (callback) {
                 chat(3, 952);
             }
             else {
-                nav.killall();
-                nav.bg("952_hallway/bodhi0.jpg");
-                chat(15, 952);
+                if (sc.getstep('daria') < 5) {
+                    sc.setstep('daria', 5);
+                    nav.killall();
+                    nav.bg("952_hallway/bodhi0.jpg");
+                    chat(15, 952);
+                }
+                else {
+                    nav.killall();
+                    nav.bg("952_hallway/bodhi0.jpg");
+                    chat(46, 952);
+                }
             }
             break;
         case "end1":
@@ -160,6 +175,33 @@ room952.chatcatch = function (callback) {
             g.internal.jo = false;
             g.pass = 950;
             g.internal.food = false;
+            char.room(950);
+            break;
+        case "butt1":
+            nav.killall();
+            nav.bg("952_hallway/butt1.jpg");
+            break;
+        case "butt2":
+            nav.bg("952_hallway/butt2.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "butt2",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "title": "Get in position",
+                "image": "952_hallway/butt2.jpg"
+            }, 952);
+            break;
+        case "butt3":
+            nav.bg("952_hallway/butt3.jpg");
+            break;
+        case "butt4":
+            nav.bg("952_hallway/s.jpg");
+            g.mod("receiveAnalFemale", 1);
+            g.mod("sissygasm", 1);
+            g.internal.internal++;
             char.room(950);
             break;
         default:
@@ -316,10 +358,10 @@ room952.chat = function (chatID) {
         },
         {
             chatID: 15,
-            speaker: "me",
-            text: "Add strapon event ",
+            speaker: "daria",
+            text: "I see you've been a good and following the cult's orders and are behaving like a good slut. ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: 29, text: "I have. ", callback: "" }
             ]
         },
         {
@@ -429,6 +471,172 @@ room952.chat = function (chatID) {
             text: "zzzZZZzzz",
             button: [
                 { chatID: -1, text: "[Wake up]", callback: "escape11" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "bodhi",
+            text: "I told you, you just need to be cool!",
+            button: [
+                { chatID: 30, text: "So what are you two doing here?", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "daria",
+            text: "That's a long story, " + sc.n("bodhi") + " was the one that brought it up, but I wasn't sure about coming here. " +
+                "He convinced me " +
+                "we would have a great time and neither of us would have to work. We could just fuck each other all day every day. ",
+            button: [
+                { chatID: 31, text: "Oh wow! Is that why you're here?", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "daria",
+            text: "Yes, " + sc.n("bodhi") + " had just lost his job selling surf boards, and I was working in a book store. We both " +
+                "hated working these doldrum jobs so much that when we heard about this place we gave up everything and came here. ",
+            button: [
+                { chatID: 32, text: "That's crazy", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "daria",
+            text: "We didn't find the cult right away, so I got a job with your " + sc.n("landlord") + " working at the sperm bank so " +
+                "we wern't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
+                "They offered to take us straight " +
+                "here. Even fed us on the way. I told them I was the only one that could milk " + sc.n("bodhi") + " and they readily " +
+                "agreed. No one jacks off my toy but me, and I get to make sure he only has sissygasms. No touching the clitty for him!",
+            button: [
+                { chatID: 33, text: "Really", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "bodhi",
+            text: "I haven't had a normal manly orgasm in almost 2 years! Once you get in touch with your sissy pussy it's the only way! " +
+                "My orgasms are so intense they usually last for 5 minutes. " + sc.n("daria") + " really is the best! ",
+            button: [
+                { chatID: 34, text: "Wow", callback: "" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "daria",
+            text: "She really is a hungry butt slut. The best thing is there's plenty of well endowed men here that I can grab at any time " +  
+                "to fill both of our holes. No more searching, I just ask in the hallway on my way here. ",
+            button: [
+                { chatID: 35, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "bodhi",
+            text: "That cultist Tom is my favorite! I've never seen you orgasm so hard that when he was fucking you while I licked your clit. " +
+                "He really filled us both so much! Nacy is fun too! Her fist is the perfect size for both of us! ",
+            button: [
+                { chatID: 36, text: "I want to play!", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "daria",
+            text: "I suppose we'll let you. We like to be fucked by strong manly men, but you're not manly. If you want you can play " +
+                "as our sissy. I'll even let you pick. I can fuck you both, or both of you can serve me. ",
+            button: [
+                { chatID: 37, text: "I want to get fucked!", callback: "" },
+                { chatID: 47, text: "I want to serve you", callback: "" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "daria",
+            text: "I love fucking sissies! Assume the position! ",
+            button: [
+                { chatID: 38, text: "Oh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "bodhi",
+            text: "I get bottom! ",
+            button: [
+                { chatID: 39, text: "I guess I get top", callback: "butt1" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "daria",
+            text: "You two are really a couple of eager sluts. ",
+            button: [
+                { chatID: -1, text: "Yes we are!", callback: "butt2" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "daria",
+            text: "You like it when I alternate my strokes between your pussies? ",
+            button: [
+                { chatID: 41, text: "Oh yeah", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "daria",
+            text: "It gets me so hot shoving my cock into your soft warm pussies. ",
+            button: [
+                { chatID: 42, text: "*moan*", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "bodhi",
+            text: "I'm going to cum all over you! I'm so close! ",
+            button: [
+                { chatID: 43, text: "Fuck, I'm going to cum all over you too!", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "daria",
+            text: "You sluts are so easy. Now clean my cock!",
+            button: [
+                { chatID: 44, text: "Ok. ", callback: "butt3" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "daria",
+            text: "Oh yeah. Lick it up sluts. Taste your yummy pussies. ",
+            button: [
+                { chatID: 45, text: "Yummy!", callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "daria",
+            text: "Nice and clean. You are both good sluts. Now run along, I've got to attend to my sissy. ",
+            button: [
+                { chatID: -1, text: "Ok. ", callback: "butt4" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "daria",
+            text: "Back again? So how do you want to play?",
+            button: [
+                { chatID: 37, text: "I want to get fucked!", callback: "" },
+                { chatID: 47, text: "I want to serve you.", callback: "" },
+                { chatID: -1, text: "Nope. ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "daria",
+            text: "WIP will have it done by the official release",
+            button: [
+                { chatID: -1, text: "reset", callback: "reset" },
             ]
         },
     ];

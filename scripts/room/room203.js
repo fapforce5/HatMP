@@ -2,8 +2,23 @@
 var room203 = {};
 room203.main = function () {
     var missyStep = sc.getstep("missy");
-
-    if (g.sissy[16].ach) {
+    if (missyStep === 100) {
+        nav.bg("203_entrance/m100.jpg");
+        chat(41, 203);
+    }
+    else if (missyStep > 100) {
+        nav.button({
+            "type": "btn",
+            "name": "door100",
+            "left": 390,
+            "top": 189,
+            "width": 414,
+            "height": 509,
+            "image": "203_entrance/door.png"
+        }, 203);
+        nav.buildnav([201, 207, 0]);
+    }
+    else if (g.sissy[16].ach) {
         if (g.hourBetween(7, 12)) {
             nav.button({
                 "type": "btn",
@@ -164,6 +179,10 @@ room203.btnclick = function (name) {
                 
             }
             break;
+        case "door100":
+            chat(47, 203);
+            break;
+        
         default:
             break;
     }
@@ -353,6 +372,10 @@ room203.chatcatch = function (callback) {
         case "sugar1":
         case "sugar2":
             g.internal = callback;
+            break;
+        case "m100":
+            sc.setstep("missy", 101);
+            char.room(203);
             break;
         default:
             break;
@@ -704,6 +727,71 @@ room203.chat = function (chatID) {
             chatID: 40,
             speaker: "thinking",
             text: "I can't go in there, I'm supposed to be working my case.",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "p",
+            text: "I'm so glad your back and safe. We were so worried. So where's " + sc.n("missy") + "? Is she on her way?",
+            button: [
+                { chatID: 42, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "me",
+            text: "Tell the entire story...",
+            button: [
+                { chatID: 43, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "cecilia ",
+            text: "Those bastards! We have to go get her!",
+            button: [        
+                { chatID: 44, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "p",
+            text: "I don't trust the police at all! We have to get her out of there. We'll have to come up with a plan. " +
+                "Since the tunnel you used is down we'll have to find an alternative way in. Right now everything " +
+                "is brought in by helicopter since the swamps around the compound make driving there impossible. We also don't have " +
+                "a good layout of the compound that includes camera locations and entrances. Finally we're going to need to know " +
+                "exactly where she's being held. ",
+            button: [
+                { chatID: 45, text: "Yeah", callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "p",
+            text: "I'm going to start working on my contacts. You can start by going through what " + sc.n("missy") + " knows. " +
+                " I know she's been working on gathering information on them for a while. Under normal circumstances I would  " +
+                "never suggest going through her office, but there may be something there and we need to get her out! I'll " +
+                "still let you do any training you want or need. ",
+            button: [
+                { chatID: 46, text: "Ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "p",
+            text: "Don't worry too much about " + sc.n("missy") + ". She's a lot stronger than any of us. You have no idea of what " +
+                "she went through before she started as a PI. She's a survivor. I'll let you know any information I get. Please " +
+                "go through her office respectfully and see if you can gather any information to start. ",
+            button: [
+                { chatID: -1, text: "I will gather information from her office. ", callback: "m100" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "thinking",
+            text: "Thank you for playing. Breaking " + sc.n("missy") + " out will be in a future release",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

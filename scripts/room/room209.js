@@ -72,7 +72,8 @@ room209.main = function () {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            room209.btnclick("displayMissybtn");
+            if (sc.getstep("missy") < 100)
+                room209.btnclick("displayMissybtn");
             room209.btnclick("displaypbtn");
         }
         else {
@@ -286,8 +287,15 @@ room209.btnclick = function (name) {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            room209.btnclick("displayMissybtn");
-            chat(114, 209);
+            if (sc.getstep("missy") < 100) {
+                room209.btnclick("displayMissybtn");
+                chat(114, 209);
+            }
+            else {
+                room209.btnclick("displaypbtn");
+                chat(182, 209);
+            }
+            
             break;
         case "h_15":
             nav.bg("209_classroom/bg.jpg");
@@ -3005,11 +3013,20 @@ room209.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 180,
+                chatID: 181,
                 speaker: "p",
                 text: "So you like modeling? Report back to " + sc.n("jones") + ". He has more work for you. ",
                 button: [
                     { chatID: -1, text: "ok", callback: "h_34_end" }
+                ]
+            },
+            {
+                chatID: 182,
+                speaker: "p",
+                text: "So you want to be a glory hole slut? Go see " + sc.n("cecilia") + " in the park bathroom on the weekends. " +
+                    "She'll show you how to suck a cock like the sissy you are. She likes to hang out in the toilets. ",
+                button: [
+                    { chatID: -1, text: "Ok. I'll see " + sc.n("cecilia") + " in the park bathroom this weekend. ", callback: "h_13" }
                 ]
             },
         ];

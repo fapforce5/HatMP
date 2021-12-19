@@ -156,6 +156,7 @@ sc.events = [
     { name: "missy", step: 8, txt: "[8] Report your failings.", img: "tiffanyMad", show: true, row: 0, col: 5, ach: false, major: false },
     { name: "missy", step: 9, txt: "[9] Report for work in a pair of panties", img: "panties", show: true, row: 0, col: 6, ach: false, major: false },
     { name: "missy", step: 10, txt: "[10] First Day of Sissy School", img: "", show: false, row: 0, col: 0, ach: false, major: false },
+    { name: "missy", step: 100, txt: "[100] Kidnapped by the cult", img: "", show: false, row: 0, col: 0, ach: false, major: false },
 
     { name: "p", step: 0, txt: "Sissy School Rules Day 1", img: "pc", show: false, row: 0, col: 0, ach: false, major: false },
     { name: "p", step: 1, txt: "How to sit - get clothes", img: "", show: false, row: 0, col: 0, ach: false, major: false },
@@ -474,6 +475,20 @@ sc.removeStep = function (name, step) {
         if (sc.char[i].name === name) {
             sc.char[i].step = maxStep;
             i = 10000;
+        }
+    }
+};
+
+sc.rollback = function (name, backTo) {
+    var i;
+    for (i = 0; i < sc.events.length; i++) {
+        if (sc.events[i].name === name && sc.events[i].step > backTo && sc.events[i].step > -1)
+            sc.events[i].ach = false;
+    }
+    for (i = 0; i < sc.char.length; i++) {
+        if (sc.char[i].name === name) {
+            sc.char[i].step = backTo;
+            i = 99999;
         }
     }
 };
