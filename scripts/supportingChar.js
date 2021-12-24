@@ -35,7 +35,7 @@ sc.char = [
     { name: "cultboy", display: "Cult", image: "cult_j_b.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "cultjgirl", display: "Cult", image: "cult_j_g.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-    { name: "daria", display: "D.M.", image: "daria.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "daria", display: "Morgan", image: "daria.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
     { name: "jen", display: "Jen", image: "jen.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "ubel", display: "Ubel", image: "ubel.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
 

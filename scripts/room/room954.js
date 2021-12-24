@@ -36,10 +36,16 @@ room954.chatcatch = function (callback) {
         case "t12":
         case "t14":
         case "t15":
+        case "t16":
+        case "t17":
+        case "t20":
         case "t21":
+        case "t22":
+        case "t23":
         case "t24":
         case "t25":
         case "t33":
+            nav.killall();
             nav.bg("954_torture/" + callback + ".jpg");
             break;
         case "t4x":
@@ -109,7 +115,7 @@ room954.chatcatch = function (callback) {
         case "t30":
             nav.bg("954_torture/t30.jpg");
             g.roomTimeout = setTimeout(function () {
-                nav.bg("954_torture/t29.jpg");
+                nav.bg("954_torture/t30.jpg");
                 chat(58, 954);
             }, 1500);
             break;
@@ -125,6 +131,8 @@ room954.chatcatch = function (callback) {
             cl.display();
             char.room(0);
             g.set("oncase", null);
+            $('#room-menu').show();
+            $("#room-inv").show();
             break;
         default:
             break;
@@ -514,7 +522,7 @@ room954.chat = function (chatID) {
             speaker: "bodhi",
             text: "It's too high. I'm going to break my head.",
             button: [
-                { chatID: 44, text: "...", callback: "" }
+                { chatID: 44, text: "...", callback: "t26" }
             ]
         },
         {

@@ -243,7 +243,7 @@ g.sissy = [
     { id: 58, pID: [0], icon: "lube", x: 2, y: 8, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
     { id: 59, pID: [58], icon: "dildos", x: 2, y: 9, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 60, pID: [19], icon: "daria", x: 14, y: 8, name: "D.M.'s dissapearance", description: "Investigate D.M.'s dissappearance", ach: false, active: false, points: 0, h: false },
+    { id: 60, pID: [19], icon: "Vote", x: 14, y: 8, name: "Vote", description: "Vote in the Patreon for this next event", ach: false, active: false, points: 0, h: false },
 
     { id: 61, pID: [0], icon: "money", x: 19, y: 4, name: "Money", description: "Trade Sissy Points for money", ach: false, active: true, points: 0, h: false },
 

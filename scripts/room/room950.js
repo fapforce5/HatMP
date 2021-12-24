@@ -530,7 +530,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/milk9.jpg");
             break;
         case "milk10":
-            scc.love("cult", 1, 50);
+            scc.love("cult", 2, 50);
             room950.btnclick("increment");
             break;
         case "jo0":
@@ -547,7 +547,7 @@ room950.chatcatch = function (callback) {
             g.internal.constDayDirty = 0;
             g.internal.jo = false;
             char.changeMenu("hide", false);
-            scc.love("cult", -50, 100);
+            scc.love("cult", -20, 100);
             g.roomTimeout = setTimeout(function () {
                 nav.bg("951_box/box.jpg");
                 chat(24, 950);
@@ -727,7 +727,7 @@ room950.chatcatch = function (callback) {
             zcl.assup(700, 400, .6, "");
             break;
         case "mp11":
-            scc.love('cult', 10, 100);
+            scc.love('cult', 15, 100);
             g.mod("pissedonMale", 3);
             g.mod("sissy", 30);
             room950.btnclick("increment");
@@ -749,7 +749,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/shower5.jpg");
             break;
         case "shower6":
-            scc.love('cult', 5, 100);
+            scc.love('cult', 10, 100);
             room950.btnclick("increment");
             break;
         case "cancelJob":
@@ -785,7 +785,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/sweepHallway1.jpg");
             break;
         case "sweepHallway1end":
-            scc.love("cult", 3, 100);
+            scc.love("cult", 5, 100);
             room950.btnclick("increment");
             break;
         case "sweepHallway2":
@@ -823,7 +823,7 @@ room950.chatcatch = function (callback) {
             g.mod("giveOralMale", 1);
             g.mod("loadSwollowed", 1);
             g.mod("sissy", 20);
-            scc.love("cult", 7, 100);
+            scc.love("cult", 12, 100);
             room950.btnclick("increment");
             break;
         case "sweepHallway7":
