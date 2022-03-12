@@ -255,7 +255,20 @@ room24.chatcatch = function (callback) {
                         cl.display();
                         g.internal.meNaked = 1;
                         room24.chatcatch("bg evaSit lolaTalk");
-                        chat(31, 24);
+                        if (cl.c.bra === null)
+                            chat(31, 24);
+                        else {
+                            nav.button({
+                                "type": "img",
+                                "name": "suprise",
+                                "left": 744,
+                                "top": 133,
+                                "width": 850,
+                                "height": 219,
+                                "image": "24_spinTheBottle/suprise.png"
+                            }, 24);
+                            chat(95, 24);
+                        }
                     }
                     else if (g.internal.meNaked === 1) {
                         g.pass.push(cl.c.pants);
@@ -263,7 +276,18 @@ room24.chatcatch = function (callback) {
                         cl.display();
                         g.internal.meNaked = 2;
                         room24.chatcatch("bg evaTalk lolaSit");
-                        chat(33, 24);
+                        if (cl.c.panties === null)
+                            chat(33, 24);
+                        else {
+                            if (cl.list[cl.where("panties", cl.c.panties)].sex === "m")
+                                chat(33, 24);
+                            else {
+                                if (cl.c.panties === "w")
+                                    chat(98, 24);
+                                else
+                                    chat(102, 24);
+                            }
+                        }
                     }
                     else if (g.internal.meNaked === 2) {
                         g.pass.push(cl.c.shoes);
@@ -296,17 +320,17 @@ room24.chatcatch = function (callback) {
                 case "spinBottleEva":
                     $('.room-img[data-name="bottle"]').addClass('evaSpin');
                     $('.room-chatBox').hide();
-                    setTimeout(function () { $('.room-chatBox').show(); }, 3000);
+                    setTimeout(function () { $('.room-chatBox').show(); window.getSelection().removeAllRanges(); }, 3000);
                     break;
                 case "spinBottleLola":
                     $('.room-img[data-name="bottle"]').addClass('lolaSpin');
                     $('.room-chatBox').hide();
-                    setTimeout(function () { $('.room-chatBox').show(); }, 3000);
+                    setTimeout(function () { $('.room-chatBox').show(); window.getSelection().removeAllRanges(); }, 3000);
                     break;
                 case "spinBottleMe":
                     $('.room-img[data-name="bottle"]').addClass('meSpin');
                     $('.room-chatBox').hide();
-                    setTimeout(function () { $('.room-chatBox').show(); }, 3000);
+                    setTimeout(function () { $('.room-chatBox').show(); window.getSelection().removeAllRanges();}, 3000);
                     break;
                 case "spinEnd":
                     char.settime(22, 37);
@@ -314,6 +338,24 @@ room24.chatcatch = function (callback) {
                     sc.setstep("lola", 5);
                     inv.use("wine");
                     char.room(11);
+                    break;
+                case "suprise1":
+                    nav.killbutton("suprise");
+                    nav.button({
+                        "type": "img",
+                        "name": "suprise1",
+                        "left": 1513,
+                        "top": 0,
+                        "width": 407,
+                        "height": 943,
+                        "image": "24_spinTheBottle/suprise1.png"
+                    }, 24);
+                    break;
+                case "suprise2":
+                    chat(8, 16);
+                    break;
+                case "suprise3":
+                    chat(12, 16);
                     break;
                 default:
                     console.log(callback + " - miss");
@@ -1109,11 +1151,76 @@ room24.chat = function (chatID) {
             speaker: "lola",
             text: "That was fun. We'll have to do it again some time. ",
             button: [
-                { chatID: 95, text: "...", callback: "evaTalk lolaSit" }
+                { chatID: 103, text: "...", callback: "evaTalk lolaSit" }
             ]
         },
         {
             chatID: 95,
+            speaker: "lola",
+            text: "WHAAAA!!!! Are you wearing a bra?  ",
+            button: [
+                { chatID: 96, text: "Uh", callback: "" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "eva",
+            text: "OH WOW! Why are you wearing a bra? You don't have boobs! Are you a girl!",
+            button: [
+                { chatID: 97, text: "Well, you see...", callback: "suprise1" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "landlord",
+            text: "Well, well, well. What do we have here?",
+            button: [
+                { chatID: -1, text: "Oh...", callback: "suprise2" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "lola",
+            text: "Soooo. You're wearing my panties. ",
+            button: [
+                { chatID: 99, text: "Yeah", callback: "" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "eva",
+            text: "Such a pervert!",
+            button: [
+                { chatID: 100, text: "Well...", callback: "suprise1" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "landlord",
+            text: "Sooo you're wearing " + sc.n("lola") + "'s panties huh? ",
+            button: [
+                { chatID: 101, text: "I know it looks bad", callback: "" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "lola",
+            text: "It's ok. I'm not mad or anything. I guess it's best to put it all out there. We all know you're a girl. " +
+                "living a lie must be hard. It's ok, you can finally be who you are. ",
+            button: [
+                { chatID: -1, text: "Wait, that's not...", callback: "suprise3" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "lola",
+            text: "Sooo. Panties? ",
+            button: [
+                { chatID: 99, text: "Wait, that's not...", callback: "" }
+            ]
+        },
+        {
+            chatID: 103,
             speaker: "eva",
             text: "Yeah pervert. It's time for us to get ready for bed. ",
             button: [

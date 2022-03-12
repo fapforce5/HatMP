@@ -175,15 +175,8 @@ room726.chatcatch = function (callback) {
             }, 726);
             break;
         case "timeBathroom":
-            if (g.sissy[28].ach) {
-                g.pass = "727tim";
-                char.room(727);
-            }
-            else {
-                g.setflag("tim");
-                g.mod("sissy", 5);
-                chat(21, 726);
-            }
+            g.pass = "727tim";
+            char.room(727);
             break;
         case "supriseSex":
             g.pass = "supriseSex";
@@ -259,7 +252,6 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "tim3_16":
-            g.mod("sissy", 50);
             g.mod("giveOralMale", 1);
             g.mod("giveAnalMale", 1);
             g.mod("creamPied", 1);
@@ -454,7 +446,7 @@ room726.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "tim",
-            text: "I know. I'm going to fuck your face which my awesome cock. ",
+            text: "I know. I'm going to fuck your face with my awesome cock. ",
             button: [
                 { chatID: -1, text: "Oh! I just remembered I have to do that other thing.. I'm not ready to meet strange men in the bathroom. [Need to unlock dating blowjob]", callback: "reset" }
             ]

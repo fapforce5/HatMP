@@ -42,14 +42,14 @@ room205.chatcatch = function (callback) {
         case "leavehypno1":
             g.pass = "finishhypno1";
             g.mod("arousal", 100);
-            g.mod("sissy", 100);
+            g.mod("missyPoints", 100);
             char.addtime(420);
             char.room(200);
             break;
         case "leavehypno1repeat":
             g.pass = "finishhypno1repeat";
             g.mod("arousal", 100);
-            g.mod("sissy", 20);
+            g.mod("missyPoints", 20);
             char.addtime(420);
             char.room(200);
             break;

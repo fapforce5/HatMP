@@ -21,16 +21,30 @@ room26.main = function () {
     else {
         var btnList = new Array();
         if (sc.mother().thisRoom) {
-            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");""
-            btnList.push({
-                "type": "btn",
-                "name": "landlord",
-                "left": 764,
-                "top": 58,
-                "width": 701,
-                "height": 930,
-                "image": "26_livingRoom/ll.png"
-            });
+            if (sc.sister().thisRoom) {
+                nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg"); 
+                btnList.push({
+                    "type": "btn",
+                    "name": "all3",
+                    "left": 416,
+                    "top": 63,
+                    "width": 1295,
+                    "height": 1017,
+                    "image": "26_livingRoom/all3.png"
+                });
+            }
+            else {
+                nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg"); 
+                btnList.push({
+                    "type": "btn",
+                    "name": "landlord",
+                    "left": 764,
+                    "top": 58,
+                    "width": 701,
+                    "height": 930,
+                    "image": "26_livingRoom/ll.png"
+                });
+            }
         }
 
         var navList = [16];
@@ -58,18 +72,8 @@ room26.btnclick = function (name) {
                         chat(11, 26);
                     else if (ll === 7)
                         chat(30, 26);
-                    else if (ll === 8)
+                    else if (ll > 7 && ll < 200)
                         chat(43, 26);
-                    else if (ll > 15 && ll < 200) {
-                        if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2)) {
-                            chat(48, 26);
-                        }
-                        else if (!inv.has("landlordKey")) {
-                            console.log("add stuff");
-                        }
-                        else
-                            chat(2, 26);
-                    }
                     else if (ll === 200) {
                         var thisDay200 = g.dt.getDay();
                         if (thisDay200 === 0 || thisDay200 === 6) {
@@ -108,6 +112,14 @@ room26.btnclick = function (name) {
             nav.killbutton("panties2");
             nav.bg("26_livingRoom/passtime6g.jpg");
             chat(54, 26);
+            break;
+        case "all3":
+            if (false) {
+
+            }
+            else {
+                chat(93, 26);
+            }
             break;
         default:
             break;
@@ -209,8 +221,10 @@ room26.chatcatch = function (callback) {
         case "passtime6j":
             char.addtime(69);
             cl.undo();
+            g.mod("giveOralFemale", 1);
             sc.setstep("landlord", 7);
             g.setflag("momchat");
+            scc.love("landlord", 20, 100);
             char.room(16);
             break;
         case "passtime7":
@@ -233,6 +247,8 @@ room26.chatcatch = function (callback) {
             char.room(16);
             break;
         case "passtime8":
+            if (sc.getstep("landlord") === 8)
+                sc.setstep("landlord", 9);
             nav.killbutton("landlord");
             nav.bg("26_livingRoom/passtime8.jpg");
             break;
@@ -288,7 +304,7 @@ room26.chatcatch = function (callback) {
             break;
         case "panties7":
             cl.c.panties = "c";
-            nav.bg("26_livingRoom/passtime6a.jpg")
+            nav.bg("26_livingRoom/passtime6a.jpg");
             zcl.displayMain(-1550, -900, .5, "panties", true);
             break;
         case "panties8":
@@ -296,7 +312,6 @@ room26.chatcatch = function (callback) {
             sc.setstep("landlord", -2);
             g.setflag("momchat");
             char.addtime(60);
-            g.mod("sissy", 30);
             char.room(8);
             break;
         case "ll200":
@@ -364,6 +379,14 @@ room26.chatcatch = function (callback) {
             char.addtime(60);
             g.setflag("momchat");
             char.room(16);
+            break;
+        case "tv":
+            nav.killall();
+            nav.bg("26_livingRoom/tv.jpg");
+            break;
+        case "tv1":
+            char.settime(22, 3);
+            char.room(26);
             break;
         default:
             break;
@@ -1176,6 +1199,31 @@ room26.chat = function (chatID) {
             text: "Well, anyways, you two sissies run along and play at " + sc.n("ralph") + "'s place. (Future release). ",
             button: [
                 { chatID: -1, text: "Oh yes!", callback: "201_4" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "lola",
+            text: "Hay, did you want to watch tv with us?",
+            button: [
+                { chatID: 94, text: "Cool", callback: "tv" },
+                { chatID: -1, text: "Nah", callback: "" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "lola",
+            text: "This is my favorite part.",
+            button: [
+                { chatID: 95, text: "Yeah", callback: "" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "eva",
+            text: "Such a beautiful movie. We're going up to our room. ",
+            button: [
+                { chatID: -1, text: "Ok", callback: "tv1" }
             ]
         },
     ];

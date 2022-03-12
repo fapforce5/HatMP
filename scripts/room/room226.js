@@ -411,7 +411,7 @@ room226.main = function () {
         }
     }
 
-    char.changeMenu("map", false);
+    char.changeMenu("map", false, true);
     
     if (g.get("energy") < 3) {
         chat(2, 226);
@@ -687,7 +687,6 @@ room226.chatcatch = function (callback) {
         case "slimereset":
             room226.btnclick("drawMap");
             g.mod("fuckPussy", 1);
-            g.mod("sissy", 20);
             cl.doCum(false);
             break;
         default:

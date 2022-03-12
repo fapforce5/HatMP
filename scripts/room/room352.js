@@ -212,11 +212,11 @@ room352.chatcatch = function (callback) {
                     }, 352);
                 }
                 g.mod("money", 20);
-                g.mod("sissy", 10);
+                g.mod("phum", 1);
+                g.mod("giveHandjobMale", 1);
                 chat(13, 352);
             }
             else {
-                g.mod("sissy", 5);
                 chat(12, 352);
             }
             break;
@@ -258,11 +258,11 @@ room352.chatcatch = function (callback) {
                     }, 352);
                 }
                 g.mod("money", 20);
-                g.mod("sissy", 10);
+                g.mod("phum", 10);
+                g.mod("giveHandjobMale", 1);
                 chat(20, 352);
             }
             else {
-                g.mod("sissy", 5);
                 chat(19, 352);
             }
             break;
@@ -438,7 +438,7 @@ room352.chatcatch = function (callback) {
         case "l1":
             nav.killall();
             g.mod("money", 20);
-            g.mod("sissy", 15);
+            g.mod("giveOralMale", 1);
             nav.bg(g.internal.events[0].c === 0 ? "352_jackoff/wl1.jpg" : "352_jackoff/bl1.jpg");
             break;
         case "l2":

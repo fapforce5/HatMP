@@ -62,6 +62,12 @@
 .char-head {
     z-index: 15;
 }
+
+.char-accBodyx {
+    z-index: 16;
+}
+
+
 .char-bodyHair {
     z-index: 16;
 }
@@ -102,6 +108,7 @@
 .char-accHead{
     z-index:27;
 }
+
 .char-stats{
     width:100%;
 }

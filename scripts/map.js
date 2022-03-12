@@ -97,7 +97,7 @@ m.drawBackgroundSub = function (row, col) {
 
 m.drawMap = function (r, c) {
     
-    char.changeMenu("map", false);
+    char.changeMenu("map", false, true);
 
     var i, j;
     var st = "";

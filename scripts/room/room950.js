@@ -472,7 +472,7 @@ room950.btnclick = function (name) {
               var doesItFit = cl.minButt(name, null);
             if (doesItFit.fit) {
                 nav.killall();
-                g.mod('sissy', 20);
+                g.mod('dildobutt', 1);
                 cl.stretchButt(name, null);
                 nav.bg("950_cell/" + name + "_stuff.jpg");
                 g.internal.food = true;
@@ -546,7 +546,7 @@ room950.chatcatch = function (callback) {
             g.internal.day++;
             g.internal.constDayDirty = 0;
             g.internal.jo = false;
-            char.changeMenu("hide", false);
+            char.changeMenu("hide", false, true);
             scc.love("cult", -20, 100);
             g.roomTimeout = setTimeout(function () {
                 nav.bg("951_box/box.jpg");
@@ -661,7 +661,7 @@ room950.chatcatch = function (callback) {
             break;
         case "food0":
             nav.killall();
-            char.changeMenu("hide", false);
+            char.changeMenu("hide", false, true);
             if(cl.c.butthole < 3)
                 nav.bg("950_cell/food0.jpg");
             else
@@ -708,7 +708,7 @@ room950.chatcatch = function (callback) {
             }, 950);
             break;
         case "food1":
-            g.mod('sissy', 50);
+            g.mod("dildobutt", 1);
             break;
         case "mp1":
         case "mp2":
@@ -729,7 +729,6 @@ room950.chatcatch = function (callback) {
         case "mp11":
             scc.love('cult', 15, 100);
             g.mod("pissedonMale", 3);
-            g.mod("sissy", 30);
             room950.btnclick("increment");
             break;
         case "shower1":
@@ -822,7 +821,6 @@ room950.chatcatch = function (callback) {
         case "sweepHallway6end":
             g.mod("giveOralMale", 1);
             g.mod("loadSwollowed", 1);
-            g.mod("sissy", 20);
             scc.love("cult", 12, 100);
             room950.btnclick("increment");
             break;

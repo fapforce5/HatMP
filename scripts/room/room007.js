@@ -426,7 +426,6 @@ room7.chatcatch = function (callback) {
             g.setflag("evaDayEvent");
             char.addtime(60);
             g.mod("receiveHandjobFemale", 1);
-            g.mod("sissy", 5);
             g.pass = "";
             char.room(10);
             break;
@@ -487,13 +486,12 @@ room7.chatcatch = function (callback) {
             sc.setstep("eva", 12);
             char.addtime(60);
             g.mod("fuckPussy", 1);
-            g.mod("sissy", 30);
             char.room(10);
             break;
         case "bigguy5a":
             nav.killall();
             cl.nude();
-            char.changeMenu("hide");
+            char.changeMenu("hide", false, true);
             nav.bg("7_mainCharRoomAlt/bigguy5a.jpg");
             break;
         case "bigguy5b":
@@ -599,7 +597,6 @@ room7.chatcatch = function (callback) {
             g.mod("receiveOralMale", 1);
             g.mod("receiveAnalMale", 1);
             g.mod("creamPied", 1);
-            g.mod("sissy", 40);
             char.addtime(68);
             char.room(10);
             break;

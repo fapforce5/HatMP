@@ -1055,7 +1055,7 @@ room13.chatcatch = function (callback) {
             break;
         case "201_1":
             nav.killall();
-            char.changeMenu("hide");
+            char.changeMenu("hide", false, true);
             nav.bg("13_sisterRoom/201_1.jpg");
             break;
         case "201_2":
@@ -1130,7 +1130,7 @@ room13.chatcatch = function (callback) {
             scc.love("jones", 10, 100);
             scc.love("lola", -5, 100);
             scc.love("eva", -5, 100);
-            g.mod("sissy", 20);
+            g.mod("phum", 1);
             nav.bg("13_sisterRoom/201_6a.jpg");
             break;
         case "201_7":
@@ -1144,7 +1144,6 @@ room13.chatcatch = function (callback) {
         case "201_6b":
             scc.love("jones", -10, 100);
             scc.love("lola", 5, 100);
-            g.mod("sissy", -10);
             nav.bg("13_sisterRoom/201_6a.jpg");
             break;
         case "lick1":
@@ -1912,7 +1911,7 @@ room13.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "eva",
-            text: "Hay panty thief, me and " + sc.n("lola") + " wanted to play truth or dare. Are you down for a game?",
+            text: "Hay weird-o, me and " + sc.n("lola") + " wanted to play truth or dare. Are you down for a game?",
             button: [
                 { chatID: 76, text: "Oh course!!!", callback: "" },
                 { chatID: -1, text: "I'm pretty busy, some other time maybe. ", callback: "" }
@@ -3327,6 +3326,5 @@ room13.chat = function (chatID) {
             ]
         },
     ];
-    //checkPanties
     return cArray[chatID];
 };

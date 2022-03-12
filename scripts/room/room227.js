@@ -2,7 +2,7 @@
 var room227 = {};
 room227.main = function () {
     //g.pass = { enemy0: "goo", enemy1: null, bg: "sewer", roomID: 226 };
-    char.changeMenu("hide", false);
+    char.changeMenu("hide", false, true);
     tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.bg, g.pass.roomID, 227);
     tEnemy.drawButtons("init");
     tEnemy.drawButtonList("begin");

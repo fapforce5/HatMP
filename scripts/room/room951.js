@@ -1,7 +1,7 @@
 ﻿//Room name
 var room951 = {};
 room951.main = function () {
-    char.changeMenu("hide", false);
+    char.changeMenu("hide", false, true);
     var btnList = [
         {
             "type": "btn",

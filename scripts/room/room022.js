@@ -1,7 +1,7 @@
 ﻿//Pee - not used right now
 var room22 = {};
 room22.main = function () {
-    char.changeMenu("body", false);
+    char.changeMenu("body", false, true);
     $('.char-modBtn[data-t="p"]').click();
     switch (g.pass) {
         case 12:

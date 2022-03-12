@@ -3,8 +3,9 @@
 var room8 = {};
 
 room8.main = function () {
-    char.changeMenu("body", false);
+    char.changeMenu("body", false, true);
     var quickList = "";
+    $("#room_footer").show();
     $.each(cl.saveOutfit, function (i, v) {
         quickList = quickList.concat('<div class="wardrobe-quick-update" data-e="' + i + '">' +
             '<input type="text" class="wardrobe-quick-name" data-e="' + i + '" placeholder="Rename Outfit" value="' + v.name + '" data-awake="' + v.isReg + '"/>' +

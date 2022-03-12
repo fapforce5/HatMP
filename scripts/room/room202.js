@@ -58,34 +58,13 @@ room202.main = function () {
     else if (g.pass === "g2_furniture") {
         g.tview = "p";
         cl.display();
-        char.changeMenu("body", false);
+        char.changeMenu("body", false, true);
         chat(11, 202);
     }
     else if (g.pass === "h12_cock") {
         zcl.displayMain(-1100, -200, .5, "clothes", true);
         chat(74, 202);
-        //nav.killall();
-        //nav.bg("202_sideDesk/pose1.jpg");
-        //chat(46, 202);
     }
-    //else if (missyStep === 12) {
-    //    nav.kill("missyCross");
-    //    nav.bg("202_sideDesk/openmouth1.jpg");
-    //    chat(36, 202);
-    //}
-    //else if (missyStep === 13) {
-    //    g.tview = "p";
-    //    cl.display();
-    //    chat(11, 202);
-    //}
-    //else if (missyStep === 14) {
-    //    nav.killall();
-    //    nav.bg("202_sideDesk/pose1.jpg");
-    //    chat(46, 202);
-    //}
-    //else if (missyStep === 14) {
-    //    chat(32, 202);
-    //}
     else if (missyStep === 9)
         sc.setstep("missy", 10);
 
@@ -428,7 +407,7 @@ room202.chatcatch = function (callback) {
             break;
         case "pose11":
             g.sissy[12].ach = true;
-            g.mod("sissy", 40);
+            g.mod("giveOralFemale", 1);
             g.mod("money", 50);
             scc.love("missy", 20, 100);
             room209.chatcatch("end");
@@ -1061,7 +1040,7 @@ room202.chat = function (chatID) {
             ]
         },
         {
-            chatID: 73,
+            chatID: 74,
             speaker: "missy",
             text: "Strip Slut",
             button: [

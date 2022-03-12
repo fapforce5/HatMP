@@ -1,12 +1,10 @@
 ﻿//hallway
 var room11 = {};
 room11.main = function () {
-    if (g.hasAccess(16).access) {
-
-
-        var hasKey = false;
-        if (inv.has("flatmateKey"))
-            hasKey = true;
+    if (cl.isCrossdressing() && sc.getstep("lola") < 200) {
+        char.room(16);
+    }
+    else if (g.hasAccess(16).access) {
         var motherLocation = sc.mother().roomID;
         var sisterLocation = sc.sister().roomID;
         var openDoor = g.hourBetween(7, 21);
@@ -94,33 +92,6 @@ room11.main = function () {
             "image": "11_hallway/downStairs.png",
             "night": "11_hallway/downStairsNight.png"
         });
-
-        ////Landlord's room
-        //if (motherLocation === 14 && openDoor) {
-        //    btnList.push({
-        //        "type": "btn",
-        //        "name": "motherOpen",
-        //        "title": sc.n("landlord") + "'s Room",
-        //        "left": 608,
-        //        "top": 451,
-        //        "width": 277,
-        //        "height": 241,
-        //        "image": "11_hallway/11_motherOpen.png"
-        //    });
-        //    navList.push(14);
-        //}
-        //else {
-        //    btnList.push({
-        //        "type": "btn",
-        //        "name": "motherClose",
-        //        "title": sc.n("landlord") + "'s Locked Room",
-        //        "left": 608,
-        //        "top": 451,
-        //        "width": 277,
-        //        "height": 241,
-        //        "image": "11_hallway/11_motherClosed.png"
-        //    });
-        //}
 
         $.each(btnList, function (i, v) {
             nav.button(v, 11);

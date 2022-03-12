@@ -163,8 +163,6 @@ room206.chatcatch = function (callback) {
 
         $('.q206-btn').click(function () {
             var thisEntry = parseInt($(this).data('a'));
-            //console.log(g.internal, thisEntry);
-            //g.mod("sissy", thisEntry);
             g.fight += thisEntry;
             g.pass += thisEntry;
             g.internal++;

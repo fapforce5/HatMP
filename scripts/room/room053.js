@@ -277,7 +277,6 @@ room53.chatcatch = function (callback) {
             g.internal = 0;
             nav.killall();
             sc.setstep("candy", 2);
-            g.mod("sissy", 20);
             nav.bg("53_candy/bj7.jpg");
             nav.button({
                 "type": "tongue",
@@ -351,7 +350,6 @@ room53.chatcatch = function (callback) {
             break;
         case "bc6":
             g.mod("loadSwollowed", 1);
-            g.mod("sissy", 40);
             sc.setstep("candy", 3);
             char.addtime(60);
             g.mod("arousal", 100);

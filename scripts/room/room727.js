@@ -183,7 +183,7 @@ room727.chatcatch = function (callback) {
 
             break;
         case "tim2end":
-            g.mod("sissy", 30);
+            g.mod("giveOralMale", 1);
             g.setflag("tim");
             sc.setstep("tim", 2);
             char.addtime(60);
@@ -227,7 +227,6 @@ room727.chatcatch = function (callback) {
             cl.changeClothing();
             cl.display();
             g.pass = g.internal = null;
-            g.mod("sissy", 20);
             g.mod("fuckPussy", 1);
             g.setflag("cindy");
             char.addtime(60);

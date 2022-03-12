@@ -3,7 +3,7 @@ var room228 = {};
 room228.main = function () {
     var navList = [0];
     char.map();
-    char.changeMenu("body", false);
+    char.changeMenu("body", false, true);
     g.pass = "";
     g.set("sewerID", 0);
     g.map = null;

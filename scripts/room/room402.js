@@ -138,7 +138,8 @@ room402.chatcatch = function (callback) {
             nav.bg("402_mens/jada1.jpg");
             break;
         case "points":
-            g.mod("sissy", 40);
+            g.mod("loadSwollowed", 1);
+            g.mod("receiveOralFemale", 1);
             nav.button({
                 "type": "tongue",
                 "name": "butthole",

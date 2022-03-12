@@ -337,7 +337,7 @@ room451.chatcatch = function (callback) {
             }, 451);
             break;
         case "gc1":
-            char.changeMenu("hide", false);
+            char.changeMenu("hide", false, true);
             nav.button({
                 "type": "btn",
                 "name": "gc1",
@@ -357,13 +357,11 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/gc6.jpg");
             break;
         case "gc8_swollow1":
-            g.mod("sissy", 50);
             g.mod("giveOralMale", 1);
             g.mod("loadSwollowed", 1);
             nav.bg("451_parkMensRoom/gc8_swollow1.jpg");
             break;
         case "gc8_face":
-            g.mod("sissy", 15);
             g.mod("giveOralMale", 1);
             g.mod("loadSpit", 1);
             cl.c.cumface = true;
@@ -486,12 +484,12 @@ room451.chatcatch = function (callback) {
             break;
         case "suckit4":
             g.mod("money", 20);
-            g.mod("sissy", 3);
+            g.mod("giveOralMale", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
         case "suckit5":
-            g.mod("sissy", 15);
+            g.mod("giveOralMale", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;

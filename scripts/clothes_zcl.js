@@ -89,6 +89,17 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             });
         }
     }
+    for (i = 0; i < cl.c.tattoo.length; i++) {
+        cl.displayMainWhere(cl.tattoo, cl.c.tattoo[i], top, left, ratio, dback);
+    }
+
+    if (cl.c.nipplering !== null && !dback) {
+        for (i = 0; i < cl.nipplering.length; i++)
+            if (cl.nipplering[i].name === cl.c.nipplering && cl.nipplering[i].chest === cl.c.chest) {
+                zcl.displayMainSub(cl.nipplering[i].image, top, left, ratio);
+                i = 99999;
+            }
+    }
     //set bodyhair
     var hairy = cl.getBodyHair();
     if (hairy !== null && !dback)

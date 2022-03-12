@@ -570,11 +570,11 @@ room208.chatcatch = function (callback) {
                 g.pass.hard1 = g.pass.hard2 = g.pass.hard3 = false;
                 if (sc.checkevent("missy", -2)) {
                     sc.setstep("missy", -2);
-                    g.mod("sissy", 300);
+                    g.mod("missyPoints", 100);
                     chat(34, 208);
                 }
                 else {
-                    g.mod("sissy", 30);
+                    g.mod("missyPoints", 30);
                     chat(35, 208);
                 }
             }

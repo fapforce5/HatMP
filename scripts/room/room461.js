@@ -195,7 +195,6 @@ room461.chatcatch = function (callback) {
                 sc.setstep("cultboy", 2);
             if (cl.c.butthole < 2)
                 cl.c.butthole += .2;
-            g.mod("sissy", 15);
             g.mod("creamPied", 1);
             g.mod("receiveAnalMale", 1);
             g.setflag("cultrun");

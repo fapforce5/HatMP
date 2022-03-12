@@ -99,20 +99,7 @@ room16.main = function () {
                 "night": "16_livingRoom/kitchenN.png"
             });
         }
-
-        if (thisMomRoomID.roomID === 26) {
-            btnList.push({
-                "type": "btn",
-                "name": "living",
-                "left": 1059,
-                "top": 200,
-                "width": 351,
-                "height": 385,
-                "image": "16_livingRoom/livingM.png",
-                "night": "16_livingRoom/livingMN.png"
-            });
-        }
-        else if (thisSisterRoomID.roomID === 26) {
+        if (thisMomRoomID.roomID === 26 && thisSisterRoomID.roomID === 26) {
             btnList.push({
                 "type": "btn",
                 "name": "living",
@@ -122,6 +109,18 @@ room16.main = function () {
                 "height": 385,
                 "image": "16_livingRoom/livingT.png",
                 "night": "16_livingRoom/livingTN.png"
+            });
+        }
+        else if (thisMomRoomID.roomID === 26) {
+            btnList.push({
+                "type": "btn",
+                "name": "living",
+                "left": 1059,
+                "top": 200,
+                "width": 351,
+                "height": 385,
+                "image": "16_livingRoom/livingM.png",
+                "night": "16_livingRoom/livingMN.png"
             });
         }
         else {
@@ -222,7 +221,6 @@ room16.chatcatch = function (callback) {
             sc.setstep("eva", 200);
             sc.setstep("landlord", 200);
             g.roomMapAccess(16, true, true);
-            g.mod("sissy", 100);
             cl.add("pj", "b");
             g.set("rentOwed", 0);
             char.room(10);
@@ -330,7 +328,7 @@ room16.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "landlord",
-            text: "Enough you too. " + sc.n("me") + "I'm sorry, you are going through a lot right now. We all support you, don't we " +
+            text: "Enough you too. " + sc.n("me") + " I'm sorry, you are going through a lot right now. We all support you, don't we " +
                 sc.n("eva") + "?",
             button: [
                 { chatID: 13, text: "...", callback: "" }

@@ -155,13 +155,14 @@ room403.chatcatch = function (callback) {
             }, 403);
             break;
         case "changeRoom7":
-            g.mod("sissy", 30);
+            g.mod("receiveOralFemale", 1);
             nav.bg("403_saucy/changeRoom7.jpg");
             break;
         case "changeRoom8":
             nav.bg("403_saucy/changeRoom8.jpg");
             break;
         case "changeRoom9":
+            g.mod("fuckPussy", 1);
             nav.bg("403_saucy/changeRoom9.jpg");
             break;
         case "changeRoom10":

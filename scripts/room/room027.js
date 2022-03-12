@@ -214,7 +214,7 @@ room27.chatcatch = function (callback) {
             break;
         case "checkem":
             nav.bg("27_mirror/charDisplay.jpg");
-            char.changeMenu("hide");
+            char.changeMenu("hide", false, true);
             var c = cl.appearanceClothes();
             var b = cl.appearanceBody();
             var bcTotal = c.totalPoints + b.totalPoints;

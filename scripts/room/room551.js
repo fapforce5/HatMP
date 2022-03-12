@@ -812,7 +812,7 @@ room551.chat = function (chatID) {
             speaker: "g",
             text: "Hay runt. I'm " + sc.n("g") + " I'm guessing you're here 'cause " + sc.n("missy") + " sent you to get trained. ",
             button: [
-                { chatID: 48, text: "Yes", callback: "crowbar" },
+                { chatID: 48, text: "Yes", callback: "crowbar" }
             ]
         },
         {

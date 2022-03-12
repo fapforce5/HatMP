@@ -574,7 +574,7 @@ room25.chat = function (chatID) {
             speaker: "landlord",
             text: "You don't have to pretend with me honey. I know you're an odd little boy. ",
             button: [
-                { chatID: -1, text: sc.n("landlord"), callback: "passtime5" }
+                { chatID: -1, text: sc.n("landlord") + "!!!", callback: "passtime5" }
             ]
         },
         {

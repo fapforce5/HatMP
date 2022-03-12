@@ -158,6 +158,10 @@ cl.list = [
     { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
     { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
 
+    { type: "nipple", name: "n_r", display: "Nipple Ring", img: "nipple_ring.png", sex: "f", inv: false, daring: 1, price: 20 },
+    { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
+    { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
+
     { type: "pj", name: "paisley", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "pj", name: "gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "pj", name: "b", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
@@ -538,6 +542,39 @@ cl.makeup = [
     { name: "hp", image: "body_head_heavy_purple.png" },
     { name: "rb", image: "body_head_ruin_black.png" },
     { name: "rp", image: "body_head_ruin_purple.png" }
+];
+
+cl.tattoo = [
+    { name: "fairy", image: null, back: "tattoo_fairy.png" },
+    { name: "trampstamp", image: null, back: "tattoo_trampstamp.png" },
+    { name: "bunny", image: "tattoo_bunny.png", back: null },
+    { name: "sissy", image: "tattoo_sissy.png", back: null },
+];
+
+cl.nipplering = [
+    { name: "n_r", chest: 6, image: "ring_n_r_6.png" },
+    { name: "n_r", chest: 5, image: "ring_n_r_5.png" },
+    { name: "n_r", chest: 4, image: "ring_n_r_4.png" },
+    { name: "n_r", chest: 3, image: "ring_n_r_3.png" },
+    { name: "n_r", chest: 2, image: "ring_n_r_2.png" },
+    { name: "n_r", chest: 1, image: "ring_n_r_1.png" },
+    { name: "n_r", chest: 0, image: "ring_n_r_1.png" },
+
+    { name: "n_b", chest: 6, image: "ring_n_b_6.png" },
+    { name: "n_b", chest: 5, image: "ring_n_b_5.png" },
+    { name: "n_b", chest: 4, image: "ring_n_b_4.png" },
+    { name: "n_b", chest: 3, image: "ring_n_b_3.png" },
+    { name: "n_b", chest: 2, image: "ring_n_b_2.png" },
+    { name: "n_b", chest: 1, image: "ring_n_b_1.png" },
+    { name: "n_b", chest: 0, image: "ring_n_b_1.png" },
+
+    { name: "n_g", chest: 6, image: "ring_n_g_6.png" },
+    { name: "n_g", chest: 5, image: "ring_n_g_5.png" },
+    { name: "n_g", chest: 4, image: "ring_n_g_4.png" },
+    { name: "n_g", chest: 3, image: "ring_n_g_3.png" },
+    { name: "n_g", chest: 2, image: "ring_n_g_2.png" },
+    { name: "n_g", chest: 1, image: "ring_n_g_1.png" },
+    { name: "n_g", chest: 0, image: "ring_n_g_1.png" },
 ];
 
 cl.getmakeup = function () {
@@ -1446,6 +1483,7 @@ cl.display = function () {
     $(".char-layer").css({
         "top": 50 * g.ratio + "px"
     });
+    $('.char-accBodyx').remove();
     if (g.tview === "p" || g.tview === "a") {
         $('#char-legs').html("");
         $('#char-chest').html("");
@@ -1512,6 +1550,22 @@ cl.display = function () {
         }
         else
             cl.subDisplay("char-buttplug", null);
+
+        for (i = 0; i < cl.c.tattoo.length; i++) {
+            for (j = 0; j < cl.tattoo.length; j++) {
+                if (cl.tattoo[j].name === cl.c.tattoo[i])
+                    cl.subDisplayAppend("char-accBody", !cback ? cl.tattoo[j].image : cl.tattoo[j].back);
+            }
+        }
+
+        if (cl.c.nipplering !== null && !cback) {
+            for (i = 0; i < cl.nipplering.length; i++)
+                if (cl.nipplering[i].name === cl.c.nipplering && cl.nipplering[i].chest === cl.c.chest) {
+                    cl.subDisplayAppend("char-accBody", cl.nipplering[i].image);
+                    i = 99999;
+                }
+        }
+
         //set bodyhair
         var hairy = cl.getBodyHair();
         if (hairy === null || cback)
@@ -1732,20 +1786,18 @@ cl.display = function () {
         else
             cl.subDisplay("char-shoes", null);
 
-        //set accessories
-        $('#char-accHead').html('');
-        $('#char-accBody').html('');
+        
         $.each(cl.c.accessories, function (i, v) {
             $.each(cl.accessories, function (j, u) {
                 if (v === u.name) {
                     var thisAccImg = cback ? u.back : u.image;
-
-                    if (u.type === "head" && thisAccImg !== null) {
-                        $('#char-accHead').append('<img src="./images/mainChar/' + thisAccImg + '" />');
-                    }
-                    else if (thisAccImg !== null) {
-                        $('#char-accBody').append('<img src="./images/mainChar/' + thisAccImg + '" />');
-                    }
+                    cl.subDisplayAppend("char-accBody", thisAccImg);
+                    //if (u.type === "head" && thisAccImg !== null) {
+                    //    $('#char-accHead').append('<img src="./images/mainChar/' + thisAccImg + '" />');
+                    //}
+                    //else if (thisAccImg !== null) {
+                    //    $('#char-accBody').append('<img src="./images/mainChar/' + thisAccImg + '" />');
+                    //}
                     return false;
                 }
             });
@@ -1766,6 +1818,14 @@ cl.cWhere = function (thisArray, entry, id) {
     });
 };
 
+cl.cWhereReturn = function (thisArray, thisName) {
+    var i;
+    for (i = 0; i < thisArray.length; i++)
+        if (thisArray[i].name === thisName) 
+            return i;
+    return null;
+};
+
 cl.subDisplay = function (id, image) {
     if (image !== null) {
         //var top = 20 * g.ratio;
@@ -1776,6 +1836,14 @@ cl.subDisplay = function (id, image) {
     }
     else
         $('#' + id).html('');
+};
+cl.subDisplayAppend = function (id, image) {
+    console.log(id, image);
+    if (image !== null) {
+        var btnWidth = 300 * g.ratio;
+        var btnHeight = 600 * g.ratio;
+        $('#' + id).after('<div class="char-accBodyx char-layer" style="top:' + 50*g.ratio + 'px;"><img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:0px; left:0px; position:absolute" /></div>');
+    }
 };
 
 

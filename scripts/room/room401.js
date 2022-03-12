@@ -137,8 +137,15 @@ room401.main = function () {
         case "makeup":
             navList = [0];
             room401.makeInv(["m"], true);
-            
             nav.bg("407_makeup/bg.jpg");
+            break;
+        case "nipple":
+            navList = [408];
+            g.pass.roomID = 408;
+            g.pass.changeClothes = true;
+            cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = cl.c.bra = null;
+            room401.makeClothing("nipple", "f");
+            nav.bg("408_tattoo/401.jpg");
             break;
         default:
             g.error("g.pass", g.pass);

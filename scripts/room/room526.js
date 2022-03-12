@@ -102,6 +102,17 @@ room526.btnclick = function (name) {
         case "zoey":
             nav.killall();
             nav.bg("526_bar/bgclose.jpg");
+            if (!g.get("keaton")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "keaton0",
+                    "left": 731,
+                    "top": 408,
+                    "width": 184,
+                    "height": 672,
+                    "image": "526_bar/keaton0.png"
+                }, 526);
+            }
             nav.button({
                 "type": "btn",
                 "name": "close",
@@ -170,6 +181,37 @@ room526.btnclick = function (name) {
             nav.killall();
             nav.bg("526_bar/z13_3.jpg");
             chat(47, 526);
+            break;
+        case "keaton0":
+            nav.killbutton("keaton0");
+            nav.button({
+                "type": "btn",
+                "name": "keaton1",
+                "left": 623,
+                "top": 107,
+                "width": 428,
+                "height": 973,
+                "image": "526_bar/keaton1.png"
+            }, 526);
+            if (sc.getstep("keaton") === 0) {
+                sc.setstep("keaton", 1);
+                chat(54, 526);
+            }
+            else {
+                chat(64, 526);
+            }
+            break;
+        case "k03":
+            if (g.internal < 6)
+                nav.bg("526_bar/k0" + g.internal + ".jpg");
+            else if (g.internal > 10) {
+                nav.bg("526_bar/k03.jpg");
+                nav.killall();
+                chat(62, 526);
+            }
+            else
+                nav.bg("526_bar/k0" + ((g.internal % 2) + 6) + ".jpg");
+            g.internal++;
             break;
         default:
             break;
@@ -242,7 +284,7 @@ room526.chatcatch = function (callback) {
             break;
         case "g1_1":
             nav.killall();
-            char.changeMenu("hide", false);
+            char.changeMenu("hide", false, true);
             if (cl.c.chastity !== null) {
                 nav.bg("526_bar/g1_chastity.jpg");
                 chat(27, 526);
@@ -285,7 +327,6 @@ room526.chatcatch = function (callback) {
                 "height": 150,
                 "image": "526_bar/arrowRight.png"
             }, 526);
-            
             break;
         case "g1_end":
             sc.setstep("poppy", 2);
@@ -310,7 +351,7 @@ room526.chatcatch = function (callback) {
             nav.bg("526_bar/wash.jpg");
             break;
         case "wash1":
-            scc.love("zoey", 10, 80);
+            scc.love("zoey", 10, 100);
             var zoeyy = sc.getstep("zoey");
             if (g.gethourdecimal() > 12) {
                 g.dt.setDate(g.dt.getDate() + 1);
@@ -381,8 +422,58 @@ room526.chatcatch = function (callback) {
                 char.room(28);
             }, 500);
             break;
+        case "k01":
+            nav.killall();
+            nav.bg("526_bar/k01.jpg");
+            break;
+        case "k02":
+            nav.killall();
+            if (cl.c.chastity === null)
+                chat(58, 526);
+            else if (cl.c.cock > 2) {
+                nav.bg("526_bar/k02s.jpg");
+                chat(59, 526);
+            }
+            else {
+                nav.bg("526_bar/k02.jpg");
+                chat(60, 526);
+            }
+            break;
+        case "k03":
+            nav.bg("526_bar/k03.jpg");
+            g.internal = 4;
+            nav.button({
+                "type": "btn",
+                "name": "k03",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 526);
+            break;
+        case "k08":
+            nav.bg("526_bar/k08.jpg");
+            break;
+        case "k09":
+            g.mod("giveAnalMale", 1);
+            g.mod("giveOralMale", 1);
+            g.setflag("keaton");
+            cl.doCum(false);
+            char.room(526);
+            break;
+        case "kno":
+            g.setflag("keaton");
+            char.room(526);
+            break;
+        case "kagain":
+            
+            break;
         case "leave":
             char.room(0);
+            break;
+        case "reset":
+            char.room(526);
             break;
         default:
             break;
@@ -841,6 +932,98 @@ room526.chat = function (chatID) {
                 "you are perfect for me. So do you want to come to my house and cuddle me to sleep?",
             button: [
                 { chatID: -1, text: "Yes I do. ", callback: "z13_5" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "keaton",
+            text: "Well looky here. If it isn't a new cock. I'm " + sc.n("keaton") + " and I have a couple holes you can use. ",
+            button: [
+                { chatID: 55, text: "Oh wow. Hello. ", callback: "k01" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "keaton",
+            text: "Soo what do you think? ",
+            button: [
+                { chatID: 56, text: "Huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "zoey",
+            text: sc.n("keaton") + "! You are the sluttiest slut I know. Just don't get any cum on my floor again! ",
+            button: [
+                { chatID: 57, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "keaton",
+            text: "Oh honey, you know I'll lick up anything that falls. I've got to get to this new cock! Pull it " +
+                "out new girl, I'm hungry. ",
+            button: [
+                { chatID: -1, text: "Pull your dick out.", callback: "k02" },
+                { chatID: -1, text: "Sorry. I'm more of a total bottom. ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "keaton",
+            text: "Awww you're all locked up. Too bad I would have been the best you've ever had! ",
+            button: [
+                { chatID: -1, text: "Oh yeah. Ok. ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "keaton",
+            text: "Baby. I'm looking to get fucked, not tickeled. You need to put that thing away and never show it " +
+                "to another human again. ",
+            button: [
+                { chatID: -1, text: "Oh yeah. Ok. ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "keaton",
+            text: "That's the kind of cock I need! ",
+            button: [
+                { chatID: 61, text: "Oh yeah. Ok. ", callback: "k03" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "keaton",
+            text: "Feed me papi. Fuck my face and make me choke!",
+            button: [
+                { chatID: -1, text: "!", callback: "k04" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "keaton",
+            text: "Shoot it all over my face! Cover me in your cum! ",
+            button: [
+                { chatID: 63, text: "[cum]", callback: "k08" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "keaton",
+            text: "I'm going to snack on this all night! ",
+            button: [
+                { chatID: -1, text: "Finish", callback: "k09" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "keaton",
+            text: "Are you here to fuck me again?",
+            button: [
+                { chatID: -1, text: "Pull your dick out.", callback: "k02" },
+                { chatID: -1, text: "Nope", callback: "kno" }
             ]
         },
     ];

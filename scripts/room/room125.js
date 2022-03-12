@@ -55,7 +55,7 @@ room125.main = function () {
     }
     nav.buildnav(navList);
     if (cl.c.chest > 2 && !sc.checkevent("kei", -1)) {
-        char.changeMenu("hide", false);
+        char.changeMenu("hide", false, true);
         nav.killall();
         nav.bg("125_poker/t1.jpg");
         sc.setstep("kei", -1);
@@ -517,11 +517,10 @@ room125.chatcatch = function (callback) {
             break;
         case "trun":
             g.setflag("cardgame");
-            g.mod("sissy", -20);
             char.room(0);
             break;
         case "t1":
-            char.changeMenu("hide", false);
+            char.changeMenu("hide", false, true);
             break;
         case "t2":
             nav.bg("125_poker/t2.jpg");
@@ -555,7 +554,6 @@ room125.chatcatch = function (callback) {
             break;
         case "t12":
             g.mod("giveOralMale", 3);
-            g.mod("sissy", 50);
             sc.setstep("kei", -2);
             g.setflag("cardgame");
             char.room(0);

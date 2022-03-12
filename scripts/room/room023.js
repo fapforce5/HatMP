@@ -2,6 +2,8 @@
 var room23 = {};
 
 room23.main = function () {
+    g.prevview = null;
+    char.changeMenu("body", false, true);
     g.internal = { eva: 0, lola: 0, evaNude: 3, lolaNude: 3, speaker: "", holder: "", pantyBoy: false };
     var truth = [
         {
@@ -204,8 +206,8 @@ room23.main = function () {
             { chatID: -1, text: "Hell no!", callback: "" }]
         },
         {
-            q: "We know you wear panties, but would you ever wear women's clothes?",
-            b: [{ chatID: 10, text: "Only if it's sexy", callback: "lolaTalk" },
+            q: "Have you ever picked your nose?",
+            b: [{ chatID: 10, text: "Everyone does. ", callback: "lolaTalk" },
             { chatID: -1, text: "Not a chance", callback: "" }]
         },
         {
@@ -214,9 +216,9 @@ room23.main = function () {
             { chatID: -1, text: "No, not yet", callback: "" }]
         },
         {
-            q: "Do you like wearing " + sc.n("lola") + "'s panties?",
-            b: [{ chatID: 11, text: "Yes", callback: "evaTalk" },
-            { chatID: -1, text: "No", callback: "" }]
+            q: "Have you ever peed in a pool?",
+            b: [{ chatID: 11, text: "Sure, everyone has at least once.", callback: "evaTalk" },
+            { chatID: -1, text: "No, gross", callback: "" }]
         },
         {
             q: "Have you ever tasted your own cum?",
@@ -252,7 +254,7 @@ room23.main = function () {
     var myDare = [
         {
             q: "Take your shirt off and show off your chest!",
-            b: [{ chatID: 14, text: "Awww Really? [Take Shirt off]", callback: "lolaTalk pantyBoy" }]
+            b: [{ chatID: -1, text: "Awww Really? [Take Shirt off]", callback: "lolaTalk pantyBoy" }]
         },
         {
             q: "Take your pants off!",
@@ -371,13 +373,14 @@ room23.chatcatch = function (callback) {
                 var left = 20 * g.ratio;
                 var btnWidth = 300 * g.ratio;
                 var btnHeight = 600 * g.ratio;
-                //$('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
-
+                if (cl.c.bra === null)
+                    chat(14, 23);
+                else
+                    chat(47, 23);
                 break;
             case "removePants":
                 cl.c.pants = null;
                 cl.display();
-                //$('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
                 break;
             case "evaStrip":
                 if (g.internal.evaNude > 1) {
@@ -414,6 +417,12 @@ room23.chatcatch = function (callback) {
                 cl.display();
                 if (g.internal.pantyBoy)
                     $('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+                if (cl.list[cl.where("panties", cl.c.panties)].sex === "m")
+                    chat(35, 23);
+                else {
+                    room23.chatcatch("evaSit");
+                    chat(53, 23);
+                }
                 break;
             case "pantyStrip1":
                 nav.killbutton("eva");
@@ -456,8 +465,21 @@ room23.chatcatch = function (callback) {
                 g.pass = "kickOutTorD";
                 char.room(10);
                 break;
+            case "suprise1":
+                nav.button({
+                    "type": "img",
+                    "name": "suprise1",
+                    "left": 1513,
+                    "top": 0,
+                    "width": 407,
+                    "height": 943,
+                    "image": "24_spinTheBottle/suprise1.png"
+                }, 24);
+                break;
+            case "suprise2":
+                chat(8, 16);
+                break;
             default:
-
                 break;
 
         }
@@ -573,7 +595,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: g.internal.speaker,
-                text: sc.n("me") + "Truth or Dare",
+                text: sc.n("me") + " Truth or Dare",
                 button: [
                     { chatID: 8, text: "Truth", callback: "" },
                     { chatID: 500, text: "Dare", callback: "" }
@@ -735,14 +757,14 @@ room23.chat = function (chatID) {
                 text: "OK, " + sc.n("me") + " you strip down to your underwear so " + sc.n("lola") + " can't chicken out!",
                 button: [
                     { chatID: 34, text: "What, it's not my turn.", callback: "evaTalk" },
-                    { chatID: 35, text: "Fuck yea!", callback: "meStrip evaTalk" }
+                    { chatID: -1, text: "Fuck yea!", callback: "meStrip evaTalk" }
                 ]
             },
             {
                 chatID: 34,
                 speaker: "eva",
                 text: "Don't be a pussy, take it off! Now chicken!",
-                button: [{ chatID: 35, text: "Ok fine.... ", callback: "meStrip" }]
+                button: [{ chatID: -1, text: "Ok fine.... ", callback: "meStrip" }]
             },
             {
                 chatID: 35,
@@ -809,8 +831,69 @@ room23.chat = function (chatID) {
             {
                 chatID: 45,
                 speaker: "lola",
-                text: sc.n("eva") + "Truth or Dare",
+                text: sc.n("eva") + " Truth or Dare",
                 button: [{ chatID: 3, text: "...", callback: "evaTalk lolaSit" }]
+            },
+            {
+                chatID: 46,
+                speaker: "lola",
+                text: "End event",
+                button: [{ chatID: -1, text: "...", callback: "" }]
+            },
+            {
+                chatID: 47,
+                speaker: "lola",
+                text: "AAAA! Are you wearing a bra?",
+                button: [{ chatID: 48, text: "Oh that....", callback: "" }]
+            },
+            {
+                chatID: 48,
+                speaker: "eva",
+                text: "Hahaha! Are you a girl!",
+                button: [{ chatID: 49, text: "Well, uh..", callback: "" }]
+            },
+            {
+                chatID: 49,
+                speaker: "eva",
+                text: "Hahaha! Are you a girl!",
+                button: [{ chatID: 50, text: "Well, uh..", callback: "suprise1" }]
+            },
+            {
+                chatID: 50,
+                speaker: "landlord",
+                text: "I heard a noise. What's going on here? What are you three doing! ",
+                button: [{ chatID: 51, text: "Oh, Hi, what?", callback: "" }]
+            },
+            {
+                chatID: 51,
+                speaker: "landlord",
+                text: sc.n("me") + " are you wearing a bra? Did you girls put him up to this? ",
+                button: [{ chatID: 52, text: "Oh, Hi, what?", callback: "" }]
+            },
+            {
+                chatID: 52,
+                speaker: "lola",
+                text: "Oh no, we were just playing a game. I don't know why " + sc.n("me") + " is wearing a bra. ",
+                button: [{ chatID: -1, text: "...", callback: "suprise2" }]
+            },
+            {
+                chatID: 53,
+                speaker: "lola",
+                text: "Hahaha. You're wearing panties! ",
+                button: [{ chatID: 54, text: "...", callback: "" }]
+            },
+            {
+                chatID: 54,
+                speaker: "eva",
+                text: "What a pervert! I can't believe you're walking around in panties! Such a weird-o!",
+                button: [{ chatID: 55, text: "...", callback: "suprise1" }]
+            },
+            {
+                chatID: 55,
+                speaker: "landlord",
+                text: "What are you three doing! ... Oh my. " + sc.n("me") + " are you wearing panties? I'm so sorry, I must have " +
+                    "interrupted your coming out to your " + sc.n("el") + ". ",
+                button: [{ chatID: -1, text: "Oh wait...", callback: "suprise2" }]
             },
         ];
         retEntry = cArray[chatID];

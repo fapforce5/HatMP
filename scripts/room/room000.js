@@ -7,7 +7,7 @@ room0.main = function () {
     g.pass = g.internal = "";
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
-        char.changeMenu("hide", false);
+        char.changeMenu("hide", false, true);
     var tempMap = g.get("map");
     if (tempMap === 0)
         room0.btnclick("map_0");
@@ -15,7 +15,7 @@ room0.main = function () {
         room0.btnclick("map_2");
     else
         room0.btnclick("map_1");
-    setTimeout(function () { $('#room_footer').hide(); }, 200)
+    setTimeout(function () { $('#room_footer').hide(); }, 200);
 };
 
 room0.btnclick = function (name) {
@@ -39,8 +39,12 @@ room0.btnclick = function (name) {
     }
     else if (name === "redrawIcons") {
         nav.killall();
+        
+        
         var btnList = new Array();
         var tempMap = g.get("map");
+        g.internal = tempMap;
+        room0.chatcatch("walk");
         $.each(g.roomMap, function (i, v) {
             if (tempMap === v.map) {
                 if (g.isNight() && v.darkAccess) {
@@ -138,7 +142,37 @@ room0.btnclick = function (name) {
 
 room0.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "walk":
+            if (g.walk !== null) {
+                var pstep = sc.get(g.walk);
+                var i;
+                var pointer, mp;
+                for (i = 0; i < sc.events.length; i++) {
+                    if (sc.events[i].name === g.walk && sc.events[i].step <= pstep.step) {
+                        pointer = i;
+                    }
+                }
+                if (sc.events[pointer].name === g.walk) {
+                    var roomId = sc.events[pointer].m[0];
+                    for (i = 0; i < g.roomMap.length; i++) {
+                        if (g.roomMap[i].roomID === roomId) {
+                            mp = g.roomMap[i];
+                            i = 999999;
+                        }
+                    }
+                    if (mp.map === g.internal)
+                        nav.button({
+                            "type": "img",
+                            "name": "xxx",
+                            "left": mp.left + (mp.width / 2) - 200,
+                            "top": mp.top + (mp.height / 2) - 200,
+                            "width": 400,
+                            "height": 400,
+                            "image": "map/marker.png"
+                        }, 0);
+                    g.internal = null;
+                }
+            }
             break;
         default:
             break;

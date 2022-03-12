@@ -721,7 +721,7 @@ room200.chatcatch = function (callback) {
             break;
         case "g2_furniture_1":
             g.mod("money", 20);
-            g.mod("sissy", 30);
+            g.mod("missyPoints", 30);
             g.sissy[2].ach = true;
             room209.chatcatch("end");
             break;

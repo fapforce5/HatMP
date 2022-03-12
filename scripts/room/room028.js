@@ -131,7 +131,7 @@ room28.main = function () {
             cl.c.hairLength++;
         cl.c.lastHairCut = 0;
     }
-    
+
 
     if (thisautohormone) {
         var hx = inv.getIndex("hormone");
@@ -178,7 +178,7 @@ room28.main = function () {
                 cl.c.cock++;
                 thisImg = "cock_" + cl.c.cock + ".gif";
                 g.sissy[cl.c.cock + 6].ach = true;
-            break;
+                break;
             //case "lip":
             //cl.c.lip++;
             //thisImg = "lip_" + cl.c.lip + ".gif";
@@ -200,36 +200,6 @@ room28.main = function () {
             char.room(returnRoomID);
         }, 1000);
     }
-    /*
-    var btnList = null;
-    if (thisTinyPP && cl.c.cock < 5) {
-        chat(1, 28);
-    }
-    else if (cl.c.chest === 0 && fitnesslevel > 0) {
-        console.log("fit");
-        room28.btnclick("init");
-        chat(0, 28);
-    }
-    else if (hormoneLevel > 65 && g.get("sissy") > 95) {
-        g.set("sissy", 0);
-        g.mod("sissyLevel", 1);
-        room28.btnclick("init");
-        chat(2, 28);
-    }
-    else {
-        g.roomTimeout = setTimeout(function () {
-            var returnRoomID = g.pass;
-            g.pass = "endSleepyTime";
-            char.room(returnRoomID);
-        }, 1000);
-    }
-
-    if (btnList !== null) {
-        $.each(btnList, function (i, v) {
-            nav.button(v, 28);
-        });
-    }
-    */
 };
 
 room28.btnclick = function (name) {
@@ -472,26 +442,12 @@ room28.btnclick = function (name) {
             xwidth = 271 * g.ratio;
             tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Money</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Trade 100 Sissy Points for $100</div>';
             if (g.get("sissy") > 100) {
-                nav.button({
-                    "type": "btn",
-                    "name": "moneymoney",
-                    "left": 1634,
-                    "top": 850,
-                    "width": 271,
-                    "height": 72,
-                    "title": "Unlock",
-                    "image": "28_transformation/money_b.png"
-                }, 28);
+                alert('killme');
             }
             else
                 tText += '<div style="color: #ffffff; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">Not enough points</div>You only have ' + g.get('sissy') + ' sissy points</div>';
             xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
             $('#room-buttons').append(xline);
-            break;
-        case "moneymoney":
-            g.mod("sissy", -100);
-            g.mod("money", 100);
-            char.room(209);
             break;
         case "cancelcancel":
             char.room(209);
@@ -618,8 +574,6 @@ room28.chatcatch = function (callback) {
         case "endPills":
             g.mod("energy", -100);
             scc.love("missy", 5);
-            //g.set("sissy", 0);
-            //g.mod("sissy", 5);
             char.addtime(220);
             char.room(203);
             break;

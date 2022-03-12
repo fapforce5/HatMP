@@ -221,7 +221,7 @@ room901.btnclick = function (name) {
             else {
                 nav.killall();
                 nav.bg("901_pool/race.jpg");
-                char.changeMenu("hide", false);
+                char.changeMenu("hide", false, true);
                 g.internal = 150;
                 nav.button({
                     "type": "img",
@@ -373,7 +373,7 @@ room901.chatcatch = function (callback) {
         case "swimfan":
             nav.killall();
             nav.bg("901_pool/race.jpg");
-            char.changeMenu("hide", false);
+            char.changeMenu("hide", false, true);
             g.internal = { m: 150, f: 150 };
             nav.button({
                 "type": "img",

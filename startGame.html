@@ -20,6 +20,7 @@
     <script src="./scripts/map.js" type="text/javascript"></script>
     <script src="./scripts/enemy.js" type="text/javascript"></script>
     <script src="./scripts/enemyEnd.js" type="text/javascript"></script>
+    <script src="./scripts/trophy.js" type="text/javascript"></script>
 
     <script src="./scripts/room/room000.js" type="text/javascript"></script>
     <script src="./scripts/room/room001.js" type="text/javascript"></script>
@@ -80,6 +81,7 @@
     <script src="./scripts/room/room208.js" type="text/javascript"></script>
     <script src="./scripts/room/room209.js" type="text/javascript"></script>
     <script src="./scripts/room/room210.js" type="text/javascript"></script>
+    <script src="./scripts/room/room211.js" type="text/javascript"></script>
     <script src="./scripts/room/room225.js" type="text/javascript"></script>
     <script src="./scripts/room/room226.js" type="text/javascript"></script>
     <script src="./scripts/room/room227.js" type="text/javascript"></script>
@@ -97,6 +99,7 @@
     <script src="./scripts/room/room405.js" type="text/javascript"></script>
     <script src="./scripts/room/room406.js" type="text/javascript"></script>
     <script src="./scripts/room/room407.js" type="text/javascript"></script>
+    <script src="./scripts/room/room408.js" type="text/javascript"></script>
     <script src="./scripts/room/room425.js" type="text/javascript"></script>
     <script src="./scripts/room/room450.js" type="text/javascript"></script>
     <script src="./scripts/room/room451.js" type="text/javascript"></script>
@@ -212,8 +215,8 @@
             <button class="resize rl-change" data-type="graph">
                 <img src="./images/general/btnGraph.jpg" title="Graph" style="width:100%;" />
             </button>
-            <button class="resize rl-change" data-type="hide">
-                <img src="./images/general/btnHide.jpg" title="Hide" style="width:100%;" />
+            <button class="resize rl-change" data-type="walk">
+                <img src="./images/general/btnHide.jpg" title="Walkthrough" style="width:100%;" />
             </button>
             <div id="room_left_char">
                 <div class="char-container">
@@ -262,6 +265,9 @@
 
             </div>
             <div id="room_left_map" class="left-menu">
+            </div>
+            <div id="room_left_walk" class="left-menu">
+                <div id="room_left_walk_sub" class="resize"></div>
             </div>
             <div id="room_left_graph" class="left-menu">
                 <div style="padding:5px; background:rgba(255, 255, 255, .7);">

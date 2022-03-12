@@ -98,7 +98,6 @@ room456.chatcatch = function (callback) {
             break;
         case "cop11":
             g.mod("giveOralMale", 1);
-            g.mod("sissy", 10);
             sc.setstep("me", -9);
             cl.c.cumface = true;
             nav.bg("456_bench/sleepdark.jpg", "456_bench/sleepdark.jpg");

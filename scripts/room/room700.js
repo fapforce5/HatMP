@@ -51,7 +51,7 @@ room700.chatcatch = function (callback) {
             }
             break;
         case "follow":
-            char.changeMenu("body");
+            char.changeMenu("body", false, true);
             nav.killall();
             nav.bg("701_hospitalroom/rooms.jpg");
             if (g.internal === "boob")
@@ -60,14 +60,14 @@ room700.chatcatch = function (callback) {
                 chat(8, 700);
             break;
         case "smalltits":
-            char.changeMenu("body");
+            char.changeMenu("body", false, true);
             cl.c.chest -= 1;
             if (cl.c.chest < 1)
                 cl.c.chest = 1;
             cl.display();
             break;
         case "smallass":
-            char.changeMenu("body");
+            char.changeMenu("body", false, true);
             cl.c.leg -= 1;
             if (cl.c.leg < 0)
                 cl.c.leg = 0;

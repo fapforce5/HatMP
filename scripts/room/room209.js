@@ -220,7 +220,7 @@ room209.btnclick = function (name) {
         case "selectStart":
             nav.killall();
             $("#room_footer").hide();
-            char.changeMenu("hide");
+            char.changeMenu("hide", false, true);
             nav.bg("28_transformation\grid.jpg");
             room210.main();
             break;
@@ -263,6 +263,7 @@ room209.btnclick = function (name) {
         case "h_8":
         case "h_9":
         case "h_10":
+            g.spendSissy(name);
             g.set("oncase", "smolpp");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
@@ -282,6 +283,7 @@ room209.btnclick = function (name) {
             chat(84, 209);
             break;
         case "h_13":
+            g.spendSissy(name);
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -296,6 +298,10 @@ room209.btnclick = function (name) {
                 chat(182, 209);
             }
             
+            break;
+        case "h_14":
+            g.spendSissy(name);
+            alert("add pink room");
             break;
         case "h_15":
             nav.bg("209_classroom/bg.jpg");
@@ -315,6 +321,10 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             room209.btnclick("displaypbtn");
             chat(90, 209);
+            break;
+        case "h_17":
+            g.spendSissy(name);
+            alert("add anal");
             break;
         case "h_19":
             nav.bg("209_classroom/bg.jpg");
@@ -362,7 +372,11 @@ room209.btnclick = function (name) {
             room209.btnclick("displaypbtn");
             chat(49, 209);
             break;
+        case "h_25":
+            //heels
+            break;
         case "h_26":
+            g.spendSissy(name);
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -371,8 +385,9 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(144, 209);
             break;
-        case "h_25":
-            //heels
+        case "h_27":
+            g.spendSissy(name);
+            alert("add piercing");
             break;
         case "h_28":
             nav.bg("209_classroom/bg.jpg");
@@ -392,7 +407,12 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(61, 209);
             break;
+        case "h_30":
+            g.spendSissy(name);
+            alert("add tattoo");
+            break;
         case "h_31":
+            g.spendSissy(name);
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             nav.button({
@@ -412,6 +432,7 @@ room209.btnclick = function (name) {
         case "h_32":
         case "h_33":
         case "h_34":
+            g.spendSissy(name);
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             nav.button({
@@ -438,6 +459,7 @@ room209.btnclick = function (name) {
         case "h_37":
         case "h_38":
         case "h_39":
+            g.spendSissy(name);
             g.set("oncase", "bigboobs");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
@@ -452,6 +474,7 @@ room209.btnclick = function (name) {
         case "h_42":
         case "h_43":
         case "h_44":
+            g.spendSissy(name);
             g.set("oncase", "bigass");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
@@ -463,6 +486,7 @@ room209.btnclick = function (name) {
             break;
         case "h_45":
         case "h_46":
+            g.spendSissy(name);
             g.set("oncase", "dslLips");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
@@ -472,13 +496,13 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(63, 209);
             break;
+        case "h_50":
+            g.spendSissy(name);
+            alert("add blackroom");
+            break;
         case "h_51":
-            nav.bg("209_classroom/bg.jpg");
             nav.killall();
-            room209.btnclick("bb1");
-            room209.btnclick("poster0");
-            room209.btnclick("displayChairsit");
-            room209.btnclick("displaypbtn");
+            nav.bg("209_classroom/h51_1.jpg");
             chat(132, 209);
             break;
         case "h_55":
@@ -541,7 +565,7 @@ room209.chatcatch = function (callback) {
             break;
         case "missy0_end":
             g.sissy[54].ach = true;
-            g.mod("sissy", 10);
+            g.mod("missyPoints", 1);
             g.mod("money", 30);
             room209.chatcatch("end");
             break;
@@ -553,7 +577,7 @@ room209.chatcatch = function (callback) {
             nav.bg("209_classroom/missy0_2.jpg");
             break;
         case "missy0Display":
-            char.changeMenu("hide");
+            char.changeMenu("hide", false, true);
             room210.main();
             nav.button({
                 "type": "img",
@@ -617,7 +641,7 @@ room209.chatcatch = function (callback) {
             break;
         case "h_3_vr2":
             g.sissy[3].ach = true;
-            g.mod("sissy", 100);
+            g.mod("missyPoints", 10);
             room209.chatcatch("end");
             break;
         case "m2_2":
@@ -645,7 +669,7 @@ room209.chatcatch = function (callback) {
             nav.bg("209_classroom/p3_x.jpg");
             break;
         case "m2_end":
-            g.mod("sissy", 60);
+            g.mod("missyPoints", 30);
             g.mod("money", 40);
             scc.love("missy", 10);
             g.sissy[1].ach = true;
@@ -693,7 +717,7 @@ room209.chatcatch = function (callback) {
             break;
         case "h6_end":
             g.mod("money", 50);
-            g.mod("sissy", 40);
+            g.mod("missyPoints", 40);
             cl.undo();
             g.sissy[6].ach = true;
             room209.chatcatch("end");
@@ -917,7 +941,7 @@ room209.chatcatch = function (callback) {
             }, 209);
             break;
         case "h16_end":
-            g.mod("sissy", 40);
+            g.mod("missyPoints", 40);
             scc.love("missy", 10, 100);
             g.mod("money", 40);
             g.sissy[16].ach = true;
@@ -980,7 +1004,7 @@ room209.chatcatch = function (callback) {
             zcl.displayMain(-700, 300, .35, "panties", true);
             break;
         case "p20_end":
-            g.mod("sissy", 10);
+            g.mod("missyPoints", 10);
             g.mod("money", 40);
             g.sissy[20].ach = true;
             room209.chatcatch("end");
@@ -993,7 +1017,7 @@ room209.chatcatch = function (callback) {
             nav.bg("209_classroom/h21_2.jpg");
             break;
         case "h_21_end":
-            g.mod("sissy", 10);
+            g.mod("missyPoints", 10);
             g.mod("money", 40);
             g.sissy[21].ach = true;
             room209.chatcatch("end");
@@ -1032,7 +1056,7 @@ room209.chatcatch = function (callback) {
             g.roomTimeout = setTimeout(function () { chat(124, 209); }, 1500);
             break;
         case "h_22_5":
-            g.mod("sissy", 10);
+            g.mod("missyPoints", 10);
             g.mod("money", 40);
             g.sissy[22].ach = true;
             room209.chatcatch("end");
@@ -1077,7 +1101,7 @@ room209.chatcatch = function (callback) {
             break;
         case "h24_6":
             g.sissy[24].ach = true;
-            g.mod("sissy", 10);
+            g.mod("missyPoints", 10);
             g.mod("money", 40);
             g.roomMapAccess(650, true, true);
             sc.setstep("tiffany", -8);
@@ -1089,9 +1113,23 @@ room209.chatcatch = function (callback) {
             cl.display();
             room209.chatcatch("end");
             break;
-        
-
-
+        case "h_26":
+            g.sissy[26].ach = true;
+            nav.killall();
+            nav.bg("209_classroom/h_26.jpg");
+            cl.c.makeup = "mb";
+            g.roomMapAccess(407, true, false);
+            zcl.displayMain(100, 690, .23, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "p",
+                "left": 654,
+                "top": 91,
+                "width": 678,
+                "height": 989,
+                "image": "209_classroom/h_26.png"
+            }, 209);
+            break;
         case "h28_x":
             g.pass = "h28_x";
             char.room(200);
@@ -1180,7 +1218,16 @@ room209.chatcatch = function (callback) {
             g.mod("money", 20);
             room209.chatcatch("end");
             break;
-        case "h_51":
+        case "h51_2":
+            nav.bg("209_classroom/h51_2.jpg");
+            break;
+        case "h51_3":
+            nav.bg("209_classroom/h51_3.jpg");
+            break;
+        case "h51_4":
+            nav.bg("209_classroom/h51_4.jpg");
+            break;
+        case "h51_5":
             g.sissy[51].ach = true;
             sc.setstep("spanky", 3);
             inv.addMulti("hormone", 10);
@@ -1359,7 +1406,7 @@ room209.chatcatch = function (callback) {
             room209.btnclick("selectStart");
             break;
         case "missyMidPoints":
-            g.mod("sissy", 100);
+            g.mod("missyPoints", 50);
             scc.setlove("missy", 0);
             room209.btnclick("appearanceStart");
             break;
@@ -1387,6 +1434,7 @@ room209.chatcatch = function (callback) {
             cl.c.shoes = "fb";
             cl.c.pants = "k";
             cl.c.shirt = "r";
+            cl.c.bra = "p";
             cl.c.socks = null;
             cl.display();
             room209.btnclick("displayChairsit");
@@ -1394,6 +1442,9 @@ room209.chatcatch = function (callback) {
             break;
         case "reset":
             char.room(209);
+            break;
+        case "leave":
+            room209.chatcatch("end");
             break;
         default:
             break;
@@ -2569,32 +2620,30 @@ room209.chat = function (chatID) {
             {
                 chatID: 132,
                 speaker: "p",
-                text: "I'm going to talk to you about hormones today. You see your body betrays your true self. You want to look, " +
-                    "act, even taste like a girl. Have a smooth body, long hair, plump butt, and even some boobies. You body " +
-                    "won't let you do this thing you want to much, so you need help. ",
+                text: "I'm going to give you a little lesson on how hormones help you achieve your true sissy potential. " +
+                    "Right now you have the mind of a sissy, but the body of a boy.That pesky testosterone is blocking your " +
+                    "true potential. We need to have your body match your mind.",
                 button: [
-                    { chatID: 133, text: "Help?", callback: "" }
+                    { chatID: 133, text: "Help?", callback: "h51_2" }
                 ]
             },
             {
                 chatID: 133,
                 speaker: "p",
-                text: "Yes. You need your body to stop pumping your body full of testosterone and start filling it with estrogen. " +
-                    "Lucky for you " + sc.n("spanky") + " has a solution with his special little pills. Take the pills so that " +
-                    "your body can match your mind. ",
+                text: "More than that. Since you first started here I've been able to smell the testosterone oozing from your " +
+                    "pores and it stinks. I've tolerated it this long, but I won't tolerate it any longer. ",
                 button: [
-                    { chatID: 134, text: "ok!", callback: "" }
+                    { chatID: 134, text: "...", callback: "h51_3" }
                 ]
             },
             {
                 chatID: 134,
                 speaker: "p",
-                text: "To continue to be trained by me, you must take your pills to rid yourself of that dirty testosterone and " +
-                    "fill yourself with lovely estrogen. I'll give you 10 pills to start. I recommend taking them every day. It will " +
-                    "take some time to raise your levels. You'll also find some great added bonuses like slowed body hair growth " +
-                    "as your body accepts its sissyness. ",
+                text: "The male body is purly utilitarian. A body for work with no aesthetics. Sexual desires is rooted in beauty. " +
+                    "The large breasts, plump lips, wide hips, long hair, and smooth skin. You have too look like an object of sex " +
+                    "iif you want to be desired. That's where the pills come in. ",
                 button: [
-                    { chatID: -1, text: "I'll take my pills", callback: "h_51" }
+                    { chatID: 183, text: "...", callback: "h51_4" }
                 ]
             },
             {
@@ -2679,10 +2728,9 @@ room209.chat = function (chatID) {
             {
                 chatID: 144,
                 speaker: "missy",
-                text: "I promised " + sc.n("tiffany") + " we would let her teach you how to wear makup. Go see her in her " +
-                    "apartment and she'll give you some lessons. ",
+                text: "Let's make you into a pretty girl! ",
                 button: [
-                    { chatID: -1, text: "Ok, I'll go see " + sc.n("tiffany") + ".", callback: "reset" }
+                    { chatID: 186, text: "Sweet! I'm going to be a pretty girl!", callback: "h_26" }
                 ]
             },
             {
@@ -3027,6 +3075,45 @@ room209.chat = function (chatID) {
                     "She'll show you how to suck a cock like the sissy you are. She likes to hang out in the toilets. ",
                 button: [
                     { chatID: -1, text: "Ok. I'll see " + sc.n("cecilia") + " in the park bathroom this weekend. ", callback: "h_13" }
+                ]
+            },
+            {
+                chatID: 183,
+                speaker: "p",
+                text: "These pills I'm going to give will help in 6 main areas of sexual attraction. They will natrually increase the " +
+                    "speed and thickness that your hair grows while significantly slowing your body hair growth. ",
+                button: [
+                    { chatID: 184, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 184,
+                speaker: "p",
+                text: "We also have an experiment body modification combo that will speed up your feminine transformation, but it only " +
+                    "works if your estrogen levels are high enough to take the change. You can only take 1 pill a day, but once " +
+                    "your levels are high enough you just need to take a pill to maintain your estrogen levels. ",
+                button: [
+                    { chatID: 185, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 185,
+                speaker: "p",
+                text: "I'm going to give you 10 of " + sc.n("spanky") + "'s special estrogen pills which should be enough to get you " +
+                    "started. If you want to continue training with me you need to use them. I don't want to smell that nasty " +
+                    "testosterone smell on you any further. ",
+                button: [
+                    { chatID: 186, text: "Thanks!", callback: "h51_5" }
+                ]
+            },
+            {
+                chatID: 186,
+                speaker: "p",
+                text: "There. Don't you look so pretty! I bet all the boys will love such a pretty face! Be " +
+                    "sure to buy some makeup to put more on. Also if you're really nice I'm sure " + sc.n("tiffany") + 
+                    " will give you some more tips. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "leave" }
                 ]
             },
         ];

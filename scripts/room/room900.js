@@ -65,6 +65,9 @@ room900.chatcatch = function(callback){
                 nav.bg("900_college/inside.jpg");
                 if (sc.getstep("eva") === 203 && cl.c.necklace === "d")
                     chat(4, 900);
+                else {
+                    nav.buildnav([0]);
+                }
             }
             else
                 chat(3, 900);
@@ -113,7 +116,7 @@ room900.chatcatch = function(callback){
             nav.bg("900_college/e15.jpg");
             break;
         case "e16":
-            g.mod("sissy", 50);
+            g.mod("phum", 1);
             char.room(0);
             break;
         default:

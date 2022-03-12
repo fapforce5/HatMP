@@ -2,8 +2,9 @@
 var room210 = {};
 room210.main = function () {
     var i, j, offset;
+    var usedSissyPoints = g.get("usedSissyPoints");
     nav.bg("28_transformation/grid.jpg");
-
+    g.sumSissy();
     //chest
     offset = 33;
     for (i = 2; i < 7; i++) {
@@ -17,164 +18,97 @@ room210.main = function () {
     }
 
     $.each(g.sissy, function (i, v) {
-        nav.button({
-            "type": "btn",
-            "name": v.icon,
-            "left": 30 + ((v.x - 1) * 80),
-            "top": 30 + ((v.y - 1) * 80),
-            "width": 75,
-            "height": 75,
-            "image": "28_transformation/" + (v.icon + (v.ach ? "" : "_u")) + ".png"
-        }, 210);
-
+        if (v.active) {
+            nav.button({
+                "type": "btn",
+                "name": v.icon,
+                "left": 30 + ((v.x - 1) * 80),
+                "top": 30 + ((v.y - 1) * 80),
+                "width": 75,
+                "height": 75,
+                "image": "28_transformation/" + (v.icon + (v.ach ? "" : "_u")) + ".png"
+            }, 210);
+        }
+    });
+    nav.t({
+        type: "img",
+        name: "pointDisplay",
+        left: 50,
+        top: 100,
+        font: 40,
+        hex: "#ffffff",
+        text: '<div style="text-align:center;">Available Points <br/>' + (g.sp.total - usedSissyPoints) + '</div>'
     });
 };
 
 room210.btnclick = function (name) {
-    
-    if (name === "btnUp" || name === "btnDown" || name === "btnBuy") {
-        if (name === "btnBuy") {
-            if (g.internal > 0) {
-                g.mod("sissy", -1 * g.internal);
-                g.mod("money", g.internal);
-                g.internal = 0;
-                nav.killbutton("btnMoney");
-                nav.t({
-                    type: "img",
-                    name: "btnMoney",
-                    "left": 1750,
-                    "top": 750,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: g.internal
-                });
-            }
-        }
-        else {
-            var sissyPoints = g.get("sissy");
-            if (name === "btnUp")
-                g.internal += 10;
-            else if (name === "btnDown")
-                g.internal -= 10;
-            if (g.internal < 0)
-                g.internal = 0;
-            else if (g.internal > sissyPoints)
-                g.internal = sissyPoints;
+    var id, pid;
+    var prevToUnlock = "";
+    var usedSissyPoints = g.get("usedSissyPoints");
+    var needSissyPoints = 0;
+    var availableSissyPoints;
+    nav.killbutton("bigDisplay");
+    nav.button({
+        "type": "img",
+        "name": "bigDisplay",
+        "left": 1645,
+        "top": 153,
+        "width": 250,
+        "height": 400,
+        "image": "28_transformation/" + name + "_d.png"
+    }, 210);
 
-            nav.killbutton("btnMoney");
-            nav.t({
-                type: "img",
-                name: "btnMoney",
-                "left": 1750,
-                "top": 750,
-                font: 30,
-                hex: "#ffffff",
-                text: g.internal
-            });
+    xtop = 600 * g.ratio;
+    xleft = 1634 * g.ratio;
+    xwidth = 271 * g.ratio;
+
+    for (i = 0; i < g.sissy.length; i++) {
+        if (g.sissy[i].icon === name) {
+            id = i;
+            i = 9999;
         }
     }
-    else {
-        nav.killbutton("btnUp");
-        nav.killbutton("btnDown");
-        nav.killbutton("btnMoney");
-        nav.killbutton("btnBuy");
-        var id, pid;
-        var prevToUnlock = "";
+
+    needSissyPoints = g.sissy[id].points * 100 * g.sp.difficulty.m;
+    availableSissyPoints = g.sp.total - usedSissyPoints;
 
 
-
-        nav.killbutton("bigDisplay");
-        nav.button({
-            "type": "img",
-            "name": "bigDisplay",
-            "left": 1645,
-            "top": 153,
-            "width": 250,
-            "height": 400,
-            "image": "28_transformation/" + name + "_d.png"
-        }, 210);
-
-        xtop = 600 * g.ratio;
-        xleft = 1634 * g.ratio;
-        xwidth = 271 * g.ratio;
-
-        for (i = 0; i < g.sissy.length; i++) {
-            if (g.sissy[i].icon === name) {
-                id = i;
-                i = 9999;
-            }
+    for (i = 0; i < g.sissy[id].pID.length; i++) {
+        pid = g.sissy[id].pID[i];
+        if (!g.sissy[pid].ach) {
+            if (prevToUnlock === "")
+                prevToUnlock = g.sissy[pid].name;
+            else
+                prevToUnlock += " and " + g.sissy[pid].name;
         }
+    }
+    pid = g.sissy[id].pID;
+    tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
 
-        for (i = 0; i < g.sissy[id].pID.length; i++) {
-            pid = g.sissy[id].pID[i];
-            if (!g.sissy[pid].ach) {
-                if(prevToUnlock === "")
-                    prevToUnlock = g.sissy[pid].name;
-                else
-                    prevToUnlock += " and " + g.sissy[pid].name;
-            }
-        }
-        pid = g.sissy[id].pID;
-        tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
+    if (needSissyPoints > 0)
+        tText += "<br/>" + needSissyPoints + " points<br/>";
 
-        if (g.sissy[id].points > 0)
-            tText += "<br/>Requires " + g.sissy[id].points + " points, but free for this release. <br/>";
-
-        if (id === 56)
-            tText += '<img src="./images/room/28_transformation/cancel_b.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
-        else if (id === 61) {
-            g.internal = 0;
-            nav.button({
-                "type": "btn",
-                "name": "btnUp",
-                "left": 1650,
-                "top": 750,
-                "width": 30,
-                "height": 20,
-                "image": "28_transformation/btnUp.jpg"
-            }, 210);
-            nav.t({
-                type: "img",
-                name: "btnMoney",
-                "left": 1750,
-                "top": 750,
-                font: 30,
-                hex: "#ffffff",
-                text: "0"
-            });
-            nav.button({
-                "type": "btn",
-                "name": "btnDown",
-                "left": 1850,
-                "top": 750,
-                "width": 30,
-                "height": 20,
-                "image": "28_transformation/btnDown.jpg"
-            }, 210);
-            nav.button({
-                "type": "btn",
-                "name": "btnBuy",
-                "left": 1645,
-                "top": 825,
-                "width": 271,
-                "height": 72,
-                "image": "28_transformation/money_b.png"
-            }, 210);
-        }
-        else if (g.sissy[id].ach)
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
-        else if (!g.sissy[id].active)
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';
-        else if (g.sissy[id].h && g.get("hormone") < 85)
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
-        else if (prevToUnlock === "")
+    if (id === 56)
+        tText += '<img src="./images/room/28_transformation/cancel_b.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+    else if (g.sissy[id].ach)
+        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
+    else if (!g.sissy[id].active)
+        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';
+    else if (g.sissy[id].h && g.get("hormone") < 85)
+        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
+    else if (prevToUnlock === "") {
+        if (needSissyPoints <= availableSissyPoints)
             tText += '<img src="./images/room/28_transformation/unlock.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
-        else
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to<br/>Unlock<br/>' + prevToUnlock + '</div>';
-
-        xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
-        $('#room-buttons').append(xline);
+        if (g.get("cheatMode"))
+            tText += '<div class="room-btn rom-event cursor-hover" style="font-size:' + 20 * g.ratio + 'px; margin-top:' + 5 * g.ratio + 'px; width:100%; text-align:center;" data-name="h_' + id + '" data-room="211">Cheat Unlock</div>';
     }
+    else if (needSissyPoints > availableSissyPoints)
+        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need ' + needSissyPoints + ' points</div>';
+    else
+        tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to<br/>Unlock<br/>' + prevToUnlock + '</div>';
+
+    xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
+    $('#room-buttons').append(xline);
 };
 
 room210.chatcatch = function (callback) {

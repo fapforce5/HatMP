@@ -122,7 +122,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Are you wearing girls clothes.. I thought wearing girls panties was weird, but I guess it makes sense now. ",
                 "Hahahaha you're so obsessed with boobs you're growing your own! ",
                 "Your butt is bigger than mine. ",
-                "Awww it looks like I'm getting a new sister! ",
+                "You hair is getting long. It looks like I'm getting a new sister! ",
                 "That's a perverted hair cut. ",
                 "Is your penis getting smaller? I liked it bigger. "
             ];

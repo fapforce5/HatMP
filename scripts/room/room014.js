@@ -161,15 +161,16 @@ room14.btnclick = function (name) {
                 chat(1, 14);
             break;
         case "motherRobe":
-            if (sc.getstep("landlord") > 199) {
+            var llstep = sc.getstep("landlord");
+            if (llstep > 199) {
                 chat(69, 14);
             }
-            else if (sc.getstep("lola") >= 9) 
-                chat(70, 14);
-            else if (sc.getstep("me") > 1)
-                chat(3, 14);
-            else
+            else if (llstep < 1)
                 chat(2, 14);
+            else if (llstep === 9 && sc.getstep("lola") > 8)
+                chat(86, 14);
+            else 
+                chat(3, 14);
             break;
         case "motherSleep":
             nav.killall();
@@ -683,7 +684,6 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/couple3f.jpg");
             break;
         case "couple3g":
-            g.mod("sissy", 20);
             g.mod("loadSwollowed", 1);
             nav.bg("14_motherRoom/couple3g.jpg");
             break;
@@ -766,14 +766,14 @@ room14.chatcatch = function (callback) {
             }, 14);
             break;
         case "bg4_end":
-            g.mod("sissy", 30);
+            g.mod("loadSwollowed", 30);
             g.setflag("bigguy");
             char.addtime(60);
             sc.setstep("bigguy", 5);
             char.room(14);
             break;
         case "bg4_end_loop":
-            g.mod("sissy", 15);
+            g.mod("loadSwollowed", 15);
             g.setflag("bigguy");
             char.addtime(60);
             char.room(14);
@@ -945,13 +945,48 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/butt4.jpg");
             cl.doCum(false);
             cl.stretchButt(g.internal);
-            g.mod("sissy", 10);
             g.mod("receiveAnalFemale", 1);
             g.mod("sissygasm", 1);
             break;
         case "butt5":
             char.addtime(120);
             char.room(16);
+            break;
+        case "m90":
+            if (cl.c.chastity === null) {
+                if (cl.c.cock > 3)
+                    chat(89, 14);
+                else
+                    chat(90, 14);
+            }
+            else
+                chat(88, 14);
+            break;
+        case "m91":
+        case "m92":
+            nav.killall();
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "m93":
+            cl.doCum(false);
+            g.mod("receiveHandjobFemale", 1);
+            nav.bg("14_motherRoom/m93.jpg");
+            break;
+        case "m94":
+            nav.killall();
+            char.addtime(120);
+            nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
+            scc.love("landlord", 20, 100);
+            sc.setstep("landlord", 10);
+            nav.button({
+                "type": "img",
+                "name": "motherRobe",
+                "left": 1193,
+                "top": 42,
+                "width": 466,
+                "height": 1038,
+                "image": "14_motherRoom/14_motherRobe.png"
+            }, 14);
             break;
         case "leave":
             char.room(16);
@@ -986,7 +1021,7 @@ room14.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "landlord",
-            text: "Hello honey, I so proud that you're working now. you keep it up and you just may make something of yourself.",
+            text: "Hello honey, I'm so proud that you're working now. you keep it up and you just may make something of yourself.",
             button: []
         },
         {
@@ -1667,6 +1702,99 @@ room14.chat = function (chatID) {
             text: "Awww, you had a girl orgasm. How cute. Now run along " + sc.n("landlord") + " needs some sleep. ",
             button: [
                 { chatID: -1, text: "ok.", callback: "butt5" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "landlord",
+            text: "Sooo. A night time visit in my bedroom. Is there something on your mind? ",
+            button: [
+                { chatID: 87, text: "You are on my mind.", callback: "" },
+                { chatID: -1, text: "Oh nothing.", callback: "" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "landlord",
+            text: "Fine. Pull it out. Lets see your perverted little penis.",
+            button: [
+                { chatID: -1, text: "Oh Yes!", callback: "m90" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "landlord",
+            text: "It's all locked up! I guess no fun time for you.",
+            button: [
+                { chatID: -1, text: "Awwww", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "landlord",
+            text: "Awww. It's so tiny. I guess I can work with this. ",
+            button: [
+                { chatID: 91, text: "Awwww", callback: "m91" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "landlord",
+            text: "Now that's my kind of cock! err..  ahem",
+            button: [
+                { chatID: 91, text: "Awwww", callback: "m92" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "landlord",
+            text: "Now I know you've been sniffing around my pussy for way too long, and I'm not going to lie, " +
+                "I find it very arousing. So much so my pussy is soaked everytime you walk in the room. ",
+            button: [
+                { chatID: 92, text: "...", callback: "m91" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "landlord",
+            text: "I also know boys your age have sexual urges and I've been trying to contain those urges. ",
+            button: [
+                { chatID: 93, text: "...", callback: "m92" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "landlord",
+            text: "You should be free to explore your sexuality and to make up for all that time I've been repressing " +
+                "you I'll help you explore that side of youself. Now just relax and let " + sc.n("landlord") + " help " +
+                "get that cum out of you. ",
+            button: [
+                { chatID: 94, text: "...", callback: "m91" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "me",
+            text: "OOooo I'm cumming!",
+            button: [
+                { chatID: 95, text: "...", callback: "m93" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "landlord",
+            text: "Oh yes honey. Just let it flow. That's a good boy. ",
+            button: [
+                { chatID: 96, text: "...", callback: "m94" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "landlord",
+            text: "Don't think you can bug me when I'm watching my shows and taking a shower. That's rude. Now " +
+                "go to bed honey. ",
+            button: [
+                { chatID: -1, text: "Ok", callback: "leave" }
             ]
         },
     ];

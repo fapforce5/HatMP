@@ -244,7 +244,6 @@ room952.chatcatch = function (callback) {
         case "butt4":
             g.mod("receiveAnalFemale", 1);
             g.mod("sissygasm", 1);
-            g.mod("sissy", 20);
             g.internal.interval++;
             char.room(950);
             break;
@@ -262,7 +261,6 @@ room952.chatcatch = function (callback) {
             break;
         case "l4":
             g.mod("giveOralFemale", 1);
-            g.mod("sissy", 20);
             g.internal.interval++;
             char.room(950);
             break;

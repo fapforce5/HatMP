@@ -2,7 +2,7 @@
 var room556 = {};
 room556.main = function () {
     g.internal = 0;
-    char.changeMenu("hide", false);
+    char.changeMenu("hide", false, true);
     tEnemy.init("g", null, "ring", 556, 556);
     tEnemy.drawButtons("init");
     //tEnemy.drawButtonList("begin");
