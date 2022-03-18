@@ -170,6 +170,11 @@ room450.btnclick = function (name) {
             nav.bg("450_park/lola0.jpg");
             chat(15, 450);
             break;
+        case "lolaPark12":
+            nav.killall();
+            nav.bg("450_park/lola0.jpg");
+            chat(38, 450);
+            break;
         case "lola2":
             chat(21, 450);
             break;
@@ -310,6 +315,33 @@ room450.chatcatch = function(callback){
             sc.setstep("lola", 12);
             g.setflag("lolaDayEvent");
             char.addtime(120);
+            char.room(450);
+            break;
+        case "lolax1":
+            g.mod("arousal", 100);
+            nav.bg("450_park/lolax1.jpg");
+            cl.nude();
+            break;
+        case "lolax2":
+        case "lolax3":
+        case "lolax4":
+        case "lolax5":
+        case "lolax6":
+        case "lolax7":
+            nav.bg("450_park/" + callback + ".jpg");
+            break;
+        case "lolax8":
+            nav.bg("450_park/lolax8.jpg");
+            cl.doCum(false);
+            zcl.displayMain(-700, 500, .4, "clothes", true);
+            break;
+        case "lolax9":
+            sc.setstep("lola", 13);
+            char.addtime(120);
+            g.mod("fuckPussy", 1);
+            g.setflag("lolaDayEvent");
+            cl.undo();
+            scc.love("lola", 200, 100);
             char.room(450);
             break;
         default:
@@ -638,6 +670,108 @@ room450.chat = function(chatID){
             text: "I'm going to go. If you want to meet up again just text me when you're in the park. ",
             button: [
                 { chatID: -1, text: "ok. Later", callback: "lola7b" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "lola",
+            text: "Another picnic? ",
+            button: [
+                { chatID: 39, text: "Sure!", callback: "lola6" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "lola",
+            text: "So I know you think this is just another picnic and you're expecting me to pour my heart out to you, " +
+                "but that's not why we're here. I need something from you. Something I've needed for a while. ",
+            button: [
+                { chatID: 40, text: "What's that?", callback: "lolax1" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "lola",
+            text: "I need you to help me lose my virginity. I've wanted to lose it for a while and I can think of " +
+                "no better person than you to help me. ",
+            button: [
+                { chatID: 41, text: "Sure!", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "lola",
+            text: "Here I am practically throwing myself at you and all you can say is 'sure'? Surely you can say " +
+                "something more romantic! ",
+            button: [
+                { chatID: 42, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "me",
+            text: sc.n("lola") + " I've thought about this day for a while now. There is nothing I want more than to " +
+                "share in this moment with you. It would be an honor to be your first. ",
+            button: [
+                { chatID: 43, text: "...", callback: "lolax2" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "lola",
+            text: "Come here you beautiful man! I'm going to eat you up!",
+            button: [
+                { chatID: 44, text: "Oh yeah", callback: "lolax3" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "lola",
+            text: "Be gentle.",
+            button: [
+                { chatID: 45, text: "I will", callback: "lolax4" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "lola",
+            text: "OOOOOOOOOOOOoooooooooooooooooouch ouch ouch! Gentle!",
+            button: [
+                { chatID: 46, text: "Oh sorry. I'll be gentle", callback: "lolax5" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "lola",
+            text: "MMMMmmmm that's better. ",
+            button: [
+                { chatID: 47, text: "Ooooo. Fuck. You're so tight.", callback: "lolax6" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "lola",
+            text: "OOOoooo I can feel it twitch inside me. Did you cum?",
+            button: [
+                { chatID: 48, text: "Hahaha Yea ", callback: "lolax7" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "lola",
+            text: "Ewwwww. You never told me it was going to drip out of me. That's so gross. How am I supposed to walk " +
+                "home like this? ",
+            button: [
+                { chatID: 49, text: "Lol. I don't know. Maybe crab walk? ", callback: "lolax8" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "lola",
+            text: "Well I guess I'm just going to walk home with your cum dripping out of my pussy. You were amazing, " +
+                "I'll see you at home. ",
+            button: [
+                { chatID: -1, text: "Hahaha ok. Bye. ", callback: "lolax9" }
             ]
         },
     ];

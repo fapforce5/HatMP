@@ -483,6 +483,7 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/eva6.jpg");
             break;
         case "eva11m":
+            scc.love("eva", 200, 100);
             sc.setstep("eva", 12);
             char.addtime(60);
             g.mod("fuckPussy", 1);

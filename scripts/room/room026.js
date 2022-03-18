@@ -114,12 +114,29 @@ room26.btnclick = function (name) {
             chat(54, 26);
             break;
         case "all3":
-            if (false) {
-
+            var evaLove = scc.get("eva");
+            var lolaLove = scc.get("lola");
+            var landlordLove = scc.get("landlord");
+            var evaStep = sc.getstep("eva");
+            var lolaStep = sc.getstep("lola");
+            var llStep = sc.getstep("landlord");
+            if (true) {
+                chat(106, 26);
+            }
+            else if (true) {
+                chat(96, 26);
             }
             else {
                 chat(93, 26);
             }
+            break;
+        case "fx":
+            nav.bg("26_livingRoom/f" + g.internal + ".jpg");
+            if (g.internal === 9) {
+                nav.killbutton("fx");
+                chat(112, 26);
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -387,6 +404,75 @@ room26.chatcatch = function (callback) {
         case "tv1":
             char.settime(22, 3);
             char.room(26);
+            break;
+        case "sl0":
+            nav.killall();
+            nav.bg("26_livingRoom/sl0.jpg");
+            break;
+        case "sl1":
+        case "sl2":
+            nav.killall();
+            g.mod("arousal", 100);
+            nav.bg("26_livingRoom/" + callback + ".jpg");
+            break;
+        case "sl3":
+            if (sc.getstep("landlord") < 9)
+                chat(101, 26);
+            else
+                chat(102, 26);
+            break;
+        case "sl3badEnd":
+            g.mod("arousal", -50);
+            char.settime(22, 3);
+            char.room(10);
+            break;
+        case "sl4":
+            nav.bg("26_livingRoom/sl4.jpg");
+            zcl.displayMain(-800, 200, .4, "", false);
+            nav.button({
+                "type": "img",
+                "name": "sl4",
+                "left": 719,
+                "top": 412,
+                "width": 704,
+                "height": 668,
+                "image": "26_livingRoom/sl4.png"
+            }, 26);
+            break;
+        case "sl5":
+            nav.killall();
+            cl.doCum(false);
+            g.mod("receiveOralFemale", 1);
+            nav.bg("26_livingRoom/sl5.jpg");
+            break;
+        case "sl6":
+            char.settime(22, 3);
+            char.room(10);
+            break;
+        case "f1":
+        case "f2":
+            case "f3":
+            nav.bg("26_livingRoom/" + callback + ".jpg");
+            break;
+        case "f4":
+            g.internal = 5;
+            nav.bg("26_livingRoom/f4.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "fx",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 26);
+            break;
+        case "f10":
+            cl.doCum(false);
+            g.mod("receiveOralFemale", 3);
+            g.mod("fuckPussy", 3);
+            char.settime(22, 3);
+            char.room(10);
             break;
         default:
             break;
@@ -1226,6 +1312,144 @@ room26.chat = function (chatID) {
                 { chatID: -1, text: "Ok", callback: "tv1" }
             ]
         },
+        {
+            chatID: 96,
+            speaker: "lola",
+            text: "Hay you. Wanna sit between us and watch some tv?",
+            button: [
+                { chatID: 97, text: "Cool", callback: "sl0" },
+                { chatID: -1, text: "Nah", callback: "" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "lola",
+            text: "I've been thinking of you all day",
+            button: [
+                { chatID: 98, text: "Gulp", callback: "sl1" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "eva",
+            text: "Me too. I need that dick so bad. ",
+            button: [
+                { chatID: 99, text: "What about...", callback: "" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "lola",
+            text: "Shhh... Just relax and let this happen. ",
+            button: [
+                { chatID: 100, text: "!", callback: "sl2" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "landlord",
+            text: "I see what you're doing! Get out you too! " + sc.n("me") + " sit right there!",
+            button: [
+                { chatID: -1, text: "OOOOoooo", callback: "sl3" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "landlord",
+            text: "I'm so angry with you. Go to your room now!",
+            button: [
+                { chatID: -1, text: "Yes. Right away!", callback: "sl3badEnd" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "landlord",
+            text: "It looks like your penis needs a release. Let " + sc.n("landlord") + " help you with that. ",
+            button: [
+                { chatID: 103, text: "Huh?", callback: "sl4" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "landlord",
+            text: "Just cum in " + sc.n("landlord") + "'s mouth honey. ",
+            button: [
+                { chatID: 104, text: "OOoooo", callback: "" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "me",
+            text: "UGH!!!",
+            button: [
+                { chatID: 105, text: "...", callback: "sl5" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "landlord",
+            text: "That's a good boy. Now run along to your room. ",
+            button: [
+                { chatID: -1, text: "...", callback: "sl6" }
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "eva",
+            text: "Come sit with us. We need you! ",
+            button: [
+                { chatID: 107, text: "Oh Yeah!", callback: "f0" },
+                { chatID: -1, text: "Nah", callback: "" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "lola",
+            text: "You look like you need some fun.",
+            button: [
+                { chatID: 108, text: "I do.", callback: "sl1" }
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "eva",
+            text: "Yeah. Just relax...",
+            button: [
+                { chatID: 109, text: "...", callback: "f1" }
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "lola",
+            text: "Oooo I love your cock.",
+            button: [
+                { chatID: 110, text: "...", callback: "f2" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "landlord",
+            text: "!",
+            button: [
+                { chatID: 111, text: "Happy noises", callback: "f3" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "landlord",
+            text: "I see what you're up to. Lets get this party started! " + sc.n("eva") + " hop on that cock!",
+            button: [
+                { chatID: -1, text: "Oh yeah!", callback: "f4" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "landlord",
+            text: "What a yummy treat. It's late. Off to bed girls. I've got to wash my face. ",
+            button: [
+                { chatID: -1, text: "...", callback: "f10" }
+            ]
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

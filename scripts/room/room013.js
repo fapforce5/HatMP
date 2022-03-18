@@ -403,15 +403,33 @@ room13.btnclick = function (name) {
         case "sheet3":
             nav.killbutton("sheet3");
             nav.killbutton("pjs");
-            nav.button({
-                "type": "btn",
-                "name": "pjs",
-                "left": 985,
-                "top": 93,
-                "width": 485,
-                "height": 883,
-                "image": "13_sisterRoom/13_pjs.png"
-            }, 13);
+            var llStepx = sc.getstep("lola");
+            var evaStepx = sc.getstep("eva");
+            if (llStepx < 200 && llStepx > 6 && evaStepx > 5) {
+                nav.killall();
+                nav.bg("13_sisterRoom/b0.jpg");
+                g.internal = 1;
+                nav.button({
+                    "type": "btn",
+                    "name": "b0",
+                    "left": 981,
+                    "top": 418,
+                    "width": 497,
+                    "height": 471,
+                    "image": "13_sisterRoom/b0.png"
+                }, 13);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "pjs",
+                    "left": 985,
+                    "top": 93,
+                    "width": 485,
+                    "height": 883,
+                    "image": "13_sisterRoom/13_pjs.png"
+                }, 13);
+            }
             break;
         case "pjs":
             nav.killbutton("pjs");
@@ -445,7 +463,7 @@ room13.btnclick = function (name) {
                     nav.bg("13_sisterRoom/013_bedBr5pullUp.jpg");
                     chat(85, 13);
                 }
-                else { 
+                else {
                     nav.killbutton("br5Panties2");
                     nav.bg("13_sisterRoom/013_bedBr6.jpg");
                     nav.button({
@@ -458,7 +476,6 @@ room13.btnclick = function (name) {
                         "image": "13_sisterRoom/br5Panties3.png "
                     }, 13);
                 }
-
             }
             else {
                 nav.killbutton("br5Panties2");
@@ -535,13 +552,93 @@ room13.btnclick = function (name) {
         case "lick2Feet":
             nav.killall();
             nav.bg("13_sisterRoom/lick3.jpg");
-            g.setflag("evaDayEvent"); 
+            g.setflag("evaDayEvent");
             chat(225, 13);
             break;
         case "lick2Pussy":
             nav.killall();
             nav.bg("13_sisterRoom/lick5.jpg");
             chat(228, 13);
+            break;
+        case "b0":
+            nav.killbutton("b0");
+            nav.button({
+                "type": "btn",
+                "name": "b1",
+                "left": 981,
+                "top": 418,
+                "width": 497,
+                "height": 471,
+                "image": "13_sisterRoom/b1.png"
+            }, 13);
+            break;
+        case "b1":
+            nav.killbutton("b1");
+            nav.button({
+                "type": "btn",
+                "name": "b2",
+                "left": 946,
+                "top": 580,
+                "width": 481,
+                "height": 309,
+                "image": "13_sisterRoom/b2.png"
+            }, 13);
+            break;
+        case "b2":
+            nav.killbutton("b2");
+            nav.button({
+                "type": "btn",
+                "name": "b3",
+                "left": 979,
+                "top": 656,
+                "width": 447,
+                "height": 233,
+                "image": "13_sisterRoom/b3.png"
+            }, 13);
+            break;
+        case "b3":
+            nav.killbutton("b3");
+            nav.button({
+                "type": "btn",
+                "name": "b4",
+                "left": 1192,
+                "top": 433,
+                "width": 282,
+                "height": 139,
+                "image": "13_sisterRoom/b4.png"
+            }, 13);
+            break;
+        case "b4":
+            if (sc.getstep("eva") > 8 && sc.getstep("lola") > 9) {
+                nav.killall();
+                nav.bg("13_sisterRoom/b5.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "b5",
+                    "left": 986,
+                    "top": 93,
+                    "width": 483,
+                    "height": 883,
+                    "image": "13_sisterRoom/b5.png"
+                }, 13);
+            }
+            else {
+                nav.killall();
+                nav.bg("13_sisterRoom/zzz1.jpg");
+                chat(63, 13);
+            }
+            break;
+        case "b5":
+            if (sc.getstep("eva") > 11 && sc.getstep("lola") > 12) {
+                nav.killall();
+                nav.bg("13_sisterRoom/b6.jpg");
+                chat(246, 13);
+            }
+            else {
+                nav.killall();
+                nav.bg("13_sisterRoom/zzz2.jpg");
+                chat(63, 13);
+            }
             break;
         default:
             break;
@@ -1268,6 +1365,17 @@ room13.chatcatch = function (callback) {
             
             sc.setstep("eva", 203);
             g.setflag("evaDayEvent");
+            break;
+        case "leave":
+            char.addtime(30);
+            char.room(11);
+            break;
+        case "b7":
+            nav.bg("13_sisterRoom/b7.jpg");
+            break;
+        case "b8":
+            cl.doCum(false);
+            nav.bg("13_sisterRoom/b8.jpg");
             break;
         default:
             console.log(callback + " - miss");
@@ -3323,6 +3431,31 @@ room13.chat = function (chatID) {
             text: "I promised " + sc.n("lola") + " that we wouldn't do anything at home. Call me from your phone. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 246,
+            speaker: "eva",
+            text: "I suppose you want to fuck us? It's late and we're tired. Just jack-off on our feet you pervert. ",
+            button: [
+                { chatID: 247, text: "Don't mind if I do", callback: "b7" },
+                { chatID: -1, text: "Nope, I'm just perving on your naked bodies", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 247,
+            speaker: "thinking",
+            text: "Well this is weird, but ok.",
+            button: [
+                { chatID: 248, text: "Shoot your load on their feet.", callback: "b8" }
+            ]
+        },
+        {
+            chatID: 248,
+            speaker: "thinking",
+            text: "That felt empty.",
+            button: [
+                { chatID: -1, text: "Pull their blanket back up and leave.", callback: "leave" }
             ]
         },
     ];

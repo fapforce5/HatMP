@@ -1457,7 +1457,7 @@ g.sissyclick = function (ttype) {
         case "Pussy":
             title = "Pussy";
             body.push({ x: "Chicks fucked in the pussy", y: g.sp.pussy.n.f });
-            body.push({ x: "Your Titties Fucked", y: g.sp.pussy.n.r });
+            body.push({ x: "You got fucked in the pussy", y: g.sp.pussy.n.r });
             break;
         case "Fingered":
             title = "Fingered";

@@ -1484,6 +1484,7 @@ cl.display = function () {
         "top": 50 * g.ratio + "px"
     });
     $('.char-accBodyx').remove();
+    $('#char-accHead').html("");
     if (g.tview === "p" || g.tview === "a") {
         $('#char-legs').html("");
         $('#char-chest').html("");

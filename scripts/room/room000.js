@@ -152,12 +152,12 @@ room0.chatcatch = function (callback) {
                         pointer = i;
                     }
                 }
-                if (sc.events[pointer].name === g.walk) {
-                    var roomId = sc.events[pointer].m[0];
-                    for (i = 0; i < g.roomMap.length; i++) {
-                        if (g.roomMap[i].roomID === roomId) {
-                            mp = g.roomMap[i];
-                            i = 999999;
+                var s = sc.events[pointer].m;
+                for (i = 0; i < s.length; i++) {
+                    for (j = 0; j < g.roomMap.length; j++) {
+                        if (g.roomMap[j].roomID === s[i]) {
+                            mp = g.roomMap[j];
+                            j = 999999;
                         }
                     }
                     if (mp.map === g.internal)
@@ -168,11 +168,11 @@ room0.chatcatch = function (callback) {
                             "top": mp.top + (mp.height / 2) - 200,
                             "width": 400,
                             "height": 400,
-                            "image": "map/marker.png"
+                            "image": "map/marker.gif"
                         }, 0);
-                    g.internal = null;
                 }
             }
+            g.internal = null;
             break;
         default:
             break;

@@ -169,6 +169,8 @@ room14.btnclick = function (name) {
                 chat(2, 14);
             else if (llstep === 9 && sc.getstep("lola") > 8)
                 chat(86, 14);
+            else if (llstep === 10)
+                chat(97, 14);
             else 
                 chat(3, 14);
             break;
@@ -1793,6 +1795,14 @@ room14.chat = function (chatID) {
             speaker: "landlord",
             text: "Don't think you can bug me when I'm watching my shows and taking a shower. That's rude. Now " +
                 "go to bed honey. ",
+            button: [
+                { chatID: -1, text: "Ok", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "landlord",
+            text: "We should fuck",
             button: [
                 { chatID: -1, text: "Ok", callback: "leave" }
             ]
