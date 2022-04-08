@@ -34,6 +34,9 @@ room650.main = function () {
             "height": 851,
             "image": "650_toyStore/charlie.png"
         });
+        if (cl.isLewd()) {
+            chat(16, 650);
+        }
     }
 
     var navList = [651, 0];
@@ -147,6 +150,40 @@ room650.chatcatch = function (callback) {
             sc.setstep("tiffany", -9);
             char.room(400);
 
+            break;
+        case "c1":
+            nav.killall();
+            nav.bg("650_toyStore/c1.jpg");
+            break;
+        case "c2":
+            nav.bg("650_toyStore/" + callback + ".jpg");
+            break;
+        case "c3":
+            nav.bg("650_toyStore/" + callback + ".jpg");
+            g.mod("giveOralMale", 1);
+            g.mod("loadSwollowed", 1);
+            g.mod("arousal", 30);
+            break;
+        case "c4":
+            nav.bg("650_toyStore/" + callback + ".jpg");
+            g.mod("giveOralMale", 1);
+            g.mod("loadSpit", 1);
+            cl.c.cumface = true;
+            cl.display();
+            g.mod("arousal", 30);
+            break;
+        case "c5":
+            nav.bg("650_toyStore/650_front.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "charlie",
+                "left": 1357,
+                "top": 229,
+                "width": 456,
+                "height": 851,
+                "image": "650_toyStore/charlie.png"
+            }, 650);
+            nav.buildnav([651, 0]);
             break;
         default:
             break;
@@ -293,6 +330,40 @@ room650.chat = function (chatID) {
             text: "Oh, the whores? They work during the week during the day. Even whores needs a break. ",
             button: [
                 { chatID: -1, text: "oh, odd. ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "charlie",
+            text: "Why hello whore. I was just thinking I needed to get laid. So what do you say, wanna suck it?",
+            button: [
+                { chatID: 17, text: "I sure do! ", callback: "c1" },
+                { chatID: -1, text: "Not today " + sc.n("charlie") , callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "charlie",
+            text: "He ain't long, but but he is thick. Ready to take it down whore?",
+            button: [
+                { chatID: 18, text: "Ummmm Hmmmm", callback: "c2" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "charlie",
+            text: "You're so tight I'm gunna blow! ",
+            button: [
+                { chatID: 19, text: "[Swollow]", callback: "c3" },
+                { chatID: 19, text: "[Have him cum on your face]", callback: "c4" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "charlie",
+            text: "You're a great whore! I really need my balls drained. So what can I get you? ",
+            button: [
+                { chatID: -1, text: "...", callback: "c5" }
             ]
         },
     ];

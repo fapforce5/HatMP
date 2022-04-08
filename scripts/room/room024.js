@@ -272,7 +272,7 @@ room24.chatcatch = function (callback) {
                     }
                     else if (g.internal.meNaked === 1) {
                         g.pass.push(cl.c.pants);
-                        cl.c.pants = null;
+                        cl.c.pants = cl.c.swimsuit = null;
                         cl.display();
                         g.internal.meNaked = 2;
                         room24.chatcatch("bg evaTalk lolaSit");

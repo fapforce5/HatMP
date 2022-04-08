@@ -171,6 +171,8 @@ room14.btnclick = function (name) {
                 chat(86, 14);
             else if (llstep === 10)
                 chat(97, 14);
+            else if (llstep === 11)
+                chat(107, 14);
             else 
                 chat(3, 14);
             break;
@@ -993,6 +995,76 @@ room14.chatcatch = function (callback) {
         case "leave":
             char.room(16);
             break;
+        case "f1":
+            cl.nude();
+            zcl.displayMain(-150, 300, .3, "nude", true);
+            break;
+        case "f2":
+            nav.killall();
+            g.mod('arousal', 100);
+            nav.bg("14_motherRoom/f2.jpg");
+            break;
+        case "f3":
+            nav.bg("14_motherRoom/f3.jpg");
+            zcl.displayMain(-2500, -1400, .8, "nude", true)
+            break;
+        case "f4":
+            nav.killall();
+            nav.bg("14_motherRoom/f4.jpg");
+            g.roomTimeout = setTimeout(function () {
+                chat(102, 14);
+            }, 2000);
+            break;
+        case "f5":
+            nav.bg("14_motherRoom/f5.jpg");
+            break;
+        case "f6":
+            cl.doCum(false);
+            g.mod("fuckPussy", 1);
+            g.mod("receiveBoobJob", 1);
+            sc.setstep("landlord", 11);
+            char.addtime(120);
+            g.setflag("momchat");
+            char.room(10);
+            break;
+        case "c1":
+            nav.killall();
+            nav.bg("14_motherRoom/c1.jpg");
+            break;
+        case "c2":
+            g.mod("arousal", 200);
+            nav.bg("14_motherRoom/c2.jpg");
+            break;
+        case "c3":
+        case "c4":
+        case "c5":
+        case "c7":
+        case "c8":
+        case "c9":
+        case "c10":
+        case "c11":
+        case "c12":
+        case "c13":
+        case "c14":
+        case "c15":
+        case "c16":
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "c6":
+            cl.nude();
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "c17":
+            g.mod("fuckPussy", 2);
+            g.mod("receiveOralFemale", 2);
+            g.mod("receiveBoobJob", 1);
+            sc.setstep("lola", 15);
+            sc.setstep("eva");
+            sc.setstep("landlord", 12);
+            cl.doCum(false);
+            char.addtime(180);
+            char.room(10);
+            break;
         default:
             break;
     }
@@ -1802,9 +1874,286 @@ room14.chat = function (chatID) {
         {
             chatID: 97,
             speaker: "landlord",
-            text: "We should fuck",
+            text: "You just don't give up do you. Everywhere I go you're sniffing around my pussy. Do you want to fuck it?",
             button: [
-                { chatID: -1, text: "Ok", callback: "leave" }
+                { chatID: 98, text: "I ummmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "landlord",
+            text: "Sigh. Fine strip off your clothes. We're only doing this once so you can get it out of your system. " +
+                "After this we'll never have sex again and you'll stop trying. Promise?",
+            button: [
+                { chatID: 99, text: "Promise", callback: "f1" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "landlord",
+            text: "And no comming in me! If you even spill a drop of cum in me I'm going to remove your balls. Got it!",
+            button: [
+                { chatID: 100, text: "Got it!", callback: "f2" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "landlord",
+            text: "When you get older, it takes a bit to get the juices flowing. Let me just get started with a couple orgasms " +
+                "so I can enjoy this. ",
+            button: [
+                { chatID: 101, text: "That's hot", callback: "f3" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "landlord",
+            text: "That should be wet enough. Now bring your dick to " + sc.n("landlord") + " so I can guide it in me. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "f4" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "landlord",
+            text: "Oh shit! I didn't know you could fuck! Oh fuck fuck fuck. Fuck me fuck me fuck me!",
+            button: [
+                { chatID: 103, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "landlord",
+            text: "Shit! I'm cuming again. Fuck! I love your cock! ",
+            button: [
+                { chatID: 104, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "landlord",
+            text: "Oh fuck! Don't stop! I'm cumming again! ",
+            button: [
+                { chatID: 105, text: "I'm about to cum", callback: "f5" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "landlord",
+            text: "There you go. Just cum on " + sc.n("landlord") + "'s breasts. That's a good boy. ",
+            button: [
+                { chatID: 106, text: "Aaaaaaa", callback: "" }
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "landlord",
+            text: "Maybe I was wrong about you. Everyone should take a cock like that. It really is amazing. I'm going to " +
+                "need more of that. Now run along, I've got to go  clean this off. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "f6" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "landlord",
+            text: "So I found out an interesting bit of news from the girls. ",
+            button: [
+                { chatID: 108, text: "yes?", callback: "" }
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "landlord",
+            text: "It appears that you've been fucking them even though I forbade it. Girls get in here. ",
+            button: [
+                { chatID: 109, text: "!!!", callback: "c1" }
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "landlord",
+            text: "So it appears you three can't keep your hands off each other. I overheard you girls talking about it. " +
+                "Since kicking you out didn't work we're going to try something different. " + sc.n("lola") + " take off " +
+                "your shirt. ",
+            button: [
+                { chatID: 110, text: "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "lola",
+            text: "My shirt?",
+            button: [
+                { chatID: 111, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "landlord",
+            text: "Don't argue. Take it off. I want you to see how shameful your actions are. ",
+            button: [
+                { chatID: 112, text: "...", callback: "c2" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "landlord",
+            text: sc.n("eva") + "You think this is funny. Take your shirt off too. ",
+            button: [
+                { chatID: 113, text: "...", callback: "c3" }
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "eva",
+            text: "Yes " + sc.n("landlord") + ".",
+            button: [
+                { chatID: 114, text: "...", callback: "c4" }
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "landlord",
+            text: "Now do you see how shameful this is? " + sc.n("me") + " can't control himself when you two are showing " +
+                "your naughty bits. Show them how you can't control yourself. Take your pants off and show them your penis. ",
+            button: [
+                { chatID: 115, text: "[Show them your penis]", callback: "c5" }
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "landlord",
+            text: "Now for the past few years I've been teaching the girls about sex. A good open honest discussion " +
+                "is what every girl needs. I haven't done a very good job becuase we haven't had a chance to go over " +
+                "the penis yet. That's where you come in. I'm going to use you as my teaching model for my girls. ",
+            button: [
+                { chatID: 116, text: "?", callback: "c6" }
+            ]
+        },
+        {
+            chatID: 116,
+            speaker: "landlord",
+            text: "I've been avoiding using you because I didn't think you were ready for sex, but after the way you've " +
+                "fucked me I know you're ready to help me teach these girls. " + sc.n("lola") +
+                " strip down and get ready to put his cock in your mouth. ",
+            button: [
+                { chatID: 117, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 117,
+            speaker: "lola",
+            text: "huh?",
+            button: [
+                { chatID: 118, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 118,
+            speaker: "landlord",
+            text: "Don't play innocent with me. I already heard what happened so I know it won't be the first time. " +
+                "I'm just going to make sure you're doing it right. It's ok, just open your mouth for his cock. ",
+            button: [
+                { chatID: 119, text: "...", callback: "c7" }
+            ]
+        },
+        {
+            chatID: 119,
+            speaker: "landlord",
+            text: "Good girl. " + sc.n("eva") + " you can get in there too. ",
+            button: [
+                { chatID: 120, text: "...", callback: "c8" }
+            ]
+        },
+        {
+            chatID: 120,
+            speaker: "landlord",
+            text: "You two really know what you're doing. I didn't not expect that. Well maybe " + sc.n("eva") + 
+            " but no you my little " + sc.n("lola") + ".",
+            button: [
+                { chatID: 121, text: "...", callback: "c9" }
+            ]
+        },
+        {
+            chatID: 121,
+            speaker: "landlord",
+            text: "Slow down you two or he'll cum. " + sc.n("eva") + " turn around and present yourself to him. A good " +
+                "girlfriend always shows shows her appreciation towards her man. ",
+            button: [
+                { chatID: 122, text: "...", callback: "c10" }
+            ]
+        },
+        {
+            chatID: 122,
+            speaker: "landlord",
+            text: "Somehow I knew you would be good at that. Now let me show you girls how to mount a cock and ride it. ",
+            button: [
+                { chatID: 123, text: "...", callback: "c11" }
+            ]
+        },
+        {
+            chatID: 123,
+            speaker: "landlord",
+            text: "So the first thing to do is make sure you're nice and wet. A dry pussy is a sad pussy. Now what I like " +
+                "to do before inserting the penis is to...",
+            button: [
+                { chatID: 124, text: "...", callback: "c12" }
+            ]
+        },
+        {
+            chatID: 124,
+            speaker: "landlord",
+            text: "Well I can clearly see you're wet enough. I didn't teach you that so you could ignore my lessons. " +
+                "Now pay attention we're going over inserting the penis. I'm going to sit on his cock and I need you two " +
+                "to play with his balls. ",
+            button: [
+                { chatID: 125, text: "...", callback: "c13" }
+            ]
+        },
+        {
+            chatID: 125,
+            speaker: "landlord",
+            text: "Notice how my juices flow down his shaft. You two should lick that. Men always want a girl that " +
+                "is comfortable licking antoher girl's juices. Becuase all men are pigs. " + sc.n("eva") + " it's your " +
+                "turn. Hop on this dick. ",
+            button: [
+                { chatID: 126, text: "...", callback: "c14" }
+            ]
+        },
+        {
+            chatID: 126,
+            speaker: "landlord",
+            text: "That's great. Men love it when you moan. " + sc.n("lola") + " it's your turn. Hop on before he comes " +
+                "and loses his boner. ",
+            button: [
+                { chatID: 127, text: "...", callback: "c15" }
+            ]
+        },
+        {
+            chatID: 127,
+            speaker: "landlord",
+            text: "That's great. Men love it when you moan. " + sc.n("lola") + " it's your turn. Hop on before he comes " +
+                "and loses his boner. ",
+            button: [
+                { chatID: 128, text: "...", callback: "c15" }
+            ]
+        },
+        {
+            chatID: 128,
+            speaker: "landlord",
+            text: "Good " + sc.n("lola") + ". Rock your hips back into him more. Really let him know you love his cock. " +
+                "Now I'm going to finish him off in my tits. Squeeze in girls so you can get some of the cum. ",
+            button: [
+                { chatID: 129, text: "...", callback: "c16" }
+            ]
+        },
+        {
+            chatID: 129,
+            speaker: "landlord",
+            text: "Good girls. Once you finsh licking each other off head to bed. ",
+            button: [
+                { chatID: -1, text: "...", callback: "c17" }
             ]
         },
     ];

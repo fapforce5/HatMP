@@ -46,27 +46,33 @@ room13.main = function () {
     }
     else {
         if (sc.sister().thisRoom) {
-            btnList = [{
-                "type": "btn",
-                "name": "lola",
-                "left": 1449,
-                "top": 260,
-                "width": 215,
-                "height": 820,
-                "image": "13_sisterRoom/13_lola_reading.png"
-            },
-            {
-                "type": "btn",
-                "name": "eva",
-                "left": 760,
-                "top": 295,
-                "width": 291,
-                "height": 785,
-                "image": "13_sisterRoom/13_eva_sitting.png"
-            }];
+            if (cl.isLewd()) {
+                btnList = new Array();
+                nav.bg("13_sisterRoom/013_angryCaught.png");
+                chat(249, 13);
+            }
+            else {
+                btnList = [{
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1449,
+                    "top": 260,
+                    "width": 215,
+                    "height": 820,
+                    "image": "13_sisterRoom/13_lola_reading.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 760,
+                    "top": 295,
+                    "width": 291,
+                    "height": 785,
+                    "image": "13_sisterRoom/13_eva_sitting.png"
+                }];
+            }
         }
         else {
-            
             btnList = [
                 {
                     "type": "btn",
@@ -261,7 +267,17 @@ room13.btnclick = function (name) {
                 case 10:
                 case 11:
                 case 12:
+                case 13:
                     chat(135, 13);
+                    break;
+                case 14:
+                    if (sc.getstep("landlord") === 11)
+                        chat(254, 13);
+                    else
+                        chat(250, 13);
+                    break;
+                case 15:
+                    chat(250, 13);
                     break;
                 case 200:
                     chat(147, 13);
@@ -333,7 +349,17 @@ room13.btnclick = function (name) {
                 case 9:
                 case 10:
                 case 11:
+                case 12:
                     chat(136, 13);
+                    break;
+                case 13:
+                    if (sc.getstep("landlord") === 11)
+                        chat(254, 13);
+                    else
+                        chat(250, 13);
+                    break;
+                case 14:
+                    chat(250, 13);
                     break;
                 case 200:
                     chat(148, 13);
@@ -639,6 +665,16 @@ room13.btnclick = function (name) {
                 nav.bg("13_sisterRoom/zzz2.jpg");
                 chat(63, 13);
             }
+            break;
+        case "3some":
+            if (g.internal === 9) {
+                chat(252, 13);
+                nav.killbutton("3some");
+            }
+            else {
+                nav.bg("13_sisterRoom/3some" + g.internal + ".jpg");
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -1376,6 +1412,31 @@ room13.chatcatch = function (callback) {
         case "b8":
             cl.doCum(false);
             nav.bg("13_sisterRoom/b8.jpg");
+            break;
+        case "3some1":
+            char.changeMenu("hide", false, false);
+            nav.killall();
+            nav.bg("13_sisterRoom/3some1.jpg");
+            g.internal = 2;
+            nav.button({
+                "type": "btn",
+                "name": "3some",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 13);
+            
+            break;
+        case "3someEnd":
+            scc.love("eva", 200, 100);
+            scc.love("lola", 200, 100);
+            g.mod("fuckPussy", 2);
+            char.addtime(120);
+            g.setflag("lolaDayEvent");
+            g.setflag("evaDayEvent");
+            char.room(10);
             break;
         default:
             console.log(callback + " - miss");
@@ -3456,6 +3517,55 @@ room13.chat = function (chatID) {
             text: "That felt empty.",
             button: [
                 { chatID: -1, text: "Pull their blanket back up and leave.", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 249,
+            speaker: "eva",
+            text: "PUT SOME CLOTHES ON AND GET OUT YOU PERVERT!!!!",
+            button: [
+                { chatID: -1, text: "Ooooff", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 250,
+            speaker: "eva",
+            text: "So did you come here to perv on us, or have sex?",
+            button: [
+                { chatID: 251, text: "Dirty dirty sex", callback: "" },
+                { chatID: -1, text: "Just perving", callback: "" }
+            ]
+        },
+        {
+            chatID: 251,
+            speaker: "lola",
+            text: "Oh good. I really need some dick. Hehe I mean that would be great. ",
+            button: [
+                { chatID: -1, text: "Fuck them both", callback: "3some1" }
+            ]
+        },
+        {
+            chatID: 252,
+            speaker: "eva",
+            text: "You may be a weird pervert, but you sure can fuck. ",
+            button: [
+                { chatID: 253, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 253,
+            speaker: "lola",
+            text: "My little pussy is so cummie. I love it. ",
+            button: [
+                { chatID: -1, text: "...", callback: "3someEnd" }
+            ]
+        },
+        {
+            chatID: 254,
+            speaker: "lola",
+            text: sc.n("landlord") + " said she wanted to speak with you in her room. Said it was urgent. ",
+            button: [
+                { chatID: -1, text: "Oh, I hope I'm not in trouble. ", callback: "" }
             ]
         },
     ];

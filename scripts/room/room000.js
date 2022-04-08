@@ -2,8 +2,6 @@
 var room0 = {};
 room0.chatInput;
 room0.main = function () {
-    if (cl.appearance() === 5)
-        chat(6, 0);
     g.pass = g.internal = "";
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
@@ -16,6 +14,7 @@ room0.main = function () {
     else
         room0.btnclick("map_1");
     setTimeout(function () { $('#room_footer').hide(); }, 200);
+    
 };
 
 room0.btnclick = function (name) {
@@ -137,39 +136,110 @@ room0.btnclick = function (name) {
             char.room(roomnum);
         }
     }
-
+    if (cl.isLewd()) {
+        nav.button({
+            "type": "img",
+            "name": "lewd",
+            "left": 1720,
+            "top": 980,
+            "width": 200,
+            "height": 100,
+            "image": "map/lewd.png"
+        }, 0);
+    }
 };
 
 room0.chatcatch = function (callback) {
     switch (callback) {
         case "walk":
             if (g.walk !== null) {
-                var pstep = sc.get(g.walk);
-                var i;
-                var pointer, mp;
-                for (i = 0; i < sc.events.length; i++) {
-                    if (sc.events[i].name === g.walk && sc.events[i].step <= pstep.step) {
-                        pointer = i;
+                if (g.walk === "oncase") {
+                    var roomList = new Array();
+                    switch (g.get("oncase")) {
+                        case "smolpp":
+                        case "bigboobs":
+                        case "bigass":
+                        case "dslLips":
+                            roomList = [16];
+                            break;
+                        case "cult0":
+                            roomList = [450];
+                            break;
+                        case "redroom":
+                            roomList = [203];
+                            break;
+                        case "gloryholebj":
+                            roomList = [450];
+                            break;
+                        case "shopping":
+                            roomList = [650];
+                            break;
+                        case "clothes0":
+                        case "clothes1":
+                        case "clothes2":
+                        case "clothes3":
+                            roomList = [150];
+                            break;
+                        case "dinerfail":
+                        case "dinersuccess":
+                            roomList = [203];
+                            break;
+                        case "diner":
+                            roomList = [250];
+                            break;
+                        case "sewer":
+                            roomList = [225, 550];
+                            break;
+                        default:
+                            break;
+                    }
+                    for (i = 0; i < roomList.length; i++) {
+                        for (j = 0; j < g.roomMap.length; j++) {
+                            if (g.roomMap[j].roomID === roomList[i]) {
+                                mp = g.roomMap[j];
+                                j = 999999;
+                            }
+                        }
+                        if (mp.map === g.internal)
+                            nav.button({
+                                "type": "img",
+                                "name": "xxx",
+                                "left": mp.left + (mp.width / 2) - 200,
+                                "top": mp.top + (mp.height / 2) - 200,
+                                "width": 400,
+                                "height": 400,
+                                "image": "map/marker.gif"
+                            }, 0);
                     }
                 }
-                var s = sc.events[pointer].m;
-                for (i = 0; i < s.length; i++) {
-                    for (j = 0; j < g.roomMap.length; j++) {
-                        if (g.roomMap[j].roomID === s[i]) {
-                            mp = g.roomMap[j];
-                            j = 999999;
+                else {
+                    var pstep = sc.get(g.walk);
+                    var i;
+                    var pointer, mp;
+                    for (i = 0; i < sc.events.length; i++) {
+                        if (sc.events[i].name === g.walk && sc.events[i].step <= pstep.step) {
+                            pointer = i;
                         }
                     }
-                    if (mp.map === g.internal)
-                        nav.button({
-                            "type": "img",
-                            "name": "xxx",
-                            "left": mp.left + (mp.width / 2) - 200,
-                            "top": mp.top + (mp.height / 2) - 200,
-                            "width": 400,
-                            "height": 400,
-                            "image": "map/marker.gif"
-                        }, 0);
+                    var s = sc.events[pointer].m;
+                    for (i = 0; i < s.length; i++) {
+                        for (j = 0; j < g.roomMap.length; j++) {
+                            if (g.roomMap[j].roomID === s[i]) {
+                                mp = g.roomMap[j];
+                                j = 999999;
+                            }
+                        }
+                        if (mp.map === g.internal)
+                            nav.button({
+                                "type": "img",
+                                "name": "xxx",
+                                "left": mp.left + (mp.width / 2) - 200,
+                                "top": mp.top + (mp.height / 2) - 200,
+                                "width": 400,
+                                "height": 400,
+                                "image": "map/marker.gif"
+                            }, 0);
+                    }
                 }
             }
             g.internal = null;

@@ -1,7 +1,19 @@
 ﻿//Room name
 var room550 = {};
 room550.main = function () {
-    if (sc.getstep("chad") > 1) {
+    if (cl.isLewd()) {
+        nav.button({
+            "type": "img",
+            "name": "man",
+            "left": 793,
+            "top": 93,
+            "width": 812,
+            "height": 930,
+            "image": "550_gymFront/550_frontDesk1.png"
+        }, 550);
+        chat(13, 550);
+    }
+    else if (sc.getstep("chad") > 1) {
         char.room(551);
     }
     else {
@@ -94,6 +106,38 @@ room550.chatcatch = function (callback) {
                 "height": 930,
                 "image": "550_gymFront/550_frontDesk2.png"
             }, 550);
+            break;
+        case "g1":
+            nav.killall();
+            nav.bg("550_gymFront/g1.jpg");
+            break;
+        case "g2":
+            nav.bg("552_boy/lockeroom.jpg");
+            nav.button({
+                "type": "img",
+                "name": "zzz",
+                "left": 279,
+                "top": 110,
+                "width": 1388,
+                "height": 970,
+                "image": "550_gymFront/g2.png"
+            }, 550);
+            break;
+        case "g3":
+            nav.killall();
+            nav.bg("550_gymFront/g3.jpg");
+            break;
+        case "g4":
+        case "g5":
+        case "g6":
+            nav.bg("550_gymFront/" + callback + ".jpg");
+            break;
+        case "g7":
+            g.mod("giveOralMale", 1);
+            g.mod("creamPied", 1);
+            g.mod("receiveAnalMale", 1);
+            char.room(0);
+            char.addtime(180);
             break;
         default:
             break;
@@ -217,6 +261,62 @@ room550.chat = function (chatID) {
             text: "HAHAHAHahahaaaa. You're dick's too tiny to work out here!",
             button: [
                 { chatID: 2, text: "It's not small, it's a good size!", callback: "two" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "chad",
+            text: "Hay slut! You come in here looking for me?",
+            button: [
+                { chatID: 14, text: "Slut?", callback: "g1" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "chad",
+            text: "I'm going to show you what happens when sluts come in my gym.",
+            button: [
+                { chatID: 15, text: "huh...", callback: "g2" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "chad",
+            text: "My friends and I are going to show you what happens to sluts in my gym, and you're not going to like it. ",
+            button: [
+                { chatID: 16, text: "no...", callback: "g3" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "chad",
+            text: "You want to scream out in pain? I'm going to jam my cock down your throat to shut you up! ",
+            button: [
+                { chatID: 17, text: "AAAAAAaaaa", callback: "g4" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "chad",
+            text: "That's better. Ready for your prize slut?",
+            button: [
+                { chatID: 18, text: "GLUK", callback: "g5" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "chad",
+            text: "Oh  fuck you're a dirty slut! Flip over and squirt it out for us! ",
+            button: [
+                { chatID: 19, text: "Ok!", callback: "g6" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "chad",
+            text: "Nasty slut. Now get the fuck out of my gym! ",
+            button: [
+                { chatID: -1, text: "huh?", callback: "g7" }
             ]
         }
     ];

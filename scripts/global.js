@@ -258,7 +258,6 @@ g.sissy = [
 g.supersissy = function (all) {
     for (var i = 0; i < g.sissy.length; i++)
         g.sissy[i].ach = all;
-    g.sissy[54].ach = true;
 };
 
 g.i = function (name) {
@@ -1205,16 +1204,16 @@ g.sumSissy = function () {
                 break;
 
             case "giveAnalMale":
-                g.sp.anal.n.m = g.st[i].t;
+                g.sp.anal.n.mr = g.st[i].t;
                 break;
             case "giveAnalFemale":
-                g.sp.anal.n.f = g.st[i].t;
+                g.sp.anal.n.fr = g.st[i].t;
                 break;
             case "receiveAnalMale":
-                g.sp.anal.n.mr += g.st[i].t;
+                g.sp.anal.n.m += g.st[i].t;
                 break;
             case "receiveAnalFemale":
-                g.sp.anal.n.fr += g.st[i].t;
+                g.sp.anal.n.f += g.st[i].t;
                 break;
 
             case "giveHandjobMale":
@@ -1433,7 +1432,7 @@ g.sissyclick = function (ttype) {
             body.push({ x: "Fucked in the ass", y: g.sp.anal.n.m });
             body.push({ x: "Strapons taken up the ass", y: g.sp.anal.n.f });
             body.push({ x: "Dudes Fucked", y: g.sp.anal.n.mr });
-            body.push({ x: "Chicks Fucked", y: g.sp.anal.n.mf });
+            body.push({ x: "Chicks Fucked", y: g.sp.anal.n.mr });
             break;
         case "Hand":
             title = "Hand Jobs";
@@ -1457,7 +1456,7 @@ g.sissyclick = function (ttype) {
         case "Pussy":
             title = "Pussy";
             body.push({ x: "Chicks fucked in the pussy", y: g.sp.pussy.n.f });
-            body.push({ x: "You got fucked in the pussy", y: g.sp.pussy.n.r });
+            body.push({ x: "Fucked in your pussy", y: g.sp.pussy.n.r });
             break;
         case "Fingered":
             title = "Fingered";

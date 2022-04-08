@@ -64,6 +64,10 @@ room7.main = function () {
             chat(56, 7);
         }
     }
+    else if (evaStep === 12 && lolaStep === 13) {
+        nav.bg("7_mainCharRoomAlt/b1.jpg");
+        chat(87, 7);
+    }
     else if (g.dt.getDay() === 0) {
         btnList = [
             {
@@ -599,6 +603,61 @@ room7.chatcatch = function (callback) {
             g.mod("receiveAnalMale", 1);
             g.mod("creamPied", 1);
             char.addtime(68);
+            char.room(10);
+            break;
+        case "b3":
+            char.changeMenu("hide", false, false);
+            g.internal = { l: false, e: false };
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
+        case "b2":
+        case "b4e":
+        case "b4f":
+        case "b4l":
+        case "b5l2":
+        case "b5l3":
+        case "b5l4":
+        case "b5l5":
+        case "b5e2":
+        case "b5e3":
+        case "b5e4":
+        case "b5e5":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
+        case "b5e1":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            g.internal.e = true;
+            break;
+        case "b5l1":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            g.internal.l = true;
+            break;
+        case "b6":
+            if (!g.internal.l) {
+                nav.bg("7_mainCharRoomAlt/b5l1.jpg");
+                chat(98, 7);
+                g.internal.l = true;
+            }
+            else if (!g.internal.e) {
+                nav.bg("7_mainCharRoomAlt/b5e1.jpg");
+                chat(103, 7);
+                g.internal.e = true;
+            }
+            else {
+                nav.bg("7_mainCharRoomAlt/b6.jpg");
+                chat(108, 7);
+            }
+            break;
+        case "b7":
+            scc.love("eva", 200, 100);
+            scc.love("lola", 200, 100);
+            sc.setstep("eva", 13);
+            sc.setstep("lola", 14);
+            g.mod("fuckPussy", 2);
+            g.mod("giveAnalFemale", 1);
+            g.setflag("lolaDayEvent");
+            g.setflag("evaDayEvent");
+            char.addtime(120);
             char.room(10);
             break;
         case "reset":
@@ -1315,12 +1374,204 @@ room7.chat = function (chatID) {
             ]
         },
         {
-            chatID: 85,
+            chatID: 86,
             speaker: "eva",
             text: "Shhh don't tell " + sc.n("lola") + " what we did. I'm going to have her eat out my pussy later. Hehehe bye!" +
                 " [End of this story line]",
             button: [
                 { chatID: -1, text: "That's hot, later " + sc.n("eva") + ". ", callback: "eva11m" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "lola",
+            text: sc.n("eva") + " told me what you two did! I thought you were only sleeping with me! I'm so angry right now!",
+            button: [
+                { chatID: 88, text: "Oh!", callback: "" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "eva",
+            text: "And I thought you were only sleeping with me pervert! How could you! We're going to get you kicked " +
+                "out forever!",
+            button: [
+                { chatID: 89, text: "Well, you see...", callback: "b2" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "lola",
+            text: "Got you. You thought you could go behind our backs without us talking? ",
+            button: [
+                { chatID: 90, text: "huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "eva",
+            text: "We would never kick you out! We love your cock too much you weirdo. ",
+            button: [
+                { chatID: 91, text: "Oh yea", callback: "b3" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "lola",
+            text: "Now that you're all nice and hard we're going to tease you. ",
+            button: [
+                { chatID: 92, text: "Tease me?", callback: "" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "eva",
+            text: "I call it the pervert game! You pick the position you want us to do to each other. How " +
+                "do you want us?",
+            button: [
+                { chatID: 94, text: sc.n("lola") + " put your finger in her butt. ", callback: "b4f" },
+                { chatID: 95, text: sc.n("eva") + " ride her face. ", callback: "b4e" },
+                { chatID: 96, text: sc.n("lola") + " ride her face. ", callback: "b4l" },
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "lola",
+            text: "What do you want us to do next?",
+            button: [
+                { chatID: 94, text: sc.n("lola") + " put your finger in her butt. ", callback: "b4f" },
+                { chatID: 95, text: sc.n("eva") + " ride her face. ", callback: "b4e" },
+                { chatID: 96, text: sc.n("lola") + " ride her face. ", callback: "b4l" },
+                { chatID: 97, text: "I want you on my dick!", callback: "" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "lola",
+            text: "It's so warm. I'm glad we showered before this. ",
+            button: [
+                { chatID: 93, text: "I'm going to pick another", callback: "" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "eva",
+            text: "You like watching me ride her face pervert? I bet you wish you could suck my toes while I do this. ",
+            button: [
+                { chatID: 93, text: "I'm going to pick another", callback: "" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "eva",
+            text: "Oh wow. I love it when you do that thing with your tongue. It really makes me so wet! ",
+            button: [
+                { chatID: 93, text: "I'm going to pick another", callback: "" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "lola",
+            text: "So who do you want to have sex with first? ",
+            button: [
+                { chatID: 98, text: sc.n("lola"), callback: "b5l1" },
+                { chatID: 103, text: sc.n("eva"), callback: "b5e1" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "lola",
+            text: "Oh wow. This is the best feeling ever. I love how your penis feels in me. ",
+            button: [
+                { chatID: 99, text: "...", callback: "b5l2" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "lola",
+            text: "Oh god, harder. Harder! I want to feel you cum.",
+            button: [
+                { chatID: 100, text: "...", callback: "b5l3" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "lola",
+            text: "Oh wow. I'm leaking all over. I feel so dirty, and happy at the same time.",
+            button: [
+                { chatID: 101, text: "...", callback: "b5l4" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "eva",
+            text: "Hahaha! You should be proud. You're the only one she's ever been with. ",
+            button: [
+                { chatID: 102, text: "Really?", callback: "b5l5" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "lola",
+            text: "There's no other man in the world that I would let in me. ",
+            button: [
+                { chatID: -1, text: "...", callback: "b6" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "eva",
+            text: "Even when you're having sex with me you're still perving on my feet. Flip me over, I want it hard!",
+            button: [
+                { chatID: 104, text: "Oh yeah!", callback: "b5e2" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "eva",
+            text: "Oh yeah! I've cum three times you're soo good. Now it's your turn to cum. ",
+            button: [
+                { chatID: 105, text: "OOooooo", callback: "b5e3" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "eva",
+            text: "Haha, it's dripping all over my feet. I bet you think that's hot. ",
+            button: [
+                { chatID: 106, text: "...", callback: "b5e4" }
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "lola",
+            text: "You're such a mess. Like always ",
+            button: [
+                { chatID: 107, text: "...", callback: "b5e5" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "eva",
+            text: "I know. But a dripping pussy is a happy pussy. ",
+            button: [
+                { chatID: 108, text: "...", callback: "b6" }
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "lola",
+            text: "We better get going before we get in trouble. ",
+            button: [
+                { chatID: 109, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "eva",
+            text: "Yeah perv. Stop by our room if you want any more fun. ",
+            button: [
+                { chatID: -1, text: "...", callback: "b7" }
             ]
         },
     ];

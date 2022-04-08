@@ -3,29 +3,43 @@
 var room900 = {};
 
 room900.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "building",
-            "left": 525,
-            "top": 403,
-            "width": 864,
-            "height": 582,
-            "image": "900_college/college.png",
-            "night": "900_college/collegeNight.png"
-        }
-    ];
+    if (cl.isLewd) {
+        nav.button({
+            "type": "img",
+            "name": "cop",
+            "left": 870,
+            "top": 39,
+            "width": 784,
+            "height": 1041,
+            "image": "452_parkWomansRoom/cop.png"
+        }, 452);
+        chat(23, 900);
+    }
+    else {
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "building",
+                "left": 525,
+                "top": 403,
+                "width": 864,
+                "height": 582,
+                "image": "900_college/college.png",
+                "night": "900_college/collegeNight.png"
+            }
+        ];
 
-    var navList = [0];
+        var navList = [0];
 
-    if (sc.getstep("me") === 1)
-        navList.unshift(902);
+        if (sc.getstep("me") === 1)
+            navList.unshift(902);
 
-    $.each(btnList, function (i, v) {
-        nav.button(v, 900);
-    });
+        $.each(btnList, function (i, v) {
+            nav.button(v, 900);
+        });
 
-    nav.buildnav(navList);
+        nav.buildnav(navList);
+    }
 };
 
 room900.btnclick = function (name) {
@@ -118,6 +132,10 @@ room900.chatcatch = function(callback){
         case "e16":
             g.mod("phum", 1);
             char.room(0);
+            break;
+        case "jail":
+            g.pass = "jail";
+            char.room(425);
             break;
         default:
             break;
@@ -309,6 +327,14 @@ room900.chat = function(chatID){
             text: "fuck fuck fuck fuck....",
             button: [
                 { chatID: -1, text: "...", callback: "e16" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "cop2",
+            text: "Ok slut. You can't be running around the campus naked. Time for jail. ",
+            button: [
+                { chatID: -1, text: "...", callback: "jail" }
             ]
         }
     ];

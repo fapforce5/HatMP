@@ -417,7 +417,9 @@ room23.chatcatch = function (callback) {
                 cl.display();
                 if (g.internal.pantyBoy)
                     $('#char-chest').html('<img src="./images/room/23_tord/pantyBoy.png" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
-                if (cl.list[cl.where("panties", cl.c.panties)].sex === "m")
+                if (cl.c.panties === null)
+                    chat(35, 23);
+                else if (cl.list[cl.where("panties", cl.c.panties)].sex === "m")
                     chat(35, 23);
                 else {
                     room23.chatcatch("evaSit");

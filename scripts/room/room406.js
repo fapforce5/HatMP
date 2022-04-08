@@ -1,17 +1,34 @@
 ﻿//Room name
 var room406 = {};
 room406.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "doc",
-            "left": 881,
-            "top": 166,
-            "width": 673,
-            "height": 806,
-            "image": "406_eyes/doc.png"
-        }
-    ];
+    var btnList;
+    if (cl.isLewd()) {
+        btnList = [
+            {
+                "type": "img",
+                "name": "doc",
+                "left": 881,
+                "top": 166,
+                "width": 673,
+                "height": 806,
+                "image": "406_eyes/docx.png"
+            }
+        ];
+        chat(7, 406);
+    }
+    else {
+        btnList = [
+            {
+                "type": "btn",
+                "name": "doc",
+                "left": 881,
+                "top": 166,
+                "width": 673,
+                "height": 806,
+                "image": "406_eyes/doc.png"
+            }
+        ];
+    }
     var navList = [0];
     $.each(btnList, function (i, v) {
         nav.button(v, 406);
@@ -50,6 +67,9 @@ room406.chatcatch = function (callback) {
             break;
         case "kill":
             nav.killbutton("zzz-clothing-kill");
+            break;
+        case "leave":
+            char.room(0);
             break;
         default:
             break;
@@ -122,6 +142,14 @@ room406.chat = function (chatID) {
             text: "They're so pretty.",
             button: [
                 { chatID: -1, text: '...', callback: "kill" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "random",
+            text: "You filthy slut! Get out of my store RIGHT NOW!!!!",
+            button: [
+                { chatID: -1, text: 'Run away', callback: "leave" }
             ]
         }
     ];

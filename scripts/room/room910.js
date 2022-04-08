@@ -2,22 +2,36 @@
 var room910 = {};
 
 room910.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "lady",
-            "left": 775,
-            "top": 155,
-            "width": 400,
-            "height": 463,
-            "image": "910_gov/lady.jpg"
-        }
-    ];
-    var navList = [0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 910);
-    });
-    nav.buildnav(navList);
+    if (cl.isLewd()) {
+        nav.button({
+            "type": "img",
+            "name": "cop",
+            "left": 870,
+            "top": 39,
+            "width": 784,
+            "height": 1041,
+            "image": "452_parkWomansRoom/cop.png"
+        }, 400);
+        chat(13, 910);
+    }
+    else {
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "lady",
+                "left": 775,
+                "top": 155,
+                "width": 400,
+                "height": 463,
+                "image": "910_gov/lady.jpg"
+            }
+        ];
+        var navList = [0];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 910);
+        });
+        nav.buildnav(navList);
+    }
 };
 
 room910.btnclick = function (name) {
@@ -59,6 +73,10 @@ room910.chatcatch = function (callback) {
             g.set("girlname", temp);
             sc.setstep("govlady", 1);
             char.addtime(30);
+            break;
+        case "jail":
+            g.pass = "jail";
+            char.room(425);
             break;
         default:
             break;
@@ -169,6 +187,14 @@ room910.chat = function (chatID) {
             text: "I'm sorry sir, I can't change your name to a girl's name. You're way to manly for that.",
             button: [
                 { chatID: -1, text: "Oh, ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "cop2",
+            text: "Ok slut. You can't be running around the mall naked. Time for jail. ",
+            button: [
+                { chatID: -1, text: "...", callback: "jail" }
             ]
         },
     ];

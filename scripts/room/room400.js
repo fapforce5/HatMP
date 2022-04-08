@@ -14,6 +14,18 @@ room400.main = function () {
             "image": "400_mall/tiffany.png"
         }, 400);
     }
+    else if (cl.isLewd()) {
+        nav.button({
+            "type": "img",
+            "name": "cop",
+            "left": 870,
+            "top": 39,
+            "width": 784,
+            "height": 1041,
+            "image": "452_parkWomansRoom/cop.png"
+        }, 400);
+        chat(3, 400);
+    }
     else {
         var btnList = [
             {
@@ -142,6 +154,10 @@ room400.chatcatch = function (callback) {
         case "tSaucy":
             char.room(403);
             break;
+        case "jail":
+            g.pass = "jail";
+            char.room(425);
+            break;
         default:
             break;
     }
@@ -171,6 +187,14 @@ room400.chat = function (chatID) {
             text: "Next release you'll be able to decorate your room!",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "cop2",
+            text: "Ok slut. You can't be running around the mall naked. Time for jail. ",
+            button: [
+                { chatID: -1, text: "...", callback: "jail" }
             ]
         }
     ];

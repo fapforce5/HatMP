@@ -27,10 +27,10 @@ cl.set = [
     { entry: -1, name: "Chubby", p: -1 },
     { entry: 0, name: "Male", p: -1 },
     { entry: 1, name: "Androgynous", p: 250},
-    { entry: 2, name: "Cute", p: 375 },
-    { entry: 3, name: "Sexy", p: 540 },
-    { entry: 4, name: "Bimbo Slut", p: 720 },
-    { entry: 5, name: "Cum Dumpster", p: 900 }
+    { entry: 2, name: "Cute", p: 400 },
+    { entry: 3, name: "Sexy", p: 650 },
+    { entry: 4, name: "Bimbo Slut", p: 900 },
+    { entry: 5, name: "Cum Dumpster", p: 3000 }
 ];
 
 cl.fem = [
@@ -162,22 +162,22 @@ cl.list = [
     { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
     { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
 
-    { type: "pj", name: "paisley", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "pj", name: "gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "pj", name: "b", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
+    { type: "pj", name: "paisley", display: "Boy Pjs", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
+    { type: "pj", name: "gown", display: "Night Gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
+    { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
 
-    { type: "chastity", name: "cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: 120 },
-    { type: "chastity", name: "pink", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
-    { type: "chastity", name: "metal", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: 120 },
+    { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
+    { type: "chastity", name: "metal", display: "Metal Cage", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
 
-    { type: "buttplug", name: "s", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
-    { type: "buttplug", name: "n", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },
-    { type: "buttplug", name: "l", img: "plug_large.png", sex: "f", inv: false, daring: 3, price: 120 },
-    { type: "buttplug", name: "h", img: "plug_heart.png", sex: "f", inv: false, daring: 1, price: 120 },
-    { type: "buttplug", name: "r", img: "plug_red.png", sex: "f", inv: false, daring: 1, price: 100 },
-    { type: "buttplug", name: "b", img: "plug_blue.png", sex: "f", inv: false, daring: 1, price: 100 },
-    { type: "buttplug", name: "g", img: "plug_green.png", sex: "f", inv: false, daring: 1, price: 100 },
-    { type: "buttplug", name: "v", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
+    { type: "buttplug", name: "s", display: "Small Plug", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
+    { type: "buttplug", name: "n", display: "Medium Plug", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },
+    { type: "buttplug", name: "l", display: "Large Plug", img: "plug_large.png", sex: "f", inv: false, daring: 3, price: 120 },
+    { type: "buttplug", name: "h", display: "Heart Plug", img: "plug_heart.png", sex: "f", inv: false, daring: 1, price: 120 },
+    { type: "buttplug", name: "r", display: "Red Plug", img: "plug_red.png", sex: "f", inv: false, daring: 1, price: 100 },
+    { type: "buttplug", name: "b", display: "Blue Plug", img: "plug_blue.png", sex: "f", inv: false, daring: 1, price: 100 },
+    { type: "buttplug", name: "g", display: "Green Plug", img: "plug_green.png", sex: "f", inv: false, daring: 1, price: 100 },
+    { type: "buttplug", name: "v", display: "Vibrator", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
 
     { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
@@ -1308,8 +1308,8 @@ cl.panties = [
     { name: "c", leg: 5, pussy: "panty_c_5_v.png", cock: "panty_c_5_c.png", back: "panty_c_5_back.png" },
     { name: "c", leg: 4, pussy: "panty_c_4_v.png", cock: "panty_c_4_c.png", back: "panty_c_4_back.png" },
     { name: "c", leg: 3, pussy: "panty_c_3_v.png", cock: "panty_c_3_c.png", back: "panty_c_3_back.png" },
-    { name: "c", leg: 2, pussy: "panty_c_1_v.png", cock: "panty_c_1_c.png", back: "panty_c_2_back.png" },
-    { name: "c", leg: 1, pussy: "panty_c_1_v.png", cock: "panty_c_1_c.png", back: "panty_c_0_back.png" },
+    { name: "c", leg: 2, pussy: "panty_c_2_v.png", cock: "panty_c_2_c.png", back: "panty_c_2_back.png" },
+    { name: "c", leg: 1, pussy: "panty_c_0_v.png", cock: "panty_c_0_c.png", back: "panty_c_0_back.png" },
     { name: "c", leg: 0, pussy: "panty_c_0_v.png", cock: "panty_c_0_c.png", back: "panty_c_0_back.png" },
 
     { name: "m", leg: 5, pussy: "panty_m_5_v.png", cock: "panty_m_5_c.png", back: "panty_m_5_back.png" },
@@ -1974,6 +1974,22 @@ cl.isCrossdressing = function () {
     return isXdress;
 };
 
+cl.isLewd = function () {
+    if (cl.c.pj === null && cl.c.dress === null && cl.c.swimsuit === null) {
+        if (cl.c.pants === null && cl.c.panties === null)
+            return true;
+        if (cl.c.chest > 1 && cl.c.bra === null && cl.c.shirt === null)
+            return true;
+    }
+    if (cl.c.swimsuit !== null) {
+        if (cl.c.chest > 1 && cl.c.swimsuit === "m")
+            return true;
+    }
+    if (cl.c.shirt === "cor" && cl.c.bra === null && cl.c.chest > 2)
+        return true;
+    return false;
+};
+
 cl.cupsize = function () {
     var sizes = ["fat", "A", "A", "B", "C", "D", "Fucking Huge"];
     return sizes[cl.c.chest + 1];
@@ -2006,6 +2022,8 @@ cl.appearance = function () {
                 retVal = cl.set[i].entry;
         }
     }
+    if (cl.isLewd())
+        retVal = 5;
     return retVal;
 };
 

@@ -3,9 +3,7 @@ var room101 = {};
 
 room101.main = function () {
     g.internal = { s: "Can you tell me how my cum tastes?", r: "I bet it tastes delicious", p: "" };
-    var tinaRel = sc.getstep("tina");
-    var name = "tina";
-    if (g.get("jobConstWorkToday") === 1) {
+    if (cl.isLewd()) {
         nav.button({
             "type": "btn",
             "name": "tina",
@@ -15,46 +13,63 @@ room101.main = function () {
             "height": 711,
             "image": "101_constFrontOffice/sit1.png"
         }, 101);
-            navList = [100];
-        chat(5, 101);
+        chat(22, 101);
     }
     else {
-        var image = "sit1.png";
-        if (tinaRel < 5)
-            image = "sit1.png";
-        else if (tinaRel < 10)
-            image = "sit2.png";
-        else if (Math.floor(Math.random() * 5) === 0) {
-            image = "jackit1.png";
-            name = "jackit";
-        }
-        else {
-            if (Math.floor(Math.random() * 3) === 0)
-                image = "sit3.png";
-            else
-                image = "sit2.png";
-        }
-        var btnList = [
-            {
+        
+        var tinaRel = sc.getstep("tina");
+        var name = "tina";
+        if (g.get("jobConstWorkToday") === 1) {
+            nav.button({
                 "type": "btn",
-                "name": name,
+                "name": "tina",
                 "left": 810,
                 "top": 299,
                 "width": 439,
                 "height": 711,
-                "image": "101_constFrontOffice/" + image
+                "image": "101_constFrontOffice/sit1.png"
+            }, 101);
+            navList = [100];
+            chat(5, 101);
+        }
+        else {
+            var image = "sit1.png";
+            if (tinaRel < 5)
+                image = "sit1.png";
+            else if (tinaRel < 10)
+                image = "sit2.png";
+            else if (Math.floor(Math.random() * 5) === 0) {
+                image = "jackit1.png";
+                name = "jackit";
             }
-        ];
+            else {
+                if (Math.floor(Math.random() * 3) === 0)
+                    image = "sit3.png";
+                else
+                    image = "sit2.png";
+            }
+            var btnList = [
+                {
+                    "type": "btn",
+                    "name": name,
+                    "left": 810,
+                    "top": 299,
+                    "width": 439,
+                    "height": 711,
+                    "image": "101_constFrontOffice/" + image
+                }
+            ];
 
-        var navList = [100];
-        if (sc.getstep("construction") > 1 && g.dt.getHours() < 18)
-            navList = [102, 100];
+            var navList = [100];
+            if (sc.getstep("construction") > 1 && g.dt.getHours() < 18)
+                navList = [102, 100];
 
-        $.each(btnList, function (i, v) {
-            nav.button(v, 101);
-        });
+            $.each(btnList, function (i, v) {
+                nav.button(v, 101);
+            });
+        }
+        nav.buildnav(navList);
     }
-    nav.buildnav(navList);
 };
 
 room101.btnclick = function (name) {
@@ -424,6 +439,12 @@ room101.chat = function (chatID) {
             speaker: "tina",
             text: "Stop being nice, meet me a the club and get ready to pull my hair. [Club not built yet]",
             button: []
+        },
+        {
+            chatID: 22,
+            speaker: "tina",
+            text: "Oh My God. Get out now!",
+            button: [{ chatID: -1, text: "Of course", callback: "leave" }]
         }
     ];
     return cArray[chatID];

@@ -274,34 +274,47 @@ room27.chatcatch = function (callback) {
                 "image": "27_mirror/close.png"
             }, 27);
             var bottomUp = 900 * (bcEarned / bcTotal);
-            $('#room-buttons').append('<div style="background:#ccc; ' + g.makeCss(900, 20, 100, 1000) + ' position:absolute; border-radius:50px;"></div>');
-            $('#room-buttons').append('<div style="background:#b51db0; ' + g.makeCss(bottomUp, 20, 100 + 900 - bottomUp, 1000) + ' position:absolute; border-radius:50px;"></div>');
+            //$('#room-buttons').append('<div style="background:#ccc; ' + g.makeCss(900, 20, 100, 1000) + ' position:absolute; border-radius:50px;"></div>');
+            //$('#room-buttons').append('<div style="background:#b51db0; ' + g.makeCss(bottomUp, 20, 100 + 900 - bottomUp, 1000) + ' position:absolute; border-radius:50px;"></div>');
             nav.t({
                 type: "img",
                 name: "x",
-                left: 900,
-                top: 50,
-                font: 20,
+                left: 600,
+                top: 850,
+                font: 40,
                 hex: "#ffffff",
-                text: bcEarned + "/" + bcTotal
+                text: "Your Points: " + bcEarned 
             }, 27);
-            for (i = 1; i < cl.set.length; i++) {
+            if (cl.isLewd()) {
                 nav.t({
                     type: "img",
                     name: "x",
-                    left: 1120,
-                    top: 990 - cl.set[i].p,
+                    left: 620,
+                    top: 900,
+                    font: 40,
+                    hex: "#faa7f7",
+                    text: "Lewd Bonus!!"
+                }, 27);
+            }
+            for (i = 0; i < cl.set.length; i++) {
+                top = 850 - (i * 120);
+                var tempPointText = cl.set[i].p === -1 ? 0 : (cl.set[i].p > 1300 ? "Lewd" : cl.set[i].p);
+                nav.t({
+                    type: "img",
+                    name: "x",
+                    left: 1100,
+                    top: top + (cl.set[i].entry === tw ? 10 : 30),
                     font: cl.set[i].entry === tw ? 40 : 20,
                     hex: cl.set[i].entry === tw ? "#ffffff" : "#666666",
-                    text: cl.set[i].name
+                    text: cl.set[i].name + "<br/>[" + tempPointText + "]"
                 }, 27);
                 nav.button({
                     "type": "img",
                     "name": "x",
-                    "left": 1030,
-                    "top": 960 - cl.set[i].p,
-                    "width": 80,
-                    "height": 80,
+                    "left": 980,
+                    "top": top,
+                    "width": 110,
+                    "height": 110,
                     "image": "../stat/" + cl.set[i].entry + (cl.set[i].entry === tw ? "_75.png" : "_0.png")
                 }, 27);
             }

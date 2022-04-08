@@ -1,6 +1,9 @@
 ﻿//Room name
 var room404 = {};
 room404.main = function () {
+    if (cl.isLewd) {
+        chat(3, 404);
+    }
     var btnList = [
         {
             "type": "btn",
@@ -72,6 +75,14 @@ room404.chat = function (chatID) {
             text: "huh. we ain't got wares dumb fuck. Piss off",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "spanky",
+            text: "That's what I'm talking about! You make a sexy slut!",
+            button: [
+                { chatID: -1, text: "Thank you!", callback: "" }
             ]
         }
     ];

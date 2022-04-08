@@ -393,6 +393,10 @@ char.makeWalk = function () {
         }
         mo.push({ name: prevEntry, max: maxi });
         $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
+        $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="oncase">' +
+            '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
+            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">Active Case</div>' +
+            '</div>');
         $.each(sc.char, function (i, v) {
             if (v.show) {
                 $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="' + v.name + '">' +
@@ -407,55 +411,125 @@ char.makeWalk = function () {
         });
     }
     else {
-        var reverseEvent = new Array();
-        var displayArray = new Array();
-        var thisChar = sc.get(g.walk);
-        var pointer = 0;
-        for (i = 0; i < sc.events.length; i++) {
-            if (sc.events[i].name === g.walk && sc.events[i].step >= 0) {
-                reverseEvent.push({ step: sc.events[i].step, txt: sc.events[i].txt, ach: sc.events[i].ach });
-                if (sc.events[i].step <= thisChar.step)
-                    pointer = reverseEvent.length - 1;
-            }
-        }
-        $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
-        $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">Go Back</div>');
-        $("#room_left_walk_sub").append('<div style="text-align:center;">' +
-            '<img src="./images/speaker/' + thisChar.image + '" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
-            '</div>' +
-            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">' + thisChar.display + '</div>');
+        if (g.walk === "oncase") {
+            var oncase = g.get("oncase");
+            var oncaseText = '';
+            $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
+            $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
+                '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
+                'Go Back</div>');
+            $("#room_left_walk_sub").append('<div style="text-align:center;">' +
+                '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
+                '</div>' +
+                '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
 
-        for (i = 0; i < reverseEvent.length; i++) {
-            if (i === pointer)
-                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-                    reverseEvent[i].txt + '</li>');
-            else if (i === pointer + 1)
-                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-                    reverseEvent[i].txt + '</lii>');
-            else if (reverseEvent[i].step < thisChar.step) {
-                if (reverseEvent[i].ach || reverseEvent[i].step === 0)
+            switch (oncase) {
+                case "smolpp":
+                case "bigboobs":
+                case "bigass":
+                case "dslLips":
+                    oncaseText = "Go home and sleep to transition. ";
+                    break;
+                case "cult0":
+                    oncaseText = "Get information on the cult. ";
+                    break;
+                case "redroom":
+                    oncaseText = "Take the elevator up to the Red Room and pass the tests. ";
+                    break;
+                case "gloryholebj":
+                    oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
+                        "at the park. ";
+                    break;
+                case "shopping":
+                    oncaseText = "Visit Tiffany at The Toy Store for your shopping trip!";
+                    break;
+                case "clothes0":
+                case "clothes1":
+                case "clothes2":
+                case "clothes3":
+                    oncaseText = "Visit Mr. Jones at his Mansion north east of the suburbs. Follow his instructions. ";
+                    break;
+                case "dinerfail":
+                case "dinersuccess":
+                    oncaseText = "Report your investigation to Missy in her office. ";
+                    break;
+                case "diner":
+                    oncaseText = "Report to the Naked Beaver diner and try to figure out which waitress has been " +
+                        "stealing from Jeffery. ";
+                    break;
+                case "sewer":
+                    oncaseText = "First visit Gertrude in the gym to get the crowbar. Then use that crowbar to enter  " +
+                        "the sewer and fight the clown clan to the very last room to get Missy's Red Box. " +
+                        "Once you get the Red Box Return to Missy's office.";
+                    break;
+                default:
+                    break;
+            }
+            $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
+                '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
+                oncaseText + '</li></ul>');
+            if (g.roomID === 0) {
+                room0.main();
+                $("#room_left_walk").show();
+            }
+            $(".char-walkthrough-return").click(function () {
+                g.walk = null;
+                char.makeWalk();
+            });
+        }
+        else {
+            var reverseEvent = new Array();
+            var displayArray = new Array();
+            var thisChar = sc.get(g.walk);
+            var pointer = 0;
+            for (i = 0; i < sc.events.length; i++) {
+                if (sc.events[i].name === g.walk && sc.events[i].step >= 0) {
+                    reverseEvent.push({ step: sc.events[i].step, txt: sc.events[i].txt, ach: sc.events[i].ach });
+                    if (sc.events[i].step <= thisChar.step)
+                        pointer = reverseEvent.length - 1;
+                }
+            }
+            $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
+            $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
+                '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
+                'Go Back</div>');
+            $("#room_left_walk_sub").append('<div style="text-align:center;">' +
+                '<img src="./images/speaker/' + thisChar.image + '" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
+                '</div>' +
+                '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">' + thisChar.display + '</div>');
+
+            for (i = 0; i < reverseEvent.length; i++) {
+                if (i === pointer)
+                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
+                        reverseEvent[i].txt + '</li>');
+                else if (i === pointer + 1)
                     displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-                        reverseEvent[i].txt + '</li>');
+                        reverseEvent[i].txt + '</lii>');
+                else if (reverseEvent[i].step < thisChar.step) {
+                    if (reverseEvent[i].ach || reverseEvent[i].step === 0)
+                        displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
+                            reverseEvent[i].txt + '</li>');
+                    else
+                        displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666; text-decoration: line-through;" class="char-20">' +
+                            reverseEvent[i].txt + '</li>');
+                }
                 else
-                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666; text-decoration: line-through;" class="char-20">' +
-                        reverseEvent[i].txt + '</li>');
+                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666;" class="char-20" type="circle">' +
+                        '...</li>');
             }
-            else
-                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666;" class="char-20" type="circle">' +
-                    '...</li>');
-        }
-        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list"></ul>');
-        for (i = displayArray.length - 1; i >= 0; i--)
-            $("#room_left_walk_sub_list").append(displayArray[i]);
+            $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list"></ul>');
+            for (i = displayArray.length - 1; i >= 0; i--)
+                $("#room_left_walk_sub_list").append(displayArray[i]);
 
-        if (g.roomID === 0) {
-            room0.main();
-            $("#room_left_walk").show();
+            if (g.roomID === 0) {
+                room0.main();
+                $("#room_left_walk").show();
+            }
+            $(".char-walkthrough-return").click(function () {
+                g.walk = null;
+                char.makeWalk();
+            });
         }
-        $(".char-walkthrough-return").click(function () {
-            g.walk = null;
-            char.makeWalk();
-        });
     }
 };
 
@@ -587,7 +661,7 @@ menu.initBuild = function (type) {
     $('#menu_parent').append('<img src="./images/phone/bPic.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 810) + '" data-type="pic" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bSettings.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 960) + '" data-type="settings" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bHormone.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 1110) + '" data-type="hormone" class="menu-button menu-buttonKill"/>');
-    if (g.sissy[0].ach)
+    if (g.sissy[54].ach)
         $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 960) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bAch.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 810) + '" data-type="ach" class="menu-button menu-buttonKill"/>');

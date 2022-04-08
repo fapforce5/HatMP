@@ -22,6 +22,46 @@ room250.main = function () {
             room250.btnclick(g.pass[0].toString());
         }
     }
+    else if (cl.isLewd()) {
+        if (!sc.checkevent("holly", -1) && sc.getstep("dolly") >= 3) {
+            if (sc.getstep("dolly") < 4) {
+                nav.button({
+                    "type": "img",
+                    "name": "s1",
+                    "left": 930,
+                    "top": 99,
+                    "width": 753,
+                    "height": 981,
+                    "image": "250_beaver/s1.png"
+                }, 250);
+                chat(100, 250);
+            }
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "s1",
+                    "left": 939,
+                    "top": 0,
+                    "width": 557,
+                    "height": 1080,
+                    "image": "250_beaver/s4.png"
+                }, 250);
+                chat(105, 250);
+            }
+        }
+        else {
+            nav.button({
+                "type": "img",
+                "name": "hollyStand",
+                "left": 1094,
+                "top": 77,
+                "width": 540,
+                "height": 1003,
+                "image": "250_beaver/holly_stand_mad.png"
+            }, 250);
+            chat(99, 250);
+        }
+    }
     else {
         var btnList = sc.checkevent("holly", -1) ?
             [{
@@ -136,7 +176,7 @@ room250.chatcatch = function (callback) {
         case "nap_1hour":
             break;
         case "pizza":
-            if (g.get("money") < 55) {
+            if (g.get("money") < 18) {
                 chat(3, 250);
             }
             else {
@@ -147,7 +187,7 @@ room250.chatcatch = function (callback) {
             }
             break;
         case "burger":
-            if (g.get("money") < 40) {
+            if (g.get("money") < 15) {
                 chat(3, 250);
             }
             else {
@@ -158,7 +198,7 @@ room250.chatcatch = function (callback) {
             }
             break;
         case "tea":
-            if (g.get("money") < 15) {
+            if (g.get("money") < 8) {
                 chat(3, 250);
             }
             else {
@@ -171,16 +211,16 @@ room250.chatcatch = function (callback) {
         case "eat":
             switch (g.internal) {
                 case "pizza":
-                    g.mod("energy", 20);
-                    g.mod("money", -55);
+                    g.mod("energy", 200);
+                    g.mod("money", -18);
                     break;
                 case "burger":
-                    g.mod("energy", 15);
-                    g.mod("money", -40);
+                    g.mod("energy", 100);
+                    g.mod("money", -15);
                     break;
                 case "tea":
-                    g.mod("energy", 5);
-                    g.mod("money", -15);
+                    g.mod("energy", 50);
+                    g.mod("money", -8);
                     break;
             }
             break;
@@ -560,6 +600,48 @@ room250.chatcatch = function (callback) {
             g.mod("money", 25);
             room250.chatcatch("resetServing");
             break;
+        case "s2":
+            nav.modbutton("s1", "250_beaver/s2.png", null, null);
+            break;
+        case "s3":
+            nav.killbutton("s1");
+            break;
+        case "s4":
+            nav.button({
+                "type": "img",
+                "name": "s1",
+                "left": 939,
+                "top": 0,
+                "width": 557,
+                "height": 1080,
+                "image": "250_beaver/s4.png"
+            }, 250);
+            break;
+        case "s5":
+            nav.killbutton("s1");
+            nav.button({
+                "type": "img",
+                "name": "s1",
+                "left": 886,
+                "top": 0,
+                "width": 812,
+                "height": 1080,
+                "image": "250_beaver/side_dolly.png"
+            }, 250);
+            g.mod("energy", 1000);
+            g.mod("loadSwollowed", 1);
+            break;
+        case "s6":
+            sc.setstep("dolly", 4);
+            char.addtime(60);
+            char.room(0);
+            break;
+        case "s7":
+            g.mod("energy", 1000);
+            g.mod("loadSwollowed", 1);
+            char.addtime(60);
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -580,9 +662,9 @@ room250.chat = function (chatID) {
             chatID: 1,
             speaker: "holly",
             text: "What would you like to eat? We have<br/>" +
-                "$55 Pizza [+20 energy]<br/>" +
-                "$40 Hamburger [+15 energy]<br/>" +
-                "$15 Biscuits and Tea [+5 energy]",
+                "$18 Pizza [+200 energy]<br/>" +
+                "$15 Hamburger [+100 energy]<br/>" +
+                "$8 Biscuits and Tea [+50 energy]",
             button: [
                 { chatID: -1, text: "Pizza!", callback: "pizza" },
                 { chatID: -1, text: "Hamburger!", callback: "burger" },
@@ -1458,11 +1540,70 @@ room250.chat = function (chatID) {
             ]
         },
         {
-            chatID: 16,
+            chatID: 98,
             speaker: "jeffery",
             text: sc.n("me") + " what are you doing! Report to my office. ",
             button: [
                 { chatID: -1, text: "Comming", callback: "stageRightx" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "holly",
+            text: "Get out of here pervert! You're so disgusting!",
+            button: [
+                { chatID: -1, text: "Oh, right.", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "dolly",
+            text: "You're naked!",
+            button: [
+                { chatID: 101, text: "And you have a dick.", callback: "s2" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "dolly",
+            text: "Hehehe. I know. You excited it. I guess I have too much gooey goo in my balls. Tell you what sugar, " +
+                "since I can't work like this I'm going to have to empty this really quick. Wait right here and I'll be right " +
+                "back.",
+            button: [
+                { chatID: 102, text: "Huh?", callback: "s3" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "thinking",
+            text: "I wonder what she's up to...",
+            button: [
+                { chatID: 103, text: "...", callback: "s4" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "dolly",
+            text: "Some gooey goo with a spot of sugar for you honey. Drink up, it's packed with the good stuff.",
+            button: [
+                { chatID: 104, text: "Thanks!", callback: "s5" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "dolly",
+            text: "Good girl. Anytime you need another fill up just stop by sugar! I've got to get back to my tables now. ",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "s6" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "dolly",
+            text: "You sure do have a never ending belly. Here's some more gooey goo I prepared just for you",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "s7" },
+                { chatID: -1, text: "no thanks", callback: "leave" }
             ]
         },
     ];

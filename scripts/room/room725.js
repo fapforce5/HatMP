@@ -1,21 +1,27 @@
 ﻿//Room name
 var room725 = {};
 room725.main = function () {
-    if (sc.getstep("chloe") < 3 && !g.get("chloe")) {
-        g.pass = "";
-        nav.button({
-            "type": "btn",
-            "name": "chloe",
-            "left": 1131,
-            "top": 154,
-            "width": 402,
-            "height": 926,
-            "image": "725_club/chloe.png"
-        }, 725);
+    if (cl.isLewd()) {
+        nav.bg("725_club/no.jpg");
+        chat(17, 725);
     }
-    var navList = [0, 726, 727];
+    else {
+        if (sc.getstep("chloe") < 3 && !g.get("chloe")) {
+            g.pass = "";
+            nav.button({
+                "type": "btn",
+                "name": "chloe",
+                "left": 1131,
+                "top": 154,
+                "width": 402,
+                "height": 926,
+                "image": "725_club/chloe.png"
+            }, 725);
+        }
+        var navList = [0, 726, 727];
 
-    nav.buildnav(navList);
+        nav.buildnav(navList);
+    }
 };
 
 room725.btnclick = function (name) {
@@ -125,6 +131,9 @@ room725.chatcatch = function (callback) {
             char.addtime(60);
             g.setflag("chloe");
             char.room(725);
+            break;
+        case "leave":
+            char.room(0);
             break;
         default:
             break;
@@ -272,6 +281,15 @@ room725.chat = function (chatID) {
                 "horny again! Catch you later!",
             button: [
                 { chatID: -1, text: "Oh damn... bye", callback: "zoey8" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "random",
+            text: "I can't decide if I'm going to fuck you or kick you out. But my boss would fire me if I let you in, so " +
+                "you need to go. ",
+            button: [
+                { chatID: -1, text: "Oh damn... bye", callback: "leave" }
             ]
         },
     ];

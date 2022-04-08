@@ -66,7 +66,9 @@ room26.btnclick = function (name) {
                 if (g.get("momchat"))
                     chat(2, 26);
                 else {
-                    if (ll === 5)
+                    if (cl.hasClothing("panties", "c") && !sc.checkevent("landlady", -2))
+                        chat(48, 26);
+                    else if (ll === 5)
                         chat(9, 26);
                     else if (ll === 6)
                         chat(11, 26);
@@ -114,21 +116,18 @@ room26.btnclick = function (name) {
             chat(54, 26);
             break;
         case "all3":
-            var evaLove = scc.get("eva");
-            var lolaLove = scc.get("lola");
-            var landlordLove = scc.get("landlord");
             var evaStep = sc.getstep("eva");
             var lolaStep = sc.getstep("lola");
             var llStep = sc.getstep("landlord");
-            if (true) {
-                chat(106, 26);
-            }
-            else if (true) {
-                chat(96, 26);
-            }
-            else {
+            if (llStep > 199)
                 chat(93, 26);
-            }
+            else if (llStep === 12) 
+                chat(106, 26);
+            else if (lolaStep > 9 && evaStep > 8 && llStep > 7) 
+                chat(96, 26);
+            else 
+                chat(93, 26);
+            
             break;
         case "fx":
             nav.bg("26_livingRoom/f" + g.internal + ".jpg");

@@ -3,6 +3,7 @@
 var room350 = {};
 room350.main = function () {
     if (sc.mother().thisRoom || g.pass === "350_nursePay") {
+
         var btnList = [
             {
                 "type": "btn",
@@ -20,6 +21,9 @@ room350.main = function () {
         if (g.pass === "350_nursePay") {
             g.pass = null;
             chat(8, 350);
+        }
+        else if (cl.isLewd()) {
+            chat(60, 350);
         }
     }
     else {
@@ -693,6 +697,14 @@ room350.chat = function (chatID) {
             chatID: 59,
             speaker: "thinking",
             text: "The sperm bank must be closed for the day. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "landlord",
+            text: "Disgusting. Honestly I'm not even suprised. Get out of here and put some clothes on. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" }
             ]

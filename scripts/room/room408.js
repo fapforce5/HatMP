@@ -62,6 +62,9 @@ room408.btnclick = function (name) {
             nav.killall();
             zcl.displayMain(-100, 300, .27, "nude", true);
             cl.display();
+            g.roomTimeout = setTimeout(function () {
+                chat(5, 408);
+            }, 1500);
             break;
         case "bunny":
         case "sissy":
@@ -70,6 +73,9 @@ room408.btnclick = function (name) {
             nav.killall();
             zcl.displayMain(-100, 300, .27, "nude", false);
             cl.display();
+            g.roomTimeout = setTimeout(function () {
+                chat(5, 408);
+            }, 1500);
             break;
         default:
             break;
@@ -205,6 +211,15 @@ room408.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Nipple piercing. ", callback: "nipple" },
                 { chatID: -1, text: "Something else ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "stormy",
+            text: "I did such great work! I love it. Another?",
+            button: [
+                { chatID: 3, text: "Yea ", callback: "" },
+                { chatID: -1, text: "I'm good", callback: "leave" }
             ]
         },
     ];

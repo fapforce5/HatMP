@@ -5,19 +5,7 @@ room16.main = function () {
     var btnList = new Array();
     var thisSisterRoomID = sc.sister();
     var thisMomRoomID = sc.mother();
-
-    //if (sc.getstep("lola") === 9) {
-    //    nav.button({
-    //        "type": "img",
-    //        "name": "x",
-    //        "left": 853,
-    //        "top": 260,
-    //        "width": 215,
-    //        "height": 820,
-    //        "image": "13_sisterRoom/13_lola_reading.png"
-    //    }, 16);
-    //    chat(5, 16);
-    //}
+    var llst = sc.getstep("landlord");
     if ((cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
         nav.button({
             "type": "btn",
@@ -28,6 +16,35 @@ room16.main = function () {
             "height": 1080,
             "image": "16_livingRoom/allthree.png"
         }, 16);
+    }
+    else if (cl.isLewd()) {
+        if (llst < 200) {
+            nav.button({
+                "type": "img",
+                "name": "lewd1",
+                "left": 703,
+                "top": 0,
+                "width": 769,
+                "height": 1080,
+                "image": "16_livingRoom/l1.png"
+            }, 16);
+            chat(21, 16);
+        }
+        else {
+            nav.button({
+                "type": "img",
+                "name": "lewd1",
+                "left": 703,
+                "top": 0,
+                "width": 769,
+                "height": 1080,
+                "image": "16_livingRoom/l1.png"
+            }, 16);
+            if (!sc.checkevent("landlord", -9))
+                chat(22, 16);
+            else
+                chat(33, 16);
+        }
     }
     else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {
@@ -168,6 +185,16 @@ room16.btnclick = function (name) {
             nav.modbutton("caught", "16_livingRoom/allthree1.png", null, null);
             chat(6, 16);
             break;
+        case "s6":
+            nav.bg("16_livingRoom/s" + g.internal + ".jpg");
+            if (g.internal === 10)
+                chat(27, 16);
+            else if (g.internal === 12) {
+                nav.killbutton("s6");
+                chat(29, 16);
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -223,6 +250,112 @@ room16.chatcatch = function (callback) {
             g.roomMapAccess(16, true, true);
             cl.add("pj", "b");
             g.set("rentOwed", 0);
+            char.room(10);
+            break;
+        case "l2":
+            char.room(10);
+            break;
+        case "s2":
+            nav.killall();
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "s2",
+                "left": 764,
+                "top": 58,
+                "width": 701,
+                "height": 930,
+                "image": "26_livingRoom/ll.png"
+            }, 16);
+            zcl.displayMain(-600, -200, .4, "clothes", true);
+            break;
+        case "s3":
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "s2",
+                "left": 518,
+                "top": 58,
+                "width": 947,
+                "height": 1022,
+                "image": "16_livingRoom/s3.png"
+            }, 16);
+            break;
+        case "s3x":
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "s2",
+                "left": 518,
+                "top": 58,
+                "width": 947,
+                "height": 1022,
+                "image": "16_livingRoom/s3.png"
+            }, 16);
+            break;
+        case "s4":
+            nav.killall();
+            nav.bg("16_livingRoom/s4.jpg");
+            break;
+        case "s5":
+            nav.bg("16_livingRoom/s5.jpg");
+            break;
+        case "s6":
+            nav.bg("16_livingRoom/s6.jpg");
+            g.internal = 7;
+            nav.button({
+                "type": "btn",
+                "name": "s6",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 16);
+            break;
+        case "s9":
+            nav.killall();
+            nav.bg("16_livingRoom/s9.jpg");
+            break;
+        case "s12":
+            nav.bg("16_livingRoom/s12.jpg");
+            break;
+        case "s13":
+            nav.bg("16_livingRoom/s13.jpg");
+            break;
+        case "s14":
+            nav.bg("16_livingRoom/s14.jpg");
+            break;
+        case "s15":
+            nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
+            nav.button({
+                "type": "img",
+                "name": "s6",
+                "left": 613,
+                "top": 58,
+                "width": 852,
+                "height": 1022,
+                "image": "16_livingRoom/s15.png"
+            }, 26);
+            break;
+        case "s16":
+            g.mod("receiveAnalFemale", 1);
+            g.mod("sissygasm", 1);
+            g.mod("loadSwollowed", 1);
+            sc.setstep("landlord", -9);
+            char.room(10);
+            cl.stretchButt(null, 6);
+            break;
+        case "s16x":
+            g.mod("receiveAnalFemale", 1);
+            g.mod("sissygasm", 1);
+            g.mod("loadSwollowed", 1);
+            char.room(10);
+            cl.stretchButt(null, 6);
+            break;
+        case "myRoom":
             char.room(10);
             break;
         default:
@@ -403,6 +536,169 @@ room16.chat = function (chatID) {
                 { chatID: -1, text: "I'm looking forward to it too!", callback: "girl5" }
             ]
         },
+        {
+            chatID: 21,
+            speaker: "landlord",
+            text: "Have you lost your mind! Walking into MY HOUSE displaying yourself like that! Go to your room and put " +
+                "some clothes on!",
+            button: [
+                { chatID: -1, text: "oooff", callback: "l2" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "landlord",
+            text: "So you want to walk around like a low class slut? As they say, act like a slut, get treated like a slut. " +
+                "Come over here. ",
+            button: [
+                { chatID: 23, text: "huh?", callback: "s2" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "landlord",
+            text: "It's time to see how slutty you are girl. Bend over and point your pussy at me. Now.",
+            button: [
+                { chatID: 24, text: "Oh yes.", callback: "s3" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "landlord",
+            text: "You are an eager little whore. Let's see how eager you are when I get done with you. I have a " +
+                "toy that I only use during special occasions. ",
+            button: [
+                { chatID: 25, text: "...", callback: "s4" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "landlord",
+            text: "I call it The Beast. I know you're afraid it won't be able to fit it in your tight little pussy. " +
+                "Don't worry, I'll make it fit, even if I have to break your slutty hole. Nod when you're ready. ",
+            button: [
+                { chatID: 26, text: "*whimper*", callback: "s5" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "landlord",
+            text: "I know it's better to stretch and work up to such a large toy, but a proper slut is always ready " +
+                "and has learned to accept that pain is part of their duty. Just try to relax and enjoy this. ",
+            button: [
+                { chatID: -1, text: "...", callback: "s6" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "landlord",
+            text: "That's my good girl. Just breathe for a bit while I you adjust. " +
+                "You should be proud of yourself for taking such " +
+                "a big cock. You're more of a slut than you know. ",
+            button: [
+                { chatID: 28, text: "*continue to cry*", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "landlord",
+            text: "Beleive me, I know it hurts You'll get used to it, " +
+                "I've felt the pain myself. Just learn to enjoy it. " +
+                "Now get ready to take it deep my sweet little girl. ",
+            button: [
+                { chatID: -1, text: "*Sobs softly*", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "landlord",
+            text: "I bet you didn't know you could take it this deep. Now for the fun part where I fuck you with it. Ready? ",
+            button: [
+                { chatID: 30, text: "*Whimper*", callback: "s13" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "landlord",
+            text: "You seem to be enjoying yourself once you learned to relax and take this cock my little girl. I bet it " +
+                "feel amazing! ",
+            button: [
+                { chatID: 31, text: "*Gasp* I think I'm going to cum!", callback: "s14" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "landlord",
+            text: "Awww how cute. Now lick it up like a good girl. ",
+            button: [
+                { chatID: 32, text: "Yes " + sc.n("landlord") , callback: "s15" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "landlord",
+            text: "I'm so proud of you. Now run upstairs and put some clothes on. This isn't a whore house. ",
+            button: [
+                { chatID: -1, text: "Ok", callback: "s16" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "landlord",
+            text: "What did I tell you about walking around here naked. Do you want the giant dildo again. ",
+            button: [
+                { chatID: 34, text: "Yes I do!", callback: "s3x" },
+                { chatID: -1, text: "No. I'll go put on some clothes", callback: "myRoom" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "landlord",
+            text: "Here it comes my little slut. ",
+            button: [
+                { chatID: 35, text: "Yes!", callback: "s9" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "landlord",
+            text: "I love the way you squeel.",
+            button: [
+                { chatID: 36, text: "Yes!", callback: "s12" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "landlord",
+            text: "I can feel your heart beat through the dildo",
+            button: [
+                { chatID: 37, text: "*groan*", callback: "s13" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "landlord",
+            text: "Now cum for " + sc.n("landlord") + " like a good little girl. ",
+            button: [
+                { chatID: 38, text: "*groan*", callback: "s14" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "landlord",
+            text: "And what do good girls do when there's cum on the floor?",
+            button: [
+                { chatID: 39, text: "Lick it up and swollow every drop!", callback: "s15" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "landlord",
+            text: "Good girl. Now scram and let me watch my shows. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "s16x" }
+            ]
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

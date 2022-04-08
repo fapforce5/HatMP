@@ -1,65 +1,78 @@
 ﻿//Room name
 var room125 = {};
 room125.main = function () {
-    g.internal = new Array();
-    //g.internal.push({ n: "Me", v1: g.pass[6].n, c1: g.pass[6].s, v2: g.pass[7].n, c2: g.pass[7].s, b: 5, t: 862, l: 844 });
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "ralph",
-            "left": 199,
-            "top": 206,
-            "width": 491,
-            "height": 644,
-            "image": "125_poker/ralph1.png"
-        },
-        {
-            "type": "btn",
-            "name": "kei",
-            "left": 713,
-            "top": 100,
-            "width": 648,
-            "height": 648,
-            "image": "125_poker/kei1.png"
-        },
-        {
-            "type": "btn",
-            "name": "jimmy",
-            "left": 1425,
-            "top": 182,
-            "width": 385,
-            "height": 711,
-            "image": "125_poker/jimmy1.png"
-        },
-    ];
-
-    var navList = [0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 125);
-    });
-
-    g.pass = { gameCount: 0, deck: new Array() };
-    for (i = 2; i < 15; i++) {
-        g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "C.png" });
-        g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "D.png" });
-        g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "H.png" });
-        g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "S.png" });
-    }
-    for (k = 0; k < 5; k++) {
-        for (i = 0; i < g.pass.deck.length; i++) {
-            j = Math.floor(Math.random() * (g.pass.deck.length));
-            temp = g.pass.deck[i];
-            g.pass.deck[i] = g.pass.deck[j];
-            g.pass.deck[j] = temp;
+    if (cl.isLewd()) {
+        if (cl.c.chest > 2) {
+            sc.setstep("kei", -1);
+            nav.bg("125_poker/t1.jpg");
+            chat(53, 125);
+        }
+        else {
+            nav.bg("125_poker/getout.jpg");
+            chat(52, 125);
         }
     }
-    nav.buildnav(navList);
-    if (cl.c.chest > 2 && !sc.checkevent("kei", -1)) {
-        char.changeMenu("hide", false, true);
-        nav.killall();
-        nav.bg("125_poker/t1.jpg");
-        sc.setstep("kei", -1);
-        chat(32, 125);
+    else {
+        g.internal = new Array();
+        //g.internal.push({ n: "Me", v1: g.pass[6].n, c1: g.pass[6].s, v2: g.pass[7].n, c2: g.pass[7].s, b: 5, t: 862, l: 844 });
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "ralph",
+                "left": 199,
+                "top": 206,
+                "width": 491,
+                "height": 644,
+                "image": "125_poker/ralph1.png"
+            },
+            {
+                "type": "btn",
+                "name": "kei",
+                "left": 713,
+                "top": 100,
+                "width": 648,
+                "height": 648,
+                "image": "125_poker/kei1.png"
+            },
+            {
+                "type": "btn",
+                "name": "jimmy",
+                "left": 1425,
+                "top": 182,
+                "width": 385,
+                "height": 711,
+                "image": "125_poker/jimmy1.png"
+            },
+        ];
+
+        var navList = [0];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 125);
+        });
+
+        g.pass = { gameCount: 0, deck: new Array() };
+        for (i = 2; i < 15; i++) {
+            g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "C.png" });
+            g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "D.png" });
+            g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "H.png" });
+            g.pass.deck.push({ n: i === 14 ? 11 : (i > 10 ? 10 : i), s: i.toString() + "S.png" });
+        }
+        for (k = 0; k < 5; k++) {
+            for (i = 0; i < g.pass.deck.length; i++) {
+                j = Math.floor(Math.random() * (g.pass.deck.length));
+                temp = g.pass.deck[i];
+                g.pass.deck[i] = g.pass.deck[j];
+                g.pass.deck[j] = temp;
+            }
+        }
+        nav.buildnav(navList);
+        if (cl.c.chest > 2 && !sc.checkevent("kei", -1)) {
+            char.changeMenu("hide", false, true);
+            nav.killall();
+            nav.bg("125_poker/t1.jpg");
+            sc.setstep("kei", -1);
+            chat(32, 125);
+        }
     }
 };
 
@@ -97,6 +110,24 @@ room125.btnclick = function (name) {
                 "image": "125_poker/jimmy4.png"
             }, 125);
             chat(16, 125);
+            break;
+        case "tx3":
+            nav.bg("125_poker/t" + g.internal + ".jpg");
+            nav.killbutton("tx3");
+            if (g.internal === 11)
+                chat(54, 125);
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "tx3",
+                    "left": 1687,
+                    "top": 615,
+                    "width": 233,
+                    "height": 150,
+                    "image": "526_bar/arrowRight.png"
+                }, 125);
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -558,6 +589,25 @@ room125.chatcatch = function (callback) {
             g.setflag("cardgame");
             char.room(0);
             break;
+        case "tx3":
+            g.internal = 4;
+            nav.bg("125_poker/t3.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "tx3",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 125);
+            break;
+        case "tx11":
+            char.addtime(120);
+            g.setflag("cardgame");
+            g.mod("giveOralMale", 3);
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -1001,6 +1051,31 @@ room125.chat = function (chatID) {
             text: "I won't, but blowing all three of you is so much work. Maybe next time we'll do something else. ",
             button: [
                 { chatID: -1, text: "Later guys!", callback: "t12" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "kei",
+            text: "Dude, gross. Get out of here!",
+            button: [
+                { chatID: -1, text: "Later guys!", callback: "trun" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "kei",
+            text: "Hay slut! You giving out blowjobs?",
+            button: [
+                { chatID: -1, text: "Yes I am", callback: "tx3" },
+                { chatID: -1, text: "Oh no! [Run away]", callback: "trun" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "kei",
+            text: "You're give the best blowjobs! You can blow us anytime! ",
+            button: [
+                { chatID: -1, text: "I like cock!", callback: "tx11" }
             ]
         },
     ];
