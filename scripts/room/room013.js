@@ -3139,7 +3139,7 @@ room13.chat = function (chatID) {
             speaker: "eva",
             text: "What the fuck was that!",
             button: [
-                { chatID: 204, text: "Well, ummmm, ", callback: "201_6a" }
+                { chatID: 204, text: "Well, ummmm, ", callback: "" }
             ]
         },
         {
@@ -3409,7 +3409,7 @@ room13.chat = function (chatID) {
             text: "Oh wow. This is so embarrassing, especially in front of " + sc.n("lola") + ", but " +
                 "I really don't want her to tell on me. ",
             button: [
-                { chatID: 237, text: "I should do what she says and play doggy. ", callback: "lick9" },
+                { chatID: 236, text: "I should do what she says and play doggy. ", callback: "lick9" },
                 { chatID: 243, text: "Ask " + sc.n("lola") + " for help. ", callback: "" }
             ]
         },
@@ -3472,10 +3472,10 @@ room13.chat = function (chatID) {
         {
             chatID: 243,
             speaker: "lola",
-            text: sc.n("me") + "'s right.  You shouldn't tease him like this. We're not going to tell, but you shouldn't " +
-                "lick her vag like that. I exptected you to be better since you're a girl now. ",
+            text: "You shouldn't lick her vag like that. I exptected you to be better since you're a girl now. You're on " +
+                "your own. I'm not helping!",
             button: [
-                { chatID: 244, text: "...", callback: "" }
+                { chatID: 236, text: "...", callback: "" }
             ]
         },
         {

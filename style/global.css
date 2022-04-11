@@ -206,22 +206,24 @@ input[type=text]:disabled{
     width:100%;
 }
 
-.room-chatBtn{
-    display:inline-block;
-    border:1px solid #aaa;
-    width:31%;
-    background:#333;
-    color:#fff;
-    z-index:99;
-    text-align:center;
-    padding-top:3px;
-    padding-bottom:3px;
-    cursor:pointer;
-    margin-top:5px;
-    margin-bottom:10px;
-    font-size:calc(.8em + 1vh);
-    vertical-align:top;
-    border-radius:5px;
+.room-chatBtn {
+    display: inline-block;
+    width: 31%;
+    border-left: thin solid #ccc;
+    border-right: thin solid #ccc;
+    border-top:none;
+    border-bottom:none;
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    z-index: 99;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-size: calc(.8em + 1vh);
+    vertical-align: top;
 }
 
 .room-chatBtn:hover{

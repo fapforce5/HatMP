@@ -3,7 +3,7 @@
 var room900 = {};
 
 room900.main = function () {
-    if (cl.isLewd) {
+    if (cl.isLewd()) {
         nav.button({
             "type": "img",
             "name": "cop",
@@ -130,6 +130,7 @@ room900.chatcatch = function(callback){
             nav.bg("900_college/e15.jpg");
             break;
         case "e16":
+            sc.setstep("eva", 204);
             g.mod("phum", 1);
             char.room(0);
             break;

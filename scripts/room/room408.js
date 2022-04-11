@@ -180,7 +180,7 @@ room408.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "thinking",
-            text: "I don't think I'm ready just yet for piercings or tattoos. ",
+            text: "It's says by appointments only. Hmmm I wonder how I can get in? ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

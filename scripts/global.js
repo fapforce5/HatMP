@@ -21,7 +21,7 @@ g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
 g.pw = "c2lzc3k=";
-g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901];
+g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 500, 650, 901, 408];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
 g.sp = {};
 g.roomID = 1;
@@ -86,51 +86,51 @@ g.st = [
     { n: "fightControlLost", t: 0, q: "int" },
     { n: "superPunch", t: 0, q: "int" },
 
-    { n: "giveOralMale", t: 0, q: "int" },
-    { n: "giveOralFemale", t: 0, q: "int" },
-    { n: "receiveOralMale", t: 0, q: "int" },
-    { n: "receiveOralFemale", t: 0, q: "int" },
+    { n: "giveOralMale", t: 0, q: "sissy" },
+    { n: "giveOralFemale", t: 0, q: "sissy" },
+    { n: "receiveOralMale", t: 0, q: "sissy" },
+    { n: "receiveOralFemale", t: 0, q: "sissy" },
 
-    { n: "receiveBoobJob", t: 0, q: "int" },
-    { n: "giveBoobJob", t: 0, q: "int" },
+    { n: "receiveBoobJob", t: 0, q: "sissy" },
+    { n: "giveBoobJob", t: 0, q: "sissy" },
 
-    { n: "loadSwollowed", t: 0, q: "int" },
-    { n: "loadSpit", t: 0, q: "int" },
-    { n: "creamPied", t: 0, q: "int" },
+    { n: "loadSwollowed", t: 0, q: "sissy" },
+    { n: "loadSpit", t: 0, q: "sissy" },
+    { n: "creamPied", t: 0, q: "sissy" },
 
-    { n: "giveAnalMale", t: 0, q: "int" },
-    { n: "giveAnalFemale", t: 0, q: "int" },
-    { n: "receiveAnalMale", t: 0, q: "int" },
-    { n: "receiveAnalFemale", t: 0, q: "int" },
+    { n: "giveAnalMale", t: 0, q: "sissy" },
+    { n: "giveAnalFemale", t: 0, q: "sissy" },
+    { n: "receiveAnalMale", t: 0, q: "sissy" },
+    { n: "receiveAnalFemale", t: 0, q: "sissy" },
 
-    { n: "giveHandjobMale", t: 0, q: "int" },
-    { n: "giveFingerFemale", t: 0, q: "int" },
-    { n: "receiveHandjobMale", t: 0, q: "int" },
-    { n: "receiveHandjobFemale", t: 0, q: "int" },
+    { n: "giveHandjobMale", t: 0, q: "sissy" },
+    { n: "giveFingerFemale", t: 0, q: "sissy" },
+    { n: "receiveHandjobMale", t: 0, q: "sissy" },
+    { n: "receiveHandjobFemale", t: 0, q: "sissy" },
 
-    { n: "receiveFistMale", t: 0, q: "int" },
-    { n: "receiveFistFemale", t: 0, q: "int" },
+    { n: "receiveFistMale", t: 0, q: "sissy" },
+    { n: "receiveFistFemale", t: 0, q: "sissy" },
 
-    { n: "giveFootjobMale", t: 0, q: "int" },
-    { n: "giveFootjobFemale", t: 0, q: "int" },
-    { n: "receiveFootjobMale", t: 0, q: "int" },
-    { n: "receiveFootjobFemale", t: 0, q: "int" },
+    { n: "giveFootjobMale", t: 0, q: "sissy" },
+    { n: "giveFootjobFemale", t: 0, q: "sissy" },
+    { n: "receiveFootjobMale", t: 0, q: "sissy" },
+    { n: "receiveFootjobFemale", t: 0, q: "sissy" },
 
-    { n: "fuckPussy", t: 0, q: "int" },
-    { n: "getPussyFucked", t: 0, q: "int" },
+    { n: "fuckPussy", t: 0, q: "sissy" },
+    { n: "getPussyFucked", t: 0, q: "sissy" },
 
-    { n: "pissedonMale", t: 0, q: "int" },
-    { n: "pissedonFemale", t: 0, q: "int" },
+    { n: "pissedonMale", t: 0, q: "sissy" },
+    { n: "pissedonFemale", t: 0, q: "sissy" },
 
-    { n: "footLicker", t: 0, q: "int" },
-    { n: "phum", t: 0, q: "int" },
+    { n: "footLicker", t: 0, q: "sissy" },
+    { n: "phum", t: 0, q: "sissy" },
 
-    { n: "sissygasm", t: 0, q: "int" },
-    { n: "missyPoints", t: 0, q: "int" },
-    { n: "cheatPoints", t: 0, q: "int" },
+    { n: "sissygasm", t: 0, q: "sissy" },
+    { n: "missyPoints", t: 0, q: "sissy" },
+    { n: "cheatPoints", t: 0, q: "sissy" },
 
-    { n: "fingerbutt", t: 0, q: "int" },
-    { n: "dildobutt", t: 0, q: "int" },
+    { n: "fingerbutt", t: 0, q: "sissy" },
+    { n: "dildobutt", t: 0, q: "sissy" },
 
     { n: "girlname", t: "Scarlett", q: "string" },
     
@@ -211,7 +211,7 @@ g.sissy = [
 
     { id: 29, pID: [28], icon: "cross1", x: 12, y: 8, name: "Cross dress", description: "You can cross dress in public", ach: false, active: true, points: 0, h: true },
 
-    { id: 30, pID: [28], icon: "makeup2", x: 16, y: 3, name: "Tattoos", description: "You can get tattoos", ach: false, active: true, points: 3, h: false },
+    { id: 30, pID: [27], icon: "makeup2", x: 16, y: 3, name: "Tattoos", description: "You can get tattoos", ach: false, active: true, points: 3, h: false },
 
     { id: 31, pID: [51], icon: "clothes0", x: 12, y: 5, name: "Modeling 1", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
     { id: 32, pID: [31], icon: "clothes1", x: 13, y: 4, name: "Modeling 2", description: "You don't have to wear panties or bra", ach: false, active: true, points: 2, h: true },
@@ -428,7 +428,10 @@ g.checkPop = function (name, amount) {
             char.makeGraph();
             break;
         case "sissy":
-            g.popUpNotice("You used " + amount + " Sissy Points. ");
+            if (amount > 0)
+                g.popUpNotice("Your sissy stats increased. ");
+            else
+                g.popUpNotice("You used " + amount + " Sissy Points. ");
             break;
     }
 };

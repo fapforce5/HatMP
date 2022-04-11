@@ -428,7 +428,7 @@ room526.chatcatch = function (callback) {
             break;
         case "k02":
             nav.killall();
-            if (cl.c.chastity === null)
+            if (cl.c.chastity !== null)
                 chat(58, 526);
             else if (cl.c.cock > 2) {
                 nav.bg("526_bar/k02s.jpg");

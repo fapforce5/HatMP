@@ -10,13 +10,16 @@ room211.btnclick = function (name) {
         case "h_1":
         case "h_2":
         case "h_3":
+        case "h_13":
         case "h_15":
         case "h_16":
         case "h_20":
         case "h_21":
         case "h_22":
+        case "h_27":
         case "h_34":
         case "h_54":
+        case "h_58":
             var t = parseInt(name.replace("h_", ""));
             g.sissy[t].ach = true;
             g.popUpNotice(g.sissy[t].name + " achieved. ");
@@ -90,6 +93,12 @@ room211.btnclick = function (name) {
             g.sissy[29].ach = true;
             g.popUpNotice(g.sissy[29].name + " achieved. ");
             break;
+        case "h_30":
+            cl.c.tattoo.push("slut");
+            cl.display();
+            g.sissy[30].ach = true;
+            g.popUpNotice(g.sissy[30].name + " achieved. ");
+            break;
         case "h_31":
             cl.add("dress", "rose");
             g.sissy[31].ach = true;
@@ -149,6 +158,12 @@ room211.btnclick = function (name) {
             sc.setstep("ubel", 1);
             inv.add("chisel");
             g.popUpNotice(g.sissy[51].name + " achieved. ");
+            break;
+        case "h_59":
+            var t59 = parseInt(name.replace("h_", ""));
+            g.sissy[t59].ach = true;
+            g.popUpNotice(g.sissy[t59].name + " achieved. ");
+            inv.add("pinkDildo");
             break;
         default:
             break;

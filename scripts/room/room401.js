@@ -142,8 +142,6 @@ room401.main = function () {
         case "nipple":
             navList = [408];
             g.pass.roomID = 408;
-            g.pass.changeClothes = true;
-            cl.c.shirt = cl.c.dress = cl.c.swimsuit = cl.c.pj = cl.c.bra = null;
             room401.makeClothing("nipple", "f");
             nav.bg("408_tattoo/401.jpg");
             break;

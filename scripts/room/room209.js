@@ -377,17 +377,26 @@ room209.btnclick = function (name) {
             break;
         case "h_26":
             g.spendSissy(name);
+            cl.c.makeup = "n";
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            room209.btnclick("displayMissybtn");
+            room209.btnclick("displaypbtn");
             chat(144, 209);
             break;
         case "h_27":
             g.spendSissy(name);
-            alert("add piercing");
+            cl.c.makeup = "n";
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            g.sissy[27].ach = true;
+            chat(188, 209);
             break;
         case "h_28":
             nav.bg("209_classroom/bg.jpg");
@@ -409,7 +418,13 @@ room209.btnclick = function (name) {
             break;
         case "h_30":
             g.spendSissy(name);
-            alert("add tattoo");
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(189, 209);
             break;
         case "h_31":
             g.spendSissy(name);
@@ -1117,7 +1132,21 @@ room209.chatcatch = function (callback) {
             g.sissy[26].ach = true;
             nav.killall();
             nav.bg("209_classroom/h_26.jpg");
+            zcl.displayMain(100, 690, .23, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "p",
+                "left": 654,
+                "top": 91,
+                "width": 678,
+                "height": 989,
+                "image": "209_classroom/h_26.png"
+            }, 209);
+            break;
+        case "h_26_1":
+            nav.killall();
             cl.c.makeup = "mb";
+            cl.c.lipstick = "red";
             g.roomMapAccess(407, true, false);
             zcl.displayMain(100, 690, .23, "clothes", false);
             nav.button({
@@ -1139,6 +1168,20 @@ room209.chatcatch = function (callback) {
             char.addtime(60);
             g.internal = "201 change";
             char.room(201);
+            break;
+        case "30_1":
+            nav.killall();
+            nav.bg("209_classroom/30_1.jpg");
+            break;
+        case "30_2":
+            cl.c.tattoo.push("slut");
+            nav.bg("209_classroom/30_2.jpg");
+            cl.disply();
+            zcl.displayMirror();
+            break;
+        case "30_3":
+            g.sissy[30].ach = true;
+            room209.chatcatch("end");
             break;
         case "h_31_end":
             g.set("oncase", "clothes0");
@@ -3109,11 +3152,62 @@ room209.chat = function (chatID) {
             {
                 chatID: 186,
                 speaker: "p",
+                text: "Most sissies think a bubble butt and a great set of tits are all they need, but makeup really " +
+                    "is the most important part of looking like a slut. Smoky eyeshadow, ruby lips, a little blush, " +
+                    "and a good foundation turns a regular sissy into a sexy sissy. Let me show you how your face " +
+                    "can transform with just a little makeup",
+                button: [
+                    { chatID: 187, text: "....", callback: "h_26_1" }
+                ]
+            },
+            {
+                chatID: 187,
+                speaker: "p",
                 text: "There. Don't you look so pretty! I bet all the boys will love such a pretty face! Be " +
-                    "sure to buy some makeup to put more on. Also if you're really nice I'm sure " + sc.n("tiffany") + 
+                    "sure to buy some makeup to put more on. Also if you're really nice I'm sure " + sc.n("tiffany") +
                     " will give you some more tips. ",
                 button: [
-                    { chatID: -1, text: "Thanks!", callback: "leave" }
+                    { chatID: -1, text: "I'm so hot!", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 188,
+                speaker: "p",
+                text: "Piercings are such an excellent addition to any sissy slut. It's a great expression of your inner " +
+                    "self and lets potential mates of your inner sexuality. I'll let my friend " + sc.n("stormy") + " know " +
+                    "you're ready. She's in the mobile home in the dirt lot left of the apartments of your friend. " +
+                    "You can visit her in the afternoons, no appointment needed. ",
+                button: [
+                    { chatID: -1, text: "Sweet! I can't wait!", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 189,
+                speaker: "p",
+                text: "So you want to tattoo yourself to everyone knows what a girly little slut you are? Perfect. I'm " +
+                    "going to put a tattoo on you so everyone knows what a whore you are. Strip down my little slut " +
+                    "and lay accross these desks so I can permenetly mark you as my slut. ",
+                button: [
+                    { chatID: 190, text: "What are you going to tattoo on me?", callback: "30_1" }
+                ]
+            },
+            {
+                chatID: 190,
+                speaker: "p",
+                text: "I don't tattoo everyone with my mark, but you're special. Every time you look in the mirror you'll " +
+                    "be reminded that your sissy pussy is ours. When you're walking down the street people will know what " +
+                    "an easy fuck you are. Hold still... Just about done... Ok time to look at my handy work. ",
+                button: [
+                    { chatID: 191, text: "Can I see?", callback: "30_2" }
+                ]
+            },
+            {
+                chatID: 191,
+                speaker: "p",
+                text: "Amazing work if I do say so myself. If you want to get more tattoos just see " + sc.n("stormy") + 
+                    " in her trailer. Now go out and show off your new tattoo. ",
+                button: [
+                    { chatID: -1, text: "Ok!", callback: "30_3" }
                 ]
             },
         ];

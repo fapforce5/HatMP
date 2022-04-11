@@ -549,6 +549,7 @@ cl.tattoo = [
     { name: "trampstamp", image: null, back: "tattoo_trampstamp.png" },
     { name: "bunny", image: "tattoo_bunny.png", back: null },
     { name: "sissy", image: "tattoo_sissy.png", back: null },
+    { name: "slut", image: "tattoo_slut.png", back: null }
 ];
 
 cl.nipplering = [

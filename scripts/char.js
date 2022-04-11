@@ -833,139 +833,64 @@ menu.mClick = function (type) {
             });
             break;
         case "admin":
-            $(".menu-buttonKill").remove();
-            $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-                '<h2>Cheat Menu</h2>' +
-                '<label>Password</label> ' +
-                '<span id="cheat_message" style="color:#aa3333;"></span>' +
-                '<input style="width:92%;" type="text" id="cheat_input"/><br/>' +
-                '<button type="button" class="intro-button" id="cheat_passwordSubmit">Submit</button>' +
-                'This cheat menu is a thank you to all the great support I\'ve received from my $5 anf $10 Patrons.<br/>Thank you so much for playing.' +
-                '</div>');
-            $('#cheat_passwordSubmit').click(function () {
-                var cheatString = $("#cheat_input").val().replace(/\W/g, '').toLowerCase();
-                $("#cheat_message").html("");
-
-                if (btoa(cheatString) === g.pw) {
-                    $("#cheat_Killme").remove();
-                    $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-                        '<h2>Cheat Menu</h2>Thank you for your support!<hr/><br />' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="money">+$1000</button> Add Money <br/><br />' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="horneyp">+</button> Sissy <button type="button" class="admin-mod menu-blueButton" data-type="horneyd">-</button><br/><br />' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="energyp">+</button> Energy <button type="button" class="admin-mod menu-blueButton" data-type="energyd">-</button><br/><br />' +
-                        '<div>Lola / Eva: ' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="lolaEva" data-step="4">Bottle</button>' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="lolaEva" data-step="8">T or D</button>' +
-                        '</div>' +
-                        '<div>Missy: ' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="missy" data-step="10">School</button>' +
-                        '</div>' +
-                        '<div>Zoey' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="zoey" data-step="11">After Meeting Chloe</button>' +
-                        '</div>' +
-                        '<div>Sissy School' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="school" data-step="28">Post Diner</button>' +
-                        '<button type="button" class="admin-mod menu-blueButton" data-type="school" data-step="19">Post Sewer</button>' +
-                        '</div>' +
-                        '<div id="admin-mod-message"></div>' +
-                        '</div>');
-                    $(".admin-mod").click(function () {
-                        switch ($(this).data("type")) {
-                            case "money":
-                                if (g.get("money") < 1000000000)
-                                    g.mod("money", 1000);
-                                $("#admin-mod-message").text("New balance: $" + g.get("money"));
-                                break;
-                            case "energyp":
-                                g.mod("energy", 1000);
-                                $("#admin-mod-message").text("New Energy: " + g.get("energy"));
-                                break;
-                            case "energyd":
-                                g.mod("energy", -500);
-                                $("#admin-mod-message").text("New Energy: " + g.get("energy"));
-                                break;
-                            case "horneyp":
-                                g.mod("cheatPoints", 1);
-                                $("#admin-mod-message").text("New Sissy: " + g.get("sissy"));
-                                break;
-                            case "horneyd":
-                                g.mod("cheatPoints", -1);
-                                $("#admin-mod-message").text("New Sissy: " + g.get("sissy"));
-                                break;
-                            case "lolaEva":
-                                var thisStep = $(this).data("step");
-                                if (thisStep === 4) {
-                                    if (sc.getstep("lola") < 5) {
-                                        sc.setstep("me", -1);
-                                        sc.setstepAll("eva", 4);
-                                        sc.setstepAll("lola", 5);
-                                        pic.add("lolaTopless");
-                                        g.popUpNotice("You've skipped past Spin the bottle with Lola and Eva");
-                                    }
-                                    else
-                                        g.popUpNotice("You've already passed this point. ");
+            if (g.get("cheatMode")) {
+                $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
+                    '<h2>Cheat Status: ACTIVE</h2>Thank you for your support!<hr/><br />' +
+                    '<div style="font-size:' + 24 * g.ratio + 'px;">' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="money">Add Money</button><br/>' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="horneyp">Add Sissy Points</button><br />' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="energyp">Max Energy</button><br/>' +
+                    '<hr/>' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="lolaEva" data-step="8">Lola and Eva: After truth or dare</button><br/>' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="missy" data-step="10">Missy: School</button><br/>' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="zoey" data-step="11">Zoey: After Meeting Chloe</button><br/>' +
+                    '<div>Sissy School: Each event is skippable, click the Cheat Unlock button</div>' +
+                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="uncheat" data-step="0">Turn off cheat status</button>' +
+                    '</div></div>');
+                $(".admin-mod").click(function () {
+                    switch ($(this).data("type")) {
+                        case "money":
+                            g.set("money", 1000000);
+                            $('#char_money').text('$1000000');
+                            break;
+                        case "energyp":
+                            g.mod("energy", 10000);
+                            break;
+                        case "horneyp":
+                            g.set("cheatPoints", 10000);
+                            break;
+                        case "lolaEva":
+                            var thisStep = $(this).data("step");
+                            if (thisStep === 4) {
+                                if (sc.getstep("lola") < 5) {
+                                    sc.setstep("me", -1);
+                                    sc.setstepAll("eva", 4);
+                                    sc.setstepAll("lola", 5);
+                                    pic.add("lolaTopless");
+                                    g.popUpNotice("You've skipped past Spin the bottle with Lola and Eva");
                                 }
-                                else if (thisStep === 8) {
-                                    if (sc.getstep("lola") < 8) {
-                                        sc.setstep("me", -1);
-                                        sc.setstep("landlord", -1);
-                                        sc.setstep("lola", 8);
-                                        sc.setstep("eva", 7);
-                                        g.roomMapAccess(16, false, false);
-                                        char.room(0);
-                                        pic.add("lolaTopless");
-                                        g.popUpNotice("You've skipped past Truth or Dare with Lola and Eva");
-                                    }
-                                    else
-                                        g.popUpNotice("You've already passed this point.");
-                                }
-                                break;
-                            case "missy":
-                                var thisStepm = $(this).data("step");
-                                if (thisStepm === 10) {
-                                    if (sc.getstep("missy") < 10) {
-                                        inv.add("pi_lic");
-                                        cl.add("pants", "s");
-                                        cl.add("shirt", "s");
-                                        cl.add("shoes", "d");
-                                        cl.add("socks", "b");
-                                        cl.add("panties", "w");
-                                        cl.add("accessories", "piggy");
-                                        if (cl.c.chest === 0)
-                                            cl.c.chest = 1;
-                                        g.mod("fitnessLevel", 1);
-                                        sc.setstep("tiffany", -4);
-                                        sc.setstep("tiffany", 5);
-                                        sc.setstep("me", -1);
-                                        sc.setstep("me", -2);
-                                        sc.setstepAll("missy", 10);
-                                        g.set("bodyhair", 0);
-                                        inv.add("razor", 1);
-                                        sc.setstepAll("me", 2);
-                                        g.roomMapAccess(203, true, false);
-                                        cl.display();
-                                        g.popUpNotice("You have skipped ahead to the sissy school.");
-                                    }
-                                    else
-                                        g.popUpNotice("You've already passed this point.");
-                                }
-                                break;
-                            case "zoey":
-                                var zoeyStep = sc.getstep("zoey");
-                                if (zoeyStep < 11) {
-                                    sc.setstepAll("zoey", 11);
-                                    sc.setstep("zoey", -1);
-                                    sc.setstep("zoey", -2);
-                                    scc.love("zoey", 100, 90);
-                                    g.popUpNotice("You've advanced beyond Chloe's breakup and meeting Stormy. ");
+                                else
+                                    g.popUpNotice("You've already passed this point. ");
+                            }
+                            else if (thisStep === 8) {
+                                if (sc.getstep("lola") < 8) {
+                                    sc.setstep("me", -1);
+                                    sc.setstep("landlord", -1);
+                                    sc.setstep("lola", 8);
+                                    sc.setstep("eva", 7);
+                                    g.roomMapAccess(16, false, false);
+                                    char.room(0);
+                                    pic.add("lolaTopless");
+                                    g.popUpNotice("You've skipped past Truth or Dare with Lola and Eva");
                                 }
                                 else
                                     g.popUpNotice("You've already passed this point.");
-                                break;
-                            case "school":
-                                var thisSteps = $(this).data("step");
+                            }
+                            break;
+                        case "missy":
+                            var thisStepm = $(this).data("step");
+                            if (thisStepm === 10) {
                                 if (sc.getstep("missy") < 10) {
-                                    sc.setstepAll("me", 2);
                                     inv.add("pi_lic");
                                     cl.add("pants", "s");
                                     cl.add("shirt", "s");
@@ -983,70 +908,51 @@ menu.mClick = function (type) {
                                     sc.setstepAll("missy", 10);
                                     g.set("bodyhair", 0);
                                     inv.add("razor", 1);
+                                    sc.setstepAll("me", 2);
                                     g.roomMapAccess(203, true, false);
                                     cl.display();
-
+                                    g.popUpNotice("You have skipped ahead to the sissy school.");
                                 }
-                                if (thisSteps === 28) {
-                                    if (!g.sissy[28].ach) {
-                                        sc.setstep("tiffany", 16);
-                                        sc.setstep("candy", 1);
-                                        cl.add("shirt", "r");
-                                        cl.add("pants", "k");
-                                        cl.add("shoes", "fb");
-                                        cl.add("chatity", "cage");
-                                        cl.add("pj", "gown");
-                                        cl.add("bra", "w");
-                                        sc.setstepAll("jeffery", 8);
-                                        sc.setstep("holly", 3);
-                                        sc.setstepAll("treyvon", 2);
-                                        g.sissy[0].ach = true;
-                                        g.sissy[1].ach = true;
-                                        g.sissy[20].ach = true;
-                                        g.sissy[21].ach = true;
-                                        g.sissy[22].ach = true;
-                                        g.sissy[24].ach = true;
-                                        g.sissy[28].ach = true;
-                                        g.sissy[29].ach = true;
-                                        g.sissy[51].ach = true;
-                                        g.sissy[54].ach = true;
-                                        g.popUpNotice("You've progressed past the Diner Event. ");
-                                    }
-                                    else {
-                                        g.popUpNotice("You've already passed this point.");
-                                    }
-                                }
-                                else if (thisSteps === 19) {
-                                    if (!g.sissy[19].ach) {
-                                        g.sissy[54].ach = true;
-                                        g.sissy[0].ach = true;
-                                        g.sissy[1].ach = true;
-                                        g.sissy[20].ach = true;
-                                        g.sissy[2].ach = true;
-                                        g.sissy[3].ach = true;
-                                        g.sissy[6].ach = true;
-                                        g.sissy[12].ach = true;
-                                        g.sissy[15].ach = true;
-                                        g.sissy[16].ach = true;
-                                        g.sissy[19].ach = true;
-                                        inv.add("sewer");
-                                        g.popUpNotice("You've progressed past the Sewer Event. ");
-                                    }
-                                    else {
-                                        g.popUpNotice("You've already passed this point.");
-                                    }
-                                }
-                                break;
-                        }
-                    });
-                } else {
-                    $("#cheat_message").html("It appears the pawword doesn't work. If you're a $5 or $10 Patron it should be in the posts. ");
-                }
-
-
-
-            });
-
+                                else
+                                    g.popUpNotice("You've already passed this point.");
+                            }
+                            break;
+                        case "zoey":
+                            var zoeyStep = sc.getstep("zoey");
+                            if (zoeyStep < 11) {
+                                sc.setstepAll("zoey", 11);
+                                sc.setstep("zoey", -1);
+                                sc.setstep("zoey", -2);
+                                scc.love("zoey", 100, 90);
+                                g.popUpNotice("You've advanced beyond Chloe's breakup and meeting Stormy. ");
+                            }
+                            else
+                                g.popUpNotice("You've already passed this point.");
+                            break;
+                        case "uncheat":
+                            g.mod("cheatMode", false);
+                            menu.mClick("admin");
+                            break;
+                    }
+                });
+            }
+            else {
+                $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center; font-size:' + 24 * g.ratio + 'px;">' +
+                    "<h2>Cheat Status: INACTIVE</h2>" +
+                    "This cheat menu is a thank you to all the great support I\'ve received from my $5 anf $10 Patrons." +
+                    "The game is designed to be played without this cheat activated. So if you don't use cheat you're not missing anything. " +
+                    '<button type="button" class="intro-button" id="cheat_passwordSubmit" style="font-size:' + 24 * g.ratio + 'px;">I\'m a Patreon Supporter<br/>Activate Cheats</button><br/>' +
+                    '<button type="button" class="intro-button" id="cheat_cancel" style="font-size:' + 24 * g.ratio + 'px;">I\'m not a Patreon Supporter<br/>Cancel</button>' +
+                    '<br/><br/>Thank you so much for playing.' +
+                    '</div>');
+                $('#cheat_passwordSubmit').click(function () {
+                    g.mod("cheatMode", true);
+                    menu.mClick("admin");
+                });
+                $("#heat_cancel").click(function () {
+                    menu.mClick("menu");
+                });
+            }
             break;
         case "time":
             $(".menu-buttonKill").remove();
@@ -1072,9 +978,9 @@ menu.mClick = function (type) {
                     '<div style="width:100%; text-align:center;"><h2>Wait a bit</h2></div>' +
                     '<table style="margin-left:auto; margin-right:auto; text-align:left;">' +
                     '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="pass" data-num="1">1 Hour</button> </td><td>Wait for an hour </td></tr>' +
-                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="pass" data-num="3">3 Hours</button> </td><td>Wait for 3 hours </td></tr>' +
-                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="pass" data-num="5">5 Hours</button> </td><td>Wait for 5 hours </td></tr>' +
+                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="12">Noon</button> </td><td>Wait till Noon </td></tr>' +
                     '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="17">5:00 PM</button> </td><td>Wait till 5:00PM </td></tr>' +
+                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="20">8:00 PM</button> </td><td>Wait till 8:00PM </td></tr>' +
                     '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="22">10:00 PM</button> </td><td>Wait till 10:00PM </td></tr>' +
                     '</table>' +
                     '<div id="admin-wait-message" style="width:100%; text-align:center; font-size: 1.1rem;">Time: ' + nav.friendlyTime() + '</div>' +

@@ -66,7 +66,7 @@ room26.btnclick = function (name) {
                 if (g.get("momchat"))
                     chat(2, 26);
                 else {
-                    if (cl.hasClothing("panties", "c") && !sc.checkevent("landlady", -2))
+                    if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2))
                         chat(48, 26);
                     else if (ll === 5)
                         chat(9, 26);

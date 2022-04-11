@@ -139,7 +139,7 @@ room402.chatcatch = function (callback) {
             break;
         case "points":
             g.mod("loadSwollowed", 1);
-            g.mod("receiveOralFemale", 1);
+            g.mod("giveOralFemale", 1);
             nav.button({
                 "type": "tongue",
                 "name": "butthole",

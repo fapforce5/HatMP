@@ -665,6 +665,7 @@ room14.chatcatch = function (callback) {
             char.addtime(60);
             break;
         case "fin4":
+            g.mod("loadSwollowed", 1);
             sc.setstep("bigguy", 4);
             g.setflag("bigguy");
             char.addtime(60);

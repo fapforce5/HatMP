@@ -39,7 +39,6 @@ room726.main = function () {
 room726.btnclick = function (name) {
     switch (name) {
         case "girl1":
-            var thisApp = cl.appearanceBody();
             var thisAppp = cl.appearance();
             nav.killbutton("girl1");
             nav.button({
@@ -52,9 +51,9 @@ room726.btnclick = function (name) {
                 "image": "726_dance/dgirl1a.png"
             }, 726);
 
-            if (thisApp === -1)
+            if (thisAppp === -1)
                 chat(0, 726);
-            else if (thisApp === 0)
+            else if (thisAppp === 0)
                 chat(1, 726);
             else if (thisAppp < 2)
                 chat(2, 726);
@@ -93,7 +92,7 @@ room726.btnclick = function (name) {
             break;
         case "lifeguardGuy":
             var timstep = sc.getstep("tim");
-            var mybodyt = cl.appearanceBody();
+            var mybodyt = cl.appearance();
             nav.killbutton("lifeguardGuy");
             nav.button({
                 "type": "img",
@@ -115,6 +114,8 @@ room726.btnclick = function (name) {
                     chat(20, 726);
                 else if (timstep === 2)
                     chat(22, 726);
+                else if (timstep > 2)
+                    chat(42, 726);
             }
             break;
         default:
@@ -259,6 +260,53 @@ room726.chatcatch = function (callback) {
             sc.setstep("tim", 3);
             char.addtime(72);
             char.room(726);
+            break;
+        case "t0":
+            nav.killall();
+            nav.bg("726_dance/tim3_2.jpg");
+            break;
+        case "t1":
+            zcl.displayMain(500, 0, .6, "clothes", true);
+            break;
+        case "t2":
+            nav.killall();
+            nav.bg("726_dance/tim3_13.jpg");
+            break;
+        case "t3":
+            nav.bg("726_dance/tim3_14.jpg");
+            break;
+        case "t4":
+            nav.bg("726_dance/tim3_15.jpg");
+            break;
+        case "t5":
+            g.mod("giveOralMale", 1);
+            g.mod("giveAnalMale", 1);
+            g.mod("creamPied", 1);
+            g.setflag("tim");
+            char.addtime(72);
+            char.room(726);
+            break;
+        case "c0":
+            nav.killall();
+            nav.bg("727_bathroom/c0.jpg");
+            break;
+        case "c1":
+            nav.bg("727_bathroom/girl3.jpg");
+            break;
+        case "c2":
+            nav.bg("727_bathroom/girl6.jpg");
+            break;
+        case "c3":
+            nav.bg("727_bathroom/girl5.jpg");
+            break;
+        case "c4":
+            nav.bg("727_bathroom/girl7.jpg");
+            break;
+        case "c5":
+            g.mod("fuckPussy", 1);
+            g.setflag("cindy");
+            char.addtime(60);
+            char.room(727);
             break;
         default:
             break;
@@ -462,9 +510,10 @@ room726.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "cindy",
-            text: "In development.",
+            text: "I'm so happy to see you. I thought you were just going to fuck me and leave me. Follow me, " +
+                "I need you now.",
             button: [
-                { chatID: -1, text: "...", callback: "reset" }
+                { chatID: 48, text: "Sweet", callback: "c0" }
             ]
         },
         {
@@ -611,6 +660,96 @@ room726.chat = function (chatID) {
             text: "My cum looks so good oozing out of your ass. See me again, I got to have more!",
             button: [
                 { chatID: -1, text: "I will. I love a cream filling", callback: "tim3_16" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "tim",
+            text: "I'm so glad you came back! I've been thinking so much about you. I can't get you out of my head. " + 
+                "Follow me. I need you so bad!",
+            button: [
+                { chatID: 43, text: "I will. ", callback: "t0" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "tim",
+            text: "I need your mouth around my cock! Please suck me dick. ",
+            button: [
+                { chatID: 44, text: "MMMmmmm", callback: "t1" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "tim",
+            text: "That feels so nice. I need to feel you from the inside. Please let me get that pussy. ",
+            button: [
+                { chatID: 45, text: "Oh yeah!", callback: "t2" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "tim",
+            text: "So tight! ",
+            button: [
+                { chatID: 46, text: "OOoooo", callback: "t3" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "tim",
+            text: "Ready for my nut? ",
+            button: [
+                { chatID: 47, text: "MMmm", callback: "t4" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "tim",
+            text: "I needed that. Catch you later! ",
+            button: [
+                { chatID: -1, text: "Moan", callback: "t5" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "cindy",
+            text: "See how quickly I get moist when I see you. My pussy is in love with your cock. Please I need it in me. ",
+            button: [
+                { chatID: 49, text: "[Zip]", callback: "c1" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "cindy",
+            text: "FFFFfffff!!!",
+            button: [
+                { chatID: 50, text: "Groan", callback: "c2" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "cindy",
+            text: "Fuck me harder daddy! I'm so close.",
+            button: [
+                { chatID: 51, text: "AaaaAAAaa", callback: "c3" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "cindy",
+            text: "OOOOooooo FFFuuuuu I'm cumming!!!",
+            button: [
+                { chatID: 52, text: "...", callback: "c4" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "cindy",
+            text: "My pussy is so in love with you! I love walking home with cum dripping down my leg. I reminds me of " +
+                "what a slut I can be!",
+            button: [
+                { chatID: -1, text: "...", callback: "c5" }
             ]
         },
     ];
