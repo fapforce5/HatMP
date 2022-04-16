@@ -3146,7 +3146,7 @@ room209.chat = function (chatID) {
                     "started. If you want to continue training with me you need to use them. I don't want to smell that nasty " +
                     "testosterone smell on you any further. ",
                 button: [
-                    { chatID: 186, text: "Thanks!", callback: "h51_5" }
+                    { chatID: -1, text: "Thanks!", callback: "h51_5" }
                 ]
             },
             {

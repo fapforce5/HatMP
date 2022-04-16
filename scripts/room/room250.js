@@ -972,9 +972,8 @@ room250.chat = function (chatID) {
             speaker: "holly",
             text: "Hay new waitress, what's your name?",
             button: [
-                { chatID: 37, text: "I'm Emily, I'm so glad to meet you!", callback: "hollymad" },
                 { chatID: 38, text: sc.n("me") + "-y ... shit that's not my name, I'm " + sc.n("me") + ", and I'm really a boy.", callback: "" },
-                { chatID: 37, text: "I'm Porche, you're really hot!", callback: "hollymad" },
+                { chatID: 37, text: "My name is waitress-fucker. Want me to show you how I got my name?", callback: "hollymad" },
                 { chatID: 37, text: "I'm not a chick, and my cock is huge, we should go somewhere private", callback: "hollymad" }
             ]
         },
@@ -992,9 +991,8 @@ room250.chat = function (chatID) {
             text: "Oh sugar, we know. When you came out of " + sc.n("jeffery") + "'s office we saw your giant pecker sticking out of the " +
             "bottom of your skirt we figured it out! So what do you think of " + sc.n("jeffery") + "?",
             button: [
-                { chatID: 37, text: "He's can be really nice", callback: "hollymad" },
-                { chatID: 37, text: "His stutter is kinda cute", callback: "hollymad" },
-                { chatID: 37, text: "He would look a lot better if he shaved his mustache", callback: "hollymad" },
+                { chatID: 37, text: "He's the best boss ever!", callback: "hollymad" },
+                { chatID: 37, text: "I think he only hires whores.", callback: "hollymad" },
                 { chatID: 39, text: "I kinda got the pervert vibe from him", callback: "" }
             ]
         },
@@ -1079,7 +1077,7 @@ room250.chat = function (chatID) {
             button: [
                 { chatID: 47, text: "Well hornswoggle my chimichangas! ", callback: "dollymad" },
                 { chatID: 48, text: "I'm doing well", callback: "" },
-                { chatID: 47, text: "Oh wow, you're totally country aren't you? ", callback: "dollymad" }
+                { chatID: 47, text: "Oh wow, you're a total hick aren't you? ", callback: "dollymad" }
             ]
         },
         {
@@ -1097,8 +1095,8 @@ room250.chat = function (chatID) {
             "here the other day. Bless my heart I wouldn't have the gumption to show my face to the world if that happened to me!",
             button: [
                 { chatID: 49, text: "Well I really need the money for rent ", callback: "" },
-                { chatID: 47, text: "What? You're not wearing any panties..", callback: "dollymad" },
-                { chatID: 47, text: "I have the gumption to show it to you if you want", callback: "dollymad" }
+                { chatID: 47, text: "You don't have to show your face when I fuck you from behind.", callback: "dollymad" },
+                { chatID: 47, text: "I have the gumption to show you my cock!", callback: "dollymad" }
             ]
         },
         {
@@ -1108,8 +1106,8 @@ room250.chat = function (chatID) {
             "all the pretty girls that come in here. Just keep working hard!",
             button: [
                 { chatID: 50, text: "You think I'm cute?", callback: "" },
-                { chatID: 47, text: "I always work hard, by that I mean my penis is very rigid", callback: "dollymad" },
-                { chatID: 47, text: "That's stupid, only horny dudes come into a place like this", callback: "dollymad" }
+                { chatID: 47, text: "I always work hard, by that I mean my penis is very hard!", callback: "dollymad" },
+                { chatID: 47, text: "I'll get more tips than you, 'cause my ass is better.", callback: "dollymad" }
             ]
         },
         {
@@ -1171,8 +1169,8 @@ room250.chat = function (chatID) {
             text: "Aw shit, you're that new chick with a dick!",
             button: [
                 { chatID: 57, text: "Yeah, you want to play with it?", callback: "" },
-                { chatID: 56, text: "Oh my, that's rather bold", callback: "mollymad" },
-                { chatID: 56, text: "Yes, I'm the new girl here. I'm so excited to work here", callback: "mollymad" }
+                { chatID: 56, text: "Want to suck it, whore?", callback: "mollymad" },
+                { chatID: 56, text: "I bet my dick is bigger than yours.", callback: "mollymad" }
             ]
         },
         {
@@ -1186,9 +1184,9 @@ room250.chat = function (chatID) {
         {
             chatID: 57,
             speaker: "molly",
-            text: "Oh hahaha, I would, but it looks like it's all locked up. So you some kind of cross dresser?",
+            text: "Oh hahaha, I would, but it looks like it's either tiny or all locked up. So you some kind of cross dresser?",
             button: [
-                { chatID: 56, text: "Yes, It was a real hard to take this step, but I feel so free expressing my true self.", callback: "mollymad" },
+                { chatID: 56, text: "Fuck you.", callback: "mollymad" },
                 { chatID: 56, text: "Nope, didn't realize I was wearing girl's clothes", callback: "mollymad" },
                 { chatID: 58, text: "I'm only here to scam pervs and weirdos from their money", callback: "" }
             ]
@@ -1232,7 +1230,7 @@ room250.chat = function (chatID) {
             speaker: "molly",
             text: "Hay slut! How's your butt-hole, did he stick his fingers in yet!",
             button: [
-                { chatID: 62, text: "No. Dammit", callback: "" },
+                { chatID: 62, text: "I want more than his fingers!", callback: "" },
                 { chatID: 56, text: "There's no way I would let him do that!", callback: "mollymad" },
                 { chatID: 56, text: "Ewww gross", callback: "mollymad" }
             ]

@@ -458,9 +458,10 @@ char.makeWalk = function () {
                         "stealing from Jeffery. ";
                     break;
                 case "sewer":
-                    oncaseText = "First visit Gertrude in the gym to get the crowbar. Then use that crowbar to enter  " +
-                        "the sewer and fight the clown clan to the very last room to get Missy's Red Box. " +
-                        "Once you get the Red Box Return to Missy's office.";
+                    oncaseText = "First visit Gertrude in the gym to get the crowbar.</li>" +
+                        "<li>Use that crowbar to enter the sewer on the street next to the dance club</li>" +
+                        "<li>Fight your way through the clown clan to the very last room to get Missy's Red Box.</li>" +
+                        "<li>Once you get the Red Box Return to Missy's office.";
                     break;
                 default:
                     break;
@@ -502,9 +503,9 @@ char.makeWalk = function () {
                 if (i === pointer)
                     displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
                         reverseEvent[i].txt + '</li>');
-                else if (i === pointer + 1)
-                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-                        reverseEvent[i].txt + '</lii>');
+                //else if (i === pointer + 1)
+                //    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
+                //        reverseEvent[i].txt + '</lii>');
                 else if (reverseEvent[i].step < thisChar.step) {
                     if (reverseEvent[i].ach || reverseEvent[i].step === 0)
                         displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +

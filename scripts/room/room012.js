@@ -389,7 +389,7 @@ room12.chatcatch = function (callback) {
             break;
         case "shaveBody":
             if (g.get("bodyhair") > 0)
-                g.set("bodyhair", 0);
+                ;
             inv.use("razor");
             cl.display();
             break;

@@ -2,6 +2,7 @@
 var room556 = {};
 room556.main = function () {
     g.internal = 0;
+    g.pass = { b: false, d: false, s: false };  
     char.changeMenu("hide", false, true);
     tEnemy.init("g", null, "ring", 556, 556);
     tEnemy.drawButtons("init");
@@ -167,6 +168,7 @@ room556.chatcatch = function (callback) {
             tEnemy.drawStage();
             break;
         case "f0":
+            g.pass.b = true;
             g.internal = 0;
             break;
         case "f1":
@@ -184,6 +186,7 @@ room556.chatcatch = function (callback) {
             tEnemy.drawButtonList("main");
             break;
         case "g0":
+            g.pass.d = true;
             g.internal = 1;
             break;
         case "g1":
@@ -233,6 +236,9 @@ room556.chatcatch = function (callback) {
             }
 
             break;
+        case "s0":
+            g.pass.s = true;
+            break;
         case "leave":
             char.room(550);
             break;
@@ -242,228 +248,252 @@ room556.chatcatch = function (callback) {
 };
 
 room556.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "g",
-            text: "Ready to learn how to fight?",
-            button: [
-                { chatID: 2, text: "Ready", callback: "setup" },
-                { chatID: 1, text: "No. Skip it. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "g",
-            text: "ok, train hard and don't be rape meat",
-            button: [
-                { chatID: -1, text: "I will!", callback: "leave" },
-            ]
-        },
-        {
+    if (chatID === 2) {
+       
+        var btnList = new Array();
+        if (!g.pass.b)
+            btnList.push({ chatID: 3, text: "Basics", callback: "f0" });
+
+        if (!g.pass.d)
+            btnList.push({ chatID: 15, text: "Dominating", callback: "g0" });
+
+        if (!g.pass.s)
+            btnList.push({ chatID: 23, text: "Submitting", callback: "s0" });
+
+        btnList.push({ chatID: 24, text: "Learn new Moves", callback: "" });
+        btnList.push({ chatID: 1, text: "I'm done", callback: "" });
+
+        return {
             chatID: 2,
             speaker: "g",
             text: "Ok. I'm going to teach you how to fight. Choose which one you want to learn about. ",
-            button: [
-                { chatID: 3, text: "Basics", callback: "f0" },
-                { chatID: 15, text: "Dominating", callback: "g0" },
-                { chatID: 23, text: "Submitting", callback: "" },
-                { chatID: 24, text: "Learn new Moves", callback: "" },
-                { chatID: 1, text: "I'm done", callback: "" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "g",
-            text: "I'm going to show you is the energy and control bar at the bottom. Take a look. You'll see a green bar on the " +
-                "left and right. ",
-            button: [
-                { chatID: -1, text: "...", callback: "f1" }
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "g",
-            text: "So those green bars are energy. No one dies in these fights, they just run out of energy to continue. So if your " +
-                "energy drops to zero you just give up and limp away too tired to fight. If they enemies energy drops to zero they give " +
-                "up and yo win. Simple right? ",
-            button: [
-                { chatID: 5, text: "Yeah", callback: "" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "g",
-            text: "If you find yourself running low on energy you can always use your inventory to refill it, so save your acia berries. ",
-            button: [
-                { chatID: 6, text: "What happens when someone is the dominate? ", callback: "" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "g",
-            text: "Fighting is the most basic way to win a fight. You just keep beating your enemy until one of your runs out of energy. ",
-            button: [
-                { chatID: 7, text: "Ok", callback: "f3" }
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "g",
-            text: "Now on to how to fight. Click the Fight button. ",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "g",
-            text: "No idiot. Try again.  ",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "g",
-            text: "You have a few options with the basic fight. You can do an attack on their energy with a punch or a kick. " +
-                "If you can land " +
-                "a hit you'll take some energy from me. ",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "g",
-            text: "",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "g",
-            text: "Now choose where to punch me. Each person has a weak spot, and it's not always the dick. ",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "f5" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "g",
-            text: "Good, now it's my turn to attack. You have to guess if I'm going to punch you, kick you, or do a grappeling move. " +
-                "In this case block my punch. ",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "g",
-            text: "And that's what happens when you choose wrong. You tried to block my punch, but I decided to kick and was able to kick you.  ",
-            button: [
-                { chatID: 14, text: "Unfair! ", callback: "" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "g",
-            text: "And that is the end of the basics lesson. ",
-            button: [
-                { chatID: 2, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "g",
-            text: "Let's go over grappeling. Dropping your enemie's energy to zero is not the only way to win a fight. See the long " +
-                "gray bar at the bottom center?",
-            button: [
-                { chatID: -1, text: "[Take a look]", callback: "g1" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "g",
-            text: "That bar shows who is dominating the fight. When you hit your opponent you dominate them a little bit, but there are " +
-                "other ways to dominate them. Click Fight, then Grapple. ",
-            button: [
-                { chatID: -1, text: "Ok", callback: "g2" }
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "g",
-            text: "You'll see the only option is to steal my clothing. That's because grappeling has it's roots in Greco-Roman wrestling. " +
-                "And the only true Greco-Roman wrestling was done in the nude. Go ahead and try to strip my clothing. ",
-            button: [
-                { chatID: -1, text: "Sweet", callback: "" }
-            ]
-        },
-        {
-            chatID: 18,
-            speaker: "g",
-            text: "Now you strip off your clothing. Select Slut, then strip clothing. ",
-            button: [
-                { chatID: -1, text: "Ok", callback: "g3" }
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "g",
-            text: "Now fight, then grapple, and tea bag. ",
-            button: [
-                { chatID: -1, text: "Ok", callback: "g4" }
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "me",
-            text: "So tea bag like this?",
-            button: [
-                { chatID: 21, text: "Ok", callback: "" }
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "g",
-            text: "Get your balls out of my mouth. NOW!",
-            button: [
-                { chatID: 22, text: "Ok", callback: "g5" }
-            ]
-        },
-        {
-            chatID: 22,
-            speaker: "g",
-            text: "And that's how you dominate someone. If you hit them, strip them, or do a domination move you will move the " +  
-                "bar to your side. If your enemy does the same they will move the bar to their side. Some enemy are too tough to " +
-                "fight, so you'll have to dominate them. ",
-            button: [
-                { chatID: 2, text: "ok, thanks", callback: "g6" }
-            ]
-        },
-        {
-            chatID: 23,
-            speaker: "g",
-            text: "WHAT?!?!?! you want me to teach you how to bend over and take it up the asshole? No. You'll have to " +
-                "figure out how to do that on your own, you stupid weak slut. If you do get dominated you better bring a lot of " +
-                "acia becuase you're going to go through a lot of energy taking all that dick. ",
-            button: [
-                { chatID: 2, text: "oh, ok", callback: "" }
-            ]
-        },
-        {
-            chatID: 24,
-            speaker: "g",
-            text: "Here is where I teach you new domination / submissive moves. Work in progress",
-            button: [
-                { chatID: 2, text: "oh, ok", callback: "" }
-            ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+            button: btnList
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "g",
+                text: "Ready to learn how to fight?",
+                button: [
+                    { chatID: 2, text: "Ready", callback: "setup" },
+                    { chatID: 1, text: "No. Skip it. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "g",
+                text: "ok, train hard and don't be rape meat",
+                button: [
+                    { chatID: -1, text: "I will!", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "g",
+                text: "Ok. I'm going to teach you how to fight. Choose which one you want to learn about. ",
+                button: [
+                    { chatID: 3, text: "Basics", callback: "f0" },
+                    { chatID: 15, text: "Dominating", callback: "g0" },
+                    { chatID: 23, text: "Submitting", callback: "s0" },
+                    { chatID: 24, text: "Learn new Moves", callback: "" },
+                    { chatID: 1, text: "I'm done", callback: "" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "g",
+                text: "I'm going to show you is the energy and control bar at the bottom. Take a look. You'll see a green bar on the " +
+                    "left and right. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "f1" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "g",
+                text: "So those green bars are energy. No one dies in these fights, they just run out of energy to continue. So if your " +
+                    "energy drops to zero you just give up and limp away too tired to fight. If they enemies energy drops to zero they give " +
+                    "up and yo win. Simple right? ",
+                button: [
+                    { chatID: 5, text: "Yeah", callback: "" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "g",
+                text: "If you find yourself running low on energy you can always use your inventory to refill it, so save your acia berries. ",
+                button: [
+                    { chatID: 6, text: "What happens when someone is the dominate? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "g",
+                text: "Fighting is the most basic way to win a fight. You just keep beating your enemy until one of your runs out of energy. ",
+                button: [
+                    { chatID: 7, text: "Ok", callback: "f3" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "g",
+                text: "Now on to how to fight. Click the Fight button. ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "g",
+                text: "No idiot. Try again.  ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "g",
+                text: "You have a few options with the basic fight. You can do an attack on their energy with a punch or a kick. " +
+                    "If you can land " +
+                    "a hit you'll take some energy from me. ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "g",
+                text: "",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "g",
+                text: "Now choose where to punch me. Each person has a weak spot, and it's not always the dick. ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "f5" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "g",
+                text: "Good, now it's my turn to attack. You have to guess if I'm going to punch you, kick you, or do a grappeling move. " +
+                    "In this case block my punch. ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "g",
+                text: "And that's what happens when you choose wrong. You tried to block my punch, but I decided to kick and was able to kick you.  ",
+                button: [
+                    { chatID: 14, text: "Unfair! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "g",
+                text: "And that is the end of the basics lesson. ",
+                button: [
+                    { chatID: 2, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "g",
+                text: "Let's go over grappeling. Dropping your enemie's energy to zero is not the only way to win a fight. See the long " +
+                    "gray bar at the bottom center?",
+                button: [
+                    { chatID: -1, text: "[Take a look]", callback: "g1" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "g",
+                text: "That bar shows who is dominating the fight. When you hit your opponent you dominate them a little bit, but there are " +
+                    "other ways to dominate them. Click Fight, then Grapple. ",
+                button: [
+                    { chatID: -1, text: "Ok", callback: "g2" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "g",
+                text: "You'll see the only option is to steal my clothing. That's because grappeling has it's roots in Greco-Roman wrestling. " +
+                    "And the only true Greco-Roman wrestling was done in the nude. Go ahead and try to strip my clothing. ",
+                button: [
+                    { chatID: -1, text: "Sweet", callback: "" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "g",
+                text: "Now you strip off your clothing. Select Slut, then strip clothing. ",
+                button: [
+                    { chatID: -1, text: "Ok", callback: "g3" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "g",
+                text: "Now fight, then grapple, and tea bag. ",
+                button: [
+                    { chatID: -1, text: "Ok", callback: "g4" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "me",
+                text: "So tea bag like this?",
+                button: [
+                    { chatID: 21, text: "Ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "g",
+                text: "Get your balls out of my mouth. NOW!",
+                button: [
+                    { chatID: 22, text: "Ok", callback: "g5" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "g",
+                text: "And that's how you dominate someone. If you hit them, strip them, or do a domination move you will move the " +
+                    "bar to your side. If your enemy does the same they will move the bar to their side. Some enemy are too tough to " +
+                    "fight, so you'll have to dominate them. ",
+                button: [
+                    { chatID: 2, text: "ok, thanks", callback: "g6" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "g",
+                text: "WHAT?!?!?! you want me to teach you how to bend over and take it up the asshole? No. You'll have to " +
+                    "figure out how to do that on your own, you stupid weak slut. If you do get dominated you better bring a lot of " +
+                    "acia becuase you're going to go through a lot of energy taking all that dick. ",
+                button: [
+                    { chatID: 2, text: "oh, ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "g",
+                text: "Here is where I teach you new domination / submissive moves. Work in progress",
+                button: [
+                    { chatID: 2, text: "oh, ok", callback: "" }
+                ]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

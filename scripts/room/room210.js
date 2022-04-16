@@ -36,8 +36,37 @@ room210.main = function () {
         left: 50,
         top: 100,
         font: 40,
-        hex: "#ffffff",
+        hex: "#000000",
         text: '<div style="text-align:center;">Available Points <br/>' + (g.sp.total - usedSissyPoints) + '</div>'
+    });
+
+    var hor = g.get("hormone");
+    var hortxt = "";
+    if (hor < 25) {
+        hex = "#2c416e";
+        hortxt = "Boy";
+    }
+    else if (hor < 50) {
+        hex = "#432c6e";
+        hortxt = "Transitioning - Boy";
+    }
+    else if (hor < 75) {
+        hex = "#6e2c6c";
+        hortxt = "Transitioning - Girl";
+    }
+    else {
+        hex = "#91116d";
+        hortxt = "Girl";
+    }
+
+    nav.t({
+        type: "img",
+        name: "pointDisplay",
+        left: 50,
+        top: 200,
+        font: 40,
+        hex: hex,
+        text: '<div style="text-align:center;">Hormone Level<br/>' + hortxt + '</div>'
     });
 };
 
@@ -94,7 +123,7 @@ room210.btnclick = function (name) {
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
     else if (!g.sissy[id].active)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';
-    else if (g.sissy[id].h && g.get("hormone") < 85)
+    else if (g.sissy[id].h && g.get("hormone") < 75)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
     else if (prevToUnlock === "") {
         if (needSissyPoints <= availableSissyPoints)

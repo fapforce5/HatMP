@@ -87,6 +87,13 @@ room8.main = function () {
                     $('#wardrobe-line-selection').append('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="' + mb_ctype + '" data-ttype="' + v.name + '"><img src="./images/mainChar/icons/' + v.img + '" /></button>');
                 }
             });
+            if (mb_ctype === "accessories") {
+                $.each(cl.list, function (i, v) {
+                    if (v.inv && v.type === "nipple") {
+                        $('#wardrobe-line-selection').append('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="nipple" data-ttype="' + v.name + '"><img src="./images/mainChar/icons/' + v.img + '" /></button>');
+                    }
+                });
+            }
         }
 
         $('.wardrobe-change').click(function () {
@@ -172,8 +179,10 @@ room8.main = function () {
                     }
                     break;
                 case "accessories":
-                    if (ttype === null)
+                    if (ttype === null) {
                         cl.c.accessories = new Array();
+                        cl.c.nipplering = null;
+                    }
                     else {
                         var inArray = cl.c.accessories.indexOf(ttype);
                         if (inArray > -1)
@@ -181,6 +190,9 @@ room8.main = function () {
                         else
                             cl.c.accessories.push(ttype);
                     }
+                    break;
+                case "nipple":
+                    cl.c.nipplering = ttype;
                     break;
                 default:
                     g.error("room8 - wardrobe Change", layer);

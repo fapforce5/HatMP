@@ -7,6 +7,7 @@ room201.main = function () {
         if (canGoOut === null)
             nav.buildnav([203]);
         else {
+            nav.bg("201_bathroom/change.jpg");
             g.pass = canGoOut;
             chat(11, 201);
         }

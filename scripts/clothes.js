@@ -1840,7 +1840,6 @@ cl.subDisplay = function (id, image) {
         $('#' + id).html('');
 };
 cl.subDisplayAppend = function (id, image) {
-    console.log(id, image);
     if (image !== null) {
         var btnWidth = 300 * g.ratio;
         var btnHeight = 600 * g.ratio;
