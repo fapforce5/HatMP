@@ -18,6 +18,7 @@ room211.btnclick = function (name) {
         case "h_22":
         case "h_27":
         case "h_34":
+        case "h_50":
         case "h_54":
         case "h_58":
             var t = parseInt(name.replace("h_", ""));

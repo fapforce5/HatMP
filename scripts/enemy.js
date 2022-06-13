@@ -99,9 +99,10 @@ tEnemy.initEnemy = function (enemyName) {
                 base: "f_g",
                 grapple: "hair_18",
                 domination: { pose: "kneel", pose1: "kneel", gif: "gif_pussylick.gif", gif1: "png_pussylick.png", stats: ["giveOralFemale"] },
-                domFist: { pose: "assout", pose1: "assout", gif: "gif_fist.gif", gif1: "png_sissygasm.png", stats: ["sissygasm", "receiveFistFemale"] },
-                domfacefuck: { pose: "upsidedowng", pose1: "upsidedowng", gif: "gif_bj.gif", gif1: "png_bj.png", stats: ["giveOralFemale", "receiveOralFemale"] },
-                domMenu: ["lb_domfacefuck", "lb_domfist"],
+                domEnemy: [
+                    { lbl: "lb_domfacefuck", p: "facefuck", p1: "facefuck1", pose: "upsidedowng", pose1: "upsidedowng", gif: "gif_bj.gif", gif1: "png_bj.png", stats: ["giveOralFemale", "receiveOralFemale"] },
+                    { lbl: "lb_domfist", p: "fist", p1: "fist1", pose: "assout", pose1: "assout", gif: "gif_fist.gif", gif1: "png_sissygasm.png", stats: ["sissygasm", "receiveFistFemale"] }
+                ],
                 intro: "A puny wimp like you has no chance!",
                 loss: "I am such your slut!",
                 win: "Only a fool thinks they can win against me.",
@@ -123,11 +124,11 @@ tEnemy.initEnemy = function (enemyName) {
                 weakspot: [7],
                 base: "f_fr",
                 grapple: "defeat",
-                domination: {
-                    pose: "lick", pose1: "lick", gif: "gif_bootlicker.gif", gif1: "png_cummouth.png", stats: ["loadSwollowed", "footLicker"] },
-                domPowerbottom: { pose: "rcowgirl", pose1: "rcowgirl1", gif: "gif_rcowgirl.gif", gif1: "png_rcowgirl.png", status: [""] },
-                domFoot: { pose: "blank", pose1: "blank", gif: "gif_heel.gif", gif1: "png_heel.png", status: [""] },
-                domMenu: ["lb_domfoot", "lb_domPowerbottom"],
+                domination: { pose: "lick", pose1: "lick", gif: "gif_bootlicker.gif", gif1: "png_cummouth.png", stats: ["loadSwollowed", "footLicker"] },
+                domEnemy: [
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "rcowgirl", pose1: "rcowgirl1", gif: "gif_rcowgirl.gif", gif1: "png_rcowgirl.png", status: [""] },
+                    { lbl: "lb_domFoot", p: "foot", p1: "foot1", pose: "blank", pose1: "blank", gif: "gif_heel.gif", gif1: "png_heel.png", status: [""] }
+                ],
                 intro: "Look at my cock and fear me!",
                 loss: "I really wanted to taste your feet...",
                 win: "Only a fool thinks they can win against me.",
@@ -150,9 +151,10 @@ tEnemy.initEnemy = function (enemyName) {
                 base: "f_fy",
                 grapple: "fysubmit",
                 domination: { pose: "takeit", pose1: "takeit1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] },
-                domFuckem: { pose: "fuck", pose1: "fuck1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["giveAnalMale"] },
-                domPowerbottom: { pose: "takeit", pose1: "takeit1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] },
-                domMenu: ["lb_domFuckem", "lb_domPowerbottom"],
+                domEnemy: [
+                    { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "fuck", pose1: "fuck1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["giveAnalMale"] },
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "takeit", pose1: "takeit1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] }
+                ],
                 intro: "Look at my cock and fear me!",
                 loss: "I am such your slut!",
                 win: "Only a fool thinks they can win against me.",
@@ -176,9 +178,10 @@ tEnemy.initEnemy = function (enemyName) {
                 base: "f_sc",
                 grapple: "bent",
                 domination: { pose: "kneel", pose1: "kneel", gif: "gif_buttholelick.gif", gif1: "png_buttholelick.png", stats: ["giveOralFemale"] },
-                domFuckem: { pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
-                domPowerbottom: { pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] },
-                domMenu: ["lb_domFuckem", "lb_domPowerbottom"],
+                domEnemy: [
+                    { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] }
+                ],
                 loss: "HONK.. damn....",
                 intro: "I will HONK you in the HONK with my HONK!!",
                 win: "HAHAHAHAHAHAHAHAHA It's funny how you lose HONK",
@@ -193,7 +196,7 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 250,
                 pPower: 20,
                 kPower: 20,
-                offense: ["p", "k"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                offense: ["g", "g"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
                 clothingLevel: 0,
                 money: 200 + Math.floor(Math.random() * 200),
                 cock: false,
@@ -201,14 +204,123 @@ tEnemy.initEnemy = function (enemyName) {
                 weakspot: [0],
                 base: "f_goo",
                 grapple: "bent",
-                domination: { pose: "kneel", pose1: "kneel", gif: "gif_buttholelick.gif", gif1: "png_buttholelick.png", stats: ["giveOralFemale"] },
-                domFuckem: { pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
-                domPowerbottom: { pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] },
-                domMenu: ["lb_domFuckem", "lb_domPowerbottom"],
-                loss: "HONK.. damn....",
-                intro: "I will HONK you in the HONK with my HONK!!",
-                win: "HAHAHAHAHAHAHAHAHA It's funny how you lose HONK",
-                submit: "Eat ass slut HONK"
+                domination: { pose: "upsidedown", pose1: "upsidedown", gif: "gif_goo.gif", gif1: "png_goo.png", stats: ["giveOralFemale"] },
+                domEnemy: [
+                    { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] }
+                ],
+                loss: "How did I lose to a human! ",
+                intro: "MMmmmMMm Human fleshlight. Yummy",
+                win: "I love coating my humans in slime",
+                submit: "Thank you for using me."
+            };
+            break;
+        case "ag":
+            charVar = {
+                name: "ag",
+                displayName: "Forest Sluts",
+                energy: 100,
+                maxEnergy: 100,
+                pPower: 12,
+                kPower: 20,
+                offense: ["p", "k"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                clothingLevel: 1,
+                money: 200 + Math.floor(Math.random() * 200),
+                cock: false,
+                p: "pose",
+                weakspot: [0],
+                base: "ag",
+                grapple: "bent",
+                domination: { pose: "agdom", pose1: "agdom", gif: "gif_fist.gif", gif1: "png_sissygasm.png", stats: ["receiveHandjobFemale", "receiveFistFemale"] },
+                domEnemy: [
+                    { lbl: "lb_domEatPussy", p: "fuck", p1: "fuck1", pose: "agfuck", pose1: "agfuck1", gif: "gif_pussylick.gif", gif1: "png_pussylick.png", stats: ["giveOralFemale"] },
+                    { lbl: "lb_domFuckem", p: "agfff", p1: null, pose: "agfff", pose1: "agfff1", gif: "gif_fourholes.gif", gif1: "png_fourholes.png", status: ["giveOralFemale"] }
+                ],
+                loss: "Fine, Fuck our pussies.",
+                intro: "Don't hurt the trees!",
+                win: "We have saved the trees!",
+                submit: "Orgasms are nature's gift to our pussies."
+            };
+            break;
+        case "al":
+            charVar = {
+                name: "al",
+                displayName: "Lumberjack",
+                energy: 120,
+                maxEnergy: 120,
+                pPower: 20,
+                kPower: 12,
+                offense: ["g"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                clothingLevel: 2,
+                money: 200 + Math.floor(Math.random() * 200),
+                cock: true,
+                p: "pose",
+                weakspot: [0],
+                base: "al",
+                grapple: "bent",
+                domination: { pose: "alsubmit", pose1: "leaking", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] },
+                domEnemy: [
+                    { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "fuck", pose1: "fuck1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["giveAnalMale"] },
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "alsubmit", pose1: "leaking", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] }
+                ],
+                loss: "Oh fuck! I can't beleive I'm your bitch.",
+                intro: "I'm going to split you in half like a log!",
+                win: "Don't mess with real men. Go back to the city you sissy bitch. ",
+                submit: "Enjoy that cum. It's the only part of a real man in you."
+            };
+            break;
+        case "af":
+            charVar = {
+                name: "af",
+                displayName: "Ms. Jenny",
+                energy: 120,
+                maxEnergy: 120,
+                pPower: 20,
+                kPower: 12,
+                offense: ["g"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                clothingLevel: 1,
+                money: 200 + Math.floor(Math.random() * 200),
+                cock: true,
+                p: "pose",
+                weakspot: [0],
+                base: "af",
+                grapple: "lick", 
+                domination: { pose: "assout", pose1: "assout", gif: "gif_spank.gif", gif1: "png_cry.png", stats: ["phum"] },
+                domEnemy: [
+                    { lbl: "lb_handjob", p: "fuck", p1: "fuck1", pose: "hang", pose1: "hang", gif: "gif_handjob.gif", gif1: "png_cum.png", stats: ["receiveHandjobFemale"] },
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "afsubmit", pose1: "afsubmit1", gif: "gif_sizeview.gif", gif1: "png_sissygasm.png", stats: ["receiveAnalFemale", "sissygasm"] }
+                ],
+                loss: "I can't believe you've bested your queen. You will pay for this.",
+                intro: "I am your queen. Serve me well.",
+                win: "You are my slave. ",
+                submit: "Everyone serves their true queen."
+            };
+            break;
+        case "aw":
+            charVar = {
+                name: "aw",
+                displayName: "Warewolf",
+                energy: 250,
+                maxEnergy: 250,
+                pPower: 30,
+                kPower: 40,
+                offense: ["p", "k"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                clothingLevel: 0,
+                money: 1000 + Math.floor(Math.random() * 200),
+                cock: true,
+                p: "pose",
+                weakspot: [7,8,9],
+                base: "aw",
+                grapple: "lick",
+                domination: { pose: "assout", pose1: "assout", gif: "gif_spank.gif", gif1: "png_cry.png", stats: ["phum"] },
+                domEnemy: [
+                    { lbl: "lb_handjob", p: "fuck", p1: "fuck11", pose: "hang", pose1: "hang", gif: "gif_handjob.gif", gif1: "png_cum.png", stats: ["receiveHandjobFemale"] },
+                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "afsubmit", pose1: "afsubmit1", gif: "gif_sizeview.gif", gif1: "png_sissygasm.png", stats: ["receiveAnalFemale", "sissygasm"] }
+                ],
+                loss: "I can't believe you've bested your queen. You will pay for this.",
+                intro: "I am your queen. Serve me well.",
+                win: "You are my slave. ",
+                submit: "Everyone serves their true queen."
             };
             break;
         default:
@@ -227,6 +339,9 @@ tEnemy.drawBackground = function (bg) {
         case "sewer":
             nav.bg("227_fight/sewer.jpg");
             break;
+        case "forest":
+            nav.bg("475_fight/clearing.jpg");
+            break;
         default:
             console.log("Unkown BG: " + bg + " in enemy");
             break;
@@ -243,8 +358,17 @@ tEnemy.drawGif = function (gif) {
         "top": 200,
         "width": 350,
         "height": 350,
-        "image": "227_fight/" + gif,
+        "image": "227_fight/" + gif
     }, 227);
+};
+
+tEnemy.getDomEnemy = function (labelName) {
+    var retVal = null;
+    $.each(g.fight.e[0].domEnemy, function (i, v) {
+        if (v.lbl === labelName)
+            retvalue = v;
+    });
+    return retvalue;
 };
 
 tEnemy.drawButtonList = function (displayMenu) {
@@ -407,27 +531,34 @@ tEnemy.drawButtonList = function (displayMenu) {
             tFooter = "Select where you're going to hit.";
             break;
         case "domination":
-            $.each(g.fight.e[0].domMenu, function (i, v) {
-                switch (v) {
+            $.each(g.fight.e[0].domEnemy, function (i, v) {
+                switch (v.lbl) {
                     case "lb_domUseMouth":
                         if (cl.c.chastity !== null)
                             btnList.push({ t: "Fuck Their Face", l: "lb_domUseMouth", title: "Receive Oral" });
                         break;
                     case "lb_domFuckem":
-                        if (cl.c.chastity !== null)
+                        if (cl.c.chastity === null)
                             btnList.push({ t: "Fuck 'em", l: "lb_domFuckem", title: "Fuck them in their sloppy hole." });
+                        break;
+                    case "lb_handjob":
+                        if (cl.c.chastity === null)
+                            btnList.push({ t: "Hand Job", l: "lb_handjob", title: "Stroke your pp." });
                         break;
                     case "lb_domPowerbottom":
                         btnList.push({ t: "Power Bottom", l: "lb_domPowerbottom", title: "Have them fuck you." });
                         break;
-                    case "lb_domfoot":
+                    case "lb_domFoot":
                         btnList.push({ t: "Foot Fetish", l: "lb_domFoot", title: "Fuck their feet *pervert* " });
                         break;
                     case "lb_domfacefuck":
                         btnList.push({ t: "Blow Job", l: "lb_domfacefuck", title: "Fuck their face. " });
                         break;
                     case "lb_domfist":
-                        btnList.push({ t: "Fisting", l: "lb_domFist", title: "Get fisted in the Sissy Pussy" });
+                        btnList.push({ t: "Fisting", l: "lb_domfist", title: "Get fisted in the Sissy Pussy" });
+                        break;
+                    case "lb_domEatPussy":
+                        btnList.push({ t: "Eat Pussy", l: "lb_domEatPussy", title: "Eat their yummy pussy" });
                         break;
                 }
             });
@@ -935,7 +1066,18 @@ tEnemy.drawStage = function () {
 tEnemy.drawEnemy = function () {
     nav.killbutton("enemy");
     for (i = 0; i < g.fight.e.length; i++) {
-        if (g.fight.e[i].p !== null) {
+        if (g.fight.e[i].p === "bjpose" || g.fight.e[i].p === "asspose") {
+            nav.button({
+                "type": "img",
+                "name": "enemy",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "227_fight/" + g.fight.e[i].base + "_" + g.fight.e[i].p + "_" + g.fight.e[i].clothingLevel + ".png"
+            }, g.fight.callingRoomID);
+        }
+        else if (g.fight.e[i].p !== null) {
             nav.button({
                 "type": "img",
                 "name": "enemy",
@@ -1097,6 +1239,11 @@ tEnemy.drawChar = function (pose) {
             thischar.hair = "12";
             thischar.displayc = false;
             break;
+        case "kneelaway":
+            thischar.body = "g_kneelaway";
+            thischar.hair = "21";
+            thischar.displayc = false;
+            break;
         case "takeit":
             thischar.body = "g_takeit";
             thischar.dick = "g_takeit";
@@ -1124,9 +1271,21 @@ tEnemy.drawChar = function (pose) {
             thischar.body = "g_fysubmit";
             thischar.hair = "17";
             break;
+        case "alsubmit":
+            thischar.body = "g_alsubmit";
+            thischar.hair = "22";
+            break;
+        case "alsubmit1":
+            thischar.body = "g_alsubmit1";
+            break;
         case "hair_18":
             thischar.body = null;
             thischar.hair = "18";
+            break;
+        case "upsidedown":
+            thischar.body = cl.c.chest > 2 ? "g_upside_f" : "g_upside_m";
+            thischar.hair = "27";
+            thischar.dick = "g_upside";
             break;
         case "upsidedowng":
             thischar.body = cl.c.chest > 2 ? "g_upsidedowng_f" : "g_upsidedowng_m";
@@ -1136,6 +1295,40 @@ tEnemy.drawChar = function (pose) {
             thischar.body = cl.c.chest > 2 ? "g_assout_f" : "g_assout_m";
             thischar.hair = "20";
             break;
+        case "leaking":
+            thischar.body = "g_leaking";
+            break;
+        case "afsubmit":
+            thischar.body = cl.c.chest > 2 ? "g_afsubmit_f" : "g_afsubmit_m";
+            thischar.hair = "24";
+            break;
+        case "afsubmit1":
+            thischar.body = cl.c.chest > 2 ? "g_afsubmit1_f" : "g_afsubmit1_m";
+            thischar.hair = "24";
+            break;
+        case "hang":
+            thischar.body = cl.c.chest > 2 ? "g_hang_m" : "g_hang_f";
+            thischar.dick = "g_hang";
+            thischar.hair = "23";
+            break;
+        case "agfuck":
+            thischar.body = "g_agfuck";
+            thischar.hair = "25";
+            break;
+        case "agfuck1":
+            thischar.body = "g_agfuck1";
+            thischar.hair = "25";
+            break;
+        case "agdom":
+            thischar.body = null;
+            thischar.hair = "26";
+            break;
+        case "agfff":
+            thischar.body = "g_agfff";
+            break;
+        case "agfff1":
+            thischar.body = "g_agfff1";
+            break;
     }
     if (thischar.displayc) {
         if (g.fight.me.clothes === "m" || g.fight.me.clothes === "f")
@@ -1144,7 +1337,6 @@ tEnemy.drawChar = function (pose) {
             thischar.clothes = thischar.body + "_p";
     }
 
-    console.log(thischar.clothes, thischar.dick)
     if (thischar.clothes === null && thischar.dick !== null) {
         if (cl.c.chastity !== null)
             thischar.clothes = thischar.dick + "_d_c";
@@ -1158,7 +1350,7 @@ tEnemy.drawChar = function (pose) {
     //back of hair
 
     if (thischar.hair !== null && cl.c.hairLength !== null) {
-        var noback = ["9", "10", "17", "18", "19"];
+        var noback = ["9", "10", "17", "18", "19", "22", "25", "26", "27" ];
         if (cl.c.hairLength > 2)
             nav.modbutton("me0", "227_fight/h_" + thischar.hair + "_long_back.png", null, null);
         else

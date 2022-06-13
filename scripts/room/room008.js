@@ -92,6 +92,15 @@ room8.main = function () {
                     if (v.inv && v.type === "nipple") {
                         $('#wardrobe-line-selection').append('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="nipple" data-ttype="' + v.name + '"><img src="./images/mainChar/icons/' + v.img + '" /></button>');
                     }
+                    if (v.inv && v.type === "ear") {
+                        $('#wardrobe-line-selection').append('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="ear" data-ttype="' + v.name + '"><img src="./images/mainChar/icons/' + v.img + '" /></button>');
+                    }
+                    if (v.inv && v.type === "nose") {
+                        $('#wardrobe-line-selection').append('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="nose" data-ttype="' + v.name + '"><img src="./images/mainChar/icons/' + v.img + '" /></button>');
+                    }
+                    if (v.inv && v.type === "belly") {
+                        $('#wardrobe-line-selection').append('<button class="wardrobe-icon wardrobe-change" type="button" data-layer="belly" data-ttype="' + v.name + '"><img src="./images/mainChar/icons/' + v.img + '" /></button>');
+                    }
                 });
             }
         }
@@ -182,6 +191,9 @@ room8.main = function () {
                     if (ttype === null) {
                         cl.c.accessories = new Array();
                         cl.c.nipplering = null;
+                        cl.c.earring = null;
+                        cl.c.nosering = null;
+                        cl.c.bellyring = null;
                     }
                     else {
                         var inArray = cl.c.accessories.indexOf(ttype);
@@ -193,6 +205,15 @@ room8.main = function () {
                     break;
                 case "nipple":
                     cl.c.nipplering = ttype;
+                    break;
+                case "ear":
+                    cl.c.earring = ttype;
+                    break;
+                case "nose":
+                    cl.c.nosering = ttype;
+                    break;
+                case "belly":
+                    cl.c.bellyring = ttype;
                     break;
                 default:
                     g.error("room8 - wardrobe Change", layer);

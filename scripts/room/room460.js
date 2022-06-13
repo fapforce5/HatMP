@@ -69,10 +69,9 @@ room460.btnclick = function (name) {
             }
             break;
         case "path3":
-            chat(3, 460);
-            /*
+            //chat(3, 460);
             g.internal = { count: 0, lastGold: 0, lastFight: 0, row: 78, col: 10 };
-            char.room(475);*/
+            char.room(475);
             break;
         default:
             break;

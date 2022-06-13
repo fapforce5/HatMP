@@ -115,7 +115,7 @@ room150.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "jones",
-            text: "I can see your panty line. Go away. ",
+            text: "I can see your panty line. Remove those awful panties and bra and come back. ",
             button: [
                 { chatID: -1, text: "Oh, sorry, yes sir. ", callback: "" }
             ]

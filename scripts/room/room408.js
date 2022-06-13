@@ -190,7 +190,7 @@ room408.chat = function (chatID) {
             speaker: "stormy",
             text: "Hay sexy. What can I do for you?",
             button: [
-                { chatID: 4, text: "I want a piercing. ", callback: "" },
+                { chatID: -1, text: "I want a piercing. ", callback: "nipple" },
                 { chatID: -1, text: "Nothing. ", callback: "leave" }
             ]
         },
@@ -199,7 +199,7 @@ room408.chat = function (chatID) {
             speaker: "stormy",
             text: "Hay sexy. What can I do for you?",
             button: [
-                { chatID: 4, text: "I want a piercing. ", callback: "" },
+                { chatID: -1, text: "I want a piercing. ", callback: "nipple" },
                 { chatID: -1, text: "I want a tattoo. ", callback: "tattoo" },
                 { chatID: -1, text: "Nothing. ", callback: "leave" }
             ]

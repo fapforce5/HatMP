@@ -1373,7 +1373,7 @@ room501.chat = function (chatID) {
         {
             chatID: 90,
             speaker: "zoey",
-            text: "I knew it! I knew you were sleeping with other people! I totally knew it! Tu triche pute! I knew it.",
+            text: "I knew it! I knew you were sleeping with other people! I totally knew it! Tu m'as trompé pute! I knew it.",
             button: [
                 { chatID: 91, text: "...", callback: "" }
             ]

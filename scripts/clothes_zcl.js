@@ -100,6 +100,29 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
                 i = 99999;
             }
     }
+    if (cl.c.earring !== null && !dback) {
+        for (i = 0; i < cl.earring.length; i++)
+            if (cl.earring[i].name === cl.c.earring) {
+                zcl.displayMainSub(cl.earring[i].image, top, left, ratio);
+                i = 99999;
+            }
+    }
+
+    if (cl.c.nosering !== null && !dback) {
+        for (i = 0; i < cl.nosering.length; i++)
+            if (cl.nosering[i].name === cl.c.nosering) {
+                zcl.displayMainSub(cl.nosering[i].image, top, left, ratio);
+                i = 99999;
+            }
+    }
+
+    if (cl.c.bellyring !== null && !dback) {
+        for (i = 0; i < cl.bellyring.length; i++)
+            if (cl.bellyring[i].name === cl.c.bellyring) {
+                zcl.displayMainSub(cl.bellyring[i].image, top, left, ratio);
+                i = 99999;
+            }
+    }
     //set bodyhair
     var hairy = cl.getBodyHair();
     if (hairy !== null && !dback)

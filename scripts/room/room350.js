@@ -44,12 +44,16 @@ room350.main = function () {
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
+            var mascotNum = g.get("mascot");
             var llStep = sc.getstep("landlord");
             var access16 = g.hasAccess(16).access;
-            if (sc.checkevent("landlord", -5) && !sc.checkevent("landlord", -6) && !access16) 
+            if (sc.checkevent("landlord", -5) && !sc.checkevent("landlord", -6) && !access16)
                 chat(47, 350);
             else if (!access16) {
-                chat(43, 350);
+                if (mascotNum === 0)
+                    chat(43, 350);
+                else
+                    chat(61, 350);
             }
             else if (llStep > 200) {
                 if (g.hourBetween(6, 10)) {
@@ -85,9 +89,13 @@ room350.btnclick = function (name) {
                 else
                     chat(0, 350);
             }
-            
-            else if (sc.checkevent("landlord", -1))
-                chat(9, 350);
+
+            else if (sc.checkevent("landlord", -1)) {
+                if (mascotNum > 3)
+                    chat(62, 350);
+                else
+                    chat(9, 350);
+            }
             else
                 chat(0, 350);
             break;
@@ -132,9 +140,8 @@ room350.chatcatch = function (callback) {
             g.mod("money", -500);
             char.room(352);
             break;
-        case "doctor":
-            sc.setstep("landlord", -4);
-            char.addtime(15);
+        case "mascot":
+            char.room(353);
             break;
         case "homecoming":
             g.roomMapAccess(16, true, true);
@@ -565,8 +572,8 @@ room350.chat = function (chatID) {
             chatID: 44,
             speaker: "landlord",
             text: "Don't even try to explain yourself. I'm not going to leave you homeless. You'll have to earn your way back in. " +
-                "I'll tell you what. We're desperate for more sperm. If you can find me a new sperm donor then you can come " +
-                "back in. I need a doctor so I can sell it. ",
+                "I'll tell you what. We're desperate for more sperm and I need a mascot on the streets advertising for me. If you " +
+                "agree to wear the suit for 3 days I'll think about letting you back in. Got it?",
             button: [
                 { chatID: 45, text: "Got it!", callback: "" }
             ]
@@ -574,25 +581,25 @@ room350.chat = function (chatID) {
         {
             chatID: 45,
             speaker: "landlord",
-            text: "I hope so. Also there will be new rules once you get back. I got to keep you dick out of " + sc.n("lola") + 
+            text: "I hope so. Also there will be new rules once you get back. I got to keep your dick out of " + sc.n("lola") + 
                 " and " + sc.n("eva") + ".",
             button: [
-                { chatID: 46, text: "ok. I'm going to go find you a doctor to donate sperm.", callback: "" }
+                { chatID: 46, text: "ok. Where do I put on the suit.", callback: "" }
             ]
         },
         {
             chatID: 46,
             speaker: "thinking",
-            text: "Have I run across anyone who said they were a doctor? Who the fuck is a doctor?",
+            text: "I'll take you. I need to make sure you don't do anything silly. ",
             button: [
-                { chatID: -1, text: "I need to find him!", callback: "doctor" }
+                { chatID: -1, text: "Ok. ", callback: "mascot" }
             ]
         },
         {
             chatID: 47,
             speaker: "landlord",
-            text: "Ok, I'll admit I did not expect you to find a doctor, but you did. He was the smelliest doctor I've " +
-                "ever come across, but he is a doctor. I'm still not sure about letting you around " + sc.n("lola") + " and " +
+            text: "Ok, I'll admit I did not expect you to show up and work like you did, but you've shown that " +
+                "you can apply yourself. I'm still not sure about letting you around " + sc.n("lola") + " and " +
                 sc.n("eva") + ". You're still a pervert.",
             button: [
                 { chatID: 48, text: "I'll be better!", callback: "" }
@@ -707,6 +714,23 @@ room350.chat = function (chatID) {
             text: "Disgusting. Honestly I'm not even suprised. Get out of here and put some clothes on. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "landlord",
+            text: "Ready to work? ",
+            button: [
+                { chatID: -1, text: "Yes. ", callback: "mascot" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "landlord",
+            text: "Uggghhhh What are you doing here?",
+            button: [
+                { chatID: 10, text: "Making a deposit?", callback: "" },
+                { chatID: -1, text: "Work as the mascot.", callback: "mascot" }
             ]
         },
     ];

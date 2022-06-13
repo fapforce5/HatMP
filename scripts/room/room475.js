@@ -47,7 +47,7 @@ room475.main = function () {
         //    m.fmap[g.internal.row][g.internal.col].visited = true;
         //    //room475.buildIcons("nav");
         //}
-
+        
 
         m.drawBackground(g.internal.row, g.internal.col);
         m.drawMap(g.internal.row, g.internal.col);
@@ -62,6 +62,9 @@ room475.main = function () {
         if (g.internal.col > 0)
             m.fmap[g.internal.row][g.internal.col - 1].visited = true;
     }
+    cl.nude();
+    g.pass = { enemy0: "goo", enemy1: null, enemy2: null, bg: "forest", roomID: 475 };
+    char.room(227);
 };
 
 room475.btnclick = function (name) {

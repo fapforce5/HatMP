@@ -54,6 +54,7 @@ g.st = [
     { n: "bodyLevel", t: 0, q: "zero" },
     { n: "fitnessLevel", t: 0, q: "zero" },
     { n: "dLevel", t: 0, q: "zero" },
+    { n: "domEvent", t: 0, q: "int" },
     { n: "map", t: 0, q: "int" },
     { n: "jobConstructionPay", t: 0, q: "zero" },
     { n: "jobConstWorkToday", t: 0, q: "int" },
@@ -78,6 +79,7 @@ g.st = [
     { n: "displayMenu", t: true, q: "bool" },
     { n: "daysCult", t: 0, q: "int" },
     { n: "cheatMode", t: false, q: "bool" },
+    { n: "mascot", t: 0, q: "int" },
 
     { n: "fighttimer", t: 4000, q: "int" },
     { n: "fightWon", t: 0, q: "int" },
@@ -187,7 +189,6 @@ g.sissy = [
     { id: 13, pID: [12], icon: "gloryhole0", x: 9, y: 13, name: "Glory Hole Slut", description: "Present your mouth at a glory hole", ach: false, active: true, points: 1, h: false },
 
     { id: 14, pID: [51], icon: "pink", x: 18, y: 5, name: "Pink Room", description: "Train in the Pink Room", ach: false, active: true, points: 1, h: false },
-
 
     { id: 15, pID: [12], icon: "redroom", x: 10, y: 11, name: "Red Room", description: "Prove your Worth", ach: false, active: true, points: 0, h: false },
 
@@ -532,6 +533,7 @@ g.rooms = [
     { roomID: 207, name: "Elevator", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 203, btn: "roomBtn_207.png" },
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 209, name: "Basement", image: "209_classroom/bg.jpg", nightImage: "209_classroom/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 212, name: "Black Room", image: "212_black/g.jpg", nightImage: "212_black/g.jpg", houseID: 203, btn: "roomBtn_208.png" },
 
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },
@@ -545,7 +547,8 @@ g.rooms = [
     { roomID: 350, name: "Sperm Bank", image: "350_spermBank/350_spermbank.jpg", nightImage: "350_spermBank/350_spermbank.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 352, name: "Jack 'Em", image: "352_jackoff/bg.jpg", nightImage: "352_jackoff/bg.jpg", houseID: 350, btn: "roomBtn_352.png" },
-
+    { roomID: 353, name: "Mascot", image: "353_mascot/bg.jpg", nightImage: "353_mascot/bg.jpg", houseID: 350, btn: "roomBtn_352.png" },
+     
     { roomID: 400, name: "Mall", image: "400_mall/400_mall_bg.jpg", nightImage: "400_mall/400_mall_bg.jpg", houseID: 400, btn: "roomBtn_400.png" },
     { roomID: 401, name: "Purchase", image: "401_purchase/401_buy.jpg", nightImage: "401_purchase/401_buy.jpg", houseID: 400, btn: "roomBtn_401.png" },
     { roomID: 402, name: "Popular Girl", image: "402_mens/interior.jpg", nightImage: "402_mens/interior.jpg", houseID: 400, btn: "roomBtn_402.png" },
@@ -1003,6 +1006,8 @@ g.initGame = function () {
             case "fightControlWon":
             case "fightControlLost":
             case "superPunch":
+            case "mascot":
+            case "domEvent":
                 g.st[i].t = 0;
                 break;
             case "bodyhair":

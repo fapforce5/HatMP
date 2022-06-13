@@ -162,6 +162,22 @@ cl.list = [
     { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
     { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
 
+    { type: "ear", name: "e_h", display: "Heart Earring", img: "ear_heart.png", sex: "f", inv: false, daring: 2, price: 50 },
+    { type: "ear", name: "e_l", display: "Loop Earring", img: "ear_loop.png", sex: "f", inv: false, daring: 5, price: 10 },
+    { type: "ear", name: "e_p", display: "Pearl Earring", img: "ear_pearl.png", sex: "f", inv: false, daring: 3, price: 120 },
+    { type: "ear", name: "e_pd", display: "Pink Diamond Earring", img: "ear_pinkdiamond.png", sex: "f", inv: false, daring: 360, price: 50 },
+    { type: "ear", name: "e_d", display: "Diamond Earring", img: "ear_diamond.png", sex: "f", inv: false, daring: 4, price: 480 },
+    { type: "ear", name: "e_da", display: "Dangly Earring", img: "ear_dangle.png", sex: "f", inv: false, daring: 5, price: 250 },
+
+    { type: "nose", name: "n_1", display: "Septum Nosering", img: "nose_1.png", sex: "f", inv: false, daring: 4, price: 60 },
+    { type: "nose", name: "n_d", display: "Dot Nosering", img: "nose_dot.png", sex: "f", inv: false, daring: 3, price: 20 },
+    { type: "nose", name: "n_b", display: "Bull", img: "nose_bull.png", sex: "f", inv: false, daring: 4, price: 80 },
+    { type: "nose", name: "n_r", display: "Nosering", img: "nose_ring.png", sex: "f", inv: false, daring: 5, price: 30 },
+
+    { type: "belly", name: "b_b", display: "Silver Belly Ring", img: "belly_barb.png", sex: "f", inv: false, daring: 3, price: 30 },
+    { type: "belly", name: "b_d", display: "Diamond Belly Ring", img: "belly_dangle.png", sex: "f", inv: false, daring: 4, price: 480 },
+    { type: "belly", name: "b_s", display: "Sissy Belly Ring", img: "belly_sissy.png", sex: "f", inv: false, daring: 5, price: 120 },
+
     { type: "pj", name: "paisley", display: "Boy Pjs", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
     { type: "pj", name: "gown", display: "Night Gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
@@ -550,6 +566,28 @@ cl.tattoo = [
     { name: "bunny", image: "tattoo_bunny.png", back: null },
     { name: "sissy", image: "tattoo_sissy.png", back: null },
     { name: "slut", image: "tattoo_slut.png", back: null }
+];
+
+cl.earring = [
+    { name: "e_h", image: "ear_heart.png" },
+    { name: "e_l", image: "ear_loop.png" },
+    { name: "e_p", image: "ear_pearl.png" },
+    { name: "e_pd", image: "ear_pinkdiamond.png" },
+    { name: "e_d", image: "ear_diamond.png" },
+    { name: "e_da", image: "ear_dangle.png" }
+];
+
+cl.nosering = [
+    { name: "n_1", image: "nose_1.png" },
+    { name: "n_d", image: "nose_dot.png" },
+    { name: "n_b", image: "nose_bull.png" },
+    { name: "n_r", image: "nose_ring.png" }
+];
+
+cl.bellyring = [
+    { name: "b_b", image: "belly_barb.png" },
+    { name: "b_d", image: "belly_dangle.png" },
+    { name: "b_s", image: "belly_sissy.png" }
 ];
 
 cl.nipplering = [
@@ -1564,6 +1602,30 @@ cl.display = function () {
             for (i = 0; i < cl.nipplering.length; i++)
                 if (cl.nipplering[i].name === cl.c.nipplering && cl.nipplering[i].chest === cl.c.chest) {
                     cl.subDisplayAppend("char-accBody", cl.nipplering[i].image);
+                    i = 99999;
+                }
+        }
+
+        if (cl.c.earring !== null && !cback) {
+            for (i = 0; i < cl.earring.length; i++)
+                if (cl.earring[i].name === cl.c.earring) {
+                    cl.subDisplayAppend("char-accBody", cl.earring[i].image);
+                    i = 99999;
+                }
+        }
+
+        if (cl.c.nosering !== null && !cback) {
+            for (i = 0; i < cl.nosering.length; i++)
+                if (cl.nosering[i].name === cl.c.nosering) {
+                    cl.subDisplayAppend("char-accBody", cl.nosering[i].image);
+                    i = 99999;
+                }
+        }
+
+        if (cl.c.bellyring !== null && !cback) {
+            for (i = 0; i < cl.bellyring.length; i++)
+                if (cl.bellyring[i].name === cl.c.bellyring) {
+                    cl.subDisplayAppend("char-accBody", cl.bellyring[i].image);
                     i = 99999;
                 }
         }

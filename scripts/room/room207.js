@@ -169,11 +169,18 @@ room207.btnclick = function (name) {
                 chat(6, 207);
             break;
         case "black_char":
-            chat(2, 207);
+            if (g.sissy[50].ach)
+                if (g.gethourdecimal() < 11)
+                    chat(7, 207);
+                else
+                    chat(8, 207);
+            else
+                chat(2, 207);
             break;
         case "blueDoor":
             char.room(209);
             break;
+        
         default:
             break;
     }
@@ -189,6 +196,9 @@ room207.chatcatch = function (callback) {
                 chat(3, 207);
             else
                 chat(5, 207);
+            break;
+        case "blackRoom":
+            char.room(212);
             break;
         default:
             break;
@@ -217,7 +227,7 @@ room207.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "random",
-            text: "Welcome to the Black Level of Pain. To enter you must show you accept that pain is pleasure. [In progress]",
+            text: "Welcome to the Black Level of Pain. To enter you must show you accept that pain is pleasure.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -252,6 +262,22 @@ room207.chat = function (chatID) {
             text: "You must prove your worth of service before entering.",
             button: [
                 { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "random",
+            text: "You may enter the Black Room of Pain.",
+            button: [
+                { chatID: -1, text: "...", callback: "blackRoom" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "random",
+            text: sc.n("black") + " only sees slaves before 11. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

@@ -250,6 +250,11 @@ room209.btnclick = function (name) {
             room209.btnclick("displayMissybtn");
             chat(69, 209);
             break;
+        case "h_4":
+            nav.bg("209_classroom/h_4Headset.jpg");
+            nav.killall();
+            chat(192, 209);
+            break;
         case "h_6":
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
@@ -513,7 +518,14 @@ room209.btnclick = function (name) {
             break;
         case "h_50":
             g.spendSissy(name);
-            alert("add blackroom");
+            g.sissy[50].ach = true;
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(194, 209);
             break;
         case "h_51":
             nav.killall();
@@ -1487,6 +1499,17 @@ room209.chatcatch = function (callback) {
             char.room(209);
             break;
         case "leave":
+            room209.chatcatch("end");
+            break;
+        case "h_4":
+            nav.bg("209_classroom/209_hypno2.gif");
+            g.roomTimeout = setTimeout(function () {
+                chat(193, 209);
+            }, 19000);
+            break;
+        case "h_4end":
+            g.mod("missyPoints", 50);
+            g.sissy[4].ach = true;
             room209.chatcatch("end");
             break;
         default:
@@ -3208,6 +3231,31 @@ room209.chat = function (chatID) {
                     " in her trailer. Now go out and show off your new tattoo. ",
                 button: [
                     { chatID: -1, text: "Ok!", callback: "30_3" }
+                ]
+            },
+            {
+                chatID: 192,
+                speaker: "thinking",
+                text: "Must watch sissy hypno.",
+                button: [
+                    { chatID: -1, text: "watch", callback: "h_4" }
+                ]
+            },
+            {
+                chatID: 193,
+                speaker: "thinking",
+                text: "Sissy......",
+                button: [
+                    { chatID: -1, text: "Finish watching", callback: "h_4end" }
+                ]
+            },
+            {
+                chatID: 194,
+                speaker: "p",
+                text: "OOoooo I don't know what you think is in there, but you're not going to like it. You can now " +
+                    "take the elevator to the black room and enter. ",
+                button: [
+                    { chatID: -1, text: "Cool.", callback: "end" }
                 ]
             },
         ];

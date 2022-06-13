@@ -255,7 +255,6 @@ $(document).ready(function () {
 });
 
 char.changeMenu = function (menu, update, override) {
-    console.log("hit: " + menu + ". Update: " + update);
     if (update)
         g.prevview = menu;
     switch (menu) {

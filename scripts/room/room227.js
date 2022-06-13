@@ -143,25 +143,24 @@ room227.btnclick = function (name) {
             tEnemy.drawChar("bjpose");
 
             if (g.fight.e[0].clothingLevel > 0) {
-                if (g.fight.e[0].clothingLevel !== 0) {
-                    g.fight.e[0].clothingLevel = 0;
-                }
+                g.fight.e[0].clothingLevel = 0;
                 g.fight.e[0].p = "strip";
                 tEnemy.drawEnemy();
                 g.roomTimeout = setTimeout(function () {
-                    tEnemy.drawChar("bjpose1");
-                    g.fight.e[0].p = "bjpose";
-                    tEnemy.drawEnemy();
-                    tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
-                    g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawChar("bjpose");
-                        room227.chatcatch("main-tain");
-                    }, g.fight.fighttimer);
+                    //tEnemy.drawChar("bjpose");
+                    //g.fight.e[0].p = "bjpose";
+                    //tEnemy.drawEnemy();
+                    //tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
+                    //g.roomTimeout = setTimeout(function () {
+                    //    tEnemy.drawChar("bjpose");
+                    //    room227.chatcatch("main-tain");
+                    //}, g.fight.fighttimer);
+                    room227.btnclick("lb_submitbj");
                 }, g.fight.fighttimer);
             }
             else {
                 g.fight.e[0].p = "bjpose";
-                tEnemy.drawChar("bjpose1");
+                tEnemy.drawChar("bjpose");
                 tEnemy.drawEnemy();
                 tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                 g.roomTimeout = setTimeout(function () {
@@ -176,24 +175,15 @@ room227.btnclick = function (name) {
             tEnemy.drawChar("asspose");
 
             if (g.fight.e[0].clothingLevel > 0) {
-                if (g.fight.e[0].clothingLevel !== 0) {
-                    g.fight.e[0].clothingLevel = 0;
-                }
+                g.fight.e[0].clothingLevel = 0;
                 g.fight.e[0].p = "strip";
                 tEnemy.drawEnemy();
                 g.roomTimeout = setTimeout(function () {
-                    tEnemy.drawChar("takeit1");
-                    g.fight.e[0].p = "asspose";
-                    tEnemy.drawEnemy();
-                    tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
-                    g.roomTimeout = setTimeout(function () {
-                        tEnemy.drawChar("asspose");
-                        room227.chatcatch("main-tain");
-                    }, g.fight.fighttimer);
+                    room227.btnclick("lb_submitass");
                 }, g.fight.fighttimer);
             }
             else {
-                tEnemy.drawChar("takeit1");
+                tEnemy.drawChar("asspose");
                 g.fight.e[0].p = "asspose";
                 tEnemy.drawEnemy();
                 tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
@@ -282,32 +272,6 @@ room227.btnclick = function (name) {
                 }, g.fight.fighttimer);
             }, g.fight.fighttimer);
             break;
-        case "lb_domFuckem":
-            g.fight.me.sissyAction--;
-            g.fight.e[0].clothingLevel = 0;
-            tEnemy.drawChar(g.fight.e[0].domFuckem.pose);
-            g.fight.e[0].p = "fuck";
-            tEnemy.drawEnemy();
-            tEnemy.drawGif(g.fight.e[0].domFuckem.gif);
-            nav.button({
-                "type": "btn",
-                "name": "lb_domFuckem1",
-                "left": 1550,
-                "top": 550,
-                "width": 350,
-                "height": 103,
-                "image": "227_fight/cum.png",
-                "title": "Make them cum, slut"
-            }, 227);
-            break;
-        case "lb_domFuckem1":
-            nav.killbutton("lb_domFuckem1");
-            tEnemy.drawChar(g.fight.e[0].domFuckem.pose1);
-            g.fight.e[0].p = "fuck1";
-            tEnemy.drawEnemy();
-            tEnemy.drawGif(g.fight.e[0].domFuckem.gif1);
-            chat(999, 227);
-            break;
         case "domination1":
             g.fight.e[0].p = "domination1";
             tEnemy.drawChar(g.fight.e[0].domination.pose1);
@@ -316,105 +280,63 @@ room227.btnclick = function (name) {
             nav.killbutton("domination1");
             chat(998, 227);
             break;
-        case "lb_domPowerbottom":
+        case "drawDom":
+            nav.killbutton("pow");
             g.fight.e[0].clothingLevel = 0;
-            tEnemy.drawChar(g.fight.e[0].domPowerbottom.pose);
-            g.fight.e[0].p = "powerbottom";
+            tEnemy.drawChar(g.internal.pose);
+            g.fight.e[0].p = g.internal.p;
             tEnemy.drawEnemy();
-            tEnemy.drawGif(g.fight.e[0].domPowerbottom.gif);
+            tEnemy.drawGif(g.internal.gif);
             nav.button({
                 "type": "btn",
-                "name": "domPowerbottom1",
+                "name": "drawDom1",
                 "left": 1550,
                 "top": 550,
                 "width": 350,
                 "height": 103,
-                "image": "227_fight/cum.png",
-                "title": "Make them cum, slut"
+                "image": "227_fight/cum.png"
             }, 227);
             break;
-        case "domPowerbottom1":
-            nav.killbutton("domPowerbottom1");
-            g.fight.e[0].p = "powerbottom1";
-            tEnemy.drawChar(g.fight.e[0].domPowerbottom.pose1);
-            tEnemy.drawGif(g.fight.e[0].domPowerbottom.gif1);
+        case "drawDom1":
+            nav.killbutton("drawDom1");
+            g.fight.e[0].p = g.internal.p1;
+            tEnemy.drawChar(g.internal.pose1);
+            tEnemy.drawGif(g.internal.gif1);
             tEnemy.drawEnemy();
             chat(998, 227);
             break;
         case "lb_domfacefuck":
-            g.fight.e[0].clothingLevel = 0;
-            tEnemy.drawChar(g.fight.e[0].domfacefuck.pose);
-            g.fight.e[0].p = "facefuck";
-            tEnemy.drawEnemy();
-            tEnemy.drawGif(g.fight.e[0].domfacefuck.gif);
-            nav.button({
-                "type": "btn",
-                "name": "domfacefuck1",
-                "left": 1550,
-                "top": 550,
-                "width": 350,
-                "height": 103,
-                "image": "227_fight/cum.png",
-                "title": "Cum in their mouth"
-            }, 227);
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
             break;
-        case "domfacefuck1":
-            nav.killbutton("domPowerbottom1");
-            g.fight.e[0].p = "facefuck1";
-            tEnemy.drawChar(g.fight.e[0].domfacefuck.pose1);
-            tEnemy.drawGif(g.fight.e[0].domfacefuck.gif1);
-            tEnemy.drawEnemy();
-            chat(998, 227);
+        case "lb_domfist":
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
             break;
-        case "lb_domfoot":
-            g.fight.e[0].clothingLevel = 0;
-            tEnemy.drawChar(g.fight.e[0].domFoot.pose);
-            g.fight.e[0].p = "foot";
-            tEnemy.drawEnemy();
-            tEnemy.drawGif(g.fight.e[0].domFoot.gif);
-            nav.button({
-                "type": "btn",
-                "name": "domfoot1",
-                "left": 1550,
-                "top": 550,
-                "width": 350,
-                "height": 103,
-                "image": "227_fight/cum.png",
-                "title": "Make them cum, slut"
-            }, 227);
+        case "lb_domPowerbottom":
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
             break;
-        case "domfoot1":
-            nav.killbutton("domfoot1");
-            g.fight.e[0].p = "foot1";
-            tEnemy.drawChar(g.fight.e[0].domFoot.pose1);
-            tEnemy.drawGif(g.fight.e[0].domFoot.gif1);
-            tEnemy.drawEnemy();
-            chat(998, 227);
+        case "lb_domFoot":
+            console.log("hi");
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
             break;
-        case "lb_domFist":
-            g.fight.e[0].clothingLevel = 0;
-            tEnemy.drawChar(g.fight.e[0].domFist.pose);
-            g.fight.e[0].p = "fist";
-            tEnemy.drawEnemy();
-            tEnemy.drawGif(g.fight.e[0].domFist.gif);
-            nav.button({
-                "type": "btn",
-                "name": "domFist1",
-                "left": 1550,
-                "top": 550,
-                "width": 350,
-                "height": 103,
-                "image": "227_fight/cum.png",
-                "title": "Make them cum, slut"
-            }, 227);
+        case "lb_domFuckem":
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
             break;
-        case "domFist1":
-            nav.killbutton("domFist1");
-            g.fight.e[0].p = "fist1";
-            tEnemy.drawChar(g.fight.e[0].domFist.pose1);
-            tEnemy.drawGif(g.fight.e[0].domFist.gif1);
-            tEnemy.drawEnemy();
-            chat(998, 227);
+        case "lb_handjob":
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
+            break;
+        case "lb_domUseMouth":
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
+            break;
+        case "lb_domEatPussy":
+            g.internal = tEnemy.getDomEnemy(name);
+            room227.btnclick("drawDom");
             break;
         case "lb_grappleSingleleg":
         case "lb_grappleLapeldrag":
