@@ -46,7 +46,6 @@ g.st = [
     { n: "chastityLock", t: false, q: "bool" },
     { n: "leg", t: 0, q: "hundred" },
     { n: "body", t: 0, q: "hundred" },
-    { n: "d", t: 0, q: "hundred" },
     { n: "sissy", t: 0, q: "sissy" },
     { n: "usedSissyPoints", t: 0, q: "sissy" },
     { n: "pill", t: null, q: "string" },
@@ -54,8 +53,10 @@ g.st = [
     { n: "bodyLevel", t: 0, q: "zero" },
     { n: "fitnessLevel", t: 0, q: "zero" },
     { n: "dLevel", t: 0, q: "zero" },
+    { n: "d", t: 0, q: "hundred" },
     { n: "domEvent", t: 0, q: "int" },
     { n: "map", t: 0, q: "int" },
+    { n: "mapview", t: 0, q: "string" },
     { n: "jobConstructionPay", t: 0, q: "zero" },
     { n: "jobConstWorkToday", t: 0, q: "int" },
     { n: "momClosetLube", t: 3, q: "int" },
@@ -80,8 +81,10 @@ g.st = [
     { n: "daysCult", t: 0, q: "int" },
     { n: "cheatMode", t: false, q: "bool" },
     { n: "mascot", t: 0, q: "int" },
+    { n: "subdom", t: 50, q: "hundred" },
 
-    { n: "fighttimer", t: 4000, q: "int" },
+    { n: "fightspeed", t: 1250, q: "int" },
+    { n: "fightsex", t: 1250, q: "int" },
     { n: "fightWon", t: 0, q: "int" },
     { n: "fightLost", t: 0, q: "int" },
     { n: "fightControlWon", t: 0, q: "int" },
@@ -135,7 +138,8 @@ g.st = [
     { n: "dildobutt", t: 0, q: "sissy" },
 
     { n: "girlname", t: "Scarlett", q: "string" },
-    
+
+    { n: "fantasyCreatures", t: false, q: "bool" },
     { n: "jobConstGetRaise", t: false, q: "bool" },
     { n: "lockboobs", t: false, q: "bool" },
     { n: "lockbutt", t: false, q: "bool" },
@@ -1010,6 +1014,9 @@ g.initGame = function () {
             case "domEvent":
                 g.st[i].t = 0;
                 break;
+            case "subdom":
+                g.st[i].t = 50;
+                break;
             case "bodyhair":
                 g.st[i].t = 100;
                 break;
@@ -1069,7 +1076,13 @@ g.initGame = function () {
                 g.st[i].t = Math.floor(Math.random() * 8);
                 break;
             case "difficulty":
-            case "fighttimer":
+                break;
+            case "fightspeed":
+            case "fightsex":
+                g.st[i].t = 1250;
+                break;
+            case "mapview":
+                g.st[i].t = "house";
                 break;
             default:
                 console.log("unknown load: " + g.st[i].n);

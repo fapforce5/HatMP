@@ -147,7 +147,7 @@ m.createFmap = function () {
         m.createFmapNew();
     else {
         var y = g.get("forestVisit");
-        var z = g.get("forestID");
+        //var z = g.get("forestID");
         //var xa = x.split(",");
         var ya = y.split(",");
         m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));

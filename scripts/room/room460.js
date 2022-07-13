@@ -1,7 +1,8 @@
 ﻿//Room name
 var room460 = {};
 room460.main = function () {
-
+    $("#room-inv").show();
+    $("#room-menu").show();
     if (Math.floor(Math.random() * 3) === 1) {
         nav.button({
             "type": "btn",
@@ -69,9 +70,12 @@ room460.btnclick = function (name) {
             }
             break;
         case "path3":
-            //chat(3, 460);
-            g.internal = { count: 0, lastGold: 0, lastFight: 0, row: 78, col: 10 };
-            char.room(475);
+            if (g.get("energy") < 5)
+                chat(4, 460);
+            else {
+                g.map = { count: 0, lastGold: 0, lastFight: 0, row: 78, col: 10 };
+                char.room(475);
+            }
             break;
         default:
             break;
@@ -118,7 +122,15 @@ room460.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "me",
-            text: "Future release. Probably v14 - coming soon.",
+            text: "In the middle of... This release",
+            button: [
+                { chatID: -1, text: "......", callback: "" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "me",
+            text: "I'm too tired to go adventuring. ",
             button: [
                 { chatID: -1, text: "......", callback: "" }
             ]

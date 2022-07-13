@@ -107,14 +107,15 @@ $(document).ready(function () {
             "font-size": 20 * g.ratio + "px"
         });
         $(".mt-10").css({
-            "margin-top": 10 * g.ratio + "px"
+            "margin-top": 20 * g.ratio + "px"
         });
         $(".mt-60").css({
             "margin-top": 60 * g.ratio + "px"
         });
         $(".resize-height").css({
-            height: 20 * g.ratio + "px"
+            height: 4 * g.ratio + "px"
         });
+        $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
         char.menu();
     };
 
@@ -211,14 +212,15 @@ $(document).ready(function () {
         "font-size": 20 * g.ratio + "px"
     });
     $(".mt-10").css({
-        "margin-top": 10 * g.ratio + "px"
+        "margin-top": 20 * g.ratio + "px"
     });
     $(".mt-60").css({
         "margin-top": 60 * g.ratio + "px"
     });
     $(".resize-height").css({
-        height: 20 * g.ratio + "px"
+        height: 4 * g.ratio + "px"
     });
+    $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
     $("#room-change").click(function () {
         g.pass = g.roomID;
         char.room(8);
@@ -318,7 +320,7 @@ char.map = function () {
     var exRoom = [226, 227, 475];
     var i;
     if (!(exRoom.includes(g.roomID))) {
-        if (true) {
+        if (g.get("mapview") === "house") {
             var tm = g.get("map");
             var ttop = 100;
             $('#room_left_map').html('');
@@ -1078,18 +1080,40 @@ menu.mClick = function (type) {
             $('.menu-button').remove();
             $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(761, 617, 167, 649) + '">' +
                 '<div class="switch-field" >' +
-                '<input type="radio" id="radio-street" name="switch-map" value="street" checked />' +
+                '<input type="radio" id="radio-street" name="switch-map" value="street" />' +
                 '<label for="radio-street">Street</label>' +
-                '<input type="radio" id="radio-houses" name="switch-map" value="house" />' +
-                '<label for="radio-houses">Houses</label>' +
+                '<input type="radio" id="radio-house" name="switch-map" value="house" />' +
+                '<label for="radio-house">Houses</label>' +
                 ' Map View' +
                 '</div>' +
                 '<div class="switch-field" >' +
-                '<input type="radio" id="radio-yes" name="switch-fantasy" value="yes" checked />' +
-                '<label for="radio-yes">Off</label>' +
-                '<input type="radio" id="radio-no" name="switch-fantasy" value="no" />' +
-                '<label for="radio-no">On</label>' +
+                '<input type="radio" id="radio-fantasy-false" name="switch-fantasy" value="off" />' +
+                '<label for="radio-fantasy-false">Off</label>' +
+                '<input type="radio" id="radio-fantasy-true" name="switch-fantasy" value="on" />' +
+                '<label for="radio-fantasy-true">On</label>' +
                 ' Fantasy Creatures' +
+                '</div>' +
+                '<div class="switch-field" >' +
+                '<input type="radio" id="radio-fightspeed-3500" name="switch-fightspeed" value="3500" />' +
+                '<label for="radio-fightspeed-3500">Slow</label>' +
+                '<input type="radio" id="radio-fightspeed-1250" name="switch-fightspeed" value="1250" />' +
+                '<label for="radio-fightspeed-1250">Normal</label>' +
+                '<input type="radio" id="radio-fightspeed-600" name="switch-fightspeed" value="600" />' +
+                '<label for="radio-fightspeed-600">Fast</label>' +
+                '<input type="radio" id="radio-fightspeed-100" name="switch-fightspeed" value="100" />' +
+                '<label for="radio-fightspeed-100">Very Fast</label>' +
+                ' Fight Speed' +
+                '</div>' +
+                '<div class="switch-field" >' +
+                '<input type="radio" id="radio-fightsex-3500" name="switch-fightsex" value="3500" />' +
+                '<label for="radio-fightsex-3500">Slow</label>' +
+                '<input type="radio" id="radio-fightsex-1250" name="switch-fightsex" value="1250" />' +
+                '<label for="radio-fightsex-1250">Normal</label>' +
+                '<input type="radio" id="radio-fightsex-600" name="switch-fightsex" value="600" />' +
+                '<label for="radio-fightsex-600">Fast</label>' +
+                '<input type="radio" id="radio-fightsex-100" name="switch-fightsex" value="100" />' +
+                '<label for="radio-fightsex-100">Very Fast</label>' +
+                ' Fight Sex Scenes' +
                 '</div>' +
                 '<div class="switch-field" >' +
                 '<input type="radio" id="radio-easy" name="switch-difficulty" value="easy" checked />' +
@@ -1101,7 +1125,7 @@ menu.mClick = function (type) {
                 ' Difficulty' +
                 '</div>' +
                 '<div class="switch-field" >' +
-                '<input type="radio" id="radio-cheatOff" name="switch-cheat" value="off" checked />' +
+                '<input type="radio" id="radio-cheatOff" name="switch-cheat" value="off" />' +
                 '<label for="radio-cheatOff">Off</label>' +
                 '<input type="radio" id="radio-cheatOn" name="switch-cheat" value="on" />' +
                 '<label for="radio-cheatOn">On</label>' +
@@ -1110,6 +1134,31 @@ menu.mClick = function (type) {
                 '</div>');
             $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
             $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
+            $('#radio-fantasy-' + g.get("fantasyCreatures")).prop("checked", true);
+            $('#radio-fightspeed-' + g.get("fightspeed")).prop("checked", true);
+            $('#radio-fightsex-' + g.get("fightsex")).prop("checked", true);
+            $('#radio-' + g.get("mapview")).prop("checked", true);
+
+            $('input[type=radio][name=switch-fantasy]').change(function () {
+                g.set("fantasyCreatures", $(this).val() === "on");
+            });
+            $('input[type=radio][name=switch-map]').change(function () {
+                g.set("mapview", $(this).val());
+                if (g.prevview === "map")
+                    char.map();
+            });
+            $('input[type=radio][name=switch-fightspeed]').change(function () {
+                
+                g.set("fightspeed", parseInt($(this).val()));
+                if (g.fight !== null)
+                    g.fight.fighttimer = parseInt($(this).val());
+            });
+            $('input[type=radio][name=switch-fightsex]').change(function () {
+                g.set("fightsex", parseInt($(this).val()));
+                if (g.fight !== null)
+                    g.fight.fightsex = parseInt($(this).val());
+            });
+            
             break;
         case "patreon":
             $(".menu-buttonKill").remove();
@@ -1429,13 +1478,13 @@ char.makeGraph = function () {
                 $(".rl-bar[data-name='leg']").css({ width: g.st[i].t + "%" });
                 break;
             case "legLevel":
-                $("#rl_kick").html("Kick: +" + g.st[i].t);
+                $("#rl_kick").html("Kick Power: +" + tEnemy.getKick());
                 break;
             case "body":
                 $(".rl-bar[data-name='body']").css({ width: g.st[i].t + "%" });
                 break;
             case "bodyLevel":
-                $("#rl_punch").html("Punch: +" + g.st[i].t);
+                $("#rl_punch").html("Punch Power: " + tEnemy.getPunch());
                 break;
             case "d":
                 $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
@@ -1447,28 +1496,7 @@ char.makeGraph = function () {
                 $(".rl-bar[data-name='fitness']").css({ width: g.st[i].t + "%" });
                 break;
             case "fitnessLevel":
-                $("#rl_fitness").html("Fitness: +" + g.st[i].t);
-                break;
-            case "giveOralMale":
-                oral += g.st[i].t;
-                break;
-            case "giveOralFemale":
-                oral += g.st[i].t;
-                break;
-            case "giveAnalMale":
-                cock += g.st[i].t;
-                break;
-            case "giveAnalFemale":
-                cock += g.st[i].t;
-                break;
-            case "fuckPussy":
-                cock += g.st[i].t;
-                break;
-            case "receiveAnalMale":
-                anal += g.st[i].t;
-                break;
-            case "receiveAnalFemale":
-                anal += g.st[i].t;
+                $("#rl_fitness").html("Fitness: [" + g.st[i].t + "] <span class='char-12' style='font-size:" + (12 * g.ratio) + "px;'>" + (maxenergy - 100) + " Energy bonus</span>");
                 break;
             case "hormone":
                 hormone = g.st[i].t;
@@ -1478,21 +1506,43 @@ char.makeGraph = function () {
                 sissy = g.st[i].t;
                 $(".rl-bar[data-name='sissy']").css({ width: g.st[i].t + "%" });
                 break;
+            case "subdom":
+                if (g.st[i].t > 75) 
+                    $("#rl_subdom").text("Domme");
+                else if (g.st[i].t > 55) 
+                    $("#rl_subdom").text("Little Domme");
+                else if (g.st[i].t > 45) 
+                    $("#rl_subdom").text("Neutral");
+                else if (g.st[i].t > 25) 
+                    $("#rl_subdom").text("Submissive");
+                else 
+                $("#rl_subdom").text("Submissive Slut");
+                $(".rl-bar[data-name='subdom']").css({ width: g.st[i].t + "%" });
+                break;
             //case "sissyLevel":
             //    $("#rl_sissy").html("Sissy: " + g.st[i].t);
             //    break;
         }
     }
 
-    $("#rl_energy").html(" &nbsp;&nbsp;Energy/Max: " + energy + "/" + maxenergy);
+    $("#rl_energy").html("Energy: " + energy + "/" + maxenergy);
     $(".rl-bar[data-name='energy']").css({ width: ((energy / maxenergy) * 100) + "%" });
-    console.log(oral)
-    $("#rl_oral").html(" &nbsp;&nbsp;Oral: +" + Math.floor(oral / 10));
-    $(".rl-bar[data-name='oral']").css({ width: ((oral % 10) * 10) + "%" });
-    $("#rl_cock").html(" &nbsp;&nbsp;Sex: +" + Math.floor(cock / 10));
-    $(".rl-bar[data-name='cock']").css({ width: ((cock % 10) * 10) + "%" });
-    $("#rl_anal").html(" &nbsp;&nbsp;Anal: +" + Math.floor(anal / 10));
-    $(".rl-bar[data-name='anal']").css({ width: ((anal % 10) * 10) + "%" });
+    var rlTempCock = "s";
+    if (cl.c.chastity !== null)
+        rlTempCock = "c";
+    else if (cl.c.cock < 3)
+        rlTempCock = "b";
+
+    $("#rl_fightdisplay0").attr("src", "./images/room/227_fight/g_victory_" + (cl.c.chest > 2 ? "f" : "m") + ".png");
+    $("#rl_fightdisplay1").attr("src", "./images/room/227_fight/g_victory_d_" + rlTempCock + ".png");
+    if (cl.c.hairLength > 1) {
+        $("#rl_fightdisplay2").attr("src", "./images/room/227_fight/h_8_long.png");
+        $("#rl_fightdisplay-1").attr("src", "./images/room/227_fight/h_8_long_back.png");
+    }
+    else {
+        $("#rl_fightdisplay2").attr("src", "./images/room/227_fight/h_8_short.png");
+        $("#rl_fightdisplay-1").attr("src", "./images/room/227_fight/h_9_long_back.png");
+    }
 
     if (hormone < 10) 
         $("#rl_hormone").html(" &nbsp;&nbsp;Hairy Boy");

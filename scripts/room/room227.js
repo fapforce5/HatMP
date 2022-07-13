@@ -156,7 +156,7 @@ room227.btnclick = function (name) {
                     //    room227.chatcatch("main-tain");
                     //}, g.fight.fighttimer);
                     room227.btnclick("lb_submitbj");
-                }, g.fight.fighttimer);
+                }, g.fight.fightsex);
             }
             else {
                 g.fight.e[0].p = "bjpose";
@@ -166,7 +166,7 @@ room227.btnclick = function (name) {
                 g.roomTimeout = setTimeout(function () {
                     tEnemy.drawChar("bjpose");
                     room227.chatcatch("main-tain");
-                }, g.fight.fighttimer);
+                }, g.fight.fightsex);
             }
             break;
         case "lb_submitass":
@@ -180,7 +180,7 @@ room227.btnclick = function (name) {
                 tEnemy.drawEnemy();
                 g.roomTimeout = setTimeout(function () {
                     room227.btnclick("lb_submitass");
-                }, g.fight.fighttimer);
+                }, g.fight.fightsex);
             }
             else {
                 tEnemy.drawChar("asspose");
@@ -190,7 +190,7 @@ room227.btnclick = function (name) {
                 g.roomTimeout = setTimeout(function () {
                     tEnemy.drawChar("asspose");
                     room227.chatcatch("main-tain");
-                }, g.fight.fighttimer);
+                }, g.fight.fightsex);
             }
             break;
         case "lb_stripshirt":
@@ -200,7 +200,7 @@ room227.btnclick = function (name) {
             tEnemy.drawChar("stripclothes");
             g.roomTimeout = setTimeout(function () {
                 room227.chatcatch("main");
-            }, g.fight.fighttimer);
+            }, g.fight.fightsex);
             break;
         case "lb_teabag":
             g.fight.me.sissyAction--;
@@ -211,7 +211,7 @@ room227.btnclick = function (name) {
             tEnemy.changeEnergy(null, -10, { t: "grapple", me: true });
             g.roomTimeout = setTimeout(function () {
                 room227.chatcatch("counterAction");
-            }, g.fight.fighttimer);
+            }, g.fight.fightsex);
                         break;
         case "lb_steal":
             g.fight.me.sissyAction--;
@@ -223,7 +223,7 @@ room227.btnclick = function (name) {
             tEnemy.changeEnergy(null, null, { t: "steal", me: true });
             g.roomTimeout = setTimeout(function () {
                 room227.chatcatch("counterAction");
-            }, g.fight.fighttimer);
+            }, g.fight.fightsex);
             break;
         case "box0":
         case "box1":
@@ -274,6 +274,7 @@ room227.btnclick = function (name) {
             break;
         case "domination1":
             g.fight.e[0].p = "domination1";
+            g.fight.me.sissyAction += 3;
             tEnemy.drawChar(g.fight.e[0].domination.pose1);
             tEnemy.drawGif(g.fight.e[0].domination.gif1);
             tEnemy.drawEnemy();
@@ -281,6 +282,7 @@ room227.btnclick = function (name) {
             chat(998, 227);
             break;
         case "drawDom":
+            g.fight.me.sissyAction -= 3;
             nav.killbutton("pow");
             g.fight.e[0].clothingLevel = 0;
             tEnemy.drawChar(g.internal.pose);

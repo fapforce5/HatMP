@@ -50,6 +50,9 @@ room212.chatcatch = function (callback) {
         case "ball3":
             nav.bg("212_black/black.jpg");
             break;
+        case "ball3x":
+            nav.bg("212_black/g.jpg");
+            break;
         case "ball4":
             nav.bg("212_black/g.jpg");
             break;
@@ -144,6 +147,8 @@ room212.chatcatch = function (callback) {
                 else if (callback.substring(0, 3) === "tie")
                     nav.bg("212_black/" + callback + ".jpg");
                 else if (callback.substring(0, 3) === "hor")
+                    nav.bg("212_black/" + callback + ".jpg");
+                else if (callback.substring(0, 3) === "fin")
                     nav.bg("212_black/" + callback + ".jpg");
             }
             break;
@@ -337,8 +342,8 @@ room212.chat = function (chatID) {
             speaker: "black",
             text: "So which pain will you receive today?",
             button: [
-                { chatID: -1, text: "Testicle Crunch", callback: "" },
-                { chatID: -1, text: "Fingers in your throat", callback: "" },
+                { chatID: 78, text: "Testicle Crunch", callback: "ball0" },
+                { chatID: 83, text: "Fingers in your throat", callback: "mouth0" },
                 { chatID: 23, text: "Ass eating", callback: "sit0" },
                 { chatID: 22, text: "More", callback: "" }
             ]
@@ -350,7 +355,7 @@ room212.chat = function (chatID) {
             button: [
                 { chatID: 41, text: "Inverted tie up", callback: "tie0" },
                 { chatID: 63, text: "Ride a horse", callback: "hor1" },
-                { chatID: -1, text: "Whipping", callback: "" },
+                { chatID: 78, text: "The greatest gift.", callback: "fin1" },
                 { chatID: 19, text: "Back", callback: "" }
             ]
         },
@@ -481,7 +486,7 @@ room212.chat = function (chatID) {
             speaker: "black",
             text: "OOOOO ooooo I'm really getting close. Go faster! ",
             button: [
-                { chatID: 39, text: "*lick* *lick* *slurp* ", callback: "sit14" }
+                { chatID: 40, text: "*lick* *lick* *slurp* ", callback: "sit14" }
             ]
         },
         {
@@ -780,6 +785,117 @@ room212.chat = function (chatID) {
             text: "You're welcome. My gift to you is more pain to give you strength. Now run along. ",
             button: [
                 { chatID: -1, text: "....mmmmm", callback: "xhorend" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "black",
+            text: "You have visited many times and shall be rewarded with the greatest gift of pain. The " +
+                "gift of shared pain. ",
+            button: [
+                { chatID: 76, text: "?", callback: "fin2" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "black",
+            text: sc.n("cecilia") + " here continues to be a naughty slut. Not a day goes by where she doesn't " +
+                "break the rules of the house and I've been charged with the punishment. We shall have fun with this. " +
+                "This won't be quick or fast. You will both relish in your pain. ",
+            button: [
+                { chatID: 77, text: "oh no", callback: "fin3" }
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "black",
+            text: "This is called a sounding rod. It's a bit bigger than a beginners rod. You will feel these delicious " +
+                "ridges travel down your urethra. It's double sided so you can both feel the pain of it traveling in " +
+                "and out together. ",
+            button: [
+                { chatID: 78, text: "!", callback: "fin4" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "black",
+            text: "Do you like the way I hold your testicles slut? Playing with them in my hand. Feels good doesn't it. ",
+            button: [
+                { chatID: 79, text: "OOoo yeah", callback: "ball1" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "black",
+            text: "Now as I start to squeeze them you can really feel the pressure build. The pain spreads over your balls " +
+                "and into your guts.",
+            button: [
+                { chatID: 80, text: "UUUgh", callback: "ball2" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "me",
+            text: "AAAAAaaaaaaaa!!!!!",
+            button: [
+                { chatID: 81, text: "...", callback: "ball3" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "black",
+            text: "Get up bitch.. ",
+            button: [
+                { chatID: 82, text: "...", callback: "ball3x" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "black",
+            text: "You're welcome. Put some ice on those balls and come back when you're ready. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "end" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "black",
+            text: "Can you taste the latex on my fingers as they tickle the back of your throat? ",
+            button: [
+                { chatID: 84, text: "HHhhfffFFmmmmm", callback: "mouth1" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "black",
+            text: "Hard to breathe with my hand so deep isn't it. Can you feel your body start to go limp. ",
+            button: [
+                { chatID: 85, text: "HHmmmmmm....", callback: "mouth2" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "black",
+            text: "You lungs start to hurt as you feel the life start to flow out of you. Your body is getting heavy as " +
+                "you let go. My voice is echoing in your head...",
+            button: [
+                { chatID: 86, text: "....", callback: "mouth3" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "black",
+            text: "That's good. Breathe your life back into your body. ",
+            button: [
+                { chatID: 87, text: "....", callback: "mouth4" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "black",
+            text: "Good slut. Now stop drooling on my floor and get out. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "end" }
             ]
         },
     ];

@@ -257,7 +257,6 @@
                 <div class="char-divider"></div>
                 <div class="char-statDisplay" id="char_cockDisplay"></div>
                 <div class="char-divider"></div>
-                <div class="char-charDisplay" id="char_charDisplay"></div>
                 <div class="char-stats" style="display:none;">
                     <label id="char-arousal-label">Arousal</label>
                     <div class="asset-container-outer">
@@ -272,65 +271,45 @@
                 <div id="room_left_walk_sub" class="resize"></div>
             </div>
             <div id="room_left_graph" class="left-menu">
-                <div style="padding:5px; background:rgba(255, 255, 255, .7);">
+                <div style="padding:5px; color: #fff;" class="glob-bg">
+                    <div class="left-graph-char" id="lg_charbody">
+                        <img id="rl_fightdisplay-1" src="./images/room/227_fight/h_9_long_back.png" style="width:100%;" />
+                        <img id="rl_fightdisplay0" src="./images/room/227_fight/g_victory_m.png" style="width:100%;" />
+                        <img id="rl_fightdisplay1" src="./images/room/227_fight/g_victory_d_b.png" style="width:100%;" />
+                        <img id="rl_fightdisplay2" src="./images/room/227_fight/h_8_short.png" style="width:100%;" />
 
-                    <div style="font-size:12px;" class="char-20 mt-60">Energy</div>
-                    <div style="width: 100%; height: 15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20" id="rl_energy"></div>
+                    </div>
+                    <div style="font-size:20px;" class="char-20 mt-300x">Fight!</div>
+                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_energy">Energy</div>
+                    <div class="left-graph-char-bar resize-height">
                         <div data-name="energy" style="width:20%; height:15px; background:#20C000; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
                     <div style="font-size:12px;" class="char-20 mt-10" id="rl_fitness">Fitness: 0</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
-                        <div data-name="fitness" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_d">Defense: 0</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
-                        <div data-name="d" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    <div class="left-graph-char-bar resize-height">
+                        <div data-name="fitness" style="width: 20%; height:  2px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
                     <div style="font-size:12px;" class="char-20 mt-10" id="rl_punch">Punch: 0</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
+                    <div class="left-graph-char-bar resize-height">
                         <div data-name="body" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
                     <div style="font-size:12px;" class="char-20 mt-10" id="rl_kick">Kick: 0</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
+                    <div class="left-graph-char-bar resize-height">
                         <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
-                    <hr />
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_oral">Oral</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
-                        <div data-name="oral" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_d">Defense: 0</div>
+                    <div class="left-graph-char-bar resize-height">
+                        <div data-name="d" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_cock">Cock</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
-                        <div data-name="cock" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_anal">Anal</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20"> &nbsp;&nbsp;To next level</div>
-                        <div data-name="anal" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_subdom">Neutral</div>
+                    <div class="left-graph-char-bar resize-height" style="background:#ff5ed1;">
+                        <div data-name="subdom" style="width: 20%; height:15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
                     <hr />
-                    <div style="font-size:12px;" class="char-20 mt-10">Hormone Levels</div>
+                    <div class="char-charDisplay" id="char_charDisplay"></div>
+                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_appearance">Boy</div>
+                    <div style="font-size:12px;" class="char-20 mt-10">Hormone Level</div>
                     <div style="width: 100%; height:15px; background:#4E99E0; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="position:absolute; color:#fff;" class="char-20" id="rl_hormone"> &nbsp;&nbsp;To next level</div>
                         <div data-name="hormone" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-
-                    <hr />
-                    <div style="font-size:12px;" class="char-20 mt-10">Debug</div>
-                    <div style="font-size:12px;" class="char-20 mt-10">Body</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10">Clothing</div>
-                    <div style="width: 100%; height:15px; background:#333333; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
                 </div>
             </div>

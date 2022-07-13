@@ -5,6 +5,8 @@ var tEnemy = {};
 //add difficulty -------------------------------------------------------------
 
 //bimbo moves: a = shake ass, c = shake cock, d = dance 
+tEnemy.getPunch = function () { return 7 + Math.round(g.get("bodyLevel") / 2); };
+tEnemy.getKick = function () { return 7 + Math.round(g.get("legLevel") / 2); };
 tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
     eax = new Array();
 
@@ -16,6 +18,13 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
     if (e1x !== null)
         eax.push(e1x);
 
+    var subdomMult = g.get("subdom") - 50;
+    subdomMult = (subdomMult / 50);
+    if (subdomMult < 0)
+        subdomMult -= 1;
+    else
+        subdomMult += 1;
+
     g.fight = {
         enemayCount: eax.length,
         e: eax,
@@ -23,14 +32,16 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
         grappleBox: [true, true, false],
         cPower: 0,
         prevMenu: "",
+        subdom: subdomMult,
         me: {
             energy: g.get("energy"),
             maxEnergy: g.get("maxenergy"),
             damage: 0,
             shield: g.get("dLevel"),
             evasion: Math.round(g.get("fitness")),
-            pPower: 7 + Math.round(g.get("bodyLevel") / 2),
-            kPower: 7 + Math.round(g.get("legLevel") / 2),
+            pPower: tEnemy.getPunch(),
+            kPower: tEnemy.getKick(),
+            def: g.get("dLevel") / 4,
             punchCount: 0,
             kickCount: 0,
             grappleCount: 0,
@@ -46,7 +57,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
             nextMove: "",
             nextMoveEnemy: null,
             clothes: tEnemy.clothes(),
-            panties: cl.c.panties !== null
+            panties: cl.c.panties !== null,
         },
         chat: {
             text: "",
@@ -58,7 +69,8 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
         callingRoomID: callingRoomID,
         lock: false,
         enemyRotation: 0,
-        fighttimer: 1250// g.get("fighttimer")
+        fighttimer: g.get("fightspeed"),
+        fightsex: g.get("fightsex")
     };
 
     nav.t({
@@ -83,6 +95,29 @@ tEnemy.clothes = function () {
 tEnemy.initEnemy = function (enemyName) {
     var charVar;
     switch (enemyName) {
+        case "m":
+            charVar = {
+                name: "m",
+                displayName: "Mimic",
+                energy: 20,
+                maxEnergy: 20,
+                pPower: 40,
+                kPower: 40,
+                offense: ["p", "k"],
+                clothingLevel: 0,
+                money: 300 + Math.floor(Math.random() * 500),
+                p: "pose",
+                weakspot: [3],
+                base: "am",
+                grapple: "",
+                domination: { pose: "kneel", pose1: "kneel", gif: "gif_pussylick.gif", gif1: "png_pussylick.png", stats: ["giveOralFemale"] },
+                domEnemy: [ ],
+                intro: "Roar Mnknknk ",
+                loss: "Blech",
+                win: "MekjkieME mEMMEME OF",
+                submit: ""
+            };
+            break;
         case "g":
             charVar = {
                 name: "g",
@@ -169,7 +204,7 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 120,
                 pPower: 10,
                 kPower: 10,
-                offense: ["p", "p", "k", "k", "k", "g", "g", "g" ],
+                offense: ["g"], //["p", "p", "k", "k", "k", "g", "g", "g" ],
                 clothingLevel: 2,
                 money: 50 + Math.floor(Math.random() * 50),
                 cock: false,
@@ -203,16 +238,16 @@ tEnemy.initEnemy = function (enemyName) {
                 p: "pose",
                 weakspot: [0],
                 base: "f_goo",
-                grapple: "bent",
-                domination: { pose: "upsidedown", pose1: "upsidedown", gif: "gif_goo.gif", gif1: "png_goo.png", stats: ["giveOralFemale"] },
+                grapple: "kneelgoo",
+                domination: { pose: "upsidedown", pose1: "upsidedown", gif: "gif_goo.gif", gif1: "png_goo.png", stats: ["receiveOralFemale", "creamPied", "receiveOralFemale"] },
                 domEnemy: [
-                    { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "fuck", pose1: "fuck1", gif: "gif_fuck.gif", gif1: "png_fuck1.png", stats: ["fuckPussy"] },
-                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "takeit", pose1: "takeit1", gif: "gif_stickbutt.gif", gif1: "png_stickbutt.png", status: [""] }
+                    { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "sit", pose1: "sit", gif: "gif_goofuck.gif", gif1: "png_goofuck.png", stats: ["fuckPussy"] },
+                    { lbl: "lb_domPowerbottom", p: "domination", p1: "domination1", pose: "upsidedown", pose1: "upsidedown", gif: "gif_goo.gif", gif1: "png_goo.png", status: ["receiveOralFemale", "creamPied", "receiveOralFemale"] }
                 ],
                 loss: "How did I lose to a human! ",
                 intro: "MMmmmMMm Human fleshlight. Yummy",
                 win: "I love coating my humans in slime",
-                submit: "Thank you for using me."
+                submit: "I love it when our goo mixes together."
             };
             break;
         case "ag":
@@ -299,7 +334,7 @@ tEnemy.initEnemy = function (enemyName) {
         case "aw":
             charVar = {
                 name: "aw",
-                displayName: "Warewolf",
+                displayName: "Werewolf",
                 energy: 250,
                 maxEnergy: 250,
                 pPower: 30,
@@ -312,15 +347,14 @@ tEnemy.initEnemy = function (enemyName) {
                 weakspot: [7,8,9],
                 base: "aw",
                 grapple: "lick",
-                domination: { pose: "assout", pose1: "assout", gif: "gif_spank.gif", gif1: "png_cry.png", stats: ["phum"] },
+                domination: { pose: "werewolf", pose1: "werewolf", gif: "gif_knot.gif", gif1: "png_knot.png", stats: ["creamPied", "receiveAnalMale"] },
                 domEnemy: [
-                    { lbl: "lb_handjob", p: "fuck", p1: "fuck11", pose: "hang", pose1: "hang", gif: "gif_handjob.gif", gif1: "png_cum.png", stats: ["receiveHandjobFemale"] },
-                    { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "afsubmit", pose1: "afsubmit1", gif: "gif_sizeview.gif", gif1: "png_sissygasm.png", stats: ["receiveAnalFemale", "sissygasm"] }
+                    { lbl: "lb_domPowerbottom", p: "domination", p1: "domination", pose: "werewolf", pose1: "werewolf", gif: "gif_knot.gif", gif1: "png_knot.png", stats: ["creamPied", "receiveAnalMale"] }
                 ],
-                loss: "I can't believe you've bested your queen. You will pay for this.",
-                intro: "I am your queen. Serve me well.",
-                win: "You are my slave. ",
-                submit: "Everyone serves their true queen."
+                loss: "Puny human. Why me lose",
+                intro: "I will eat you flesh and your ass!",
+                win: "How do you like my knot in your asshold? ",
+                submit: "I'm always the alpha of the pack!"
             };
             break;
         default:
@@ -413,22 +447,40 @@ tEnemy.drawButtonList = function (displayMenu) {
             
             break;
         case "main":
-            btnList.push(
-                { t: "Fight", l: "lb_fight", title: "Dominate your enemy. " },
-                { t: "Slut", l: "lb_slut", title: "Be a submissive slut. " },
-                { t: "Inventory", l: "lb_inventory", title: "Use your inventory to gain life or modify the battle. " },
-                { t: "Run Away", l: "lb_flee", title: "Run away like a little bitch. " },
-            );
+            if (g.fight.e[0].name === "m") {
+                btnList.push(
+                    { t: "Fight", l: "lb_fight", title: "Dominate your enemy. " },
+                    { t: "Inventory", l: "lb_inventory", title: "Use your inventory to gain life or modify the battle. " },
+                    { t: "Run Away", l: "lb_flee", title: "Run away like a little bitch. " },
+                );
+            }
+            else {
+                btnList.push(
+                    { t: "Fight", l: "lb_fight", title: "Dominate your enemy. " },
+                    { t: "Slut", l: "lb_slut", title: "Be a submissive slut. " },
+                    { t: "Inventory", l: "lb_inventory", title: "Use your inventory to gain life or modify the battle. " },
+                    { t: "Run Away", l: "lb_flee", title: "Run away like a little bitch. " },
+                );
+            }
             tHeader = "Main Menu";
             tFooter = "Select your action. ";
             break;
         case "fight":
-            btnList.push(
-                { t: "Punch", l: "lb_punch", title: "Punch your enemy. " },
-                { t: "Kick", l: "lb_kick", title: "Kick your enemy. " },
-                { t: "Grapple", l: "lb_grapple", title: "Dominate your enemy. " },
-                { t: "Weapon", l: "lb_weapon", title: "Use a weapon from your inventory. " },
-            );
+            if (g.fight.e[0].name === "m") {
+                btnList.push(
+                    { t: "Punch", l: "lb_punch", title: "Punch your enemy. " },
+                    { t: "Kick", l: "lb_kick", title: "Kick your enemy. " },
+                    { t: "Weapon", l: "lb_weapon", title: "Use a weapon from your inventory. " },
+                );
+            }
+            else {
+                btnList.push(
+                    { t: "Punch", l: "lb_punch", title: "Punch your enemy. " },
+                    { t: "Kick", l: "lb_kick", title: "Kick your enemy. " },
+                    { t: "Grapple", l: "lb_grapple", title: "Dominate your enemy. " },
+                    { t: "Weapon", l: "lb_weapon", title: "Use a weapon from your inventory. " },
+                );
+            }
             if (g.fight.me.superPunch > 3)
                 btnList.push({ t: "Super Punch x" + g.fight.me.superPunch, l: "lb_superpunch", title: "Do a super punch. You can only use this once ever few battles. " });
             btnList.push({ t: "Back", l: "lb_cancel", title: "Return to main menu. " });
@@ -1239,6 +1291,11 @@ tEnemy.drawChar = function (pose) {
             thischar.hair = "12";
             thischar.displayc = false;
             break;
+        case "kneelgoo":
+            thischar.body = cl.c.chest > 2 ? "g_kneelgoo_f" : "g_kneelgoo_m";
+            thischar.hair = "29";
+            thischar.displayc = false;
+            break;
         case "kneelaway":
             thischar.body = "g_kneelaway";
             thischar.hair = "21";
@@ -1329,6 +1386,15 @@ tEnemy.drawChar = function (pose) {
         case "agfff1":
             thischar.body = "g_agfff1";
             break;
+        case "sit":
+            thischar.body = cl.c.chest > 2 ? "g_sit_f" : "g_sit_m";
+            thischar.hair = "28";
+            thischar.dick = "g_sit";
+            break;
+        case "werewolf":
+            thischar.body = cl.c.chest > 2 ? "g_werewolf_f" : "g_werewolf_m";
+            thischar.hair = "30";
+            break;
     }
     if (thischar.displayc) {
         if (g.fight.me.clothes === "m" || g.fight.me.clothes === "f")
@@ -1350,8 +1416,8 @@ tEnemy.drawChar = function (pose) {
     //back of hair
 
     if (thischar.hair !== null && cl.c.hairLength !== null) {
-        var noback = ["9", "10", "17", "18", "19", "22", "25", "26", "27" ];
-        if (cl.c.hairLength > 2)
+        var noback = ["9", "10", "17", "18", "19", "22", "25", "26", "27", "30" ];
+        if (cl.c.hairLength > 1 && !noback.includes(thischar.hair))
             nav.modbutton("me0", "227_fight/h_" + thischar.hair + "_long_back.png", null, null);
         else
             nav.modbutton("me0", "227_fight/blank.png", null, null);
@@ -1370,7 +1436,7 @@ tEnemy.drawChar = function (pose) {
     //hair
     
     if (thischar.hair !== null && cl.c.hairLength !== null) {
-        var hl = cl.c.hairLength > 2 ? "_long" : "_short";
+        var hl = cl.c.hairLength > 1 ? "_long" : "_short";
         nav.modbutton("me3", "227_fight/h_" + thischar.hair + hl + ".png", null, null);
     }
     else
@@ -1455,6 +1521,8 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
         $(".my-life[data-t='energy']").css({
             width: newEnergy * g.ratio + "px"
         });
+        if (myEnergy < 0)
+            g.fight.me.damage -= myEnergy;
     }
     if (enemyEnergy !== null) {
         enemyEnergy = Math.floor(enemyEnergy);
@@ -1479,23 +1547,34 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
         switch (controlChange.t) {
             case "hit": conPow = 10; break;
             case "grapple": conPow = 50; break;
-            case "block": conPow = 0; break;
+            case "block": conPow = 2; break;
             case "steal": conPow = 25; break;
             default: alert(controlChange.t + " missing");
         }
         if (controlChange.me) {
-            if (g.fight.e[0].energy > 100)
+            if (g.fight.subdom < 0)
+                conPow = conPow / Math.abs(g.fight.subdom);
+            else
+                conPow = conPow * Math.abs(g.fight.subdom);
+
+            if (g.fight.e[0].energy > (g.fight.e[0].maxEnergy * .8))
                 conPow *= .5;
-            else if (g.fight.e[0].energy < 50)
+            else if (g.fight.e[0].energy < (g.fight.e[0].maxEnergy * .3))
                 conPow *= 2;
             conPow *= -1;
         }
         else {
+            if (g.fight.subdom < 0)
+                conPow = conPow * Math.abs(g.fight.subdom);
+            else
+                conPow = conPow / Math.abs(g.fight.subdom);
+
             if (g.fight.me.energy > 100)
                 conPow *= .5;
-            else if (g.fight.me.energy < 50)
+            else if (g.fight.me.energy < 30)
                 conPow *= 2;
         }
+
         prevEnergy = g.fight.cPower;
         g.fight.cPower += conPow;
 
@@ -1537,6 +1616,7 @@ tEnemy.updatePlayerStats = function (money) {
 
     var i;
     var popUpText = "";
+    var doDefense = false;
     for (i = 0; i < g.st.length; i++) {
         if (g.st[i].n === "energy") {
             if (g.fight.me.energy < 1)
@@ -1570,20 +1650,27 @@ tEnemy.updatePlayerStats = function (money) {
                 popUpText += "Your arms are stonger <br/>";
             }
         }
-        else if (g.st[i].n === "sissy") {
+        else if (g.st[i].n === "subdom") {
+            g.st[i].t -= g.fight.me.sissyAction;
+            if (g.st[i].t < 0)
+                g.st[i].t = 0;
+            else if (g.st[i].t > 100)
+                g.st[i].t = 100;
             if (g.fight.me.sissyAction > 0) {
-                g.st[i].t += g.fight.me.sissyAction * 3;
-                if (g.st[i].t > 100)
-                    g.st[i].t = 100;
-                popUpText += "You are sluttier <br/>";
+                popUpText += "You are more submissive. <br/>";
+            }
+            else if (g.fight.me.sissyAction < 0) {
+                popUpText += "You are more dominate. <br/>";
             }
         }
+        else if (g.st[i].n === "dLevel") {
+            doDefense = (g.st[i].t > 0);
+        }
         else if (g.st[i].n === "d") {
-            if (g.fight.me.goodBlockCount > 0) {
-                g.st[i].t += g.fight.me.goodBlockCount;
-                if (g.st[i].t > 100)
-                    g.st[i].t = 100;
-                popUpText += "Your defense increased <br/>";
+            if (doDefense) {
+                var thisDef = Math.floor(g.fight.me.damage / 4);
+                g.mod("d", thisDef);
+                popUpText += "Your defense increased by: " + thisDef + " + points. <br/>";
             }
         }
         else if (g.st[i].n === "money") {

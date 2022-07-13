@@ -30,6 +30,10 @@ input[type=text]:disabled{
     border-bottom: #d9534f 2px solid;
 }
 
+.glob-bg{
+    background:rgba(0, 0, 0, .4);
+}
+
 .glob-small{
     font-size:.8em;
     color:#666;
@@ -44,7 +48,7 @@ input[type=text]:disabled{
     top:0;
     left:0;
     border-right:solid #000 2px;
-    background:rgba(0,0,0,.4);
+    background:rgba(0,0,0,.7);
 }
 
 .rl-change {
@@ -885,11 +889,30 @@ input[type=text]:disabled{
     cursor:pointer;
 }
 
+.left-graph-char{
+    margin-top:100px;
+}
+
+.left-graph-char img{
+    position:absolute;
+    top:100px;
+    left:0px;
+}
+
+.left-graph-char-bar {
+    width: 100%;
+    height: 15px;
+    background: #333333;
+    border-radius: 20px;
+    border: solid 1px #000000;
+    border-top:none;
+}
+
 .sissy-btn {
     border: solid thin #e3008d;
     background: #33001f;
     color: #e3008d;
-    width:100%;
+    width: 100%;
 }
 
 #room_left_walk_sub {

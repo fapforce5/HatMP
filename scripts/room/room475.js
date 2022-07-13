@@ -4,12 +4,19 @@ room475.main = function () {
         m.createFmap();
     }
     $('#room_footer').hide();
+    $("#room-inv").show();
+    $("#room-menu").show();
 
-    var thisUsed = m.fmap[g.internal.row][g.internal.col].used;
+    var thisUsed = m.fmap[g.map.row][g.map.col].used;
     var mainLoop = true;
 
-    if (g.internal.row === 79 && g.internal.col === 10) {
-        g.internal = "";
+    if (g.get("energy") === 0) {
+        g.map = "";
+        char.room(450);
+        mainLoop = false;
+    }
+    else if (g.map.row === 79 && g.map.col === 10) {
+        g.map = "";
         char.room(450);
         mainLoop = false;
     }
@@ -33,65 +40,69 @@ room475.main = function () {
 
     if (mainLoop) {
 
-        //if (g.pass === "combat") {
-        //    g.internal.count += 1;
-        //    g.internal.lastFight += 1;
-        //}
-        //else {
-        //    g.pass = "combat";
+        m.drawBackground(g.map.row, g.map.col);
+        m.drawMap(g.map.row, g.map.col);
 
-        //}
-        //if (false) //(((Math.floor(Math.random() * 4) == 0) && (g.internal.lastFight > 4)) || (g.internal.lastFight > 12))
-        //    char.room(476);
-        //else {
-        //    m.fmap[g.internal.row][g.internal.col].visited = true;
-        //    //room475.buildIcons("nav");
-        //}
-        
+        m.fmap[g.map.row][g.map.col].visited = true;
+        if (g.map.row < 79)
+            m.fmap[g.map.row + 1][g.map.col].visited = true;
+        if (g.map.row > 0)
+            m.fmap[g.map.row - 1][g.map.col].visited = true;
+        if (g.map.col < 19)
+            m.fmap[g.map.row][g.map.col + 1].visited = true;
+        if (g.map.col > 0)
+            m.fmap[g.map.row][g.map.col - 1].visited = true;
+        g.map.lastFight++;
 
-        m.drawBackground(g.internal.row, g.internal.col);
-        m.drawMap(g.internal.row, g.internal.col);
-
-        m.fmap[g.internal.row][g.internal.col].visited = true;
-        if (g.internal.row < 79)
-            m.fmap[g.internal.row + 1][g.internal.col].visited = true;
-        if (g.internal.row > 0)
-            m.fmap[g.internal.row - 1][g.internal.col].visited = true;
-        if (g.internal.col < 19)
-            m.fmap[g.internal.row][g.internal.col + 1].visited = true;
-        if (g.internal.col > 0)
-            m.fmap[g.internal.row][g.internal.col - 1].visited = true;
+        if (g.map.lastFight > 3) { //(((Math.floor(Math.random() * 4) == 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12))
+            if ((Math.floor(Math.random() * 4) == 0)) {
+                var te = Math.floor(Math.random() * 3);
+                var thisEnemy = null;
+                switch (te) {
+                    case 0:
+                        thisEnemy = "ag";
+                        break;
+                    case 1:
+                        thisEnemy = "al";
+                        break;
+                    case 2:
+                        thisEnemy = "af";
+                        break;
+                }
+                char.changeMenu("hide", true, true);
+                g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "forest", roomID: 475 };
+                g.map.lastFight = 0;
+                char.room(227);
+            }
+        }
     }
-    cl.nude();
-    g.pass = { enemy0: "goo", enemy1: null, enemy2: null, bg: "forest", roomID: 475 };
-    char.room(227);
 };
 
 room475.btnclick = function (name) {
     switch (name) {
         case "north":
-            g.internal.row -= 1;
+            g.map.row -= 1;
             m.updateVisit();
             char.room(475);
             break;
         case "south":
-            g.internal.row += 1;
+            g.map.row += 1;
             m.updateVisit();
             char.room(475);
             break;
         case "east":
-            g.internal.col += 1;
+            g.map.col += 1;
             m.updateVisit();
             char.room(475);
             break;
         case "west":
-            g.internal.col -= 1;
+            g.map.col -= 1;
             m.updateVisit();
             char.room(475);
             break;
         case "treasure":
             var tsuc = false;
-            if (m.fmap[g.internal.row][g.internal.col].used === "g") {
+            if (m.fmap[g.map.row][g.map.col].used === "g") {
                 tsuc = true;
             }
 
@@ -119,7 +130,7 @@ room475.btnclick = function (name) {
         default:
             break;
     }
-    m.drawMap(g.internal.row, g.internal.col);
+    m.drawMap(g.map.row, g.map.col);
 };
 
 room475.chatcatch = function (callback) {
@@ -139,7 +150,7 @@ room475.chat = function (chatID) {
         var cumJar = 0;
         g.mod("money", gold);
 
-        if (m.fmap[g.internal.row][g.internal.col].used === 'g') {
+        if (m.fmap[g.map.row][g.map.col].used === 'g') {
             cumJar = Math.floor(Math.random() * 3) + 1;
             inv.addMulti("cumjar", cumJar);
         }

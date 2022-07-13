@@ -519,12 +519,9 @@ room209.btnclick = function (name) {
         case "h_50":
             g.spendSissy(name);
             g.sissy[50].ach = true;
-            nav.bg("209_classroom/bg.jpg");
+            nav.bg("209_classroom/pain.jpg");
             nav.killall();
-            room209.btnclick("bb1");
-            room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            room209.btnclick("displaypbtn");
             chat(194, 209);
             break;
         case "h_51":
@@ -1272,6 +1269,13 @@ room209.chatcatch = function (callback) {
         case "h_40_3":
             g.mod("money", 20);
             room209.chatcatch("end");
+            break;
+        case "h50_1":
+            nav.killall();
+            nav.bg("209_classroom/h50_1.jpg");
+            break;
+        case "h50_2":
+            nav.bg("209_classroom/h50_2.jpg");
             break;
         case "h51_2":
             nav.bg("209_classroom/h51_2.jpg");
@@ -3251,11 +3255,42 @@ room209.chat = function (chatID) {
             },
             {
                 chatID: 194,
-                speaker: "p",
-                text: "OOoooo I don't know what you think is in there, but you're not going to like it. You can now " +
-                    "take the elevator to the black room and enter. ",
+                speaker: "black",
+                text: "So you wish to know pain? I commend you for choosing this path. Focus on the screen. ",
                 button: [
-                    { chatID: -1, text: "Cool.", callback: "end" }
+                    { chatID: 195, text: "Gulp.", callback: "h50_1" }
+                ]
+            },
+            {
+                chatID: 195,
+                speaker: "black",
+                text: "When you work here you will get in fights and you will get hit. I'm going to help you absorb " +
+                    "the pain and teach you how to toughen yourself against these attacks. Are you ready for the secret " +
+                    "of protection?",
+                button: [
+                    { chatID: 196, text: "yes?", callback: "" }
+                ]
+            },
+            {
+                chatID: 196,
+                speaker: "black",
+                text: "PAIN! You have to feel pain in lessen its effect. Only through pain will you learn how to " +
+                    "dull the effects and sap less energy from your tiny fail little body. I've had many come to me " +
+                    "seeking strength, hoping there's a magic rock or charm to it. There isn't. Defense from pain comes " +
+                    "from pain. ",
+                button: [
+                    { chatID: 197, text: "...", callback: "h50_2" }
+                ]
+            },
+            {
+                chatID: 196,
+                speaker: "black",
+                text: "The black room is open to you now. I'm going to help you absorb the pain and reduce its effect " +
+                    "in battle. You'll also find that when you get into fights now you'll be able to absorb that pain " +
+                    "to harden yourself. When you're ready visit me in the black room. Visit before 11:00 each morning. " +
+                    "You can reach it from the elevator. ",
+                button: [
+                    { chatID: -1, text: "Take the elevator to the black room before 11:00", callback: "end" }
                 ]
             },
         ];
