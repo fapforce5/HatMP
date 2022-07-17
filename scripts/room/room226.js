@@ -94,7 +94,7 @@ room226.main = function () {
                     b: 4,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
                 },
                 {
@@ -116,7 +116,7 @@ room226.main = function () {
                     b: 5,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
                 },
                 {
@@ -149,7 +149,7 @@ room226.main = function () {
                     b: 10,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
                 },
                 {
@@ -303,7 +303,7 @@ room226.main = function () {
                     b: 24,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
                 },
                 {
@@ -336,7 +336,7 @@ room226.main = function () {
                     b: 25,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
                 },
                 {
@@ -347,7 +347,7 @@ room226.main = function () {
                     b: 27,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
                 },
                 {
@@ -358,9 +358,9 @@ room226.main = function () {
                     b: 28,
                     l: null,
                     r: null,
-                    e: null,
+                    e: "g",
                     v: false
-                },
+                }
             ]
         };
         g.map.slime = !g.get("slimeMonsters");
@@ -403,11 +403,9 @@ room226.main = function () {
             if (backRoom === null)
                 backRoom = 0;
             g.map.id = backRoom;
-            //char.room(226);
         }
         else if (g.pass === "win") {
             g.internal = "nofight";
-            //char.room(226);
         }
     }
 
@@ -578,6 +576,8 @@ room226.btnclick = function (name) {
                         var thisEnemy;
                         if (g.map.l[g.map.id].e === "c")
                             thisEnemy = "sc";
+                        else if (g.map.l[g.map.id].e === "g" && g.get("fantasyCreatures"))
+                            thisEnemy = "goo";
                         else
                             thisEnemy = Math.floor(Math.random() * 2) === 0 ? "fr" : "fy";
                         //{ enemy0: "futaRed", enemy1: "futaYellow", enemy2: null, bg: "sewer", roomID: 0 };

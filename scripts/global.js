@@ -866,7 +866,8 @@ g.load = function (rma, thisVersion) {
     g.roomID = rma.roomID;
     g.dt = new Date(rma.dt);
     g.prevview = null;
-
+    if (g.roomID === 475)
+        g.roomID = 460;
     for (i = 0; i < rma.roomMap.length; i++) {
         for (j = 0; j < g.roomMap.length; j++) {
             if (rma.roomMap[i].roomID === g.roomMap[j].roomID) {

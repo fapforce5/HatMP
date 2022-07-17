@@ -40,6 +40,11 @@ input[type=text]:disabled{
     text-shadow:none;
 }
 
+.text-center{
+    width: 100%;
+    text-align:center;
+}
+
 .room-main{
     position:relative;
 }
@@ -355,7 +360,6 @@ input[type=text]:disabled{
     text-shadow: 2px 2px 5px #8e0000;
     font-size:2em;
     font-weight: bold;
-    text-align: center;
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -839,11 +843,17 @@ input[type=text]:disabled{
 .map-tile-i, .map-tile-j, .map-tile-k {
     background: #ce2281;
 }
-
+.switch-group {
+    background: linear-gradient(90deg, rgba(28,77,104,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(28,77,104,1) 100%);
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color:#fff;
+    font-weight:bold;
+}
 .switch-field {
-    display: flex;
-    margin-bottom: 36px;
-    overflow: hidden;
+    margin-top: 15px;
 }
 
     .switch-field input {
@@ -856,9 +866,9 @@ input[type=text]:disabled{
     }
 
     .switch-field label {
-        background-color: #e4e4e4;
-        color: rgba(0, 0, 0, 0.6);
-        font-size: 14px;
+        background-color: #ccc;
+        color: #000;
+        font-weight:normal;
         line-height: 1;
         text-align: center;
         padding: 8px 16px;
@@ -873,7 +883,8 @@ input[type=text]:disabled{
         }
 
     .switch-field input:checked + label {
-        background-color: #a5dc86;
+        background-color: #1c4d68;
+        color:#fff;
         box-shadow: none;
     }
 

@@ -37,7 +37,22 @@ room475.main = function () {
             }, 475);
         }
     }
-
+    else if (thisUsed === "i") {
+        mainLoop = false;
+        nav.bg("475_fight/cottage_day.jpg", "475_fight/cottage_night.jpg");
+        nav.button({
+            "type": "btn",
+            "name": "cottage",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "title": "Cottage",
+            "image": "475_fight/cottage_day.png",
+            "night": "475_fight/cottage_night.png"
+        }, 475);
+        chat(1, 475);
+    }
     if (mainLoop) {
 
         m.drawBackground(g.map.row, g.map.col);
@@ -55,8 +70,14 @@ room475.main = function () {
         g.map.lastFight++;
 
         if (g.map.lastFight > 3) { //(((Math.floor(Math.random() * 4) == 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12))
-            if ((Math.floor(Math.random() * 4) == 0)) {
+            if ((Math.floor(Math.random() * 4) === 0) || g.map.lastFight > 10) {
                 var te = Math.floor(Math.random() * 3);
+                if (g.get("fantasyCreatures")) {
+                    if (g.isNight())
+                        te = Math.floor(Math.random() * 5);
+                    else
+                        te = Math.floor(Math.random() * 4);
+                }
                 var thisEnemy = null;
                 switch (te) {
                     case 0:
@@ -67,6 +88,12 @@ room475.main = function () {
                         break;
                     case 2:
                         thisEnemy = "af";
+                        break;
+                    case 3:
+                        thisEnemy = "m";
+                        break;
+                    default:
+                        thisEnemy = "aw";
                         break;
                 }
                 char.changeMenu("hide", true, true);
@@ -99,6 +126,9 @@ room475.btnclick = function (name) {
             g.map.col -= 1;
             m.updateVisit();
             char.room(475);
+            break;
+        case "cottage":
+
             break;
         case "treasure":
             var tsuc = false;
@@ -139,6 +169,11 @@ room475.chatcatch = function (callback) {
             m.updateVisit();
             char.room(475);
             break;
+        case "resetcot":
+            g.map.row -= 1;
+            m.updateVisit();
+            char.room(475);
+            break;
         default:
             break;
     }
@@ -172,6 +207,14 @@ room475.chat = function (chatID) {
                 text: "Damn! I need to find a way into this door. [Work in progress]",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "thinking",
+                text: " [Work in progress]",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetcot" }
                 ]
             },
         ];

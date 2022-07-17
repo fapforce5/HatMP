@@ -33,5 +33,5 @@ trophy.build = function () {
 };
 
 trophy.draw = function () {
-
+    //trophy.build();
 };

@@ -7,6 +7,7 @@ var tEnemy = {};
 //bimbo moves: a = shake ass, c = shake cock, d = dance 
 tEnemy.getPunch = function () { return 7 + Math.round(g.get("bodyLevel") / 2); };
 tEnemy.getKick = function () { return 7 + Math.round(g.get("legLevel") / 2); };
+tEnemy.getDefense = function () { return Math.round(g.get("dLevel") / 3); };
 tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
     eax = new Array();
 
@@ -41,7 +42,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
             evasion: Math.round(g.get("fitness")),
             pPower: tEnemy.getPunch(),
             kPower: tEnemy.getKick(),
-            def: g.get("dLevel") / 4,
+            def: tEnemy.getDefense(),
             punchCount: 0,
             kickCount: 0,
             grappleCount: 0,
@@ -126,7 +127,7 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 500,
                 pPower: 30,
                 kPower: 50,
-                offense: ["p", "k", "g"],
+                offense: ["p", "p", "p", "k", "k", "k", "g"],
                 clothingLevel: 1,
                 money: 300 + Math.floor(Math.random() * 500),
                 p: "pose",
@@ -176,9 +177,9 @@ tEnemy.initEnemy = function (enemyName) {
                 displayName: "Clown Clan",
                 energy: 75,
                 maxEnergy: 75,
-                pPower: 10,
-                kPower: 10,
-                offense: ["p", "k", "g", "g"],
+                pPower: 15,
+                kPower: 5,
+                offense: ["k", "p", "p", "p", "g", "g", "g"],
                 clothingLevel: 2,
                 money: 7 + Math.floor(Math.random() * 7),
                 p: "pose",
@@ -202,9 +203,9 @@ tEnemy.initEnemy = function (enemyName) {
                 displayName: "Clown Clan Leader",
                 energy: 120,
                 maxEnergy: 120,
-                pPower: 10,
-                kPower: 10,
-                offense: ["g"], //["p", "p", "k", "k", "k", "g", "g", "g" ],
+                pPower: 15,
+                kPower: 15,
+                offense: ["p", "p", "k", "k", "g", "g", "g" ],
                 clothingLevel: 2,
                 money: 50 + Math.floor(Math.random() * 50),
                 cock: false,
@@ -231,7 +232,7 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 250,
                 pPower: 20,
                 kPower: 20,
-                offense: ["g", "g"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                offense: ["p", "k", "g", "g", "g", "g"],
                 clothingLevel: 0,
                 money: 200 + Math.floor(Math.random() * 200),
                 cock: false,
@@ -258,7 +259,7 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 100,
                 pPower: 12,
                 kPower: 20,
-                offense: ["p", "k"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                offense: ["p", "k", "g", "g"],
                 clothingLevel: 1,
                 money: 200 + Math.floor(Math.random() * 200),
                 cock: false,
@@ -281,11 +282,11 @@ tEnemy.initEnemy = function (enemyName) {
             charVar = {
                 name: "al",
                 displayName: "Lumberjack",
-                energy: 120,
-                maxEnergy: 120,
+                energy: 100,
+                maxEnergy: 100,
                 pPower: 20,
                 kPower: 12,
-                offense: ["g"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                offense: ["p", "k", "g"],
                 clothingLevel: 2,
                 money: 200 + Math.floor(Math.random() * 200),
                 cock: true,
@@ -312,12 +313,12 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 120,
                 pPower: 20,
                 kPower: 12,
-                offense: ["g"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                offense: ["p", "k", "g", "g", "g"],
                 clothingLevel: 1,
                 money: 200 + Math.floor(Math.random() * 200),
                 cock: true,
                 p: "pose",
-                weakspot: [0],
+                weakspot: [7],
                 base: "af",
                 grapple: "lick", 
                 domination: { pose: "assout", pose1: "assout", gif: "gif_spank.gif", gif1: "png_cry.png", stats: ["phum"] },
@@ -339,7 +340,7 @@ tEnemy.initEnemy = function (enemyName) {
                 maxEnergy: 250,
                 pPower: 30,
                 kPower: 40,
-                offense: ["p", "k"],// ["p", "p", "k", "k", "g", "g", "g", "g"],
+                offense: ["p", "p", "p", "k", "k", "k", "g", "g"],
                 clothingLevel: 0,
                 money: 1000 + Math.floor(Math.random() * 200),
                 cock: true,
@@ -1506,6 +1507,11 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
     var prevEnergy, newEnergy;
     if (myEnergy !== null) {
         myEnergy = Math.floor(myEnergy);
+        if (myEnergy < 0) {
+            myEnergy = myEnergy + g.fight.me.def;
+            if (myEnergy > 0)
+                myEnergy = 0;
+        }
         prevEnergy = g.fight.me.energy;
         g.fight.me.energy += myEnergy;
         if (g.fight.me.energy < 0)
@@ -1664,12 +1670,16 @@ tEnemy.updatePlayerStats = function (money) {
             }
         }
         else if (g.st[i].n === "dLevel") {
-            doDefense = (g.st[i].t > 0);
+            doDefense = g.st[i].t > 0;
         }
         else if (g.st[i].n === "d") {
+            if (g.st[i].t > 0)
+                doDefense = true;
             if (doDefense) {
-                var thisDef = Math.floor(g.fight.me.damage / 4);
-                g.mod("d", thisDef);
+                var thisDef = Math.floor(g.fight.me.damage);
+                g.st[i].t += thisDef;
+                if (g.st[i].t > 100)
+                    g.st[i].t = 100;
                 popUpText += "Your defense increased by: " + thisDef + " + points. <br/>";
             }
         }

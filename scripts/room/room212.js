@@ -132,6 +132,10 @@ room212.chatcatch = function (callback) {
             cl.cockDisplay();
             char.room(0);
             break;
+        case "cuddlecock":
+            nav.killall();
+            nav.bg("212_black/fin10.jpg");
+            break;
         case "xhorend":
             cl.undo();
             sc.incstep("black", 1);
@@ -139,6 +143,21 @@ room212.chatcatch = function (callback) {
             g.mod("d", 100);
             char.settime(17, 48);
             char.room(0);
+            break;
+        case "f16blacknight":
+            nav.bg("212_black/black.jpg");
+            char.addDays(1);
+            char.settime(6, 30);
+            break;
+        case "cuddle":
+            nav.killall();
+            nav.bg("212_black/cuddle.jpg");
+            break;
+        case "cock":
+            nav.killall();
+            nav.mod("receiveAnalFemale", 1);
+            nav.mod("creamPied", 1);
+            nav.bg("212_black/cock.jpg");
             break;
         default:
             if (callback.length > 3) {
@@ -355,7 +374,7 @@ room212.chat = function (chatID) {
             button: [
                 { chatID: 41, text: "Inverted tie up", callback: "tie0" },
                 { chatID: 63, text: "Ride a horse", callback: "hor1" },
-                { chatID: 78, text: "The greatest gift.", callback: "fin1" },
+                { chatID: 75, text: "The greatest gift.", callback: "fin1" },
                 { chatID: 19, text: "Back", callback: "" }
             ]
         },
@@ -501,9 +520,9 @@ room212.chat = function (chatID) {
             chatID: 40,
             speaker: "black",
             text: "I'm just kidding you aren't worth an orgasm. I just wanted to look at my work. Next time you " +
-                "play with that you'll be reminded of me. Now take your bloody dick and go. ",
+                "play with that you'll be reminded of me. ",
             button: [
-                { chatID: -1, text: "*whimper and get dressed* ", callback: "end" }
+                { chatID: 103, text: "*whimper* ", callback: "cuddlecock" }
             ]
         },
         {
@@ -809,11 +828,10 @@ room212.chat = function (chatID) {
         {
             chatID: 77,
             speaker: "black",
-            text: "This is called a sounding rod. It's a bit bigger than a beginners rod. You will feel these delicious " +
-                "ridges travel down your urethra. It's double sided so you can both feel the pain of it traveling in " +
-                "and out together. ",
+            text: "Before the pain begins I believe I have earned some entertainment from the both of you. " +
+                "We shall start at the top and work down. Now both on you on your knees facing each other. ",
             button: [
-                { chatID: 78, text: "!", callback: "fin4" }
+                { chatID: 88, text: "...", callback: "fin4" }
             ]
         },
         {
@@ -854,7 +872,7 @@ room212.chat = function (chatID) {
             speaker: "black",
             text: "You're welcome. Put some ice on those balls and come back when you're ready. ",
             button: [
-                { chatID: -1, text: "ok", callback: "end" }
+                { chatID: 103, text: "ok", callback: "cuddlecock" }
             ]
         },
         {
@@ -895,7 +913,155 @@ room212.chat = function (chatID) {
             speaker: "black",
             text: "Good slut. Now stop drooling on my floor and get out. ",
             button: [
-                { chatID: -1, text: "ok", callback: "end" }
+                { chatID: 103, text: "ok", callback: "cuddlecock" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "black",
+            text: "Aren't you too just the cutest pair of sissies. I'm going to start by stretching your cute " +
+                "little cake holes. ",
+            button: [
+                { chatID: 89, text: "...", callback: "fin5" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "black",
+            text: "You can do better than that! Let me help you two. ",
+            button: [
+                { chatID: 90, text: "uuugh", callback: "fin6" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "black",
+            text: "Stretch those throats you pain sluts! Get my dildo nice and wet for what is going to come next.",
+            button: [
+                { chatID: 91, text: "GAK ", callback: "fin7" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "black",
+            text: "Now it's time for your other hole. I hope you got my dildo wet enough becuase you're taking without " +
+                "any preperation or lube sluts. Now bend over, it's time for some ass to ass.",
+            button: [
+                { chatID: 92, text: "...", callback: "fin8" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "black",
+            text: "Now slaps those cheeks together sluts!",
+            button: [
+                { chatID: 93, text: "ooOOooo", callback: "fin9" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "black",
+            text: "Good sluts. Just keep slapping those asses until I get tired. ",
+            button: [
+                { chatID: 94, text: "AAahahhaaa", callback: "fin10" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "black",
+            text: "Now that you're both opened up we can start the real pain. It's going to be a long slow night for " +
+                "you two. ",
+            button: [
+                { chatID: 95, text: "?", callback: "fin11" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "black",
+            text: "That concrete is hard on those knees isn't it?",
+            button: [
+                { chatID: 96, text: "?", callback: "fin12" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "black",
+            text: "You better cuddle up closer, it get cold in here at night. ",
+            button: [
+                { chatID: 97, text: "mmmm", callback: "fin13" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "black",
+            text: "Don't worry. I'll cover you up for the night before I leave for the day. I'll see you both in the morning. ",
+            button: [
+                { chatID: 98, text: "...", callback: "fin14" }
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "black",
+            text: "Night night sluts",
+            button: [
+                { chatID: 99, text: "...", callback: "fin15" }
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "thinking",
+            text: "Oh no....",
+            button: [
+                { chatID: 100, text: "...", callback: "f16blacknight" }
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "cecilia",
+            text: "Mmmmm.....",
+            button: [
+                { chatID: 101, text: "Hhmhmm...", callback: "fin16" }
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "black",
+            text: "Wake up sluts. ",
+            button: [
+                { chatID: 102, text: "Hmmm...", callback: "fin17" }
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "black",
+            text: "Time to start your day whores. Hopefully you got a good night's rest!",
+            button: [
+                { chatID: -1, text: "Ugh...", callback: "end" }
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "black",
+            text: "You've done well. As a reward you get to pick between cuddles or cock. ",
+            button: [
+                { chatID: 104, text: "Cuddles", callback: "cuddle" },
+                { chatID: 105, text: "Cock", callback: "cock" }
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "black",
+            text: "You did good my little one. ",
+            button: [
+                { chatID: -1, text: "Awwww", callback: "end" }
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "black",
+            text: "Take my cock you fuck hole!",
+            button: [
+                { chatID: -1, text: "Ugh!", callback: "end" }
             ]
         },
     ];

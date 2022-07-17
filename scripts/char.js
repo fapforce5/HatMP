@@ -1078,21 +1078,19 @@ menu.mClick = function (type) {
         case "settings":
             $('.menu-buttonKill').remove();
             $('.menu-button').remove();
-            $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(761, 617, 167, 649) + '">' +
-                '<div class="switch-field" >' +
-                '<input type="radio" id="radio-street" name="switch-map" value="street" />' +
-                '<label for="radio-street">Street</label>' +
-                '<input type="radio" id="radio-house" name="switch-map" value="house" />' +
-                '<label for="radio-house">Houses</label>' +
-                ' Map View' +
-                '</div>' +
-                '<div class="switch-field" >' +
+            $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(761, 617, 167, 649) + ' background:#000;">' +
+                '<div style="color:#fff; font-size:' + 36 * g.ratio + 'px; margin-bottom:10px; width:100%; text-align:center;">⚙️ Settings</div>' +
+                '<div class="switch-group char-20">' +
+                'Fantasy Creatures' +
+                '<div class="switch-field">' +
                 '<input type="radio" id="radio-fantasy-false" name="switch-fantasy" value="off" />' +
                 '<label for="radio-fantasy-false">Off</label>' +
                 '<input type="radio" id="radio-fantasy-true" name="switch-fantasy" value="on" />' +
                 '<label for="radio-fantasy-true">On</label>' +
-                ' Fantasy Creatures' +
                 '</div>' +
+                '</div>' +
+                '<div class="switch-group char-20">' +
+                'Fight Speed' +
                 '<div class="switch-field" >' +
                 '<input type="radio" id="radio-fightspeed-3500" name="switch-fightspeed" value="3500" />' +
                 '<label for="radio-fightspeed-3500">Slow</label>' +
@@ -1102,8 +1100,10 @@ menu.mClick = function (type) {
                 '<label for="radio-fightspeed-600">Fast</label>' +
                 '<input type="radio" id="radio-fightspeed-100" name="switch-fightspeed" value="100" />' +
                 '<label for="radio-fightspeed-100">Very Fast</label>' +
-                ' Fight Speed' +
                 '</div>' +
+                '</div>' +
+                '<div class="switch-group char-20">' +
+                'Fight Sex Scenes' +
                 '<div class="switch-field" >' +
                 '<input type="radio" id="radio-fightsex-3500" name="switch-fightsex" value="3500" />' +
                 '<label for="radio-fightsex-3500">Slow</label>' +
@@ -1113,23 +1113,27 @@ menu.mClick = function (type) {
                 '<label for="radio-fightsex-600">Fast</label>' +
                 '<input type="radio" id="radio-fightsex-100" name="switch-fightsex" value="100" />' +
                 '<label for="radio-fightsex-100">Very Fast</label>' +
-                ' Fight Sex Scenes' +
                 '</div>' +
-                '<div class="switch-field" >' +
-                '<input type="radio" id="radio-easy" name="switch-difficulty" value="easy" checked />' +
-                '<label for="radio-easy">Easy</label>' +
-                '<input type="radio" id="radio-medium" name="switch-difficulty" value="medium" />' +
-                '<label for="radio-medium">Medium</label>' +
-                '<input type="radio" id="radio-hard" name="switch-difficulty" value="hard" />' +
-                '<label for="radio-hard">Hard</label>' +
-                ' Difficulty' +
                 '</div>' +
+                '<div class="switch-group char-20">' +
+                'Difficulty' +
                 '<div class="switch-field" >' +
-                '<input type="radio" id="radio-cheatOff" name="switch-cheat" value="off" />' +
-                '<label for="radio-cheatOff">Off</label>' +
-                '<input type="radio" id="radio-cheatOn" name="switch-cheat" value="on" />' +
-                '<label for="radio-cheatOn">On</label>' +
-                ' Cheat Mode' +
+                '<input type="radio" id="radio-diff-0" name="switch-difficulty" value="0" />' +
+                '<label for="radio-diff-0">Easy</label>' +
+                '<input type="radio" id="radio-diff-1" name="switch-difficulty" value="1" />' +
+                '<label for="radio-diff-1">Medium</label>' +
+                '<input type="radio" id="radio-diff-2" name="switch-difficulty" value="2" />' +
+                '<label for="radio-diff-2">Hard</label>' +
+                '</div>' +
+                '</div>' +
+                '<div class="switch-group char-20">' +
+                ' Map View' +
+                '<div class="switch-field" >' +
+                '<input type="radio" id="radio-street" name="switch-map" value="street" />' +
+                '<label for="radio-street">Street</label>' +
+                '<input type="radio" id="radio-house" name="switch-map" value="house" />' +
+                '<label for="radio-house">Houses</label>' +
+                '</div>' +
                 '</div>' +
                 '</div>');
             $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
@@ -1138,6 +1142,7 @@ menu.mClick = function (type) {
             $('#radio-fightspeed-' + g.get("fightspeed")).prop("checked", true);
             $('#radio-fightsex-' + g.get("fightsex")).prop("checked", true);
             $('#radio-' + g.get("mapview")).prop("checked", true);
+            $('#radio-diff-' + g.get("difficulty")).prop("checked", true);
 
             $('input[type=radio][name=switch-fantasy]').change(function () {
                 g.set("fantasyCreatures", $(this).val() === "on");
@@ -1147,8 +1152,10 @@ menu.mClick = function (type) {
                 if (g.prevview === "map")
                     char.map();
             });
+            $('input[type=radio][name=switch-difficulty]').change(function () {
+                g.set("difficulty", parseInt($(this).val()));
+            });
             $('input[type=radio][name=switch-fightspeed]').change(function () {
-                
                 g.set("fightspeed", parseInt($(this).val()));
                 if (g.fight !== null)
                     g.fight.fighttimer = parseInt($(this).val());
@@ -1158,7 +1165,7 @@ menu.mClick = function (type) {
                 if (g.fight !== null)
                     g.fight.fightsex = parseInt($(this).val());
             });
-            
+            $('.switch-group').css({ "font-size": (20 * g.ratio) + "px" });
             break;
         case "patreon":
             $(".menu-buttonKill").remove();
@@ -1478,7 +1485,7 @@ char.makeGraph = function () {
                 $(".rl-bar[data-name='leg']").css({ width: g.st[i].t + "%" });
                 break;
             case "legLevel":
-                $("#rl_kick").html("Kick Power: +" + tEnemy.getKick());
+                $("#rl_kick").html("Kick Power: " + tEnemy.getKick());
                 break;
             case "body":
                 $(".rl-bar[data-name='body']").css({ width: g.st[i].t + "%" });
@@ -1490,7 +1497,7 @@ char.makeGraph = function () {
                 $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
                 break;
             case "dLevel":
-                $("#rl_d").html("Defense: +" + g.st[i].t);
+                $("#rl_d").html("Defense: " + tEnemy.getDefense());
                 break;
             case "fitness":
                 $(".rl-bar[data-name='fitness']").css({ width: g.st[i].t + "%" });
