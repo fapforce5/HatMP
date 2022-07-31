@@ -40,18 +40,21 @@ room475.main = function () {
     else if (thisUsed === "i") {
         mainLoop = false;
         nav.bg("475_fight/cottage_day.jpg", "475_fight/cottage_night.jpg");
-        nav.button({
-            "type": "btn",
-            "name": "cottage",
-            "left": 0,
-            "top": 0,
-            "width": 1920,
-            "height": 1080,
-            "title": "Cottage",
-            "image": "475_fight/cottage_day.png",
-            "night": "475_fight/cottage_night.png"
-        }, 475);
-        chat(1, 475);
+        if (!g.isNight()) {
+            nav.button({
+                "type": "btn",
+                "name": "cottage",
+                "left": 923,
+                "top": 70,
+                "width": 590,
+                "height": 1010,
+                "title": "Cottage",
+                "image": "475_fight/queen.png"
+            }, 475);
+            chat(2, 475);
+        }
+        else
+            chat(1, 475);
     }
     if (mainLoop) {
 
@@ -212,7 +215,15 @@ room475.chat = function (chatID) {
             {
                 chatID: 1,
                 speaker: "thinking",
-                text: " [Work in progress]",
+                text: "Everyone seems to be asleep. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetcot" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "queen",
+                text: "You are not yet ready to be received into my home. [Future update]",
                 button: [
                     { chatID: -1, text: "...", callback: "resetcot" }
                 ]

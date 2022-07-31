@@ -835,7 +835,8 @@ g.save = function () {
         roomMap: new Array(),
         roomID: g.roomID,
         dt: g.dt, 
-        sissy: new Array()
+        sissy: new Array(),
+        map: g.map
     };
 
     for (i = 0; i < g.st.length; i++) {
@@ -866,8 +867,7 @@ g.load = function (rma, thisVersion) {
     g.roomID = rma.roomID;
     g.dt = new Date(rma.dt);
     g.prevview = null;
-    if (g.roomID === 475)
-        g.roomID = 460;
+    g.map = rma.map;
     for (i = 0; i < rma.roomMap.length; i++) {
         for (j = 0; j < g.roomMap.length; j++) {
             if (rma.roomMap[i].roomID === g.roomMap[j].roomID) {
@@ -1068,6 +1068,7 @@ g.initGame = function () {
             case "cheatMode":
             case "gold0":
             case "keaton":
+            case "fantasyCreatures":
                 g.st[i].t = false;
                 break;
             case "displayMenu":

@@ -5,9 +5,19 @@ var tEnemy = {};
 //add difficulty -------------------------------------------------------------
 
 //bimbo moves: a = shake ass, c = shake cock, d = dance 
-tEnemy.getPunch = function () { return 7 + Math.round(g.get("bodyLevel") / 2); };
-tEnemy.getKick = function () { return 7 + Math.round(g.get("legLevel") / 2); };
-tEnemy.getDefense = function () { return Math.round(g.get("dLevel") / 3); };
+tEnemy.getPunch = function () { return Math.round((7 + (g.get("bodyLevel") / 2)) * tEnemy.getPKDiff()); };
+tEnemy.getKick = function () { return Math.round((7 + Math.round(g.get("legLevel") / 2)) * tEnemy.getPKDiff()); };
+tEnemy.getDefense = function () { return Math.round((g.get("dLevel") / 3) * tEnemy.getPKDiff()); };
+tEnemy.getPKDiff = function () {
+    var pk = g.get("difficulty");
+    if (pk === 0)
+        return 2;
+    else if (pk === 1)
+        return 1;
+    else
+        return .75;
+};
+
 tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
     eax = new Array();
 
@@ -1512,6 +1522,7 @@ tEnemy.changeEnergy = function (myEnergy, enemyEnergy, controlChange) {
             if (myEnergy > 0)
                 myEnergy = 0;
         }
+
         prevEnergy = g.fight.me.energy;
         g.fight.me.energy += myEnergy;
         if (g.fight.me.energy < 0)
