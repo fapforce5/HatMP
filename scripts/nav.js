@@ -112,6 +112,8 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn-lips rom-event";
         else if (btn.type === "tongue")
             classes = "room-btn-tongue rom-event";
+        else if (btn.type === "hand")
+            classes = "room-btn-hand rom-event";
         else if (btn.type === "btnflat")
             classes = "room-btnflat room-btn rom-event";
         else if (btn.type === "zimg")
@@ -141,13 +143,15 @@ nav.t = function (btn, roomNum) {
     var thisHex = "#000000";
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
-
+    
     if (btn.type === "btn")
         classes = "room-btn rom-event";
     else if (btn.type === "kiss")
         classes = "room-btn-lips rom-event";
     else if (btn.type === "tongue")
         classes = "room-btn-tongue rom-event";
+    else if (btn.type === "hand")
+        classes = "room-btn-hand rom-event";
     else if (btn.type === "btnflat")
         classes = "room-btnflat room-btn rom-event";
     else if (btn.type === "zimg")

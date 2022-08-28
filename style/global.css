@@ -98,6 +98,12 @@ input[type=text]:disabled{
     position:absolute;
     cursor:url('../images/general/t.png'), auto;
 }
+
+.room-btn-hand {
+    position: absolute;
+    cursor: url('../images/general/h.png'), auto;
+}
+
 .room-btn:hover, .room-btn-lips:hover, .room-btn-tongue:hover{
     filter: brightness(1.2);
 }

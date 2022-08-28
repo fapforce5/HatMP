@@ -131,6 +131,8 @@ room203.btnclick = function (name) {
                     chat(35, 203);
                 else if (oncase === "gloryholebj")
                     chat(38, 203);
+                else if (oncase === "shopping")
+                    chat(48, 203);
                 else {
                     alert("forgot one");
                     char.room(0);
@@ -792,6 +794,14 @@ room203.chat = function (chatID) {
             chatID: 47,
             speaker: "thinking",
             text: "Thank you for playing. Breaking " + sc.n("missy") + " out will be in a future release",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "cecilia",
+            text: "You need to go to the Toy Store when " + sc.n("tiffany") + " is working. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

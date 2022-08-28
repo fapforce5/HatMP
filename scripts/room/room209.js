@@ -306,7 +306,14 @@ room209.btnclick = function (name) {
             break;
         case "h_14":
             g.spendSissy(name);
-            alert("add pink room");
+            g.sissy[14].ach = true;
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(198, 209);
             break;
         case "h_15":
             nav.bg("209_classroom/bg.jpg");
@@ -783,6 +790,9 @@ room209.chatcatch = function (callback) {
         case "h_13":
             g.set("oncase", "gloryholebj");
             room209.chatcatch("end");
+            break;
+        case "h_14_0":
+            char.room(213);
             break;
         case "h16_1":
             nav.killbutton("chair");
@@ -3283,7 +3293,7 @@ room209.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 196,
+                chatID: 197,
                 speaker: "black",
                 text: "The black room is open to you now. I'm going to help you absorb the pain and reduce its effect " +
                     "in battle. You'll also find that when you get into fights now you'll be able to absorb that pain " +
@@ -3291,6 +3301,15 @@ room209.chat = function (chatID) {
                     "You can reach it from the elevator. ",
                 button: [
                     { chatID: -1, text: "Take the elevator to the black room before 11:00", callback: "end" }
+                ]
+            },
+            {
+                chatID: 198,
+                speaker: "p",
+                text: "The pink room is open to you now. Visit anytime, you can reach it from the elevator. Let me give " +
+                    "you the tour. ",
+                button: [
+                    { chatID: -1, text: "Follow her to the pink room.", callback: "h_14_0" }
                 ]
             },
         ];

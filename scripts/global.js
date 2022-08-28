@@ -82,6 +82,7 @@ g.st = [
     { n: "cheatMode", t: false, q: "bool" },
     { n: "mascot", t: 0, q: "int" },
     { n: "subdom", t: 50, q: "hundred" },
+    { n: "pink", t: 0, q: "int" },
 
     { n: "fightspeed", t: 1250, q: "int" },
     { n: "fightsex", t: 1250, q: "int" },
@@ -538,6 +539,7 @@ g.rooms = [
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 209, name: "Basement", image: "209_classroom/bg.jpg", nightImage: "209_classroom/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 212, name: "Black Room", image: "212_black/g.jpg", nightImage: "212_black/g.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 213, name: "Pink Room", image: "213_pink/bg.jpg", nightImage: "213_pink/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
 
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },

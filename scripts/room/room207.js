@@ -160,7 +160,10 @@ room207.btnclick = function (name) {
             }, 207);
             break;
         case "pink_char":
-            chat(0, 207);
+            if (g.sissy[14].ach)
+                char.room(213);
+            else
+                chat(0, 207);
             break;
         case "red_char":
             if (g.get("oncase") === "redroom" || g.sissy[15].ach)
@@ -180,7 +183,6 @@ room207.btnclick = function (name) {
         case "blueDoor":
             char.room(209);
             break;
-        
         default:
             break;
     }
