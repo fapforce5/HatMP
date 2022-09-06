@@ -17,7 +17,7 @@ room213.main = function () {
             "image": "213_pink/start.png",
             "title": "Start Work"
         }, 213);
-        nav.buildnav([207]);
+        nav.buildnav([214, 215, 216, 0]);
     }
 };
 
@@ -27,21 +27,21 @@ room213.btnclick = function (name) {
             nav.killbutton("start");
             chat(7, 213);
             break;
-        case "gamegirl":
-            nav.killall();
-            nav.bg("213_pink/gmw1.jpg");
-            chat(21, 213);
-            break;
+        //case "gamegirl":
+        //    nav.killall();
+        //    nav.bg("213_pink/gmw1.jpg");
+        //    chat(21, 213);
+        //    break;
         case "gw3":
             nav.killall();
             nav.bg("213_pink/gw3.jpg");
             chat(22, 213);
             break;
-        case "gameboy":
-            nav.killall();
-            nav.bg("213_pink/gm1.jpg");
-            chat(25, 213);
-            break;
+        //case "gameboy":
+        //    nav.killall();
+        //    nav.bg("213_pink/gm1.jpg");
+        //    chat(25, 213);
+        //    break;
         case "chatcum":
             nav.killall();
             nav.bg("213_pink/chat2.jpg");
@@ -66,7 +66,7 @@ room213.btnclick = function (name) {
 room213.chatcatch = function (callback) {
     switch (callback) {
         case "game":
-            nav.bg("213_pink/game.jpg");
+            nav.bg("214_pink/game.jpg");
             break;
         case "hallway":
             nav.bg("213_pink/hall.jpg");
@@ -88,31 +88,31 @@ room213.chatcatch = function (callback) {
             break;
         case "gamestart":
             g.internal = 0;
-            nav.bg("213_pink/game.jpg");
+            nav.bg("214_pink/game.jpg");
             break;
         case "game0":
-            nav.killall();
-            nav.bg("213_pink/gm0.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "gamegirl",
-                "left": 1126,
-                "top": 0,
-                "width": 794,
-                "height": 1080,
-                "image": "213_pink/gm0_woman.png",
-                "title": "Girl"
-            }, 213);
-            nav.button({
-                "type": "btn",
-                "name": "gameboy",
-                "left": 119,
-                "top": 0,
-                "width": 1064,
-                "height": 1080,
-                "image": "213_pink/gm0_man.png",
-                "title": "Boy"
-            }, 213);
+            //nav.killall();
+            //nav.bg("213_pink/gm0.jpg");
+            //nav.button({
+            //    "type": "btn",
+            //    "name": "gamegirl",
+            //    "left": 1126,
+            //    "top": 0,
+            //    "width": 794,
+            //    "height": 1080,
+            //    "image": "213_pink/gm0_woman.png",
+            //    "title": "Girl"
+            //}, 213);
+            //nav.button({
+            //    "type": "btn",
+            //    "name": "gameboy",
+            //    "left": 119,
+            //    "top": 0,
+            //    "width": 1064,
+            //    "height": 1080,
+            //    "image": "213_pink/gm0_man.png",
+            //    "title": "Boy"
+            //}, 213);
             break;
         case "gw2":
             nav.bg("213_pink/gw2.jpg");
@@ -131,8 +131,8 @@ room213.chatcatch = function (callback) {
             g.mod("energy", -15);
             g.mod("phum", 1);
             g.mod("money", 25);
-            nav.bg("213_pink/game.jpg");
-            char.room(213);
+            nav.bg("214_pink/game.jpg");
+            char.room(214);
             break;
         case "gm2":
             nav.killall();
@@ -146,7 +146,7 @@ room213.chatcatch = function (callback) {
             g.mod("giveBoobJob", 1);
             g.mod("loadSwollowed", 1);
             g.mod("money", 25);
-            char.room(213);
+            char.room(214);
             break;
         case "chat0":
             nav.killall();
@@ -173,42 +173,9 @@ room213.chatcatch = function (callback) {
             g.mod("creamPied", 1);
             g.mod("sissygasm", 1);
             g.mod("money", 50);
-            char.room(213);
+            char.room(214);
             break;
-        case "clean0":
-            nav.killall();
-            nav.bg("213_pink/clean0.jpg");
-            break;
-        case "clean1":
-            nav.bg("213_pink/clean1.jpg");
-            break;
-        case "clean2":
-            g.internal = 1;
-            nav.bg("213_pink/clean2.jpg");
-            nav.button({
-                "type": "tongue",
-                "name": "cleancum",
-                "left": 814,
-                "top": 579,
-                "width": 166,
-                "height": 497,
-                "image": "213_pink/cum0.png",
-                "title": "Lick it up slut"
-            }, 213);
-            break;
-        case "clean4":
-            g.mod("energy", 100);
-            g.mod("giveOralFemale", 1);
-            g.mod("loadSwollowed", 1);
-            g.mod("money", 50);
-            char.addtime(120);
-            nav.bg("213_pink/clean4.jpg");
-            break;
-        case "clean4a":
-            g.mod("money", 50);
-            char.addtime(120);
-            nav.bg("213_pink/clean4.jpg");
-            break;
+        
         case "reset":
             char.addtime(20);
             char.room(213);
@@ -217,21 +184,72 @@ room213.chatcatch = function (callback) {
             char.addtime(60);
             char.room(0);
             break;
-        case "private0":
-            g.sumSissy();
-            var points = (g.sp.total - g.get("usedSissyPoints"));
-            if (points < 500)
-                chat(38, 213);
-            break;
-        case "private1":
-            nav.killall();
-            nav.bg("213_pink/private1.jpg");
-            break;
-        case "private2b":
-            nav.bg("213_pink/private2b.jpg");
-            break;
-        case "private2a":
-            nav.bg("213_pink/private2a.jpg");
+        //case "private0":
+        //    g.sumSissy();
+        //    var points = (g.sp.total - g.get("usedSissyPoints"));
+        //    if (points < 500)
+        //        chat(38, 213);
+        //    break;
+        //case "private1":
+        //    nav.killall();
+        //    nav.bg("215_pink/private1.jpg");
+        //    break;
+        //case "private2b":
+        //    nav.bg("213_pink/private2b.jpg");
+        //    g.internal = 1;
+        //    break;
+        //case "private2a":
+        //    nav.bg("213_pink/private2a.jpg");
+        //    g.internal = 0;
+        //    break;
+        //case "private3":
+        //    if (g.internal === 1) {
+        //        chat(42, 213);
+        //    }
+        //    else {
+        //        g.internal = Math.floor(Math.random() * 3);
+        //        if (g.internal === 0) {
+        //            nav.button({
+        //                "type": "img",
+        //                "name": "f",
+        //                "left": 317,
+        //                "top": 222,
+        //                "width": 409,
+        //                "height": 858,
+        //                "image": "213_pink/pri0.png"
+        //            }, 213);
+        //        }
+        //        else if (g.internal === 1) {
+        //            nav.button({
+        //                "type": "img",
+        //                "name": "f",
+        //                "left": 327,
+        //                "top": 213,
+        //                "width": 442,
+        //                "height": 867,
+        //                "image": "213_pink/pri1.png"
+        //            }, 213);
+        //        }
+        //        else if (g.internal === 2) {
+        //            nav.button({
+        //                "type": "img",
+        //                "name": "f",
+        //                "left": 56,
+        //                "top": 163,
+        //                "width": 856,
+        //                "height": 917,
+        //                "image": "213_pink/pri2.png"
+        //            }, 213);
+        //        }
+        //        chat(43, 213);
+        //    }
+        //    break;
+        //case "privateReset":
+        //    nav.killbutton("f");
+        //    char.addtime(30);
+        //    break;
+        case "resetGameRoom":
+            char.room(214);
             break;
         default:
             if (callback.startsWith("par"))
@@ -241,6 +259,10 @@ room213.chatcatch = function (callback) {
 };
 
 room213.chat = function (chatID) {
+    if (chatID === 100) {
+        return;
+
+    }
     var cArray = [
         {
             chatID: 0,
@@ -311,9 +333,7 @@ room213.chat = function (chatID) {
             text: "So where do you want to work today? ",
             button: [
                 { chatID: 9, text: "Parlour Girl", callback: "" },
-                { chatID: 32, text: "Wall Cleaner", callback: "clean0" },
-                { chatID: 8, text: "More", callback: "" },
-                { chatID: -1, text: "Leave", callback: "end" }
+                { chatID: -1, text: "Nothing", callback: "" }
             ]
         },
         {
@@ -506,7 +526,7 @@ room213.chat = function (chatID) {
                 "Did you see that awesome move Javier did. Pure magic.",
             button: [
                 { chatID: 30, text: "So.... do you want me to ride that?", callback: "" },
-                { chatID: -1, text: "Ok. [Exit to the main room]", callback: "reset" }
+                { chatID: -1, text: "Ok, cool. Loser.", callback: "resetGameRoom" }
             ]
         },
         {
@@ -574,33 +594,7 @@ room213.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "[Return to the parlor]", callback: "chatEnd" }
             ]
-        },
-        {
-            chatID: 38,
-            speaker: "p",
-            text: "You need at least 500 Sissy Points to work in the room. Can't have a prude selling sex!",
-            button: [
-                { chatID: -1, text: "Oh. damn. ", callback: "reset" }
-            ]
-        },
-        {
-            chatID: 39,
-            speaker: "p",
-            text: "Let me show you to your room. ",
-            button: [
-                { chatID: 40, text: "[Follow her]", callback: "private1" }
-            ]
-        },
-        {
-            chatID: 40,
-            speaker: "p",
-            text: "Here you go. Best room in the house. I've got to step back and meet our customers. Have fun " +
-                "with it. ",
-            button: [
-                { chatID: -1, text: "[Stand at the door]", callback: "private2b" },
-                { chatID: -1, text: "[Stick your ass out the door]", callback: "private2a" }
-            ]
-        },
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

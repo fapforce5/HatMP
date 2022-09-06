@@ -33,7 +33,7 @@ room405.btnclick = function (name) {
                 chat(2, 405);
             break;
         case "trim":
-            cl.c.lastHairCut = g.dt;
+            cl.c.lastHairCut = 0;
             g.internal = parseInt(g.internal);
             if (g.internal > -1)
                 cl.c.hairLength = g.internal;
