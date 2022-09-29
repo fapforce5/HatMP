@@ -31,6 +31,7 @@ inv.t = [
     { t: "r", n: "Room Decoration" },
     { t: "t", n: "Penis Cream" },
     { t: "x", n: "ID Card" },
+    { t: "y", n: "Hypno" },
     { t: "z", n: "Gift" }
 ];
 
@@ -86,7 +87,11 @@ inv.master = [
     { type: "r", name: "paint2", display: "Painting 2", entry: false, count: null, cost: 50, image: "paint2.png", n: false, desc: "" },
     { type: "r", name: "paint3", display: "Painting 3", entry: false, count: null, cost: 90, image: "paint3.png", n: false, desc: "" },
     { type: "g", name: "sewer", display: "Sewer Lid Opener", entry: false, count: null, cost: -1, image: "sewer.png", n: false, desc: "Use this to open the sewer lid next to the dance club." },
-    { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, image: "chisel.png", n: false, desc: "Used to break out of prison. " }
+    { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, image: "chisel.png", n: false, desc: "Used to break out of prison. " },
+    { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
+
+    { type: "y", name: "hypno1", display: "Hypno Lesson #1", entry: false, count: null, cost: 100, image: "hypno1.png", n: false, desc: "Horny Girls Masturbate" }
+
 ];
 
 inv.getall = function () {

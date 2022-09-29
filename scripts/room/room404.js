@@ -1,7 +1,7 @@
 ﻿//Room name
 var room404 = {};
 room404.main = function () {
-    if (cl.isLewd) {
+    if (cl.isLewd()) {
         chat(3, 404);
     }
     var btnList = [

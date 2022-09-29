@@ -29,6 +29,8 @@ sc.char = [
     { name: "red", display: "Red", image: "red.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "keaton", display: "Keaton", image: "keaton.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+    { name: "envy", display: "Envy", image: "envy.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "rachel", display: "Rachel", image: "rachel.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
 
     { name: "fightman", display: "Bad Motherfucker", image: "fightMan.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -51,7 +53,10 @@ sc.char = [
     { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-    { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+
+    { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: true, setName: false, phone: -1 },
+    { name: "butler", display: "The Butler", image: "butler.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
+
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "crystal", display: "Crystal", image: "crystal.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -88,6 +93,7 @@ sc.events = [
     { name: "me", step: 3, txt: "[3] Homeless.. Find a Place to Sleep", img: "homeless", show: true, row: 0, col: 1, ach: false, major: false, m: [] }, //TorD complete kicked out of house
     { name: "me", step: 7, txt: "[4] Shopping at the mall! - ignore this", img: "homeless", show: false, row: 0, col: 1, ach: false, major: false, m: [] }, //TorD complete kicked out of house
 
+    { name: "landlord", step: -10, txt: "Caught at the whore house", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "landlord", step: -9, txt: "Caught naked in the house and took giant dildo", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "landlord", step: -8, txt: "Em bare ass", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "landlord", step: -7, txt: "First Day at the Sperm Bank", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
@@ -191,10 +197,10 @@ sc.events = [
     { name: "tiffany", step: 17, txt: "Masturbate like a girl", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
 
     { name: "candy", step: -1, txt: "Flash in bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    { name: "candy", step: 0, txt: "Need to do crossdressing event", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [50] },
-    { name: "candy", step: 1, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [50] },
-    { name: "candy", step: 2, txt: "Ate your own cum!", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [50] },
-    { name: "candy", step: 3, txt: "Ate Brad's Cum", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [50] },
+    { name: "candy", step: 0, txt: "Need to do crossdressing event", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 1, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 2, txt: "Ate your own cum!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 3, txt: "Ate Brad's Cum", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
 
     { name: "chad", step: -2, txt: "Give Chad a picture of Lola's tits", img: "chad_pic", show: true, row: 1, col: 0, ach: false, major: false, m: [] },
     { name: "chad", step: -1, txt: "Pay $500", img: "money", show: true, row: -1, col: 0, ach: false, major: false, m: [] },
@@ -259,6 +265,13 @@ sc.events = [
     { name: "tina", step: 10, txt: "She shaved her pussy just for you", img: "tina10", show: true, row: 0, col: 2, ach: false, major: false, m: [100] },
     { name: "tina", step: 15, txt: "Do you like my tits?", img: "tina15", show: true, row: 0, col: 3, ach: false, major: false, m: [100] },
 
+    { name: "envy", step: 0, txt: "Meet her", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [300] },
+    { name: "envy", step: 1, txt: "Watch the breakup", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 2, txt: "Get to know her", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 3, txt: "Bring some chips for movie night", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+
+
+    { name: "spanky", step: -1, txt: "Hypno vids", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [404] },
     { name: "spanky", step: 0, txt: "met", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [404] },
     { name: "spanky", step: 1, txt: "after first meet", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [404] },
     { name: "spanky", step: 2, txt: "selling", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
@@ -331,6 +344,10 @@ sc.events = [
     { name: "chloe", step: 1, txt: "Tried to Fucked Chloe - chastity / small dick", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [725] },
     { name: "chloe", step: 2, txt: "Fucked Chloe", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [725] },
     { name: "chloe", step: 3, txt: "Zoey confrontation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [500] },
+
+    { name: "jones", step: 0, txt: "Complete the fashion show at the sissy school", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
+    { name: "jones", step: 1, txt: "Clean his house and his cock", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
+    { name: "jones", step: 2, txt: "Next Event - Not complete", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
 
     { name: "ubel", step: -1, txt: "First Nightly whipping", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "ubel", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },

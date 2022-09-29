@@ -97,7 +97,11 @@ room53.main = function () {
     var navList = [51, 55];
     nav.buildnav(navList);
 };
-
+//---------------------------------------Female assisted rape -- main char doens't like brad, candy forces main char
+//---------------------------------------to fuck him. Grabs his face, Spreads your ass and shoves
+//---------------------------------------brads' dick into you
+//---------------------------------------Cuckold stuff first. you watch while they fuck, no touching
+//---------------------------------------unless you're eating the cream pie from candy's cunt
 room53.btnclick = function (name) {
     name = name.toString();
     switch (name) {

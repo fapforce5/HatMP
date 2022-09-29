@@ -113,10 +113,13 @@ room401.main = function () {
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
+            var spankyInv = ["e", "g"];
             if (sc.checkevent("spanky", 3) || g.sissy[51].ach)
-                room401.makeInv(["h", "e", "g"], true);
-            else
-                room401.makeInv(["e", "g"], true);
+                spankyInv.push("h");
+            if (sc.checkevent("spanky", -1))
+                spankyInv.push("y");
+
+            room401.makeInv(spankyInv, true);
             navList = [404, 0];
             break;
         case "fuckMyDirtyAssholeHard":

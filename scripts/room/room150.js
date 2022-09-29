@@ -5,10 +5,10 @@ room150.main = function () {
         {
             "type": "btn",
             "name": "door",
-            "left": 950,
-            "top": 339,
-            "width": 360,
-            "height": 574,
+            "left": 931,
+            "top": 452,
+            "width": 252,
+            "height": 221,
             "image": "150_jones/door.png",
             "night": "150_jones/doorNight.png"
         }
@@ -44,6 +44,9 @@ room150.btnclick = function (name) {
                     chat(4, 150);
                 else
                     chat(5, 150);
+            }
+            else if (g.sissy[34].ach) {
+                char.room(152);
             }
             else {
                 chat(0, 150);
@@ -91,9 +94,10 @@ room150.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "jones",
-            text: "**Note from the developer: You degenerate slut! I love you! If you want to see this story line vote for it.",
+            text: "Good slut. You're not ready to serve me until  you've proven yourself worthy to wear my piss infront of " +
+                "a croud of people. Now tell me what a dirty slut you are and fuck off",
             button: [
-                { chatID: -1, text: "You got me, I'm such a dirty dirty slut!", callback: "" },
+                { chatID: -1, text: "I'm such a dirty dirty slut!", callback: "" }
             ]
         },
         {

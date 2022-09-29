@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\scripts"
   ],
-  "SelectedNode": "\\C:\\projects\\HaTMP\\HatMP",
+  "SelectedNode": "\\scripts\\char.js",
   "PreviewInSolutionExplorer": false
 }
