@@ -1,6 +1,6 @@
 ﻿var char = {};
 var menu = {};
-char.clothesholder = null;
+char.clothesholder = null; 
 
 $(document).ready(function () {
 
