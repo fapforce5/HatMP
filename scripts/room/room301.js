@@ -20,6 +20,9 @@ room301.main = function () {
             nav.bg("301_living/bg1.jpg");
             chat(32, 301);
             break;
+        case 6:
+            chat(44, 301);
+            break;
     }
 };
 
@@ -168,8 +171,9 @@ room301.chatcatch = function (callback) {
             g.setflag("envyDayEvent");
             char.room(0);
             break;
-        case "hypno1":
+        case "hypno0":
             if (inv.has("hypno1")) {
+                nav.bg("301_living/moviebg.jpg");
                 nav.button({
                     "type": "btn",
                     "name": "movie",
@@ -177,7 +181,7 @@ room301.chatcatch = function (callback) {
                     "top": 0,
                     "width": 464,
                     "height": 1080,
-                    "image": "301_living/h1-1.png"
+                    "image": "301_living/grey.png"
                 }, 301);
                 nav.button({
                     "type": "btn",
@@ -186,7 +190,7 @@ room301.chatcatch = function (callback) {
                     "top": 341,
                     "width": 262,
                     "height": 166,
-                    "image": "301_living/geye5.png"
+                    "image": "301_living/geye1.png"
                 }, 301);
                 nav.button({
                     "type": "btn",
@@ -195,12 +199,19 @@ room301.chatcatch = function (callback) {
                     "top": 356,
                     "width": 282,
                     "height": 92,
-                    "image": "301_living/heye1.png"
+                    "image": "301_living/heye3.png"
                 }, 301);
+                chat(35, 301);
             }
             else {
                 chat(34, 301);
             }
+            break;
+        case "hypno1":
+            nav.modbutton("movie", "301_living/h1-1.png", null, null);
+            nav.modbutton("girleye", "301_living/geye5.png", null, null);
+            nav.modbutton("maleeye", "301_living/heye1.png", null, null);
+            nav.bg("301_living/hypnobg.jpg");
             break;
         case "hypno2":
             nav.modbutton("movie", "301_living/h1-2.png", null, null);
@@ -224,7 +235,10 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/bg.jpg");
             break;
         case "hypno7":
-
+            nav.bg("301_living/hypno1-bg1.jpg");
+            break;
+        case "hypno8":
+            nav.bg("301_living/hypno1-bg2.jpg");
             break;
         case "hypnoEnd":
             sc.setstep("envy", 6);
@@ -623,7 +637,32 @@ room301.chat = function (chatID) {
                     "her pussy. It sounds so wet...",
                 button: [
                     { chatID: -1, text: "I should respect her privacy and leave", callback: "hypnoEnd" },
-                    { chatID: 43, text: "She didn't close her door all the way. A quick peek wouldn't hurt. For science", callback: "hypno7" }
+                    { chatID: 42, text: "She didn't close her door all the way. A quick peek wouldn't hurt. For science", callback: "hypno7" }
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "thinking",
+                text: "She seems pretty into it. I can probably open it a bit more. ",
+                button: [
+                    { chatID: -1, text: "I should respect her privacy and leave", callback: "hypnoEnd" },
+                    { chatID: 43, text: "Open the door a bit wider", callback: "hypno8" }
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "thinking",
+                text: "She's really fucking herself. I guess that video really worked! Hmmmm....",
+                button: [
+                    { chatID: -1, text: "I should leave before I get caught and ruin this. ", callback: "hypnoEnd" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "thinking",
+                text: "End of this release",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
         ];
