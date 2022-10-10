@@ -18,6 +18,15 @@ room725.main = function () {
                 "image": "725_club/chloe.png"
             }, 725);
         }
+        nav.button({
+            "type": "btn",
+            "name": "river",
+            "left": 407,
+            "top": 0,
+            "width": 527,
+            "height": 1080,
+            "image": "725_club/river.png"
+        }, 725);
         var navList = [0, 726, 727];
 
         nav.buildnav(navList);
@@ -35,7 +44,9 @@ room725.btnclick = function (name) {
             }
             else
                 chat(3, 725);
-                
+            break;
+        case "river":
+            chat(18, 725);
             break;
         case "chloe4":
             nav.killall();
@@ -65,7 +76,7 @@ room725.chatcatch = function (callback) {
             nav.killbutton("chloe");
             break;
         case "chloe1":
-            nav.killbutton("chloe");
+            nav.killall();
             nav.bg("727_bathroom/toilet.jpg");
             nav.button({
                 "type": "btn",
@@ -163,7 +174,7 @@ room725.chat = function (chatID) {
             speaker: "chloe",
             text: "Small world. I'm actually dating her right now!",
             button: [
-                { chatID: 3, text: "Oh wow!", callback: "" }
+                { chatID: 19, text: "Oh wow!", callback: "" }
             ]
         },
         {
@@ -290,6 +301,24 @@ room725.chat = function (chatID) {
                 "you need to go. ",
             button: [
                 { chatID: -1, text: "Oh damn... bye", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "river",
+            text: "Hay bro, no offense, but why are you talking to me, you some kinda fag? There lots of fine bitches in here that I'm gunna fuck. Maybe " +
+                "even fuck two at the same time.   ",
+            button: [
+                { chatID: -1, text: "Oh. Good luck with that.", callback: "" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "thinking",
+            text: sc.n("zoey") + " is my best friend in the world. If I try to fuck " + sc.n("chloe") + ", " + sc.n("zoey") + " will probably never " +
+                "speak to me again. ",
+            button: [
+                { chatID: 3, text: "I really shouldn't try anything. ", callback: "" }
             ]
         },
     ];

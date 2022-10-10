@@ -83,6 +83,7 @@ g.st = [
     { n: "mascot", t: 0, q: "int" },
     { n: "subdom", t: 50, q: "hundred" },
     { n: "pink", t: 0, q: "int" },
+    { n: "milk", t: -1, q: "int" },
 
     { n: "fightspeed", t: 1250, q: "int" },
     { n: "fightsex", t: 1250, q: "int" },
@@ -152,6 +153,7 @@ g.st = [
     { n: "candyDayEvent", t: false, q: "day" },
     { n: "envyDayEvent", t: false, q: "day" },
     { n: "jonesDayEvent", t: false, q: "day" },
+    { n: "rachelDayEvent", t: false, q: "day" },
     { n: "momChore", t: false, q: "day" },
     { n: "zoeyDay", t: false, q: "day" },
     { n: "choreDishes", t: false, q: "day" },
@@ -559,7 +561,8 @@ g.rooms = [
     { roomID: 300, name: "Apartments", image: "300_apartment/bg.jpg", nightImage: "300_apartment/bg.jpg", houseID: 300, btn: "roomBtn_300.png" },
     { roomID: 301, name: "Living Room", image: "301_living/bg.jpg", nightImage: "301_living/bg.jpg", houseID: 300, btn: "roomBtn_301.png" },
 
-    { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 300, btn: "roomBtn_301.png" },
+    { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 300, btn: "roomBtn_325.png" },
+    { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 300, btn: "roomBtn_326.png" },
 
     { roomID: 350, name: "Sperm Bank", image: "350_spermBank/350_spermbank.jpg", nightImage: "350_spermBank/350_spermbank.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
@@ -944,27 +947,7 @@ g.initGame = function () {
             case "forestVisit":
                 g.st[i].t = null;
                 break;
-            case "shower":
-                g.st[i].t = char.addMinutes(g.startDate, -4320);
-                break;
-            case "cum":
-                g.st[i].t = char.addMinutes(g.startDate, -757);
-                break;
-            case "money":
-                g.st[i].t = 450;
-                break;
-            case "rent":
-                g.st[i].t = 200;
-                break;
-            case "energy":
-                g.st[i].t = 95;
-                break;
-            case "maxenergy":
-                g.st[i].t = 100;
-                break;
-            case "map":
-                g.st[i].t = "map_1";
-                break;
+            
             case "rentOwed":
             case "arousal":
             case "rentKnockOff":
@@ -1031,25 +1014,6 @@ g.initGame = function () {
             case "domEvent":
                 g.st[i].t = 0;
                 break;
-            case "subdom":
-                g.st[i].t = 50;
-                break;
-            case "bodyhair":
-                g.st[i].t = 100;
-                break;
-            case "momClosetLube":
-                g.st[i].t = 3;
-                break;
-            case "momClosetMoney":
-                g.st[i].t = 7;
-                break;
-            case "painting":
-            case "sewerMap":
-                g.st[i].t = "";
-                break;
-            case "girlname":
-                g.st[i].t = "Scarlett";
-                break;
             case "lockboobs":
             case "lockbutt":
             case "enterSister":
@@ -1087,6 +1051,46 @@ g.initGame = function () {
             case "fantasyCreatures":
                 g.st[i].t = false;
                 break;
+            case "shower":
+                g.st[i].t = char.addMinutes(g.startDate, -4320);
+                break;
+            case "cum":
+                g.st[i].t = char.addMinutes(g.startDate, -757);
+                break;
+            case "money":
+                g.st[i].t = 450;
+                break;
+            case "rent":
+                g.st[i].t = 200;
+                break;
+            case "energy":
+                g.st[i].t = 95;
+                break;
+            case "maxenergy":
+                g.st[i].t = 100;
+                break;
+            case "map":
+                g.st[i].t = "map_1";
+                break;
+            case "subdom":
+                g.st[i].t = 50;
+                break;
+            case "bodyhair":
+                g.st[i].t = 100;
+                break;
+            case "momClosetLube":
+                g.st[i].t = 3;
+                break;
+            case "momClosetMoney":
+                g.st[i].t = 7;
+                break;
+            case "painting":
+            case "sewerMap":
+                g.st[i].t = "";
+                break;
+            case "girlname":
+                g.st[i].t = "Scarlett";
+                break;
             case "displayMenu":
                 g.st[i].t = true;
                 break;
@@ -1101,6 +1105,9 @@ g.initGame = function () {
                 break;
             case "mapview":
                 g.st[i].t = "house";
+                break;
+            case "milk":
+                g.st[i].t = -1;
                 break;
             default:
                 console.log("unknown load: " + g.st[i].n);

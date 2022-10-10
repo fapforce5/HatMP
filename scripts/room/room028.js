@@ -25,6 +25,7 @@ room28.main = function () {
     var arousal, energyIndex;
     var message;
     var buttholePlay;
+    var milkLevel;
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
             case "fitness":
@@ -96,6 +97,9 @@ room28.main = function () {
             case "buttholePlay":
                 buttholePlay = g.st[i].t;
                 break;
+            case "milk":
+                milkLevel = g.st[i].t;
+                break;
         }
     }
     cl.c.butthole -= .05;
@@ -132,6 +136,15 @@ room28.main = function () {
         cl.c.lastHairCut = 0;
     }
 
+    if (milkLevel > -1) {
+        milkLevel += (hormoneLevel / 100) / 3;
+        if (milkLevel > 1)
+            milkLevel = 1;
+        else if (milkLevel < 0)
+            milkLevel = 0;
+
+        g.set("milk", milkLevel);
+    }
 
     if (thisautohormone) {
         var hx = inv.getIndex("hormone");

@@ -104,7 +104,12 @@ input[type=text]:disabled{
     cursor: url('../images/general/h.png'), auto;
 }
 
-.room-btn:hover, .room-btn-lips:hover, .room-btn-tongue:hover{
+.room-btn-brush {
+    position: absolute;
+    cursor: url('../images/general/brush.png'), auto;
+}
+
+.room-btn:hover, .room-btn-lips:hover, .room-btn-tongue:hover, .room-btn-brush:hover{
     filter: brightness(1.2);
 }
 

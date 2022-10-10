@@ -1554,9 +1554,15 @@ cl.display = function () {
     }
     else if (g.tview === "p") {
         var thisBladdeer = g.get("bladder");
+        var thisMilk = g.get("milk");
+        if (thisMilk < 0)
+            thisMilk = 0;
+        thisMilk = .3;
         cl.subDisplay("char-legs", "xray.png");
         $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(38 * thisBladdeer, 40, 320 + (thisBladdeer * -40), 135) + ' position:absolute; background:#eadb3f; z-index:13;"></div>');
+        $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(52 * thisMilk, 60, 245 + (thisMilk * -52), 120) + ' position:absolute; background:#fff; z-index:13;"></div>');
         cl.subDisplay("char-head", "xray_top.png");
+        cl.subDisplay("char-cock", "xray_milk.png");
     }
     else {
         var cback = g.tview === "b";
