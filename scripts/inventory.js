@@ -111,6 +111,7 @@ pic.master = [
     { name: "jada_f", display: "Group Photo", entry: false, image: "jada_f.jpg", thumb: "jada_f.png" },
     { name: "jada_p", display: "Group Photo", entry: false, image: "jada_p.jpg", thumb: "jada_p.png" },
     { name: "evapussy", display: "Eva Wet and Waiting", entry: false, image: "evapussy.jpg", thumb: "evapussy.png" },
+    { name: "chloe", display: "Chloe's cum face", entry: false, image: "chloe.jpg", thumb: "chloe.png" },
 ];
 
 pic.add = function (name) {

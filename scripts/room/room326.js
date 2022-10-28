@@ -65,9 +65,16 @@ room326.btnclick = function (name) {
             }, 326);
             break;
         case "cock2":
-            nav.killall();
-            nav.bg("326_stable/horse3.jpg");
-            chat(3, 326);
+            if (sc.getstep("horse") < 60) {
+                nav.killall();
+                nav.bg("326_stable/horse3.jpg");
+                chat(3, 326);
+            }
+            else {
+                nav.killall();
+                nav.bg("326_stable/horse5.jpg");
+                chat(9, 326);
+            }
             break;
         default:
             break;
@@ -128,13 +135,14 @@ room326.chatcatch = function (callback) {
             zcl.displayface();
             cl.display();
             break;
-        case "horseJackitEnd1":
+        case "horseJackitEnd":
             var horseLove = sc.getstep("horse");
-            if (horseLove < 80)
-                horseLove += 5;
-            else if (horseLove < 60)
+            if (horseLove < 60)
                 horseLove = 60;
-            sc.setstep("horse", 60);
+            else if (horseLove < 80)
+                horseLove += 5;
+            sc.setstep("horse", horseLove);
+
             g.mod("money", 20);
             g.mod("giveHandjobMale", 1);
             g.setflag("rachelDayEvent");
@@ -216,11 +224,19 @@ room326.chat = function (chatID) {
             ]
         },
         {
-            chatID: 7,
+            chatID: 8,
             speaker: "me",
             text: "BLECH! I'm covered in horse cum! ",
             button: [
-                { chatID: -1, text: "Blech!", callback: "horseJackitEnd" }
+                { chatID: -1, text: "I guess I'll have to walk home and show everyone how disgusting I am.", callback: "horseJackitEnd" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "thinking",
+            text: "Here I go, jacking of horses again. ",
+            button: [
+                { chatID: 7, text: "...", callback: "horse6" }
             ]
         },
     ];

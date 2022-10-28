@@ -306,10 +306,9 @@ room725.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "river",
-            text: "Hay bro, no offense, but why are you talking to me, you some kinda fag? There lots of fine bitches in here that I'm gunna fuck. Maybe " +
-                "even fuck two at the same time.   ",
+            text: "Hay Skidmark! You still a virgin? ",
             button: [
-                { chatID: -1, text: "Oh. Good luck with that.", callback: "" }
+                { chatID: -1, text: "I hate you. ", callback: "" }
             ]
         },
         {

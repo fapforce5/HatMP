@@ -43,6 +43,14 @@ room215.btnclick = function (name) {
                 chat(102, 215);
             }, 1000);
             break;
+        case "trio":
+            nav.bg("215_pink/trio" + g.pass + ".jpg");
+            g.pass++;
+            if (g.pass === 7) {
+                nav.killbutton("trio");
+                chat(40, 215);
+            }
+            break;
         default:
             break;
     }
@@ -83,74 +91,33 @@ room215.chatcatch = function (callback) {
                 customer = Math.floor(Math.random() * 3) === 0;
             }
             if (customer) {
-                g.internal.customer = Math.floor(Math.random() * 4);
-                g.internal.customer = 3;
-                if (g.internal.customer === 0) {
+                if (!sc.checkevent("landlord", -10) && sc.getstep("landlord") > 201) {
                     nav.button({
                         "type": "img",
                         "name": "f",
-                        "left": 317,
-                        "top": 222,
-                        "width": 409,
-                        "height": 858,
-                        "image": "215_pink/pri0.png"
+                        "left": 490,
+                        "top": 153,
+                        "width": 382,
+                        "height": 927,
+                        "image": "215_pink/prill.png"
                     }, 215);
-                    chat(100, 215);
+                    chat(6, 215);
                 }
-                else if (g.internal.customer === 1) {
+                else if (sc.getstep("chloe") > 2 && !sc.checkevent("chloe", -1)) {
                     nav.button({
                         "type": "img",
                         "name": "f",
-                        "left": 300,
-                        "top": 163,
-                        "width": 856,
-                        "height": 917,
-                        "image": "215_pink/pri1.png"
+                        "left": 423,
+                        "top": 217,
+                        "width": 402,
+                        "height": 863,
+                        "image": "215_pink/pri3.png"
                     }, 215);
-                    chat(100, 215);
+                    chat(11, 215);
                 }
-                else if (g.internal.customer === 2) {
-                    nav.button({
-                        "type": "img",
-                        "name": "f",
-                        "left": 327,
-                        "top": 213,
-                        "width": 442,
-                        "height": 867,
-                        "image": "215_pink/pri2.png"
-                    }, 215);
-                    chat(100, 215);
-                }
-                else { //special events
-                    if (false) {
-                        //if (sc.checkevent("landlord", -10) && sc.getstep("landlord") > 199) {
-                        nav.button({
-                            "type": "img",
-                            "name": "f",
-                            "left": 490,
-                            "top": 153,
-                            "width": 382,
-                            "height": 927,
-                            "image": "215_pink/prill.png"
-                        }, 215);
-                        chat(6, 215);
-                    }
-                    else if (false) {
-                        //else if (sc.getstep("chloe") > 3) {
-                        //if (bonusEvent === 0) {
-                        nav.button({
-                            "type": "img",
-                            "name": "f",
-                            "left": 423,
-                            "top": 217,
-                            "width": 402,
-                            "height": 863,
-                            "image": "215_pink/pri3.png"
-                        }, 215);
-                        chat(11, 215);
-                        //}
-                    }
-                    else {
+                else {
+                    g.internal.customer = Math.floor(Math.random() * 4);
+                    if (g.internal.customer === 3) {
                         nav.button({
                             "type": "img",
                             "name": "f",
@@ -161,6 +128,42 @@ room215.chatcatch = function (callback) {
                             "image": "215_pink/prtranny.png"
                         }, 215);
                         chat(17, 215);
+                    }
+                    else if (g.internal.customer === 0) {
+                        nav.button({
+                            "type": "img",
+                            "name": "f",
+                            "left": 317,
+                            "top": 222,
+                            "width": 409,
+                            "height": 858,
+                            "image": "215_pink/pri0.png"
+                        }, 215);
+                        chat(100, 215);
+                    }
+                    else if (g.internal.customer === 1) {
+                        nav.button({
+                            "type": "img",
+                            "name": "f",
+                            "left": 300,
+                            "top": 163,
+                            "width": 856,
+                            "height": 917,
+                            "image": "215_pink/pri1.png"
+                        }, 215);
+                        chat(100, 215);
+                    }
+                    else {
+                        nav.button({
+                            "type": "img",
+                            "name": "f",
+                            "left": 327,
+                            "top": 213,
+                            "width": 442,
+                            "height": 867,
+                            "image": "215_pink/pri2.png"
+                        }, 215);
+                        chat(100, 215);
                     }
                 }
             }
@@ -200,6 +203,7 @@ room215.chatcatch = function (callback) {
             break;
         case "fuck2":
             g.mod("energy", -25);
+            g.mod("money", 50);
             switch (g.internal.customer) {
                 case 0:
                     g.mod("receiveAnalMale", 1);
@@ -220,7 +224,6 @@ room215.chatcatch = function (callback) {
             char.room(215);
             break;
         case "reset0":
-            g.mod("money", g.internal.t * 50);
             char.room(215);
             break;
         case "ll0":
@@ -228,10 +231,24 @@ room215.chatcatch = function (callback) {
             nav.bg("215_pink/ll0.jpg");
             break;
         case "ll1":
-            nav.bg("215_pink/ll1.jpg");
-            break;
         case "ll2":
-            nav.bg("215_pink/ll2.jpg");
+        case "ll3":
+        case "ll4":
+        case "ll5":
+        case "ll6":
+        case "ll7":
+        case "ll8":
+        case "ll9":
+        case "ll10":
+        case "ll11":
+        case "ll12":
+            nav.bg("215_pink/" + callback + ".jpg");
+            break;
+        case "ll13":
+            sc.setstep("landlord", -10);
+            g.mod("receiveAnalMale", 3);
+            g.mod("receiveOralMale", 3);
+            g.mod("creamPied", 1);
             break;
         case "c0":
             nav.killall();
@@ -241,16 +258,63 @@ room215.chatcatch = function (callback) {
             nav.killall();
             nav.bg("215_pink/c1.jpg");
             break;
+        case "c2":
+            nav.bg("215_pink/c2.jpg");
+            break;
+        case "c3":
+            nav.bg("215_pink/c3.jpg");
+            break;
+        case "c4":
+            nav.bg("215_pink/c4.jpg");
+            break;
+        case "c5":
+            pic.add("chloe");
+            nav.bg("215_pink/c5.jpg");
+            break;
+        case "c6":
+            nav.bg("215_pink/trio_bad.jpg");
+            break;
+        case "c7":
+            menu.initBuild("init");
+            nav.buildnav([215]);
+            g.mod("fuckPussy", 1);
+            g.mod("loadSwollowed", 1);
+            sc.setstep("chloe", -1);
+            setTimeout(function () {
+                menu.mClick("contact");
+                sc.phone("zoey1");
+            }, 1000);
+            break;
         case "trio0":
             nav.killall();
-            nav.bg("215_pink/trio_0.jpg");
+            nav.bg("215_pink/trio0.jpg");
             if (sc.checkevent("holly", -1))
                 chat(18, 215);
             else
                 chat(21, 215);
             break;
-        case "trio_1":
-            nav.bg("215_pink/trio_1.jpg");
+        case "trio1":
+            nav.bg("215_pink/trio1.jpg");
+            break;
+        case "trio2":
+            nav.bg("215_pink/trio2.jpg");
+            g.pass = 3;
+            nav.button({
+                "type": "btn",
+                "name": "trio",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 215);
+            break;
+        case "trio3":
+            nav.bg("215_pink/pr_1_3.jpg");
+            g.mod("receiveAnalFemale", 1);
+            g.mod("receiveOralFemale", 1);
+            g.mod("receiveHandjobFemale", 1);
+            g.mod("creamPied", 1);
             break;
         case "trio_bad":
             nav.bg("215_pink/trio_bad.jpg");
@@ -371,19 +435,19 @@ room215.chat = function (chatID) {
         },
         {
             chatID: 6,
-            speaker: "random",
-            text: "Show me how much you need my cock in you slut. I want you on you knees ready to worship my feet. ",
+            speaker: "river",
+            text: "Hay skidmark. figures a loser like you would be in here. I'm going to show you what a real man's cock " + 
+                "looks like.",
             button: [
-                { chatID: 7, text: "Come on in.", callback: "ll0" },
-                { chatID: 0, text: "I'm going to pass", callback: "resetWhore" }
+                { chatID: 7, text: "No. Go away " + sc.n("river") + " ! I'm not going to do anything with you! You ruined my life. ", callback: "ll0" },
             ]
         },
         {
             chatID: 7,
-            speaker: "random",
-            text: "Show me how pathictic you are. Suck my toes before I shove my foot up your ass. ",
+            speaker: "landlord",
+            text: sc.n("me") + "! What the hell! Both of you, get in that room this instant!",
             button: [
-                { chatID: 8, text: "Lick his toes slut", callback: "ll1" }
+                { chatID: 8, text: sc.n("landlord") + "! What are you doing here?", callback: "ll1" }
             ]
         },
         {
@@ -391,26 +455,27 @@ room215.chat = function (chatID) {
             speaker: "landlord",
             text: "What the hell do you think you're doing! I can't believe you're selling your ass like a common " +
                 "whore! I take that back, I do believe it. Bending over for this man that you don't even know to " +
-                "lick his toes and get your sissy pussy violated by his feet and cock. I don't even know what to say! ",
+                "show your sissy pussy and get violated by his cock. I don't even know what to say! ",
             button: [
                 { chatID: 9, text: sc.n("landlord") + "?", callback: "ll2" }
             ]
         },
         {
             chatID: 9,
-            speaker: "landlord",
-            text: "If you want to be a whore, then come with me and let's make you a whore. ",
+            speaker: "river",
+            text: "You got yelled at by your " + sc.n("landlord") + "! I always knew you were a loser, ever since I hung " +
+                "you up by your underware in the hallway and got the entire school to call you skid mark. ",
             button: [
-                { chatID: 10, text: "My clothes....", callback: "ll3" }
+                { chatID: 10, text: "Shut up " + sc.n("river") + ". ", callback: "ll3" }
             ]
         },
         {
             chatID: 10,
-            speaker: "me",
-            text: "Why did you drag me out here naked in the street? You think I'm going to be embarrased? I'm " +
-                "proud of my body! ",
+            speaker: "landlord",
+            text: "You were going to have sex with this boy that made fun of you for money? I had hoped I raised you better, " +
+                "but I guess this is what you are. ",
             button: [
-                { chatID: -1, text: "...", callback: "ll4" }
+                { chatID: 26, text: "I wasn't going to have sex with him! ", callback: "ll4" }
             ]
         },
         {
@@ -441,10 +506,10 @@ room215.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "chloe",
-            text: "Let me take that off, now that you're cuffed and can't get away I can reveal myself. " +
-                "I'm going to rape your tiny dicklette " +
-                "and shoot your cum into my dripping pussy, and you're going to love it. Then I'm going to take " + 
-                "a picture and send it to " + sc.n("zoey") + ". Now you will know what it feels like to be betrayed. ",
+            text: "Now that you're cuffed and can't get away I can take this off and reveal myself. " +
+                "Suprised? I'm going to rape your tiny dicklette " +
+                "and shoot your cum into my dripping pussy. You're going to love it. Then I'm going to take " + 
+                "a picture and send it to " + sc.n("zoey") + " so you will know what it feels like to be betrayed. ",
             button: [
                 { chatID: 15, text: "What! No no no no no", callback: "c3" }
             ]
@@ -453,9 +518,9 @@ room215.chat = function (chatID) {
             chatID: 15,
             speaker: "chloe",
             text: "Like how easily my sloppy dripping pussy rides up and down your cock. I can feel how " +
-                "hard you are. " + sc.n("zoey") + " isn't going to be so mad. She'll probably never speak to you " +
+                "hard you are. " + sc.n("zoey") + " is going to be so mad. She'll probably never speak to you " +
                 "again and you won't have any friends. It's really better this way. A slut like you will always be " +  
-                "a terrible girlfirend for her. ",
+                "a terrible firend. ",
             button: [
                 { chatID: 16, text: "Get off of me! Please don't tell her! ", callback: "" }
             ]
@@ -464,10 +529,10 @@ room215.chat = function (chatID) {
             chatID: 16,
             speaker: "chloe",
             text: "You fucking ruined my chances with her. Now I'm going to fucking ruin both of your lives! Go ahead, " +
-                "beg me not to tell. Tell me you'll do anything for me to keep my mouth shut and not share the picture. " +
+                "beg me not to tell. Tell me you'll do anything for me to keep my mouth shut. " +
                 "Beg me you asshole! ",
             button: [
-                { chatID: -1, text: "I'm begging. I'll do anything! ", callback: "c4" }
+                { chatID: 42, text: "I'm begging. I'll do anything! ", callback: "c4" }
             ]
         },
         {
@@ -524,7 +589,7 @@ room215.chat = function (chatID) {
             speaker: "molly",
             text: "So we have a present for you.",
             button: [
-                { chatID: 24, text: "Yes", callback: "trio_1" }
+                { chatID: 24, text: "Yes", callback: "trio1" }
             ]
         },
         {
@@ -540,7 +605,176 @@ room215.chat = function (chatID) {
             speaker: "dolly",
             text: "Get ready to put the dill in our pickle cutie.",
             button: [
-                { chatID: 24, text: "oh yeah", callback: "" }
+                { chatID: 39, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "river",
+            text: "Oh yes you are. I came in here to fuck something, and you look like something to me. Nurse lady you can join " +
+                "in too. I do love fuckin' MILFs. ",
+            button: [
+                { chatID: 27, text: "Uhhh no", callback: "" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "landlord",
+            text: "Oh my. You are cute but I was just here becuase I heard my little girl was working as a prostitute. I " +
+                "had to see for myself. But.... If she's going to be a whore I guess this may be a good lesson for her. " +
+                "Get up. Get on your knees. Open your mouth like a good prostitute. ",
+            button: [
+                { chatID: 28, text: "!", callback: "ll5" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "river",
+            text: "That's why I'm talking about! I used to kick your ass, now I'm going to fuck your ass! ",
+            button: [
+                { chatID: 30, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "landlord",
+            text: "This may be a tough lesson to swallow, but he's right. You've made your choice of what kind of girl you " +
+                "are. Given your bad grades and inability to hold a job, this just may your best life, laying here on your " +
+                "back taking cocks for money. We all have a differnt path in life, and this looks like your path. Let " +
+                "me help guide you on your path. ",
+            button: [
+                { chatID: 30, text: "hmmm....", callback: "ll6" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "landlord",
+            text: "Don't think about the man attached to the dick. Just think about that big fat juicy dick entering your wet " + 
+                "warm mouth. That's what you're here for isn't it. That dick. ",
+            button: [
+                { chatID: 31, text: "mmmMMmmmm", callback: "ll7" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "river",
+            text: "Oh yeah she likes that dick! I can feel her tongue licking up and down my cock shaft. ",
+            button: [
+                { chatID: 32, text: "*slurp* Huh?", callback: "ll8" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "landlord",
+            text: "Even when you hate this bully you can't help but show what a cock hungry whore you are.  " +
+                "Bend over my little slutty girl and show him how hungry for cock you are. ",
+            button: [
+                { chatID: 33, text: "What? No no no no no! Not him! Please don't do this. ", callback: "ll9" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "landlord",
+            text: "Jam your cock in my little sissy girl. Make her squal like a whore. ",
+            button: [
+                { chatID: 34, text: "....Oh no...", callback: "ll10" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "river",
+            text: "Oh yes! ",
+            button: [
+                { chatID: 35, text: "*moan*", callback: "ll11" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "landlord",
+            text: "That's a good girl. Take it all the way. Be a good little cum dump for " + sc.n("landlord") + ". ",
+            button: [
+                { chatID: 36, text: "Gaaaaa  mmMMmmmmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "river",
+            text: "ffff-f-f-fuck I'm going to cum in this sweet ass! ",
+            button: [
+                { chatID: 37, text: "OohhoOOoooooo MmmmMMmmmmm", callback: "ll12" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "landlord",
+            text: "See. Doesn't that feel right. When " + sc.n("bigguy") + " makes love to me there is no better feeling than " +
+                "letting his cum drip out before I run to my toilet and squeeze it out. I see this is what you are now, " +
+                "A dum dump whore. Wear it with pride. Cum is what built our home amd put food on our table...",
+            button: [
+                { chatID: 38, text: "...", callback: "ll13" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "landlord",
+            text: "...and cum is my greatest love in life. You keep making something of yourself, even if that something " +
+                "is a whore. ",
+            button: [
+                { chatID: 1, text: "[Stand at the door]", callback: "private2b" },
+                { chatID: 2, text: "[Stick your ass out the door]", callback: "private2a" },
+                { chatID: -1, text: "[Leave]", callback: "reset0" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "holly",
+            text: "I hope you're ready sugar, 'cause you're in for one hell of a pounding. ",
+            button: [
+                { chatID: -1, text: "oh yeah!", callback: "trio2" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "molly",
+            text: "Well that was more fun than a possum riding down a greased up slip 'n slide! We'll have to do this again! ",
+            button: [
+                { chatID: 41, text: "oh yeah!", callback: "trio3" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "thinking",
+            text: "That was awesome. I'm so full of cum.... ",
+            button: [
+                { chatID: 1, text: "[Stand at the door]", callback: "private2b" },
+                { chatID: 2, text: "[Stick your ass out the door]", callback: "private2a" },
+                { chatID: -1, text: "[Leave]", callback: "reset0" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "chloe",
+            text: "Fuck you. Eat your cum out of my pussy asshole. I'm going to send your precious friend a picture of " +
+                "you eating my dirty wet pussy dripping with your cum. Rot in hell you son of a bitch! ",
+            button: [
+                { chatID: 43, text: "HhhmmmHHHmmmm mmmm", callback: "c5" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "p",
+            text: "Looks like you got yourself a bit tied up. I'll get you free. You should be more careful with who you let in. ",
+            button: [
+                { chatID: 44, text: "I will, thanks. ", callback: "c6" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "thinking",
+            text: "Wow that was crazy. I hope she didn't send that photo..... Oh. It looks like " + sc.n("zoey") + " is calling " +
+                "me. So I guess she did send that picture. Damn it!",
+            button: [
+                { chatID: -1, text: "Answer phone. ", callback: "c7" }
             ]
         },
     ];

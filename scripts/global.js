@@ -947,7 +947,6 @@ g.initGame = function () {
             case "forestVisit":
                 g.st[i].t = null;
                 break;
-            
             case "rentOwed":
             case "arousal":
             case "rentKnockOff":
@@ -1012,6 +1011,7 @@ g.initGame = function () {
             case "superPunch":
             case "mascot":
             case "domEvent":
+            case "pink":
                 g.st[i].t = 0;
                 break;
             case "lockboobs":
@@ -1049,6 +1049,9 @@ g.initGame = function () {
             case "gold0":
             case "keaton":
             case "fantasyCreatures":
+            case "envyDayEvent":
+            case "jonesDayEvent":
+            case "rachelDayEvent":
                 g.st[i].t = false;
                 break;
             case "shower":
@@ -1199,7 +1202,7 @@ g.sumSissy = function () {
             t: 0
         },
         cheatPoints: {
-            p: 1000,
+            p: 1,
             t: 0
         },
         legacyPoints: {

@@ -38,8 +38,10 @@ room325.btnclick = function (name) {
                 case 1:
                     var milkmilk = g.get("milk");
                     if (milkmilk > -1) {
-                        //choice of milking (check if milk > .5) / horse brushing
-                        //take your hormones and get some sleep  
+                        if (milkmilk < .6)
+                            chat(22, 325);
+                        else
+                            chat(23, 325);
                     }
                     else if (milkmilk === -1 && cl.c.chest > 3) {
                         chat(11, 325);
@@ -123,6 +125,16 @@ room325.chatcatch = function (callback) {
             break;
         case "stable":
             char.room(326);
+            break;
+        case "milk0":
+            nav.killall();
+            nav.bg("327_milking/processing.jpg");
+            break;
+        case "milk1":
+            nav.bg("327_milking/milkparlor.jpg");
+            break;
+        case "milk2":
+            nav.bg("327_milking/visiting.jpg");
             break;
         default:
             break;
@@ -319,6 +331,103 @@ room325.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "I sure am!", callback: "stable" },
                 { chatID: -1, text: "No. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "rachel",
+            text: "I can tell your milks a little low. Take some hormones and get some sleep. In the mean time " +
+                "are you here to brush the horse? I think " + sc.n("horse") + " is starting to like you. ",
+            button: [
+                { chatID: -1, text: "I sure am!", callback: "stable" },
+                { chatID: -1, text: "No. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "rachel",
+            text: "You look ready to milk. I think " + sc.n("horse") + " is starting to like you. ",
+            button: [
+                { chatID: 24, text: "I'm looking for my first milking. ", callback: "" },
+                { chatID: -1, text: "I want to brush the horse", callback: "stable" },
+                { chatID: -1, text: "I'm not sure why I'm here. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "rachel",
+            text: "This is a big day. For you. Follow me into the big barn.  ",
+            button: [
+                { chatID: 25, text: "I'm looking for my first milking. ", callback: "milk0" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "rachel",
+            text: "This here is the processin' area. I got so much demand for milk you wouldn't believe it. To keep this place running " +
+                "I have to have around 100 hucows. Most earn a good living... if they follow the rules, you know what I mean. " +
+                "You seem like a good girl, I'm sure you'll be just fine. You'll get a  " +
+                "healthy paycheck each time you come on by. Now follow me to the milking parlor viewing booth. ",
+            button: [
+                { chatID: 26, text: "[Follow her]", callback: "milk1" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "rachel",
+            text: "This here is my milking parlor. As you can see I have a large collection of hucows that I've employed. All busy " +
+                "little cows makin' milk for me. I really do love this view. It's the view of money. You know how I started this farm? ",
+            button: [
+                { chatID: 27, text: "How? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "rachel",
+            text: "I used to only have cows, till them big city people started their mega farms and nearly put me under. " +
+                "Times were rough until I started talking to a client that only wanted breast milk. Well I figured a way to " +
+                "make my own from my own tits. And that kept me afloat for a while, but I was barely making it till I got the " +
+                "idea to invite some friends and give them a cut. Pretty soon I had girls lining up. I had to sell my cows and " +
+                "convert the cow pen to a hucow pen. Lets go down and we'll get to milk ya. ",
+            button: [
+                { chatID: 28, text: "ok. ", callback: "milk2" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "rachel",
+            text: "This here is Kinsey, our li'l Irish lassy. Kinsey here was caught trying to pour cows milk into her milking tubes. " +
+                "Ruined an entire batch. Now she's pinned here until she replaces all that milk plus interest. It was a rather large " +
+                "batch so she's going to be here a while. Don't worry too much, we feed and water her like I did with our cows. " +
+                "Kinsey, moo for " + sc.n("me") + " so this girl here can see you know you're place here. ",
+            button: [
+                { chatID: 29, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "random",
+            text: "Mooooooo",
+            button: [
+                { chatID: 30, text: "Oh my", callback: "" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "rachel",
+            text: "I showed you Kinsey so you know there are consequences to your actions here. Get milked and get paid. " +
+                "Really gosh darn simple. Since this is your first visit I need to do a quality check. Makin' sure it's " +
+                "up to my standard. Follow me to the tasting room. ",
+            button: [
+                { chatID: 31, text: "Ok!", callback: "milk3" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "me",
+            text: "Rest in progress...  ",
+            button: [
+                { chatID: -1, text: "Ok!", callback: "leave" },
             ]
         },
     ];
