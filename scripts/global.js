@@ -561,8 +561,9 @@ g.rooms = [
     { roomID: 300, name: "Apartments", image: "300_apartment/bg.jpg", nightImage: "300_apartment/bg.jpg", houseID: 300, btn: "roomBtn_300.png" },
     { roomID: 301, name: "Living Room", image: "301_living/bg.jpg", nightImage: "301_living/bg.jpg", houseID: 300, btn: "roomBtn_301.png" },
 
-    { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 300, btn: "roomBtn_325.png" },
-    { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 300, btn: "roomBtn_326.png" },
+    { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
+    { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },
+    { roomID: 327, name: "milking", image: "327_milking/milkparlor.jpg", nightImage: "327_milking/milkparlor.jpg", houseID: 325, btn: "roomBtn_327.png" },
 
     { roomID: 350, name: "Sperm Bank", image: "350_spermBank/350_spermbank.jpg", nightImage: "350_spermBank/350_spermbank.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
@@ -661,7 +662,6 @@ g.roomMap = [
     { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
     { roomID: 250, display: "Diner", access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
     { roomID: 300, display: "Apartment", access: true, darkAccess: true, left: 836, top: 662, width: 303, height: 309, img: "map/300.png", night: "map/300_night.png", map: 2 },
-
     { roomID: 325, display: "Farm", access: true, darkAccess: true, left: 646, top: 419, width: 351, height: 195, img: "map/325.png", night: "map/325_night.png", map: 0 },
     { roomID: 350, display: "Sperm Bank", access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
     { roomID: 400, display: "Mall", access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
@@ -1572,4 +1572,9 @@ g.sissyclick = function (ttype) {
 
 String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+g.sleep = function () {
+    g.pass = g.roomID;
+    char.room(28);
 };

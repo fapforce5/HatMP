@@ -1,9 +1,23 @@
 ﻿//Room name
 var room300 = {};
 room300.main = function () {
-    if (sc.getstep("envy") === 0) {
+    var envyStep = sc.getstep("envy");
+    if (envyStep === 0) {
         nav.bg("300_apartment/fight.jpg");
         chat(4, 300);
+    }
+    else if (envyStep === 14) {
+        nav.button({
+            "type": "btn",
+            "name": "door",
+            "left": 930,
+            "top": 501,
+            "width": 231,
+            "height": 267,
+            "image": "300_apartment/door14.png"
+        }, 300);
+        var navList = [0];
+        nav.buildnav(navList);
     }
     else {
         var btnList = [
@@ -28,10 +42,11 @@ room300.main = function () {
                 "image": "300_apartment/slut.png"
             });
         }
-        var navList = [0];
+        
         $.each(btnList, function (i, v) {
             nav.button(v, 300);
         });
+        var navList = [0];
         nav.buildnav(navList);
     }
 };
@@ -43,15 +58,14 @@ room300.btnclick = function (name) {
             chat(0, 300);
             break;
         case "door":
+            var envystep = sc.getstep("envy");
             if (g.get("envyDayEvent")) {
                 chat(2, 300);
             }
             else if (g.isNight()) {
-                nav.killall();
-                nav.bg("300_apartment/knocknight.jpg");
                 chat(1, 300);
             }
-            else if (sc.getstep("envy") === 1) {
+            else if (envystep === 1) {
                 nav.killall();
                 nav.bg("300_apartment/frontdoor.jpg");
                 chat(13, 300);
@@ -63,9 +77,32 @@ room300.btnclick = function (name) {
                     chat(21, 300);
             }
             else {
-                nav.killall();
-                nav.bg("300_apartment/knock.jpg");
-                chat(3, 300);
+                if (envystep === 13) {
+                    nav.killall();
+                    nav.bg("300_apartment/knock13.jpg");
+                    chat(22, 300);
+                }
+                else if (envystep === 14) {
+                    chat(23, 300);
+                }
+                else {
+                    nav.killall();
+                    if (envystep < 7)
+                        nav.bg("300_apartment/knock0.jpg");
+                    else if (envystep === 7)
+                        nav.bg("300_apartment/knock7.jpg");
+                    else if (envystep === 8)
+                        nav.bg("300_apartment/knock8.jpg");
+                    else if (envystep === 9)
+                        nav.bg("300_apartment/knock9.jpg");
+                    else if (envystep === 10)
+                        nav.bg("300_apartment/knock9.jpg");
+                    else if (envystep === 11)
+                        nav.bg("300_apartment/knock11.jpg");
+                    else if (envystep === 12)
+                        nav.bg("300_apartment/knock11.jpg");
+                    chat(3, 300);
+                }
             }
             break;
         default:
@@ -114,10 +151,10 @@ room300.chat = function (chatID) {
         },
         {
             chatID: 1,
-            speaker: "envy",
-            text: "It's pretty late for me. Maybe we'll see each other tomorrow. ",
+            speaker: "me",
+            text: "It's pretty late. Maybe she's asleep ",
             button: [
-                { chatID: -1, text: "Oh yeah. 'night", callback: "reset" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
@@ -131,7 +168,7 @@ room300.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "envy",
-            text: "Hay " + sc.n("me") + " do you want to come in? ",
+            text: "Hey " + sc.n("me") + " do you want to come in? ",
             button: [
                 { chatID: -1, text: "Yeah, I do", callback: "enter" },
                 { chatID: -1, text: "Oh, no", callback: "reset" }
@@ -294,6 +331,24 @@ room300.chat = function (chatID) {
             text: "I need to get the frozen pizza from " + sc.n("spanky") + "'s before I visit her again. ",
             button: [
                 { chatID: -1, text: "Duh!", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "Weird. Her door is slightly open. ",
+            button: [
+                { chatID: -1, text: "Just go in", callback: "enter" },
+                { chatID: -1, text: "I repsect her privacy and close the door and leave. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "thinking",
+            text: "That's a lot of guys lined outside her door.... ",
+            button: [
+                { chatID: -1, text: "Go in", callback: "enter" },
+                { chatID: -1, text: "I'll come back later", callback: "reset" },
             ]
         },
     ];

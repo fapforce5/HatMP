@@ -123,11 +123,14 @@ room28.main = function () {
     //growhair
     var initHairGrowth = 4;
     if (hormoneLevel > 50)
-        Math.floor(hormoneLevel / 10) - 2;
-    if (initHairGrowth < 4)
-        initHairGrowth = 4;
+        Math.floor(hormoneLevel / 12) - 2;
+    if (initHairGrowth < 5)
+        initHairGrowth = 5;
 
+    if (isNaN(cl.c.lastHairCut))
+        cl.c.lastHairCut = 0;
     cl.c.lastHairCut += initHairGrowth;
+
     if (cl.c.lastHairCut > 99) {
         if (cl.c.hairLength === null)
             cl.c.hairLength = 0;
@@ -144,6 +147,7 @@ room28.main = function () {
             milkLevel = 0;
 
         g.set("milk", milkLevel);
+        cl.display();
     }
 
     if (thisautohormone) {

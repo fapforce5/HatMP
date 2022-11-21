@@ -1,7 +1,6 @@
 ﻿//Whore Room
 var room215 = {};
 room215.main = function () {
-    
     var btnList = [
         {
             "type": "btn",

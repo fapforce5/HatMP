@@ -50,6 +50,12 @@ room325.btnclick = function (name) {
                         chat(21, 325);
                     }
                     break;
+                case 2:
+                    if (milkmilk < .6)
+                        chat(22, 325);
+                    else
+                        chat(36, 325);
+                    break;
             }
             break;
         case "pill":
@@ -135,6 +141,34 @@ room325.chatcatch = function (callback) {
             break;
         case "milk2":
             nav.bg("327_milking/visiting.jpg");
+            break;
+        case "milk3":
+            nav.bg("327_milking/milk3.jpg");
+            break;
+        case "milk4":
+            cl.nude();
+            nav.bg("327_milking/milk4.jpg");
+            break;
+        case "milk5":
+            nav.bg("327_milking/milk5.jpg");
+            break;
+        case "milk6":
+            nav.bg("327_milking/milk6.jpg");
+            break;
+        case "milk7":
+            g.set("milk", 0);
+            cl.display();
+            nav.bg("327_milking/milk7.jpg");
+            break;
+        case "milk8":
+            cl.undo();
+            g.setflag("rachelDayEvent");
+            g.mod("money", 50);
+            sc.setstep("rachel", 2);
+            char.room(0);
+            break;
+        case "milkme":
+            char.room(327);
             break;
         default:
             break;
@@ -417,17 +451,61 @@ room325.chat = function (chatID) {
             speaker: "rachel",
             text: "I showed you Kinsey so you know there are consequences to your actions here. Get milked and get paid. " +
                 "Really gosh darn simple. Since this is your first visit I need to do a quality check. Makin' sure it's " +
-                "up to my standard. Follow me to the tasting room. ",
+                "up to my standard. Follow me to the exam room. ",
             button: [
                 { chatID: 31, text: "Ok!", callback: "milk3" },
             ]
         },
         {
             chatID: 31,
-            speaker: "me",
-            text: "Rest in progress...  ",
+            speaker: "rachel",
+            text: "This is the exam and quality assurance room. Quality milk is of the upmost importance to my clients. " +
+                "Strip down, I need to inspect your milk to make sure it's up to my standards. " +
+                "",
             button: [
-                { chatID: -1, text: "Ok!", callback: "leave" },
+                { chatID: 32, text: "[Strip]", callback: "milk4" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "rachel",
+            text: "And the best way to know my standards is to taste my standards. Come take a taste of some quality lactation darlin'. ",
+            button: [
+                { chatID: 33, text: "[Take a taste]", callback: "milk5" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "rachel",
+            text: "That's right. Drink up, it is yummy isn't it. Come to my examining table so we can taste each other. ",
+            button: [
+                { chatID: 34, text: "mMmm yeah", callback: "milk6" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "rachel",
+            text: "Yuuummmmmmm mmMmmm ",
+            button: [
+                { chatID: 35, text: "ooOooommmmmm", callback: "milk7" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "rachel",
+            text: "You were delicious. There's a real quality to your milk. Here's $50. Come back when you refill. ",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "milk8" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "rachel",
+            text: "You look ready to milk. I think " + sc.n("horse") + " is starting to like you. ",
+            button: [
+                { chatID: -1, text: "Milk me ", callback: "milkme" },
+                { chatID: -1, text: "I want to brush the horse", callback: "stable" },
+                { chatID: -1, text: "I'm not sure why I'm here. ", callback: "" },
             ]
         },
     ];

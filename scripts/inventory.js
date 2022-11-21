@@ -90,7 +90,13 @@ inv.master = [
     { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, image: "chisel.png", n: false, desc: "Used to break out of prison. " },
     { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
 
-    { type: "y", name: "hypno1", display: "Hypno Lesson #1", entry: false, count: null, cost: 100, image: "hypno1.png", n: false, desc: "Horny Girls Masturbate" }
+    { type: "y", name: "hypno1", display: "Hypno Lesson #1", entry: false, count: null, cost: 20, image: "hypno1.png", n: false, desc: "Horny Girls Masturbate" },
+    { type: "y", name: "hypno2", display: "Hypno Lesson #2", entry: false, count: null, cost: 40, image: "hypno2.png", n: false, desc: "Pretty girl's wear makeup" },
+    { type: "y", name: "hypno3", display: "Hypno Lesson #3", entry: false, count: null, cost: 40, image: "hypno3.png", n: false, desc: "Girls wear dresses" },
+    { type: "y", name: "hypno4", display: "Hypno Lesson #4", entry: false, count: null, cost: 50, image: "hypno4.png", n: false, desc: "Blondes have more fun!" },
+    { type: "y", name: "hypno5", display: "Hypno Lesson #5", entry: false, count: null, cost: 50, image: "hypno5.png", n: false, desc: "Don't think too much" },
+    { type: "y", name: "hypno6", display: "Hypno Lesson #6", entry: false, count: null, cost: 60, image: "hypno6.png", n: false, desc: "Bimbo is better" },
+    { type: "y", name: "hypno7", display: "Hypno Lesson #7", entry: false, count: null, cost: 100, image: "hypno7.png", n: false, desc: "You are an object. Let men use you. All your holes and fuck holes" }
 
 ];
 

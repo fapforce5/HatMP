@@ -352,6 +352,10 @@ sc.events = [
     { name: "jones", step: 1, txt: "Clean his house and his cock", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
     { name: "jones", step: 2, txt: "Next Event - Not complete", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
 
+    { name: "rachel", step: 0, txt: "Not yet met", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
+    { name: "rachel", step: 1, txt: "Need to get bigger boobs for the milking. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
+    { name: "rachel", step: 2, txt: "You can get milked now. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
+
     { name: "ubel", step: -1, txt: "First Nightly whipping", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "ubel", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
     { name: "ubel", step: 1, txt: "Escape", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
