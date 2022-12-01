@@ -53,8 +53,12 @@ room475.main = function () {
             }, 475);
             chat(2, 475);
         }
-        else
-            chat(1, 475);
+        else {
+            if (g.get("oncase") === "queen")
+                char.room(477);
+            else
+                chat(1, 475);
+        }
     }
     if (mainLoop) {
 
@@ -72,8 +76,8 @@ room475.main = function () {
             m.fmap[g.map.row][g.map.col - 1].visited = true;
         g.map.lastFight++;
 
-        if (g.map.lastFight > 3) { //(((Math.floor(Math.random() * 4) == 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12))
-            if ((Math.floor(Math.random() * 4) === 0) || g.map.lastFight > 10) {
+        if (g.map.lastFight > 5) { //(((Math.floor(Math.random() * 4) == 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12))
+            if ((Math.floor(Math.random() * 5) === 0) || g.map.lastFight > 12) {
                 var te = Math.floor(Math.random() * 3);
                 if (g.get("fantasyCreatures")) {
                     if (g.isNight())
@@ -223,9 +227,9 @@ room475.chat = function (chatID) {
             {
                 chatID: 2,
                 speaker: "queen",
-                text: "You are not yet ready to be received into my home. [Future update]",
+                text: "This is my private cottage. You need to leave immediately before I bring my wrath upon you! ",
                 button: [
-                    { chatID: -1, text: "...", callback: "resetcot" }
+                    { chatID: -1, text: "Oh, sure. ", callback: "resetcot" }
                 ]
             },
         ];

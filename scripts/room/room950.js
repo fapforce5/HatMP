@@ -391,7 +391,7 @@ room950.btnclick = function (name) {
         case "brick":
             if (g.internal.brick < 4) {
                 if (inv.has("chisel")) {
-                    if (g.get("bodyLevel") < 3) {
+                    if (g.get("bodyLevel") < 2) {
                         chat(49, 950);
                     }
                     else {

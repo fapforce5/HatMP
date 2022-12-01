@@ -464,6 +464,10 @@ char.makeWalk = function () {
                         "<li>Fight your way through the clown clan to the very last room to get Missy's Red Box.</li>" +
                         "<li>Once you get the Red Box Return to Missy's office.";
                     break;
+                case "queen":
+                    oncaseText = "Sneak into the Forest Queen's cottage at night. To get there take the paths behind the " +
+                        "park bathroom and find her cottage. "
+                    break;
                 default:
                     break;
             }

@@ -1823,8 +1823,6 @@ room200.chat = function (chatID) {
             chatID: 121,
             speaker: "missy",
             text: "To help you out I'll allow you to continue your training once you've returned. ",
-                //"The pink room of pleasure will help you be better with your " +
-                //"sissy skills. The black room of pain will help you improve your defences and raise your pain tolerance. Any questions? ",
             button: [
                 { chatID: 122, text: "Yes why is " + sc.n("cecilia") + " tied up ma'am?", callback: "" }
             ]

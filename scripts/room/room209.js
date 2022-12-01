@@ -68,6 +68,14 @@ room209.main = function () {
             else
                 chat(26, 209);
         }
+        //else if (inv.has("envelope")) {
+        //    inv.use("envelope");
+        //    room209.btnclick("bb1");
+        //    room209.btnclick("poster0");
+        //    room209.btnclick("displayChairsit");
+        //    room209.btnclick("displaypbtn");
+        //    chat(204, 209);
+        //}
         else if (g.sissy[1].ach) {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
@@ -522,6 +530,15 @@ room209.btnclick = function (name) {
             room209.btnclick("displayChairsit");
             room209.btnclick("displayMissybtn");
             chat(63, 209);
+            break;
+        case "h_60":
+            nav.bg("209_classroom/bg.jpg");
+            nav.killall();
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(199, 209);
             break;
         case "h_50":
             g.spendSissy(name);
@@ -1470,6 +1487,21 @@ room209.chatcatch = function (callback) {
             inv.add("pinkDildo");
             g.sissy[59].ach = true;
             room209.chatcatch("end");
+            break;
+        case "h_60_1":
+            nav.killall();
+            nav.bg("209_classroom/h_60_1.jpg");
+            break;
+        case "h_60_2":
+            nav.killall();
+            nav.bg("209_classroom/h_60_2.jpg");
+            break;
+        case "h_60_3":
+            inv.add("cumjar", 3);
+            g.set("oncase", "queen");
+            g.sissy[60].ach = true;
+            char.addtime(180);
+            char.room(0);
             break;
         case "selectStart":
             room209.btnclick("selectStart");
@@ -3310,6 +3342,58 @@ room209.chat = function (chatID) {
                     "you the tour. ",
                 button: [
                     { chatID: -1, text: "Follow her to the pink room.", callback: "h_14_0" }
+                ]
+            },
+            {
+                chatID: 199,
+                speaker: "p",
+                text: "So we need to go save " + sc.n("missy") + ". The problem is that we can't just run in there and grab her. " +
+                    "we need a plan. A smart plan. To make that smart plan we're going to have to get some more information. ",
+                button: [
+                    { chatID: 200, text: "...", callback: "h_60_1" }
+                ]
+            },
+            {
+                chatID: 200,
+                speaker: "p",
+                text: "This is the Forest Queen. She started life as a boy, but was transformed in the CUM Bath ritual as the " +
+                    "first to successfully undergo the transformation. She failed post transformation tests to bring about the " +  
+                    "coming of Azrael where she was forced to be the personal servent of Ubel for years. ",
+                button: [
+                    { chatID: 201, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 201,
+                speaker: "p",
+                text: "She was released from her servitude on the condition that she continues to work for the cult, but outside " +
+                    "the compound. From what I've gathered she is the principle agent outside the compound. Many people have " +
+                    "lost their freedom and lives to this woman. Don't underestimate her, she has power I don't fully understand. ",
+                button: [
+                    { chatID: 202, text: "How do you know all this? ", callback: "h_60_2" }
+                ]
+            },
+            {
+                chatID: 202,
+                speaker: "p",
+                text: "Oh, haha. Many clints in the Pink Room like to talk when they're drunk and horny. Like they say, big tits " +
+                    "sink ships. She lives in the cottage deep in the forest to the north. You'll find a path behind the park bathroom. " +
+                    "The exact location may be difficult to find and the forest is full of threats so make sure you're ready for a fight " +
+                    "or fuck. ",
+                button: [
+                    { chatID: 203, text: "So do I just walk in? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 203,
+                speaker: "p",
+                text: "I think the best plan is to try to sneak into her house at night and find any information you can on the cult. " +
+                    "Given her time at the cult there's got to be something useful. Look for compound blue prints, security plans, " +
+                    "access codes, keys, personnel lists, or anything else that may be of use. I'm going to gift you some " +
+                    "jars of cum. Great for energy restoration when you're out there fighting to good fight. Remember " + sc.n("missy") +
+                    " is counting on you. ",
+                button: [
+                    { chatID: -1, text: "I won't let her down! ", callback: "h_60_3" }
                 ]
             },
         ];

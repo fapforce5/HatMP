@@ -5,11 +5,11 @@ room327.main = function () {
         {
             "type": "btn",
             "name": "getmilked",
-            "left": 1140,
-            "top": 369,
-            "width": 723,
-            "height": 780,
-            "image": "327_folder/getmilked.png"
+            "left": 726,
+            "top": 232,
+            "width": 470,
+            "height": 605,
+            "image": "327_milking/getmilked.png"
         }
     ];
     var navList = [0];
@@ -21,7 +21,8 @@ room327.main = function () {
 
 room327.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "getmilked":
+            nav.killall();
             break;
         default:
             break;

@@ -342,11 +342,11 @@ room451.chatcatch = function (callback) {
                 "type": "btn",
                 "name": "gc1",
                 "left": 432,
-                "top": 274,
-                "width": 218,
-                "height": 222,
+                "top": 304,
+                "width": 150,
+                "height": 192,
                 "title": "A cock",
-                "image": "451_parkMensRoom/gc1.png"
+                "image": "451_parkMensRoom/gc0.png"
             }, 451);
             break;
         case "gc7":
