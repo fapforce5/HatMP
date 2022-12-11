@@ -51,7 +51,7 @@ room325.btnclick = function (name) {
                     }
                     break;
                 case 2:
-                    if (milkmilk < .6)
+                    if (g.get("milk") < .6)
                         chat(22, 325);
                     else
                         chat(36, 325);
@@ -440,7 +440,7 @@ room325.chat = function (chatID) {
         },
         {
             chatID: 29,
-            speaker: "random",
+            speaker: "kinsey",
             text: "Mooooooo",
             button: [
                 { chatID: 30, text: "Oh my", callback: "" },

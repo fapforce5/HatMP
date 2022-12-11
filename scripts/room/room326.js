@@ -36,7 +36,7 @@ room326.btnclick = function (name) {
             if (horseLove2 <= 40) {
                 chat(2, 326);
             }
-            else if (horseLove2 <= 80) {
+            else {
                 nav.killbutton("cock");
                 nav.button({
                     "type": "hand",
@@ -47,9 +47,6 @@ room326.btnclick = function (name) {
                     "height": 263,
                     "image": "326_stable/cock1.png"
                 }, 326);
-            }
-            else {
-                //get fucked bitch
             }
             break;
         case "cock1":
@@ -65,15 +62,19 @@ room326.btnclick = function (name) {
             }, 326);
             break;
         case "cock2":
-            if (sc.getstep("horse") < 60) {
+            var horseystep = sc.getstep("horse");
+            if (horseystep < 45) {
                 nav.killall();
                 nav.bg("326_stable/horse3.jpg");
                 chat(3, 326);
             }
-            else {
+            if (horseystep < 60) {
                 nav.killall();
                 nav.bg("326_stable/horse5.jpg");
                 chat(9, 326);
+            }
+            else {
+                chat(14, 326);
             }
             break;
         default:
@@ -84,10 +85,8 @@ room326.btnclick = function (name) {
 room326.chatcatch = function (callback) {
     switch (callback) {
         case "brushEnd":
-            var horseLove = sc.getstep("horse");
-            if (horseLove < 40)
-                horseLove += 5;
-            sc.setstep("horse", horseLove);
+            g.internal = "brush";
+            room326.chatcatch("incrementHorse");
             g.mod("money", 20);
             g.setflag("rachelDayEvent");
             char.addtime(60);
@@ -136,18 +135,48 @@ room326.chatcatch = function (callback) {
             cl.display();
             break;
         case "horseJackitEnd":
-            var horseLove = sc.getstep("horse");
-            if (horseLove < 60)
-                horseLove = 60;
-            else if (horseLove < 80)
-                horseLove += 5;
-            sc.setstep("horse", horseLove);
-
+            g.internal = "jack";
+            room326.chatcatch("incrementHorse");
             g.mod("money", 20);
             g.mod("giveHandjobMale", 1);
             g.setflag("rachelDayEvent");
             char.addtime(60);
             char.room(0);
+            break;
+        case "checkBrush":
+            var checkHorse = sc.getstep("horse");
+            if (checkHorse < 20)
+                chat(1, 326);
+            else if (checkHorse < 40)
+                chat(10, 326);
+            else if (checkHorse < 60)
+                chat(11, 326);
+            else if (checkHorse < 80)
+                chat(12, 326);
+            else
+                chat(13, 326);
+            break;
+        case "incrementHorse":
+            var topLevel;
+            switch (g.internal) {
+                case "brush":
+                    topLevel = 40;
+                    break;
+                case "jack":
+                    topLevel = 60;
+                    break;
+            }
+            var horseLove = sc.getstep("horse");
+            if (horseLove < topLevel) {
+                horseLove += 8;
+                if (horseLove > topLevel)
+                    horseLove = topLevel;
+                sc.setstep("horse", horseLove);
+            }
+            break;
+        case "lick0":
+            nav.killall();
+            nav.bg("326_stable/lick0.jpg");
             break;
         default:
             break;
@@ -161,13 +190,13 @@ room326.chat = function (chatID) {
             speaker: "horse",
             text: "*Whinny* *Sigh*",
             button: [
-                { chatID: 1, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "checkBrush" }
             ]
         },
         {
             chatID: 1,
             speaker: "me",
-            text: "That's a good boy. All brushed up. ",
+            text: "That's a good boy. All brushed up. If I keep brushing you I'm sure you'll trust  me.",
             button: [
                 { chatID: -1, text: "...", callback: "brushEnd" }
             ]
@@ -237,6 +266,80 @@ room326.chat = function (chatID) {
             text: "Here I go, jacking of horses again. ",
             button: [
                 { chatID: 7, text: "...", callback: "horse6" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "That's a good boy. He doesn't trust me yet, but it's getting closer.",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "me",
+            text: "I'm almost there. I can feel the horse trusting me more. ",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "me",
+            text: "I'm pretty sure the horse trusts me pretty good now. ",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "me",
+            text: "I'm sure the horse completely trusts me now. ",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "me",
+            text: "Hay " + sc.n("horse") + ". Can I fit you in my mouth?",
+            button: [
+                { chatID: 15, text: "Lick it", callback: "lick0" },
+                { chatID: -1, text: "Just brush it", callback: "horse" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "thinking",
+            text: "Not as bad as I thought. I wonder if I can fit it in my mouth?",
+            button: [
+                { chatID: 16, text: "...", callback: "lick1" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "So big! I don't think I can fit any more in! I hope I'm deep enough to make him cum.",
+            button: [
+                { chatID: 17, text: "...", callback: "lick2" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "rachel",
+            text: "This isn't quite what I thought you'd be doin' when you came in to brush " + sc.n("horse") + ". ",
+            button: [
+                { chatID: 18, text: "!!!", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "rachel",
+            text: "I didn't mean for you to stop. Keep going. I've never seen a horse get a blow job. Finish up, I want " +
+                "to watch. ",
+            button: [
+                { chatID: 19, text: "*GULP* ok. ", callback: "" },
             ]
         },
     ];

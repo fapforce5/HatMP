@@ -229,7 +229,7 @@ room209.btnclick = function (name) {
             nav.killall();
             $("#room_footer").hide();
             char.changeMenu("hide", false, true);
-            nav.bg("28_transformation\grid.jpg");
+            nav.bg("28_transformation/grid.jpg");
             room210.main();
             break;
         case "h_0":

@@ -21,7 +21,7 @@ g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
 g.pw = "c2lzc3k=";
-g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 450, 475, 500, 650, 901, 408];
+g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 901, 408];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
 g.sp = {};
 g.roomID = 1;
@@ -243,9 +243,9 @@ g.sissy = [
     { id: 45, pID: [51], icon: "lip1", x: 16, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: 1, h: true },
     { id: 46, pID: [45], icon: "lip2", x: 17, y: 4, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: 2, h: true },
 
-    { id: 47, pID: [55], icon: "q1", x: 16, y: 8, name: "Quest 1", description: "Save Missy #1", ach: false, active: true, points: 0, h: false },
-    { id: 48, pID: [55], icon: "q2", x: 16, y: 10, name: "Quest 2", description: "Save Missy #2", ach: false, active: true, points: 1, h: true },
-    { id: 49, pID: [55], icon: "q3", x: 16, y: 12, name: "Quest 3", description: "Save Missy #3", ach: false, active: true, points: 1, h: true },
+    { id: 47, pID: [55], icon: "q1", x: 16, y: 8, name: "Quest 1", description: "Save Missy #1", ach: false, active: false, points: 0, h: false },
+    { id: 48, pID: [55], icon: "q2", x: 16, y: 10, name: "Quest 2", description: "Save Missy #2", ach: false, active: false, points: 0, h: false },
+    { id: 49, pID: [55], icon: "q3", x: 16, y: 12, name: "Quest 3", description: "Save Missy #3", ach: false, active: false, points: 0, h: true },
 
     { id: 50, pID: [15], icon: "black", x: 10, y: 12, name: "Black Room", description: "Train in the Black Room", ach: false, active: true, points: 1, h: false },
 
@@ -264,7 +264,7 @@ g.sissy = [
     { id: 58, pID: [0], icon: "lube", x: 3, y: 11, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
     { id: 59, pID: [58], icon: "dildos", x: 3, y: 12, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: true, points: 1, h: false },    
+    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: true, points: 0, h: false },    
 
 ];
 
