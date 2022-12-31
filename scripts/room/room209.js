@@ -33,11 +33,20 @@ room209.main = function () {
             chat(1, 209);
     }
     else if (oncase !== null) {
-        room209.btnclick("bb1");
-        room209.btnclick("poster0");
-        room209.btnclick("displayChairsit");
-        room209.btnclick("displayMissybtn");
-        chat(60, 209);
+        if (g.sissy[18].ach) {
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(204, 209);
+        }
+        else {
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displayMissybtn");
+            chat(60, 209);
+        }
     }
     else if (!g.sissy[54].ach) {
         room209.btnclick("bb0");
@@ -287,6 +296,7 @@ room209.btnclick = function (name) {
             chat(140, 209);
             break;
         case "h_12":
+            g.spendSissy(name);
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -344,7 +354,19 @@ room209.btnclick = function (name) {
             break;
         case "h_17":
             g.spendSissy(name);
-            alert("add anal");
+            g.set("oncase", "gloryholeanal");
+            nav.bg("209_classroom/bg.jpg");
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            if (sc.getstep("missy") < 100) {
+                room209.btnclick("displayMissybtn");
+                chat(205, 209);
+            }
+            else {
+                room209.btnclick("displaypbtn");
+                chat(206, 209);
+            }
             break;
         case "h_19":
             nav.bg("209_classroom/bg.jpg");
@@ -3394,6 +3416,32 @@ room209.chat = function (chatID) {
                     " is counting on you. ",
                 button: [
                     { chatID: -1, text: "I won't let her down! ", callback: "h_60_3" }
+                ]
+            },
+            {
+                chatID: 204,
+                speaker: "p",
+                text: "There's no classes while you're on assignment. Once you complete your assignment then you can rejoin your classes. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "endOnCase" }
+                ]
+            },
+            {
+                chatID: 205,
+                speaker: "missy",
+                text: "So you want to take cocks in your ass from a dirty nasty glory hole? Go see " + sc.n("cecilia") + " in the park bathroom on the weekends. " +
+                    "She'll show you how to be truly nasty. She likes to hang out in the toilets. ",
+                button: [
+                    { chatID: -1, text: "Ok. I'll see " + sc.n("cecilia") + " in the park bathroom this weekend. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 206,
+                speaker: "p",
+                text: "So you want to take cocks in your ass from a dirty nasty glory hole? Go see " + sc.n("cecilia") + " in the park bathroom on the weekends. " +
+                    "She'll show you how to be truly nasty. She likes to hang out in the toilets.",
+                button: [
+                    { chatID: -1, text: "Ok. I'll see " + sc.n("cecilia") + " in the park bathroom this weekend. ", callback: "leave" }
                 ]
             },
         ];

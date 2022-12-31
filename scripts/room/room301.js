@@ -1,68 +1,78 @@
 ﻿//Envy Living Room
 var room301 = {};
 room301.main = function () {
-    var navList = [0];
-    nav.buildnav(navList);
-    switch (sc.getstep("envy")) {
-        case 2:
-            room301.chatcatch("drawbg");
-            chat(0, 301);
-            break;
-        case 3:
-            room301.chatcatch("drawbg");
-            chat(10, 301);
-            break;
-        case 4:
-            room301.chatcatch("drawbg");
-            chat(21, 301);
-            break;
-        case 5:
-            room301.chatcatch("drawbg");
-            chat(32, 301);
-            break;
-        case 6:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(46, 301);
-            break;
-        case 7:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(50, 301);
-            break;
-        case 8:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(52, 301);
-            break;
-        case 9:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(54, 301);
-            break;
-        case 10:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(57, 301);
-            break;
-        case 11:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(67, 301);
-            break;
-        case 12:
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
-            chat(74, 301);
-            break;
-        case 13:
-            nav.bg("301_living/step13_0.jpg");
-            chat(76, 301);
-            break;
-        case 14:
-            nav.bg("301_living/step14.jpg");
-            chat(86, 301);
-            break;
+    if (g.pass === "endSleepyTime") {
+        chat(108, 301);
+        nav.bg("301_living/envy160.jpg");
+    }
+    else {
+        var navList = [0];
+        nav.buildnav(navList);
+        switch (sc.getstep("envy")) {
+            case 2:
+                room301.chatcatch("drawbg");
+                chat(0, 301);
+                break;
+            case 3:
+                room301.chatcatch("drawbg");
+                chat(10, 301);
+                break;
+            case 4:
+                room301.chatcatch("drawbg");
+                chat(21, 301);
+                break;
+            case 5:
+                room301.chatcatch("drawbg");
+                chat(32, 301);
+                break;
+            case 6:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(46, 301);
+                break;
+            case 7:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(50, 301);
+                break;
+            case 8:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(52, 301);
+                break;
+            case 9:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(54, 301);
+                break;
+            case 10:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(57, 301);
+                break;
+            case 11:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(67, 301);
+                break;
+            case 12:
+                room301.chatcatch("drawbg");
+                room301.chatcatch("drawEnvySitting");
+                chat(74, 301);
+                break;
+            case 13:
+                nav.bg("301_living/step13_0.jpg");
+                chat(76, 301);
+                break;
+            case 14:
+                nav.bg("301_living/step14.jpg");
+                chat(86, 301);
+                break;
+            case 15:
+                nav.bg("301_living/step14.jpg");
+                chat(89, 301);
+                break;
+        }
     }
 };
 
@@ -704,6 +714,48 @@ room301.chatcatch = function (callback) {
             cl.doCum(false);
             char.room(0);
             break;
+        case "envy150":
+            nav.bg("301_living/envy150.jpg");
+            break;
+        case "envy151":
+            char.settime(21, 47);
+            nav.bg("301_living/envy151.jpg");
+            break;
+        case "envy152":
+            nav.bg("301_living/envy152.jpg");
+            break;
+        case "envy153":
+            nav.bg("301_living/envy153.jpg");
+            break;
+        case "envy154":
+            nav.bg("301_living/envy154.jpg");
+            break;
+        case "envy155":
+            nav.bg("301_living/envy155.jpg");
+            break;
+        case "envy156":
+            nav.bg("301_living/envy156.jpg");
+            break;
+        case "envy157":
+            if (cl.c.chastity !== null || cl.c.cock > 2) 
+                chat(102, 301);
+            else 
+                chat(100, 301);
+            break;
+        case "envy158":
+            nav.bg("301_living/envy158.jpg");
+            break;
+        case "envy159":
+            g.sleep();
+            break;
+        case "envy":
+            sc.setstep("envy", 16);
+            char.addtime(60);
+            g.mod("money", 500);
+            g.setflag("rachelDayEvent");
+            g.set("map", 0);
+            char.room(325);
+            break;
         default:
             break;
     }
@@ -739,14 +791,13 @@ room301.chat = function (chatID) {
     }
     else if (chatID === 1001) {
         var d = 0;
-        var evneyStep = sc.getstep("envy");
         switch (sc.getstep("envy")) {
             case 7: d = 1; break;
             case 8: d = 2; break;
             case 9: d = 3; break;
             default: console.log("invalid Envy Step"); break;
         }
-        var replay = [
+        var replay1001 = [
             "Hey! No touching! Let's play the game. ",
             "MMmmm keep going... no I mean keep your hands off buddy. What's going on in my head? ",
             "Don't you think my panties are cute? I wore them for you. Now let's play that game. ",
@@ -761,7 +812,7 @@ room301.chat = function (chatID) {
         return {
             chatID: 1000,
             speaker: "envy",
-            text: replay[d],
+            text: replay1001[d],
             button: [ button1001[d] ]
         };
     }
@@ -1547,6 +1598,209 @@ room301.chat = function (chatID) {
                 text: "I'm going to fucking kick your ass if you try to cut in front of me! ",
                 button: [
                     { chatID: -1, text: "Oh. I guess I'll leave *whimper*", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "thinking",
+                text: "Damn. There's still so many people here trying to fuck her. No way I'll be " +
+                    "able to talk her into being a hucow. How do I get some time with her alone to talk her into it? ",
+                button: [
+                    { chatID: 90, text: "Check her room to see if there's a place to hide. ", callback: "envy150" },
+                    { chatID: -1, text: "Not worth it. Leave ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "thinking",
+                text: "Huh. I guess I'll have to hide under her bed. I hope there's no high jinks afoot. ",
+                button: [
+                    { chatID: 91, text: "Hide under the bed and wait till nightfall.  ", callback: "envy151" },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "thinking",
+                text: "I've been waiting here for hours! Finally " + sc.n("envy") + " is going to bed! ",
+                button: [
+                    { chatID: 92, text: "...", callback: "envy152" },
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "thinking",
+                text: "Did she just fart?",
+                button: [
+                    { chatID: 93, text: "...", callback: "envy153" },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "thinking",
+                text: "Oh. That is the most cum fart I've seen! ",
+                button: [
+                    { chatID: 94, text: "I suppose I should pop out from under this bed. ", callback: "envy154" },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "envy",
+                text: "Why hello there. It's been a while " + sc.n("me") + ". I miss that cock of yours. ",
+                button: [
+                    { chatID: 95, text: "Hi. " + sc.n("spanky") + ", you're here too? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "spanky",
+                text: "What's up? I was just about to add to this bitch's cum collection. There's nothing better than " +
+                    "shoving your cock in to a pre-lubed cum hole, ha know, and this bitch has the best cum holes in town. " +
+                    "Just last night I was fucking her all missionary and stuff and she coughed a big ol' cum blob right into " +
+                    "my face! ",
+                button: [
+                    { chatID: 111, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "thinking",
+                text: "That dude really can talk! " +
+                    "I need to get " + sc.n("envy") + " alone for a second so I can talk her into becoming a hucow. I'll ask " +
+                    "him to run to his store for us! ",
+                button: [
+                    { chatID: 97, text: sc.n("spanky") + " can you run to your store and grab some wine for us? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "spanky",
+                text: "Fuck yeah! I love how your think! We should shove it in her ass and have her pour it into our mouths. " +
+                    "This one time I saw this girl put some champagne up her ass and shake it. It sprayed everywhere! " + 
+                    "That was some funny fuckin' shit. Save a load for when I get back we'll have some fun!",
+                button: [
+                    { chatID: 98, text: "I was just going to drink it, but that's cool too. ", callback: "envy155" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "envy",
+                text: "I need your cock in my pussy now! Please fuck me till I'm squirting all over you.",
+                button: [
+                    { chatID: 99, text: "There's something we need to talk about. It's really important. ", callback: "envy156" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "envy",
+                text: "No talk-y just fuck-y",
+                button: [
+                    { chatID: -1, text: "Well fuck", callback: "envy157" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "envy",
+                text: "Oh fuck! Shot your load in me NOW! Fill my sloppy pussy with your cum!",
+                button: [
+                    { chatID: 101, text: "FFFUUUUUU", callback: "envy158" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "envy",
+                text: "AAAaaaa!!!!!",
+                button: [
+                    { chatID: 103, text: "Oohhhhhh yes", callback: "envy156" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "envy",
+                text: "Awwww. Sorry about your cock. Looks like I won't be getting any dick. *sniffle* ",
+                button: [
+                    { chatID: 103, text: "Yeah. I'm a sissy now", callback: "" },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "me",
+                text: "So. I need to talk to you. I saw the Hucow magazine on your table a while ago. What do you " +
+                    "think about actually being a hucow?",
+                button: [
+                    { chatID: 104, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "envy",
+                text: "Really? How? I didn't think that was real. I would love to be hooked up and just milked all day. " +
+                    "just let my mind go blank while I get milked. Can I get fucked while being milked? How about blow jobs. " +
+                    "Can I suck cock too?",
+                button: [
+                    { chatID: 105, text: "I don't know about the blow jobs, but I know somewhere that can make you a Hucow. Do you want to go there? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "envy",
+                text: "Fuck yes! Let's go right now! I want to get milked soooo bad!",
+                button: [
+                    { chatID: 106, text: "I don't think " + sc.n("rached") + " is awake now. How about the morning?", callback: "" },
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "envy",
+                text: "Ok. You have to sleep with me then! I'm not going to let you get away from me! Crawl in and snuggle " +
+                    "me to sleep. ",
+                button: [
+                    { chatID: 107, text: "Sure. But what about " + sc.n("spanky") + "?", callback: "" },
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "envy",
+                text: "He can just jack off over our faces like he usually does when I fall asleep. I'll lick your face clean in " +
+                    "the morning. ",
+                button: [
+                    { chatID: -1, text: "Ok.. ", callback: "envy159" },
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "me",
+                text: "Hey " + sc.n("rachel") + " I've got a new Hucow for you! This is " + sc.n("envy") + ". ",
+                button: [
+                    { chatID: 109, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "envy",
+                text: "Really! You do Hucows! I soooo want to be milked! Please please please take me in and milk me! ",
+                button: [
+                    { chatID: 110, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "rachel",
+                text: "Well howdy there. You'll do nicely in my little farm. Come with me little lady while we set you up." +
+                    sc.n("me") + ", here's your Hucow bonus for bringing in this little cow. *wink* ",
+                button: [
+                    { chatID: -1, text: "...", callback: "envy" },
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "spanky",
+                text: "I was just laying thinking.. oh gross, but then this bitch just starts eating it off my face. Licked " +
+                    "me clean. So I thought, Hay if she'll eat cum off my face she'll totally eat ass. So I just stuck my asshole " +
+                    "right in her face, and she goes all crazy on my shit hole! Really loving it and shit. She start stroking my cock " +
+                    "and playing with my balls. I couldn't hold it back anymore and shot my load all over her pillow. She scrapes it off " +
+                    "the pillow and shoves it up her ass to save it for later! This slut is the best! ",
+                button: [
+                    { chatID: 96, text: "ok", callback: "" },
                 ]
             },
         ];

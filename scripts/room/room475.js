@@ -76,12 +76,18 @@ room475.main = function () {
             m.fmap[g.map.row][g.map.col - 1].visited = true;
         g.map.lastFight++;
 
-        if (g.map.lastFight > 5) { //(((Math.floor(Math.random() * 4) == 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12))
-            if ((Math.floor(Math.random() * 5) === 0) || g.map.lastFight > 12) {
+        if (((Math.floor(Math.random() * 8) === 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12)) {
+            if (g.get("cat") === -1 && (Math.floor(Math.random() * 4) === 0)) {
+                nav.killall();
+                nav.bg("475_fight/cat.jpg");
+                g.map.lastFight = 0;
+                chat(3, 475);
+            }
+            else {
                 var te = Math.floor(Math.random() * 3);
                 if (g.get("fantasyCreatures")) {
                     if (g.isNight())
-                        te = Math.floor(Math.random() * 5);
+                        te = Math.floor(Math.random() * 9); //overload the warewolf at night
                     else
                         te = Math.floor(Math.random() * 4);
                 }
@@ -181,6 +187,13 @@ room475.chatcatch = function (callback) {
             m.updateVisit();
             char.room(475);
             break;
+        case "catx":
+            g.set("cat", 0);
+            nav.bg("475_fight/catx.jpg", "475_fight/catxnight.jpg");
+            break;
+        case "petcat":
+            g.set("cat", 1);
+            nav.bg("475_fight/catpet.jpg", "475_fight/catpetnight.jpg");
         default:
             break;
     }
@@ -230,6 +243,31 @@ room475.chat = function (chatID) {
                 text: "This is my private cottage. You need to leave immediately before I bring my wrath upon you! ",
                 button: [
                     { chatID: -1, text: "Oh, sure. ", callback: "resetcot" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "me",
+                text: "Oh. A cat. Hay little fella, what are you doing out here? ",
+                button: [
+                    { chatID: 5, text: "Pet the cat. ", callback: "petcat" },
+                    { chatID: 4, text: "Shoo it away", callback: "catx" },
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "me",
+                text: "The forest is not place for a cat! Shoooo ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "me",
+                text: "Hey little buddy, who's a nice kitty. Be safe out there in the forest. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" }
                 ]
             },
         ];

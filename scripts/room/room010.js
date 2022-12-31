@@ -128,8 +128,20 @@ room10.main = function () {
             navList.push(11);
             navList.push(16);
             var hour = g.dt.getHours();
+            var cat = g.get("cat");
             if (hour.between(6, 21))
                 navList.push(0);
+            if (cat === 1 || cat === 2) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "cat",
+                    "left": 1334,
+                    "top": 775,
+                    "width": 136,
+                    "height": 233,
+                    "image": "10_mainchar/cat.png"
+                });
+            }
         }
         else {
             g.internal = missingClothing;
@@ -162,6 +174,21 @@ room10.btnclick = function (name) {
         case "nightStand":
             g.pass = 10;
             char.room(19);
+            break;
+        case "cat":
+            if (g.get("cat") === 1) {
+                g.set("cat", 2);
+                chat(38, 10);
+            }
+            else {
+                nav.killall();
+                nav.bg("10_mainchar/petcat.jpg", "10_mainchar/petcatnight.jpg");
+                if (!g.checkflag("petcat")) {
+                    g.mod("energy", 1000);
+                    g.setflag("petcat");
+                }
+                chat(39, 10);
+            }
             break;
         default:
             break;
@@ -310,6 +337,14 @@ room10.chatcatch = function (callback) {
             cl.add("pants", "k");
             cl.add("shoes", "fb");
             inv.update("tifgift", false, null);
+            char.room(10);
+            break;
+        case "petcat":
+            nav.killall();
+            nav.bg("10_mainchar/petcat.jpg", "10_mainchar/petcatnight.jpg");
+            g.mod("energy", 1000);
+            break;
+        case "reset":
             char.room(10);
             break;
         default:
@@ -642,6 +677,22 @@ room10.chat = function (chatID) {
                     "before I start class.",
                 button: [
                     { chatID: -1, text: "Hide the girly clothes in you closet", callback: "endbag" }
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "me",
+                text: "Oh did the kitty follow me home from the forest? Who's a nice kitty. I bet you want some pets. ",
+                button: [
+                    { chatID: 39, text: "[Pet the kitty]", callback: "petcat" }
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "me",
+                text: "Who's a kitty? You're a kitty!",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" }
                 ]
             }
         ];

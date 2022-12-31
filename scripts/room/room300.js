@@ -6,7 +6,19 @@ room300.main = function () {
         nav.bg("300_apartment/fight.jpg");
         chat(4, 300);
     }
-    else if (envyStep === 14) {
+    else if (envyStep === 16) {
+        nav.button({
+            "type": "btn",
+            "name": "door",
+            "left": 921,
+            "top": 494,
+            "width": 132,
+            "height": 236,
+            "image": "300_apartment/door16.png"
+        }, 300);
+        nav.buildnav([0]);
+    }
+    else if (envyStep === 14 || envyStep === 15) {
         nav.button({
             "type": "btn",
             "name": "door",
@@ -16,8 +28,7 @@ room300.main = function () {
             "height": 267,
             "image": "300_apartment/door14.png"
         }, 300);
-        var navList = [0];
-        nav.buildnav(navList);
+        nav.buildnav([0]);
     }
     else {
         var btnList = [
@@ -46,15 +57,14 @@ room300.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 300);
         });
-        var navList = [0];
-        nav.buildnav(navList);
+        var navListx = [0];
+        nav.buildnav(navListx);
     }
 };
 
 room300.btnclick = function (name) {
     switch (name) {
         case "slut":
-            //Kristy
             chat(0, 300);
             break;
         case "door":
@@ -70,11 +80,14 @@ room300.btnclick = function (name) {
                 nav.bg("300_apartment/frontdoor.jpg");
                 chat(13, 300);
             }
-            else if (sc.getstep("envy") === 3) {
+            else if (envystep === 3) {
                 if (inv.has("pizza"))
                     char.room(301);
                 else
                     chat(21, 300);
+            }
+            else if (envystep === 16) {
+                chat(24, 300);
             }
             else {
                 if (envystep === 13) {
@@ -82,7 +95,7 @@ room300.btnclick = function (name) {
                     nav.bg("300_apartment/knock13.jpg");
                     chat(22, 300);
                 }
-                else if (envystep === 14) {
+                else if (envystep === 14 || envystep === 15) {
                     chat(23, 300);
                 }
                 else {
@@ -349,6 +362,14 @@ room300.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Go in", callback: "enter" },
                 { chatID: -1, text: "I'll come back later", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "thinking",
+            text: "Evicted... I guess she's not coming back. ",
+            button: [
+                { chatID: -1, text: "....", callback: "" },
             ]
         },
     ];

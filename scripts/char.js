@@ -316,6 +316,13 @@ char.addtime = function (minutes) {
     nav.buildclock();
 };
 
+char.nexttime = function (hour) {
+    if (g.dt.getHours() > hour)
+        g.dt.setDate(g.dt.getDate() + 1);
+    g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), hour, 0, 0, 0);
+    nav.buildclock();
+};
+
 char.map = function () {
     var exRoom = [226, 227, 475];
     var i;
@@ -438,6 +445,10 @@ char.makeWalk = function () {
                     oncaseText = "Take the elevator up to the Red Room and pass the tests. ";
                     break;
                 case "gloryholebj":
+                    oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
+                        "at the park. ";
+                    break;
+                case "gloryholeanal":
                     oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
                         "at the park. ";
                     break;

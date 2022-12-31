@@ -9,6 +9,8 @@ room28.main = function () {
         nav.bg("502_bedroom/sleepZoey.jpg");
     else if (g.pass === 13)
         nav.bg("28_transformation/twin.jpg");
+    else if (g.pass === 301)
+        nav.bg("301_living/envy159.jpg");
     menu.save("HatMP_9", null, 9);
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
@@ -370,40 +372,6 @@ room28.btnclick = function (name) {
             xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
 
             $('#room-buttons').append(xline);
-
-            //if (g.get("sissyPoints") <= g.get("sissy")) {
-            //    if (name !== "clothes0" && name !== "fight0") {
-            //        if (!g.sissy[id].ach) {
-            //            if (pid !== null) {
-            //                if (g.sissy[pid].ach) {
-            //                    nav.button({
-            //                        "type": "btn",
-            //                        "name": "unlock",
-            //                        "left": 1634,
-            //                        "top": 850,
-            //                        "width": 271,
-            //                        "height": 72,
-            //                        "title": "Unlock",
-            //                        "image": "28_transformation/unlock.png"
-            //                    }, 28);
-            //                }
-            //            }
-            //            else {
-            //                nav.button({
-            //                    "type": "btn",
-            //                    "name": "unlock",
-            //                    "left": 1634,
-            //                    "top": 850,
-            //                    "width": 271,
-            //                    "height": 72,
-            //                    "title": "Unlock",
-            //                    "image": "28_transformation/unlock.png"
-            //                }, 28);
-            //            }
-            //        }
-            //    }
-            //}
-            
             break;
         case "cancel":
             g.internal = null;
@@ -483,14 +451,6 @@ room28.btnclick = function (name) {
                     g.set("pill", "boob");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1000, 28);
-                    //cl.c.chest = id;
-                    //nav.bg("28_transformation/chest_" + id + ".gif");
-                    //cl.display();
-                    //g.roomTimeout = setTimeout(function () {
-                    //    returnRoomID = g.pass;
-                    //    g.pass = "endSleepyTime";
-                    //    char.room(returnRoomID);
-                    //}, 6000);
                 }
                 else if (g.internal < 11) {
                     id = g.internal - 5;
@@ -498,14 +458,6 @@ room28.btnclick = function (name) {
                     g.set("pill", "leg");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1001, 28);
-                    //cl.c.leg = id;
-                    //nav.bg("28_transformation/leg_" + id + ".gif");
-                    //cl.display();
-                    //g.roomTimeout = setTimeout(function () {
-                    //    returnRoomID = g.pass;
-                    //    g.pass = "endSleepyTime";
-                    //    char.room(returnRoomID);
-                    //}, 6000);
                 }
                 else if (g.internal < 16) {
                     id = g.internal - 10;
@@ -513,14 +465,6 @@ room28.btnclick = function (name) {
                     g.set("pill", "cock");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1002, 28);
-                    //cl.c.cock = id;
-                    //nav.bg("28_transformation/cock_" + id + ".gif");
-                    //cl.display();
-                    //g.roomTimeout = setTimeout(function () {
-                    //    returnRoomID = g.pass;
-                    //    g.pass = "endSleepyTime";
-                    //    char.room(returnRoomID);
-                    //}, 6000);
                 }
                 else if (g.internal === 19 || g.internal === 20) {
                     id = g.internal - 18;
@@ -528,14 +472,6 @@ room28.btnclick = function (name) {
                     g.set("pill", "lip");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1003, 28);
-                    //cl.c.lips = id;
-                    //nav.bg("28_transformation/lip_" + id + ".gif");
-                    //cl.display();
-                    //g.roomTimeout = setTimeout(function () {
-                    //    returnRoomID = g.pass;
-                    //    g.pass = "endSleepyTime";
-                    //    char.room(returnRoomID);
-                    //}, 6000);
                 }
                 else {
                     //nav.modbutton(g.sissy[g.internal].icon, "28_transformation/" + g.sissy[g.internal].icon + ".png");

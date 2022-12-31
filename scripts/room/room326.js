@@ -73,9 +73,23 @@ room326.btnclick = function (name) {
                 nav.bg("326_stable/horse5.jpg");
                 chat(9, 326);
             }
-            else {
+            else if (horseystep < 100) {
                 chat(14, 326);
             }
+            else {
+                chat(25, 326);
+            }
+            break;
+        case "bj":
+            nav.bg("326_stable/lick" + g.internal + ".jpg");
+            if (g.internal === 11) {
+                cl.c.cumface = true;
+                g.mod("giveOralMale", 1);
+                g.mod("loadSwollowed", 1);
+                nav.killbutton("bj");
+                chat(22, 326);
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -177,6 +191,45 @@ room326.chatcatch = function (callback) {
         case "lick0":
             nav.killall();
             nav.bg("326_stable/lick0.jpg");
+            break;
+        case "lick1":
+            nav.bg("326_stable/lick1.jpg");
+            break;
+        case "lick2":
+            nav.bg("326_stable/lick2.jpg");
+            break;
+        case "lick3":
+            nav.bg("326_stable/lick3.jpg");
+            break;
+        case "lick4":
+            nav.bg("326_stable/lick4.jpg");
+            break;
+        case "lick5":
+            nav.bg("326_stable/lick5.jpg");
+            break;
+        case "lick6":
+            nav.bg("326_stable/lick6.jpg");
+            g.internal = 7;
+            nav.button({
+                "type": "btn",
+                "name": "bj",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 326);
+            break;
+        case "lick12":
+            nav.bg("326_stable/lick12.jpg");
+            break;
+        case "lick13":
+            sc.setstep("horse", 100);
+            char.addtime(120);
+            char.room(0);
+            break;
+        case "horsey100":
+            char.room(326);
             break;
         default:
             break;
@@ -330,7 +383,7 @@ room326.chat = function (chatID) {
             speaker: "rachel",
             text: "This isn't quite what I thought you'd be doin' when you came in to brush " + sc.n("horse") + ". ",
             button: [
-                { chatID: 18, text: "!!!", callback: "" },
+                { chatID: 18, text: "!!!", callback: "lick3" },
             ]
         },
         {
@@ -340,6 +393,64 @@ room326.chat = function (chatID) {
                 "to watch. ",
             button: [
                 { chatID: 19, text: "*GULP* ok. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "rachel",
+            text: "And don't use your hands. Mouth only. ",
+            button: [
+                { chatID: 20, text: "Oh", callback: "lick4" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "thinking",
+            text: "Oh shit. What did I get myself into. Luckily it's squishy, I might be able to do this. ",
+            button: [
+                { chatID: 21, text: "...", callback: "lick5" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "thinking",
+            text: "MMmmm I can taste some precum. I didn't know horses had precum. Not as bad as I thought. ",
+            button: [
+                { chatID: -1, text: "Well... here goes. ", callback: "lick6" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "rachel",
+            text: "That's a lot of cum. I guess you won't need dinner today... ",
+            button: [
+                { chatID: 23, text: "*gulp* ", callback: "lick12" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "rachel",
+            text: "Now I need you to stop playing with that horse's cock. That's horse is a breeder and his balls need to be " +
+                "full to sell his sperm. You have almost $900 worth of semen in your mouth. My guards will be watching you " +
+                "from now on. ",
+            button: [
+                { chatID: 24, text: "*swollow* *gasp*", callback: "" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "rachel",
+            text: "Get dressed and get out of my barn you strange weird little slut. Git.",
+            button: [
+                { chatID: -1, text: "....ok", callback: "lick13" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "me",
+            text: "Next release",
+            button: [
+                { chatID: -1, text: "....ok", callback: "horsey100" },
             ]
         },
     ];

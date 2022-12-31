@@ -84,6 +84,7 @@ g.st = [
     { n: "subdom", t: 50, q: "hundred" },
     { n: "pink", t: 0, q: "int" },
     { n: "milk", t: -1, q: "int" },
+    { n: "cat", t: -1, q: "int" },
 
     { n: "fightspeed", t: 1250, q: "int" },
     { n: "fightsex", t: 1250, q: "int" },
@@ -168,7 +169,7 @@ g.st = [
     { n: "zbar", t: false, q: "day" },
     { n: "gold0", t: false, q: "day" },
     { n: "keaton", t: false, q: "day" },
-
+    { n: "petcat", t: false, q: "day" },
     { n: "bigguy", t: false, q: "day" },
     { n: "cardgame", t: false, q: "day" },
     { n: "momchat", t: false, q: "day" },
@@ -185,7 +186,7 @@ g.sissy = [
 
     { id: 3, pID: [2], icon: "hypno0", x: 7, y: 11, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: 0, h: false },
     { id: 4, pID: [3], icon: "hypno1", x: 7, y: 12, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: 0, h: false },
-    { id: 5, pID: [4], icon: "hypno2", x: 7, y: 13, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: 0, h: false },
+    { id: 5, pID: [4], icon: "hypno2", x: 7, y: 13, name: "Hypno", description: "Watch the hypno tube", ach: false, active: false, points: 0, h: false },
 
     { id: 6, pID: [3], icon: "chastity", x: 8, y: 11, name: "Chastity Training", description: "What a worthless flag of skin you have", ach: false, active: true, points: 0, h: false },
     { id: 7, pID: [51], icon: "cock1", x: 10, y: 5, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: true, points: 1, h: false },
@@ -194,16 +195,16 @@ g.sissy = [
     { id: 10, pID: [9], icon: "cock4", x: 13, y: 2, name: "It's a Clitty", description: "You're no longer a man, sissy", ach: false, active: true, points: 1, h: false },
     { id: 11, pID: [51], icon: "cock5", x: 20, y: 9, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", ach: false, active: false, points: 2, h: false },
 
-    { id: 12, pID: [6], icon: "bj", x: 9, y: 11, name: "Blow Me", description: "Work on your BJ skills", ach: false, active: true, points: 0, h: false },
-    { id: 13, pID: [12], icon: "gloryhole0", x: 9, y: 13, name: "Glory Hole Slut", description: "Present your mouth at a glory hole", ach: false, active: true, points: 1, h: false },
+    { id: 12, pID: [6], icon: "bj", x: 9, y: 11, name: "Blow Me", description: "Work on your BJ skills", ach: false, active: true, points: 1, h: false },
+    { id: 13, pID: [12], icon: "gloryhole0", x: 9, y: 13, name: "Glory Hole Slut", description: "Present your mouth at a glory hole", ach: false, active: true, points: 0, h: false },
 
     { id: 14, pID: [51], icon: "pink", x: 18, y: 5, name: "Pink Room", description: "Train in the Pink Room", ach: false, active: true, points: 1, h: false },
 
     { id: 15, pID: [12], icon: "redroom", x: 10, y: 11, name: "Red Room", description: "Prove your Worth", ach: false, active: true, points: 0, h: false },
 
     { id: 16, pID: [15], icon: "takeit", x: 11, y: 11, name: "Take It Slut", description: "Bend over and serve", ach: false, active: true, points: 0, h: false },
-    { id: 17, pID: [16, 12], icon: "gloryhole1", x: 11, y: 13, name: "Fuck Anonymous Cock", description: "Present your ass at a glory hole", ach: false, active: true, points: 2, h: false },
-    { id: 18, pID: [47, 48, 49], icon: "save", x: 18, y: 10, name: "Save Missy", description: "Save Missy", ach: false, active: true, points: 2, h: false },
+    { id: 17, pID: [16, 13], icon: "gloryhole1", x: 11, y: 13, name: "Anal Hole", description: "Present your ass at a glory hole", ach: false, active: true, points: 2, h: false },
+    { id: 18, pID: [47, 48, 49], icon: "save", x: 18, y: 10, name: "Save Missy", description: "Save Missy", ach: false, active: true, points: 0, h: false },
 
     { id: 19, pID: [16], icon: "sewer", x: 12, y: 11, name: "Sewer", description: "Search the sewer", ach: false, active: true, points: 0, h: false },
 
@@ -264,7 +265,7 @@ g.sissy = [
     { id: 58, pID: [0], icon: "lube", x: 3, y: 11, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
     { id: 59, pID: [58], icon: "dildos", x: 3, y: 12, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: true, points: 0, h: false },    
+    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: false, points: 0, h: false },    
 
 ];
 
@@ -674,7 +675,7 @@ g.roomMap = [
     { roomID: 406, display: "Contacts", access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
     { roomID: 407, display: "Makeup", access: false, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
     { roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
-    { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1513, top: 638, width: 138, height: 126, img: "map/450.png", night: "map/450_night.png", map: 0 },
+    { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
     { roomID: 500, display: "Zoey's", access: true, darkAccess: false, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
     { roomID: 525, display: "Zoey's Bar", access: true, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },
     { roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
@@ -1056,6 +1057,7 @@ g.initGame = function () {
             case "envyDayEvent":
             case "jonesDayEvent":
             case "rachelDayEvent":
+            case "petcat":
                 g.st[i].t = false;
                 break;
             case "shower":
@@ -1114,6 +1116,7 @@ g.initGame = function () {
                 g.st[i].t = "house";
                 break;
             case "milk":
+            case "cat":
                 g.st[i].t = -1;
                 break;
             default:

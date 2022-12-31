@@ -131,6 +131,8 @@ room203.btnclick = function (name) {
                     chat(35, 203);
                 else if (oncase === "gloryholebj")
                     chat(38, 203);
+                else if (oncase === "gloryholeanal")
+                    chat(38, 203);
                 else if (oncase === "shopping")
                     chat(48, 203);
                 else {
@@ -711,8 +713,8 @@ room203.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "cecilia",
-            text: "I'm so excited I get to work with you! See me in the park bathroom on the weekends and I'll show you how to suck " +
-                "some cock!",
+            text: "I'm so excited I get to work with you! See me in the park bathroom on the weekends and I'll show you how to work " +
+                "the cock!",
             button: [
                 { chatID: -1, text: "Sweet!", callback: "" }
             ]

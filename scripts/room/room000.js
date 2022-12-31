@@ -74,7 +74,7 @@ room0.btnclick = function (name) {
             btnList.push({
                 "type": "btn",
                 "name": "map_1",
-                "left": 997,
+                "left": 418,
                 "top": 900,
                 "width": 90,
                 "height": 101,
@@ -169,6 +169,9 @@ room0.chatcatch = function (callback) {
                             roomList = [203];
                             break;
                         case "gloryholebj":
+                            roomList = [450];
+                            break;
+                        case "gloryholeanal":
                             roomList = [450];
                             break;
                         case "shopping":

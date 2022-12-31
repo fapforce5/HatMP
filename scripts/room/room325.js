@@ -51,7 +51,11 @@ room325.btnclick = function (name) {
                     }
                     break;
                 case 2:
-                    if (g.get("milk") < .6)
+                    if (sc.getstep("envy") === 14) {
+                        chat(37, 325);
+                        sc.setstep("envy", 15);
+                    }
+                    else if (g.get("milk") < .6)
                         chat(22, 325);
                     else
                         chat(36, 325);
@@ -506,6 +510,35 @@ room325.chat = function (chatID) {
                 { chatID: -1, text: "Milk me ", callback: "milkme" },
                 { chatID: -1, text: "I want to brush the horse", callback: "stable" },
                 { chatID: -1, text: "I'm not sure why I'm here. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "rachel",
+            text: "So. I'm always recruiting new Hucows for my farm, the bigger the udders the better.  ",
+            button: [
+                { chatID: 38, text: "Huh?", callback: "" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "rachel",
+            text: "You have no idea how big the demand is for my milk, so much so I need more girls. Tell ya what, " + 
+                "if you can bring in any new I'll give you a $500 finder's fee. You don't have to do anything, just bring her " +
+                "on by. ",
+            button: [
+                { chatID: 39, text: "Let me think on that. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "thinking",
+            text: "Hmmm...... Who do I know with high tits and willing to be milked everyday? Hmmm....." +
+                "Oh! I know! " + sc.n("envy") + "!!!! She's so deep under I bet I could just tell her to to get milked. " +
+                "Plus I know she was thinking of it before she became a fuck doll for the entire town. I'll visit her to see " +
+                "if she'll do it. ",
+            button: [
+                { chatID: -1, text: "I'll go talk to " + sc.n("envy") + "!!!", callback: "" }
             ]
         },
     ];

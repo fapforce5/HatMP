@@ -96,6 +96,11 @@ room451.btnclick = function (name) {
                 var oncase = g.get("oncase");
                 if (oncase === "gloryholebj")
                     chat(14, 451);
+                if (oncase === "gloryholeanal") {
+                    nav.killall();
+                    nav.bg("451_parkMensRoom/anal0.jpg");
+                    chat(35, 451);
+                }
                 else if (g.sissy[13].ach) {
                     nav.killall();
                     nav.bg("451_parkMensRoom/gbg.jpg");
@@ -257,10 +262,26 @@ room451.btnclick = function (name) {
             }
             break;
         case "ceciliaStall":
-            chat(27, 451);
+            if (g.get("oncase") === "gloryholeanal") {
+                g.set("oncase") === null;
+                g.sissy[17].ach = true;
+            }
+            else if (g.sissy[17].ach) {
+                nav.bg("451_parkMensRoom/gbgcock.jpg");
+                chat(46, 451);
+            }
+            else {
+                nav.killall();
+                nav.bg("451_parkMensRoom/gbgcock.jpg");
+                chat(46, 451);
+            }
+            
             break;
         case "ghole1":
-            chat(32, 451);
+            if (g.sissy[17].ach)
+                chat(41, 451);
+            else
+                chat(32, 451);
             break;
         default:
             break;
@@ -493,6 +514,79 @@ room451.chatcatch = function (callback) {
             char.addtime(60);
             room451.btnclick("stall1");
             break;
+        case "anal1":
+            cl.nude();
+            zcl.displayMain(-400, 800, .35, "", true);
+            nav.bg("451_parkMensRoom/anal1.jpg");
+            break;
+        case "anal2":
+            zcl.kill();
+            nav.bg("451_parkMensRoom/anal2.jpg");
+            break;
+        case "anal3":
+            nav.bg("451_parkMensRoom/anal3.jpg");
+            break;
+        case "anal4":
+            nav.bg("451_parkMensRoom/anal4.jpg");
+            break;
+        case "anal5":
+            nav.bg("451_parkMensRoom/anal5.jpg");
+            zcl.displayMain(-200, 500, .18, "", true);
+            break;
+        case "anal6":
+            cl.undo();
+            char.settime(17, 5);
+            g.sissy[17].ach = true;
+            g.set("oncase", null);
+            char.room(451);
+            break;
+        case "ass1":
+            nav.killall();
+            nav.bg("451_parkMensRoom/ass1.jpg");
+            break;
+        case "ass2":
+            nav.bg("451_parkMensRoom/ass2.jpg");
+            break;
+        case "ass3":
+            g.mod("money", 40);
+            g.mod("receiveAnalMale", 1);
+            g.mod("creamPied", 1);
+            char.addtime(60);
+            room451.btnclick("stall1");
+            break;
+        case "ass4":
+            g.mod("receiveAnalMale", 1);
+            g.mod("creamPied", 1);
+            char.addtime(60);
+            room451.btnclick("stall1");
+            break;
+        case "duo1":
+            nav.killall();
+            nav.bg("451_parkMensRoom/duo1.jpg");
+            break;
+        case "duo2":
+            nav.bg("451_parkMensRoom/duo2.jpg");
+            g.mod("giveOralMale", 1);
+            g.mod("loadSwollowed", 1);
+            char.addtime(60);
+            break;
+        case "duo3":
+            nav.killall();
+            nav.bg("451_parkMensRoom/duo3.jpg");
+            break;
+        case "duo4":
+            nav.bg("451_parkMensRoom/duo4.jpg");
+            break;
+        case "duo5":
+            g.mod("receiveAnalMale", 1);
+            g.mod("creamPied", 1);
+            char.addtime(100);
+            nav.bg("451_parkMensRoom/duo5.jpg");
+            break;
+        case "duoEnd":
+            room451.btnclick("stall1");
+            nav.buildnav([450]);
+            break;
         default:
             break;
     }
@@ -719,9 +813,9 @@ room451.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "cecilia",
-            text: "Sorry, in progress... ",
+            text: "Mmmmmm ",
             button: [
-                { chatID: -1, text: "Sad noises", callback: "reset" }
+                { chatID: 44, text: "*lick*", callback: "duo2" }
             ]
         },
         {
@@ -783,6 +877,131 @@ room451.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Take the money", callback: "suckit4" },
                 { chatID: -1, text: "A true sissy does it for free", callback: "suckit5" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "cecilia",
+            text: "MMMmmmmmmm",
+            button: [
+                { chatID: 36, text: "I'm here to take that cock in my ass! ", callback: "anal1" },
+                { chatID: 36, text: "Oh, hi. I was told to come down here ", callback: "anal1" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "cecilia",
+            text: "Well get over here slut! This is the perfect cock for that ass!  ",
+            button: [
+                { chatID: 37, text: "Yes!", callback: "anal2" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "cecilia",
+            text: "That looks yummy. I want a taste.",
+            button: [
+                { chatID: 38, text: "Ooooooo MMmmmMMmmm", callback: "anal3" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "cecilia",
+            text: "MMmmmm. Gimme that man cock!",
+            button: [
+                { chatID: 39, text: "Oh fuck, oh fuck. This feels so good!", callback: "anal4" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "cecilia",
+            text: "Nom nom nom! ",
+            button: [
+                { chatID: 40, text: "FFFuuuuuuuu", callback: "anal5" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "cecilia",
+            text: "Isn't taking anonymous cocks in the ass the best! Feel free to play more with or without me you slut!",
+            button: [
+                { chatID: -1, text: "Oh yeah!", callback: "anal6" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "me",
+            text: "Oh, a cock!",
+            button: [
+                { chatID: 33, text: "Suck it", callback: "suckit1" },
+                { chatID: 42, text: "Shove it in your ass", callback: "ass1" },
+                { chatID: -1, text: "Pass", callback: "resetStall1" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "thinking",
+            text: "OOOhhh yeah",
+            button: [
+                { chatID: 43, text: "Pass", callback: "ass2" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "thinking",
+            text: "I am a sloppy bitch! ",
+            button: [
+                { chatID: -1, text: "Take the money", callback: "ass3" },
+                { chatID: -1, text: "A true sissy does it for free", callback: "ass4" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "cecilia",
+            text: "Hot!",
+            button: [
+                { chatID: -1, text: "*drool*", callback: "duoEnd" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "cecilia",
+            text: "Shall we blow him?",
+            button: [
+                { chatID: 27, text: "Blow job!", callback: "duo1" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "cecilia",
+            text: "Shall we blow him, or shove it up our asses?",
+            button: [
+                { chatID: 27, text: "Blow job!", callback: "duo1" },
+                { chatID: 47, text: "Anal!", callback: "duo3" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "cecilia",
+            text: "OOoo that's deep!",
+            button: [
+                { chatID: 48, text: "*lick*", callback: "duo4" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "me",
+            text: "Oh fuck that's big!",
+            button: [
+                { chatID: 49, text: "*suck*", callback: "duo5" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "cecilia",
+            text: "*lick* YUM!",
+            button: [
+                { chatID: -1, text: "MMmmm", callback: "duoEnd" },
             ]
         },
     ];
