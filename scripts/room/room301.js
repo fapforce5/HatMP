@@ -898,7 +898,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "envy",
-                text: "That was totally fun! Next time you come by bring some chips. We'll watch a movie. ",
+                text: "That was totally fun! Next time you come by bring some pizza. We'll watch a movie. ",
                 button: [
                     { chatID: -1, text: "You're on. See you later", callback: "envy2" }
                 ]
@@ -1745,7 +1745,7 @@ room301.chat = function (chatID) {
                 speaker: "envy",
                 text: "Fuck yes! Let's go right now! I want to get milked soooo bad!",
                 button: [
-                    { chatID: 106, text: "I don't think " + sc.n("rached") + " is awake now. How about the morning?", callback: "" },
+                    { chatID: 106, text: "I don't think " + sc.n("rachel") + " is awake now. How about the morning?", callback: "" },
                 ]
             },
             {
