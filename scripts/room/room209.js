@@ -353,6 +353,7 @@ room209.btnclick = function (name) {
             chat(90, 209);
             break;
         case "h_17":
+            nav.killall();
             g.spendSissy(name);
             g.set("oncase", "gloryholeanal");
             nav.bg("209_classroom/bg.jpg");

@@ -331,6 +331,7 @@ room301.chatcatch = function (callback) {
             char.room(300);
             break;
         case "spanky3":
+            nav.killall();
             nav.bg("301_living/spanky1.jpg");
             break;
         case "envy3end":
@@ -703,6 +704,13 @@ room301.chatcatch = function (callback) {
                 zcl.displayMain(-550, 250, .3, "", true);
                 chat(83, 301);
             }
+            break;
+        case "step13_4":
+            nav.killall();
+            nav.bg("301_living/step13_4.jpg");
+            break;
+        case "step13_5":
+            nav.bg("301_living/step13_5.jpg");
             break;
         case "step13badend":
             sc.setstep("envy", 14);
@@ -1547,7 +1555,7 @@ room301.chat = function (chatID) {
                 speaker: "me",
                 text: "I'm wearing my chasity cage. Maybe later. ",
                 button: [
-                    { chatID: 80, text: "...", callback: "step13badend" }
+                    { chatID: -1, text: "...", callback: "step13badend" }
                 ]
             },
             {

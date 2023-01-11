@@ -6,7 +6,7 @@ room300.main = function () {
         nav.bg("300_apartment/fight.jpg");
         chat(4, 300);
     }
-    else if (envyStep === 16) {
+    else if (envyStep > 15) {
         nav.button({
             "type": "btn",
             "name": "door",
@@ -86,7 +86,7 @@ room300.btnclick = function (name) {
                 else
                     chat(21, 300);
             }
-            else if (envystep === 16) {
+            else if (envystep > 15) {
                 chat(24, 300);
             }
             else {
@@ -144,6 +144,7 @@ room300.chatcatch = function (callback) {
             char.room(300);
             break;
         case "enter":
+            g.pass = null;
             char.room(301);
             break;
         default:

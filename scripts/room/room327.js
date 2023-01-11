@@ -47,26 +47,59 @@ room327.main = function () {
 room327.btnclick = function (name) {
     switch (name) {
         case "getmilked":
-            nav.killall();
-            nav.bg("327_milking/m1.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "chat",
-                "left": 1254,
-                "top": 110,
-                "width": 666,
-                "height": 970,
-                "image": "327_milking/chat.png"
-            }, 327);
-            nav.button({
-                "type": "btn",
-                "name": "milk",
-                "left": 907,
-                "top": 109,
-                "width": 156,
-                "height": 487,
-                "image": "327_milking/milk.png"
-            }, 327);
+            if (sc.getstep("envy") > 15) {
+                nav.killall();
+                nav.bg("327_milking/trio_bg.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "envy",
+                    "left": 0,
+                    "top": 0,
+                    "width": 792,
+                    "height": 1080,
+                    "image": "327_milking/trio_envy.png"
+                }, 327);
+                nav.button({
+                    "type": "img",
+                    "name": "itsame",
+                    "left": 466,
+                    "top": 78,
+                    "width": 1332,
+                    "height": 1002,
+                    "image": "327_milking/trio_me.png"
+                }, 327);
+                nav.button({
+                    "type": "btn",
+                    "name": "chat",
+                    "left": 1291,
+                    "top": 193,
+                    "width": 629,
+                    "height": 887,
+                    "image": "327_milking/trio_kinsey.png"
+                }, 327);
+            }
+            else {
+                nav.killall();
+                nav.bg("327_milking/m1.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "chat",
+                    "left": 1254,
+                    "top": 110,
+                    "width": 666,
+                    "height": 970,
+                    "image": "327_milking/chat.png"
+                }, 327);
+                nav.button({
+                    "type": "btn",
+                    "name": "milk",
+                    "left": 907,
+                    "top": 109,
+                    "width": 156,
+                    "height": 487,
+                    "image": "327_milking/milk.png"
+                }, 327);
+            }
             break;
         case "milk":
             nav.killbutton("milk");
@@ -99,6 +132,21 @@ room327.btnclick = function (name) {
                     chat(26, 327);
                     break;
             };
+            break;
+        case "envy":
+            switch (sc.getstep("envy")) {
+                case 16:
+                    sc.setstep("envy", 17);
+                    chat(27, 327);
+                    break;
+                case 17:
+                    sc.setstep("envy", 18);
+                    chat(30, 327);
+                    break;
+                case 18:
+                    chat(34, 327);
+                    break;
+            }
             break;
         case "energy":
             if (inv.has("soda")) {
@@ -434,6 +482,82 @@ room327.chat = function (chatID) {
             chatID: 26,
             speaker: "kinsey",
             text: "That's it for this release. More in the future",
+            button: [
+                { chatID: 999, text: "...", callback: "m2" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "envy",
+            text: "I'm sooooo glad you brought me here! Not only do I get to be a Hucow at night they take me to the barn " +
+                "and the farm hands and security guards fuck all my holes! Drake said I'm way better than " + sc.n("kinsey") +
+                " at taking cock and not complaining! ",
+            button: [
+                { chatID: 28, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "kinsey",
+            text: "I'm glad you're here too. I get so tired of being used by everyone in the barn, it's nice having another " +
+                "hucow around, and your pussy tastes sweet, even after taking all those cocks. ",
+            button: [
+                { chatID: 29, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "envy",
+            text: "I love your pussy too! I've never had a girlfriend before, but you're the best!  ",
+            button: [
+                { chatID: 999, text: "...", callback: "m2" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "envy",
+            text: "You'll never believe what we did last night! " + sc.n("kinsey") + " was talking back to Drake saying " +
+                "he was too rough, so I said to Drake just fuck my ass tonight. So he said I'm too easy, he likes a challenge, " +
+                "so " + sc.n("kinsey") + " said Drake's biggest challenge was to get laid with that ugly face. So he got so mad! " +
+                "He said he was going to punish both of us! ",
+            button: [
+                { chatID: 31, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "envy",
+            text: "So he tied us up together facing each other with a dildo in both of us and covered us in iching powder. He said " +
+                "he would only scratch our ichies if " + sc.n("kinsey") + " begged for all their cocks in her ass. I was so itchy " +
+                "I begged them all to fuck me, but Drake said " + sc.n("kinsey") + " had to beg. I told her she didn't have to, " +
+                "but my entire body was crawling. I didn't think she was going to do it. She said they could all fuck themselves " +
+                "but after an hour we were rubbing each other to get some relief, but it was no use. ",
+            button: [
+                { chatID: 32, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "envy",
+            text: "She begged, but they said it wasn't good enough, so she had to scream for each cock to fuck her ass. They even " +
+                "shoved two at a time in her. She's such a champ! After they were all done they even let me eat the cum out of her " +
+                "ass and a couple of them fucked me so I wasn't left out. I hope they let us sleep tonight. I'm so tired. ",
+            button: [
+                { chatID: 33, text: "Oh wow. Are you ok " + sc.n("kinsey") + "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "kinsey",
+            text: "I fucking hate Drake. ",
+            button: [
+                { chatID: 999, text: "Oh. Me too. ", callback: "m2" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "envy",
+            text: "More to cum in a future release ",
             button: [
                 { chatID: 999, text: "...", callback: "m2" }
             ]

@@ -96,7 +96,7 @@ room451.btnclick = function (name) {
                 var oncase = g.get("oncase");
                 if (oncase === "gloryholebj")
                     chat(14, 451);
-                if (oncase === "gloryholeanal") {
+                else if (oncase === "gloryholeanal") {
                     nav.killall();
                     nav.bg("451_parkMensRoom/anal0.jpg");
                     chat(35, 451);
@@ -152,8 +152,10 @@ room451.btnclick = function (name) {
                 chat(7, 451);
             break;
         case "gloryhole":
-            if (g.sissy[13].ach)
-                chat(28, 451);
+            if (g.sissy[13].ach) {
+                //chat(28, 451);
+                room451.chatcatch("suck1");
+            }
             else
                 chat(2, 451);
             break;
@@ -272,8 +274,8 @@ room451.btnclick = function (name) {
             }
             else {
                 nav.killall();
-                nav.bg("451_parkMensRoom/gbgcock.jpg");
-                chat(46, 451);
+                nav.bg("451_parkMensRoom/gbgcockx.jpg");
+                chat(45, 451);
             }
             
             break;
@@ -941,9 +943,9 @@ room451.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "thinking",
-            text: "OOOhhh yeah",
+            text: "I love taking a strager's cock in my ass! ",
             button: [
-                { chatID: 43, text: "Pass", callback: "ass2" }
+                { chatID: 43, text: "...", callback: "ass2" }
             ]
         },
         {
