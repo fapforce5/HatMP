@@ -33,7 +33,7 @@ room326.btnclick = function (name) {
             break;
         case "cock":
             var horseLove2 = sc.getstep("horse");
-            if (horseLove2 <= 40) {
+            if (horseLove2 < 40) {
                 chat(2, 326);
             }
             else {

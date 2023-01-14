@@ -93,7 +93,21 @@ room650.btnclick = function (name) {
             }
             break;
         case "candy":
-            chat(6, 650);
+            if (!g.get("candyDayEvent")) {
+                chat(6, 650);
+            }
+            else {
+                var candyStep = sc.getstep("candy");
+                if (candyStep > 0 && candyStep < 100) {
+                    sc.setstep("candy", 200);
+                    candyStep = 200;
+                }
+                if (candyStep === 0) {
+                    chat(20, 650);
+                }
+                else
+                    chat(6, 650);
+            }
             break;
         case "charlie":
             chat(7, 650);
@@ -185,6 +199,34 @@ room650.chatcatch = function (callback) {
             }, 650);
             nav.buildnav([651, 0]);
             break;
+        case "candy50":
+            if (g.get("money") < 50)
+                chat(23, 650);
+            else {
+                chat(24, 650);
+            }
+            break;
+        case "candy50_1":
+            nav.killall();
+            nav.bg("650_toyStore/candy50_1.jpg");
+            break;
+        case "candy50_2":
+            nav.bg("650_toyStore/candy50_2.jpg");
+            break;
+        case "candy50_3":
+            nav.bg("650_toyStore/candy50_3.jpg");
+            break;
+        case "candy50_4":
+            nav.bg("650_toyStore/candy50_4.jpg");
+            break;
+        case "candy50_5":
+            nav.bg("650_toyStore/candy50_5.jpg");
+            break;
+        case "candy50_6":
+            sc.setstep("candy", 50);
+            char.addtime(120);
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -250,7 +292,7 @@ room650.chat = function (chatID) {
             text: "You're a real cutie! What can I do for you?",
             button: [
                 { chatID: -1, text: "Buy some toys!", callback: "toys" },
-                { chatID: -1, text: "Nothing", callback: "" }
+                { chatID: -1, text: "Nothing", callb ack: "" }
             ]
         },
         {
@@ -364,6 +406,96 @@ room650.chat = function (chatID) {
             text: "You're a great whore! I really need my balls drained. So what can I get you? ",
             button: [
                 { chatID: -1, text: "...", callback: "c5" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "candy",
+            text: "You're a real cutie! What can I do for you?",
+            button: [
+                { chatID: 21, text: "Do you really think I'm cute? I think you're really hot!", callback: "" },
+                { chatID: -1, text: "Buy some toys!", callback: "toys" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "candy",
+            text: "Do you really think I'm hot? ",
+            button: [
+                { chatID: 22, text: "Yes I do! I would love to take you out sometime. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "candy",
+            text: "Oh.. Sure. I would love that! I'm hungry now if you want to grab a bite at the Naked Beaver Diner?",
+            button: [
+                { chatID: -1, text: "Yes I do! Lets go!", callback: "candy50" },
+                { chatID: -1, text: "I'm busy right now. Maybe later", callback: "" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "me",
+            text: "Oh.. Looks like I'm short of cash. Maybe well get together later. ",
+            button: [
+                { chatID: -1, text: "Sorry", callback: "" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "candy",
+            text: "Sweet! I'm like, so happy right now! Let's go.",
+            button: [
+                { chatID: 25, text: "Sweet", callback: "candy50_1" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "candy",
+            text: "This is totally my favorite place! They make the best burgers here! ",
+            button: [
+                { chatID: 26, text: "They totally do! So do you own the Toys 'n Us store?", callback: "candy50_2" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "candy",
+            text: "Yeah. Me and " + sc.n("tiffany") + " bought the store a year ago. We were working at Popular Girl " +
+                "and hated our shifts, so we said 'fuck it, lets buy our own store.' So we talked to " + sc.n("charlie") +
+                " and he agreed to sell it to us, and even agreed to work nights a weekends. He says he hates doing the " +
+                "books and there's more pussy during the nights and weekends. So we got it for cheap. So awesome!",
+            button: [
+                { chatID: 27, text: "Don't let your dreams be dreams. So do you go on a lot of dates?", callback: "candy50_3" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "candy",
+            text: "I've been on dates. The thing I hate the most of owning the Toys 'n Us store is that all guys just " +
+                "assume I'm some kind of slut, ya know. If I ask them to take me out on a date, they just take their cock " +
+                "out and tell me to suck it. I'm like, hello, we just met and I'm working the store. ",
+            button: [
+                { chatID: 28, text: "Guys are such animals!", callback: "candy50_4" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "candy",
+            text: "Haha. Like at first I loved it. It was so easy to get cock, but after the 100th cock it gets so old. I " +
+                "want to get to know the person behind the cock. I guess I might just be getting, like, more mature. So tell " +
+                "me about you, the person behind your cock. ",
+            button: [
+                { chatID: 29, text: "Tell your story....", callback: "candy50_5" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "candy",
+            text: "Awww that's so cute! You really are a great guy. Well I got to get back and help " + sc.n("tiffany") + " out. " +
+                "We should do this again. I really like dates. ",
+            button: [
+                { chatID: -1, text: "I really liked it too. Thanks. ", callback: "candy50_6" }
             ]
         },
     ];

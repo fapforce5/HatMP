@@ -199,7 +199,7 @@ sc.events = [
     { name: "tiffany", step: 16, txt: "Watch Tiffany masturbate", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
     { name: "tiffany", step: 17, txt: "Masturbate like a girl", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
 
-    { name: "candy", step: -1, txt: "Flash in bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
+    { name: "candy", step: -1, txt: "Flash in gym bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "candy", step: 0, txt: "Need to do crossdressing event", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
     { name: "candy", step: 1, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
     { name: "candy", step: 2, txt: "Ate your own cum!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
@@ -630,6 +630,10 @@ sc.load = function (ra) {
     }
     
     sc.setMax();
+    //Fix for candy's new story line if storyline progressed passed the apartment event.
+    var candyStep = sc.getstep("candy");
+    if (candyStep > 0 && candyStep < 50)
+        sc.setstep("candy", 100);
 };
 
 /*
