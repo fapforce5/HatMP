@@ -292,7 +292,7 @@ room650.chat = function (chatID) {
             text: "You're a real cutie! What can I do for you?",
             button: [
                 { chatID: -1, text: "Buy some toys!", callback: "toys" },
-                { chatID: -1, text: "Nothing", callb ack: "" }
+                { chatID: -1, text: "Nothing", callback: "" }
             ]
         },
         {
