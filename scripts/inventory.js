@@ -307,7 +307,7 @@ inv.display = function () {
         if (inv.master[i].entry) {
             $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
             if (inv.master[i].n)
-                $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3" title="' + inv.master[i].display + '">');
+                $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
             if (inv.master[i].count !== null)
                 $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
             counter++;
