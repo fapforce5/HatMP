@@ -149,6 +149,14 @@ $(document).ready(function () {
         char.import();
     });
 
+    $("#room_export_load_file").click(function () {
+        char.file_import();
+    });
+
+    $("#room_export_file").click(function () {
+        char.file_export($("#room_export_file").data('saveID'));
+    });
+
     $("#room_export_hide").click(function () {
         $("#room_export").slideUp();
     });
@@ -159,6 +167,8 @@ $(document).ready(function () {
         $("#room_export").slideDown();
         $("#room_export_data").val('');
         $('#room_export_load').show();
+        $('#room_export_load_file').show();
+        $('#room_export_file').hide();
     });
 
     $('.char-modBtn').click(function () {
@@ -1581,6 +1591,9 @@ char.export = function (saveID) {
     var tp = localStorage[cookieName];
     $("#room_export").slideDown();
     $('#room_export_load').hide();
+    $('#room_export_load_file').hide();
+    $('#room_export_file').show();
+    $('#room_export_file').data('saveID', saveID);
     $("#room_export_data").val(tp);
     $('#room-export-text').show();
     $('#room-import-text').hide();
@@ -1614,4 +1627,60 @@ char.import = function () {
     $('.menu-button[data-type="close"]').click();
 
     $("#room_export").slideUp();
+};
+
+char.file_export = function (saveID) {
+    function pad2(num) {
+      return num < 10 ? ('0' + num) : num;
+    }
+    // Create a file url using the save content
+    const cookieName = 'HatMP_' + saveID;
+    const tp = localStorage[cookieName];
+    const blob = new Blob([tp], {type: 'text/plain'});
+    const url = window.URL.createObjectURL(blob);
+    // Add a link to the file url and click on it for user to download it
+    const now = new Date();
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    // Generate file name
+    a.download = 'HatMP_'
+            + `${now.getFullYear()}${pad2(now.getMonth() + 1)}${pad2(now.getDate())}T`
+            + `${pad2(now.getHours())}${pad2(now.getMinutes())}${pad2(now.getSeconds())}`
+            + '.save';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+};
+
+char.file_import = function () {
+    // Create a file input and click on it for user to select the save file
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.save,.txt';
+    input.style.display = 'none';
+    input.id = 'file_import_input';
+
+    input.addEventListener('change', () => {
+        document.body.removeChild(input);
+        // Read the save file content and load it
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            $("#room_export_data").val(reader.result);
+            char.import();
+        };
+
+        reader.onerror = function() {
+            console.error(reader.error);
+        };
+
+        reader.readAsText(input.files[0]);
+    });
+
+    // Remove old file inputs in case user clicked the Cancel button
+    $('#file_import_input').remove();
+
+    document.body.appendChild(input);
+    input.click();
 };
