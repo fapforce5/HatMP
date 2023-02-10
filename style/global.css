@@ -937,6 +937,10 @@ input[type=text]:disabled{
     width: 100%;
 }
 
+.click-thru {
+    pointer-events: none;
+}
+
 #room_left_walk_sub {
     overflow-y: scroll;
     width: 100%;
