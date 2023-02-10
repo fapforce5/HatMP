@@ -261,7 +261,7 @@ room51.chatcatch = function (callback) {
                 { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
             ];
             sc.setstep("tiffany", 16);
-            sc.setstep("candy", 1);
+            sc.setstep("candy", 100);
             sc.revokeStep("tiffany", -1);
             sc.revokeStep("tiffany", -9);
             g.sissy[29].ach = true;

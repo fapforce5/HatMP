@@ -93,17 +93,19 @@ room650.btnclick = function (name) {
             }
             break;
         case "candy":
-            if (!g.get("candyDayEvent")) {
+            if (g.get("candyDayEvent")) {
                 chat(6, 650);
             }
             else {
                 var candyStep = sc.getstep("candy");
-                if (candyStep > 0 && candyStep < 100) {
-                    sc.setstep("candy", 200);
-                    candyStep = 200;
-                }
                 if (candyStep === 0) {
                     chat(20, 650);
+                }
+                else if (candyStep === 50) {
+                    chat(30, 650);
+                }
+                else if (candyStep === 51) {
+                    chat(41, 650);
                 }
                 else
                     chat(6, 650);
@@ -226,6 +228,54 @@ room650.chatcatch = function (callback) {
             sc.setstep("candy", 50);
             char.addtime(120);
             char.room(0);
+            break;
+        case "candy51_1":
+            nav.killall();
+            nav.bg("650_toyStore/candy51_1.jpg");
+            zcl.displayMain(330, 700, .085, "clothes", true);
+            break;
+        case "candy51_2":
+            nav.bg("650_toyStore/candy51_2.jpg");
+            break;
+        case "candy51_3":
+            g.internal = { p: cl.c.pants, u: cl.c.panties };
+            cl.c.pants = null;
+            cl.c.panties = null;
+            zcl.displayMain(330, 700, .085, "clothes", true);
+            if (cl.c.chastity !== null)
+                chat(34, 650);
+            else
+                chat(36, 650);
+            break;
+        case "candy51_4end":
+            g.setflag("candyDayEvent");
+            char.addtime(60);
+            cl.c.panties = g.internal.u;
+            cl.c.pants = g.internal.p;
+            char.room(450);
+            break;
+        case "candy51_4":
+            nav.killall();
+            g.mod("arousal", 100);
+            nav.bg("650_toyStore/candy51_4.jpg");
+            break;
+        case "candy51_5":
+            nav.bg("650_toyStore/candy51_5.jpg");
+            zcl.displayMain(330, 700, .085, "clothes", true);
+            break;
+        case "candy51_6":
+            nav.bg("650_toyStore/candy51_6.jpg");
+            break;
+        case "candy51_7":
+            g.setflag("candyDayEvent");
+            char.addtime(60);
+            cl.c.panties = g.internal.u;
+            cl.c.pants = g.internal.p;
+            sc.setstep("candy", 51);
+            char.room(450);
+            break;
+        case "candy52_end":
+            sc.setstep("candy", 52);
             break;
         default:
             break;
@@ -496,6 +546,153 @@ room650.chat = function (chatID) {
                 "We should do this again. I really like dates. ",
             button: [
                 { chatID: -1, text: "I really liked it too. Thanks. ", callback: "candy50_6" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "candy",
+            text: "You're back! What can I do for you? ",
+            button: [
+                { chatID: 31, text: "Do you want to go on another date?", callback: "" },
+                { chatID: -1, text: "Buy some toys!", callback: "toys" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "candy",
+            text: "I really would! Let's go for a walk in the woods. ",
+            button: [
+                { chatID: 32, text: "Let's go!", callback: "candy51_1" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "candy",
+            text: "I just love the breeze on blowing on my bare ass and my pussy slit. It's so freeing. We should bare our asses " +
+                "and enjoy it. ",
+            button: [
+                { chatID: 33, text: "Huh?", callback: "candy51_2" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "candy",
+            text: "That feels amazing. You need to bare your ass too, prude. ",
+            button: [
+                { chatID: 34, text: "Oh sure", callback: "candy51_3" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "candy",
+            text: "See. The wind is so freeing. Oh... I see you're locked up. I guess we'll do some more of this date " +
+                "once you're free. Let's head back",
+            button: [
+                { chatID: 35, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "thinking",
+            text: "I'm such an idiot! Fuck! Why would I wear a chastity cage on a date with a beautiful girl? UGH, I'm " +
+                "so stupid. ",
+            button: [
+                { chatID: -1, text: "Yes, let's go back. ", callback: "candy51_4end" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "candy",
+            text: "See. The wind is so freeing, it get's me all excited. I see I'm not the only one excited. ",
+            button: [
+                { chatID: 37, text: "Huh? ", callback: "candy51_4" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "candy",
+            text: "Hi big fella. You look like you want to play. Do you want to play with my tight little pussy. I'm " +
+                "really bouncy and soft, you'll love it. ",
+            button: [
+                { chatID: 38, text: "I do want to play with your pussy ", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "candy",
+            text: "Well that's too bad. We're on a date, and I'm a proper girl. Even if I do work at an adult toy store. ",
+            button: [
+                { chatID: 39, text: "Oh, uhh, of course ", callback: "candy51_5" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "candy",
+            text: "That was fun. I love just going for a walk. You're such a nice guy to go with me. I think you'll " +
+                "make a great friend. I've got to get back to work. Bye!",
+            button: [
+                { chatID: 40, text: "...", callback: "candy51_6" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "thinking",
+            text: "A FRIEND? This chick is nuts. Why did she take me out here and bare her pussy just to leave me with blue " +
+                "balls and call me her friend. What ever. I'll fuck her next time we go out!",
+            button: [
+                { chatID: -1, text: "Grrrr.", callback: "candy51_7" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "candy",
+            text: "Hay. How's my new friend doing! ",
+            button: [
+                { chatID: 42, text: "I want to take you out one more time. On a date.", callback: "" },
+                { chatID: -1, text: "Buy some toys!", callback: "toys" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "candy",
+            text: "We can hang out, but as friends. I just don't think you're right for me baby. ",
+            button: [
+                { chatID: 43, text: "But we had such a great time last date. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "candy",
+            text: "You didn't try to fuck me last time we went out. ",
+            button: [
+                { chatID: 44, text: "You said not to. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "candy",
+            text: "I didn't want you to be a simp. I wanted you to push me down and force your cock in me. " +
+                "Why do you think I took you to a secluded spot in the woods and walked around with my bare ass pussy. So you " +
+                "could rape me easier. I want an agressive man, not you.",
+            button: [
+                { chatID: -1, text: "Oh. ok then.", callback: "candy52_end" },
+                { chatID: 45, text: "I can be aggressive, I'll rape you right here!", callback: "" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "tiffany",
+            text: "You're not raping anyone in the middle of my store. I think you need to go and cool off for a bit. ",
+            button: [
+                { chatID: 46, text: "But....", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "candy",
+            text: "You're just too nice. It's ok to be a nice guy, but I'm not interested in nice guys. Sorry. ",
+            button: [
+                { chatID: -1, text: "Sorry", callback: "candy52_end" }
             ]
         },
     ];

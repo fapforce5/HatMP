@@ -21,7 +21,7 @@ sc.char = [
     { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
     { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-    { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
+    { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
     { name: "charlie", display: "Charlie", image: "charlie.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "cop", display: "Cop", image: "cop.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
     { name: "cop2", display: "Cop", image: "cop2.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
@@ -200,10 +200,17 @@ sc.events = [
     { name: "tiffany", step: 17, txt: "Masturbate like a girl", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
 
     { name: "candy", step: -1, txt: "Flash in gym bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    { name: "candy", step: 0, txt: "Need to do crossdressing event", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    { name: "candy", step: 1, txt: "Transformation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    { name: "candy", step: 2, txt: "Ate your own cum!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    { name: "candy", step: 3, txt: "Ate Brad's Cum", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 0, txt: "Meet her at the adult toy store for your first date.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 50, txt: "Second date in the forest. - Meet her at the toy store.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
+    { name: "candy", step: 51, txt: "Will you get lucky this time? - Toy store", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
+    { name: "candy", step: 52, txt: "Sorry, I don't date nice guys - Complete the Public Cross Dress event at the sissy school ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
+
+    { name: "candy", step: 100, txt: "Meet her in her room for some friendly advice!", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 101, txt: "Suprise visitor. Meet her in her room", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 102, txt: "Cheerleading! Meet her in her room. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
+    { name: "candy", step: 103, txt: "Cheerleader tryouts! Meet her at the football field Saturday Morning in workout clothes", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [875] },
+
+//{ name: "candy", step: 3, txt: "Ate Brad's Cum", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
 
     { name: "chad", step: -2, txt: "Give Chad a picture of Lola's tits", img: "chad_pic", show: true, row: 1, col: 0, ach: false, major: false, m: [] },
     { name: "chad", step: -1, txt: "Pay $500", img: "money", show: true, row: -1, col: 0, ach: false, major: false, m: [] },
