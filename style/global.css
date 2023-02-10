@@ -782,6 +782,7 @@ input[type=text]:disabled{
     margin-left: auto;
     margin-right: auto;
     margin-top: 12px;
+    text-align: center;
 }
 
 .room-export-buttons button{
@@ -799,7 +800,9 @@ input[type=text]:disabled{
     display:inline-block;
 }
 
-#room_export_load {
+#room_export_load,
+#room_export_load_file,
+#room_export_file {
     background: #3B5998;
 }
 
@@ -807,7 +810,9 @@ input[type=text]:disabled{
     background: #dc0000;
 }
 
-#room_export_load:hover {
+#room_export_load:hover,
+#room_export_load_file:hover,
+#room_export_file:hover {
     background: #1c4d68;
 }
 
