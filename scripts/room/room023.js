@@ -589,7 +589,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "lola",
-                text: g.pass.truth[0].e,
+                text: g.pass.truth[0].l,
                 button: [
                     { chatID: 400, text: "Your turn " + sc.n("lola"), callback: "" }
                 ]
@@ -900,9 +900,9 @@ room23.chat = function (chatID) {
         ];
         retEntry = cArray[chatID];
     }
-    if (chatID === 4)
-        g.pass.truth.pop();
+    if (chatID === 4 || chatID == 6)
+        g.pass.truth.shift();
     else if (chatID === 8)
-        g.pass.myTruth.pop();
+        g.pass.myTruth.shift();
     return retEntry;
 };
