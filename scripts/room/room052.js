@@ -80,6 +80,9 @@ room52.main = function () {
         }
 
         navList = [51, 55];
+        var missingClothing = cl.hasoutfit("public");
+        if (missingClothing === null)
+            navList.push(0);
 
         $.each(btnList, function (i, v) {
             nav.button(v, 52);

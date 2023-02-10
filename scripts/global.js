@@ -244,9 +244,9 @@ g.sissy = [
     { id: 45, pID: [51], icon: "lip1", x: 16, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: 1, h: true },
     { id: 46, pID: [45], icon: "lip2", x: 17, y: 4, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: 2, h: true },
 
-    { id: 47, pID: [55], icon: "q1", x: 16, y: 8, name: "Quest 1", description: "Save Missy #1", ach: false, active: false, points: 0, h: false },
-    { id: 48, pID: [55], icon: "q2", x: 16, y: 10, name: "Quest 2", description: "Save Missy #2", ach: false, active: false, points: 0, h: false },
-    { id: 49, pID: [55], icon: "q3", x: 16, y: 12, name: "Quest 3", description: "Save Missy #3", ach: false, active: false, points: 0, h: true },
+    { id: 47, pID: [55], icon: "q1", x: 16, y: 8, name: "Quest 1", description: "Construction Site", ach: false, active: true, points: 0, h: false },
+    { id: 48, pID: [55], icon: "q2", x: 16, y: 10, name: "Quest 2", description: "Rachel's Farm", ach: false, active: true, points: 0, h: false },
+    { id: 49, pID: [55], icon: "q3", x: 16, y: 12, name: "Quest 3", description: "Investiate the Forest Queen's List", ach: false, active: true, points: 0, h: true },
 
     { id: 50, pID: [15], icon: "black", x: 10, y: 12, name: "Black Room", description: "Train in the Black Room", ach: false, active: true, points: 1, h: false },
 
@@ -265,7 +265,7 @@ g.sissy = [
     { id: 58, pID: [0], icon: "lube", x: 3, y: 11, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
     { id: 59, pID: [58], icon: "dildos", x: 3, y: 12, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: false, points: 0, h: false },    
+    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: true, points: 0, h: false },    
 
 ];
 
@@ -486,6 +486,7 @@ g.rooms = [
     { roomID: 2, name: "Help", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: -1, btn: "roomBtn_-1.png" },
     { roomID: 3, name: "Check", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: -1, btn: "roomBtn_-1.png" },
 
+    { roomID: 6, name: "List", image: "6_computer/bg.jpg", nightImage: "6_computer/bg.jpg", houseID: 16, btn: "roomBtn_7.png" },
     { roomID: 7, name: "My Room ALT", image: "7_mainCharRoomAlt/7_mainCharRoomAlt.jpg", nightImage: "7_mainCharRoomAlt/7_mainCharRoomAlt.jpg", houseID: 16, btn: "roomBtn_7.png" },
     { roomID: 8, name: "My Wardrobe", image: "8_wardrobe/8_wardrobe.jpg", nightImage: "8_wardrobe/8_wardrobe.jpg", houseID: 16, btn: "roomBtn_8.png" },
     { roomID: 9, name: "Computer", image: "9_computer/09_computer.jpg", nightImage: "9_computer/09_computer.jpg", houseID: 16, btn: "roomBtn_9.png" },
@@ -631,6 +632,8 @@ g.rooms = [
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
 
+    { roomID: 875, name: "Football field", image: "875_entrance/bg.jpg", nightImage: "875_entrance/bg_night.jpg", houseID: 875, btn: "bg.jpg" },
+
     { roomID: 900, name: "College Entrance", image: "900_college/bg.jpg", nightImage: "900_college/bg_night.jpg", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Pool", image: "901_pool/pool.jpg", nightImage: "901_pool/pool.jpg", houseID: 901, btn: "roomBtn_901.png" },
     { roomID: 902, name: "Girl's Swim Locker", image: "902_girl/bg.jpg", nightImage: "902_girl/bg.jpg", houseID: 901, btn: "roomBtn_902.png" },
@@ -683,11 +686,11 @@ g.roomMap = [
     { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
     { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
     { roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
+    { roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
     { roomID: 900, display: "University", access: true, darkAccess: false, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
     { roomID: 901, display: "Pool", access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
     { roomID: 910, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
-    { roomID: 2000, display: "[In Dev]", access: false, darkAccess: false, left: 539, top: 683, width: 140, height: 258, img: "map/2000.png", night: "map/2000_night.png", map: 1 },
     
     { roomID: 2003, display: "[In Dev]", access: false, darkAccess: false, left: 1144, top: 399, width: 135, height: 113, img: "map/2003.png", night: "map/2003_night.png", map: 1 },
     //{ roomID: 100, access: false, left: 500, top: 300, width: 300, height: 150, activeImg: "map/constructionSite.png", inactiveImg: "map/inactive.png" },
@@ -1591,4 +1594,18 @@ g.removeItemByValue = function(array, value){
 g.sleep = function () {
     g.pass = g.roomID;
     char.room(28);
+};
+
+g.linebreak = function (str, limit) {
+    let brokenString = '';
+    for (let i = 0, count = 0; i < str.length; i++) {
+        if (count >= limit && str[i] === ' ') {
+            count = 0;
+            brokenString += '<br/>';
+        } else {
+            count++;
+            brokenString += str[i];
+        }
+    }
+    return brokenString;
 };

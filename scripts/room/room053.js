@@ -1,95 +1,31 @@
 ﻿//Candy room
 var room53 = {};
 room53.main = function () {
-    //if (!inv.has("reddoor") && !sc.candy().thisRoom && !g.get("reddoor")) {
-    //    var btnList = [
-    //        {
-    //            "type": "btn",
-    //            "name": "1",
-    //            "left": 1636,
-    //            "top": 690,
-    //            "width": 157,
-    //            "height": 223,
-    //            "image": "53_candy/1.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "2",
-    //            "left": 678,
-    //            "top": 278,
-    //            "width": 88,
-    //            "height": 80,
-    //            "image": "53_candy/2.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "3",
-    //            "left": 549,
-    //            "top": 303,
-    //            "width": 60,
-    //            "height": 56,
-    //            "image": "53_candy/3.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "4",
-    //            "left": 706,
-    //            "top": 520,
-    //            "width": 128,
-    //            "height": 171,
-    //            "image": "53_candy/4.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "5",
-    //            "left": 893,
-    //            "top": 407,
-    //            "width": 197,
-    //            "height": 228,
-    //            "image": "53_candy/5.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "6",
-    //            "left": 153,
-    //            "top": 596,
-    //            "width": 362,
-    //            "height": 379,
-    //            "image": "53_candy/6.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "7",
-    //            "left": 1000,
-    //            "top": 327,
-    //            "width": 86,
-    //            "height": 78,
-    //            "image": "53_candy/7.png"
-    //        },
-    //        {
-    //            "type": "btn",
-    //            "name": "8",
-    //            "left": 904,
-    //            "top": 345,
-    //            "width": 101,
-    //            "height": 60,
-    //            "image": "53_candy/8.png"
-    //        }
-    //    ];
-    //    $.each(btnList, function (i, v) {
-    //        nav.button(v, 53);
-    //    });
     if (sc.candy().thisRoom) {
         if (g.hourBetween(7, 22)) {
-            nav.button({
-                "type": "btn",
-                "name": "candy",
-                "left": 906,
-                "top": 16,
-                "width": 648,
-                "height": 1064,
-                "image": "53_candy/c.png"
-            }, 53);
+            var candyStep = sc.getstep("candy");
+            if (candyStep === 101 && !g.get("candyDayEvent")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "101bj",
+                    "left": 430,
+                    "top": 0,
+                    "width": 730,
+                    "height": 1080,
+                    "image": "53_candy/101_1.png"
+                }, 53);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "candy",
+                    "left": 906,
+                    "top": 16,
+                    "width": 648,
+                    "height": 1064,
+                    "image": "53_candy/c.png"
+                }, 53);
+            }
         }
         else
             nav.bg("53_candy/53_candyRoom_night_sleep.jpg")
@@ -106,33 +42,38 @@ room53.btnclick = function (name) {
     name = name.toString();
     switch (name) {
         case "candy":
-            if (cl.hasoutfit("nude") === null) {
+            //if (cl.hasoutfit("nude") === null) {
                 var candyStep = sc.getstep("candy");
                 if (g.get("candyDayEvent")) {
-                    chat(18, 53);
+                    chat(17, 53);
                 }
                 else {
-                    if (candyStep === 1)
+                    if (candyStep === 100)
                         chat(6, 53);
+                    else if (candyStep === 102)
+                        chat(31, 53);
                     else if (candyStep === 2)
                         chat(19, 53);
                     else
-                        chat(5, 53);
+                        chat(17, 53);
                 }
-            }
-            else {
-                nav.killbutton("candy");
-                nav.button({
-                    "type": "btn",
-                    "name": "candy",
-                    "left": 906,
-                    "top": 16,
-                    "width": 648,
-                    "height": 1064,
-                    "image": "53_candy/c1.png"
-                }, 53);
-                chat(4, 53);
-            }
+            //}
+            //else {
+            //    nav.killbutton("candy");
+            //    nav.button({
+            //        "type": "btn",
+            //        "name": "candy",
+            //        "left": 906,
+            //        "top": 16,
+            //        "width": 648,
+            //        "height": 1064,
+            //        "image": "53_candy/c1.png"
+            //    }, 53);
+            //    chat(4, 53);
+            //}
+            break;
+        case "101bj":
+            chat(18, 53);
             break;
         case "cumlick":
             g.internal++;
@@ -207,6 +148,14 @@ room53.btnclick = function (name) {
                 chat(29, 53);
             }
             break;
+        case "101b":
+            nav.bg("53_candy/101_" + g.internal + ".jpg");
+            if (g.internal === 8) {
+                nav.killbutton("101b");
+                chat(26, 53);
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -221,12 +170,7 @@ room53.chatcatch = function (callback) {
         case "reset":
             char.room(53);
             break;
-        case "chastity7":
-            if (cl.c.chastity === null)
-                chat(8, 53);
-            else
-                chat(7, 53);
-            break;
+       
         case "bj1":
             g.mod("receiveOralFemale", 1);
             g.setflag("candyDayEvent");
@@ -359,6 +303,96 @@ room53.chatcatch = function (callback) {
             g.mod("arousal", 100);
             char.room(53);
             break;
+        case "100_1":
+            nav.killall();
+            nav.bg("53_candy/100_1.jpg");
+            break;
+        case "100_2a":
+        case "100_2b":
+        case "100_3":
+        case "100_4a":
+        case "100_4b":
+        case "101_9":
+        case "101_10":
+            nav.bg("53_candy/" + callback + ".jpg");
+            break;
+        case "100_badend":
+            char.addtime(60);
+            sc.setstep("candy", 101);
+            g.setflag("candyDayEvent");
+            char.room(53);
+            break;
+        case "100_5":
+            char.addtime(60);
+            nav.killall();
+            nav.bg("53_candy/53_candyRoom.jpg", "53_candy/53_candyRoom_night.jpg");
+            nav.button({
+                "type": "img",
+                "name": "100_5",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "53_candy/100_5.png"
+            }, 53);
+            break;
+        case "100_goodend":
+            pic.add("candy");
+            sc.setstep("candy", 101);
+            g.setflag("candyDayEvent");
+            char.room(52);
+            break;
+        case "101_2":
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "101_2",
+                "left": 431,
+                "top": 0,
+                "width": 923,
+                "height": 1080,
+                "image": "53_candy/101_2.png"
+            }, 53);
+            break;
+        case "101_3":
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "101_2",
+                "left": 692,
+                "top": 199,
+                "width": 686,
+                "height": 881,
+                "image": "53_candy/101_3.png"
+            }, 53);
+            zcl.displayMain(500, 1000, .3, "clothes", true);
+            break;
+        case "101_4":
+            nav.killall();
+            nav.bg("53_candy/101_4.jpg");
+            g.internal = 5;
+            nav.button({
+                "type": "btn",
+                "name": "101b",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 53);
+            break;
+        case "101_end":
+            sc.setstep("candy", 102);
+            g.setflag("candyDayEvent");
+            char.addtime(120);
+            char.room(52);
+            break;
+        case "102_end":
+            sc.setstep("candy", 103);
+            g.setflag("candyDayEvent");
+            char.addtime(120);
+            char.room(53);
+            break;
         default:
             break;
     }
@@ -401,7 +435,7 @@ room53.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "candy",
-            text: "Oh you're wearing clothes... how boring.",
+            text: "Just getting ready. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -417,27 +451,252 @@ room53.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "candy",
-            text: "Hay slut! How's the cock!",
+            text: "If it isn't our good little girl. Come by to take a peek at my pussy?",
             button: [
-                { chatID: -1, text: "Oh, uhh good?", callback: "chastity7" }
+                { chatID: 7, text: "Just saying hi. ", callback: "" },
+                { chatID: 7, text: "I came by to rape the pussy! ", callback: "" }
             ]
         },
         {
             chatID: 7,
             speaker: "candy",
-            text: "Awww, it's all locked up! I would love to suck on that! Oh well. ",
+            text: "You're so cute. Help me write a reply text to this boy. ",
             button: [
-                { chatID: -1, text: "Damn!", callback: "" }
+                { chatID: 8, text: "oh ok. ", callback: "100_1" }
             ]
         },
         {
             chatID: 8,
             speaker: "candy",
-            text: "It looks good. I bet you want me to wrap my lips around that cock of yours..",
+            text: "He stopped by the store and I gave him my number. I think he's really cute. ",
             button: [
-                { chatID: 9, text: "uh yea", callback: "bj1" }
+                { chatID: 9, text: "Brad! I can't believe you're texting Brad. He's an ass and a bully. ", callback: "" }
             ]
         },
+        {
+            chatID: 9,
+            speaker: "candy",
+            text: "A cute ass and bully! But I'm to tired tonight. What should I say to get him to wait without scaring him. ",
+            button: [
+                { chatID: 10, text: "I have work tomorrow", callback: "100_2b" },
+                { chatID: 10, text: "You should respect me more", callback: "100_2a" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "candy",
+            text: "Let's see what he has to say to that! ",
+            button: [
+                { chatID: 11, text: "...", callback: "100_3" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "candy",
+            text: "I knew the dick pic was coming, I just thought he would respond. It is a nice dick though. Maybe I should " +
+                "go over and take care of it. ",
+            button: [
+                { chatID: 12, text: "Wait. So sending a dick pic really works?", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "candy",
+            text: "Only if your dick is as hot as his! I can't help it, my pussy is already getting wet. ",
+            button: [
+                { chatID: 13, text: "No. Brad's an asshole. You shouldn't have to go over there. ", callback: "" },
+                { chatID: 15, text: "Oh. You should totally go over there then. ", callback: "100_4b" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "candy",
+            text: "Fine what should I say? ",
+            button: [
+                { chatID: 14, text: "You can go fuck yourself asshole", callback: "100_4a" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "candy",
+            text: "Well. I guess he's not going to respond to that. Oh well. I've got to get ready.  ",
+            button: [
+                { chatID: -1, text: "ok. later", callback: "100_badend" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "candy",
+            text: "You're such a great friend! I'm going to get this pussy fucked! See you! ",
+            button: [
+                { chatID: 16, text: "Glad I could help! ", callback: "100_5" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "Oh I got an image from " + sc.n("candy") + ". I wonder what she sent. ",
+            button: [
+                { chatID: -1, text: "Better check my photos.", callback: "100_goodend" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "candy",
+            text: "Aren't you excitable! I love it! I'll have more energy to play tomorrow!",
+            button: [
+                { chatID: -1, text: "Yep", callback: "" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "chad",
+            text: "Hey shrimp dick. Enjoying the show?",
+            button: [
+                { chatID: 19, text: "I just....", callback: "101_2" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "candy",
+            text: "Oh. I didn't know you wanted to watch. Do you want to see how a real man fucks?",
+            button: [
+                { chatID: 20, text: "What, no! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "chad",
+            text: "It's cool loser. I'll let you watch me fuck this fine piece of pussy. She may even let you " +
+                "eat my cum out of her twat. ",
+            button: [
+                { chatID: 21, text: "What.. that's not.. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "candy",
+            text: "Did you want to eat his cum out of my pussy? I've never had a sissy before. You can eat his cum if you " +
+                "want. ",
+            button: [
+                { chatID: 22, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "me",
+            text: "What is he doing here? I thought only girls could come in this building? ",
+            button: [
+                { chatID: 23, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "candy",
+            text: "Oh that. Hehehe. Yes, only girls can come up here. Girls and studs like " + sc.n("chad") + ". " +
+                sc.n("treyvon") + " doens't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
+                "so that's how we got you in. You know he's taken a liking to you. I think he wants to fuck you. ",
+            button: [
+                { chatID: 24, text: "What, no, why....", callback: "" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "chad",
+            text: "Too much talking, not enough fucking. " + sc.n("candy") + " get on the bed with your ass up. I'm going to " +
+                "fuck that cunt. " + sc.n("me") + " sit your ass on the floor and watch how a real man fucks. ",
+            button: [
+                { chatID: 25, text: "[Sit your ass on the floor and watch a real man fuck]", callback: "101_3" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "chad",
+            text: "I'm going to make this bitch squeel like a whore. ",
+            button: [
+                { chatID: -1, text: "...", callback: "101_4" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "candy",
+            text: "Oh look. My pussy is all sloppy with " + sc.n("chad") + "'s yummy cum. You want a taste? ",
+            button: [
+                { chatID: 27, text: "Oh....", callback: "101_9" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "chad",
+            text: "Come here cuck! Clean my cum out of that pussy! Hahahaha loser.  ",
+            button: [
+                { chatID: 28, text: "*GLUB* Lick *Suck*", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "thinking",
+            text: "Oh my god, his cum is so pungent, but I better eat it all. I don't want to make " + sc.n("chad") + 
+                " angry. Besides, maybe she'll let me fuck her after. ",
+            button: [
+                { chatID: 29, text: "...", callback: "101_10" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "candy",
+            text: "You're such a good pussy eater! I'm all clean now! I love having a sissy friend! ",
+            button: [
+                { chatID: 30, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "chad",
+            text: "Hahaha. I can't believe you watched me fuck her, then ate my cum. You're probably going to jack off " +
+                "to this! What a fucking cuck you are! I'm out. Enjoy my cum fag. ",
+            button: [
+                { chatID: -1, text: "...", callback: "101_end" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "candy",
+            text: "I've never had a sissy best friend before, but I was trying to think of ways to thank you for cleaning " +
+                "me out and watching us. It was so hot. Did you masturbate to it later? It doens't matter. I masturbated " +
+                "to it. I love being watched. I love having a sissy. So anyways, do you want to be a cheerleader with me? ",
+            button: [
+                { chatID: 32, text: "What? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "candy",
+            text: "Oh. That was all jumbled. I'm just so excited I talked it over with the other cheerleaders and they said " +
+                "you can try out for the team. We have practice every Saturday and games every Sunday. If you want to " +
+                "join come down to the football field on Saturday, ok! Wear some gym clothes. We'll give you a uniform once " +
+                "you pass the tryout.",
+            button: [
+                { chatID: 33, text: "So go to the football field on Saturday morning in gym clothes? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "candy",
+            text: "Yes! Saturday at the football field. Be ready for a workout. And don't mind Becky, she's a bitch to everyone. ",
+            button: [
+                { chatID: -1, text: "Cool. See you then! ", callback: "102_end" }
+            ]
+        },
+
+
+
+
+
+
+
+
+
         {
             chatID: 9,
             speaker: "candy",

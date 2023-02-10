@@ -77,14 +77,15 @@ room209.main = function () {
             else
                 chat(26, 209);
         }
-        //else if (inv.has("envelope")) {
-        //    inv.use("envelope");
-        //    room209.btnclick("bb1");
-        //    room209.btnclick("poster0");
-        //    room209.btnclick("displayChairsit");
-        //    room209.btnclick("displaypbtn");
-        //    chat(204, 209);
-        //}
+        else if (inv.has("envelope")) {
+            inv.use("envelope");
+            inv.add("usb");
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(207, 209);
+        }
         else if (g.sissy[1].ach) {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
@@ -553,6 +554,33 @@ room209.btnclick = function (name) {
             room209.btnclick("displayChairsit");
             room209.btnclick("displayMissybtn");
             chat(63, 209);
+            break;
+        case "h_47":
+            nav.killall();
+            nav.bg("209_classroom/bg.jpg");
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(216, 209);
+            break;
+        case "h_48":
+            nav.killall();
+            nav.bg("209_classroom/bg.jpg");
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(216, 209);
+            break;
+        case "h_49":
+            nav.killall();
+            nav.bg("209_classroom/bg.jpg");
+            room209.btnclick("bb1");
+            room209.btnclick("poster0");
+            room209.btnclick("displayChairsit");
+            room209.btnclick("displaypbtn");
+            chat(216, 209);
             break;
         case "h_60":
             nav.bg("209_classroom/bg.jpg");
@@ -1570,6 +1598,9 @@ room209.chatcatch = function (callback) {
         case "leave":
             room209.chatcatch("end");
             break;
+        case "cancel":
+            char.room(209);
+            break;
         case "h_4":
             nav.bg("209_classroom/209_hypno2.gif");
             g.roomTimeout = setTimeout(function () {
@@ -1580,6 +1611,14 @@ room209.chatcatch = function (callback) {
             g.mod("missyPoints", 50);
             g.sissy[4].ach = true;
             room209.chatcatch("end");
+            break;
+        case "letter":
+            nav.killall();
+            nav.bg("209_classroom/letter.jpg");
+            break;
+        case "usb":
+            nav.killall();
+            nav.bg("209_classroom/usb.jpg");
             break;
         default:
             break;
@@ -3443,6 +3482,96 @@ room209.chat = function (chatID) {
                     "She'll show you how to be truly nasty. She likes to hang out in the toilets.",
                 button: [
                     { chatID: -1, text: "Ok. I'll see " + sc.n("cecilia") + " in the park bathroom this weekend. ", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 207,
+                speaker: "p",
+                text: "Welcome back. I trust you've gathered some information. Care to debrief me?",
+                button: [
+                    { chatID: 208, text: "[Tell her everything and hand over the envelope]", callback: "" }
+                ]
+            },
+            {
+                chatID: 208,
+                speaker: "p",
+                text: "Well let's see what this letter says. ",
+                button: [
+                    { chatID: 209, text: "...", callback: "letter" }
+                ]
+            },
+            {
+                chatID: 209,
+                speaker: "p",
+                text: "Best of luck taking down the that horrible cult! I’ve included a list of all my contacts in town. " +
+                    "One of them is bound to know the door combination.  Love FQ",
+                button: [
+                    { chatID: 210, text: "...", callback: "usb" }
+                ]
+            },
+            {
+                chatID: 210,
+                speaker: "p",
+                text: "There's a USB in here too. Take this to your home computer and go over it. You'll need to investigate " +
+                    "each person on the list. Gain their trust through any means possible then ask them about the combination " +
+                    "and where to use it. I've also been doing some work myself. It's Power Point time! ",
+                button: [
+                    { chatID: 211, text: "...", callback: "pp1" }
+                ]
+            },
+            {
+                chatID: 211,
+                speaker: "p",
+                text: "Burly's Construction. You may have noticed they're working on a new project in town. A couple years " +
+                    "ago they did some serious renovations at the cult compound. Somewhere on that compound there should be " +
+                    "some blueprints for the compound. We'll be looking for a way in and how to get to the holding cells. ",
+                button: [
+                    { chatID: 212, text: "...", callback: "pp2" }
+                ]
+            },
+            {
+                chatID: 212,
+                speaker: "p",
+                text: "You'll need to get hired by the construction site so you have access to the file room. Once there look " +
+                    "around till you find them. If you need, get friendly with the staff and use them to help locate it. ",
+                button: [
+                    { chatID: 213, text: "...", callback: "pp3" }
+                ]
+            },
+            {
+                chatID: 213,
+                speaker: "p",
+                text: "Next is Rachel's Farm. Rachel makes regular deliveries to the cult compound. We need the route and " +
+                    "times for their deliveries so we can use that to sneak onto the compound. ",
+                button: [
+                    { chatID: 214, text: "...", callback: "pp4" }
+                ]
+            },
+            {
+                chatID: 214,
+                speaker: "p",
+                text: "It won't be easy to get that information. The most probable place is in her exam room. You'll need to " +
+                    "be careful. You can either work for Rachel as one of her Hucows, or fight your way in. ",
+                button: [
+                    { chatID: 215, text: "...", callback: "pp5" }
+                ]
+            },
+            {
+                chatID: 215,
+                speaker: "p",
+                text: "Each of these needs to be complete before we can save " + sc.n("missy") + ". Unlike the other cases " +
+                    "all three cases are open to you and you can come back to the school to take other classes while you work " +
+                    "on these. If you need more information on these cases, just visit me at the school and ask to learn more. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 216,
+                speaker: "p",
+                text: "This is still in development",
+                button: [
+                    { chatID: -1, text: "...", callback: "cancel" }
                 ]
             },
         ];

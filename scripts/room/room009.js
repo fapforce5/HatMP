@@ -10,7 +10,7 @@ room9.main = function () {
     $('.room-topper').hide();
 
     $.each(btnList, function (i, v) {
-        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn")
+        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb")
             nav.button(v, 9);
     });
 
@@ -20,7 +20,7 @@ room9.main = function () {
 
 
 function room9_btnList() {
-    return [
+    var btnList = [
         {
             "type": "btn",
             "name": "powerOff",
@@ -139,6 +139,20 @@ function room9_btnList() {
             "image": "9_computer/09_close.png"
         }
     ];
+
+    if (inv.has("usb")) {
+        btnList.push({
+            "type": "btn",
+            "name": "usb",
+            "left": 800,
+            "top": 119,
+            "width": 157,
+            "height": 162,
+            "image": "9_computer/usb.png"
+        });
+    }
+
+    return btnList;
 }
 
 room9.btnclick = function (name) {
@@ -339,6 +353,10 @@ room9.btnclick = function (name) {
             }, 9);
             cl.doCum(false);
             chat(5, 9);
+            break;
+        case "usb":
+            char.room(6);
+
             break;
         default:
             break;

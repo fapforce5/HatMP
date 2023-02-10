@@ -16,7 +16,7 @@ var pic = {};
 //r = room painting
 inv.isFooter = true;
 inv.leftMenu = true;
-
+inv.page = 0;
 
 inv.t = [
     { t: "b", n: "Backpack" },
@@ -37,6 +37,7 @@ inv.t = [
 
 inv.master = [
     { type: "g", name: "envelope", display: "Forest Queen's List", entry: false, count: null, cost: -1, image: "envelope.png", n: false, desc: "Take this to Princess at the Detective Agency" },
+    { type: "g", name: "usb", display: "USB Cult List", entry: false, count: null, cost: -1, image: "usb.png", n: false, desc: "Use this in your home computer" },
     { type: "h", name: "hormone", display: "Sissy Bimbo Pills", entry: false, count: 0, cost: 5, image: "hormone.png", n: false, desc: "Take 1 pill a day to increase your female hormone level" },
     { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
@@ -119,6 +120,7 @@ pic.master = [
     { name: "jada_p", display: "Group Photo", entry: false, image: "jada_p.jpg", thumb: "jada_p.png" },
     { name: "evapussy", display: "Eva Wet and Waiting", entry: false, image: "evapussy.jpg", thumb: "evapussy.png" },
     { name: "chloe", display: "Chloe's cum face", entry: false, image: "chloe.jpg", thumb: "chloe.png" },
+    { name: "candy", display: "Candy's cum hole", entry: false, image: "candy.jpg", thumb: "candy.png" },
 ];
 
 pic.add = function (name) {
@@ -168,7 +170,10 @@ inv.backpack = "backpack";
 inv.phone = "phoneBasic";
 
 $(document).ready(function () {
-    $('#room-inv').click(function () { inv.display(); });
+    $('#room-inv').click(function () {
+        inv.page = 0;
+        inv.display();
+    });
 });
 
 
@@ -302,15 +307,19 @@ inv.phoneIcon = function () {
 inv.display = function () {
     inv.createElements();
     var counter = 0;
+    var totalCounter = 0;
     var i, prevI;
     for (i = 0; i < inv.master.length; i++) {
         if (inv.master[i].entry) {
-            $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
-            if (inv.master[i].n)
-                $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
-            if (inv.master[i].count !== null)
-                $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
-            counter++;
+            if (totalCounter >= inv.page && counter < 31) {
+                $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
+                if (inv.master[i].n)
+                    $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
+                if (inv.master[i].count !== null)
+                    $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
+                counter++;
+            }
+            totalCounter++;
         }
         inv.master[i].n = false;
     }
@@ -402,13 +411,23 @@ inv.display = function () {
 
     //});
 
-    w = 1800 * g.ratio;
+    w = 600 * g.ratio;
     h = 50 * g.ratio;
     t = 980 * g.ratio;
     l = 60 * g.ratio;
-    $('#room-menuButtons').append('<button id="inv_close" class="btn btn-danger pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + l + 'px;" >Close</button>');
+    if(inv.page > 0)
+        $('#room-menuButtons').append('<button id="inv_prev" class="btn btn-default pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + l + 'px;" >&lt;&lt; PREV</button>');
+    $('#room-menuButtons').append('<button id="inv_close" class="btn btn-danger pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + (l + w) + 'px;" >Close</button>');
+    if(inv.page < inv.master.length)
+        $('#room-menuButtons').append('<button id="inv_next" class="btn btn-danger pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + (l + (w * 2)) + 'px;" >NEXT &gt;&gt; </button>');
     $('#inv_close').click(function () {
         inv.close();
+    });
+    $('#inv_prev').click(function () {
+        inv.paging(-30);
+    });
+    $('#inv_next').click(function () {
+        inv.paging(30);
     });
 };
 
@@ -680,7 +699,11 @@ inv.createElements = function () {
     });
 };
 
-//{ type: "l", name: "lube", entry: false, count: 0, cost: 0, image: "lube.png", n: false },
+inv.paging = function (pageSize) {
+    inv.page += pageSize;
+    inv.close();
+    inv.display();
+}
 
 inv.save = function () {
     var retArray = {

@@ -126,7 +126,9 @@ room210.btnclick = function (name) {
     else if (g.sissy[id].h && g.get("hormone") < 75)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
     else if (prevToUnlock === "") {
-        if (needSissyPoints <= availableSissyPoints)
+        if (id === 47 || id === 48 || id === 49)
+            tText += '<img src="./images/room/28_transformation/unlockx.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+        else if (needSissyPoints <= availableSissyPoints)
             tText += '<img src="./images/room/28_transformation/unlock.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
         if (g.get("cheatMode"))
             tText += '<div class="room-btn rom-event cursor-hover" style="font-size:' + 20 * g.ratio + 'px; margin-top:' + 5 * g.ratio + 'px; width:100%; text-align:center;" data-name="h_' + id + '" data-room="211">Cheat Unlock</div>';
