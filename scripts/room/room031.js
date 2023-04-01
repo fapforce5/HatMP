@@ -396,6 +396,7 @@ room31.btnclick = function (name) {
                 "height": 90,
                 "image": "9_computer/09_close.png"
             }, 31);
+            inv.add("lolalocker");
             break;
         case "mylove":
             nav.killall();

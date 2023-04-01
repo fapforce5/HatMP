@@ -31,7 +31,7 @@ room14.main = function () {
             }];
         }
     }
-    else if (sc.mother().thisRoom) {
+    else if (sc.getTimeline("landlord").thisRoom) {
         if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
             switch (sc.getstep("bigguy")) {
                 case 0:
@@ -1216,7 +1216,7 @@ room14.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "landlord",
-            text: "Hay honey, I don't think you've met my new boyfriend " + sc.n("bigguy") + ". He's just visiting for the weekend. ",
+            text: "Hey honey, I don't think you've met my new boyfriend " + sc.n("bigguy") + ". He's just visiting for the weekend. ",
             button: [
                 { chatID: 19, text: "Hi " + sc.n("bigguy") + "..", callback: "" }
             ]

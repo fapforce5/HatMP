@@ -412,7 +412,7 @@ room213.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "bimbo",
-            text: "Hay you. I could use some of that wine! Why do so many men ejaculate as soon as they see me naked? " +
+            text: "Hey you. I could use some of that wine! Why do so many men ejaculate as soon as they see me naked? " +
                 "I'm here to get fucked, not dissapointed. At least there's more dicks inside. Later cutie.",
             button: [
                 { chatID: 17, text: "HmmmUmmm", callback: "par8" }

@@ -1,6 +1,7 @@
 ﻿//Room name
 var room300 = {};
 room300.main = function () {
+    g.internal = null;
     var envyStep = sc.getstep("envy");
     if (envyStep === 0) {
         nav.bg("300_apartment/fight.jpg");
@@ -16,6 +17,16 @@ room300.main = function () {
             "height": 236,
             "image": "300_apartment/door16.png"
         }, 300);
+        nav.button({
+            "type": "btn",
+            "name": "stairs",
+            "left": 1350,
+            "top": 396,
+            "width": 78,
+            "height": 407,
+            "title": "Go to the second floor. ",
+            "image": "300_apartment/stairs1.png"
+        }, 300);
         nav.buildnav([0]);
     }
     else if (envyStep === 14 || envyStep === 15) {
@@ -28,6 +39,16 @@ room300.main = function () {
             "height": 267,
             "image": "300_apartment/door14.png"
         }, 300);
+        nav.button({
+            "type": "btn",
+            "name": "stairs",
+            "left": 1350,
+            "top": 396,
+            "width": 78,
+            "height": 407,
+            "title": "Go to the second floor. ",
+            "image": "300_apartment/stairs1.png"
+        }, 300);
         nav.buildnav([0]);
     }
     else {
@@ -39,7 +60,18 @@ room300.main = function () {
                 "top": 494,
                 "width": 132,
                 "height": 236,
+                "title": "Visit Envy ",
                 "image": "300_apartment/door.png"
+            },
+            {
+                "type": "btn",
+                "name": "stairs",
+                "left": 1350,
+                "top": 396,
+                "width": 78,
+                "height": 407,
+                "title": "Go to the second floor. ",
+                "image": "300_apartment/stairs1.png"
             }
         ];
         if (g.isNight()) {
@@ -57,7 +89,7 @@ room300.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 300);
         });
-        var navListx = [0];
+        var navListx = [303, 0];
         nav.buildnav(navListx);
     }
 };
@@ -117,6 +149,9 @@ room300.btnclick = function (name) {
                     chat(3, 300);
                 }
             }
+            break;
+        case "stairs":
+            char.room(303);
             break;
         default:
             break;

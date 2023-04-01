@@ -210,7 +210,7 @@ input[type=text]:disabled{
 
 .room-chatSpeaker{
     display:inline-block;
-    width:4%;
+    width:6%;
     margin-left:2%;
 }
 
@@ -917,7 +917,7 @@ input[type=text]:disabled{
 }
 
 .left-graph-char{
-    margin-top:100px;
+    margin-top:10px;
 }
 
 .left-graph-char img{

@@ -5,7 +5,7 @@ room15.main = function () {
     var hour = g.gethourdecimal();
 
 
-    if (sc.mother().roomID === 15) {
+    if (sc.getTimeline("landlord").roomID === 15) {
         nav.bg("15_kitchen/zoom.jpg");
         btnList.push({
             "type": "btn",
@@ -18,7 +18,7 @@ room15.main = function () {
         });
     }
     else {
-        if (sc.mother().roomID === 14 && hour.between(7, 22)) {
+        if (sc.getTimeline("landlord").roomID === 14 && hour.between(7, 22)) {
             btnList.push({
                 "type": "btn",
                 "name": "door",
@@ -98,7 +98,7 @@ room15.btnclick = function (name) {
                 char.room(14);
             else if (hour.between(22, 24) || hour.between(0, 6))
                 chat(1, 15);
-            else if (sc.mother().roomID === 14)
+            else if (sc.getTimeline("landlord").roomID === 14)
                 char.room(14);
             else
                 chat(2, 15);
@@ -173,7 +173,7 @@ room15.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "landlord",
-            text: "Hay honey, why don't you run along.. " + sc.n("landlord") + " is making her special drinks.",
+            text: "Hey honey, why don't you run along.. " + sc.n("landlord") + " is making her special drinks.",
             button: []
         },
         {

@@ -106,7 +106,7 @@ room500.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "zoey",
-            text: "Hay " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
+            text: "Hey " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
             button: [
                 { chatID: -1, text: "Of course. ", callback: "leave0" }
             ]
@@ -114,7 +114,7 @@ room500.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "zoey",
-            text: "Hay " + sc.n("me") + "! It is so nice to see you! You want to come in and play some video games?",
+            text: "Hey " + sc.n("me") + "! It is so nice to see you! You want to come in and play some video games?",
             button: [
                 { chatID: -1, text: "Only if it's a retro game!", callback: "inside" },
                 { chatID: 2, text: "No, I have no idea why I knocked on your door. Bye", callback: "" }
@@ -147,7 +147,7 @@ room500.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "zoey",
-            text: "Hay " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
+            text: "Hey " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
             button: [
                 { chatID: 6, text: "I was just kicked out of my house, I have no place to go ", callback: "" }
             ]

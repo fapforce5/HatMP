@@ -79,6 +79,19 @@ room52.main = function () {
             });
         }
 
+        if (g.get("cheerlevel") > 0) {
+            nav.button({
+                "type": "btn",
+                "name": "cheerleader",
+                "left": 1033,
+                "top": 86,
+                "width": 236,
+                "height": 251,
+                "title": "Practice Cheerleading",
+                "image": "10_mainchar/cheerleader.png",
+            }, 10);
+        }
+
         navList = [51, 55];
         var missingClothing = cl.hasoutfit("public");
         if (missingClothing === null)

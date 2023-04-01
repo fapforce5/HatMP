@@ -1428,12 +1428,6 @@ room200.chat = function (chatID) {
                 { chatID: -1, text: "Yes ma'am", callback: "h28_3" }
             ]
         },
-
-
-
-
-
-
         {
             chatID: 77,
             speaker: "missy",
@@ -1542,7 +1536,7 @@ room200.chat = function (chatID) {
         {
             chatID: 89,
             speaker: "missy",
-            text: "I did promise hime your panties. Sissy give " + sc.n("jeffery") + " your panties. NOW!",
+            text: "I did promise him your panties. Sissy give " + sc.n("jeffery") + " your panties. NOW!",
             button: [
                 { chatID: 90, text: "[Give " + sc.n("jeffery") + " your panties]", callback: "givepanties20" }
             ]

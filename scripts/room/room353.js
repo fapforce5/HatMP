@@ -386,7 +386,7 @@ room353.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "random",
-                text: "Hay creep! Do you think I have a penis! I'm going to compain to your manager. Fucking idiot.",
+                text: "Hey creep! Do you think I have a penis! I'm going to compain to your manager. Fucking idiot.",
                 button: [
                     { chatID: 10, text: "Oh sorry...", callback: "b10" }
                 ]

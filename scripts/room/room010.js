@@ -105,7 +105,7 @@ room10.main = function () {
                 "top": 604,
                 "width": 137,
                 "height": 197,
-                "title": "Toybox",
+                "title": "Toybox - play with your dildos (if you have them)",
                 "image": "10_mainchar/10_nightstand.png",
                 "night": "10_mainchar/10_nightstandNight.png"
             },
@@ -116,10 +116,24 @@ room10.main = function () {
                 "top": 469,
                 "width": 202,
                 "height": 115,
+                "title": "Use your computer",
                 "image": "10_mainchar/10_computer.png",
                 "night": "10_mainchar/10_computerNight.png"
             }
         ];
+
+        if (g.get("cheerlevel") > 0) {
+            btnList.push({
+                "type": "btn",
+                "name": "cheerleader",
+                "left": 1033,
+                "top": 86,
+                "width": 236,
+                "height": 251,
+                "title": "Practice Cheerleading",
+                "image": "10_mainchar/cheerleader.png",
+            });
+        }
 
         var navList = [];
         var missingClothing = cl.hasoutfit("public");
@@ -188,6 +202,22 @@ room10.btnclick = function (name) {
                     g.setflag("petcat");
                 }
                 chat(39, 10);
+            }
+            break;
+        case "cheerleader":
+            if (g.get("energy") < 51)
+                chat(41, 10);
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "cheer",
+                    "left": 623,
+                    "top": 337,
+                    "width": 711,
+                    "height": 743,
+                    "image": "10_mainchar/cheer1.png"
+                }, 10);
+                chat(40, 10);
             }
             break;
         default:
@@ -346,6 +376,12 @@ room10.chatcatch = function (callback) {
             break;
         case "reset":
             char.room(10);
+            break;
+        case "cheerReset":
+            g.mod("energy", -51);
+            g.mod("cheerleader", 25);
+            nav.killbutton("cheer");
+            char.addtime(60);
             break;
         default:
             break;
@@ -513,7 +549,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "lola",
-                text: "Hay I know you have them!",
+                text: "Hey I know you have them!",
                 button: [
                     { chatID: 19, text: "What?, have what?", callback: "evaYell" }
                 ]
@@ -693,6 +729,22 @@ room10.chat = function (chatID) {
                 text: "Who's a kitty? You're a kitty!",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "me",
+                text: "I'm getting better! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheerReset" }
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "me",
+                text: "I don't have enough energy to practice now. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
                 ]
             }
         ];

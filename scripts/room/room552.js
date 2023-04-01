@@ -89,7 +89,7 @@ room552.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "bigguy",
-            text: "Hay shrimp, you like how my cock looks?",
+            text: "Hey shrimp, you like how my cock looks?",
             button: [
                 { chatID: 1, text: "I do", callback: "" },
                 { chatID: 2, text: "I don't know why I did that", callback: "" }

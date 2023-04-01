@@ -22,7 +22,7 @@ g.displaymenu = true;
 g.prevview = null;
 g.pw = "c2lzc3k=";
 g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 901, 408];
-g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 902, 903];
+g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
 g.dt = g.startDate;
@@ -85,7 +85,11 @@ g.st = [
     { n: "pink", t: 0, q: "int" },
     { n: "milk", t: -1, q: "int" },
     { n: "cat", t: -1, q: "int" },
-
+    { n: "cheerleader", t: 0, q: "hundred" },
+    { n: "cheerlevel", t: 0, q: "int" },
+    { n: "stripper", t: 0, q: "hundred" },
+    { n: "stripperlevel", t: 0, q: "int" },
+    { n: "waitressSteal", t: false, q: "bool" },
     { n: "fightspeed", t: 1250, q: "int" },
     { n: "fightsex", t: 1250, q: "int" },
     { n: "fightWon", t: 0, q: "int" },
@@ -93,7 +97,7 @@ g.st = [
     { n: "fightControlWon", t: 0, q: "int" },
     { n: "fightControlLost", t: 0, q: "int" },
     { n: "superPunch", t: 0, q: "int" },
-
+    
     { n: "giveOralMale", t: 0, q: "sissy" },
     { n: "giveOralFemale", t: 0, q: "sissy" },
     { n: "receiveOralMale", t: 0, q: "sissy" },
@@ -141,6 +145,7 @@ g.st = [
     { n: "dildobutt", t: 0, q: "sissy" },
 
     { n: "girlname", t: "Scarlett", q: "string" },
+    { n: "quest3", t: null, q: "string" },
 
     { n: "fantasyCreatures", t: false, q: "bool" },
     { n: "jobConstGetRaise", t: false, q: "bool" },
@@ -155,6 +160,7 @@ g.st = [
     { n: "envyDayEvent", t: false, q: "day" },
     { n: "jonesDayEvent", t: false, q: "day" },
     { n: "rachelDayEvent", t: false, q: "day" },
+    
     { n: "momChore", t: false, q: "day" },
     { n: "zoeyDay", t: false, q: "day" },
     { n: "choreDishes", t: false, q: "day" },
@@ -420,6 +426,9 @@ g.checkPop = function (name, amount) {
                 g.popUpNotice("You feel more feminine");
             char.makeGraph();
             break;
+        case "cheerleader":
+            char.makeGraph();
+            break;
         case "energy":
             if (amount > 0)
                 g.popUpNotice("You Gained " + amount.toString() + " Energy");
@@ -563,8 +572,10 @@ g.rooms = [
     { roomID: 250, name: "Naked Beaver Diner", image: "250_beaver/250_beaver.jpg", nightImage: "250_beaver/250_beaver.jpg", houseID: 250, btn: "roomBtn_250.png" },
     { roomID: 251, name: "Back Office", image: "251_office/office.jpg", nightImage: "251_office/office.jpg", houseID: 250, btn: "roomBtn_251.png" },
 
-    { roomID: 300, name: "Apartments", image: "300_apartment/bg.jpg", nightImage: "300_apartment/bg.jpg", houseID: 300, btn: "roomBtn_300.png" },
+    { roomID: 300, name: "First Floor", image: "300_apartment/bg.jpg", nightImage: "300_apartment/bg.jpg", houseID: 300, btn: "roomBtn_300.png" },
     { roomID: 301, name: "Living Room", image: "301_living/bg.jpg", nightImage: "301_living/bg.jpg", houseID: 300, btn: "roomBtn_301.png" },
+    { roomID: 303, name: "Second Floor", image: "303_secondFloor/bg.jpg", nightImage: "303_secondFloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
+    { roomID: 304, name: "Room 202", image: "304_room202/livingroom.jpg", nightImage: "304_room202/livingroom.jpg", houseID: 300, btn: "roomBtn_303.png" },
 
     { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
     { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },
@@ -608,6 +619,8 @@ g.rooms = [
     { roomID: 526, name: "Inside Bar", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
     { roomID: 527, name: "Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
+    { roomID: 535, name: "Keaton", image: "535_keaton/bg.jpg", nightImage: "535_keaton/bg.jpg", houseID: 525, btn: "535_keaton.png" },
+
     { roomID: 550, name: "Gym Front Desm", image: "550_gymFront/550_gymFront.png", nightImage: "550_gymFront/550_gymFront.png", houseID: 550, btn: "roomBtn_550.png" },
     { roomID: 551, name: "Gym", image: "551_gymInside/551_gym.jpg", nightImage: "551_gymInside/551_gym.jpg", houseID: 550, btn: "roomBtn_551.png" },
     { roomID: 552, name: "Boys Locker", image: "552_boy/lockeroom.jpg", nightImage: "552_boy/lockeroom.jpg", houseID: 550, btn: "roomBtn_552.png" },
@@ -632,7 +645,8 @@ g.rooms = [
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
 
-    { roomID: 875, name: "Football field", image: "875_entrance/bg.jpg", nightImage: "875_entrance/bg_night.jpg", houseID: 875, btn: "bg.jpg" },
+    { roomID: 875, name: "Football field", image: "875_entrance/bg.jpg", nightImage: "875_entrance/bg_night.jpg", houseID: 875, btn: "roomBtn_875.png" },
+    { roomID: 876, name: "Gym", image: "876_gym/bg.jpg", nightImage: "876_gym/bg.jpg", houseID: 875, btn: "roomBtn_876.png" },
 
     { roomID: 900, name: "College Entrance", image: "900_college/bg.jpg", nightImage: "900_college/bg_night.jpg", houseID: 900, btn: "roomBtn_900.png" },
     { roomID: 901, name: "Pool", image: "901_pool/pool.jpg", nightImage: "901_pool/pool.jpg", houseID: 901, btn: "roomBtn_901.png" },
@@ -668,7 +682,7 @@ g.roomMap = [
     { roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
     { roomID: 203, display: "Missy's", access: false, darkAccess: false, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
     { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
-    { roomID: 250, display: "Diner", access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
+    { roomID: 250, display: "Naked Beaver Diner", access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
     { roomID: 300, display: "Apartment", access: true, darkAccess: true, left: 836, top: 662, width: 303, height: 309, img: "map/300.png", night: "map/300_night.png", map: 2 },
     { roomID: 325, display: "Farm", access: true, darkAccess: true, left: 646, top: 419, width: 351, height: 195, img: "map/325.png", night: "map/325_night.png", map: 0 },
     { roomID: 350, display: "Sperm Bank", access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
@@ -681,6 +695,7 @@ g.roomMap = [
     { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
     { roomID: 500, display: "Zoey's", access: true, darkAccess: false, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
     { roomID: 525, display: "Zoey's Bar", access: true, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },
+    { roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },
     { roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
     { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
     { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
@@ -953,6 +968,7 @@ g.initGame = function () {
             case "oncase":
             case "forestMap":
             case "forestVisit":
+            case "quest3":
                 g.st[i].t = null;
                 break;
             case "rentOwed":
@@ -1020,6 +1036,10 @@ g.initGame = function () {
             case "mascot":
             case "domEvent":
             case "pink":
+            case "cheerleader":
+            case "cheerlevel":
+            case "stripper":
+            case "stripperlevel":
                 g.st[i].t = 0;
                 break;
             case "lockboobs":
@@ -1060,6 +1080,7 @@ g.initGame = function () {
             case "envyDayEvent":
             case "jonesDayEvent":
             case "rachelDayEvent":
+            case "waitressSteal":
             case "petcat":
                 g.st[i].t = false;
                 break;

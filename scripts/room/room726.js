@@ -342,9 +342,9 @@ room726.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "random",
-            text: "Hay girl! You're almost cute enough to to make me want to invite you to a threesome!",
+            text: "Hey girl! You're almost cute enough to to make me want to invite you to a threesome!",
             button: [
-                { chatID: -1, text: "Hay keep that invite open!", callback: "reset" }
+                { chatID: -1, text: "Hey keep that invite open!", callback: "reset" }
             ]
         },
         {
@@ -374,7 +374,7 @@ room726.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tim",
-            text: "Hay dude, can't talk now, trying to get laid bro.",
+            text: "Hey dude, can't talk now, trying to get laid bro.",
             button: [
                 { chatID: -1, text: "Oh, yeah me too bro", callback: "reset" }
             ]
@@ -484,7 +484,7 @@ room726.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "tim",
-            text: "Hay slut, I remember you. You liked what you saw didn't you. Since you're such a sexy chick I'll let you suck " +
+            text: "Hey slut, I remember you. You liked what you saw didn't you. Since you're such a sexy chick I'll let you suck " +
                 "my dick in the bathroom. You're welcome",
             button: [
                 { chatID: -1, text: "I would love to!", callback: "timeBathroom" },
@@ -502,7 +502,7 @@ room726.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "tim",
-            text: "Hay sexy, couldn't stay away from this dick huh?",
+            text: "Hey sexy, couldn't stay away from this dick huh?",
             button: [
                 { chatID: 24, text: "Nope, I need it!", callback: "" }
             ]

@@ -5,8 +5,8 @@ room11.main = function () {
         char.room(16);
     }
     else if (g.hasAccess(16).access) {
-        var motherLocation = sc.mother().roomID;
-        var sisterLocation = sc.sister().roomID;
+        var motherLocation = sc.getTimeline("landlord").roomID;
+        var sisterLocation = sc.getTimeline("lola").roomID;
         var openDoor = g.hourBetween(7, 21);
         var btnList = new Array();
         var navList = [16, 10];
@@ -99,7 +99,7 @@ room11.main = function () {
         nav.buildnav(navList);
     }
     else {
-        if (sc.mother().roomID === 0) {
+        if (sc.getTimeline("landlord").roomID === 0) {
             chat(6, 11);
         }
         else {
@@ -128,7 +128,7 @@ room11.btnclick = function (name) {
             break;
         case "bathroomClose":
             if (!g.checkflag("showerPeek")) {
-                if (sc.mother().roomID === 12)
+                if (sc.getTimeline("landlord").roomID === 12)
                     char.room(12);
                 else
                     char.room(12);//chat(0, 11);

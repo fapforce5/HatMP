@@ -84,6 +84,9 @@ room209.main = function () {
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
             room209.btnclick("displaypbtn");
+            var nameList = room6.getNameList().active;
+            var randomSelectionItem = Math.floor(Math.random() * nameList.length);
+            g.set("quest3", nameList[randomSelectionItem].n);
             chat(207, 209);
         }
         else if (g.sissy[1].ach) {
@@ -1263,7 +1266,7 @@ room209.chatcatch = function (callback) {
         case "30_2":
             cl.c.tattoo.push("slut");
             nav.bg("209_classroom/30_2.jpg");
-            cl.disply();
+            cl.display();
             zcl.displayMirror();
             break;
         case "30_3":

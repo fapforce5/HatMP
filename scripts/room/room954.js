@@ -628,7 +628,7 @@ room954.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "cop2",
-            text: "Hay hay hay. I'm got this!",
+            text: "Hey hay hay. I'm got this!",
             button: [
                 { chatID: 56, text: "I need your help! ", callback: "" }
             ]

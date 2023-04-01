@@ -554,7 +554,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "random",
-                text: "Hay nurse! I need some help. Could you show me your titties while I do this?",
+                text: "Hey nurse! I need some help. Could you show me your titties while I do this?",
                 button: [
                     { chatID: -1, text: "Sure!", callback: "showTittes" },
                     { chatID: 7, text: "oh no, I'll have to get another nurse ", callback: "getLandlord" },
@@ -652,7 +652,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "random",
-                text: "Hay nurse! I need some help. Could you show me that ass while I do this?",
+                text: "Hey nurse! I need some help. Could you show me that ass while I do this?",
                 button: [
                     { chatID: -1, text: "Sure!", callback: "showass" },
                     { chatID: 7, text: "oh no, I'll have to get another nurse ", callback: "getLandlord" },
@@ -709,7 +709,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "random",
-                text: "Hay I can't seem to get hard. Could you help me with this so I can make my donation?",
+                text: "Hey I can't seem to get hard. Could you help me with this so I can make my donation?",
                 button: [
                     { chatID: 26, text: "Sure. I can try licking it.", callback: "l1" },
                     { chatID: 7, text: "oh no, I'll have to get another nurse ", callback: "getLandlord" },

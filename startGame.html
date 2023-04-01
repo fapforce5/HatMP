@@ -14,6 +14,7 @@
     <script src="./scripts/supportingChar.js" type="text/javascript"></script>
     <script src="./scripts/sc_change.js" type="text/javascript"></script>
     <script src="./scripts/inventory.js" type="text/javascript"></script>
+    <script src="./scripts/quest3.js" type="text/javascript"></script>
     <script src="./scripts/nav.js" type="text/javascript"></script>
     <script src="./scripts/chat.js" type="text/javascript"></script>
     <script src="./scripts/char.js" type="text/javascript"></script>
@@ -97,6 +98,8 @@
     <script src="./scripts/room/room251.js" type="text/javascript"></script>
     <script src="./scripts/room/room300.js" type="text/javascript"></script>
     <script src="./scripts/room/room301.js" type="text/javascript"></script>
+    <script src="./scripts/room/room303.js" type="text/javascript"></script>
+    <script src="./scripts/room/room304.js" type="text/javascript"></script>
     <script src="./scripts/room/room325.js" type="text/javascript"></script>
     <script src="./scripts/room/room326.js" type="text/javascript"></script>
     <script src="./scripts/room/room327.js" type="text/javascript"></script>
@@ -132,6 +135,7 @@
     <script src="./scripts/room/room525.js" type="text/javascript"></script>
     <script src="./scripts/room/room526.js" type="text/javascript"></script>
     <script src="./scripts/room/room527.js" type="text/javascript"></script>
+    <script src="./scripts/room/room535.js" type="text/javascript"></script>
     <script src="./scripts/room/room550.js" type="text/javascript"></script>
     <script src="./scripts/room/room551.js" type="text/javascript"></script>
     <script src="./scripts/room/room552.js" type="text/javascript"></script>
@@ -151,6 +155,7 @@
     <script src="./scripts/room/room750.js" type="text/javascript"></script>
     <script src="./scripts/room/room751.js" type="text/javascript"></script>
     <script src="./scripts/room/room875.js" type="text/javascript"></script>
+    <script src="./scripts/room/room876.js" type="text/javascript"></script>
     <script src="./scripts/room/room900.js" type="text/javascript"></script>
     <script src="./scripts/room/room901.js" type="text/javascript"></script>
     <script src="./scripts/room/room902.js" type="text/javascript"></script>
@@ -286,14 +291,14 @@
             </div>
             <div id="room_left_graph" class="left-menu">
                 <div style="padding:5px; color: #fff;" class="glob-bg">
-                    <div class="left-graph-char" id="lg_charbody">
-                        <img id="rl_fightdisplay-1" src="./images/room/227_fight/h_9_long_back.png" style="width:100%;" />
-                        <img id="rl_fightdisplay0" src="./images/room/227_fight/g_victory_m.png" style="width:100%;" />
-                        <img id="rl_fightdisplay1" src="./images/room/227_fight/g_victory_d_b.png" style="width:100%;" />
-                        <img id="rl_fightdisplay2" src="./images/room/227_fight/h_8_short.png" style="width:100%;" />
+                    <!--<div class="left-graph-char" id="lg_charbody">
+        <img id="rl_fightdisplay-1" src="./images/room/227_fight/h_9_long_back.png" style="width:100%;" />
+        <img id="rl_fightdisplay0" src="./images/room/227_fight/g_victory_m.png" style="width:100%;" />
+        <img id="rl_fightdisplay1" src="./images/room/227_fight/g_victory_d_b.png" style="width:100%;" />
+        <img id="rl_fightdisplay2" src="./images/room/227_fight/h_8_short.png" style="width:100%;" />
 
-                    </div>
-                    <div style="font-size:20px;" class="char-20 mt-300x">Fight!</div>
+    </div>-->
+                    <div style="font-size:20px;" class="char-20 mt-50x">Fight!</div>
                     <div style="font-size:12px;" class="char-20 mt-10" id="rl_energy">Energy</div>
                     <div class="left-graph-char-bar resize-height">
                         <div data-name="energy" style="width:20%; height:15px; background:#20C000; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
@@ -324,6 +329,14 @@
                     <div style="font-size:12px;" class="char-20 mt-10">Hormone Level</div>
                     <div style="width: 100%; height:15px; background:#4E99E0; border-radius:20px; border:solid 1px #000000;" class="resize-height">
                         <div data-name="hormone" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    </div>
+                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_cheer">Clueless Cheerleader</div>
+                    <div class="left-graph-char-bar resize-height">
+                        <div data-name="cheerleader" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    </div>
+                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_strip">Awkward Stripper</div>
+                    <div class="left-graph-char-bar resize-height">
+                        <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
                     </div>
                 </div>
             </div>

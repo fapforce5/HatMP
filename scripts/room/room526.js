@@ -463,11 +463,28 @@ room526.chatcatch = function (callback) {
             char.room(526);
             break;
         case "kno":
+            if (q3.activeSearch("keaton")) {
+                chat(65, 526);
+            }
+            else {
+                g.setflag("keaton");
+                char.room(526);
+            }
+            break;
+        case "kno0":
+            nav.killall();
+            nav.bg("526_bar/kno0.jpg");
+            zcl.displayMain(-400, 250, .6, "clothes", true);
+            break;
+        case "kno1":
+            g.roomMapAccess(535, true, false);
+            sc.setstep("keaton", 2);
             g.setflag("keaton");
             char.room(526);
             break;
-        case "kagain":
-            
+        case "knoreset":
+            g.setflag("keaton");
+            char.room(526);
             break;
         case "leave":
             char.room(0);
@@ -641,7 +658,7 @@ room526.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "juniper",
-            text: "Hay honey, you want to play a game?",
+            text: "Hey honey, you want to play a game?",
             button: [
                 { chatID: 20, text: "I sure do!", callback: "" },
                 { chatID: -1, text: "No, not right now. ", callback: "killem" }
@@ -965,7 +982,7 @@ room526.chat = function (chatID) {
                 "out new girl, I'm hungry. ",
             button: [
                 { chatID: -1, text: "Pull your dick out.", callback: "k02" },
-                { chatID: -1, text: "Sorry. I'm more of a total bottom. ", callback: "reset" }
+                { chatID: -1, text: "Sorry. I'm more of a total bottom. ", callback: "kno" }
             ]
         },
         {
@@ -979,7 +996,7 @@ room526.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "keaton",
-            text: "Baby. I'm looking to get fucked, not tickeled. You need to put that thing away and never show it " +
+            text: "Baby. I'm looking to get fucked, not tickeled. You need to put that tiny dick away and never show it " +
                 "to another human again. ",
             button: [
                 { chatID: -1, text: "Oh yeah. Ok. ", callback: "reset" }
@@ -1023,7 +1040,117 @@ room526.chat = function (chatID) {
             text: "Are you here to fuck me again?",
             button: [
                 { chatID: -1, text: "Pull your dick out.", callback: "k02" },
-                { chatID: -1, text: "Nope", callback: "kno" }
+                { chatID: -1, text: "I'm a total bottom", callback: "kno" }
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "thinking",
+            text: "I wonder what she knows about the cult.  ",
+            button: [
+                { chatID: 66, text: "Ask about the cult", callback: "" },
+                { chatID: 69, text: "Ask where to get a lot of dick. ", callback: "" },
+                { chatID: -1, text: "I've got other stuff to do.", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "me",
+            text: "So do you know anything about the cult? ",
+            button: [
+                { chatID: 67, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "keaton",
+            text: "Nope, never heard of it. No idea. Gotta run.  ",
+            button: [
+                { chatID: 68, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "thinking",
+            text: "Damn! I have to learn to be less obvious. ",
+            button: [
+                { chatID: -1, text: "...", callback: "knoreset" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "me",
+            text: "Oooo my bussy is so horny. Do you know where I can get some cock to fill it?",
+            button: [
+                { chatID: 70, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "keaton",
+            text: "Oh honey, if I knew that I would be there. ",
+            button: [
+                { chatID: 71, text: "I know. So what's the most dick you've taken in a single day? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "keaton",
+            text: "Come closer, have I got a story for you!  ",
+            button: [
+                { chatID: 72, text: "[Lean in]", callback: "kno0" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "keaton",
+            text: "Normally, I wouldn't tell anyone, but I can tell you're a big ol' slut too. So there's this place I like to " +
+                "sneak into that is just filled with horny men! Cocks everywhere. You've never seen so many cocks " +
+                "in your lifetime and they're just waiting to fuck something, anything! So I just walk in the center of the " +
+                "group, and I'm always naked and just stick my ass up and say 'Diner is served boys!' Well they " +
+                "just attack my ass! I've got two in my bussy, one down my throat, and as soon as one of them cums another " +
+                "cock just replaces it. ",
+            button: [
+                { chatID: 73, text: "Really?", callback: "" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "keaton",
+            text: "For real. After they were done I farted out an entire cup of cum! I know this 'cause some girl comes out " +
+                "and has me fart my cum filled ass in a glass. One time I even overfilled the cup. And it's a big cup too, like " +
+                "the one the boys use to drink a big beer from. I'm such a slut! ",
+            button: [
+                { chatID:74, text: "That is so hot!", callback: "" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "keaton",
+            text: "Yeah. My daddy's part of their church. He's really important. One of the most important people there. " +
+                "Hey, do you want to come over? Like a sleep over! I totally forgot daddy's birthday again, and you " +
+                "would make a great present! ",
+            button: [
+                { chatID: 75, text: "Oh. Yeah. Totally. Anything for my new best friend. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "keaton",
+            text: "We're more than friends. We're sissy sisters! It will be amazing. I mean, " +
+                "the only thing better than my bussy, is two bussies! My daddy will love you!  ",
+            button: [
+                { chatID: 76, text: "Sure. I'll be there! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "keaton",
+            text: "Perfect. My daddy's house is the trailer near " + "stormy" + "'s. She's a really awesome tattoo artist and " +
+                "my daddy's friend. They go to church together a lot. He works at night, so come by during the day. It will " +
+                "be awesome! ",
+            button: [
+                { chatID: -1, text: "Sure. See you there. ", callback: "kno1" }
             ]
         },
     ];

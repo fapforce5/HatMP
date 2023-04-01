@@ -765,7 +765,7 @@ room501.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "zoey",
-            text: "Hay Chloé is here, she's sleeping in the other room. I hope you don't mind.",
+            text: "Hey Chloé is here, she's sleeping in the other room. I hope you don't mind.",
             button: [
                 { chatID: 18, text: "Only if she doesn't mind that I steal you away form some games.", callback: "zForward" }
             ]
@@ -827,7 +827,7 @@ room501.chat = function (chatID) {
             text: sc.n("me") + " I didn't know she was going to do this",
             button: [
                 { chatID: 27, text: "It's ok " + sc.n('zoey') + ". Chloé has a great pussy, she should show that thing off.", callback: "zSuprise" },
-                { chatID: 25, text: "Hay Chloé, that's not cool, you need to put on some pants", callback: "" }
+                { chatID: 25, text: "Hey Chloé, that's not cool, you need to put on some pants", callback: "" }
             ]
         },
         {
@@ -953,7 +953,7 @@ room501.chat = function (chatID) {
         {
             chatID: 40,
             speaker: "zoey",
-            text: "Hay Tête de noeud, you back for some more kicks in the ass?",
+            text: "Hey Tête de noeud, you back for some more kicks in the ass?",
             button: [
                 { chatID: 41, text: "Oh my god " + sc.n("zoey") + "! I'm going to destroy you so you can never try to talk shit again. ", callback: "zforward" }
             ]
@@ -1069,7 +1069,7 @@ room501.chat = function (chatID) {
         {
             chatID: 54,
             speaker: "chloe",
-            text: "Hay " + sc.n("me") + " " + sc.n("zoey") + "'s told me so much about you. How's your penis?",
+            text: "Hey " + sc.n("me") + " " + sc.n("zoey") + "'s told me so much about you. How's your penis?",
             button: [
                 { chatID: 55, text: "Wha....?", callback: "" }
             ]
@@ -1245,7 +1245,7 @@ room501.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "chloe",
-            text: "Hay sexy, *HICUP* You want to invite me in?",
+            text: "Hey sexy, *HICUP* You want to invite me in?",
             button: [
                 { chatID: 76, text: "...", callback: "" }
             ]

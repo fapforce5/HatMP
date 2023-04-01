@@ -179,6 +179,10 @@ room650.chatcatch = function (callback) {
             g.mod("giveOralMale", 1);
             g.mod("loadSwollowed", 1);
             g.mod("arousal", 30);
+            if (q3.activeSearch("charlie"))
+                chat(47, 650);
+            else
+                chat(19, 650);
             break;
         case "c4":
             nav.bg("650_toyStore/" + callback + ".jpg");
@@ -187,8 +191,47 @@ room650.chatcatch = function (callback) {
             cl.c.cumface = true;
             cl.display();
             g.mod("arousal", 30);
+            if (q3.activeSearch("charlie")) 
+                chat(47, 650);
+            else
+                chat(19, 650);
             break;
         case "c5":
+            nav.killall();
+            nav.bg("650_toyStore/650_front.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "charlie",
+                "left": 1357,
+                "top": 229,
+                "width": 456,
+                "height": 851,
+                "image": "650_toyStore/charlie.png"
+            }, 650);
+            nav.buildnav([651, 0]);
+            break;
+        case "c6":
+        case "c7":
+        case "c8":
+        case "c9":
+        case "c10":
+        case "c11":
+        case "c12":
+        case "c13":
+        case "c14":
+            nav.bg("650_toyStore/" + callback + ".jpg");
+            break;
+        
+        case "cx":
+            if (q3.isItMe("charlie"))
+                chat(64, 650);
+            else
+                chat(62, 650);
+            break;
+        case "cend":
+            g.mod("receiveAnalMale", 1);
+            g.mod("creamPied", 1);
+            nav.killall();
             nav.bg("650_toyStore/650_front.jpg");
             nav.button({
                 "type": "btn",
@@ -287,7 +330,7 @@ room650.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "tiffany",
-            text: "Hay cutie, can I help you?",
+            text: "Hey cutie, can I help you?",
             button: [
                 { chatID: -1, text: "No, just looking around", callback: "" },
                 { chatID: 1, text: "Yes, I'm " + sc.n("me") + " with " + sc.n("missy") + "'s Detective. ", callback: "" }
@@ -321,7 +364,7 @@ room650.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "tiffany",
-            text: "Hay cutie, here for some dirty porn?",
+            text: "Hey cutie, here for some dirty porn?",
             button: [
                 { chatID: -1, text: "uhhhhhhhh", callback: "" },
             ]
@@ -348,7 +391,7 @@ room650.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "charlie",
-            text: "Hay kid, you lookin' to jam somethin' up yo ass?",
+            text: "Hey kid, you lookin' to jam somethin' up yo ass?",
             button: [
                 { chatID: -1, text: "Yes, what toys do yo have", callback: "toys" },
                 { chatID: 15, text: "Where are the girls?", callback: "" },
@@ -394,7 +437,7 @@ room650.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "tiffany",
-            text: "Hay cutie! You look so cute I want to dress you up.",
+            text: "Hey cutie! You look so cute I want to dress you up.",
             button: [
                 { chatID: -1, text: "You too!", callback: "" }
             ]
@@ -402,7 +445,7 @@ room650.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "tiffany",
-            text: "Hay cutie! " + sc.n("missy") + " asked me to take you out on a shopping trip! I'm so excited to take that cute " +
+            text: "Hey cutie! " + sc.n("missy") + " asked me to take you out on a shopping trip! I'm so excited to take that cute " +
                 "little butt of yours out in public!",
             button: [
                 { chatID: 14, text: "Shopping trip?", callback: "" }
@@ -446,8 +489,8 @@ room650.chat = function (chatID) {
             speaker: "charlie",
             text: "You're so tight I'm gunna blow! ",
             button: [
-                { chatID: 19, text: "[Swollow]", callback: "c3" },
-                { chatID: 19, text: "[Have him cum on your face]", callback: "c4" }
+                { chatID: -1, text: "[Swollow]", callback: "c3" },
+                { chatID: -1, text: "[Have him cum on your face]", callback: "c4" }
             ]
         },
         {
@@ -693,6 +736,177 @@ room650.chat = function (chatID) {
             text: "You're just too nice. It's ok to be a nice guy, but I'm not interested in nice guys. Sorry. ",
             button: [
                 { chatID: -1, text: "Sorry", callback: "candy52_end" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "charlie",
+            text: "You're a great whore! I really need my balls drained. So what can I get you? ",
+            button: [
+                { chatID: -1, text: "Just here for cum baby!", callback: "c5" },
+                { chatID: 48, text: "You can tell me how to get into the C.U.M. compound. ", callback: "" },
+                { chatID: 50, text: "You can tell me how to get more of that cum baby. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "charlie",
+            text: "Huh? Never heard of it. ",
+            button: [
+                { chatID: 49, text: "Oh. Me either. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "thinking",
+            text: "Well that was shitty detective work. Who just asks someone what they're looking for. Idiot! ",
+            button: [
+                { chatID: -1, text: ".... ", callback: "c5" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "charlie",
+            text: "You want more cum? That's the kind of slut I love! Let's go to the back room. I'm going to fill that ass up! ",
+            button: [
+                { chatID: 51, text: ".... ", callback: "c6" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "charlie",
+            text: "Bend your ass over slut! I'm going to fill it or break it trying! I do love a hot bussy.",
+            button: [
+                { chatID: 52, text: "But there's someone watching", callback: "" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "charlie",
+            text: "Even better! We're going to give him a show he won't forget. Be sure to smile if you want some good " +
+                "tips! Now hop up on that bed my little cum slut. ",
+            button: [
+                { chatID: 53, text: "...", callback: "c7" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "I hope " + sc.n("missy") + " appreciates what I have to do to free her. " + sc.n("charlie") + " is such " +
+                "a creep and he smells bad. Oh well, here I go being a whore again. I'll try to convince him I would make " +
+                "the perfect Milk Maiden so he'll tell me how to get in the compound. ",
+            button: [
+                { chatID: 54, text: "...", callback: "c8" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "me",
+            text: "You know, I just love cum so much! I wish I could just be surrounded in cum all time, ya know! I'm such " +
+                "a little cum whore!",
+            button: [
+                { chatID: 55, text: "...", callback: "c9" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "charlie",
+            text: " Call me daddy, sugar tits. I love a slutty ass cum whore! My cock has never fucked harder! ",
+            button: [
+                { chatID: 56, text: "You do fuck hard dady. So hard on my tight sissy pussy.", callback: "c10" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "charlie",
+            text: "Oh yes, baby girl. I'm going to fill that ass up with cum. Turn around show them " +
+                "your cum filled ass. ",
+            button: [
+                { chatID: 57, text: "Oh yes daddy! Give me your cum! ", callback: "c11" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "me",
+            text: "Like that daddy? Do you like the way it drips out of my bussy? I wish there was more cum. I just love it so " +
+                "much! ",
+            button: [
+                { chatID: 58, text: "...", callback: "c12" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "charlie",
+            text: "You know, I know a place that you could get all the cum you could ever want. Great place for whores like you. ",
+            button: [
+                { chatID: 59, text: "Really? Where's that? I love cum so much. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "charlie",
+            text: "There's a group of people in the woods. Great people. You'll love them. They'll love you. You'll get so " +
+                "much cum there. Just cum everywhere. You ever heard of the C.U.M. cult? ",
+            button: [
+                { chatID: 60, text: "Those guys in robes. I don't know much about them. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "charlie",
+            text: "Oh yeah. That's them. Like I said great guys. You want to meet them. They'll give more cum than you " +
+                "know what to do with. ",
+            button: [
+                { chatID: 61, text: "That sounds great! How do I get there? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "charlie",
+            text: "I just call them up! If you want I can get them here in a couple minutes and take you up there. ",
+            button: [
+                { chatID: -1, text: "I'm scared. Is there anyway I could just go up there and look around? ", callback: "cx" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "charlie",
+            text: "Oh, no. I don't even know where it is. They only way to get up there is if they take you up.  ",
+            button: [
+                { chatID: 63, text: "Are you sure? I really just want to see. I'm sure I could come back and drain your balls daddy. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "charlie",
+            text: "You can drain my balls anytime, but I've never been there. I don't even know how to get there. ",
+            button: [
+                { chatID: -1, text: "ok. Well I gotta run. Bye bye daddy.", callback: "cend" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "charlie",
+            text: "Hmmm. I don't know. Maybe. It's easier if I just call them and they'll take you up. ",
+            button: [
+                { chatID: 65, text: "Are you sure? I really just want to see. I'm sure I could come back and drain your balls daddy. ", callback: "c13" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "charlie",
+            text: "MMMmmmmmmmm yeah. Oh fuck.... I dunno....  ",
+            button: [
+                { chatID: 66, text: "I just want to take a quick peek. Promise daddy. ", callback: "c14" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "charlie",
+            text: "FUCK!!! Ok. There's a door to get in. The code to the door is 1-2-3-4-5! Fuck you're good. I don't know " +
+                "how to get there. I always got a ride. But if you do get there just enter the code for the door. ",
+            button: [
+                { chatID: -1, text: "Awww thanks! You cummy is yummy daddy. See ya! ", callback: "cendx" },
             ]
         },
     ];

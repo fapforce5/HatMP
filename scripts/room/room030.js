@@ -2,7 +2,7 @@
 var room30 = {};
 room30.main = function () {
     if (!g.isNight()) {
-        if (sc.sister().roomID === 13) {
+        if (sc.getTimeline("lola").roomID === 13) {
             if (sc.getstep("lola") === 8) {
                 nav.bg("30_peek/lola9.jpg");
                 chat(7, 30);
@@ -43,7 +43,7 @@ room30.btnclick = function (name) {
         case "window":
             if (g.hourBetween(22, 25) || g.hourBetween(0, 6))
                 char.room(13);
-            else if (sc.sister().roomID === 13)
+            else if (sc.getTimeline("lola").roomID === 13)
                 chat(1, 30);
             else
                 char.room(13);

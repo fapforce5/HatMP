@@ -186,7 +186,7 @@ room750.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "doc",
-            text: "Hay kid, if you get me some wine I'll tell you a secret. ",
+            text: "Hey kid, if you get me some wine I'll tell you a secret. ",
             button: [
                 { chatID: -1, text: "Give him some wine", callback: "doc1" },
                 { chatID: -1, text: "Ignore him", callback: "reset" }

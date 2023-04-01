@@ -1803,7 +1803,7 @@ room301.chat = function (chatID) {
                 chatID: 111,
                 speaker: "spanky",
                 text: "I was just laying thinking.. oh gross, but then this bitch just starts eating it off my face. Licked " +
-                    "me clean. So I thought, Hay if she'll eat cum off my face she'll totally eat ass. So I just stuck my asshole " +
+                    "me clean. So I thought, Hey if she'll eat cum off my face she'll totally eat ass. So I just stuck my asshole " +
                     "right in her face, and she goes all crazy on my shit hole! Really loving it and shit. She start stroking my cock " +
                     "and playing with my balls. I couldn't hold it back anymore and shot my load all over her pillow. She scrapes it off " +
                     "the pillow and shoves it up her ass to save it for later! This slut is the best! ",

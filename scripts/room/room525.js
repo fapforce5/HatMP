@@ -55,7 +55,7 @@ room525.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "random",
-            text: "Hay cutie I can't let you in. You have to meet the dress code, and by dress code, you have to wear a dress. lol!",
+            text: "Hey cutie I can't let you in. You have to meet the dress code, and by dress code, you have to wear a dress. lol!",
             button: [
                 { chatID: -1, text: "oh ok", callback: "" }
             ]

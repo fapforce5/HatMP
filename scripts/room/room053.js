@@ -782,7 +782,7 @@ room53.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "candy",
-            text: "Hay my cum drunk slut! Guess what, I got you a present!",
+            text: "Hey my cum drunk slut! Guess what, I got you a present!",
             button: [
                 { chatID: 20, text: "Really?", callback: "" }
             ]

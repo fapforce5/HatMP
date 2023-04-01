@@ -422,7 +422,7 @@ room327.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "me",
-            text: "Hay Kinsey. Psst. I got a treat for you. ",
+            text: "Hey Kinsey. Psst. I got a treat for you. ",
             button: [
                 { chatID: 20, text: "...", callback: "" }
             ]

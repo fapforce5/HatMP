@@ -1064,7 +1064,7 @@ room125.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "kei",
-            text: "Hay slut! You giving out blowjobs?",
+            text: "Hey slut! You giving out blowjobs?",
             button: [
                 { chatID: -1, text: "Yes I am", callback: "tx3" },
                 { chatID: -1, text: "Oh no! [Run away]", callback: "trun" }

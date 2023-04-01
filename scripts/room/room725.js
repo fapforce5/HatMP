@@ -306,7 +306,7 @@ room725.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "river",
-            text: "Hay Skidmark! You still a virgin? ",
+            text: "Hey Skidmark! You still a virgin? ",
             button: [
                 { chatID: -1, text: "I hate you. ", callback: "" }
             ]

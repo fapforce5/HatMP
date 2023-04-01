@@ -1406,7 +1406,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 61,
                 speaker: "me",
-                text: "*whisper* Hay " + sc.n("bodhi") + ". Over here.",
+                text: "*whisper* Hey " + sc.n("bodhi") + ". Over here.",
                 button: [
                     { chatID: 62, text: "...", callback: "b4" }
                 ]
@@ -1454,7 +1454,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 67,
                 speaker: "bodhi",
-                text: "Hay Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
+                text: "Hey Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
                     "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
                 button: [
                     { chatID: -1, text: "Fine", callback: "reset" }

@@ -248,7 +248,7 @@ room475.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "me",
-                text: "Oh. A cat. Hay little fella, what are you doing out here? ",
+                text: "Oh. A cat. Hey little fella, what are you doing out here? ",
                 button: [
                     { chatID: 5, text: "Pet the cat. ", callback: "petcat" },
                     { chatID: 4, text: "Shoo it away", callback: "catx" },

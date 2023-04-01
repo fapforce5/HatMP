@@ -330,7 +330,7 @@ room215.chat = function (chatID) {
     if (chatID === 100) {
         var chat100 = [
             "I want to take you to pound town! ",
-            "Hay whore! ",
+            "Hey whore! ",
             "I love an easy lay ",
             "You should meet my cock. I'm sure you'll get along great! ",
             "I want to fuck you like a whorthless whore",
@@ -435,7 +435,7 @@ room215.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "river",
-            text: "Hay skidmark. figures a loser like you would be in here. I'm going to show you what a real man's cock " + 
+            text: "Hey skidmark. figures a loser like you would be in here. I'm going to show you what a real man's cock " + 
                 "looks like.",
             button: [
                 { chatID: 7, text: "No. Go away " + sc.n("river") + " ! I'm not going to do anything with you! You ruined my life. ", callback: "ll0" },
@@ -480,7 +480,7 @@ room215.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "random",
-            text: "Hay you. I need some of that girl dick. you down? ",
+            text: "Hey you. I need some of that girl dick. you down? ",
             button: [
                 { chatID: 12, text: "I sure am!", callback: "c0" },
                 { chatID: 0, text: "I'm going to pass", callback: "resetWhore" }

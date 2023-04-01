@@ -724,8 +724,8 @@ room7.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "me",
-            text: "Oh wow that was intense! " + sc.n("landlord") + "'s been brutal since her husband left her, but this time she's really turned it up. " +
-                "I better get out of bed and get on my computer to start applying for jobs, hopefully  there are something for a college drop-out.",
+            text: "Oh wow, that was intense! " + sc.n("landlord") + "'s been brutal since her husband left her, but this time she's really turned it up. " +
+                "I better get out of bed and get on my computer to start applying for jobs, hopefully there is something for a college drop-out.",
             button: [{ chatID: 6, text: "Get out of bed", callback: "" }]
         },
         {
@@ -797,7 +797,7 @@ room7.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "eva",
-            text: "Hay pervert, thanks for the math book!",
+            text: "Hey pervert, thanks for the math book!",
             button: [
                 { chatID: 17, text: "No prob " + sc.n("eva"), callback: "" }
             ]
@@ -1123,7 +1123,7 @@ room7.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "bigguy",
-            text: "Hay little girl! Sleep well?",
+            text: "Hey little girl! Sleep well?",
             button: [
                 { chatID: 59, text: "Huh?", callback: "" }
             ]
@@ -1131,7 +1131,7 @@ room7.chat = function (chatID) {
         {
             chatID: 56,
             speaker: "eva",
-            text: "Hay " + sc.n("me") + ", I want to try something. Strip mister!",
+            text: "Hey " + sc.n("me") + ", I want to try something. Strip mister!",
             button: [
                 { chatID: 57, text: "ok!", callback: "eva11a" }
             ]

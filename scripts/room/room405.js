@@ -152,7 +152,7 @@ room405.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "red",
-            text: "Hay honey! You know I can't do a lot with a bald head?",
+            text: "Hey honey! You know I can't do a lot with a bald head?",
             button: [
                 { chatID: -1, text: "I'm such an air head!", callback: "" }
             ]
@@ -160,7 +160,7 @@ room405.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "red",
-            text: "Hay honey! Are you here for a trim or hair coloring?",
+            text: "Hey honey! Are you here for a trim or hair coloring?",
             button: [
                 { chatID: -1, text: "Here for a trim. [$24]", callback: "trim" },
                 { chatID: -1, text: "Here for a hair dye. [$120]", callback: "dye" },
@@ -170,7 +170,7 @@ room405.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "red",
-            text: "Hay honey! What can I do for you.",
+            text: "Hey honey! What can I do for you.",
             button: [
                 { chatID: -1, text: "Here for a trim. [$24]", callback: "trim" },
                 { chatID: -1, text: "Here for a hair dye. [$120]", callback: "dye" },

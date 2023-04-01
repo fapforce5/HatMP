@@ -22,6 +22,19 @@ room250.main = function () {
             room250.btnclick(g.pass[0].toString());
         }
     }
+    else if (g.isNight()) {
+        var jefferyStep = sc.getstep("jeffery");
+        if (jefferyStep === 9 || jefferyStep === 10) {
+            nav.bg("250_beaver/outside.jpg");
+            nav.buildnav([0]);
+            chat(107, 250);
+        }
+        else {
+            nav.bg("250_beaver/outside.jpg");
+            nav.buildnav([0]);
+            chat(106, 250);
+        }
+    }
     else if (cl.isLewd()) {
         if (!sc.checkevent("holly", -1) && sc.getstep("dolly") >= 3) {
             if (sc.getstep("dolly") < 4) {
@@ -147,7 +160,7 @@ room250.btnclick = function (name) {
                 else
                     chat(0, 250);
             }
-            else if (jefferyStep === 8) {
+            else if (jefferyStep > 7) {
                 if (g.hourBetween(6, 11)) {
                     if (sc.checkevent("holly", -1)) {
                         chat(74, 250);
@@ -165,6 +178,218 @@ room250.btnclick = function (name) {
                     }
                 }
             }
+            break;
+        case "kshelf":
+            nav.killall();
+            nav.bg("250_beaver/k_shelves.jpg")
+            nav.button({
+                "type": "btn",
+                "name": "k1",
+                "left": 1700,
+                "top": 800,
+                "width": 160,
+                "height": 160,
+                "image": "6_computer/back.png"
+            }, 250);
+            chat(110, 250);
+            break;
+        case "kdesk":
+            nav.killall();
+            nav.bg("250_beaver/k_desk.jpg")
+            nav.button({
+                "type": "btn",
+                "name": "k1",
+                "left": 1700,
+                "top": 800,
+                "width": 160,
+                "height": 160,
+                "image": "6_computer/back.png"
+            }, 250);
+            chat(111, 250);
+            break;
+        case "kdrawer1":
+            nav.killall();
+            nav.bg("250_beaver/k_drawer1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "k1",
+                "left": 1700,
+                "top": 800,
+                "width": 160,
+                "height": 160,
+                "image": "6_computer/back.png"
+            }, 250);
+            if (!cl.hasClothing("panties", "w")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "kpanties",
+                    "left": 464,
+                    "top": 365,
+                    "width": 942,
+                    "height": 461,
+                    "image": "250_beaver/k_panties.png"
+                }, 250);
+                chat(112, 250);
+            }
+            else {
+                chat(113, 250);
+            }
+            if (!inv.has("kkey")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "kkey",
+                    "left": 489,
+                    "top": 807,
+                    "width": 156,
+                    "height": 118,
+                    "image": "250_beaver/kkey.png"
+                }, 250);
+            }
+            break;
+        case "kdrawer2":
+            if (inv.has("kkey")) {
+                nav.killall();
+                nav.bg("250_beaver/k_drawer2.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "kbookcum",
+                    "left": 989,
+                    "top": 201,
+                    "width": 526,
+                    "height": 693,
+                    "image": "250_beaver/k_drawercum.png"
+                }, 250);
+                nav.button({
+                    "type": "btn",
+                    "name": "kemployee",
+                    "left": 473,
+                    "top": 201,
+                    "width": 602,
+                    "height": 698,
+                    "image": "250_beaver/k_draweremployee.png"
+                }, 250);
+                nav.button({
+                    "type": "btn",
+                    "name": "k1",
+                    "left": 1700,
+                    "top": 800,
+                    "width": 160,
+                    "height": 160,
+                    "image": "6_computer/back.png"
+                }, 250);
+            }
+            else {
+                chat(115, 250);
+            }
+            break;
+        case "kbookcum":
+            nav.killbutton("kbookcum");
+            g.internal = 0;
+            nav.button({
+                "type": "img",
+                "name": "cumbook",
+                "left": 34,
+                "top": 15,
+                "width": 1852,
+                "height": 1051,
+                "image": "250_beaver/cum_0.png"
+            }, 250);
+            nav.button({
+                "type": "btn",
+                "name": "cumnext",
+                "left": 1621,
+                "top": 854,
+                "width": 195,
+                "height": 154,
+                "image": "250_beaver/cum_next.png"
+            }, 250);
+            nav.button({
+                "type": "btn",
+                "name": "kdrawer2",
+                "left": 880,
+                "top": 15,
+                "width": 160,
+                "height": 160,
+                "image": "250_beaver/cum_close.png"
+            }, 250);
+            break;
+        case "cumnext":
+            g.internal++;
+            room250.btnclick("cumdraw");
+            break;
+        case "cumprev":
+            g.internal--;
+            room250.btnclick("cumdraw");
+            break;
+        case "cumdraw":
+            if (g.internal < 0)
+                g.internal = 0;
+            else if (g.internal > 6)
+                g.internal = 6;
+
+            if (g.internal === 0) {
+                nav.killbutton("cumprev");
+            }
+            else if (g.internal === 1) {
+                nav.killbutton("cumprev");
+                nav.button({
+                    "type": "btn",
+                    "name": "cumprev",
+                    "left": 108,
+                    "top": 860,
+                    "width": 188,
+                    "height": 153,
+                    "image": "250_beaver/cum_prev.png"
+                }, 250);
+            }
+            else if (g.internal === 5) {
+                nav.killbutton("cumnext");
+                nav.button({
+                    "type": "btn",
+                    "name": "cumnext",
+                    "left": 1621,
+                    "top": 854,
+                    "width": 195,
+                    "height": 154,
+                    "image": "250_beaver/cum_next.png"
+                }, 250);
+            }
+            else if (g.internal === 6) {
+                nav.killbutton("cumnext");
+            }
+            nav.modbutton("cumbook", "250_beaver/cum_" + g.internal + ".png", null, null);
+            break;
+        case "kemployee":
+            nav.killall();
+            nav.bg("250_beaver/k_drawer2_e0.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "kdrawer2",
+                "left": 1700,
+                "top": 800,
+                "width": 160,
+                "height": 160,
+                "image": "6_computer/back.png"
+            }, 250);
+            sc.setstep("jeffery", 10);
+            chat(116, 250);
+            break;
+        case "kpanties":
+            nav.killbutton("kpanties");
+            cl.add("panties", "w");
+            g.popUpNotice("You've stolen your dirty panties back. ");
+            break;
+        case "kkey":
+            chat(114, 250);
+            nav.killbutton("kkey");
+            inv.add("kkey");
+            break;
+        case "k1":
+            nav.killall();
+            room250.chatcatch("k1");
+            break;
+        case "kexit":
+            char.room(0);
             break;
         default:
             break;
@@ -642,6 +867,62 @@ room250.chatcatch = function (callback) {
             char.addtime(60);
             char.room(0);
             break;
+        case "k0":
+            nav.killall();
+            nav.bg("250_beaver/bathroomNight.jpg");
+            break;
+        case "k1":
+            nav.killall();
+            nav.bg("250_beaver/officeNight.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "kdrawer1",
+                "left": 706,
+                "top": 277,
+                "width": 196,
+                "height": 173,
+                "image": "250_beaver/k_drawer.png"
+            }, 250);
+            nav.button({
+                "type": "btn",
+                "name": "kdrawer2",
+                "left": 226,
+                "top": 663,
+                "width": 196,
+                "height": 173,
+                "image": "250_beaver/k_drawer.png"
+            }, 250);
+            nav.button({
+                "type": "btn",
+                "name": "kshelf",
+                "left": 1045,
+                "top": 0,
+                "width": 214,
+                "height": 241,
+                "image": "250_beaver/k_shelves.png"
+            }, 250);
+            nav.button({
+                "type": "btn",
+                "name": "kdesk",
+                "left": 777,
+                "top": 477,
+                "width": 405,
+                "height": 339,
+                "image": "250_beaver/k_desk.png"
+            }, 250);
+            nav.button({
+                "type": "btn",
+                "name": "kexit",
+                "left": 1700,
+                "top": 920,
+                "width": 218,
+                "height": 88,
+                "image": "475_fight/exit.png"
+            }, 250);
+            break;
+        case "kdrawer2map":
+            nav.bg("250_beaver/k_drawer2_e1.jpg");
+            break;
         default:
             break;
     }
@@ -808,7 +1089,7 @@ room250.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "holly",
-            text: "Hay sugar what can I do for you?",
+            text: "Hey sugar what can I do for you?",
             button: [
                 { chatID: -1, text: "I've come to work. ", callback: "backOffice1" },
                 { chatID: 1, text: "I came to get something to eat.", callback: "" },
@@ -970,7 +1251,7 @@ room250.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "holly",
-            text: "Hay new waitress, what's your name?",
+            text: "Hey new waitress, what's your name?",
             button: [
                 { chatID: 38, text: sc.n("me") + "-y ... shit that's not my name, I'm " + sc.n("me") + ", and I'm really a boy.", callback: "" },
                 { chatID: 37, text: "My name is waitress-fucker. Want me to show you how I got my name?", callback: "hollymad" },
@@ -1021,7 +1302,7 @@ room250.chat = function (chatID) {
         {
             chatID: 41,
             speaker: "holly",
-            text: "You caught me! That's why I work here! I had an unfortunate discharge in a skirt at my last job and they " +
+            text: "You caught me! That's why I work here! I had an unfortunate orgasm discharge in a skirt at my last job and they " +
             "fired me on the spot! I told them it's only natural, but whatever, I didn't like that job. Well I got to get back " +
             "to my tables, bye.",
             button: [
@@ -1031,7 +1312,7 @@ room250.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "holly",
-            text: "Hay honey! You still working here? " + sc.n("jeffery") + " still hasn't scared you away?",
+            text: "Hey honey! You still working here? " + sc.n("jeffery") + " still hasn't scared you away?",
             button: [
                 { chatID: 43, text: "He's the worst, such a pervert", callback: "" },
                 { chatID: 37, text: "Shiiiii I scare " + sc.n("jeffery"), callback: "hollymad" },
@@ -1228,7 +1509,7 @@ room250.chat = function (chatID) {
         {
             chatID: 61,
             speaker: "molly",
-            text: "Hay slut! How's your butt-hole, did he stick his fingers in yet!",
+            text: "Hey slut! How's your butt-hole, did he stick his fingers in yet!",
             button: [
                 { chatID: 62, text: "I want more than his fingers!", callback: "" },
                 { chatID: 56, text: "There's no way I would let him do that!", callback: "mollymad" },
@@ -1258,7 +1539,7 @@ room250.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "molly",
-            text: "Hay slut, we have a proposition for you...",
+            text: "Hey slut, we have a proposition for you...",
             button: [
                 { chatID: 65, text: "Yes...", callback: "" }
             ]
@@ -1330,7 +1611,7 @@ room250.chat = function (chatID) {
         {
             chatID: 73,
             speaker: "holly",
-            text: "Hay " + sc.n("me") + " what can I do for you?",
+            text: "Hey " + sc.n("me") + " what can I do for you?",
             button: [
                 { chatID: -1, text: "I've come to work. ", callback: "backOffice1" },
                 { chatID: 1, text: "I came to get something to eat.", callback: "" },
@@ -1392,7 +1673,7 @@ room250.chat = function (chatID) {
         {
             chatID: 80,
             speaker: "holly",
-            text: "Hay sugar, you're looking good in that! If I was a boy I would totally be into you!",
+            text: "Hey sugar, you're looking good in that! If I was a boy I would totally be into you!",
             button: [
                 { chatID: -1, text: "I'm into girls and you're looking good too.", callback: "resetServing" },
                 { chatID: -1, text: "Thank you, I hope some big man takes me home and makes me his. ", callback: "resetServing" }
@@ -1425,7 +1706,7 @@ room250.chat = function (chatID) {
         {
             chatID: 84,
             speaker: "molly",
-            text: "Hay sexy! I totally had sex before my shift started and I can feel his cum leaking down my pussy lips. I " +
+            text: "Hey sexy! I totally had sex before my shift started and I can feel his cum leaking down my pussy lips. I " +
             "had some of it drop on the floor while I was taking an order! I don't think they saw!",
             button: [
                 { chatID: -1, text: "You're such a slut! I love it!", callback: "resetServing" }
@@ -1602,6 +1883,106 @@ room250.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Thanks!", callback: "s7" },
                 { chatID: -1, text: "no thanks", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "thinking",
+            text: "They must close at night. Damn where am I going to get some tasty burgers now!",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "thinking",
+            text: "Good it's closed. Looks like everyone is gone. I just need to crawl back in through the broken latched window " +
+                "and check his files. ",
+            button: [
+                { chatID: 108, text: "Break into the Naked Beaver ", callback: "k0" },
+                { chatID: -1, text: "Do it later. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "thinking",
+            text: "I need to sneak into Jeffery's office. ",
+            button: [
+                { chatID: 109, text: "Sneak into Jeffery's office. ", callback: "k1" },
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "thinking",
+            text: "Now I just need to find some info on the girls. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "thinking",
+            text: "Just ledger books. Nothing here.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "thinking",
+            text: "What a pervert... ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "thinking",
+            text: "Hey! Those are my panties! ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "thinking",
+            text: "Oh wow! That is quite pungent. The smell is really burning my nostrils. I wonder if he just sits in here " +
+                "all day masturbating to these dirty panties. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "thinking",
+            text: "Oh a key. I wonder where this goes. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "thinking",
+            text: "Locked. I wonder where the key is. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 116,
+            speaker: "thinking",
+            text: "13 Main St. I know where that is...",
+            button: [
+                { chatID: 117, text: "...", callback: "kdrawer2map" },
+            ]
+        },
+        {
+            chatID: 117,
+            speaker: "thinking",
+            text: "It's the apartment building. Apartment 201 must be on the second floor. It would appear that they all " +
+                "live in the same place. I should check it out during the day when they are all at work. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

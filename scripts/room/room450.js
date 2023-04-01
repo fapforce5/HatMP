@@ -61,15 +61,6 @@ room450.main = function () {
                     "height": 1080,
                     "image": "450_park/cop1.png"
                 });
-                //btnList.push({
-                //    "type": "btn",
-                //    "name": "sleep",
-                //    "left": 306,
-                //    "top": 406,
-                //    "width": 148,
-                //    "height": 122,
-                //    "image": "450_park/sleep.png"
-                //});
             }
         }
     }
@@ -185,8 +176,12 @@ room450.btnclick = function (name) {
             chat(24, 450);
             break;
         case "cop":
-            if (g.hasAccess(16).darkAccess)
-                chat(2, 450);
+            if (g.hasAccess(16).darkAccess) {
+                if (q3.activeSearch("cop"))
+                    chat(50, 450);
+                else
+                    chat(2, 450);
+            }
             else
                 chat(3, 450);
             break;
@@ -344,6 +339,11 @@ room450.chatcatch = function(callback){
             scc.love("lola", 200, 100);
             char.room(450);
             break;
+        case "c0":
+            nav.killall();
+            cl.nude();
+            nav.bg("450_park/c0.jpg");
+            break;
         default:
             break;
     }
@@ -371,7 +371,7 @@ room450.chat = function(chatID){
         {
             chatID: 2,
             speaker: "cop",
-            text: "Hay buddy, the park is closed at night. You need to move along, there's some dangerous folks around here at night.",
+            text: "Hey buddy, the park is closed at night. You need to move along, there's some dangerous folks around here at night.",
             button: [
                 { chatID: -1, text: "Yes sir, I'll take off", callback: "leavePark" }
             ]
@@ -379,7 +379,7 @@ room450.chat = function(chatID){
         {
             chatID: 3,
             speaker: "cop",
-            text: "Hay buddy, the park is closed at night. You need to move along, there's some dangerous folks around here at night.",
+            text: "Hey buddy, the park is closed at night. You need to move along, there's some dangerous folks around here at night.",
             button: [
                 { chatID: 4, text: "Sorry sir, I've been kicked out of my home and I've got nowhere to go. Please let me crash here tonight!", callback: "cop3" }
             ]
@@ -772,6 +772,86 @@ room450.chat = function(chatID){
                 "I'll see you at home. ",
             button: [
                 { chatID: -1, text: "Hahaha ok. Bye. ", callback: "lolax9" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "cop",
+            text: "Hey buddy, the park is closed at night. You need to move along, there's some dangerous folks around here at night.",
+            button: [
+                { chatID: -1, text: "Yes sir, I'll take off", callback: "leavePark" },
+                { chatID: 51, text: "What's a sexy cop like you doing way out here", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "cop",
+            text: "What's that supposed to mean? ",
+            button: [
+                { chatID: 52, text: "Well, I just mean that you're hot. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "cop",
+            text: "I'm just fine. You need to get or I'm going to put a beating to you! ",
+            button: [
+                { chatID: 53, text: "...", callback: "" },
+                { chatID: -1, text: "Yelp and run away", callback: "leavePark" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "This isn't working. I'm going to have to do something to get his attention. I know he likes fucking. Maybe " +
+                "I need to show him I need to be used like a filthy slut....",
+            button: [
+                { chatID: -1, text: "[Bend over and show him your bussy]", callback: "c0" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "thinking",
+            text: "He really quiet. I wonder what he's thinking. I hope he doesn't bash me or arrest me. I feel like " +
+                "such a ho with my bare ass sticking up. This is getting uncomfortable. ",
+            button: [
+                { chatID: 55, text: "...", callback: "c1" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "cop",
+            text: "So we got ourselves a little slut in the park don't we. You know I'm going to have to teach you a hard " + 
+                "lesson on what we do with people who think indecent exposure is ok. ",
+            button: [
+                { chatID: 56, text: "sh-sh-should I put my clothes back on?", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "cop",
+            text: "Don't you fucking move or I'm going to through your ass in jail. Just stay right there and don't reach " +
+                "for anything or I'll crack your head open like a melon. ",
+            button: [
+                { chatID: 57, text: "GULP", callback: "c2" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "cop",
+            text: "Loose ass pussy. All you white sissy boys try to fetishise this big black cock. But I don't mind. " +
+                "You know why I don't mind? ",
+            button: [
+                { chatID: 58, text: "why?", callback: "c3" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "cop",
+            text: "'Cause I do love fuckin'. Don't care if it's a pussy, mouth, asshole. As long as I get my nut. And I'm " +
+                "going to get my nut out of you sissy boy. ",
+            button: [
+                { chatID: 58, text: "why?", callback: "c4" },
             ]
         },
     ];

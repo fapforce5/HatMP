@@ -90,7 +90,7 @@ room50.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "treyvon",
-            text: "Hay boy, you're not allowed here.",
+            text: "Hey boy, you're not allowed here.",
             button: [
                 { chatID: -1, text: "I know", callback: "" },
                 { chatID: 1, text: "Can I rent an apartment", callback: "" }
@@ -107,7 +107,7 @@ room50.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "treyvon",
-            text: "Hay " + sc.n("tiffany") + " welcome home. Who's this cutie you have with you?",
+            text: "Hey " + sc.n("tiffany") + " welcome home. Who's this cutie you have with you?",
             button: [
                 { chatID: 3, text: "...", callback: "" }
             ]
@@ -173,7 +173,7 @@ room50.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "treyvon",
-            text: "Hay sexy. It's getting boring down here, want to show me that booty of yours?",
+            text: "Hey sexy. It's getting boring down here, want to show me that booty of yours?",
             button: [
                 { chatID: -1, text: "No, just going home", callback: "gohome" }
             ]

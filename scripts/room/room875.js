@@ -131,8 +131,10 @@ room875.chatcatch = function (callback) {
             }, 875);
             break;
         case "odd3":
+            nav.killall();
             nav.bg("875_entrance/oddbg.jpg"); 
             zcl.assup(550, 600, .7);
+            nav.buildnav([0]);
             break;
         case "endjack":
             cl.undo();
@@ -142,7 +144,13 @@ room875.chatcatch = function (callback) {
             char.room(0);
             break;
         case "practice":
-            char.room(876);
+            g.internal = cl.hasoutfit("workout");
+            if (g.internal === null)
+                char.room(876);
+            else {
+                chat(999, 875);
+                nav.buildnav([0]);
+            }
             break;
         default:
             break;
@@ -150,78 +158,90 @@ room875.chatcatch = function (callback) {
 };
 
 room875.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "random",
-            text: "Campus security! You can't be here when there's no game person of unkown gender! Skidaddle.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "random",
-            text: "Are you trying to spy on the cheerleaders! So uncouth. Scoot scoot.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "random",
-            text: "Cheerleader practice already started. They told me to tell you to scram and don't be late.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "thinking",
-            text: "There's nobody here. So eerie to come here at night. I could do anything. ",
-            button: [
-                { chatID: -1, text: "Stand in the middle of the football field", callback: "odd0" },
-                { chatID: -1, text: "Do nothing", callback: "" },
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "thinking",
-            text: "Ooo that breeze is refreshing and arousing. ",
-            button: [
-                { chatID: -1, text: "...", callback: "odd1" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "thinking",
-            text: "I'm such a slut sticking my bare ass up in the middle of the football field for anyone to see. ",
-            button: [
-                { chatID: -1, text: "...", callback: "odd2" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "thinking",
-            text: "FFFUUUU!!!! I'm such a weirdo. I totally came all over the football field. I hope nobody get tackeled " +
-                "face first here. ",
-            button: [
-                { chatID: -1, text: "Lay around in your cum for a bit and enjoy it. Freak.", callback: "odd3" },
-                { chatID: -1, text: "Get dressed and leave like a normal pervert.", callback: "endjack" },
-            ]
-        },
-        {
-            chatID: 7,
+    if (chatID === 999) {
+        return {
+            chatID: 999,
             speaker: "candy",
-            text: "Hey cutie! Let's get to practice!",
+            text: "Oh. You need to wear some workout clothes. You're missing your " + g.internal + ". ",
             button: [
-                { chatID: -1, text: "Go to cheerleading practice", callback: "practice" },
-                { chatID: -1, text: "I can't make it. Sorry", callback: "leave" },
+                { chatID: -1, text: "I'll go change", callback: "" }
             ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "random",
+                text: "Campus security! You can't be here when there's no game person of unkown gender! Skidaddle.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "random",
+                text: "Are you trying to spy on the cheerleaders! So uncouth. Scoot scoot.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "random",
+                text: "Cheerleader practice already started. They told me to tell you to scram and don't be late.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "thinking",
+                text: "There's nobody here. So eerie to come here at night. I could do anything. ",
+                button: [
+                    { chatID: -1, text: "Stand in the middle of the football field", callback: "odd0" },
+                    { chatID: -1, text: "Do nothing", callback: "" },
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "thinking",
+                text: "Ooo that breeze is refreshing and arousing. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "odd1" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "thinking",
+                text: "I'm such a slut sticking my bare ass up in the middle of the football field for anyone to see. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "odd2" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "thinking",
+                text: "FFFUUUU!!!! I'm such a weirdo. I totally came all over the football field. I hope nobody get tackeled " +
+                    "face first here. ",
+                button: [
+                    { chatID: -1, text: "Lay around in your cum for a bit and enjoy it. Freak.", callback: "odd3" },
+                    { chatID: -1, text: "Get dressed and leave like a normal pervert.", callback: "endjack" },
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "candy",
+                text: "Hey cutie! Let's get to practice!",
+                button: [
+                    { chatID: -1, text: "Go to cheerleading practice", callback: "practice" },
+                    { chatID: -1, text: "I can't make it. Sorry", callback: "leave" },
+                ]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

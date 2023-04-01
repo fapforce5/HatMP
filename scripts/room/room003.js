@@ -6,6 +6,7 @@ room3.main = function () {
 
     $("#room-background").html('<div class="intro-body"><div class="intro-top">Hermaphrodity</div>' +
         '<div class="intro-bottom">and the Mystery of the Missing Specimens</div>' +
+        'It won\'t play in incognito in some browsers. <br/><br/>' + 
         'This game is best viewed full screen. To make your browser full screen press the F11 key. To exit full ' +
         'screen press the F11 key again. <br /><br />' +
         'This game contains themes and images that are not suitable for minors. <br /><br />' +

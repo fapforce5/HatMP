@@ -60,7 +60,7 @@ room901.main = function () {
                     "image": "901_pool/boy1.png"
                 }, 901);
             }
-            if (sc.sister().thisRoom) {
+            if (sc.getTimeline("lola").thisRoom) {
                 nav.button({
                     "type": "btn",
                     "name": "lola",
@@ -156,7 +156,7 @@ room901.btnclick = function (name) {
                 var boyStep = sc.getstep("tim");
                 if (boyStep === 0)
                     chat(36, 901);
-                else if (boyStep === 1)
+                else 
                     chat(42, 901);
 
             }
@@ -464,9 +464,9 @@ room901.chat = function(chatID){
         {
             chatID: 0,
             speaker: "cindy",
-            text: "Hay there, what's up?",
+            text: "Hey there, what's up?",
             button: [
-                { chatID: -1, text: "Hay sexy, I'm feeling short of breath, wanna give me mouth to mouth?", callback: "cindy0" },
+                { chatID: -1, text: "Hey sexy, I'm feeling short of breath, wanna give me mouth to mouth?", callback: "cindy0" },
                 { chatID: -1, text: "Oh sorry, I didn't mean to poke your butt with my finger.", callback: "reset" },
             ]
         },
@@ -530,7 +530,7 @@ room901.chat = function(chatID){
         {
             chatID: 8,
             speaker: "cindy",
-            text: "Hay what's up?",
+            text: "Hey what's up?",
             button: [
                 { chatID: -1, text: "I wanted to ask you out on a date.", callback: "cindy0" },
                 { chatID: -1, text: "Oh sorry, I didn't mean to poke your butt with my finger.", callback: "reset" },
@@ -539,7 +539,7 @@ room901.chat = function(chatID){
         {
             chatID: 9,
             speaker: "lola",
-            text: "Hay " + sc.n("me") + "! Getting some laps in?",
+            text: "Hey " + sc.n("me") + "! Getting some laps in?",
             button: [
                 { chatID: 10, text: "Oh yeah!", callback: "" },
                 { chatID: 11, text: "Nope, just here to check you out in a swimsuit", callback: "" },
@@ -601,7 +601,7 @@ room901.chat = function(chatID){
         {
             chatID: 16,
             speaker: "lola",
-            text: "Hay " + sc.n("me") + "! I'm so happy every time I see you. We're still working on " + sc.n("landlord") + ". " +
+            text: "Hey " + sc.n("me") + "! I'm so happy every time I see you. We're still working on " + sc.n("landlord") + ". " +
                 "She said maybe, you'll have to earn her trust. Just keep working on her. I know you'll get back in. ",
             button: [
                 { chatID: -1, text: "I will. Thanks " + sc.n("lola") + ".", callback: "" }
@@ -722,7 +722,7 @@ room901.chat = function(chatID){
         {
             chatID: 31,
             speaker: "cindy",
-            text: "Hay sexy meet me at the club this weekind.",
+            text: "Hey sexy meet me at the club this weekind.",
             button: [
                 { chatID: -1, text: "Cool see you there.", callback: "reset" }
             ]
@@ -738,7 +738,7 @@ room901.chat = function(chatID){
         {
             chatID: 33,
             speaker: "tim",
-            text: "Hay dude I can't chat now. Gotta keep people safe bro.",
+            text: "Hey dude I can't chat now. Gotta keep people safe bro.",
             button: [
                 { chatID: -1, text: "oh yeah", callback: "reset" }
             ]
@@ -746,7 +746,7 @@ room901.chat = function(chatID){
         {
             chatID: 34,
             speaker: "tim",
-            text: "Hay what's up?",
+            text: "Hey what's up?",
             button: [
                 { chatID: 35, text: "Just seeing how you're doing cutie", callback: "" },
                 { chatID: -1, text: "Oh nothing. Stop talking to me", callback: "reset" }
@@ -814,7 +814,7 @@ room901.chat = function(chatID){
         {
             chatID: 42,
             speaker: "tim",
-            text: "Hay sexy, I can't wait to see you at the club!",
+            text: "Hey sexy, I can't wait to see you at the club!",
             button: [
                 { chatID: -1, text: "I'll see you there", callback: "reset" },
             ]

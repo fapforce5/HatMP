@@ -317,7 +317,7 @@ room101.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "tina",
-            text: "Hay honey, here for your money?",
+            text: "Hey honey, here for your money?",
             button: [
                 { chatID: 6, text: "yep", callback: "payTheMan" }
             ]
@@ -342,7 +342,7 @@ room101.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "tina",
-            text: "Hay " + sc.n("me") + " What do you want to talk about?",
+            text: "Hey " + sc.n("me") + " What do you want to talk about?",
             button: [
                 { chatID: 12, text: "How much do I get paid each day?", callback: "payQuestion" },
                 { chatID: sc.getstep("tina") < 10 ? 19 : sc.getstep("tina") < 16 ? 20 : 21, text: "How beautiful you are.", callback: "" },
@@ -352,7 +352,7 @@ room101.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tina",
-            text: "Hay " + sc.n("me") + "! The workday has started, you need to get out there and start working. ",
+            text: "Hey " + sc.n("me") + "! The workday has started, you need to get out there and start working. ",
             button: [
                 { chatID: -1, text: "OK see you later babe", callback: "" }
             ]

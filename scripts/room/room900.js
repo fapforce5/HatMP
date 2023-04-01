@@ -16,8 +16,8 @@ room900.main = function () {
         chat(23, 900);
     }
     else {
-        var btnList = [
-            {
+        if (g.isNight()) {
+            nav.button({
                 "type": "btn",
                 "name": "building",
                 "left": 525,
@@ -26,17 +26,25 @@ room900.main = function () {
                 "height": 582,
                 "image": "900_college/college.png",
                 "night": "900_college/collegeNight.png"
-            }
-        ];
+            }, 900);
+        }
+        else {
+            nav.button({
+                "type": "btn",
+                "name": "building",
+                "left": 904,
+                "top": 359,
+                "width": 301,
+                "height": 313,
+                "image": "900_college/college.png",
+                "night": "900_college/collegeNight.png"
+            }, 900);
+        }
 
         var navList = [0];
 
         if (sc.getstep("me") === 1)
             navList.unshift(902);
-
-        $.each(btnList, function (i, v) {
-            nav.button(v, 900);
-        });
 
         nav.buildnav(navList);
     }

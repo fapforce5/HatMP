@@ -54,7 +54,8 @@ room0.btnclick = function (name) {
                         "top": v.top,
                         "width": v.width,
                         "height": v.height,
-                        "image": v.night
+                        "image": v.night,
+                        "title": v.display
                     });
                 }
                 else if (!g.isNight() && v.access) {

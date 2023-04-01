@@ -684,7 +684,7 @@ room551.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "g",
-            text: "Hay idiot. I told you to wear workout clothes. You're missing " + g.internal + ". You can change in the bathroom. ",
+            text: "Hey idiot. I told you to wear workout clothes. You're missing " + g.internal + ". You can change in the bathroom. ",
             button: [
                 { chatID: -1, text: "......", callback: "" }
             ]
@@ -744,7 +744,7 @@ room551.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "chad",
-            text: "Hay dweeb! Can't you read, it says you can't go in there!",
+            text: "Hey dweeb! Can't you read, it says you can't go in there!",
             button: [
                 { chatID: -1, text: "...", callback: "killDoor" }
             ]
@@ -771,7 +771,7 @@ room551.chat = function (chatID) {
         {
             chatID: 41,
             speaker:"chad",
-            text: "Hay shrimp, only one workout a day.",
+            text: "Hey shrimp, only one workout a day.",
             button: [
                 { chatID: -1, text: "Oh, ok", callback: "killDoor" }
             ]
@@ -810,7 +810,7 @@ room551.chat = function (chatID) {
         {
             chatID: 45,
             speaker: "g",
-            text: "Hay runt. I'm " + sc.n("g") + " I'm guessing you're here 'cause " + sc.n("missy") + " sent you to get trained. ",
+            text: "Hey runt. I'm " + sc.n("g") + " I'm guessing you're here 'cause " + sc.n("missy") + " sent you to get trained. ",
             button: [
                 { chatID: 48, text: "Yes", callback: "crowbar" }
             ]

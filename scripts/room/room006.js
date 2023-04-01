@@ -1,40 +1,46 @@
 ﻿//Room name
 var room6 = {};
 room6.main = function () {
-    g.internal = {
-        level: 0,
-        current: "",
-        active: [
-            { n: "landlord", f: true, x: true },
-            { n: "eva", f: true, x: true },
-            { n: "stormy", f: true, x: true },
-            { n: "chloe", f: true, x: true },
-            { n: "chad", f: false, x: true },
-            { n: "charlie", f: false, x: true },
-            { n: "cop", f: false, x: true },
-            { n: "cop2", f: false, x: true },
-            { n: "govlady", f: true, x: true },
-            { n: "g", f: true, x: true },
-            { n: "jones", f: false, x: true },
-            { n: "juniper", f: true, x: true },
-            { n: "keaton", f: false, x: true },
-            { n: "molly", f: true, x: true },
-            { n: "river", f: false, x: true },
-            { n: "spanky", f: false, x: true },
-            { n: "treyvon", f: false, x: true }
-        ],
-        inactive: [
-            { n: "missy", x: true },
-            { n: "black", x: true },
-            { n: "p", x: true },
-            { n: "cecilia", x: true },
-            { n: "nell", display: "Nell", x: false, img: "6_computer/nell.png" },
-            { n: "dad", display: "Alexander", x: false, img: "6_computer/dad.png" },
-            { n: "jeremy", display: "Jeremy", x: false, img: "6_computer/jeremy.png" },
-        ]
-    };
+    g.internal = q3.list();
     room6.chatcatch("drawmain");
 };
+
+//room6.getNameList = function () {
+//    return {
+//        level: 0,
+//        current: "",
+//        active: [
+//            { n: "landlord", f: true, x: true },
+//            { n: "eva", f: true, x: true },
+//            { n: "stormy", f: true, x: true },
+//            { n: "chloe", f: true, x: true },
+//            { n: "chad", f: false, x: true },
+//            { n: "charlie", f: false, x: true },
+//            { n: "cop", f: false, x: true },
+//            { n: "cop2", f: false, x: true },
+//            { n: "govlady", f: true, x: true },
+//            { n: "g", f: true, x: true },
+//            { n: "jones", f: false, x: true },
+//            { n: "juniper", f: true, x: true },
+//            { n: "keaton", f: false, x: true },
+//            { n: "molly", f: true, x: true },
+//            { n: "river", f: false, x: true },
+//            { n: "spanky", f: false, x: true },
+//            { n: "treyvon", f: false, x: true },
+//            { n: "rachel", f: true, x: true },
+//        ],
+//        inactive: [
+//            { n: "missy", x: true },
+//            { n: "black", x: true },
+//            { n: "p", x: true },
+//            { n: "cecilia", x: true },
+//            { n: "construction", x: true },
+//            { n: "nell", display: "Nell", x: false, img: "6_computer/nell.png" },
+//            { n: "dad", display: "Alexander", x: false, img: "6_computer/dad.png" },
+//            { n: "jeremy", display: "Jeremy", x: false, img: "6_computer/jeremy.png" },
+//        ]
+//    };
+//}
 
 room6.btnclick = function (name) {
     if (name === "close") {
@@ -153,6 +159,7 @@ room6.btnclick = function (name) {
                     "received his full membership into the order and invited her to the ceremony. She came back the next day to " +
                     "inquire about being a Milk Maid. Ubel himself allowed her to extract his cum for her first time and has been " +
                     "a favorite of his since. ";
+                txt.h = "";
                 break;
             case "chloe":
                 txt.o = "Prostitute";
@@ -175,7 +182,8 @@ room6.btnclick = function (name) {
                     "a tanker full of fuel during the gas crisis and then forgetting to close the value spilling it all. " +
                     "He had to sell the store to " + sc.n("tiffany") + " and " + sc.n("candy") + " without our approval to " +
                     "cover the cost of clean up. He continues to recruit Milk Maids at Toys 'n Us. "
-                txt.h = "I could work the booth and ask him if I could be a Milk Maid. ";
+                txt.h = "I guess sex is the only way to get information from him. Maybe I should walk in naked so he knows what I'm after and ask him " +
+                    "about working as a Milk Maid. ";
                 break;
             case "cop":
                 txt.o = "Cop";
@@ -184,7 +192,7 @@ room6.btnclick = function (name) {
                     "pictures of him snorting coke off of a number of our Milk Miad's breasts, " +
                     "the Bishop Stan, " + sc.n("charlie") + " and " + sc.n("molly") + "'s cock, " +
                     sc.n("chloe") + "'s butthole, " + sc.n("keaton") + "'s taint, and " + sc.n("stormy") + "'s pussy. ";
-                txt.h = "I could probably just tease him until he wants to fuck me, then make him tell me if he knows anything. ";
+                txt.h = "I could probably just tease him until he wants to fuck me then blackmail him into telling me the code. ";
                 break;
             case "cop2":
                 txt.o = "Cop";
@@ -235,7 +243,7 @@ room6.btnclick = function (name) {
                     "day in the hallway of the compound tied up with a note that said 'Use me how ever you want'. After many " +
                     "Sister and Brothers of the cult used him and set him free, he just started showing up a few times a month. " +
                     "Each time tied up with the same note. ";
-                txt.h = "I could ask him who is putting him in the compound. Maybe tag along. ";
+                txt.h = "I could ask him who is putting him in the compound. I should tell her I'm a sissy slut too. ";
                 break;
             case "molly":
                 txt.o = "Waitress";
@@ -264,6 +272,17 @@ room6.btnclick = function (name) {
                 txt.s = "C.U.M. uses " + sc.n("treyvon") + " to enfore their policies. I don't really know exactly what " +
                     "he does, but I do know it's violent. Best not to cross paths with him. ";
                 txt.h = "He does seem to like me. Maybe I could work on him to get information. "
+                break;
+            case "rachel":
+                txt.o = "Farm Owner";
+                txt.p = "Milk Supplier";
+                txt.s = "C.U.M. uses only the finest breast milk to feed their followers... More to come "
+                break;
+            case "jeffery":
+                txt.o = "Naked Beaver owner";
+                txt.p = "Brother of C.U.M.";
+                txt.s = "Creepy guy. General member";
+                txt.h = "I need to go there before 11AM and work a shift. I'll ask him after I'm done. --Have to steal panties from the 3. "
                 break;
             case "dad": //"Jacqueline":
                 g.internal.level = 3;
@@ -347,6 +366,11 @@ room6.btnclick = function (name) {
                     "her capture she was able to convert " + sc.n("black") + " to " + sc.n("missy") + "'s service. " +
                     "Due to her disloyalty in the face of adversity " + sc.n("black") + " has been Excommunicated from " +
                     "the church. "
+                break;
+            case "construction":
+                txt.o = "Burly Construction Owner";
+                txt.p = "Milk Supplier";
+                txt.s = "Construction Company worked on compound.  "
                 break;
         }
         

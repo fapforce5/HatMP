@@ -45,7 +45,7 @@ room13.main = function () {
         }];
     }
     else {
-        if (sc.sister().thisRoom) {
+        if (sc.getTimeline("lola").thisRoom) {
             if (cl.isLewd()) {
                 btnList = new Array();
                 nav.bg("13_sisterRoom/013_angryCaught.png");
@@ -1519,7 +1519,7 @@ room13.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "eva",
-            text: "Hay panty sniffer, can't handle a burger job? ",
+            text: "Hey panty sniffer, can't handle a burger job? ",
             button: [
                 { chatID: 9, text: "Eat my boogers " + sc.n("eva"), callback: "" }
             ]
@@ -1553,7 +1553,7 @@ room13.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "lola",
-            text: "Hay " + sc.n("me") + ". I'm sorry you got fired from the Burger Joint. That manager always so mean. You're " +
+            text: "Hey " + sc.n("me") + ". I'm sorry you got fired from the Burger Joint. That manager always so mean. You're " +
                 "better off without that stupid job!",
             button: [
                 { chatID: 13, text: "Thanks " + sc.n("lola") + ". So how's the first day of college?", callback: "lolaDisgust" }
@@ -1647,9 +1647,9 @@ room13.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "eva",
-            text: "Hay loser. ",
+            text: "Hey loser. ",
             button: [
-                { chatID: 25, text: "Hay butt-head", callback: "" },
+                { chatID: 25, text: "Hey butt-head", callback: "" },
                 { chatID: 24, text: "That's not nice", callback: "" }
             ]
         },
@@ -1665,7 +1665,7 @@ room13.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "eva",
-            text: "Hay why don't you make yourself useful and rub my feet. ",
+            text: "Hey why don't you make yourself useful and rub my feet. ",
             button: [
                 { chatID: 26, text: "Sure!", callback: "footrub" },
                 { chatID: -1, text: "I'm not touching those smelly things", callback: "ehate" }
@@ -2080,7 +2080,7 @@ room13.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "eva",
-            text: "Hay weird-o, me and " + sc.n("lola") + " wanted to play truth or dare. Are you down for a game?",
+            text: "Hey weird-o, me and " + sc.n("lola") + " wanted to play truth or dare. Are you down for a game?",
             button: [
                 { chatID: 76, text: "Oh course!!!", callback: "" },
                 { chatID: -1, text: "I'm pretty busy, some other time maybe. ", callback: "" }
@@ -2531,7 +2531,7 @@ room13.chat = function (chatID) {
         {
             chatID: 130,
             speaker: "landlord",
-            text: "Hay kids, just checking up on you three. Making sure we don't have a repeat of the last little incident.",
+            text: "Hey kids, just checking up on you three. Making sure we don't have a repeat of the last little incident.",
             button: [
                 { chatID: 131, text: "Oh no", callback: "motherMother" }
             ]
@@ -2556,7 +2556,7 @@ room13.chat = function (chatID) {
         {
             chatID: 133,
             speaker: "eva",
-            text: "HAY!!!! ",
+            text: "HEY!!!! ",
             button: [
                 { chatID: 134, text: "...", callback: "" }
             ]
@@ -2902,7 +2902,7 @@ room13.chat = function (chatID) {
         {
             chatID: 175,
             speaker: "eva",
-            text: "Hay " + sc.n("me") + ". Did you want to cuddle with us and sleep?",
+            text: "Hey " + sc.n("me") + ". Did you want to cuddle with us and sleep?",
             button: [
                 { chatID: -1, text: "Yes I do.", callback: "sleep" },
                 { chatID: -1, text: "Nope, just being a pervert.", callback: "reset" }
@@ -2951,7 +2951,7 @@ room13.chat = function (chatID) {
         {
             chatID: 181,
             speaker: "lola",
-            text: "Hay be nice. She's going through a lot right now. It's a big change. Almost as big as the ice cream I'm about to order. ",
+            text: "Hey be nice. She's going through a lot right now. It's a big change. Almost as big as the ice cream I'm about to order. ",
             button: [
                 { chatID: -1, text: "... ", callback: "201_2" }
             ]
@@ -3349,7 +3349,7 @@ room13.chat = function (chatID) {
         {
             chatID: 228,
             speaker: "eva",
-            text: "Hay I said you could lick my feet, not munch my box! You know if I tell " + sc.n("landlord") + " she'll kick " +
+            text: "Hey I said you could lick my feet, not munch my box! You know if I tell " + sc.n("landlord") + " she'll kick " +
                 "you out of this place so fast!",
             button: [
                 { chatID: 229, text: "Oh! I'm sorry, I thought...", callback: "" }

@@ -38,12 +38,12 @@ room12.main = function () {
 
         var hit = false;
         if (!g.checkflag("showerPeek")) {
-            if (sc.sister().thisRoom) {
+            if (sc.getTimeline("lola").thisRoom) {
                 nav.button(room12.showerScene("sister1", 12));
                 chat(0, 12);
                 hit = true;
             }
-            else if (sc.mother().thisRoom) {
+            else if (sc.getTimeline("landlord").thisRoom) {
                 nav.bg("12_bathroom/12_bathroom_peek.jpg");
                 nav.button({
                     "type": "img",
@@ -529,7 +529,7 @@ room12.chat = function(chatID){
             text: sc.n("me") + "!!",
             button: [
                 { chatID: 5, text: "Say nothing.... ", callback: "mom3" },
-                { chatID: 6, text: "Hay babe!", callback: "mom3" }
+                { chatID: 6, text: "Hey babe!", callback: "mom3" }
             ]
         },
         {
@@ -544,7 +544,7 @@ room12.chat = function(chatID){
         {
             chatID: 6,
             speaker: "landlord",
-            text: "Don't 'Hay babe' me! Take your clothes off right now mister.",
+            text: "Don't 'Hey babe' me! Take your clothes off right now mister.",
             button: [
                 { chatID: 7, text: "Alright! [Get naked]", callback: "mom4" }
             ]
@@ -716,7 +716,7 @@ room12.chat = function(chatID){
         {
             chatID: 27,
             speaker: "lola",
-            text: "Oh hay " + sc.n("me") + ". Since we're all girls I guess you can join us in the shower. What do you say " + sc.n("eva") +
+            text: "Oh hey " + sc.n("me") + ". Since we're all girls I guess you can join us in the shower. What do you say " + sc.n("eva") +
                 "?",
             button: [
                 { chatID: 28, text: "...?", callback: "" }

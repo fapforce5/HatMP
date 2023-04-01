@@ -93,7 +93,7 @@ room102.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "construction",
-            text: "Hay " + sc.n("tina") + "!! Who the fuck is this in my office. I asked for something with tits!",
+            text: "Hey " + sc.n("tina") + "!! Who the fuck is this in my office. I asked for something with tits!",
             button: [
                 { chatID: 1, text: "....", callback: "" }
             ]

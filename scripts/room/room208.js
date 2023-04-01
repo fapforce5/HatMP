@@ -136,14 +136,19 @@ room208.btnclick = function (name) {
             }
             break;
         case "jerkIncrease":
+            
+
             if (g.internal.easy && g.internal.t < 150)
                 g.internal.i = .5;
             g.internal.t = g.internal.t - (g.internal.i * g.ratio);
             g.internal.h = g.internal.h + (g.internal.i * g.ratio);
             g.internal.i += g.internal.c;
             $('.room-img[data-name="jcum"]').css({ "height": g.internal.h + "px", "top": g.internal.t + "px" });
-
-            if (g.internal.t < (150 * g.ratio)) {
+            if ((g.internal.t < 150 * g.ratio) && g.internal.easy) {
+                g.internal.t = 150 * g.ratio;
+                g.internal.h = 11100 * g.ratio;
+            }
+            else if (g.internal.t < (150 * g.ratio)) {
                 nav.killbutton("jerkStop");
                 nav.killbutton("jerk");
                 cl.doCum(true);
@@ -457,7 +462,7 @@ room208.chatcatch = function (callback) {
             var td = g.get("difficulty");
             g.internal = { step: 0, maxEnergy: g.get("maxenergy"), hot: false, bh: true, energy: (td === 0 ? -10 : td === 1 ? -20 : -50), timex: (td === 0 ? 800 : td === 1 ? 600 : 450) };
             if (!g.pass.h2) {
-                g.internal.timex = 5000; 
+                g.internal.timex = 15000; 
 
             }
             var energy = g.get("energy");

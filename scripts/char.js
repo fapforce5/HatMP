@@ -116,6 +116,7 @@ $(document).ready(function () {
             height: 4 * g.ratio + "px"
         });
         $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
+        $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
         char.menu();
     };
 
@@ -231,6 +232,7 @@ $(document).ready(function () {
         height: 4 * g.ratio + "px"
     });
     $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
+    $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
     $("#room-change").click(function () {
         g.pass = g.roomID;
         char.room(8);
@@ -507,7 +509,9 @@ char.makeWalk = function () {
         else {
             var reverseEvent = new Array();
             var displayArray = new Array();
+            var timelineArray = new Array();
             var thisChar = sc.get(g.walk);
+            var thisTimeline = sc.getTimeline(g.walk);
             var pointer = 0;
             for (i = 0; i < sc.events.length; i++) {
                 if (sc.events[i].name === g.walk && sc.events[i].step >= 0) {
@@ -524,6 +528,20 @@ char.makeWalk = function () {
                 '<img src="./images/speaker/' + thisChar.image + '" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
                 '</div>' +
                 '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">' + thisChar.display + '</div>');
+
+            for (i = 0; i < thisTimeline.subList.length; i++) {
+                if (thisTimeline.subList[i].current)
+                    timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
+                        thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
+                        thisTimeline.subList[i].room +
+                        '</li>');
+                else {
+                    timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
+                        thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
+                        thisTimeline.subList[i].room +
+                        '</li>');
+                }
+            }
 
             for (i = 0; i < reverseEvent.length; i++) {
                 if (i === pointer)
@@ -544,9 +562,17 @@ char.makeWalk = function () {
                     displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666;" class="char-20" type="circle">' +
                         '...</li>');
             }
+
+            $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_timeline" style="list-style: none; padding:0;"></ul>');
+
             $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list"></ul>');
+
+
             for (i = displayArray.length - 1; i >= 0; i--)
                 $("#room_left_walk_sub_list").append(displayArray[i]);
+
+            for (i = 0; i < timelineArray.length; i++)
+                $("#room_left_walk_sub_timeline").append(timelineArray[i]);
 
             if (g.roomID === 0) {
                 room0.main();
@@ -1550,6 +1576,11 @@ char.makeGraph = function () {
                 else 
                 $("#rl_subdom").text("Submissive Slut");
                 $(".rl-bar[data-name='subdom']").css({ width: g.st[i].t + "%" });
+                break;
+            case "cheerleader":
+                if (g.st[i].t > 95)
+                    $("#rl_cheer").text("Attend Cheerleader Practice")
+                $(".rl-bar[data-name='cheerleader']").css({ width: g.st[i].t + "%" });
                 break;
             //case "sissyLevel":
             //    $("#rl_sissy").html("Sissy: " + g.st[i].t);

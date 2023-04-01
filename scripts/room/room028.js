@@ -22,7 +22,6 @@ room28.main = function () {
 
     var maxE = g.get("maxenergy");
     var thisautohormone, hix, tix;
-    var thisTransform = null;
     var sissyTrans = g.get("oncase");
     var arousal, energyIndex;
     var message;
@@ -92,7 +91,6 @@ room28.main = function () {
                 break;
             case "pill":
                 if (g.st[i].t !== null) {
-                    thisTransform = g.st[i].t;
                     g.st[i].t = null;
                 }
                 break;

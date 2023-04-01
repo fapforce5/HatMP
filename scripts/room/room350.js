@@ -2,7 +2,7 @@
 
 var room350 = {};
 room350.main = function () {
-    if (sc.mother().thisRoom || g.pass === "350_nursePay") {
+    if (sc.getTimeline("landlord").thisRoom || g.pass === "350_nursePay") {
 
         var btnList = [
             {

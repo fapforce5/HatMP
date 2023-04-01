@@ -12,8 +12,8 @@ room25.main = function () {
         "night": "25_dining/upstairsNight.png"
     }];
 
-    var thisSister = sc.sister();
-    var thisMother = sc.mother();
+    var thisSister = sc.getTimeline("lola");
+    var thisMother = sc.getTimeline("landlord");
 
     if (thisMother.roomID === 26) {
         btnList.push({
@@ -212,7 +212,7 @@ room25.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "landlord",
-            text: "Hay " + sc.n("me") + " everyone pays rent around here, even " + sc.n("lola") + " and " + sc.n("eva") +
+            text: "Hey " + sc.n("me") + " everyone pays rent around here, even " + sc.n("lola") + " and " + sc.n("eva") +
             ". You need to check the help wanted on your computer if you want to see what's available. ",
             button: [
                 { chatID: -1, text: "Got it " + sc.n("landlord"), callback: "" }
@@ -221,7 +221,7 @@ room25.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "landlord",
-            text: "Hay " + sc.n("me") + ", I'm happy you're trying to improve yourself. It's what I've always wanted. " +
+            text: "Hey " + sc.n("me") + ", I'm happy you're trying to improve yourself. It's what I've always wanted. " +
                 "I've got to get ready to work at the ol' Helping Hands Sperm Bank, we've got a big delivery due in today " +
                 "and I need to get them in the cryo unit. I think you would be impressed with the amount of sperm we have, lol. " +
                 "You keep working hard and maybe you won't have to be covered in sperm so make a buck.",
@@ -232,7 +232,7 @@ room25.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "landlord",
-            text: "Hay Sweetie. It's so busy at the Sperm Bank! I don't know if it's something in the air, or just that time of year, but " +
+            text: "Hey Sweetie. It's so busy at the Sperm Bank! I don't know if it's something in the air, or just that time of year, but " +
             "we're going through about a gallon of sperm each day. I swear you could paint a house with all the sperm where " +
             "putting out!",
             button: [
@@ -298,7 +298,7 @@ room25.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "lola",
-            text: "Hay " + sc.n("me") + ". " + sc.n('eva') + " and I were just talking about you.",
+            text: "Hey " + sc.n("me") + ". " + sc.n('eva') + " and I were just talking about you.",
             button: [
                 { chatID: 11, text: "Me?", callback: "" }
             ]
@@ -448,7 +448,7 @@ room25.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "eva",
-            text: "Hay butt head. I'm looking forward to getting a sneak of some of that liquor.",
+            text: "Hey butt head. I'm looking forward to getting a sneak of some of that liquor.",
             button: [
                 { chatID: 29, text: "...", callback: "" }
             ]

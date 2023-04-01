@@ -3,8 +3,8 @@ var room16 = {};
 
 room16.main = function () {
     var btnList = new Array();
-    var thisSisterRoomID = sc.sister();
-    var thisMomRoomID = sc.mother();
+    var thisSisterRoomID = sc.getTimeline("lola");
+    var thisMomRoomID = sc.getTimeline("landlord");
     var llst = sc.getstep("landlord");
     if ((cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
         nav.button({
@@ -395,7 +395,7 @@ room16.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "eva",
-            text: "Hay butthead, this part of the games hasn't been built yet.",
+            text: "Hey butthead, this part of the games hasn't been built yet.",
             button: [
                 { chatID: -1, text: "You smell like an old shoe!", callback: "" }
             ]

@@ -150,7 +150,7 @@ room550.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "chad",
-            text: "Hay dweeb! What's a runt like you doing here. Came to look at dudes I bet!!",
+            text: "Hey dweeb! What's a runt like you doing here. Came to look at dudes I bet!!",
             button: [
                 { chatID: 1, text: 'Hi ' + sc.n('chad') + ' I thought you left to play minor league baseball', callback: "" }
             ]
@@ -249,7 +249,7 @@ room550.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "chad",
-            text: "Hay twerp, here to work out?",
+            text: "Hey twerp, here to work out?",
             button: [
                 { chatID: -1, text: "Yes", callback: "enter" },
                 { chatID: -1, text: "No", callback: "" }
@@ -266,7 +266,7 @@ room550.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "chad",
-            text: "Hay slut! You come in here looking for me?",
+            text: "Hey slut! You come in here looking for me?",
             button: [
                 { chatID: 14, text: "Slut?", callback: "g1" }
             ]

@@ -20,8 +20,8 @@ room26.main = function () {
     }
     else {
         var btnList = new Array();
-        if (sc.mother().thisRoom) {
-            if (sc.sister().thisRoom) {
+        if (sc.getTimeline("landlord").thisRoom) {
+            if (sc.getTimeline("lola").thisRoom) {
                 nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg"); 
                 btnList.push({
                     "type": "btn",
@@ -492,7 +492,7 @@ room26.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "landlord",
-            text: "Hay " + sc.n("me") + ", I'm happy you're trying to improve yourself. It's what I've always wanted. " +
+            text: "Hey " + sc.n("me") + ", I'm happy you're trying to improve yourself. It's what I've always wanted. " +
                 "I've been working at the ol' Helping Hands Sperm Bank for years. If you apply yourself and work hard you won't " +
                 "be a complete homeless loser. Now run along.",
             button: [
@@ -1314,7 +1314,7 @@ room26.chat = function (chatID) {
         {
             chatID: 96,
             speaker: "lola",
-            text: "Hay you. Wanna sit between us and watch some tv?",
+            text: "Hey you. Wanna sit between us and watch some tv?",
             button: [
                 { chatID: 97, text: "Cool", callback: "sl0" },
                 { chatID: -1, text: "Nah", callback: "" }
