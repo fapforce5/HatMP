@@ -1,18 +1,43 @@
 ﻿//Room name
 var room876 = {};
 room876.main = function () {
-    var stacystep = sc.getstep("stacy");
-    if (stacystep === 0) {
+    var cheerlevel = g.get("cheerlevel");
+    if (cheerlevel === 0) {
         nav.bg("876_gym/tryout.jpg");
         zcl.displayMain(350, 1000, .07, "clothes", false);
         chat(0, 876);
     }
-    else if (stacystep === 1) {
+    else if (cheerlevel === 1) {
         nav.bg("876_gym/tryout.jpg");
         zcl.displayMain(350, 1000, .07, "clothes", false);
         chat(39, 876);
     }
-    
+    else if (cheerlevel === 2) {
+        nav.bg("876_gym/tryout.jpg");
+        cl.nude();
+        zcl.displayMain(350, 1000, .07, "clothes", false);
+        chat(50, 876);
+    }
+    else if (cheerlevel === 3) {
+        nav.bg("876_gym/pc_hips.jpg");
+        chat(65, 876);
+    }
+    else if (cheerlevel === 4) {
+        nav.bg("876_gym/sc_hips.jpg");
+        chat(76, 876);
+    }
+    else if (cheerlevel === 5) {
+        nav.bg("876_gym/routine1_3.jpg");
+        chat(90, 876);
+    }
+    else if (cheerlevel === 6) {
+        nav.bg("876_gym/cheer6_1.jpg");
+        chat(104, 876);
+    }
+    else if (cheerlevel === 7) {
+        nav.bg("876_gym/cheer6_1.jpg");
+        chat(126, 876);
+    }
 };
 
 room876.btnclick = function (name) {
@@ -40,6 +65,14 @@ room876.btnclick = function (name) {
             nav.killbutton("1_1x");
             nav.bg("876_gym/meet6.jpg");
             chat(41, 876);
+            break;
+        case "cheer5":
+            nav.bg("876_gym/cheer5_" + g.internal + ".jpg")
+            if (g.internal === 8) {
+                nav.killbutton("cheer5");
+                chat(98, 876);
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -103,6 +136,41 @@ room876.chatcatch = function (callback) {
         case "meet15":
         case "meet16":
         case "meet17":
+        case "routine1_4":
+        case "routine1_5":
+        case "routine1_6":
+        case "routine2_2":
+        case "routine2_4":
+        case "routine2_1_3":
+        case "routine2_1_4":
+        case "routine2_1_5":
+        case "routine2_1_6":
+        case "routine2_1_7":
+        case "routine2_1_8":
+        case "cheer5_1":
+        case "cheer5_2":
+        case "cheer5_3":
+        case "cheer5_5":
+        case "cheer5_6":
+        case "cheer5_7":
+        case "cheer5_8":
+        case "cheer5_9":
+        case "cheer5_11":
+        case "cheer5_12":
+        case "cheer5_13":
+        case "cheer6_1":
+        case "cheer6_1_5":
+        case "cheer6_2":
+        case "cheer6_3":
+        case "cheer6_4":
+        case "cheer6_5_1":
+        case "cheer6_5_2":
+        case "cheer6_5_3":
+        case "cheer6_5_4":
+        case "cheer6_6":
+        case "cheer6_7":
+        case "cheer6_8":
+            nav.kill();
             nav.bg("876_gym/" + callback + ".jpg");
             break;
         case "meet18":
@@ -141,6 +209,8 @@ room876.chatcatch = function (callback) {
             g.internal = {
                 step: 0,
                 outfit: false,
+                finish: 0,
+                alone: false,
                 t: [
                     { t: "We're the Stars, we like to fight", p: "hips" },
                     { t: "Let's go team and win tonight", p: "hips" },
@@ -154,24 +224,183 @@ room876.chatcatch = function (callback) {
                 ]
             };
             break;
+        case "routine2":
+            g.internal = {
+                step: 0,
+                outfit: true,
+                finish: 2,
+                alone: false,
+                t: [
+                    { t: "Fetvill Stars, Fetville Stars", p: "hips" },
+                    { t: "Don't be shy, stand up and give your battle cry", p: "hips" },
+                    { t: "V-I-C-T-O-R-Y", p: "v" },
+                    { t: "We'll smash you like a fucking flea", p: "hips" },
+                    { t: "We're the best around I guarantee", p: "hips" },
+                    { t: "D-E-F-E-N-S-E", p: "v" },
+                    { t: "Your quarterback is running dry", p: "hips" },
+                    { t: "We'll fuck you in your P-U-S-S-Y", p: "j" }
+                ]
+            };
+            break;
         case "setupRoutine1":
             nav.killall();
             nav.bg("876_gym/pn_hips.jpg");
             break;
         case "doRoutine1":
             if (g.internal.step >= g.internal.t.length) {
-                nav.bg("876_gym/pn_turn.jpg");
-                chat(46, 876);
+                switch (g.internal.finish) {
+                    case 0:
+                        nav.bg("876_gym/pn_turn.jpg");
+                        chat(46, 876);
+                        break;
+                    case 1:
+                        nav.bg("876_gym/routine1_1.jpg")
+                        chat(57, 876);
+                        break;
+                    case 2:
+                        nav.bg("876_gym/pc_hips.jpg");
+                        chat(66, 876);
+                        break;
+                    case 3:
+                        nav.bg("876_gym/pc_hips.jpg");
+                        chat(77, 876);
+                        break;
+                };
             }
             else {
                 var tx = g.internal.t[g.internal.step];
-                var cs = g.internal.outfit ? "pc_" : "pn_";
+                var cs = (g.internal.alone ? "s" : "p") + (g.internal.outfit ? "c_" : "n_");
                 nav.bg("876_gym/" + cs + tx.p + ".jpg");
-                chat(1000, 876);
+                if (g.internal.alone)
+                    chat(1001, 876);
+                else
+                    chat(1000, 876);
             }
             break;
         case "routine1_kick":
-
+            nav.bg("876_gym/kick.jpg");
+            break;
+        case "routine1_kick1":
+            nav.bg("876_gym/kick1.jpg")
+            break;
+        case "routine1_kick2":
+            nav.bg("876_gym/meet9.jpg");
+            break;
+        case "routine1_kick3":
+            cl.undo();
+            g.mod("phum", 1);
+            g.set("cheerleader", 20);
+            g.set("cheerlevel", 2);
+            char.makeGraph();
+            char.settime(15, 37);
+            char.room(0);
+            sc.setstep("stacy", 2);
+            break;
+        case "routine1_1":
+            nav.killall();
+            nav.bg("876_gym/sn_hips.jpg");
+            if (g.get("cheerleader") < 95) {
+                chat(51, 876);
+            }
+            else {
+                room876.chatcatch("routine1");
+                g.internal.alone = true;
+                g.internal.finish = 1;
+                chat(1001, 876);
+            }
+            break;
+        case "routine1_2":
+            nav.bg("876_gym/routine1_2.jpg");
+            break;
+        case "routine1_3":
+            cl.c.panties = "cl";
+            cl.c.pants = "cl";
+            cl.c.shirt = "cl";
+            cl.c.socks = "cl";
+            cl.c.shoes = "cl";
+            cl.add("panties", "cl");
+            cl.add("pants", "cl");
+            cl.add("shirt", "cl");
+            cl.add("socks", "cl");
+            cl.add("shoes", "cl");
+            cl.display();
+            nav.bg("876_gym/routine1_3.jpg");
+            break;
+        case "routine1_7":
+            g.mod("phum", 1);
+            g.set("cheerlevel", 3);
+            g.set("cheerleader", 20);
+            char.makeGraph();
+            char.settime(20, 7);
+            char.room(0);
+            break;
+        case "routine2_1":
+            room876.chatcatch("routine2");
+            chat(1000, 876);
+            break;
+        case "routine2_3":
+            nav.bg("876_gym/meet9.jpg");
+            break;
+        case "routine2_5":
+            g.mod("phum", 1);
+            g.set("cheerlevel", 4);
+            g.set("cheerleader", 20);
+            char.makeGraph();
+            char.settime(20, 7);
+            char.room(0);
+            break;
+        case "routine2_1_1":
+            room876.chatcatch("routine2");
+            g.internal.alone = true;
+            g.internal.finish = 3;
+            chat(1001, 876);
+            break;
+        case "routine2_1_2":
+            nav.bg("876_gym/routine1_3.jpg");
+            break;
+        case "routine2_1_9":
+            g.mod("giveOralFemale", 1);
+            g.set("cheerlevel", 5);
+            g.set("cheerleader", 20);
+            char.makeGraph();
+            char.settime(20, 7);
+            char.room(0);
+            break;
+        case "cheer5_4":
+            g.internal = 5;
+            nav.bg("876_gym/cheer5_4.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "cheer5",
+                "left": 1687,
+                "top": 800,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 876);
+            break;
+        case "cheer5_10":
+            nav.bg("876_gym/" + callback + ".jpg");
+            cl.stretchButt(null, 5);
+            break;
+        case "cheer5_14":
+            g.mod("sissygasm", 1);
+            g.set("cheerlevel", 6);
+            g.set("cheerleader", 20);
+            cl.add("accessories", "pompom");
+            char.makeGraph();
+            char.settime(20, 7);
+            char.room(0);
+            break;
+        case "cheer6_9":
+            g.set("cheerlevel", 7);
+            g.set("cheerleader", 20);
+            char.makeGraph();
+            char.settime(20, 7);
+            char.room(0);
+            break;
+        case "exit":
+            char.room(0);
             break;
         default:
             break;
@@ -190,9 +419,9 @@ room876.chat = function (chatID) {
             ]
         };
     }
-    if (chatID === 1000) {
-        var c = {
-            chatID: 999,
+    else if (chatID === 1000) {
+        var c1000 = {
+            chatID: 1000,
             speaker: "stacy",
             text: g.internal.t[g.internal.step].t,
             button: [
@@ -200,7 +429,19 @@ room876.chat = function (chatID) {
             ]
         }
         g.internal.step++;
-        return c
+        return c1000
+    }
+    else if (chatID === 1001) {
+        var c1001 = {
+            chatID: 999,
+            speaker: "me",
+            text: g.internal.t[g.internal.step].t,
+            button: [
+                { chatID: -1, text: "...", callback: "doRoutine1" }
+            ]
+        }
+        g.internal.step++;
+        return c1001
     }
     else {
         var cArray = [
@@ -592,7 +833,694 @@ room876.chat = function (chatID) {
                 speaker: "courtney",
                 text: "Turn around ",
                 button: [
-                    { chatID: -1, text: "Turn around", callback: "routine1_kick" }
+                    { chatID: 47, text: "Turn around", callback: "routine1_kick" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "courtney",
+                text: "NOW LAY ON THE FLOOR!",
+                button: [
+                    { chatID: 48, text: "AAAAAAaaaaaaa", callback: "routine1_kick1" }
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "courtney",
+                text: "Awwww does it hurt when I kick your balls. It wouldn't be bad if you had a pussy. ",
+                button: [
+                    { chatID: 49, text: "*groan*", callback: "routine1_kick2" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "stacy",
+                text: "What a loser. Get out of here so the real cheerleaders can practice. If you can do the cheer " +
+                    "right next practice maybe we'll give you an actual outfit so you can pretend to be one of us. ",
+                button: [
+                    { chatID: -1, text: "Oohhh yeah", callback: "routine1_kick3" }
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "stacy",
+                text: "Let's see if you've been practicing. ",
+                button: [
+                    { chatID: -1, text: "Ok. Here goes! ", callback: "routine1_1" }
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "me",
+                text: "We're the Stars, we like to fight",
+                button: [
+                    { chatID: 52, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "me",
+                text: "Let's go team and win tonight",
+                button: [
+                    { chatID: 53, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "me",
+                text: "Our boys are big and strong",
+                button: [
+                    { chatID: 54, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "stacy",
+                text: "No you fucking idiot! You forgot to clap. ",
+                button: [
+                    { chatID: 55, text: "Oh shit. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "candy",
+                text: "Oh, you didn't practice did you. That's too bad. You were almost a real cheerleader. ",
+                button: [
+                    { chatID: 56, text: "Awwwww", callback: "" }
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "stacy",
+                text: "Get out of here and practice so you aren't so stupid. ",
+                button: [
+                    { chatID: -1, text: "fuck", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "candy",
+                text: "OMG!!!! You did it! You're amazing! ",
+                button: [
+                    { chatID: 58, text: "Awwww", callback: "routine1_2" }
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "candy",
+                text: "I told you she was cheerleader material! You get to wear the uniform and everything! I'm so " +
+                    "proud of you! ",
+                button: [
+                    { chatID: 59, text: "Thanks so much!", callback: "" }
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "stacy",
+                text: "Fine. You can have a uniform. Just don't embarrass us. Go change and we'll work on some floor " +
+                    "routines. ",
+                button: [
+                    { chatID: 60, text: "Sweet! [Go change]", callback: "routine1_3" }
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "thinking",
+                text: "This is so awesome! I'm finally part of the squad! I'm going to be such a great cheerleader. I wonder " +
+                    "when they'll let me cheer at the games in front of everyone. This just feels so right.",
+                button: [
+                    { chatID: 61, text: "[Finish practicing and go change]", callback: "routine1_4" }
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "me",
+                text: "I had so much fun out there! I'm so excited to finally be part of the squad. I'm going to keep " +
+                    "practicing till I'm as good as you two! I can't wait to cheer at a game! ",
+                button: [
+                    { chatID: 62, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "courtney",
+                text: "Why are you talking to us? Washing machines don't talk, and they don't cheer in games. ",
+                button: [
+                    { chatID: 63, text: "Washing machine? ", callback: "routine1_5" }
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "stacy",
+                text: "Yeah, washing machine. Beginners don't talk to us after practice, and they don't cheer in games. " +
+                    "Since we let you wear the uniform you have to wash our uniforms so they're fresh for the game tomorrow. " +
+                    "Make sure they're nice and crisp. ",
+                button: [
+                    { chatID: 64, text: "Oh...[Wash their uniforms]", callback: "routine1_6" }
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "thinking",
+                text: "I really thought they accepted me, instead I'm just a washing machine for them to clean their " +
+                    "dirty spankies. Those girls are such bitches. I'm going to show them. I'm going to practice and be " +
+                    "the best cheerleader. Everyone will know how awesome I am and how terrible " + sc.n("stacy") + 
+                    " and " + sc.n("courtney") + " are. They're going to see!",
+                button: [
+                    { chatID: -1, text: "[Finish up and go home]", callback: "routine1_7" }
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "courtney",
+                text: "Ok. We have a new cheer for you to learn. Ready?",
+                button: [
+                    { chatID: -1, text: "Ready!", callback: "routine2_1" }
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "courtney",
+                text: "Turn around ",
+                button: [
+                    { chatID: 67, text: "I'm not falling for that again. It really hurt", callback: "" }
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "stacy",
+                text: "Oh so you think you know the routine better than us now! Turn around you stupid slut or you're off the " +
+                    "team. ",
+                button: [
+                    { chatID: 68, text: "...but", callback: "" }
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "candy",
+                text: "You better turn around. ",
+                button: [
+                    { chatID: 69, text: "fuck", callback: "routine2_2" }
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "courtney",
+                text: "Hahahahaha ",
+                button: [
+                    { chatID: 70, text: "*groan* again", callback: "routine2_3" }
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "stacy",
+                text: "You fell for it again dumb ass. You're so stupid. ",
+                button: [
+                    { chatID: 71, text: "...no *whimper*", callback: "" }
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "courtney",
+                text: "Haha, stop whining and wash my dirty uniform ",
+                button: [
+                    { chatID: 72, text: "*Grrrr*", callback: "routine1_6" }
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "thinking",
+                text: "Those pranks are so stupid. I can't believe they kicked my balls again. So childish... ",
+                button: [
+                    { chatID: 73, text: "...", callback: "routine2_4" }
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "chuck",
+                text: "Oh hi. I'm looking for Stacy. Do you know where she's gone? ",
+                button: [
+                    { chatID: 74, text: "Oh. She should be changing. Who are you?", callback: "" }
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "chuck",
+                text: "Sorry, I'm Chuck. I'm just her ride home. I'll see if I can catch her when she's done. See ya. ",
+                button: [
+                    { chatID: 75, text: "Bye", callback: "routine1_6" }
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "thinking",
+                text: "I wonder if that's her boyfriend. I bet she would be pissed if he cheated on her. Maybe that's the " +
+                    "way to get back at the bitch. I want to see the look on her face when she finds out. ",
+                button: [
+                    { chatID: -1, text: "[Finish up]", callback: "routine2_5" }
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "stacy",
+                text: "Let's see if you've been practicing. ",
+                button: [
+                    { chatID: -1, text: "Ok. Here goes! ", callback: "routine2_1_1" }
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "courtney",
+                text: "That was acceptable. We're not going to kick you off the team this time. Let's practice. ",
+                button: [
+                    { chatID: 78, text: "Yes! ", callback: "routine2_1_2" }
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "candy",
+                text: "Awesome practice. I'm totally beat. Let's call it. ",
+                button: [
+                    { chatID: 79, text: "Totally. Me too", callback: "routine2_1_3" }
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "stacy",
+                text: "I get so horny after practice. You're good at cleaning our uniforms, lets see how good you are at " +
+                    " cleaning my pussy. ",
+                button: [
+                    { chatID: 80, text: "huh? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "courtney",
+                text: "New girl has to serve the head cheerleader. Now that " + sc.n("candy") + "'s not the new girl, it's " +
+                    "your turn! hahaha",
+                button: [
+                    { chatID: 81, text: "hmmm. I'm ok with this. ", callback: "routine2_1_4" }
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "stacy",
+                text: "Oh shit. You are a good pussy eater. Get in there deeper!",
+                button: [
+                    { chatID: 82, text: "MMmmmMmmm", callback: "routine2_1_5" }
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "stacy",
+                text: "Oh fuck you dyke. You're are way better than " + sc.n("candy") + ". I'm going to cum all over your lezbo " +
+                    "face. ",
+                button: [
+                    { chatID: 83, text: "*lick* *slurp*", callback: "routine2_1_6" }
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "chuck",
+                text: "I know I'm a bit early, but are you ready to go " + sc.n("stacy") + "? ",
+                button: [
+                    { chatID: 84, text: "*slurp* *slurp* *lick*", callback: "" }
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "stacy",
+                text: "Almost ready " + sc.n("chuck") + ". Just got to finish coaching the new cheerleader. Come back in 5 minutes.  ",
+                button: [
+                    { chatID: 85, text: "*lick*", callback: "routine2_1_7" }
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "stacy",
+                text: "FFFFfffffffuck",
+                button: [
+                    { chatID: 86, text: "*GLUG* *Baaa*", callback: "routine2_1_8" }
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "me",
+                text: "Soooo, is " + sc.n("chuck") + " your boyfriend? ",
+                button: [
+                    { chatID: 87, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "stacy",
+                text: "Not that it's any of your business, but no. He's just a friend that I keep around to drive me places. " +
+                    "I don't know why they take your license away just becuase you drive drunk. It's not like I hit anyone when " +
+                    "I crashed. ",
+                button: [
+                    { chatID: 88, text: "Well, he's kinda cute. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "stacy",
+                text: "I guess. I dunno, he's just too nice. He's mine though, don't you try to fuck him or you're off the " +
+                    "team. Now go wash my spankies dyke. ",
+                button: [
+                    { chatID: 89, text: "wow. ok ", callback: "routine1_6" }
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "thinking",
+                text: "Ughhh I can still taste her pussy and smell it on my face. She was so sweaty. I'll have to shower " +    
+                    "to get the smell of her out of my hair. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "routine2_1_9" }
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "candy",
+                text: "Great practice girls! I really think we're going to be amazing tomorrow! I'm super sweaty and stinky, " +
+                    "gunna hit the showers and take off. ",
+                button: [
+                    { chatID: 91, text: "Totally, me too! ", callback: "cheer5_1" }
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "me",
+                text: "So did they used to pick on you too when you were new?",
+                button: [
+                    { chatID: 92, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "candy",
+                text: "OMG! So much. It's like Stacy needs to prove she's in charge. We had a different new girl trying out a " +
+                    "few months ago. She lasted until Stacy wanted to play puppets. She stuck her hand up the new girl's ass " +   
+                    "and pretended she was a ventriloquist. It was pretty funny till the girl's mom walked in. Boy was her mom " +
+                    "mad! Stacy had to pay her off to keep her quiet. ",
+                button: [
+                    { chatID: 93, text: "I would have died of embarrassment! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "candy",
+                text: "Me too. I almost peed myself I was laughing so hard when they left. It's pretty rough, but no one is the " +
+                    "new girl forever. At least she started easy. Trust me, the worst is yet to come, but I know you'll be fine. " +
+                    "We all did it. Just some fun to make the day go by. Just remember it's never personal.  ",
+                button: [
+                    { chatID: 94, text: "Yeah. Still sucks. Getting kicked in the balls really hurts. Twice! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "candy",
+                text: "I wouldn't know. But I do know getting fisting in the pussy when you're not ready hurts. We each " +
+                    "have our own things. I've got to run. I'll see you on the other side. ",
+                button: [
+                    { chatID: 95, text: "Sure. I'm just about done here too. I gotta do their laundry then I'm out.  ", callback: "cheer5_2" }
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "me",
+                text: "What the hell!  ",
+                button: [
+                    { chatID: 96, text: "...", callback: "cheer5_3" }
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "stacy",
+                text: "You've been doing so well we feel like it's time you earned your pom-poms. Half of our trainees " +
+                    "quit or get cut before they have a chance to earn this cheertasitc milestone. To earn them you must first " +
+                    "clear I like to call the konga line. You're luck Courtney was " +
+                    "nice enough to put them in order, smallest to largest. It'll give you a good stretch. ",
+                button: [
+                    { chatID: 97, text: "I'm not going to do that.", callback: "" }
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "courtney",
+                text: "Ugh! I told you she wasn't real cheerleader material. She's just playing one. Go back to the " +
+                    "steet corner skank. You're not good enough to be one of us. Pom-poms are for winners, not losers " +
+                    "like you. ",
+                button: [
+                    { chatID: -1, text: "You know what " + sc.n("courtney") + ", I am going to ride each one of those dildos and you're going to get me those pom-poms.", callback: "cheer5_4" }
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "courtney",
+                text: "What did you stop for? Surely it's not too big for a slut like you. ",
+                button: [
+                    { chatID: 99, text: "I can't. It's too much...", callback: "cheer5_9" }
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "stacy",
+                text: "I said sit on every cock slut! ",
+                button: [
+                    { chatID: 100, text: "OOOoooooo", callback: "cheer5_10" }
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "me",
+                text: "*moan* ",
+                button: [
+                    { chatID: 101, text: "...", callback: "cheer5_11" }
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "courtney",
+                text: "Oh my fucking god! Did you just shoot a load of cum in the locker room? You fucking skanky slut. ",
+                button: [
+                    { chatID: 102, text: "...", callback: "cheer5_12" }
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "stacy",
+                text: "You nasty bitch. You can clean that cum off the floor while you do our laundry. ",
+                button: [
+                    { chatID: 103, text: "*groan*", callback: "cheer5_13" }
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "thinking",
+                text: "Cum really is a bitch to clean up. I'm just glad there's no carpet in here... ",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheer5_14" }
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "candy",
+                text: "I'm so glad you earned your pom-poms! I wanted to watch, but I had a date with " + sc.n("chad") +
+                    " that I didn't want to miss. You go girl! ",
+                button: [
+                    { chatID: 105, text: "I'm so glad too! I love these things!", callback: "cheer6_1_5" }
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "courtney",
+                text: "You totally earned them! I even think you're ready to cheer in a real game, even if you did " +
+                    "orgasm all over the floor. ",
+                button: [
+                    { chatID: 106, text: "Hahaha, I couldn't help it. But do you really think I'm ready to cheer for real. ", callback: "cheer6_2" }
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "stacy",
+                text: "We were talking and we think you're ready. You're not awesome yet, but we could really use you " +
+                    "out there. So what do you say, ready to cheer for real? ",
+                button: [
+                    { chatID: 107, text: "Oh My God. I'm so totally ready! ", callback: "cheer6_2" }
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "candy",
+                text: "I'm so excited. Wait till you get the rush of thousands of eyes on you. It's so fun and crazy being " +
+                    "out there! ",
+                button: [
+                    { chatID: 108, text: "I'm a bit nervous, but I think I can do it! ", callback: "cheer6_3" }
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "courtney",
+                text: "You better. If you embarass us out there we're going to use your face as toilet paper.  ",
+                button: [
+                    { chatID: 109, text: "That's graphic ", callback: "cheer6_4" }
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "utah",
+                text: "Hey girls! We need a release before the big game tomorrow. ",
+                button: [
+                    { chatID: 110, text: "Huh? ", callback: "cheer6_5_1" }
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "stacy",
+                text: "Oh fuck " + sc.n("utah") + "! You have the best dick in the world! ",
+                button: [
+                    { chatID: 111, text: "...", callback: "cheer6_5_2" }
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "courtney",
+                text: "That's becuase you haven't tried Darqwan's massive dick. It's stretching me out sooooo much! ",
+                button: [
+                    { chatID: 112, text: "...", callback: "cheer6_5_3" }
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "candy",
+                text: "Why do you have to fuck me in the ass everytime Jarome? ",
+                button: [
+                    { chatID: 113, text: "...", callback: "cheer6_5_4" }
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "utah",
+                text: "Oh fuck I love that pussy babe! ",
+                button: [
+                    { chatID: 114, text: "...", callback: "cheer6_6" }
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "courtney",
+                text: "Oh My God that was hot! Best way to end practice. ",
+                button: [
+                    { chatID: 115, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "utah",
+                text: "Yeah. We got a big game tomorrow against the Eagles, had to get a release in. I can't get a good nights " +
+                    "sleep when we're all horned up. Needed to detroy those pussies of yours. Just like we're going to destroy the " +
+                    "the Eagles tomorrow. Remember when I threw " +
+                    "that 40 yard touchdown. Best pass of the season. Almost as good as that time I saved us from a safety " +
+                    "by throwing it off balance to Darqwan. As long as these guys keep blocking like they do I can keep " +
+                    "winning games like I do. ",
+                button: [
+                    { chatID: 116, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "stacy",
+                text: "We're so lucky to have you as our qurterback. We're just so happy to help anyway we can. ",
+                button: [
+                    { chatID: 117, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "utah",
+                text: "Hey new girl. Didn't know you were here. Next time we'll invite another so you're not left out. " +
+                    "We gotta run and study some film. Catch you tomorrow! ",
+                button: [
+                    { chatID: 118, text: "Thanks? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "candy",
+                text: "Good. I have to run to the toilet and do the biggest cum fart ever before it leaks into my shoes. ",
+                button: [
+                    { chatID: 119, text: "...", callback: "cheer6_7" }
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "thinking",
+                text: "That was unexpected. I wonder if they person that fucks me will be mad that I have balls? Maybe I'll take " +
+                    sc.n("candy") + "'s place so Jarome just fucks me in the ass. He didn't see to check, just shoved it right in, " +
+                    "maybe he won't notice my balls...",
+                button: [
+                    { chatID: 120, text: "...", callback: "cheer6_8" }
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "chuck",
+                text: "Hi you. Looking for " + sc.n("stacy") + " again. I never did ask your name. I'm " + sc.n("chuck") + ".",
+                button: [
+                    { chatID: 121, text: "Hi, I'm " + sc.n("me") + ". " + sc.n("stacy") + "'s still changing. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "chuck",
+                text: "She does take forever to change. I took her to the mall last week and she spent over six hours trying on " +
+                    "clothes. I almost fell asleep waiting on her. ",
+                button: [
+                    { chatID: 122, text: "So what's the deal with you two? Are you dating?", callback: "" }
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "chuck",
+                text: "Oh, hahaha, no. Just good friends. Why does she talk about me at all? Do you think she likes me? ",
+                button: [
+                    { chatID: 123, text: "Oh. I don't know. Just curious. Do you like her? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "chuck",
+                text: "More than anything. I asked her out a year ago, but she said the time wasn't right, so we're just " +
+                    "friends. I do enjoy spending time with her. Best part of my day. ",
+                button: [
+                    { chatID: 124, text: "Ohhh that's so sad. Have you thought about dating anyone else? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "chuck",
+                text: "Someone else? No. I couldn't. Stacy is all I think about. She really is a wonderful, sweet, and caring " +
+                    "girl. She's perfect. ",
+                button: [
+                    { chatID: 125, text: "Ok. We'll I've got to do some laundry. I'll catch you later. ", callback: "laundry" }
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "thinking",
+                text: "That poor boy's got it bad. He could really do better. Such a shame. But I'm so excited. I get to cheer " +
+                    "in the game! I need to show up to the stadium tomorrow, on Sunday before 2PM, so I can cheer for real! ",
+                button: [
+                    { chatID: -1, text: "Yeah me! [End of this release]", callback: "cheer6_9" }
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "me",
+                text: "End of this story for this release. more to cum ",
+                button: [
+                    { chatID: -1, text: "Yeah me! [End of this release]", callback: "exit" }
                 ]
             },
         ];

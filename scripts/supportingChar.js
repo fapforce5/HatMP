@@ -81,6 +81,8 @@ sc.char = [
 
     { name: "stacy", display: "Stacy", image: "stacy.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "courtney", display: "Courtney", image: "courtney.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "chuck", display: "Chuck", image: "chuck.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "utah", display: "Utah", image: "utah.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "queen", display: "Forest Queen", image: "queen.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 

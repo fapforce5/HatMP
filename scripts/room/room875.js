@@ -9,7 +9,7 @@ room875.main = function () {
         var candyStep = sc.getstep("candy");
 
         if (g.dt.getDay() === 0) {
-            chat(3, 875);
+            chat(8, 875);
         }
         else if (g.dt.getDay() === 6) {
             if (candyStep < 102) {
@@ -144,12 +144,29 @@ room875.chatcatch = function (callback) {
             char.room(0);
             break;
         case "practice":
-            g.internal = cl.hasoutfit("workout");
-            if (g.internal === null)
-                char.room(876);
+            if (g.get("cheerlevel") < 3) {
+                g.internal = cl.hasoutfit("workout");
+                if (g.internal === null)
+                    char.room(876);
+                else {
+                    chat(999, 875);
+                    nav.buildnav([0]);
+                }
+            }
             else {
-                chat(999, 875);
-                nav.buildnav([0]);
+                g.internal = cl.hasoutfit("cheerleader");
+                if (g.internal === null) {
+                    if (g.get("cheerleader") < 95) {
+                        chat(9, 875);
+                    }
+                    else {
+                        char.room(876);
+                    }
+                }
+                else {
+                    chat(1000, 875);
+                    nav.buildnav([0]);
+                }
             }
             break;
         default:
@@ -163,6 +180,16 @@ room875.chat = function (chatID) {
             chatID: 999,
             speaker: "candy",
             text: "Oh. You need to wear some workout clothes. You're missing your " + g.internal + ". ",
+            button: [
+                { chatID: -1, text: "I'll go change", callback: "" }
+            ]
+        };
+    }
+    else if (chatID === 1000) {
+        return {
+            chatID: 1000,
+            speaker: "candy",
+            text: "Oh. You need to wear your cheer leader outfit. You're missing your " + g.internal + ". ",
             button: [
                 { chatID: -1, text: "I'll go change", callback: "" }
             ]
@@ -200,7 +227,7 @@ room875.chat = function (chatID) {
                 text: "There's nobody here. So eerie to come here at night. I could do anything. ",
                 button: [
                     { chatID: -1, text: "Stand in the middle of the football field", callback: "odd0" },
-                    { chatID: -1, text: "Do nothing", callback: "" },
+                    { chatID: -1, text: "Leave", callback: "leave" },
                 ]
             },
             {
@@ -236,6 +263,31 @@ room875.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "Go to cheerleading practice", callback: "practice" },
                     { chatID: -1, text: "I can't make it. Sorry", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "thinking",
+                text: "Big game today. Better take off. ",
+                button: [
+                    { chatID: -1, text: "Leave", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "candy",
+                text: "Did you do all your practices this week? ",
+                button: [
+                    { chatID: 10, text: "Well, umm. No, not a lot", callback: "" },
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "candy",
+                text: "You should go practice some more or " + sc.n("stacy") + " will be pissed. I'll just tell her you're " +
+                    "sick. ",
+                button: [
+                    { chatID: -1, text: "[Leave]", callback: "leave" },
                 ]
             },
         ];

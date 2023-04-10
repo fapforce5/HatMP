@@ -172,6 +172,7 @@ cl.list = [
 
     { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
     { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
+    { type: "accessories", name: "pompom", display: "Pom-pom", img: "pompom.png", sex: "f", inv: false, daring: 3, price: -1 },
 
     { type: "nipple", name: "n_r", display: "Nipple Ring", img: "nipple_ring.png", sex: "f", inv: false, daring: 1, price: 20 },
     { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
@@ -528,7 +529,16 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("bikini");
             break;
         case "cheerleader":
-
+            if (cl.c.shirt !== "cl")
+                missingClothing.push("Cheerleader top");
+            if (cl.c.pants !== "cl")
+                missingClothing.push("Cheerleader skirt");
+            if (cl.c.socks !== "cl")
+                missingClothing.push("Cheer socks");
+            if (cl.c.shoes !== "cl")
+                missingClothing.push("Cheer shoes");
+            if (cl.c.panties !== "cl")
+                missingClothing.push("Cheer spanks");
             break;
     }
    

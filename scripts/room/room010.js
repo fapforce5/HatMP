@@ -208,16 +208,70 @@ room10.btnclick = function (name) {
             if (g.get("energy") < 51)
                 chat(41, 10);
             else {
-                nav.button({
-                    "type": "img",
-                    "name": "cheer",
-                    "left": 623,
-                    "top": 337,
-                    "width": 711,
-                    "height": 743,
-                    "image": "10_mainchar/cheer1.png"
-                }, 10);
-                chat(40, 10);
+                switch (g.get("cheerlevel")) {
+                    case 1:
+                        nav.button({
+                            "type": "img",
+                            "name": "cheer",
+                            "left": 623,
+                            "top": 337,
+                            "width": 711,
+                            "height": 743,
+                            "image": "10_mainchar/cheer1.png"
+                        }, 10);
+                        chat(40, 10);
+                        break;
+                    case 2:
+                        nav.button({
+                            "type": "img",
+                            "name": "cheer",
+                            "left": 641,
+                            "top": 272,
+                            "width": 503,
+                            "height": 808,
+                            "image": "10_mainchar/cheer2.png"
+                        }, 10);
+                        chat(42, 10);
+                        break;
+                    case 3:
+                    case 5:
+                    case 6:
+                        nav.button({
+                            "type": "img",
+                            "name": "cheer",
+                            "left": 641,
+                            "top": 272,
+                            "width": 503,
+                            "height": 808,
+                            "image": "10_mainchar/cheer3.png"
+                        }, 10);
+                        chat(43, 10);
+                        break;
+                    case 4:
+                        nav.button({
+                            "type": "img",
+                            "name": "cheer",
+                            "left": 641,
+                            "top": 272,
+                            "width": 503,
+                            "height": 808,
+                            "image": "10_mainchar/cheer3.png"
+                        }, 10);
+                        chat(44, 10);
+                        break;
+                    default:
+                        nav.button({
+                            "type": "img",
+                            "name": "cheer",
+                            "left": 641,
+                            "top": 272,
+                            "width": 503,
+                            "height": 808,
+                            "image": "10_mainchar/cheer3.png"
+                        }, 10);
+                        chat(45, 10);
+                        break;
+                }
             }
             break;
         default:
@@ -379,7 +433,7 @@ room10.chatcatch = function (callback) {
             break;
         case "cheerReset":
             g.mod("energy", -51);
-            g.mod("cheerleader", 25);
+            g.mod("cheerleader", 30);
             nav.killbutton("cheer");
             char.addtime(60);
             break;
@@ -746,7 +800,45 @@ room10.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
-            }
+            },
+            {
+                chatID: 42,
+                speaker: "me",
+                text: "We're the Stars, we like to fight. Let's go team and win tonight. [clap clap]<br/> " +
+                    "Our boys are big and strong. Think you'll win, then you are wrong. [clap clap]<br/>" +
+                    "Your boys are small and sick. We'll slap you with our giant dick",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheerReset" }
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "me",
+                text: "Push ‘Em Back, Push ‘Em Back, [clap clap] <br/>" +
+                    "Hit ‘em hard! [clap clap] <br/>" +
+                    "Make ‘em fight for every yard!",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheerReset" }
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "me",
+                text: "Fetvill Stars, Fetville Stars. Don't be shy, stand up and give your battle cry. V-I-C-T-O-R-Y<br/> " +
+                    "We'll smash you like a fucking flea. We're the best around I guarantee. D-E-F-E-N-S-E<br/>" +
+                    "Your quarterback is running dry. We'll fuck you in your P-U-S-S-Y. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheerReset" }
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "me",
+                text: "I get to cheer in a game now. I don't have to practice if I don't want to. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheerReset" }
+                ]
+            },
         ];
 
         return cArray[chatID];

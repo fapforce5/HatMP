@@ -88,7 +88,7 @@ room902.btnclick = function (name) {
                 
                 if (sc.getTimeline("lola").roomID === 901) {
                     nav.bg("902_girl/unlockz.jpg");
-                    if (sc.checkevent("lola", -1)) {
+                    if (sc.checkevent("lola", -6)) {
                         chat(23, 902)
                     }
                     else
@@ -146,6 +146,10 @@ room902.chatcatch = function (callback) {
         case "s13":
         case "s14":
         case "s15":
+        case "r0":
+        case "r1":
+        case "r3":
+        case "r4":
             nav.bg("902_girl/" + callback + ".jpg");
             break;
         case "s4":
@@ -173,6 +177,23 @@ room902.chatcatch = function (callback) {
             char.settime(18, 0);
             nav.buildnav([0, 901, 902]);
             break;
+        case "r1check":
+            if (cl.c.chastity !== null)
+                chat(27, 902);
+            else
+                chat(28, 902);
+            break;
+        case "r2":
+            nav.bg("902_girl/r2.jpg");
+            if (sc.getstep("lola") < 7)
+                chat(30, 902);
+            else
+                chat(31, 902);
+            break;
+        case "r5":
+            g.mod("receiveOralFemale", 1);
+            nav.bg("902_girl/" + callback + ".jpg");
+            break;
         default:
             break;
     }
@@ -189,7 +210,7 @@ room902.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...[In development]",
+            text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...",
             button: [{ chatID: -1, text: "...", callback: "" }]
         },
         {
@@ -289,7 +310,7 @@ room902.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "thinking",
-            text: "Oh crap. Why would she run out the front door? Idiot! I need to chase after her. ",
+            text: "Oh crap. Did she just run out the front door? Why would she do that? Idiot! I need to chase after her. ",
             button: [
                 { chatID: 15, text: "...", callback: "s9" },
             ]
@@ -322,8 +343,10 @@ room902.chat = function (chatID) {
             chatID: 18,
             speaker: "lola",
             text: "Oh thank god! " + sc.n("eva") + " hid my clothes after I went swimming again. Can you save me and look " +
-                "around the the locker room at the pool for my clothes. Pretty please. Please. Please. ",
+                "around the the locker room at the pool for my clothes. Pretty please. Please. Please. You're dressed like " +
+                "a girl so it shouldn't be a big deal. ",
             button: [
+                { chatID: 24, text: "[Sneak a quick peek at her naked body] ", callback: "r0" },
                 { chatID: 19, text: "Sure. I'll run grab those. ", callback: "s12" },
             ]
         },
@@ -370,6 +393,106 @@ room902.chat = function (chatID) {
             text: "I already got her once pretty good. I'm not going to get her again.  ",
             button: [
                 { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "lola",
+            text: "Hey perv! Why are you getting so close?",
+            button: [
+                { chatID: 25, text: "I had a hard time hearing you. What did you need?", callback: "r1" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "lola",
+            text: "I need my clothes. There's probably somewhere in the locker room. Can you run and grab them. ",
+            button: [
+                { chatID: 26, text: "If I'm going to do something for you, you have to do something for me ", callback: "" },
+                { chatID: 19, text: "Sure. I'll run grab those. ", callback: "s12" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "lola",
+            text: "Yeah, yeah, yeah. Just get me my clothes. ",
+            button: [
+                { chatID: -1, text: "First you have to give me a blow job. ", callback: "r1check" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "thinking",
+            text: "Fuck! I have my chastity cage on. I'll just run and grab her clothes.  ",
+            button: [
+                { chatID: 19, text: "Sure. I'll run grab those. ", callback: "s12" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "lola",
+            text: "What! I'm not giving you a blow job in the middle of the college campus! You've lost your mind. " +
+                "Stop messing around and get me my clothes! ",
+            button: [
+                { chatID: 29, text: "Ok. I'm going home. You can walk back to the pool naked. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "lola",
+            text: "Grrrrrr.... ok you got me. Come on back. Let's see that penis of yours. But be quiet so we don't get " +
+                "caught. ",
+            button: [
+                { chatID: 30, text: "Sweet! ", callback: "r2" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "lola",
+            text: "You're going to have to help. I've never put someone's penis in my mouth before. Do I blow on it? ",
+            button: [
+                { chatID: 32, text: "Hahah no. You'll do great. Just put it in your mouth and slide it back and forth. ", callback: "r3" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "lola",
+            text: "You know, I just love your penis. This is wrong, but I can't help but be excited. Get it out, I love touching it. ",
+            button: [
+                { chatID: 32, text: "Hahah sure. Here you go ", callback: "r3" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "lola",
+            text: "My jaw is starting to hurt. Can you hurry up and cum? I don't think I can do this much longer. ",
+            button: [
+                { chatID: 33, text: "Hearing all the people walking around has thrown me off. I just really need to cum. Maybe I'll finish myself off.", callback: "" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "lola",
+            text: "That's sexy. I want to see you masturbate. You can even cum on my boobies if you want. ",
+            button: [
+                { chatID: 34, text: "Oh yeah", callback: "r4" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "lola",
+            text: "AaaaaaAaaa ",
+            button: [
+                { chatID: 35, text: "Fuck yeah", callback: "r5" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "lola",
+            text: "You look so sexy masturbating for me. Now pretty please, with sugar on top, can you get my clothes while I " +
+                "wipe your cum off my chest. ",
+            button: [
+                { chatID: 19, text: "Sure. I'll run grab those. ", callback: "s12" }
             ]
         },
     ];

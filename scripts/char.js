@@ -1522,7 +1522,7 @@ char.menu = function () {
 char.makeGraph = function () {
     //if ($("#room_left_graph").is(":visible")) {
     var i;
-    var energy, maxenergy, oral, cock, anal, sissy, hormone;
+    var energy, maxenergy, oral, cock, anal, sissy, hormone, cheerlevel;
     oral = cock = anal = 0;
     for (i = 0; i < g.st.length; i++) {
         switch (g.st[i].n) {
@@ -1578,9 +1578,41 @@ char.makeGraph = function () {
                 $(".rl-bar[data-name='subdom']").css({ width: g.st[i].t + "%" });
                 break;
             case "cheerleader":
-                if (g.st[i].t > 95)
-                    $("#rl_cheer").text("Attend Cheerleader Practice")
+                cheerlevel = g.st[i].t;
                 $(".rl-bar[data-name='cheerleader']").css({ width: g.st[i].t + "%" });
+                break;
+            case "cheerlevel":
+                console.log(cheerlevel)
+                if (cheerlevel > 95) {
+                    $("#rl_cheer").text("Attend Cheerleader Practice");
+                }
+                else {
+                    switch (g.st[i].t) {
+                        case 0:
+                            $("#rl_cheer").text("Not a Cheerleader");
+                            break;
+                        case 1:
+                            $("#rl_cheer").text("Clumsy Cheerleader");
+                            break;
+                        case 2:
+                            $("#rl_cheer").text("Dumb Cheerleader");
+                            break;
+                        case 3:
+                            $("#rl_cheer").text("(Cheer) Washing Machine");
+                            break;
+                        case 4:
+                            $("#rl_cheer").text("Beginner Cheerleader");
+                            break;
+                        case 5:
+                            $("#rl_cheer").text("(Cheer) Stacy's Bitch");
+                            break;
+                        case 6:
+                            $("#rl_cheer").text("(Cheer) Konga line");
+                            break;
+                        default:
+                            break;;
+                    }
+                }
                 break;
             //case "sissyLevel":
             //    $("#rl_sissy").html("Sissy: " + g.st[i].t);
