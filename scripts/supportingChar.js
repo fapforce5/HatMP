@@ -86,7 +86,7 @@ sc.char = [
 
     { name: "queen", display: "Forest Queen", image: "queen.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
-    { name: "random", display: "Random", image: "rand.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "random", display: " ", image: "rand.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
 
@@ -694,8 +694,8 @@ sc.getTimeline = function (char) {
 
         { n: "lola", d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
         { n: "lola", d: [0], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
-        { n: "lola", d: [6], hstart: 0, hend: 8, roomId: 12, alt: null }, //bedroom
-        { n: "lola", d: [0, 6], hstart: 8, hend: 14, roomId: 12, alt: null }, //bedroom
+        { n: "lola", d: [6], hstart: 0, hend: 8, roomId: 13, alt: null }, //bedroom
+        { n: "lola", d: [0, 6], hstart: 8, hend: 14, roomId: 13, alt: null }, //bedroom
         { n: "lola", d: [0], hstart: 14, hend: 18, roomId: 450, alt: null }, //park
         { n: "lola", d: [6], hstart: 14, hend: 18, roomId: 16, alt: null }, //living
         { n: "lola", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //living
@@ -711,8 +711,8 @@ sc.getTimeline = function (char) {
 
         { n: "eva", d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
         { n: "eva", d: [0], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
-        { n: "eva", d: [6], hstart: 0, hend: 8, roomId: 12, alt: null }, //bedroom
-        { n: "eva", d: [0, 6], hstart: 8, hend: 14, roomId: 12, alt: null }, //bedroom
+        { n: "eva", d: [6], hstart: 0, hend: 8, roomId: 13, alt: null }, //bedroom
+        { n: "eva", d: [0, 6], hstart: 8, hend: 14, roomId: 13, alt: null }, //bedroom
         { n: "eva", d: [0], hstart: 14, hend: 18, roomId: 450, alt: null }, //park
         { n: "eva", d: [6], hstart: 14, hend: 18, roomId: 16, alt: null }, //living
         { n: "eva", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //living
@@ -791,149 +791,6 @@ sc.getTimeline = function (char) {
     }
     return retVar;
 };
-
-//sc.mother = function () {
-//    var r = 0;
-//    var hour = g.gethourdecimal();
-//    var thisDay = g.dt.getDay();
-
-//    if ((thisDay === 1 || thisDay === 6) && hour.between(8, 9))
-//        r = 12;
-//    else if (thisDay === 0 || thisDay === 6) {
-//        if (hour.between(0, 7))
-//            r = 14; //mother
-//        else if (hour.between(7, 8))
-//            r = 15; //kitchen
-//        else if (hour.between(8, 9))
-//            r = 25; //kitchen
-//        else if (hour.between(9, 17))
-//            r = 26; //kitchen
-//        else if (hour.between(17, 18))
-//            r = 15; //living
-//        else if (hour.between(18, 19))
-//            r = 25; //living
-//        else
-//            r = 14; //bedroom
-//    }
-//    else if (thisDay === 3 || thisDay === 4) {
-//        if (hour.between(0, 7))
-//            r = 14;
-//        else if (hour.between(7, 8))
-//            r = 25;  //bathroom
-//        else if (hour.between(8, 9))
-//            r = 15;  //kitchen
-//        else if (hour.between(9, 17))
-//            r = 350;
-//        else if (hour.between(17, 18))
-//            r = 15; //diningRoom
-//        else if (hour.between(18, 20))
-//            r = 25; //diningRoom
-//        else if (hour.between(20, 22))
-//            r = 26; //diningRoom
-//        else
-//            r = 14;
-//    }
-//    else {
-//        if (hour.between(0, 7))
-//            r = 14;
-//        else if (hour.between(7, 8))
-//            r = 25;  //bathroom
-//        else if (hour.between(8, 9))
-//            r = 15;  //kitchen
-//        else if (hour.between(9, 17))
-//            r = 350;
-//        else if (hour.between(17, 18))
-//            r = 15; //diningRoom
-//        else if (hour.between(18, 20))
-//            r = 26; //diningRoom
-//        else
-//            r = 14;
-//    }
-    
-//    return { roomID: r, thisRoom: g.roomID === r };
-//};
-
-//sc.sister = function () {
-//    var r = 0;
-//    var hour = g.gethourdecimal();
-//    switch (g.dt.getDay()) {
-//        case 0: //sunday
-//            if (hour.between(0, 7))
-//                r = 13;
-//            else if (hour.between(7, 10))
-//                r = 12;
-//            if (hour.between(10, 24))
-//                r = 13;
-//            break;
-//        case 1: //monday
-//            if (hour.between(0, 7))
-//                r = 13;
-//            else if (hour.between(15, 17))
-//                r = 901;
-//            else if (hour.between(17, 18))
-//                r = 25;
-//            else if (hour.between(18, 24))//room night
-//                r = 13;
-//            break;
-//        case 2: //tuesday
-//            if (hour.between(0, 7))
-//                r = 13;
-//            else if (hour.between(7, 9)) //morning shower
-//                r = 12;
-//            else if (hour.between(15, 17))
-//                r = 901;
-//            else if (hour.between(17, 19))//Dining Room
-//                r = 25;
-//            else if (hour.between(18, 24))
-//                r = 13;
-//            break;
-//        case 3: //wednesday
-//            if (hour.between(0, 7))
-//                r = 13;
-//            else if (hour.between(7, 8))
-//                r = 15;
-//            else if (hour.between(15, 17))
-//                r = 901;
-//            else if (hour.between(20, 22))
-//                r = 26;
-//            else if (hour.between(17, 24))//room night
-//                r = 13;
-//            break;
-//        case 4: //thursday
-//            if (hour.between(0, 7))
-//                r = 13;
-//            else if (hour.between(7, 9))//morning shower
-//                r = 12;
-//            else if (hour.between(15, 17))
-//                r = 901;
-//            else if (hour.between(20, 22))
-//                r = 26;
-//            else if (hour.between(14, 24))
-//                r = 13;
-//            break;
-//        case 5: //friday
-//            if (hour.between(0, 10))
-//                r = 13;
-//            else if (hour.between(15, 17))
-//                r = 901;
-//            else if (hour.between(17, 24))//room night
-//                r = 13;
-//            break;
-//        case 6: //saturday
-//            if (hour.between(0, 7))
-//                r = 13;
-//            if (hour.between(7, 8))
-//                r = 25;
-//            else if (hour.between(8, 11))
-//                r = 13;
-//            else if (hour.between(12, 24)) //kitchen night
-//                r = 13;
-//            else
-//                r = 13;
-//            break;
-//    }
-//    return { roomID: r, thisRoom: g.roomID === r };
-//};
 
 sc.cecilia = function () {
     var r = 0;

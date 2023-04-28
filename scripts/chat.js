@@ -26,7 +26,7 @@ function chat(chatID, roomID) {
             var counter = 0;
             $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
             $('#room_footerSpeach').html(entry.text);
-            $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + thisSpeaker.name);
+            $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
             if (entry.button.length === 0) {
                 $('#room_chatBtn0').html('Close').show().data('chatid', -1).data('roomid', roomID).data('callback', '');
                 counter = 1;

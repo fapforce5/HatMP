@@ -394,12 +394,13 @@ room876.chatcatch = function (callback) {
             break;
         case "cheer6_9":
             g.set("cheerlevel", 7);
-            g.set("cheerleader", 20);
+            g.set("cheerleader", 100);
             char.makeGraph();
             char.settime(20, 7);
             char.room(0);
             break;
         case "exit":
+            char.settime(16, 7);
             char.room(0);
             break;
         default:
@@ -1517,10 +1518,10 @@ room876.chat = function (chatID) {
             },
             {
                 chatID: 126,
-                speaker: "me",
-                text: "End of this story for this release. more to cum ",
+                speaker: "candy",
+                text: "That was a great practice! You should join us cheering for the game tomorrow!",
                 button: [
-                    { chatID: -1, text: "Yeah me! [End of this release]", callback: "exit" }
+                    { chatID: -1, text: "Yeah me!", callback: "exit" }
                 ]
             },
         ];

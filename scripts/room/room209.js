@@ -1602,7 +1602,7 @@ room209.chatcatch = function (callback) {
             room209.chatcatch("end");
             break;
         case "cancel":
-            char.room(209);
+            room209.btnclick("appearnceStart");
             break;
         case "h_4":
             nav.bg("209_classroom/209_hypno2.gif");

@@ -77,6 +77,8 @@ room326.btnclick = function (name) {
                 chat(14, 326);
             }
             else {
+                nav.killall();
+                nav.bg("326_stable/caught0.jpg");
                 chat(25, 326);
             }
             break;
@@ -230,6 +232,14 @@ room326.chatcatch = function (callback) {
             break;
         case "horsey100":
             char.room(326);
+            break;
+        case "caught1":
+            nav.bg("326_stable/caught1.jpg");
+            break;
+        case "caught2":
+            g.setflag("rachelDayEvent");
+            char.addtime(60);
+            char.room(0);
             break;
         default:
             break;
@@ -447,10 +457,19 @@ room326.chat = function (chatID) {
         },
         {
             chatID: 25,
-            speaker: "me",
-            text: "Next release",
+            speaker: "thinking",
+            text: "I'm sure I can get just one little taste...",
             button: [
-                { chatID: -1, text: "....ok", callback: "horsey100" },
+                { chatID: 26, text: "...", callback: "caught1" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "random",
+            text: "Stop right there scum! " + sc.n("rachel") + " sent me to make sure you weren't sucking that horse's cock. " +
+                "Gross, you little weird-o. Put your clothes back on and get out of here before you take a beating. ",
+            button: [
+                { chatID: -1, text: "oh crap.", callback: "caught2" },
             ]
         },
     ];

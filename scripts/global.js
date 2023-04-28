@@ -97,6 +97,7 @@ g.st = [
     { n: "fightControlWon", t: 0, q: "int" },
     { n: "fightControlLost", t: 0, q: "int" },
     { n: "superPunch", t: 0, q: "int" },
+    { n: "fame", t: 0, q: "hundred" },
     
     { n: "giveOralMale", t: 0, q: "sissy" },
     { n: "giveOralFemale", t: 0, q: "sissy" },
@@ -271,7 +272,7 @@ g.sissy = [
     { id: 58, pID: [0], icon: "lube", x: 3, y: 11, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
     { id: 59, pID: [58], icon: "dildos", x: 3, y: 12, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
 
-    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: true, points: 0, h: false },    
+    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: false, points: 0, h: false },    
 
 ];
 
@@ -455,6 +456,12 @@ g.checkPop = function (name, amount) {
                 g.popUpNotice("Your sissy stats increased. ");
             else
                 g.popUpNotice("You used " + amount + " Sissy Points. ");
+            break;
+        case "fame":
+            if (amount > 20)
+                g.popUpNotice("You became a lot more famous in this town. ");
+            else
+                g.popUpNotice("You gained a little notoriety");
             break;
     }
 };
@@ -1040,6 +1047,7 @@ g.initGame = function () {
             case "cheerlevel":
             case "stripper":
             case "stripperlevel":
+            case "fame":
                 g.st[i].t = 0;
                 break;
             case "lockboobs":

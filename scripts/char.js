@@ -1583,8 +1583,8 @@ char.makeGraph = function () {
                 break;
             case "cheerlevel":
                 console.log(cheerlevel)
-                if (cheerlevel > 95) {
-                    $("#rl_cheer").text("Attend Cheerleader Practice");
+                if (cheerlevel > 95 && g.st[i].t < 7) {
+                    $("#rl_cheer").text(g.st[i].t + ". Attend Cheerleader Practice");
                 }
                 else {
                     switch (g.st[i].t) {
@@ -1592,22 +1592,28 @@ char.makeGraph = function () {
                             $("#rl_cheer").text("Not a Cheerleader");
                             break;
                         case 1:
-                            $("#rl_cheer").text("Clumsy Cheerleader");
+                            $("#rl_cheer").text("1. Clumsy Cheerleader");
                             break;
                         case 2:
-                            $("#rl_cheer").text("Dumb Cheerleader");
+                            $("#rl_cheer").text("2. Dumb Cheerleader");
                             break;
                         case 3:
-                            $("#rl_cheer").text("(Cheer) Washing Machine");
+                            $("#rl_cheer").text("3. (Cheer) Washing Machine");
                             break;
                         case 4:
-                            $("#rl_cheer").text("Beginner Cheerleader");
+                            $("#rl_cheer").text("4. Beginner Cheerleader");
                             break;
                         case 5:
-                            $("#rl_cheer").text("(Cheer) Stacy's Bitch");
+                            $("#rl_cheer").text("5. (Cheer) Stacy's Bitch");
                             break;
                         case 6:
-                            $("#rl_cheer").text("(Cheer) Konga line");
+                            $("#rl_cheer").text("6. (Cheer) Konga Line");
+                            break;
+                        case 7:
+                            $("#rl_cheer").text("7. Cheer for the Game!");
+                            break;
+                        case 8:
+                            $("#rl_cheer").text("Real Cheerleader");
                             break;
                         default:
                             break;;
