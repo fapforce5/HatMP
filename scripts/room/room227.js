@@ -1,4 +1,5 @@
 ﻿//Fight Room
+//Fight Room
 var room227 = {};
 room227.main = function () {
     //g.pass = { enemy0: "goo", enemy1: null, bg: "sewer", roomID: 226 };
@@ -390,6 +391,8 @@ room227.chatcatch = function (callback) {
             $("#room-inv").show();
             g.internal = 0;
             g.fight = null;
+            $("#room-inv").show();
+            $("#room-menu").show();
             char.room(returnRoom);
             break;
         case "main":
@@ -452,6 +455,8 @@ room227.chatcatch = function (callback) {
         case "badend":
             tEnemy.updatePlayerStats(name === "moneyend" ? g.fight.e[0].money : 0);
             g.internal = "nofight";
+            $("#room-inv").show();
+            $("#room-menu").show();
             char.room(g.fight.returnRoomID);
             break;
     }

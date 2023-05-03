@@ -83,6 +83,7 @@ sc.char = [
     { name: "courtney", display: "Courtney", image: "courtney.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "chuck", display: "Chuck", image: "chuck.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "utah", display: "Utah", image: "utah.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "football", display: "Player", image: "football.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "queen", display: "Forest Queen", image: "queen.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
@@ -134,7 +135,8 @@ sc.events = [
     { name: "bigguy", step: 3, txt: "Keep pestering them - This time with cum reward!", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
     { name: "bigguy", step: 4, txt: "Pester them. This time with more cum! ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
     { name: "bigguy", step: 5, txt: "Sleep at home - suprise wake up.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
-    { name: "bigguy", step: 6, txt: "No new events. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
+    { name: "bigguy", step: 6, txt: "Should I, or shouldn't I tell on him ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
+    { name: "bigguy", step: 7, txt: "Betrayed her for more suprises on Saturday 😉", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
 
     { name: "zoey", step: -3, txt: "First Bar", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "zoey", step: -2, txt: "Can Sleep Over", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
@@ -690,7 +692,7 @@ sc.getTimeline = function (char) {
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: 26, alt: null }, //bedroom
+        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: 14, alt: null }, //bedroom
 
         { n: "lola", d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
         { n: "lola", d: [0], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom

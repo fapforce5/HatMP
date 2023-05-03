@@ -4,15 +4,13 @@ room15.main = function () {
     var btnList = [];
     var hour = g.gethourdecimal();
 
-
     if (sc.getTimeline("landlord").roomID === 15) {
-        nav.bg("15_kitchen/zoom.jpg");
         btnList.push({
             "type": "btn",
             "name": "landlord",
-            "left": 680,
+            "left": 498,
             "top": 0,
-            "width": 488,
+            "width": 1196,
             "height": 1080,
             "image": "15_kitchen/landlord.png"
         });
@@ -80,17 +78,10 @@ room15.btnclick = function (name) {
             char.room(20);
             break;
         case "landlord":
-            nav.killbutton("landlord");
-            nav.button({
-                "type": "img",
-                "name": "landlord",
-                "left": 748,
-                "top": 0,
-                "width": 424,
-                "height": 1080,
-                "image": "15_kitchen/landlord1.png"
-            }, 15);
-            chat(0, 15);
+            if (sc.getstep("landlord") > 6) 
+                chat(6, 15);
+            else 
+                chat(0, 15);
             break;
         case "door":
             var hour = g.gethourdecimal();
@@ -125,6 +116,43 @@ room15.btnclick = function (name) {
                 else
                     chat(5, 15);
             }
+            break;
+        case "asslick":
+            chat(8, 15);
+            break;
+        case "pussylick":
+            nav.kill();
+            nav.bg("15_kitchen/landlord4.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "llick",
+                "left": 1687,
+                "top": 615,
+                "width": 233,
+                "height": 150,
+                "image": "526_bar/arrowRight.png"
+            }, 15);
+            chat(9, 15);
+            g.internal = 5;
+            break;
+        case "llick":
+            if (g.internal < 7)
+                nav.bg("15_kitchen/landlord" + g.internal + ".jpg");
+            else {
+                nav.killall();
+                nav.bg("15_kitchen/day.jpg", "526_bar/night.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "landlord",
+                    "left": 498,
+                    "top": 0,
+                    "width": 1196,
+                    "height": 1080,
+                    "image": "15_kitchen/landlord7.png"
+                }, 15);
+                chat(10, 15);
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -163,6 +191,45 @@ room15.chatcatch = function (callback) {
         case "drinkDown":
             nav.killbutton("drink");
             break;
+        case "ll2":
+            nav.killbutton("landlord");
+            nav.button({
+                "type": "img",
+                "name": "landlord",
+                "left": 498,
+                "top": 0,
+                "width": 1128,
+                "height": 1080,
+                "image": "15_kitchen/landlord2.png"
+            }, 15);
+            break;
+        case "ll3":
+            nav.kill();
+            nav.bg("15_kitchen/landlord3.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "pussylick",
+                "left": 849,
+                "top": 407,
+                "width": 216,
+                "height": 302,
+                "image": "15_kitchen/landlord3_pussy.png"
+            }, 15);
+            nav.button({
+                "type": "tongue",
+                "name": "asslick",
+                "left": 879,
+                "top": 257,
+                "width": 151,
+                "height": 150,
+                "image": "15_kitchen/landlord3_asshole.png"
+            }, 15);
+            break;
+        case "ll8":
+            char.addtime(72);
+            g.mod("giveOralFemale", 1);
+            char.room(15);
+            break;
         default:
             break;
     }
@@ -173,7 +240,7 @@ room15.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "landlord",
-            text: "Hey honey, why don't you run along.. " + sc.n("landlord") + " is making her special drinks.",
+            text: "Hey honey, why don't you run along.. " + sc.n("landlord") + " is enjoying her special drinks.",
             button: []
         },
         {
@@ -208,6 +275,47 @@ room15.chat = function (chatID) {
             text: "Refreshing!",
             button: [
                 { chatID: -1, text: ".... ", callback: "drinkDown" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "landlord",
+            text: "So are you just going to stare at it, or are you going to eat it? ",
+            button: [
+                { chatID: 7, text: "Oh please! ", callback: "ll2" },
+                { chatID: -1, text: "Just staring. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "landlord",
+            text: "*hickup* Get in there and make " + sc.n("landlord") + " a happy girl! ",
+            button: [
+                { chatID: -1, text: "MMMmmmMMMMmm ", callback: "ll3" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "landlord",
+            text: "Hey! *hickup* I poop from there! Get your tongue out of my asshole! ",
+            button: [
+                { chatID: -1, text: "oh whoops ", callback: "" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "landlord",
+            text: "Oh yeah! Get in there deep. Stretch that tongue. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "landlord",
+            text: "Wow! You sure know how to eat a pussy. Thanks honey. Now run along. ",
+            button: [
+                { chatID: -1, text: "You're welcome " + sc.n("landlord") + "! ", callback: "ll8" },
             ]
         },
     ];

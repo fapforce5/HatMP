@@ -1613,7 +1613,13 @@ char.makeGraph = function () {
                             $("#rl_cheer").text("7. Cheer for the Game!");
                             break;
                         case 8:
-                            $("#rl_cheer").text("Real Cheerleader");
+                            $("#rl_cheer").text("Small Dick Loser");
+                            break;
+                        case 9:
+                            $("#rl_cheer").text("Cheerleader!");
+                            break;
+                        case 10:
+                            $("#rl_cheer").text("Cheerleader Cum Bucket");
                             break;
                         default:
                             break;;

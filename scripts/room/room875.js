@@ -8,12 +8,17 @@ room875.main = function () {
     else {
         var candyStep = sc.getstep("candy");
         var cheerlevel = g.get("cheerlevel");
-        if (g.dt.getDay() === 0) {
+        if (g.dt.getDay() === 0 && g.hourBetween(5, 12)) {
             nav.bg("875_entrance/gameday.jpg");
             chat(8, 875);
-            if (cheerlevel === 7) {
+            if (cheerlevel === 7) 
                 chat(11, 875);
-            }
+            else if (cheerlevel === 8)
+                chat(28, 875);
+            else if (cheerlevel === 9 || cheerlevel === 10)
+                chat(29, 875);
+            else
+                chat(8, 875);
         }
         else if (g.dt.getDay() === 6) {
             if (candyStep < 102) {
@@ -147,6 +152,10 @@ room875.chatcatch = function (callback) {
         case "leave":
             char.room(0);
             break;
+        case "leaveLate":
+            char.settime(17, 23);
+            char.room(0);
+            break;
         case "practice":
             var cheerLevel = g.get("cheerlevel");
             if (cheerLevel < 3) {
@@ -224,6 +233,15 @@ room875.chatcatch = function (callback) {
         case "cheer1_10":
         case "cheer1_11":
         case "cheer1_12":
+        case "cheer9_2":
+        case "cheer9_3":
+        case "cheer9_4":
+        case "cheer9_5":
+        case "cheer9_6":
+        case "cheer9_7":
+        case "cheer9_8":
+        case "cheer9_9":
+        case "cheer9_10":
             nav.bg("875_entrance/" + callback + ".jpg");
             break;
         case "cheer1_13":
@@ -232,6 +250,23 @@ room875.chatcatch = function (callback) {
             g.set("cheerleader", 100);
             char.settime(17, 12);
             char.room(51);
+            break;
+        case "cheer9_1":
+            nav.bg("875_entrance/" + callback + ".jpg");
+            if (g.get("cheerlevel") === 9)
+                chat(32, 875);
+            else
+                chat(31, 875);
+            break;
+        case "cheer9_11":
+            g.mod("receiveAnalMale", 7);
+            g.mod("loadSwollowed", 5);
+            g.mod("sissygasm", 8);
+            g.mod("creamPied", 7);
+            g.mod("giveOralMale", 12);
+            char.settime(20, 7);
+            g.set("cheerlevel", 10);
+            char.room(0);
             break;
         default:
             break;
@@ -496,6 +531,178 @@ room875.chat = function (chatID) {
                     "go home to get some ice cream and girl talk. Sound good? ",
                 button: [
                     { chatID: -1, text: "ok", callback: "cheer1_13" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "thinking",
+                text: "I should go to practice before I cheer again. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "thinking",
+                text: "So excited to cheer!  ",
+                button: [
+                    { chatID: 30, text: "Go cheer!", callback: "cheer1_3" },
+                    { chatID: -1, text: "Leave", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "random",
+                text: "The Stars are the best there is, Give up now and drink our wiz!" +
+                    "You won't win, it's not a shock! Have a seat on our cock!",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheer9_1" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "football",
+                text: "Let's go to the locker room, we want some more that that ass of yours. ",
+                button: [
+                    { chatID: 47, text: "Oh, anything for the team. ", callback: "cheer9_2" },
+                    { chatID: -1, text: "Squeel and run away. ", callback: "leaveLate" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "me",
+                text: "Hi Jarome. Great game. You boys did really awesome out there! ",
+                button: [
+                    { chatID: 33, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "football",
+                text: "Yeah. Did you see my block? I totally laid that dude out. So the team wants you in our " +
+                    "locker room for some post game celebration. You down? ",
+                button: [
+                    { chatID: 34, text: "Oh, anything for the team. ", callback: "cheer9_2" },
+                    { chatID: -1, text: "Squeel and run away. ", callback: "leaveLate" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "utah",
+                text: "I told this slut would cum! She's not like the other cheerleaders who chicken out when the entire " +
+                    "team needs to blow off some steam. This bitch is hot. ",
+                button: [
+                    { chatID: 35, text: "...the entire team? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "football",
+                text: "Yo! I wanna see some titties! Make that chicken head show them titties! ",
+                button: [
+                    { chatID: 36, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "football",
+                text: "Fuck them titties, I was to see that ass I 'bout to destory. Tell that slut to stip it off and show " +
+                    "us all that fine booty. ",
+                button: [
+                    { chatID: 37, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "utah",
+                text: "You heard them. Stip it off and show us that ass of yours. I want a good view too. ",
+                button: [
+                    { chatID: 38, text: "ok", callback: "cheer9_3" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "football",
+                text: "Somebody better call an ambulance, 'casuse I'm gunna break a ho! ",
+                button: [
+                    { chatID: 39, text: "...", callback: "cheer9_6" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "football",
+                text: "This bitch just loves the cock!  ",
+                button: [
+                    { chatID: 40, text: "...", callback: "cheer9_7" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "football",
+                text: "Slut can't get enough dick! What a cum whore! ",
+                button: [
+                    { chatID: 41, text: "...", callback: "cheer9_4" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "utah",
+                text: "Cunt is so loose gotta stuff two dicks at once! ",
+                button: [
+                    { chatID: 42, text: "...", callback: "cheer9_5" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "football",
+                text: "She's leaking cum like a god damn river. I ain't never seen a slut take so much dick at once! ",
+                button: [
+                    { chatID: 43, text: "...", callback: "cheer9_8" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "football",
+                text: "This bitch is hungry, let's give this nasty slut some dinner. ",
+                button: [
+                    { chatID: 44, text: "...", callback: "cheer9_9" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "football",
+                text: "What a fucking ho. I'm done here, let's grab something to eat. Let this skank marinate " +
+                    "in our cum. ",
+                button: [
+                    { chatID: 45, text: "...", callback: "cheer9_10" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "thinking",
+                text: "That was awesome! I've never been filled and fucked like that before! My bussy is so " +
+                    "sensative I can still feel the aftershocks of my sissygasms. I've got so much cum in me " +
+                    "I hope no one notices it leaking down my legs on my way home. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheer9_11" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "thinking",
+                text: "That was awesome! I've never been filled and fucked like that before! My bussy is so " +
+                    "sensative I can still feel the aftershocks of my sissygasms. I've got so much cum in me " +
+                    "I hope no one notices it leaking down my legs on my way home. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "cheer9_11" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "utah",
+                text: "Just can't get enough dick? We'll team, let's fuck the slut. ",
+                button: [
+                    { chatID: 39, text: "...", callback: "cheer9_6" },
                 ]
             },
         ];

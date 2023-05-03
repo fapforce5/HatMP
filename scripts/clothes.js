@@ -480,12 +480,12 @@ cl.hasoutfit = function (ctype) {
     
     switch (ctype) {
         case "workout":
-            if (!(cl.c.shoes === "pr" || cl.c.shoes === "br"))
-                missingClothing.push("running shoes");
-            if (!(cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w" || cl.c.shirt === "pt" || cl.c.shirt === "gg"))
-                missingClothing.push("t-shirt");
-            if (!(cl.c.pants === "r" || cl.c.pants === "b" || cl.c.pants === "ps"))
-                missingClothing.push("shorts");
+                if (!(cl.c.shoes === "pr" || cl.c.shoes === "br" || cl.c.shoes === "cl"))
+                    missingClothing.push("running shoes");
+                if (!(cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w" || cl.c.shirt === "pt" || cl.c.shirt === "gg" || cl.c.shirt === "cl"))
+                    missingClothing.push("t-shirt");
+                if (!(cl.c.pants === "r" || cl.c.pants === "b" || cl.c.pants === "ps" || cl.c.pants === "cl"))
+                    missingClothing.push("shorts");
             break;
         case "public":
             if (!g.sissy[34].ach) {

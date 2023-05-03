@@ -473,6 +473,9 @@ room26.chatcatch = function (callback) {
             char.settime(22, 3);
             char.room(10);
             break;
+        case "bigguy7":
+            sc.setstep("bigguy", 7);
+            break;
         default:
             break;
     }
@@ -1448,7 +1451,29 @@ room26.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "...", callback: "f10" }
             ]
-        }
+        },
+        {
+            chatID: 113,
+            speaker: "thinking",
+            text: "I really should let " + sc.n("landlord") + " know that " + sc.n("bigguy") + " is cheating " +
+                "on her. After everything she's done for me she deserves the truth. I just wish it wasn't me " +
+                "that he cheated on her with. I really hope she doesn't get mad at me. I couldn't help it. ",
+            button: [
+                { chatID: -1, text: "I ain't saying shit! She's just going to get mad at me. ", callback: "bigguy7" },
+                { chatID: 114, text: sc.n("landlord") + ", " + sc.n("bigguy") + " cheated on you. ", callback: "" },
+                
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "me",
+            text: "So, I have to tell you something. Please don't get mad at me, but " + sc.n("bigguy") + " came " +
+                "into my room and forced me to have sex with him. I didn't want to, he made me. I'm so sorry. ",
+            button: [
+                { chatID: 115, text: "...", callback: "" },
+
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
