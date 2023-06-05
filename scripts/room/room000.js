@@ -39,7 +39,6 @@ room0.btnclick = function (name) {
     else if (name === "redrawIcons") {
         nav.killall();
         
-        
         var btnList = new Array();
         var tempMap = g.get("map");
         g.internal = tempMap;

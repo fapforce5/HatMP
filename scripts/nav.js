@@ -173,6 +173,8 @@ nav.t = function (btn, roomNum) {
     line = '<div class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
 
     $('#room-buttons').append(line);
+
+    
 };
 
 nav.modbutton = function (name, newImage, newName, newType) {
@@ -270,6 +272,49 @@ nav.bars = function () {
     else
         $('#char-energy-label').html("Energized!");
 
+};
+
+nav.input = function (roomId, txt) {
+    var xtop = 524;
+    var xleft = 710;
+    nav.button({
+        "type": "img",
+        "name": "char_input",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1_startScreen/transblack.png"
+    }, roomId);
+    nav.t({
+        type: "zimg",
+        name: "char_input",
+        left: (960 - (txt.length * 10)),
+        top: xtop - 100,
+        font: 20,
+        hex: "#ffffff",
+        text: txt
+    }, roomId);
+    nav.button({
+        "type": "btn",
+        "name": "char_input",
+        "left": 50,
+        "top": xtop + 100,
+        "width": 1820,
+        "height": 50,
+        "image": "1_startScreen/enter.png"
+    }, roomId);
+    var xline = '<input type="text" id="nav_inputText" class="room-img" style="top:' + (xtop * g.ratio) + 'px; left:' + (xleft * g.ratio) + 'px; font-size: ' + 32 * g.ratio + 'px; width: ' + (500 * g.ratio) +'px; position:absolute;"/>';
+    $('#room-buttons').append(xline);
+}
+
+nav.inputGet = function () {
+    return $('#nav_inputText').val();
+};
+
+nav.inputKill = function () {
+    nav.killbutton("char_input");
+    $("#nav_inputText").remove();
 };
 
 nav.room = function (roomID) {

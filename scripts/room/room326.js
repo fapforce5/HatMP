@@ -68,7 +68,7 @@ room326.btnclick = function (name) {
                 nav.bg("326_stable/horse3.jpg");
                 chat(3, 326);
             }
-            if (horseystep < 60) {
+            else if (horseystep < 60) {
                 nav.killall();
                 nav.bg("326_stable/horse5.jpg");
                 chat(9, 326);

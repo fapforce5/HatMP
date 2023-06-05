@@ -1656,8 +1656,10 @@ cl.display = function () {
 
         for (i = 0; i < cl.c.tattoo.length; i++) {
             for (j = 0; j < cl.tattoo.length; j++) {
-                if (cl.tattoo[j].name === cl.c.tattoo[i])
+                if (cl.tattoo[j].name === cl.c.tattoo[i]) {
                     cl.subDisplayAppend("char-accBody", !cback ? cl.tattoo[j].image : cl.tattoo[j].back);
+                    break;
+                }
             }
         }
 

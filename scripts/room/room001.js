@@ -63,17 +63,15 @@ room1.btnclick = function (name) {
         case "patron":
             window.open("https://www.patreon.com/FF5", '_blank');
             break;
-        case "killassholeDisplayZ":
-            nav.killbutton("killassholeDisplayZ");
-            break;
         default:
             break;
     }
 };
 
-room1.chatcatch = function () {
+room1.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "killFame":
+            nav.killbutton("fameRandomEvent");
             break;
         default:
             break;

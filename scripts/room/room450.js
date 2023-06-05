@@ -8,7 +8,8 @@ var room450 = {};
 room450.main = function () {
     var navList = new Array();
     var btnList = new Array();
-    
+    var doEvent = false;
+
     if (g.isNight()) {
         if (sc.getstep("cop") > 0) {
             btnList.push({
@@ -65,6 +66,7 @@ room450.main = function () {
         }
     }
     else {
+        
         btnList.push({
             "type": "btn",
             "name": "gbroom",
@@ -94,6 +96,7 @@ room450.main = function () {
             "night": "450_park/450_further_night.png"
         });
         navList = [460, 452, 451, 0];
+        doEvent = true;
     }
     
 
@@ -115,6 +118,8 @@ room450.main = function () {
     });
 
     nav.buildnav(navList);
+    if (doEvent)
+        fame.event();
 };
 
 room450.btnclick = function (name) {

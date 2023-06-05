@@ -15,35 +15,39 @@ var privateChat = {};
 function chat(chatID, roomID) {
 
     if (chatID !== -1) {
-        var entry = window[g.room(roomID)]["chat"](chatID);
-        if (entry !== null) {
-            var thisSpeaker = privateChat.speakerInfo(entry.speaker);
-            $('#room_footer').hide();
-            if (!$('#room_chatOverlay').is(":visible")) {
-                $('#room_chatOverlay').show();
-                $('#char_charDisplay').hide();
-            }
-            var counter = 0;
-            $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
-            $('#room_footerSpeach').html(entry.text);
-            $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
-            if (entry.button.length === 0) {
-                $('#room_chatBtn0').html('Close').show().data('chatid', -1).data('roomid', roomID).data('callback', '');
-                counter = 1;
-            }
-            else {
-                $.each(entry.button, function (i, v) {
-                    $('#room_chatBtn' + i).html(v.text).data('chatid', v.chatID).data('roomid', roomID).data('callback', v.callback).show();
-                    counter++;
-                });
-            }
-            counter = (counter === 0 ? counter = 1 : counter);
-            $('.room-chatBtn').css('width', (99 / counter) + '%');
+        privateChat.makeChat(window[g.room(roomID)]["chat"](chatID), chatID, roomID);
+        
+    }
+}
+
+privateChat.makeChat = function (entry, chatID, roomID) {
+    if (entry !== null) {
+        var thisSpeaker = privateChat.speakerInfo(entry.speaker);
+        $('#room_footer').hide();
+        if (!$('#room_chatOverlay').is(":visible")) {
+            $('#room_chatOverlay').show();
+            $('#char_charDisplay').hide();
+        }
+        var counter = 0;
+        $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
+        $('#room_footerSpeach').html(entry.text);
+        $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
+        if (entry.button.length === 0) {
+            $('#room_chatBtn0').html('Close').show().data('chatid', -1).data('roomid', roomID).data('callback', '');
+            counter = 1;
         }
         else {
-            g.error("chat", "chatID:" + chatID + " roomID: " + roomID);
-            $('#room_footer').show();
+            $.each(entry.button, function (i, v) {
+                $('#room_chatBtn' + i).html(v.text).data('chatid', v.chatID).data('roomid', roomID).data('callback', v.callback).show();
+                counter++;
+            });
         }
+        counter = (counter === 0 ? counter = 1 : counter);
+        $('.room-chatBtn').css('width', (99 / counter) + '%');
+    }
+    else {
+        g.error("chat", "chatID:" + chatID + " roomID: " + roomID);
+        $('#room_footer').show();
     }
 }
 

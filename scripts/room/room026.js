@@ -44,6 +44,17 @@ room26.main = function () {
                     "height": 930,
                     "image": "26_livingRoom/ll.png"
                 });
+                if (sc.getstep("bigguy") === 6) {
+                    btnList.push({
+                        "type": "btn",
+                        "name": "bigguy",
+                        "left": 430,
+                        "top": 80,
+                        "width": 303,
+                        "height": 303,
+                        "image": "26_livingRoom/bigguy.png"
+                    });
+                }
             }
         }
 
@@ -136,6 +147,9 @@ room26.btnclick = function (name) {
                 chat(112, 26);
             }
             g.internal++;
+            break;
+        case "bigguy":
+            chat(113, 26);
             break;
         default:
             break;
@@ -472,9 +486,6 @@ room26.chatcatch = function (callback) {
             g.mod("fuckPussy", 3);
             char.settime(22, 3);
             char.room(10);
-            break;
-        case "bigguy7":
-            sc.setstep("bigguy", 7);
             break;
         default:
             break;
@@ -1459,7 +1470,7 @@ room26.chat = function (chatID) {
                 "on her. After everything she's done for me she deserves the truth. I just wish it wasn't me " +
                 "that he cheated on her with. I really hope she doesn't get mad at me. I couldn't help it. ",
             button: [
-                { chatID: -1, text: "I ain't saying shit! She's just going to get mad at me. ", callback: "bigguy7" },
+                { chatID: -1, text: "I ain't saying shit! She's just going to get mad at me. ", callback: "" },
                 { chatID: 114, text: sc.n("landlord") + ", " + sc.n("bigguy") + " cheated on you. ", callback: "" },
                 
             ]

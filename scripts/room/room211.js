@@ -90,7 +90,7 @@ room211.btnclick = function (name) {
             pic.add("jada_b");
             sc.setstep("treyvon", 2);
             sc.setstep("tiffany", 16);
-            sc.setstep("candy", 1);
+            sc.setstep("candy", 100);
             g.sissy[29].ach = true;
             g.popUpNotice(g.sissy[29].name + " achieved. ");
             break;

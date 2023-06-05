@@ -29,7 +29,14 @@ room408.main = function () {
             inv: false,
             x: 800,
             y: 400
-        }
+        },
+        //custom: {
+        //    name: "custom",
+        //    img: "tattoo_custom.png",
+        //    inv: false,
+        //    x: 600,
+        //    y: 600
+        //}
     };
     if (sc.checkevent("stormy", -1) && g.hourBetween(10, 20)) {
         sc.revokeStep("stormy", -1);
@@ -82,13 +89,24 @@ room408.btnclick = function (name) {
         case "bunny":
         case "sissy":
             cl.c.tattoo.push(name);
-            cl.c.tattoo.push(name);
             nav.killall();
             zcl.displayMain(-100, 300, .27, "nude", false);
             cl.display();
             g.roomTimeout = setTimeout(function () {
                 chat(5, 408);
             }, 1500);
+            break;
+        case "custom":
+            nav.input(408, "Enter your custom tattoo word");
+            break;
+        case "char_input":
+            var thisTattoo = nav.inputGet().trim();
+            if (thisTattoo.length === 0)
+                chat(39, 408);
+            else {
+                cl.c.bracelets = thisTattoo;
+                nav.killall();
+            }
             break;
         default:
             break;
@@ -119,6 +137,8 @@ room408.chatcatch = function (callback) {
                     case "trampstamp":
                         g.internal.trampstamp.inv = true;
                         break;
+                    case "custom":
+                        g.internal.custom.inv = true;
                 }
             }
             if (!g.internal.fairy.inv)
@@ -160,6 +180,16 @@ room408.chatcatch = function (callback) {
                     "width": 150,
                     "height": 150,
                     "image": "408_tattoo/" + g.internal.trampstamp.img
+                }, 408);
+            if (!g.internal.custom.inv)
+                nav.button({
+                    "type": "btn",
+                    "name": "custom",
+                    "left": g.internal.custom.x,
+                    "top": g.internal.custom.y,
+                    "width": 150,
+                    "height": 150,
+                    "image": "408_tattoo/" + g.internal.custom.img
                 }, 408);
             nav.button({
                 "type": "btn",
@@ -595,6 +625,15 @@ room408.chat = function (chatID) {
                 "It would be great seeing you there. ",
             button: [
                 { chatID: -1, text: "Thank you so much! It will be great seeing you there too! ", callback: "solveCaseSecondTry" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "stormy",
+            text: "You didn't enter anything. ",
+            button: [
+                { chatID: -1, text: "Let me try again. ", callback: "" },
+                { chatID: -1, text: "I changed my mind. ", callback: "leave" }
             ]
         },
     ];

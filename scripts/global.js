@@ -617,6 +617,12 @@ g.rooms = [
     { roomID: 476, name: "Wander", image: "475_fight/475_fightScene0.png", nightImage: "475_fight/475_fightScene0.png", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 477, name: "Cottage", image: "477_cottage/bg.jpg", nightImage: "477_cottage/bg.jpg", houseID: 450, btn: "roomBtn_477.png" },
 
+
+    { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.jpg", nightImage: "478_kitchen/bg.jpg", houseID: 480, btn: "roomBtn_478.png" },
+    { roomID: 479, name: "Cave Hall", image: "479_hall/bg.jpg", nightImage: "479_hall/bg.jpg", houseID: 480, btn: "roomBtn_479.png" },
+    { roomID: 480, name: "Cave Throne", image: "480_throne/bg.jpg", nightImage: "480_throne/bg.jpg", houseID: 480, btn: "roomBtn_480.png" },
+    { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.jpg", nightImage: "481_bedroom/bg.jpg", houseID: 480, btn: "roomBtn_481.png" },
+
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },
     { roomID: 502, name: "Zoey's Bedroom", image: "502_bedroom/bedroom.jpg", nightImage: "502_bedroom/bedroomnight.jpg", houseID: 500, btn: "roomBtn_501.png" },
@@ -709,7 +715,7 @@ g.roomMap = [
     { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
     { roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
     { roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
-    { roomID: 900, display: "University", access: true, darkAccess: false, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
+    { roomID: 900, display: "University", access: true, darkAccess: true, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
     { roomID: 901, display: "Pool", access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
     { roomID: 910, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
@@ -852,9 +858,7 @@ g.shuffleArray = function (array) {
 g.makeSingular = function (text) {
     text = text.trim();
     if (text.substr(text.length - 1).toLowerCase() === "s")
-        text = text.slice(-1);
-    if (text.substr(0, text.length - 1) === "'")
-        text = text.slice(-1);
+        text = text.slice(0, -1);
     return text;
 };
 
@@ -924,6 +928,16 @@ g.load = function (rma, thisVersion) {
                 g.roomMap[j].darkAccess = rma.roomMap[i].darkAccess;
                 j = 100000;
             }
+        }
+    }
+
+    //room access override
+    for (i = 0; i < g.roomMap.length; i++) {
+        switch (g.roomMap[i].roomID) {
+            case 900:
+                g.roomMap[i].access = true;
+                g.roomMap[i].darkAccess = true;
+                break;
         }
     }
 

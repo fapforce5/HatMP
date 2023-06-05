@@ -10,8 +10,12 @@ room875.main = function () {
         var cheerlevel = g.get("cheerlevel");
         if (g.dt.getDay() === 0 && g.hourBetween(5, 12)) {
             nav.bg("875_entrance/gameday.jpg");
-            chat(8, 875);
-            if (cheerlevel === 7) 
+            if (cheerlevel === 0) {
+                nav.bg("875_entrance/gamedayc.jpg");
+                chat(49, 875);
+                nav.buildnav([0]);
+            }
+            else if (cheerlevel === 7) 
                 chat(11, 875);
             else if (cheerlevel === 8)
                 chat(28, 875);
@@ -22,7 +26,7 @@ room875.main = function () {
         }
         else if (g.dt.getDay() === 6) {
             if (candyStep < 102) {
-                nav.bg("875_entrance/security.jpg");
+                nav.bg("875_entrance/candy.jpg");
                 nav.buildnav([0]);
                 chat(1, 875);
             }
@@ -306,10 +310,11 @@ room875.chat = function (chatID) {
             },
             {
                 chatID: 1,
-                speaker: "random",
-                text: "Are you trying to spy on the cheerleaders! So uncouth. Scoot scoot.",
+                speaker: "candy",
+                text: "Hey cutie! I'm just getting ready to go to cheerleading practice. You know.. you may be " +
+                    "cute enough to cheer. *wink*",
                 button: [
-                    { chatID: -1, text: "...", callback: "" }
+                    { chatID: 48, text: "I would love to! ", callback: "" }
                 ]
             },
             {
@@ -703,6 +708,23 @@ room875.chat = function (chatID) {
                 text: "Just can't get enough dick? We'll team, let's fuck the slut. ",
                 button: [
                     { chatID: 39, text: "...", callback: "cheer9_6" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "candy",
+                text: "Maybe. I would need to get to know you better before I invite you to cheer. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "candy",
+                text: "Hi cutie! I'm about to go cheer for the game! You know.. you may be " +
+                    "cute enough to cheer. *wink*",
+                button: [
+                    { chatID: 48, text: "I would love to! ", callback: "" }
                 ]
             },
         ];

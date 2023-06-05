@@ -84,9 +84,9 @@ room209.main = function () {
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
             room209.btnclick("displaypbtn");
-            var nameList = room6.getNameList().active;
-            var randomSelectionItem = Math.floor(Math.random() * nameList.length);
-            g.set("quest3", nameList[randomSelectionItem].n);
+            //var nameList = room6.getNameList().active;
+            //var randomSelectionItem = Math.floor(Math.random() * nameList.length);
+            //g.set("quest3", nameList[randomSelectionItem].n);
             chat(207, 209);
         }
         else if (g.sissy[1].ach) {
@@ -779,7 +779,7 @@ room209.chatcatch = function (callback) {
             break;
         case "m2_endbad":
             scc.love("missy", -10);
-            g.sissy[1].ach = true;
+            room209.chatcatch("end");
             break;
         case "h6_1":
             cl.nude();
@@ -1959,7 +1959,8 @@ room209.chat = function (chatID) {
                 chatID: 34,
                 speaker: "missy",
                 text: "I see you can follow directions, that's a good boy. For successfully passing your first real assignment I'll award " +
-                    "you 60 SISSY POINTS. ",
+                    "you the oppurtunity to continue your training. I have a special friend that is going to join us tomorrow and " +
+                    "help you with some alternative training. ",
                 button: [
                     { chatID: 35, text: "hank aakkk oooo", callback: "m3_4x" }
                 ]
@@ -1992,7 +1993,7 @@ room209.chat = function (chatID) {
                 chatID: 38,
                 speaker: "missy",
                 text: "You failed. If you want to get anywhere you need to find the discipline within yourself or you'll never be a " +
-                    "junior detective. I'm deducting 60 points. Now get out of my classroom.",
+                    "junior detective. We will repeat this block of instruction again tomorrow until you learn. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "m2_endbad" }
                 ]

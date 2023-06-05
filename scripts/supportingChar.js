@@ -8,8 +8,8 @@ sc.char = [
     { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true, phone: 0, p: true,  q3: null },
     { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true, phone: 0, p: true, q3: false },
     { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2, p: true,  q3: null },
-    { name: "p", display: "Princess", image: "princess.png", step: 0, max: 0, show: false, setName: true, phone: 0, p: true,  q3: null },
-    { name: "black", display: "Ms. Black", image: "black.png", step: 0, max: 0, show: false, setName: true, phone: 0, p: false,  q3: null },
+    { name: "p", display: "Princess", image: "princess.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
+    { name: "black", display: "Ms. Black", image: "black.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: false, setName: true, phone: 0, p: true,  q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: true, setName: false, phone: -1, p: true,  q3: false },
@@ -86,6 +86,10 @@ sc.char = [
     { name: "football", display: "Player", image: "football.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "queen", display: "Forest Queen", image: "queen.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "a", display: "Aethelreda", image: "aethelreda.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "vag", display: "Slutty Slave", image: "cockgobbler.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "cock", display: "Cock Gobbler", image: "cockgobbler.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+
 
     { name: "random", display: " ", image: "rand.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },

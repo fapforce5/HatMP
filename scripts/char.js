@@ -246,25 +246,6 @@ $(document).ready(function () {
 
     });
     
-    $('#char_cockDisplay').click(function () {
-        if ($('.room-btn[data-name="killassholeDisplayZ"]').length > 0) {
-            nav.killbutton("killassholeDisplayZ");
-        }
-        else {
-            if (g.cockDisplay === "a") {
-                nav.button({
-                    "type": "btn",
-                    "name": "killassholeDisplayZ",
-                    "left": 400,
-                    "top": 300,
-                    "width": 1200,
-                    "height": 585,
-                    "image": "../mainChar/asshole/a" + Math.floor(cl.c.butthole) + ".png"
-                }, 1);
-            }
-        }
-    });
-
     char.init();
 });
 

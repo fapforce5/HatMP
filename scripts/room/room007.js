@@ -136,10 +136,16 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/lola0.jpg");
         chat(27, 7);
     }
-    
     else if (bigguyStep === 5 && (g.dt.getDay() === 0 || g.dt.getDay() === 6)) {
         nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
         chat(55, 7);
+    }
+    else if (bigguyStep === 6 && g.dt.getDay() === 6) {
+        nav.bg("7_mainCharRoomAlt/bigguy0.jpg");
+        g.roomTimeout = setTimeout(function () {
+            nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
+            chat(110, 7);
+        }, 1500);
     }
     else {
         chat(15, 7);
@@ -622,7 +628,16 @@ room7.chatcatch = function (callback) {
         case "b5e3":
         case "b5e4":
         case "b5e5":
+        case "bigguy6a0":
+        case "bigguy6a":
+        case "bigguy6b":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
+        case "bigguy6c":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            g.mod("receiveAnalMale", 1);
+            g.mod("creamPied", 1);
+            char.room(10);
             break;
         case "b5e1":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
@@ -1089,8 +1104,8 @@ room7.chat = function (chatID) {
         {
             chatID: 51,
             speaker: "eva",
-            text: "That's going to be dripping out of me all day! I love you cock so much. Just text me anytime you're in your room and " +
-            "we'll play some more.",
+            text: "That's going to be dripping out of me all day! I love your cock so much. Just text me anytime you're in your room and " +
+                "we'll play some more.",
             button: [
                 { chatID: -1, text: "Ok cool", callback: "eva10b3h" }
             ]
@@ -1572,6 +1587,55 @@ room7.chat = function (chatID) {
             text: "Yeah perv. Stop by our room if you want any more fun. ",
             button: [
                 { chatID: -1, text: "...", callback: "b7" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "bigguy",
+            text: "Wake up slut. Time for my dick. ",
+            button: [
+                { chatID: 111, text: "huh?", callback: "bigguy5a" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "me",
+            text: "GLUB GLUB GLUB ",
+            button: [
+                { chatID: 112, text: "...", callback: "bigguy5a" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "bigguy",
+            text: "Now that I'm nice and hard, time for your treat!",
+            button: [
+                { chatID: 113, text: "Huh?", callback: "bigguy6a0" }
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "bigguy",
+            text: "I love your nasty ass my secret slut!",
+            button: [
+                { chatID: 114, text: "Ooof ouch, ugh", callback: "bigguy6a" }
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "bigguy",
+            text: "Oh fuck I'm filling your slutty ass with cum! What a slut!",
+            button: [
+                { chatID: 115, text: "Mmmmmm", callback: "bigguy6b" }
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "bigguy",
+            text: "Remember slut, this is between you and me. No tellin' your " + sc.n("landlord") + " or I'm " +
+                "going to make you pay. Just keep that slutty ass ready for me when I want. ",
+            button: [
+                { chatID: -1, text: "Yes sir. It's our secret. ", callback: "bigguy6c" }
             ]
         },
     ];
