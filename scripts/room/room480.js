@@ -86,7 +86,7 @@ room480.btnclick = function (name) {
 room480.chatcatch = function (callback) {
     switch (callback) {
         case "quest0":
-            g.pass = { arrive: g.dt, talkList: new Array() };
+            g.pass = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0 };
             sc.setstep("a", 1);
             char.room(480);
             break;
@@ -121,7 +121,7 @@ room480.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "a",
-            text: "You have spoken to " + g.internal.talkList.length + ". You need to speak with others if " +
+            text: "You have spoken to " + g.pass.talkList.length + ". You need to speak with others if " +
                 "if you wish to discuss leaving. ",
             button: [
                 { chatID: -1, text: "ok. I'll talk to more. ", callback: "" }

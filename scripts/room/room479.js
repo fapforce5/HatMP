@@ -30,6 +30,33 @@ room479.main = function () {
             "image": "479_hall/up.png"
         },
         {
+            "type": "img",
+            "name": "bggirls",
+            "left": 699,
+            "top": 462,
+            "width": 357,
+            "height": 235,
+            "image": "479_hall/bggirls.png"
+        },
+        {
+            "type": "btn",
+            "name": "ledge",
+            "left": 631,
+            "top": 293,
+            "width": 85,
+            "height": 247,
+            "image": "479_hall/high.png"
+        },
+        {
+            "type": "btn",
+            "name": "amputee",
+            "left": 441,
+            "top": 485,
+            "width": 378,
+            "height": 406,
+            "image": "479_hall/amputee.png"
+        },
+        {
             "type": "btn",
             "name": "bj",
             "left": 741,
@@ -38,6 +65,8 @@ room479.main = function () {
             "height": 627,
             "image": "479_hall/bj.png"
         },
+       
+        
     ];
     var navList = [478, 480, 481];
     $.each(btnList, function (i, v) {
@@ -75,6 +104,28 @@ room479.btnclick = function (name) {
                 nav.bg("479_hall/bj" + g.internal + ".jpg");
             g.internal++;
             break;
+        case "amputee":
+            nav.killall();
+            nav.bg("479_hall/amputee.jpg");
+            if (g.pass.amputee === 0)
+                chat(14, 479);
+            else if (g.pass.amputee === 1)
+                chat(19, 479);
+            else if (g.pass.amputee === 2)
+                chat(20, 479);
+            else if (g.pass.amputee === 3)
+                chat(21, 479);
+            else 
+                chat(13, 479);
+            break;
+        case "ledge":
+            nav.killall();
+            nav.bg("479_hall/ledge.jpg");
+            if (g.pass.secretPath === 0)
+                chat(26, 479);
+            else if (g.pass.secretPath === 1)
+                chat(32, 479);
+            break;
         default:
             break;
     }
@@ -110,6 +161,28 @@ room479.chatcatch = function (callback) {
             }, 479);
             break;
         case "reset":
+            char.room(479);
+            break;
+        case "amputee0":
+            g.pass.amputee = 1;
+            char.room(479);
+            break;
+        case "amputee1":
+            g.pass.amputee = 2;
+            char.room(479);
+            break;
+        case "amputee2":
+            g.pass.amputee = 3;
+            char.room(479);
+            break;
+        case "amputee3":
+            if (!g.pass.talkList.includes("amputee"))
+                g.pass.talkList.push("amputee");
+            g.pass.amputee = 4;
+            char.room(479);
+            break;
+        case "ledge0":
+            g.pass.secretPath = 1;
             char.room(479);
             break;
         default:
@@ -240,6 +313,179 @@ room479.chat = function (chatID) {
             text: "She thinks your cum is the sweetest. Feel free to feed my slave anytime.  ",
             button: [
                 { chatID: -1, text: "Totally ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "random",
+            text: "I can't wait till I'm healed up so I can leave this place.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "random",
+            text: "Yeah?",
+            button: [
+                { chatID: 15, text: "I was just going around talking to people. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "random",
+            text: "oh",
+            button: [
+                { chatID: 16, text: "So.. uh what happened to your legs?", callback: "" },
+                { chatID: 17, text: "Hello. How are you?", callback: "" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "random",
+            text: "Normally people start a converstaion with a 'hello, how are you', but you go stright to my legs. ",
+            button: [
+                { chatID: 17, text: "Oh. Hello. How are you? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "random",
+            text: "Fine. ",
+            button: [
+                { chatID: 18, text: "Sooooo. About your leg? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "random",
+            text: "I've got to go. Maybe I'll find someone that knows how to talk to a guy. ",
+            button: [
+                { chatID: -1, text: "oh. sorry. ", callback: "amputee0" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "me",
+            text: "Hello, How are you.  ",
+            button: [
+                { chatID: -1, text: "That's so lame. Try again. ", callback: "amputee1" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "me",
+            text: "Nice shoes. Want to fuck?  ",
+            button: [
+                { chatID: -1, text: "Better. But no. You're not my type. ", callback: "amputee2" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "me",
+            text: "I have no idea what to say. ",
+            button: [
+                { chatID: 22, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "random",
+            text: "You're persistent. I guess you want to know what happened to my legs. ",
+            button: [
+                { chatID: 23, text: "I sure do. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "random",
+            text: "It's funny, before the cult crushed my legs no one would just come up to me and talk to me. " +
+                "Now that my legs are all fucked up that's all everyone wants to talk about. Did you know I was " +
+                "a wilderness guide and survival expert? I've trained hundereds of people who to get out of " +
+                "difficult situations in the forest with nothing buy a knife. ",
+            button: [
+                { chatID: 24, text: "I didn't know that. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "random",
+            text: "Of course you didn't, becuase you were so fixated on my legs. No one wants a wilderness guide " +
+                "that can't even walk. The cult may have given me a great set of tits, but they took away my " +
+                "purpose. ",
+            button: [
+                { chatID: 25, text: "Can't you get a prosthetic? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "random",
+            text: "You know what's better than a prosthetic leg? My real leg. This place is stupid. The cult is " +
+                "stuipd. I'm done talking. Once my other leg is healed up I plan on getting out of here and " +
+                "hiding in the forest. so I don't have to have stupid converstations with people. ",
+            button: [
+                { chatID: -1, text: "Oh. Ouch", callback: "amputee3" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "random",
+            text: "Hi you. ",
+            button: [
+                { chatID: 27, text: "So what are you doing way up here?", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "random",
+            text: "Just waiting till night time. What are you doing way up here? ",
+            button: [
+                { chatID: 28, text: "I came to visit you. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "random",
+            text: "Smooth. You just may be what I'm looking for. Are you an obedient sissy? ",
+            button: [
+                { chatID: 30, text: "I am very submissive. ", callback: "" },
+                { chatID: 29, text: "Nope! I'm always the boss! ", callback: "" },
+                { chatID: 31, text: "I am a true obedient sissy. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "random",
+            text: "I guess I was wrong about you. ",
+            button: [
+                { chatID: -1, text: "Oh... ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "random",
+            text: "That's not what I asked.  ",
+            button: [
+                { chatID: -1, text: "Oh... ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "random",
+            text: "Say I am an obedient fuck slut that will do anything anyone tells me. I only live to serve " +
+                "my superiors and their pleasure is what I live for.  ",
+            button: [
+                { chatID: 30, text: "huh... ", callback: "" },
+                { chatID: 32, text: "I am an obedient fuck slut that will do anything anyone tells me. I only live to serve " +
+                "my superiors and their pleasure is what I live for.", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "random",
+            text: "Good! Meet me in the kitchen after 5 PM, but before bedtime. ",
+            button: [
+                { chatID: -1, text: "I'll be there! ", callback: "ledge0" },
             ]
         },
     ];

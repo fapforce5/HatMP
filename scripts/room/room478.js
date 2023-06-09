@@ -88,7 +88,10 @@ room478.btnclick = function (name) {
             char.room(479);
             break;
         case "chef":
-
+            nav.killall();
+            nav.bg("478_kitchen/chef0.jpg")
+            if (!g.pass.talkList.includes("chef"))
+                chat(9999999, 478);
             break;
         case "smoker":
             nav.killall();
@@ -609,6 +612,14 @@ room478.chat = function (chatID) {
         },
         {
             chatID: 32,
+            speaker: "random",
+            text: "Ugh. I'm looking for smoke in this stupid place. Ciao ",
+            button: [
+                { chatID: -1, text: "bye", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 33,
             speaker: "random",
             text: "Ugh. I'm looking for smoke in this stupid place. Ciao ",
             button: [
