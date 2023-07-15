@@ -7,10 +7,14 @@ sc.char = [
     { name: "el", display: "Co-Tenants", image: "lolaEva.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true, phone: 0, p: true,  q3: null },
     { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true, phone: 0, p: true, q3: false },
-    { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2, p: true,  q3: null },
+
+    { name: "janice", display: "Janice", image: "janice.png", step: 0, max: 0, show: true, setName: true, phone: -1, p: true, q3: null },
+
+    { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2, p: true, q3: null },
     { name: "p", display: "Princess", image: "princess.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "black", display: "Ms. Black", image: "black.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
-    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: false, setName: true, phone: 0, p: true,  q3: null },
+
+    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: false, setName: true, phone: 0, p: true, q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: true, setName: false, phone: -1, p: true,  q3: false },
     { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: false, setName: true, phone: 12, p: true,  q3: null },
@@ -294,7 +298,24 @@ sc.events = [
     { name: "envy", step: 0, txt: "Meet her", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [300] },
     { name: "envy", step: 1, txt: "Watch the breakup", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
     { name: "envy", step: 2, txt: "Get to know her", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    { name: "envy", step: 3, txt: "Bring some chips for movie night", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 3, txt: "Bring some pizza for movie night. Are you man enough to seduce her?", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 4, txt: "Visit her again and talk to her about what happened.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 5, txt: "Either play a game, or purchase a hypno movie from Spanky to watch", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 6, txt: "Watch more hypno or confess you pervert!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] }, { name: "envy", step: 3, txt: "Bring some chips for movie night", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 7, txt: "More hypno! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 8, txt: "More! Now with sexy clothes.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 9, txt: "Blondes have more fun! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 10, txt: "Bimbofy her. Finger her when she bends over. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 11, txt: "See what you've done to this poor innocent girl. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 12, txt: "Turn her into a cum dump! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 13, txt: "You've been tricked! Go visit her! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 14, txt: "Town slut. You've got to get a job at Rachel's to convince her there's something better than dick.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 15, txt: "Visit her and hide. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 16, txt: "Vist Rachel's new HuCow! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 17, txt: "Hear her stories on working at the farm ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+    { name: "envy", step: 18, txt: "End - for now ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
+
+    { name: "envy", step: 100, txt: "Go to Spanky and fix her!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
 
 
     { name: "spanky", step: -1, txt: "Hypno vids", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [404] },
@@ -730,14 +751,11 @@ sc.getTimeline = function (char) {
         { n: "eva", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining
         { n: "eva", d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
 
-        { n: "cecilia", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, 
-        { n: "cecilia", d: [1, 2, 3, 4, 5], hstart: 7, hend: 18, roomId: 203, alt: null }, //office
-        { n: "cecilia", d: [1, 2, 3, 4, 5], hstart: 18, hend: 21, roomId: null, alt: "Prostituting" }, 
-        { n: "cecilia", d: [1, 2, 3, 4, 5], hstart: 21, hend: 24, roomId: null, alt: "Home" }, 
-        { n: "cecilia", d: [0, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, 
-        { n: "cecilia", d: [0, 6], hstart: 6, hend: 16, roomId: 451, alt: null }, //office
-        { n: "cecilia", d: [0, 6], hstart: 16, hend: 21, roomId: null, alt: "Taking cocks in the ass" }, 
-        { n: "cecilia", d: [0, 6], hstart: 21, hend: 24, roomId: null, alt: "Home" }, 
+        { n: "cecilia", d: [0, 1, 2, 3, 4, 5, 7], hstart: 0, hend: 7, roomId: null, alt: "Home" }, 
+        { n: "cecilia", d: [0, 1, 2, 3, 4, 5, 7], hstart: 21, hend: 24, roomId: null, alt: "Home" }, 
+        { n: "cecilia", d: [0, 1, 2, 3, 4, 5, 7], hstart: 16, hend: 21, roomId: null, alt: "Taking cocks in all holes (probably)" }, 
+        { n: "cecilia", d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 203, alt: null }, //office
+        { n: "cecilia", d: [0, 6], hstart: 7, hend: 16, roomId: 451, alt: null }, //blowjob
 
         { n: "zoey", d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 4, roomId: 525, alt: null }, //bar
         { n: "zoey", d: [0, 1, 2, 3, 4, 5, 6], hstart: 4, hend: 12, roomId: 502, alt: null }, //bedroom
@@ -779,6 +797,7 @@ sc.getTimeline = function (char) {
         { n: "tim", d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
         { n: "tim", d: [1, 2, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
         { n: "tim", d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
+
     ];
     var retVar = { roomID: -1, thisRoom: false, subList: new Array() };
     for (i = 0; i < timeline.length; i++) {
@@ -1174,7 +1193,7 @@ sc.phone = function (char) {
                     sc.phoneChat(clist, char);
                 }
                 else if (step === 10 || step === 11) {
-                    if (g.get("evaDayEvent")) {
+                    if (g.getDaily("eva")) {
                         clist = [
                             { s: "me", t: "Hey, been thinking about my dick?" },
                             { s: "eva", t: "I'm busy today, try me tomorrow!" },
@@ -1353,3 +1372,26 @@ sc.phoneChat = function (chatList, char) {
     $('.contact-body').html('<img src="./images/phone/char/' + thisCar.image + '" ' + thisImg + '/>' +
         '<div style="display:inline-block; font-weight:bold; vertical-align: top; padding-top:' + 10 * g.ratio + 'px; font-size:' + 40 * g.ratio + 'px;">' + thisCar.display + '</div><hr/>' + ts);
 };
+
+
+sc.trivial = function (charname) {
+    var name, image;
+    switch (charname) {
+        case "!burlysecurity":
+            name = "Security";
+            image = "burlySecurity.png";
+            break;
+        case "!fatdogguy":
+            name = "Fatty McGillicutty";
+            image = "fatdogguy.png";
+            break;
+        case "!constworker0":
+            name = "Tits McGee";
+            image = "constWorker0.png";
+            break;
+        default:
+            console.log("unknown trivial char: (check capitilazation)" + charname);
+            break;
+    }
+    return { display: name, image: image };
+}

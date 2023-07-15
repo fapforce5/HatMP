@@ -78,7 +78,7 @@ room501.main = function () {
 room501.btnclick = function (name) {
     switch (name) {
         case "zoey":
-            if (!g.checkflag("zoeyDay")) {
+            if (!g.getDaily("zoey")) {
                 var zoeyy = sc.getstep("zoey");
                 if (zoeyy === 0) {
                     nav.killall();
@@ -129,7 +129,7 @@ room501.btnclick = function (name) {
                 else if (zoeyy === 300) {
                     chat(105, 501);
                 }
-                g.setflag("zoeyDay");
+                g.setDaily("zoey");
             }
             else {
                 chat(16, 501);
@@ -381,7 +381,7 @@ room501.chatcatch = function (callback) {
             break;
         case "leave0":
             sc.setstep("zoey", 1);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             scc.love("zoey", 5, 50);
             if (g.hourBetween(0, 16))
                 char.addtime(180);
@@ -391,7 +391,7 @@ room501.chatcatch = function (callback) {
             break;
         case "leave1":
             sc.setstep("zoey", 2);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             scc.love("zoey", 5, 50);
             if (g.hourBetween(0, 16))
                 char.addtime(180);
@@ -401,7 +401,7 @@ room501.chatcatch = function (callback) {
             break;
         case "leave3":
             sc.setstep("zoey", 4);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             if (g.hourBetween(0, 16))
                 char.addtime(180);
             else
@@ -411,17 +411,17 @@ room501.chatcatch = function (callback) {
         case "cheat":
             sc.setstep("zoey", 5);
             scc.love("zoey", 10, 90);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             room501.chatcatch("zLook");
             break;
         case "noCheat":
             sc.setstep("zoey", 5);
             scc.love("zoey", -20, 90);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             room501.chatcatch("zLook");
             break;
         case "chloeLeave":
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             sc.setstep("zoey", 3);
             if (sc.checkevent("zoey", 7)) {
                 nav.killbutton("ddduo");
@@ -507,7 +507,7 @@ room501.chatcatch = function (callback) {
         case "5endbad":
             sc.setstep("zoey", 300);
             char.addtime(120);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             char.room(0);
             break;
         case "5midway":
@@ -590,12 +590,12 @@ room501.chatcatch = function (callback) {
             scc.love("zoey", -999, 90);
             sc.setstep("zoey", 301);
             sc.setstep("chloe", 3);
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             char.addtime(147);
             char.room(0);
             break;
         case "repeat6":
-            g.setflag("zoeyDay");
+            g.setDaily("zoey");
             char.addtime(78);
             char.room(0);
             break;

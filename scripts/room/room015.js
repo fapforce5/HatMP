@@ -41,7 +41,7 @@ room15.main = function () {
             });
         }
 
-        if (!g.checkflag("choreDishes") && sc.getstep("landlord") < 200) {
+        if (!g.getDaily("momChoreDishes") && sc.getstep("landlord") < 200) {
             btnList.push({
                 "type": "btn",
                 "name": "dishes",

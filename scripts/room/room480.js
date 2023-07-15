@@ -1,6 +1,7 @@
 ﻿//Room name
 var room480 = {};
 room480.main = function () {
+    room480.chatcatch("settod");
     if (sc.getstep("a") === 0) {
         char.addDays(1);
         char.settime(11, 27);
@@ -82,16 +83,49 @@ room480.btnclick = function (name) {
             break;
     }
 };
+room480.displaychar = function (chararry) {
+    $.each(chararry, function (i, v) {
+        if (v.tod.includes(g.internal.tod))
+            nav.button(v, g.roomID);
+    });
+};
 
 room480.chatcatch = function (callback) {
     switch (callback) {
+        case "incrementtod":
+            var hour1 = g.gethourdecimal();
+            if (hour1 < 7)
+                char.settime(7, 0);
+            else if (hour1 < 12)
+                char.settime(13, Math.floor(Math.random() * 59));
+            else if (hour1 < 17)
+                char.settime(18, Math.floor(Math.random() * 59));
+            else if (hour1 < 22)
+                char.settime(23, Math.floor(Math.random() * 59));
+            else 
+                char.settime(7, 0);
+            room480.chatcatch("settod");
+            break;
+        case "settod":
+            var hour = g.gethourdecimal();
+            if (hour < 7)
+                g.internal.tod = 0;
+            else if (hour < 12)
+                g.internal.tod = 1;
+            else if (hour < 17)
+                g.internal.tod = 2;
+            else if (hour < 22)
+                g.internal.tod = 3;
+            else
+                g.internal.tod = 4;
+            break;
         case "quest0":
-            g.pass = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0 };
+            g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
             sc.setstep("a", 1);
             char.room(480);
             break;
         case "cg1":
-            if (g.pass.talkList.includes("vag")) {
+            if (g.internal.talkList.includes("vag")) {
                 chat(18, 480);
             }
             else {
@@ -104,8 +138,9 @@ room480.chatcatch = function (callback) {
             nav.bg("480_throne/cg2.jpg");
             break;
         case "cg3":
-            if (!g.pass.talkList.includes("vag"))
-                g.pass.talkList.push("vag");
+            if (!g.internal.talkList.includes("vag"))
+                g.internal.talkList.push("vag");
+            room480.chatcatch("incrementtod");
             char.room(480);
             break;
         case "reset":
@@ -121,7 +156,7 @@ room480.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "a",
-            text: "You have spoken to " + g.pass.talkList.length + ". You need to speak with others if " +
+            text: "You have spoken to " + g.internal.talkList.length + ". You need to speak with others if " +
                 "if you wish to discuss leaving. ",
             button: [
                 { chatID: -1, text: "ok. I'll talk to more. ", callback: "" }

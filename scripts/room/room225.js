@@ -38,6 +38,7 @@ room225.main = function () {
         chat(0, 225);
     }
     nav.buildnav(navList);
+    fame.event();
 };
 
 room225.btnclick = function (name) {

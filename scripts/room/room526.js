@@ -22,7 +22,7 @@ room526.main = function () {
 
     if (sc.getstep("poppy") === 0) {
         sc.setstep("poppy", 1);
-        g.setflag("zbar");
+        g.getDaily("zbar");
         btnList.push({
             "type": "btn",
             "name": "group",
@@ -35,7 +35,7 @@ room526.main = function () {
         chat(0, 526);
     }
     else {
-        if (!g.get("zbar")) {
+        if (!g.getDaily("zbar")) {
             btnList.push({
                 "type": "btn",
                 "name": "g1",
@@ -102,7 +102,7 @@ room526.btnclick = function (name) {
         case "zoey":
             nav.killall();
             nav.bg("526_bar/bgclose.jpg");
-            if (!g.get("keaton")) {
+            if (!g.getDaily("keaton")) {
                 nav.button({
                     "type": "btn",
                     "name": "keaton0",
@@ -330,7 +330,7 @@ room526.chatcatch = function (callback) {
             break;
         case "g1_end":
             sc.setstep("poppy", 2);
-            g.setflag("zbar");
+            g.setDaily("zbar");
             char.addtime(75);
             char.room(526);
             break;
@@ -458,7 +458,7 @@ room526.chatcatch = function (callback) {
         case "k09":
             g.mod("giveAnalMale", 1);
             g.mod("giveOralMale", 1);
-            g.setflag("keaton");
+            g.setDaily("keaton");
             cl.doCum(false);
             char.room(526);
             break;
@@ -467,7 +467,7 @@ room526.chatcatch = function (callback) {
                 chat(65, 526);
             }
             else {
-                g.setflag("keaton");
+                g.setDaily("keaton");
                 char.room(526);
             }
             break;
@@ -479,11 +479,11 @@ room526.chatcatch = function (callback) {
         case "kno1":
             g.roomMapAccess(535, true, false);
             sc.setstep("keaton", 2);
-            g.setflag("keaton");
+            g.setDaily("keaton");
             char.room(526);
             break;
         case "knoreset":
-            g.setflag("keaton");
+            g.setDaily("keaton");
             char.room(526);
             break;
         case "leave":

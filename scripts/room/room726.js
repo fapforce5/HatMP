@@ -10,7 +10,7 @@ room726.main = function () {
         "height": 491,
         "image": "726_dance/dgirl1.png"
     }, 726);
-    if (!g.get("cindy")) {
+    if (!g.getDaily("cindy")) {
         nav.button({
             "type": "btn",
             "name": "lifeguardGirl",
@@ -21,7 +21,7 @@ room726.main = function () {
             "image": "726_dance/lifeguardGirl1.png"
         }, 726);
     }
-    if (!g.get("tim")) {
+    if (!g.getDaily("tim")) {
         nav.button({
             "type": "btn",
             "name": "lifeguardGuy",
@@ -34,6 +34,7 @@ room726.main = function () {
     }
     var navList = [0, 725];
     nav.buildnav(navList);
+    fame.event();
 };
 
 room726.btnclick = function (name) {
@@ -148,7 +149,7 @@ room726.chatcatch = function (callback) {
             nav.modbutton("lifeguardGirl", "726_dance/lifeguardGirl3.png", null, null);
             break;
         case "killcindy":
-            g.setflag("cindy");
+            g.setDaily("cindy");
             nav.killbutton("lifeguardGirl");
             break;
         case "tim2":
@@ -256,7 +257,7 @@ room726.chatcatch = function (callback) {
             g.mod("giveOralMale", 1);
             g.mod("giveAnalMale", 1);
             g.mod("creamPied", 1);
-            g.setflag("tim");
+            g.setDaily("tim");
             sc.setstep("tim", 3);
             char.addtime(72);
             char.room(726);
@@ -282,7 +283,7 @@ room726.chatcatch = function (callback) {
             g.mod("giveOralMale", 1);
             g.mod("giveAnalMale", 1);
             g.mod("creamPied", 1);
-            g.setflag("tim");
+            g.setDaily("tim");
             char.addtime(72);
             char.room(726);
             break;
@@ -304,7 +305,7 @@ room726.chatcatch = function (callback) {
             break;
         case "c5":
             g.mod("fuckPussy", 1);
-            g.setflag("cindy");
+            g.setDaily("cindy");
             char.addtime(60);
             char.room(727);
             break;

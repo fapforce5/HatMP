@@ -29,12 +29,15 @@ room750.main = function () {
     }, 750);
     var navList = [751, 0];
     nav.buildnav(navList);
+    if (g.isNight()) {
+        fame.event();
+    }
 };
 
 room750.btnclick = function (name) {
     switch (name) {
         case "doc":
-            if (!g.get("doc")) {
+            if (!g.getDaily("doc")) {
                 nav.killbutton("doc");
                 nav.button({
                     "type": "btn",
@@ -68,7 +71,7 @@ room750.chatcatch = function (callback) {
     switch (callback) {
         case "doc0":
             sc.setstep('doc', 1);
-            g.setflag("doc");
+            g.setDaily("doc");
             char.addtime(30);
             char.room(750);
             break;

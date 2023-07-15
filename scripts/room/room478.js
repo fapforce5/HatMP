@@ -1,66 +1,14 @@
 ﻿//Room name
 var room478 = {};
 room478.main = function () {
+    room480.chatcatch("settod");
     var btnList = new Array();
 
     if (g.isNight()) {
         btnList = []
     }
     else {
-        btnList = [{
-            "type": "btn",
-            "name": "chef",
-            "left": 166,
-            "top": 137,
-            "width": 456,
-            "height": 943,
-            "image": "478_kitchen/chef.png"
-        },
-        {
-            "type": "btn",
-            "name": "tiedup",
-            "left": 569,
-            "top": 53,
-            "width": 241,
-            "height": 818,
-            "image": "478_kitchen/tiedup.png"
-        },
-        {
-            "type": "btn",
-            "name": "duo",
-            "left": 1596,
-            "top": 265,
-            "width": 324,
-            "height": 754,
-            "image": "478_kitchen/duo.png"
-        },
-        {
-            "type": "btn",
-            "name": "smoker",
-            "left": 1664,
-            "top": 351,
-            "width": 176,
-            "height": 534,
-            "image": "478_kitchen/smoker.png"
-        },
-        {
-            "type": "btn",
-            "name": "pink",
-            "left": 960,
-            "top": 427,
-            "width": 181,
-            "height": 410,
-            "image": "478_kitchen/pink.png"
-        },
-        {
-            "type": "btn",
-            "name": "trio",
-            "left": 855,
-            "top": 344,
-            "width": 344,
-            "height": 539,
-            "image": "478_kitchen/trio.png"
-        },
+        btnList = [
         {
             "type": "btn",
             "name": "entrance",
@@ -80,6 +28,79 @@ room478.main = function () {
 
     var navList = [479, 480, 481];
     nav.buildnav(navList);
+    room480.displaychar([
+        {
+            "type": "btn",
+            "name": "chef",
+            "left": 166,
+            "top": 137,
+            "width": 456,
+            "height": 943,
+            "image": "478_kitchen/chef.png",
+            "tod": [1,2,3]
+        },
+        {
+            "type": "btn",
+            "name": "tiedup",
+            "left": 569,
+            "top": 53,
+            "width": 241,
+            "height": 818,
+            "image": "478_kitchen/tiedup.png",
+            "tod": [2]
+        },
+        {
+            "type": "btn",
+            "name": "duo",
+            "left": 1596,
+            "top": 265,
+            "width": 324,
+            "height": 754,
+            "image": "478_kitchen/duo.png",
+            "tod": [2]
+
+        },
+        {
+            "type": "btn",
+            "name": "smoker",
+            "left": 1664,
+            "top": 351,
+            "width": 176,
+            "height": 534,
+            "image": "478_kitchen/smoker.png",
+            "tod": [1]
+        },
+        {
+            "type": "btn",
+            "name": "pink",
+            "left": 960,
+            "top": 427,
+            "width": 181,
+            "height": 410,
+            "image": "478_kitchen/pink.png",
+            "tod": [2]
+        },
+        {
+            "type": "btn",
+            "name": "trio",
+            "left": 855,
+            "top": 344,
+            "width": 344,
+            "height": 539,
+            "image": "478_kitchen/trio.png",
+            "tod": [1]
+        },
+        {
+            "type": "btn",
+            "name": "eat",
+            "left": 1064,
+            "top": 457,
+            "width": 856,
+            "height": 619,
+            "image": "478_kitchen/eat.png",
+            "tod": [3]
+        },
+    ]);
 };
 
 room478.btnclick = function (name) {
@@ -90,13 +111,13 @@ room478.btnclick = function (name) {
         case "chef":
             nav.killall();
             nav.bg("478_kitchen/chef0.jpg")
-            if (!g.pass.talkList.includes("chef"))
-                chat(9999999, 478);
+            if (g.internal.secretPath === 0)
+                chat(34, 478);
             break;
         case "smoker":
             nav.killall();
             nav.bg("478_kitchen/smoker0.jpg");
-            if (!g.pass.talkList.includes("smoke"))
+            if (!g.internal.talkList.includes("smoke"))
                 chat(25, 478);
             else
                 chat(31, 478);
@@ -104,7 +125,7 @@ room478.btnclick = function (name) {
         case "trio":
             nav.killall();
             nav.bg("478_kitchen/trio0.jpg");
-            if (!g.pass.talkList.includes("trio"))
+            if (!g.internal.talkList.includes("trio"))
                 chat(5, 478);
             else
                 chat(15, 478);
@@ -112,7 +133,7 @@ room478.btnclick = function (name) {
         case "duo":
             nav.killall();
             nav.bg("478_kitchen/duo0.jpg");
-            if (!g.pass.talkList.includes("duo")) {
+            if (!g.internal.talkList.includes("duo")) {
                 var thisApp = cl.appearance();
                 if (thisApp === 5)
                     chat(16, 478);
@@ -127,7 +148,7 @@ room478.btnclick = function (name) {
         case "tiedup":
             nav.killall();
             nav.bg("478_kitchen/tiedup0.jpg");
-            if (!g.pass.talkList.includes("kitchen_tiedup"))
+            if (!g.internal.talkList.includes("kitchen_tiedup"))
                 chat(0, 478);
             else
                 chat(0, 478);
@@ -205,7 +226,7 @@ room478.btnclick = function (name) {
             break;
         case "tiedupcock":
             nav.killall();
-            g.internal = 0;
+            g.internal.single = 0;
             nav.button({
                 "type": "btn",
                 "name": "tiedupcockInc",
@@ -218,17 +239,19 @@ room478.btnclick = function (name) {
             nav.bg("478_kitchen/tiedupcock0.jpg")
             break;
         case "tiedupcockInc":
-            if (g.internal < 6)
-                nav.bg("478_kitchen/tiedupcock" + ((g.internal % 2) + 1) + ".jpg");
+            if (g.internal.single < 6)
+                nav.bg("478_kitchen/tiedupcock" + ((g.internal.single % 2) + 1) + ".jpg");
             else if (g.internal < 8)
-                nav.bg("478_kitchen/tiedupcock" + g.internal + ".jpg");
-            else
+                nav.bg("478_kitchen/tiedupcock" + g.internal.single + ".jpg");
+            else {
+                room480.chatcatch("incrementtod");
                 char.room(478);
-            g.internal++;
+            }
+            g.internal.single++;
             break;
         case "tiedupButthole":
             nav.killall();
-            g.internal = 0;
+            g.internal.single = 0;
             nav.button({
                 "type": "btn",
                 "name": "tiedupassInc",
@@ -241,13 +264,23 @@ room478.btnclick = function (name) {
             nav.bg("478_kitchen/tiedupa1.jpg")
             break;
         case "tiedupassInc":
-            if (g.internal < 7)
-                nav.bg("478_kitchen/tiedupa" + ((g.internal % 2) + 2) + ".jpg");
-            else if (g.internal < 8)
+            if (g.internal.single < 7)
+                nav.bg("478_kitchen/tiedupa" + ((g.internal.single % 2) + 2) + ".jpg");
+            else if (g.internal.single < 8)
                 nav.bg("478_kitchen/tiedupa6.jpg");
-            else
+            else {
+                room480.chatcatch("incrementtod");
                 char.room(478);
-            g.internal++;
+            }
+            g.internal.single++;
+            break;
+        case "eat":
+            nav.killall();
+            nav.bg("478_kitchen/eat.jpg");
+            if (!g.internal.talkList.includes("eat"))
+                chat(36, 478);
+            else
+                chat(9999, 478);
             break;
         default:
             break;
@@ -288,18 +321,21 @@ room478.chatcatch = function (callback) {
             nav.bg("478_kitchen/" + callback + ".jpg");
             break;
         case "trioEnd":
-            if (!g.pass.talkList.includes("trio"))
-                g.pass.talkList.push("trio");
+            if (!g.internal.talkList.includes("trio"))
+                g.internal.talkList.push("trio");
+            room480.chatcatch("incrementtod");
             char.room(478);
             break;
         case "duoEnd":
-            if (!g.pass.talkList.includes("duo"))
-                g.pass.talkList.push("duo");
+            if (!g.internal.talkList.includes("duo"))
+                g.internal.talkList.push("duo");
+            room480.chatcatch("incrementtod");
             char.room(478);
             break;
         case "smoke1":
-            if (!g.pass.talkList.includes("smoke"))
-                g.pass.talkList.push("smoke");
+            if (!g.internal.talkList.includes("smoke"))
+                g.internal.talkList.push("smoke");
+            room480.chatcatch("incrementtod");
             char.room(478);
             break;
         default:
@@ -624,6 +660,39 @@ room478.chat = function (chatID) {
             text: "Ugh. I'm looking for smoke in this stupid place. Ciao ",
             button: [
                 { chatID: -1, text: "bye", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "random",
+            text: "Hello there! ",
+            button: [
+                { chatID: 35, text: "Hi. What are you up to? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "random",
+            text: "I'm making food for all my little girls. Now run along so I can get back to it.",
+            button: [
+                { chatID: -1, text: "oh ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "random",
+            text: "Can't you see I'm getting my ass eaten? How rude!",
+            button: [
+                { chatID: 37, text: "oh sorry. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "random",
+            text: "Oh wait, you're that new girl. Do you want to eat my ass? ",
+            button: [
+                { chatID: -1, text: "Yes I do! ", callback: "reset" },
+                { chatID: -1, text: "Some other time ", callback: "reset" },
             ]
         },
     ];

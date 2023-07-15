@@ -22,7 +22,7 @@ room152.main = function () {
 room152.btnclick = function (name) {
     switch (name) {
         case "butler":
-            if (g.get("jonesDayEvent")) {
+            if (g.getDaily("jones")) {
                 chat(18, 152);
             }
             else {
@@ -76,7 +76,7 @@ room152.chatcatch = function (callback) {
             break;
         case "clean9":
             sc.setstep("jones", 2);
-            g.setflag("jonesDayEvent");
+            g.setDaily("jones");
             char.addtime(180);
             nav.bg("150_jones/frontdoor.jpg", "150_jones/frontdoorNight.jpg");
             nav.button({

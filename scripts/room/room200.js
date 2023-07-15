@@ -734,31 +734,31 @@ room200.chat = function (chatID) {
     var tempSissy;
     tempSissy = g.get("sissy");
     var cArray = [
-        {
-            chatID: 0,
-            speaker: "missy",
-            text: "So " + sc.n("me") + ", you want to be a Private Investigator? Do what kind of college degree do you have?",
-            button: [
-                { chatID: 1, text: "I don't have a degree, you see what happened...", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "missy",
-            text: "Stop right there. A simple 'no' works. I hate when my employees feel the need to stammer through an excuse.",
-            button: [
-                { chatID: 2, text: "Sorry", callback: "" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "missy",
-            text: "Stop!<br />You're boring me. If you're going to waste my time you can at least be interesting.<br />" +
-                "Let's look over your application..",
-            button: [
-                { chatID: -1, text: "Yes..", callback: "questionairre" }
-            ]
-        },
+        //{
+        //    chatID: 0,
+        //    speaker: "missy",
+        //    text: "So " + sc.n("me") + ", you want to be a Private Investigator? Do what kind of college degree do you have?",
+        //    button: [
+        //        { chatID: 1, text: "I don't have a degree, you see what happened...", callback: "" }
+        //    ]
+        //},
+        //{
+        //    chatID: 1,
+        //    speaker: "missy",
+        //    text: "Stop right there. A simple 'no' works. I hate when my employees feel the need to stammer through an excuse.",
+        //    button: [
+        //        { chatID: 2, text: "Sorry", callback: "" }
+        //    ]
+        //},
+        //{
+        //    chatID: 2,
+        //    speaker: "missy",
+        //    text: "Stop!<br />You're boring me. If you're going to waste my time you can at least be interesting.<br />" +
+        //        "Let's look over your application..",
+        //    button: [
+        //        { chatID: -1, text: "Yes..", callback: "questionairre" }
+        //    ]
+        //},
         {
             chatID: 3,
             speaker: "missy",

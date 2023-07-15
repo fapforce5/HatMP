@@ -77,7 +77,7 @@ room661.chatcatch = function (callback) {
             }
             break;
         case "end":
-            g.setflag("tiffanyDayEvent");
+            g.setDaily("tif");
             if (sc.getstep("tiffany") < 10)
                 sc.incstep("tiffany", 1);
             char.room(651);

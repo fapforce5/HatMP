@@ -39,7 +39,7 @@ room551.main = function () {
                 "image": "551_gymInside/empDoor.png"
             }
         ];
-        if (!g.checkflag("gworkout")) {
+        if (!g.getDaily("g")) {
             if (Math.floor(Math.random() * 2) === 0) {
                 btnList.push({
                     "type": "btn",
@@ -64,7 +64,7 @@ room551.main = function () {
             }
         }
         var navList = [0, 552, 553];
-        if (sc.checkevent("g", -1) && !g.checkflag("gworkout"))
+        if (sc.checkevent("g", -1) && !g.getDaily("g"))
             navList.push(555);
         $.each(btnList, function (i, v) {
             nav.button(v, 551);
@@ -156,7 +156,7 @@ room551.btnclick = function (name) {
             break;
         case "emp":
             if (sc.checkevent("g", -1)) {
-                if (g.checkflag("gworkout")) {
+                if (g.getDaily("g")) {
                     nav.button({
                         "type": "btn",
                         "name": "empDoorOnly",
@@ -222,7 +222,7 @@ room551.chatcatch = function (callback) {
         case "squat5":
             nav.killbutton("squat");
             sc.setstep("g", 1);
-            g.setflag("gworkout");
+            g.setDaily("g");
             char.addtime(60);
             break;
         case "situp1":
@@ -253,7 +253,7 @@ room551.chatcatch = function (callback) {
             g.mod("fitness", 30);
             sc.setstep("g", 2);
             g.mod("shower", -1440);
-            g.setflag("gworkout");
+            g.getDaily("g");
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");
             var btnList = [
@@ -341,7 +341,7 @@ room551.chatcatch = function (callback) {
         case "endDay":
             g.mod("shower", -1440);
             g.mod("energy", -50);
-            g.setflag("gworkout");
+            g.getDaily("g");
             if (g.pass === "squat") {
                 g.mod("leg", 15);
                 g.mod("fitness", 20);

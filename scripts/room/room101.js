@@ -8,87 +8,62 @@ room101.main = function () {
             "type": "btn",
             "name": "tina",
             "left": 810,
-            "top": 299,
-            "width": 439,
-            "height": 711,
+            "top": 268,
+            "width": 491,
+            "height": 715,
             "image": "101_constFrontOffice/sit1.png"
         }, 101);
         chat(22, 101);
     }
     else {
-        
         var tinaRel = sc.getstep("tina");
-        var name = "tina";
-        if (g.get("jobConstWorkToday") === 1) {
+        if (g.getDaily("construction")) {
             nav.button({
                 "type": "btn",
                 "name": "tina",
                 "left": 810,
-                "top": 299,
-                "width": 439,
-                "height": 711,
+                "top": 268,
+                "width": 491,
+                "height": 715,
                 "image": "101_constFrontOffice/sit1.png"
             }, 101);
-            navList = [100];
             chat(5, 101);
         }
         else {
-            var image = "sit1.png";
-            if (tinaRel < 5)
-                image = "sit1.png";
-            else if (tinaRel < 10)
-                image = "sit2.png";
-            else if (Math.floor(Math.random() * 5) === 0) {
-                image = "jackit1.png";
-                name = "jackit";
-            }
-            else {
-                if (Math.floor(Math.random() * 3) === 0)
-                    image = "sit3.png";
-                else
-                    image = "sit2.png";
-            }
             var btnList = [
                 {
                     "type": "btn",
-                    "name": name,
+                    "name": "tina",
                     "left": 810,
-                    "top": 299,
-                    "width": 439,
-                    "height": 711,
-                    "image": "101_constFrontOffice/" + image
+                    "top": 268,
+                    "width": 491,
+                    "height": 715,
+                    "image": "101_constFrontOffice/sit1.png"
                 }
             ];
-
-            var navList = [100];
-            if (sc.getstep("construction") > 1 && g.dt.getHours() < 18)
-                navList = [102, 100];
 
             $.each(btnList, function (i, v) {
                 nav.button(v, 101);
             });
         }
-        nav.buildnav(navList);
+        nav.buildnav([100,0]);
     }
 };
 
 room101.btnclick = function (name) {
     switch (name) {
         case "tina":
-            if (sc.getstep("construction") === 0)
+            if (g.get("jobapplyconst") === 0)
                 chat(1, 101);
-            else if (sc.getstep("construction") === 1)
+            else if (g.get("jobapplyconst") === 1)
                 chat(3, 101);
-            else if (g.get("jobConstWorkToday") === 1) 
+            else if (g.getDaily("construction")) 
                 chat(5, 101);
-            else if (g.get("jobConstWorkToday") === 2) {
-                chat(8, 101);
-
-            }
             else if (g.hourBetween(6, 9))
                 chat(9, 101);
-            else
-                chat(10, 101);
+            else {
+                chat(8, 101);
+            }
             break;
         case "jackit":
             nav.killbutton("jackit");
@@ -122,7 +97,6 @@ room101.chatcatch = function (callback) {
             break;
         case "payTheMan":
             g.mod("money", g.get("jobConstructionPay"));
-            g.set("jobConstWorkToday", 2);
             break;
         case "hitOnTinaFunny":
             var image = "laugh1.png";
@@ -140,9 +114,9 @@ room101.chatcatch = function (callback) {
                 "type": "btn",
                 "name": "tina",
                 "left": 810,
-                "top": 299,
-                "width": 439,
-                "height": 711,
+                "top": 268,
+                "width": 491,
+                "height": 715,
                 "image": "101_constFrontOffice/" + image
             }, 101);
             break;
@@ -190,6 +164,10 @@ room101.chatcatch = function (callback) {
                 "image": "101_constFrontOffice/jackit2.png"
             }, 101);
             room101.btnclick("tina");
+            break;
+        case "endday":
+            char.settime(18, 15);
+            char.room(0);
             break;
         default:
             break;
@@ -328,7 +306,7 @@ room101.chat = function (chatID) {
             text: "Here you go",
             button: [
                 { chatID: 13, text: "Flirt with " + sc.n("tina"), callback: "" },
-                { chatID: -1, text: "Thanks babe", callback: "" },
+                { chatID: -1, text: "Thanks babe", callback: "endday" },
             ]
         },
         {
@@ -396,49 +374,65 @@ room101.chat = function (chatID) {
             chatID: 14,
             speaker: "tina",
             text: "HAhahah " + sc.n("me") + " you're so funny!",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 15,
             speaker: "tina",
             text: "That's nice, thanks " + sc.n("me") + ".",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 16,
             speaker: "tina",
             text: "Awwwww " + sc.n("me") + " you're sweetest, but I don't like sweets; I like rough dominating cock.",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 17,
             speaker: "tina",
             text: sc.n("me") + "!!!",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 18,
             speaker: "tina",
             text: g.internal.r,
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 19,
             speaker: "tina",
             text: "Awwww you're cute.",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 20,
             speaker: "tina",
             text: "OK Casanova, if you're going to butter me up, you better eat my muffin.",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 21,
             speaker: "tina",
             text: "Stop being nice, meet me a the club and get ready to pull my hair. [Club not built yet]",
-            button: []
+            button: [
+                { chatID: -1, text: "...", callback: "endday" }
+            ]
         },
         {
             chatID: 22,

@@ -57,69 +57,9 @@ function room9_btnList() {
             "height": 162,
             "image": "9_computer/porn.png"
         },
-        {
-            "type": "img",
-            "name": "jobBG",
-            "left": 442,
-            "top": 46,
-            "width": 1425,
-            "height": 737,
-            "image": "9_computer/09_jobBackground.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobMaid",
-            "left": 444,
-            "top": 595,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobMaid.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobMaidApplied",
-            "left": 444,
-            "top": 595,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobMaidApplied.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobPI",
-            "left": 444,
-            "top": 222,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobPI.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobPIApplied",
-            "left": 444,
-            "top": 222,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobPIApplied.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobConstruction",
-            "left": 444,
-            "top": 408,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobConstruction.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobConstructionApplied",
-            "left": 444,
-            "top": 408,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobConstructionApplied.png"
-        },
+        
+        
+        
         {
             "type": "img",
             "name": "navBar",
@@ -163,37 +103,89 @@ room9.btnclick = function (name) {
             char.room(g.pass);
             break;
         case "internet":
-            $('#room-buttons').html('');
-            btnList = room9_btnList();
-            $.each(btnList, function (i, v) {
-                if (v.name === "jobMaid") {
-                    if (sc.getstep("jeffery") === 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobConstruction") {
-                    if (sc.getstep("construction") === 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobPI") {
-                    if (sc.getstep("missy") === 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobMaidApplied") {
-                    if (sc.getstep("jeffery") !== 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobConstructionApplied") {
-                    if (sc.getstep("construction") !== 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobPIApplied") {
-                    if (sc.getstep("missy") !== 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "navBar" || v.name === "jobBG" || v.name === "close")
-                    nav.button(v, g.roomID);
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "jobBG",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/09_jobBackground.png"
+            }, 9);
 
-            });
+            if (g.get("jobapplynurse") === 0)
+                nav.button({
+                    "type": "btn",
+                    "name": "jobNurse",
+                    "left": 444,
+                    "top": 222,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobPI.png"
+                }, 9);
+            else
+                nav.button({
+                    "type": "img",
+                    "name": "",
+                    "left": 444,
+                    "top": 222,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobPIApplied.png"
+                }, 9);
+
+            if (g.get("jobapplyconst") === 0)
+                nav.button({
+                    "type": "btn",
+                    "name": "jobConstruction",
+                    "left": 444,
+                    "top": 408,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobConstruction.png"
+                }, 9);
+            else
+                nav.button({
+                    "type": "img",
+                    "name": "",
+                    "left": 444,
+                    "top": 408,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobConstructionApplied.png"
+                }, 9);
+
+            if (g.get("jobapplybeaver") === 0)
+                nav.button({
+                    "type": "btn",
+                    "name": "jobBeaver",
+                    "left": 444,
+                    "top": 595,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobMaid.png"
+                }, 9);
+            else
+                nav.button({
+                    "type": "img",
+                    "name": "",
+                    "left": 444,
+                    "top": 595,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobMaidApplied.png"
+                }, 9);
+
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 450,
+                "top": 53,
+                "width": 42,
+                "height": 42,
+                "image": "9_computer/09_close.png"
+            }, 9);
             break;
         case "close":
             $('#room-buttons').html('');
@@ -203,22 +195,21 @@ room9.btnclick = function (name) {
                     nav.button(v, g.roomID);
             });
             break;
-        case "jobMaid":
-            sc.setstep("jeffery", 1);
+        case "jobBeaver":
+            g.set("jobapplybeaver", 1);
             room9.btnclick("internet");
             chat(2, 9);
             break;
         case "jobConstruction":
-            sc.setstep("construction", 1);
+            g.set("jobapplyconst", 1);
             room9.btnclick("internet");
             chat(0, 9);
             g.roomMapAccess(100, true, true);
             break;
-        case "jobPI":
-            sc.setstep("missy", 1);
+        case "jobNurse":
+            g.set("jobapplynurse", 1);
             room9.btnclick("internet");
             chat(1, 9);
-            g.roomMapAccess(203, true, false);
             break;
         case "files":
 
@@ -385,9 +376,8 @@ room9.chat = function(chatID){
         {
             chatID: 1,
             speaker: "me",
-            text: "You have applied for the Private Investigator Position. To complete your " + 
-            "application Purchase a Private Investigator's License at city hall then bring that to " + sc.n("missy") + 
-            " downtown. ",
+            text: "You have applied to be a nurse. To complete your " + 
+            "application go to the hospital downtown. ",
             button: []
         },
         {

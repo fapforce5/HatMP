@@ -7,7 +7,7 @@ room300.main = function () {
         nav.bg("300_apartment/fight.jpg");
         chat(4, 300);
     }
-    else if (envyStep > 15) {
+    else if (envyStep > 15 && envyStep < 100) {
         nav.button({
             "type": "btn",
             "name": "door",
@@ -27,18 +27,33 @@ room300.main = function () {
             "title": "Go to the second floor. ",
             "image": "300_apartment/stairs1.png"
         }, 300);
-        nav.buildnav([0]);
     }
     else if (envyStep === 14 || envyStep === 15) {
-        nav.button({
-            "type": "btn",
-            "name": "door",
-            "left": 930,
-            "top": 501,
-            "width": 231,
-            "height": 267,
-            "image": "300_apartment/door14.png"
-        }, 300);
+        if (g.isNight()) {
+            nav.button({
+                "type": "btn",
+                "name": "door",
+                "left": 921,
+                "top": 494,
+                "width": 132,
+                "height": 236,
+                "title": "Visit Envy ",
+                "image": "300_apartment/door.png"
+            }, 300);
+        }
+        
+        else {
+            nav.button({
+                "type": "btn",
+                "name": "door",
+                "left": 930,
+                "top": 501,
+                "width": 231,
+                "height": 267,
+                "image": "300_apartment/door14.png"
+            }, 300);
+        }
+        
         nav.button({
             "type": "btn",
             "name": "stairs",
@@ -49,7 +64,19 @@ room300.main = function () {
             "title": "Go to the second floor. ",
             "image": "300_apartment/stairs1.png"
         }, 300);
-        nav.buildnav([0]);
+    }
+    else if (envyStep === 100) {
+        chat(25, 300);
+        nav.button({
+            "type": "btn",
+            "name": "stairs",
+            "left": 1350,
+            "top": 396,
+            "width": 78,
+            "height": 407,
+            "title": "Go to the second floor. ",
+            "image": "300_apartment/stairs1.png"
+        }, 300);
     }
     else {
         var btnList = [
@@ -89,9 +116,9 @@ room300.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 300);
         });
-        var navListx = [303, 0];
-        nav.buildnav(navListx);
     }
+    var navListx = [315, 303, 0];
+    nav.buildnav(navListx);
 };
 
 room300.btnclick = function (name) {
@@ -101,7 +128,7 @@ room300.btnclick = function (name) {
             break;
         case "door":
             var envystep = sc.getstep("envy");
-            if (g.get("envyDayEvent")) {
+            if (g.getDaily("envy")) {
                 chat(2, 300);
             }
             else if (g.isNight()) {
@@ -151,7 +178,7 @@ room300.btnclick = function (name) {
             }
             break;
         case "stairs":
-            char.room(303);
+            chat(26, 300);
             break;
         default:
             break;
@@ -168,19 +195,25 @@ room300.chatcatch = function (callback) {
             break;
         case "fightend":
             sc.setstep("envy", 1);
-            g.setflag("envyDayEvent");
+            g.setDaily("envy");
             char.addtime(30);
             char.room(300);
             break;
         case "firstMeetEnd":
             sc.setstep("envy", 2);
-            g.setflag("envyDayEvent");
+            g.setDaily("envy");
             char.addtime(60);
             char.room(300);
             break;
         case "enter":
             g.pass = null;
             char.room(301);
+            break;
+        case "315":
+            char.room(315);
+            break;
+        case "303":
+            char.room(303);
             break;
         default:
             break;
@@ -406,6 +439,24 @@ room300.chat = function (chatID) {
             text: "Evicted... I guess she's not coming back. ",
             button: [
                 { chatID: -1, text: "....", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "thinking",
+            text: "I'm not even going to try knocking on her door until after I talk to Spanky. ",
+            button: [
+                { chatID: -1, text: "....", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "thinking",
+            text: "I'm on the first floor. Which floor do I want to walk up?  ",
+            button: [
+                { chatID: -1, text: "Second floor, My girlfirend's floor", callback: "315" },
+                { chatID: -1, text: "Third floor.", callback: "303" },
+                { chatID: -1, text: "Stay here", callback: "" },
             ]
         },
     ];

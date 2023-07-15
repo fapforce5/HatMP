@@ -27,7 +27,7 @@ room461.main = function () {
     }
     else {
         var clutNum = sc.getstep("cultboy");
-        if (!g.get("cultrun") && (clutNum < 2 || Math.floor(Math.random() * 3) === 0)) {
+        if (!g.getDaily("cultrun") && (clutNum < 2 || Math.floor(Math.random() * 3) === 0)) {
             nav.button({
                 "type": "btn",
                 "name": "cult",
@@ -124,7 +124,7 @@ room461.chatcatch = function (callback) {
             char.room(450);
             break;
         case "cult2":
-            g.setflag("cultrun");
+            g.setDaily("cultrun");
             nav.killbutton("cult");
             nav.bg("461_run/cult2.jpg")
             break;
@@ -197,7 +197,7 @@ room461.chatcatch = function (callback) {
                 cl.c.butthole += .2;
             g.mod("creamPied", 1);
             g.mod("receiveAnalMale", 1);
-            g.setflag("cultrun");
+            g.setDaily("cultrun");
             cl.undo();
             char.room(450);
             break;

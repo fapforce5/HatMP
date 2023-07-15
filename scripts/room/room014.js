@@ -58,7 +58,7 @@ room14.main = function () {
                     }];
                     break;
                 case 3:
-                    if (g.get("bigguy")) {
+                    if (g.getDaily("bigguy")) {
                         btnList = [{
                             "type": "btn",
                             "name": "couple",
@@ -119,7 +119,7 @@ room14.main = function () {
                 "height": 299,
                 "image": "14_motherRoom/dresserDay.png"
             }];
-        if (g.checkflag("momChore")) {
+        if (g.getDaily("momChoreBed")) {
             btnList.push({
                 "type": "img",
                 "name": "bedmade",
@@ -155,7 +155,7 @@ room14.main = function () {
 room14.btnclick = function (name) {
     switch (name) {
         case "closet":
-            if (!g.checkflag("momRaidCloset"))
+            if (!g.getDaily("momRaidCloset"))
                 char.room(17);
             else
                 chat(1, 14);
@@ -252,7 +252,7 @@ room14.btnclick = function (name) {
                 "height": 325,
                 "image": "14_motherRoom/14_bedmade.png"
             }, 14);
-            g.setflag("momChore");
+            g.setDaily("momChoreBed");
             g.mod("rentKnockOff", 5);
             chat(8, 14);
             break;
@@ -262,7 +262,7 @@ room14.btnclick = function (name) {
             chat(15, 14);
             break;
         case "couple":
-            if (g.get("bigguy"))
+            if (g.getDaily("bigguy"))
                 chat(16, 14);
             else if (sc.getstep("landlord") < 200)
                 chat(68, 14);
@@ -646,28 +646,28 @@ room14.chatcatch = function (callback) {
             char.room(21);
             break;
         case "fin0":
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             break;
         case "fin1":
             sc.setstep("bigguy", 1);
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             break;
         case "fin2":
             sc.setstep("bigguy", 2);
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             break;
         case "fin3":
             sc.setstep("bigguy", 3);
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             break;
         case "fin4":
             g.mod("loadSwollowed", 1);
             sc.setstep("bigguy", 4);
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             break;
         case "couple3a":
@@ -772,14 +772,14 @@ room14.chatcatch = function (callback) {
             break;
         case "bg4_end":
             g.mod("loadSwollowed", 30);
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             sc.setstep("bigguy", 5);
             char.room(14);
             break;
         case "bg4_end_loop":
             g.mod("loadSwollowed", 15);
-            g.setflag("bigguy");
+            g.setDaily("bigguy");
             char.addtime(60);
             char.room(14);
             break;
@@ -1025,7 +1025,7 @@ room14.chatcatch = function (callback) {
             g.mod("receiveBoobJob", 1);
             sc.setstep("landlord", 11);
             char.addtime(120);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(10);
             break;
         case "c1":

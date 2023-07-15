@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./style/char.css" />
 
     <script src="./scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="./scripts/pureknob.js" type="text/javascript"></script>
 
     <script src="./scripts/global.js" type="text/javascript"></script>
     <script src="./scripts/clothes.js" type="text/javascript"></script>
@@ -22,7 +23,10 @@
     <script src="./scripts/enemy.js" type="text/javascript"></script>
     <script src="./scripts/enemyEnd.js" type="text/javascript"></script>
     <script src="./scripts/trophy.js" type="text/javascript"></script>
-    <script src="./scripts/fame.js" type="text/javascript"></script>
+    <script src="./scripts/rape.js" type="text/javascript"></script>
+    <script src="./scripts/stats.js" type="text/javascript"></script>
+    <script src="./scripts/sissy.js" type="text/javascript"></script>
+    <script src="./scripts/missyHelper.js" type="text/javascript"></script>
 
     <script src="./scripts/room/room000.js" type="text/javascript"></script>
     <script src="./scripts/room/room001.js" type="text/javascript"></script>
@@ -91,6 +95,7 @@
     <script src="./scripts/room/room214.js" type="text/javascript"></script>
     <script src="./scripts/room/room215.js" type="text/javascript"></script>
     <script src="./scripts/room/room216.js" type="text/javascript"></script>
+    <script src="./scripts/room/room217.js" type="text/javascript"></script>
     <script src="./scripts/room/room225.js" type="text/javascript"></script>
     <script src="./scripts/room/room226.js" type="text/javascript"></script>
     <script src="./scripts/room/room227.js" type="text/javascript"></script>
@@ -101,6 +106,7 @@
     <script src="./scripts/room/room301.js" type="text/javascript"></script>
     <script src="./scripts/room/room303.js" type="text/javascript"></script>
     <script src="./scripts/room/room304.js" type="text/javascript"></script>
+    <script src="./scripts/room/room315.js" type="text/javascript"></script>
     <script src="./scripts/room/room325.js" type="text/javascript"></script>
     <script src="./scripts/room/room326.js" type="text/javascript"></script>
     <script src="./scripts/room/room327.js" type="text/javascript"></script>
@@ -108,6 +114,7 @@
     <script src="./scripts/room/room351.js" type="text/javascript"></script>
     <script src="./scripts/room/room352.js" type="text/javascript"></script>
     <script src="./scripts/room/room353.js" type="text/javascript"></script>
+    <script src="./scripts/room/room375.js" type="text/javascript"></script>
     <script src="./scripts/room/room400.js" type="text/javascript"></script>
     <script src="./scripts/room/room401.js" type="text/javascript"></script>
     <script src="./scripts/room/room402.js" type="text/javascript"></script>
@@ -159,6 +166,7 @@
     <script src="./scripts/room/room727.js" type="text/javascript"></script>
     <script src="./scripts/room/room750.js" type="text/javascript"></script>
     <script src="./scripts/room/room751.js" type="text/javascript"></script>
+    <script src="./scripts/room/room825.js" type="text/javascript"></script>
     <script src="./scripts/room/room875.js" type="text/javascript"></script>
     <script src="./scripts/room/room876.js" type="text/javascript"></script>
     <script src="./scripts/room/room900.js" type="text/javascript"></script>
@@ -295,53 +303,106 @@
                 <div id="room_left_walk_sub" class="resize"></div>
             </div>
             <div id="room_left_graph" class="left-menu">
-                <div style="padding:5px; color: #fff;" class="glob-bg">
-                    <!--<div class="left-graph-char" id="lg_charbody">
-        <img id="rl_fightdisplay-1" src="./images/room/227_fight/h_9_long_back.png" style="width:100%;" />
-        <img id="rl_fightdisplay0" src="./images/room/227_fight/g_victory_m.png" style="width:100%;" />
-        <img id="rl_fightdisplay1" src="./images/room/227_fight/g_victory_d_b.png" style="width:100%;" />
-        <img id="rl_fightdisplay2" src="./images/room/227_fight/h_8_short.png" style="width:100%;" />
+                <div style="padding:5px; color: #fff; text-align:center;" class="glob-bg">
+                    <div class="mt-50x rl-selectButton" style="margin-top:50px;" id="rl_pageSelect">
+                        <button data-number="0" class="char-20 rl-selectButton-active">General</button>
+                        <button data-number="1" class="char-20">Cravings</button>
+                        <button data-number="2" class="char-20">Fight</button>
+                    </div>
+                    <div id="rl_page0">
+                        <div class="char-charDisplay mt-50x" id="char_charDisplay"></div>
+                        <div style="font-size:12px;" class="char-20 mb-10" id="rl_appearance">Boy</div>
 
-    </div>-->
-                    <div style="font-size:20px;" class="char-20 mt-50x">Fight!</div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_energy">Energy</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="energy" style="width:20%; height:15px; background:#20C000; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_energy">Energy</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="energy" style="width:20%; height:15px; background:#20C000; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <div style="font-size:12px;" class="char-20 mt-10">Hormone Level</div>
+                        <div style="width: 100%; height:15px; background:#4E99E0; border-radius:20px; border:solid 1px #000000;" class="resize-height">
+                            <div data-name="hormone" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        Gallons of piss drank: 0
+                        Gallons of cum drank: 0
+                        Gallons of cum in your ass: 0
+                        Gallons of enemas: 0
+                        Raped: 0
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_cheer">Clueless Cheerleader</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="cheerleader" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_strip">Awkward Stripper</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+
                     </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_fitness">Fitness: 0</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="fitness" style="width: 20%; height:  2px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    <div id="rl_page1">
+
+                        <div style="font-size:20px;" class="char-20" id="rl1_xdress">Crosdressing</div>
+                        <div id="rl_xdress"></div>
+
+                        <div style="font-size:20px;" class="char-20" id="rl1_subdom">Sub / Dom</div>
+                        <div id="rl_subdom"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_attraction">Attraction</div>
+                        <div id="rl_attraction"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_humiliation">Humiliation</div>
+                        <div id="rl_humiliation"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_oral">Oral</div>
+                        <div id="rl_oral"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_anal">Anal</div>
+                        <div id="rl_anal"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_cum">Cum</div>
+                        <div id="rl_cum"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_piss">Piss</div>
+                        <div id="rl_piss"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_enema">Enema</div>
+                        <div id="rl_enema"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_feet">Feet</div>
+                        <div id="rl_feet"></div>
+
+                        <div style="font-size:20px;" class="char-20 mt-adjust" id="rl1_knotty">Knotty</div>
+                        <div id="rl_knotty"></div>
+
                     </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_punch">Punch: 0</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="body" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_kick">Kick: 0</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_d">Defense: 0</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="d" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_subdom">Neutral</div>
-                    <div class="left-graph-char-bar resize-height" style="background:#ff5ed1;">
-                        <div data-name="subdom" style="width: 20%; height:15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <hr />
-                    <div class="char-charDisplay" id="char_charDisplay"></div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_appearance">Boy</div>
-                    <div style="font-size:12px;" class="char-20 mt-10">Hormone Level</div>
-                    <div style="width: 100%; height:15px; background:#4E99E0; border-radius:20px; border:solid 1px #000000;" class="resize-height">
-                        <div data-name="hormone" style="width: 20%; height:15px; background:#ff5ed1; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_cheer">Clueless Cheerleader</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="cheerleader" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                    </div>
-                    <div style="font-size:12px;" class="char-20 mt-10" id="rl_strip">Awkward Stripper</div>
-                    <div class="left-graph-char-bar resize-height">
-                        <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                    <div id="rl_page2">
+                        <div style="font-size:20px;" class="char-20 mt-50x">Fight!</div>
+                        <div class="left-graph-char" id="lg_charbody">
+                            <img id="rl_fightdisplay-1" src="./images/room/227_fight/h_9_long_back.png" style="width:100%;" />
+                            <img id="rl_fightdisplay0" src="./images/room/227_fight/g_victory_m.png" style="width:100%;" />
+                            <img id="rl_fightdisplay1" src="./images/room/227_fight/g_victory_d_b.png" style="width:100%;" />
+                            <img id="rl_fightdisplay2" src="./images/room/227_fight/h_8_short.png" style="width:100%;" />
+                        </div>
+
+
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_fitness">Fitness: 0</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="fitness" style="width: 20%; height:  2px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_punch">Punch: 0</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="body" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_kick">Kick: 0</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_d">Defense: 0</div>
+                        <div class="left-graph-char-bar resize-height">
+                            <div data-name="d" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <div style="font-size:12px;" class="char-20 mt-10" id="rl_subdom">Neutral</div>
+                        <div class="left-graph-char-bar resize-height" style="background:#ff5ed1;">
+                            <div data-name="subdom" style="width: 20%; height:15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        </div>
+                        <hr />
                     </div>
                 </div>
             </div>

@@ -147,7 +147,7 @@ room125.chatcatch = function (callback) {
             $('#room_footer').hide();
             g.internal = new Array();
             g.pass.gameCount++;
-            if (g.pass.gameCount < 12 && !g.get("cardgame")) {
+            if (g.pass.gameCount < 12 && !g.getDaily("cardgame")) {
                 char.addtime(15);
                 if (g.pass.deck.length < 14) {
                     g.pass.deck = new Array();
@@ -466,7 +466,7 @@ room125.chatcatch = function (callback) {
 
             break;
         case "exit":
-            g.setflag("cardgame");
+            g.setDaily("cardgame");
             nav.room(0);
             break;
         case "jada1":
@@ -547,7 +547,7 @@ room125.chatcatch = function (callback) {
             nav.killbutton("howto");
             break;
         case "trun":
-            g.setflag("cardgame");
+            g.setDaily("cardgame");
             char.room(0);
             break;
         case "t1":
@@ -586,7 +586,7 @@ room125.chatcatch = function (callback) {
         case "t12":
             g.mod("giveOralMale", 3);
             sc.setstep("kei", -2);
-            g.setflag("cardgame");
+            g.setDaily("cardgame");
             char.room(0);
             break;
         case "tx3":
@@ -604,7 +604,7 @@ room125.chatcatch = function (callback) {
             break;
         case "tx11":
             char.addtime(120);
-            g.setflag("cardgame");
+            g.setDaily("cardgame");
             g.mod("giveOralMale", 3);
             char.room(0);
             break;

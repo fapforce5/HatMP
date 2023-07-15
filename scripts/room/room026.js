@@ -74,7 +74,7 @@ room26.btnclick = function (name) {
                 room25.btnclick("mom");
             }
             else {
-                if (g.get("momchat"))
+                if (g.getDaily("landlord"))
                     chat(2, 26);
                 else {
                     if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2))
@@ -163,25 +163,25 @@ room26.chatcatch = function (callback) {
             break;
         case "passtimeStop":
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "passtime1":
             sc.setstep("landlord", 1);
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "passtime2":
             sc.setstep("landlord", 2);
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "passtime3":
             sc.setstep("landlord", 3);
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "takekey":
@@ -190,18 +190,18 @@ room26.chatcatch = function (callback) {
         case "passtime4":
             sc.setstep("landlord", 4);
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "passtime5":
             sc.setstep("landlord", 6);
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "passtime6":
             char.addtime(30);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(26);
             break;
         case "passtime6a":
@@ -253,7 +253,7 @@ room26.chatcatch = function (callback) {
             cl.undo();
             g.mod("giveOralFemale", 1);
             sc.setstep("landlord", 7);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             scc.love("landlord", 20, 100);
             char.room(16);
             break;
@@ -273,7 +273,7 @@ room26.chatcatch = function (callback) {
             char.addtime(69);
             cl.undo();
             sc.setstep("landlord", 8);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(16);
             break;
         case "passtime8":
@@ -340,7 +340,7 @@ room26.chatcatch = function (callback) {
         case "panties8":
             g.pass = 10;
             sc.setstep("landlord", -2);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.addtime(60);
             char.room(8);
             break;
@@ -407,7 +407,7 @@ room26.chatcatch = function (callback) {
         case "201_4":
             sc.setstep("landlord", 202);
             char.addtime(60);
-            g.setflag("momchat");
+            g.setDaily("landlord");
             char.room(16);
             break;
         case "tv":

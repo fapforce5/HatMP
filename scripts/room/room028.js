@@ -19,7 +19,6 @@ room28.main = function () {
 
     g.newday();
     cl.hairgrowth();
-
     var maxE = g.get("maxenergy");
     var thisautohormone, hix, tix;
     var sissyTrans = g.get("oncase");

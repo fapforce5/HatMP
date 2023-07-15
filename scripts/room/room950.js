@@ -293,13 +293,13 @@ room950.btnclick = function (name) {
             chat(1, 950);
             break;
         case "window":
-            if (g.internal.day < 1 || g.get("cindy")) {
+            if (g.internal.day < 1 || g.getDaily("cindy")) {
                 nav.killall();
                 nav.bg("950_cell/view.jpg");
                 chat(27, 950);
             }
             else {
-                g.set("cindy", false);
+                g.setDaily("cindy", false);
                 var dariaStep = sc.getstep("daria");
                 if (dariaStep === 0) {
                     nav.killall();

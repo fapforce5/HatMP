@@ -50,17 +50,20 @@ room303.main = function () {
             "image": "303_secondFloor/garbage.png"
         });
     }
-    var navList = [300, 0];
+    var navList = [300, 315, 0];
     $.each(btnList, function (i, v) {
         nav.button(v, 303);
     });
     nav.buildnav(navList);
+
+    fame.event();
+    
 };
 
 room303.btnclick = function (name) {
     switch (name) {
         case "stairs":
-            char.room(300);
+            chat(4, 303);
             break;
         case "pizza":
             nav.kill();
@@ -145,7 +148,11 @@ room303.btnclick = function (name) {
 
 room303.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "300":
+            char.room(300);
+            break;
+        case "315":
+            char.room(315);
             break;
         default:
             break;
@@ -187,6 +194,16 @@ room303.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "" }
             ]
         },
+        {
+            chatID: 4,
+            speaker: "thinking",
+            text: "I'm on the second floor. ",
+            button: [
+                { chatID: -1, text: "First floor", callback: "300" },
+                { chatID: -1, text: "Second floor", callback: "315" },
+                { chatID: 1, text: "Stay here", callback: "" },
+            ]
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

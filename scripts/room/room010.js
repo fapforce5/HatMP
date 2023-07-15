@@ -197,9 +197,9 @@ room10.btnclick = function (name) {
             else {
                 nav.killall();
                 nav.bg("10_mainchar/petcat.jpg", "10_mainchar/petcatnight.jpg");
-                if (!g.checkflag("petcat")) {
+                if (!g.getDaily("petcat")) {
                     g.mod("energy", 1000);
-                    g.setflag("petcat");
+                    g.setDaily("petcat");
                 }
                 chat(39, 10);
             }

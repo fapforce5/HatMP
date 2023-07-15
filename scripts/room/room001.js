@@ -73,6 +73,18 @@ room1.chatcatch = function (callback) {
         case "killFame":
             nav.killbutton("fameRandomEvent");
             break;
+        case "rape1":
+            nav.killall();
+            fame.position1(fame.rapechar);
+            break;
+        case "rape2":
+            nav.killall();
+            fame.position2(fame.rapechar);
+            break;
+        case "rape3":
+            char.addtime(67);
+            char.room(g.roomID);
+            break;
         default:
             break;
     }

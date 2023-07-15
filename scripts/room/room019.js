@@ -30,7 +30,7 @@ room19.main = function () {
     }, 19);
 
 
-    if (g.get("buttholeplay"))
+    if (g.getDaily("buttholeplay"))
         chat(7, 19);
     else if (lubeLevel === 0)
         chat(0, 19);
@@ -300,7 +300,7 @@ room19.chatcatch = function (callback) {
             break;
         case "Stop":
             cl.display();
-            g.setflag("buttholeplay");
+            g.setDaily("buttholeplay");
             $('.room-left').show();
             char.room(g.pass);
             break;

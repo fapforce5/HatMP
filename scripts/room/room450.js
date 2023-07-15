@@ -306,14 +306,14 @@ room450.chatcatch = function(callback){
         case "lola7a":
             sc.setstep("lola", -3);
             sc.setstep("lola", 12);
-            g.setflag("lolaDayEvent");
+            g.setDaily("lola");
             char.addtime(120);
             char.room(450);
             break;
         case "lola7b":
             sc.setstep("lola", -4);
             sc.setstep("lola", 12);
-            g.setflag("lolaDayEvent");
+            g.setDaily("lola");
             char.addtime(120);
             char.room(450);
             break;
@@ -339,7 +339,7 @@ room450.chatcatch = function(callback){
             sc.setstep("lola", 13);
             char.addtime(120);
             g.mod("fuckPussy", 1);
-            g.setflag("lolaDayEvent");
+            g.setDaily("lola");
             cl.undo();
             scc.love("lola", 200, 100);
             char.room(450);

@@ -6,7 +6,7 @@ room725.main = function () {
         chat(17, 725);
     }
     else {
-        if (sc.getstep("chloe") < 3 && !g.get("chloe")) {
+        if (sc.getstep("chloe") < 3 && !g.getDaily("chloe")) {
             g.pass = "";
             nav.button({
                 "type": "btn",
@@ -72,7 +72,7 @@ room725.btnclick = function (name) {
 room725.chatcatch = function (callback) {
     switch (callback) {
         case "chloeGone":
-            g.setflag("chloe");
+            g.setDaily("chloe");
             nav.killbutton("chloe");
             break;
         case "chloe1":
@@ -105,7 +105,7 @@ room725.chatcatch = function (callback) {
             break;
         case "chloe2bad":
             sc.setstep("chloe", 1);
-            g.setflag("chloe");
+            g.setDaily("chloe");
             char.room(725);
             break;
         case "chloe4":
@@ -140,7 +140,7 @@ room725.chatcatch = function (callback) {
         case "zoey8":
             sc.setstep("chloe", 2);
             char.addtime(60);
-            g.setflag("chloe");
+            g.daily("chloe");
             char.room(725);
             break;
         case "leave":

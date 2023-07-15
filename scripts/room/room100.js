@@ -5,7 +5,7 @@ room100.main = function () {
     var btnList = new Array();
     var navList = new Array();
     
-    if (g.hourBetween(6, 12) && sc.getstep("construction") > 1 && g.dt.getDay() !== 0) {
+    if (g.hourBetween(6, 12) && sc.getstep("construction") > 0 && g.dt.getDay() !== 0) {
         if(g.get("energy") < 60)
             navList = [101, 0];
         else
@@ -29,7 +29,7 @@ room100.main = function () {
             "image": "100_construction/100_trailer.png"
         });
     }
-    else if (g.hourBetween(6, 19) && g.dt.getDay() !== 0) {
+    else if (g.hourBetween(6, 17) && g.dt.getDay() !== 0) {
         navList = [101, 0];
         btnList.push({
             "type": "btn",
@@ -42,6 +42,17 @@ room100.main = function () {
         });
     }
     else {
+        if (!g.isNight()) {
+            btnList.push({
+                "type": "btn",
+                "name": "security",
+                "left": 651,
+                "top": 35,
+                "width": 795,
+                "height": 1045,
+                "image": "100_construction/security.png"
+            });
+        }
         nav.bg("100_construction/100_siteClosed.jpg", "100_construction/100_siteClosedNight.jpg");
         navList = [0];
     }
@@ -68,6 +79,9 @@ room100.btnclick = function (name) {
             }
             else
                 char.room(103);
+            break;
+        case "security":
+            chat(3, 100);
             break;
         default:
             break;
@@ -101,6 +115,12 @@ room100.chat = function(chatID){
             chatID: 2,
             speaker: "me",
             text: "I have to wear jeans and a t-shirt to work. ",
+            button: []
+        },
+        {
+            chatID: 3,
+            speaker: "!burlysecurity",
+            text: "Site's closed on Sunday. Move along cutie pie. ",
             button: []
         }
     ];

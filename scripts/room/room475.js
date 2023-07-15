@@ -21,9 +21,9 @@ room475.main = function () {
         mainLoop = false;
     }
     else if (thisUsed === "g") {
-        if (!g.get("gold0")) {
+        if (!g.getDaily("gold0")) {
             mainLoop = false;
-            g.setflag("gold0");
+            g.setDaily("gold0");
             nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
             nav.button({
                 "type": "btn",

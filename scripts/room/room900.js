@@ -3,7 +3,7 @@
 var room900 = {};
 
 room900.main = function () {
-    if (cl.isLewd()) {
+    if (cl.isLewd() && !g.isNight()) {
         nav.button({
             "type": "img",
             "name": "cop",

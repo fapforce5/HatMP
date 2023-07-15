@@ -309,7 +309,7 @@ room7.chatcatch = function (callback) {
             break;
         case "eva7":
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
-            g.setflag("evaDayEvent");
+            g.setDaily("eva");
             sc.setstep("eva", 10);
             char.addtime(30);
             break;
@@ -405,7 +405,7 @@ room7.chatcatch = function (callback) {
             cl.doCum(true);
             g.mod("giveOralFemale", 1);
             g.mod("fuckPussy", 1);
-            g.setflag("evaDayEvent");
+            g.setDaily("eva");
             char.addtime(60);
             char.room(10);
             break;
@@ -433,7 +433,7 @@ room7.chatcatch = function (callback) {
         case "eva10kt":
             sc.setstep("eva", 11);
             cl.doCum(true);
-            g.setflag("evaDayEvent");
+            g.setDaily("eva");
             char.addtime(60);
             g.mod("receiveHandjobFemale", 1);
             g.pass = "";
@@ -670,8 +670,8 @@ room7.chatcatch = function (callback) {
             sc.setstep("lola", 14);
             g.mod("fuckPussy", 2);
             g.mod("giveAnalFemale", 1);
-            g.setflag("lolaDayEvent");
-            g.setflag("evaDayEvent");
+            g.setDaily("lola");
+            g.setDaily("eva");
             char.addtime(120);
             char.room(10);
             break;

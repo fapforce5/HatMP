@@ -37,7 +37,7 @@ room12.main = function () {
         ];
 
         var hit = false;
-        if (!g.checkflag("showerPeek")) {
+        if (!g.getDaily("homeShowerPeek")) {
             if (sc.getTimeline("lola").thisRoom) {
                 nav.button(room12.showerScene("sister1", 12));
                 chat(0, 12);
@@ -267,7 +267,7 @@ room12.chatcatch = function (callback) {
         case "sister2":
             nav.killbutton("sister1");
             nav.button(room12.showerScene("sister2", 12));
-            g.setflag("showerPeek");
+            g.setDaily("homeShowerPeek");
             break;
         case "sister3":
             nav.killbutton("sister2");
@@ -334,7 +334,7 @@ room12.chatcatch = function (callback) {
                 "height": 784,
                 "image": "12_bathroom/12_mother2.png"
             }, 12);
-            g.setflag("showerPeek");
+            g.setDaily("homeShowerPeek");
             break;
         case "mom3":
             nav.killbutton("mom2");

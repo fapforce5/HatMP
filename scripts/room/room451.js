@@ -43,6 +43,29 @@ room451.main = function () {
             }
         ];
 
+        if (!g.isNight() && Math.floor(Math.random() * 3) === 0) {
+            btnList.push({
+                "type": "btn",
+                "name": "pee",
+                "left": 160,
+                "top": 156,
+                "width": 315,
+                "height": 730,
+                "image": "451_parkMensRoom/pee0.png"
+            });
+        }
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "urinal",
+                "left": 243,
+                "top": 354,
+                "width": 158,
+                "height": 255,
+                "image": "451_parkMensRoom/urinal.png"
+            });
+        }
+
         var navList = [450];
 
         $.each(btnList, function (i, v) {
@@ -50,6 +73,10 @@ room451.main = function () {
         });
 
         nav.buildnav(navList);
+
+        if (g.isNight()) {
+            fame.event();
+        }
     }
     else {
         g.internal = canGoOut;
@@ -61,7 +88,13 @@ room451.btnclick = function (name) {
     switch (name) {
         case "stall3":
             nav.killall();
-            nav.bg("451_parkMensRoom/stall.jpg");
+            if (Math.floor(Math.random() * 3) === 0) {
+                nav.bg("451_parkMensRoom/blumpkin.jpg");
+                chat(54, 451);
+            }
+            else {
+                nav.bg("451_parkMensRoom/stall.jpg");
+            }
             nav.buildnav([451]);
             break;
         case "stall2":
@@ -284,6 +317,23 @@ room451.btnclick = function (name) {
                 chat(41, 451);
             else
                 chat(32, 451);
+            break;
+        case "pee":
+            chat(50, 451);
+            break;
+        case "urinal":
+            if (g.get("bladder") < .1) {
+                chat(52, 451);
+            }
+            else if (g.sissy[22].ach) {
+                chat(53, 451);
+            }
+            else {
+                nav.killall();
+                g.set("bladder", 0);
+                nav.bg("451_parkMensRoom/urinal.jpg");
+                chat(51, 451);
+            }
             break;
         default:
             break;
@@ -1004,6 +1054,46 @@ room451.chat = function (chatID) {
             text: "*lick* YUM!",
             button: [
                 { chatID: -1, text: "MMmmm", callback: "duoEnd" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "random",
+            text: "You better back off of a man while he's pissin' or you're liable to get a fist to your face there partner",
+            button: [
+                { chatID: -1, text: "oh. Sorry. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "thinking",
+            text: "Just pissing in the toilet with my massive dong. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "thinking",
+            text: "I don't need to pee. I better hydrate. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "I better sit down to pee. Don't want to get in trouble.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "random",
+            text: "What the hell dude? Get out I'm taking a shit here.   ",
+            button: [
+                { chatID: -1, text: "Oh. Whoops", callback: "reset" },
             ]
         },
     ];

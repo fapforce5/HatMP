@@ -26,7 +26,7 @@ privateChat.makeChat = function (entry, chatID, roomID) {
         $('#room_footer').hide();
         if (!$('#room_chatOverlay').is(":visible")) {
             $('#room_chatOverlay').show();
-            $('#char_charDisplay').hide();
+            //$('#char_charDisplay').hide();
         }
         var counter = 0;
         $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
@@ -63,16 +63,26 @@ privateChat.images = function (charName) {
 
 privateChat.speakerInfo = function (charName) {
     charName = charName.toLowerCase();
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === charName) {
-            return {
-                img: "./images/speaker/" + sc.char[i].image, name: sc.char[i].display
-            };
-        }
+    if (charName[0] === "!") {
+        var getTrivial = sc.trivial(charName);
+        return {
+            img: "./images/speaker/trivial/" + getTrivial.image,
+            name: getTrivial.display
+        };
     }
-    return {
-        img: "./images/speaker/rand.png", name: ""
-    };
+    else {
+        for (var i = 0; i < sc.char.length; i++) {
+            if (sc.char[i].name === charName) {
+                return {
+                    img: "./images/speaker/" + sc.char[i].image,
+                    name: sc.char[i].display
+                };
+            }
+        }
+        return {
+            img: "./images/speaker/rand.png", name: ""
+        };
+    }
 };
 
 $(document).ready(function () {
@@ -99,7 +109,7 @@ $(document).ready(function () {
                 $('#room_footerSpeach').html("");
                 $('#room_chatSpeaker').html('');
                 $('#room_footer').show();
-                $('#char_charDisplay').show();
+                //$('#char_charDisplay').show();
             }
             else
                 chat(chatID, roomID);

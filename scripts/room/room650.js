@@ -93,7 +93,7 @@ room650.btnclick = function (name) {
             }
             break;
         case "candy":
-            if (g.get("candyDayEvent")) {
+            if (g.getDaily("candy")) {
                 chat(6, 650);
             }
             else {
@@ -291,7 +291,7 @@ room650.chatcatch = function (callback) {
                 chat(36, 650);
             break;
         case "candy51_4end":
-            g.setflag("candyDayEvent");
+            g.setDaily("candy");
             char.addtime(60);
             cl.c.panties = g.internal.u;
             cl.c.pants = g.internal.p;
@@ -310,7 +310,7 @@ room650.chatcatch = function (callback) {
             nav.bg("650_toyStore/candy51_6.jpg");
             break;
         case "candy51_7":
-            g.setflag("candyDayEvent");
+            g.setDaily("candy");
             char.addtime(60);
             cl.c.panties = g.internal.u;
             cl.c.pants = g.internal.p;

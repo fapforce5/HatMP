@@ -56,7 +56,7 @@ room401.main = function () {
         case "purse":
             navList = [400];
             nav.bg("401_purchase/purse.jpg", "401_purchase/purse.jpg");
-            room401.makeInv(["b"], g.sissy[0].ach);
+            room401.makeInv(["b"], g.sissy[0].ach, 1);
             break;
         case "saucy":
             navList = [];
@@ -96,7 +96,7 @@ room401.main = function () {
             break;
         case "electronic":
             navList = [400];
-            room401.makeInv(["p"], true);
+            room401.makeInv(["p"], true, 1);
             nav.bg("401_purchase/electronic.jpg", "401_purchase/electronic.jpg");
             break;
         case "bra":
@@ -113,13 +113,16 @@ room401.main = function () {
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
+            var priceMult = 1;
             var spankyInv = ["e", "g"];
             if (sc.checkevent("spanky", 3) || g.sissy[51].ach)
                 spankyInv.push("h");
             if (sc.checkevent("spanky", -1))
                 spankyInv.push("y");
-
-            room401.makeInv(spankyInv, true);
+            if (g.get("spankyprices")) {
+                priceMult = 3;
+            }
+            room401.makeInv(spankyInv, true, priceMult);
             navList = [404, 0];
             break;
         case "fuckMyDirtyAssholeHard":
@@ -128,18 +131,18 @@ room401.main = function () {
             room401.makeClothing("chastity", "f");
             room401.makeClothing("buttplug", "f");
             room401.makeInv(["d"], g.sissy[59].ach);
-            room401.makeInv(["c"], true);
+            room401.makeInv(["c"], true, 1);
             navList = [650, 0];
             break;
         case "happyGirl":
             navList = [400];
-            room401.makeInv(["r"], true);
+            room401.makeInv(["r"], true, 1);
             room401.makeClothing("chastity", "m");
             nav.bg("401_purchase/paint.jpg", "401_purchase/paint.jpg");
             break;
         case "makeup":
             navList = [0];
-            room401.makeInv(["m"], true);
+            room401.makeInv(["m"], true, 1);
             nav.bg("407_makeup/bg.jpg");
             break;
         case "nipple":
@@ -163,7 +166,7 @@ room401.main = function () {
         var thisItem = inv.get(thisName);
         var thisID = $(this).closest('.menu-popup').attr('id');
         var thisCanBuy = $(this).data("canbuy").toString() === "true";
-
+        
         $('#menu_displayIcon').html('<img src="./images/inv/' + thisItem.image + '"/>');
         $("#menu_displayCost").html("$" + thisItem.cost);
         $("#menu_displayName").html(thisItem.display);
@@ -364,9 +367,9 @@ room401.makeClothing = function (type, sex) {
 //    }
 //};
 
-room401.makeInv = function (typeArray, canbuy) {
+room401.makeInv = function (typeArray, canbuy, priceMult) {
     var i, j;
-    
+
     for (j = 0; j < typeArray.length; j++) {
         var type = typeArray[j];
         for (i = 0; i < inv.master.length; i++) {
@@ -374,33 +377,33 @@ room401.makeInv = function (typeArray, canbuy) {
                 if (inv.master[i].name === "razor") {
                     if (sc.checkevent("me", -1)) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv" title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
                 else if (inv.master[i].name === "lube") {
                     if (g.sissy[58].ach) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
                 else if (!canbuy) {
                     $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                     $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
-                    $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
+                    $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                 }
                 else {
                     $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
-                    $('#menu-bg_' + g.internal).append('<div>$' + inv.master[i].cost + '</div>');
+                    $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                 }
                 g.internal++;
             }

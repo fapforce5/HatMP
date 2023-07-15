@@ -127,7 +127,7 @@ room11.btnclick = function (name) {
             char.room(12);
             break;
         case "bathroomClose":
-            if (!g.checkflag("showerPeek")) {
+            if (!g.getDaily("homeShowerPeek")) {
                 if (sc.getTimeline("landlord").roomID === 12)
                     char.room(12);
                 else

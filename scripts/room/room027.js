@@ -169,7 +169,7 @@ room27.chatcatch = function (callback) {
             sc.setstep("tiffany", 19);
             sc.setstep("me", -5);
             sc.setstep("me", -12);
-            g.setflag("tiffanyDayEvent");
+            g.setDaily("tif");
             break;
         case "killtif":
             char.addtime(90);

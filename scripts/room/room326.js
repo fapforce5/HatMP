@@ -104,12 +104,12 @@ room326.chatcatch = function (callback) {
             g.internal = "brush";
             room326.chatcatch("incrementHorse");
             g.mod("money", 20);
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             char.addtime(60);
             char.room(0);
             break;
         case "badEnd":
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             char.addtime(60);
             char.room(0);
             break;
@@ -155,7 +155,7 @@ room326.chatcatch = function (callback) {
             room326.chatcatch("incrementHorse");
             g.mod("money", 20);
             g.mod("giveHandjobMale", 1);
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             char.addtime(60);
             char.room(0);
             break;
@@ -237,7 +237,7 @@ room326.chatcatch = function (callback) {
             nav.bg("326_stable/caught1.jpg");
             break;
         case "caught2":
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             char.addtime(60);
             char.room(0);
             break;

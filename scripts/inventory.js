@@ -389,7 +389,7 @@ inv.display = function () {
                     $("#menu_displayAction").html("Stop Auto Taking Pill");
                     $("#menu_displayAction").show();
                 }
-                else if (!g.get("tookHormonePill")) {
+                else if (!g.getDaily("tookHormonePill")) {
                     $("#menu_displayAction").attr("data-itype", "bag");
                     $("#menu_displayAction").attr("data-type", thisItem.type);
                     $("#menu_displayAction").attr("data-name", thisItem.name);
@@ -660,7 +660,7 @@ inv.createElements = function () {
                     var xh = g.get("autohormone");
 
                     if ($("#menu_displayAction").html() === "Take Your Pill") {
-                        g.setflag("tookHormonePill");
+                        g.setDaily("tookHormonePill");
                         var myPill = inv.getIndex("hormone");
                         g.mod("hormone", 30);
                         inv.use("hormone");

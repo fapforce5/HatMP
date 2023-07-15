@@ -137,11 +137,11 @@ room250.btnclick = function (name) {
             break;
         case "hollyStand":
             var jefferyStep = sc.getstep("jeffery");
-            if (jefferyStep === 0 || jefferyStep === 2) {
-                chat(0, 250);
-            }
-            else if (jefferyStep === 1) {
+            if (g.get("jobapplybeaver") === 1) {
                 chat(5, 250);
+            }
+            else if (jefferyStep === 0 || jefferyStep === 2) {
+                chat(0, 250);
             }
             else if (jefferyStep === 3) {
                 if (g.hourBetween(7, 10)) {
@@ -453,8 +453,7 @@ room250.chatcatch = function (callback) {
             char.room(0);
             break;
         case "jeffery2":
-            sc.setstep("jeffery", 2);
-            char.room(0);
+            g.set("jobapplybeaver", 2);
             break;
         case "backOffice":
             g.pass = "firstmeet";

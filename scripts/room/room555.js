@@ -203,7 +203,7 @@ room555.chatcatch = function (callback) {
             g.mod("energy", -50);
             g.mod("body", 34);
             char.addtime(60);
-            g.setflag("gworkout");
+            g.setDaily("g");
             cl.undo();
             char.room(551);
             break;
@@ -212,7 +212,7 @@ room555.chatcatch = function (callback) {
             g.mod("energy", -50);
             g.mod("leg", 34);
             char.addtime(60);
-            g.setflag("gworkout");
+            g.setDaily("g");
             cl.undo();
             char.room(551);
             break;
@@ -222,7 +222,7 @@ room555.chatcatch = function (callback) {
             g.mod("energy", -50);
             g.mod("leg", 34);
             char.addtime(60);
-            g.setflag("gworkout");
+            g.setDaily("g");
             cl.undo();
             char.room(551);
             break;

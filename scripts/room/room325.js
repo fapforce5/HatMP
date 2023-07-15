@@ -4,7 +4,7 @@ room325.main = function () {
     if (g.isNight()) {
         chat(4, 325);
     }
-    else if (g.get("rachelDayEvent")) {
+    else if (g.getDaily("rachel")) {
         chat(20, 325);
     }
     else {
@@ -63,7 +63,7 @@ room325.btnclick = function (name) {
             }
             break;
         case "pill":
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             nav.killall();
             g.set("milk", 0);
             nav.bg("325_farm/bg.jpg", "325_farm/bg_night.jpg");
@@ -114,7 +114,7 @@ room325.chatcatch = function (callback) {
             
             sc.setstep("rachel", 1);
             char.addtime(120);
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             if (cl.c.chest > 3)
                 chat(12, 325);
             else
@@ -166,7 +166,7 @@ room325.chatcatch = function (callback) {
             break;
         case "milk8":
             cl.undo();
-            g.setflag("rachelDayEvent");
+            g.setDaily("rachel");
             g.mod("money", 50);
             sc.setstep("rachel", 2);
             char.room(0);

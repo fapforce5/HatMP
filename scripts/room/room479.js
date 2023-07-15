@@ -1,6 +1,7 @@
 ﻿//Room name
 var room479 = {};
 room479.main = function () {
+    room480.chatcatch("settod");
     var btnList = [
         {
             "type": "btn",
@@ -29,6 +30,16 @@ room479.main = function () {
             "height": 178,
             "image": "479_hall/up.png"
         },
+        
+    ];
+
+    var navList = [478, 480, 481];
+    $.each(btnList, function (i, v) {
+        nav.button(v, 479);
+    });
+    nav.buildnav(navList);
+
+    room480.displaychar([
         {
             "type": "img",
             "name": "bggirls",
@@ -36,7 +47,8 @@ room479.main = function () {
             "top": 462,
             "width": 357,
             "height": 235,
-            "image": "479_hall/bggirls.png"
+            "image": "479_hall/bggirls.png",
+            "tod": [1, 2, 3]
         },
         {
             "type": "btn",
@@ -45,7 +57,8 @@ room479.main = function () {
             "top": 293,
             "width": 85,
             "height": 247,
-            "image": "479_hall/high.png"
+            "image": "479_hall/high.png",
+            "tod": [1, 3]
         },
         {
             "type": "btn",
@@ -54,7 +67,8 @@ room479.main = function () {
             "top": 485,
             "width": 378,
             "height": 406,
-            "image": "479_hall/amputee.png"
+            "image": "479_hall/amputee.png",
+            "tod": [1]
         },
         {
             "type": "btn",
@@ -63,16 +77,22 @@ room479.main = function () {
             "top": 516,
             "width": 616,
             "height": 627,
-            "image": "479_hall/bj.png"
+            "image": "479_hall/bj.png",
+            "tod": [1]
         },
-       
+        {
+            "type": "btn",
+            "name": "dance",
+            "left": 712,
+            "top": 76,
+            "width": 432,
+            "height": 661,
+            "image": "479_hall/dance.png",
+            "tod": [2]
+        },
+
         
-    ];
-    var navList = [478, 480, 481];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 479);
-    });
-    nav.buildnav(navList);
+    ]);
 };
 
 room479.btnclick = function (name) {
@@ -89,31 +109,31 @@ room479.btnclick = function (name) {
         case "bj":
             nav.killall();
             nav.bg("479_hall/bj0.jpg");
-            if (!g.pass.talkList.includes("bj"))
+            if (!g.internal.talkList.includes("bj"))
                 chat(0, 479);
             else
                 chat(11, 479);
             break;
         case "bj2":
-            if (g.internal === 5) {
+            if (g.internal.single === 5) {
                 nav.bg("479_hall/bj0.jpg");
                 nav.killbutton("bj2");
                 chat(12, 479);
             }
             else
-                nav.bg("479_hall/bj" + g.internal + ".jpg");
-            g.internal++;
+                nav.bg("479_hall/bj" + g.internal.single + ".jpg");
+            g.internal.single++;
             break;
         case "amputee":
             nav.killall();
             nav.bg("479_hall/amputee.jpg");
-            if (g.pass.amputee === 0)
+            if (g.internal.amputee === 0)
                 chat(14, 479);
-            else if (g.pass.amputee === 1)
+            else if (g.internal.amputee === 1)
                 chat(19, 479);
-            else if (g.pass.amputee === 2)
+            else if (g.internal.amputee === 2)
                 chat(20, 479);
-            else if (g.pass.amputee === 3)
+            else if (g.internal.amputee === 3)
                 chat(21, 479);
             else 
                 chat(13, 479);
@@ -121,10 +141,16 @@ room479.btnclick = function (name) {
         case "ledge":
             nav.killall();
             nav.bg("479_hall/ledge.jpg");
-            if (g.pass.secretPath === 0)
+            if (g.internal.secretPath === 0)
                 chat(26, 479);
-            else if (g.pass.secretPath === 1)
+            else if (g.internal.secretPath === 1)
                 chat(32, 479);
+            break;
+        case "dance":
+            if (!g.internal.talkList.includes("dance"))
+                chat(33, 479);
+            else
+                chat(9999, 479);
             break;
         default:
             break;
@@ -143,13 +169,14 @@ room479.chatcatch = function (callback) {
         case "bj5":
             g.mod("receiveOralFemale", 1);
             cl.doCum("false");
-            if (!g.pass.talkList.includes("bj"))
-                g.pass.talkList.push("bj");
+            if (!g.internal.talkList.includes("bj"))
+                g.internal.talkList.push("bj");
+            room480.chatcatch("incrementtod");
             char.room(479);
             break;
         case "bj2x":
             nav.bg("479_hall/bj2.jpg");
-            g.internal = 3;
+            g.internal.single = 3;
             nav.button({
                 "type": "btn",
                 "name": "bj2",
@@ -160,30 +187,59 @@ room479.chatcatch = function (callback) {
                 "image": "526_bar/arrowRight.png"
             }, 479);
             break;
+        case "bj2x1":
+            room480.chatcatch("incrementtod");
+            char.room(479);
+            break;
         case "reset":
             char.room(479);
             break;
+        case "increment":
+            room480.chatcatch("incrementtod");
+            char.room(479);
+            break;
         case "amputee0":
-            g.pass.amputee = 1;
+            room480.chatcatch("incrementtod");
+            g.internal.amputee = 1;
             char.room(479);
             break;
         case "amputee1":
-            g.pass.amputee = 2;
+            room480.chatcatch("incrementtod");
+            g.internal.amputee = 2;
             char.room(479);
             break;
         case "amputee2":
-            g.pass.amputee = 3;
+            room480.chatcatch("incrementtod");
+            g.internal.amputee = 3;
             char.room(479);
             break;
         case "amputee3":
-            if (!g.pass.talkList.includes("amputee"))
-                g.pass.talkList.push("amputee");
-            g.pass.amputee = 4;
+            if (!g.internal.talkList.includes("amputee"))
+                g.internal.talkList.push("amputee");
+            room480.chatcatch("incrementtod");
+            g.internal.amputee = 4;
             char.room(479);
             break;
         case "ledge0":
-            g.pass.secretPath = 1;
+            room480.chatcatch("incrementtod");
+            g.internal.secretPath = 1;
             char.room(479);
+            break;
+        case "dance1":
+            nav.killall();
+            nav.killbutton("dance");
+            cl.nude();
+            cl.c.panties = cl.cTemp.panties;
+            cl.display();
+            nav.button({
+                "type": "btn",
+                "name": "dance",
+                "left": 712,
+                "top": 49,
+                "width": 432,
+                "height": 688,
+                "image": "479_hall/dance1.png",
+            }, 479);
             break;
         default:
             break;
@@ -312,7 +368,7 @@ room479.chat = function (chatID) {
             speaker: "random",
             text: "She thinks your cum is the sweetest. Feel free to feed my slave anytime.  ",
             button: [
-                { chatID: -1, text: "Totally ", callback: "reset" },
+                { chatID: -1, text: "Totally ", callback: "bj2x1" },
             ]
         },
         {
@@ -458,7 +514,7 @@ room479.chat = function (chatID) {
             speaker: "random",
             text: "I guess I was wrong about you. ",
             button: [
-                { chatID: -1, text: "Oh... ", callback: "reset" },
+                { chatID: -1, text: "Oh... ", callback: "increment" },
             ]
         },
         {
@@ -486,6 +542,31 @@ room479.chat = function (chatID) {
             text: "Good! Meet me in the kitchen after 5 PM, but before bedtime. ",
             button: [
                 { chatID: -1, text: "I'll be there! ", callback: "ledge0" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "me",
+            text: "Hi. I wanted to ask you about how you got here. ",
+            button: [
+                { chatID: 34, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "random",
+            text: "Strip down to your panties and get up here and dance bitch!",
+            button: [
+                { chatID: 35, text: "I don't know. I'm not that good of a dancer..", callback: "" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "random",
+            text: "No one cares. We're all terrible. Just get up here and have fun!",
+            button: [
+                { chatID: -1, text: "Strip down and Go Dance!", callback: "dance1" },
+                { chatID: -1, text: "Maybe next time", callback: "reset" },
             ]
         },
     ];

@@ -25,7 +25,7 @@ room54.btnclick = function (name) {
         case "tif":
             if (cl.hasoutfit("nude") === null) {
                 var tifstep = sc.getstep("tiffany");
-                if (g.get("tiffanyDayEvent")) {
+                if (g.getDaily("tif")) {
                     chat(0, 54);
                 }
                 else {
@@ -67,7 +67,7 @@ room54.chatcatch = function (callback) {
             break;
         case "a8":
             char.addtime(60);
-            g.setflag("tiffanyDayEvent");
+            g.setDaily("tif");
             sc.setstep("tiffany", 17);
             g.mod("arousal", 75);
             nav.bg("54_tif/tif.jpg", "54_tif/tifNight.jpg");
@@ -122,7 +122,7 @@ room54.chatcatch = function (callback) {
             cl.c.butthole += .2;
             char.addtime(60);
             sc.setstep("tiffany", 18);
-            g.setflag("tiffanyDayEvent");
+            g.setDaily("tif");
             sc.setstep("me", -8);
             inv.add("pinkDildo");
             char.room(54);

@@ -245,7 +245,12 @@ $(document).ready(function () {
         menu.mClick("time");
 
     });
-    
+    $("#rl_pageSelect").children("button").click(function () {
+        g.statpage = $(this).data("number");
+        $(".rl-selectButton-active").removeClass("rl-selectButton-active");
+        $(this).addClass("rl-selectButton-active");
+        sstat.makeGraph();
+    });
     char.init();
 });
 
@@ -280,7 +285,7 @@ char.changeMenu = function (menu, update, override) {
             else
                 $("#room_left_graph").is(":visible") ? $("#room_left_graph").hide() : $("#room_left_graph").show();
             $("#room_left_walk").hide();
-            char.makeGraph();
+            sstat.makeGraph();
             break;
         case "walk":
             $("#room_left_char").hide();
@@ -709,8 +714,8 @@ menu.initBuild = function (type) {
     if (type === "save") {
         $('.menu-button[data-type="menu"]').remove();
         menu.mClick("save");
-
     }
+    sstat.init();
 };
 
 menu.mClick = function (type) {
@@ -973,7 +978,7 @@ menu.mClick = function (type) {
             else {
                 $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center; font-size:' + 24 * g.ratio + 'px;">' +
                     "<h2>Cheat Status: INACTIVE</h2>" +
-                    "This cheat menu is a thank you to all the great support I\'ve received from my $5 anf $10 Patrons." +
+                    "This cheat menu is a thank you to all the great support I've received from my $5 anf $10 Patrons." +
                     "The game is designed to be played without this cheat activated. So if you don't use cheat you're not missing anything. " +
                     '<button type="button" class="intro-button" id="cheat_passwordSubmit" style="font-size:' + 24 * g.ratio + 'px;">I\'m a Patreon Supporter<br/>Activate Cheats</button><br/>' +
                     '<button type="button" class="intro-button" id="cheat_cancel" style="font-size:' + 24 * g.ratio + 'px;">I\'m not a Patreon Supporter<br/>Cancel</button>' +
@@ -1159,12 +1164,12 @@ menu.mClick = function (type) {
                 '</div>' +
                 '</div>' +
                 '<div class="switch-group char-20">' +
-                ' Map View' +
+                ' Clock' +
                 '<div class="switch-field" >' +
                 '<input type="radio" id="radio-street" name="switch-map" value="street" />' +
-                '<label for="radio-street">Street</label>' +
+                '<label for="radio-street">12 Hour</label>' +
                 '<input type="radio" id="radio-house" name="switch-map" value="house" />' +
-                '<label for="radio-house">Houses</label>' +
+                '<label for="radio-house">24 Hour</label>' +
                 '</div>' +
                 '</div>' +
                 '</div>');
@@ -1289,6 +1294,7 @@ menu.saveBtn = function(btn) {
 };
 
 menu.save = function (cookieName, btn, saveID) {
+    
     if (g.saveState !== null) {
         var timeDiff = Math.abs(g.dt.getTime() - g.startDate.getTime());
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -1500,147 +1506,7 @@ char.menu = function () {
     });
 };
 
-char.makeGraph = function () {
-    //if ($("#room_left_graph").is(":visible")) {
-    var i;
-    var energy, maxenergy, oral, cock, anal, sissy, hormone, cheerlevel;
-    oral = cock = anal = 0;
-    for (i = 0; i < g.st.length; i++) {
-        switch (g.st[i].n) {
-            case "energy":
-                energy = g.st[i].t;
-                break;
-            case "maxenergy":
-                maxenergy = g.st[i].t;
-                break;
-            case "leg":
-                $(".rl-bar[data-name='leg']").css({ width: g.st[i].t + "%" });
-                break;
-            case "legLevel":
-                $("#rl_kick").html("Kick Power: " + tEnemy.getKick());
-                break;
-            case "body":
-                $(".rl-bar[data-name='body']").css({ width: g.st[i].t + "%" });
-                break;
-            case "bodyLevel":
-                $("#rl_punch").html("Punch Power: " + tEnemy.getPunch());
-                break;
-            case "d":
-                $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
-                break;
-            case "dLevel":
-                $("#rl_d").html("Defense: " + tEnemy.getDefense());
-                break;
-            case "fitness":
-                $(".rl-bar[data-name='fitness']").css({ width: g.st[i].t + "%" });
-                break;
-            case "fitnessLevel":
-                $("#rl_fitness").html("Fitness: [" + g.st[i].t + "] <span class='char-12' style='font-size:" + (12 * g.ratio) + "px;'>" + (maxenergy - 100) + " Energy bonus</span>");
-                break;
-            case "hormone":
-                hormone = g.st[i].t;
-                $(".rl-bar[data-name='hormone']").css({ width: g.st[i].t + "%" });
-                break;
-            case "sissy":
-                sissy = g.st[i].t;
-                $(".rl-bar[data-name='sissy']").css({ width: g.st[i].t + "%" });
-                break;
-            case "subdom":
-                if (g.st[i].t > 75) 
-                    $("#rl_subdom").text("Domme");
-                else if (g.st[i].t > 55) 
-                    $("#rl_subdom").text("Little Domme");
-                else if (g.st[i].t > 45) 
-                    $("#rl_subdom").text("Neutral");
-                else if (g.st[i].t > 25) 
-                    $("#rl_subdom").text("Submissive");
-                else 
-                $("#rl_subdom").text("Submissive Slut");
-                $(".rl-bar[data-name='subdom']").css({ width: g.st[i].t + "%" });
-                break;
-            case "cheerleader":
-                cheerlevel = g.st[i].t;
-                $(".rl-bar[data-name='cheerleader']").css({ width: g.st[i].t + "%" });
-                break;
-            case "cheerlevel":
-                console.log(cheerlevel)
-                if (cheerlevel > 95 && g.st[i].t < 7) {
-                    $("#rl_cheer").text(g.st[i].t + ". Attend Cheerleader Practice");
-                }
-                else {
-                    switch (g.st[i].t) {
-                        case 0:
-                            $("#rl_cheer").text("Not a Cheerleader");
-                            break;
-                        case 1:
-                            $("#rl_cheer").text("1. Clumsy Cheerleader");
-                            break;
-                        case 2:
-                            $("#rl_cheer").text("2. Dumb Cheerleader");
-                            break;
-                        case 3:
-                            $("#rl_cheer").text("3. (Cheer) Washing Machine");
-                            break;
-                        case 4:
-                            $("#rl_cheer").text("4. Beginner Cheerleader");
-                            break;
-                        case 5:
-                            $("#rl_cheer").text("5. (Cheer) Stacy's Bitch");
-                            break;
-                        case 6:
-                            $("#rl_cheer").text("6. (Cheer) Konga Line");
-                            break;
-                        case 7:
-                            $("#rl_cheer").text("7. Cheer for the Game!");
-                            break;
-                        case 8:
-                            $("#rl_cheer").text("Small Dick Loser");
-                            break;
-                        case 9:
-                            $("#rl_cheer").text("Cheerleader!");
-                            break;
-                        case 10:
-                            $("#rl_cheer").text("Cheerleader Cum Bucket");
-                            break;
-                        default:
-                            break;;
-                    }
-                }
-                break;
-            //case "sissyLevel":
-            //    $("#rl_sissy").html("Sissy: " + g.st[i].t);
-            //    break;
-        }
-    }
 
-    $("#rl_energy").html("Energy: " + energy + "/" + maxenergy);
-    $(".rl-bar[data-name='energy']").css({ width: ((energy / maxenergy) * 100) + "%" });
-    var rlTempCock = "s";
-    if (cl.c.chastity !== null)
-        rlTempCock = "c";
-    else if (cl.c.cock < 3)
-        rlTempCock = "b";
-
-    $("#rl_fightdisplay0").attr("src", "./images/room/227_fight/g_victory_" + (cl.c.chest > 2 ? "f" : "m") + ".png");
-    $("#rl_fightdisplay1").attr("src", "./images/room/227_fight/g_victory_d_" + rlTempCock + ".png");
-    if (cl.c.hairLength > 1) {
-        $("#rl_fightdisplay2").attr("src", "./images/room/227_fight/h_8_long.png");
-        $("#rl_fightdisplay-1").attr("src", "./images/room/227_fight/h_8_long_back.png");
-    }
-    else {
-        $("#rl_fightdisplay2").attr("src", "./images/room/227_fight/h_8_short.png");
-        $("#rl_fightdisplay-1").attr("src", "./images/room/227_fight/h_9_long_back.png");
-    }
-
-    if (hormone < 10) 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Hairy Boy");
-    else if (hormone < 50) 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Boyish");
-    else if (sissy < 75) 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Feminine");
-    else 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Girly");
-};
 
 char.export = function (saveID) {
     var cookieName = 'HatMP_' + saveID;
