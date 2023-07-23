@@ -817,22 +817,6 @@ sc.getTimeline = function (char) {
     return retVar;
 };
 
-sc.cecilia = function () {
-    var r = 0;
-    var hour = g.gethourdecimal();
-    switch (g.dt.getDay()) {
-        case 1: //monday
-        case 2: //tuesday
-        case 3: //wednesday
-        case 4: //thursday
-        case 5: //friday
-            if (hour.between(7, 18))
-                r = 203;
-            break;
-    }
-    return { roomID: r, thisRoom: g.roomID === r };
-};
-
 sc.zoey = function () {
     var r = 0;
     var hour = g.gethourdecimal();

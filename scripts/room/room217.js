@@ -64,6 +64,7 @@ room217.chatcatch = function (callback) {
             nav.bg("217_punish/punishNext1.jpg");
             break;
         case "punishmentEnd":
+            sissy.statsUpdate(28);
             g.set("energy", 0);
             char.settime(17, 35);
             cl.undo();

@@ -3,6 +3,8 @@
 //sissy transform: 95!!
 var room28 = {};
 room28.main = function () {
+
+    missy.daily();
     var i;
     var hormoneLevel, thisTinyPP, fitnesslevel;
     if (g.pass === 502)

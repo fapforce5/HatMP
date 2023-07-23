@@ -7,6 +7,112 @@ sissy.virgin = [
     { id: 0, t: "oral", v: true },
 ];
 
+sissy.levels = [
+    { id: 0, n: "xdress", d: "Cross Dressing", c: 0, l: 0, autoLevel: true, autoLevel: true },
+    { id: 0, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "humiliation", d: "Humiliation", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "pi", d: "Private Investigator", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "intel", d: "intelligence", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "feet", d: "Feet", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true },
+
+    { id: 0, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "body", d: "Upper Strength", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "leg", d: "Lower Strength", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true },
+    { id: 0, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false },
+    { id: 0, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: false },
+];
+
+sissy.levelCreator = function (name, level) {
+    switch (name) {
+        case "xdress":
+            switch (level) {
+                case 0: return "Boys clothes only";
+                case 1: return "Can wear panties";
+                case 2: return "Can cross dress at home and Missy's";
+                case 3: return "Can work cases crossdressing";
+                case 4: return "Only wear panties and bra";
+                case 5: return "Can modestly cross dress in public ";
+                case 6: return "Can wear sexy outfits";
+                case 7: return "Don't have to wear panties and bra"
+                case 8: return "Can wear slutty clothing";
+                case 9: return "Wear what ever, or nothing at all"
+            }
+            break;
+        case "sub":
+            switch (level) {
+                case 0: return "Not submissive";
+                case 1: return "Can kiss Missy's feet";
+                case 2: return "Can x Missy"
+            }
+        break;
+        case "humiliation":
+            switch (level) {
+                case 0: return "Doesn't like humiliation";
+            }
+            break;
+        case "oral":
+            switch (level) {
+                case 0: return "I'm not putting that in my mouth";
+                case 1: return "Can suck small dildos at home";
+                case 2: return "Can deepthroat dildos at home";
+                case 3: return "Can suck a small cock";
+                case 4: return "Can suck human cock";
+                case 5: return "Can deepthroat cock";
+                case 6: return "Can suck horse cock";
+                case 7: return "Need to suck cock everyday!";
+            }
+            break;
+        case "anal":
+            switch (level) {
+                case 0: return "My butt is for pooping";
+                case 1: return "Can stick your finger in your butt";
+                case 2: return "Can play with a tiny dildo";
+                case 3: return "Can play with a small dildo";
+                case 4: return "Can play with a medium dildo";
+                case 5: return "Can play with a large dildo";
+                case 6: return "Can take a normal dick in the ass";
+                case 7: return "Can take a big dick in the ass";
+                case 8: return "Can take a horse cock in the ass";
+                case 9: return "Need anal everyday!";
+            }
+            break;
+        case "cum":
+            switch (level) {
+                case 0: return "Ewwww";
+                case 1: return "You can taste your own";
+                case 2: return "You can cum in your own mouth";
+                case 3: return "You can swallow";
+                case 4: return "You can get creampied";
+                case 5: return "cum gains 5 energy";
+                case 6: return "cum gains 15 energy";
+                case 7: return "cum gains 25 energy";
+                case 8: return "You are addicted to cum";
+            }
+            break;
+        case "pi":
+            switch (level) {
+                case 0: return "Can watch things (first case)";
+                case 1: return "Pick pocket";
+                case 2: return "unlock locked doors";
+            }
+            break;
+        case "intel":
+            switch (level) {
+                case 0: return "better at pickpocket / unlock doors";
+                case 1: return "better at pickpocket / unlock doors";
+                case 2: return "better at pickpocket / unlock doors";
+            }
+            break;
+    }
+
+}
+
 sissy.stats = [
     { id: 0, t: "cum", n: "swollow", c: 0 },
     { id: 1, t: "cum", n: "spit", c: 0 },

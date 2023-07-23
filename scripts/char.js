@@ -325,55 +325,18 @@ char.map = function () {
     var exRoom = [226, 227, 475];
     var i;
     if (!(exRoom.includes(g.roomID))) {
-        if (g.get("mapview") === "house") {
-            var tm = g.get("map");
-            var ttop = 100;
-            $('#room_left_map').html('');
-            for (i = 0; i < g.roomMap.length; i++) {
-                if (g.roomMap[i].map === tm) {
-                    var newRatio = 45 / g.roomMap[i].height;
-                    var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
-                    dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
-                    $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
-                    $('#room_left_map').append(dayNight);
-                    $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
-                    ttop += 50;
-                }
-            }
-        }
-        else {
-            var proom, top, left;
-            $('#room_left_map').html('<img src="./images/general/map0.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 100, 0) + '" />');
-            $('#room_left_map').append('<img src="./images/general/map1.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 269, 0) + '" />');
-            $('#room_left_map').append('<img src="./images/general/map2.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 438, 0) + '" />');
-            proom = null;
-            if (g.prevRoom !== null) {
-                if (g.roomID === 0 || g.roomID === 8) {
-                    $.each(g.rooms, function (i, v) {
-                        if (v.roomID === g.prevRoom) {
-                            proom = v.houseID;
-                            return;
-                        }
-                    });
-                }
-                else {
-                    $.each(g.rooms, function (i, v) {
-                        if (v.roomID === g.roomID) {
-                            proom = v.houseID;
-                            return;
-                        }
-                    });
-                }
-            }
-            if (proom !== null) {
-                $.each(g.roomMap, function (i, v) {
-                    if (v.roomID === proom) {
-                        top = 100 + (v.map * 169) + ((v.top + (v.height / 2)) * .1564);
-                        left = ((v.left + (v.width / 2)) * .1564);
-                        $('#room_left_map').append('<img src="./images/general/spot.gif" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(20, 20, top, left) + '" />');
-                        return;
-                    }
-                });
+        var tm = g.get("map");
+        var ttop = 100;
+        $('#room_left_map').html('');
+        for (i = 0; i < g.roomMap.length; i++) {
+            if (g.roomMap[i].map === tm) {
+                var newRatio = 45 / g.roomMap[i].height;
+                var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
+                dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
+                $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
+                $('#room_left_map').append(dayNight);
+                $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
+                ttop += 50;
             }
         }
     }
@@ -1166,10 +1129,10 @@ menu.mClick = function (type) {
                 '<div class="switch-group char-20">' +
                 ' Clock' +
                 '<div class="switch-field" >' +
-                '<input type="radio" id="radio-street" name="switch-map" value="street" />' +
-                '<label for="radio-street">12 Hour</label>' +
-                '<input type="radio" id="radio-house" name="switch-map" value="house" />' +
-                '<label for="radio-house">24 Hour</label>' +
+                '<input type="radio" id="radio-12" name="switch-clock" value="12" />' +
+                '<label for="radio-12">12 Hour</label>' +
+                '<input type="radio" id="radio-24" name="switch-clock" value="24" />' +
+                '<label for="radio-24">24 Hour</label>' +
                 '</div>' +
                 '</div>' +
                 '</div>');
@@ -1178,16 +1141,15 @@ menu.mClick = function (type) {
             $('#radio-fantasy-' + g.get("fantasyCreatures")).prop("checked", true);
             $('#radio-fightspeed-' + g.get("fightspeed")).prop("checked", true);
             $('#radio-fightsex-' + g.get("fightsex")).prop("checked", true);
-            $('#radio-' + g.get("mapview")).prop("checked", true);
+            $('#radio-' + g.get("clock24")).prop("checked", true);
             $('#radio-diff-' + g.get("difficulty")).prop("checked", true);
 
             $('input[type=radio][name=switch-fantasy]').change(function () {
                 g.set("fantasyCreatures", $(this).val() === "on");
             });
-            $('input[type=radio][name=switch-map]').change(function () {
-                g.set("mapview", $(this).val());
-                if (g.prevview === "map")
-                    char.map();
+            $('input[type=radio][name=switch-clock]').change(function () {
+                g.set("clock24", $(this).val());
+                nav.buildclock();
             });
             $('input[type=radio][name=switch-difficulty]').change(function () {
                 g.set("difficulty", parseInt($(this).val()));
@@ -1478,11 +1440,13 @@ char.menu = function () {
         "left": 1800 * g.ratio + "px"
     });
     $('#room-numbers').css({
-        "width": 370 * g.ratio + "px",
-        "height": 50 * g.ratio + "px",
-        "top": 10 * g.ratio + "px",
-        "left": 400 * g.ratio + "px"
+        "width": 290 * g.ratio + "px",
+        "margin-top": 50 * g.ratio + "px"
     });
+    //    "height": 50 * g.ratio + "px",
+    //    "top": 10 * g.ratio + "px",
+    //    "left": 400 * g.ratio + "px"
+    //});
     $('#room-inv').css({
         "width": 100 * g.ratio + "px",
         "height": 100 * g.ratio + "px",

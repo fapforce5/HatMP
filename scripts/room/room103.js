@@ -788,7 +788,7 @@ room103.chat = function (chatID) {
                 "I'm so excited, but a little scared. What if she doesn't like how I work, or I'm too weak to " +
                 "do the job. I'll have to try extra hard to impress her! ",
             button: [
-                { chatID: 63, text: "[Go to bed]", callback: "hole17" },
+                { chatID: -1, text: "[Go to bed]", callback: "hole17" },
             ]
         },
         {

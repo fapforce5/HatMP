@@ -78,6 +78,7 @@
     <script src="./scripts/room/room150.js" type="text/javascript"></script>
     <script src="./scripts/room/room151.js" type="text/javascript"></script>
     <script src="./scripts/room/room152.js" type="text/javascript"></script>
+    <script src="./scripts/room/room199.js" type="text/javascript"></script>
     <script src="./scripts/room/room200.js" type="text/javascript"></script>
     <script src="./scripts/room/room201.js" type="text/javascript"></script>
     <script src="./scripts/room/room202.js" type="text/javascript"></script>
@@ -96,6 +97,12 @@
     <script src="./scripts/room/room215.js" type="text/javascript"></script>
     <script src="./scripts/room/room216.js" type="text/javascript"></script>
     <script src="./scripts/room/room217.js" type="text/javascript"></script>
+    <script src="./scripts/room/room218.js" type="text/javascript"></script>
+    <script src="./scripts/room/room219.js" type="text/javascript"></script>
+    <script src="./scripts/room/room220.js" type="text/javascript"></script>
+    <script src="./scripts/room/room221.js" type="text/javascript"></script>
+    <script src="./scripts/room/room222.js" type="text/javascript"></script>
+    <script src="./scripts/room/room224.js" type="text/javascript"></script>
     <script src="./scripts/room/room225.js" type="text/javascript"></script>
     <script src="./scripts/room/room226.js" type="text/javascript"></script>
     <script src="./scripts/room/room227.js" type="text/javascript"></script>
@@ -209,13 +216,7 @@
 
         </div>
         <div class="room-main">
-            <div id="room-numbers" class="room-numbers hide-start">
-                <div class="char-clock-container">
-                    <span class="char-clock-dow resize-text" id="char_clock_dow"></span>
-                    <span class="char-clock resize-text" id="char_clock_time">00:00</span>
-                    <span class="char-money resize-text" id="char_money"></span>
-                </div>
-            </div>
+            
             <div id="room-time" class="room-menu hide-start">
                 <img src="./images/inv/time.png" title="Pass Time" />
             </div>
@@ -254,6 +255,12 @@
                 <img src="./images/general/btnHide.jpg" title="Walkthrough" style="width:100%;" />
             </button>
             <div id="room_left_char">
+                <div id="room-numbers" class="room-numbers hide-start" style="position:absolute;">
+                    <div class="char-clock-container">
+                        <span class="char-clock resize-text" id="char_clock_time" style="float:left;">00:00</span>
+                        <span class="char-clock-dow resize-text" id="char_clock_dow" style="float:right;"></span>
+                    </div>
+                </div>
                 <div class="char-container">
                     <div class="char-layer char-bg" id="char-bg"></div>
                     <div class="char-layer char-legs" id="char-legs"></div>
@@ -312,6 +319,8 @@
                     <div id="rl_page0">
                         <div class="char-charDisplay mt-50x" id="char_charDisplay"></div>
                         <div style="font-size:12px;" class="char-20 mb-10" id="rl_appearance">Boy</div>
+
+                        <span class="char-money resize-text" id="char_money"></span>
 
                         <div style="font-size:12px;" class="char-20 mt-10" id="rl_energy">Energy</div>
                         <div class="left-graph-char-bar resize-height">

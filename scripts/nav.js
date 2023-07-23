@@ -227,13 +227,13 @@ nav.buildnav = function (roomIDList) {
 
 nav.buildclock = function () {
     var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tues";
+    weekday[3] = "Wed";
+    weekday[4] = "Thur";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
 
     $('#char_clock_time').text(nav.friendlyTime());
     $('#char_clock_dow').text(weekday[g.dt.getDay()]);
@@ -243,9 +243,14 @@ nav.twodigits = function (n) {
 };
 
 nav.friendlyTime = function () {
-    var newHour = g.dt.getHours() === 0 ? 12 : (g.dt.getHours() < 13 ? g.dt.getHours() : g.dt.getHours() - 12);
-    var ampm = g.dt.getHours() < 12 ? " AM" : " PM";
-    return nav.twodigits(newHour) + ":" + nav.twodigits(g.dt.getMinutes()) + ampm;
+    if(g.get("clock24") === "12"){
+        var newHour = g.dt.getHours() === 0 ? 12 : (g.dt.getHours() < 13 ? g.dt.getHours() : g.dt.getHours() - 12);
+        var ampm = g.dt.getHours() < 12 ? " AM" : " PM";
+        return nav.twodigits(newHour) + ":" + nav.twodigits(g.dt.getMinutes()) + ampm;
+    }
+    else {
+        return nav.twodigits(g.dt.getHours()) + ":" + nav.twodigits(g.dt.getMinutes());
+    }
 };
 
 nav.bars = function () {

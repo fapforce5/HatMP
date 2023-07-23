@@ -410,7 +410,7 @@ input[type=text]:disabled{
 }
 
 .room-numbers{
-    position:absolute;
+    /*position:absolute;*/
 }
 /*check for kill*/
 .menu-center{

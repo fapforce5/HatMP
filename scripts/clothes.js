@@ -540,6 +540,16 @@ cl.hasoutfit = function (ctype) {
             if (cl.c.panties !== "cl")
                 missingClothing.push("Cheer spanks");
             break;
+        case "suit":
+            if (cl.c.shirt !== "s")
+                missingClothing.push("Button up shirt");
+            if (cl.c.pants !== "s")
+                missingClothing.push("Black slacks");
+            if (cl.c.socks !== "b")
+                missingClothing.push("Dress socks");
+            if (cl.c.shoes !== "d")
+                missingClothing.push("Dress shoes");
+            break;
     }
    
     var retMissing = null;
@@ -732,7 +742,8 @@ cl.eyes = [
     { name: "green", image: "body_eyes_green.png", back: null },
     { name: "hazel", image: "body_eyes_hazel.png", back: null },
     { name: "blue", image: "body_eyes_blue.png", back: null },
-    { name: "gray", image: "body_eyes_gray.png", back: null }
+    { name: "gray", image: "body_eyes_gray.png", back: null },
+    { name: "hypno", image: "body_eyes_hypno.png", back: null }
 ];
 
 cl.eyebrows = [

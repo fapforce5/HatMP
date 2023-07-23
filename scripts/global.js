@@ -39,13 +39,14 @@ g.buildSt = function () {
         { n: "knockedup", t: null, q: "date" },
         { n: "difficulty", t: 1, q: "int" },
         { n: "money", t: 450, q: "money" },
+        { n: "clock24", t: "12", q: "bool" },
         { n: "rent", t: 200, q: "zero" },
         { n: "rentOwed", t: 0, q: "zero" },
         { n: "arousal", t: 5, q: "hundred" },
         { n: "rentKnockOff", t: 0, q: "zero" },
         { n: "energy", t: 95, q: "energy" },
         { n: "maxenergy", t: 100, q: "zero" },
-        { n: "fitness", t: 0, q: "hundred" },
+        { n: "fitness", t: 0, q: "level" },
         { n: "hormone", t: 0, q: "hundred" },
         { n: "autohormone", t: false, q: "bool" },
         { n: "chastityLock", t: false, q: "bool" },
@@ -107,6 +108,8 @@ g.buildSt = function () {
         { n: "jobapplynurse", t: 0, q: "int" },
         { n: "jobapplyconst", t: 0, q: "int" },
         { n: "jobapplybeaver", t: 0, q: "int" },
+        
+        
 
         { n: "girlname", t: "Scarlett", q: "string" },
         { n: "quest3", t: null, q: "string" },
@@ -250,7 +253,22 @@ g.mod = function (name, amount) {
             case "date":
                 g.st[index].t = new Date(g.st[index].t.getTime() + (amount * 60000));
                 break;
-           
+            case "level":
+                g.st[index].t += amount;
+                if (g.st[index].t < 0)
+                    g.st[index].t = 0;
+                if (g.st[index] > 99) {
+                    g.st[index] = 0;
+                    switch (name) {
+                        case "fitness":
+                            g.mod("fitnessLevel", 1);
+                            g.checkPop(name, amount);
+                            break;
+                    }
+                }
+                else
+                    g.checkPop(name, amount);
+                break;
             default:
                 console.log("unknown g.mod type: " + type + ", name: " + name);
                 break;
@@ -303,7 +321,11 @@ g.checkPop = function (name, amount) {
             cl.cockDisplay();
             break;
         case "fitness":
-            g.popUpNotice("You fitness " + (amount < 0 ? "Decreased" : "Increased" + "  by ") + Math.abs(amount));
+            g.popUpNotice("Your fitness " + (amount < 0 ? "Decreased" : "Increased" + "  by ") + Math.abs(amount));
+            sissy.makeGraph();
+            break;
+        case "fitnessLevel":
+            g.popUpNotice("Your fitness Level has INCREASED!!");
             sissy.makeGraph();
             break;
         case "leg":
@@ -417,6 +439,7 @@ g.rooms = [
     { roomID: 151, name: "Main", image: "151_jones/main.jpg", nightImage: "151_jones/main.jpg", houseID: 150, btn: "roomBtn_125.png" },
     { roomID: 152, name: "Mansion", image: "152_slave/entrance.jpg", nightImage: "152_slave/entrance.jpg", houseID: 150, btn: "roomBtn_125.png" },
 
+    { roomID: 199, name: "Workout", image: "217_punish/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 200, name: "Missy PI Entrace", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 201, name: "Missy's Bathroom", image: "201_bathroom/201_bathroom.jpg", nightImage: "201_bathroom/201_bathroom.jpg", houseID: 203, btn: "roomBtn_201.png" },
     { roomID: 202, name: "Desk Side", image: "202_sideDesk/202_sideDesk.jpg", nightImage: "202_sideDesk/202_sideDesk.jpg", houseID: 203, btn: "roomBtn_202.png" },
@@ -433,6 +456,13 @@ g.rooms = [
     { roomID: 215, name: "Private Room", image: "215_pink/private1.jpg", nightImage: "215_pink/private1.jpg", houseID: 203, btn: "roomBtn_215.png" },
     { roomID: 216, name: "Free Use", image: "216_pink/bg.jpg", nightImage: "216_pink/bg.jpg", houseID: 203, btn: "roomBtn_216.png" },
     { roomID: 217, name: "Punishment", image: "217_punish/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_217.png" },
+    { roomID: 218, name: "masturbate", image: "218_masturbate/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_217.png" },
+    { roomID: 219, name: "Data Entry", image: "219_dataEntry/bg.jpg", nightImage: "219_dataEntry/bg.jpg", houseID: 203, btn: "roomBtn_219.png" },
+    { roomID: 220, name: "Clean Bathroom", image: "201_bathroom/bg0.jpg", nightImage: "201_bathroom/bg0.jpg", houseID: 203, btn: "roomBtn_201.png" },
+    { roomID: 221, name: "Reception", image: "221_recip/bg.jpg", nightImage: "221_recip/bg.jpg", houseID: 203, btn: "roomBtn_203.png" },
+    { roomID: 221, name: "Errands", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 224, name: "Lunch", image: "219_dataEntry/bg.jpg", nightImage: "219_dataEntry/bg.jpg", houseID: 203, btn: "roomBtn_219.png" },
+    
 
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },

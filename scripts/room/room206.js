@@ -503,7 +503,7 @@ room206.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "missy",
-            text: "That is what you meant. Don't worry I adore little pee pee girls. They're so much fun to train. ",
+            text: "That is what you meant. Don't worry, I adore little pee pee girls. They're so much fun to train. ",
             button: [
                 { chatID: 12, text: "Hrumph", callback: "q5" }
             ]

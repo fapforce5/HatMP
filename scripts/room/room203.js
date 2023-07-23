@@ -3,7 +3,7 @@ var room203 = {};
 room203.main = function () {
     var navList = new Array();
     var btnList = new Array();
-    if (sc.cecilia().thisRoom) {
+    if (sc.getTimeline("cecilia").thisRoom) {
         g.pass = "203Elevator";
         navList = [201, 0];
         btnList = [{
@@ -128,9 +128,11 @@ room203.btnclick = function (name) {
             if (g.gethourdecimal > 10) {
                 chat(6, 203);
             }
-            if(misssyStep === 1)
+            if (misssyStep === 1)
                 chat(1, 203);
-
+            else if (misssyStep === 2) {
+                chat(11, 203);
+            }
 
             break;
         case "recepClose":
@@ -232,73 +234,85 @@ room203.chatcatch = function (callback) {
                 chat(2, 203);
             break;
         case "displaySelf":
-            if (missyStep < 11) {
-                if (!hasSuit) {
+            nav.bg("203_entrance/inspect.jpg");
+            zcl.displayMain(180, 800, .09, "clothes", false);
+            if (missy.tracker[2].c === 0) { //suit
+                if (cl.hasoutfit("suit") === null)
+                    chat(8, 203);
+                else
                     chat(9, 203);
-                }
-                else {
-                    nav.killall();
-                    nav.bg("203_entrance/203_enter.jpg");
-                    nav.killbutton("zzz-clothing-kill");
-                    zcl.displayClothed();
-                    nav.button({
-                        "type": "img",
-                        "name": "recepLook",
-                        "left": 1060,
-                        "top": 562,
-                        "width": 731,
-                        "height": 518,
-                        "image": "203_entrance/kneel.png"
-                    }, 203);
-                    if (missyStep > 8)
-                        chat(15, 203);
-                    else if (g.get("arousal") > 90)
-                        chat(22, 203);
-                    else
-                        chat(10, 203);
-                }
+
             }
-            else {
-                if (!hasGirlSuit) {
-                    chat(21, 203);
-                }
-                else if (missyStep === 6) {
-                    if (cl.c.accessories.indexOf("piggy") === -1) {
-                        chat(12, 203);
-                    }
-                    else {
-                        nav.killall();
-                        nav.bg("203_entrance/203_enter.jpg");
-                        zcl.displayClothed();
-                        nav.button({
-                            "type": "img",
-                            "name": "recepLook",
-                            "left": 1060,
-                            "top": 562,
-                            "width": 731,
-                            "height": 518,
-                            "image": "203_entrance/kneel.png"
-                        }, 203);
-                        chat(10, 203);
-                    }
-                }
-                else {
-                    nav.killall();
-                    nav.bg("203_entrance/203_enter.jpg");
-                    nav.killbutton("zzz-clothing-kill");
-                    zcl.displayClothed();
-                    nav.button({
-                        "type": "img",
-                        "name": "recepLook",
-                        "left": 1060,
-                        "top": 562,
-                        "width": 731,
-                        "height": 518,
-                        "image": "203_entrance/kneel.png"
-                    }, 203);
-                    chat(15, 203);
-                }
-            }
+
+            //if (missyStep < 11) {
+            //    if (!hasSuit) {
+            //        chat(9, 203);
+            //    }
+            //    else {
+
+            //        zcl.displayMain(180, 800, .09, "clothes", false)
+            //        nav.killall();
+            //        nav.bg("203_entrance/203_enter.jpg");
+            //        nav.killbutton("zzz-clothing-kill");
+            //        zcl.displayClothed();
+            //        nav.button({
+            //            "type": "img",
+            //            "name": "recepLook",
+            //            "left": 1060,
+            //            "top": 562,
+            //            "width": 731,
+            //            "height": 518,
+            //            "image": "203_entrance/kneel.png"
+            //        }, 203);
+            //        if (missyStep > 8)
+            //            chat(15, 203);
+            //        else if (g.get("arousal") > 90)
+            //            chat(22, 203);
+            //        else
+            //            chat(10, 203);
+            //    }
+            //}
+            //else {
+            //    if (!hasGirlSuit) {
+            //        chat(21, 203);
+            //    }
+            //    else if (missyStep === 6) {
+            //        if (cl.c.accessories.indexOf("piggy") === -1) {
+            //            chat(12, 203);
+            //        }
+            //        else {
+            //            nav.killall();
+            //            nav.bg("203_entrance/203_enter.jpg");
+            //            zcl.displayClothed();
+            //            nav.button({
+            //                "type": "img",
+            //                "name": "recepLook",
+            //                "left": 1060,
+            //                "top": 562,
+            //                "width": 731,
+            //                "height": 518,
+            //                "image": "203_entrance/kneel.png"
+            //            }, 203);
+            //            chat(10, 203);
+            //        }
+            //    }
+            //    else {
+            //        nav.killall();
+            //        nav.bg("203_entrance/203_enter.jpg");
+            //        nav.killbutton("zzz-clothing-kill");
+            //        zcl.displayClothed();
+            //        nav.button({
+            //            "type": "img",
+            //            "name": "recepLook",
+            //            "left": 1060,
+            //            "top": 562,
+            //            "width": 731,
+            //            "height": 518,
+            //            "image": "203_entrance/kneel.png"
+            //        }, 203);
+            //        chat(15, 203);
+            //    }
+            //}
             break;
         case "displaySelfPanties":
             var sex = null;
@@ -451,7 +465,7 @@ room203.chat = function (chatID) {
             speaker: "cecilia",
             text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
             button: [
-                { chatID: 18, text: "Yes I do.", callback: "" }
+                { chatID: 10, text: "Yes I do.", callback: "" }
             ]
         },
         {
@@ -479,31 +493,60 @@ room203.chat = function (chatID) {
                 { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
             ]
         },
-
-
-
-
-
-
-
-
-        {
-            chatID: 7,
-            speaker: "cecilia",
-            text: "Welcome back " + sc.n("me") + "! I'm so excited you got the job! ",
-            button: [
-                { chatID: 8, text: "Thank you " + sc.n("cecilia") + ". I'm excited to work with you too!", callback: "" }
-            ]
-        },
         {
             chatID: 8,
             speaker: "cecilia",
-            text: "So " + sc.n("missy") + " asked me to inspect your attire each day before you report in. To make it easier on both of us can you stand in " +
-                "front of my desk and pull your pants legs up so I can see your shoes and socks?",
+            text: "Oh yeah you look yummy. you may enter",
             button: [
-                { chatID: -1, text: "That sounds like a good idea [Move into position]", callback: "displaySelf" }
+                { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
             ]
         },
+        {
+            chatID: 9,
+            speaker: "cecilia",
+            text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
+                "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+            button: [
+                { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "cecilia",
+            text: "Oh good. Once you fill out this application Missy will meet you " +
+                "for your interview. Now some of the questions are rather personal, but Missy " +
+                " needs to know if you can handle undercover work. Just try to be honest and you'll do fine.",
+            button: [
+                { chatID: -1, text: "[Fill out application]", callback: "app" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "cecilia",
+            text: "Welcome back " + sc.n("me") + "! I'm so excited you got the job! ",
+            button: [
+                { chatID: 12, text: "Thank you " + sc.n("cecilia") + ". I'm excited to work with you too!", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "cecilia",
+            text: "So " + sc.n("missy") + " asked me to inspect your attire each day before you report in. To make it easier on both of us can you stand in " +
+                "front of my desk and model that big sexy body of yours! I need to check you out from your head to " +
+                "your shoes! ",
+            button: [
+                { chatID: -1, text: "Sure! ", callback: "displaySelf" }
+            ]
+        },
+
+
+
+
+
+
+
+
+
         {
             chatID: 9,
             speaker: "cecilia",
