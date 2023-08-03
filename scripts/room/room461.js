@@ -3,21 +3,58 @@ var room461 = {};
 room461.main = function () {
 
     if (!g.isNight()) {
-        if (Math.floor(Math.random() * 3) === 1) {
-            nav.button({
-                "type": "img",
-                "name": "girl",
-                "left": 1754,
-                "top": 397,
-                "width": 166,
-                "height": 418,
-                "image": "461_run/pee.png"
-            }, 461);
+        if (Math.floor(Math.random() * 2) === 1) {
+            var whichOne = Math.floor(Math.random() * 4);
+
+            if (whichOne === 0){
+                nav.button({
+                    "type": "img",
+                    "name": "girl",
+                    "left": 652,
+                    "top": 476,
+                    "width": 173,
+                    "height": 475,
+                    "image": "461_run/missy.png"
+                }, 461);
+            }
+            else if(whichOne === 1) {
+                nav.button({
+                    "type": "img",
+                    "name": "girl",
+                    "left": 1187,
+                    "top": 629,
+                    "width": 308,
+                    "height": 399,
+                    "image": "461_run/pee.png"
+                }, 461);
+            }
+            else if (whichOne === 2) {
+                nav.button({
+                    "type": "img",
+                    "name": "girl",
+                    "left": 221,
+                    "top": 282,
+                    "width": 479,
+                    "height": 798,
+                    "image": "461_run/girlrun.png"
+                }, 461);
+            }
+            else if (whichOne === 3) {
+                nav.button({
+                    "type": "img",
+                    "name": "girl",
+                    "left": 883,
+                    "top": 561,
+                    "width": 91,
+                    "height": 281,
+                    "image": "461_run/boyrun.png"
+                }, 461);
+            }
         }
 
-        g.mod("energy", -30);
-        g.mod("fitness", 15);
-        g.mod("leg", 10);
+        gv.mod("energy", -30);
+        levels.mod("fitness", 15, 999);
+        levels.mod("leg", 15, 999);
         char.addtime(60);
 
         if (cl.c.chest < 1)
@@ -27,7 +64,7 @@ room461.main = function () {
     }
     else {
         var clutNum = sc.getstep("cultboy");
-        if (!g.getDaily("cultrun") && (clutNum < 2 || Math.floor(Math.random() * 3) === 0)) {
+        if (!daily.get("cultrun") && (clutNum < 2 || Math.floor(Math.random() * 3) === 0)) {
             nav.button({
                 "type": "btn",
                 "name": "cult",
@@ -39,9 +76,9 @@ room461.main = function () {
             }, 461);
         }
         else {
-            g.mod("energy", -30);
-            g.mod("fitness", 15);
-            g.mod("leg", 10);
+            gv.mod("energy", -30);
+            gv.mod("fitness", 15);
+            gv.mod("leg", 10);
             char.addtime(60);
 
             if (cl.c.chest < 1)
@@ -124,7 +161,7 @@ room461.chatcatch = function (callback) {
             char.room(450);
             break;
         case "cult2":
-            g.setDaily("cultrun");
+            daily.set("cultrun");
             nav.killbutton("cult");
             nav.bg("461_run/cult2.jpg")
             break;
@@ -195,9 +232,9 @@ room461.chatcatch = function (callback) {
                 sc.setstep("cultboy", 2);
             if (cl.c.butthole < 2)
                 cl.c.butthole += .2;
-            g.mod("creamPied", 1);
-            g.mod("receiveAnalMale", 1);
-            g.setDaily("cultrun");
+            gv.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            daily.set("cultrun");
             cl.undo();
             char.room(450);
             break;

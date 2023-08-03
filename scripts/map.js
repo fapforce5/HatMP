@@ -142,12 +142,12 @@ m.getDir = function (n, d) {
 m.createFmap = function () {
     var i, j, k, l, c, r, tf;
 
-    var x = g.get("forestMap");
+    var x = gv.get("forestMap");
     if (x === null)
         m.createFmapNew();
     else {
-        var y = g.get("forestVisit");
-        //var z = g.get("forestID");
+        var y = gv.get("forestVisit");
+        //var z = gv.get("forestID");
         //var xa = x.split(",");
         var ya = y.split(",");
         m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));
@@ -320,14 +320,14 @@ m.createFmapNew = function () {
                 tx += m.getNum(i, j) + ",";
         }
     }
-    g.set("forestVisit", tx);
+    gv.set("forestVisit", tx);
     var forestString = "";
 
     for (i = 1; i < 79; i++) {
         for (j = 1; j < 19; j++)
             forestString += m.fmap[i][j].used;
     }
-    g.set("forestMap", forestString);
+    gv.set("forestMap", forestString);
 };
 
 m.updateVisit = function () {
@@ -339,7 +339,7 @@ m.updateVisit = function () {
                 tx += m.getNum(i, j) + ",";
         }
     }
-    g.set("forestVisit", tx);
+    gv.set("forestVisit", tx);
 };
 
 m.getNum = function (i, j) {

@@ -6,7 +6,7 @@ room0.main = function () {
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
         char.changeMenu("hide", false, true);
-    var tempMap = g.get("map");
+    var tempMap = gv.get("map");
     if (tempMap === 0)
         room0.btnclick("map_0");
     else if (tempMap === 2)
@@ -20,19 +20,19 @@ room0.main = function () {
 room0.btnclick = function (name) {
     if (name === "map_0") {
         nav.bg("map/map0.jpg", "map/map0_night.jpg");
-        g.set("map", 0);
+        gv.set("map", 0);
         char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "map_1") {
         nav.bg("map/map1.jpg", "map/map1_night.jpg");
-        g.set("map", 1);
+        gv.set("map", 1);
         char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "map_2") {
         nav.bg("map/map2.jpg", "map/map2_night.jpg");
-        g.set("map", 2);
+        gv.set("map", 2);
         char.map();
         room0.btnclick("redrawIcons");
     }
@@ -40,7 +40,7 @@ room0.btnclick = function (name) {
         nav.killall();
         
         var btnList = new Array();
-        var tempMap = g.get("map");
+        var tempMap = gv.get("map");
         g.internal = tempMap;
         room0.chatcatch("walk");
         $.each(g.roomMap, function (i, v) {
@@ -155,7 +155,7 @@ room0.chatcatch = function (callback) {
             if (g.walk !== null) {
                 if (g.walk === "oncase") {
                     var roomList = new Array();
-                    switch (g.get("oncase")) {
+                    switch (gv.get("oncase")) {
                         case "smolpp":
                         case "bigboobs":
                         case "bigass":

@@ -363,10 +363,10 @@ room226.main = function () {
                 }
             ]
         };
-        g.map.slime = !g.get("slimeMonsters");
-        var sewerend = g.get("sewerEnd");
-        var thisSewerID = g.get("sewerID");
-        var bmap = g.get("sewerMap").split(' ');
+        g.map.slime = !gv.get("slimeMonsters");
+        var sewerend = gv.get("sewerEnd");
+        var thisSewerID = gv.get("sewerID");
+        var bmap = gv.get("sewerMap").split(' ');
 
         if (sewerend === 0) {
             var thisOne = Math.floor(Math.random() * 4);
@@ -378,7 +378,7 @@ room226.main = function () {
                 sewerend = 30;
             else
                 sewerend = 29;
-            g.set("sewerEnd", sewerend);
+            gv.set("sewerEnd", sewerend);
         }
 
         g.map.l[sewerend].t = "s";
@@ -411,7 +411,7 @@ room226.main = function () {
 
     char.changeMenu("map", false, true);
     
-    if (g.get("energy") < 3) {
+    if (gv.get("energy") < 3) {
         chat(2, 226);
     }
     else
@@ -576,7 +576,7 @@ room226.btnclick = function (name) {
                         var thisEnemy;
                         if (g.map.l[g.map.id].e === "c")
                             thisEnemy = "sc";
-                        else if (g.map.l[g.map.id].e === "g" && g.get("fantasyCreatures"))
+                        else if (g.map.l[g.map.id].e === "g" && gv.get("fantasyCreatures"))
                             thisEnemy = "goo";
                         else
                             thisEnemy = Math.floor(Math.random() * 2) === 0 ? "fr" : "fy";
@@ -635,8 +635,8 @@ room226.btnclick = function (name) {
                 if (g.map.l[mi].v)
                     sewerMapString += mi.toString() + " ";
             }
-            g.set("sewerMap", sewerMapString);
-            g.set("sewerID", g.map.id);
+            gv.set("sewerMap", sewerMapString);
+            gv.set("sewerID", g.map.id);
 
             menu.makeSaves();
             break;
@@ -686,7 +686,7 @@ room226.chatcatch = function (callback) {
             break;
         case "slimereset":
             room226.btnclick("drawMap");
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             break;
         default:

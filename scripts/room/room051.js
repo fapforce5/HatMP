@@ -138,7 +138,7 @@ room51.chatcatch = function (callback) {
             nav.bg("51_livingRoom/t14.jpg");
             break;
         case "t15":
-            g.set("bodyhair", 0);
+            cl.c.bodyhair = 0;
             nav.bg("51_livingRoom/t15.jpg");
             break;
         case "t16":
@@ -265,7 +265,7 @@ room51.chatcatch = function (callback) {
             sc.revokeStep("tiffany", -1);
             sc.revokeStep("tiffany", -9);
             g.sissy[29].ach = true;
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.settime(19, 57);
             nav.button({
                 "type": "btn",

@@ -37,7 +37,7 @@ room750.main = function () {
 room750.btnclick = function (name) {
     switch (name) {
         case "doc":
-            if (!g.getDaily("doc")) {
+            if (!daily.get("doc")) {
                 nav.killbutton("doc");
                 nav.button({
                     "type": "btn",
@@ -71,7 +71,7 @@ room750.chatcatch = function (callback) {
     switch (callback) {
         case "doc0":
             sc.setstep('doc', 1);
-            g.setDaily("doc");
+            daily.set("doc");
             char.addtime(30);
             char.room(750);
             break;

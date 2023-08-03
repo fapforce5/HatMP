@@ -94,10 +94,10 @@ room651.chatcatch = function (callback) {
             char.room(651);
             break;
         case "pay50":
-            if (g.get("money") < 50)
+            if (gv.get("money") < 50)
                 chat(9, 651);
             else {
-                g.mod("money", -50);
+                gv.mod("money", -50);
                 nav.killbutton("pay");
                 nav.bg("651_wackHallway/jo1.jpg");
                 chat(10, 651);
@@ -117,7 +117,7 @@ room651.chatcatch = function (callback) {
                 chat(13, 651);
             break;
         case "jo2chastity":
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             char.room(651);
             break;
         case "jo3":

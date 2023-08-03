@@ -2,7 +2,7 @@
 
 cl.c = {
     leg: 0, chest: 0, cock: 0, butthole: 0.0,
-    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: "longHair", wig: null,
+    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
     necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
@@ -14,7 +14,7 @@ cl.c = {
 cl.init = function () {
     cl.c = {
         leg: 0, chest: 0, cock: 0, butthole: 0.0,
-        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: "longHair", wig: null,
+        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
         necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
@@ -1563,22 +1563,21 @@ cl.displayChar = function (ratio, top, left, back) {
 };
 
 cl.hairgrowth = function () {
-    var h = g.get("hormone");
+    var h = gv.get("hormone");
     if (h > 80)
-        g.mod("bodyhair", 2);
+        cl.c.bodyhair += 2;
     else if (h > 60)
-        g.mod("bodyhair", 4);
+        cl.c.bodyhair += 4;
     else if (h > 50)
-        g.mod("bodyhair", 7);
+        cl.c.bodyhair += 7;
     else
-        g.mod("bodyhair", 10);
+    cl.c.bodyhair += 10;
 };
 
 cl.getBodyHair = function () {
-    var h = g.get("bodyhair");
-    if (h > 80)
+    if (cl.c.bodyhair > 120)
         return "longHair";
-    if (h > 50)
+    if (cl.c.bodyhair > 80)
         return "shortHair";
 
     return null;
@@ -1621,8 +1620,8 @@ cl.display = function () {
         cl.subDisplay("char-legs", "butthole" + thisButthole + ".png");
     }
     else if (g.tview === "p") {
-        var thisBladdeer = g.get("bladder");
-        var thisMilk = g.get("milk");
+        var thisBladdeer = gv.get("bladder");
+        var thisMilk = gv.get("milk");
         if (thisMilk < 0)
             thisMilk = 0;
         
@@ -2000,7 +1999,7 @@ cl.cockDisplay = function () {
             $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("chastity", cl.c.chastity).img + '" />');
         }
         else {
-            var thisArousal = g.get("arousal");
+            var thisArousal = gv.get("arousal");
             if (thisArousal < 15)
                 $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_6.png" />');
             else if (thisArousal < 25)
@@ -2039,7 +2038,7 @@ cl.cockDisplay = function () {
 };
 
 cl.energydisplay = function () {
-    var tempEnergy = g.get("energy");
+    var tempEnergy = gv.get("energy");
     var firstHalf = cl.appearance();
     var secondHalf = "0";
 
@@ -2064,7 +2063,7 @@ cl.energydisplay = function () {
 cl.getCum = function () {
     //1440 minutes in day
     //4320 in 3 dyas
-    var timeSince = g.diffDateByMinutes(g.dt, g.get("cum")) / 4320.0;
+    var timeSince = g.diffDateByMinutes(g.dt, gv.get("cum")) / 4320.0;
     return timeSince > 1 ? 1 : timeSince;
 };
 
@@ -2072,21 +2071,21 @@ cl.doCum = function (bigCum) {
     var checkCum = cl.getCum();
 
     if (checkCum === 1) {
-        g.set("cum", char.addMinutes(g.dt, -4320));
+        gv.set("cum", char.addMinutes(g.dt, -4320));
     }
     if (bigCum)
-        g.set("cum", char.addMinutes(g.dt, 3240));
+        gv.set("cum", char.addMinutes(g.dt, 3240));
     else
-        g.set("cum", char.addMinutes(g.dt, 2160));
+        gv.set("cum", char.addMinutes(g.dt, 2160));
 
-    if (g.get("cum") > g.dt)
-        g.set("cum", g.dt);
+    if (gv.get("cum") > g.dt)
+        gv.set("cum", g.dt);
 
-    g.mod("arousal", -1000);
+    gv.mod("arousal", -1000);
 };
 
 cl.fillballs = function () {
-    g.set("cum", char.addMinutes(g.dt, -4320));
+    gv.set("cum", char.addMinutes(g.dt, -4320));
     cl.cockDisplay();
 };
 
@@ -2444,6 +2443,6 @@ cl.stretchButt = function (invItem, sizeItem) {
     else if (retSize > .17) {
         g.popUpNotice(startLine + "Your butthole stretched a lot. ");
     }
-    g.setDaily("buttholePlay");
+    daily.set("buttholePlay");
     return retSize;
 }; 

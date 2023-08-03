@@ -132,7 +132,7 @@ room76.chatcatch = function (callback) {
                 "height": 1032,
                 "image": "76_bimboRoom/bimbo3.png"
             }, 76);
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             break;
         case "leave1":
             sc.setstep("bimbo", 2);
@@ -180,7 +180,7 @@ room76.chatcatch = function (callback) {
                 "height": 1005,
                 "image": "76_bimboRoom/bimboCumface.png"
             }, 76);
-            g.mod("receiveBoobJob", 1);
+            gv.mod("receiveBoobJob", 1);
             cl.doCum(false);
             chat(8, 76);
             sc.setstep("bimbo", 2);
@@ -192,7 +192,7 @@ room76.chatcatch = function (callback) {
             nav.bg("76_bimboRoom/a2.gif");
             break;
         case "ass2":
-            g.mod("giveAnalFemale", 1);
+            gv.mod("giveAnalFemale", 1);
             cl.doCum(false);
             nav.killall();
             nav.bg("76_bimboRoom/laying3.jpg");
@@ -205,7 +205,7 @@ room76.chatcatch = function (callback) {
             nav.bg("76_bimboRoom/p2.gif");
             break;
         case "pussy3":
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             nav.bg("76_bimboRoom/p2.jpg");
             cl.doCum(false);
             nav.buildnav([77, 0]);

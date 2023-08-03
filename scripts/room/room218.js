@@ -1,7 +1,7 @@
 ﻿//Room name
 var room218 = {};
 room218.main = function () {
-    if (g.get("arousal") < 50) {
+    if (gv.get("arousal") < 50) {
         char.room(missy.jobs[g.pass].page);
     }
     else {

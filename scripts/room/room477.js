@@ -183,7 +183,7 @@ room477.chatcatch = function (callback) {
         case "c9":
             inv.add("envelope");
             char.addtime(120);
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.room(460);
             break;
         case "cave0":

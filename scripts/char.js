@@ -106,6 +106,9 @@ $(document).ready(function () {
         $(".char-20").css({
             "font-size": 20 * g.ratio + "px"
         });
+        $(".char-30").css({
+            "font-size": 30 * g.ratio + "px"
+        });
         $(".mt-10").css({
             "margin-top": 20 * g.ratio + "px"
         });
@@ -113,10 +116,12 @@ $(document).ready(function () {
             "margin-top": 60 * g.ratio + "px"
         });
         $(".resize-height").css({
-            height: 4 * g.ratio + "px"
+            height: 12 * g.ratio + "px"
         });
         $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
         $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
+        $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
+        $(".menu-box-img").css({ "width": (296 * g.ratio) + "px", "height": (90 * g.ratio) + "px" });
         char.menu();
     };
 
@@ -251,6 +256,11 @@ $(document).ready(function () {
         $(this).addClass("rl-selectButton-active");
         sstat.makeGraph();
     });
+
+    $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
+    $(".menu-box-img").css({ "width": (296 * g.ratio) + "px", "height": (90 * g.ratio) + "px" });
+    $('.rl-bar').css({ "height": (15 * g.ratio) + "px" });
+    $('.left-graph-char-bar').css({ "height": (15 * g.ratio) + "px" });
     char.init();
 });
 
@@ -325,7 +335,7 @@ char.map = function () {
     var exRoom = [226, 227, 475];
     var i;
     if (!(exRoom.includes(g.roomID))) {
-        var tm = g.get("map");
+        var tm = gv.get("map");
         var ttop = 100;
         $('#room_left_map').html('');
         for (i = 0; i < g.roomMap.length; i++) {
@@ -381,7 +391,7 @@ char.makeWalk = function () {
     }
     else {
         if (g.walk === "oncase") {
-            var oncase = g.get("oncase");
+            var oncase = gv.get("oncase");
             var oncaseText = '';
             $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
             $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
@@ -543,11 +553,11 @@ char.newdayfake = function () {
     g.newday();
     nav.buildclock();
     cl.hairgrowth();
-    g.set("energy", 10);
-    g.set("jobConstWorkToday", 0);
-    g.mod('hormone', -2);
+    gv.set("energy", 10);
+    gv.set("jobConstWorkToday", 0);
+    gv.mod('hormone', -2);
     cl.energydisplay();
-    g.set("arousal", 0);
+    gv.set("arousal", 0);
     cl.cockDisplay();
 };
 
@@ -767,12 +777,12 @@ menu.mClick = function (type) {
             window.open("https://www.patreon.com/FF5", "_blank"); 
             break;
         case "hormone":
-            var tempEnergy = Math.floor((g.get("energy") / g.get("maxenergy")) * 100);
+            var tempEnergy = Math.floor((gv.get("energy") / gv.get("maxenergy")) * 100);
             $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
                 '<div style="padding:10%;">' +
                 '<div style="font-size:' + 20 * g.ratio + 'px; margin-bottom:5px;">Hormone Levels</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#00abff; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("hormone") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("hormone") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
                 '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Sissyness</div>' +
@@ -790,19 +800,19 @@ menu.mClick = function (type) {
                 '<div style="width: ' + tempEnergy + '%; height:' + 15 * g.ratio + 'px; background:#20C000; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
-                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Fitness Level: ' + g.get("fitnessLevel") + '</div>' +
+                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Fitness Level: ' + gv.get("fitnessLevel") + '</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("fitness") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("fitness") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
-                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Leg Level: ' + g.get("legLevel") + '</div>' +
+                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Leg Level: ' + gv.get("legLevel") + '</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("leg") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("leg") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
-                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Upper Body Level: ' + g.get("bodyLevel") + '</div>' +
+                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Upper Body Level: ' + gv.get("bodyLevel") + '</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("body") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("body") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
                 '</div></div>');
@@ -813,7 +823,7 @@ menu.mClick = function (type) {
             $('#menu_parent').append('<img class="sissyai-kill" src="./images/phone/sissy.jpg" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + '"/>');
             $('#menu_parent').append('<div class="sissyai-kill" style="color:#e1018f; position:absolute; ' + g.makeCss(250, 500, 650, 700) + ' font-size:' + (40 * g.ratio) + 'px;">' +
                 '<table style="width:100%;">' +
-                '<tr><td>SISSY Points: </td><td> ' + (g.sp.total - g.get("usedSissyPoints")) + '</td></tr>' +
+                '<tr><td>SISSY Points: </td><td> ' + (g.sp.total - gv.get("usedSissyPoints")) + '</td></tr>' +
                 '<tr><td>&nbsp;</td><td></td></tr>' +
                 '<tr><td colspan="2"><button id="sissyai_view" type="button" class="sissy-btn" style="font-size:' + (40 * g.ratio) + 'px;">View Sissyness</button></tr></td>' +
                 '</table></div>');
@@ -835,7 +845,7 @@ menu.mClick = function (type) {
             });
             break;
         case "admin":
-            if (g.get("cheatMode")) {
+            if (gv.get("cheatMode")) {
                 $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
                     '<h2>Cheat Status: ACTIVE</h2>Thank you for your support!<hr/><br />' +
                     '<div style="font-size:' + 24 * g.ratio + 'px;">' +
@@ -852,14 +862,14 @@ menu.mClick = function (type) {
                 $(".admin-mod").click(function () {
                     switch ($(this).data("type")) {
                         case "money":
-                            g.set("money", 1000000);
-                            $('#char_money').text('$1000000');
+                            gv.set("money", 1000000);
+                            //$('#char_money').text('$1000000');
                             break;
                         case "energyp":
-                            g.mod("energy", 10000);
+                            gv.mod("energy", 10000);
                             break;
                         case "horneyp":
-                            g.set("cheatPoints", 10000);
+                            gv.set("cheatPoints", 10000);
                             break;
                         case "lolaEva":
                             var thisStep = $(this).data("step");
@@ -902,13 +912,13 @@ menu.mClick = function (type) {
                                     cl.add("accessories", "piggy");
                                     if (cl.c.chest === 0)
                                         cl.c.chest = 1;
-                                    g.mod("fitnessLevel", 1);
+                                    gv.mod("fitnessLevel", 1);
                                     sc.setstep("tiffany", -4);
                                     sc.setstep("tiffany", 5);
                                     sc.setstep("me", -1);
                                     sc.setstep("me", -2);
                                     sc.setstepAll("missy", 10);
-                                    g.set("bodyhair", 0);
+                                    cl.c.bodyhair = 0;
                                     inv.add("razor", 1);
                                     sc.setstepAll("me", 2);
                                     g.roomMapAccess(203, true, false);
@@ -932,7 +942,7 @@ menu.mClick = function (type) {
                                 g.popUpNotice("You've already passed this point.");
                             break;
                         case "uncheat":
-                            g.mod("cheatMode", false);
+                            gv.mod("cheatMode", false);
                             menu.mClick("admin");
                             break;
                     }
@@ -948,7 +958,7 @@ menu.mClick = function (type) {
                     '<br/><br/>Thank you so much for playing.' +
                     '</div>');
                 $('#cheat_passwordSubmit').click(function () {
-                    g.mod("cheatMode", true);
+                    gv.mod("cheatMode", true);
                     menu.mClick("admin");
                 });
                 $("#heat_cancel").click(function () {
@@ -1138,29 +1148,29 @@ menu.mClick = function (type) {
                 '</div>');
             $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
             $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
-            $('#radio-fantasy-' + g.get("fantasyCreatures")).prop("checked", true);
-            $('#radio-fightspeed-' + g.get("fightspeed")).prop("checked", true);
-            $('#radio-fightsex-' + g.get("fightsex")).prop("checked", true);
-            $('#radio-' + g.get("clock24")).prop("checked", true);
-            $('#radio-diff-' + g.get("difficulty")).prop("checked", true);
+            $('#radio-fantasy-' + gv.get("fantasyCreatures")).prop("checked", true);
+            $('#radio-fightspeed-' + gv.get("fightspeed")).prop("checked", true);
+            $('#radio-fightsex-' + gv.get("fightsex")).prop("checked", true);
+            $('#radio-' + gv.get("clock24")).prop("checked", true);
+            $('#radio-diff-' + gv.get("difficulty")).prop("checked", true);
 
             $('input[type=radio][name=switch-fantasy]').change(function () {
-                g.set("fantasyCreatures", $(this).val() === "on");
+                gv.set("fantasyCreatures", $(this).val() === "on");
             });
             $('input[type=radio][name=switch-clock]').change(function () {
-                g.set("clock24", $(this).val());
+                gv.set("clock24", $(this).val());
                 nav.buildclock();
             });
             $('input[type=radio][name=switch-difficulty]').change(function () {
-                g.set("difficulty", parseInt($(this).val()));
+                gv.set("difficulty", parseInt($(this).val()));
             });
             $('input[type=radio][name=switch-fightspeed]').change(function () {
-                g.set("fightspeed", parseInt($(this).val()));
+                gv.set("fightspeed", parseInt($(this).val()));
                 if (g.fight !== null)
                     g.fight.fighttimer = parseInt($(this).val());
             });
             $('input[type=radio][name=switch-fightsex]').change(function () {
-                g.set("fightsex", parseInt($(this).val()));
+                gv.set("fightsex", parseInt($(this).val()));
                 if (g.fight !== null)
                     g.fight.fightsex = parseInt($(this).val());
             });
@@ -1238,7 +1248,8 @@ menu.makeSaves = function () {
         cl: cl.save(),
         sc: sc.save(),
         scc: scc.save(),
-        pic: pic.save()
+        pic: pic.save(),
+        gv: gv.save()
     };
 };
 
@@ -1295,7 +1306,8 @@ g.saveState = {
     cl: cl.save(),
     sc: sc.save(),
     scc: scc.save(),
-    pic: pic.save()
+    pic: pic.save(),
+    gv: gv.save()
 };
 menu.load = function (cookieName, btn, saveID) {
     if (g.newLoad) {
@@ -1317,6 +1329,7 @@ menu.load = function (cookieName, btn, saveID) {
     cl.load(tp.cl);
     sc.load(tp.sc);
     scc.load(tp.scc);
+    gv.load(tp.gv);
     try {
         pic.load(tp.pic);
     }
@@ -1500,6 +1513,7 @@ char.import = function () {
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
+    gv.load(tp.gv);
     try {
         pic.load(tp.pic);
     }

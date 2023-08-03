@@ -196,8 +196,8 @@ room327.chatcatch = function (callback) {
             nav.bg("327_milking/m2.jpg");
             break;
         case "milkend":
-            g.mod("money", 50);
-            g.set("milk", 0);
+            gv.mod("money", 50);
+            gv.set("milk", 0);
             char.addtime(120);
             char.room(0);
             break;

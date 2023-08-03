@@ -1,7 +1,7 @@
 ﻿//Hospital waiting room
 var room700 = {};
 room700.main = function () {
-    if (g.get("jobapplynurse") === 1) {
+    if (gv.get("jobapplynurse") === 1) {
         nav.button({
             "type": "btn",
             "name": "bimboapply",
@@ -37,7 +37,7 @@ room700.btnclick = function (name) {
     switch (name) {
         case "bimbo":
             chat(0, 700);
-            //var sissyTrans = g.get("oncase");
+            //var sissyTrans = gv.get("oncase");
             //if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp")
             //    chat(2, 700);
             //else if (cl.c.chest > 1 || cl.c.leg > 0)
@@ -59,11 +59,11 @@ room700.chatcatch = function (callback) {
     switch (callback) {
         case "boob":
         case "butt":
-            if (g.get("money") < 100)
+            if (gv.get("money") < 100)
                 chat(4, 700);
             else {
                 g.internal = callback;
-                g.mod("money", -100);
+                gv.mod("money", -100);
                 chat(6, 700);
             }
             break;
@@ -91,7 +91,8 @@ room700.chatcatch = function (callback) {
             cl.display();
             break;
         case "nurseApply":
-            g.set("jobapplynurse", 2);
+            levels.mod("xdress", 5, 1);
+            gv.set("jobapplynurse", 2);
             char.room(700);
             break;
         case "leave":

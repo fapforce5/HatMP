@@ -3,7 +3,7 @@ var room204 = {};
 
 room204.main = function () {
     $('#room_footer').hide();
-    if (missy.tracker[6].c === 1) {
+    if (missy.st[6].c === 1) {
         chat(0, 204);
     }
     else if (g.pass === "repeatCards") {
@@ -38,9 +38,10 @@ room204.countdown = function (timer) {
             g.roomTimeout = setTimeout(function () { room204.countdown(timer) }, 1000);
         }
         else {
-            g.roomTimeout = null;
-            g.internal = { cardsLeft: g.pass.length, pay: Math.ceil((12 - g.pass.length) * 3.33) };
-            chat(999, 204);
+            room204.chatcatch("endgame");
+            //g.roomTimeout = null;
+            //g.internal = { cardsLeft: g.pass.length, pay: Math.ceil((12 - g.pass.length) * 3.33) };
+            //chat(999, 204);
         }
     }
 };
@@ -55,17 +56,18 @@ room204.btnclick = function (name) {
             nav.killbutton(name);
         }
         else {
-            missy.mod(0, -10);
+            g.internal.numberWrong++;
             $('.room-btn[data-name=' + name + ']').addClass("room-204fail");
-
         }
         if (g.pass.length === 0) {
-            g.mod("money", 60);
-            g.roomTimeout = null;
-            if (sc.getstep("missy") === 5)
-                chat(15, 204);
-            else
-                chat(13, 204);
+            room204.chatcatch("endgame");
+            ////gv.mod("money", 60);
+            ////g.roomTimeout = null;
+            ////if (sc.getstep("missy") === 5)
+            ////    chat(15, 204);
+            ////else
+            ////    chat(13, 204);
+
             
         }
     }
@@ -96,9 +98,9 @@ room204.btnclick = function (name) {
 };
 
 room204.startGame = function () {
-    var thisArousal = g.get("arousal");
+    var thisArousal = gv.get("arousal");
     var secondsOffsetForHorny = thisArousal > 50 ? Math.floor((115 - thisArousal) * .6) : 0;
-    g.internal = { s: false, horny: secondsOffsetForHorny };
+    g.internal = { s: false, horny: secondsOffsetForHorny, numberWrong: 0 };
     $('#room_footer').hide();
     //88
     var checkArray = new Array();
@@ -112,7 +114,7 @@ room204.startGame = function () {
     var top = 0;
     var left = 810 * g.ratio;
     var clock = 60;
-    switch (g.get("difficulty")) {
+    switch (gv.get("difficulty")) {
         case 0:
             clock = 180;
             break;
@@ -215,17 +217,27 @@ room204.chatcatch = function (callback) {
         case "file":
             room204.startGame();
             break;
-        case "success":
-            g.dt.setHours(18);
-            g.pass = "game";
-            char.room(202);
-            break;
-        case "failure":
-            g.dt.setHours(18);
-            char.room(0);
-            break;
-        case "MissyStep5":
-            char.room(200);
+        case "endgame":
+            g.roomTimeout = null;
+
+            var cardsComplete = 12 - g.pass.length;
+            var piPoints = (cardsComplete * 2) - g.internal.numberWrong;
+            var numberWrong = g.internal.numberWrong;
+            var pay = Math.ceil(cardsComplete * 3.33);
+            if (piPoints > 0)
+                levels.mod("pi", piPoints, 4);
+
+            if (cardsComplete === 12 && numberWrong === 0) {
+                 
+                //missy mood + 15 
+                chat(13, 204);
+
+            }
+
+            g.internal = { cardsLeft: g.pass.length, pay: pay, numberWrong: numberWrong };
+            
+
+
             break;
         case "mhate":
             missy.mod(0, -2);
@@ -236,6 +248,7 @@ room204.chatcatch = function (callback) {
             break;
         case "lunch":
             missy.mod(6, 1);
+            missy.mod(29, 1);
             char.room(224);
             break;
         default:
@@ -412,9 +425,10 @@ room204.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "missy",
-                text: "Nice " + sc.n("me") + ". Here's your $60 for a job well done. I also believe in rewarding hard work, come kneel beside my desk.",
+                text: "Not only did you file everything, you didn't misfile a single record! For doing such a perfect " +
+                    "job I'm going to double your pay today! ",
                 button: [
-                    { chatID: -1, text: "yes ma'am", callback: "success" }
+                    { chatID: -1, text: "Thank you ma'am!", callback: "lunch" }
                 ]
             },
             {

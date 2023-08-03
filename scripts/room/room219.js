@@ -2,7 +2,7 @@
 var room219 = {};
 room219.main = function () {
     g.internal = null;
-    if (missy.tracker[4].c === 0) {
+    if (missy.st[4].c === 0) {
         nav.bg("219_dataEntry/talk1.jpg");
         chat(0, 219);
     }
@@ -43,27 +43,27 @@ room219.btnclick = function (name) {
                 },
                 {
                     "name": "hypno1",
-                    "image": missy.tracker[11].c === 0 ? "file1.png" : "file1Unlock.png"
+                    "image": missy.st[11].c === 0 ? "file1.png" : "file1Unlock.png"
                 },
                 {
                     "name": "hypno2",
-                    "image": missy.tracker[12].c === 0 ? "file2.png" : "file2Unlock.png"
+                    "image": missy.st[12].c === 0 ? "file2.png" : "file2Unlock.png"
                 },
                 {
                     "name": "hypno3",
-                    "image": missy.tracker[13].c === 0 ? "file3.png" : "file3Unlock.png"
+                    "image": missy.st[13].c === 0 ? "file3.png" : "file3Unlock.png"
                 },
                 {
                     "name": "hypno4",
-                    "image": missy.tracker[14].c === 0 ? "file4.png" : "file4Unlock.png"
+                    "image": missy.st[14].c === 0 ? "file4.png" : "file4Unlock.png"
                 },
                 {
                     "name": "hypno5",
-                    "image": missy.tracker[15].c === 0 ? "file5.png" : "file5Unlock.png"
+                    "image": missy.st[15].c === 0 ? "file5.png" : "file5Unlock.png"
                 },
                 {
                     "name": "hypno6",
-                    "image": missy.tracker[16].c === 0 ? "file6.png" : "file6Unlock.png"
+                    "image": missy.st[16].c === 0 ? "file6.png" : "file6Unlock.png"
                 },
             ];
             room219.btnclick("makeScreen");
@@ -82,16 +82,17 @@ room219.btnclick = function (name) {
                 "height": 411,
                 "image": "219_dataEntry/hypo1.gif"
             }, 219);
-            missyTracker[11].c++;
+            
             g.roomTimeout = setTimeout(function () {
                 nav.killall();
                 nav.bg("219_dataEntry/hypnobg.jpg");
                 g.internal = cl.c.eyes;
                 cl.c.eyes = "hypno";
                 zcl.displayMain(-100, -200, .6, "clothes", false);
-                sissy.statsUpdate(28);
+                missy.st[11].c++;
+                levels.mod("sub", 50, 1);
                 chat(6, 219);
-            }, 5000);
+            }, 7000);
             break;
         case "type0":
             nav.killall();
@@ -139,7 +140,7 @@ room219.chatcatch = function (callback) {
             break;
         case "snapout":
             nav.killall();
-            g.mod("arousal", 20);
+            gv.mod("arousal", 20);
             nav.bg("219_dataEntry/complete.jpg");
             break;
         case "snapoutHypno":
@@ -149,12 +150,16 @@ room219.chatcatch = function (callback) {
             break;
         case "hypnolunch":
             //track if success
-            g.mod("energy", -15);
+            missy.mod(4, 1);
+            missy.mod(27, 1);
+            gv.mod("energy", -15);
             char.room(224);
             break;
         case "workLunch":
             //track if success
-            g.mod("energy", -10);
+            missy.mod(4, 1);
+            missy.mod(27, 1);
+            gv.mod("energy", -10);
             char.room(224);
             break;
         default:

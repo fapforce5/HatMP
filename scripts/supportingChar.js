@@ -26,8 +26,8 @@ sc.char = [
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true, phone: -1, p: true,  q3: null },
     { name: "charlie", display: "Charlie", image: "charlie.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
-    { name: "cop", display: "Cop", image: "cop.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
-    { name: "cop2", display: "Cop", image: "cop2.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: false },
+    { name: "cop", display: "Big Cop", image: "cop.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
+    { name: "cop2", display: "Idiot Cop", image: "cop2.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: false },
     { name: "jada", display: "Jada", image: "jada.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "red", display: "Red", image: "red.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, max: 0, show: true, setName: false, phone: -1, p: false,  q3: false },
@@ -93,14 +93,15 @@ sc.char = [
     { name: "a", display: "Aethelreda", image: "aethelreda.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "vag", display: "Slutty Slave", image: "cockgobbler.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "cock", display: "Cock Gobbler", image: "cockgobbler.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
-
+    { name: "sammi", display: "Sammi Olifant", image: "sammi.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "aurora", display: "Aurora Kirei", image: "sammi.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    //add her to sissy cave
 
     { name: "random", display: " ", image: "rand.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
 
 sc.events = [
-    { name: "me", step: -4, txt: "First time in wardrobe", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     { name: "me", step: -3, txt: "Can wear lipstick", img: "lipstick", show: true, row: 1, col: 2, ach: false, major: false, m: [] },
     { name: "me", step: -2, txt: "You're ok with wearing panties", img: "panties", show: true, row: 1, col: 1, ach: false, major: false, m: [] }, //hired at missy
     { name: "me", step: -1, txt: "You can shave your body", img: "razor", show: true, row: 1, col: 0, ach: false, major: false, m: [] }, //hired at missy
@@ -1177,7 +1178,7 @@ sc.phone = function (char) {
                     sc.phoneChat(clist, char);
                 }
                 else if (step === 10 || step === 11) {
-                    if (g.getDaily("eva")) {
+                    if (daily.get("eva")) {
                         clist = [
                             { s: "me", t: "Hey, been thinking about my dick?" },
                             { s: "eva", t: "I'm busy today, try me tomorrow!" },

@@ -149,13 +149,13 @@ room50.chat = function (chatID) {
             speaker: "treyvon",
             text: "I know. You don't sqeeze the fruit until you buy it hehe. So what's your name girl?",
             button: [
-                { chatID: 8, text: "It's... ahh........ummmmm........" + g.get("girlname") + "...", callback: "" }
+                { chatID: 8, text: "It's... ahh........ummmmm........" + gv.get("girlname") + "...", callback: "" }
             ]
         },
         {
             chatID: 8,
             speaker: "treyvon",
-            text: g.get("girlname") + ". That's are really pretty name, for a really pretty girl. I'm " + sc.n("treyvon") + ". " +
+            text: gv.get("girlname") + ". That's are really pretty name, for a really pretty girl. I'm " + sc.n("treyvon") + ". " +
             "I'll get you anything you need just scream my name. **wink**",
             button: [
                 { chatID: 9, text: "...", callback: "" }
@@ -165,7 +165,7 @@ room50.chat = function (chatID) {
             chatID: 9,
             speaker: "tiffany",
             text: "You two are really hitting it off. I guess I could give you two some alone time.... Oh yeah, I forgot " + sc.n("candy") + " wanted " +
-                "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + g.get("girlname") + " home. ",
+                "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + gv.get("girlname") + " home. ",
             button: [
                 { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "followtif" }
             ]

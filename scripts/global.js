@@ -20,7 +20,6 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.pw = "c2lzc3k=";
 g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 901, 902, 408, 478, 479, 480];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 875, 902, 903];
 g.sp = {};
@@ -32,160 +31,37 @@ g.statpage = 0;
 g.st = new Array();
 g.daily = new Array();
 
-g.buildSt = function () {
-    g.st = [
-        { n: "shower", t: g.startDate, q: "date" },
-        { n: "cum", t: g.startDate, q: "date" },
-        { n: "knockedup", t: null, q: "date" },
-        { n: "difficulty", t: 1, q: "int" },
-        { n: "money", t: 450, q: "money" },
-        { n: "clock24", t: "12", q: "bool" },
-        { n: "rent", t: 200, q: "zero" },
-        { n: "rentOwed", t: 0, q: "zero" },
-        { n: "arousal", t: 5, q: "hundred" },
-        { n: "rentKnockOff", t: 0, q: "zero" },
-        { n: "energy", t: 95, q: "energy" },
-        { n: "maxenergy", t: 100, q: "zero" },
-        { n: "fitness", t: 0, q: "level" },
-        { n: "hormone", t: 0, q: "hundred" },
-        { n: "autohormone", t: false, q: "bool" },
-        { n: "chastityLock", t: false, q: "bool" },
-        { n: "leg", t: 0, q: "hundred" },
-        { n: "body", t: 0, q: "hundred" },
-        { n: "sissy", t: 0, q: "sissy" },
-        { n: "usedSissyPoints", t: 0, q: "sissy" },
-        { n: "pill", t: null, q: "string" },
-        { n: "legLevel", t: 0, q: "zero" },
-        { n: "bodyLevel", t: 0, q: "zero" },
-        { n: "fitnessLevel", t: 0, q: "zero" },
-        { n: "dLevel", t: 0, q: "zero" },
-        { n: "d", t: 0, q: "hundred" },
-        { n: "domEvent", t: 0, q: "int" },
-        { n: "map", t: 0, q: "int" },
-        { n: "mapview", t: 0, q: "string" },
-        { n: "jobConstructionPay", t: 0, q: "zero" },
-        { n: "jobConstWorkToday", t: 0, q: "int" },
-        { n: "momClosetLube", t: 3, q: "int" },
-        { n: "momClosetMoney", t: 7, q: "int" },
-        { n: "momearnbackhome", t: 0, q: "int" },
-        { n: "bladder", t: 0, q: "zero" },
-        { n: "painting", t: "", q: "string" },
-        { n: "bodyhair", t: 100, q: "int" },
-        { n: "reddoorloc", t: 1, q: "int" },
-        { n: "makeup", t: 0, q: "int" },
-        { n: "sewerEnd", t: 0, q: "int" },
-        { n: "sewerMap", t: "", q: "string" },
-        { n: "sewerID", t: 0, q: "int" },
-        { n: "forestMap", t: null, q: "string" },
-        { n: "forestVisit", t: null, q: "string" },
-        { n: "shinkCock", t: false, q: "bool" },
-        { n: "lockdrawer", t: false, q: "bool" },
-        { n: "puter", t: false, q: "bool" },
-        { n: "slimeMonsters", t: true, q: "bool" },
-        { n: "oncase", t: null, q: "string" },
-        { n: "displayMenu", t: true, q: "bool" },
-        { n: "daysCult", t: 0, q: "int" },
-        { n: "cheatMode", t: false, q: "bool" },
-        { n: "mascot", t: 0, q: "int" },
-        { n: "subdom", t: 50, q: "hundred" },
-        { n: "pink", t: 0, q: "int" },
-        { n: "milk", t: -1, q: "int" },
-        { n: "cat", t: -1, q: "int" },
-        { n: "cheerleader", t: 0, q: "hundred" },
-        { n: "cheerlevel", t: 0, q: "int" },
-        { n: "stripper", t: 0, q: "hundred" },
-        { n: "stripperlevel", t: 0, q: "int" },
-        { n: "waitressSteal", t: false, q: "bool" },
-        { n: "fightspeed", t: 1250, q: "int" },
-        { n: "fightsex", t: 1250, q: "int" },
-        { n: "fightWon", t: 0, q: "int" },
-        { n: "fightLost", t: 0, q: "int" },
-        { n: "fightControlWon", t: 0, q: "int" },
-        { n: "fightControlLost", t: 0, q: "int" },
-        { n: "superPunch", t: 0, q: "int" },
-        { n: "fame", t: 0, q: "hundred" },
-        { n: "spankyprices", t: false, q: "bool" },
-        { n: "jobapplynurse", t: 0, q: "int" },
-        { n: "jobapplyconst", t: 0, q: "int" },
-        { n: "jobapplybeaver", t: 0, q: "int" },
-        
-        
 
-        { n: "girlname", t: "Scarlett", q: "string" },
-        { n: "quest3", t: null, q: "string" },
 
-        { n: "fantasyCreatures", t: false, q: "bool" },
-        { n: "jobConstGetRaise", t: false, q: "bool" },
-        { n: "lockboobs", t: false, q: "bool" },
-        { n: "lockbutt", t: false, q: "bool" },
-        
-    ];
+//g.i = function (name) {
+//    var thisIndex = -1;
+//    for (i = 0; i < g.st.length; i++) {
+//        if (gv.st[i].n === name) {
+//            thisIndex = i;
+//            type = gv.st[i].t;
+//            break;
+//        }
+//    }
+//    return thisIndex;
+//};
 
-    g.daily = [
-        { n: "chloe", t: false, q: "day" },
-        { n: "landlord", t: false, q: "day" },
-        { n: "eva", t: false, q: "day" },
-        { n: "lola", t: false, q: "day" },
-        { n: "tif", t: false, q: "day" },
-        { n: "candy", t: false, q: "day" },
-        { n: "envy", t: false, q: "day" },
-        { n: "jones", t: false, q: "day" },
-        { n: "rachel", t: false, q: "day" },
-        { n: "zoey", t: false, q: "day" },
-        { n: "tim", t: false, q: "day" },
-        { n: "cindy", t: false, q: "day" },
-        { n: "keaton", t: false, q: "day" },
-        { n: "bigguy", t: false, q: "day" },
-        { n: "g", t: false, q: "day" },
-        { n: "doc", t: false, q: "day" },
+//gv.set = function (name, amount) {
+//    var index = g.i(name);
+//    var oldAmount, newAmount;
+//    oldAmount = gv.st[index].t;
+//    gv.st[index].t = amount;
 
-        { n: "momChoreBed", t: false, q: "day" },
-        { n: "momChoreDishes", t: false, q: "day" },
-        { n: "homeShowerPeek", t: false, q: "day" },
-        { n: "momRaidCloset", t: false, q: "day" },
+//    newAmount = amount - oldAmount;
+//    g.checkPop(name, newAmount);
+//};
 
-        { n: "construction", t: false, q: "day" },
-        { n: "buttholePlay", t: false, q: "day" },
-        { n: "zbar", t: false, q: "day" },
-        { n: "gold0", t: false, q: "day" },
-        { n: "petcat", t: false, q: "day" },
-        { n: "cardgame", t: false, q: "day" },
-        { n: "cultrun", t: false, q: "day" },
-        { n: "tookHormonePill", t: false, q: "day" },
-    ]
-};
-
-g.buildSt();
-
-g.i = function (name) {
-    var thisIndex = -1;
-    for (i = 0; i < g.st.length; i++) {
-        if (g.st[i].n === name) {
-            thisIndex = i;
-            type = g.st[i].t;
-            break;
-        }
-    }
-    return thisIndex;
-};
-
-g.set = function (name, amount) {
-    var index = g.i(name);
-    var oldAmount, newAmount;
-    oldAmount = g.st[index].t;
-    g.st[index].t = amount;
-
-    newAmount = amount - oldAmount;
-    g.checkPop(name, newAmount);
-};
-
-g.get = function (name) {
-    var thisIndex = g.i(name);
-    if(thisIndex > -1)
-        return g.st[thisIndex].t;
-    console.log("get missing name: " + name);
-    return null;
-};
+//g.get = function (name) {
+//    var thisIndex = g.i(name);
+//    if(thisIndex > -1)
+//        return gv.st[thisIndex].t;
+//    console.log("get missing name: " + name);
+//    return null;
+//};
 
 g.setDaily = function (who) {
     for (i = 0; i < g.daily.length; i++) {
@@ -197,89 +73,19 @@ g.setDaily = function (who) {
     console.log("No entry - g.setDaily:" + who);
 };
 
-g.getDaily = function (who) {
-    for (i = 0; i < g.daily.length; i++) {
-        if (g.daily[i].n === who) {
-            return g.daily[i].t;
-        }
-    }
-    console.log("No entry - g.getDaily:" + who);
-};
+//g.getDaily = function (who) {
+//    for (i = 0; i < g.daily.length; i++) {
+//        if (g.daily[i].n === who) {
+//            return g.daily[i].t;
+//        }
+//    }
+//    console.log("No entry - g.getDaily:" + who);
+//};
 
-g.mod = function (name, amount) {
-    var i, index, type;
-    index = g.i(name);
 
-    if (index > -1) {
-        type = g.st[index].q;
-        switch (type) {
-            case "zero":
-                g.st[index].t += amount;
-                if (g.st[index].t < 0)
-                    g.st[index].t = 0;
-                g.checkPop(name, amount);
-                break;
-            case "money":
-                g.st[index].t += amount;
-                if (g.st[index].t < 0)
-                    g.st[index].t = 0;
-                g.checkPop(name, amount);
-                $('#char_money').text('$' + g.st[index].t);
-                break;
-            case "hundred":
-                g.st[index].t += amount;
-                if (g.st[index].t < 0)
-                    g.st[index].t = 0;
-                if (g.st[index].t > 100)
-                    g.st[index].t = 100;
-                g.checkPop(name, amount);
-                break;
-            case "energy":
-                var maxEnergy = g.get("maxenergy");
-                g.st[index].t += amount;
-                if (g.st[index].t < 0)
-                    g.st[index].t = 0;
-                if (g.st[index].t > maxEnergy)
-                    g.st[index].t = maxEnergy;
-                g.checkPop(name, amount);
-                break;
-            case "day":
-            case "bool":
-                g.st[index].t = amount;
-                break;
-            case "int":
-                g.st[index].t += amount;
-                break;
-            case "date":
-                g.st[index].t = new Date(g.st[index].t.getTime() + (amount * 60000));
-                break;
-            case "level":
-                g.st[index].t += amount;
-                if (g.st[index].t < 0)
-                    g.st[index].t = 0;
-                if (g.st[index] > 99) {
-                    g.st[index] = 0;
-                    switch (name) {
-                        case "fitness":
-                            g.mod("fitnessLevel", 1);
-                            g.checkPop(name, amount);
-                            break;
-                    }
-                }
-                else
-                    g.checkPop(name, amount);
-                break;
-            default:
-                console.log("unknown g.mod type: " + type + ", name: " + name);
-                break;
-        }
-    }
-    else
-        console.log("unknown g.mod: " + name);
-};
 
 g.gt = function (first, second) {
-    return g.get(first) > g.get(second);
+    return gv.get(first) > gv.get(second);
 };
 
 g.newday = function () {
@@ -306,42 +112,42 @@ g.checkPop = function (name, amount) {
         case "hormone":
             if (amount > 0)
                 g.popUpNotice("You feel more feminine");
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
         case "cheerleader":
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
         case "energy":
             if (amount > 0)
                 g.popUpNotice("You Gained " + amount.toString() + " Energy");
             cl.energydisplay();
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
         case "arousal": //0-100
             cl.cockDisplay();
             break;
         case "fitness":
             g.popUpNotice("Your fitness " + (amount < 0 ? "Decreased" : "Increased" + "  by ") + Math.abs(amount));
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
         case "fitnessLevel":
             g.popUpNotice("Your fitness Level has INCREASED!!");
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
         case "leg":
             g.popUpNotice("Your legs are " + (amount < 0 ? "weaker" : "stronger"));
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
         case "body":
             g.popUpNotice("Your arms are " + (amount < 0 ? "weaker" : "stronger"));
-            sissy.makeGraph();
+            sstat.makeGraph();
             break;
-        case "sissy":
-            if (amount > 0)
-                g.popUpNotice("Your sissy stats increased. ");
-            else
-                g.popUpNotice("You used " + amount + " Sissy Points. ");
-            break;
+        //case "sissy":
+        //    if (amount > 0)
+        //        g.popUpNotice("Your sissy stats increased. ");
+        //    else
+        //        g.popUpNotice("You used " + amount + " Sissy Points. ");
+        //    break;
         case "fame":
             if (amount > 20)
                 g.popUpNotice("You became a lot more famous in this town. ");
@@ -460,7 +266,7 @@ g.rooms = [
     { roomID: 219, name: "Data Entry", image: "219_dataEntry/bg.jpg", nightImage: "219_dataEntry/bg.jpg", houseID: 203, btn: "roomBtn_219.png" },
     { roomID: 220, name: "Clean Bathroom", image: "201_bathroom/bg0.jpg", nightImage: "201_bathroom/bg0.jpg", houseID: 203, btn: "roomBtn_201.png" },
     { roomID: 221, name: "Reception", image: "221_recip/bg.jpg", nightImage: "221_recip/bg.jpg", houseID: 203, btn: "roomBtn_203.png" },
-    { roomID: 221, name: "Errands", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 222, name: "Errands", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 224, name: "Lunch", image: "219_dataEntry/bg.jpg", nightImage: "219_dataEntry/bg.jpg", houseID: 203, btn: "roomBtn_219.png" },
     
 
@@ -653,6 +459,15 @@ g.hasAccess = function (roomID) {
     return retVal;
 };
 
+g.getRoomMap = function (roomId) {
+    for (i = 0; i < g.roomMap.length; i++) {
+        if (g.roomMap[i].roomID === roomId) {
+            return g.roomMap[i];
+        }
+    }
+    return null;
+};
+
 g.setRatio = function () {
     var width = $(window).width();
     var height = $(window).height();
@@ -715,9 +530,7 @@ g.shuffleArray = function (array) {
 };
 
 g.isNight = function () {
-    if (g.hourBetween(6, 19))
-        return false;
-    return true;
+    return !g.hourBetween(6, 19);
 };
 
 g.cleanText = function (thisInput) {
@@ -787,20 +600,20 @@ g.newLine = function (str, maxLength) {
 g.save = function () {
     var i;
     var retArra = {
-        st: new Array(),
+        //st: new Array(),
         roomMap: new Array(),
         roomID: g.roomID,
         dt: g.dt, 
-        sissy: new Array(),
-        map: g.map
+        //sissy: new Array(),
+        //map: g.map
     };
 
-    for (i = 0; i < g.st.length; i++) {
-        retArra.st.push({
-            n: g.st[i].n,
-            t: g.st[i].t
-        });
-    }
+    //for (i = 0; i < g.st.length; i++) {
+    //    retArra.st.push({
+    //        n: gv.st[i].n,
+    //        t: gv.st[i].t
+    //    });
+    //}
     for (i = 0; i < g.roomMap.length; i++) {
         retArra.roomMap.push({
             roomID: g.roomMap[i].roomID,
@@ -809,10 +622,10 @@ g.save = function () {
         });
     }
 
-    for (i = 0; i < g.sissy.length; i++) {
-        if (g.sissy[i].ach)
-            retArra.sissy.push(i);
-    }
+    //for (i = 0; i < g.sissy.length; i++) {
+    //    if (g.sissy[i].ach)
+    //        retArra.sissy.push(i);
+    //}
 
     return retArra;
 };
@@ -938,47 +751,46 @@ g.load = function (rma, thisVersion) {
         }
     }
 
-    for (i = 0; i < rma.st.length; i++) {
-        for (j = 0; j < g.st.length; j++) {
-            if (g.st[j] === "g_sissy")
-                ksissy = j;
-            if (rma.st[i].n === g.st[j].n) {
-                if (g.st[j].q === "date")
-                    g.st[j].t = new Date(rma.st[i].t);
-                else
-                    g.st[j].t = rma.st[i].t;
-                j = 999999;
-            }
-        }
-    }
-    for (i = 0; i < g.sissy.length; i++)
-        g.sissy[i].ach = false;
-    if ("sissy" in rma) {
-        for (i = 0; i < rma.sissy.length; i++)
-            g.sissy[rma.sissy[i]].ach = true;
-    }
+    //for (i = 0; i < rma.st.length; i++) {
+    //    for (j = 0; j < g.st.length; j++) {
+    //        if (gv.st[j] === "g_sissy")
+    //            ksissy = j;
+    //        if (rma.st[i].n === gv.st[j].n) {
+    //            if (gv.st[j].q === "date")
+    //                gv.st[j].t = new Date(rma.st[i].t);
+    //            else
+    //                gv.st[j].t = rma.st[i].t;
+    //            j = 999999;
+    //        }
+    //    }
+    //}
+    //for (i = 0; i < g.sissy.length; i++)
+    //    g.sissy[i].ach = false;
+    //if ("sissy" in rma) {
+    //    for (i = 0; i < rma.sissy.length; i++)
+    //        g.sissy[rma.sissy[i]].ach = true;
+    //}
     
-    if (thisVersion < 14) {
-        if (g.roomID > 949) {
-            g.set("oncase", null);
-            g.roomID = 0;
-            sc.rollback("daria", 0);
-            for (i = 0; i < inv.master.length; i++) {
-                if (inv.master[i].name === "chisel") {
-                    inv.master[i].entry = false;
-                    inv.master[i].count = null
-                }
-            }
-        }
-    }
+    //if (thisVersion < 14) {
+    //    if (g.roomID > 949) {
+    //        gv.set(
+    //            "oncase", null);
+    //        g.roomID = 0;
+    //        sc.rollback("daria", 0);
+    //        for (i = 0; i < inv.master.length; i++) {
+    //            if (inv.master[i].name === "chisel") {
+    //                inv.master[i].entry = false;
+    //                inv.master[i].count = null
+    //            }
+    //        }
+    //    }
+    //}
 };
 
 g.initGame = function () {
-    var i;
     g.roomID = 7;
-    //$("#room_left_map").hide();
     g.dt = char.addMinutes(g.startDate, 757);
-    g.buildSt();
+    gv.init();
 };
 
 g.sumSissy = function () {
@@ -1077,130 +889,130 @@ g.sumSissy = function () {
         tempHolder: 0
     };
     for (i = 0; i < g.st.length; i++) {
-        switch (g.st[i].n) {
+        switch (gv.st[i].n) {
             case "difficulty":
                 var dname = ["easy", "normal", "hard"];
                 var mult = [.5, 1, 1.25];
-                g.sp.difficulty.n = dname[g.st[i].t];
-                g.sp.difficulty.m = mult[g.st[i].t];
+                g.sp.difficulty.n = dname[gv.st[i].t];
+                g.sp.difficulty.m = mult[gv.st[i].t];
                 break;
 
             case "giveOralMale":
-                g.sp.oral.n.m = g.st[i].t;
+                g.sp.oral.n.m = gv.st[i].t;
                 break;
             case "giveOralFemale":
-                g.sp.oral.n.f = g.st[i].t;
+                g.sp.oral.n.f = gv.st[i].t;
                 break;
             case "receiveOralMale":
-                g.sp.oral.n.mr += g.st[i].t;
+                g.sp.oral.n.mr += gv.st[i].t;
                 break;
             case "receiveOralFemale":
-                g.sp.oral.n.fr += g.st[i].t;
+                g.sp.oral.n.fr += gv.st[i].t;
                 break;
 
             case "giveBoobJob":
-                g.sp.boob.n.r = g.st[i].t;
+                g.sp.boob.n.r = gv.st[i].t;
                 break;
             case "receiveBoobJob":
-                g.sp.boob.n.f = g.st[i].t;
+                g.sp.boob.n.f = gv.st[i].t;
                 break;
 
             case "loadSwollowed":
-                g.sp.cumswollow.t = g.st[i].t;
+                g.sp.cumswollow.t = gv.st[i].t;
                 break;
             case "loadSpit":
-                g.sp.cumspit.t = g.st[i].t;
+                g.sp.cumspit.t = gv.st[i].t;
                 break;
             case "creamPied":
-                g.sp.creampie.t = g.st[i].t;
+                g.sp.creampie.t = gv.st[i].t;
                 break;
 
             case "giveAnalMale":
-                g.sp.anal.n.mr = g.st[i].t;
+                g.sp.anal.n.mr = gv.st[i].t;
                 break;
             case "giveAnalFemale":
-                g.sp.anal.n.fr = g.st[i].t;
+                g.sp.anal.n.fr = gv.st[i].t;
                 break;
             case "receiveAnalMale":
-                g.sp.anal.n.m += g.st[i].t;
+                g.sp.anal.n.m += gv.st[i].t;
                 break;
             case "receiveAnalFemale":
-                g.sp.anal.n.f += g.st[i].t;
+                g.sp.anal.n.f += gv.st[i].t;
                 break;
 
             case "giveHandjobMale":
-                g.sp.hand.n.m = g.st[i].t;
+                g.sp.hand.n.m = gv.st[i].t;
                 break;
             case "giveFingerFemale":
-                g.sp.hand.n.f = g.st[i].t;
+                g.sp.hand.n.f = gv.st[i].t;
                 break;
             case "receiveHandjobMale":
-                g.sp.hand.n.mr += g.st[i].t;
+                g.sp.hand.n.mr += gv.st[i].t;
                 break;
             case "receiveHandjobFemale":
-                g.sp.hand.n.fr += g.st[i].t;
+                g.sp.hand.n.fr += gv.st[i].t;
                 break;
 
             case "receiveFistMale":
-                g.sp.fist.n.m = g.st[i].t;
+                g.sp.fist.n.m = gv.st[i].t;
                 break;
             case "receiveFistFemale":
-                g.sp.fist.n.f = g.st[i].t;
+                g.sp.fist.n.f = gv.st[i].t;
                 break;
 
             case "giveFootjobMale":
-                g.sp.foot.n.m = g.st[i].t;
+                g.sp.foot.n.m = gv.st[i].t;
                 break;
             case "giveFootjobFemale":
-                g.sp.foot.n.f = g.st[i].t;
+                g.sp.foot.n.f = gv.st[i].t;
                 break;
             case "receiveFootjobMale":
-                g.sp.foot.n.mr += g.st[i].t;
+                g.sp.foot.n.mr += gv.st[i].t;
                 break;
             case "receiveFootjobFemale":
-                g.sp.foot.n.fr += g.st[i].t;
+                g.sp.foot.n.fr += gv.st[i].t;
                 break;
 
             case "getPussyFucked":
-                g.sp.pussy.n.r = g.st[i].t;
+                g.sp.pussy.n.r = gv.st[i].t;
                 break;
             case "fuckPussy":
-                g.sp.pussy.n.f = g.st[i].t;
+                g.sp.pussy.n.f = gv.st[i].t;
                 break;
 
             case "pissedonMale":
-                g.sp.piss.n.m = g.st[i].t;
+                g.sp.piss.n.m = gv.st[i].t;
                 break;
             case "pissedonFemale":
-                g.sp.piss.n.f = g.st[i].t;
+                g.sp.piss.n.f = gv.st[i].t;
                 break;
 
             case "footLicker":
-                g.sp.footlicker.t = g.st[i].t;
+                g.sp.footlicker.t = gv.st[i].t;
                 break;
 
             case "missyPoints":
-                g.sp.misspoints.t = g.st[i].t;
+                g.sp.misspoints.t = gv.st[i].t;
                 break;
             case "cheatPoints":
-                g.sp.cheatPoints.t = g.st[i].t;
+                g.sp.cheatPoints.t = gv.st[i].t;
                 break;
             case "phum":
-                g.sp.phum.t = g.st[i].t;
+                g.sp.phum.t = gv.st[i].t;
                 break;
 
             case "sissygasm":
-                g.sp.sissygasm.t = g.st[i].t;
+                g.sp.sissygasm.t = gv.st[i].t;
                 break;
 
             case "fingerbutt":
-                g.sp.fingerbutt.t = g.st[i].t;
+                g.sp.fingerbutt.t = gv.st[i].t;
                 break;
             case "dildobutt":
-                g.sp.dildobutt.t = g.st[i].t;
+                g.sp.dildobutt.t = gv.st[i].t;
                 break;
             case "sissy":
-                g.sp.legacyPoints.t = g.st[i].t;
+                g.sp.legacyPoints.t = gv.st[i].t;
                 break;
         }
     }
@@ -1245,63 +1057,63 @@ g.subSumSissy = function(t, ob){
 };
 
 g.sissyview = function () {
-    g.sumSissy();
-    var usedPoints = g.get('usedSissyPoints');
-    m = 35;
-    ttl = 40;
-    x = 130;
-    var tableView = '<table style="position:absolute; color:#fff; top:' + 250 * g.ratio + 'px; left: ' + 450 * g.ratio + 'px;' +
-        'font-size:' + 22 * g.ratio + 'px; width:' + 500 * g.ratio + 'px;">';
-    g.sp.tempHolder = 0;
-    tableView += g.subSissyViewTitle("Sex Acts");
-    tableView += g.subSissyView("Oral", g.sp.oral.t, g.sp.oral.p, "n");
-    tableView += g.subSissyView("Anal", g.sp.anal.t, g.sp.anal.p, "n");
-    tableView += g.subSissyView("Hand", g.sp.hand.t, g.sp.hand.p, "n");
-    tableView += g.subSissyView("Foot", g.sp.foot.t, g.sp.foot.p, "n");
-    tableView += g.subSissyView("Boob", g.sp.boob.t, g.sp.boob.p, "n");
-    tableView += g.subSissyView("Pussy", g.sp.pussy.t, g.sp.pussy.p, "n");
-    tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
+    //g.sumSissy();
+    //var usedPoints = gv.get('usedSissyPoints');
+    //m = 35;
+    //ttl = 40;
+    //x = 130;
+    //var tableView = '<table style="position:absolute; color:#fff; top:' + 250 * g.ratio + 'px; left: ' + 450 * g.ratio + 'px;' +
+    //    'font-size:' + 22 * g.ratio + 'px; width:' + 500 * g.ratio + 'px;">';
+    //g.sp.tempHolder = 0;
+    //tableView += g.subSissyViewTitle("Sex Acts");
+    //tableView += g.subSissyView("Oral", g.sp.oral.t, g.sp.oral.p, "n");
+    //tableView += g.subSissyView("Anal", g.sp.anal.t, g.sp.anal.p, "n");
+    //tableView += g.subSissyView("Hand", g.sp.hand.t, g.sp.hand.p, "n");
+    //tableView += g.subSissyView("Foot", g.sp.foot.t, g.sp.foot.p, "n");
+    //tableView += g.subSissyView("Boob", g.sp.boob.t, g.sp.boob.p, "n");
+    //tableView += g.subSissyView("Pussy", g.sp.pussy.t, g.sp.pussy.p, "n");
+    //tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
 
-    g.sp.tempHolder = 0;
-    tableView += g.subSissyViewTitle("Masturbation");
-    tableView += g.subSissyView("Fingered", g.sp.fingerbutt.t, g.sp.fingerbutt.p, "n");
-    tableView += g.subSissyView("Dildo", g.sp.dildobutt.t, g.sp.dildobutt.p, "n");
-    tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
+    //g.sp.tempHolder = 0;
+    //tableView += g.subSissyViewTitle("Masturbation");
+    //tableView += g.subSissyView("Fingered", g.sp.fingerbutt.t, g.sp.fingerbutt.p, "n");
+    //tableView += g.subSissyView("Dildo", g.sp.dildobutt.t, g.sp.dildobutt.p, "n");
+    //tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
 
-    tableView += "</table>";
-    $("#menu_parent").append(tableView);
-    tableView = '<table style="position:absolute; color:#fff; top:' + 250 * g.ratio + 'px; left: ' + 1000 * g.ratio + 'px;' +
-        'font-size:' + 22 * g.ratio + 'px; width:' + 500 * g.ratio + 'px;">';
+    //tableView += "</table>";
+    //$("#menu_parent").append(tableView);
+    //tableView = '<table style="position:absolute; color:#fff; top:' + 250 * g.ratio + 'px; left: ' + 1000 * g.ratio + 'px;' +
+    //    'font-size:' + 22 * g.ratio + 'px; width:' + 500 * g.ratio + 'px;">';
 
-    g.sp.tempHolder = 0;
-    tableView += g.subSissyViewTitle("Fluids");
-    tableView += g.subSissyView("Spit", g.sp.cumspit.t, g.sp.cumspit.p, "n");
-    tableView += g.subSissyView("Swollow", g.sp.cumswollow.t, g.sp.cumswollow.p, "n");
-    tableView += g.subSissyView("Creampie", g.sp.creampie.t, g.sp.creampie.p, "n");
-    tableView += g.subSissyView("Piss", g.sp.piss.t, g.sp.piss.p, "n");
-    tableView += g.subSissyView("SissyGasm", g.sp.sissygasm.t, g.sp.sissygasm.p, "n");
-    tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
+    //g.sp.tempHolder = 0;
+    //tableView += g.subSissyViewTitle("Fluids");
+    //tableView += g.subSissyView("Spit", g.sp.cumspit.t, g.sp.cumspit.p, "n");
+    //tableView += g.subSissyView("Swollow", g.sp.cumswollow.t, g.sp.cumswollow.p, "n");
+    //tableView += g.subSissyView("Creampie", g.sp.creampie.t, g.sp.creampie.p, "n");
+    //tableView += g.subSissyView("Piss", g.sp.piss.t, g.sp.piss.p, "n");
+    //tableView += g.subSissyView("SissyGasm", g.sp.sissygasm.t, g.sp.sissygasm.p, "n");
+    //tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
 
-    g.sp.tempHolder = 0;
-    tableView += g.subSissyViewTitle("Misc");
-    tableView += g.subSissyView("Missy Points", g.sp.misspoints.t, g.sp.misspoints.p, "n");
-    tableView += g.subSissyView("Humiliation", g.sp.phum.t, g.sp.phum.p, "n");
-    tableView += g.subSissyView("Foot Licker", g.sp.footlicker.t, g.sp.footlicker.p, "n");
-    tableView += g.subSissyView("Cheat", g.sp.cheatPoints.t, g.sp.cheatPoints.p, "n");
-    tableView += g.subSissyView("Legacy", g.sp.legacyPoints.t, g.sp.legacyPoints.p, "n");
-    tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
-    tableView += "</table>";
+    //g.sp.tempHolder = 0;
+    //tableView += g.subSissyViewTitle("Misc");
+    //tableView += g.subSissyView("Missy Points", g.sp.misspoints.t, g.sp.misspoints.p, "n");
+    //tableView += g.subSissyView("Humiliation", g.sp.phum.t, g.sp.phum.p, "n");
+    //tableView += g.subSissyView("Foot Licker", g.sp.footlicker.t, g.sp.footlicker.p, "n");
+    //tableView += g.subSissyView("Cheat", g.sp.cheatPoints.t, g.sp.cheatPoints.p, "n");
+    //tableView += g.subSissyView("Legacy", g.sp.legacyPoints.t, g.sp.legacyPoints.p, "n");
+    //tableView += g.subSissyView("Total", 0, g.sp.tempHolder, "x");
+    //tableView += "</table>";
     
-    $("#menu_parent").append(tableView);
-    $("#menu_parent").append('<table style="position:absolute; color:#fff; top:' + 125 * g.ratio + 'px; left: ' + 450 * g.ratio + 'px;' +
-        'font-size:' + 25 * g.ratio + 'px; width:' + 500 * g.ratio + 'px;">' +
-        '<tr><td>Total Points</td><td style="text-align:right;">' + g.sp.total + '</td>' +
-        '<tr><td>Used Points</td><td style="text-align:right;">' + usedPoints + '</td>' +
-        '<tr><td>Available Points</td><td style="text-align:right;">' + (g.sp.total - usedPoints) + '</td>' +
-        '</table>');
-    $(".sissy-info").click(function () {
-        g.sissyclick($(this).data("t"));
-    });
+    //$("#menu_parent").append(tableView);
+    //$("#menu_parent").append('<table style="position:absolute; color:#fff; top:' + 125 * g.ratio + 'px; left: ' + 450 * g.ratio + 'px;' +
+    //    'font-size:' + 25 * g.ratio + 'px; width:' + 500 * g.ratio + 'px;">' +
+    //    '<tr><td>Total Points</td><td style="text-align:right;">' + g.sp.total + '</td>' +
+    //    '<tr><td>Used Points</td><td style="text-align:right;">' + usedPoints + '</td>' +
+    //    '<tr><td>Available Points</td><td style="text-align:right;">' + (g.sp.total - usedPoints) + '</td>' +
+    //    '</table>');
+    //$(".sissy-info").click(function () {
+    //    g.sissyclick($(this).data("t"));
+    //});
 };
 
 g.subSissyView = function (txt, n, p, ttype) {
@@ -1322,10 +1134,10 @@ g.subSissyViewTitle = function (title, x) {
         '<td style="text-align:center;">Multiplier</td><td> </td><td style="text-align:right;">Points</td></tr>';
 };
 
-g.spendSissy = function (sissyID) {
-    var sid = parseInt(sissyID.replace("h_", ""));
-    g.mod("usedSissyPoints", g.sissy[sid].points * 100 * g.sp.difficulty.m);
-};
+//g.spendSissy = function (sissyID) {
+//    var sid = parseInt(sissyID.replace("h_", ""));
+//    gv.mod("usedSissyPoints", g.sissy[sid].points * 100 * g.sp.difficulty.m);
+//};
 
 g.sissyclick = function (ttype) {
     var title, body;

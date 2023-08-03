@@ -3,7 +3,7 @@
 var room102 = {};
 
 room102.main = function () {
-    if (g.get("jobapplyconst") === 1)
+    if (gv.get("jobapplyconst") === 1)
         chat(0, 102);
     var navList = [101];
 
@@ -17,7 +17,7 @@ room102.btnclick = function (name) {
                 chat(6, 102);
             else if (sc.getstep("construction") === 1)
                 chat(0, 102);
-            else if (!g.get("jobConstGetRaise") && g.get("jobConstructionPay") < 75)
+            else if (!gv.get("jobConstGetRaise") && gv.get("jobConstructionPay") < 75)
                 chat(7, 102);
             else 
                 chat(9, 102);
@@ -30,33 +30,36 @@ room102.btnclick = function (name) {
 room102.chatcatch = function (callback) {
     switch (callback) {
         case "setInit":
-            g.set("jobConstructionPay", 40);
+            gv.set("jobConstructionPay", 40);
             sc.setstep("construction", 1);
-            g.set("jobapplyconst", 2);
+            gv.set("jobapplyconst", 2);
             char.room(101);
             break;
         case "setInitRaise":
-            g.set("jobConstructionPay", 40);
-            g.mod("jobConstructionPay", 10);
+            gv.set("jobConstructionPay", 40);
+            gv.mod("jobConstructionPay", 10);
             sc.setstep("construction", 1);
-            g.set("jobapplyconst", 2);
+            gv.set("jobapplyconst", 2);
             char.room(101);
             break;
         case "leaveOffice":
             char.room(101);
             break;
         case "getRaise":
-            g.mod("jobConstructionPay", 5);
-            g.set("jobConstGetRaise", true);
+            gv.mod("jobConstructionPay", 5);
+            gv.set("jobConstGetRaise", true);
             break;
         case "dom":
-            sissy.statsUpdate(27);
+            levels.mod("dom", 10, 1);
             break;
         case "showtits":
             nav.bg("102_constBoss/flash.jpg");
             break;
         case "boss":
             nav.bg("102_constBoss/102_boss.jpg");
+            break;
+        case "sub":
+            levels.mod("sub", 10, 1);
             break;
         default:
             break;
@@ -160,7 +163,7 @@ room102.chat = function (chatID) {
             speaker: "tina",
             text: "What? I don't want to. I don't even know him. ",
             button: [
-                { chatID: 5, text: "That's fine, you don't have to. ", callback: "" },
+                { chatID: 5, text: "That's fine, you don't have to. ", callback: "sub" },
                 { chatID: 8, text: "... [Sit in silence]", callback: "" },
                 { chatID: 9, text: "You heard him. Get in here and show them tits girl! ", callback: "dom" },
             ]

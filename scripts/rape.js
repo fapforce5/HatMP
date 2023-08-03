@@ -11,7 +11,7 @@ fame.event = function () {
     else
         isRape = rapeDay.includes(g.roomID);
 
-    var thisFame = g.get("fame");
+    var thisFame = gv.get("fame");
     var appearance = cl.appearance() * 16;
     if (Math.random() < ((thisFame + appearance) / 400)) {
         if (!isRape) {
@@ -307,8 +307,8 @@ fame.position0 = function (char) {
         speaker: "random",
         text: txt,
         button: [
-            { chatID: -1, text: "Fight back (dice)", callback: "fight1" },
-            { chatID: -1, text: "Run (dice)", callback: "run1" },
+            { chatID: -1, text: "Fight back (dice) (upper + lower strength)", callback: "fight1" },
+            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "run1" },
             { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
         ]
     }, 999, 1);

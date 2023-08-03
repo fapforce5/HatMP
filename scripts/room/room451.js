@@ -126,7 +126,7 @@ room451.btnclick = function (name) {
             break;
         case "stall1":
             if ((g.dt.getDay() === 0 || g.dt.getDay() === 6) && g.hourBetween(6, 16)) {
-                var oncase = g.get("oncase");
+                var oncase = gv.get("oncase");
                 if (oncase === "gloryholebj")
                     chat(14, 451);
                 else if (oncase === "gloryholeanal") {
@@ -297,8 +297,8 @@ room451.btnclick = function (name) {
             }
             break;
         case "ceciliaStall":
-            if (g.get("oncase") === "gloryholeanal") {
-                g.set("oncase") === null;
+            if (gv.get("oncase") === "gloryholeanal") {
+                gv.set("oncase") === null;
                 g.sissy[17].ach = true;
             }
             else if (g.sissy[17].ach) {
@@ -322,7 +322,7 @@ room451.btnclick = function (name) {
             chat(50, 451);
             break;
         case "urinal":
-            if (g.get("bladder") < .1) {
+            if (gv.get("bladder") < .1) {
                 chat(52, 451);
             }
             else if (g.sissy[22].ach) {
@@ -330,7 +330,7 @@ room451.btnclick = function (name) {
             }
             else {
                 nav.killall();
-                g.set("bladder", 0);
+                gv.set("bladder", 0);
                 nav.bg("451_parkMensRoom/urinal.jpg");
                 chat(51, 451);
             }
@@ -392,7 +392,7 @@ room451.chatcatch = function (callback) {
             break;
         case "bj11":
             char.addtime(60);
-            g.mod("receiveOralMale", 1);
+            gv.mod("receiveOralMale", 1);
             cl.doCum(false);
             char.room(451);
             break;
@@ -430,13 +430,13 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/gc6.jpg");
             break;
         case "gc8_swollow1":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             nav.bg("451_parkMensRoom/gc8_swollow1.jpg");
             break;
         case "gc8_face":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSpit", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSpit", 1);
             cl.c.cumface = true;
             cl.display();
             nav.bg("451_parkMensRoom/gc8_face.jpg");
@@ -444,7 +444,7 @@ room451.chatcatch = function (callback) {
         case "endgc1":
             char.settime(17, 5);
             g.sissy[13].ach = true;
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.room(451);
             break;
         case "reset":
@@ -544,25 +544,25 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/blow1" + g.pass + ".jpg");
             break;
         case "suckit2":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             nav.bg("451_parkMensRoom/blow2" + g.pass + ".jpg");
             break;
         case "suckit3":
             nav.bg("451_parkMensRoom/blow3" + g.pass + ".jpg");
-            g.mod("giveOralMale", 1);
-            g.mod("loadSpit", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSpit", 1);
             cl.c.cumface = true;
             cl.display();
             break;
         case "suckit4":
-            g.mod("money", 20);
-            g.mod("giveOralMale", 1);
+            gv.mod("money", 20);
+            gv.mod("giveOralMale", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
         case "suckit5":
-            g.mod("giveOralMale", 1);
+            gv.mod("giveOralMale", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
@@ -589,7 +589,7 @@ room451.chatcatch = function (callback) {
             cl.undo();
             char.settime(17, 5);
             g.sissy[17].ach = true;
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.room(451);
             break;
         case "ass1":
@@ -600,15 +600,15 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/ass2.jpg");
             break;
         case "ass3":
-            g.mod("money", 40);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("money", 40);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
         case "ass4":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
@@ -618,8 +618,8 @@ room451.chatcatch = function (callback) {
             break;
         case "duo2":
             nav.bg("451_parkMensRoom/duo2.jpg");
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             char.addtime(60);
             break;
         case "duo3":
@@ -630,8 +630,8 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/duo4.jpg");
             break;
         case "duo5":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(100);
             nav.bg("451_parkMensRoom/duo5.jpg");
             break;

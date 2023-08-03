@@ -9,7 +9,7 @@ room30.main = function () {
             }
             else {
                 var overhear = Math.floor(Math.random() * 5) === 0;
-                if (!g.get("puter"))
+                if (!gv.get("puter"))
                     overhear = !(Math.floor(Math.random() * 3) === 0);
                 if (overhear) {
                     nav.bg("30_peek/password.jpg");

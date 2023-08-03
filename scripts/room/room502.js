@@ -319,7 +319,7 @@ room502.chatcatch = function (callback) {
             sc.setstep("zoey", 23);
             sc.setstep("tiffany", 13);
             sc.events[sc.getEventIndex("zoey", -1)].ach = false;
-            g.setDaily("zoey");
+            daily.set("zoey");
             char.room(502);
             break;
         case "single2":

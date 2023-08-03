@@ -208,9 +208,9 @@ room952.chatcatch = function (callback) {
             break;
         case "escape11":
             char.settime(14, 0);
-            g.set("energy", 0);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.set("energy", 0);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             cl.c.butthole += .5;
             g.internal.nightEvent = false;
             g.internal.interval = 2;
@@ -242,8 +242,8 @@ room952.chatcatch = function (callback) {
             nav.bg("952_hallway/butt3.jpg");
             break;
         case "butt4":
-            g.mod("receiveAnalFemale", 1);
-            g.mod("sissygasm", 1);
+            gv.mod("receiveAnalFemale", 1);
+            gv.mod("sissygasm", 1);
             g.internal.interval++;
             char.room(950);
             break;
@@ -260,7 +260,7 @@ room952.chatcatch = function (callback) {
             }, 952);
             break;
         case "l4":
-            g.mod("giveOralFemale", 1);
+            gv.mod("giveOralFemale", 1);
             g.internal.interval++;
             char.room(950);
             break;
@@ -299,8 +299,8 @@ room952.chatcatch = function (callback) {
                 "width": 1080,
                 "image": "952_hallway/b4s.png"
             }, 952);
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             break;
         case "b4f":
             nav.bg("952_hallway/bbg.jpg");
@@ -315,8 +315,8 @@ room952.chatcatch = function (callback) {
                 "height": 441,
                 "image": "952_hallway/b4f.png"
             }, 952);
-            g.mod("giveOralMale", 1);
-            g.mod("loadSpit", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSpit", 1);
             break;
         case "b5":
             g.internal.interval++;

@@ -59,23 +59,23 @@ room212.chatcatch = function (callback) {
         case "end0":
             cl.undo();
             sc.setstep("black", 1);
-            g.mod("energy", -200);
-            g.mod("d", 100);
+            gv.mod("energy", -200);
+            gv.mod("d", 100);
             char.settime(17, 48);
             char.room(0);
             break;
         case "end":
             cl.undo();
             sc.incstep("black", 1);
-            g.mod("energy", -200);
-            g.mod("d", 100);
+            gv.mod("energy", -200);
+            gv.mod("d", 100);
             char.settime(17, 48);
             char.room(0);
             break;
         case "endbad":
             cl.undo();
             sc.incstep("black", 1);
-            g.mod("energy", -200);
+            gv.mod("energy", -200);
             char.settime(17, 48);
             char.room(0);
             break;
@@ -122,8 +122,8 @@ room212.chatcatch = function (callback) {
         case "xtieEnd":
             cl.undo();
             sc.incstep("black", 1);
-            g.mod("energy", -200);
-            g.mod("d", 100);
+            gv.mod("energy", -200);
+            gv.mod("d", 100);
             cl.c.butthole += .34;
             if (cl.c.butthole > 9)
                 cl.c.butthole = 9;
@@ -139,8 +139,8 @@ room212.chatcatch = function (callback) {
         case "xhorend":
             cl.undo();
             sc.incstep("black", 1);
-            g.mod("energy", -200);
-            g.mod("d", 100);
+            gv.mod("energy", -200);
+            gv.mod("d", 100);
             char.settime(17, 48);
             char.room(0);
             break;

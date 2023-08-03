@@ -8,7 +8,7 @@ room199.main = function () {
             nav.bg("199_workout/workout0.jpg");
             zcl.displayMain(0, 800, .25, "clothes", true);
             g.internal = 0;
-            if (missy.tracker[17].c === 0)
+            if (missy.st[17].c === 0)
                 chat(2, 199);
             else
                 chat(999999, 199);
@@ -64,7 +64,7 @@ room199.chatcatch = function (callback) {
             missy.mod(0, -5);
             break;
         case "first":
-            if (g.get("energy") < 15) {
+            if (gv.get("energy") < 15) {
                 nav.bg("199_workout/tired.jpg");
                 chat(8, 199);
             }
@@ -75,9 +75,9 @@ room199.chatcatch = function (callback) {
             break;
         case "jump":
             nav.killall();
-            g.mod("energy", -15);
-            g.mod("fitness", 3);
-            if (g.get("energy") < 15) {
+            gv.mod("energy", -15);
+            gv.mod("fitness", 2);
+            if (gv.get("energy") < 15) {
                 nav.bg("199_workout/tired.jpg");
                 chat(8, 199);
             }
@@ -89,9 +89,9 @@ room199.chatcatch = function (callback) {
             break;
         case "toes":
             nav.killall();
-            g.mod("energy", -15);
-            g.mod("fitness", 3);
-            if (g.get("energy") < 15) {
+            gv.mod("energy", -15);
+            gv.mod("fitness", 1);
+            if (gv.get("energy") < 15) {
                 nav.bg("199_workout/tired.jpg");
                 chat(8, 199);
             }
@@ -210,7 +210,9 @@ room199.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "missy",
-                text: "That's a good boy. Tomorrow we will start it all again. Now get out so I can focus on me. ",
+                text: "That's a good boy. You should go running in the park or work out at the gym to " +
+                    "continue to improve your fitness. Tomorrow we will start it all again. " +
+                    "Now get out so I can focus on me. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "end" },
                 ]

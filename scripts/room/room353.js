@@ -19,7 +19,7 @@ room353.btnclick = function (name) {
 room353.chatcatch = function (callback) {
     switch (callback) {
         case "b1":
-            var cc = g.get("mascot");
+            var cc = gv.get("mascot");
             nav.bg("353_mascot/b1.jpg");
             if (cc === 0) {
                 nav.bg("353_mascot/b1.jpg");
@@ -67,8 +67,8 @@ room353.chatcatch = function (callback) {
             nav.bg("353_mascot/b2.jpg");
             break;
         case "b12":
-            g.set("mascot", 1);
-            g.mod("money", 30);
+            gv.set("mascot", 1);
+            gv.mod("money", 30);
             char.addtime(480);
             char.room(0);
             break;
@@ -197,7 +197,7 @@ room353.chatcatch = function (callback) {
         case "91_big2":
             nav.bg("353_mascot/91_big2.jpg");
             cl.doCum(false);
-            g.mod("receiveHandjobFemale", 1);
+            gv.mod("receiveHandjobFemale", 1);
             break;
         case "9reset":
             g.internal.islewd = true;
@@ -231,13 +231,13 @@ room353.chatcatch = function (callback) {
             g.popUpNotice("You got a complaint!");
             break;
         case "end":
-            if (g.get("mascot") > 3 && !g.hasAccess(16).access) {
-                g.mod("mascot", 1);
+            if (gv.get("mascot") > 3 && !g.hasAccess(16).access) {
+                gv.mod("mascot", 1);
                 char.settime(17, 0);
                 chat(47, 350);
             }
             else {
-                g.mod("mascot", 1);
+                gv.mod("mascot", 1);
                 char.settime(17, 0);
                 char.room(0);
             }
@@ -281,7 +281,7 @@ room353.chat = function (chatID) {
     else if (chatID === 1001) {
         var thismoney = (g.internal.good * 30) - (g.internal.bad * 30);
         if (thismoney > 0)
-            g.mod("money", thismoney);
+            gv.mod("money", thismoney);
         else
             thismoney = 0;
         if (g.internal.good === 0)

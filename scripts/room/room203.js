@@ -146,7 +146,7 @@ room203.btnclick = function (name) {
                 chat(13, 203);
             }
             else if (misssyStep > 9) {
-                var oncase = g.get("oncase");
+                var oncase = gv.get("oncase");
                 if (oncase === null)
                     chat(28, 203);
                 else if (oncase === "diner")
@@ -192,7 +192,7 @@ room203.btnclick = function (name) {
             if (inv.has("redbox"))
                 char.room(200);
             else {
-                var oncasex = g.get("oncase");
+                var oncasex = gv.get("oncase");
                 if (oncasex === null)
                     chat(39, 203);
                 else if (oncasex === "diner")
@@ -230,198 +230,175 @@ room203.chatcatch = function (callback) {
         case "checkLic":
             if (inv.has("pi_lic"))
                 chat(4, 203);
-            else
-                chat(2, 203);
+            else {
+                if (gv.get("money") < 100)
+                    chat(16, 203);
+                else
+                    chat(2, 203);
+            }
             break;
         case "displaySelf":
             nav.bg("203_entrance/inspect.jpg");
             zcl.displayMain(180, 800, .09, "clothes", false);
-            if (missy.tracker[2].c === 0) { //suit
+            if (missy.st[2].c === 0) { //suit
                 if (cl.hasoutfit("suit") === null)
                     chat(8, 203);
-                else
-                    chat(9, 203);
-
+                else {
+                    if (missy.st[26].c === 0) {
+                        if ((cl.hasClothing("shirt", "s") && cl.hasClothing("pants", "s") &&
+                            cl.hasClothing("socks", "b") && cl.hasClothing("shoes", "d")) ||
+                            gv.get("money") > 245) {
+                            levels.mod("int", -10, 999);
+                            chat(9, 203);
+                        }
+                        else {
+                            chat(13, 203);
+                        }
+                    }
+                    else {
+                        levels.mod("int", -10, 999);
+                        chat(9, 203);
+                    }
+                }
             }
-
-            //if (missyStep < 11) {
-            //    if (!hasSuit) {
-            //        chat(9, 203);
-            //    }
-            //    else {
-
-            //        zcl.displayMain(180, 800, .09, "clothes", false)
-            //        nav.killall();
-            //        nav.bg("203_entrance/203_enter.jpg");
-            //        nav.killbutton("zzz-clothing-kill");
-            //        zcl.displayClothed();
-            //        nav.button({
-            //            "type": "img",
-            //            "name": "recepLook",
-            //            "left": 1060,
-            //            "top": 562,
-            //            "width": 731,
-            //            "height": 518,
-            //            "image": "203_entrance/kneel.png"
-            //        }, 203);
-            //        if (missyStep > 8)
-            //            chat(15, 203);
-            //        else if (g.get("arousal") > 90)
-            //            chat(22, 203);
-            //        else
-            //            chat(10, 203);
-            //    }
-            //}
-            //else {
-            //    if (!hasGirlSuit) {
-            //        chat(21, 203);
-            //    }
-            //    else if (missyStep === 6) {
-            //        if (cl.c.accessories.indexOf("piggy") === -1) {
-            //            chat(12, 203);
-            //        }
-            //        else {
-            //            nav.killall();
-            //            nav.bg("203_entrance/203_enter.jpg");
-            //            zcl.displayClothed();
-            //            nav.button({
-            //                "type": "img",
-            //                "name": "recepLook",
-            //                "left": 1060,
-            //                "top": 562,
-            //                "width": 731,
-            //                "height": 518,
-            //                "image": "203_entrance/kneel.png"
-            //            }, 203);
-            //            chat(10, 203);
-            //        }
-            //    }
-            //    else {
-            //        nav.killall();
-            //        nav.bg("203_entrance/203_enter.jpg");
-            //        nav.killbutton("zzz-clothing-kill");
-            //        zcl.displayClothed();
-            //        nav.button({
-            //            "type": "img",
-            //            "name": "recepLook",
-            //            "left": 1060,
-            //            "top": 562,
-            //            "width": 731,
-            //            "height": 518,
-            //            "image": "203_entrance/kneel.png"
-            //        }, 203);
-            //        chat(15, 203);
-            //    }
-            //}
             break;
-        case "displaySelfPanties":
-            var sex = null;
-            $.each(cl.list, function (i, v) {
-                if (v.type === "panties" && v.name === cl.c.panties)
-                    sex = v.sex;
-            });
-
+        case "notDressed0":
             nav.killall();
-            zcl.displayMissy();
-            nav.button({
-                "type": "img",
-                "name": "recepLook",
-                "left": 1060,
-                "top": 562,
-                "width": 731,
-                "height": 518,
-                "image": "203_entrance/kneel.png"
-            }, 203);
-
-            if (cl.getBodyHair() !== null) {
-                chat(20, 203);
-            }
-            else if ((sex === null ? "X" : sex) !== "f") {
-                chat(16, 203);
-            }
-            else if (cl.c.chastity === null && g.get("arousal") > 90) {
-                chat(22, 203);
-            }
-            else {
-                nav.buildnav([201, 0]);
-                chat(17, 203);
-            }
+            zcl.displayMain(-200, 0, .5, "clothes", true);
+            nav.bg("203_entrance/203_enter.jpg");
             break;
-        case "app":
+        case "notDressed1":
+            nav.killall();
+            nav.bg("203_entrance/notDressed1.jpg");
+            break;
+        case "notDressed2":
+            cl.add("shirt", "s");
+            cl.add("pants", "s");
+            cl.add("shoes", "d");
+            cl.add("socks", "b");
+            missy.mod(0, -80);
+            g.pass = "follow";
+            char.room(217);
+            break;
+        case "mad":
+            nav.killall();
+            nav.bg("203_entrance/mad.jpg");
+            break;
+        case "forgotLic":
+            inv.add("pi_lic");
+            char.room(217);
+            break;
+         case "app":
             char.room(206);
             break;
-        case "putOnClothes":
-            cl.c.shoes = "d";
-            cl.c.socks = "b";
-            cl.c.pants = "s";
-            cl.c.shirt = "s";
-            cl.display();
-            break;
-        case "handjob":
-            nav.killall();
-            nav.bg("203_entrance/203_enter.jpg");
-            nav.button({
-                "type": "img",
-                "name": "handjob",
-                "left": 520,
-                "top": 0,
-                "width": 1234,
-                "height": 1080,
-                "image": "203_entrance/203_jerkoff.gif"
-            }, 203);
+        //case "displaySelfPanties":
+        //    var sex = null;
+        //    $.each(cl.list, function (i, v) {
+        //        if (v.type === "panties" && v.name === cl.c.panties)
+        //            sex = v.sex;
+        //    });
 
-            break;
-        case "handjobcum":
-            nav.killbutton("handjob");
-            nav.bg("203_entrance/hjCum.jpg");
-            g.mod("receiveHandjobMale", 1);
-            cl.doCum(false);
-            break;
-        case "reload":
-            char.room(203);
-            break;
-        case "tea0":
-            nav.killall();
-            g.roomTimeout = setTimeout(function () { char.addtime(10); chat(31, 203); }, 2000);
-            break;
-        case "tea1":
-            g.roomTimeout = setTimeout(function () {
-                char.addtime(5);
-                nav.button({
-                    "type": "img",
-                    "name": "fooIgnore",
-                    "left": 685,
-                    "top": 302,
-                    "width": 452,
-                    "height": 593,
-                    "image": "203_entrance/203_enterRecepClose.png"
-                }, 203);
-                nav.button({
-                    "type": "img",
-                    "name": "fooIgnore",
-                    "left": 600,
-                    "top": 755,
-                    "width": 522,
-                    "height": 325,
-                    "image": "209_classroom/tea.png"
-                }, 203);
-                chat(32, 203);
-            }, 1000);
-            break;
-        case "sugar0":
-        case "sugar1":
-        case "sugar2":
-            g.internal = callback;
-            break;
-        case "m100":
-            sc.setstep("missy", 101);
-            char.room(203);
-            break;
-        case "late0":
-            nav.bg("203_entrance/late0.jpg");
-            break;
-        default:
-            break;
+        //    nav.killall();
+        //    zcl.displayMissy();
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "recepLook",
+        //        "left": 1060,
+        //        "top": 562,
+        //        "width": 731,
+        //        "height": 518,
+        //        "image": "203_entrance/kneel.png"
+        //    }, 203);
+
+        //    if (cl.getBodyHair() !== null) {
+        //        chat(20, 203);
+        //    }
+        //    else if ((sex === null ? "X" : sex) !== "f") {
+        //        chat(16, 203);
+        //    }
+        //    else if (cl.c.chastity === null && gv.get("arousal") > 90) {
+        //        chat(22, 203);
+        //    }
+        //    else {
+        //        nav.buildnav([201, 0]);
+        //        chat(17, 203);
+        //    }
+        //    break;
+        //case "app":
+        //    char.room(206);
+        //    break;
+        //case "putOnClothes":
+        //    cl.c.shoes = "d";
+        //    cl.c.socks = "b";
+        //    cl.c.pants = "s";
+        //    cl.c.shirt = "s";
+        //    cl.display();
+        //    break;
+        //case "handjob":
+        //    nav.killall();
+        //    nav.bg("203_entrance/203_enter.jpg");
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "handjob",
+        //        "left": 520,
+        //        "top": 0,
+        //        "width": 1234,
+        //        "height": 1080,
+        //        "image": "203_entrance/203_jerkoff.gif"
+        //    }, 203);
+
+        //    break;
+        //case "handjobcum":
+        //    nav.killbutton("handjob");
+        //    nav.bg("203_entrance/hjCum.jpg");
+        //    gv.mod("receiveHandjobMale", 1);
+        //    cl.doCum(false);
+        //    break;
+        //case "reload":
+        //    char.room(203);
+        //    break;
+        //case "tea0":
+        //    nav.killall();
+        //    g.roomTimeout = setTimeout(function () { char.addtime(10); chat(31, 203); }, 2000);
+        //    break;
+        //case "tea1":
+        //    g.roomTimeout = setTimeout(function () {
+        //        char.addtime(5);
+        //        nav.button({
+        //            "type": "img",
+        //            "name": "fooIgnore",
+        //            "left": 685,
+        //            "top": 302,
+        //            "width": 452,
+        //            "height": 593,
+        //            "image": "203_entrance/203_enterRecepClose.png"
+        //        }, 203);
+        //        nav.button({
+        //            "type": "img",
+        //            "name": "fooIgnore",
+        //            "left": 600,
+        //            "top": 755,
+        //            "width": 522,
+        //            "height": 325,
+        //            "image": "209_classroom/tea.png"
+        //        }, 203);
+        //        chat(32, 203);
+        //    }, 1000);
+        //    break;
+        //case "sugar0":
+        //case "sugar1":
+        //case "sugar2":
+        //    g.internal = callback;
+        //    break;
+        //case "m100":
+        //    sc.setstep("missy", 101);
+        //    char.room(203);
+        //    break;
+        //case "late0":
+        //    nav.bg("203_entrance/late0.jpg");
+        //    break;
+        //default:
+        //    break;
     }
 };
 
@@ -538,8 +515,54 @@ room203.chat = function (chatID) {
                 { chatID: -1, text: "Sure! ", callback: "displaySelf" }
             ]
         },
-
-
+        {
+            chatID: 13,
+            speaker: "cecilia",
+            text: "So you're not properly dressed for your first day. Let me tell Missy. ",
+            button: [
+                { chatID: 14, text: "uh oh! ", callback: "notDressed0" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "thinking",
+            text: "Oh, I really screwed up on my first day! I hope Missy isn't too mad, I just didn't have enough " +
+                "money to buy everything. Surely she'll understand. ",
+            button: [
+                { chatID: 15, text: "...", callback: "notDressed1" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "missy",
+            text: "What the fuck do you mean you showed up to work on your first fucking day and can't even get " +
+                "dressed properly! " + sc.n("cecilia") + " take some petty cash and go buy him his suit! " +
+                "It will be in your wardrobe. Make sure you wear it next time you come in. I can't trusted " +
+                "you to use the money I gave you to purchase proper attire and you screwed that up! Well you're " +
+                " going to pay for your idiocracy! Follow me! ",
+            button: [
+                { chatID: -1, text: "GULP", callback: "notDressed2" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "ceclia",
+            text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+            button: [
+                { chatID: 17, text: "I don't have one.", callback: "mad" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "missy",
+            text: "What do you mean you don't have one? Let me guess, you blew your money on stupid crap and " +
+                "not on a license? Is this how you want to start here, as a dumbass? " + sc.n("cecilia") + " go " +
+                "buy him a license since he can't do it himself! You, idiot, come with me. Apperently you have to " +
+                "receive some training before you even start. Come now! ",
+            button: [
+                { chatID: -1, text: "ok", callback: "forgotLic" }
+            ]
+        },
 
 
 

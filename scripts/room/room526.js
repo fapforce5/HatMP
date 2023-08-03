@@ -22,7 +22,7 @@ room526.main = function () {
 
     if (sc.getstep("poppy") === 0) {
         sc.setstep("poppy", 1);
-        g.getDaily("zbar");
+        daily.get("zbar");
         btnList.push({
             "type": "btn",
             "name": "group",
@@ -35,7 +35,7 @@ room526.main = function () {
         chat(0, 526);
     }
     else {
-        if (!g.getDaily("zbar")) {
+        if (!daily.get("zbar")) {
             btnList.push({
                 "type": "btn",
                 "name": "g1",
@@ -102,7 +102,7 @@ room526.btnclick = function (name) {
         case "zoey":
             nav.killall();
             nav.bg("526_bar/bgclose.jpg");
-            if (!g.getDaily("keaton")) {
+            if (!daily.get("keaton")) {
                 nav.button({
                     "type": "btn",
                     "name": "keaton0",
@@ -147,7 +147,7 @@ room526.btnclick = function (name) {
             }
             else {
                 nav.killbutton("g1_big2");
-                g.mod("giveOralMale", 1);
+                gv.mod("giveOralMale", 1);
                 zcl.displayMain(-200, 1000, .25, "clothes", true);
                 nav.bg("526_bar/g1_big6.jpg");
                 chat(25, 526);
@@ -160,7 +160,7 @@ room526.btnclick = function (name) {
             }
             else {
                 nav.killbutton("g1_smol2");
-                g.mod("receiveAnalMale", 1);
+                gv.mod("receiveAnalMale", 1);
                 chat(30, 526);
             }
             break;
@@ -246,7 +246,7 @@ room526.chatcatch = function (callback) {
         case "group7":
             nav.bg("526_bar/group7.jpg");
             cl.doCum(false);
-            g.mod("giveAnalMale", 1);
+            gv.mod("giveAnalMale", 1);
             break;
         case "group8":
             nav.bg("526_bar/group8.jpg");
@@ -330,7 +330,7 @@ room526.chatcatch = function (callback) {
             break;
         case "g1_end":
             sc.setstep("poppy", 2);
-            g.setDaily("zbar");
+            daily.set("zbar");
             char.addtime(75);
             char.room(526);
             break;
@@ -456,9 +456,9 @@ room526.chatcatch = function (callback) {
             nav.bg("526_bar/k08.jpg");
             break;
         case "k09":
-            g.mod("giveAnalMale", 1);
-            g.mod("giveOralMale", 1);
-            g.setDaily("keaton");
+            gv.mod("giveAnalMale", 1);
+            gv.mod("giveOralMale", 1);
+            daily.set("keaton");
             cl.doCum(false);
             char.room(526);
             break;
@@ -467,7 +467,7 @@ room526.chatcatch = function (callback) {
                 chat(65, 526);
             }
             else {
-                g.setDaily("keaton");
+                daily.set("keaton");
                 char.room(526);
             }
             break;
@@ -479,11 +479,11 @@ room526.chatcatch = function (callback) {
         case "kno1":
             g.roomMapAccess(535, true, false);
             sc.setstep("keaton", 2);
-            g.setDaily("keaton");
+            daily.set("keaton");
             char.room(526);
             break;
         case "knoreset":
-            g.setDaily("keaton");
+            daily.set("keaton");
             char.room(526);
             break;
         case "leave":

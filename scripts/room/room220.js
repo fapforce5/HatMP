@@ -41,7 +41,7 @@ room220.btnclick = function (name) {
                 "height": 526,
                 "image": "201_bathroom/201_clothes.png"
             }, 220);
-            if (g.get("arousal") > 50) {
+            if (gv.get("arousal") > 50) {
                 chat(1, 220);
             }
             else {
@@ -64,7 +64,7 @@ room220.chatcatch = function (callback) {
             break;
         case "clean1":
             nav.bg("201_bathroom/bg0.jpg");
-            g.mod("arousal", 15);
+            gv.mod("arousal", 15);
             break;
         case "clean2":
             nav.killall();
@@ -75,10 +75,14 @@ room220.chatcatch = function (callback) {
             nav.bg("201_bathroom/missy1.jpg");
             break;
         case "badCleanEnd":
+            missy.mod(5, 1);//jobCleanToilet
+            missy.mod(28, 1);//jobCleanToiletThisWeek
             missy.mod(0, -10);
             char.room(224);
             break;
         case "goodCleanEnd":
+            missy.mod(5, 1);//jobCleanToilet
+            missy.mod(28, 1);//jobCleanToiletThisWeek
             missy.mod(0, 10);
             char.room(224);
             break;

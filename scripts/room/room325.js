@@ -4,7 +4,7 @@ room325.main = function () {
     if (g.isNight()) {
         chat(4, 325);
     }
-    else if (g.getDaily("rachel")) {
+    else if (daily.get("rachel")) {
         chat(20, 325);
     }
     else {
@@ -36,7 +36,7 @@ room325.btnclick = function (name) {
                     chat(0, 325);
                     break;
                 case 1:
-                    var milkmilk = g.get("milk");
+                    var milkmilk = gv.get("milk");
                     if (milkmilk > -1) {
                         if (milkmilk < .6)
                             chat(22, 325);
@@ -55,7 +55,7 @@ room325.btnclick = function (name) {
                         chat(37, 325);
                         sc.setstep("envy", 15);
                     }
-                    else if (g.get("milk") < .6)
+                    else if (gv.get("milk") < .6)
                         chat(22, 325);
                     else
                         chat(36, 325);
@@ -63,9 +63,9 @@ room325.btnclick = function (name) {
             }
             break;
         case "pill":
-            g.setDaily("rachel");
+            daily.set("rachel");
             nav.killall();
-            g.set("milk", 0);
+            gv.set("milk", 0);
             nav.bg("325_farm/bg.jpg", "325_farm/bg_night.jpg");
             nav.button({
                 "type": "img",
@@ -114,7 +114,7 @@ room325.chatcatch = function (callback) {
             
             sc.setstep("rachel", 1);
             char.addtime(120);
-            g.setDaily("rachel");
+            daily.set("rachel");
             if (cl.c.chest > 3)
                 chat(12, 325);
             else
@@ -160,14 +160,14 @@ room325.chatcatch = function (callback) {
             nav.bg("327_milking/milk6.jpg");
             break;
         case "milk7":
-            g.set("milk", 0);
+            gv.set("milk", 0);
             cl.display();
             nav.bg("327_milking/milk7.jpg");
             break;
         case "milk8":
             cl.undo();
-            g.setDaily("rachel");
-            g.mod("money", 50);
+            daily.set("rachel");
+            gv.mod("money", 50);
             sc.setstep("rachel", 2);
             char.room(0);
             break;

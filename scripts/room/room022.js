@@ -44,7 +44,7 @@ room22.btnclick = function (name) {
     switch (name) {
         case "toilet":
             var peecock;
-            if (g.get("bladder") < .02)
+            if (gv.get("bladder") < .02)
                 chat(0, 22);
             else {
                 nav.killall();
@@ -125,7 +125,7 @@ room22.btnclick = function (name) {
 room22.chatcatch = function (callback) {
     switch (callback) {
         case "finishPeepee":
-            g.set("bladder", 0);
+            gv.set("bladder", 0);
             cl.display();
             char.room(g.pass);
             break;

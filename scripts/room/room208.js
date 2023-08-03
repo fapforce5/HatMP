@@ -51,7 +51,7 @@ room208.btnclick = function (name) {
         case "1t":
         case "2t":
         case "3t":
-            //g.internal = { step: 0, maxEnergy: g.get("maxenergy"), hot: false };
+            //g.internal = { step: 0, maxEnergy: gv.get("maxenergy"), hot: false };
             var thisName = parseInt(name.replace("t"));
             if (thisName === g.internal.step) {
                 var currentpos = parseInt($(".room-img[data-name='tc']").css("left").replace("px"));
@@ -80,8 +80,8 @@ room208.btnclick = function (name) {
             break;
         case "thit":
             g.internal.bh = false;
-            g.mod("energy", g.internal.energy);
-            var energyx = g.get("energy");
+            gv.mod("energy", g.internal.energy);
+            var energyx = gv.get("energy");
             if (energyx < 2) {
                 clearTimeout(g.roomTimeout);
                 clearTimeout(g.roomTimeout2);
@@ -171,8 +171,8 @@ room208.btnclick = function (name) {
         case "jerkStart":
             g.internal.t = 770 * g.ratio;
             g.internal.h = 20 * g.ratio;
-            var thisDif = g.get("difficulty");
-            var thisAr = g.get("arousal");
+            var thisDif = gv.get("difficulty");
+            var thisAr = gv.get("arousal");
             g.internal.i = Math.floor(thisAr / 5) + ((thisDif + 1) * 3);
             g.internal.c = (thisAr / 100) + .3;
             nav.killbutton("jerkStart");
@@ -230,7 +230,7 @@ room208.btnclick = function (name) {
         case "jerkReset":
             nav.killbutton("jerk");
             nav.killbutton("jerkStop");
-            g.mod("arousal", 15);
+            gv.mod("arousal", 15);
             nav.button({
                 "type": "img",
                 "name": "jerk",
@@ -459,14 +459,14 @@ room208.chatcatch = function (callback) {
 
             //bar 100 = 344 t, 674 h
             //bar 0 = 1017 t 1h
-            var td = g.get("difficulty");
-            g.internal = { step: 0, maxEnergy: g.get("maxenergy"), hot: false, bh: true, energy: (td === 0 ? -10 : td === 1 ? -20 : -50), timex: (td === 0 ? 800 : td === 1 ? 600 : 450) };
+            var td = gv.get("difficulty");
+            g.internal = { step: 0, maxEnergy: gv.get("maxenergy"), hot: false, bh: true, energy: (td === 0 ? -10 : td === 1 ? -20 : -50), timex: (td === 0 ? 800 : td === 1 ? 600 : 450) };
             if (!g.pass.h2) {
                 g.internal.timex = 15000; 
 
             }
-            var energy = g.get("energy");
-            var maxEnergy = g.get("maxenergy");
+            var energy = gv.get("energy");
+            var maxEnergy = gv.get("maxenergy");
             var height = (energy / maxEnergy) * 673;
             var top = 1017 - height;
             nav.button({
@@ -575,11 +575,11 @@ room208.chatcatch = function (callback) {
                 g.pass.hard1 = g.pass.hard2 = g.pass.hard3 = false;
                 if (sc.checkevent("missy", -2)) {
                     sc.setstep("missy", -2);
-                    g.mod("missyPoints", 100);
+                    gv.mod("missyPoints", 100);
                     chat(34, 208);
                 }
                 else {
-                    g.mod("missyPoints", 30);
+                    gv.mod("missyPoints", 30);
                     chat(35, 208);
                 }
             }
@@ -596,8 +596,8 @@ room208.chatcatch = function (callback) {
                         "height": 1035,
                         "image": "208_red/missy.png"
                     }, 208);
-                    if (g.get("oncase") === "redroom") {
-                        g.set("oncase", null);
+                    if (gv.get("oncase") === "redroom") {
+                        gv.set("oncase", null);
                         g.sissy[15].ach = true;
                         scc.love("missy", 20, 100);
                         chat(30, 208);

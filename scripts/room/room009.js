@@ -114,7 +114,7 @@ room9.btnclick = function (name) {
                 "image": "9_computer/09_jobBackground.png"
             }, 9);
 
-            if (g.get("jobapplynurse") === 0)
+            if (gv.get("jobapplynurse") === 0)
                 nav.button({
                     "type": "btn",
                     "name": "jobNurse",
@@ -135,7 +135,7 @@ room9.btnclick = function (name) {
                     "image": "9_computer/09_jobPIApplied.png"
                 }, 9);
 
-            if (g.get("jobapplyconst") === 0)
+            if (gv.get("jobapplyconst") === 0)
                 nav.button({
                     "type": "btn",
                     "name": "jobConstruction",
@@ -156,7 +156,7 @@ room9.btnclick = function (name) {
                     "image": "9_computer/09_jobConstructionApplied.png"
                 }, 9);
 
-            if (g.get("jobapplybeaver") === 0)
+            if (gv.get("jobapplybeaver") === 0)
                 nav.button({
                     "type": "btn",
                     "name": "jobBeaver",
@@ -196,19 +196,44 @@ room9.btnclick = function (name) {
             });
             break;
         case "jobBeaver":
-            g.set("jobapplybeaver", 1);
-            room9.btnclick("internet");
+            gv.set("jobapplybeaver", 1);
+            nav.button({
+                "type": "img",
+                "name": "map",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/beaver.jpg"
+            }, 9);
             chat(2, 9);
             break;
         case "jobConstruction":
-            g.set("jobapplyconst", 1);
-            room9.btnclick("internet");
+            nav.killall();
+            gv.set("jobapplyconst", 1);
+            nav.button({
+                "type": "img",
+                "name": "map",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/const.jpg"
+            }, 9);
             chat(0, 9);
             g.roomMapAccess(100, true, true);
             break;
         case "jobNurse":
-            g.set("jobapplynurse", 1);
-            room9.btnclick("internet");
+            gv.set("jobapplynurse", 1);
+            nav.button({
+                "type": "img",
+                "name": "map",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/nurse.jpg"
+            }, 9);
             chat(1, 9);
             break;
         case "files":
@@ -295,7 +320,7 @@ room9.btnclick = function (name) {
         case "pfuta":
         case "pSissy":
             nav.killall();
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             nav.button({
                 "type": "img",
                 "name": "pornbg",
@@ -359,6 +384,9 @@ room9.chatcatch = function (callback) {
         case "reset":
             char.room(9);
             break;
+        case "internet":
+            room9.btnclick("internet");
+            break;
         default:
             break;
     }
@@ -368,24 +396,29 @@ room9.chat = function(chatID){
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "You have applied for the Construction Position. To complete your application please " +
-                "go to the construction site and speak to the foreman in the trailer. ",
-            button: []
+            speaker: "thinking",
+            text: "I applied for the Construction Position. I need to go to the construction site and speak " +
+                "to the foreman in the trailer. ",
+            button: [
+                { chatID: -1, text: "Construction in a manly job! ", callback: "internet" }
+            ]
         },
         {
             chatID: 1,
-            speaker: "me",
-            text: "You have applied to be a nurse. To complete your " + 
-            "application go to the hospital downtown. ",
-            button: []
+            speaker: "thinking",
+            text: "I applied to be a nurse. I need to go to the hospital downtown. ",
+            button: [
+                { chatID: -1, text: "Nursing is kind of a feminine job. ", callback: "internet" }
+            ]
         },
         {
             chatID: 2,
-            speaker: "me",
-            text: "You have applied for to be a waitress at the Naked Beaver Diner. To complete your " +
-                "application please visit " + sc.n("jeffery") + " downtown. ",
-            button: []
+            speaker: "thinking",
+            text: "I applied for to be a waitress at the Naked Beaver Diner. I need to  visit " +
+                sc.n("jeffery") + " at the diner. ",
+            button: [
+                { chatID: -1, text: "Waitressing is kind of a feminine job. ", callback: "internet" }
+            ]
         },
         {
             chatID: 3,

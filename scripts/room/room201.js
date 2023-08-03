@@ -198,7 +198,7 @@ room201.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "missy",
-            text: "I still hate that song " + g.get("girlname") + ". Time to get paid.",
+            text: "I still hate that song " + gv.get("girlname") + ". Time to get paid.",
             button: [
                 { chatID: -1, text: "[Continue Cleaning]", callback: "repeatLeave" }
             ]

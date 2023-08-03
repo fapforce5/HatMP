@@ -4,7 +4,7 @@ room211.main = function () {
 };
 
 room211.btnclick = function (name) {
-    g.set("oncase", null);
+    gv.set("oncase", null);
     switch (name) {
         case "h_0":
         case "h_1":
@@ -28,7 +28,7 @@ room211.btnclick = function (name) {
         case "h_6":
             g.sissy[6].ach = true;
             cl.c.chastity = "cage";
-            g.mod("chastityLock", true);
+            gv.mod("chastityLock", true);
             g.popUpNotice(g.sissy[6].name + " achieved. ");
             break;
         case "h_7":
@@ -45,7 +45,7 @@ room211.btnclick = function (name) {
             break;
         case "h_12":
             g.sissy[12].ach = true;
-            g.mod("giveOralFemale", 1);
+            gv.mod("giveOralFemale", 1);
             g.popUpNotice(g.sissy[12].name + " achieved. ");
             break;
         case "h_19":

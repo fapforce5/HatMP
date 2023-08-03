@@ -167,7 +167,7 @@ room479.chatcatch = function (callback) {
             nav.bg("479_hall/" + callback + ".jpg");
             break;
         case "bj5":
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             cl.doCum("false");
             if (!g.internal.talkList.includes("bj"))
                 g.internal.talkList.push("bj");

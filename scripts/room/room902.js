@@ -191,7 +191,7 @@ room902.chatcatch = function (callback) {
                 chat(31, 902);
             break;
         case "r5":
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             nav.bg("902_girl/" + callback + ".jpg");
             break;
         default:

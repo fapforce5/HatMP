@@ -3,12 +3,12 @@ var room103 = {};
 
 room103.main = function () {
     g.internal = false;
-    if (g.get("jobapplyconst") === 2) {
+    if (gv.get("jobapplyconst") === 2) {
         nav.bg("103_constSite/day1.jpg");
         chat(1, 103);
     }
     else {
-        if (g.get("jobapplyconst") > 4)
+        if (gv.get("jobapplyconst") > 4)
             g.internal = true;
         room103.chatcatch("sweep");
     }
@@ -26,26 +26,40 @@ room103.main = function () {
 room103.btnclick = function (name) {
     switch (name) {
         case "work":
-            if (g.get("jobapplyconst") === 6) {
+            if (gv.get("jobapplyconst") === 6) {
                 chat(65, 103);
             }
             else {
                 nav.killall();
                 nav.bg("103_constSite/sweep.jpg");
-                g.mod("energy", -30);
+                gv.mod("energy", -30);
                 chat(0, 103);
             }
             break;
         case "work2":
             nav.killall();
             nav.bg("103_constSite/sweep.jpg");
-            g.mod("energy", -30);
+            gv.mod("energy", -30);
             chat(12, 103);
             break;
         default:
             break;
         case "hole":
+            levels.mod("anal", 5, 1);
             chat(25, 103);
+            break;
+        case "pamphlet":
+            nav.killbutton("pamphlet");
+            nav.button({
+                "type": "img",
+                "name": "pamphlet2",
+                "left": 915,
+                "top": 50,
+                "width": 500,
+                "height": 800,
+                "image": "103_constSite/pamphlet.jpg"
+            }, 103);
+            chat(66, 103);
             break;
     }
 };
@@ -54,9 +68,9 @@ room103.chatcatch = function (callback) {
     switch (callback) {
         case "complete":
             char.settime(17, 50);
-            g.mod("fitness", 5);
-            g.mod("jobapplyconst", 1);
-            g.setDaily("construction");
+            levels.mod("fitness", 4, 999);
+            gv.mod("jobapplyconst", 1);
+            daily.set("construction");
             char.room(101);
             break;
         case "sweep":
@@ -94,6 +108,17 @@ room103.chatcatch = function (callback) {
                 "height": 272,
                 "image": "103_constSite/work.png"
             }, 103);
+            if (!gv.get("pamphletConstSite")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "pamphlet",
+                    "left": 1165,
+                    "top": 877,
+                    "width": 97,
+                    "height": 82,
+                    "image": "103_constSite/pamphlet.png"
+                }, 103);
+            }
             break;
         case "endDay1":
             char.room(103);
@@ -103,7 +128,7 @@ room103.chatcatch = function (callback) {
             break;
         case "chat":
             nav.killall();
-            switch (g.get("jobapplyconst")) {
+            switch (gv.get("jobapplyconst")) {
                 case 2: //first day
                     nav.bg("103_constSite/worker2.jpg");
                     chat(13, 103);
@@ -160,15 +185,27 @@ room103.chatcatch = function (callback) {
                 "height": 272,
                 "image": "103_constSite/work.png"
             }, 103);
+            if (!gv.get("pamphletConstSite")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "pamphlet",
+                    "left": 1165,
+                    "top": 877,
+                    "width": 97,
+                    "height": 82,
+                    "image": "103_constSite/pamphlet.png"
+                }, 103);
+            }
             break;
         case "lunch":
             nav.killall();
             nav.bg("103_constSite/lunch.jpg");
-            g.mod("energy", 20);
+            gv.mod("energy", 20);
             break;
         case "give20":
-            if (g.get("money") > 19) {
-                g.mod("money", -20);
+            if (gv.get("money") > 19) {
+                levels.mod("charisma", 5, 999);
+                gv.mod("money", -20);
                 chat(17, 103);
             }
             else {
@@ -179,6 +216,7 @@ room103.chatcatch = function (callback) {
             g.internal = true;
             break;
         case "panties":
+            levels.mod("xdress", 5, 1);
             nav.bg("103_constSite/worker4.jpg");
             break;
         
@@ -212,19 +250,28 @@ room103.chatcatch = function (callback) {
             nav.bg("103_constSite/" + callback + ".jpg");
             break;
         case "hole17":
-            g.mod("money", 200);
+            gv.mod("money", 200);
             char.addtime(67);
-            g.set("jobapplynurse", 2);
-            g.set("jobapplybeaver", 2);
+            gv.set("jobapplynurse", 2);
+            gv.set("jobapplybeaver", 2);
             sc.setstep("missy", 1);
             g.roomMapAccess(203, true, true);
             char.room(10);
             break;
         case "adddom":
-            sissy.statsUpdate(27);
+            levels.mod("dom", 5, 1);
             break;
         case "addsub":
-            sissy.statsUpdate(28);
+            levels.mod("sub", 5, 1);
+            break;
+        
+        case "pamphlet":
+            nav.killbutton("pamphlet2");
+            gv.mod("pamphletConstSite", true);
+            levels.mod("pi", 20, 999);
+            break;
+        case "intPlus":
+            levels.mod("int", 15, 999);
             break;
         default:
             break;
@@ -366,7 +413,7 @@ room103.chat = function (chatID) {
                 "you could spare $20? ",
             button: [
                 { chatID: -1, text: "Sure. Here's $20", callback: "give20" },
-                { chatID: 16, text: "No. I don't even know Jim", callback: "" }
+                { chatID: 16, text: "No. I don't even know Jim", callback: "intPlus" }
             ]
         },
         {
@@ -805,6 +852,14 @@ room103.chat = function (chatID) {
             text: "It that a hairy pussy over there in the pipe? I gotta take a closer look! ",
             button: [
                 { chatID: 26, text: "[Crawl in] ", callback: "hole0" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "thinking",
+            text: "This is a weird flyer. I wonder who Aurora Kirei is. Hopefully they don't eat her. ",
+            button: [
+                { chatID: -1, text: "[Toss it aside]", callback: "pamphlet" },
             ]
         },
     ];

@@ -3,7 +3,7 @@ var room13 = {};
 
 room13.main = function () {
     var btnList = new Array();
-    var lockdrawer = g.get("lockdrawer");
+    var lockdrawer = gv.get("lockdrawer");
     if (lockdrawer) 
         nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
     if (g.pass === "endSleepyTime") {
@@ -197,7 +197,7 @@ room13.btnclick = function (name) {
                 chat(5, 13);
             break;
         case "dresser":
-            if (g.get("lockdrawer"))
+            if (gv.get("lockdrawer"))
                 chat(109, 13);
             else {
                 nav.killall();
@@ -215,7 +215,7 @@ room13.btnclick = function (name) {
             else if (scc.changesDiffernt("lola", false)) {
                 chat(139, 13);
             }
-            else if (g.getDaily("lola")) {
+            else if (daily.get("lola")) {
                 chat(17, 13);
             }
             else {
@@ -301,7 +301,7 @@ room13.btnclick = function (name) {
             else if (scc.changesDiffernt("eva", false)) {
                 chat(138, 13);
             }
-            else if (g.getDaily("eva")) {
+            else if (daily.get("eva")) {
                 chat(19, 13);
             }
             else {
@@ -521,7 +521,7 @@ room13.btnclick = function (name) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_004.gif"
             }, 13);
-            g.setDaily("lola");
+            daily.set("lola");
             if (sc.getstep('lola') > 6)
                 chat(72, 13);
             else {
@@ -560,7 +560,7 @@ room13.btnclick = function (name) {
             }
             else {
                 g.roomTimeout = setTimeout(function () {
-                    g.setDaily("lola");
+                    daily.set("lola");
                     nav.killall();
                     nav.bg("13_sisterRoom/013_backrub_008.jpg");
                     chat(211, 13);
@@ -578,7 +578,7 @@ room13.btnclick = function (name) {
         case "lick2Feet":
             nav.killall();
             nav.bg("13_sisterRoom/lick3.jpg");
-            g.setDaily("eva");;
+            daily.set("eva");;
             chat(225, 13);
             break;
         case "lick2Pussy":
@@ -684,18 +684,18 @@ room13.btnclick = function (name) {
 room13.chatcatch = function (callback) {
     switch (callback) {
         case "footrub":
-            g.setDaily("eva");;
+            daily.set("eva");;
             nav.bg("13_sisterRoom/013_footrubLarge.gif");
             nav.killall();
-            g.mod("arousal", 30);
+            gv.mod("arousal", 30);
             sc.setstep("eva", 3);
             scc.love("eva", 5, 50);
             break;
         case "footrub1":
-            g.setDaily("eva");;
+            daily.set("eva");;
             nav.bg("13_sisterRoom/013_footrubLarge.gif");
             nav.killall();
-            g.mod("arousal", 30);
+            gv.mod("arousal", 30);
             sc.setstep("eva", 4);
             break;
         case "sucktoes":
@@ -704,7 +704,7 @@ room13.chatcatch = function (callback) {
             g.internal = cl.c.shirt;
             cl.c.shirt = null;
             cl.display();
-            g.mod("arousal", 30);
+            gv.mod("arousal", 30);
             break;
         case "finishSuckToes":
             cl.c.shirt = g.internal;
@@ -725,20 +725,20 @@ room13.chatcatch = function (callback) {
             break;
         case "footjob4":
             cl.doCum(true);
-            g.mod("receiveFootjobFemale", 1);
+            gv.mod("receiveFootjobFemale", 1);
             nav.bg("13_sisterRoom/013_footjob4.jpg");
             break;
         case "footjob5":
             sc.setstep("eva", 6);
             cl.undo();
             char.room(13);
-            g.setDaily("eva");;
+            daily.set("eva");;
             char.addtime(30);
             break;
         case "footjob5.5":
             cl.undo();
             char.room(13);
-            g.setDaily("eva");;
+            daily.set("eva");;
             char.addtime(30);
             break;
         case 'takePanties':
@@ -827,10 +827,10 @@ room13.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_001.gif "
             }, 13);
-            g.setDaily("lola");
+            daily.set("lola");
             sc.setstep("lola", 2);
             scc.love("lola", 5, 50);
-            g.mod("arousal", 15);
+            gv.mod("arousal", 15);
             break;
         case "br2":
             nav.killall();
@@ -844,8 +844,8 @@ room13.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_001_5.gif"
             }, 13);
-            g.setDaily("lola");
-            g.mod("arousal", 30);
+            daily.set("lola");
+            gv.mod("arousal", 30);
             sc.setstep("lola", 3);
             break;
         case "br3":
@@ -860,8 +860,8 @@ room13.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_002.gif"
             }, 13);
-            g.setDaily("lola");
-            g.mod("arousal", 45);
+            daily.set("lola");
+            gv.mod("arousal", 45);
             scc.love("lola", 5, 50);
             sc.setstep("lola", 4);
             break;
@@ -877,7 +877,7 @@ room13.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_003.gif"
             }, 13);
-            g.setDaily("lola");
+            daily.set("lola");
             sc.setstep("lola", 6);
             break;
         case "br4.5":
@@ -892,7 +892,7 @@ room13.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_003.gif"
             }, 13);
-            g.setDaily("lola");
+            daily.set("lola");
             break;
         case "br5":
             nav.killall();
@@ -932,8 +932,8 @@ room13.chatcatch = function (callback) {
         case "br9Bad":
             scc.love("lola", -25, 100);
             scc.love("eva", -15, 100);
-            g.setDaily("lola");
-            g.setDaily("eva");;
+            daily.set("lola");
+            daily.set("eva");;
             char.addtime(60);
             char.room(11);
             break;
@@ -991,7 +991,7 @@ room13.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "13_sisterRoom/013_backrub_004.gif"
             }, 13);
-            g.setDaily("lola");
+            daily.set("lola");
             if (sc.getstep('lola') > 6)
                 chat(72, 13);
             else {
@@ -1013,7 +1013,7 @@ room13.chatcatch = function (callback) {
             nav.bg("13_sisterRoom/floor3.jpg");
             break;
         case "hide4":
-            g.mod("arousal", 40);
+            gv.mod("arousal", 40);
             nav.bg("13_sisterRoom/floor4.jpg");
             break;
         case "hide5":
@@ -1051,7 +1051,7 @@ room13.chatcatch = function (callback) {
                     nav.bg("13_sisterRoom/sniff2.jpg");
                 chat(108, 13);
             }
-            g.set("lockdrawer", true);
+            gv.set("lockdrawer", true);
             break;
         case "welcome2":
             nav.killbutton("welcomeGirls");
@@ -1125,7 +1125,7 @@ room13.chatcatch = function (callback) {
             nav.modbutton("lola", "13_sisterRoom/13_lola_readingt.png", null, null);
             break;
         case "9presentx":
-            g.setDaily("lola");
+            daily.set("lola");
             scc.love("lola", 5, 75);
             scc.love("eva", 5, 75);
             char.addtime(60); 
@@ -1174,8 +1174,8 @@ room13.chatcatch = function (callback) {
             cl.add("bra", "l");
             sc.setstep("eva", 201);
             sc.setstep("lola", 201);
-            g.setDaily("lola");
-            g.setDaily("eva");;
+            daily.set("lola");
+            daily.set("eva");;
             char.room(10);
             break;
         case "sleep":
@@ -1214,8 +1214,8 @@ room13.chatcatch = function (callback) {
             sc.setstep("eva", 202);
             scc.love("lola", -10, 100);
             scc.love("eva", -10, 100);
-            g.setDaily("lola");
-            g.setDaily("eva");;
+            daily.set("lola");
+            daily.set("eva");;
             char.addtime(45);
             char.room(0);
             break;
@@ -1223,7 +1223,7 @@ room13.chatcatch = function (callback) {
             if (sc.getstep("holly") > 2)
                 chat(191, 13);
             else {
-                if (g.get("money") > 29)
+                if (gv.get("money") > 29)
                     chat(192, 13);
                 else
                     chat(193, 13);
@@ -1238,7 +1238,7 @@ room13.chatcatch = function (callback) {
         case "201_4b":
             nav.killall();
             nav.bg("13_sisterRoom/201_4.jpg");
-            g.mod("money", -30);
+            gv.mod("money", -30);
             scc.love("lola", 10, 100);
             scc.love("eva", 10, 100);
             break;
@@ -1262,15 +1262,15 @@ room13.chatcatch = function (callback) {
             scc.love("jones", 10, 100);
             scc.love("lola", -5, 100);
             scc.love("eva", -5, 100);
-            g.mod("phum", 1);
+            gv.mod("phum", 1);
             nav.bg("13_sisterRoom/201_6a.jpg");
             break;
         case "201_7":
             sc.setstep("lola", 202);
             sc.setstep("eva", 202);
             char.addtime(127);
-            g.setDaily("lola");
-            g.setDaily("eva");;
+            daily.set("lola");
+            daily.set("eva");;
             char.room(0);
             break;
         case "201_6b":
@@ -1285,7 +1285,7 @@ room13.chatcatch = function (callback) {
                 nav.bg("13_sisterRoom/013_toeSuck.gif");
                 g.roomTimeout = setTimeout(function () {
                     scc.love("eva", 5, 100);
-                    g.setDaily("eva");;
+                    daily.set("eva");;
                     chat(222, 13);
                 }, 3000);
             }
@@ -1399,7 +1399,7 @@ room13.chatcatch = function (callback) {
                 scc.love("eva", evaLove, 100);
             
             sc.setstep("eva", 203);
-            g.setDaily("eva");;
+            daily.set("eva");;
             break;
         case "leave":
             char.addtime(30);
@@ -1431,10 +1431,10 @@ room13.chatcatch = function (callback) {
         case "3someEnd":
             scc.love("eva", 200, 100);
             scc.love("lola", 200, 100);
-            g.mod("fuckPussy", 2);
+            gv.mod("fuckPussy", 2);
             char.addtime(120);
-            g.setDaily("lola");
-            g.setDaily("eva");;
+            daily.set("lola");
+            daily.set("eva");;
             char.room(10);
             break;
         default:

@@ -153,7 +153,7 @@ room24.chatcatch = function (callback) {
                         "height": 1073,
                         "image": "24_spinTheBottle/013_spinLolaKiss" + g.internal.lolaNude + ".png"
                     }, 13);
-                    //g.mod("arousal", 30);
+                    //gv.mod("arousal", 30);
                     break;
                 case "evaKiss":
                     nav.killbutton("eva");
@@ -166,7 +166,7 @@ room24.chatcatch = function (callback) {
                         "height": 1036,
                         "image": "24_spinTheBottle/013_spinEvaKiss" + g.internal.evaNude + ".png"
                     }, 13);
-                    //g.mod("arousal", 30);
+                    //gv.mod("arousal", 30);
                     break;
                 case "bothKiss":
                     nav.killbutton("eva");
@@ -180,7 +180,7 @@ room24.chatcatch = function (callback) {
                         "height": 1056,
                         "image": "24_spinTheBottle/013_spinLolaEvaKiss.png"
                     }, 13);
-                    //g.mod("arousal", 60);
+                    //gv.mod("arousal", 60);
                     break;
                 case "lolaTop":
                     nav.killbutton("lola");

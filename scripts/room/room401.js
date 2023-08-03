@@ -119,7 +119,7 @@ room401.main = function () {
                 spankyInv.push("h");
             if (sc.checkevent("spanky", -1))
                 spankyInv.push("y");
-            if (g.get("spankyprices")) {
+            if (gv.get("spankyprices")) {
                 priceMult = 3;
             }
             room401.makeInv(spankyInv, true, priceMult);
@@ -181,7 +181,7 @@ room401.main = function () {
         $("#menu_displayUp").attr("data-price", thisItem.cost);
         $("#menu_displayDown").attr("data-price", thisItem.cost);
 
-        var thisMoney = g.get("money");
+        var thisMoney = gv.get("money");
 
         if (thisItem.entry && thisItem.count === null) {
             $('#menu_displayAction').hide();
@@ -283,7 +283,7 @@ room401.main = function () {
             cl.display();
         }
 
-        var thisMoney = g.get("money");
+        var thisMoney = gv.get("money");
 
         if (cli.inv) {
             $('#menu_displayAction').hide();

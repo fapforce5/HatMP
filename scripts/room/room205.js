@@ -41,15 +41,15 @@ room205.chatcatch = function (callback) {
             break;
         case "leavehypno1":
             g.pass = "finishhypno1";
-            g.mod("arousal", 100);
-            g.mod("missyPoints", 100);
+            gv.mod("arousal", 100);
+            gv.mod("missyPoints", 100);
             char.addtime(420);
             char.room(200);
             break;
         case "leavehypno1repeat":
             g.pass = "finishhypno1repeat";
-            g.mod("arousal", 100);
-            g.mod("missyPoints", 20);
+            gv.mod("arousal", 100);
+            gv.mod("missyPoints", 20);
             char.addtime(420);
             char.room(200);
             break;
@@ -116,7 +116,7 @@ room205.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "205_computerWork/205_blow5.png"
             }, 205);
-            g.mod("receiveOralMale", 1);
+            gv.mod("receiveOralMale", 1);
             nav.killbutton("bj3");
             nav.killbutton("bj4");
             break;

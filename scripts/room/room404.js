@@ -49,7 +49,7 @@ room404.chatcatch = function (callback) {
             break;
         case "envy100":
             sc.setstep("envy", 101);
-            g.set("spankyprices", true);
+            gv.set("spankyprices", true);
             char.addtime(60);
             char.room(0);
             break;

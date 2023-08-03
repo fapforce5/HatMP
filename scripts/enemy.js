@@ -5,11 +5,11 @@ var tEnemy = {};
 //add difficulty -------------------------------------------------------------
 
 //bimbo moves: a = shake ass, c = shake cock, d = dance 
-tEnemy.getPunch = function () { return Math.round((7 + (g.get("bodyLevel") / 2)) * tEnemy.getPKDiff()); };
-tEnemy.getKick = function () { return Math.round((7 + Math.round(g.get("legLevel") / 2)) * tEnemy.getPKDiff()); };
-tEnemy.getDefense = function () { return Math.round((g.get("dLevel") / 3) * tEnemy.getPKDiff()); };
+tEnemy.getPunch = function () { return Math.round((7 + (gv.get("bodyLevel") / 2)) * tEnemy.getPKDiff()); };
+tEnemy.getKick = function () { return Math.round((7 + Math.round(gv.get("legLevel") / 2)) * tEnemy.getPKDiff()); };
+tEnemy.getDefense = function () { return Math.round((gv.get("dLevel") / 3) * tEnemy.getPKDiff()); };
 tEnemy.getPKDiff = function () {
-    var pk = g.get("difficulty");
+    var pk = gv.get("difficulty");
     if (pk === 0)
         return 2;
     else if (pk === 1)
@@ -29,7 +29,7 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
     if (e1x !== null)
         eax.push(e1x);
 
-    var subdomMult = g.get("subdom") - 50;
+    var subdomMult = gv.get("subdom") - 50;
     subdomMult = (subdomMult / 50);
     if (subdomMult < 0)
         subdomMult -= 1;
@@ -45,18 +45,18 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
         prevMenu: "",
         subdom: subdomMult,
         me: {
-            energy: g.get("energy"),
-            maxEnergy: g.get("maxenergy"),
+            energy: gv.get("energy"),
+            maxEnergy: gv.get("maxenergy"),
             damage: 0,
-            shield: g.get("dLevel"),
-            evasion: Math.round(g.get("fitness")),
+            shield: gv.get("dLevel"),
+            evasion: Math.round(gv.get("fitness")),
             pPower: tEnemy.getPunch(),
             kPower: tEnemy.getKick(),
             def: tEnemy.getDefense(),
             punchCount: 0,
             kickCount: 0,
             grappleCount: 0,
-            superPunch: g.get("superPunch"),
+            superPunch: gv.get("superPunch"),
             goodBlockCount: 0,
             sissyAction: 0,
             pose: "pose",
@@ -80,8 +80,8 @@ tEnemy.init = function (e0, e1, bg, returnRoomID, callingRoomID) {
         callingRoomID: callingRoomID,
         lock: false,
         enemyRotation: 0,
-        fighttimer: g.get("fightspeed"),
-        fightsex: g.get("fightsex")
+        fighttimer: gv.get("fightspeed"),
+        fightsex: gv.get("fightsex")
     };
 
     nav.t({
@@ -1188,7 +1188,7 @@ tEnemy.drawChar = function (pose) {
             break;
         case "superpunch":
             g.fight.me.superPunch = 0;
-            g.set("superPunch", 0);
+            gv.set("superPunch", 0);
             thischar.body = cl.c.chest > 2 ? "g_punch_f" : "g_punch_m";
             thischar.dick = "g_punch";
             thischar.displayc = true;
@@ -1635,44 +1635,44 @@ tEnemy.updatePlayerStats = function (money) {
     var popUpText = "";
     var doDefense = false;
     for (i = 0; i < g.st.length; i++) {
-        if (g.st[i].n === "energy") {
+        if (gv.st[i].n === "energy") {
             if (g.fight.me.energy < 1)
-                g.st[i].t = 0;
+                gv.st[i].t = 0;
             else if (g.fight.me.energy > g.fight.me.maxEnergy)
-                g.st[i].t = g.fight.me.maxEnergy;
+                gv.st[i].t = g.fight.me.maxEnergy;
             else
-                g.st[i].t = g.fight.me.energy;
+                gv.st[i].t = g.fight.me.energy;
         }
-        else if (g.st[i].n === "fitness") {
+        else if (gv.st[i].n === "fitness") {
             if ((g.fight.me.punchCount + g.fight.me.kickCount) > 0) {
-                g.st[i].t += (g.fight.me.punchCount + g.fight.me.kickCount);
-                if (g.st[i].t > 100)
-                    g.st[i] = 100;
+                gv.st[i].t += (g.fight.me.punchCount + g.fight.me.kickCount);
+                if (gv.st[i].t > 100)
+                    gv.st[i] = 100;
                 popUpText += "Fitness increased: " + (g.fight.me.punchCount + g.fight.me.kickCount) + "<br/>";
             }
         }
-        else if (g.st[i].n === "leg") {
+        else if (gv.st[i].n === "leg") {
             if (g.fight.me.kickCount > 0) {
-                g.st[i].t += (g.fight.me.kickCount * 2);
-                if (g.st[i].t > 100)
-                    g.st[i].t = 100;
+                gv.st[i].t += (g.fight.me.kickCount * 2);
+                if (gv.st[i].t > 100)
+                    gv.st[i].t = 100;
                 popUpText += "Your legs are stonger <br/>";
             }
         }
-        else if (g.st[i].n === "body") {
+        else if (gv.st[i].n === "body") {
             if (g.fight.me.punchCount > 0) {
-                g.st[i].t += (g.fight.me.punchCount * 2);
-                if (g.st[i].t > 100)
-                    g.st[i].t = 100;
+                gv.st[i].t += (g.fight.me.punchCount * 2);
+                if (gv.st[i].t > 100)
+                    gv.st[i].t = 100;
                 popUpText += "Your arms are stonger <br/>";
             }
         }
-        else if (g.st[i].n === "subdom") {
-            g.st[i].t -= g.fight.me.sissyAction;
-            if (g.st[i].t < 0)
-                g.st[i].t = 0;
-            else if (g.st[i].t > 100)
-                g.st[i].t = 100;
+        else if (gv.st[i].n === "subdom") {
+            gv.st[i].t -= g.fight.me.sissyAction;
+            if (gv.st[i].t < 0)
+                gv.st[i].t = 0;
+            else if (gv.st[i].t > 100)
+                gv.st[i].t = 100;
             if (g.fight.me.sissyAction > 0) {
                 popUpText += "You are more submissive. <br/>";
             }
@@ -1680,27 +1680,27 @@ tEnemy.updatePlayerStats = function (money) {
                 popUpText += "You are more dominate. <br/>";
             }
         }
-        else if (g.st[i].n === "dLevel") {
-            doDefense = g.st[i].t > 0;
+        else if (gv.st[i].n === "dLevel") {
+            doDefense = gv.st[i].t > 0;
         }
-        else if (g.st[i].n === "d") {
-            if (g.st[i].t > 0)
+        else if (gv.st[i].n === "d") {
+            if (gv.st[i].t > 0)
                 doDefense = true;
             if (doDefense) {
                 var thisDef = Math.floor(g.fight.me.damage);
-                g.st[i].t += thisDef;
-                if (g.st[i].t > 100)
-                    g.st[i].t = 100;
+                gv.st[i].t += thisDef;
+                if (gv.st[i].t > 100)
+                    gv.st[i].t = 100;
                 popUpText += "Your defense increased by: " + thisDef + " + points. <br/>";
             }
         }
-        else if (g.st[i].n === "money") {
+        else if (gv.st[i].n === "money") {
             if (money > 0) {
-                g.st[i].t += money;
-                if (g.st[i].t < 0)
-                    g.st[i].t = 0;
+                gv.st[i].t += money;
+                if (gv.st[i].t < 0)
+                    gv.st[i].t = 0;
                 popUpText += "You earned $" + money + " <br/>";
-                $('#char_money').text('$' + g.st[i].t);
+                //$('#char_money').text('$' + gv.st[i].t);
             }
         }
     }

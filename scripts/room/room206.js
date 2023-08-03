@@ -148,7 +148,7 @@ room206.chatcatch = function (callback) {
                 }
                 if (g.internal[1].b[1].a) {
                     img = g.internal[1].b[1].t;
-                    missy.mod(0, 10);
+                    levels.mod("pi", 20, 1);
                     chat(3, 206);
                 }
                 else if (g.internal[1].b[2].a) {
@@ -171,7 +171,7 @@ room206.chatcatch = function (callback) {
                 if (g.internal[2].b[0].a) {
                     chat(7, 206);
                     img = g.internal[2].b[0].t;
-                    sissy.statsUpdate(39);
+                    levels.mod("xdress", 10, 1);
                 }
                 else if (g.internal[2].b[1].a) {
                     img = g.internal[2].b[1].t;
@@ -196,11 +196,12 @@ room206.chatcatch = function (callback) {
                 if (g.internal[3].b[0].a) {
                     chat(39, 206);
                     img = g.internal[3].b[0].t;
-                    sissy.statsUpdate(16);
+                    levels.mod("charisma", 20, 1);
                     missy.mod(0, 5);
                 }
                 else {
                     chat(40, 206);
+                    levels.mod("sub", 10, 1);
                     img = g.internal[3].b[1].t;
                 }
                 nav.killbutton("question");
@@ -222,7 +223,7 @@ room206.chatcatch = function (callback) {
                 else {
                     chat(10, 206);
                     img = g.internal[4].b[1].t;
-                    sissy.statsUpdate(30);
+                    levels.mod("piss", 10, 1);
                 }
                 nav.killbutton("question");
                 nav.button({
@@ -244,7 +245,7 @@ room206.chatcatch = function (callback) {
                 else {
                     chat(13, 206);
                     img = g.internal[5].b[1].t;
-                    sissy.statsUpdate(20);
+                    levels.mod("sub", 10, 1);
                 }
 
                 nav.killbutton("question");
@@ -266,13 +267,13 @@ room206.chatcatch = function (callback) {
                 else if (g.internal[6].b[1].a) {
                     chat(15, 206);
                     img = g.internal[6].b[1].t;
-                    sissy.statsUpdate(27);
+                    levels.mod("dom", 10, 1);
                 }
                 else {
                     nav.bg("206_questions/butt.jpg");
                     chat(16, 206);
                     img = g.internal[6].b[2].t;
-                    sissy.statsUpdate(18);
+                    levels.mod("sub", 10, 1);
                     missy.mod(0, 5);
                 }
 
@@ -292,17 +293,19 @@ room206.chatcatch = function (callback) {
                 if (g.internal[7].b[0].a) {
                     chat(21, 206);
                     img = g.internal[7].b[0].t;
+                    levels.mod("int", 20, 1);
                 }
                 else if (g.internal[7].b[1].a) {
                     chat(22, 206);
                     img = g.internal[7].b[1].t;
-                    missy.mod(0, 5);
+                    levels.mod("charisma", 20, 1);
                 }
                 else {
                     chat(23, 206);
                     img = g.internal[7].b[2].t;
                     sissy.statsUpdate(28);
-                    missy.mod(0, 5);
+                    levels.mod("anal", 5, 1);
+                    levels.mod("oral", 5, 1);
                 }
 
                 nav.killbutton("question");
@@ -326,12 +329,15 @@ room206.chatcatch = function (callback) {
                     nav.bg("206_questions/butt.jpg");
                     chat(25, 206);
                     img = g.internal[8].b[1].t;
+                    levels.mod("anal", 5, 1);
+                    levels.mod("oral", 5, 1);
                 }
                 else {
                     nav.bg("206_questions/butt.jpg");
                     chat(26, 206);
                     img = g.internal[8].b[2].t;
-                    sissy.statsUpdate(28);
+                    levels.mod("anal", 5, 1);
+                    levels.mod("oral", 5, 1);
                     missy.mod(0, 5);
                 }
 
@@ -353,11 +359,13 @@ room206.chatcatch = function (callback) {
                 if (g.internal[9].b[0].a) {
                     nav.bg("206_questions/desk.jpg");
                     chat(27, 206);
+                    levels.mod("sub", 15, 1);
                     img = g.internal[9].b[0].t;
                 }
                 else {
                     nav.bg("206_questions/angry.jpg");
                     chat(28, 206);
+                    levels.mod("dom", 15, 1);
                     img = g.internal[9].b[1].t;
                 }
 
@@ -385,7 +393,7 @@ room206.chatcatch = function (callback) {
                     chat(37, 206);
                 break;
             case "end":
-                g.mod("money", g.pass.money);
+                gv.mod("money", g.pass.money);
                 char.settime(17, 0);
                 sc.setstep("missy", 2);
                 nav.killall();

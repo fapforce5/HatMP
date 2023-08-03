@@ -240,7 +240,7 @@ room202.chatcatch = function (callback) {
             }, 202);
             break;
         case "leaveReward":
-            g.mod("money", 45);
+            gv.mod("money", 45);
             char.addtime(10);
             char.room(0);
             break;
@@ -267,7 +267,7 @@ room202.chatcatch = function (callback) {
                 "height": 872,
                 "image": "202_sideDesk/202_crossBall.png"
             }, 202);
-            g.set("bladder", 1);
+            gv.set("bladder", 1);
             g.altview = true;
             g.back = false;
             cl.display();
@@ -280,7 +280,7 @@ room202.chatcatch = function (callback) {
             nav.bg("202_sideDesk/202_sideDesk4s0.jpg");
             break;
         case "peeSelf1":
-            g.set("bladder", 0);
+            gv.set("bladder", 0);
             cl.display();
             nav.bg("202_sideDesk/202_sideDesk4s1.jpg");
             break;
@@ -294,27 +294,27 @@ room202.chatcatch = function (callback) {
             break;
         case "passtime":
             char.addtime(45);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.bg("202_sideDesk/202_sideDesk4s.jpg");
             break;
         case "passtime1":
             char.addtime(45);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.bg("202_sideDesk/sd1.jpg");
             break;
         case "passtime2":
             char.addtime(45);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.bg("202_sideDesk/sd4.jpg");
             break;
         case "passtime3":
             char.addtime(45);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.bg("202_sideDesk/sd3.jpg");
             break;
         case "passtime4":
             char.addtime(45);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.bg("202_sideDesk/sd2.jpg");
             break;
         case "bent":
@@ -331,12 +331,12 @@ room202.chatcatch = function (callback) {
             }, 202);
             break;
         case "horneyplus":
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             break;
         case "endbent":
             char.addtime(360);
             g.sissy[28].ach = true;
-            g.set("oncase", null);
+            gv.set("oncase", null);
             sc.setstep("jeffery", 8);
             g.roomMapAccess(250, true, true);
             char.room(0);
@@ -361,7 +361,7 @@ room202.chatcatch = function (callback) {
             break;
         case "openmouth8":
             char.addtime(90);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.bg("202_sideDesk/openmouth8.jpg");
             break;
         case "openmouthfinish":
@@ -407,8 +407,8 @@ room202.chatcatch = function (callback) {
             break;
         case "pose11":
             g.sissy[12].ach = true;
-            g.mod("giveOralFemale", 1);
-            g.mod("money", 50);
+            gv.mod("giveOralFemale", 1);
+            gv.mod("money", 50);
             scc.love("missy", 20, 100);
             room209.chatcatch("end");
             break;

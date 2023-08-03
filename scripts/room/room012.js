@@ -37,7 +37,7 @@ room12.main = function () {
         ];
 
         var hit = false;
-        if (!g.getDaily("homeShowerPeek")) {
+        if (!daily.get("homeShowerPeek")) {
             if (sc.getTimeline("lola").thisRoom) {
                 nav.button(room12.showerScene("sister1", 12));
                 chat(0, 12);
@@ -226,7 +226,7 @@ room12.btnclick = function (name) {
             char.room(22);
             break;
         case "shower":
-            if (g.diffDatesByDays(g.dt, g.get("shower")) === 0)
+            if (g.diffDatesByDays(g.dt, gv.get("shower")) === 0)
                 chat(12, 12);
             else {
                 nav.killall();
@@ -267,7 +267,7 @@ room12.chatcatch = function (callback) {
         case "sister2":
             nav.killbutton("sister1");
             nav.button(room12.showerScene("sister2", 12));
-            g.setDaily("homeShowerPeek");
+            daily.set("homeShowerPeek");
             break;
         case "sister3":
             nav.killbutton("sister2");
@@ -334,7 +334,7 @@ room12.chatcatch = function (callback) {
                 "height": 784,
                 "image": "12_bathroom/12_mother2.png"
             }, 12);
-            g.setDaily("homeShowerPeek");
+            daily.set("homeShowerPeek");
             break;
         case "mom3":
             nav.killbutton("mom2");
@@ -388,26 +388,26 @@ room12.chatcatch = function (callback) {
             }, 12);
             break;
         case "shaveBody":
-            if (g.get("bodyhair") > 0)
-                g.set("bodyhair", 0);
+            if (cl.c.bodyhair > 0)
+                cl.c.bodyhair = 0;
             inv.use("razor");
             cl.display();
             break;
         case "finishShowering":
             cl.undo();
-            g.mod("energy", 30);
+            gv.mod("energy", 30);
             char.addtime(30);
-            g.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
+            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
             char.room(12);
             break;
         case "reloadRoom":
             char.room(12);
             break;
         case "200_1":
-            if (g.get("bodyhair") > 50) {
+            if (cl.c.bodyhair > 50) {
                 nav.killall();
                 zcl.displayMain(0, 500, .199, "", false);
-                g.set("bodyhair", 0);
+                cl.c.bodyhair = 0;
                 cl.nude();
                 nav.bg("12_bathroom/200_1.jpg");
                 
@@ -478,7 +478,7 @@ room12.chatcatch = function (callback) {
             break;
         case "200_finish1":
             char.addtime(120);
-            g.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
+            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
             cl.c.cumface = false;
             cl.undo();
             char.room(12);

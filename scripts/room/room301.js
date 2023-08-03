@@ -222,7 +222,7 @@ room301.chatcatch = function (callback) {
             break;
         case "envy2":
             sc.setstep("envy", 3);
-            g.setDaily("envy");
+            daily.set("envy");
             char.addtime(180);
             char.room(300);
             break;
@@ -320,12 +320,12 @@ room301.chatcatch = function (callback) {
             }
             break;
         case "movieBadEnd":
-            g.setDaily("envy");
+            daily.set("envy");
             char.addtime(180);
             char.room(300);
             break;
         case "movieGoodEnd":
-            g.setDaily("envy");
+            daily.set("envy");
             char.addtime(180);
             sc.setstep("envy", 4);
             char.room(300);
@@ -337,7 +337,7 @@ room301.chatcatch = function (callback) {
         case "envy3end":
             sc.setstep("envy", 5);
             sc.setstep("spanky", -1);
-            g.setDaily("envy");
+            daily.set("envy");
             char.addtime(180);
             char.room(300);
             break;
@@ -382,7 +382,7 @@ room301.chatcatch = function (callback) {
             room301.chatcatch("drawbggame");
             break;
         case "boardgameend":
-            g.setDaily("envy");
+            daily.set("envy");
             char.room(0);
             break;
         case "hypno0":
@@ -556,7 +556,7 @@ room301.chatcatch = function (callback) {
                     break;
             };
             char.addtime(120);
-            g.setDaily("envy");
+            daily.set("envy");
             char.room(0);
             break;
         case "leave":
@@ -661,10 +661,10 @@ room301.chatcatch = function (callback) {
             break;
         case "step11end":
             sc.setstep("envy", 12);
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             char.addtime(120);
-            g.setDaily("envy");
+            daily.set("envy");
             char.room(0);
             break;
         case "step12":
@@ -682,10 +682,10 @@ room301.chatcatch = function (callback) {
             }, 301);
             break;
         case "step12end":
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             char.addtime(120);
-            g.setDaily("envy");
+            daily.set("envy");
             char.room(0);
             break;
         case "step13_0":
@@ -718,7 +718,7 @@ room301.chatcatch = function (callback) {
             break;
         case "step13end":
             sc.setstep("envy", 14);
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             cl.doCum(false);
             char.room(0);
             break;
@@ -759,9 +759,9 @@ room301.chatcatch = function (callback) {
         case "envy":
             sc.setstep("envy", 16);
             char.addtime(60);
-            g.mod("money", 500);
-            g.setDaily("rachel");
-            g.set("map", 0);
+            gv.mod("money", 500);
+            daily.set("rachel");
+            gv.set("map", 0);
             char.room(325);
             break;
         case "envy100":

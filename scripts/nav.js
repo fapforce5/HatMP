@@ -43,7 +43,7 @@ nav.buildRoom = function () {
             g.error("buildRoom function not found or prob in main", "roomID: " + vList.roomID);
         }
     }
-    $('#char_money').text('$' + g.get("money"));
+    //$('#char_money').text('$' + gv.get("money"));
     nav.bars();
     nav.buildclock();
 };
@@ -243,7 +243,7 @@ nav.twodigits = function (n) {
 };
 
 nav.friendlyTime = function () {
-    if(g.get("clock24") === "12"){
+    if(gv.get("clock24") === "12"){
         var newHour = g.dt.getHours() === 0 ? 12 : (g.dt.getHours() < 13 ? g.dt.getHours() : g.dt.getHours() - 12);
         var ampm = g.dt.getHours() < 12 ? " AM" : " PM";
         return nav.twodigits(newHour) + ":" + nav.twodigits(g.dt.getMinutes()) + ampm;
@@ -254,10 +254,10 @@ nav.friendlyTime = function () {
 };
 
 nav.bars = function () {
-    var tempArousal = g.get("arousal");
-    var tempEnergy = g.get("energy");
-    $('#char-arousal').css('width', g.get("arousal") + '%');
-    $('#char-energy').css('width', Math.floor((tempEnergy / g.get("maxenergy")) * 100) + '%');
+    var tempArousal = gv.get("arousal");
+    var tempEnergy = gv.get("energy");
+    $('#char-arousal').css('width', gv.get("arousal") + '%');
+    $('#char-energy').css('width', Math.floor((tempEnergy / gv.get("maxenergy")) * 100) + '%');
 
     if (tempArousal < 25)
         $('#char-arousal-label').html("Not Horny");

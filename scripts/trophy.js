@@ -34,9 +34,9 @@ trophy.build = function () {
         }
     }
     for (i = 0; i < g.st.length; i++) {
-        switch (g.st[i].n) {
+        switch (gv.st[i].n) {
             case "knockedup":
-                trophy.list.bimboKnockedup.ach = g.st[i].t !== null;
+                trophy.list.bimboKnockedup.ach = gv.st[i].t !== null;
                 break;
         }
     }

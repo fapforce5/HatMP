@@ -2,12 +2,14 @@
 var room217 = {};
 room217.main = function () {
     if (g.pass === "late") {
-        //missy.mod(1, 1);
-        
-        if (missy.tracker[1].c === 0)
-            chat(0, 217);
-        if (missy.tracker[1].c === 1)
-            chat(2, 217)
+        missy.st[1].c++;
+        chat(0, 217);
+    }
+    else if (g.pass === "follow") {
+        chat(13, 217);
+    }
+    else {
+        chat(13, 217);
     }
 };
 
@@ -22,19 +24,31 @@ room217.btnclick = function (name) {
 
 room217.chatcatch = function (callback) {
     switch (callback) {
-        case "endFirst":
-            char.addtime(30);
-            missy.tracker[1].c++;
-            char.room(0);
-            break;
         case "squeeze":
             nav.bg("217_punish/squeeze.jpg");
+            levels.mod("dom", 20, 999);
             missy.mod(0, -10);
+            break;
+        case "disrobeVoluntary":
+            levels.mod("sub", 20, 999);
+            room217.chatcatch("disrobe");
             break;
         case "disrobe":
             nav.bg("217_punish/punishStart.jpg");
             cl.nude();
             zcl.displayMain(0, 400, .35, "", true);
+            break;
+        case "getPunishment":
+            nav.killall();
+            var subLevel = levels.get("sub").l;
+            if (subLevel < 2) {
+                nav.bg("217_punish/rice0.jpg");
+                chat(14, 217);
+            }
+            else {
+                nav.bg("217_punish/punish1.jpg");
+                chat(1, 217);
+            }
             break;
         case "punish0":
             nav.killall();
@@ -54,7 +68,7 @@ room217.chatcatch = function (callback) {
         case "punishRand":
             var img = Math.floor(Math.random() * 11);
             nav.bg("217_punish/punish" + img + ".jpg");
-            g.mod("energy", -40);
+            gv.mod("energy", -40);
             break;
         case "punishNext":
             nav.bg("217_punish/punish0.jpg");
@@ -63,12 +77,40 @@ room217.chatcatch = function (callback) {
             nav.killall();
             nav.bg("217_punish/punishNext1.jpg");
             break;
-        case "punishmentEnd":
-            sissy.statsUpdate(28);
-            g.set("energy", 0);
-            char.settime(17, 35);
+        case "punishmentEndDress":
             cl.undo();
+            room217.chatcatch("punishmentEnd");
+            break;
+        case "punishmentEndCheckEvent":
+            if (g.pass === "lic") {
+                nav.killall();
+                nav.bg("217_punish/z_pi_lic.jpg");
+                chat(21, 217);
+            }
+            else if (g.pass === "clothes") {
+                nav.killall();
+                nav.bg("217_punish/z_clothes.jpg");
+                chat(22, 217);
+            }
+            else {
+                nav.killall();
+                nav.bg("217_punish/punish6.jpg");
+                chat(20, 217);
+            }
+            break;
+        case "punishmentEnd":
+            levels.mod("sub", 50, 999);
+            gv.set("energy", 0);
+            char.settime(17, 35);
+            missy.st[26].c++;
             char.room(0);
+            break;
+        case "rice1":
+        case "rice2":
+        case "rice3":
+        case "rice4":
+        case "rice5":
+            nav.bg("217_punish/" + callback + ".jpg");
             break;
         default:
             break;
@@ -81,30 +123,29 @@ room217.chat = function (chatID) {
             chatID: 0,
             speaker: "missy",
             text: "Lateness is something I don't tolerate. I can sit here and complain to you about it, " +
-                "or we will try and change your behavior with my behavior adjuster. The first hour " +
-                "your arms and legs will get tired and sore. By the end of the day you'll be in misery, " +
-                "drooling and wet with sweat. This is your first and only warning. If you come in late again " +
-                "You will have the opportunity to experiance this amazing attitude adjuster. Got it? ",
+                "or we will try and change your behavior with my behavement adjustment treatment. I'm not " +
+                "one to complain, so we well adjust your behavior. ",
             button: [
-                { chatID: 1, text: "Yes ma'am", callback: "" }
+                { chatID: -1, text: "Yes ma'am", callback: "getPunishment" }
             ]
         },
         {
             chatID: 1,
             speaker: "missy",
-            text: "Good, Now get out of my sight and come in on time next time! ",
+            text: "Strip off your clothing and stand before me nude. I will then " +
+                "tie you up to his cross where you will be on display for anyone and everyone that comes in so they " +
+                "can see your shame. Now strip. ",
             button: [
-                { chatID: -1, text: "Yes ma'am", callback: "endFirst" }
+                { chatID: 4, text: "Yes ma'am", callback: "disrobeVoluntary" },
+                { chatID: 3, text: "What? No! ", callback: "squeeze" },
             ]
         },
         {
             chatID: 2,
             speaker: "missy",
-            text: "I told you what happens when you come in late, but you don't seem to understand how " +
-                "much I hate tardiness. Strip off your clothing. ",
+            text: "not used.... ",
             button: [
-                { chatID: 4, text: "Yes ma'am", callback: "disrobe" },
-                { chatID: 3, text: "What? No! ", callback: "squeeze" },
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
         {
@@ -173,7 +214,7 @@ room217.chat = function (chatID) {
             text: "I think you've been up there enough to have learned your lesson. I'll take you down now " +
                 "before you die of asphyxiation. ",
             button: [
-                { chatID: 11, text: "", callback: "punishNext1" },
+                { chatID: 11, text: "...", callback: "punishNext1" },
             ]
         },
         {
@@ -191,7 +232,93 @@ room217.chat = function (chatID) {
             text: "I don't decide if you go up there, you behavior does. Make sure you correct yourself. Now " +
                 "get out of my office. Your sweat is getting in my carpet and making my office stink. ",
             button: [
-                { chatID: -1, text: "Groan", callback: "punishmentEnd" },
+                { chatID: -1, text: "Groan", callback: "punishmentEndDress" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "missy",
+            text: "You just don't listen do you. Now you're going to see what happens when you can't " +
+                "follow simple directions. ",
+            button: [
+                { chatID: -1, text: "...", callback: "getPunishment" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "missy",
+            text: "I have laid out two bowls. One bowl is full of dried rice, the other is empty. You're going " +
+                "to move all the grains of dry rice with these chopsticks to the empty bowl. You may only move the " +
+                "rice with the chopsticks. No other method is allowed. Questions? ",
+            button: [
+                { chatID: 16, text: "No ma'am [Get to work]", callback: "rice1" },
+                { chatID: 15, text: "What? No! This is stupid! ", callback: "squeeze" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "missy",
+            text: "You know I have enough power in my legs to pop your head clean off. But then I would have " +
+                "to get " + sc.n("cecilia") + " to clean up, and she doesn't deserve that. Now are you ready " +
+                "to move this rice? ",
+            button: [
+                { chatID: 16, text: "Yes ma'am", callback: "rice1" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "This isn't too bad. I should complete this in no time..",
+            button: [
+                { chatID: 17, text: "...", callback: "rice2" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "Oh wow. I've been doing this forever.",
+            button: [
+                { chatID: 18, text: "...", callback: "rice3" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "My wrists hurt so bad! Fuck I'm losing my mind",
+            button: [
+                { chatID: 19, text: "...", callback: "rice4" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "thinking",
+            text: "Holy shit! I'm almost done. If I wasn't this close I would just run away and never come back! ",
+            button: [
+                { chatID: 20, text: "...", callback: "rice5" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "missy",
+            text: "learned your lesson ",
+            button: [
+                { chatID: -1, text: "...", callback: "punishmentEnd" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "missy",
+            text: "Here's your license that you haven't earned. Stop screwing up. ",
+            button: [
+                { chatID: -1, text: "...", callback: "punishmentEnd" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "missy",
+            text: "Here's your clothing. Make sure to wear it ",
+            button: [
+                { chatID: -1, text: "...", callback: "punishmentEnd" },
             ]
         },
     ];

@@ -16,8 +16,8 @@ room20.btnclick = function (name) {
 room20.chatcatch = function (callback) {
     switch (callback) {
         case "finish":
-            g.mod("rentKnockOff", 5);
-            g.setDaily("momChoreDishes");
+            gv.mod("rentKnockOff", 5);
+            daily.set("momChoreDishes");
             char.addtime(20);
             char.room(15);
             break;

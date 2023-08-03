@@ -2,7 +2,7 @@
 var room210 = {};
 room210.main = function () {
     var i, j, offset;
-    var usedSissyPoints = g.get("usedSissyPoints");
+    var usedSissyPoints = gv.get("usedSissyPoints");
     nav.bg("28_transformation/grid.jpg");
     g.sumSissy();
     //chest
@@ -40,7 +40,7 @@ room210.main = function () {
         text: '<div style="text-align:center;">Available Points <br/>' + (g.sp.total - usedSissyPoints) + '</div>'
     });
 
-    var hor = g.get("hormone");
+    var hor = gv.get("hormone");
     var hortxt = "";
     if (hor < 25) {
         hex = "#2c416e";
@@ -73,7 +73,7 @@ room210.main = function () {
 room210.btnclick = function (name) {
     var id, pid;
     var prevToUnlock = "";
-    var usedSissyPoints = g.get("usedSissyPoints");
+    var usedSissyPoints = gv.get("usedSissyPoints");
     var needSissyPoints = 0;
     var availableSissyPoints;
     nav.killbutton("bigDisplay");
@@ -123,14 +123,14 @@ room210.btnclick = function (name) {
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
     else if (!g.sissy[id].active)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Work in<br/>Progress</div>';
-    else if (g.sissy[id].h && g.get("hormone") < 75)
+    else if (g.sissy[id].h && gv.get("hormone") < 75)
         tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise<br/>your homone level</div>';
     else if (prevToUnlock === "") {
         if (id === 47 || id === 48 || id === 49)
             tText += '<img src="./images/room/28_transformation/unlockx.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
         else if (needSissyPoints <= availableSissyPoints)
             tText += '<img src="./images/room/28_transformation/unlock.png" class="room-btn rom-event" data-name="h_' + id + '" data-room="209" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
-        if (g.get("cheatMode"))
+        if (gv.get("cheatMode"))
             tText += '<div class="room-btn rom-event cursor-hover" style="font-size:' + 20 * g.ratio + 'px; margin-top:' + 5 * g.ratio + 'px; width:100%; text-align:center;" data-name="h_' + id + '" data-room="211">Cheat Unlock</div>';
     }
     else if (needSissyPoints > availableSissyPoints)

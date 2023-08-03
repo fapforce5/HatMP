@@ -99,7 +99,7 @@ room57.chatcatch = function (callback) {
                 chat(1, 57)
             break;
         case "f3":
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.bg("57_pussyPalace/f3.jpg");
             break;
         case "f4":

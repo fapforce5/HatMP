@@ -113,15 +113,15 @@ room216.chatcatch = function (callback) {
             }, 216);
             break;
         case "clean4":
-            g.mod("energy", 100);
-            g.mod("giveOralFemale", 1);
-            g.mod("loadSwollowed", 1);
-            g.mod("money", 50);
+            gv.mod("energy", 100);
+            gv.mod("giveOralFemale", 1);
+            gv.mod("loadSwollowed", 1);
+            gv.mod("money", 50);
             char.addtime(120);
             nav.bg("216_pink/clean4.jpg");
             break;
         case "clean4a":
-            g.mod("money", 50);
+            gv.mod("money", 50);
             char.addtime(120);
             nav.bg("216_pink/clean4.jpg");
             break;
@@ -174,12 +174,12 @@ room216.chatcatch = function (callback) {
             g.internal = { l: "d", n: 0, s: 0, c: 0 };
             break;
         case "wait":
-            if (g.get("energy") < 15) {
+            if (gv.get("energy") < 15) {
                 chat(8, 216);
             }
             else {
                 g.internal.c++;
-                g.mod("energy", -15);
+                gv.mod("energy", -15);
                 var randcust = Math.floor(Math.random() * 8);
                 nav.button(
                     {
@@ -240,9 +240,9 @@ room216.chatcatch = function (callback) {
             break;
         case "endfuck":
             g.popUpNotice("You took " + g.internal.c + " cock! Good girl.");
-            g.mod("receiveAnalMale", g.internal.c);
-            g.mod("creamPied", g.internal.c);
-            g.mod("money", 10 * g.internal.c);
+            gv.mod("receiveAnalMale", g.internal.c);
+            gv.mod("creamPied", g.internal.c);
+            gv.mod("money", 10 * g.internal.c);
             char.room(216);
             break;
         default:

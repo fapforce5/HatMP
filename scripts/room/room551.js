@@ -39,7 +39,7 @@ room551.main = function () {
                 "image": "551_gymInside/empDoor.png"
             }
         ];
-        if (!g.getDaily("g")) {
+        if (!daily.get("g")) {
             if (Math.floor(Math.random() * 2) === 0) {
                 btnList.push({
                     "type": "btn",
@@ -64,7 +64,7 @@ room551.main = function () {
             }
         }
         var navList = [0, 552, 553];
-        if (sc.checkevent("g", -1) && !g.getDaily("g"))
+        if (sc.checkevent("g", -1) && !daily.get("g"))
             navList.push(555);
         $.each(btnList, function (i, v) {
             nav.button(v, 551);
@@ -76,7 +76,7 @@ room551.main = function () {
 room551.btnclick = function (name) {
     switch (name) {
         case "treadmill":
-            if (g.get("energy") > 30)
+            if (gv.get("energy") > 30)
                 char.room(552);
             else
                 chat(0, 551);
@@ -127,15 +127,15 @@ room551.btnclick = function (name) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat2.png"
             }, 551);
-            if (g.get("oncase") === "sewer" && !inv.has("sewer")){
+            if (gv.get("oncase") === "sewer" && !inv.has("sewer")){
                 chat(45, 551);
             }
-            else if (g.get("oncase") === "sewer" && !sc.checkevent("g", -4)) {
+            else if (gv.get("oncase") === "sewer" && !sc.checkevent("g", -4)) {
                 chat(46, 551);
             }
             else if (sc.getstep("g") === 0)
                 chat(1, 551);
-            else if (g.get("fitnessLevel") > 2 && !sc.checkevent("g", -1)) {
+            else if (gv.get("fitnessLevel") > 2 && !sc.checkevent("g", -1)) {
                 chat(37, 551);
             }
             else {
@@ -144,7 +144,7 @@ room551.btnclick = function (name) {
                     g.internal = outfit;
                     chat(31, 551);
                 }
-                else if (g.get("energy") < 50)
+                else if (gv.get("energy") < 50)
                     chat(32, 551);
                 else if (sc.getstep("g") === 1)
                     chat(14, 551);
@@ -156,7 +156,7 @@ room551.btnclick = function (name) {
             break;
         case "emp":
             if (sc.checkevent("g", -1)) {
-                if (g.getDaily("g")) {
+                if (daily.get("g")) {
                     nav.button({
                         "type": "btn",
                         "name": "empDoorOnly",
@@ -222,7 +222,7 @@ room551.chatcatch = function (callback) {
         case "squat5":
             nav.killbutton("squat");
             sc.setstep("g", 1);
-            g.setDaily("g");
+            daily.set("g");
             char.addtime(60);
             break;
         case "situp1":
@@ -249,11 +249,11 @@ room551.chatcatch = function (callback) {
             }, 551);
             break;
         case "workedout":
-            g.mod("energy", -50);
-            g.mod("fitness", 30);
+            gv.mod("energy", -50);
+            gv.mod("fitness", 30);
             sc.setstep("g", 2);
-            g.mod("shower", -1440);
-            g.getDaily("g");
+            gv.mod("shower", -1440);
+            daily.get("g");
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");
             var btnList = [
@@ -339,19 +339,19 @@ room551.chatcatch = function (callback) {
                 chat(36, 551);
             break;
         case "endDay":
-            g.mod("shower", -1440);
-            g.mod("energy", -50);
-            g.getDaily("g");
+            gv.mod("shower", -1440);
+            gv.mod("energy", -50);
+            daily.get("g");
             if (g.pass === "squat") {
-                g.mod("leg", 15);
-                g.mod("fitness", 20);
+                gv.mod("leg", 15);
+                gv.mod("fitness", 20);
             }
             else if (g.pass === "push") {
-                g.mod("body", 15);
-                g.mod("fitness", 20);
+                gv.mod("body", 15);
+                gv.mod("fitness", 20);
             }
             else { //situp
-                g.mod("fitness", 35);
+                gv.mod("fitness", 35);
             }
 
             nav.killall();

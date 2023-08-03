@@ -5,7 +5,7 @@ room228.main = function () {
     char.map();
     char.changeMenu("body", false, true);
     g.pass = "";
-    g.set("sewerID", 0);
+    gv.set("sewerID", 0);
     g.map = null;
     g.fight = null;
     zcl.displayMain(550, 1250, .03, "clothes", true);
@@ -48,7 +48,7 @@ room228.btnclick = function (name) {
             char.room(225);
             break;
         case "in":
-            if (g.get("energy") < 10) {
+            if (gv.get("energy") < 10) {
                 chat(1, 228);
             }
             else {

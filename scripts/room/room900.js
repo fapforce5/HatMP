@@ -124,7 +124,7 @@ room900.chatcatch = function(callback){
             break;
         case "e16":
             sc.setstep("eva", 204);
-            g.mod("phum", 1);
+            gv.mod("phum", 1);
             char.room(0);
             break;
         case "jail":

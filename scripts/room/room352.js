@@ -211,9 +211,9 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
-                g.mod("money", 20);
-                g.mod("phum", 1);
-                g.mod("giveHandjobMale", 1);
+                gv.mod("money", 20);
+                gv.mod("phum", 1);
+                gv.mod("giveHandjobMale", 1);
                 chat(13, 352);
             }
             else {
@@ -257,9 +257,9 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
-                g.mod("money", 20);
-                g.mod("phum", 10);
-                g.mod("giveHandjobMale", 1);
+                gv.mod("money", 20);
+                gv.mod("phum", 10);
+                gv.mod("giveHandjobMale", 1);
                 chat(20, 352);
             }
             else {
@@ -437,8 +437,8 @@ room352.chatcatch = function (callback) {
             break;
         case "l1":
             nav.killall();
-            g.mod("money", 20);
-            g.mod("giveOralMale", 1);
+            gv.mod("money", 20);
+            gv.mod("giveOralMale", 1);
             nav.bg(g.internal.events[0].c === 0 ? "352_jackoff/wl1.jpg" : "352_jackoff/bl1.jpg");
             break;
         case "l2":

@@ -32,7 +32,7 @@ room150.btnclick = function (name) {
                 "height": 973,
                 "image": "150_jones/jones.png"
             }, 150);
-            var onc = g.get("oncase");
+            var onc = gv.get("oncase");
             if (onc === "clothes0") {
                 chat(3, 150);
             }

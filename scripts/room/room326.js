@@ -86,8 +86,8 @@ room326.btnclick = function (name) {
             nav.bg("326_stable/lick" + g.internal + ".jpg");
             if (g.internal === 11) {
                 cl.c.cumface = true;
-                g.mod("giveOralMale", 1);
-                g.mod("loadSwollowed", 1);
+                gv.mod("giveOralMale", 1);
+                gv.mod("loadSwollowed", 1);
                 nav.killbutton("bj");
                 chat(22, 326);
             }
@@ -103,13 +103,13 @@ room326.chatcatch = function (callback) {
         case "brushEnd":
             g.internal = "brush";
             room326.chatcatch("incrementHorse");
-            g.mod("money", 20);
-            g.setDaily("rachel");
+            gv.mod("money", 20);
+            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;
         case "badEnd":
-            g.setDaily("rachel");
+            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;
@@ -153,9 +153,9 @@ room326.chatcatch = function (callback) {
         case "horseJackitEnd":
             g.internal = "jack";
             room326.chatcatch("incrementHorse");
-            g.mod("money", 20);
-            g.mod("giveHandjobMale", 1);
-            g.setDaily("rachel");
+            gv.mod("money", 20);
+            gv.mod("giveHandjobMale", 1);
+            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;
@@ -237,7 +237,7 @@ room326.chatcatch = function (callback) {
             nav.bg("326_stable/caught1.jpg");
             break;
         case "caught2":
-            g.setDaily("rachel");
+            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;

@@ -2,7 +2,16 @@
 var room221 = {};
 room221.main = function () {
     g.pass = 10;
-    if (missy.tracker[7].c === 0) {
+    g.pass = {
+        t: 10,
+        events:
+            [
+                { t: 10, e: "jeffery0", c: "That weird guy" },
+                { t: 11, e: null, c: "Nothing" },
+                { t: 12, e: null, c: "Nothing" }
+            ]
+    };
+    if (missy.st[7].c === 0) {
         chat(0, 221);
     }
     else {
@@ -21,7 +30,7 @@ room221.btnclick = function (name) {
                     "type": "btn",
                     "name": v.n,
                     "left": left + ((i % 5) * 187),
-                    "top": top + (i > 4 ? 182 : 0),
+                    "top": top + (Math.floor(i / 5) * 182),
                     "width": 157,
                     "height": 162,
                     "image": "221_recip/" + v.i
@@ -70,18 +79,36 @@ room221.btnclick = function (name) {
             break;
         case "main":
             g.internal = [
+                { n: "sch", i: "sch.png" },
                 { n: "notes", i: "notes.png" },
                 { n: "pics", i: "pics.png" }
             ];
             room221.btnclick("drawScreen");
             break;
         case "notes":
-            nav.killall();
             g.internal = {
                 b: "main",
                 i: "notes.jpg"
             };
             room221.btnclick("drawBG");
+            break;
+        case "sch":
+            g.internal = {
+                b: "main",
+                i: "sch.jpg"
+            };
+            room221.btnclick("drawBG");
+            $.each(g.pass.events, function (i, v) {
+                nav.t({
+                    type: "img",
+                    name: "name",
+                    left: 1050,
+                    top: 350 + (i * 50),
+                    font: 30,
+                    hex: "#000000",
+                    text: v.t + ":00 - " + v.c
+                });
+            });
             break;
         case "pics":
             g.internal = [
@@ -95,6 +122,7 @@ room221.btnclick = function (name) {
                 { n: "pic7", i: "img7.png" },
                 { n: "pic8", i: "img8.png" },
                 { n: "pic9", i: "img9.png" },
+                { n: "pic10", i: "img10.png" },
             ];
             room221.btnclick("drawScreen");
             break;
@@ -107,6 +135,7 @@ room221.btnclick = function (name) {
         case "pic7":
         case "pic8":
         case "pic9":
+        case "pic10":
             g.internal = {
                 b: "pics",
                 i: name + ".jpg"
@@ -114,15 +143,25 @@ room221.btnclick = function (name) {
             room221.btnclick("drawBG");
             break;
         case "passtime":
-            if (g.pass > 11) {
+            if (g.pass.t > 11) {
                 chat(4, 221);
             }
             else {
-                //sissy.mod("intel", -2);
-                g.popUpNotice("dumber - add this");
-                char.settime(g.pass, 17);
-                g.pass += 1;
-                chat(999, 221);
+                //replace this with checking g.pass.events (add random uninvited visits)
+                if (Math.floor(Math.random() * 3) === 0) {
+                    char.settime(g.pass.t, 17);
+                    g.pass.t += 1;
+                    //if jeffery - can smell your panties, offers you cash for them
+                    nav.bg("221_recip/cust_jeff0.jpg");
+                    chat(6, 221);
+                }
+                else {
+                    //sissy.mod("intel", -2);
+                    g.popUpNotice("dumber - add this");
+                    char.settime(g.pass.t, 17);
+                    g.pass.t += 1;
+                    chat(999, 221);
+                }
             }
             break;
         default:
@@ -151,8 +190,12 @@ room221.chatcatch = function (callback) {
             room221.btnclick("main");
             break;
         case "lunch":
-            missy.tracker[7].c++;
+            missy.mod(7, 1);
+            missy.mod(30, 1);
             char.room(224);
+            break;
+        case "resetbg":
+            nav.bg("221_recip/bg.jpg");
             break;
         default:
             break;
@@ -238,6 +281,15 @@ room221.chat = function (chatID) {
                 text: "PINK ROOM TIME!",
                 button: [
                     { chatID: -1, text: "...bye", callback: "start" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "jeffery",
+                text: "Oh gross. I can smell male's underwear. I'm here to see Missy. ",
+                button: [
+                    { chatID: -1, text: "yes come in (if not on sch then trouble)", callback: "resetbg" },
+                    { chatID: -1, text: "no go away (if on schedule you get in trouble)", callback: "resetbg" },
                 ]
             },
         ];

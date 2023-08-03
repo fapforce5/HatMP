@@ -6,7 +6,7 @@ room100.main = function () {
     var navList = new Array();
     
     if (g.hourBetween(6, 12) && sc.getstep("construction") > 0 && g.dt.getDay() !== 0) {
-        if(g.get("energy") < 60)
+        if(gv.get("energy") < 60)
             navList = [101, 0];
         else
             navList = [103, 101, 0];
@@ -70,9 +70,9 @@ room100.btnclick = function (name) {
             char.room(101);
             break;
         case "job":
-            if (g.get("jobConstructionPay") === 0)
+            if (gv.get("jobConstructionPay") === 0)
                 chat(0, 100);
-            else if (g.get("energy") < 60)
+            else if (gv.get("energy") < 60)
                 chat(1, 100);
             else if (!(cl.c.pants === "j" && (cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w"))) {
                 chat(2, 100);

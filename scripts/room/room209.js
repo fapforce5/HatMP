@@ -2,7 +2,7 @@
 var room209 = {};
 room209.main = function () {
     var mstep = sc.getstep("missy");
-    var oncase = g.get("oncase");
+    var oncase = gv.get("oncase");
     if (mstep < 10) {
         nav.bg("209_classroom/dark.jpg");
         nav.button({
@@ -86,7 +86,7 @@ room209.main = function () {
             room209.btnclick("displaypbtn");
             //var nameList = room6.getNameList().active;
             //var randomSelectionItem = Math.floor(Math.random() * nameList.length);
-            //g.set("quest3", nameList[randomSelectionItem].n);
+            //gv.set("quest3", nameList[randomSelectionItem].n);
             chat(207, 209);
         }
         else if (g.sissy[1].ach) {
@@ -290,7 +290,7 @@ room209.btnclick = function (name) {
         case "h_9":
         case "h_10":
             g.spendSissy(name);
-            g.set("oncase", "smolpp");
+            gv.set("oncase", "smolpp");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -359,7 +359,7 @@ room209.btnclick = function (name) {
         case "h_17":
             nav.killall();
             g.spendSissy(name);
-            g.set("oncase", "gloryholeanal");
+            gv.set("oncase", "gloryholeanal");
             nav.bg("209_classroom/bg.jpg");
             room209.btnclick("bb1");
             room209.btnclick("poster0");
@@ -522,7 +522,7 @@ room209.btnclick = function (name) {
         case "h_38":
         case "h_39":
             g.spendSissy(name);
-            g.set("oncase", "bigboobs");
+            gv.set("oncase", "bigboobs");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -537,7 +537,7 @@ room209.btnclick = function (name) {
         case "h_43":
         case "h_44":
             g.spendSissy(name);
-            g.set("oncase", "bigass");
+            gv.set("oncase", "bigass");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -549,7 +549,7 @@ room209.btnclick = function (name) {
         case "h_45":
         case "h_46":
             g.spendSissy(name);
-            g.set("oncase", "dslLips");
+            gv.set("oncase", "dslLips");
             nav.bg("209_classroom/bg.jpg");
             nav.killall();
             room209.btnclick("bb1");
@@ -630,7 +630,7 @@ room209.btnclick = function (name) {
         case "h55_17":
             nav.killall();
             nav.bg("205_computerWork/blackBg.jpg");
-            g.set("oncase", "cult0");
+            gv.set("oncase", "cult0");
             
             g.internal = { day: 0, interval: 0, constDayDirty: 0, jo: false, eat: false, box: 0, brick: 0, chaple: 0, wander: false, job: 0, nightEvent: false };
             g.pass = 950;
@@ -667,8 +667,8 @@ room209.chatcatch = function (callback) {
             break;
         case "missy0_end":
             g.sissy[54].ach = true;
-            g.mod("missyPoints", 1);
-            g.mod("money", 30);
+            gv.mod("missyPoints", 1);
+            gv.mod("money", 30);
             room209.chatcatch("end");
             break;
         case "missy0_1":
@@ -707,7 +707,7 @@ room209.chatcatch = function (callback) {
             g.sissy[0].ach = true;
             sc.revokeStep("missy", -1);
             scc.love("missy", 20, 100);
-            g.mod("money", 40);
+            gv.mod("money", 40);
             room209.chatcatch("end");
             break;
         case "m2_0":
@@ -743,7 +743,7 @@ room209.chatcatch = function (callback) {
             break;
         case "h_3_vr2":
             g.sissy[3].ach = true;
-            g.mod("missyPoints", 10);
+            gv.mod("missyPoints", 10);
             room209.chatcatch("end");
             break;
         case "m2_2":
@@ -771,8 +771,8 @@ room209.chatcatch = function (callback) {
             nav.bg("209_classroom/p3_x.jpg");
             break;
         case "m2_end":
-            g.mod("missyPoints", 30);
-            g.mod("money", 40);
+            gv.mod("missyPoints", 30);
+            gv.mod("money", 40);
             scc.love("missy", 10);
             g.sissy[1].ach = true;
             room209.chatcatch("end");
@@ -783,12 +783,12 @@ room209.chatcatch = function (callback) {
             break;
         case "h6_1":
             cl.nude();
-            g.mod("arousal", 20);
+            gv.mod("arousal", 20);
             nav.killbutton("chair");
             zcl.displayMain(-100, 600, .25, "clothes", true);
             break;
         case "h6_2":
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             nav.killall();
             nav.bg("209_classroom/h6_2.jpg");
             break;
@@ -805,7 +805,7 @@ room209.chatcatch = function (callback) {
         case "h6_6":
             nav.bg("209_classroom/bg.jpg");
             cl.c.chastity = "cage";
-            g.mod("chastityLock", true);
+            gv.mod("chastityLock", true);
             zcl.displayMain(0, 800, .18, "clothes", false);
             nav.button({
                 "type": "img",
@@ -818,8 +818,8 @@ room209.chatcatch = function (callback) {
             }, 209);
             break;
         case "h6_end":
-            g.mod("money", 50);
-            g.mod("missyPoints", 40);
+            gv.mod("money", 50);
+            gv.mod("missyPoints", 40);
             cl.undo();
             g.sissy[6].ach = true;
             room209.chatcatch("end");
@@ -854,12 +854,12 @@ room209.chatcatch = function (callback) {
             room209.chatcatch("end");
             break;
         case "h12_1_end":
-            g.set("oncase", "redroom");
+            gv.set("oncase", "redroom");
             char.addtime(30);
             char.room(203);
             break;
         case "h_13":
-            g.set("oncase", "gloryholebj");
+            gv.set("oncase", "gloryholebj");
             room209.chatcatch("end");
             break;
         case "h_14_0":
@@ -1046,9 +1046,9 @@ room209.chatcatch = function (callback) {
             }, 209);
             break;
         case "h16_end":
-            g.mod("missyPoints", 40);
+            gv.mod("missyPoints", 40);
             scc.love("missy", 10, 100);
-            g.mod("money", 40);
+            gv.mod("money", 40);
             g.sissy[16].ach = true;
             cl.undo();
             room209.chatcatch("end");
@@ -1109,8 +1109,8 @@ room209.chatcatch = function (callback) {
             zcl.displayMain(-700, 300, .35, "panties", true);
             break;
         case "p20_end":
-            g.mod("missyPoints", 10);
-            g.mod("money", 40);
+            gv.mod("missyPoints", 10);
+            gv.mod("money", 40);
             g.sissy[20].ach = true;
             room209.chatcatch("end");
             break;
@@ -1122,8 +1122,8 @@ room209.chatcatch = function (callback) {
             nav.bg("209_classroom/h21_2.jpg");
             break;
         case "h_21_end":
-            g.mod("missyPoints", 10);
-            g.mod("money", 40);
+            gv.mod("missyPoints", 10);
+            gv.mod("money", 40);
             g.sissy[21].ach = true;
             room209.chatcatch("end");
             break;
@@ -1161,8 +1161,8 @@ room209.chatcatch = function (callback) {
             g.roomTimeout = setTimeout(function () { chat(124, 209); }, 1500);
             break;
         case "h_22_5":
-            g.mod("missyPoints", 10);
-            g.mod("money", 40);
+            gv.mod("missyPoints", 10);
+            gv.mod("money", 40);
             g.sissy[22].ach = true;
             room209.chatcatch("end");
             break;
@@ -1206,8 +1206,8 @@ room209.chatcatch = function (callback) {
             break;
         case "h24_6":
             g.sissy[24].ach = true;
-            g.mod("missyPoints", 10);
-            g.mod("money", 40);
+            gv.mod("missyPoints", 10);
+            gv.mod("money", 40);
             g.roomMapAccess(650, true, true);
             sc.setstep("tiffany", -8);
             cl.c.dress = null;
@@ -1254,7 +1254,7 @@ room209.chatcatch = function (callback) {
             char.room(200);
             break;
         case "h_29":
-            g.set("oncase", "shopping");
+            gv.set("oncase", "shopping");
             char.addtime(60);
             g.internal = "201 change";
             char.room(201);
@@ -1274,22 +1274,22 @@ room209.chatcatch = function (callback) {
             room209.chatcatch("end");
             break;
         case "h_31_end":
-            g.set("oncase", "clothes0");
+            gv.set("oncase", "clothes0");
             g.roomMapAccess(150, true, false);
             room209.chatcatch("end");
             break;
         case "h_32_end":
-            g.set("oncase", "clothes1");
+            gv.set("oncase", "clothes1");
             g.roomMapAccess(150, true, false);
             room209.chatcatch("end");
             break;
         case "h_33_end":
-            g.set("oncase", "clothes2");
+            gv.set("oncase", "clothes2");
             g.roomMapAccess(150, true, false);
             room209.chatcatch("end");
             break;
         case "h_34_end":
-            g.set("oncase", "clothes3");
+            gv.set("oncase", "clothes3");
             room209.chatcatch("end");
             break;
         case "h_40":
@@ -1297,7 +1297,7 @@ room209.chatcatch = function (callback) {
             nav.bg("209_classroom/h40.jpg");
             break;
         case "h_40_1":
-            var oncase40 = g.get("oncase");
+            var oncase40 = gv.get("oncase");
             if (oncase40 === "bigboobs")
                 nav.button({
                     "type": "img",
@@ -1333,7 +1333,7 @@ room209.chatcatch = function (callback) {
             }, 3000);
             break;
         case "h_40_2":
-            var oncase401 = g.get("oncase");
+            var oncase401 = gv.get("oncase");
             nav.bg("209_classroom/bg.jpg");
             nav.killbutton("boobies");
             room209.btnclick("bb0");
@@ -1348,7 +1348,7 @@ room209.chatcatch = function (callback) {
                 chat(67, 209);
             break;
         case "h_40_3":
-            g.mod("money", 20);
+            gv.mod("money", 20);
             room209.chatcatch("end");
             break;
         case "h50_1":
@@ -1552,7 +1552,7 @@ room209.chatcatch = function (callback) {
             break;
         case "h_60_3":
             inv.add("cumjar", 3);
-            g.set("oncase", "queen");
+            gv.set("oncase", "queen");
             g.sissy[60].ach = true;
             char.addtime(180);
             char.room(0);
@@ -1561,7 +1561,7 @@ room209.chatcatch = function (callback) {
             room209.btnclick("selectStart");
             break;
         case "missyMidPoints":
-            g.mod("missyPoints", 50);
+            gv.mod("missyPoints", 50);
             scc.setlove("missy", 0);
             room209.btnclick("appearanceStart");
             break;
@@ -1611,7 +1611,7 @@ room209.chatcatch = function (callback) {
             }, 19000);
             break;
         case "h_4end":
-            g.mod("missyPoints", 50);
+            gv.mod("missyPoints", 50);
             g.sissy[4].ach = true;
             room209.chatcatch("end");
             break;

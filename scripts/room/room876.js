@@ -1,7 +1,7 @@
 ﻿//Room name
 var room876 = {};
 room876.main = function () {
-    var cheerlevel = g.get("cheerlevel");
+    var cheerlevel = gv.get("cheerlevel");
     if (cheerlevel === 0) {
         nav.bg("876_gym/tryout.jpg");
         zcl.displayMain(350, 1000, .07, "clothes", false);
@@ -52,7 +52,7 @@ room876.btnclick = function (name) {
     switch (name) {
         case "1_1":
             nav.killbutton("1_1");
-            if (g.get("cheerleader") > 90) {
+            if (gv.get("cheerleader") > 90) {
                 nav.bg('876_gym/pn_hips.jpg');
                 chat(43, 876);
             }
@@ -193,9 +193,9 @@ room876.chatcatch = function (callback) {
             break;
         case "meet18":
             cl.undo();
-            g.mod("phum", 1);
-            g.mod("cheerleader", 20);
-            g.mod("cheerlevel", 1);
+            gv.mod("phum", 1);
+            gv.mod("cheerleader", 20);
+            gv.mod("cheerlevel", 1);
             sc.setstep("candy", 104);
             char.settime(15, 37);
             char.room(0);
@@ -306,9 +306,9 @@ room876.chatcatch = function (callback) {
             break;
         case "routine1_kick3":
             cl.undo();
-            g.mod("phum", 1);
-            g.set("cheerleader", 20);
-            g.set("cheerlevel", 2);
+            gv.mod("phum", 1);
+            gv.set("cheerleader", 20);
+            gv.set("cheerlevel", 2);
             char.makeGraph();
             char.settime(15, 37);
             char.room(0);
@@ -317,7 +317,7 @@ room876.chatcatch = function (callback) {
         case "routine1_1":
             nav.killall();
             nav.bg("876_gym/sn_hips.jpg");
-            if (g.get("cheerleader") < 95) {
+            if (gv.get("cheerleader") < 95) {
                 chat(51, 876);
             }
             else {
@@ -345,9 +345,9 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/routine1_3.jpg");
             break;
         case "routine1_7":
-            g.mod("phum", 1);
-            g.set("cheerlevel", 3);
-            g.set("cheerleader", 20);
+            gv.mod("phum", 1);
+            gv.set("cheerlevel", 3);
+            gv.set("cheerleader", 20);
             char.makeGraph();
             char.settime(20, 7);
             char.room(0);
@@ -360,9 +360,9 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/meet9.jpg");
             break;
         case "routine2_5":
-            g.mod("phum", 1);
-            g.set("cheerlevel", 4);
-            g.set("cheerleader", 20);
+            gv.mod("phum", 1);
+            gv.set("cheerlevel", 4);
+            gv.set("cheerleader", 20);
             char.makeGraph();
             char.settime(20, 7);
             char.room(0);
@@ -377,9 +377,9 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/routine1_3.jpg");
             break;
         case "routine2_1_9":
-            g.mod("giveOralFemale", 1);
-            g.set("cheerlevel", 5);
-            g.set("cheerleader", 20);
+            gv.mod("giveOralFemale", 1);
+            gv.set("cheerlevel", 5);
+            gv.set("cheerleader", 20);
             char.makeGraph();
             char.settime(20, 7);
             char.room(0);
@@ -402,41 +402,41 @@ room876.chatcatch = function (callback) {
             cl.stretchButt(null, 5);
             break;
         case "cheer5_14":
-            g.mod("sissygasm", 1);
-            g.set("cheerlevel", 6);
-            g.set("cheerleader", 20);
+            gv.mod("sissygasm", 1);
+            gv.set("cheerlevel", 6);
+            gv.set("cheerleader", 20);
             cl.add("accessories", "pompom");
             char.makeGraph();
             char.settime(20, 7);
             char.room(0);
             break;
         case "cheer6_9":
-            g.set("cheerlevel", 7);
-            g.set("cheerleader", 100);
+            gv.set("cheerlevel", 7);
+            gv.set("cheerleader", 100);
             char.makeGraph();
             char.settime(20, 7);
             char.room(0);
             break;
         case "cheer8_9":
-            g.set("cheerlevel", 9);
-            g.set("cheerleader", 100);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.set("cheerlevel", 9);
+            gv.set("cheerleader", 100);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.makeGraph();
             char.settime(17, 7);
             char.room(0);
             break;
         case "cheer8_9bad":
-            g.set("cheerlevel", 9);
-            g.set("cheerleader", 100);
+            gv.set("cheerlevel", 9);
+            gv.set("cheerleader", 100);
             char.makeGraph();
             char.settime(17, 7);
             char.room(0);
             break;
         case "cheer10_4":
             char.settime(17, 7);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.makeGraph();
             char.room(0);
             break;

@@ -13,7 +13,7 @@ room454.main = function () {
     if (nav_roomPass === "woman") {
         navList.push(453);
         nav_roomPass = { name: "stall3", room: "girl" };
-        if (g.hourBetween(19, 24) && g.get("arousal") > 30 && Math.floor(Math.random() * 3) < 2) {
+        if (g.hourBetween(19, 24) && gv.get("arousal") > 30 && Math.floor(Math.random() * 3) < 2) {
             btnList.push({
                 "type": "btn",
                 "name": "womanMouth",
@@ -271,7 +271,7 @@ room454.chatcatch = function (callback) {
         case "changeRoomHorney":
             char.addtime(30);
             char.room(453);
-            g.mod("arousal", 5);
+            gv.mod("arousal", 5);
             break;
         case "womanMouth2":
             if (Math.floor(Math.random() * 2) === 0) {
@@ -337,7 +337,7 @@ room454.chatcatch = function (callback) {
             g.xxxx.head = "cum";
             cl.display();
             char.addtime(30);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             char.room(453);
             break;
         default:

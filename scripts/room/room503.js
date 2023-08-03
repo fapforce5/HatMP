@@ -40,7 +40,7 @@ room503.btnclick = function (name) {
             chat(0, 503);
             break;
         case "shower":
-            if (g.diffDatesByDays(g.dt, g.get("shower")) === 0)
+            if (g.diffDatesByDays(g.dt, gv.get("shower")) === 0)
                 chat(2, 503);
             else {
                 nav.killall();
@@ -67,13 +67,13 @@ room503.chatcatch = function (callback) {
             break;
         case "finishShowering":
             cl.undo();
-            g.mod("energy", 30);
+            gv.mod("energy", 30);
             char.addtime(30);
-            g.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
+            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
             char.room(503);
             break;
         case "shaveBody":
-            g.set("bodyhair", 0);
+            cl.c.bodyhair = 0;
             zcl.displayMain(0, 400, .22, "shower", false);
             inv.use("razor");
             char.addtime(15);

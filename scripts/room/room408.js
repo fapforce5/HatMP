@@ -227,12 +227,12 @@ room408.chatcatch = function (callback) {
             }
             break;
         case "moneycheck":
-            if (g.get("money") < 500) {
+            if (gv.get("money") < 500) {
                 sc.setstep("stormy", -1);
                 chat(33, 408);
             }
             else {
-                g.mod("money", -500);
+                gv.mod("money", -500);
                 q3.eventComplete("stormy");
                 chat(32, 408);
             }

@@ -94,7 +94,7 @@ room25.btnclick = function (name) {
             break;
         case "mom":
             var ll = sc.getstep("landlord");
-            if (!g.getDaily("landlord")) {
+            if (!daily.get("landlord")) {
                 if (!sc.checkevent("me", 2))
                     chat(1, 25);
                 else if (ll === 0)
@@ -154,33 +154,33 @@ room25.chatcatch = function (callback) {
     switch (callback) {
         case "passtime1":
             sc.setstep("landlord", 1);
-            g.setDaily("landlord");
+            daily.set("landlord");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime2":
             sc.setstep("landlord", 2);
-            g.setDaily("landlord");
+            daily.set("landlord");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime3":
             sc.setstep("landlord", 3);
             sc.setstep("landlord", -3);
-            g.setDaily("landlord");
+            daily.set("landlord");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime4":
             sc.setstep("landlord", 4);
-            g.setDaily("landlord");
+            daily.set("landlord");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime5":
             sc.setstep("landlord", 5);
-            g.setDaily("landlord");
+            daily.set("landlord");
             room25.chatcatch("motherPassTime");
             break;
         case "passtime6":
             sc.setstep("landlord", 6);
-            g.setDaily("landlord");
+            daily.set("landlord");
             room25.chatcatch("motherPassTime");
             break;
         case "motherPassTime":

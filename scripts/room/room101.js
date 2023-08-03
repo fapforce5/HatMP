@@ -17,7 +17,7 @@ room101.main = function () {
     }
     else {
         var tinaRel = sc.getstep("tina");
-        if (g.getDaily("construction")) {
+        if (daily.get("construction")) {
             nav.button({
                 "type": "btn",
                 "name": "tina",
@@ -53,11 +53,11 @@ room101.main = function () {
 room101.btnclick = function (name) {
     switch (name) {
         case "tina":
-            if (g.get("jobapplyconst") === 0)
+            if (gv.get("jobapplyconst") === 0)
                 chat(1, 101);
-            else if (g.get("jobapplyconst") === 1)
+            else if (gv.get("jobapplyconst") === 1)
                 chat(3, 101);
-            else if (g.getDaily("construction")) 
+            else if (daily.get("construction")) 
                 chat(5, 101);
             else if (g.hourBetween(6, 9))
                 chat(9, 101);
@@ -96,19 +96,9 @@ room101.chatcatch = function (callback) {
             char.room(102);
             break;
         case "payTheMan":
-            g.mod("money", g.get("jobConstructionPay"));
+            gv.mod("money", gv.get("jobConstructionPay"));
             break;
         case "hitOnTinaFunny":
-            var image = "laugh1.png";
-            if (tinaRel < 5)
-                image = "laugh1.png";
-            else if (tinaRel < 10)
-                image = "laugh2.png";
-            else
-                image = "laugh3.png";
-
-            if (tinaRel < 16)
-                sc.incstep("tina", 1);
             nav.killbutton("tina");
             nav.button({
                 "type": "btn",
@@ -117,40 +107,63 @@ room101.chatcatch = function (callback) {
                 "top": 268,
                 "width": 491,
                 "height": 715,
-                "image": "101_constFrontOffice/" + image
+                "image": "101_constFrontOffice/laugh1.png" 
             }, 101);
+            levels.mod("charisma", 20, 999);
+            //var image = "laugh1.png";
+            //if (tinaRel < 5)
+            //    image = "laugh1.png";
+            //else if (tinaRel < 10)
+            //    image = "laugh2.png";
+            //else
+            //    image = "laugh3.png";
+
+            //if (tinaRel < 16)
+            //    sc.incstep("tina", 1);
+            //nav.killbutton("tina");
+            //nav.button({
+            //    "type": "btn",
+            //    "name": "tina",
+            //    "left": 810,
+            //    "top": 268,
+            //    "width": 491,
+            //    "height": 715,
+            //    "image": "101_constFrontOffice/" + image
+            //}, 101);
             break;
         case "nicePickupLine":
-            if (tinaRel < 8) {
-                sc.incstep("tina", 1);
-                chat(15, 101);
-            }
-            else
-                chat(16, 101);
+            levels.mod("charisma", 12, 999);
+            //if (tinaRel < 8) {
+            //    sc.incstep("tina", 1);
+            //    chat(15, 101);
+            //}
+            //else
+            //    chat(16, 101);
             break;
         case "dirtyPickup":
-            if (tinaRel < 10) {
-                chat(17, 101);
-                sc.incstep("tina", -1);
-            }
-            else {
-                if (tinaRel < 16)
-                    sc.incstep("tina", 1);
-                chat(18, 101);
-                if (g.internal.p === "tits") {
+            levels.mod("charisma", -15, 999);
+            //if (tinaRel < 10) {
+            //    chat(17, 101);
+            //    sc.incstep("tina", -1);
+            //}
+            //else {
+            //    if (tinaRel < 16)
+            //        sc.incstep("tina", 1);
+            //    chat(18, 101);
+            //    if (g.internal.p === "tits") {
 
-                    nav.killbutton("tina");
-                    nav.button({
-                        "type": "btn",
-                        "name": "tina",
-                        "left": 810,
-                        "top": 299,
-                        "width": 439,
-                        "height": 711,
-                        "image": "101_constFrontOffice/tits.png"
-                    }, 101);
-                }
-            }
+            //        nav.killbutton("tina");
+            //        nav.button({
+            //            "type": "btn",
+            //            "name": "tina",
+            //            "left": 810,
+            //            "top": 299,
+            //            "width": 439,
+            //            "height": 711,
+            //            "image": "101_constFrontOffice/tits.png"
+            //        }, 101);
+            //    }
+            //}
             break;
         case "postShow":
             nav.killbutton("tina");
@@ -355,7 +368,7 @@ room101.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "tina",
-            text: "You get $" + g.get("jobConstructionPay") + " each day you work. ",
+            text: "You get $" + gv.get("jobConstructionPay") + " each day you work. ",
             button: [
                 { chatID: -1, text: "Thanks " + sc.n("tina"), callback: "" }
             ]
@@ -366,8 +379,8 @@ room101.chat = function (chatID) {
             text: sc.n("tina") + " ...",
             button: [
                 { chatID: 14, text: pickUpLine[Math.floor(Math.random() * pickUpLine.length)], callback: "hitOnTinaFunny" },
-                { chatID: -1, text: nicePickupLine[Math.floor(Math.random() * nicePickupLine.length)], callback: "nicePickupLine" },
-                { chatID: -1, text: g.internal.s, callback: "dirtyPickup" }
+                { chatID: 15, text: nicePickupLine[Math.floor(Math.random() * nicePickupLine.length)], callback: "nicePickupLine" },
+                { chatID: 17, text: g.internal.s, callback: "dirtyPickup" }
             ]
         },
         {

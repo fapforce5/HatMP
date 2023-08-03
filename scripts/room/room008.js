@@ -259,8 +259,8 @@ room8.main = function () {
             chat(0, 8);
         }
     });
-    if (!sc.checkevent("me", -4)) {
-        sc.setstep("me", -4);
+    if (!gv.get("firstTimeInWardrobe")) {
+        gv.set("firstTimeInWardrobe", true);
         chat(1, 8);
     }
     if (g.pass === 52)

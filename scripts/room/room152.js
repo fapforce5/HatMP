@@ -22,7 +22,7 @@ room152.main = function () {
 room152.btnclick = function (name) {
     switch (name) {
         case "butler":
-            if (g.getDaily("jones")) {
+            if (daily.get("jones")) {
                 chat(18, 152);
             }
             else {
@@ -70,13 +70,13 @@ room152.chatcatch = function (callback) {
             nav.bg("152_slave/" + callback + ".jpg");
             break;
         case "clean7":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             nav.bg("152_slave/" + callback + ".jpg");
             break;
         case "clean9":
             sc.setstep("jones", 2);
-            g.setDaily("jones");
+            daily.set("jones");
             char.addtime(180);
             nav.bg("150_jones/frontdoor.jpg", "150_jones/frontdoorNight.jpg");
             nav.button({

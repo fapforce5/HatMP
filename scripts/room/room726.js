@@ -10,7 +10,7 @@ room726.main = function () {
         "height": 491,
         "image": "726_dance/dgirl1.png"
     }, 726);
-    if (!g.getDaily("cindy")) {
+    if (!daily.get("cindy")) {
         nav.button({
             "type": "btn",
             "name": "lifeguardGirl",
@@ -21,7 +21,7 @@ room726.main = function () {
             "image": "726_dance/lifeguardGirl1.png"
         }, 726);
     }
-    if (!g.getDaily("tim")) {
+    if (!daily.get("tim")) {
         nav.button({
             "type": "btn",
             "name": "lifeguardGuy",
@@ -149,7 +149,7 @@ room726.chatcatch = function (callback) {
             nav.modbutton("lifeguardGirl", "726_dance/lifeguardGirl3.png", null, null);
             break;
         case "killcindy":
-            g.setDaily("cindy");
+            daily.set("cindy");
             nav.killbutton("lifeguardGirl");
             break;
         case "tim2":
@@ -210,12 +210,12 @@ room726.chatcatch = function (callback) {
             }, 726);
             break;
         case "tim3_5":
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.killall();
             nav.bg("726_dance/tim3_5.jpg");
             break;
         case "tim3_6":
-            g.mod("arousal", 20);
+            gv.mod("arousal", 20);
             nav.killall();
             nav.bg("726_dance/tim3_6.jpg");
             break;
@@ -241,7 +241,7 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_11.jpg");
             break;
         case "tim3_12":
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.bg("726_dance/tim3_12.jpg");
             break;
         case "tim3_13":
@@ -254,10 +254,10 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "tim3_16":
-            g.mod("giveOralMale", 1);
-            g.mod("giveAnalMale", 1);
-            g.mod("creamPied", 1);
-            g.setDaily("tim");
+            gv.mod("giveOralMale", 1);
+            gv.mod("giveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            daily.set("tim");
             sc.setstep("tim", 3);
             char.addtime(72);
             char.room(726);
@@ -280,10 +280,10 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "t5":
-            g.mod("giveOralMale", 1);
-            g.mod("giveAnalMale", 1);
-            g.mod("creamPied", 1);
-            g.setDaily("tim");
+            gv.mod("giveOralMale", 1);
+            gv.mod("giveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            daily.set("tim");
             char.addtime(72);
             char.room(726);
             break;
@@ -304,8 +304,8 @@ room726.chatcatch = function (callback) {
             nav.bg("727_bathroom/girl7.jpg");
             break;
         case "c5":
-            g.mod("fuckPussy", 1);
-            g.setDaily("cindy");
+            gv.mod("fuckPussy", 1);
+            daily.set("cindy");
             char.addtime(60);
             char.room(727);
             break;

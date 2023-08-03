@@ -30,7 +30,7 @@ room19.main = function () {
     }, 19);
 
 
-    if (g.getDaily("buttholeplay"))
+    if (daily.get("buttholeplay"))
         chat(7, 19);
     else if (lubeLevel === 0)
         chat(0, 19);
@@ -59,7 +59,7 @@ room19.btnclick = function (name) {
                         chat(3, 19);
                     else {
                         cl.c.butthole += .15;
-                        g.mod("fingerbutt", 1);
+                        gv.mod("fingerbutt", 1);
                         chat(4, 19);
                     }
                 }, 2000);
@@ -124,7 +124,7 @@ room19.btnclick = function (name) {
             }, 19);
 
             g.roomTimeout = setTimeout(function () {
-                g.mod("dildobutt", 1);
+                gv.mod("dildobutt", 1);
                 cl.stretchButt(g.internal, null);
                 chat(9, 19);
             }, 2500);
@@ -300,7 +300,7 @@ room19.chatcatch = function (callback) {
             break;
         case "Stop":
             cl.display();
-            g.setDaily("buttholeplay");
+            daily.set("buttholeplay");
             $('.room-left').show();
             char.room(g.pass);
             break;

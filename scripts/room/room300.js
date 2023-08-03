@@ -128,7 +128,7 @@ room300.btnclick = function (name) {
             break;
         case "door":
             var envystep = sc.getstep("envy");
-            if (g.getDaily("envy")) {
+            if (daily.get("envy")) {
                 chat(2, 300);
             }
             else if (g.isNight()) {
@@ -195,13 +195,13 @@ room300.chatcatch = function (callback) {
             break;
         case "fightend":
             sc.setstep("envy", 1);
-            g.setDaily("envy");
+            daily.set("envy");
             char.addtime(30);
             char.room(300);
             break;
         case "firstMeetEnd":
             sc.setstep("envy", 2);
-            g.setDaily("envy");
+            daily.set("envy");
             char.addtime(60);
             char.room(300);
             break;

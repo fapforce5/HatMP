@@ -6,7 +6,7 @@ room28.main = function () {
 
     missy.daily();
     var i;
-    var hormoneLevel, thisTinyPP, fitnesslevel;
+    var hormoneLevel, thisTinyPP;
     if (g.pass === 502)
         nav.bg("502_bedroom/sleepZoey.jpg");
     else if (g.pass === 13)
@@ -21,102 +21,92 @@ room28.main = function () {
 
     g.newday();
     cl.hairgrowth();
-    var maxE = g.get("maxenergy");
+    var maxE = gv.get("maxenergy");
     var thisautohormone, hix, tix;
-    var sissyTrans = g.get("oncase");
+    var sissyTrans = gv.get("oncase");
     var arousal, energyIndex;
     var message;
     var buttholePlay;
     var milkLevel;
-    for (i = 0; i < g.st.length; i++) {
-        switch (g.st[i].n) {
-            case "fitness":
-                if (g.st[i].t > 97) {
-                    g.st[i].t = 0;
-                    g.mod("fitnessLevel", 1);
-                    g.mod("maxenergy", 3);
-                    g.popUpNotice("Your fitness level increased");
-                }
-                break;
-            case "fitnessLevel":
-                fitnesslevel = g.st[i].t;
-                break;
+    for (i = 0; i < gv.st.length; i++) {
+        switch (gv.st[i].n) {
             case "leg":
-                if (g.st[i].t > 97) {
-                    g.st[i].t = 0;
-                    g.mod("legLevel", 1);
+                if (gv.st[i].t > 97) {
+                    gv.st[i].t = 0;
+                    gv.mod("legLevel", 1);
                     g.popUpNotice("Your kick is stronger");
                 }
                 break;
             case "body":
-                if (g.st[i].t > 97) {
-                    g.st[i].t = 0;
-                    g.mod("bodyLevel", 1);
+                if (gv.st[i].t > 97) {
+                    gv.st[i].t = 0;
+                    gv.mod("bodyLevel", 1);
                     g.popUpNotice("Your punch is stronger");
                 }
                 break;
             case "d":
-                if (g.st[i].t > 97) {
-                    g.st[i].t = 0;
-                    g.mod("dLevel", 1);
+                if (gv.st[i].t > 97) {
+                    gv.st[i].t = 0;
+                    gv.mod("dLevel", 1);
                     g.popUpNotice("Your defense has increased");
                 }
                 break;
             case "jobConstWorkToday":
-                g.st[i].t = 0;
+                gv.st[i].t = 0;
                 break;
             case "energy":
                 energyIndex = i;
-                //g.st[i].t = Math.floor(maxE * .75);
+                //gv.st[i].t = Math.floor(maxE * .75);
                 break;
             case "arousal":
-                arousal = g.st[i].t;
+                arousal = gv.st[i].t;
                 break;
             case "hormone":
                 hix = i;
-                hormoneLevel = g.st[i].t;
-                if (g.st[i].t > 15)
-                    g.st[i].t -= 2;
+                hormoneLevel = gv.st[i].t;
+                if (gv.st[i].t > 15)
+                    gv.st[i].t -= 2;
                 break;
             case "shinkCock":
                 if (cl.c.cock < 4) {
-                    thisTinyPP = g.st[i].t;
-                    g.st[i].t = false;
+                    thisTinyPP = gv.st[i].t;
+                    gv.st[i].t = false;
                 }
                 break;
             case "autohormone":
-                thisautohormone = g.st[i].t;
+                thisautohormone = gv.st[i].t;
                 break;
             case "tookHormonePill":
                 tix = i;
                 break;
             case "pill":
-                if (g.st[i].t !== null) {
-                    g.st[i].t = null;
+                if (gv.st[i].t !== null) {
+                    gv.st[i].t = null;
                 }
                 break;
             case "buttholePlay":
-                buttholePlay = g.st[i].t;
+                buttholePlay = gv.st[i].t;
                 break;
             case "milk":
-                milkLevel = g.st[i].t;
+                milkLevel = gv.st[i].t;
                 break;
         }
     }
+    
     cl.c.butthole -= .05;
     if (cl.c.butthole < 0)
         cl.c.butthole = 0;
     //energy as propotion to horny
     if (arousal > 97) {
-        g.st[energyIndex].t = maxE * .5;
+        gv.st[energyIndex].t = maxE * .5;
         message = "You're so horny you didn't recover much energy. ";
     }
     else if (arousal > 50) {
-        g.st[energyIndex].t = maxE * .75;
+        gv.st[energyIndex].t = maxE * .75;
         message = "You're starting to get horny and are a little restless.";
     }
     else {
-        g.st[energyIndex].t = maxE;
+        gv.st[energyIndex].t = maxE;
         message = "You got a good night's sleep. ";
     }
     g.popUpNotice(message);
@@ -147,7 +137,7 @@ room28.main = function () {
         else if (milkLevel < 0)
             milkLevel = 0;
 
-        g.set("milk", milkLevel);
+        gv.set("milk", milkLevel);
         cl.display();
     }
 
@@ -160,22 +150,25 @@ room28.main = function () {
                     inv.master[hx].entry = false;
                     inv.master[hx].count = 0;
                 }
-                g.st[hix].t += 30;
-                if (g.st[hix].t > 100)
-                    g.st[hix].t = 100;
-                g.st[tix].t = true;
+                gv.st[hix].t += 30;
+                if (gv.st[hix].t > 100)
+                    gv.st[hix].t = 100;
+                gv.st[tix].t = true;
                 g.popUpNotice("Took your hormone pill" + (inv.master[hx].entry ? "" : " - Out of pills"));
             }
         }
     }
 
+    for (i = 0; i < daily.st.length; i++)
+        daily.st[i].t = false;
+
     //check Transformation
-    if (cl.c.chest === 0 && fitnesslevel > 0) {
+    if (cl.c.chest === 0 && levels.st[12].l > 0) {
         chat(0, 28);
     }
     else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp") {
         var thisImg = "";
-        g.set("oncase", null);
+        gv.set("oncase", null);
         switch (sissyTrans) {
             case "bigboobs":
                 cl.c.chest++;
@@ -425,11 +418,11 @@ room28.btnclick = function (name) {
             xleft = 1634 * g.ratio;
             xwidth = 271 * g.ratio;
             tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Money</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Trade 100 Sissy Points for $100</div>';
-            if (g.get("sissy") > 100) {
+            if (gv.get("sissy") > 100) {
                 alert('killme');
             }
             else
-                tText += '<div style="color: #ffffff; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">Not enough points</div>You only have ' + g.get('sissy') + ' sissy points</div>';
+                tText += '<div style="color: #ffffff; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">Not enough points</div>You only have ' + gv.get('sissy') + ' sissy points</div>';
             xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
             $('#room-buttons').append(xline);
             break;
@@ -447,28 +440,28 @@ room28.btnclick = function (name) {
                 if (g.internal < 6) {
                     id = g.internal + 1;
                     nav.killall();
-                    g.set("pill", "boob");
+                    gv.set("pill", "boob");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1000, 28);
                 }
                 else if (g.internal < 11) {
                     id = g.internal - 5;
                     nav.killall();
-                    g.set("pill", "leg");
+                    gv.set("pill", "leg");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1001, 28);
                 }
                 else if (g.internal < 16) {
                     id = g.internal - 10;
                     nav.killall();
-                    g.set("pill", "cock");
+                    gv.set("pill", "cock");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1002, 28);
                 }
                 else if (g.internal === 19 || g.internal === 20) {
                     id = g.internal - 18;
                     nav.killall();
-                    g.set("pill", "lip");
+                    gv.set("pill", "lip");
                     nav.bg("28_transformation/pill.jpg");
                     chat(1003, 28);
                 }
@@ -524,7 +517,7 @@ room28.chatcatch = function (callback) {
             }, 6000);
             break;
         case "endPills":
-            g.mod("energy", -100);
+            gv.mod("energy", -100);
             scc.love("missy", 5);
             char.addtime(220);
             char.room(203);

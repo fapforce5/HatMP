@@ -13,7 +13,7 @@ room527.btnclick = function (name) {
             nav.bg("527_bathroom/s" + g.internal + ".jpg");
             g.internal++;
             if (g.internal === 5) {
-                g.mod("pissedonMale", 1);
+                gv.mod("pissedonMale", 1);
                 nav.killbutton("s");
                 chat(5, 527);
             }
@@ -123,7 +123,7 @@ room527.chatcatch = function (callback) {
             break;
         case "z3":
             scc.love("zoey", 5, 100); 
-            g.mod("pissedonFemale", 1);
+            gv.mod("pissedonFemale", 1);
             nav.bg("527_bathroom/z3.jpg");
             break;
         default:

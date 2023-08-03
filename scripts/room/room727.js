@@ -37,7 +37,7 @@ room727.main = function () {
             "height": 1016,
             "image": "727_bathroom/stall.png"
         }, 727);
-        g.setDaily("cindy");
+        daily.set("cindy");
         chat(9, 727);
         nav.buildnav([725, 726, 0]);
     }
@@ -108,7 +108,7 @@ room727.btnclick = function (name) {
         case "supriseSex":
             nav.killall();
             nav.bg("727_bathroom/girl1.jpg");
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             g.roomTimeout = setTimeout(function () { chat(10, 727); }, 2000);
             break;
         default:
@@ -183,8 +183,8 @@ room727.chatcatch = function (callback) {
 
             break;
         case "tim2end":
-            g.mod("giveOralMale", 1);
-            g.setDaily("tim");
+            gv.mod("giveOralMale", 1);
+            daily.set("tim");
             sc.setstep("tim", 2);
             char.addtime(60);
             char.room(727);
@@ -227,8 +227,8 @@ room727.chatcatch = function (callback) {
             cl.changeClothing();
             cl.display();
             g.pass = g.internal = null;
-            g.mod("fuckPussy", 1);
-            g.setDaily("cindy");
+            gv.mod("fuckPussy", 1);
+            daily.set("cindy");
             char.addtime(60);
             sc.setstep("cindy", 3);
             char.room(727);
@@ -237,7 +237,7 @@ room727.chatcatch = function (callback) {
             cl.changeClothing();
             cl.display();
             g.pass = g.internal = null;
-            g.setDaily("cindy");
+            daily.set("cindy");
             char.addtime(60);
             char.room(727);
             break;

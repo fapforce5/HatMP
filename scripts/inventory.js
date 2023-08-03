@@ -362,7 +362,7 @@ inv.display = function () {
                 $("#menu_displayAction").attr("data-type", thisItem.type);
                 $("#menu_displayAction").attr("data-name", thisItem.name);
                 $("#menu_displayAction").html("Snack Attack");
-                $("#menu_displayDesc").append(" - Max Energy: " + g.get("maxenergy"));
+                $("#menu_displayDesc").append(" - Max Energy: " + gv.get("maxenergy"));
                 $("#menu_displayAction").show();
                 break;
             case "p"://phone case
@@ -380,7 +380,7 @@ inv.display = function () {
                 $("#menu_displayAction").show();
                 break;
             case "h":
-                var xh = g.get("autohormone");
+                var xh = gv.get("autohormone");
 
                 if (xh) {
                     $("#menu_displayAction").attr("data-itype", "bag");
@@ -389,7 +389,7 @@ inv.display = function () {
                     $("#menu_displayAction").html("Stop Auto Taking Pill");
                     $("#menu_displayAction").show();
                 }
-                else if (!g.getDaily("tookHormonePill")) {
+                else if (!daily.get("tookHormonePill")) {
                     $("#menu_displayAction").attr("data-itype", "bag");
                     $("#menu_displayAction").attr("data-type", thisItem.type);
                     $("#menu_displayAction").attr("data-name", thisItem.name);
@@ -513,7 +513,7 @@ inv.createElements = function () {
     $("#menu_displayUp").click(function () {
         var thisCost = parseInt($('#menu_displayUp').attr("data-price"));
         var thisCount = parseInt($('#menu_displayCount').html()) + 1;
-        var thisCash = g.get("money");
+        var thisCash = gv.get("money");
         if (thisCount * thisCost < thisCash) {
             $("#menu_displayCount").html(thisCount);
             $("#menu_displayAction").html("BUY - $" + thisCount * thisCost);
@@ -545,7 +545,7 @@ inv.createElements = function () {
                 }
                 if (thisInv.count === null) {
                     inv.add(thisName);
-                    g.mod("money", (-1 * thisInv.cost));
+                    gv.mod("money", (-1 * thisInv.cost));
                     $("#menu_displayAction").hide();
                     $('#menu_displayInfo').html("PURCHASED");
                 }
@@ -556,7 +556,7 @@ inv.createElements = function () {
                     var totalMoney = -1 * thisCount * thisInv.cost;
                     inv.master[ti].count += thisCount;
                     inv.master[ti].entry = true;
-                    g.mod("money", totalMoney);
+                    gv.mod("money", totalMoney);
                     $("#menu_displayAction").hide();
                     $("#menu_displayCountLine").hide();
                     $('#menu_displayInfo').html("PURCHASED");
@@ -576,7 +576,7 @@ inv.createElements = function () {
                     $("#menu_displayCountLine").hide();
                 }
                 else {
-                    var thisMoney = g.get("money");
+                    var thisMoney = gv.get("money");
                     if (cl.list[tic].price > thisMoney) {
                         $('#menu_displayInfo').html("Can't Afford");
                         $("#menu_displayAction").hide();
@@ -584,7 +584,7 @@ inv.createElements = function () {
                     }
                     else {
                         cl.list[tic].inv = true;
-                        g.mod("money", -1 * cl.list[tic].price);
+                        gv.mod("money", -1 * cl.list[tic].price);
                         $("#menu_displayAction").hide();
                         $("#menu_displayCountLine").hide();
                         $('#menu_displayInfo').html("PURCHASED");
@@ -607,20 +607,20 @@ inv.createElements = function () {
                         inv.master[eindex].count--;
                         switch (thisName) {
                             case "acia":
-                                g.mod("energy", 15);
+                                gv.mod("energy", 15);
                                 break;
                             case "soda":
-                                g.mod("energy", 50);
-                                g.mod("fitness", -15);
+                                gv.mod("energy", 50);
+                                gv.mod("fitness", -15);
                                 break;
                             case "cumjar":
-                                g.mod("energy", 100);
+                                gv.mod("energy", 100);
                                 break;
                             default:
                                 console.log("UNK energy: " + thisName);
                         }
 
-                        $("#menu_displayInfo").html("Energy: " + g.get("energy"));
+                        $("#menu_displayInfo").html("Energy: " + gv.get("energy"));
                         if (inv.master[eindex].count === 0)
                             $("#menu_displayAction").hide();
                         $("#menu_displayCost").html("Count: " + inv.master[eindex].count);
@@ -637,7 +637,7 @@ inv.createElements = function () {
                     inv.close();
                     break;
                 case "r"://room decoration
-                    g.set("painting", thisName);
+                    gv.set("painting", thisName);
                     if (g.roomID === 52) {
                         if ($('.room-img[data-name="painting"').length > 0)
                             nav.modbutton("painting", "52_myroom/" + thisName + ".png", null, null);
@@ -657,12 +657,12 @@ inv.createElements = function () {
                     inv.close();
                     break;
                 case "h":
-                    var xh = g.get("autohormone");
+                    var xh = gv.get("autohormone");
 
                     if ($("#menu_displayAction").html() === "Take Your Pill") {
-                        g.setDaily("tookHormonePill");
+                        daily.set("tookHormonePill");
                         var myPill = inv.getIndex("hormone");
-                        g.mod("hormone", 30);
+                        gv.mod("hormone", 30);
                         inv.use("hormone");
                         $("#menu_displayCost").html(inv.master[myPill].count === 0 ? "All out, better get more." : "Count: " + inv.master[myPill].count);
                         //$("#menu_displayAction").hide();
@@ -675,11 +675,11 @@ inv.createElements = function () {
                         }
                     }
                     else if ($("#menu_displayAction").text() === "Auto Take PillWhen Hormone < 90") {
-                        g.set("autohormone", true);
+                        gv.set("autohormone", true);
                         $("#menu_displayAction").html("Stop Auto Taking Pill");
                     }
                     else {
-                        g.set("autohormone", false);
+                        gv.set("autohormone", false);
                         $("#menu_displayAction").html("Auto Take Pill<br/>When Hormone < 90");
                     }
 

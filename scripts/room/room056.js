@@ -31,7 +31,7 @@ room56.main = function () {
 room56.btnclick = function (name) {
     switch (name) {
         case "shower":
-            if (g.diffDatesByDays(g.dt, g.get("shower")) === 0)
+            if (g.diffDatesByDays(g.dt, gv.get("shower")) === 0)
                 chat(0, 56);
             else {
                 nav.killall();
@@ -57,7 +57,7 @@ room56.btnclick = function (name) {
 room56.chatcatch = function (callback) {
     switch (callback) {
         case "shaveBody":
-            g.set("bodyhair", 0);
+            cl.c.bodyhair = 0;
             zcl.displayMain(0, 400, .22, "shower", false);
             inv.use("razor");
             char.addtime(15);
@@ -65,9 +65,9 @@ room56.chatcatch = function (callback) {
             break;
         case "finishShowering":
             cl.undo();
-            g.mod("energy", 30);
+            gv.mod("energy", 30);
             char.addtime(30);
-            g.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
+            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
             char.room(56);
             break;
         case "reloadRoom":

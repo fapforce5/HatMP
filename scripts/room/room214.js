@@ -1,7 +1,7 @@
 ﻿//Game Room
 var room214 = {};
 room214.main = function () {
-    if (g.get("energy") < 25) {
+    if (gv.get("energy") < 25) {
         char.room(213)
     }
     else {

@@ -36,18 +36,18 @@ q3.get = function (character) {
 };
 
 q3.isItMe = function (character) {
-    return g.get("quest3") === character;
+    return gv.get("quest3") === character;
 };
 
 q3.activeSearch = function (character) {
-    return g.get("quest3") !== null;
+    return gv.get("quest3") !== null;
 };
 
 q3.eventComplete = function (character) {
-    var qchar = g.get("quest3");
+    var qchar = gv.get("quest3");
     if (qchar === character) {
         g.sissy[49].ach = true;
-        g.set("quest3", null);
+        gv.set("quest3", null);
         char.q3 = true;
         g.popUpNotice("You solved the quest 3");
         g.popUpNotice("Yeah! some more stuff");

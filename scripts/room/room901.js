@@ -215,7 +215,7 @@ room901.btnclick = function (name) {
             char.room(902);
             break;
         case "swimming":
-            if (g.get("energy") < 30) {
+            if (gv.get("energy") < 30) {
                 chat(21, 901);
             }
             else {
@@ -244,7 +244,7 @@ room901.btnclick = function (name) {
             }
             break;
         case "stroke":
-            g.internal += 100 + (g.get("bodyLevel") * 28);
+            g.internal += 100 + (gv.get("bodyLevel") * 28);
             if (g.internal > 1600)
                 g.internal = 1600;
             $('.room-img[data-name="swimman"]').css({ "left": (g.internal * g.ratio) + "px" });
@@ -258,14 +258,14 @@ room901.btnclick = function (name) {
                 }, 500);
                 var xi;
                 for (i = 0; i < g.st.length; i++) {
-                    if (g.st[i].n === "energy") {
+                    if (gv.st[i].n === "energy") {
                         xi = i;
                         i = 9999;
                     }
                 }
-                g.st[xi].t -= 5;
-                if (g.st[xi].t < 1) {
-                    g.st[xi].t = 0;
+                gv.st[xi].t -= 5;
+                if (gv.st[xi].t < 1) {
+                    gv.st[xi].t = 0;
                     nav.killbutton("stroke");
                     chat(20, 901);
                 }
@@ -273,7 +273,7 @@ room901.btnclick = function (name) {
             break;
         case "stroke_r":
             var girlAhead;
-            g.internal.m += 100 + (g.get("bodyLevel") * 28);
+            g.internal.m += 100 + (gv.get("bodyLevel") * 28);
             g.internal.f += 148.017;
             girlAhead = g.internal.f > g.internal.m;
 
@@ -310,14 +310,14 @@ room901.btnclick = function (name) {
                 }, 500);
                 var yi;
                 for (i = 0; i < g.st.length; i++) {
-                    if (g.st[i].n === "energy") {
+                    if (gv.st[i].n === "energy") {
                         yi = i;
                         i = 9999;
                     }
                 }
-                g.st[yi].t -= 8;
-                if (g.st[yi].t < 1) {
-                    g.st[yi].t = 0;
+                gv.st[yi].t -= 8;
+                if (gv.st[yi].t < 1) {
+                    gv.st[yi].t = 0;
                     nav.killbutton("stroke");
                     chat(23, 901);
                 }
@@ -361,13 +361,13 @@ room901.chatcatch = function (callback) {
             break;
         case "swimbadend":
             var badFitness = Math.round(g.internal / 200);
-            g.mod("fitness", badFitness);
-            g.mod("body", badFitness * 2);
+            gv.mod("fitness", badFitness);
+            gv.mod("body", badFitness * 2);
             char.room(901);
             break;
         case "swimgoodend":
-            g.mod("fitness", 30);
-            g.mod("body", 45);
+            gv.mod("fitness", 30);
+            gv.mod("body", 45);
             char.room(901);
             break;
         case "swimfan":
