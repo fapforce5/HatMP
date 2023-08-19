@@ -11,8 +11,9 @@ sc.char = [
     { name: "janice", display: "Janice", image: "janice.png", step: 0, max: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2, p: true, q3: null },
-    { name: "p", display: "Princess", image: "princess.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
-    { name: "black", display: "Ms. Black", image: "black.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
+    { name: "p", display: "Princess Pink", image: "princess.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
+    { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: true, q3: null },
+    { name: "black", display: "Ms. Black", image: "black.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: false, setName: true, phone: 0, p: true, q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
@@ -198,11 +199,13 @@ sc.events = [
     { name: "tiffany", step: -3, txt: "Be a little bitch", img: "tifNoFuck", show: true, row: 0, col: 2, ach: false, major: false, m: [] },
     { name: "tiffany", step: -2, txt: "Cum Inside", img: "tifCumInside", show: true, row: 1, col: 2, ach: false, major: false, m: [] },
     { name: "tiffany", step: -1, txt: "Cum Back", img: "tifCumBack", show: true, row: -1, col: 2, ach: false, major: false, m: [] },
+    //{ name: "tiffany", step: -1, txt: "First day of case", img: "tifCumBack", show: true, row: -1, col: 2, ach: false, major: false, m: [] },
+
     { name: "tiffany", step: 0, txt: "You can see her at the toy store, but you will need to wait for the case given my Missy to progress with her.", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [650] },
-    { name: "tiffany", step: 1, txt: "Investigate Cum Caper at The Toy Store.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    { name: "tiffany", step: 2, txt: "Continue to work at The Toy Store.", img: "cum", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
-    { name: "tiffany", step: 3, txt: "Go back to The Toy Store and continue working.", img: "dildo", show: false, row: 1, col: 1, ach: false, major: true, m: [650] },
-    { name: "tiffany", step: 4, txt: "Continue the investiagion...", img: "nap", show: false, row: -1, col: 1, ach: false, major: true, m: [650] },
+    //{ name: "tiffany", step: 1, txt: "Investigate Cum Caper at The Toy Store.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
+    //{ name: "tiffany", step: 2, txt: "Continue to work at The Toy Store.", img: "cum", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
+    //{ name: "tiffany", step: 3, txt: "Go back to The Toy Store and continue working.", img: "dildo", show: false, row: 1, col: 1, ach: false, major: true, m: [650] },
+    //{ name: "tiffany", step: 4, txt: "Continue the investiagion...", img: "nap", show: false, row: -1, col: 1, ach: false, major: true, m: [650] },
     { name: "tiffany", step: 5, txt: "You'll need to do the crossdressing event at Missy's Sissy School to continue with her", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [400] },
     { name: "tiffany", step: 6, txt: "Visit Tiffany's home for the first time", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
     { name: "tiffany", step: 10, txt: "UNK", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
@@ -1373,6 +1376,10 @@ sc.trivial = function (charname) {
         case "!constworker0":
             name = "Tits McGee";
             image = "constWorker0.png";
+            break;
+        case "!sanaria":
+            name = "Sanaria";
+            image = "sanaria.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

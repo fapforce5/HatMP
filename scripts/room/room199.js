@@ -1,29 +1,39 @@
 ﻿//Room name
 var room199 = {};
 room199.main = function () {
-    
-    if (cl.c.chest === 0) {
-        g.internal = cl.hasoutfit("workout");
-        if (g.internal === null) {
-            nav.bg("199_workout/workout0.jpg");
-            zcl.displayMain(0, 800, .25, "clothes", true);
-            g.internal = 0;
-            if (missy.st[17].c === 0)
-                chat(2, 199);
-            else
-                chat(999999, 199);
-            
-        }
-        else if (cl.hasClothing("pants", "b") && cl.hasClothing("shoes", "br") && cl.hasClothing("socks", "w"))
-            chat(999, 199);
-        else {
-            cl.add("shirt", "w");
-            cl.add("pants", "b");
-            cl.add("shoes", "br");
-            cl.add("socks", "w");
-            chat(0, 199);
-        }
+    if (cl.hasoutfit("workout") === null) {
+        nav.bg("199_workout/workout0.jpg");
+        zcl.displayMain(0, 800, .25, "clothes", true);
+        chat(2, 199);
     }
+    else if (cl.c.chest === 0) {
+        chat(0, 199);
+    }
+    else {
+        chat(1, 199);
+    }
+    //if (cl.c.chest === 0) {
+    //    g.internal = cl.hasoutfit("workout");
+    //    if (g.internal === null) {
+    //        nav.bg("199_workout/workout0.jpg");
+    //        zcl.displayMain(0, 800, .25, "clothes", true);
+    //        g.internal = 0;
+    //        //if (missy.st[17].c === 0)
+    //            chat(2, 199);
+    //        //else
+    //          //  chat(999999, 199);
+            
+    //    }
+    //    else if (cl.hasClothing("pants", "b") && cl.hasClothing("shoes", "br") && cl.hasClothing("socks", "w"))
+    //        chat(999, 199);
+    //    else {
+    //        cl.add("shirt", "w");
+    //        cl.add("pants", "b");
+    //        cl.add("shoes", "br");
+    //        cl.add("socks", "w");
+    //        chat(0, 199);
+    //    }
+    //}
     //var btnList = [
     //    {
     //        "type": "btn",
@@ -61,7 +71,7 @@ room199.chatcatch = function (callback) {
            
             break;
         case "dislike":
-            missy.mod(0, -5);
+            missy.mod("mood", -5);
             break;
         case "first":
             if (gv.get("energy") < 15) {
@@ -103,12 +113,20 @@ room199.chatcatch = function (callback) {
             break;
         case "checkReps":
             if (g.internal > 4) {
-                missy.mod(0, 5);
+                missy.mod("mood", 5);
                 chat(9, 199);
+            }
+            else {
+                chat(10, 199);
             }
             break;
         case "end":
             char.settime(17, 17);
+            char.room(0);
+            break;
+        case "badend":
+            missy.mod("mood", -20);
+            char.addtime(30);
             char.room(0);
             break;
         default:
@@ -132,8 +150,7 @@ room199.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "missy",
-                text: "You're still fat. Training will not start until you're in shape. I'm going to give you some " +
-                    "work out clothes. Go change and come back. ",
+                text: "You're still fat. Training will not start until you're in shape. Go change and come back. ",
                 button: [
                     { chatID: 1, text: "Do I change in front of you? ", callback: "" }
                 ]
@@ -143,7 +160,8 @@ room199.chat = function (chatID) {
                 speaker: "missy",
                 text: "No! Go into the bathroom to change. Get going. ",
                 button: [
-                    { chatID: -1, text: "Yes ma'am", callback: "change" }
+                    { chatID: -1, text: "Yes ma'am", callback: "change" },
+                    { chatID: 11, text: "I don't have workout clothes", callback: "" }
                 ]
             },
             {
@@ -151,14 +169,14 @@ room199.chat = function (chatID) {
                 speaker: "missy",
                 text: "That will work. ",
                 button: [
-                    { chatID: 3, text: "So are we going for a run? ", callback: "dislike" },
-                    { chatID: 3, text: "So are we going for a run ma'am? ", callback: "" }
+                    { chatID: 3, text: "I'm ready to workout. ", callback: "dislike" },
+                    { chatID: 3, text: "I'm ready to workout ma'am? ", callback: "" }
                 ]
             },
             {
                 chatID: 3,
                 speaker: "missy",
-                text: "I will be when we're though, but you'll be working out under my direct supervision. " +
+                text: "You'll be working out under my direct supervision. " +
                     "Since you clearly don't have the willpower to work out on your own, I'll make sure it gets done. " +
                     "I can't train you if you aren't in tip top shape. ",
                 button: [
@@ -218,11 +236,19 @@ room199.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 9,
+                chatID: 10,
                 speaker: "missy",
                 text: "You didn't do that many reps. You need to get in better shape. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "end" },
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "missy",
+                text: "Well you better get some and get that flab toned up. Get out now! ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "badend" },
                 ]
             },
         ];

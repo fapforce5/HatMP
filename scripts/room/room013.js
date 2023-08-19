@@ -191,10 +191,12 @@ room13.btnclick = function (name) {
             char.room(13);
             break;
         case "panties":
-            if (sc.checkevent("me", -2))
+            if (levels.get("xdress").l < 1) {
+                levels.mod("xdress", 20, 1);
+            }
+            else {
                 chat(6, 13);
-            else
-                chat(5, 13);
+            }
             break;
         case "dresser":
             if (gv.get("lockdrawer"))
@@ -742,6 +744,7 @@ room13.chatcatch = function (callback) {
             char.addtime(30);
             break;
         case 'takePanties':
+            levels.mod("xdress", 50, 2);
             cl.list[cl.where("panties", "w")].inv = true;
             break;
         case "killPantyIcon":

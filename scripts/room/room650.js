@@ -49,8 +49,28 @@ room650.main = function () {
 room650.btnclick = function (name) {
     switch (name) {
         case "tiffany":
+            var activeCase = missy.get("activeCase");
             var tstep = sc.getstep("tiffany");
-            if (sc.checkevent("tiffany", -8)){
+
+            if (activeCase === 4 && missy.get("activeCaseComplete") === 0) {
+                if (missy.get("reusableCaseCounter") === 0) {
+                    nav.killbutton("tiffany");
+                    nav.button({
+                        "type": "btn",
+                        "name": "tiffany",
+                        "left": 538,
+                        "top": 51,
+                        "width": 460,
+                        "height": 1029,
+                        "image": "650_toyStore/650_tiffanyGreet1.png"
+                    }, 650);
+                    chat(0, 650);
+                }
+                else {
+                    chat(2, 650);
+                }
+            }
+            else if (sc.checkevent("tiffany", -8)) {
                 chat(8, 650);
             }
             else if (gv.get("oncase") === "shopping") {
@@ -68,19 +88,6 @@ room650.btnclick = function (name) {
                     "image": "650_toyStore/650_tiffanyGreet1.png"
                 }, 650);
                 chat(4, 650);
-            }
-            else if (tstep === 1) {
-                nav.killbutton("tiffany");
-                nav.button({
-                    "type": "btn",
-                    "name": "tiffany",
-                    "left": 538,
-                    "top": 51,
-                    "width": 460,
-                    "height": 1029,
-                    "image": "650_toyStore/650_tiffanyGreet1.png"
-                }, 650);
-                chat(0, 650);
             }
             else if (tstep === 3 || tstep === 4) {
                 chat(2, 650);  
@@ -332,8 +339,9 @@ room650.chat = function (chatID) {
             speaker: "tiffany",
             text: "Hey cutie, can I help you?",
             button: [
-                { chatID: -1, text: "No, just looking around", callback: "" },
-                { chatID: 1, text: "Yes, I'm " + sc.n("me") + " with " + sc.n("missy") + "'s Detective. ", callback: "" }
+                
+                { chatID: 1, text: "Yes, I'm " + sc.n("me") + " with Missy's Detective. ", callback: "" },
+                { chatID: -1, text: "No, just looking around", callback: "" }
             ]
         },
         {
@@ -462,7 +470,7 @@ room650.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "charlie",
-            text: "Oh, the whores? They work during the week during the day. Even whores needs a break. ",
+            text: "Oh, the whores? They only work Monday thru Friday starting at 9:00. Even whores needs a break. ",
             button: [
                 { chatID: -1, text: "oh, odd. ok", callback: "" }
             ]

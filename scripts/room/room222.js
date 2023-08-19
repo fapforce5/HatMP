@@ -1,14 +1,22 @@
 ﻿//Room name
 var room222 = {};
 room222.main = function () {
-    switch (missy.st[8].c) {
-        case 0:
-            missy.st[8] = 1;
-            chat(0, 222);
-            break;
-        default:
-            chat(11, 222);
-            break;
+    if (levels.get("xdress").l < 2) {
+        chat(14, 222);
+    }
+    else {
+        var errand = Math.floor(Math.random() * 3);
+        switch (errand) {
+            case 0:
+                chat(0, 222);
+                break;
+            case 1:
+                chat(14, 222);
+                break;
+            default:
+                chat(11, 222);
+                break;
+        }
     }
 };
 
@@ -22,6 +30,17 @@ room222.btnclick = function (name) {
         case "case-default1":
             nav.killall();
             nav.bg("222_errands/case-default1.jpg");
+            break;
+        case "laudry-panties":
+            nav.killall();
+            nav.bg("222_errands/laundry1-panties.jpg");
+            levels.mod("xdress", 20, 2);
+            chat(17, 222);
+            break;
+        case "laudry-coin":
+            nav.killall();
+            nav.bg("222_errands/laundry2.jpg");
+            chat(19, 222);
             break;
         default:
             break;
@@ -48,17 +67,17 @@ room222.chatcatch = function (callback) {
             break;
         case "case0-end":
             levels.mod("pi", 20, 999); 
-            char.room(224);
+            room222.chatcatch("lunch");
             break;
         case "displayMissy":
             nav.bg("200_frontOffice/bg.jpg");
             break;
         case "lunch":
-            missy.mod(8, 1);
-            missy.mod(31, 1);
+            missy.didJob(4, 1, null);
             char.room(224);
             break;
         case "punishLunch":
+            missy.didJob(4, .5, null);
             levels.mod("pi", -10, 999); //pi skillz
             g.pass = "punish";
             char.room(224);
@@ -75,6 +94,34 @@ room222.chatcatch = function (callback) {
                 "height": p.height,
                 "image": p.img
             }, 222);
+            break;
+        case "laundry0":
+            nav.bg("222_errands/laundry0.jpg");
+            break;
+        case "laundry1":
+            nav.bg("222_errands/laundry1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "laudry-coin",
+                "left": 1468,
+                "top": 507,
+                "width": 207,
+                "height": 245,
+                "image": "222_errands/coin.png"
+            }, 222);
+            nav.button({
+                "type": "btn",
+                "name": "laudry-panties",
+                "left": 757,
+                "top": 737,
+                "width": 268,
+                "height": 119,
+                "image": "222_errands/panties.png"
+            }, 222);
+            break;
+        case "laundry2":
+            nav.killall();
+            nav.bg("222_errands/laundry2.jpg");
             break;
         default:
             break;
@@ -145,7 +192,7 @@ room222.chat = function (chatID) {
                 "long list of runaways in the area. I'm pretty sure they are feigning incompetence " +
                 "to hide their corruption. You may go to lunch. ",
             button: [
-                { chatID: 6, text: "Yes ma'am", callback: "case0-end" },
+                { chatID: -1, text: "Yes ma'am", callback: "case0-end" },
             ]
         },
         {
@@ -206,6 +253,65 @@ room222.chat = function (chatID) {
             chatID: 13,
             speaker: "missy",
             text: "good work. go to lunch",
+            button: [
+                { chatID: -1, text: "...", callback: "lunch" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "missy",
+            text: "I'm so glad you've decided to run errands today. I desperately need my laundry done. ",
+            button: [
+                { chatID: 15, text: "Laundry ma'am?", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "missy",
+            text: "Yes. Just take it to the local laundromat. Hurry along, it should only take a couple hours.  ",
+            button: [
+                { chatID: 16, text: "Yes ma'am?", callback: "laundry0" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "What crap. I have to spend the entire morning in this dirty hot ass laudromat washing her dirty " +
+                "clothes while she sits in her nice office. The pay isn't even that good. ",
+            button: [
+                { chatID: -1, text: "...", callback: "laundry1" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "Oh wow! Missy's panties. They are so soft and delicate, and the smell is so wonderful, " +
+                "like a mix of passionate sex and spring flowers. I am in the presence of the most perfect " +
+                "dirty panties. ",
+            button: [
+                { chatID: 18, text: "Hmmm", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "I should put these back. Don't want to get get caught stealing panties.  ",
+            button: [
+                { chatID: 19, text: "...", callback: "laundry2" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "thinking",
+            text: "So fucking boring. Missy should buy a washing machine so she can do her own laudry at her own home. ",
+            button: [
+                { chatID: 20, text: "...", callback: "laundry3" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "thinking",
+            text: "Finally fuckin' done. I'm going to take these back to Missy and grab lunch. ",
             button: [
                 { chatID: -1, text: "...", callback: "lunch" },
             ]

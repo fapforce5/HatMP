@@ -374,7 +374,7 @@ char.makeWalk = function () {
         $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
         $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="oncase">' +
             '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
-            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">Active Case</div>' +
+            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">What Do I Do?</div>' +
             '</div>');
         $.each(sc.char, function (i, v) {
             if (v.show) {
@@ -391,7 +391,7 @@ char.makeWalk = function () {
     }
     else {
         if (g.walk === "oncase") {
-            var oncase = gv.get("oncase");
+            //var oncase = gv.get("oncase");
             var oncaseText = '';
             $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
             $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
@@ -402,63 +402,65 @@ char.makeWalk = function () {
                 '</div>' +
                 '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
 
-            switch (oncase) {
-                case "smolpp":
-                case "bigboobs":
-                case "bigass":
-                case "dslLips":
-                    oncaseText = "Go home and sleep to transition. ";
-                    break;
-                case "cult0":
-                    oncaseText = "Get information on the cult. ";
-                    break;
-                case "redroom":
-                    oncaseText = "Take the elevator up to the Red Room and pass the tests. ";
-                    break;
-                case "gloryholebj":
-                    oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
-                        "at the park. ";
-                    break;
-                case "gloryholeanal":
-                    oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
-                        "at the park. ";
-                    break;
-                case "shopping":
-                    oncaseText = "Visit Tiffany at The Toy Store for your shopping trip!";
-                    break;
-                case "clothes0":
-                case "clothes1":
-                case "clothes2":
-                case "clothes3":
-                    oncaseText = "Visit Mr. Jones at his Mansion north east of the suburbs. Follow his instructions. ";
-                    break;
-                case "dinerfail":
-                case "dinersuccess":
-                    oncaseText = "Report your investigation to Missy in her office. ";
-                    break;
-                case "diner":
-                    oncaseText = "Report to the Naked Beaver diner and try to figure out which waitress has been " +
-                        "stealing from Jeffery. ";
-                    break;
-                case "sewer":
-                    oncaseText = "First visit Gertrude in the gym to get the crowbar.</li>" +
-                        "<li>Use that crowbar to enter the sewer on the street next to the dance club</li>" +
-                        "<li>Fight your way through the clown clan to the very last room to get Missy's Red Box.</li>" +
-                        "<li>Once you get the Red Box Return to Missy's office.";
-                    break;
-                case "queen":
-                    oncaseText = "Sneak into the Forest Queen's cottage at night. To get there take the paths behind the " +
-                        "park bathroom and find her cottage. "
-                    break;
-                default:
-                    break;
-            }
+            oncaseText = missy.activecase().txt;
+            
+            //switch (oncase) {
+            //    case "smolpp":
+            //    case "bigboobs":
+            //    case "bigass":
+            //    case "dslLips":
+            //        oncaseText = "Go home and sleep to transition. ";
+            //        break;
+            //    case "cult0":
+            //        oncaseText = "Get information on the cult. ";
+            //        break;
+            //    case "redroom":
+            //        oncaseText = "Take the elevator up to the Red Room and pass the tests. ";
+            //        break;
+            //    case "gloryholebj":
+            //        oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
+            //            "at the park. ";
+            //        break;
+            //    case "gloryholeanal":
+            //        oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
+            //            "at the park. ";
+            //        break;
+            //    case "shopping":
+            //        oncaseText = "Visit Tiffany at The Toy Store for your shopping trip!";
+            //        break;
+            //    case "clothes0":
+            //    case "clothes1":
+            //    case "clothes2":
+            //    case "clothes3":
+            //        oncaseText = "Visit Mr. Jones at his Mansion north east of the suburbs. Follow his instructions. ";
+            //        break;
+            //    case "dinerfail":
+            //    case "dinersuccess":
+            //        oncaseText = "Report your investigation to Missy in her office. ";
+            //        break;
+            //    case "diner":
+            //        oncaseText = "Report to the Naked Beaver diner and try to figure out which waitress has been " +
+            //            "stealing from Jeffery. ";
+            //        break;
+            //    case "sewer":
+            //        oncaseText = "First visit Gertrude in the gym to get the crowbar.</li>" +
+            //            "<li>Use that crowbar to enter the sewer on the street next to the dance club</li>" +
+            //            "<li>Fight your way through the clown clan to the very last room to get Missy's Red Box.</li>" +
+            //            "<li>Once you get the Red Box Return to Missy's office.";
+            //        break;
+            //    case "queen":
+            //        oncaseText = "Sneak into the Forest Queen's cottage at night. To get there take the paths behind the " +
+            //            "park bathroom and find her cottage. "
+            //        break;
+            //    default:
+            //        break;
+            //}
             $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
                 '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
                 oncaseText + '</li></ul>');
             if (g.roomID === 0) {
                 room0.main();
-                $("#room_left_walk").show();
+                //$("#room_left_walk").show();
             }
             $(".char-walkthrough-return").click(function () {
                 g.walk = null;
@@ -1249,7 +1251,8 @@ menu.makeSaves = function () {
         sc: sc.save(),
         scc: scc.save(),
         pic: pic.save(),
-        gv: gv.save()
+        gv: gv.save(),
+        missy: missy.save()
     };
 };
 
@@ -1307,7 +1310,8 @@ g.saveState = {
     sc: sc.save(),
     scc: scc.save(),
     pic: pic.save(),
-    gv: gv.save()
+    gv: gv.save(),
+    missy: missy.save()
 };
 menu.load = function (cookieName, btn, saveID) {
     if (g.newLoad) {
@@ -1330,11 +1334,12 @@ menu.load = function (cookieName, btn, saveID) {
     sc.load(tp.sc);
     scc.load(tp.scc);
     gv.load(tp.gv);
+    missy.load(tp.missy);
     try {
         pic.load(tp.pic);
     }
     catch (err) {
-        var thisIsfoobar = 1;
+        console.log(err);
     }
     char.map();
     cl.display();
@@ -1514,11 +1519,12 @@ char.import = function () {
     cl.load(tp.cl);
     sc.load(tp.sc);
     gv.load(tp.gv);
+    missy.load(tp.missy);
     try {
         pic.load(tp.pic);
     }
     catch (err) {
-        var thisIsfoobar = 1;
+        console.log(err);
     }
     cl.display();
     char.room(g.roomID);

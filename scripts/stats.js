@@ -6,6 +6,7 @@ sstat.makeGraph = function () {
     $("#rl_page0").hide();
     $("#rl_page1").hide();
     $("#rl_page2").hide();
+    $("#rl_page3").hide();
 
     switch (g.statpage) {
         case 0:
@@ -15,6 +16,10 @@ sstat.makeGraph = function () {
             sstat.page1();
             break;
         case 2:
+            sstat.page2();
+            break;
+        case 3:
+            sstat.page3();
             break;
     }
 
@@ -480,6 +485,10 @@ sstat.page2 = function () {
         $("#rl_hormone").html(" &nbsp;&nbsp;Feminine");
     else
         $("#rl_hormone").html(" &nbsp;&nbsp;Girly");
+};
+
+sstat.page3 = function () {
+
 };
 
 sstat.init = function () {

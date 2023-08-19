@@ -5,7 +5,7 @@ room203.main = function () {
     var btnList = new Array();
     if (sc.getTimeline("cecilia").thisRoom) {
         g.pass = "203Elevator";
-        navList = [201, 0];
+        navList = [201, 207, 0];
         btnList = [{
             "type": "btn",
             "name": "recep",
@@ -19,7 +19,7 @@ room203.main = function () {
     }
     else {
         nav.bg("206_questions/sideEmpty.jpg");
-        navList = [201, 0];
+        navList = [201, 207, 0];
     }
 
     $.each(btnList, function (i, v) {
@@ -128,54 +128,63 @@ room203.btnclick = function (name) {
             if (g.gethourdecimal > 10) {
                 chat(6, 203);
             }
-            if (misssyStep === 1)
+            if (misssyStep === 1) {
                 chat(1, 203);
-            else if (misssyStep === 2) {
+                missy.set("activeCase", -1);
+            }
+            else if (missy.get("totalDaysWorked") === 0) {
+                missy.set("activeCase", -1);
                 chat(11, 203);
             }
-
+            else if (missy.get("activeCase") > 3 && missy.get("activeCaseComplete") === 0) {
+                chat(998, 203);
+            }
+            else
+                chat(999, 203);
             break;
         case "recepClose":
-            if (g.internal === "teatime") {
-                chat(29, 203);
-            }
-            else if (misssyStep === 1) {
+            if (misssyStep === 1) 
                 chat(1, 203);
-            }
-            else if (misssyStep === 7) {
-                chat(13, 203);
-            }
-            else if (misssyStep > 9) {
-                var oncase = gv.get("oncase");
-                if (oncase === null)
-                    chat(28, 203);
-                else if (oncase === "diner")
-                    chat(34, 203);
-                else if (oncase === "dinerfail" || oncase === "dinersuccess")
-                    chat(35, 203);
-                else if (oncase === "gloryholebj")
-                    chat(38, 203);
-                else if (oncase === "gloryholeanal")
-                    chat(38, 203);
-                else if (oncase === "shopping")
-                    chat(48, 203);
-                else {
-                    alert("forgot one");
-                    char.room(0);
-                }
-            }
-            else if (misssyStep < 1000) {
-                if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {
-                    if (misssyStep === 2)
-                        chat(7, 203);
-                    else {
-                        chat(11, 203);
-                    }
-                }
-                else {
-                    chat(6, 203);
-                }
-            }
+            //if (g.internal === "teatime") {
+            //    chat(29, 203);
+            //}
+            //else if (misssyStep === 1) {
+            //    chat(1, 203);
+            //}
+            //else if (misssyStep === 7) {
+            //    chat(13, 203);
+            //}
+            //else if (misssyStep > 9) {
+            //    var oncase = gv.get("oncase");
+            //    if (oncase === null)
+            //        chat(28, 203);
+            //    else if (oncase === "diner")
+            //        chat(34, 203);
+            //    else if (oncase === "dinerfail" || oncase === "dinersuccess")
+            //        chat(35, 203);
+            //    else if (oncase === "gloryholebj")
+            //        chat(38, 203);
+            //    else if (oncase === "gloryholeanal")
+            //        chat(38, 203);
+            //    else if (oncase === "shopping")
+            //        chat(48, 203);
+            //    else {
+            //        alert("forgot one");
+            //        char.room(0);
+            //    }
+            //}
+            //else if (misssyStep < 1000) {
+            //    if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {
+            //        if (misssyStep === 2)
+            //            chat(7, 203);
+            //        else {
+            //            chat(11, 203);
+            //        }
+            //    }
+            //    else {
+            //        chat(6, 203);
+            //    }
+            //}
             //else if (misssyStep > 24) {
             //    if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2)) {
             //        if (g.hourBetween(7, 10))
@@ -188,28 +197,28 @@ room203.btnclick = function (name) {
             //}
             
             break;
-        case "door":
-            if (inv.has("redbox"))
-                char.room(200);
-            else {
-                var oncasex = gv.get("oncase");
-                if (oncasex === null)
-                    chat(39, 203);
-                else if (oncasex === "diner")
-                    chat(40, 203);
-                else if (oncasex === "dinerfail" || oncasex === "dinersuccess")
-                    char.room(200);
-                else if (oncasex === "gloryholebj")
-                    chat(40, 203);
-                else {
-                    chat(37, 203);
-                }
+        //case "door":
+        //    if (inv.has("redbox"))
+        //        char.room(200);
+        //    else {
+        //        var oncasex = gv.get("oncase");
+        //        if (oncasex === null)
+        //            chat(39, 203);
+        //        else if (oncasex === "diner")
+        //            chat(40, 203);
+        //        else if (oncasex === "dinerfail" || oncasex === "dinersuccess")
+        //            char.room(200);
+        //        else if (oncasex === "gloryholebj")
+        //            chat(40, 203);
+        //        else {
+        //            chat(37, 203);
+        //        }
                 
-            }
-            break;
-        case "door100":
-            chat(47, 203);
-            break;
+        //    }
+        //    break;
+        //case "door100":
+        //    chat(47, 203);
+        //    break;
         
         default:
             break;
@@ -240,11 +249,11 @@ room203.chatcatch = function (callback) {
         case "displaySelf":
             nav.bg("203_entrance/inspect.jpg");
             zcl.displayMain(180, 800, .09, "clothes", false);
-            if (missy.st[2].c === 0) { //suit
+            if (missy.get("uniform") === 0) { //suit
                 if (cl.hasoutfit("suit") === null)
                     chat(8, 203);
                 else {
-                    if (missy.st[26].c === 0) {
+                    if (missy.get("totalDaysWorked") === 0) {
                         if ((cl.hasClothing("shirt", "s") && cl.hasClothing("pants", "s") &&
                             cl.hasClothing("socks", "b") && cl.hasClothing("shoes", "d")) ||
                             gv.get("money") > 245) {
@@ -276,7 +285,8 @@ room203.chatcatch = function (callback) {
             cl.add("pants", "s");
             cl.add("shoes", "d");
             cl.add("socks", "b");
-            missy.mod(0, -80);
+            missy.mod("mood", -80);
+            missy.mod("weeklyPay", -200);
             g.pass = "follow";
             char.room(217);
             break;
@@ -286,10 +296,15 @@ room203.chatcatch = function (callback) {
             break;
         case "forgotLic":
             inv.add("pi_lic");
+            missy.mod("mood", -80);
+            missy.mod("weeklyPay", -100);
             char.room(217);
             break;
          case "app":
             char.room(206);
+            break;
+        case "payday":
+            char.room(196);
             break;
         //case "displaySelfPanties":
         //    var sex = null;
@@ -403,166 +418,213 @@ room203.chatcatch = function (callback) {
 };
 
 room203.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "me",
-            text: "They must be closed. Weird being that this is outside of normal business hours.",
-            button: [
-                { chatID: -1, text: "[Leave]", callback: "leave" }
-            ]
-        },
-        {
-            chatID: 1,
+    if (chatID === 998) {
+        if (g.dt.getDay() === 5) {
+            return {
+                chatID: 999,
+                speaker: "cecilia",
+                text: "It's payday! I know you're on a case, but did you want to see Missy to get your check?",
+                button: [
+                    { chatID: -1, text: "I do!", callback: "payday" },
+                    { chatID: -1, text: "Nope. Just wandering. ", callback: "" },
+                ]
+            };
+        }
+        else {
+            var activeCase = missy.activecase();
+            return {
+                chatID: 999,
+                speaker: "cecilia",
+                text: "Missy said your job was to complete your case. " + activeCase.txt,
+                button: [
+                    { chatID: -1, text: "Oh yeah. Thanks! ", callback: "" },
+                ]
+            };
+        }
+    }
+    else if (chatID === 999) {
+        var greeting = [
+            "Good morning beautiful!",
+            "ooops. I think I just farted some cum. hehe. ",
+            "You look amazing, simply amazing. ",
+            "Did you do something with your hair? It looks good. ",
+            "You would look better naked, *wink*",
+            "You look so yummy I could eat your ass. *wink*",
+            "Nice shoes, wanna fuck? ",
+            "I'm so happy I get to see your face everyday. ",
+            "What do you do to look so good everyday!"
+        ];
+        return {
+            chatID: 999,
             speaker: "cecilia",
-            text: "Can I help you....",
+            text: greeting[Math.floor(Math.random() * greeting.length)],
             button: [
-                { chatID: -1, text: "Missy told me to come by for a job.", callback: "checkLic" },
-                { chatID: -1, text: "No, sorry...", callback: "leave" }
+                { chatID: -1, text: "[Get into position]", callback: "displaySelf" },
+                { chatID: -1, text: "I'm not sure why I'm here. ", callback: "leave" },
             ]
-        },
-        {
-            chatID: 2,
-            speaker: "cecilia",
-            text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
-            button: [
-                { chatID: 3, text: "No, do I need one?", callback: "" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "cecilia",
-            text: "I'm sorry sir, you need the PI License to work here. Please go to the Licensing Board to purchase one. They cost $100.",
-            button: [
-                { chatID: -1, text: "Thank you.", callback: "" }
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "cecilia",
-            text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
-            button: [
-                { chatID: 10, text: "Yes I do.", callback: "" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "cecilia",
-            text: "Thank you for filling that out. " + sc.n("missy") + " is ready for you. Good luck in there " + sc.n("missy") +
-                " is a slave driver, but she'll give your life purpose that you've never had.",
-            button: [
-                { chatID: -1, text: "Thank you. [Enter]", callback: "enter" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "cecilia",
-            text: "I'm so sorry " + sc.n("me") + ", but the workday has already started. Please come in before 10 next time.",
-            button: [
-                { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "missy",
-            text: "Are you late! Why the hell! Get in here! ",
-            button: [
-                { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "cecilia",
-            text: "Oh yeah you look yummy. you may enter",
-            button: [
-                { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "cecilia",
-            text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
-                "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
-            button: [
-                { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "cecilia",
-            text: "Oh good. Once you fill out this application Missy will meet you " +
-                "for your interview. Now some of the questions are rather personal, but Missy " +
-                " needs to know if you can handle undercover work. Just try to be honest and you'll do fine.",
-            button: [
-                { chatID: -1, text: "[Fill out application]", callback: "app" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "cecilia",
-            text: "Welcome back " + sc.n("me") + "! I'm so excited you got the job! ",
-            button: [
-                { chatID: 12, text: "Thank you " + sc.n("cecilia") + ". I'm excited to work with you too!", callback: "" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "cecilia",
-            text: "So " + sc.n("missy") + " asked me to inspect your attire each day before you report in. To make it easier on both of us can you stand in " +
-                "front of my desk and model that big sexy body of yours! I need to check you out from your head to " +
-                "your shoes! ",
-            button: [
-                { chatID: -1, text: "Sure! ", callback: "displaySelf" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "cecilia",
-            text: "So you're not properly dressed for your first day. Let me tell Missy. ",
-            button: [
-                { chatID: 14, text: "uh oh! ", callback: "notDressed0" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "thinking",
-            text: "Oh, I really screwed up on my first day! I hope Missy isn't too mad, I just didn't have enough " +
-                "money to buy everything. Surely she'll understand. ",
-            button: [
-                { chatID: 15, text: "...", callback: "notDressed1" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "missy",
-            text: "What the fuck do you mean you showed up to work on your first fucking day and can't even get " +
-                "dressed properly! " + sc.n("cecilia") + " take some petty cash and go buy him his suit! " +
-                "It will be in your wardrobe. Make sure you wear it next time you come in. I can't trusted " +
-                "you to use the money I gave you to purchase proper attire and you screwed that up! Well you're " +
-                " going to pay for your idiocracy! Follow me! ",
-            button: [
-                { chatID: -1, text: "GULP", callback: "notDressed2" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "ceclia",
-            text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
-            button: [
-                { chatID: 17, text: "I don't have one.", callback: "mad" }
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "missy",
-            text: "What do you mean you don't have one? Let me guess, you blew your money on stupid crap and " +
-                "not on a license? Is this how you want to start here, as a dumbass? " + sc.n("cecilia") + " go " +
-                "buy him a license since he can't do it himself! You, idiot, come with me. Apperently you have to " +
-                "receive some training before you even start. Come now! ",
-            button: [
-                { chatID: -1, text: "ok", callback: "forgotLic" }
-            ]
-        },
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "me",
+                text: "They must be closed. Weird being that this is outside of normal business hours.",
+                button: [
+                    { chatID: -1, text: "[Leave]", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "cecilia",
+                text: "Can I help you....",
+                button: [
+                    { chatID: -1, text: "Missy told me to come by for a job.", callback: "checkLic" },
+                    { chatID: -1, text: "No, sorry...", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "cecilia",
+                text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+                button: [
+                    { chatID: 3, text: "No, do I need one?", callback: "" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "cecilia",
+                text: "I'm sorry sir, you need the PI License to work here. Please go to the Licensing Board to purchase one. They cost $100.",
+                button: [
+                    { chatID: -1, text: "Thank you.", callback: "" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "cecilia",
+                text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+                button: [
+                    { chatID: 10, text: "Yes I do.", callback: "" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "cecilia",
+                text: "Thank you for filling that out. " + sc.n("missy") + " is ready for you. Good luck in there " + sc.n("missy") +
+                    " is a slave driver, but she'll give your life purpose that you've never had.",
+                button: [
+                    { chatID: -1, text: "Thank you. [Enter]", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "cecilia",
+                text: "I'm so sorry " + sc.n("me") + ", but the workday has already started. Please come in before 10 next time.",
+                button: [
+                    { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "missy",
+                text: "Are you late! Why the hell! Get in here! ",
+                button: [
+                    { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "cecilia",
+                text: "Oh yeah you look yummy. you may enter",
+                button: [
+                    { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "cecilia",
+                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
+                    "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+                button: [
+                    { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "cecilia",
+                text: "Oh good. Once you fill out this application Missy will meet you " +
+                    "for your interview. Now some of the questions are rather personal, but Missy " +
+                    " needs to know if you can handle undercover work. Just try to be honest and you'll do fine.",
+                button: [
+                    { chatID: -1, text: "[Fill out application]", callback: "app" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "cecilia",
+                text: "Welcome back " + sc.n("me") + "! I'm so excited you got the job! ",
+                button: [
+                    { chatID: 12, text: "Thank you " + sc.n("cecilia") + ". I'm excited to work with you too!", callback: "" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "cecilia",
+                text: "So " + sc.n("missy") + " asked me to inspect your attire each day before you report in. To make it easier on both of us can you stand in " +
+                    "front of my desk and model that big sexy body of yours! I need to check you out from your head to " +
+                    "your shoes! ",
+                button: [
+                    { chatID: -1, text: "Sure! ", callback: "displaySelf" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "cecilia",
+                text: "So you're not properly dressed for your first day. Let me tell Missy. ",
+                button: [
+                    { chatID: 14, text: "uh oh! ", callback: "notDressed0" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "thinking",
+                text: "Oh, I really screwed up on my first day! I hope Missy isn't too mad, I just didn't have enough " +
+                    "money to buy everything. Surely she'll understand. ",
+                button: [
+                    { chatID: 15, text: "...", callback: "notDressed1" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "missy",
+                text: "What the fuck do you mean you showed up to work on your first fucking day and can't even get " +
+                    "dressed properly! " + sc.n("cecilia") + " take some petty cash and go buy him his suit! " +
+                    "It will be in your wardrobe. Make sure you wear it next time you come in. I can't trusted " +
+                    "you to use the money I gave you to purchase proper attire and you screwed that up! Well you're " +
+                    " going to pay for your idiocracy! Follow me! ",
+                button: [
+                    { chatID: -1, text: "GULP", callback: "notDressed2" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "ceclia",
+                text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+                button: [
+                    { chatID: 17, text: "I don't have one.", callback: "mad" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "missy",
+                text: "What do you mean you don't have one? Let me guess, you blew your money on stupid crap and " +
+                    "not on a license? Is this how you want to start here, as a dumbass? " + sc.n("cecilia") + " go " +
+                    "buy him a license since he can't do it himself! You, idiot, come with me. Apperently you have to " +
+                    "receive some training before you even start. Come now! ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "forgotLic" }
+                ]
+            },
 
 
 
@@ -570,354 +632,355 @@ room203.chat = function (chatID) {
 
 
 
-        {
-            chatID: 9,
-            speaker: "cecilia",
-            text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
-                "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
-            button: [
-                { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "cecilia",
-            text: "Oh yeah you look good. you may enter",
-            button: [
-                { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "cecilia",
-            text: "Ready for your inspection?",
-            button: [
-                { chatID: -1, text: "[Get into position]", callback: "displaySelf" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "cecilia",
-            text: "Sorry " + sc.n("me") + ", but " + sc.n("missy") + " told me not to let you in unless you have the piggy nose.",
-            button: [
-                { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "cecilia",
-            text: "Have you solved the cum caper at Toys 'N Us yet?",
-            button: [
-                { chatID: 14, text: "Not yet.", callback: "" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "cecilia",
-            text: "Missy said she doesn't want to see you until you solve your first case.",
-            button: [
-                { chatID: -1, text: "Oh, thanks " + sc.n("cecilia"), callback: "" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "cecilia",
-            text: "OK, Missy said I had to check your underwear also, so pull those down mister!",
-            button: [
-                { chatID: -1, text: "[Show off your panties]", callback: "displaySelfPanties" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "cecilia",
-            text: "Sorry, Missy said 'no panties, no enter.' ",
-            button: [
-                { chatID: -1, text: "I guess I'll get a pair.", callback: "leave" }
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "cecilia",
-            text: "Hahaha that's soooo cute " + sc.n("me") + ". You look good in panties. Go on in. ",
-            button: [
-                { chatID: -1, text: "Thanks. [Enter]", callback: "enter" }
-            ]
-        },
-        {
-            chatID: 18,
-            speaker: "cecilia",
-            text: "Oh good. Once you fill out this application Missy will meet you " +
-                "for your interview. Now some of the questions are rather personal, but Missy " +
-                " needs to know if you can handle undercover work. Just try to be honest and you'll do fine.",
-            button: [
-                { chatID: -1, text: "[Fill out application]", callback: "app" }
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "cecilia",
-            text: "O.M.G. You look soooo sexy, but you shouldn't go out like that. You should put your clothes on before " +
-                "going outside honey.",
-            button: [
-                { chatID: -1, text: "[Get dressed]", callback: "putOnClothes" }
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "cecilia",
-            text: "You're getting a little hairy " + sc.n("me") + ". " + sc.n("missy") + " isn't going to like that. You " +
-                "need to go home and shave that nasty body hair all off.",
-            button: [
-                { chatID: -1, text: "I guess I'll go and shave.", callback: "leave" }
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "cecilia",
-            text: "I like your clothes, but there's been a uniform change. " +
-                "I can't let you in unless you're wearing a black skirt and red blouse, black flats, and no socks. " +
-                "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
-            button: [
-                { chatID: -1, text: "Oh ok.", callback: "" }
-            ]
-        },
-        {
-            chatID: 22,
-            speaker: "cecilia",
-            text: "Oh my " + sc.n("me") + "! I can't let you go in there like that! " + sc.n("missy") + " does not like it " +
-                "when you huge erection is sticking out of your pants. Do you want me jerk you off? I love filling my mouth with cum!",
-            button: [
-                { chatID: 23, text: "No, I'll take care of it", callback: "" },
-                { chatID: 24, text: "Oh, yeah please jerk me off", callback: "" }
-            ]
-        },
-        {
-            chatID: 23,
-            speaker: "cecilia",
-            text: "Awwww, I was so looking forward to swallowing your cum. I can't let you in like that.",
-            button: [
-                { chatID: -1, text: "...", callback: "leave" }
-            ]
-        },
-        {
-            chatID: 24,
-            speaker: "cecilia",
-            text: "Come here big boy give me that cock!",
-            button: [
-                { chatID: 25, text: "...", callback: "handjob" }
-            ]
-        },
-        {
-            chatID: 25,
-            speaker: "cecilia",
-            text: "Shoot it in my mouth!",
-            button: [
-                { chatID: 26, text: "CUM", callback: "handjobcum" }
-            ]
-        },
-        {
-            chatID: 26,
-            speaker: "cecilia",
-            text: "Thank you! You may go see " + sc.n("missy") + " now.",
-            button: [
-                { chatID: -1, text: "[Go see " + sc.n("missy") + "]", callback: "enter" }
-            ]
-        },
-        {
-            chatID: 27,
-            speaker: "cecilia",
-            text: "Sorry " + sc.n("me") + " no new cases. You have to earn them in the rooms. ",
-            button: [
-                { chatID: -1, text: "Oh, thanks.", callback: "reload" }
-            ]
-        },
-        {
-            chatID: 28,
-            speaker: "cecilia",
-            text: "Sorry " + sc.n("me") + " no new cases. " + sc.n("missy") + " said you'll have to go to school in the basement. " +
-                "Just head to the elevators, then take it to the basement.",
-            button: [
-                { chatID: -1, text: "Oh, thanks.", callback: "reload" }
-            ]
-        },
-        {
-            chatID: 29,
-            speaker: "cecilia",
-            text: "Sorry, the day has already started. ",
-            button: [
-                { chatID: 30, text: "Oh, " + sc.n("missy") + " sent me up here to get some tea", callback: "" }
-            ]
-        },
-        {
-            chatID: 30,
-            speaker: "cecilia",
-            text: "OH HOW EXCITING!! Most boys quit when they read the contract. Not you! I knew you had it in you " +
-                "to keep going! I know it's just started, but you're going to love the school! Let me go grab your tea.",
-            button: [
-                { chatID: -1, text: "Ok.", callback: "tea0" }
-            ]
-        },
-        {
-            chatID: 31,
-            speaker: "thinking",
-            text: "Where did she go? This is taking way too long. " + sc.n("missy") + " is gong to be mad at me for taking too long.",
-            button: [
-                { chatID: -1, text: "Keep waiting", callback: "tea1" }
-            ]
-        },
-        {
-            chatID: 32,
-            speaker: "cecilia",
-            text: "Here's the tea sexy. Sorry it took so long, I forgot to plug in the kettle. How much sugar did she ask for?",
-            button: [
-                { chatID: 33, text: "She didn't ask for sugar", callback: "sugar0" },
-                { chatID: 33, text: "1 lump", callback: "sugar1" },
-                { chatID: 33, text: "2 lumps", callback: "sugar2" }
-            ]
-        },
-        {
-            chatID: 33,
-            speaker: "cecilia",
-            text: "Here you go. Good luck on your tests!",
-            button: [
-                { chatID: -1, text: "Thanks", callback: "reload" },
-            ]
-        },
-        {
-            chatID: 34,
-            speaker: "cecilia",
-            text: sc.n("missy") + " said you should be at the diner working right now. The Naked Beaver Diner " +
-                "<img src='./images/room/map/250.png' style='height:" + (50 * g.ratio) + "px; width:" + (70 * g.ratio) +
-                "px;'/> is on the west side of town. ",
-            button: [
-                { chatID: -1, text: "Thanks", callback: "reload" }
-            ]
-        },
-        {
-            chatID: 35,
-            speaker: "cecilia",
-            text: sc.n("missy") + " said you should be at the diner working right now and not to allow you in until you finish. ",
-            button: [
-                { chatID: 36, text: "Oh, I finished it. I'm here to see " + sc.n('missy'), callback: "" }
-            ]
-        },
-        {
-            chatID: 36,
-            speaker: "cecilia",
-            text: "Good for you! I'll let you in! ",
-            button: [
-                { chatID: -1, text: "Thanks", callback: "enter" }
-            ]
-        },
-        {
-            chatID: 37,
-            speaker: "thinking",
-            text: "I'm not going to just walk in there! That's crazy! ",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 38,
-            speaker: "cecilia",
-            text: "I'm so excited I get to work with you! See me in the park bathroom on the weekends and I'll show you how to work " +
-                "the cock!",
-            button: [
-                { chatID: -1, text: "Sweet!", callback: "" }
-            ]
-        },
-        {
-            chatID: 39,
-            speaker: "thinking",
-            text: "I can't go in there, I'm supposed to be going to sissy school.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 40,
-            speaker: "thinking",
-            text: "I can't go in there, I'm supposed to be working my case.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 41,
-            speaker: "p",
-            text: "I'm so glad your back and safe. We were so worried. So where's " + sc.n("missy") + "? Is she on her way?",
-            button: [
-                { chatID: 42, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 42,
-            speaker: "me",
-            text: "Tell the entire story...",
-            button: [
-                { chatID: 43, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 43,
-            speaker: "cecilia ",
-            text: "Those bastards! We have to go get her!",
-            button: [        
-                { chatID: 44, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 44,
-            speaker: "p",
-            text: "I don't trust the police at all! We have to get her out of there. We'll have to come up with a plan. " +
-                "Since the tunnel you used is down we'll have to find an alternative way in. Right now everything " +
-                "is brought in by helicopter since the swamps around the compound make driving there impossible. We also don't have " +
-                "a good layout of the compound that includes camera locations and entrances. Finally we're going to need to know " +
-                "exactly where she's being held. ",
-            button: [
-                { chatID: 45, text: "Yeah", callback: "" }
-            ]
-        },
-        {
-            chatID: 45,
-            speaker: "p",
-            text: "I'm going to start working on my contacts. You can start by going through what " + sc.n("missy") + " knows. " +
-                " I know she's been working on gathering information on them for a while. Under normal circumstances I would  " +
-                "never suggest going through her office, but there may be something there and we need to get her out! I'll " +
-                "still let you do any training you want or need. ",
-            button: [
-                { chatID: 46, text: "Ok", callback: "" }
-            ]
-        },
-        {
-            chatID: 46,
-            speaker: "p",
-            text: "Don't worry too much about " + sc.n("missy") + ". She's a lot stronger than any of us. You have no idea of what " +
-                "she went through before she started as a PI. She's a survivor. I'll let you know any information I get. Please " +
-                "go through her office respectfully and see if you can gather any information to start. ",
-            button: [
-                { chatID: -1, text: "I will gather information from her office. ", callback: "m100" }
-            ]
-        },
-        {
-            chatID: 47,
-            speaker: "thinking",
-            text: "Thank you for playing. Breaking " + sc.n("missy") + " out will be in a future release",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 48,
-            speaker: "cecilia",
-            text: "You need to go to the Toy Store when " + sc.n("tiffany") + " is working. ",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+            {
+                chatID: 9,
+                speaker: "cecilia",
+                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
+                    "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+                button: [
+                    { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "cecilia",
+                text: "Oh yeah you look good. you may enter",
+                button: [
+                    { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "cecilia",
+                text: "Ready for your inspection?",
+                button: [
+                    { chatID: -1, text: "[Get into position]", callback: "displaySelf" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "cecilia",
+                text: "Sorry " + sc.n("me") + ", but " + sc.n("missy") + " told me not to let you in unless you have the piggy nose.",
+                button: [
+                    { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "cecilia",
+                text: "Have you solved the cum caper at Toys 'N Us yet?",
+                button: [
+                    { chatID: 14, text: "Not yet.", callback: "" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "cecilia",
+                text: "Missy said she doesn't want to see you until you solve your first case.",
+                button: [
+                    { chatID: -1, text: "Oh, thanks " + sc.n("cecilia"), callback: "" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "cecilia",
+                text: "OK, Missy said I had to check your underwear also, so pull those down mister!",
+                button: [
+                    { chatID: -1, text: "[Show off your panties]", callback: "displaySelfPanties" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "cecilia",
+                text: "Sorry, Missy said 'no panties, no enter.' ",
+                button: [
+                    { chatID: -1, text: "I guess I'll get a pair.", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "cecilia",
+                text: "Hahaha that's soooo cute " + sc.n("me") + ". You look good in panties. Go on in. ",
+                button: [
+                    { chatID: -1, text: "Thanks. [Enter]", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "cecilia",
+                text: "Oh good. Once you fill out this application Missy will meet you " +
+                    "for your interview. Now some of the questions are rather personal, but Missy " +
+                    " needs to know if you can handle undercover work. Just try to be honest and you'll do fine.",
+                button: [
+                    { chatID: -1, text: "[Fill out application]", callback: "app" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "cecilia",
+                text: "O.M.G. You look soooo sexy, but you shouldn't go out like that. You should put your clothes on before " +
+                    "going outside honey.",
+                button: [
+                    { chatID: -1, text: "[Get dressed]", callback: "putOnClothes" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "cecilia",
+                text: "You're getting a little hairy " + sc.n("me") + ". " + sc.n("missy") + " isn't going to like that. You " +
+                    "need to go home and shave that nasty body hair all off.",
+                button: [
+                    { chatID: -1, text: "I guess I'll go and shave.", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "cecilia",
+                text: "I like your clothes, but there's been a uniform change. " +
+                    "I can't let you in unless you're wearing a black skirt and red blouse, black flats, and no socks. " +
+                    "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+                button: [
+                    { chatID: -1, text: "Oh ok.", callback: "" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "cecilia",
+                text: "Oh my " + sc.n("me") + "! I can't let you go in there like that! " + sc.n("missy") + " does not like it " +
+                    "when you huge erection is sticking out of your pants. Do you want me jerk you off? I love filling my mouth with cum!",
+                button: [
+                    { chatID: 23, text: "No, I'll take care of it", callback: "" },
+                    { chatID: 24, text: "Oh, yeah please jerk me off", callback: "" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "cecilia",
+                text: "Awwww, I was so looking forward to swallowing your cum. I can't let you in like that.",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "cecilia",
+                text: "Come here big boy give me that cock!",
+                button: [
+                    { chatID: 25, text: "...", callback: "handjob" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "cecilia",
+                text: "Shoot it in my mouth!",
+                button: [
+                    { chatID: 26, text: "CUM", callback: "handjobcum" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "cecilia",
+                text: "Thank you! You may go see " + sc.n("missy") + " now.",
+                button: [
+                    { chatID: -1, text: "[Go see " + sc.n("missy") + "]", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "cecilia",
+                text: "Sorry " + sc.n("me") + " no new cases. You have to earn them in the rooms. ",
+                button: [
+                    { chatID: -1, text: "Oh, thanks.", callback: "reload" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "cecilia",
+                text: "Sorry " + sc.n("me") + " no new cases. " + sc.n("missy") + " said you'll have to go to school in the basement. " +
+                    "Just head to the elevators, then take it to the basement.",
+                button: [
+                    { chatID: -1, text: "Oh, thanks.", callback: "reload" }
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "cecilia",
+                text: "Sorry, the day has already started. ",
+                button: [
+                    { chatID: 30, text: "Oh, " + sc.n("missy") + " sent me up here to get some tea", callback: "" }
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "cecilia",
+                text: "OH HOW EXCITING!! Most boys quit when they read the contract. Not you! I knew you had it in you " +
+                    "to keep going! I know it's just started, but you're going to love the school! Let me go grab your tea.",
+                button: [
+                    { chatID: -1, text: "Ok.", callback: "tea0" }
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "thinking",
+                text: "Where did she go? This is taking way too long. " + sc.n("missy") + " is gong to be mad at me for taking too long.",
+                button: [
+                    { chatID: -1, text: "Keep waiting", callback: "tea1" }
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "cecilia",
+                text: "Here's the tea sexy. Sorry it took so long, I forgot to plug in the kettle. How much sugar did she ask for?",
+                button: [
+                    { chatID: 33, text: "She didn't ask for sugar", callback: "sugar0" },
+                    { chatID: 33, text: "1 lump", callback: "sugar1" },
+                    { chatID: 33, text: "2 lumps", callback: "sugar2" }
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "cecilia",
+                text: "Here you go. Good luck on your tests!",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "reload" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "cecilia",
+                text: sc.n("missy") + " said you should be at the diner working right now. The Naked Beaver Diner " +
+                    "<img src='./images/room/map/250.png' style='height:" + (50 * g.ratio) + "px; width:" + (70 * g.ratio) +
+                    "px;'/> is on the west side of town. ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "reload" }
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "cecilia",
+                text: sc.n("missy") + " said you should be at the diner working right now and not to allow you in until you finish. ",
+                button: [
+                    { chatID: 36, text: "Oh, I finished it. I'm here to see " + sc.n('missy'), callback: "" }
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "cecilia",
+                text: "Good for you! I'll let you in! ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "thinking",
+                text: "I'm not going to just walk in there! That's crazy! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "cecilia",
+                text: "I'm so excited I get to work with you! See me in the park bathroom on the weekends and I'll show you how to work " +
+                    "the cock!",
+                button: [
+                    { chatID: -1, text: "Sweet!", callback: "" }
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "thinking",
+                text: "I can't go in there, I'm supposed to be going to sissy school.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "thinking",
+                text: "I can't go in there, I'm supposed to be working my case.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "p",
+                text: "I'm so glad your back and safe. We were so worried. So where's " + sc.n("missy") + "? Is she on her way?",
+                button: [
+                    { chatID: 42, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "me",
+                text: "Tell the entire story...",
+                button: [
+                    { chatID: 43, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "cecilia ",
+                text: "Those bastards! We have to go get her!",
+                button: [
+                    { chatID: 44, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "p",
+                text: "I don't trust the police at all! We have to get her out of there. We'll have to come up with a plan. " +
+                    "Since the tunnel you used is down we'll have to find an alternative way in. Right now everything " +
+                    "is brought in by helicopter since the swamps around the compound make driving there impossible. We also don't have " +
+                    "a good layout of the compound that includes camera locations and entrances. Finally we're going to need to know " +
+                    "exactly where she's being held. ",
+                button: [
+                    { chatID: 45, text: "Yeah", callback: "" }
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "p",
+                text: "I'm going to start working on my contacts. You can start by going through what " + sc.n("missy") + " knows. " +
+                    " I know she's been working on gathering information on them for a while. Under normal circumstances I would  " +
+                    "never suggest going through her office, but there may be something there and we need to get her out! I'll " +
+                    "still let you do any training you want or need. ",
+                button: [
+                    { chatID: 46, text: "Ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "p",
+                text: "Don't worry too much about " + sc.n("missy") + ". She's a lot stronger than any of us. You have no idea of what " +
+                    "she went through before she started as a PI. She's a survivor. I'll let you know any information I get. Please " +
+                    "go through her office respectfully and see if you can gather any information to start. ",
+                button: [
+                    { chatID: -1, text: "I will gather information from her office. ", callback: "m100" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "thinking",
+                text: "Thank you for playing. Breaking " + sc.n("missy") + " out will be in a future release",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "cecilia",
+                text: "You need to go to the Toy Store when " + sc.n("tiffany") + " is working. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

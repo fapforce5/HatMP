@@ -190,12 +190,11 @@ room221.chatcatch = function (callback) {
             room221.btnclick("main");
             break;
         case "lunch":
-            missy.mod(7, 1);
-            missy.mod(30, 1);
+            missy.didJob(3, 1, null);
             char.room(224);
             break;
         case "resetbg":
-            nav.bg("221_recip/bg.jpg");
+            nav.bg("221_recip/work0.jpg");
             break;
         default:
             break;

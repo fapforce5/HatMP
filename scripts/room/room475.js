@@ -196,6 +196,7 @@ room475.chatcatch = function (callback) {
         case "petcat":
             gv.set("cat", 1);
             nav.bg("475_fight/catpet.jpg", "475_fight/catpetnight.jpg");
+            break;
         default:
             break;
     }

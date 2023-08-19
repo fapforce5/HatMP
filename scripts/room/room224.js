@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//Lunch
 var room224 = {};
 room224.main = function () {
     var icons = new Array();
@@ -47,15 +47,16 @@ room224.btnclick = function (name) {
 room224.chatcatch = function (callback) {
     switch (callback) {
         case "endlunch":
-            char.room(199);
+            char.settime(13, 15);
+            char.room(missy.afterLunch());
             break;
         case "endlunchEnergy":
             gv.mod("energy", 30);
-            char.room(199);
+            room224.chatcatch("endlunch");
             break;
         case "endlunchPunish":
             gv.mod("energy", -20);
-            char.room(199);
+            room224.chatcatch("endlunch");
             break;
         case "standInCorner":
             nav.bg("224_lunch/punish0.jpg");

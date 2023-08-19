@@ -8,6 +8,8 @@ room217.main = function () {
     else if (g.pass === "follow") {
         chat(13, 217);
     }
+    else if (g.pass === "insubordination")
+        chat(23, 217);
     else {
         chat(13, 217);
     }
@@ -25,9 +27,13 @@ room217.btnclick = function (name) {
 room217.chatcatch = function (callback) {
     switch (callback) {
         case "squeeze":
-            nav.bg("217_punish/squeeze.jpg");
+            if(cl.c.shirt === "s" || cl.c.chest === 0)
+                nav.bg("217_punish/squeeze.jpg");
+            else
+                nav.bg("217_punish/squeezef.jpg");
+
             levels.mod("dom", 20, 999);
-            missy.mod(0, -10);
+            missy.mod("mood", -10);
             break;
         case "disrobeVoluntary":
             levels.mod("sub", 20, 999);
@@ -102,7 +108,6 @@ room217.chatcatch = function (callback) {
             levels.mod("sub", 50, 999);
             gv.set("energy", 0);
             char.settime(17, 35);
-            missy.st[26].c++;
             char.room(0);
             break;
         case "rice1":
@@ -319,6 +324,14 @@ room217.chat = function (chatID) {
             text: "Here's your clothing. Make sure to wear it ",
             button: [
                 { chatID: -1, text: "...", callback: "punishmentEnd" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "missy",
+            text: "This is unacceptable. You will be punished for your insubordination! ",
+            button: [
+                { chatID: -1, text: "...", callback: "getPunishment" },
             ]
         },
     ];

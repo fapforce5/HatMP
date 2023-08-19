@@ -75,15 +75,13 @@ room220.chatcatch = function (callback) {
             nav.bg("201_bathroom/missy1.jpg");
             break;
         case "badCleanEnd":
-            missy.mod(5, 1);//jobCleanToilet
-            missy.mod(28, 1);//jobCleanToiletThisWeek
-            missy.mod(0, -10);
+            missy.didJob(0, .5, null);
+            missy.mod("mood", -10);
             char.room(224);
             break;
         case "goodCleanEnd":
-            missy.mod(5, 1);//jobCleanToilet
-            missy.mod(28, 1);//jobCleanToiletThisWeek
-            missy.mod(0, 10);
+            missy.didJob(0, 1, null);
+            missy.mod("mood", 10);
             char.room(224);
             break;
         default:

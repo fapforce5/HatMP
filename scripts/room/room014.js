@@ -495,7 +495,8 @@ room14.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "14_motherRoom/panty1.png"
             }, 14);
-            if (sc.checkevent("me", -2)) {
+            levels.mod("xdress", 20, 1);
+            if (levels.get("xdress").l > 0) {
                 if (cl.c.leg < 2)
                     chat(7, 14);
                 else if (cl.hasClothing("panty", "c"))
@@ -784,6 +785,7 @@ room14.chatcatch = function (callback) {
             char.room(14);
             break;
         case "stealPanties":
+            levels.mod("xdress", 20, 4);
             cl.add("panties", "c");
             break;
         case "jo0":

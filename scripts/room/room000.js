@@ -154,48 +154,48 @@ room0.chatcatch = function (callback) {
         case "walk":
             if (g.walk !== null) {
                 if (g.walk === "oncase") {
-                    var roomList = new Array();
-                    switch (gv.get("oncase")) {
-                        case "smolpp":
-                        case "bigboobs":
-                        case "bigass":
-                        case "dslLips":
-                            roomList = [16];
-                            break;
-                        case "cult0":
-                            roomList = [450];
-                            break;
-                        case "redroom":
-                            roomList = [203];
-                            break;
-                        case "gloryholebj":
-                            roomList = [450];
-                            break;
-                        case "gloryholeanal":
-                            roomList = [450];
-                            break;
-                        case "shopping":
-                            roomList = [650];
-                            break;
-                        case "clothes0":
-                        case "clothes1":
-                        case "clothes2":
-                        case "clothes3":
-                            roomList = [150];
-                            break;
-                        case "dinerfail":
-                        case "dinersuccess":
-                            roomList = [203];
-                            break;
-                        case "diner":
-                            roomList = [250];
-                            break;
-                        case "sewer":
-                            roomList = [225, 550];
-                            break;
-                        default:
-                            break;
-                    }
+                    var roomList = missy.activecase().m;
+                    //switch (gv.get("oncase")) {
+                    //    case "smolpp":
+                    //    case "bigboobs":
+                    //    case "bigass":
+                    //    case "dslLips":
+                    //        roomList = [16];
+                    //        break;
+                    //    case "cult0":
+                    //        roomList = [450];
+                    //        break;
+                    //    case "redroom":
+                    //        roomList = [203];
+                    //        break;
+                    //    case "gloryholebj":
+                    //        roomList = [450];
+                    //        break;
+                    //    case "gloryholeanal":
+                    //        roomList = [450];
+                    //        break;
+                    //    case "shopping":
+                    //        roomList = [650];
+                    //        break;
+                    //    case "clothes0":
+                    //    case "clothes1":
+                    //    case "clothes2":
+                    //    case "clothes3":
+                    //        roomList = [150];
+                    //        break;
+                    //    case "dinerfail":
+                    //    case "dinersuccess":
+                    //        roomList = [203];
+                    //        break;
+                    //    case "diner":
+                    //        roomList = [250];
+                    //        break;
+                    //    case "sewer":
+                    //        roomList = [225, 550];
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
                     for (i = 0; i < roomList.length; i++) {
                         for (j = 0; j < g.roomMap.length; j++) {
                             if (g.roomMap[j].roomID === roomList[i]) {

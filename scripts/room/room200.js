@@ -12,46 +12,40 @@ room200.main = function () {
         "image": "200_frontOffice/200_missy.png"
     }, 200);
         
-
-    //var oncase = gv.get("oncase");
-    //if (g.pass === "h28_x") {
-    //    nav.bg("200_frontOffice/200_frontOfficeJeffery.jpg");
-    //    chat(67, 200);
-    //}
-    //else {
-    //    if (g.sissy[16].ach) {
-    //        nav.bg("200_frontOffice/200_25.jpg");
-    //    }
-    //    g.internal = "";
-    //    var btnList = [
-    //        {
-    //            "type": "btn",
-    //            "name": "missy",
-    //            "left": 872,
-    //            "top": 481,
-    //            "width": 224,
-    //            "height": 483,
-    //            "image": "200_frontOffice/200_missy.png"
-    //        }
-    //    ];
-    //    $("#room_footer").hide();
-    //    var navList = [0];
-    //    $.each(btnList, function (i, v) {
-    //        nav.button(v, 200);
-    //    });
-    //    var missyStep = sc.getstep("missy");
-    //    var dontDisplay = [3, 5];
-    //    if (dontDisplay.indexOf(missyStep) === -1)
-    //        nav.buildnav(navList);
-    //}
+    g.internal = { caseList: missy.getcases(), activeCase: null };
 };
 
 room200.btnclick = function (name) {
     switch (name) {
         case "missy":
-            var thisStep = sc.getstep("missy");
+            var activeCase = missy.get("activeCase");
+            var activeCaseComplete = missy.get("activeCaseComplete");
+            console.log(activeCase, activeCaseComplete);
             if (missy.get("totalDaysWorked") < 1)
                 chat(0, 200);
+            else if (missy.get("totalDaysWorked") === 5) {
+                chat(9, 200);
+            }
+            else if (activeCase > 3 && activeCaseComplete !== 0) {
+                switch (activeCase) {
+                    case 4:
+                        if (activeCaseComplete === 1)
+                            chat(12, 200);
+                        else
+                            chat(13, 200);
+                        break;
+                    case 5:
+                        if (activeCaseComplete === 1) {
+                            if (missy.get("reusableCaseCounter") === 999) //tried to fuck her
+                                chat(20, 200);
+                            else
+                                chat(18, 200);
+                        }
+                        else
+                            chat(19, 200);
+                        break;
+                }
+            }
             else
                 room200.chatcatch("selectJob");
         break;
@@ -64,16 +58,18 @@ room200.btnclick = function (name) {
             char.room(218);
             break;
         case "case_0":
-            var caseList = missy.getcases();
-            $.each(caseList, function (i, v) {
-                if (v.req !== null) {
-                    g.internal = v.req;
-                    chat(999, 200);
-                }
-                else {
-                    chat(v.chatId, 200);
-                }
-            });
+        case "case_1":
+        case "case_2":
+        case "case_3":
+            g.internal.activeCase = g.internal.caseList[parseInt(name.replace("case_", ""))];
+            if (!g.internal.activeCase.active) {
+                chat(999, 200);
+            }
+            else {
+                nav.bg("200_frontOffice/bg.jpg");
+                nav.killall();
+                room200.chatcatch(g.internal.activeCase.callback);
+            }
             break;
         default:
             break;
@@ -83,7 +79,7 @@ room200.btnclick = function (name) {
 room200.chatcatch = function (callback) {
     switch (callback) {
         case "minorInfraction":
-            missy.mod(3, 1);
+            missy.mod("weeklyPay", -10);
             break;
         case "selectJob":
             nav.killall();
@@ -101,596 +97,90 @@ room200.chatcatch = function (callback) {
                     }, 200);
                 }
             });
-
-            $.each(missy.getcases(), function (i, v) {
-                nav.button({
-                    "type": "btn",
-                    "name": "case_" + v.id,
-                    "left": 400 + (Math.floor(i / 2) * 700),
-                    "top": 100 + ((i % 2) * 120),
-                    "width": 600,
-                    "height": 100,
-                    "image": "200_frontOffice/" + v.img
-                }, 200);
+            
+            $.each(g.internal.caseList, function (i, v) {
+                if (i < 4) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "case_" + i,
+                        "left": 400 + (Math.floor(i / 2) * 700),
+                        "top": 100 + ((i % 2) * 120),
+                        "width": 600,
+                        "height": 100,
+                        "image": "200_frontOffice/" + v.icon
+                    }, 200);
+                }
             });
             break;
+        case "case_booth":
+            chat(4, 200);
+            break;
+        case "explain0":
+        case "case_booth1":
+        case "case_booth2":
+        case "case_lostgirl1":
+            nav.bg("200_frontOffice/" + callback + ".jpg");
+            break;
+        case "case_booth3":
+            missy.set("activeCase", 4);
+            break;
+        case "case_booth_complete":
+            gv.mod("money", 300);
+            missy.mod("mood", 20);
+            levels.mod("pi", 100);
+            missy.caseComplete(4);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_booth_complete_bad":
+            missy.caseComplete(4);
+            char.room(205);
+            break;
+        case "case_lostgirl":
+            nav.killall();
+            nav.bg("200_frontOffice/case_lostgirl0.jpg");
+            chat(14, 200);
+            break;
+        case "case_lostgirl2":
+            pic.add("case_lostgirl");
+            room200.chatcatch("case_afterExplaniation");
+            break;
+        case "case_lostgirl_goodend":
+            gv.mod("money", 250);
+            missy.mod("mood", 20);
+            levels.mod("pi", 100);
+            missy.caseComplete(5);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_lostgirl_badend":
+            missy.caseComplete(5);
+            char.room(217);
+            break;
+        case "case_lostgirl_chastity":
+            missy.caseComplete(5);
+            g.pass = "chastity";
+            char.room(205);
+            break;
+        case "case_afterExplaniation":
+            missy.set("activeCase", g.internal.activeCase.caseId);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
+            if (g.dt.getDay() === 5 && missy.get("weeklyPay") !== 0)
+                char.room(196);
+            else
+                char.room(0);
+            break;
+        case "case_complete_end":
+            if (g.gethourdecimal() < 10)
+                room200.chatcatch("selectJob");
+            else if (g.dt.getDay === 5)
+                char.room(196);
+            else
+                char.room(0);
+            break;
+        case "hate":
+            missy.mod("mood", -20);
+            break;
     };
-    //switch (callback) {
-    //    case "moneymoney":
-    //        gv.mod("money", 300);
-    //        break;
-    //    case "hired":
-    //        char.addtime(180);
-    //        sc.setstep("me", 2);
-    //        sc.setstep("missy", 2);
-    //        char.room(203);
-    //        break;
-    //    case "leave":
-    //        cl.display();
-    //        char.room(0);
-    //        break;
-    //    case "leaveAddHours":
-    //        cl.display();
-    //        char.addtime(120);
-    //        char.room(0);
-    //        break;
-    //    case "clanBathroom":
-    //        g.pass = "cleanbathroom";
-    //        char.room(201);
-    //        break;
-    //    case "kneesStep3":
-    //        char.room(202);
-    //        break;
-    //    case "202Pass":
-    //        g.pass = "kneel";
-    //        char.room(202);
-    //        break;
-    //    case "202Pass1":
-    //        g.pass = "lickasshole0";
-    //        char.room(202);
-    //        break;
-    //    case "202kneel":
-    //        g.pass = "kneel";
-    //        char.room(202);
-    //        break;
-    //    case "firstFile":
-    //        g.pass = "first";
-    //        char.room(204);
-    //        break;
-    //    case "removeshirt":
-    //        $('#char-shirt').html('');
-    //        break;
-    //    case "piggy":
-    //        cl.list[cl.where("accessories", "piggy")].inv = true;
-    //        $('#char-accHead').append('<img src="./images/mainChar/' + cl.list[cl.where("accessories", "piggy")].img + '" />');
-    //        cl.c.accessories.push("piggy");
-    //        sc.setstep("missy", 6);
-    //        break;
-    //    case "payLeave":
-    //        gv.mod("money", 55);
-    //        cl.display();
-    //        char.room(0);
-    //        break;
-    //    case "jobFile":
-    //        g.pass = null;
-    //        char.room(204);
-    //        break;
-    //    case "jobComputer":
-    //        g.pass = "norm";
-    //        char.room(205);
-    //        break;
-    //    case "jobBathroom":
-    //        //alert("do it");
-    //        break;
-    //    case "toyStore":
-    //        char.addtime(60);
-    //        sc.setstep("missy", 7);
-    //        sc.setstep("tiffany", 1);
-    //        char.room(0);
-    //        break;
-    //    case "pantiesReward":
-    //        gv.mod("money", 300);
-    //        scc.love("missy", 20, 100);
-    //        break;
-    //    case "leavePanties":
-    //        char.addtime(180);
-    //        sc.setstep("missy", 9);
-    //        sc.setstep("me", -1);
-    //        sc.setstep("me", -2);
-    //        char.room(0);
-    //        break;
-    //    case "getPantyTask":
-    //        var getTask = Math.floor(Math.random() * 10);
-    //        if (getTask < 4) { //card game
-    //            chat(25, 200);
-    //        }
-    //        else if (getTask < 8) { //computer
-    //            chat(44, 200);
-    //        }
-    //        else { //clean bathroom --future
-    //            chat(44, 200);
-    //        }
-    //        break;
-    //    case "stripPanties":
-    //        nav.kill();
-    //        cl.nude();
-    //        cl.c.panties = "w";
-    //        cl.display();
-    //        nav.bg("200_frontOffice/pantiesShow.jpg");
-    //        break;
-    //    case "stripPanties1":
-    //        nav.bg("200_frontOffice/pantiesShow1.jpg");
-    //        break;
-    //    case "stripPanties2":
-    //        nav.bg("200_frontOffice/pantiesShow2.jpg");
-    //        break;
-    //    case "pantiesOnly":
-    //        sc.setstep("missy", 11);
-    //        var tempPanty = cl.c.panties;
-    //        cl.nude();
-    //        cl.c.panties = tempPanty;
-    //        cl.display();
-    //        break;
-    //    case "leaveAndShave":
-    //        cl.display();
-    //        char.addtime(120);
-    //        if (!sc.checkevent("me", -1))
-    //            sc.setstep("me", -1);
-    //        char.room(0);
-    //        break;
-    //    case "turnaround1":
-    //        //52, 53, 54
-    //        nav.kill();
-    //        //nav.bg("200_frontOffice/200_showPantiesBack.png", "200_frontOffice/200_showPantiesBack.png");
-    //        switch (Math.floor(Math.random() * 3)) {
-    //            case 0:
-    //                chat(52, 200);
-    //                break;
-    //            case 1:
-    //                chat(53, 200);
-    //                break;
-    //            case 2:
-    //                chat(54, 200);
-    //                break;
-    //        }
-    //        break;
-    //    case "turnAroundJeffery":
-    //        g.back = true;
-    //        cl.display();
-    //        break;
-    //    case "turnAroundJeffery1":
-    //        g.back = false;
-    //        cl.display();
-    //        break;
-    //    case "leave10":
-    //        sc.setstep("missy", 11);
-    //        sc.setstep("tiffany", 7);
-    //        g.roomMapAccess(650, true, true);
-    //        char.addtime(240);
-    //        char.room(203);
-    //        break;
-    //    case "nude":
-    //        cl.nude();
-    //        cl.display();
-    //        break;
-    //    case "13end":
-    //        sc.setstep("missy", 14);
-    //        gv.mod("money", 30);
-    //        char.addtime(180);
-    //        char.room(0);
-    //        break;
-    //    case "14end":
-    //        sc.setstep("missy", 16);
-    //        char.addtime(180);
-    //        gv.mod("money", 20);
-    //        char.room(0);
-    //        break;
-    //    case "15end":
-    //        sc.setstep("missy", 16);
-    //        gv.mod("money", 150);
-    //        char.addtime(360);
-    //        char.room(0);
-    //        break;
-    //    case "leave16":
-    //        sc.setstep("missy", 18);
-    //        sc.setstep("jeffery", 3);
-    //        char.addtime(400);
-    //        char.room(0);
-    //        break;
-    //    case "leave18":
-    //        sc.setstep("me", -7);
-    //        sc.setstep("missy", 19);
-    //        sc.setstep("jeffery", 5);
-    //        gv.set("shinkCock", true);
-    //        gv.mod("money", 120);
-    //        char.addtime(520);
-    //        char.room(0);
-    //        break;
-    //    case "callJeffery":
-    //        nav.killall();
-    //        nav.bg("200_frontOffice/200_frontOfficeJeffery.jpg");
-    //        if (sc.checkevent("jeffery", -1))
-    //            chat(78, 200);
-    //        else
-    //            chat(82, 200);
-    //        break;
-    //    case "dataentry":
-    //        g.pass = "hypno1";
-    //        nav.room(205);
-    //        break;
-    //    case "finish11":
-    //        sc.setstep("missy", 12);
-    //        char.room(0);
-    //        break;
-    //    case "12leave20":
-    //        gv.mod("money", 20);
-    //        sc.setstep("missy", 13);
-    //        cl.c.shirt = "r";
-    //        cl.c.panties = "w";
-    //        cl.c.pants = "k";
-    //        cl.c.shoes = "fb";
-    //        cl.display();
-    //        char.room(0);
-    //        break;
-    //    case "12leave0":
-    //        sc.setstep("missy", 13);
-    //        cl.c.shirt = "r";
-    //        cl.c.panties = "w";
-    //        cl.c.pants = "k";
-    //        cl.c.shoes = "fb";
-    //        cl.display();
-    //        char.room(0);
-    //        break;
-    //    case "12Strip":
-    //        cl.nude();
-    //        nav.killall();
-    //        nav.bg("200_frontOffice/buttcheeks.jpg");
-    //        break;
-    //    case "12Strip1":
-    //        nav.bg("200_frontOffice/buttcheeks1.jpg");
-    //        break;
-    //    case "14next":
-    //        cl.nude();
-    //        char.room(202);
-    //        break;
-    //    case "repeatBathroom":
-    //        g.pass = "repeatBathroom";
-    //        char.room(201);
-    //        break;
-    //    case "repeatBathroomLeave":
-    //        gv.mod("money", 40);
-    //        char.addtime(360);
-    //        g.pass = "";
-    //        char.room(0);
-    //        break;
-    //    case "repeatCards":
-    //        g.pass = "repeatCards";
-    //        char.room(204);
-    //        break;
-    //    case "repeatHypno":
-    //        g.pass = "repeatHypno";
-    //        char.room(205);
-    //        break;
-    //    case "repeatHypnoleave":
-    //        g.pass = "";
-    //        gv.mod("money", 30);
-    //        char.room(0);
-    //        break;
-    //    case "repeatdildomouth":
-    //        g.pass = "repeatdildomouth";
-    //        char.room(202);
-    //        break;
-    //    case "repeatdildomouthfinish":
-    //        char.addtime(120);
-    //        char.room(0);
-    //        break;
-    //    case "repeatstool":
-    //        g.pass = "repeatstool";
-    //        char.room(202);
-    //        break;
-    //    case "disrobe20b":
-    //        nav.killall();
-    //        cl.nude();
-    //        nav.bg("200_frontOffice/jeff1.jpg");
-    //        break;
-    //    case "givepanties20":
-    //        nav.bg("200_frontOffice/jeff2.jpg");
-    //        break;
-    //    case "pocket20":
-    //        nav.bg("200_frontOffice/jeff3.jpg");
-    //        break;
-    //    case "rack20":
-    //        nav.bg("200_frontOffice/cross.jpg");
-    //        zcl.displayMain(0, 810, .18, "armsup", false);
-
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "missy",
-    //            "left": 0,
-    //            "top": 0,
-    //            "width": 1920,
-    //            "height": 1080,
-    //            "image": "200_frontOffice/tieddown.png"
-    //        }, 200);
-    //        break;
-    //    case "jeffleave20":
-    //        nav.killall();
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "missy",
-    //            "left": 872,
-    //            "top": 481,
-    //            "width": 224,
-    //            "height": 483,
-    //            "image": "200_frontOffice/200_missy.png"
-    //        }, 200);
-    //        nav.bg("200_frontOffice/200_frontOffice.jpg");
-    //        zcl.displayMain(445, 1380, .05, "armsup", false);
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "tiedown",
-    //            "left": 1372,
-    //            "top": 440,
-    //            "width": 221,
-    //            "height": 80,
-    //            "image": "200_frontOffice/tieddownsmall.png"
-    //        }, 200);
-
-    //        break;
-    //    case "20stand1":
-    //        nav.killbutton("missy");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "missy",
-    //            "left": 164,
-    //            "top": 389,
-    //            "width": 237,
-    //            "height": 628,
-    //            "image": "200_frontOffice/missy_stand.png"
-    //        }, 200);
-    //        break;
-    //    case "20stand2":
-    //        nav.killbutton("missy");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "missy",
-    //            "left": 872,
-    //            "top": 481,
-    //            "width": 224,
-    //            "height": 483,
-    //            "image": "200_frontOffice/200_missy.png"
-    //        }, 200);
-    //        break;
-    //    case "20stand3":
-    //        nav.killbutton("missy");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "missy",
-    //            "left": 1489,
-    //            "top": 360,
-    //            "width": 218,
-    //            "height": 700,
-    //            "image": "200_frontOffice/missy_stand1.png"
-    //        }, 200);
-    //        break;
-    //    case "20End":
-    //        cl.undo();
-    //        cl.remove("panties", "w");
-    //        cl.display();
-    //        char.settime(23, 12);
-    //        sc.setstep("jeffery", 8);
-    //        g.sissy[28].ach = true;
-    //        gv.set("oncase", null); 
-    //        g.roomMapAccess(250, true, true);
-    //        char.room(0);
-    //        break;
-    //    case "20jeffgo":
-    //        nav.killall();
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "missy",
-    //            "left": 872,
-    //            "top": 481,
-    //            "width": 224,
-    //            "height": 483,
-    //            "image": "200_frontOffice/200_missy.png"
-    //        }, 200);
-    //        gv.mod("money", 500);
-    //        nav.bg("200_frontOffice/200_frontOffice.jpg");
-    //        break;
-    //    case "20eatass":
-    //        g.pass = "20eatass";
-    //        nav.room(202);
-    //        break;
-    //    case "20Pick":
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "panty_q",
-    //            "left": 1326,
-    //            "top": 377,
-    //            "width": 488,
-    //            "height": 227,
-    //            "image": "200_frontOffice/panty_q.png"
-    //        }, 200);
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "panty_h",
-    //            "left": 724,
-    //            "top": 377,
-    //            "width": 488,
-    //            "height": 227,
-    //            "image": "200_frontOffice/panty_h.png"
-    //        }, 200);
-    //        break;
-    //    case "cock1":
-    //        nav.killall();
-    //        cl.nude();
-    //        cl.display();
-    //        nav.bg("200_frontOffice/cock1.jpg");
-    //        break;
-    //    case "cock2":
-    //        nav.bg("200_frontOffice/cock2.jpg");
-    //        break;
-    //    case "cock3":
-    //        nav.bg("200_frontOffice/cock3.jpg");
-    //        break;
-    //    case "cock4":
-    //        nav.bg("200_frontOffice/cock4.jpg");
-    //        break;
-    //    case "cock5":
-    //        nav.bg("200_frontOffice/cock5.jpg");
-    //        break;
-    //    case "cock6":
-    //        nav.bg("200_frontOffice/cock6.jpg");
-    //        break;
-    //    case "cock7":
-    //        nav.bg("200_frontOffice/cock7.jpg");
-    //        break;
-    //    case "cock8":
-    //        nav.bg("200_frontOffice/cock8.jpg");
-    //        break;
-    //    case "cock9":
-    //        nav.bg("200_frontOffice/200_frontOffice.jpg");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "missy",
-    //            "left": 872,
-    //            "top": 481,
-    //            "width": 224,
-    //            "height": 483,
-    //            "image": "200_frontOffice/200_missy.png"
-    //        }, 200);
-    //        cl.c.shirt = "r";
-    //        cl.c.panties = "w";
-    //        cl.c.pants = "k";
-    //        cl.c.shoes = "fb";
-    //        cl.c.panties = "w";
-    //        cl.display();
-    //        break;
-    //    case "strip24":
-    //        nav.killall();
-    //        cl.nude();
-    //        nav.bg("200_frontOffice/202_sideDesk.jpg");
-    //        zcl.kneel(500, 1000, .3, "", false);
-    //        break;
-    //    case "leave24":
-    //        cl.undo();
-    //        char.addtime(180);
-    //        char.room(0);
-    //        break;
-    //    case "24progress":
-    //        cl.undo();
-    //        sc.setstep("missy", 25);
-    //        char.addtime(200);
-    //        char.room(0);
-    //        break;
-    //    case "25ChstityCheck":
-    //        if (cl.c.chastity === "pink")
-    //            chat(0, 200);
-    //        else
-    //            chat(166, 200);
-    //        break;
-    //    case "25a":
-    //        if (sc.checkevent("tiffany", -5))
-    //            chat(166, 200);
-    //        else
-    //            chat(165, 200);
-    //        break;
-    //    case "25b":
-    //        if (sc.checkevent("holly", -1))
-    //            chat(167, 200);
-    //        else
-    //            chat(168, 200);
-    //        break;
-    //    case "25c":
-    //        sc.setstep("missy", 27);
-    //        sc.setstep("cecilia", 1);
-    //        char.addtime(180);
-    //        char.room(0);
-    //        break;
-    //    case "leaveRoom0":
-    //        char.addtime(30);
-    //        char.room(0);
-    //        break;
-    //    case "questionairre":
-    //        if (g.fight === null)
-    //            g.fight = 10;
-    //        if (g.fight > 54) {
-    //            scc.love("missy", 10, 50);
-    //            chat(3, 200);
-    //        }
-    //        else if (g.fight > 10) {
-    //            scc.love("missy", 5, 50);
-    //            chat(6, 200);
-    //        }
-    //        else {
-    //            if (g.fight < 2)
-    //                scc.love("missy", -10, 100);
-    //            else
-    //                scc.love("missy", -5, 100);
-    //            chat(7, 200);
-    //        }
-    //        g.fight = null;
-    //        break;
-    //    case "mlike":
-    //        scc.love("missy", 2, 50);
-    //        break;
-    //    case "mhate":
-    //        scc.love("missy", -2, 50);
-    //        break;
-    //    case "end9":
-    //        cl.c.pants = "s";
-    //        cl.c.shirt = "s";
-    //        cl.c.socks = "b";
-    //        cl.c.shoes = "d";
-    //        cl.display();
-    //        sc.setstep("missy", 10);
-    //        char.addtime(360);
-    //        char.room(0);
-    //        break;
-    //    case "h_19":
-    //        g.sissy[19].ach = true;
-    //        gv.set("oncase", "sewer");
-    //        room209.chatcatch("end");
-    //        break;
-    //    case "endRedBox":
-    //        gv.set("oncase", null);
-    //        g.sissy[19].ach = true;
-    //        gv.mod("money", 100);
-    //        scc.love("missy", 20);
-    //        inv.use("redbox");
-    //        char.addtime(30);
-    //        char.room(0);
-    //        break;
-    //    case "h28_1":
-    //        cl.c.shirt = null;
-    //        zcl.displayMain(0, 400, .22, "clothes", true);
-    //        break;
-    //    case "h28_2":
-    //        cl.c.pants = null;
-    //        zcl.displayMain(0, 400, .22, "clothes", true);
-    //        break;
-    //    case "h28_3":
-    //        gv.set("oncase", "diner");
-    //        sc.setstep("jeffery", 3);
-    //        char.addtime(400);
-    //        g.internal = "201 change";
-    //        g.pass = "";
-    //        char.room(201);
-    //        break;
-    //    case "g2_furniture":
-    //        g.pass = "g2_furniture";
-    //        char.room(202);
-    //        break;
-    //    case "g2_furniture_1":
-    //        gv.mod("money", 20);
-    //        gv.mod("missyPoints", 30);
-    //        g.sissy[2].ach = true;
-    //        room209.chatcatch("end");
-    //        break;
-    //    default:
-    //        break;
-    //}
 };
 
 room200.chat = function (chatID) {
@@ -698,7 +188,7 @@ room200.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "missy",
-            text: g.internal,
+            text: g.internal.activeCase.notReadyTxt,
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "" },
             ]
@@ -746,6 +236,175 @@ room200.chat = function (chatID) {
                     "job you want to do on your first day. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "selectJob" },
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "missy",
+                text: "I have a suprise for you. Just a moment while I set up. ",
+                button: [
+                    { chatID: 5, text: "...", callback: "case_booth1" },
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "missy",
+                text: "Ok Airhead listen up. I guess it's time for your first real case. A friend of mine at " +
+                    "Toys 'n Us has an ongoing  " +
+                    "series of run-ins with some crazy cum beast. It seems that some one goes into their wack-off booths " +
+                    "and just covers it in their cum. It wouldn't be a problem if they paid for a show, but then just enter and " +
+                    "in a matter of minutes they just cover the entire booth in cum and run. It would be quite impressive if " +
+                    sc.n("tiffany") + " and " + sc.n("candy") + " didn't have to spend so much time cleaning it up. " +
+                    "I need you to go there, watch the booths, and catch that animal. Do you have all this so far?",
+                button: [
+                    { chatID: 6, text: "Yes ma'am", callback: "case_booth2" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "missy",
+                text: "OK, I need you to go to the Toys 'n Us and meet with " + sc.n("tiffany") + ", she'll explain what to do. This is your " +
+                    "first big break, don't fuck it up. Now repeat back to me what you're doing.",
+                button: [
+                    { chatID: 7, text: "Go to the mall and buy new shoes", callback: "hate" },
+                    { chatID: 7, text: "Go home and masturbate to Hentai", callback: "hate" },
+                    { chatID: 8, text: "Going straight to Toys 'n Us and follow " + sc.n("tiffany") + "'s orders", callback: "" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "missy",
+                text: "No you moron. Go to Toys 'n Us and do what " + sc.n("tiffany") + " says. Now get out " + 
+                    "before your stipidity spreads to me. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_afterExplaniation" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "missy",
+                text: "You got it Airhead, Head over to the toy store and take care of it. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_afterExplaniation" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "missy",
+                text: "Now that you've complete a week's worth of work I'm going to give you a chance to " +
+                    "do some investigations. Some will be for me, and some for our clients. All are to be " +
+                    "treated with the utmost care and dedication. Successfully completing a case will bring " +
+                    "great rewards, and failures will bring great retribution. ",
+                button: [
+                    { chatID: 10, text: "Yes ma'am", callback: "explain0" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "missy",
+                text: "As I continue to mold you, and you improve yourself, more cases will be " +
+                    "available. Those cases that you are almost ready for will show themselves with the " +
+                    "red mark. You can check them to see what you need to improve to do that case. Those " +
+                    "that you are ready for will show how much that case is worth successfully completed. ",
+                button: [
+                    { chatID: 11, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "missy",
+                text: "If you are on a case, that is your job. You will focus only on the case, and you " +
+                    "won't need to come back here. Once you're complete with your case report to " + sc.n("cecilia") +
+                    " and she'll inform me. Now ready to start your day? ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "selectJob" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "missy",
+                text: sc.n("tiffany") + " informed me on what happened. Great work, that cult is always up to something. I'm " +
+                    "sure this little event will cause them to do their extraction process elsewhere. As promised here's $300 " +
+                    "for your fine work on your first case. ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am", callback: "case_booth_complete" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "missy",
+                text: sc.n("tiffany") + " informed me on what happened. All you had to do was sit there and look out of a peep " +
+                    "hole and you couldn't get that right! I guess your cock is in control of your brain. ",
+                button: [
+                    { chatID: -1, text: "ma'am", callback: "case_booth_complete_bad" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "missy",
+                text: "At this facility we have a School for extraordinary girls. One of our Professors, Martha, who is " +
+                    "the Mistress of Etiquette at the school has a daughter that has run away. ",
+                button: [
+                    { chatID: 15, text: "What's the school for extraordinary girls? ", callback: "" },
+                    { chatID: 16, text: "Yes ma'am ", callback: "case_lostgirl1" },
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "missy",
+                text: "The school started as a side project of mine with a friend of mine, Princess Pink. It started as a way for us " +
+                    "to give back to the community and help lost little girls find themselves. But over the years it has really " +
+                    "grown to a fully funcitonal school. Princess Pink has really done some tremendous work making it what it is. " +
+                    "Don't worry, I'm sure you'll see more of the school in your future. ",
+                button: [
+                    { chatID: 16, text: "...", callback: "case_lostgirl1" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "missy",
+                text: "This is Sanaria, Martha's daughter. Martha's fairly sure she's somewhere in town. I need you to search " +   
+                    "all the buildings you can looking for her. She's probably moving around so you'll need to look around both " +
+                    "day and night. She's in her party phase, so also check where there's a lot of people. I'm going to send a " +
+                    "picture of her to your phone so you can verify her identity. Once you find her call me immediately. ",
+                button: [
+                    { chatID: 17, text: "Got it!", callback: "" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "missy",
+                text: "Good. Don't fuck around ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am!", callback: "case_lostgirl2" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "missy",
+                text: "Excellent work in tracking down Sanaria. " + sc.n("martha") + " is thrilled to get her daughter back. " +
+                    "as promised, your $250 reward for a job well done. ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am!", callback: "case_lostgirl_goodend" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "missy",
+                text: "Your little fuckup cost me over $1000. I had to hire another investigator to track her down since I " +
+                    "don't have time to do it myself. Not only do I waste money, but I look like an idiot hiring another PI " +
+                    "to do a job this agency should be doing. For your stipidity a punishment is in order. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_lostgirl_badend" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "missy",
+                text: "You tried to fuck " + sc.n("martha") + "'s daughter in a night club bathroom? I don't even know where to " +
+                    "begin. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "case_lostgirl_chastity" }
                 ]
             },
             //},

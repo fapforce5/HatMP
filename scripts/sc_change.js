@@ -1,37 +1,6 @@
 ﻿
 var scc = {};
 scc.changeText = "";
-////g.char MUST BE LOWERCASE!!!!!!!!!!
-//scc.char = [
-//    { name: "landlord", display: "Land Lord", image: "mom.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2 },
-//    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true, phone: 12 },
-//    { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "jada", display: "Jada", image: "jada.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "holly", display: "Holly", image: "holly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "molly", display: "Molly", image: "molly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//];
 
 scc.changes = [
     { name: "zoey", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
@@ -46,6 +15,41 @@ scc.changes = [
     { name: "cult", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
     { name: "bodhi", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
 ];
+
+scc.getSet = function (name, characterCanSeeCock) {
+    var changes = {
+        xdress: null,
+        chest: null,
+        leg: null,
+        hair: null,
+        cock: null
+    };
+    for (var i = 0; i < scc.changes.length; i++) {
+        if (scc.changes[i].name === name) {
+            if (cl.isCrossdressing() && !scc.changes[i].xdress) {
+                changes.xdress = true;
+                scc.changes[i].xdress = true;
+            }
+            if (cl.c.chest !== scc.changes[i].chest) {
+                changes.chest = cl.c.chest;
+                scc.changes[i].chest = cl.c.chest;
+            }
+            if (cl.c.leg !== scc.changes[i].leg) {
+                changes.leg = cl.c.leg;
+                scc.changes[i].leg = cl.c.leg;
+            }
+            if (cl.c.hair !== scc.changes[i].hair) {
+                changes.hair = cl.c.hair;
+                scc.changes[i].hair = cl.c.hair;
+            }
+            if (cl.c.cock !== scc.changes[i].cock && characterCanSeeCock) {
+                changes.cock = cl.c.cock;
+                scc.changes[i].cock = cl.c.cock;
+            }
+        }
+    }
+    return changes;
+};
 
 scc.changesDiffernt = function (name, cock) {
     var i, ix;

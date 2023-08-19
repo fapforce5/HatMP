@@ -3,14 +3,7 @@ var room204 = {};
 
 room204.main = function () {
     $('#room_footer').hide();
-    if (missy.st[6].c === 1) {
-        chat(0, 204);
-    }
-    else if (g.pass === "repeatCards") {
-        chat(14, 204);
-    }
-    else
-        chat(4, 204);
+    chat(4, 204);
 };
 
 room204.countdown = function (timer) {
@@ -39,9 +32,6 @@ room204.countdown = function (timer) {
         }
         else {
             room204.chatcatch("endgame");
-            //g.roomTimeout = null;
-            //g.internal = { cardsLeft: g.pass.length, pay: Math.ceil((12 - g.pass.length) * 3.33) };
-            //chat(999, 204);
         }
     }
 };
@@ -100,7 +90,7 @@ room204.btnclick = function (name) {
 room204.startGame = function () {
     var thisArousal = gv.get("arousal");
     var secondsOffsetForHorny = thisArousal > 50 ? Math.floor((115 - thisArousal) * .6) : 0;
-    g.internal = { s: false, horny: secondsOffsetForHorny, numberWrong: 0 };
+    g.internal = { s: false, horny: secondsOffsetForHorny, numberWrong: 0, pay: 0 };
     $('#room_footer').hide();
     //88
     var checkArray = new Array();
@@ -224,31 +214,38 @@ room204.chatcatch = function (callback) {
             var piPoints = (cardsComplete * 2) - g.internal.numberWrong;
             var numberWrong = g.internal.numberWrong;
             var pay = Math.ceil(cardsComplete * 3.33);
-            if (piPoints > 0)
+            g.internal.pay = pay;
+
+            if (piPoints > 0) {
                 levels.mod("pi", piPoints, 4);
+                levels.mod("int", Math.ceil(piPoints / 2), 4);
+            }
 
             if (cardsComplete === 12 && numberWrong === 0) {
-                 
-                //missy mood + 15 
+                missy.mod("mood", 15);
                 chat(13, 204);
 
             }
+            else if (cardsComplete === 12) {
+                missy.mod("mood", numberWrong * -1);
+                chat(998, 204);
+            }
+            else {
+                missy.mod("mood", (numberWrong * -1) + ((12 - cardsComplete) * -2));
+                chat(999, 204);
+            }
 
             g.internal = { cardsLeft: g.pass.length, pay: pay, numberWrong: numberWrong };
-            
-
-
             break;
         case "mhate":
-            missy.mod(0, -2);
+            missy.mod("mood", -2);
             break;
         case "killDirtyThought":
             nav.killbutton("dirtythought");
             g.internal.s = false;
             break;
         case "lunch":
-            missy.mod(6, 1);
-            missy.mod(29, 1);
+            missy.didJob(1, null, g.internal.pay);
             char.room(224);
             break;
         default:
@@ -257,29 +254,28 @@ room204.chatcatch = function (callback) {
 };
 
 room204.chat = function (chatID) {
-    if (chatID === 999) {
-        if (g.internal.cardsLeft === 0) {
-            return {
-                chatID: 999,
-                speaker: "missy",
-                text: "Marvelous work. I do love a literate little helper. You may go to lunch. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "lunch" }
-                ]
-            };
+    if (chatID === 998) {
+        return {
+            chatID: 998,
+            speaker: "missy",
+            text: "You misfiled " + g.internal.numberWrong + " files, but you were able to complete the task. " +
+                " You need to work on your attention span. Go to lunch ",
+            button: [
+                { chatID: -1, text: "...", callback: "lunch" }
+            ]
         }
-        else {
-            return {
-                chatID: 999,
-                speaker: "missy",
-                text: "You missed " + g.internal.cardsLeft + " files. You had enough time, but you " +
-                    "chose to daydream and waste the day away. I'm docking your pay. You're only " +
-                    "being paid $" + g.internal.pay + " for your substandard work. Now go to lunch. ",
-                button: [
-                    { chatID: 1, text: "...", callback: "lunch" }
-                ]
-            };
-        }
+    }
+    else if (chatID === 999) {
+        return {
+            chatID: 999,
+            speaker: "missy",
+            text: "You misfiled " + g.internal.numberWrong + " files, and you only filed " +
+                (12 - g.pass.length) + " files.  You will only receive $" + g.internal.pay +
+                ". You need to try harder if you're going to succeed in life. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "lunch" }
+            ]
+        };
     }
     else {
         var cArray = [

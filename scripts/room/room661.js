@@ -1,7 +1,7 @@
 ﻿//Room name
 var room661 = {};
 room661.main = function () {
-    if (g.pass === "new") {
+    if (missy.get("reusableCaseCounter") === 0) {
         var btnList = [
             {
                 "type": "img",
@@ -23,7 +23,6 @@ room661.main = function () {
         chat(2, 661);
     }
     g.internal = 0;
-
 };
 
 room661.btnclick = function (name) {
@@ -43,10 +42,8 @@ room661.chatcatch = function (callback) {
             chat(2, 661);
             break;
         case "makePerson":
-            if (Math.floor(Math.random() * 2) === 0)
-                nav.bg("661_peephole/661_peephole0.jpg");
-            else
-                nav.bg("661_peephole/661_peephole1.jpg");
+            var person = Math.floor(Math.random() * 7);
+            nav.bg("661_peephole/661_peephole" + person + ".jpg");
             break;
         case "check":
             nav.bg("661_peephole/661_interior.png");
@@ -54,11 +51,12 @@ room661.chatcatch = function (callback) {
         case "recycle":
             char.addtime(60);
             g.internal++;
-            if (g.internal > 0 && sc.getstep("tiffany") > 3) {
-                nav.bg("661_peephole/662_peephole2.jpg");
+            levels.mod("pi", 2, 3);
+            if (g.internal > 0 && missy.get("reusableCaseCounter") > 1) {
+                nav.bg("661_peephole/661_peephole8.jpg");
                 chat(17, 661);
             }
-            else if (g.internal < 5) {
+            else if (g.internal < 3) {
                 nav.bg("661_peephole/661_peephole.jpg");
                 chat(2, 661);
             }
@@ -77,9 +75,8 @@ room661.chatcatch = function (callback) {
             }
             break;
         case "end":
-            daily.set("tif");
-            if (sc.getstep("tiffany") < 10)
-                sc.incstep("tiffany", 1);
+            char.settime(17, 5);
+            missy.mod("reusableCaseCounter", 1);
             char.room(651);
             break;
         case "peek1":
@@ -108,11 +105,13 @@ room661.chatcatch = function (callback) {
             zcl.displayMain(-200, -100, .35, "clothes", true);
             break;
         case "peek5":
-            char.addtime(360);
-            sc.setstep("tiffany", -5);
-            sc.setstep("tiffany", 5);
-            sc.setstep("missy", 8);
-            g.roomMapAccess(650, false, false);
+            char.addtime(30);
+            //sc.setstep("tiffany", -5);
+            //sc.setstep("tiffany", 5);
+            //sc.setstep("missy", 8);
+            //g.roomMapAccess(650, false, false);
+            missy.set("activeCaseComplete", 2);
+            missy.mod("reusableCaseCounter", 1);
             char.room(0);
             break;
         case "nap":
@@ -181,9 +180,7 @@ room661.chatcatch = function (callback) {
             break;
         case "caught8":
             char.addtime(360);
-            sc.setstep("tiffany", -4);
-            sc.setstep("tiffany", 5);
-            sc.setstep("missy", 8);
+            missy.set("activeCaseComplete", 1);
             char.room(0);
             break;
         default:

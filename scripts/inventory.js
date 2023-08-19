@@ -116,6 +116,7 @@ pic.master = [
     { name: "lolaMast", display: "Lola Masturbating", entry: false, image: "lolaMast.jpg", thumb: "lolaMast.png" },
     { name: "lolaTopless", display: "Lola Topless", entry: false, image: "lolaTopless.jpg", thumb: "lolaTopless.png" },
     { name: "landlordSleep", display: "Landlord Sleep", entry: false, image: "landloardSleep.jpg", thumb: "landloardSleep.png" },
+    { name: "case_lostgirl", display: "Sanaria", entry: false, image: "case_lostgirl.jpg", thumb: "case_lostgirl.png" },
     { name: "pantyThief", display: "Panty Theif", entry: false, image: "pantyThief.jpg", thumb: "pantyThief.png" },
     { name: "jada_b", display: "Group Photo", entry: false, image: "jada_b.jpg", thumb: "jada_b.png" },
     { name: "jada_f", display: "Group Photo", entry: false, image: "jada_f.jpg", thumb: "jada_f.png" },
@@ -178,6 +179,9 @@ $(document).ready(function () {
     });
 });
 
+inv.getPhoneAsBackground = function () {
+    return "1001_rand/" + inv.phone + ".jpg";
+};
 
 inv.gett = function (t) {
     var i;

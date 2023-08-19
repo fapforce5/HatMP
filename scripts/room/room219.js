@@ -2,12 +2,13 @@
 var room219 = {};
 room219.main = function () {
     g.internal = null;
-    if (missy.st[4].c === 0) {
+    if (missy.get("dataEntryFirstTime") === 0) {
+        missy.set("dataEntryFirstTime", 1);
         nav.bg("219_dataEntry/talk1.jpg");
         chat(0, 219);
     }
     else {
-
+        room219.btnclick("home");
     }
 };
 
@@ -135,7 +136,7 @@ room219.chatcatch = function (callback) {
             nav.bg("219_dataEntry/bg.jpg");
             break;
         case "missyHate":
-            missy.mod(0, -10);
+            missy.mod("mood", -10);
             room219.chatcatch("start");
             break;
         case "snapout":
@@ -146,20 +147,17 @@ room219.chatcatch = function (callback) {
         case "snapoutHypno":
             nav.killall();
             cl.c.eyes = g.internal;
-            nav.bg("219_dataEntry/complete.jpg");
+            nav.bg("219_dataEntry/caught.jpg");
             break;
         case "hypnolunch":
             //track if success
-            missy.mod(4, 1);
-            missy.mod(27, 1);
+            missy.didJob(2, 0, null);
             gv.mod("energy", -15);
             char.room(224);
             break;
         case "workLunch":
             //track if success
-            missy.mod(4, 1);
-            missy.mod(27, 1);
-            gv.mod("energy", -10);
+            missy.didJob(2, 0, 1);
             char.room(224);
             break;
         default:
@@ -233,10 +231,10 @@ room219.chat = function (chatID) {
         },
         {
             chatID: 7,
-            speaker: "cecilia",
-            text: "Hey, you're kinda zoned out. Take a break it's lunch time! ",
+            speaker: "missy",
+            text: "Hey, space cadet. You're supposed to be working, not zoning out! No pay for you! ",
             button: [
-                { chatID: -1, text: "Oh, huh, yeah.", callback: "hypnolunch" },
+                { chatID: -1, text: "Oh, huh, yes ma'am.", callback: "hypnolunch" },
             ]
         },
         {

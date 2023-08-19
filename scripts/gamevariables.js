@@ -41,7 +41,7 @@ gv.init = function () {
         { n: "bladder", t: 0, q: "zero" },
         { n: "cum", t: g.startDate, q: "date" },
         { n: "chastityLock", t: false, q: "bool" },
-        { n: "oncase", t: null, q: "string" },
+        { n: "missyWeekly", t: "", q: "string" },
 
         //Settings
         { n: "fantasyCreatures", t: false, q: "bool" },
@@ -78,7 +78,8 @@ gv.init = function () {
 
         { n: "pill", t: null, q: "string" },
 
-        
+        //missy
+        { n: "chastity", t: null, q: "date" },
 
         
 
@@ -172,7 +173,7 @@ gv.init = function () {
     ];
 
     levels.st = [
-        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: false, page: 1 },
+        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, page: 1 },
         { id: 1, n: "xdress", d: "X-Dress", c: 0, l: 0, autoLevel: true, page: 1 },
         { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, page: 1 },
         { id: 3, n: "dom", d: "Dominate", c: 0, l: 0, autoLevel: true, page: 1 },
@@ -353,6 +354,15 @@ levels.mod = function (name, amount, targetLevel) {
     sstat.makeGraph();
 };
 
+sex.mod = function (type, give, gender, number) {
+    for (var i = 0; i < sex.st.length; i++) {
+        if (sex.st[i].type === type && sex.st[i].give === give && sex.st[i].gender === gender) {
+            sex.st[i].c += number;
+            break;
+        }
+    }
+}
+
 levels.desc = function (name, level) {
     switch (name) {
         case "xdress":
@@ -497,6 +507,29 @@ levels.desc = function (name, level) {
             return (level * 5) + " Fight Defense Increase";
     }
     return "Need to add text here! " + name + " level: " + level;
+};
+
+sex.getFuck = function () {
+    var x = {
+        anal: sex.st[0].c + sex.st[1].c,
+        oral: sex.st[4].c + sex.st[5].c,
+        hand: sex.st[8].c + sex.st[9].c,
+        foot: sex.st[16].c + sex.st[17].c,
+        pussy: sex.st[24].c + sex.st[25].c,
+        tits: sex.st[40].c + sex.st[41].c,
+        beast: sex.st[44].c + sex.st[45].c,
+    };
+
+    return {
+        anal: x.anal,
+        oral: x.oral,
+        hand: x.hand,
+        foot: x.foot,
+        pussy: x.pussy,
+        tits: x.tits,
+        beast: x.beast,
+        virginDick: x.anal === 0 && x.oral === 0 && x.hand === 0 && x.foot === 0 && x.pussy === 0 && x.tits === 0 && x.beast === 0
+    };
 };
 
 gv.save = function () {

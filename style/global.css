@@ -801,8 +801,8 @@ input[type=text]:disabled{
 }
 
 .rl-selectButton button {
-    background: #000;
-    border: solid thin #e75480;
+    border:none;
+    background:none;
     color: #fff;
     display: inline-block;
     font-size: 12px;
@@ -812,9 +812,7 @@ input[type=text]:disabled{
 }
 
 .rl-selectButton-active {
-    background: #4f004a !important;
-    /*border: solid thin #000 !important;*/
-    color: #fff !important;
+    color: #e3008d !important;
 }
 
 #room_export_load,

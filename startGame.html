@@ -19,6 +19,7 @@
     <script src="./scripts/quest3.js" type="text/javascript"></script>
     <script src="./scripts/nav.js" type="text/javascript"></script>
     <script src="./scripts/chat.js" type="text/javascript"></script>
+    <script src="./scripts/missyHelper.js" type="text/javascript"></script>
     <script src="./scripts/char.js" type="text/javascript"></script>
     <script src="./scripts/map.js" type="text/javascript"></script>
     <script src="./scripts/enemy.js" type="text/javascript"></script>
@@ -26,7 +27,6 @@
     <script src="./scripts/trophy.js" type="text/javascript"></script>
     <script src="./scripts/rape.js" type="text/javascript"></script>
     <script src="./scripts/stats.js" type="text/javascript"></script>
-    <script src="./scripts/missyHelper.js" type="text/javascript"></script>
 
     <script src="./scripts/room/room000.js" type="text/javascript"></script>
     <script src="./scripts/room/room001.js" type="text/javascript"></script>
@@ -78,6 +78,9 @@
     <script src="./scripts/room/room150.js" type="text/javascript"></script>
     <script src="./scripts/room/room151.js" type="text/javascript"></script>
     <script src="./scripts/room/room152.js" type="text/javascript"></script>
+    <script src="./scripts/room/room196.js" type="text/javascript"></script>
+    <script src="./scripts/room/room197.js" type="text/javascript"></script>
+    <script src="./scripts/room/room198.js" type="text/javascript"></script>
     <script src="./scripts/room/room199.js" type="text/javascript"></script>
     <script src="./scripts/room/room200.js" type="text/javascript"></script>
     <script src="./scripts/room/room201.js" type="text/javascript"></script>
@@ -314,6 +317,7 @@
                     <div class="mt-50x rl-selectButton" style="margin-top:50px;" id="rl_pageSelect">
                         <button data-number="0" class="char-20 rl-selectButton-active">General</button>
                         <button data-number="1" class="char-20">Cravings</button>
+                        <button data-number="3" class="char-20">Missy</button>
                         <button data-number="2" class="char-20">Fight</button>
                     </div>
                     <div id="rl_page0">
@@ -330,7 +334,7 @@
                         <div class="menu-box" style="position:relative;">
                             <img src="./images/general/stat_energy.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                             <div style="margin-left:26%; position:absolute; margin-top:7%">
-                                <div class="char-20 bold" style="text-align:left;" >Energy</div>
+                                <div class="char-20 bold" style="text-align:left;">Energy</div>
                                 <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="energy"></div>
                             </div>
                             <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
@@ -382,42 +386,22 @@
                             </div>
                         </div>
                         <!--Gallons of piss drank: 0
-                        Gallons of cum drank: 0
-                        Gallons of cum in your ass: 0
-                        Gallons of enemas: 0
-                        Raped: 0-->
+        Gallons of cum drank: 0
+        Gallons of cum in your ass: 0
+        Gallons of enemas: 0
+        Raped: 0-->
                     </div>
                     <div id="rl_page1">
-                        <div class="menu-box" style="position:relative;">
-                            <img src="./images/general/stat_pi.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
-                            <div style="margin-left:26%; position:absolute; margin-top:7%">
-                                <div class="char-20 bold" style="text-align:left">Invistigation</div>
-                                <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="pi"></div>
-                            </div>
-                            <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
-                                <div data-name="pi" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
-                            </div>
-                        </div>
+                        
 
                         <div class="menu-box" style="position:relative;">
                             <img src="./images/general/stat_xdress.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                             <div style="margin-left:26%; position:absolute; margin-top:7%">
-                                <div class="char-20 bold" style="text-align:left">Outfits</div>
+                                <div class="char-20 bold" style="text-align:left">Girly / Bimbo / Slut? (need word)</div>
                                 <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="xdress"></div>
                             </div>
                             <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                                 <div data-name="xdress" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
-                            </div>
-                        </div>
-
-                        <div class="menu-box" style="position:relative;">
-                            <img src="./images/general/stat_sub.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
-                            <div style="margin-left:26%; position:absolute; margin-top:7%">
-                                <div class="char-20 bold" style="text-align:left">Submissiveness</div>
-                                <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="sub"></div>
-                            </div>
-                            <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
-                                <div data-name="sub" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
                             </div>
                         </div>
 
@@ -477,39 +461,43 @@
                         </div>
 
                     </div>
-                        <div id="rl_page2">
-                            <div style="font-size:20px;" class="char-20 mt-50x">Fight!</div>
-                            <div class="left-graph-char" id="lg_charbody">
-                                <img id="rl_fightdisplay-1" src="./images/room/227_fight/h_9_long_back.png" style="width:100%;" />
-                                <img id="rl_fightdisplay0" src="./images/room/227_fight/g_victory_m.png" style="width:100%;" />
-                                <img id="rl_fightdisplay1" src="./images/room/227_fight/g_victory_d_b.png" style="width:100%;" />
-                                <img id="rl_fightdisplay2" src="./images/room/227_fight/h_8_short.png" style="width:100%;" />
-                            </div>
+                    <div id="rl_page3">
 
+                        <div style="font-size:20px;" class="char-20 mt-50x">Missy</div>
 
-                            <div style="font-size:12px;" class="char-20 mt-10" id="rl_fitness">Fitness: 0</div>
-                            <div class="left-graph-char-bar resize-height">
-                                <div data-name="fitness" style="width: 20%; height:  2px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
+                        <div id="missy_mood">Mood: Happy! (Emoji)</div>
+
+                        <div class="menu-box" style="position:relative;">
+                            <img src="./images/general/stat_cash.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                            <div style="margin-left:26%; position:absolute; margin-top:10%">
+                                <div class="char-20 bold" style="text-align:left; margin-top:5%;" id="char_money">Pay: $0</div>
                             </div>
-                            <div style="font-size:12px;" class="char-20 mt-10" id="rl_punch">Punch: 0</div>
-                            <div class="left-graph-char-bar resize-height">
-                                <div data-name="body" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                            </div>
-                            <div style="font-size:12px;" class="char-20 mt-10" id="rl_kick">Kick: 0</div>
-                            <div class="left-graph-char-bar resize-height">
-                                <div data-name="leg" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                            </div>
-                            <div style="font-size:12px;" class="char-20 mt-10" id="rl_d">Defense: 0</div>
-                            <div class="left-graph-char-bar resize-height">
-                                <div data-name="d" style="width: 20%; height:  15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                            </div>
-                            <div style="font-size:12px;" class="char-20 mt-10" id="rl_subdom">Neutral</div>
-                            <div class="left-graph-char-bar resize-height" style="background:#ff5ed1;">
-                                <div data-name="subdom" style="width: 20%; height:15px; background:#4E99E0; border-radius:20px 0 0 20px;" class="resize-height rl-bar"></div>
-                            </div>
-                            <hr />
                         </div>
+
+                        <div class="menu-box" style="position:relative;">
+                            <img src="./images/general/stat_pi.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                            <div style="margin-left:26%; position:absolute; margin-top:7%">
+                                <div class="char-20 bold" style="text-align:left">Invistigation</div>
+                                <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="pi"></div>
+                            </div>
+                            <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                                <div data-name="pi" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                            </div>
+                        </div>
+
+                        <div class="menu-box" style="position:relative;">
+                            <img src="./images/general/stat_sub.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                            <div style="margin-left:26%; position:absolute; margin-top:7%">
+                                <div class="char-20 bold" style="text-align:left">Submissiveness</div>
+                                <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="sub"></div>
+                            </div>
+                            <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                                <div data-name="sub" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
             </div>
         </div>
         <div class="room-footer" id="room_footer"></div>
