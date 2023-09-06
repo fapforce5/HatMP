@@ -25,6 +25,7 @@ inv.t = [
     { t: "e", n: "Energy Snack" },
     { t: "g", n: "General Item" },
     { t: "h", n: "Female Hormone" },
+    { t: "i", n: "Dale's Fighting" },
     { t: "m", n: "Makeup" },
     { t: "o", n: "Key" },
     { t: "p", n: "Phone Case" },
@@ -33,6 +34,7 @@ inv.t = [
     { t: "x", n: "ID Card" },
     { t: "y", n: "Hypno" },
     { t: "z", n: "Gift" }
+    
 ];
 
 inv.master = [
@@ -60,6 +62,9 @@ inv.master = [
     { type: "o", name: "key202", display: "Apartment 202 Key", entry: false, count: null, cost: 0, image: "key202.png", n: false, desc: "Key for Holly, Dolly, and Molly's Apartment" },
     { type: "o", name: "lolalocker", display: "Lola's Locker combo", entry: false, count: null, cost: 0, image: "lolalocker.png", n: false, desc: "Lola's Swim Locker Combo" },
     { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
+
+    { type: "i", name: "pocketsand", display: "Pocket Sand", entry: false, count: 0, cost: 50, image: "pocketsand.png", n: false, desc: "Decrease Enemy's fight total by 30 points." },
+    { type: "i", name: "smellingsalts", display: "Smelling Salts", entry: false, count: 0, cost: 200, image: "smellingsalts.png", n: false, desc: "Reroll your fight. " },
 
     { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false, desc: "Default Backpack" },
     { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false, desc: "Boring ol' briefase" },

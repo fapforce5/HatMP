@@ -2,6 +2,7 @@
 var levels = {};
 var daily = {};
 var gv = {};
+var sissy = {};
 var t = {}; //remove this
 
 gv.difficulty = 0;
@@ -47,8 +48,9 @@ gv.init = function () {
         { n: "fantasyCreatures", t: false, q: "bool" },
         { n: "fightspeed", t: 1250, q: "int" },
         { n: "difficulty", t: 1, q: "int" },
-        { n: "clock24", t: "12", q: "bool" },
+        { n: "clock24", t: "12", q: "string" },
         { n: "cheatMode", t: false, q: "bool" },
+        { n: "transformation", t: "voluntary", q: "string" },
 
         //virgin
         { n: "virginMouth", t: 0, q: "string" },
@@ -74,6 +76,20 @@ gv.init = function () {
         //firstTime
         { n: "firstTimeInWardrobe", t: false, q: "bool" },
         { n: "pamphletConstSite", t: false, q: "bool" },
+        { n: "lolaPanties", t: false, q: "bool" },
+        { n: "momsPanties", t: false, q: "bool" },
+
+        //sissyschool
+        { n: "sissySchoolClass", t: "", q: "" },
+        { n: "sissySchoolClassDays", t: 0, q: "int" },
+
+
+
+
+
+
+
+
 
 
         { n: "pill", t: null, q: "string" },
@@ -173,26 +189,26 @@ gv.init = function () {
     ];
 
     levels.st = [
-        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 1, n: "xdress", d: "X-Dress", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 3, n: "dom", d: "Dominate", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 4, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 9, n: "int", d: "Intelligence", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, page: 1 },
-        { id: 11, n: "fame", d: "Famous", c: 0, l: 0, autoLevel: true, page: 1 }, //how likely you are to get raped
+        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 3, n: "dom", d: "Dominate", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 4, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 9, n: "int", d: "Intelligence", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true }, //how likely you are to get raped
 
-        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, page: 2 },
-        { id: 13, n: "body", d: "Upper Strength", c: 0, l: 0, autoLevel: true, page: 2 },
-        { id: 14, n: "leg", d: "Lower Strength", c: 0, l: 0, autoLevel: true, page: 2 },
-        { id: 15, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, page: 2 },
-        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, page: 0 },
-        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, page: 0 },
-        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, page: 0 },
+        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 13, n: "punch", d: "Punch Power", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 14, n: "kick", d: "Kick Power", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 15, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true },
+        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true },
     ];
 
     sex.st = [
@@ -246,10 +262,10 @@ gv.init = function () {
         { id: 38, type: "spit", give: false, gender: "m", c: 0 },
         { id: 39, type: "spit", give: false, gender: "f", c: 0 },
 
-        { id: 40, type: "tits", give: true, gender: "m", c: 0 },
-        { id: 41, type: "tits", give: true, gender: "f", c: 0 },
-        { id: 42, type: "tits", give: false, gender: "m", c: 0 },
-        { id: 43, type: "tits", give: false, gender: "f", c: 0 },
+        { id: 40, type: "boob", give: true, gender: "m", c: 0 },
+        { id: 41, type: "boob", give: true, gender: "f", c: 0 },
+        { id: 42, type: "boob", give: false, gender: "m", c: 0 },
+        { id: 43, type: "boob", give: false, gender: "f", c: 0 },
 
         { id: 44, type: "beast", give: true, gender: "m", c: 0 },
         { id: 45, type: "beast", give: true, gender: "f", c: 0 },
@@ -342,7 +358,7 @@ levels.mod = function (name, amount, targetLevel) {
                     var holder = levels.st[i].c - 100;
                     levels.st[i].l += 1;
                     levels.st[i].c = 0;
-                    //levels.mod(name, holder, targetLevel);
+                    levels.mod(name, holder, targetLevel);
                     g.popUpNotice("You gained a new level for: " + levels.st[i].d + "!" + levels.desc(levels.st[i].n, levels.st[i].l));
                 }
                 else {
@@ -364,149 +380,174 @@ sex.mod = function (type, give, gender, number) {
 }
 
 levels.desc = function (name, level) {
+    if (name === "fitness") {
+        return { count: -1, txt: (level * 5) + " Energy Boost" };
+    }
+    if (name === "punch") {
+        return { count: -1, txt: "+" + (level) + " Punch Power" };
+    }
+    if (name === "kick") {
+        return { count: -1, txt: "+" + (level * 5) + " Kick Power" };
+    }
+    if (name === "defense") {
+        return { count: -1, txt: (level * 5) + " Defense" };
+    }
+    if (name === "int") {
+        return { count: -1, txt: "+" + level + " Lock pick and Pick Pocket" };
+    }
+    if (name === "charisma") {
+        return { count: -1, txt: "+" + level + " Charisma" };
+    }
+    if (name === "fame") {
+        return { count: -1, txt: "+" + level + " Random Encounters" };
+    }
+
+    var levels = new Array();
     switch (name) {
         case "xdress":
-            switch (level) {
-                case 0: return "Boys clothes only";
-                case 1: return "Can wear panties";
-                case 2: return "Can cross dress at home and Missy's";
-                case 3: return "Can work cases crossdressing";
-                case 4: return "Only wear panties and bra";
-                case 5: return "Can modestly cross dress in public ";
-                case 6: return "Can wear sexy outfits";
-                case 7: return "Don't have to wear panties and bra"
-                case 8: return "Can wear slutty clothing";
-                case 9: return "Wear what ever, or nothing at all";
-            }
+            levels = [
+                { id: 0, txt: "Boys clothes only" },
+                { id: 1, txt: "Can wear panties" },
+                { id: 2, txt: "Can cross dress at home and Missy's" },
+                { id: 3, txt: "Can work cases crossdressing" },
+                { id: 4, txt: "Only wear panties and bra" },
+                { id: 5, txt: "Can modestly cross dress in public " },
+                { id: 6, txt: "Can wear sexy outfits" },
+                { id: 7, txt: "Don't have to wear panties and bra" },
+                { id: 8, txt: "Can wear slutty clothing" },
+                { id: 9, txt: "Wear what ever, or nothing at all" }
+            ];
             break;
         case "sub":
-            switch (level) {
-                case 0: return "Not submissive";
-                case 1: return "Can kiss Missy's feet";
-                case 2: return "Can x Missy"
-                case 3: return "Can offer mouth in violent situations"
-                case 4: return "can y missy"
-                case 5: return "Can offer ass in violent situations"
-                case 6: return "TBD"
-                case 7: return "TBD"
-                case 8: return "TBD"
-                case 9: return "TBD"
-            }
+            levels = [
+                { id: 0, txt: "Not submissive" },
+                { id: 1, txt: "Can kiss Missy's feet" },
+                { id: 2, txt: "Can x Missy" },
+                { id: 3, txt: "Can offer mouth in violent situations" },
+                { id: 4, txt: "can y missy" },
+                { id: 5, txt: "Can offer ass in violent situations" },
+                { id: 6, txt: "TBD" },
+                { id: 7, txt: "TBD" },
+                { id: 8, txt: "TBD" },
+                { id: 9, txt: "TBD" },
+            ];
             break;
         case "humiliation":
-            switch (level) {
-                case 0: return "Doesn't like humiliation";
-            }
+            levels = [
+                { id: 0, txt: "Doesn't like humiliation" },
+            ];
             break;
         case "oral":
-            switch (level) {
-                case 0: return "I'm not putting that in my mouth";
-                case 1: return "Can suck small dildos at home";
-                case 2: return "Can suck medium dildos at home";
-                case 3: return "Can deepthroat dildos at home";
-                case 4: return "Can suck a small cock";
-                case 5: return "Can suck large cocks";
-                case 6: return "Can deepthroat cock";
-                case 7: return "Can deepthroat large cocks";
-                case 8: return "Can suck horse cock";
-                case 9: return "Need to suck cock everyday!";
-            }
+            levels = [
+                { id: 0, txt: "I'm not putting that in my mouth" },
+                { id: 1, txt: "Can suck small dildos at home" },
+                { id: 2, txt: "Can suck medium dildos at home" },
+                { id: 3, txt: "Can deepthroat dildos at home" },
+                { id: 4, txt: "Can suck a small cock" },
+                { id: 5, txt: "Can suck large cocks" },
+                { id: 6, txt: "Can deepthroat cock" },
+                { id: 7, txt: "Can deepthroat large cocks" },
+                { id: 8, txt: "Can suck horse cock" },
+                { id: 9, txt: "Need to suck cock everyday!" },
+            ];
             break;
         case "anal":
-            switch (level) {
-                case 0: return "My butt is for pooping";
-                case 1: return "Can stick your finger in your butt";
-                case 2: return "Can play with a tiny dildo";
-                case 3: return "Can play with a small dildo";
-                case 4: return "Can play with a medium dildo";
-                case 5: return "Can take a dick in the ass";
-                case 6: return "Can play with a large dildo";
-                case 7: return "Can play with a huge dildo";
-                case 8: return "Can take a horse cock in the ass";
-                case 9: return "Need anal everyday!";
-            }
+            levels = [
+                { id: 0, txt: "My butt is for pooping" },
+                { id: 1, txt: "Can stick your finger in your butt" },
+                { id: 2, txt: "Can play with a tiny dildo" },
+                { id: 3, txt: "Can play with a small dildo" },
+                { id: 4, txt: "Can play with a medium dildo" },
+                { id: 5, txt: "Can take a dick in the ass" },
+                { id: 6, txt: "Can play with a large dildo" },
+                { id: 7, txt: "Can play with a huge dildo" },
+                { id: 8, txt: "Can take a horse cock in the ass" },
+                { id: 9, txt: "Need anal everyday!" },
+            ];
             break;
         case "cum":
-            switch (level) {
-                case 0: return "Ewwww";
-                case 1: return "You can taste your own";
-                case 2: return "Can work in the sperm store";
-                case 3: return "You can cum in your own mouth";
-                case 4: return "You can swallow";
-                case 5: return "You can get creampied";
-                case 6: return "cum gains 5 energy";
-                case 7: return "cum gains 15 energy";
-                case 8: return "cum gains 25 energy";
-                case 9: return "You are addicted to cum";
-            }
+            levels = [
+                { id: 0, txt: "Ewwww" },
+                { id: 1, txt: "You can taste your own" },
+                { id: 2, txt: "Can work in the sperm store" },
+                { id: 3, txt: "You can cum in your own mouth" },
+                { id: 4, txt: "You can swallow" },
+                { id: 5, txt: "You can get creampied" },
+                { id: 6, txt: "cum gains 5 energy" },
+                { id: 7, txt: "cum gains 15 energy" },
+                { id: 8, txt: "cum gains 25 energy" },
+                { id: 9, txt: "You are addicted to cum" },
+            ];
             break;
         case "pi":
-            switch (level) {
-                case 0: return "Can watch things (first case)";
-                case 1: return "Speach / influnce increased";
-                case 2: return "Pick pocket";
-                case 3: return "unlock locked doors";
-                case 4: return "Speach / influnce increased + 2";
-                case 5: return "Pick pocket + 2";
-                case 6: return "unlock locked doors + 2";
-                case 7: return "TBD";
-                case 8: return "TBD";
-                case 9: return "TBD";
-            }
+            levels = [
+                { id: 0, txt: "Can watch things (first case)" },
+                { id: 1, txt: "Speach / influnce increased" },
+                { id: 2, txt: "Pick pocket" },
+                { id: 3, txt: "unlock locked doors" },
+                { id: 4, txt: "Speach / influnce increased + 2" },
+                { id: 5, txt: "Pick pocket + 2" },
+                { id: 6, txt: "unlock locked doors + 2" },
+                { id: 7, txt: "TBD" },
+                { id: 8, txt: "TBD" },
+                { id: 9, txt: "TBD" },
+            ];
             break;
         case "piss":
-            switch (level) {
-                case 0: return "Piss is gross";
-                case 1: return "Can be pissed on by girl";
-                case 2: return "Can be pissed on my guy";
-                case 3: return "Can drink piss";
-                case 4: return "piss drink + 5 energy";
-                case 5: return "piss drink + 10 energy";
-                case 6: return "piss drink + 15 energy";
-                case 7: return "piss drink + 25 energy";
-                case 8: return "piss drink + 30 energy";
-                case 9: return "Addicted to piss";
-            }
+            levels = [
+                { id: 0, txt: "Piss is gross" },
+                { id: 1, txt: "Can be pissed on by girl" },
+                { id: 2, txt: "Can be pissed on my guy" },
+                { id: 3, txt: "Can drink piss" },
+                { id: 4, txt: "piss drink + 5 energy" },
+                { id: 5, txt: "piss drink + 10 energy" },
+                { id: 6, txt: "piss drink + 15 energy" },
+                { id: 7, txt: "piss drink + 25 energy" },
+                { id: 8, txt: "piss drink + 30 energy" },
+                { id: 9, txt: "Addicted to piss" },
+            ];
             break;
         case "beast":
-            switch (level) {
-                case 0: return "Avoids animals";
-                case 1: return "Can pet animals";
-                case 2: return "Can work as horse brusher at Rachel's";
-                case 3: return "Can play with animals";
-                case 4: return "Can get knotty dildo";
-                case 5: return "Hand job";
-                case 6: return "blow job";
-                case 7: return "anal";
-                case 8: return "Horse!"
-                case 9: return "Subserviant to beasts (Can't stop it)";
-            }
+            levels = [
+                { id: 0, txt: "Avoids animals" },
+                { id: 1, txt: "Can pet animals" },
+                { id: 2, txt: "Can work as horse brusher at Rachel's" },
+                { id: 3, txt: "Can play with animals" },
+                { id: 4, txt: "Can get knotty dildo" },
+                { id: 5, txt: "Hand job" },
+                { id: 6, txt: "blow job" },
+                { id: 7, txt: "anal" },
+                { id: 8, txt: "Horse!" },
+                { id: 9, txt: "Subserviant to beasts (Can't stop it)" },
+            ];
             break;
         case "cheer":
-            switch (level) {
-                case 0: return "Not a cheerleader";
-                case 1: return "Clumsy";
-                case 2: return "Dumb";
-                case 3: return "Washing Machine";
-                case 4: return "Beginner";
-                case 5: return "Stacy's Bitch";
-                case 6: return "Konga Line";
-                case 7: return "Can Cheer at the Games!";
-                case 8: return "Small Dick Loser";
-                case 9: return "Real Cheerleader!";
-                case 10: return "Cum Bucket";
-            }
+            levels = [
+                { id: 0, txt: "Not a cheerleader" },
+                { id: 1, txt: "Clumsy" },
+                { id: 2, txt: "Dumb" },
+                { id: 3, txt: "Washing Machine" },
+                { id: 4, txt: "Beginner" },
+                { id: 5, txt: "Stacy's Bitch" },
+                { id: 6, txt: "Konga Line" },
+                { id: 7, txt: "Can Cheer at the Games!" },
+                { id: 8, txt: "Small Dick Loser" },
+                { id: 9, txt: "Real Cheerleader!" },
+                { id: 10, txt: "Cum Bucket" },
+            ];
             break;
-        case "fitness":
-            return (level * 5) + " Energy Boost";
-        case "body":
-            return (level * 5) + " Punch Power Increase";
-        case "leg":
-            return (level * 5) + " Kick Power Increase";
-        case "defense":
-            return (level * 5) + " Fight Defense Increase";
+        
+    };
+    if (levels.length === 0) {
+        console.log("no level " + name);
+        return { count: -1, txt: "not found" };
     }
-    return "Need to add text here! " + name + " level: " + level;
+    else if (level >= levels.length) {
+        return { count: levels.length, txt: levels[levels.length].text };
+    }
+    else {
+        return { count: levels.length, txt: levels[level].txt };
+    }
 };
 
 sex.getFuck = function () {
@@ -530,6 +571,13 @@ sex.getFuck = function () {
         beast: x.beast,
         virginDick: x.anal === 0 && x.oral === 0 && x.hand === 0 && x.foot === 0 && x.pussy === 0 && x.tits === 0 && x.beast === 0
     };
+};
+
+gv.timeTxt = function (hour, minute) {
+    if (gv.get("clock24") === "12") 
+        return (hour % 12) + ":" + (minute < 10 ? ("0" + minute.toString()) : minute) + " " + hour < 12 ? "AM" : "PM";
+    else
+        return hour + ":" + (minute < 10 ? ("0" + minute.toString()) : minute)
 };
 
 gv.save = function () {
@@ -600,6 +648,20 @@ gv.load = function (rma) {
     }
 };
 
+sissy.st = [
+    { id: 0, pID: [], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "Act like a lady", ach: false, active: true },
+    { id: 1, pID: [], icon: "anal101", x: 10, y: 1, name: "Anal 101", description: "Learn how to use the bussy", ach: false, active: true },
+    { id: 2, pID: [], icon: "chastity101", x: 3, y: 1, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true },
+    { id: 3, pID: [], icon: "toilet101", x: 5, y: 1, name: "Toilet 101", description: "Learn how to pee like a lady", ach: false, active: true },
+    { id: 4, pID: [], icon: "oral101", x: 8, y: 1, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true },
+    { id: 5, pID: [], icon: "bondage101", x: 12, y: 1, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true },
+    { id: 6, pID: [], icon: "cum101", x: 7, y: 1, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true },
+    { id: 7, pID: [1], icon: "prostate210", x: 9, y: 2, name: "Prostate 210", description: "Find your bussy p-spot", ach: false, active: true },
+    { id: 8, pID: [1], icon: "buttplug212", x: 10, y: 2, name: "Buttplug 212", description: "Experaince the joy of being filled", ach: false, active: true },
+    { id: 9, pID: [1], icon: "chastity201", x: 3, y: 2, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true },
+    { id: 10, pID: [1], icon: "enema205", x: 5, y: 2, name: "Enema 205", description: "A clean bussy makes everyone happy", ach: false, active: true },
+    
+];
 
 
 

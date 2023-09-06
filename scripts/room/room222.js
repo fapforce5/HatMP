@@ -34,8 +34,13 @@ room222.btnclick = function (name) {
         case "laudry-panties":
             nav.killall();
             nav.bg("222_errands/laundry1-panties.jpg");
-            levels.mod("xdress", 20, 2);
-            chat(17, 222);
+            levels.mod("xdress", 25, 0);
+            if (levels.get("xdress").l > 0 && !cl.hasClothing("panties", "missy")) {
+                chat(21, 222);
+            }
+            else {
+                chat(17, 222);
+            }
             break;
         case "laudry-coin":
             nav.killall();
@@ -109,19 +114,24 @@ room222.chatcatch = function (callback) {
                 "height": 245,
                 "image": "222_errands/coin.png"
             }, 222);
-            nav.button({
-                "type": "btn",
-                "name": "laudry-panties",
-                "left": 757,
-                "top": 737,
-                "width": 268,
-                "height": 119,
-                "image": "222_errands/panties.png"
-            }, 222);
+            if (!cl.hasClothing("panties", "missy")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "laudry-panties",
+                    "left": 757,
+                    "top": 737,
+                    "width": 268,
+                    "height": 119,
+                    "image": "222_errands/panties.png"
+                }, 222);
+            }
             break;
         case "laundry2":
             nav.killall();
             nav.bg("222_errands/laundry2.jpg");
+            break;
+        case "steal":
+            cl.add("panties", "missy");
             break;
         default:
             break;
@@ -314,6 +324,26 @@ room222.chat = function (chatID) {
             text: "Finally fuckin' done. I'm going to take these back to Missy and grab lunch. ",
             button: [
                 { chatID: -1, text: "...", callback: "lunch" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "thinking",
+            text: "Oh wow! Missy's panties. They are so soft and delicate, and the smell is so wonderful, " +
+                "like a mix of passionate sex and spring flowers. I am in the presence of the most perfect " +
+                "dirty panties. ",
+            button: [
+                { chatID: 22, text: "Steal Missy's dirty panties", callback: "steal" },
+                { chatID: 18, text: "Hmmm", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "I'll just take these. Surely Missy won't notice just one pair of missing panties. All her panties look " +
+                "the same afterall. I can't wait to try these one!",
+            button: [
+                { chatID: 19, text: "Mmmm Missy's dirty panties", callback: "laundry2" },
             ]
         },
     ];

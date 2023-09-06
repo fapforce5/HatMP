@@ -3,31 +3,31 @@
 sstat.makeGraph = function () {
     
 
-    $("#rl_page0").hide();
-    $("#rl_page1").hide();
-    $("#rl_page2").hide();
-    $("#rl_page3").hide();
+    //$("#rl_page0").hide();
+    //$("#rl_page1").hide();
+    //$("#rl_page2").hide();
+    //$("#rl_page3").hide();
 
-    switch (g.statpage) {
-        case 0:
-            sstat.page0();
-            break;
-        case 1:
-            sstat.page1();
-            break;
-        case 2:
-            sstat.page2();
-            break;
-        case 3:
-            sstat.page3();
-            break;
-    }
+    //switch (g.statpage) {
+    //    case 0:
+    //        sstat.page0();
+    //        break;
+    //    case 1:
+    //        sstat.page1();
+    //        break;
+    //    case 2:
+    //        sstat.page2();
+    //        break;
+    //    case 3:
+    //        sstat.page3();
+    //        break;
+    //}
 
-    $("#rl_page" + g.statpage).show();
-
+    //$("#rl_page" + g.statpage).show();
+    sstat.updateGraph();
 };
 
-sstat.page0 = function () {
+sstat.updateGraph = function () {
     //money
     $("#char_money").text(gv.get("money"));
 
@@ -44,10 +44,12 @@ sstat.page0 = function () {
     $(".rl-level[data-name='hormone']").text("TBD");
 
     for (var i = 0; i < levels.st.length; i++) {
-        if (levels.st[i].page === 0) {
-            console.log(levels.st[i].c)
+        if (levels.st[i].display) {
+            var levelDesc = levels.desc(levels.st[i].n, levels.st[i].l);
+            console.log($(".rl-levelheader[data-name='" + levels.st[i].n + "']"));
+            $(".rl-levelheader[data-name='" + levels.st[i].n + "']").text(levels.st[i].d + (levelDesc.count > 0 ? (" " + levels.st[i].l + "/" + levelDesc.count) : ""));
             $(".rl-bar[data-name='" + levels.st[i].n + "']").css({ width: levels.st[i].c + "%" });
-            $(".rl-level[data-name='" + levels.st[i].n + "']").text(levels.desc(levels.st[i].n, levels.st[i].l));
+            $(".rl-level[data-name='" + levels.st[i].n + "']").text(levelDesc.txt);
         }
     }
 
@@ -194,7 +196,7 @@ sstat.page0 = function () {
 
 sstat.page1 = function () {
     for (var i = 0; i < levels.st.length; i++) {
-        if (levels.st[i].page === 1) {
+        if (levels.st[i].display) {
             console.log(levels.st[i].c)
             $(".rl-bar[data-name='" + levels.st[i].n + "']").css({ width: levels.st[i].c + "%" });
             $(".rl-level[data-name='" + levels.st[i].n + "']").text(levels.desc(levels.st[i].n, levels.st[i].l));

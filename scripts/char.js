@@ -68,6 +68,7 @@ $(document).ready(function () {
         $('.room-left').css({ height: 1080 * g.ratio + "px" });
 
         $('.char-container').css({ "height": 670 * g.ratio + "px" });
+        $('.glob-bg').css({ "height": 1080 * g.ratio + "px" });
 
         $('.char-modBtn').css({
             width: 75 * g.ratio + "px",
@@ -257,11 +258,12 @@ $(document).ready(function () {
         sstat.makeGraph();
     });
 
-    $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
-    $(".menu-box-img").css({ "width": (296 * g.ratio) + "px", "height": (90 * g.ratio) + "px" });
+    $(".menu-box").css({ "width": (290 * g.ratio) + "px", "height": (88 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
+    $(".menu-box-img").css({ "width": (290 * g.ratio) + "px", "height": (88 * g.ratio) + "px" });
     $('.rl-bar').css({ "height": (15 * g.ratio) + "px" });
     $('.left-graph-char-bar').css({ "height": (15 * g.ratio) + "px" });
     char.init();
+    char.resizewindow();
 });
 
 char.changeMenu = function (menu, update, override) {

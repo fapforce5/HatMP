@@ -31,21 +31,46 @@ room220.main = function () {
 room220.btnclick = function (name) {
     switch (name) {
         case "clean":
-            nav.killall();
-            nav.button({
-                "type": "img",
-                "name": "name",
-                "left": 940,
-                "top": 554,
-                "width": 274,
-                "height": 526,
-                "image": "201_bathroom/201_clothes.png"
-            }, 220);
-            if (gv.get("arousal") > 50) {
-                chat(1, 220);
+            if (missy.get("uniform") === 0) {
+                nav.killall();
+                nav.button({
+                    "type": "img",
+                    "name": "name",
+                    "left": 940,
+                    "top": 554,
+                    "width": 274,
+                    "height": 526,
+                    "image": "201_bathroom/201_clothes.png"
+                }, 220);
+                if (gv.get("arousal") > 50) {
+                    chat(1, 220);
+                }
+                else {
+                    chat(4, 220);
+                }
+            }
+            else if (missy.get("jobCleanToiletUniform") === 0) {
+                nav.killall();
+                nav.bg("201_bathroom/panties0.jpg");
+                chat(7, 220);
             }
             else {
-                chat(4, 220);
+                nav.killall();
+                nav.button({
+                    "type": "img",
+                    "name": "name",
+                    "left": 940,
+                    "top": 554,
+                    "width": 274,
+                    "height": 526,
+                    "image": "201_bathroom/201_panties.png"
+                }, 220);
+                if (gv.get("arousal") > 50) {
+                    chat(1, 220);
+                }
+                else {
+                    chat(9, 220);
+                }
             }
             break;
         case "pills":
@@ -68,11 +93,17 @@ room220.chatcatch = function (callback) {
             break;
         case "clean2":
             nav.killall();
-            nav.bg("201_bathroom/missy2.jpg");
+            if (missy.get("uniform") === 0)
+                nav.bg("201_bathroom/missy1.jpg");
+            else
+                nav.bg("201_bathroom/missy1_panties.jpg");
             break;
         case "clean1x":
             nav.killall();
-            nav.bg("201_bathroom/missy1.jpg");
+            if (missy.get("uniform") === 0)
+                nav.bg("201_bathroom/missy0.jpg");
+            else
+                nav.bg("201_bathroom/missy0_panties.jpg");
             break;
         case "badCleanEnd":
             missy.didJob(0, .5, null);
@@ -83,6 +114,21 @@ room220.chatcatch = function (callback) {
             missy.didJob(0, 1, null);
             missy.mod("mood", 10);
             char.room(224);
+            break;
+        case "panties1":
+            nav.bg("201_bathroom/panties1.jpg");
+            break;
+        case "panties2":
+            nav.bg("201_bathroom/bg0.jpg");
+            nav.button({
+                "type": "img",
+                "name": "name",
+                "left": 940,
+                "top": 554,
+                "width": 274,
+                "height": 526,
+                "image": "201_bathroom/201_panties.png"
+            }, 220);
             break;
         default:
             break;
@@ -150,6 +196,33 @@ room220.chat = function (chatID) {
                 "you'll do amazing on the big one. ",
             button: [
                 { chatID: -1, text: "Thank you ma'am", callback: "goodCleanEnd" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "missy",
+            text: "So now that you're my little panty boy, it's time to celebrate this little achievement. ",
+            button: [
+                { chatID: 8, text: "...", callback: "panties1" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "missy",
+            text: "From now on you'll " +
+                "clean my bathroom in only your panties. You might think that I'm doing this becuase I'm making you more " +
+                "confident in your panties, or I'm incrasing your boldness. Both would be wrong. I just think it's funny watching " +
+                "on you knees cleaning my dirty toilet in your panties. Now get to work panty boy. ",
+            button: [
+                { chatID: 9, text: "Thank you ma'am", callback: "panties2" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "thinking",
+            text: "It's not as bad cleaning the bathroom in panties. Better than a suit. Still shitty.. heh, shitty. ",
+            button: [
+                { chatID: 5, text: "...", callback: "clean1" },
             ]
         },
     ];

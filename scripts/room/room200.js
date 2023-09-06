@@ -46,6 +46,15 @@ room200.btnclick = function (name) {
                         break;
                 }
             }
+            else if (missy.get("uniform") > 0 && missy.get("uniformNew") === 0) {
+                missy.set("uniformNew", 1);
+                if (missy.get("uniform") === 1) {
+                    chat(21, 200);
+                }
+            }
+            else if (missy.get("chastity") > 0 && cl.c.chastity === null) {
+                chat(23, 200);
+            }
             else
                 room200.chatcatch("selectJob");
         break;
@@ -179,6 +188,21 @@ room200.chatcatch = function (callback) {
             break;
         case "hate":
             missy.mod("mood", -20);
+            break;
+        case "uniform1_0":
+            cl.c.pants = null;
+            zcl.displayMain(-200, 550, .3, "clothes", true);
+            cl.c.pants = "s";
+            break;
+        case "chastity0":
+            if (gv.get("arousal") > 50) {
+                nav.bg("205_chastity/chast0_1.jpg");
+                char(25, 200);
+            }
+            else {
+                nav.bg("205_chastity/soft.jpg");
+
+            }
             break;
     };
 };
@@ -405,6 +429,51 @@ room200.chat = function (chatID) {
                     "begin. ",
                 button: [
                     { chatID: -1, text: "...", callback: "case_lostgirl_chastity" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "missy",
+                text: "Good morning my little sissy? How do those panties feel? So much softer than nasty boy's panties. " +
+                    "Take your pants off. Show me your pretty panties again. ",
+                button: [
+                    { chatID: 22, text: "Yes ma'am", callback: "uniform1_0" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "missy",
+                text: "That's a good sissy. That panty buldge is so cute on you. Now on to work. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "selectJob" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "missy",
+                text: "Good morning. Bring that cock over here so I can lock it back up. ",
+                button: [
+                    { chatID: 24, text: "Again. Could we just skip it? ", callback: "hate" },
+                    { chatID: -1, text: "Yes ma'am", callback: "chastity0" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "missy",
+                text: "I'm glad you asked. Fuck No! You're wearing this cage because you can't seem to control your cock. " +
+                    "My work here is too important for you to go sticking your dick in everything, so that's why you're " +
+                    "getting locked back up. Now bring that cock over here before I rip it off and you become a dickless loser! ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "chastity0" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "missy",
+                text: "You knew you were going back into chastity and you present me this hard cock? You couldn't jack it at " +
+                    "home before you came? I'm not jacking you again. Get ready, I'm going to make you soft. ",
+                button: [
+                    { chatID: -1, text: "oh no....", callback: "chastity1" },
                 ]
             },
             //},

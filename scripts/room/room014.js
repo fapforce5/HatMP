@@ -495,7 +495,10 @@ room14.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "14_motherRoom/panty1.png"
             }, 14);
-            levels.mod("xdress", 20, 1);
+            if (!gv.get("momsPanties")) {
+                gv.set("momsPanties", true);
+                levels.mod("xdress", 50, 1);
+            }
             if (levels.get("xdress").l > 0) {
                 if (cl.c.leg < 2)
                     chat(7, 14);
@@ -503,7 +506,6 @@ room14.chatcatch = function (callback) {
                     chat(63, 14);
                 else
                     chat(64, 14);
-
             }
             else
                 chat(6, 14);

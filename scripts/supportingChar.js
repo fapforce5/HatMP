@@ -38,6 +38,7 @@ sc.char = [
     { name: "rachel", display: "Rachel", image: "rachel.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "kinsey", display: "Kinsey", image: "kinsey.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "horse", display: "Jimmy Dingler", image: "horse.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
+    { name: "dale", display: "Dale", image: "dale.png", step: 0, max: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
     { name: "fightman", display: "Bad Motherfucker", image: "fightMan.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -61,6 +62,7 @@ sc.char = [
     { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "ralphsmom", display: "Ralph's Mom", image: "ralphsmom.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: true, setName: false, phone: -1, p: false,  q3: false },
     { name: "butler", display: "The Butler", image: "butler.png", step: 0, max: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -1380,6 +1382,18 @@ sc.trivial = function (charname) {
         case "!sanaria":
             name = "Sanaria";
             image = "sanaria.png";
+            break;
+        case "!kareem":
+            name = "Kareem";
+            image = "kareem.png";
+            break;
+        case "!philbert":
+            name = "Philbert";
+            image = "philbert.png";
+            break;
+        case "!thomas":
+            name = "Thomas";
+            image = "thomas.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

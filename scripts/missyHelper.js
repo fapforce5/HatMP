@@ -8,7 +8,7 @@ missy.init = function () {
     missy.st = [
         { id: 0, n: "mood", c: 0 },
         { id: 1, n: "late", c: 0 },
-        { id: 2, n: "uniform", c: 0 }, //0 is suit, 1 is dress
+        { id: 2, n: "uniform", c: 0 }, //0 is suit, 1 is suit and panties
         { id: 3, n: "activeCase", c: 0 },
         { id: 4, n: "weeklyPay", c: 0 },
         { id: 5, n: "jobDataEntry", c: 0 },
@@ -31,7 +31,10 @@ missy.init = function () {
         { id: 22, n: "pantiesFirstTime", c: 0 },
         { id: 23, n: "activeCaseComplete", c: 0 }, //0 not complete, 1 complete - success, 2 complete - fail
         { id: 24, n: "reusableCaseCounter", c: 0 }, //general purpose of current case
-        { id: 25, n: "chastity", c: 0 } //0 no chastity first time, 1 weekends off, 2 no weekends, 3 no chastity
+        { id: 25, n: "chastity", c: 0 }, //0 no chastity first time, 1 weekends off, 2 no weekends, 3 no chastity
+        { id: 26, n: "uniformNew", c: 0 },
+        { id: 27, n: "jobCleanToiletUniform", c: 0 },
+        { id: 28, n: "sissySchoolDays", c: 0 },
     ];
 
     missy.cases = [
@@ -39,8 +42,9 @@ missy.init = function () {
         { caseId: 1, name: "construction", show: false, complete: true, success: false },
         { caseId: 2, name: "apply", show: false, complete: true, success: false },
         { caseId: 3, name: "work", show: false, complete: true, success: false },
-        { caseId: 4, name: "case_booth", show: true, complete: false, success: false },
-        { caseId: 4, name: "case_lostgirl", show: true, complete: false, success: false },
+        { caseId: 4, name: "case_usb", show: true, complete: false, success: false },
+        { caseId: 5, name: "case_booth", show: true, complete: false, success: false },
+        { caseId: 6, name: "case_lostgirl", show: true, complete: false, success: false },
     ];
 }
 
@@ -90,18 +94,19 @@ missy.get = function (name) {
 
 missy.activecase = function () {
     var activecase = missy.get("activeCase");
+    var activeCaseComplete = missy.get("activeCaseComplete") !== 0;
     if (activecase < 0) {
-        return { caseId: -1, name: "start", txt: "Get to work! ", m: [203] };
+        return { caseId: -1, name: "start", txt: "Get to work! ", m: [203], isComplete: true };
     }
     else {
         var cases = [
-            { caseId: 0, name: "start", txt: "Get a job. Check your computer in your room and apply. ", m: [16] },
-            { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100] },
+            { caseId: 0, name: "start", txt: "Get a job. Check your computer in your room and apply. ", m: [16], isComplete: activeCaseComplete },
+            { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100], isComplete: activeCaseComplete },
             { caseId: 2, name: "apply", txt: "Go to city hall and purchase a P.I. license. Then go to Missy's. ", m: [910, 203] },
-            { caseId: 3, name: "work", txt: "Purchase dress shirt, pants, socks, and black shoes from the mall. Then go to your first day of work. ", m: [203, 400] },
-            { caseId: 4, name: "case_booth", txt: "Investigate the Cum Caper at Toy 'n Us. Tiffany is there M-F during the day. ", m: [650] },
-            { caseId: 5, name: "case_lostgirl", txt: "Find Martha's daughter and report to Missy. ", m: [] },
-            { caseId: 6, name: "case_saveralph", txt: "Hide out at Ralph's house to stop the cult from kidnapping him. ", m: [] },
+            { caseId: 3, name: "work", txt: "Purchase dress shirt, pants, socks, and black shoes from the mall. Then go to your first day of work. ", m: [203, 400], isComplete: activeCaseComplete },
+            { caseId: 4, name: "case_booth", txt: "Investigate the Cum Caper at Toy 'n Us. Tiffany is there M-F during the day. ", m: [650], isComplete: activeCaseComplete },
+            { caseId: 5, name: "case_lostgirl", txt: "Find Martha's daughter and report to Missy. ", m: [], isComplete: activeCaseComplete },
+            { caseId: 6, name: "case_saveralph", txt: "Hide out at Ralph's house to stop the cult from kidnapping him. ", m: [], isComplete: activeCaseComplete },
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -155,6 +160,16 @@ missy.getcases = function () {
         for (i = 0; i < missy.cases.length; i++) {
             if (!missy.cases[i].complete && missy.cases[i].show) {
                 switch (missy.cases[i].name) {
+                    case "case_usb":
+                        canDoCase = piLevel > 1;
+                        caseList.push({
+                            caseId: i,
+                            active: canDoCase,
+                            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
+                            callback: missy.cases[i].name
+                        });
+                        break;
                     case "case_lostgirl":
                         canDoCase = piLevel > 1;
                         caseList.push({
@@ -236,7 +251,8 @@ missy.afterLunch = function () {
         { id: 1, name: "pay day", char: "$", room: 196 },
         { id: 2, name: "excersize", char: "e", room: 199 },
         { id: 3, name: "pi skillz", char: "p", room: 198 },
-        { id: 4, name: "sub", char: "s", room: 197 }
+        { id: 4, name: "sub", char: "s", room: 197 },
+        { id: 5, name: "panties", char: "q", room: 223 }
     ];
     //build weekly schedule
     if (g.dt.getDay() === 1 || weekly === null || weekly.length < 7) {

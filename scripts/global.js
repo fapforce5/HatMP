@@ -121,7 +121,7 @@ g.checkPop = function (name, amount) {
             if (amount > 0)
                 g.popUpNotice("You Gained " + amount.toString() + " Energy");
             cl.energydisplay();
-            sstat.makeGraph();
+            //sstat.makeGraph();
             break;
         case "arousal": //0-100
             cl.cockDisplay();
@@ -254,11 +254,12 @@ g.rooms = [
     { roomID: 202, name: "Desk Side", image: "202_sideDesk/202_sideDesk.jpg", nightImage: "202_sideDesk/202_sideDesk.jpg", houseID: 203, btn: "roomBtn_202.png" },
     { roomID: 203, name: "PI Entrance", image: "203_entrance/203_enter.jpg", nightImage: "203_entrance/203_enter.jpg", houseID: 203, btn: "roomBtn_203.png" },
     { roomID: 204, name: "Card Game", image: "204_cardgame/402_bg.jpg", nightImage: "204_cardgame/402_bg.jpg", houseID: 203, btn: "roomBtn_204.png" },
-    { roomID: 205, name: "Computer Work", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_204.png" },
+    { roomID: 205, name: "Chastity", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_204.png" },
     { roomID: 206, name: "Questions", image: "206_questions/white.jpg", nightImage: "206_questions/white.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 207, name: "Foyer", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 203, btn: "roomBtn_207.png" },
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 209, name: "Basement", image: "209_classroom/bg.jpg", nightImage: "209_classroom/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 210, name: "Class Selection", image: "210_classSelection/bg.jpg", nightImage: "210_classSelection/bg.jpg", houseID: 203, btn: "roomBtn_210.png" },
     { roomID: 212, name: "Black Room", image: "212_black/g.jpg", nightImage: "212_black/g.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 213, name: "Lounge", image: "213_pink/bg.jpg", nightImage: "213_pink/bg.jpg", houseID: 203, btn: "roomBtn_213.png" },
     { roomID: 214, name: "Game Room", image: "214_pink/game.jpg", nightImage: "214_pink/game.jpg", houseID: 203, btn: "roomBtn_214.png" },
@@ -270,6 +271,7 @@ g.rooms = [
     { roomID: 220, name: "Clean Bathroom", image: "201_bathroom/bg0.jpg", nightImage: "201_bathroom/bg0.jpg", houseID: 203, btn: "roomBtn_201.png" },
     { roomID: 221, name: "Reception", image: "221_recip/bg.jpg", nightImage: "221_recip/bg.jpg", houseID: 203, btn: "roomBtn_203.png" },
     { roomID: 222, name: "Errands", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 223, name: "Cross Dress", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 224, name: "Lunch", image: "203_entrance/default.jpg", nightImage: "203_entrance/default.jpg", houseID: 203, btn: "roomBtn_219.png" },
     
 
@@ -357,7 +359,7 @@ g.rooms = [
     { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.jpg", nightImage: "661_peephole/661_backroom.jpg", houseID: 650, btn: "roomBtn_661.png" },
 
     { roomID: 700, name: "Waiting Room", image: "700_waitingroom/waitingroom.jpg", nightImage: "700_waitingroom/night.jpg", houseID: 700, btn: "roomBtn_700.png" },
-    { roomID: 701, name: "Hospital Room", image: "701_hospitalroom/room.jpg", nightImage: "701_hospitalroom/night.jpg", houseID: 700, btn: "roomBtn_701.png" },
+    { roomID: 701, name: "Hospital Room", image: "701_hospitalroom/wake0.jpg", nightImage: "701_hospitalroom/wake0.jpg", houseID: 700, btn: "roomBtn_701.png" },
 
     { roomID: 725, name: "Bar", image: "725_club/club.jpg", nightImage: "725_club/club.jpg", houseID: 725, btn: "roomBtn_725.png" },
     { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
@@ -385,6 +387,9 @@ g.rooms = [
     { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 953, name: "Chaple", image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },
     { roomID: 954, name: "Torture Room", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
+
+    { roomID: 999, name: "Quick Fight", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 999, btn: "bg.jpg" },
+
     //{ roomID: , name: "", image: "", houseID: , main: false, btn: "roomBtn_.png" }
 ];
 

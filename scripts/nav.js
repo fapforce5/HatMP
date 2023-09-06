@@ -108,6 +108,8 @@ nav.button = function (btn, roomNum) {
             classes = "room-img img-dark";
         else if (btn.type === "btn")
             classes = "room-btn rom-event";
+        else if (btn.type === "btnNoHover")
+            classes = "room-btnNoHover rom-event";
         else if (btn.type === "kiss")
             classes = "room-btn-lips rom-event";
         else if (btn.type === "tongue")

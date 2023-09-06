@@ -30,8 +30,18 @@ input[type=text]:disabled{
     border-bottom: #d9534f 2px solid;
 }
 
-.glob-bg{
-    background:rgba(0, 0, 0, .4);
+.glob-bg {
+    background: rgba(0, 0, 0, .4);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: #e75480 #000;
+    scrollbar-width: thin;
+}
+
+.glob-bg hr{
+    color: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
+    height:5vh;
 }
 
 .glob-small{
@@ -85,9 +95,9 @@ input[type=text]:disabled{
     position:absolute;
 }
 
-.room-btn{
-    position:absolute;
-    cursor:pointer;
+.room-btn, .room-btnNoHover {
+    position: absolute;
+    cursor: pointer;
 }
 
 .room-btn-lips{
@@ -942,7 +952,7 @@ input[type=text]:disabled{
 }
 
 .left-graph-char-bar {
-    width: 95%;
+    width: 90%;
     background: #333333;
     border-radius: 20px;
     border: solid 1px #000000;

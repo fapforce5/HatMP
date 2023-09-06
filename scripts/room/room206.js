@@ -76,18 +76,35 @@ room206.main = function () {
             ]
         },
         {
-            t: "If you had to seduce someone to get information do you prefer ",
+            t: "If you had to seduce someone to get information do you prefer...",
             b: [
                 { t: "q8_0.png", a: false },
                 { t: "q8_1.png", a: false },
                 { t: "q8_2.png", a: false },
             ]
         },
+        //
+
         {
-            t: "I demand servatude above all else. When I tell you to do something can I expect you to follow my orders? ",
+            t: "Are you the type of person that likes to make your own decisions, or do you prefer to have those decisions made for you? ",
             b: [
                 { t: "q9_0.png", a: false },
                 { t: "q9_1.png", a: false },
+            ]
+        },
+
+
+
+
+
+        //
+
+
+        {
+            t: "I demand servatude above all else. When I tell you to do something can I expect you to follow my orders? ",
+            b: [
+                { t: "q10_0.png", a: false },
+                { t: "q10_1.png", a: false },
             ]
         },
     ]
@@ -356,17 +373,40 @@ room206.chatcatch = function (callback) {
                 nav.bg("206_questions/standing.jpg");
                 break;
             case "q9":
+                nav.bg("206_questions/desk.jpg");
                 if (g.internal[9].b[0].a) {
+                    gv.set("transformation", "forced");
+                    img = g.internal[9].b[0].t;
+                    chat(43, 206);
+                }
+                else {
+                    gv.set("transformation", "voluntary");
+                    img = g.internal[9].b[1].t;
+                    chat(44, 206);
+                }
+                nav.killbutton("question");
+                nav.button({
+                    "type": "btn",
+                    "name": "question",
+                    "left": 300,
+                    "top": 100,
+                    "width": 800,
+                    "height": 100,
+                    "image": "206_questions/" + img
+                }, 206);
+                break;
+            case "q10":
+                if (g.internal[10].b[0].a) {
                     nav.bg("206_questions/desk.jpg");
                     chat(27, 206);
                     levels.mod("sub", 15, 1);
-                    img = g.internal[9].b[0].t;
+                    img = g.internal[10].b[0].t;
                 }
                 else {
                     nav.bg("206_questions/angry.jpg");
                     chat(28, 206);
                     levels.mod("dom", 15, 1);
-                    img = g.internal[9].b[1].t;
+                    img = g.internal[10].b[1].t;
                 }
 
                 nav.killbutton("question");
@@ -814,6 +854,22 @@ room206.chat = function (chatID) {
                 "anymore, but what the hell am I getting into? At least they're both hot, I guess it could be worse. ",
             button: [
                 { chatID: -1, text: "...", callback: "realend" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "missy",
+            text: "So you don't like to be in control. Noted. I'll make sure I control your tender little body.  ",
+            button: [
+                { chatID: -1, text: "*GULP*", callback: "q10" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "missy",
+            text: "So you like choices. Very well, just be careful on what choices you do have to make.  ",
+            button: [
+                { chatID: -1, text: "*GULP*", callback: "q10" },
             ]
         },
     ];

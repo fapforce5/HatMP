@@ -3,15 +3,23 @@ var room103 = {};
 
 room103.main = function () {
     g.internal = false;
-    if (gv.get("jobapplyconst") === 2) {
+    var jobapplyconst = gv.get("jobapplyconst");
+    if (jobapplyconst === 2) {
         nav.bg("103_constSite/day1.jpg");
         chat(1, 103);
     }
-    else {
-        if (gv.get("jobapplyconst") > 4)
-            g.internal = true;
+    else if (jobapplyconst > 4 && jobapplyconst < 100) {
+        g.internal = true;
         room103.chatcatch("sweep");
     }
+    else if (jobapplyconst === 100) {
+        nav.bg("103_constSite/day1.jpg");
+        chat(67, 103);
+    }
+    else {
+        room103.chatcatch("sweep");
+    }
+    
     //var thisRand = Math.floor(Math.random() * 10);
     //if (thisRand === 1)
     //    chat(1, 103);
@@ -60,6 +68,17 @@ room103.btnclick = function (name) {
                 "image": "103_constSite/pamphlet.jpg"
             }, 103);
             chat(66, 103);
+            break;
+        case "fight0lose":
+            char.room(701);
+            break;
+        case "fight0run":
+            char.room(0);
+            break;
+        case "fight0win":
+            nav.killall();
+            nav.bg("103_constSite/fight1.jpg");
+            chat(69, 103);
             break;
     }
 };
@@ -254,6 +273,7 @@ room103.chatcatch = function (callback) {
             char.addtime(67);
             gv.set("jobapplynurse", 2);
             gv.set("jobapplybeaver", 2);
+            gv.set("jobapplyconst", 100);
             sc.setstep("missy", 1);
             missy.set("activeCase", 2);
             g.roomMapAccess(203, true, true);
@@ -273,6 +293,10 @@ room103.chatcatch = function (callback) {
             break;
         case "intPlus":
             levels.mod("int", 15, 999);
+            break;
+        case "fight0":
+            nav.bg("103_constSite/fight0.jpg");
+            quickFight.init(18, sc.n("river"), "fight0win", "fight0lose", "fight0run", 103);
             break;
         default:
             break;
@@ -861,6 +885,33 @@ room103.chat = function (chatID) {
             text: "This is a weird flyer. I wonder who Aurora Kirei is. Hopefully they don't eat her. ",
             button: [
                 { chatID: -1, text: "[Toss it aside]", callback: "pamphlet" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "river",
+            text: "What are you doing back loser? I thought after you showed everyone your ass you would never show your face " +
+                "around here. Get lost fuckwad.",
+            button: [
+                { chatID: 68, text: "You tried to kidnap me! You should be in jail!", callback: "" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "river",
+            text: "Don't come to my job site and start yelling lies. I'm going to beat your ass like I should have done in " +
+                "the first place. ",
+            button: [
+                { chatID: -1, text: "Huh?", callback: "fight0" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "me",
+            text: "I did it! I kicked " + sc.n("river") + "'s ass. I totally did it! I beat that asshole up! He'll never live " +
+                "this down! I'm totally awesome! Take that punk ass! A beat down in front of everyone. ",
+            button: [
+                { chatID: -1, text: "I guess I get to go back to work here. ", callback: "sweep" },
             ]
         },
     ];

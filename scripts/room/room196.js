@@ -1,22 +1,6 @@
 ﻿//Room name
 var room196 = {};
 room196.main = function () {
-    //var btnList = [
-    //    {
-    //        "type": "btn",
-    //        "name": "name",
-    //        "left": 1741,
-    //        "top": 618,
-    //        "width": 130,
-    //        "height": 252,
-    //        "image": "196_folder/hole.png"
-    //    }
-    //];
-    //var navList = [0];
-    //$.each(btnList, function (i, v) {
-    //    nav.button(v, 196);
-    //});
-    //nav.buildnav(navList);
     chat(0, 196);
 };
 
@@ -49,7 +33,7 @@ room196.chatcatch = function (callback) {
                 chat(999, 196);
             }
             else {
-                chat(1, 196);
+                room196.chatcatch("checkBeforeComplete");
             }
             break;
         case "truepay":
@@ -85,11 +69,33 @@ room196.chatcatch = function (callback) {
             gv.mod("money", newWp);
             chat(998, 196);
             break;
+        case "checkBeforeComplete":
+            if (cl.c.chastity !== null && missy.get("chastity") === 1)
+                chat(2, 196);
+            else
+                chat(1, 196);
+            break;
         case "complete":
             var newMood = Math.floor(missy.get("mood"));
             missy.st[0].c = newMood;
             char.addtime(60);
             char.room(0);
+            break;
+        case "chastity0":
+            nav.bg("196_payday/sidedesk.jpg");
+            var temp = cl.c.panties;
+            cl.c.panties = null;
+            cl.c.pants = null;
+            zcl.displayMain(-500, 400, .35, "clothes", true);
+            cl.c.panties = temp;
+            cl.c.pants = "s";
+            break;
+        case "chastity1":
+            gv.mod("arousal", 100);
+            cl.c.chastity = null;
+            cl.display();
+            nav.killall();
+            nav.bg("205_chastity/chast0_1.jpg");
             break;
         default:
             break;
@@ -113,7 +119,7 @@ room196.chat = function (chatID) {
             speaker: "missy",
             text: g.internal,
             button: [
-                { chatID: 1, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "checkBeforeComplete" }
             ]
         };
     }
@@ -133,6 +139,31 @@ room196.chat = function (chatID) {
                 text: "That is all. You may go. ",
                 button: [
                     { chatID: -1, text: "...", callback: "complete" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "missy",
+                text: "One thing before you go. Bring that cock over here so I can let you loose this weekend. ",
+                button: [
+                    { chatID: 3, text: "Yes ma'am! ", callback: "chastity0" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "missy",
+                text: "That should do it. ",
+                button: [
+                    { chatID: 4, text: "Yes ma'am ", callback: "chastity1" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "missy",
+                text: "It's already hard. Poor little guy wants to nut so bad. Enjoy it, Monday morning, first thing " +
+                    "it's going to get locked back up. Now get. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am ", callback: "complete" }
                 ]
             },
         ];

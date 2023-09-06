@@ -13,6 +13,9 @@ room28.main = function () {
         nav.bg("28_transformation/twin.jpg");
     else if (g.pass === 301)
         nav.bg("301_living/envy159.jpg");
+    else if (g.pass === 701)
+        nav.bg("701_hospitalroom/sleep.jpg");
+
     menu.save("HatMP_9", null, 9);
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);

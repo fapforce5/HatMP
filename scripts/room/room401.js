@@ -145,6 +145,11 @@ room401.main = function () {
             room401.makeInv(["m"], true, 1);
             nav.bg("407_makeup/bg.jpg");
             break;
+        case "dale":
+            navList = [750, 0];
+            room401.makeInv(["i"], true, 1);
+            nav.bg("750_homeless/dale.jpg");
+            break;
         case "nipple":
             navList = [408];
             g.pass.roomID = 408;

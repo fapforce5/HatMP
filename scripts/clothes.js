@@ -69,7 +69,8 @@ cl.list = [
     { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: 5 },
     { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: true, daring: 1, price: 12 },
     { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
-    { type: "panties", name: "w", display: "White Soiled Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "panties", name: "w", display: "Lola's Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "panties", name: "missy", display: "Missy's Panties", img: "panties_missy.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "q", display: "Cum Queen Panties", img: "panties_cumQueen.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "h", display: "Cuffs Panties", img: "panties_handcuff.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "r", display: "Red Panties", img: "panties_red.png", sex: "f", inv: false, daring: 2, price: 45 },
@@ -198,7 +199,7 @@ cl.list = [
     { type: "pj", name: "gown", display: "Night Gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
 
-    { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: 120 },
+    { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: -1 },
     { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
     { type: "chastity", name: "metal", display: "Metal Cage", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
 
@@ -1357,6 +1358,13 @@ cl.panties = [
     { name: "w", leg: 2, pussy: "panty_w_1_v.png", cock: "panty_w_1_c.png", back: "panty_w_2_back.png" },
     { name: "w", leg: 1, pussy: "panty_w_1_v.png", cock: "panty_w_1_c.png", back: "panty_w_0_back.png" },
     { name: "w", leg: 0, pussy: "panty_w_0_v.png", cock: "panty_w_0_c.png", back: "panty_w_0_back.png" },
+
+    { name: "missy", leg: 5, pussy: "panty_missy_5_v.png", cock: "panty_missy_5_c.png", back: "panty_missy_5_back.png" },
+    { name: "missy", leg: 4, pussy: "panty_missy_4_v.png", cock: "panty_missy_4_c.png", back: "panty_missy_4_back.png" },
+    { name: "missy", leg: 3, pussy: "panty_missy_3_v.png", cock: "panty_missy_3_c.png", back: "panty_missy_3_back.png" },
+    { name: "missy", leg: 2, pussy: "panty_missy_0_v.png", cock: "panty_missy_0_c.png", back: "panty_missy_2_back.png" },
+    { name: "missy", leg: 1, pussy: "panty_missy_0_v.png", cock: "panty_missy_0_c.png", back: "panty_missy_0_back.png" },
+    { name: "missy", leg: 0, pussy: "panty_missy_0_v.png", cock: "panty_missy_0_c.png", back: "panty_missy_0_back.png" },
 
     { name: "b", leg: 5, pussy: "panty_b_5_v.png", cock: "panty_b_5_c.png", back: "panty_b_5_back.png" },
     { name: "b", leg: 4, pussy: "panty_b_4_v.png", cock: "panty_b_4_c.png", back: "panty_b_4_back.png" },

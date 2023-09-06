@@ -48,8 +48,8 @@ room8.main = function () {
         '<img src="./images/wardrobe/pj.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="accessories">' +
         '<img src="./images/wardrobe/accessories.png" />' +
-        '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="chastity">' +
-        '<img src="./images/wardrobe/chastity.png" />' +
+        //'</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="chastity">' +
+        //'<img src="./images/wardrobe/chastity.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="buttplug">' +
         '<img src="./images/wardrobe/buttplug.png" />' +
         '</button></div>' +
