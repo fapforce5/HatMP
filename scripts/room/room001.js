@@ -40,7 +40,16 @@ room1.main = function () {
         nav.button(v, 1);
     });
 
-    //nav.buildnav(navList);
+    nav.t({
+        type: "zimg",
+        name: "version",
+        left: 1620,
+        top: 900,
+        font: 20,
+        hex: "#ffffff",
+        text: g.versionText
+    }, 1);
+
 };
 
 room1.btnclick = function (name) {

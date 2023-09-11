@@ -1,16 +1,4 @@
-﻿/*
-speaker: 
-me: me
-sister 1 ponytail: Lola
-sister2 ponytail: Eva
-mother: Mom
-Dominatrix: Missy
-
-construction foreman: Forman,
-contruction receptionist: Bambi
-*/
-
-var privateChat = {};
+﻿var privateChat = {};
 
 function chat(chatID, roomID) {
 
@@ -73,10 +61,18 @@ privateChat.speakerInfo = function (charName) {
     else {
         for (var i = 0; i < sc.char.length; i++) {
             if (sc.char[i].name === charName) {
-                return {
-                    img: "./images/speaker/" + sc.char[i].image,
-                    name: sc.char[i].display
-                };
+                if (charName === "me" && g.roomID > 175 && g.roomID < 250 && sissy.st[9].ach) {
+                    return {
+                        img: "./images/speaker/" + sc.char[i].image,
+                        name: "Sissy Trainee"
+                    };
+                }
+                else {
+                    return {
+                        img: "./images/speaker/" + sc.char[i].image,
+                        name: sc.char[i].display
+                    };
+                }
             }
         }
         return {

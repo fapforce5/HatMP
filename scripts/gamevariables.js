@@ -70,6 +70,9 @@ gv.init = function () {
         { n: "rentOwed", t: 0, q: "zero" },
         { n: "rentKnockOff", t: 0, q: "zero" },
 
+        //lola / eva
+        { n: "lockdrawer", t: false, q: "bool" },
+
         //room decoration
         { n: "painting", t: "", q: "string" },
 
@@ -119,7 +122,7 @@ gv.init = function () {
         { n: "forestMap", t: null, q: "string" },
         { n: "forestVisit", t: null, q: "string" },
         { n: "shinkCock", t: false, q: "bool" },
-        { n: "lockdrawer", t: false, q: "bool" },
+        
         { n: "puter", t: false, q: "bool" },
         { n: "slimeMonsters", t: true, q: "bool" },
 
@@ -203,8 +206,8 @@ gv.init = function () {
         { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true }, //how likely you are to get raped
 
         { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 13, n: "punch", d: "Punch Power", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 14, n: "kick", d: "Kick Power", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 14, n: "notused", d: "Not used", c: 0, l: 0, autoLevel: true, display: true },
         { id: 15, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: true },
         { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true },
         { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true },
@@ -649,16 +652,21 @@ gv.load = function (rma) {
 };
 
 sissy.st = [
-    { id: 0, pID: [], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "Act like a lady", ach: false, active: true },
-    { id: 1, pID: [], icon: "anal101", x: 10, y: 1, name: "Anal 101", description: "Learn how to use the bussy", ach: false, active: true },
-    { id: 2, pID: [], icon: "chastity101", x: 3, y: 1, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true },
-    { id: 3, pID: [], icon: "toilet101", x: 5, y: 1, name: "Toilet 101", description: "Learn how to pee like a lady", ach: false, active: true },
-    { id: 4, pID: [], icon: "oral101", x: 8, y: 1, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true },
-    { id: 5, pID: [], icon: "bondage101", x: 12, y: 1, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true },
-    { id: 6, pID: [], icon: "cum101", x: 7, y: 1, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true },
-    { id: 7, pID: [1], icon: "prostate210", x: 9, y: 2, name: "Prostate 210", description: "Find your bussy p-spot", ach: false, active: true },
-    { id: 8, pID: [1], icon: "buttplug212", x: 10, y: 2, name: "Buttplug 212", description: "Experaince the joy of being filled", ach: false, active: true },
-    { id: 9, pID: [1], icon: "chastity201", x: 3, y: 2, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true },
+    { id: 0, pID: [], icon: "shaving101", x: 3, y: 0, name: "Smoothness 101", description: "A smooth sissy is a sexy sissy.", ach: false, active: true },
+    { id: 1, pID: [], icon: "lube101", x: 6, y: 0, name: "Lube 101", description: "The importance and use of lube", ach: false, active: true },
+
+    { id: 2, pID: [0, 1], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "Act like a lady (sitting)", ach: false, active: true },
+    { id: 3, pID: [0, 1], icon: "anal101", x: 10, y: 1, name: "Anal 101", description: "Learn how to use the bussy", ach: false, active: true },
+    { id: 4, pID: [0, 1], icon: "chastity101", x: 3, y: 1, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true },
+    { id: 5, pID: [0, 1], icon: "toilet101", x: 5, y: 1, name: "Toilet 101", description: "Learn how to pee like a lady", ach: false, active: true },
+    { id: 6, pID: [0, 1], icon: "oral101", x: 8, y: 1, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true },
+    { id: 7, pID: [0, 1], icon: "bondage101", x: 12, y: 1, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true },
+    { id: 8, pID: [0, 1], icon: "cum101", x: 7, y: 1, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true },
+    { id: 9, pID: [2, 3, 6], icon: "sissy101", x: 5, y: 2, name: "Beginner Sissy Test", description: "First Sissy Test! Once you complete the test you can't go back", ach: false, active: true },
+
+    { id: 7, pID: [1], icon: "prostate210", x: 9, y: 3, name: "Prostate 210", description: "Find your bussy p-spot", ach: false, active: true },
+    { id: 8, pID: [1], icon: "buttplug212", x: 10, y: 4, name: "Buttplug 212", description: "Experaince the joy of being filled", ach: false, active: true },
+    { id: 9, pID: [1], icon: "chastity201", x: 3, y: 5, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true },
     { id: 10, pID: [1], icon: "enema205", x: 5, y: 2, name: "Enema 205", description: "A clean bussy makes everyone happy", ach: false, active: true },
     
 ];

@@ -631,7 +631,7 @@ char.room = function (roomID) {
     if ($('#room-menuButtons').is(":visible"))
         inv.close();
     g.prevRoom = g.roomID;
-
+    g.internal = null;
 
     g.roomID = roomID;
     g.dt = char.addMinutes(g.dt, 2);
@@ -1405,7 +1405,6 @@ char.initGame = function () {
     cl.init();
     g.pass = g.internal = "";
     g.initGame();
-    sc.setMax();
     m.createFmap();
 
     for (i = 0; i < g.roomMap.length; i++) {

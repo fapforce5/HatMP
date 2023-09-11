@@ -10,8 +10,7 @@ g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
 g.version = 20.0;
-g.versionText = "0.15.0 - 03 MAR 2022";
-g.notes = "v0.15.0 - alpha";
+g.versionText = "0.20.0 - OCT 2023";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
@@ -27,10 +26,9 @@ g.roomID = 1;
 g.dt = g.startDate;
 g.walk = null;
 g.statpage = 0;
-
+g.roomMap = new Array();
 g.st = new Array();
-g.daily = new Array();
-
+g.fmap;
 
 
 //g.i = function (name) {
@@ -402,49 +400,50 @@ g.fr = function(roomID){
     return g.rooms[8];
 };
 
-g.roomMap = [
-    { roomID: 16, display: "My House", access: true, darkAccess: true, left: 1425, top: 399, width: 102, height: 146, img: "map/10.png", night: "map/10_night.png", map: 1 },
-    { roomID: 29, display: "Back Yard", access: true, darkAccess: true, left: 1353, top: 393, width: 70, height: 158, img: "map/29.png", night: "map/29_night.png", map: 1 },
-    { roomID: 50, display: "Tif's Place", access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
-    { roomID: 75, display: "Bimbo's Place", access: false, darkAccess: false, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
-    { roomID: 100, display: "Construction", access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
-    { roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
-    { roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
-    { roomID: 203, display: "Missy's", access: false, darkAccess: false, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
-    { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
-    { roomID: 250, display: "Naked Beaver Diner", access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
-    { roomID: 300, display: "Apartment", access: true, darkAccess: true, left: 836, top: 662, width: 303, height: 309, img: "map/300.png", night: "map/300_night.png", map: 2 },
-    { roomID: 325, display: "Farm", access: true, darkAccess: true, left: 646, top: 419, width: 351, height: 195, img: "map/325.png", night: "map/325_night.png", map: 0 },
-    { roomID: 350, display: "Sperm Bank", access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
-    { roomID: 375, display: "Cop Shop", access: true, darkAccess: true, left: 1064, top: 32, width: 246, height: 202, img: "map/375.png", night: "map/375_night.png", map: 2 },
-    { roomID: 400, display: "Mall", access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
-    { roomID: 404, display: "Spankey's", access: true, darkAccess: true, left: 530, top: 375, width: 93, height: 126, img: "map/404.png", night: "map/404_night.png", map: 1 },
-    { roomID: 405, display: "Hair Cut", access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
-    { roomID: 406, display: "Contacts", access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
-    { roomID: 407, display: "Makeup", access: false, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
-    { roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
-    { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
-    { roomID: 500, display: "Zoey's", access: true, darkAccess: false, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
-    { roomID: 525, display: "Zoey's Bar", access: true, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },
-    { roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },
-    { roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
-    { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
-    { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
-    { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
-    { roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
-    { roomID: 800, display: "Ralph's House", access: true, darkAccess: true, left: 1633, top: 414, width: 103, height: 137, img: "map/800.png", night: "map/800_night.png", map: 1 },
-    { roomID: 825, display: "Dirty Lot", access: true, darkAccess: true, left: 1697, top: 737, width: 223, height: 233, img: "map/825.png", night: "map/825_night.png", map: 2 },
-    { roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
-    { roomID: 900, display: "University", access: true, darkAccess: true, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
-    { roomID: 901, display: "Pool", access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
-    { roomID: 910, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
+g.roomMapInit = function () {
 
-    
-    { roomID: 2003, display: "[In Dev]", access: false, darkAccess: false, left: 1144, top: 399, width: 135, height: 113, img: "map/2003.png", night: "map/2003_night.png", map: 1 },
-    //{ roomID: 100, access: false, left: 500, top: 300, width: 300, height: 150, activeImg: "map/constructionSite.png", inactiveImg: "map/inactive.png" },
-];
+    g.roomMap = [
+        { roomID: 16, display: "My House", access: true, darkAccess: true, left: 1425, top: 399, width: 102, height: 146, img: "map/10.png", night: "map/10_night.png", map: 1 },
+        { roomID: 29, display: "Back Yard", access: true, darkAccess: true, left: 1353, top: 393, width: 70, height: 158, img: "map/29.png", night: "map/29_night.png", map: 1 },
+        //{ roomID: 50, display: "Tif's Place", access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
+        //{ roomID: 75, display: "Bimbo's Place", access: false, darkAccess: false, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
+        { roomID: 100, display: "Construction", access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
+        //{ roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
+        //{ roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
+        { roomID: 203, display: "Missy's", access: false, darkAccess: false, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
+        { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
+        { roomID: 250, display: "Naked Beaver Diner", access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
+        //{ roomID: 300, display: "Apartment", access: true, darkAccess: true, left: 836, top: 662, width: 303, height: 309, img: "map/300.png", night: "map/300_night.png", map: 2 },
+        //{ roomID: 325, display: "Farm", access: true, darkAccess: true, left: 646, top: 419, width: 351, height: 195, img: "map/325.png", night: "map/325_night.png", map: 0 },
+        { roomID: 350, display: "Sperm Bank", access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
+        //{ roomID: 375, display: "Cop Shop", access: true, darkAccess: true, left: 1064, top: 32, width: 246, height: 202, img: "map/375.png", night: "map/375_night.png", map: 2 },
+        { roomID: 400, display: "Mall", access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
+        { roomID: 404, display: "Spankey's", access: true, darkAccess: true, left: 530, top: 375, width: 93, height: 126, img: "map/404.png", night: "map/404_night.png", map: 1 },
+        { roomID: 405, display: "Hair Cut", access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
+        { roomID: 406, display: "Contacts", access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
+        //{ roomID: 407, display: "Makeup", access: false, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
+        //{ roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
+        { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
+        //{ roomID: 500, display: "Zoey's", access: true, darkAccess: false, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
+        //{ roomID: 525, display: "Zoey's Bar", access: true, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },
+        //{ roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },
+        //{ roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
+        { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
+        { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
+        //{ roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
+        //{ roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
+        //{ roomID: 800, display: "Ralph's House", access: true, darkAccess: true, left: 1633, top: 414, width: 103, height: 137, img: "map/800.png", night: "map/800_night.png", map: 1 },
+        //{ roomID: 825, display: "Dirty Lot", access: true, darkAccess: true, left: 1697, top: 737, width: 223, height: 233, img: "map/825.png", night: "map/825_night.png", map: 2 },
+        //{ roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
+        //{ roomID: 900, display: "University", access: true, darkAccess: true, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
+        //{ roomID: 901, display: "Pool", access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
+        { roomID: 910, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
-g.fmap;
+        //{ roomID: 2003, display: "[In Dev]", access: false, darkAccess: false, left: 1144, top: 399, width: 135, height: 113, img: "map/2003.png", night: "map/2003_night.png", map: 1 },
+        //{ roomID: 100, access: false, left: 500, top: 300, width: 300, height: 150, activeImg: "map/constructionSite.png", inactiveImg: "map/inactive.png" },
+    ];
+}
+
 
 //FUNCTIONS==========================================================================================================================================================================
 
@@ -619,12 +618,6 @@ g.save = function () {
         //map: g.map
     };
 
-    //for (i = 0; i < g.st.length; i++) {
-    //    retArra.st.push({
-    //        n: gv.st[i].n,
-    //        t: gv.st[i].t
-    //    });
-    //}
     for (i = 0; i < g.roomMap.length; i++) {
         retArra.roomMap.push({
             roomID: g.roomMap[i].roomID,
@@ -640,97 +633,7 @@ g.save = function () {
 
     return retArra;
 };
-g.sissy = function () { };
-g.sissy = [
 
-    { id: 0, pID: [54], icon: "missy1", x: 3, y: 10, name: "Tea Time", description: "Follow Instructions", ach: false, active: true, points: 0, h: false },
-    { id: 1, pID: [0], icon: "missy2", x: 4, y: 10, name: "Patience", description: "Follow Instructions", ach: false, active: true, points: 0, h: false },
-    { id: 2, pID: [20], icon: "missy3", x: 6, y: 11, name: "Furniture", description: "You will learn to know your place.", ach: false, active: true, points: 0, h: false },
-
-    { id: 3, pID: [2], icon: "hypno0", x: 7, y: 11, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: 0, h: false },
-    { id: 4, pID: [3], icon: "hypno1", x: 7, y: 12, name: "Hypno", description: "Watch the hypno tube", ach: false, active: true, points: 0, h: false },
-    { id: 5, pID: [4], icon: "hypno2", x: 7, y: 13, name: "Hypno", description: "Watch the hypno tube", ach: false, active: false, points: 0, h: false },
-
-    { id: 6, pID: [3], icon: "chastity", x: 8, y: 11, name: "Chastity Training", description: "What a worthless flag of skin you have", ach: false, active: true, points: 0, h: false },
-    { id: 7, pID: [51], icon: "cock1", x: 10, y: 5, name: "Average Size Cock", description: "Just enough to still please women", ach: false, active: true, points: 1, h: false },
-    { id: 8, pID: [7], icon: "cock2", x: 11, y: 4, name: "Below Average Cock", description: "Women will be dissapointed in your manhood", ach: false, active: true, points: 1, h: false },
-    { id: 9, pID: [8], icon: "cock3", x: 12, y: 3, name: "Tiny pp", description: "Hahaha, that's too small to give anyone pleasure", ach: false, active: true, points: 1, h: false },
-    { id: 10, pID: [9], icon: "cock4", x: 13, y: 2, name: "It's a Clitty", description: "You're no longer a man, sissy", ach: false, active: true, points: 1, h: false },
-    { id: 11, pID: [51], icon: "cock5", x: 20, y: 9, name: "Wet Juicy Pussy", description: "Finally you've reached your final potential", ach: false, active: false, points: 2, h: false },
-
-    { id: 12, pID: [6], icon: "bj", x: 9, y: 11, name: "Blow Me", description: "Work on your BJ skills", ach: false, active: true, points: 1, h: false },
-    { id: 13, pID: [12], icon: "gloryhole0", x: 9, y: 13, name: "Glory Hole Slut", description: "Present your mouth at a glory hole", ach: false, active: true, points: 1, h: false },
-
-    { id: 14, pID: [51], icon: "pink", x: 18, y: 5, name: "Pink Room", description: "Train in the Pink Room", ach: false, active: true, points: 1, h: false },
-
-    { id: 15, pID: [12], icon: "redroom", x: 10, y: 11, name: "Red Room", description: "Prove your Worth", ach: false, active: true, points: 0, h: false },
-
-    { id: 16, pID: [15], icon: "takeit", x: 11, y: 11, name: "Take It Slut", description: "Bend over and serve", ach: false, active: true, points: 0, h: false },
-    { id: 17, pID: [16, 13], icon: "gloryhole1", x: 11, y: 13, name: "Anal Hole", description: "Present your ass at a glory hole", ach: false, active: true, points: 2, h: false },
-    { id: 18, pID: [47, 48, 49], icon: "save", x: 18, y: 10, name: "Save Missy", description: "Save Missy", ach: false, active: true, points: 0, h: false },
-
-    { id: 19, pID: [16], icon: "sewer", x: 12, y: 11, name: "Sewer", description: "Search the sewer", ach: false, active: true, points: 0, h: false },
-
-    { id: 20, pID: [1], icon: "p0", x: 5, y: 10, name: "Meet and Greet", description: "Meet your new instructor", ach: false, active: true, points: 0, h: false },
-    { id: 21, pID: [20], icon: "p1", x: 6, y: 9, name: "Sit Like A Lady", description: "How to sit like a proper lady", ach: false, active: true, points: 0, h: false },
-    { id: 22, pID: [21], icon: "p2", x: 8, y: 9, name: "How to Pee", description: "How to pee like a lady", ach: false, active: true, points: 0, h: false },
-    { id: 23, pID: [24], icon: "p3", x: 10, y: 9, name: "Dress", description: "How to dress like a lady", ach: false, active: true, points: 0, h: false },
-
-    { id: 24, pID: [22], icon: "cross0", x: 10, y: 9, name: "Cross dress", description: "Cross Dressing Class", ach: false, active: true, points: 0, h: false },
-    { id: 25, pID: [24], icon: "heels", x: 13, y: 24, name: "High Heels", description: "Learn how to walk in high heels", ach: false, active: false, points: 1, h: false },
-    { id: 26, pID: [51], icon: "makeup0", x: 14, y: 5, name: "Makeup", description: "You can go out wearing makeup", ach: false, active: true, points: 1, h: false },
-    { id: 27, pID: [26], icon: "makeup1", x: 15, y: 4, name: "Piercing", description: "You can get piercings", ach: false, active: true, points: 2, h: false },
-
-    { id: 28, pID: [24], icon: "diner", x: 12, y: 9, name: "Diner", description: "Diner Case", ach: false, active: true, points: 0, h: false },
-
-    { id: 29, pID: [28], icon: "cross1", x: 12, y: 8, name: "Cross dress", description: "You can cross dress in public", ach: false, active: true, points: 0, h: false },
-
-    { id: 30, pID: [27], icon: "makeup2", x: 16, y: 3, name: "Tattoos", description: "You can get tattoos", ach: false, active: true, points: 3, h: false },
-
-    { id: 31, pID: [51], icon: "clothes0", x: 12, y: 5, name: "Modeling 1", description: "You can buy sexy clothes", ach: false, active: true, points: 1, h: true },
-    { id: 32, pID: [31], icon: "clothes1", x: 13, y: 4, name: "Modeling 2", description: "You don't have to wear panties or bra", ach: false, active: true, points: 2, h: true },
-    { id: 33, pID: [32], icon: "clothes2", x: 14, y: 3, name: "Modeling 3", description: "You can buy slutty clothes", ach: false, active: true, points: 3, h: true },
-    { id: 34, pID: [33], icon: "clothes3", x: 15, y: 2, name: "Modeling 4", description: "You can go out in the nude. Be careful you can still be arrested.", ach: false, active: true, points: 4, h: true },
-
-    { id: 35, pID: [51], icon: "chest2", x: 6, y: 5, name: "A Cups", description: "Awwww you've spouted cute little buds", ach: false, active: true, points: 1, h: true },
-    { id: 36, pID: [35], icon: "chest3", x: 7, y: 4, name: "B Cups", description: "A nice pair for a nice girl", ach: false, active: true, points: 2, h: true },
-    { id: 37, pID: [36], icon: "chest4", x: 8, y: 3, name: "C Cups", description: "Any girl would be proud of these titties", ach: false, active: true, points: 3, h: true },
-    { id: 38, pID: [37], icon: "chest5", x: 9, y: 2, name: "DD Cups", description: "Ok.. Now they're getting a bit big", ach: false, active: true, points: 4, h: true },
-    { id: 39, pID: [38], icon: "chest6", x: 10, y: 1, name: "Bimbo Tits", description: "Only a complete bimbo whore would go this big", ach: false, active: true, points: 5, h: true },
-
-    { id: 40, pID: [51], icon: "leg1", x: 8, y: 5, name: "Feminine Legs", description: "A nice pair of legs for a nice girl", ach: false, active: true, points: 1, h: true },
-    { id: 41, pID: [40], icon: "leg2", x: 9, y: 4, name: "Tight Booty", description: "Men will start to notice a nice butt like this", ach: false, active: true, points: 2, h: true },
-    { id: 42, pID: [41], icon: "leg3", x: 10, y: 3, name: "Big Booty", description: "Women will notice a big booty like this", ach: false, active: true, points: 3, h: true },
-    { id: 43, pID: [42], icon: "leg4", x: 11, y: 2, name: "Phat Ass", description: "Everyone wants to slap a booty this big", ach: false, active: true, points: 4, h: true },
-    { id: 44, pID: [43], icon: "leg5", x: 12, y: 1, name: "Porn Star Ass", description: "An ass built for cock", ach: false, active: true, points: 5, h: true },
-
-    { id: 45, pID: [51], icon: "lip1", x: 16, y: 5, name: "Girl's Lips", description: "What a purdy mouth you have", ach: false, active: true, points: 1, h: true },
-    { id: 46, pID: [45], icon: "lip2", x: 17, y: 4, name: "Bimbo Lips", description: "Everyone wants to fuck your soft lips", ach: false, active: true, points: 2, h: true },
-
-    { id: 47, pID: [55], icon: "q1", x: 16, y: 8, name: "Quest 1", description: "Construction Site", ach: false, active: true, points: 0, h: false },
-    { id: 48, pID: [55], icon: "q2", x: 16, y: 10, name: "Quest 2", description: "Rachel's Farm", ach: false, active: true, points: 0, h: false },
-    { id: 49, pID: [55], icon: "q3", x: 16, y: 12, name: "Quest 3", description: "Investiate the Forest Queen's List", ach: false, active: true, points: 0, h: true },
-
-    { id: 50, pID: [15], icon: "black", x: 10, y: 12, name: "Black Room", description: "Train in the Black Room", ach: false, active: true, points: 1, h: false },
-
-    { id: 51, pID: [29], icon: "hormone", x: 12, y: 7, name: "Sissy Bimbo Pills", description: "Pills are good", ach: false, active: true, points: 0, h: false },
-
-    { id: 52, pID: [52], icon: "gloryhole2", x: 11, y: 8, name: "Whore", description: "Work the street corner like the dirty slutty bimbo you are [Not Implemented]", ach: false, active: false, points: 3, h: false },
-    { id: 53, pID: [18], icon: "end", x: 19, y: 10, name: "This is the end", description: "Take down the cult!", ach: false, active: true, points: 3, h: false },
-
-    { id: 54, pID: [], icon: "missy0", x: 2, y: 10, name: "Contract", description: "Introduction", ach: false, active: true, points: 0, h: false },
-
-    { id: 55, pID: [19, 28], icon: "redbox", x: 14, y: 10, name: "What's in the box", description: "Discover what's in the box! [Major event, make sure you're ready!]", ach: false, active: true, points: 0, h: false },
-    { id: 56, pID: [0], icon: "cancel", x: 19, y: 2, name: "Cancel", description: "Cancel and leave the classroom", ach: false, active: true, points: 0, h: false },
-
-    { id: 57, pID: [34], icon: "stripper", x: 13, y: 1, name: "Stripper", description: "Work as a stripper on a case", ach: false, active: false, points: 0, h: false },
-
-    { id: 58, pID: [0], icon: "lube", x: 3, y: 11, name: "Lube", description: "Learn the importance of proper lubrication", ach: false, active: true, points: 1, h: false },
-    { id: 59, pID: [58], icon: "dildos", x: 3, y: 12, name: "Dildos", description: "Shove toys in your pooper", ach: false, active: true, points: 1, h: false },
-
-    { id: 60, pID: [55], icon: "q0", x: 15, y: 10, name: "Forest Queen", description: "Get information on the cult from the Forest Queen", ach: false, active: true, points: 0, h: false },
-
-];
 g.load = function (rma, thisVersion) {
     var i, j, ksissy;
     g.initGame();
@@ -802,270 +705,271 @@ g.initGame = function () {
     g.roomID = 7;
     g.dt = char.addMinutes(g.startDate, 757);
     gv.init();
+    g.roomMapInit();
 };
 
-g.sumSissy = function () {
-    var i;
-    g.sp = {
-        difficulty: {
-            n: "",
-            m: 0.0
-        },
-        oral: {
-            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
-            p: 35,
-            t: 0
-        },
-        anal: {
-            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
-            p: 50,
-            t: 0
-        },
-        hand: {
-            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
-            p: 25,
-            t: 0
-        },
-        foot: {
-            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
-            p: 25,
-            t: 0
-        },
-        boob: {
-            n: { "f": 0, "r": 0 },
-            p: 25,
-            t: 0
-        },
-        pussy: {
-            n: { "f": 0, "r": 0 },
-            p: 50,
-            t: 0
-        },
-        fist: {
-            n: { "f": 0, "m": 0 },
-            p: 50,
-            t: 0
-        },
-        piss: {
-            n: { "f": 0, "m": 0 },
-            p: 35,
-            t: 0
-        },
-        cumspit: {
-            p: 1,
-            t: 0
-        },
-        cumswollow: {
-            p: 25,
-            t: 0
-        },
-        creampie: {
-            p: 25,
-            t: 0
-        },
-        footlicker: {
-            p: 25,
-            t: 0
-        },
-        sissygasm: {
-            p: 50,
-            t: 0
-        },
-        fingerbutt: {
-            p: 5,
-            t: 0
-        },
-        dildobutt: {
-            p: 10,
-            t: 0
-        },
-        misspoints: {
-            p: 1,
-            t: 0
-        },
-        phum: {
-            p: 25,
-            t: 0
-        },
-        cheatPoints: {
-            p: 1,
-            t: 0
-        },
-        legacyPoints: {
-            p: 1,
-            t: 0
+//g.sumSissy = function () {
+//    var i;
+//    g.sp = {
+//        difficulty: {
+//            n: "",
+//            m: 0.0
+//        },
+//        oral: {
+//            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
+//            p: 35,
+//            t: 0
+//        },
+//        anal: {
+//            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
+//            p: 50,
+//            t: 0
+//        },
+//        hand: {
+//            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
+//            p: 25,
+//            t: 0
+//        },
+//        foot: {
+//            n: { "m": 0, "f": 0, "mr": 0, "fr": 0 },
+//            p: 25,
+//            t: 0
+//        },
+//        boob: {
+//            n: { "f": 0, "r": 0 },
+//            p: 25,
+//            t: 0
+//        },
+//        pussy: {
+//            n: { "f": 0, "r": 0 },
+//            p: 50,
+//            t: 0
+//        },
+//        fist: {
+//            n: { "f": 0, "m": 0 },
+//            p: 50,
+//            t: 0
+//        },
+//        piss: {
+//            n: { "f": 0, "m": 0 },
+//            p: 35,
+//            t: 0
+//        },
+//        cumspit: {
+//            p: 1,
+//            t: 0
+//        },
+//        cumswollow: {
+//            p: 25,
+//            t: 0
+//        },
+//        creampie: {
+//            p: 25,
+//            t: 0
+//        },
+//        footlicker: {
+//            p: 25,
+//            t: 0
+//        },
+//        sissygasm: {
+//            p: 50,
+//            t: 0
+//        },
+//        fingerbutt: {
+//            p: 5,
+//            t: 0
+//        },
+//        dildobutt: {
+//            p: 10,
+//            t: 0
+//        },
+//        misspoints: {
+//            p: 1,
+//            t: 0
+//        },
+//        phum: {
+//            p: 25,
+//            t: 0
+//        },
+//        cheatPoints: {
+//            p: 1,
+//            t: 0
+//        },
+//        legacyPoints: {
+//            p: 1,
+//            t: 0
 
-        },
-        total: 0,
-        tempHolder: 0
-    };
-    for (i = 0; i < g.st.length; i++) {
-        switch (gv.st[i].n) {
-            case "difficulty":
-                var dname = ["easy", "normal", "hard"];
-                var mult = [.5, 1, 1.25];
-                g.sp.difficulty.n = dname[gv.st[i].t];
-                g.sp.difficulty.m = mult[gv.st[i].t];
-                break;
+//        },
+//        total: 0,
+//        tempHolder: 0
+//    };
+//    for (i = 0; i < g.st.length; i++) {
+//        switch (gv.st[i].n) {
+//            case "difficulty":
+//                var dname = ["easy", "normal", "hard"];
+//                var mult = [.5, 1, 1.25];
+//                g.sp.difficulty.n = dname[gv.st[i].t];
+//                g.sp.difficulty.m = mult[gv.st[i].t];
+//                break;
 
-            case "giveOralMale":
-                g.sp.oral.n.m = gv.st[i].t;
-                break;
-            case "giveOralFemale":
-                g.sp.oral.n.f = gv.st[i].t;
-                break;
-            case "receiveOralMale":
-                g.sp.oral.n.mr += gv.st[i].t;
-                break;
-            case "receiveOralFemale":
-                g.sp.oral.n.fr += gv.st[i].t;
-                break;
+//            case "giveOralMale":
+//                g.sp.oral.n.m = gv.st[i].t;
+//                break;
+//            case "giveOralFemale":
+//                g.sp.oral.n.f = gv.st[i].t;
+//                break;
+//            case "receiveOralMale":
+//                g.sp.oral.n.mr += gv.st[i].t;
+//                break;
+//            case "receiveOralFemale":
+//                g.sp.oral.n.fr += gv.st[i].t;
+//                break;
 
-            case "giveBoobJob":
-                g.sp.boob.n.r = gv.st[i].t;
-                break;
-            case "receiveBoobJob":
-                g.sp.boob.n.f = gv.st[i].t;
-                break;
+//            case "giveBoobJob":
+//                g.sp.boob.n.r = gv.st[i].t;
+//                break;
+//            case "receiveBoobJob":
+//                g.sp.boob.n.f = gv.st[i].t;
+//                break;
 
-            case "loadSwollowed":
-                g.sp.cumswollow.t = gv.st[i].t;
-                break;
-            case "loadSpit":
-                g.sp.cumspit.t = gv.st[i].t;
-                break;
-            case "creamPied":
-                g.sp.creampie.t = gv.st[i].t;
-                break;
+//            case "loadSwollowed":
+//                g.sp.cumswollow.t = gv.st[i].t;
+//                break;
+//            case "loadSpit":
+//                g.sp.cumspit.t = gv.st[i].t;
+//                break;
+//            case "creamPied":
+//                g.sp.creampie.t = gv.st[i].t;
+//                break;
 
-            case "giveAnalMale":
-                g.sp.anal.n.mr = gv.st[i].t;
-                break;
-            case "giveAnalFemale":
-                g.sp.anal.n.fr = gv.st[i].t;
-                break;
-            case "receiveAnalMale":
-                g.sp.anal.n.m += gv.st[i].t;
-                break;
-            case "receiveAnalFemale":
-                g.sp.anal.n.f += gv.st[i].t;
-                break;
+//            case "giveAnalMale":
+//                g.sp.anal.n.mr = gv.st[i].t;
+//                break;
+//            case "giveAnalFemale":
+//                g.sp.anal.n.fr = gv.st[i].t;
+//                break;
+//            case "receiveAnalMale":
+//                g.sp.anal.n.m += gv.st[i].t;
+//                break;
+//            case "receiveAnalFemale":
+//                g.sp.anal.n.f += gv.st[i].t;
+//                break;
 
-            case "giveHandjobMale":
-                g.sp.hand.n.m = gv.st[i].t;
-                break;
-            case "giveFingerFemale":
-                g.sp.hand.n.f = gv.st[i].t;
-                break;
-            case "receiveHandjobMale":
-                g.sp.hand.n.mr += gv.st[i].t;
-                break;
-            case "receiveHandjobFemale":
-                g.sp.hand.n.fr += gv.st[i].t;
-                break;
+//            case "giveHandjobMale":
+//                g.sp.hand.n.m = gv.st[i].t;
+//                break;
+//            case "giveFingerFemale":
+//                g.sp.hand.n.f = gv.st[i].t;
+//                break;
+//            case "receiveHandjobMale":
+//                g.sp.hand.n.mr += gv.st[i].t;
+//                break;
+//            case "receiveHandjobFemale":
+//                g.sp.hand.n.fr += gv.st[i].t;
+//                break;
 
-            case "receiveFistMale":
-                g.sp.fist.n.m = gv.st[i].t;
-                break;
-            case "receiveFistFemale":
-                g.sp.fist.n.f = gv.st[i].t;
-                break;
+//            case "receiveFistMale":
+//                g.sp.fist.n.m = gv.st[i].t;
+//                break;
+//            case "receiveFistFemale":
+//                g.sp.fist.n.f = gv.st[i].t;
+//                break;
 
-            case "giveFootjobMale":
-                g.sp.foot.n.m = gv.st[i].t;
-                break;
-            case "giveFootjobFemale":
-                g.sp.foot.n.f = gv.st[i].t;
-                break;
-            case "receiveFootjobMale":
-                g.sp.foot.n.mr += gv.st[i].t;
-                break;
-            case "receiveFootjobFemale":
-                g.sp.foot.n.fr += gv.st[i].t;
-                break;
+//            case "giveFootjobMale":
+//                g.sp.foot.n.m = gv.st[i].t;
+//                break;
+//            case "giveFootjobFemale":
+//                g.sp.foot.n.f = gv.st[i].t;
+//                break;
+//            case "receiveFootjobMale":
+//                g.sp.foot.n.mr += gv.st[i].t;
+//                break;
+//            case "receiveFootjobFemale":
+//                g.sp.foot.n.fr += gv.st[i].t;
+//                break;
 
-            case "getPussyFucked":
-                g.sp.pussy.n.r = gv.st[i].t;
-                break;
-            case "fuckPussy":
-                g.sp.pussy.n.f = gv.st[i].t;
-                break;
+//            case "getPussyFucked":
+//                g.sp.pussy.n.r = gv.st[i].t;
+//                break;
+//            case "fuckPussy":
+//                g.sp.pussy.n.f = gv.st[i].t;
+//                break;
 
-            case "pissedonMale":
-                g.sp.piss.n.m = gv.st[i].t;
-                break;
-            case "pissedonFemale":
-                g.sp.piss.n.f = gv.st[i].t;
-                break;
+//            case "pissedonMale":
+//                g.sp.piss.n.m = gv.st[i].t;
+//                break;
+//            case "pissedonFemale":
+//                g.sp.piss.n.f = gv.st[i].t;
+//                break;
 
-            case "footLicker":
-                g.sp.footlicker.t = gv.st[i].t;
-                break;
+//            case "footLicker":
+//                g.sp.footlicker.t = gv.st[i].t;
+//                break;
 
-            case "missyPoints":
-                g.sp.misspoints.t = gv.st[i].t;
-                break;
-            case "cheatPoints":
-                g.sp.cheatPoints.t = gv.st[i].t;
-                break;
-            case "phum":
-                g.sp.phum.t = gv.st[i].t;
-                break;
+//            case "missyPoints":
+//                g.sp.misspoints.t = gv.st[i].t;
+//                break;
+//            case "cheatPoints":
+//                g.sp.cheatPoints.t = gv.st[i].t;
+//                break;
+//            case "phum":
+//                g.sp.phum.t = gv.st[i].t;
+//                break;
 
-            case "sissygasm":
-                g.sp.sissygasm.t = gv.st[i].t;
-                break;
+//            case "sissygasm":
+//                g.sp.sissygasm.t = gv.st[i].t;
+//                break;
 
-            case "fingerbutt":
-                g.sp.fingerbutt.t = gv.st[i].t;
-                break;
-            case "dildobutt":
-                g.sp.dildobutt.t = gv.st[i].t;
-                break;
-            case "sissy":
-                g.sp.legacyPoints.t = gv.st[i].t;
-                break;
-        }
-    }
-    g.sp.oral.t = g.subSumSissy("four", g.sp.oral.n);
-    g.sp.anal.t = g.subSumSissy("four", g.sp.anal.n);
-    g.sp.hand.t = g.subSumSissy("four", g.sp.hand.n);
-    g.sp.foot.t = g.subSumSissy("four", g.sp.foot.n);
-    g.sp.boob.t = g.subSumSissy("fr", g.sp.boob.n);
-    g.sp.pussy.t = g.subSumSissy("fr", g.sp.pussy.n);
-    g.sp.fist.t = g.subSumSissy("fm", g.sp.fist.n);
-    g.sp.piss.t = g.subSumSissy("fm", g.sp.piss.n);
+//            case "fingerbutt":
+//                g.sp.fingerbutt.t = gv.st[i].t;
+//                break;
+//            case "dildobutt":
+//                g.sp.dildobutt.t = gv.st[i].t;
+//                break;
+//            case "sissy":
+//                g.sp.legacyPoints.t = gv.st[i].t;
+//                break;
+//        }
+//    }
+//    g.sp.oral.t = g.subSumSissy("four", g.sp.oral.n);
+//    g.sp.anal.t = g.subSumSissy("four", g.sp.anal.n);
+//    g.sp.hand.t = g.subSumSissy("four", g.sp.hand.n);
+//    g.sp.foot.t = g.subSumSissy("four", g.sp.foot.n);
+//    g.sp.boob.t = g.subSumSissy("fr", g.sp.boob.n);
+//    g.sp.pussy.t = g.subSumSissy("fr", g.sp.pussy.n);
+//    g.sp.fist.t = g.subSumSissy("fm", g.sp.fist.n);
+//    g.sp.piss.t = g.subSumSissy("fm", g.sp.piss.n);
 
-    g.sp.total = (g.sp.oral.t * g.sp.oral.p) +
-        (g.sp.anal.t * g.sp.anal.p) +
-        (g.sp.hand.t * g.sp.hand.p) +
-        (g.sp.foot.t * g.sp.foot.p) +
-        (g.sp.boob.t * g.sp.boob.p) +
-        (g.sp.pussy.t * g.sp.pussy.p) +
-        (g.sp.piss.t * g.sp.piss.p) +
-        (g.sp.cumspit.t * g.sp.cumspit.p) +
-        (g.sp.cumswollow.t * g.sp.cumswollow.p) +
-        (g.sp.creampie.t * g.sp.creampie.p) +
-        (g.sp.footlicker.t * g.sp.footlicker.p) +
-        (g.sp.sissygasm.t * g.sp.sissygasm.p) +
-        (g.sp.fingerbutt.t * g.sp.fingerbutt.p) +
-        (g.sp.dildobutt.t * g.sp.dildobutt.p) +
-        (g.sp.misspoints.t * g.sp.misspoints.p) +
-        (g.sp.phum.t * g.sp.phum.p) +
-        (g.sp.cheatPoints.t * g.sp.cheatPoints.p) +
-        g.sp.legacyPoints.t;
-};
+//    g.sp.total = (g.sp.oral.t * g.sp.oral.p) +
+//        (g.sp.anal.t * g.sp.anal.p) +
+//        (g.sp.hand.t * g.sp.hand.p) +
+//        (g.sp.foot.t * g.sp.foot.p) +
+//        (g.sp.boob.t * g.sp.boob.p) +
+//        (g.sp.pussy.t * g.sp.pussy.p) +
+//        (g.sp.piss.t * g.sp.piss.p) +
+//        (g.sp.cumspit.t * g.sp.cumspit.p) +
+//        (g.sp.cumswollow.t * g.sp.cumswollow.p) +
+//        (g.sp.creampie.t * g.sp.creampie.p) +
+//        (g.sp.footlicker.t * g.sp.footlicker.p) +
+//        (g.sp.sissygasm.t * g.sp.sissygasm.p) +
+//        (g.sp.fingerbutt.t * g.sp.fingerbutt.p) +
+//        (g.sp.dildobutt.t * g.sp.dildobutt.p) +
+//        (g.sp.misspoints.t * g.sp.misspoints.p) +
+//        (g.sp.phum.t * g.sp.phum.p) +
+//        (g.sp.cheatPoints.t * g.sp.cheatPoints.p) +
+//        g.sp.legacyPoints.t;
+//};
 
-g.subSumSissy = function(t, ob){
-    if (t === "four")
-        return ob.m + ob.f + ob.mr + ob.fr;
-    else if (t === "fr")
-        return ob.f + ob.r;
-    else if (t === "fm")
-        return ob.f + ob.m;
+//g.subSumSissy = function(t, ob){
+//    if (t === "four")
+//        return ob.m + ob.f + ob.mr + ob.fr;
+//    else if (t === "fr")
+//        return ob.f + ob.r;
+//    else if (t === "fm")
+//        return ob.f + ob.m;
 
-    return 0;
-};
+//    return 0;
+//};
 
 g.sissyview = function () {
     //g.sumSissy();
@@ -1150,111 +1054,111 @@ g.subSissyViewTitle = function (title, x) {
 //    gv.mod("usedSissyPoints", g.sissy[sid].points * 100 * g.sp.difficulty.m);
 //};
 
-g.sissyclick = function (ttype) {
-    var title, body;
-    title = "";
-    body = new Array();
-    switch (ttype) {
-        case "Oral":
-            title = "Oral Sex";
-            body.push({ x: "Men Blown", y: g.sp.oral.n.m });
-            body.push({ x: "Pussy Eaten", y: g.sp.oral.n.f });
-            body.push({ x: "Received BJ from dudes", y: g.sp.oral.n.mr });
-            body.push({ x: "Received BJ from chicks", y: g.sp.oral.n.fr });
-            break;
-        case "Anal":
-            title = "Anal Sex";
-            body.push({ x: "Fucked in the ass", y: g.sp.anal.n.m });
-            body.push({ x: "Strapons taken up the ass", y: g.sp.anal.n.f });
-            body.push({ x: "Dudes Fucked", y: g.sp.anal.n.mr });
-            body.push({ x: "Chicks Fucked", y: g.sp.anal.n.mr });
-            break;
-        case "Hand":
-            title = "Hand Jobs";
-            body.push({ x: "Hand jobs given", y: g.sp.hand.n.m });
-            body.push({ x: "Chicks fingered", y: g.sp.hand.n.f });
-            body.push({ x: "Jacked-off or fingered by dudes", y: g.sp.hand.n.mr });
-            body.push({ x: "Jacked-off or fingered by chicks", y: g.sp.hand.n.fr });
-            break;
-        case "Foot":
-            title = "Foot Jobs";
-            body.push({ x: "Foot jobs given to dudes", y: g.sp.foot.n.m });
-            body.push({ x: "Foot jobs given to chicks", y: g.sp.foot.n.f });
-            body.push({ x: "Foot jobs received by dudes", y: g.sp.foot.n.mr });
-            body.push({ x: "Foot jobs received by chicks", y: g.sp.foot.n.fr });
-            break;
-        case "Boob":
-            title = "Boobs";
-            body.push({ x: "Titties Fucked", y: g.sp.boob.n.f });
-            body.push({ x: "Your Titties Fucked", y: g.sp.boob.n.r });
-            break;
-        case "Pussy":
-            title = "Pussy";
-            body.push({ x: "Chicks fucked in the pussy", y: g.sp.pussy.n.f });
-            body.push({ x: "Fucked in your pussy", y: g.sp.pussy.n.r });
-            break;
-        case "Fingered":
-            title = "Fingered";
-            body.push({ x: "Stuck fingers in your asshole", y: g.sp.fingerbutt.t });
-            break;
-        case "Dildo":
-            title = "Dildo";
-            body.push({ x: "Stuck a Dildo or object in your asshole", y: g.sp.dildobutt.t });
-            break;
-        case "Spit":
-            title = "Spit";
-            body.push({ x: "Wasted perfectly good sperm ", y: g.sp.cumspit.t });
-            break;
-        case "Swollow":
-            title = "Spit";
-            body.push({ x: "Swollowed like a good sissy", y: g.sp.cumswollow.t });
-            break;
-        case "Creampie":
-            title = "Creampie";
-            body.push({ x: "Filled that sissy pussy with cum ", y: g.sp.creampie.t });
-            break;
-        case "Piss":
-            title = "Pissed on";
-            body.push({ x: "Pissed on by chicks", y: g.sp.piss.n.f });
-            body.push({ x: "Pissed on by dudes", y: g.sp.piss.n.m });
-            break;
-        case "SissyGasm":
-            title = "Sissygasm";
-            body.push({ x: "Number of sissygasms", y: g.sp.sissygasm.t });
-            break;
-        case "Missy Points":
-            title = "Missy Points";
-            body.push({ x: "Bonus Points", y: g.sp.misspoints.t });
-            break;
-        case "Humiliation":
-            title = "Humiliation";
-            body.push({ x: "Humiliated yourself", y: g.sp.phum.t });
-            break;
-        case "Foot Licker":
-            title = "Foot Licker";
-            body.push({ x: "Feet you've worshiped", y: g.sp.footlicker.t });
-            break;
-        case "Cheat":
-            title = "Cheat";
-            body.push({ x: "Pressed the cheat button", y: g.sp.cheatPoints.t });
-            break;
-        case "Legacy":
-            title = "Legacy Points";
-            body.push({ x: "Points from v13 and earlier. ", y: g.sp.legacyPoints.t });
-            break;
-        default:
-            console.log(ttype + " not found.");
-    }
+//g.sissyclick = function (ttype) {
+//    var title, body;
+//    title = "";
+//    body = new Array();
+//    switch (ttype) {
+//        case "Oral":
+//            title = "Oral Sex";
+//            body.push({ x: "Men Blown", y: g.sp.oral.n.m });
+//            body.push({ x: "Pussy Eaten", y: g.sp.oral.n.f });
+//            body.push({ x: "Received BJ from dudes", y: g.sp.oral.n.mr });
+//            body.push({ x: "Received BJ from chicks", y: g.sp.oral.n.fr });
+//            break;
+//        case "Anal":
+//            title = "Anal Sex";
+//            body.push({ x: "Fucked in the ass", y: g.sp.anal.n.m });
+//            body.push({ x: "Strapons taken up the ass", y: g.sp.anal.n.f });
+//            body.push({ x: "Dudes Fucked", y: g.sp.anal.n.mr });
+//            body.push({ x: "Chicks Fucked", y: g.sp.anal.n.mr });
+//            break;
+//        case "Hand":
+//            title = "Hand Jobs";
+//            body.push({ x: "Hand jobs given", y: g.sp.hand.n.m });
+//            body.push({ x: "Chicks fingered", y: g.sp.hand.n.f });
+//            body.push({ x: "Jacked-off or fingered by dudes", y: g.sp.hand.n.mr });
+//            body.push({ x: "Jacked-off or fingered by chicks", y: g.sp.hand.n.fr });
+//            break;
+//        case "Foot":
+//            title = "Foot Jobs";
+//            body.push({ x: "Foot jobs given to dudes", y: g.sp.foot.n.m });
+//            body.push({ x: "Foot jobs given to chicks", y: g.sp.foot.n.f });
+//            body.push({ x: "Foot jobs received by dudes", y: g.sp.foot.n.mr });
+//            body.push({ x: "Foot jobs received by chicks", y: g.sp.foot.n.fr });
+//            break;
+//        case "Boob":
+//            title = "Boobs";
+//            body.push({ x: "Titties Fucked", y: g.sp.boob.n.f });
+//            body.push({ x: "Your Titties Fucked", y: g.sp.boob.n.r });
+//            break;
+//        case "Pussy":
+//            title = "Pussy";
+//            body.push({ x: "Chicks fucked in the pussy", y: g.sp.pussy.n.f });
+//            body.push({ x: "Fucked in your pussy", y: g.sp.pussy.n.r });
+//            break;
+//        case "Fingered":
+//            title = "Fingered";
+//            body.push({ x: "Stuck fingers in your asshole", y: g.sp.fingerbutt.t });
+//            break;
+//        case "Dildo":
+//            title = "Dildo";
+//            body.push({ x: "Stuck a Dildo or object in your asshole", y: g.sp.dildobutt.t });
+//            break;
+//        case "Spit":
+//            title = "Spit";
+//            body.push({ x: "Wasted perfectly good sperm ", y: g.sp.cumspit.t });
+//            break;
+//        case "Swollow":
+//            title = "Spit";
+//            body.push({ x: "Swollowed like a good sissy", y: g.sp.cumswollow.t });
+//            break;
+//        case "Creampie":
+//            title = "Creampie";
+//            body.push({ x: "Filled that sissy pussy with cum ", y: g.sp.creampie.t });
+//            break;
+//        case "Piss":
+//            title = "Pissed on";
+//            body.push({ x: "Pissed on by chicks", y: g.sp.piss.n.f });
+//            body.push({ x: "Pissed on by dudes", y: g.sp.piss.n.m });
+//            break;
+//        case "SissyGasm":
+//            title = "Sissygasm";
+//            body.push({ x: "Number of sissygasms", y: g.sp.sissygasm.t });
+//            break;
+//        case "Missy Points":
+//            title = "Missy Points";
+//            body.push({ x: "Bonus Points", y: g.sp.misspoints.t });
+//            break;
+//        case "Humiliation":
+//            title = "Humiliation";
+//            body.push({ x: "Humiliated yourself", y: g.sp.phum.t });
+//            break;
+//        case "Foot Licker":
+//            title = "Foot Licker";
+//            body.push({ x: "Feet you've worshiped", y: g.sp.footlicker.t });
+//            break;
+//        case "Cheat":
+//            title = "Cheat";
+//            body.push({ x: "Pressed the cheat button", y: g.sp.cheatPoints.t });
+//            break;
+//        case "Legacy":
+//            title = "Legacy Points";
+//            body.push({ x: "Points from v13 and earlier. ", y: g.sp.legacyPoints.t });
+//            break;
+//        default:
+//            console.log(ttype + " not found.");
+//    }
 
-    $(".sissy-kill").remove();
-    var tableVar = '<table class="sissy-kill" style="position:absolute; color:#fff; top:' + 800 * g.ratio + 'px; left: ' + 600 * g.ratio + 'px;' +
-        'font-size:' + 25 * g.ratio + 'px; width:' + 600 * g.ratio + 'px;">' +
-        '<tr><td colspan="2">' + title + '</td>';
-    for (i = 0; i < body.length; i++)
-        tableVar += '<tr><td>' + body[i].x + '</td><td style="text-align:right;">' + body[i].y + '</td>';
-    tableVar += '</table>';
-    $("#menu_parent").append(tableVar);
-};
+//    $(".sissy-kill").remove();
+//    var tableVar = '<table class="sissy-kill" style="position:absolute; color:#fff; top:' + 800 * g.ratio + 'px; left: ' + 600 * g.ratio + 'px;' +
+//        'font-size:' + 25 * g.ratio + 'px; width:' + 600 * g.ratio + 'px;">' +
+//        '<tr><td colspan="2">' + title + '</td>';
+//    for (i = 0; i < body.length; i++)
+//        tableVar += '<tr><td>' + body[i].x + '</td><td style="text-align:right;">' + body[i].y + '</td>';
+//    tableVar += '</table>';
+//    $("#menu_parent").append(tableVar);
+//};
 
 String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -1284,4 +1188,41 @@ g.linebreak = function (str, limit) {
         }
     }
     return brokenString;
+};
+
+g.getDiceRollPercentage = function (mine, theirs) {
+    var num = mine - theirs;
+    var retPercent;
+    if (num < -12)
+        retPercent = 100;
+    else if (num > 11)
+        retPercent = 0;
+    else
+        switch (num) {
+            case -12: retPercent = 99; break;//6 or greater dice roll
+            case -11: retPercent = 99; break;
+            case -10: retPercent = 99; break;
+            case -9: retPercent = 99; break;
+            case -8: retPercent = 98; break;
+            case -7: retPercent = 96; break;
+            case -6: retPercent = 94; break;
+            case -5: retPercent = 90; break;
+            case -4: retPercent = 84; break;
+            case -3: retPercent = 77; break;
+            case -2: retPercent = 69; break;
+            case -1: retPercent = 60; break;
+            case 0: retPercent = 50; break; //18 total dice rolls
+            case 1: retPercent = 39; break;
+            case 2: retPercent = 30; break;
+            case 3: retPercent = 22; break;
+            case 4: retPercent = 15; break;
+            case 5: retPercent = 9; break;
+            case 6: retPercent = 5; break;
+            case 7: retPercent = 3; break;
+            case 8: retPercent = 1; break;
+            case 9: retPercent = 1; break;
+            case 10: retPercent = 1; break;
+            case 11: retPercent = 1; break;
+        }
+    return retPercent;
 };
