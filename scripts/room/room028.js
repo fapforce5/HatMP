@@ -22,7 +22,7 @@ room28.main = function () {
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
     nav.buildclock();
 
-    g.newday();
+    daily.newday();
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
     var thisautohormone, hix, tix;

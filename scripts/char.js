@@ -554,7 +554,7 @@ char.newdayfake = function () {
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
 
-    g.newday();
+    daily.newday();
     nav.buildclock();
     cl.hairgrowth();
     gv.set("energy", 10);

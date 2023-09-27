@@ -81,6 +81,12 @@ room1.btnclick = function (name) {
         case "quickfightcomplete":
             quickFight.complete();
             break;
+        case "charismaRoll":
+            charisma.drawRoll();
+            break;
+        case "charismaComplete":
+            charisma.complete();
+            break;
         default:
             break;
     }

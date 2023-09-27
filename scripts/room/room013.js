@@ -243,6 +243,12 @@ room13.btnclick = function (name) {
                 case 2: chat(17, 13); break;
             }
             break;
+        case "lolaMassageWin":
+            var lolalev = sc.getLevel("lola");
+            break;
+        case "lolaMassageLose":
+
+            break;
         case "evachat":
 
             break;
@@ -796,6 +802,9 @@ room13.chatcatch = function (callback) {
                 break;
             case "angry":
                 nav.bg("13_sisterRoom/013_angryCaught.png");
+                break;
+            case "massage0chance":
+                charisma.init(sc.getLevel("lola") + 6, "lolaMassageWin", "lolaMassageLose", g.roomID) 
                 break;
         };
     });
@@ -1575,7 +1584,7 @@ room13.chat = function (chatID) {
                 txt = "Should I just ask her if she wants a massage? "
                 buttons = [
                     { chatID: -1, text: "I should talk to her first.", callback: "massage0" },
-                    { chatID: 998, text: "Do you want a massage? " + charisma.getStats(4).txt, callback: "massage0chance" }
+                    { chatID: -1, text: "You look stiff and sore from swimming. Would you like a massage? " + charisma.getStats(4).txt, callback: "massage0chance" }
                 ];
                 break;
             case 1:

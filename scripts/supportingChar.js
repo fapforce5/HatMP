@@ -11,7 +11,7 @@ sc.char = [
     { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 2, p: true, q3: null },
-    { name: "p", display: "Princess Pink", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
+    { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "black", display: "Ms. Black", image: "black.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
@@ -508,6 +508,27 @@ sc.modLevel = function (name, amount, max) {
                 }
             }
             break;
+        }
+    }
+};
+
+sc.modSecret = function (name, amount) {
+    for (var i = 0; i < sc.char.length; i++) {
+        if (sc.char[i].name === name) {
+            sc.char[i].secret += amount;
+            if (sc.char[i].secret > 100)
+                sc.char[i].secret = 100;
+            g.popUpNotice(sc.char[i].display + " is more aware of your secret lifestyle. ");
+
+            break;
+        }
+    }
+};
+
+sc.getSecret = function (name) {
+    for (var i = 0; i < sc.char.length; i++) {
+        if (sc.char[i].name === name) {
+            return sc.char[i].secret;
         }
     }
 };
@@ -1416,9 +1437,29 @@ sc.trivial = function (charname) {
             name = "Philbert";
             image = "philbert.png";
             break;
+        case "!chris":
+            name = "Chris";
+            image = "chris.png";
+            break;
         case "!thomas":
             name = "Thomas";
             image = "thomas.png";
+            break;
+        case "!timothy":
+            name = "Timohty";
+            image = "timothy.png";
+            break;
+        case "!sporty":
+            name = "Sport";
+            image = "sporty.png";
+            break;
+        case "!jeremy":
+            name = "Jeremy";
+            image = "jeremy.png";
+            break;
+        case "!martin":
+            name = "Martin";
+            image = "martin.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

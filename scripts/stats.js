@@ -46,7 +46,7 @@ sstat.updateGraph = function () {
     for (var i = 0; i < levels.st.length; i++) {
         if (levels.st[i].display) {
             var levelDesc = levels.desc(levels.st[i].n, levels.st[i].l);
-            console.log($(".rl-levelheader[data-name='" + levels.st[i].n + "']"));
+            //console.log($(".rl-levelheader[data-name='" + levels.st[i].n + "']"));
             $(".rl-levelheader[data-name='" + levels.st[i].n + "']").text(levels.st[i].d + (levelDesc.count > 0 ? (" " + levels.st[i].l + "/" + levelDesc.count) : ""));
             $(".rl-bar[data-name='" + levels.st[i].n + "']").css({ width: levels.st[i].c + "%" });
             $(".rl-level[data-name='" + levels.st[i].n + "']").text(levelDesc.txt);

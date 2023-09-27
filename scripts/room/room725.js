@@ -140,7 +140,7 @@ room725.chatcatch = function (callback) {
         case "zoey8":
             sc.setstep("chloe", 2);
             char.addtime(60);
-            g.daily("chloe");
+            daily.set("chloe");
             char.room(725);
             break;
         case "leave":

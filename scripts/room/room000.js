@@ -118,23 +118,28 @@ room0.btnclick = function (name) {
     }
     else {
         var roomnum = parseInt(name);
-        if (cl.isCrossdressing() && !g.sissy[28].ach) {
-            if (roomnum === 203 || roomnum === 500 || roomnum === 250 || roomnum === 450 || roomnum === 650) {
-                $('.room-left').show();
-                char.addtime(20);
-                $('#room_footer').show();
-                char.room(roomnum);
-            }
-            else {
-                chat(5, 0);
-            }
-        }
-        else {
-            $('.room-left').show();
-            char.addtime(20);
-            $('#room_footer').show();
+        //if (cl.isCrossdressing() && !g.sissy[28].ach) {
+        //    if (roomnum === 203 || roomnum === 500 || roomnum === 250 || roomnum === 450 || roomnum === 650) {
+        //        $('.room-left').show();
+        //        char.addtime(20);
+        //        $('#room_footer').show();
+        //        char.room(roomnum);
+        //    }
+        //    else {
+        //        chat(5, 0);
+        //    }
+        //}
+        //else {
+        $('.room-left').show();
+        char.addtime(20);
+        $('#room_footer').show();
+        nav.killall();
+        nav.bg("map/bg" + (gv.get("map") + (g.isNight() ? "_night" : "")) + ".jpg");
+        setTimeout(function () {
             char.room(roomnum);
-        }
+        }, 800);
+        
+        //}
     }
     if (cl.isLewd()) {
         nav.button({

@@ -200,7 +200,8 @@ cl.list = [
     { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
 
     { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: -1 },
-    { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
+    { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "chastity", name: "pinkx2", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "chastity", name: "metal", display: "Metal Cage", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
 
     { type: "buttplug", name: "s", display: "Small Plug", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
@@ -1488,6 +1489,7 @@ cl.pjBottom = [
 cl.chastity = [
     { name: "cage", image: "cockchast_m.png" },
     { name: "pink", image: "cockchast_p.png" },
+    { name: "pinkx2", image: "cockchast_p.png" },
     { name: "metal", image: "cockchast_s.png" }
 ];
 

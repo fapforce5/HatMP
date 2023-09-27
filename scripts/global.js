@@ -61,35 +61,9 @@ g.fmap;
 //    return null;
 //};
 
-g.setDaily = function (who) {
-    for (i = 0; i < g.daily.length; i++) {
-        if (g.daily[i].n === who) {
-            g.daily[i].t = true;
-            break;
-        }
-    }
-    console.log("No entry - g.setDaily:" + who);
-};
-
-//g.getDaily = function (who) {
-//    for (i = 0; i < g.daily.length; i++) {
-//        if (g.daily[i].n === who) {
-//            return g.daily[i].t;
-//        }
-//    }
-//    console.log("No entry - g.getDaily:" + who);
-//};
-
-
 
 g.gt = function (first, second) {
     return gv.get(first) > gv.get(second);
-};
-
-g.newday = function () {
-    for (var i = 0; i < g.daily.length; i++) {
-        g.daily[i].t = false;
-    }
 };
 
 
@@ -243,6 +217,11 @@ g.rooms = [
     { roomID: 151, name: "Main", image: "151_jones/main.jpg", nightImage: "151_jones/main.jpg", houseID: 150, btn: "roomBtn_125.png" },
     { roomID: 152, name: "Mansion", image: "152_slave/entrance.jpg", nightImage: "152_slave/entrance.jpg", houseID: 150, btn: "roomBtn_125.png" },
 
+    { roomID: 175, name: "Anal", image: "175_anal/anal0.jpg", nightImage: "175_anal/anal0.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 176, name: "Oral", image: "176_oral/oral0.jpg", nightImage: "176_oral/oral0.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 177, name: "Chastity", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 178, name: "Cum", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 196, name: "Pay Day", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 197, name: "Sub", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 198, name: "PI Training", image: "198_pi/bg.jpg", nightImage: "198_pi/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
@@ -1223,6 +1202,42 @@ g.getDiceRollPercentage = function (mine, theirs) {
             case 9: retPercent = 1; break;
             case 10: retPercent = 1; break;
             case 11: retPercent = 1; break;
+        }
+    return retPercent;
+};
+
+g.getSingleRoll = function (num) {
+    var retPercent;
+    if (num < 6)
+        retPercent = 100;
+    else if (num > 29)
+        retPercent = 0;
+    else
+        switch (num) {
+            case 6: retPercent = 99; break;//6 or greater dice roll
+            case 7: retPercent = 99; break;
+            case 8: retPercent = 99; break;
+            case 9: retPercent = 99; break;
+            case 10: retPercent = 98; break;
+            case 11: retPercent = 96; break;
+            case 12: retPercent = 94; break;
+            case 13: retPercent = 90; break;
+            case 14: retPercent = 84; break;
+            case 15: retPercent = 77; break;
+            case 16: retPercent = 69; break;
+            case 17: retPercent = 60; break;
+            case 18: retPercent = 50; break; //18 total dice rolls
+            case 19: retPercent = 39; break;
+            case 20: retPercent = 30; break;
+            case 21: retPercent = 22; break;
+            case 22: retPercent = 15; break;
+            case 23: retPercent = 9; break;
+            case 24: retPercent = 5; break;
+            case 25: retPercent = 3; break;
+            case 26: retPercent = 1; break;
+            case 27: retPercent = 1; break;
+            case 28: retPercent = 1; break;
+            case 29: retPercent = 1; break;
         }
     return retPercent;
 };

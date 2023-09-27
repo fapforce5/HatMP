@@ -1,19 +1,22 @@
 var charisma = {};
 
 charisma.getStats = function (charismaLevel) {
-    var mychar = levels.get("charisma").l;
-    var stat = g.getDiceRollPercentage(mychar, charismaLevel);
-    return { n: stat, txt: "[Charisma Roll: " + stat + "%] " };
+    var myCharisma = levels.get("charisma").l;
+    var baseRoll = 12 + charismaLevel;
+    var appearance = cl.appearance();
+    var rollNeeded = baseRoll - myCharisma - appearance;
+    
+    
+    var stat = g.getSingleRoll(rollNeeded);
+    return { n: stat, txt: "[Charisma Roll: " + stat + "%] ", baseRoll: baseRoll, rollNeeded: rollNeeded, myCharisma: myCharisma, appearance: appearance };
 };
 
-charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost, btnPressRun, roomID) {
-
-    var i = 0;
-    var stats = quickFight.getStats(enemyFightLevel);
-    nav.killbutton("quickfight");
-    nav.killbutton("quickfightrunaway");
-    nav.killbutton("quickfightFight");
-    nav.killbutton("quickfightRun");
+charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
+    var stat = this.getStats(charismaLevel);
+    //nav.killbutton("quickfight");
+    //nav.killbutton("quickfightrunaway");
+    //nav.killbutton("quickfightFight");
+    //nav.killbutton("quickfightRun");
     nav.button({
         "type": "img",
         "name": "quickfight",
@@ -34,35 +37,23 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
     }, 1);
     nav.button({
         "type": "btn",
-        "name": "quickfightFight",
+        "name": "charismaRoll",
         "left": 760,
         "top": 300,
         "width": 400,
         "height": 100,
-        "image": "1002_quickfight/fight.png"
-    }, 1);
-
-    nav.button({
-        "type": "btn",
-        "name": "quickfightRun",
-        "left": 760,
-        "top": 450,
-        "width": 400,
-        "height": 100,
-        "image": "1002_quickfight/run.png"
+        "image": "1002_quickfight/roll.png"
     }, 1);
 
     nav.t({
         type: "zimg",
         name: "quickfight",
         left: 1620,
-        top: 170,
-        font: 20,
+        top: 180,
+        font: 30,
         hex: "#ffffff",
-        text: enemyName
+        text: "Charisma"
     }, 1);
-
-
     nav.t({
         type: "img",
         name: "quickfight",
@@ -70,7 +61,7 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
         top: 280 + (0 * 50) + 12,
         font: 20,
         hex: "#ffffff",
-        text: "Your Fight Level"
+        text: "Your Charisma: " + stat.myCharisma
     }, 1);
     nav.t({
         type: "img",
@@ -79,7 +70,7 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
         top: 280 + (1 * 50) + 12,
         font: 20,
         hex: "#ffffff",
-        text: " Punch Power: " + stats.punchPower
+        text: "Sexy Bonus: " + stat.appearance
     }, 1);
     nav.t({
         type: "img",
@@ -88,16 +79,7 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
         top: 280 + (2 * 50) + 12,
         font: 20,
         hex: "#ffffff",
-        text: "+ Kick Power:  " + stats.kickPower
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (3 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "* Energy Multiplier: " + stats.energyMult
+        text: "Total Charisma: " + (stat.myCharisma + stat.appearance)
     }, 1);
     nav.t({
         type: "img",
@@ -106,9 +88,8 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
         top: 280 + (4 * 50) + 12,
         font: 20,
         hex: "#ffffff",
-        text: "= Fight Level: " + stats.total
+        text: "Base Roll Needed : " + stat.baseRoll
     }, 1);
-
     nav.t({
         type: "img",
         name: "quickfight",
@@ -116,7 +97,7 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
         top: 280 + (5 * 50) + 12,
         font: 20,
         hex: "#ffffff",
-        text: enemyName
+        text: "Adjusted Roll Needed : " + stat.rollNeeded
     }, 1);
     nav.t({
         type: "img",
@@ -125,49 +106,40 @@ charisma.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost,
         top: 280 + (6 * 50) + 12,
         font: 20,
         hex: "#ffffff",
-        text: "Fight Level: " + enemyFightLevel
+        text: "Chance: " + stat.n + "%"
     }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (7 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Win Chance: " + stats.winProb + "%"
-    }, 1);
+    
 
     g.fight = {
-        fightLevel: enemyFightLevel,
-        myFight: stats.total,
-        name: enemyName,
+        myCharisma: stat.myCharisma,
+        appearance: stat.appearance,
+        baseRoll: stat.baseRoll,
+        rollNeeded: stat.rollNeeded,
         aftermath: null,
         btnPressWin: btnPressWin,
         btnPressLost: btnPressLost,
-        btnPressRun: btnPressRun,
-        prob: stats.winProb,
+        prob: stat.n,
         roomID: roomID
     };
 };
 
-quickFight.drawFight = function () {
-    nav.killbutton("quickfightFight");
-    nav.killbutton("quickfightRun");
+charisma.drawRoll = function () {
+    nav.killbutton("charismaRoll");
     var mydice, enemydice, myTotal, enemyTotal;
-    myTotal = enemyTotal = 0;
+    myTotal = 0;
     mydice = new Array();
     enemydice = new Array();
-    var winText = ["You're a winner!", "Beat down!", "You destroyed them!", "Way to go!", "You're excellent", "Awesome!", "You're amazing!"];
-    var loseText = ["You fucked up", "Loser!", "Ah shit!", "You fight like a girl", "That was stupid", "Whoops", "Oh shit", "Lost", "You lost. Sad."];
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 350,
-        top: 150,
-        font: 40,
-        hex: "#ffffff",
-        text: "My Roll"
-    }, 1);
+    var winText = ["You're a winner!", "You're so sexy", "Smooth talker", "Way to go!", "You're excellent", "Awesome!", "You're amazing!"];
+    var loseText = ["You fucked up", "Loser!", "Ah shit!", "Blubber butt", "That was stupid", "Whoops", "Oh shit", "Lost", "You lost. Sad."];
+    //nav.t({
+    //    type: "img",
+    //    name: "quickfight",
+    //    left: 350,
+    //    top: 150,
+    //    font: 40,
+    //    hex: "#ffffff",
+    //    text: "My Roll"
+    //}, 1);
     nav.t({
         type: "img",
         name: "quickfight",
@@ -175,7 +147,7 @@ quickFight.drawFight = function () {
         top: 150,
         font: 40,
         hex: "#ffffff",
-        text: "Enemy Roll"
+        text: "My Roll"
     }, 1);
     nav.button({
         "type": "img",
@@ -186,33 +158,25 @@ quickFight.drawFight = function () {
         "height": 400,
         "image": "1002_quickfight/titleBox.png"
     }, 1);
-    for (var i = 0; i < 5; i++) {
-        var myTemp = Math.floor(Math.random() * 6) + 1;
-        var enemyTemp = Math.floor(Math.random() * 6) + 1;
-        myTotal += myTemp;
-        enemyTotal += enemyTemp;
-        nav.button({
-            "type": "img",
-            "name": "quickfight",
-            "left": 350,
-            "top": 200 + (i * 160),
-            "width": 150,
-            "height": 150,
-            "image": "1001_rand/dice" + myTemp + ".png"
-        }, 1);
+    while (myTotal === g.fight.rollNeeded || myTotal === 0) {
+        myTotal = 0;
+        nav.killbutton("quickfightdice");
+        for (var i = 0; i < 5; i++) {
+            var myTemp = Math.floor(Math.random() * 6) + 1;
+            myTotal += myTemp;
 
-        nav.button({
-            "type": "img",
-            "name": "quickfight",
-            "left": 1350,
-            "top": 200 + (i * 160),
-            "width": 150,
-            "height": 150,
-            "image": "1001_rand/dice" + enemyTemp + ".png"
-        }, 1);
+            nav.button({
+                "type": "img",
+                "name": "quickfightdice",
+                "left": 1350,
+                "top": 200 + (i * 160),
+                "width": 150,
+                "height": 150,
+                "image": "1001_rand/dice" + myTemp + ".png"
+            }, 1);
+        }
     }
-    var meAbsTotal = g.fight.myFight + myTotal;
-    var enemyAbsTotal = g.fight.fightLevel + enemyTotal;
+
     nav.t({
         type: "img",
         name: "quickfight",
@@ -220,7 +184,7 @@ quickFight.drawFight = function () {
         top: 380,
         font: 30,
         hex: "#ffffff",
-        text: "Me<br/>Roll: " + myTotal + "<br/>+ Level: " + g.fight.myFight + "<br/>= Total: " + meAbsTotal
+        text: "Me<br/>Roll: " + myTotal + "<br/>"
     }, 1);
     nav.t({
         type: "img",
@@ -229,83 +193,63 @@ quickFight.drawFight = function () {
         top: 380,
         font: 30,
         hex: "#ffffff",
-        text: "Enemy</br>Roll: " + enemyTotal + "<br/>+ Level: " + g.fight.fightLevel + "<br/>= Total: " + enemyAbsTotal
+        text: "Needed</br>Roll: " + g.fight.rollNeeded
     }, 1);
 
-    if (meAbsTotal === enemyAbsTotal)
-        quickFight.drawFight();
+    if (myTotal > g.fight.rollNeeded) {
+        g.fight.aftermath = "win";
+        gv.mod("energy", -20);
+        nav.t({
+            type: "img",
+            name: "quickfight",
+            left: 800,
+            top: 600,
+            font: 30,
+            hex: "#ffffff",
+            text: winText[Math.floor(Math.random() * winText.length)]
+        }, 1);
+        nav.button({
+            "type": "btn",
+            "name": "charismaComplete",
+            "left": 725,
+            "top": 800,
+            "width": 400,
+            "height": 100,
+            "image": "1002_quickfight/won.png"
+        }, 1);
+    }
     else {
-        if (meAbsTotal > enemyAbsTotal) {
-            g.fight.aftermath = "win";
-            gv.mod("energy", -20);
-            nav.t({
-                type: "img",
-                name: "quickfight",
-                left: 800,
-                top: 600,
-                font: 30,
-                hex: "#ffffff",
-                text: winText[Math.floor(Math.random() * winText.length)]
-            }, 1);
-            nav.button({
-                "type": "btn",
-                "name": "quickfightcomplete",
-                "left": 725,
-                "top": 800,
-                "width": 400,
-                "height": 100,
-                "image": "1002_quickfight/won.png"
-            }, 1);
-        }
-        else {
-            g.fight.aftermath = "lose";
-            gv.set("energy", 0);
-            nav.t({
-                type: "img",
-                name: "quickfight",
-                left: 800,
-                top: 600,
-                font: 30,
-                hex: "#ffffff",
-                text: loseText[Math.floor(Math.random() * loseText.length)]
-            }, 1);
-            nav.button({
-                "type": "btn",
-                "name": "quickfightcomplete",
-                "left": 725,
-                "top": 800,
-                "width": 400,
-                "height": 100,
-                "image": "1002_quickfight/lost.png"
-            }, 1);
-        }
+        g.fight.aftermath = "lose";
+        gv.set("energy", 0);
+        nav.t({
+            type: "img",
+            name: "quickfight",
+            left: 800,
+            top: 600,
+            font: 30,
+            hex: "#ffffff",
+            text: loseText[Math.floor(Math.random() * loseText.length)]
+        }, 1);
+        nav.button({
+            "type": "btn",
+            "name": "charismaComplete",
+            "left": 725,
+            "top": 800,
+            "width": 400,
+            "height": 100,
+            "image": "1002_quickfight/lost.png"
+        }, 1);
     }
 };
 
-quickFight.run = function () {
-    nav.killbutton("quickfightFight");
-    nav.killbutton("quickfightRun");
-    g.fight.aftermath = "run";
-    gv.mod("energy", g.fight.fightLevel + 30);
-    nav.button({
-        "type": "btn",
-        "name": "quickfightcomplete",
-        "left": 760,
-        "top": 300,
-        "width": 400,
-        "height": 100,
-        "image": "1002_quickfight/ranaway.png"
-    }, 1);
-};
-
-quickFight.complete = function () {
+charisma.complete = function () {
     nav.killbutton("quickfight");
-    nav.killbutton("quickfightcomplete");
+    nav.killbutton("quickfightdice");
+    nav.killbutton("charismaComplete");
     var name;
     var roomId = g.fight.roomID;
-    if (g.fight.aftermath === "run")
-        name = g.fight.btnPressRun;
-    else if (g.fight.aftermath === "win")
+
+    if (g.fight.aftermath === "win")
         name = g.fight.btnPressWin;
     else
         name = g.fight.btnPressLost;
