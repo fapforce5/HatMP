@@ -35,6 +35,7 @@ missy.init = function () {
         { id: 26, n: "uniformNew", c: 0 },
         { id: 27, n: "jobCleanToiletUniform", c: 0 },
         { id: 28, n: "sissySchoolDays", c: 0 },
+        { id: 29, n: "cage", c: 0 } //0 cage, 1 pink, 2 pinkx2
     ];
 
     missy.cases = [
@@ -45,6 +46,8 @@ missy.init = function () {
         { caseId: 4, name: "case_usb", show: true, complete: false, success: false },
         { caseId: 5, name: "case_booth", show: true, complete: false, success: false },
         { caseId: 6, name: "case_lostgirl", show: true, complete: false, success: false },
+        { caseId: 7, name: "case_saveralph", show: true, complete: false, success: false },
+        { caseId: 8, name: "case_trash", show: true, complete: false, success: false },
     ];
 }
 
@@ -95,6 +98,8 @@ missy.get = function (name) {
 missy.activecase = function () {
     var activecase = missy.get("activeCase");
     var activeCaseComplete = missy.get("activeCaseComplete") !== 0;
+    if (activecase === null)
+        activecase = -1;
     if (activecase < 0) {
         return { caseId: -1, name: "start", txt: "Get to work! ", m: [203], isComplete: true };
     }
@@ -104,9 +109,12 @@ missy.activecase = function () {
             { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100], isComplete: activeCaseComplete },
             { caseId: 2, name: "apply", txt: "Go to city hall and purchase a P.I. license. Then go to Missy's. ", m: [910, 203] },
             { caseId: 3, name: "work", txt: "Purchase dress shirt, pants, socks, and black shoes from the mall. Then go to your first day of work. ", m: [203, 400], isComplete: activeCaseComplete },
-            { caseId: 4, name: "case_booth", txt: "Investigate the Cum Caper at Toy 'n Us. Tiffany is there M-F during the day. ", m: [650], isComplete: activeCaseComplete },
-            { caseId: 5, name: "case_lostgirl", txt: "Find Martha's daughter and report to Missy. ", m: [], isComplete: activeCaseComplete },
-            { caseId: 6, name: "case_saveralph", txt: "Hide out at Ralph's house to stop the cult from kidnapping him. ", m: [], isComplete: activeCaseComplete },
+            { caseId: 4, name: "case_usb", txt: "Get the USB drive from the back of the toilet at the park. ", m: [450], isComplete: activeCaseComplete },
+            { caseId: 5, name: "case_booth", txt: "Investigate the Cum Caper at Toy 'n Us. Tiffany is there M-F during the day. ", m: [650], isComplete: activeCaseComplete },
+            { caseId: 6, name: "case_lostgirl", txt: "Find Martha's daughter and report to Missy. ", m: [], isComplete: activeCaseComplete },
+            { caseId: 7, name: "case_saveralph", txt: "Hide out at Ralph's house to stop the cult from kidnapping him. ", m: [], isComplete: activeCaseComplete },
+            { caseId: 8, name: "case_locket", txt: "Get the locket from the prostitute at the homeless camp. ", m: [], isComplete: activeCaseComplete },
+
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -138,15 +146,20 @@ missy.getcases = function () {
     var i;
     var caseList = new Array();
     var canDoCase;
-    var firstCaseComplete = missy.cases[4].complete;
     var piLevel = levels.get("pi").l;
+    var completeCounter = 0;
+
+    for (i = 4; i < missy.cases.length; i++) {
+        if (missy.cases[i].complete)
+            completeCounter++
+    };
 
     //no cases in first 5 days
     if (missy.get("totalDaysWorked") < 5)
         return caseList;
 
     //must do first case (Has explaination)
-    if (!firstCaseComplete) {
+    if (completeCounter === 0) {
         canDoCase = cl.c.chest > 0;
         caseList.push({
             caseId: 4,
@@ -160,7 +173,7 @@ missy.getcases = function () {
         for (i = 0; i < missy.cases.length; i++) {
             if (!missy.cases[i].complete && missy.cases[i].show) {
                 switch (missy.cases[i].name) {
-                    case "case_usb":
+                    case "case_booth":
                         canDoCase = piLevel > 1;
                         caseList.push({
                             caseId: i,
@@ -180,17 +193,29 @@ missy.getcases = function () {
                             callback: missy.cases[i].name
                         });
                         break;
-                    case "case_jeffery":
-                        if (missy.get("pantiesFirstTime") > 1) {
-                            canDoCase = "lockpick";
+                    case "case_trash":
+                        if (completeCounter > 1) {
+                            canDoCase = piLevel > 2;
                             caseList.push({
                                 caseId: i,
-                                active: false,
+                                active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Wear panties...",
+                                notReadyTxt: "Need to increase improve your Invistation expertise (Level 3).",
                                 callback: missy.cases[i].name
                             });
                         }
+                        break;
+                    case "case_jeffery":
+                        //if (missy.get("pantiesFirstTime") > 1) {
+                        //    canDoCase = "lockpick";
+                        //    caseList.push({
+                        //        caseId: i,
+                        //        active: false,
+                        //        icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                        //        notReadyTxt: "Wear panties...",
+                        //        callback: missy.cases[i].name
+                        //    });
+                        //}
                         break;
                 }
             }
@@ -252,28 +277,38 @@ missy.afterLunch = function () {
         { id: 2, name: "excersize", char: "e", room: 199 },
         { id: 3, name: "pi skillz", char: "p", room: 198 },
         { id: 4, name: "sub", char: "s", room: 197 },
-        { id: 5, name: "panties", char: "q", room: 223 }
+        { id: 5, name: "panties", char: "q", room: 223 },
+        { id: 6, name: "Sissy School", char: "c", room: 211 },
     ];
+    
     //build weekly schedule
     if (g.dt.getDay() === 1 || weekly === null || weekly.length < 7) {
         var subweek;
-        if (cl.c.chest < 1)
-            subweek = "eeps";
-        else {
-            if (Math.floor(Math.random() * 2 === 0))
-                subweek = "epps";
+        if (sissy.st[17].ach) {
+            if (Math.floor(Math.random() * 2) === 0)
+                subweek = "pcsc";
             else
-                subweek = "epss";
+                subweek = "scpc";
         }
+        else {
 
-        //mix it up
-        for (var i = 0; i < subweek.length; i++) {
-            var j = Math.floor(Math.random() * subweek.length);
-            var tmp = subweek[i];
-            subweek[i] = subweek[j];
-            subweek[j] = tmp;
+            if (cl.c.chest < 1)
+                subweek = "eeps";
+            else {
+                if (Math.floor(Math.random() * 2 === 0))
+                    subweek = "epps";
+                else
+                    subweek = "epss";
+            }
+
+            //mix it up
+            for (var i = 0; i < subweek.length; i++) {
+                var j = Math.floor(Math.random() * subweek.length);
+                var tmp = subweek[i];
+                subweek[i] = subweek[j];
+                subweek[j] = tmp;
+            }
         }
-
         weekly = "x" + subweek + "$x";
         gv.set("missyWeekly", weekly);
     }

@@ -1,15 +1,8 @@
 ﻿//Room name
 var room209 = {};
 room209.main = function () {
-    switch (missy.get("sissySchoolDays")) {
-        case 0:
-            nav.bg("209_classroom/group0.jpg");
-            chat(0, 209);
-            break;
-        case 1:
-
-            break;
-    }
+    nav.bg("209_classroom/start.jpg");
+    chat(30, 209);
 };
  
 room209.btnclick = function (name) {
@@ -50,6 +43,10 @@ room209.chatcatch = function (callback) {
         case "sitting6":
         case "sitting7":
         case "sitting8":
+        case "meeting0":
+        case "meeting1":
+        case "meeting2":
+        case "group0":
             nav.bg("209_classroom/" + callback + ".jpg");
             break;
         case "emptyRoom":
@@ -103,8 +100,7 @@ room209.chatcatch = function (callback) {
             
             break;
         case "afterClass":
-            char.settime(17, 15);
-            nav.buildnav([207, 0]);
+            sissy.passclass(true);
             break;
         default:
             break;
@@ -172,7 +168,7 @@ room209.chat = function (chatID) {
                 speaker: "!kareem",
                 text: "I'm still kinda sketched out about this school. I'm just here to scope it out.",
                 button: [
-                    { chatID: 7, text: "...", callback: "" }
+                    { chatID: 26, text: "...", callback: "meeting0" }
                 ]
             },
             {
@@ -334,7 +330,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "black",
-                text: "Hi maggots. I'm " + sc.n("black") + ". I'm in charge of discipline. I look forward to meeting " +
+                text: "Hi maggots. I'm " + sc.n("black") + ". I'm in charge of bondage and discipline. I look forward to meeting " +
                     "each and every one of you. Back to you Missy. ",
                 button: [
                     { chatID: 24, text: "...", callback: "sitting0" }
@@ -352,10 +348,60 @@ room209.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "thinking",
-                text: "That was... odd. Like everyone else I'm a bit worried abou this school. Maybe I'll keep going just to " +
+                text: "That was... odd. Like everyone else I'm a bit worried about this school. Maybe I'll keep going just to " +
                     "see what happens, but if it gets too strange I'm totally out. ",
                 button: [
                     { chatID: -1, text: "...", callback: "afterClass" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "missy",
+                text: "Ok sissies, step aside. I'm going to start your tour. ",
+                button: [
+                    { chatID: 27, text: "...", callback: "meeting0" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "missy",
+                text: "You're now in the waiting room. Here is where you will congregate and wait till school starts. We don't need a bunch of sissies " +
+                    "milling about the classrooms while the teachers are preparing for your lessons. While your waiting, keep it to a dull roar. I still have " +
+                    "business to conduct here and your voices carry. ",
+                button: [
+                    { chatID: 28, text: "...", callback: "meeting1" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "missy",
+                text: "This is your class selection interface. Here is where you'll go to select the next class you want to take. Some classes have  " +
+                    "prerequisites. To see the course description and prerequisite list, just select that class. Once you've decided on your class select " +
+                    "the 'Take Course' button and the computer will be updated with your course selection. You'll notice that each course has an instructor and " +
+                    "color associated with that class. When you take the elevator go to the floor associated with that color. Now follow me to the elevator. ",
+                button: [
+                    { chatID: 29, text: "...", callback: "meeting2" }
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "missy",
+                text: "This is the elevator to go to your assigned class. Remember when I said that each class was color coded. Well, since you sissies can't " +
+                    "seem to count past the number of holes in your body, we make the floors by color. Simply select the floor or your class to begin. Now " +
+                    "follow me into the elevator. We'll go to the Pink Room to continue our introductions. ",
+                button: [
+                    { chatID: 8, text: "...", callback: "sitting0" }
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "thinking",
+                text: "Well, this is it. I'm about to go to my first day of class. I wonder what it will be like. Am I the " +
+                    "only student? How many can there be. I bet it's just Missy yelling at me and punching me in the balls. " +
+                    "This is going to be terrible, I can just feel it. Maybe I could run away. No, she'll just chase me down. " +
+                    "I guess I can at least take a look. Well, here goes... ",
+                button: [
+                    { chatID: 0, text: "...", callback: "group0" }
                 ]
             },
         ];

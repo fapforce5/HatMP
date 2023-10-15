@@ -1,10 +1,11 @@
-﻿//Room name
+﻿//Chastity
 var room205 = {};
 room205.main = function () {
     var chastity = missy.get("chastity");
     if (chastity === 0)
         chat(0, 205);
-        
+    else
+        chat(21, 205);
 };
 
 room205.btnclick = function (name) {
@@ -73,13 +74,22 @@ room205.chatcatch = function (callback) {
         case "chastity_0_endBad":
             char.addtime(210);
             missy.set("chastity", 1);
+            gv.set("castitycage", "cage");
             gv.set("chastity", g.dt);
             char.room(0);
             break;
         case "chastity_0_endGood":
             char.addtime(210);
             missy.set("chastity", 1);
+            gv.set("castitycage", "cage");
             gv.set("chastity", g.dt);
+            if (missy.payday().paydayHasPay)
+                char.room(196);
+            else
+                char.room(203);
+            break;
+        case "chastity_1":
+            char.addtime(210);
             if (missy.payday().paydayHasPay)
                 char.room(196);
             else
@@ -313,6 +323,14 @@ room205.chat = function (chatID) {
                 "Maybe I am a sissy. What does that even mean? ",
             button: [
                 { chatID: -1, text: "...", callback: "chastity_0_endGood" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "missy",
+            text: "Work in progress.. prepare to be locked up for life sissy. ",
+            button: [
+                { chatID: -1, text: "...", callback: "chastity_1" },
             ]
         },
     ];

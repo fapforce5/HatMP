@@ -2,11 +2,11 @@
 var room175 = {};
 room175.main = function () {
     switch (gv.get("sissySchoolClass")) {
-        case "lube101":
-            nav.bg("209_classroom/sitting3.jpg");
+        case "anal101":
+            nav.bg("175_anal/lube0.jpg");
             chat(28, 175);
             break;
-        case "anal101":
+        case "anal102":
             if (gv.get("sissySchoolClassDays") === 0) {
                 nav.bg("175_anal/anal0.jpg")
                 chat(0, 175);
@@ -43,7 +43,17 @@ room175.chatcatch = function (callback) {
         case "anal100":
         case "anal102":
         case "anal103":
+        case "lube0":
             nav.bg("175_anal/" + callback + ".jpg");
+            break;
+        case "lube1":
+        case "lube2":
+        case "lube3":
+        case "lube4":
+        case "lube5":
+        case "lube6":
+        case "lube7":
+            nav.bg("175_anal/" + callback + g.internal + ".jpg");
             break;
         case "anal10":
             nav.bg("175_anal/" + callback + ".jpg");
@@ -86,10 +96,20 @@ room175.chatcatch = function (callback) {
             char.room(0);
             break;
         case "endclassPass101":
-            gv.mod("sissySchoolClassDays", 1);
-            sissy.passclass("anal101");
-            char.settime(17, 15);
-            char.room(0);
+            sissy.passclass(true);
+            break;
+        case "charisma":
+            levels.mod("charisma", 20, 999);
+            break;
+        case "lubenotme":
+            g.internal = "";
+            break;
+        case "lubeme":
+            g.internal = "_me";
+            break;
+        case "lubeEnd":
+            inv.addMulti("lube", 3);
+            sissy.passclass(true);
             break;
         default:
             break;
@@ -347,12 +367,150 @@ room175.chat = function (chatID) {
             ]
         },
         {
-            chatID: 27,
+            chatID: 28,
             speaker: "p",
-            text: "What a bunch of timid sluts. So desperate for the cock, but too scared to back that ass up. You all vonunteer,  " +
-                "everyone stip off your clothes and present your sissy asses on the bench. ",
+            text: "Ok class. This is your intro to anal. I shouldn't have to teach this class, but you sluts can be dumb and " +
+                "try to jam a giant rubber cock in your ass without lube. Normally I would just laugh, but last year someone " +
+                "ripped their ass up and had to wait for a couple weeks while it healed, so here we are. ",
             button: [
-                { chatID: 17, text: "Ok. ", callback: "anal100" }
+                { chatID: 29, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "p",
+            text: "Can anyone tell me what you do to prepare for anal? ",
+            button: [
+                { chatID: 31, text: "Lube? ", callback: "charisma" },
+                { chatID: 30, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "!sporty",
+            text: "Oh I know. Lube it up! ",
+            button: [
+                { chatID: 31, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "p",
+            text: "Correct. Lube that asshole hole. You see, my pussy naturally creates its own lube, so I can be ready for cock in " +
+                "my pink pussy hole just by thinking about getting fucked. You're delicate bussies need some extra help taking " +
+                "cock. So we're going over the basics of lubing your fuck holes. Now I'll need a volunteer.... Anyone?  ",
+            button: [
+                { chatID: 32, text: "...", callback: "lubenotme" },
+                { chatID: 33, text: "Me, me, me!", callback: "lubeme" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "p",
+            text: "Oh, Jeremy. Great. Come on up. ",
+            button: [
+                { chatID: 34, text: "...", callback: "lube1" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "p",
+            text: "Ok. " + sc.n("me") + " get on up here. ",
+            button: [
+                { chatID: 35, text: "...", callback: "lube1" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "p",
+            text: "Now i need you to strip off all those nasty boy clothes, so I can show everyone how to properly apply the " +
+                "lube and face the bench I'm going to fetch. ",
+            button: [
+                { chatID: 37, text: "...", callback: "lube2" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "p",
+            text: "Now i need you to strip off all those nasty boy clothes, so I can show everyone how to properly apply the " +
+                "lube and face the bench I'm going to fetch. ",
+            button: [
+                { chatID: 36, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "thinking",
+            text: "I knew this class was lube 101, but why the hell did I volunteer? Now everyone is staring at me while " +
+                "I undress and stand naked in front of everyone! They're going to see my chastity cage. I hope they don't " +
+                "laugh at me. I really have to stop doing dumb things like this. ",
+            button: [
+                { chatID: 37, text: "...", callback: "lube2" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "p",
+            text: "Ok class now that we have our demonstrator I'm going to go over the proper way to lube your tight little " +
+                "fuck holes. Bend over my bench and relax your cheeks. ",
+            button: [
+                { chatID: 38, text: "...", callback: "lube3" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "p",
+            text: "There's a few ways to lube up. For this class we're going to directly lube up your hole. First apply a generous " +
+                "amount of lube to your finger. You can never have enough lube when you're first starting out. ",
+            button: [
+                { chatID: 39, text: "...", callback: "lube4" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "p",
+            text: "Now rub that lube on the bussy lips. Coat the entire exterior of your hole. I'm using a circular pattern " +
+                "rubbing my finger around the entire hole. ",
+            button: [
+                { chatID: 40, text: "...", callback: "lube5" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "p",
+            text: "Now that the exterior of your hole is nice and slippery it's time to lube the bussy hole itself. Now go slow " +
+                "and gentle. Insert the tip of your finger into your bussy. If it's too tight pause and pull out before inserting " +
+                "again. Just keep pushing your finger into your bussy until you can easily slide it in and out without friction. " +
+                "That's when you know you've lubed up enough. ",
+            button: [
+                { chatID: 41, text: "...", callback: "lube6" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "p",
+            text: "There you have it. A properly lubed up bussy hole ready to take more fingers, toys, or whatever else you want " +
+                "to shove in there. ",
+            button: [
+                { chatID: 42, text: "...", callback: "lube7" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "p",
+            text: "Here's a tissue. Now wipe that didlo butter from your ass, and get back to your seat. ",
+            button: [
+                { chatID: 43, text: "...", callback: "lube0" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "p",
+            text: "Since I am such a great teacher I'll give each of you three applications of lube so you can go home and stick your " +
+                "fingers up your asses. After that you're going to have to get your own. Start slow, I don't need you grabbing the " +
+                "biggest dildo you can find and breaking your tender assholes before the fun begin. ",
+            button: [
+                { chatID: -1, text: "[Get your lube and go]", callback: "lubeEnd" }
             ]
         },
     ];

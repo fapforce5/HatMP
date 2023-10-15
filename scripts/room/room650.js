@@ -52,7 +52,7 @@ room650.btnclick = function (name) {
             var activeCase = missy.get("activeCase");
             var tstep = sc.getstep("tiffany");
 
-            if (activeCase === 4 && missy.get("activeCaseComplete") === 0) {
+            if (activeCase === 5 && missy.get("activeCaseComplete") === 0) {
                 if (missy.get("reusableCaseCounter") === 0) {
                     nav.killbutton("tiffany");
                     nav.button({

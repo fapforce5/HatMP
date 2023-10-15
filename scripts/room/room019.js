@@ -58,7 +58,8 @@ room19.btnclick = function (name) {
                     else if (g.internal.f <= g.internal.b)
                         chat(3, 19);
                     else {
-                        cl.c.butthole += .15;
+                        levels.mod("anal", 25, 3);
+                        //cl.c.butthole += .15;
                         gv.mod("fingerbutt", 1);
                         chat(4, 19);
                     }
@@ -300,6 +301,7 @@ room19.chatcatch = function (callback) {
             break;
         case "Stop":
             cl.display();
+            levels.mod("anal", 25, 3);
             daily.set("buttholeplay");
             $('.room-left').show();
             char.room(g.pass);

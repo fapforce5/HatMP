@@ -3,17 +3,18 @@ var room7 = {};
 room7.main = function () {
     var sleepOutfit = 4;
     var navList;
-    cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
-    cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
-    cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
-    cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
-    cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
-    cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
-    cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
-    cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
-    cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
-    cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
-    cl.display();
+    cl.wearSavedOutfit(sleepOutfit);
+    //cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
+    //cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
+    //cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
+    //cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
+    //cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
+    //cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
+    //cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
+    //cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
+    //cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
+    //cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
+    //cl.display();
 
     var btnList = new Array();
     var lolaStep = sc.getstep("lola");
@@ -260,17 +261,18 @@ room7.chatcatch = function (callback) {
         case "o2":
         case "o3":
             var thisEntry = parseInt(callback[1]);
-            cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
-            cl.c.socks = cl.saveOutfit[thisEntry].socks;
-            cl.c.pants = cl.saveOutfit[thisEntry].pants;
-            cl.c.panties = cl.saveOutfit[thisEntry].panties;
-            cl.c.bra = cl.saveOutfit[thisEntry].bra;
-            cl.c.shirt = cl.saveOutfit[thisEntry].shirt;
-            cl.c.dress = cl.saveOutfit[thisEntry].dress;
-            cl.c.swimsuit = cl.saveOutfit[thisEntry].swimsuit;
-            cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
-            cl.c.pj = cl.saveOutfit[thisEntry].pj;
-            cl.display();
+            cl.wearSavedOutfit(callback[1]);
+            //cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
+            //cl.c.socks = cl.saveOutfit[thisEntry].socks;
+            //cl.c.pants = cl.saveOutfit[thisEntry].pants;
+            //cl.c.panties = cl.saveOutfit[thisEntry].panties;
+            //cl.c.bra = cl.saveOutfit[thisEntry].bra;
+            //cl.c.shirt = cl.saveOutfit[thisEntry].shirt;
+            //cl.c.dress = cl.saveOutfit[thisEntry].dress;
+            //cl.c.swimsuit = cl.saveOutfit[thisEntry].swimsuit;
+            //cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
+            //cl.c.pj = cl.saveOutfit[thisEntry].pj;
+            //cl.display();
             char.room(10);
             break;
         case "o4":

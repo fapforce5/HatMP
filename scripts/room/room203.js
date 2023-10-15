@@ -26,97 +26,6 @@ room203.main = function () {
         nav.button(v, 203);
     });
     nav.buildnav(navList);
-    //var missyStep = sc.getstep("missy");
-    //if (missyStep === 100) {
-    //    nav.bg("203_entrance/m100.jpg");
-    //    chat(41, 203);
-    //}
-    //else if (missyStep > 100) {
-    //    nav.button({
-    //        "type": "btn",
-    //        "name": "door100",
-    //        "left": 390,
-    //        "top": 189,
-    //        "width": 414,
-    //        "height": 509,
-    //        "image": "203_entrance/door.png"
-    //    }, 203);
-    //    nav.buildnav([201, 207, 0]);
-    //}
-    //else if (g.sissy[16].ach) {
-    //    if (g.hourBetween(7, 12)) {
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "door",
-    //            "left": 390,
-    //            "top": 189,
-    //            "width": 414,
-    //            "height": 509,
-    //            "image": "203_entrance/door.png"
-    //        }, 203);
-    //    }
-    //    nav.buildnav([201, 207, 0]);
-    //}
-    //else {
-    //    var navList = [0];
-    //    var btnList = new Array();
-    //    if (g.pass === "takeItBitch") {
-    //        nav.bg("203_entrance/203_frontDeskCloseup.jpg");
-    //        btnList = [{
-    //            "type": "btn",
-    //            "name": "fooIgnore",
-    //            "left": 685,
-    //            "top": 302,
-    //            "width": 452,
-    //            "height": 593,
-    //            "image": "203_entrance/203_enterRecepClose.png"
-    //        }];
-    //        chat(5, 203);
-    //        g.pass = "";
-    //        $.each(btnList, function (i, v) {
-    //            nav.button(v, 203);
-    //        });
-    //    }
-    //    else if (g.pass === "leave11") {
-    //        g.pass = "";
-    //        navList = [201, 0];
-    //        btnList = [{
-    //            "type": "btn",
-    //            "name": "recep",
-    //            "left": 1145,
-    //            "top": 352,
-    //            "width": 162,
-    //            "height": 197,
-    //            "image": "203_entrance/203_enterRecep.png"
-    //        }];
-    //        $.each(btnList, function (i, v) {
-    //            nav.button(v, 203);
-    //        });
-    //        chat(19, 203);
-    //    }
-    //    else if (sc.cecilia().thisRoom) {
-    //        g.pass = "203Elevator";
-    //        navList = [201, 207, 0];
-    //        if (g.sissy[54].ach)
-    //            navList = [201, 207, 209, 0];
-    //        btnList = [{
-    //            "type": "btn",
-    //            "name": "recep",
-    //            "left": 1145,
-    //            "top": 352,
-    //            "width": 162,
-    //            "height": 197,
-    //            "image": "203_entrance/203_enterRecep.png"
-    //        }];
-    //        $.each(btnList, function (i, v) {
-    //            nav.button(v, 203);
-    //        });
-    //    }
-    //    else
-    //        chat(0, 203);
-
-    //    nav.buildnav(navList);
-    //}
 };
 
 room203.btnclick = function (name) {
@@ -125,10 +34,10 @@ room203.btnclick = function (name) {
         case "recep":
             nav.kill("recep");
             nav.bg("203_entrance/203_frontDeskCloseup.jpg");
-            if (g.gethourdecimal > 10) {
+            if (g.gethourdecimal() > 9) {
                 chat(6, 203);
             }
-            if (misssyStep === 1) {
+            else if (misssyStep === 1) {
                 chat(1, 203);
                 missy.set("activeCase", -1);
             }
@@ -145,81 +54,7 @@ room203.btnclick = function (name) {
         case "recepClose":
             if (misssyStep === 1) 
                 chat(1, 203);
-            //if (g.internal === "teatime") {
-            //    chat(29, 203);
-            //}
-            //else if (misssyStep === 1) {
-            //    chat(1, 203);
-            //}
-            //else if (misssyStep === 7) {
-            //    chat(13, 203);
-            //}
-            //else if (misssyStep > 9) {
-            //    var oncase = gv.get("oncase");
-            //    if (oncase === null)
-            //        chat(28, 203);
-            //    else if (oncase === "diner")
-            //        chat(34, 203);
-            //    else if (oncase === "dinerfail" || oncase === "dinersuccess")
-            //        chat(35, 203);
-            //    else if (oncase === "gloryholebj")
-            //        chat(38, 203);
-            //    else if (oncase === "gloryholeanal")
-            //        chat(38, 203);
-            //    else if (oncase === "shopping")
-            //        chat(48, 203);
-            //    else {
-            //        alert("forgot one");
-            //        char.room(0);
-            //    }
-            //}
-            //else if (misssyStep < 1000) {
-            //    if (g.dt.getHours() > 6 && g.dt.getHours() < 10) {
-            //        if (misssyStep === 2)
-            //            chat(7, 203);
-            //        else {
-            //            chat(11, 203);
-            //        }
-            //    }
-            //    else {
-            //        chat(6, 203);
-            //    }
-            //}
-            //else if (misssyStep > 24) {
-            //    if (sc.checkevent("missy", -1) && !sc.checkevent("missy", -2)) {
-            //        if (g.hourBetween(7, 10))
-            //            chat(10, 203);
-            //        else
-            //            chat(6, 203);
-            //    }
-            //    else
-            //        chat(27, 203);
-            //}
-            
             break;
-        //case "door":
-        //    if (inv.has("redbox"))
-        //        char.room(200);
-        //    else {
-        //        var oncasex = gv.get("oncase");
-        //        if (oncasex === null)
-        //            chat(39, 203);
-        //        else if (oncasex === "diner")
-        //            chat(40, 203);
-        //        else if (oncasex === "dinerfail" || oncasex === "dinersuccess")
-        //            char.room(200);
-        //        else if (oncasex === "gloryholebj")
-        //            chat(40, 203);
-        //        else {
-        //            chat(37, 203);
-        //        }
-                
-        //    }
-        //    break;
-        //case "door100":
-        //    chat(47, 203);
-        //    break;
-        
         default:
             break;
     }
@@ -292,6 +127,7 @@ room203.chatcatch = function (callback) {
                         }
                     }
                     else {
+                        zcl.displayMain(180, 800, .09, "clothes", false);
                         chat(21, 203);
                     }
                 }

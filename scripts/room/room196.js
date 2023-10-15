@@ -70,7 +70,11 @@ room196.chatcatch = function (callback) {
             chat(998, 196);
             break;
         case "checkBeforeComplete":
-            if (cl.c.chastity !== null && missy.get("chastity") === 1)
+            if (cl.c.chastity !== null && cl.getEntry("panties", cl.c.panties).sex === "f" && !sissy.st[17].ach) {
+                sissy.st[17].ach = true;
+                chat(5, 196);
+            }
+            else if (cl.c.chastity !== null && missy.get("chastity") === 1)
                 chat(2, 196);
             else
                 chat(1, 196);
@@ -96,6 +100,9 @@ room196.chatcatch = function (callback) {
             cl.display();
             nav.killall();
             nav.bg("205_chastity/chast0_1.jpg");
+            break;
+        case "xdress":
+            levels.mod("xdress", 20, 2);
             break;
         default:
             break;
@@ -164,6 +171,79 @@ room196.chat = function (chatID) {
                     "it's going to get locked back up. Now get. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am ", callback: "complete" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "missy",
+                text: "Have you ever thought that you're just floating alongin life without your true purpose? ",
+                button: [
+                    { chatID: 6, text: "Oh wow. Yes!", callback: "xdress" },
+                    { chatID: 12, text: "No. I'm good. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "missy",
+                text: "On the day I saved you I could tell that you were living a life that wasn't yours. The C.U.M. cult " +
+                    "could too. That's why they tried to kidnap you, and that's why I took you in. You are destined for " +
+                    "something much greater than what you are now. The problem is can't seem to unlock that youself. That's " +
+                    "why I'm going to help you. ",
+                button: [
+                    { chatID: 7, text: "Help me ma'am? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "missy",
+                text: "I have a special school starting next week. There's none like it anywhere in the world. It will unlock " +
+                    "that which is burried deep within yourself to help you achieve your true potential. It really will be an " +
+                    "exiting time for you. ",
+                button: [
+                    { chatID: 8, text: "What is this school ma'am? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "missy",
+                text: "It is a school for sissies. This school will unlock what is already there and accentuate the true you. ",
+                button: [
+                    { chatID: 9, text: "What? I'm not a sissy! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "missy",
+                text: "Hahaha. Of course you are. What kind of underwear are you wearing? ",
+                button: [
+                    { chatID: 10, text: "...panties...", callback: "" },
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "missy",
+                text: "And is your clitty locked in chastity? ",
+                button: [
+                    { chatID: 11, text: "Well, yes, but", callback: "" },
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "missy",
+                text: "But I forced you? I didn't force you. You stood there willingly. You came here in panties, willingly. " +
+                    "You are the one that deep down wants to be a sissy by your own actions. I'm just here to help and guide you " +
+                    "on your journey. Don't worry about it too much. You'll do fine. Class is on Tuesdays and Thursday afternoons. " +
+                    "(Dev note - for now. Still working on the flow) Now on to other things. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "checkBeforeComplete" },
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "missy",
+                text: "I don't know if you're clueless, or are lying to both yourself, and me.  ",
+                button: [
+                    { chatID: 6, text: "...", callback: "" },
                 ]
             },
         ];

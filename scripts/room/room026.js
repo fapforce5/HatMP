@@ -1,6 +1,7 @@
 ﻿//Living Room
 var room26 = {};
 room26.main = function () {
+
     if (g.prevRoom === 8 && g.pass === 26) {
         nav.button({
             "type": "btn",

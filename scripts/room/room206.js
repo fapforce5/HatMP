@@ -83,28 +83,38 @@ room206.main = function () {
                 { t: "q8_2.png", a: false },
             ]
         },
-        //
-
         {
-            t: "Are you the type of person that likes to make your own decisions, or do you prefer to have those decisions made for you? ",
+            t: "What is your perfect sized breast? ",
             b: [
                 { t: "q9_0.png", a: false },
                 { t: "q9_1.png", a: false },
+                { t: "q9_2.png", a: false },
+                { t: "q9_3.png", a: false },
+                { t: "q9_4.png", a: false },
             ]
         },
-
-
-
-
-
-        //
-
-
         {
-            t: "I demand servatude above all else. When I tell you to do something can I expect you to follow my orders? ",
+            t: "What is your perfect sized butt?",
             b: [
                 { t: "q10_0.png", a: false },
                 { t: "q10_1.png", a: false },
+                { t: "q10_2.png", a: false },
+                { t: "q10_3.png", a: false },
+                { t: "q10_4.png", a: false },
+            ]
+        },
+        {
+            t: "Are you the type of person that likes to make your own decisions, or do you prefer to have those decisions made for you? ",
+            b: [
+                { t: "q11_0.png", a: false },
+                { t: "q11_1.png", a: false },
+            ]
+        },
+        {
+            t: "I demand servatude above all else. When I tell you to do something can I expect you to follow my orders? ",
+            b: [
+                { t: "q12_0.png", a: false },
+                { t: "q12_1.png", a: false },
             ]
         },
     ]
@@ -373,16 +383,31 @@ room206.chatcatch = function (callback) {
                 nav.bg("206_questions/standing.jpg");
                 break;
             case "q9":
-                nav.bg("206_questions/desk.jpg");
                 if (g.internal[9].b[0].a) {
-                    gv.set("transformation", "forced");
+                    gv.set("breastSelect", 2);
                     img = g.internal[9].b[0].t;
-                    chat(43, 206);
+                    chat(45, 206);
                 }
-                else {
-                    gv.set("transformation", "voluntary");
+                else if (g.internal[9].b[1].a) {
+                    gv.set("breastSelect", 3);
                     img = g.internal[9].b[1].t;
-                    chat(44, 206);
+                    chat(46, 206);
+                }
+                else if (g.internal[9].b[2].a) {
+                    gv.set("breastSelect", 4);
+                    img = g.internal[9].b[2].t;
+                    chat(46, 206);
+                }
+                else if (g.internal[9].b[3].a) {
+                    gv.set("breastSelect", 5);
+                    img = g.internal[9].b[3].t;
+                    chat(47, 206);
+                }
+                else if (g.internal[9].b[4].a) {
+                    gv.set("breastSelect", 6);
+                    levels.mod("xdress", 10);
+                    img = g.internal[9].b[4].t;
+                    chat(47, 206);
                 }
                 nav.killbutton("question");
                 nav.button({
@@ -397,16 +422,77 @@ room206.chatcatch = function (callback) {
                 break;
             case "q10":
                 if (g.internal[10].b[0].a) {
+                    gv.set("assSelect", 1);
+                    img = g.internal[10].b[0].t;
+                    chat(48, 206);
+                }
+                else if (g.internal[10].b[1].a) {
+                    gv.set("assSelect", 2);
+                    img = g.internal[10].b[1].t;
+                    chat(49, 206);
+                }
+                else if (g.internal[10].b[2].a) {
+                    gv.set("assSelect", 3);
+                    img = g.internal[10].b[2].t;
+                    chat(49, 206);
+                }
+                else if (g.internal[10].b[3].a) {
+                    gv.set("assSelect", 4);
+                    img = g.internal[10].b[3].t;
+                    chat(50, 206);
+                }
+                else if (g.internal[10].b[4].a) {
+                    gv.set("assSelect", 5);
+                    levels.mod("xdress", 10);
+                    img = g.internal[10].b[4].t;
+                    chat(50, 206);
+                }
+                nav.killbutton("question");
+                nav.button({
+                    "type": "btn",
+                    "name": "question",
+                    "left": 300,
+                    "top": 100,
+                    "width": 800,
+                    "height": 100,
+                    "image": "206_questions/" + img
+                }, 206);
+                break;
+            case "q11":
+                nav.bg("206_questions/desk.jpg");
+                if (g.internal[11].b[0].a) {
+                    gv.set("transformation", "forced");
+                    img = g.internal[11].b[0].t;
+                    chat(43, 206);
+                }
+                else {
+                    gv.set("transformation", "voluntary");
+                    img = g.internal[11].b[1].t;
+                    chat(44, 206);
+                }
+                nav.killbutton("question");
+                nav.button({
+                    "type": "btn",
+                    "name": "question",
+                    "left": 300,
+                    "top": 100,
+                    "width": 800,
+                    "height": 100,
+                    "image": "206_questions/" + img
+                }, 206);
+                break;
+            case "q12":
+                if (g.internal[12].b[0].a) {
                     nav.bg("206_questions/desk.jpg");
                     chat(27, 206);
                     levels.mod("sub", 15, 1);
-                    img = g.internal[10].b[0].t;
+                    img = g.internal[12].b[0].t;
                 }
                 else {
                     nav.bg("206_questions/angry.jpg");
                     chat(28, 206);
                     levels.mod("dom", 15, 1);
-                    img = g.internal[10].b[1].t;
+                    img = g.internal[12].b[1].t;
                 }
 
                 nav.killbutton("question");
@@ -861,15 +947,74 @@ room206.chat = function (chatID) {
             speaker: "missy",
             text: "So you don't like to be in control. Noted. I'll make sure I control your tender little body.  ",
             button: [
-                { chatID: -1, text: "*GULP*", callback: "q10" },
+                { chatID: -1, text: "*GULP*", callback: "q12" },
             ]
         },
         {
-            chatID: 43,
+            chatID: 44,
             speaker: "missy",
             text: "So you like choices. Very well, just be careful on what choices you do have to make.  ",
             button: [
-                { chatID: -1, text: "*GULP*", callback: "q10" },
+                { chatID: -1, text: "*GULP*", callback: "q12" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "missy",
+            text: "Hmmm. A tiny little chest built for speed. Not ideal. But I'm only interested in your holes. ",
+            button: [
+                { chatID: -1, text: "...", callback: "q10" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "missy",
+            text: "More is always better, but there's nothing wrong with an average set of tits. Like I say, a handful " +
+                "is the perfect size. ",
+            button: [
+                { chatID: -1, text: "...", callback: "q10" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "missy",
+            text: "I can tell you will make a great sex doll. Built for pleasure, and little else. You know there's a misconception " +
+                "that bigger breasts produce more milk. ",
+            button: [
+                { chatID: -1, text: "...", callback: "q10" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "missy",
+            text: "A nice pert little butt is always cute. Easier to get things deep in that tight little hole. ",
+            button: [
+                { chatID: -1, text: "...", callback: "q11" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "missy",
+            text: "A fine butt. I have to work out every day to get this butt. ",
+            button: [
+                { chatID: -1, text: "...", callback: "q11" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "missy",
+            text: "Real men do love a plump juicy ass. Do you know why? ",
+            button: [
+                { chatID: 51, text: "uhhh", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "missy",
+            text: "It's a biological trait to associate wide hips with birthing. When men see a big ass they want to " +
+                "breed it. Fill it with their cum. I'm sure you do love a gooey cum filled center. ",
+            button: [
+                { chatID: -1, text: "Mmmm", callback: "q11" },
             ]
         },
     ];

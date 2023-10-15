@@ -63,10 +63,7 @@ room178.chatcatch = function (callback) {
             char.room(0);
             break;
         case "cumend101Pass":
-            gv.mod("sissySchoolClassDays", 1);
-            sissy.passclass("cum101");
-            char.settime(17, 15);
-            char.room(0);
+            sissy.passclass(true);
             break;
         default:
             break;

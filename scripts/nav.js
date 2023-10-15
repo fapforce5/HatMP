@@ -327,3 +327,16 @@ nav.inputKill = function () {
 nav.room = function (roomID) {
     char.room(roomID);
 };
+
+
+nav.next = function (btnClickName) {
+    nav.button({
+        "type": "btn",
+        "name": btnClickName,
+        "left": 1695,
+        "top": 920,
+        "width": 225,
+        "height": 75,
+        "image": "1001_rand/next.png"
+    }, g.roomID);
+};

@@ -86,9 +86,49 @@ room451.main = function () {
 
 room451.btnclick = function (name) {
     switch (name) {
+        case "case_usb":
+            nav.killall();
+            nav.bg("451_parkMensRoom/case_usb1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "case_usb1",
+                "left": 762,
+                "top": 451,
+                "width": 56,
+                "height": 130,
+                "image": "451_parkMensRoom/case_usb1.png"
+            }, 451);
+            break;
+        case "case_usb1":
+            inv.add("missyusb");
+            missy.set("reusableCaseCounter", 2);
+            missy.set("activeCaseComplete", 1);
+            nav.killbutton("case_usb1");
+            chat(56, 451);
+            break;
         case "stall3":
             nav.killall();
-            if (Math.floor(Math.random() * 3) === 0) {
+            if (missy.get("activeCase") === 4 && missy.get("reusableCaseCounter") < 2) {
+                if (missy.get("reusableCaseCounter") === 0) {
+                    missy.set("reusableCaseCounter", 1);
+                    nav.bg("451_parkMensRoom/blumpkin.jpg");
+                    chat(54, 451);
+                }
+                else {
+                    nav.bg("451_parkMensRoom/case_usb0.jpg");
+                    nav.button({
+                        "type": "btn",
+                        "name": "case_usb",
+                        "left": 892,
+                        "top": 226,
+                        "width": 420,
+                        "height": 854,
+                        "image": "451_parkMensRoom/toilet.png"
+                    }, 451);
+                    chat(55, 451);
+                }
+            }
+            else if (Math.floor(Math.random() * 3) === 0) {
                 nav.bg("451_parkMensRoom/blumpkin.jpg");
                 chat(54, 451);
             }
@@ -1094,6 +1134,23 @@ room451.chat = function (chatID) {
             text: "What the hell dude? Get out I'm taking a shit here.   ",
             button: [
                 { chatID: -1, text: "Oh. Whoops", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "thinking",
+            text: "Now to find that USB drive...",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "thinking",
+            text: "Got it. Now to bring it back to Missy. I wonder what's on it. Kind of weird it was left in the men's " +
+                "bathroom. Maybe I could plug it into my PC and take a peek. There's no way she'll know I had a peek. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
             ]
         },
     ];

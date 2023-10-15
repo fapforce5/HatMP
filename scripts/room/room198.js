@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//detective skill
 var room198 = {};
 room198.main = function () {
     g.internal = {
@@ -120,7 +120,7 @@ room198.counter = function (timeLeft) {
         });
         g.roomTimeout = setTimeout(function () {
             room198.counter(slideTime);
-        }, 1000);
+        }, 600);
     }
 
 };
@@ -152,7 +152,7 @@ room198.chatcatch = function (callback) {
             
             g.roomTimeout = setTimeout(function () {
                 room198.counter(slideTime);
-            }, 1000);
+            }, 600);
             break;
         case "x":
             missy.mod("mood", -3);
@@ -221,8 +221,8 @@ room198.chat = function (chatID) {
                 speaker: "missy",
                 text: "Today we're going to work on your private investigation expertise. Do you need an explanation? ",
                 button: [
-                    { chatID: 1, text: "Yes ma'am", callback: "start" },
-                    { chatID: 5, text: "No ma'am", callback: "" }
+                    { chatID: 5, text: "No ma'am", callback: "" },
+                    { chatID: 1, text: "Yes ma'am", callback: "start" }
                 ]
             },
             {

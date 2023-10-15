@@ -15,6 +15,8 @@ room28.main = function () {
         nav.bg("301_living/envy159.jpg");
     else if (g.pass === 701)
         nav.bg("701_hospitalroom/sleep.jpg");
+    else if (g.pass === 181)
+        nav.bg("181_black/bondage101_12.jpg");
 
     menu.save("HatMP_9", null, 9);
     if (g.dt.getHours() > 6)
@@ -22,11 +24,12 @@ room28.main = function () {
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
     nav.buildclock();
 
-    daily.newday();
+    
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
     var thisautohormone, hix, tix;
-    var sissyTrans = gv.get("oncase");
+    tix = daily.get("tookHormonePill");
+    //var sissyTrans = gv.get("oncase");
     var arousal, energyIndex;
     var message;
     var buttholePlay;
@@ -78,9 +81,6 @@ room28.main = function () {
                 break;
             case "autohormone":
                 thisautohormone = gv.st[i].t;
-                break;
-            case "tookHormonePill":
-                tix = i;
                 break;
             case "pill":
                 if (gv.st[i].t !== null) {
@@ -162,51 +162,50 @@ room28.main = function () {
         }
     }
 
-    for (i = 0; i < daily.st.length; i++)
-        daily.st[i].t = false;
+    daily.newday();
 
     //check Transformation
     if (cl.c.chest === 0 && levels.st[12].l > 0) {
         chat(0, 28);
     }
-    else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp") {
-        var thisImg = "";
-        gv.set("oncase", null);
-        switch (sissyTrans) {
-            case "bigboobs":
-                cl.c.chest++;
-                thisImg = "chest_" + cl.c.chest + ".gif";
-                g.sissy[cl.c.chest + 33].ach = true;
-                break;
-            case "bigass":
-                cl.c.leg++;
-                thisImg = "leg_" + cl.c.leg + ".gif";
-                g.sissy[cl.c.leg + 39].ach = true;
-                break;
-            case "dslLips":
-                cl.c.lips++;
-                thisImg = "lip_" + cl.c.lips + ".gif";
-                g.sissy[cl.c.lips + 44].ach = true;
-                break;
-            case "smolpp":
-                cl.c.cock++;
-                thisImg = "cock_" + cl.c.cock + ".gif";
-                g.sissy[cl.c.cock + 6].ach = true;
-                break;
-            //case "lip":
-            //cl.c.lip++;
-            //thisImg = "lip_" + cl.c.lip + ".gif";
-            //break;
-        }
-        nav.bg("28_transformation/" + thisImg);
-        cl.display();
-        g.roomTimeout = setTimeout(function () {
-            returnRoomID = g.pass;
-            g.pass = "endSleepyTime";
-            char.room(returnRoomID);
-        }, 6000);
+    //else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp") {
+    //    var thisImg = "";
+    //    gv.set("oncase", null);
+    //    switch (sissyTrans) {
+    //        case "bigboobs":
+    //            cl.c.chest++;
+    //            thisImg = "chest_" + cl.c.chest + ".gif";
+    //            g.sissy[cl.c.chest + 33].ach = true;
+    //            break;
+    //        case "bigass":
+    //            cl.c.leg++;
+    //            thisImg = "leg_" + cl.c.leg + ".gif";
+    //            g.sissy[cl.c.leg + 39].ach = true;
+    //            break;
+    //        case "dslLips":
+    //            cl.c.lips++;
+    //            thisImg = "lip_" + cl.c.lips + ".gif";
+    //            g.sissy[cl.c.lips + 44].ach = true;
+    //            break;
+    //        case "smolpp":
+    //            cl.c.cock++;
+    //            thisImg = "cock_" + cl.c.cock + ".gif";
+    //            g.sissy[cl.c.cock + 6].ach = true;
+    //            break;
+    //        //case "lip":
+    //        //cl.c.lip++;
+    //        //thisImg = "lip_" + cl.c.lip + ".gif";
+    //        //break;
+    //    }
+    //    nav.bg("28_transformation/" + thisImg);
+    //    cl.display();
+    //    g.roomTimeout = setTimeout(function () {
+    //        returnRoomID = g.pass;
+    //        g.pass = "endSleepyTime";
+    //        char.room(returnRoomID);
+    //    }, 6000);
 
-    }
+    //}
     else {
         g.roomTimeout = setTimeout(function () {
             var returnRoomID = g.pass;

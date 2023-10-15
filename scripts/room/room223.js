@@ -4,6 +4,9 @@ room223.main = function () {
     if (missy.get("uniform") === 0) {
         chat(0, 223);
     }
+    else {
+        char.room(197);
+    }
 };
 
 room223.btnclick = function (name) {

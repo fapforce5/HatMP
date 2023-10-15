@@ -405,58 +405,7 @@ char.makeWalk = function () {
                 '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
 
             oncaseText = missy.activecase().txt;
-            
-            //switch (oncase) {
-            //    case "smolpp":
-            //    case "bigboobs":
-            //    case "bigass":
-            //    case "dslLips":
-            //        oncaseText = "Go home and sleep to transition. ";
-            //        break;
-            //    case "cult0":
-            //        oncaseText = "Get information on the cult. ";
-            //        break;
-            //    case "redroom":
-            //        oncaseText = "Take the elevator up to the Red Room and pass the tests. ";
-            //        break;
-            //    case "gloryholebj":
-            //        oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
-            //            "at the park. ";
-            //        break;
-            //    case "gloryholeanal":
-            //        oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
-            //            "at the park. ";
-            //        break;
-            //    case "shopping":
-            //        oncaseText = "Visit Tiffany at The Toy Store for your shopping trip!";
-            //        break;
-            //    case "clothes0":
-            //    case "clothes1":
-            //    case "clothes2":
-            //    case "clothes3":
-            //        oncaseText = "Visit Mr. Jones at his Mansion north east of the suburbs. Follow his instructions. ";
-            //        break;
-            //    case "dinerfail":
-            //    case "dinersuccess":
-            //        oncaseText = "Report your investigation to Missy in her office. ";
-            //        break;
-            //    case "diner":
-            //        oncaseText = "Report to the Naked Beaver diner and try to figure out which waitress has been " +
-            //            "stealing from Jeffery. ";
-            //        break;
-            //    case "sewer":
-            //        oncaseText = "First visit Gertrude in the gym to get the crowbar.</li>" +
-            //            "<li>Use that crowbar to enter the sewer on the street next to the dance club</li>" +
-            //            "<li>Fight your way through the clown clan to the very last room to get Missy's Red Box.</li>" +
-            //            "<li>Once you get the Red Box Return to Missy's office.";
-            //        break;
-            //    case "queen":
-            //        oncaseText = "Sneak into the Forest Queen's cottage at night. To get there take the paths behind the " +
-            //            "park bathroom and find her cottage. "
-            //        break;
-            //    default:
-            //        break;
-            //}
+
             $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
                 '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
                 oncaseText + '</li></ul>');

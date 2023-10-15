@@ -10,7 +10,7 @@ room9.main = function () {
     $('.room-topper').hide();
 
     $.each(btnList, function (i, v) {
-        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb")
+        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb")
             nav.button(v, 9);
     });
 
@@ -57,9 +57,6 @@ function room9_btnList() {
             "height": 162,
             "image": "9_computer/porn.png"
         },
-        
-        
-        
         {
             "type": "img",
             "name": "navBar",
@@ -84,6 +81,18 @@ function room9_btnList() {
         btnList.push({
             "type": "btn",
             "name": "usb",
+            "left": 800,
+            "top": 119,
+            "width": 157,
+            "height": 162,
+            "image": "9_computer/usb.png"
+        });
+    }
+
+    if (inv.has("missyusb")) {
+        btnList.push({
+            "type": "btn",
+            "name": "missyusb",
             "left": 800,
             "top": 119,
             "width": 157,
@@ -191,7 +200,7 @@ room9.btnclick = function (name) {
             $('#room-buttons').html('');
             btnList = room9_btnList();
             $.each(btnList, function (i, v) {
-                if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn")
+                if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb")
                     nav.button(v, g.roomID);
             });
             break;
@@ -373,6 +382,52 @@ room9.btnclick = function (name) {
         case "usb":
             char.room(6);
 
+            break;
+        case "missyusb":
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "missyusbdoc",
+                "left": 477,
+                "top": 119,
+                "width": 157,
+                "height": 162,
+                "image": "221_recip/notes.png"
+            }, 9);
+            nav.button({
+                "type": "btn",
+                "name": "powerOff",
+                "left": 1667,
+                "top": 540,
+                "width": 160,
+                "height": 209,
+                "image": "9_computer/09_powerOff.png"
+            }, 9);
+            break;
+        case "missyusbdoc":
+            if (missy.get("reusableCaseCounter") < 3) {
+                levels.mod("pi", 50, 999);
+                missy.set("reusableCaseCounter", 3);
+            }
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "missyusbdocx",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/missyusb.jpg"
+            }, 9);
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 450,
+                "top": 53,
+                "width": 42,
+                "height": 42,
+                "image": "9_computer/09_close.png"
+            }, 9);
             break;
         default:
             break;

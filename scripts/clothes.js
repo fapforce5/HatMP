@@ -443,7 +443,24 @@ cl.where = function (type, name) {
     return retList;
 };
 
+cl.wearSavedOutfit = function (entry) {
+    cl.c.shoes = cl.saveOutfit[entry].shoes;
+    cl.c.socks = cl.saveOutfit[entry].socks;
+    cl.c.pants = cl.saveOutfit[entry].pants;
+    if (cl.hasClothing("panties", cl.saveOutfit[entry].panties))
+        cl.c.panties = cl.saveOutfit[entry].panties;
+    cl.c.bra = cl.saveOutfit[entry].bra;
+    cl.c.shirt = cl.saveOutfit[entry].shirt;
+    cl.c.dress = cl.saveOutfit[entry].dress;
+    cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
+    cl.c.accessories = cl.saveOutfit[entry].accessories;
+    cl.c.pj = cl.saveOutfit[entry].pj;
+    cl.display();
+};
+
 cl.getEntry = function (type, name) {
+    if (name === null)
+        return { type: type, name: null, display: "Missing", img: null, sex: null, inv: false, daring: -1, price: -1 };
     return cl.list[cl.where(type, name)];
 };
 
@@ -2381,6 +2398,7 @@ cl.wearing = function () {
 };
 
 cl.minButt = function (invItem, sizeItem) {
+    levels.mod("anal", 25, 3);
     var returnItem = { minSize: 0, fit: false };
     if (invItem !== null) {
         switch (invItem) {
@@ -2426,6 +2444,7 @@ cl.minButt = function (invItem, sizeItem) {
 };
 
 cl.stretchButt = function (invItem, sizeItem) {
+    levels.mod("anal", 25, 3);
     var thisItem = cl.minButt(invItem, sizeItem);
     var oldBhole = Math.floor(cl.c.butthole);
     var retSize = 0;
@@ -2458,3 +2477,7 @@ cl.stretchButt = function (invItem, sizeItem) {
     daily.set("buttholePlay");
     return retSize;
 }; 
+
+cl.isCockTooSmallForSex = function () {
+    return cl.c.cock > 2;
+};

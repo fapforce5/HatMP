@@ -56,12 +56,14 @@ room176.chatcatch = function (callback) {
             nav.bg("176_oral/" + callback + ".jpg");
             break;
         case "oral5":
-            levels.mod("oral", 20, 999);
+            levels.mod("oral", 100, 999);
+            //levels.mod("oral", 20, 999);
             nav.bg("176_oral/" + callback + ".jpg");
             break;
         case "oral7":
             nav.bg("176_oral/" + callback + ".jpg");
-            levels.mod("oral", 40, 999);
+            levels.mod("oral", 100, 999);
+            //levels.mod("oral", 40, 999);
             if (levels.get("oral").l < 2)
                 chat(17, 176);
             else
@@ -78,10 +80,12 @@ room176.chatcatch = function (callback) {
             }
             break;
         case "sub":
-            levels.mod("sub", 20, 999);
+            levels.mod("oral", 100, 999);
+            //levels.mod("sub", 20, 999);
             break;
         case "dom":
-            levels.mod("dom", 20, 999);
+            levels.mod("oral", 100, 999);
+            //levels.mod("dom", 20, 999);
             break;
         case "oralEnd":
             gv.mod("sissySchoolClassDays", 1);
@@ -89,10 +93,7 @@ room176.chatcatch = function (callback) {
             char.room(0);
             break;
         case "oralEndPass":
-            gv.mod("sissySchoolClassDays", 1);
-            sissy.passclass("oral101");
-            char.settime(17, 15);
-            char.room(0);
+            sissy.passclass(true);
             break;
         case "oral20Check":
             charisma.init(8, "blackmailSuccess", "blackmailFail", 176);

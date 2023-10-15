@@ -43,8 +43,8 @@ room1.main = function () {
     nav.t({
         type: "zimg",
         name: "version",
-        left: 1620,
-        top: 900,
+        left: 1520,
+        top: 1010,
         font: 20,
         hex: "#ffffff",
         text: g.versionText

@@ -2,29 +2,39 @@
 var room750 = {};
 room750.main = function () {
     if (g.isNight()) {
-        if (sc.getstep("doc") < 3) {
-            nav.button({
-                "type": "btn",
-                "name": "doc",
-                "left": 1176,
-                "top": 295,
-                "width": 303,
-                "height": 710,
-                "image": "750_homeless/doctor.png"
-            }, 750);
-        }
-    }
-    else {
         nav.button({
             "type": "btn",
-            "name": "daletent",
+            "name": "whoretent",
             "left": 969,
             "top": 443,
             "width": 234,
             "height": 139,
-            "image": "750_homeless/dale.png"
+            "image": "750_homeless/whore.png",
+            "night": "750_homeless/whoreNight.png"
         }, 750);
+        //if (sc.getstep("doc") < 3) {
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "doc",
+        //        "left": 1176,
+        //        "top": 295,
+        //        "width": 303,
+        //        "height": 710,
+        //        "image": "750_homeless/doctor.png"
+        //    }, 750);
+        //}
     }
+    //else {
+    //    nav.button({
+    //        "type": "btn",
+    //        "name": "daletent",
+    //        "left": 969,
+    //        "top": 443,
+    //        "width": 234,
+    //        "height": 139,
+    //        "image": "750_homeless/dale.png"
+    //    }, 750);
+    //}
     nav.button({
         "type": "btn",
         "name": "crystal",
@@ -35,7 +45,7 @@ room750.main = function () {
         "image": "750_homeless/crystal.png",
         "night": "750_homeless/crystalnight.png"
     }, 750);
-    var navList = [751, 0];
+    var navList = [751, 752, 0];
     nav.buildnav(navList);
     if (g.isNight()) {
         fame.event();
@@ -76,6 +86,9 @@ room750.btnclick = function (name) {
             if (sc.getstep("dale") === 0) {
                 chat(17, 750);
             }
+            break;
+        case "whoretent":
+            char.room(752);
             break;
         default:
             break;

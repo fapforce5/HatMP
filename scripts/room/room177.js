@@ -61,16 +61,15 @@ room177.chatcatch = function (callback) {
                 chat(25, 177);
             break;
         case "pink":
+            gv.set("castitycage", "pink");
             g.internal = "pink";
             break;
         case "pinkx2":
+            gv.set("castitycage", "pinkx2");
             g.internal = "pinkx2";
             break;
         case "chastity101end":
-            gv.mod("sissySchoolClassDays", 1);
-            sissy.passclass("chastity101");
-            char.settime(17, 15);
-            char.room(0);
+            sissy.passclass(true);
             break;
         default:
             break;
@@ -230,8 +229,9 @@ room177.chat = function (chatID) {
             speaker: "missy",
             text: "It really is a large cock for such a small sissy. A bit too large don't you think?  ",
             button: [
-                { chatID: 17, text: "Too large? No ma'am. It's a great size. ", callback: "pink" },
-                { chatID: 18, text: "Yes ma'am. It really is too big. ", callback: "pinkx2" }
+                { chatID: 18, text: "Yes ma'am. It really is too big. ", callback: "pinkx2" },
+                { chatID: 17, text: "Too large? No ma'am. It's a great size. ", callback: "pink" }
+                
             ]
         },
         {

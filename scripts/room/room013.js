@@ -62,16 +62,16 @@ room13.main = function () {
         }
         else {
             btnList = [
-                {
-                    "type": "btn",
-                    "name": "puter",
-                    "left": 295,
-                    "top": 551,
-                    "width": 295,
-                    "height": 260,
-                    "image": "13_sisterRoom/puter.png",
-                    "night": "13_sisterRoom/puterNight.png"
-                },
+                //{
+                //    "type": "btn",
+                //    "name": "puter",
+                //    "left": 295,
+                //    "top": 551,
+                //    "width": 295,
+                //    "height": 260,
+                //    "image": "13_sisterRoom/puter.png",
+                //    "night": "13_sisterRoom/puterNight.png"
+                //},
                 {
                     "type": "btn",
                     "name": "nightstand",
@@ -173,7 +173,7 @@ room13.btnclick = function (name) {
         case "flatmateKey":
             inv.add("flatmateKey");
             nav.killbutton("flatmateKey");
-            chat(137, 13);
+            chat(25, 13);
             break;
         case "closenightstand":
             char.room(13);
@@ -191,7 +191,7 @@ room13.btnclick = function (name) {
             break;
         case "dresser":
             if (gv.get("lockdrawer"))
-                chat(109, 13);
+                chat(7, 13);
             else {
                 nav.killall();
                 nav.bg("13_sisterRoom/013_pantyDrawer.jpg");
@@ -202,20 +202,22 @@ room13.btnclick = function (name) {
             char.room(31);
             break;
         case "lola":
-            sc.select("lolachat", "13_sisterRoom/icon_chatLola.png", 0);
-            sc.select("lolamassage", "13_sisterRoom/icon_massage.png", 1);
-            sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
-            sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-            sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
-            sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
+            chat(24, 13);
+            //sc.select("lolachat", "13_sisterRoom/icon_chatLola.png", 0);
+            //sc.select("lolamassage", "13_sisterRoom/icon_massage.png", 1);
+            //sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
+            //sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
+            //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
+            //sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
             break;
         case "eva":
-            sc.select("evachat", "13_sisterRoom/icon_chatEva.png", 0);
-            sc.select("evamassage", "13_sisterRoom/icon_feet.png", 1);
-            sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
-            sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-            sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
-            sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
+            chat(24, 13);
+            //sc.select("evachat", "13_sisterRoom/icon_chatEva.png", 0);
+            //sc.select("evamassage", "13_sisterRoom/icon_feet.png", 1);
+            //sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
+            //sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
+            //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
+            //sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
             break;
         case "lolachat":
             nav.killall();
@@ -785,6 +787,9 @@ room13.chatcatch = function (callback) {
             case "charisma":
                 levels.mod("charisma", 25, 999);
                 break;
+            case "xdress1":
+                levels.mod("xdress", 50, 1);
+                break;
             case "reset":
                 char.room(13);
                 break;
@@ -792,19 +797,25 @@ room13.chatcatch = function (callback) {
                 char.room(11);
                 break;
             case "dresserLocked":
-                v.set("lockdrawer", true);
+                gv.set("lockdrawer", true);
                 break;
             case "arousal":
                 gv.mod("arousal", 75);
                 break;
             case "sniff1":
-                nav.bg("13_sisterRoom/sniff1.jpg");
-                break;
-            case "angry":
-                nav.bg("13_sisterRoom/013_angryCaught.png");
+            case "sniff2":
+                nav.bg("13_sisterRoom/" + v + ".jpg");
                 break;
             case "massage0chance":
                 charisma.init(sc.getLevel("lola") + 6, "lolaMassageWin", "lolaMassageLose", g.roomID) 
+                break;
+            case 'takePanties':
+                cl.add("panties", "w");
+                levels.mod("xdress", 50, 1);
+                nav.killbutton("panties");
+                break;
+            case "killPantyIcon":
+                nav.killbutton("panties");
                 break;
         };
     });
@@ -1629,16 +1640,16 @@ room13.chat = function (chatID) {
                 speaker: "me",
                 text: "So many panties...",
                 button: [
-                    { chatID: 106, text: "Sniff " + sc.n("eva") + "'s and " + sc.n("lola") + "'s panties", callback: "sniff1 arousal" },
+                    { chatID: 23, text: "Sniff " + sc.n("eva") + "'s and " + sc.n("lola") + "'s panties", callback: "sniff1 arousal xdress1" },
                     { chatID: -1, text: "Close the drawer.", callback: "reset" }
                 ]
             },
             {
                 chatID: 1,
                 speaker: "lola",
-                text: sc.n("me") + "!!!! what are your doing. Are you going through our panties!!!",
+                text: sc.n("me") + "!!!! what are you doing. Are you going through our panties!!!",
                 button: [
-                    { chatID: 2, text: "....", callback: "angry" }
+                    { chatID: 2, text: "....", callback: "" }
                 ]
             },
             {
@@ -1680,15 +1691,15 @@ room13.chat = function (chatID) {
                 text: "Should I take " + sc.n("lola") + "'s dirty panties?",
                 button: [
                     { chatID: -1, text: "Gross... no", callback: "killPantyIcon" },
-                    { chatID: 7, text: "yea... ", callback: "takePanties" }
+                    { chatID: -1, text: "yea... ", callback: "takePanties" }
                 ]
             },
-            {
+             {
                 chatID: 7,
-                speaker: "thinking",
-                text: "[Panties added to Inventory]",
+                speaker: "me",
+                text: "Dammit! They locked their panty drawer. Try to jack off into their panties once and you're locked out forever.",
                 button: [
-                    { chatID: -1, text: "...", callback: "killPantyIconx" }
+                    { chatID: -1, text: "...", callback: "reset" }
                 ]
             },
             {
@@ -1818,7 +1829,7 @@ room13.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 21,
+                chatID: 22,
                 speaker: "lola",
                 text: "You're so rude! He's not a dog, he's a boy!",
                 button: [
@@ -1826,17 +1837,31 @@ room13.chat = function (chatID) {
                     { chatID: -1, text: "Nope. I would totally lick " + sc.n("eva") + "'s feet like a dog", callback: "lolaLevelDown evaLevelQuater sub beast lolaDayEvent" },
                 ]
             },
-
-
-
-
-
-
-
-
-
-
-
+             {
+                chatID: 23,
+                speaker: "thinking",
+                 text: "So fresh and so clean. Delicate and tiny just like " + sc.n('eva') + ". I bet they wouldn't notice if " +
+                    "I steal just one pair. ",
+                button: [
+                    { chatID: 2, text: "...", callback: "sniff2" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "lola",
+                text: "This is a work in progress. You'll see much much more in the next release.!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "thinking",
+                text: "Nice, this must be the key to their room!",
+                button: [
+                    { chatID: -1, text: "Key added to inventory", callback: "" }
+                ]
+            },
 
 
 

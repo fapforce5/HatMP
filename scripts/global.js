@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 20.0;
-g.versionText = "0.20.0 - OCT 2023";
+g.version = 20.1;
+g.versionText = "0.20.1 - OCT 2023";
 g.newLoad = false;
 g.back = false;
 g.altview = false;
@@ -19,7 +19,7 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 901, 902, 408, 478, 479, 480];
+g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 750, 901, 902, 408, 478, 479, 480];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
@@ -222,6 +222,7 @@ g.rooms = [
     { roomID: 177, name: "Chastity", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 178, name: "Cum", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 181, name: "Black Room", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 196, name: "Pay Day", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 197, name: "Sub", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 198, name: "PI Training", image: "198_pi/bg.jpg", nightImage: "198_pi/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
@@ -233,11 +234,11 @@ g.rooms = [
     { roomID: 204, name: "Card Game", image: "204_cardgame/402_bg.jpg", nightImage: "204_cardgame/402_bg.jpg", houseID: 203, btn: "roomBtn_204.png" },
     { roomID: 205, name: "Chastity", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_204.png" },
     { roomID: 206, name: "Questions", image: "206_questions/white.jpg", nightImage: "206_questions/white.jpg", houseID: 203, btn: "roomBtn_200.png" },
-    { roomID: 207, name: "Foyer", image: "207_door/elevator.jpg", nightImage: "207_door/elevator.jpg", houseID: 203, btn: "roomBtn_207.png" },
+    { roomID: 207, name: "Foyer", image: "207_door/bg.jpg", nightImage: "207_door/bg_night.jpg", houseID: 203, btn: "roomBtn_207.png" },
     { roomID: 208, name: "Red Room", image: "208_red/red.jpg", nightImage: "208_red/red.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 209, name: "Basement", image: "209_classroom/bg.jpg", nightImage: "209_classroom/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 210, name: "Class Selection", image: "210_classSelection/bg.jpg", nightImage: "210_classSelection/bg.jpg", houseID: 203, btn: "roomBtn_210.png" },
-    { roomID: 212, name: "Black Room", image: "212_black/g.jpg", nightImage: "212_black/g.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 211, name: "Waiting Room", image: "211_meeting/bg.jpg", nightImage: "211_meeting/bg.jpg", houseID: 203, btn: "roomBtn_211.png" },
     { roomID: 213, name: "Lounge", image: "213_pink/bg.jpg", nightImage: "213_pink/bg.jpg", houseID: 203, btn: "roomBtn_213.png" },
     { roomID: 214, name: "Game Room", image: "214_pink/game.jpg", nightImage: "214_pink/game.jpg", houseID: 203, btn: "roomBtn_214.png" },
     { roomID: 215, name: "Private Room", image: "215_pink/private1.jpg", nightImage: "215_pink/private1.jpg", houseID: 203, btn: "roomBtn_215.png" },
@@ -344,6 +345,7 @@ g.rooms = [
 
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
+    { roomID: 752, name: "Dirty Whore's Tent", image: "752_whore/bg.jpg", nightImage: "752_whore/bg.jpg", houseID: 750, btn: "roomBtn_752.png" },
 
     { roomID: 800, name: "Ralph's House", image: "800_ralph/bg.jpg", nightImage: "800_ralph/bg_night.jpg", houseID: 800, btn: "roomBtn_800.png" },
 
@@ -390,12 +392,12 @@ g.roomMapInit = function () {
         //{ roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
         //{ roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
         { roomID: 203, display: "Missy's", access: false, darkAccess: false, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
-        { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
+        //{ roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
         { roomID: 250, display: "Naked Beaver Diner", access: true, darkAccess: false, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
         //{ roomID: 300, display: "Apartment", access: true, darkAccess: true, left: 836, top: 662, width: 303, height: 309, img: "map/300.png", night: "map/300_night.png", map: 2 },
         //{ roomID: 325, display: "Farm", access: true, darkAccess: true, left: 646, top: 419, width: 351, height: 195, img: "map/325.png", night: "map/325_night.png", map: 0 },
         { roomID: 350, display: "Sperm Bank", access: true, darkAccess: false, left: 74, top: 672, width: 291, height: 207, img: "map/350.png", night: "map/350_night.png", map: 2 },
-        //{ roomID: 375, display: "Cop Shop", access: true, darkAccess: true, left: 1064, top: 32, width: 246, height: 202, img: "map/375.png", night: "map/375_night.png", map: 2 },
+        { roomID: 375, display: "Cop Shop", access: true, darkAccess: true, left: 1064, top: 32, width: 246, height: 202, img: "map/375.png", night: "map/375_night.png", map: 2 },
         { roomID: 400, display: "Mall", access: true, darkAccess: false, left: 530, top: 0, width: 308, height: 212, img: "map/400.png", night: "map/400_night.png", map: 2 },
         { roomID: 404, display: "Spankey's", access: true, darkAccess: true, left: 530, top: 375, width: 93, height: 126, img: "map/404.png", night: "map/404_night.png", map: 1 },
         { roomID: 405, display: "Hair Cut", access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
@@ -409,8 +411,8 @@ g.roomMapInit = function () {
         //{ roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
         { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
         { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
-        //{ roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
-        //{ roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
+        { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
+        { roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
         //{ roomID: 800, display: "Ralph's House", access: true, darkAccess: true, left: 1633, top: 414, width: 103, height: 137, img: "map/800.png", night: "map/800_night.png", map: 1 },
         //{ roomID: 825, display: "Dirty Lot", access: true, darkAccess: true, left: 1697, top: 737, width: 223, height: 233, img: "map/825.png", night: "map/825_night.png", map: 2 },
         //{ roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
@@ -465,8 +467,6 @@ g.setRatio = function () {
     var btnHeight = 620 * g.ratio;
     $('.char-container').css({ "width": btnWidth, "height": btnHeight });
     $('#char-bg').css({ "width": btnWidth, "height": btnHeight });
-
-    
 };
 
 g.error = function (id, details) {
@@ -644,40 +644,6 @@ g.load = function (rma, thisVersion) {
         }
     }
 
-    //for (i = 0; i < rma.st.length; i++) {
-    //    for (j = 0; j < g.st.length; j++) {
-    //        if (gv.st[j] === "g_sissy")
-    //            ksissy = j;
-    //        if (rma.st[i].n === gv.st[j].n) {
-    //            if (gv.st[j].q === "date")
-    //                gv.st[j].t = new Date(rma.st[i].t);
-    //            else
-    //                gv.st[j].t = rma.st[i].t;
-    //            j = 999999;
-    //        }
-    //    }
-    //}
-    //for (i = 0; i < g.sissy.length; i++)
-    //    g.sissy[i].ach = false;
-    //if ("sissy" in rma) {
-    //    for (i = 0; i < rma.sissy.length; i++)
-    //        g.sissy[rma.sissy[i]].ach = true;
-    //}
-    
-    //if (thisVersion < 14) {
-    //    if (g.roomID > 949) {
-    //        gv.set(
-    //            "oncase", null);
-    //        g.roomID = 0;
-    //        sc.rollback("daria", 0);
-    //        for (i = 0; i < inv.master.length; i++) {
-    //            if (inv.master[i].name === "chisel") {
-    //                inv.master[i].entry = false;
-    //                inv.master[i].count = null
-    //            }
-    //        }
-    //    }
-    //}
 };
 
 g.initGame = function () {

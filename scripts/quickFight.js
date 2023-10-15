@@ -1,10 +1,9 @@
 ﻿var quickFight = {};
 
 quickFight.getStats = function (enemyFightLevel) {
-    var punchPower = levels.get("punch").l;
-    var kickPower = levels.get("kick").l;
+    var punchPower = levels.get("strength").l;
     var energyMult = parseFloat(gv.get("energy") / 100).toFixed(2);
-    var total = Math.round((punchPower + kickPower) * energyMult);
+    var total = Math.round((punchPower) * energyMult);
     var prob = 0;
     var probTemp = total - enemyFightLevel;
     console.log(probTemp);
@@ -18,7 +17,7 @@ quickFight.getStats = function (enemyFightLevel) {
         prob = probTemp > 0 ? Math.round(50 + probTempx) : Math.round(50 - probTempx);
     } 
 
-    return { punchPower: punchPower, kickPower: kickPower, energyMult: energyMult, total: total, winProb: prob };
+    return { punchPower: punchPower, energyMult: energyMult, total: total, winProb: prob };
 }
 
 quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost, btnPressRun, roomID) {
@@ -95,15 +94,6 @@ quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLos
         font: 20,
         hex: "#ffffff",
         text: " Punch Power: " + stats.punchPower
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (2 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "+ Kick Power:  " + stats.kickPower
     }, 1);
     nav.t({
         type: "img",

@@ -228,17 +228,7 @@ room8.main = function () {
         var entry = $(this).data('e');
         var type = $(this).data('type');
         if (type === "change") {
-            cl.c.shoes = cl.saveOutfit[entry].shoes;
-            cl.c.socks = cl.saveOutfit[entry].socks;
-            cl.c.pants = cl.saveOutfit[entry].pants;
-            cl.c.panties = cl.saveOutfit[entry].panties;
-            cl.c.bra = cl.saveOutfit[entry].bra;
-            cl.c.shirt = cl.saveOutfit[entry].shirt;
-            cl.c.dress = cl.saveOutfit[entry].dress;
-            cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
-            cl.c.accessories = cl.saveOutfit[entry].accessories;
-            cl.c.pj = cl.saveOutfit[entry].pj;
-            cl.display();
+            cl.wearSavedOutfit(entry);
             room8.chatcatch("c");
         }
         else {
