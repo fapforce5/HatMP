@@ -38,6 +38,7 @@ room225.main = function () {
         chat(0, 225);
     }
     nav.buildnav(navList);
+    fame.event();
 };
 
 room225.btnclick = function (name) {
@@ -94,9 +95,9 @@ room225.btnclick = function (name) {
             nav.bg("225_sewer/p1_" + g.internal + ".jpg");
             if (g.internal === 5) {
                 nav.killbutton("p11");
-                g.mod("giveOralMale", 1);
-                g.mod("loadSwollowed", 1);
-                g.mod("money", 20);
+                gv.mod("giveOralMale", 1);
+                gv.mod("loadSwollowed", 1);
+                gv.mod("money", 20);
                 cl.c.cumface = true;
                 chat(14, 225);
             }
@@ -139,10 +140,10 @@ room225.chatcatch = function (callback) {
             nav.bg("225_sewer/p0_3.jpg");
             break;
         case "p0end":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(120);
-            g.mod("money", 50);
+            gv.mod("money", 50);
             char.room(225);
             break;
         case "p11":
@@ -201,9 +202,9 @@ room225.chatcatch = function (callback) {
             }, 225);
             break;
         case "p25":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
-            g.mod("money", 100);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            gv.mod("money", 100);
             char.nexttime(7);
             char.room(225);
             break;

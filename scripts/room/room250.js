@@ -137,11 +137,11 @@ room250.btnclick = function (name) {
             break;
         case "hollyStand":
             var jefferyStep = sc.getstep("jeffery");
-            if (jefferyStep === 0 || jefferyStep === 2) {
-                chat(0, 250);
-            }
-            else if (jefferyStep === 1) {
+            if (gv.get("jobapplybeaver") === 1) {
                 chat(5, 250);
+            }
+            else if (jefferyStep === 0 || jefferyStep === 2) {
+                chat(0, 250);
             }
             else if (jefferyStep === 3) {
                 if (g.hourBetween(7, 10)) {
@@ -401,7 +401,7 @@ room250.chatcatch = function (callback) {
         case "nap_1hour":
             break;
         case "pizza":
-            if (g.get("money") < 18) {
+            if (gv.get("money") < 18) {
                 chat(3, 250);
             }
             else {
@@ -412,7 +412,7 @@ room250.chatcatch = function (callback) {
             }
             break;
         case "burger":
-            if (g.get("money") < 15) {
+            if (gv.get("money") < 15) {
                 chat(3, 250);
             }
             else {
@@ -423,7 +423,7 @@ room250.chatcatch = function (callback) {
             }
             break;
         case "tea":
-            if (g.get("money") < 8) {
+            if (gv.get("money") < 8) {
                 chat(3, 250);
             }
             else {
@@ -436,25 +436,25 @@ room250.chatcatch = function (callback) {
         case "eat":
             switch (g.internal) {
                 case "pizza":
-                    g.mod("energy", 200);
-                    g.mod("money", -18);
+                    gv.mod("energy", 200);
+                    gv.mod("money", -18);
                     break;
                 case "burger":
-                    g.mod("energy", 100);
-                    g.mod("money", -15);
+                    gv.mod("energy", 100);
+                    gv.mod("money", -15);
                     break;
                 case "tea":
-                    g.mod("energy", 50);
-                    g.mod("money", -8);
+                    gv.mod("energy", 50);
+                    gv.mod("money", -8);
                     break;
             }
             break;
         case "leave":
             char.room(0);
             break;
-        case "jeffery2":
-            sc.setstep("jeffery", 2);
-            char.room(0);
+        case "applyEnd":
+            levels.mod("xdress", 5, 1);
+            gv.set("jobapplybeaver", 2);
             break;
         case "backOffice":
             g.pass = "firstmeet";
@@ -525,28 +525,28 @@ room250.chatcatch = function (callback) {
             break;
         case "break10":
             if (sc.checkevent("holly", -1))
-                g.mod("money", 2);
+                gv.mod("money", 2);
             else
-                g.mod("money", 10);
+                gv.mod("money", 10);
             room250.chatcatch("checkHalftime");
             break;
         case "break20":
             if (sc.checkevent("holly", -1))
-                g.mod("money", 4);
+                gv.mod("money", 4);
             else
-                g.mod("money", 20);
+                gv.mod("money", 20);
             room250.chatcatch("checkHalftime");
             break;
         case "break40":
             if (sc.checkevent("holly", -1))
-                g.mod("money", 5);
+                gv.mod("money", 5);
             else
-                g.mod("money", 40);
+                gv.mod("money", 40);
             room250.chatcatch("checkHalftime");
             break;
         case "breakSpanky":
             sc.setstep("spanky", 3);
-            g.mod("money", 20);
+            gv.mod("money", 20);
             room250.chatcatch("checkHalftime");
             break;
         case "checkHalftime":
@@ -822,7 +822,7 @@ room250.chatcatch = function (callback) {
             room250.btnclick(g.pass[0].toString());
             break;
         case "dollytip":
-            g.mod("money", 25);
+            gv.mod("money", 25);
             room250.chatcatch("resetServing");
             break;
         case "s2":
@@ -853,8 +853,8 @@ room250.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "250_beaver/side_dolly.png"
             }, 250);
-            g.mod("energy", 1000);
-            g.mod("loadSwollowed", 1);
+            gv.mod("energy", 1000);
+            gv.mod("loadSwollowed", 1);
             break;
         case "s6":
             sc.setstep("dolly", 4);
@@ -862,8 +862,8 @@ room250.chatcatch = function (callback) {
             char.room(0);
             break;
         case "s7":
-            g.mod("energy", 1000);
-            g.mod("loadSwollowed", 1);
+            gv.mod("energy", 1000);
+            gv.mod("loadSwollowed", 1);
             char.addtime(60);
             char.room(0);
             break;
@@ -998,7 +998,7 @@ room250.chat = function (chatID) {
             speaker: "holly",
             text: "You have to be a girl to work at the Naked Beaver.. sorry honey.",
             button: [
-                { chatID: -1, text: "Oh ", callback: "jeffery2" }
+                { chatID: -1, text: "Oh ", callback: "applyEnd" }
             ]
         },
         {

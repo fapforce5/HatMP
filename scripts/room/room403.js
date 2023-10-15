@@ -155,14 +155,14 @@ room403.chatcatch = function (callback) {
             }, 403);
             break;
         case "changeRoom7":
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             nav.bg("403_saucy/changeRoom7.jpg");
             break;
         case "changeRoom8":
             nav.bg("403_saucy/changeRoom8.jpg");
             break;
         case "changeRoom9":
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             nav.bg("403_saucy/changeRoom9.jpg");
             break;
         case "changeRoom10":
@@ -212,7 +212,7 @@ room403.chatcatch = function (callback) {
             break;
         case "changeRoomPussyCum":
             sc.setstep("tiffany", 11);
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomPussyCum.jpg");
             nav.button({
@@ -228,7 +228,7 @@ room403.chatcatch = function (callback) {
             break;
         case "changeRoomCumBack":
             sc.setstep("tiffany", 12);
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomCumBack.jpg");
             break;
@@ -248,7 +248,7 @@ room403.chatcatch = function (callback) {
             cl.c.panties = "f";
             break;
         case "tifMap":
-            g.set("map", 1);
+            gv.set("map", 1);
             char.settime(19, 36);
             sc.setstep("tiffany", 14);
             sc.setstep("treyvon", 1);

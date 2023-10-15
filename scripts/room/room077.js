@@ -141,7 +141,7 @@ room77.chatcatch = function (callback) {
                 "height": 1005,
                 "image": "76_bimboRoom/bimboCumface.png"
             }, 77);
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             cl.doCum(false);
             break;
         case "pussy":
@@ -164,18 +164,18 @@ room77.chatcatch = function (callback) {
             nav.bg("77_bimboLiving/f2.gif");
             break;
         case "pussy5":
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             nav.bg("77_bimboLiving/p5.jpg");
             break;
         case "pussy6":
             nav.killbutton("tube");
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             nav.bg("77_bimboLiving/p6.jpg");
             break;
         case "pussy7":
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             nav.bg("77_bimboLiving/p1.jpg");
             nav.button({
@@ -187,12 +187,12 @@ room77.chatcatch = function (callback) {
                 "height": 400,
                 "image": "77_bimboLiving/p1.gif"
             }, 77);
-            if (g.get("knockedup") === null) {
-                g.set("knockedup", g.dt);
+            if (gv.get("knockedup") === null) {
+                gv.set("knockedup", g.dt);
                 chat(29, 77);
             }
-            else if (g.get("knockedup").getFullYear() < 2000) {
-                g.set("knockedup", g.dt);
+            else if (gv.get("knockedup").getFullYear() < 2000) {
+                gv.set("knockedup", g.dt);
                 chat(29, 77);
             }
             else {
@@ -241,7 +241,7 @@ room77.chatcatch = function (callback) {
             break;
         case "ass4":
             nav.bg("77_bimboLiving/livingRoom.jpg", "77_bimboLiving/livingRoomNight.jpg");
-            g.mod("giveAnalFemale", 1);
+            gv.mod("giveAnalFemale", 1);
             cl.doCum(false);
             nav.kill("bimbo");
             nav.button({
@@ -255,12 +255,12 @@ room77.chatcatch = function (callback) {
             }, 77);
             break;
         case "ass5":
-            g.mod("giveAnalFemale", 1);
+            gv.mod("giveAnalFemale", 1);
             cl.doCum(false);
             nav.bg("77_bimboLiving/b4.gif");
             break;
         case "ass6":
-            g.mod("giveAnalFemale", 1);
+            gv.mod("giveAnalFemale", 1);
             nav.bg("77_bimboLiving/livingRoom.jpg", "77_bimboLiving/livingRoomNight.jpg");
             cl.doCum(false);
             nav.kill("bimbo");

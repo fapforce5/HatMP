@@ -386,6 +386,28 @@ zcl.kneelSub = function (thisImage, top, left, ratio, reverse) {
     $('#room-buttons').append('<img src="./images/mainChar/bj/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
 };
 
+zcl.kneelRedux = function (top, left, ratio, mod, reverse) {
+    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+    zcl.kneelReduxSub(cl.c.chest > 2 ? "girl.png" : "boy.png", top, left, ratio, reverse);
+    if (cl.c.hairLength > 1) {
+        zcl.kneelReduxSub("girlhead.png", top, left, ratio, reverse);
+        zcl.kneelReduxSub(cl.c.hairColor + "1.png", top, left, ratio, reverse);
+    }
+    else {
+        zcl.kneelReduxSub("boyhead.png", top, left, ratio, reverse);
+        zcl.kneelReduxSub(cl.c.hairColor + "0.png", top, left, ratio, reverse);
+    }
+};
+
+zcl.kneelReduxSub = function (thisImage, top, left, ratio, reverse) {
+    var btnWidth, btnHeight;
+    btnWidth = 1200 * ratio * g.ratio;
+    btnWidth = 1600 * ratio * g.ratio;
+    top = top * g.ratio;
+    left = left * g.ratio;
+    $('#room-buttons').append('<img src="./images/mainChar/bjRedux/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
+};
+
 zcl.assup = function (top, left, ratio, mod) {
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
 
@@ -409,4 +431,35 @@ cl.assupSub = function (thisImage, top, left, ratio) {
     top = top * g.ratio;
     left = left * g.ratio;
     $('#room-buttons').append('<img src="./images/mainChar/assup/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+};
+
+zcl.bent = function (top, left, ratio, mod) {
+    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+
+    var hairLength = "head_1_";
+    if (cl.c.hairLength < 3)
+        hairLength = "head_0_";
+    cl.bentSub(hairLength + cl.c.hairColor + ".png", top, left, ratio);
+
+    if (cl.c.chest < 3)
+        cl.bentSub("body_boy.png", top, left, ratio);
+    else
+        cl.bentSub("body_girl.png", top, left, ratio);
+
+    if (cl.c.cock > 2)
+        cl.bentSub("dick_small.png", top, left, ratio);
+    else
+        cl.bentSub("dick_big.png", top, left, ratio);
+
+    if (mod === "cum")
+        cl.bentSub("cum.png", top, left, ratio);
+};
+
+cl.bentSub = function (thisImage, top, left, ratio) {
+    var btnWidth, btnHeight;
+    btnWidth = 2300 * ratio * g.ratio;
+    btnWidth = 1699 * ratio * g.ratio;
+    top = top * g.ratio;
+    left = left * g.ratio;
+    $('#room-buttons').append('<img src="./images/mainChar/bent/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 };

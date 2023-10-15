@@ -1,17 +1,30 @@
 ﻿//Hospital waiting room
 var room700 = {};
 room700.main = function () {
-    g.internal = "";
-    if (sc.bimbo().thisRoom) {
+    if (gv.get("jobapplynurse") === 1) {
         nav.button({
             "type": "btn",
-            "name": "bimbo",
+            "name": "bimboapply",
             "left": 993,
             "top": 343,
             "width": 257,
             "height": 319,
             "image": "700_waitingroom/bimbo.png"
         }, 700);
+    }
+    else {
+        //g.internal = "";
+        //if (sc.bimbo().thisRoom) {
+            nav.button({
+                "type": "btn",
+                "name": "bimbo",
+                "left": 993,
+                "top": 343,
+                "width": 257,
+                "height": 319,
+                "image": "700_waitingroom/bimbo.png"
+            }, 700);
+        //}
     }
     var navList = [0];
     //$.each(btnList, function (i, v) {
@@ -23,15 +36,19 @@ room700.main = function () {
 room700.btnclick = function (name) {
     switch (name) {
         case "bimbo":
-            var sissyTrans = g.get("oncase");
-            if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp")
-                chat(2, 700);
-            else if (cl.c.chest > 1 || cl.c.leg > 0)
-                chat(0, 700);
-            //else if (cl.c.cock > 0)
-            //    chat(1, 700);
-            else
-                chat(2, 700);
+            chat(0, 700);
+            //var sissyTrans = gv.get("oncase");
+            //if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp")
+            //    chat(2, 700);
+            //else if (cl.c.chest > 1 || cl.c.leg > 0)
+            //    chat(0, 700);
+            ////else if (cl.c.cock > 0)
+            ////    chat(1, 700);
+            //else
+            //    chat(2, 700);
+            break;
+        case "bimboapply":
+            chat(3, 700);
             break;
         default:
             break;
@@ -42,11 +59,11 @@ room700.chatcatch = function (callback) {
     switch (callback) {
         case "boob":
         case "butt":
-            if (g.get("money") < 100)
+            if (gv.get("money") < 100)
                 chat(4, 700);
             else {
                 g.internal = callback;
-                g.mod("money", -100);
+                gv.mod("money", -100);
                 chat(6, 700);
             }
             break;
@@ -73,6 +90,11 @@ room700.chatcatch = function (callback) {
                 cl.c.leg = 0;
             cl.display();
             break;
+        case "nurseApply":
+            levels.mod("xdress", 5, 1);
+            gv.set("jobapplynurse", 2);
+            char.room(700);
+            break;
         case "leave":
             char.room(0);
             break;
@@ -86,10 +108,10 @@ room700.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "bimbo",
-            text: "There's nothing a bimbo hates more than a girly man, Such a waste of a good cock! Come to the back and I'll make that hot body " +
-            "of yours more manly so any girl would to take you home.",
+            text: "Hi. What can I help you with.  ",
             button: [
-                { chatID: 3, text: "Yes, I want to be manlier!", callback: "" }
+                { chatID: -1, text: "Nothing, just looking around. ", callback: "" },
+                { chatID: 8, text: "Ummm, I don't feel well. ", callback: "" }
             ]
         },
         {
@@ -110,6 +132,76 @@ room700.chat = function (chatID) {
                 { chatID: -1, text: "In development", callback: "" }
             ]
         },
+        {
+            chatID: 3,
+            speaker: "me",
+            text: "I applied online to be a nurse. ",
+            button: [
+                { chatID: 4, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "bimbo",
+            text: "Hmmmm. Funny you don't look like a girl. Are you one of those butch type girls, 'cause we " +
+                "don't hire those butch type girls. ",
+            button: [
+                { chatID: 5, text: "Oh no. I'm just a boy. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "bimbo",
+            text: "Oh. I thought you said nurse. I'm so silly. We're not hiring any doctors now. ",
+            button: [
+                { chatID: 6, text: "Oh no. I'm a boy and I applied to be a nurse. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "bimbo",
+            text: "Why would a boy be a nurse? You should be a doctor. It pays much better. Do you have your " +
+                "MD?",
+            button: [
+                { chatID: 7, text: "No. I don't have an MD. I want to be a nurse. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "bimbo",
+            text: "You can't be a nurse silly. You're a boy. ",
+            button: [
+                { chatID: -1, text: "ARG! Never mind!", callback: "nurseApply" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "bimbo",
+            text: "Oh you poor thing. What seems to be the problem? ",
+            button: [
+                { chatID: 9, text: "My tummy hurts", callback: "" },
+                { chatID: -1, text: "I have a general pain all over. ", callback: "" },
+                { chatID: -1, text: "Oh anus hurts. ", callback: "" },
+                { chatID: -1, text: "My balls are too full", callback: "" },
+                
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "bimbo",
+            text: "Here's some pills to help with your tummy. ",
+            button: [
+                { chatID: 9, text: "My tummy hurts", callback: "" },
+                { chatID: -1, text: "I have a general pain all over. ", callback: "" },
+                { chatID: -1, text: "Oh anus hurts. ", callback: "" },
+                { chatID: -1, text: "My balls are too full", callback: "" },
+
+            ]
+        },
+
+
+
+
         {
             chatID: 3,
             speaker: "bimbo",

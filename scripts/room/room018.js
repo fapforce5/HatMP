@@ -60,7 +60,7 @@ room18.main = function () {
 room18.btnclick = function (name) {
     switch (name) {
         case "lube":
-            if (g.get("buttholeplay"))
+            if (daily.get("buttholeplay"))
                 chat(1, 18);
             else
                 chat(2, 18);

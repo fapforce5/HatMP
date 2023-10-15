@@ -1,119 +1,114 @@
 ﻿
 var scc = {};
 scc.changeText = "";
-////g.char MUST BE LOWERCASE!!!!!!!!!!
-//scc.char = [
-//    { name: "landlord", display: "Land Lord", image: "mom.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "lola", display: "Lola", image: "lola.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "eva", display: "Eva", image: "eva.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "missy", display: "Missy", image: "missy.png", step: 0, max: 0, show: true, setName: true, phone: 2 },
-//    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, max: 0, show: true, setName: true, phone: 0 },
-//    { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "tina", display: "Tina", image: "tina.png", step: 0, max: 0, show: true, setName: true, phone: 12 },
-//    { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "chad", display: "Chad", image: "brad.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "candy", display: "Candy", image: "candy.png", step: 0, max: 0, show: true, setName: true, phone: -1 },
-//    { name: "jada", display: "Jada", image: "jada.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "holly", display: "Holly", image: "holly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "molly", display: "Molly", image: "molly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, max: 0, show: false, setName: true, phone: -1 },
-//    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "kei", display: "Kei", image: "kei.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, max: 0, show: false, setName: false, phone: -1 },
-//];
 
 scc.changes = [
-    { name: "zoey", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "eva", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "lola", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "landlord", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "tiffany", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "missy", xdress: false, chest: 1, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "tina", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "cecilia", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "jones", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "cult", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
-    { name: "bodhi", xdress: false, chest: 0, leg: 0, hair: 0, cock: 0, love: 0 },
+    { name: "zoey", xdress: false, chest: 0, leg: 0, hairLength: 0, hairColor: "black", cock: null, love: 0 },
+    { name: "eva", xdress: false, chest: 0, leg: 0, hairLength: 0, hairColor: "black", cock: null, love: 0 },
+    { name: "lola", xdress: false, chest: 0, leg: 0, hairLength: 0, hairColor: "black", cock: null, love: 0 },
+    { name: "landlord", xdress: false, chest: 0, leg: 0, hairLength: 0, hairColor: "black", cock: null, love: 0 },
+    { name: "tiffany", xdress: false, chest: null, leg: null, hairLength: null, hairColor: null, cock: null, love: 0 },
+    { name: "missy", xdress: false, chest: null, leg: null, hairLength: null, hairColor: null, cock: null, love: 0 },
+    { name: "tina", xdress: false, chest: null, leg: null, hairLength: null, hairColor: null, cock: null, love: 0 },
+    { name: "cecilia", xdress: false, chest: null, leg: null, hairLength: null, hairColor: null, cock: null, love: 0 },
+    { name: "jones", xdress: false, chest: null, leg: null, hairLength: null, hairColor: null, cock: null, love: 0 },
+    { name: "cult", xdress: false, chest: null, leg: null, hairLength: null, hairColor: null, cock: null, love: 0 },
 ];
 
-scc.changesDiffernt = function (name, cock) {
-    var i, ix;
-    ix = null;
-    var returnString = "";
-    for (i = 0; i < scc.changes.length; i++) {
+scc.getSet = function (name, characterCanSeeCock) {
+    var changes = {
+        anyChanges: false,
+        xdress: null,
+        chest: null,
+        leg: null,
+        hair: null,
+        haircolor: null,
+        cock: null
+    };
+    for (var i = 0; i < scc.changes.length; i++) {
         if (scc.changes[i].name === name) {
-            ix = i;
-            i = 99999;
+            //xdress
+            if (scc.changes[i].xdress === null) {
+                scc.changes[i].xdress = cl.isCrossdressing();
+            }
+            else if (cl.isCrossdressing() && !scc.changes[i].xdress) {
+                changes.xdress = scc.changesDifferntText(name, "xdress");
+                scc.changes[i].xdress = true;
+            }
+
+            //chest
+            if (scc.changes[i].chest === null) {
+                scc.changes[i].chest = cl.c.chest;
+            }
+            else if (cl.c.chest !== scc.changes[i].chest) {
+                changes.xdress = scc.changesDifferntText(name, "chest");
+                scc.changes[i].chest = cl.c.chest;
+            }
+
+            //leg (butt)
+            if (scc.changes[i].leg === null) {
+                scc.changes[i].leg = cl.c.leg;
+            }
+            else if (cl.c.leg !== scc.changes[i].leg) {
+                changes.xdress = scc.changesDifferntText(name, "leg");
+                scc.changes[i].leg = cl.c.leg;
+            }
+
+            //hair length
+            if (scc.changes[i].hairLength === null) {
+                scc.changes[i].hairLength = cl.c.hairLength;
+            }
+            else if (cl.c.hairLength !== scc.changes[i].hairLength) {
+                changes.hairLength = changes.xdress = scc.changesDifferntText(name, "hairLength");
+                scc.changes[i].hairLength = cl.c.hairLength;
+            }
+
+            //hair color
+            if (scc.changes[i].hairColor === null) {
+                scc.changes[i].hairColor = cl.c.hairColor;
+            }
+            else if (cl.c.hairColor !== scc.changes[i].hairColor) {
+                changes.hairColor = changes.xdress = scc.changesDifferntText(name, "hairColor");
+                scc.changes[i].hairColor = cl.c.hairColor;
+            }
+
+            if (scc.changes[i].cock === null) {
+                scc.changes[i].cock = cl.c.cock;
+            }
+            else if (cl.c.cock !== scc.changes[i].cock && characterCanSeeCock) {
+                changes.cock = changes.xdress = scc.changesDifferntText(name, "cock");
+                scc.changes[i].cock = cl.c.cock;
+            }
         }
     }
-    if (ix !== null) {
-        if (cl.isCrossdressing() && !scc.changes[ix].xdress) {
-            returnString += scc.changesDifferntText(name, 0);
-            scc.changes[ix].xdress = true;
-        }
-        if (cl.c.chest !== scc.changes[ix].chest) {
-            if (cl.c.chest === 1)
-                returnString = "You look a lot more fit! ";
-            else
-                returnString += scc.changesDifferntText(name, 1);
-            scc.changes[ix].chest = cl.c.chest;
-        }
-        if (cl.c.leg !== scc.changes[ix].leg) {
-            returnString += scc.changesDifferntText(name, 2);
-            scc.changes[ix].leg = cl.c.leg;
-        }
-        if (cl.c.hairLength > scc.changes[ix].hair) {
-            returnString += scc.changesDifferntText(name, 3);
-            scc.changes[ix].hair = cl.c.hairLength;
-        }
-        if (cl.c.hairLength < scc.changes[ix].hair) {
-            returnString += scc.changesDifferntText(name, 4);
-            scc.changes[ix].hair = cl.c.hairLength;
-        }
-        if (cl.c.cock < scc.changes[ix].cock && cock) {
-            returnString += scc.changesDifferntText(name, 5);
-            scc.changes[ix].cock = cl.c.cock;
-        }
-    }
-    if (returnString.length < 3) {
-        scc.changeText = "";
-        return false;
-    }
-    scc.changeText = returnString;
-    return true;
+    changes.anyChanges = !(changes.xdress === null && changes.chest === null && changes.leg === null && changes.hair === null && changes.cock === null);
+    return changes;
 };
 
-scc.changesDifferntText = function (who, whatNum) {
+//kill this one
+scc.changesDiffernt = function (name, cock) {
+    return null;
+};
+
+scc.changesDifferntText = function (who, whichChange) {
     var comment = null;
+    switch (whichChange) {
+        case "xdress": num = 0; break;
+        case "chest": num = 1; break;
+        case "leg": num = 2; break;
+        case "hairLength": num = 3; break;
+        case "hairColor": num = 4; break;
+        case "cock": num = 5; break;
+    };
+    var girlyHairColor = cl.c.hairColor === "pink" || cl.c.hairColor === "rainbow";
     switch (who) {
-        case "example":
-            comment = [
-                "0 xdress",
-                "1 titties",
-                "2 ass",
-                "3 longer hair ",
-                "4 shorter hair ",
-                "5 cock"
-            ];
-            break;
         case "zoey":
             comment = [
                 "Ooooo I love your new clothes! You're so sexy! ",
                 "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "! ",
                 "I don't know what you're doing but your butt looks so much better! ",
                 "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer. ",
+                girlyHairColor ? "That hair color is hot! Love it!" : "Your new hair looks pretty! ",
                 "Is your penis getting smaller? It's so much cuter! "
             ];
             break;
@@ -123,7 +118,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Hahahaha you're so obsessed with boobs you're growing your own! ",
                 "Your butt is bigger than mine. ",
                 "You hair is getting long. It looks like I'm getting a new sister! ",
-                "That's a perverted hair cut. ",
+                girlyHairColor ? "Hahaha! You got your hair dyed like a girl!" : "That's a different hair color. ",
                 "Is your penis getting smaller? I liked it bigger. "
             ];
             break;
@@ -133,7 +128,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Is you chest bigger? Are you ok? ",
                 "You should go swimming with me, it looks like you butt is getting bigger. ",
                 "You need a haircut, it's getting pretty long. ",
-                "I love your hair! ",
+                girlyHairColor ? "That's different. You should try something more masculine. " : "That's a new hair color. I like the old one better. ",
                 "Is your penis getting smaller? I liked it bigger. "
             ];
             break;
@@ -143,7 +138,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Your chest is disgusting, you look less like my little boy and more like a girl each day. ",
                 "You need to go on a diet, you ass is getting fat. ",
                 "Go get your hair cut, you look like a girl. ",
-                "I like your new haircut, it's more like a boy. ",
+                girlyHairColor ? "That's a new hair color. You know every day I worry more and morea bout you." : "I liked your old hair color. ",
                 "Why is your dick shrinking? "
             ];
             break;
@@ -153,7 +148,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "! ",
                 "I don't know what you're doing but your butt looks so much better! ",
                 "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer. ",
+                girlyHairColor ? "Love the slutty new hair color! " : "You should dye your hair pink, to match your hole. ",
                 "Is your penis getting smaller? It's so much cuter! "
             ];
             break;
@@ -163,7 +158,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "I like your new " + cl.cupsize() + " cups, they look good on you. ",
                 "That a nice " + cl.buttsize() + " butt. It fits your well. ",
                 "You look better with longer hair. ",
-                "",
+                girlyHairColor ? "Love the new sissy hair color! " : "You should dye your hair pink, to match your sissyness.. ",
                 "Is your penis getting smaller? You're getting more pathetic each day. "
             ];
             break;
@@ -173,7 +168,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
                 "I don't know what you're doing but your butt looks so much better!",
                 "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer",
+                girlyHairColor ? "Gross. Why did you dye your hair color like that! " : "Real men have dark hair.",
                 "Is your penis getting smaller? It's so much cuter! "
             ];
             break;
@@ -183,7 +178,7 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
                 "I don't know what you're doing but your butt looks so much better!",
                 "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer",
+                "Love the new hair color! So cute! ",
                 "Is your penis getting smaller? It's so much cuter! "
             ];
             break;
@@ -193,12 +188,12 @@ scc.changesDifferntText = function (who, whatNum) {
                 "Oh wow, your chest is getting bigger! it looks like an " + cl.cupsize() + "!",
                 "I don't know what you're doing but your butt looks so much better!",
                 "I love the longer hair! It's so pretty! ",
-                "Did you get a hair cut? I think it looks prettier longer",
+                girlyHairColor ? "I see you've decided to dye your hair like the slut you are. " : "Your hair is too masculine. Dye it pink. ",
                 "Is your penis getting smaller? It's so much cuter! "
             ];
             break;
     }
-    return comment[whatNum];
+    return comment[num];
 };
 
 scc.save = function () {

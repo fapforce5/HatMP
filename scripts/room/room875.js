@@ -7,11 +7,15 @@ room875.main = function () {
     }
     else {
         var candyStep = sc.getstep("candy");
-        var cheerlevel = g.get("cheerlevel");
+        var cheerlevel = gv.get("cheerlevel");
         if (g.dt.getDay() === 0 && g.hourBetween(5, 12)) {
             nav.bg("875_entrance/gameday.jpg");
-            chat(8, 875);
-            if (cheerlevel === 7) 
+            if (cheerlevel === 0) {
+                nav.bg("875_entrance/gamedayc.jpg");
+                chat(49, 875);
+                nav.buildnav([0]);
+            }
+            else if (cheerlevel === 7) 
                 chat(11, 875);
             else if (cheerlevel === 8)
                 chat(28, 875);
@@ -22,7 +26,7 @@ room875.main = function () {
         }
         else if (g.dt.getDay() === 6) {
             if (candyStep < 102) {
-                nav.bg("875_entrance/security.jpg");
+                nav.bg("875_entrance/candy.jpg");
                 nav.buildnav([0]);
                 chat(1, 875);
             }
@@ -48,7 +52,7 @@ room875.btnclick = function (name) {
     switch (name) {
         case "strip":
             cl.nude();
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             zcl.displayMain(200, 800, .10, "clothes", false);
             nav.killbutton("strip");
             chat(4, 875);
@@ -56,7 +60,7 @@ room875.btnclick = function (name) {
         case "assup":
             nav.killbutton("assup");
             nav.killbutton("oddexit");
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             zcl.assup(550, 600, .7);
             chat(5, 875);
             break;
@@ -157,7 +161,7 @@ room875.chatcatch = function (callback) {
             char.room(0);
             break;
         case "practice":
-            var cheerLevel = g.get("cheerlevel");
+            var cheerLevel = gv.get("cheerlevel");
             if (cheerLevel < 3) {
                 g.internal = cl.hasoutfit("workout");
                 if (g.internal === null)
@@ -186,7 +190,7 @@ room875.chatcatch = function (callback) {
             else {
                 g.internal = cl.hasoutfit("cheerleader");
                 if (g.internal === null) {
-                    if (g.get("cheerleader") < 95) {
+                    if (gv.get("cheerleader") < 95) {
                         chat(9, 875);
                     }
                     else {
@@ -245,27 +249,27 @@ room875.chatcatch = function (callback) {
             nav.bg("875_entrance/" + callback + ".jpg");
             break;
         case "cheer1_13":
-            g.mod("fame", 30);
-            g.set("cheerlevel", 8);
-            g.set("cheerleader", 100);
+            gv.mod("fame", 30);
+            gv.set("cheerlevel", 8);
+            gv.set("cheerleader", 100);
             char.settime(17, 12);
             char.room(51);
             break;
         case "cheer9_1":
             nav.bg("875_entrance/" + callback + ".jpg");
-            if (g.get("cheerlevel") === 9)
+            if (gv.get("cheerlevel") === 9)
                 chat(32, 875);
             else
                 chat(31, 875);
             break;
         case "cheer9_11":
-            g.mod("receiveAnalMale", 7);
-            g.mod("loadSwollowed", 5);
-            g.mod("sissygasm", 8);
-            g.mod("creamPied", 7);
-            g.mod("giveOralMale", 12);
+            gv.mod("receiveAnalMale", 7);
+            gv.mod("loadSwollowed", 5);
+            gv.mod("sissygasm", 8);
+            gv.mod("creamPied", 7);
+            gv.mod("giveOralMale", 12);
             char.settime(20, 7);
-            g.set("cheerlevel", 10);
+            gv.set("cheerlevel", 10);
             char.room(0);
             break;
         default:
@@ -306,10 +310,11 @@ room875.chat = function (chatID) {
             },
             {
                 chatID: 1,
-                speaker: "random",
-                text: "Are you trying to spy on the cheerleaders! So uncouth. Scoot scoot.",
+                speaker: "candy",
+                text: "Hey cutie! I'm just getting ready to go to cheerleading practice. You know.. you may be " +
+                    "cute enough to cheer. *wink*",
                 button: [
-                    { chatID: -1, text: "...", callback: "" }
+                    { chatID: 48, text: "I would love to! ", callback: "" }
                 ]
             },
             {
@@ -703,6 +708,23 @@ room875.chat = function (chatID) {
                 text: "Just can't get enough dick? We'll team, let's fuck the slut. ",
                 button: [
                     { chatID: 39, text: "...", callback: "cheer9_6" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "candy",
+                text: "Maybe. I would need to get to know you better before I invite you to cheer. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "candy",
+                text: "Hi cutie! I'm about to go cheer for the game! You know.. you may be " +
+                    "cute enough to cheer. *wink*",
+                button: [
+                    { chatID: 48, text: "I would love to! ", callback: "" }
                 ]
             },
         ];

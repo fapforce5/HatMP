@@ -4,7 +4,7 @@ room53.main = function () {
     if (sc.candy().thisRoom) {
         if (g.hourBetween(7, 22)) {
             var candyStep = sc.getstep("candy");
-            if (candyStep === 101 && !g.get("candyDayEvent")) {
+            if (candyStep === 101 && !daily.get("candy")) {
                 nav.button({
                     "type": "btn",
                     "name": "101bj",
@@ -43,20 +43,20 @@ room53.btnclick = function (name) {
     switch (name) {
         case "candy":
             //if (cl.hasoutfit("nude") === null) {
-                var candyStep = sc.getstep("candy");
-                if (g.get("candyDayEvent")) {
+            var candyStep = sc.getstep("candy");
+            if (daily.get("candy")) {
+                chat(17, 53);
+            }
+            else {
+                if (candyStep === 100)
+                    chat(6, 53);
+                else if (candyStep === 102)
+                    chat(31, 53);
+                else if (candyStep === 2)
+                    chat(19, 53);
+                else
                     chat(17, 53);
-                }
-                else {
-                    if (candyStep === 100)
-                        chat(6, 53);
-                    else if (candyStep === 102)
-                        chat(31, 53);
-                    else if (candyStep === 2)
-                        chat(19, 53);
-                    else
-                        chat(17, 53);
-                }
+            }
             //}
             //else {
             //    nav.killbutton("candy");
@@ -99,9 +99,9 @@ room53.btnclick = function (name) {
         case "6":
         case "7":
         case "8":
-            if (!g.get("reddoor")) {
+            if (!daily.get("reddoor")) {
                 char.addtime(60);
-                if (g.get("reddoorloc") === parseInt(name)) {
+                if (gv.get("reddoorloc") === parseInt(name)) {
                     inv.add("reddoor");
                     nav.button({
                         "type": "img",
@@ -117,7 +117,7 @@ room53.btnclick = function (name) {
                 else {
                     chat(Math.floor(Math.random() * 2), 53);
                 }
-                g.setflag("reddoorloc");
+                daily.set("reddoorloc");
             }
             else {
                 chat(2, 53);
@@ -172,8 +172,8 @@ room53.chatcatch = function (callback) {
             break;
        
         case "bj1":
-            g.mod("receiveOralFemale", 1);
-            g.setflag("candyDayEvent");
+            gv.mod("receiveOralFemale", 1);
+            daily.set("candy");
             nav.killbutton("candy");
             nav.button({
                 "type": "btn",
@@ -221,7 +221,7 @@ room53.chatcatch = function (callback) {
             break;
         case "bj7":
             char.addtime(60);
-            g.mod("loadSwollowed", 1);
+            gv.mod("loadSwollowed", 1);
             g.internal = 0;
             nav.killall();
             sc.setstep("candy", 2);
@@ -238,10 +238,10 @@ room53.chatcatch = function (callback) {
             break;
         case "bc0":
             char.addtime(60);
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             break;
         case "bc1":
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             nav.killbutton("candy");
             nav.button({
                 "type": "img",
@@ -297,10 +297,10 @@ room53.chatcatch = function (callback) {
             }, 53);
             break;
         case "bc6":
-            g.mod("loadSwollowed", 1);
+            gv.mod("loadSwollowed", 1);
             sc.setstep("candy", 3);
             char.addtime(60);
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             char.room(53);
             break;
         case "100_1":
@@ -319,7 +319,7 @@ room53.chatcatch = function (callback) {
         case "100_badend":
             char.addtime(60);
             sc.setstep("candy", 101);
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             char.room(53);
             break;
         case "100_5":
@@ -339,7 +339,7 @@ room53.chatcatch = function (callback) {
         case "100_goodend":
             pic.add("candy");
             sc.setstep("candy", 101);
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             char.room(52);
             break;
         case "101_2":
@@ -383,13 +383,13 @@ room53.chatcatch = function (callback) {
             break;
         case "101_end":
             sc.setstep("candy", 102);
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             char.addtime(120);
             char.room(52);
             break;
         case "102_end":
             sc.setstep("candy", 103);
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             char.addtime(120);
             char.room(53);
             break;

@@ -44,7 +44,7 @@ room350.main = function () {
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
-            var mascotNum = g.get("mascot");
+            var mascotNum = gv.get("mascot");
             var llStep = sc.getstep("landlord");
             var access16 = g.hasAccess(16).access;
             if (sc.checkevent("landlord", -5) && !sc.checkevent("landlord", -6) && !access16)
@@ -111,7 +111,7 @@ room350.chatcatch = function (callback) {
             char.room(351);
             break;
         case "payTheMan":
-            g.mod("money", 30);
+            gv.mod("money", 30);
             break;
         case "leave":
             char.room(0);
@@ -130,14 +130,14 @@ room350.chatcatch = function (callback) {
             char.room(352);
             break;
         case "checkCash":
-            if (g.get("money") > 499)
+            if (gv.get("money") > 499)
                 chat(39, 350);
             else
                 chat(40, 350);
             break;
         case "follow352Chastity":
             g.pass = "follow352Chastity";
-            g.mod("money", -500);
+            gv.mod("money", -500);
             char.room(352);
             break;
         case "mascot":

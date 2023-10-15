@@ -10,7 +10,7 @@ room9.main = function () {
     $('.room-topper').hide();
 
     $.each(btnList, function (i, v) {
-        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb")
+        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb")
             nav.button(v, 9);
     });
 
@@ -59,69 +59,6 @@ function room9_btnList() {
         },
         {
             "type": "img",
-            "name": "jobBG",
-            "left": 442,
-            "top": 46,
-            "width": 1425,
-            "height": 737,
-            "image": "9_computer/09_jobBackground.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobMaid",
-            "left": 444,
-            "top": 595,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobMaid.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobMaidApplied",
-            "left": 444,
-            "top": 595,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobMaidApplied.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobPI",
-            "left": 444,
-            "top": 222,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobPI.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobPIApplied",
-            "left": 444,
-            "top": 222,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobPIApplied.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobConstruction",
-            "left": 444,
-            "top": 408,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobConstruction.png"
-        },
-        {
-            "type": "btn",
-            "name": "jobConstructionApplied",
-            "left": 444,
-            "top": 408,
-            "width": 1421,
-            "height": 187,
-            "image": "9_computer/09_jobConstructionApplied.png"
-        },
-        {
-            "type": "img",
             "name": "navBar",
             "left": 443,
             "top": 47,
@@ -152,6 +89,18 @@ function room9_btnList() {
         });
     }
 
+    if (inv.has("missyusb")) {
+        btnList.push({
+            "type": "btn",
+            "name": "missyusb",
+            "left": 800,
+            "top": 119,
+            "width": 157,
+            "height": 162,
+            "image": "9_computer/usb.png"
+        });
+    }
+
     return btnList;
 }
 
@@ -163,62 +112,138 @@ room9.btnclick = function (name) {
             char.room(g.pass);
             break;
         case "internet":
-            $('#room-buttons').html('');
-            btnList = room9_btnList();
-            $.each(btnList, function (i, v) {
-                if (v.name === "jobMaid") {
-                    if (sc.getstep("jeffery") === 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobConstruction") {
-                    if (sc.getstep("construction") === 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobPI") {
-                    if (sc.getstep("missy") === 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobMaidApplied") {
-                    if (sc.getstep("jeffery") !== 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobConstructionApplied") {
-                    if (sc.getstep("construction") !== 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "jobPIApplied") {
-                    if (sc.getstep("missy") !== 0)
-                        nav.button(v, g.roomID);
-                }
-                if (v.name === "navBar" || v.name === "jobBG" || v.name === "close")
-                    nav.button(v, g.roomID);
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "jobBG",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/09_jobBackground.png"
+            }, 9);
 
-            });
+            if (gv.get("jobapplynurse") === 0)
+                nav.button({
+                    "type": "btn",
+                    "name": "jobNurse",
+                    "left": 444,
+                    "top": 222,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobPI.png"
+                }, 9);
+            else
+                nav.button({
+                    "type": "img",
+                    "name": "",
+                    "left": 444,
+                    "top": 222,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobPIApplied.png"
+                }, 9);
+
+            if (gv.get("jobapplyconst") === 0)
+                nav.button({
+                    "type": "btn",
+                    "name": "jobConstruction",
+                    "left": 444,
+                    "top": 408,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobConstruction.png"
+                }, 9);
+            else
+                nav.button({
+                    "type": "img",
+                    "name": "",
+                    "left": 444,
+                    "top": 408,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobConstructionApplied.png"
+                }, 9);
+
+            if (gv.get("jobapplybeaver") === 0)
+                nav.button({
+                    "type": "btn",
+                    "name": "jobBeaver",
+                    "left": 444,
+                    "top": 595,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobMaid.png"
+                }, 9);
+            else
+                nav.button({
+                    "type": "img",
+                    "name": "",
+                    "left": 444,
+                    "top": 595,
+                    "width": 1421,
+                    "height": 187,
+                    "image": "9_computer/09_jobMaidApplied.png"
+                }, 9);
+
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 450,
+                "top": 53,
+                "width": 42,
+                "height": 42,
+                "image": "9_computer/09_close.png"
+            }, 9);
             break;
         case "close":
             $('#room-buttons').html('');
             btnList = room9_btnList();
             $.each(btnList, function (i, v) {
-                if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn")
+                if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb")
                     nav.button(v, g.roomID);
             });
             break;
-        case "jobMaid":
-            sc.setstep("jeffery", 1);
-            room9.btnclick("internet");
+        case "jobBeaver":
+            gv.set("jobapplybeaver", 1);
+            nav.button({
+                "type": "img",
+                "name": "map",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/beaver.jpg"
+            }, 9);
             chat(2, 9);
             break;
         case "jobConstruction":
-            sc.setstep("construction", 1);
-            room9.btnclick("internet");
+            nav.killall();
+            gv.set("jobapplyconst", 1);
+            nav.button({
+                "type": "img",
+                "name": "map",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/const.jpg"
+            }, 9);
             chat(0, 9);
             g.roomMapAccess(100, true, true);
             break;
-        case "jobPI":
-            sc.setstep("missy", 1);
-            room9.btnclick("internet");
+        case "jobNurse":
+            gv.set("jobapplynurse", 1);
+            nav.button({
+                "type": "img",
+                "name": "map",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/nurse.jpg"
+            }, 9);
             chat(1, 9);
-            g.roomMapAccess(203, true, false);
             break;
         case "files":
 
@@ -304,7 +329,7 @@ room9.btnclick = function (name) {
         case "pfuta":
         case "pSissy":
             nav.killall();
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             nav.button({
                 "type": "img",
                 "name": "pornbg",
@@ -358,6 +383,52 @@ room9.btnclick = function (name) {
             char.room(6);
 
             break;
+        case "missyusb":
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "missyusbdoc",
+                "left": 477,
+                "top": 119,
+                "width": 157,
+                "height": 162,
+                "image": "221_recip/notes.png"
+            }, 9);
+            nav.button({
+                "type": "btn",
+                "name": "powerOff",
+                "left": 1667,
+                "top": 540,
+                "width": 160,
+                "height": 209,
+                "image": "9_computer/09_powerOff.png"
+            }, 9);
+            break;
+        case "missyusbdoc":
+            if (missy.get("reusableCaseCounter") < 3) {
+                levels.mod("pi", 50, 999);
+                missy.set("reusableCaseCounter", 3);
+            }
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "missyusbdocx",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/missyusb.jpg"
+            }, 9);
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 450,
+                "top": 53,
+                "width": 42,
+                "height": 42,
+                "image": "9_computer/09_close.png"
+            }, 9);
+            break;
         default:
             break;
     }
@@ -368,6 +439,9 @@ room9.chatcatch = function (callback) {
         case "reset":
             char.room(9);
             break;
+        case "internet":
+            room9.btnclick("internet");
+            break;
         default:
             break;
     }
@@ -377,25 +451,29 @@ room9.chat = function(chatID){
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "You have applied for the Construction Position. To complete your application please " +
-                "go to the construction site and speak to the foreman in the trailer. ",
-            button: []
+            speaker: "thinking",
+            text: "I applied for the Construction Position. I need to go to the construction site and speak " +
+                "to the foreman in the trailer. ",
+            button: [
+                { chatID: -1, text: "Construction in a manly job! ", callback: "internet" }
+            ]
         },
         {
             chatID: 1,
-            speaker: "me",
-            text: "You have applied for the Private Investigator Position. To complete your " + 
-            "application Purchase a Private Investigator's License at city hall then bring that to " + sc.n("missy") + 
-            " downtown. ",
-            button: []
+            speaker: "thinking",
+            text: "I applied to be a nurse. I need to go to the hospital downtown. ",
+            button: [
+                { chatID: -1, text: "Nursing is kind of a feminine job. ", callback: "internet" }
+            ]
         },
         {
             chatID: 2,
-            speaker: "me",
-            text: "You have applied for to be a waitress at the Naked Beaver Diner. To complete your " +
-                "application please visit " + sc.n("jeffery") + " downtown. ",
-            button: []
+            speaker: "thinking",
+            text: "I applied for to be a waitress at the Naked Beaver Diner. I need to  visit " +
+                sc.n("jeffery") + " at the diner. ",
+            button: [
+                { chatID: -1, text: "Waitressing is kind of a feminine job. ", callback: "internet" }
+            ]
         },
         {
             chatID: 3,

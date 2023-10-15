@@ -3,23 +3,9 @@
 var room102 = {};
 
 room102.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "phil",
-            "left": 0,
-            "top": 126,
-            "width": 1920,
-            "height": 954,
-            "image": "102_constBoss/102_phil.png"
-        }
-    ];
-
+    if (gv.get("jobapplyconst") === 1)
+        chat(0, 102);
     var navList = [101];
-
-    $.each(btnList, function (i, v) {
-        nav.button(v, 102);
-    });
 
     nav.buildnav(navList);
 };
@@ -31,7 +17,7 @@ room102.btnclick = function (name) {
                 chat(6, 102);
             else if (sc.getstep("construction") === 1)
                 chat(0, 102);
-            else if (!g.get("jobConstGetRaise") && g.get("jobConstructionPay") < 75)
+            else if (!gv.get("jobConstGetRaise") && gv.get("jobConstructionPay") < 75)
                 chat(7, 102);
             else 
                 chat(9, 102);
@@ -44,16 +30,37 @@ room102.btnclick = function (name) {
 room102.chatcatch = function (callback) {
     switch (callback) {
         case "setInit":
-            g.mod("jobConstructionPay", 40);
-            sc.setstep("me", 2);
-            sc.setstep("construction", 2);
+            gv.set("jobConstructionPay", 40);
+            sc.setstep("construction", 1);
+            gv.set("jobapplyconst", 2);
+            missy.set("activeCase", 1);
+            char.room(101);
+            break;
+        case "setInitRaise":
+            gv.set("jobConstructionPay", 40);
+            gv.mod("jobConstructionPay", 10);
+            sc.setstep("construction", 1);
+            gv.set("jobapplyconst", 2);
+            char.room(101);
             break;
         case "leaveOffice":
             char.room(101);
             break;
         case "getRaise":
-            g.mod("jobConstructionPay", 5);
-            g.set("jobConstGetRaise", true);
+            gv.mod("jobConstructionPay", 5);
+            gv.set("jobConstGetRaise", true);
+            break;
+        case "dom":
+            levels.mod("dom", 10, 1);
+            break;
+        case "showtits":
+            nav.bg("102_constBoss/flash.jpg");
+            break;
+        case "boss":
+            nav.bg("102_constBoss/102_boss.jpg");
+            break;
+        case "sub":
+            levels.mod("sub", 10, 1);
             break;
         default:
             break;
@@ -109,10 +116,11 @@ room102.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "construction",
-            text: "oh.. hey " + sc.n("me") + " so you want to clean up shit on the site? The job starts at $40 per day. If you can make me laugh I'll give you a raise each week. Sound good?",
+            text: "oh.. hey " + sc.n("me") + " so you want to work construction? The job " +
+                "starts at $40 per day.  ",
             button: [
-                { chatID: 3, text: "yes sir", callback: "" },
-                { chatID: 4, text: "No, I want more money to start.", callback: "" }
+                { chatID: 3, text: "Yes sir!", callback: "" },
+                { chatID: 4, text: "It that porn on the tv?", callback: "" }
             ]
         },
         {
@@ -127,60 +135,91 @@ room102.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "construction",
-            text: "You ever worked construction, or have any special skills?",
+            text: "Yeah. I love tits and ass, and listening to sluts moan for cock helps me work. If you got a " + 
+                "problem with tis and ass you're going to have to find somewhere else to work. ",
             button: [
-                { chatID: 5, text: "No, but I'm a hard worker", callback: "" }
+                { chatID: 5, text: "That's fine. ", callback: "" },
+                { chatID: 6, text: "I love tits and ass too", callback: "" },
             ]
         },
         {
             chatID: 5,
             speaker: "construction",
-            text: "I don't give a shit! Everyone's a hard worker. If you don't work hard your fired. You want more money make me laugh each week, or grow a set of tits.",
+            text: "All right. Now get the fuck out and get to work new guy. ",
             button: [
-                { chatID: 3, text: "Ok, got it.", callback: "" }
+                { chatID: -1, text: "Ok, got it.", callback: "setInit" }
             ]
         },
         {
             chatID: 6,
             speaker: "construction",
-            text: "Who the fuck are you!? Get the fuck out",
+            text: "We're going to get along just fine then. You want to see some tits? Hey, " + sc.n("tina") +
+                " get in here and show the new guy your tits. ",
             button: [
-                { chatID: -1, text: "Sorry, I'm leaving", callback: "leaveOffice" }
+                { chatID: 7, text: "...", callback: "" }
             ]
         },
         {
             chatID: 7,
-            speaker: "construction",
-            text: "The fuck you want?",
+            speaker: "tina",
+            text: "What? I don't want to. I don't even know him. ",
             button: [
-                { chatID: -1, text: "Nothing, I'm leaving", callback: "leaveOffice" },
-                { chatID: 10, text: "Want to hear a dirty joke?", callback: "" }
+                { chatID: 5, text: "That's fine, you don't have to. ", callback: "sub" },
+                { chatID: 8, text: "... [Sit in silence]", callback: "" },
+                { chatID: 9, text: "You heard him. Get in here and show them tits girl! ", callback: "dom" },
             ]
         },
         {
             chatID: 8,
             speaker: "construction",
-            text: "HAHAHhahahaha OK you fucking faggot, here's a $5 raise. Now get out and do some work.",
+            text: "Don't care. If you want to keep working here you'll show the new guy your tits. ",
             button: [
-                { chatID: -1, text: "Yes sir", callback: "" }
+                { chatID: 10, text: "...", callback: "showtits" }
             ]
         },
         {
             chatID: 9,
             speaker: "construction",
-            text: "Stop staring at me like you're going to fuck me. Get out and do some work.",
+            text: "Way to go new guy. You heard him. Tits now!",
             button: [
-                { chatID: -1, text: "Yes sir", callback: "leaveOffice" }
+                { chatID: 10, text: "Yes sir", callback: "showtits" }
             ]
         },
         {
             chatID: 10,
-            speaker: "me",
-            text: txt,
+            speaker: "tina",
+            text: "Fine. Here's my tits. Anything else I can get you? ",
             button: [
-                { chatID: 8, text: "...", callback: "getRaise" }
+                { chatID: 11, text: "nice", callback: "" }
             ]
-        }
+        },
+        {
+            chatID: 11,
+            speaker: "construction",
+            text: "That'll do. You should wear something that shows those things off more. I do love " +
+                "your tits. You can get back to work. ",
+            button: [
+                { chatID: 12, text: "...", callback: "boss" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "construction",
+            text: "I think you'll do great here! I'm going to give you a $10 raise. Now get out there and start " +
+                "working. ",
+            button: [
+                { chatID: -1, text: "Yes sir!", callback: "setInitRaise" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "construction",
+            text: "That'll do. You should wear something that shows those things off more. I do love " +
+                "your tits. You can get back to work. ",
+            button: [
+                { chatID: 12, text: "...", callback: "boss" }
+            ]
+        },
     ];
     return cArray[chatID];
 };

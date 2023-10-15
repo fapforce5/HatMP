@@ -27,10 +27,10 @@ room455.chatcatch = function (callback) {
 };
 
 room455.chat = function (chatID) {
-    g.mod("energy", -30);
+    gv.mod("energy", -30);
     char.addtime(60);
-    g.mod("fitness", 10);
-    var tempFit = g.get("fitness");
+    gv.mod("fitness", 10);
+    var tempFit = gv.get("fitness");
     if (tempFit < 25) {
         return {
             chatID: 0,

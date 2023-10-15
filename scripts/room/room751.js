@@ -3,7 +3,7 @@ var room751 = {};
 room751.main = function () {
     var navList = [750, 0];
     nav.buildnav(navList);
-    if (g.get("money") > 14)
+    if (gv.get("money") > 14)
         chat(0, 751);
     else
         chat(1, 751);
@@ -49,7 +49,7 @@ room751.chatcatch = function (callback) {
             break;
         case "fortune":
             var oncasetext = "";
-            switch (g.get("oncase")) {
+            switch (gv.get("oncase")) {
                 case "sewer":
                     if (!inv.has("sewer"))
                         oncasetext = "It appears you're on the Red Box case. Your next step is to <span class='hl'>" +
@@ -151,7 +151,7 @@ room751.chat = function (chatID) {
             thisText = "For " + g.pass.name + " it looks like you just did <span class='hl-pink'>" + g.pass.thisStep +
                 "</span>. Your next step is to " +
                 "<span class='hl'>" + g.pass.nextStep + "</span>.";
-            g.mod("money", -15);
+            gv.mod("money", -15);
         }
         else if (g.pass.thisStep !== null) {
             thisText = "For " + g.pass.name + " it looks like you just did <span class='hl-pink'>" + g.pass.thisStep +

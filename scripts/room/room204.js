@@ -3,34 +3,35 @@ var room204 = {};
 
 room204.main = function () {
     $('#room_footer').hide();
-    if (g.pass === "first") {
-        chat(0, 204);
-        sc.setstep("missy", 5);
-    }
-    else if (g.pass === "repeatCards") {
-        chat(16, 204);
-    }
-    else
-        chat(4, 204);
+    chat(4, 204);
 };
 
 room204.countdown = function (timer) {
     if (g.roomTimeout !== null) {
         timer--;
         if (timer > 0) {
+            console.log(timer);
             $('.room-img[data-name=countdown]').text("Seconds Left :" + timer);
+            if (g.internal.horny > 0 && !g.internal.s) {
+                
+                if (Math.floor(Math.random() * g.internal.horny) === 0) {
+                    g.internal.s = true;
+                    nav.button({
+                        "type": "img",
+                        "name": "dirtythought",
+                        "left": 600,
+                        "top": 40,
+                        "width": 1000,
+                        "height": 1000,
+                        "image": "204_cardgame/h" + Math.floor(Math.random() * 4) + ".png"
+                    }, 204);
+                    chat(15, 204);
+                }
+            }
             g.roomTimeout = setTimeout(function () { room204.countdown(timer) }, 1000);
         }
         else {
-            g.roomTimeout = null;
-            var money = (12 - g.pass.length) * 5;
-            g.mod("money", money);
-            g.pass = "You missed " + g.pass.length + " files. At $5 dollars a file you get $" + money + ". Next time try harder. ";
-            if (sc.getstep("missy") === 5)
-                chat(15, 204);
-            else {
-                chat(14, 204);
-            }
+            room204.chatcatch("endgame");
         }
     }
 };
@@ -45,17 +46,18 @@ room204.btnclick = function (name) {
             nav.killbutton(name);
         }
         else {
-            scc.love("missy", -2, 100);
+            g.internal.numberWrong++;
             $('.room-btn[data-name=' + name + ']').addClass("room-204fail");
-
         }
         if (g.pass.length === 0) {
-            g.mod("money", 60);
-            g.roomTimeout = null;
-            if (sc.getstep("missy") === 5)
-                chat(15, 204);
-            else
-                chat(13, 204);
+            room204.chatcatch("endgame");
+            ////gv.mod("money", 60);
+            ////g.roomTimeout = null;
+            ////if (sc.getstep("missy") === 5)
+            ////    chat(15, 204);
+            ////else
+            ////    chat(13, 204);
+
             
         }
     }
@@ -86,7 +88,9 @@ room204.btnclick = function (name) {
 };
 
 room204.startGame = function () {
-
+    var thisArousal = gv.get("arousal");
+    var secondsOffsetForHorny = thisArousal > 50 ? Math.floor((115 - thisArousal) * .6) : 0;
+    g.internal = { s: false, horny: secondsOffsetForHorny, numberWrong: 0, pay: 0 };
     $('#room_footer').hide();
     //88
     var checkArray = new Array();
@@ -99,19 +103,19 @@ room204.startGame = function () {
     var btnHeight = 50 * g.ratio;
     var top = 0;
     var left = 810 * g.ratio;
-    var clock = 20;
-    switch (g.get("difficulty")) {
+    var clock = 60;
+    switch (gv.get("difficulty")) {
         case 0:
-            clock = 45;
+            clock = 180;
             break;
         case 1:
-            clock = 20;
+            clock = 60;
             break;
         case 2:
-            clock = 15;
+            clock = 20;
             break;
         default:
-            clock = 25;
+            clock = 60;
             break;
     }
     $('#room-buttons').append('<div class="room-img" data-name="countdown" data-room="204" ' +
@@ -141,10 +145,9 @@ room204.startGame = function () {
 
             g.pass.push(kString);
             checkArray[k] = null;
-
-            g.roomTimeout = setTimeout(function () { room204.countdown(clock); }, 1000);
         }
     }
+    g.roomTimeout = setTimeout(function () { room204.countdown(clock); }, 1000);
     g.pass.sort();
 };
 
@@ -161,8 +164,8 @@ room204.chatcatch = function (callback) {
                     "name": "intro1",
                     "left": 700,
                     "top": 400,
-                    "width": 300,
-                    "height": 280,
+                    "width": 280,
+                    "height": 300,
                     "image": "204_cardgame/intro1.jpg"
                 },
                 {
@@ -170,8 +173,8 @@ room204.chatcatch = function (callback) {
                     "name": "intro2",
                     "left": 1040,
                     "top": 400,
-                    "width": 300,
-                    "height": 280,
+                    "width": 280,
+                    "height": 300,
                     "image": "204_cardgame/intro2.jpg"
                 },
                 {
@@ -179,8 +182,8 @@ room204.chatcatch = function (callback) {
                     "name": "intro3",
                     "left": 1380,
                     "top": 400,
-                    "width": 300,
-                    "height": 280,
+                    "width": 280,
+                    "height": 300,
                     "image": "204_cardgame/intro3.jpg"
                 }];
             $.each(btnList, function (i, v) {
@@ -204,20 +207,46 @@ room204.chatcatch = function (callback) {
         case "file":
             room204.startGame();
             break;
-        case "success":
-            g.dt.setHours(18);
-            g.pass = "game";
-            char.room(202);
-            break;
-        case "failure":
-            g.dt.setHours(18);
-            char.room(0);
-            break;
-        case "MissyStep5":
-            char.room(200);
+        case "endgame":
+            g.roomTimeout = null;
+
+            var cardsComplete = 12 - g.pass.length;
+            var piPoints = (cardsComplete * 2) - g.internal.numberWrong;
+            var numberWrong = g.internal.numberWrong;
+            var pay = Math.ceil(cardsComplete * 3.33);
+            g.internal.pay = pay;
+
+            if (piPoints > 0) {
+                levels.mod("pi", piPoints, 4);
+                levels.mod("int", Math.ceil(piPoints / 2), 4);
+            }
+
+            if (cardsComplete === 12 && numberWrong === 0) {
+                missy.mod("mood", 15);
+                chat(13, 204);
+
+            }
+            else if (cardsComplete === 12) {
+                missy.mod("mood", numberWrong * -1);
+                chat(998, 204);
+            }
+            else {
+                missy.mod("mood", (numberWrong * -1) + ((12 - cardsComplete) * -2));
+                chat(999, 204);
+            }
+
+            g.internal = { cardsLeft: g.pass.length, pay: pay, numberWrong: numberWrong };
             break;
         case "mhate":
-            scc.love("missy", -2, 100);
+            missy.mod("mood", -2);
+            break;
+        case "killDirtyThought":
+            nav.killbutton("dirtythought");
+            g.internal.s = false;
+            break;
+        case "lunch":
+            missy.didJob(1, null, g.internal.pay);
+            char.room(224);
             break;
         default:
             break;
@@ -225,161 +254,199 @@ room204.chatcatch = function (callback) {
 };
 
 room204.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
+    if (chatID === 998) {
+        return {
+            chatID: 998,
             speaker: "missy",
-            text: "Your first real task working here is filing. " + sc.n('cecilia') + " is incredibly loyal, but she has the reading comprehension of a child." +
-                "I have thousands of photos, some I've taken, some I've acquired from the client, and some through other means.",
+            text: "You misfiled " + g.internal.numberWrong + " files, but you were able to complete the task. " +
+                " You need to work on your attention span. Go to lunch ",
             button: [
-                { chatID: 1, text: "Continue", callback: "buildIntro" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "missy",
-            text: "The three images in front of you are from previous cases. Ralph Zurich, the first image, was a cheating husband case. I tailed " +
-                "that pig for 3 days before I caught him. He took his secretary out to eat, then brought her to a cheap motel. The second picture was a " +
-                "corporate case where Allen claimed a slip made it so he was unable to walk. I caught them hiking and canoeing on the first weekend " +
-                "I was tailing him. It was almost too easy. ",
-            button: [
-                { chatID: 2, text: "Continue", callback: "" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "missy",
-            text: "The last picture, Samual is one of my favorite cases. His wife thought he was back on drugs because he would come home late smelling " +
-                "like piss all the time. Since he was so fat she never dreamed he would cheat on her. " +
-                "His wife let me on their computer where I found hundreds of videos with him getting pissed on by hookers. " +
-                "The best part was when I confronted him with the videos he claimed he never cheated since he would only jack off while getting pissed on. " +
-                "I gave these screen captures to her lawyer with the videos. Their divorce was quick since he didn't want anyone to know of his secret sick fetish.",
-            button: [
-                { chatID: 3, text: "Continue", callback: "" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "missy",
-            text: "Now I need you to file an organize all these images, but I need you to be orderly and efficient. Are you ready to learn how to do this?",
-            button: [
-                { chatID: 5, text: "Continue", callback: "" }
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "missy",
-            text: "Are you ready to do your filing?",
-            button: [
-                { chatID: -1, text: "Yes ma'am", callback: "file" },
-                { chatID: 5, text: "No ma'am, can you explain it to me again.", callback: "buildIntro" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "missy",
-            text: "So I need these arranged alphabetically. Since 'A' is the first letter and 'Allen Waters' starts with an 'A', he'll be " +
-                "the first one filed. To file it click the picture with 'Allen Waters'. ",
-            button: [
-                { chatID: -1, text: "Begin Lesson", callback: "step1" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "missy",
-            text: "Idiot, that's Ralph Zurich. Click 'Allen Waters' picture since his name is alphabetically before Ralph. ",
-            button: [
-                { chatID: -1, text: "Try again.", callback: "mhate" }
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "missy",
-            text: "No dummy, that's Samual Shepard the piss bag. You need to click on Allen since his name is alphabetically before Samual. ",
-            button: [
-                { chatID: -1, text: "Try again.", callback: "mhate" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "missy",
-            text: "Good job. Now there's only 2 left. Pick which one comes next alphabetically. ",
-            button: [
-                { chatID: -1, text: "Continue Lesson", callback: "step2" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "missy",
-            text: "Not only do you not know your alphabet, but given a 50% chance of picking the right one you picked the wrong one! " +
-                "I can't tell if you're as big of an airhead as " + sc.n('cecilia') + ", or you just don't pay attention. The alphabet goes o, p, q, r, s, t... " +
-                "so Ralph comes before Samual the piss sucker. Select the picture with Ralph. ",
-            button: [
-                { chatID: -1, text: "Try Again", callback: "mhate" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "missy",
-            text: "OK good job. If you pick the wrong card it will appear with a red border and be darker. ",
-            button: [
-                { chatID: 11, text: "[see incorrect selection]", callback: "step3" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "missy",
-            text: "OK good job. If you pick the wrong card it will appear with a red border and be darker. ",
-            button: [
-                { chatID: 12, text: "[see incorrect selection]", callback: "step3" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "missy",
-            text: "Samual now has a red border and is darker, that means you picked the wrong one. Finally since I can't have you filing " +
-                "all day you'll be timed. in the top center there's a black box that states: 'Seconds left: 30', that's how much " +
-                "time you have to complete this task. I don't believe in paying by time, but I pay in your ability to do your job. " +
-                "so the more you file the more you get paid. ",
-            button: [
-                { chatID: 4, text: "got it ma'am", callback: "clear" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "missy",
-            text: "Nice " + sc.n("me") + ". Here's your $60 for a job well done. I also believe in rewarding hard work, come kneel beside my desk.",
-            button: [
-                { chatID: -1, text: "yes ma'am", callback: "success" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "missy",
-            text: g.pass,
-            button: [
-                { chatID: -1, text: "yes ma'am", callback: "failure" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "missy",
-            text: "Now that you're complete for the day we have unfinished business from the last time you were here. Come to my desk. ",
-            button: [
-                { chatID: -1, text: "[Go to her desk]", callback: "MissyStep5" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "missy",
-            text: "Are you ready to do your filing?",
-            button: [
-                { chatID: -1, text: "Yes ma'am", callback: "file" }
+                { chatID: -1, text: "...", callback: "lunch" }
             ]
         }
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+    }
+    else if (chatID === 999) {
+        return {
+            chatID: 999,
+            speaker: "missy",
+            text: "You misfiled " + g.internal.numberWrong + " files, and you only filed " +
+                (12 - g.pass.length) + " files.  You will only receive $" + g.internal.pay +
+                ". You need to try harder if you're going to succeed in life. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "lunch" }
+            ]
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "missy",
+                text: "Your first real task working here is filing. " + sc.n('cecilia') + " is incredibly " +
+                    "loyal, but she has the reading comprehension of a child." +
+                    "I have thousands of files, some I've taken, some I've acquired from the client, " +
+                    "and some... through other means.",
+                button: [
+                    { chatID: 1, text: "...", callback: "buildIntro" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "missy",
+                text: "The three images in front of you are from previous cases. Ralph Zurich, the first " +
+                    "image, was a cheating husband case. I tailed " +
+                    "that pig for 3 days before I caught him. He took his secretary out to eat, then " +
+                    "brought her to a cheap motel. The second picture was a " +
+                    "corporate case where Allen claimed a slip made it so he was unable to walk. I " +
+                    "caught them hiking and boating on the first weekend " +
+                    "I was tailing him. It was almost too easy. ",
+                button: [
+                    { chatID: 2, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "missy",
+                text: "The last picture, Samual, is one of my favorite cases. His wife thought he " +
+                    "was back on drugs because he would come home late smelling " +
+                    "like piss all the time. Since he was so fat she never dreamed he would cheat on her. " +
+                    "His wife let me on their computer where I found hundreds of videos with him getting " +
+                    "pissed on by hookers. " +
+                    "The best part was when I confronted him with the videos he claimed he never " +
+                    "cheated since he would only jack off while getting pissed on. " +
+                    "I gave these screen captures to her lawyer with the videos. Their divorce was " +
+                    "quick since he didn't want anyone to know of his secret sick fetish.",
+                button: [
+                    { chatID: 3, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "missy",
+                text: "Now I need you to file an organize all these images, but I need you to be " +
+                    "orderly and efficient. Are you ready to learn how to do this?",
+                button: [
+                    { chatID: 5, text: "Yes ma'am", callback: "" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "missy",
+                text: "Are you ready to do your filing?",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "file" },
+                    { chatID: 5, text: "No ma'am, can you explain it to me again.", callback: "buildIntro" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "missy",
+                text: "So I need these arranged alphabetically. Since 'A' is the first letter and 'Allen " +
+                    "Waters' starts with an 'A', he'll be " +
+                    "the first one filed. To file it click the picture with 'Allen Waters'. ",
+                button: [
+                    { chatID: -1, text: "Begin Lesson", callback: "step1" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "missy",
+                text: "Idiot, that's Ralph Zurich. Click 'Allen Waters' picture since his name " +
+                    "is alphabetically before Ralph. ",
+                button: [
+                    { chatID: -1, text: "Try again.", callback: "mhate" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "missy",
+                text: "No dummy, that's Samual Shepard the piss bag. You need to click on " +
+                    "Allen since his name is alphabetically before Samual. ",
+                button: [
+                    { chatID: -1, text: "Try again.", callback: "mhate" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "missy",
+                text: "Good job. Now there's only 2 left. Pick which one comes next alphabetically. ",
+                button: [
+                    { chatID: -1, text: "Continue Lesson", callback: "step2" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "missy",
+                text: "Not only do you not know your alphabet, but given a 50% chance of picking " +
+                    "the right one you picked the wrong one! " +
+                    "I can't tell if you're as big of an airhead as " + sc.n('cecilia') +
+                    ", or you just don't pay attention. The alphabet goes o, p, q, r, s, t... " +
+                    "so Ralph comes before Samual the piss sucker. Select the picture with Ralph. ",
+                button: [
+                    { chatID: -1, text: "Try Again", callback: "mhate" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "missy",
+                text: "OK good job. If you pick the wrong card it will appear with a red " +
+                    "border and be darker. ",
+                button: [
+                    { chatID: 11, text: "[see incorrect selection]", callback: "step3" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "missy",
+                text: "OK good job. If you pick the wrong card it will appear with a red " +
+                    "border and be darker. ",
+                button: [
+                    { chatID: 12, text: "[see incorrect selection]", callback: "step3" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "missy",
+                text: "Samual now has a red border and is darker, that means you picked the wrong one. " +
+                    "Finally since I can't have you filing " +
+                    "all day you'll be timed. in the top center there's a black box that states: " +
+                    "'Seconds left: 30', that's how much " +
+                    "time you have to complete this task. I don't believe in paying by time, " +
+                    "but I pay in your ability to do your job. " +
+                    "so the more you file the more you get paid. ",
+                button: [
+                    { chatID: 4, text: "got it ma'am", callback: "clear" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "missy",
+                text: "Not only did you file everything, you didn't misfile a single record! For doing such a perfect " +
+                    "job I'm going to double your pay today! ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am!", callback: "lunch" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "missy",
+                text: "Are you ready to do your filing?",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "file" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "thinking",
+                text: "Fuck, I'm so horny! I should have just jacked off before starting! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "killDirtyThought" }
+                ]
+            }
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

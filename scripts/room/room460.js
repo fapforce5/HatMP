@@ -45,7 +45,7 @@ room460.main = function () {
     navList = [475, 450];
     g.pass = cl.hasoutfit("workout");
     g.pass = g.pass === null ? "" : g.pass;
-    if (g.get("energy") > 29 && g.pass === "")
+    if (gv.get("energy") > 29 && g.pass === "")
         navList.push(461);
 
     nav.buildnav(navList);
@@ -60,17 +60,17 @@ room460.btnclick = function (name) {
             char.room(450);
             break;
         case "path2":
-            if (g.get("energy") > 29 && g.pass === "")
+            if (gv.get("energy") > 29 && g.pass === "")
                 char.room(461);
             else {
-                if (g.get("energy") < 31)
+                if (gv.get("energy") < 31)
                     chat(1, 460);
                 else
                     chat(2, 460);
             }
             break;
         case "path3":
-            if (g.get("energy") < 5)
+            if (gv.get("energy") < 5)
                 chat(4, 460);
             else {
                 g.map = { count: 0, lastGold: 0, lastFight: 0, row: 78, col: 10 };

@@ -66,10 +66,10 @@ room550.chatcatch = function (callback) {
             sc.setstep('chad', 1);
             break;
         case "pay500":
-            if (g.get("money") >= 500) {
+            if (gv.get("money") >= 500) {
                 sc.setstep('chad', -1);
                 sc.setstep('chad', 2);
-                g.mod("money", -500);
+                gv.mod("money", -500);
                 chat(10, 550);
             }
             else 
@@ -133,9 +133,9 @@ room550.chatcatch = function (callback) {
             nav.bg("550_gymFront/" + callback + ".jpg");
             break;
         case "g7":
-            g.mod("giveOralMale", 1);
-            g.mod("creamPied", 1);
-            g.mod("receiveAnalMale", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
             char.room(0);
             char.addtime(180);
             break;

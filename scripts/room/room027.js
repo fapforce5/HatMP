@@ -99,7 +99,7 @@ room27.chatcatch = function (callback) {
             break;
         case "makeup":
             if (inv.has("makeup") || g.pass === 57 || g.pass === 151) {
-                var makeUpLevel = g.get("makeup");
+                var makeUpLevel = gv.get("makeup");
                 if (makeUpLevel < 2)
                     chat(13, 27);
                 else if (makeUpLevel < 4)
@@ -169,7 +169,7 @@ room27.chatcatch = function (callback) {
             sc.setstep("tiffany", 19);
             sc.setstep("me", -5);
             sc.setstep("me", -12);
-            g.setflag("tiffanyDayEvent");
+            daily.set("tif");
             break;
         case "killtif":
             char.addtime(90);
@@ -203,8 +203,8 @@ room27.chatcatch = function (callback) {
                 chat(20, 27);
             break;
         case "nextLesson":
-            g.mod("makeup", 1);
-            var mk = g.get("makeup");
+            gv.mod("makeup", 1);
+            var mk = gv.get("makeup");
             if (mk < 2)
                 chat(23, 27);
             else if (mk < 4)

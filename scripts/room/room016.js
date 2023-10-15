@@ -249,7 +249,7 @@ room16.chatcatch = function (callback) {
             sc.setstep("landlord", 200);
             g.roomMapAccess(16, true, true);
             cl.add("pj", "b");
-            g.set("rentOwed", 0);
+            gv.set("rentOwed", 0);
             char.room(10);
             break;
         case "l2":
@@ -341,17 +341,17 @@ room16.chatcatch = function (callback) {
             }, 26);
             break;
         case "s16":
-            g.mod("receiveAnalFemale", 1);
-            g.mod("sissygasm", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("receiveAnalFemale", 1);
+            gv.mod("sissygasm", 1);
+            gv.mod("loadSwollowed", 1);
             sc.setstep("landlord", -9);
             char.room(10);
             cl.stretchButt(null, 6);
             break;
         case "s16x":
-            g.mod("receiveAnalFemale", 1);
-            g.mod("sissygasm", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("receiveAnalFemale", 1);
+            gv.mod("sissygasm", 1);
+            gv.mod("loadSwollowed", 1);
             char.room(10);
             cl.stretchButt(null, 6);
             break;

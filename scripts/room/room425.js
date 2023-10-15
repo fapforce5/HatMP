@@ -26,9 +26,9 @@ room425.main = function () {
     chat(0, 425);
     char.addtime(4320);
     char.settime(22, 21);
-    g.set("energy", 0);
-    g.set("arousal", 0);
-    g.mod("hormone", -20);
+    gv.set("energy", 0);
+    gv.set("arousal", 0);
+    gv.mod("hormone", -20);
 };
 
 room425.btnclick = function (name) {

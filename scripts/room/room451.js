@@ -43,6 +43,29 @@ room451.main = function () {
             }
         ];
 
+        if (!g.isNight() && Math.floor(Math.random() * 3) === 0) {
+            btnList.push({
+                "type": "btn",
+                "name": "pee",
+                "left": 160,
+                "top": 156,
+                "width": 315,
+                "height": 730,
+                "image": "451_parkMensRoom/pee0.png"
+            });
+        }
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "urinal",
+                "left": 243,
+                "top": 354,
+                "width": 158,
+                "height": 255,
+                "image": "451_parkMensRoom/urinal.png"
+            });
+        }
+
         var navList = [450];
 
         $.each(btnList, function (i, v) {
@@ -50,6 +73,10 @@ room451.main = function () {
         });
 
         nav.buildnav(navList);
+
+        if (g.isNight()) {
+            fame.event();
+        }
     }
     else {
         g.internal = canGoOut;
@@ -59,9 +86,55 @@ room451.main = function () {
 
 room451.btnclick = function (name) {
     switch (name) {
+        case "case_usb":
+            nav.killall();
+            nav.bg("451_parkMensRoom/case_usb1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "case_usb1",
+                "left": 762,
+                "top": 451,
+                "width": 56,
+                "height": 130,
+                "image": "451_parkMensRoom/case_usb1.png"
+            }, 451);
+            break;
+        case "case_usb1":
+            inv.add("missyusb");
+            missy.set("reusableCaseCounter", 2);
+            missy.set("activeCaseComplete", 1);
+            nav.killbutton("case_usb1");
+            chat(56, 451);
+            break;
         case "stall3":
             nav.killall();
-            nav.bg("451_parkMensRoom/stall.jpg");
+            if (missy.get("activeCase") === 4 && missy.get("reusableCaseCounter") < 2) {
+                if (missy.get("reusableCaseCounter") === 0) {
+                    missy.set("reusableCaseCounter", 1);
+                    nav.bg("451_parkMensRoom/blumpkin.jpg");
+                    chat(54, 451);
+                }
+                else {
+                    nav.bg("451_parkMensRoom/case_usb0.jpg");
+                    nav.button({
+                        "type": "btn",
+                        "name": "case_usb",
+                        "left": 892,
+                        "top": 226,
+                        "width": 420,
+                        "height": 854,
+                        "image": "451_parkMensRoom/toilet.png"
+                    }, 451);
+                    chat(55, 451);
+                }
+            }
+            else if (Math.floor(Math.random() * 3) === 0) {
+                nav.bg("451_parkMensRoom/blumpkin.jpg");
+                chat(54, 451);
+            }
+            else {
+                nav.bg("451_parkMensRoom/stall.jpg");
+            }
             nav.buildnav([451]);
             break;
         case "stall2":
@@ -93,7 +166,7 @@ room451.btnclick = function (name) {
             break;
         case "stall1":
             if ((g.dt.getDay() === 0 || g.dt.getDay() === 6) && g.hourBetween(6, 16)) {
-                var oncase = g.get("oncase");
+                var oncase = gv.get("oncase");
                 if (oncase === "gloryholebj")
                     chat(14, 451);
                 else if (oncase === "gloryholeanal") {
@@ -264,8 +337,8 @@ room451.btnclick = function (name) {
             }
             break;
         case "ceciliaStall":
-            if (g.get("oncase") === "gloryholeanal") {
-                g.set("oncase") === null;
+            if (gv.get("oncase") === "gloryholeanal") {
+                gv.set("oncase") === null;
                 g.sissy[17].ach = true;
             }
             else if (g.sissy[17].ach) {
@@ -284,6 +357,23 @@ room451.btnclick = function (name) {
                 chat(41, 451);
             else
                 chat(32, 451);
+            break;
+        case "pee":
+            chat(50, 451);
+            break;
+        case "urinal":
+            if (gv.get("bladder") < .1) {
+                chat(52, 451);
+            }
+            else if (g.sissy[22].ach) {
+                chat(53, 451);
+            }
+            else {
+                nav.killall();
+                gv.set("bladder", 0);
+                nav.bg("451_parkMensRoom/urinal.jpg");
+                chat(51, 451);
+            }
             break;
         default:
             break;
@@ -342,7 +432,7 @@ room451.chatcatch = function (callback) {
             break;
         case "bj11":
             char.addtime(60);
-            g.mod("receiveOralMale", 1);
+            gv.mod("receiveOralMale", 1);
             cl.doCum(false);
             char.room(451);
             break;
@@ -380,13 +470,13 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/gc6.jpg");
             break;
         case "gc8_swollow1":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             nav.bg("451_parkMensRoom/gc8_swollow1.jpg");
             break;
         case "gc8_face":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSpit", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSpit", 1);
             cl.c.cumface = true;
             cl.display();
             nav.bg("451_parkMensRoom/gc8_face.jpg");
@@ -394,7 +484,7 @@ room451.chatcatch = function (callback) {
         case "endgc1":
             char.settime(17, 5);
             g.sissy[13].ach = true;
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.room(451);
             break;
         case "reset":
@@ -494,25 +584,25 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/blow1" + g.pass + ".jpg");
             break;
         case "suckit2":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             nav.bg("451_parkMensRoom/blow2" + g.pass + ".jpg");
             break;
         case "suckit3":
             nav.bg("451_parkMensRoom/blow3" + g.pass + ".jpg");
-            g.mod("giveOralMale", 1);
-            g.mod("loadSpit", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSpit", 1);
             cl.c.cumface = true;
             cl.display();
             break;
         case "suckit4":
-            g.mod("money", 20);
-            g.mod("giveOralMale", 1);
+            gv.mod("money", 20);
+            gv.mod("giveOralMale", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
         case "suckit5":
-            g.mod("giveOralMale", 1);
+            gv.mod("giveOralMale", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
@@ -539,7 +629,7 @@ room451.chatcatch = function (callback) {
             cl.undo();
             char.settime(17, 5);
             g.sissy[17].ach = true;
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.room(451);
             break;
         case "ass1":
@@ -550,15 +640,15 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/ass2.jpg");
             break;
         case "ass3":
-            g.mod("money", 40);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("money", 40);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
         case "ass4":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(60);
             room451.btnclick("stall1");
             break;
@@ -568,8 +658,8 @@ room451.chatcatch = function (callback) {
             break;
         case "duo2":
             nav.bg("451_parkMensRoom/duo2.jpg");
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             char.addtime(60);
             break;
         case "duo3":
@@ -580,8 +670,8 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/duo4.jpg");
             break;
         case "duo5":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(100);
             nav.bg("451_parkMensRoom/duo5.jpg");
             break;
@@ -1004,6 +1094,63 @@ room451.chat = function (chatID) {
             text: "*lick* YUM!",
             button: [
                 { chatID: -1, text: "MMmmm", callback: "duoEnd" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "random",
+            text: "You better back off of a man while he's pissin' or you're liable to get a fist to your face there partner",
+            button: [
+                { chatID: -1, text: "oh. Sorry. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "thinking",
+            text: "Just pissing in the toilet with my massive dong. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "thinking",
+            text: "I don't need to pee. I better hydrate. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "I better sit down to pee. Don't want to get in trouble.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "random",
+            text: "What the hell dude? Get out I'm taking a shit here.   ",
+            button: [
+                { chatID: -1, text: "Oh. Whoops", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "thinking",
+            text: "Now to find that USB drive...",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "thinking",
+            text: "Got it. Now to bring it back to Missy. I wonder what's on it. Kind of weird it was left in the men's " +
+                "bathroom. Maybe I could plug it into my PC and take a peek. There's no way she'll know I had a peek. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
             ]
         },
     ];

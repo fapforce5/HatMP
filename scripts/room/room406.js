@@ -40,7 +40,7 @@ room406.main = function () {
 room406.btnclick = function (name) {
     switch (name) {
         case "doc":
-            if (g.get("money") < 180)
+            if (gv.get("money") < 180)
                 chat(0, 406);
             else
                 chat(2, 406);
@@ -59,7 +59,7 @@ room406.chatcatch = function (callback) {
         case "lightblue":
         case "hazel":
             cl.c.eyes = callback;
-            g.mod("money", -180);
+            gv.mod("money", -180);
             cl.display();
             break;
         case "look":

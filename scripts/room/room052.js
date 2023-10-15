@@ -66,7 +66,7 @@ room52.main = function () {
             }
         ];
 
-        var painting = g.get("painting");
+        var painting = gv.get("painting");
         if (painting !== "") {
             btnList.push({
                 "type": "img",
@@ -79,7 +79,7 @@ room52.main = function () {
             });
         }
 
-        if (g.get("cheerlevel") > 0) {
+        if (gv.get("cheerlevel") > 0) {
             nav.button({
                 "type": "btn",
                 "name": "cheerleader",

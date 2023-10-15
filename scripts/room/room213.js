@@ -1,10 +1,10 @@
 ﻿//Room name
 var room213 = {};
 room213.main = function () {
-    var thisPink = g.get("pink");
+    var thisPink = gv.get("pink");
     if (thisPink === 0)
         chat(0, 213);
-    else if (g.get("energy") < 30)
+    else if (gv.get("energy") < 30)
         chat(24, 213);
     else {
         nav.button({
@@ -75,15 +75,15 @@ room213.chatcatch = function (callback) {
             nav.bg("213_pink/hole.jpg");
             break;
         case "parlourx":
-            g.mod("pink", 1);
+            gv.mod("pink", 1);
             nav.bg("213_pink/bg.jpg");
             break;
         case "endparlour":
-            g.mod("money", 50);
-            g.mod("phum", 1);
-            g.mod("pink", 1);
+            gv.mod("money", 50);
+            gv.mod("phum", 1);
+            gv.mod("pink", 1);
             char.addtime(120);
-            g.mod("energy", -30);
+            gv.mod("energy", -30);
             char.room(213);
             break;
         case "gamestart":
@@ -128,9 +128,9 @@ room213.chatcatch = function (callback) {
             }, 213);
             break;
         case "gw4":
-            g.mod("energy", -15);
-            g.mod("phum", 1);
-            g.mod("money", 25);
+            gv.mod("energy", -15);
+            gv.mod("phum", 1);
+            gv.mod("money", 25);
             nav.bg("214_pink/game.jpg");
             char.room(214);
             break;
@@ -142,10 +142,10 @@ room213.chatcatch = function (callback) {
             nav.bg("213_pink/gm3.jpg");
             break;
         case "gmend":
-            g.mod("energy", -15);
-            g.mod("giveBoobJob", 1);
-            g.mod("loadSwollowed", 1);
-            g.mod("money", 25);
+            gv.mod("energy", -15);
+            gv.mod("giveBoobJob", 1);
+            gv.mod("loadSwollowed", 1);
+            gv.mod("money", 25);
             char.room(214);
             break;
         case "chat0":
@@ -168,11 +168,11 @@ room213.chatcatch = function (callback) {
             }, 213);
             break;
         case "chatEnd":
-            g.mod("energy", -30);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
-            g.mod("sissygasm", 1);
-            g.mod("money", 50);
+            gv.mod("energy", -30);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            gv.mod("sissygasm", 1);
+            gv.mod("money", 50);
             char.room(214);
             break;
         
@@ -186,7 +186,7 @@ room213.chatcatch = function (callback) {
             break;
         //case "private0":
         //    g.sumSissy();
-        //    var points = (g.sp.total - g.get("usedSissyPoints"));
+        //    var points = (g.sp.total - gv.get("usedSissyPoints"));
         //    if (points < 500)
         //        chat(38, 213);
         //    break;

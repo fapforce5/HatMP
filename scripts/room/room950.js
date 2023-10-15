@@ -174,7 +174,7 @@ room950.main = function () {
                 "image": "950_cell/clean.png"
             });
         }
-        if (g.get("energy") > 49) {
+        if (gv.get("energy") > 49) {
             btnList.push({
                 "type": "btn",
                 "name": "squat",
@@ -256,7 +256,7 @@ room950.btnclick = function (name) {
         case "nap":
             nav.killall();
             nav.bg("28_transformation/sleep.jpg");
-            g.mod("energy", 50);
+            gv.mod("energy", 50);
             g.roomTimeout = setTimeout(function () {
                 room950.btnclick("increment");
             }, 1000);
@@ -293,13 +293,13 @@ room950.btnclick = function (name) {
             chat(1, 950);
             break;
         case "window":
-            if (g.internal.day < 1 || g.get("cindy")) {
+            if (g.internal.day < 1 || daily.get("cindy")) {
                 nav.killall();
                 nav.bg("950_cell/view.jpg");
                 chat(27, 950);
             }
             else {
-                g.set("cindy", false);
+                daily.set("cindy", false);
                 var dariaStep = sc.getstep("daria");
                 if (dariaStep === 0) {
                     nav.killall();
@@ -391,7 +391,7 @@ room950.btnclick = function (name) {
         case "brick":
             if (g.internal.brick < 4) {
                 if (inv.has("chisel")) {
-                    if (g.get("bodyLevel") < 2) {
+                    if (gv.get("bodyLevel") < 2) {
                         chat(49, 950);
                     }
                     else {
@@ -472,7 +472,7 @@ room950.btnclick = function (name) {
               var doesItFit = cl.minButt(name, null);
             if (doesItFit.fit) {
                 nav.killall();
-                g.mod('dildobutt', 1);
+                gv.mod('dildobutt', 1);
                 cl.stretchButt(name, null);
                 nav.bg("950_cell/" + name + "_stuff.jpg");
                 g.internal.food = true;
@@ -490,15 +490,15 @@ room950.btnclick = function (name) {
 room950.chatcatch = function (callback) {
     switch (callback) {
         case "finishSquats":
-            g.mod("leg", 34);
-            g.mod("fitness", 20);
-            g.mod("energy", -50);
+            gv.mod("leg", 34);
+            gv.mod("fitness", 20);
+            gv.mod("energy", -50);
             room950.btnclick("increment");
             break;
         case "finsihPushups":
-            g.mod("body", 34);
-            g.mod("fitness", 20);
-            g.mod("energy", -50);
+            gv.mod("body", 34);
+            gv.mod("fitness", 20);
+            gv.mod("energy", -50);
             room950.btnclick("increment");
             break;
         case "milk1":
@@ -567,7 +567,7 @@ room950.chatcatch = function (callback) {
         case "daria2":
             sc.setstep("daria", 2);
             g.displaymenu = true;
-            g.set("displayMenu", true);
+            gv.set("displayMenu", true);
             $('#room-menu').show();
             room950.btnclick("increment");
             break;
@@ -601,7 +601,7 @@ room950.chatcatch = function (callback) {
         case "clean3":
             nav.killall();
             nav.bg("950_cell/eatit3.jpg");
-            g.mod('giveOralFemale', 1);
+            gv.mod('giveOralFemale', 1);
             break;
         case "clean4":
             room950.btnclick("clean");
@@ -657,7 +657,7 @@ room950.chatcatch = function (callback) {
             break;
         case "eat0":
             g.internal.food = true;
-            g.mod("energy", 100);
+            gv.mod("energy", 100);
             break;
         case "food0":
             nav.killall();
@@ -708,7 +708,7 @@ room950.chatcatch = function (callback) {
             }, 950);
             break;
         case "food1":
-            g.mod("dildobutt", 1);
+            gv.mod("dildobutt", 1);
             break;
         case "mp1":
         case "mp2":
@@ -728,7 +728,7 @@ room950.chatcatch = function (callback) {
             break;
         case "mp11":
             scc.love('cult', 15, 100);
-            g.mod("pissedonMale", 3);
+            gv.mod("pissedonMale", 3);
             room950.btnclick("increment");
             break;
         case "shower1":
@@ -771,8 +771,8 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/shave.jpg");
             break;
         case "shave2":
-            if (g.get("bodyhair") > 0)
-                g.set("bodyhair", 0);
+            if (cl.c.bodyhair > 0)
+                cl.c.bodyhair = 0;
             cl.display();
             room950.btnclick("increment");
             break;
@@ -819,8 +819,8 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/sweepHallway6x.jpg");
             break;
         case "sweepHallway6end":
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
             scc.love("cult", 12, 100);
             room950.btnclick("increment");
             break;
@@ -864,7 +864,7 @@ room950.chatcatch = function (callback) {
             cl.c.butthole += .35;
             char.addDays(1);
             char.settime(8, 0);
-            g.set("energy", 0);
+            gv.set("energy", 0);
             g.internal.nightEvent = false;
             g.internal.interval = 1;
             g.internal.constDayDirty++;

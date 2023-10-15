@@ -147,7 +147,7 @@ room125.chatcatch = function (callback) {
             $('#room_footer').hide();
             g.internal = new Array();
             g.pass.gameCount++;
-            if (g.pass.gameCount < 12 && !g.get("cardgame")) {
+            if (g.pass.gameCount < 12 && !daily.get("cardgame")) {
                 char.addtime(15);
                 if (g.pass.deck.length < 14) {
                     g.pass.deck = new Array();
@@ -371,7 +371,7 @@ room125.chatcatch = function (callback) {
             room125.chatcatch("mePlay");
             break;
         case "fold":
-            g.mod("money", -1);
+            gv.mod("money", -1);
             nav.killbutton("mycard");
             g.internal[3].v1 = 0;
             g.internal[3].v2 = 0;
@@ -381,7 +381,7 @@ room125.chatcatch = function (callback) {
             if (g.internal[0].b + g.internal[1].b + g.internal[2].b === 18)
                 chat(7, 125);
             else if (g.internal[0].b + g.internal[1].b + g.internal[2].b === 3) {
-                g.mod("money", 3);
+                gv.mod("money", 3);
                 chat(9, 125);
             }
             else
@@ -453,11 +453,11 @@ room125.chatcatch = function (callback) {
             }
             if (g.internal[3].v1 > 0) {
                 if (g.internal[3].v1 + g.internal[3].v2 === top) {
-                    g.mod("money", Math.round(totalCash / (winner.length === 0 ? 1 : winner.length)));
+                    gv.mod("money", Math.round(totalCash / (winner.length === 0 ? 1 : winner.length)));
                     chat(11, 125);
                 }
                 else {
-                    g.mod("money", -6);
+                    gv.mod("money", -6);
                     chat(12, 125);
                 }
             }
@@ -466,7 +466,7 @@ room125.chatcatch = function (callback) {
 
             break;
         case "exit":
-            g.setflag("cardgame");
+            daily.set("cardgame");
             nav.room(0);
             break;
         case "jada1":
@@ -547,7 +547,7 @@ room125.chatcatch = function (callback) {
             nav.killbutton("howto");
             break;
         case "trun":
-            g.setflag("cardgame");
+            daily.set("cardgame");
             char.room(0);
             break;
         case "t1":
@@ -584,9 +584,9 @@ room125.chatcatch = function (callback) {
             nav.bg("125_poker/t11.jpg");
             break;
         case "t12":
-            g.mod("giveOralMale", 3);
+            gv.mod("giveOralMale", 3);
             sc.setstep("kei", -2);
-            g.setflag("cardgame");
+            daily.set("cardgame");
             char.room(0);
             break;
         case "tx3":
@@ -604,8 +604,8 @@ room125.chatcatch = function (callback) {
             break;
         case "tx11":
             char.addtime(120);
-            g.setflag("cardgame");
-            g.mod("giveOralMale", 3);
+            daily.set("cardgame");
+            gv.mod("giveOralMale", 3);
             char.room(0);
             break;
         default:

@@ -48,8 +48,8 @@ room8.main = function () {
         '<img src="./images/wardrobe/pj.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="accessories">' +
         '<img src="./images/wardrobe/accessories.png" />' +
-        '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="chastity">' +
-        '<img src="./images/wardrobe/chastity.png" />' +
+        //'</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="chastity">' +
+        //'<img src="./images/wardrobe/chastity.png" />' +
         '</button><button class="wardrobe-icon wardrobe-type" type="button" data-ctype="buttplug">' +
         '<img src="./images/wardrobe/buttplug.png" />' +
         '</button></div>' +
@@ -228,17 +228,7 @@ room8.main = function () {
         var entry = $(this).data('e');
         var type = $(this).data('type');
         if (type === "change") {
-            cl.c.shoes = cl.saveOutfit[entry].shoes;
-            cl.c.socks = cl.saveOutfit[entry].socks;
-            cl.c.pants = cl.saveOutfit[entry].pants;
-            cl.c.panties = cl.saveOutfit[entry].panties;
-            cl.c.bra = cl.saveOutfit[entry].bra;
-            cl.c.shirt = cl.saveOutfit[entry].shirt;
-            cl.c.dress = cl.saveOutfit[entry].dress;
-            cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
-            cl.c.accessories = cl.saveOutfit[entry].accessories;
-            cl.c.pj = cl.saveOutfit[entry].pj;
-            cl.display();
+            cl.wearSavedOutfit(entry);
             room8.chatcatch("c");
         }
         else {
@@ -259,15 +249,15 @@ room8.main = function () {
             chat(0, 8);
         }
     });
-    if (!sc.checkevent("me", -4)) {
-        sc.setstep("me", -4);
+    if (!gv.get("firstTimeInWardrobe")) {
+        gv.set("firstTimeInWardrobe", true);
         chat(1, 8);
     }
     if (g.pass === 52)
         nav.bg("8_wardrobe/52_wardrobe.jpg");
     else if (g.pass === 502)
         nav.bg("8_wardrobe/502_wardrobe.jpg");
-    else if (g.pass === 201)
+    else if (g.pass === 201 || g.pass === 199)
         nav.bg("8_wardrobe/201.jpg");
     else if (g.pass === 209)
         nav.bg("8_wardrobe/209.jpg");

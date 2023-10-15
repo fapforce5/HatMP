@@ -193,7 +193,7 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "jeffFail":
-            g.set("oncase", "dinerfail");
+            gv.set("oncase", "dinerfail");
             sc.setstep("holly", 3);
             sc.setstep("dolly", 4);
             sc.setstep("molly", 4);
@@ -213,11 +213,11 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "jeffsuccess":
-            g.set("oncase", "dinersuccess");
+            gv.set("oncase", "dinersuccess");
             sc.setstep("holly", -1);
             sc.setstep("jeffery", 7);
             sc.setstep("jeffery", -1);
-            g.mod("money", 500);
+            gv.mod("money", 500);
             g.roomMapAccess(250, false, false);
             cl.c.socks = g.internal.socks;
             cl.c.pants = g.internal.pants;
@@ -263,7 +263,7 @@ room251.chatcatch = function (callback) {
             nav.bg("251_office/" + callback + ".jpg");
             break;
         case "j5":
-            g.mod("giveOralMale", 1);
+            gv.mod("giveOralMale", 1);
             cl.c.socks = g.internal.socks;
             cl.c.pants = g.internal.pants;
             cl.c.panties = g.internal.panties;
@@ -374,7 +374,7 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "s10_5":
-            g.mod("money", 500);
+            gv.mod("money", 500);
             room251.chatcatch("s10_4");
             break;
         default:

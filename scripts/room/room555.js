@@ -199,30 +199,30 @@ room555.chatcatch = function (callback) {
             setTimeout(function () { chat(15, 555); }, 5000);
             break;
         case "exitUpper":
-            g.mod("fitness", 30);
-            g.mod("energy", -50);
-            g.mod("body", 34);
+            gv.mod("fitness", 30);
+            gv.mod("energy", -50);
+            gv.mod("body", 34);
             char.addtime(60);
-            g.setflag("gworkout");
+            daily.set("g");
             cl.undo();
             char.room(551);
             break;
         case "exitLower":
-            g.mod("fitness", 30);
-            g.mod("energy", -50);
-            g.mod("leg", 34);
+            gv.mod("fitness", 30);
+            gv.mod("energy", -50);
+            gv.mod("leg", 34);
             char.addtime(60);
-            g.setflag("gworkout");
+            daily.set("g");
             cl.undo();
             char.room(551);
             break;
         case "exitLowercum":
             cl.doCum();
-            g.mod("fitness", 30);
-            g.mod("energy", -50);
-            g.mod("leg", 34);
+            gv.mod("fitness", 30);
+            gv.mod("energy", -50);
+            gv.mod("leg", 34);
             char.addtime(60);
-            g.setflag("gworkout");
+            daily.set("g");
             cl.undo();
             char.room(551);
             break;
@@ -285,7 +285,7 @@ room555.chatcatch = function (callback) {
             }, 555);
             break;
         case "hip5":
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.killbutton("hip");
             nav.button({
                 "type": "img",

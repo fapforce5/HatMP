@@ -1,5 +1,7 @@
 ﻿var room475 = {};
 room475.main = function () {
+    if (m.fmap == "undefined")
+        m.fmap = null;
     if (m.fmap === null) {
         m.createFmap();
     }
@@ -10,7 +12,7 @@ room475.main = function () {
     var thisUsed = m.fmap[g.map.row][g.map.col].used;
     var mainLoop = true;
 
-    if (g.get("energy") === 0) {
+    if (gv.get("energy") === 0) {
         g.map = "";
         char.room(450);
         mainLoop = false;
@@ -21,9 +23,9 @@ room475.main = function () {
         mainLoop = false;
     }
     else if (thisUsed === "g") {
-        if (!g.get("gold0")) {
+        if (!daily.get("gold0")) {
             mainLoop = false;
-            g.setflag("gold0");
+            daily.set("gold0");
             nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
             nav.button({
                 "type": "btn",
@@ -54,7 +56,7 @@ room475.main = function () {
             chat(2, 475);
         }
         else {
-            if (g.get("oncase") === "queen")
+            if (gv.get("oncase") === "queen")
                 char.room(477);
             else
                 chat(1, 475);
@@ -77,7 +79,7 @@ room475.main = function () {
         g.map.lastFight++;
 
         if (((Math.floor(Math.random() * 8) === 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12)) {
-            if (g.get("cat") === -1 && (Math.floor(Math.random() * 4) === 0)) {
+            if (gv.get("cat") === -1 && (Math.floor(Math.random() * 4) === 0)) {
                 nav.killall();
                 nav.bg("475_fight/cat.jpg");
                 g.map.lastFight = 0;
@@ -85,7 +87,7 @@ room475.main = function () {
             }
             else {
                 var te = Math.floor(Math.random() * 3);
-                if (g.get("fantasyCreatures")) {
+                if (gv.get("fantasyCreatures")) {
                     if (g.isNight())
                         te = Math.floor(Math.random() * 9); //overload the warewolf at night
                     else
@@ -188,12 +190,13 @@ room475.chatcatch = function (callback) {
             char.room(475);
             break;
         case "catx":
-            g.set("cat", 0);
+            gv.set("cat", 0);
             nav.bg("475_fight/catx.jpg", "475_fight/catxnight.jpg");
             break;
         case "petcat":
-            g.set("cat", 1);
+            gv.set("cat", 1);
             nav.bg("475_fight/catpet.jpg", "475_fight/catpetnight.jpg");
+            break;
         default:
             break;
     }
@@ -203,7 +206,7 @@ room475.chat = function (chatID) {
     if (chatID === 900) {
         var gold = Math.floor((Math.random() * 50)) + 50;
         var cumJar = 0;
-        g.mod("money", gold);
+        gv.mod("money", gold);
 
         if (m.fmap[g.map.row][g.map.col].used === 'g') {
             cumJar = Math.floor(Math.random() * 3) + 1;

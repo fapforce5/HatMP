@@ -34,7 +34,7 @@ room304.main = function () {
 room304.btnclick = function (name) {
     switch (name) {
         case "rent":
-            if (g.get("waitressSteal")) {
+            if (gv.get("waitressSteal")) {
                 chat(4, 304);
             }
             else {
@@ -364,8 +364,8 @@ room304.chatcatch = function (callback) {
             nav.bg("304_room202/dollylaundry.jpg");
             break;
         case "steal":
-            g.mod("money", 1489);
-            g.set("waitressSteal", true);
+            gv.mod("money", 1489);
+            gv.set("waitressSteal", true);
             break;
         default:
             break;

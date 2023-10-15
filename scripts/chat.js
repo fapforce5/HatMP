@@ -1,49 +1,41 @@
-﻿/*
-speaker: 
-me: me
-sister 1 ponytail: Lola
-sister2 ponytail: Eva
-mother: Mom
-Dominatrix: Missy
-
-construction foreman: Forman,
-contruction receptionist: Bambi
-*/
-
-var privateChat = {};
+﻿var privateChat = {};
 
 function chat(chatID, roomID) {
 
     if (chatID !== -1) {
-        var entry = window[g.room(roomID)]["chat"](chatID);
-        if (entry !== null) {
-            var thisSpeaker = privateChat.speakerInfo(entry.speaker);
-            $('#room_footer').hide();
-            if (!$('#room_chatOverlay').is(":visible")) {
-                $('#room_chatOverlay').show();
-                $('#char_charDisplay').hide();
-            }
-            var counter = 0;
-            $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
-            $('#room_footerSpeach').html(entry.text);
-            $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
-            if (entry.button.length === 0) {
-                $('#room_chatBtn0').html('Close').show().data('chatid', -1).data('roomid', roomID).data('callback', '');
-                counter = 1;
-            }
-            else {
-                $.each(entry.button, function (i, v) {
-                    $('#room_chatBtn' + i).html(v.text).data('chatid', v.chatID).data('roomid', roomID).data('callback', v.callback).show();
-                    counter++;
-                });
-            }
-            counter = (counter === 0 ? counter = 1 : counter);
-            $('.room-chatBtn').css('width', (99 / counter) + '%');
+        privateChat.makeChat(window[g.room(roomID)]["chat"](chatID), chatID, roomID);
+        
+    }
+}
+
+privateChat.makeChat = function (entry, chatID, roomID) {
+    if (entry !== null) {
+        var thisSpeaker = privateChat.speakerInfo(entry.speaker);
+        $('#room_footer').hide();
+        if (!$('#room_chatOverlay').is(":visible")) {
+            $('#room_chatOverlay').show();
+            //$('#char_charDisplay').hide();
+        }
+        var counter = 0;
+        $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
+        $('#room_footerSpeach').html(entry.text);
+        $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
+        if (entry.button.length === 0) {
+            $('#room_chatBtn0').html('Close').show().data('chatid', -1).data('roomid', roomID).data('callback', '');
+            counter = 1;
         }
         else {
-            g.error("chat", "chatID:" + chatID + " roomID: " + roomID);
-            $('#room_footer').show();
+            $.each(entry.button, function (i, v) {
+                $('#room_chatBtn' + i).html(v.text).data('chatid', v.chatID).data('roomid', roomID).data('callback', v.callback).show();
+                counter++;
+            });
         }
+        counter = (counter === 0 ? counter = 1 : counter);
+        $('.room-chatBtn').css('width', (99 / counter) + '%');
+    }
+    else {
+        g.error("chat", "chatID:" + chatID + " roomID: " + roomID);
+        $('#room_footer').show();
     }
 }
 
@@ -59,16 +51,34 @@ privateChat.images = function (charName) {
 
 privateChat.speakerInfo = function (charName) {
     charName = charName.toLowerCase();
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === charName) {
-            return {
-                img: "./images/speaker/" + sc.char[i].image, name: sc.char[i].display
-            };
-        }
+    if (charName[0] === "!") {
+        var getTrivial = sc.trivial(charName);
+        return {
+            img: "./images/speaker/trivial/" + getTrivial.image,
+            name: getTrivial.display
+        };
     }
-    return {
-        img: "./images/speaker/rand.png", name: ""
-    };
+    else {
+        for (var i = 0; i < sc.char.length; i++) {
+            if (sc.char[i].name === charName) {
+                if (charName === "me" && g.roomID > 175 && g.roomID < 250 && sissy.st[9].ach) {
+                    return {
+                        img: "./images/speaker/" + sc.char[i].image,
+                        name: "Sissy Trainee"
+                    };
+                }
+                else {
+                    return {
+                        img: "./images/speaker/" + sc.char[i].image,
+                        name: sc.char[i].display
+                    };
+                }
+            }
+        }
+        return {
+            img: "./images/speaker/rand.png", name: ""
+        };
+    }
 };
 
 $(document).ready(function () {
@@ -95,7 +105,7 @@ $(document).ready(function () {
                 $('#room_footerSpeach').html("");
                 $('#room_chatSpeaker').html('');
                 $('#room_footer').show();
-                $('#char_charDisplay').show();
+                //$('#char_charDisplay').show();
             }
             else
                 chat(chatID, roomID);

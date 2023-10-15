@@ -130,7 +130,7 @@ room954.chatcatch = function (callback) {
             cl.c.shirt = "j";
             cl.display();
             char.room(0);
-            g.set("oncase", null);
+            gv.set("oncase", null);
             $('#room-menu').show();
             $("#room-inv").show();
             break;

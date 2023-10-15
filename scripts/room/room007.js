@@ -3,17 +3,18 @@ var room7 = {};
 room7.main = function () {
     var sleepOutfit = 4;
     var navList;
-    cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
-    cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
-    cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
-    cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
-    cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
-    cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
-    cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
-    cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
-    cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
-    cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
-    cl.display();
+    cl.wearSavedOutfit(sleepOutfit);
+    //cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
+    //cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
+    //cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
+    //cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
+    //cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
+    //cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
+    //cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
+    //cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
+    //cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
+    //cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
+    //cl.display();
 
     var btnList = new Array();
     var lolaStep = sc.getstep("lola");
@@ -80,20 +81,20 @@ room7.main = function () {
                 "image": "7_mainCharRoomAlt/7_handout.png"
             }];
         if (sc.getstep("landlord") < 200) {
-            g.set("rent", g.get("rent") - g.get("rentKnockOff") + g.get("rentOwed"));
-            g.set("rentOwed", 0);
+            gv.set("rent", gv.get("rent") - gv.get("rentKnockOff") + gv.get("rentOwed"));
+            gv.set("rentOwed", 0);
 
-            if (g.get("rent") <= g.get("money"))
+            if (gv.get("rent") <= gv.get("money"))
                 chat(7, 7);
             else
                 chat(9, 7);
         }
         else {
-            g.mod("money", 100);
+            gv.mod("money", 100);
             chat(63, 7);
         }
     }
-    else if (g.get("rentOwed") > 0 && meStep < 200) {
+    else if (gv.get("rentOwed") > 0 && meStep < 200) {
         btnList = [
             {
                 "type": "btn",
@@ -136,10 +137,16 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/lola0.jpg");
         chat(27, 7);
     }
-    
     else if (bigguyStep === 5 && (g.dt.getDay() === 0 || g.dt.getDay() === 6)) {
         nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
         chat(55, 7);
+    }
+    else if (bigguyStep === 6 && g.dt.getDay() === 6) {
+        nav.bg("7_mainCharRoomAlt/bigguy0.jpg");
+        g.roomTimeout = setTimeout(function () {
+            nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
+            chat(110, 7);
+        }, 1500);
     }
     else {
         chat(15, 7);
@@ -206,7 +213,7 @@ room7.btnclick = function (name) {
 room7.chatcatch = function (callback) {
     switch (callback) {
         case "money":
-            g.mod("money", 250);
+            gv.mod("money", 250);
             break;
         case "leave":
             nav.killbutton("mother");
@@ -216,10 +223,10 @@ room7.chatcatch = function (callback) {
             char.room(10);
             break;
         case "payYouMom":
-            g.mod("money", -1 * g.get("rent"));
-            g.set("rent",  200);
-            g.set("rentKnockOff", 0);
-            g.set("rentOwed", 0);
+            gv.mod("money", -1 * gv.get("rent"));
+            gv.set("rent",  200);
+            gv.set("rentKnockOff", 0);
+            gv.set("rentOwed", 0);
             break;
         case "finsihPayMom":
             //sc.setchar("landlord", -1);
@@ -229,20 +236,20 @@ room7.chatcatch = function (callback) {
             //sc.setchar("landlord", -1);
             break;
         case "incrementPay":
-            g.set("rentOwed", g.get("rent"));
-            g.set("rent", 200);
-            g.set("rentOwed", g.get("rentOwed") - g.get("money"));
-            g.set("money", 0);
+            gv.set("rentOwed", gv.get("rent"));
+            gv.set("rent", 200);
+            gv.set("rentOwed", gv.get("rentOwed") - gv.get("money"));
+            gv.set("money", 0);
             break;
         case "backOwe":
             if (g.gt("rentOwed", "money")) {
-                g.mod("rentOwed", -1 * g.get("money"));
-                g.set("money", 0);
+                gv.mod("rentOwed", -1 * gv.get("money"));
+                gv.set("money", 0);
                 chat(14, 7);
             }
             else {
-                g.mod("money", -1 * g.get("rentOwed"));
-                g.set("rentOwed", 0);
+                gv.mod("money", -1 * gv.get("rentOwed"));
+                gv.set("rentOwed", 0);
                 chat(13, 7);
             }
             break;
@@ -254,17 +261,18 @@ room7.chatcatch = function (callback) {
         case "o2":
         case "o3":
             var thisEntry = parseInt(callback[1]);
-            cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
-            cl.c.socks = cl.saveOutfit[thisEntry].socks;
-            cl.c.pants = cl.saveOutfit[thisEntry].pants;
-            cl.c.panties = cl.saveOutfit[thisEntry].panties;
-            cl.c.bra = cl.saveOutfit[thisEntry].bra;
-            cl.c.shirt = cl.saveOutfit[thisEntry].shirt;
-            cl.c.dress = cl.saveOutfit[thisEntry].dress;
-            cl.c.swimsuit = cl.saveOutfit[thisEntry].swimsuit;
-            cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
-            cl.c.pj = cl.saveOutfit[thisEntry].pj;
-            cl.display();
+            cl.wearSavedOutfit(callback[1]);
+            //cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
+            //cl.c.socks = cl.saveOutfit[thisEntry].socks;
+            //cl.c.pants = cl.saveOutfit[thisEntry].pants;
+            //cl.c.panties = cl.saveOutfit[thisEntry].panties;
+            //cl.c.bra = cl.saveOutfit[thisEntry].bra;
+            //cl.c.shirt = cl.saveOutfit[thisEntry].shirt;
+            //cl.c.dress = cl.saveOutfit[thisEntry].dress;
+            //cl.c.swimsuit = cl.saveOutfit[thisEntry].swimsuit;
+            //cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
+            //cl.c.pj = cl.saveOutfit[thisEntry].pj;
+            //cl.display();
             char.room(10);
             break;
         case "o4":
@@ -303,7 +311,7 @@ room7.chatcatch = function (callback) {
             break;
         case "eva7":
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
-            g.setflag("evaDayEvent");
+            daily.set("eva");
             sc.setstep("eva", 10);
             char.addtime(30);
             break;
@@ -397,9 +405,9 @@ room7.chatcatch = function (callback) {
         case "eva10b3h":
             sc.setstep("eva", 11);
             cl.doCum(true);
-            g.mod("giveOralFemale", 1);
-            g.mod("fuckPussy", 1);
-            g.setflag("evaDayEvent");
+            gv.mod("giveOralFemale", 1);
+            gv.mod("fuckPussy", 1);
+            daily.set("eva");
             char.addtime(60);
             char.room(10);
             break;
@@ -427,9 +435,9 @@ room7.chatcatch = function (callback) {
         case "eva10kt":
             sc.setstep("eva", 11);
             cl.doCum(true);
-            g.setflag("evaDayEvent");
+            daily.set("eva");
             char.addtime(60);
-            g.mod("receiveHandjobFemale", 1);
+            gv.mod("receiveHandjobFemale", 1);
             g.pass = "";
             char.room(10);
             break;
@@ -490,7 +498,7 @@ room7.chatcatch = function (callback) {
             scc.love("eva", 200, 100);
             sc.setstep("eva", 12);
             char.addtime(60);
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             char.room(10);
             break;
         case "bigguy5a":
@@ -599,9 +607,9 @@ room7.chatcatch = function (callback) {
             break;
         case "bigguy5o":
             sc.setstep("bigguy", 6);
-            g.mod("receiveOralMale", 1);
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveOralMale", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             char.addtime(68);
             char.room(10);
             break;
@@ -622,7 +630,16 @@ room7.chatcatch = function (callback) {
         case "b5e3":
         case "b5e4":
         case "b5e5":
+        case "bigguy6a0":
+        case "bigguy6a":
+        case "bigguy6b":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
+        case "bigguy6c":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            char.room(10);
             break;
         case "b5e1":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
@@ -653,10 +670,10 @@ room7.chatcatch = function (callback) {
             scc.love("lola", 200, 100);
             sc.setstep("eva", 13);
             sc.setstep("lola", 14);
-            g.mod("fuckPussy", 2);
-            g.mod("giveAnalFemale", 1);
-            g.setflag("lolaDayEvent");
-            g.setflag("evaDayEvent");
+            gv.mod("fuckPussy", 2);
+            gv.mod("giveAnalFemale", 1);
+            daily.set("lola");
+            daily.set("eva");
             char.addtime(120);
             char.room(10);
             break;
@@ -672,9 +689,9 @@ room7.chat = function (chatID) {
     
     var tempRent, tempMoney, tempRentOwed;
     if (chatID < 15) {
-        tempRent = g.get("rent");
-        tempMoney = g.get("money");
-        tempRentOwed = g.get("rentOwed");
+        tempRent = gv.get("rent");
+        tempMoney = gv.get("money");
+        tempRentOwed = gv.get("rentOwed");
     }
     else {
         tempRent = tempMoney = tempRentOwed = 0;
@@ -683,7 +700,7 @@ room7.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "landlord",
-            text: "Wake up " + sc.n("me") + "! You're late again with the rent! I can't believe I allow you to live here, you lazy lay loafer! " +
+            text: "Wake up " + sc.n("me") + "! I can't believe I allow you to live here, you lazy lay loafer! " +
                 "First you failed out of college, then you get fired from The Burger Joint, and now you just lay around doing nothing! " +
                 " .... NOTHING!",
             button: [{ chatID: 1, text: "but ....", callback: "" }]
@@ -693,8 +710,8 @@ room7.chat = function (chatID) {
             speaker: "landlord",
             text: "Don't 'but...' me. It's time you start growing up. There's no more free rides for your lazy ass. " +
                 "If you think I've been hard on you " +
-                "up till now, you're going to see hard it can be. " + sc.n("lola") + " and " + sc.n("eva") + ", your " + sc.n('el') + ", just graduated high school " +
-                "and you've been a terrible role model for them.",
+                "up till now, you're going to see hard it can be. " + sc.n("lola") + " and " + sc.n("eva") + ", your " + sc.n('el') +
+                ", just started college and you've been a terrible role model for them.",
             button: [{ chatID: 2, text: "....", callback: "" }]
         },
         {
@@ -703,15 +720,16 @@ room7.chat = function (chatID) {
             text: "Here's the deal " + sc.n("me") + ", you act like a child and I'm going to treat you like a child, you act like an adult " +
                 "and I'll treat you like one. You're going to get a new job so you can continue to pay me each week or you'll " +
                 "find yourself out on the streets! Since I know you can't save enough money to pay me monthly you'll start paying me " +
-                "weekly. <span class= 'hl'>Each week I'll come in on Sunday to collect my $200</span> starting now. " +
+                "weekly. <span class= 'hl'>Each week I'll come in on Sunday to collect my $50</span> starting now. " +
                 "Pay up mister. ",
             button: [{ chatID: 3, text: "Pay " + sc.n('landlord'), callback: "payYouMom" }]
         },
         {
             chatID: 3,
             speaker: "landlord",
-            text: "Good. Tomorrow's Monday, I expect you to have a job and start working.<span class='hl'> If you want to knock off $5 from your rent, you can do " +
-                "the dishes in the sink</span>. I've been able to keep a job at the Sperm Bank for 5 years now, you should be able" +
+            text: "Good. Tomorrow's Monday, I expect you to have a job and start working.<span class='hl'> If you want " +
+                "to knock off $5 from your rent, you can do " +
+                "the dishes in the sink</span>. I've been able to keep a job at the Sperm Bank for years now, you should be able" +
                 "to keep a job for a few weeks at least.",
             button: [{ chatID: 4, text: "OK", callback: "" }]
         },
@@ -731,7 +749,8 @@ room7.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "me",
-            text: "Oh, I almost forgot I promised " + sc.n("zoey") + " I would stop by and play video games. Better go say hi.",
+            text: "Oh, I almost forgot I promised " + sc.n("zoey") + " I would stop by and play video games. " +
+                "and " + sc.n("janice") + " I would take her on a date. Better get going!",
             button: [{ chatID: -1, text: "Really Get out of bed this time", callback: "getUp" }]
         },
         {
@@ -1089,8 +1108,8 @@ room7.chat = function (chatID) {
         {
             chatID: 51,
             speaker: "eva",
-            text: "That's going to be dripping out of me all day! I love you cock so much. Just text me anytime you're in your room and " +
-            "we'll play some more.",
+            text: "That's going to be dripping out of me all day! I love your cock so much. Just text me anytime you're in your room and " +
+                "we'll play some more.",
             button: [
                 { chatID: -1, text: "Ok cool", callback: "eva10b3h" }
             ]
@@ -1572,6 +1591,55 @@ room7.chat = function (chatID) {
             text: "Yeah perv. Stop by our room if you want any more fun. ",
             button: [
                 { chatID: -1, text: "...", callback: "b7" }
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "bigguy",
+            text: "Wake up slut. Time for my dick. ",
+            button: [
+                { chatID: 111, text: "huh?", callback: "bigguy5a" }
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "me",
+            text: "GLUB GLUB GLUB ",
+            button: [
+                { chatID: 112, text: "...", callback: "bigguy5a" }
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "bigguy",
+            text: "Now that I'm nice and hard, time for your treat!",
+            button: [
+                { chatID: 113, text: "Huh?", callback: "bigguy6a0" }
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "bigguy",
+            text: "I love your nasty ass my secret slut!",
+            button: [
+                { chatID: 114, text: "Ooof ouch, ugh", callback: "bigguy6a" }
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "bigguy",
+            text: "Oh fuck I'm filling your slutty ass with cum! What a slut!",
+            button: [
+                { chatID: 115, text: "Mmmmmm", callback: "bigguy6b" }
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "bigguy",
+            text: "Remember slut, this is between you and me. No tellin' your " + sc.n("landlord") + " or I'm " +
+                "going to make you pay. Just keep that slutty ass ready for me when I want. ",
+            button: [
+                { chatID: -1, text: "Yes sir. It's our secret. ", callback: "bigguy6c" }
             ]
         },
     ];

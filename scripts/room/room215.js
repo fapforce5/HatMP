@@ -22,7 +22,7 @@ room215.main = function () {
 room215.btnclick = function (name) {
     switch (name) {
         case "whore":
-            if (g.get("energy") < 25)
+            if (gv.get("energy") < 25)
                 char.room(213);
             else {
                 g.internal = { assout: true, customer: 0, s: 0, t: 0 };
@@ -62,7 +62,7 @@ room215.chatcatch = function (callback) {
             nav.bg("215_pink/private1.jpg");
             break;
         case "private2b":
-            if (g.get("energy") < 25) {
+            if (gv.get("energy") < 25) {
                 chat(5, 215);
             }
             else {
@@ -72,7 +72,7 @@ room215.chatcatch = function (callback) {
             }
             break;
         case "private2a":
-            if (g.get("energy") < 25) {
+            if (gv.get("energy") < 25) {
                 chat(5, 215);
             }
             else {
@@ -201,20 +201,20 @@ room215.chatcatch = function (callback) {
             }, 215);
             break;
         case "fuck2":
-            g.mod("energy", -25);
-            g.mod("money", 50);
+            gv.mod("energy", -25);
+            gv.mod("money", 50);
             switch (g.internal.customer) {
                 case 0:
-                    g.mod("receiveAnalMale", 1);
-                    g.mod("creamPied", 1);
+                    gv.mod("receiveAnalMale", 1);
+                    gv.mod("creamPied", 1);
                     break;
                 case 1:
-                    g.mod("receiveAnalMale", 3);
-                    g.mod("giveHandjobMale", 3);
-                    g.mod("creamPied", 1);
+                    gv.mod("receiveAnalMale", 3);
+                    gv.mod("giveHandjobMale", 3);
+                    gv.mod("creamPied", 1);
                     break;
                 case 2:
-                    g.mod("receiveAnalFemale", 1);
+                    gv.mod("receiveAnalFemale", 1);
                     break;
             }
             nav.bg("215_pink/pr_" + g.internal.customer + "_3.jpg");
@@ -245,9 +245,9 @@ room215.chatcatch = function (callback) {
             break;
         case "ll13":
             sc.setstep("landlord", -10);
-            g.mod("receiveAnalMale", 3);
-            g.mod("receiveOralMale", 3);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 3);
+            gv.mod("receiveOralMale", 3);
+            gv.mod("creamPied", 1);
             break;
         case "c0":
             nav.killall();
@@ -276,8 +276,8 @@ room215.chatcatch = function (callback) {
         case "c7":
             menu.initBuild("init");
             nav.buildnav([215]);
-            g.mod("fuckPussy", 1);
-            g.mod("loadSwollowed", 1);
+            gv.mod("fuckPussy", 1);
+            gv.mod("loadSwollowed", 1);
             sc.setstep("chloe", -1);
             setTimeout(function () {
                 menu.mClick("contact");
@@ -310,10 +310,10 @@ room215.chatcatch = function (callback) {
             break;
         case "trio3":
             nav.bg("215_pink/pr_1_3.jpg");
-            g.mod("receiveAnalFemale", 1);
-            g.mod("receiveOralFemale", 1);
-            g.mod("receiveHandjobFemale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalFemale", 1);
+            gv.mod("receiveOralFemale", 1);
+            gv.mod("receiveHandjobFemale", 1);
+            gv.mod("creamPied", 1);
             break;
         case "trio_bad":
             nav.bg("215_pink/trio_bad.jpg");

@@ -68,6 +68,7 @@ $(document).ready(function () {
         $('.room-left').css({ height: 1080 * g.ratio + "px" });
 
         $('.char-container').css({ "height": 670 * g.ratio + "px" });
+        $('.glob-bg').css({ "height": 1080 * g.ratio + "px" });
 
         $('.char-modBtn').css({
             width: 75 * g.ratio + "px",
@@ -106,6 +107,9 @@ $(document).ready(function () {
         $(".char-20").css({
             "font-size": 20 * g.ratio + "px"
         });
+        $(".char-30").css({
+            "font-size": 30 * g.ratio + "px"
+        });
         $(".mt-10").css({
             "margin-top": 20 * g.ratio + "px"
         });
@@ -113,10 +117,12 @@ $(document).ready(function () {
             "margin-top": 60 * g.ratio + "px"
         });
         $(".resize-height").css({
-            height: 4 * g.ratio + "px"
+            height: 12 * g.ratio + "px"
         });
         $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
         $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
+        $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
+        $(".menu-box-img").css({ "width": (296 * g.ratio) + "px", "height": (90 * g.ratio) + "px" });
         char.menu();
     };
 
@@ -245,27 +251,19 @@ $(document).ready(function () {
         menu.mClick("time");
 
     });
-    
-    $('#char_cockDisplay').click(function () {
-        if ($('.room-btn[data-name="killassholeDisplayZ"]').length > 0) {
-            nav.killbutton("killassholeDisplayZ");
-        }
-        else {
-            if (g.cockDisplay === "a") {
-                nav.button({
-                    "type": "btn",
-                    "name": "killassholeDisplayZ",
-                    "left": 400,
-                    "top": 300,
-                    "width": 1200,
-                    "height": 585,
-                    "image": "../mainChar/asshole/a" + Math.floor(cl.c.butthole) + ".png"
-                }, 1);
-            }
-        }
+    $("#rl_pageSelect").children("button").click(function () {
+        g.statpage = $(this).data("number");
+        $(".rl-selectButton-active").removeClass("rl-selectButton-active");
+        $(this).addClass("rl-selectButton-active");
+        sstat.makeGraph();
     });
 
+    $(".menu-box").css({ "width": (290 * g.ratio) + "px", "height": (88 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
+    $(".menu-box-img").css({ "width": (290 * g.ratio) + "px", "height": (88 * g.ratio) + "px" });
+    $('.rl-bar').css({ "height": (15 * g.ratio) + "px" });
+    $('.left-graph-char-bar').css({ "height": (15 * g.ratio) + "px" });
     char.init();
+    char.resizewindow();
 });
 
 char.changeMenu = function (menu, update, override) {
@@ -299,7 +297,7 @@ char.changeMenu = function (menu, update, override) {
             else
                 $("#room_left_graph").is(":visible") ? $("#room_left_graph").hide() : $("#room_left_graph").show();
             $("#room_left_walk").hide();
-            char.makeGraph();
+            sstat.makeGraph();
             break;
         case "walk":
             $("#room_left_char").hide();
@@ -339,55 +337,18 @@ char.map = function () {
     var exRoom = [226, 227, 475];
     var i;
     if (!(exRoom.includes(g.roomID))) {
-        if (g.get("mapview") === "house") {
-            var tm = g.get("map");
-            var ttop = 100;
-            $('#room_left_map').html('');
-            for (i = 0; i < g.roomMap.length; i++) {
-                if (g.roomMap[i].map === tm) {
-                    var newRatio = 45 / g.roomMap[i].height;
-                    var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
-                    dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
-                    $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
-                    $('#room_left_map').append(dayNight);
-                    $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
-                    ttop += 50;
-                }
-            }
-        }
-        else {
-            var proom, top, left;
-            $('#room_left_map').html('<img src="./images/general/map0.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 100, 0) + '" />');
-            $('#room_left_map').append('<img src="./images/general/map1.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 269, 0) + '" />');
-            $('#room_left_map').append('<img src="./images/general/map2.jpg" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(169, 300, 438, 0) + '" />');
-            proom = null;
-            if (g.prevRoom !== null) {
-                if (g.roomID === 0 || g.roomID === 8) {
-                    $.each(g.rooms, function (i, v) {
-                        if (v.roomID === g.prevRoom) {
-                            proom = v.houseID;
-                            return;
-                        }
-                    });
-                }
-                else {
-                    $.each(g.rooms, function (i, v) {
-                        if (v.roomID === g.roomID) {
-                            proom = v.houseID;
-                            return;
-                        }
-                    });
-                }
-            }
-            if (proom !== null) {
-                $.each(g.roomMap, function (i, v) {
-                    if (v.roomID === proom) {
-                        top = 100 + (v.map * 169) + ((v.top + (v.height / 2)) * .1564);
-                        left = ((v.left + (v.width / 2)) * .1564);
-                        $('#room_left_map').append('<img src="./images/general/spot.gif" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(20, 20, top, left) + '" />');
-                        return;
-                    }
-                });
+        var tm = gv.get("map");
+        var ttop = 100;
+        $('#room_left_map').html('');
+        for (i = 0; i < g.roomMap.length; i++) {
+            if (g.roomMap[i].map === tm) {
+                var newRatio = 45 / g.roomMap[i].height;
+                var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
+                dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
+                $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
+                $('#room_left_map').append(dayNight);
+                $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
+                ttop += 50;
             }
         }
     }
@@ -415,7 +376,7 @@ char.makeWalk = function () {
         $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
         $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="oncase">' +
             '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
-            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">Active Case</div>' +
+            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">What Do I Do?</div>' +
             '</div>');
         $.each(sc.char, function (i, v) {
             if (v.show) {
@@ -432,7 +393,7 @@ char.makeWalk = function () {
     }
     else {
         if (g.walk === "oncase") {
-            var oncase = g.get("oncase");
+            //var oncase = gv.get("oncase");
             var oncaseText = '';
             $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
             $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
@@ -443,63 +404,14 @@ char.makeWalk = function () {
                 '</div>' +
                 '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
 
-            switch (oncase) {
-                case "smolpp":
-                case "bigboobs":
-                case "bigass":
-                case "dslLips":
-                    oncaseText = "Go home and sleep to transition. ";
-                    break;
-                case "cult0":
-                    oncaseText = "Get information on the cult. ";
-                    break;
-                case "redroom":
-                    oncaseText = "Take the elevator up to the Red Room and pass the tests. ";
-                    break;
-                case "gloryholebj":
-                    oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
-                        "at the park. ";
-                    break;
-                case "gloryholeanal":
-                    oncaseText = "Visit the glory hole during the weekend before 5PM. It's located in the men's bathroom " +
-                        "at the park. ";
-                    break;
-                case "shopping":
-                    oncaseText = "Visit Tiffany at The Toy Store for your shopping trip!";
-                    break;
-                case "clothes0":
-                case "clothes1":
-                case "clothes2":
-                case "clothes3":
-                    oncaseText = "Visit Mr. Jones at his Mansion north east of the suburbs. Follow his instructions. ";
-                    break;
-                case "dinerfail":
-                case "dinersuccess":
-                    oncaseText = "Report your investigation to Missy in her office. ";
-                    break;
-                case "diner":
-                    oncaseText = "Report to the Naked Beaver diner and try to figure out which waitress has been " +
-                        "stealing from Jeffery. ";
-                    break;
-                case "sewer":
-                    oncaseText = "First visit Gertrude in the gym to get the crowbar.</li>" +
-                        "<li>Use that crowbar to enter the sewer on the street next to the dance club</li>" +
-                        "<li>Fight your way through the clown clan to the very last room to get Missy's Red Box.</li>" +
-                        "<li>Once you get the Red Box Return to Missy's office.";
-                    break;
-                case "queen":
-                    oncaseText = "Sneak into the Forest Queen's cottage at night. To get there take the paths behind the " +
-                        "park bathroom and find her cottage. "
-                    break;
-                default:
-                    break;
-            }
+            oncaseText = missy.activecase().txt;
+
             $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
                 '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
                 oncaseText + '</li></ul>');
             if (g.roomID === 0) {
                 room0.main();
-                $("#room_left_walk").show();
+                //$("#room_left_walk").show();
             }
             $(".char-walkthrough-return").click(function () {
                 g.walk = null;
@@ -591,14 +503,14 @@ char.newdayfake = function () {
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
 
-    g.newday();
+    daily.newday();
     nav.buildclock();
     cl.hairgrowth();
-    g.set("energy", 10);
-    g.set("jobConstWorkToday", 0);
-    g.mod('hormone', -2);
+    gv.set("energy", 10);
+    gv.set("jobConstWorkToday", 0);
+    gv.mod('hormone', -2);
     cl.energydisplay();
-    g.set("arousal", 0);
+    gv.set("arousal", 0);
     cl.cockDisplay();
 };
 
@@ -668,7 +580,7 @@ char.room = function (roomID) {
     if ($('#room-menuButtons').is(":visible"))
         inv.close();
     g.prevRoom = g.roomID;
-
+    g.internal = null;
 
     g.roomID = roomID;
     g.dt = char.addMinutes(g.dt, 2);
@@ -728,8 +640,8 @@ menu.initBuild = function (type) {
     if (type === "save") {
         $('.menu-button[data-type="menu"]').remove();
         menu.mClick("save");
-
     }
+    sstat.init();
 };
 
 menu.mClick = function (type) {
@@ -818,12 +730,12 @@ menu.mClick = function (type) {
             window.open("https://www.patreon.com/FF5", "_blank"); 
             break;
         case "hormone":
-            var tempEnergy = Math.floor((g.get("energy") / g.get("maxenergy")) * 100);
+            var tempEnergy = Math.floor((gv.get("energy") / gv.get("maxenergy")) * 100);
             $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
                 '<div style="padding:10%;">' +
                 '<div style="font-size:' + 20 * g.ratio + 'px; margin-bottom:5px;">Hormone Levels</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#00abff; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("hormone") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("hormone") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
                 '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Sissyness</div>' +
@@ -841,19 +753,19 @@ menu.mClick = function (type) {
                 '<div style="width: ' + tempEnergy + '%; height:' + 15 * g.ratio + 'px; background:#20C000; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
-                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Fitness Level: ' + g.get("fitnessLevel") + '</div>' +
+                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Fitness Level: ' + gv.get("fitnessLevel") + '</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("fitness") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("fitness") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
-                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Leg Level: ' + g.get("legLevel") + '</div>' +
+                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Leg Level: ' + gv.get("legLevel") + '</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("leg") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("leg") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
-                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Upper Body Level: ' + g.get("bodyLevel") + '</div>' +
+                '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Upper Body Level: ' + gv.get("bodyLevel") + '</div>' +
                 '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-                '<div style="width: ' + g.get("body") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
+                '<div style="width: ' + gv.get("body") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
                 '</div>' +
 
                 '</div></div>');
@@ -864,7 +776,7 @@ menu.mClick = function (type) {
             $('#menu_parent').append('<img class="sissyai-kill" src="./images/phone/sissy.jpg" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + '"/>');
             $('#menu_parent').append('<div class="sissyai-kill" style="color:#e1018f; position:absolute; ' + g.makeCss(250, 500, 650, 700) + ' font-size:' + (40 * g.ratio) + 'px;">' +
                 '<table style="width:100%;">' +
-                '<tr><td>SISSY Points: </td><td> ' + (g.sp.total - g.get("usedSissyPoints")) + '</td></tr>' +
+                '<tr><td>SISSY Points: </td><td> ' + (g.sp.total - gv.get("usedSissyPoints")) + '</td></tr>' +
                 '<tr><td>&nbsp;</td><td></td></tr>' +
                 '<tr><td colspan="2"><button id="sissyai_view" type="button" class="sissy-btn" style="font-size:' + (40 * g.ratio) + 'px;">View Sissyness</button></tr></td>' +
                 '</table></div>');
@@ -886,7 +798,7 @@ menu.mClick = function (type) {
             });
             break;
         case "admin":
-            if (g.get("cheatMode")) {
+            if (gv.get("cheatMode")) {
                 $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
                     '<h2>Cheat Status: ACTIVE</h2>Thank you for your support!<hr/><br />' +
                     '<div style="font-size:' + 24 * g.ratio + 'px;">' +
@@ -903,14 +815,14 @@ menu.mClick = function (type) {
                 $(".admin-mod").click(function () {
                     switch ($(this).data("type")) {
                         case "money":
-                            g.set("money", 1000000);
-                            $('#char_money').text('$1000000');
+                            gv.set("money", 1000000);
+                            //$('#char_money').text('$1000000');
                             break;
                         case "energyp":
-                            g.mod("energy", 10000);
+                            gv.mod("energy", 10000);
                             break;
                         case "horneyp":
-                            g.set("cheatPoints", 10000);
+                            gv.set("cheatPoints", 10000);
                             break;
                         case "lolaEva":
                             var thisStep = $(this).data("step");
@@ -953,13 +865,13 @@ menu.mClick = function (type) {
                                     cl.add("accessories", "piggy");
                                     if (cl.c.chest === 0)
                                         cl.c.chest = 1;
-                                    g.mod("fitnessLevel", 1);
+                                    gv.mod("fitnessLevel", 1);
                                     sc.setstep("tiffany", -4);
                                     sc.setstep("tiffany", 5);
                                     sc.setstep("me", -1);
                                     sc.setstep("me", -2);
                                     sc.setstepAll("missy", 10);
-                                    g.set("bodyhair", 0);
+                                    cl.c.bodyhair = 0;
                                     inv.add("razor", 1);
                                     sc.setstepAll("me", 2);
                                     g.roomMapAccess(203, true, false);
@@ -983,7 +895,7 @@ menu.mClick = function (type) {
                                 g.popUpNotice("You've already passed this point.");
                             break;
                         case "uncheat":
-                            g.mod("cheatMode", false);
+                            gv.mod("cheatMode", false);
                             menu.mClick("admin");
                             break;
                     }
@@ -992,14 +904,14 @@ menu.mClick = function (type) {
             else {
                 $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center; font-size:' + 24 * g.ratio + 'px;">' +
                     "<h2>Cheat Status: INACTIVE</h2>" +
-                    "This cheat menu is a thank you to all the great support I\'ve received from my $5 anf $10 Patrons." +
+                    "This cheat menu is a thank you to all the great support I've received from my $5 anf $10 Patrons." +
                     "The game is designed to be played without this cheat activated. So if you don't use cheat you're not missing anything. " +
                     '<button type="button" class="intro-button" id="cheat_passwordSubmit" style="font-size:' + 24 * g.ratio + 'px;">I\'m a Patreon Supporter<br/>Activate Cheats</button><br/>' +
                     '<button type="button" class="intro-button" id="cheat_cancel" style="font-size:' + 24 * g.ratio + 'px;">I\'m not a Patreon Supporter<br/>Cancel</button>' +
                     '<br/><br/>Thank you so much for playing.' +
                     '</div>');
                 $('#cheat_passwordSubmit').click(function () {
-                    g.mod("cheatMode", true);
+                    gv.mod("cheatMode", true);
                     menu.mClick("admin");
                 });
                 $("#heat_cancel").click(function () {
@@ -1178,41 +1090,40 @@ menu.mClick = function (type) {
                 '</div>' +
                 '</div>' +
                 '<div class="switch-group char-20">' +
-                ' Map View' +
+                ' Clock' +
                 '<div class="switch-field" >' +
-                '<input type="radio" id="radio-street" name="switch-map" value="street" />' +
-                '<label for="radio-street">Street</label>' +
-                '<input type="radio" id="radio-house" name="switch-map" value="house" />' +
-                '<label for="radio-house">Houses</label>' +
+                '<input type="radio" id="radio-12" name="switch-clock" value="12" />' +
+                '<label for="radio-12">12 Hour</label>' +
+                '<input type="radio" id="radio-24" name="switch-clock" value="24" />' +
+                '<label for="radio-24">24 Hour</label>' +
                 '</div>' +
                 '</div>' +
                 '</div>');
             $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
             $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
-            $('#radio-fantasy-' + g.get("fantasyCreatures")).prop("checked", true);
-            $('#radio-fightspeed-' + g.get("fightspeed")).prop("checked", true);
-            $('#radio-fightsex-' + g.get("fightsex")).prop("checked", true);
-            $('#radio-' + g.get("mapview")).prop("checked", true);
-            $('#radio-diff-' + g.get("difficulty")).prop("checked", true);
+            $('#radio-fantasy-' + gv.get("fantasyCreatures")).prop("checked", true);
+            $('#radio-fightspeed-' + gv.get("fightspeed")).prop("checked", true);
+            $('#radio-fightsex-' + gv.get("fightsex")).prop("checked", true);
+            $('#radio-' + gv.get("clock24")).prop("checked", true);
+            $('#radio-diff-' + gv.get("difficulty")).prop("checked", true);
 
             $('input[type=radio][name=switch-fantasy]').change(function () {
-                g.set("fantasyCreatures", $(this).val() === "on");
+                gv.set("fantasyCreatures", $(this).val() === "on");
             });
-            $('input[type=radio][name=switch-map]').change(function () {
-                g.set("mapview", $(this).val());
-                if (g.prevview === "map")
-                    char.map();
+            $('input[type=radio][name=switch-clock]').change(function () {
+                gv.set("clock24", $(this).val());
+                nav.buildclock();
             });
             $('input[type=radio][name=switch-difficulty]').change(function () {
-                g.set("difficulty", parseInt($(this).val()));
+                gv.set("difficulty", parseInt($(this).val()));
             });
             $('input[type=radio][name=switch-fightspeed]').change(function () {
-                g.set("fightspeed", parseInt($(this).val()));
+                gv.set("fightspeed", parseInt($(this).val()));
                 if (g.fight !== null)
                     g.fight.fighttimer = parseInt($(this).val());
             });
             $('input[type=radio][name=switch-fightsex]').change(function () {
-                g.set("fightsex", parseInt($(this).val()));
+                gv.set("fightsex", parseInt($(this).val()));
                 if (g.fight !== null)
                     g.fight.fightsex = parseInt($(this).val());
             });
@@ -1290,7 +1201,9 @@ menu.makeSaves = function () {
         cl: cl.save(),
         sc: sc.save(),
         scc: scc.save(),
-        pic: pic.save()
+        pic: pic.save(),
+        gv: gv.save(),
+        missy: missy.save()
     };
 };
 
@@ -1308,6 +1221,7 @@ menu.saveBtn = function(btn) {
 };
 
 menu.save = function (cookieName, btn, saveID) {
+    
     if (g.saveState !== null) {
         var timeDiff = Math.abs(g.dt.getTime() - g.startDate.getTime());
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -1346,7 +1260,9 @@ g.saveState = {
     cl: cl.save(),
     sc: sc.save(),
     scc: scc.save(),
-    pic: pic.save()
+    pic: pic.save(),
+    gv: gv.save(),
+    missy: missy.save()
 };
 menu.load = function (cookieName, btn, saveID) {
     if (g.newLoad) {
@@ -1368,11 +1284,13 @@ menu.load = function (cookieName, btn, saveID) {
     cl.load(tp.cl);
     sc.load(tp.sc);
     scc.load(tp.scc);
+    gv.load(tp.gv);
+    missy.load(tp.missy);
     try {
         pic.load(tp.pic);
     }
     catch (err) {
-        var thisIsfoobar = 1;
+        console.log(err);
     }
     char.map();
     cl.display();
@@ -1436,7 +1354,6 @@ char.initGame = function () {
     cl.init();
     g.pass = g.internal = "";
     g.initGame();
-    sc.setMax();
     m.createFmap();
 
     for (i = 0; i < g.roomMap.length; i++) {
@@ -1491,11 +1408,13 @@ char.menu = function () {
         "left": 1800 * g.ratio + "px"
     });
     $('#room-numbers').css({
-        "width": 370 * g.ratio + "px",
-        "height": 50 * g.ratio + "px",
-        "top": 10 * g.ratio + "px",
-        "left": 400 * g.ratio + "px"
+        "width": 290 * g.ratio + "px",
+        "margin-top": 50 * g.ratio + "px"
     });
+    //    "height": 50 * g.ratio + "px",
+    //    "top": 10 * g.ratio + "px",
+    //    "left": 400 * g.ratio + "px"
+    //});
     $('#room-inv').css({
         "width": 100 * g.ratio + "px",
         "height": 100 * g.ratio + "px",
@@ -1519,147 +1438,7 @@ char.menu = function () {
     });
 };
 
-char.makeGraph = function () {
-    //if ($("#room_left_graph").is(":visible")) {
-    var i;
-    var energy, maxenergy, oral, cock, anal, sissy, hormone, cheerlevel;
-    oral = cock = anal = 0;
-    for (i = 0; i < g.st.length; i++) {
-        switch (g.st[i].n) {
-            case "energy":
-                energy = g.st[i].t;
-                break;
-            case "maxenergy":
-                maxenergy = g.st[i].t;
-                break;
-            case "leg":
-                $(".rl-bar[data-name='leg']").css({ width: g.st[i].t + "%" });
-                break;
-            case "legLevel":
-                $("#rl_kick").html("Kick Power: " + tEnemy.getKick());
-                break;
-            case "body":
-                $(".rl-bar[data-name='body']").css({ width: g.st[i].t + "%" });
-                break;
-            case "bodyLevel":
-                $("#rl_punch").html("Punch Power: " + tEnemy.getPunch());
-                break;
-            case "d":
-                $(".rl-bar[data-name='d']").css({ width: g.st[i].t + "%" });
-                break;
-            case "dLevel":
-                $("#rl_d").html("Defense: " + tEnemy.getDefense());
-                break;
-            case "fitness":
-                $(".rl-bar[data-name='fitness']").css({ width: g.st[i].t + "%" });
-                break;
-            case "fitnessLevel":
-                $("#rl_fitness").html("Fitness: [" + g.st[i].t + "] <span class='char-12' style='font-size:" + (12 * g.ratio) + "px;'>" + (maxenergy - 100) + " Energy bonus</span>");
-                break;
-            case "hormone":
-                hormone = g.st[i].t;
-                $(".rl-bar[data-name='hormone']").css({ width: g.st[i].t + "%" });
-                break;
-            case "sissy":
-                sissy = g.st[i].t;
-                $(".rl-bar[data-name='sissy']").css({ width: g.st[i].t + "%" });
-                break;
-            case "subdom":
-                if (g.st[i].t > 75) 
-                    $("#rl_subdom").text("Domme");
-                else if (g.st[i].t > 55) 
-                    $("#rl_subdom").text("Little Domme");
-                else if (g.st[i].t > 45) 
-                    $("#rl_subdom").text("Neutral");
-                else if (g.st[i].t > 25) 
-                    $("#rl_subdom").text("Submissive");
-                else 
-                $("#rl_subdom").text("Submissive Slut");
-                $(".rl-bar[data-name='subdom']").css({ width: g.st[i].t + "%" });
-                break;
-            case "cheerleader":
-                cheerlevel = g.st[i].t;
-                $(".rl-bar[data-name='cheerleader']").css({ width: g.st[i].t + "%" });
-                break;
-            case "cheerlevel":
-                console.log(cheerlevel)
-                if (cheerlevel > 95 && g.st[i].t < 7) {
-                    $("#rl_cheer").text(g.st[i].t + ". Attend Cheerleader Practice");
-                }
-                else {
-                    switch (g.st[i].t) {
-                        case 0:
-                            $("#rl_cheer").text("Not a Cheerleader");
-                            break;
-                        case 1:
-                            $("#rl_cheer").text("1. Clumsy Cheerleader");
-                            break;
-                        case 2:
-                            $("#rl_cheer").text("2. Dumb Cheerleader");
-                            break;
-                        case 3:
-                            $("#rl_cheer").text("3. (Cheer) Washing Machine");
-                            break;
-                        case 4:
-                            $("#rl_cheer").text("4. Beginner Cheerleader");
-                            break;
-                        case 5:
-                            $("#rl_cheer").text("5. (Cheer) Stacy's Bitch");
-                            break;
-                        case 6:
-                            $("#rl_cheer").text("6. (Cheer) Konga Line");
-                            break;
-                        case 7:
-                            $("#rl_cheer").text("7. Cheer for the Game!");
-                            break;
-                        case 8:
-                            $("#rl_cheer").text("Small Dick Loser");
-                            break;
-                        case 9:
-                            $("#rl_cheer").text("Cheerleader!");
-                            break;
-                        case 10:
-                            $("#rl_cheer").text("Cheerleader Cum Bucket");
-                            break;
-                        default:
-                            break;;
-                    }
-                }
-                break;
-            //case "sissyLevel":
-            //    $("#rl_sissy").html("Sissy: " + g.st[i].t);
-            //    break;
-        }
-    }
 
-    $("#rl_energy").html("Energy: " + energy + "/" + maxenergy);
-    $(".rl-bar[data-name='energy']").css({ width: ((energy / maxenergy) * 100) + "%" });
-    var rlTempCock = "s";
-    if (cl.c.chastity !== null)
-        rlTempCock = "c";
-    else if (cl.c.cock < 3)
-        rlTempCock = "b";
-
-    $("#rl_fightdisplay0").attr("src", "./images/room/227_fight/g_victory_" + (cl.c.chest > 2 ? "f" : "m") + ".png");
-    $("#rl_fightdisplay1").attr("src", "./images/room/227_fight/g_victory_d_" + rlTempCock + ".png");
-    if (cl.c.hairLength > 1) {
-        $("#rl_fightdisplay2").attr("src", "./images/room/227_fight/h_8_long.png");
-        $("#rl_fightdisplay-1").attr("src", "./images/room/227_fight/h_8_long_back.png");
-    }
-    else {
-        $("#rl_fightdisplay2").attr("src", "./images/room/227_fight/h_8_short.png");
-        $("#rl_fightdisplay-1").attr("src", "./images/room/227_fight/h_9_long_back.png");
-    }
-
-    if (hormone < 10) 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Hairy Boy");
-    else if (hormone < 50) 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Boyish");
-    else if (sissy < 75) 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Feminine");
-    else 
-        $("#rl_hormone").html(" &nbsp;&nbsp;Girly");
-};
 
 char.export = function (saveID) {
     var cookieName = 'HatMP_' + saveID;
@@ -1689,11 +1468,13 @@ char.import = function () {
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
+    gv.load(tp.gv);
+    missy.load(tp.missy);
     try {
         pic.load(tp.pic);
     }
     catch (err) {
-        var thisIsfoobar = 1;
+        console.log(err);
     }
     cl.display();
     char.room(g.roomID);

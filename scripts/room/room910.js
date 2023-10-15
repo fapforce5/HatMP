@@ -53,12 +53,12 @@ room910.chatcatch = function (callback) {
     switch (callback) {
         case "pay":
             if (!inv.has("pi_lic")) {
-                g.mod("money", -100);
+                gv.mod("money", -100);
                 inv.update("pi_lic", true, null);
             }
             break;
         case "changename":
-            if (g.get("money") < 100)
+            if (gv.get("money") < 100)
                 chat(7, 910);
             else if (sc.getstep("govlady") > 0)
                 chat(6, 910);
@@ -69,8 +69,8 @@ room910.chatcatch = function (callback) {
             break;
         case "changeit":
             var temp = sc.n("me");
-            sc.setcharname("me", g.get("girlname"));
-            g.set("girlname", temp);
+            sc.setcharname("me", gv.get("girlname"));
+            gv.set("girlname", temp);
             sc.setstep("govlady", 1);
             char.addtime(30);
             break;
@@ -90,7 +90,7 @@ room910.chat = function (chatID) {
             speaker: "govlady",
             text: "yea",
             button: [
-                { chatID: (g.get("money") < 100 ? 5: 1), text: "I would like to purchase a Private Investigator License ", callback: "" },
+                { chatID: (gv.get("money") < 100 ? 5: 1), text: "I would like to purchase a Private Investigator License ", callback: "" },
                 { chatID: -1, text: "I would like to change my name ", callback: "changename" }
             ]
         },
@@ -153,7 +153,7 @@ room910.chat = function (chatID) {
             text: "Name changes are $100 and you can only change your name once. It's a big step sweetie. Are you sure?",
             button: [
                 { chatID: -1, text: "Nevermind", callback: "" },
-                { chatID: 9, text: "I'm ready. Change my name to " + g.get("girlname") + ".", callback: "changeit" }
+                { chatID: 9, text: "I'm ready. Change my name to " + gv.get("girlname") + ".", callback: "changeit" }
             ]
         },
         {
@@ -178,7 +178,7 @@ room910.chat = function (chatID) {
             text: "Would you like to change your name?",
             button: [
                 { chatID: -1, text: "Nope", callback: "" },
-                { chatID: 12, text: "Yes! change my name to " + g.get("girlname") + ".", callback: "" },
+                { chatID: 12, text: "Yes! change my name to " + gv.get("girlname") + ".", callback: "" },
             ]
         },
         {

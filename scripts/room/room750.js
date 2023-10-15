@@ -1,22 +1,40 @@
 ﻿//Room name
 var room750 = {};
 room750.main = function () {
-    if (sc.getstep("doc") < 3) {
-        var btnList = [
-            {
-                "type": "btn",
-                "name": "doc",
-                "left": 1176,
-                "top": 295,
-                "width": 303,
-                "height": 710,
-                "image": "750_homeless/doctor.png"
-            }
-        ];
-        $.each(btnList, function (i, v) {
-            nav.button(v, 750);
-        });
+    if (g.isNight()) {
+        nav.button({
+            "type": "btn",
+            "name": "whoretent",
+            "left": 969,
+            "top": 443,
+            "width": 234,
+            "height": 139,
+            "image": "750_homeless/whore.png",
+            "night": "750_homeless/whoreNight.png"
+        }, 750);
+        //if (sc.getstep("doc") < 3) {
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "doc",
+        //        "left": 1176,
+        //        "top": 295,
+        //        "width": 303,
+        //        "height": 710,
+        //        "image": "750_homeless/doctor.png"
+        //    }, 750);
+        //}
     }
+    //else {
+    //    nav.button({
+    //        "type": "btn",
+    //        "name": "daletent",
+    //        "left": 969,
+    //        "top": 443,
+    //        "width": 234,
+    //        "height": 139,
+    //        "image": "750_homeless/dale.png"
+    //    }, 750);
+    //}
     nav.button({
         "type": "btn",
         "name": "crystal",
@@ -27,14 +45,17 @@ room750.main = function () {
         "image": "750_homeless/crystal.png",
         "night": "750_homeless/crystalnight.png"
     }, 750);
-    var navList = [751, 0];
+    var navList = [751, 752, 0];
     nav.buildnav(navList);
+    if (g.isNight()) {
+        fame.event();
+    }
 };
 
 room750.btnclick = function (name) {
     switch (name) {
         case "doc":
-            if (!g.get("doc")) {
+            if (!daily.get("doc")) {
                 nav.killbutton("doc");
                 nav.button({
                     "type": "btn",
@@ -59,6 +80,16 @@ room750.btnclick = function (name) {
         case "crystal":
             char.room(751);
             break;
+        case "daletent":
+            nav.killall();
+            nav.bg("750_homeless/dale.jpg");
+            if (sc.getstep("dale") === 0) {
+                chat(17, 750);
+            }
+            break;
+        case "whoretent":
+            char.room(752);
+            break;
         default:
             break;
     }
@@ -68,7 +99,7 @@ room750.chatcatch = function (callback) {
     switch (callback) {
         case "doc0":
             sc.setstep('doc', 1);
-            g.setflag("doc");
+            daily.set("doc");
             char.addtime(30);
             char.room(750);
             break;
@@ -122,6 +153,16 @@ room750.chatcatch = function (callback) {
         case "reset":
             char.addtime(7);
             char.room(750);
+            break;
+        case "char":
+            levels.mod("charisma", 40, 999);
+            break;
+        case "int":
+            levels.mod("int", 40, 999);
+            break;
+        case "buy":
+            g.pass = "dale";
+            char.room(401);
             break;
         default:
             break;
@@ -271,6 +312,70 @@ room750.chat = function (chatID) {
                 " at the sperm bank and get back into the house!",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "dale",
+            text: "Hey man. Are you a cop? You know you have to tell me if you are. ",
+            button: [
+                { chatID: 19, text: "No. I'm not a cop. ", callback: "char" },
+                { chatID: 18, text: "You know that's dumb right? Cops don't have to say they're cops. ", callback: "int" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "dale",
+            text: "You're a cop aren't you? You have to go cop! ",
+            button: [
+                { chatID: 19, text: "No. I'm not a cop. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "dale",
+            text: "Ok. good. You know the only power cops have is other people. If you get a bunch of people then you can be the " +
+                "the cops. But then you would be a cop and who wants that. ",
+            button: [
+                { chatID: 20, text: "Yea... ", callback: "" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "dale",
+            text: "So did you come here for the aliens? I sold all those. Made quite a bit on money. I can sell you some info " +
+                "on how to get your own aliens. The thing about aliens is that they're all over and no one even knows. They're " +
+                "tough too! Really tough, but no match for me! ",
+            button: [
+                { chatID: 21, text: "Have you beat up an alien?", callback: "" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "dale",
+            text: "Well no. Never beat one up, but I could. Everyone wants to fight fair. Life is not a boxing rink, life " +
+                "is the deep sea. There's no rules. Becuase rules were made to be broken, so why have them. That's why I live " +
+                "without rules. You know the secret to beating an alien? ",
+            button: [
+                { chatID: 22, text: "What? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "dale",
+            text: "Pocket sand and smelling salts. You take a little pocket sand and throw it in their face, Boom! They can't " +
+                "fight anymore! Unless they have no eyes. Then you can't fight. But you can use smelling salts to get back up! " +
+                "Do you carry pocket sand or smelling salts? You'll need them. ",
+            button: [
+                { chatID: 23, text: "I don't. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "dale",
+            text: "Lucky for you I sell both! Come view my stuff man! ",
+            button: [
+                { chatID: -1, text: "See what he has. ", callback: "buy" },
             ]
         },
     ];

@@ -20,10 +20,11 @@ m.drawBackground = function (row, col) {
     }
     else {
         var bg = m.drawBackgroundSub(row, col);
+        var pathCounter = 0;
 
         nav.bg("475_fight/" + bg + ".jpg");
         if (row > 0) {
-            if (m.fmap[row - 1][col].used !== 'x')
+            if (m.fmap[row - 1][col].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "north",
@@ -34,9 +35,11 @@ m.drawBackground = function (row, col) {
                     "height": 489,
                     "image": "475_fight/" + bg + "_n.jpg"
                 }, 475);
+                pathCounter++;
+            }
         }
         if (row < m.row - 1) {
-            if (m.fmap[row + 1][col].used !== 'x')
+            if (m.fmap[row + 1][col].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "south",
@@ -47,9 +50,11 @@ m.drawBackground = function (row, col) {
                     "height": 591,
                     "image": "475_fight/" + bg + "_s.jpg"
                 }, 475);
+                pathCounter++;
+            }
         }
         if (col > 0) {
-            if (m.fmap[row][col - 1].used !== 'x')
+            if (m.fmap[row][col - 1].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "west",
@@ -60,9 +65,11 @@ m.drawBackground = function (row, col) {
                     "height": 440,
                     "image": "475_fight/" + bg + "_w.jpg"
                 }, 475);
+                pathCounter++;
+            }
         }
         if (col < m.col - 1) {
-            if (m.fmap[row][col + 1].used !== 'x')
+            if (m.fmap[row][col + 1].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "east",
@@ -73,7 +80,11 @@ m.drawBackground = function (row, col) {
                     "height": 440,
                     "image": "475_fight/" + bg + "_e.jpg"
                 }, 475);
+                pathCounter++;
+            }
         }
+        if (pathCounter === 0)
+            char.room(460);
     }
     
 };
@@ -142,12 +153,12 @@ m.getDir = function (n, d) {
 m.createFmap = function () {
     var i, j, k, l, c, r, tf;
 
-    var x = g.get("forestMap");
+    var x = gv.get("forestMap");
     if (x === null)
         m.createFmapNew();
     else {
-        var y = g.get("forestVisit");
-        //var z = g.get("forestID");
+        var y = gv.get("forestVisit");
+        //var z = gv.get("forestID");
         //var xa = x.split(",");
         var ya = y.split(",");
         m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));
@@ -320,14 +331,14 @@ m.createFmapNew = function () {
                 tx += m.getNum(i, j) + ",";
         }
     }
-    g.set("forestVisit", tx);
+    gv.set("forestVisit", tx);
     var forestString = "";
 
     for (i = 1; i < 79; i++) {
         for (j = 1; j < 19; j++)
             forestString += m.fmap[i][j].used;
     }
-    g.set("forestMap", forestString);
+    gv.set("forestMap", forestString);
 };
 
 m.updateVisit = function () {
@@ -339,7 +350,7 @@ m.updateVisit = function () {
                 tx += m.getNum(i, j) + ",";
         }
     }
-    g.set("forestVisit", tx);
+    gv.set("forestVisit", tx);
 };
 
 m.getNum = function (i, j) {

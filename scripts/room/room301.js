@@ -222,7 +222,7 @@ room301.chatcatch = function (callback) {
             break;
         case "envy2":
             sc.setstep("envy", 3);
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.addtime(180);
             char.room(300);
             break;
@@ -320,12 +320,12 @@ room301.chatcatch = function (callback) {
             }
             break;
         case "movieBadEnd":
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.addtime(180);
             char.room(300);
             break;
         case "movieGoodEnd":
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.addtime(180);
             sc.setstep("envy", 4);
             char.room(300);
@@ -337,7 +337,7 @@ room301.chatcatch = function (callback) {
         case "envy3end":
             sc.setstep("envy", 5);
             sc.setstep("spanky", -1);
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.addtime(180);
             char.room(300);
             break;
@@ -382,7 +382,7 @@ room301.chatcatch = function (callback) {
             room301.chatcatch("drawbggame");
             break;
         case "boardgameend":
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.room(0);
             break;
         case "hypno0":
@@ -418,7 +418,7 @@ room301.chatcatch = function (callback) {
                 chat(35, 301);
             }
             else {
-                chat(34, 301);
+                chat(112, 301);
             }
             break;
         case "hypno1":
@@ -556,7 +556,7 @@ room301.chatcatch = function (callback) {
                     break;
             };
             char.addtime(120);
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.room(0);
             break;
         case "leave":
@@ -661,10 +661,10 @@ room301.chatcatch = function (callback) {
             break;
         case "step11end":
             sc.setstep("envy", 12);
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             char.addtime(120);
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.room(0);
             break;
         case "step12":
@@ -682,10 +682,10 @@ room301.chatcatch = function (callback) {
             }, 301);
             break;
         case "step12end":
-            g.mod("fuckPussy", 1);
+            gv.mod("fuckPussy", 1);
             cl.doCum(false);
             char.addtime(120);
-            g.setflag("envyDayEvent");
+            daily.set("envy");
             char.room(0);
             break;
         case "step13_0":
@@ -718,7 +718,7 @@ room301.chatcatch = function (callback) {
             break;
         case "step13end":
             sc.setstep("envy", 14);
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             cl.doCum(false);
             char.room(0);
             break;
@@ -759,10 +759,14 @@ room301.chatcatch = function (callback) {
         case "envy":
             sc.setstep("envy", 16);
             char.addtime(60);
-            g.mod("money", 500);
-            g.setflag("rachelDayEvent");
-            g.set("map", 0);
+            gv.mod("money", 500);
+            daily.set("rachel");
+            gv.set("map", 0);
             char.room(325);
+            break;
+        case "envy100":
+            sc.setstep("envy", 100);
+            char.room(0);
             break;
         default:
             break;
@@ -1256,7 +1260,8 @@ room301.chat = function (chatID) {
                 text: "So what do you want to do? ",
                 button: [
                     { chatID: -1, text: "Play a board game", callback: "boardgame" },
-                    { chatID: -1, text: "Watch a movie ", callback: "hypnoLoop0" }
+                    { chatID: -1, text: "Watch a movie. Let's see how far this goes. ", callback: "hypnoLoop0" },
+                    { chatID: 113, text: "Confess Spanky's plan. ", callback: "" },
                 ]
             },
             {
@@ -1809,6 +1814,69 @@ room301.chat = function (chatID) {
                     "the pillow and shoves it up her ass to save it for later! This slut is the best! ",
                 button: [
                     { chatID: 96, text: "ok", callback: "" },
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "thinking",
+                text: "Spanky's probably full of shit. I'll have to get the movie just to see how full of shit he " +
+                    "is. I'll even watch it with her so I can tell him he's full of shit myslef!",
+                button: [
+                    { chatID: 33, text: "Oh. I forgot to get a movie. I'll have to bring one next time. ", callback: "boardgameset" }
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "me",
+                text: sc.n("envy") + " I have to confess. The movie we watched last night was a " +
+                    "hypno movie. I ran into Spanky in the hallway a few days ago and he told me that he made " +
+                    "some videos that would... basically turn you on. I thought he was full of crap so I plugged " +
+                    "it in last time and it looks like it worked. I didn't mean to hurt you. ",
+                button: [
+                    { chatID: 114, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "envy",
+                text: "I don't understand... what did we watch? ",
+                button: [
+                    { chatID: 115, text: "A video that hypnotises you into being more slutty. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "envy",
+                text: "WHAT! Is that why I've been masturbating all day! It's like my vagina is in constant need " +
+                    "of orgasms! I haven't been able to read more than 5 pages of War and Peace without touching " +
+                    "myself. I thought it was becuase I've been working out more my libido had risen. AKKKKK. ",
+                button: [
+                    { chatID: 116, text: "I'm sorry? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "envy",
+                text: "Don't be sorry! Fix this! Fix this right now! I've got to study and I can't concentrate at " +
+                    "all! If I fail my classes becuase I can't stop masturbating I'm going to kill you! ",
+                button: [
+                    { chatID: 117, text: "I don't know how to fix it. Maybe you need to have sex?", callback: "" }
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "envy",
+                text: "I'm not going to FUCK YOU! Go to Spanky and ask him how to fix me! Fix me now! ",
+                button: [
+                    { chatID: 118, text: "Ok. I'll talk to Spanky and ask him.", callback: "" }
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "envy",
+                text: "Don't stare at me! Talk to SPANKY and fix me now! ",
+                button: [
+                    { chatID: -1, text: "Oh yeah. I'm going.", callback: "envy100" }
                 ]
             },
         ];

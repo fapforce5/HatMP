@@ -1,6 +1,7 @@
 ﻿//Living Room
 var room26 = {};
 room26.main = function () {
+
     if (g.prevRoom === 8 && g.pass === 26) {
         nav.button({
             "type": "btn",
@@ -44,6 +45,17 @@ room26.main = function () {
                     "height": 930,
                     "image": "26_livingRoom/ll.png"
                 });
+                if (sc.getstep("bigguy") === 6) {
+                    btnList.push({
+                        "type": "btn",
+                        "name": "bigguy",
+                        "left": 430,
+                        "top": 80,
+                        "width": 303,
+                        "height": 303,
+                        "image": "26_livingRoom/bigguy.png"
+                    });
+                }
             }
         }
 
@@ -63,7 +75,7 @@ room26.btnclick = function (name) {
                 room25.btnclick("mom");
             }
             else {
-                if (g.get("momchat"))
+                if (daily.get("landlord"))
                     chat(2, 26);
                 else {
                     if (cl.hasClothing("panties", "c") && !sc.checkevent("landlord", -2))
@@ -137,6 +149,9 @@ room26.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "bigguy":
+            chat(113, 26);
+            break;
         default:
             break;
     }
@@ -149,25 +164,25 @@ room26.chatcatch = function (callback) {
             break;
         case "passtimeStop":
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "passtime1":
             sc.setstep("landlord", 1);
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "passtime2":
             sc.setstep("landlord", 2);
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "passtime3":
             sc.setstep("landlord", 3);
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "takekey":
@@ -176,18 +191,18 @@ room26.chatcatch = function (callback) {
         case "passtime4":
             sc.setstep("landlord", 4);
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "passtime5":
             sc.setstep("landlord", 6);
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "passtime6":
             char.addtime(30);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(26);
             break;
         case "passtime6a":
@@ -231,15 +246,15 @@ room26.chatcatch = function (callback) {
             nav.bg("26_livingRoom/passtime6h.jpg");
             break;
         case "passtime6i":
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.bg("26_livingRoom/passtime6i.jpg");
             break;
         case "passtime6j":
             char.addtime(69);
             cl.undo();
-            g.mod("giveOralFemale", 1);
+            gv.mod("giveOralFemale", 1);
             sc.setstep("landlord", 7);
-            g.setflag("momchat");
+            daily.set("landlord");
             scc.love("landlord", 20, 100);
             char.room(16);
             break;
@@ -259,7 +274,7 @@ room26.chatcatch = function (callback) {
             char.addtime(69);
             cl.undo();
             sc.setstep("landlord", 8);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(16);
             break;
         case "passtime8":
@@ -326,7 +341,7 @@ room26.chatcatch = function (callback) {
         case "panties8":
             g.pass = 10;
             sc.setstep("landlord", -2);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.addtime(60);
             char.room(8);
             break;
@@ -393,7 +408,7 @@ room26.chatcatch = function (callback) {
         case "201_4":
             sc.setstep("landlord", 202);
             char.addtime(60);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(16);
             break;
         case "tv":
@@ -411,7 +426,7 @@ room26.chatcatch = function (callback) {
         case "sl1":
         case "sl2":
             nav.killall();
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.bg("26_livingRoom/" + callback + ".jpg");
             break;
         case "sl3":
@@ -421,7 +436,7 @@ room26.chatcatch = function (callback) {
                 chat(102, 26);
             break;
         case "sl3badEnd":
-            g.mod("arousal", -50);
+            gv.mod("arousal", -50);
             char.settime(22, 3);
             char.room(10);
             break;
@@ -441,7 +456,7 @@ room26.chatcatch = function (callback) {
         case "sl5":
             nav.killall();
             cl.doCum(false);
-            g.mod("receiveOralFemale", 1);
+            gv.mod("receiveOralFemale", 1);
             nav.bg("26_livingRoom/sl5.jpg");
             break;
         case "sl6":
@@ -468,13 +483,10 @@ room26.chatcatch = function (callback) {
             break;
         case "f10":
             cl.doCum(false);
-            g.mod("receiveOralFemale", 3);
-            g.mod("fuckPussy", 3);
+            gv.mod("receiveOralFemale", 3);
+            gv.mod("fuckPussy", 3);
             char.settime(22, 3);
             char.room(10);
-            break;
-        case "bigguy7":
-            sc.setstep("bigguy", 7);
             break;
         default:
             break;
@@ -1459,7 +1471,7 @@ room26.chat = function (chatID) {
                 "on her. After everything she's done for me she deserves the truth. I just wish it wasn't me " +
                 "that he cheated on her with. I really hope she doesn't get mad at me. I couldn't help it. ",
             button: [
-                { chatID: -1, text: "I ain't saying shit! She's just going to get mad at me. ", callback: "bigguy7" },
+                { chatID: -1, text: "I ain't saying shit! She's just going to get mad at me. ", callback: "" },
                 { chatID: 114, text: sc.n("landlord") + ", " + sc.n("bigguy") + " cheated on you. ", callback: "" },
                 
             ]

@@ -38,7 +38,7 @@ room500.btnclick = function (name) {
                 nav.bg("500_jada/500_doorOpen2.jpg");
                 chat(5, 500);
             }
-            else if (g.checkflag("zoeyDay")) {
+            else if (daily.get("zoey")) {
                 nav.killall();
                 nav.bg("500_jada/500_doorClose.jpg");
                 chat(4, 500);
@@ -75,7 +75,7 @@ room500.chatcatch = function (callback) {
             char.room(0);
             break;
         case "leave":
-            g.setflag("zoeyDay");
+            daily.set("zoey");
             char.room(0);
             break;
         case "inside":

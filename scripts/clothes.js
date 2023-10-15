@@ -2,7 +2,7 @@
 
 cl.c = {
     leg: 0, chest: 0, cock: 0, butthole: 0.0,
-    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: "longHair", wig: null,
+    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
     necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
@@ -14,7 +14,7 @@ cl.c = {
 cl.init = function () {
     cl.c = {
         leg: 0, chest: 0, cock: 0, butthole: 0.0,
-        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: "longHair", wig: null,
+        makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
         necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
@@ -69,7 +69,8 @@ cl.list = [
     { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: 5 },
     { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: true, daring: 1, price: 12 },
     { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
-    { type: "panties", name: "w", display: "White Soiled Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "panties", name: "w", display: "Lola's Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "panties", name: "missy", display: "Missy's Panties", img: "panties_missy.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "q", display: "Cum Queen Panties", img: "panties_cumQueen.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "h", display: "Cuffs Panties", img: "panties_handcuff.png", sex: "f", inv: false, daring: 2, price: -1 },
     { type: "panties", name: "r", display: "Red Panties", img: "panties_red.png", sex: "f", inv: false, daring: 2, price: 45 },
@@ -198,8 +199,9 @@ cl.list = [
     { type: "pj", name: "gown", display: "Night Gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
 
-    { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: 120 },
-    { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: 90 },
+    { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: -1 },
+    { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: -1 },
+    { type: "chastity", name: "pinkx2", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 3, price: -1 },
     { type: "chastity", name: "metal", display: "Metal Cage", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
 
     { type: "buttplug", name: "s", display: "Small Plug", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
@@ -215,9 +217,11 @@ cl.list = [
     { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
 ];
 
-//for (var q = 0; q < cl.list.length; q++) {
-//    cl.list[q].inv = true;
-//}
+cl.pantiesTxt = function () {
+    if (cl.c.panties !== null)
+        return cl.where("panties", cl.c.panties).sex === "f" ? "panties" : "underwear";
+    return "";
+};
 
 cl.add = function (type, name) {
     var i;
@@ -439,7 +443,24 @@ cl.where = function (type, name) {
     return retList;
 };
 
+cl.wearSavedOutfit = function (entry) {
+    cl.c.shoes = cl.saveOutfit[entry].shoes;
+    cl.c.socks = cl.saveOutfit[entry].socks;
+    cl.c.pants = cl.saveOutfit[entry].pants;
+    if (cl.hasClothing("panties", cl.saveOutfit[entry].panties))
+        cl.c.panties = cl.saveOutfit[entry].panties;
+    cl.c.bra = cl.saveOutfit[entry].bra;
+    cl.c.shirt = cl.saveOutfit[entry].shirt;
+    cl.c.dress = cl.saveOutfit[entry].dress;
+    cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
+    cl.c.accessories = cl.saveOutfit[entry].accessories;
+    cl.c.pj = cl.saveOutfit[entry].pj;
+    cl.display();
+};
+
 cl.getEntry = function (type, name) {
+    if (name === null)
+        return { type: type, name: null, display: "Missing", img: null, sex: null, inv: false, daring: -1, price: -1 };
     return cl.list[cl.where(type, name)];
 };
 
@@ -539,6 +560,16 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("Cheer shoes");
             if (cl.c.panties !== "cl")
                 missingClothing.push("Cheer spanks");
+            break;
+        case "suit":
+            if (cl.c.shirt !== "s")
+                missingClothing.push("Button up shirt");
+            if (cl.c.pants !== "s")
+                missingClothing.push("Black slacks");
+            if (cl.c.socks !== "b")
+                missingClothing.push("Dress socks");
+            if (cl.c.shoes !== "d")
+                missingClothing.push("Dress shoes");
             break;
     }
    
@@ -732,7 +763,8 @@ cl.eyes = [
     { name: "green", image: "body_eyes_green.png", back: null },
     { name: "hazel", image: "body_eyes_hazel.png", back: null },
     { name: "blue", image: "body_eyes_blue.png", back: null },
-    { name: "gray", image: "body_eyes_gray.png", back: null }
+    { name: "gray", image: "body_eyes_gray.png", back: null },
+    { name: "hypno", image: "body_eyes_hypno.png", back: null }
 ];
 
 cl.eyebrows = [
@@ -1345,6 +1377,13 @@ cl.panties = [
     { name: "w", leg: 1, pussy: "panty_w_1_v.png", cock: "panty_w_1_c.png", back: "panty_w_0_back.png" },
     { name: "w", leg: 0, pussy: "panty_w_0_v.png", cock: "panty_w_0_c.png", back: "panty_w_0_back.png" },
 
+    { name: "missy", leg: 5, pussy: "panty_missy_5_v.png", cock: "panty_missy_5_c.png", back: "panty_missy_5_back.png" },
+    { name: "missy", leg: 4, pussy: "panty_missy_4_v.png", cock: "panty_missy_4_c.png", back: "panty_missy_4_back.png" },
+    { name: "missy", leg: 3, pussy: "panty_missy_3_v.png", cock: "panty_missy_3_c.png", back: "panty_missy_3_back.png" },
+    { name: "missy", leg: 2, pussy: "panty_missy_0_v.png", cock: "panty_missy_0_c.png", back: "panty_missy_2_back.png" },
+    { name: "missy", leg: 1, pussy: "panty_missy_0_v.png", cock: "panty_missy_0_c.png", back: "panty_missy_0_back.png" },
+    { name: "missy", leg: 0, pussy: "panty_missy_0_v.png", cock: "panty_missy_0_c.png", back: "panty_missy_0_back.png" },
+
     { name: "b", leg: 5, pussy: "panty_b_5_v.png", cock: "panty_b_5_c.png", back: "panty_b_5_back.png" },
     { name: "b", leg: 4, pussy: "panty_b_4_v.png", cock: "panty_b_4_c.png", back: "panty_b_4_back.png" },
     { name: "b", leg: 3, pussy: "panty_b_3_v.png", cock: "panty_b_3_c.png", back: "panty_b_3_back.png" },
@@ -1467,6 +1506,7 @@ cl.pjBottom = [
 cl.chastity = [
     { name: "cage", image: "cockchast_m.png" },
     { name: "pink", image: "cockchast_p.png" },
+    { name: "pinkx2", image: "cockchast_p.png" },
     { name: "metal", image: "cockchast_s.png" }
 ];
 
@@ -1552,22 +1592,21 @@ cl.displayChar = function (ratio, top, left, back) {
 };
 
 cl.hairgrowth = function () {
-    var h = g.get("hormone");
+    var h = gv.get("hormone");
     if (h > 80)
-        g.mod("bodyhair", 2);
+        cl.c.bodyhair += 2;
     else if (h > 60)
-        g.mod("bodyhair", 4);
+        cl.c.bodyhair += 4;
     else if (h > 50)
-        g.mod("bodyhair", 7);
+        cl.c.bodyhair += 7;
     else
-        g.mod("bodyhair", 10);
+    cl.c.bodyhair += 10;
 };
 
 cl.getBodyHair = function () {
-    var h = g.get("bodyhair");
-    if (h > 80)
+    if (cl.c.bodyhair > 120)
         return "longHair";
-    if (h > 50)
+    if (cl.c.bodyhair > 80)
         return "shortHair";
 
     return null;
@@ -1610,8 +1649,8 @@ cl.display = function () {
         cl.subDisplay("char-legs", "butthole" + thisButthole + ".png");
     }
     else if (g.tview === "p") {
-        var thisBladdeer = g.get("bladder");
-        var thisMilk = g.get("milk");
+        var thisBladdeer = gv.get("bladder");
+        var thisMilk = gv.get("milk");
         if (thisMilk < 0)
             thisMilk = 0;
         
@@ -1656,8 +1695,10 @@ cl.display = function () {
 
         for (i = 0; i < cl.c.tattoo.length; i++) {
             for (j = 0; j < cl.tattoo.length; j++) {
-                if (cl.tattoo[j].name === cl.c.tattoo[i])
+                if (cl.tattoo[j].name === cl.c.tattoo[i]) {
                     cl.subDisplayAppend("char-accBody", !cback ? cl.tattoo[j].image : cl.tattoo[j].back);
+                    break;
+                }
             }
         }
 
@@ -1987,7 +2028,7 @@ cl.cockDisplay = function () {
             $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("chastity", cl.c.chastity).img + '" />');
         }
         else {
-            var thisArousal = g.get("arousal");
+            var thisArousal = gv.get("arousal");
             if (thisArousal < 15)
                 $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_6.png" />');
             else if (thisArousal < 25)
@@ -2026,7 +2067,7 @@ cl.cockDisplay = function () {
 };
 
 cl.energydisplay = function () {
-    var tempEnergy = g.get("energy");
+    var tempEnergy = gv.get("energy");
     var firstHalf = cl.appearance();
     var secondHalf = "0";
 
@@ -2039,7 +2080,7 @@ cl.energydisplay = function () {
     else
         secondHalf = "75";
 
-    $("#char_charDisplay").html('<img src="./images/stat/' + firstHalf + '_' + secondHalf + '.png" style="' + g.makeCss(150, 150, 0, 0) + ' margin-left:' + 80 * g.ratio + 'px;" title="' + cl.set[firstHalf + 1].name + '">');
+    $("#char_charDisplay").html('<img src="./images/stat/' + firstHalf + '_' + secondHalf + '.png" style="' + g.makeCss(150, 150, 0, 0) + ' title="' + cl.set[firstHalf + 1].name + '">');
     for (i = 0; i < cl.set.length; i++) {
         if (cl.set[i].entry === firstHalf) {
             $("#rl_appearance").text(cl.set[i].name);
@@ -2051,7 +2092,7 @@ cl.energydisplay = function () {
 cl.getCum = function () {
     //1440 minutes in day
     //4320 in 3 dyas
-    var timeSince = g.diffDateByMinutes(g.dt, g.get("cum")) / 4320.0;
+    var timeSince = g.diffDateByMinutes(g.dt, gv.get("cum")) / 4320.0;
     return timeSince > 1 ? 1 : timeSince;
 };
 
@@ -2059,21 +2100,21 @@ cl.doCum = function (bigCum) {
     var checkCum = cl.getCum();
 
     if (checkCum === 1) {
-        g.set("cum", char.addMinutes(g.dt, -4320));
+        gv.set("cum", char.addMinutes(g.dt, -4320));
     }
     if (bigCum)
-        g.set("cum", char.addMinutes(g.dt, 3240));
+        gv.set("cum", char.addMinutes(g.dt, 3240));
     else
-        g.set("cum", char.addMinutes(g.dt, 2160));
+        gv.set("cum", char.addMinutes(g.dt, 2160));
 
-    if (g.get("cum") > g.dt)
-        g.set("cum", g.dt);
+    if (gv.get("cum") > g.dt)
+        gv.set("cum", g.dt);
 
-    g.mod("arousal", -1000);
+    gv.mod("arousal", -1000);
 };
 
 cl.fillballs = function () {
-    g.set("cum", char.addMinutes(g.dt, -4320));
+    gv.set("cum", char.addMinutes(g.dt, -4320));
     cl.cockDisplay();
 };
 
@@ -2357,6 +2398,7 @@ cl.wearing = function () {
 };
 
 cl.minButt = function (invItem, sizeItem) {
+    levels.mod("anal", 25, 3);
     var returnItem = { minSize: 0, fit: false };
     if (invItem !== null) {
         switch (invItem) {
@@ -2402,6 +2444,7 @@ cl.minButt = function (invItem, sizeItem) {
 };
 
 cl.stretchButt = function (invItem, sizeItem) {
+    levels.mod("anal", 25, 3);
     var thisItem = cl.minButt(invItem, sizeItem);
     var oldBhole = Math.floor(cl.c.butthole);
     var retSize = 0;
@@ -2431,6 +2474,10 @@ cl.stretchButt = function (invItem, sizeItem) {
     else if (retSize > .17) {
         g.popUpNotice(startLine + "Your butthole stretched a lot. ");
     }
-    g.setflag("buttholePlay");
+    daily.set("buttholePlay");
     return retSize;
+}; 
+
+cl.isCockTooSmallForSex = function () {
+    return cl.c.cock > 2;
 };

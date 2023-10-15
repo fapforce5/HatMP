@@ -1,6 +1,8 @@
 ﻿//Room name
 var room726 = {};
 room726.main = function () {
+    var activeCase = missy.activecase();
+
     nav.button({
         "type": "btn",
         "name": "girl1",
@@ -10,7 +12,7 @@ room726.main = function () {
         "height": 491,
         "image": "726_dance/dgirl1.png"
     }, 726);
-    if (!g.get("cindy")) {
+    if (!daily.get("cindy")) {
         nav.button({
             "type": "btn",
             "name": "lifeguardGirl",
@@ -21,7 +23,7 @@ room726.main = function () {
             "image": "726_dance/lifeguardGirl1.png"
         }, 726);
     }
-    if (!g.get("tim")) {
+    if (!daily.get("tim")) {
         nav.button({
             "type": "btn",
             "name": "lifeguardGuy",
@@ -32,8 +34,22 @@ room726.main = function () {
             "image": "726_dance/lifeguarGuy1.png"
         }, 726);
     }
+    if (activeCase.name === "case_lostgirl") {
+        if (missy.get("activeCaseComplete") === 0) {
+            nav.button({
+                "type": "btn",
+                "name": "lostgirl",
+                "left": 732,
+                "top": 359,
+                "width": 307,
+                "height": 721,
+                "image": "726_dance/lostgirl0.png"
+            }, 726);
+        }
+    }
     var navList = [0, 725];
     nav.buildnav(navList);
+    fame.event();
 };
 
 room726.btnclick = function (name) {
@@ -118,6 +134,19 @@ room726.btnclick = function (name) {
                     chat(42, 726);
             }
             break;
+        case "lostgirl":
+            nav.killbutton("lostgirl");
+            nav.button({
+                "type": "img",
+                "name": "lostgirl",
+                "left": 727,
+                "top": 132,
+                "width": 586,
+                "height": 948,
+                "image": "726_dance/lostgirl1.png"
+            }, 726);
+            chat(53, 726);
+            break;
         default:
             break;
     }
@@ -148,7 +177,7 @@ room726.chatcatch = function (callback) {
             nav.modbutton("lifeguardGirl", "726_dance/lifeguardGirl3.png", null, null);
             break;
         case "killcindy":
-            g.setflag("cindy");
+            daily.set("cindy");
             nav.killbutton("lifeguardGirl");
             break;
         case "tim2":
@@ -209,12 +238,12 @@ room726.chatcatch = function (callback) {
             }, 726);
             break;
         case "tim3_5":
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             nav.killall();
             nav.bg("726_dance/tim3_5.jpg");
             break;
         case "tim3_6":
-            g.mod("arousal", 20);
+            gv.mod("arousal", 20);
             nav.killall();
             nav.bg("726_dance/tim3_6.jpg");
             break;
@@ -240,7 +269,7 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_11.jpg");
             break;
         case "tim3_12":
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.bg("726_dance/tim3_12.jpg");
             break;
         case "tim3_13":
@@ -253,10 +282,10 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "tim3_16":
-            g.mod("giveOralMale", 1);
-            g.mod("giveAnalMale", 1);
-            g.mod("creamPied", 1);
-            g.setflag("tim");
+            gv.mod("giveOralMale", 1);
+            gv.mod("giveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            daily.set("tim");
             sc.setstep("tim", 3);
             char.addtime(72);
             char.room(726);
@@ -279,10 +308,10 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "t5":
-            g.mod("giveOralMale", 1);
-            g.mod("giveAnalMale", 1);
-            g.mod("creamPied", 1);
-            g.setflag("tim");
+            gv.mod("giveOralMale", 1);
+            gv.mod("giveAnalMale", 1);
+            gv.mod("creamPied", 1);
+            daily.set("tim");
             char.addtime(72);
             char.room(726);
             break;
@@ -303,9 +332,67 @@ room726.chatcatch = function (callback) {
             nav.bg("727_bathroom/girl7.jpg");
             break;
         case "c5":
-            g.mod("fuckPussy", 1);
-            g.setflag("cindy");
+            gv.mod("fuckPussy", 1);
+            daily.set("cindy");
             char.addtime(60);
+            char.room(727);
+            break;
+        case "lostgirl_bad":
+            missy.set("activeCaseComplete", 2);
+            nav.killall();
+            nav.bg(inv.getPhoneAsBackground());
+            nav.button({
+                "type": "img",
+                "name": "lostgirl_bad",
+                "left": 648,
+                "top": 165,
+                "width": 620,
+                "height": 765,
+                "image": "726_dance/lostgirl1_bad.jpg"
+            }, 726);
+            break;
+        case "lostgirl2_good":
+            nav.killall();
+            nav.bg(inv.getPhoneAsBackground());
+            nav.button({
+                "type": "img",
+                "name": "lostgirl_bad",
+                "left": 648,
+                "top": 165,
+                "width": 620,
+                "height": 765,
+                "image": "726_dance/lostgirl2_good.jpg"
+            }, 726);
+            break;
+        case "lostgirl2_good2":
+            nav.killall();
+            nav.bg("726_dance/lostgirl2_good2.jpg");
+            break;
+        case "lostgirl2_goodEnd":
+            missy.set("activeCaseComplete", 1);
+            char.room(726);
+            break;
+        case "lostgirl3_0":
+            nav.killall();
+            nav.bg("726_dance/lostgirl3_0.jpg");
+            break;
+        case "lostgirl3_1":
+            if (cl.appearance() > 0)
+                chat(64, 726);
+            else if (gv.get("money") < 20)
+                chat(65, 726);
+            else
+                chat(67, 726);
+            break;
+        case "lostgirl3_2":
+        case "lostgirl3_3":
+        case "lostgirl3_4":
+        case "lostgirl3_5":
+            nav.bg("726_dance/" + callback + ".jpg");
+            break;
+        case "lostgirl3_end":
+            missy.set("activeCaseComplete", 1);
+            missy.set("reusableCaseCounter", 999);
             char.room(727);
             break;
         default:
@@ -750,6 +837,206 @@ room726.chat = function (chatID) {
                 "what a slut I can be!",
             button: [
                 { chatID: -1, text: "...", callback: "c5" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "!sanaria",
+            text: "Hey, what's up? ",
+            button: [
+                { chatID: 57, text: "Love your dance moves!", callback: "" },
+                { chatID: 54, text: "Are you Sanaria", callback: "" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "!sanaria",
+            text: "How do you know my name? Are you some kind of weird stalker! Fuck! I knew I should have left town. You " +
+                "fucking creep! ",
+            button: [
+                { chatID: 55, text: "Wait! I was hired by you mom to find you. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "!sanaria",
+            text: "You're stalking me for my mom? I'm out of here you creep! Go fuck yourself! ",
+            button: [
+                { chatID: 56, text: "Awww crap. [Call Missy] ", callback: "lostgirl_bad" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "thinking",
+            text: "Oh fuck! I'm going to be in so much trouble! Oh fuck. Maybe I'll just enjoy tonight before I report " +
+                "to my death in the morning. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "!sanaria",
+            text: "Thanks. I was about to take off. Did you want to buy me a drink before I go. ",
+            button: [
+                { chatID: 63, text: "Sure! Let's go to the bar. ", callback: "lostgirl3_0" },
+                { chatID: 58, text: "Sure! Let me send a text right away. [Text Missy]", callback: "lostgirl2_good" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "thinking",
+            text: "Text sent! Now to make some small talk and and wait. ",
+            button: [
+                { chatID: 59, text: "[Make small talk and wait]", callback: "lostgirl2_good2" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "!sanaria",
+            text: "What the you two doing here? I'm old enough that I can do what I want. I don't need you watching after me " +
+                "all the time! ",
+            button: [
+                { chatID: 60, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "martha",
+            text: "I'll have no more from you young lady. We're not going to cause a scene here in public. Just head to the car " +
+                "with me so we can be off. You know what happens to bad little girls. ",
+            button: [
+                { chatID: 61, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "!sanaria",
+            text: "Argh! Fine! Let's go.  ",
+            button: [
+                { chatID: 62, text: "...", callback: "lostgirl2_good3" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "missy",
+            text: "Fine work. You're really going to make a great detective. See you in the morning for your reward.  ",
+            button: [
+                { chatID: -1, text: "Thanks ma'am!", callback: "lostgirl2_goodEnd" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "!sanaria",
+            text: "So are you going to buy me a drink?  ",
+            button: [
+                { chatID: -1, text: "Buy her a drink. ", callback: "lostgirl3_1" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "!sanaria",
+            text: "Thanks for the drink, but I don't date sissy boys. I'm going to go loser. Haha  ",
+            button: [
+                { chatID: 54, text: "Wait Sanaria. Hang out for a bit ", callback: "" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "me",
+            text: "Ow crap. I just realized I don't have enough money to get us drinks.  ",
+            button: [
+                { chatID: 66, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "!sanaria",
+            text: "You don't even have $20 for a drink? What a loser. I'm going to take off with some friends that can " +
+                "afford to buy me a drink. Later. ",
+            button: [
+                { chatID: 54, text: "Wait Sanaria. Hang out for a bit ", callback: "" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "!sanaria",
+            text: "You know what. You're kinda cute. What is it about me that made you approach me? ",
+            button: [
+                { chatID: 68, text: "Are you kidding, you're hot! Any man would be attracted to you! ", callback: "" },
+                { chatID: 68, text: "Your eyes are so pink and inviting. ", callback: "" },
+                { chatID: 68, text: "What can I say, I'm a sucker for the messy bun. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "!sanaria",
+            text: "Really. That's sweet. You know I've had a really bad week. Why don't we go in the bathroom and you can make " +
+                "my week a bit better. ",
+            button: [
+                { chatID: 69, text: "Sure. Let's go. ", callback: "lostgirl3_2" },
+                { chatID: 58, text: "Let's hang out here and chat a bit longer. [Text Missy]", callback: "lostgirl2_good" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "!sanaria",
+            text: "I never thought I would lost my virginity in a public bathroom... ",
+            button: [
+                { chatID: 70, text: "What?", callback: "" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "!sanaria",
+            text: "My mom has always been super over-protective of me. She wouldn't even let me date or leave the house after " +
+                "dark. Now that I'm 18 I decided to run away and live my life. I'm so tired of being locked down all the time! " +
+                "She wouldn't even let me have a boyfriend, but now that I'm free I can do whatever I want. Right now I want to " +
+                "show you my tits! ",
+            button: [
+                { chatID: 71, text: "Hell yeah", callback: "lostgirl3_3" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "!sanaria",
+            text: "It's so great having freedom! Now that I showed you mine, let me see yours! ",
+            button: [
+                { chatID: 72, text: "Yeah. [Take off your shirt]", callback: "lostgirl3_4" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "thinking",
+            text: "?",
+            button: [
+                { chatID: 73, text: "...", callback: "lostgirl3_5" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "martha",
+            text: "I raised you better than this! Topless in a public bathroom! I've never! I'm so angry right now I don't " +
+                "even know what to say. We're not going to cause a scene here in public. Just head to the car " +
+                "with me so we can be off. You know what happens to bad little girls. ",
+            button: [
+                { chatID: 74, text: "oh no...", callback: "" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "missy",
+            text: "Don't you worry " + sc.n("martha") + ", I'll take care of this young man in the morning. ",
+            button: [
+                { chatID: 75, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "martha",
+            text: "I trust that you will. He's corrupted my poor Sanaria. A proper punishment should be in order. ",
+            button: [
+                { chatID: -1, text: "*groan*", callback: "lostgirl3_end" },
             ]
         },
     ];

@@ -41,7 +41,7 @@ room15.main = function () {
             });
         }
 
-        if (!g.checkflag("choreDishes") && sc.getstep("landlord") < 200) {
+        if (!daily.get("momChoreDishes") && sc.getstep("landlord") < 200) {
             btnList.push({
                 "type": "btn",
                 "name": "dishes",
@@ -95,7 +95,7 @@ room15.btnclick = function (name) {
                 chat(2, 15);
             break;
         case "water":
-            var thisBladder = g.get("bladder");
+            var thisBladder = gv.get("bladder");
             if (thisBladder > .98)
                 chat(3, 15);
             else {
@@ -109,7 +109,7 @@ room15.btnclick = function (name) {
                     "height": 614,
                     "image": "15_kitchen/drink.png"
                 }, 15);
-                g.mod("bladder", .3);
+                gv.mod("bladder", .3);
                 cl.display();
                 if (thisBladder > .68)
                     chat(4, 15);
@@ -227,7 +227,7 @@ room15.chatcatch = function (callback) {
             break;
         case "ll8":
             char.addtime(72);
-            g.mod("giveOralFemale", 1);
+            gv.mod("giveOralFemale", 1);
             char.room(15);
             break;
         default:

@@ -67,7 +67,6 @@
     z-index: 16;
 }
 
-
 .char-bodyHair {
     z-index: 16;
 }
@@ -122,23 +121,22 @@
     margin-top:10px;
 }
 
-.char-clock-container{
+/*.char-clock-container{
     text-align:center;
-}
+}*/
 
 .char-clock{
     background:#000;
     color:#2fce2e;
     font-family:digital-7;
-    border:#333 solid 6px;
+    border:#333 solid 1px;
     padding:2px;
 }
 
-.char-clock-dow, .char-money{
-    display:inline-block;
-    color:#fff;
+.char-clock-dow {
+    color: #ccc;
     text-shadow: 2px 2px 5px #000;
-    margin-top:10px;
+    border: #333 solid 1px;
 }
 
 .char-statDisplay {

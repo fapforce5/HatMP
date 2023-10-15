@@ -361,7 +361,7 @@ room17.main = function(){
         }
     ];
 
-    g.setflag("momRaidCloset");
+    daily.set("momRaidCloset");
     var navList = [14];
     g.roomTimeout = setTimeout(function () { g.pass = "closet"; char.room(21); }, 15000);
 
@@ -384,11 +384,11 @@ room17.btnclick = function(name){
     }
     switch (name) {
         case "c":
-            if (num === g.get("momClosetMoney")) {
-                g.mod("money", (Math.floor(Math.random() * 20)) + 10);
+            if (num === gv.get("momClosetMoney")) {
+                gv.mod("money", (Math.floor(Math.random() * 20)) + 10);
                 chat(2, 17);
                 //set new money clothes
-                g.set("momClosetMoney", Math.floor(Math.random() * 24) + 1);
+                gv.set("momClosetMoney", Math.floor(Math.random() * 24) + 1);
                 nav.button({
                     "type": "img",
                     "name": "money",
@@ -403,10 +403,10 @@ room17.btnclick = function(name){
                 chat(1, 17);
             break;
         case "box":
-            if (num === g.get("momClosetLube")) {
+            if (num === gv.get("momClosetLube")) {
                 chat(3, 17);
                 //set new lube box
-                g.set("momClosetLube", Math.floor(Math.random() * 11) + 1);
+                gv.set("momClosetLube", Math.floor(Math.random() * 11) + 1);
                 inv.update("lube", true, 1);
                 nav.button({
                     "type": "img",

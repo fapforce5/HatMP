@@ -6,7 +6,7 @@ room0.main = function () {
     $('#room_footer').hide();
     if (!$('#room_left_map').is(":visible"))
         char.changeMenu("hide", false, true);
-    var tempMap = g.get("map");
+    var tempMap = gv.get("map");
     if (tempMap === 0)
         room0.btnclick("map_0");
     else if (tempMap === 2)
@@ -20,28 +20,27 @@ room0.main = function () {
 room0.btnclick = function (name) {
     if (name === "map_0") {
         nav.bg("map/map0.jpg", "map/map0_night.jpg");
-        g.set("map", 0);
+        gv.set("map", 0);
         char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "map_1") {
         nav.bg("map/map1.jpg", "map/map1_night.jpg");
-        g.set("map", 1);
+        gv.set("map", 1);
         char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "map_2") {
         nav.bg("map/map2.jpg", "map/map2_night.jpg");
-        g.set("map", 2);
+        gv.set("map", 2);
         char.map();
         room0.btnclick("redrawIcons");
     }
     else if (name === "redrawIcons") {
         nav.killall();
         
-        
         var btnList = new Array();
-        var tempMap = g.get("map");
+        var tempMap = gv.get("map");
         g.internal = tempMap;
         room0.chatcatch("walk");
         $.each(g.roomMap, function (i, v) {
@@ -119,23 +118,28 @@ room0.btnclick = function (name) {
     }
     else {
         var roomnum = parseInt(name);
-        if (cl.isCrossdressing() && !g.sissy[28].ach) {
-            if (roomnum === 203 || roomnum === 500 || roomnum === 250 || roomnum === 450 || roomnum === 650) {
-                $('.room-left').show();
-                char.addtime(20);
-                $('#room_footer').show();
-                char.room(roomnum);
-            }
-            else {
-                chat(5, 0);
-            }
-        }
-        else {
-            $('.room-left').show();
-            char.addtime(20);
-            $('#room_footer').show();
+        //if (cl.isCrossdressing() && !g.sissy[28].ach) {
+        //    if (roomnum === 203 || roomnum === 500 || roomnum === 250 || roomnum === 450 || roomnum === 650) {
+        //        $('.room-left').show();
+        //        char.addtime(20);
+        //        $('#room_footer').show();
+        //        char.room(roomnum);
+        //    }
+        //    else {
+        //        chat(5, 0);
+        //    }
+        //}
+        //else {
+        $('.room-left').show();
+        char.addtime(20);
+        $('#room_footer').show();
+        nav.killall();
+        nav.bg("map/bg" + (gv.get("map") + (g.isNight() ? "_night" : "")) + ".jpg");
+        setTimeout(function () {
             char.room(roomnum);
-        }
+        }, 800);
+        
+        //}
     }
     if (cl.isLewd()) {
         nav.button({
@@ -155,48 +159,48 @@ room0.chatcatch = function (callback) {
         case "walk":
             if (g.walk !== null) {
                 if (g.walk === "oncase") {
-                    var roomList = new Array();
-                    switch (g.get("oncase")) {
-                        case "smolpp":
-                        case "bigboobs":
-                        case "bigass":
-                        case "dslLips":
-                            roomList = [16];
-                            break;
-                        case "cult0":
-                            roomList = [450];
-                            break;
-                        case "redroom":
-                            roomList = [203];
-                            break;
-                        case "gloryholebj":
-                            roomList = [450];
-                            break;
-                        case "gloryholeanal":
-                            roomList = [450];
-                            break;
-                        case "shopping":
-                            roomList = [650];
-                            break;
-                        case "clothes0":
-                        case "clothes1":
-                        case "clothes2":
-                        case "clothes3":
-                            roomList = [150];
-                            break;
-                        case "dinerfail":
-                        case "dinersuccess":
-                            roomList = [203];
-                            break;
-                        case "diner":
-                            roomList = [250];
-                            break;
-                        case "sewer":
-                            roomList = [225, 550];
-                            break;
-                        default:
-                            break;
-                    }
+                    var roomList = missy.activecase().m;
+                    //switch (gv.get("oncase")) {
+                    //    case "smolpp":
+                    //    case "bigboobs":
+                    //    case "bigass":
+                    //    case "dslLips":
+                    //        roomList = [16];
+                    //        break;
+                    //    case "cult0":
+                    //        roomList = [450];
+                    //        break;
+                    //    case "redroom":
+                    //        roomList = [203];
+                    //        break;
+                    //    case "gloryholebj":
+                    //        roomList = [450];
+                    //        break;
+                    //    case "gloryholeanal":
+                    //        roomList = [450];
+                    //        break;
+                    //    case "shopping":
+                    //        roomList = [650];
+                    //        break;
+                    //    case "clothes0":
+                    //    case "clothes1":
+                    //    case "clothes2":
+                    //    case "clothes3":
+                    //        roomList = [150];
+                    //        break;
+                    //    case "dinerfail":
+                    //    case "dinersuccess":
+                    //        roomList = [203];
+                    //        break;
+                    //    case "diner":
+                    //        roomList = [250];
+                    //        break;
+                    //    case "sewer":
+                    //        roomList = [225, 550];
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
                     for (i = 0; i < roomList.length; i++) {
                         for (j = 0; j < g.roomMap.length; j++) {
                             if (g.roomMap[j].roomID === roomList[i]) {

@@ -121,7 +121,7 @@ room402.chatcatch = function (callback) {
             nav.bg("402_mens/jada1.jpg");
             break;
         case "jada2":
-            g.mod("arousal", 50);
+            gv.mod("arousal", 50);
             nav.bg("402_mens/jada2.jpg");
             nav.button({
                 "type": "btn",
@@ -138,8 +138,8 @@ room402.chatcatch = function (callback) {
             nav.bg("402_mens/jada1.jpg");
             break;
         case "points":
-            g.mod("loadSwollowed", 1);
-            g.mod("giveOralFemale", 1);
+            gv.mod("loadSwollowed", 1);
+            gv.mod("giveOralFemale", 1);
             nav.button({
                 "type": "tongue",
                 "name": "butthole",

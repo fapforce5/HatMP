@@ -122,7 +122,7 @@ room10.main = function () {
             }
         ];
 
-        if (g.get("cheerlevel") > 0) {
+        if (gv.get("cheerlevel") > 0) {
             btnList.push({
                 "type": "btn",
                 "name": "cheerleader",
@@ -142,7 +142,7 @@ room10.main = function () {
             navList.push(11);
             navList.push(16);
             var hour = g.dt.getHours();
-            var cat = g.get("cat");
+            var cat = gv.get("cat");
             if (hour.between(6, 21))
                 navList.push(0);
             if (cat === 1 || cat === 2) {
@@ -190,25 +190,25 @@ room10.btnclick = function (name) {
             char.room(19);
             break;
         case "cat":
-            if (g.get("cat") === 1) {
-                g.set("cat", 2);
+            if (gv.get("cat") === 1) {
+                gv.set("cat", 2);
                 chat(38, 10);
             }
             else {
                 nav.killall();
                 nav.bg("10_mainchar/petcat.jpg", "10_mainchar/petcatnight.jpg");
-                if (!g.checkflag("petcat")) {
-                    g.mod("energy", 1000);
-                    g.setflag("petcat");
+                if (!daily.get("petcat")) {
+                    gv.mod("energy", 1000);
+                    daily.set("petcat");
                 }
                 chat(39, 10);
             }
             break;
         case "cheerleader":
-            if (g.get("energy") < 51)
+            if (gv.get("energy") < 51)
                 chat(41, 10);
             else {
-                switch (g.get("cheerlevel")) {
+                switch (gv.get("cheerlevel")) {
                     case 1:
                         nav.button({
                             "type": "img",
@@ -426,14 +426,14 @@ room10.chatcatch = function (callback) {
         case "petcat":
             nav.killall();
             nav.bg("10_mainchar/petcat.jpg", "10_mainchar/petcatnight.jpg");
-            g.mod("energy", 1000);
+            gv.mod("energy", 1000);
             break;
         case "reset":
             char.room(10);
             break;
         case "cheerReset":
-            g.mod("energy", -51);
-            g.mod("cheerleader", 30);
+            gv.mod("energy", -51);
+            gv.mod("cheerleader", 30);
             nav.killbutton("cheer");
             char.addtime(60);
             break;

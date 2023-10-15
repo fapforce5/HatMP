@@ -49,11 +49,31 @@ room650.main = function () {
 room650.btnclick = function (name) {
     switch (name) {
         case "tiffany":
+            var activeCase = missy.get("activeCase");
             var tstep = sc.getstep("tiffany");
-            if (sc.checkevent("tiffany", -8)){
+
+            if (activeCase === 5 && missy.get("activeCaseComplete") === 0) {
+                if (missy.get("reusableCaseCounter") === 0) {
+                    nav.killbutton("tiffany");
+                    nav.button({
+                        "type": "btn",
+                        "name": "tiffany",
+                        "left": 538,
+                        "top": 51,
+                        "width": 460,
+                        "height": 1029,
+                        "image": "650_toyStore/650_tiffanyGreet1.png"
+                    }, 650);
+                    chat(0, 650);
+                }
+                else {
+                    chat(2, 650);
+                }
+            }
+            else if (sc.checkevent("tiffany", -8)) {
                 chat(8, 650);
             }
-            else if (g.get("oncase") === "shopping") {
+            else if (gv.get("oncase") === "shopping") {
                 chat(13, 650);
             }
             else if (tstep === 0) {
@@ -69,19 +89,6 @@ room650.btnclick = function (name) {
                 }, 650);
                 chat(4, 650);
             }
-            else if (tstep === 1) {
-                nav.killbutton("tiffany");
-                nav.button({
-                    "type": "btn",
-                    "name": "tiffany",
-                    "left": 538,
-                    "top": 51,
-                    "width": 460,
-                    "height": 1029,
-                    "image": "650_toyStore/650_tiffanyGreet1.png"
-                }, 650);
-                chat(0, 650);
-            }
             else if (tstep === 3 || tstep === 4) {
                 chat(2, 650);  
             }
@@ -93,7 +100,7 @@ room650.btnclick = function (name) {
             }
             break;
         case "candy":
-            if (g.get("candyDayEvent")) {
+            if (daily.get("candy")) {
                 chat(6, 650);
             }
             else {
@@ -176,9 +183,9 @@ room650.chatcatch = function (callback) {
             break;
         case "c3":
             nav.bg("650_toyStore/" + callback + ".jpg");
-            g.mod("giveOralMale", 1);
-            g.mod("loadSwollowed", 1);
-            g.mod("arousal", 30);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSwollowed", 1);
+            gv.mod("arousal", 30);
             if (q3.activeSearch("charlie"))
                 chat(47, 650);
             else
@@ -186,11 +193,11 @@ room650.chatcatch = function (callback) {
             break;
         case "c4":
             nav.bg("650_toyStore/" + callback + ".jpg");
-            g.mod("giveOralMale", 1);
-            g.mod("loadSpit", 1);
+            gv.mod("giveOralMale", 1);
+            gv.mod("loadSpit", 1);
             cl.c.cumface = true;
             cl.display();
-            g.mod("arousal", 30);
+            gv.mod("arousal", 30);
             if (q3.activeSearch("charlie")) 
                 chat(47, 650);
             else
@@ -229,8 +236,8 @@ room650.chatcatch = function (callback) {
                 chat(62, 650);
             break;
         case "cend":
-            g.mod("receiveAnalMale", 1);
-            g.mod("creamPied", 1);
+            gv.mod("receiveAnalMale", 1);
+            gv.mod("creamPied", 1);
             nav.killall();
             nav.bg("650_toyStore/650_front.jpg");
             nav.button({
@@ -245,7 +252,7 @@ room650.chatcatch = function (callback) {
             nav.buildnav([651, 0]);
             break;
         case "candy50":
-            if (g.get("money") < 50)
+            if (gv.get("money") < 50)
                 chat(23, 650);
             else {
                 chat(24, 650);
@@ -291,7 +298,7 @@ room650.chatcatch = function (callback) {
                 chat(36, 650);
             break;
         case "candy51_4end":
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             char.addtime(60);
             cl.c.panties = g.internal.u;
             cl.c.pants = g.internal.p;
@@ -299,7 +306,7 @@ room650.chatcatch = function (callback) {
             break;
         case "candy51_4":
             nav.killall();
-            g.mod("arousal", 100);
+            gv.mod("arousal", 100);
             nav.bg("650_toyStore/candy51_4.jpg");
             break;
         case "candy51_5":
@@ -310,7 +317,7 @@ room650.chatcatch = function (callback) {
             nav.bg("650_toyStore/candy51_6.jpg");
             break;
         case "candy51_7":
-            g.setflag("candyDayEvent");
+            daily.set("candy");
             char.addtime(60);
             cl.c.panties = g.internal.u;
             cl.c.pants = g.internal.p;
@@ -332,8 +339,9 @@ room650.chat = function (chatID) {
             speaker: "tiffany",
             text: "Hey cutie, can I help you?",
             button: [
-                { chatID: -1, text: "No, just looking around", callback: "" },
-                { chatID: 1, text: "Yes, I'm " + sc.n("me") + " with " + sc.n("missy") + "'s Detective. ", callback: "" }
+                
+                { chatID: 1, text: "Yes, I'm " + sc.n("me") + " with Missy's Detective. ", callback: "" },
+                { chatID: -1, text: "No, just looking around", callback: "" }
             ]
         },
         {
@@ -462,7 +470,7 @@ room650.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "charlie",
-            text: "Oh, the whores? They work during the week during the day. Even whores needs a break. ",
+            text: "Oh, the whores? They only work Monday thru Friday starting at 9:00. Even whores needs a break. ",
             button: [
                 { chatID: -1, text: "oh, odd. ok", callback: "" }
             ]

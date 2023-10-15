@@ -43,7 +43,7 @@ nav.buildRoom = function () {
             g.error("buildRoom function not found or prob in main", "roomID: " + vList.roomID);
         }
     }
-    $('#char_money').text('$' + g.get("money"));
+    //$('#char_money').text('$' + gv.get("money"));
     nav.bars();
     nav.buildclock();
 };
@@ -108,6 +108,8 @@ nav.button = function (btn, roomNum) {
             classes = "room-img img-dark";
         else if (btn.type === "btn")
             classes = "room-btn rom-event";
+        else if (btn.type === "btnNoHover")
+            classes = "room-btnNoHover rom-event";
         else if (btn.type === "kiss")
             classes = "room-btn-lips rom-event";
         else if (btn.type === "tongue")
@@ -173,6 +175,8 @@ nav.t = function (btn, roomNum) {
     line = '<div class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
 
     $('#room-buttons').append(line);
+
+    
 };
 
 nav.modbutton = function (name, newImage, newName, newType) {
@@ -225,13 +229,13 @@ nav.buildnav = function (roomIDList) {
 
 nav.buildclock = function () {
     var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tues";
+    weekday[3] = "Wed";
+    weekday[4] = "Thur";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
 
     $('#char_clock_time').text(nav.friendlyTime());
     $('#char_clock_dow').text(weekday[g.dt.getDay()]);
@@ -241,16 +245,21 @@ nav.twodigits = function (n) {
 };
 
 nav.friendlyTime = function () {
-    var newHour = g.dt.getHours() === 0 ? 12 : (g.dt.getHours() < 13 ? g.dt.getHours() : g.dt.getHours() - 12);
-    var ampm = g.dt.getHours() < 12 ? " AM" : " PM";
-    return nav.twodigits(newHour) + ":" + nav.twodigits(g.dt.getMinutes()) + ampm;
+    if(gv.get("clock24") === "12"){
+        var newHour = g.dt.getHours() === 0 ? 12 : (g.dt.getHours() < 13 ? g.dt.getHours() : g.dt.getHours() - 12);
+        var ampm = g.dt.getHours() < 12 ? " AM" : " PM";
+        return nav.twodigits(newHour) + ":" + nav.twodigits(g.dt.getMinutes()) + ampm;
+    }
+    else {
+        return nav.twodigits(g.dt.getHours()) + ":" + nav.twodigits(g.dt.getMinutes());
+    }
 };
 
 nav.bars = function () {
-    var tempArousal = g.get("arousal");
-    var tempEnergy = g.get("energy");
-    $('#char-arousal').css('width', g.get("arousal") + '%');
-    $('#char-energy').css('width', Math.floor((tempEnergy / g.get("maxenergy")) * 100) + '%');
+    var tempArousal = gv.get("arousal");
+    var tempEnergy = gv.get("energy");
+    $('#char-arousal').css('width', gv.get("arousal") + '%');
+    $('#char-energy').css('width', Math.floor((tempEnergy / gv.get("maxenergy")) * 100) + '%');
 
     if (tempArousal < 25)
         $('#char-arousal-label').html("Not Horny");
@@ -272,6 +281,62 @@ nav.bars = function () {
 
 };
 
+nav.input = function (roomId, txt) {
+    var xtop = 524;
+    var xleft = 710;
+    nav.button({
+        "type": "img",
+        "name": "char_input",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1_startScreen/transblack.png"
+    }, roomId);
+    nav.t({
+        type: "zimg",
+        name: "char_input",
+        left: (960 - (txt.length * 10)),
+        top: xtop - 100,
+        font: 20,
+        hex: "#ffffff",
+        text: txt
+    }, roomId);
+    nav.button({
+        "type": "btn",
+        "name": "char_input",
+        "left": 50,
+        "top": xtop + 100,
+        "width": 1820,
+        "height": 50,
+        "image": "1_startScreen/enter.png"
+    }, roomId);
+    var xline = '<input type="text" id="nav_inputText" class="room-img" style="top:' + (xtop * g.ratio) + 'px; left:' + (xleft * g.ratio) + 'px; font-size: ' + 32 * g.ratio + 'px; width: ' + (500 * g.ratio) +'px; position:absolute;"/>';
+    $('#room-buttons').append(xline);
+}
+
+nav.inputGet = function () {
+    return $('#nav_inputText').val();
+};
+
+nav.inputKill = function () {
+    nav.killbutton("char_input");
+    $("#nav_inputText").remove();
+};
+
 nav.room = function (roomID) {
     char.room(roomID);
+};
+
+
+nav.next = function (btnClickName) {
+    nav.button({
+        "type": "btn",
+        "name": btnClickName,
+        "left": 1695,
+        "top": 920,
+        "width": 225,
+        "height": 75,
+        "image": "1001_rand/next.png"
+    }, g.roomID);
 };

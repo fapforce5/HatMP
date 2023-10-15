@@ -58,7 +58,7 @@ room14.main = function () {
                     }];
                     break;
                 case 3:
-                    if (g.get("bigguy")) {
+                    if (daily.get("bigguy")) {
                         btnList = [{
                             "type": "btn",
                             "name": "couple",
@@ -119,7 +119,7 @@ room14.main = function () {
                 "height": 299,
                 "image": "14_motherRoom/dresserDay.png"
             }];
-        if (g.checkflag("momChore")) {
+        if (daily.get("momChoreBed")) {
             btnList.push({
                 "type": "img",
                 "name": "bedmade",
@@ -155,7 +155,7 @@ room14.main = function () {
 room14.btnclick = function (name) {
     switch (name) {
         case "closet":
-            if (!g.checkflag("momRaidCloset"))
+            if (!daily.get("momRaidCloset"))
                 char.room(17);
             else
                 chat(1, 14);
@@ -252,8 +252,8 @@ room14.btnclick = function (name) {
                 "height": 325,
                 "image": "14_motherRoom/14_bedmade.png"
             }, 14);
-            g.setflag("momChore");
-            g.mod("rentKnockOff", 5);
+            daily.set("momChoreBed");
+            gv.mod("rentKnockOff", 5);
             chat(8, 14);
             break;
         case "takePic":
@@ -262,7 +262,7 @@ room14.btnclick = function (name) {
             chat(15, 14);
             break;
         case "couple":
-            if (g.get("bigguy"))
+            if (daily.get("bigguy"))
                 chat(16, 14);
             else if (sc.getstep("landlord") < 200)
                 chat(68, 14);
@@ -495,14 +495,17 @@ room14.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "14_motherRoom/panty1.png"
             }, 14);
-            if (sc.checkevent("me", -2)) {
+            if (!gv.get("momsPanties")) {
+                gv.set("momsPanties", true);
+                levels.mod("xdress", 50, 1);
+            }
+            if (levels.get("xdress").l > 0) {
                 if (cl.c.leg < 2)
                     chat(7, 14);
                 else if (cl.hasClothing("panty", "c"))
                     chat(63, 14);
                 else
                     chat(64, 14);
-
             }
             else
                 chat(6, 14);
@@ -528,7 +531,7 @@ room14.chatcatch = function (callback) {
                 "height": 610,
                 "image": "14_motherRoom/014_rubPussy.gif"
             }, 14);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             setTimeout(function () { chat(10, 14); }, 4000);
             break;
         case "poke":
@@ -543,8 +546,8 @@ room14.chatcatch = function (callback) {
                 "height": 610,
                 "image": "14_motherRoom/014_sleepPoke.gif?a=" + Math.random()
             }, 14);
-            g.mod("arousal", 10);
-            g.mod("giveFingerFemale", 1);
+            gv.mod("arousal", 10);
+            gv.mod("giveFingerFemale", 1);
             setTimeout(function () { chat(10, 14); }, 9500);
             break;
         case "slam":
@@ -559,7 +562,7 @@ room14.chatcatch = function (callback) {
                 "height": 610,
                 "image": "14_motherRoom/014_sleepSlam.gif"
             }, 14);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             setTimeout(function () {
                 nav.killall();
                 nav.button({
@@ -585,7 +588,7 @@ room14.chatcatch = function (callback) {
                 "height": 610,
                 "image": "14_motherRoom/014_sleepBholeLick.gif"
             }, 14);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             setTimeout(function () { chat(10, 14); }, 4000);
             break;
         case "fingerButtholeLube":
@@ -601,8 +604,8 @@ room14.chatcatch = function (callback) {
                     "image": "14_motherRoom/014_sleepBholePokeLube.gif"
                 }, 14);
                 inv.use("lube");
-                g.mod("arousal", 10);
-                g.mod("giveFingerFemale", 1);
+                gv.mod("arousal", 10);
+                gv.mod("giveFingerFemale", 1);
                 setTimeout(function () { chat(10, 14); }, 4000);
             }
             else {
@@ -620,7 +623,7 @@ room14.chatcatch = function (callback) {
                 "height": 610,
                 "image": "14_motherRoom/014_sleepBholePokeDry.gif?a=" + Math.random()
             }, 14);
-            g.mod("arousal", 10);
+            gv.mod("arousal", 10);
             setTimeout(function () {
                 nav.killall();
                 nav.button({
@@ -646,28 +649,28 @@ room14.chatcatch = function (callback) {
             char.room(21);
             break;
         case "fin0":
-            g.setflag("bigguy");
+            daily.set("bigguy");
             char.addtime(60);
             break;
         case "fin1":
             sc.setstep("bigguy", 1);
-            g.setflag("bigguy");
+            daily.set("bigguy");
             char.addtime(60);
             break;
         case "fin2":
             sc.setstep("bigguy", 2);
-            g.setflag("bigguy");
+            daily.set("bigguy");
             char.addtime(60);
             break;
         case "fin3":
             sc.setstep("bigguy", 3);
-            g.setflag("bigguy");
+            daily.set("bigguy");
             char.addtime(60);
             break;
         case "fin4":
-            g.mod("loadSwollowed", 1);
+            gv.mod("loadSwollowed", 1);
             sc.setstep("bigguy", 4);
-            g.setflag("bigguy");
+            daily.set("bigguy");
             char.addtime(60);
             break;
         case "couple3a":
@@ -689,7 +692,7 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/couple3f.jpg");
             break;
         case "couple3g":
-            g.mod("loadSwollowed", 1);
+            gv.mod("loadSwollowed", 1);
             nav.bg("14_motherRoom/couple3g.jpg");
             break;
         case "bg4_1":
@@ -771,19 +774,20 @@ room14.chatcatch = function (callback) {
             }, 14);
             break;
         case "bg4_end":
-            g.mod("loadSwollowed", 30);
-            g.setflag("bigguy");
+            gv.mod("loadSwollowed", 30);
+            daily.set("bigguy");
             char.addtime(60);
             sc.setstep("bigguy", 5);
             char.room(14);
             break;
         case "bg4_end_loop":
-            g.mod("loadSwollowed", 15);
-            g.setflag("bigguy");
+            gv.mod("loadSwollowed", 15);
+            daily.set("bigguy");
             char.addtime(60);
             char.room(14);
             break;
         case "stealPanties":
+            levels.mod("xdress", 20, 4);
             cl.add("panties", "c");
             break;
         case "jo0":
@@ -819,7 +823,7 @@ room14.chatcatch = function (callback) {
             cl.doCum(false);
             char.addtime(60);
             cl.undo();
-            g.mod("receiveHandjobFemale", 1);
+            gv.mod("receiveHandjobFemale", 1);
             char.room(16);
             break;
         case "butt0":
@@ -950,8 +954,8 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/butt4.jpg");
             cl.doCum(false);
             cl.stretchButt(g.internal);
-            g.mod("receiveAnalFemale", 1);
-            g.mod("sissygasm", 1);
+            gv.mod("receiveAnalFemale", 1);
+            gv.mod("sissygasm", 1);
             break;
         case "butt5":
             char.addtime(120);
@@ -974,7 +978,7 @@ room14.chatcatch = function (callback) {
             break;
         case "m93":
             cl.doCum(false);
-            g.mod("receiveHandjobFemale", 1);
+            gv.mod("receiveHandjobFemale", 1);
             nav.bg("14_motherRoom/m93.jpg");
             break;
         case "m94":
@@ -1002,7 +1006,7 @@ room14.chatcatch = function (callback) {
             break;
         case "f2":
             nav.killall();
-            g.mod('arousal', 100);
+            gv.mod('arousal', 100);
             nav.bg("14_motherRoom/f2.jpg");
             break;
         case "f3":
@@ -1021,11 +1025,11 @@ room14.chatcatch = function (callback) {
             break;
         case "f6":
             cl.doCum(false);
-            g.mod("fuckPussy", 1);
-            g.mod("receiveBoobJob", 1);
+            gv.mod("fuckPussy", 1);
+            gv.mod("receiveBoobJob", 1);
             sc.setstep("landlord", 11);
             char.addtime(120);
-            g.setflag("momchat");
+            daily.set("landlord");
             char.room(10);
             break;
         case "c1":
@@ -1033,7 +1037,7 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/c1.jpg");
             break;
         case "c2":
-            g.mod("arousal", 200);
+            gv.mod("arousal", 200);
             nav.bg("14_motherRoom/c2.jpg");
             break;
         case "c3":
@@ -1056,9 +1060,9 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/" + callback + ".jpg");
             break;
         case "c17":
-            g.mod("fuckPussy", 2);
-            g.mod("receiveOralFemale", 2);
-            g.mod("receiveBoobJob", 1);
+            gv.mod("fuckPussy", 2);
+            gv.mod("receiveOralFemale", 2);
+            gv.mod("receiveBoobJob", 1);
             sc.setstep("lola", 15);
             sc.setstep("eva");
             sc.setstep("landlord", 12);

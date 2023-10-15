@@ -24,7 +24,6 @@ room477.btnclick = function (name) {
             chat(0, 477);
             break;
         case "l1":
-
         case "l2":
         case "l3":
         case "l4":
@@ -33,8 +32,23 @@ room477.btnclick = function (name) {
             nav.killall();
             g.internal = g.removeItemByValue(g.internal, name);
             nav.bg("477_cottage/" + name + ".jpg");
-            chat(3, 477);
-                
+            switch (name) {
+                case "l5":
+                    chat(22, 477);
+                    break;
+                case "l6":
+                    chat(23, 477);
+                    break;
+                case "l1":
+                    chat(24, 477);
+                    break;
+                default:
+                    chat(3, 477);
+                    break;
+            }
+            break;
+        case "cave1":
+            chat(15, 477);
             break;
         default:
             break;
@@ -169,8 +183,23 @@ room477.chatcatch = function (callback) {
         case "c9":
             inv.add("envelope");
             char.addtime(120);
-            g.set("oncase", null);
+            gv.set("oncase", null);
             char.room(460);
+            break;
+        case "cave0":
+            nav.bg("212_black/black.jpg");
+            break;
+        case "cave1":
+            nav.bg("477_cottage/cave1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "cave1",
+                "left": 762,
+                "top": 161,
+                "width": 487,
+                "height": 747,
+                "image": "477_cottage/cave1.png"
+            }, 477);
             break;
         default:
             break;
@@ -207,7 +236,7 @@ room477.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "thinking",
-            text: "Hmmm. Not what I'm looking for... ",
+            text: "Not what I'm looking for...",
             button: [
                 { chatID: -1, text: "...", callback: "resetsearch" },
             ]
@@ -265,30 +294,67 @@ room477.chat = function (chatID) {
             chatID: 10,
             speaker: "queen",
             text: "I won't bore you with a retelling of your life's story. But I do know that you work for " + sc.n("missy") + ". " +
-                "The girl that was taken by Ubel. That ordeal was really quite something. You do know no one escapes from the CUM " +
-                "compound. They're using you to gain information. But I am quite impressed with your escape none the less. ",
+                "The girl that was taken by Ubel. That ordeal was really quite something. They may not have taken you back " +
+                "yet, but they will, in time. In a way I'm glad you've found your way here. ",
             button: [
-                { chatID: 11, text: "How are they using me?", callback: "" },
+                { chatID: 11, text: "Why, so you could kidnap and torture me! ", callback: "" },
             ]
         },
         {
             chatID: 11,
             speaker: "queen",
-            text: "Don't you worry your pretty head over such things. So what brings you to my cottage way out here? Did you " +
-                "think you could find a way into the compound? ",
+            text: "Don't you worry your pretty head over such things. I am not a torturer, but one who gives " +
+                "freedom to those that the Cult of C.U.M. hunts. And you little one are being hunted by the Cult. " +
+                "They will take you back, but carefully. Your life is not safe outside of my protection. ",
             button: [
-                { chatID: 12, text: "What? No. Really I was lost. I just want to get home. ", callback: "" },
+                { chatID: 12, text: "What? No. I just want to get home. ", callback: "" },
             ]
         },
         {
             chatID: 12,
             speaker: "queen",
-            text: "Oh stop. If you keep lying I'll release my pet snakes into the cellar. They are quite poisonous and not " +
-                "very friendly. Tell me what are you doing here. ",
+            text: "You don't know what you want. Go speak with " + sc.n("a") + ". She'll set your right for your own " +
+                "protection. Go now. Go deep into the cave and meet with her. She'll provide you all you need. ",
             button: [
-                { chatID: 13, text: "I'm here to resuce " + sc.n("missy") + " and take down the CUM cult! ", callback: "" },
+                { chatID: 13, text: "Let me out! Let me out now!  ", callback: "" },
             ]
         },
+        {
+            chatID: 13,
+            speaker: "queen",
+            text: "No. Go now and carry out your task. ",
+            button: [
+                { chatID: 14, text: "Hey! ", callback: "cave0" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "thinking",
+            text: "What the hell! I can't believe I was caught again. I've got to find a way out of here. Let me " +
+                "just let my eyes adjust and try to figure a way out of this mess I've found myself in.",
+            button: [
+                { chatID: -1, text: "...", callback: "cave1" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "thinking",
+            text: "That looks like a way. I guess I'll have to see where it leads. ",
+            button: [
+                { chatID: -1, text: "...", callback: "cave2" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "AAAaaaaaa ",
+            button: [
+                { chatID: -1, text: "...", callback: "cave3" },
+            ]
+        },
+
+
+
         {
             chatID: 13,
             speaker: "queen",
@@ -374,6 +440,30 @@ room477.chat = function (chatID) {
                 "chance for ending this terrible nightmare of the town. Go now and keep my secret from all. ",
             button: [
                 { chatID: -1, text: "Thanks! ", callback: "c9" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "He looks pissed at me... ",
+            button: [
+                { chatID: -1, text: "...", callback: "resetsearch" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "thinking",
+            text: "Oh gross! Where did she get so many severed penises and balls? ",
+            button: [
+                { chatID: -1, text: "...", callback: "resetsearch" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "thinking",
+            text: "That's a lot of food for just one person. ",
+            button: [
+                { chatID: -1, text: "...", callback: "resetsearch" },
             ]
         },
     ];

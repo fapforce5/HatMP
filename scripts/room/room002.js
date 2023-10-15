@@ -43,7 +43,7 @@ room2.chatcatch = function (callback) {
         sc.setcharname("landlord", ma);
         sc.setcharname("el", sisRel);
         sc.setcharname("me", charName.length === 0 ? "Alex" : charName);
-        g.set("girlname", charName.length === 0 ? "Scarlett" : girlName);
+        gv.set("girlname", charName.length === 0 ? "Scarlett" : girlName);
     }
     else if (callback === "proceed") {
         nav.button({
@@ -88,7 +88,7 @@ room2.chatcatch = function (callback) {
         });
 
         $('#room_002sa').val($("<textarea/>").html(sc.n("el")).val());
-        $('#room_002gn').val($("<textarea/>").html(g.get("girlname")).val());
+        $('#room_002gn').val($("<textarea/>").html(gv.get("girlname")).val());
         
         $('.intro-changeDiff').click(function () {
             var currentDiff = parseInt($('#intro_diff').data('diff'));
@@ -145,11 +145,11 @@ room2.chatcatch = function (callback) {
 
             sc.setcharname("me", g.cleanText($('#char_-1').val()));
             sc.setcharname("el", g.cleanText($('#room_002sa').val()));
-            g.set("girlname", g.cleanText($('#room_002gn').val()));
+            gv.set("girlname", g.cleanText($('#room_002gn').val()));
 
             var thisDiff = parseInt($("#intro_diff").data('diff'));
             console.log(thisDiff)
-            g.set("difficulty", isNaN(thisDiff) ? 1 : ((thisDiff < 0) ? 0 : ((thisDiff > 2) ? 2 : thisDiff)));
+            gv.set("difficulty", isNaN(thisDiff) ? 1 : ((thisDiff < 0) ? 0 : ((thisDiff > 2) ? 2 : thisDiff)));
             nav.killall();
             nav.button({
                 "type": "img",

@@ -57,7 +57,7 @@ room21.chatcatch = function (callback) {
             }, 21);
             break;
         case "arouse":
-            g.mod("arousal", 30);
+            gv.mod("arousal", 30);
             break;
         case "leave":
             cl.c.pants = g.internal.pants;

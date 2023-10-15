@@ -3,7 +3,7 @@
 var room900 = {};
 
 room900.main = function () {
-    if (cl.isLewd()) {
+    if (cl.isLewd() && !g.isNight()) {
         nav.button({
             "type": "img",
             "name": "cop",
@@ -16,19 +16,7 @@ room900.main = function () {
         chat(23, 900);
     }
     else {
-        if (g.isNight()) {
-            nav.button({
-                "type": "btn",
-                "name": "building",
-                "left": 525,
-                "top": 403,
-                "width": 864,
-                "height": 582,
-                "image": "900_college/college.png",
-                "night": "900_college/collegeNight.png"
-            }, 900);
-        }
-        else {
+        if (!g.isNight()) {
             nav.button({
                 "type": "btn",
                 "name": "building",
@@ -42,11 +30,8 @@ room900.main = function () {
         }
 
         var navList = [0];
-
-        if (sc.getstep("me") === 1)
-            navList.unshift(902);
-
         nav.buildnav(navList);
+        fame.event();
     }
 };
 
@@ -139,7 +124,7 @@ room900.chatcatch = function(callback){
             break;
         case "e16":
             sc.setstep("eva", 204);
-            g.mod("phum", 1);
+            gv.mod("phum", 1);
             char.room(0);
             break;
         case "jail":
