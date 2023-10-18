@@ -1494,6 +1494,30 @@ sc.trivial = function (charname) {
             name = "Guard";
             image = "missyguardday.png";
             break;
+        case "!stoner":
+            name = "Stoner Guy";
+            image = "stoner.png";
+            break;
+        case "!cheezy":
+            name = "Cheezy Poof";
+            image = "cheezy.png";
+            break;
+        case "!nips":
+            name = "Nips McTits";
+            image = "nips.png";
+            break;
+        case "!lep":
+            name = "Telchar";
+            image = "lep.png";
+            break;
+        case "!bitch":
+            name = "Bitch Face";
+            image = "bitch.png";
+            break;
+        case "!twat":
+            name = "Twaty Honey";
+            image = "twat.png";
+            break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
             break;

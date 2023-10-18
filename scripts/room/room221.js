@@ -1,6 +1,18 @@
-﻿//Room name
+﻿//Reciption
 var room221 = {};
 room221.main = function () {
+    var customerList = [
+        { id: 0, n: "!stoner", bg: "z_stoner.jpg", btnclick: "zstoner" },
+        { id: 0, n: "!cheezy", bg: "z_cheezy.jpg", btnclick: "zcheezy" },
+        { id: 0, n: "!nips", bg: "z_nips.jpg", btnclick: "znips" },
+        { id: 0, n: "!lep", bg: "z_lep.jpg", btnclick: "zlep" },
+        { id: 0, n: "!bitch", bg: "z_bitch.jpg", btnclick: "zbitch" },
+        { id: 0, n: "!twat", bg: "z_twat.jpg", btnclick: "ztwat" },
+        { id: 0, n: "jeffery", bg: "z_jeffery.jpg", btnclick: "zjeffery" },
+        
+        
+        
+    ];
     g.pass = 10;
     g.pass = {
         t: 10,
@@ -164,6 +176,38 @@ room221.btnclick = function (name) {
                 }
             }
             break;
+        case "zstoner":
+            chat(6, 221);
+            break;
+        case "zcheezy":
+            chat(8, 221);
+            break;
+        case "znips":
+            chat(9, 221);
+            break;
+        case "zlep":
+            chat(10, 221);
+            break;
+        case "zbitch":
+            if (cl.appearance() < 2)
+                chat(11, 221);
+            else
+                chat(14, 221);
+            break;
+        case "ztwat":
+            chat(15, 221);
+            break;
+        case "zjeffery":
+            if (cl.pantiesTxt() === "panties") {
+                chat(17, 221);
+            }
+            else {
+                if (cl.c.shirt === "s")
+                    chat(16, 221);
+                else
+                    chat(20, 221);
+            }
+            break;
         default:
             break;
     }
@@ -282,6 +326,158 @@ room221.chat = function (chatID) {
                     { chatID: -1, text: "...bye", callback: "start" }
                 ]
             },
+            {
+                chatID: 6,
+                speaker: "!stoner",
+                text: "Hey man... I like have a, uhhhh. Where am I? ",
+                button: [
+                    { chatID: 7, text: "Missy's Private Investigation", callback: "" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "!stoner",
+                text: "Oh, yeah. Someone stole my stuff, if you know what I mean. I need to get it back or I'm in big trouble. " +
+                    "So uhhh can you help me? ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "!cheezy",
+                text: "Hi. I need to see Missy. I need to find my favorite brand of cheezy poofs and Missy is the only person " +
+                    "that can help. Please let me see her. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "!nips",
+                text: "I cheated on my husband.. again. I need Missy to help make sure he doens't find out. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "!zlep",
+                text: "Khazâd! Amân! Someone has stolen my sword! I must get it back, post haste! A friend " +
+                    "needs it to fight back the hordes of orcs at the Renaissance fair!",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "!bitch",
+                text: "Ugh! You aren't Ceclia. You look like some idiot that Missy dragged off the street as one of her projects. " +
+                    "Tell me, idiot, are you house broken? ",
+                button: [
+                    { chatID: 12, text: "House broken? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "!bitch",
+                text: "Are you smart enough to use a toilet, or do you still pee on the floor like a puppy? ",
+                button: [
+                    { chatID: 13, text: "I pee in the toilet? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "!bitch",
+                text: "Missy's going to have her hands full with your 2 brain cells. Just let me in. I'm tired of talking to you. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "!bitch",
+                text: "I see Missy's little project is now as stupid as she looks. Great work advertising you only have 2 brain. " +
+                    "cells. Now let me in. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "!twat",
+                text: "I need to talk to Missy right now. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "jeffery",
+                text: "I have a meeting with Missy if you don't mind letting me in. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "jeffery",
+                text: "Hmmmm *sniff* *sniff*",
+                button: [
+                    { chatID: 18, text: "Do you smell something? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "jeffery",
+                text: "mmmm, is it you? I smell dirty panties. Are you wearing panties? ",
+                button: [
+                    { chatID: 19, text: "Oh, what? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "jeffery",
+                text: "It is you! You're wearing panties! Dirty panties. I can smell the pussy on them. Are they Missy's panties? " +
+                    "Oh no. Don't tell me. I already got in trouble once for trying to take her panties. Keep them on. You and " +
+                    "I are going to be best friends! Anyway I have a meeting with Missy. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "jeffery",
+                text: "Ooooo! I can smell your panties! Dirty dirty panties! Give me your panties! I need them. I'll tell you " +
+                    "what. I'll give you $50 for your panties if you give them to me know. I love a fresh pair of panties! ",
+                button: [
+                    { chatID: 21, text: "Sure, Let me to go the bathroom and take them off. ", callback: "" },
+                    { chatID: -1, text: "No. I'm not giving you my panties. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "jeffery",
+                text: "No. I want to see you take them off. That way I know they're fresh! Gimmie Gimmie! ",
+                button: [
+                    { chatID: 21, text: "Sure, Let me to go the bathroom and take them off. ", callback: "" },
+                    { chatID: -1, text: "No. I'm not giving you my panties. ", callback: "" },
+                ]
+            },
+
+
+
+
+
             {
                 chatID: 6,
                 speaker: "jeffery",

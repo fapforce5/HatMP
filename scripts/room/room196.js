@@ -80,8 +80,9 @@ room196.chatcatch = function (callback) {
                 chat(1, 196);
             break;
         case "complete":
-            var newMood = Math.floor(missy.get("mood"));
+            var newMood = Math.floor(missy.get("mood") / 2);
             missy.st[0].c = newMood;
+            missy.set("weeklyPay", 0);
             char.addtime(60);
             char.room(0);
             break;

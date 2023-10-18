@@ -1010,6 +1010,10 @@ input[type=text]:disabled{
     padding-top:3px;
 }
 
+hr{
+    border:none;
+}
+
 @keyframes lolaSpin {
     0% { transform:rotate(0deg);}
 100% { transform:rotate(2160deg);}

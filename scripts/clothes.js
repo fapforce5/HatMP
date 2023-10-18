@@ -220,7 +220,7 @@ cl.list = [
 cl.pantiesTxt = function () {
     if (cl.c.panties !== null)
         return cl.where("panties", cl.c.panties).sex === "f" ? "panties" : "underwear";
-    return "";
+    return "none";
 };
 
 cl.add = function (type, name) {
