@@ -476,51 +476,61 @@ sc.getLevel = function (name) {
     return null;
 };
 
-sc.modLevel = function (name, amount, max) {
-    var holder;
-    for (var i = 0; i < sc.char.length; i++) {
+sc.modLevel = function (name, amount, targetLevel) {
+    var actualAmount;
+    var i, j;
+    for (i = 0; i < sc.char.length; i++) {
         if (sc.char[i].name === name) {
-
-            if ((sc.char[i].l <= max && amount > 0) || (sc.char[i].l >= max && amount < 0)) {
-
-                sc.char[i].c += amount;
-
-                if (sc.char[i].c > 100) {
-                    sc.char[i].c -= 100;
-                    sc.char[i].l += 1;
-                    if (sc.char[i].c > 100) {
-                        holder = sc.char[i].c;
-                        sc.char[i].c = 0;
-                        sc.modLevel(name, holder, max);
-                    }
-                    g.popUpNotice("You <span class='bold'>leveled up</span> your releationship with " + sc.char[i].display + ". ");
+            if (amount > 0) {
+                if (sc.char[i].l <= targetLevel)
+                    actualAmount = amount;
+                else {
+                    actualAmount = 1; //fix this later
                 }
-                else if (sc.char[i].c < 0) {
-                    sc.char[i].l--;
-                    if (sc.char[i].l < 1) {
-                        sc.char[i].l = 0;
-                        sc.char[i].c = 0;
-                    }
-                    else {
-                        sc.char[i].c += 100;
-                        if (sc.char[i] < 0) {
-                            holder = sc.char[i].c;
+
+                var additionalLevels = Math.floor(actualAmount / 100);
+                var addedLevels = 0;
+                var remainderPoints = actualAmount % 100;
+                sc.char[i].c += remainderPoints;
+
+                if (additionalLevels > 0) {
+                    for (j = 0; j < additionalLevels; j++) { //i know. Shut up. this is easier
+                        if (sc.char[i].l < targetLevel) {
+                            sc.char[i].l++;
+                            addedLevels++;
+                        }
+                        else if (sc.char[i].l === targetLevel) {
+                            sc.char[i].l++;
                             sc.char[i].c = 0;
-                            sc.modLevel(name, holder, max);
+                            addedLevels++;
                         }
                     }
-                    g.popUpNotice("You <span class='bold'>leveled down</span> your releationship with " + sc.char[i].display + ". ");
                 }
-                else {
-                    if(amount > 0)
-                        g.popUpNotice("You increased your releationship with " + sc.char[i].display + ". ");
-                    else if (amount < 0)
-                        g.popUpNotice("You decreased your releationship with " + sc.char[i].display + ". ");
+
+                if (sc.char[i].c >= 100) {
+                    remainderPoints = sc.char[i].c % 100;
+                    sc.char[i].c = 0;
+                    sc.char[i].l++;
+                    addedLevels++;
+                    if (sc.char[i].l <= targetLevel)
+                        sc.char[i].c += remainderPoints;
                 }
+
+                if (addedLevels > 0)
+                    g.popUpNotice("You gained " + addedLevels + " level(s) for: " + sc.char[i].display + "!");
+                else
+                    g.popUpNotice(sc.char[i].display + " points have increased by " + actualAmount + "! ");
+
             }
-            break;
+            else if (amount < 0) {
+                sc.char[i].c -= amount;
+                if (sc.char[i].c < 0)
+                    sc.char[i].c = 0;
+                g.popUpNotice(sc.char[i].d + " points have decreased. ");
+            }
         }
     }
+    //sstat.makeGraph();
 };
 
 sc.modSecret = function (name, amount) {
@@ -704,7 +714,8 @@ sc.save = function () {
     for (i = 0; i < sc.char.length; i++) {
         retArra.char.push({
             name: sc.char[i].name,
-            step: sc.char[i].step,
+            c: sc.char[i].c,
+            l: sc.char[i].l,
             display: sc.char[i].display,
             q3: sc.char[i].q3
         });
@@ -727,12 +738,10 @@ sc.load = function (ra) {
     for (i = 0; i < ra.char.length; i++) {
         for (j = 0; j < sc.char.length; j++) {
             if (ra.char[i].name === sc.char[j].name) {
-                sc.char[j].step = ra.char[i].step;
-
-                if (typeof ra.char[i].display !== "undefined")
-                    sc.char[j].display = ra.char[i].display;
-                if (typeof ra.char[i].q3 !== "undefined")
-                    sc.char[j].q3 = ra.char[i].q3;
+                sc.char[j].display = ra.char[i].display;
+                sc.char[j].c = ra.char[i].c;
+                sc.char[j].l = ra.char[i].l;
+                sc.char[j].q3 = ra.char[i].q3;
                 j = 100000;
             }
         }
@@ -760,8 +769,6 @@ var weekday = new Array(7);
     weekday[6] = "Saturday";
 */
 sc.getTimeline = function (char) {
-    if (char === "landlord" || char === "lola" || char === "eva")
-        return { roomID: -1, thisRoom: false, subList: new Array() };
     var thisDay = g.dt.getDay();
     var thisTime = g.gethourdecimal();
     var timeline = [

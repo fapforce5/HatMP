@@ -381,6 +381,7 @@ gv.mod = function (name, amount) {
     else
         console.log("unknown g.mod: " + name);
 };
+
 levels.mod = function (name, amount, targetLevel) {
     var actualAmount;
     var i, j;
@@ -428,9 +429,9 @@ levels.mod = function (name, amount, targetLevel) {
 
             }
             else if (amount < 0) {
-                levels.st[0].c -= amount;
-                if (levels.st[0].c < 0)
-                    levels.st[0].c = 0;
+                levels.st[i].c -= amount;
+                if (levels.st[i].c < 0)
+                    levels.st[i].c = 0;
                 g.popUpNotice(levels.st[i].d + " points have decreased. ");
             }
         }
