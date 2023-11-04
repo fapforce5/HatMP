@@ -439,7 +439,9 @@ room14.btnclick = function (name) {
         case "towerDildo":
         case "pinkFatDildo":
         case "horseDildo":
-            if (cl.minButt(name, null).fit) {
+
+            //check this!
+            if (levels.analTake(inv.anal(name)).c < 3) {
                 if (name !== "screwdriver")
                     nav.killbutton("screwdriver");
                 if (name !== "purpleDildo")

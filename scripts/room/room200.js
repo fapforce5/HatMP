@@ -23,7 +23,8 @@ room200.btnclick = function (name) {
             console.log(activeCase, activeCaseComplete);
             if (missy.get("totalDaysWorked") < 1)
                 chat(0, 200);
-            else if (missy.get("totalDaysWorked") === 5) {
+            else if (missy.get("totalDaysWorked") === 5 && missy.get("missyEventTracker") === 0) {
+                missy.set("missyEventTracker", 1);
                 chat(9, 200);
             }
             else if (activeCase > 3 && activeCaseComplete !== 0) {

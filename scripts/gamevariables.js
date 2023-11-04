@@ -4,6 +4,7 @@ var daily = {};
 var gv = {};
 var sissy = {};
 var t = {}; //remove this
+var trophy = {};
 
 gv.difficulty = 0;
 
@@ -12,6 +13,7 @@ levels.st = new Array();
 daily.st = new Array();
 gv.st = new Array();
 sissy.st = new Array();
+trophy.st = new Array();
 
 t.modLevel = function (id, amount) {
     console.log("kill me");
@@ -39,7 +41,6 @@ gv.init = function () {
 
         //character
         { n: "map", t: 0, q: "int" },
-        { n: "shower", t: g.startDate, q: "date" },
         { n: "bladder", t: 0, q: "bladder" },
         { n: "cum", t: g.startDate, q: "date" },
         { n: "chastityLock", t: false, q: "bool" },
@@ -176,9 +177,11 @@ gv.init = function () {
         { n: "momChoreDishes", t: false },
         { n: "homeShowerPeek", t: false },
         { n: "momRaidCloset", t: false },
+        { n: "shower", t: false },
 
         { n: "construction", t: false },
         { n: "buttholePlay", t: false },
+        { n: "dildoSuckPlay", t: false },
         { n: "zbar", t: false },
         { n: "gold0", t: false },
         { n: "petcat", t: false },
@@ -296,6 +299,11 @@ gv.init = function () {
         { id: 16, pID: [10], icon: "fem212", x: 2, y: 4, name: "Feminization 212", description: "How to walk in high heels", ach: false, active: true },
 
         { id: 17, pID: [], icon: "invite", x: 0, y: 0, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
+    ];
+
+    trophy.st = [
+        { id: 0, display: "Wear panties for the first time. ", img: "panties.png", ach: false, group: "sissy" },
+        { id: 1, display: "Lock the cock. ", img:"chastity.png", ach: false, group: "sissy" },
     ];
 };
 
@@ -651,133 +659,344 @@ levels.anal = function (size) {
     };
 };
 
+levels.oral = function (size) {
+    switch (levels.oralTake(size).n) {
+        case "noop":
+            //do nothing;
+            break;
+        case "easy":
+            levels.mod("oral", 10, 999);
+            break;
+        case "normal":
+            levels.mod("oral", 20, 999);
+            break;
+        case "brutal":
+            levels.mod("oral", 40, 999);
+            break;
+        case "broken":
+            levels.mod("oral", 100, 999);
+            break;
+    };
+};
+
 levels.analTake = function (size) {
+    //0: 1 finger
     //1: tiny (finger)
     //2: small
     //3: regular (dick)
     //4: large (large dick)
     //5: huge
     //6: giant
+    //7: ludicris
     var analLevel = levels.get("anal").l;
     switch (analLevel) {
         case 0:
             switch (size) {
-                case 1: retvar = "normal"; break;
-                case 2: retvar = "normal"; break;
-                case 3: retvar = "brutal"; break;
+                case 0: retvar = "normal"; break;
+                case 1: retvar = "brutal"; break;
+                case 2: retvar = "brutal"; break;
+                case 3: retvar = "broken"; break;
                 case 4: retvar = "broken"; break;
                 case 5: retvar = "broken"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 1:
             switch (size) {
+                case 0: retvar = "easy"; break;
                 case 1: retvar = "normal"; break;
-                case 2: retvar = "normal"; break;
+                case 2: retvar = "brutal"; break;
                 case 3: retvar = "brutal"; break; //level 1 should be brutal for anal 101
                 case 4: retvar = "brutal"; break;
                 case 5: retvar = "broken"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 2:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "easy"; break;
                 case 2: retvar = "normal"; break;
-                case 3: retvar = "normal"; break; //level 2 should be normal for anal 101
+                case 3: retvar = "brutal"; break; //level 2 should be normal for anal 101
                 case 4: retvar = "brutal"; break;
                 case 5: retvar = "broken"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 3:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "easy"; break;
                 case 2: retvar = "easy"; break;
                 case 3: retvar = "normal"; break;
                 case 4: retvar = "brutal"; break;
                 case 5: retvar = "broken"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 4:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "easy"; break;
                 case 3: retvar = "normal"; break;
                 case 4: retvar = "brutal"; break;
                 case 5: retvar = "brutal"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 5:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "easy"; break;
                 case 3: retvar = "normal"; break;
                 case 4: retvar = "normal"; break;
                 case 5: retvar = "brutal"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 6:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "noop"; break;
                 case 3: retvar = "normal"; break;
                 case 4: retvar = "normal"; break;
                 case 5: retvar = "brutal"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 7:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "noop"; break;
                 case 3: retvar = "easy"; break;
                 case 4: retvar = "normal"; break;
                 case 5: retvar = "brutal"; break;
                 case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 8:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "noop"; break;
                 case 3: retvar = "easy"; break;
                 case 4: retvar = "normal"; break;
                 case 5: retvar = "normal"; break;
                 case 6: retvar = "brutal"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 9:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "noop"; break;
                 case 3: retvar = "easy"; break;
                 case 4: retvar = "easy"; break;
                 case 5: retvar = "normal"; break;
                 case 6: retvar = "normal"; break;
+                case 7: retvar = "broken"; break;
             };
             break;
         case 10:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "noop"; break;
                 case 3: retvar = "easy"; break;
                 case 4: retvar = "easy"; break;
                 case 5: retvar = "easy"; break;
                 case 6: retvar = "normal"; break;
+                case 7: retvar = "brutal"; break;
             };
             break;
         default:
             switch (size) {
+                case 0: retvar = "noop"; break;
                 case 1: retvar = "noop"; break;
                 case 2: retvar = "noop"; break;
                 case 3: retvar = "easy"; break;
                 case 4: retvar = "easy"; break;
                 case 5: retvar = "easy"; break;
                 case 6: retvar = "normal"; break;
+                case 7: retvar = "normal"; break;
+            };
+            break;
+    }
+    switch (retvar) {
+        case "noop": return { n: retvar, c: 0 };
+        case "easy": return { n: retvar, c: 1 };
+        case "normal": return { n: retvar, c: 2 };
+        case "brutal": return { n: retvar, c: 3 };
+        case "broken": return { n: retvar, c: 4 };
+    };
+};
+
+levels.oralTake = function (size) {
+    //0: 1 finger
+    //1: tiny (finger)
+    //2: small
+    //3: regular (dick)
+    //4: large (large dick)
+    //5: huge
+    //6: giant
+    //7: ludicris
+    var oralLevel = levels.get("oral").l;
+    switch (oralLevel) {
+        case 0:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "normal"; break;
+                case 2: retvar = "normal"; break;
+                case 3: retvar = "normal"; break;
+                case 4: retvar = "brutal"; break;
+                case 5: retvar = "broken"; break;
+                case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 1:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "easy"; break;
+                case 2: retvar = "normal"; break;
+                case 3: retvar = "normal"; break;
+                case 4: retvar = "brutal"; break;
+                case 5: retvar = "broken"; break;
+                case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 2:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "easy"; break;
+                case 3: retvar = "normal"; break;
+                case 4: retvar = "brutal"; break;
+                case 5: retvar = "brutal"; break;
+                case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 3:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "normal"; break;
+                case 4: retvar = "normal"; break;
+                case 5: retvar = "brutal"; break;
+                case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 4:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "normal"; break;
+                case 5: retvar = "brutal"; break;
+                case 6: retvar = "broken"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 5:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "normal"; break;
+                case 5: retvar = "normal"; break;
+                case 6: retvar = "brutal"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 6:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "easy"; break;
+                case 5: retvar = "normal"; break;
+                case 6: retvar = "brutal"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 7:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "easy"; break;
+                case 5: retvar = "normal"; break;
+                case 6: retvar = "normal"; break;
+                case 7: retvar = "broken"; break;
+            };
+            break;
+        case 8:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "easy"; break;
+                case 5: retvar = "easy"; break;
+                case 6: retvar = "normal"; break;
+                case 7: retvar = "brutal"; break;
+            };
+            break;
+        case 9:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "easy"; break;
+                case 5: retvar = "easy"; break;
+                case 6: retvar = "normal"; break;
+                case 7: retvar = "normal"; break;
+            };
+            break;
+        case 10:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "easy"; break;
+                case 5: retvar = "easy"; break;
+                case 6: retvar = "normal"; break;
+                case 7: retvar = "normal"; break;
+            };
+            break;
+        default:
+            switch (size) {
+                case 0: retvar = "noop"; break;
+                case 1: retvar = "noop"; break;
+                case 2: retvar = "noop"; break;
+                case 3: retvar = "easy"; break;
+                case 4: retvar = "easy"; break;
+                case 5: retvar = "easy"; break;
+                case 6: retvar = "normal"; break;
+                case 7: retvar = "normal"; break;
             };
             break;
     }
@@ -835,7 +1054,8 @@ gv.save = function () {
         daily: new Array(),
         levels: new Array(),
         sex: new Array(),
-        sissy: new Array()
+        sissy: new Array(),
+        trophy: new Array(),
     };
     //save by name
     for (i = 0; i < gv.st.length; i++) {
@@ -864,6 +1084,11 @@ gv.save = function () {
     //save by index
     for (i = 0; i < sissy.st.length; i++) {
         retArray.sissy.push(sissy.st[i].ach);
+    }
+
+    //save by index if true
+    for (i = 0; i < trophy.st.length; i++) {
+        retArray.trophy.push(trophy.st[i].ach);
     }
 
     return retArray;
@@ -905,6 +1130,12 @@ gv.load = function (rma) {
     for (i = 0; i < rma.sissy.length; i++) {
         sissy.st[i].ach = rma.sissy[i];
     }
+    
+    if (typeof rma.trophy !== 'undefined') {
+        for (i = 0; i < rma.trophy.length; i++) {
+            trophy.st[i].ach = rma.trophy[i];
+        }
+    }
 };
 
 
@@ -937,13 +1168,6 @@ sissy.get = function (icon) {
     }
     return null;
 }
-
-
-
-
-
-
-
 
 
 

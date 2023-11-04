@@ -56,7 +56,7 @@ room76.btnclick = function (name) {
             }, 76);
             break;
         case "butthole":
-            if (cl.usecock()) {
+            if (gender.canUseCock()) {
                 nav.killall();
                 nav.bg("76_bimboRoom/a1.gif");
                 chat(9, 76);
@@ -69,9 +69,9 @@ room76.btnclick = function (name) {
             }
             break;
         case "pussy":
-            if (cl.usecock()) {
-            nav.killall();
-            nav.bg("76_bimboRoom/p1.jpg");
+            if (gender.canUseCock()) {
+                nav.killall();
+                nav.bg("76_bimboRoom/p1.jpg");
                 chat(11, 76);
             }
             else if (cl.c.chastity !== null) {

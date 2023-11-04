@@ -295,8 +295,8 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
                     thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
                     zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
                 }
-                else if (cl.c.hairStyle === "leia") {
-                    thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+                else if (cl.c.hairStyle === "leia" || cl.c.hairStyle === "bun") {
+                    thisHair = "hair_2_" + cl.c.hairColor + "_" + cl.c.hairStyle;
                     zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
                 }
                 else {
@@ -319,8 +319,8 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
                     thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
                     zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
                 }
-                else if (cl.c.hairStyle === "leia") {
-                    thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+                else if (cl.c.hairStyle === "leia" || cl.c.hairStyle === "bun") {
+                    thisHair = "hair_2_" + cl.c.hairColor + "_" + cl.c.hairStyle;
                     zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
                 }
                 else {
@@ -366,8 +366,8 @@ zcl.kneel = function (top, left, ratio, mod, reverse) {
             thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
             zcl.kneelSub(thisHair + ".png", top, left, ratio, reverse);
         }
-        else if (cl.c.hairStyle === "leia") {
-            thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+        else if (cl.c.hairStyle === "leia" || cl.c.hairStyle === "bun") {
+            thisHair = "hair_2_" + cl.c.hairColor + "_" + cl.c.hairStyle;
             zcl.kneelSub(thisHair + ".png", top, left, ratio, reverse);
         }
         else {

@@ -65,7 +65,7 @@ room77.btnclick = function (name) {
 room77.chatcatch = function (callback) {
     switch (callback) {
         case "takedickout":
-            if (cl.usecock()) {
+            if (gender.canUseCock()) {
                 nav.bg("77_bimboLiving/closeup1.jpg");
                 chat(3, 77);
             }

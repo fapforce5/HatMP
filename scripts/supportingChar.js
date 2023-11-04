@@ -104,12 +104,17 @@ sc.char = [
     { name: "aurora", display: "Aurora Kirei", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     //add her to sissy cave
 
+    { name: "priest", display: "Father O'Mally", image: "priest.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, q3: false },
+
+
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
 
 sc.events = [
     { name: "cecilia", step: 1, txt: "You can join her at the glory hole on the weekends", img: "", show: true, ach: false },
+
+    { name: "lola", step: 1, txt: "Had sex with MC", img: "", show: true, ach: false },
 
     //{ name: "landlord", step: -10, txt: "Caught at the whore house", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "landlord", step: -9, txt: "Caught naked in the house and took giant dildo", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
@@ -526,7 +531,7 @@ sc.modLevel = function (name, amount, targetLevel) {
                 sc.char[i].c -= amount;
                 if (sc.char[i].c < 0)
                     sc.char[i].c = 0;
-                g.popUpNotice(sc.char[i].d + " points have decreased. ");
+                g.popUpNotice(sc.char[i].d + "'s points have decreased. ");
             }
         }
     }
@@ -591,6 +596,15 @@ sc.setstep = function (name, step) {
     }
     if (name === g.walk)
         char.makeWalk();
+};
+
+sc.checkeventall = function (name) {
+    var retVar = new Array();
+    for (i = 0; i < sc.events.length; i++) {
+        if (sc.events[i].name === name && sc.events[i].ach)
+            retVar.push(sc.events[i].step);
+    }
+    return retVar;
 };
 
 sc.setstepAll = function (name, step) {
@@ -772,16 +786,16 @@ sc.getTimeline = function (char) {
     var thisDay = g.dt.getDay();
     var thisTime = g.gethourdecimal();
     var timeline = [
-        //{ n: "landlord", d: [1, 2], hstart: 8, hend: 9, roomId: 12 }, //bathroom
+        { n: "landlord", d: [6, 3], hstart: 7, hend: 8, roomId: 12 }, //bathroom
         { n: "landlord", d: [0, 6], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-        { n: "landlord", d: [0, 6], hstart: 7, hend: 8, roomId: 15, alt: null }, //kitchen
+        { n: "landlord", d: [0], hstart: 7, hend: 8, roomId: 15, alt: null }, //kitchen
         { n: "landlord", d: [0, 6], hstart: 8, hend: 9, roomId: 25, alt: null }, //dining room
         { n: "landlord", d: [0, 6], hstart: 9, hend: 17, roomId: 26, alt: null }, //living room
         { n: "landlord", d: [0, 6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
         { n: "landlord", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
         { n: "landlord", d: [0, 6], hstart: 18, hend: 24, roomId: 14, alt: null }, //bedroom
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 7, hend: 9, roomId: 15, alt: null }, //dining
+        { n: "landlord", d: [1, 2, 4, 5], hstart: 7, hend: 9, roomId: 15, alt: null }, //dining
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
         { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
@@ -796,7 +810,7 @@ sc.getTimeline = function (char) {
         { n: "lola", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //living
         { n: "lola", d: [0, 6], hstart: 19, hend: 24, roomId: 13, alt: null }, //living
         { n: "lola", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-        { n: "lola", d: [1, 4], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
+        { n: "lola", d: [2, 4], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
         { n: "lola", d: [1, 3, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //dining
         { n: "lola", d: [2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
         { n: "lola", d: [1, 3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
@@ -813,7 +827,7 @@ sc.getTimeline = function (char) {
         { n: "eva", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //living
         { n: "eva", d: [0, 6], hstart: 19, hend: 24, roomId: 13, alt: null }, //living
         { n: "eva", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-        { n: "eva", d: [1, 4], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
+        { n: "eva", d: [2, 4], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
         { n: "eva", d: [1, 3, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //dining
         { n: "eva", d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
         { n: "eva", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining

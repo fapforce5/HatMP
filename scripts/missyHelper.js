@@ -35,7 +35,8 @@ missy.init = function () {
         { id: 26, n: "uniformNew", c: 0 },
         { id: 27, n: "jobCleanToiletUniform", c: 0 },
         { id: 28, n: "sissySchoolDays", c: 0 },
-        { id: 29, n: "cage", c: 0 } //0 cage, 1 pink, 2 pinkx2
+        { id: 29, n: "cage", c: 0 }, //0 cage, 1 pink, 2 pinkx2
+        { id: 30, n: "missyEventTracker", c: 0 } //0 cage, 1 pink, 2 pinkx2
     ];
 
     missy.cases = [

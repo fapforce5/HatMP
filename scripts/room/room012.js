@@ -226,19 +226,16 @@ room12.btnclick = function (name) {
             char.room(22);
             break;
         case "shower":
-            if (g.diffDatesByDays(g.dt, gv.get("shower")) === 0)
-                chat(12, 12);
-            else {
-                nav.killall();
-                cl.c.cumface = false;
-                cl.nude();
-                zcl.displayMain(0, 400, .22, "shower", false);
-                nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");
-                if (inv.get("razor").count > 0)
-                    chat(15, 12);
-                else
-                    chat(11, 12);
-            }
+            nav.killall();
+            cl.c.cumface = false;
+            cl.nude();
+            zcl.displayMain(0, 400, .22, "shower", false);
+            nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");
+            if (inv.get("razor").count > 0)
+                chat(15, 12);
+            else
+                chat(11, 12);
+            
             break;
         case "mirror":
             g.pass = 12;
@@ -391,17 +388,33 @@ room12.chatcatch = function (callback) {
             if (cl.c.bodyhair > 0)
                 cl.c.bodyhair = 0;
             inv.use("razor");
+            zcl.displayMain(0, 400, .22, "shower", false);
             cl.display();
             break;
         case "finishShowering":
             cl.undo();
-            gv.mod("energy", 30);
             char.addtime(30);
-            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
-            char.room(12);
+            if (!daily.get("shower")) {
+                gv.mod("energy", 10000);
+                daily.set("shower");
+                if (sc.getTimeline("landlord").roomID < 50) {
+                    nav.killall();
+                    nav.bg("12_bathroom/lotion1.jpg");
+                    chat(39, 12);
+                }
+                else {
+                    char.room(12);
+                }
+            }
+            else
+                char.room(12);
             break;
-        case "reloadRoom":
-            char.room(12);
+        case "lotion2":
+            levels.mod("xdress", 10, 3);
+            if (cl.c.chest < 3) 
+                nav.bg("12_bathroom/lotion2_man.jpg");
+            else 
+                nav.bg("12_bathroom/lotion2_woman.jpg");
             break;
         case "200_1":
             if (cl.c.bodyhair > 50) {
@@ -481,6 +494,9 @@ room12.chatcatch = function (callback) {
             gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
             cl.c.cumface = false;
             cl.undo();
+            char.room(12);
+            break;
+        case "reset":
             char.room(12);
             break;
         default:
@@ -603,7 +619,7 @@ room12.chat = function(chatID){
             button: [
                 { chatID: 14, text: "Apply Makeup", callback: "" },
                 { chatID: 14, text: "Apply Lipstick", callback: "" },
-                { chatID: -1, text: "Finish", callback: "reloadRoom" }
+                { chatID: -1, text: "Finish", callback: "reset" }
             ]
         },
         {
@@ -611,7 +627,7 @@ room12.chat = function(chatID){
             speaker: "me",
             text: "I don't have that.",
             button: [
-                { chatID: -1, text: "Finish", callback: "reloadRoom" }
+                { chatID: -1, text: "Finish", callback: "reset" }
             ]
         },
         {
@@ -809,6 +825,39 @@ room12.chat = function(chatID){
             text: "Yeah pervert. Don't point that cock at us. Way to ruin it. We're done. ",
             button: [
                 { chatID: -1, text: "Awww", callback: "200_finish1" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "landlord",
+            text: "Did somebody just finish their shower? ",
+            button: [
+                { chatID: 41, text: "Yes?", callback: "lotionEnd" },
+                { chatID: 40, text: "[Cover yourself up] Not now " + sc.n("landlord") + "!", callback: "" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "landlord",
+            text: "Well then. Don't forget to take care of your skin. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "landlord",
+            text: "Let's take care of your skin. Don't want you to get a rash. ",
+            button: [
+                { chatID: 42, text: "Yes " + sc.n("landlord") + ". ", callback: "lotion2" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "landlord",
+            text: "You always did have the smoothest skin. I guess this lotion is doing what it needs to do. ",
+            button: [
+                { chatID: -1, text: "Thank you. ", callback: "reset" },
             ]
         },
     ];

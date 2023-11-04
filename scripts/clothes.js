@@ -604,7 +604,7 @@ cl.hairColor = [
     { color: "rainbow", step: 1 }
 ];
 
-cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia"];
+cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia", "bun"];
 
 cl.makeup = [
     { name: "n", image: "body_head.png" },
@@ -1771,8 +1771,8 @@ cl.display = function () {
                 thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
                 cl.subDisplay("char-hair", cback ? thisHair + "_back.png" : thisHair + ".png");
             }
-            else if (cl.c.hairStyle === "leia") {
-                thisHair = "hair_2_" + cl.c.hairColor + "_leia";
+            else if (cl.c.hairStyle === "leia" || cl.c.hairStyle === "bun") {
+                thisHair = "hair_2_" + cl.c.hairColor + "_" + cl.c.hairStyle;
                 cl.subDisplay("char-hair", cback ? thisHair + "_back.png" : thisHair + ".png");
             }
             else {
@@ -2163,21 +2163,13 @@ cl.isLewd = function () {
 };
 
 cl.cupsize = function () {
-    var sizes = ["fat", "A", "A", "B", "C", "D", "Fucking Huge"];
+    var sizes = ["fat", "A", "A", "B", "C", "DDD", "Fucking Huge"];
     return sizes[cl.c.chest + 1];
 };
 
 cl.buttsize = function () {
     var sizes = ["manly", "tiny", "nice", "phat", "super plump", "porn star"];
     return sizes[cl.c.leg];
-};
-
-cl.usecock = function () {
-    if (cl.c.chastity !== null)
-        return false;
-    if (cl.c.cock > 3)
-        return false;
-    return true;
 };
 
 cl.appearance = function () {
@@ -2397,87 +2389,6 @@ cl.wearing = function () {
     return retVal;
 };
 
-cl.minButt = function (invItem, sizeItem) {
-    levels.mod("anal", 25, 3);
-    var returnItem = { minSize: 0, fit: false };
-    if (invItem !== null) {
-        switch (invItem) {
-            case "screwdriver":
-            case "foodCarrot":
-                returnItem.minSize = 0;
-                break;
-            case "purpleDildo":
-            case "pinkDildo":
-            case "foodBanana":
-                returnItem.minSize = 1;
-                break;
-            case "whiteDildo":
-            case "foodCucumber":
-                returnItem.minSize = 2;
-                break;
-            case "blackDildo":
-            case "blackBallsDildo":
-            case "towerDildo":
-            case "foodApple":
-                returnItem.minSize = 3;
-                break;
-            case "pinkFatDildo":
-            case "horseDildo":
-                returnItem.minSize = 4;
-                break;
-            default:
-                console.log("cl.minButt::Need: " + invItem);
-        }
-    }
-    else if (sizeItem !== null) {
-        if (sizeItem < 0)
-            sizeItem = 0;
-        else if (sizeItem > 6)
-            sizeItem = 6;
-        returnItem.minSize = sizeItem;
-    }
-    else {
-        console.log("cl.minButt::No invItem or sizeItem - both null.");
-    }
-    returnItem.fit = returnItem.minSize <= cl.c.butthole;
-    return returnItem;
-};
-
 cl.stretchButt = function (invItem, sizeItem) {
-    levels.mod("anal", 25, 3);
-    var thisItem = cl.minButt(invItem, sizeItem);
-    var oldBhole = Math.floor(cl.c.butthole);
-    var retSize = 0;
-    var startLine = "";
-
-    if (cl.c.butthole >= thisItem.minSize + 2) {
-        retSize = 0;    
-    }
-    else if (cl.c.butthole >= thisItem.minSize + 1) {
-        retSize = .17;
-    }
-    else if (cl.c.butthole >= thisItem.minSize) {
-        retSize += .34;
-    }
-    else {
-        retSize += .34;
-    }
-    if (retSize > 0)
-        cl.c.butthole += retSize;
-    if (oldBhole < Math.floor(cl.c.butthole)) {
-        cl.cockDisplay();
-        startLine = "Your butthole increased in size (Slut)<br/>";
-    }
-    if (retSize === .17) {
-        g.popUpNotice(startLine + "Your butthole stretched a little. ");
-    }
-    else if (retSize > .17) {
-        g.popUpNotice(startLine + "Your butthole stretched a lot. ");
-    }
-    daily.set("buttholePlay");
-    return retSize;
+    alert("remove this - cl.stretchButt");
 }; 
-
-cl.isCockTooSmallForSex = function () {
-    return cl.c.cock > 2;
-};

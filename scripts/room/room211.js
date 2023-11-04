@@ -4,13 +4,13 @@ room211.main = function () {
     var allClassesPassed = true;
     for (var i = 0; i < 10; i++) {
         if (!sissy.st[i].ach)
-            classeLeft = false;
+            allClassesPassed = false;
     }
     if (!sissy.st[0].ach) { //firstday
         gv.set("sissySchoolClass", "firstday");
         char.room(209);
     }
-    if (allClassesPassed) {
+    else if (allClassesPassed) {
         chat(1, 211);
     }
     else {

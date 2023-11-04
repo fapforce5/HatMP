@@ -81,6 +81,7 @@ inv.master = [
     { type: "p", name: "phoneTr", display: "Strong Woman", entry: false, count: null, cost: 100, image: "phone_tr.png", n: false, desc: "" },
     { type: "p", name: "phonePink", display: "Pink", entry: false, count: null, cost: 100, image: "phone_pink.png", n: false, desc: "" },
     { type: "p", name: "phoneLips", display: "Purple Lips", entry: false, count: null, cost: 100, image: "phone_lips.png", n: false, desc: "" },
+
     { type: "g", name: "screwdriver", display: "Screwdriver", entry: false, count: null, cost: 50, image: "screwdriver.png", n: false, desc: "Go screw yourself" },
     { type: "d", name: "purpleDildo", display: "Purple Dildo", entry: false, count: null, cost: 40, image: "dildoPurple.png", n: false, desc: "Small Dildo" },
     { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },
@@ -90,6 +91,7 @@ inv.master = [
     { type: "d", name: "blackBallsDildo", display: "Anal Beads", entry: false, count: null, cost: 40, image: "butt_balls.png", n: false, desc: "Balls you put in your ass" },
     { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 90, image: "butt_tower.png", n: false, desc: "Stretch that sissy hole" },
     { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false, desc: "You'll blow your ass out" },
+
     { type: "c", name: "handcuff", display: "Handcuffs", entry: false, count: null, cost: 36, image: "handcuffs.png", n: false, desc: "Handcuffs, you know, for your hands" },
 
     { type: "t", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false, desc: "Shrink your pp" },
@@ -733,6 +735,38 @@ inv.save = function () {
             n: inv.master[i].n
         });
     return retArray;
+};
+
+inv.anal = function (name) {
+    switch (name) {
+        case "1finger":
+        case "screwdriver":
+            return 0;
+        case "2finger":
+        case "purpleDildo":
+        case "foodCarrot":
+            return 1;
+        case "3finger":
+        case "pinkDildo":
+            return 2;
+        case "4finger":
+        case "whiteDildo":
+        case "foodBanana":
+            return 3;
+        case "blackDildo":
+        case "foodCucumber":
+            return 4;
+        case "towerDildo":
+        case "blackBallsDildo":
+        case "foodApple":
+            return 5;
+        case "pinkFatDildo":
+        case "horseDildo":
+            return 6;
+        default:
+            console.log("Dildo not found: " + name);
+            return 1;
+    }
 };
 
 //need to set values to false and 0 on new load

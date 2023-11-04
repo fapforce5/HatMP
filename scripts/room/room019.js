@@ -2,44 +2,124 @@
 var room19 = {};
 
 room19.main = function () {
-    g.cockDisplay = "a";
-    cl.cockDisplay();
-    g.internal = "";
-    var lubeLevel = inv.get("lube").count;
-    var thisImg = "0";
-
-    if (lubeLevel === 0)
-        thisImg = "19_layInBed/l0.png";
-    else if (lubeLevel < 3)
-        thisImg = "19_layInBed/l1.png";
-    else if (lubeLevel < 6)
-        thisImg = "19_layInBed/l2.png";
-    else if (lubeLevel < 12)
-        thisImg = "19_layInBed/l3.png";
-    else
-        thisImg = "19_layInBed/l4.png";
-
+    room19.chatcatch("toybox");
     nav.button({
         "type": "img",
-        "name": "lube",
-        "left": 488,
-        "top": 107,
-        "width": 1217,
-        "height": 789,
-        "image": thisImg
+        "name": "bghide",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1001_rand/black_25.png"
     }, 19);
-
-
-    if (daily.get("buttholeplay"))
-        chat(7, 19);
-    else if (lubeLevel === 0)
+    if (inv.has("lube")) {
+        sc.select("bjBegin", "19_layInBed/icon_bj.png", 0);
+        sc.select("fingerBegin", "19_layInBed/icon_finger.png", 1);
+        sc.select("toyBegin", "19_layInBed/icon_dildo.png", 2);
+        sc.selectCancel("leave", 3)
+    }
+    else {
+        sc.select("bjBegin", "19_layInBed/icon_bj.png", 0);
+        sc.selectCancel("leave", 1);
         chat(0, 19);
-    else
-        chat(1, 19);
+    }
+    //g.cockDisplay = "a";
+    //cl.cockDisplay();
+    //g.internal = "";
+    //var lubeLevel = inv.get("lube").count;
+    //var thisImg = "0";
+
+    //if (lubeLevel === 0)
+    //    thisImg = "19_layInBed/l0.png";
+    //else if (lubeLevel < 3)
+    //    thisImg = "19_layInBed/l1.png";
+    //else if (lubeLevel < 6)
+    //    thisImg = "19_layInBed/l2.png";
+    //else if (lubeLevel < 12)
+    //    thisImg = "19_layInBed/l3.png";
+    //else
+    //    thisImg = "19_layInBed/l4.png";
+
+    //nav.button({
+    //    "type": "img",
+    //    "name": "lube",
+    //    "left": 488,
+    //    "top": 107,
+    //    "width": 1217,
+    //    "height": 789,
+    //    "image": thisImg
+    //}, 19);
+
+
+    //if (daily.get("buttholeplay"))
+    //    chat(7, 19);
+    //else if (lubeLevel === 0)
+    //    chat(0, 19);
+    //else
+    //    chat(1, 19);
 };
 
 room19.btnclick = function (name) {
     switch (name) {
+        case "toyBegin":
+            if (daily.get("buttholePlay")) {
+                nav.killbutton("toyBegin");
+                chat(7, 19);
+            }
+            else if (!g.internal) {
+                chat(2, 19);
+            }
+            else {
+                g.internal = "anal";
+                nav.killbutton("toyBegin");
+                nav.killbutton("fingerBegin");
+                nav.killbutton("bjBegin");
+                nav.killbutton("leave");
+                nav.killbutton("bghide");
+            }
+            break;
+        case "bjBegin":
+            if (daily.get("dildoSuckPlay")) {
+                nav.killbutton("bjBegin");
+                chat(13, 19);
+            }
+            else if (!g.internal) {
+                chat(2, 19);
+            }
+            else {
+                g.internal = "oral";
+                nav.killbutton("toyBegin");
+                nav.killbutton("fingerBegin");
+                nav.killbutton("bjBegin");
+                nav.killbutton("leave");
+                nav.killbutton("bghide");
+            }
+            break;
+        case "fingerBegin":
+            inv.use("lube");
+            nav.killall();
+            nav.bg("19_layInBed/bg52.jpg");
+            var startingFingers = 1;
+            for (var fi = 4; fi > 0; fi--) {
+                if (levels.analTake(inv.anal(fi + "finger")).c < 3) {
+                    startingFingers = fi;
+                    break;
+                }
+            }
+
+            g.internal = { f: startingFingers - 1, i: 0, size: startingFingers - 1, more: false };
+
+            nav.killbutton("butt");
+            nav.button({
+                "type": "btnflat",
+                "name": "finger",
+                "left": 298,
+                "top": 0,
+                "width": 1447,
+                "height": 1080,
+                "image": "19_layInBed/" + g.internal.f + "_0.png"
+            }, 19);
+            break;
         case "finger":
             g.internal.i++;
             if (g.internal.i > 4) {
@@ -54,15 +134,11 @@ room19.btnclick = function (name) {
                 }, 19);
                 g.roomTimeout = setTimeout(function () {
                     if (g.internal.f > 2)
-                        chat(4, 19);
-                    else if (g.internal.f <= g.internal.b)
+                        chat(5, 19);
+                    else if (!g.internal.more)
                         chat(3, 19);
-                    else {
-                        levels.mod("anal", 25, 3);
-                        //cl.c.butthole += .15;
-                        gv.mod("fingerbutt", 1);
+                    else 
                         chat(4, 19);
-                    }
                 }, 2000);
             }
             else {
@@ -79,6 +155,9 @@ room19.btnclick = function (name) {
 
             }
             break;
+        case "leave":
+            char.room(g.pass);
+            break;
         case "cancel":
             char.room(19);
             break;
@@ -91,42 +170,73 @@ room19.btnclick = function (name) {
         case "towerDildo":
         case "pinkFatDildo":
         case "horseDildo":
-            var dildoCheck = cl.minButt(name, null);
-            if (!dildoCheck.fit)
-                chat(10, 19);
+            if (g.internal === "anal") {
+                var analEase = levels.analTake(inv.anal(name));
+                if (analEase.c > 2) {
+                    chat(10, 19);
+                }
+                else {
+                    nav.bg("19_layInBed/bg52.jpg");
+                    nav.killall();
+                    inv.use("lube");
+                    g.internal = { name: name, size: inv.anal(name) };
+
+                    nav.button({
+                        "type": "btn",
+                        "name": "stuffAss2",
+                        "left": 298,
+                        "top": 0,
+                        "width": 1447,
+                        "height": 1080,
+                        "image": "19_layInBed/" + g.internal.name + "x.png"
+                    }, 19);
+                    chat(8, 19);
+                }
+            }
             else {
-                nav.bg("19_layInBed/bg52.jpg");
-                nav.killall();
-                inv.use("lube");
-                g.internal = name;
-                
-                nav.button({
-                    "type": "btn",
-                    "name": "stuffAss2",
-                    "left": 298,
-                    "top": 0,
-                    "width": 1447,
-                    "height": 1080,
-                    "image": "19_layInBed/" + g.internal + "x.png"
-                }, 19);
-                chat(8, 19);
+                var oralEase = levels.oralTake(inv.anal(name));
+                if (oralEase.c > 2) {
+                    chat(11, 19);
+                }
+                else {
+                    
+                    nav.killall();
+                    g.internal = { name: name, size: inv.anal(name) };
+
+                    if (name === "screwdriver" || name === "purpleDildo" || name === "pinkDildo") {
+                        nav.bg("19_layInBed/bj_" + name + "_" + gender.pronoun("boy") + ".jpg");
+                    }
+                    else {
+                        nav.bg("19_layInBed/bg52.jpg");
+                        nav.button({
+                            "type": "img",
+                            "name": "bj",
+                            "left": 500,
+                            "top": 0,
+                            "width": 1200,
+                            "height": 1080,
+                            "image": "19_layInBed/bj_" + name + "_" + gender.pronoun("boy") + ".gif"
+                        }, 19);
+                    }
+                    g.roomTimeout = setTimeout(function () {
+                        chat(12, 19);
+                    });
+                    //chat(8, 19);
+                }
             }
             break;
         case "stuffAss2":
             nav.killbutton(name);
             nav.button({
                 "type": "img",
-                "name": g.internal.toy + "y",
+                "name": "dildo",
                 "left": 298,
                 "top": 0,
                 "width": 1447,
                 "height": 1080,
-                "image": "19_layInBed/" + g.internal + "y.gif"
+                "image": "19_layInBed/" + g.internal.name + "y.gif"
             }, 19);
-
             g.roomTimeout = setTimeout(function () {
-                gv.mod("dildobutt", 1);
-                cl.stretchButt(g.internal, null);
                 chat(9, 19);
             }, 2500);
             break;
@@ -139,11 +249,11 @@ room19.chatcatch = function (callback) {
 
     switch (callback) {
         case "toybox":
+            g.internal = false;
             var lubeLevel = inv.get("lube").count;
             var thisImg = "0";
             nav.killall();
             nav.bg("19_layInBed/drawer.jpg");
-            $('.room-left').hide();
             nav.button({
                 "type": "btn",
                 "name": "cancel",
@@ -173,7 +283,8 @@ room19.chatcatch = function (callback) {
                 "height": 479,
                 "image": thisImg
             }, 19);
-            if (inv.has("screwdriver"))
+            if (inv.has("screwdriver")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "screwdriver",
@@ -183,7 +294,9 @@ room19.chatcatch = function (callback) {
                     "height": 400,
                     "image": "19_layInBed/screwdriverDildo.png"
                 }, 19);
-            if (inv.has("purpleDildo"))
+            }
+            if (inv.has("purpleDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "purpleDildo",
@@ -193,7 +306,9 @@ room19.chatcatch = function (callback) {
                     "height": 302,
                     "image": "19_layInBed/purpleDildo.png"
                 }, 19);
-            if (inv.has("pinkDildo"))
+            }
+            if (inv.has("pinkDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "pinkDildo",
@@ -203,7 +318,9 @@ room19.chatcatch = function (callback) {
                     "height": 374,
                     "image": "19_layInBed/pinkDildo.png"
                 }, 19);
-            if (inv.has("whiteDildo"))
+            }
+            if (inv.has("whiteDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "whiteDildo",
@@ -213,7 +330,9 @@ room19.chatcatch = function (callback) {
                     "height": 466,
                     "image": "19_layInBed/whiteDildo.png"
                 }, 19);
-            if (inv.has("blackDildo"))
+            }
+            if (inv.has("blackDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "blackDildo",
@@ -223,7 +342,9 @@ room19.chatcatch = function (callback) {
                     "height": 564,
                     "image": "19_layInBed/blackDildo.png"
                 }, 19);
-            if (inv.has("pinkFatDildo"))
+            }
+            if (inv.has("pinkFatDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "pinkFatDildo",
@@ -233,7 +354,9 @@ room19.chatcatch = function (callback) {
                     "height": 469,
                     "image": "19_layInBed/pinkFatDildo.png"
                 }, 19);
-            if (inv.has("blackBallsDildo"))
+            }
+            if (inv.has("blackBallsDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "blackBallsDildo",
@@ -243,7 +366,9 @@ room19.chatcatch = function (callback) {
                     "height": 449,
                     "image": "19_layInBed/blackBallsDildo.png"
                 }, 19);
-            if (inv.has("towerDildo"))
+            }
+            if (inv.has("towerDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "towerDildo",
@@ -253,7 +378,9 @@ room19.chatcatch = function (callback) {
                     "height": 228,
                     "image": "19_layInBed/towerDildo.png"
                 }, 19);
-            if (inv.has("horseDildo"))
+            }
+            if (inv.has("horseDildo")) {
+                g.internal = true;
                 nav.button({
                     "type": "btn",
                     "name": "horseDildo",
@@ -263,31 +390,46 @@ room19.chatcatch = function (callback) {
                     "height": 311,
                     "image": "19_layInBed/horseDildo.png"
                 }, 19);
-
+            }
+            break;
+        case "bj":
+            g.internal = "bj";
+            room19.chatcatch("toybox");
+            break;
+        case "analtoy":
+            g.internal = "anal";
+            room19.chatcatch("toybox");
             break;
         case "fingerStart":
-            inv.use("lube");
-            nav.killall();
-            nav.bg("19_layInBed/bg52.jpg");
+            //inv.use("lube");
+            //nav.killall();
+            //nav.bg("19_layInBed/bg52.jpg");
+            //var startingFingers = 1;
+            //for (var fi = 4; fi > 0; fi--) {
+            //    if (levels.analTake(inv.anal(fi + "finger")).c < 3) {
+            //        startingFingers = fi;
+            //        break;
+            //    }
+            //}
 
-            var buttholesize = Math.floor(cl.c.butthole);
-            if (buttholesize > 3)
-                buttholesize = 3;
-            g.internal = { f: buttholesize, b: Math.floor(cl.c.butthole), i: 0 };
-            nav.killbutton("butt");
-            nav.button({
-                "type": "btnflat",
-                "name": "finger",
-                "left": 298,
-                "top": 0,
-                "width": 1447,
-                "height": 1080,
-                "image": "19_layInBed/" + g.internal.f + "_0.png"
-            }, 19);
+            //g.internal = { f: startingFingers - 1, i: 0, size: startingFingers - 1, more: false };
+
+            //nav.killbutton("butt");
+            //nav.button({
+            //    "type": "btnflat",
+            //    "name": "finger",
+            //    "left": 298,
+            //    "top": 0,
+            //    "width": 1447,
+            //    "height": 1080,
+            //    "image": "19_layInBed/" + g.internal.f + "_0.png"
+            //}, 19);
             break;
         case "addFinger":
             g.internal.f += 1;
+            g.internal.size += 1;
             g.internal.i = 0;
+            g.internal.more = true;
             nav.killbutton("fingergif");
             nav.button({
                 "type": "btn",
@@ -301,9 +443,8 @@ room19.chatcatch = function (callback) {
             break;
         case "Stop":
             cl.display();
-            levels.mod("anal", 25, 3);
+            levels.anal(g.internal.size);
             daily.set("buttholeplay");
-            $('.room-left').show();
             char.room(g.pass);
             break;
         case "quit":
@@ -312,6 +453,11 @@ room19.chatcatch = function (callback) {
             break;
         case "finishAssFuck":
 
+            break;
+        case "stopSuck":
+            levels.oral(g.internal.size);
+            daily.set("dildoSuckPlay");
+            char.room(g.pass);
             break;
         default:
             break;
@@ -325,7 +471,7 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "I've run out of lube, I need to get some more if I want to play with my butthole.",
             button: [
-                { chatID: -1, text: "Return to my room.", callback: "quit" }
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
         {
@@ -333,8 +479,9 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "I'm such a weird-o... what shall I shove in my asshole?",
             button: [
-                { chatID: -1, text: "My fingers", callback: "fingerStart" },
-                { chatID: -1, text: "A toy", callback: "toybox" },
+                { chatID: -1, text: "Shove my fingers in my butt.", callback: "fingerStart" },
+                { chatID: -1, text: "Impale my poor anus on a toy. ", callback: "analtoy" },
+                { chatID: -1, text: "Practice giving blowjobs", callback: "bj" },
                 { chatID: -1, text: "Nothing, return to my room.", callback: "quit" },
             ]
         },
@@ -343,8 +490,7 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "I don't have any toys, maybe there's some at Toys 'N Us.",
             button: [
-                { chatID: -1, text: "Use my fingers", callback: "fingerStart" },
-                { chatID: -1, text: "Nothing, return to my room.", callback: "quit" },
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
         {
@@ -367,9 +513,8 @@ room19.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "me",
-            text: "Ooooo, my butt-hole is so hungry, it's begging for more fingers...",
+            text: "It seems I've run out of fingers to shove into my hungry hole! ",
             button: [
-                { chatID: -1, text: "Give into your lust and slip in another finger", callback: "3finger" },
                 { chatID: -1, text: "Stop playing with my asshole", callback: "Stop" }
             ]
         },
@@ -386,7 +531,7 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "I've played enough with my butthole for a day. Gotta let it rest. ",
             button: [
-                { chatID: -1, text: "...", callback: "quit" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
@@ -411,6 +556,30 @@ room19.chat = function (chatID) {
             text: "That's too big for my tiny little anus.",
             button: [
                 { chatID: -1, text: "Pick a different toy", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "me",
+            text: "There's no way I'm fitting that in my mouth! ",
+            button: [
+                { chatID: -1, text: "Pick a different toy", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "me",
+            text: "How do I know when to stop without cum down my throat? ",
+            button: [
+                { chatID: -1, text: "Finish sucking ", callback: "stopSuck" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "me",
+            text: "My jaw is tired from sucking cock. Maybe tomorrow. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

@@ -54,7 +54,7 @@ room752.btnclick = function (name) {
                 chat(1, 752);
             else if (gv.get("money") < 75)
                 chat(3, 752);
-            else if (cl.isCockTooSmallForSex())
+            else if (gender.isCockTooSmallForSex())
                 chat(2, 752);
             else
                 chat(4, 752);
