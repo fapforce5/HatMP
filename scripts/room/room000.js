@@ -134,7 +134,7 @@ room0.btnclick = function (name) {
         char.addtime(20);
         $('#room_footer').show();
         nav.killall();
-        nav.bg("map/bg" + (gv.get("map") + (g.isNight() ? "_night" : "")) + ".jpg");
+        nav.bg("map/" + roomnum + "_close" + (g.isNight() ? "night" : "") + ".jpg" );
         setTimeout(function () {
             char.room(roomnum);
         }, 800);
@@ -221,33 +221,33 @@ room0.chatcatch = function (callback) {
                     }
                 }
                 else {
-                    var pstep = sc.get(g.walk);
-                    var i;
-                    var pointer, mp;
-                    for (i = 0; i < sc.events.length; i++) {
-                        if (sc.events[i].name === g.walk && sc.events[i].step <= pstep.step) {
-                            pointer = i;
-                        }
-                    }
-                    var s = sc.events[pointer].m;
-                    for (i = 0; i < s.length; i++) {
-                        for (j = 0; j < g.roomMap.length; j++) {
-                            if (g.roomMap[j].roomID === s[i]) {
-                                mp = g.roomMap[j];
-                                j = 999999;
-                            }
-                        }
-                        if (mp.map === g.internal)
-                            nav.button({
-                                "type": "img",
-                                "name": "xxx",
-                                "left": mp.left + (mp.width / 2) - 200,
-                                "top": mp.top + (mp.height / 2) - 200,
-                                "width": 400,
-                                "height": 400,
-                                "image": "map/marker.gif"
-                            }, 0);
-                    }
+                    //var pstep = sc.get(g.walk);
+                    //var i;
+                    //var pointer, mp;
+                    //for (i = 0; i < sc.events.length; i++) {
+                    //    if (sc.events[i].name === g.walk && sc.events[i].step <= pstep.step) {
+                    //        pointer = i;
+                    //    }
+                    //}
+                    //var s = sc.events[pointer].m;
+                    //for (i = 0; i < s.length; i++) {
+                    //    for (j = 0; j < g.roomMap.length; j++) {
+                    //        if (g.roomMap[j].roomID === s[i]) {
+                    //            mp = g.roomMap[j];
+                    //            j = 999999;
+                    //        }
+                    //    }
+                    //    if (mp.map === g.internal)
+                    //        nav.button({
+                    //            "type": "img",
+                    //            "name": "xxx",
+                    //            "left": mp.left + (mp.width / 2) - 200,
+                    //            "top": mp.top + (mp.height / 2) - 200,
+                    //            "width": 400,
+                    //            "height": 400,
+                    //            "image": "map/marker.gif"
+                    //        }, 0);
+                    //}
                 }
             }
             g.internal = null;

@@ -3,7 +3,10 @@
 //sissy transform: 95!!
 var room28 = {};
 room28.main = function () {
-
+    var pjRoom = [7, 10]
+    if (pjRoom.includes(g.pass)) {
+        cl.wearSavedOutfit(5);
+    }
     missy.daily();
     var i;
     var hormoneLevel, thisTinyPP;

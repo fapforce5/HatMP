@@ -109,27 +109,9 @@ room101.chatcatch = function (callback) {
                 "height": 715,
                 "image": "101_constFrontOffice/laugh1.png" 
             }, 101);
-            levels.mod("charisma", 20, 999);
-            //var image = "laugh1.png";
-            //if (tinaRel < 5)
-            //    image = "laugh1.png";
-            //else if (tinaRel < 10)
-            //    image = "laugh2.png";
-            //else
-            //    image = "laugh3.png";
-
-            //if (tinaRel < 16)
-            //    sc.incstep("tina", 1);
-            //nav.killbutton("tina");
-            //nav.button({
-            //    "type": "btn",
-            //    "name": "tina",
-            //    "left": 810,
-            //    "top": 268,
-            //    "width": 491,
-            //    "height": 715,
-            //    "image": "101_constFrontOffice/" + image
-            //}, 101);
+            levels.mod("charisma", 15, 999);
+            sc.modLevel("tina", 55, 5);
+            
             break;
         case "nicePickupLine":
             levels.mod("charisma", 12, 999);

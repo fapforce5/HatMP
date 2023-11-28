@@ -135,6 +135,11 @@ pic.master = [
     { name: "candy", display: "Candy's cum hole", entry: false, image: "candy.jpg", thumb: "candy.png" },
 ];
 
+pic.getall = function () {
+    for (var i = 0; i < pic.master.length; i++)
+        pic.master[i].entry = true;
+}
+
 pic.add = function (name) {
     var i;
     for (i = 0; i < pic.master.length; i++) {

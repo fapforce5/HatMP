@@ -36,7 +36,7 @@ room250.main = function () {
         }
     }
     else if (cl.isLewd()) {
-        if (!sc.checkevent("holly", -1) && sc.getstep("dolly") >= 3) {
+        if (!sc.getEvent("holly", -1) && sc.getstep("dolly") >= 3) {
             if (sc.getstep("dolly") < 4) {
                 nav.button({
                     "type": "img",
@@ -76,7 +76,7 @@ room250.main = function () {
         }
     }
     else {
-        var btnList = sc.checkevent("holly", -1) ?
+        var btnList = sc.getEvent("holly", -1) ?
             [{
                 "type": "btn",
                 "name": "hollyStand",
@@ -162,7 +162,7 @@ room250.btnclick = function (name) {
             }
             else if (jefferyStep > 7) {
                 if (g.hourBetween(6, 11)) {
-                    if (sc.checkevent("holly", -1)) {
+                    if (sc.getEvent("holly", -1)) {
                         chat(74, 250);
                     }
                     else {
@@ -170,7 +170,7 @@ room250.btnclick = function (name) {
                     }
                 }
                 else {
-                    if (sc.checkevent("holly", -1)) {
+                    if (sc.getEvent("holly", -1)) {
                         chat(77, 250);
                     }
                     else {
@@ -408,7 +408,7 @@ room250.chatcatch = function (callback) {
                 nav.killall();
                 nav.bg("250_beaver/pizza.jpg");
                 g.internal = "pizza";
-                sc.checkevent("holly", -1) ? chat(78, 250) : chat(2, 250);
+                sc.getEvent("holly", -1) ? chat(78, 250) : chat(2, 250);
             }
             break;
         case "burger":
@@ -419,7 +419,7 @@ room250.chatcatch = function (callback) {
                 nav.killall();
                 nav.bg("250_beaver/burger.jpg");
                 g.internal = "burger";
-                sc.checkevent("holly", -1) ? chat(78, 250) : chat(2, 250);
+                sc.getEvent("holly", -1) ? chat(78, 250) : chat(2, 250);
             }
             break;
         case "tea":
@@ -430,7 +430,7 @@ room250.chatcatch = function (callback) {
                 nav.killall();
                 nav.bg("250_beaver/tea.jpg");
                 g.internal = "tea";
-                sc.checkevent("holly", -1) ? chat(78, 250) : chat(2, 250);
+                sc.getEvent("holly", -1) ? chat(78, 250) : chat(2, 250);
             }
             break;
         case "eat":
@@ -524,21 +524,21 @@ room250.chatcatch = function (callback) {
             zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
             break;
         case "break10":
-            if (sc.checkevent("holly", -1))
+            if (sc.getEvent("holly", -1))
                 gv.mod("money", 2);
             else
                 gv.mod("money", 10);
             room250.chatcatch("checkHalftime");
             break;
         case "break20":
-            if (sc.checkevent("holly", -1))
+            if (sc.getEvent("holly", -1))
                 gv.mod("money", 4);
             else
                 gv.mod("money", 20);
             room250.chatcatch("checkHalftime");
             break;
         case "break40":
-            if (sc.checkevent("holly", -1))
+            if (sc.getEvent("holly", -1))
                 gv.mod("money", 5);
             else
                 gv.mod("money", 40);
@@ -551,7 +551,7 @@ room250.chatcatch = function (callback) {
             break;
         case "checkHalftime":
             if (g.pass.length === 1) {
-                sc.checkevent("holly", 3) ? room250.chatcatch("halftimeShowContinue") : room250.chatcatch("halftimeShow");
+                sc.getEvent("holly", 3) ? room250.chatcatch("halftimeShowContinue") : room250.chatcatch("halftimeShow");
             }
             else {
                 g.pass = "FinishLoop";
@@ -565,7 +565,7 @@ room250.chatcatch = function (callback) {
             var randPick = Math.floor(Math.random() * 3);
             switch (randPick) {
                 case 0:
-                    if (sc.checkevent("holly", -1)) {
+                    if (sc.getEvent("holly", -1)) {
                         nav.button({
                             "type": "img",
                             "name": "kill_olly",
@@ -591,7 +591,7 @@ room250.chatcatch = function (callback) {
                     }
                     break;
                 case 1:
-                    if (sc.checkevent("holly", -1)) {
+                    if (sc.getEvent("holly", -1)) {
                         nav.button({
                             "type": "img",
                             "name": "kill_olly",
@@ -617,7 +617,7 @@ room250.chatcatch = function (callback) {
                     }
                     break;
                 case 2:
-                    if (sc.checkevent("holly", -1)) {
+                    if (sc.getEvent("holly", -1)) {
                         nav.button({
                             "type": "img",
                             "name": "kill_olly",

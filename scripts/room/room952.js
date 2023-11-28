@@ -134,7 +134,7 @@ room952.chatcatch = function (callback) {
             char.room(952);
             break;
         case "bodhi":
-            if (g.internal.chaple > 0 && !sc.checkevent("daria", -1)) {
+            if (g.internal.chaple > 0 && !sc.getEvent("daria", -1)) {
                 nav.killall();
                 nav.bg("952_hallway/bodhi0.jpg");
                 chat(3, 952);

@@ -41,14 +41,14 @@ room251.btnclick = function (name) {
                 if (thisJeff === 8) {
                     if (q3.activeSearch("jeffery"))
                         chat(40, 251);
-                    else if (sc.checkevent("dolly", -1))
+                    else if (sc.getEvent("dolly", -1))
                         chat(35, 251);
                     else
                         chat(34, 251);
                 }
                 else if (thisJeff === 9) {
                     //add in panties question here
-                    if (sc.checkevent("dolly", -1))
+                    if (sc.getEvent("dolly", -1))
                         chat(35, 251);
                     else
                         chat(34, 251);
@@ -246,7 +246,7 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "storycheck":
-            if (sc.checkevent("holly", -1))
+            if (sc.getEvent("holly", -1))
                 chat(43, 251);
             else
                 chat(44, 251);
@@ -280,7 +280,7 @@ room251.chatcatch = function (callback) {
             nav.bg("250_beaver/250_barSide.jpg");
             break;
         case "j7":
-            if (sc.checkevent("holly", -1)) {
+            if (sc.getEvent("holly", -1)) {
                 nav.bg("251_office/j7.jpg");
                 chat(61, 251);
             }

@@ -189,10 +189,10 @@ room12.showerScene = function (scene) {
             return {
                 "type": "img",
                 "name": "mom3",
-                "left": 773,
-                "top": 39,
-                "width": 452,
-                "height": 1041,
+                "left": 817,
+                "top": 38,
+                "width": 453,
+                "height": 1042,
                 "image": "12_bathroom/12_mother3.png"
             };
         case "mom4":
@@ -269,7 +269,7 @@ room12.chatcatch = function (callback) {
         case "sister3":
             nav.killbutton("sister2");
             nav.button(room12.showerScene("sister3", 12));
-            if (sc.checkevent("lola", 5))
+            if (sc.getEvent("lola", 5))
                 chat(19, 12);
             else
                 chat(10, 12);
@@ -339,10 +339,10 @@ room12.chatcatch = function (callback) {
             nav.button({
                 "type": "img",
                 "name": "mom3",
-                "left": 824,
-                "top": 26,
-                "width": 502,
-                "height": 1065,
+                "left": 817,
+                "top": 38,
+                "width": 453,
+                "height": 1042,
                 "image": "12_bathroom/12_mother3.png"
             }, 12);
             break;

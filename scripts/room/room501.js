@@ -29,7 +29,7 @@ room501.main = function () {
         nav.buildnav([0]);
     }
     else {
-        if (sc.checkevent("zoey", -2)) {
+        if (sc.getEvent("zoey", -2)) {
             navList.push(502);
             navList.push(503);
             btnList.push({
@@ -374,7 +374,7 @@ room501.chatcatch = function (callback) {
             }, 501);
             break;
         case "leave":
-            if (sc.checkevent("zoey", -1))
+            if (sc.getEvent("zoey", -1))
                 char.room(501);
             else
                 char.room(500);
@@ -423,7 +423,7 @@ room501.chatcatch = function (callback) {
         case "chloeLeave":
             daily.set("zoey");
             sc.setstep("zoey", 3);
-            if (sc.checkevent("zoey", 7)) {
+            if (sc.getEvent("zoey", 7)) {
                 nav.killbutton("ddduo");
             }
             else

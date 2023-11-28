@@ -186,18 +186,18 @@ room461.btnclick = function (name) {
                 chat(22, 461);
             }
             else {
-                if (!sc.checkevent("ppgirl", 1)) {
+                if (!sc.getEvent("ppgirl", 1)) {
                     levels.mod("piss", 25, 1);
                     nav.killall();
                     nav.bg("461_run/pee3.jpg");
-                    sc.setevent("ppgirl", 1);
+                    sc.setEvent("ppgirl", 1);
                     chat(25, 461);
                 }
-                else if (!sc.checkevent("ppgirl", 2)) {
+                else if (!sc.getEvent("ppgirl", 2)) {
                     levels.mod("piss", 25, 1);
                     nav.killall();
                     nav.bg("461_run/pee3.jpg");
-                    sc.setevent("ppgirl", 2);
+                    sc.setEvent("ppgirl", 2);
                     chat(30, 461);
                 }
                 else {

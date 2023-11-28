@@ -115,9 +115,9 @@ room401.main = function () {
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
             var priceMult = 1;
             var spankyInv = ["e", "g"];
-            if (sc.checkevent("spanky", 3) || g.sissy[51].ach)
+            if (sc.getEvent("spanky", 3) || g.sissy[51].ach)
                 spankyInv.push("h");
-            if (sc.checkevent("spanky", -1))
+            if (sc.getEvent("spanky", -1))
                 spankyInv.push("y");
             if (gv.get("spankyprices")) {
                 priceMult = 3;
@@ -216,7 +216,7 @@ room401.main = function () {
         var cli = cl.list[ci];
         var canBuy = $(this).attr('data-canbuy').toString() === "true";
 
-        $('#menu_displayIcon').html('<img src="./images/mainChar/icons/' + cli.img + '"/>');
+        $('#menu_displayIcon').html('<img src="./images/room/8_wardrobe/icons/' + cli.img + '"/>');
         $("#menu_displayCost").html("$" + cli.price);
         $("#menu_displayName").html(cli.display);
         $('#menu_displayType').html(cli.type.charAt(0).toUpperCase() + cli.type.slice(1));
@@ -334,9 +334,9 @@ room401.makeClothing = function (type, sex) {
                 canbuy = g.sissy[59].ach;
             inInv = cl.list[i].inv;
             if (!canbuy || inInv)
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" title="' + type + '"/>');
+                $('#menu-bg_' + g.internal).html('<img src="./images/room/8_wardrobe/icons/' + cl.list[i].img + '" title="' + type + '"/>');
             else
-                $('#menu-bg_' + g.internal).html('<img src="./images/mainChar/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
+                $('#menu-bg_' + g.internal).html('<img src="./images/room/8_wardrobe/icons/' + cl.list[i].img + '" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
             if (inInv)
                 $('#menu-bg_' + g.internal).append('<img src="./images/inv/owned.png" data-name="' + cl.list[i].name + '" data-type="' + cl.list[i].type + '" data-canbuy="' + canbuy + '" class="store-clothing" title="' + type + '"/>');
             else if (!canbuy)
@@ -380,7 +380,7 @@ room401.makeInv = function (typeArray, canbuy, priceMult) {
         for (i = 0; i < inv.master.length; i++) {
             if ((inv.master[i].type === type && !(inv.master[i].entry && inv.master[i].count === null)) && inv.master[i].cost > 0) {
                 if (inv.master[i].name === "razor") {
-                    if (sc.checkevent("me", -1)) {
+                    if (sissy.st[1].ach) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv" title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
                     }

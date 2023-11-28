@@ -98,18 +98,22 @@ room10.main = function () {
                 "image": "10_mainchar/10_bed.png",
                 "night": "10_mainchar/10_bedNight.png"
             },
-            {
+           
+        ];
+        if (gv.get("jobapplyconst") === 0) {
+            btnList.push({
                 "type": "btn",
-                "name": "nightStand",
-                "left": 373,
-                "top": 604,
-                "width": 137,
-                "height": 197,
-                "title": "Toybox - play with your dildos (if you have them)",
-                "image": "10_mainchar/10_nightstand.png",
-                "night": "10_mainchar/10_nightstandNight.png"
-            },
-            {
+                "name": "computer",
+                "left": 1233,
+                "top": 469,
+                "width": 202,
+                "height": 115,
+                "title": "Use your computer",
+                "image": "10_mainchar/10_computerApply.png",
+            });
+        }
+        else {
+            btnList.push({
                 "type": "btn",
                 "name": "computer",
                 "left": 1233,
@@ -119,8 +123,35 @@ room10.main = function () {
                 "title": "Use your computer",
                 "image": "10_mainchar/10_computer.png",
                 "night": "10_mainchar/10_computerNight.png"
-            }
-        ];
+            });
+            
+        }
+        if (gv.get("sissySchoolClass") === "anal102" || gv.get("sissySchoolClass") === "oral101") {
+            btnList.push({
+                "type": "btn",
+                "name": "nightStand",
+                "left": 373,
+                "top": 604,
+                "width": 137,
+                "height": 197,
+                "title": "Toybox - play with your dildos (if you have them)",
+                "image": "10_mainchar/nightstandPracticeDay.png",
+                "night": "10_mainchar/nightstandPracticeNight.png"
+            });
+        }
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "nightStand",
+                "left": 373,
+                "top": 604,
+                "width": 137,
+                "height": 197,
+                "title": "Toybox - play with your dildos (if you have them)",
+                "image": "10_mainchar/10_nightstand.png",
+                "night": "10_mainchar/10_nightstandNight.png"
+            });
+        }
 
         if (gv.get("cheerlevel") > 0) {
             btnList.push({

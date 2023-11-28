@@ -8,7 +8,7 @@ missy.init = function () {
     missy.st = [
         { id: 0, n: "mood", c: 0 },
         { id: 1, n: "late", c: 0 },
-        { id: 2, n: "uniform", c: 0 }, //0 is suit, 1 is suit and panties
+        { id: 2, n: "uniform", c: 0 }, //0 is suit, 1 is suit and panties, 2 is suit panties shaved
         { id: 3, n: "activeCase", c: 0 },
         { id: 4, n: "weeklyPay", c: 0 },
         { id: 5, n: "jobDataEntry", c: 0 },

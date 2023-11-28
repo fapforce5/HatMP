@@ -1197,7 +1197,7 @@ room13.chatcatch = function (callback) {
             nav.bg("13_sisterRoom/201_1.jpg");
             break;
         case "201_2":
-            var mollybad = sc.checkevent("holly", -1);
+            var mollybad = sc.getEvent("holly", -1);
             nav.button({
                 "type": "img",
                 "name": "molly",

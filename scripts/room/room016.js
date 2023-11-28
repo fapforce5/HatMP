@@ -40,7 +40,7 @@ room16.main = function () {
                 "height": 1080,
                 "image": "16_livingRoom/l1.png"
             }, 16);
-            if (!sc.checkevent("landlord", -9))
+            if (!sc.getEvent("landlord", -9))
                 chat(22, 16);
             else
                 chat(33, 16);

@@ -38,7 +38,7 @@ room408.main = function () {
         //    y: 600
         //}
     };
-    if (sc.checkevent("stormy", -1) && g.hourBetween(10, 20)) {
+    if (sc.getEvent("stormy", -1) && g.hourBetween(10, 20)) {
         sc.revokeStep("stormy", -1);
         nav.bg("408_tattoo/inside.jpg");
         chat(38, 408);

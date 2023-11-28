@@ -8,7 +8,7 @@ room553.main = function () {
 
             g.pass = "girl";
             navList = [551, 0];
-            if (!sc.checkevent("candy", -1)) {
+            if (!sc.getEvent("candy", -1)) {
                 btnList.push({
                     "type": "img",
                     "name": "candy",

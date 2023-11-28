@@ -172,11 +172,52 @@ nav.t = function (btn, roomNum) {
     if ("hex" in btn)
         thisHex = btn.hex;
 
-    line = '<div class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
+    line = '<div class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
 
     $('#room-buttons').append(line);
 
     
+};
+
+nav.inputbox = function (btn, roomNum) {
+    var top = btn.top * g.ratio;
+    var left = btn.left * g.ratio;
+    var btnWidth = btn.width * g.ratio;
+    var btnHeight = btn.height * g.ratio;
+    var classes = "room-img";
+    var charAttr = "";
+    var thisImage = btn.image;
+    if (g.isNight() && (typeof btn.night !== "undefined"))
+        thisImage = btn.night;
+
+    if (btn.type === "dark")
+        classes = "room-img img-dark";
+    else if (btn.type === "btn")
+        classes = "room-btn rom-event";
+    else if (btn.type === "btnNoHover")
+        classes = "room-btnNoHover rom-event";
+    else if (btn.type === "kiss")
+        classes = "room-btn-lips rom-event";
+    else if (btn.type === "tongue")
+        classes = "room-btn-tongue rom-event";
+    else if (btn.type === "brush")
+        classes = "room-btn-brush rom-event";
+    else if (btn.type === "hand")
+        classes = "room-btn-hand rom-event";
+    else if (btn.type === "btnflat")
+        classes = "room-btnflat room-btn rom-event";
+    else if (btn.type === "zimg")
+        classes = "room-img room-zindex";
+    else if (btn.type === "zbtn")
+        classes = "room-btn rom-event room-zindex";
+    else if (btn.type === "btnhover")
+        classes = "room-btn rom-event fight-hover";
+    else if (btn.type === "imghover")
+        classes = "room-img fight-hover-element";
+
+    line = '<input type="text" class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" value="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
+
+    $('#room-buttons').append(line);
 };
 
 nav.modbutton = function (name, newImage, newName, newType) {
@@ -210,6 +251,11 @@ nav.killvideo = function () {
 
 nav.killbutton = function (name) {
     $('[data-name="' + name + '"]').remove();
+};
+
+nav.killbuttonStartsWith = function (name) {
+    $('[data-name^="' + name + '"]').remove();
+
 };
 
 nav.buildnav = function (roomIDList) {

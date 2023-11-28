@@ -798,7 +798,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/sweepHallway4.jpg");
             break;
         case "sweepHallway5":
-            if (sc.checkevent("daria", -1) && !sc.checkevent("daria", -2)) {
+            if (sc.getEvent("daria", -1) && !sc.getEvent("daria", -2)) {
                 if (cl.c.butthole < 3) {
                     chat(114, 950);
                     nav.bg("950_cell/sweepHallway5.jpg");

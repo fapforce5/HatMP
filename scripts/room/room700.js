@@ -5,10 +5,10 @@ room700.main = function () {
         nav.button({
             "type": "btn",
             "name": "bimboapply",
-            "left": 993,
-            "top": 343,
-            "width": 257,
-            "height": 319,
+            "left": 1029,
+            "top": 407,
+            "width": 185,
+            "height": 256,
             "image": "700_waitingroom/bimbo.png"
         }, 700);
     }
@@ -18,10 +18,10 @@ room700.main = function () {
             nav.button({
                 "type": "btn",
                 "name": "bimbo",
-                "left": 993,
-                "top": 343,
-                "width": 257,
-                "height": 319,
+                "left": 1029,
+                "top": 407,
+                "width": 185,
+                "height": 256,
                 "image": "700_waitingroom/bimbo.png"
             }, 700);
         //}

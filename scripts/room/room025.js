@@ -95,7 +95,7 @@ room25.btnclick = function (name) {
         case "mom":
             var ll = sc.getstep("landlord");
             if (!daily.get("landlord")) {
-                if (!sc.checkevent("me", 2))
+                if (!sc.getEvent("me", 2))
                     chat(1, 25);
                 else if (ll === 0)
                     chat(2, 25);

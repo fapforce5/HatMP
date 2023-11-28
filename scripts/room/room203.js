@@ -83,7 +83,8 @@ room203.chatcatch = function (callback) {
             break;
         case "displaySelf":
             nav.bg("203_entrance/inspect.jpg");
-            if (missy.get("uniform") === 0) { //suit
+            var myUniform = missy.get("uniform");
+            if (myUniform === 0) { //suit
                 zcl.displayMain(180, 800, .09, "clothes", false);
                 if (cl.hasoutfit("suit") === null) {
                     if (cl.list[cl.where("panties", cl.c.panties)].sex === "f") {
@@ -111,29 +112,41 @@ room203.chatcatch = function (callback) {
                     }
                 }
             }
-            else if (missy.get("uniform") === 1) {
-                if (cl.hasoutfit("suit") === null) {
-                    if (cl.list[cl.where("panties", cl.c.panties)].sex === "f") {
-                        if (missy.get("uniformNew") === 0) {
-                            zcl.displayMain(180, 800, .09, "clothes", false);
-                            chat(22, 203);
-                        }
-                        else {
-                            levels.mod("xdress", 5, 3);
-                            cl.c.pants = null;
-                            zcl.displayMain(180, 800, .09, "clothes", false);
-                            cl.c.pants = "s";
-                            chat(23, 203);
-                        }
+            else if (myUniform === 1) {
+                if (cl.hasoutfit("suitwithpanties") === null) {
+                    if (missy.get("uniformNew") === 0) {
+                        zcl.displayMain(180, 800, .09, "clothes", false);
+                        chat(22, 203);
                     }
                     else {
+                        levels.mod("xdress", 5, 3);
+                        cl.c.pants = null;
                         zcl.displayMain(180, 800, .09, "clothes", false);
-                        chat(21, 203);
+                        cl.c.pants = "s";
+                        chat(23, 203);
                     }
                 }
                 else {
                     levels.mod("int", -10, 999);
-                    chat(9, 203);
+                    chat(24, 203);
+                }
+            }
+            else if (myUniform === 2) {
+                if (cl.hasoutfit("suitwithpanties") === null) {
+                    if (cl.getBodyHair() === null) {
+                        levels.mod("xdress", 5, 3);
+                        cl.c.pants = null;
+                        zcl.displayMain(180, 800, .09, "clothes", false);
+                        cl.c.pants = "s";
+                        chat(23, 203);
+                    }
+                    else {
+                        chat(25, 203);
+                    }
+                }
+                else {
+                    levels.mod("int", -10, 999);
+                    chat(24, 203);
                 }
             }
             break;
@@ -446,6 +459,24 @@ room203.chat = function (chatID) {
                 text: "Cute panties! You can go in now.  ",
                 button: [
                     { chatID: -1, text: "ok", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "cecilia",
+                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, " +
+                    "and pretty panties. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+                button: [
+                    { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "cecilia",
+                text: "Getting a bit hairy. You need to go home and shave. Talk to " + sc.n("spanky") + ". He's a bit weird, but " +
+                    "he does know how to fuck a face. ",
+                button: [
+                    { chatID: -1, text: "Oh... oh! ok. ", callback: "" }
                 ]
             },
         ];

@@ -69,6 +69,7 @@ room180.chatcatch = function (callback) {
         case "shaveEnd":
             cl.c.bodyhair = 0;
             cl.display();
+            missy.set("uniform", 2);
             sissy.passclass(true);
             break;
         case "femend":

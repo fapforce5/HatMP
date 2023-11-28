@@ -109,7 +109,7 @@ room456.chatcatch = function (callback) {
             break;
         case "newday":
             if (sc.getstep("tiffany") === 13) {
-                if (sc.checkevent("tiffany", -6)) {
+                if (sc.getEvent("tiffany", -6)) {
                     nav.bg("456_bench/456_tif.jpg", "456_bench/456_tif.jpg");
                     chat(13, 456);
                 }

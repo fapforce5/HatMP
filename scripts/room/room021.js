@@ -18,6 +18,11 @@ room21.main = function () {
         g.pass = 7;
         chat(6, 21);
     }
+    else if (g.pass === "kitchen") {
+        char.addtime(60);
+        g.pass = 9;
+        chat(8, 21);
+    }
 };
 
 room21.btnclick = function (name) {
@@ -60,10 +65,11 @@ room21.chatcatch = function (callback) {
             gv.mod("arousal", 30);
             break;
         case "leave":
+            sc.modLevel("landlord", 15, 999);
             cl.c.pants = g.internal.pants;
             cl.c.panties = g.internal.panties;
             cl.display();
-            char.room(11);
+            char.room(16);
             break;
         default:
             break;
@@ -138,6 +144,22 @@ room21.chat = function (chatID) {
                 "or I'll get more bare bottom spankings.",
             button: [
                 { chatID: 4, text: "I'm not going to stick my dirty fingers into my " + sc.n("landlord") + " again or I'll get more bare bottom spankings", callback: "arouse" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "landlord",
+            text: "I'm going to show you how to properly spank an ass! Pants down mister!",
+            button: [
+                { chatID: 1, text: "oh, What?", callback: "spank2" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "landlord",
+            text: "That is how you spank and ass! ",
+            button: [
+                { chatID: -1, text: "OOooooohch", callback: "leave" }
             ]
         }
     ];

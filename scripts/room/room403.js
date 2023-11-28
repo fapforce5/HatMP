@@ -1,7 +1,7 @@
 ﻿//Room name
 var room403 = {};
 room403.main = function () {
-    if (sc.checkevent("tiffany", -9)) {
+    if (sc.getEvent("tiffany", -9)) {
         nav.bg("403_saucy/tif1.jpg");
         chat(0, 403);
 

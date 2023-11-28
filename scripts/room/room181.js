@@ -43,7 +43,7 @@ room181.chatcatch = function (callback) {
             nav.bg("181_black/" + callback + ".jpg");
             break;
         case "gloryHole":
-            sc.setevent("cecilia", 1);
+            sc.setEvent("cecilia", 1);
             break;
         case "bondage101_9":
             levels.oralGive(1, true);

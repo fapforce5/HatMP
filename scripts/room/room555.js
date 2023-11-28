@@ -153,7 +153,7 @@ room555.chatcatch = function (callback) {
                 chat(6, 555);
             break;
         case "rows":
-            if (!sc.checkevent("g", -2)) {
+            if (!sc.getEvent("g", -2)) {
                 sc.setstep("g", -2);
                 chat(10, 555);
             }
@@ -227,7 +227,7 @@ room555.chatcatch = function (callback) {
             char.room(551);
             break;
         case "hips":
-            if (sc.checkevent("g", -3)) {
+            if (sc.getEvent("g", -3)) {
                 chat(16, 555);
             }
             else {

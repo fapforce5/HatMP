@@ -56,7 +56,7 @@ room209.main = function () {
         chat(3, 209);
     }
     else {
-        if (sc.checkevent("missy", -1)) {
+        if (sc.getEvent("missy", -1)) {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayMissybtn");

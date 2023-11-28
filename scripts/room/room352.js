@@ -30,7 +30,7 @@ room352.main = function () {
         cl.c.socks = "s";
         cl.c.shoes = "nu";
         cl.display();
-        if (!sc.checkevent("landlord", -8)) {
+        if (!sc.getEvent("landlord", -8)) {
             sc.setstep("landlord", -8);
             nav.button({
                 "type": "btn",

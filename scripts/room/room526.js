@@ -126,7 +126,7 @@ room526.btnclick = function (name) {
             break;
         case "close":
             var zoeyStep = sc.getstep("zoey");
-            if (!sc.checkevent("zoey", -3)) {
+            if (!sc.getEvent("zoey", -3)) {
                 sc.setstep("zoey", -3);
                 chat(16, 526);
             }

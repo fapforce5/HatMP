@@ -9,9 +9,9 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 20.1;
+g.version = 21.0;
 g.versionText = "0.20.1 - OCT 2023";
-g.newLoad = false;
+g.newLoad = true;
 g.back = false;
 g.altview = false;
 g.tview = "f";
@@ -347,6 +347,8 @@ g.rooms = [
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
     { roomID: 752, name: "Dirty Whore's Tent", image: "752_whore/bg.jpg", nightImage: "752_whore/bg.jpg", houseID: 750, btn: "roomBtn_752.png" },
 
+    { roomID: 775, name: "Church", image: "775_church/boy.jpg", nightImage: "775_church/boy.jpg", houseID: 775, btn: "roomBtn_10.png" },
+
     { roomID: 800, name: "Ralph's House", image: "800_ralph/bg.jpg", nightImage: "800_ralph/bg_night.jpg", houseID: 800, btn: "roomBtn_800.png" },
 
     { roomID: 825, name: "Dirty Lot", image: "825_lot/bg.jpg", nightImage: "825_lot/bg_night.jpg", houseID: 825, btn: "roomBtn_825.png" },
@@ -437,6 +439,13 @@ g.roomMapAccess = function (roomID, access, darkAccess) {
         }
     }
 };
+
+g.roomMapAccessAll = function () {
+    for (i = 0; i < g.roomMap.length; i++) {
+        g.roomMap[i].access = true;
+        g.roomMap[i].darkAccess = true;
+    }
+}
 
 g.hasAccess = function (roomID) {
     var retVal = { access: false, darkAccess: false };
@@ -598,11 +607,13 @@ g.save = function () {
     };
 
     for (i = 0; i < g.roomMap.length; i++) {
-        retArra.roomMap.push({
-            roomID: g.roomMap[i].roomID,
-            access: g.roomMap[i].access,
-            darkAccess: g.roomMap[i].darkAccess
-        });
+        if (g.roomMap[i].access || g.roomMap[i].darkAccess) {
+            retArra.roomMap.push({
+                roomID: g.roomMap[i].roomID,
+                access: g.roomMap[i].access,
+                darkAccess: g.roomMap[i].darkAccess
+            });
+        }
     }
 
     //for (i = 0; i < g.sissy.length; i++) {
@@ -620,35 +631,24 @@ g.load = function (rma, thisVersion) {
     g.dt = new Date(rma.dt);
     g.prevview = null;
     g.map = rma.map;
+    g.roomMapInit();
+
     for (i = 0; i < rma.roomMap.length; i++) {
         for (j = 0; j < g.roomMap.length; j++) {
             if (rma.roomMap[i].roomID === g.roomMap[j].roomID) {
-                g.roomMap[j].access = rma.roomMap[i].access;
-                g.roomMap[j].darkAccess = rma.roomMap[i].darkAccess;
+                if (rma.roomMap[i].access)
+                    g.roomMap[j].access = true;
+                if (rma.roomMap[i].darkAccess)
+                    g.roomMap[j].darkAccess = true;
                 j = 100000;
             }
         }
     }
-
-    //room access override
-    for (i = 0; i < g.roomMap.length; i++) {
-        switch (g.roomMap[i].roomID) {
-            case 900:
-                g.roomMap[i].access = true;
-                g.roomMap[i].darkAccess = true;
-                break;
-            case 825:
-                g.roomMap[i].access = true;
-                g.roomMap[i].darkAccess = true;
-                break;
-        }
-    }
-
 };
 
 g.initGame = function () {
     g.roomID = 7;
-    g.dt = char.addMinutes(g.startDate, 757);
+    g.dt = char.addMinutes(g.startDate, 425);
     gv.init();
     g.roomMapInit();
 };

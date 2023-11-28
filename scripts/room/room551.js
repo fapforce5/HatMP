@@ -64,7 +64,7 @@ room551.main = function () {
             }
         }
         var navList = [0, 552, 553];
-        if (sc.checkevent("g", -1) && !daily.get("g"))
+        if (sc.getEvent("g", -1) && !daily.get("g"))
             navList.push(555);
         $.each(btnList, function (i, v) {
             nav.button(v, 551);
@@ -130,12 +130,12 @@ room551.btnclick = function (name) {
             if (gv.get("oncase") === "sewer" && !inv.has("sewer")){
                 chat(45, 551);
             }
-            else if (gv.get("oncase") === "sewer" && !sc.checkevent("g", -4)) {
+            else if (gv.get("oncase") === "sewer" && !sc.getEvent("g", -4)) {
                 chat(46, 551);
             }
             else if (sc.getstep("g") === 0)
                 chat(1, 551);
-            else if (gv.get("fitnessLevel") > 2 && !sc.checkevent("g", -1)) {
+            else if (gv.get("fitnessLevel") > 2 && !sc.getEvent("g", -1)) {
                 chat(37, 551);
             }
             else {
@@ -155,7 +155,7 @@ room551.btnclick = function (name) {
             }
             break;
         case "emp":
-            if (sc.checkevent("g", -1)) {
+            if (sc.getEvent("g", -1)) {
                 if (daily.get("g")) {
                     nav.button({
                         "type": "btn",
@@ -214,7 +214,7 @@ room551.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat4.png"
             }, 551);
-            if (sc.checkevent("chad", -1))
+            if (sc.getEvent("chad", -1))
                 chat(4, 551);
             else
                 chat(5, 551);

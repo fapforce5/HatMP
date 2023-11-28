@@ -152,7 +152,7 @@ room77.chatcatch = function (callback) {
             nav.bg("77_bimboLiving/f1.gif");
             break;
         case "pussy2":
-            if (sc.checkevent("bimbo", -1))
+            if (sc.getEvent("bimbo", -1))
                 chat(12, 77);
             else
                 chat(25, 77);

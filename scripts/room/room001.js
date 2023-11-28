@@ -56,6 +56,7 @@ room1.btnclick = function (name) {
     switch (name) {
         case "start":
             g.pass = "";
+            g.newLoad = false;
             char.initGame();
             $('.room-left').show();
             $('#room_footer').show();
@@ -66,8 +67,8 @@ room1.btnclick = function (name) {
             char.room(2);
             break;
         case "load":
-            menu.initBuild("save");
             g.newLoad = true;
+            phone.build("save");
             break;
         case "patron":
             window.open("https://www.patreon.com/FF5", '_blank');

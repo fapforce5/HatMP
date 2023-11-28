@@ -65,6 +65,21 @@ $(document).ready(function () {
             });
         });
 
+        $(".resize-font").each(function () {
+            var w = $(this).css("width").replace('px', '') / ogRatio;
+            var h = $(this).css("height").replace('px', '') / ogRatio;
+            var t = $(this).css("top").replace('px', '') / ogRatio;
+            var l = $(this).css("left").replace('px', '') / ogRatio;
+            var f = $(this).css("font-size").replace('px', '') / ogRatio;
+            $(this).css({
+                "width": (w * g.ratio) + "px",
+                "height": (h * g.ratio) + "px",
+                "top": (t * g.ratio) + "px",
+                "left": (l * g.ratio) + "px",
+                "font-size": (f * g.ratio) + "px"
+            });
+        });
+
         $('.room-left').css({ height: 1080 * g.ratio + "px" });
 
         $('.char-container').css({ "height": 670 * g.ratio + "px" });
@@ -131,7 +146,8 @@ $(document).ready(function () {
     });
 
     $('#room-menu').click(function () {
-        menu.initBuild("init");
+        phone.build(null);
+        //menu.initBuild("init");
     });
     $("#menu_parent").on('click', '.menu-save', function () {
         menu.saveBtn($(this));
@@ -247,8 +263,9 @@ $(document).ready(function () {
         height: 1000 * g.ratio + "px"
     });
     $("#room-time").click(function () {
-        $("#room-menu").click();
-        menu.mClick("time");
+        phone.build("time");
+        //$("#room-menu").click();
+        //menu.mClick("time");
 
     });
     $("#rl_pageSelect").children("button").click(function () {
@@ -630,7 +647,8 @@ menu.initBuild = function (type) {
         $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 960) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bAch.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 810) + '" data-type="ach" class="menu-button menu-buttonKill"/>');
-    $('#menu_parent').append('<img src="./images/phone/bAdmin.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 660) + '" data-type="admin" class="menu-button menu-buttonKill"/>');
+    //cheat menu
+    //$('#menu_parent').append('<img src="./images/phone/bAdmin.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 660) + '" data-type="admin" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/bPatreon.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 1110) + '" data-type="patreon" class="menu-button menu-buttonKill"/>');
     $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
     $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
@@ -652,7 +670,8 @@ menu.mClick = function (type) {
             });
             break;
         case "menu":
-            menu.initBuild("");
+            phone.build(null);
+            //menu.initBuild("");
             break;
         case "rel":
             //menu.mClick("close");
@@ -1234,36 +1253,22 @@ menu.save = function (cookieName, btn, saveID) {
             }
         });
 
-        saveName = "Day: " + diffDays + " - " + thisRoom;
+        saveName = "Day: " + diffDays + ", " + thisRoom + " [Created:" + new Date().toISOString().split('T')[0] + "]";
 
         g.saveState.savename = saveName;
         localStorage[cookieName] = JSON.stringify(g.saveState);
 
-        if (btn !== null) {
-            btn.text('LOAD');
-            btn.attr('data-type', 'load');
-        }
+        return true;
+        //if (btn !== null) {
+        //    btn.text('LOAD');
+        //    btn.attr('data-type', 'load');
+        //}
 
-        $('.menu-save-line[data-save=' + saveID + ']').text(saveName);
-        $('.menu-del[data-save=' + saveID + ']').prop('disabled', false);
+        //$('.menu-save-line[data-save=' + saveID + ']').text(saveName);
+        //$('.menu-del[data-save=' + saveID + ']').prop('disabled', false);
     }
 };
 
-g.saveState = {
-    savename: "",
-    version: g.version,
-    pass: g.pass,
-    internal: g.internal,
-    prevRoom: g.prevRoom,
-    g: g.save(),
-    inv: inv.save(),
-    cl: cl.save(),
-    sc: sc.save(),
-    scc: scc.save(),
-    pic: pic.save(),
-    gv: gv.save(),
-    missy: missy.save()
-};
 menu.load = function (cookieName, btn, saveID) {
     if (g.newLoad) {
         $('.room-left').show();
@@ -1317,16 +1322,16 @@ menu.load = function (cookieName, btn, saveID) {
         g.roomMapAccess(203, true, true);
 };
 
-menu.saveDel = function(btn) {
-    var saveID = btn.data('save');
-    var cookieName = 'HatMP_' + saveID;
+menu.saveDel = function (cookieName) {
+    //var saveID = btn.data('save');
+    //var cookieName = 'HatMP_' + saveID;
     if (localStorage.getItem(cookieName) !== null) 
         localStorage.removeItem(cookieName);
+    return true;
+    //$('.menu-save[data-save=' + saveID + ']').text('SAVE').attr('data-type', 'save');
 
-    $('.menu-save[data-save=' + saveID + ']').text('SAVE').attr('data-type', 'save');
-
-    $('.menu-save-line[data-save=' + saveID + ']').html("");
-    $('.menu-del[data-save=' + saveID + ']').prop('disabled', true);
+    //$('.menu-save-line[data-save=' + saveID + ']').html("");
+    //$('.menu-del[data-save=' + saveID + ']').prop('disabled', true);
 };
 
 char.init = function() {
@@ -1380,18 +1385,8 @@ char.initGame = function () {
         }
     }
 
-    for (i = 0; i < cl.list.length; i++) {
-        if (cl.list[i].type === "panties" && cl.list[i].name === "u" ||
-            cl.list[i].type === "panties" && cl.list[i].name === "n" ||
-            cl.list[i].type === "pants" && cl.list[i].name === "j" ||
-            cl.list[i].type === "shirt" && cl.list[i].name === "g" ||
-            cl.list[i].type === "socks" && cl.list[i].name === "w" ||
-            cl.list[i].type === "shoes" && cl.list[i].name === "w" ||
-            cl.list[i].type === "pj" && cl.list[i].name === "paisley")
-            cl.list[i].inv = true;
-        else
-            cl.list[i].inv = false;
-    }
+    cl.wearSavedOutfit(5);
+
     for (i = 0; i < sc.char.length; i++) {
         sc.char[i].step = 0;
         sc.char[i].rel = 0;

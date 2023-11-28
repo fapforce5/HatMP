@@ -16,7 +16,7 @@ room500.main = function () {
         }
     ];
     var navList = [0];
-    if (sc.checkevent("zoey", -1))
+    if (sc.getEvent("zoey", -1))
         navList.push(501);
     $.each(btnList, function (i, v) {
         nav.button(v, 500);
@@ -30,7 +30,7 @@ room500.btnclick = function (name) {
             if (sc.getstep("zoey") > 300) {
                 chat(15, 500);
             }
-            else if (sc.checkevent("zoey", -2)) {
+            else if (sc.getEvent("zoey", -2)) {
                 char.room(501);
             }
             else if (!g.hasAccess(16).access) {

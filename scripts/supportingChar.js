@@ -3,19 +3,20 @@
 //g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.char = [
     { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true,  q3: false },
+    { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: false },
     { name: "el", display: "Co-Tenants", image: "lolaEva.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
-    { name: "lola", display: "Lola", image: "lola.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true,  q3: null },
-    { name: "eva", display: "Eva", image: "eva.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, q3: false },
+    { name: "lola", display: "Lola", image: "lola.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: null },
+    { name: "eva", display: "Eva", image: "eva.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: false },
+    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
-    { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: null },
+    { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
-    { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 2, p: true, q3: null },
+    { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
     { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "black", display: "Ms. Black", image: "black.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
-    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, q3: null },
+    { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: false },
     { name: "tina", display: "Tina", image: "tina.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 12, p: true,  q3: null },
@@ -111,78 +112,101 @@ sc.char = [
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
 
-sc.events = [
-    { name: "cecilia", step: 1, txt: "You can join her at the glory hole on the weekends", img: "", show: true, ach: false },
+sc.events = new Array(); //delete
 
-    { name: "lola", step: 1, txt: "Had sex with MC", img: "", show: true, ach: false },
 
-    //{ name: "landlord", step: -10, txt: "Caught at the whore house", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -9, txt: "Caught naked in the house and took giant dildo", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -8, txt: "Em bare ass", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -7, txt: "First Day at the Sperm Bank", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -6, txt: "Back in!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -5, txt: "Doctor donated", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -4, txt: "Doctor Sperm", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -3, txt: "Can donate sperm", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -2, txt: "Caught with Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "landlord", step: -1, txt: "Kicked out", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
+ //mStatus 0 = not started, 1 - 99 = inprogress, 100 = complete - success, 101 = complete - fail
+sc.charMission = [
+    {
+        name: "lola", mission: [
+            {
+                missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
+                    [
+                        { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "Compliment massage massage started ", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
+            {
+                missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes to be massaged. ", task: new Array()
+            },
+            {
+                missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
+                    [
+                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
+        ],
+    },
+    {
+        name: "eva", mission: [
+            {
+                missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
+                    [
+                        { id: 0, txt: "Small chat", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
+            {
+                missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes massages", task:
+                    [
+                        { id: 0, txt: "Shirt on", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Shirt off", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "Legs", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
+            {
+                missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
+                    [
+                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
 
-    //{ name: "zoey", step: -3, txt: "First Bar", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "zoey", step: -2, txt: "Can Sleep Over", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "zoey", step: -1, txt: "First Sleep Over", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "tiffany", step: -9, txt: "Shopping", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "tiffany", step: -8, txt: "Give Box", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "tiffany", step: -7, txt: "Pink Pussy First Time", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "tiffany", step: -6, txt: "Return Trip", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "tiffany", step: -5, txt: "Peeked during show", img: "dildo", show: true, row: 1, col: 1, ach: false, major: true, m: [] },
-    //{ name: "tiffany", step: -4, txt: "Caught 'em", img: "nap", show: true, row: -1, col: 1, ach: false, major: true, m: [] },
-    //{ name: "tiffany", step: -3, txt: "Be a little bitch", img: "tifNoFuck", show: true, row: 0, col: 2, ach: false, major: false, m: [] },
-    //{ name: "tiffany", step: -2, txt: "Cum Inside", img: "tifCumInside", show: true, row: 1, col: 2, ach: false, major: false, m: [] },
-    //{ name: "tiffany", step: -1, txt: "Cum Back", img: "tifCumBack", show: true, row: -1, col: 2, ach: false, major: false, m: [] },
-
-    //{ name: "candy", step: -1, txt: "Flash in gym bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "chad", step: -2, txt: "Give Chad a picture of Lola's tits", img: "chad_pic", show: true, row: 1, col: 0, ach: false, major: false, m: [] },
-    //{ name: "chad", step: -1, txt: "Pay $500", img: "money", show: true, row: -1, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "lola", step: -6, txt: "Stolen her clothing at the pool - Public humiliation ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -5, txt: "Caught doing sissy stuff", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -4, txt: "Just play", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -3, txt: "Professed Love", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "spanky", step: -1, txt: "Hypno vids", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [404] },
-
-    //{ name: "jeffery", step: -2, txt: "Failed investiagion", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "jeffery", step: -1, txt: "Dimed out the waitresses", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "holly", step: -1, txt: "NARC!!!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-
-    //{ name: "g", step: -4, txt: "Spar Chat", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: -3, txt: "Hip Thrusters", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: -2, txt: "Rope Game", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: -1, txt: "Back Gym", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "kei", step: -2, txt: "Actually Blew everyone", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "kei", step: -1, txt: "Blowjobs for everyone", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "daria", step: -2, txt: "Got the key", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "daria", step: -1, txt: "Plan", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "chloe", step: -1, txt: "Tied up and fucked at the pink room", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [500] },
-
-    //{ name: "ubel", step: -1, txt: "First Nightly whipping", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "stormy", step: -1, txt: "Need to give her $500 to get code", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [535] },
-
-    { name: "ppgirl", step: 1, txt: "First Chat", img: "", ach: false, },
-    { name: "ppgirl", step: 2, txt: "Second Chat - I'll pee on you. ", img: "", ach: false, },
-
+        ],
+    },
+    {
+        name: "landlord", mission: [
+            {
+                missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
+                    [
+                        { id: 0, txt: "Her Job", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Her Life", show: true, mStatus: 0, roomID: 16 },
+                    ]
+            },
+            {
+                missionName: "spermbank", mStatus: -1, title: "Helping at the Sperm Bank", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
+                    [
+                        { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomID: 350 },
+                    ]
+            },
+        ]
+    }
 ];
+
+sc.getIndex = function (name) {
+    for (var i = 0; i < sc.char.length; i++)
+        if (sc.char[i].name === name)
+            return i;
+    return -1;
+};
+
+sc.get = function (name) {
+    return sc.char[sc.getIndex(name)];
+};
+
+sc.n = function (name) {
+    if (name.startsWith("!"))
+        return sc.trivial(name).display;
+    return sc.get(name).display;
+};
+
+sc.setcharname = function (name, newName) {
+    sc.char[sc.getIndex(name)].display = newName;
+};
+
+//Levels ----------------------------------------------------------------------
 
 sc.levels = function (name, level) {
     var text = "";
@@ -254,221 +278,6 @@ sc.levels = function (name, level) {
             console.log("sc.levels - not found: " + name);
             break;
     }
-    //{ name: "tiffany", step: 0, txt: "You can see her at the toy store, but you will need to wait for the case given my Missy to progress with her.", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [650] },
-    ////{ name: "tiffany", step: 1, txt: "Investigate Cum Caper at The Toy Store.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 2, txt: "Continue to work at The Toy Store.", img: "cum", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 3, txt: "Go back to The Toy Store and continue working.", img: "dildo", show: false, row: 1, col: 1, ach: false, major: true, m: [650] },
-    ////{ name: "tiffany", step: 4, txt: "Continue the investiagion...", img: "nap", show: false, row: -1, col: 1, ach: false, major: true, m: [650] },
-    //{ name: "tiffany", step: 5, txt: "You'll need to do the crossdressing event at Missy's Sissy School to continue with her", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [400] },
-    //{ name: "tiffany", step: 6, txt: "Visit Tiffany's home for the first time", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    //{ name: "tiffany", step: 10, txt: "UNK", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 11, txt: "Box of clothing given", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 12, txt: "Meet at her house", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 13, txt: "Meet at park", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 14, txt: "Brought him home", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    ////{ name: "tiffany", step: 15, txt: "First time home", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
-    //{ name: "tiffany", step: 16, txt: "First In House", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "tiffany", step: 16, txt: "Watch Tiffany masturbate", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "tiffany", step: 17, txt: "Masturbate like a girl", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-
-    //{ name: "candy", step: -1, txt: "Flash in gym bathroom", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "candy", step: 0, txt: "Meet her at the adult toy store for your first date.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "candy", step: 50, txt: "Second date in the forest. - Meet her at the toy store.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
-    //{ name: "candy", step: 51, txt: "Will you get lucky this time? - Toy store", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
-    //{ name: "candy", step: 52, txt: "Sorry, I don't date nice guys - Complete the Public Cross Dress event at the sissy school ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
-
-    //{ name: "candy", step: 100, txt: "Meet her in her room for some friendly advice!", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "candy", step: 101, txt: "Suprise visitor. Meet her in her room", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "candy", step: 102, txt: "Cheerleading! Meet her in her room. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "candy", step: 103, txt: "Cheerleader tryouts! Meet her at the football field Saturday Morning in workout clothes", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [875] },
-    //{ name: "candy", step: 104, txt: "Talk to her in her room.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [875] },
-
-    //{ name: "stacy", step: 0, txt: "Talk to Candy about joining the cheerleaders in her room. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "stacy", step: 1, txt: "Practice your cartwheels and come back to practice. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
-
-    ////{ name: "candy", step: 3, txt: "Ate Brad's Cum", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-
-    //{ name: "chad", step: -2, txt: "Give Chad a picture of Lola's tits", img: "chad_pic", show: true, row: 1, col: 0, ach: false, major: false, m: [] },
-    //{ name: "chad", step: -1, txt: "Pay $500", img: "money", show: true, row: -1, col: 0, ach: false, major: false, m: [] },
-    //{ name: "chad", step: 0, txt: "[0] Meet Chat", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-    //{ name: "chad", step: 1, txt: "[1] Either pay $500 or get a picture of her tits", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-    //{ name: "chad", step: 2, txt: "[2] Got Gym pass", img: "gymPass", show: true, row: 0, col: 0, ach: false, major: false, m: [550] },
-
-    //{ name: "construction", step: 1, txt: "Interview at the construction site.", img: "const1", show: true, row: 0, col: 0, ach: false, major: false, m: [100] },
-    //{ name: "construction", step: 2, txt: "Work construction. - Need to arrive before 9:00 AM in a t-shirt and jeans. ", img: "sweep", show: true, row: 0, col: 1, ach: false, major: false, m: [100] },
-
-    //{ name: "lola", step: -6, txt: "Stolen her clothing at the pool - Public humiliation ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -5, txt: "Caught doing sissy stuff", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -4, txt: "Just play", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -3, txt: "Professed Love", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: 0, txt: "[M] Visit her in her room at your house. Typically she's there after 5PM. Talk to both of them. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "lola", step: 1, txt: "[M] Rub her back with her clothes on.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "lola", step: 2, txt: "[M] Pull her shirt up and rub her back.", img: "lolaMass", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "lola", step: 3, txt: "[M] Topless back rub.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "lola", step: 4, txt: "[M] Get some wine from the convenience store.", img: "spinBottle", show: true, row: 0, col: 1, ach: false, major: true, m: [404] },
-    //{ name: "lola", step: 5, txt: "[M] Massage in her panties.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "lola", step: 6, txt: "[M] Massage and play with her pussy.", img: "lolaMass1", show: true, row: 0, col: 2, ach: false, major: false, m: [350] },
-    //{ name: "lola", step: 7, txt: "[M] Truth or Dare!", img: "", show: false, row: 0, col: 3, ach: false, major: false, m: [16] },
-    //{ name: "lola", step: 8, txt: "[M] Get back into the house. Visit the Sperm Store. ", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [350] },
-    //{ name: "lola", step: 9, txt: "[M] Welcoming in the house.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 10, txt: "[M] In bed confession. She'll visit you if you sleep in your bed. ", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 11, txt: "[M] Text her in the park.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [450] },
-    //{ name: "lola", step: 12, txt: "[M] Text her in the park again. ", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [450] },
-    //{ name: "lola", step: 13, txt: "[M] Progress Eva's storyline. You'll get a suprise when you wake up at home.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 14, txt: "[M] Progress Landlord's storyline. Then talk to her", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 15, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 200, txt: "[F] Sissy! Get caught at home crossdressing. Then talk to them in their room.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 201, txt: "[F] Visit them while crossdressing.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 202, txt: "[F] Give her a massages till your relationship meter is full. No new events", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "lola", step: 203, txt: "[F] no new events.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-
-    //{ name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "eva", step: 0, txt: "[M] Visit her in her room at your house. Typically she's there after 5PM. Offer her your math book.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 1, txt: "[M] She'll visit you in your room in the morning to borrow your math text book.", img: "mathBook", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 2, txt: "[M] Massage her feet in her room.", img: "evaFoot", show: true, row: 0, col: 1, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 3, txt: "[M] Get some wine from the convenience store.", img: "spinBottle", show: true, row: 0, col: 2, ach: false, major: true, m: [404] },
-    //{ name: "eva", step: 4, txt: "[M] Suck her toes in her room.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 5, txt: "[M] Suprise gift for you in her room.", img: "evaFootjob", show: true, row: 0, col: 3, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 6, txt: "[M] Truth or Dare!", img: "", show: false, row: 0, col: 4, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 7, txt: "[M] Get back into the house. Visit the Sperm Store. ", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [350] },
-    //{ name: "eva", step: 8, txt: "[M] Welcoming in the house.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 9, txt: "[M] In bed confession. She'll visit you if you sleep in your bed. ", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 10, txt: "[M] Text her from your phone when you're in your bedroom.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 11, txt: "[M] Had the sex - phone contacts", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 12, txt: "[M] Progress Lola's storyline. You'll get a suprise when you wake up at home.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 13, txt: "[M] Progress Landlord's storyline. Then talk to her.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 14, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 200, txt: "[F] Sissy! Get caught at home crossdressing. Then talk to them in their room.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 201, txt: "[F] Visit them while crossdressing.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 202, txt: "[F] Visit her in her room. Once your relationship meter is full touch her pussy instead of licking her feet.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 203, txt: "[F] Wear a collar and cage and meet her in the library. [Hint] There's an ID in the girl's locker room at the pool. ", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [900] },
-    //{ name: "eva", step: 204, txt: "[F] No new events ", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [900] },
-    //{ name: "eva", step: 300, txt: "[Bad] End of the Eva line", img: "evaLolaBlow", show: true, row: 0, col: 4, ach: false, major: true, m: [16] },
-
-    //{ name: "tina", step: 1, txt: "Meet Tina the slut", img: "const1", show: true, row: 0, col: 0, ach: false, major: false, m: [100] },
-    //{ name: "tina", step: 5, txt: "She likes it when you look at her panties", img: "tina5", show: true, row: 0, col: 1, ach: false, major: false, m: [100] },
-    //{ name: "tina", step: 10, txt: "She shaved her pussy just for you", img: "tina10", show: true, row: 0, col: 2, ach: false, major: false, m: [100] },
-    //{ name: "tina", step: 15, txt: "Do you like my tits?", img: "tina15", show: true, row: 0, col: 3, ach: false, major: false, m: [100] },
-
-    //{ name: "envy", step: 0, txt: "Meet her", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [300] },
-    //{ name: "envy", step: 1, txt: "Watch the breakup", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 2, txt: "Get to know her", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 3, txt: "Bring some pizza for movie night. Are you man enough to seduce her?", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 4, txt: "Visit her again and talk to her about what happened.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 5, txt: "Either play a game, or purchase a hypno movie from Spanky to watch", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 6, txt: "Watch more hypno or confess you pervert!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] }, { name: "envy", step: 3, txt: "Bring some chips for movie night", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 7, txt: "More hypno! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 8, txt: "More! Now with sexy clothes.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 9, txt: "Blondes have more fun! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 10, txt: "Bimbofy her. Finger her when she bends over. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 11, txt: "See what you've done to this poor innocent girl. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 12, txt: "Turn her into a cum dump! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 13, txt: "You've been tricked! Go visit her! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 14, txt: "Town slut. You've got to get a job at Rachel's to convince her there's something better than dick.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 15, txt: "Visit her and hide. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 16, txt: "Vist Rachel's new HuCow! ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 17, txt: "Hear her stories on working at the farm ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-    //{ name: "envy", step: 18, txt: "End - for now ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-
-    //{ name: "envy", step: 100, txt: "Go to Spanky and fix her!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [300] },
-
-
-    //{ name: "spanky", step: -1, txt: "Hypno vids", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [404] },
-    //{ name: "spanky", step: 0, txt: "He works at the convince store. ", img: "", show: true, row: 0, col: 0, ach: true, major: false, m: [404] },
-    //{ name: "spanky", step: 1, txt: "Bye some shit dumbass", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [404] },
-    ////{ name: "spanky", step: 2, txt: "selling", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "spanky", step: 3, txt: "You can buy hormone pills after you unlock the Sissy Bimbo Pills event at the Sissy School or running into him while working at the Naked Beaver Diner.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [404] },
-
-    //{ name: "cultjgirl", step: 1, txt: "Met first time", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "cop", step: 0, txt: "Just met", img: "", show: false, row: 0, col: 0, ach: true, major: false, m: [450] },
-    //{ name: "cop", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [450] },
-    //{ name: "cop", step: 2, txt: "Will let you blow him", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [450] },
-
-    //{ name: "jeffery", step: -2, txt: "Failed investiagion", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "jeffery", step: -1, txt: "Dimed out the waitresses", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "jeffery", step: 0, txt: "Nothing", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "jeffery", step: 1, txt: "Applied", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 2, txt: "Denied", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 3, txt: "Can work", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [203] },
-    //{ name: "jeffery", step: 4, txt: "NOT USED", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 5, txt: "Now with extra chastity", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 6, txt: "Before the choice", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 7, txt: "The choice has been made", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 8, txt: "Can work again.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 9, txt: "Get me panties! Talk to the girls to try and get their panties.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "jeffery", step: 10, txt: "Visit Holly, Dolly, and Molly's apartment building and search for clues on the second floor. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250, 300] },
-
-    //{ name: "holly", step: -1, txt: "NARC!!!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "holly", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "holly", step: 1, txt: "Meet Holly", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "holly", step: 2, txt: "Second meeting complete", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-    //{ name: "holly", step: 3, txt: "Didn't reveal their secret", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
-
-    //{ name: "bimbo", step: 0, txt: "Haven't met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [450] },
-    //{ name: "bimbo", step: 1, txt: "Visit at home", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [75] },
-    //{ name: "bimbo", step: 2, txt: "Free use", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [75] },
-
-    //{ name: "g", step: -4, txt: "Spar Chat", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: -3, txt: "Hip Thrusters", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: -2, txt: "Rope Game", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: -1, txt: "Back Gym", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "g", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-    //{ name: "g", step: 1, txt: "First met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-    //{ name: "g", step: 2, txt: "Exercise", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-    //{ name: "g", step: 3, txt: "Training", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-    //{ name: "g", step: 4, txt: "Spar", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [550] },
-
-    //{ name: "treyvon", step: 0, txt: "nope", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "treyvon", step: 1, txt: "Tif Scene", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "treyvon", step: 2, txt: "Can enter apartment building", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "kei", step: -2, txt: "Actually Blew everyone", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "kei", step: -1, txt: "Blowjobs for everyone", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "kei", step: 0, txt: "Meet at his home", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "kei", step: 5, txt: "Jada visited game", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-
-    //{ name: "jada", step: 0, txt: "Havent' met yet", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "jada", step: 1, txt: "Visited card game", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "jada", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
-
-    //{ name: "tim", step: 1, txt: "Meet at pool", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [901] },
-    //{ name: "tim", step: 1, txt: "Flashed cock at pool.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [901] },
-    //{ name: "tim", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [725] },
-
-    //{ name: "daria", step: -2, txt: "Got the key", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "daria", step: -1, txt: "Plan", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "daria", step: 0, txt: "Not met yet. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-    //{ name: "daria", step: 4, txt: "Received chisel ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-    //{ name: "daria", step: 5, txt: "3 some with bodhi", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-    //{ name: "daria", step: 6, txt: "keys ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-    //{ name: "daria", step: 7, txt: "escape ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-
-    //{ name: "chloe", step: -1, txt: "Tied up and fucked at the pink room", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [500] },
-    //{ name: "chloe", step: 0, txt: "Meet at Zoey's or the Bar. If you fuck her at the bar you'll get the bad end for Zoey.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [500] },
-    //{ name: "chloe", step: 1, txt: "Tried to Fucked Chloe - chastity / small dick", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [725] },
-    //{ name: "chloe", step: 2, txt: "Fucked Chloe", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [725] },
-    //{ name: "chloe", step: 3, txt: "Zoey confrontation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [500] },
-
-    //{ name: "jones", step: 0, txt: "Complete the fashion show at the sissy school", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
-    //{ name: "jones", step: 1, txt: "Clean his house and his cock", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
-    //{ name: "jones", step: 2, txt: "Next Event - Not complete", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
-
-    //{ name: "rachel", step: 0, txt: "Not yet met", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
-    //{ name: "rachel", step: 1, txt: "Need to get bigger boobs for the milking. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
-    //{ name: "rachel", step: 2, txt: "You can get milked now. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [150] },
-
-    //{ name: "ubel", step: -1, txt: "First Nightly whipping", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "ubel", step: 0, txt: "Not met", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-    //{ name: "ubel", step: 1, txt: "Escape", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [950] },
-
-    //{ name: "keaton", step: 0, txt: "Meet them at Zoey's Bar", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [525] },
-    //{ name: "keaton", step: 2, txt: "Time to get more information. You're the present at daddy's trailer during the day.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [535] },
-
-    //{ name: "stormy", step: -1, txt: "Need to give her $500 to get code", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [535] },
-    //}
 };
 
 sc.getLevel = function (name) {
@@ -484,59 +293,136 @@ sc.getLevel = function (name) {
 sc.modLevel = function (name, amount, targetLevel) {
     var actualAmount;
     var i, j;
-    for (i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            if (amount > 0) {
-                if (sc.char[i].l <= targetLevel)
-                    actualAmount = amount;
-                else {
-                    actualAmount = 1; //fix this later
-                }
+    sc.getch
+    i = sc.getIndex(name);
+    if (amount > 0) {
+        if (sc.char[i].l <= targetLevel)
+            actualAmount = amount;
+        else {
+            actualAmount = 1; //fix this later
+        }
 
-                var additionalLevels = Math.floor(actualAmount / 100);
-                var addedLevels = 0;
-                var remainderPoints = actualAmount % 100;
-                sc.char[i].c += remainderPoints;
+        var additionalLevels = Math.floor(actualAmount / 100);
+        var addedLevels = 0;
+        var remainderPoints = actualAmount % 100;
+        sc.char[i].c += remainderPoints;
 
-                if (additionalLevels > 0) {
-                    for (j = 0; j < additionalLevels; j++) { //i know. Shut up. this is easier
-                        if (sc.char[i].l < targetLevel) {
-                            sc.char[i].l++;
-                            addedLevels++;
-                        }
-                        else if (sc.char[i].l === targetLevel) {
-                            sc.char[i].l++;
-                            sc.char[i].c = 0;
-                            addedLevels++;
-                        }
-                    }
-                }
-
-                if (sc.char[i].c >= 100) {
-                    remainderPoints = sc.char[i].c % 100;
-                    sc.char[i].c = 0;
+        if (additionalLevels > 0) {
+            for (j = 0; j < additionalLevels; j++) { //i know. Shut up. this is easier
+                if (sc.char[i].l < targetLevel) {
                     sc.char[i].l++;
                     addedLevels++;
-                    if (sc.char[i].l <= targetLevel)
-                        sc.char[i].c += remainderPoints;
                 }
-
-                if (addedLevels > 0)
-                    g.popUpNotice("You gained " + addedLevels + " level(s) for: " + sc.char[i].display + "!");
-                else
-                    g.popUpNotice(sc.char[i].display + " points have increased by " + actualAmount + "! ");
-
-            }
-            else if (amount < 0) {
-                sc.char[i].c -= amount;
-                if (sc.char[i].c < 0)
+                else if (sc.char[i].l === targetLevel) {
+                    sc.char[i].l++;
                     sc.char[i].c = 0;
-                g.popUpNotice(sc.char[i].d + "'s points have decreased. ");
+                    addedLevels++;
+                }
             }
         }
+
+        if (sc.char[i].c >= 100) {
+            remainderPoints = sc.char[i].c % 100;
+            sc.char[i].c = 0;
+            sc.char[i].l++;
+            addedLevels++;
+            if (sc.char[i].l <= targetLevel)
+                sc.char[i].c += remainderPoints;
+        }
+
+        if (addedLevels > 0)
+            g.popUpNotice("You gained " + addedLevels + " level(s) for: " + sc.char[i].display + "!");
+        else
+            g.popUpNotice(sc.char[i].display + " points have increased by " + actualAmount + "! ");
+
+    }
+    else if (amount < 0) {
+        console.log(i);
+        sc.char[i].c -= amount;
+        if (sc.char[i].c < 0)
+            sc.char[i].c = 0;
+        g.popUpNotice(sc.char[i].display + "'s points have decreased. ");
     }
     //sstat.makeGraph();
 };
+
+//Mission ----------------------------------------------------------------------
+
+sc.startMission = function (name, missionName) {
+    var ml = sc.getMission(name, missionName);
+    sc.charMission[ml.i].mission[ml.j].mStatus = 1;
+};
+
+sc.getMission = function (name, missionName) {
+    for (var i = 0; i < sc.charMission.length; i++) {
+        if (sc.charMission[i].name === name) {
+
+            for (j = 0; j < sc.charMission[i].mission.length; j++) {
+                if (sc.charMission[i].mission[j].missionName === missionName) {
+
+                    return {
+                        mStatus: sc.charMission[i].mission[j].mStatus,
+                        notStarted: sc.charMission[i].mission[j].mStatus < 1,
+                        inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
+                        complete: sc.charMission[i].mission[j].mStatus > 100,
+                        i: i,
+                        j: j
+                    };
+                }
+            }
+        }
+    }
+
+    console.log("mission not found: " + name + " " + missionName);
+    return null;
+};
+
+sc.getMissionTask = function (nameId, missionId, taskId) {
+    for (var i = 0; i < sc.charMission[nameId].mission[missionId].task.length; i++) {
+        if (sc.charMission[nameId].mission[missionId].task[i].id === taskId)
+            return i;
+    }
+    return -1;
+};
+
+sc.getActiveMissions = function (name) {
+    var retArray = new Array();
+    for (var i = 0; i < sc.mission.length; i++) {
+        if (sc.mission[i].name === name && sc.mission[i].mStatus > 0 && sc.mission[i].mStatus < 100) {
+            retArray.push(sc.mission[i].missionName);
+        }
+    }
+    return retArray;
+};
+
+sc.completeMissionTask = function (name, missionName, taskId, success) {
+    var i, j;
+    var ml = sc.getMission(name, missionName);
+    
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
+            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = success ? 100 : 101;
+            return;
+        }
+    }
+};
+
+sc.completeMission = function (name, missionName, success) {
+    var i, j;
+    var mission = sc.getMission(name, missionName);
+    i = mission.i;
+    j = mission.j;
+    sc.charMission[i].mission[j].mStatus = success ? 100 : 101;
+};
+
+sc.taskGetStep = function (name, missionName) {
+    var ml = sc.getMission(name, missionName);
+    for (var k = 0; k < sc.charMission[ml.i].mission[j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[j].task[k].mStatus < 100)
+            return sc.charMission[ml.i].mission[j].task[k].id;
+    }
+    return 0;
+}
 
 sc.modSecret = function (name, amount) {
     for (var i = 0; i < sc.char.length; i++) {
@@ -559,170 +445,60 @@ sc.getSecret = function (name) {
     }
 };
 
-sc.get = function (name) {
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            return sc.char[i];
-        }
-    } 
-    console.log("invalid character - " + name);
-    return null;
-};
 
-sc.n = function (name) {
-    return sc.get(name).display;
-};
+
+
 
 sc.getstep = function (name) {
     return sc.get(name).step;
 };
 
 sc.setstep = function (name, step) {
-    var i, j;
-    if (step > 0) {
-        for (i = 0; i < sc.char.length; i++) {
-            if (sc.char[i].name === name) {
-                if (sc.char[i].step < step)
-                    sc.char[i].step = step;
-                break;
-            }
-        }
-    }
-    for (j = 0; j < sc.events.length; j++) {
-        if (sc.events[j].step === step && sc.events[j].name === name) {
-            sc.events[j].ach = true;
-            j = 100000;
-        }
-    }
-    if (name === g.walk)
-        char.makeWalk();
+    console.log("error");
 };
 
-sc.checkeventall = function (name) {
-    var retVar = new Array();
-    for (i = 0; i < sc.events.length; i++) {
-        if (sc.events[i].name === name && sc.events[i].ach)
-            retVar.push(sc.events[i].step);
-    }
-    return retVar;
+sc.getEventall = function (name) {
+    console.log("error");
 };
 
 sc.setstepAll = function (name, step) {
-    var i, j;
-    if (step > 0) {
-        for (i = 0; i < sc.char.length; i++) {
-            if (sc.char[i].name === name) {
-                if (sc.char[i].step < step)
-                    sc.char[i].step = step;
-                break;
-            }
-        }
-    }
-    for (j = 0; j < sc.events.length; j++) {
-        if (sc.events[j].step > -1 && sc.events[j].step <= step && sc.events[j].name === name) {
-            sc.events[j].ach = true;
-        }
-    }
+    console.log("error");
 };
 
 sc.revokeStep = function(name, step){
-    var i, j;
-    for (j = 0; j < sc.events.length; j++) {
-        if (sc.events[j].step === step && sc.events[j].name === name) {
-            sc.events[j].ach = false;
-            j = 100000;
-        }
-    }
+    console.log("error");
 };
 
 sc.getEventIndex = function (name, step) {
-    var retVal = -1;
-    for (i = 0; i < sc.events.length; i++) {
-        if (sc.events[i].name === name && sc.events[i].step === step) {
-            retVal = i;
-            break;
-        }
-    }
-    return retVal;
+    return 0;
 };
 
 sc.removeStep = function (name, step) {
-    var i, j;
-    var maxStep = 0;
-    if (step < 1)
-        alert("negative step : name " + name);
-
-    for (j = 0; j < sc.events.length; j++) {
-        if (sc.events[j].name === name) {
-            if (sc.events[j].step === step)
-                sc.events[j].ach = false;
-            if (sc.events[j].ach && sc.events[j].step > maxStep)
-                maxStep = sc.events[j].step;
-        }
-    }
-    for (i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            sc.char[i].step = maxStep;
-            i = 10000;
-        }
-    }
+    console.log("error");
 };
 
 sc.rollback = function (name, backTo) {
-    var i;
-    for (i = 0; i < sc.events.length; i++) {
-        if (sc.events[i].name === name && sc.events[i].step > backTo && sc.events[i].step > -1)
-            sc.events[i].ach = false;
-    }
-    for (i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            sc.char[i].step = backTo;
-            i = 99999;
-        }
-    }
+    console.log("error");
 };
 
 sc.incstep = function (name, amount) {
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            sc.setstep(name, sc.char[i].step + amount);
-            i = 100000;
-        }
-    }
+    console.log("error");
 };
 
-sc.setcharname = function (entry, newName) {
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === entry) {
-            sc.char[i].display = newName;
-            return;
-        }
-    }
-    return;
+sc.getEvent = function (name, step) {
+    console.log("error");
 };
 
-sc.checkevent = function (name, step) {
-    for (var i = 0; i < sc.events.length; i++) {
-        if (sc.events[i].name === name && sc.events[i].step === step) {
-            return sc.events[i].ach;
-        }
-    }
-    return false;
-};
-
-sc.setevent = function (name, step) {
-    for (var i = 0; i < sc.events.length; i++) {
-        if (sc.events[i].name === name && sc.events[i].step === step) {
-            sc.events[i].ach = true;
-        }
-    }
+sc.setEvent = function (name, step) {
+    console.log("error");
 };
 
 sc.save = function () {
-    var i;
+    var i, j, k;
     var retArra = {
         char: new Array(),
-        events: new Array()
+        //events: new Array(),
+        charMission: new Array()
     };
     // { name: "me", display: "Me", image: "me.png", step: 0, show: true, setName: false },
     for (i = 0; i < sc.char.length; i++) {
@@ -731,20 +507,51 @@ sc.save = function () {
             c: sc.char[i].c,
             l: sc.char[i].l,
             display: sc.char[i].display,
-            q3: sc.char[i].q3
+            q3: sc.char[i].q3,
+            show: sc.char[i].show
         });
     }
+
+    //name: "eva", mission: [
+    //    {
+    //        missionName: "getwine", mStatus: 0, title: "Get Wine!", desc: "Purchase some wine for truth or dare! ", task:
+    //            [
+    //                { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
+    //                { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+    //            ]
+    //    },
+    //],
+
+    for (i = 0; i < sc.charMission.length; i++) {
+        var charMission = { name: sc.charMission[i].name, mission: new Array() };
+        for (j = 0; j < sc.charMission[i].mission.length; j++) {
+            charMission.mission.push({ missionName: sc.charMission[i].mission[j].missionName, mStatus: sc.charMission[i].mission[j].mStatus, task: new Array() });
+            for (k = 0; k < sc.charMission[i].mission[j].task.length; k++) {
+                charMission.mission[j].task.push({ id: sc.charMission[i].mission[j].task[k].id, mStatus: sc.charMission[i].mission[j].task[k].mStatus });
+            }
+        }
+        retArra.charMission.push(charMission);
+    }
+
     //{ name: "me", step: 0, txt: "Wake up buttercup.", img: "bed", show: true, row: 0, col: 0, ach: false, major: false },
-    for (i = 0; i < sc.events.length; i++) {
-        retArra.events.push({
-            name: sc.events[i].name,
-            step: sc.events[i].step,
-            ach: sc.events[i].ach
-        });
-    }
+    //for (i = 0; i < sc.events.length; i++) {
+    //    retArra.events.push({
+    //        name: sc.events[i].name,
+    //        step: sc.events[i].step,
+    //        ach: sc.events[i].ach
+    //    });
+    //}
+    ////    { id: 0, name: "lola", missionname: "getwine", mStatus: 0, title: "Get Wine!", desc: "Purchase some wine for truth or dare! " },
+    //for (i = 0; i < sc.mission.length; i++) {
+    //    retArra.mission.push({
+    //        id: sc.mission[i].id,
+    //        mStatus: sc.mission[i].mStatus
+    //    });
+    //}
     
     return retArra;
 };
+
 
 sc.load = function (ra) {
     var i, j;
@@ -756,20 +563,47 @@ sc.load = function (ra) {
                 sc.char[j].c = ra.char[i].c;
                 sc.char[j].l = ra.char[i].l;
                 sc.char[j].q3 = ra.char[i].q3;
+                sc.char[j].show = ra.char[i].show;
                 j = 100000;
             }
         }
     }
 
-    for (i = 0; i < ra.events.length; i++) {
-        for (j = 0; j < sc.events.length; j++) {
-            if (ra.events[i].name === sc.events[j].name && ra.events[i].step === sc.events[j].step) {
-                sc.events[j].ach = ra.events[i].ach;
-                j = 100000;
+    //console.log(ra.charMission);
+    for (i = 0; i < ra.charMission.length; i++) {
+
+        for (j = 0; j < ra.charMission[i].mission.length; j++) {
+
+            var ml = sc.getMission(ra.charMission[i].name, ra.charMission[i].mission[j].missionName);
+            if (ml !== null) {
+                sc.charMission[ml.i].mission[ml.j].mStatus = ra.charMission[i].mission[j].mStatus; //set overall mission status
+                for (k = 0; k < ra.charMission[i].mission[j].task.length; k++) {
+
+                    var mlk = sc.getMissionTask(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
+                    if (mlk > 0)
+                        sc.charMission[ml.i].mission[ml.j].task[mlk].mStatus = ra.charMission[i].mission[j].task[k].mStatus;
+                }
             }
         }
     }
-    
+
+    //for (i = 0; i < ra.events.length; i++) {
+    //    for (j = 0; j < sc.events.length; j++) {
+    //        if (ra.events[i].name === sc.events[j].name && ra.events[i].step === sc.events[j].step) {
+    //            sc.events[j].ach = ra.events[i].ach;
+    //            j = 100000;
+    //        }
+    //    }
+    //}
+
+    ////    { id: 0, name: "lola", missionname: "getwine", mStatus: 0, title: "Get Wine!", desc: "Purchase some wine for truth or dare! " },
+
+    //for (i = 0; i < sc.charMission.length; i++) {
+    //    sc.charMission[i].mStatus = 0;
+    //}
+    //for (i = 0; i < ra.mission.length; i++) {
+    //    sc.charMission[ra.mission[i].id].mStatus = ra.mission[ra.mission[i].id].mStatus;
+    //}
 };
 
 /*
@@ -785,105 +619,141 @@ var weekday = new Array(7);
 sc.getTimeline = function (char) {
     var thisDay = g.dt.getDay();
     var thisTime = g.gethourdecimal();
-    var timeline = [
-        { n: "landlord", d: [6, 3], hstart: 7, hend: 8, roomId: 12 }, //bathroom
-        { n: "landlord", d: [0, 6], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-        { n: "landlord", d: [0], hstart: 7, hend: 8, roomId: 15, alt: null }, //kitchen
-        { n: "landlord", d: [0, 6], hstart: 8, hend: 9, roomId: 25, alt: null }, //dining room
-        { n: "landlord", d: [0, 6], hstart: 9, hend: 17, roomId: 26, alt: null }, //living room
-        { n: "landlord", d: [0, 6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
-        { n: "landlord", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-        { n: "landlord", d: [0, 6], hstart: 18, hend: 24, roomId: 14, alt: null }, //bedroom
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-        { n: "landlord", d: [1, 2, 4, 5], hstart: 7, hend: 9, roomId: 15, alt: null }, //dining
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
-        { n: "landlord", d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: 14, alt: null }, //bedroom
+    var timeline = new Array();
+    switch (char) {
+        case "landlord":
+            timeline = [
+            //sunday
+                { d: [0], hstart: 0, hend: 7, roomId: 775, alt: null }, //bedroom
+                { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
+                { d: [0], hstart: 10, hend: 11, roomId: 15, alt: null }, //kitchen
+                { d: [0], hstart: 11, hend: 18, roomId: 26, alt: null }, //living room
+                { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
+                { d: [0], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
+            //monday wednesday friday
+                
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
+                { d: [1, 3, 5], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
+                { d: [1, 3, 5], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
+                { d: [1, 3, 5], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
+                { d: [1, 3, 5], hstart: 20, hend: 24, roomId: 14, alt: null }, //bedroom
+                //tuesday thursday
+                { d: [2, 4], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
+                { d: [2, 4], hstart: 7, hend: 9, roomId: 25, alt: null }, //dining
+                { d: [2, 4], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
+                { d: [2, 4], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
+                { d: [2, 4], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
+                { d: [2, 4], hstart: 20, hend: 24, roomId: 14, alt: null }, //bedroom
+                //saturday
+                { d: [6], hstart: 0, hend: 7, roomId: 14 }, //bathroom
+                { d: [6], hstart: 7, hend: 8, roomId: 12 }, //bathroom
+                { d: [6], hstart: 8, hend: 12, roomId: 350, alt: null }, //living room
+                { d: [6], hstart: 12, hend: 17, roomId: 26, alt: null }, //living room
+                { d: [6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
+                { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
+                { d: [6], hstart: 18, hend: 24, roomId: 14, alt: null }, //bedroom
+            ];
+            break;
+        case "lola":
+        case "eva":
+            timeline = [
+            //sunday
+                { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
+                { d: [0], hstart: 10, hend: 12, roomId: 12, alt: null }, //bathroom
+                { d: [0], hstart: 12, hend: 18, roomId: 17, alt: null }, //bathroom
+                { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
+                { d: [0], hstart: 19, hend: 24, roomId: 13, alt: null }, //bedroom
 
-        { n: "lola", d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-        { n: "lola", d: [0], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
-        { n: "lola", d: [6], hstart: 0, hend: 8, roomId: 13, alt: null }, //bedroom
-        { n: "lola", d: [0, 6], hstart: 8, hend: 14, roomId: 13, alt: null }, //bedroom
-        { n: "lola", d: [0], hstart: 14, hend: 18, roomId: 450, alt: null }, //park
-        { n: "lola", d: [6], hstart: 14, hend: 18, roomId: 16, alt: null }, //living
-        { n: "lola", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //living
-        { n: "lola", d: [0, 6], hstart: 19, hend: 24, roomId: 13, alt: null }, //living
-        { n: "lola", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-        { n: "lola", d: [2, 4], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
-        { n: "lola", d: [1, 3, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //dining
-        { n: "lola", d: [2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
-        { n: "lola", d: [1, 3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
-        { n: "lola", d: [1, 3, 5], hstart: 14, hend: 17, roomId: 901, alt: null }, //pool
-        { n: "lola", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining
-        { n: "lola", d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
+                //wednesday friday
+                { d: [3, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [3, 5], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
+                { d: [3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                { d: [3, 5], hstart: 14, hend: 17, roomId: char === "lola" ? 901 : 400, alt: null }, //pool
+                { d: [3, 5], hstart: 17, hend: 19, roomId: 25, alt: null }, //dining 
+                { d: [3, 5], hstart: 19, hend: 22, roomId: null, alt: "Out somewhere..?" }, //dining
+                { d: [3, 5], hstart: 22, hend: 24, roomId: 13, alt: null }, //dining
 
-        { n: "eva", d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-        { n: "eva", d: [0], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
-        { n: "eva", d: [6], hstart: 0, hend: 8, roomId: 13, alt: null }, //bedroom
-        { n: "eva", d: [0, 6], hstart: 8, hend: 14, roomId: 13, alt: null }, //bedroom
-        { n: "eva", d: [0], hstart: 14, hend: 18, roomId: 450, alt: null }, //park
-        { n: "eva", d: [6], hstart: 14, hend: 18, roomId: 16, alt: null }, //living
-        { n: "eva", d: [0, 6], hstart: 18, hend: 19, roomId: 25, alt: null }, //living
-        { n: "eva", d: [0, 6], hstart: 19, hend: 24, roomId: 13, alt: null }, //living
-        { n: "eva", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-        { n: "eva", d: [2, 4], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
-        { n: "eva", d: [1, 3, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //dining
-        { n: "eva", d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
-        { n: "eva", d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining
-        { n: "eva", d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
+                //monday, tuesday, thursday
+                { d: [1, 2, 4], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [1, 2, 4], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
+                { d: [1, 2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
+                { d: [1, 2, 4], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                { d: [1, 2, 4], hstart: 18, hend: 24, roomId: 13, alt: null }, //dining
 
-        { n: "cecilia", d: [0, 1, 2, 3, 4, 5, 7], hstart: 0, hend: 7, roomId: null, alt: "Home" }, 
-        { n: "cecilia", d: [0, 1, 2, 3, 4, 5, 7], hstart: 21, hend: 24, roomId: null, alt: "Home" }, 
-        { n: "cecilia", d: [0, 1, 2, 3, 4, 5, 7], hstart: 16, hend: 21, roomId: null, alt: "Taking cocks in all holes (probably)" }, 
-        { n: "cecilia", d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 203, alt: null }, //office
-        { n: "cecilia", d: [0, 6], hstart: 7, hend: 16, roomId: 451, alt: null }, //blowjob
+                //saturday
+                { d: [6], hstart: 0, hend: 7, roomId: 13 }, //bathroom
+                { d: [6], hstart: 7, hend: 9, roomId: 25 }, //bathroom
+                { d: [6], hstart: 9, hend: 17, roomId: 26, alt: null }, //living room
+                { d: [6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
+                { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
+                { d: [6], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
+            ];
+            break;
+        case "cecilia":
+            timeline = [
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" },
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 21, hend: 24, roomId: null, alt: "Home" },
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 16, hend: 21, roomId: null, alt: "Taking cocks in all holes (probably)" },
+                { d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 203, alt: null }, //office
+                { d: [0, 6], hstart: 7, hend: 16, roomId: 451, alt: null }, //blowjob
+            ];
+            break;
+        case "zoey":
+            timeline = [
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 4, roomId: 525, alt: null }, //bar
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 4, hend: 12, roomId: 502, alt: null }, //bedroom
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 12, hend: 20, roomId: 501, alt: null }, //living room
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 525, alt: null }, //bar
+            ];
+            break;
+        case "tiffany":
+        case "candy":
+            timeline = [
+                { d: [0, 6], hstart: 0, hend: 7, roomId: char === "tiffany" ? 54 : 53, alt: null }, //bedroom
+                { d: [0, 6], hstart: 7, hend: 16, roomId: null, alt: "Getting laid" },
+                { d: [0, 6], hstart: 16, hend: 24, roomId: char === "tiffany" ? 54 : 53, alt: null },
+                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: char === "tiffany" ? 54 : 53, alt: null }, //bedroom
+                { d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 650, alt: null }, //porn store
+                { d: [1, 2, 3, 4, 5], hstart: 16, hend: 20, roomId: 57, alt: null }, //pussy palace
+                { d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: char === "tiffany" ? 54 : 53, alt: null }, //bedroom
+            ];
+            break;
+        case "bimbo":
+            timeline = [
+                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
+                { d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 700, alt: null }, //hospital
+                { d: [1, 2, 3, 4, 5], hstart: 17, hend: 22, roomId: 77, alt: null }, //living room
+                { d: [1, 2, 3, 4, 5], hstart: 22, hend: 9, roomId: 76, alt: null }, //bedroom
+                { d: [0, 6], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
+                { d: [0, 6], hstart: 9, hend: 22, roomId: 77, alt: null }, //living room
+                { d: [0, 6], hstart: 22, hend: 24, roomId: 76, alt: null }, //bedroom
+            ];
+            break;
+        case "cindy":
+            timeline = [
+                { d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 901, alt: null }, //pool
+                { d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [1, 2, 6], hstart: 7, hend: 20, roomId: 900, alt: null }, //school
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
+            ];
+            break;
+        case "tim":
+            timeline = [
+                { d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 900, alt: null }, //pool
+                { d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [1, 2, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
+            ];
+            break;
+    }
 
-        { n: "zoey", d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 4, roomId: 525, alt: null }, //bar
-        { n: "zoey", d: [0, 1, 2, 3, 4, 5, 6], hstart: 4, hend: 12, roomId: 502, alt: null }, //bedroom
-        { n: "zoey", d: [0, 1, 2, 3, 4, 5, 6], hstart: 12, hend: 20, roomId: 501, alt: null }, //living room
-        { n: "zoey", d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 525, alt: null }, //bar
-
-        { n: "tiffany", d: [0, 6], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
-        { n: "tiffany", d: [0, 6], hstart: 7, hend: 16, roomId: null, alt: "Getting laid" }, 
-        { n: "tiffany", d: [0, 6], hstart: 16, hend: 24, roomId: 54, alt: null }, 
-        { n: "tiffany", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
-        { n: "tiffany", d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 650, alt: null }, //porn store
-        { n: "tiffany", d: [1, 2, 3, 4, 5], hstart: 16, hend: 18, roomId: 57, alt: null }, //pussy palace
-        { n: "tiffany", d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 54, alt: null }, //bedroom
-
-        { n: "candy", d: [0, 6], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
-        { n: "candy", d: [0, 6], hstart: 7, hend: 16, roomId: 875, alt: null }, //fooball
-        { n: "candy", d: [0, 6], hstart: 16, hend: 24, roomId: 54, alt: null }, //bedroom
-        { n: "candy", d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
-        { n: "candy", d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 650, alt: null }, //porn store
-        { n: "candy", d: [1, 2, 3, 4, 5], hstart: 16, hend: 18, roomId: 57, alt: null }, //pussy palace
-        { n: "candy", d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 54, alt: null }, //bedroom
-
-        { n: "bimbo", d: [1, 2, 3, 4, 5], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
-        { n: "bimbo", d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 700, alt: null }, //hospital
-        { n: "bimbo", d: [1, 2, 3, 4, 5], hstart: 17, hend: 22, roomId: 77, alt: null }, //living room
-        { n: "bimbo", d: [1, 2, 3, 4, 5], hstart: 22, hend: 9, roomId: 76, alt: null }, //bedroom
-        { n: "bimbo", d: [0, 6], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
-        { n: "bimbo", d: [0, 6], hstart: 9, hend: 22, roomId: 77, alt: null }, //living room
-        { n: "bimbo", d: [0, 6], hstart: 22, hend: 24, roomId: 76, alt: null }, //bedroom
-
-        { n: "cindy", d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-        { n: "cindy", d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 901, alt: null }, //pool
-        { n: "cindy", d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-        { n: "cindy", d: [1, 2, 6], hstart: 7, hend: 20, roomId: 900, alt: null }, //school
-        { n: "cindy", d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
-
-        { n: "tim", d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-        { n: "tim", d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 900, alt: null }, //pool
-        { n: "tim", d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-        { n: "tim", d: [1, 2, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
-        { n: "tim", d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
-
-    ];
     var retVar = { roomID: -1, thisRoom: false, subList: new Array() };
     for (i = 0; i < timeline.length; i++) {
-        if (timeline[i].n === char && timeline[i].d.includes(thisDay)) {
+        if (timeline[i].d.includes(thisDay)) {
             retVar.subList.push({
                 hstart: timeline[i].hstart,
                 hend: timeline[i].hend,
@@ -1538,6 +1408,26 @@ sc.trivial = function (charname) {
         case "!twat":
             name = "Twaty Honey";
             image = "twat.png";
+            break;
+        case "!madison":
+            name = "Nurse Madison";
+            image = "madison.png";
+            break;
+        case "!boy":
+            name = "Boy's Voice";
+            image = "boy.png";
+            break;
+        case "!girl":
+            name = "Girl's Voice";
+            image = "girl.png";
+            break;
+        case "!oldlady":
+            name = "Old lady";
+            image = "oldlady.png";
+            break;
+        case "!football":
+            name = "Player";
+            image = "football.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

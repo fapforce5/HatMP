@@ -1,6 +1,7 @@
 ﻿var sex = {};
 var levels = {};
 var daily = {};
+var stats = {};
 var gv = {};
 var sissy = {};
 var t = {}; //remove this
@@ -14,6 +15,7 @@ daily.st = new Array();
 gv.st = new Array();
 sissy.st = new Array();
 trophy.st = new Array();
+gv.stats = new Array();
 
 t.modLevel = function (id, amount) {
     console.log("kill me");
@@ -40,11 +42,15 @@ gv.init = function () {
         { n: "arousal", t: 5, q: "hundred" },
 
         //character
-        { n: "map", t: 0, q: "int" },
+        { n: "map", t: 1, q: "int" },
         { n: "bladder", t: 0, q: "bladder" },
         { n: "cum", t: g.startDate, q: "date" },
         { n: "chastityLock", t: false, q: "bool" },
         { n: "missyWeekly", t: "", q: "string" },
+        { n: "jackoff", t: 0, q: "int" },
+        { n: "dildoanal", t: 0, q: "int" },
+        { n: "fingeranal", t: 0, q: "int" },
+        { n: "dildooral", t: 0, q: "int" },
 
         //Settings
         { n: "fantasyCreatures", t: false, q: "bool" },
@@ -96,7 +102,9 @@ gv.init = function () {
         //missy
         { n: "chastity", t: null, q: "date" },
         { n: "castitycage", t: null, q: "string" },
-        
+
+        //church
+        { n: "confession", t: "", q: "string" },
 
         //{ n: "sissy", t: 0, q: "sissy" },
         //{ n: "usedSissyPoints", t: 0, q: "sissy" },
@@ -158,7 +166,9 @@ gv.init = function () {
         { n: "chloe", t: false },
         { n: "landlord", t: false },
         { n: "eva", t: false },
+        { n: "evatalk", t: false },
         { n: "lola", t: false },
+        { n: "lolatalk", t: false },
         { n: "tif", t: false },
         { n: "candy", t: false },
         { n: "envy", t: false },
@@ -177,6 +187,7 @@ gv.init = function () {
         { n: "momChoreDishes", t: false },
         { n: "homeShowerPeek", t: false },
         { n: "momRaidCloset", t: false },
+        { n: "spermbank", t: false },
         { n: "shower", t: false },
 
         { n: "construction", t: false },
@@ -214,65 +225,65 @@ gv.init = function () {
     ];
 
     sex.st = [
-        { id: 0, type: "anal", give: true, gender: "m", c: 0 },
-        { id: 1, type: "anal", give: true, gender: "f", c: 0 },
-        { id: 2, type: "anal", give: false, gender: "m", c: 0 },
-        { id: 3, type: "anal", give: false, gender: "f", c: 0 },
+        { id: 0, type: "anal", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 1, type: "anal", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 2, type: "anal", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 3, type: "anal", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 4, type: "oral", give: true, gender: "m", c: 0 },
-        { id: 5, type: "oral", give: true, gender: "f", c: 0 },
-        { id: 6, type: "oral", give: false, gender: "m", c: 0 },
-        { id: 7, type: "oral", give: false, gender: "f", c: 0 },
+        { id: 4, type: "oral", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 5, type: "oral", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 6, type: "oral", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 7, type: "oral", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 8, type: "hand", give: true, gender: "m", c: 0 },
-        { id: 9, type: "hand", give: true, gender: "f", c: 0 },
-        { id: 10, type: "hand", give: false, gender: "m", c: 0 },
-        { id: 11, type: "hand", give: false, gender: "f", c: 0 },
+        { id: 8, type: "hand", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 9, type: "hand", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 10, type: "hand", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 11, type: "hand", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 12, type: "fist", give: true, gender: "m", c: 0 },
-        { id: 13, type: "fist", give: true, gender: "f", c: 0 },
-        { id: 14, type: "fist", give: false, gender: "m", c: 0 },
-        { id: 15, type: "fist", give: false, gender: "f", c: 0 },
+        { id: 12, type: "fist", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 13, type: "fist", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 14, type: "fist", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 15, type: "fist", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 16, type: "foot", give: true, gender: "m", c: 0 },
-        { id: 17, type: "foot", give: true, gender: "f", c: 0 },
-        { id: 18, type: "foot", give: false, gender: "m", c: 0 },
-        { id: 19, type: "foot", give: false, gender: "f", c: 0 },
+        { id: 16, type: "foot", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 17, type: "foot", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 18, type: "foot", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 19, type: "foot", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 20, type: "footworship", give: true, gender: "m", c: 0 },
-        { id: 21, type: "footworship", give: true, gender: "f", c: 0 },
-        { id: 22, type: "footworship", give: false, gender: "m", c: 0 },
-        { id: 23, type: "footworship", give: false, gender: "f", c: 0 },
+        { id: 20, type: "footworship", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 21, type: "footworship", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 22, type: "footworship", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 23, type: "footworship", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 24, type: "pussy", give: true, gender: "m", c: 0 },
-        { id: 25, type: "pussy", give: true, gender: "f", c: 0 },
-        { id: 26, type: "pussy", give: false, gender: "m", c: 0 },
-        { id: 27, type: "pussy", give: false, gender: "f", c: 0 },
+        { id: 24, type: "pussy", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 25, type: "pussy", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 26, type: "pussy", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 27, type: "pussy", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 28, type: "piss", give: true, gender: "m", c: 0 },
-        { id: 29, type: "piss", give: true, gender: "f", c: 0 },
-        { id: 30, type: "piss", give: false, gender: "m", c: 0 },
-        { id: 31, type: "piss", give: false, gender: "f", c: 0 },
+        { id: 28, type: "piss", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 29, type: "piss", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 30, type: "piss", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 31, type: "piss", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 32, type: "drankpiss", give: true, gender: "m", c: 0 },
-        { id: 33, type: "drankpiss", give: true, gender: "f", c: 0 },
-        { id: 34, type: "drankpiss", give: false, gender: "m", c: 0 },
-        { id: 35, type: "drankpiss", give: false, gender: "f", c: 0 },
+        { id: 32, type: "drankpiss", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 33, type: "drankpiss", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 34, type: "drankpiss", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 35, type: "drankpiss", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 36, type: "spit", give: true, gender: "m", c: 0 },
-        { id: 37, type: "spit", give: true, gender: "f", c: 0 },
-        { id: 38, type: "spit", give: false, gender: "m", c: 0 },
-        { id: 39, type: "spit", give: false, gender: "f", c: 0 },
+        { id: 36, type: "spit", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 37, type: "spit", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 38, type: "spit", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 39, type: "spit", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 40, type: "boob", give: true, gender: "m", c: 0 },
-        { id: 41, type: "boob", give: true, gender: "f", c: 0 },
-        { id: 42, type: "boob", give: false, gender: "m", c: 0 },
-        { id: 43, type: "boob", give: false, gender: "f", c: 0 },
+        { id: 40, type: "boob", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 41, type: "boob", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 42, type: "boob", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 43, type: "boob", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 44, type: "beast", give: true, gender: "m", c: 0 },
-        { id: 45, type: "beast", give: true, gender: "f", c: 0 },
-        { id: 46, type: "beast", give: false, gender: "m", c: 0 },
-        { id: 47, type: "beast", give: false, gender: "f", c: 0 },
+        { id: 44, type: "beast", give: true, gender: "m", c: 0, sin: 0 },
+        { id: 45, type: "beast", give: true, gender: "f", c: 0, sin: 0 },
+        { id: 46, type: "beast", give: false, gender: "m", c: 0, sin: 0 },
+        { id: 47, type: "beast", give: false, gender: "f", c: 0, sin: 0 }
     ];
 
     sissy.st = [
@@ -301,6 +312,67 @@ gv.init = function () {
         { id: 17, pID: [], icon: "invite", x: 0, y: 0, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
     ];
 
+    stats.st = [
+        { id: 0, t: "cum", n: "swollow", c: 0 },
+        { id: 1, t: "cum", n: "spit", c: 0 },
+        { id: 2, t: "cum", n: "creamPied", c: 0 },
+        { id: 3, t: "cum", n: "eat", c: 0 },
+
+        { id: 4, t: "masturbate", n: "dick", c: 0 },
+        { id: 5, t: "masturbate", n: "pussy", c: 0 },
+        { id: 6, t: "masturbate", n: "vibrator", c: 0 },
+        { id: 7, t: "masturbate", n: "oral", c: 0 },
+        { id: 8, t: "masturbate", n: "finger", c: 0 },
+        { id: 9, t: "masturbate", n: "dildo", c: 0 },
+
+        { id: 10, t: "chastity", n: "days", c: 0 },
+        { id: 11, t: "consecutiveCastity", n: "days", c: 0 },
+
+        { id: 12, t: "sissygasm", n: "m", c: 0 },
+        { id: 13, t: "sissygasm", n: "f", c: 0 },
+
+        { id: 14, t: "humiliate", n: "m", c: 0 },
+        { id: 15, t: "humiliate", n: "f", c: 0 },
+
+        { id: 16, t: "public", n: "m", c: 0 },
+        { id: 17, t: "public", n: "f", c: 0 },
+
+        { id: 18, t: "rape", n: "m", c: 0 },
+        { id: 19, t: "rape", n: "f", c: 0 },
+
+        { id: 20, t: "bondage", n: "m", c: 0 },
+        { id: 21, t: "bondage", n: "f", c: 0 },
+
+        { id: 22, t: "hit", n: "m", c: 0 },
+        { id: 23, t: "hit", n: "f", c: 0 },
+
+        { id: 24, t: "cbt", n: "m", c: 0 },
+        { id: 25, t: "cbt", n: "f", c: 0 },
+
+        { id: 26, t: "sph", n: "m", c: 0 },
+        { id: 27, t: "sph", n: "f", c: 0 },
+
+        { id: 28, t: "subdom", n: "dom", c: 0 },
+        { id: 29, t: "subdom", n: "sub", c: 0 },
+
+        { id: 30, t: "piss", n: "bed", c: 0 },
+        { id: 31, t: "piss", n: "self", c: 0 },
+
+        { id: 32, t: "enema", n: "take", c: 0 },
+
+        { id: 33, t: "beast", n: "pet", c: 0 },
+        { id: 34, t: "beast", n: "hand", c: 0 },
+        { id: 35, t: "beast", n: "oral", c: 0 },
+        { id: 36, t: "beast", n: "anal", c: 0 },
+
+        { id: 37, t: "dislike", n: "anal", c: 0 },
+        { id: 38, t: "dislike", n: "oral", c: 0 },
+        { id: 39, t: "dislike", n: "cum", c: 0 },
+        { id: 40, t: "dislike", n: "piss", c: 0 },
+
+    ];
+
+
     trophy.st = [
         { id: 0, display: "Wear panties for the first time. ", img: "panties.png", ach: false, group: "sissy" },
         { id: 1, display: "Lock the cock. ", img:"chastity.png", ach: false, group: "sissy" },
@@ -312,10 +384,12 @@ gv.init = function () {
 gv.i=function(n){var r=-1;for(i=0;i<gv.st.length;i++)if(gv.st[i].n===n){r=i;break}return r}; //returns index for g.st by name
 daily.i=function(n){var r=-1;for(i=0;i<daily.st.length;i++)if(daily.st[i].n===n){r=i;break}return r}; //returns index for daily.st by name
 levels.i=function(n){var r=-1;for(i=0;i<levels.st.length;i++)if(levels.st[i].n===n){r=i;break}return r}; //returns index for levels.st by name
+stats.i = function (t, n) { for (var r = 0; r < stats.st.length; r++)if (t === stats.st[r].t && n === stats.st[r].n) return r; return -1 };
 
-gv.get=function(n){var t=gv.i(n);return t>-1?gv.st[t].t:(console.log("gv.st missing name: "+n),null)}; //gets g.st
+gv.get = function (n) {var t=gv.i(n);return t>-1?gv.st[t].t:(console.log("gv.st missing name: "+n),null)}; //gets g.st
 daily.get=function(n){var t=daily.i(n);return t>-1?daily.st[t].t:(console.log("daily.st missing name: "+n),null)}; //gets daily.st
 levels.get=function(l){var n=levels.i(l);return n>-1?{c:levels.st[n].c,l:levels.st[n].l}:(console.log("levels.st missing name: "+l),null)}; //gets levels
+stats.get = function (t, n) { return stats.st[stats.i(t, n)].c };
 
 daily.set=function(t){var n=daily.i(t);n>0?daily.st[n].t=!0:console.log("daily set "+t+" not found")}; //sets daily to true
 gv.set=function(t,c){var s,e,i=gv.i(t);s=gv.st[i].t,gv.st[i].t=c,e=c-s,g.checkPop(t,e)};
@@ -380,6 +454,9 @@ gv.mod = function (name, amount) {
                 }
                 else if (gv.st[index].t > .5)
                     g.popUpNotice("You feel the need to pee. ");
+                break;
+            case "string":
+                gv.st[index].t += amount;
                 break;
             default:
                 console.log("unknown g.mod type: " + type + ", name: " + name);
@@ -451,10 +528,15 @@ sex.mod = function (type, give, gender, number) {
     for (var i = 0; i < sex.st.length; i++) {
         if (sex.st[i].type === type && sex.st[i].give === give && sex.st[i].gender === gender) {
             sex.st[i].c += number;
+            sex.st[i].sin += number;
             break;
         }
     }
 }
+
+stats.mod = function (t, n, amount) {
+    stats.st[stats.i(t, n)].c += amount;
+};
 
 daily.newday = function () {
     for (var i = 0; i < daily.st.length; i++)
@@ -628,7 +710,7 @@ levels.desc = function (name, level) {
     }
 };
 
-levels.oralGive = function (size, swallow) {
+levels.oralGive = function (size, swallow, isDildo) {
     levels.mod("oral", 25, 999);
     if (swallow) {
         levels.mod("cum", 25, 999);
@@ -1017,27 +1099,143 @@ sex.fuckpussy = function (who) {
         gv.set("virginDick", who);
 };
 
+sex.takeAnal = function (who, size, creampie, gender, number) {
+    levels.anal(size);
+    if (gender !== null) {
+        sex.mod("anal", false, gender, number);
+    }
+    if (gv.get("virginAss") === null)
+        gv.set("virginAss", who);
+};
+
 sex.getFuck = function () {
-    var x = {
-        anal: sex.st[0].c + sex.st[1].c,
-        oral: sex.st[4].c + sex.st[5].c,
-        hand: sex.st[8].c + sex.st[9].c,
-        foot: sex.st[16].c + sex.st[17].c,
-        pussy: sex.st[24].c + sex.st[25].c,
-        tits: sex.st[40].c + sex.st[41].c,
-        beast: sex.st[44].c + sex.st[45].c,
+    var tempFuck = {
+        anal: {
+            give: {
+                m: { c: sex.st[0].c, sin: sex.st[0].sin },
+                f: { c: sex.st[1].c, sin: sex.st[1].sin },
+            },
+            take: {
+                m: { c: sex.st[2].c, sin: sex.st[2].sin },
+                f: { c: sex.st[3].c, sin: sex.st[3].sin },
+            }
+        },
+        oral: {
+            give: {
+                m: { c: sex.st[4].c, sin: sex.st[4].sin },
+                f: { c: sex.st[5].c, sin: sex.st[5].sin },
+            },
+            take: {
+                m: { c: sex.st[6].c, sin: sex.st[6].sin },
+                f: { c: sex.st[7].c, sin: sex.st[7].sin },
+            }
+        },
+        hand: {
+            give: {
+                m: { c: sex.st[8].c, sin: sex.st[8].sin },
+                f: { c: sex.st[9].c, sin: sex.st[9].sin },
+            },
+            take: {
+                m: { c: sex.st[10].c, sin: sex.st[10].sin },
+                f: { c: sex.st[11].c, sin: sex.st[11].sin },
+            }
+        },
+        fist: {
+            give: {
+                m: { c: sex.st[12].c, sin: sex.st[12].sin },
+                f: { c: sex.st[13].c, sin: sex.st[13].sin },
+            },
+            take: {
+                m: { c: sex.st[14].c, sin: sex.st[14].sin },
+                f: { c: sex.st[15].c, sin: sex.st[15].sin },
+            }
+        },
+        foot: {
+            give: {
+                m: { c: sex.st[16].c, sin: sex.st[16].sin },
+                f: { c: sex.st[17].c, sin: sex.st[17].sin },
+            },
+            take: {
+                m: { c: sex.st[18].c, sin: sex.st[18].sin },
+                f: { c: sex.st[19].c, sin: sex.st[19].sin },
+            }
+        },
+        footworship: {
+            give: {
+                m: { c: sex.st[20].c, sin: sex.st[20].sin },
+                f: { c: sex.st[21].c, sin: sex.st[21].sin },
+            },
+            take: {
+                m: { c: sex.st[22].c, sin: sex.st[22].sin },
+                f: { c: sex.st[23].c, sin: sex.st[23].sin },
+            }
+        },
+        pussy: {
+            give: {
+                m: { c: sex.st[24].c, sin: sex.st[24].sin },
+                f: { c: sex.st[25].c, sin: sex.st[25].sin },
+            },
+            take: {
+                m: { c: sex.st[26].c, sin: sex.st[26].sin },
+                f: { c: sex.st[27].c, sin: sex.st[27].sin },
+            }
+        },
+        piss: {
+            give: {
+                m: { c: sex.st[28].c, sin: sex.st[28].sin },
+                f: { c: sex.st[29].c, sin: sex.st[29].sin },
+            },
+            take: {
+                m: { c: sex.st[30].c, sin: sex.st[30].sin },
+                f: { c: sex.st[31].c, sin: sex.st[31].sin },
+            }
+        },
+        drankpiss: {
+            give: {
+                m: { c: sex.st[32].c, sin: sex.st[32].sin },
+                f: { c: sex.st[33].c, sin: sex.st[33].sin },
+            },
+            take: {
+                m: { c: sex.st[34].c, sin: sex.st[34].sin },
+                f: { c: sex.st[35].c, sin: sex.st[35].sin },
+            }
+        },
+        spit: {
+            give: {
+                m: { c: sex.st[36].c, sin: sex.st[36].sin },
+                f: { c: sex.st[37].c, sin: sex.st[37].sin },
+            },
+            take: {
+                m: { c: sex.st[38].c, sin: sex.st[38].sin },
+                f: { c: sex.st[39].c, sin: sex.st[39].sin },
+            }
+        },
+        boob: {
+            give: {
+                m: { c: sex.st[40].c, sin: sex.st[40].sin },
+                f: { c: sex.st[41].c, sin: sex.st[41].sin },
+            },
+            take: {
+                m: { c: sex.st[42].c, sin: sex.st[42].sin },
+                f: { c: sex.st[43].c, sin: sex.st[43].sin },
+            }
+        },
+        beast: {
+            give: {
+                m: { c: sex.st[44].c, sin: sex.st[44].sin },
+                f: { c: sex.st[45].c, sin: sex.st[45].sin },
+            },
+            take: {
+                m: { c: sex.st[46].c, sin: sex.st[46].sin },
+                f: { c: sex.st[47].c, sin: sex.st[47].sin },
+            }
+        },
+        virginDick: true,
+        virginAss: true,
+        virginMouth: true
     };
 
-    return {
-        anal: x.anal,
-        oral: x.oral,
-        hand: x.hand,
-        foot: x.foot,
-        pussy: x.pussy,
-        tits: x.tits,
-        beast: x.beast,
-        virginDick: x.anal === 0 && x.oral === 0 && x.hand === 0 && x.foot === 0 && x.pussy === 0 && x.tits === 0 && x.beast === 0
-    };
+    return tempFuck;
 };
 
 gv.timeTxt = function (hour, minute) {
@@ -1055,6 +1253,7 @@ gv.save = function () {
         levels: new Array(),
         sex: new Array(),
         sissy: new Array(),
+        stats: new Array(),
         trophy: new Array(),
     };
     //save by name
@@ -1078,12 +1277,17 @@ gv.save = function () {
     }
     //save by index
     for (i = 0; i < sex.st.length; i++) {
-        retArray.sex.push(sex.st[i].c);
+        retArray.sex.push({ c: sex.st[i].c, sin: sex.st[i].sin });
     }
     
     //save by index
     for (i = 0; i < sissy.st.length; i++) {
         retArray.sissy.push(sissy.st[i].ach);
+    }
+
+    //save by index
+    for (i = 0; i < stats.st.length; i++) {
+        retArray.stats.push(stats.st[i].c);
     }
 
     //save by index if true
@@ -1124,11 +1328,16 @@ gv.load = function (rma) {
     }
     
     for (i = 0; i < rma.sex.length; i++) {
-        sex.st[i].c = rma.sex[i];
+        sex.st[i].c = rma.sex[i].c;
+        sex.st[i].sin = rma.sex[i].sin;
     }
 
     for (i = 0; i < rma.sissy.length; i++) {
         sissy.st[i].ach = rma.sissy[i];
+    }
+
+    for (i = 0; i < rma.stats.length; i++) {
+        stats.st[i].c = rma.stats[i];
     }
     
     if (typeof rma.trophy !== 'undefined') {
@@ -1274,60 +1483,3 @@ g.supersissy = function (all) {
 };
 
 
-gv.stats = [
-    { id: 0, t: "cum", n: "swollow", c: 0 },
-    { id: 1, t: "cum", n: "spit", c: 0 },
-    { id: 2, t: "cum", n: "creamPied", c: 0 },
-    { id: 3, t: "cum", n: "eat", c: 0 },
-
-    { id: 4, t: "masturbate", n: "dick", c: 0 },
-    { id: 5, t: "masturbate", n: "pussy", c: 0 },
-    { id: 6, t: "masturbate", n: "vibrator", c: 0 },
-    { id: 7, t: "masturbate", n: "oral", c: 0 },
-    { id: 8, t: "masturbate", n: "finger", c: 0 },
-    { id: 9, t: "masturbate", n: "dildo", c: 0 },
-
-    { id: 10, t: "chastity", n: "days", c: 0 },
-
-    { id: 11, t: "sissygasm", n: "m", c: 0 },
-    { id: 12, t: "sissygasm", n: "f", c: 0 },
-
-    { id: 13, t: "humiliate", n: "m", c: 0 },
-    { id: 14, t: "humiliate", n: "f", c: 0 },
-
-    { id: 15, t: "public", n: "m", c: 0 },
-    { id: 16, t: "public", n: "f", c: 0 },
-
-    { id: 17, t: "rape", n: "m", c: 0 },
-    { id: 18, t: "rape", n: "f", c: 0 },
-
-    { id: 19, t: "bondage", n: "m", c: 0 },
-    { id: 20, t: "bondage", n: "f", c: 0 },
-
-    { id: 21, t: "hit", n: "m", c: 0 },
-    { id: 22, t: "hit", n: "f", c: 0 },
-
-    { id: 23, t: "cbt", n: "m", c: 0 },
-    { id: 24, t: "cbt", n: "f", c: 0 },
-
-    { id: 25, t: "sph", n: "m", c: 0 },
-    { id: 26, t: "sph", n: "f", c: 0 },
-
-    { id: 27, t: "subdom", n: "dom", c: 0 },
-    { id: 28, t: "subdom", n: "sub", c: 0 },
-
-    { id: 29, t: "piss", n: "bed", c: 0 },
-    { id: 30, t: "piss", n: "self", c: 0 },
-
-    { id: 31, t: "enema", n: "take", c: 0 },
-
-    { id: 32, t: "beast", n: "pet", c: 0 },
-    { id: 33, t: "beast", n: "hand", c: 0 },
-    { id: 34, t: "beast", n: "oral", c: 0 },
-
-    { id: 35, t: "dislike", n: "anal", c: 0 },
-    { id: 36, t: "dislike", n: "oral", c: 0 },
-    { id: 37, t: "dislike", n: "cum", c: 0 },
-    { id: 38, t: "dislike", n: "piss", c: 0 },
-
-];

@@ -90,7 +90,7 @@ room215.chatcatch = function (callback) {
                 customer = Math.floor(Math.random() * 3) === 0;
             }
             if (customer) {
-                if (!sc.checkevent("landlord", -10) && sc.getstep("landlord") > 201) {
+                if (!sc.getEvent("landlord", -10) && sc.getstep("landlord") > 201) {
                     nav.button({
                         "type": "img",
                         "name": "f",
@@ -102,7 +102,7 @@ room215.chatcatch = function (callback) {
                     }, 215);
                     chat(6, 215);
                 }
-                else if (sc.getstep("chloe") > 2 && !sc.checkevent("chloe", -1)) {
+                else if (sc.getstep("chloe") > 2 && !sc.getEvent("chloe", -1)) {
                     nav.button({
                         "type": "img",
                         "name": "f",
@@ -287,7 +287,7 @@ room215.chatcatch = function (callback) {
         case "trio0":
             nav.killall();
             nav.bg("215_pink/trio0.jpg");
-            if (sc.checkevent("holly", -1))
+            if (sc.getEvent("holly", -1))
                 chat(18, 215);
             else
                 chat(21, 215);

@@ -88,7 +88,7 @@ room902.btnclick = function (name) {
                 
                 if (sc.getTimeline("lola").roomID === 901) {
                     nav.bg("902_girl/unlockz.jpg");
-                    if (sc.checkevent("lola", -6)) {
+                    if (sc.getEvent("lola", -6)) {
                         chat(23, 902)
                     }
                     else

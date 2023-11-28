@@ -52,7 +52,7 @@ room450.main = function () {
             navList = [451, 452, 0];
         }
         else {
-            if (!sc.checkevent("cop", 1)) {
+            if (!sc.getEvent("cop", 1)) {
                 btnList.push({
                     "type": "btn",
                     "name": "cop",
@@ -137,7 +137,7 @@ room450.btnclick = function (name) {
             char.room(460);
             break;
         case "sleep":
-            if (sc.checkevent("me", 7))
+            if (sc.getEvent("me", 7))
                 char.room(456);
             else
                 chat(14, 450);

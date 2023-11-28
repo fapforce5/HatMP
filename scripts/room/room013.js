@@ -202,61 +202,68 @@ room13.btnclick = function (name) {
             char.room(31);
             break;
         case "lola":
+            nav.button({
+                "type": "img",
+                "name": "chatbg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1001_rand/black_25.png"
+            }, g.roomID);
             sc.select("lolachat", "13_sisterRoom/icon_chatLola.png", 0);
-            sc.select("lolamassage", "13_sisterRoom/icon_massage.png", 1);
-            sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
-            sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
+            if (sc.getMission("lola", "massage").inProgress)
+                sc.select("lolamassage", "13_sisterRoom/icon_massage.png", 1);
+            //sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
+            if (sc.getMission("lola", "tord").inProgress)
+                sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
             sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
-            sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
+            sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
             break;
         case "eva":
+            nav.button({
+                "type": "img",
+                "name": "chatbg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1001_rand/black_25.png"
+            }, g.roomID);
             sc.select("evachat", "13_sisterRoom/icon_chatEva.png", 0);
-            sc.select("evamassage", "13_sisterRoom/icon_feet.png", 1);
-            sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
-            sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
+            if (sc.getMission("eva", "massage").inProgress)
+                sc.select("evamassage", "13_sisterRoom/icon_feet.png", 1);
+            //sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
+            if (sc.getMission("lola", "tord").inProgress)
+                sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
             sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
-            sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
-            sc.select("reset", "13_sisterRoom/icon_cancel.png", 5);
+            sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
             break;
+        case "clearChat":
+            nav.killbutton("chatbg");
+            nav.killbutton("lolachat");
+            nav.killbutton("evachat");
+            nav.killbutton("lolamassage");
+            nav.killbutton("evamassage");
+            nav.killbutton("spinbottle");
+            nav.killbutton("tord");
+            nav.killbutton("dick");
+            nav.killbutton("clearChat");
+            break
         case "lolachat":
-            nav.killall();
-            nav.button({
-                "type": "img",
-                "name": "lola",
-                "left": 1449,
-                "top": 260,
-                "width": 215,
-                "height": 820,
-                "image": "13_sisterRoom/13_lola_reading.png"
-            }, 13);
-            nav.button({
-                "type": "img",
-                "name": "eva",
-                "left": 760,
-                "top": 295,
-                "width": 291,
-                "height": 785,
-                "image": "13_sisterRoom/13_eva_sitting.png"
-            }, 13);
-            switch (sc.getLevel("lola")) {
+            room13.btnclick("clearChat");
+            var mtask = sc.getMission("lola", "massage").inProgress;
+            switch (sc.taskGetStep("lola", "talk")) {
                 case 0: chat(10, 13); break;
                 case 1: chat(14, 13); break;
-                case 2: chat(17, 13); break;
+                case 2: if (mtask) chat(17, 13); else chat(14, 13); break;
             }
             break;
         case "evachat":
             var ecEvaLeval = sc.getLevel("eva");
-            var ecEvaEvents = sc.checkeventall("eva");
-            var evaChatId = -1;
-            switch (ecEvaLeval) {
-                case 0:
-                    if (!ecEvaEvents.includes(0)) {
-                        sc.setevent("eva", 0);
-                        chat(44, 19);
-                    }
-                    else 
-                        chat()
-                    break;
+            switch (sc.taskGetStep("eva", "talk")) {
+                case 0: chat(44, 13); break;
+                case 1: chat()
             }
             break;
         case "lolamassage":
@@ -375,7 +382,6 @@ room13.btnclick = function (name) {
 room13.chatcatch = function (callback) {
 
     $.each(callback.split(" "), function (i, v) {
-        console.log(v);
         switch (v) {
             case "lolaDayEvent":
                 daily.set("lola");
@@ -394,7 +400,7 @@ room13.chatcatch = function (callback) {
                 sc.modLevel("lola", 53, 999);
                 break;
             case "lolaLevelfull":
-                sc.modLevel("lola", 53, 999);
+                sc.modLevel("lola", 101, 999);
                 break;
             case "evaLevelQuater":
                 sc.modLevel("eva", 26, 999);
@@ -473,7 +479,6 @@ room13.chatcatch = function (callback) {
                     "image": "13_sisterRoom/icon_finishMassage.png"
                 }, 13);
                 break;
-            
             case "massage3chance":
                 charisma.init(g.internal.charisma, "massage3chance", "lolaMassageLose", g.roomID)
                 break;
@@ -690,9 +695,27 @@ room13.chatcatch = function (callback) {
                 sc.modLevel("eva", 75, g.internal.level);
                 char.room(13);
                 break;
-            case "evaEnd":
+            case "evatalk0":
                 char.addtime(20);
-                daily.set("eva");
+                daily.set("evatalk");
+                sc.startMission("eva", "massage");
+                sc.completeMissionTask("eva", "talk", 0, true);
+                sc.modLevel("eva", 101, 0);
+                char.room(13);
+                break;
+            case "talkLola0":
+                char.addtime(20);
+                daily.set("lolatalk");
+                sc.startMission("lola", "massage");
+                sc.completeMissionTask("lola", "talk", 0, true);
+                sc.modLevel("lola", 101, 0);
+                char.room(13);
+                break;
+            case "talkLola1":
+                char.addtime(20);
+                daily.set("lolatalk");
+                sc.completeMissionTask("lola", "talk", 1, true);
+                sc.modLevel("lola", 15, 2);
                 char.room(13);
                 break;
         };
@@ -892,7 +915,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 10,
                 speaker: "lola",
-                text: "Hey big " + sc.n("el") + "! It's ok that you didn't do well in school. We're still rooting for you. " +
+                text: "Hey big guy! It's ok that you didn't do well in school. We're still rooting for you. " +
                     " I just wanted to say that I'm really proud of you. You've been working so hard lately, and it's showing. " +
                     "I can see how much you've accomplished, and it's amazing. I'm so lucky to have you as my big brother. You're " +
                     "my best friend, and I love you very much. ",
@@ -924,7 +947,7 @@ room13.chat = function (chatID) {
                 text: "Awww she just wants some love too. I love you too " + sc.n("eva") + " with all my " +
                     "heart. No boy will come between us. ",
                 button: [
-                    { chatID: -1, text: "Oh sorry. ", callback: "lolaLevelfull lolaDayEvent" },
+                    { chatID: -1, text: "Oh sorry. ", callback: "talkLola0" },
                 ]
             },
             {
@@ -950,7 +973,7 @@ room13.chat = function (chatID) {
                 text: "Welp, best buddy, ol' pal, I guess I'll have to beg your for a massage. My shoulders can " +
                     "really use it. ",
                 button: [
-                    { chatID: -1, text: "Anytime!", callback: "lolaLevelHalf lolaDayEvent" },
+                    { chatID: -1, text: "Anytime!", callback: "talkLola1" },
                 ]
             },
             {
@@ -1229,7 +1252,7 @@ room13.chat = function (chatID) {
                     "had sex with one of them. And I was very drunk, so it doesn't count. ",
                 button: [
                     { chatID: 50, text: "Well if being drunk doesn't count, then you're still a virgin ", callback: "evaLevelHalf" },
-                    { chatID: -1, text: "You're right. It doesn't count. ", callback: "evaEnd" },
+                    { chatID: -1, text: "You're right. It doesn't count. ", callback: "evatalk0" },
                 ]
             },
             {
@@ -1237,7 +1260,7 @@ room13.chat = function (chatID) {
                 speaker: "lola",
                 text: "You two are the worst! ",
                 button: [
-                    { chatID: -1, text: "We are", callback: "evaEnd" },
+                    { chatID: -1, text: "We are", callback: "evatalk0" },
                 ]
             },
             {

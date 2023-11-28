@@ -52,7 +52,7 @@ room552.btnclick = function (name) {
             break;
         case "bigguyTowel":
             nav.killbutton("bigguyTowel");
-            if (sc.checkevent("me", -9)){
+            if (sc.getEvent("me", -9)){
                 chat(3, 552);
             }
             else {
@@ -61,7 +61,7 @@ room552.btnclick = function (name) {
             break;
         case "treyvonTowel":
             nav.killbutton("treyvonTowel");
-            if (sc.checkevent("me", -9)) {
+            if (sc.getEvent("me", -9)) {
                 chat(4, 552);
             }
             else {

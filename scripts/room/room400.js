@@ -3,7 +3,7 @@ var room400 = {};
 
 room400.main = function () {
 
-    if (sc.checkevent("tiffany", -9)) {
+    if (sc.getEvent("tiffany", -9)) {
         nav.button({
             "type": "btn",
             "name": "tiffany0",

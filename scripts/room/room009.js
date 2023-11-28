@@ -377,6 +377,8 @@ room9.btnclick = function (name) {
                 "image": "9_computer/splat.png"
             }, 9);
             cl.doCum(false);
+            stats.mod("masturbate", "dick", 1);
+            //gv.mod("jackoff", 1);
             chat(5, 9);
             break;
         case "usb":

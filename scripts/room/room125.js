@@ -66,7 +66,7 @@ room125.main = function () {
             }
         }
         nav.buildnav(navList);
-        if (cl.c.chest > 2 && !sc.checkevent("kei", -1)) {
+        if (cl.c.chest > 2 && !sc.getEvent("kei", -1)) {
             char.changeMenu("hide", false, true);
             nav.killall();
             nav.bg("125_poker/t1.jpg");

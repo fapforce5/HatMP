@@ -167,7 +167,7 @@ room901.btnclick = function (name) {
             if (lolaStep < 8)
                 chat(9, 901);
             else if (lolaStep === 8) {
-                if (sc.checkevent("lola", -2))
+                if (sc.getEvent("lola", -2))
                     chat(12, 901);
                 else
                     chat(16, 901);

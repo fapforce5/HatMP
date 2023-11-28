@@ -1,9 +1,12 @@
 ﻿var cl = {};
+cl.list = new Array();
+cl.saveOutfit = new Array();
 
 cl.c = {
     leg: 0, chest: 0, cock: 0, butthole: 0.0,
     makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
-    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
+    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null,
+    accessories: null,
     tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
     necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
     fingernail: null, toenail: null,
@@ -15,12 +18,183 @@ cl.init = function () {
     cl.c = {
         leg: 0, chest: 0, cock: 0, butthole: 0.0,
         makeup: "n", lips: 0, eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
-        shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(),
+        shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null,
+        accessories: null,
         tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
         necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
         fingernail: null, toenail: null, lipstick: null,
         cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false
     };
+
+    cl.saveOutfit = [
+        { name: "Work", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+        { name: "Casual", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+        { name: "Exercise", shoes: "br", socks: "w", pants: "b", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+        { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+        { name: "Outfit 5", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+        { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "paisley", accessories: new Array(), isReg: false }
+    ];
+
+    cl.list = [
+        { type: "necklace", name: "g", display: "Mister T", img: "necklace_g.png", sex: "f", fem: 0, inv: false, daring: 2, price: 135 },
+        { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_b.png", fem: 0, sex: "f", inv: false, daring: 2, price: 180 },
+        { type: "necklace", name: "a", display: "Diamond Necklack", img: "necklace_a.png", sex: "f", inv: false, daring: 2, price: 165 },
+        { type: "necklace", name: "e", display: "Simple Choker", img: "necklace_e.png", sex: "f", inv: false, daring: 3, price: 25 },
+        { type: "necklace", name: "c", display: "Choker", img: "necklace_c.png", sex: "f", inv: false, daring: 3, price: 30 },
+        { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_s.png", sex: "f", inv: false, daring: 4, price: 35 },
+        { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
+
+        { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: 5 },
+        { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: 5 },
+        { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: false, daring: 1, price: 12 },
+        { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
+        { type: "panties", name: "w", display: "Lola's Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "missy", display: "Missy's Panties", img: "panties_missy.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "q", display: "Cum Queen Panties", img: "panties_cumQueen.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "h", display: "Cuffs Panties", img: "panties_handcuff.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "r", display: "Red Panties", img: "panties_red.png", sex: "f", inv: false, daring: 2, price: 45 },
+        { type: "panties", name: "c", display: "Cheetah Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "m", display: "Frilly Panties", img: "panties_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "cl", display: "Spankies", img: "panties_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "b", display: "Black Lowrise Panties", img: "panties_blackLowrise.png", sex: "f", inv: false, daring: 3, price: 50 },
+        { type: "panties", name: "p", display: "Pink Thong", img: "panties_pinkThong.png", sex: "f", inv: false, daring: 3, price: 95 },
+        { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
+        { type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
+
+        { type: "bra", name: "p", display: "Pink Bra", img: "bra_pink.png", sex: "f", inv: false, daring: 1, price: 40 },
+        { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "l", display: "Frilly Bra", img: "bra_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "molly", display: "Molly's Bra", img: "bra_molly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "dolly", display: "Dolly's Bra", img: "bra_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "f", display: "Purple Bra", img: "bra_fancy.png", sex: "f", inv: false, daring: 3, price: 65 },
+        { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
+
+
+        { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "pants", name: "s", display: "Black Suit Pants", img: "pants_suit.png", sex: "m", inv: false, daring: 0, price: 80 },
+        { type: "pants", name: "p", display: "Prison Pants", img: "pants_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
+        { type: "pants", name: "r", display: "Red Shorts", img: "pants_redShort.png", sex: "m", inv: false, daring: 0, price: 60 },
+        { type: "pants", name: "b", display: "Blue Shorts", img: "pants_blueShort.png", sex: "m", inv: true, daring: 0, price: 55 },
+        { type: "pants", name: "ps", display: "Pink Shorts", img: "pants_pinkshorts.png", sex: "f", inv: false, daring: 1, price: 78 },
+        { type: "pants", name: "k", display: "Office Skirt", img: "pants_skirt.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "pants", name: "d", display: "Polka Dot Dress", img: "pants_polka.png", sex: "f", inv: false, daring: 2, price: 160 },
+        { type: "pants", name: "bs", display: "Blue Skirt", img: "pants_blue.png", sex: "f", inv: false, daring: 2, price: 60 },
+        { type: "pants", name: "cl", display: "Cheer Skirt", img: "pants_cheer.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "pants", name: "v", display: "Naked Beaver Skirt", img: "pants_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "pants", name: "h", display: "Holdiay Skirt", img: "pants_holiday.png", sex: "f", inv: false, daring: 4, price: 80 },
+        { type: "pants", name: "dd", display: "Daisy Dukes", img: "pants_daisyDukes.png", sex: "f", inv: false, daring: 4, price: 160 },
+        { type: "pants", name: "co", display: "Corset Skirt", img: "pants_co.png", sex: "f", inv: false, daring: 4, price: -1 },
+
+        { type: "shirt", name: "g", display: "Gray T-Shirt", img: "shirt_tgray.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "shirt", name: "c", display: "Cock T-Shirt", img: "shirt_tcock.png", sex: "m", inv: false, daring: 0, price: 50 },
+        { type: "shirt", name: "s", display: "Suit Top", img: "shirt_suit.png", sex: "m", inv: false, daring: 0, price: 90 },
+        { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 0, price: 12 },
+        { type: "shirt", name: "j", display: "Prison Shirt", img: "shirt_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
+        { type: "shirt", name: "p", display: "I ♥ Anal T-Shirt", img: "shirt_tpink.png", sex: "f", inv: false, daring: 1, price: 50 },
+        { type: "shirt", name: "b", display: "Blouse", img: "shirt_blouse.png", sex: "f", inv: false, daring: 1, price: 30 },
+        { type: "shirt", name: "r", display: "Red Blouse", img: "shirt_redBlouse.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "shirt", name: "pt", display: "Pink Tank Top", img: "shirt_crop.png", sex: "f", inv: false, daring: 2, price: 30 },
+        { type: "shirt", name: "gg", display: "Good Girl Tank", img: "shirt_gg.png", sex: "f", inv: false, daring: 2, price: 30 },
+        { type: "shirt", name: "cl", display: "Cheerleader Top", img: "shirt_cheer.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "shirt", name: "v", display: "Naked Beaver Shirt", img: "shirt_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "shirt", name: "y", display: "Sun Top", img: "shirt_yellow.png", sex: "f", inv: false, daring: 3, price: 90 },
+        { type: "shirt", name: "k", display: "Kitty Kat", img: "shirt_kitty.png", sex: "f", inv: false, daring: 4, price: 75 },
+        { type: "shirt", name: "x", display: "X", img: "shirt_x.png", sex: "f", inv: false, daring: 4, price: 40 },
+        { type: "shirt", name: "cor", display: "Red Corset", img: "dress_cor.png", sex: "f", inv: false, daring: 4, price: -1 },
+
+
+        { type: "dress", name: "robe", display: "Cult Robe", img: "dress_robe.png", sex: "m", inv: false, daring: 0, price: -1 },
+        { type: "dress", name: "a", display: "Alice Dress", img: "dress_alice.png", sex: "f", inv: false, daring: 1, price: 90 },
+        { type: "dress", name: "u", display: "Ugly Dress", img: "dress_ugly.png", sex: "f", inv: false, daring: 1, price: 30 },
+        { type: "dress", name: "s", display: "Summer Dress", img: "dress_summer.png", sex: "f", inv: false, daring: 2, price: 90 },
+        { type: "dress", name: "nu", display: "Nurse Uniform", img: "dress_nurse.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "dress", name: "rose", display: "Pink Rose Dress", img: "dress_rose.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "dress", name: "pd", display: "Polka Dot", img: "dress_polkadot.png", sex: "f", inv: false, daring: 2, price: 47 },
+        { type: "dress", name: "p", display: "Purple Dress", img: "dress_purple.png", sex: "f", inv: false, daring: 3, price: 90 },
+        { type: "dress", name: "r", display: "Red Dress", img: "dress_red.png", sex: "f", inv: false, daring: 3, price: 180 },
+        { type: "dress", name: "rt", display: "Red Ruffle", img: "dress_RedRuffle.png", sex: "f", inv: false, daring: 3, price: 150 },
+        { type: "dress", name: "maid", display: "Maid Outfit", img: "dress_maid.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 4, price: 175 },
+        { type: "dress", name: "m", display: "Mesh Dress", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: 210 },
+
+
+        { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
+        { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
+        { type: "swimsuit", name: "r", display: "Red Swimsuit", img: "swim_red.png", sex: "f", inv: false, daring: 3, price: 140 },
+        { type: "swimsuit", name: "p", display: "Pink Swimsuit", img: "swim_pink.png", sex: "f", inv: false, daring: 4, price: 80 },
+
+        { type: "shoes", name: "w", display: "Workboots", img: "shoes_workboots.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "shoes", name: "d", display: "Dress Shoes", img: "shoes_black.png", sex: "m", inv: false, daring: 0, price: 60 },
+        { type: "shoes", name: "br", display: "Blue Running", img: "shoes_blueRun.png", sex: "m", inv: true, daring: 0, price: 75 },
+        { type: "shoes", name: "pr", display: "Pink Running", img: "shoes_pinkRun.png", sex: "f", inv: false, daring: 1, price: 120 },
+        { type: "shoes", name: "u", display: "Uggs", img: "shoes_uggs.png", sex: "f", inv: false, daring: 1, price: 169 },
+        { type: "shoes", name: "cl", display: "Cheer Shoes", img: "shoes_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "shoes", name: "fs", display: "Red Strappy Flats", img: "shoes_redflats.png", sex: "f", inv: false, daring: 2, price: 120 },
+        { type: "shoes", name: "fb", display: "Black Flats", img: "shoes_flatBlack.png", sex: "f", inv: false, daring: 2, price: 90 },
+        { type: "shoes", name: "fl", display: "Blue Flats", img: "shoes_flatBlue.png", sex: "f", inv: false, daring: 2, price: 90 },
+        { type: "shoes", name: "v", display: "Naked Beaver Shoes", img: "shoes_beaver.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "shoes", name: "nu", display: "Nurses", img: "shoes_nurse.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "shoes", name: "hr", display: "Red Heels", img: "shoes_redheels.png", sex: "f", inv: false, daring: 3, price: 165 },
+        { type: "shoes", name: "ph", display: "Pink Heels", img: "shoes_pinkheels.png", sex: "f", inv: false, daring: 3, price: 165 },
+        { type: "shoes", name: "bh", display: "Black Heels", img: "shoes_blackheels.png", sex: "f", inv: false, daring: 3, price: 145 },
+        { type: "shoes", name: "bb", display: "Black Boots", img: "shoes_blackboots.png", sex: "f", inv: false, daring: 4, price: 127 },
+
+        { type: "socks", name: "w", display: "Sweat Socks", img: "socks_white.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "socks", name: "b", display: "Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
+        { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 1, price: 36 },
+        { type: "socks", name: "s", display: "Little White Socks", img: "socks_shortWhite.png", sex: "f", inv: false, daring: 1, price: 24 },
+        { type: "socks", name: "cl", display: "Cheer Socks", img: "sock_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 2, price: 48 },
+        { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 3, price: 75 },
+
+        { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
+        { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
+        { type: "accessories", name: "pompom", display: "Pom-pom", img: "pompom.png", sex: "f", inv: false, daring: 3, price: -1 },
+
+        { type: "nipple", name: "n_r", display: "Nipple Ring", img: "nipple_ring.png", sex: "f", inv: false, daring: 1, price: 20 },
+        { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
+        { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
+
+        { type: "ear", name: "e_h", display: "Heart Earring", img: "ear_heart.png", sex: "f", inv: false, daring: 2, price: 50 },
+        { type: "ear", name: "e_l", display: "Loop Earring", img: "ear_loop.png", sex: "f", inv: false, daring: 4, price: 10 },
+        { type: "ear", name: "e_p", display: "Pearl Earring", img: "ear_pearl.png", sex: "f", inv: false, daring: 3, price: 120 },
+        { type: "ear", name: "e_pd", display: "Pink Diamond Earring", img: "ear_pinkdiamond.png", sex: "f", inv: false, daring: 4, price: 50 },
+        { type: "ear", name: "e_d", display: "Diamond Earring", img: "ear_diamond.png", sex: "f", inv: false, daring: 4, price: 480 },
+        { type: "ear", name: "e_da", display: "Dangly Earring", img: "ear_dangle.png", sex: "f", inv: false, daring: 4, price: 250 },
+
+        { type: "nose", name: "n_1", display: "Septum Nosering", img: "nose_1.png", sex: "f", inv: false, daring: 4, price: 60 },
+        { type: "nose", name: "n_d", display: "Dot Nosering", img: "nose_dot.png", sex: "f", inv: false, daring: 3, price: 20 },
+        { type: "nose", name: "n_b", display: "Bull", img: "nose_bull.png", sex: "f", inv: false, daring: 4, price: 80 },
+        { type: "nose", name: "n_r", display: "Nosering", img: "nose_ring.png", sex: "f", inv: false, daring: 4, price: 30 },
+
+        { type: "belly", name: "b_b", display: "Silver Belly Ring", img: "belly_barb.png", sex: "f", inv: false, daring: 2, price: 30 },
+        { type: "belly", name: "b_d", display: "Diamond Belly Ring", img: "belly_dangle.png", sex: "f", inv: false, daring: 3, price: 480 },
+        { type: "belly", name: "b_s", display: "Sissy Belly Ring", img: "belly_sissy.png", sex: "f", inv: false, daring: 4, price: 120 },
+
+        { type: "pj", name: "paisley", display: "Boy Pjs", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "pj", name: "gown", display: "Night Gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
+
+        { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: -1 },
+        { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "chastity", name: "pinkx2", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "chastity", name: "metal", display: "Metal Cage", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
+
+        { type: "buttplug", name: "s", display: "Small Plug", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
+        { type: "buttplug", name: "n", display: "Medium Plug", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },
+        { type: "buttplug", name: "l", display: "Large Plug", img: "plug_large.png", sex: "f", inv: false, daring: 3, price: 120 },
+        { type: "buttplug", name: "h", display: "Heart Plug", img: "plug_heart.png", sex: "f", inv: false, daring: 1, price: 120 },
+        { type: "buttplug", name: "r", display: "Red Plug", img: "plug_red.png", sex: "f", inv: false, daring: 1, price: 100 },
+        { type: "buttplug", name: "b", display: "Blue Plug", img: "plug_blue.png", sex: "f", inv: false, daring: 1, price: 100 },
+        { type: "buttplug", name: "g", display: "Green Plug", img: "plug_green.png", sex: "f", inv: false, daring: 1, price: 100 },
+        { type: "buttplug", name: "v", display: "Vibrator", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
+
+        { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
+    ];
 };
 
 cl.set = [
@@ -56,170 +230,10 @@ cl.cTemp = {
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null
 };
 
-cl.list = [
-    { type: "necklace", name: "g", display: "Mister T", img: "necklace_g.png", sex: "f", fem: 0, inv: false, daring: 2, price: 135 },
-    { type: "necklace", name: "b", display: "Diamond Necklack", img: "necklace_b.png", fem: 0, sex: "f", inv: false, daring: 2, price: 180 },
-    { type: "necklace", name: "a", display: "Diamond Necklack", img: "necklace_a.png", sex: "f", inv: false, daring: 2, price: 165 },
-    { type: "necklace", name: "e", display: "Simple Choker", img: "necklace_e.png", sex: "f", inv: false, daring: 3, price: 25 },
-    { type: "necklace", name: "c", display: "Choker", img: "necklace_c.png", sex: "f", inv: false, daring: 3, price: 30 },
-    { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_s.png", sex: "f", inv: false, daring: 4, price: 35 },
-    { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
-
-    { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: 5 },
-    { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: 5 },
-    { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: true, daring: 1, price: 12 },
-    { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
-    { type: "panties", name: "w", display: "Lola's Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "missy", display: "Missy's Panties", img: "panties_missy.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "q", display: "Cum Queen Panties", img: "panties_cumQueen.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "h", display: "Cuffs Panties", img: "panties_handcuff.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "r", display: "Red Panties", img: "panties_red.png", sex: "f", inv: false, daring: 2, price: 45 },
-    { type: "panties", name: "c", display: "Cheetah Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "m", display: "Frilly Panties", img: "panties_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "cl", display: "Spankies", img: "panties_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "panties", name: "b", display: "Black Lowrise Panties", img: "panties_blackLowrise.png", sex: "f", inv: false, daring: 3, price: 50 },
-    { type: "panties", name: "p", display: "Pink Thong", img: "panties_pinkThong.png", sex: "f", inv: false, daring: 3, price: 95 },
-    { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
-    { type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
-
-    { type: "bra", name: "p", display: "Pink Bra", img: "bra_pink.png", sex: "f", inv: false, daring: 1, price: 40 },
-    { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "bra", name: "l", display: "Frilly Bra", img: "bra_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "bra", name: "molly", display: "Molly's Bra", img: "bra_molly.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "bra", name: "dolly", display: "Dolly's Bra", img: "bra_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "bra", name: "f", display: "Purple Bra", img: "bra_fancy.png", sex: "f", inv: false, daring: 3, price: 65 },
-    { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
-
-
-    { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "pants", name: "s", display: "Black Suit Pants", img: "pants_suit.png", sex: "m", inv: false, daring: 0, price: 80 },
-    { type: "pants", name: "p", display: "Prison Pants", img: "pants_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
-    { type: "pants", name: "r", display: "Red Shorts", img: "pants_redShort.png", sex: "m", inv: false, daring: 0, price: 60 },
-    { type: "pants", name: "b", display: "Blue Shorts", img: "pants_blueShort.png", sex: "m", inv: false, daring: 0, price: 55 },
-    { type: "pants", name: "ps", display: "Pink Shorts", img: "pants_pinkshorts.png", sex: "f", inv: false, daring: 1, price: 78 },
-    { type: "pants", name: "k", display: "Office Skirt", img: "pants_skirt.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "pants", name: "d", display: "Polka Dot Dress", img: "pants_polka.png", sex: "f", inv: false, daring: 2, price: 160 },
-    { type: "pants", name: "bs", display: "Blue Skirt", img: "pants_blue.png", sex: "f", inv: false, daring: 2, price: 60 },
-    { type: "pants", name: "cl", display: "Cheer Skirt", img: "pants_cheer.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "pants", name: "v", display: "Naked Beaver Skirt", img: "pants_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "pants", name: "h", display: "Holdiay Skirt", img: "pants_holiday.png", sex: "f", inv: false, daring: 4, price: 80 },
-    { type: "pants", name: "dd", display: "Daisy Dukes", img: "pants_daisyDukes.png", sex: "f", inv: false, daring: 4, price: 160 },
-    { type: "pants", name: "co", display: "Corset Skirt", img: "pants_co.png", sex: "f", inv: false, daring: 4, price: -1 },
-
-    { type: "shirt", name: "g", display: "Gray T-Shirt", img: "shirt_tgray.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "shirt", name: "c", display: "Cock T-Shirt", img: "shirt_tcock.png", sex: "m", inv: true, daring: 0, price: 50 },
-    { type: "shirt", name: "s", display: "Suit Top", img: "shirt_suit.png", sex: "m", inv: false, daring: 0, price: 90 },
-    { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 0, price: 12 },
-    { type: "shirt", name: "j", display: "Prison Shirt", img: "shirt_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
-    { type: "shirt", name: "p", display: "I ♥ Anal T-Shirt", img: "shirt_tpink.png", sex: "f", inv: true, daring: 1, price: 50 },
-    { type: "shirt", name: "b", display: "Blouse", img: "shirt_blouse.png", sex: "f", inv: false, daring: 1, price: 30 },
-    { type: "shirt", name: "r", display: "Red Blouse", img: "shirt_redBlouse.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "shirt", name: "pt", display: "Pink Tank Top", img: "shirt_crop.png", sex: "f", inv: false, daring: 2, price: 30 },
-    { type: "shirt", name: "gg", display: "Good Girl Tank", img: "shirt_gg.png", sex: "f", inv: false, daring: 2, price: 30 },
-    { type: "shirt", name: "cl", display: "Cheerleader Top", img: "shirt_cheer.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "shirt", name: "v", display: "Naked Beaver Shirt", img: "shirt_beaver.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "shirt", name: "y", display: "Sun Top", img: "shirt_yellow.png", sex: "f", inv: false, daring: 3, price: 90 },
-    { type: "shirt", name: "k", display: "Kitty Kat", img: "shirt_kitty.png", sex: "f", inv: false, daring: 4, price: 75 },
-    { type: "shirt", name: "x", display: "X", img: "shirt_x.png", sex: "f", inv: false, daring: 4, price: 40 },
-    { type: "shirt", name: "cor", display: "Red Corset", img: "dress_cor.png", sex: "f", inv: false, daring: 4, price: -1 },
-
-
-    { type: "dress", name: "robe", display: "Cult Robe", img: "dress_robe.png", sex: "m", inv: false, daring: 0, price: -1 },
-    { type: "dress", name: "a", display: "Alice Dress", img: "dress_alice.png", sex: "f", inv: false, daring: 1, price: 90 },
-    { type: "dress", name: "u", display: "Ugly Dress", img: "dress_ugly.png", sex: "f", inv: false, daring: 1, price: 30 },
-    { type: "dress", name: "s", display: "Summer Dress", img: "dress_summer.png", sex: "f", inv: false, daring: 2, price: 90 },
-    { type: "dress", name: "nu", display: "Nurse Uniform", img: "dress_nurse.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "dress", name: "rose", display: "Pink Rose Dress", img: "dress_rose.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "dress", name: "pd", display: "Polka Dot", img: "dress_polkadot.png", sex: "f", inv: false, daring: 2, price: 47 },
-    { type: "dress", name: "p", display: "Purple Dress", img: "dress_purple.png", sex: "f", inv: false, daring: 3, price: 90 },
-    { type: "dress", name: "r", display: "Red Dress", img: "dress_red.png", sex: "f", inv: false, daring: 3, price: 180 },
-    { type: "dress", name: "rt", display: "Red Ruffle", img: "dress_RedRuffle.png", sex: "f", inv: false, daring: 3, price: 150 },
-    { type: "dress", name: "maid", display: "Maid Outfit", img: "dress_maid.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 4, price: 175 },
-    { type: "dress", name: "m", display: "Mesh Dress", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: 210 },
-    
-    
-    { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
-    { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
-    { type: "swimsuit", name: "r", display: "Red Swimsuit", img: "swim_red.png", sex: "f", inv: false, daring: 3, price: 140 },
-    { type: "swimsuit", name: "p", display: "Pink Swimsuit", img: "swim_pink.png", sex: "f", inv: false, daring: 4, price: 80 },
-
-    { type: "shoes", name: "w", display: "Workboots", img: "shoes_workboots.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "shoes", name: "d", display: "Dress Shoes", img: "shoes_black.png", sex: "m", inv: false, daring: 0, price: 60 },
-    { type: "shoes", name: "br", display: "Blue Running", img: "shoes_blueRun.png", sex: "m", inv: false, daring: 0, price: 75 },
-    { type: "shoes", name: "pr", display: "Pink Running", img: "shoes_pinkRun.png", sex: "f", inv: false, daring: 1, price: 120 },
-    { type: "shoes", name: "u", display: "Uggs", img: "shoes_uggs.png", sex: "f", inv: false, daring: 1, price: 169 },
-    { type: "shoes", name: "cl", display: "Cheer Shoes", img: "shoes_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "shoes", name: "fs", display: "Red Strappy Flats", img: "shoes_redflats.png", sex: "f", inv: false, daring: 2, price: 120 },
-    { type: "shoes", name: "fb", display: "Black Flats", img: "shoes_flatBlack.png", sex: "f", inv: false, daring: 2, price: 90 },
-    { type: "shoes", name: "fl", display: "Blue Flats", img: "shoes_flatBlue.png", sex: "f", inv: false, daring: 2, price: 90 },
-    { type: "shoes", name: "v", display: "Naked Beaver Shoes", img: "shoes_beaver.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "shoes", name: "nu", display: "Nurses", img: "shoes_nurse.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "shoes", name: "hr", display: "Red Heels", img: "shoes_redheels.png", sex: "f", inv: false, daring: 3, price: 165 },
-    { type: "shoes", name: "ph", display: "Pink Heels", img: "shoes_pinkheels.png", sex: "f", inv: false, daring: 3, price: 165 },
-    { type: "shoes", name: "bh", display: "Black Heels", img: "shoes_blackheels.png", sex: "f", inv: false, daring: 3, price: 145 },
-    { type: "shoes", name: "bb", display: "Black Boots", img: "shoes_blackboots.png", sex: "f", inv: false, daring: 4, price: 127 },
-
-    { type: "socks", name: "w", display: "Sweat Socks", img: "socks_white.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "socks", name: "b", display: "Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
-    { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 1, price: 36 },
-    { type: "socks", name: "s", display: "Little White Socks", img: "socks_shortWhite.png", sex: "f", inv: false, daring: 1, price: 24 },
-    { type: "socks", name: "cl", display: "Cheer Socks", img: "sock_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 2, price: 48 },
-    { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 3, price: 75 },
-
-    { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
-    { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
-    { type: "accessories", name: "pompom", display: "Pom-pom", img: "pompom.png", sex: "f", inv: false, daring: 3, price: -1 },
-
-    { type: "nipple", name: "n_r", display: "Nipple Ring", img: "nipple_ring.png", sex: "f", inv: false, daring: 1, price: 20 },
-    { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
-    { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
-
-    { type: "ear", name: "e_h", display: "Heart Earring", img: "ear_heart.png", sex: "f", inv: false, daring: 2, price: 50 },
-    { type: "ear", name: "e_l", display: "Loop Earring", img: "ear_loop.png", sex: "f", inv: false, daring: 4, price: 10 },
-    { type: "ear", name: "e_p", display: "Pearl Earring", img: "ear_pearl.png", sex: "f", inv: false, daring: 3, price: 120 },
-    { type: "ear", name: "e_pd", display: "Pink Diamond Earring", img: "ear_pinkdiamond.png", sex: "f", inv: false, daring: 4, price: 50 },
-    { type: "ear", name: "e_d", display: "Diamond Earring", img: "ear_diamond.png", sex: "f", inv: false, daring: 4, price: 480 },
-    { type: "ear", name: "e_da", display: "Dangly Earring", img: "ear_dangle.png", sex: "f", inv: false, daring: 4, price: 250 },
-
-    { type: "nose", name: "n_1", display: "Septum Nosering", img: "nose_1.png", sex: "f", inv: false, daring: 4, price: 60 },
-    { type: "nose", name: "n_d", display: "Dot Nosering", img: "nose_dot.png", sex: "f", inv: false, daring: 3, price: 20 },
-    { type: "nose", name: "n_b", display: "Bull", img: "nose_bull.png", sex: "f", inv: false, daring: 4, price: 80 },
-    { type: "nose", name: "n_r", display: "Nosering", img: "nose_ring.png", sex: "f", inv: false, daring: 4, price: 30 },
-
-    { type: "belly", name: "b_b", display: "Silver Belly Ring", img: "belly_barb.png", sex: "f", inv: false, daring: 2, price: 30 },
-    { type: "belly", name: "b_d", display: "Diamond Belly Ring", img: "belly_dangle.png", sex: "f", inv: false, daring: 3, price: 480 },
-    { type: "belly", name: "b_s", display: "Sissy Belly Ring", img: "belly_sissy.png", sex: "f", inv: false, daring: 4, price: 120 },
-
-    { type: "pj", name: "paisley", display: "Boy Pjs", img: "pj_paisley.png", sex: "m", inv: true, daring: 0, price: -1 },
-    { type: "pj", name: "gown", display: "Night Gown", img: "pj_gown.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "pj", name: "b", display: "Black Gown", img: "pj_black.png", sex: "f", inv: false, daring: 3, price: -1 },
-
-    { type: "chastity", name: "cage", display: "Cage", img: "chastity_cage.png", sex: "m", inv: false, daring: 2, price: -1 },
-    { type: "chastity", name: "pink", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "chastity", name: "pinkx2", display: "CB-3000", img: "chastity_pink.png", sex: "f", inv: false, daring: 3, price: -1 },
-    { type: "chastity", name: "metal", display: "Metal Cage", img: "chastity_metal.png", sex: "f", inv: false, daring: 2, price: -1 },
-
-    { type: "buttplug", name: "s", display: "Small Plug", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: 30 },
-    { type: "buttplug", name: "n", display: "Medium Plug", img: "plug_medium.png", sex: "f", inv: false, daring: 2, price: 80 },
-    { type: "buttplug", name: "l", display: "Large Plug", img: "plug_large.png", sex: "f", inv: false, daring: 3, price: 120 },
-    { type: "buttplug", name: "h", display: "Heart Plug", img: "plug_heart.png", sex: "f", inv: false, daring: 1, price: 120 },
-    { type: "buttplug", name: "r", display: "Red Plug", img: "plug_red.png", sex: "f", inv: false, daring: 1, price: 100 },
-    { type: "buttplug", name: "b", display: "Blue Plug", img: "plug_blue.png", sex: "f", inv: false, daring: 1, price: 100 },
-    { type: "buttplug", name: "g", display: "Green Plug", img: "plug_green.png", sex: "f", inv: false, daring: 1, price: 100 },
-    { type: "buttplug", name: "v", display: "Vibrator", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
-
-    { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
-    { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
-];
 
 cl.pantiesTxt = function () {
     if (cl.c.panties !== null)
-        return cl.where("panties", cl.c.panties).sex === "f" ? "panties" : "underwear";
+        return cl.list[cl.where("panties", cl.c.panties)].sex === "f" ? "panties" : "underwear";
     return "none";
 };
 
@@ -396,41 +410,19 @@ cl.save = function () {
 
 cl.load = function (ra) {
     var i, j;
+    cl.init();
     for (i = 0; i < cl.list.length; i++)
         cl.list[i].inv = false;
+
     for (i = 0; i < ra.list.length; i++) {
-        for (j = 0; j < cl.list.length; j++) {
-            if (ra.list[i].type === cl.list[j].type && ra.list[i].name === cl.list[j].name) {
-                cl.list[j].inv = true;
-                j = 100000;
-            }
-        }
+        j = cl.where(ra.list[i].type, ra.list[i].name);
+        if (j !== null)
+            cl.list[j].inv = true;
     }
     cl.c = $.extend(true, {}, ra.current);
-    //cl.c.lastHairCut = new Date(cl.c.lastHairCut);
+
     cl.saveOutfit = $.extend(true, {}, ra.saveOutfit);
 
-    if (!("lipstick" in cl.c)) 
-        cl.c.lipstick = null;
-
-    if (cl.c.butthole < 0)
-        cl.c.butthole = 0;
-
-    if (isNaN(cl.c.lips)) {
-        if (cl.c.lips.includes("red"))
-            cl.c.lipstick = "red";
-        else if (cl.c.lips.includes("pink"))
-            cl.c.lipstick = "pink";
-        else if (cl.c.lips.includes("purple"))
-            cl.c.lipstick = "purple";
-
-        if (cl.c.lips.includes("big"))
-            cl.c.lips = 1;
-        else if (cl.c.lips.includes("sb"))
-            cl.c.lips = 2;
-        else
-            cl.c.lips = 0;
-    }
 };
 
 
@@ -447,8 +439,7 @@ cl.wearSavedOutfit = function (entry) {
     cl.c.shoes = cl.saveOutfit[entry].shoes;
     cl.c.socks = cl.saveOutfit[entry].socks;
     cl.c.pants = cl.saveOutfit[entry].pants;
-    if (cl.hasClothing("panties", cl.saveOutfit[entry].panties))
-        cl.c.panties = cl.saveOutfit[entry].panties;
+    cl.c.panties = cl.saveOutfit[entry].panties;
     cl.c.bra = cl.saveOutfit[entry].bra;
     cl.c.shirt = cl.saveOutfit[entry].shirt;
     cl.c.dress = cl.saveOutfit[entry].dress;
@@ -482,13 +473,15 @@ cl.hasClothingType = function (type) {
     return false;
 };
 
-cl.saveOutfit = [
-    { name: "Casual", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-    { name: "Outfit 2", shoes: null, socks: null, pants: null, panties: "u", bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-    { name: "Outfit 3", shoes: null, socks: null, pants: null, panties: "u", bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-    { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: "u", bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-    { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "paisley", accessories: new Array(), isReg: false }
-];
+
+cl.hasClothingTypeSex = function (type, sex) {
+    for (i = 0; i < cl.list.length; i++) {
+        if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].inv)
+            return true;
+    }
+    return false;
+};
+
 
 cl.gimmieAll = function () {
     var i;
@@ -570,6 +563,24 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("Dress socks");
             if (cl.c.shoes !== "d")
                 missingClothing.push("Dress shoes");
+            break;
+        case "suitwithpanties":
+            var suitPanties = cl.where("panties", cl.c.panties);
+            if (cl.c.shirt !== "s")
+                missingClothing.push("Button up shirt");
+            if (cl.c.pants !== "s")
+                missingClothing.push("Black slacks");
+            if (cl.c.socks !== "b")
+                missingClothing.push("Dress socks");
+            if (cl.c.shoes !== "d")
+                missingClothing.push("Dress shoes");
+            if (suitPanties !== null) {
+                if (cl.list[suitPanties].sex !== "f")
+                    missingClothing.push("Pretty panties");
+            }
+            else {
+                missingClothing.push("Pretty panties")
+            }
             break;
     }
    

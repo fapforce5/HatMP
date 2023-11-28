@@ -178,11 +178,12 @@ room2.chat = function(chatID){
         {
             chatID: 0,
             speaker: "thinking",
-            text: "Thank you for playing my little game. If you get stuck or need help click the 'HELP' button in your phone. " +
-                "It will open a new tab that takes you to my website and walk through at " +
-                "<a href='http://fapforce5.com' target='_blank'>http://fapforce5.com</a>. ",
+            text: "This is just a sneak peek at all the changes I'm making to this game. Many of the paths are still in progress " +
+                "and aren't ready yet. The next public release won't be ready until around MARCH 2024 as I have a lot to put " +
+                "togther and update. Patreon Supporters will have access to work in progress releases each month and access to " +
+                "polls to decide the direction of the game. ",
             button: [
-                { chatID: -1, text: "CONTINUE", callback: "proceed" }
+                { chatID: -1, text: "NEXT PUBLIC RELEASE MARCH 2024 - ish", callback: "proceed" }
             ]
         },
     ];

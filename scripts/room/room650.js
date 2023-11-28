@@ -70,7 +70,7 @@ room650.btnclick = function (name) {
                     chat(2, 650);
                 }
             }
-            else if (sc.checkevent("tiffany", -8)) {
+            else if (sc.getEvent("tiffany", -8)) {
                 chat(8, 650);
             }
             else if (gv.get("oncase") === "shopping") {

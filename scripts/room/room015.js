@@ -5,15 +5,25 @@ room15.main = function () {
     var hour = g.gethourdecimal();
 
     if (sc.getTimeline("landlord").roomID === 15) {
+        nav.bg("15_kitchen/butt.jpg");
         btnList.push({
             "type": "btn",
-            "name": "landlord",
-            "left": 498,
-            "top": 0,
-            "width": 1196,
-            "height": 1080,
-            "image": "15_kitchen/landlord.png"
+            "name": "slap",
+            "left": 1164,
+            "top": 643,
+            "width": 263,
+            "height": 231,
+            "image": "15_kitchen/slap.png"
         });
+        //btnList.push({
+        //    "type": "btn",
+        //    "name": "landlord",
+        //    "left": 498,
+        //    "top": 0,
+        //    "width": 1196,
+        //    "height": 1080,
+        //    "image": "15_kitchen/landlord.png"
+        //});
     }
     else {
         if (sc.getTimeline("landlord").roomID === 14 && hour.between(7, 22)) {
@@ -154,6 +164,14 @@ room15.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "slap":
+            nav.killall();
+            nav.bg("15_kitchen/butt1.jpg");
+            g.roomTimeout = setTimeout(function () {
+                nav.bg("15_kitchen/butt_angry.jpg");
+                chat(11, 15);
+            }, 1500);
+            break;
         default:
             break;
     }
@@ -229,6 +247,10 @@ room15.chatcatch = function (callback) {
             char.addtime(72);
             gv.mod("giveOralFemale", 1);
             char.room(15);
+            break;
+        case "slap1":
+            g.pass = "kitchen";
+            char.room(21);
             break;
         default:
             break;
@@ -316,6 +338,15 @@ room15.chat = function (chatID) {
             text: "Wow! You sure know how to eat a pussy. Thanks honey. Now run along. ",
             button: [
                 { chatID: -1, text: "You're welcome " + sc.n("landlord") + "! ", callback: "ll8" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "landlord",
+            text: "So you like to slap your " + sc.n("landlord") + " on her ass? Well I like to smack asses too! " +
+                "Come with me to my room. Now! ",
+            button: [
+                { chatID: -1, text: "Yes! ", callback: "slap1" },
             ]
         },
     ];

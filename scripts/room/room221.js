@@ -1,29 +1,40 @@
 ﻿//Reciption
 var room221 = {};
 room221.main = function () {
-    var customerList = [
-        { id: 0, n: "!stoner", bg: "z_stoner.jpg", btnclick: "zstoner" },
-        { id: 0, n: "!cheezy", bg: "z_cheezy.jpg", btnclick: "zcheezy" },
-        { id: 0, n: "!nips", bg: "z_nips.jpg", btnclick: "znips" },
-        { id: 0, n: "!lep", bg: "z_lep.jpg", btnclick: "zlep" },
-        { id: 0, n: "!bitch", bg: "z_bitch.jpg", btnclick: "zbitch" },
-        { id: 0, n: "!twat", bg: "z_twat.jpg", btnclick: "ztwat" },
-        { id: 0, n: "jeffery", bg: "z_jeffery.jpg", btnclick: "zjeffery" },
-        
-        
-        
-    ];
-    g.pass = 10;
+    var rc, i;
     g.pass = {
         t: 10,
-        events:
-            [
-                { t: 10, e: "jeffery0", c: "That weird guy" },
-                { t: 11, e: null, c: "Nothing" },
-                { t: 12, e: null, c: "Nothing" }
-            ]
+        events: new Array()
     };
-    if (missy.st[7].c === 0) {
+    var customerList = [
+        { n: "!stoner", bg: "z_stoner.jpg", btnclick: "zstoner" },
+        { n: "!cheezy", bg: "z_cheezy.jpg", btnclick: "zcheezy" },
+        { n: "!nips", bg: "z_nips.jpg", btnclick: "znips" },
+        { n: "!lep", bg: "z_lep.jpg", btnclick: "zlep" },
+        { n: "!bitch", bg: "z_bitch.jpg", btnclick: "zbitch" },
+        { n: "!twat", bg: "z_twat.jpg", btnclick: "ztwat" },
+        { n: "jeffery", bg: "z_jeffery.jpg", btnclick: "zjeffery" },
+    ];
+
+    for (i = 10; i < 13; i++) {
+        var thisEvent = g.rand(0, 3);
+        if (thisEvent === 0) { //no one comes in
+            g.pass.events.push({ t: i, pcDisplay: "Nothing", n: "Nothing", bg: "work0.jpg", btnclick: "nothing" });
+        }
+        else if (thisEvent === 1) { //right person comes in
+            rc = g.rand(0, customerList.length);
+            g.pass.events.push({ t: i, pcDisplay: "Nothing", n: customerList[rc].n, bg: customerList[rc].bg, btnclick: customerList[rc].btnclick });
+            customerList.splice(rc, 1);
+        }
+        else {//wrong person comes in
+            rc = g.rand(0, customerList.length);
+            g.pass.events.push({ t: i, pcDisplay: sc.n(customerList[rc].n), n: customerList[rc].n, bg: customerList[rc].bg, btnclick: customerList[rc].btnclick });
+            customerList.splice(rc, 1);
+        }
+    }
+
+    
+    if (missy.get("jobWorkReciption") === 0) {
         chat(0, 221);
     }
     else {
@@ -118,7 +129,7 @@ room221.btnclick = function (name) {
                     top: 350 + (i * 50),
                     font: 30,
                     hex: "#000000",
-                    text: v.t + ":00 - " + v.c
+                    text: v.t + ":00 - " + v.pcDisplay
                 });
             });
             break;
@@ -155,25 +166,21 @@ room221.btnclick = function (name) {
             room221.btnclick("drawBG");
             break;
         case "passtime":
-            if (g.pass.t > 11) {
+            nav.killall();
+            if (g.pass.events.length === 0) {
                 chat(4, 221);
             }
             else {
-                //replace this with checking g.pass.events (add random uninvited visits)
-                if (Math.floor(Math.random() * 3) === 0) {
-                    char.settime(g.pass.t, 17);
-                    g.pass.t += 1;
-                    //if jeffery - can smell your panties, offers you cash for them
-                    nav.bg("221_recip/cust_jeff0.jpg");
-                    chat(6, 221);
+                nav.bg("221_recip/" + g.pass.events[0].bg);
+                char.settime(g.pass.t, 0);
+                
+                if (g.pass.events[0].n === "Nothing") {
+                    chat(22, 221);
                 }
                 else {
-                    //sissy.mod("intel", -2);
-                    g.popUpNotice("dumber - add this");
-                    char.settime(g.pass.t, 17);
-                    g.pass.t += 1;
-                    chat(999, 221);
+                    room221.btnclick(g.pass.events[0].btnclick);
                 }
+
             }
             break;
         case "zstoner":
@@ -218,7 +225,12 @@ room221.chatcatch = function (callback) {
         case "e1":
         case "e2":
         case "e3":
+        case "blank":
             nav.bg("221_recip/" + callback + ".jpg");
+            break;
+        case "fuckup":
+            nav.bg("221_recip/" + callback + ".jpg");
+            missy.mod("mood", -15);
             break;
         case "start":
             nav.bg("221_recip/work0.jpg");
@@ -239,6 +251,29 @@ room221.chatcatch = function (callback) {
             break;
         case "resetbg":
             nav.bg("221_recip/work0.jpg");
+            break;
+        case "appIn":
+            if (g.pass.events[0].pcDisplay === "Nothing") {
+                chat(400, 221);
+            }
+            else {
+                levels.mod("int", 15, 999);
+                chat(401, 221);
+            }
+            break;
+        case "appNo":
+            if (g.pass.events[0].pcDisplay === "Nothing") {
+                levels.mod("int", 15, 999);
+                chat(500, 221);
+            }
+            else
+                chat(501, 221);
+            break;
+        case "reset":
+            g.pass.t++;
+            if (g.pass.events.length > 0)
+                g.pass.events.splice(0, 1);
+            room221.chatcatch("start");
             break;
         default:
             break;
@@ -271,6 +306,46 @@ room221.chat = function (chatID) {
             text: chatLine[Math.floor(Math.random() * chatLine.length)],
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        };
+    }
+    else if (chatID === 500) {
+        return {
+            chatID: 500,
+            speaker: g.pass.events[0].n,
+            text: "oh. Crap. That's right. It's for later. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        };
+    }
+    else if (chatID === 501) {
+        return {
+            chatID: 500,
+            speaker: g.pass.events[0].n,
+            text: "No. I have an appointment now. Missy! ",
+            button: [
+                { chatID: 23, text: "No, don't yell.. ", callback: "fuckup" }
+            ]
+        };
+    }
+    else if (chatID === 400) {
+        return {
+            chatID: 500,
+            speaker: g.pass.events[0].n,
+            text: "Hehehe thanks! ",
+            button: [
+                { chatID: 25, text: "Sure", callback: "fuckup" }
+            ]
+        };
+    }
+    else if (chatID === 401) {
+        return {
+            chatID: 500,
+            speaker: g.pass.events[0].n,
+            text: "Thanks! ",
+            button: [
+                { chatID: -1, text: "Sure", callback: "reset" }
             ]
         };
     }
@@ -340,8 +415,8 @@ room221.chat = function (chatID) {
                 text: "Oh, yeah. Someone stole my stuff, if you know what I mean. I need to get it back or I'm in big trouble. " +
                     "So uhhh can you help me? ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -350,8 +425,8 @@ room221.chat = function (chatID) {
                 text: "Hi. I need to see Missy. I need to find my favorite brand of cheezy poofs and Missy is the only person " +
                     "that can help. Please let me see her. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -359,8 +434,8 @@ room221.chat = function (chatID) {
                 speaker: "!nips",
                 text: "I cheated on my husband.. again. I need Missy to help make sure he doens't find out. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -369,8 +444,8 @@ room221.chat = function (chatID) {
                 text: "Khazâd! Amân! Someone has stolen my sword! I must get it back, post haste! A friend " +
                     "needs it to fight back the hordes of orcs at the Renaissance fair!",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -395,8 +470,8 @@ room221.chat = function (chatID) {
                 speaker: "!bitch",
                 text: "Missy's going to have her hands full with your 2 brain cells. Just let me in. I'm tired of talking to you. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -405,8 +480,8 @@ room221.chat = function (chatID) {
                 text: "I see Missy's little project is now as stupid as she looks. Great work advertising you only have 2 brain. " +
                     "cells. Now let me in. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -414,8 +489,8 @@ room221.chat = function (chatID) {
                 speaker: "!twat",
                 text: "I need to talk to Missy right now. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -423,8 +498,8 @@ room221.chat = function (chatID) {
                 speaker: "jeffery",
                 text: "I have a meeting with Missy if you don't mind letting me in. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -450,8 +525,8 @@ room221.chat = function (chatID) {
                     "Oh no. Don't tell me. I already got in trouble once for trying to take her panties. Keep them on. You and " +
                     "I are going to be best friends! Anyway I have a meeting with Missy. ",
                 button: [
-                    { chatID: -1, text: "Sure. Head on in. ", callback: "" },
-                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "" },
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
                 ]
             },
             {
@@ -473,18 +548,38 @@ room221.chat = function (chatID) {
                     { chatID: -1, text: "No. I'm not giving you my panties. ", callback: "" },
                 ]
             },
-
-
-
-
-
             {
-                chatID: 6,
-                speaker: "jeffery",
-                text: "Oh gross. I can smell male's underwear. I'm here to see Missy. ",
+                chatID: 22,
+                speaker: "thinking",
+                text: "So dead in here. I'm so bored.",
                 button: [
-                    { chatID: -1, text: "yes come in (if not on sch then trouble)", callback: "resetbg" },
-                    { chatID: -1, text: "no go away (if on schedule you get in trouble)", callback: "resetbg" },
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "missy",
+                text: "This is a very important client! How hard is it to remember their appointments " +
+                    " Pull your head out of your ass and let them in. ",
+                button: [
+                    { chatID: 24, text: "ok", callback: "blank" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "thinking",
+                text: "Crap. I'll have to check the appointment log and remember it. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "missy",
+                text: "What the fuck! They weren't scheduled for today! You're supposed to turn them away if there's " +
+                    "no appointment! If you don't do anything then why the fuck are you sitting here. ",
+                button: [
+                    { chatID: 24, text: "*gulp*", callback: "blank" },
                 ]
             },
         ];

@@ -69,7 +69,7 @@ room750.btnclick = function (name) {
                 var doc = sc.getstep("doc");
                 if (doc === 0)
                     chat(0, 750);
-                else if (sc.checkevent("landlord", -4)) 
+                else if (sc.getEvent("landlord", -4)) 
                     chat(10, 750);
                 else if (doc === 1)
                     chat(6, 750);

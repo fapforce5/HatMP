@@ -134,7 +134,7 @@ room23.main = function () {
         },
         {
             q: "Are you a virgin?",
-            l: sc.checkevent("lola", 1) ? "Ummmm, you know I can't say. Why would you ask that? " : "OMG YES!",
+            l: sc.getEvent("lola", 1) ? "Ummmm, you know I can't say. Why would you ask that? " : "OMG YES!",
             e: "Nope! There isn't a hole on me that is!",
             i: "q_3_3"
         },
@@ -423,65 +423,60 @@ room23.main = function () {
         {
             txt: "I dare you to make out with your hand. ",
             e: "Sure! Take some notes " + sc.n("lola"),
-            eimg: "",
             l: "Sure. What a nice dare. ",
-            limg: "",
+            dCallback: "dareKissHand",
             i: "d_1_1"
         },
         {
             txt: "I dare you to kiss #other#. On the lips! ",
             e: "Yummy! My favorite person to make out with! ",
-            eimg: "",
             l: "Sure! I love how soft her lips are. ",
-            limg: "",
+            dCallback: "dareKissOther",
             i: "d_1_2"
         },
         {
             txt: "I dare you to give me a kiss.",
             e: "Ewwww. You're going to pay for this one! ",
-            eimg: "",
             l: "Oh yes! If I must. ",
-            limg: "",
+            dCallback: "dareKissMe",
             i: "d_1_3"
         },
         {
             txt: "I dare you to spin around for 10 seconds and try to walk",
             e: "What! Ok. You better not mess with me butthead! ",
-            eimg: "",
             l: "Ok. This sounds like fun.",
-            limg: "",
+            dCallback: "dareSpin1",
             i: "d_1_4"
         },
         {
             txt: " smell your own armpits",
             e: "What kind of weird fetishes are you into sick-o!",
-            eimg: "",
+            
             l: "Hehehe. ok. ",
-            limg: "",
+            dCallback: "",
             i: "d_1_5"
         },
         {
             txt: " drink all your wine in one gulp. ",
             e: "Trying to get me drunk. ",
-            eimg: "",
+            
             l: "Oooo. That's a lot of wine at once. Hope I don't get crazy. ",
-            limg: "",
+            dCallback: "",
             i: "d_1_6"
         },
         {
             txt: "show us what secret talent you have. ",
             e: "Check this out! ",
-            eimg: "",
+            
             l: "I can touch my toe to my ear. ",
-            limg: "",
+            dCallback: "",
             i: "d_1_7"
         },
         {
             txt: " I dare you to take your shirt off! ",
             e: "Pervert! I knew you just wanted to see my tits. ",
-            eimg: "",
-            l: "Hehe sure! Promise not to laugh. ",
-            limg: "",
+            l: "Oh my. Show you my bare breasts? ",
+            dCallback: "dareTopless",
             i: "d_1_8"
         },
     ]);
@@ -489,57 +484,55 @@ room23.main = function () {
         {
             txt: "Kiss #other#",
             e: "You like watching topless girls making out? ",
-            eimg: "",
             l: "Hehe. I love it when our nipples touch. ",
-            limg: "",
+            dCallback: "dareKissOther",
             i: "d_1_2"
         },
         {
             txt: "Make out with me. ",
             e: "Really. Just don't try to feel my tits pervert. ",
-            eimg: "",
             l: "Hehe. Sure! ",
-            limg: "",
+            dCallback: "dareKissMe",
             i: "d_1_3"
         },
         {
             txt: "Suck your finger like a dick. ",
             e: "Sure. My pinky is probably the size of your dick! ",
-            eimg: "",
+            
             l: "MMM. Ready for the show? ",
-            limg: "",
+            dCallback: "",
             i: "d_2_1"
         },
         {
             txt: "Give #other# a wedgie",
             e: "Hahahah. Ready nerd! ",
-            eimg: "",
+            
             l: "Oh I'm so sorry " + sc.n("eva") + ", but a dares, a dare. ",
-            limg: "",
+            dCallback: "",
             i: "d_2_2"
         },
         {
             txt: "Lick #other#'s nipples.",
             e: "You better not get a boner watching us. ",
-            eimg: "",
+            
             l: "MMmmmm. She has the cutest nipples. ",
-            limg: "",
+            dCallback: "",
             i: "d_2_3"
         },
         {
             txt: "Put a clothes pin on your nipples.",
             e: "What! You total butthead! Fuck! ",
-            eimg: "",
+            
             l: "That's so evil. ",
-            limg: "",
+            dCallback: "",
             i: "d_2_4"
         },
         {
             txt: "Take your pants off. ",
             e: "Sure! It's only time you get to see a girl without her pants. ",
-            eimg: "",
+            
             l: "Sexy! hehe. I love this dare. ",
-            limg: "",
+            dCallback: "",
             i: "d_2_5"
         },
     ]);
@@ -547,41 +540,41 @@ room23.main = function () {
         {
             txt: "Kiss #other#",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_1_2"
         },
         {
             txt: "Twerk for us. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_3_1"
         },
         {
             txt: "Play with your vagina over your panties. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_3_2"
         },
         {
             txt: "Take #other#'s panties off. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_3_3"
         },
         {
             txt: "Take your panties off. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_3_4"
         },
     ]);
@@ -589,57 +582,57 @@ room23.main = function () {
         {
             txt: "Kiss #other#",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_1_2"
         },
         {
             txt: "Make out with me. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_1_3"
         },
         {
             txt: "I dare you to show be your butthole. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_1_3"
         },
         {
             txt: "Lick #other#'s pussy",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_4_1"
         },
         {
             txt: "Put your finger in #other#'s butthole. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_4_2"
         },
         {
             txt: "Kiss my weiner. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_4_3"
         },
         {
             txt: "Suck my dick. ",
             e: "",
-            eimg: "",
+            
             l: "",
-            limg: "",
+            dCallback: "",
             i: "d_4_4"
         },
     ]);
@@ -653,8 +646,6 @@ room23.main = function () {
     g.internal = {
         eva: 0,
         lola: 0,
-        evaNude: 0,
-        lolaNude: 0,
         gamephase: 0,
         speaker: "lola",
         holder: "",
@@ -672,10 +663,12 @@ room23.main = function () {
 room23.btnclick = function (name) {
     switch (name) {
         case "eva":
+            g.internal.speaker = "eva";
             room23.chatcatch("evasit lolasit");
             chat(3, 23);
             break;
         case "lola":
+            g.internal.speaker = "lola";
             room23.chatcatch("evasit lolasit");
             chat(4, 23);
             break;
@@ -725,8 +718,11 @@ room23.btnclick = function (name) {
 room23.chatcatch = function (callback) {
     console.log(callback);
     var cArray = callback.split(" ");
-    for (i = 0; i < cArray.length; i++) {
-        switch (cArray[i]) {
+    for (chatCatchLoop = 0; chatCatchLoop < cArray.length; chatCatchLoop++) {
+        switch (cArray[chatCatchLoop]) {
+            case "resetbg":
+                nav.bg("24_spinTheBottle/013_spinBG.jpg");
+                break;
             case "evatalk":
                 nav.killbutton("eva");
                 nav.button({
@@ -736,7 +732,7 @@ room23.chatcatch = function (callback) {
                     "top": 44,
                     "width": 711,
                     "height": 1036,
-                    "image": "24_spinTheBottle/sit_eva_" + g.internal.evaNude + "_t.png" 
+                    "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_t.png" 
                 }, 23);
                 break;
             case "lolatalk":
@@ -748,7 +744,7 @@ room23.chatcatch = function (callback) {
                     "top": 0,
                     "width": 728,
                     "height": 1071,
-                    "image": "24_spinTheBottle/sit_lola_" + g.internal.evaNude + "_t.png" 
+                    "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_t.png" 
                 }, 23);
                 break;
             case "evasit":
@@ -760,7 +756,7 @@ room23.chatcatch = function (callback) {
                     "top": 44,
                     "width": 711,
                     "height": 1036,
-                    "image": "24_spinTheBottle/sit_eva_" + g.internal.evaNude + "_nt.png"
+                    "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_nt.png"
                 }, 23);
                 break;
             case "lolasit":
@@ -772,7 +768,7 @@ room23.chatcatch = function (callback) {
                     "top": 0,
                     "width": 728,
                     "height": 1071,
-                    "image": "24_spinTheBottle/sit_lola_" + g.internal.evaNude + "_nt.png"
+                    "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_nt.png"
                 }, 23);
                 break;
             case "bothkiss":
@@ -785,7 +781,7 @@ room23.chatcatch = function (callback) {
                     "top": 24,
                     "width": 1355,
                     "height": 1056,
-                    "image": "24_spinTheBottle/kiss_" + g.internal.evaNude + ".png"
+                    "image": "24_spinTheBottle/kiss_" + g.internal.gamephase + ".png"
                 }, 23);
                 break;
             case "evaTorD":
@@ -811,6 +807,10 @@ room23.chatcatch = function (callback) {
                 break;
             case "lolaDare":
                 g.internal.speaker = "lola";
+                room23.chatcatch("displayDares");
+                break;
+            case "evaDare":
+                g.internal.speaker = "eva";
                 room23.chatcatch("displayDares");
                 break;
             case "evatord":
@@ -849,6 +849,7 @@ room23.chatcatch = function (callback) {
                 }
                 break;
             case "theirTurn":
+                room23.chatcatch(g.internal.speaker === "lola" ? "lolatalk evasit" : "lolasit evatalk");
                 if (Math.floor(Math.random() * 2) === 0) { //me
                     chat(25, 23);
                 }
@@ -857,6 +858,62 @@ room23.chatcatch = function (callback) {
                         chat(11, 23);
                     else
                         chat(9, 23);
+                }
+                break;
+            case "dareKissOther":
+                nav.killbutton("lola");
+                nav.killbutton("eva");
+                nav.button({
+                    "type": "img",
+                    "name": "lola",
+                    "left": 283,
+                    "top": 24,
+                    "width": 1355,
+                    "height": 1056,
+                    "image": "24_spinTheBottle/kiss_" + g.internal.gamephase + ".png"
+                }, g.roomID);
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                chat(26, 23);
+                break;
+            case "dareKissMe":
+                nav.killbutton(g.internal.speaker);
+                var kissMeLevel = g.internal.gamephase === 0 ? "0" : "1";
+                nav.button({
+                    "type": "btn",
+                    "name": g.internal.speaker,
+                    "left": g.internal.speaker === "eva" ? 190 : 990,
+                    "top": 0,
+                    "width": 830,
+                    "height": 1080,
+                    "image": "24_spinTheBottle/dareKissMe_" + kissMeLevel + "_" + g.internal.speaker + ".png"
+                }, 23);
+                chat(26, 23);
+                break;
+            case "dareSpin1":
+                nav.killall();
+                nav.bg("24_spinTheBottle/dareSpin_" + g.internal.speaker + ".jpg");
+                chat(28, 23);
+                break;
+            case "dareSpin2":
+                nav.bg("24_spinTheBottle/dareSpin2_" + g.internal.speaker + ".jpg");
+                break;
+            case "dareKissHand":
+                nav.killall();
+                nav.bg("24_spinTheBottle/dareKissHand_" + g.internal.speaker + ".jpg");
+                chat(27, 23);
+                break;
+            case "dareTopless":
+                //if statement
+                g.internal.gamephase = 1;
+                if (g.internal.speaker === "lola") {
+                    g.internal.speaker = "eva";
+                    room23.chatcatch("lolatalk");
+                    chat(30, 23);
+                }
+                else {
+                    g.internal.speaker = "lola";
+                    room23.chatcatch("evatalk");
+                    chat(31, 23);
                 }
                 break;
             case "askMe":
@@ -883,6 +940,9 @@ room23.chatcatch = function (callback) {
                 break;
             case "charisma":
                 levels.mod("charisma", 10, 999);
+                break;
+            case "arousal":
+                gv.mod("arousal", 10);
                 break;
             default:
                 console.log("not found: " + cArray[i]);
@@ -1104,10 +1164,11 @@ room23.chat = function (chatID) {
         return askMeTruth;
     }
     else if (chatID === 500) {
+        var otherSpeaker = g.internal.speaker === "lola" ? sc.n("eva") : sc.n("lola");
         return {
             chatID: 500,
             speaker: "me",
-            text: sc.n(g.internal.speaker) + ", " + g.internal.dares[g.internal.gamephase][g.internal.gamepointer].txt,
+            text: sc.n(g.internal.speaker) + ", " + g.internal.dares[g.internal.gamephase][g.internal.gamepointer].txt.replace("#other#", otherSpeaker),
             button: [
                 { chatID: 501, text: "...", callback: (g.internal.speaker === "eva" ? "evatalk lolasit" : "evasit lolatalk") }
             ]
@@ -1119,7 +1180,7 @@ room23.chat = function (chatID) {
             speaker: g.internal.speaker,
             text: (g.internal.speaker === "eva" ? g.internal.dares[g.internal.gamephase][g.internal.gamepointer].e : g.internal.dares[g.internal.gamephase][g.internal.gamepointer].l),
             button: [
-                { chatID: -1, text: "...", callback: "drawDare" }
+                { chatID: -1, text: "...", callback: g.internal.dares[g.internal.gamephase][g.internal.gamepointer].dCallback }
             ]
         }; 
     }
@@ -1333,6 +1394,105 @@ room23.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "Truth", callback: "myTruth" },
                     { chatID: -1, text: "Dare", callback: "myDare" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: g.internal.speaker,
+                text: "MMMmmmmuah",
+                button: [
+                    { chatID: -1, text: "...", callback: "theirTurn" },
+                ]
+
+            },
+            {
+                chatID: 27,
+                speaker: g.internal.speaker,
+                text: "MMMmmmmuah",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: g.internal.speaker,
+                text: "Weeeeeeeeee!!!!",
+                button: [
+                    { chatID: 29, text: "...", callback: "resetbg dareSpin2" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: g.internal.speaker,
+                text: "OOooffff! So dizzy.",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "lola",
+                text: "Hehehe, What do you think? ",
+                button: [
+                    { chatID: 32, text: "Stunning! ", callback: "lolalike" },
+                    { chatID: 32, text: "Nice titties!  ", callback: "" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "eva",
+                text: "I bet you're going to masturbate to this later. Just don't scream out my name when you cum! ",
+                button: [
+                    { chatID: 35, text: "If you hear me yell Butthead, then you know I screamed your name", callback: "evalike" },
+                    { chatID: 35, text: "I don't jack off to boogers", callback: "" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "lola",
+                text: sc.n("eva") + " truth or dare? ",
+                button: [
+                    { chatID: 33, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "eva",
+                text: "Dare me!",
+                button: [
+                    { chatID: 34, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "lola",
+                text: "I dare you to be topless too! I can't be the only one showing boobs around here! ",
+                button: [
+                    { chatID: 25, text: "...", callback: "evatalk lolasit arousal" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "eva",
+                text: sc.n("lola") + " truth or dare? ",
+                button: [
+                    { chatID: 36, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "lola",
+                text: "Dare me!",
+                button: [
+                    { chatID: 37, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "eva",
+                text: "Take your top off! Show us those titties! ",
+                button: [
+                    { chatID: 25, text: "...", callback: "evatalk lolasit arousal" },
                 ]
             },
         ];
