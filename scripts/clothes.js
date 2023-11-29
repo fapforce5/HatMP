@@ -242,7 +242,7 @@ cl.add = function (type, name) {
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].name === name) {
             cl.list[i].inv = true;
-            i = cl.c.length;
+            return;
         }
     }
 };

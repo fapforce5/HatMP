@@ -52,6 +52,9 @@ room8.main = function () {
         { img: "icon_boy_swim", title: "Swim", name: "main_swimsuit" },
         { img: "icon_boy_pj", title: "PJs", name: "main_pj" },
     ];
+    if (cl.hasClothingType("buttplug")) {
+        clothingList.push({ img: "icon_girl_plug", title: "Butt plug", name: "main_buttplug" });
+    }
 
     w = 1500 / clothingList.length;
     h = (w / 200) * 300;
@@ -120,8 +123,44 @@ room8.btnclick = function (name) {
         }
         else {
             j = 0;
+            nav.button({
+                "type": "btn",
+                "name": "room8kill_" + type + "-nonexxx",
+                "left": 350 + ((j % 10) * 155),
+                "top": 500 + (Math.floor(j / 10) * 155),
+                "width": 150,
+                "height": 150,
+                "title": "Remove",
+                "image": "8_wardrobe/icons/none.png"
+            }, 8);
+            j = 1;
             $.each(cl.list, function (i, v) {
                 if (v.type === type && v.inv) {
+                    var wearing = false;
+                    switch (type) {
+                        case "shoes": wearing = cl.c.shoes === v.name; break;
+                        case "socks": wearing = cl.c.socks === v.name; break;
+                        case "pants": wearing = cl.c.pants === v.name; break;
+                        case "panties": wearing = cl.c.panties === v.name; break;
+                        case "bra": wearing = cl.c.bra === v.name; break;
+                        case "shirt": wearing = cl.c.shirt === v.name; break;
+                        case "dress": wearing = cl.c.dress === v.name; break;
+                        case "swimsuit": wearing = cl.c.swimsuit === v.name; break;
+                        case "pj": wearing = cl.c.pj === v.name; break;
+                        case "buttplug": wearing = cl.c.buttplug === v.name; break;
+                        default: "can't find " + clname; break;
+                    };
+                    if (wearing) {
+                        nav.button({
+                            "type": "img",
+                            "name": "room8kill_" + v.type + "-" + v.name,
+                            "left": 350 + ((j % 10) * 155),
+                            "top": 500 + (Math.floor(j / 10) * 155),
+                            "width": 150,
+                            "height": 150,
+                            "image": "8_wardrobe/icons/_select_" + v.sex + ".png"
+                        }, 8);
+                    }
                     nav.button({
                         "type": "btn",
                         "name": "room8kill_" + v.type + "-" + v.name,
@@ -142,6 +181,8 @@ room8.btnclick = function (name) {
         var tempx = fullname.split("-");
         type = tempx[0];
         clname = tempx[1];
+        if (clname === "nonexxx")
+            clname = null;
         switch (type) {
             case "shoes": cl.c.shoes = clname; cl.c.pj = null; break;
             case "socks": cl.c.socks = clname; cl.c.pj = null; break;
@@ -152,9 +193,11 @@ room8.btnclick = function (name) {
             case "dress": cl.c.dress = clname; cl.c.pj = null; break;
             case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; break;
             case "pj": cl.nude(); cl.c.pj = clname; break;
+            case "buttplug": cl.c.buttplug = clname; break;
             default: "can't find " + clname; break;
         }
         room8.btnclick("checkSleepEnable");
+        room8.btnclick("main_" + type);
         cl.display();
     }
     else if (name.startsWith("wear_")) {

@@ -170,8 +170,15 @@ sc.charMission = [
             {
                 missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
                     [
-                        { id: 0, txt: "Her Job", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Her Life", show: true, mStatus: 0, roomID: 16 },
+                        { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomID: 16 },
+                    ]
+            },
+            {
+                missionName: "chores", mStatus: 1, title: "Chores", desc: "Get an allowance for doing chores around the house. ", task:
+                    [
+                        { id: 0, txt: "Washt the dishes. ", show: true, mStatus: 1, roomId: 16 },
+                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomID: 16 },
                     ]
             },
             {
@@ -402,6 +409,17 @@ sc.completeMissionTask = function (name, missionName, taskId, success) {
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
         if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
             sc.charMission[ml.i].mission[ml.j].task[k].mStatus = success ? 100 : 101;
+            return;
+        }
+    }
+};
+
+sc.startMissionTask = function(name, missionName, taskId) {
+    var ml = sc.getMission(name, missionName);
+
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
+            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = 1;
             return;
         }
     }
