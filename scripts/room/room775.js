@@ -674,7 +674,7 @@ room775.chat = function (chatID) {
                 speaker: "priest",
                 text: "Welcome my " + gender.pronoun("son") + ". Share with me your confession. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "confession1" }
+                    { chatID: 500, text: "...", callback: "" }
                 ]
             },
             {

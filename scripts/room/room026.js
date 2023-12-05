@@ -109,7 +109,8 @@ room26.btnclick = function (name) {
                 chat(6, 26);
             else if (chatEvent === 1) 
                 chat(7, 26);
-
+            else if (chatEvent === 2)
+                chat(11, 26);
             else if (!llevents.includes(4)) {
                 sc.setEvent("landlord", 4);
                 chat()
@@ -143,14 +144,19 @@ room26.chatcatch = function (callback) {
                 break;
             case "talk_0_complete":
                 sc.completeMissionTask("landlord", "talk", 0);
-                levels.mod("landlord", 100, 0);
+                levels.mod("landlord", 100, 3);
                 daily.set("landlord");
                 break;
             case "talk_1_complete":
                 sc.completeMissionTask("landlord", "talk", 1);
                 sc.startMissionTask("landlord", "chores", 1);
                 inv.add("landlordKey");
-                levels.mod("landlord", 10, 999);
+                levels.mod("landlord", 10, 3);
+                daily.set("landlord");
+                break;
+            case "talk_2_complete":
+                sc.completeMissionTask("landlord", "talk", 2);
+                levels.mod("landlord", 50, 3);
                 daily.set("landlord");
                 break;
             default:
@@ -259,6 +265,72 @@ room26.chat = function (chatID) {
             text: "I know you'll be a good boy and help me out. Here's the key, and behave yourself. ",
             button: [
                 { chatID: -1, text: "Sweet. I will", callback: "talk_1_complete" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "landlord",
+            text: "So what do you want to talk about?",
+            button: [
+                { chatID: 12, text: "That's a very revealing night gown you're wearing", callback: "" },
+                { chatID: 13, text: "Why are you so hard on me?", callback: "" },
+                { chatID: 14, text: "Can you tell me about my father?", callback: "" },
+                { chatID: 15, text: "What are your opinions of the cult? ", callback: "" },
+                { chatID: -1, text: "Oh, nothing. ", callback: "talk_2_complete" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "landlord",
+            text: "When I'm at home, I'm relaxing. There's no need to dress stuffy. You all need to just accept " +
+                "that I don't care. You can dress however you want if you're paying the bills. ",
+            button: [
+                { chatID: 11, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "landlord",
+            text: "I'm hard on you so you don't end up in the streets. It's not out of anger, it's out of love.  " +
+                "With " + sc.n("lola") + " I don't have to be mean, but with you and " + sc.n("eva") + " I do. " +  
+                "I really want to be nice, but you two don't respond to that, so you make me mean so I can get " +
+                "through to you.",
+            button: [
+                { chatID: 11, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "landlord",
+            text: "Your father was a good man. Not a manly man, but a good man. I don't really like talking about " +
+                "him, but he got mixed up with that cult. I told him that it was trouble, but he didn't listen. He " +
+                "never was good at listening to good advice, much like you. It ended up costing his life. Never " +
+                "trust them. Never go there. ",
+            button: [
+                { chatID: 11, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "landlord",
+            text: "I'm a terrible person to ask. They are my main buyer, but I hate them. Really I use them as a " +
+                "means to an end. The sperm bank was owned by a man named " + sc.n("charlie") + ". Now he used to " +
+                "own almost half the town, till his gamling and whoring caught up with him and forced him to sell off " +
+                "most of his properites. For cheap. Cheap enough for me to buy it, with a little help from the bank. ",
+            button: [
+                { chatID: 16, text: "uh huh", callback: "" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "landlord",
+            text: "So after I bought it, I found out that there isn't a huge demand in this town for sperm. After " +
+                "about three months I was about to go under till I was approached by the cult. They offered to buy " +
+                "all my extra sperm for a good price. While I hate them for everything they are I needed them to " +
+                "stay afloat. So I take their dirty money, but I use it for good, like paying on this house. " +
+                "So I hate them and you should avoid them, I use them for their money. ",
+            button: [
+                { chatID: 11, text: "...", callback: "" },
             ]
         },
     ];

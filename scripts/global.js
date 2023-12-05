@@ -176,7 +176,7 @@ g.rooms = [
     { roomID: 14, name: "Master Bedroom", image: "14_motherRoom/14_motherRoom.jpg", nightImage: "14_motherRoom/14_motherRoomNight.jpg", houseID: 16, btn: "roomBtn_14.png" },
     { roomID: 15, name: "Kitchen", image: "15_kitchen/day.jpg", nightImage: "15_kitchen/night.jpg", houseID: 16, btn: "roomBtn_15.png" },
     { roomID: 16, name: "1st Floor", image: "16_livingRoom/16_downStairs.jpg", nightImage: "16_livingRoom/16_downStairsNight.jpg", houseID: 16, btn: "roomBtn_16.png" },
-    { roomID: 17, name: "Master Closet", image: "17_motherCloset/017_motherCloset.png", nightImage: "17_motherCloset/017_motherCloset.png", houseID: 16, btn: "roomBtn_17.png" },
+    { roomID: 17, name: "Master Closet", image: "17_motherCloset/017_motherCloset.jpg", nightImage: "17_motherCloset/017_motherCloset.jpg", houseID: 16, btn: "roomBtn_17.png" },
     { roomID: 18, name: "Nightstand Drawer", image: "18_bedroomDrawer/018_drawer.jpg", nightImage: "18_bedroomDrawer/018_drawer.jpg", houseID: 16, btn: "roomBtn_18.png" },
     { roomID: 19, name: "On Bed", image: "19_layInBed/bg52.jpg", nightImage: "19_layInBed/bg52.jpg", houseID: 16, btn: "roomBtn_19.png" },
     { roomID: 20, name: "Dishes", image: "20_dishes/20_dishes.png", nightImage: "20_dishes/20_dishes.png", houseID: 16, btn: "roomBtn_20.png" },
@@ -541,6 +541,16 @@ g.cleanText = function (thisInput) {
 g.rand = function (lower, upper) {
     return Math.floor(Math.random() * (upper - lower)) + lower;
 };
+
+g.randn_bm = function() {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+    while (v === 0) v = Math.random();
+    let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    num = num / 10.0 + 0.5; // Translate to 0 -> 1
+    if (num > 1 || num < 0) return randn_bm() // resample between 0 and 1
+    return num
+}
 
 g.makeCss = function (height, width, top, left) {
     return " height:" + (height * g.ratio) + "px; width:" + (width * g.ratio) + "px; top:" + (top * g.ratio) + "px; left:" + (left * g.ratio) + "px; ";

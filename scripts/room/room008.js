@@ -162,6 +162,15 @@ room8.btnclick = function (name) {
                         }, 8);
                     }
                     nav.button({
+                        "type": "img",
+                        "name": "room8kill_" + v.type + "-" + v.name,
+                        "left": 350 + ((j % 10) * 155),
+                        "top": 500 + (Math.floor(j / 10) * 155),
+                        "width": 150,
+                        "height": 150,
+                        "image": "8_wardrobe/icons/char_" + v.daring + ".png"
+                    }, 8);
+                    nav.button({
                         "type": "btn",
                         "name": "room8kill_" + v.type + "-" + v.name,
                         "left": 350 + ((j % 10) * 155),

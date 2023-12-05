@@ -188,9 +188,26 @@ sc.charMission = [
                         { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomID: 350 },
                     ]
             },
+            {
+                missionName: "man", mStatus: -1, title: "Now you're a man!", desc: "A manly manly man. Now you're a man's man!", task:
+                    [
+                        { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
+                    ]
+            },
         ]
     }
 ];
+
+sc.mStatus = function (mStatus) {
+    if (mStatus < 1)
+        return "Not Started";
+    else if (mStatus === 100)
+        return "Completed";
+    else if (mStatus === 101)
+        return "Failed";
+    return "In Progress";
+
+}
 
 sc.getIndex = function (name) {
     for (var i = 0; i < sc.char.length; i++)
@@ -468,7 +485,7 @@ sc.getSecret = function (name) {
 
 
 sc.getstep = function (name) {
-    return sc.get(name).step;
+    console.log("error");
 };
 
 sc.setstep = function (name, step) {
@@ -642,7 +659,7 @@ sc.getTimeline = function (char) {
         case "landlord":
             timeline = [
             //sunday
-                { d: [0], hstart: 0, hend: 7, roomId: 775, alt: null }, //bedroom
+                { d: [0], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
                 { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
                 { d: [0], hstart: 10, hend: 11, roomId: 15, alt: null }, //kitchen
                 { d: [0], hstart: 11, hend: 18, roomId: 26, alt: null }, //living room

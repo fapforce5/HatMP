@@ -6,430 +6,141 @@ var room17 = {};
 room17.main = function(){
 
     var btnList = [
-        {
-            "type": "btn",
-            "name": "c-1",
-            "left": 355,
-            "top": 161,
-            "width": 79,
-            "height": 318,
-            "image": "17_motherCloset/1_2_shirt5.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-2",
-            "left": 385,
-            "top": 161,
-            "width": 79,
-            "height": 318,
-            "image": "17_motherCloset/1_2_shirt4.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-3",
-            "left": 415,
-            "top": 161,
-            "width": 79,
-            "height": 318,
-            "image": "17_motherCloset/1_2_shirt3.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-4",
-            "left": 445,
-            "top": 161,
-            "width": 79,
-            "height": 318,
-            "image": "17_motherCloset/1_2_shirt2.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-5",
-            "left": 475,
-            "top": 161,
-            "width": 79,
-            "height": 318,
-            "image": "17_motherCloset/1_2_shirt1.png"
-        },
-
-        {
-            "type": "btn",
-            "name": "c-6",
-            "left": 326,
-            "top": 623,
-            "width": 87,
-            "height": 332,
-            "image": "17_motherCloset/1_3_pants4.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-7",
-            "left": 376,
-            "top": 623,
-            "width": 87,
-            "height": 332,
-            "image": "17_motherCloset/1_3_pants3.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-8",
-            "left": 406,
-            "top": 623,
-            "width": 87,
-            "height": 332,
-            "image": "17_motherCloset/1_3_pants2.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-9",
-            "left": 436,
-            "top": 623,
-            "width": 87,
-            "height": 332,
-            "image": "17_motherCloset/1_3_pants2.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-10",
-            "left": 466,
-            "top": 623,
-            "width": 87,
-            "height": 332,
-            "image": "17_motherCloset/1_3_pants1.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-11",
-            "left": 585,
-            "top": 438,
-            "width": 116,
-            "height": 619,
-            "image": "17_motherCloset/2_4_dress1.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-12",
-            "left": 645,
-            "top": 438,
-            "width": 116,
-            "height": 619,
-            "image": "17_motherCloset/2_4_dress2.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-13",
-            "left": 735,
-            "top": 438,
-            "width": 76,
-            "height": 631,
-            "image": "17_motherCloset/2_4_dress3.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-14",
-            "left": 790,
-            "top": 438,
-            "width": 76,
-            "height": 631,
-            "image": "17_motherCloset/2_4_dress4.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-15",
-            "left": 865,
-            "top": 438,
-            "width": 76,
-            "height": 631,
-            "image": "17_motherCloset/2_4_dress5.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-16",
-            "left": 1753,
-            "top": 619,
-            "width": 131,
-            "height": 460,
-            "image": "17_motherCloset/5_2_dress9.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-17",
-            "left": 1703,
-            "top": 619,
-            "width": 131,
-            "height": 460,
-            "image": "17_motherCloset/5_2_dress8.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-18",
-            "left": 1653,
-            "top": 619,
-            "width": 131,
-            "height": 460,
-            "image": "17_motherCloset/5_2_dress7.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-19",
-            "left": 1603,
-            "top": 619,
-            "width": 131,
-            "height": 460,
-            "image": "17_motherCloset/5_2_dress6.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-20",
-            "left": 1550,
-            "top": 619,
-            "width": 131,
-            "height": 460,
-            "image": "17_motherCloset/5_2_dress5.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-21",
-            "left": 1493,
-            "top": 619,
-            "width": 136,
-            "height": 461,
-            "image": "17_motherCloset/5_2_dress4.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-22",
-            "left": 1423,
-            "top": 619,
-            "width": 136,
-            "height": 461,
-            "image": "17_motherCloset/5_2_dress3.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-23",
-            "left": 1373,
-            "top": 619,
-            "width": 136,
-            "height": 461,
-            "image": "17_motherCloset/5_2_dress2.png"
-        },
-        {
-            "type": "btn",
-            "name": "c-24",
-            "left": 1303,
-            "top": 619,
-            "width": 136,
-            "height": 461,
-            "image": "17_motherCloset/5_2_dress1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-1",
-            "left": 754,
-            "top": 59,
-            "width": 180,
-            "height": 88,
-            "image": "17_motherCloset/2_1_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-2",
-            "left": 566,
-            "top": 59,
-            "width": 188,
-            "height": 88,
-            "image": "17_motherCloset/2_1_box2.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-3",
-            "left": 754,
-            "top": 184,
-            "width": 180,
-            "height": 88,
-            "image": "17_motherCloset/2_2_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-4",
-            "left": 566,
-            "top": 184,
-            "width": 188,
-            "height": 88,
-            "image": "17_motherCloset/2_2_box2.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-5",
-            "left": 754,
-            "top": 305,
-            "width": 180,
-            "height": 88,
-            "image": "17_motherCloset/2_3_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-6",
-            "left": 566,
-            "top": 305,
-            "width": 188,
-            "height": 88,
-            "image": "17_motherCloset/2_3_box2.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-7",
-            "left": 1132,
-            "top": 31,
-            "width": 125,
-            "height": 134,
-            "image": "17_motherCloset/3_1_purse1.png"
-        },
-        {
-            "type": "img",
-            "name": "box-999",
-            "left": 946,
-            "top": 956,
-            "width": 345,
-            "height": 124,
-            "image": "17_motherCloset/3_3_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-8",
-            "left": 946,
-            "top": 830,
-            "width": 345,
-            "height": 124,
-            "image": "17_motherCloset/3_3_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-9",
-            "left": 946,
-            "top": 704,
-            "width": 345,
-            "height": 124,
-            "image": "17_motherCloset/3_3_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-9",
-            "left": 946,
-            "top": 578,
-            "width": 345,
-            "height": 124,
-            "image": "17_motherCloset/3_3_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-10",
-            "left": 1302,
-            "top": 50,
-            "width": 194,
-            "height": 181,
-            "image": "17_motherCloset/4_1_box1.png"
-        },
-        {
-            "type": "btn",
-            "name": "box-11",
-            "left": 1302,
-            "top": 296,
-            "width": 194,
-            "height": 131,
-            "image": "17_motherCloset/4_2_box1.png"
-        },
-
-        {
-            "type": "btn",
-            "name": "shoes",
-            "left": 1515,
-            "top": 63,
-            "width": 355,
-            "height": 521,
-            "image": "17_motherCloset/5_1_shoes.png"
-        },
-        {
-            "type": "btn",
-            "name": "cock",
-            "left": 1173,
-            "top": 408,
-            "width": 103,
-            "height": 170,
-            "image": "17_motherCloset/5_3_cock.png"
-        }
+        { x: 352, y: 574, w: 104, h: 49, i: 1 },
+        { x: 603, y: 43, w: 121, h: 92, i: 2 },
+        { x: 753, y: 91, w: 118, h: 44, i: 3 },
+        { x: 933, y: 82, w: 135, h: 80, i: 4 },
+        { x: 1066, y: 91, w: 151, h: 70, i: 5 },
+        { x: 1263, y: 30, w: 152, h: 135, i: 6 },
+        { x: 1647, y: 73, w: 140, h: 101, i: 7 },
+        { x: 1491, y: 76, w: 153, h: 97, i: 8 },
+        { x: 1269, y: 261, w: 149, h: 80, i: 9 },
+        { x: 915, y: 691, w: 306, h: 63, i: 10 },
+        { x: 916, y: 750, w: 305, h: 58, i: 11 },
+        { x: 916, y: 804, w: 305, h: 60, i: 12 },
+        { x: 917, y: 859, w: 304, h: 77, i: 13 },
+        { x: 1265, y: 546, w: 154, h: 56, i: 14 },
+        { x: 1266, y: 412, w: 188, h: 60, i: 15 },
+        { x: 234, y: 573, w: 97, h: 49, i: 16 },
+        { x: 244, y: 61, w: 143, h: 114, i: 17 },
+        { x: 410, y: 103, w: 53, h: 71, i: 18 }
+    ];
+    var clothList = [
+        { x: 959, y: 220, w: 226, h: 327, i: "a" },
+        { x: 550, y: 540, w: 65, h: 439, i: "b" },
+        { x: 605, y: 545, w: 70, h: 379, i: "c" },
+        { x: 674, y: 580, w: 80, h: 424, i: "d" },
+        { x: 748, y: 583, w: 71, h: 419, i: "e" },
+        { x: 807, y: 547, w: 69, h: 410, i: "f" },
+        { x: 1269, y: 660, w: 33, h: 348, i: "g" },
+        { x: 1305, y: 668, w: 42, h: 358, i: "h" },
+        { x: 1329, y: 693, w: 50, h: 341, i: "i" },
+        { x: 1372, y: 671, w: 51, h: 398, i: "j" },
+        { x: 1416, y: 656, w: 43, h: 347, i: "k" },
+        { x: 1503, y: 717, w: 53, h: 273, i: "l" },
+        { x: 1550, y: 703, w: 65, h: 303, i: "m" },
+        { x: 1612, y: 686, w: 61, h: 320, i: "n" },
+        { x: 1669, y: 685, w: 45, h: 345, i: "o" },
+        { x: 1690, y: 687, w: 59, h: 336, i: "p" },
+        { x: 831, y: 174, w: 41, h: 372, i: "q" },
+        { x: 755, y: 177, w: 88, h: 354, i: "r" },
+        { x: 686, y: 174, w: 67, h: 374, i: "s" },
+        { x: 616, y: 180, w: 81, h: 364, i: "t" },
+        { x: 542, y: 174, w: 98, h: 329, i: "u" },
     ];
 
+    $.each(clothList, function (i, v) {
+        nav.button({
+            "type": "btn",
+            "name": "c_" + v.i,
+            "left": v.x,
+            "top": v.y,
+            "width": v.w,
+            "height": v.h,
+            "image": "17_motherCloset/" + v.i + ".png"
+        }, 17);
+    });
+    $.each(btnList, function (i, v) {
+        nav.button({
+            "type": "btn",
+            "name": "b_" + v.i,
+            "left": v.x,
+            "top": v.y,
+            "width": v.w,
+            "height": v.h,
+            "image": "17_motherCloset/" + v.i + ".png"
+        }, 17);
+    });
+
+    nav.button({
+        "type": "btn",
+        "name": "pic",
+        "left": 927,
+        "top": 577,
+        "width": 100,
+        "height": 97,
+        "image": "17_motherCloset/i_pic.png"
+    }, 17);
+
+    nav.button({
+        "type": "btn",
+        "name": "dildo",
+        "left": 1153,
+        "top": 528,
+        "width": 74,
+        "height": 148,
+        "image": "17_motherCloset/i_dildo.png"
+    }, 17);
+    g.internal = {
+        c1: "c_" + clothList[g.rand(0, 9)].i,
+        c2: "c_" + clothList[g.rand(9, clothList.length)].i,
+        b1: "b_" + btnList[g.rand(0, 10)].i,
+        b2: "b_" + btnList[g.rand(10, btnList.length)].i,
+        panties: cl.hasClothing("panties", "c") ? "" : "c_" + clothList[g.rand(0, 18)].i
+    };
     daily.set("momRaidCloset");
     var navList = [14];
-    g.roomTimeout = setTimeout(function () { g.pass = "closet"; char.room(21); }, 15000);
-
-    $.each(btnList, function (i, v) {
-        nav.button(v, 17);
-    });
+    g.roomTimeout = setTimeout(function () { g.pass = "closet"; char.room(21); }, 9915000);
 
     nav.buildnav(navList);
 }
 
-room17.btnclick = function(name){
-    var num = 0;
-    var i;
-    if (name.includes('-')) {
-        var ss = name.split('-')
-        if (ss.length === 2) {
-            name = ss[0];
-            num = parseInt(ss[1]);
+room17.btnclick = function (name) {
+    if (name.startsWith("c_")) {
+        console.log(name + " " + g.internal.c2);
+        if (name === g.internal.panties) {
+            nav.button({
+                "type": "img",
+                "name": "panties",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "17_motherCloset/panties.png"
+            }, 17);
+            chat(8, 17);
         }
+        else if (name === g.internal.c1 || name === g.internal.c2) {
+            gv.mod("money", Math.floor(g.randn_bm() * 50));
+        }
+        nav.killbutton(name);
     }
-    switch (name) {
-        case "c":
-            if (num === gv.get("momClosetMoney")) {
-                gv.mod("money", (Math.floor(Math.random() * 20)) + 10);
-                chat(2, 17);
-                //set new money clothes
-                gv.set("momClosetMoney", Math.floor(Math.random() * 24) + 1);
-                nav.button({
-                    "type": "img",
-                    "name": "money",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "17_motherCloset/money.png"
-                }, 17);
-            }
-            else
-                chat(1, 17);
-            break;
-        case "box":
-            if (num === gv.get("momClosetLube")) {
-                chat(3, 17);
-                //set new lube box
-                gv.set("momClosetLube", Math.floor(Math.random() * 11) + 1);
-                inv.update("lube", true, 1);
-                nav.button({
-                    "type": "img",
-                    "name": "lube",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "17_motherCloset/lube.png"
-                }, 17);
-            }
-            else
-                chat(1, 17);
-            break;
-        case "cock":
-            chat(4, 17);
-            break;
-        case "shoes":
-            chat(5, 17);
-            break;
-        default:
-            break;
+    else if (name.startsWith("b_")) {
+        console.log(name + " " + g.internal.b1);
+        if (name === g.internal.b1 || name === g.internal.b2) {
+            inv.addMulti("lube", Math.floor(g.randn_bm() * 5) + 1);
+        }
+        nav.killbutton(name);
     }
+    else if (name === "pic") {
+        chat(7, 17);
+    }
+    else if (name === "dildo") {
+        chat(4, 17);
+    }
+    //    case "shoes":
+    //        chat(5, 17);
+    //        break;
 };
 
 room17.chatcatch = function (callback) {
@@ -439,6 +150,14 @@ room17.chatcatch = function (callback) {
             break;
         case "killLube":
             nav.killbutton("lube");
+            break;
+        case "pantiesKill":
+            nav.killbutton("panties");
+            break;
+        case "pantiesTake":
+            nav.killbutton("panties");
+            cl.add("panties", "c");
+            levels.mod("xdress", 33);
             break;
         default:
             break;
@@ -451,9 +170,7 @@ room17.chat = function (chatID) {
             chatID: 0,
             speaker: "me",
             text: "Nothing here..",
-            button: [
-                { chatID: 1, text: "", callback: "" }
-            ]
+            button: []
         },
         {
             chatID: 1,
@@ -476,7 +193,8 @@ room17.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "me",
-            text: "eeewwwww..... It's bad enough I'm face to face with my " + sc.n("landlord") + "'s dildo, but there's no way I'm touching that thing, even worse using that thing. ",
+            text: "eeewwwww..... It's bad enough I'm face to face with my " + sc.n("landlord") + "'s dildo, but there's no way I'm touching that thing. " +
+                "She'll blame it on " + sc.n("eva") + ". Find out it isn't her, then come after me. ",
             button: []
         },
         {
@@ -490,6 +208,21 @@ room17.chat = function (chatID) {
             speaker: "me",
             text: "I would look soooo sexy in those, but my " + sc.n("landlord") + "'s feet are too small and I'm not cutting off my toes to be fabulous. ",
             button: []
+        },
+        {
+            chatID: 7,
+            speaker: "thinking",
+            text: "That's an old picture. ",
+            button: []
+        },
+        {
+            chatID: 8,
+            speaker: "thinking",
+            text: "You found your " + sc.n("landlord") + "'s panties. ",
+            button: [
+                { chatID: -1, text: "Stuff them in your pocket.", callback: "pantiesTake" },
+                { chatID: -1, text: "Put them back.", callback: "pantiesKill" }
+            ]
         }
     ];
     return cArray[chatID];

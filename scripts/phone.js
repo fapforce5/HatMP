@@ -77,7 +77,34 @@ phone.clear = function (clearAll) {
 };
 
 phone.backbutton = function (icon) {
+    var btnList = [
+        { n: "phone_save", img: "bSave", x: 0, y: 0 },
+        { n: "phone_rel", img: "bRelationships", x: 1, y: 0 },
+        { n: "phone_contacts", img: "bContacts", x: 2, y: 0 },
+        { n: "phone_pic", img: "bPic", x: 3, y: 0 },
 
+        //{ n: "phone_stats", img: "bStats", x: 0, y: 1 },
+        { n: "phone_time", img: "bTime", x: 0, y: 1 },
+        { n: "phone_ach", img: "bAch", x: 2, y: 1 },
+        { n: "phone_settings", img: "bSettings", x: 3, y: 1 },
+
+        { n: "phone_help", img: "bHelp", x: 0, y: 2 },
+        { n: "phone_patron", img: "bPatron", x: 2, y: 2 },
+        { n: "phone_thankyou", img: "bPatreon", x: 3, y: 2 }
+    ];
+    for (i = 0; i < btnList.length; i++) {
+        if (icon === btnList[i].n) {
+            nav.button({
+                "type": "zbtn",
+                "name": btnList[i].n,
+                "left": 1662,
+                "top": 525,
+                "width": 90,
+                "height": 112,
+                "image": "999_phone/" + btnList[i].img + ".png",
+            }, 9999);
+        }
+    }
 };
 
 phone.saveMenu = function () {
@@ -350,7 +377,7 @@ phone.characterSelect = function (name) {
         type: "zimg",
         name: "phone_",
         "left": 500,
-        "top": 590,
+        "top": 550,
         font: 30,
         hex: "#ffffff",
         text: "Level: " + thisChar.l
@@ -360,21 +387,59 @@ phone.characterSelect = function (name) {
         type: "zimg",
         name: "phone_",
         "left": 500,
-        "top": 630,
+        "top": 590,
         font: 30,
         hex: "#ffffff",
         text: "Secret: " + thisChar.secret + "%"
     }, 1);
-
-    nav.t({
-        type: "zimg",
-        name: "phone_",
-        "left": 900,
-        "top": 630,
-        font: 30,
-        hex: "#ffffff",
-        text: "Still building this. More to come later. "
-    }, 1);
+    var thisTimeline = sc.getTimeline(name);
+    
+    for (i = 0; i < thisTimeline.subList.length; i++) {
+        nav.t({
+            type: "zimg",
+            name: "phone_",
+            "left": 500,
+            "top": 650 + (i*22),
+            font: 20,
+            hex: thisTimeline.subList[i].current ? "#FF76FF" : "#ffffff",
+            text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
+        }, 1);
+    }
+    
+    for (i = 0; i < sc.charMission.length; i++) {
+        if (sc.charMission[i].name === thisChar.name) {
+            for (j = 0; j < sc.charMission[i].mission.length; j++) {
+                nav.t({
+                    type: "zimg",
+                    name: "phone_charsel_",
+                    "left": 850,
+                    "top": 180 + (j * 100),
+                    font: 30,
+                    hex: "#ffffff",
+                    text: sc.charMission[i].mission[j].title + " [" + sc.mStatus(sc.charMission[i].mission[j].mStatus) + "]"
+                }, 9999);
+                nav.t({
+                    type: "zimg",
+                    name: "phone_charsel_",
+                    "left": 900,
+                    "top": 220 + (j * 100),
+                    font: 20,
+                    hex: "#ffffff",
+                    text: sc.charMission[i].mission[j].desc
+                }, 1);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "phone_charsel_" + sc.charMission[i].name + "_" + sc.charMission[i].mission[j].missionName,
+                    "left": 800,
+                    "top": 180 + (j * 100),
+                    "width": 40,
+                    "height": 40,
+                    "image": "999_phone/char_left.png",
+                }, 9999);
+            }
+        }
+    }
+    
 }
 
 phone.thankyou = function () {
@@ -410,12 +475,7 @@ phone.thankyou = function () {
 phone.passtime = function () {
     phone.clear(false);
 
-   
     var currentTime = g.gethourdecimal();
-
-    var time = [9, 12, 17, 20, 0];
-    var clock = gv.get("clock24");
-    var active;
     var bgnum = 4;
     if (currentTime >= 20)
         bgnum = 4;
@@ -435,7 +495,6 @@ phone.passtime = function () {
         "height": 815,
         "image": "999_phone/time_bg_" + bgnum + ".jpg",
     }, 9999);
-
     nav.t({
         type: "zimg",
         name: "phone_time_currenttime",
@@ -443,35 +502,53 @@ phone.passtime = function () {
         top: 200,
         font: 40,
         hex: "#ffffff",
-        text: "Current time: " + nav.friendlyTime() 
+        text: "Current time: " + nav.friendlyTime()
     }, 1);
 
-    for (i = 0; i < time.length; i++) {
-        if (currentTime < 7)
-            active = false;
-        else
-            active = (currentTime < time[i]) || time[i] === 0;
-        
+    if (g.passtime.includes(g.roomID)) {
+
+        var time = [9, 12, 17, 20, 0];
+        var clock = gv.get("clock24");
+        var active;
+
+        for (i = 0; i < time.length; i++) {
+            if (currentTime < 7)
+                active = false;
+            else
+                active = (currentTime < time[i]) || time[i] === 0;
+
+            nav.button({
+                "type": active ? "zbtn" : "zimg",
+                "name": "phone_modtime_" + time[i],
+                "left": 900,
+                "top": 300 + (i * 70),
+                "width": 250,
+                "height": 50,
+                "image": "999_phone/time_" + time[i] + "_" + clock + "_" + (active ? "active" : "inactive") + ".png",
+            }, 9999);
+        }
+        active = currentTime > 6.9;
         nav.button({
             "type": active ? "zbtn" : "zimg",
-            "name": "phone_modtime_" + time[i],
+            "name": "phone_modtime_x",
             "left": 900,
-            "top": 300 + (i * 70),
+            "top": 750,
             "width": 250,
             "height": 50,
-            "image": "999_phone/time_" + time[i] + "_" + clock + "_" + (active ? "active" : "inactive") +".png",
+            "image": "999_phone/time_1hour_" + (active ? "active" : "inactive") + ".png",
         }, 9999);
     }
-    active = currentTime > 6.9;
-    nav.button({
-        "type": active ? "zbtn" : "zimg",
-        "name": "phone_modtime_x",
-        "left": 900,
-        "top": 750,
-        "width": 250,
-        "height": 50,
-        "image": "999_phone/time_1hour_" + (active ? "active" : "inactive") + ".png",
-    }, 9999);
+    else {
+        nav.t({
+            type: "zimg",
+            name: "phone_time_currenttime",
+            left: 740,
+            top: 300,
+            font: 40,
+            hex: "#ffffff",
+            text: "Can't pass the time in this room. "
+        }, 1);
+    }
 };
 
 room9999.btnclick = function (name) {
@@ -493,10 +570,10 @@ room9999.btnclick = function (name) {
             phone.backbutton("phone_pic");
         }
     }
-    if (name.startsWith("phone_charselect_")) {
+    else if (name.startsWith("phone_charselect_")) {
         phone.characterSelect(name.replace("phone_charselect_", ""));
     }
-    if (name.startsWith("phone_modtime")) {
+    else if (name.startsWith("phone_modtime")) {
         var modTime = name.replace("phone_modtime_", "");
         if (modTime === "x") {
             char.addtime(58);
@@ -509,107 +586,275 @@ room9999.btnclick = function (name) {
             phone.build("time");
         }
     }
-    switch (name) {
-        case "phonex_power":
-            phone.clear(true);
-            break;
-        case "phonex_menu":
-            phone.clear(true);
-            phone.build();
-            break;
-        case "phone_save":
-            phone.saveMenu();
-            break;
-        case "phone_rel":
-            phone.characters();
-            break;
-        case "phone_settings":
-            phone.settings();
-            break;
-        case "phone_pic":
-            phone.pictures();
-            break;
-        case "phone_help":
-            window.open("http://fapforce5.com", "_blank"); 
-            break;
-        case "phone_patron":
-            window.open("https://www.patreon.com/FF5", "_blank"); 
-            break;
-        case "phone_thankyou":
-            phone.thankyou();
-            break;
-        case "phone_contacts":
-            phone.clear(false);
-            nav.button({
-                "type": "zimg",
-                "name": "phone_",
-                "left": 451,
-                "top": 155,
-                "width": 1185,
-                "height": 815,
-                "image": "999_phone/call_bg.jpg",
-            }, 9999);
-            break;
-        case "phone_ach":
-            phone.clear(false);
-            nav.button({
-                "type": "zimg",
-                "name": "phone_",
-                "left": 451,
-                "top": 155,
-                "width": 1185,
-                "height": 815,
-                "image": "999_phone/Achievements_bg.jpg",
-            }, 9999);
-            break;
-        case "phone_time":
-            phone.passtime();
-            break;
-        case "phone_setting_diff0":
-        case "phone_setting_diff1":
-        case "phone_setting_diff2":
-            gv.set("difficulty", parseInt(name.replace("phone_setting_diff", "")));
-            phone.settings();
-            break;
-        case "phone_setting_clock12":
-        case "phone_setting_clock24":
-            gv.set("clock24", name.replace("phone_setting_clock", ""));
-            phone.settings();
-            break;
-        case "phone_setting_fantOff":
-        case "phone_setting_fantOn":
-            gv.set("fantasyCreatures", name === "phone_setting_fantOn");
-            phone.settings();
-            break;
-        case "phone_save_save_0":
-        case "phone_save_save_1":
-        case "phone_save_save_2":
-        case "phone_save_save_3":
-        case "phone_save_save_4":
-        case "phone_save_save_5":
-        case "phone_save_save_6":
-        case "phone_save_save_7":
-        case "phone_save_save_8":
-            var saveID = name.replace("phone_save_save_", "");
-            menu.save('HatMP_' + saveID);
-            phone.saveMenu();
-            break;
-        case "phone_save_load_0":
-        case "phone_save_load_1":
-        case "phone_save_load_2":
-        case "phone_save_load_3":
-        case "phone_save_load_4":
-        case "phone_save_load_5":
-        case "phone_save_load_6":
-        case "phone_save_load_7":
-        case "phone_save_load_8":
-        case "phone_save_load_9":
-            var loadId = name.replace("phone_save_load_", "");
-            if (g.newLoad) {
+    else if (name.startsWith("phone_charsel_")) {
+        nav.killbuttonStartsWith("phone_charsel_");
+        var charstep1 = name.replace("phone_charsel_", "");
+        var varstep2 = charstep1.split("_");
+        var ch = sc.getMission(varstep2[0], varstep2[1]);
+        console.log(charstep1);
+        console.log(varstep2);
+        nav.t({
+            type: "zimg",
+            name: "phone_charsel_" + sc.charMission[ch.i].name + "_" + sc.charMission[ch.i].mission[ch.j].missionName,
+            "left": 850,
+            "top": 250,
+            font: 30,
+            hex: "#ffffff",
+            text: sc.charMission[ch.i].mission[ch.j].title + " [" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus) + "]"
+        }, 9999);
+        nav.t({
+            type: "zimg",
+            name: "phone_charsel_",
+            "left": 900,
+            "top": 300,
+            font: 20,
+            hex: "#ffffff",
+            text: sc.charMission[ch.i].mission[ch.j].desc
+        }, 1);
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_charselect_" + varstep2[0],
+            "left": 800,
+            "top": 250,
+            "width": 40,
+            "height": 40,
+            "image": "999_phone/char_down.png",
+        }, 9999);
+        for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
+            nav.t({
+                type: "zimg",
+                name: "phone_charsel_",
+                "left": 910,
+                "top": 350 + (i * 40),
+                font: 30,
+                hex: "#ffffff",
+                text: "[" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus) + "] " + sc.charMission[ch.i].mission[ch.j].task[i].txt
+            }, 1);
+        }
+    }
+    else {
+        switch (name) {
+            case "phonex_power":
+                phone.clear(true);
+                break;
+            case "phonex_menu":
+                phone.clear(true);
+                phone.build();
+                break;
+            case "phone_save":
+                phone.saveMenu();
+                break;
+            case "phone_rel":
+                phone.characters();
+                break;
+            case "phone_settings":
+                phone.settings();
+                break;
+            case "phone_pic":
+                phone.pictures();
+                break;
+            case "phone_help":
+                window.open("http://fapforce5.com", "_blank");
+                break;
+            case "phone_patron":
+                window.open("https://www.patreon.com/FF5", "_blank");
+                break;
+            case "phone_thankyou":
+                phone.thankyou();
+                break;
+            case "phone_contacts":
+                phone.clear(false);
+                nav.button({
+                    "type": "zimg",
+                    "name": "phone_",
+                    "left": 451,
+                    "top": 155,
+                    "width": 1185,
+                    "height": 815,
+                    "image": "999_phone/call_bg.jpg",
+                }, 9999);
+                break;
+            case "phone_ach":
+                phone.clear(false);
+                nav.button({
+                    "type": "zimg",
+                    "name": "phone_",
+                    "left": 451,
+                    "top": 155,
+                    "width": 1185,
+                    "height": 815,
+                    "image": "999_phone/Achievements_bg.jpg",
+                }, 9999);
+                break;
+            case "phone_time":
+                phone.passtime();
+                break;
+            case "phone_setting_diff0":
+            case "phone_setting_diff1":
+            case "phone_setting_diff2":
+                gv.set("difficulty", parseInt(name.replace("phone_setting_diff", "")));
+                phone.settings();
+                break;
+            case "phone_setting_clock12":
+            case "phone_setting_clock24":
+                gv.set("clock24", name.replace("phone_setting_clock", ""));
+                phone.settings();
+                break;
+            case "phone_setting_fantOff":
+            case "phone_setting_fantOn":
+                gv.set("fantasyCreatures", name === "phone_setting_fantOn");
+                phone.settings();
+                break;
+            case "phone_save_save_0":
+            case "phone_save_save_1":
+            case "phone_save_save_2":
+            case "phone_save_save_3":
+            case "phone_save_save_4":
+            case "phone_save_save_5":
+            case "phone_save_save_6":
+            case "phone_save_save_7":
+            case "phone_save_save_8":
+                var saveID = name.replace("phone_save_save_", "");
+                menu.save('HatMP_' + saveID);
+                phone.saveMenu();
+                break;
+            case "phone_save_load_0":
+            case "phone_save_load_1":
+            case "phone_save_load_2":
+            case "phone_save_load_3":
+            case "phone_save_load_4":
+            case "phone_save_load_5":
+            case "phone_save_load_6":
+            case "phone_save_load_7":
+            case "phone_save_load_8":
+            case "phone_save_load_9":
+                var loadId = name.replace("phone_save_load_", "");
+                if (g.newLoad) {
+                    chat(-1, 0);
+                    menu.load('HatMP_' + loadId);
+                }
+                else {
+                    nav.button({
+                        "type": "zimg",
+                        "name": "phone_load_verify",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "999_phone/verify.png",
+                    }, 9999);
+
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_",
+                        left: 750,
+                        top: 400,
+                        font: 30,
+                        hex: "#ffffff",
+                        text: "Are you sure you wish to load: "
+                    }, 1);
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_",
+                        left: 650,
+                        top: 450,
+                        font: 30,
+                        hex: "#ffffff",
+                        text: $(".room-img[data-name='phone_save_load_name_" + loadId + "']").text()
+                    }, 1);
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "phone_save_load_verify_" + loadId,
+                        "left": 650,
+                        "top": 600,
+                        "width": 250,
+                        "height": 100,
+                        "image": "999_phone/load.png",
+                    }, 9999);
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "phone_save_load_cancel",
+                        "left": 1030,
+                        "top": 600,
+                        "width": 250,
+                        "height": 100,
+                        "image": "999_phone/cancel.png",
+                    }, 9999); nav.button({
+                        "type": "zimg",
+                        "name": "phone_load_verify",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "999_phone/verify.png",
+                    }, 9999);
+
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_",
+                        left: 750,
+                        top: 400,
+                        font: 30,
+                        hex: "#ffffff",
+                        text: "Are you sure you wish to load: "
+                    }, 1);
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_",
+                        left: 650,
+                        top: 450,
+                        font: 30,
+                        hex: "#ffffff",
+                        text: $(".room-img[data-name='phone_save_load_name_" + loadId + "']").text()
+                    }, 1);
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "phone_save_load_verify_" + loadId,
+                        "left": 650,
+                        "top": 600,
+                        "width": 250,
+                        "height": 100,
+                        "image": "999_phone/load.png",
+                    }, 9999);
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "phone_save_load_cancel",
+                        "left": 1030,
+                        "top": 600,
+                        "width": 250,
+                        "height": 100,
+                        "image": "999_phone/cancel.png",
+                    }, 9999);
+
+                }
+                break;
+            case "phone_save_load_cancel":
+                phone.saveMenu();
+                break;
+            case "phone_save_load_verify_0":
+            case "phone_save_load_verify_1":
+            case "phone_save_load_verify_2":
+            case "phone_save_load_verify_3":
+            case "phone_save_load_verify_4":
+            case "phone_save_load_verify_5":
+            case "phone_save_load_verify_6":
+            case "phone_save_load_verify_7":
+            case "phone_save_load_verify_8":
+            case "phone_save_load_verify_9":
+                var loadverifyId = name.replace("phone_save_load_verify_", "");
                 chat(-1, 0);
-                menu.load('HatMP_' + loadId);
-            }
-            else {
+                menu.load('HatMP_' + loadverifyId);
+                break;
+            case "phone_save_delete_0":
+            case "phone_save_delete_1":
+            case "phone_save_delete_2":
+            case "phone_save_delete_3":
+            case "phone_save_delete_4":
+            case "phone_save_delete_5":
+            case "phone_save_delete_6":
+            case "phone_save_delete_7":
+            case "phone_save_delete_8":
+                var delId = name.replace("phone_save_delete_", "");
                 nav.button({
                     "type": "zimg",
                     "name": "phone_load_verify",
@@ -627,7 +872,7 @@ room9999.btnclick = function (name) {
                     top: 400,
                     font: 30,
                     hex: "#ffffff",
-                    text: "Are you sure you wish to load: "
+                    text: "Are you sure you wish to delete: "
                 }, 1);
                 nav.t({
                     type: "zimg",
@@ -636,16 +881,16 @@ room9999.btnclick = function (name) {
                     top: 450,
                     font: 30,
                     hex: "#ffffff",
-                    text: $(".room-img[data-name='phone_save_load_name_" + loadId + "']").text()
+                    text: $(".room-img[data-name='phone_save_load_name_" + delId + "']").text()
                 }, 1);
                 nav.button({
                     "type": "zbtn",
-                    "name": "phone_save_load_verify_" + loadId,
+                    "name": "phone_save_delete_verify_" + delId,
                     "left": 650,
                     "top": 600,
                     "width": 250,
                     "height": 100,
-                    "image": "999_phone/load.png",
+                    "image": "999_phone/delete.png",
                 }, 9999);
                 nav.button({
                     "type": "zbtn",
@@ -654,166 +899,46 @@ room9999.btnclick = function (name) {
                     "top": 600,
                     "width": 250,
                     "height": 100,
-                    "image": "999_phone/cancel.png",
-                }, 9999);nav.button({
-                    "type": "zimg",
-                    "name": "phone_load_verify",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "999_phone/verify.png",
+                    "image": "999_phone/cancel_grey.png",
                 }, 9999);
-
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 750,
-                    top: 400,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Are you sure you wish to load: "
-                }, 1);
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 650,
-                    top: 450,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: $(".room-img[data-name='phone_save_load_name_" + loadId + "']").text()
-                }, 1);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_load_verify_" + loadId,
-                    "left": 650,
-                    "top": 600,
-                    "width": 250,
-                    "height": 100,
-                    "image": "999_phone/load.png",
-                }, 9999);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_load_cancel",
-                    "left": 1030,
-                    "top": 600,
-                    "width": 250,
-                    "height": 100,
-                    "image": "999_phone/cancel.png",
-                }, 9999);
-
-            }
-            break;
-        case "phone_save_load_cancel":
-            phone.saveMenu();
-            break;
-        case "phone_save_load_verify_0":
-        case "phone_save_load_verify_1":
-        case "phone_save_load_verify_2":
-        case "phone_save_load_verify_3":
-        case "phone_save_load_verify_4":
-        case "phone_save_load_verify_5":
-        case "phone_save_load_verify_6":
-        case "phone_save_load_verify_7":
-        case "phone_save_load_verify_8":
-        case "phone_save_load_verify_9":
-            var loadverifyId = name.replace("phone_save_load_verify_", "");
-            chat(-1, 0);
-            menu.load('HatMP_' + loadverifyId);
-            break;
-        case "phone_save_delete_0":
-        case "phone_save_delete_1":
-        case "phone_save_delete_2":
-        case "phone_save_delete_3":
-        case "phone_save_delete_4":
-        case "phone_save_delete_5":
-        case "phone_save_delete_6":
-        case "phone_save_delete_7":
-        case "phone_save_delete_8":
-            var delId = name.replace("phone_save_delete_", "");
-            nav.button({
-                "type": "zimg",
-                "name": "phone_load_verify",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "999_phone/verify.png",
-            }, 9999);
-
-            nav.t({
-                type: "zimg",
-                name: "phone_",
-                left: 750,
-                top: 400,
-                font: 30,
-                hex: "#ffffff",
-                text: "Are you sure you wish to delete: "
-            }, 1);
-            nav.t({
-                type: "zimg",
-                name: "phone_",
-                left: 650,
-                top: 450,
-                font: 30,
-                hex: "#ffffff",
-                text: $(".room-img[data-name='phone_save_load_name_" + delId + "']").text()
-            }, 1);
-            nav.button({
-                "type": "zbtn",
-                "name": "phone_save_delete_verify_" + delId,
-                "left": 650,
-                "top": 600,
-                "width": 250,
-                "height": 100,
-                "image": "999_phone/delete.png",
-            }, 9999);
-            nav.button({
-                "type": "zbtn",
-                "name": "phone_save_load_cancel",
-                "left": 1030,
-                "top": 600,
-                "width": 250,
-                "height": 100,
-                "image": "999_phone/cancel_grey.png",
-            }, 9999);
-            break;
-        case "phone_save_delete_verify_0":
-        case "phone_save_delete_verify_1":
-        case "phone_save_delete_verify_2":
-        case "phone_save_delete_verify_3":
-        case "phone_save_delete_verify_4":
-        case "phone_save_delete_verify_5":
-        case "phone_save_delete_verify_6":
-        case "phone_save_delete_verify_7":
-        case "phone_save_delete_verify_8":
-            var deleteId = name.replace("phone_save_delete_verify_", "");
-            menu.saveDel('HatMP_' + deleteId);
-            phone.saveMenu();
-            break;
-        case "phone_save_export_0":
-        case "phone_save_export_1":
-        case "phone_save_export_2":
-        case "phone_save_export_3":
-        case "phone_save_export_4":
-        case "phone_save_export_5":
-        case "phone_save_export_6":
-        case "phone_save_export_7":
-        case "phone_save_export_8":
-        case "phone_save_export_9":
-            var exportId = name.replace("phone_save_export_", "");
-            char.export(exportId);
-            break;
-        case "phone_save_import":
-            $('#room-export-text').hide();
-            $('#room-import-text').show();
-            $("#room_export").slideDown();
-            $("#room_export_data").val('');
-            $('#room_export_load').show();
-            $('#room_export_load_file').show();
-            $('#room_export_file').hide();
-            break;
-        default:
-            break;
+                break;
+            case "phone_save_delete_verify_0":
+            case "phone_save_delete_verify_1":
+            case "phone_save_delete_verify_2":
+            case "phone_save_delete_verify_3":
+            case "phone_save_delete_verify_4":
+            case "phone_save_delete_verify_5":
+            case "phone_save_delete_verify_6":
+            case "phone_save_delete_verify_7":
+            case "phone_save_delete_verify_8":
+                var deleteId = name.replace("phone_save_delete_verify_", "");
+                menu.saveDel('HatMP_' + deleteId);
+                phone.saveMenu();
+                break;
+            case "phone_save_export_0":
+            case "phone_save_export_1":
+            case "phone_save_export_2":
+            case "phone_save_export_3":
+            case "phone_save_export_4":
+            case "phone_save_export_5":
+            case "phone_save_export_6":
+            case "phone_save_export_7":
+            case "phone_save_export_8":
+            case "phone_save_export_9":
+                var exportId = name.replace("phone_save_export_", "");
+                char.export(exportId);
+                break;
+            case "phone_save_import":
+                $('#room-export-text').hide();
+                $('#room-import-text').show();
+                $("#room_export").slideDown();
+                $("#room_export_data").val('');
+                $('#room_export_load').show();
+                $('#room_export_load_file').show();
+                $('#room_export_file').hide();
+                break;
+            default:
+                break;
+        }
     }
 };

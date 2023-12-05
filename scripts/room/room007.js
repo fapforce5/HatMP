@@ -41,7 +41,14 @@ room7.main = function () {
                 
         }
         else if (cl.pantiesTxt() === "panties") {
-            if (!gender.getChange("landlord","panties")) {
+            if (cl.c.panties === "c") { //ll panties
+                nav.bg("7_mainCharRoomAlt/wake_landlord_nightgown_angry.jpg")
+                sc.modSecret("landlord", 25);
+                sc.modLevel("landlord", -100, 999);
+                gender.setChanges("landlord", "panties");
+                chat(24, 7);
+            }
+            else if (!gender.getChange("landlord","panties")) {
                 sc.modSecret("landlord", 25);
                 gender.setChanges("landlord", "panties");
                 chat(21, 7);
@@ -587,6 +594,9 @@ room7.chatcatch = function (callback) {
             sc.modLevel("landlord", 15, 999);
             nav.bg("7_mainCharRoomAlt/jack1.jpg");
             break;
+        case "removeLlPanties":
+            cl.remove("panties", "c");
+            break;
         default:
             break;
     }
@@ -804,6 +814,23 @@ room7.chat = function (chatID) {
             text: "I see you're still wearing panties. I hope you find someone that is open enough to tolerate that.  ",
             button: [
                 { chatID: 9, text: "I will.", callback: "clearRoom" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "landlord",
+            text: "Those are MY panties! What kind fucked up shit are you doing in my panties! Give those back right now! I don't " +
+                "want your butt sweat and cum in them! I've never! ",
+            button: [
+                { chatID: 25, text: "Oh crap [Give her back her panties]", callback: "removeLlPanties" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "landlord",
+            text: "Now I have to go wash your nastyness off them. Get up and get going!  ",
+            button: [
+                { chatID: 9, text: "ok", callback: "clearRoom" },
             ]
         },
     ];

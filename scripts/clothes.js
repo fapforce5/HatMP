@@ -55,14 +55,14 @@ cl.init = function () {
         { type: "panties", name: "r", display: "Red Panties", img: "panties_red.png", sex: "f", inv: false, daring: 2, price: 45 },
         { type: "panties", name: "c", display: "Cheetah Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "m", display: "Frilly Panties", img: "panties_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
-        { type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
+        //{ type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "cl", display: "Spankies", img: "panties_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
-        { type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
-        { type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        //{ type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        //{ type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "b", display: "Black Lowrise Panties", img: "panties_blackLowrise.png", sex: "f", inv: false, daring: 3, price: 50 },
         { type: "panties", name: "p", display: "Pink Thong", img: "panties_pinkThong.png", sex: "f", inv: false, daring: 3, price: 95 },
         { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
-        { type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
+        //{ type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
 
         { type: "bra", name: "p", display: "Pink Bra", img: "bra_pink.png", sex: "f", inv: false, daring: 1, price: 40 },
         { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -249,7 +249,8 @@ cl.add = function (type, name) {
 
 cl.remove = function (type, name) {
     var i;
-    cl.list[cl.where(type, name)].inv = false;
+    var clindex = cl.where(type, name);
+    cl.list[clindex].inv = false;
     for (i = 0; i < 5; i++) {
         switch (type) {
             case "shoes":
@@ -334,6 +335,8 @@ cl.remove = function (type, name) {
             console.log("missing: " + type + ", " + name);
             break;
     }
+    cl.display();
+    g.popUpNotice("You lost your " + cl.list[clindex].display + ". ");
 };
 
 cl.nude = function () {
