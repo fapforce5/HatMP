@@ -136,7 +136,7 @@ room350.chatcatch = function (callback) {
             char.room(0);
             break;
         case "leaveDown":
-            sc.modLevel("landlord", -30);
+            sc.modLevel("landlord", -30, 999);
             char.room(0);
             break;
         case "sperm0":

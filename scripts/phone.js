@@ -3,6 +3,7 @@ var room9999 = {};
 //var pic = {};
 
 phone.build = function (selection) {
+    phone.clear(true);
     var btnList = [
         { n: "phone_save", img: "bSave", x: 0, y: 0 },
         { n: "phone_rel", img: "bRelationships", x: 1, y: 0 },
@@ -13,8 +14,9 @@ phone.build = function (selection) {
         { n: "phone_time", img: "bTime", x: 0, y: 1 },
         { n: "phone_ach", img: "bAch", x: 2, y: 1 },
         { n: "phone_settings", img: "bSettings", x: 3, y: 1 },
-              
-        { n: "phone_help", img: "bHelp", x: 0, y: 2 },
+
+        { n: "phone_cheat", img: "bCheat", x: 0, y: 2 },
+        { n: "phone_help", img: "bHelp", x: 1, y: 2 },
         { n: "phone_patron", img: "bPatron", x: 2, y: 2 },
         { n: "phone_thankyou", img: "bPatreon", x: 3, y: 2 }
     ];
@@ -270,17 +272,20 @@ phone.pictures = function () {
         "height": 815,
         "image": "999_phone/pics_bg.jpg",
     }, 9999);
+    var c = 0;
     for (var i = 0; i < pic.master.length; i++) {
-        if(pic.master[i].entry)
-        nav.button({
-            "type": "zbtn",
-            "name": "phone_photo_" + pic.master[i].name,
-            "left": 485 + ((i % 7) * 160),
-            "top": 200 + (Math.floor(i / 7) * 160),
-            "width": 150,
-            "height": 150,
-            "image": "../inv/pics/" + pic.master[i].thumb,
-        }, 9999);
+        if (pic.master[i].entry) {
+            nav.button({
+                "type": "zbtn",
+                "name": "phone_photo_" + pic.master[i].name,
+                "left": 485 + ((c % 7) * 160),
+                "top": 200 + (Math.floor(c / 7) * 160),
+                "width": 150,
+                "height": 150,
+                "image": "999_phone/pic/" + pic.master[i].thumb,
+            }, 9999);
+            c++;
+        }
     }
 };
 
@@ -455,7 +460,9 @@ phone.thankyou = function () {
         "image": "999_phone/thankyou_bg.jpg",
     }, 9999);
     var l = [
-        "Arothiel", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin", "reverseclipse",
+        "Arothiel", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
+        "Rachel",
+        "reverseclipse",
         "SirGuren (Contributor)", "WendyJ", "Wild86willie"
     ];
     $.each(l, function (i, v) {
@@ -551,6 +558,89 @@ phone.passtime = function () {
     }
 };
 
+phone.cheat = function () {
+    phone.clear(false);
+
+    if (gv.get("cheatMode")) {
+
+        nav.button({
+            "type": "zimg",
+            "name": "phone_",
+            "left": 451,
+            "top": 155,
+            "width": 1185,
+            "height": 815,
+            "image": "999_phone/cheat_bg.jpg",
+        }, 9999);
+
+        var levelToMod = ["fitness", "charisma"];
+
+        nav.t({
+            type: "zimg",
+            name: "phone_cheatmod",
+            left: 700,
+            top: 300,
+            font: 40,
+            hex: "#ffffff",
+            text: "Money: $" + gv.get("money")
+        }, 1);
+
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_cheatmod_money",
+            "left": 1200,
+            "top": 300,
+            "width": 250,
+            "height": 50,
+            "image": "999_phone/cheat_money.png",
+        }, 9999);
+
+        for (var i = 0; i < levelToMod.length; i++) {
+            var l = levels.st[levels.i(levelToMod[i])];
+            nav.t({
+                type: "zimg",
+                name: "phone_cheatmod",
+                left: 700,
+                top: 300 + ((i + 1) * 155),
+                font: 40,
+                hex: "#ffffff",
+                text: l.d + " Level: " + l.l
+            }, 1);
+
+            nav.button({
+                "type": "zbtn",
+                "name": "phone_cheatmod_level_" + levelToMod[i],
+                "left": 1200,
+                "top": 300 + ((i + 1) * 155),
+                "width": 250,
+                "height": 50,
+                "image": "999_phone/cheat_level.png",
+            }, 9999);
+        }
+    }
+    else {
+        nav.button({
+            "type": "zimg",
+            "name": "phone_",
+            "left": 451,
+            "top": 155,
+            "width": 1185,
+            "height": 815,
+            "image": "999_phone/cheat_bg1.jpg",
+        }, 9999);
+
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_cheatmod_on",
+            "left": 651,
+            "top": 600,
+            "width": 800,
+            "height": 100,
+            "image": "999_phone/cheat_button.png",
+        }, 9999);
+    }
+};
+
 room9999.btnclick = function (name) {
     if (name.startsWith("phone_photo_")) {
         phone.clear(false);
@@ -564,7 +654,7 @@ room9999.btnclick = function (name) {
                     "top": 155,
                     "width": 1185,
                     "height": 815,
-                    "image": "../inv/pics/" + pic.master[i].image,
+                    "image": "999_phone/pic/" + pic.master[i].image,
                 }, 9999);
             }
             phone.backbutton("phone_pic");
@@ -581,6 +671,9 @@ room9999.btnclick = function (name) {
             phone.build("time");
         }
         else {
+            var timeHour = parseInt(modTime);
+            if (timeHour === 0)
+                g.dt.setDate(g.dt.getDate() + 1);
             char.settime(parseInt(modTime), 0);
             char.room(g.roomID);
             phone.build("time");
@@ -591,6 +684,7 @@ room9999.btnclick = function (name) {
         var charstep1 = name.replace("phone_charsel_", "");
         var varstep2 = charstep1.split("_");
         var ch = sc.getMission(varstep2[0], varstep2[1]);
+        var roomList = "";
         console.log(charstep1);
         console.log(varstep2);
         nav.t({
@@ -620,7 +714,9 @@ room9999.btnclick = function (name) {
             "height": 40,
             "image": "999_phone/char_down.png",
         }, 9999);
+        
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
+            roomList = " Room: " + g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name;
             nav.t({
                 type: "zimg",
                 name: "phone_charsel_",
@@ -628,8 +724,25 @@ room9999.btnclick = function (name) {
                 "top": 350 + (i * 40),
                 font: 30,
                 hex: "#ffffff",
-                text: "[" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus) + "] " + sc.charMission[ch.i].mission[ch.j].task[i].txt
+                text: "[" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus) + "] " + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
             }, 1);
+        }
+    }
+    else if (name.startsWith("phone_cheatmod")) {
+        if (name === "phone_cheatmod_money") {
+            gv.mod("money", 100);
+            phone.cheat();
+            $('#char_alert').hide();
+        }
+        else if (name === "phone_cheatmod_on") {
+            gv.set("cheatMode", true);
+            phone.cheat();
+        }
+        else {
+            var cheatLevel = name.replace("phone_cheatmod_level_", "");
+            levels.mod(cheatLevel, 100, 999);
+            phone.cheat();
+            $('#char_alert').hide();
         }
     }
     else {
@@ -652,6 +765,9 @@ room9999.btnclick = function (name) {
                 break;
             case "phone_pic":
                 phone.pictures();
+                break;
+            case "phone_cheat":
+                phone.cheat();
                 break;
             case "phone_help":
                 window.open("http://fapforce5.com", "_blank");

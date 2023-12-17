@@ -10,7 +10,7 @@ g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
 g.version = 21.0;
-g.versionText = "0.20.1 - OCT 2023";
+g.versionText = "0.21.0 - DEC 2023";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -19,7 +19,7 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 750, 901, 902, 408, 478, 479, 480];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 750, 901, 902, 408, 478, 479, 480];
 g.roomChange = [10, 12, 56, 201, 209, 451, 452, 503, 552, 553, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
@@ -165,6 +165,8 @@ g.rooms = [
     { roomID: 2, name: "Help", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: -1, btn: "roomBtn_-1.png" },
     { roomID: 3, name: "Check", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: -1, btn: "roomBtn_-1.png" },
 
+    { roomID: 4, name: "Lola Massage", image: "4_lolamassage/bg.jpg", nightImage: "4_lolamassage/bg_night.jpg", houseID: 16, btn: "roomBtn_7.png" },
+    { roomID: 5, name: "Eva Massage", image: "5_evaMassage/bg.jpg", nightImage: "5_evaMassage/bg_night.jpg", houseID: 16, btn: "roomBtn_7.png" },
     { roomID: 6, name: "List", image: "6_computer/bg.jpg", nightImage: "6_computer/bg.jpg", houseID: 16, btn: "roomBtn_7.png" },
     { roomID: 7, name: "My Room ALT", image: "7_mainCharRoomAlt/7_mainCharRoomAlt.jpg", nightImage: "7_mainCharRoomAlt/7_mainCharRoomAlt.jpg", houseID: 16, btn: "roomBtn_7.png" },
     { roomID: 8, name: "My Wardrobe", image: "8_wardrobe/8_wardrobe.jpg", nightImage: "8_wardrobe/8_wardrobe.jpg", houseID: 16, btn: "roomBtn_8.png" },
@@ -510,6 +512,13 @@ g.room = function (roomID) {
     return "room" + roomID.toString();
 };
 
+g.getRooms = function (roomID) {
+    for (i = 0; i < g.rooms.length; i++)
+        if (g.rooms[i].roomID === roomID)
+            return g.rooms[i];
+    return null;
+}
+
 Number.prototype.between = function (a, b) {
     var min = Math.min.apply(Math, [a, b]),
       max = Math.max.apply(Math, [a, b]);
@@ -608,12 +617,9 @@ g.newLine = function (str, maxLength) {
 g.save = function () {
     var i;
     var retArra = {
-        //st: new Array(),
         roomMap: new Array(),
         roomID: g.roomID,
-        dt: g.dt, 
-        //sissy: new Array(),
-        //map: g.map
+        dt: g.dtstring() //timezone share bug fix
     };
 
     for (i = 0; i < g.roomMap.length; i++) {
@@ -626,19 +632,20 @@ g.save = function () {
         }
     }
 
-    //for (i = 0; i < g.sissy.length; i++) {
-    //    if (g.sissy[i].ach)
-    //        retArra.sissy.push(i);
-    //}
-
     return retArra;
 };
 
-g.load = function (rma, thisVersion) {
-    var i, j, ksissy;
+g.load = function (rma) {
+    var i, j;
     g.initGame();
     g.roomID = rma.roomID;
-    g.dt = new Date(rma.dt);
+    if (rma.dt.indexOf("|") > -1) {
+        var ds = rma.dt.split("|");
+        g.dt = new Date(ds[0], ds[1], ds[2], ds[3], ds[4], ds[5], 0);
+    }
+    else {
+        g.dt = new Date(rma.dt);
+    }
     g.prevview = null;
     g.map = rma.map;
     g.roomMapInit();
@@ -662,6 +669,12 @@ g.initGame = function () {
     gv.init();
     g.roomMapInit();
 };
+
+g.dtstring = function () {
+    return g.dt.getFullYear().toString() + "|" + pad2(g.dt.getMonth() + 1) + "|" + pad2(g.dt.getDate()) + "|" + pad2(g.dt.getHours()) + "|" + pad2(g.dt.getMinutes()) + "|" + pad2(g.dt.getSeconds())
+}
+
+function pad2(n) { return n < 10 ? '0' + n : n }
 
 //g.sumSissy = function () {
 //    var i;

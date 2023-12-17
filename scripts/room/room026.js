@@ -22,7 +22,32 @@ room26.main = function () {
     //else {
     var btnList = new Array();
     if (sc.getTimeline("landlord").thisRoom) {
-        if (sc.getTimeline("lola").thisRoom) {
+        if (sc.getTimeline("bigguy").thisRoom) {
+            if (daily.get("bigguy")) {
+                nav.bg("26_livingRoom/bg_1.jpg");
+                chat(26, 26);
+            }
+            else {
+                var straightPath = sc.taskGetStep("bigguy", "straight");
+                if (straightPath === 0) {
+                    nav.bg("26_livingRoom/bg_1.jpg");
+                    chat(17, 26);
+                }
+                else if (straightPath === 1) {
+                    nav.bg("26_livingRoom/bg_2.jpg");
+                    chat(19, 26);
+                }
+                else if (straightPath === 2) {
+                    nav.bg("26_livingRoom/bg_4.jpg");
+                    chat(23, 26);
+                }
+                else if (straightPath === 3) {
+                    nav.bg("26_livingRoom/bg_1.jpg");
+                    chat(23, 26);
+                }
+            }
+        }
+        else if (sc.getTimeline("lola").thisRoom) {
             nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
             btnList.push({
                 "type": "btn",
@@ -45,17 +70,17 @@ room26.main = function () {
                 "height": 942,
                 "image": "26_livingRoom/ll.png"
             });
-            if (sc.getstep("bigguy") === 6) {
-                btnList.push({
-                    "type": "btn",
-                    "name": "bigguy",
-                    "left": 430,
-                    "top": 80,
-                    "width": 303,
-                    "height": 303,
-                    "image": "26_livingRoom/bigguy.png"
-                });
-            }
+            //if (sc.getstep("bigguy") === 6) {
+            //    btnList.push({
+            //        "type": "btn",
+            //        "name": "bigguy",
+            //        "left": 430,
+            //        "top": 80,
+            //        "width": 303,
+            //        "height": 303,
+            //        "image": "26_livingRoom/bigguy.png"
+            //    });
+            //}
         }
     }
 
@@ -124,11 +149,17 @@ room26.btnclick = function (name) {
 room26.chatcatch = function (callback) {
     $.each(callback.split(" "), function (i, v) {
         switch (v.trim()) {
+            case "bg_3":
+            case "bg_4":
+            case "bg_5":
+            case "bg_6":
+                nav.bg("26_livingRoom/" + callback + ".jpg");
+                break;
             case "passtime":
                 char.addtime(30);
                 break;
             case "level1":
-                sc.modLevel("landlord", 100, 0);
+                sc.modLevel("landlord", 100, 4);
                 break;
             case "daily":
                 daily.set("landlord");
@@ -153,11 +184,29 @@ room26.chatcatch = function (callback) {
                 inv.add("landlordKey");
                 levels.mod("landlord", 10, 3);
                 daily.set("landlord");
+                mission.startMission("landlord", "man");
                 break;
             case "talk_2_complete":
                 sc.completeMissionTask("landlord", "talk", 2);
                 levels.mod("landlord", 50, 3);
                 daily.set("landlord");
+                break;
+            case "bg_s_0_end":
+                sc.char[sc.i("bigguy")].show = true;
+                sc.completeMissionTask("bigguy", "straight", 0, true);
+                char.addtime(37);
+                daily.set("bigguy");
+                break;
+            case "bg_s_1_end":
+                gv.mod("money", 10);
+                sc.completeMissionTask("bigguy", "straight", 1, true);
+                char.addtime(37);
+                daily.set("bigguy");
+                break;
+            case "bg_s_2_end":
+                sc.completeMissionTask("bigguy", "straight", 2, true);
+                char.addtime(37);
+                daily.set("bigguy");
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -331,6 +380,102 @@ room26.chat = function (chatID) {
                 "So I hate them and you should avoid them, I use them for their money. ",
             button: [
                 { chatID: 11, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "landlord",
+            text: "Hi honey. I don't think you've met " + sc.n("bigguy") + " yet. ",
+            button: [
+                { chatID: 18, text: "oh. Hello.", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "bigguy",
+            text: "Oh. Hi. Why don't you run along little one. Your " + sc.n("landlord") + " and I kinda busy here. ",
+            button: [
+                { chatID: -1, text: "oh. ok. ", callback: "bg_s_0_end" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "landlord",
+            text: "Oh fuck... right there.... fuck.....",
+            button: [
+                { chatID: 20, text: sc.n("landlord") + "?", callback: "bg_3" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "landlord",
+            text: "Oh my. I guess I got caught being a bit naughty. ",
+            button: [
+                { chatID: 21, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "bigguy",
+            text: "Hey kid. Why don't you run along and go play in traffic or something. Let the grown ups talk about grown up things. ",
+            button: [
+                { chatID: 22, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "landlord",
+            text: "Here's $10. Go play at the mall. I know you guys like playing at the mall. ok. ",
+            button: [
+                { chatID: -1, text: "Oh. Sure. ", callback: "bg_s_1_end" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "bigguy",
+            text: "You ever see real man's cock cum in your " + sc.n("landlord") + "? ",
+            button: [
+                { chatID: 24, text: "huh? ", callback: "bg_5" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "landlord",
+            text: "*gulp*",
+            button: [
+                { chatID: 24, text: " ", callback: "bg_6" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "landlord",
+            text: "Oh my. I'm sorry you saw this. You see sometimes when two adults get together.. ",
+            button: [
+                { chatID: 25, text: "I know what's going on. I don't need the details. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "bigguy",
+            text: "Since you're such a smart little guy, why don't you figure out how to remove yourself from this room. ",
+            button: [
+                { chatID: -1, text: "Ugh. ok", callback: "bg_s_2_end" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "bigguy",
+            text: "I know I told you to run along. Now get going before I move you along. ",
+            button: [
+                { chatID: -1, text: "*Huff*", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "bigguy",
+            text: "Why don't you run along cock blocker.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

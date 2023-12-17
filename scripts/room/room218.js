@@ -4,6 +4,30 @@ room218.main = function () {
     if (gv.get("arousal") < 50) {
         char.room(missy.jobs[g.pass].page);
     }
+    else if (cl.c.chastity !== null) {
+        switch (g.pass) {
+            case 0:
+                nav.bg("201_bathroom/bg0.jpg");
+                chat(14, 218);
+                break;
+            case 1:
+                nav.bg("218_masturbate/file.jpg")
+                chat(15, 218);
+                break;
+            case 2:
+                nav.bg("219_dataEntry/bg.jpg");
+                chat(16, 218);
+                break;
+            case 3:
+                char.room(missy.jobs[g.pass].page);
+                chat(11, 218);
+                break;
+            case 4:
+                char.room(missy.jobs[g.pass].page);
+                break;
+
+        }
+    }
     else {
         switch (g.pass) {
             case 0:
@@ -27,7 +51,7 @@ room218.main = function () {
 
         }
 
-        chat(0, 218);
+        //chat(0, 218);
     }
 };
 
@@ -201,6 +225,31 @@ room218.chat = function (chatID) {
             chatID: 13,
             speaker: "thinking",
             text: "Gross. I better clean that cum off the monitor. ",
+            button: [
+                { chatID: -1, text: "...", callback: "backToWork" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "thinking",
+            text: "FUCK! I can feel my dick pressing against my cage! I need to get this thing off! ",
+            button: [
+                { chatID: -1, text: "...", callback: "backToWork" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "thinking",
+            text: sc.n("missy") + " looks like she's hurtin' for a squirtin'. I wonder if she'd take off my chastity and blow " +
+                "me if I pulled down my pants? ",
+            button: [
+                { chatID: -1, text: "...", callback: "backToWork" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "I wish I could get one of those blow jobs from " + sc.n("cecilia") + "! Stupid fucking chastity! ",
             button: [
                 { chatID: -1, text: "...", callback: "backToWork" },
             ]

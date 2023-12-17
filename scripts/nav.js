@@ -283,8 +283,11 @@ nav.buildclock = function () {
     weekday[5] = "Fri";
     weekday[6] = "Sat";
 
+    var timeDiff = Math.abs(g.dt.getTime() - g.startDate.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
     $('#char_clock_time').text(nav.friendlyTime());
-    $('#char_clock_dow').text(weekday[g.dt.getDay()]);
+    $('#char_clock_dow').text("Day: " + diffDays + ", " + weekday[g.dt.getDay()]);
 };
 nav.twodigits = function (n) {
     return n < 10 ? '0' + n : n;

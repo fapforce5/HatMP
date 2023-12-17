@@ -10,12 +10,21 @@ room204.countdown = function (timer) {
     if (g.roomTimeout !== null) {
         timer--;
         if (timer > 0) {
-            console.log(timer);
-            $('.room-img[data-name=countdown]').text("Seconds Left :" + timer);
-            if (g.internal.horny > 0 && !g.internal.s) {
-                
-                if (Math.floor(Math.random() * g.internal.horny) === 0) {
-                    g.internal.s = true;
+            nav.killbutton("coundownTimer");
+            nav.t({
+                type: "img",
+                name: "coundownTimer",
+                "left": 1000,
+                "top": 5,
+                font: 30,
+                hex: "#ffffff",
+                text: 'Seconds Left :' + timer
+            }, 1);
+            if (g.internal.horny !== null) {
+                g.internal.horny--;
+                if (g.internal.horny < 1) {
+                    g.internal.horny = g.internal.s;
+                    nav.killbutton("dirtythought");
                     nav.button({
                         "type": "img",
                         "name": "dirtythought",
@@ -89,8 +98,9 @@ room204.btnclick = function (name) {
 
 room204.startGame = function () {
     var thisArousal = gv.get("arousal");
-    var secondsOffsetForHorny = thisArousal > 50 ? Math.floor((115 - thisArousal) * .6) : 0;
-    g.internal = { s: false, horny: secondsOffsetForHorny, numberWrong: 0, pay: 0 };
+    var secondsOffsetForHorny = thisArousal > 50 ? Math.floor((150 - thisArousal) / 6) : null;
+    var startTime = secondsOffsetForHorny === null ? null : secondsOffsetForHorny / 2;
+    g.internal = { s: secondsOffsetForHorny, horny: startTime, numberWrong: 0, pay: 0 };
     $('#room_footer').hide();
     //88
     var checkArray = new Array();
@@ -118,8 +128,15 @@ room204.startGame = function () {
             clock = 60;
             break;
     }
-    $('#room-buttons').append('<div class="room-img" data-name="countdown" data-room="204" ' +
-        ' style="text-align:center; background:#000; color:#fff; font-size:1.5rem; width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" >Seconds Left :' + clock + '</div>');
+    nav.t({
+        type: "img",
+        name: "coundownTimer",
+        "left": 1000,
+        "top": 5,
+        font: 30,
+        hex: "#ffffff",
+        text: 'Seconds Left :' + clock
+    }, 1);
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 4; j++) {
             k = Math.floor(Math.random() * numEntries);
@@ -242,7 +259,7 @@ room204.chatcatch = function (callback) {
             break;
         case "killDirtyThought":
             nav.killbutton("dirtythought");
-            g.internal.s = false;
+            //g.internal.s = false;
             break;
         case "lunch":
             missy.didJob(1, null, g.internal.pay);

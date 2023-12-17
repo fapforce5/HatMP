@@ -27,7 +27,6 @@ room177.chatcatch = function (callback) {
         case "chastity5":
         case "chastity6":
         case "chastity7":
-        case "chastity10":
             nav.bg("177_chastity/" + callback + ".jpg");
             break;
         case "chastity4":
@@ -52,6 +51,10 @@ room177.chatcatch = function (callback) {
             break;
         case "chastity9":
             nav.killall();
+            nav.bg("177_chastity/" + callback + ".jpg");
+            break;
+        case "chastity10":
+            cl.c.chastity = g.internal;
             nav.bg("177_chastity/" + callback + ".jpg");
             break;
         case "chastity11":

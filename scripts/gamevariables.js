@@ -165,9 +165,10 @@ gv.init = function () {
     daily.st = [
         { n: "chloe", t: false },
         { n: "landlord", t: false },
-        { n: "eva", t: false },
+        { n: "landlordmolest", t: false },
+        { n: "evamassage", t: false },
         { n: "evatalk", t: false },
-        { n: "lola", t: false },
+        { n: "lolamassage", t: false },
         { n: "lolatalk", t: false },
         { n: "tif", t: false },
         { n: "candy", t: false },
@@ -469,7 +470,11 @@ gv.mod = function (name, amount) {
 
 levels.mod = function (name, amount, targetLevel) {
     var actualAmount;
-    var i, j;
+    var i, j, fitnessStart;
+    fitnessStart = null;
+    if (name === "fitness") {
+        fitnessStart = levels.get("fitness").l;
+    }
     for (i = 0; i < levels.st.length; i++) {
         if (levels.st[i].n === name) {
             if (amount > 0) {
@@ -520,6 +525,11 @@ levels.mod = function (name, amount, targetLevel) {
                 g.popUpNotice(levels.st[i].d + " points have decreased. ");
             }
         }
+    }
+    if (fitnessStart !== null) {
+        var fitnessEnd = levels.get("fitness").l;
+        if (fitnessStart !== fitnessEnd)
+            gv.mod("maxenergy", (fitnessEnd - fitnessStart) * 3);
     }
     sstat.makeGraph();
 };

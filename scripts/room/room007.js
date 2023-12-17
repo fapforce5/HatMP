@@ -21,7 +21,7 @@ room7.main = function () {
         gv.mod("arousal", 30);
         if (cl.c.pj === null && cl.c.panties === null) {
             if (cl.c.chastity === null) {
-                if (gv.get("arousal") > 80 && sc.getLevel("landlord") > 3) {
+                if (gv.get("arousal") > 80 && sc.getLevel("landlord") > 6) {
                     chat(13, 7);
                 }
                 else

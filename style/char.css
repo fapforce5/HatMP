@@ -134,9 +134,10 @@
 }
 
 .char-clock-dow {
-    color: #ccc;
-    text-shadow: 2px 2px 5px #000;
-    border: #333 solid 1px;
+    /*color: #ccc;*/
+   /* text-shadow: 2px 2px 5px #000;*/
+    /*border: #333 solid 1px;*/
+    font-weight:700;
 }
 
 .char-statDisplay {

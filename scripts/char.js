@@ -372,147 +372,149 @@ char.map = function () {
 };
 
 char.makeWalk = function () {
-    $("#room_left_walk_sub").html("");
-    var i;
-    var mo = new Array();
-    var maxi = 0;
-    var prevEntry = "";
-    if (g.walk === null) {
-        for (i = 0; i < sc.events.length; i++) {
-            if (sc.events[i].name === prevEntry) {
-                if (sc.events[i].step > maxi)
-                    maxi = sc.events[i].step;
-            }
-            else {
-                mo.push({ name: prevEntry, max: maxi });
-                maxi = 0;
-                prevEntry = sc.events[i].name;
-            }
-        }
-        mo.push({ name: prevEntry, max: maxi });
-        $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
-        $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="oncase">' +
-            '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
-            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">What Do I Do?</div>' +
-            '</div>');
-        $.each(sc.char, function (i, v) {
-            if (v.show) {
-                $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="' + v.name + '">' +
-                    '<img src="./images/speaker/' + v.image + '" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
-                    '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">' + v.display + '</div>' +
-                    '</div>');
-            }
-        });
-        $('.char-walkthrough').click(function () {
-            g.walk = $(this).data("name");
-            char.makeWalk();
-        });
-    }
-    else {
-        if (g.walk === "oncase") {
-            //var oncase = gv.get("oncase");
-            var oncaseText = '';
-            $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
-            $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
-                '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
-                'Go Back</div>');
-            $("#room_left_walk_sub").append('<div style="text-align:center;">' +
-                '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
-                '</div>' +
-                '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
+    var activeCase = missy.activecase();
+    $("#room_left_walk_sub").html("<br/><br/>" + activeCase.txt);
 
-            oncaseText = missy.activecase().txt;
+    //var i;
+    //var mo = new Array();
+    //var maxi = 0;
+    //var prevEntry = "";
+    //if (g.walk === null) {
+    //    for (i = 0; i < sc.events.length; i++) {
+    //        if (sc.events[i].name === prevEntry) {
+    //            if (sc.events[i].step > maxi)
+    //                maxi = sc.events[i].step;
+    //        }
+    //        else {
+    //            mo.push({ name: prevEntry, max: maxi });
+    //            maxi = 0;
+    //            prevEntry = sc.events[i].name;
+    //        }
+    //    }
+    //    mo.push({ name: prevEntry, max: maxi });
+    //    $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
+    //    $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="oncase">' +
+    //        '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
+    //        '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">What Do I Do?</div>' +
+    //        '</div>');
+    //    $.each(sc.char, function (i, v) {
+    //        if (v.show) {
+    //            $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="' + v.name + '">' +
+    //                '<img src="./images/speaker/' + v.image + '" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
+    //                '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">' + v.display + '</div>' +
+    //                '</div>');
+    //        }
+    //    });
+    //    $('.char-walkthrough').click(function () {
+    //        g.walk = $(this).data("name");
+    //        char.makeWalk();
+    //    });
+    //}
+    //else {
+    //    if (g.walk === "oncase") {
+    //        //var oncase = gv.get("oncase");
+    //        var oncaseText = '';
+    //        $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
+    //        $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
+    //            '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
+    //            'Go Back</div>');
+    //        $("#room_left_walk_sub").append('<div style="text-align:center;">' +
+    //            '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
+    //            '</div>' +
+    //            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
 
-            $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
-                '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-                oncaseText + '</li></ul>');
-            if (g.roomID === 0) {
-                room0.main();
-                //$("#room_left_walk").show();
-            }
-            $(".char-walkthrough-return").click(function () {
-                g.walk = null;
-                char.makeWalk();
-            });
-        }
-        else {
-            var reverseEvent = new Array();
-            var displayArray = new Array();
-            var timelineArray = new Array();
-            var thisChar = sc.get(g.walk);
-            var thisTimeline = sc.getTimeline(g.walk);
-            var pointer = 0;
-            for (i = 0; i < sc.events.length; i++) {
-                if (sc.events[i].name === g.walk && sc.events[i].step >= 0) {
-                    reverseEvent.push({ step: sc.events[i].step, txt: sc.events[i].txt, ach: sc.events[i].ach });
-                    if (sc.events[i].step <= thisChar.step)
-                        pointer = reverseEvent.length - 1;
-                }
-            }
-            $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
-            $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
-                '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
-                'Go Back</div>');
-            $("#room_left_walk_sub").append('<div style="text-align:center;">' +
-                '<img src="./images/speaker/' + thisChar.image + '" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
-                '</div>' +
-                '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">' + thisChar.display + '</div>');
+    //        oncaseText = missy.activecase().txt;
 
-            for (i = 0; i < thisTimeline.subList.length; i++) {
-                if (thisTimeline.subList[i].current)
-                    timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-                        thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
-                        thisTimeline.subList[i].room +
-                        '</li>');
-                else {
-                    timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-                        thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
-                        thisTimeline.subList[i].room +
-                        '</li>');
-                }
-            }
+    //        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
+    //            '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
+    //            oncaseText + '</li></ul>');
+    //        if (g.roomID === 0) {
+    //            room0.main();
+    //            //$("#room_left_walk").show();
+    //        }
+    //        $(".char-walkthrough-return").click(function () {
+    //            g.walk = null;
+    //            char.makeWalk();
+    //        });
+    //    }
+    //    else {
+    //        var reverseEvent = new Array();
+    //        var displayArray = new Array();
+    //        var timelineArray = new Array();
+    //        var thisChar = sc.get(g.walk);
+    //        var thisTimeline = sc.getTimeline(g.walk);
+    //        var pointer = 0;
+    //        for (i = 0; i < sc.events.length; i++) {
+    //            if (sc.events[i].name === g.walk && sc.events[i].step >= 0) {
+    //                reverseEvent.push({ step: sc.events[i].step, txt: sc.events[i].txt, ach: sc.events[i].ach });
+    //                if (sc.events[i].step <= thisChar.step)
+    //                    pointer = reverseEvent.length - 1;
+    //            }
+    //        }
+    //        $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
+    //        $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
+    //            '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
+    //            'Go Back</div>');
+    //        $("#room_left_walk_sub").append('<div style="text-align:center;">' +
+    //            '<img src="./images/speaker/' + thisChar.image + '" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
+    //            '</div>' +
+    //            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">' + thisChar.display + '</div>');
 
-            for (i = 0; i < reverseEvent.length; i++) {
-                if (i === pointer)
-                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-                        reverseEvent[i].txt + '</li>');
-                //else if (i === pointer + 1)
-                //    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-                //        reverseEvent[i].txt + '</lii>');
-                else if (reverseEvent[i].step < thisChar.step) {
-                    if (reverseEvent[i].ach || reverseEvent[i].step === 0)
-                        displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-                            reverseEvent[i].txt + '</li>');
-                    else
-                        displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666; text-decoration: line-through;" class="char-20">' +
-                            reverseEvent[i].txt + '</li>');
-                }
-                else
-                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666;" class="char-20" type="circle">' +
-                        '...</li>');
-            }
+    //        for (i = 0; i < thisTimeline.subList.length; i++) {
+    //            if (thisTimeline.subList[i].current)
+    //                timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
+    //                    thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
+    //                    thisTimeline.subList[i].room +
+    //                    '</li>');
+    //            else {
+    //                timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
+    //                    thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
+    //                    thisTimeline.subList[i].room +
+    //                    '</li>');
+    //            }
+    //        }
 
-            $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_timeline" style="list-style: none; padding:0;"></ul>');
+    //        for (i = 0; i < reverseEvent.length; i++) {
+    //            if (i === pointer)
+    //                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
+    //                    reverseEvent[i].txt + '</li>');
+    //            //else if (i === pointer + 1)
+    //            //    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
+    //            //        reverseEvent[i].txt + '</lii>');
+    //            else if (reverseEvent[i].step < thisChar.step) {
+    //                if (reverseEvent[i].ach || reverseEvent[i].step === 0)
+    //                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
+    //                        reverseEvent[i].txt + '</li>');
+    //                else
+    //                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666; text-decoration: line-through;" class="char-20">' +
+    //                        reverseEvent[i].txt + '</li>');
+    //            }
+    //            else
+    //                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666;" class="char-20" type="circle">' +
+    //                    '...</li>');
+    //        }
 
-            $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list"></ul>');
+    //        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_timeline" style="list-style: none; padding:0;"></ul>');
+
+    //        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list"></ul>');
 
 
-            for (i = displayArray.length - 1; i >= 0; i--)
-                $("#room_left_walk_sub_list").append(displayArray[i]);
+    //        for (i = displayArray.length - 1; i >= 0; i--)
+    //            $("#room_left_walk_sub_list").append(displayArray[i]);
 
-            for (i = 0; i < timelineArray.length; i++)
-                $("#room_left_walk_sub_timeline").append(timelineArray[i]);
+    //        for (i = 0; i < timelineArray.length; i++)
+    //            $("#room_left_walk_sub_timeline").append(timelineArray[i]);
 
-            if (g.roomID === 0) {
-                room0.main();
-                $("#room_left_walk").show();
-            }
-            $(".char-walkthrough-return").click(function () {
-                g.walk = null;
-                char.makeWalk();
-            });
-        }
-    }
+    //        if (g.roomID === 0) {
+    //            room0.main();
+    //            $("#room_left_walk").show();
+    //        }
+    //        $(".char-walkthrough-return").click(function () {
+    //            g.walk = null;
+    //            char.makeWalk();
+    //        });
+    //    }
+    //}
 };
 
 char.newdayfake = function () {
@@ -1284,7 +1286,7 @@ menu.load = function (cookieName, btn, saveID) {
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
     
-    g.load(tp.g, tp.version);
+    g.load(tp.g);
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
@@ -1399,12 +1401,16 @@ char.menu = function () {
     $('#room-menu').css({
         "width": 100 * g.ratio + "px",
         "height": 100 * g.ratio + "px",
-        "top": 10 * g.ratio + "px",
+        "top": 30 * g.ratio + "px",
         "left": 1800 * g.ratio + "px"
     });
     $('#room-numbers').css({
-        "width": 290 * g.ratio + "px",
-        "margin-top": 50 * g.ratio + "px"
+        "width": 370 * g.ratio + "px",
+        "top": 0 * g.ratio + "px",
+        "left": 1550 * g.ratio + "px"
+    });
+    $(".char-clock-dow").css({
+        "margin-right": 20 * g.ratio + "px"
     });
     //    "height": 50 * g.ratio + "px",
     //    "top": 10 * g.ratio + "px",
@@ -1413,19 +1419,19 @@ char.menu = function () {
     $('#room-inv').css({
         "width": 100 * g.ratio + "px",
         "height": 100 * g.ratio + "px",
-        "top": 10 * g.ratio + "px",
+        "top": 30 * g.ratio + "px",
         "left": 1650 * g.ratio + "px"
     });
     $('#room-change').css({
         "width": 100 * g.ratio + "px",
         "height": 100 * g.ratio + "px",
-        "top": 10 * g.ratio + "px",
+        "top": 30 * g.ratio + "px",
         "left": 1500 * g.ratio + "px"
     });
     $('#room-time').css({
         "width": 100 * g.ratio + "px",
         "height": 100 * g.ratio + "px",
-        "top": 10 * g.ratio + "px",
+        "top": 30 * g.ratio + "px",
         "left": 1350 * g.ratio + "px"
     });
     $('.resize-text').css({
@@ -1459,7 +1465,7 @@ char.import = function () {
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
 
-    g.load(tp.g, tp.version);
+    g.load(tp.g);
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);

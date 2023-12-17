@@ -14,8 +14,21 @@ room25.main = function () {
 
     var thisSister = sc.getTimeline("lola");
     var thisMother = sc.getTimeline("landlord");
+    var thisDick = sc.getTimeline("bigguy");
 
-    if (thisMother.roomID === 26) {
+    if (thisDick.roomID === 26) {
+        btnList.push({
+            "type": "btn",
+            "name": "livingroom",
+            "left": 275,
+            "top": 12,
+            "width": 455,
+            "height": 375,
+            "image": "25_dining/livingroombigguy.png",
+            "night": "25_dining/livingroombigguy_night.png",
+        });
+    }
+    else if (thisMother.roomID === 26) {
         btnList.push({
             "type": "btn",
             "name": "livingroom",
@@ -52,7 +65,19 @@ room25.main = function () {
         });
     }
 
-    if (thisMother.thisRoom) {
+    if (thisDick.thisRoom) {
+        nav.bg("25_dining/025_diningRoomMom.jpg");
+        btnList.push({
+            "type": "btn",
+            "name": "dick",
+            "left": 641,
+            "top": 42,
+            "width": 1181,
+            "height": 1038,
+            "image": "25_dining/bigguy.png"
+        });
+    }
+    else if (thisMother.thisRoom) {
         nav.bg("25_dining/025_diningRoomMom.jpg");
         btnList.push({
             "type": "btn",
@@ -146,6 +171,9 @@ room25.btnclick = function (name) {
             char.room(26);
             break;
         default:
+            break;
+        case "dick":
+            chat(47, 25);
             break;
     }
 };
@@ -602,7 +630,32 @@ room25.chat = function (chatID) {
                 { chatID: -1, text: "ok " + sc.n("landlord"), callback: "" }
             ]
         },
-       
+        {
+            chatID: 47,
+            speaker: "bigguy",
+            text: "Can't you see we're eating? In my day kids were seen, but not heard. In case you don't know what that means, " +
+                "fuck off. The adults are busy. ",
+            button: [
+                { chatID: 48, text: "ok ", callback: "" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "landlord",
+            text: sc.n("bigguy") + ". ",
+            button: [
+                { chatID: 49, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "bigguy",
+            text: "Look. I'm sorry if that's hard to hear, but it's rude to interrupt someone while they're eating. That kid needs " +
+                "to find something else to do and stop hanging on you so much. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

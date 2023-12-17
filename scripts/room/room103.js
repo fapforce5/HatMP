@@ -244,8 +244,6 @@ room103.chatcatch = function (callback) {
             nav.bg("103_constSite/hole0.jpg");
             break;
         case "hole1":
-        case "hole2":
-        case "hole3":
         case "hole4":
         case "hole5":
         case "hole7":
@@ -258,6 +256,13 @@ room103.chatcatch = function (callback) {
         case "hole14":
         case "hole16":
             nav.bg("103_constSite/" + callback + ".jpg");
+            break;
+        case "hole2":
+        case "hole3":
+            if (cl.pantiesTxt() === "panties")
+                nav.bg("103_constSite/" + callback + "_" + (cl.c.panties === "c" ? "c" : "p") + ".jpg");
+            else
+                nav.bg("103_constSite/" + callback + ".jpg");
             break;
         case "hole6":
             cl.nude();
@@ -574,7 +579,8 @@ room103.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "me",
-            text: "You better still be there! Hey! Get me out and give me back my pants and underwear! " +  
+            text: "You better still be there! Hey! Get me out and give me back my pants" +
+                (cl.pantiesTxt() === "panties" ? "!" : " and  underwear! ") +  
                 "You better have not left me here! ",
             button: [
                 { chatID: 32, text: "...", callback: "hole3" },

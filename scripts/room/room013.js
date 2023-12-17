@@ -8,12 +8,13 @@ room13.main = function () {
     if (lockdrawer) 
         nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
 
-    if (g.pass === "endSleepyTime") {
-        g.pass = "";
-        nav.bg("28_transformation/twin.jpg");
-        chat(176, 13);
-    }
-    else if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
+    //if (g.pass === "endSleepyTime") {
+    //    g.pass = "";
+    //    nav.bg("28_transformation/twin.jpg");
+    //    chat(176, 13);
+    //}
+    //else
+    if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
         nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
         btnList = [{
             "type": "btn",
@@ -29,7 +30,7 @@ room13.main = function () {
         if (sc.getTimeline("lola").thisRoom) {
             if (cl.isLewd()) {
                 btnList = new Array();
-                nav.bg("13_sisterRoom/013_angryCaught.png");
+                nav.bg("13_sisterRoom/013_angryCaught.jpg");
                 chat(249, 13);
             }
             else {
@@ -212,12 +213,13 @@ room13.btnclick = function (name) {
                 "image": "1001_rand/black_25.png"
             }, g.roomID);
             sc.select("lolachat", "13_sisterRoom/icon_chatLola.png", 0);
-            if (sc.getMission("lola", "massage").inProgress)
+            if (!sc.getMission("lola", "massage").notStarted)
                 sc.select("lolamassage", "13_sisterRoom/icon_massage.png", 1);
-            //sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
-            if (sc.getMission("lola", "tord").inProgress)
+            if (!sc.getMission("lola", "spin").notStarted)
+                sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
+            if (!sc.getMission("lola", "tord").notStarted)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-            sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
+            //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
             sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
             break;
         case "eva":
@@ -231,12 +233,13 @@ room13.btnclick = function (name) {
                 "image": "1001_rand/black_25.png"
             }, g.roomID);
             sc.select("evachat", "13_sisterRoom/icon_chatEva.png", 0);
-            if (sc.getMission("eva", "massage").inProgress)
+            if (!sc.getMission("eva", "massage").notStarted)
                 sc.select("evamassage", "13_sisterRoom/icon_feet.png", 1);
-            //sc.select("spinbottle", "13_sisterRoom/icon_spinthebottle.png", 2);
+            if (!sc.getMission("lola", "spin").notStarted)
+                sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
             if (sc.getMission("lola", "tord").inProgress)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-            sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
+            //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
             sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
             break;
         case "clearChat":
@@ -245,134 +248,48 @@ room13.btnclick = function (name) {
             nav.killbutton("evachat");
             nav.killbutton("lolamassage");
             nav.killbutton("evamassage");
-            nav.killbutton("spinbottle");
+            nav.killbutton("spin");
             nav.killbutton("tord");
             nav.killbutton("dick");
             nav.killbutton("clearChat");
             break
         case "lolachat":
             room13.btnclick("clearChat");
-            var mtask = sc.getMission("lola", "massage").inProgress;
+            var massageStep = sc.taskGetStep("lola", "massage");
             switch (sc.taskGetStep("lola", "talk")) {
                 case 0: chat(10, 13); break;
                 case 1: chat(14, 13); break;
-                case 2: if (mtask) chat(17, 13); else chat(14, 13); break;
+                case 2: if (massageStep > 0) chat(17, 13); else chat(14, 13); break;
             }
             break;
         case "evachat":
-            var ecEvaLeval = sc.getLevel("eva");
+            room13.btnclick("clearChat");
             switch (sc.taskGetStep("eva", "talk")) {
-                case 0: chat(44, 13); break;
-                case 1: chat()
+                case 0: chat(26, 13); break;
+                case 1: chat(33, 13);
             }
             break;
         case "lolamassage":
-            chat(999, 13);
+            char.room(4);
             break;
         case "evamassage":
-            chat(998, 13);
+            char.room(5);
             break;
-        case "spinbottle":
-
+        case "spin":
+            room13.btnclick("clearChat");
+            chat(40, 13);
             break;
         case "tord":
-            char.room(23);
+            room13.btnclick("clearChat");
+            chat(40, 13);
+            //char.room(23);
             break;
         case "dick":
 
             break;
-        case "lolaMassageLose":
-            levels.mod("charisma", 20, 999);
-            daily.set("lola");
-            chat(27, 13);
-            break;
-        case "massage0":
-            char.room(13);
-            break;
-        case "massage1chance":
-            levels.mod("charisma", 20, 999);
-            room13.chatcatch("massage1");
-            break;
-        case "massage2chance":
-            levels.mod("charisma", 20, 999);
-            room13.chatcatch("massage2");
-            break;
-        case "massage2chanceLose":
-            nav.killbutton("massage2Bra");
-            nav.modbutton("lolabody", "13_sisterRoom/lola_topPulledDown.png", null, null); 
-            chat(31, 13);
-            break;
-        case "massage2chanceWin":
-            sc.modLevel("lola", 100, 3);
-            chat(28, 13);
-            break;
-        case "massage6":
-            var massage5charisma = g.internal.charisma;
-            g.internal = { level: 6, charisma: massage5charisma + 1 };
-            if (sc.getLevel("lola") > 5) {
-                room13.chatcatch("doMassage");
-            }
-            else {
-                nav.killall();
-                nav.bg("13_sisterRoom/013_backrub_006_2.jpg");
-                charisma.init(g.internal.charisma, "doMassage", "endMassage", g.roomID);
-            }
-            break;
-        case "massage7":
-            var massage6charisma = g.internal.charisma;
-            g.internal = { level: 7, charisma: massage6charisma + 1 };
-            if (sc.getLevel("lola") > 6) {
-                room13.chatcatch("doMassage");
-            }
-            else {
-                nav.killall();
-                nav.bg("13_sisterRoom/013_backrub_007_2.jpg");
-                charisma.init(g.internal.charisma, "doMassage", "endMassage", g.roomID);
-            }
-            break;
         
         case "reset":
             char.room(13);
-            break;
-        case "massage2Shirt":
-            nav.killbutton("massage2Shirt");
-            nav.modbutton("lolabody", "13_sisterRoom/lola_topPushedUp.png", null, null); 
-            nav.killbutton("endMassage");
-            nav.button({
-                "type": "btn",
-                "name": "massage2Bra",
-                "left": 1209,
-                "top": 301,
-                "width": 130,
-                "height": 40,
-                "image": "13_sisterRoom/lola_braStrap.png"
-            }, 13);
-            if (sc.getLevel("lola") < 2) {
-                charisma.init(g.internal.charisma, "massage2chanceWin", "massage2chanceLose", g.roomID);
-            }
-            
-            break;
-        case "massage2Bra":
-            g.internal = { level: 2, charisma: 2 + 7 };
-            nav.killall();
-            nav.button({
-                "type": "img",
-                "name": "massage",
-                "left": 869,
-                "top": 0,
-                "width": 772,
-                "height": 1080,
-                "image": "13_sisterRoom/013_backrub_002.gif"
-            }, 13);
-            g.roomTimeout = setTimeout(function () {
-                chat(26, 13);
-            }, 2000);
-            break;
-        case "doMassage":
-            room13.chatcatch("doMassage");
-            break;
-        case "endMassage":
-            chat(26, 13);
             break;
         default:
             break;
@@ -446,235 +363,6 @@ room13.chatcatch = function (callback) {
             case "sniff2":
                 nav.bg("13_sisterRoom/" + v + ".jpg");
                 break;
-            case "massage1chance":
-                charisma.init(g.internal.charisma, "massage1chance", "lolaMassageLose", g.roomID) 
-                break;
-            case "massage2":
-                nav.killbutton("massage");
-                nav.button({
-                    "type": "img",
-                    "name": "lolabody",
-                    "left": 1106,
-                    "top": 85,
-                    "width": 337,
-                    "height": 967,
-                    "image": "13_sisterRoom/lola_topless.png"
-                }, 13);
-                nav.button({
-                    "type": "btn",
-                    "name": "massage2Shirt",
-                    "left": 1184,
-                    "top": 219,
-                    "width": 199,
-                    "height": 177,
-                    "image": "13_sisterRoom/lola_shirt.png"
-                }, 13);
-                nav.button({
-                    "type": "btn",
-                    "name": "endMassage",
-                    "left": 360,
-                    "top": 260,
-                    "width": 600,
-                    "height": 100,
-                    "image": "13_sisterRoom/icon_finishMassage.png"
-                }, 13);
-                break;
-            case "massage3chance":
-                charisma.init(g.internal.charisma, "massage3chance", "lolaMassageLose", g.roomID)
-                break;
-            case "massage5":
-                nav.killall();
-                nav.bg("13_sisterRoom/013_backrub_006.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "massage6",
-                    "left": 1021,
-                    "top": 218,
-                    "width": 442,
-                    "height": 250,
-                    "image": "13_sisterRoom/013_backrub_006.png"
-                }, 13);
-                
-                sc.select("endMassage", "13_sisterRoom/icon_finishMassage.png", 0);
-                
-                break;
-            case "massage6":
-                nav.killall();
-                nav.bg("13_sisterRoom/013_backrub_006.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "massage7",
-                    "left": 1021,
-                    "top": 218,
-                    "width": 442,
-                    "height": 250,
-                    "image": "13_sisterRoom/013_backrub_006.png"
-                }, 13);
-
-                sc.select("endMassage", "13_sisterRoom/icon_finishMassage.png", 0);
-                break;
-            case "massage7":
-                nav.bg("13_sisterRoom/013_backrub_007.jpg");
-                break;
-            case "massage7_1":
-                nav.killall();
-                nav.bg("13_sisterRoom/massage7day.jpg", "13_sisterRoom/massage7night.jpg");
-                break;
-            case "doMassage":
-                nav.killall();
-                gv.mod("arousal", 70);
-                switch (g.internal.level) {
-                    case 1:
-                        nav.bg("13_sisterRoom/013_bedBr.jpg");
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 869,
-                            "top": 0,
-                            "width": 772,
-                            "height": 1080,
-                            "image": "13_sisterRoom/013_backrub_001.gif"
-                        }, 13);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(29, 13);
-                        }, 2000);
-                        break;
-                    case 3:
-                        nav.killall();
-                        nav.bg("13_sisterRoom/013_bedBr.jpg");
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 880,
-                            "top": 0,
-                            "width": 772,
-                            "height": 1080,
-                            "image": "13_sisterRoom/013_backrub_003.gif"
-                        }, 13);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(26, 13);
-                        }, 2500);
-                        break;
-                    case 4:
-                        nav.killall();
-                        nav.bg("13_sisterRoom/013_backrub_004.jpg");
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 880,
-                            "top": 0,
-                            "width": 772,
-                            "height": 1080,
-                            "image": "13_sisterRoom/013_backrub_004.gif"
-                        }, 13);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(26, 13);
-                        }, 2500)
-                        break;
-                    case 5:
-                        nav.killall();
-                        nav.bg("13_sisterRoom/013_bedZoom.jpg");
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 725,
-                            "top": 0,
-                            "width": 1100,
-                            "height": 1080,
-                            "image": "13_sisterRoom/013_backrub_005.gif"
-                        }, 13);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(35, 13);
-                        }, 2500)
-                        break;
-                    case 6:
-                        sc.modLevel("lola", 75, g.internal.level - 1);
-                        nav.killall();
-                        nav.bg("13_sisterRoom/013_backrub_004.jpg");
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 869,
-                            "top": 0,
-                            "width": 772,
-                            "height": 1080,
-                            "image": "13_sisterRoom/013_backrub_006.gif"
-                        }, 13);
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 335,
-                            "top": 10,
-                            "width": 502,
-                            "height": 502,
-                            "image": "13_sisterRoom/lolaBlush0.png"
-                        }, 13);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(36, 13);
-                        }, 2500)
-                        break;
-                    case 7:
-                        sc.modLevel("lola", 75, g.internal.level - 1);
-                        nav.killall();
-                        nav.bg("13_sisterRoom/013_backrub_004.jpg");
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 869,
-                            "top": 0,
-                            "width": 772,
-                            "height": 1080,
-                            "image": "13_sisterRoom/013_backrub_007.gif"
-                        }, 13);
-                        nav.button({
-                            "type": "img",
-                            "name": "massage",
-                            "left": 335,
-                            "top": 10,
-                            "width": 502,
-                            "height": 502,
-                            "image": "13_sisterRoom/lolaBlush1.png"
-                        }, 13);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(37, 13);
-                        }, 2500);
-                        break;
-                }
-                
-                
-                break;
-            case "evamassage":
-                nav.killall();
-                switch (g.internal.level) {
-                    case 1:
-                        nav.bg("13_sisterRoom/eva_massage_1.gif");
-                        gv.mod("arousal", 70);
-                        g.roomTimeout = setTimeout(function () {
-                            if (sc.getLevel("eva") > 2) {
-                                sc.modLevel("eva", 200, 2);
-                                if (cl.c.chastity !== null)
-                                    chat(51, 13);
-                                else
-                                    chat(54, 13);
-                            }
-                            else
-                                chat(43, 13);
-                        }, 2500);
-                        break;
-                    case 3:
-                        nav.bg("13_sisterRoom/eva_massage_3.gif");
-                        gv.mod("arousal", 70);
-                        g.roomTimeout = setTimeout(function () {
-                            chat(60, 13);
-                        }, 2500);
-                        break;
-                }
-                break;
-            case "evaMassage2":
-                nav.killall();
-                nav.bg("13_sisterRoom/eva_massage_2.jpg");
-
-                break;
             case 'takePanties':
                 cl.add("panties", "w");
                 levels.mod("xdress", 33, 2);
@@ -682,12 +370,6 @@ room13.chatcatch = function (callback) {
                 break;
             case "killPantyIcon":
                 nav.killbutton("panties");
-                break;
-            case "massageEnd":
-                char.addtime(45);
-                daily.set("lola");
-                sc.modLevel("lola", 75, g.internal.level);
-                char.room(13);
                 break;
             case "evaMassageEnd":
                 char.addtime(45);
@@ -698,133 +380,47 @@ room13.chatcatch = function (callback) {
             case "evatalk0":
                 char.addtime(20);
                 daily.set("evatalk");
-                sc.startMission("eva", "massage");
                 sc.completeMissionTask("eva", "talk", 0, true);
-                sc.modLevel("eva", 101, 0);
+                sc.modLevel("eva", 27, 0);
+                char.room(13);
+                break;
+            case "evatalk1":
+                char.addtime(20);
+                daily.set("evatalk");
+                sc.completeMissionTask("eva", "talk", 0, true);
+                sc.startMission("eva", "massage");
+                sc.modLevel("eva", 27, 1);
                 char.room(13);
                 break;
             case "talkLola0":
                 char.addtime(20);
                 daily.set("lolatalk");
-                sc.startMission("lola", "massage");
                 sc.completeMissionTask("lola", "talk", 0, true);
-                sc.modLevel("lola", 101, 0);
+                sc.modLevel("lola", 27, 4);
                 char.room(13);
                 break;
             case "talkLola1":
                 char.addtime(20);
                 daily.set("lolatalk");
+                sc.startMission("lola", "massage");
                 sc.completeMissionTask("lola", "talk", 1, true);
-                sc.modLevel("lola", 15, 2);
+                sc.modLevel("lola", 27, 4);
                 char.room(13);
+                break;
+            case "rollChrisma2":
+                charisma.init(g.internal.charisma, "massage2chanceWin", "massage2chanceLose", g.roomID);
                 break;
         };
     });
 };
 
 room13.chat = function (chatID) {
-    var buttons, txt;
     if (chatID === 999) {
-        var lolaLevel = sc.getLevel("lola");
-        
-        g.internal = { level: lolaLevel, charisma: lolaLevel + 7 };
-        switch (lolaLevel) {
-            case 0:
-                txt = "Should I just ask her if she wants a massage? "
-                buttons = [
-                    { chatID: -1, text: "I should talk to her first.", callback: "massage0" },
-                    { chatID: -1, text: "You look stiff and sore from swimming. Would you like a massage? " + charisma.getStats(g.internal.charisma).txt, callback: "massage1chance" }
-                ];
-                break;
-            case 1:
-            case 2:
-                g.internal = { level: 1, charisma: 1 + 7 };
-                txt = "I know you go swimming a lot, do you need a massage? "
-                buttons = [
-                    { chatID: 30, text: "Do you want a massage?", callback: "" },
-                ];
-                break;
-            case 3:
-                txt = "You're looking really tight today. "
-                buttons = [
-                    { chatID: 32, text: "Do you want a massage? It's even better without a shirt. ", callback: "" },
-                    { chatID: -1, text: "Your glutes seem stressed, do you want me to massage them? " + charisma.getStats(g.internal.charisma).txt, callback: "massage3chance" }
-                ];
-                break;
-            case 4:
-                txt = "Hey " + sc.n("lola") + ". "
-                buttons = [
-                    { chatID: 33, text: "Your quads and calves seem stressed, do you want me to massage them?", callback: "" },
-                    { chatID: -1, text: "It's better to massage your glutes without your skirt. " + charisma.getStats(g.internal.charisma).txt, callback: "massage4chance" }
-                ];
-                break;
-            //case 5:
-            default:
-                g.internal = { level: 5, charisma: 5 + 7 };
-
-                txt = "I noticed that your glutes are really tight. It can lead to a bad back when you get older. Do you want me to take " +
-                    "care of it for you? "
-                buttons = [
-                    { chatID: 34, text: "...", callback: "" },
-                ];
-                break;
-        };
         return {
-            chatID: 999,
+            chatID: 0,
             speaker: "me",
-            text: txt,
-            button: buttons
-        };
-    }
-    else if (chatID === 998) {
-        var evaLevel = sc.getLevel("eva");
-        g.internal = { level: evaLevel, charisma: evaLevel + 7 };
-        switch (evaLevel) {
-            case 0:
-                txt = "Should I just ask her if she wants a massage? "
-                buttons = [
-                    { chatID: -1, text: "I should talk to her first.", callback: "reset" },
-                    { chatID: 41, text: "Do you want a massage? ", callback: "" }
-                ];
-                break;
-            case 1:
-            case 2:
-                g.internal = { level: 1 };
-                txt = "So.. uh do you want a massage? "
-                buttons = [
-                    { chatID: 42, text: "...", callback: "" },
-                ];
-                break;
-            case 3:
-                g.internal = { level: 3 };
-                txt = "So, uh, can I rub you feet again?"
-                buttons = [
-                    { chatID: 59, text: "...", callback: "" },
-                ];
-                break;
-            case 4:
-                txt = "Hey " + sc.n("lola") + ". "
-                buttons = [
-                    { chatID: 33, text: "Your quads and calves seem stressed, do you want me to massage them?", callback: "" },
-                    { chatID: -1, text: "It's better to massage your glutes without your skirt. " + charisma.getStats(g.internal.charisma).txt, callback: "massage4chance" }
-                ];
-                break;
-            //case 5:
-            default:
-                g.internal = { level: 5, charisma: 5 + 7 };
-
-                txt = "I noticed that your glutes are really tight. It can lead to a bad back when you get older. Do you want me to take " +
-                    "care of it for you? "
-                buttons = [
-                    { chatID: 34, text: "...", callback: "" },
-                ];
-                break;
-        };
-        return {
-            chatID: 999,
-            speaker: "me",
-            text: txt,
-            button: buttons
+            text: "error",
+            button: []
         };
     }
     else {
@@ -1058,179 +654,31 @@ room13.chat = function (chatID) {
             },
             {
                 chatID: 26,
-                speaker: "lola",
-                text: "MmmmmmmMMMm I love your hands. So powerful. You're really the best! ",
+                speaker: "eva",
+                text: "Hey panty sniffer, can't handle a burger job? ",
                 button: [
-                    { chatID: -1, text: "[Finish the massage]", callback: "massageEnd" }
+                    { chatID: 27, text: "Eat my boogers ", callback: "" },
                 ]
             },
             {
                 chatID: 27,
-                speaker: "lola",
-                text: "No thanks, That's a little too much right now. ",
+                speaker: "eva",
+                text: "I would, but you've already picked and ate them. That's why your breath smells so bad!",
                 button: [
-                    { chatID: -1, text: "oh ok", callback: "reset" }
+                    { chatID: 30, text: "Well at least my breath doesn't smell like dick! ", callback: "lolaLevelDown evaLevelHalf" },
+                    { chatID: 28, text: "That's hurtful ", callback: "" },
                 ]
             },
             {
                 chatID: 28,
-                speaker: "thinking",
-                text: "Nice! She didn't stop me. I guess this slut wants my hands all over her body. Now to remove that pesky bra strap. ",
+                speaker: "eva",
+                text: "Oooo is the baby going to cry? ",
                 button: [
-                    { chatID: -1, text: "...", callback: "" }
+                    { chatID: 29, text: "...no ", callback: "" },
                 ]
             },
             {
                 chatID: 29,
-                speaker: "thinking",
-                text: "She's so tight and trim. I really love touching her, but I want to touch her skin. Maybe she'll let me " +
-                    "pull up her shirt. It's innocent enough. I'm doing her a favor by giving her a better massage. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "massage2" },
-                ]
-            },
-            {
-                chatID: 30,
-                speaker: "lola",
-                text: "Oh, uh, sure! I guess I could really use a massage. ",
-                button: [
-                    { chatID: -1, text: "Great, just lay back and relax and I'll take care of you.", callback: "doMassage" },
-                ]
-            },
-            {
-                chatID: 31,
-                speaker: "lola",
-                text: "That's ok. I'm not ready for that. ",
-                button: [
-                    { chatID: -1, text: "Well, that should do it. ", callback: "massageEnd" },
-                ]
-            },
-            {
-                chatID: 32,
-                speaker: "lola",
-                text: "I guess. It's just my bare back, so that should be ok. ",
-                button: [
-                    { chatID: -1, text: "Yes. Just your back. ", callback: "doMassage" },
-                ]
-            },
-            {
-                chatID: 33,
-                speaker: "lola",
-                text: "Oh. How'd you know? They are really tight. I guess it's ok if I leave my panties on. ",
-                button: [
-                    { chatID: -1, text: "Of course ", callback: "doMassage" },
-                ]
-            },
-            {
-                chatID: 34,
-                speaker: "lola",
-                text: "Really? I really don't want a bad back. Sure you can massage them. Just don't stray too far mister! ",
-                button: [
-                    { chatID: -1, text: "I promise! ", callback: "doMassage" },
-                ]
-            },
-            {
-                chatID: 35,
-                speaker: "thinking",
-                text: "Her pussy is peeking out at me! Surely she knows I can see it. I bet she wants me to finger her. She's " + 
-                    "totally wants my dick! ",
-                button: [
-                    { chatID: -1, text: "...", callback: "massage5" },
-                ]
-            },
-            {
-                chatID: 36,
-                speaker: "thinking",
-                text: "She's not stopping me! She's so wet. I wonder if she'll let stick it in. Maybe I'll try to pull down her panties. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "massage6" },
-                ]
-            },
-            {
-                chatID: 37,
-                speaker: "thinking",
-                text: "I can't believe I got this far. She's totally ready. I bet I can just slip it in and she'll never say no. ",
-                button: [
-                    { chatID: 38, text: "...", callback: "massage7" },
-                ]
-            },
-            {
-                chatID: 38,
-                speaker: "lola",
-                text: "Huh? ",
-                button: [
-                    { chatID: 39, text: "...", callback: "massage7_1" },
-                ]
-            },
-            {
-                chatID: 39,
-                speaker: "eva",
-                text: "I'm standing right here! ",
-                button: [
-                    { chatID: 40, text: "...", callback: "evaLevelDown" },
-                ]
-            },
-            {
-                chatID: 40,
-                speaker: "lola",
-                text: "Oh oh. Yes. Sorry it was very relaxed. You need to get off me so I can get dressed. I'm so sorry. This " +
-                    "is just inappropriate. ",
-                button: [
-                    { chatID: -1, text: "oh yeah.", callback: "massageEnd" },
-                ]
-            },
-            {
-                chatID: 41,
-                speaker: "eva",
-                text: "Keep your nasty hands away from me butt sniffer!",
-                button: [
-                    { chatID: -1, text: "ok.", callback: "reset" },
-                ]
-            },
-            {
-                chatID: 42,
-                speaker: "eva",
-                text: "Why are you so desperate to touch me pervert? You know what, you can touch my feet. At least you're not " +
-                    "rubbing on my body. ",
-                button: [
-                    { chatID: -1, text: "Sweet!.", callback: "evamassage" },
-                ]
-            },
-            {
-                chatID: 43,
-                speaker: "eva",
-                text: "You know. That's wasn't terrible. I guees perverts do give great foot massages. ",
-                button: [
-                    { chatID: -1, text: "We sure do!", callback: "evaMassageEnd" },
-                ]
-            },
-            {
-                chatID: 44,
-                speaker: "eva",
-                text: "Hey panty sniffer, can't handle a burger job? ",
-                button: [
-                    { chatID: 45, text: "Eat my boogers " , callback: "" },
-                ]
-            },
-            {
-                chatID: 45,
-                speaker: "eva",
-                text: "I would, but you've already picked and ate them. That's why your breath smells so bad!",
-                button: [
-                    { chatID: 48, text: "Well at least my breath doesn't smell like dick! ", callback: "lolaLevelDown evaLevelHalf" },
-                    { chatID: 46, text: "That's hurtful ", callback: "" },
-                ]
-            },
-            {
-                chatID: 46,
-                speaker: "eva",
-                text: "Oooo is the baby going to cry? ",
-                button: [
-                    { chatID: 47, text: "...no ", callback: "" },
-                ]
-            },
-            {
-                chatID: 47,
                 speaker: "eva",
                 text: "You should play with " + sc.n("lola") + ". She's much nicer. ",
                 button: [
@@ -1238,25 +686,25 @@ room13.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 48,
+                chatID: 30,
                 speaker: "lola",
                 text: "Just becuase she's a little... promiscuous, you shouldn't call her that. ",
                 button: [
-                    { chatID: 49, text: "Awwww, sorry, I didn't mean it. I was just trying to be funny. ", callback: "lolaLevelQuater" },
+                    { chatID: 31, text: "Awwww, sorry, I didn't mean it. I was just trying to be funny. ", callback: "lolaLevelQuater" },
                 ]
             },
             {
-                chatID: 49,
+                chatID: 31,
                 speaker: "eva",
                 text: "I'm promiscuous? You say that like I've slept with half the football team. I'll have you know I've only " +
                     "had sex with one of them. And I was very drunk, so it doesn't count. ",
                 button: [
-                    { chatID: 50, text: "Well if being drunk doesn't count, then you're still a virgin ", callback: "evaLevelHalf" },
+                    { chatID: 32, text: "Well if being drunk doesn't count, then you're still a virgin ", callback: "evaLevelHalf" },
                     { chatID: -1, text: "You're right. It doesn't count. ", callback: "evatalk0" },
                 ]
             },
             {
-                chatID: 50,
+                chatID: 32,
                 speaker: "lola",
                 text: "You two are the worst! ",
                 button: [
@@ -1264,88 +712,77 @@ room13.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 51,
-                speaker: "eva",
-                text: "Do you have a boner? ",
+                chatID: 33,
+                speaker: "me",
+                text: "So how is the football team? ",
                 button: [
-                    { chatID: 52, text: "Whaaa? Pssst,no!", callback: "evaMassage2" },
+                    { chatID: 34, text: "...", callback: "" },
                 ]
             },
             {
-                chatID: 52,
+                chatID: 34,
                 speaker: "eva",
-                text: "Yes you do! I can feel it! Were you peeking up my skirt? Pervert!   ",
+                text: "I wouldn't know. I broke up with Amari months ago. I would ask you how the cheerleaders are, but I know they " +
+                    "would never touch you!",
                 button: [
-                    { chatID: 53, text: "I wasn't peeking! I didn't make you wear a short skirt. ", callback: "" },
+                    { chatID: 35, text: "Pshhhttt I could date a cheerleader if I wanted! ", callback: "" },
                 ]
             },
             {
-                chatID: 53,
+                chatID: 35,
                 speaker: "eva",
-                text: "What ever you pervert! You're like a dog, always trying to hump something! ",
+                text: "Maybe if they were blind and deaf and no one told them what a loser you were. Even " + sc.n("chuck") + " the " +
+                    "weird guy is able to bag a cheerleader. ",
                 button: [
-                    { chatID: -1, text: "Stop showing and I'll stop looking. ", callback: "evaMassageEnd" },
+                    { chatID: 36, text: "Didn't YOU go out with him?", callback: "" },
                 ]
             },
             {
-                chatID: 54,
+                chatID: 36,
                 speaker: "eva",
-                text: "So you like rubbing my feet? Do you have a foot fetish. I knew a guy that had that. ",
+                text: "Yeah, in the 5th grade! He was even weird then. He kept trying to lick my feet. Didn't even want to kiss me. Just " +
+                    "my feet. What is it with you guys and feet anyways? ",
                 button: [
-                    { chatID: 55, text: "No. I just wanted to do something nice. ", callback: "" },
-                    { chatID: 56, text: "I totally do! I love feet and I don't care who knows. ", callback: "" },
+                    { chatID: 38, text: "I really don't know. ", callback: "" },
+                    { chatID: 37, text: "It's becuase they're just so soft and delicate. Love a freshly peticured foot", callback: "" },
                 ]
             },
             {
-                chatID: 55,
+                chatID: 37,
                 speaker: "eva",
-                text: "Hmmmm. You totally do, why else would you rub my feet this much. Unless you're trying to get in " + 
-                    "my panties. ",
+                text: "I always thought you were one of the weird feet guys! I bet you'd love to worship my feet like some kind of pervert.",
                 button: [
-                    { chatID: 58, text: "Whatever butthead. No one's trying to get in your panties.  ", callback: "" },
+                    { chatID: 39, text: "Yes I would", callback: "" },
                 ]
             },
             {
-                chatID: 56,
+                chatID: 38,
                 speaker: "eva",
-                text: "I knew it! After the first massage I told " + sc.n("lola") + " that you're one of those foot fetish " +
-                    "weirdos! You would probably orgasm if I let you lick them wouldn't you. ",
+                text: "Whatever. You're so one of those weird guys.  I bet you'd love to worship my feet like some kind of pervert.",
                 button: [
-                    { chatID: 57, text: "...", callback: "" },
+                    { chatID: 39, text: "meh", callback: "" },
                 ]
             },
             {
-                chatID: 57,
-                speaker: "lola",
-                text: "That's not nice. There's nothing weird about being attracted to feet. It's endearing. ",
+                chatID: 39,
+                speaker: "eva",
+                text: "Well ok. I'll admit I do love a foot massage. If you want to perv on my feet let me know. ",
                 button: [
-                    { chatID: 58, text: "...", callback: "" },
+                    { chatID: -1, text: "Oh yea! ", callback: "evaLevelQuater evatalk1" },
+                    { chatID: -1, text: "eh..", callback: "evatalk1" },
                 ]
             },
             {
-                chatID: 58,
-                speaker: "eva",
-                text: "Whatever. You're like a dog. Just trying to hump something.  ",
+                chatID: 40,
+                speaker: "!blank",
+                text: "In progress...  ",
                 button: [
-                    { chatID: -1, text: "You're a dog", callback: "evaMassageEnd" },
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
-            {
-                chatID: 59,
-                speaker: "eva",
-                text: "No. That's boring. Doggies lick. You can lick my feet and suck my toes. Suck up doggy.  ",
-                button: [
-                    { chatID: -1, text: "woof.", callback: "evamassage" },
-                ]
-            },
-            {
-                chatID: 60,
-                speaker: "eva",
-                text: "Hahah gross. Good doggy.",
-                button: [
-                    { chatID: -1, text: "....", callback: "evaMassageEnd" },
-                ]
-            },
+
+
+            
         ];
         return cArray[chatID];
     }

@@ -126,7 +126,7 @@ room353.chatcatch = function (callback) {
                     chat(13, 353)
                 }
                 else {
-                    sc.modLevel("landlord", 55, 3);
+                    sc.modLevel("landlord", 55, 4);
                     gv.mod("money", 60);
                     nav.bg("353_mascot/end_dick.jpg");
                     gender.setChanges("landlord", "cock");
@@ -253,7 +253,7 @@ room353.chat = function (chatID) {
             };
         }
         else if (g.internal.success > 2 && g.internal.fail === 0) {
-            sc.modLevel("landlord", 100, 3);
+            sc.modLevel("landlord", 100, 4);
             var succPay = 60 + (g.internal.success * 10);
             gv.mod("money", succPay);
             return {
@@ -268,7 +268,7 @@ room353.chat = function (chatID) {
             };
         }
         else {
-            sc.modLevel("landlord", 53, 3);
+            sc.modLevel("landlord", 53, 4);
             gv.mod("money", 60);
             return {
                 chatID: 997,

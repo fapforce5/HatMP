@@ -251,7 +251,7 @@ cl.remove = function (type, name) {
     var i;
     var clindex = cl.where(type, name);
     cl.list[clindex].inv = false;
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 6; i++) {
         switch (type) {
             case "shoes":
                 if (cl.saveOutfit[i].shoes === name)

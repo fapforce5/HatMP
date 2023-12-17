@@ -39,18 +39,18 @@ room550.main = function () {
 room550.btnclick = function (name) {
     switch (name) {
         case "man":
-            if (sc.step('chad') === 0) {
-                chat(0, 550);
-            }
-            else if (sc.step('chad') === 1) {
-                if (pic.has("lolaTopless") || pic.has("lolaMast"))
-                    chat(6, 550);
-                else
-                    chat(7, 550);
-            }
-            else {
-                chat(11, 550);
-            }
+            //if (sc.step('chad') === 0) {
+            //    chat(0, 550);
+            //}
+            //else if (sc.step('chad') === 1) {
+            //    if (pic.has("lolaTopless") || pic.has("lolaMast"))
+            //        chat(6, 550);
+            //    else
+            //        chat(7, 550);
+            //}
+            //else {
+            //    chat(11, 550);
+            //}
             break;
         default:
             break;

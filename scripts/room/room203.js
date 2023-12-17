@@ -29,7 +29,7 @@ room203.main = function () {
 };
 
 room203.btnclick = function (name) {
-    var misssyStep = sc.getstep("missy");
+    
     switch (name) {
         case "recep":
             nav.kill("recep");
@@ -37,7 +37,7 @@ room203.btnclick = function (name) {
             if (g.gethourdecimal() > 9) {
                 chat(6, 203);
             }
-            else if (misssyStep === 1) {
+            else if (missy.activecase().name === "apply") {
                 chat(1, 203);
                 missy.set("activeCase", -1);
             }
@@ -50,10 +50,6 @@ room203.btnclick = function (name) {
             }
             else
                 chat(999, 203);
-            break;
-        case "recepClose":
-            if (misssyStep === 1) 
-                chat(1, 203);
             break;
         default:
             break;

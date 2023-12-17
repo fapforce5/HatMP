@@ -77,7 +77,7 @@ room726.btnclick = function (name) {
                 chat(3, 726);
             break;
         case "lifeguardGirl":
-            var cindyStep = sc.getstep("cindy");
+            //var cindyStep = sc.getstep("cindy");
             var mybody = cl.appearance();
             nav.killbutton("lifeguardGirl");
             nav.button({
@@ -96,18 +96,18 @@ room726.btnclick = function (name) {
             else if (mybody > 0) {
                 chat(5, 726);
             }
-            else if (cindyStep < 2) {
+            else {//if (cindyStep < 2) {
                 chat(6, 726);
             }
-            else if (cindyStep === 2) {
-                chat(10, 726);
-            }
-            else {
-                chat(23, 726);
-            }
+            //else if (cindyStep === 2) {
+            //    chat(10, 726);
+            //}
+            //else {
+            //    chat(23, 726);
+            //}
             break;
         case "lifeguardGuy":
-            var timstep = sc.getstep("tim");
+            //var timstep = sc.getstep("tim");
             var mybodyt = cl.appearance();
             nav.killbutton("lifeguardGuy");
             nav.button({
@@ -124,14 +124,15 @@ room726.btnclick = function (name) {
             else if (mybodyt < 3)
                 chat(8, 726);
             else {
-                if (timstep === 0)
-                    chat(15, 726);
-                else if (timstep === 1)
-                    chat(20, 726);
-                else if (timstep === 2)
-                    chat(22, 726);
-                else if (timstep > 2)
-                    chat(42, 726);
+                chat(15, 726);
+                //if (timstep === 0)
+                //    chat(15, 726);
+                //else if (timstep === 1)
+                //    chat(20, 726);
+                //else if (timstep === 2)
+                //    chat(22, 726);
+                //else if (timstep > 2)
+                //    chat(42, 726);
             }
             break;
         case "lostgirl":

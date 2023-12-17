@@ -56,7 +56,7 @@ room351.chatcatch = function (callback) {
         case "paymeEnd":
             daily.set("spermbank");
             gv.mod("money", 30);
-            sc.modLevel("landlord", 100, 3);
+            sc.modLevel("landlord", 100, 4);
             char.settime(12, 37);
             char.room(0);
             break;

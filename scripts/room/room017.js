@@ -100,7 +100,7 @@ room17.main = function(){
     };
     daily.set("momRaidCloset");
     var navList = [14];
-    g.roomTimeout = setTimeout(function () { g.pass = "closet"; char.room(21); }, 9915000);
+    g.roomTimeout = setTimeout(function () { g.pass = "closet"; char.room(21); }, 15000);
 
     nav.buildnav(navList);
 }

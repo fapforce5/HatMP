@@ -2,13 +2,17 @@
 var room14 = {};
 
 room14.main = function () {
-    if (g.hourBetween(20, 21)) 
-        nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
+    if (sc.getTimeline("landlord").thisRoom) {
+        if (g.hourBetween(7, 22)) {
+            nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
+        }
+    }
+    
 
     var btnList = new Array();
     g.internal = { pussy: 0, asshole: 0 };
-    if (!g.hourBetween(6, 21)) {
-        if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
+    if (!g.hourBetween(6, 22)) {
+        if (sc.getTimeline("bigguy").thisRoom) {
             btnList = [{
                 "type": "btn",
                 "name": "dickSleep",
@@ -32,26 +36,32 @@ room14.main = function () {
         }
     }
     else if (sc.getTimeline("landlord").thisRoom) {
-        if (g.dt.getDay() === 0 || g.dt.getDay() === 5 || g.dt.getDay() === 6) {
-            btnList = [{
-                "type": "btn",
-                "name": "couple",
-                "left": 737,
-                "top": 0,
-                "width": 714,
-                "height": 1080,
-                "image": "14_motherRoom/couple.png"
-            }];
-
+        if (sc.getTimeline("bigguy").thisRoom) {
+            if (daily.get("bigguy")) {
+                btnList = [{
+                    "type": "btn",
+                    "name": "couple",
+                    "left": 737,
+                    "top": 0,
+                    "width": 714,
+                    "height": 1080,
+                    "image": "14_motherRoom/couple.png"
+                }];
+            }
+            else {
+                daily.set("bigguy");
+                nav.bg("14_motherRoom/bg_1.jpg");
+                chat(33, 14);
+            }
         }
         else {
             btnList = [{
                 "type": "btn",
                 "name": "motherRobe",
-                "left": 1193,
-                "top": 42,
-                "width": 466,
-                "height": 1038,
+                "left": 844,
+                "top": 195,
+                "width": 499,
+                "height": 885,
                 "image": "14_motherRoom/14_motherRobe.png"
             }];
         }
@@ -111,6 +121,7 @@ room14.main = function () {
 
 room14.btnclick = function (name) {
     switch (name) {
+        
         case "closet":
             if (!daily.get("momRaidCloset"))
                 char.room(17);
@@ -170,7 +181,153 @@ room14.btnclick = function (name) {
         case "reset":
             char.room(14);
             break;
-
+        case "motherRobe":
+            var llstep = sc.taskGetStep("landlord", "man");
+            if (!daily.get("landlord")){
+                if (gv.get("jobapplyconst") < 2)
+                    chat(10, 14);
+                else if (llstep === -1) {
+                    chat(15, 14);
+                }
+                else if (llstep === 0) {
+                    daily.set("landlord");
+                    chat(11, 14);
+                }
+                else if (llstep === 1) {
+                    chat(17, 14);
+                }
+                else if (llstep === 2)
+                    chat(26, 14);
+            }
+            else
+                chat(14, 14);
+            break;
+        case "level4win":
+            nav.bg("14_motherRoom/task1_2.jpg");
+            g.internal = 0;
+            nav.next("task1_2");
+            sc.modLevel("landlord", 999, 4);
+            break;
+        case "level4lose":
+            nav.killall();
+            nav.bg("14_motherRoom/task1_1_lose.jpg");
+            sc.modLevel("landlord", 15, 4);
+            chat(20, 14);
+            break;
+        case "task1_2":
+            if (g.internal === 0) {
+                g.internal = 1;
+                nav.bg("14_motherRoom/task1_3.jpg");
+            }
+            else {
+                nav.killbutton("task1_2");
+                nav.bg("14_motherRoom/task1_4.jpg");
+                chat(22, 14);
+            }
+            break;
+        case "motherSleep":
+            nav.kill();
+            nav.bg("14_motherRoom/sleep_bed.jpg");
+            if (!pic.has("landlordSleep")) {
+                nav.button({
+                    "type": "btn",
+                    "name": "takePic",
+                    "left": 502,
+                    "top": 381,
+                    "width": 259,
+                    "height": 124,
+                    "image": "14_motherRoom/camera.png"
+                }, 14);
+            }
+            
+            nav.button({
+                "type": "btn",
+                "name": "sleepmolest",
+                "left": 959,
+                "top": 481,
+                "width": 297,
+                "height": 409,
+                "image": "14_motherRoom/sleepmolest.png"
+            }, 14);
+            break;
+        case "takePic":
+            nav.killall();
+            nav.bg("14_motherRoom/white.jpg");
+            pic.add("landlordSleep");
+            daily.set("landlordmolest");
+            g.roomTimeout = setTimeout(function () {
+                nav.bg("14_motherRoom/sleep_angry.jpg");
+                chat(31, 14);
+            }, 500);
+            break;
+        case "sleepmolest":
+            if (daily.get("landlordmolest")) {
+                chat(27, 14);
+                nav.killbutton("sleepmolest");
+            }
+            else {
+                sc.select("icon_finger", "14_motherRoom/icon_finger.png", 0);
+                sc.select("icon_ass", "14_motherRoom/icon_ass.png", 1);
+                sc.select("icon_lickass", "14_motherRoom/icon_lickass.png", 2);
+                sc.select("icon_fuck", "14_motherRoom/icon_fuck.png", 3);
+                sc.selectCancel("motherSleep", 4);
+                nav.killbutton("sleepmolest");
+                nav.killbutton("takePic");
+            }
+            break;
+        case "icon_finger":
+            nav.killall();
+            sex.mod("hand", true, "f", 1);
+            nav.bg("14_motherRoom/Sleeping_FingerPussy3.gif");
+            nav.next("icon_finish");
+            break;
+        case "icon_ass":
+            nav.killall();
+            sex.mod("hand", true, "f", 1);
+            nav.bg("14_motherRoom/Sleeping_FingerAhole.gif");
+            nav.next("icon_finish");
+            break;
+        case "icon_lickass":
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "sleep",
+                "left": 673,
+                "top": 367,
+                "width": 800,
+                "height": 600,
+                "image": "14_motherRoom/sleep_blick.gif"
+            }, 14);
+            nav.next("icon_finish");
+            break;
+        case "icon_fuck":
+            nav.killall();
+            nav.bg("14_motherRoom/sleep_dick.jpg");
+            nav.next("icon_fuck1");
+            break;
+        case "icon_fuck1":
+            nav.killbutton("icon_fuck1");
+            nav.bg("14_motherRoom/sleep_angry.jpg");
+            chat(29, 14);
+            break;
+        case "icon_finish":
+            nav.killall();
+            nav.bg("14_motherRoom/sleep_happy.jpg");
+            daily.set("landlordmolest");
+            sc.modLevel("landlord", 26, 4);
+            chat(28, 14);
+            break;
+        case "couple":
+            var bgstep = sc.taskGetStep("bigguy", "straight");
+            if (bgstep === 0) {
+                chat(34, 14);
+            }
+            else
+                chat(36, 14);
+            break;
+        case "dickSleep":
+            chat(37, 14);
+            break;
         default:
             break;
     }
@@ -178,6 +335,16 @@ room14.btnclick = function (name) {
 
 room14.chatcatch = function (callback) {
     switch (callback) {
+        case "task1_1":
+        case "task1_4":
+            nav.killall();
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "task1_3":
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            sc.modLevel("landlord", 30, 5);
+            levels.mod("dom", 53, 999);
+            break;
         case "reset":
             char.room(14);
             break;
@@ -189,88 +356,373 @@ room14.chatcatch = function (callback) {
             levels.mod("xdress", 40, 2);
             room14.btnclick("dresser");
             break;
+        case "domlaugh":
+            levels.mod("dom", 38, 999);
+            nav.modbutton("motherRobe", "14_motherRoom/14_motherRobeLaugh.png", null, null);
+            break;
+        case "ll_man_1":
+            sc.completeMissionTask("landlord", "man", 0, true);
+            sc.modLevel("landlord", 53, 4);
+            char.addtime(47);
+            char.room(16);
+            break;
+        case "task1_2":
+            if (sc.getLevel("landlord") > 3) {
+                nav.bg("14_motherRoom/task1_2.jpg");
+                g.internal = 0;
+                nav.next("task1_2");
+            }
+            else {
+                chat(21, 14);
+            }
+            break;
+        case "level4Roll":
+            charisma.init(8 - sc.getLevel("landlord"), "level4win", "level4lose", 14);
+            break;
+        case "task1_leave":
+            sc.completeMissionTask("landlord", "man", 1, true);
+            sc.modLevel("landlord", 53, 5);
+            char.settime(22, 14);
+            char.room(16);
+            break;
+        case "levelLeave":
+            sc.modLevel("landlord", 22, 4);
+            char.addtime(47);
+            daily.set("landlord");
+            char.room(16);
+            break;
+        case "spanking":
+            daily.set("landlordmolest");
+            g.pass = "sleepSpank";
+            char.room(21);
+            break;
+        case "leave":
+            daily.set("landlord");
+            char.room(16);
+            break;
+        case "bg_s_0_end":
+            sc.char[sc.i("bigguy")].display = true;
+            sc.completeMissionTask("bigguy", "straight", 0, true);
+            char.addtime(37);
+            daily.set("bigguy");
+            char.room(16);
+            break;
         default:
             break;
     }
 };
 
 room14.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "thinking",
-            text: "Nothing here..",
-            button: [
-                { chatID: 1, text: "", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "thinking",
-            text: "I've already raided " + sc.n("landlord") + "'s closet today. I better wait till tomorrow. ",
-            button: []
-        },
-        {
-            chatID: 2,
-            speaker: "landlord",
-            text: "You need to log into your computer in your room, look for job, then go work. I'm not supporting your any longer.",
-            button: []
-        },
-        {
-            chatID: 3,
-            speaker: "landlord",
-            text: "Hello honey, I'm so proud that you're working now. you keep it up and you just may make something of yourself.",
-            button: []
-        },
-        {
-            chatID: 4,
-            speaker: "thinking",
-            text: "Mustn't wake " + sc.n("landlord") + "...",
-            button: []
-        },
-        {
-            chatID: 5,
-            speaker: "thinking",
-            text: "oh wow. I can't remember " + sc.n("landlord") + " with long hair. I always thought she just kept it short. " +
-                "I wonder who that guy is. They do look happy. ",
-            button: [
-                { chatID: -1, text: "[Put the picture back.]", callback: "resetDresser" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "thinking",
-            text: "Gross!! Is this what I think it is? ",
-            button: [
-                { chatID: -1, text: "[Put it back]", callback: "resetDresser" },
-                { chatID: 7, text: "[Sniff it]", callback: "" },
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "thinking",
-            text: "OOo it smells like butt. This has to be " + sc.n("landlord") + "'s butt plug. I didn't take her for someoene " +
-                "that was into butt stuff. This is so disgusting. I really should put it back. ",
-            button: [
-                { chatID: -1, text: "[Put it back]", callback: "resetDresser" },
-                { chatID: 8, text: "[Steal her butt plug]", callback: "stealplug" },
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "thinking",
-            text: "I'm such a dirty dirty dirty bitch! This has been up my " + sc.n("landlord") + "'s ass and I'm going to insert " +
-                "up my ass. Like some kind of weird ass to ass porn. ",
-            button: []
-        },
+    if (chatID === 999) {
+        //placeholder
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "thinking",
+                text: "Nothing here..",
+                button: [
+                    { chatID: 1, text: "", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "thinking",
+                text: "I've already raided " + sc.n("landlord") + "'s closet today. I better wait till tomorrow. ",
+                button: []
+            },
+            {
+                chatID: 2,
+                speaker: "landlord",
+                text: "You need to log into your computer in your room, look for job, then go work. I'm not supporting your any longer.",
+                button: []
+            },
+            {
+                chatID: 3,
+                speaker: "landlord",
+                text: "Hello honey, I'm so proud that you're working now. you keep it up and you just may make something of yourself.",
+                button: []
+            },
+            {
+                chatID: 4,
+                speaker: "thinking",
+                text: "Mustn't wake " + sc.n("landlord") + "...",
+                button: []
+            },
+            {
+                chatID: 5,
+                speaker: "thinking",
+                text: "oh wow. I can't remember " + sc.n("landlord") + " with long hair. I always thought she just kept it short. " +
+                    "I wonder who that guy is. They do look happy. ",
+                button: [
+                    { chatID: -1, text: "[Put the picture back.]", callback: "resetDresser" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "thinking",
+                text: "Gross!! Is this what I think it is? ",
+                button: [
+                    { chatID: -1, text: "[Put it back]", callback: "resetDresser" },
+                    { chatID: 7, text: "[Sniff it]", callback: "" },
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "thinking",
+                text: "OOo it smells like butt. This has to be " + sc.n("landlord") + "'s butt plug. I didn't take her for someoene " +
+                    "that was into butt stuff. This is so disgusting. I really should put it back. ",
+                button: [
+                    { chatID: -1, text: "[Put it back]", callback: "resetDresser" },
+                    { chatID: 8, text: "[Steal her butt plug]", callback: "stealplug" },
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "thinking",
+                text: "I'm such a dirty dirty dirty bitch! This has been up my " + sc.n("landlord") + "'s ass and I'm going to insert " +
+                    "up my ass. Like some kind of weird ass to ass porn. ",
+                button: []
+            },
+            {
+                chatID: 9,
+                speaker: "thinking",
+                text: "$5 dollars knocked off the rent this week.",
+                button: []
+            },
+            {
+                chatID: 10,
+                speaker: "landlord",
+                text: "Stop sniffing around my tits and get a job. ",
+                button: []
+            },
+            {
+                chatID: 11,
+                speaker: "landlord",
+                text: "You know a man with a job is the sexiest thing there is. With your good looks you'll have to beat those young " +
+                    "girls away with a stick. If I was younger I would be all over you. Now you get that cute butt out of here so I " +
+                    "can dream. ",
+                button: [
+                    { chatID: 12, text: "My cute butt wants to stare at your cute butt a bit longer.", callback: "domlaugh" },
+                    { chatID: -1, text: "Ok. Good night.", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "landlord",
+                text: "Oh stop! This old butt is not sexy to young men. ",
+                button: [
+                    { chatID: 13, text: "As a young man I can assure you, your ass is sexy. ", callback: "" },
+                    { chatID: -1, text: "Yeah. You're right. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "landlord",
+                text: "Oh my. You make this old lady feel good. Now run along so I can get ready for bed. ",
+                button: [
+                    { chatID: -1, text: "Ok. Good night.", callback: "ll_man_1" },
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "landlord",
+                text: "You've bugged me enough today. Run along. ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "landlord",
+                text: "Did you come in here to try to catch me naked, or do you have something for me. ",
+                button: [
+                    { chatID: 16, text: "You have such a great body, I was hoping to catch you naked. ", callback: "domlaugh" },
+                    { chatID: -1, text: "No. Sorry. I should go. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "landlord",
+                text: "Ok, ok. Smart ass. Run along. I'm getting ready for bed.  ",
+                button: [
+                    { chatID: -1, text: "Good night. ", callback: "levelLeave" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "landlord",
+                text: "I suppose you came to compliment my butt again? ",
+                button: [
+                    { chatID: 18, text: "Not just your butt, but your boobs too! ", callback: "domlaugh" },
+                    { chatID: -1, text: "Oh no. g'night ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "landlord",
+                text: "Oh you.  ",
+                button: [
+                    { chatID: 19, text: "[Put your hand on her shoulder.] ", callback: "task1_1" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "landlord",
+                text: "What are you doing? ",
+                button: [
+                    { chatID: -1, text: "[Go in for the kiss] ", callback: "task1_2" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "landlord",
+                text: "I don't think so mister! You march your butt out of here so I can get to bed! ",
+                button: [
+                    { chatID: -1, text: "ok. Good night. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "!blank",
+                text: "Level check failed to kiss. Improve your relationship with her. ",
+                button: [
+                    { chatID: -1, text: "Roll for charisma: " + charisma.getStats(8 - sc.getLevel("landlord")).txt, callback: "level4Roll" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "landlord",
+                text: "We can't do this. It's so very very wrong. What would " + sc.n("bigguy") + " say? ",
+                button: [
+                    { chatID: 23, text: "I don't care what he says. I just know that I only to feel your lips on mine. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "landlord",
+                text: "I... There's so much... We just can't... You need to go. I need to process this. ",
+                button: [
+                    { chatID: -1, text: "ok.", callback: "task1_leave" },
+                    { chatID: 24, text: "[Kiss her one more time]", callback: "task1_3" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "landlord",
+                text: "*moan*",
+                button: [
+                    { chatID: 25, text: "...", callback: "task1_4" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "landlord",
+                text: "No. You need to go. NOW!",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "task1_leave" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "landlord",
+                text: "Sorry. The story will continue on the next release. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "thinking",
+                text: "I already played with her tonight. Best not to risk it. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "thinking",
+                text: "I think she liked that! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "landlord",
+                text: "What the hell are you doing? ",
+                button: [
+                    { chatID: 30, text: "I uhhhhh... huh?", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "landlord",
+                text: "I can't believe you thought you could get away with sticking your dirty penis inside me while I'm " +
+                    "sleeping, what gets in your head.",
+                button: [
+                    { chatID: -1, text: "Oooohhhh no.", callback: "spanking" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "landlord",
+                text: "What the hell are you doing? ",
+                button: [
+                    { chatID: 32, text: "I couldn't sleep?", callback: "" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "landlord",
+                text: "Well then go lay your head on your pillow and try harder. Now go! ",
+                button: [
+                    { chatID: -1, text: "ok. Good night. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "landlord",
+                text: "AAAAkkk, Get out! ",
+                button: [
+                    { chatID: -1, text: "crap.", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "landlord",
+                text: "Oh. You're in here late. I guess you shoud meet " + sc.n("bigguy") + ". ",
+                button: [
+                    { chatID: 35, text: "hi", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "bigguy",
+                text: "Yeah little boy. It's late. Why don't you go to bed now. The adults are doing stuff. Get going now. ",
+                button: [
+                    { chatID: -1, text: "oh. ok", callback: "bg_s_0_end" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "bigguy",
+                text: "You need to get out of here before I put you out of here!",
+                button: [
+                    { chatID: -1, text: "oh. ok", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "thinking",
+                text: "I'm not messing with him when he's sleeping. He can totally crush me! ",
+                button: [
+                    { chatID: -1, text: "oh. ok", callback: "leave" },
+                ]
+            },
+        ];
 
-        {
-            chatID: 9,
-            speaker: "thinking",
-            text: "$5 dollars knocked off the rent this week.",
-            button: []
-        },
-    ];
-
-    return cArray[chatID];
+        return cArray[chatID];
+    }
 };

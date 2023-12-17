@@ -171,8 +171,22 @@ gender.getChange = function (name, cType) {
         case "hairLength": return gender.changes[i].hairLength !== cl.c.hairLength; 
         case "hairColor": return gender.changes[i].hairColor !== cl.c.hairColor; 
         case "cock": return gender.changes[i].cock !== cl.c.cock; 
-        case "chastity": gender.changes[i].chastity
-            break;
+        case "chastity": return gender.changes[i].chastity
+        default: console.log("gender.setChanges cType not found: " + cType); break;
+    }
+};
+
+gender.get = function (name, cType) {
+    var i = gender.cIndex(name);
+    switch (cType) {
+        case "xdress": return gender.changes[i].xdress;
+        case "panties": return gender.changes[i].panties;
+        case "chest": return gender.changes[i].chest;
+        case "leg": return gender.changes[i].leg;
+        case "hairLength": return gender.changes[i].hairLength;
+        case "hairColor": return gender.changes[i].hairColor;
+        case "cock": return gender.changes[i].cock;
+        case "chastity": return gender.changes[i].chastity
         default: console.log("gender.setChanges cType not found: " + cType); break;
     }
 };

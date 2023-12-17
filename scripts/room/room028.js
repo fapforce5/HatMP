@@ -147,25 +147,25 @@ room28.main = function () {
         cl.display();
     }
 
+    daily.newday();
+
     if (thisautohormone) {
         var hx = inv.getIndex("hormone");
-        if (hormoneLevel < 90) {
-            if (inv.master[hx].count > 0) {
-                inv.master[hx].count--;
-                if (inv.master[hx].count < 1) {
-                    inv.master[hx].entry = false;
-                    inv.master[hx].count = 0;
-                }
-                gv.st[hix].t += 30;
-                if (gv.st[hix].t > 100)
-                    gv.st[hix].t = 100;
-                gv.st[tix].t = true;
-                g.popUpNotice("Took your hormone pill" + (inv.master[hx].entry ? "" : " - Out of pills"));
+        if (inv.master[hx].count > 0) {
+            inv.master[hx].count--;
+            if (inv.master[hx].count < 1) {
+                inv.master[hx].entry = false;
+                inv.master[hx].count = 0;
             }
+            gv.st[hix].t += 30;
+            if (gv.st[hix].t > 100)
+                gv.st[hix].t = 100;
+            daily.set("tookHormonePill");
+            g.popUpNotice("Took your hormone pill" + (inv.master[hx].entry ? "" : " - Out of pills"));
         }
     }
 
-    daily.newday();
+    
 
     //check Transformation
     if (cl.c.chest === 0 && levels.st[12].l > 0) {

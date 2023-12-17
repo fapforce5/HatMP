@@ -4,7 +4,7 @@
 sc.char = [
     { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: false },
-    { name: "el", display: "Co-Tenants", image: "lolaEva.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
+    { name: "el", display: "Co-Tenant", image: "lolaEva.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "lola", display: "Lola", image: "lola.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: null },
     { name: "eva", display: "Eva", image: "eva.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: false },
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
@@ -61,7 +61,6 @@ sc.char = [
     { name: "molly", display: "Molly", image: "molly.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "dolly", display: "Dolly", image: "dolly.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
-    { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "treyvon", display: "Treyvon", image: "treyvon.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "jimmy", display: "Jimmy", image: "jimmy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "kei", display: "Kei", image: "kei.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -128,7 +127,21 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes to be massaged. ", task: new Array()
+                missionName: "massage", mStatus: 0, title: "Massage", desc: "Help her loosen up a bit. ", task:
+                    [
+                        { id: 0, txt: "Back Rub", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Shirt off back rub. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Massage her tight legs", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "Massage them glutes", show: true, mStatus: 0, roomId: 13 },
+                        { id: 4, txt: "Free choice", show: true, mStatus: 0, roomId: 13 },
+                    ]
+            },
+            {
+                missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
+                    [
+                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                    ]
             },
             {
                 missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
@@ -145,14 +158,24 @@ sc.charMission = [
                 missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
                     [
                         { id: 0, txt: "Small chat", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Feet?!", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
                 missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes massages", task:
                     [
-                        { id: 0, txt: "Shirt on", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Shirt off", show: true, mStatus: 0, roomId: 16 },
-                        { id: 2, txt: "Legs", show: true, mStatus: 0, roomId: 16 },
+                        { id: 0, txt: "Massage her feet.", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Suck her toes doggy. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "Show me your dick. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 3, txt: "I want to play with it. ", show: true, mStatus: 0, roomId: 16 },
+
+                    ]
+            },
+            {
+                missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
+                    [
+                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
@@ -191,7 +214,23 @@ sc.charMission = [
             {
                 missionName: "man", mStatus: -1, title: "Now you're a man!", desc: "A manly manly man. Now you're a man's man!", task:
                     [
-                        { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 0, txt: "Talk about butts ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 1, txt: "Forbidden kiss.", show: true, mStatus: 0, roomId: 14 },
+                        { id: 2, txt: "Next Release", show: true, mStatus: 0, roomId: 14 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "bigguy", mission: [
+            {
+                missionName: "straight", mStatus: 1, title: "Laius", desc: "Stop pestering me you little shit. ", task:
+                    [
+                        { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 2, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 3, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
+
                     ]
             },
         ]
@@ -209,7 +248,7 @@ sc.mStatus = function (mStatus) {
 
 }
 
-sc.getIndex = function (name) {
+sc.i = function (name) {
     for (var i = 0; i < sc.char.length; i++)
         if (sc.char[i].name === name)
             return i;
@@ -217,7 +256,7 @@ sc.getIndex = function (name) {
 };
 
 sc.get = function (name) {
-    return sc.char[sc.getIndex(name)];
+    return sc.char[sc.i(name)];
 };
 
 sc.n = function (name) {
@@ -227,7 +266,7 @@ sc.n = function (name) {
 };
 
 sc.setcharname = function (name, newName) {
-    sc.char[sc.getIndex(name)].display = newName;
+    sc.char[sc.i(name)].display = newName;
 };
 
 //Levels ----------------------------------------------------------------------
@@ -241,11 +280,11 @@ sc.levels = function (name, level) {
         case "landlord":
             if (secret < 100)
                 tempLevel = [
-                    { step: 0, txt: "[M] Get a job. Go to your Computer in your room. Apply and interview for a job. Chat with her about working. ", m: [16] },
-                    { step: 1, txt: "[M] Talk to her about her job. ", m: [16] },
-                    { step: 2, txt: "[M] Chat about sperm theif. ", m: [16] },
-                    { step: 3, txt: "[M] Extra Money! Get key to her bedroom.", m: [16] },
-                    { step: 4, txt: "[M] Chat about working at the sperm store.", m: [16] },
+                    { step: 0, txt: "Get a job loser. ", m: [16] },
+                    { step: 1, txt: "She's starting to warm up to you. ", m: [16] },
+                    { step: 2, txt: "She's liking you. ", m: [16] },
+                    { step: 3, txt: "A little crush perhaps? ", m: [16] },
+                    { step: 4, txt: "* Go in for the kiss!", m: [16] },
                     { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },
                     { step: 6, txt: "[M] Talk to her on the couch during the day or early evening. Eat that ass!", m: [16] },
                     { step: 7, txt: "[M] Talk to her on the couch during the day or early evening. Lesson learned.", m: [16] },
@@ -318,7 +357,7 @@ sc.modLevel = function (name, amount, targetLevel) {
     var actualAmount;
     var i, j;
     sc.getch
-    i = sc.getIndex(name);
+    i = sc.i(name);
     if (amount > 0) {
         if (sc.char[i].l <= targetLevel)
             actualAmount = amount;
@@ -389,6 +428,7 @@ sc.getMission = function (name, missionName) {
                         notStarted: sc.charMission[i].mission[j].mStatus < 1,
                         inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
                         complete: sc.charMission[i].mission[j].mStatus > 100,
+                        fail: sc.charMission[i].mission[j].mStatus === 101,
                         i: i,
                         j: j
                     };
@@ -420,7 +460,6 @@ sc.getActiveMissions = function (name) {
 };
 
 sc.completeMissionTask = function (name, missionName, taskId, success) {
-    var i, j;
     var ml = sc.getMission(name, missionName);
     
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
@@ -452,11 +491,14 @@ sc.completeMission = function (name, missionName, success) {
 
 sc.taskGetStep = function (name, missionName) {
     var ml = sc.getMission(name, missionName);
+    if (ml.notStarted)
+        return -1;
     for (var k = 0; k < sc.charMission[ml.i].mission[j].task.length; k++) {
         if (sc.charMission[ml.i].mission[j].task[k].mStatus < 100)
             return sc.charMission[ml.i].mission[j].task[k].id;
     }
-    return 0;
+    
+    return sc.charMission[ml.i].mission[j].task.length;
 }
 
 sc.modSecret = function (name, amount) {
@@ -661,7 +703,7 @@ sc.getTimeline = function (char) {
             //sunday
                 { d: [0], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
                 { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
-                { d: [0], hstart: 10, hend: 11, roomId: 15, alt: null }, //kitchen
+                { d: [0], hstart: 10, hend: 11, roomId: 25, alt: null }, //kitchen
                 { d: [0], hstart: 11, hend: 18, roomId: 26, alt: null }, //living room
                 { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
                 { d: [0], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
@@ -681,13 +723,39 @@ sc.getTimeline = function (char) {
                 { d: [2, 4], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
                 { d: [2, 4], hstart: 20, hend: 24, roomId: 14, alt: null }, //bedroom
                 //saturday
-                { d: [6], hstart: 0, hend: 7, roomId: 14 }, //bathroom
-                { d: [6], hstart: 7, hend: 8, roomId: 12 }, //bathroom
+                { d: [6], hstart: 0, hend: 7, roomId: 14, alt: null }, //bathroom
+                { d: [6], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
                 { d: [6], hstart: 8, hend: 12, roomId: 350, alt: null }, //living room
                 { d: [6], hstart: 12, hend: 17, roomId: 26, alt: null }, //living room
-                { d: [6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
-                { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-                { d: [6], hstart: 18, hend: 24, roomId: 14, alt: null }, //bedroom
+                { d: [6], hstart: 17, hend: 19, roomId: 25, alt: null }, //kitchen
+                { d: [6], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
+            ];
+            break;
+        case "bigguy":
+            timeline = [
+            //Sunday
+                { d: [0], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
+                { d: [0], hstart: 7, hend: 10, roomId: null, alt: "In town" }, //church
+                { d: [0], hstart: 10, hend: 11, roomId: 25, alt: null }, //kitchen
+                { d: [0], hstart: 11, hend: 18, roomId: 26, alt: null }, //living room
+                { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
+                { d: [0], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
+                //week
+                { d: [1, 2, 3, 4], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
+                { d: [1, 2, 3, 4], hstart: 9, hend: 18, roomId: null, alt: "Work" }, //bathroom
+                { d: [1, 2, 3, 4], hstart: 18, hend: 24, roomId: null, alt: "His home" }, //bathroom
+                //friday
+                { d: [5], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
+                { d: [5], hstart: 9, hend: 17, roomId: null, alt: "Work" }, //bathroom
+                { d: [5], hstart: 17, hend: 18, roomId: null, alt: "Train" }, //bathroom
+                { d: [5], hstart: 18, hend: 20, roomId: 26, alt: null }, //bathroom
+                { d: [5], hstart: 20, hend: 24, roomId: 14, alt: null }, //bathroom
+                //saturday
+                { d: [6], hstart: 0, hend: 7, roomId: 14, alt: null }, //bathroom
+                { d: [6], hstart: 7, hend: 12, roomId: null, alt: "In town" }, //bathroom
+                { d: [6], hstart: 12, hend: 17, roomId: 26, alt: null }, //living room
+                { d: [6], hstart: 17, hend: 19, roomId: 25, alt: null }, //kitchen
+                { d: [6], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
             ];
             break;
         case "lola":
@@ -697,7 +765,7 @@ sc.getTimeline = function (char) {
                 { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
                 { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
                 { d: [0], hstart: 10, hend: 12, roomId: 12, alt: null }, //bathroom
-                { d: [0], hstart: 12, hend: 18, roomId: 17, alt: null }, //bathroom
+                { d: [0], hstart: 12, hend: 18, roomId: 26, alt: null }, //living room
                 { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
                 { d: [0], hstart: 19, hend: 24, roomId: 13, alt: null }, //bedroom
 
@@ -720,7 +788,7 @@ sc.getTimeline = function (char) {
                 //saturday
                 { d: [6], hstart: 0, hend: 7, roomId: 13 }, //bathroom
                 { d: [6], hstart: 7, hend: 9, roomId: 25 }, //bathroom
-                { d: [6], hstart: 9, hend: 17, roomId: 26, alt: null }, //living room
+                { d: [6], hstart: 9, hend: 17, roomId: null, alt: "Out somewhere..?" }, //living room
                 { d: [6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
                 { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
                 { d: [6], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
@@ -821,299 +889,26 @@ sc.selectCancel = function (name, i) {
 };
 
 sc.zoey = function () {
-    var r = 0;
-    var hour = g.gethourdecimal();
-    switch (g.dt.getDay()) {
-        case 0: //Sunday
-            if (hour.between(0, 12))
-                r = 502;
-            else if (hour.between(12, 16))
-                r = 501;
-            else
-                r = 99999;
-            break;
-        case 1: //monday
-            if (hour.between(0, 4))
-                r = 99999;
-            else if (hour.between(4, 12))
-                r = 502;
-            else
-                r = 501;
-            break;
-        case 2: //tuesday
-        case 3: //wednesday
-        case 4: //thursday
-            if (hour.between(0, 12))
-                r = 502;
-            else
-                r = 501;
-            break;
-        case 5: //friday
-            if (hour.between(0, 12))
-                r = 502;
-            else if (hour.between(12, 16))
-                r = 501;
-            else
-                r = 99999;
-            break;
-        case 6://saturday
-            if (hour.between(0, 4))
-                r = 99999;
-            else if (hour.between(4, 12))
-                r = 502;
-            else if (hour.between(12, 16))
-                r = 501;
-            else
-                r = 99999;
-            break;
-    }
-    return { roomID: r, thisRoom: g.roomID === r };
+    return { roomID: g.roomID, thisRoom: true };
 
 };
 
 sc.tiffany = function () {
-    var r = 0;
-    var hour = g.gethourdecimal();
-    switch (g.dt.getDay()) {
-        case 0: //sunday
-            if (hour.between(0, 7))
-                r = 54; //Room
-            else if (hour.between(7, 10))
-                r = 54; //bathroom
-            else if (hour.between(10, 18))
-                r = 1001; //unk
-            else if (hour.between(18, 24))
-                r = 54; //Room
-            break;
-        case 1: //monday
-            if (hour.between(0, 7))
-                r = 54; //room
-            if (hour.between(7, 8))
-                r = -1; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 54;
-            break;
-        case 2: //tuesday
-            if (hour.between(0, 7))
-                r = 54; //room
-            if (hour.between(7, 8))
-                r = 53; //bathroom
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 54;
-            break;
-        case 3: //wednesday
-            if (hour.between(0, 7))
-                r = 54; //room
-            if (hour.between(7, 8))
-                r = 53; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 54;
-            break;
-        case 4: //thursday
-            if (hour.between(0, 7))
-                r = 54; //room
-            if (hour.between(7, 8))
-                r = -1; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 54;
-            break;
-        case 5: //friday
-            if (hour.between(0, 7))
-                r = 54; //room
-            if (hour.between(7, 8))
-                r = 53; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 54;
-            break;
-        case 6: //saturday
-            if (hour.between(0, 7))
-                r = 54; //room
-            else if (hour.between(7, 18))
-                r = 1001;  //unk
-            else if (hour.between(18, 17))
-                r = 50; //living room
-            else if (hour.between(17, 24))
-                r = 54;
-            break;
-    }
-    return { roomID: r, thisRoom: g.roomID === r };
+    return { roomID: g.roomID, thisRoom: true };
 };
 
 
 sc.candy = function () {
-    var r = 0;
-    var hour = g.gethourdecimal();
-    switch (g.dt.getDay()) {
-        case 0: //sunday
-            if (hour.between(0, 7))
-                r = 53; //room
-            else if (hour.between(7, 18))
-                r = 875;  //cheerleader
-            else if (hour.between(10, 18))
-                r = 1001; //unk
-            else if (hour.between(18, 24))
-                r = 53; //Room
-            break;
-        case 1: //monday
-            if (hour.between(0, 7))
-                r = 53; //room
-            if (hour.between(7, 8))
-                r = 53; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 53;
-            break;
-        case 2: //tuesday
-            if (hour.between(0, 7))
-                r = -1; //room
-            if (hour.between(7, 8))
-                r = 53; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 53;
-            break;
-        case 3: //wednesday
-            if (hour.between(0, 7))
-                r = 53; //room
-            if (hour.between(7, 8))
-                r = 53; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 53;
-            break;
-        case 4: //thursday
-            if (hour.between(0, 7))
-                r = 53; //room
-            if (hour.between(7, 8))
-                r = 53; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 53;
-            break;
-        case 5: //friday
-            if (hour.between(0, 7))
-                r = 53; //room
-            if (hour.between(7, 8))
-                r = -1; //room
-            else if (hour.between(8, 17))
-                r = 650;  //toystore
-            else if (hour.between(17, 19))
-                r = 57; //living room
-            else if (hour.between(19, 24))
-                r = 53;
-            break;
-        case 6: //saturday
-            if (hour.between(0, 7))
-                r = 53; //room
-            else if (hour.between(7, 18))
-                r = 875;  //cheerleader
-            else if (hour.between(18, 17))
-                r = 50; //living room
-            else if (hour.between(17, 24))
-                r = 53;
-            break;
-    }
-    return { roomID: r, thisRoom: g.roomID === r };
+    return { roomID: g.roomID, thisRoom: true };
 };
 
 
 sc.bimbo = function () {
-    var r = 0;
-    var hour = g.gethourdecimal();
-    switch (g.dt.getDay()) {
-        case 1: //monday
-        case 2: //tuesday
-        case 3: //wednesday
-        case 4: //thursday
-        case 5: //friday
-            if (hour.between(0, 6))
-                r = 76; //room
-            else if (hour.between(15, 21))
-                r = 77; //living room
-            else if (hour.between(22, 24))
-                r = 76;
-            else
-                r = 700;
-            break;
-        default: //Saturday / Sunday
-            if (hour.between(0, 6))
-                r = 76; //room
-            else if (hour.between(12, 16))
-                r = 77; //living room
-            else if (hour.between(22, 24))
-                r = 76;
-            else
-                r = 700;
-            break;
-    }
-    return { roomID: r, thisRoom: g.roomID === r };
+    return { roomID: g.roomID, thisRoom: true };
 };
 
 sc.swimgirl = function () {
-    var r = 0;
-    switch (g.dt.getDay()) {
-        case 0: //monday
-        case 5: //tuesday
-        case 6: //wednesday
-        case 7: //thursday
-            r = 901;
-            break;
-    }
-    return { roomID: r, thisRoom: g.roomID === r };
-};
-
-sc.c = function (name) {
-    var retName = "UNK";
-    $.each(g.char, function (i, v) {
-        if (v.name === name) {
-            retName = v.display;
-            return true;
-        }
-    });
-    return retName;
-};
-
-sc.step = function (name) {
-    var retStep = -1;
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            retStep = sc.char[i].step;
-            i = 100000;
-        }
-    }
-    return retStep;
+    return { roomID: g.roomID, thisRoom: true };
 };
 
 sc.phone = function (char) {
@@ -1364,6 +1159,10 @@ sc.phoneChat = function (chatList, char) {
 sc.trivial = function (charname) {
     var name, image;
     switch (charname) {
+        case "!blank":
+            name = "";
+            image = "blank.png";
+            break;
         case "!burlysecurity":
             name = "Security";
             image = "burlySecurity.png";

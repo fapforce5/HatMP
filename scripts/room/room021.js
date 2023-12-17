@@ -65,7 +65,7 @@ room21.chatcatch = function (callback) {
             gv.mod("arousal", 30);
             break;
         case "leave":
-            sc.modLevel("landlord", 15, 999);
+            sc.modLevel("landlord", 15, 4);
             cl.c.pants = g.internal.pants;
             cl.c.panties = g.internal.panties;
             cl.display();
@@ -140,10 +140,10 @@ room21.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "landlord",
-            text: "Say I'm not going to stick my dirty fingers into my " + sc.n("landlord") + " again " +
+            text: "Say I'm not going to stick my dirty penis into my " + sc.n("landlord") + " again " +
                 "or I'll get more bare bottom spankings.",
             button: [
-                { chatID: 4, text: "I'm not going to stick my dirty fingers into my " + sc.n("landlord") + " again or I'll get more bare bottom spankings", callback: "arouse" }
+                { chatID: 4, text: "I'm not going to stick my dirty penis into my " + sc.n("landlord") + " again or I'll get more bare bottom spankings", callback: "arouse" }
             ]
         },
         {

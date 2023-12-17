@@ -5,6 +5,7 @@ room16.main = function () {
     var btnList = new Array();
     var thisSisterRoomID = sc.getTimeline("lola");
     var thisMomRoomID = sc.getTimeline("landlord");
+    var thisBigguyId = sc.getTimeline("bigguy");
     var llst = sc.getstep("landlord");
     if ((cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
         nav.button({
@@ -69,6 +70,17 @@ room16.main = function () {
                 "image": "16_livingRoom/diningRoomEandL.png"
             });
         }
+        else if (thisBigguyId.roomID === 25) {
+            btnList.push({
+                "type": "btn",
+                "name": "dining",
+                "left": 1113,
+                "top": 416,
+                "width": 807,
+                "height": 664,
+                "image": "16_livingRoom/diningRoomDick.png"
+            });
+        }
         else if (thisMomRoomID.roomID === 25) {
             btnList.push({
                 "type": "btn",
@@ -126,6 +138,17 @@ room16.main = function () {
                 "height": 385,
                 "image": "16_livingRoom/livingT.png",
                 "night": "16_livingRoom/livingTN.png"
+            });
+        }
+        else if (thisMomRoomID.roomID === 26 && thisBigguyId.roomID === 26) {
+            btnList.push({
+                "type": "btn",
+                "name": "living",
+                "left": 1189,
+                "top": 347,
+                "width": 212,
+                "height": 227,
+                "image": "16_livingRoom/bigguy.png",
             });
         }
         else if (thisMomRoomID.roomID === 26) {

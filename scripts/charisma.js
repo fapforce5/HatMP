@@ -131,15 +131,6 @@ charisma.drawRoll = function () {
     enemydice = new Array();
     var winText = ["You're a winner!", "You're so sexy", "Smooth talker", "Way to go!", "You're excellent", "Awesome!", "You're amazing!"];
     var loseText = ["You fucked up", "Loser!", "Ah shit!", "Blubber butt", "That was stupid", "Whoops", "Oh shit", "Lost", "You lost. Sad."];
-    //nav.t({
-    //    type: "img",
-    //    name: "quickfight",
-    //    left: 350,
-    //    top: 150,
-    //    font: 40,
-    //    hex: "#ffffff",
-    //    text: "My Roll"
-    //}, 1);
     nav.t({
         type: "img",
         name: "quickfight",
@@ -248,7 +239,7 @@ charisma.complete = function () {
     nav.killbutton("charismaComplete");
     var name;
     var roomId = g.fight.roomID;
-
+    gv.mod("charisma", 15, 999);
     if (g.fight.aftermath === "win")
         name = g.fight.btnPressWin;
     else

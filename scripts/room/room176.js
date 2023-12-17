@@ -71,13 +71,8 @@ room176.chatcatch = function (callback) {
             break;
         case "oral8":
             nav.bg("176_oral/oral8.jpg");
-            if (inv.has("whiteDildo")) {
-                chat(17, 176);
-            }
-            else {
+            if (!inv.has("whiteDildo")) 
                 inv.add("whiteDildo");
-                chat(19, 176);
-            }
             break;
         case "sub":
             levels.mod("oral", 100, 999);
@@ -234,7 +229,7 @@ room176.chat = function (chatID) {
             speaker: "p",
             text: "Put that cock in your mouth slut. This isn't hand job class. ",
             button: [
-                { chatID: 12, text: "...", callback: "" }
+                { chatID: 19, text: "...", callback: "" }
             ]
         },
         {
@@ -304,7 +299,7 @@ room176.chat = function (chatID) {
             text: "I'm giving you all a cock to take home to help you. You're welcome. " +
                 " Your homework is to suck cock that cock. Focus on your technique. ",
             button: [
-                { chatID: -1, text: "...", callback: "oralEnd" },
+                { chatID: 12, text: "...", callback: "oral8" },
             ]
         },
         {

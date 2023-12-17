@@ -78,10 +78,15 @@ inv.master = [
     { type: "b", name: "purseyellow", display: "Yellow Purse", entry: false, count: null, cost: 30, image: "purse_yellow.png", n: false, desc: "A Yellow Purse" },
     
     { type: "p", name: "phoneBasic", display: "Basic Phone", entry: true, count: null, cost: -1, image: "phone_basic.png", n: false, desc: "Default phone case" },
-    { type: "p", name: "phoneTr", display: "Strong Woman", entry: false, count: null, cost: 100, image: "phone_tr.png", n: false, desc: "" },
-    { type: "p", name: "phonePink", display: "Pink", entry: false, count: null, cost: 100, image: "phone_pink.png", n: false, desc: "" },
-    { type: "p", name: "phoneLips", display: "Purple Lips", entry: false, count: null, cost: 100, image: "phone_lips.png", n: false, desc: "" },
+    { type: "p", name: "phoneTr", display: "Strong Woman", entry: false, count: null, cost: 35, image: "phone_tr.png", n: false, desc: "" },
+    { type: "p", name: "phonePink", display: "Pink", entry: false, count: null, cost: 35, image: "phone_pink.png", n: false, desc: "" },
+    { type: "p", name: "phoneLips", display: "Purple Lips", entry: false, count: null, cost: 35, image: "phone_lips.png", n: false, desc: "" },
+    { type: "p", name: "phoneShopping", display: "Shopping!", entry: false, count: null, cost: 50, image: "phone_shopping.png", n: false, desc: "" },
+    { type: "p", name: "phoneBlack", display: "Dancing", entry: false, count: null, cost: 50, image: "phone_black.png", n: false, desc: "" },
+    { type: "p", name: "phoneMan", display: "Sexy Man", entry: false, count: null, cost: 50, image: "phone_man.png", n: false, desc: "" },
+    { type: "p", name: "phoneFist", display: "Fisted Fem Dom", entry: false, count: null, cost: 85, image: "phone_fist.png", n: false, desc: "" },
 
+    
     { type: "g", name: "screwdriver", display: "Screwdriver", entry: false, count: null, cost: 50, image: "screwdriver.png", n: false, desc: "Go screw yourself" },
     { type: "d", name: "purpleDildo", display: "Purple Dildo", entry: false, count: null, cost: 40, image: "dildoPurple.png", n: false, desc: "Small Dildo" },
     { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },

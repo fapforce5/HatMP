@@ -32,17 +32,18 @@ room460.main = function () {
         "height": 609,
         "image": "460_parkRun/path2.png"
     }, 460);
-    nav.button({
-        "type": "btn",
-        "name": "path3",
-        "left": 0,
-        "top": 254,
-        "width": 528,
-        "height": 604,
-        "image": "460_parkRun/path3.png"
-    }, 460);
+    //nav.button({
+    //    "type": "btn",
+    //    "name": "path3",
+    //    "left": 0,
+    //    "top": 254,
+    //    "width": 528,
+    //    "height": 604,
+    //    "image": "460_parkRun/path3.png"
+    //}, 460);
 
-    navList = [475, 450];
+    //navList = [475, 450];
+    navList = [450];
     g.pass = cl.hasoutfit("workout");
     g.pass = g.pass === null ? "" : g.pass;
     if (gv.get("energy") > 29 && g.pass === "")

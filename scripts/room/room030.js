@@ -57,12 +57,12 @@ room30.chatcatch = function (callback) {
     switch (callback) {
         case "dumbass":
             nav.killall();
-            nav.bg("13_sisterRoom/013_angryCaught.png");
+            nav.bg("13_sisterRoom/013_angryCaught.jpg");
             chat(6, 30);
             break;
         case "angryout":
-            scc.love("eva", -10, 100);
-            scc.love("lola", -10, 100);
+            sc.modLevel("eva", -20, 100);
+            sc.modLevel("lola", -10, 100);
             char.room(29);
             break;
         case "enter":

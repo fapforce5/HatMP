@@ -14,6 +14,50 @@ room211.main = function () {
         chat(1, 211);
     }
     else {
+        nav.bg("211_meeting/filled.jpg");
+        nav.button({
+            "type": "btn",
+            "name": "chatinprogress",
+            "left": 1267,
+            "top": 450,
+            "width": 128,
+            "height": 404,
+            "image": "211_meeting/ralph.png",
+            "title": "Chat"
+        }, 211);
+        nav.button({
+            "type": "btn",
+            "name": "chatinprogress",
+            "left": 333,
+            "top": 369,
+            "width": 348,
+            "height": 542,
+            "image": "211_meeting/philbert.png",
+            "title": "Chat"
+        }, 211);
+
+        nav.button({
+            "type": "btn",
+            "name": "chatinprogress",
+            "left": 1501,
+            "top": 533,
+            "width": 419,
+            "height": 547,
+            "image": "211_meeting/sporty.png",
+            "title": "Chat"
+        }, 211);
+        nav.button({
+            "type": "btn",
+            "name": "chatinprogress",
+            "left": 40,
+            "top": 477,
+            "width": 468,
+            "height": 603,
+            "image": "211_meeting/jeremy.png",
+            "title": "Chat"
+        }, 211);
+
+
         nav.button({
             "type": "btn",
             "name": "classSelect",
@@ -64,6 +108,9 @@ room211.btnclick = function (name) {
                 g.internal = sissy.get(sissySchoolClass).name;
                 chat(999, 211);
             }
+            break;
+        case "chatinprogress":
+            chat(2, 211);
             break;
         default:
             break;
@@ -116,6 +163,14 @@ room211.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "Return to Lobby", callback: "leave" },
                     //{ chatID: -1, text: "I'm just going to check out the different floors. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "!blank",
+                text: "Work in progress. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             }
         ];
