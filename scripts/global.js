@@ -619,7 +619,7 @@ g.save = function () {
     var retArra = {
         roomMap: new Array(),
         roomID: g.roomID,
-        dt: g.dtstring() //timezone share bug fix
+        dt: g.dt,// g.dtstring() //timezone share bug fix
     };
 
     for (i = 0; i < g.roomMap.length; i++) {

@@ -25,7 +25,7 @@ room26.main = function () {
         if (sc.getTimeline("bigguy").thisRoom) {
             if (daily.get("bigguy")) {
                 nav.bg("26_livingRoom/bg_1.jpg");
-                chat(26, 26);
+                chat(27, 26);
             }
             else {
                 var straightPath = sc.taskGetStep("bigguy", "straight");
@@ -43,7 +43,7 @@ room26.main = function () {
                 }
                 else if (straightPath === 3) {
                     nav.bg("26_livingRoom/bg_1.jpg");
-                    chat(23, 26);
+                    chat(28, 26);
                 }
             }
         }
@@ -439,23 +439,23 @@ room26.chat = function (chatID) {
             ]
         },
         {
-            chatID: 23,
+            chatID: 24,
             speaker: "landlord",
             text: "*gulp*",
             button: [
-                { chatID: 24, text: " ", callback: "bg_6" },
-            ]
-        },
-        {
-            chatID: 24,
-            speaker: "landlord",
-            text: "Oh my. I'm sorry you saw this. You see sometimes when two adults get together.. ",
-            button: [
-                { chatID: 25, text: "I know what's going on. I don't need the details. ", callback: "" },
+                { chatID: 25, text: "...", callback: "bg_6" },
             ]
         },
         {
             chatID: 25,
+            speaker: "landlord",
+            text: "Oh my. I'm sorry you saw this. You see sometimes when two adults get together.. ",
+            button: [
+                { chatID: 26, text: "I know what's going on. I don't need the details. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
             speaker: "bigguy",
             text: "Since you're such a smart little guy, why don't you figure out how to remove yourself from this room. ",
             button: [
@@ -463,7 +463,7 @@ room26.chat = function (chatID) {
             ]
         },
         {
-            chatID: 26,
+            chatID: 27,
             speaker: "bigguy",
             text: "I know I told you to run along. Now get going before I move you along. ",
             button: [
@@ -471,7 +471,7 @@ room26.chat = function (chatID) {
             ]
         },
         {
-            chatID: 27,
+            chatID: 28,
             speaker: "bigguy",
             text: "Why don't you run along cock blocker.  ",
             button: [

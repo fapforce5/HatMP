@@ -657,7 +657,7 @@ sc.load = function (ra) {
                 for (k = 0; k < ra.charMission[i].mission[j].task.length; k++) {
 
                     var mlk = sc.getMissionTask(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
-                    if (mlk > 0)
+                    if (mlk > -1)
                         sc.charMission[ml.i].mission[ml.j].task[mlk].mStatus = ra.charMission[i].mission[j].task[k].mStatus;
                 }
             }
@@ -765,7 +765,7 @@ sc.getTimeline = function (char) {
                 { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
                 { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
                 { d: [0], hstart: 10, hend: 12, roomId: 12, alt: null }, //bathroom
-                { d: [0], hstart: 12, hend: 18, roomId: 26, alt: null }, //living room
+                { d: [0], hstart: 12, hend: 18, roomId: 13, alt: null }, //living room
                 { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
                 { d: [0], hstart: 19, hend: 24, roomId: 13, alt: null }, //bedroom
 
