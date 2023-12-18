@@ -20,7 +20,7 @@ room218.main = function () {
                 break;
             case 3:
                 char.room(missy.jobs[g.pass].page);
-                chat(11, 218);
+                //chat(11, 218);
                 break;
             case 4:
                 char.room(missy.jobs[g.pass].page);
