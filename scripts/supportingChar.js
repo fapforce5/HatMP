@@ -584,7 +584,7 @@ sc.save = function () {
             c: sc.char[i].c,
             l: sc.char[i].l,
             display: sc.char[i].display,
-            q3: sc.char[i].q3,
+            secret: sc.char[i].secret,
             show: sc.char[i].show
         });
     }
@@ -639,7 +639,10 @@ sc.load = function (ra) {
                 sc.char[j].display = ra.char[i].display;
                 sc.char[j].c = ra.char[i].c;
                 sc.char[j].l = ra.char[i].l;
-                sc.char[j].q3 = ra.char[i].q3;
+                if (typeof ra.char[i].secret !== "undefined")
+                    sc.char[j].secret = ra.char[i].secret;
+                else
+                    sc.char[j].secret = 0;
                 sc.char[j].show = ra.char[i].show;
                 j = 100000;
             }
@@ -827,11 +830,11 @@ sc.getTimeline = function (char) {
             timeline = [
                 { d: [1, 2, 3, 4, 5], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
                 { d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 700, alt: null }, //hospital
-                { d: [1, 2, 3, 4, 5], hstart: 17, hend: 22, roomId: 77, alt: null }, //living room
-                { d: [1, 2, 3, 4, 5], hstart: 22, hend: 9, roomId: 76, alt: null }, //bedroom
+                { d: [1, 2, 3, 4, 5], hstart: 17, hend: 21, roomId: 77, alt: null }, //living room
+                { d: [1, 2, 3, 4, 5], hstart: 21, hend: 24, roomId: 76, alt: null }, //bedroom
                 { d: [0, 6], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
-                { d: [0, 6], hstart: 9, hend: 22, roomId: 77, alt: null }, //living room
-                { d: [0, 6], hstart: 22, hend: 24, roomId: 76, alt: null }, //bedroom
+                { d: [0, 6], hstart: 9, hend: 21, roomId: 77, alt: null }, //living room
+                { d: [0, 6], hstart: 21, hend: 24, roomId: 76, alt: null }, //bedroom
             ];
             break;
         case "cindy":

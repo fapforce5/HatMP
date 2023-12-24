@@ -225,6 +225,7 @@ g.rooms = [
     { roomID: 178, name: "Cum", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 181, name: "Black Room", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 195, name: "Skill", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 196, name: "Pay Day", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 197, name: "Sub", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 198, name: "PI Training", image: "198_pi/bg.jpg", nightImage: "198_pi/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
@@ -391,7 +392,7 @@ g.roomMapInit = function () {
         { roomID: 16, display: "My House", access: true, darkAccess: true, left: 1425, top: 399, width: 102, height: 146, img: "map/10.png", night: "map/10_night.png", map: 1 },
         { roomID: 29, display: "Back Yard", access: true, darkAccess: true, left: 1353, top: 393, width: 70, height: 158, img: "map/29.png", night: "map/29_night.png", map: 1 },
         //{ roomID: 50, display: "Tif's Place", access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
-        //{ roomID: 75, display: "Bimbo's Place", access: false, darkAccess: false, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
+        { roomID: 75, display: "Bimbo's Place", access: true, darkAccess: true, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
         { roomID: 100, display: "Construction", access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
         //{ roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
         //{ roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
@@ -527,6 +528,9 @@ Number.prototype.between = function (a, b) {
 
 g.shuffleArray = function (array) {
     var temp, randIndex;
+    if (array === null)
+        return null;
+
     for (i = 0; i < array.length; i++) {
         randIndex = Math.floor(Math.random() * array.length);
         temp = array[i];

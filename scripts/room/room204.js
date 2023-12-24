@@ -232,14 +232,15 @@ room204.chatcatch = function (callback) {
             var numberWrong = g.internal.numberWrong;
             var pay = Math.ceil(cardsComplete * 3.33);
             g.internal.pay = pay;
-
+            g.internal = { cardsLeft: g.pass.length, pay: pay, numberWrong: numberWrong };
             if (piPoints > 0) {
-                levels.mod("pi", piPoints, 4);
+                levels.mod("pi", piPoints, 999);
                 levels.mod("int", Math.ceil(piPoints / 2), 4);
             }
 
             if (cardsComplete === 12 && numberWrong === 0) {
                 missy.mod("mood", 15);
+                g.internal.pay = pay * 2;
                 chat(13, 204);
 
             }
@@ -252,7 +253,7 @@ room204.chatcatch = function (callback) {
                 chat(999, 204);
             }
 
-            g.internal = { cardsLeft: g.pass.length, pay: pay, numberWrong: numberWrong };
+            
             break;
         case "mhate":
             missy.mod("mood", -2);

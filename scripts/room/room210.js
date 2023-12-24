@@ -15,6 +15,9 @@ room210.main = function () {
         }
     });
     nav.buildnav([211]);
+    if (gv.get("sissySchoolClass") !== null) {
+        chat(998, 210);
+    }
 };
 
 room210.btnclick = function (name) {
@@ -104,18 +107,32 @@ room210.chat = function (chatID) {
             ]
         };
     }
-    var cArray = [
-        {
+    else if (chatID === 998) {
+        g.internal = sissy.get(gv.get("sissySchoolClass"));
+        return {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "thinking",
+            text: "So exicited. I just signed up for " + g.internal.name + "!",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "Go directly to class ", callback: "gotoclass" },
+                { chatID: -1, text: "Keep looking around ", callback: "" }
             ]
-        }
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "me",
+                text: "",
+                button: [
+                    { chatID: 1, text: "", callback: "" }
+                ]
+            }
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

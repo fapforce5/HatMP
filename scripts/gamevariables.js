@@ -106,13 +106,28 @@ gv.init = function () {
         //church
         { n: "confession", t: "", q: "string" },
 
-        //{ n: "sissy", t: 0, q: "sissy" },
-        //{ n: "usedSissyPoints", t: 0, q: "sissy" },
 
-        { n: "domEvent", t: 0, q: "int" },
+        //{ n: "domEvent", t: 0, q: "int" },
 
 
         { n: "jobConstructionPay", t: 0, q: "zero" },
+
+
+
+
+
+
+
+
+
+
+        //{ n: "sissy", t: 0, q: "sissy" },
+        //{ n: "usedSissyPoints", t: 0, q: "sissy" },
+
+
+
+
+
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
 
         { n: "momearnbackhome", t: 0, q: "int" },
@@ -223,6 +238,8 @@ gv.init = function () {
         { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true },
         { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true },
         { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true },
+
+        { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
     ];
 
     sex.st = [

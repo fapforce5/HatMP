@@ -1,8 +1,13 @@
 ﻿//Room name
 var room77 = {};
 room77.main = function () {
-    var btnList = [
-        {
+    
+    if (sc.getTimeline("bimbo").thisRoom) {
+        nav.bg("77_bimboLiving/bg.jpg");
+        chat(0, 77);
+    }
+    else {
+        nav.button({
             "type": "btn",
             "name": "stairs",
             "left": 1615,
@@ -11,26 +16,9 @@ room77.main = function () {
             "height": 835,
             "image": "77_bimboLiving/stairs.png",
             "night": "77_bimboLiving/stairsNight.png"
-        }
-    ];
-    if (sc.bimbo().thisRoom) {
-        nav.bg("77_bimboLiving/livingRoomx.jpg", "77_bimboLiving/livingRoomNightx.jpg");
-        btnList.push({
-            "type": "btn",
-            "name": "bimbo",
-            "left": 246,
-            "top": 438,
-            "width": 632,
-            "height": 198,
-            "image": "77_bimboLiving/sleep.png",
-            "night": "77_bimboLiving/sleepNight.png"
-        });
+        }, 77);
+        nav.buildnav([76, 0]);
     }
-    var navList = [76, 0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 77);
-    });
-    nav.buildnav(navList);
 };
 
 room77.btnclick = function (name) {
@@ -64,6 +52,29 @@ room77.btnclick = function (name) {
 
 room77.chatcatch = function (callback) {
     switch (callback) {
+        case "":
+            nav.bg("77_bimboLiving/" + callback + ".jpg");
+            break;
+        case "fuck0":
+            if (cl.c.chastity === null)
+                chat(3, 77);
+            else if (gender.isCockTooSmallForSex())
+                chat(4, 77);
+            else
+                chat(6, 77);
+            break;
+        case "leave":
+            char.room(0);
+            break;
+
+
+
+
+
+
+
+
+
         case "takedickout":
             if (gender.canUseCock()) {
                 nav.bg("77_bimboLiving/closeup1.jpg");
@@ -281,6 +292,76 @@ room77.chatcatch = function (callback) {
 
 room77.chat = function (chatID) {
     var cArray = [
+        {
+            chatID: 0,
+            speaker: "bimbo",
+            text: "Hello...",
+            button: [
+                { chatID: -1, text: "Yelp! *Run away*", callback: "leave" },
+                { chatID: 1, text: "Hi. I'm the pizza delivery man. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 1,
+            speaker: "bimbo",
+            text: "I don't remember ordering a pizza. I don't have any money. ",
+            button: [
+                { chatID: 2, text: "When the how are you going to pay?", callback: "" }
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "bimbo",
+            text: "I'm so sorry. I don't know. ",
+            button: [
+                { chatID: -1, text: "[Take your dick out]", callback: "fuck0" },
+                { chatID: -1, text: "Well you're not getting a pizza! ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "bimbo",
+            text: "I don't know what you want me to do with that. There's a thing blocking your cock. ",
+            button: [
+                { chatID: -1, text: "Oh yeah. Crap. Well I guess I'll just go home and cry. No pizza for you.", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "bimbo",
+            text: "It's so tiny. Your mom must be disappointed. Why is it so tiny?  ",
+            button: [
+                { chatID: 5, text: "I don't know. I just have a small dick. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "bimbo",
+            text: "Well I don't play with tiny cocks. You find a tiny woman to have sex with. Maybe a " +
+                "girl with a tiny pussy. You could totally date an oompa loompa. They're tiny! ",
+            button: [
+                { chatID: -1, text: "Oh ok.", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "bimbo",
+            text: "I can totally pay that way! Where do you want to stick that! ",
+            button: [
+                { chatID: -1, text: "Your mouth", callback: "" },
+                { chatID: -1, text: "Your pussy", callback: "" },
+                { chatID: -1, text: "You asshole", callback: "" },
+            ]
+        },
+
+
+
+
+
+
+
+
+
         {
             chatID: 0,
             speaker: "me",

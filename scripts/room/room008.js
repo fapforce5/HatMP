@@ -102,12 +102,11 @@ room8.main = function () {
         nav.bg("8_wardrobe/8_wardrobe.jpg");
     else if (g.pass === 953)
         nav.bg("8_wardrobe/953.jpg");
-    else
-        console.log("unk room: " + g.pass);
-
-    if (isNaN(g.pass)) 
+    else {
         g.pass = 451;
-    
+        nav.bg("8_wardrobe/451.jpg");
+    }
+
     var navList = [g.pass];
     nav.buildnav(navList);
 };
