@@ -1,30 +1,49 @@
 ﻿//Room name
 var room210 = {};
 room210.main = function () {
+    var enrolled = gv.get("sissySchoolClass");
     $.each(sissy.st, function (i, v) {
-        if (v.active) {
+        nav.button({
+            "type": "btn",
+            "name": v.icon,
+            "left": 45 + (v.x * 130),
+            "top": 40 + (v.y * 130),
+            "width": i === 10 ? 1530 : 100,
+            "height": 100,
+            "image": "210_classSelection/" + (v.icon) + "_u.png"
+        }, 210);
+        if (v.ach) {
             nav.button({
-                "type": "btn",
+                "type": "clickthrough",
                 "name": v.icon,
                 "left": 45 + (v.x * 130),
                 "top": 40 + (v.y * 130),
-                "width": i === 10 ? 1530 : 100,
+                "width": 100,
                 "height": 100,
-                "image": "210_classSelection/" + (v.icon + (v.ach ? "_c" : "_u")) + ".png"
+                "image": "210_classSelection/complete_over.png"
+            }, 210);
+        }
+        else if (v.icon === enrolled) {
+            nav.button({
+                "type": "clickthrough",
+                "name": v.icon,
+                "left": 45 + (v.x * 130),
+                "top": 40 + (v.y * 130),
+                "width": 100,
+                "height": 100,
+                "image": "210_classSelection/enrolled_over.png"
             }, 210);
         }
     });
     nav.buildnav([211]);
-    if (gv.get("sissySchoolClass") !== null) {
-        chat(998, 210);
-    }
+    //if (gv.get("sissySchoolClass") !== null) {
+    //    chat(998, 210);
+    //}
 };
 
 room210.btnclick = function (name) {
-    console.log(name, name.startsWith("classselect_"))
+    var currentclass = gv.get("sissySchoolClass");
     if (name.startsWith("classselect_")) {
-        
-        var currentclass = gv.get("sissySchoolClass");
         if (currentclass === null) {
             nav.killbutton(name);
             var selectedId = parseInt(name.replace("classselect_", ""));
@@ -33,6 +52,9 @@ room210.btnclick = function (name) {
             gv.set("sissySchoolClass", g.internal.icon);
             gv.set("sissySchoolClassDays", 0);
             chat(999, 210);
+        }
+        else {
+            char.room(sissy.get(gv.get("sissySchoolClass")).room);
         }
     }
     else {
@@ -72,8 +94,15 @@ room210.btnclick = function (name) {
 
         tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + sissy.st[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + sissy.st[id].description + '</div>';
 
-        if (g.sissy[id].ach)
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Acheived</div>';
+        if (sissy.st[id].ach) {
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Completed</div>';
+        }
+        else if (currentclass === sissy.st[id].icon) {
+            tText += '<img src="./images/room/210_classSelection/gotoclass.png" class="room-btn rom-event" data-name="classselect_' + id + '" data-room="210" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+        }
+        else if (currentclass !== null) {
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">You\'re currently enrolled in ' + sissy.get(gv.get("sissySchoolClass")).name + '</div>';
+        }
         else if (prevToUnlock === "") {
             tText += '<img src="./images/room/210_classSelection/enroll.png" class="room-btn rom-event" data-name="classselect_' + id + '" data-room="210" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
         }

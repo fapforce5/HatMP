@@ -2,11 +2,11 @@
 var room100 = {};
 
 room100.main = function () {
-    if (gv.get("jobapplyconst") === 100) {
-        nav.bg("100_construction/cum.jpg");
-        chat(4, 100);
-    }
-    else {
+    //if (gv.get("jobapplyconst") === 100) {
+    //    nav.bg("100_construction/cum.jpg");
+    //    chat(4, 100);
+    //}
+    //else {
         var btnList = new Array();
         var navList = new Array();
 
@@ -67,7 +67,7 @@ room100.main = function () {
         });
 
         nav.buildnav(navList);
-    }
+    //}
 };
 
 room100.btnclick = function (name) {

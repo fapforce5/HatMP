@@ -73,15 +73,6 @@ room1.btnclick = function (name) {
         case "patron":
             window.open("https://www.patreon.com/FF5", '_blank');
             break;
-        case "quickfightFight":
-            quickFight.drawFight();
-            break;
-        case "quickfightRun":
-            quickFight.run();
-            break;
-        case "quickfightcomplete":
-            quickFight.complete();
-            break;
         case "charismaRoll":
             charisma.drawRoll();
             break;

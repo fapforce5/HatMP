@@ -14,16 +14,16 @@ room800.main = function () {
                 "image": "800_ralph/watering.png"
         });
     }
-    btnList.push({
-        "type": "btn",
-        "name": "door",
-        "left": 1018,
-        "top": 386,
-        "width": 333,
-        "height": 579,
-        "image": "800_ralph/door.png",
-        "night": "800_ralph/door_night.png"
-    });
+    //btnList.push({
+    //    "type": "btn",
+    //    "name": "door",
+    //    "left": 1018,
+    //    "top": 386,
+    //    "width": 333,
+    //    "height": 579,
+    //    "image": "800_ralph/door.png",
+    //    "night": "800_ralph/door_night.png"
+    //});
     if (activeCase.name === "case_saveralph" && !activeCase.isComplete) {
         chat(3, 800);
     }
@@ -39,7 +39,7 @@ room800.btnclick = function (name) {
         case "watering":
             nav.killbutton("watering");
             nav.button({
-                "type": "btn",
+                "type": "img",
                 "name": "watering",
                 "left": 746,
                 "top": 72,
@@ -47,13 +47,14 @@ room800.btnclick = function (name) {
                 "height": 1008,
                 "image": "800_ralph/ralphmom.png"
             });
-            if (sc.getstep("ralphsmom") === 0) {
-                sc.setstep("ralphsmom", 1);
-                chat(0, 800);
-            }
-            else {
-                chat(1, 800);
-            }
+            chat(0, 800);
+            //if (sc.getstep("ralphsmom") === 0) {
+            //    sc.setstep("ralphsmom", 1);
+            //    chat(0, 800);
+            //}
+            //else {
+            //    chat(1, 800);
+            //}
             break;
         case "door":
             chat(2, 800);
@@ -169,7 +170,7 @@ room800.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "thinking",
-            text: "Should I wait here till " + gv.timeTxt(22, 0) + " for Ralph to take his walk? ",
+            text: "Should I wait here till " + nav.convertTime(22, 0) + " for Ralph to take his walk? ",
             button: [
                 { chatID: 4, text: "I'll wait. Once it's clear I'll hide in those bushes. ", callback: "case6_0" },
                 { chatID: -1, text: "Nah..", callback: "" }

@@ -137,6 +137,10 @@ room203.chatcatch = function (callback) {
                         chat(23, 203);
                     }
                     else {
+                        var tempshirt = cl.c.shirt;
+                        cl.c.shirt = null;
+                        zcl.displayMain(180, 800, .09, "clothes", false);
+                        cl.c.shirt = tempshirt;
                         chat(25, 203);
                     }
                 }

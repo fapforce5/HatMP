@@ -1,156 +1,104 @@
 ﻿//Fight Room
 var room556 = {};
 room556.main = function () {
-    g.internal = 0;
-    g.pass = { b: false, d: false, s: false };  
-    char.changeMenu("hide", false, true);
-    tEnemy.init("g", null, "ring", 556, 556);
-    tEnemy.drawButtons("init");
-    //tEnemy.drawButtonList("begin");
-    $("#room-inv").hide();
-    $("#room-menu").hide();
-    chat(0, 556);
+    nav.bg("556_spar/bg1.jpg");
+    if (sc.getMission("g", "spar").notStarted) {
+        sc.startMission("g", "spar");
+        sc.completeMissionTask("g", "spar", 0, true);
+        daily.set("g");
+        chat(0, 556);
+    }
 };
 
 room556.btnclick = function (name) {
-    var i, xi, mymove, enemymove;
     switch (name) {
-        case "f2":
-            nav.killbutton("f2");
-            chat(4, 556);
+        case "exit":
+            char.room(551);
             break;
-        case "g2":
-            nav.killbutton("g2");
-            chat(16, 556);
-            break;
-        case "lb_fight":
-            if (g.internal === 0) {
+        case "fightm":
+            daily.set("g");
+            nav.killbutton("fightm");
+            nav.killbutton("fightg");
+            nav.killbutton("exit");
+            var thisEnergy = gv.get("energy");
+            if (thisEnergy < 10) {
                 chat(9, 556);
-                tEnemy.drawButtonList("fight");
-                nav.killbutton("e0");
-                tEnemy.drawStage();
-            }
-            if (g.internal === 2 || g.internal === 4)
-                tEnemy.drawButtonList("fight");
-            break;
-        case "lb_slut":
-            if (g.internal === 3) {
-                g.fight.me.panties = true;
-                g.fight.me.clothes = null;
-                tEnemy.drawButtonList("slut");
-            }
-            else
-                chat(8, 556);
-            break;
-        case "lb_strippanties":
-            tEnemy.drawButtonList("close");
-            tEnemy.drawChar("stripclothes");
-            g.roomTimeout = setTimeout(function () {
-                room227.chatcatch("main");
-                chat(19, 556);
-            }, g.fight.fighttimer);
-            break;
-        case "lb_inventory":
-            if (g.internal === 0)
-                chat(8, 556);
-            break;
-        case "lb_flee":
-            if (g.internal === 0)
-                chat(8, 556);
-            break;
-        case "lb_punch":
-            if (g.internal === 0) {
-                g.fight.box = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"];
-                tEnemy.drawButtonList("box");
-                tEnemy.drawBox();
-                chat(11, 556);
             }
             else {
-                chat(8, 556);
+                nav.bg("556_spar/bg3.jpg");
+                quickFight.init(5, "Maggie", "maggieWin", "maggieLose", "exit", 556);
+                if (thisEnergy < 50) {
+                    chat(8, 556)
+                }
+                else if (levels.get("strength").l < 5) {
+                    chat(10, 556);
+                }
             }
             break;
-        case "lb_grapple":
-            if (g.internal === 2 || g.internal === 4) {
-                tEnemy.drawButtonList("grapple");
-                if (g.internal === 2)
-                    chat(17, 556);
+        case "maggieWin":
+            nav.bg("556_spar/bg3.jpg");
+            if (sc.getMissionTask("g", "spar", 1).complete) {
+                chat(12, 556);
             }
-            
-            break;
-        case "lb_teabag":
-            tEnemy.drawButtonList("close");
-            tEnemy.drawChar("teabag");
-            g.fight.e[0].p = "teabag";
-            tEnemy.drawEnemy();
-            tEnemy.changeEnergy(null, null, { t: "grapple", me: true });
-            g.roomTimeout = setTimeout(function () {
-                chat(20, 556);
-            }, g.fight.fighttimer);
-            break;
-        case "lb_kick":
-        case "lb_weapon":
-        case "lb_superpunch":
-        case "lb_cancel":
-            chat(8, 556);
-            break;
-        case "box0":
-        case "box1":
-        case "box2":
-        case "box3":
-        case "box4":
-        case "box5":
-        case "box6":
-        case "box7":
-        case "box8":
-        case "box9":
-            tEnemy.selectBox(name);
-            g.fight.e[0].p = "recoil";
-            tEnemy.drawChar("punch");
-            tEnemy.drawEnemy();
-            nav.killbutton("box");
-            nav.killbutton("boxtarget");
-            tEnemy.drawButtonList("close");
-            tEnemy.changeEnergy(null, -100, null);
-            chat(12, 556);
-            g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList("counterAction");
-                g.fight.e[0].p = "pose";
-                tEnemy.drawChar("pose");
-                tEnemy.drawEnemy();
-                
-            }, 1500);
-            break;
-        case "lb_blockpunch":
-            tEnemy.drawButtonList("close");
-            g.fight.e[0].p = "kick";
-            tEnemy.drawChar("recoil");
-            tEnemy.drawEnemy();
-            tEnemy.changeEnergy(-50, null, null);
-            g.roomTimeout = setTimeout(function () {
-                tEnemy.drawButtonList("main");
-                g.fight.e[0].p = "pose";
-                tEnemy.drawChar("pose");
-                tEnemy.drawEnemy();
+            else {
+                sc.completeMissionTask("g", "spar", 1, true);
+                sc.startMission("g", "secret");
                 chat(13, 556);
-            }, 1500);
+            }
             break;
-        case "lb_blockkick":
-        case "lb_blockgrapple":
-        case "lb_takeit":
-            chat(8, 556);
+        case "maggieLose":
+            chat(11, 556);
             break;
-        case "lb_steal":
-            g.fight.e[0].clothingLevel = 1;
-            g.fight.e[0].p = "steal";
-            tEnemy.drawEnemy();
-            g.roomTimeout = setTimeout(function () {
-                g.fight.e[0].clothingLevel = 0;
-                tEnemy.drawButtonList("main");
-                g.fight.e[0].p = "pose";
-                tEnemy.drawChar("pose");
-                tEnemy.drawEnemy();
-                chat(18, 556);
-            }, 1500);
+        case "fightg":
+            nav.killbutton("fightm");
+            nav.killbutton("fightg");
+            nav.killbutton("exit");
+            var thisEnergyg = gv.get("energy");
+            if (thisEnergyg < 10) {
+                chat(9, 50);
+            }
+            else {
+                nav.bg("556_spar/bg1.jpg");
+                quickFight.init(50, sc.n("g"), "gwin", "glose", "exit", 556);
+                if (thisEnergyg < 50) {
+                    chat(8, 556)
+                }
+                else if (levels.get("strength").l < 50) {
+                    chat(14, 556);
+                }
+            }
+            break;
+        case "gwin":
+            if (sc.getMission("g", "spar").inProgress) {
+                sc.completeMission("g", "spar", true);
+                sc.completeMissionTask("g", "spar", 2, true);
+                if (sc.getMission("g", "secret").notStarted)
+                    sc.startMission("g", "secret");
+
+            }
+            nav.bg("556_spar/loss0.jpg");
+            chat(16, 556);
+            break;
+        case "glose":
+            nav.killall();
+            nav.bg("556_spar/punch.jpg");
+            chat(15, 556);
+            break;
+        case "lossNext":
+            if (g.internal < 7) {
+                var appendString = gender.isGirl() ? "_g" : "_b";
+                nav.bg("556_spar/loss" + g.internal + appendString + ".jpg");
+                if (g.internal === 6) {
+                    levels.anal(3, true, "f");
+                    levels.mod("fame", 30, 999);
+                }
+            }
+            else {
+                nav.killbutton("lossNext");
+                chat(20, 556);
+                nav.bg("556_spar/loss7.jpg");
+            }
+            g.internal++;
             break;
         default:
 
@@ -162,85 +110,34 @@ room556.chatcatch = function (callback) {
     var i;
 
     switch (callback) {
-        case "setup":
-            nav.killbutton("e0");
-            tEnemy.drawButtonList("main");
-            tEnemy.drawStage();
+        case "lesson1":
+        case "lesson2":
+        case "lesson3":
+        case "lesson4":
+        case "lesson5":
+        case "loss1":
+            nav.killall();
+            nav.bg("556_spar/" + callback + ".jpg");
             break;
-        case "f0":
-            g.pass.b = true;
-            g.internal = 0;
+        case "loss2":
+        case "loss3":
+            var appendString = gender.isGirl() ? "_g" : "_b";
+            nav.bg("556_spar/" + callback + appendString + ".jpg");
             break;
-        case "f1":
-            nav.button({
-                "type": "btn",
-                "name": "f2",
-                "left": 760,
-                "top": 300,
-                "width": 400,
-                "height": 100,
-                "image": "556_spar/ready.png"
-            }, 556);
+        case "loss4":
+            var appendString4 = gender.isGirl() ? "_g" : "_b";
+            nav.bg("556_spar/" + callback + appendString4 + ".jpg");
+            g.internal = 5;
+            nav.next("lossNext");
             break;
-        case "f3":
-            tEnemy.drawButtonList("main");
-            break;
-        case "g0":
-            g.pass.d = true;
-            g.internal = 1;
-            break;
-        case "g1":
-            nav.button({
-                "type": "btn",
-                "name": "g2",
-                "left": 760,
-                "top": 300,
-                "width": 400,
-                "height": 100,
-                "image": "556_spar/ready.png"
-            }, 556);
-            break;
-        case "g2":
-            g.internal = 2;
-            break;
-        case "g3":
-            g.internal = 3;
-            break;
-        case "g4":
-            g.internal = 4;
-            break;
-        case "g5":
-            tEnemy.drawChar("pose");
-            g.fight.e[0].p = "pose";
-            tEnemy.drawEnemy();
-
-            break;
-        case "g6":
-            
-            break;
-        case "checkcrowbar":
-            if (inv.has("sewer")) {
-                chat(532, 556);
-            }
-            else {
-                inv.add("sewer");
-                nav.button({
-                    "type": "zimg",
-                    "name": "spar",
-                    "left": 695,
-                    "top": 305,
-                    "width": 531,
-                    "height": 473,
-                    "image": "556_spar/sewer.png"
-                }, 556);
-            }
-
-            break;
-        case "s0":
-            g.pass.s = true;
+        case "drawEvent":
+            nav.bg("556_spar/bg2.jpg");
+            sc.select("fightm", "556_spar/spar1.png", 0);
+            sc.select("fightg", "556_spar/spar2.png", 1);
+            sc.selectCancel("exit", 2);
             break;
         case "leave":
-            char.room(550);
+            char.room(551);
             break;
         default:
             break;
@@ -248,252 +145,193 @@ room556.chatcatch = function (callback) {
 };
 
 room556.chat = function (chatID) {
-    if (chatID === 2) {
-       
-        var btnList = new Array();
-        if (!g.pass.b)
-            btnList.push({ chatID: 3, text: "Basics", callback: "f0" });
-
-        if (!g.pass.d)
-            btnList.push({ chatID: 15, text: "Dominating", callback: "g0" });
-
-        if (!g.pass.s)
-            btnList.push({ chatID: 23, text: "Submitting", callback: "s0" });
-
-        btnList.push({ chatID: 24, text: "Learn new Moves", callback: "" });
-        btnList.push({ chatID: 1, text: "I'm done", callback: "" });
-
-        return {
+    var cArray = [
+        {
+            chatID: 0,
+            speaker: "g",
+            text: "Strength is meaningless unless you know how to fight. Are you ready for your " +
+                "first lesson? ",
+            button: [
+                { chatID: 1, text: "Ready", callback: "lesson1" },
+                { chatID: -1, text: "No. Skip it. ", callback: "drawEvent" }
+            ]
+        },
+        {
+            chatID: 1,
+            speaker: "g",
+            text: "So when you fight you'll be presented with some stats and choices. ",
+            button: [
+                { chatID: 2, text: "[Next]", callback: "lesson2" }
+            ]
+        },
+        {
             chatID: 2,
             speaker: "g",
-            text: "Ok. I'm going to teach you how to fight. Choose which one you want to learn about. ",
-            button: btnList
-        };
-    }
-    else {
-        var cArray = [
-            {
-                chatID: 0,
-                speaker: "g",
-                text: "Ready to learn how to fight?",
-                button: [
-                    { chatID: 2, text: "Ready", callback: "setup" },
-                    { chatID: 1, text: "No. Skip it. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 1,
-                speaker: "g",
-                text: "ok, train hard and don't be rape meat",
-                button: [
-                    { chatID: -1, text: "I will!", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 2,
-                speaker: "g",
-                text: "Ok. I'm going to teach you how to fight. Choose which one you want to learn about. ",
-                button: [
-                    { chatID: 3, text: "Basics", callback: "f0" },
-                    { chatID: 15, text: "Dominating", callback: "g0" },
-                    { chatID: 23, text: "Submitting", callback: "s0" },
-                    { chatID: 24, text: "Learn new Moves", callback: "" },
-                    { chatID: 1, text: "I'm done", callback: "" }
-                ]
-            },
-            {
-                chatID: 3,
-                speaker: "g",
-                text: "I'm going to show you is the energy and control bar at the bottom. Take a look. You'll see a green bar on the " +
-                    "left and right. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "f1" }
-                ]
-            },
-            {
-                chatID: 4,
-                speaker: "g",
-                text: "So those green bars are energy. No one dies in these fights, they just run out of energy to continue. So if your " +
-                    "energy drops to zero you just give up and limp away too tired to fight. If they enemies energy drops to zero they give " +
-                    "up and yo win. Simple right? ",
-                button: [
-                    { chatID: 5, text: "Yeah", callback: "" }
-                ]
-            },
-            {
-                chatID: 5,
-                speaker: "g",
-                text: "If you find yourself running low on energy you can always use your inventory to refill it, so save your acia berries. ",
-                button: [
-                    { chatID: 6, text: "What happens when someone is the dominate? ", callback: "" }
-                ]
-            },
-            {
-                chatID: 6,
-                speaker: "g",
-                text: "Fighting is the most basic way to win a fight. You just keep beating your enemy until one of your runs out of energy. ",
-                button: [
-                    { chatID: 7, text: "Ok", callback: "f3" }
-                ]
-            },
-            {
-                chatID: 7,
-                speaker: "g",
-                text: "Now on to how to fight. Click the Fight button. ",
-                button: [
-                    { chatID: -1, text: "Ok. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 8,
-                speaker: "g",
-                text: "No idiot. Try again.  ",
-                button: [
-                    { chatID: -1, text: "Ok. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 9,
-                speaker: "g",
-                text: "You have a few options with the basic fight. You can do an attack on their energy with a punch or a kick. " +
-                    "If you can land " +
-                    "a hit you'll take some energy from me. ",
-                button: [
-                    { chatID: -1, text: "Ok. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 10,
-                speaker: "g",
-                text: "",
-                button: [
-                    { chatID: -1, text: "Ok. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 11,
-                speaker: "g",
-                text: "Now choose where to punch me. Each person has a weak spot, and it's not always the dick. ",
-                button: [
-                    { chatID: -1, text: "Ok. ", callback: "f5" }
-                ]
-            },
-            {
-                chatID: 12,
-                speaker: "g",
-                text: "Good, now it's my turn to attack. You have to guess if I'm going to punch you, kick you, or do a grappeling move. " +
-                    "In this case block my punch. ",
-                button: [
-                    { chatID: -1, text: "Ok. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 13,
-                speaker: "g",
-                text: "And that's what happens when you choose wrong. You tried to block my punch, but I decided to kick and was able to kick you.  ",
-                button: [
-                    { chatID: 14, text: "Unfair! ", callback: "" }
-                ]
-            },
-            {
-                chatID: 14,
-                speaker: "g",
-                text: "And that is the end of the basics lesson. ",
-                button: [
-                    { chatID: 2, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 15,
-                speaker: "g",
-                text: "Let's go over grappeling. Dropping your enemie's energy to zero is not the only way to win a fight. See the long " +
-                    "gray bar at the bottom center?",
-                button: [
-                    { chatID: -1, text: "[Take a look]", callback: "g1" }
-                ]
-            },
-            {
-                chatID: 16,
-                speaker: "g",
-                text: "That bar shows who is dominating the fight. When you hit your opponent you dominate them a little bit, but there are " +
-                    "other ways to dominate them. Click Fight, then Grapple. ",
-                button: [
-                    { chatID: -1, text: "Ok", callback: "g2" }
-                ]
-            },
-            {
-                chatID: 17,
-                speaker: "g",
-                text: "You'll see the only option is to steal my clothing. That's because grappeling has it's roots in Greco-Roman wrestling. " +
-                    "And the only true Greco-Roman wrestling was done in the nude. Go ahead and try to strip my clothing. ",
-                button: [
-                    { chatID: -1, text: "Sweet", callback: "" }
-                ]
-            },
-            {
-                chatID: 18,
-                speaker: "g",
-                text: "Now you strip off your clothing. Select Slut, then strip clothing. ",
-                button: [
-                    { chatID: -1, text: "Ok", callback: "g3" }
-                ]
-            },
-            {
-                chatID: 19,
-                speaker: "g",
-                text: "Now fight, then grapple, and tea bag. ",
-                button: [
-                    { chatID: -1, text: "Ok", callback: "g4" }
-                ]
-            },
-            {
-                chatID: 20,
-                speaker: "me",
-                text: "So tea bag like this?",
-                button: [
-                    { chatID: 21, text: "Ok", callback: "" }
-                ]
-            },
-            {
-                chatID: 21,
-                speaker: "g",
-                text: "Get your balls out of my mouth. NOW!",
-                button: [
-                    { chatID: 22, text: "Ok", callback: "g5" }
-                ]
-            },
-            {
-                chatID: 22,
-                speaker: "g",
-                text: "And that's how you dominate someone. If you hit them, strip them, or do a domination move you will move the " +
-                    "bar to your side. If your enemy does the same they will move the bar to their side. Some enemy are too tough to " +
-                    "fight, so you'll have to dominate them. ",
-                button: [
-                    { chatID: 2, text: "ok, thanks", callback: "g6" }
-                ]
-            },
-            {
-                chatID: 23,
-                speaker: "g",
-                text: "WHAT?!?!?! you want me to teach you how to bend over and take it up the asshole? No. You'll have to " +
-                    "figure out how to do that on your own, you stupid weak slut. If you do get dominated you better bring a lot of " +
-                    "acia becuase you're going to go through a lot of energy taking all that dick. ",
-                button: [
-                    { chatID: 2, text: "oh, ok", callback: "" }
-                ]
-            },
-            {
-                chatID: 24,
-                speaker: "g",
-                text: "Here is where I teach you new domination / submissive moves. Work in progress",
-                button: [
-                    { chatID: 2, text: "oh, ok", callback: "" }
-                ]
-            },
-        ];
-        if (cArray.length > chatID && chatID > -1)
-            return cArray[chatID];
-        else
-            return [];
-    }
+            text: "The top section is you. Becuase you're a little wimp you'll find you're get " +
+                "you ass kicked a lot. Continue to get stronger and you'll win more fights. Also if " +
+                "you're low on energy you won't fight as well. ",
+            button: [
+                { chatID: 3, text: "[Next]", callback: "lesson3" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "g",
+            text: "The bottom section is who you're fighting. In this case it's me. You see I'm way " +
+                "stronger than your puny ass. You don't stand a chance with me. ",
+            button: [
+                { chatID: 4, text: "[Next]", callback: "lesson4" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "g",
+            text: "Finally at the very bottom is your chance to win. You winning this fight is quite " +
+                "impossible. But we'll fight anyway. ",
+            button: [
+                { chatID: 5, text: "[Next]", callback: "lesson5" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "g",
+            text: "So You rolled a 17 plus your stregth of 1. I rolled a 20 plus my strength of 50. " +
+                "So my 70 beats your 18. By a lot. ",
+            button: [
+                { chatID: 6, text: "[Next]", callback: "bg1" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "g",
+            text: "Remember. The key to winning is strength and full energy. There are some dirty " +
+                "tricks to fighting, but I don't train that here. You do gain strength every time you " +
+                "fight, you just gain more if you win. ",
+            button: [
+                { chatID: 7, text: "ok. ", callback: "bg2" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "g",
+            text: "And that's all I have to train you on. You can spar with Maggie here. If you can prove " +
+                "you're not a little bitch and beat her I'll let you so some... special strength training. ",
+            button: [
+                { chatID: -1, text: "Sweet!", callback: "drawEvent" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "g",
+            text: "Your energy is pretty low. You'll fight much better if your energy is higher. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "g",
+            text: "Your energy is too low. Go get some rest before you try sparring. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "g",
+            text: "Maggie is still stronger than you, but you may just get lucky. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "g",
+            text: "You may have lost, but you've gotten stronger. Keep working on it and don't " +
+                "be a bitch. ",
+            button: [
+                { chatID: -1, text: "...", callback: "drawEvent" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "g",
+            text: "Now that you've turned Maggie into your punching bag, you should try something " +
+                "more challenging, like me. ",
+            button: [
+                { chatID: -1, text: "...", callback: "drawEvent" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "g",
+            text: "Way to go! I guess you've proven you're not a little bitch. Come see me in the " +
+                "gym. I'll show you some real strength training at our secret training facility. ",
+            button: [
+                { chatID: -1, text: "Sweet! [Visit her in the gym tomorrow]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "g",
+            text: "I'm so much stronger than you. You should have trained more before trying " +
+                "to fight me. I'm going to beat your ass!",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "g",
+            text: "I told you I was going to kick your ass. Now go hit the showers bitch. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "g",
+            text: "AAAAArg!!!!! Fuck! I lost to a wimp like you! Fuck!",
+            button: [
+                { chatID: 17, text: "...", callback: "loss1" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "g",
+            text: "I'll show you who the wimp here is! Get over here! ",
+            button: [
+                { chatID: 18, text: "huh?", callback: "loss2" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "g",
+            text: "Maggie! Fetch my strapon! I'm going to show everyone here who the bitch is! ",
+            button: [
+                { chatID: 19, text: "What? I thought I won", callback: "loss3" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "g",
+            text: "Get ready, I'm going to destroy your tender little ass! ",
+            button: [
+                { chatID: -1, text: "oh no!", callback: "loss4" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "g",
+            text: "You will always be my little bitch. Now go hit the showers. " +
+                "Maggie, clean that cum stain off the mat. ",
+            button: [
+                { chatID: -1, text: "Mmmmmm", callback: "leave" },
+            ]
+        },
+    ];
+    if (cArray.length > chatID && chatID > -1)
+        return cArray[chatID];
+    else
+        return [];
 };

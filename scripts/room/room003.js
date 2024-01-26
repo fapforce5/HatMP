@@ -6,13 +6,15 @@ room3.main = function () {
 
     $("#room-background").html('<div class="intro-body"><div class="intro-top">Hermaphrodity</div>' +
         '<div class="intro-bottom">and the Mystery of the Missing Specimens</div>' +
-        'It won\'t play in incognito in some browsers. <br/><br/>' + 
+        'It won\'t play in incognito in some browsers. <br/>' + 
         'This game is best viewed full screen. To make your browser full screen press the F11 key. To exit full ' +
-        'screen press the F11 key again. <br /><br />' +
+        'screen press the F11 key again. <br />' +
         'This game contains themes and images that are not suitable for minors. <br /><br />' +
         'This is a work of fiction. Names, characters, businesses, places, events, locales, ' +
         'and incidents are either the products of the author’s imagination or used in a fictitious ' +
         'manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.<br />' +
+        'All characters are over the age of 18<br/>' +
+        'All beasts are acient mystical beasts from the pits of hell<br/>' +
         'Click Next to play the game. Press "Exit Game" to exit.<br />'  +
         'Happy Fapping!<br />' +
         

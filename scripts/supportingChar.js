@@ -10,6 +10,7 @@ sc.char = [
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
+    { name: "dog", display: "Cooper, the mythical deamon", image: "dog.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
     { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
@@ -194,21 +195,21 @@ sc.charMission = [
                 missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
                     [
                         { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomID: 16 },
+                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
                 missionName: "chores", mStatus: 1, title: "Chores", desc: "Get an allowance for doing chores around the house. ", task:
                     [
                         { id: 0, txt: "Washt the dishes. ", show: true, mStatus: 1, roomId: 16 },
-                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomID: 16 },
+                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
                 missionName: "spermbank", mStatus: -1, title: "Helping at the Sperm Bank", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomID: 350 },
+                        { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
                     ]
             },
             {
@@ -234,7 +235,79 @@ sc.charMission = [
                     ]
             },
         ]
-    }
+    },
+    {
+        name: "chad", mission: [
+            {
+                missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym. ", task:
+                    [
+                        { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
+                        { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550 },
+                        { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550 },
+
+                    ]
+            },
+        ]
+    },
+    {
+        name: "g", mission: [
+            {
+                missionName: "workout", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym. ", task:
+                    [
+                        { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
+                        { id: 1, txt: "Raise your strength bitch!", show: true, mStatus: 0, roomId: 550 },
+                        { id: 2, txt: "Regular workouts. ", show: true, mStatus: 0, roomId: 550 },
+
+                    ]
+            },
+            {
+                missionName: "spar", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym. ", task:
+                    [
+                        { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 556 },
+                        { id: 1, txt: "Begginer Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
+                        { id: 2, txt: "Advanced Spar. ", show: true, mStatus: 0, roomId: 556 },
+
+                    ]
+            },
+            {
+                missionName: "secret", mStatus: 0, title: "Secret Room", desc: "Special workout.", task:
+                    [
+                        { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 550 },
+                        { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550 },
+                        { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "janice", mission: [
+            {
+                missionName: "date", mStatus: 1, title: "Getting to know you. ", desc: "Get to know her as a person. ", task:
+                    [
+                        { id: 0, txt: "Meet up. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Get to know her better. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 2, txt: "Meet her at her house before " + nav.convertTime(20, 0) + " on Friday Or Saturday. Be sure to have enough money for Dorcia. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 3, txt: "A suprise, to be sure", show: true, mStatus: 0, roomId: 316 },
+                        { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 316 },
+                        { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 316 },
+
+                    ]
+            },
+            {
+                missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
+            },
+        ]
+    },
+    {
+        name: "dog", mission: [
+            {
+                missionName: "vacation", mStatus: 0, title: "Doggy sit", desc: "Take care of him while I'm gone.", task:
+                    [
+                        { id: 0, txt: "Feed him", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.mStatus = function (mStatus) {
@@ -267,6 +340,10 @@ sc.n = function (name) {
 
 sc.setcharname = function (name, newName) {
     sc.char[sc.i(name)].display = newName;
+};
+
+sc.show = function(name){
+    sc.char[sc.i(name)].show = true;
 };
 
 //Levels ----------------------------------------------------------------------
@@ -336,6 +413,20 @@ sc.levels = function (name, level) {
             //];
             break;
         case "tiffany":
+            break;
+        case "dog":
+            tempLevel = [
+                { step: 0, txt: "Meet", m: [316] },
+                { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
+                { step: 2, txt: "Will let you pet him. ", m: [16] },
+                { step: 3, txt: "Will play catch", m: [16] },
+                { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
+                { step: 5, txt: "Won't let you wear clothes in the house. ", m: [16] },
+                { step: 6, txt: "Might make you his bitch", m: [16] },
+                { step: 7, txt: "More likely to make you his bitch ", m: [16] },
+                { step: 8, txt: "You're his bitch", m: [16] },
+                { step: 8, txt: "You're his bitch", m: [16] },
+            ];
             break;
         default:
             console.log("sc.levels - not found: " + name);
@@ -427,7 +518,7 @@ sc.getMission = function (name, missionName) {
                         mStatus: sc.charMission[i].mission[j].mStatus,
                         notStarted: sc.charMission[i].mission[j].mStatus < 1,
                         inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
-                        complete: sc.charMission[i].mission[j].mStatus > 100,
+                        complete: sc.charMission[i].mission[j].mStatus > 99,
                         fail: sc.charMission[i].mission[j].mStatus === 101,
                         i: i,
                         j: j
@@ -441,7 +532,25 @@ sc.getMission = function (name, missionName) {
     return null;
 };
 
-sc.getMissionTask = function (nameId, missionId, taskId) {
+sc.getMissionTask = function (name, missionName, taskId) {
+    var ml = sc.getMission(name, missionName);
+    for (i = 0; i < sc.charMission[ml.i].mission[ml.j].task.length; i++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[i].id === taskId) {
+            var mstatus = sc.charMission[ml.i].mission[ml.j].task[i].mStatus;
+            return {
+                mStatus: mstatus,
+                notStarted: mstatus < 1,
+                inProgress: mstatus > 0 && mstatus < 100,
+                complete: mstatus > 99,
+                success: mstatus === 100,
+                fail: mstatus === 101,
+                i: i
+            };
+        }
+    }
+};
+
+sc.getMissionTaskId = function (nameId, missionId, taskId) {
     for (var i = 0; i < sc.charMission[nameId].mission[missionId].task.length; i++) {
         if (sc.charMission[nameId].mission[missionId].task[i].id === taskId)
             return i;
@@ -459,7 +568,7 @@ sc.getActiveMissions = function (name) {
     return retArray;
 };
 
-sc.completeMissionTask = function (name, missionName, taskId, success) {
+sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     var ml = sc.getMission(name, missionName);
     
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
@@ -476,6 +585,17 @@ sc.startMissionTask = function(name, missionName, taskId) {
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
         if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
             sc.charMission[ml.i].mission[ml.j].task[k].mStatus = 1;
+            return;
+        }
+    }
+};
+
+sc.modMissionTask = function (name, missionName, taskId, modNum) {
+    var ml = sc.getMission(name, missionName);
+
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
+            sc.charMission[ml.i].mission[ml.j].task[k].mStatus += modNum;
             return;
         }
     }
@@ -659,7 +779,7 @@ sc.load = function (ra) {
                 sc.charMission[ml.i].mission[ml.j].mStatus = ra.charMission[i].mission[j].mStatus; //set overall mission status
                 for (k = 0; k < ra.charMission[i].mission[j].task.length; k++) {
 
-                    var mlk = sc.getMissionTask(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
+                    var mlk = sc.getMissionTaskId(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
                     if (mlk > -1)
                         sc.charMission[ml.i].mission[ml.j].task[mlk].mStatus = ra.charMission[i].mission[j].task[k].mStatus;
                 }
@@ -1265,6 +1385,14 @@ sc.trivial = function (charname) {
         case "!football":
             name = "Player";
             image = "football.png";
+            break;
+        case "!waiter":
+            name = "Waiter";
+            image = "waiter.png";
+            break;
+        case "!plumber":
+            name = "Plumber";
+            image = "plumber.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

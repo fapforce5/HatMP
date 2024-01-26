@@ -1,83 +1,94 @@
 ﻿//Room name
 var room551 = {};
 room551.main = function () {
-    if (g.pass === "runaway" || g.pass === "win" && cl.wearing().lewd) {
-        g.pass = "";
-        char.room(552);
-    }
-    else {
-        if (g.pass === "runaway" || g.pass === "win") {
-            g.pass = "";
+    //if (g.pass === "runaway" || g.pass === "win" && cl.wearing().lewd) {
+    //    g.pass = "";
+    //    char.room(552);
+    //}
+    //else {
+    //    if (g.pass === "runaway" || g.pass === "win") {
+    //        g.pass = "";
+    //    }
+    
+    var btnList = [
+        {
+            "type": "btn",
+            "name": "bathroom",
+            "left": 1705,
+            "top": 112,
+            "width": 215,
+            "height": 392,
+            "image": "551_gymInside/bathroom.png"
+        },
+        {
+            "type": "btn",
+            "name": "treadmill",
+            "left": 1157,
+            "top": 240,
+            "width": 405,
+            "height": 188,
+            "image": "551_gymInside/treadmil.png"
+        },
+        {
+            "type": "btn",
+            "name": "exit",
+            "left": 1080,
+            "top": 160,
+            "width": 98,
+            "height": 120,
+            "image": "551_gymInside/exit.png"
+        },
+        {
+            "type": "btn",
+            "name": "emp",
+            "left": 563,
+            "top": 154,
+            "width": 65,
+            "height": 160,
+            "image": "551_gymInside/empDoor.png"
         }
-
-        var btnList = [
-            {
+    ];
+    if (!daily.get("g")) {
+        if (Math.floor(Math.random() * 2) === 0) {
+            btnList.push({
                 "type": "btn",
-                "name": "bathroom",
-                "left": 1705,
-                "top": 112,
-                "width": 215,
-                "height": 392,
-                "image": "551_gymInside/bathroom.png"
-            },
-            {
-                "type": "btn",
-                "name": "exit",
-                "left": 1080,
-                "top": 160,
-                "width": 98,
-                "height": 120,
-                "image": "551_gymInside/exit.png"
-            },
-            {
-                "type": "btn",
-                "name": "emp",
-                "left": 563,
-                "top": 154,
-                "width": 65,
-                "height": 160,
-                "image": "551_gymInside/empDoor.png"
-            }
-        ];
-        if (!daily.get("g")) {
-            if (Math.floor(Math.random() * 2) === 0) {
-                btnList.push({
-                    "type": "btn",
-                    "name": "squat",
-                    "left": 549,
-                    "top": 332,
-                    "width": 809,
-                    "height": 746,
-                    "image": "551_gymInside/551_squat.png"
-                });
-            }
-            else {
-                btnList.push({
-                    "type": "btn",
-                    "name": "squat",
-                    "left": 550,
-                    "top": 27,
-                    "width": 811,
-                    "height": 1053,
-                    "image": "551_gymInside/551_squat1.png"
-                });
-            }
+                "name": "squat",
+                "left": 549,
+                "top": 332,
+                "width": 809,
+                "height": 746,
+                "image": "551_gymInside/551_squat.png"
+            });
         }
-        var navList = [0, 552, 553];
-        if (sc.getEvent("g", -1) && !daily.get("g"))
-            navList.push(555);
-        $.each(btnList, function (i, v) {
-            nav.button(v, 551);
-        });
-        nav.buildnav(navList);
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "squat",
+                "left": 550,
+                "top": 27,
+                "width": 811,
+                "height": 1053,
+                "image": "551_gymInside/551_squat1.png"
+            });
+        }
     }
+    var navList = [0, 552, 553];
+    if (sc.getMission("g", "secret").inProgress && !daily.get("g"))
+        navList.push(555);
+    $.each(btnList, function (i, v) {
+        nav.button(v, 551);
+    });
+    nav.buildnav(navList);
 };
 
 room551.btnclick = function (name) {
     switch (name) {
         case "treadmill":
-            if (gv.get("energy") > 30)
-                char.room(552);
+            if (gv.get("energy") > 30) {
+                nav.killall();
+                nav.bg("551_gymInside/running.jpg");
+                chat(49, 551);
+            }
             else
                 chat(0, 551);
             break;
@@ -127,15 +138,16 @@ room551.btnclick = function (name) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat2.png"
             }, 551);
-            if (gv.get("oncase") === "sewer" && !inv.has("sewer")){
-                chat(45, 551);
+            var missionWorkout = sc.getMission("g", "workout");
+            var strengthLevel = levels.get("strength").l;
+            if (missionWorkout.notStarted) {
+                chat(1, 551);
             }
-            else if (gv.get("oncase") === "sewer" && !sc.getEvent("g", -4)) {
+            else if (strengthLevel > 0 && sc.getMissionTask("g", "workout", 1).notStarted) {
+                sc.completeMissionTask("g", "workout", 1);
                 chat(46, 551);
             }
-            else if (sc.getstep("g") === 0)
-                chat(1, 551);
-            else if (gv.get("fitnessLevel") > 2 && !sc.getEvent("g", -1)) {
+            else if (strengthLevel > 4) {
                 chat(37, 551);
             }
             else {
@@ -146,16 +158,26 @@ room551.btnclick = function (name) {
                 }
                 else if (gv.get("energy") < 50)
                     chat(32, 551);
-                else if (sc.getstep("g") === 1)
+                else if (sc.taskGetStep("g", "workout") === -1)
                     chat(14, 551);
-                else if (g.sissy[19].ach)
-                    chat(42, 551);
+                //else if (g.sissy[19].ach)
+                //    chat(42, 551);
                 else
                     chat(33, 551);
             }
+            //if (gv.get("oncase") === "sewer" && !inv.has("sewer")){
+            //    chat(45, 551);
+            //}
+            //else if (gv.get("oncase") === "sewer" && !sc.getEvent("g", -4)) {
+            //    chat(46, 551);
+            //}
+            //else if (sc.getstep("g") === 0)
+            //    chat(1, 551);
+            
+            
             break;
         case "emp":
-            if (sc.getEvent("g", -1)) {
+            if (sc.getMission("g", "secret").inProgress) {
                 if (daily.get("g")) {
                     nav.button({
                         "type": "btn",
@@ -214,14 +236,16 @@ room551.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat4.png"
             }, 551);
-            if (sc.getEvent("chad", -1))
+            if (sc.getMissionTask("chad", "membership", 1).success)
                 chat(4, 551);
             else
                 chat(5, 551);
             break;
         case "squat5":
             nav.killbutton("squat");
-            sc.setstep("g", 1);
+            sc.show("g");
+            sc.startMission("g", "workout");
+            sc.completeMissionTask("g", "workout", 0, true);
             daily.set("g");
             char.addtime(60);
             break;
@@ -250,10 +274,11 @@ room551.chatcatch = function (callback) {
             break;
         case "workedout":
             gv.mod("energy", -50);
-            gv.mod("fitness", 30);
-            sc.setstep("g", 2);
-            gv.mod("shower", -1440);
-            daily.get("g");
+            levels.mod("fitness", 15, 999);
+            levels.mod("strength", 34, 999);
+            sc.completeMissionTask("g", "workout", 1, true);
+            daily.set("shower");
+            daily.set("g");
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");
             var btnList = [
@@ -339,21 +364,11 @@ room551.chatcatch = function (callback) {
                 chat(36, 551);
             break;
         case "endDay":
-            gv.mod("shower", -1440);
             gv.mod("energy", -50);
-            daily.get("g");
-            if (g.pass === "squat") {
-                gv.mod("leg", 15);
-                gv.mod("fitness", 20);
-            }
-            else if (g.pass === "push") {
-                gv.mod("body", 15);
-                gv.mod("fitness", 20);
-            }
-            else { //situp
-                gv.mod("fitness", 35);
-            }
-
+            levels.mod("fitness", 15, 999);
+            levels.mod("strength", 30, 999);
+            daily.set("shower");
+            daily.set("g");
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");
             var btnList1 = [
@@ -393,7 +408,7 @@ room551.chatcatch = function (callback) {
             nav.killbutton("empDoorOnly");
             break;
         case "setBackGym":
-            sc.setstep("g", -1);
+            sc.startMission("g", "secret");
             break;
         case "checkSpar":
             if (inv.has("sewer"))
@@ -409,8 +424,8 @@ room551.chatcatch = function (callback) {
             char.room(227);
             break;
         case "sparExplain":
-            sc.setstep("g", 2);
-            sc.setstep("g", -4);
+            //sc.setstep("g", 2);
+            //sc.setstep("g", -4);
             char.room(556);
             break;
         case "crowbar":
@@ -426,6 +441,12 @@ room551.chatcatch = function (callback) {
             }, 556);
             break;
         case "reset":
+            char.room(551);
+            break;
+        case "completeRun":
+            gv.mod("energy", -30);
+            levels.mod("fitness", 51, 999);
+            char.addtime(47);
             char.room(551);
             break;
         default:
@@ -540,7 +561,7 @@ room551.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "g",
-            text: "Yeah. You're going to be wining like a bitch when I'm done with you. I've got to go. ",
+            text: "Yeah. You're going to be whining like a bitch when I'm done with you. I've got to go. ",
             button: [
                 { chatID: -1, text: "Sure, awesome!", callback: "squat5" }
             ]
@@ -820,14 +841,14 @@ room551.chat = function (chatID) {
             speaker: "g",
             text: "So you've had some gains, now it's time to use them! ",
             button: [
-                { chatID: 47, text: "Yes", callback: "" },
+                { chatID: 47, text: "Huh?", callback: "" },
             ]
         },
         {
             chatID: 47,
             speaker: "g",
-            text: "When you're ready to train and spar, come talk to me and I'll take you to the ring. Make sure to bring your workout " +
-                "clothes. ",
+            text: "Follow me to our sparring ring. I'm going to show you how to fight so you're not just some " +
+                "sissy bitch that gets their ass kicked all the time. ",
             button: [
                 { chatID: -1, text: "Ok", callback: "sparExplain" },
             ]
@@ -841,6 +862,14 @@ room551.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Thanks! Please train me", callback: "sparExplain" },
                 { chatID: -1, text: "I'm good. I know what I'm doing. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "g",
+            text: "I so much hate running on a treadmill",
+            button: [
+                { chatID: -1, text: "Complete Run ", callback: "completeRun" },
             ]
         },
     ];

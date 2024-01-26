@@ -429,7 +429,7 @@ room176.chat = function (chatID) {
             text: "Oh. I thought you were. Hmmm. Ok. We'll I'm going to get dressed. Sorry we couldn't all taste her pussy, " +
                 "it was really fucking good.",
             button: [
-                { chatID: 33, text: "Yeah, no worries. See ya later. ", callback: "oralEnd" },
+                { chatID: -1, text: "Yeah, no worries. See ya later. ", callback: "oralEnd" },
             ]
         },
         {

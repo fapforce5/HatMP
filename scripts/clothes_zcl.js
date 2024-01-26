@@ -417,6 +417,12 @@ zcl.assup = function (top, left, ratio, mod) {
     else
         cl.assupSub("body_female.png", top, left, ratio);
 
+    switch (mod) {
+        case "reddress":
+            cl.assupSub("reddress.png", top, left, ratio);
+            break;
+    }
+
     if (cl.c.hairLength < 3)
         hairLength = "1_";
 

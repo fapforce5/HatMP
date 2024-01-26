@@ -3,14 +3,14 @@ var room461 = {};
 room461.main = function () {
 
     if (!g.isNight()) {
-        if (Math.floor(Math.random() * 2) === 1) {
-            var whichOne = Math.floor(Math.random() * 4);
+        if (Math.floor(Math.random() * 1.5) === 0) {
+            var whichOne = Math.floor(Math.random() * 5);
 
-            if (whichOne === 0 && daily.get("ppgirl")) {
+            if ((whichOne === 0 || whichOne === 1) && daily.get("ppgirl")) {
                 whichOne = Math.floor(Math.random() * 3) + 1;
             }
 
-            if (whichOne === 0) {
+            if (whichOne === 0 || whichOne === 1) {
                 if (sc.getLevel("ppgirl") > 1) {
                     nav.bg("461_run/pee6.jpg");
                     chat(32, 461);
@@ -32,7 +32,7 @@ room461.main = function () {
                 }
             }
             else {
-                if (whichOne === 1) {
+                if (whichOne === 2) {
                     nav.button({
                         "type": "img",
                         "name": "girl",
@@ -43,7 +43,7 @@ room461.main = function () {
                         "image": "461_run/missy.png"
                     }, 461);
                 }
-                else if (whichOne === 2) {
+                else if (whichOne === 3) {
                     nav.button({
                         "type": "img",
                         "name": "girl",
@@ -54,7 +54,7 @@ room461.main = function () {
                         "image": "461_run/girlrun.png"
                     }, 461);
                 }
-                else if (whichOne === 3) {
+                else if (whichOne === 4) {
                     nav.button({
                         "type": "img",
                         "name": "girl",

@@ -136,8 +136,8 @@ room553.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "candy",
-            text: "Oh hi " + sc.n("me") + "! What are you doing here, come for a quick peek of my sexy body? Just a quick one, then you " +
-            "need to get out or " + sc.n("g") + " will get mad. She's already yelled at me twice for having sex in the locker room!",
+            text: "Oh hi! What are you doing here? Come for a quick peek of " +
+                "my sexy booty?",
             button: [
                 { chatID: 1, text: "Yes, just a quick peek", callback: "peek" }
             ]
@@ -147,7 +147,7 @@ room553.chat = function (chatID) {
             speaker: "candy",
             text: "You know... I could use a good fuck! Why don't you pull that cock of yours out and fill me up?",
             button: [
-                { chatID: 2, text: "Oh yes! [Pull your cock out]", callback: "candy1a" },
+                { chatID: 2, text: "Oh yes! [Pull your cock out]", callback: "" },
                 { chatID: 3, text: "We can't do that here!", callback: "candy2" }
             ]
         },

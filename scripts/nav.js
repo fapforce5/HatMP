@@ -128,7 +128,9 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn rom-event fight-hover";
         else if (btn.type === "imghover")
             classes = "room-img fight-hover-element";
-
+        else if (btn.type === "clickthrough") {
+            classes = "room-img click-thru";
+        }
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
         line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
@@ -178,6 +180,10 @@ nav.t = function (btn, roomNum) {
 
     
 };
+
+nav.tmod = function (name, text) {
+    $(".resize-font[data-name='" + name + "']").text(text);
+}
 
 nav.inputbox = function (btn, roomNum) {
     var top = btn.top * g.ratio;
@@ -301,6 +307,18 @@ nav.friendlyTime = function () {
     }
     else {
         return nav.twodigits(g.dt.getHours()) + ":" + nav.twodigits(g.dt.getMinutes());
+    }
+};
+
+nav.convertTime = function (hour, minute) {
+
+    if (gv.get("clock24") === "12") {
+        var newHour = hour === 0 ? 12 : (hour < 13 ? hour : hour - 12);
+        var ampm = hour < 12 ? " AM" : " PM";
+        return newHour + ":" + nav.twodigits(minute) + ampm;
+    }
+    else {
+        return hour + ":" + nav.twodigits(minute);
     }
 };
 

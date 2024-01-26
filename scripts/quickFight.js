@@ -1,33 +1,60 @@
 ﻿var quickFight = {};
+var room1002 = {};
 
 quickFight.getStats = function (enemyFightLevel) {
     var punchPower = levels.get("strength").l;
     var energyMult = parseFloat(gv.get("energy") / 100).toFixed(2);
     var total = Math.round((punchPower) * energyMult);
-    var prob = 0;
-    var probTemp = total - enemyFightLevel;
-    console.log(probTemp);
-    if (probTemp > 30)
-        prob = 100;
-    else if (probTemp < -30)
-        prob = 0;
-    else {
-        probTempx = Math.abs(probTemp) * 1.6666666;
-        console.log(probTempx);
-        prob = probTemp > 0 ? Math.round(50 + probTempx) : Math.round(50 - probTempx);
-    } 
+    //var prob = 0;
+    //var probTemp = total - enemyFightLevel;
+    //console.log(probTemp);
+    //if (probTemp > 30)
+    //    prob = 100;
+    //else if (probTemp < -30)
+    //    prob = 0;
+    //else {
+    //    probTempx = Math.abs(probTemp) * 1.6666666;
+    //    console.log(probTempx);
+    //    prob = probTemp > 0 ? Math.round(50 + probTempx) : Math.round(50 - probTempx);
+    //} 
 
-    return { punchPower: punchPower, energyMult: energyMult, total: total, winProb: prob };
+    return { punchPower: punchPower, energyMult: energyMult, total: total, winProb: quickFight.getProb(enemyFightLevel, total) };
 }
 
+quickFight.getProb = function (enemy, me) {
+    var total = Math.abs(enemy - me)
+    if (total === 0)
+        return "Evan match";
+    if (total < 3 && enemy > me)
+        return "Might lose";
+    if (total < 3 && me > enemy)
+        return "Might win";
+    if (total < 6 && enemy > me)
+        return "Little hard";
+    if (total < 6 && me > enemy)
+        return "Little easy";
+    if (total < 12 && enemy > me)
+        return "Hard";
+    if (total < 12 && me > enemy)
+        return "Easy";
+    if (total < 20 && enemy > me)
+        return "Very Hard";
+    if (total < 20 && me > enemy)
+        return "Very Easy";
+    if (total < 30 && enemy > me)
+        return "Extremely Hard";
+    if (total < 30 && me > enemy)
+        return "Extremely Easy";
+    if (enemy > me)
+        return "Impossible";
+    return "Can't lose";
+};
+
 quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost, btnPressRun, roomID) {
-    
+    inv.hide();
     var i = 0;
     var stats = quickFight.getStats(enemyFightLevel);
-    nav.killbutton("quickfight");
-    nav.killbutton("quickfightrunaway");
-    nav.killbutton("quickfightFight");
-    nav.killbutton("quickfightRun");
+    nav.killbuttonStartsWith("quickfight");
     nav.button({
         "type": "img",
         "name": "quickfight",
@@ -35,17 +62,17 @@ quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLos
         "top": 0,
         "width": 1920,
         "height": 1080,
-        "image": "1002_quickfight/black20Alpha.png"
-    }, 1);
-    nav.button({
-        "type": "img",
-        "name": "quickfight",
-        "left": 1597,
-        "top": 147,
-        "width": 306,
-        "height": 712,
-        "image": "227_fight/menu.png"
-    }, 1);
+        "image": "1002_quickfight/bg.png"
+    }, 1002);
+    //nav.button({
+    //    "type": "img",
+    //    "name": "quickfight",
+    //    "left": 1597,
+    //    "top": 147,
+    //    "width": 306,
+    //    "height": 712,
+    //    "image": "227_fight/menu.png"
+    //}, 1002);
     nav.button({
         "type": "btn",
         "name": "quickfightFight",
@@ -54,96 +81,135 @@ quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLos
         "width": 400,
         "height": 100,
         "image": "1002_quickfight/fight.png"
-    }, 1);
+    }, 1002);
+
+    nav.button({
+        "type": "btn",
+        "name": "quickfightInventory",
+        "left": 760,
+        "top": 450,
+        "width": 400,
+        "height": 100,
+        "image": "1002_quickfight/inventory.png"
+    }, 1002);
 
     nav.button({
         "type": "btn",
         "name": "quickfightRun",
         "left": 760,
-        "top": 450,
+        "top": 600,
         "width": 400,
         "height": 100,
         "image": "1002_quickfight/run.png"
-    }, 1);
+    }, 1002);
 
     nav.t({
         type: "zimg",
         name: "quickfight",
-        left: 1620,
+        left: 1650,
         top: 170,
-        font: 20,
+        font: 30,
+        hex: "#ffffff",
+        text: "Me"
+    }, 1002);
+    nav.t({
+        type: "zimg",
+        name: "quickfight",
+        left: 1650,
+        top: 690,
+        font: 30,
         hex: "#ffffff",
         text: enemyName
-    }, 1);
+    }, 1002);
+
 
     
     nav.t({
         type: "img",
-        name: "quickfight",
+        name: "quickfight_strength",
         left: 1660,
-        top: 280 + (0 * 50) + 12,
+        top: 240 + (0 * 45) + 12,
         font: 20,
         hex: "#ffffff",
-        text: "Your Fight Level"
-    }, 1);
+        text: "Strength: " + stats.punchPower
+    }, 1002);
+    nav.t({
+        type: "img",
+        name: "quickfight_energymult",
+        left: 1660,
+        top: 240 + (1 * 45) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: "Energy Multiplier: " + stats.energyMult
+    }, 1002);
+    nav.t({
+        type: "img",
+        name: "quickfight_mymod",
+        left: 1660,
+        top: 240 + (2 * 45) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: ""
+    }, 1002);
+    nav.t({
+        type: "img",
+        name: "quickfight_total",
+        left: 1660,
+        top: 240 + (3 * 45) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: "Total: " + stats.total
+    }, 1002);
+   
     nav.t({
         type: "img",
         name: "quickfight",
         left: 1660,
-        top: 280 + (1 * 50) + 12,
+        top: 520 + (0 * 45),
         font: 20,
         hex: "#ffffff",
-        text: " Punch Power: " + stats.punchPower
-    }, 1);
+        text: "Strength: " + enemyFightLevel
+    }, 1002);
     nav.t({
         type: "img",
-        name: "quickfight",
+        name: "quickfight_enemymod",
         left: 1660,
-        top: 280 + (3 * 50) + 12,
+        top: 520 + (1 * 45),
         font: 20,
         hex: "#ffffff",
-        text: "* Energy Multiplier: " + stats.energyMult
-    }, 1);
+        text: ""
+    }, 1002);
     nav.t({
         type: "img",
-        name: "quickfight",
+        name: "quickfight_enemytotal",
         left: 1660,
-        top: 280 + (4 * 50) + 12,
+        top: 520 + (2 * 45),
         font: 20,
         hex: "#ffffff",
-        text: "= Fight Level: " + stats.total
-    }, 1);
-
+        text: "Total: " + enemyFightLevel
+    }, 1002);
+    //nav.t({
+    //    type: "img",
+    //    name: "quickfight",
+    //    left: 1660,
+    //    top: 240 + (9 * 45) + 12,
+    //    font: 20,
+    //    hex: "#ffffff",
+    //    text: "Win Chance:"
+    //}, 1002);
     nav.t({
         type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (5 * 50) + 12,
-        font: 20,
+        name: "quickfight_chance",
+        left: 1640,
+        top: 798,
+        font: 30,
         hex: "#ffffff",
-        text: enemyName
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (6 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Fight Level: " + enemyFightLevel
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (7 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Win Chance: " + stats.winProb + "%"
-    }, 1);
+        text: stats.winProb
+    }, 1002);
 
     g.fight = {
         fightLevel: enemyFightLevel,
+        enemyInitFightLevel: enemyFightLevel,
         myFight: stats.total,
         name: enemyName,
         aftermath: null,
@@ -151,8 +217,38 @@ quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLos
         btnPressLost: btnPressLost,
         btnPressRun: btnPressRun,
         prob: stats.winProb,
+        pocketSand: false,
+        smellingSalts: false,
         roomID: roomID
     };
+    quickFight.setStats();
+};
+
+quickFight.setStats = function () {
+    var strength = levels.get("strength").l;
+    var energy = gv.get("energy");
+    var energyMult;
+    if (energy < 50)
+        energyMult = .5;
+    else if (energy < 100)
+        energyMult = 1;
+    else
+        energyMult = parseFloat(energy / 100) ;
+    
+    nav.tmod("quickfight_strength", "Strength: " + strength);
+    if (g.fight.smellingSalts)
+        nav.tmod("quickfight_mymod", "+10 Strength");
+    nav.tmod("quickfight_energymult", "Energy Multiplier: " + energyMult);
+    var total = Math.round(strength * energyMult) + (g.fight.smellingSalts ? 10 : 0);
+
+    nav.tmod("quickfight_total", "Fight Level: " + total);
+    g.fight.myFight = total;
+
+    if (g.fight.pocketSand)
+        nav.tmod("quickfight_enemymod", "-30 Strength");
+    g.fight.fightLevel = g.fight.enemyInitFightLevel + (g.fight.pocketSand ? -30 : 0);
+    nav.tmod("quickfight_enemytotal", "Enemy Total: " + g.fight.fightLevel);
+    nav.tmod("quickfight_chance", quickFight.getProb(g.fight.fightLevel, g.fight.myFight));
 };
 
 quickFight.drawFight = function () {
@@ -172,7 +268,7 @@ quickFight.drawFight = function () {
         font: 40,
         hex: "#ffffff",
         text: "My Roll"
-    }, 1);
+    }, 1002);
     nav.t({
         type: "img",
         name: "quickfight",
@@ -181,7 +277,7 @@ quickFight.drawFight = function () {
         font: 40,
         hex: "#ffffff",
         text: "Enemy Roll"
-    }, 1);
+    }, 1002);
     nav.button({
         "type": "img",
         "name": "quickfight",
@@ -190,7 +286,7 @@ quickFight.drawFight = function () {
         "width": 700,
         "height": 400,
         "image": "1002_quickfight/titleBox.png"
-    }, 1);
+    }, 1002);
     for (var i = 0; i < 5; i++) {
         var myTemp = Math.floor(Math.random() * 6) + 1;
         var enemyTemp = Math.floor(Math.random() * 6) + 1;
@@ -204,7 +300,7 @@ quickFight.drawFight = function () {
             "width": 150,
             "height": 150,
             "image": "1001_rand/dice" + myTemp + ".png"
-        }, 1);
+        }, 1002);
 
         nav.button({
             "type": "img",
@@ -214,7 +310,7 @@ quickFight.drawFight = function () {
             "width": 150,
             "height": 150,
             "image": "1001_rand/dice" + enemyTemp + ".png"
-        }, 1);
+        }, 1002);
     }
     var meAbsTotal = g.fight.myFight + myTotal;
     var enemyAbsTotal = g.fight.fightLevel + enemyTotal;
@@ -226,7 +322,7 @@ quickFight.drawFight = function () {
         font: 30,
         hex: "#ffffff",
         text: "Me<br/>Roll: " + myTotal + "<br/>+ Level: " + g.fight.myFight + "<br/>= Total: " + meAbsTotal
-    }, 1);
+    }, 1002);
     nav.t({
         type: "img",
         name: "quickfight",
@@ -235,14 +331,16 @@ quickFight.drawFight = function () {
         font: 30,
         hex: "#ffffff",
         text: "Enemy</br>Roll: " + enemyTotal + "<br/>+ Level: " + g.fight.fightLevel + "<br/>= Total: " + enemyAbsTotal
-    }, 1);
+    }, 1002);
 
     if (meAbsTotal === enemyAbsTotal)
         quickFight.drawFight();
     else {
         if (meAbsTotal > enemyAbsTotal) {
             g.fight.aftermath = "win";
-            gv.mod("energy", -20);
+            gv.mod("energy", -5);
+            levels.mod("strength", 25, 999);
+            levels.mod("dom", 20, 999);
             nav.t({
                 type: "img",
                 name: "quickfight",
@@ -260,11 +358,12 @@ quickFight.drawFight = function () {
                 "width": 400,
                 "height": 100,
                 "image": "1002_quickfight/won.png"
-            }, 1);
+            }, 1002);
         }
         else {
             g.fight.aftermath = "lose";
-            gv.set("energy", 0);
+            gv.mod("energy", -39);
+            gv.mod("strength", 15);
             nav.t({
                 type: "img",
                 name: "quickfight",
@@ -273,7 +372,7 @@ quickFight.drawFight = function () {
                 font: 30,
                 hex: "#ffffff",
                 text: loseText[Math.floor(Math.random() * loseText.length)]
-            }, 1);
+            }, 1002);
             nav.button({
                 "type": "btn",
                 "name": "quickfightcomplete",
@@ -282,16 +381,148 @@ quickFight.drawFight = function () {
                 "width": 400,
                 "height": 100,
                 "image": "1002_quickfight/lost.png"
-            }, 1);
+            }, 1002);
         }
     }
 };
 
+room1002.btnclick = function (name) {
+    var i;
+    if (name.startsWith("quickfightinv_")) {
+        var invIndex = parseInt(name.replace("quickfightinv_", ""));
+        switch (inv.master[invIndex].name) {
+            case "acia":
+                    inv.master[invIndex].count--;
+                    gv.mod("energy", 30);
+                    quickFight.setStats();
+                if (inv.master[invIndex].count > 0) {
+                    nav.killbutton("quickfightinv_acia");
+                }
+                break;
+            case "soda":
+                inv.master[invIndex].count--;
+                gv.mod("energy", 60);
+                levels.mod("fitness", -25);
+                quickFight.setStats();
+                if (inv.master[invIndex].count > 0) {
+                    nav.killbutton("quickfightinv_soda");
+                }
+                break;
+            case "cumjar":
+                inv.master[invIndex].count--;
+                gv.mod("energy", 100);
+                quickFight.setStats();
+                if (inv.master[invIndex].count > 0) {
+                    nav.killbutton("quickfightinv_cumjar");
+                }
+                break;
+            case "smellingsalts":
+                if (!g.fight.smellingSalts) {
+                    inv.master[invIndex].count--;
+                    g.fight.myFight += 10;
+                    g.fight.smellingSalts = true;
+                    quickFight.setStats();
+                }
+                else {
+                    g.popUpNotice("You can only use smelling salts once. ");
+                }
+                break;
+            case "pocketsand":
+                if (!g.fight.pocketSand) {
+                    inv.master[invIndex].count--;
+                    g.fight.fightLevel -= 30;
+                    g.fight.pocketSand = true;
+                    quickFight.setStats();
+                }
+                else {
+                    g.popUpNotice("You can only use pocket sand once. ");
+                }
+                break;
+        }
+    }
+    else {
+        switch (name) {
+            case "quickfightFight":
+                quickFight.drawFight();
+                break;
+            case "quickfightInventory":
+                nav.killbutton("quickfightFight");
+                nav.killbutton("quickfightInventory");
+                nav.killbutton("quickfightRun");
+                var btnCounter = 0;
+                for (i = 0; i < inv.master.length; i++) {
+                    if ((inv.master[i].type === "e" || inv.master[i].type === "i") && inv.master[i].count > 0) {
+                        nav.button({
+                            "type": "btn",
+                            "name": "quickfightinv_" + i,
+                            "left": 760,
+                            "top": 100 + (btnCounter * 125),
+                            "width": 400,
+                            "height": 100,
+                            "image": "1002_quickfight/i_" + inv.master[i].name + ".png"
+                        }, 1002);
+                        btnCounter++;
+                    }
+                }
+                nav.button({
+                    "type": "btn",
+                    "name": "quickfightGoBack",
+                    "left": 760,
+                    "top": 100 + (btnCounter * 125),
+                    "width": 400,
+                    "height": 100,
+                    "image": "1002_quickfight/goback.png"
+                }, 1002);
+                break;
+            case "quickfightGoBack":
+                nav.killbuttonStartsWith("quickfightinv_");
+                nav.killbutton("quickfightGoBack");
+                nav.button({
+                    "type": "btn",
+                    "name": "quickfightFight",
+                    "left": 760,
+                    "top": 300,
+                    "width": 400,
+                    "height": 100,
+                    "image": "1002_quickfight/fight.png"
+                }, 1002);
+
+                nav.button({
+                    "type": "btn",
+                    "name": "quickfightInventory",
+                    "left": 760,
+                    "top": 450,
+                    "width": 400,
+                    "height": 100,
+                    "image": "1002_quickfight/inventory.png"
+                }, 1002);
+
+                nav.button({
+                    "type": "btn",
+                    "name": "quickfightRun",
+                    "left": 760,
+                    "top": 600,
+                    "width": 400,
+                    "height": 100,
+                    "image": "1002_quickfight/run.png"
+                }, 1002);
+                break;
+            case "quickfightRun":
+                quickFight.run();
+                break;
+            case "quickfightcomplete":
+                quickFight.complete();
+                break;
+        }
+    }
+}
+
 quickFight.run = function () {
     nav.killbutton("quickfightFight");
     nav.killbutton("quickfightRun");
+    nav.killbutton("quickfightInventory");
     g.fight.aftermath = "run";
-    gv.mod("energy", g.fight.fightLevel + 30);
+    gv.mod("energy", -30);
     nav.button({
         "type": "btn",
         "name": "quickfightcomplete",
@@ -300,12 +531,12 @@ quickFight.run = function () {
         "width": 400,
         "height": 100,
         "image": "1002_quickfight/ranaway.png"
-    }, 1);
+    }, 1002);
 };
 
 quickFight.complete = function () {
-    nav.killbutton("quickfight");
-    nav.killbutton("quickfightcomplete");
+    inv.show();
+    nav.killbuttonStartsWith("quickfight");
     var name;
     var roomId = g.fight.roomID;
     if (g.fight.aftermath === "run")

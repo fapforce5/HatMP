@@ -1456,6 +1456,7 @@ char.export = function (saveID) {
 
 char.import = function () {
     var tp = JSON.parse($("#room_export_data").val().trim());
+    g.newLoad = false;
     $('.room-left').show();
     $('#room_footer').show();
     $(".room-topper").show();

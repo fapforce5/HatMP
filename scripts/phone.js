@@ -716,7 +716,7 @@ room9999.btnclick = function (name) {
         }, 9999);
         
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
-            roomList = " Room: " + g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name;
+            roomList = " Room: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
             nav.t({
                 type: "zimg",
                 name: "phone_charsel_",

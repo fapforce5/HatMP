@@ -2,7 +2,7 @@
 var room211 = {};
 room211.main = function () {
     var allClassesPassed = true;
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 11; i++) {
         if (!sissy.st[i].ach)
             allClassesPassed = false;
     }

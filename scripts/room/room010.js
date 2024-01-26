@@ -207,10 +207,7 @@ room10.btnclick = function (name) {
             char.room(9);
             break;
         case "Bed":
-            if (g.hourBetween(5, 22)) //if before 6pm can only nap
-                chat(0, 10);
-            else
-                chat(5, 10);
+            chat(0, 10);
             break;
         case "wardrobe":
             g.pass = 10;

@@ -48,9 +48,16 @@ inv.master = [
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
-    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Gain 15 energy" },
+
+    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 25, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
-    { type: "e", name: "cumjar", display: "A Jar Full of cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
+    { type: "e", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
+    { type: "e", name: "pissjar", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 50 energy" },
+    { type: "e", name: "cumjar", display: "A Jar full of cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
+    { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 150 energy" },
+    { type: "e", name: "horsecumjar", display: "A Jar full of horse cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 200 energy" },
+    { type: "e", name: "pigcumjar", display: "A Jar full of pig cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 300 energy" },
+
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
     { type: "x", name: "studentid", display: "Student ID", entry: false, count: null, cost: 0, image: "sudentid.png", n: false, desc: "Stolen Student ID" },
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
@@ -61,6 +68,7 @@ inv.master = [
     { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 1, image: "purplel.png", n: false, desc: "Purple Lipstick" },
     { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false, desc: "Landlord's Key" },
     { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false, desc: "Co-Tenant's Key" },
+    { type: "o", name: "keyJanice", display: "Girl Friend's Key", entry: false, count: null, cost: 0, image: "keyJanice.png", n: false, desc: "Key to Girl Friend's house. " },
     { type: "o", name: "kkey", display: "Jeffery's Desk Key", entry: false, count: null, cost: 0, image: "kkey.png", n: false, desc: "Desk key for Jeffery's side drawer" },
     { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, image: "redroom.png", n: false, desc: "Red Door Key" },
     { type: "o", name: "key202", display: "Apartment 202 Key", entry: false, count: null, cost: 0, image: "key202.png", n: false, desc: "Key for Holly, Dolly, and Molly's Apartment" },
@@ -109,6 +117,7 @@ inv.master = [
     { type: "g", name: "sewer", display: "Sewer Lid Opener", entry: false, count: null, cost: -1, image: "sewer.png", n: false, desc: "Use this to open the sewer lid next to the dance club." },
     { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, image: "chisel.png", n: false, desc: "Used to break out of prison. " },
     { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
+    { type: "g", name: "peanutbutter", display: "Peanut Butter", entry: false, count: 0, cost: 12, image: "peanutbutter.png", n: false, desc: "Jar of Peanut Butter. " },
 
     { type: "y", name: "hypno1", display: "Hypno Lesson #1", entry: false, count: null, cost: 20, image: "hypno1.png", n: false, desc: "Horny Girls Masturbate" },
     { type: "y", name: "hypno2", display: "Hypno Lesson #2", entry: false, count: null, cost: 40, image: "hypno2.png", n: false, desc: "Pretty girl's wear makeup" },
@@ -199,6 +208,14 @@ $(document).ready(function () {
         inv.display();
     });
 });
+
+inv.hide = function () {
+    $("#room-inv").hide();
+};
+
+inv.show = function () {
+    $("#room-inv").show();
+};
 
 inv.getPhoneAsBackground = function () {
     return "1001_rand/" + inv.phone + ".jpg";
@@ -635,11 +652,11 @@ inv.createElements = function () {
                         inv.master[eindex].count--;
                         switch (thisName) {
                             case "acia":
-                                gv.mod("energy", 15);
+                                gv.mod("energy", 30);
                                 break;
                             case "soda":
-                                gv.mod("energy", 50);
-                                gv.mod("fitness", -15);
+                                gv.mod("energy", 60);
+                                levels.mod("fitness", -25);
                                 break;
                             case "cumjar":
                                 gv.mod("energy", 100);
@@ -804,7 +821,7 @@ inv.load = function (ia) {
     }
     inv.add("closet");
     inv.backpack = ia.backpack;
-    if (typeof ia.phone != "undefined")
+    if (typeof ia.phone !== "undefined")
         inv.phone = ia.phone;
     else
         inv.phone = "phoneBasic";

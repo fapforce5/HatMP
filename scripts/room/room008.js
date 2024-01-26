@@ -7,7 +7,6 @@ room8.main = function () {
     var clothingList;
     var w, h;
     $.each(cl.saveOutfit, function (i, v) {
-
         nav.button({
             "type": "btn",
             "name": "wear_" + i,
@@ -40,8 +39,6 @@ room8.main = function () {
         }, 8);
     });
 
-    
-
     clothingList = [
         { img: "icon_boy_nude", title: "Nude", name: "main_nude" },
         { img: (cl.hasClothingTypeSex("panties", "f") ? "icon_girl_underwear" : "icon_boy_underwear"), title: "Underwear", name: "main_panties" },
@@ -55,10 +52,25 @@ room8.main = function () {
     if (cl.hasClothingType("buttplug")) {
         clothingList.push({ img: "icon_girl_plug", title: "Butt plug", name: "main_buttplug" });
     }
-
+    if (cl.hasClothingType("dress")) {
+        clothingList.splice(1, 0, { img: "icon_girl_dress", title: "Butt plug", name: "main_dress" });
+    }
+    if (cl.hasClothingType("bra")) {
+        clothingList.splice(1, 0, { img: "icon_girl_bra", title: "Butt plug", name: "main_bra" });
+    }
     w = 1500 / clothingList.length;
     h = (w / 200) * 300;
     $.each(clothingList, function (i, v) {
+        nav.button({
+            "type": "img",
+            "name": v.name + "_entry",
+            "left": 350 + (i * 130),
+            "top": 310,
+            "width": 125,
+            "height": 125,
+            "title": v.title,
+            "image": "8_wardrobe/icons/_blank.png"
+        }, 8);
         nav.button({
             "type": "btn",
             "name": v.name,
@@ -70,7 +82,9 @@ room8.main = function () {
             "image": "8_wardrobe/" + v.img + ".png"
         }, 8);
     });
-   
+
+    room8.drawClothingList();
+
     if (!gv.get("firstTimeInWardrobe")) {
         gv.set("firstTimeInWardrobe", true);
         chat(1, 8);
@@ -102,6 +116,10 @@ room8.main = function () {
         nav.bg("8_wardrobe/8_wardrobe.jpg");
     else if (g.pass === 953)
         nav.bg("8_wardrobe/953.jpg");
+    else if (g.pass === 316)
+        nav.bg("8_wardrobe/316.jpg");
+    else if (g.pass === 318)
+        nav.bg("8_wardrobe/318.jpg");
     else {
         g.pass = 451;
         nav.bg("8_wardrobe/451.jpg");
@@ -109,6 +127,7 @@ room8.main = function () {
 
     var navList = [g.pass];
     nav.buildnav(navList);
+    $('.room-btn[data-name="main_panties"]').click();
 };
 
 room8.btnclick = function (name) {
@@ -132,6 +151,7 @@ room8.btnclick = function (name) {
                 "title": "Remove",
                 "image": "8_wardrobe/icons/none.png"
             }, 8);
+            
             j = 1;
             $.each(cl.list, function (i, v) {
                 if (v.type === type && v.inv) {
@@ -193,13 +213,13 @@ room8.btnclick = function (name) {
             clname = null;
         switch (type) {
             case "shoes": cl.c.shoes = clname; cl.c.pj = null; break;
-            case "socks": cl.c.socks = clname; cl.c.pj = null; break;
-            case "pants": cl.c.pants = clname; cl.c.pj = null; break;
-            case "panties": cl.c.panties = clname; cl.c.pj = null; break;
-            case "bra": cl.c.bra = clname; cl.c.pj = null; break;
-            case "shirt": cl.c.shirt = clname; cl.c.pj = null; break;
-            case "dress": cl.c.dress = clname; cl.c.pj = null; break;
-            case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; break;
+            case "socks": cl.c.socks = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
+            case "pants": cl.c.pants = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.dress = null; break;
+            case "panties": cl.c.panties = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
+            case "bra": cl.c.bra = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
+            case "shirt": cl.c.shirt = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.dress = null; break;
+            case "dress": cl.c.dress = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.shirt = null; cl.c.pants = null; break;
+            case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; cl.c.dress = null; cl.c.shirt = null; cl.c.pants = null; break;
             case "pj": cl.nude(); cl.c.pj = clname; break;
             case "buttplug": cl.c.buttplug = clname; break;
             default: "can't find " + clname; break;
@@ -240,6 +260,83 @@ room8.btnclick = function (name) {
         else
             $("img[data-name='save_5']").show();
     }
+    room8.drawClothingList();
+};
+
+room8.drawClothingList = function () {
+    var clothingIcon = null;
+    if (cl.c.panties !== null)
+        nav.modbutton("main_panties_entry", "8_wardrobe/icons/" + cl.list[cl.where("panties", cl.c.panties)].img, null, null);
+    else
+        nav.modbutton("main_panties_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.bra !== null)
+        nav.modbutton("main_bra_entry", "8_wardrobe/icons/" + cl.list[cl.where("bra", cl.c.bra)].img, null, null);
+    else
+        nav.modbutton("main_bra_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.dress !== null)
+        nav.modbutton("main_dress_entry", "8_wardrobe/icons/" + cl.list[cl.where("dress", cl.c.dress)].img, null, null);
+    else
+        nav.modbutton("main_dress_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.pants !== null)
+        nav.modbutton("main_pants_entry", "8_wardrobe/icons/" + cl.list[cl.where("pants", cl.c.pants)].img, null, null);
+    else
+        nav.modbutton("main_pants_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.shirt !== null)
+        nav.modbutton("main_shirt_entry", "8_wardrobe/icons/" + cl.list[cl.where("shirt", cl.c.shirt)].img, null, null);
+    else
+        nav.modbutton("main_shirt_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.socks !== null)
+        nav.modbutton("main_socks_entry", "8_wardrobe/icons/" + cl.list[cl.where("socks", cl.c.socks)].img, null, null);
+    else
+        nav.modbutton("main_socks_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.shoes !== null)
+        nav.modbutton("main_shoes_entry", "8_wardrobe/icons/" + cl.list[cl.where("shoes", cl.c.shoes)].img, null, null);
+    else
+        nav.modbutton("main_shoes_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.swimsuit !== null)
+        nav.modbutton("main_swimsuit_entry", "8_wardrobe/icons/" + cl.list[cl.where("swimsuit", cl.c.swimsuit)].img, null, null);
+    else
+        nav.modbutton("main_swimsuit_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.pj !== null)
+        nav.modbutton("main_pj_entry", "8_wardrobe/icons/" + cl.list[cl.where("pj", cl.c.pj)].img, null, null);
+    else
+        nav.modbutton("main_pj_entry", "8_wardrobe/icons/_blank.png", null, null);
+
+    if (cl.c.buttplug !== null) 
+        nav.modbutton("main_buttplug_entry", "8_wardrobe/icons/" + cl.list[cl.where("buttplug", cl.c.buttplug)].img, null, null);
+    else
+        nav.modbutton("main_buttplug_entry", "8_wardrobe/icons/_blank.png", null, null);
+    
+    //        if (cl.c.pants !== null)
+    //            clothingIcon = cl.list[cl.where("pants", cl.c.pants)].img;
+    //        if (cl.c.shirt !== null)
+    //            clothingIcon = cl.list[cl.where("shirt", cl.c.shirt)].img;
+    //        break;
+    //    case "main_socks":
+    //        if (cl.c.socks !== null)
+    //            clothingIcon = cl.list[cl.where("socks", cl.c.socks)].img;
+    //        break;
+    //    case "main_shoes":
+    //        if (cl.c.shoes !== null)
+    //            clothingIcon = cl.list[cl.where("shoes", cl.c.shoes)].img;
+    //        break;
+    //    case "main_swimsuit":
+    //        if (cl.c.swimsuit !== null)
+    //            clothingIcon = cl.list[cl.where("swimsuit", cl.c.swimsuit)].img;
+    //        break;
+    //    case "main_pj":
+    //        if (cl.c.pj !== null)
+    //            clothingIcon = cl.list[cl.where("pj", cl.c.pj)].img;
+    //        break;
+    //};
 };
 
 room8.chatcatch = function (callback) {
