@@ -144,13 +144,13 @@ room318.chatcatch = function (callback) {
             char.room(8);
             break;
         case "vib1":
-            nav.bg("318_janiceBedroom/" + (cl.c.chastity !== null ? "vib_dick1.jpg" : "vib_chast1.jpg"));
+            nav.bg("318_janiceBedroom/" + (cl.c.chastity !== null ? "vib_chast1.jpg" : "vib_dick1.jpg")); 
             nav.next("vib2");
             break;
         case "vib2":
             cl.doCum(false);
             stats.mod("masturbate", "vibrator", 1);
-            nav.bg("318_janiceBedroom/" + (cl.c.chastity !== null ? "vib_dick2.jpg" : "vib_chast2.jpg"));
+            nav.bg("318_janiceBedroom/" + (cl.c.chastity !== null ? "vib_chast2.jpg" : "vib_dick2.jpg")); 
             break;
         default:
             break;

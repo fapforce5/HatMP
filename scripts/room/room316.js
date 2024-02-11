@@ -4,53 +4,46 @@ room316.main = function () {
     if (sc.getMission("dog", "vacation").inProgress) {
         var dogLevel = sc.getLevel("dog");
         var displayMenus = true;
-        if (dogLevel > 3 && !daily.get("dcrawl")) {
-            if (!daily.get("dcrawl")) {
-                sc.modLevel("dog", 20, 5);
+        var dsex = daily.get("dsex");
+
+        if (!dsex) {
+            if (dogLevel > 5 && !daily.get("dcrawl")) {
+                if (!daily.get("dcrawl")) {
+                    sc.modLevel("dog", 10, 5);
+                    displayMenus = false;
+                    daily.set("dcrawl");
+                    nav.button({
+                        "type": "img",
+                        "name": "janice",
+                        "left": 453,
+                        "top": 42,
+                        "width": 957,
+                        "height": 1038,
+                        "image": "316_livingroom/knockdown.png"
+                    }, 316);
+                    chat(93, 316);
+                }
+            }
+            else if (dogLevel > 6 && !cl.isLewd()) {
+                sc.modLevel("dog", 10, 6);
                 displayMenus = false;
-                daily.set("dcrawl");
+                cl.nude();
                 nav.button({
                     "type": "img",
                     "name": "janice",
-                    "left": 453,
-                    "top": 42,
-                    "width": 957,
-                    "height": 1038,
-                    "image": "316_livingroom/knockdown.png"
+                    "left": 439,
+                    "top": 132,
+                    "width": 1481,
+                    "height": 948,
+                    "image": "316_livingroom/strip.png"
                 }, 316);
-                chat(93, 316);
+                chat(94, 316);
+            }
+            else if (dogLevel > 6 && g.rand(0, 5) === 0) {
+                displayMenus = false;
+                room316.btnclick("dsex0");
             }
         }
-        else if (dogLevel > 4 && !cl.isLewd()) {
-            sc.modLevel("dog", 20, 6);
-            displayMenus = false;
-            cl.nude();
-            nav.button({
-                "type": "img",
-                "name": "janice",
-                "left": 439,
-                "top": 132,
-                "width": 1481,
-                "height": 948,
-                "image": "316_livingroom/strip.png"
-            }, 316);
-            chat(94, 316);
-        }
-        //if (!daily.get("dsex")) {
-        //    //need to add peanut butter
-        //    zcl.assup(550, 400, .8, "");
-        //    nav.button({
-        //        "type": "img",
-        //        "name": "janice",
-        //        "left": 552,
-        //        "top": 309,
-        //        "width": 1000,
-        //        "height": 668,
-        //        "image": "316_livingroom/df.png"
-        //    }, 316);
-        //    chat("ooooooffff!!! what the fuck")
-        //}
-
 
         if (displayMenus) {
             sc.select("iconWardrobe", "316_livingroom/icon_wardrobe.png", 0);
@@ -66,6 +59,11 @@ room316.main = function () {
 
                 if (!daily.get("dpb"))
                     sc.select("dpeanutbutter", "316_livingroom/icon_peanutbutter.png", 3);
+
+                if (!daily.get("dwalk"))
+                    sc.select("dwalk", "316_livingroom/icon_walk.png", 4);
+
+                sc.select("tryToLeave", "316_livingroom/icon_leave.png", 5);
             }
 
             if (daily.get("dlock")) {
@@ -77,7 +75,13 @@ room316.main = function () {
             else {
                 if (cl.isLewd()) {
                     gv.mod("arousal", 10);
-                    levels.mod("beast", 10, 0);
+                    if (!daily.get("dsniff")) {
+                        daily.set("dsniff");
+                        sc.modLevel("dog", 20, 5);
+                        levels.mod("sub", 15, 999);
+                        levels.mod("beast", 10, 0);
+                    }
+
                     zcl.assup(650, 500, .55, "");
                     nav.bg("316_livingroom/dog_snif.jpg");
                 }
@@ -93,10 +97,10 @@ room316.main = function () {
             }
         }
 
-        nav.buildnav([0, 317, 318, 319]);
+        nav.buildnav([317, 318, 319]);
 
     }
-    else {
+    else if (sc.getMission("janice", "date").inProgress) {
         daily.set("janice");
         g.pass = { money: false, dog: false, pb: false, talk: false, dick: false };
         var janiceTask = sc.taskGetStep("janice", "date");
@@ -142,6 +146,9 @@ room316.main = function () {
             room316.btnclick("buildMenu");
         }
     }
+    else {
+        chat(102, 316);
+    }
 };
 
 room316.btnclick = function (name) {
@@ -159,8 +166,9 @@ room316.btnclick = function (name) {
             daily.set("dcrawl");
             if (!daily.get("dsniff")) {
                 daily.set("dsniff");
-                sc.modLevel("dog", 25, 5);
+                sc.modLevel("dog", 20, 5);
                 levels.mod("sub", 15, 999);
+                levels.mod("beast", 10, 0);
             }
             char.room(316);
             break;
@@ -187,6 +195,45 @@ room316.btnclick = function (name) {
                 chat(87, 316);
             }
             break;
+        case "dwalk":
+            nav.killall();
+            if (cl.hasoutfit("public") === null) 
+                chat(95, 316);
+            else
+                chat(96, 316);
+            break;
+        case "dwalkfuck":
+            if (g.internal === 0) {
+                nav.bg(cl.c.chastity !== null ? "316_livingroom/walk_sex0_c.jpg" : "316_livingroom/walk_sex0_n.jpg");
+            }
+            else {
+                nav.bg("316_livingroom/walk_sex" + g.internal + ".jpg");
+            }
+            if (g.internal === 5) {
+                levels.anal(3, false, "m", true, "dog");
+                levels.mod("fame", 25, 999);
+                nav.killbutton("dwalkfuck");
+                chat(101, 316);
+            }
+            g.internal++;
+            break;
+        case "tryToLeave":
+            if (cl.hasoutfit("public") === null)
+                char.room(0);
+            else {
+                if (dogLevel > 6 && !daily.get("dsex")) {
+                    room316.btnclick("dsex0");
+                }
+                else {
+                    chat(800, 316);
+                }
+            }
+            break;
+        case "dsex0":
+            nav.killall();
+            nav.bg("316_livingroom/dsex1.jpg");
+            chat(97, 316);
+            break;
         case "icon_dcrawlpbGive":
             nav.killall();
             nav.bg("316_livingroom/pbStand.jpg");
@@ -211,7 +258,7 @@ room316.btnclick = function (name) {
             nav.killbutton("icon_dcrawlpbButt1");
             daily.set("dpb");
             levels.mod("beast", 20, 4);
-            sc.modLevel("dog", 50, 999);
+            sc.modLevel("dog", 35, 999);
             chat(90, 316);
             break;
         case "iconPet":
@@ -312,7 +359,7 @@ room316.btnclick = function (name) {
             g.pass.dog = true;
             nav.killall();
             nav.bg("316_livingroom/task0_2.jpg");
-            sc.modLevel("dog", 40, 4);
+            sc.modLevel("dog", 30, 4);
             levels.mod("beast", 15, 2);
             nav.next("buildMenu");
             break;
@@ -366,6 +413,9 @@ room316.btnclick = function (name) {
                 gv.mod("arousal", 50);
                 chat(83, 316);
             }
+            break;
+        case "reset":
+            char.room(316);
             break;
         default:
             break;
@@ -493,11 +543,62 @@ room316.chatcatch = function (callback) {
             sc.completeMissionTask("janice", "date", 0, true);
             char.room(0);
             break;
+        case "walk_lead":
+            sc.modLevel("dog", 10, 1);
+            nav.bg("316_livingroom/walk_lead.jpg");
+            daily.set("dwalk");
+            nav.next("dwalkNext");
+            nav.next("reset");
+            break;
+        case "walk_follow":
+            sc.modLevel("dog", 20, 6);
+            daily.set("dwalk");
+            nav.bg("316_livingroom/walk_follow.jpg");
+            if (sc.getLevel("dog") > 7 && g.rand(0, 3) === 0) {
+                g.internal = 0; 
+                nav.next("dwalkfuck");
+            }
+            else {
+                nav.next("reset");
+            }
+            break;
         case "leave":
             char.room(0);
             break;
         case "buildMenu":
             room316.btnclick("buildMenu");
+            break;
+        case "dsex2":
+            if (cl.c.chastity === null)
+                nav.bg("316_livingroom/dsex2_n.jpg");
+            else
+                nav.bg("316_livingroom/dsex2_c.jpg");
+            break;
+        case "dsex3":
+            nav.bg("316_livingroom/bg.jpg");
+            zcl.assup(550, 400, .8, "");
+            nav.button({
+                "type": "img",
+                "name": "janice",
+                "left": 552,
+                "top": 309,
+                "width": 1000,
+                "height": 668,
+                "image": "316_livingroom/df.png"
+            }, 316);
+            break;
+        case "dsex4":
+            nav.killall();
+            if (cl.c.chastity === null)
+                nav.bg("316_livingroom/dsex4_n.jpg");
+            else
+                nav.bg("316_livingroom/dsex4_c.jpg");
+            break;
+        case "dsex5":
+            levels.anal(3, false, "m", true, "dog");
+            sc.modLevel("dog", 30, 10);
+            daily.set("dsex");
+            char.room(316);
             break;
         case "reset":
             char.room(316);
@@ -565,6 +666,17 @@ room316.chat = function (chatID) {
             text: "Oh. I only have $" + g.internal + ". It's all yours to help pay you bills. ",
             button: [
                 { chatID: -1, text: "...", callback: "buildMenu" }
+            ]
+        };
+    }
+    else if (chatID === 800) {
+        var neededClothing = cl.hasoutfit("public");
+        return {
+            chatID: 800,
+            speaker: "thinking",
+            text: "I can't leave. I'm missing my " + neededClothing,
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
             ]
         };
     }
@@ -1398,6 +1510,79 @@ room316.chat = function (chatID) {
                     "'s submissive.",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "thinking",
+                text: "Talking him for a walk is a great idea. ",
+                button: [
+                    { chatID: -1, text: "I'm the alpha. I should lead. ", callback: "walk_lead" },
+                    { chatID: -1, text: "He's the alpha. I'll let him lead.", callback: "walk_follow" },
+                    { chatID: -1, text: "I changed my mind. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "thinking",
+                text: "I need to put on some appropriate clothes first. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "me",
+                text: "Aaaaaaa!!! Bad " + sc.n("dog") + "! No. No. Don't put that in there! Bad! ",
+                button: [
+                    { chatID: 98, text: "...", callback: "dsex2" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "thinking",
+                text: "OOOo fuck. I'm getting dominated by a dog! He's making me his literal bitch, " +
+                    "and it really hurts! He's so rough! Fuck, he just shoved his doggy dick inside me " +
+                    "and it's tearing me open! ",
+                button: [
+                    { chatID: 99, text: "...", callback: "dsex3" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "thinking",
+                text: "I am such a pathetic bitch, but it feel so good to get dominated by a dog! ",
+                button: [
+                    { chatID: 100, text: "...", callback: "dsex4" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "thinking",
+                text: "Oh gross. My ass is filled with doggy sperm. I can feel it run down my " +
+                    "balls and leg. I'm so dirty. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "dsex5" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "me",
+                text: "Oh man. That was the most embarrasing thing ever to happen to me. Do " +
+                    "you think they posted that online. I would hate for anyone I know to see it. " +
+                    "And " + sc.n("cecilia") + " seeing me and not helping. And you, " + sc.n("dog") +
+                    "have to stop doing that in public! *sigh* I know you won't since I'm your bitch, " +
+                    "and you do what ever you want to me. But really. Please stop raping me in public. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "me",
+                text: "This is the end of this path for this release. More to come later. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
         ];

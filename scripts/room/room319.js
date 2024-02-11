@@ -17,7 +17,7 @@ room319.main = function () {
         default: piss = true;
     }
     if (dogLevel > 3 && !crawling) {
-        sc.modLevel("dog", 20, 5);
+        sc.modLevel("dog", 10, 5);
         displayMenus = false;
         daily.set("dcrawl")
         nav.button({
@@ -33,7 +33,7 @@ room319.main = function () {
         displayMenu = false;
     }
     else if (dogLevel > 4 && !isLewd) {
-        sc.modLevel("dog", 20, 6);
+        sc.modLevel("dog", 15, 6);
         displayMenus = false;
         cl.nude();
         nav.button({
@@ -53,6 +53,7 @@ room319.main = function () {
         daily.set("dpee");
         sc.modLevel("dog", 50, 999);
         levels.mod("piss", 25, 999);
+        levels.mod("beast", 25, 999);
         levels.mod("sub", 25, 999);
         zcl.assup(600, 790, .55, "");
         nav.button({
@@ -147,7 +148,7 @@ room319.btnclick = function (name) {
                 nav.bg("319_backyard/bg.jpg", "319_backyard/bgnight.jpg");
                 if (!daily.get("dball")) {
                     daily.set("dball");
-                    sc.modLevel("dog", 25, 4);
+                    sc.modLevel("dog", 15, 4);
                     levels.mod("beast", 15, 4);
                 }
                 nav.button({
@@ -224,7 +225,7 @@ room319.chatcatch = function (callback) {
             gv.mod("arousal", 50);
             levels.mod("piss", 25, 2);
             gv.mod("bladder", -1);
-            sc.modLevel("dog", 50, 5);
+            sc.modLevel("dog", 25, 5);
             char.room(319);
             break;
         case "reset":

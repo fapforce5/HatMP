@@ -419,3 +419,15 @@ nav.back = function (btnClickName) {
         "image": "1001_rand/back.png"
     }, g.roomID);
 }
+
+nav.wait = function (btnClickName) {
+    nav.button({
+        "type": "btn",
+        "name": btnClickName,
+        "left": 1695,
+        "top": 920,
+        "width": 225,
+        "height": 75,
+        "image": "1001_rand/wait.png"
+    }, g.roomID);
+};

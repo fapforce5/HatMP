@@ -44,8 +44,8 @@ cl.init = function () {
         { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_s.png", sex: "f", inv: false, daring: 4, price: 35 },
         { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
 
-        { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: 5 },
-        { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: 5 },
+        { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: -1 },
         { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: false, daring: 1, price: 12 },
         { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
         { type: "panties", name: "w", display: "Lola's Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -82,6 +82,7 @@ cl.init = function () {
         { type: "pants", name: "b", display: "Blue Shorts", img: "pants_blueShort.png", sex: "m", inv: true, daring: 0, price: 55 },
         { type: "pants", name: "ps", display: "Pink Shorts", img: "pants_pinkshorts.png", sex: "f", inv: false, daring: 1, price: 78 },
         { type: "pants", name: "k", display: "Office Skirt", img: "pants_skirt.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "pants", name: "ss", display: "Sissy School Skirt", img: "pants_sissy.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "pants", name: "d", display: "Polka Dot Dress", img: "pants_polka.png", sex: "f", inv: false, daring: 2, price: 160 },
         { type: "pants", name: "bs", display: "Blue Skirt", img: "pants_blue.png", sex: "f", inv: false, daring: 2, price: 60 },
         { type: "pants", name: "cl", display: "Cheer Skirt", img: "pants_cheer.png", sex: "f", inv: false, daring: 3, price: -1 },
@@ -97,6 +98,7 @@ cl.init = function () {
         { type: "shirt", name: "j", display: "Prison Shirt", img: "shirt_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
         { type: "shirt", name: "p", display: "I ♥ Anal T-Shirt", img: "shirt_tpink.png", sex: "f", inv: false, daring: 1, price: 50 },
         { type: "shirt", name: "b", display: "Blouse", img: "shirt_blouse.png", sex: "f", inv: false, daring: 1, price: 30 },
+        { type: "shirt", name: "ss", display: "Sissy School", img: "shirt_sissy.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "shirt", name: "r", display: "Red Blouse", img: "shirt_redBlouse.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "shirt", name: "pt", display: "Pink Tank Top", img: "shirt_crop.png", sex: "f", inv: false, daring: 2, price: 30 },
         { type: "shirt", name: "gg", display: "Good Girl Tank", img: "shirt_gg.png", sex: "f", inv: false, daring: 2, price: 30 },
@@ -135,6 +137,7 @@ cl.init = function () {
         { type: "shoes", name: "pr", display: "Pink Running", img: "shoes_pinkRun.png", sex: "f", inv: false, daring: 1, price: 120 },
         { type: "shoes", name: "u", display: "Uggs", img: "shoes_uggs.png", sex: "f", inv: false, daring: 1, price: 169 },
         { type: "shoes", name: "cl", display: "Cheer Shoes", img: "shoes_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "shoes", name: "ss", display: "Sissy Shoes", img: "shoes_sissy.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "shoes", name: "fs", display: "Red Strappy Flats", img: "shoes_redflats.png", sex: "f", inv: false, daring: 2, price: 120 },
         { type: "shoes", name: "fb", display: "Black Flats", img: "shoes_flatBlack.png", sex: "f", inv: false, daring: 2, price: 90 },
         { type: "shoes", name: "fl", display: "Blue Flats", img: "shoes_flatBlue.png", sex: "f", inv: false, daring: 2, price: 90 },
@@ -149,6 +152,7 @@ cl.init = function () {
         { type: "socks", name: "b", display: "Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
         { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 1, price: 36 },
         { type: "socks", name: "s", display: "Little White Socks", img: "socks_shortWhite.png", sex: "f", inv: false, daring: 1, price: 24 },
+        { type: "socks", name: "ss", display: "Sissy Stockings", img: "socks_sissy.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "socks", name: "cl", display: "Cheer Socks", img: "sock_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "socks", name: "r", display: "Rainbow Stockings", img: "socks_rainbow.png", sex: "f", inv: false, daring: 2, price: 48 },
         { type: "socks", name: "f", display: "Black Fishnet Stockings", img: "sock_fishnet.png", sex: "f", inv: false, daring: 3, price: 75 },
@@ -886,7 +890,14 @@ cl.pants = [
     { name: "cl", leg: 3, image: "pants_cl_0.png", back: "pants_cl_3_back.png" },
     { name: "cl", leg: 2, image: "pants_cl_0.png", back: "pants_cl_2_back.png" },
     { name: "cl", leg: 1, image: "pants_cl_0.png", back: "pants_cl_0_back.png" },
-    { name: "cl", leg: 0, image: "pants_cl_0.png", back: "pants_cl_0_back.png" }
+    { name: "cl", leg: 0, image: "pants_cl_0.png", back: "pants_cl_0_back.png" },
+
+    { name: "ss", leg: 5, image: "pants_ss_5.png", back: "pants_ss_5_back.png" },
+    { name: "ss", leg: 4, image: "pants_ss_4.png", back: "pants_ss_3_back.png" },
+    { name: "ss", leg: 3, image: "pants_ss_0.png", back: "pants_ss_3_back.png" },
+    { name: "ss", leg: 2, image: "pants_ss_0.png", back: "pants_ss_2_back.png" },
+    { name: "ss", leg: 1, image: "pants_ss_0.png", back: "pants_ss_0_back.png" },
+    { name: "ss", leg: 0, image: "pants_ss_0.png", back: "pants_ss_0_back.png" }
 ];
 
 cl.wig = [
@@ -1089,7 +1100,15 @@ cl.shirt = [
     { name: "cl", chest: 3, image: "dress_cl_3.png", back: "dress_cl_3_back.png" },
     { name: "cl", chest: 2, image: "dress_cl_2.png", back: "dress_cl_2_back.png" },
     { name: "cl", chest: 1, image: "dress_cl_0.png", back: "dress_cl_0_back.png" },
-    { name: "cl", chest: 0, image: "dress_cl_0.png", back: "dress_cl_0_back.png" }
+    { name: "cl", chest: 0, image: "dress_cl_0.png", back: "dress_cl_0_back.png" },
+
+    { name: "ss", chest: 6, image: "shirt_ss_6.png", back: "shirt_ss_6_back.png" },
+    { name: "ss", chest: 5, image: "shirt_ss_5.png", back: "shirt_ss_5_back.png" },
+    { name: "ss", chest: 4, image: "shirt_ss_4.png", back: "shirt_ss_4_back.png" },
+    { name: "ss", chest: 3, image: "shirt_ss_3.png", back: "shirt_ss_3_back.png" },
+    { name: "ss", chest: 2, image: "shirt_ss_2.png", back: "shirt_ss_2_back.png" },
+    { name: "ss", chest: 1, image: "shirt_ss_0.png", back: "shirt_ss_0_back.png" },
+    { name: "ss", chest: 0, image: "shirt_ss_0.png", back: "shirt_ss_0_back.png" }
 ];
 
 //s=summer; p=purple; a=alice
@@ -1373,7 +1392,8 @@ cl.socks = [
     { name: "b", image: "socks_b.png", back: "socks_b_back.png" },
     { name: "r", image: "socks_r.png", back: "socks_r_back.png" },
     { name: "p", image: "socks_p.png", back: "socks_p_back.png" },
-    { name: "cl", image: "socks_cl.png", back: "socks_cl_back.png" }
+    { name: "cl", image: "socks_cl.png", back: "socks_cl_back.png" },
+    { name: "ss", image: "socks_ss.png", back: "socks_ss_back.png" },
 ];
 
 cl.shoes = [
@@ -1392,6 +1412,7 @@ cl.shoes = [
     { name: "nu", image: "shoes_nu.png", back: "shoes_nu_back.png" },
     { name: "bb", image: "shoes_bb.png", back: "shoes_bb_back.png" },
     { name: "cl", image: "shoes_cl.png", back: "shoes_cl_back.png" },
+    { name: "ss", image: "shoes_ss.png", back: "shoes_ss_back.png" },
 ];
 
 cl.panties = [

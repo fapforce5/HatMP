@@ -24,6 +24,9 @@ room0.btnclick = function (name) {
         g.popUpNotice("You found money! ");
         gv.mod("money", g.rand(10, 50));
     }
+    else if (name === "moveChar") {
+        char.room(g.nextRoomId);
+    }
     else if (name === "map_0") {
         nav.bg("map/map0.jpg", "map/map0_night.jpg");
         gv.set("map", 0);
@@ -141,6 +144,8 @@ room0.btnclick = function (name) {
         $('#room_footer').show();
         nav.killall();
         nav.bg("map/" + roomnum + "_close" + (g.isNight() ? "night" : "") + ".jpg");
+        g.nextRoomId = roomnum;
+        console.log("roomnum: " + roomnum);
         if (g.rand(0, 20) === 0 && !daily.get("foundmoney")) {
             nav.button({
                 "type": "btn",
@@ -154,6 +159,10 @@ room0.btnclick = function (name) {
             setTimeout(function () {
                 char.room(roomnum);
             }, 4000);
+        }
+        else if (fame.event("moveChar")) {
+            console.log(roomnum);
+            console.log(g.nextRoomId);
         }
         else {
             setTimeout(function () {

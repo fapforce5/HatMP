@@ -1,6 +1,9 @@
 ﻿//Room name
 var room478 = {};
 room478.main = function () {
+    g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
+
+
     room480.chatcatch("settod");
     var btnList = new Array();
 

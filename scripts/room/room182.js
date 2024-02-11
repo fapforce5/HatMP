@@ -10,6 +10,7 @@ room182.main = function () {
                 mantest: 0,
                 femtest: 0,
                 analtest: 0,
+                bdsmtest: 0,
                 cardCount: 0,
                 cards: [
                     { p: 1, s: null },//0
@@ -96,6 +97,12 @@ room182.btnclick = function (name) {
             nav.bg("182_test/" + name + ".jpg");
             chat(37, 182);
             break;
+        case "t1_26":
+            nav.killall();
+            $("#room-inv").hide();
+            nav.bg("182_test/t1_26.jpg");
+            chat(53, 182);
+            break;
         default:
             break;
     }
@@ -113,7 +120,20 @@ room182.chatcatch = function (callback) {
         case "t1_22":
         case "t1_23":
         case "t1_24":
+        case "t1_25":
+        case "t1_46":
+        case "t1_47":
+        case "t1_48":
             nav.kill();
+            nav.bg("182_test/" + callback + ".jpg");
+            break;
+        case "t1_28":
+        case "t1_30":
+        case "t1_32":
+        case "t1_34":
+        case "t1_36":
+        case "t1_40":
+        case "t1_41":
             nav.bg("182_test/" + callback + ".jpg");
             break;
         case "t1_16":
@@ -297,6 +317,127 @@ room182.chatcatch = function (callback) {
             }
             nav.bg("182_test/" + analImg + ".jpg");
             break;
+        case "t1_26":
+            sc.select("t1_26", "182_test/test4.png", 0)
+            break;
+        case "t1_27":
+            nav.bg("182_test/" + callback + ".jpg");
+            nav.t({
+                type: "img",
+                name: "t1_27",
+                left: 300,
+                top: 50,
+                font: 40,
+                hex: "#ffffff",
+                text: "Energy"
+            }, 1);
+            var line = '<div id="room182_energy" class=" resize-height" style="position:absolute; width:' + (1320 * g.ratio) + 'px; height:' + (20 * g.ratio) + 'px; top:' + (100 * g.ratio) + 'px; left:' + (300 * g.ratio) + 'px; background:#333;">' +
+                '<div id="room182_energy_line" style="background: #20C000; border-radius: 20px; width:100%; height: 100%;" class="resize-height rl-bar"></div>' +
+                '</div>';
+            $('#room-buttons').append(line);
+            room182.chatcatch("t1_setenergy");
+            break;
+        case "t1_setenergy":
+            var thisEnergy = gv.get("energy");
+            if (thisEnergy > 100)
+                thisEnergy = 100;
+            if (thisEnergy < 0)
+                thisEnergy = 0;
+            $("#room182_energy_line").css({ "width": thisEnergy + "%" });
+            break;
+        case "t1_29":
+            gv.mod("energy", -15);
+            nav.bg("182_test/" + callback + ".jpg");
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(58, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+            }
+            else { //fail
+                g.internal.bdsmtest = 55;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
+        case "t1_31":
+            gv.mod("energy", -20);
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(60, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+            }
+            else { //fail
+                g.internal.bdsmtest = 61;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
+        case "t1_33":
+            gv.mod("energy", -5);
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(62, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+            }
+            else { //fail
+                g.internal.bdsmtest = 69;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
+        case "t1_35":
+            gv.mod("energy", -10);
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(64, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+            }
+            else { //fail
+                g.internal.bdsmtest = 75;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
+        case "t1_37":
+            gv.mod("energy", -17);
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(66, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+            }
+            else { //fail
+                g.internal.bdsmtest = 80;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
+        case "t1_38":
+            gv.mod("energy", -17 );
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(67, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+            }
+            else { //fail
+                g.internal.bdsmtest = 85;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
+        case "t1_39":
+            gv.mod("energy", -16);
+            room182.chatcatch("t1_setenergy");
+            if (gv.get("energy") > 0) {
+                chat(67, 182);
+                nav.bg("182_test/" + callback + ".jpg");
+                g.internal.bdsmtest = 100;
+            }
+            else { //fail
+                g.internal.bdsmtest = 90;
+                nav.bg("182_test/t1_45.jpg");
+                chat(997, 182);
+            }
+            break;
         default:
             break;
     }
@@ -381,6 +522,19 @@ room182.chat = function (chatID) {
                     { chatID: 46, text: "*whimper*", callback: "" }
                 ]
             };
+    }
+    else if (chatID === 997) {
+        return {
+            chatID: 0,
+            speaker: "black",
+            text: "You couldn't last all the way. You need to work on that if you're going " +
+                "to survive. It's too bad too. If you did last longer I had a real treat for " +
+                "you. You got a " + g.getGrade(g.internal.bdsmtest) +
+                " for my test. Now get back upstairs for the ceremony. ",
+            button: [
+                { chatID: 75, text: "Yes ma'am", callback: "t1_46" }
+            ]
+        };
     }
     else {
         var cArray = [
@@ -833,7 +987,289 @@ room182.chat = function (chatID) {
                 speaker: "ralph",
                 text: "Really. Now push you ass back into you hole and lets finish this test! ",
                 button: [
-                    { chatID: 49, text: "Yea!", callback: "t1_24" },
+                    { chatID: 49, text: "Thanks. Do you mind sitting back, I can feel you dick on in my crack. ", callback: "t1_24" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "black",
+                text: "Ok you cry babies listen up. I'm going to give you your last test so " +
+                    "prepare yourself how ever you need. It's going to be painful and will drain " +
+                    "any energy out of you that you may have. I'll take you one at a time down " +
+                    "in my dungeon and we'll see how long you last. ",
+                button: [
+                    { chatID: 50, text: "...", callback: "t1_25" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "ralph",
+                text: sc.n("me") + " I'm scared of " + sc.n("black") + ". Last time I went down " +
+                    "there she tortured me until I cried. It hurt so back I couldn't sit down. I had " +
+                    "to sleep on my stomach for two nights. ",
+                button: [
+                    { chatID: 51, text: "Oh yeah. I don't like her at all. She's just mean. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "ralph",
+                text: "I know right. Look at poor Martin over there who just got back. He's just " +
+                    "laying in his a puddle of tears. Do you think I can just quit once I get in there? ",
+                button: [
+                    { chatID: 52, text: "I don't really know. You never know what " + sc.n("black") + "'s going to do. Maybe. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "ralph",
+                text: "Looks like you're next. Good luck. Remember it's ok to quit if you want. ",
+                button: [
+                    { chatID: -1, text: "I know. I'll see you on the other side. ", callback: "t1_26" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "black",
+                text: "Well well. If it isn't Missy favorite student. You might ask why I do what " +
+                    "I do. It's becuase you sissies are idiots. You think you can put on a slutty outfit " +
+                    "with your asshole hanging out and you'll be treated like a lady. ",
+                button: [
+                    { chatID: 54, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "black",
+                text: "You sissies put yourselves in bad places surrounded by bad people. Now don't " +
+                    "get me wrong, a rapist is the reason for rape, but it doesn't mean you can't be " +
+                    "ready. I will toughen your spirit and emotional resilience in a controlled space. ",
+                button: [
+                    { chatID: 55, text: "ok", callback: "" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "black",
+                text: "I'm going to go though an increasing amount of pain. When I think you've had " +
+                    "enough, I'll stop. Feel free to scream and cry, my walls are soundproof. " +
+                    "Nothing makes my dick harder than a sissy bawling. Now to begin I'll put on " + 
+                    "this blindfold. Ready?",
+                button: [
+                    { chatID: 56, text: "...yeah...", callback: "t1_27" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "black",
+                text: "So first I'll start with your nipples. You're going to feel a sharp pinch. " +
+                    "Now when I put this on, remember to breathe. Ready? ",
+                button: [
+                    { chatID: 57, text: "Sure", callback: "t1_28" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "black",
+                text: "Now, now. Remember to breathe. This is just the beginning.  ",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_29" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "black",
+                text: "Next up is what I call my magic wand. It's going to put 20,000 volts into " +
+                    "you body. Feel free to scream if you need to. ",
+                button: [
+                    { chatID: 59, text: "...", callback: "t1_30" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "black",
+                text: "Oh yes! I love the sound of a gutteral scream. So sexy! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_31" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "black",
+                text: "Next is my sounding rod. You're going to love the texture. If you've never " +
+                    "been sounded before you're going to feel a stretch and sharp pain down your " +
+                    "urethra. Don't worry, I'll be using surgical lubrication so it slides right in. ",
+                button: [
+                    { chatID: 61, text: "...", callback: "t1_32" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "black",
+                text: "Your urethra sure is tight. I'm sure you can feel it slide up your pee hole. " +
+                    "What's this? Is you other hole jealous? Don't worry little fella, I have something " +
+                    "to fill you up too.",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_33" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "black",
+                text: "The next item going inside you is called the Pear of Agony. A wonderful little toy " +
+                    "that slides right in, but as I twist it, it expands inside you filling and stretching " +
+                    "your pretty little boy cunt. ",
+                button: [
+                    { chatID: 63, text: "...", callback: "t1_34" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "black",
+                text: "Yes! Can you feel that pressure inside you? Stretching you open! Push as hard as " +
+                    "you want, it's not going anywhere. I love a sissy with filled holes. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_35" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "black",
+                text: "Now you may ask yourself why I didn't make you air tight and fill you sissy pie hole. " +
+                    "That's becuase I didn't want to muffle your screams as you get your next treat. Are you ready " +
+                    "my dear? ",
+                button: [
+                    { chatID: 65, text: "...no", callback: "t1_36" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "black",
+                text: "SCREAM YOU SLUT! Let me know how much pain you are in!",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_37" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "black",
+                text: "YES! My cock is so hard hearing your pain!",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_38" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "black",
+                text: "FUCK YES! I love how you clench your muscles in anticipation of my whip! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "t1_39" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "black",
+                text: "Ooohhh. Did the little baby lose their sound pissing themselves? Is " +
+                    "the little baby going to cry too? Wait right here while I get the next " +
+                    "set of toys. ",
+                button: [
+                    { chatID: 69, text: "...", callback: "t1_40" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "thinking",
+                text: "I don't know how much more I can take. My holes hurt, my body hurts, and " +
+                    "my back is on fire! This is the worst pain I've been in my entire life. " +
+                    "I hope the rest of this pure horror doesn't get worse. I wonder if I can " +
+                    "just pass out so I can't feel anymore. ",
+                button: [
+                    { chatID: 70, text: "...", callback: "t1_41" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "black",
+                text: "Don't worry my little baby. Let me rotate your toys. I'll take this out and " +
+                    "add the dildo gag and give you a nice suprise for lasting this long. ",
+                button: [
+                    { chatID: 71, text: "...", callback: "t1_42" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "black",
+                text: "Now where did I put the ridged dildo at? ",
+                button: [
+                    { chatID: 72, text: "...", callback: "t1_43" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "black",
+                text: "Hehehe! You loke that baby? You like it when I rape your asshole with my " +
+                    "big black ridged dildo? Don't try to say no. I know you want to get fucked slut. " +
+                    "Show Mommy how much you like getting raped. ",
+                button: [
+                    { chatID: 73, text: "...", callback: "t1_44" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "black",
+                text: "What a slut! You came from getting raped in the ass. It's not rape " +
+                    "if you enjoyed it. ",
+                button: [
+                    { chatID: 74, text: "...", callback: "t1_45" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "black",
+                text: "That's my good little baby. You did better than everyone else. You get an 'A+'. " +
+                    "Now go back upstairs for the ceremony. ",
+                button: [
+                    { chatID: 75, text: "...", callback: "t1_46" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "missy",
+                text: "Before we begin, one of you did not take the class very , and did terrible " +
+                    "on their tests. This person is a failure and will be leaving the class for " +
+                    "good today. ",
+                button: [
+                    { chatID: 76, text: "...", callback: "t1_47" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "missy",
+                text: "Jeremy, step forward. You have failed this class, you have failed your " +
+                    "classmates, and you failed us, your teachers. Grab your clothes and go. " +
+                    "You are done here. You will never be a sissy. ",
+                button: [
+                    { chatID: 77, text: "*oh damn*", callback: "t1_48" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "missy",
+                text: "The rest of you have passed. Some barely. The next test is even harder so " +
+                    "I suggest you do you homework and be the best sissy you can if you want to pass. ",
+                button: [
+                    { chatID: 78, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "missy",
+                text: "Now for the good news. You all have earned your first set of sissy clothes! " +
+                    "Well grab you each one at a time to pick out your wardrobe for the class. " +
+                    "This will be your sissy school uniform from now on. " + sc.n("me") +
+                    " you're coming with me. ",
+                button: [
+                    { chatID: 79, text: "...", callback: "" },
                 ]
             },
         ];

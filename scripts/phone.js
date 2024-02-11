@@ -367,22 +367,45 @@ phone.characterSelect = function (name) {
         "height": 250,
         "image": "../speaker/" + thisChar.image,
     }, 9999);
-
+    if (!thisChar.setName) {
+        nav.t({
+            type: "zimg",
+            name: "phone_",
+            "left": 500,
+            "top": 460,
+            font: 40,
+            hex: "#ffffff",
+            text: thisChar.display
+        }, 1);
+    }
+    else {
+        nav.inputbox({
+            "type": "zimg",
+            "name": "phone_charRenameDisplay",
+            "left": 500,
+            "top": 460,
+            "width": 250,
+            "height": 30,
+            "title": thisChar.display,
+        }, 9999);
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_charRename_" + thisChar.name,
+            "left": 500,
+            "top": 525,
+            "width": 250,
+            "height": 50,
+            "image": "999_phone/char_rename.png",
+        }, 9999);
+    }
+   
+    
+    
     nav.t({
         type: "zimg",
         name: "phone_",
         "left": 500,
-        "top": 500,
-        font: 40,
-        hex: "#ffffff",
-        text: thisChar.display
-    }, 1);
-
-    nav.t({
-        type: "zimg",
-        name: "phone_",
-        "left": 500,
-        "top": 550,
+        "top": 580,
         font: 30,
         hex: "#ffffff",
         text: "Level: " + thisChar.l
@@ -392,7 +415,7 @@ phone.characterSelect = function (name) {
         type: "zimg",
         name: "phone_",
         "left": 500,
-        "top": 590,
+        "top": 615,
         font: 30,
         hex: "#ffffff",
         text: "Secret: " + thisChar.secret + "%"
@@ -404,7 +427,7 @@ phone.characterSelect = function (name) {
             type: "zimg",
             name: "phone_",
             "left": 500,
-            "top": 650 + (i*22),
+            "top": 660 + (i*22),
             font: 20,
             hex: thisTimeline.subList[i].current ? "#FF76FF" : "#ffffff",
             text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
@@ -414,14 +437,22 @@ phone.characterSelect = function (name) {
     for (i = 0; i < sc.charMission.length; i++) {
         if (sc.charMission[i].name === thisChar.name) {
             for (j = 0; j < sc.charMission[i].mission.length; j++) {
+                var tcolor = "#ffffff";
+                var mstatus;
+                switch (sc.mStatus(sc.charMission[i].mission[j].mStatus)) {
+                    case "Failed": tcolor = "#cc3333"; mstatus = " [Fail]"; break;
+                    case "Completed": tcolor = "#33cc33"; mstatus = " ☑"; break;
+                    case "Not Started": tcolor = "#999999"; mstatus = ""; break;
+                    default: tcolor = "#ffffff"; mstatus = "";
+                }
                 nav.t({
                     type: "zimg",
                     name: "phone_charsel_",
                     "left": 850,
                     "top": 180 + (j * 100),
                     font: 30,
-                    hex: "#ffffff",
-                    text: sc.charMission[i].mission[j].title + " [" + sc.mStatus(sc.charMission[i].mission[j].mStatus) + "]"
+                    hex: tcolor,
+                    text: sc.charMission[i].mission[j].title + mstatus
                 }, 9999);
                 nav.t({
                     type: "zimg",
@@ -716,15 +747,23 @@ room9999.btnclick = function (name) {
         }, 9999);
         
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
-            roomList = " Room: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
+            roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
+            var tcolor = "#ffffff";
+            var mstatus;
+            switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
+                case "Failed": tcolor = "#cc3333"; mstatus = " ✘ "; break;
+                case "Completed": tcolor = "#33cc33"; mstatus = " ☑ "; break;
+                case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
+                default: tcolor = "#ffffff"; mstatus = " ";
+            }
             nav.t({
                 type: "zimg",
                 name: "phone_charsel_",
                 "left": 910,
                 "top": 350 + (i * 40),
                 font: 30,
-                hex: "#ffffff",
-                text: "[" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus) + "] " + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
+                hex: tcolor,
+                text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
             }, 1);
         }
     }
@@ -744,6 +783,11 @@ room9999.btnclick = function (name) {
             phone.cheat();
             $('#char_alert').hide();
         }
+    }
+    else if (name.startsWith("phone_charRename_")) {
+        var charrename = name.replace("phone_charRename_", "");
+        sc.setcharname(charrename, $(".room-img[data-name='phone_charRenameDisplay']").val());
+        g.popUpNoticeBottom(sc.n(charrename) + " has been renamed.");
     }
     else {
         switch (name) {

@@ -96,7 +96,7 @@ inv.master = [
     { type: "p", name: "phoneMan", display: "Sexy Man", entry: false, count: null, cost: 50, image: "phone_man.png", n: false, desc: "" },
     { type: "p", name: "phoneFist", display: "Fisted Fem Dom", entry: false, count: null, cost: 85, image: "phone_fist.png", n: false, desc: "" },
 
-    
+    { type: "z", name: "vib", display: "Li'l Remote Vibrator", entry: false, count: null, cost: -1, image: "vib.png", n: false, desc: "Remote vibrator to stimulate the clit and G-spot." },
     { type: "g", name: "screwdriver", display: "Screwdriver", entry: false, count: null, cost: 50, image: "screwdriver.png", n: false, desc: "Go screw yourself" },
     { type: "d", name: "purpleDildo", display: "Purple Dildo", entry: false, count: null, cost: 40, image: "dildoPurple.png", n: false, desc: "Small Dildo" },
     { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },
@@ -318,12 +318,17 @@ inv.update = function (name, entry, count) {
 inv.use = function (name) {
     for (var i = 0; i < inv.master.length; i++) {
         if (inv.master[i].name === name) {
-            inv.master[i].count--;
-            if (inv.master[i].count < 1) {
-                inv.master[i].count = 0;
+            if (inv.master[i].coun !== null) {
+                inv.master[i].count--;
+                if (inv.master[i].count < 1) {
+                    inv.master[i].count = 0;
+                    inv.master[i].entry = false;
+                }
+            }
+            else {
                 inv.master[i].entry = false;
             }
-            i = 999999;
+            break;
         }
     }
 };

@@ -1,76 +1,108 @@
 ﻿//Envy Living Room
 var room301 = {};
 room301.main = function () {
-    if (g.pass === "endSleepyTime") {
-        chat(108, 301);
-        nav.bg("301_living/envy160.jpg");
-    }
-    else {
-        var navList = [0];
-        nav.buildnav(navList);
-        switch (sc.getstep("envy")) {
-            case 2:
+    //if (g.pass === "endSleepyTime") {
+    //    chat(108, 301);
+    //    nav.bg("301_living/envy160.jpg");
+    //}
+    //else {
+    var navList = [0];
+    nav.buildnav(navList);
+
+    if (sc.getMission("envy", "meet").inProgress) {
+        var meetStep = sc.taskGetStep("envy", "meet");
+        switch (meetStep) {
+            case 1:
                 room301.chatcatch("drawbg");
                 chat(0, 301);
                 break;
-            case 3:
+            case 2:
                 room301.chatcatch("drawbg");
                 chat(10, 301);
                 break;
-            case 4:
+            case 3:
                 room301.chatcatch("drawbg");
                 chat(21, 301);
                 break;
-            case 5:
+            case 4:
                 room301.chatcatch("drawbg");
                 chat(32, 301);
                 break;
-            case 6:
+
+        }
+    }
+
+    else if (sc.getMission("envy", "hypno").inProgress) {
+        switch (sc.taskGetStep("envy", "hypno")) {
+            case 1:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(46, 301);
                 break;
-            case 7:
+            case 2:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(50, 301);
                 break;
-            case 8:
+            case 3:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(52, 301);
                 break;
-            case 9:
+            case 4:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(54, 301);
                 break;
-            case 10:
+            case 5:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(57, 301);
                 break;
-            case 11:
+            case 6:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(67, 301);
                 break;
-            case 12:
+            case 7:
                 room301.chatcatch("drawbg");
                 room301.chatcatch("drawEnvySitting");
                 chat(74, 301);
                 break;
-            case 13:
+            case 8:
                 nav.bg("301_living/step13_0.jpg");
                 chat(76, 301);
                 break;
-            case 14:
+            case 9:
+                sc.completeMissionTask("envy", "hypno", 9);
                 nav.bg("301_living/step14.jpg");
                 chat(86, 301);
                 break;
-            case 15:
+            case 10:
                 nav.bg("301_living/step14.jpg");
-                chat(89, 301);
+                sc.select("leave", "301_living/icon_leave.png", 0);
+                sc.select("fuck", "301_living/icon_fuck.png", 1);
+                break;
+            //case 10:
+            //    nav.bg("301_living/step14.jpg");
+            //    chat(89, 301);
+            //    break;
+        }
+    }
+    else if (sc.getMission("envy", "gf").inProgress) {
+        var gfstep = sc.taskGetStep("envy", "gf");
+        switch (gfstep) {
+            case 1:
+                room301.chatcatch("drawEnvySitting");
+                chat(127, 301);
+                break;
+            case 4:
+                room301.chatcatch("drawEnvySitting");
+                chat(130, 301);
+                break;
+            case 5:
+                nav.bg("301_living/gf_5_0.jpg");
+                nav.wait("gf_5_1");
                 break;
         }
     }
@@ -79,20 +111,20 @@ room301.main = function () {
 room301.btnclick = function (name) {
     switch (name) {
         case "boardgame":
-            var envyStepTouchbg = sc.getstep("envy");
-            if (envyStepTouchbg < 10) {
+            //var envyStepTouchbg = sc.getstep("envy");
+            //if (envyStepTouchbg < 10) {
                 nav.killall();
                 room301.chatcatch("drawbggame");
                 room301.chatcatch("drawEnvySitting");
                 chat(33, 301);
-            }
-            else {
-                chat(63, 301);
-            }
+            //}
+            //else {
+            //    chat(63, 301);
+            //}
             break;
         case "touch":
-            var envyStepTouch = sc.getstep("envy");
-            if (envyStepTouch === 8) {
+            var envyStepTouch = sc.taskGetStep("envy", "hypno");
+            if (envyStepTouch === 3) {
                 nav.killbutton("touch");
                 nav.button({
                     "type": "btn",
@@ -105,7 +137,7 @@ room301.btnclick = function (name) {
                     "image": "301_living/touch8a.png"
                 }, 301);
             }
-            else if (envyStepTouch === 9) {
+            else if (envyStepTouch === 4) {
                 g.internal = true;
                 nav.button({
                     "type": "btn",
@@ -118,7 +150,7 @@ room301.btnclick = function (name) {
                     "image": "301_living/touch9a.png"
                 }, 301);
             }
-            else if (envyStepTouch === 10) {
+            else if (envyStepTouch === 5) {
                 nav.killbutton("boardgame");
                 g.internal = 0;
                 nav.button({
@@ -206,6 +238,23 @@ room301.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "fuck":
+            if (cl.c.chastity === null) {
+                nav.kill();
+                nav.bg("301_living/step14x.jpg");
+                chat(121, 301);
+            }
+            else
+                chat(126, 301);
+            break;
+        case "gf_5_1":
+            nav.kill();
+            nav.bg("301_living/gf_5_1.jpg");
+            chat(138, 301);
+            break;
+        case "leave":
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -213,6 +262,14 @@ room301.btnclick = function (name) {
 
 room301.chatcatch = function (callback) {
     switch (callback) {
+        case "step14a":
+        case "step14b":
+        case "step14c":
+        case "step14d":
+        case "gf_5_2":
+        
+            nav.bg("301_living/" + callback + ".jpg");
+            break;
         case "startwars":
             nav.bg("301_living/startwars.jpg");
             break;
@@ -221,7 +278,7 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/startwars1.jpg");
             break;
         case "envy2":
-            sc.setstep("envy", 3);
+            sc.completeMissionTask("envy", "meet", 1, true);
             daily.set("envy");
             char.addtime(180);
             char.room(300);
@@ -285,21 +342,25 @@ room301.chatcatch = function (callback) {
                         chat(13, 301);
                         break;
                     case 1:
+                        sc.modLevel("envy", 5, 0);
                         nav.modbutton("girleye", "301_living/geye1.png");
                         nav.modbutton("maleeye", "301_living/heye3.png");
                         chat(14, 301);
                         break;
                     case 2:
+                        sc.modLevel("envy", 10, 0);
                         nav.modbutton("girleye", "301_living/geye2.png");
                         nav.modbutton("maleeye", "301_living/heye2.png");
                         chat(15, 301);
                         break;
                     case 3:
+                        sc.modLevel("envy", 15, 0);
                         nav.modbutton("girleye", "301_living/geye3.png");
                         nav.modbutton("maleeye", "301_living/heye3.png");
                         chat(16, 301);
                         break;
                     case 4:
+                        sc.modLevel("envy", 25, 0);
                         nav.modbutton("girleye", "301_living/geye4.png");
                         nav.modbutton("maleeye", "301_living/heye3.png");
                         chat(17, 301);
@@ -327,7 +388,8 @@ room301.chatcatch = function (callback) {
         case "movieGoodEnd":
             daily.set("envy");
             char.addtime(180);
-            sc.setstep("envy", 4);
+            sc.modLevel("envy", 50, 1);
+            sc.completeMissionTask("envy", "meet", 2);
             char.room(300);
             break;
         case "spanky3":
@@ -335,8 +397,9 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/spanky1.jpg");
             break;
         case "envy3end":
-            sc.setstep("envy", 5);
-            sc.setstep("spanky", -1);
+            sc.completeMissionTask("envy", "meet", 3);
+            sc.show("spanky");
+            sc.startMission("spanky", "envy");
             daily.set("envy");
             char.addtime(180);
             char.room(300);
@@ -344,8 +407,8 @@ room301.chatcatch = function (callback) {
         case "boardgame":
             var buttImg = "touch.png";
             nav.killall();
-            if (sc.getstep("envy") < 7)
-                nav.bg("301_living/boardgamebg.jpg");
+            //if (sc.getMission("envy", "meet").inProgress)
+            nav.bg("301_living/boardgamebg.jpg");
             nav.button({
                 "type": "btn",
                 "name": "boardgame",
@@ -355,15 +418,17 @@ room301.chatcatch = function (callback) {
                 "height": 344,
                 "image": "301_living/dice.png"
             }, 301);
-            switch (sc.getstep("envy")) {
-                case 8: buttImg = "touch8.png";
-                    break;
-                case 9: buttImg = "touch9.png";
-                    break;
-                case 10: buttImg = "touch9.png";
-                    break;
-                case 12: buttImg = "touch12.png";
-                    break;
+            if (sc.getMission("envy", "hypno").inProgress) {
+                switch (sc.taskGetStep("envy", "hypno")) {
+                    case 3: buttImg = "touch8.png";
+                        break;
+                    case 4: buttImg = "touch9.png";
+                        break;
+                    case 5: buttImg = "touch9.png";
+                        break;
+                    case 6: buttImg = "touch12.png";
+                        break;
+                }
             }
             nav.button({
                 "type": "btn",
@@ -452,10 +517,13 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/hypno1-bg1.jpg");
             break;
         case "hypno8":
+            gv.mod("arousal", 50);
             nav.bg("301_living/hypno1-bg2.jpg");
             break;
         case "hypnoEnd":
-            sc.setstep("envy", 6);
+            sc.completeMission("envy", "meet", true);
+            sc.startMission("envy", "hypno");
+            sc.completeMissionTask("envy", "hypno", 0, true);
             char.addtime(120);
             char.room(0);
             break;
@@ -463,28 +531,28 @@ room301.chatcatch = function (callback) {
             var hasTape = false;
             var tape = "";
             
-            switch (sc.getstep("envy")) {
-                case 6:
+            switch (sc.taskGetStep("envy", "hypno")) {
+                case 1:
                     hasTape = inv.has("hypno2");
                     tape = "h2.gif";
                     break;
-                case 7:
+                case 2:
                     hasTape = inv.has("hypno3");
                     tape = "h3.gif";
                     break;
-                case 8:
+                case 3:
                     hasTape = inv.has("hypno4");
                     tape = "h4.gif";
                     break;
-                case 9:
+                case 4:
                     hasTape = inv.has("hypno5");
                     tape = "h5.gif";
                     break;
-                case 10:
+                case 5:
                     hasTape = inv.has("hypno6");
                     tape = "h6.gif";
                     break;
-                case 12:
+                case 7:
                     hasTape = inv.has("hypno7");
                     tape = "h7.gif";
                     break;
@@ -514,15 +582,15 @@ room301.chatcatch = function (callback) {
             room301.chatcatch("drawEnvySitting");
             break;
         case "drawEnvySitting":
-            var envyImg;
-            switch (sc.getstep("envy")) {
-                case 1: case 2: case 3: case 4: case 5: case 6: envyImg = "sit0.png"; break;
-                case 7: envyImg = "sit7.png"; break;
-                case 8: envyImg = "sit8.png"; break;
-                case 9: envyImg = "sit9.png"; break;
-                case 10: envyImg = "sit9.png"; break;
-                case 11: envyImg = "sit11.png"; break;
-                case 12: envyImg = "sit11.png"; break;
+            var envyImg = "sit0.png";
+            var hypnoStep = sc.taskGetStep("envy", "hypno");
+            switch (hypnoStep) {
+                case 2: envyImg = "sit7.png"; break;
+                case 3: envyImg = "sit8.png"; break;
+                case 4: envyImg = "sit9.png"; break;
+                case 5: envyImg = "sit9.png"; break;
+                case 6: envyImg = "sit11.png"; break;
+                case 7: envyImg = "sit11.png"; break;
             }
             nav.button({
                 "type": "img",
@@ -535,26 +603,7 @@ room301.chatcatch = function (callback) {
             }, 301);
             break;
         case "hypnoLoopEnd":
-            switch (sc.getstep("envy")) {
-                case 6:
-                    sc.setstep("envy", 7);
-                    break;
-                case 7:
-                    sc.setstep("envy", 8);
-                    break;
-                case 8:
-                    sc.setstep("envy", 9);
-                    break;
-                case 9:
-                    sc.setstep("envy", 10);
-                    break;
-                case 10:
-                    sc.setstep("envy", 11);
-                    break;
-                case 12:
-                    sc.setstep("envy", 13);
-                    break;
-            };
+            sc.completeMissionTask("envy", "hypno", (sc.taskGetStep("envy", "hypno")));
             char.addtime(120);
             daily.set("envy");
             char.room(0);
@@ -566,22 +615,25 @@ room301.chatcatch = function (callback) {
             nav.modbutton("envy", "301_living/sit9a.png", null, null);
             break;
         case "drawbg":
-            var drawbgEnvyStep = sc.getstep("envy");
-            if (drawbgEnvyStep < 7)
+            var drawbgEnvyStep = 0;
+            if (sc.getMission("envy", "hypno")) 
+                drawbgEnvyStep = sc.taskGetStep("envy", "hypno");
+            
+            if (drawbgEnvyStep < 2)
                 nav.bg("301_living/bg1.jpg");
-            else if (drawbgEnvyStep === 7)
+            else if (drawbgEnvyStep === 2)
                 nav.bg("301_living/bg7.jpg");
-            else if (drawbgEnvyStep === 8)
+            else if (drawbgEnvyStep === 3)
                 nav.bg("301_living/bg8.jpg");
-            else if(drawbgEnvyStep === 9)
+            else if(drawbgEnvyStep === 4)
                 nav.bg("301_living/bg9.jpg");
-            else if (drawbgEnvyStep === 10)
+            else if (drawbgEnvyStep === 5)
                 nav.bg("301_living/bg10.jpg");
-            else if (drawbgEnvyStep === 11)
+            else if (drawbgEnvyStep === 6)
                 nav.bg("301_living/bg11.jpg");
-            else if (drawbgEnvyStep === 12)
+            else if (drawbgEnvyStep === 7)
                 nav.bg("301_living/bg11.jpg");
-            else if (drawbgEnvyStep > 12)
+            else if (drawbgEnvyStep > 7)
                 nav.bg("301_living/bg12.jpg");
             break;
         case "drawbggame":
@@ -649,19 +701,11 @@ room301.chatcatch = function (callback) {
             break;
         case "step11e":
             g.internal = 0;
-            nav.button({
-                "type": "btn",
-                "name": "step11e",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 301);
+            nav.next("step11e");
             break;
         case "step11end":
-            sc.setstep("envy", 12);
-            gv.mod("fuckPussy", 1);
+            sc.completeMissionTask("envy", "hypno", 6);
+            sex.mod("pussy", true, "f", 1);
             cl.doCum(false);
             char.addtime(120);
             daily.set("envy");
@@ -671,15 +715,7 @@ room301.chatcatch = function (callback) {
             nav.killall();
             nav.bg("301_living/step11d.jpg");
             g.internal = 0;
-            nav.button({
-                "type": "btn",
-                "name": "step12",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 301);
+            nav.next("step12");
             break;
         case "step12end":
             gv.mod("fuckPussy", 1);
@@ -713,12 +749,16 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/step13_5.jpg");
             break;
         case "step13badend":
-            sc.setstep("envy", 14);
+            sc.completeMissionTask("envy", "hypno", 8);
+            sc.completeMissionTask("spanky", "hypno", 1);
+            sc.completeMissionTask("spanky", "hypno", 2, false);
             char.room(0);
             break;
         case "step13end":
-            sc.setstep("envy", 14);
-            gv.mod("receiveOralFemale", 1);
+            sc.completeMissionTask("envy", "hypno", 8);
+            sc.completeMissionTask("spanky", "hypno", 1);
+            sc.completeMissionTask("spanky", "hypno", 2, false);
+            sex.mod("oral", false, "f", 1);
             cl.doCum(false);
             char.room(0);
             break;
@@ -765,8 +805,66 @@ room301.chatcatch = function (callback) {
             char.room(325);
             break;
         case "envy100":
-            sc.setstep("envy", 100);
+            sc.completeMission("envy", "hypno", false);
+            sc.startMission("envy", "gf");
+            sc.completeMission("spanky", "hypno", false);
+            sc.completeMissionTask("spanky", "hypno", 2);
+            sc.completeMissionTask("spanky", "hypno", 1, false);
             char.room(0);
+            break;
+        case "step14e":
+            cl.doCum(false);
+            sex.mod("pussy", true, "f", 1);
+            char.room(0);
+            break;
+        case "gf_1":
+            nav.killall();
+            nav.bg("301_living/bg.jpg");
+            nav.button({
+                "type": "img",
+                "name": "envy",
+                "left": 552,
+                "top": 0,
+                "width": 752,
+                "height": 1080,
+                "image": "301_living/gf_1.png"
+            }, 301);
+            break;
+        case "gf_2":
+            nav.modbutton("envy", "301_living/gf_2.png", null, null);
+            break;
+        case "gf_3":
+            nav.modbutton("envy", "301_living/gf_3.png", null, null);
+            break;
+        case "gf_1_end":
+            sc.completeMissionTask("envy", "gf", 1);
+            daily.set("envy");
+            char.room(0);
+            break;
+        case "gf_4_end":
+            sc.completeMissionTask("envy", "gf", 4);
+            daily.set("envy");
+            inv.use("vib");
+            char.room(0);
+            break;
+        case "reset":
+            char.room(301);
+            break;
+        case "vib0":
+            nav.button({
+                "type": "img",
+                "name": "vib0",
+                "left": 412,
+                "top": 25,
+                "width": 1045,
+                "height": 933,
+                "image": "301_living/vib0.png"
+            }, 301);
+            break;
+        case "gf_5_3":
+            nav.bg("301_living/" + callback + ".jpg");
+            cl.nude();
+            zcl.displayMain(-1000, 800, .6, "nude", true);
             break;
         default:
             break;
@@ -776,21 +874,22 @@ room301.chatcatch = function (callback) {
 room301.chat = function (chatID) {
     if (chatID === 1000) {
         var c = 0;
-        var evneyStep = sc.getstep("envy");
-        switch (sc.getstep("envy")) {
-            case 7: c = 0; break;
-            case 8: c = 1; break;
-            case 9: c = 2; break;
-            case 10: c = 3; break;
-            case 12: c = 4; break;
+        var evneyStep = sc.taskGetStep("envy", "hypno");
+        switch (evneyStep) {
+            case 1: c = 0; break;
+            case 2: c = 1; break;
+            case 3: c = 2; break;
+            case 4: c = 3; break;
+            case 5: c = 4; break;
             default: console.log("invalid Envy Step"); break;
         }
         var replay = [
             "Must wear makeup. Must be a pretty girl....",
+            "Must be sexy. Dresses are sexy. ",
             "Must be more fun... Blondes have more fun....",
             "Thinking is stupid... I want to be sexy...",
             "I need bigger tits... Must be a sexy bimbo...",
-            "I am a free use whore...My only purpose is to be a cum dump for all men...",
+            "I am a free use whore...My only purpose is to be as cum dump for all men...",
         ];
         return {
             chatID: 1000,
@@ -803,10 +902,10 @@ room301.chat = function (chatID) {
     }
     else if (chatID === 1001) {
         var d = 0;
-        switch (sc.getstep("envy")) {
-            case 7: d = 1; break;
-            case 8: d = 2; break;
-            case 9: d = 3; break;
+        switch (sc.taskGetStep("envy", "hypno")) {
+            case 3: d = 1; break;
+            case 4: d = 2; break;
+            case 5: d = 3; break;
             default: console.log("invalid Envy Step"); break;
         }
         var replay1001 = [
@@ -826,6 +925,33 @@ room301.chat = function (chatID) {
             speaker: "envy",
             text: replay1001[d],
             button: [ button1001[d] ]
+        };
+    }
+    else if (chatID === 1002) {
+        var d = 0;
+        switch (sc.taskGetStep("envy", "hypno")) {
+            case 1: d = 0; break;
+            case 2: d = 1; break;
+            case 3: d = 2; break;
+            case 4: d = 3; break;
+            case 5: d = 4; break;
+            default: d = 5; console.log("invalid Envy Step"); break;
+        }
+        var replayx = [
+            "I can't wait to see what she looks like when she's wearing makeup. Maybe she'll be more horny too? I hope. ",
+            "Oooo. I can't wait so see her in a dress. I could lift it up and just slide right in!",
+            "I hope blondes are sluts! I'm so going to bang her and cum in her! Fuck I need to fuck her. ",
+            "Yes! She'll be so into fucking! When I come back I'm totally going to fuck her! That slut.",
+            "Surly now she's going to give up that pussy! Fuck I want to fuck her so bad. ",
+            "Oh fuck! I'll bet she becomes my sex slave! She'll let me do what ever I want to her whenever I want. ",
+        ];
+        return {
+            chatID: 1002,
+            speaker: "thinking",
+            text: replayx[d],
+            button: [
+                { chatID: -1, text: "Bye " + sc.n("envy") + ". Fell better. ", callback: "hypnoLoopEnd" }
+            ]
         };
     }
     else {
@@ -866,7 +992,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "envy",
-                text: "It's the only good thing about this building. I wanted to live in the grey apartments up north, but " +
+                text: "It's the only good thing about this building. I wanted to live in the apartments up north, but " +
                     "the rent was just so much. I'm just a poor college student trying to live and it's been hard since my " +
                     "roomate left and moved in with her boyfriend. ",
                 button: [
@@ -1259,9 +1385,8 @@ room301.chat = function (chatID) {
                 speaker: "evny",
                 text: "So what do you want to do? ",
                 button: [
-                    { chatID: -1, text: "Play a board game", callback: "boardgame" },
-                    { chatID: -1, text: "Watch a movie. Let's see how far this goes. ", callback: "hypnoLoop0" },
-                    { chatID: 113, text: "Confess Spanky's plan. ", callback: "" },
+                    { chatID: -1, text: "Watch a movie. Turn her into your personal slut! ", callback: "hypnoLoop0" },
+                    { chatID: 113, text: "Confess Spanky's plan. Give her free will.", callback: "" },
                 ]
             },
             {
@@ -1269,7 +1394,7 @@ room301.chat = function (chatID) {
                 speaker: "evny",
                 text: "Sorry, I have the biggest headache. I think I'm going to lay down. I'll catch you later. ",
                 button: [
-                    { chatID: -1, text: "Ok. See ya ", callback: "hypnoLoopEnd" }
+                    { chatID: 1002, text: "....", callback: "" }
                 ]
             },
             {
@@ -1285,7 +1410,7 @@ room301.chat = function (chatID) {
                 speaker: "evny",
                 text: "You're such a butt. This is why I don't date much.  ",
                 button: [
-                    { chatID: 48, text: "...", callback: "" }
+                    { chatID: 119, text: "...", callback: "" }
                 ]
             },
             {
@@ -1302,7 +1427,7 @@ room301.chat = function (chatID) {
                 text: "Oh hahaha. you know. Just wanted something different. I don't know, but I've just had this weird " +
                     "feeling lately. Every time you come over I get this weird feeling after you leave. A feeling I've never " +
                     "felt before. I can't concentrate on anything but my looks and desires. I would say it's love, but it feels " +
-                    "more like narcissism since it's so center on me. I don't know. I have to think on it more. ",
+                    "more like narcissism since it's so centered on me. I don't know. I have to think on it more. ",
                 button: [
                     { chatID: -1, text: "Play a board game", callback: "boardgame" },
                     { chatID: -1, text: "Watch a movie ", callback: "hypnoLoop0" }
@@ -1593,14 +1718,13 @@ room301.chat = function (chatID) {
                 speaker: "envy",
                 text: "Hi " + sc.n("me") + ". Did you want a turn too? ",
                 button: [
-                    { chatID: 87, text: "Uhhh, sure ", callback: "" },
-                    { chatID: -1, text: "Nope. Too many dicks around here", callback: "leave" },
+                    { chatID: 87, text: "Uhhh, what? ", callback: "" },
                 ]
             },
             {
                 chatID: 87,
                 speaker: "random",
-                text: "Hay, we've been waiting for almost six hours! Get to the back of the line!",
+                text: "Hey, we've been waiting for almost six hours! Get to the back of the line!",
                 button: [
                     { chatID: 88, text: "?", callback: "" }
                 ]
@@ -1610,7 +1734,7 @@ room301.chat = function (chatID) {
                 speaker: "random",
                 text: "I'm going to fucking kick your ass if you try to cut in front of me! ",
                 button: [
-                    { chatID: -1, text: "Oh. I guess I'll leave *whimper*", callback: "leave" }
+                    { chatID: 120, text: "...", callback: "" }
                 ]
             },
             {
@@ -1877,6 +2001,209 @@ room301.chat = function (chatID) {
                 text: "Don't stare at me! Talk to SPANKY and fix me now! ",
                 button: [
                     { chatID: -1, text: "Oh yeah. I'm going.", callback: "envy100" }
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "evny",
+                text: "So what do you want to do? ",
+                button: [
+                    { chatID: -1, text: "It's working! Let's watch another movie!", callback: "hypnoLoop0" },
+                    { chatID: -1, text: "Play a board game", callback: "boardgame" },
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "thinking",
+                text: "What have I done? I've taken a girl with a future and turned her into " +
+                    "an empty headed cum jar. No one here cares about her, they all just want " +
+                    "to cum in something. Anything. That guy is even pissing on her recliner and " +
+                    "no one cares, least of all " + sc.n("envy") + ". I have to search for a new " +
+                    "purpose for her! I've got to save her to be something more than a cum dump!",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "thinking",
+                text: "This is bullshit. I should be at the front of the line. I made her this way! ",
+                button: [
+                    { chatID: 122, text: "[A few hours pass]", callback: "step14a" },
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "envy",
+                text: "I'm so glad you're here. My pussy still needs to get fucked so so badly! ",
+                button: [
+                    { chatID: 123, text: "Oh yea. It looks like it's been fucked alerady", callback: "step14b" },
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "envy",
+                text: "Talking makes my brain hurt. Just thrust into me! Fuck my pussy! ",
+                button: [
+                    { chatID: 124, text: "Ok. I'll fuck you in your cum hole. ", callback: "step14c" },
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "thinking",
+                text: "I know she's taken around 20 dicks today, and her pussy is dripping in cum, " +
+                    "but she really does have a great pussy. It's held up really well. It is a shame " +
+                    "both of her brain cells are fighting over second place. ",
+                button: [
+                    { chatID: 125, text: "... ", callback: "step14d" },
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "thinking",
+                text: "I'm really going to miss playing board games with her.",
+                button: [
+                    { chatID: -1, text: "... ", callback: "step14e" },
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "thinking",
+                text: "I have my chastity cage on. There's no way she's into that. ",
+                button: [
+                    { chatID: -1, text: "Leave", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 127,
+                speaker: "envy",
+                text: "So you have have the tape to fix me?  ",
+                button: [
+                    { chatID: 128, text: "I did talk to " + sc.n("spanky") + " and he said there isn't a fix. You're just going to be horny. ", callback: "gf_1" },
+                ]
+            },
+            {
+                chatID: 128,
+                speaker: "envy",
+                text: "I can't be like this forever! I have way to much to do! I can't just sit " +
+                    "around and masturbate all day! I have 4 papers to finish, 2 experiments for " +
+                    "school, and I'm tracking the Coeus comet! In the span of an afternoon you " +
+                    "have ruined my life all becuase I didn't have sex with you on the first date! " +
+                    "I hate you. I will always hate you. Get out of my apartment and never come " +
+                    "by again! ",
+                button: [
+                    { chatID: 129, text: "...but", callback: "" },
+                ]
+            },
+            {
+                chatID: 129,
+                speaker: "envy",
+                text: "No! Go away and never come back! ",
+                button: [
+                    { chatID: -1, text: "sorry. ok", callback: "gf_1_end" },
+                ]
+            },
+            {
+                chatID: 130,
+                speaker: "envy",
+                text: "So. Did you find a cure? ",
+                button: [
+                    { chatID: 131, text: "No. But I got something almost as good!", callback: "" },
+                ]
+            },
+            {
+                chatID: 131,
+                speaker: "envy",
+                text: "Yes!",
+                button: [
+                    { chatID: 132, text: "This!!!!", callback: "vib0" },
+                ]
+            },
+            {
+                chatID: 132,
+                speaker: "envy",
+                text: "What is it?",
+                button: [
+                    { chatID: 133, text: "A VIBRATOR!", callback: "gf_1" },
+                ]
+            },
+            {
+                chatID: 133,
+                speaker: "envy",
+                text: "You are the Caligula of problem solving! I can't control my sex drive so " +
+                    "what do you get me? A vibrator. So I can just get more and more horny. You " +
+                    "want me to just be in a constant state of sex don't you! I was wrong letting you " +
+                    "back in! You're out, and out FOREVER! ",
+                button: [
+                    { chatID: 134, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 134,
+                speaker: "me",
+                text: "Wait. wait wait wait wait. Hear me out. I will continue looking for a cure, but " +
+                    "until then you can use this remote controlled vibrator. You just wear it, and when " +
+                    "you have to masturbate you just press the button. Doesn't matter where you are, you just " +
+                    "cum really quick and go about your day. You can get your life back.",
+                button: [
+                    { chatID: 135, text: "...", callback: "gf_2" },
+                ]
+            },
+            {
+                chatID: 135,
+                speaker: "envy",
+                text: "oh....... hmmmmm....... That may not be as dumb as I thought. Wait how " +
+                    "does it work. Do I just point it at my vulva and it give me an orgasm? Won't " +
+                    "people get suspicious if I'm point the pink 'U' shaped thing at my privates? ",
+                button: [
+                    { chatID: 136, text: "Oh no. You wear it. Like panties, but not like panties. ", callback: "gf_3" },
+                ]
+            },
+            {
+                chatID: 136,
+                speaker: "envy",
+                text: "Wear it in my panties? ",
+                button: [
+                    { chatID: 137, text: "No. I might have to show you. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 137,
+                speaker: "envy",
+                text: "No.I can figure it out.Just give it to me. If you can figure it out, I " +
+                    "can too. Give me that and I'll let you know tomorrow if you're an idiot. ",
+                button: [
+                    { chatID: -1, text: "Ok. See you later. ", callback: "gf_4_end" },
+                ]
+            },
+            {
+                chatID: 138,
+                speaker: "envy",
+                text: "Oh thank god! I need you right now! I treid using that vibrator, I put it " +
+                    "in my panties, but it just didn't do anything. My fingers are so sore from " +
+                    "masturbating all the time. I need you to use your mouth and lick my clitoris " +
+                    "right the fuck now before I lose my mind! ",
+                button: [
+                    { chatID: 139, text: "Huh? ", callback: "gf_5_2" },
+                ]
+            },
+            {
+                chatID: 139,
+                speaker: "envy",
+                text: "You want to help me? Help me by licking my clit and finger my pussy. My room " +
+                    "now! ",
+                button: [
+                    { chatID: 140, text: "Huh? ", callback: "gf_5_3" },
+                ]
+            },
+            {
+                chatID: 140,
+                speaker: "envy",
+                text: "Why are you naked? You only get to perform cunniligus on me. I'm not losing " +
+                    "my virginity like this. Now get in there and give me an orgasm so I can return " +
+                    "to normal and regret this decision. ",
+                button: [
+                    { chatID: 139, text: "Oh. ok ", callback: "gf_5_4" },
                 ]
             },
         ];

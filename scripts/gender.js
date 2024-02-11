@@ -29,7 +29,9 @@ gender.pronoun = function (ptype) {
         case "son":
         case "daughter":
             return gender.isGirl() ? "daughter" : "son";
-
+        case "m":
+        case "f":
+            return gender.isGirl() ? "f" : "m";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

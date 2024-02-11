@@ -114,7 +114,7 @@ room752.chatcatch = function (callback) {
             break;
         case "fuck0":
             nav.killall();
-            nav.bg("752_whore/fuck0.gif");
+            nav.bg("752_whore/whore1.gif");
             nav.next("fuck1");
             break;
         case "makeNav":

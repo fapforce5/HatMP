@@ -49,6 +49,8 @@ missy.init = function () {
         { caseId: 6, name: "case_lostgirl", show: true, complete: false, success: false },
         { caseId: 7, name: "case_saveralph", show: true, complete: false, success: false },
         { caseId: 8, name: "case_trash", show: true, complete: false, success: false },
+        { caseId: 9, name: "case_goth", show: true, complete: false, success: false },
+
     ];
 }
 
@@ -115,6 +117,7 @@ missy.activecase = function () {
             { caseId: 6, name: "case_lostgirl", txt: "Find Martha's daughter and report to Missy. ", m: [], isComplete: activeCaseComplete },
             { caseId: 7, name: "case_saveralph", txt: "Hide out at Ralph's house to stop the cult from kidnapping him. ", m: [], isComplete: activeCaseComplete },
             { caseId: 8, name: "case_locket", txt: "Get the locket from the prostitute at the homeless camp. ", m: [], isComplete: activeCaseComplete },
+            { caseId: 9, name: "case_goth", txt: "Babysit Bill and get her to the train station on time. ", m: [], isComplete: activeCaseComplete },
 
         ];
         if (activecase > cases.length) {
@@ -205,6 +208,16 @@ missy.getcases = function () {
                                 callback: missy.cases[i].name
                             });
                         }
+                        break;
+                    case "case_goth":
+                        canDoCase = piLevel > 1;
+                        caseList.push({
+                            caseId: i,
+                            active: canDoCase,
+                            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
+                            callback: missy.cases[i].name
+                        });
                         break;
                     case "case_jeffery":
                         //if (missy.get("pantiesFirstTime") > 1) {

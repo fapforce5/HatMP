@@ -56,6 +56,9 @@ room200.btnclick = function (name) {
                         else
                             chat(45, 200);
                         break;
+                    case 9:
+                        chat(50, 200);
+                        break;
                 }
             }
             else if (missy.get("uniform") > 0 && missy.get("uniformNew") === 0) {
@@ -251,6 +254,21 @@ room200.chatcatch = function (callback) {
                 char.room(196);
             else
                 char.room(0);
+            break;
+        case "case_goth":
+            nav.killall();
+            missy.set("activeCase", g.internal.activeCase.caseId);
+            nav.bg("200_frontOffice/case_goth_0.jpg");
+            chat(46, 200);
+            break;
+        case "case_goth_0":
+            char.room(174);
+            break;
+        case "case_goth_complete":
+            gv.mod("money", 75);
+            missy.mod("mood", 20);
+            missy.caseComplete(9);
+            room200.chatcatch("case_complete_end");
             break;
         case "case_complete_end":
             if (g.gethourdecimal() < 10) {
@@ -752,6 +770,51 @@ room200.chat = function (chatID) {
                     "do you not get paid, but a punishment is in order. And I have to fix your fuck up. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am. ", callback: "case_trash_badend" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "missy",
+                text: "Meet Bill. Bill is an idiot. ",
+                button: [
+                    { chatID: 47, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "!bill",
+                text: "Hey! ",
+                button: [
+                    { chatID: 48, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "missy",
+                text: "Shut up Bill. Bill needs an escort to the train station this afternoon " +
+                    "since she can't seem to get there on her own. Don't take her to the forest, " +
+                    "and don't go anywhere stupid. Just watch her dumb ass, and an hour before the " +
+                    "train escort her to the train station. Got it! ",
+                button: [
+                    { chatID: 49, text: "Yeah. I've got it. Babysitter duty ma'am. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "missy",
+                text: "Yes, babysitter duty. Bill do what " + sc.n("me") + " tells you. Now " +
+                    "both of you get. I've got work to do. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am. ", callback: "case_goth_0" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "missy",
+                text: "I'm glad to see you can conduct simple babysitting. I suppose you earned " +
+                    "your $75. ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am. ", callback: "case_goth_complete" },
                 ]
             },
         ];

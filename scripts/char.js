@@ -19,7 +19,6 @@ $(document).ready(function () {
     $('#room-buttons').on('click', '.rom-event', function () {
         var name = $(this).data('name');
         var roomID = parseInt($(this).data('room'));
-        var func = g.room(roomID) + ".click";
         window[g.room(roomID)]["btnclick"](name);
     });
 
@@ -526,10 +525,9 @@ char.newdayfake = function () {
     nav.buildclock();
     cl.hairgrowth();
     gv.set("energy", 10);
-    gv.set("jobConstWorkToday", 0);
     gv.mod('hormone', -2);
     cl.energydisplay();
-    gv.set("arousal", 0);
+    gv.mod("arousal", 20);
     cl.cockDisplay();
 };
 

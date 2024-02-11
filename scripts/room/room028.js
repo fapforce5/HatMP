@@ -1,6 +1,8 @@
 ﻿//Modification
 //hormone level: 75!!
 //sissy transform: 95!!
+
+//add false transformations - like got an inch shorter / feet shrunk / skin smoother / hair more radiant, hair is finer
 var room28 = {};
 room28.main = function () {
     var pjRoom = [7, 10]
@@ -215,6 +217,19 @@ room28.main = function () {
             g.pass = "endSleepyTime";
             char.room(returnRoomID);
         }, 1000);
+    }
+
+    for (i = 0; i < future.st.length; i++) {
+        future.st[i].daysleft--;
+        if (future.st[i].daysleft === 0) {
+            switch (future.st[i].name) {
+                case "janicevacation":
+                    sc.completeMission("dog", "vacation", true);
+                    sc.startMission("janice", "bitch");
+                    break;
+            }
+            future.st.splice(i, 1);
+        }
     }
 };
 

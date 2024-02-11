@@ -115,12 +115,15 @@ room401.main = function () {
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
             var priceMult = 1;
             var spankyInv = ["e", "g"];
-            if (sc.getEvent("spanky", 3) || g.sissy[51].ach)
-                spankyInv.push("h");
-            if (sc.getEvent("spanky", -1))
+            //if (sc.getEvent("spanky", 3) || g.sissy[51].ach)
+            //    spankyInv.push("h");
+            if (sc.getMission("envy", "hypno").inProgress)
                 spankyInv.push("y");
-            if (gv.get("spankyprices")) {
+            if (sc.getMissionTask("spanky", "hypno", 2).success) {
                 priceMult = 3;
+            }
+            else if (sc.getMissionTask("spanky", "hypno", 1).success) {
+                priceMult = .5;
             }
             room401.makeInv(spankyInv, true, priceMult);
             navList = [404, 0];
@@ -382,33 +385,33 @@ room401.makeInv = function (typeArray, canbuy, priceMult) {
                 if (inv.master[i].name === "razor") {
                     if (sissy.st[1].ach) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv" title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
                 else if (inv.master[i].name === "lube") {
                     if (sissy.st[2].ach) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
-                        $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
+                        $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
                 else if (!canbuy) {
                     $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
                     $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
-                    $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
+                    $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                 }
                 else {
                     $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
-                    $('#menu-bg_' + g.internal).append('<div>$' + (inv.master[i].cost * priceMult) + '</div>');
+                    $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                 }
                 g.internal++;
             }

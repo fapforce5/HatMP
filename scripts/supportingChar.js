@@ -10,7 +10,7 @@ sc.char = [
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
-    { name: "dog", display: "Cooper, the mythical deamon", image: "dog.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
+    { name: "dog", display: "Cooper the Mythical Demon", image: "dog.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
     { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
@@ -296,6 +296,12 @@ sc.charMission = [
             {
                 missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
             },
+            {
+                missionName: "bitch", mStatus: 1, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
+                    [
+                        { id: 0, txt: "Back from vacation", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
         ]
     },
     {
@@ -303,7 +309,64 @@ sc.charMission = [
             {
                 missionName: "vacation", mStatus: 0, title: "Doggy sit", desc: "Take care of him while I'm gone.", task:
                     [
-                        { id: 0, txt: "Feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Day 1 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Day 2 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 2, txt: "Day 3 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 3, txt: "Day 4 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 4, txt: "Day 5 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 5, txt: "Day 6 feed him", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "envy", mission: [
+            {
+                missionName: "meet", mStatus: 0, title: "Get to know her", desc: "Getting to know the odd unshaven girl", task:
+                    [
+                        { id: 0, txt: "Introduce yourself. ", show: true, mStatus: 0, roomId: 300 },
+                        { id: 1, txt: "Lost at a board game. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Bring Pizza! ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Just friends. ", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Turning a girl into a slut.", task:
+                    [
+                        { id: 0, txt: "Hypno 1: Touch myself", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "Hypno 2: Makeup ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Hypno 3: Dresses are pretty", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Hypno 4: Blonde have more fun", show: true, mStatus: 0, roomId: 301 },
+                        { id: 4, txt: "Hypno 5: Dumb is sexy", show: true, mStatus: 0, roomId: 301 },
+                        { id: 5, txt: "Hypno 6: Tits. Bigger is Better", show: true, mStatus: 0, roomId: 301 },
+                        { id: 6, txt: "Break that Hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 7, txt: "Hypno 7", show: true, mStatus: 0, roomId: 301 },
+                        { id: 8, txt: "Double team! Leave your cage at home.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 9, txt: "Broken.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 10, txt: "Cum dump", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "gf", mStatus: 0, title: "Girlfriend", desc: "Emotional Connection. ", task:
+                    [
+                        { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "Go Away!", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Forgivness comes slowly.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
+                        { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 5, txt: "See how her pussy is doing. ", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "spanky", mission: [
+            {
+                missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Make her a slut", task:
+                    [
+                        { id: 0, txt: "Purchase Hypno Takes. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "I love you man! 1/2 prices! ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "I hate you! Triple the prices! ", show: true, mStatus: 0, roomId: 301 },
                     ]
             },
         ]
@@ -421,11 +484,25 @@ sc.levels = function (name, level) {
                 { step: 2, txt: "Will let you pet him. ", m: [16] },
                 { step: 3, txt: "Will play catch", m: [16] },
                 { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
-                { step: 5, txt: "Won't let you wear clothes in the house. ", m: [16] },
-                { step: 6, txt: "Might make you his bitch", m: [16] },
-                { step: 7, txt: "More likely to make you his bitch ", m: [16] },
-                { step: 8, txt: "You're his bitch", m: [16] },
-                { step: 8, txt: "You're his bitch", m: [16] },
+                { step: 5, txt: "More aggressive. ", m: [16] },
+                { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
+                { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
+                { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
+                { step: 9, txt: "You're so his bitch", m: [16] },
+            ];
+            break;
+        case "envy":
+            tempLevel = [
+                { step: 0, txt: "Meet", m: [316] },
+                { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
+                { step: 2, txt: "Will let you pet him. ", m: [16] },
+                { step: 3, txt: "Will play catch", m: [16] },
+                { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
+                { step: 5, txt: "More aggressive. ", m: [16] },
+                { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
+                { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
+                { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
+                { step: 9, txt: "You're so his bitch", m: [16] },
             ];
             break;
         default:
@@ -445,16 +522,18 @@ sc.getLevel = function (name) {
 };
 
 sc.modLevel = function (name, amount, targetLevel) {
-    var actualAmount;
+    var actualAmount = 0;
     var i, j;
     sc.getch
     i = sc.i(name);
     if (amount > 0) {
         if (sc.char[i].l <= targetLevel)
             actualAmount = amount;
-        else {
+        else if (sc.char[i].l <= targetLevel + 1)
+            actualAmount = Math.floor(amount / 3) + 1;
+        else if (sc.char[i].l <= targetLevel + 2)
             actualAmount = 1; //fix this later
-        }
+        
 
         var additionalLevels = Math.floor(actualAmount / 100);
         var addedLevels = 0;
@@ -642,15 +721,12 @@ sc.getSecret = function (name) {
     }
 };
 
-
-
-
-
 sc.getstep = function (name) {
     console.log("error");
 };
 
 sc.setstep = function (name, step) {
+    alert(name + step);
     console.log("error");
 };
 
@@ -1393,6 +1469,10 @@ sc.trivial = function (charname) {
         case "!plumber":
             name = "Plumber";
             image = "plumber.png";
+            break;
+        case "!bill":
+            name = "Bill";
+            image = "bill.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
