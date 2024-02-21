@@ -58,6 +58,8 @@ cl.init = function () {
         { type: "panties", name: "m", display: "Frilly Panties", img: "panties_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
         //{ type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "cl", display: "Spankies", img: "panties_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "bi", display: "Bimbo's Panties", img: "panties_bimbo.png", sex: "f", inv: false, daring: 3, price: -1 },
+
         //{ type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
         //{ type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "b", display: "Black Lowrise Panties", img: "panties_blackLowrise.png", sex: "f", inv: false, daring: 3, price: 50 },
@@ -1526,6 +1528,13 @@ cl.panties = [
     { name: "cl", leg: 2, pussy: "panty_cl_1_v.png", cock: "panty_cl_1_c.png", back: "panty_cl_2_back.png" },
     { name: "cl", leg: 1, pussy: "panty_cl_1_v.png", cock: "panty_cl_1_c.png", back: "panty_cl_0_back.png" },
     { name: "cl", leg: 0, pussy: "panty_cl_0_v.png", cock: "panty_cl_0_c.png", back: "panty_cl_0_back.png" },
+
+    { name: "bi", leg: 5, pussy: "panty_b_5.png", cock: "panty_b_5.png", back: "panty_bi_5_back.png" },
+    { name: "bi", leg: 4, pussy: "panty_b_4.png", cock: "panty_b_4.png", back: "panty_bi_4_back.png" },
+    { name: "bi", leg: 3, pussy: "panty_b_3.png", cock: "panty_b_3.png", back: "panty_bi_3_back.png" },
+    { name: "bi", leg: 2, pussy: "panty_b_0.png", cock: "panty_b_0.png", back: "panty_bi_2_back.png" },
+    { name: "bi", leg: 1, pussy: "panty_b_0.png", cock: "panty_b_0.png", back: "panty_bi_0_back.png" },
+    { name: "bi", leg: 0, pussy: "panty_b_0.png", cock: "panty_b_0.png", back: "panty_bi_0_back.png" },
 ];
 
 cl.pjTop = [

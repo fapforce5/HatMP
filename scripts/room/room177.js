@@ -34,16 +34,7 @@ room177.chatcatch = function (callback) {
             nav.bg("177_chastity/" + callback + ".jpg");
             break;
         case "chastity8":
-            nav.bg("177_chastity/" + callback + ".jpg");
-            nav.button({
-                "type": "img",
-                "name": "chastity8",
-                "left": 420,
-                "top": 0,
-                "width": 1500,
-                "height": 1080,
-                "image": "177_chastity/chastity8.gif"
-            }, 177);
+            nav.bg("177_chastity/" + callback + ".gif");
             g.roomTimeout = setTimeout(function () {
                 chat(21, 177);
             }

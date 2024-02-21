@@ -188,24 +188,24 @@ room76.chatcatch = function (callback) {
             nav.room(0);
             break;
         case "ass1":
-            nav.bg("76_bimboRoom/a2.gif");
+            nav.bg("76_bimboRoom/a2.jpg");
             break;
         case "ass2":
             gv.mod("giveAnalFemale", 1);
             cl.doCum(false);
             nav.killall();
-            nav.bg("76_bimboRoom/laying3.jpg");
+            //nav.bg("76_bimboRoom/laying3.jpg");
             nav.buildnav([77, 0]);
             break;
         case "pussy1":
             nav.bg("76_bimboRoom/p1.gif");
             break;
         case "pussy2":
-            nav.bg("76_bimboRoom/p2.gif");
+            nav.bg("76_bimboRoom/p2.jpg");
             break;
         case "pussy3":
             gv.mod("fuckPussy", 1);
-            nav.bg("76_bimboRoom/p2.jpg");
+            nav.bg("76_bimboRoom/p3.jpg");
             cl.doCum(false);
             nav.buildnav([77, 0]);
             break;
@@ -298,8 +298,8 @@ room76.chat = function (chatID) {
         },
         {
             chatID: 10,
-            speaker: "bimbo",
-            text: "zzZZZz zzZZZzzz",
+            speaker: "thinking",
+            text: "She's going to be farting my cum all night.",
             button: [
                 { chatID: -1, text: "...", callback: "ass2" }
             ]
@@ -309,7 +309,7 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "zzZZZz zzZZZzzz",
             button: [
-                { chatID: 12, text: "[Stick it in]", callback: "pussy1" }
+                { chatID: 12, text: "She's going to be so tight laying like that. I have to be careful.", callback: "pussy1" }
             ]
         },
         {
@@ -317,13 +317,13 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "zzZZZz zzZZZzzz",
             button: [
-                { chatID: 13, text: "[Cum all over her]", callback: "pussy2" }
+                { chatID: 13, text: "So tight. I'm going to blow my load!", callback: "pussy2" }
             ]
         },
         {
             chatID: 13,
-            speaker: "bimbo",
-            text: "zzZZZz zzZZZzzz",
+            speaker: "thinking",
+            text: "I wonder if she'll notice the globs of cum on her ass in the morning.",
             button: [
                 { chatID: -1, text: "[finish]", callback: "pussy3" }
             ]

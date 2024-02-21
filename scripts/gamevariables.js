@@ -326,13 +326,13 @@ gv.init = function () {
         { id: 1, pID: [0], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "A smooth sissy is a sexy sissy.", ach: false, active: true, room: 180 },
         { id: 2, pID: [0], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
 
-        { id: 3, pID: [3], icon: "fem102", x: 0, y: 2, name: "Feminization 102", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
-        { id: 4, pID: [3], icon: "anal102", x: 3, y: 2, name: "Anal 102", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
-        { id: 5, pID: [3], icon: "chastity101", x: 6, y: 2, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
-        { id: 6, pID: [3], icon: "pee101", x: 2, y: 2, name: "Pee 101", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
-        { id: 7, pID: [3], icon: "oral101", x: 5, y: 2, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true, room: 176 },
-        { id: 8, pID: [3], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
-        { id: 9, pID: [3], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
+        { id: 3, pID: [19], icon: "fem102", x: 0, y: 2, name: "Feminization 102", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
+        { id: 4, pID: [19], icon: "anal102", x: 3, y: 2, name: "Anal 102", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
+        { id: 5, pID: [19], icon: "chastity101", x: 6, y: 2, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
+        { id: 6, pID: [19], icon: "pee101", x: 2, y: 2, name: "Pee 101", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
+        { id: 7, pID: [19], icon: "oral101", x: 5, y: 2, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true, room: 176 },
+        { id: 8, pID: [19], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
+        { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
 
         { id: 10, pID: [3, 4, 5, 6, 7, 8, 9], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
 

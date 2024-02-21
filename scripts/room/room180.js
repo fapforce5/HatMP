@@ -13,6 +13,10 @@ room180.main = function () {
             nav.bg("180_ballroom/pee0.jpg");
             chat(30, 180);
             break;
+        case "fem103":
+            nav.bg("180_ballroom/fem103_0.jpg");
+            chat(52, 180);
+            break;
     }
     //var btnList = [
     //    {
@@ -337,7 +341,7 @@ room180.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "martha",
-            text: "Gentlemen, I shall now explain how a lady sits in a chair. " + sc.n("me") + ", would you please assist me? " +
+            text: "Ladies, I shall now explain how a lady sits in a chair. " + sc.n("me") + ", would you please assist me? " +
                 "Please cross your legs so that your penis is not on display. Place your hands away from your knees. " +
                 "Sit up straight and tall, with your shoulders back and your head held high. Relax your facial muscles and " +
                 "smile pleasantly. A lady's smile is one of her most attractive features. It is a sign of warmth, kindness, " +
@@ -561,6 +565,34 @@ room180.chat = function (chatID) {
                 "you will find that the dribble of a stream will be quite difficult while standing. Adieu",
             button: [
                 { chatID: -1, text: "[Pull up your panties and leave]", callback: "peeend" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "missy",
+            text: "Ok sissy trainees, before you play the part, you have to dress for the part. " +
+                "Since we're so amazing we're going to issue you your first set of clothing. ",
+            button: [
+                { chatID: 53, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "martha",
+            text: "I've carefully selected this outfit to guarantee it meets our standards for " +
+                "both suitability and style. In the past, individual choices occasionally resulted " +
+                "in attire that wasn't quite lady like. It was like walking into a cheap brothal. ",
+            button: [
+                { chatID: 54, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "martha",
+            text: "Ladies, it is now time for each of you to don your newly acquired uniforms. " +
+                "Let us proceed forthwith to ensure that your attire meets the required standards.",
+            button: [
+                { chatID: 55, text: "...", callback: "" },
             ]
         },
     ];

@@ -541,7 +541,7 @@ room176.chat = function (chatID) {
             text: "He totally blackmailed me into sucking his dick. Came on face face and left. He totally used me like some " +
                 "kind of whore. Fuck I hate him. I'm not his whore. ",
             button: [
-                { chatID: -1, text: "Yes sir. ", callback: "oralEnd" },
+                { chatID: -1, text: "...", callback: "oralEnd" },
             ]
         },
     ];
