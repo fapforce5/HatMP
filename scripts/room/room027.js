@@ -232,7 +232,7 @@ room27.chatcatch = function (callback) {
                     "top": top,
                     "width": 80,
                     "height": 80,
-                    "image": "../mainChar/icons/" + c.ps[i].image
+                    "image": "8_wardrobe/icons/" + c.ps[i].image
                 }, 27);
                 nav.t({
                     type: "img",

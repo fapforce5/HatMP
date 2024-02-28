@@ -4,6 +4,7 @@ var room9999 = {};
 
 phone.build = function (selection) {
     phone.clear(true);
+    inv.close();
     var btnList = [
         { n: "phone_save", img: "bSave", x: 0, y: 0 },
         { n: "phone_rel", img: "bRelationships", x: 1, y: 0 },

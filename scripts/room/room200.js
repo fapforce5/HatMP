@@ -20,12 +20,17 @@ room200.btnclick = function (name) {
         case "missy":
             var activeCase = missy.get("activeCase");
             var activeCaseComplete = missy.get("activeCaseComplete");
-            console.log(activeCase, activeCaseComplete);
+            var missyUniform = missy.get("uniform");
+            //console.log(activeCase, activeCaseComplete);
             if (missy.get("totalDaysWorked") < 1)
                 chat(0, 200);
             else if (missy.get("totalDaysWorked") === 5 && missy.get("missyEventTracker") === 0) {
                 missy.set("missyEventTracker", 1);
                 chat(9, 200);
+            }
+            else if (missy.get("uniformNew") === 2) {
+                missy.set("uniformNew", 3);
+                chat(51, 200);
             }
             else if (activeCase > 3 && activeCaseComplete !== 0) {
                 switch (activeCase) {
@@ -61,7 +66,7 @@ room200.btnclick = function (name) {
                         break;
                 }
             }
-            else if (missy.get("uniform") > 0 && missy.get("uniformNew") === 0) {
+            else if (missyUniform > 0 && missy.get("uniformNew") === 0) {
                 missy.set("uniformNew", 1);
                 if (missy.get("uniform") === 1) {
                     chat(21, 200);
@@ -69,6 +74,9 @@ room200.btnclick = function (name) {
             }
             else if (missy.get("chastity") > 0 && cl.c.chastity === null) {
                 chat(23, 200);
+            }
+            else if (missyUniform === 2 && sissy.get("fem103").ach) {
+                char.room(223);
             }
             else
                 room200.chatcatch("selectJob");
@@ -291,7 +299,10 @@ room200.chatcatch = function (callback) {
         case "chastity0":
             nav.killall();
             if (gv.get("arousal") > 50) {
-                nav.bg("205_chastity/chast0_1.jpg");
+                if (missy.get("uniform") > 2)
+                    nav.bg("205_chastity/chast0_1_r.jpg");
+                else
+                    nav.bg("205_chastity/chast0_1.jpg");
                 chat(25, 200);
             }
             else {
@@ -300,15 +311,23 @@ room200.chatcatch = function (callback) {
             }
             break;
         case "chastity1":
-            nav.bg("205_chastity/punch.jpg");
+            if (missy.get("uniform") > 2)
+                nav.bg("205_chastity/punch_r.jpg");
+            else
+                nav.bg("205_chastity/punch.jpg");
             break;
         case "chastity2":
-            nav.bg("205_chastity/soft.jpg");
+            if (missy.get("uniform") > 2)
+                nav.bg("205_chastity/soft_r.jpg");
+            else
+                nav.bg("205_chastity/soft.jpg");
             break;
         case "chastity3":
             cl.c.chastity = gv.get("castitycage");
             if (cl.c.chastity === "cage")
                 nav.bg("205_chastity/chast0_6.jpg");
+            else if (missy.get("uniform") > 2)
+                nav.bg("205_chastity/pink_r.jpg");
             else
                 nav.bg("205_chastity/pink.jpg");
             break;
@@ -317,6 +336,9 @@ room200.chatcatch = function (callback) {
             break;
         case "case_usb":
             chat(26, 200);
+            break;
+        case "missyBtnClick":
+            room200.btnclick("missy");
             break;
     };
 };
@@ -815,6 +837,49 @@ room200.chat = function (chatID) {
                     "your $75. ",
                 button: [
                     { chatID: -1, text: "Thank you ma'am. ", callback: "case_goth_complete" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "missy",
+                text: "I'll have to compliment " + sc.n("tiffany") + " next time I see her. That " +
+                    "is such a great look for you. Now that your outsides are starting to match " +
+                    "your insides expect a great deal of change. Change in how people look " +
+                    "at you, how they treat you, and how they can't keep their secret desires " +
+                    "secret. ",
+                button: [
+                    { chatID: 52, text: "ma'am? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "missy",
+                text: "Your entire life up to this point has been stifled by your drab boring image " +
+                    "that you have presented to this world. As you find yourself and present your true " +
+                    "self you're going to find out what it's really like being a woman in this world. ",
+                button: [
+                    { chatID: 53, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "missy",
+                text: "Were once you could walk down the street and be ignored by everyone around, now " +
+                    "you're going to be inundated with cat calls, compliments, and threats. Before " +
+                    "you didn't have to worry about anything, now you'll need to wonder if that man " +
+                    "walking behind you is going to rob, rape, or kill you. ",
+                button: [
+                    { chatID: 54, text: "oh", callback: "" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "missy",
+                text: "Yes. I can't always be there to protect you, so you need to work on protecting " +
+                    "yourself. And don't let people get you down. Some may be down right rude and cruel. " +
+                    "Ignore those people and listen to those that truly love the real you. Now let's get to work. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am!", callback: "missyBtnClick" },
                 ]
             },
         ];

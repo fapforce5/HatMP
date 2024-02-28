@@ -49,7 +49,7 @@ room726.main = function () {
     }
     var navList = [0, 725];
     nav.buildnav(navList);
-    fame.event();
+    //fame.event();
 };
 
 room726.btnclick = function (name) {

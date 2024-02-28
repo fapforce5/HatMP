@@ -76,7 +76,7 @@ room425.chat = function (chatID) {
             chatID: 0,
             speaker: "cop2",
             text: "You're lucky you get your own cell... this time (for this release). You better behave yourself or you may get a cell mate. You're free to go." +
-            "You don't get to change, you gotta wear the uniform out, cause fuck you, that's why.",
+            "You don't get to change, you gotta wear the uniform out, 'cause fuck you, that's why.",
             button: [
                 { chatID: -1, text: "ok, I guess I'll go", callback: "leave" }
             ]

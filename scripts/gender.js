@@ -32,6 +32,9 @@ gender.pronoun = function (ptype) {
         case "m":
         case "f":
             return gender.isGirl() ? "f" : "m";
+        case "man":
+        case "lady":
+            return gender.isGirl() ? "lady" : "man";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

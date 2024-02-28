@@ -119,23 +119,23 @@ room300.main = function () {
                 "image": "300_apartment/stairs1.png"
             }
         ];
-        if (g.isNight()) {
-            btnList.push({
-                "type": "btn",
-                "name": "slut",
-                "left": 287,
-                "top": 431,
-                "width": 107,
-                "height": 388,
-                "image": "300_apartment/slut.png"
-            });
-        }
+        //if (g.isNight()) {
+        //    btnList.push({
+        //        "type": "btn",
+        //        "name": "slut",
+        //        "left": 287,
+        //        "top": 431,
+        //        "width": 107,
+        //        "height": 388,
+        //        "image": "300_apartment/slut.png"
+        //    });
+        //}
         
         $.each(btnList, function (i, v) {
             nav.button(v, 300);
         });
     }
-    var navListx = [315, 303, 0];
+    var navListx = [310, 314, 303, 0];
     nav.buildnav(navListx);
 };
 
@@ -242,7 +242,8 @@ room300.btnclick = function (name) {
             //}
             break;
         case "stairs":
-            chat(26, 300);
+            char.room(310);
+            //chat(26, 300);
             break;
         case "wait":
             var randEvent = true;

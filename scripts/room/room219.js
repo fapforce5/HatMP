@@ -86,6 +86,8 @@ room219.btnclick = function (name) {
             
             g.roomTimeout = setTimeout(function () {
                 nav.killall();
+                //if (missy.get("uniform") > 2)
+
                 nav.bg("219_dataEntry/hypnobg.jpg");
                 g.internal = cl.c.eyes;
                 cl.c.eyes = "hypno";
@@ -133,7 +135,10 @@ room219.chatcatch = function (callback) {
             room219.btnclick("makeScreen");
             break;
         case "widescreen":
-            nav.bg("219_dataEntry/bg.jpg");
+            if (missy.get("uniform") > 2)
+                nav.bg("219_dataEntry/bg_r.jpg");
+            else
+                nav.bg("219_dataEntry/bg.jpg");
             break;
         case "missyHate":
             missy.mod("mood", -10);
@@ -142,7 +147,10 @@ room219.chatcatch = function (callback) {
         case "snapout":
             nav.killall();
             gv.mod("arousal", 20);
-            nav.bg("219_dataEntry/complete.jpg");
+            if (missy.get("uniform") > 2)
+                nav.bg("219_dataEntry/bg_r.jpg");
+            else
+                nav.bg("219_dataEntry/complete.jpg");
             break;
         case "snapoutHypno":
             nav.killall();
@@ -246,7 +254,7 @@ room219.chat = function (chatID) {
             ]
         },
         {
-            chatID: 7,
+            chatID: 9,
             speaker: "cecilia",
             text: "Hey, you're kinda zoned out. Take a break it's lunch time! ",
             button: [

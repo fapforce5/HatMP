@@ -50,20 +50,21 @@ room303.main = function () {
             "image": "303_secondFloor/garbage.png"
         });
     }
-    var navList = [300, 315, 0];
+    var navList = [300, 310, 314, 0];
     $.each(btnList, function (i, v) {
         nav.button(v, 303);
     });
     nav.buildnav(navList);
 
-    fame.event();
+    //fame.event();
     
 };
 
 room303.btnclick = function (name) {
     switch (name) {
         case "stairs":
-            chat(4, 303);
+            char.room(300);
+            //chat(4, 303);
             break;
         case "pizza":
             nav.kill();

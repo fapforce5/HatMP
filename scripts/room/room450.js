@@ -118,8 +118,8 @@ room450.main = function () {
     });
 
     nav.buildnav(navList);
-    if (doEvent)
-        fame.event();
+    //if (doEvent)
+    //    fame.event();
 };
 
 room450.btnclick = function (name) {

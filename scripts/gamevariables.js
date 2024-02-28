@@ -347,12 +347,12 @@ gv.init = function () {
 
         { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true },
 
-        { id: 19, pID: [1, 2], icon: "fem103", x: 7, y: 1, name: "Fem 102", description: "Given your first set of sissy clothes.", ach: false, active: true },
+        { id: 19, pID: [1, 2], icon: "fem103", x: 7, y: 1, name: "Fem 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
 
     ];
 
     stats.st = [
-        { id: 0, t: "cum", n: "swollow", c: 0 },
+        { id: 0, t: "cum", n: "swallow", c: 0 },
         { id: 1, t: "cum", n: "spit", c: 0 },
         { id: 2, t: "cum", n: "creamPied", c: 0 },
         { id: 3, t: "cum", n: "eat", c: 0 },
@@ -643,10 +643,10 @@ levels.desc = function (name, level) {
                 { id: 2, txt: "Can cross dress at home and Missy's" },
                 { id: 3, txt: "Can work cases crossdressing" },
                 { id: 4, txt: "Only wear panties and bra" },
-                { id: 5, txt: "Can modestly cross dress in public " },
-                { id: 6, txt: "Can wear sexy outfits" },
-                { id: 7, txt: "Don't have to wear panties and bra" },
-                { id: 8, txt: "Can wear slutty clothing" },
+                { id: 5, txt: "Can buy girly clothes" },
+                { id: 6, txt: "Can go out in girl clothes" },
+                { id: 7, txt: "Can buy slutty clothing" },
+                { id: 8, txt: "Don't have to wear panties and bra" }, 
                 { id: 9, txt: "Wear what ever, or nothing at all" }
             ];
             break;
@@ -782,10 +782,15 @@ levels.desc = function (name, level) {
     }
 };
 
-levels.oralGive = function (size, swallow, isDildo) {
-    levels.mod("oral", 25, 999);
+levels.oralGive = function (size, swallow, isDildo, gender = null) {
+    //levels.mod("oral", 25, 999);
+    levels.oral(size);
     if (swallow) {
         levels.mod("cum", 25, 999);
+        stats.mod("cum", "swallow", 1);
+    }
+    if (gender !== null) {
+        sex.mod("oral", true, gender, 1);
     }
     else {
         cl.c.cumface = true;

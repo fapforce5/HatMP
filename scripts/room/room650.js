@@ -70,6 +70,9 @@ room650.btnclick = function (name) {
                     chat(2, 650);
                 }
             }
+            else if (activeCase === 10) {
+                chat(8, 650);
+            }
             else if (sc.taskGetStep("envy", "gf") === 3) {
                 chat(67, 650);
             }
@@ -171,15 +174,16 @@ room650.chatcatch = function (callback) {
             nav.button({
                 "type": "img",
                 "name": "tiffany",
-                "left": 538,
-                "top": 51,
-                "width": 460,
-                "height": 1029,
+                "left": 613,
+                "top": 216,
+                "width": 422,
+                "height": 864,
                 "image": "650_toyStore/650_tiffanyTiffy.png"
             }, 650);
             break;
         case "tifLeave":
-            sc.revokeStep("tiffany", -8);
+            missy.set("activeCaseComplete", 1);
+            missy.caseComplete(10);
             nav.killbutton("tiffany");
             inv.add("tifgift");
             break;
@@ -444,9 +448,7 @@ room650.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "tiffany",
-            text: "I'm so sorry " + sc.n("me") + ", I feel so bad for yelling at you like I did, then telling " +
-                sc.n("missy") + ". I was so mad at that crazy cum animal then I took it out on you. I feel so bad I got you in trouble with " +
-                sc.n("missy") + " that I'll give you this package for free. I hope you forgive me.",
+            text: "Hey cutie! Missy asked me to get you a present. ",
             button: [
                 { chatID: 9, text: "Oh thanks.. what is it?", callback: "tifGift" }
             ]
@@ -454,8 +456,8 @@ room650.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "I promised " + sc.n("missy") + " I wouldn't tell you, she said you can open it when you get home. Oh " +
-                "and I didn't mind that you were peaking on me, I find it really sexy, I love being watched. Want to see something?",
+            text: "I promised Missy I wouldn't tell you, she said you can open it when you get home. " +
+                "I also have another gift from me. Want to see it?",
             button: [
                 { chatID: 10, text: "Sure", callback: "tifTitty" }
             ]
@@ -463,7 +465,7 @@ room650.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "tiffany",
-            text: "Hopefully that starts to make it up to you! And anytime you want to peek on me, feel free, you can even " +
+            text: "Hopefully you like my gift of titties! And anytime you want to peek on me, feel free, you can even " +
                 "touch yourself if you want.",
             button: [
                 { chatID: 11, text: "Oh yes", callback: "" }
@@ -532,7 +534,7 @@ room650.chat = function (chatID) {
             speaker: "charlie",
             text: "You're so tight I'm gunna blow! ",
             button: [
-                { chatID: -1, text: "[Swollow]", callback: "c3" },
+                { chatID: -1, text: "[Swallow]", callback: "c3" },
                 { chatID: -1, text: "[Have him cum on your face]", callback: "c4" }
             ]
         },

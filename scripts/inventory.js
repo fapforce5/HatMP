@@ -204,6 +204,7 @@ inv.phone = "phoneBasic";
 
 $(document).ready(function () {
     $('#room-inv').click(function () {
+        phone.clear(true);
         inv.page = 0;
         inv.display();
     });

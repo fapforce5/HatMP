@@ -65,6 +65,12 @@ room180.chatcatch = function (callback) {
         case "pee3":
         case "pee4":
         case "pee5":
+        case "fem103_2":
+        case "fem103_3":
+            nav.bg("180_ballroom/" + callback + ".jpg");
+            break;
+        case "fem103_0":
+            nav.kill();
             nav.bg("180_ballroom/" + callback + ".jpg");
             break;
         case "charisma":
@@ -77,7 +83,7 @@ room180.chatcatch = function (callback) {
             sissy.passclass(true);
             break;
         case "femend":
-            levels.mod("xdress", 100, 2);
+            levels.mod("xdress", 50, 2);
             sissy.passclass(true);
             break;
         case "pee1":
@@ -96,6 +102,31 @@ room180.chatcatch = function (callback) {
             break;
         case "peeend":
             levels.mod("pee", 100, 2);
+            sissy.passclass(true);
+            break;
+        case "fem103_1":
+            cl.nude();
+            cl.c.panties = cl.cTemp.panties;
+            cl.c.bra = "p";
+            cl.c.pants = "ss";
+            cl.c.socks = "ss";
+            cl.c.shoes = "ss";
+            cl.display();
+            nav.bg("180_ballroom/fem103_1.jpg");
+            zcl.displayMain(100, 800, .25, "clothes", true)
+            break;
+        case "fem103_end":
+            cl.add("bra", "p");
+            cl.add("pants", "ss");
+            cl.add("shirt", "ss");
+            cl.add("socks", "ss");
+            cl.add("shoes", "ss");
+            cl.c.pants = "ss";
+            cl.c.shirt = "ss";
+            cl.c.socks = "ss";
+            cl.c.shoes = "ss";
+            cl.display();
+            levels.mod("xdress", 50, 999);
             sissy.passclass(true);
             break;
         default:
@@ -593,6 +624,106 @@ room180.chat = function (chatID) {
                 "Let us proceed forthwith to ensure that your attire meets the required standards.",
             button: [
                 { chatID: 55, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "missy",
+            text: "Everyone stip out of those disgusting clothes and put on your new pretty " +
+                "uniforms. Now! And keep yourp panties on! We don't need your nasty cum drool " +
+                "all over the chairs and floors. ",
+            button: [
+                { chatID: 63, text: "...", callback: "fem103_3" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "ralph",
+            text: "This is so awesome! I love these uniforms, but I do wish they were more purple. " +
+                "I'm so psyched that I get to wear pretty clothes around so many others. ",
+            button: [
+                { chatID: 57, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "me",
+            text: "I know right! I love how soft and breezy it is. I feel like I've lost the " +
+                "weight of my normal clothing and now I'm just floating. It's nice to be around " +
+                "others going through the same thing at the same time. I'm really glad I came here, " +
+                "even if " + sc.n("p") + " seems like she's going to be a bit crazy. ",
+            button: [
+                { chatID: 58, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "ralph",
+            text: "But she's so hot! She can lube me anyday. I'm more afraid of " + sc.n("black") + 
+                "! I hope she takes it easy on us. I don't even want to take her class. Who likes " +
+                "all that rough stuff? I want a girl to be nice and gentle with me. ",
+            button: [
+                { chatID: 59, text: "Totally", callback: "" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "ralph",
+            text: "I saw the upcoming classes. I'm so looking forward to the high heel class! " +
+                "I trip so much when I try to wear them at home. Everytime I fall my two moms yells " +
+                "yell at me wondering what I'm doing in my room. They think I'm the clumsiest person " +
+                "in the world.",
+            button: [
+                { chatID: 60, text: "Hahah, You are though!", callback: "fem103_2" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "missy",
+            text: "Ok sluts, Chat time is over. Line up, I have other shit to do today. ",
+            button: [
+                { chatID: 61, text: "...", callback: "fem103_0" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "missy",
+            text: "This is your uniform. You won't be admitted to class without it. I don't care " +
+                "were you change your clothes, you can do it at home, or in the lobby before class. " + 
+                "Also wash it. I know most of you get embarrased wearing your cute little uniforms " +
+                "in public, but don't be the stinky girl in class. ",
+            button: [
+                { chatID: 62, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "martha",
+            text: "Ladies, class has now concluded. As Missy mentioned, it's essential to maintain " +
+                "the pristine condition of your uniforms by keeping them clean and free of wrinkles. " +
+                "I eagerly anticipate our next class where we will refine not only your attire but " +
+                "also your demeanor. You are now free to go.",
+            button: [
+                { chatID: -1, text: "...", callback: "fem103_end" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "thinking",
+            text: "I think today just may be the best day of my life. These clothes are so girly " +
+                "and soft. I just feel so pretty putting them on! Boy's clothes are so boring and " +
+                "restrictive. These socks, bra, skirt, everything makes me feel so pretty! I really " +
+                "do feel like today is the first day of the rest of my life!",
+            button: [
+                { chatID: 64, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "ralph",
+            text: "Hey! " + sc.n("me") + ". Are you daydreaming? ",
+            button: [
+                { chatID: 56, text: "Huh? ", callback: "fem103_1" },
             ]
         },
     ];

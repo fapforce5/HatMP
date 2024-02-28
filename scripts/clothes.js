@@ -67,8 +67,8 @@ cl.init = function () {
         { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
         //{ type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
 
-        { type: "bra", name: "p", display: "Pink Bra", img: "bra_pink.png", sex: "f", inv: false, daring: 1, price: 40 },
-        { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "p", display: "Pink Bra", img: "bra_pink.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: 20 },
         { type: "bra", name: "j", display: "Janice's Bra", img: "bra_janice.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "l", display: "Frilly Bra", img: "bra_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "molly", display: "Molly's Bra", img: "bra_molly.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -437,7 +437,6 @@ cl.load = function (ra) {
 
 };
 
-
 cl.where = function (type, name) {
     var retList = null;
     for (var i = 0; i < cl.list.length; i++) {
@@ -503,7 +502,7 @@ cl.gimmieAll = function () {
 
 cl.hasoutfit = function (ctype) {
     var missingClothing = new Array();
-    
+    var sissyLevel = levels.get("xdress").l;
     switch (ctype) {
         case "workout":
                 if (!(cl.c.shoes === "pr" || cl.c.shoes === "br" || cl.c.shoes === "cl"))
@@ -514,7 +513,7 @@ cl.hasoutfit = function (ctype) {
                     missingClothing.push("shorts");
             break;
         case "public":
-            if (!g.sissy[34].ach) {
+            if (sissyLevel < 10) {
                 if (cl.c.swimsuit === null) {
                     if (cl.c.shoes === null)
                         missingClothing.push("shoes");
@@ -524,9 +523,9 @@ cl.hasoutfit = function (ctype) {
                         if (cl.c.pants === null)
                             missingClothing.push("pants");
                     }
-                    if (cl.c.panties === null && !g.sissy[32].ach)
+                    if (cl.c.panties === null && sissyLevel < 8)
                         missingClothing.push("panties");
-                    if (cl.c.bra === null && !g.sissy[32].ach && g.sissy[29].ach)
+                    if (cl.c.bra === null && sissyLevel > 5 && sissyLevel < 8)
                         missingClothing.push("bra");
                 }
             }
@@ -594,6 +593,31 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("Pretty panties")
             }
             break;
+        case "officegirl":
+            cl.add("shirt", "r");
+            cl.add("pants", "k");
+            cl.add("shoes", "fb")
+            if (cl.c.shirt !== "r")
+                missingClothing.push("Red Blouse");
+            if (cl.c.pants !== "k")
+                missingClothing.push("Black Pencil Skirt");
+            if (cl.c.shoes !== "fb")
+                missingClothing.push("Black flats");
+            if (cl.c.socks !== null) {
+                if (cl.getEntry("socks", cl.c.socks).sex === "m")
+                    missingClothing.push("Feminine Socks");
+            }
+            if (cl.c.panties === null)
+                missingClothing.push("Panties");
+            else {
+                if (cl.getEntry("panties", cl.c.panties).sex === "m")
+                    missingClothing.push("Pretty Panties");
+            }
+            if (cl.c.bra === null)
+                missingClothing.push("Bra");
+            if (cl.getBodyHair() !== null)
+                missingClothing.push("A shave you hairy beast");
+            break;
     }
    
     var retMissing = null;
@@ -609,7 +633,7 @@ cl.hasoutfit = function (ctype) {
         retMissing = retMissing + "and " + missingClothing[i];
     }
 
-    if (!g.sissy[29].ach) {
+    if (sissyLevel < 6 && ctype !== "officegirl") {
         if (cl.isCrossdressing())
             retMissing = ' <span class="hl">self aweness! I can\'t wear girly clothes!</span>';
     }

@@ -82,6 +82,8 @@ sc.char = [
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "tim", display: "Tim", image: "tim.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
+    { name: "dollmaker", display: "Doll maker", image: "dollmaker.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+
     { name: "poppy", display: "Poppy", image: "poppy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "orchid", display: "Orchid", image: "orchid.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "juniper", display: "Juniper", image: "juniper.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
@@ -1419,7 +1421,7 @@ sc.trivial = function (charname) {
             image = "missyguardday.png";
             break;
         case "!stoner":
-            name = "Stoner Guy";
+            name = "Stoney";
             image = "stoner.png";
             break;
         case "!cheezy":
@@ -1473,6 +1475,22 @@ sc.trivial = function (charname) {
         case "!bill":
             name = "Bill";
             image = "bill.png";
+            break;
+        case "!punk":
+            name = "Punk Rocker";
+            image = "punk.png";
+            break;
+        case "!m":
+            name = "Marilyn";
+            image = "m.png";
+            break;
+        case "!peeguy":
+            name = "Peeing Asshole";
+            image = "peeguy.png";
+            break;
+        case "!chem":
+            name = "Chemist";
+            image = "chem.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

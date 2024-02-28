@@ -318,15 +318,11 @@ room401.main = function () {
 
 room401.makeClothing = function (type, sex) {
     var i, lewdlevel, canbuy, inInv;
-
-    if (g.sissy[33].ach)
+    var sissyLevel = levels.get("xdress").l;
+    if (sissyLevel > 7)
         lewdlevel = [0, 1, 2, 3, 4];
-    else if (g.sissy[31].ach)
+    else if (sissyLevel > 5)
         lewdlevel = [0, 1, 2, 3];
-    else if (g.sissy[29].ach)
-        lewdlevel = [0, 1];
-    else if (type === "chastity" && sex === "m")
-        lewdlevel = [0, 1, 2];
     else
         lewdlevel = [0];
 

@@ -31,7 +31,7 @@ room900.main = function () {
 
         var navList = [0];
         nav.buildnav(navList);
-        fame.event();
+        //fame.event();
     }
 };
 

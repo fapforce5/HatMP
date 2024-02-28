@@ -19,14 +19,14 @@ room910.main = function () {
             {
                 "type": "btn",
                 "name": "lady",
-                "left": 775,
-                "top": 155,
-                "width": 400,
-                "height": 463,
-                "image": "910_gov/lady.jpg"
+                "left": 991,
+                "top": 350,
+                "width": 158,
+                "height": 267,
+                "image": "910_gov/lady.png"
             }
         ];
-        var navList = [0];
+        var navList = [911, 0];
         $.each(btnList, function (i, v) {
             nav.button(v, 910);
         });

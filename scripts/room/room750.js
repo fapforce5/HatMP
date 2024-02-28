@@ -47,9 +47,9 @@ room750.main = function () {
     }, 750);
     var navList = [751, 752, 0];
     nav.buildnav(navList);
-    if (g.isNight()) {
-        fame.event();
-    }
+    //if (g.isNight()) {
+    //    fame.event();
+    //}
 };
 
 room750.btnclick = function (name) {

@@ -79,9 +79,9 @@ room203.chatcatch = function (callback) {
             break;
         case "displaySelf":
             nav.bg("203_entrance/inspect.jpg");
+            zcl.displayMain(180, 800, .09, "clothes", false);
             var myUniform = missy.get("uniform");
             if (myUniform === 0) { //suit
-                zcl.displayMain(180, 800, .09, "clothes", false);
                 if (cl.hasoutfit("suit") === null) {
                     if (cl.list[cl.where("panties", cl.c.panties)].sex === "f") {
                         chat(18, 203);
@@ -111,13 +111,11 @@ room203.chatcatch = function (callback) {
             else if (myUniform === 1) {
                 if (cl.hasoutfit("suitwithpanties") === null) {
                     if (missy.get("uniformNew") === 0) {
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         chat(22, 203);
                     }
                     else {
                         levels.mod("xdress", 5, 3);
                         cl.c.pants = null;
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         cl.c.pants = "s";
                         chat(23, 203);
                     }
@@ -132,14 +130,12 @@ room203.chatcatch = function (callback) {
                     if (cl.getBodyHair() === null) {
                         levels.mod("xdress", 5, 3);
                         cl.c.pants = null;
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         cl.c.pants = "s";
                         chat(23, 203);
                     }
                     else {
                         var tempshirt = cl.c.shirt;
                         cl.c.shirt = null;
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         cl.c.shirt = tempshirt;
                         chat(25, 203);
                     }
@@ -147,6 +143,21 @@ room203.chatcatch = function (callback) {
                 else {
                     levels.mod("int", -10, 999);
                     chat(24, 203);
+                }
+            }
+            else if (myUniform === 3) {
+                g.internal = cl.hasoutfit("officegirl");
+                if (g.internal === null) {
+                    levels.mod("xdress", 5, 5);
+                    if (missy.get("uniformNew") === 2) {
+                        chat(27, 203);
+                    }
+                    else {
+                        chat(26, 203);
+                    }
+                }
+                else {
+                    chat(600, 203);
                 }
             }
             break;
@@ -200,6 +211,9 @@ room203.chatcatch = function (callback) {
             zcl.displayMain(180, 800, .09, "clothes", false);
             cl.c.pants = "s";
             break;
+        case "bathroom":
+            char.room(201);
+            break;
     }
 };
 
@@ -248,6 +262,14 @@ room203.chat = function (chatID) {
                 { chatID: -1, text: "[Get into position]", callback: "displaySelf" },
                 { chatID: -1, text: "I'm not sure why I'm here. ", callback: "leave" },
             ]
+        };
+    }
+    else if (chatID === 600) {
+        return {
+            chatID: 998,
+            speaker: "cecilia",
+            text: "I can't let you go in. You're missing your " + g.internal + ". ",
+            button: [{ chatID: -1, text: "Go change in the bathroom", callback: "bathroom" }]
         };
     }
     else {
@@ -477,6 +499,24 @@ room203.chat = function (chatID) {
                     "he does know how to fuck a face. ",
                 button: [
                     { chatID: -1, text: "Oh... oh! ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "cecilia",
+                text: "Looking cute! You can go in. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "cecilia",
+                text: "Oh my god! You are so cute! And so professional! " +
+                    "Welcome to the sisterhood I am sooo happy for you. it takes a lot to " +
+                    "find oneself's true calling",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "enter" }
                 ]
             },
         ];

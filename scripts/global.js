@@ -270,10 +270,13 @@ g.rooms = [
 
     { roomID: 300, name: "First Floor", image: "300_apartment/bg.jpg", nightImage: "300_apartment/bg.jpg", houseID: 300, btn: "roomBtn_300.png" },
     { roomID: 301, name: "Living Room", image: "301_living/bg.jpg", nightImage: "301_living/bg.jpg", houseID: 300, btn: "roomBtn_301.png" },
-    { roomID: 303, name: "Third Floor", image: "303_secondFloor/bg.jpg", nightImage: "303_secondFloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
+    { roomID: 303, name: "Fourth Floor", image: "303_secondFloor/bg.jpg", nightImage: "303_secondFloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
     { roomID: 304, name: "Room 302", image: "304_room202/livingroom.jpg", nightImage: "304_room202/livingroom.jpg", houseID: 300, btn: "roomBtn_303.png" },
 
-    { roomID: 315, name: "Second Floor", image: "315_girlfriend/bg.jpg", nightImage: "315_girlfriend/bg_night.jpg", houseID: 300, btn: "roomBtn_315.png" },
+    { roomID: 310, name: "Second Floor", image: "310_secondfloor/bg.jpg", nightImage: "310_secondfloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
+    { roomID: 314, name: "Third Floor", image: "314_thirdFloor/bg.jpg", nightImage: "314_thirdFloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
+
+    { roomID: 315, name: "Front Door", image: "315_girlfriend/bg.jpg", nightImage: "315_girlfriend/bg_night.jpg", houseID: 300, btn: "roomBtn_315.png" },
     { roomID: 316, name: "Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
     { roomID: 317, name: "Kitchen", image: "317_janiceKitchen/kitchen.jpg", nightImage: "317_janiceKitchen/kitchen.jpg", houseID: 300, btn: "roomBtn_317.png" },
     { roomID: 318, name: "Bedroom", image: "318_janiceBedroom/bg.jpg", nightImage: "318_janiceBedroom/bg.jpg", houseID: 300, btn: "roomBtn_318.png" },
@@ -371,7 +374,8 @@ g.rooms = [
     { roomID: 902, name: "Girl's Swim Locker", image: "902_girl/bg.jpg", nightImage: "902_girl/bg.jpg", houseID: 901, btn: "roomBtn_902.png" },
     { roomID: 903, name: "Boy's Swim Locker", image: "903_boy/bg.jpg", nightImage: "903_boy/bg.jpg", houseID: 901, btn: "roomBtn_903.png" },
 
-    { roomID: 910, name: "Department Of Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 910, btn: "bg.jpg" },
+    { roomID: 910, name: "Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 911, btn: "roomBtn_910.png" },
+    { roomID: 911, name: "City Hall", image: "911_cityhall/bg.jpg", nightImage: "911_cityhall/bg.jpg", houseID: 910, btn: "roomBtn_911.png" },
 
     { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
     { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" },
@@ -432,7 +436,7 @@ g.roomMapInit = function () {
         //{ roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
         //{ roomID: 900, display: "University", access: true, darkAccess: true, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
         //{ roomID: 901, display: "Pool", access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
-        { roomID: 910, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
+        { roomID: 911, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
         //{ roomID: 2003, display: "[In Dev]", access: false, darkAccess: false, left: 1144, top: 399, width: 135, height: 113, img: "map/2003.png", night: "map/2003_night.png", map: 1 },
         //{ roomID: 100, access: false, left: 500, top: 300, width: 300, height: 150, activeImg: "map/constructionSite.png", inactiveImg: "map/inactive.png" },

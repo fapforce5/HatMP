@@ -1,8 +1,12 @@
 ﻿//Room name
 var room223 = {};
 room223.main = function () {
-    if (missy.get("uniform") === 0) {
+    var missyUniform = missy.get("uniform");
+    if (missyUniform === 0) {
         chat(0, 223);
+    }
+    else if (missyUniform === 2) {
+        chat(14, 223);
     }
     else {
         char.room(197);
@@ -56,6 +60,16 @@ room223.chatcatch = function (callback) {
             missy.set("uniform", 1);
             missy.set("uniformNew", 0);
             if (missy.payday().paydayHasPay)
+                char.room(196);
+            else
+                char.room(0);
+            break;
+        case "newAttireEnd":
+            missy.set("activeCase", 10);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
+            missy.set("uniform", 3);
+            if (g.dt.getDay() === 5 && missy.get("weeklyPay") !== 0)
                 char.room(196);
             else
                 char.room(0);
@@ -190,6 +204,28 @@ room223.chat = function (chatID) {
             text: "Hey. I'm so glad you've found yourself. Take care sexy! ",
             button: [
                 { chatID: -1, text: "Thanks. ", callback: "panties5End" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "missy",
+            text: "I was looking at you in your cute little sissy outfit and I think it fits " +
+                "you. You really do make an attractive girl. From now on you'll be wearing " +
+                "a different attire here at the office. ",
+            button: [
+                { chatID: 15, text: "*gulp*", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "missy",
+            text: "I spoke with my friend " + sc.n("tiffany") + " at Toy 'n Us to pick you out " +
+                "something suitable for working here, but also expresses your new sissy mentality. " +
+                "I'm sure it will be just perfect. Go visit her and pick up your new uniform. " +
+                "From now on this will be your attire to work here. If you're too embarrassed " +
+                "to wear your new uniform in public you can always change in the bathroom here. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am. I'll go visit Tiffany at Toys 'n Us. ", callback: "newAttireEnd" },
             ]
         },
     ];
