@@ -31,7 +31,6 @@ room102.chatcatch = function (callback) {
     switch (callback) {
         case "setInit":
             gv.set("jobConstructionPay", 40);
-            sc.setstep("construction", 1);
             gv.set("jobapplyconst", 2);
             missy.set("activeCase", 1);
             char.room(101);
@@ -39,7 +38,6 @@ room102.chatcatch = function (callback) {
         case "setInitRaise":
             gv.set("jobConstructionPay", 40);
             gv.mod("jobConstructionPay", 10);
-            sc.setstep("construction", 1);
             gv.set("jobapplyconst", 2);
             char.room(101);
             break;

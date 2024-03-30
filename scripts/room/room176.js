@@ -113,6 +113,8 @@ room176.chatcatch = function (callback) {
             break;
         case "oral26":
             levels.oralGive(3, false);
+            sc.completeMissionTask("philbert", "bully", 1);
+            sc.show("philbert");
             nav.bg("205_chastity/chast0_9_bad.jpg");
             break;
         default:

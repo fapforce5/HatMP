@@ -25,7 +25,9 @@ room218.main = function () {
             case 4:
                 char.room(missy.jobs[g.pass].page);
                 break;
-
+            default:
+                char.room(missy.jobs[g.pass].page);
+                break;
         }
     }
     else {
@@ -46,6 +48,9 @@ room218.main = function () {
                 chat(11, 218);
                 break;
             case 4:
+                char.room(missy.jobs[g.pass].page);
+                break;
+            default:
                 char.room(missy.jobs[g.pass].page);
                 break;
 
@@ -91,7 +96,7 @@ room218.chatcatch = function (callback) {
         case "jack4":
             //if g.pass === 2
             nav.bg("218_masturbate/desk3.jpg");
-            sc.setstep("cecilia", 1);//verfiy this
+            //sc.setstep("cecilia", 1);//verfiy this
             break;
         case "bathroom1":
             nav.bg("218_masturbate/bathroom1.jpg");

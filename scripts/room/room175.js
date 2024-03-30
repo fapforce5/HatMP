@@ -93,7 +93,7 @@ room175.chatcatch = function (callback) {
         case "endclassEnd":
             gv.mod("sissySchoolClassDays", 1);
             char.settime(17, 15);
-            char.room(0);
+            char.room(201);
             break;
         case "endclassPass101":
             sissy.passclass(true);

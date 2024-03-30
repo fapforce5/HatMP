@@ -33,6 +33,20 @@ room182.main = function () {
 
 room182.btnclick = function (name) {
     switch (name) {
+        case "grades":
+            var grade = gv.get("sissyGrades").split(" ")[5];
+            nav.killall();
+            nav.bg("182_test/final0.jpg");
+            if (grade > 89) { //crown
+                levels.mod("xdress", 100, 999);
+                cl.add("accessories", "crown");
+
+                chat(78, 182);
+            }
+            else {
+                chat(80, 182);
+            }
+            break;
         case "t5_man":
             nav.killall();
             nav.bg("182_test/t1_5_man.jpg");
@@ -40,7 +54,7 @@ room182.btnclick = function (name) {
             break;
         case "t5_sissy":
             nav.killall();
-            g.internal.mantest = 5;
+            g.internal.mantest = 100;
             nav.bg("182_test/t1_5_sissy.jpg");
             chat(13, 182);
             break;
@@ -124,6 +138,7 @@ room182.chatcatch = function (callback) {
         case "t1_46":
         case "t1_47":
         case "t1_48":
+        case "final0":
             nav.kill();
             nav.bg("182_test/" + callback + ".jpg");
             break;
@@ -134,6 +149,10 @@ room182.chatcatch = function (callback) {
         case "t1_36":
         case "t1_40":
         case "t1_41":
+        case "t1_42":
+        case "t1_43":
+        case "t1_44":
+        case "t1_45":
             nav.bg("182_test/" + callback + ".jpg");
             break;
         case "t1_16":
@@ -266,10 +285,10 @@ room182.chatcatch = function (callback) {
             zcl.displayMain(490, 700, .055, "", false);
             break;
         case "mantestd":
-            g.internal.mantest = 0;
+            g.internal.mantest = 65;
             break;
         case "mantestf":
-            g.internal.mantest = 4;
+            g.internal.mantest = 50;
             break;
         case "taketest0":
             nav.bg("182_test/test1bg.jpg");
@@ -307,12 +326,12 @@ room182.chatcatch = function (callback) {
                     case 8: g.internal.analtest = 90; analImg = "t1_20_5"; break;
                     case 7: g.internal.analtest = 88; analImg = "t1_20_4"; break;
                     case 6: g.internal.analtest = 85; analImg = "t1_20_3"; break;
-                    case 5: g.internal.analtest = 79; analImg = "t1_20_3"; break;
-                    case 4: g.internal.analtest = 75; analImg = "t1_20_2"; break;
-                    case 3: g.internal.analtest = 69; analImg = "t1_20_1"; break;
-                    case 2: g.internal.analtest = 62; analImg = "t1_20_1"; break;
-                    case 1: g.internal.analtest = 40; analImg = "t1_20_1"; break;
-                    default: g.internal.analtest = 20; analImg = "t1_20_1"; break;
+                    case 5: g.internal.analtest = 82; analImg = "t1_20_3"; break;
+                    case 4: g.internal.analtest = 79; analImg = "t1_20_2"; break;
+                    case 3: g.internal.analtest = 75; analImg = "t1_20_1"; break;
+                    case 2: g.internal.analtest = 70; analImg = "t1_20_1"; break;
+                    case 1: g.internal.analtest = 65; analImg = "t1_20_1"; break;
+                    default: g.internal.analtest = 50; analImg = "t1_20_1"; break;
                 }
             }
             nav.bg("182_test/" + analImg + ".jpg");
@@ -428,7 +447,7 @@ room182.chatcatch = function (callback) {
             gv.mod("energy", -16);
             room182.chatcatch("t1_setenergy");
             if (gv.get("energy") > 0) {
-                chat(67, 182);
+                chat(68, 182);
                 nav.bg("182_test/" + callback + ".jpg");
                 g.internal.bdsmtest = 100;
             }
@@ -438,28 +457,114 @@ room182.chatcatch = function (callback) {
                 chat(997, 182);
             }
             break;
+        case "makeGrades":
+            var cardTest = g.internal.cardtest;
+            var manTest = g.internal.mantest;
+            var femTest = g.internal.femtest;
+            var analTest = g.internal.analtest;
+            var bdsmTest = g.internal.bdsmtest;
+            var finalGrade = parseInt((cardTest + manTest + femTest + analTest + bdsmTest) / 5);
+            var sissyGradeString =
+                cardTest + " " +
+                manTest + " " +
+                femTest + " " +
+                analTest + " " +
+                bdsmTest + " " +
+                finalGrade;
+            gv.set("sissyGrades", sissyGradeString);
+            nav.killall();
+            nav.bg("182_test/grade.jpg");
+            var gradeList = gv.get("sissyGrades").split(" ");
+
+            nav.t({
+                type: "img",
+                name: "grade",
+                left: 500,
+                top: 500,
+                font: 40,
+                hex: "#000000",
+                text: sc.n("me")
+            }, 182);
+            for (i = 0; i < gradeList.length; i++) {
+                nav.t({
+                    type: "img",
+                    name: "grade",
+                    left: 750 + (i * 125),
+                    top: 500,
+                    font: 40,
+                    hex: "#000000",
+                    text: g.getGrade(gradeList[i])
+                }, 182);
+            }
+            nav.next("grades");
+           
+            break;
+        case "crown0":
+            nav.killall();
+            cl.c.accessories = "crown";
+            zcl.displayMain(380, 850, .063, "clothes", false);
+            cl.display();
+            break;
+        case "crown0a":
+            nav.bg("182_test/final1a.jpg");
+            break;
+        case "crown1":
+            nav.killall();
+            var grade = gv.get("sissyGrades").split(" ")[5];
+            nav.bg("182_test/final0.jpg");
+            if (grade < 67) { //crown
+                cl.add("accessories", "piggy");
+                chat(81, 182);
+            }
+            else {
+                chat(82, 182);
+            }
+            break;
+        case "piggy0":
+            cl.c.accessories = "piggy";
+            zcl.displayMain(380, 850, .063, "clothes", false);
+            cl.display();
+            break;
+        case "piggy0a":
+            nav.bg("182_test/piggy0a.jpg");
+            break;
+        case "end":
+            levels.mod("xdress", 100, 999);
+            sissy.passclass(true);
+            break;
         default:
             break;
     }
 };
 
 room182.chat = function (chatID) {
+    if (chatID === 1000) {
+        return {
+            chatID: 1000,
+            speaker: "me",
+            text: " ",
+            button: [
+                { chatID: 22, text: "...", callback: "" }
+            ]
+        };
+    }
     if (chatID === 999) {
         var hairtxt, bdyhair, cumface, chastity, shower;
-        var grade = 4;
+        var grade = 100;
         if (cl.c.hairLength > 2) {
             hairtxt = "Great hair length, lovely style. ";
         }
         else if (cl.c.hairLength > 1) {
             hairtxt = "Good hair length. You would look lovely with longer hair. ";
+            grade -= 3;
         }
         else if (cl.c.hairLength === 1) {
             hairtxt = "Hair length is fine, but you need to grow it out. I recommend taking the hormone class after this. ";
-            grade--;
+            grade-= 10;
         }
         else {
             hairtxt = "You hair is much too short. It's unsightly. "
-            grade -= 2;
+            grade -= 20;
         }
 
         if (cl.getBodyHair() === null) {
@@ -467,19 +572,19 @@ room182.chat = function (chatID) {
         }
         else {
             bdyhair = "You need to shave that disgusting hair. ";
-            grade--;
+            grade-=20;
         }
 
         if (!cl.c.cumface)
             cumface = "";
         else {
             cumface = "A lady doesn't walk around with cum on her face. ";
-            grade--;
+            grade-=5;
         }
 
         if (cl.c.chastity === null) {
             chastity = "You need to wear your cage. No wants to see that dirty thing poking out. ";
-            grade--;
+            grade-=10;
         }
         else
             chastity = "Chastity cage.. check. ";
@@ -488,7 +593,7 @@ room182.chat = function (chatID) {
             shower = "Your smell is lovely. ";
         else {
             shower = "You need to shower. You smell like a vagrant. ";
-            grade--;
+            grade-= 7;
         }
         if (grade < 0)
             grade = 0;
@@ -497,7 +602,7 @@ room182.chat = function (chatID) {
             chatID: 999,
             speaker: "martha",
             text: sc.n("me") + ". Let us see how you did. " + hairtxt + bdyhair + cumface + chastity + shower +
-                "For a final grade of " + g.internal.grades[grade] + ".",
+                "For a final grade of " + g.getGrade(grade) + ".",
             button: [
                 { chatID: 22, text: "...", callback: "t1_10" }
             ]
@@ -1207,7 +1312,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 72,
                 speaker: "black",
-                text: "Hehehe! You loke that baby? You like it when I rape your asshole with my " +
+                text: "Hehehe! You like that baby? You like it when I rape your asshole with my " +
                     "big black ridged dildo? Don't try to say no. I know you want to get fucked slut. " +
                     "Show Mommy how much you like getting raped. ",
                 button: [
@@ -1235,8 +1340,8 @@ room182.chat = function (chatID) {
             {
                 chatID: 75,
                 speaker: "missy",
-                text: "Before we begin, one of you did not take the class very , and did terrible " +
-                    "on their tests. This person is a failure and will be leaving the class for " +
+                text: "Before we begin, one of you did not take the class very , and failed " +
+                    "all their their tests. This person is a failure and will be leaving the class for " +
                     "good today. ",
                 button: [
                     { chatID: 76, text: "...", callback: "t1_47" },
@@ -1246,7 +1351,7 @@ room182.chat = function (chatID) {
                 chatID: 76,
                 speaker: "missy",
                 text: "Jeremy, step forward. You have failed this class, you have failed your " +
-                    "classmates, and you failed us, your teachers. Grab your clothes and go. " +
+                    "classmates, and you failed your teachers. Grab your clothes and go. " +
                     "You are done here. You will never be a sissy. ",
                 button: [
                     { chatID: 77, text: "*oh damn*", callback: "t1_48" },
@@ -1255,21 +1360,83 @@ room182.chat = function (chatID) {
             {
                 chatID: 77,
                 speaker: "missy",
-                text: "The rest of you have passed. Some barely. The next test is even harder so " +
-                    "I suggest you do you homework and be the best sissy you can if you want to pass. ",
+                text: "The rest of you will move on. Some of you have an overall 'F', but managed to at least " +
+                    "one test. The next test is even harder so " +
+                    "I suggest you do you homework and be the best sissy you can if you want to pass. " +
+                    "I'll hand out the test results and post the list in the lobby so you can help each " +
+                    "other where you are weak. ",
                 button: [
-                    { chatID: 78, text: "...", callback: "" },
+                    { chatID: -1, text: "[See your grade. ]", callback: "makeGrades" },
                 ]
             },
             {
                 chatID: 78,
                 speaker: "missy",
-                text: "Now for the good news. You all have earned your first set of sissy clothes! " +
-                    "Well grab you each one at a time to pick out your wardrobe for the class. " +
-                    "This will be your sissy school uniform from now on. " + sc.n("me") +
-                    " you're coming with me. ",
+                text: "Now that you've all viewed your tests, it's time to announce our star " +
+                    "sissy. This sissy is my personal favorite and I expected her to get this " +
+                    "award. " + sc.n("me") + ", please set forward to receive your crown. ",
                 button: [
-                    { chatID: 79, text: "...", callback: "" },
+                    { chatID: 79, text: "*squeel*", callback: "crown0" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "missy",
+                text: "She has proven she is the total package! The mind of a girl, grace of a " +
+                    "lady, determination  of a whore, and anal capacity of a depraved slut. " +
+                    "Congratulations. You may return to the group. ",
+                button: [
+                    { chatID: 81, text: "...", callback: "crown1" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "missy",
+                text: "Now that you've all viewed your tests, it's time to announce our star " +
+                    "sissy. This sissy is my personal favorite and I expected her to get this " +
+                    "award. Martin, please set forward to receive your crown. ", 
+                button: [
+                    { chatID: 79, text: "...", callback: "crown0a" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "missy",
+                text: "And now for the worst student. " + sc.n("me") + ", please step forward to " +
+                    "receive the piggy nose. ",
+                button: [
+                    { chatID: 83, text: "...", callback: "piggy0" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "missy",
+                text: "And now for the worst student. " + sc.n("ralph") + ", please step forward to " +
+                    "receive the piggy nose. ",
+                button: [
+                    { chatID: 83, text: "...", callback: "piggy0a" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "missy",
+                text: "Somehow you managed to either fail, or nearly fail every event. I invite " +
+                    "everyone to help this poor idiot girl find her way or she will be dropped " +
+                    "from the course like Jeremy. You disgust me. Go back to the group and " +
+                    "think about what a horrible sissy you are. ",
+                button: [
+                    { chatID: 84, text: "...", callback: "final0" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "missy",
+                text: "This concludes your first test. Most of you are average. Stop being " +
+                    "average and be great. To help you on your way to greatness, the next " +
+                    "set of classes will really push you hard into your sissyness, but not " +
+                    "every class is manditory. You must seek greatness on your own. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "end" },
                 ]
             },
         ];

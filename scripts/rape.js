@@ -19,9 +19,11 @@ fame.event = function (returnBtn) {
     if (thisFame > 50)
         thisFame = 50;
     var appearance = cl.appearance() * 16;
+    if (appearance < 0)
+        appearance = 0;
     var chanceForRandom = (thisFame + appearance) / 400;
 
-    if (g.isNight && g.dt.getDay() === 5) {
+    if (g.isNight() && g.dt.getDay() === 5) {
         if (chanceForRandom < 1) {
             chanceForRandom += (1 - chanceForRandom) / 2;
         }

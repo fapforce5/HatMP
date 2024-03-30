@@ -23,7 +23,7 @@ room28.main = function () {
     else if (g.pass === 181)
         nav.bg("181_black/bondage101_12.jpg");
 
-    menu.save("HatMP_9", null, 9);
+    menu.save("HatMP_9", true);
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
@@ -226,6 +226,14 @@ room28.main = function () {
                 case "janicevacation":
                     sc.completeMission("dog", "vacation", true);
                     sc.startMission("janice", "bitch");
+                    break;
+                case "envytest":
+                    if (sc.getMissionTask("envy", "gf", 6).notStarted) {
+                        sc.completeMission("envy", "gf", false);
+                        sc.completeMissionTask("envy", "gf", 6, false);
+                        sc.startMission("envy", "breakup");
+                        sc.completeMissionTask("envy", "breakup", 0, true);
+                    }
                     break;
             }
             future.st.splice(i, 1);

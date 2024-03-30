@@ -2,7 +2,7 @@
 var room76 = {};
 room76.main = function () {
     var navList = [77];
-    if (sc.bimbo().thisRoom) {
+    if (sc.getTimeline("bimbo").thisRoom) {
         nav.button({
             "type": "btn",
             "name": "blanket",
@@ -191,7 +191,7 @@ room76.chatcatch = function (callback) {
             nav.bg("76_bimboRoom/a2.jpg");
             break;
         case "ass2":
-            gv.mod("giveAnalFemale", 1);
+            levels.fuckass("bimbo", "f");
             cl.doCum(false);
             nav.killall();
             //nav.bg("76_bimboRoom/laying3.jpg");
@@ -201,10 +201,10 @@ room76.chatcatch = function (callback) {
             nav.bg("76_bimboRoom/p1.gif");
             break;
         case "pussy2":
+            levels.fuckpussy("bimbo");
             nav.bg("76_bimboRoom/p2.jpg");
             break;
         case "pussy3":
-            gv.mod("fuckPussy", 1);
             nav.bg("76_bimboRoom/p3.jpg");
             cl.doCum(false);
             nav.buildnav([77, 0]);

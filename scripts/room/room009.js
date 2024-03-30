@@ -250,6 +250,7 @@ room9.btnclick = function (name) {
 
             break;
         case "porn":
+            var sissylevel = levels.get("xdress").l;
             nav.killall();
             nav.button({
                 "type": "img",
@@ -269,49 +270,47 @@ room9.btnclick = function (name) {
                 hex: "#ffffff",
                 text: "Straight Porn"
             }, 9);
-            if (sc.getstep("missy") > 9) {
+            nav.t({
+                type: "btn",
+                name: "pAnal",
+                left: 500,
+                top: 350,
+                font: 40,
+                hex: "#ffffff",
+                text: "Anal Porn"
+            }, 9);
+            if (sissylevel > 1) {
                 nav.t({
                     type: "btn",
-                    name: "pAnal",
+                    name: "pStrapon",
                     left: 500,
-                    top: 350,
+                    top: 450,
                     font: 40,
                     hex: "#ffffff",
-                    text: "Anal Porn"
+                    text: "Strapon Porn"
                 }, 9);
-                if (g.sissy[3].ach) {
-                    nav.t({
-                        type: "btn",
-                        name: "pStrapon",
-                        left: 500,
-                        top: 450,
-                        font: 40,
-                        hex: "#ffffff",
-                        text: "Strapon Porn"
-                    }, 9);
-                }
-                if (g.sissy[12].ach) {
-                    nav.t({
-                        type: "btn",
-                        name: "pfuta",
-                        left: 500,
-                        top: 550,
-                        font: 40,
-                        hex: "#ffffff",
-                        text: "Futa Porn"
-                    }, 9);
-                }
-                if (g.sissy[16].ach) {
-                    nav.t({
-                        type: "btn",
-                        name: "pSissy",
-                        left: 500,
-                        top: 650,
-                        font: 40,
-                        hex: "#ffffff",
-                        text: "Sissy Porn"
-                    }, 9);
-                }
+            }
+            if (sissylevel > 2) {
+                nav.t({
+                    type: "btn",
+                    name: "pfuta",
+                    left: 500,
+                    top: 550,
+                    font: 40,
+                    hex: "#ffffff",
+                    text: "Futa Porn"
+                }, 9);
+            }
+            if (sissylevel > 3) {
+                nav.t({
+                    type: "btn",
+                    name: "pSissy",
+                    left: 500,
+                    top: 650,
+                    font: 40,
+                    hex: "#ffffff",
+                    text: "Sissy Porn"
+                }, 9);
             }
             nav.button({
                 "type": "btn",

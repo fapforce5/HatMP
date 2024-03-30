@@ -2,7 +2,7 @@
 var room51 = {};
 room51.main = function () {
     g.internal = "";
-    if (sc.getstep("tiffany") === 15) {
+    if (missy.activecase().caseId === 11 && sc.taskGetStep("tiffany", "friend") < 4) {
         nav.bg("51_livingRoom/t1.jpg");
         $('.room-left').hide();
         cl.c.wig = null;
@@ -249,23 +249,31 @@ room51.chatcatch = function (callback) {
         case "t29":
 
             cl.display();
-            for (i = 0; i < cl.list.length; i++) {
-                if (cl.list[i].sex === "m")
-                    cl.list[i].inv = false;
-            }
-            cl.saveOutfit = [
-                { name: "Outfit 1", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-                { name: "Outfit 2", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-                { name: "Outfit 3", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-                { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-                { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
-            ];
-            sc.setstep("tiffany", 16);
-            sc.setstep("candy", 100);
-            sc.revokeStep("tiffany", -1);
-            sc.revokeStep("tiffany", -9);
-            g.sissy[29].ach = true;
-            gv.set("oncase", null);
+            //for (i = 0; i < cl.list.length; i++) {
+            //    if (cl.list[i].sex === "m")
+            //        cl.list[i].inv = false;
+            //}
+            //cl.saveOutfit = [
+            //    { name: "Outfit 1", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+            //    { name: "Outfit 2", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+            //    { name: "Outfit 3", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+            //    { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
+            //    { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
+            //];
+            //sc.setstep("tiffany", 16);
+            //sc.setstep("candy", 100);
+            //sc.revokeStep("tiffany", -1);
+            //sc.revokeStep("tiffany", -9);
+            //g.sissy[29].ach = true;
+            //gv.set("oncase", null);
+            sc.completeMissionTask("tiffany", "friend", 3, true);
+            sc.show("candy");
+            sc.startMission("candy", "cuck");
+            sc.completeMissionTask("candy", "cuck", 0);
+            gv.set("xdress", true);
+            levels.mod("xdress", 30, 999);
+            missy.set("activeCaseComplete", 1);
+            missy.caseComplete(11);
             char.settime(19, 57);
             nav.button({
                 "type": "btn",

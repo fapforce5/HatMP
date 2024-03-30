@@ -168,7 +168,7 @@ $(document).ready(function () {
     });
 
     $("#room_export_load").click(function () {
-        char.import();
+        char.import(null);
     });
 
     $("#room_export_load_file").click(function () {
@@ -372,8 +372,28 @@ char.map = function () {
 
 char.makeWalk = function () {
     var activeCase = missy.activecase();
-    $("#room_left_walk_sub").html("<br/><br/>" + activeCase.txt);
+    var btnWidth = 200 * g.ratio;
+    var btnHeight = 66.6 * g.ratio;
+    var mgtop = 100 * g.ratio;
+    var mgleft = 25 * g.ratio;
+    $("#room_left_walk_sub").html("<br/><br/><br/>" + activeCase.txt);
+    if (g.pastSaves.length > 1) {
+        $("#room_left_walk_sub").append('<br/><br/>Back Button. - This button is still in testing, so know that there may be issues. Best to save before use. ');
+        $("#room_left_walk_sub").append('<img src="./images/room/1001_rand/back_1.png" class="help-history hover-noevent" title="Back" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; z-index: 100; margin-top: ' + mgtop + 'px; margin-left:' + mgleft + 'px; position:relative;" />');
+        $("#room_left_walk_sub").append('<div style="margin-top:' + (mgtop / 2) + 'px;">' + g.pastSaves[g.pastSaves.length - 2].name + "</div>");
+    }
 
+    $('.help-history').click(function () {
+        //console.log("hit")
+        //var j = g.pastSaves.length - 2;
+        g.pastSaves.splice(g.pastSaves.length - 1, 1);
+        privateChat.kill();
+        clearTimeout(g.roomTimeout);
+        clearTimeout(g.roomTimeout2);
+        char.import(g.pastSaves[g.pastSaves.length - 1].data);
+        g.pastSaves.splice(g.pastSaves.length - 1, 1);
+        char.makeWalk();
+    });
     //var i;
     //var mo = new Array();
     //var maxi = 0;
@@ -623,6 +643,8 @@ char.room = function (roomID) {
         $("#room-time").show();
     else
         $("#room-time").hide();
+
+    phone.clear(true);
 };
 
 char.addMinutes = function (date, minutes) {
@@ -817,126 +839,126 @@ menu.mClick = function (type) {
             });
             break;
         case "admin":
-            if (gv.get("cheatMode")) {
-                $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-                    '<h2>Cheat Status: ACTIVE</h2>Thank you for your support!<hr/><br />' +
-                    '<div style="font-size:' + 24 * g.ratio + 'px;">' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="money">Add Money</button><br/>' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="horneyp">Add Sissy Points</button><br />' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="energyp">Max Energy</button><br/>' +
-                    '<hr/>' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="lolaEva" data-step="8">Lola and Eva: After truth or dare</button><br/>' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="missy" data-step="10">Missy: School</button><br/>' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="zoey" data-step="11">Zoey: After Meeting Chloe</button><br/>' +
-                    '<div>Sissy School: Each event is skippable, click the Cheat Unlock button</div>' +
-                    '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="uncheat" data-step="0">Turn off cheat status</button>' +
-                    '</div></div>');
-                $(".admin-mod").click(function () {
-                    switch ($(this).data("type")) {
-                        case "money":
-                            gv.set("money", 1000000);
-                            //$('#char_money').text('$1000000');
-                            break;
-                        case "energyp":
-                            gv.mod("energy", 10000);
-                            break;
-                        case "horneyp":
-                            gv.set("cheatPoints", 10000);
-                            break;
-                        case "lolaEva":
-                            var thisStep = $(this).data("step");
-                            if (thisStep === 4) {
-                                if (sc.getstep("lola") < 5) {
-                                    sc.setstep("me", -1);
-                                    sc.setstepAll("eva", 4);
-                                    sc.setstepAll("lola", 5);
-                                    pic.add("lolaTopless");
-                                    g.popUpNotice("You've skipped past Spin the bottle with Lola and Eva");
-                                }
-                                else
-                                    g.popUpNotice("You've already passed this point. ");
-                            }
-                            else if (thisStep === 8) {
-                                if (sc.getstep("lola") < 8) {
-                                    sc.setstep("me", -1);
-                                    sc.setstep("landlord", -1);
-                                    sc.setstep("lola", 8);
-                                    sc.setstep("eva", 7);
-                                    g.roomMapAccess(16, false, false);
-                                    char.room(0);
-                                    pic.add("lolaTopless");
-                                    g.popUpNotice("You've skipped past Truth or Dare with Lola and Eva");
-                                }
-                                else
-                                    g.popUpNotice("You've already passed this point.");
-                            }
-                            break;
-                        case "missy":
-                            var thisStepm = $(this).data("step");
-                            if (thisStepm === 10) {
-                                if (sc.getstep("missy") < 10) {
-                                    inv.add("pi_lic");
-                                    cl.add("pants", "s");
-                                    cl.add("shirt", "s");
-                                    cl.add("shoes", "d");
-                                    cl.add("socks", "b");
-                                    cl.add("panties", "w");
-                                    cl.add("accessories", "piggy");
-                                    if (cl.c.chest === 0)
-                                        cl.c.chest = 1;
-                                    gv.mod("fitnessLevel", 1);
-                                    sc.setstep("tiffany", -4);
-                                    sc.setstep("tiffany", 5);
-                                    sc.setstep("me", -1);
-                                    sc.setstep("me", -2);
-                                    sc.setstepAll("missy", 10);
-                                    cl.c.bodyhair = 0;
-                                    inv.add("razor", 1);
-                                    sc.setstepAll("me", 2);
-                                    g.roomMapAccess(203, true, false);
-                                    cl.display();
-                                    g.popUpNotice("You have skipped ahead to the sissy school.");
-                                }
-                                else
-                                    g.popUpNotice("You've already passed this point.");
-                            }
-                            break;
-                        case "zoey":
-                            var zoeyStep = sc.getstep("zoey");
-                            if (zoeyStep < 11) {
-                                sc.setstepAll("zoey", 11);
-                                sc.setstep("zoey", -1);
-                                sc.setstep("zoey", -2);
-                                scc.love("zoey", 100, 90);
-                                g.popUpNotice("You've advanced beyond Chloe's breakup and meeting Stormy. ");
-                            }
-                            else
-                                g.popUpNotice("You've already passed this point.");
-                            break;
-                        case "uncheat":
-                            gv.mod("cheatMode", false);
-                            menu.mClick("admin");
-                            break;
-                    }
-                });
-            }
-            else {
-                $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center; font-size:' + 24 * g.ratio + 'px;">' +
-                    "<h2>Cheat Status: INACTIVE</h2>" +
-                    "This cheat menu is a thank you to all the great support I've received from my $5 anf $10 Patrons." +
-                    "The game is designed to be played without this cheat activated. So if you don't use cheat you're not missing anything. " +
-                    '<button type="button" class="intro-button" id="cheat_passwordSubmit" style="font-size:' + 24 * g.ratio + 'px;">I\'m a Patreon Supporter<br/>Activate Cheats</button><br/>' +
-                    '<button type="button" class="intro-button" id="cheat_cancel" style="font-size:' + 24 * g.ratio + 'px;">I\'m not a Patreon Supporter<br/>Cancel</button>' +
-                    '<br/><br/>Thank you so much for playing.' +
-                    '</div>');
-                $('#cheat_passwordSubmit').click(function () {
-                    gv.mod("cheatMode", true);
-                    menu.mClick("admin");
-                });
-                $("#heat_cancel").click(function () {
-                    menu.mClick("menu");
-                });
-            }
+            //if (gv.get("cheatMode")) {
+            //    $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
+            //        '<h2>Cheat Status: ACTIVE</h2>Thank you for your support!<hr/><br />' +
+            //        '<div style="font-size:' + 24 * g.ratio + 'px;">' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="money">Add Money</button><br/>' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="horneyp">Add Sissy Points</button><br />' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="energyp">Max Energy</button><br/>' +
+            //        '<hr/>' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="lolaEva" data-step="8">Lola and Eva: After truth or dare</button><br/>' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="missy" data-step="10">Missy: School</button><br/>' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="zoey" data-step="11">Zoey: After Meeting Chloe</button><br/>' +
+            //        '<div>Sissy School: Each event is skippable, click the Cheat Unlock button</div>' +
+            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="uncheat" data-step="0">Turn off cheat status</button>' +
+            //        '</div></div>');
+            //    $(".admin-mod").click(function () {
+            //        switch ($(this).data("type")) {
+            //            case "money":
+            //                gv.set("money", 1000000);
+            //                //$('#char_money').text('$1000000');
+            //                break;
+            //            case "energyp":
+            //                gv.mod("energy", 10000);
+            //                break;
+            //            case "horneyp":
+            //                gv.set("cheatPoints", 10000);
+            //                break;
+            //            case "lolaEva":
+            //                var thisStep = $(this).data("step");
+            //                if (thisStep === 4) {
+            //                    if (sc.getstep("lola") < 5) {
+            //                        sc.setstep("me", -1);
+            //                        sc.setstepAll("eva", 4);
+            //                        sc.setstepAll("lola", 5);
+            //                        pic.add("lolaTopless");
+            //                        g.popUpNotice("You've skipped past Spin the bottle with Lola and Eva");
+            //                    }
+            //                    else
+            //                        g.popUpNotice("You've already passed this point. ");
+            //                }
+            //                else if (thisStep === 8) {
+            //                    if (sc.getstep("lola") < 8) {
+            //                        sc.setstep("me", -1);
+            //                        sc.setstep("landlord", -1);
+            //                        sc.setstep("lola", 8);
+            //                        sc.setstep("eva", 7);
+            //                        g.roomMapAccess(16, false, false);
+            //                        char.room(0);
+            //                        pic.add("lolaTopless");
+            //                        g.popUpNotice("You've skipped past Truth or Dare with Lola and Eva");
+            //                    }
+            //                    else
+            //                        g.popUpNotice("You've already passed this point.");
+            //                }
+            //                break;
+            //            case "missy":
+            //                var thisStepm = $(this).data("step");
+            //                if (thisStepm === 10) {
+            //                    if (sc.getstep("missy") < 10) {
+            //                        inv.add("pi_lic");
+            //                        cl.add("pants", "s");
+            //                        cl.add("shirt", "s");
+            //                        cl.add("shoes", "d");
+            //                        cl.add("socks", "b");
+            //                        cl.add("panties", "w");
+            //                        cl.add("accessories", "piggy");
+            //                        if (cl.c.chest === 0)
+            //                            cl.c.chest = 1;
+            //                        gv.mod("fitnessLevel", 1);
+            //                        sc.setstep("tiffany", -4);
+            //                        sc.setstep("tiffany", 5);
+            //                        sc.setstep("me", -1);
+            //                        sc.setstep("me", -2);
+            //                        sc.setstepAll("missy", 10);
+            //                        cl.c.bodyhair = 0;
+            //                        inv.add("razor", 1);
+            //                        sc.setstepAll("me", 2);
+            //                        g.roomMapAccess(203, true, false);
+            //                        cl.display();
+            //                        g.popUpNotice("You have skipped ahead to the sissy school.");
+            //                    }
+            //                    else
+            //                        g.popUpNotice("You've already passed this point.");
+            //                }
+            //                break;
+            //            case "zoey":
+            //                var zoeyStep = sc.getstep("zoey");
+            //                if (zoeyStep < 11) {
+            //                    sc.setstepAll("zoey", 11);
+            //                    sc.setstep("zoey", -1);
+            //                    sc.setstep("zoey", -2);
+            //                    scc.love("zoey", 100, 90);
+            //                    g.popUpNotice("You've advanced beyond Chloe's breakup and meeting Stormy. ");
+            //                }
+            //                else
+            //                    g.popUpNotice("You've already passed this point.");
+            //                break;
+            //            case "uncheat":
+            //                gv.mod("cheatMode", false);
+            //                menu.mClick("admin");
+            //                break;
+            //        }
+            //    });
+            //}
+            //else {
+            //    $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center; font-size:' + 24 * g.ratio + 'px;">' +
+            //        "<h2>Cheat Status: INACTIVE</h2>" +
+            //        "This cheat menu is a thank you to all the great support I've received from my $5 anf $10 Patrons." +
+            //        "The game is designed to be played without this cheat activated. So if you don't use cheat you're not missing anything. " +
+            //        '<button type="button" class="intro-button" id="cheat_passwordSubmit" style="font-size:' + 24 * g.ratio + 'px;">I\'m a Patreon Supporter<br/>Activate Cheats</button><br/>' +
+            //        '<button type="button" class="intro-button" id="cheat_cancel" style="font-size:' + 24 * g.ratio + 'px;">I\'m not a Patreon Supporter<br/>Cancel</button>' +
+            //        '<br/><br/>Thank you so much for playing.' +
+            //        '</div>');
+            //    $('#cheat_passwordSubmit').click(function () {
+            //        gv.mod("cheatMode", true);
+            //        menu.mClick("admin");
+            //    });
+            //    $("#heat_cancel").click(function () {
+            //        menu.mClick("menu");
+            //    });
+            //}
             break;
         case "time":
             $(".menu-buttonKill").remove();
@@ -1224,6 +1246,9 @@ menu.makeSaves = function () {
         gv: gv.save(),
         missy: missy.save()
     };
+    g.pastSaves.push({ name: g.getRooms(g.roomID).name, data: menu.save(" ", false) });
+    if (g.pastSaves.length > 20)
+        g.pastSaves.splice(0, 1);
 };
 
 menu.saveBtn = function(btn) {
@@ -1231,7 +1256,7 @@ menu.saveBtn = function(btn) {
     var bType = btn.attr('data-type');
     var cookieName = 'HatMP_' + saveID;
     if (bType === 'save') {
-        menu.save(cookieName, btn, saveID);
+        menu.save(cookieName, true);
     }
     else { //load game
         chat(-1, 0);
@@ -1239,8 +1264,8 @@ menu.saveBtn = function(btn) {
     }
 };
 
-menu.save = function (cookieName, btn, saveID) {
-    
+menu.save = function (cookieName, saveToCookie) {
+
     if (g.saveState !== null) {
         var timeDiff = Math.abs(g.dt.getTime() - g.startDate.getTime());
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -1256,16 +1281,13 @@ menu.save = function (cookieName, btn, saveID) {
         saveName = "Day: " + diffDays + ", " + thisRoom + " [Created:" + new Date().toISOString().split('T')[0] + "]";
 
         g.saveState.savename = saveName;
-        localStorage[cookieName] = JSON.stringify(g.saveState);
-
-        return true;
-        //if (btn !== null) {
-        //    btn.text('LOAD');
-        //    btn.attr('data-type', 'load');
-        //}
-
-        //$('.menu-save-line[data-save=' + saveID + ']').text(saveName);
-        //$('.menu-del[data-save=' + saveID + ']').prop('disabled', false);
+        if (saveToCookie) {
+            localStorage[cookieName] = JSON.stringify(g.saveState);
+            return true;
+        }
+        else {
+            return JSON.stringify(g.saveState);
+        }
     }
 };
 
@@ -1291,6 +1313,7 @@ menu.load = function (cookieName, btn, saveID) {
     scc.load(tp.scc);
     gv.load(tp.gv);
     missy.load(tp.missy);
+    
     try {
         pic.load(tp.pic);
     }
@@ -1317,9 +1340,15 @@ menu.load = function (cookieName, btn, saveID) {
     else
         $("#room-time").hide();
 
+    if (tp.version < 22) {
+        sissy.st[7].ach = false;
+        sissy.st[8].ach = false;
+    }
+
+    g.pastSaves = new Array();
     //Remove later, unfound bug, maybe old save
-    if (sc.getstep("missy") > 1)
-        g.roomMapAccess(203, true, true);
+    //if (sc.getstep("missy") > 1)
+    //    g.roomMapAccess(203, true, true);
 };
 
 menu.saveDel = function (cookieName) {
@@ -1452,14 +1481,19 @@ char.export = function (saveID) {
     $('#room-import-text').hide();
 };
 
-char.import = function () {
-    var tp = JSON.parse($("#room_export_data").val().trim());
+char.import = function (importData) {
+    var tp;
+    if (importData === null)
+        tp = JSON.parse($("#room_export_data").val().trim());
+    else
+        tp = JSON.parse(importData);
+
     g.newLoad = false;
     $('.room-left').show();
     $('#room_footer').show();
     $(".room-topper").show();
     $('.menu-tab').show();
-    var i;
+    console.log("v: " + tp.version);
     g.pass = tp.pass;
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
@@ -1479,6 +1513,12 @@ char.import = function () {
     cl.display();
     char.room(g.roomID);
     char.menu();
+
+    if (tp.version < 22) {
+        sissy.st[7].ach = false;
+        sissy.st[8].ach = false;
+    }
+
     $('.hide-start').show();
     $('.menu-button[data-type="close"]').click();
 
@@ -1524,7 +1564,7 @@ char.file_import = function () {
 
         reader.onload = function() {
             $("#room_export_data").val(reader.result);
-            char.import();
+            char.import(null);
         };
 
         reader.onerror = function() {

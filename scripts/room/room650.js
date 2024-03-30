@@ -3,7 +3,7 @@ var room650 = {};
 room650.main = function () {
     var btnList = new Array();
 
-    if (sc.tiffany().thisRoom)
+    if (sc.getTimeline("tiffany").thisRoom) {
         btnList.push({
             "type": "btn",
             "name": "tiffany",
@@ -13,7 +13,6 @@ room650.main = function () {
             "height": 1029,
             "image": "650_toyStore/650_tiffanyGreet.png"
         });
-    if (sc.candy().thisRoom) {
         btnList.push({
             "type": "btn",
             "name": "candy",
@@ -75,6 +74,9 @@ room650.btnclick = function (name) {
             }
             else if (sc.taskGetStep("envy", "gf") === 3) {
                 chat(67, 650);
+            }
+            else if (missy.activecase().caseId === 11 && missy.get("activeCaseComplete") === 0) {
+                chat(13, 650);
             }
             else {
                 chat(4, 650);
@@ -188,9 +190,10 @@ room650.chatcatch = function (callback) {
             inv.add("tifgift");
             break;
         case "h_29":
-            sc.setstep("tiffany", -9);
+            sc.show("tiffany");
+            sc.startMission("tiffany", "friend");
+            sc.completeMissionTask("tiffany", "friend", 0, true);
             char.room(400);
-
             break;
         case "c1":
             nav.killall();

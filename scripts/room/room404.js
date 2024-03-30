@@ -28,7 +28,7 @@ room404.main = function () {
 room404.btnclick = function (name) {
     switch (name) {
         case "spanky":
-            if (sc.getstep("spanky") === 0)
+            if (sc.getMission("spanky", "shop").notStarted)
                 chat(0, 404);
             else {
                 g.pass = "general";
@@ -43,7 +43,9 @@ room404.btnclick = function (name) {
 room404.chatcatch = function (callback) {
     switch (callback) {
         case "purchase":
-            sc.setstep("spanky", 1);
+            sc.show("spanky");
+            sc.startMission("spanky", "shop");
+            sc.completeMissionTask("spanky", "shop", 0);
             g.pass = "general";
             char.room(401);
             break;

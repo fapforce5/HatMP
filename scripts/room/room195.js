@@ -35,7 +35,7 @@ room195.btnclick = function (name) {
                 chat(9, 195);
                 break;
             case "it2_lost":
-                console.log("lost");
+                chat(12, 195);
                 break;
             default:
                 break;
@@ -127,7 +127,7 @@ room195.chatcatch = function (callback) {
         case "lockpickEnd":
             char.settime(17, 10);
             inv.add("lockpick");
-            char.room(0); 
+            char.room(201); 
             break;
         default:
             break;
@@ -245,6 +245,14 @@ room195.chat = function (chatID) {
                 "you to fuck around with and prank your loser friends. ",
             button: [
                 { chatID: -1, text: "Thanks ma'am", callback: "lockpickEnd" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "missy",
+            text: "Try again idiot. This time with a simple lock.",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "iteration2" },
             ]
         },
     ];

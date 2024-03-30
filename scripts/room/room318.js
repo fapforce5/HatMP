@@ -131,7 +131,7 @@ room318.chatcatch = function (callback) {
             break;
         case "steal":
             g.popUpNotice("You stole her panties. Pervert");
-            levels.mod("xdress", 25, 2);
+            levels.mod("xdress", 25, 4);
             cl.add("panties", "j");
             cl.add("bra", "j");
             g.pass = 318;
@@ -139,7 +139,7 @@ room318.chatcatch = function (callback) {
             break;
         case "stealDress":
             cl.add("dress", "j");
-            levels.mod("xdress", 25, 2);
+            levels.mod("xdress", 25, 4);
             g.pass = 318;
             char.room(8);
             break;

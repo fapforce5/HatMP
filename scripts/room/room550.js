@@ -13,7 +13,7 @@ room550.main = function () {
         }, 550);
         chat(13, 550);
     }
-    else if (sc.getstep("chad") > 1) {
+    else if (inv.has("gym")) {
         char.room(551);
     }
     else {
@@ -34,7 +34,6 @@ room550.main = function () {
         });
         nav.buildnav(navList);
     }
-    char.room(556);
 };
 
 room550.btnclick = function (name) {
@@ -84,7 +83,8 @@ room550.chatcatch = function (callback) {
             sc.completeMissionTask("chad", "membership", 2, true);
             break;
         case "getpass":
-            inv.update("gym", true, null);
+            inv.add("gym", true, null);
+            char.room(550);
             break;
         case "one":
             nav.killbutton("man");

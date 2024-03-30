@@ -1,7 +1,11 @@
 ﻿//Room name
 var room200 = {};
 room200.main = function () {
-
+    if (g.dt.getDay() === 1) {
+        $.each(missy.jobs, function (i, v) {
+            missy.st[v.thisWeek].c = 0;
+        });
+    }
     nav.button({
         "type": "btn",
         "name": "missy",
@@ -21,7 +25,8 @@ room200.btnclick = function (name) {
             var activeCase = missy.get("activeCase");
             var activeCaseComplete = missy.get("activeCaseComplete");
             var missyUniform = missy.get("uniform");
-            //console.log(activeCase, activeCaseComplete);
+            var sissyLevel = levels.get("xdress").l;
+
             if (missy.get("totalDaysWorked") < 1)
                 chat(0, 200);
             else if (missy.get("totalDaysWorked") === 5 && missy.get("missyEventTracker") === 0) {
@@ -64,6 +69,9 @@ room200.btnclick = function (name) {
                     case 9:
                         chat(50, 200);
                         break;
+                    case 12:
+                        chat(63, 200);
+                        break;
                 }
             }
             else if (missyUniform > 0 && missy.get("uniformNew") === 0) {
@@ -78,6 +86,14 @@ room200.btnclick = function (name) {
             else if (missyUniform === 2 && sissy.get("fem103").ach) {
                 char.room(223);
             }
+            else if (missy.st[32].c === 0 && sissy.st[19].ach) {
+                missy.st[32].c = 1;
+                chat(57, 200);
+            }
+            else if (missy.st[31].c === 0 && sissy.st[7].ach) {
+                missy.st[31].c = 1;
+                chat(55, 200);
+            }
             else
                 room200.chatcatch("selectJob");
         break;
@@ -86,6 +102,9 @@ room200.btnclick = function (name) {
         case "job_2":
         case "job_3":
         case "job_4":
+        case "job_5":
+        case "job_6":
+        case "job_7":
             g.pass = (parseInt(name.replace("job_", "")));
             char.room(218);
             break;
@@ -113,12 +132,23 @@ room200.chatcatch = function (callback) {
         case "minorInfraction":
             missy.mod("weeklyPay", -10);
             break;
+        case "pinkRoom0":
+            g.pass = 5;
+            char.room(216);
+            break;
         case "selectJob":
             var jobCounter = 0;
+            var showJob;
             nav.killall();
             nav.bg("200_frontOffice/work.jpg");
             $.each(missy.jobs, function (i, v) {
-                if (missy.st[v.thisWeek].c === 0) {
+                showJob = true;
+                if (i === 6 && missy.st[31].c < 1)
+                    showJob = false;
+                if (i === 5 && missy.st[32].c < 1)
+                    showJob = false;
+
+                if (missy.st[v.thisWeek].c === 0 && showJob) {
                     nav.button({
                         "type": "btn",
                         "name": "job_" + i,
@@ -135,17 +165,25 @@ room200.chatcatch = function (callback) {
             //friday reset fix if jobs are empty
             if (jobCounter === 0) {
                 $.each(missy.jobs, function (i, v) {
-                    missy.st[v.thisWeek].c === 0;
-                    nav.button({
-                        "type": "btn",
-                        "name": "job_" + i,
-                        "left": 400 + (Math.floor(i / 4) * 700),
-                        "top": 450 + ((i % 4) * 120),
-                        "width": 600,
-                        "height": 100,
-                        "image": "200_frontOffice/" + v.img
-                    }, 200);
-                    jobCounter++;
+                    showJob = true;
+                    if (i === 6 && missy.st[31].c < 1)
+                        showJob = false;
+                    if (i === 5 && missy.st[32].c < 1)
+                        showJob = false;
+
+                    if (showJob) {
+                        missy.st[v.thisWeek].c === 0;
+                        nav.button({
+                            "type": "btn",
+                            "name": "job_" + i,
+                            "left": 400 + (Math.floor(i / 4) * 700),
+                            "top": 450 + ((i % 4) * 120),
+                            "width": 600,
+                            "height": 100,
+                            "image": "200_frontOffice/" + v.img
+                        }, 200);
+                        jobCounter++;
+                    }
                 });
             }
 
@@ -214,7 +252,10 @@ room200.chatcatch = function (callback) {
         case "case_lostgirl_chastity":
             missy.caseComplete(6);
             g.pass = "chastity";
-            char.room(205);
+            if (missy.get("chastity") === 0)
+                char.room(205);
+            else
+                char.room(217);
             break;
         case "case_usb_end":
             gv.mod("money", 150);
@@ -261,7 +302,7 @@ room200.chatcatch = function (callback) {
             if (g.dt.getDay() === 5 && missy.get("weeklyPay") !== 0)
                 char.room(196);
             else
-                char.room(0);
+                char.room(201);
             break;
         case "case_goth":
             nav.killall();
@@ -278,6 +319,35 @@ room200.chatcatch = function (callback) {
             missy.caseComplete(9);
             room200.chatcatch("case_complete_end");
             break;
+        case "case_shopping":
+            chat(58, 200);
+            break;
+        case "case_bimbopanties":
+            nav.killall();
+            nav.bg("200_frontOffice/bimbospanties0.jpg");
+            chat(60, 200);
+            break;
+        case "case_bimbopantiesExplain":
+            missy.set("activeCase", g.internal.activeCase.caseId);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
+            if (g.dt.getDay() === 5 && missy.get("weeklyPay") !== 0)
+                char.room(196);
+            else
+                char.room(201);
+            break;
+        case "bimboPantiesPunish":
+            cl.c.panties = null;
+            cl.remove("panties", "bi");
+            missy.caseComplete(12);
+            char.room(217);
+            break;
+        case "bimboPantiesGoodEnd":
+            gv.mod("money", 250);
+            missy.mod("mood", 20);
+            missy.caseComplete(12);
+            room200.chatcatch("case_complete_end");
+            break;
         case "case_complete_end":
             if (g.gethourdecimal() < 10) {
                 g.internal = { caseList: missy.getcases(), activeCase: null };
@@ -287,6 +357,9 @@ room200.chatcatch = function (callback) {
                 char.room(196);
             else
                 char.room(0);
+            break;
+        case "case_clothing0":
+            char.room(0);
             break;
         case "hate":
             missy.mod("mood", -20);
@@ -306,7 +379,10 @@ room200.chatcatch = function (callback) {
                 chat(25, 200);
             }
             else {
-                nav.bg("205_chastity/soft.jpg");
+                if (missy.get("uniform") > 2)
+                    nav.bg("205_chastity/soft_r.jpg");
+                else
+                    nav.bg("205_chastity/soft.jpg");
                 chat(43, 200);
             }
             break;
@@ -324,12 +400,15 @@ room200.chatcatch = function (callback) {
             break;
         case "chastity3":
             cl.c.chastity = gv.get("castitycage");
-            if (cl.c.chastity === "cage")
-                nav.bg("205_chastity/chast0_6.jpg");
-            else if (missy.get("uniform") > 2)
+            
+            if (missy.get("uniform") > 2)
                 nav.bg("205_chastity/pink_r.jpg");
-            else
-                nav.bg("205_chastity/pink.jpg");
+            else {
+                if (cl.c.chastity === "cage")
+                    nav.bg("205_chastity/chast0_6.jpg");
+                else
+                    nav.bg("205_chastity/pink.jpg");
+            }
             break;
         case "reset":
             char.room(200);
@@ -339,6 +418,12 @@ room200.chatcatch = function (callback) {
             break;
         case "missyBtnClick":
             room200.btnclick("missy");
+            break;
+        case "bimbopantiesWearing":
+            if (cl.c.panties === "bi")
+                chat(64, 200);
+            else
+                chat(66, 200);
             break;
     };
 };
@@ -534,7 +619,8 @@ room200.chat = function (chatID) {
             {
                 chatID: 17,
                 speaker: "missy",
-                text: "Good. Don't fuck around ",
+                text: "Good. Don't fuck around.  " +
+                    "refer to it when you're searching for her. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "case_lostgirl2" }
                 ]
@@ -880,6 +966,124 @@ room200.chat = function (chatID) {
                     "Ignore those people and listen to those that truly love the real you. Now let's get to work. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "missyBtnClick" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "missy",
+                text: "So, you're quite the cocksucker now. We do need some help in the mornings with the glory hole " +
+                    "in the pink room. Workers in the glory hole don't get to wear clothing, so I'm sure you'll be " +
+                    "happy to hear that you need to work in the nude. ",
+                button: [
+                    { chatID: 56, text: "yes ma'am!", callback: "" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "missy",
+                text: "Since we're short staffed, and you have proven a compentent cock sucker you " +
+                    "can now suck cocks in place of working in my office. The booths are oral only. No stupid shit ok?",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "missyBtnClick" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "missy",
+                text: "I was talking with " + sc.n("p") + " about how cute you look in your new " +
+                    "sissy uniform and she let me know that she could really use your help at " +
+                    "the pink room today. I'll let her explain what she needs. Now run along and " +
+                    "help her out. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "pinkRoom0" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "missy",
+                text: "Inside of you is a slutty little girl; it's time to let the world know. " +
+                    "It's time for a shopping trip! I've given " + sc.n("tiffany") + " some money " +
+                    "to take you out and get you some girly clothing. ",
+                button: [
+                    { chatID: 59, text: "*Squeel*", callback: "" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "missy",
+                text: "Yes. Squeel. Now go meet " + sc.n("tiffany") + " at the mall and get your new " +
+                    "set of clothing. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am!", callback: "case_afterExplaniation" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "missy",
+                text: "I have a client that is a little odd, but has more money than he knows what " +
+                    "to do with. His tastes are very ummm.... well... he likes dirty panties, " +
+                    "and he's willing to pay a lot of money for them. The thing is, he prefers the " +
+                    "girl doesn't know he has their panties, so he pays me to get him those panties. ",
+                button: [
+                    { chatID: 61, text: "hmmmm", callback: "" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "missy",
+                text: "Now normally I would just deny him my services, but he helped me out when I " +
+                    "was trying to set up this business, so I help with these perversions of " +
+                    "his. Recently he was at the hospital and ran across a nurse there. I don't know " + 
+                    "her name, but I do know she's a such an idiot, most people just call her the Bimbo " +
+                    "nurse. I need you to sneak into her house and steal her panties. ",
+                button: [
+                    { chatID: 62, text: "Steal her panties ma'am? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "missy",
+                text: "Yes. Now that you can pick locks I recommend you sneak in when she's either asleep " +
+                    "or at work and find some of her dirty panties. Don't bring clean ones from her dresser, " +
+                    "you must find her dirty panties. The dirtier they are, the more I get paid. She lives in " +
+                    "the pink house in the residential part of the city. Don't get caught and only steal dirty " +
+                    "panties. Got it? ",
+                button: [
+                    { chatID: -1, text: "Got it ma'am! ", callback: "case_bimbopantiesExplain" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "missy",
+                text: "So you've brought me some poor girl's dirty panties? ",
+                button: [
+                    { chatID: 64, text: "Yes ma'am! ", callback: "bimbopantiesWearing" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "missy",
+                text: "Oh good. Just hand them over and I'll get you paid.  ",
+                button: [
+                    { chatID: 65, text: "Oh. Well ma'am I'm wearing the panties. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "missy",
+                text: "Sometimes I don't know what goes on in that stupid brain of yours. Why would " +
+                    "you wear the panties here when you know it's for a client. *groan*. Strip them " +
+                    "off and get ready to receive your punishment. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am. ", callback: "bimboPantiesPunish" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "missy",
+                text: "Oh good. Just hand them over and I'll get you paid.  ",
+                button: [
+                    { chatID: -1, text: "Thanks ma'am! ", callback: "bimboPantiesGoodEnd" },
                 ]
             },
         ];

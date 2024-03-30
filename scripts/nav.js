@@ -114,10 +114,14 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn-lips rom-event";
         else if (btn.type === "tongue")
             classes = "room-btn-tongue rom-event";
+        else if (btn.type === "dick")
+            classes = "room-btn-dick rom-event";
         else if (btn.type === "brush")
             classes = "room-btn-brush rom-event";
         else if (btn.type === "hand")
             classes = "room-btn-hand rom-event";
+        else if (btn.type === "vib")
+            classes = "room-btn-vib rom-event";
         else if (btn.type === "btnflat")
             classes = "room-btnflat room-btn rom-event";
         else if (btn.type === "zimg")
@@ -397,18 +401,19 @@ nav.room = function (roomID) {
 
 
 nav.next = function (btnClickName) {
-    nav.button({
-        "type": "btn",
-        "name": btnClickName,
-        "left": 1695,
-        "top": 920,
-        "width": 225,
-        "height": 75,
-        "image": "1001_rand/next.png"
-    }, g.roomID);
+    nav.drawButton("1001_rand/next.png", btnClickName);
 };
 
 nav.back = function (btnClickName) {
+    nav.drawButton("1001_rand/back.png", btnClickName);
+};
+
+nav.cum = function (btnClickName) {
+    nav.drawButton("1001_rand/cum.png", btnClickName);
+};
+
+
+nav.drawButton = function (image, btnClickName) {
     nav.button({
         "type": "btn",
         "name": btnClickName,
@@ -416,9 +421,9 @@ nav.back = function (btnClickName) {
         "top": 920,
         "width": 225,
         "height": 75,
-        "image": "1001_rand/back.png"
+        "image": image
     }, g.roomID);
-}
+};
 
 nav.wait = function (btnClickName) {
     nav.button({

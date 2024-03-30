@@ -16,7 +16,6 @@ room101.main = function () {
         chat(22, 101);
     }
     else {
-        var tinaRel = sc.getstep("tina");
         if (daily.get("construction")) {
             nav.button({
                 "type": "btn",
@@ -84,7 +83,6 @@ room101.btnclick = function (name) {
 };
 
 room101.chatcatch = function (callback) {
-    var tinaRel = sc.getstep("tina");
     switch (callback) {
         case "leave":
             char.room(100);
@@ -318,7 +316,7 @@ room101.chat = function (chatID) {
             text: "Hey " + sc.n("me") + " What do you want to talk about?",
             button: [
                 { chatID: 12, text: "How much do I get paid each day?", callback: "payQuestion" },
-                { chatID: sc.getstep("tina") < 10 ? 19 : sc.getstep("tina") < 16 ? 20 : 21, text: "How beautiful you are.", callback: "" },
+                //{ chatID: sc.getstep("tina") < 10 ? 19 : sc.getstep("tina") < 16 ? 20 : 21, text: "How beautiful you are.", callback: "" },
                 { chatID: -1, text: "Nothing", callback: "" }
             ]
         },

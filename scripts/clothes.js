@@ -27,12 +27,12 @@ cl.init = function () {
     };
 
     cl.saveOutfit = [
-        { name: "Work", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-        { name: "Casual", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-        { name: "Exercise", shoes: "br", socks: "w", pants: "b", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-        { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-        { name: "Outfit 5", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-        { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "paisley", accessories: new Array(), isReg: false }
+        { name: "Work", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: null, isReg: true },
+        { name: "Casual", shoes: "w", socks: "w", pants: "j", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: null, isReg: true },
+        { name: "Exercise", shoes: "br", socks: "w", pants: "b", panties: "u", bra: null, shirt: "g", dress: null, swimsuit: null, pj: null, accessories: null, isReg: true },
+        { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: null, isReg: true },
+        { name: "Outfit 5", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: null, isReg: true },
+        { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "paisley", accessories: null, isReg: false }
     ];
 
     cl.list = [
@@ -162,6 +162,7 @@ cl.init = function () {
         { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
         { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "accessories", name: "pompom", display: "Pom-pom", img: "pompom.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "accessories", name: "crown", display: "Sissy Crown", img: "crown.png", sex: "f", inv: false, daring: 4, price: -1 },
 
         { type: "nipple", name: "n_r", display: "Nipple Ring", img: "nipple_ring.png", sex: "f", inv: false, daring: 1, price: 20 },
         { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
@@ -297,6 +298,10 @@ cl.remove = function (type, name) {
             case "pj":
                 if (cl.saveOutfit[i].pj === name)
                     cl.saveOutfit[i].pj = null;
+                break;
+            case "accessories":
+                if (cl.saveOutfit[i].accessories === name)
+                    cl.saveOutfit[i].accessories = null;
                 break;
             default:
                 console.log("missing: " + type + ", " + name);
@@ -434,7 +439,13 @@ cl.load = function (ra) {
     cl.c = $.extend(true, {}, ra.current);
 
     cl.saveOutfit = $.extend(true, {}, ra.saveOutfit);
-
+    for (i = 0; i < 6; i++) {
+        console.log("fasdf");
+        if (typeof cl.saveOutfit[i].accessories === "object")
+            cl.saveOutfit[i].accessories = null;
+    }
+    if (typeof cl.c.accessories === "object")
+        cl.c.accessories = null;
 };
 
 cl.where = function (type, name) {
@@ -523,10 +534,15 @@ cl.hasoutfit = function (ctype) {
                         if (cl.c.pants === null)
                             missingClothing.push("pants");
                     }
-                    if (cl.c.panties === null && sissyLevel < 8)
-                        missingClothing.push("panties");
-                    if (cl.c.bra === null && sissyLevel > 5 && sissyLevel < 8)
-                        missingClothing.push("bra");
+                    if (cl.c.panties === null && sissyLevel < 8) {
+                        if (cl.hasClothingType("panties"))
+                            missingClothing.push("panties");
+                    }
+                    if (cl.c.bra === null && sissyLevel > 3 && sissyLevel < 8) {
+                        if (cl.hasClothingType("bra"))
+                            missingClothing.push("bra");
+                    }
+
                 }
             }
             break;
@@ -1660,8 +1676,9 @@ cl.buttplug = [
 ];
 
 cl.accessories = [
-    { name: "piggy", type: "head", image: "acc_piggy.png", back: null },
-    { name: "ballgag", type: "head", image: "acc_ballgag.png", back: null }
+    { name: "piggy", type: "char-accHead", image: "acc_piggy.png", back: null },
+    { name: "ballgag", type: "char-accHead", image: "acc_ballgag.png", back: null },
+    { name: "crown", type: "char-accHead", image: "crown.png", back: null }
 ];
 
 cl.displayChar = function (ratio, top, left, back) {
@@ -2056,22 +2073,31 @@ cl.display = function () {
         else
             cl.subDisplay("char-shoes", null);
 
-        
-        $.each(cl.c.accessories, function (i, v) {
-            $.each(cl.accessories, function (j, u) {
-                if (v === u.name) {
-                    var thisAccImg = cback ? u.back : u.image;
-                    cl.subDisplayAppend("char-accBody", thisAccImg);
-                    //if (u.type === "head" && thisAccImg !== null) {
-                    //    $('#char-accHead').append('<img src="./images/mainChar/' + thisAccImg + '" />');
-                    //}
-                    //else if (thisAccImg !== null) {
-                    //    $('#char-accBody').append('<img src="./images/mainChar/' + thisAccImg + '" />');
-                    //}
+        if (cl.c.accessories !== null) {
+            $.each(cl.accessories, function (i, v) {
+                if (v.name === cl.c.accessories) {
+                    cl.subDisplay(v.type, cback ? v.back : v.image);
                     return false;
                 }
             });
-        });
+        }
+       
+        
+        //$.each(cl.c.accessories, function (i, v) {
+        //    $.each(cl.accessories, function (j, u) {
+        //        if (v === u.name) {
+        //            var thisAccImg = cback ? u.back : u.image;
+        //            cl.subDisplayAppend("char-accBody", thisAccImg);
+        //            //if (u.type === "head" && thisAccImg !== null) {
+        //            //    $('#char-accHead').append('<img src="./images/mainChar/' + thisAccImg + '" />');
+        //            //}
+        //            //else if (thisAccImg !== null) {
+        //            //    $('#char-accBody').append('<img src="./images/mainChar/' + thisAccImg + '" />');
+        //            //}
+        //            return false;
+        //        }
+        //    });
+        //});
 
         cl.cockDisplay();
         cl.energydisplay();
@@ -2111,7 +2137,7 @@ cl.subDisplayAppend = function (id, image) {
     if (image !== null) {
         var btnWidth = 300 * g.ratio;
         var btnHeight = 600 * g.ratio;
-        $('#' + id).after('<div class="char-accBodyx char-layer" style="top:' + 50*g.ratio + 'px;"><img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:0px; left:0px; position:absolute" /></div>');
+        $('#' + id).after('<div class="char-layer" style="top:' + 50*g.ratio + 'px;"><img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:0px; left:0px; position:absolute" /></div>');
     }
 };
 
@@ -2638,7 +2664,7 @@ cl.checkAllClothing = function () {
                 }
             break;
         default:
-            console.log("missing: " + type + ", " + name);
+            console.log("missing: " + name);
             break;
         }
     return clothes;

@@ -33,8 +33,8 @@ room401.main = function () {
         g.pass.pj = cl.c.pj;
         $("#room_footer").hide();
         var changeRoomID = 400;
-        if (switchName === "bra" && sc.getstep("jada") < 2)
-            changeRoomID = 402;
+        //if (switchName === "bra" && sc.getstep("jada") < 2)
+        //    changeRoomID = 402;
         $.each(g.rooms, function (j, u) {
 
             if (u.roomID === changeRoomID) {
@@ -56,7 +56,7 @@ room401.main = function () {
         case "purse":
             navList = [400];
             nav.bg("401_purchase/purse.jpg", "401_purchase/purse.jpg");
-            room401.makeInv(["b"], g.sissy[0].ach, 1);
+            room401.makeInv(["b"], gv.get("xdress"), 1);
             break;
         case "saucy":
             navList = [];
@@ -117,7 +117,7 @@ room401.main = function () {
             var spankyInv = ["e", "g"];
             //if (sc.getEvent("spanky", 3) || g.sissy[51].ach)
             //    spankyInv.push("h");
-            if (sc.getMission("envy", "hypno").inProgress)
+            if (sc.getMission("spanky", "hypno").inProgress)
                 spankyInv.push("y");
             if (sc.getMissionTask("spanky", "hypno", 2).success) {
                 priceMult = 3;
@@ -321,7 +321,7 @@ room401.makeClothing = function (type, sex) {
     var sissyLevel = levels.get("xdress").l;
     if (sissyLevel > 7)
         lewdlevel = [0, 1, 2, 3, 4];
-    else if (sissyLevel > 5)
+    else if (sissyLevel > 4)
         lewdlevel = [0, 1, 2, 3];
     else
         lewdlevel = [0];

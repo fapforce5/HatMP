@@ -4,7 +4,7 @@ room310.main = function () {
     var btnList = [
         {
             "type": "btn",
-            "name": "name",
+            "name": "door",
             "left": 581,
             "top": 518,
             "width": 160,
@@ -41,9 +41,12 @@ room310.btnclick = function (name) {
                 "top": 470,
                 "width": 329,
                 "height": 610,
-                "image": "314_thirdFloor/dollmaker.png"
+                "image": "310_secondfloor/dollmaker.png"
             }, 310)
-            
+            if (g.isNight())
+                chat(0, 310);
+            else
+                chat(1, 310);
             break;
         default:
             break;
@@ -52,7 +55,8 @@ room310.btnclick = function (name) {
 
 room310.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "reset":
+            char.room(310);
             break;
         default:
             break;
@@ -63,12 +67,20 @@ room310.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "dollmaker",
+            text: "Go away. It's late",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "oh. sorry", callback: "reset" }
             ]
-        }
+        },
+        {
+            chatID: 1,
+            speaker: "dollmaker",
+            text: "I don't know you. Go away and let me play with my dolls.",
+            button: [
+                { chatID: -1, text: "oh. sorry", callback: "reset" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

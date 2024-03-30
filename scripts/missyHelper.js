@@ -8,7 +8,7 @@ missy.init = function () {
     missy.st = [
         { id: 0, n: "mood", c: 0 },
         { id: 1, n: "late", c: 0 },
-        { id: 2, n: "uniform", c: 0 }, //0 is suit, 1 is suit and panties, 2 is suit panties shaved
+        { id: 2, n: "uniform", c: 0 }, //0 is suit, 1 is suit and panties, 2 is suit panties shaved, 3 red blouse
         { id: 3, n: "activeCase", c: 0 },
         { id: 4, n: "weeklyPay", c: 0 },
         { id: 5, n: "jobDataEntry", c: 0 },
@@ -16,9 +16,9 @@ missy.init = function () {
         { id: 7, n: "jobFileDocuments", c: 0 },
         { id: 8, n: "jobWorkReciption", c: 0 },
         { id: 9, n: "jobRunErrands", c: 0 },
-        { id: 10, n: "jobPlaceholder1", c: 0 },
-        { id: 11, n: "jobPlaceholder2", c: 0 },
-        { id: 12, n: "jobPlaceholder3", c: 0 },
+        { id: 10, n: "maidCumDump", c: 0 },
+        { id: 11, n: "gloryHole", c: 0 },
+        { id: 12, n: "trash", c: 0 },
         { id: 13, n: "hypno1", c: 0 },
         { id: 14, n: "hypno2", c: 0 },
         { id: 15, n: "hypno3", c: 0 },
@@ -36,7 +36,11 @@ missy.init = function () {
         { id: 27, n: "jobCleanToiletUniform", c: 0 },
         { id: 28, n: "sissySchoolDays", c: 0 },
         { id: 29, n: "cage", c: 0 }, //0 cage, 1 pink, 2 pinkx2
-        { id: 30, n: "missyEventTracker", c: 0 } //0 cage, 1 pink, 2 pinkx2
+        { id: 30, n: "missyEventTracker", c: 0 }, //0 cage, 1 pink, 2 pinkx2
+        { id: 31, n: "gloryHoleCounter", c: 0 }, 
+        { id: 32, n: "cumMaidCounter", c: 0 },
+        { id: 33, n: "trashSearchCounter", c: 0 },
+        { id: 34, n: "subCounter197", c: 0 },
     ];
 
     missy.cases = [
@@ -51,6 +55,8 @@ missy.init = function () {
         { caseId: 8, name: "case_trash", show: true, complete: false, success: false },
         { caseId: 9, name: "case_goth", show: true, complete: false, success: false },
         { caseId: 10, name: "case_newclothes", show: true, complete: false, success: false },
+        { caseId: 11, name: "case_shopping", show: true, complete: false, success: false },
+        { caseId: 12, name: "case_bimbopanties", show: true, complete: false, success: false },
     ];
 }
 
@@ -119,7 +125,8 @@ missy.activecase = function () {
             { caseId: 8, name: "case_locket", txt: "Get the locket from the prostitute at the homeless camp. ", m: [], isComplete: activeCaseComplete },
             { caseId: 9, name: "case_goth", txt: "Babysit Bill and get her to the train station on time. ", m: [], isComplete: activeCaseComplete },
             { caseId: 10, name: "case_newclothes", txt: "Visit Tiffany at Toys 'n Us and pick up your new uniform.", m: [650], isComplete: activeCaseComplete },
-
+            { caseId: 11, name: "case_shopping", txt: "Meet Tiffany at the Toys 'n Us.", m: [650], isComplete: activeCaseComplete },
+            { caseId: 12, name: "case_bimbopanties", txt: "Steal the panties from the Bimbo", m: [75], isComplete: activeCaseComplete },
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -136,6 +143,9 @@ missy.jobs = [
     { id: 2, n: "Data Entry", img: "errand0.png", pay: 25, page: 219, thisWeek: 5 },
     { id: 3, n: "Work Reciption", img: "errand2.png", pay: 40, page: 221, thisWeek: 8 },
     { id: 4, n: "Run Errands", img: "errand5.png", pay: 30, page: 222, thisWeek: 9 },
+    { id: 5, n: "Cum Dump Maid", img: "errand6.png", pay: 35, page: 216, thisWeek: 10 },
+    { id: 6, n: "Glory Hole", img: "errand7.png", pay: 50, page: 212, thisWeek: 11 },
+    { id: 7, n: "Search the trash", img: "errand8.png", pay: 15, page: 173, thisWeek: 12 },
 ];
 
 missy.didJob = function (jobId, payMulti, payOverride) {
@@ -153,6 +163,7 @@ missy.getcases = function () {
     var canDoCase;
     var piLevel = levels.get("pi").l;
     var completeCounter = 0;
+    var sissyLevel = levels.get("xdress").l;
 
     for (i = 4; i < missy.cases.length; i++) {
         if (missy.cases[i].complete)
@@ -179,12 +190,12 @@ missy.getcases = function () {
             if (!missy.cases[i].complete && missy.cases[i].show) {
                 switch (missy.cases[i].name) {
                     case "case_booth":
-                        canDoCase = piLevel > 1;
+                        canDoCase = piLevel > 0;
                         caseList.push({
                             caseId: i,
                             active: canDoCase,
                             icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
+                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 1).",
                             callback: missy.cases[i].name
                         });
                         break;
@@ -220,17 +231,29 @@ missy.getcases = function () {
                             callback: missy.cases[i].name
                         });
                         break;
-                    case "case_jeffery":
-                        //if (missy.get("pantiesFirstTime") > 1) {
-                        //    canDoCase = "lockpick";
-                        //    caseList.push({
-                        //        caseId: i,
-                        //        active: false,
-                        //        icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                        //        notReadyTxt: "Wear panties...",
-                        //        callback: missy.cases[i].name
-                        //    });
-                        //}
+                    case "case_shopping":
+                        if (sissyLevel > 3) {
+                            canDoCase = sissyLevel > 4;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Keep wearing your panties and attend the sissy school. [Sissy Level 5]",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_bimbopanties":
+                        if (levels.get("pi").l > 3) {
+                            canDoCase = inv.has("lockpick");
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level and get the lock pick class. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
                         break;
                 }
             }
@@ -334,6 +357,11 @@ missy.afterLunch = function () {
         if (crossRef[i].char === today) {
             returnRoomId = crossRef[i].room;
             break;
+        }
+    }
+    if (returnRoomId === 198) {
+        if (levels.get("pi").l > 4 && !inv.has("lockpick")) {
+            returnRoomId = 195;
         }
     }
     return returnRoomId;

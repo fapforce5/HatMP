@@ -189,7 +189,7 @@ room222.chatcatch = function (callback) {
             room222.chatcatch("lunch");
             break;
         case "case0-2-bj":
-            if (cl.appearance < 2)
+            if (cl.appearance() < 2)
                 chat(25, 222);
             else
                 chat(26, 222);

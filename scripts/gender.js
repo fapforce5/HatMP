@@ -12,6 +12,9 @@ gender.isCockTooSmallForSex = function(){
 };
 
 gender.isGirl = function () {
+    var appearance = cl.appearance();
+    if (appearance === 5)
+        return cl.c.chest > 1;
     return cl.appearance() > 2;
 }
 

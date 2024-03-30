@@ -136,48 +136,51 @@ room250.btnclick = function (name) {
                 chat(35, 250);
             break;
         case "hollyStand":
-            var jefferyStep = sc.getstep("jeffery");
+            //var jefferyStep = sc.getstep("jeffery");
             if (gv.get("jobapplybeaver") === 1) {
                 chat(5, 250);
             }
-            else if (jefferyStep === 0 || jefferyStep === 2) {
+            else {
                 chat(0, 250);
             }
-            else if (jefferyStep === 3) {
-                if (g.hourBetween(7, 10)) {
-                    chat(10, 250);
-                }
-                else {
-                    chat(8, 250);
-                }
-            }
-            else if (jefferyStep === 4) {
-                chat(17, 250);
-            }
-            else if (jefferyStep === 5) {
-                if (g.hourBetween(6, 11))
-                    chat(18, 250);
-                else
-                    chat(0, 250);
-            }
-            else if (jefferyStep > 7) {
-                if (g.hourBetween(6, 11)) {
-                    if (sc.getEvent("holly", -1)) {
-                        chat(74, 250);
-                    }
-                    else {
-                        chat(73, 250);
-                    }
-                }
-                else {
-                    if (sc.getEvent("holly", -1)) {
-                        chat(77, 250);
-                    }
-                    else {
-                        chat(76, 250);
-                    }
-                }
-            }
+            //else if (jefferyStep === 0 || jefferyStep === 2) {
+            //    chat(0, 250);
+            //}
+            //else if (jefferyStep === 3) {
+            //    if (g.hourBetween(7, 10)) {
+            //        chat(10, 250);
+            //    }
+            //    else {
+            //        chat(8, 250);
+            //    }
+            //}
+            //else if (jefferyStep === 4) {
+            //    chat(17, 250);
+            //}
+            //else if (jefferyStep === 5) {
+            //    if (g.hourBetween(6, 11))
+            //        chat(18, 250);
+            //    else
+            //        chat(0, 250);
+            //}
+            //else if (jefferyStep > 7) {
+            //    if (g.hourBetween(6, 11)) {
+            //        if (sc.getEvent("holly", -1)) {
+            //            chat(74, 250);
+            //        }
+            //        else {
+            //            chat(73, 250);
+            //        }
+            //    }
+            //    else {
+            //        if (sc.getEvent("holly", -1)) {
+            //            chat(77, 250);
+            //        }
+            //        else {
+            //            chat(76, 250);
+            //        }
+            //    }
+            //}
             break;
         case "kshelf":
             nav.killall();

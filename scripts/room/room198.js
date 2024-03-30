@@ -175,7 +175,7 @@ room198.chatcatch = function (callback) {
             }
             break;
         case "endTraining":
-            char.room(0);
+            char.room(201);
             break;
         default:
             break;

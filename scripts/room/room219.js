@@ -165,7 +165,7 @@ room219.chatcatch = function (callback) {
             break;
         case "workLunch":
             //track if success
-            missy.didJob(2, 0, 1);
+            missy.didJob(2, 1, null);
             char.room(224);
             break;
         default:

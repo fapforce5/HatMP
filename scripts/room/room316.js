@@ -340,6 +340,7 @@ room316.btnclick = function (name) {
                 sex.mod("oral", false, "f", 1);
                 cl.doCum();
                 nav.bg("316_livingroom/bj3.jpg");
+                nav.killbutton("bj");
                 chat(49, 316);
             }
             break;

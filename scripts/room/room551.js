@@ -130,7 +130,7 @@ room551.btnclick = function (name) {
         case "squat":
             nav.killbutton("squat");
             nav.button({
-                "type": "btn",
+                "type": "img",
                 "name": "squat",
                 "left": 670,
                 "top": 0,
@@ -139,42 +139,56 @@ room551.btnclick = function (name) {
                 "image": "551_gymInside/551_squat2.png"
             }, 551);
             var missionWorkout = sc.getMission("g", "workout");
+            var secretRoom = sc.getMission("g", "secret");
+            var spar = sc.getMission("g", "spar");
             var strengthLevel = levels.get("strength").l;
+
             if (missionWorkout.notStarted) {
                 chat(1, 551);
             }
-            else if (strengthLevel > 0 && sc.getMissionTask("g", "workout", 1).notStarted) {
+            else if (strengthLevel > 0 && spar.notStarted) {
                 sc.completeMissionTask("g", "workout", 1);
                 chat(46, 551);
             }
-            else if (strengthLevel > 4) {
+            else if (strengthLevel > 4 && secretRoom.notStarted) {
                 chat(37, 551);
             }
             else {
-                var outfit = cl.hasoutfit("workout");
-                if (outfit !== null) {
-                    g.internal = outfit;
-                    chat(31, 551);
+                if (secretRoom.inProgress || spar.inProgress) {
+                    sc.select("icon_workout", "551_gymInside/icon_workout.png", 0);
+                    if (spar.inProgress)
+                        sc.select("icon_spar", "551_gymInside/icon_spar.png", 1);
+                    if (secretRoom.inProgress)
+                        sc.select("icon_secret", "551_gymInside/icon_secret.png", 2);
+                    sc.selectCancel("icon_cancel", 3);
                 }
-                else if (gv.get("energy") < 50)
-                    chat(32, 551);
-                else if (sc.taskGetStep("g", "workout") === -1)
-                    chat(14, 551);
-                //else if (g.sissy[19].ach)
-                //    chat(42, 551);
-                else
-                    chat(33, 551);
+                else {
+                    var outfit = cl.hasoutfit("workout");
+                    if (outfit !== null) {
+                        g.internal = outfit;
+                        chat(31, 551);
+                    }
+                    else if (gv.get("energy") < 50)
+                        chat(32, 551);
+                    else if (sc.taskGetStep("g", "workout") === -1)
+                        chat(14, 551);
+                    else
+                        chat(33, 551);
+                }
             }
-            //if (gv.get("oncase") === "sewer" && !inv.has("sewer")){
-            //    chat(45, 551);
-            //}
-            //else if (gv.get("oncase") === "sewer" && !sc.getEvent("g", -4)) {
-            //    chat(46, 551);
-            //}
-            //else if (sc.getstep("g") === 0)
-            //    chat(1, 551);
             
-            
+            break;
+        case "icon_workout":
+            chat(33, 551);
+            break;
+        case "icon_spar":
+            char.room(556);
+            break;
+        case "icon_secret":
+            char.room(555);
+            break;
+        case "icon_cancel":
+            char.room(551);
             break;
         case "emp":
             if (sc.getMission("g", "secret").inProgress) {
@@ -362,6 +376,9 @@ room551.chatcatch = function (callback) {
                 chat(34, 551);
             else
                 chat(36, 551);
+            break;
+        case "secret":
+            char.room(555);
             break;
         case "endDay":
             gv.mod("energy", -50);
@@ -726,7 +743,7 @@ room551.chat = function (chatID) {
                 { chatID: 34, text: "Sit-ups", callback: "eSit" },
                 { chatID: 34, text: "Push-ups", callback: "ePush" },
                 { chatID: 34, text: "Squats", callback: "eSquat" },
-                { chatID: -1, text: "Never mind", callback: "" },
+                { chatID: -1, text: "Never mind", callback: "reset" },
             ]
         },
         {
@@ -783,10 +800,9 @@ room551.chat = function (chatID) {
         {
             chatID: 40,
             speaker: "g",
-            text: "I'm going to take that puny body of yours and sculpt it into something beautiful. Until tomorrow get down on your ass and " +
-                "so some sit-ups. ",
+            text: "I'm going to take that puny body of yours and sculpt it into something beautiful. Follow me",
             button: [
-                { chatID: 34, text: "Sit-ups", callback: "eSit" }
+                { chatID: 34, text: "*Gulp*", callback: "secret" }
             ]
         },
         {

@@ -1,20 +1,21 @@
 ﻿//My Room
 var room52 = {};
 room52.main = function () {
-    if (g.pass === "takeit") {
-        g.pass = "";
-        nav.button({
-            "type": "img",
-            "name": "duo",
-            "left": 489,
-            "top": 60,
-            "width": 1218,
-            "height": 1020,
-            "image": "52_myroom/duo.png",
-        }, 52);
-        chat(2, 52);
-    }
-    else if (g.pass === "endSleepyTime") {
+    //if (g.pass === "takeit") {
+    //    g.pass = "";
+    //    nav.button({
+    //        "type": "img",
+    //        "name": "duo",
+    //        "left": 489,
+    //        "top": 60,
+    //        "width": 1218,
+    //        "height": 1020,
+    //        "image": "52_myroom/duo.png",
+    //    }, 52);
+    //    chat(2, 52);
+    //}
+    //else
+    if (g.pass === "endSleepyTime") {
         g.pass = "";
         chat(1, 52);
     }
@@ -214,12 +215,12 @@ room52.chatcatch = function (callback) {
             cl.c.pj = cl.saveOutfit[thisEntry].pj;
             cl.display();
             g.pass = "";
-            for (q = 0; q < cl.list.length; q++) {
-                if (cl.list[q].sex === "m" && cl.list[q].inv) {
-                    g.pass = "takeit"
-                    i = 99999;
-                }
-            }
+            //for (q = 0; q < cl.list.length; q++) {
+            //    if (cl.list[q].sex === "m" && cl.list[q].inv) {
+            //        g.pass = "takeit"
+            //        i = 99999;
+            //    }
+            //}
             char.room(52);
             break;
         case "o4":

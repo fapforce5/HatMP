@@ -237,7 +237,7 @@ room151.chatcatch = function (callback) {
             break;
         case "c2_3":
             char.addtime(250);
-            cl.c.accessories.push("ballgag");
+            cl.c.accessories = "ballgag";
             cl.display();
             zcl.displayMain(100, 400, .23, "clothes", false);
             break;
@@ -265,7 +265,7 @@ room151.chatcatch = function (callback) {
             g.sissy[33].ach = true;
             cl.add("shirt", "cor");
             cl.add("pants", "co");
-            cl.c.accessories = new Array();
+            cl.c.accessories = null;
             cl.display();
             char.room(0);
             break;

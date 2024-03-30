@@ -2,30 +2,32 @@
 var room53 = {};
 room53.main = function () {
     if (sc.candy().thisRoom) {
+        
         if (g.hourBetween(7, 22)) {
-            var candyStep = sc.getstep("candy");
-            if (candyStep === 101 && !daily.get("candy")) {
-                nav.button({
-                    "type": "btn",
-                    "name": "101bj",
-                    "left": 430,
-                    "top": 0,
-                    "width": 730,
-                    "height": 1080,
-                    "image": "53_candy/101_1.png"
-                }, 53);
-            }
-            else {
-                nav.button({
-                    "type": "btn",
-                    "name": "candy",
-                    "left": 906,
-                    "top": 16,
-                    "width": 648,
-                    "height": 1064,
-                    "image": "53_candy/c.png"
-                }, 53);
-            }
+            chat(34, 53);
+            //var candyStep = sc.getstep("candy");
+            //if (candyStep === 101 && !daily.get("candy")) {
+            //    nav.button({
+            //        "type": "btn",
+            //        "name": "101bj",
+            //        "left": 430,
+            //        "top": 0,
+            //        "width": 730,
+            //        "height": 1080,
+            //        "image": "53_candy/101_1.png"
+            //    }, 53);
+            //}
+            //else {
+            //    nav.button({
+            //        "type": "btn",
+            //        "name": "candy",
+            //        "left": 906,
+            //        "top": 16,
+            //        "width": 648,
+            //        "height": 1064,
+            //        "image": "53_candy/c.png"
+            //    }, 53);
+            //}
         }
         else
             nav.bg("53_candy/53_candyRoom_night_sleep.jpg")
@@ -688,7 +690,14 @@ room53.chat = function (chatID) {
                 { chatID: -1, text: "Cool. See you then! ", callback: "102_end" }
             ]
         },
-
+        {
+            chatID: 34,
+            speaker: "candy",
+            text: "Not updated yet. Future release. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
 
 
 
@@ -871,6 +880,7 @@ room53.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "bc6" }
             ]
         },
+        
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

@@ -1,10 +1,10 @@
 ﻿//hallway
 var room11 = {};
 room11.main = function () {
-    if (cl.isCrossdressing() && sc.getstep("lola") < 200) {
-        char.room(16);
-    }
-    else if (g.hasAccess(16).access) {
+    //if (cl.isCrossdressing() && sc.getstep("lola") < 200) {
+    //    char.room(16);
+    //}
+    if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;
         var sisterLocation = sc.getTimeline("lola").roomID;
         var openDoor = g.hourBetween(7, 21);

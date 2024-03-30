@@ -33,6 +33,9 @@ room314.btnclick = function (name) {
         case "stairs":
             char.room(303);
             break;
+        case "door":
+            chat(0, 314);
+            break;
         default:
             break;
     }
@@ -51,10 +54,10 @@ room314.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "thinking",
+            text: "No one's answering. Must be out?",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         }
     ];

@@ -3,7 +3,7 @@ var room400 = {};
 
 room400.main = function () {
 
-    if (sc.getEvent("tiffany", -9)) {
+    if (missy.activecase().caseId === 11 && sc.taskGetStep("tiffany", "friend") === 1) {
         nav.button({
             "type": "btn",
             "name": "tiffany0",
@@ -116,7 +116,7 @@ room400.btnclick = function (name) {
     if (g.pass === "bra")
         char.room(402);
     else if (g.pass === "saucy") {
-        if (g.sissy[29].ach) {
+        if (gv.get("xdress")) {
             g.pass = "saucy";
             char.room(401);
         }

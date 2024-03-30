@@ -219,9 +219,9 @@ room451.btnclick = function (name) {
         case "insert_1":
             nav.killall();
             nav.bg("451_parkMensRoom/bj1.jpg");
-            if (sc.getstep("missy") < 2)
-                chat(6, 451);
-            else
+            //if (sc.getstep("missy") < 2)
+            //    chat(6, 451);
+            //else
                 chat(7, 451);
             break;
         case "gloryhole":

@@ -102,6 +102,10 @@ room209.chatcatch = function (callback) {
         case "afterClass":
             sissy.passclass(true);
             break;
+        case "picture":
+            nav.bg("209_classroom/picture.jpg");
+            pic.add("classbefore");
+            break;
         default:
             break;
     }
@@ -166,17 +170,21 @@ room209.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "!kareem",
-                text: "I'm still kinda sketched out about this school. I'm just here to scope it out.",
+                text: "I'm still kinda sketched out about this school, but you all seem cool. " +
+                    "We should take a picture of our first day. Just so we know who's all here " +
+                    "in case some weird shit goes down.",
                 button: [
-                    { chatID: 26, text: "...", callback: "meeting0" }
+                    { chatID: 6, text: "oh, sure. ", callback: "picture" }
                 ]
             },
             {
                 chatID: 6,
-                speaker: "missy",
-                text: "not used ",
+                speaker: "thinking",
+                text: "It's weird. I know it's just a school, but this really feels like the " +
+                    "first day of my life. I wonder if this will really change us, or make " +
+                    "us happier. ",
                 button: [
-                    { chatID: 7, text: "!", callback: "" }
+                    { chatID: 26, text: "[Picture]", callback: "" }
                 ]
             },
             {

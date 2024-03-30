@@ -149,6 +149,7 @@ pic.master = [
     { name: "evapussy", display: "Eva Wet and Waiting", entry: false, image: "evapussy.jpg", thumb: "evapussy.png" },
     { name: "chloe", display: "Chloe's cum face", entry: false, image: "chloe.jpg", thumb: "chloe.png" },
     { name: "candy", display: "Candy's cum hole", entry: false, image: "candy.jpg", thumb: "candy.png" },
+    { name: "classbefore", display: "First Sissy Class", entry: false, image: "classbefore.jpg", thumb: "classbefore.png" },
 ];
 
 pic.getall = function () {

@@ -8,6 +8,12 @@ room556.main = function () {
         daily.set("g");
         chat(0, 556);
     }
+    else {
+        nav.bg("556_spar/bg2.jpg");
+        sc.select("fightm", "556_spar/spar1.png", 0);
+        sc.select("fightg", "556_spar/spar2.png", 1);
+        sc.selectCancel("exit", 2);
+    }
 };
 
 room556.btnclick = function (name) {

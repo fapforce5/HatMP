@@ -74,7 +74,7 @@ room207.chat = function (chatID) {
         {
             chatID: 1,
             speaker: g.isNight() ? "!missyguardday" : "!missyguardnight",
-            text: "Pink Room is not open yet. ",
+            text: "Only the finest people and dirtiest whores are allowed in here; you are neither.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -82,7 +82,7 @@ room207.chat = function (chatID) {
         {
             chatID: 2,
             speaker: g.isNight() ? "!missyguardday" : "!missyguardnight",
-            text: sissy.st[17].ach ? "Sissy school is closed at this time." : "You have to be a student to enter the class. ",
+            text: sissy.st[17].ach ? "Schools only open on Tuesdays and Thursdays after you've worked for Missy." : "You have to be a student to enter the class. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

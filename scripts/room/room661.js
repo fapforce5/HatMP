@@ -75,7 +75,7 @@ room661.chatcatch = function (callback) {
             }
             break;
         case "end":
-            char.settime(17, 5);
+            char.settime(18, 5);
             missy.mod("reusableCaseCounter", 1);
             char.room(651);
             break;

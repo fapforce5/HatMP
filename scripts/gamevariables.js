@@ -42,6 +42,7 @@ gv.init = function () {
         { n: "autohormone", t: false, q: "bool" },
         { n: "money", t: 100, q: "money" },
         { n: "arousal", t: 5, q: "hundred" },
+        { n: "xdress", t: false, q: "bool" },
 
         //character
         { n: "map", t: 1, q: "int" },
@@ -97,7 +98,7 @@ gv.init = function () {
         //sissyschool
         { n: "sissySchoolClass", t: null, q: "string" },
         { n: "sissySchoolClassDays", t: 0, q: "int" },
-
+        { n: "sissyGrades", t: "", q: "string" },
 
         { n: "pill", t: null, q: "string" },
 
@@ -197,6 +198,7 @@ gv.init = function () {
         { n: "doc", t: false },
         { n: "ppgirl", t: false },
         { n: "janice", t: false },
+        { n: "bimbo", t: false },
         { n: "foundmoney", t: false },
 
         { n: "momChoreBed", t: false },
@@ -231,6 +233,8 @@ gv.init = function () {
         { n: "dwalk", t: false },
 
         { n: "water", t: false },
+
+        { n: "cop", t: false }
     ];
 
     levels.st = [
@@ -256,6 +260,7 @@ gv.init = function () {
         { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true },
 
         { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
     ];
 
     sex.st = [
@@ -324,9 +329,9 @@ gv.init = function () {
         { id: 0, pID: [17], icon: "firstday", x: -1, y: -1, name: "First Day", description: "First day of class", ach: false, active: false, room: 209 },
 
         { id: 1, pID: [0], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "A smooth sissy is a sexy sissy.", ach: false, active: true, room: 180 },
-        { id: 2, pID: [0], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
+        { id: 2, pID: [1], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
 
-        { id: 3, pID: [19], icon: "fem102", x: 0, y: 2, name: "Feminization 102", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
+        { id: 3, pID: [19], icon: "fem102", x: 0, y: 2, name: "Feminization 110", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
         { id: 4, pID: [19], icon: "anal102", x: 3, y: 2, name: "Anal 102", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
         { id: 5, pID: [19], icon: "chastity101", x: 6, y: 2, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
         { id: 6, pID: [19], icon: "pee101", x: 2, y: 2, name: "Pee 101", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
@@ -334,7 +339,7 @@ gv.init = function () {
         { id: 8, pID: [19], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
         { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
 
-        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
+        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 19], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
 
         { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: true },
         { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 212", description: "Experaince the joy of being filled", ach: false, active: true },
@@ -347,7 +352,7 @@ gv.init = function () {
 
         { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true },
 
-        { id: 19, pID: [1, 2], icon: "fem103", x: 7, y: 1, name: "Fem 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
+        { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
 
     ];
 
@@ -409,6 +414,10 @@ gv.init = function () {
         { id: 39, t: "dislike", n: "cum", c: 0 },
         { id: 40, t: "dislike", n: "piss", c: 0 },
 
+        { id: 41, t: "dog", n: "sex", c: 0 },
+        { id: 42, t: "horse", n: "sex", c: 0 },
+        { id: 43, t: "pig", n: "sex", c: 0 },
+        { id: 44, t: "bull", n: "sex", c: 0 },
     ];
 
 
@@ -626,13 +635,13 @@ levels.desc = function (name, level) {
         return { count: -1, txt: "+" + level + " Lock pick and Pick Pocket" };
     }
     if (name === "charisma") {
-        return { count: -1, txt: "+" + level + " Charisma" };
+        return { count: -1, txt: "Level: " + level };
     }
     if (name === "fame") {
         return { count: -1, txt: "+" + level + " Random Encounters" };
     }
     if (name === "strength") {
-        return { count: -1, txt: "+" + level + " to Fight" };
+        return { count: -1, txt: "Level: " + level };
     }
     var levelsDesc = new Array();
     switch (name) {
@@ -642,8 +651,8 @@ levels.desc = function (name, level) {
                 { id: 1, txt: "Can wear panties" },
                 { id: 2, txt: "Can cross dress at home and Missy's" },
                 { id: 3, txt: "Can work cases crossdressing" },
-                { id: 4, txt: "Only wear panties and bra" },
-                { id: 5, txt: "Can buy girly clothes" },
+                { id: 4, txt: "Must wear bra" },
+                { id: 5, txt: "Can buy girly clothes." },
                 { id: 6, txt: "Can go out in girl clothes" },
                 { id: 7, txt: "Can buy slutty clothing" },
                 { id: 8, txt: "Don't have to wear panties and bra" }, 
@@ -789,12 +798,13 @@ levels.oralGive = function (size, swallow, isDildo, gender = null) {
         levels.mod("cum", 25, 999);
         stats.mod("cum", "swallow", 1);
     }
-    if (gender !== null) {
-        sex.mod("oral", true, gender, 1);
-    }
-    else {
+    else if(gender === "m") {
         cl.c.cumface = true;
         cl.display();
+    }
+
+    if (gender !== null) {
+        sex.mod("oral", true, gender, 1);
     }
 }
 
@@ -821,10 +831,13 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
         if (gender !== null)
             stats.mod("sissygasm", gender, 1);
     }
+    if (creampie) {
+        levels.mod("cum", 25, 999);
+    }
     if (beast !== null) {
-        sex.mod("beast", false, gender, 1);
+        sex.mod("beast", false, "m", 1);
         levels.mod("beast", 50, 10);
-
+        stats.mod(beast, "sex", 1);
         switch (beast) {
             case "dog": gv.mod("analCumDog", 1); break;
             case "horse": gv.mod("analCumHorse", 1); break;
@@ -1179,20 +1192,34 @@ levels.oralTake = function (size) {
             break;
     }
     switch (retvar) {
-        case "noop": return { n: retvar, c: 0 };
-        case "easy": return { n: retvar, c: 1 };
-        case "normal": return { n: retvar, c: 2 };
-        case "brutal": return { n: retvar, c: 3 };
-        case "broken": return { n: retvar, c: 4 };
+        case "noop": return { n: retvar, c: 0, canTake: true };
+        case "easy": return { n: retvar, c: 1, canTake: true };
+        case "normal": return { n: retvar, c: 2, canTake: true };
+        case "brutal": return { n: retvar, c: 3, canTake: false };
+        case "broken": return { n: retvar, c: 4, canTake: false };
     };
 };
 
-sex.fuckpussy = function (who) {
+levels.fuckpussy = function (who) {
     cl.doCum(false);
     levels.mod("dom", 20, 999);
+    levels.mod("dick", 20, 999);
     sex.mod("pussy", true, "f", 1);
-    if (gv.get("virginDick") === null)
+    if (gv.get("virginDick") === null) {
         gv.set("virginDick", who);
+        g.popUpNotice("You lost your virginity");
+    }
+};
+
+levels.fuckass = function (who, gender) {
+    cl.doCum(false);
+    levels.mod("dom", 20, 999);
+    levels.mod("dick", 20, 999);
+    sex.mod("anal", true, gender, 1);
+    if (gv.get("virginDick") === null) {
+        gv.set("virginDick", who);
+        g.popUpNotice("You lost your virginity");
+    }
 };
 
 sex.takeAnal = function (who, size, creampie, gender, number) {
@@ -1471,7 +1498,7 @@ sissy.passclass = function (normalRoom) {
     
     if (normalRoom) {
         char.settime(17, 15);
-        char.room(207);
+        char.room(201);
     }
 };
 
@@ -1487,11 +1514,14 @@ sissy.get = function (icon) {
     return null;
 }
 
-
-
-
-
-
+sissy.getNumPassed = function () {
+    var counter = 0;
+    for (var i = 0; i < sissy.st.length; i++) {
+        if (sissy.st[i].ach)
+            counter++;
+    }
+    return counter;
+};
 
 
 //to be removed
@@ -1586,9 +1616,5 @@ g.sissy = [
 
 ];
 
-g.supersissy = function (all) {
-    for (var i = 0; i < g.sissy.length; i++)
-        g.sissy[i].ach = all;
-};
 
 

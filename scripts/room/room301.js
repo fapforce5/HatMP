@@ -104,6 +104,20 @@ room301.main = function () {
                 nav.bg("301_living/gf_5_0.jpg");
                 nav.wait("gf_5_1");
                 break;
+            case 6:
+                sc.completeMissionTask("envy", "gf", 6);
+                nav.bg("301_living/bg.jpg");
+                nav.button({
+                    "type": "vib",
+                    "name": "gv_6_vib",
+                    "left": 746,
+                    "top": 17,
+                    "width": 386,
+                    "height": 1063,
+                    "image": "301_living/gf_6_0.png"
+                }, 301);
+                chat(148, 301);
+                break;
         }
     }
 };
@@ -252,6 +266,14 @@ room301.btnclick = function (name) {
             nav.bg("301_living/gf_5_1.jpg");
             chat(138, 301);
             break;
+        case "gf_5_5":
+            nav.killall();
+            chat(141, 301);
+            break;
+        case "gv_6_vib":
+            nav.modbutton("gv_6_vib", "301_living/gf_6_1.png", null, null);
+            chat(151, 301);
+            break;
         case "leave":
             char.room(0);
             break;
@@ -267,7 +289,16 @@ room301.chatcatch = function (callback) {
         case "step14c":
         case "step14d":
         case "gf_5_2":
-        
+        case "gf_5_6":
+        case "gf_5_8":
+            nav.bg("301_living/" + callback + ".jpg");
+            break;
+        case "gf_5_7":
+            levels.oralGive(3, false, false, "f");
+            nav.bg("301_living/" + callback + ".jpg");
+            break;
+        case "gf_5_9":
+            sc.modLevel("envy", 100, 999);
             nav.bg("301_living/" + callback + ".jpg");
             break;
         case "startwars":
@@ -399,7 +430,7 @@ room301.chatcatch = function (callback) {
         case "envy3end":
             sc.completeMissionTask("envy", "meet", 3);
             sc.show("spanky");
-            sc.startMission("spanky", "envy");
+            sc.startMission("spanky", "hypno");
             daily.set("envy");
             char.addtime(180);
             char.room(300);
@@ -843,6 +874,7 @@ room301.chatcatch = function (callback) {
             break;
         case "gf_4_end":
             sc.completeMissionTask("envy", "gf", 4);
+            levels.mod("envy", 50, 1);
             daily.set("envy");
             inv.use("vib");
             char.room(0);
@@ -865,6 +897,22 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/" + callback + ".jpg");
             cl.nude();
             zcl.displayMain(-1000, 800, .6, "nude", true);
+            break;
+        case "gf_5_4":
+            nav.killall();
+            nav.bg("301_living/gf_5_4.gif");
+            nav.next("gf_5_5");
+            break;
+        case "gf_5_end":
+            cl.undo();
+            sc.modLevel("envy", 100, 999);
+            sc.completeMissionTask("envy", "gf", 5, true);
+            future.add("envytest", 2);
+            daily.set("envy");
+            char.room(300);
+            break;
+        case "904":
+            char.room(904);
             break;
         default:
             break;
@@ -2203,7 +2251,107 @@ room301.chat = function (chatID) {
                     "my virginity like this. Now get in there and give me an orgasm so I can return " +
                     "to normal and regret this decision. ",
                 button: [
-                    { chatID: 139, text: "Oh. ok ", callback: "gf_5_4" },
+                    { chatID: -1, text: "Oh. ok ", callback: "gf_5_4" },
+                ]
+            },
+            {
+                chatID: 141,
+                speaker: "envy",
+                text: "Oh fuck, fuck fuck fuck! Fuck I'm going to cum! Fuck!",
+                button: [
+                    { chatID: 142, text: "Oh. ok ", callback: "gf_5_6" },
+                ]
+            },
+            {
+                chatID: 142,
+                speaker: "me",
+                text: "Nom nom nom *lick* *slurp*",
+                button: [
+                    { chatID: 143, text: "...", callback: "gf_5_7" },
+                ]
+            },
+            {
+                chatID: 143,
+                speaker: "envy",
+                text: "Oh Jupiter's Moons! That was the most intense orgasm I've had! Wow! You " +
+                    "see that. That is a happy vagina. You did that. I can feel myself being able " +
+                    "to think again.  ",
+                button: [
+                    { chatID: 144, text: "My tongue is tired.", callback: "" },
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "envy",
+                text: "Well maybe you shouldn't hypnotize someone against their will. I've got a " +
+                    "huge test tomorrow on the Physics of Planets that I have to study for. Now that  " +
+                    "I think about it, I'm going to need your help tomorrow morning. Be here " +
+                    "tomorrow before " + nav.convertTime(10, 0) + "! Don't be late. I'm counting on you! ",
+                button: [
+                    { chatID: 145, text: "Tomorrow?", callback: "" },
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "envy",
+                text: "Yes. Tomorrow morning. Let me get dressed and I'll see you out. ",
+                button: [
+                    { chatID: 146, text: "ok.", callback: "gf_5_8" },
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "envy",
+                text: "Soooo, uhh. See you tomorrow. ",
+                button: [
+                    { chatID: 147, text: "[Go in for the kiss.] ", callback: "gf_5_9" },
+                    { chatID: -1, text: "Yep. See you tomorrow. ", callback: "gf_5_end" },
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "envy",
+                text: "Ohhhh. *mwah* ",
+                button: [
+                    { chatID: -1, text: "*mwah*. See you tomorrow. ", callback: "gf_5_end" },
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "me",
+                text: "Are we going to finally have sex?",
+                button: [
+                    { chatID: 149, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 149,
+                speaker: "envy",
+                text: "What? No. I have a test to take, and I'm still mad at you. I need you to " +
+                    "put that vibrator in my vagina properly, since I can't seem to figure it out, " +
+                    "and hide outside my classroom while I'm taking my test with the remote and " +
+                    "give me an orgasm when I look horny. ",
+                button: [
+                    { chatID: 150, text: "Why can't you push the button? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 150,
+                speaker: "envy",
+                text: "Mr. Bobcock, my professor, watches us, and we're not allowed electronics while we're taking " +
+                    "out tests. There's no way I can properly explain to Mr. Bobcock that I need to " +
+                    "press an orgasm button becuase you hypnotized me into being horny all the time! ",
+                button: [
+                    { chatID: -1, text: "Oh. That makes sense. Sure I'll put in the vibrator. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 151,
+                speaker: "envy",
+                text: "Oooooo. I'm already getting so wet. By the end of this test I'll have a " +
+                    "big grooly mess in my panties! Ok. Let's go!",
+                button: [
+                    { chatID: -1, text: "Ok!", callback: "904" },
                 ]
             },
         ];

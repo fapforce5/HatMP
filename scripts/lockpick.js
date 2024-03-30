@@ -211,7 +211,7 @@ room1003.btnclick = function (callback) {
     }
     else if (callback === "lockpickq_success") {
         clearTimeout(g.roomTimeout2);
-        levels.mod("pi", 15, 999);
+        levels.mod("lockpicking", 25, 999);
         nav.killbuttonStartsWith("lockpickq_");
         $('#room_footer').show();
         window[g.room(g.fight.roomID)]["btnclick"](g.fight.btnPressWin);

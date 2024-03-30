@@ -700,7 +700,7 @@ room9999.btnclick = function (name) {
         if (modTime === "x") {
             char.addtime(58);
             char.room(g.roomID);
-            phone.build("time");
+            //phone.build("time");
         }
         else {
             var timeHour = parseInt(modTime);
@@ -708,7 +708,7 @@ room9999.btnclick = function (name) {
                 g.dt.setDate(g.dt.getDate() + 1);
             char.settime(parseInt(modTime), 0);
             char.room(g.roomID);
-            phone.build("time");
+            //phone.build("time");
         }
     }
     else if (name.startsWith("phone_charsel_")) {
@@ -876,7 +876,7 @@ room9999.btnclick = function (name) {
             case "phone_save_save_7":
             case "phone_save_save_8":
                 var saveID = name.replace("phone_save_save_", "");
-                menu.save('HatMP_' + saveID);
+                menu.save('HatMP_' + saveID, true);
                 phone.saveMenu();
                 break;
             case "phone_save_load_0":

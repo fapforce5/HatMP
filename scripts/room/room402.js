@@ -13,7 +13,7 @@ room402.main = function () {
     }
     else {
         g.internal = "";
-        if (levels.get("xdress").l < 5) {
+        if (!gv.get("xdress")) {
             chat(0, 402);
         }
         else {

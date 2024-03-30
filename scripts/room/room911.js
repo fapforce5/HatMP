@@ -1,6 +1,9 @@
 ﻿//Room name
 var room911 = {};
 room911.main = function () {
+    if (!inv.has("pi_lic")) {
+        nav.bg("911_cityhall/bg1.jpg");
+    }
     var btnList = [
         {
             "type": "btn",

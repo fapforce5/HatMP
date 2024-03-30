@@ -84,7 +84,7 @@ room196.chatcatch = function (callback) {
             missy.st[0].c = newMood;
             missy.set("weeklyPay", 0);
             char.addtime(60);
-            char.room(0);
+            char.room(201);
             break;
         case "chastity0":
             nav.bg("196_payday/sidedesk.jpg");
@@ -93,14 +93,20 @@ room196.chatcatch = function (callback) {
             cl.c.pants = null;
             zcl.displayMain(-500, 400, .35, "clothes", true);
             cl.c.panties = temp;
-            cl.c.pants = "s";
+            if (cl.c.shirt === "r")
+                cl.c.pants = "k";
+            else
+                cl.c.pants = "s";
             break;
         case "chastity1":
             gv.mod("arousal", 100);
             cl.c.chastity = null;
             cl.display();
             nav.killall();
-            nav.bg("205_chastity/chast0_1.jpg");
+            if (missy.get("uniform") > 2)
+                nav.bg("205_chastity/chast0_1_r.jpg");
+            else
+                nav.bg("205_chastity/chast0_1.jpg");
             break;
         case "xdress":
             levels.mod("xdress", 20, 2);
