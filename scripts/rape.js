@@ -28,6 +28,10 @@ fame.event = function (returnBtn) {
             chanceForRandom += (1 - chanceForRandom) / 2;
         }
     }
+    else if (!g.isNight()) {
+        chanceForRandom = chanceForRandom / 2;
+    }
+
     if (Math.random() < chanceForRandom) {
         if (!isRape) {
             var char = fame.charList();

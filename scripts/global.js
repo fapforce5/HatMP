@@ -278,7 +278,7 @@ g.rooms = [
     { roomID: 310, name: "Second Floor", image: "310_secondfloor/bg.jpg", nightImage: "310_secondfloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
     { roomID: 314, name: "Third Floor", image: "314_thirdFloor/bg.jpg", nightImage: "314_thirdFloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
 
-    { roomID: 315, name: "Front Door", image: "315_girlfriend/bg.jpg", nightImage: "315_girlfriend/bg_night.jpg", houseID: 300, btn: "roomBtn_315.png" },
+    { roomID: 315, name: "Girlfriend's House", image: "315_girlfriend/bg.jpg", nightImage: "315_girlfriend/bg_night.jpg", houseID: 300, btn: "roomBtn_315.png" },
     { roomID: 316, name: "Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
     { roomID: 317, name: "Kitchen", image: "317_janiceKitchen/kitchen.jpg", nightImage: "317_janiceKitchen/kitchen.jpg", houseID: 300, btn: "roomBtn_317.png" },
     { roomID: 318, name: "Bedroom", image: "318_janiceBedroom/bg.jpg", nightImage: "318_janiceBedroom/bg.jpg", houseID: 300, btn: "roomBtn_318.png" },

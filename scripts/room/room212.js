@@ -160,7 +160,7 @@ room212.btnclick = function (name) {
             else {
                 gv.mod("money", -5);
                 gv.mod("energy", 60);
-                levels.mod("fitness", -25);
+                levels.mod("fitness", -25, 999);
             }
             break;
         case "chips":

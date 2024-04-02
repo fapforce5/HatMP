@@ -89,7 +89,7 @@ function room9_btnList() {
         });
     }
 
-    if (inv.has("missyusb")) {
+    if (inv.has("missyusb") && missy.activecase().caseId === 4) {
         btnList.push({
             "type": "btn",
             "name": "missyusb",

@@ -242,6 +242,16 @@ sc.charMission = [
         ]
     },
     {
+        name: "zoey", mission: [
+            {
+                missionName: "friends", mStatus: 1, title: "Friends", desc: "Not ready yet", task:
+                    [
+                        { id: 0, txt: "In development.", show: true, mStatus: 0, roomId: 0 },
+                    ]
+            },
+        ]
+    },
+    {
         name: "chad", mission: [
             {
                 missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym. ", task:
@@ -297,13 +307,13 @@ sc.charMission = [
             {
                 missionName: "date", mStatus: 1, title: "Getting to know you. ", desc: "Get to know her as a person. ", task:
                     [
-                        { id: 0, txt: "Meet up. ", show: true, mStatus: 0, roomId: 316 },
-                        { id: 1, txt: "Get to know her better. ", show: true, mStatus: 0, roomId: 316 },
-                        { id: 2, txt: "Meet her at her house before " + nav.convertTime(20, 0) + " on Friday Or Saturday. Be sure to have enough money for Dorcia. ", show: true, mStatus: 0, roomId: 316 },
-                        { id: 3, txt: "A suprise, to be sure", show: true, mStatus: 0, roomId: 316 },
-                        { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 316 },
-                        { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 316 },
-
+                        { id: 0, txt: "Meet up. ", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "Get to know her better. ", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "Friday or Saturday before " + nav.convertTime(20, 0) + ". ", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "A suprise, to be sure", show: true, mStatus: 0, roomId: 315 },
+                        { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 315 },
+                        { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 315 },
+                        { id: 6, txt: "In development", show: true, mStatus: 0, roomId: 315 },
                     ]
             },
             {

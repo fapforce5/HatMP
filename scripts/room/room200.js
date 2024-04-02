@@ -261,6 +261,7 @@ room200.chatcatch = function (callback) {
             gv.mod("money", 150);
             missy.mod("mood", 20);
             levels.mod("pi", 100);
+            inv.use("missyusb");
             missy.caseComplete(4);
             room200.chatcatch("case_complete_end");
             break;

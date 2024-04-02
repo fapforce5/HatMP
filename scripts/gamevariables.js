@@ -524,7 +524,7 @@ gv.mod = function (name, amount) {
         console.log("unknown g.mod: " + name);
 };
 
-levels.mod = function (name, amount, targetLevel) {
+levels.mod = function (name, amount, targetLevel = 999) {
     var actualAmount;
     var i, j, fitnessStart;
     fitnessStart = null;
@@ -533,6 +533,9 @@ levels.mod = function (name, amount, targetLevel) {
     }
     for (i = 0; i < levels.st.length; i++) {
         if (levels.st[i].n === name) {
+            if (levels.st[i].c === null || isNaN(levels.st[i].c))
+                levels.st[i].c = 0;
+
             if (amount > 0) {
                 if (levels.st[i].l <= targetLevel)
                     actualAmount = amount;

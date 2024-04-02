@@ -762,7 +762,7 @@ room9999.btnclick = function (name) {
                 name: "phone_charsel_",
                 "left": 910,
                 "top": 350 + (i * 40),
-                font: 30,
+                font: 24,
                 hex: tcolor,
                 text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
             }, 1);

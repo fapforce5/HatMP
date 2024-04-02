@@ -529,6 +529,7 @@ room182.chatcatch = function (callback) {
             nav.bg("182_test/piggy0a.jpg");
             break;
         case "end":
+            $("#room-inv").show();
             levels.mod("xdress", 100, 999);
             sissy.passclass(true);
             break;

@@ -137,6 +137,7 @@ room555.btnclick = function (name) {
             }
             else {
                 if (sc.getMissionTask("g", "secret", 2).notStarted) {
+                    nav.killall();
                     sc.startMissionTask("g", "secret", 2);
                     chat(36, 555);
                 }
@@ -226,7 +227,7 @@ room555.btnclick = function (name) {
             }
             else {
                 nav.killall();
-                nav.bg("555_backgym/bike1.jpg");
+                nav.bg("555_backgym/bike1_" + gender.pronoun("f") + ".gif");
                 chat(47, 555);
             }
             break;

@@ -649,7 +649,7 @@ cl.hasoutfit = function (ctype) {
         retMissing = retMissing + "and " + missingClothing[i];
     }
 
-    if (sissyLevel < 6 && ctype !== "officegirl") {
+    if (sissyLevel < 5 && ctype !== "officegirl") {
         if (cl.isCrossdressing())
             retMissing = ' <span class="hl">self aweness! I can\'t wear girly clothes!</span>';
     }
