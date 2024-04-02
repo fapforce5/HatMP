@@ -178,12 +178,9 @@ room2.chat = function(chatID){
         {
             chatID: 0,
             speaker: "thinking",
-            text: "This is just a sneak peek at all the changes I'm making to this game. Many of the paths are still in progress " +
-                "and aren't ready yet. The next public release won't be ready until around MARCH 2024 as I have a lot to put " +
-                "togther and update. Patreon Supporters will have access to work in progress releases each month and access to " +
-                "polls to decide the direction of the game. ",
+            text: "This release ends after the first Sissy School test.",
             button: [
-                { chatID: -1, text: "NEXT PUBLIC RELEASE MARCH 2024 - ish", callback: "proceed" }
+                { chatID: -1, text: "Next Patreon Release May 2024 - ish", callback: "proceed" }
             ]
         },
     ];

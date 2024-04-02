@@ -3,7 +3,7 @@ var room650 = {};
 room650.main = function () {
     var btnList = new Array();
 
-    if (sc.tiffany().thisRoom)
+    if (sc.getTimeline("tiffany").thisRoom) {
         btnList.push({
             "type": "btn",
             "name": "tiffany",
@@ -13,7 +13,6 @@ room650.main = function () {
             "height": 1029,
             "image": "650_toyStore/650_tiffanyGreet.png"
         });
-    if (sc.candy().thisRoom) {
         btnList.push({
             "type": "btn",
             "name": "candy",
@@ -50,7 +49,7 @@ room650.btnclick = function (name) {
     switch (name) {
         case "tiffany":
             var activeCase = missy.get("activeCase");
-            var tstep = sc.getstep("tiffany");
+            //var tstep = sc.getstep("tiffany");
 
             if (activeCase === 5 && missy.get("activeCaseComplete") === 0) {
                 if (missy.get("reusableCaseCounter") === 0) {
@@ -70,34 +69,46 @@ room650.btnclick = function (name) {
                     chat(2, 650);
                 }
             }
-            else if (sc.getEvent("tiffany", -8)) {
+            else if (activeCase === 10) {
                 chat(8, 650);
             }
-            else if (gv.get("oncase") === "shopping") {
+            else if (sc.taskGetStep("envy", "gf") === 3) {
+                chat(67, 650);
+            }
+            else if (missy.activecase().caseId === 11 && missy.get("activeCaseComplete") === 0) {
                 chat(13, 650);
             }
-            else if (tstep === 0) {
-                nav.killbutton("tiffany");
-                nav.button({
-                    "type": "btn",
-                    "name": "tiffany",
-                    "left": 538,
-                    "top": 51,
-                    "width": 460,
-                    "height": 1029,
-                    "image": "650_toyStore/650_tiffanyGreet1.png"
-                }, 650);
+            else {
                 chat(4, 650);
             }
-            else if (tstep === 3 || tstep === 4) {
-                chat(2, 650);  
-            }
-            else if (tstep < 10) {
-                chat(4, 650);
-            }
-            else if (tstep === 11) {
-                chat(12, 650);
-            }
+            //else if (sc.getEvent("tiffany", -8)) {
+            //    chat(8, 650);
+            //}
+            //else if (gv.get("oncase") === "shopping") {
+            //    chat(13, 650);
+            //}
+            //else if (tstep === 0) {
+            //    nav.killbutton("tiffany");
+            //    nav.button({
+            //        "type": "btn",
+            //        "name": "tiffany",
+            //        "left": 538,
+            //        "top": 51,
+            //        "width": 460,
+            //        "height": 1029,
+            //        "image": "650_toyStore/650_tiffanyGreet1.png"
+            //    }, 650);
+            //    chat(4, 650);
+            //}
+            //else if (tstep === 3 || tstep === 4) {
+            //    chat(2, 650);  
+            //}
+            //else if (tstep < 10) {
+            //    chat(4, 650);
+            //}
+            //else if (tstep === 11) {
+            //    chat(12, 650);
+            //}
             break;
         case "candy":
             if (daily.get("candy")) {
@@ -128,6 +139,14 @@ room650.btnclick = function (name) {
 
 room650.chatcatch = function (callback) {
     switch (callback) {
+        case "envy2":
+        case "envy3":
+        case "envy4":
+        case "envy5":
+        case "envy6":
+            nav.kill();
+            nav.bg("650_toyStore/" + callback + ".jpg")
+            break;
         case "follow":
             g.pass = "651_follow";
             char.room(651);
@@ -157,22 +176,24 @@ room650.chatcatch = function (callback) {
             nav.button({
                 "type": "img",
                 "name": "tiffany",
-                "left": 538,
-                "top": 51,
-                "width": 460,
-                "height": 1029,
+                "left": 613,
+                "top": 216,
+                "width": 422,
+                "height": 864,
                 "image": "650_toyStore/650_tiffanyTiffy.png"
             }, 650);
             break;
         case "tifLeave":
-            sc.revokeStep("tiffany", -8);
+            missy.set("activeCaseComplete", 1);
+            missy.caseComplete(10);
             nav.killbutton("tiffany");
             inv.add("tifgift");
             break;
         case "h_29":
-            sc.setstep("tiffany", -9);
+            sc.show("tiffany");
+            sc.startMission("tiffany", "friend");
+            sc.completeMissionTask("tiffany", "friend", 0, true);
             char.room(400);
-
             break;
         case "c1":
             nav.killall();
@@ -327,6 +348,27 @@ room650.chatcatch = function (callback) {
         case "candy52_end":
             sc.setstep("candy", 52);
             break;
+        case "envy_0":
+            nav.killbutton("tiffany")
+            nav.button({
+                "type": "btn",
+                "name": "tiffany",
+                "left": 418,
+                "top": 51,
+                "width": 580, 
+                "height": 1029,
+                "image": "650_toyStore/vibe.png"
+            }, 650);
+            break;
+        case "envy1":
+            nav.modbutton("candy", "650_toyStore/candy_pussy.png", null, null);
+            break;
+        case "envy7":
+            inv.add("vib");
+            sc.completeMissionTask("envy", "gf", 3);
+            char.addtime(60);
+            char.room(650);
+            break;
         default:
             break;
     }
@@ -409,9 +451,7 @@ room650.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "tiffany",
-            text: "I'm so sorry " + sc.n("me") + ", I feel so bad for yelling at you like I did, then telling " +
-                sc.n("missy") + ". I was so mad at that crazy cum animal then I took it out on you. I feel so bad I got you in trouble with " +
-                sc.n("missy") + " that I'll give you this package for free. I hope you forgive me.",
+            text: "Hey cutie! Missy asked me to get you a present. ",
             button: [
                 { chatID: 9, text: "Oh thanks.. what is it?", callback: "tifGift" }
             ]
@@ -419,8 +459,8 @@ room650.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "I promised " + sc.n("missy") + " I wouldn't tell you, she said you can open it when you get home. Oh " +
-                "and I didn't mind that you were peaking on me, I find it really sexy, I love being watched. Want to see something?",
+            text: "I promised Missy I wouldn't tell you, she said you can open it when you get home. " +
+                "I also have another gift from me. Want to see it?",
             button: [
                 { chatID: 10, text: "Sure", callback: "tifTitty" }
             ]
@@ -428,7 +468,7 @@ room650.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "tiffany",
-            text: "Hopefully that starts to make it up to you! And anytime you want to peek on me, feel free, you can even " +
+            text: "Hopefully you like my gift of titties! And anytime you want to peek on me, feel free, you can even " +
                 "touch yourself if you want.",
             button: [
                 { chatID: 11, text: "Oh yes", callback: "" }
@@ -497,7 +537,7 @@ room650.chat = function (chatID) {
             speaker: "charlie",
             text: "You're so tight I'm gunna blow! ",
             button: [
-                { chatID: -1, text: "[Swollow]", callback: "c3" },
+                { chatID: -1, text: "[Swallow]", callback: "c3" },
                 { chatID: -1, text: "[Have him cum on your face]", callback: "c4" }
             ]
         },
@@ -915,6 +955,121 @@ room650.chat = function (chatID) {
                 "how to get there. I always got a ride. But if you do get there just enter the code for the door. ",
             button: [
                 { chatID: -1, text: "Awww thanks! You cummy is yummy daddy. See ya! ", callback: "cendx" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "me",
+            text: "I have a huge problem. I have to help a girl orgasm without having anyone know. " +
+                "Do you have anykind of thing that lets a girl orgasm anywhere, even in public. Like " +
+                "a pill or something? ",
+            button: [
+                { chatID: 68, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "tiffany",
+            text: "Oh. Did you try having sex with her? I usually always orgasm with I have sex. We " +
+                "do have numbing cream so you can last longer. Just be careful in public. You don't want " +
+                "to have someone ruin your good time!",
+            button: [
+                { chatID: 69, text: "She won't let me have sex with her. But she has this thing where she's horny all the time and the only way to fix that is to orgasm.", callback: "" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "tiffany",
+            text: "Awwww. Just buy her some flowers and some handcuffs. I'm sure she'll love a " +
+                "man that takes charge. I do carry both if you want to show her your a real man. ",
+            button: [
+                { chatID: 70, text: "She's really mad at me. I need anything that make her cum. Please help me!", callback: "" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "candy",
+            text: "Oh! You know what I use to get off when I don't have a dick around. My li'l remote " +
+                "vibe! I use it all the time! ",
+            button: [
+                { chatID: 71, text: "Li'l remote vibe? ", callback: "envy_0" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "tiffany",
+            text: "This is the Li'l remote vibe. Really great for that casual public orgasm! ",
+            button: [
+                { chatID: 72, text: "Do you just point it at someone and they orgasm?", callback: "" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "candy",
+            text: "Boys are so dumb. Here let us show you how to use it.",
+            button: [
+                { chatID: 73, text: "Ok. ", callback: "envy1" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "tiffany",
+            text: "So I'm going to use " + sc.n("candy") + " to show you how to use this vibrator. ",
+            button: [
+                { chatID: 74, text: "Oh yeah! ", callback: "envy2" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "tiffany",
+            text: "Ok. I just slide the thick end inside of her vaginal opening, and the thin end " +
+                "should rest firmly on her clitoris. It should hold since it's like a hand grasping " +
+                "her. Now we'll put on her skirt and show you how it works. How's it feel so far. ",
+            button: [
+                { chatID: 75, text: "...", callback: "envy3" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "candy",
+            text: "It's good. I can feel it inside me and rubbing on my clit, but really not bad. ",
+            button: [
+                { chatID: 76, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "tiffany",
+            text: "Awesome. Ok. Now I'll turn it on so you can see how it works...",
+            button: [
+                { chatID: 77, text: "...", callback: "envy4" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "tiffany",
+            text: "See. Once I turn it on, it just takes a little bit for her to orgasm. And you can " +
+                "do it anywhere. ",
+            button: [
+                { chatID: 78, text: "...", callback: "envy5" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "candy",
+            text: "Fuck that was good. Your friend may want to wear panties unless she wants to be a " +
+                "dripping mess. I'm going to go wash my pussy. ",
+            button: [
+                { chatID: 79, text: "wow. That's exactly what I need. ", callback: "envy6" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "tiffany",
+            text: "I'll tell you what, since it sounds like your friend really needs it, it's yours for " +
+                "free. You just have to promise to get all your sex toys from here. Deal? ",
+            button: [
+                { chatID: -1, text: "Yes! Deal. Oh thank you! You saved me! ", callback: "envy7" },
             ]
         },
     ];

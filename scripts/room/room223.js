@@ -1,8 +1,12 @@
 ﻿//Room name
 var room223 = {};
 room223.main = function () {
-    if (missy.get("uniform") === 0) {
+    var missyUniform = missy.get("uniform");
+    if (missyUniform === 0) {
         chat(0, 223);
+    }
+    else if (missyUniform === 2) {
+        chat(14, 223);
     }
     else {
         char.room(197);
@@ -60,6 +64,35 @@ room223.chatcatch = function (callback) {
             else
                 char.room(0);
             break;
+        case "newAttireEnd":
+            missy.set("activeCase", 10);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
+            missy.set("uniform", 3);
+            if (g.dt.getDay() === 5 && missy.get("weeklyPay") !== 0)
+                char.room(196);
+            else
+                char.room(0);
+            break;
+        case "checkPanties":
+            switch (cl.c.panties) {
+                case "c": //ll panties
+                    chat(16, 223);
+                    break;
+                case "j": // janice panties
+                    chat(17, 223);
+                    break;
+                case "b": //cross dress case dude's panties
+                    chat(18, 223);
+                    break;
+                case "w": //lola panties
+                    chat(5, 223);
+                    break;
+                default:
+                    chat(17, 223);
+                    break;
+            }
+            break;
         default:
             break;
     }
@@ -107,9 +140,7 @@ room223.chat = function (chatID) {
             speaker: "missy",
             text: "Those are such cute little panties. You're too timed to walk into a store and buy them. Where did you get them? ",
             button: [
-                { chatID: 5, text: "I found them, on the street. ", callback: "" },
-                { chatID: 5, text: "A friend gave them to me. ", callback: "" },
-                { chatID: 6, text: "I took them from my " + sc.n("el") + ". ", callback: "" },
+                { chatID: -1, text: "I found them. ", callback: "checkPanties" },
             ]
         },
         {
@@ -190,6 +221,60 @@ room223.chat = function (chatID) {
             text: "Hey. I'm so glad you've found yourself. Take care sexy! ",
             button: [
                 { chatID: -1, text: "Thanks. ", callback: "panties5End" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "missy",
+            text: "I was looking at you in your cute little sissy outfit and I think it fits " +
+                "you. You really do make an attractive girl. From now on you'll be wearing " +
+                "a different attire here at the office. ",
+            button: [
+                { chatID: 15, text: "*gulp*", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "missy",
+            text: "I spoke with my friend " + sc.n("tiffany") + " at Toy 'n Us to pick you out " +
+                "something suitable for working here, but also expresses your new sissy mentality. " +
+                "I'm sure it will be just perfect. Go visit her and pick up your new uniform. " +
+                "From now on this will be your attire to work here. If you're too embarrassed " +
+                "to wear your new uniform in public you can always change in the bathroom here. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am. I'll go visit Tiffany at Toys 'n Us. ", callback: "newAttireEnd" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "missy",
+            text: "Hmm, cheetah panties. A young girl isn't going to wear those. They're a bit " +
+                "big for your narrow butt. Definitely owned by an older female with a big butt. " +
+                "They're your " + sc.n("landlord") + "'s aren't they. I would be disgusted, but " +
+                "stealing your " + sc.n("landlord") + "'s panties is pretty typical for someone " +
+                "like you. ",
+            button: [
+                { chatID: 7, text: "Yes ma'am. I stole them.  ", callback: "" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "missy",
+            text: "A pretty pink pair of panties. Sexy, but they have been worn quite a few times. " +
+                "also they're made for someone with a thicker butt. You stole them from some poor " +
+                "young lady you know didn't you? ",
+            button: [
+                { chatID: 7, text: "Yes ma'am. I stole them.  ", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "missy",
+            text: "Those are Bill's panties aren't they? I don't even want to know what you two " +
+                "did to get her panties. Can't say I'm suprised though. Strip off the rest of " +
+                "you clothing. Let's see what you're working with.",
+            button: [
+                { chatID: 8, text: "Strip? ", callback: "" },
             ]
         },
     ];

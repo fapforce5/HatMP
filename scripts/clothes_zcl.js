@@ -269,17 +269,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             }
         });
     }
-    //set acc
-    if (cl.c.accessories.length > 0 && !dback) {
-        $.each(cl.c.accessories, function (i, v) {
-            $.each(cl.accessories, function (j, w) {
-                if (w.name === v) {
-                    zcl.displayMainSub(w.image, top, left, ratio);
-                    return false;
-                }
-            });
-        });
-    }
+    
 
     //set hair
     if (!dback) {
@@ -306,6 +296,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             }
         }
     }
+
     if (dback) {
         if (cl.c.wig !== null) {
             $.each(cl.wig, function (i, v) {
@@ -329,6 +320,16 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
                 }
             }
         }
+    }
+
+    //set acc
+    if (cl.c.accessories !== null) {
+        $.each(cl.accessories, function (i, v) {
+            if (v.name === cl.c.accessories) {
+                zcl.displayMainSub(dback ? v.back : v.image, top, left, ratio);
+                return false;
+            }
+        });
     }
 };
 
@@ -416,6 +417,12 @@ zcl.assup = function (top, left, ratio, mod) {
         cl.assupSub("body_male.png", top, left, ratio);
     else
         cl.assupSub("body_female.png", top, left, ratio);
+
+    switch (mod) {
+        case "reddress":
+            cl.assupSub("reddress.png", top, left, ratio);
+            break;
+    }
 
     if (cl.c.hairLength < 3)
         hairLength = "1_";

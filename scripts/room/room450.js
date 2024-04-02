@@ -11,58 +11,71 @@ room450.main = function () {
     var doEvent = false;
 
     if (g.isNight()) {
-        if (sc.getstep("cop") > 0) {
+        var copstep = sc.taskGetStep("cop", "bitch");
+        if (daily.get("cop")) {
+            nav.bg("450_park/peek.jpg");
+            chat(72, 450);
+        }
+        else if (copstep < 0) {
             btnList.push({
-                "type": "btn",
-                "name": "further",
-                "left": 603,
+                "type": "img",
+                "name": "cop",
+                "left": 666,
                 "top": 0,
-                "width": 314,
-                "height": 401,
-                "image": "450_park/450_further.png",
-                "night": "450_park/450_further_night.png"
+                "width": 1000,
+                "height": 1080,
+                "image": "450_park/cop1.png"
             });
+            sc.show("cop");
+            sc.startMission("cop", "bitch");
+            sc.completeMissionTask("cop", "bitch", 0);
+            daily.set("cop");
+            chat(2, 450);
+        }
+        else if (copstep === 1) {
             btnList.push({
-                "type": "btn",
-                "name": "sleep",
-                "left": 306,
-                "top": 406,
-                "width": 148,
-                "height": 122,
-                "image": "450_park/sleep.png"
+                "type": "img",
+                "name": "cop",
+                "left": 666,
+                "top": 0,
+                "width": 1000,
+                "height": 1080,
+                "image": "450_park/cop3.png"
             });
+            sc.completeMissionTask("cop", "bitch", 1);
+            daily.set("cop");
+            chat(59, 450);
+        }
+        else if (copstep === 2) {
+            sc.completeMissionTask("cop", "bitch", 2);
             btnList.push({
-                "type": "btn",
-                "name": "gbroom",
-                "left": 1288,
-                "top": 271,
-                "width": 63,
-                "height": 125,
-                "image": "450_park/450_girlBroom.png"
+                "type": "img",
+                "name": "cop",
+                "left": 666,
+                "top": 0,
+                "width": 1000,
+                "height": 1080,
+                "image": "450_park/cop2.png"
             });
-            btnList.push({
-                "type": "btn",
-                "name": "bbroom",
-                "left": 1594,
-                "top": 273,
-                "width": 65,
-                "height": 126,
-                "image": "450_park/450_boyBroom.png"
-            });
-            navList = [451, 452, 0];
+            daily.set("cop");
+            chat(60, 450);
         }
         else {
-            if (!sc.getEvent("cop", 1)) {
-                btnList.push({
-                    "type": "btn",
-                    "name": "cop",
-                    "left": 666,
-                    "top": 0,
-                    "width": 1000,
-                    "height": 1080,
-                    "image": "450_park/cop1.png"
-                });
-            }
+            nav.bg("450_park/peek.jpg");
+            chat(74, 450);
+            //ol = levels.get("oral").l > 3;
+            //sl = levels.get("sissy").l > 3;
+            //if (ol && sl) {
+            //    btnList.push({
+            //        "type": "btn",
+            //        "name": "coprape",
+            //        "left": 666,
+            //        "top": 0,
+            //        "width": 1000,
+            //        "height": 1080,
+            //        "image": "450_park/cop1.png"
+            //    });
+            //}
         }
     }
     else {
@@ -95,6 +108,18 @@ room450.main = function () {
             "image": "450_park/450_further.png",
             "night": "450_park/450_further_night.png"
         });
+        if (missy.activecase().name === "case_lostgirl" && missy.get("activeCaseComplete") === 0) {
+            btnList.push({
+                "type": "btn",
+                "name": "smokey",
+                "left": 910,
+                "top": 119,
+                "width": 816,
+                "height": 961,
+                "image": "450_park/smokey.png",
+            });
+            
+        }
         navList = [460, 452, 451, 0];
         doEvent = true;
     }
@@ -118,8 +143,8 @@ room450.main = function () {
     });
 
     nav.buildnav(navList);
-    if (doEvent)
-        fame.event();
+    //if (doEvent)
+    //    fame.event();
 };
 
 room450.btnclick = function (name) {
@@ -190,6 +215,14 @@ room450.btnclick = function (name) {
             else
                 chat(3, 450);
             break;
+        case "cop3":
+            nav.killbutton("cop3");
+            nav.bg("450_park/cop4.jpg");
+            chat(62, 450);
+            break;
+        case "smokey":
+            chat(75, 450);
+            break;
         default:
             break;
     }
@@ -197,13 +230,48 @@ room450.btnclick = function (name) {
 
 room450.chatcatch = function(callback){
     switch (callback) {
+        case "cop2":
+        case "cop4":
+        case "cop5":
+        case "cop6":
+        case "cop7":
+            nav.killall();
+            nav.bg("450_park/" + callback + ".jpg");
+            break;
+        case "cop9":
+            nav.killall();
+            levels.oralGive(4, false, false, "m");
+            cl.c.cumface = true;
+            cl.display();
+            gv.mod("arousal", 40);
+            nav.bg("450_park/" + callback + ".jpg");
+            break;
+        case "cop8":
+            nav.bg("450_park/cop8.gif");
+            break;
+        case "cop3":
+            nav.bg("450_park/456_bg_night.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "cop3",
+                "left": 639,
+                "top": 0,
+                "width": 959,
+                "height": 1080,
+                "image": "450_park/cop2dick.png"
+            }, 450);
+            break;
+        case "cop10":
+            nav.bg("map/450_closenight.jpg");
+            zcl.displayMirror();
+            break;
         case "sitHour":
             char.addtime(60);
             break;
         case "leavePark":
             char.room(0);
             break;
-        case "cop2":
+        case "cop2x":
             nav.killbutton("cop");
             nav.button({
                 "type": "img",
@@ -215,7 +283,7 @@ room450.chatcatch = function(callback){
                 "image": "450_park/cop2.png"
             }, 450);
             break;
-        case "cop3":
+        case "cop3x":
             nav.killbutton("cop");
             nav.button({
                 "type": "img",
@@ -349,6 +417,9 @@ room450.chatcatch = function(callback){
             cl.nude();
             nav.bg("450_park/c0.jpg");
             break;
+        case "killsmokey":
+            nav.killbutton("smokey");
+            break;
         default:
             break;
     }
@@ -386,7 +457,7 @@ room450.chat = function(chatID){
             speaker: "cop",
             text: "Hey buddy, the park is closed at night. You need to move along, there's some dangerous folks around here at night.",
             button: [
-                { chatID: 4, text: "Sorry sir, I've been kicked out of my home and I've got nowhere to go. Please let me crash here tonight!", callback: "cop3" }
+                { chatID: 4, text: "Sorry sir, I've been kicked out of my home and I've got nowhere to go. Please let me crash here tonight!", callback: "cop3x" }
             ]
         },
         {
@@ -395,7 +466,7 @@ room450.chat = function(chatID){
             text: "Ohhhh, I'll tell you what boy, I'll let you sleep in the park if you wrap your lips around my " +
                 "big fat cock and suck it till I cum down your throat.",
             button: [
-                { chatID: 5, text: "Wha.... I'm not going to do that.", callback: "cop2" }
+                { chatID: 5, text: "Wha.... I'm not going to do that.", callback: "cop2x" }
             ]
         },
         {
@@ -857,6 +928,171 @@ room450.chat = function(chatID){
                 "going to get my nut out of you sissy boy. ",
             button: [
                 { chatID: 58, text: "why?", callback: "c4" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "cop",
+            text: "HEY! I fucking told you to stay out of the park at night! Stupid fucking kids " +
+                "never listen. If I catch you here after dark again you're going to really regret it." +
+                "Now get the fuck out  of here. NOW!",
+            button: [
+                { chatID: -1, text: "Yes sir, I'll take off", callback: "leavePark" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "cop",
+            text: "Last time you were here I told you, you were going to regret coming back. But " +
+                "here you are, back at the park after dark. It seems to me that you're looking " +
+                "for trouble. ",
+            button: [
+                { chatID: 61, text: "Oh no sir, it was just a mistake. I'll leave right away!", callback: "cop2" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "cop",
+            text: "I don't think it was a mistake. I think you wanted to take a look at this fine " +
+                "specimen of big black cock. You better open that pretty little mouth of yours, " +
+                "or they ain't gunna find your body. ",
+            button: [
+                { chatID: -1, text: "*Gulp!*", callback: "cop3" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "cop",
+            text: "That's right boy, open that mouth so I can fill it.",
+            button: [
+                { chatID: 63, text: "[Take the head of his cock into your mouth]", callback: "cop4" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "cop",
+            text: "Stop playing with it, suck it bitch!",
+            button: [
+                { chatID: 64, text: "mMMmmm uhhHHhmm Mmm M It's too MMmMM big for my mouth mmMMmmhhHHHhh", callback: "" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "cop",
+            text: "Relax your jaw.. ",
+            button: [
+                { chatID: 65, text: "UUUUgggggHHHHHhhhh ooOOOooooo", callback: "cop5" }
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "cop",
+            text: "I'm just going to have to force it it. ",
+            button: [
+                { chatID: 66, text: "uuuugh", callback: "cop6" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "cop",
+            text: "Just a bit further... ",
+            button: [
+                { chatID: 67, text: "*GLUCK*", callback: "cop7" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "cop",
+            text: "Fucking take this big dick ",
+            button: [
+                { chatID: 68, text: "oooOOOOOO", callback: "" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "cop",
+            text: "I can feel the back of your throat... oh yea.. oh fuck I'm going to cum...  ",
+            button: [
+                { chatID: 69, text: "uuHHHmmmmm", callback: "cop8" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "cop",
+            text: "Get ready for my cum bitch!",
+            button: [
+                { chatID: 70, text: "...", callback: "cop9" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "cop",
+            text: "Now clean your face up slut, you're covered in cum.",
+            button: [
+                { chatID: 71, text: "Yes sir", callback: "" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "cop",
+            text: "Remember if you tell anyone I'll just deny it then lock you up " +
+                "for lying about the police! Now get the fuck out of here! ",
+            button: [
+                { chatID: 73, text: "Yes sir", callback: "cop10" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "thinking",
+            text: "I already ran into him once today. There's no way I'm going there again! ",
+            button: [
+                { chatID: -1, text: "...", callback: "leavePark" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "thinking",
+            text: "What kind of cop rapes someone's face? And fuck that dick was huge! My jaw " +
+                "is aching. That wasn't fun at all! It was just demeaning and painful. But why " +
+                "did I get so hard when he was raping my face? Do I enjoy getting raped? Fuck. " +
+                "I've got to clean this cum off my face before " + sc.n("landlord") + " sees it and " +
+                "asks what happened. ",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "leavePark" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "thinking",
+            text: "No way I'm going back there after dark! That cop already raped my face one!",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "leavePark" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "smokey",
+            text: "Hey " + gender.pronoun("man") + " the parks such a free place isn't it. ",
+            button: [
+                { chatID: 76, text: "Totally. I'm looking for someone, her name's Sanaria. You haven't seen her have you?", callback: "" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "smokey",
+            text: "Oh shit. Yeah I know her. I sell to her all the time. I ain't seen her here. ",
+            button: [
+                { chatID: -1, text: "ok. ", callback: "killsmokey" },
+                { chatID: 77, text: "Do you know where she likes to hang out?", callback: "" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "smokey",
+            text: "Oh.... uhhh I don't know her really good, ya know. I know she loves to vape " + 
+                "and loves to dance. ",
+            button: [
+                { chatID: -1, text: "...loves to dance. Ok, thanks. ", callback: "killsmokey" },
             ]
         },
     ];

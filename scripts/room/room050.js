@@ -3,8 +3,8 @@ var room50 = {};
 room50.main = function () {
     var btnList;
     var navList = [0];
-    var treyvonStep = sc.getstep("treyvon");
-    if (treyvonStep === 1) {
+    var tifStep = sc.taskGetStep("tiffany", "friend");
+    if (missy.activecase().caseId === 11 && tifStep > 0 && tifStep < 4) {
         btnList = [
             {
                 "type": "btn",
@@ -19,6 +19,7 @@ room50.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 50);
         });
+        chat(2, 50);
     }
    
     else {
@@ -43,23 +44,10 @@ room50.main = function () {
 room50.btnclick = function (name) {
     switch (name) {
         case "doorman":
-            switch (sc.getstep("treyvon")) {
-                case 0:
-                    chat(0, 50);
-                    break;
-                case 1:
-                    chat(2, 50);
-                    break;
-                case 2:
-                    if (cl.appearance() > 0)
-                        chat(10, 50);
-                    else
-                        chat(0, 50);
-                    break;
-                default:
-                    chat(0, 50);
-                    break;
-            }
+            if (sc.getMission("treyvon", "doorman").inProgress && cl.appearance() > 0)
+                chat(10, 50);
+            else
+                chat(0, 50);
             break;
         default:
             break;
@@ -73,8 +61,9 @@ room50.chatcatch = function (callback) {
             nav.bg("50_lobby/grab.jpg");
             break;
         case "followtif":
-            sc.setstep("treyvon", 2);
-            sc.setstep("tiffany", 15);
+            sc.show("treyvon");
+            sc.startMission("treyvon", "doorman");
+            sc.completeMissionTask("treyvon", "doorman", 0, true);
             char.room(51);
             break;
         case "gohome":

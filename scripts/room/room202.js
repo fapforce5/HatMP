@@ -2,7 +2,7 @@
 var room202 = {};
 room202.main = function () {
     g.internal = "";
-    var missyStep = sc.getstep("missy");
+    //var missyStep = sc.getstep("missy");
     var btnList = [
         {
             "type": "btn",
@@ -41,10 +41,10 @@ room202.main = function () {
             "image": "202_sideDesk/bent.png"
         }, 202);
     }
-    else if (missyStep === 3) {
-        g.pass = "1";
-        chat(0, 202);
-    }
+    //else if (missyStep === 3) {
+    //    g.pass = "1";
+    //    chat(0, 202);
+    //}
     else if (g.pass === "normalFlow") {
         g.pass = "1";
         cl.c.pants = "s";
@@ -65,8 +65,8 @@ room202.main = function () {
         zcl.displayMain(-1100, -200, .5, "clothes", true);
         chat(74, 202);
     }
-    else if (missyStep === 9)
-        sc.setstep("missy", 10);
+    //else if (missyStep === 9)
+    //    sc.setstep("missy", 10);
 
 };
 

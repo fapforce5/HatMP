@@ -279,8 +279,9 @@ room103.chatcatch = function (callback) {
             gv.set("jobapplynurse", 2);
             gv.set("jobapplybeaver", 2);
             gv.set("jobapplyconst", 100);
-            sc.setstep("missy", 1);
             missy.set("activeCase", 2);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
             g.roomMapAccess(203, true, true);
             char.room(10);
             break;

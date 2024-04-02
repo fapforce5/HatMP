@@ -114,10 +114,14 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn-lips rom-event";
         else if (btn.type === "tongue")
             classes = "room-btn-tongue rom-event";
+        else if (btn.type === "dick")
+            classes = "room-btn-dick rom-event";
         else if (btn.type === "brush")
             classes = "room-btn-brush rom-event";
         else if (btn.type === "hand")
             classes = "room-btn-hand rom-event";
+        else if (btn.type === "vib")
+            classes = "room-btn-vib rom-event";
         else if (btn.type === "btnflat")
             classes = "room-btnflat room-btn rom-event";
         else if (btn.type === "zimg")
@@ -128,7 +132,9 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn rom-event fight-hover";
         else if (btn.type === "imghover")
             classes = "room-img fight-hover-element";
-
+        else if (btn.type === "clickthrough") {
+            classes = "room-img click-thru";
+        }
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
         line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
@@ -178,6 +184,10 @@ nav.t = function (btn, roomNum) {
 
     
 };
+
+nav.tmod = function (name, text) {
+    $(".resize-font[data-name='" + name + "']").text(text);
+}
 
 nav.inputbox = function (btn, roomNum) {
     var top = btn.top * g.ratio;
@@ -304,6 +314,18 @@ nav.friendlyTime = function () {
     }
 };
 
+nav.convertTime = function (hour, minute) {
+
+    if (gv.get("clock24") === "12") {
+        var newHour = hour === 0 ? 12 : (hour < 13 ? hour : hour - 12);
+        var ampm = hour < 12 ? " AM" : " PM";
+        return newHour + ":" + nav.twodigits(minute) + ampm;
+    }
+    else {
+        return hour + ":" + nav.twodigits(minute);
+    }
+};
+
 nav.bars = function () {
     var tempArousal = gv.get("arousal");
     var tempEnergy = gv.get("energy");
@@ -379,18 +401,19 @@ nav.room = function (roomID) {
 
 
 nav.next = function (btnClickName) {
-    nav.button({
-        "type": "btn",
-        "name": btnClickName,
-        "left": 1695,
-        "top": 920,
-        "width": 225,
-        "height": 75,
-        "image": "1001_rand/next.png"
-    }, g.roomID);
+    nav.drawButton("1001_rand/next.png", btnClickName);
 };
 
 nav.back = function (btnClickName) {
+    nav.drawButton("1001_rand/back.png", btnClickName);
+};
+
+nav.cum = function (btnClickName) {
+    nav.drawButton("1001_rand/cum.png", btnClickName);
+};
+
+
+nav.drawButton = function (image, btnClickName) {
     nav.button({
         "type": "btn",
         "name": btnClickName,
@@ -398,6 +421,18 @@ nav.back = function (btnClickName) {
         "top": 920,
         "width": 225,
         "height": 75,
-        "image": "1001_rand/back.png"
+        "image": image
     }, g.roomID);
-}
+};
+
+nav.wait = function (btnClickName) {
+    nav.button({
+        "type": "btn",
+        "name": btnClickName,
+        "left": 1695,
+        "top": 920,
+        "width": 225,
+        "height": 75,
+        "image": "1001_rand/wait.png"
+    }, g.roomID);
+};

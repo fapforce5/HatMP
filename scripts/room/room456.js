@@ -1,7 +1,7 @@
 ﻿//Room name
 var room456 = {};
 room456.main = function () {
-    if (sc.getstep("cop") > 1) {
+    if (true) {
         nav.bg("456_bench/cop1.jpg");
         chat(14, 456);
     }
@@ -53,7 +53,7 @@ room456.chatcatch = function (callback) {
         case "leave7":
             sc.setstep("me", 7);
             g.pass = 0;
-            cl.c.accessories = new Array();
+            cl.c.accessories = null;
             cl.c.cumface = false;
             cl.display();
             char.room(400);

@@ -1,6 +1,8 @@
 ﻿//Modification
 //hormone level: 75!!
 //sissy transform: 95!!
+
+//add false transformations - like got an inch shorter / feet shrunk / skin smoother / hair more radiant, hair is finer
 var room28 = {};
 room28.main = function () {
     var pjRoom = [7, 10]
@@ -21,7 +23,7 @@ room28.main = function () {
     else if (g.pass === 181)
         nav.bg("181_black/bondage101_12.jpg");
 
-    menu.save("HatMP_9", null, 9);
+    menu.save("HatMP_9", true);
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
@@ -215,6 +217,27 @@ room28.main = function () {
             g.pass = "endSleepyTime";
             char.room(returnRoomID);
         }, 1000);
+    }
+
+    for (i = 0; i < future.st.length; i++) {
+        future.st[i].daysleft--;
+        if (future.st[i].daysleft === 0) {
+            switch (future.st[i].name) {
+                case "janicevacation":
+                    sc.completeMission("dog", "vacation", true);
+                    sc.startMission("janice", "bitch");
+                    break;
+                case "envytest":
+                    if (sc.getMissionTask("envy", "gf", 6).notStarted) {
+                        sc.completeMission("envy", "gf", false);
+                        sc.completeMissionTask("envy", "gf", 6, false);
+                        sc.startMission("envy", "breakup");
+                        sc.completeMissionTask("envy", "breakup", 0, true);
+                    }
+                    break;
+            }
+            future.st.splice(i, 1);
+        }
     }
 };
 

@@ -93,8 +93,8 @@ room209.main = function () {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            if (sc.getstep("missy") < 100)
-                room209.btnclick("displayMissybtn");
+            //if (sc.getstep("missy") < 100)
+            //    room209.btnclick("displayMissybtn");
             room209.btnclick("displaypbtn");
         }
         else {
@@ -316,14 +316,14 @@ room209.btnclick = function (name) {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            if (sc.getstep("missy") < 100) {
-                room209.btnclick("displayMissybtn");
-                chat(114, 209);
-            }
-            else {
+            //if (sc.getstep("missy") < 100) {
+            //    room209.btnclick("displayMissybtn");
+            //    chat(114, 209);
+            //}
+            //else {
                 room209.btnclick("displaypbtn");
                 chat(182, 209);
-            }
+            //}
             
             break;
         case "h_14":
@@ -364,14 +364,14 @@ room209.btnclick = function (name) {
             room209.btnclick("bb1");
             room209.btnclick("poster0");
             room209.btnclick("displayChairsit");
-            if (sc.getstep("missy") < 100) {
-                room209.btnclick("displayMissybtn");
-                chat(205, 209);
-            }
-            else {
+            //if (sc.getstep("missy") < 100) {
+            //    room209.btnclick("displayMissybtn");
+            //    chat(205, 209);
+            //}
+            //else {
                 room209.btnclick("displaypbtn");
                 chat(206, 209);
-            }
+            //}
             break;
         case "h_19":
             nav.bg("209_classroom/bg.jpg");

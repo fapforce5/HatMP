@@ -1,57 +1,56 @@
 ﻿//Room name
 var room76 = {};
 room76.main = function () {
-
-    if (g.pass === "boobjob") {
+    var navList = [77];
+    if (sc.getTimeline("bimbo").thisRoom) {
         nav.button({
-            "type": "img",
-            "name": "bimbo",
-            "left": 886,
-            "top": 48,
-            "width": 665,
-            "height": 1032,
-            "image": "76_bimboRoom/bimbo1.png"
+            "type": "btn",
+            "name": "blanket",
+            "left": 704,
+            "top": 472,
+            "width": 815,
+            "height": 583,
+            "image": "76_bimboRoom/blanket.png"
         }, 76);
-        chat(0, 76);
+        nav.bg("76_bimboRoom/sleeping1.jpg");
     }
-    else {
-        var navList = [77];
-        if (sc.bimbo().thisRoom) {
-            nav.button({
-                "type": "btn",
-                "name": "bimbo",
-                "left": 757,
-                "top": 482,
-                "width": 544,
-                "height": 228,
-                "image": "76_bimboRoom/bimoLay.png"
-            }, 76);
-        }
-        nav.buildnav(navList);
-    }
+    nav.buildnav(navList);
 };
 
 room76.btnclick = function (name) {
     switch (name) {
+        case "blanket":
+            nav.killbutton("blanket");
+            nav.bg("76_bimboRoom/sleeping2.jpg"); 
+            nav.button({
+                "type": "btn",
+                "name": "bimbo",
+                "left": 984,
+                "top": 470,
+                "width": 287,
+                "height": 415,
+                "image": "76_bimboRoom/sleeping2.png"
+            }, 76);
+            break;
         case "bimbo":
             nav.killbutton("bimbo");
             nav.bg("76_bimboRoom/laying.jpg");
             nav.button({
                 "type": "btn",
                 "name": "butthole",
-                "left": 925,
-                "top": 559,
-                "width": 183,
-                "height": 183,
+                "left": 923,
+                "top": 619,
+                "width": 163,
+                "height": 164,
                 "image": "76_bimboRoom/butthole.png"
             }, 76);
             nav.button({
                 "type": "btn",
                 "name": "pussy",
-                "left": 1114,
-                "top": 496,
-                "width": 300,
-                "height": 202,
+                "left": 1084,
+                "top": 596,
+                "width": 258,
+                "height": 163,
                 "image": "76_bimboRoom/pussy.png"
             }, 76);
             break;
@@ -189,24 +188,24 @@ room76.chatcatch = function (callback) {
             nav.room(0);
             break;
         case "ass1":
-            nav.bg("76_bimboRoom/a2.gif");
+            nav.bg("76_bimboRoom/a2.jpg");
             break;
         case "ass2":
-            gv.mod("giveAnalFemale", 1);
+            levels.fuckass("bimbo", "f");
             cl.doCum(false);
             nav.killall();
-            nav.bg("76_bimboRoom/laying3.jpg");
+            //nav.bg("76_bimboRoom/laying3.jpg");
             nav.buildnav([77, 0]);
             break;
         case "pussy1":
             nav.bg("76_bimboRoom/p1.gif");
             break;
         case "pussy2":
-            nav.bg("76_bimboRoom/p2.gif");
+            levels.fuckpussy("bimbo");
+            nav.bg("76_bimboRoom/p2.jpg");
             break;
         case "pussy3":
-            gv.mod("fuckPussy", 1);
-            nav.bg("76_bimboRoom/p2.jpg");
+            nav.bg("76_bimboRoom/p3.jpg");
             cl.doCum(false);
             nav.buildnav([77, 0]);
             break;
@@ -299,8 +298,8 @@ room76.chat = function (chatID) {
         },
         {
             chatID: 10,
-            speaker: "bimbo",
-            text: "zzZZZz zzZZZzzz",
+            speaker: "thinking",
+            text: "She's going to be farting my cum all night.",
             button: [
                 { chatID: -1, text: "...", callback: "ass2" }
             ]
@@ -310,7 +309,7 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "zzZZZz zzZZZzzz",
             button: [
-                { chatID: 12, text: "[Stick it in]", callback: "pussy1" }
+                { chatID: 12, text: "She's going to be so tight laying like that. I have to be careful.", callback: "pussy1" }
             ]
         },
         {
@@ -318,13 +317,13 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "zzZZZz zzZZZzzz",
             button: [
-                { chatID: 13, text: "[Cum all over her]", callback: "pussy2" }
+                { chatID: 13, text: "So tight. I'm going to blow my load!", callback: "pussy2" }
             ]
         },
         {
             chatID: 13,
-            speaker: "bimbo",
-            text: "zzZZZz zzZZZzzz",
+            speaker: "thinking",
+            text: "I wonder if she'll notice the globs of cum on her ass in the morning.",
             button: [
                 { chatID: -1, text: "[finish]", callback: "pussy3" }
             ]

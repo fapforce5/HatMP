@@ -1,11 +1,11 @@
 ﻿//Cecillia close up
 var room203 = {};
 room203.main = function () {
+    var outfit = cl.hasoutfit("public");
     var navList = new Array();
     var btnList = new Array();
     if (sc.getTimeline("cecilia").thisRoom) {
-        g.pass = "203Elevator";
-        navList = [201, 207, 0];
+        //g.pass = "203Elevator";
         btnList = [{
             "type": "btn",
             "name": "recep",
@@ -15,13 +15,20 @@ room203.main = function () {
             "height": 197,
             "image": "203_entrance/203_enterRecep.png"
         }];
-        
+        if (missy.get("uniform") > 2 && cl.c.shirt !== "r") {
+            sc.select("icon_dress", "203_entrance/icon_dress.png", 9);
+        }
     }
     else {
         nav.bg("206_questions/sideEmpty.jpg");
+    }
+    if (outfit === null) {
         navList = [201, 207, 0];
     }
-
+    else {
+        navList = [201];
+        g.popUpNotice("I'm missying my " + outfit + ". Better change in the bathroom.");
+    }
     $.each(btnList, function (i, v) {
         nav.button(v, 203);
     });
@@ -34,12 +41,12 @@ room203.btnclick = function (name) {
         case "recep":
             nav.kill("recep");
             nav.bg("203_entrance/203_frontDeskCloseup.jpg");
-            if (g.gethourdecimal() > 9) {
+            if (g.gethourdecimal() > 10) {
                 chat(6, 203);
             }
             else if (missy.activecase().name === "apply") {
                 chat(1, 203);
-                missy.set("activeCase", -1);
+                
             }
             else if (missy.get("totalDaysWorked") === 0) {
                 missy.set("activeCase", -1);
@@ -51,15 +58,21 @@ room203.btnclick = function (name) {
             else
                 chat(999, 203);
             break;
+        case "icon_dress":
+            cl.c.shoes = "fb";
+            cl.c.pants = "k";
+            cl.c.shirt = "r";
+            cl.c.bra = "p";
+            cl.c.socks = null;
+            cl.display();
+            char.room(203);
+            break;
         default:
             break;
     }
 };
 
 room203.chatcatch = function (callback) {
-    var missyStep = sc.getstep("missy");
-    var hasSuit = cl.c.shoes === "d" && cl.c.pants === "s" && cl.c.shirt === "s" && cl.c.socks === "b";
-    var hasGirlSuit = cl.c.shoes === "fb" && cl.c.pants === "k" && cl.c.shirt === "r" && cl.c.socks === null;
     switch (callback) {
         case "enter":
             char.room(200);
@@ -68,8 +81,10 @@ room203.chatcatch = function (callback) {
             char.room(0);
             break;
         case "checkLic":
-            if (inv.has("pi_lic"))
+            if (inv.has("pi_lic")) {
+                missy.set("activeCase", -1);
                 chat(4, 203);
+            }
             else {
                 if (gv.get("money") < 100)
                     chat(16, 203);
@@ -79,9 +94,9 @@ room203.chatcatch = function (callback) {
             break;
         case "displaySelf":
             nav.bg("203_entrance/inspect.jpg");
+            zcl.displayMain(180, 800, .09, "clothes", false);
             var myUniform = missy.get("uniform");
             if (myUniform === 0) { //suit
-                zcl.displayMain(180, 800, .09, "clothes", false);
                 if (cl.hasoutfit("suit") === null) {
                     if (cl.list[cl.where("panties", cl.c.panties)].sex === "f") {
                         chat(18, 203);
@@ -111,13 +126,11 @@ room203.chatcatch = function (callback) {
             else if (myUniform === 1) {
                 if (cl.hasoutfit("suitwithpanties") === null) {
                     if (missy.get("uniformNew") === 0) {
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         chat(22, 203);
                     }
                     else {
                         levels.mod("xdress", 5, 3);
                         cl.c.pants = null;
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         cl.c.pants = "s";
                         chat(23, 203);
                     }
@@ -130,19 +143,36 @@ room203.chatcatch = function (callback) {
             else if (myUniform === 2) {
                 if (cl.hasoutfit("suitwithpanties") === null) {
                     if (cl.getBodyHair() === null) {
-                        levels.mod("xdress", 5, 3);
+                        levels.mod("xdress", 5, 5);
                         cl.c.pants = null;
-                        zcl.displayMain(180, 800, .09, "clothes", false);
                         cl.c.pants = "s";
                         chat(23, 203);
                     }
                     else {
+                        var tempshirt = cl.c.shirt;
+                        cl.c.shirt = null;
+                        cl.c.shirt = tempshirt;
                         chat(25, 203);
                     }
                 }
                 else {
                     levels.mod("int", -10, 999);
                     chat(24, 203);
+                }
+            }
+            else if (myUniform === 3) {
+                g.internal = cl.hasoutfit("officegirl");
+                if (g.internal === null) {
+                    levels.mod("xdress", 5, 5);
+                    if (missy.get("uniformNew") === 2) {
+                        chat(27, 203);
+                    }
+                    else {
+                        chat(26, 203);
+                    }
+                }
+                else {
+                    chat(600, 203);
                 }
             }
             break;
@@ -196,6 +226,9 @@ room203.chatcatch = function (callback) {
             zcl.displayMain(180, 800, .09, "clothes", false);
             cl.c.pants = "s";
             break;
+        case "bathroom":
+            char.room(201);
+            break;
     }
 };
 
@@ -244,6 +277,14 @@ room203.chat = function (chatID) {
                 { chatID: -1, text: "[Get into position]", callback: "displaySelf" },
                 { chatID: -1, text: "I'm not sure why I'm here. ", callback: "leave" },
             ]
+        };
+    }
+    else if (chatID === 600) {
+        return {
+            chatID: 998,
+            speaker: "cecilia",
+            text: "I can't let you go in. You're missing your " + g.internal + ". ",
+            button: [{ chatID: -1, text: "Go change in the bathroom", callback: "bathroom" }]
         };
     }
     else {
@@ -473,6 +514,24 @@ room203.chat = function (chatID) {
                     "he does know how to fuck a face. ",
                 button: [
                     { chatID: -1, text: "Oh... oh! ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "cecilia",
+                text: "Looking cute! You can go in. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "cecilia",
+                text: "Oh my god! You are so cute! And so professional! " +
+                    "Welcome to the sisterhood I am sooo happy for you. it takes a lot to " +
+                    "find oneself's true calling",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "enter" }
                 ]
             },
         ];

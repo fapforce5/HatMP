@@ -5,15 +5,15 @@ room550.main = function () {
         nav.button({
             "type": "img",
             "name": "man",
-            "left": 793,
-            "top": 93,
-            "width": 812,
-            "height": 930,
+            "left": 960,
+            "top": 271,
+            "width": 376,
+            "height": 396,
             "image": "550_gymFront/550_frontDesk1.png"
         }, 550);
         chat(13, 550);
     }
-    else if (sc.getstep("chad") > 1) {
+    else if (inv.has("gym")) {
         char.room(551);
     }
     else {
@@ -21,10 +21,10 @@ room550.main = function () {
             {
                 "type": "btn",
                 "name": "man",
-                "left": 793,
-                "top": 93,
-                "width": 812,
-                "height": 930,
+                "left": 960,
+                "top": 271,
+                "width": 376,
+                "height": 396,
                 "image": "550_gymFront/550_frontDesk.png"
             }
         ];
@@ -39,18 +39,19 @@ room550.main = function () {
 room550.btnclick = function (name) {
     switch (name) {
         case "man":
-            //if (sc.step('chad') === 0) {
-            //    chat(0, 550);
-            //}
-            //else if (sc.step('chad') === 1) {
-            //    if (pic.has("lolaTopless") || pic.has("lolaMast"))
-            //        chat(6, 550);
-            //    else
-            //        chat(7, 550);
-            //}
-            //else {
-            //    chat(11, 550);
-            //}
+            var entrace = sc.taskGetStep("chad", "membership");
+            if (entrace === -1) {
+                chat(0, 550);
+            }
+            else if (entrace === 1) {
+                if (pic.has("lolaTopless") || pic.has("lolaMast"))
+                    chat(6, 550);
+                else
+                    chat(7, 550);
+            }
+            else {
+                chat(11, 550);
+            }
             break;
         default:
             break;
@@ -63,12 +64,14 @@ room550.chatcatch = function (callback) {
             char.room(551);
             break;
         case "chadInit":
-            sc.setstep('chad', 1);
+            sc.startMission("chad", "membership");
+            sc.completeMissionTask("chad", "membership", 0, true);
+            sc.show("chad");
             break;
         case "pay500":
             if (gv.get("money") >= 500) {
-                sc.setstep('chad', -1);
-                sc.setstep('chad', 2);
+                sc.completeMission("chad", "membership");
+                sc.completeMissionTask("chad", "membership", 1, true);
                 gv.mod("money", -500);
                 chat(10, 550);
             }
@@ -76,22 +79,22 @@ room550.chatcatch = function (callback) {
                 chat(9, 550);
             break;
         case "tittyPic":
-            sc.setstep('chad', -2);
-            sc.setstep('chad', 2);
+            sc.completeMission("chad", "membership");
+            sc.completeMissionTask("chad", "membership", 2, true);
             break;
         case "getpass":
-            inv.update("gym", true, null);
-            sc.setstep('chad', 2);
+            inv.add("gym", true, null);
+            char.room(550);
             break;
         case "one":
             nav.killbutton("man");
             nav.button({
                 "type": "btn",
                 "name": "man",
-                "left": 793,
-                "top": 93,
-                "width": 812,
-                "height": 930,
+                "left": 960,
+                "top": 271,
+                "width": 376,
+                "height": 396,
                 "image": "550_gymFront/550_frontDesk1.png"
             }, 550);
             break;
@@ -100,10 +103,10 @@ room550.chatcatch = function (callback) {
             nav.button({
                 "type": "btn",
                 "name": "man",
-                "left": 793,
-                "top": 93,
-                "width": 812,
-                "height": 930,
+                "left": 960,
+                "top": 271,
+                "width": 376,
+                "height": 396,
                 "image": "550_gymFront/550_frontDesk2.png"
             }, 550);
             break;

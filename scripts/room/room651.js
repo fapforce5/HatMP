@@ -82,7 +82,7 @@ room651.btnclick = function (name) {
 room651.chatcatch = function (callback) {
     switch (callback) {
         case "onDuty":
-            sc.setstep("tiffany", 2);
+            //sc.setstep("tiffany", 2);
             g.pass = "new";
             char.room(661);
             break;
@@ -105,9 +105,9 @@ room651.chatcatch = function (callback) {
             break;
         case "jo2":
             nav.bg("651_wackHallway/jo2.jpg");
-            if (sc.getstep("missy") > 5)
-                chat(11, 651);
-            else
+            //if (sc.getstep("missy") > 5)
+            //    chat(11, 651);
+            //else
                 chat(12, 651);
             break;
         case "checkjo2":

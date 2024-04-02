@@ -448,7 +448,7 @@ room19.chatcatch = function (callback) {
             break;
         case "Stop":
             cl.display();
-            levels.anal(g.internal.size);
+            levels.anal(g.internal.size, false, null, false, null);
             daily.set("buttholeplay");
             char.room(g.pass);
             break;

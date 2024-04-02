@@ -42,8 +42,9 @@ room181.chatcatch = function (callback) {
         case "bondage101_10":
             nav.bg("181_black/" + callback + ".jpg");
             break;
-        case "gloryHole":
-            sc.setEvent("cecilia", 1);
+        case "gloryhole":
+            sc.show("cecilia");
+            sc.startMission("cecilia", "gloryhole");
             break;
         case "bondage101_9":
             levels.oralGive(1, true);
@@ -65,7 +66,7 @@ room181.chatcatch = function (callback) {
         case "bondage101_end":
             cl.undo();
             sissy.passclass(false);
-            char.room(207);
+            char.room(201);
             break;
         default:
             break;
@@ -240,7 +241,7 @@ room181.chat = function (chatID) {
                 "lonly there all by myself sometimes and it would be aweseome to have another cocksucker there with me to help " +
                 "pass the time. ",
             button: [
-                { chatID: 20, text: "Really? That sounds awesome! ", callback: "gloryHole" },
+                { chatID: 20, text: "Really? That sounds awesome! ", callback: "gloryhole" },
                 { chatID: 21, text: "Fuck no. I'm not sucking some stranger's dick!", callback: "" },
             ]
         },

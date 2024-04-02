@@ -20,7 +20,7 @@ room404.main = function () {
         nav.button(v, 404);
     });
     nav.buildnav(navList);
-    if (sc.getstep("envy") === 100) {
+    if (sc.taskGetStep("envy", "gf") === 0) {
         chat(4, 404);
     }
 };
@@ -28,7 +28,7 @@ room404.main = function () {
 room404.btnclick = function (name) {
     switch (name) {
         case "spanky":
-            if (sc.getstep("spanky") === 0)
+            if (sc.getMission("spanky", "shop").notStarted)
                 chat(0, 404);
             else {
                 g.pass = "general";
@@ -43,13 +43,16 @@ room404.btnclick = function (name) {
 room404.chatcatch = function (callback) {
     switch (callback) {
         case "purchase":
-            sc.setstep("spanky", 1);
+            sc.show("spanky");
+            sc.startMission("spanky", "shop");
+            sc.completeMissionTask("spanky", "shop", 0);
             g.pass = "general";
             char.room(401);
             break;
         case "envy100":
-            sc.setstep("envy", 101);
-            gv.set("spankyprices", true);
+            sc.completeMissionTask("envy", "gf", 0);
+            sc.completeMission("spanky", "hypno", false);
+            sc.completeMissionTask("spanky", "hypno", 2);
             char.addtime(60);
             char.room(0);
             break;
@@ -149,9 +152,9 @@ room404.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "spanky",
-            text: "Great! Just great! Now I'll never be able to fuck that light pussy slut! I'm never going to " +
+            text: "Great! Just great! Now I'll never be able to fuck that tight pussy slut! I'm never going to " +
                 "work with you again! Also all my prices are triple from now on for you! No more deals for rats! " +
-                "now get out of my store! ",
+                "Get out of my store! ",
             button: [
                 { chatID: -1, text: "Oh crap", callback: "envy100" }
             ]

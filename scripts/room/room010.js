@@ -207,10 +207,7 @@ room10.btnclick = function (name) {
             char.room(9);
             break;
         case "Bed":
-            if (g.hourBetween(5, 22)) //if before 6pm can only nap
-                chat(0, 10);
-            else
-                chat(5, 10);
+            chat(0, 10);
             break;
         case "wardrobe":
             g.pass = 10;
@@ -452,6 +449,8 @@ room10.chatcatch = function (callback) {
             cl.add("pants", "k");
             cl.add("shoes", "fb");
             inv.update("tifgift", false, null);
+            gv.mod("arousal", 20);
+            missy.set("uniformNew", 2);
             char.room(10);
             break;
         case "petcat":
@@ -793,9 +792,9 @@ room10.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "thinking",
-                text: "Somehow I knew what I was getting, but I'm still scared to wear it in public. Luckily I can change in the " +
-                    "classroom so I won't have to wear it out and about. I'll bet " + sc.n("missy") + " will want me to wear it " +
-                    "before I start class.",
+                text: "Somehow I knew what I was getting, but I'm still scared to wear it in public. " +
+                    "Luckily I can change in the bathroom at Missys. I'm going to have to hide this " +
+                    "in my closet so no one knows what dirty secrets I have. ",
                 button: [
                     { chatID: -1, text: "Hide the girly clothes in you closet", callback: "endbag" }
                 ]

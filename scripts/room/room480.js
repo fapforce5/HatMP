@@ -1,6 +1,8 @@
 ﻿//Room name
 var room480 = {};
 room480.main = function () {
+    g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
+
     room480.chatcatch("settod");
     if (sc.getstep("a") === 0) {
         char.addDays(1);

@@ -6,7 +6,21 @@ function chat(chatID, roomID) {
         privateChat.makeChat(window[g.room(roomID)]["chat"](chatID), chatID, roomID);
         
     }
+    if (window.getSelection) {
+        window.getSelection().removeAllRanges();
+    }
+    else if (document.selection) {
+        document.selection.empty();
+    }
 }
+
+privateChat.kill = function(){
+    $('#room_chatOverlay').hide();
+    $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
+    $('#room_footerSpeach').html("");
+    $('#room_chatSpeaker').html('');
+    $('#room_footer').show();
+};
 
 privateChat.makeChat = function (entry, chatID, roomID) {
     if (entry !== null) {

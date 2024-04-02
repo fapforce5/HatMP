@@ -63,16 +63,17 @@ room15.main = function () {
                 "night": "15_kitchen/dishesNight.png"
             });
         }
-        btnList.push({
-            "type": "btn",
-            "name": "water",
-            "left": 1468,
-            "top": 420,
-            "width": 118,
-            "height": 192,
-            "image": "15_kitchen/water.png"
-        });
-
+        if (!daily.get("water")) {
+            btnList.push({
+                "type": "btn",
+                "name": "water",
+                "left": 1468,
+                "top": 420,
+                "width": 118,
+                "height": 192,
+                "image": "15_kitchen/water.png"
+            });
+        }
     }
 
     var navList = [16];
@@ -105,6 +106,7 @@ room15.btnclick = function (name) {
                 chat(2, 15);
             break;
         case "water":
+            daily.set("water");
             var thisBladder = gv.get("bladder");
             if (thisBladder > .98)
                 chat(3, 15);

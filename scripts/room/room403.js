@@ -1,13 +1,16 @@
 ﻿//Room name
 var room403 = {};
 room403.main = function () {
-    if (sc.getEvent("tiffany", -9)) {
+    if (missy.activecase().caseId === 11 && sc.taskGetStep("tiffany", "friend") === 1) {
         nav.bg("403_saucy/tif1.jpg");
         chat(0, 403);
 
     }
-    else {
+    else if (!gv.get("xdress")) {
         chat(60, 403);
+    }
+    else {
+
     }
 };
 
@@ -128,8 +131,11 @@ room403.chatcatch = function (callback) {
             nav.bg("403_saucy/changeRoom6.jpg");
             break;
         case "changeRoom6a":
+            break;
+        case "changeRoom6abad":
+            sc.completeMissionTask("tiffany", "friend", 1, false);
+            sc.completeMissionTask("tiffany", "friend", 2, false);
             nav.bg("403_saucy/changeRoom6a.jpg");
-            sc.setstep("tiffany", 13);
             break;
         case "changeRoom6b":
             nav.bg("403_saucy/changeRoom6b.jpg");
@@ -190,7 +196,7 @@ room403.chatcatch = function (callback) {
             cl.c.socks = "p";
             cl.c.shoes = "fb";
             cl.display();
-            cl.add("bra", "p");
+            cl.add("bra", "w");
             zcl.displayMain(60, 760, .19, "panties socks shoes shirt", false);
             break;
         case "changeRoom11b":
@@ -211,8 +217,9 @@ room403.chatcatch = function (callback) {
             nav.bg("403_saucy/changeRoomY.jpg");
             break;
         case "changeRoomPussyCum":
-            sc.setstep("tiffany", 11);
-            gv.mod("fuckPussy", 1);
+            sc.completeMissionTask("tiffany", "friend", 1, true);
+            sc.completeMissionTask("tiffany", "friend", 2, false);
+            levels.fuckpussy("tiffany");
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomPussyCum.jpg");
             nav.button({
@@ -227,8 +234,9 @@ room403.chatcatch = function (callback) {
 
             break;
         case "changeRoomCumBack":
-            sc.setstep("tiffany", 12);
-            gv.mod("fuckPussy", 1);
+            sc.completeMissionTask("tiffany", "friend", 2, true);
+            sc.completeMissionTask("tiffany", "friend", 1, false);
+            levels.fuckpussy("tiffany");
             nav.killbutton("fuckingDatAss");
             nav.bg("403_saucy/changeRoomCumBack.jpg");
             break;
@@ -250,8 +258,7 @@ room403.chatcatch = function (callback) {
         case "tifMap":
             gv.set("map", 1);
             char.settime(19, 36);
-            sc.setstep("tiffany", 14);
-            sc.setstep("treyvon", 1);
+            //sc.setstep("treyvon", 1);
             char.room(50);
             break;
         case "jadajackoff":
@@ -467,7 +474,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "Yes, we're getting him a pair of panties to go with his new dress. Do you two know each other?",
             button: [
-                { chatID: 24, text: sc.n("jada") + " dated my buddy for a little bit in high school.", callback: "" }
+                { chatID: 24, text: sc.n("jada") + "'s dating my buddy since high school.", callback: "" }
             ]
         },
         {
@@ -484,7 +491,7 @@ room403.chat = function (chatID) {
             text: "You don't have to fucking lie to me " + sc.n("me") + ". I guess I should've known you liked wearing dresses. " +
                 "You were always really girly in school",
             button: [
-                { chatID: 26, text: "I wasn't into cross dressing. Really it's just to sneak into her building.", callback: "" }
+                { chatID: 26, text: "I wasn't into cross dressing. ", callback: "" }
             ]
         },
         {
@@ -541,7 +548,8 @@ room403.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "tiffany",
-            text: "Hahaha, it just slides right off! " + sc.n("missy") + " will need to hold your key for you!",
+            text: "I have lots of chastity keys. One of the perks of owning my own dirty sex store "
+                + sc.n("missy") + " will need to lock you back up!",
             button: [
                 { chatID: 34, text: "Well....", callback: "changeRoom3b" }
             ]
@@ -646,7 +654,7 @@ room403.chat = function (chatID) {
             "give us a fashion show!",
             button: [
                 { chatID: 45, text: "Oh um... sure", callback: "changeRoom6c" },
-                { chatID: 70, text: "No! This is too much", callback: "changeRoom6a" }
+                { chatID: 70, text: "No! This is too much", callback: "changeRoom6abad" }
             ]
         },
         {

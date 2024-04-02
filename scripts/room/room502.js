@@ -156,12 +156,12 @@ room502.chatcatch = function (callback) {
                 char.settime(7, 37);
                 chat(67, 502);
             }
-            else if (zoeyStep === 18 && sc.getstep("missy") >= 21) {
-                char.settime(7, 37);
-                nav.killall();
-                nav.bg("502_bedroom/overlook.jpg");
-                chat(45, 502);
-            }
+            //else if (zoeyStep === 18 && sc.getstep("missy") >= 21) {
+            //    char.settime(7, 37);
+            //    nav.killall();
+            //    nav.bg("502_bedroom/overlook.jpg");
+            //    chat(45, 502);
+            //}
             else if (zoeyStep === 22) {
                 char.settime(7, 37);
                 nav.killall();

@@ -10,11 +10,13 @@ sc.char = [
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
+    { name: "dog", display: "Cooper the Mythical Demon", image: "dog.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
     { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "black", display: "Ms. Black", image: "black.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
+    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
@@ -24,7 +26,6 @@ sc.char = [
     { name: "govlady", display: "Ms. Pixie", image: "govlady.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: false },
     { name: "chad", display: "Chad", image: "brad.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: false },
     { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
-    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "candy", display: "Candy", image: "candy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "charlie", display: "Charlie", image: "charlie.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
@@ -81,6 +82,8 @@ sc.char = [
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "tim", display: "Tim", image: "tim.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
+    { name: "dollmaker", display: "Doll maker", image: "dollmaker.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+
     { name: "poppy", display: "Poppy", image: "poppy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "orchid", display: "Orchid", image: "orchid.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "juniper", display: "Juniper", image: "juniper.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
@@ -105,6 +108,9 @@ sc.char = [
     //add her to sissy cave
 
     { name: "priest", display: "Father O'Mally", image: "priest.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, q3: false },
+
+    { name: "philbert", display: "Philbert", image: "philbert.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
+    { name: "sporty", display: "Sporty", image: "sporty.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
 
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -194,21 +200,21 @@ sc.charMission = [
                 missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
                     [
                         { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomID: 16 },
+                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
                 missionName: "chores", mStatus: 1, title: "Chores", desc: "Get an allowance for doing chores around the house. ", task:
                     [
                         { id: 0, txt: "Washt the dishes. ", show: true, mStatus: 1, roomId: 16 },
-                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomID: 16 },
+                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
                 missionName: "spermbank", mStatus: -1, title: "Helping at the Sperm Bank", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomID: 350 },
+                        { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
                     ]
             },
             {
@@ -234,7 +240,275 @@ sc.charMission = [
                     ]
             },
         ]
-    }
+    },
+    {
+        name: "zoey", mission: [
+            {
+                missionName: "friends", mStatus: 1, title: "Friends", desc: "Not ready yet", task:
+                    [
+                        { id: 0, txt: "In development.", show: true, mStatus: 0, roomId: 0 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "chad", mission: [
+            {
+                missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym. ", task:
+                    [
+                        { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
+                        { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550 },
+                        { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550 },
+
+                    ]
+            },
+        ]
+    },
+    {
+        name: "g", mission: [
+            {
+                missionName: "workout", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym. ", task:
+                    [
+                        { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
+                        { id: 1, txt: "Raise your strength bitch!", show: true, mStatus: 0, roomId: 550 },
+                        { id: 2, txt: "Regular workouts. ", show: true, mStatus: 0, roomId: 550 },
+
+                    ]
+            },
+            {
+                missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight. ", task:
+                    [
+                        { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 556 },
+                        { id: 1, txt: "Begginer Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
+                        { id: 2, txt: "Advanced Spar. ", show: true, mStatus: 0, roomId: 556 },
+
+                    ]
+            },
+            {
+                missionName: "secret", mStatus: 0, title: "Secret Room", desc: "Special workout. Need strength Level 4.", task:
+                    [
+                        { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 555 },
+                        { id: 1, txt: "Drippy Bicep Curls", show: true, mStatus: 0, roomId: 555 },
+                        { id: 2, txt: "Hip Thrusters", show: true, mStatus: 0, roomId: 555 },
+                        { id: 3, txt: "Yoga Bridge", show: true, mStatus: 0, roomId: 555 },
+                    ]
+            },
+            {
+                missionName: "mom", mStatus: 0, title: "Muscle Mommy", desc: "", task:
+                    [
+                        { id: 0, txt: "Cum in her tight muscle mommy pussy.", show: true, mStatus: 0, roomId: 555 },
+                        { id: 1, txt: "Wait. ", show: true, mStatus: 0, roomId: 555 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "janice", mission: [
+            {
+                missionName: "date", mStatus: 1, title: "Getting to know you. ", desc: "Get to know her as a person. ", task:
+                    [
+                        { id: 0, txt: "Meet up. ", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "Get to know her better. ", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "Friday or Saturday before " + nav.convertTime(20, 0) + ". ", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "A suprise, to be sure", show: true, mStatus: 0, roomId: 315 },
+                        { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 315 },
+                        { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 315 },
+                        { id: 6, txt: "In development", show: true, mStatus: 0, roomId: 315 },
+                    ]
+            },
+            {
+                missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
+            },
+            {
+                missionName: "bitch", mStatus: 1, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
+                    [
+                        { id: 0, txt: "Back from vacation", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "dog", mission: [
+            {
+                missionName: "vacation", mStatus: 0, title: "Doggy sit", desc: "Take care of him while I'm gone.", task:
+                    [
+                        { id: 0, txt: "Day 1 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Day 2 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 2, txt: "Day 3 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 3, txt: "Day 4 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 4, txt: "Day 5 feed him", show: true, mStatus: 0, roomId: 316 },
+                        { id: 5, txt: "Day 6 feed him", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "envy", mission: [
+            {
+                missionName: "meet", mStatus: 0, title: "Get to know her", desc: "Getting to know the odd unshaven girl", task:
+                    [
+                        { id: 0, txt: "Introduce yourself. ", show: true, mStatus: 0, roomId: 300 },
+                        { id: 1, txt: "Lost at a board game. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Bring Pizza! ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Just friends. ", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Turning a girl into a slut.", task:
+                    [
+                        { id: 0, txt: "Hypno 1: Touch myself", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "Hypno 2: Makeup ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Hypno 3: Dresses are pretty", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Hypno 4: Blonde have more fun", show: true, mStatus: 0, roomId: 301 },
+                        { id: 4, txt: "Hypno 5: Dumb is sexy", show: true, mStatus: 0, roomId: 301 },
+                        { id: 5, txt: "Hypno 6: Tits. Bigger is Better", show: true, mStatus: 0, roomId: 301 },
+                        { id: 6, txt: "Break that Hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 7, txt: "Hypno 7", show: true, mStatus: 0, roomId: 301 },
+                        { id: 8, txt: "Double team! Leave your cage at home.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 9, txt: "Broken.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 10, txt: "Cum dump", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "gf", mStatus: 0, title: "Girlfriend", desc: "Emotional Connection. ", task:
+                    [
+                        { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "Go Away!", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Forgivness comes slowly.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
+                        { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 5, txt: "See how her pussy is doing. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 6, txt: "Go to her place before 10 tomorrow. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 7, txt: "Successful test! [Not ready] ", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "breakup", mStatus: 0, title: "Failed me!", desc: "I hate you! ", task:
+                    [
+                        { id: 0, txt: "Didn't meet her before her test.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "Made her orgasm too much.", show: true, mStatus: 0, roomId: 904 },
+                        { id: 2, txt: "Didn't give her enough orgasms.", show: true, mStatus: 0, roomId: 904 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "spanky", mission: [
+            {
+                missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Bye some shit", task:
+                    [
+                        { id: 0, txt: "You're cool. I guess", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Make her a slut", task:
+                    [
+                        { id: 0, txt: "Purchase Hypno Takes. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "I love you man! 1/2 prices! ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "I hate you! Triple the prices! ", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "tiffany", mission: [
+            {
+                missionName: "friend", mStatus: 0, title: "Friends!", desc: "Did we just become best friends?", task:
+                    [
+                        { id: 0, txt: "Shopping trip! ", show: true, mStatus: 0, roomId: 650 },
+                        { id: 1, txt: "Came inside her in the change room. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Sprayed your cum on her back in the change room. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 3, txt: "Home. ", show: true, mStatus: 0, roomId: 51 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "candy", mission: [
+            {
+                missionName: "cuck", mStatus: 0, title: "Girlfriends", desc: "Do what two girlfriends do", task:
+                    [
+                        { id: 0, txt: "Home", show: true, mStatus: 0, roomId: 51 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "treyvon", mission: [
+            {
+                missionName: "doorman", mStatus: 0, title: "Doorman", desc: "A little molestation and a big dick", task:
+                    [
+                        { id: 0, txt: "You can enter the building as a girl.", show: true, mStatus: 0, roomId: 650 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "cop", mission: [
+            {
+                missionName: "bitch", mStatus: 0, title: "Park", desc: "Don't play in the park after dark.", task:
+                    [
+                        { id: 0, txt: "Warning", show: true, mStatus: 0, roomId: 450 },
+                        { id: 1, txt: "Final Warning", show: true, mStatus: 0, roomId: 450 },
+                        { id: 2, txt: "Face rape", show: true, mStatus: 0, roomId: 450 },
+                        { id: 2, txt: "You know why you keep coming back.", show: true, mStatus: 0, roomId: 450 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "philbert", mission: [
+            {
+                missionName: "bully", mStatus: 0, title: "Bully", desc: "Don't play in the park after dark.", task:
+                    [
+                        { id: 0, txt: "Shows his bully side", show: false, mStatus: 0, roomId: 211 },
+                        { id: 1, txt: "Blackmailed into sucking his cock", show: true, mStatus: 0, roomId: 211 },
+                        { id: 2, txt: "Everyone knows", show: true, mStatus: 0, roomId: 211 },
+                        { id: 3, txt: "Not made yet.", show: true, mStatus: 0, roomId: 211 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "sporty", mission: [
+            {
+                missionName: "corrupt", mStatus: 0, title: "Corrupt the sissy", desc: "Not made yet.", task:
+                    [
+                        { id: 0, txt: "In development (Not made)", show: false, mStatus: 0, roomId: 211 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "cecilia", mission: [
+            {
+                missionName: "gloryhole", mStatus: 0, title: "Glory hole!", desc: "Park bathroom on weekends ", task:
+                    [
+                        { id: 0, txt: "In development (Not made)", show: false, mStatus: 0, roomId: 211 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "bimbo", mission: [
+            {
+                missionName: "fuck", mStatus: 0, title: "Cum dumpster", desc: "How many ways can you cum in her?", task:
+                    [
+                        { id: 0, txt: "Blow job", show: false, mStatus: 0, roomId: 77 },
+                        { id: 1, txt: "Pussy", show: false, mStatus: 0, roomId: 77 },
+                        { id: 2, txt: "Anus", show: false, mStatus: 0, roomId: 77 },
+                        { id: 1, txt: "Sleepy pussy", show: false, mStatus: 0, roomId: 76 },
+                        { id: 2, txt: "Sleepy anal", show: false, mStatus: 0, roomId: 76 },
+                    ]
+            },
+            {
+                missionName: "preg", mStatus: 0, title: "Preggers!", desc: "Am I a mom?", task:
+                    [
+                        { id: 0, txt: "Gave her a sloppy cream pie", show: false, mStatus: 0, roomId: 77 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.mStatus = function (mStatus) {
@@ -267,6 +541,10 @@ sc.n = function (name) {
 
 sc.setcharname = function (name, newName) {
     sc.char[sc.i(name)].display = newName;
+};
+
+sc.show = function(name){
+    sc.char[sc.i(name)].show = true;
 };
 
 //Levels ----------------------------------------------------------------------
@@ -337,6 +615,34 @@ sc.levels = function (name, level) {
             break;
         case "tiffany":
             break;
+        case "dog":
+            tempLevel = [
+                { step: 0, txt: "Meet", m: [316] },
+                { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
+                { step: 2, txt: "Will let you pet him. ", m: [16] },
+                { step: 3, txt: "Will play catch", m: [16] },
+                { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
+                { step: 5, txt: "More aggressive. ", m: [16] },
+                { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
+                { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
+                { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
+                { step: 9, txt: "You're so his bitch", m: [16] },
+            ];
+            break;
+        case "envy":
+            tempLevel = [
+                { step: 0, txt: "Meet", m: [316] },
+                { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
+                { step: 2, txt: "Will let you pet him. ", m: [16] },
+                { step: 3, txt: "Will play catch", m: [16] },
+                { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
+                { step: 5, txt: "More aggressive. ", m: [16] },
+                { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
+                { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
+                { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
+                { step: 9, txt: "You're so his bitch", m: [16] },
+            ];
+            break;
         default:
             console.log("sc.levels - not found: " + name);
             break;
@@ -354,16 +660,18 @@ sc.getLevel = function (name) {
 };
 
 sc.modLevel = function (name, amount, targetLevel) {
-    var actualAmount;
+    var actualAmount = 0;
     var i, j;
     sc.getch
     i = sc.i(name);
     if (amount > 0) {
         if (sc.char[i].l <= targetLevel)
             actualAmount = amount;
-        else {
+        else if (sc.char[i].l <= targetLevel + 1)
+            actualAmount = Math.floor(amount / 3) + 1;
+        else if (sc.char[i].l <= targetLevel + 2)
             actualAmount = 1; //fix this later
-        }
+        
 
         var additionalLevels = Math.floor(actualAmount / 100);
         var addedLevels = 0;
@@ -427,7 +735,7 @@ sc.getMission = function (name, missionName) {
                         mStatus: sc.charMission[i].mission[j].mStatus,
                         notStarted: sc.charMission[i].mission[j].mStatus < 1,
                         inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
-                        complete: sc.charMission[i].mission[j].mStatus > 100,
+                        complete: sc.charMission[i].mission[j].mStatus > 99,
                         fail: sc.charMission[i].mission[j].mStatus === 101,
                         i: i,
                         j: j
@@ -441,7 +749,25 @@ sc.getMission = function (name, missionName) {
     return null;
 };
 
-sc.getMissionTask = function (nameId, missionId, taskId) {
+sc.getMissionTask = function (name, missionName, taskId) {
+    var ml = sc.getMission(name, missionName);
+    for (i = 0; i < sc.charMission[ml.i].mission[ml.j].task.length; i++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[i].id === taskId) {
+            var mstatus = sc.charMission[ml.i].mission[ml.j].task[i].mStatus;
+            return {
+                mStatus: mstatus,
+                notStarted: mstatus < 1,
+                inProgress: mstatus > 0 && mstatus < 100,
+                complete: mstatus > 99,
+                success: mstatus === 100,
+                fail: mstatus === 101,
+                i: i
+            };
+        }
+    }
+};
+
+sc.getMissionTaskId = function (nameId, missionId, taskId) {
     for (var i = 0; i < sc.charMission[nameId].mission[missionId].task.length; i++) {
         if (sc.charMission[nameId].mission[missionId].task[i].id === taskId)
             return i;
@@ -459,7 +785,7 @@ sc.getActiveMissions = function (name) {
     return retArray;
 };
 
-sc.completeMissionTask = function (name, missionName, taskId, success) {
+sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     var ml = sc.getMission(name, missionName);
     
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
@@ -476,6 +802,17 @@ sc.startMissionTask = function(name, missionName, taskId) {
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
         if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
             sc.charMission[ml.i].mission[ml.j].task[k].mStatus = 1;
+            return;
+        }
+    }
+};
+
+sc.modMissionTask = function (name, missionName, taskId, modNum) {
+    var ml = sc.getMission(name, missionName);
+
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
+            sc.charMission[ml.i].mission[ml.j].task[k].mStatus += modNum;
             return;
         }
     }
@@ -522,15 +859,13 @@ sc.getSecret = function (name) {
     }
 };
 
-
-
-
-
 sc.getstep = function (name) {
+    //alert("sc.getstep: " + name);
     console.log("error");
 };
 
 sc.setstep = function (name, step) {
+    //alert(name + step);
     console.log("error");
 };
 
@@ -659,7 +994,7 @@ sc.load = function (ra) {
                 sc.charMission[ml.i].mission[ml.j].mStatus = ra.charMission[i].mission[j].mStatus; //set overall mission status
                 for (k = 0; k < ra.charMission[i].mission[j].task.length; k++) {
 
-                    var mlk = sc.getMissionTask(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
+                    var mlk = sc.getMissionTaskId(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
                     if (mlk > -1)
                         sc.charMission[ml.i].mission[ml.j].task[mlk].mStatus = ra.charMission[i].mission[j].task[k].mStatus;
                 }
@@ -828,8 +1163,8 @@ sc.getTimeline = function (char) {
             break;
         case "bimbo":
             timeline = [
-                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
-                { d: [1, 2, 3, 4, 5], hstart: 9, hend: 17, roomId: 700, alt: null }, //hospital
+                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 76, alt: null }, //bedroom
+                { d: [1, 2, 3, 4, 5], hstart: 7, hend: 17, roomId: 700, alt: null }, //hospital
                 { d: [1, 2, 3, 4, 5], hstart: 17, hend: 21, roomId: 77, alt: null }, //living room
                 { d: [1, 2, 3, 4, 5], hstart: 21, hend: 24, roomId: 76, alt: null }, //bedroom
                 { d: [0, 6], hstart: 0, hend: 9, roomId: 76, alt: null }, //bedroom
@@ -902,11 +1237,6 @@ sc.tiffany = function () {
 
 
 sc.candy = function () {
-    return { roomID: g.roomID, thisRoom: true };
-};
-
-
-sc.bimbo = function () {
     return { roomID: g.roomID, thisRoom: true };
 };
 
@@ -1199,7 +1529,7 @@ sc.trivial = function (charname) {
             image = "thomas.png";
             break;
         case "!timothy":
-            name = "Timohty";
+            name = "Timothy";
             image = "timothy.png";
             break;
         case "!sporty":
@@ -1215,15 +1545,15 @@ sc.trivial = function (charname) {
             image = "martin.png";
             break;
         case "!missyguardday":
-            name = "Guard";
-            image = "missyguardnight.png";
+            name = "Guard"; 
+            image = "missyguardday.png";
             break;
         case "!missyguardnight":
             name = "Guard";
-            image = "missyguardday.png";
+            image = "missyguardnight.png";
             break;
         case "!stoner":
-            name = "Stoner Guy";
+            name = "Stoney";
             image = "stoner.png";
             break;
         case "!cheezy":
@@ -1265,6 +1595,34 @@ sc.trivial = function (charname) {
         case "!football":
             name = "Player";
             image = "football.png";
+            break;
+        case "!waiter":
+            name = "Waiter";
+            image = "waiter.png";
+            break;
+        case "!plumber":
+            name = "Plumber";
+            image = "plumber.png";
+            break;
+        case "!bill":
+            name = "Bill";
+            image = "bill.png";
+            break;
+        case "!punk":
+            name = "Punk Rocker";
+            image = "punk.png";
+            break;
+        case "!m":
+            name = "Marilyn";
+            image = "m.png";
+            break;
+        case "!peeguy":
+            name = "Peeing Asshole";
+            image = "peeguy.png";
+            break;
+        case "!chem":
+            name = "Chemist";
+            image = "chem.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

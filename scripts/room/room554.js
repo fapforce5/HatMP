@@ -17,7 +17,7 @@ room554.main = function () {
         chat(2, 554);
     }
     else {
-        if (g.diffDatesByDays(g.dt, gv.get("shower")) === 0)
+        if (daily.get("shower"))
             chat(0, 554);
         else {
             nav.killall();
@@ -54,7 +54,7 @@ room554.chatcatch = function (callback) {
             cl.undo();
             gv.mod("energy", 30);
             char.addtime(30);
-            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
+            daily.set("shower");
             if (g.pass === "boy")
                 char.room(552);
             else

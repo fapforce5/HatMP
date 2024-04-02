@@ -18,7 +18,16 @@ room0.main = function () {
 };
 
 room0.btnclick = function (name) {
-    if (name === "map_0") {
+    if (name === "money") {
+        nav.killbutton("money");
+        daily.set("foundmoney");
+        g.popUpNotice("You found money! ");
+        gv.mod("money", g.rand(10, 50));
+    }
+    else if (name === "moveChar") {
+        char.room(g.nextRoomId);
+    }
+    else if (name === "map_0") {
         nav.bg("map/map0.jpg", "map/map0_night.jpg");
         gv.set("map", 0);
         char.map();
@@ -134,11 +143,32 @@ room0.btnclick = function (name) {
         char.addtime(20);
         $('#room_footer').show();
         nav.killall();
-        nav.bg("map/" + roomnum + "_close" + (g.isNight() ? "night" : "") + ".jpg" );
-        setTimeout(function () {
-            char.room(roomnum);
-        }, 800);
-        
+        nav.bg("map/" + roomnum + "_close" + (g.isNight() ? "night" : "") + ".jpg");
+        g.nextRoomId = roomnum;
+        console.log("roomnum: " + roomnum);
+        if (g.rand(0, 20) === 0 && !daily.get("foundmoney")) {
+            nav.button({
+                "type": "btn",
+                "name": "money",
+                "left": 1532,
+                "top": 707,
+                "width": 327,
+                "height": 327,
+                "image": "map/money.png"
+            }, 0);
+            setTimeout(function () {
+                char.room(roomnum);
+            }, 4000);
+        }
+        else if (fame.event("moveChar")) {
+            console.log(roomnum);
+            console.log(g.nextRoomId);
+        }
+        else {
+            setTimeout(function () {
+                char.room(roomnum);
+            }, 800);
+        }
         //}
     }
     if (cl.isLewd()) {

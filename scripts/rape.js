@@ -1,19 +1,38 @@
 ﻿var fame = {};
+var room9998 = {};
 fame.rapechar;
 fame.rapereset = false;
+fame.returnBtn;
 
-fame.event = function () {
-    var rapeDay = [303, 451, 525, 750];
-    var rapeNight = [225, 303, 451, 525, 750, 900];
+fame.event = function (returnBtn) {
+    var rapeDay = [0, 303, 451, 525, 750];
+    var rapeNight = [0, 225, 303, 451, 525, 750, 900];
     var isRape;
     if (g.isNight()) 
         isRape = rapeNight.includes(g.roomID);
     else
         isRape = rapeDay.includes(g.roomID);
 
-    var thisFame = gv.get("fame");
+    fame.returnBtn = returnBtn;
+
+    var thisFame = (levels.get("fame").l * 3);
+    if (thisFame > 50)
+        thisFame = 50;
     var appearance = cl.appearance() * 16;
-    if (Math.random() < ((thisFame + appearance) / 400)) {
+    if (appearance < 0)
+        appearance = 0;
+    var chanceForRandom = (thisFame + appearance) / 400;
+
+    if (g.isNight() && g.dt.getDay() === 5) {
+        if (chanceForRandom < 1) {
+            chanceForRandom += (1 - chanceForRandom) / 2;
+        }
+    }
+    else if (!g.isNight()) {
+        chanceForRandom = chanceForRandom / 2;
+    }
+
+    if (Math.random() < chanceForRandom) {
         if (!isRape) {
             var char = fame.charList();
             var chatAr = fame.getChat(char.nice);
@@ -35,20 +54,24 @@ fame.event = function () {
                 button: [
                     { chatID: -1, text: chatAr.r, callback: "killFame" },
                 ]
-            }, 999, 1);
+            }, 9998, 1);
+            return true;
         }
         else {
             if (!fame.rapereset) {
                 fame.rapereset = true;
                 fame.rapechar = fame.getRapeChar();
+                //chat(0, 9998);
                 fame.position0(fame.rapechar);
+                return true;
+                //fame.position0(fame.rapechar);
             }
             else {
                 fame.rapereset = false;
             }
         }
     }
-    return null;
+    return false;
 };
 
 fame.charList = function () {
@@ -245,10 +268,10 @@ fame.getRapeChar = function () {
     return charList[Math.floor(Math.random() * charList.length)];
 }
 
-fame.position0 = function (char) {
+fame.position0 = function () {
     nav.killall();
     var txt = "";
-    switch (char) {
+    switch (fame.rapechar) {
         case "man1":
             nav.button({
                 "type": "img",
@@ -307,14 +330,15 @@ fame.position0 = function (char) {
         speaker: "random",
         text: txt,
         button: [
-            { chatID: -1, text: "Fight back (dice) (upper + lower strength)", callback: "fight1" },
-            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "run1" },
+            { chatID: -1, text: "Fight!", callback: "fight1" },
+            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "talk1" },
             { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
         ]
-    }, 999, 1);
+    }, 1, 9998);
 };
 
 fame.position1 = function (char) {
+    nav.killbutton("fameRandomEvent");
     switch (char) {
         case "man1":
             zcl.assup(650, 500, .7, "");
@@ -380,7 +404,7 @@ fame.position1 = function (char) {
         button: [
             { chatID: -1, text: "...", callback: "rape2" },
         ]
-    }, 999, 1);
+    }, 1, 9998);
 };
 
 fame.position2 = function (char) {
@@ -425,7 +449,157 @@ fame.position2 = function (char) {
         speaker: "me",
         text: txt,
         button: [
-            { chatID: -1, text: "...", callback: "rape3" },
+            { chatID: -1, text: "...", callback: "rapeComplete" },
         ]
-    }, 999, 1);
+    }, 1, 9998);
+};
+
+room9998.btnclick = function (name) {
+    switch (name) {
+        case "fightWin":
+            var money = g.rand(10, 30);
+            gv.mod("money", money);
+            window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
+            break;
+        case "fightLose":
+            fame.position1(fame.rapechar);
+            break;
+        case "fightRun":
+            if (gv.get("energy") < 20) {
+                g.popUpNotice("Not enough energy to run away");
+                fame.position1(fame.rapechar);
+            }
+            else {
+                gv.mod("energy", -20);
+                window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
+            }
+            break;
+        case "charWin":
+            window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
+            break;
+        case "charLose":
+            fame.position1(fame.rapechar);
+            break;
+       
+    }
+};
+
+room9998.chatcatch = function (callback) {
+    switch (callback) {
+        case "fight1":
+            quickFight.init(18, "random", "fightWin", "fightLose", "fightRun", 9998);
+            break;
+        case "talk1":
+            charisma.init(18, "charWin", "charLose", 9998);
+            break;
+        case "rape1":
+            fame.position1(fame.rapechar);
+            break;
+        case "rapeComplete":
+            window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
+            break;
+        case "killFame":
+            nav.killbutton("fameRandomEvent");
+            break;
+        case "rape2":
+            nav.killall();
+            fame.position2(fame.rapechar);
+            break;
+        case "rape3":
+            char.addtime(67);
+            char.room(g.roomID);
+            break;
+    }
+};
+
+room9998.chat = function (chatID) {
+    //if (chatID === 0) {
+    //    return {
+    //        chatID: 13,
+    //        speaker: "random",
+    //        text: txt,
+    //        button: [
+    //            { chatID: -1, text: "Fight!", callback: "fight1" },
+    //            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "run1" },
+    //            { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
+    //        ]
+    //    };
+    //}
+
+   nav.killall();
+    var txt = "";
+    switch (fame.rapec1har) {
+        case "man1":
+            nav.button({
+                "type": "img",
+                "name": "fameRandomEvent",
+                "left": 750,
+                "top": 28,
+                "width": 379,
+                "height": 1052,
+                "title": "Take it slut!",
+                "image": "1001_rand/rap_man0.png"
+            }, 1);
+            txt = "What's a slut like you doing all alone in a place like this? ";
+            break;
+        case "dom1":
+            nav.button({
+                "type": "img",
+                "name": "fameRandomEvent",
+                "left": 829,
+                "top": 27,
+                "width": 455,
+                "height": 1053,
+                "title": "Take it slut!",
+                "image": "1001_rand/rap_dom0.png"
+            }, 1);
+            txt = "What's a slut like you doing all alone in a place like this? ";
+            break;
+        case "man2":
+            nav.button({
+                "type": "img",
+                "name": "fameRandomEvent",
+                "left": 750,
+                "top": 19,
+                "width": 634,
+                "height": 1061,
+                "title": "Fat man with a stick",
+                "image": "1001_rand/rap_man_10.png"
+            }, 1);
+            txt = "What's a slut like you doing all alone in a place like this? ";
+            break;
+        case "man3":
+            nav.button({
+                "type": "img",
+                "name": "fameRandomEvent",
+                "left": 952,
+                "top": 64,
+                "width": 417,
+                "height": 1016,
+                "title": "Psycho business man",
+                "image": "1001_rand/rap_man_20.png"
+            }, 1);
+            txt = "I want to stab you to death and play around with your blood... maybe fucking your face will do. ";
+            break;
+    };
+    return {
+        chatID: 13,
+        speaker: "random",
+        text: txt,
+        button: [
+            { chatID: -1, text: "Fight!", callback: "fight1" },
+            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "talk1" },
+            { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
+        ]
+    };
+    //privateChat.makeChat({
+    //    chatID: 13,
+    //    speaker: "random",
+    //    text: txt,
+    //    button: [
+    //        { chatID: -1, text: "Fight!", callback: "fight1" },
+    //        { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "run1" },
+    //        { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
+    //    ]
+    //}, 9998, 1);
 };

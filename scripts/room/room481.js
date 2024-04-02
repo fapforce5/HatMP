@@ -1,6 +1,8 @@
 ﻿//Room name
 var room481 = {};
 room481.main = function () {
+    g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
+
     var btnList = [
         {
             "type": "btn",

@@ -24,9 +24,9 @@ room525.main = function () {
     else {
         nav.bg("525_entrance/closed.jpg");
         nav.buildnav([0]);
-        if (g.isNight()) {
-            fame.event();
-        }
+        //if (g.isNight()) {
+        //    fame.event();
+        //}
     }
 };
 

@@ -73,15 +73,6 @@ room1.btnclick = function (name) {
         case "patron":
             window.open("https://www.patreon.com/FF5", '_blank');
             break;
-        case "quickfightFight":
-            quickFight.drawFight();
-            break;
-        case "quickfightRun":
-            quickFight.run();
-            break;
-        case "quickfightcomplete":
-            quickFight.complete();
-            break;
         case "charismaRoll":
             charisma.drawRoll();
             break;
@@ -95,21 +86,7 @@ room1.btnclick = function (name) {
 
 room1.chatcatch = function (callback) {
     switch (callback) {
-        case "killFame":
-            nav.killbutton("fameRandomEvent");
-            break;
-        case "rape1":
-            nav.killall();
-            fame.position1(fame.rapechar);
-            break;
-        case "rape2":
-            nav.killall();
-            fame.position2(fame.rapechar);
-            break;
-        case "rape3":
-            char.addtime(67);
-            char.room(g.roomID);
-            break;
+        
         
         default:
             break;

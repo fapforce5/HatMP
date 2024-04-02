@@ -23,27 +23,28 @@ room54.main = function () {
 room54.btnclick = function (name) {
     switch (name) {
         case "tif":
-            if (cl.hasoutfit("nude") === null) {
-                var tifstep = sc.getstep("tiffany");
-                if (daily.get("tif")) {
-                    chat(0, 54);
-                }
-                else {
-                    if (tifstep === 16)
-                        chat(3, 54);
-                    else if (tifstep === 17)
-                        chat(13, 54);
-                    else if (tifstep === 18)
-                        chat(26, 54);
-                    else if (tifstep > 18)
-                        chat(32, 54);
-                    else
-                        chat(2, 54);
-                }
-            }
-            else {
-                chat(1, 54);
-            }
+            chat(33, 54);
+            //if (cl.hasoutfit("nude") === null) {
+            //    var tifstep = sc.getstep("tiffany");
+            //    if (daily.get("tif")) {
+            //        chat(0, 54);
+            //    }
+            //    else {
+            //        if (tifstep === 16)
+            //            chat(3, 54);
+            //        else if (tifstep === 17)
+            //            chat(13, 54);
+            //        else if (tifstep === 18)
+            //            chat(26, 54);
+            //        else if (tifstep > 18)
+            //            chat(32, 54);
+            //        else
+            //            chat(2, 54);
+            //    }
+            //}
+            //else {
+            //    chat(1, 54);
+            //}
             break;
 
         default:
@@ -449,6 +450,14 @@ room54.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Yes I do", callback: "iMakeup" },
                 { chatID: -1, text: "Some other time", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "tiffany",
+            text: "Not updated yet. Future release",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

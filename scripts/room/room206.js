@@ -405,7 +405,7 @@ room206.chatcatch = function (callback) {
                 }
                 else if (g.internal[9].b[4].a) {
                     gv.set("breastSelect", 6);
-                    levels.mod("xdress", 10);
+                    levels.mod("xdress", 10, 1);
                     img = g.internal[9].b[4].t;
                     chat(47, 206);
                 }
@@ -443,7 +443,7 @@ room206.chatcatch = function (callback) {
                 }
                 else if (g.internal[10].b[4].a) {
                     gv.set("assSelect", 5);
-                    levels.mod("xdress", 10);
+                    levels.mod("xdress", 10, 1);
                     img = g.internal[10].b[4].t;
                     chat(50, 206);
                 }
@@ -521,7 +521,6 @@ room206.chatcatch = function (callback) {
             case "end":
                 gv.mod("money", g.pass.money);
                 char.settime(17, 0);
-                sc.setstep("missy", 2);
                 missy.set("activeCase", 3)
                 nav.killall();
                 nav.bg("206_questions/sideEmpty.jpg")

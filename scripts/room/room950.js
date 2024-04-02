@@ -1831,7 +1831,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 112,
                 speaker: "cult",
-                text: "Oh fuck! Swollow my cum slut! ",
+                text: "Oh fuck! Swallow my cum slut! ",
                 button: [
                     { chatID: 113, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
                 ]

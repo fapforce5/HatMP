@@ -113,6 +113,8 @@ room176.chatcatch = function (callback) {
             break;
         case "oral26":
             levels.oralGive(3, false);
+            sc.completeMissionTask("philbert", "bully", 1);
+            sc.show("philbert");
             nav.bg("205_chastity/chast0_9_bad.jpg");
             break;
         default:
@@ -429,7 +431,7 @@ room176.chat = function (chatID) {
             text: "Oh. I thought you were. Hmmm. Ok. We'll I'm going to get dressed. Sorry we couldn't all taste her pussy, " +
                 "it was really fucking good.",
             button: [
-                { chatID: 33, text: "Yeah, no worries. See ya later. ", callback: "oralEnd" },
+                { chatID: -1, text: "Yeah, no worries. See ya later. ", callback: "oralEnd" },
             ]
         },
         {
@@ -541,7 +543,7 @@ room176.chat = function (chatID) {
             text: "He totally blackmailed me into sucking his dick. Came on face face and left. He totally used me like some " +
                 "kind of whore. Fuck I hate him. I'm not his whore. ",
             button: [
-                { chatID: -1, text: "Yes sir. ", callback: "oralEnd" },
+                { chatID: -1, text: "...", callback: "oralEnd" },
             ]
         },
     ];

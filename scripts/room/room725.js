@@ -6,18 +6,18 @@ room725.main = function () {
         chat(17, 725);
     }
     else {
-        if (sc.getstep("chloe") < 3 && !daily.get("chloe")) {
-            g.pass = "";
-            nav.button({
-                "type": "btn",
-                "name": "chloe",
-                "left": 1131,
-                "top": 154,
-                "width": 402,
-                "height": 926,
-                "image": "725_club/chloe.png"
-            }, 725);
-        }
+        //if (sc.getstep("chloe") < 3 && !daily.get("chloe")) {
+        //    g.pass = "";
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "chloe",
+        //        "left": 1131,
+        //        "top": 154,
+        //        "width": 402,
+        //        "height": 926,
+        //        "image": "725_club/chloe.png"
+        //    }, 725);
+        //}
         nav.button({
             "type": "btn",
             "name": "river",

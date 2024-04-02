@@ -111,7 +111,7 @@ room700.chat = function (chatID) {
             text: "Hi. What can I help you with.  ",
             button: [
                 { chatID: -1, text: "Nothing, just looking around. ", callback: "" },
-                { chatID: 8, text: "Ummm, I don't feel well. ", callback: "" }
+                //{ chatID: 8, text: "Ummm, I don't feel well. ", callback: "" }
             ]
         },
         {

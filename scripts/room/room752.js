@@ -67,7 +67,7 @@ room752.btnclick = function (name) {
             break;
         case "fuck2":
             nav.killbutton("fuck2");
-            sex.fuckpussy("whore");
+            levels.fuckpussy("whore");
             if (!missy.cases[8].complete)
                 nav.bg("752_whore/bg_locket.jpg");
             else
@@ -114,7 +114,7 @@ room752.chatcatch = function (callback) {
             break;
         case "fuck0":
             nav.killall();
-            nav.bg("752_whore/fuck0.gif");
+            nav.bg("752_whore/whore1.gif");
             nav.next("fuck1");
             break;
         case "makeNav":
@@ -182,7 +182,7 @@ room752.chatcatch = function (callback) {
                 "top": 800,
                 "width": 220,
                 "height": 180,
-                "image": "../mainChar/icons/" + cl.list[panties].img
+                "image": "8_wardrobe/icons/" + cl.list[panties].img
             }, 752);
             cl.c.panties = null;
             break;

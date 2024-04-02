@@ -16,6 +16,20 @@ room221.main = function () {
         { n: "jeffery", bg: "z_jeffery.jpg", btnclick: "zjeffery" },
     ];
 
+    if (cl.c.shirt === "r") {
+        var remove = Math.round(customerList.length / 2);
+        for (i = 0; i < remove; i++) {
+            customerList.splice(g.rand(0, customerList.length), 1);
+        }
+
+        customerList.push({ n: "!punk", bg: "z_punk.jpg", btnclick: "zpunk" });
+        customerList.push({ n: "!m", bg: "z_m.jpg", btnclick: "zm" });
+        customerList.push({ n: "!football", bg: "z_football.jpg", btnclick: "zfootball" });
+        customerList.push({ n: "queen", bg: "z_forest.jpg", btnclick: "zqueen" });
+        customerList.push({ n: "!peeguy", bg: "zpeeguy.jpg", btnclick: "zpeeguy" });
+        
+    }
+    
     for (i = 10; i < 13; i++) {
         var thisEvent = g.rand(0, 3);
         if (thisEvent === 0) { //no one comes in
@@ -187,7 +201,10 @@ room221.btnclick = function (name) {
             chat(6, 221);
             break;
         case "zcheezy":
-            chat(8, 221);
+            if (cl.c.shirt === "r")
+                chat(41, 221);
+            else
+                chat(8, 221);
             break;
         case "znips":
             chat(9, 221);
@@ -196,7 +213,7 @@ room221.btnclick = function (name) {
             chat(10, 221);
             break;
         case "zbitch":
-            if (cl.appearance() < 2)
+            if (cl.c.shirt === "r")
                 chat(11, 221);
             else
                 chat(14, 221);
@@ -205,15 +222,31 @@ room221.btnclick = function (name) {
             chat(15, 221);
             break;
         case "zjeffery":
-            if (cl.pantiesTxt() === "panties") {
+            var pantiesTxt = cl.pantiesTxt() === "panties";
+            if (cl.c.shirt === "r" && pantiesTxt) {
+                chat(20, 221);
+            }
+            else if (pantiesTxt) {
                 chat(17, 221);
             }
             else {
-                if (cl.c.shirt === "s")
-                    chat(16, 221);
-                else
-                    chat(20, 221);
+                chat(16, 221);
             }
+            break;
+        case "zpunk":
+            chat(29, 221);
+            break;
+        case "zm":
+            chat(34, 221);
+            break;
+        case "zfootball":
+            chat(42, 221);
+            break;
+        case "zqueen":
+            chat(43, 221);
+            break;
+        case "zpeeguy":
+            chat(44, 221);
             break;
         default:
             break;
@@ -226,7 +259,58 @@ room221.chatcatch = function (callback) {
         case "e2":
         case "e3":
         case "blank":
+        case "zpunk2":
+        case "zpunk3":
+        case "zm1":
+        case "zpeeguy1":
             nav.bg("221_recip/" + callback + ".jpg");
+            break;
+        case "zpunk4":
+            levels.oralGive(3, true, false, "m");
+            nav.killall();
+            nav.bg("221_recip/" + callback + ".jpg");
+            break;
+        case "zm2":
+            nav.bg("221_recip/zm2.jpg");
+            zcl.kneel(300, -660, 1.15, "clothes", true);
+            nav.button({
+                "type": "img",
+                "name": "zm",
+                "left": 552,
+                "top": 0,
+                "width": 1356,
+                "height": 1080,
+                "image": "221_recip/zm2.png"
+            }, 221);
+            
+            break;
+        case "zm3":
+            nav.bg("221_recip/zm3.jpg");
+            zcl.kneel(300, -620, 1.15, "clothes", true);
+            nav.button({
+                "type": "img",
+                "name": "zm",
+                "left": 552,
+                "top": 0,
+                "width": 1356,
+                "height": 1080,
+                "image": "221_recip/zm3.png"
+            }, 221);
+            break;
+        case "zm4":
+            nav.killall();
+            levels.oralGive(3, false, false, "f");
+            nav.bg("221_recip/z_m.jpg");
+            break;
+        case "jefferyPanties":
+            cl.c.panties = null;
+            nav.killall();
+            nav.bg("221_recip/" + callback + ".jpg");
+            break;
+        case "jefferyPanties1":
+            levels.mod("xdress", 10, 8);
+            gv.mod("money", 50);
+            nav.bg("221_recip/jefferyPanties1.jpg");
             break;
         case "fuckup":
             nav.bg("221_recip/" + callback + ".jpg");
@@ -268,6 +352,26 @@ room221.chatcatch = function (callback) {
             }
             else
                 chat(501, 221);
+            break;
+        case "zpunk1":
+            nav.killall();
+            nav.bg("221_recip/zpunk1.jpg");
+            zcl.displayMain(170, -100, .45, "clothes", true);
+            nav.button({
+                "type": "img",
+                "name": "punk",
+                "left": 782,
+                "top": 0,
+                "width": 563,
+                "height": 573,
+                "image": "221_recip/punkHand.png"
+            }, 221);
+            break;
+        case "zpeeguy2":
+            missy.mod("mood", -20);
+            levels.mod("piss", 20, 999);
+            nav.bg("221_recip/blank.jpg");
+
             break;
         case "reset":
             g.pass.t++;
@@ -440,7 +544,7 @@ room221.chat = function (chatID) {
             },
             {
                 chatID: 10,
-                speaker: "!zlep",
+                speaker: "!lep",
                 text: "Khazâd! Amân! Someone has stolen my sword! I must get it back, post haste! A friend " +
                     "needs it to fight back the hordes of orcs at the Renaissance fair!",
                 button: [
@@ -536,7 +640,7 @@ room221.chat = function (chatID) {
                     "what. I'll give you $50 for your panties if you give them to me know. I love a fresh pair of panties! ",
                 button: [
                     { chatID: 21, text: "Sure, Let me to go the bathroom and take them off. ", callback: "" },
-                    { chatID: -1, text: "No. I'm not giving you my panties. ", callback: "" },
+                    { chatID: 28, text: "No. I'm not giving you my panties. ", callback: "" },
                 ]
             },
             {
@@ -544,8 +648,7 @@ room221.chat = function (chatID) {
                 speaker: "jeffery",
                 text: "No. I want to see you take them off. That way I know they're fresh! Gimmie Gimmie! ",
                 button: [
-                    { chatID: 21, text: "Sure, Let me to go the bathroom and take them off. ", callback: "" },
-                    { chatID: -1, text: "No. I'm not giving you my panties. ", callback: "" },
+                    { chatID: 26, text: "ok, ok", callback: "jefferyPanties" },
                 ]
             },
             {
@@ -580,6 +683,213 @@ room221.chat = function (chatID) {
                     "no appointment! If you don't do anything then why the fuck are you sitting here. ",
                 button: [
                     { chatID: 24, text: "*gulp*", callback: "blank" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "jeffery",
+                text: "OOOOooooo b-b-b-boy! I love a fresh pair of panties! ",
+                button: [
+                    { chatID: 27, text: "...", callback: "jefferyPanties1" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "jeffery",
+                text: "I can't wait to get home and taste your yummy panties. Thank you! I'm " +
+                    "going to cum so hard j-j-j-jacking into these after my meeting with Missy. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "jeffery",
+                text: "R-r-r-really? I'll get your panties some day. Just let me in! ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "!punk",
+                text: "I've been jamming around the clock. Wanna suck a rock star cock? Come " +
+                    "around that desk and take a squat, I want to cum in something hot. ",
+                button: [
+                    { chatID: 31, text: "I do want to suck a rock star cock", callback: "zpunk1" },
+                    { chatID: 30, text: "No. Take your dick off my desk. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "!punk",
+                text: "You're such a cutie, now show me Missy's booty.",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "!punk",
+                text: "Oh open your mouth, your lips will spread, I really need a little head. ",
+                button: [
+                    { chatID: 32, text: "*glug*", callback: "zpunk2" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "!punk",
+                text: "Oh fuck your throat is so wet and tight. My dick in your mouth is quite a sight. ",
+                button: [
+                    { chatID: 33, text: "*glug* *glug* *glug*", callback: "zpunk3" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "!punk",
+                text: "I do love a nasty slut. Gobble gobble up my slimy nut. ",
+                button: [
+                    { chatID: 30, text: "*glug* *gulp* MMmmmmm", callback: "zpunk4" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "!m",
+                text: "Well well, Missy really does hire the prettiest girls doesn't she? ",
+                button: [
+                    { chatID: 36, text: "Oh gosh! Not as pretty as you. ", callback: "" },
+                    { chatID: 35, text: "What do you want? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "!m",
+                text: "I do have an appointment with her now.",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "!m",
+                text: "Oh I know honey. Say, I like a pretty girly penis. Would like to have a " +
+                    "quickie. I haven't been properly fucked all day.",
+                button: [
+                    { chatID: 37, text: "Oh so much! But Missy keeps me locked up.", callback: "zm1" },
+                    { chatID: 35, text: "Oh no. I don't think I'm allowed. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "!m",
+                text: "Awww. You poor thing. That's ok, you can eat my pussy. I do love " +
+                    "a good orgasm before conducting business.",
+                button: [
+                    { chatID: 38, text: "My mouth is yours!", callback: "zm2" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "!m",
+                text: "Ooooo you're good. Get in there deep! I'm getting there! ",
+                button: [
+                    { chatID: 39, text: "MMmmmmm *lick* *slurp*", callback: "zm3" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "!m",
+                text: "Ffffuuuuccckkkkk! fuck fuck fuck! ",
+                button: [
+                    { chatID: 40, text: "*lick* *slurp* *gulp*", callback: "zm4" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "!m",
+                text: "Whew! You were wonderful dear. Now I have to get to my meeting with Missy. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "!cheezy",
+                text: "You're pretty. I need to see Missy about lifting weights. Becuase I'm really " +
+                    "strong. I could even lift you up. 'cause I'm really strong. Can you tell Missy " +
+                    "I'm here, or do you need help? ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "!football",
+                text: "You're hot. I bet you're hotter bent over a locker room bench. The football " +
+                    "team would love to run a train on you pretty girl. You should come by sometime. " +
+                    "I've got a meeting or I'd bend you over right here. Now go tell Missy I'm here sweet cheeks.",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "queen",
+                text: "I have a rather important meeting with Missy. ",
+                button: [
+                    { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
+                    { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "!peeguy",
+                text: "Tell Missy to stop talking to my wife, Nips McTits! ",
+                button: [
+                    { chatID: 45, text: "Whaaa... BLECHH! AAAK! Stop pissing on me! STOP! Gross! ", callback: "zpeeguy1" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "missy",
+                text: "What the hell is going on out here! ",
+                button: [
+                    { chatID: 46, text: "Some guy came in and just pissed on me! I'm soaking wet!", callback: "" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "missy",
+                text: "I don't care that you like to get pissed on, just don't bring it in here.  " +
+                    "Now dry yourself up, clean up your mess, and get back to work. And " +
+                    "open the door. It smells like piss in here. ",
+                button: [
+                    { chatID: 47, text: "...but", callback: "" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "missy",
+                text: "Don't. Just clean it up in here pee pee " + gender.pronoun("girl") + ".",
+                button: [
+                    { chatID: 48, text: "yes ma'am", callback: "zpeeguy2" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "thinking",
+                text: "Such crap. I get pissed on my some angry crazy guy becuase of a case " +
+                    "Missy does, then I get yelled at and forced to clean up. Now I have to sit " +
+                    "here in my damp pissy clothes and finish out the work day. Bullshit.",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
                 ]
             },
         ];

@@ -114,6 +114,16 @@ input[type=text]:disabled{
     cursor: url('../images/general/h.png'), auto;
 }
 
+.room-btn-vib {
+    position: absolute;
+    cursor: url('../images/general/vib.png'), auto;
+}
+
+.room-btn-dick {
+    position: absolute;
+    cursor: url('../images/general/dick.png'), auto;
+}
+
 .room-btn-brush {
     position: absolute;
     cursor: url('../images/general/brush.png'), auto;
@@ -593,7 +603,7 @@ input[type=text]:disabled{
     background: #974960;
 }
 
-.menu-button:hover {
+.menu-button:hover, .hover-noevent:hover {
     cursor: pointer;
     filter: brightness(1.1);
 }

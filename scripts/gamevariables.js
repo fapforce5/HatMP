@@ -6,6 +6,7 @@ var gv = {};
 var sissy = {};
 var t = {}; //remove this
 var trophy = {};
+var future = {};
 
 gv.difficulty = 0;
 
@@ -16,6 +17,7 @@ gv.st = new Array();
 sissy.st = new Array();
 trophy.st = new Array();
 gv.stats = new Array();
+future.st = new Array();
 
 t.modLevel = function (id, amount) {
     console.log("kill me");
@@ -40,6 +42,7 @@ gv.init = function () {
         { n: "autohormone", t: false, q: "bool" },
         { n: "money", t: 100, q: "money" },
         { n: "arousal", t: 5, q: "hundred" },
+        { n: "xdress", t: false, q: "bool" },
 
         //character
         { n: "map", t: 1, q: "int" },
@@ -95,7 +98,7 @@ gv.init = function () {
         //sissyschool
         { n: "sissySchoolClass", t: null, q: "string" },
         { n: "sissySchoolClassDays", t: 0, q: "int" },
-
+        { n: "sissyGrades", t: "", q: "string" },
 
         { n: "pill", t: null, q: "string" },
 
@@ -106,19 +109,14 @@ gv.init = function () {
         //church
         { n: "confession", t: "", q: "string" },
 
-
-        //{ n: "domEvent", t: 0, q: "int" },
+        //analfill
+        { n: "analCum", t: 0, q: "int" },
+        { n: "analCumDog", t: 0, q: "int" },
+        { n: "analCumHorse", t: 0, q: "int" },
+        { n: "analCumPig", t: 0, q: "int" },
 
 
         { n: "jobConstructionPay", t: 0, q: "zero" },
-
-
-
-
-
-
-
-
 
 
         //{ n: "sissy", t: 0, q: "sissy" },
@@ -177,6 +175,7 @@ gv.init = function () {
 
     ];
 
+    //save by index
     daily.st = [
         { n: "chloe", t: false },
         { n: "landlord", t: false },
@@ -198,6 +197,9 @@ gv.init = function () {
         { n: "g", t: false },
         { n: "doc", t: false },
         { n: "ppgirl", t: false },
+        { n: "janice", t: false },
+        { n: "bimbo", t: false },
+        { n: "foundmoney", t: false },
 
         { n: "momChoreBed", t: false },
         { n: "momChoreDishes", t: false },
@@ -214,7 +216,25 @@ gv.init = function () {
         { n: "petcat", t: false },
         { n: "cardgame", t: false },
         { n: "cultrun", t: false },
-        { n: "tookHormonePill", t: false }
+        { n: "tookHormonePill", t: false },
+        //dogsitting
+        { n: "dog", t: false },
+        { n: "dcrawl", t: false },
+        { n: "dfeed", t: false },
+        { n: "dpet", t: false },
+        { n: "dsniff", t: false },
+        { n: "dball", t: false },
+        { n: "dpb", t: false },
+        { n: "dinside", t: false },
+        { n: "dhump", t: false },
+        { n: "dlock", t: false },
+        { n: "dpee", t: false },
+        { n: "dsex", t: false },
+        { n: "dwalk", t: false },
+
+        { n: "water", t: false },
+
+        { n: "cop", t: false }
     ];
 
     levels.st = [
@@ -240,6 +260,7 @@ gv.init = function () {
         { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true },
 
         { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
     ];
 
     sex.st = [
@@ -305,20 +326,20 @@ gv.init = function () {
     ];
 
     sissy.st = [
-        { id: 0, pID: [17], icon: "firstday", x: 0, y: 0, name: "First Day", description: "First day of class", ach: false, active: false, room: 209 },
+        { id: 0, pID: [17], icon: "firstday", x: -1, y: -1, name: "First Day", description: "First day of class", ach: false, active: false, room: 209 },
 
         { id: 1, pID: [0], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "A smooth sissy is a sexy sissy.", ach: false, active: true, room: 180 },
-        { id: 2, pID: [0], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
+        { id: 2, pID: [1], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
 
-        { id: 3, pID: [1, 2], icon: "fem102", x: 0, y: 2, name: "Feminization 102", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
-        { id: 4, pID: [1, 2], icon: "anal102", x: 3, y: 2, name: "Anal 102", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
-        { id: 5, pID: [1, 2], icon: "chastity101", x: 6, y: 2, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
-        { id: 6, pID: [1, 2], icon: "pee101", x: 2, y: 2, name: "Pee 101", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
-        { id: 7, pID: [1, 2], icon: "oral101", x: 5, y: 2, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true, room: 176 },
-        { id: 8, pID: [1, 2], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
-        { id: 9, pID: [1, 2], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
+        { id: 3, pID: [19], icon: "fem102", x: 0, y: 2, name: "Feminization 110", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
+        { id: 4, pID: [19], icon: "anal102", x: 3, y: 2, name: "Anal 102", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
+        { id: 5, pID: [19], icon: "chastity101", x: 6, y: 2, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
+        { id: 6, pID: [19], icon: "pee101", x: 2, y: 2, name: "Pee 101", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
+        { id: 7, pID: [19], icon: "oral101", x: 5, y: 2, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true, room: 176 },
+        { id: 8, pID: [19], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
+        { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
 
-        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9], icon: "test1", x: 0, y: 3, name: "IN DEVELOPMENT - Beginner Sissy Test", description: "NOT READY YET! Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true },
+        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 19], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
 
         { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: true },
         { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 212", description: "Experaince the joy of being filled", ach: false, active: true },
@@ -327,11 +348,16 @@ gv.init = function () {
         { id: 15, pID: [10], icon: "fem201", x: 0, y: 4, name: "Feminization 201", description: "Introduction to hormones", ach: false, active: true },
         { id: 16, pID: [10], icon: "fem212", x: 2, y: 4, name: "Feminization 212", description: "How to walk in high heels", ach: false, active: true },
 
-        { id: 17, pID: [], icon: "invite", x: 0, y: 0, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
+        { id: 17, pID: [], icon: "invite", x: -1, y: -1, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
+
+        { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true },
+
+        { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
+
     ];
 
     stats.st = [
-        { id: 0, t: "cum", n: "swollow", c: 0 },
+        { id: 0, t: "cum", n: "swallow", c: 0 },
         { id: 1, t: "cum", n: "spit", c: 0 },
         { id: 2, t: "cum", n: "creamPied", c: 0 },
         { id: 3, t: "cum", n: "eat", c: 0 },
@@ -388,6 +414,10 @@ gv.init = function () {
         { id: 39, t: "dislike", n: "cum", c: 0 },
         { id: 40, t: "dislike", n: "piss", c: 0 },
 
+        { id: 41, t: "dog", n: "sex", c: 0 },
+        { id: 42, t: "horse", n: "sex", c: 0 },
+        { id: 43, t: "pig", n: "sex", c: 0 },
+        { id: 44, t: "bull", n: "sex", c: 0 },
     ];
 
 
@@ -395,6 +425,8 @@ gv.init = function () {
         { id: 0, display: "Wear panties for the first time. ", img: "panties.png", ach: false, group: "sissy" },
         { id: 1, display: "Lock the cock. ", img:"chastity.png", ach: false, group: "sissy" },
     ];
+
+    future.st = new Array();
 };
 
 
@@ -409,7 +441,10 @@ daily.get=function(n){var t=daily.i(n);return t>-1?daily.st[t].t:(console.log("d
 levels.get=function(l){var n=levels.i(l);return n>-1?{c:levels.st[n].c,l:levels.st[n].l}:(console.log("levels.st missing name: "+l),null)}; //gets levels
 stats.get = function (t, n) { return stats.st[stats.i(t, n)].c };
 
-daily.set=function(t){var n=daily.i(t);n>0?daily.st[n].t=!0:console.log("daily set "+t+" not found")}; //sets daily to true
+daily.set = function (t, override = true) {
+    var n = daily.i(t);
+    n > 0 ? daily.st[n].t = override : console.log("daily set " + t + " not found")
+}; //sets daily to true
 gv.set=function(t,c){var s,e,i=gv.i(t);s=gv.st[i].t,gv.st[i].t=c,e=c-s,g.checkPop(t,e)};
 
 gv.mod = function (name, amount) {
@@ -460,11 +495,15 @@ gv.mod = function (name, amount) {
                 gv.st[index].t = new Date(gv.st[index].t.getTime() + (amount * 60000));
                 break;
             case "bladder":
+                if (gv.st[index].t < .9 && amount > 0)
+                    gv.mod("energy", Math.floor(amount * 100));
+
                 gv.st[index].t += amount;
                 if (gv.st[index].t > 1)
                     gv.st[index].t = 1;
                 else if (gv.st[index].t < 0)
                     gv.st[index].t = 0;
+
                 cl.display();
                 if (gv.st[index].t > .9) {
                     g.popUpNotice("Your bladder is so full it hurts. ");
@@ -485,7 +524,7 @@ gv.mod = function (name, amount) {
         console.log("unknown g.mod: " + name);
 };
 
-levels.mod = function (name, amount, targetLevel) {
+levels.mod = function (name, amount, targetLevel = 999) {
     var actualAmount;
     var i, j, fitnessStart;
     fitnessStart = null;
@@ -494,11 +533,17 @@ levels.mod = function (name, amount, targetLevel) {
     }
     for (i = 0; i < levels.st.length; i++) {
         if (levels.st[i].n === name) {
+            if (levels.st[i].c === null || isNaN(levels.st[i].c))
+                levels.st[i].c = 0;
+
             if (amount > 0) {
                 if (levels.st[i].l <= targetLevel)
                     actualAmount = amount;
                 else {
-                    actualAmount = 1; //fix this later
+                    if (levels.st[i].l <= targetLevel + 1)
+                        actualAmount = Math.floor(amount / 3) + 1; 
+                    else if (levels.st[i].l <= targetLevel + 2)
+                        actualAmount = 1;
                 }
 
                 var additionalLevels = Math.floor(actualAmount / 100);
@@ -565,6 +610,18 @@ stats.mod = function (t, n, amount) {
     stats.st[stats.i(t, n)].c += amount;
 };
 
+future.add = function (name, daysleft) {
+    future.st.push({ name: name, daysleft: daysleft });
+}
+
+future.get = function (name) {
+    for (i = 0; i < future.st.length; i++) {
+        if (future.st[i].name === name)
+            return future.st[i].daysleft;
+    }
+    return -1;
+}
+
 daily.newday = function () {
     for (var i = 0; i < daily.st.length; i++)
         daily.st[i].t = false;
@@ -581,13 +638,13 @@ levels.desc = function (name, level) {
         return { count: -1, txt: "+" + level + " Lock pick and Pick Pocket" };
     }
     if (name === "charisma") {
-        return { count: -1, txt: "+" + level + " Charisma" };
+        return { count: -1, txt: "Level: " + level };
     }
     if (name === "fame") {
         return { count: -1, txt: "+" + level + " Random Encounters" };
     }
     if (name === "strength") {
-        return { count: -1, txt: "+" + level + " to Fight" };
+        return { count: -1, txt: "Level: " + level };
     }
     var levelsDesc = new Array();
     switch (name) {
@@ -597,11 +654,11 @@ levels.desc = function (name, level) {
                 { id: 1, txt: "Can wear panties" },
                 { id: 2, txt: "Can cross dress at home and Missy's" },
                 { id: 3, txt: "Can work cases crossdressing" },
-                { id: 4, txt: "Only wear panties and bra" },
-                { id: 5, txt: "Can modestly cross dress in public " },
-                { id: 6, txt: "Can wear sexy outfits" },
-                { id: 7, txt: "Don't have to wear panties and bra" },
-                { id: 8, txt: "Can wear slutty clothing" },
+                { id: 4, txt: "Must wear bra" },
+                { id: 5, txt: "Can buy girly clothes." },
+                { id: 6, txt: "Can go out in girl clothes" },
+                { id: 7, txt: "Can buy slutty clothing" },
+                { id: 8, txt: "Don't have to wear panties and bra" }, 
                 { id: 9, txt: "Wear what ever, or nothing at all" }
             ];
             break;
@@ -696,16 +753,16 @@ levels.desc = function (name, level) {
             break;
         case "beast":
             levelsDesc = [
-                { id: 0, txt: "Avoids animals" },
-                { id: 1, txt: "Can pet animals" },
-                { id: 2, txt: "Can work as horse brusher at Rachel's" },
-                { id: 3, txt: "Can play with animals" },
-                { id: 4, txt: "Can get knotty dildo" },
-                { id: 5, txt: "Hand job" },
-                { id: 6, txt: "blow job" },
-                { id: 7, txt: "anal" },
-                { id: 8, txt: "Horse!" },
-                { id: 9, txt: "Subserviant to beasts (Can't stop it)" },
+                { id: 0, txt: "Can pet / brush animals" },
+                { id: 1, txt: "Can 'play' with animals" },
+                { id: 2, txt: "Can get knotty dildo" },
+                { id: 3, txt: "Hand job" },
+                { id: 4, txt: "blow job" },
+                { id: 5, txt: "anal" },
+                { id: 6, txt: "Horse!" },
+                { id: 7, txt: "Loves animals" },
+                { id: 7, txt: "Being around animals raises energy" },
+                { id: 8, txt: "Subserviant to beasts (Can't stop it)" },
             ];
             break;
         case "cheer":
@@ -730,25 +787,31 @@ levels.desc = function (name, level) {
         return { count: -1, txt: "not found" };
     }
     else if (level >= levelsDesc.length) {
-        return { count: levelsDesc.length, txt: levelsDesc[levelsDesc.length].text };
+        return { count: levelsDesc.length, txt: levelsDesc[levelsDesc.length - 1].text };
     }
     else {
         return { count: levelsDesc.length, txt: levelsDesc[level].txt };
     }
 };
 
-levels.oralGive = function (size, swallow, isDildo) {
-    levels.mod("oral", 25, 999);
+levels.oralGive = function (size, swallow, isDildo, gender = null) {
+    //levels.mod("oral", 25, 999);
+    levels.oral(size);
     if (swallow) {
         levels.mod("cum", 25, 999);
+        stats.mod("cum", "swallow", 1);
     }
-    else {
+    else if(gender === "m") {
         cl.c.cumface = true;
         cl.display();
     }
+
+    if (gender !== null) {
+        sex.mod("oral", true, gender, 1);
+    }
 }
 
-levels.anal = function (size) {
+levels.anal = function (size, sissygasm = false, gender = null, creampie = false, beast = null) {
     switch (levels.analTake(size).n) {
         case "noop":
             //do nothing;
@@ -766,6 +829,28 @@ levels.anal = function (size) {
             levels.mod("anal", 100, 999);
             break;
     };
+    if (sissygasm) {
+        cl.doCum(false);
+        if (gender !== null)
+            stats.mod("sissygasm", gender, 1);
+    }
+    if (creampie) {
+        levels.mod("cum", 25, 999);
+    }
+    if (beast !== null) {
+        sex.mod("beast", false, "m", 1);
+        levels.mod("beast", 50, 10);
+        stats.mod(beast, "sex", 1);
+        switch (beast) {
+            case "dog": gv.mod("analCumDog", 1); break;
+            case "horse": gv.mod("analCumHorse", 1); break;
+            case "pig": gv.mod("analCumPig", 1); break;
+        }
+    }
+    else if (gender !== null) {
+        sex.mod("anal", false, gender, 1);
+        gv.mod("analCum", 1);
+    }
 };
 
 levels.oral = function (size) {
@@ -1110,20 +1195,34 @@ levels.oralTake = function (size) {
             break;
     }
     switch (retvar) {
-        case "noop": return { n: retvar, c: 0 };
-        case "easy": return { n: retvar, c: 1 };
-        case "normal": return { n: retvar, c: 2 };
-        case "brutal": return { n: retvar, c: 3 };
-        case "broken": return { n: retvar, c: 4 };
+        case "noop": return { n: retvar, c: 0, canTake: true };
+        case "easy": return { n: retvar, c: 1, canTake: true };
+        case "normal": return { n: retvar, c: 2, canTake: true };
+        case "brutal": return { n: retvar, c: 3, canTake: false };
+        case "broken": return { n: retvar, c: 4, canTake: false };
     };
 };
 
-sex.fuckpussy = function (who) {
+levels.fuckpussy = function (who) {
     cl.doCum(false);
     levels.mod("dom", 20, 999);
+    levels.mod("dick", 20, 999);
     sex.mod("pussy", true, "f", 1);
-    if (gv.get("virginDick") === null)
+    if (gv.get("virginDick") === null) {
         gv.set("virginDick", who);
+        g.popUpNotice("You lost your virginity");
+    }
+};
+
+levels.fuckass = function (who, gender) {
+    cl.doCum(false);
+    levels.mod("dom", 20, 999);
+    levels.mod("dick", 20, 999);
+    sex.mod("anal", true, gender, 1);
+    if (gv.get("virginDick") === null) {
+        gv.set("virginDick", who);
+        g.popUpNotice("You lost your virginity");
+    }
 };
 
 sex.takeAnal = function (who, size, creampie, gender, number) {
@@ -1282,6 +1381,7 @@ gv.save = function () {
         sissy: new Array(),
         stats: new Array(),
         trophy: new Array(),
+        future: new Array()
     };
     //save by name
     for (i = 0; i < gv.st.length; i++) {
@@ -1321,6 +1421,10 @@ gv.save = function () {
     for (i = 0; i < trophy.st.length; i++) {
         retArray.trophy.push(trophy.st[i].ach);
     }
+    //{ name : "", daysleft: 0 }
+    for (i = 0; i < future.st.length; i++) {
+        retArray.future.push({ name: future.st[i].name, daysleft: future.st[i].daysleft });
+    }
 
     return retArray;
 };
@@ -1340,9 +1444,11 @@ gv.load = function (rma) {
         }
     }
 
+    //        { n: "chloe", t: false },
+
     for (i = 0; i < rma.daily.length; i++) {
         for (j = 0; j < daily.st.length; j++) {
-            if (rma.daily[i].n === daily.st[j].n) {
+            if (rma.daily[i] === daily.st[j].n) {
                 daily.st[j].t = true;
                 break;
             }
@@ -1372,6 +1478,12 @@ gv.load = function (rma) {
             trophy.st[i].ach = rma.trophy[i];
         }
     }
+
+    if (typeof rma.future !== 'undefined') {
+        for (i = 0; i < rma.future.length; i++) {
+            future.st.push({ name: rma.future[i].name, daysleft: rma.future[i].daysleft });
+        }
+    }
 };
 
 
@@ -1389,7 +1501,7 @@ sissy.passclass = function (normalRoom) {
     
     if (normalRoom) {
         char.settime(17, 15);
-        char.room(207);
+        char.room(201);
     }
 };
 
@@ -1405,11 +1517,14 @@ sissy.get = function (icon) {
     return null;
 }
 
-
-
-
-
-
+sissy.getNumPassed = function () {
+    var counter = 0;
+    for (var i = 0; i < sissy.st.length; i++) {
+        if (sissy.st[i].ach)
+            counter++;
+    }
+    return counter;
+};
 
 
 //to be removed
@@ -1504,9 +1619,5 @@ g.sissy = [
 
 ];
 
-g.supersissy = function (all) {
-    for (var i = 0; i < g.sissy.length; i++)
-        g.sissy[i].ach = all;
-};
 
 

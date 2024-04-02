@@ -6,8 +6,8 @@ room16.main = function () {
     var thisSisterRoomID = sc.getTimeline("lola");
     var thisMomRoomID = sc.getTimeline("landlord");
     var thisBigguyId = sc.getTimeline("bigguy");
-    var llst = sc.getstep("landlord");
-    if ((cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
+    //var llst = sc.getstep("landlord");
+    if (false) {// (cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
         nav.button({
             "type": "btn",
             "name": "caught",
@@ -18,35 +18,35 @@ room16.main = function () {
             "image": "16_livingRoom/allthree.png"
         }, 16);
     }
-    else if (cl.isLewd()) {
-        if (llst < 200) {
-            nav.button({
-                "type": "img",
-                "name": "lewd1",
-                "left": 703,
-                "top": 0,
-                "width": 769,
-                "height": 1080,
-                "image": "16_livingRoom/l1.png"
-            }, 16);
-            chat(21, 16);
-        }
-        else {
-            nav.button({
-                "type": "img",
-                "name": "lewd1",
-                "left": 703,
-                "top": 0,
-                "width": 769,
-                "height": 1080,
-                "image": "16_livingRoom/l1.png"
-            }, 16);
-            if (!sc.getEvent("landlord", -9))
-                chat(22, 16);
-            else
-                chat(33, 16);
-        }
-    }
+    //else if (cl.isLewd()) {
+    //    if (llst < 200) {
+    //        nav.button({
+    //            "type": "img",
+    //            "name": "lewd1",
+    //            "left": 703,
+    //            "top": 0,
+    //            "width": 769,
+    //            "height": 1080,
+    //            "image": "16_livingRoom/l1.png"
+    //        }, 16);
+    //        chat(21, 16);
+    //    }
+    //    else {
+    //        nav.button({
+    //            "type": "img",
+    //            "name": "lewd1",
+    //            "left": 703,
+    //            "top": 0,
+    //            "width": 769,
+    //            "height": 1080,
+    //            "image": "16_livingRoom/l1.png"
+    //        }, 16);
+    //        if (!sc.getEvent("landlord", -9))
+    //            chat(22, 16);
+    //        else
+    //            chat(33, 16);
+    //    }
+    //}
     else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {
             btnList.push({

@@ -58,6 +58,9 @@ room7.main = function () {
                 chat(23, 7);
             }
         }
+        else if (g.dt.getDay() === 5) {
+            chat(26, 7);
+        }
         else if (gv.get("jobapplyconst") < 2)
             chat(8, 7);
         else if (missy.activecase().name === "apply")
@@ -135,6 +138,16 @@ room7.chatcatch = function (callback) {
             break;
         case "clearRoom":
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
+            
+            break;
+        case "lastWord":
+            if (g.dt.getDay() === 5) {
+                chat(26, 7);
+            }
+            else {
+                nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
+                chat(9, 7);
+            }
             
             break;
         //case "payYouMom":
@@ -681,7 +694,7 @@ room7.chat = function (chatID) {
             chatID: 8,
             speaker: "landlord",
             text: "You need to wake up and get your ass a job. c'mon. Stop being a waste of a human being. ",
-            button: [{ chatID: 9, text: "Ok, ok... ", callback: "clearRoom" }]
+            button: [{ chatID: -1, text: "Ok, ok... ", callback: "lastWord" }]
         },
         {
             chatID: 9,
@@ -700,13 +713,13 @@ room7.chat = function (chatID) {
             chatID: 10,
             speaker: "landlord",
             text: "You need to get the PI license and start working for that nice Missy lady. ",
-            button: [{ chatID: 9, text: "I am. ", callback: "clearRoom" }]
+            button: [{ chatID: -1, text: "I am. ", callback: "lastWord" }]
         },
         {
             chatID: 11,
             speaker: "landlord",
             text: "Wakey wakey. Get your ass to work! ",
-            button: [{ chatID: 9, text: "I am. ", callback: "clearRoom" }]
+            button: [{ chatID: -1, text: "I am. ", callback: "lastWord" }]
         },
         {
             chatID: 12,
@@ -743,7 +756,7 @@ room7.chat = function (chatID) {
             speaker: "landlord",
             text: "That's a good boy. I'm going to wash my hands. You get ready for work. ",
             button: [
-                { chatID: 9, text: "... oh yeah", callback: "clearRoom" },
+                { chatID: -1, text: "... oh yeah", callback: "lastWord" },
             ]
         },
         {
@@ -751,7 +764,7 @@ room7.chat = function (chatID) {
             speaker: "landlord",
             text: "Well, she must be a special lady. Time to get ready for work honey. ",
             button: [
-                { chatID: 9, text: "ok", callback: "clearRoom" },
+                { chatID: -1, text: "ok", callback: "lastWord" },
             ]
         },
         {
@@ -760,7 +773,7 @@ room7.chat = function (chatID) {
             text: "You need to put some clothing between yourself and your sheets. I don't want to wash brown streaks from " +
                 "your bed. ",
             button: [
-                { chatID: 9, text: "...gross", callback: "clearRoom" },
+                { chatID: -1, text: "...gross", callback: "lastWord" },
             ]
         },
         {
@@ -768,7 +781,7 @@ room7.chat = function (chatID) {
             speaker: "landlord",
             text: "I don't know why you keep wearing that dick cage. If you keep it up, you'll break your penis and no girl will want you. ",
             button: [
-                { chatID: 9, text: "I know.", callback: "clearRoom" },
+                { chatID: -1, text: "I know.", callback: "lastWord" },
             ]
         },
         {
@@ -787,7 +800,7 @@ room7.chat = function (chatID) {
                 "out in front of a girl you'll scare her away. Now you should go take that thing off. Boys are supposed to have " +
                 "fully erect penises. Not that thing. ",
             button: [
-                { chatID: 9, text: "I know.", callback: "clearRoom" },
+                { chatID: -1, text: "I know.", callback: "lastWord" },
             ]
         },
         {
@@ -805,7 +818,7 @@ room7.chat = function (chatID) {
                 "before you go out. You don't want anyone to think you're some kind of panty pervert. Back in my youth you would " +
                 "get a beating for doing something like this. I'm going to let it slide, but really! Stop. ",
             button: [
-                { chatID: 9, text: "Oh, sure. ", callback: "clearRoom" },
+                { chatID: -1, text: "Oh, sure. ", callback: "lastWord" },
             ]
         },
         {
@@ -813,7 +826,7 @@ room7.chat = function (chatID) {
             speaker: "landlord",
             text: "I see you're still wearing panties. I hope you find someone that is open enough to tolerate that.  ",
             button: [
-                { chatID: 9, text: "I will.", callback: "clearRoom" },
+                { chatID: -1, text: "I will.", callback: "lastWord" },
             ]
         },
         {
@@ -829,6 +842,15 @@ room7.chat = function (chatID) {
             chatID: 25,
             speaker: "landlord",
             text: "Now I have to go wash your nastyness off them. Get up and get going!  ",
+            button: [
+                { chatID: -1, text: "ok", callback: "lastWord" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "landlord",
+            text: "Don't forget, it's Friday. Those aweful people from the Carnal Union will " +
+                "be in town, so get back before it gets dark. They are an aweful bunch. ",
             button: [
                 { chatID: 9, text: "ok", callback: "clearRoom" },
             ]

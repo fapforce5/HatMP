@@ -74,9 +74,9 @@ room451.main = function () {
 
         nav.buildnav(navList);
 
-        if (g.isNight()) {
-            fame.event();
-        }
+        //if (g.isNight()) {
+        //    fame.event();
+        //}
     }
     else {
         g.internal = canGoOut;
@@ -219,9 +219,9 @@ room451.btnclick = function (name) {
         case "insert_1":
             nav.killall();
             nav.bg("451_parkMensRoom/bj1.jpg");
-            if (sc.getstep("missy") < 2)
-                chat(6, 451);
-            else
+            //if (sc.getstep("missy") < 2)
+            //    chat(6, 451);
+            //else
                 chat(7, 451);
             break;
         case "gloryhole":
@@ -863,9 +863,9 @@ room451.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "cecilia",
-            text: "He's going to blow! Are you going to get a facial, or swollow like a real sissy!",
+            text: "He's going to blow! Are you going to get a facial, or swallow like a real sissy!",
             button: [
-                { chatID: 23, text: "Swollow like a sissy!", callback: "gc8_swollow" },
+                { chatID: 23, text: "Swallow like a sissy!", callback: "gc8_swollow" },
                 { chatID: 26, text: "Take the facial", callback: "gc8_face" }
             ]
         },
@@ -897,7 +897,7 @@ room451.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "cecilia",
-            text: "Awwww you didn't swollow, what a waste of yummy cummy!",
+            text: "Awwww you didn't swallow, what a waste of yummy cummy!",
             button: [
                 { chatID:25, text: "Gack spit cough", callback: "enterstall" }
             ]
@@ -958,7 +958,7 @@ room451.chat = function (chatID) {
             speaker: "thinking",
             text: "He's going to blow!",
             button: [
-                { chatID: 34, text: "Swollow", callback: "suckit2" },
+                { chatID: 34, text: "Swallow", callback: "suckit2" },
                 { chatID: 34, text: "Spit", callback: "suckit3" }
             ]
         },

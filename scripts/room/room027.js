@@ -14,6 +14,7 @@ room27.main = function () {
 
     switch (g.pass) {
         case 12:
+        case 201:
             nav.bg("12_bathroom/012_brushTeeth.jpg");
             zcl.displayMirror();
             chat(0, 27);
@@ -232,7 +233,7 @@ room27.chatcatch = function (callback) {
                     "top": top,
                     "width": 80,
                     "height": 80,
-                    "image": "../mainChar/icons/" + c.ps[i].image
+                    "image": "8_wardrobe/icons/" + c.ps[i].image
                 }, 27);
                 nav.t({
                     type: "img",

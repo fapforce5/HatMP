@@ -32,7 +32,7 @@ room75.main = function () {
 room75.btnclick = function (name) {
     switch (name) {
         case "door":
-            if (inv.has("lockpick"))
+            if (!inv.has("lockpick"))
                 chat(0, 75);
             else
                 chat(1, 75);

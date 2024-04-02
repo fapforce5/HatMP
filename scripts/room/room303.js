@@ -21,49 +21,50 @@ room303.main = function () {
             "image": "303_secondFloor/door.png"
         }
     ];
-    if (sc.getstep("jeffery") === 10) {
-        btnList.push({
-            "type": "btn",
-            "name": "pizza",
-            "left": 894,
-            "top": 803,
-            "width": 121,
-            "height": 69,
-            "image": "303_secondFloor/pizza.png"
-        });
-        btnList.push({
-            "type": "btn",
-            "name": "mat",
-            "left": 514,
-            "top": 827,
-            "width": 292,
-            "height": 49,
-            "image": "303_secondFloor/mat.png"
-        });
-        btnList.push({
-            "type": "btn",
-            "name": "garbage",
-            "left": 361,
-            "top": 736,
-            "width": 94,
-            "height": 124,
-            "image": "303_secondFloor/garbage.png"
-        });
-    }
-    var navList = [300, 315, 0];
+    //if (sc.getstep("jeffery") === 10) {
+    //    btnList.push({
+    //        "type": "btn",
+    //        "name": "pizza",
+    //        "left": 894,
+    //        "top": 803,
+    //        "width": 121,
+    //        "height": 69,
+    //        "image": "303_secondFloor/pizza.png"
+    //    });
+    //    btnList.push({
+    //        "type": "btn",
+    //        "name": "mat",
+    //        "left": 514,
+    //        "top": 827,
+    //        "width": 292,
+    //        "height": 49,
+    //        "image": "303_secondFloor/mat.png"
+    //    });
+    //    btnList.push({
+    //        "type": "btn",
+    //        "name": "garbage",
+    //        "left": 361,
+    //        "top": 736,
+    //        "width": 94,
+    //        "height": 124,
+    //        "image": "303_secondFloor/garbage.png"
+    //    });
+    //}
+    var navList = [300, 310, 314, 0];
     $.each(btnList, function (i, v) {
         nav.button(v, 303);
     });
     nav.buildnav(navList);
 
-    fame.event();
+    //fame.event();
     
 };
 
 room303.btnclick = function (name) {
     switch (name) {
         case "stairs":
-            chat(4, 303);
+            char.room(300);
+            //chat(4, 303);
             break;
         case "pizza":
             nav.kill();
@@ -123,23 +124,23 @@ room303.btnclick = function (name) {
             char.room(303);
             break;
         case "door":
-            if (sc.getstep("jeffery") === 10) {
-                if (g.isNight()) {
-                    chat(2, 303);
-                }
-                else if (inv.has("key202")) {
-                    char.room(304);
-                }
-                else {
-                    chat(3, 303);
-                }
-            }
-            else {
+            //if (sc.getstep("jeffery") === 10) {
+            //    if (g.isNight()) {
+            //        chat(2, 303);
+            //    }
+            //    else if (inv.has("key202")) {
+            //        char.room(304);
+            //    }
+            //    else {
+            //        chat(3, 303);
+            //    }
+            //}
+            //else {
                 if (g.isNight())
                     chat(0, 303);
                 else
                     chat(1, 303);
-            }
+            //}
             break;
         default:
             break;
