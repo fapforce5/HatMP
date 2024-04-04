@@ -525,7 +525,7 @@ gv.mod = function (name, amount) {
 };
 
 levels.mod = function (name, amount, targetLevel = 999) {
-    var actualAmount;
+    var actualAmount = 0;
     var i, j, fitnessStart;
     fitnessStart = null;
     if (name === "fitness") {
