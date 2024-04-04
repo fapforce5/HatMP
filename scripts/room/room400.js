@@ -4,6 +4,7 @@ var room400 = {};
 room400.main = function () {
 
     if (missy.activecase().caseId === 11 && sc.taskGetStep("tiffany", "friend") === 1) {
+        missy.set("activeCaseComplete", 1);
         nav.button({
             "type": "btn",
             "name": "tiffany0",
