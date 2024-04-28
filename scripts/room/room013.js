@@ -16,7 +16,29 @@ room13.main = function () {
     //else
     if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
         nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
-        btnList = [{
+
+        if(daily.get("loladrunk"))
+            btnList.push({
+                "type": "img",
+                "name": "bed",
+                "left": 1229,
+                "top": 409,
+                "width": 141,
+                "height": 107,
+                "image": "13_sisterRoom/lolaSleep.png"
+            });
+        if (daily.get("evadrunk"))
+            btnList.push({
+                "type": "img",
+                "name": "bed",
+                "left": 1449,
+                "top": 408,
+                "width": 192,
+                "height": 143,
+                "image": "13_sisterRoom/evaSleep.png"
+            });
+
+        btnList.push({
             "type": "btn",
             "name": "bed",
             "left": 1039,
@@ -24,7 +46,7 @@ room13.main = function () {
             "width": 543,
             "height": 288,
             "image": "13_sisterRoom/13_bedFar.png"
-        }];
+        });
     }
     else {
         if (sc.getTimeline("lola").thisRoom) {
@@ -41,7 +63,7 @@ room13.main = function () {
                     "top": 260,
                     "width": 215,
                     "height": 820,
-                    "image": "13_sisterRoom/13_lola_reading.png"
+                    "image": (g.isNight() ? "13_sisterRoom/13_lola_pj.png" : "13_sisterRoom/13_lola_reading.png")
                 },
                 {
                     "type": "btn",
@@ -50,7 +72,7 @@ room13.main = function () {
                     "top": 295,
                     "width": 291,
                     "height": 785,
-                    "image": "13_sisterRoom/13_eva_sitting.png"
+                    "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
                 }];
                 g.internal = { lola: scc.getSet("lola"), eva: scc.getSet("eva") };
                 //if (g.internal.lola.anyanyChanges || g.internal.eva.anyanyChanges) {
@@ -270,19 +292,42 @@ room13.btnclick = function (name) {
             }
             break;
         case "lolamassage":
-            char.room(4);
+            if (g.isNight()) {
+                room13.btnclick("clearChat");
+                chat(42, 13);
+            }
+            else
+                char.room(4);
             break;
         case "evamassage":
-            char.room(5);
+            if (g.isNight()) {
+                room13.btnclick("clearChat");
+                chat(41, 13);
+            }
+            else
+                char.room(5);
             break;
         case "spin":
-            room13.btnclick("clearChat");
-            chat(40, 13);
+            if (!inv.has("wine")) {
+                chat(43, 13)
+            }
+            else if (!g.isNight()) {
+                chat(44, 13);
+            }
+            else {
+                char.room(24);
+            }
             break;
         case "tord":
-            room13.btnclick("clearChat");
-            chat(40, 13);
-            //char.room(23);
+            if (!inv.has("wine")) {
+                chat(45, 13)
+            }
+            else if (!g.isNight()) {
+                chat(44, 13);
+            }
+            else {
+                char.room(23);
+            }
             break;
         case "dick":
 
@@ -290,6 +335,272 @@ room13.btnclick = function (name) {
         
         case "reset":
             char.room(13);
+            break;
+        case "bed":
+            g.internal = {
+                evaPants: true,
+                lolaPants: true,
+                evaPanties: true,
+                lolaPanties: true,
+                step: 0
+            };
+            nav.kill();
+           
+            nav.bg("13_sisterRoom/bedbg.jpg");
+            nav.button({
+                "type": "img",
+                "name": "pjs",
+                "left": 985,
+                "top": 93,
+                "width": 485,
+                "height": 883,
+                "image": "13_sisterRoom/13_pjs.png"
+            }, 13);
+            nav.button({
+                "type": "btn",
+                "name": "sheet1",
+                "left": 904,
+                "top": 259,
+                "width": 716,
+                "height": 801,
+                "image": "13_sisterRoom/13_sheet1.png"
+            }, 13);
+            break;
+        case "sheet1":
+            nav.killbutton("sheet1");
+            nav.button({
+                "type": "btn",
+                "name": "sheet2",
+                "left": 904,
+                "top": 386,
+                "width": 716,
+                "height": 674,
+                "image": "13_sisterRoom/13_sheet2.png"
+            }, 13);
+            break;
+        case "sheet2":
+            nav.killbutton("sheet2");
+            nav.button({
+                "type": "btn",
+                "name": "choice",
+                "left": 904,
+                "top": 582,
+                "width": 716,
+                "height": 478,
+                "image": "13_sisterRoom/13_sheet3.png"
+            }, 13);
+            break;
+        case "choice":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "sleep",
+                "left": 986,
+                "top": 93,
+                "width": 482,
+                "height": 883,
+                "image": "13_sisterRoom/sleep.png"
+            }, 13);
+            if (g.internal.lolaPanties) {
+                nav.button({
+                    "type": "img",
+                    "name": "lolapanties",
+                    "left": 1196,
+                    "top": 499,
+                    "width": 131,
+                    "height": 69,
+                    "image": "13_sisterRoom/pj_lola_panties.png"
+                }, 13);
+            }
+            if (g.internal.lolaPants) {
+                nav.button({
+                    "type": "img",
+                    "name": "lolapants",
+                    "left": 985,
+                    "top": 488,
+                    "width": 342,
+                    "height": 395,
+                    "image": "13_sisterRoom/pj_lola_pants.png"
+                }, 13);
+            }
+            
+            if (g.internal.evaPanties) {
+                nav.button({
+                    "type": "img",
+                    "name": "evapanties",
+                    "left": 1343,
+                    "top": 437,
+                    "width": 126,
+                    "height": 111,
+                    "image": "13_sisterRoom/pj_eva_panties.png"
+                }, 13);
+            }
+            if (g.internal.evaPants) {
+                nav.button({
+                    "type": "img",
+                    "name": "evapants",
+                    "left": 1225,
+                    "top": 422,
+                    "width": 244,
+                    "height": 463,
+                    "image": "13_sisterRoom/pj_eva_pants.png"
+                }, 13);
+            }
+           
+            g.internal.step = 0;
+            sc.select("lolaStrip", "13_sisterRoom/icon_focuslola.png", 0);
+            sc.select("evaStrip", "13_sisterRoom/icon_focuseva.png", 1);
+            sc.selectCancel("leave", 2);
+            break;
+        case "lolaStrip":
+            nav.killbutton("lolaStrip");
+            nav.killbutton("evaStrip");
+            nav.killbutton("leave");
+            if (g.internal.lolaPants) {
+                if (g.internal.step === 3) {
+                    g.internal.lolaPants = false;
+                    room13.btnclick("choice");
+                }
+                else {
+                    nav.killbutton("lolapants");
+                    nav.button({
+                        "type": "btn",
+                        "name": "lolaStrip",
+                        "left": 978,
+                        "top": 481,
+                        "width": 356,
+                        "height": 409,
+                        "image": "13_sisterRoom/pj_lola_pants" + g.internal.step + ".png"
+                    }, 13);
+                    g.internal.step++;
+                }
+            }
+            else if (g.internal.lolaPanties) {
+                nav.killbutton("lolapanties");
+                if (g.internal.step === 0) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "lolaStrip",
+                        "left": 1189,
+                        "top": 492,
+                        "width": 145,
+                        "height": 83,
+                        "image": "13_sisterRoom/pj_lola_panties0.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 1) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "lolaStrip",
+                        "left": 1147,
+                        "top": 569,
+                        "width": 117,
+                        "height": 48,
+                        "image": "13_sisterRoom/pj_lola_panties1.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 2) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "lolaStrip",
+                        "left": 1055,
+                        "top": 571,
+                        "width": 160,
+                        "height": 133,
+                        "image": "13_sisterRoom/pj_lola_panties2.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 3) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "lolaStrip",
+                        "left": 1130,
+                        "top": 761,
+                        "width": 132,
+                        "height": 43,
+                        "image": "13_sisterRoom/pj_lola_panties3.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 4) {
+                    g.internal.lolaPanties = false;
+                    room13.btnclick("choice");
+                }
+            }
+            break;
+        case "evaStrip":
+            nav.killbutton("lolaStrip");
+            nav.killbutton("evaStrip");
+            nav.killbutton("leave");
+            if (g.internal.evaPants) {
+                if (g.internal.step === 4) {
+                    g.internal.evaPants = false;
+                    room13.btnclick("choice");
+                }
+                else {
+                    nav.killbutton("evapants");
+                    nav.button({
+                        "type": "btn",
+                        "name": "evaStrip",
+                        "left": 1218,
+                        "top": 415,
+                        "width": 258,
+                        "height": 477,
+                        "image": "13_sisterRoom/pj_eva_pants" + g.internal.step + ".png"
+                    }, 13);
+                    g.internal.step++;
+                }
+            }
+            else if (g.internal.evaPanties) {
+                if (g.internal.step === 0) {
+                    nav.killbutton("evapanties");
+                    nav.button({
+                        "type": "btn",
+                        "name": "evaStrip",
+                        "left": 1337,
+                        "top": 430,
+                        "width": 139,
+                        "height": 125,
+                        "image": "13_sisterRoom/pj_eva_panties0.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 1) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "evaStrip",
+                        "left": 1252,
+                        "top": 534,
+                        "width": 137,
+                        "height": 124,
+                        "image": "13_sisterRoom/pj_eva_panties1.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 2) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "evaStrip",
+                        "left": 1248,
+                        "top": 630,
+                        "width": 114,
+                        "height": 135,
+                        "image": "13_sisterRoom/pj_eva_panties2.png"
+                    }, 13);
+                    g.internal.step++;
+                }
+                else if (g.internal.step === 3) {
+                    g.internal.evaPanties = false;
+                    room13.btnclick("choice");
+                }
+            }
+            break;
+        case "leave":
+            char.addtime(30);
+            char.room(11);
             break;
         default:
             break;
@@ -688,7 +999,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 30,
                 speaker: "lola",
-                text: "Just becuase she's a little... promiscuous, you shouldn't call her that. ",
+                text: "Just because she's a little... promiscuous, you shouldn't call her that. ",
                 button: [
                     { chatID: 31, text: "Awwww, sorry, I didn't mean it. I was just trying to be funny. ", callback: "lolaLevelQuater" },
                 ]
@@ -744,7 +1055,7 @@ room13.chat = function (chatID) {
                     "my feet. What is it with you guys and feet anyways? ",
                 button: [
                     { chatID: 38, text: "I really don't know. ", callback: "" },
-                    { chatID: 37, text: "It's becuase they're just so soft and delicate. Love a freshly peticured foot", callback: "" },
+                    { chatID: 37, text: "It's because they're just so soft and delicate. Love a freshly peticured foot", callback: "" },
                 ]
             },
             {
@@ -780,9 +1091,48 @@ room13.chat = function (chatID) {
                     { chatID: -1, text: "...", callback: "" },
                 ]
             },
-
-
-            
+            {
+                chatID: 41,
+                speaker: "eva",
+                text: "It's too late in the day for a massage. Catch me earlier. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "lola",
+                text: "It's too late in the day for a massage. Catch me earlier. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "eva",
+                text: "We can't play spin the bottle without a bottle stupid. Go get some wine! ",
+                button: [
+                    { chatID: -1, text: "Oh yeah. I'll go get some wine. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "lola",
+                text: "It's too early in the day for wine. I still have so much to do and I don't " +
+                    "want to ruin optimal study hours drinking wine.",
+                button: [
+                    { chatID: -1, text: "Ok. I'll come back after dark.  ", callback: "" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "eva",
+                text: "You know a bottle of wine makes these game so much more fun. I won't play " +
+                    "without fun! ",
+                button: [
+                    { chatID: -1, text: "Oh yeah. I'll go get some wine. ", callback: "" },
+                ]
+            },
         ];
         return cArray[chatID];
     }

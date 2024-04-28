@@ -58,7 +58,7 @@ room351.chatcatch = function (callback) {
             gv.mod("money", 30);
             sc.modLevel("landlord", 100, 4);
             char.settime(12, 37);
-            char.room(0);
+            char.room(354);
             break;
         default: break;
     }
@@ -122,7 +122,7 @@ room351.chat = function (chatID) {
             text: "That was quick. I hope you last longer with the ladies, than you do with Nurse Madison. Here's your $30. " +
                 "Thank you for helping out honey. ",
             button: [
-                { chatID: -1, text: "Thanks! See you at home.", callback: "paymeEnd" }
+                { chatID: -1, text: "Thanks! ", callback: "paymeEnd" }
             ]
         },
         {

@@ -1070,7 +1070,7 @@ room182.chat = function (chatID) {
                 chatID: 46,
                 speaker: "thinking",
                 text: "That totally broke my bussy. I'm going to have to wear diapers for the " +
-                    "rest of my life becuase my butthole will never close again. Why did I try to " +
+                    "rest of my life because my butthole will never close again. Why did I try to " +
                     "push myself so hard to prove how much I could take. I hate this school sometimes. " +
                     "It's nothing but misery. ",
                 button: [
@@ -1082,7 +1082,7 @@ room182.chat = function (chatID) {
                 speaker: "ralph",
                 text: "You were amazing up there. I couldn't even sit on it, but you were able to take " +
                     "get in in your bussy. I hope one day I'm half the sissy you are. There's just one " +
-                    "more test. I know you can get through it, becuase we're going to look really hot " +
+                    "more test. I know you can get through it, because we're going to look really hot " +
                     "when we get our tits!",
                 button: [
                     { chatID: 48, text: "Really", callback: "t1_23" },
@@ -1138,7 +1138,7 @@ room182.chat = function (chatID) {
                 chatID: 53,
                 speaker: "black",
                 text: "Well well. If it isn't Missy favorite student. You might ask why I do what " +
-                    "I do. It's becuase you sissies are idiots. You think you can put on a slutty outfit " +
+                    "I do. It's because you sissies are idiots. You think you can put on a slutty outfit " +
                     "with your asshole hanging out and you'll be treated like a lady. ",
                 button: [
                     { chatID: 54, text: "...", callback: "" },
@@ -1186,7 +1186,7 @@ room182.chat = function (chatID) {
                 chatID: 58,
                 speaker: "black",
                 text: "Next up is what I call my magic wand. It's going to put 20,000 volts into " +
-                    "you body. Feel free to scream if you need to. ",
+                    "your body. Feel free to scream if you need to. ",
                 button: [
                     { chatID: 59, text: "...", callback: "t1_30" },
                 ]
@@ -1242,7 +1242,7 @@ room182.chat = function (chatID) {
                 chatID: 64,
                 speaker: "black",
                 text: "Now you may ask yourself why I didn't make you air tight and fill you sissy pie hole. " +
-                    "That's becuase I didn't want to muffle your screams as you get your next treat. Are you ready " +
+                    "That's because I didn't want to muffle your screams as you get your next treat. Are you ready " +
                     "my dear? ",
                 button: [
                     { chatID: 65, text: "...no", callback: "t1_36" },

@@ -376,7 +376,7 @@ room408.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "thinking",
-            text: "Ah crap. What have I gotten myself into now. I can't back out becuase she might have what I need to " +
+            text: "Ah crap. What have I gotten myself into now. I can't back out because she might have what I need to " +
                 "get " + sc.n("missy") + ". Besides how bad can the tattoo be? ",
             button: [
                 { chatID: 13, text: "...", callback: "black" },

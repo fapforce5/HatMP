@@ -4,12 +4,17 @@ room11.main = function () {
     //if (cl.isCrossdressing() && sc.getstep("lola") < 200) {
     //    char.room(16);
     //}
+    g.pass = '';
     if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;
         var sisterLocation = sc.getTimeline("lola").roomID;
         var openDoor = g.hourBetween(7, 21);
         var btnList = new Array();
         var navList = [16, 10];
+        var lolapee = false;
+        if (!weekly.get("lolapee") && sisterLocation === 13 && motherLocation !== 12 && g.rand(0, 2) === 0) {
+            g.pass = "lolapee";
+        }
         //Bathroom
         btnList.push({
             "type": "btn",
@@ -24,7 +29,7 @@ room11.main = function () {
         });
 
         //Bathroom
-        if (motherLocation === 12 || sisterLocation === 12) {
+        if (motherLocation === 12 || sisterLocation === 12 || g.pass === "lolapee") {
             btnList.push({
                 "type": "btn",
                 "name": "bathroomClose",

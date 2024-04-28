@@ -209,7 +209,7 @@ sc.levels = function (name, level) {
                 tempLevel = [
                     { step: 0, txt: "[M] Get a job. Go to your Computer in your room. Apply and interview for a job. Chat with her about working. ", m: [16] },
                     { step: 1, txt: "[M] Talk to her about her job. ", m: [16] },
-                    { step: 2, txt: "[M] Chat about sperm theif. ", m: [16] },
+                    { step: 2, txt: "[M] Chat about sperm thief. ", m: [16] },
                     { step: 3, txt: "[M] Extra Money! Get key to her bedroom.", m: [16] },
                     { step: 4, txt: "[M] Chat about working at the sperm store.", m: [16] },
                     { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },

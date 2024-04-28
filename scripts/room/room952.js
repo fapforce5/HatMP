@@ -430,7 +430,7 @@ room952.chat = function (chatID) {
             speaker: "daria",
             text: "When you sweep up you'll need a way to pull the keys off the desk. I don't care how you do it, but you need " +  
                 "those keys. I know they guard. He's an absolute tool who thinks he can never fuck up. If you can get them " +
-                "he won't tell anyone becuase he doesn't want to get in trouble. But you'll have to hide them... in your body.",
+                "he won't tell anyone because he doesn't want to get in trouble. But you'll have to hide them... in your body.",
             button: [
                 { chatID: 11, text: "In my body?", callback: "" }
             ]
@@ -448,7 +448,7 @@ room952.chat = function (chatID) {
             chatID: 12,
             speaker: "daria",
             text: "I know, you butt freak. After you get the keys I'll come get them from you. Then just act cool and wait until you're invited to " +  
-                "the next ceremony. Act cool and do what ever they tell you to do. ",
+                "the next ceremony. Act cool and do whatever they tell you to do. ",
             button: [
                 { chatID: 14, text: "Ok. ", callback: "" },
                 { chatID: 13, text: "But what if I want to stay and be turned into a girl? ", callback: "" },

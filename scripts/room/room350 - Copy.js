@@ -46,7 +46,6 @@ room350.btnclick = function (name) {
         case "nurse":
             if (sc.getMission("landlord", "spermbank").inProgress) {
                 if (g.dt.getDay() === 6) {
-                    sc.completeMission("landlord", "spermbank", true);
                     sc.setEvent("landlord", 1);
                     chat(6, 350);
                 }

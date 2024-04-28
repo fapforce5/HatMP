@@ -150,8 +150,7 @@ room353.chatcatch = function (callback) {
             }
             break;
         case "leave":
-            char.settime(12, 37);
-            char.room(0);
+            char.room(354);
             break;
         case "secretsOut":
             gv.mod("money", 60);
@@ -274,8 +273,7 @@ room353.chat = function (chatID) {
                 chatID: 997,
                 speaker: "landlord",
                 text: "Not a bad days work. Didn't get a lot of extra customers, but I guess they may come in later. " +
-                    "Here's $60 for an honest day's pay for an honest day's work. You can take that off. I'll see " +
-                    "you at home. ",
+                    "Here's $60 for an honest day's pay for an honest day's work. You can take that off. ",
                 button: [
                     { chatID: -1, text: "Sweet! Thanks! ", callback: "leave" }
                 ]
@@ -394,7 +392,7 @@ room353.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "landlord",
-                text: "That's so you don't move your arms around too much. I don't want the costume distorted becuase " +
+                text: "That's so you don't move your arms around too much. I don't want the costume distorted because " +
                     "you wanted to rest your arms in a weird spot. If you need to use the potty come see me and I'll help " +
                     "you out. Did you think I would make you wet your pants? ",
                 button: [
@@ -480,7 +478,7 @@ room353.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Well if your dick wasn't hanging out for everyone to see I guess they wouldn't mess with it. " +
                     "You'll never attract a good girl if you keep doing weird things. You aren't getting paid for " +
-                    "being a weird little pervert. Go put some clothes on and go home. ",
+                    "being a weird little pervert. Go put some clothes on. ",
                 button: [
                     { chatID: -1, text: "Ok. ", callback: "leave" },
                 ]
@@ -509,7 +507,7 @@ room353.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Oh yummy. I mean. What the hell! You little pervert! Shaking your giant dick around for " +
                     "everyone to see. I mean it is a thing of beauty, but you shouldn't just stand outside naked " +
-                    "like that. Go put that away and get some clothes on. I'll see you at home. ",
+                    "like that. Go put that away and get some clothes on. ",
                 button: [
                     { chatID: -1, text: "ok ", callback: "leave" },
                 ]

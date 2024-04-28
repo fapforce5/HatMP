@@ -2668,7 +2668,7 @@ room209.chat = function (chatID) {
                 chatID: 117,
                 speaker: "p",
                 text: "Also no more glum boring faces. A glum boring girl never gets asked to dance. Your face needs to " +
-                    "be inviting becuase your legs are not. You need a warm, inviting and happy face that looks up, not " + 
+                    "be inviting because your legs are not. You need a warm, inviting and happy face that looks up, not " + 
                     "scans the floor beneth your feet. Go ahead try it.",
                 button: [
                     { chatID: 118, text: "ok", callback: "h_21_2" }
@@ -2755,7 +2755,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 127,
                 speaker: "missy",
-                text: "So you want to learn how to use your little sissy pussy? Aren't we impetuous. Stip and bend over slut.",
+                text: "So you want to learn how to use your little sissy pussy? Aren't we impetuous. Strip and bend over slut.",
                 button: [
                     { chatID: 128, text: "I am a slut.", callback: "h_58_1" }
                 ]

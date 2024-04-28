@@ -217,7 +217,7 @@ room6.btnclick = function (name) {
                 txt.p = "Sister of C.U.M.";
                 txt.s = sc.n("g") + " was demoted from Bishop to Sister after she tried to assult Ubel for control of " +
                     "C.U.M. Unfortunatly for her Ubel was too tough and almost beat her till she died. Ubel chose to let " +
-                    "he live becuase she had too much spunk to die, but was demoted from Bishop to Sister until she learned " +
+                    "he live because she had too much spunk to die, but was demoted from Bishop to Sister until she learned " +
                     "how to obey. ";
                 txt.h = "Maybe if I beat her in a fight. ";
                 break;
@@ -292,7 +292,7 @@ room6.btnclick = function (name) {
                     "transformed in cum bath into the perfect feminine host. She was able to survive the " +
                     "deprevation trials were the spirit of Azrael was able to impregnate her. The embryo grew too rapidly " +
                     "for her body to handle and the fetus ripped her womb open where it died on the floor. " +
-                    "The heavy blood loss caused Jacqueline to die soon after. Becuase of the sacrafice of Jacqueline, her wife " +
+                    "The heavy blood loss caused Jacqueline to die soon after. Because of the sacrafice of Jacqueline, her wife " +
                     "was given the Sperm Bank to run and continue to supply the cult."
                 txt.h = "Deceased";
                 break;
@@ -351,7 +351,7 @@ room6.btnclick = function (name) {
                 txt.o = "Secretary";
                 txt.p = "N/A";
                 txt.s = "Works for " + sc.n("missy") + ". I don't know a lot except the cult calls her the communal cum " +
-                    "sock, becuase everyone ejaculates in her. ";
+                    "sock, because everyone ejaculates in her. ";
                 break;
             case "black":
                 g.internal.level = 3;

@@ -167,7 +167,7 @@ room175.chat = function (chatID) {
             speaker: "martha",
             text: "Excuse me, I couldn't help but overhear you urinating on a student. I'm afraid I must insist that you " +
                 " refrain from conducting such acts in the classroom. That is why I'm employed here, and it's not appropriate " +
-                " for a your anal training class in this environment. ",
+                " for your anal training class in this environment. ",
             button: [
                 { chatID: 6, text: "...", callback: "" }
             ]
@@ -220,7 +220,7 @@ room175.chat = function (chatID) {
             chatID: 11,
             speaker: "p",
             text: "Ok class. This is a great example of a boy's ass. Notice that as he stands here you can't even " +
-                "see any of his holes. This is becuase of the tight ass syndrome. A terrible affliction that is easily curable " +
+                "see any of his holes. This is because of the tight ass syndrome. A terrible affliction that is easily curable " +
                 "with my class. Bend forward slut, show the class your hole.",
             button: [
                 { chatID: 12, text: "I uhhh", callback: "anal12" }
@@ -267,7 +267,7 @@ room175.chat = function (chatID) {
             speaker: "p",
             text: "Once you adjust to the toy you can start to play with your bussy. See how happy this sissy is once " +
                 "they adjust to it. A sissy can't help but moan in pleasure when there's something up their ass. Now sissies " +
-                "everyone strip down, and explore your cock sleves for me to toy with. ",
+                "everyone strip down, and explore your cock sleeves for me to toy with. ",
             button: [
                 { chatID: 17, text: "OOoooo yeah mmmMMmmm", callback: "anal100" }
             ]
@@ -342,7 +342,7 @@ room175.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "p",
-            text: "Well, you've all passes anal 101. I'm sad I don't get to play with your sissy pussies for a bit, but " +
+            text: "Well, you've all passed anal 101. I'm sad I don't get to play with your sissy pussies for a bit, but " +
                 "I can't wait to stuff you all in my future classes. Keep stretching those slut holes! ",
             button: [
                 { chatID: -1, text: "Thanks! ", callback: "endclassPass101" }
@@ -361,7 +361,7 @@ room175.chat = function (chatID) {
             chatID: 27,
             speaker: "p",
             text: "What a bunch of timid sluts. So desperate for the cock, but too scared to back that ass up. You all vonunteer,  " +
-                "everyone stip off your clothes and present your sissy asses on the bench. ",
+                "everyone strip off your clothes and present your sissy asses on the bench. ",
             button: [
                 { chatID: 17, text: "Ok. ", callback: "anal100" }
             ]

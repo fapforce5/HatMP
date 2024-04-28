@@ -76,7 +76,7 @@ room178.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "missy",
-            text: "Hello my cum piggies. You're all here becuase you're interested in swollowing cum, but you're too scared to do it on " +
+            text: "Hello my cum piggies. You're all here because you're interested in swollowing cum, but you're too scared to do it on " +
                 "your own. It's like the first time you try coffee. It can be a little bitter, have an unusual taste or texture, but " +
                 "you learn to enjoy it all. Even crave it. Like coffee cum isn't all the same. You'll learn where good smooth cum is, " +
                 "and where to avoid nasty cheap bitter cum. ",
@@ -238,7 +238,7 @@ room178.chat = function (chatID) {
             chatID: 17,
             speaker: "missy",
             text: "That's right Martin. Cum. I'll unlock each of you to jack your little pee pees in this bowl. Consider yourself " +
-                "lucky to jack off in my presence, becuase it won't happen again. Now each of you strip and kneel before me " +
+                "lucky to jack off in my presence, because it won't happen again. Now each of you strip and kneel before me " +
                 "while you jack off in my doggy bowl. ",
             button: [
                 { chatID: 18, text: "...", callback: "cum101" },

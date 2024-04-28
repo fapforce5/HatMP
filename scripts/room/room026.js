@@ -130,7 +130,7 @@ room26.btnclick = function (name) {
                 chat(1, 26);
             else if (sc.getMission("landlord", "spermbank").notStarted)
                 chat(3, 26);
-            else if (sc.getMission("landlord", "spermbank").inProgress)
+            else if (sc.getMissionTask("landlord", "spermbank", 2).notStarted)
                 chat(6, 26);
             else if (chatEvent === 1) 
                 chat(7, 26);
@@ -184,7 +184,7 @@ room26.chatcatch = function (callback) {
                 inv.add("landlordKey");
                 levels.mod("landlord", 10, 3);
                 daily.set("landlord");
-                mission.startMission("landlord", "man");
+                sc.startMission("landlord", "man");
                 break;
             case "talk_2_complete":
                 sc.completeMissionTask("landlord", "talk", 2);

@@ -820,7 +820,7 @@ room221.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "!cheezy",
-                text: "You're pretty. I need to see Missy about lifting weights. Becuase I'm really " +
+                text: "You're pretty. I need to see Missy about lifting weights. because I'm really " +
                     "strong. I could even lift you up. 'cause I'm really strong. Can you tell Missy " +
                     "I'm here, or do you need help? ",
                 button: [
@@ -885,7 +885,7 @@ room221.chat = function (chatID) {
             {
                 chatID: 48,
                 speaker: "thinking",
-                text: "Such crap. I get pissed on my some angry crazy guy becuase of a case " +
+                text: "Such crap. I get pissed on my some angry crazy guy because of a case " +
                     "Missy does, then I get yelled at and forced to clean up. Now I have to sit " +
                     "here in my damp pissy clothes and finish out the work day. Bullshit.",
                 button: [

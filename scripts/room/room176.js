@@ -172,8 +172,8 @@ room176.chat = function (chatID) {
             chatID: 5,
             speaker: "p",
             text: "Ok sluts, welcome to to oral 101, where you learn how to use your sissy mouths. I know most sluts think " +
-                "they're amazing at oral becuase their partner said they did good. Well you're WRONG! They said you did fine " +
-                "becuase they were bored and wanted to do anything other than let you continue rubbing your stupid mouth " +
+                "they're amazing at oral because their partner said they did good. Well you're WRONG! They said you did fine " +
+                "because they were bored and wanted to do anything other than let you continue rubbing your stupid mouth " +
                 "over their naughty bits while they fantasize someone cuter. ",
             button: [
                 { chatID: 6, text: "...", callback: "" }
@@ -487,7 +487,7 @@ room176.chat = function (chatID) {
             chatID: 40,
             speaker: "thinking",
             text: "Fuck! I just got a text from " + sc.n("eva") + " he really told them! They put together everthing! They " +
-                "know I'm a sissy. I don't know if I can show my face at home ever again. Crap. Just becuase I didn't suck " +
+                "know I'm a sissy. I don't know if I can show my face at home ever again. Crap. Just because I didn't suck " +
                 "his dick he goes and ruines my life. Fuck! ",
             button: [
                 { chatID: -1, text: "...", callback: "oralEnd" },

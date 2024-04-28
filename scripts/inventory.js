@@ -45,7 +45,7 @@ inv.master = [
     { type: "g", name: "locket", display: "Locket for Missy's Case", entry: false, count: null, cost: -1, image: "locket.png", n: false, desc: "Give this to Missy. " },
     { type: "h", name: "hormone", display: "Sissy Bimbo Pills", entry: false, count: 0, cost: 5, image: "hormone.png", n: false, desc: "Take 1 pill a day to increase your female hormone level" },
     { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
-    { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave you body" },
+    { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave your body" },
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
 
@@ -142,7 +142,7 @@ pic.master = [
     { name: "lolaTopless", display: "Lola Topless", entry: false, image: "lolaTopless.jpg", thumb: "lolaTopless.png" },
     { name: "landlordSleep", display: "Landlord Sleep", entry: false, image: "landloardSleep.jpg", thumb: "landloardSleep.png" },
     { name: "case_lostgirl", display: "Sanaria", entry: false, image: "case_lostgirl.jpg", thumb: "case_lostgirl.png" },
-    { name: "pantyThief", display: "Panty Theif", entry: false, image: "pantyThief.jpg", thumb: "pantyThief.png" },
+    { name: "pantyThief", display: "Panty Thief", entry: false, image: "pantyThief.jpg", thumb: "pantyThief.png" },
     { name: "jada_b", display: "Group Photo", entry: false, image: "jada_b.jpg", thumb: "jada_b.png" },
     { name: "jada_f", display: "Group Photo", entry: false, image: "jada_f.jpg", thumb: "jada_f.png" },
     { name: "jada_p", display: "Group Photo", entry: false, image: "jada_p.jpg", thumb: "jada_p.png" },

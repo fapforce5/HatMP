@@ -134,7 +134,7 @@ room205.chat = function (chatID) {
             speaker: "missy",
             text: "So you probably think I'm going to punish you for being naughty, don't you? To get compliance from " +
                 "a person sometimes you have to use different approaches. Not everyone reacts to the whip, some people " +
-                "change their behavior through positive conditioning. Stip off your pants and " + cl.pantiesTxt() + ", " +
+                "change their behavior through positive conditioning. Strip off your pants and " + cl.pantiesTxt() + ", " +
                 "drop your tie, and bring that cock over here. ",
             button: [
                 { chatID: 999, text: "Huh? Yes ma'am!", callback: "chast0_0" }

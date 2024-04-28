@@ -351,7 +351,7 @@ room479.chat = function (chatID) {
             chatID: 10,
             speaker: "random",
             text: "Come back anytime to receive a blow job from her. She gets an odd joy from having a dick in her " +
-                "mouth. I think it's becuase she gets the choice to bring pleasure to others. ",
+                "mouth. I think it's because she gets the choice to bring pleasure to others. ",
             button: [
                 { chatID: -1, text: "Well thanks. ", callback: "bj5" },
             ]
@@ -468,7 +468,7 @@ room479.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "random",
-            text: "Of course you didn't, becuase you were so fixated on my legs. No one wants a wilderness guide " +
+            text: "Of course you didn't, because you were so fixated on my legs. No one wants a wilderness guide " +
                 "that can't even walk. The cult may have given me a great set of tits, but they took away my " +
                 "purpose. ",
             button: [

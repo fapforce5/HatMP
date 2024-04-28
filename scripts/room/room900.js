@@ -197,7 +197,7 @@ room900.chat = function(chatID){
         {
             chatID: 7,
             speaker: "eva",
-            text: "So becuase you're a big ol' pervert Deb here thought we should have some fun with you. ",
+            text: "So because you're a big ol' pervert Deb here thought we should have some fun with you. ",
             button: [
                 { chatID: 8, text: "Fun?", callback: "e3" }
             ]

@@ -54,6 +54,7 @@ sc.char = [
     { name: "ubel", display: "Ubel", image: "ubel.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "ppgirl", display: "Pee Pee Girl", image: "pp.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "raven", display: "Raven", image: "raven.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
 
     { name: "river", display: "River", image: "river.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
@@ -127,9 +128,9 @@ sc.charMission = [
             {
                 missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
                     [
-                        { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 16 },
-                        { id: 2, txt: "Compliment massage massage started ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Compliment massage massage started ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
@@ -146,14 +147,14 @@ sc.charMission = [
                 missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
                     [
                         { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
                 missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
                     [
                         { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
         ],
@@ -163,17 +164,17 @@ sc.charMission = [
             {
                 missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
                     [
-                        { id: 0, txt: "Small chat", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Feet?!", show: true, mStatus: 0, roomId: 16 },
+                        { id: 0, txt: "Small chat", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Feet?!", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
                 missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes massages", task:
                     [
-                        { id: 0, txt: "Massage her feet.", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Suck her toes doggy. ", show: true, mStatus: 0, roomId: 16 },
-                        { id: 2, txt: "Show me your dick. ", show: true, mStatus: 0, roomId: 16 },
-                        { id: 3, txt: "I want to play with it. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 0, txt: "Massage her feet.", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Suck her toes doggy. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Show me your dick. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "I want to play with it. ", show: true, mStatus: 0, roomId: 13 },
 
                     ]
             },
@@ -181,14 +182,14 @@ sc.charMission = [
                 missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
                     [
                         { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
                 missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
                     [
                         { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
 
@@ -215,6 +216,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                         { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Helped first time. ", show: false, mStatus: 0, roomId: 350 },
                     ]
             },
             {
@@ -222,7 +224,13 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Talk about butts ", show: true, mStatus: 0, roomId: 14 },
                         { id: 1, txt: "Forbidden kiss.", show: true, mStatus: 0, roomId: 14 },
-                        { id: 2, txt: "Next Release", show: true, mStatus: 0, roomId: 14 },
+                        { id: 2, txt: "Wet Pussy Lips", show: true, mStatus: 0, roomId: 14 },
+                    ]
+            },
+            {
+                missionName: "misc", mStatus: -1, title: "random Events", desc: "Random", task:
+                    [
+                        { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
         ]
@@ -378,7 +386,7 @@ sc.charMission = [
                         { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
                         { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
                         { id: 5, txt: "See how her pussy is doing. ", show: true, mStatus: 0, roomId: 301 },
-                        { id: 6, txt: "Go to her place before 10 tomorrow. ", show: true, mStatus: 0, roomId: 301 },
+                        { id: 6, txt: "Go to her place before " + nav.convertTime(14, 0) + " tomorrow. ", show: true, mStatus: 0, roomId: 301 },
                         { id: 7, txt: "Successful test! [Not ready] ", show: true, mStatus: 0, roomId: 301 },
                     ]
             },
@@ -505,6 +513,21 @@ sc.charMission = [
                 missionName: "preg", mStatus: 0, title: "Preggers!", desc: "Am I a mom?", task:
                     [
                         { id: 0, txt: "Gave her a sloppy cream pie", show: false, mStatus: 0, roomId: 77 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "raven", mission: [
+            {
+                missionName: "bitch", mStatus: 0, title: "Her Honor", desc: "Will you save her honor? ", task:
+                    [
+                        { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
+                        { id: 1, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Is he getting closer? ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 3, txt: "Make a choice. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 4, txt: "I'm now the target. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 5, txt: "More to come later. ", show: true, mStatus: 0, roomId: 350 },
                     ]
             },
         ]
@@ -830,6 +853,8 @@ sc.taskGetStep = function (name, missionName) {
     var ml = sc.getMission(name, missionName);
     if (ml.notStarted)
         return -1;
+    else if (ml.fail)
+        return -2;
     for (var k = 0; k < sc.charMission[ml.i].mission[j].task.length; k++) {
         if (sc.charMission[ml.i].mission[j].task[k].mStatus < 100)
             return sc.charMission[ml.i].mission[j].task[k].id;
@@ -1002,23 +1027,9 @@ sc.load = function (ra) {
         }
     }
 
-    //for (i = 0; i < ra.events.length; i++) {
-    //    for (j = 0; j < sc.events.length; j++) {
-    //        if (ra.events[i].name === sc.events[j].name && ra.events[i].step === sc.events[j].step) {
-    //            sc.events[j].ach = ra.events[i].ach;
-    //            j = 100000;
-    //        }
-    //    }
-    //}
-
-    ////    { id: 0, name: "lola", missionname: "getwine", mStatus: 0, title: "Get Wine!", desc: "Purchase some wine for truth or dare! " },
-
-    //for (i = 0; i < sc.charMission.length; i++) {
-    //    sc.charMission[i].mStatus = 0;
-    //}
-    //for (i = 0; i < ra.mission.length; i++) {
-    //    sc.charMission[ra.mission[i].id].mStatus = ra.mission[ra.mission[i].id].mStatus;
-    //}
+    //fix bad early data
+    if (sc.getMission("landlord", "spermbank").complete)
+        sc.startMission("landlord", "spermbank");
 };
 
 /*

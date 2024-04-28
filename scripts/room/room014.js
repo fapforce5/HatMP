@@ -67,25 +67,6 @@ room14.main = function () {
         }
     }
     else {
-        btnList = [
-            {
-                "type": "btn",
-                "name": "closet",
-                "left": 414,
-                "top": 375,
-                "width": 461,
-                "height": 538,
-                "image": "14_motherRoom/14_closet.png"
-            },
-            {
-                "type": "btn",
-                "name": "dresser",
-                "left": 1569,
-                "top": 781,
-                "width": 317,
-                "height": 299,
-                "image": "14_motherRoom/dresserDay.png"
-            }];
         if (daily.get("momChoreBed")) {
             btnList.push({
                 "type": "img",
@@ -109,6 +90,26 @@ room14.main = function () {
                 "image": "14_motherRoom/14_bed.png"
             });
         }
+        btnList = [
+            {
+                "type": "btn",
+                "name": "closet",
+                "left": 414,
+                "top": 375,
+                "width": 461,
+                "height": 538,
+                "image": "14_motherRoom/14_closet.png"
+            },
+            {
+                "type": "btn",
+                "name": "dresser",
+                "left": 1569,
+                "top": 781,
+                "width": 317,
+                "height": 299,
+                "image": "14_motherRoom/dresserDay.png"
+            }];
+        
     }
 
     navList = [16];
@@ -164,6 +165,15 @@ room14.btnclick = function (name) {
                 "height": 325,
                 "image": "14_motherRoom/14_bedmade.png"
             }, 14);
+            nav.button({
+                "type": "btn",
+                "name": "dresser",
+                "left": 1569,
+                "top": 781,
+                "width": 317,
+                "height": 299,
+                "image": "14_motherRoom/dresserDay.png"
+            }, 14);
             daily.set("momChoreBed");
             gv.mod("rentKnockOff", 5);
             chat(9, 14);
@@ -198,6 +208,8 @@ room14.btnclick = function (name) {
                 }
                 else if (llstep === 2)
                     chat(26, 14);
+                else if (llstep === 3)
+                    chat(45, 14);
             }
             else
                 chat(14, 14);
@@ -328,6 +340,17 @@ room14.btnclick = function (name) {
         case "dickSleep":
             chat(37, 14);
             break;
+        case "task_3_3":
+            nav.kill();
+            if (levels.get("oral").l > 4) {
+                nav.bg("task_3_3.jpg");
+                chat(50, 14);
+            }
+            else {
+                nav.bg("task_3_3a.jpg");
+                chat(51, 14);
+            }
+            break;
         default:
             break;
     }
@@ -358,6 +381,7 @@ room14.chatcatch = function (callback) {
             break;
         case "domlaugh":
             levels.mod("dom", 38, 999);
+            sc.modLevel("landlord", 20, 999);
             nav.modbutton("motherRobe", "14_motherRoom/14_motherRobeLaugh.png", null, null);
             break;
         case "ll_man_1":
@@ -367,7 +391,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task1_2":
-            if (sc.getLevel("landlord") > 3) {
+            if (sc.getLevel("landlord") > 1) {
                 nav.bg("14_motherRoom/task1_2.jpg");
                 g.internal = 0;
                 nav.next("task1_2");
@@ -405,6 +429,46 @@ room14.chatcatch = function (callback) {
             sc.completeMissionTask("bigguy", "straight", 0, true);
             char.addtime(37);
             daily.set("bigguy");
+            char.room(16);
+            break;
+        case "task2_1":
+            nav.killall();
+            levels.mod("dom", 20, 999);
+            nav.bg("14_motherRoom/task1_2.jpg");
+            break;
+        case "task_2_2":
+        case "task_2_3":
+        case "task_2_4":
+        case "task_2_5":
+        case "task_3_2":
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "task_3_1":
+            nav.kill();
+            levels.mod("dom", 20, 999);
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "task_3_3":
+            nav.button({
+                "type": "tongue",
+                "name": "task_3_3",
+                "left": 1197,
+                "top": 692,
+                "width": 107,
+                "height": 145,
+                "image": "14_motherRoom/task_3_3.png"
+            }, 14);
+            break;
+        case "task_2_end":
+            sc.modLevel("landlord", 999, 3);
+            sc.completeMissionTask("landlord", "man", 2, true);
+            char.addtime(30);
+            daily.set("landlord");
+            char.room(16);
+            break;
+        case "manFail":
+            sc.completeMission("landlord", "man", false);
+            daily.set("landlord");
             char.room(16);
             break;
         default:
@@ -588,7 +652,7 @@ room14.chat = function (chatID) {
                 speaker: "!blank",
                 text: "Level check failed to kiss. Improve your relationship with her. ",
                 button: [
-                    { chatID: -1, text: "Roll for charisma: " + charisma.getStats(8 - sc.getLevel("landlord")).txt, callback: "level4Roll" }
+                    { chatID: -1, text: "Roll for charisma: " + charisma.getStats(6 - sc.getLevel("landlord")).txt, callback: "level4Roll" }
                 ]
             },
             {
@@ -627,9 +691,12 @@ room14.chat = function (chatID) {
             {
                 chatID: 26,
                 speaker: "landlord",
-                text: "Sorry. The story will continue on the next release. ",
+                text: "Oh good. I wanted to talk about that kiss. You're a wonderful boy, and if I was a " +
+                    "bit younger and not your " + sc.n("landlord") + " I would be flattered, but this just " +
+                    "isn't right.You caught me at a moment of weakness. It's sick and disgusting. ",
                 button: [
-                    { chatID: -1, text: "ok. ", callback: "" },
+                    { chatID: 39, text: "[Kiss her] [Continue this path]", callback: "task2_1" },
+                    { chatID: 38, text: "Stay silent. [Stop this path]", callback: "" },
                 ]
             },
             {
@@ -719,6 +786,131 @@ room14.chat = function (chatID) {
                 text: "I'm not messing with him when he's sleeping. He can totally crush me! ",
                 button: [
                     { chatID: -1, text: "oh. ok", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "landlord",
+                text: "So from now on you and I will never kiss like that again. Good night. ",
+                button: [
+                    { chatID: -1, text: "Ok. Sorry. Good night. ", callback: "manFail" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "landlord",
+                text: "*mwah* ...stop. We can't do this. ",
+                button: [
+                    { chatID: 40, text: "[Grab her butt]", callback: "task_2_2" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "landlord",
+                text: "Ooooooo",
+                button: [
+                    { chatID: 41, text: "[Move your hand to her pussy]", callback: "task_2_3" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "landlord",
+                text: "*moan*",
+                button: [
+                    { chatID: 42, text: "[Move your finger between her pussy lips]", callback: "task_2_4" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "landlord",
+                text: "This is so wrong. You shouldn't rub my pussy like like. I don't like it. ",
+                button: [
+                    { chatID: 43, text: "Then why are you so wet?", callback: "task_2_5" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "landlord",
+                text: "*moan* You should go. I can't do this. It's so wrong. Please.  ",
+                button: [
+                    { chatID: 44, text: "Do you really want me to go? It feels so right. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "landlord",
+                text: "Yes. Go. Please. ",
+                button: [
+                    { chatID: -1, text: "Ok. Sweet dreams " + sc.n("landlord") + ". ", callback: "task_2_end" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "landlord",
+                text: "Don't. I know what you came for. We can't do this. ",
+                button: [
+                    { chatID: 47, text: "[Push her onto the bed and kiss her] ", callback: "task_3_1" },
+                    { chatID: 46, text: "What? No. I just came to say hi.", callback: "" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "landlord",
+                text: "Well, hello and good night. We can't do this. ",
+                button: [
+                    { chatID: -1, text: "Good night. ", callback: "leave" },
+                ]
+            }, 
+            {
+                chatID: 47,
+                speaker: "landlord",
+                text: "Oh! Oh my! I didn't know you were so aggressive. Now that you have your " +
+                    sc.n("landlord") + " on her back in her bed, what are you going to do? ",
+                button: [
+                    { chatID: 48, text: "Just relax and I'll show you.", callback: "" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "thinking",
+                text: "Oh fuck! I didn't think I would get this far. " +
+                    "Oh crap oh crap. I'm so glad " +
+                    "that worked, but now what. Should I just stick my dick in her pussy? Maybe her mouth. " +
+                    "Fuck. I don't want to ruin this. " +
+                    "She's so hot with her green eyes staring into me. " +
+                    "I so want to fuck her! Maybe I'll make her horny. Yeah. " +
+                    "Maybe lick her pussy? Yeah. I'll start by eating her out. ",
+                button: [
+                    { chatID: 49, text: "[Slide her clothes off]", callback: "task_3_2" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "landlord",
+                text: "Ooooo. Are you going to do oral on me? I'm so excited! " + sc.n("bigguy") + " never " +
+                    "does oral. He says pussies are just made for cock and nothing else. I do really miss " +
+                    "oral. Your father used to do oral on me all the time. He was really good at it. Oh. " +
+                    "I should stop talking about other men I've been with. You can start. ",
+                button: [
+                    { chatID: -1, text: "Shesh. Thanks " + sc.n("landlord") + ". [Lick her pussy]", callback: "task_3_3" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "landlord",
+                text: "Oh honey. You're going to have to work on how to eat a girl out. You can't just jab " +
+                    "your tongue into my pussy. Just a mintue. Let me get something to help. ",
+                button: [
+                    { chatID: 52, text: "*mlah* *mlah*", callback: "task_3_4" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "landlord",
+                text: "Oh wow. You really now what you're doing, but I'm going to need a little something " +
+                    "extra to help me get off. ",
+                button: [
+                    { chatID: 52, text: "*mlah* *mlah*", callback: "task_3_4" },
                 ]
             },
         ];

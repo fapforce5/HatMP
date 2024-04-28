@@ -94,7 +94,7 @@ room701.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "bimbo",
-            text: "Maybe it's becuase you have a weird cage on your penis. I tried taking it off, but it's locked really good. " +
+            text: "Maybe it's because you have a weird cage on your penis. I tried taking it off, but it's locked really good. " +
                 "Sorry sugar, there's nothing I can do. ",
             button: [
                 { chatID: 1, text: "Oh yeah. I better get going. ", callback: "" },

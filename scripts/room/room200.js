@@ -521,7 +521,7 @@ room200.chat = function (chatID) {
                 chatID: 7,
                 speaker: "missy",
                 text: "No you moron. Go to Toys 'n Us and do what " + sc.n("tiffany") + " says. Now get out " + 
-                    "before your stipidity spreads to me. ",
+                    "before your stupidity spreads to me. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "case_afterExplaniation" }
                 ]
@@ -640,7 +640,7 @@ room200.chat = function (chatID) {
                 speaker: "missy",
                 text: "Your little fuckup cost me over $1000. I had to hire another investigator to track her down since I " +
                     "don't have time to do it myself. Not only do I waste money, but I look like an idiot hiring another PI " +
-                    "to do a job this agency should be doing. For your stipidity a punishment is in order. ",
+                    "to do a job this agency should be doing. For your stupidity a punishment is in order. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "case_lostgirl_badend" }
                 ]
@@ -951,7 +951,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "missy",
-                text: "Were once you could walk down the street and be ignored by everyone around, now " +
+                text: "Where once you could walk down the street and be ignored by everyone around, now " +
                     "you're going to be inundated with cat calls, compliments, and threats. Before " +
                     "you didn't have to worry about anything, now you'll need to wonder if that man " +
                     "walking behind you is going to rob, rape, or kill you. ",
@@ -963,7 +963,7 @@ room200.chat = function (chatID) {
                 chatID: 54,
                 speaker: "missy",
                 text: "Yes. I can't always be there to protect you, so you need to work on protecting " +
-                    "yourself. And don't let people get you down. Some may be down right rude and cruel. " +
+                    "yourself. And don't let people get you down. Some may be downright rude and cruel. " +
                     "Ignore those people and listen to those that truly love the real you. Now let's get to work. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "missyBtnClick" },

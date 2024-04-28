@@ -1433,8 +1433,8 @@ room301.chat = function (chatID) {
                 speaker: "evny",
                 text: "So what do you want to do? ",
                 button: [
-                    { chatID: -1, text: "Watch a movie. Turn her into your personal slut! ", callback: "hypnoLoop0" },
-                    { chatID: 113, text: "Confess Spanky's plan. Give her free will.", callback: "" },
+                    { chatID: -1, text: "Watch a movie. Turn her into your personal slut! [Hypno Path]", callback: "hypnoLoop0" },
+                    { chatID: 113, text: "Confess Spanky's plan. Give her free will. [Girlfriend Path]", callback: "" },
                 ]
             },
             {
@@ -1609,7 +1609,7 @@ room301.chat = function (chatID) {
                 speaker: "envy",
                 text: "My virginity. I don't know what it is about you, but I desperately need to make love with you. Even since " +
                     "you came to my door my brain has been obsessing over you. Just filled with dirty thoughts all the time. " +
-                    "so much that I can't think of anything else. I've failed out of school becuase I can't stop thinking " +
+                    "so much that I can't think of anything else. I've failed out of school because I can't stop thinking " +
                     "about sex with you. I need you. ",
                 button: [
                     { chatID: 69, text: "I need you too. ", callback: "step11" }
@@ -2021,7 +2021,7 @@ room301.chat = function (chatID) {
                 speaker: "envy",
                 text: "WHAT! Is that why I've been masturbating all day! It's like my vagina is in constant need " +
                     "of orgasms! I haven't been able to read more than 5 pages of War and Peace without touching " +
-                    "myself. I thought it was becuase I've been working out more my libido had risen. AKKKKK. ",
+                    "myself. I thought it was because I've been working out more my libido had risen. AKKKKK. ",
                 button: [
                     { chatID: 116, text: "I'm sorry? ", callback: "" }
                 ]
@@ -2030,7 +2030,7 @@ room301.chat = function (chatID) {
                 chatID: 116,
                 speaker: "envy",
                 text: "Don't be sorry! Fix this! Fix this right now! I've got to study and I can't concentrate at " +
-                    "all! If I fail my classes becuase I can't stop masturbating I'm going to kill you! ",
+                    "all! If I fail my classes because I can't stop masturbating I'm going to kill you! ",
                 button: [
                     { chatID: 117, text: "I don't know how to fix it. Maybe you need to have sex?", callback: "" }
                 ]
@@ -2136,7 +2136,7 @@ room301.chat = function (chatID) {
                 text: "I can't be like this forever! I have way to much to do! I can't just sit " +
                     "around and masturbate all day! I have 4 papers to finish, 2 experiments for " +
                     "school, and I'm tracking the Coeus comet! In the span of an afternoon you " +
-                    "have ruined my life all becuase I didn't have sex with you on the first date! " +
+                    "have ruined my life all because I didn't have sex with you on the first date! " +
                     "I hate you. I will always hate you. Get out of my apartment and never come " +
                     "by again! ",
                 button: [
@@ -2286,7 +2286,7 @@ room301.chat = function (chatID) {
                 text: "Well maybe you shouldn't hypnotize someone against their will. I've got a " +
                     "huge test tomorrow on the Physics of Planets that I have to study for. Now that  " +
                     "I think about it, I'm going to need your help tomorrow morning. Be here " +
-                    "tomorrow before " + nav.convertTime(10, 0) + "! Don't be late. I'm counting on you! ",
+                    "tomorrow before " + nav.convertTime(14, 0) + "! Don't be late. I'm counting on you! ",
                 button: [
                     { chatID: 145, text: "Tomorrow?", callback: "" },
                 ]
@@ -2340,7 +2340,7 @@ room301.chat = function (chatID) {
                 speaker: "envy",
                 text: "Mr. Bobcock, my professor, watches us, and we're not allowed electronics while we're taking " +
                     "out tests. There's no way I can properly explain to Mr. Bobcock that I need to " +
-                    "press an orgasm button becuase you hypnotized me into being horny all the time! ",
+                    "press an orgasm button because you hypnotized me into being horny all the time! ",
                 button: [
                     { chatID: -1, text: "Oh. That makes sense. Sure I'll put in the vibrator. ", callback: "" },
                 ]

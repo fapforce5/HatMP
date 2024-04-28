@@ -125,7 +125,7 @@ room300.btnclick = function (name) {
                     nav.bg("300_apartment/knock13.jpg");
                     chat(22, 300);
                 }
-                else if (gfStep === 6 && g.hourBetween(10, 25)) {
+                else if (gfStep === 6 && g.hourBetween(14, 25)) {
                     chat(46, 300);
                 }
                 else if (gfStep === 7) {
@@ -365,7 +365,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "kei",
-                text: "I'm always here becuase you tease me and lead me on. You say you're waiting for marriage, but then tell " +
+                text: "I'm always here because you tease me and lead me on. You say you're waiting for marriage, but then tell " +
                     "me how horny you are. I'm horny too. My balls are going to explode if I don't cum soon. Let go inside " +
                     "and can finally fuck. ",
                 button: [
@@ -560,7 +560,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 28,
                 speaker: "envy",
-                text: "I told you to fuck off! Becuase of you I can't stop playing with myself. Go away!",
+                text: "I told you to fuck off! because of you I can't stop playing with myself. Go away!",
                 button: [
                     { chatID: 29, text: "I'm not going away. I'm going to stay here until you let me in to try and help you. I don't care how many days it takes. ", callback: "" },
                     { chatID: -1, text: "Ok. ", callback: "" },
@@ -617,7 +617,7 @@ room300.chat = function (chatID) {
                 speaker: "envy",
                 text: "You know I'm mad at you. But I came to realize I should really be mad at " +
                     sc.n("spanky") + " too. Even more so. What kind of weird-o goes out and pays " +
-                    "someone to make a hypno video, just becuase I dumped him. I'm so glad you " +
+                    "someone to make a hypno video, just because I dumped him. I'm so glad you " +
                     "at least told me before showing me more. I would hate to think where I would " +
                     "be if I watched more movies. ",
                 button: [

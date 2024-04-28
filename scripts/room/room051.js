@@ -529,7 +529,7 @@ room51.chat = function (chatID) {
             chatID: 27,
             speaker: "candy",
             text: "Oh course she does! She needs pretty lips! I'm not sure what your color is. What color do you want? When I pick which color " +
-            "cI always think about what would look prettiest wrapped around a big meaty cock!",
+            "I always think about what would look prettiest wrapped around a big meaty cock!",
             button: [
                 { chatID: 28, text: "Classic Red Lips", callback: "red" },
                 { chatID: 28, text: "Sissy Pink", callback: "pink" },
@@ -587,7 +587,7 @@ room51.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "tiffany",
-            text: sc.n("candy") + "!!! You're going to scare the poor boy! No one is cutting off you boy cock. Let's see the back side, " +
+            text: sc.n("candy") + "!!! You're going to scare the poor boy! No one is cutting off your boy cock. Let's see the back side, " +
             "turn around girl.",
             button: [
                 { chatID: 35, text: "[Turn around]", callback: "t23" }

@@ -293,6 +293,7 @@ g.rooms = [
     { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 352, name: "Jack 'Em", image: "352_jackoff/bg.jpg", nightImage: "352_jackoff/bg.jpg", houseID: 350, btn: "roomBtn_352.png" },
     { roomID: 353, name: "Mascot", image: "353_mascot/bg.jpg", nightImage: "353_mascot/bg.jpg", houseID: 350, btn: "roomBtn_352.png" },
+    { roomID: 354, name: "Break Room", image: "352_jackoff/waitroom.jpg", nightImage: "352_jackoff/waitroom.jpg", houseID: 350, btn: "roomBtn_352.png" },
 
     { roomID: 375, name: "Mascot", image: "375_cop/bg.jpg", nightImage: "375_cop/bg.jpg", houseID: 375, btn: "roomBtn_375.png" },
 
@@ -1159,7 +1160,9 @@ g.removeItemByValue = function(array, value){
     return array;
 };
 
-g.sleep = function () {
+g.sleep = function (days = 0) {
+    if (days !== 0)
+        char.addDays(days);
     g.pass = g.roomID;
     char.room(28);
 };

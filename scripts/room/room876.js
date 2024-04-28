@@ -1217,7 +1217,7 @@ room876.chat = function (chatID) {
                 chatID: 87,
                 speaker: "stacy",
                 text: "Not that it's any of your business, but no. He's just a friend that I keep around to drive me places. " +
-                    "I don't know why they take your license away just becuase you drive drunk. It's not like I hit anyone when " +
+                    "I don't know why they take your license away just because you drive drunk. It's not like I hit anyone when " +
                     "I crashed. ",
                 button: [
                     { chatID: 88, text: "Well, he's kinda cute. ", callback: "" }
@@ -1428,7 +1428,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 111,
                 speaker: "courtney",
-                text: "That's becuase you haven't tried Darqwan's massive dick. It's stretching me out sooooo much! ",
+                text: "That's because you haven't tried Darqwan's massive dick. It's stretching me out sooooo much! ",
                 button: [
                     { chatID: 112, text: "...", callback: "cheer6_5_3" }
                 ]
@@ -1676,7 +1676,7 @@ room876.chat = function (chatID) {
                 text: "Me too! You know you have a really hot body! I don't know why I was so mean to you. You're an " +
                     "awesome cheerleader. I'm so glad you're here. ",
                 button: [
-                    { chatID: 140, text: "I'm great becuase you were such a great cheer captain! ", callback: "cheer8_6" },
+                    { chatID: 140, text: "I'm great because you were such a great cheer captain! ", callback: "cheer8_6" },
                 ]
             },
             {

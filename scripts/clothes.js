@@ -440,7 +440,6 @@ cl.load = function (ra) {
 
     cl.saveOutfit = $.extend(true, {}, ra.saveOutfit);
     for (i = 0; i < 6; i++) {
-        console.log("fasdf");
         if (typeof cl.saveOutfit[i].accessories === "object")
             cl.saveOutfit[i].accessories = null;
     }
@@ -543,7 +542,7 @@ cl.hasoutfit = function (ctype) {
                             missingClothing.push("bra");
                     }
 
-                }
+                }  
             }
             break;
         case "nude":
@@ -2185,7 +2184,8 @@ cl.cockDisplay = function () {
         });
     }
     else if (g.cockDisplay === "a") {
-        var bhole = Math.floor(cl.c.butthole);
+        var analLevel = levels.get("anal").l;
+        var bhole = Math.floor(analLevel / 2);
         if (bhole < 0)
             bhole = 0;
         else if (bhole > 6)

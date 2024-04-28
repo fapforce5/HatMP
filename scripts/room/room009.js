@@ -365,20 +365,33 @@ room9.btnclick = function (name) {
             chat(4, 9);
             break;
         case "jackit":
-            nav.killbutton("jackit");
-            nav.button({
-                "type": "img",
-                "name": "splat",
-                "left": 872,
-                "top": 104,
-                "width": 424,
-                "height": 810,
-                "image": "9_computer/splat.png"
-            }, 9);
-            cl.doCum(false);
-            stats.mod("masturbate", "dick", 1);
-            //gv.mod("jackoff", 1);
-            chat(5, 9);
+            if (!weekly.get("momjerkoff") && g.pass === 10) {
+                weekly.set("momjerkoff");
+                nav.bg("9_computer/jackoff1.jpg");
+                if (sc.getLevel("landlord") < 2) {
+                    chat(9, 9);
+                }
+                else {
+                    nav.killall();
+                    chat(6, 9);
+                }
+            }
+            else {
+                nav.killbutton("jackit");
+                nav.button({
+                    "type": "img",
+                    "name": "splat",
+                    "left": 872,
+                    "top": 104,
+                    "width": 424,
+                    "height": 810,
+                    "image": "9_computer/splat.png"
+                }, 9);
+                cl.doCum(false);
+                stats.mod("masturbate", "dick", 1);
+                //gv.mod("jackoff", 1);
+                chat(5, 9);
+            }
             break;
         case "usb":
             char.room(6);
@@ -443,6 +456,13 @@ room9.chatcatch = function (callback) {
         case "internet":
             room9.btnclick("internet");
             break;
+        case "jackoff2":
+        case "jackoffCaught":
+            nav.bg("9_computer/" + callback + ".jpg");
+            break;
+        case "powerOff":
+            room9.btnclick("powerOff");
+            break;
         default:
             break;
     }
@@ -496,6 +516,53 @@ room9.chat = function(chatID){
             text: "AAAaaaaaa YYYYEEESSSS!",
             button: [
                 { chatID: -1, text: "Turn off the porn and wipe your cum off the monitor", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "landlord",
+            text: "Why are you pants down? Are you masturbating to computer porn again? ",
+            button: [
+                { chatID: 7, text: "Wha... No....", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "landlord",
+            text: "It's ok sweetie. You know your dad used to jack off 10 times a day. He was always playing " +
+                "with his penis. That man would have had enough sperm to keep my store stocked up for a year. " +
+                sc.n("bigguy") + " on the other hand never masturbates. He says his hands don't feel as good " +
+                "as my.. well, you know. Masturbation is fine. Like practicing for real sex. ",
+            button: [
+                { chatID: 8, text: sc.n("landlord") + ".", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "landlord",
+            text: "Someday you'll meet a nice young woman and have sex, but it's good to explore your body. You " +
+                "know I know a few tricks from the store. Show " + sc.n("landlord") + " you penis. I'll help you " +
+                "practice for the real thing. ",
+            button: [
+                { chatID: 9, text: "[Show her your penis]", callback: "jackoff3" },
+                { chatID: 10, text: "Yelp and run away. ", callback: "runaway" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "landlord",
+            text: "Is that porn? Oh no. I'm so sorry. ",
+            button: [
+                { chatID: 10, text: "aaak", callback: "jackoffCaught" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "thinking",
+            text: "She totally caught me. I'm so embarrased. I'll never be able to look her in the eyes again. " +
+                "Fuck.",
+            button: [
+                { chatID: 10, text: "...", callback: "powerOff" }
             ]
         },
     ];

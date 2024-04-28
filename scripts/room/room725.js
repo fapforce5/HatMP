@@ -8,16 +8,17 @@ room725.main = function () {
     else {
         //if (sc.getstep("chloe") < 3 && !daily.get("chloe")) {
         //    g.pass = "";
-        //    nav.button({
-        //        "type": "btn",
-        //        "name": "chloe",
-        //        "left": 1131,
-        //        "top": 154,
-        //        "width": 402,
-        //        "height": 926,
-        //        "image": "725_club/chloe.png"
-        //    }, 725);
+            //nav.button({
+            //    "type": "btn",
+            //    "name": "chloe",
+            //    "left": 1131,
+            //    "top": 154,
+            //    "width": 402,
+            //    "height": 926,
+            //    "image": "725_club/chloe.png"
+            //}, 725);
         //}
+        sc.select("drink", "725_club/icon_drink.png", 1);
         nav.button({
             "type": "btn",
             "name": "river",
@@ -35,6 +36,65 @@ room725.main = function () {
 
 room725.btnclick = function (name) {
     switch (name) {
+        case "drink":
+            nav.kill();
+            nav.bg("725_club/bar.jpg");
+            sc.select("drink4", "725_club/icon_drink_4.png", 0);
+            sc.select("drink7", "725_club/icon_drink_7.png", 2);
+            sc.select("drink10", "725_club/icon_drink_10.png", 4);
+            sc.select("drink15", "725_club/icon_drink_15.png", 6);
+            sc.selectCancel("reset", 8);
+            break;
+        case "drink4":
+            if (gv.get("money") < 4) {
+                chat(20, 725);
+            }
+            else {
+                gv.mod("money", -4);
+                g.internal = "beer";
+                char.addtime(20);
+                levels.mod("beer", 15, 999);
+                chat(1000, 725);
+            }
+            break;
+        case "drink7":
+            if (gv.get("money") < 7) {
+                chat(20, 725);
+            }
+            else {
+                gv.mod("money", -7);
+                g.internal = "whisky and soda";
+                char.addtime(20);
+                levels.mod("beer", 15, 999);
+                chat(1000, 725);
+            }
+            break;
+        case "drink10":
+            if (gv.get("money") < 10) {
+                chat(20, 725);
+            }
+            else {
+                gv.mod("money", -10);
+                levels.mod("xdress", 2, 999);
+                g.internal = "Strawberry Daiquiri ";
+                char.addtime(20);
+                levels.mod("beer", 15, 999);
+                chat(1000, 725);
+            }
+            break;
+        case "drink15":
+            if (gv.get("money") < 15) {
+                chat(20, 725);
+            }
+            else {
+                gv.mod("money", -15);
+                levels.mod("xdress", 4, 999);
+                g.internal = "Pink Barbie Cocktail ";
+                char.addtime(20);
+                levels.mod("beer", 15, 999);
+                chat(1000, 725);
+            }
+            break;
         case "chloe":
             if (sc.getstep("chloe") === 0) {
                 if (sc.getstep("zoey") < 3)
@@ -63,6 +123,9 @@ room725.btnclick = function (name) {
             g.roomTimeout = setTimeout(function () {
                 chat(12, 725);
             }, 1000);
+            break;
+        case "reset":
+            char.room(725);
             break;
         default:
             break;
@@ -146,183 +209,206 @@ room725.chatcatch = function (callback) {
         case "leave":
             char.room(0);
             break;
+        case "reset":
+            char.room(725);
+            break;
         default:
             break;
     }
 };
 
 room725.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "chloe",
-            text: "Hello?",
-            button: [
-                { chatID: 1, text: "Hi I'm " + sc.n("me") + " and I just wanted to meet you!" , callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "chloe",
-            text: sc.n("me") + "? Do you know " + sc.n("zoey") + "?",
-            button: [
-                { chatID: 2, text: "I do! She's my best friend!", callback: "" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "chloe",
-            text: "Small world. I'm actually dating her right now!",
-            button: [
-                { chatID: 19, text: "Oh wow!", callback: "" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "chloe",
-            text: "So what's up " + sc.n("me") + "?",
-            button: [
-                { chatID: 5, text: "Me, and by me, I mean my penis is up, 'cause it's hard, 'cause I want to have the sex with you...", callback: "" },
-                { chatID: 4, text: "Oh not much. Just checking out the bar. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "chloe",
-            text: "Cool. Well I'm going to say hi to a friend of mine. I'll catch you later. ",
-            button: [
-                { chatID: -1, text: "Cool, later.", callback: "chloeGone" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "chloe",
-            text: "Well you're as awkward as " + sc.n("zoey") + " said, but lucky for you I could use some dick right now. " +
-                "Follow me to the bathrooms",
-            button: [
-                { chatID: 6, text: "Nice", callback: "chloe1" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "chloe",
-            text: "OK big boy, let's see that cock of yours!",
-            button: [
-                { chatID: -1, text: "Pull out your dick", callback: "chloe2" }
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "chloe",
-            text: "How am I supposed to fuck that? It's in a cage you loser. I'm going to find a real man to fuck me!",
-            button: [
-                { chatID: 9, text: "Sad sissy noises", callback: "" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "chloe",
-            text: "Hahaha, I'm not going to fuck you, you small dick loser. When you grow a real cock call me. ",
-            button: [
-                { chatID: 9, text: "Sad sissy noises", callback: "" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "chloe",
-            text: "That's why you and " + sc.n("zoey") + " are only friends. You'll never get a girl with that pathetic dicklette. " +
-                "Fuck out of here. ",
-            button: [
-                { chatID: -1, text: "...", callback: "chloe2bad" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "chloe",
-            text: "I love your cock! It tastes like sex! I need that in me now!",
-            button: [
-                { chatID: 11, text: "...", callback: "chloe4" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "chloe",
-            text: "Shove it in me and don't be nice!",
+    if (chatID === 1000) {
+        return {
+            chatID: 1000,
+            speaker: "thinking",
+            text: "You drank a " + g.internal + ". Dev note - add over drinking, drinking level, and pass out ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
-        },
-        {
-            chatID: 12,
-            speaker: "chloe",
-            text: "Oh fuck! Make me drip your cum!",
-            button: [
-                { chatID: 13, text: "...", callback: "chloe6" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "chloe",
-            text: "I am soooo full! You're one great fuck!",
-            button: [
-                { chatID: 14, text: "I know", callback: "chloe7" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "chloe",
-            text: "So we can NEVER tell " + sc.n("zoey") + " what happened! This is our little secrect we must keep till we die or " +
-                "it will just kill " + sc.n("zoey") + "!",
-            button: [
-                { chatID: 15, text: "I won't tell her, I promise!", callback: "" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "chloe",
-            text: "I won't either. She knows I'm a player, but there's no way she would ever forgive either of us.",
-            button: [
-                { chatID: 16, text: "I know. It would just kill her.", callback: "" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "chloe",
-            text: "I'm going to go find " + sc.n("zoey") + ". She's going to eat me dirty pussy. Just thinking about it makes me " +
-                "horny again! Catch you later!",
-            button: [
-                { chatID: -1, text: "Oh damn... bye", callback: "zoey8" }
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "random",
-            text: "I can't decide if I'm going to fuck you or kick you out. But my boss would fire me if I let you in, so " +
-                "you need to go. ",
-            button: [
-                { chatID: -1, text: "Oh damn... bye", callback: "leave" }
-            ]
-        },
-        {
-            chatID: 18,
-            speaker: "river",
-            text: "Hey Skidmark! You still a virgin? ",
-            button: [
-                { chatID: -1, text: "I hate you. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "thinking",
-            text: sc.n("zoey") + " is my best friend in the world. If I try to fuck " + sc.n("chloe") + ", " + sc.n("zoey") + " will probably never " +
-                "speak to me again. ",
-            button: [
-                { chatID: 3, text: "I really shouldn't try anything. ", callback: "" }
-            ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "chloe",
+                text: "Hello?",
+                button: [
+                    { chatID: 1, text: "Hi I'm " + sc.n("me") + " and I just wanted to meet you!", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "chloe",
+                text: sc.n("me") + "? Do you know " + sc.n("zoey") + "?",
+                button: [
+                    { chatID: 2, text: "I do! She's my best friend!", callback: "" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "chloe",
+                text: "Small world. I'm actually dating her right now!",
+                button: [
+                    { chatID: 19, text: "Oh wow!", callback: "" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "chloe",
+                text: "So what's up " + sc.n("me") + "?",
+                button: [
+                    { chatID: 5, text: "Me, and by me, I mean my penis is up, 'cause it's hard, 'cause I want to have the sex with you...", callback: "" },
+                    { chatID: 4, text: "Oh not much. Just checking out the bar. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "chloe",
+                text: "Cool. Well I'm going to say hi to a friend of mine. I'll catch you later. ",
+                button: [
+                    { chatID: -1, text: "Cool, later.", callback: "chloeGone" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "chloe",
+                text: "Well you're as awkward as " + sc.n("zoey") + " said, but lucky for you I could use some dick right now. " +
+                    "Follow me to the bathrooms",
+                button: [
+                    { chatID: 6, text: "Nice", callback: "chloe1" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "chloe",
+                text: "OK big boy, let's see that cock of yours!",
+                button: [
+                    { chatID: -1, text: "Pull out your dick", callback: "chloe2" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "chloe",
+                text: "How am I supposed to fuck that? It's in a cage you loser. I'm going to find a real man to fuck me!",
+                button: [
+                    { chatID: 9, text: "Sad sissy noises", callback: "" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "chloe",
+                text: "Hahaha, I'm not going to fuck you, you small dick loser. When you grow a real cock call me. ",
+                button: [
+                    { chatID: 9, text: "Sad sissy noises", callback: "" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "chloe",
+                text: "That's why you and " + sc.n("zoey") + " are only friends. You'll never get a girl with that pathetic dicklette. " +
+                    "Fuck out of here. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "chloe2bad" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "chloe",
+                text: "I love your cock! It tastes like sex! I need that in me now!",
+                button: [
+                    { chatID: 11, text: "...", callback: "chloe4" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "chloe",
+                text: "Shove it in me and don't be nice!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "chloe",
+                text: "Oh fuck! Make me drip your cum!",
+                button: [
+                    { chatID: 13, text: "...", callback: "chloe6" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "chloe",
+                text: "I am soooo full! You're one great fuck!",
+                button: [
+                    { chatID: 14, text: "I know", callback: "chloe7" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "chloe",
+                text: "So we can NEVER tell " + sc.n("zoey") + " what happened! This is our little secrect we must keep till we die or " +
+                    "it will just kill " + sc.n("zoey") + "!",
+                button: [
+                    { chatID: 15, text: "I won't tell her, I promise!", callback: "" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "chloe",
+                text: "I won't either. She knows I'm a player, but there's no way she would ever forgive either of us.",
+                button: [
+                    { chatID: 16, text: "I know. It would just kill her.", callback: "" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "chloe",
+                text: "I'm going to go find " + sc.n("zoey") + ". She's going to eat me dirty pussy. Just thinking about it makes me " +
+                    "horny again! Catch you later!",
+                button: [
+                    { chatID: -1, text: "Oh damn... bye", callback: "zoey8" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "random",
+                text: "I can't decide if I'm going to fuck you or kick you out. But my boss would fire me if I let you in, so " +
+                    "you need to go. ",
+                button: [
+                    { chatID: -1, text: "Oh damn... bye", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "river",
+                text: "Hey Skidmark! You still a virgin? ",
+                button: [
+                    { chatID: -1, text: "I hate you. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "thinking",
+                text: sc.n("zoey") + " is my best friend in the world. If I try to fuck " + sc.n("chloe") + ", " + sc.n("zoey") + " will probably never " +
+                    "speak to me again. ",
+                button: [
+                    { chatID: 3, text: "I really shouldn't try anything. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "thinking",
+                text: "I don't have enough money for that. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" }
+                ]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

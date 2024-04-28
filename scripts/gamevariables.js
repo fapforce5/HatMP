@@ -1,6 +1,7 @@
 ﻿var sex = {};
 var levels = {};
 var daily = {};
+var weekly = {};
 var stats = {};
 var gv = {};
 var sissy = {};
@@ -13,6 +14,7 @@ gv.difficulty = 0;
 sex.st = new Array();
 levels.st = new Array();
 daily.st = new Array();
+weekly.st = new Array();
 gv.st = new Array();
 sissy.st = new Array();
 trophy.st = new Array();
@@ -234,7 +236,14 @@ gv.init = function () {
 
         { n: "water", t: false },
 
-        { n: "cop", t: false }
+        { n: "cop", t: false },
+        { n: "loladrunk", t: false },
+        { n: "evadrunk", t: false }
+    ];
+
+    weekly.st = [
+        { n: "lolapee", t: false },
+        { n: "momjerkoff", t: false },
     ];
 
     levels.st = [
@@ -261,6 +270,7 @@ gv.init = function () {
 
         { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
         { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true },
     ];
 
     sex.st = [
@@ -432,19 +442,27 @@ gv.init = function () {
 
 
 gv.i=function(n){var r=-1;for(i=0;i<gv.st.length;i++)if(gv.st[i].n===n){r=i;break}return r}; //returns index for g.st by name
-daily.i=function(n){var r=-1;for(i=0;i<daily.st.length;i++)if(daily.st[i].n===n){r=i;break}return r}; //returns index for daily.st by name
+daily.i = function (n) { var r = -1; for (i = 0; i < daily.st.length; i++)if (daily.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
+weekly.i = function (n) { var r = -1; for (i = 0; i < weekly.st.length; i++)if (weekly.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
 levels.i=function(n){var r=-1;for(i=0;i<levels.st.length;i++)if(levels.st[i].n===n){r=i;break}return r}; //returns index for levels.st by name
 stats.i = function (t, n) { for (var r = 0; r < stats.st.length; r++)if (t === stats.st[r].t && n === stats.st[r].n) return r; return -1 };
 
 gv.get = function (n) {var t=gv.i(n);return t>-1?gv.st[t].t:(console.log("gv.st missing name: "+n),null)}; //gets g.st
-daily.get=function(n){var t=daily.i(n);return t>-1?daily.st[t].t:(console.log("daily.st missing name: "+n),null)}; //gets daily.st
+daily.get = function (n) { var t = daily.i(n); return t > -1 ? daily.st[t].t : (console.log("daily.st missing name: " + n), null) }; //gets daily.st
+weekly.get = function (n) { var t = weekly.i(n); return t > -1 ? weekly.st[t].t : (console.log("weekly.st missing name: " + n), null) }; //gets daily.st
 levels.get=function(l){var n=levels.i(l);return n>-1?{c:levels.st[n].c,l:levels.st[n].l}:(console.log("levels.st missing name: "+l),null)}; //gets levels
 stats.get = function (t, n) { return stats.st[stats.i(t, n)].c };
 
 daily.set = function (t, override = true) {
     var n = daily.i(t);
-    n > 0 ? daily.st[n].t = override : console.log("daily set " + t + " not found")
+    n >= 0 ? daily.st[n].t = override : console.log("daily set " + t + " not found")
 }; //sets daily to true
+
+weekly.set = function (t, override = true) {
+    var n = weekly.i(t);
+    n >= 0 ? weekly.st[n].t = override : console.log("weekly set " + t + " not found")
+}; 
+
 gv.set=function(t,c){var s,e,i=gv.i(t);s=gv.st[i].t,gv.st[i].t=c,e=c-s,g.checkPop(t,e)};
 
 gv.mod = function (name, amount) {
@@ -622,9 +640,14 @@ future.get = function (name) {
     return -1;
 }
 
-daily.newday = function () {
-    for (var i = 0; i < daily.st.length; i++)
+daily.newday = function () { 
+    var i;
+    for (i = 0; i < daily.st.length; i++)
         daily.st[i].t = false;
+    if ((g.hourBetween(0, 7) && g.dt.getDay() === 0) || (g.hourBetween(7, 24) && g.dt.getDay() === 6)) {
+        for (i = 0; i < weekly.st.length; i++)
+            weekly.st[i].t = false;
+    }
 };
 
 levels.desc = function (name, level) {
@@ -1376,6 +1399,7 @@ gv.save = function () {
     var retArray = {
         gv: new Array(),
         daily: new Array(),
+        weekly: new Array(),
         levels: new Array(),
         sex: new Array(),
         sissy: new Array(),
@@ -1394,6 +1418,10 @@ gv.save = function () {
     for (i = 0; i < daily.st.length; i++) {
         if (daily.st[i].t)
             retArray.daily.push(daily.st[i].n);
+    }
+    for (i = 0; i < weekly.st.length; i++) {
+        if (weekly.st[i].t)
+            retArray.daily.push(weekly.st[i].n);
     }
     //save by index
     for (i = 0; i < levels.st.length; i++) {
@@ -1451,6 +1479,17 @@ gv.load = function (rma) {
             if (rma.daily[i] === daily.st[j].n) {
                 daily.st[j].t = true;
                 break;
+            }
+        }
+    }
+
+    if (typeof rma.weekly !== 'undefined') {
+        for (i = 0; i < rma.weekly.length; i++) {
+            for (j = 0; j < weekly.st.length; j++) {
+                if (rma.weekly[i] === weekly.st[j].n) {
+                    weekly.st[j].t = true;
+                    break;
+                }
             }
         }
     }

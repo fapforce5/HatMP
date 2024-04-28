@@ -729,7 +729,7 @@ room650.chat = function (chatID) {
             chatID: 40,
             speaker: "thinking",
             text: "A FRIEND? This chick is nuts. Why did she take me out here and bare her pussy just to leave me with blue " +
-                "balls and call me her friend. What ever. I'll fuck her next time we go out!",
+                "balls and call me her friend. Whatever. I'll fuck her next time we go out!",
             button: [
                 { chatID: -1, text: "Grrrr.", callback: "candy51_7" }
             ]

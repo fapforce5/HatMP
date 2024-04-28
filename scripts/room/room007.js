@@ -658,7 +658,7 @@ room7.chat = function (chatID) {
             speaker: "landlord",
             text: "Good.  You can start helping around the house <span class='hl'> If you want " +
                 "to get a weekly allowance I'll give you $5 if you do the dishes in the sink</span>. I can give you " +
-                "an allowance becuase I've been working at the Sperm Bank for years now. You should be able " +
+                "an allowance because I've been working at the Sperm Bank for years now. You should be able " +
                 "to keep a job for a few weeks at least.",
             button: [{ chatID: 4, text: "OK", callback: "" }]
         },

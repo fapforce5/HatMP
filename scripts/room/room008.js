@@ -50,7 +50,7 @@ room8.main = function () {
 
     if (g.pass === 52)
         nav.bg("8_wardrobe/52_wardrobe.jpg");
-    if (g.pass === 56)
+    else if (g.pass === 56)
         nav.bg("56_bathroom/blur.jpg");
     else if (g.pass === 502)
         nav.bg("8_wardrobe/502_wardrobe.jpg");
@@ -64,6 +64,8 @@ room8.main = function () {
         nav.bg("8_wardrobe/452.jpg");
     else if (g.pass === 552)
         nav.bg("8_wardrobe/552.jpg");
+    else if (g.pass === 553)
+        nav.bg("8_wardrobe/553.jpg");
     else if (g.pass === 875)
         nav.bg("8_wardrobe/903.jpg");
     else if (g.pass === 902)
@@ -80,6 +82,10 @@ room8.main = function () {
         nav.bg("8_wardrobe/318.jpg");
     else if (g.pass === 12)
         nav.bg("12_bathroom/blur.jpg");
+    else if (g.pass === 354)
+        nav.bg("8_wardrobe/354.jpg");
+    else if (g.pass === 0)
+        nav.bg("8_wardrobe/8_wardrobe.jpg");
     else {
         g.pass = 451;
         nav.bg("8_wardrobe/451.jpg");

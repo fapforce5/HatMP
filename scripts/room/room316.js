@@ -1085,7 +1085,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 46,
                 speaker: "janice",
-                text: "Oh my. It looks like you're all locked up. Too bad becuase I was going " +
+                text: "Oh my. It looks like you're all locked up. Too bad because I was going " +
                     "to give you the best orgasm of your life. Oh well...",
                 button: [
                     { chatID: 48, text: "Oh damn! I forgot I'm wearing this!", callback: "" }
@@ -1240,7 +1240,7 @@ room316.chat = function (chatID) {
                 chatID: 64,
                 speaker: "janice",
                 text: "It's ok. I know guys get horny. I'm super horny too. Look how wet you make " +
-                    "me. Becuase I'm such a great girlfriend I'll let you orally pleasure my " +
+                    "me. because I'm such a great girlfriend I'll let you orally pleasure my " +
                     "special little area. Plus you own me one. Do you want to lick my special area? ",
                 button: [
                     { chatID: 66, text: "Yes I do. ", callback: "task4_6" },

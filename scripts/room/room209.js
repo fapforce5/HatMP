@@ -198,7 +198,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "missy",
-                text: "Welcome to the first day of the rest of your worthless lives! You're here becuase deep down in those " +
+                text: "Welcome to the first day of the rest of your worthless lives! You're here because deep down in those " +
                     "boring boys clothes lie a pretty little girl desperate to get out. My staff and I are here to help you " +
                     "free yourself of that constant nagging voice in your head begging to be let loose. ",
                 button: [

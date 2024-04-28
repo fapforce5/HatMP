@@ -2044,7 +2044,7 @@ room14.chat = function (chatID) {
         //    chatID: 115,
         //    speaker: "landlord",
         //    text: "Now for the past few years I've been teaching the girls about sex. A good open honest discussion " +
-        //        "is what every girl needs. I haven't done a very good job becuase we haven't had a chance to go over " +
+        //        "is what every girl needs. I haven't done a very good job because we haven't had a chance to go over " +
         //        "the penis yet. That's where you come in. I'm going to use you as my teaching model for my girls. ",
         //    button: [
         //        { chatID: 116, text: "?", callback: "c6" }
@@ -2134,7 +2134,7 @@ room14.chat = function (chatID) {
         //    chatID: 125,
         //    speaker: "landlord",
         //    text: "Notice how my juices flow down his shaft. You two should lick that. Men always want a girl that " +
-        //        "is comfortable licking antoher girl's juices. Becuase all men are pigs. " + sc.n("eva") + " it's your " +
+        //        "is comfortable licking antoher girl's juices. because all men are pigs. " + sc.n("eva") + " it's your " +
         //        "turn. Hop on this dick. ",
         //    button: [
         //        { chatID: 126, text: "...", callback: "c14" }

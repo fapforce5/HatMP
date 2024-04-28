@@ -252,7 +252,7 @@ room327.chat = function (chatID) {
             "Being a cow wouldn't be all bad. I would still need to get fucked sometimes. ",
             "I heard donkey cum is sweet. I wonder if I could live off just donkey cum and vitamins. ",
             "I wonder who had the most cum in their butt in all of history, and is that on video?",
-            "If someone pees in your ass, do you absorb that and they pee in now floating around you body?"
+            "If someone pees in your ass, do you absorb that and they pee in now floating around your body?"
         ];
         return {
             chatID: 999,

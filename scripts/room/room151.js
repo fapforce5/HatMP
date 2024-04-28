@@ -661,7 +661,7 @@ room151.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "jones",
-            text: "I'm done with your antics. I know you'll be back, becuase you secretly love being humiliated in front of a crowd " +
+            text: "I'm done with your antics. I know you'll be back, because you secretly love being humiliated in front of a crowd " +
                 "and I'm going to fully humiliate you slut. ",
             button: [
                 { chatID: 43, text: "...", callback: "" }

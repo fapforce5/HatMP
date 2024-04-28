@@ -5,7 +5,13 @@ room12.main = function () {
 
     var canGoOut = cl.hasoutfit("public");
 
-    if (canGoOut === null) {
+    if (canGoOut === null && g.pass === "lolapee") {
+        g.pass = "";
+        weekly.set("lolapee");
+        nav.bg("12_bathroom/lolapee.jpg");
+        chat(43, 12);
+    }
+    else if (canGoOut === null) {
         btnList = [
             {
                 "type": "btn",
@@ -499,6 +505,13 @@ room12.chatcatch = function (callback) {
         case "reset":
             char.room(12);
             break;
+        case "leave":
+            char.room(11);
+            break;
+        case "badleave":
+            sc.modLevel("lola", -15, 999);
+            char.room(11);
+            break;
         default:
             break;
     }
@@ -858,6 +871,23 @@ room12.chat = function(chatID){
             text: "You always did have the smoothest skin. I guess this lotion is doing what it needs to do. ",
             button: [
                 { chatID: -1, text: "Thank you. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "lola",
+            text: "WHAT THE HELL! I'm peeing! The door was closed! Get out! ",
+            button: [
+                { chatID: -1, text: "Oh sorry. ", callback: "leave" },
+                { chatID: 44, text: "So uh... Can I watch you pee? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "lola",
+            text: "NO! " + sc.n("eva") + " was right. You are a pervert! Leave so I can pee! ",
+            button: [
+                { chatID: -1, text: "Oh sorry. ", callback: "badleave" },
             ]
         },
     ];

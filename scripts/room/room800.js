@@ -268,9 +268,9 @@ room800.chat = function (chatID) {
             chatID: 14,
             speaker: "me",
             text: "Have you ever thought about why you have to torture your fellow followers? If Azrael really was the way then " +
-                "why are there so many people forced to follow him or get tortured? You're getting tortured becuase Azrael isn't " +
+                "why are there so many people forced to follow him or get tortured? You're getting tortured because Azrael isn't " +
                 "really in your heart. What's in your heart is a fear of pain and death. You're all there out of a fear of pain " +
-                "and torture from the Carnal Union, not becuase Azrael wills it. Have you ever heard the word of Azrael yourself, " +
+                "and torture from the Carnal Union, not because Azrael wills it. Have you ever heard the word of Azrael yourself, " +
                 "or just heard from others claim to? Is kidnapping a crossdresser really what Azrael would want? ",
             button: [
                 { chatID: 15, text: "...", callback: "" }

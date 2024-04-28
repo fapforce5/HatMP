@@ -155,7 +155,7 @@ room223.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "missy",
-            text: "You dirty little panty theif. Not only are you stealing panties, but you're stealing them from your " +
+            text: "You dirty little panty thief. Not only are you stealing panties, but you're stealing them from your " +
                 sc.n("el") + ". You disgusting little sissy. ",
             button: [
                 { chatID: 7, text: "...", callback: "" },
@@ -164,7 +164,7 @@ room223.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "missy",
-            text: "So you like to steal panties do you? Stip off the rest of your clothing. Everything, but leave the panties on. ",
+            text: "So you like to steal panties do you? Strip off the rest of your clothing. Everything, but leave the panties on. ",
             button: [
                 { chatID: 8, text: "Awwww", callback: "" },
             ]

@@ -514,6 +514,10 @@ input[type=text]:disabled{
     color: #d43fb6;
 }
 
+.hl-blue {
+    color: #adc7ff;
+}
+
 .menu-fileSave{
     margin-top:100px;
     width:100%;

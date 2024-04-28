@@ -611,7 +611,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "football",
-                text: "Fuck them titties, I was to see that ass I 'bout to destory. Tell that slut to stip it off and show " +
+                text: "Fuck them titties, I was to see that ass I 'bout to destory. Tell that slut to strip it off and show " +
                     "us all that fine booty. ",
                 button: [
                     { chatID: 37, text: "...", callback: "" },
@@ -620,7 +620,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "utah",
-                text: "You heard them. Stip it off and show us that ass of yours. I want a good view too. ",
+                text: "You heard them. Strip it off and show us that ass of yours. I want a good view too. ",
                 button: [
                     { chatID: 38, text: "ok", callback: "cheer9_3" },
                 ]

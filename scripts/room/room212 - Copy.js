@@ -188,7 +188,7 @@ room212.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "black",
-            text: "Normally people who come here seeking pain do it becuase they've done something terrible in their life. " +
+            text: "Normally people who come here seeking pain do it because they've done something terrible in their life. " +
                 "Some they wish to attone for, but don't know know how. Have you sinned in a way you wish to attone for?",
             button: [
                 { chatID: 2, text: "Yes, tell her your sins. ", callback: "" }
@@ -240,7 +240,7 @@ room212.chat = function (chatID) {
             chatID: 7,
             speaker: "black",
             text: "I will teach you how to channel that pain and make your body stronger to defend itself from those " +
-                "that seek to harm you. I also do this becuase I love to make sissies whimper. The look on your weak " +
+                "that seek to harm you. I also do this because I love to make sissies whimper. The look on your weak " +
                 "sissy faces I find so delicious. Now open your mouth slut! ",
             button: [
                 { chatID: 8, text: "...", callback: "mouth0" }
@@ -351,9 +351,9 @@ room212.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "black",
-            text: "Now slave stip and get into position. ",
+            text: "Now slave strip and get into position. ",
             button: [
-                { chatID: 21, text: "[Stip and kneel]", callback: "stripandkneel" }
+                { chatID: 21, text: "[Strip and kneel]", callback: "stripandkneel" }
             ]
         },
         {
@@ -944,7 +944,7 @@ room212.chat = function (chatID) {
         {
             chatID: 91,
             speaker: "black",
-            text: "Now it's time for your other hole. I hope you got my dildo wet enough becuase you're taking without " +
+            text: "Now it's time for your other hole. I hope you got my dildo wet enough because you're taking without " +
                 "any preperation or lube sluts. Now bend over, it's time for some ass to ass.",
             button: [
                 { chatID: 92, text: "...", callback: "fin8" }

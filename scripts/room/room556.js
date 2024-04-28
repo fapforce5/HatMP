@@ -173,7 +173,7 @@ room556.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "g",
-            text: "The top section is you. Becuase you're a little wimp you'll find you're get " +
+            text: "The top section is you. because you're a little wimp you'll find you're get " +
                 "you ass kicked a lot. Continue to get stronger and you'll win more fights. Also if " +
                 "you're low on energy you won't fight as well. ",
             button: [

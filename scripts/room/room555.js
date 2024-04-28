@@ -820,7 +820,7 @@ room555.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "g",
-            text: "Welcome to the secret back gym. " + sc.n("chad") + " and I built this becuase " +
+            text: "Welcome to the secret back gym. " + sc.n("chad") + " and I built this because " +
                 "we needed a place for just the handsome and beautiful people can work out and not " +
                 "be around the gross ugly people. I've decided you're no longer a disgusting blob of human " +
                 "so you're now invited to work out with the most beautiful people of Fetville. ",

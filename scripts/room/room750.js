@@ -354,7 +354,7 @@ room750.chat = function (chatID) {
             chatID: 21,
             speaker: "dale",
             text: "Well no. Never beat one up, but I could. Everyone wants to fight fair. Life is not a boxing rink, life " +
-                "is the deep sea. There's no rules. Becuase rules were made to be broken, so why have them. That's why I live " +
+                "is the deep sea. There's no rules. because rules were made to be broken, so why have them. That's why I live " +
                 "without rules. You know the secret to beating an alien? ",
             button: [
                 { chatID: 22, text: "What? ", callback: "" },

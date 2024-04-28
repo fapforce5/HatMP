@@ -3,9 +3,8 @@
 var room350 = {};
 room350.main = function () {
     if (sc.getTimeline("landlord").thisRoom) {
-
-        var btnList = [
-            {
+        if (cl.isLewd()) {
+            nav.button({
                 "type": "btn",
                 "name": "nurse",
                 "left": 1078,
@@ -13,18 +12,31 @@ room350.main = function () {
                 "width": 170,
                 "height": 200,
                 "image": "350_spermBank/landlord.png"
-            }
-        ];
-        $.each(btnList, function (i, v) {
-            nav.button(v, 350);
-        });
+            }, 350);
+            chat(18, 350);
+        }
+        else if (sc.getMissionTask("landlord", "spermbank", 2).complete
+            && sc.getMission("raven", "bitch").notStarted
+            && g.dt.getDay() === 6) {
+            nav.bg("350_spermBank/raven_0_1.jpg");
+            chat(30, 350);
+        }
+        else {
+            nav.button({
+                "type": "btn",
+                "name": "nurse",
+                "left": 1078,
+                "top": 481,
+                "width": 170,
+                "height": 200,
+                "image": "350_spermBank/landlord.png"
+            }, 350);
+        }
         //if (g.pass === "350_nursePay") {
         //    g.pass = null;
         //    chat(8, 350);
         //}
-        if (cl.isLewd()) {
-            chat(18, 350);
-        }
+        
     }
     else {
         var thisDay = g.dt.getDay();
@@ -46,25 +58,26 @@ room350.btnclick = function (name) {
         case "nurse":
             if (sc.getMission("landlord", "spermbank").inProgress) {
                 if (g.dt.getDay() === 6) {
-                    sc.completeMission("landlord", "spermbank", true);
-                    sc.setEvent("landlord", 1);
+                    if (sc.getMissionTask("landlord", "spermbank", 2).notStarted)
+                        sc.completeMissionTask("landlord", "spermbank", 2);
                     chat(6, 350);
                 }
                 else {
                     chat(5, 350);
                 }
             }
-            else if (sc.getEvent("landlord", 1)) {
-                if (g.dt.getDay() === 6) {
-                    chat(20, 350);
-                }
-                else {
-                    chat(3, 350);
-                }
-            }
             else {
                 chat(0, 350);
             }
+            //else if (sc.getEvent("landlord", 1)) {
+            //    if (g.dt.getDay() === 6) {
+            //        chat(20, 350);
+            //    }
+            //    else {
+            //        chat(3, 350);
+            //    }
+            //}
+            
 
             //var mascotNum = gv.get("mascot");
             //var llStep = sc.getstep("landlord");
@@ -145,9 +158,47 @@ room350.chatcatch = function (callback) {
         case "sperm2":
             char.room(351);
             break;
+        case "raven_0_2":
+            nav.bg("350_spermBank/raven_0_2.jpg");
+            break;
+        case "raven_1_end":
+            sc.startMission("raven", "bitch");
+            sc.completeMissionTask("raven", "bitch", 0);
+            sc.show("raven");
+            levels.mod("pi", 20, 999);
+            char.addtime(20);
+            nav.bg("350_spermBank/350_spermbank.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "nurse",
+                "left": 1078,
+                "top": 481,
+                "width": 170,
+                "height": 200,
+                "image": "350_spermBank/landlord.png"
+            }, 350);
+            break;
          case "wait":
             char.settime(9, 2);
             char.room(350);
+            break;
+        case "spermDonation":
+            if (sc.getMissionTask("landlord", "spermbank", 0).complete) {
+                chat(31, 350);
+            }
+            else {
+                sc.completeMissionTask("landlord", "spermbank", 0);
+                chat(7, 350);
+            }
+            break;
+        case "advertiseStart":
+            if (sc.getMissionTask("landlord", "spermbank", 1).complete) {
+                chat(32, 350);
+            }
+            else {
+                sc.completeMissionTask("landlord", "spermbank", 1);
+                chat(13, 350);
+            }
             break;
         default:
             break;
@@ -213,8 +264,8 @@ room350.chat = function (chatID) {
                 "are in for half the day I'll give you the choice. You can either make a donation, or you can help advertise. I pay " +
                 "$30 for a donation, but $60 if you advertise. ",
             button: [
-                { chatID: 7, text: "I'll do the sperm donation for $30", callback: "" },
-                { chatID: 13, text: "I'll advertise for $60", callback: "" },
+                { chatID: -1, text: "I'll do the sperm donation for $30", callback: "spermDonation" },
+                { chatID: -1, text: "I'll advertise for $60", callback: "advertiseStart" },
             ]
         },
         {
@@ -344,6 +395,114 @@ room350.chat = function (chatID) {
                 { chatID: 7, text: "I'll do the sperm donation for $30", callback: "sperm2" },
                 { chatID: 13, text: "I'll advertise for $60", callback: "advertise" },
                 { chatID: -1, text: "Nope. I'm going to go. Bye. ", callback: "leavemad" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "raven",
+            text: "...you better find out what's happening with those missing specimens or I'll have " +
+                "to start investigating your operation more deeply. You wouldn't want to lost your " +
+                "sperm bank license would you? ",
+            button: [
+                { chatID: 22, text: "...who's that talking to my " + sc.n("landlord") + "?", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "landlord",
+            text: "You wouldn't. I need that license or I lose everything. I told you I'm trying to find who " +
+                "or what is taking the samples. I'm working with the police, but so far we haven't been able " +
+                "to find out who is taking them. ",
+            button: [
+                { chatID: 23, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "raven",
+            text: "Not my problem. Losing samples is a very serious violation, not only lawfully, but the " +
+                "trust between you and the clients. I'm going to continue to look into it, but expect to lose " +
+                "you License. This can't keep happening. ",
+            button: [
+                { chatID: 24, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "landlord",
+            text: "No. You can't do that. There's got to be something I can do to keep my License. Please. ",
+            button: [
+                { chatID: 25, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "raven",
+            text: "Well there is one thing. How about I give you a sperm donation, and you use something other " +
+                "than you hand to extract it. ",
+            button: [
+                { chatID: 26, text: "He didn't just say that.", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "landlord",
+            text: "You've been trying to fuck me for years. I'll tell your boss this is just a ploy to get in " +
+                "my panties. I'll have you fired! ",
+            button: [
+                { chatID: 27, text: "You go girl! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "raven",
+            text: "You know it's your word against mine. I know there's something here and once I find it you'll " +
+                "be my mine. You can either start giving up your pussy now, or wait till I find something, then I'll make " +
+                "you my little bondage slave. ",
+            button: [
+                { chatID: 28, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "landlord",
+            text: "That's quite enough. You should go right now! ",
+            button: [
+                { chatID: 29, text: "....", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "thinking",
+            text: "Who is that guy? He's such as ass trying to blackmail my " + sc.n("landlord") + "! I'll " +
+                "have to help her somehow. I better get back to the lobby before they figure out I'm eavesdropping.",
+            button: [
+                { chatID: -1, text: "....", callback: "raven_1_end" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "thinking",
+            text: "That sounds like my " + sc.n("landlord") + ". I wonder what's going on. Let me just listen a " +
+                "little bit. ",
+            button: [
+                { chatID: 21, text: "....", callback: "raven_0_2" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "landlord",
+            text: "Excellent. Please join Nurse Madison in room 1.",
+            button: [
+                { chatID: -1, text: "Ok", callback: "sperm2" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "landlord",
+            text: "Excellent. Please try to get 3 or more people to donate. Let's go.",
+            button: [
+                { chatID: -1, text: "Ok", callback: "advertise" },
             ]
         },
     ];

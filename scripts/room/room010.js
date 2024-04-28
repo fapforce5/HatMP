@@ -4,75 +4,6 @@ room10.main = function () {
     if (inv.has("tifgift")) {
         chat(36, 10);
     }
-    else if (g.pass === "kickOutTorD") {
-        g.pass = "";
-        chat(8, 10);
-    }
-    else if (g.internal === "kickOutTorD") {
-        var missingClothingx = cl.hasoutfit("public");
-        if (missingClothingx === null)
-            chat(9, 10);
-        else {
-            g.pass = missingClothingx;
-            chat(998, 10);
-        }
-    }
-    else if (g.internal === "room10pass" || g.internal === "room10Underwear") {
-        if (g.internal === "room10Underwear") {
-            if (cl.c.shirt === null && cl.c.pants === null && cl.c.panties === null && cl.c.pj === null) {
-                nav.bg("10_mainchar/bedroomStand.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "wardrobe",
-                    "left": 1684,
-                    "top": 230,
-                    "width": 236,
-                    "height": 602,
-                    "title": "Wardrobe",
-                    "image": "10_mainchar/10_wardrobe.png"
-                }, 10);
-                chat(34, 10);
-            }
-            else if (cl.c.panties !== "w") {
-                nav.bg("10_mainchar/bedroomStand.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "wardrobe",
-                    "left": 1684,
-                    "top": 230,
-                    "width": 236,
-                    "height": 602,
-                    "title": "Wardrobe",
-                    "image": "10_mainchar/10_wardrobe.png"
-                }, 10);
-                chat(28, 10);
-            }
-            else {
-                nav.button({
-                    "type": "img",
-                    "name": "yell",
-                    "left": 408,
-                    "top": 0,
-                    "width": 1468,
-                    "height": 1080,
-                    "image": "10_mainchar/panties.png"
-                }, 10);
-                chat(29, 10);
-            }
-        }
-        else {
-            nav.button({
-                "type": "img",
-                "name": "yell",
-                "left": 408,
-                "top": 0,
-                "width": 1468,
-                "height": 1080,
-                "image": "10_mainchar/lolaYell.png"
-            }, 10);
-            chat(18, 10);
-        }
-    }
     else {
         $('.room-topper').show();
         var btnList = [
@@ -710,7 +641,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "eva",
-                text: "Now go into that closet and get us all you boy panties. ",
+                text: "Now go into that closet and get us all your boy panties. ",
                 button: [
                     { chatID: -1, text: "ok", callback: "" }
                 ]

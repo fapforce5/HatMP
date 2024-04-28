@@ -1427,7 +1427,7 @@ room501.chat = function (chatID) {
             speaker: "zoey",
             text: "That was so hard. Thank you so much for helping me. You really are my best friend in the world. ",
             button: [
-                { chatID: 97, text: "That's becuase you're my best friend in the world.", callback: "" }
+                { chatID: 97, text: "That's because you're my best friend in the world.", callback: "" }
             ]
         },
         {

@@ -515,7 +515,7 @@ room478.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "random",
-            text: "Oh gross. You totally dress like a boy. You need help girl. Just becuase you're in a cave " +
+            text: "Oh gross. You totally dress like a boy. You need help girl. Just because you're in a cave " +
                 "doesn't mean you should dress like a cave troll. Why are you event talking to us?",
             button: [
                 { chatID: 19, text: "I was told I had to talk to people to get out of here. ", callback: "" },
@@ -616,7 +616,7 @@ room478.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "random",
-            text: "This is the freedom man. I have a working cock and what ever bella I want. Out there I have " +
+            text: "This is the freedom man. I have a working cock and whatever bella I want. Out there I have " +
                 "to work for it, in here they throw themselves to me. ",
             button: [
                 { chatID: 29, text: "So how did you get here? ", callback: "" },

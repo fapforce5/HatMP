@@ -629,7 +629,7 @@ room180.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "missy",
-            text: "Everyone stip out of those disgusting clothes and put on your new pretty " +
+            text: "Everyone strip out of those disgusting clothes and put on your new pretty " +
                 "uniforms. Now! And keep yourp panties on! We don't need your nasty cum drool " +
                 "all over the chairs and floors. ",
             button: [

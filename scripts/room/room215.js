@@ -619,7 +619,7 @@ room215.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "landlord",
-            text: "Oh my. You are cute but I was just here becuase I heard my little girl was working as a prostitute. I " +
+            text: "Oh my. You are cute but I was just here because I heard my little girl was working as a prostitute. I " +
                 "had to see for myself. But.... If she's going to be a whore I guess this may be a good lesson for her. " +
                 "Get up. Get on your knees. Open your mouth like a good prostitute. ",
             button: [

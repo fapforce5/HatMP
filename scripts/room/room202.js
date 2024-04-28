@@ -1044,7 +1044,7 @@ room202.chat = function (chatID) {
             speaker: "missy",
             text: "Strip Slut",
             button: [
-                { chatID: 46, text: "[Stip]", callback: "pose0" }
+                { chatID: 46, text: "[Strip]", callback: "pose0" }
             ]
         },
     ];

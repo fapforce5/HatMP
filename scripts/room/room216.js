@@ -206,10 +206,10 @@ room216.chat = function (chatID) {
             chatID: 4,
             speaker: "p",
             text: "This is the free use room. I need you to fill in as our cum dump maid. Our usual maid is on materinity leave. " +
-                "I think she was scooping the cum into her pussy. The job's pretty easy, just clean up " +
+                "I think she was scooping the cum into her pussy. The job's pretty easy, clean up " +
                 "cum up and don't mess with the fuck holes. Also whores don't get to wear clothes " +
                 "here, but I'll have you wear an apron so the VIPs know you're only a maid. Now clean " +
-                "those dirty pussies and asshole. ",
+                "those dirty pussies and assholes. ",
             button: [
                 { chatID: -1, text: "Will do. ", callback: "cumRoom" }
             ]

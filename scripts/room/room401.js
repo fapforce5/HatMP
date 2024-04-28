@@ -319,7 +319,7 @@ room401.main = function () {
 room401.makeClothing = function (type, sex) {
     var i, lewdlevel, canbuy, inInv;
     var sissyLevel = levels.get("xdress").l;
-    if (sissyLevel > 7)
+    if (sissyLevel > 6)
         lewdlevel = [0, 1, 2, 3, 4];
     else if (sissyLevel > 4)
         lewdlevel = [0, 1, 2, 3];

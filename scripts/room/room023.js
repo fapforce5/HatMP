@@ -6,6 +6,9 @@ room23.main = function () {
     char.changeMenu("body", false, true);
     var truths = new Array();
     var dares = new Array();
+    var myDare = new Array();
+    sc.modLevel("lola", 999, 999);
+    sc.modLevel("eva", 999, 999);
     truths.push([
         {
             q: "Have you ever kissed a boy?",
@@ -172,7 +175,7 @@ room23.main = function () {
     truths.push([
         {
             q: "What’s your favorite fantasy to masturbate to?",
-            l: "Don't tell him, but I've masturbated to the Utah the Quarterback. I would never date him becuase he gets around, but he's just so sexy. ",
+            l: "Don't tell him, but I've masturbated to the Utah the Quarterback. I would never date him because he gets around, but he's just so sexy. ",
             e: "Gangbang. Totally a gangbang. I tried it a couple times, but the fantasy is just so much more sexy. ",
             i: "q_4_1"
         },
@@ -409,21 +412,128 @@ room23.main = function () {
             ]
         }
     ];
-    var myDare = [
+    myDare.push([ //0 clothing
         {
-            q: "Take your shirt off and show off your chest!",
-            b: [{ chatID: -1, text: "Awww Really? [Take Shirt off]", callback: "lolatalk pantyBoy" }]
+            e: "I want to you beg. Like a doggy with your tongue out! Then bark. ", 
+            l: null,
+            b: [{ chatID: -1, text: "Werid, but ok.", callback: "medoggytongue" }]
         },
         {
-            q: "Take your pants off!",
-            b: [{ chatID: 14, text: "Awww yea! [Take pants off]", callback: "lolatalk removePants" }]
-        }
-    ];
+            e: "Roll over doggy boy! ", 
+            l: null,
+            b: [{ chatID: -1, text: "arf?", callback: "medoggyroll" }]
+        },
+        {
+            e: null,
+            l: "I dare you... to jump up and down! ",
+            b: [{ chatID: -1, text: "Sure.", callback: "mejump" }]
+        },
+        {
+            e: null,
+            l: "Do a push up! No. Do 5 pushups! ",
+            b: [{ chatID: -1, text: "I think I can do 5", callback: "mepushup" }]
+        },
+        {
+            e: "Drink up doggy boy. ",
+            l: "I dare you to take a drink of your wine. ",
+            b: [{ chatID: -1, text: "Sure", callback: "meDrink" }]
+        },
+        //{
+        //    e: null,
+        //    l: "OOOoooo, uhhhhh. Pick your nose with your tongue ",
+        //    b: [{ chatID: -1, text: "Awww yea! [Take pants off]", callback: "lolatalk removePants" }]
+        //},
+    ]);
+    myDare.push([ //1 topless
+        {
+            e: "Show us how pathetic you are. Try flexing your puny muscles. ",
+            l: "Flex your muscles! ",
+            b: [{ chatID: -1, text: "You're in for a treat. ", callback: "meflex" }]
+        },
+        {
+            e: null,
+            l: "Play air guitare to your favorite song",
+            b: [{ chatID: -1, text: "Get ready to be amazed by my awesome skills baby!", callback: "meairguitare" }]
+        },
+        {
+            e: null,
+            l: "Ummm. Let me lick your nipple. hehehe ",
+            b: [{ chatID: -1, text: "Awww yea! [Take pants off]", callback: "meNipplelick" }]
+        },
+        {
+            e: "I want you to suck my big toe like it's a thick tiny weiner! Suck " +
+                "it pervert. ",
+            l: null,
+            b: [{ chatID: -1, text: "Ugh! Ok. ", callback: "meSuckToes" }]
+        },
+        {
+            e: "Bow down and say that you're my bitch. Really bow. Put your face on the floor loser. ",
+            l: null,
+            b: [{ chatID: -1, text: "Aw crap. ok. ", callback: "mebow" }]
+        },
+        {
+            e: "Drink up doggy boy. ",
+            l: "I dare you to take a drink of your wine. ",
+            b: [{ chatID: -1, text: "Sure", callback: "meDrink" }]
+        },
+    ]);
+    myDare.push([ //2 underwear only
+        {
+            e: "Give " + sc.n("lola") + " a striptease dance. ",
+            l: null,
+            b: [{ chatID: 101, text: "Sexy! I love it. ", callback: "evasit lolatalk" }]
+        },
+        {
+            e: "Put on a pair of " + sc.n("lola") + "'s panties! ",
+            l: null,
+            b: [{ chatID: 103, text: "Huh? ", callback: "lolatalk evasit" }]
+        },
+        {
+            e: null,
+            l: "Oh my... Let me touch your butt. ",
+            b: [{ chatID: 106, text: "Oh hahaha. Sure. ", callback: "meButttouch" }]
+        },
+        {
+            e: "Drink up doggy boy. ",
+            l: "I dare you to take a drink of your wine. ",
+            b: [{ chatID: -1, text: "Sure", callback: "meDrink" }]
+        },
+    ]);
+    myDare.push([ //3 naked
+        {
+            l: "Do a helicopter with your penis. ",  
+            e: "Do a helicopter with your penis. ",
+            b: [{ chatID: 107, text: "Buckle your seat belts ladies, cause we're about to lift off! ", callback: "meHeli" }]
+        },
+        {
+            l: null,
+            e: "Eat a doggy treat out of me.  ",
+            b: [{ chatID: 108, text: "Why do you have a dog treat? ", callback: "meDogtreat" }]
+        },
+        {
+            l: "I dare you to lick my vagina. But use only your tongue. I want to stay a virgin so this " +
+                "doens't count. ",
+            e: null,
+            b: [{ chatID: 110, text: "Fuck Yeah! ", callback: "melicklola" }]
+        },
+        {
+            l: null,
+            e: "Well since we're all naked, I dare you lick my butthole like a doggy in heat. ",
+            b: [{ chatID: 112, text: "huh?", callback: "melickbutthole" }]
+        },
+        {
+            e: "Drink up doggy boy. ",
+            l: "I dare you to take a drink of your wine. ",
+            b: [{ chatID: -1, text: "Sure", callback: "meDrink" }]
+        },
+    ]);
+    //----------------------------------their dares-----------------------------------------------------
     dares.push([
         {
             txt: "I dare you to make out with your hand. ",
             e: "Sure! Take some notes " + sc.n("lola"),
             l: "Sure. What a nice dare. ",
+            u: "I dare you to make out with your hand. ",
             dCallback: "dareKissHand",
             i: "d_1_1"
         },
@@ -431,6 +541,7 @@ room23.main = function () {
             txt: "I dare you to kiss #other#. On the lips! ",
             e: "Yummy! My favorite person to make out with! ",
             l: "Sure! I love how soft her lips are. ",
+            u: null,
             dCallback: "dareKissOther",
             i: "d_1_2"
         },
@@ -438,6 +549,7 @@ room23.main = function () {
             txt: "I dare you to give me a kiss.",
             e: "Ewwww. You're going to pay for this one! ",
             l: "Oh yes! If I must. ",
+            u: "I dare you to kiss " + sc.n("me") + ". ",
             dCallback: "dareKissMe",
             i: "d_1_3"
         },
@@ -445,37 +557,39 @@ room23.main = function () {
             txt: "I dare you to spin around for 10 seconds and try to walk",
             e: "What! Ok. You better not mess with me butthead! ",
             l: "Ok. This sounds like fun.",
+            u: "I dare you to spin around for 10 seconds and try to walk", 
             dCallback: "dareSpin1",
             i: "d_1_4"
         },
         {
-            txt: " smell your own armpits",
+            txt: "Smell your own armpits",
             e: "What kind of weird fetishes are you into sick-o!",
-            
             l: "Hehehe. ok. ",
-            dCallback: "",
+            u: "Smell your own armpits",
+            dCallback: "dareSmellArmpits",
             i: "d_1_5"
         },
         {
-            txt: " drink all your wine in one gulp. ",
+            txt: "Take a drink! ",
             e: "Trying to get me drunk. ",
-            
-            l: "Oooo. That's a lot of wine at once. Hope I don't get crazy. ",
-            dCallback: "",
+            l: "Oooo fun. I do love the taste of wine. ",
+            u: "Take a drink! ",
+            dCallback: "dareDrinkWine",
             i: "d_1_6"
         },
         {
-            txt: "show us what secret talent you have. ",
+            txt: "Show us what secret talent you have. ",
             e: "Check this out! ",
-            
             l: "I can touch my toe to my ear. ",
-            dCallback: "",
+            u: "Show both of us your secret talent. ",
+            dCallback: "dareTalent",
             i: "d_1_7"
         },
         {
             txt: " I dare you to take your shirt off! ",
             e: "Pervert! I knew you just wanted to see my tits. ",
             l: "Oh my. Show you my bare breasts? ",
+            u: null,
             dCallback: "dareTopless",
             i: "d_1_8"
         },
@@ -485,6 +599,7 @@ room23.main = function () {
             txt: "Kiss #other#",
             e: "You like watching topless girls making out? ",
             l: "Hehe. I love it when our nipples touch. ",
+            u: "Give me a kiss!",
             dCallback: "dareKissOther",
             i: "d_1_2"
         },
@@ -492,149 +607,150 @@ room23.main = function () {
             txt: "Make out with me. ",
             e: "Really. Just don't try to feel my tits pervert. ",
             l: "Hehe. Sure! ",
+            u: "Make out with " + sc.n("me") + ". ",
             dCallback: "dareKissMe",
             i: "d_1_3"
         },
         {
-            txt: "Suck your finger like a dick. ",
+            txt: "Give me your best blow job face. ",
             e: "Sure. My pinky is probably the size of your dick! ",
-            
             l: "MMM. Ready for the show? ",
-            dCallback: "",
+            u: null,
+            dCallback: "bjface",
             i: "d_2_1"
         },
         {
-            txt: "Give #other# a wedgie",
-            e: "Hahahah. Ready nerd! ",
-            
-            l: "Oh I'm so sorry " + sc.n("eva") + ", but a dares, a dare. ",
-            dCallback: "",
+            txt: "Let me motorboat your breasts. ",
+            e: "I knew you were playing just to touch my boobies. ",
+            l: "Oh. ok. Hehehe",
+            u: null,
+            dCallback: "dareMotoboat",
             i: "d_2_2"
         },
         {
             txt: "Lick #other#'s nipples.",
             e: "You better not get a boner watching us. ",
-            
             l: "MMmmmm. She has the cutest nipples. ",
-            dCallback: "",
+            u: "I dare you to lick my nipples. ",
+            dCallback: "dareLickNipple",
             i: "d_2_3"
         },
         {
-            txt: "Put a clothes pin on your nipples.",
+            txt: "Put clothes pins on your nipples.",
             e: "What! You total butthead! Fuck! ",
-            
             l: "That's so evil. ",
-            dCallback: "",
+            u: null,
+            dCallback: "dareClothesPin",
             i: "d_2_4"
         },
         {
             txt: "Take your pants off. ",
             e: "Sure! It's only time you get to see a girl without her pants. ",
-            
             l: "Sexy! hehe. I love this dare. ",
-            dCallback: "",
+            u: null,
+            dCallback: "dareTopless2",
             i: "d_2_5"
         },
     ]);
     dares.push([
-        {
-            txt: "Kiss #other#",
-            e: "",
-            
-            l: "",
-            dCallback: "",
-            i: "d_1_2"
-        },
+        //{
+        //    txt: "Kiss #other#",
+        //    e: "",
+        //    l: "",
+        //    u: true,
+        //    dCallback: "",
+        //    i: "d_1_2"
+        //},
         {
             txt: "Twerk for us. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            e: "I didn't think you were an ass boy. I thought you were more into feet. ",
+            l: "I feel so silly shaking my butt. Do I look dumb? ",
+            u: "I want to see your danicng moves. Twerk for us. ",
+            dCallback: "dareTwerk",
             i: "d_3_1"
         },
         {
             txt: "Play with your vagina over your panties. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            e: "You're just trying to get me all horny so you can have sex with me. ",
+            l: "I guess I can show you how I masturbate. It is my hand touching myself. ",
+            u: true,
+            dCallback: "dareMast",
             i: "d_3_2"
         },
         {
-            txt: "Take #other#'s panties off. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            txt: "Let #other# give you a wedgie. ",
+            e: "Awww crap. ",
+            l: "Hehehe. I love these hijinks you two come up with! ",
+            u: null,
+            dCallback: "dareWedgie",
             i: "d_3_3"
         },
         {
             txt: "Take your panties off. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            e: "I knew it! I knew you just played to get us naked! ",
+            l: "Oh.... oh my. I suppose I have to since you dared me. hehehe",
+            u: null,
+            dCallback: "darePantiesOff",
             i: "d_3_4"
         },
     ]);
     dares.push([
+        //{
+        //    txt: "Kiss #other#",
+        //    e: "Sure. Her lips are so soft.  ",
+        //    l: "Oh yeah!  ",
+        //    u: true,
+        //    dCallback: "dareKissOther",
+        //    i: "d_1_2"
+        //},
         {
-            txt: "Kiss #other#",
-            e: "",
-            
-            l: "",
-            dCallback: "",
-            i: "d_1_2"
+            txt: "Play with your pussy and let us watch. ",
+            e: "I'm going to blow your dirty little brain. ",
+            l: "Oh my. I guess I have to since it's a dare. ",
+            u: null,
+            dCallback: "dareMast",
+            i: "d_3_2"
         },
         {
-            txt: "Make out with me. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
-            i: "d_1_3"
+            txt: "I dare you to show me your butthole. ",
+            e: "Ewwww. Boys are so gross. ",
+            l: "Oh my. That's so personal. I guess I have to. ",
+            u: null,
+            dCallback: "dareButthole",
+            i: "d_4_5"
         },
         {
-            txt: "I dare you to show be your butthole. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
-            i: "d_1_3"
-        },
-        {
-            txt: "Lick #other#'s pussy",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            txt: "Have #other# sit on your face! ",
+            e: "Take notes. She's about to show you how to properly eat pussy. ",
+            l: "Oh. I guess it's ok that I show you how to do cunnilingus. ",
+            u: "I dare you to sit on my face! ",
+            dCallback: "dareSitOnFace",
             i: "d_4_1"
         },
         {
             txt: "Put your finger in #other#'s butthole. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            e: "What! I know you're weird, but you still suprise me by how really weird you are. ",
+            l: "She hates it when I put my finger in... I mean what. Sure. ",
+            u: null,
+            dCallback: "dareButtholeFinger",
             i: "d_4_2"
         },
         {
-            txt: "Kiss my weiner. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
+            txt: "Lick my weiner. ",
+            e: "Oh crap. I knew this was coming. You better not cum when I touch it. ",
+            l: "Oh YES! I mean. Sure. That's cool. ",
+            u: "I dare you to lick his weiner! ",
+            dCallback: "dareLickCock",
             i: "d_4_3"
         },
-        {
-            txt: "Suck my dick. ",
-            e: "",
-            
-            l: "",
-            dCallback: "",
-            i: "d_4_4"
-        },
+        //{
+        //    txt: "Suck my dick. ",
+        //    e: "",
+        //    l: "",
+        //    u: true,
+        //    dCallback: "",
+        //    i: "d_4_4"
+        //},
     ]);
     //truth = g.shuffleArray(truth);
     myTruth = g.shuffleArray(myTruth);
@@ -647,17 +763,31 @@ room23.main = function () {
         eva: 0,
         lola: 0,
         gamephase: 0,
+        myphase: -1,
+        lolaWine: 3,
+        evaWine: 3,
+        meWine: 3,
         speaker: "lola",
+        theirTurn: false,
         holder: "",
         gamepointer: 0,
         pantyBoy: false,
         truths: truths,
         dares: dares,
         myTruth: myTruth,
-        reply: ""
+        myDare: myDare,
+        reply: "",
+        reuseCounter: 0
     };
+    room23.chatcatch("mestrip");//set myphase
+
     room23.chatcatch("evasit lolatalk");
-    chat(0, 23);
+    if (sc.taskGetStep("eva", "tord") === 0) {
+        chat(0, 23);
+    }
+    else {
+        chat(38, 23);
+    }
 };
 
 room23.btnclick = function (name) {
@@ -710,18 +840,154 @@ room23.btnclick = function (name) {
             g.internal.gamepointer = parseInt(name.replace("d_", ""));
             chat(500, 23);
             break;
+        case "theirTurn":
+            nav.killbutton("theirTurn");
+            room23.chatcatch("resetbg");
+            room23.chatcatch("theirTurn");
+            break;
+        case "meDogtreat":
+            nav.killbutton("meDogtreat");
+            chat(109, 23);
+            break;
+        case "melicklola":
+            nav.kill();
+            switch (g.internal.reuseCounter) {
+                case 0: nav.bg("24_spinTheBottle/melicklola1.jpg"); nav.next("melicklola"); break;
+                case 1: nav.bg("24_spinTheBottle/melicklola2.jpg"); break;
+                case 2: nav.bg("24_spinTheBottle/melicklola3.jpg"); break;
+                case 3: room23.chatcatch("lolalike resetbg lolatalk evasit"); chat(111, 23); break;
+            }
+            g.internal.reuseCounter++;
+            break;
+        case "melickbutthole":
+            nav.kill();
+            if (g.internal.reuseCounter === 0) {
+                nav.bg("24_spinTheBottle/melickbutthole.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "melickbutthole",
+                    "left": 987,
+                    "top": 428,
+                    "width": 152,
+                    "height": 152,
+                    "image": "24_spinTheBottle/melickbutthole.png"
+                }, 23);
+            }
+            else {
+                nav.kill();
+                nav.bg("24_spinTheBottle/melickbutthole1.jpg");
+                chat(113, 23);
+            }
+
+            g.internal.reuseCounter++;
+            break;
         default:
             break;
     }
 };
 
 room23.chatcatch = function (callback) {
-    console.log(callback);
     var cArray = callback.split(" ");
     for (chatCatchLoop = 0; chatCatchLoop < cArray.length; chatCatchLoop++) {
         switch (cArray[chatCatchLoop]) {
             case "resetbg":
                 nav.bg("24_spinTheBottle/013_spinBG.jpg");
+                break;
+            case "killbutton":
+                nav.killbutton("killbutton");
+                break;
+            case "myDare":
+                if (g.internal.gamephase > g.internal.myphase) {
+                    if (g.internal.speaker === "lola")
+                        room23.chatcatch("lolatalk evasit");
+                    else
+                        room23.chatcatch("evatalk lolasit");
+                    chat(701, 23);
+                }
+                else {
+                    if (g.internal.speaker === "lola")
+                        room23.chatcatch("lolatalk evasit");
+                    else
+                        room23.chatcatch("evatalk lolasit");
+                    chat(702, 23);
+                }
+                break;
+            case "killme":
+                zcl.kill();
+                break;
+            case "mestrip":
+                switch (g.internal.myphase) {
+                    case -1:
+                        //set initial phase
+                        break;
+                    case 0:
+                        cl.c.shirt = null;
+                        cl.display();
+                        if (cl.c.bra !== null) {
+                            sc.modSecret("eva", 100);
+                            sc.modSecret("lola", 100);
+                            room23.chatcatch("lolasad evagiggle");
+                            chat(84, 23);
+                        }
+                        else {
+                            nav.kill();
+                            nav.bg("24_spinTheBottle/meShirt.jpg");
+                            chat(81, 23);
+                        }
+                        break;
+                    case 1:
+                        
+                        cl.c.socks = null;
+                        cl.c.shoes = null;
+                        cl.c.pants = null;
+                        cl.display();
+                        if (cl.getEntry("panties", cl.c.panties).sex === "f") {
+                            sc.modSecret("eva", 100);
+                            sc.modSecret("lola", 100);
+                            room23.chatcatch("lolasad evagiggle");
+                            chat(85, 23);
+                        }
+                        else {
+                            nav.kill();
+                            nav.bg("24_spinTheBottle/mePants.jpg");
+                            chat(82, 23);
+                        }
+                        break;
+                    case 2:
+                        cl.c.panties = null;
+                        cl.display();
+                        if (cl.c.chastity !== null) {
+                            sc.modSecret("eva", 100);
+                            sc.modSecret("lola", 100);
+                            room23.chatcatch("lolasad evagiggle");
+                            chat(86, 23);
+                        }
+                        else {
+                            nav.kill();
+                            nav.bg("24_spinTheBottle/mebg.jpg");
+                            zcl.displayMain(-600, 500, .3, "", false);
+                            chat(87, 23);
+                        }
+                        break;
+                }
+                if (cl.c.shirt !== null) {
+                    g.internal.myphase = 0;
+                }
+                else if (cl.c.pants !== null) {
+                    g.internal.myphase = 1;
+                }
+                else if (cl.c.panties !== null) {
+                    g.internal.myphase = 2;
+                }
+                else {
+                    g.internal.myphase = 3;
+                }
+                break;
+            case "myTruth":
+                chat(700, 23);
+                break;
+            case "secretOut":
+
                 break;
             case "evatalk":
                 nav.killbutton("eva");
@@ -734,6 +1000,7 @@ room23.chatcatch = function (callback) {
                     "height": 1036,
                     "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_t.png" 
                 }, 23);
+                room24.btnclick("evaWine");
                 break;
             case "lolatalk":
                 nav.killbutton("lola");
@@ -746,6 +1013,7 @@ room23.chatcatch = function (callback) {
                     "height": 1071,
                     "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_t.png" 
                 }, 23);
+                room24.btnclick("lolaWine");
                 break;
             case "evasit":
                 nav.killbutton("eva");
@@ -758,7 +1026,53 @@ room23.chatcatch = function (callback) {
                     "height": 1036,
                     "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_nt.png"
                 }, 23);
+                room24.btnclick("evaWine");
                 break;
+            case "evascared":
+                nav.killbutton("eva");
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 300,
+                    "top": 44,
+                    "width": 711,
+                    "height": 1036,
+                    "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_nt.png"
+                }, 23);
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 300,
+                    "top": 44,
+                    "width": 711,
+                    "height": 1036,
+                    "image": "24_spinTheBottle/sit_eva_scared.png"
+                }, 23);
+                room24.btnclick("evaWine");
+                break;
+            case "evagiggle":
+                nav.killbutton("eva");
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 300,
+                    "top": 44,
+                    "width": 711,
+                    "height": 1036,
+                    "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_nt.png"
+                }, 23);
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 300,
+                    "top": 44,
+                    "width": 711,
+                    "height": 1036,
+                    "image": "24_spinTheBottle/sit_eva_giggle.png"
+                }, 23);
+                room24.btnclick("evaWine");
+                break;
+                
             case "lolasit":
                 nav.killbutton("lola");
                 nav.button({
@@ -770,6 +1084,75 @@ room23.chatcatch = function (callback) {
                     "height": 1071,
                     "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_nt.png"
                 }, 23);
+                room24.btnclick("lolaWine");
+                break;
+            case "lolahappy":
+                nav.killbutton("lola");
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1192,
+                    "top": 0,
+                    "width": 728,
+                    "height": 1071,
+                    "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_nt.png"
+                }, 23);
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1192,
+                    "top": 0,
+                    "width": 728,
+                    "height": 1071,
+                    "image": "24_spinTheBottle/sit_lola_happy.png"
+                }, 23);
+                room24.btnclick("lolaWine");
+                break;
+            case "lolasad":
+                nav.killbutton("lola");
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1192,
+                    "top": 0,
+                    "width": 728,
+                    "height": 1071,
+                    "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_nt.png"
+                }, 23);
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1192,
+                    "top": 0,
+                    "width": 728,
+                    "height": 1071,
+                    "image": "24_spinTheBottle/sit_lola_sad.png"
+                }, 23);
+                room24.btnclick("lolaWine");
+                break;
+            case "lolaWine":
+                nav.killbutton("lolaWine");
+                nav.button({
+                    "type": "img",
+                    "name": "lolaWine",
+                    "left": 1796,
+                    "top": 871,
+                    "width": 75,
+                    "height": 200,
+                    "image": "24_spinTheBottle/wine_" + g.internal.lolaWine + ".png"
+                }, 13);
+                break;
+            case "evaWine":
+                nav.killbutton("evaWine");
+                nav.button({
+                    "type": "img",
+                    "name": "evaWine",
+                    "left": 1074,
+                    "top": 871,
+                    "width": 90,
+                    "height": 191,
+                    "image": "24_spinTheBottle/wine_" + g.internal.evaWine + ".png"
+                }, 13);
                 break;
             case "bothkiss":
                 nav.killbutton("lola");
@@ -791,27 +1174,38 @@ room23.chatcatch = function (callback) {
                     chat(6, 23);
                 break;
             case "lolaTorD":
-                chat(8, 23);
-                //if (Math.floor(Math.random() * 2) === 0)
-                //    chat(7, 23);
-                //else
-                //    chat(8, 23);
+                if (Math.floor(Math.random() * 2) === 0)
+                    chat(7, 23);
+                else
+                    chat(8, 23);
                 break;
             case "evaTruth":
                 g.internal.speaker = "eva";
-                room23.chatcatch("displayTruths");
+                if (g.internal.theirTurn)
+                    chat(850, 23);
+                else
+                    room23.chatcatch("displayTruths");
                 break;
             case "lolaTruth":
                 g.internal.speaker = "lola";
-                room23.chatcatch("displayTruths");
+                if (g.internal.theirTurn)
+                    chat(800, 23);
+                else
+                    room23.chatcatch("displayTruths");
                 break;
             case "lolaDare":
                 g.internal.speaker = "lola";
-                room23.chatcatch("displayDares");
+                if (g.internal.theirTurn)
+                    chat(802, 23);
+                else
+                    room23.chatcatch("displayDares");
                 break;
             case "evaDare":
                 g.internal.speaker = "eva";
-                room23.chatcatch("displayDares");
+                if (g.internal.theirTurn)
+                    chat(851, 23);
+                else
+                    room23.chatcatch("displayDares");
                 break;
             case "evatord":
             case "lolatord":
@@ -849,11 +1243,14 @@ room23.chatcatch = function (callback) {
                 }
                 break;
             case "theirTurn":
+                g.internal.theirTurn = true;
                 room23.chatcatch(g.internal.speaker === "lola" ? "lolatalk evasit" : "lolasit evatalk");
                 if (Math.floor(Math.random() * 2) === 0) { //me
+                    g.internal.theirTurn = false;
                     chat(25, 23);
                 }
                 else {//other
+                    g.internal.theirTurn = true;
                     if (g.internal.speaker === "lola")
                         chat(11, 23);
                     else
@@ -887,12 +1284,89 @@ room23.chatcatch = function (callback) {
                     "height": 1080,
                     "image": "24_spinTheBottle/dareKissMe_" + kissMeLevel + "_" + g.internal.speaker + ".png"
                 }, 23);
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
                 chat(26, 23);
+                break;
+            case "bjface":
+                nav.killall();
+                
+                if (g.internal.speaker === "lola") {
+                    nav.bg("24_spinTheBottle/darebjface_lola.jpg");
+                    chat(52, 23);
+                }
+                else {
+                    nav.bg("24_spinTheBottle/darebjface_eva.jpg");
+                    chat(53, 23);
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                
                 break;
             case "dareSpin1":
                 nav.killall();
                 nav.bg("24_spinTheBottle/dareSpin_" + g.internal.speaker + ".jpg");
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
                 chat(28, 23);
+                break;
+            case "dareSmellArmpits":
+                if (g.internal.speaker === "eva") {
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name":"eva",
+                        "left": 198,
+                        "top": 0,
+                        "width": 916,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/pitsniff_eva.png"
+                    }, 23);
+                }
+                else {
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1040,
+                        "top": 0,
+                        "width": 880,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/pitsniff_lola.png"
+                    }, 23);
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                chat(39, 23);
+                break;
+            case "dareDrinkWine":
+                if (g.internal.speaker === "lola") {
+                    g.internal.lolaWine--;
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1192,
+                        "top": 0,
+                        "width": 728,
+                        "height": 1071,
+                        "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_drink.png"
+                    }, 13);
+                    g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                    nav.killbutton("lolaWine");
+                }
+                else {
+                    g.internal.evaWine--;
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 300,
+                        "top": 44,
+                        "width": 711,
+                        "height": 1036,
+                        "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_drink.png"
+                    }, 13);
+                    nav.killbutton("evaWine");
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                chat(40, 23);
                 break;
             case "dareSpin2":
                 nav.bg("24_spinTheBottle/dareSpin2_" + g.internal.speaker + ".jpg");
@@ -900,36 +1374,264 @@ room23.chatcatch = function (callback) {
             case "dareKissHand":
                 nav.killall();
                 nav.bg("24_spinTheBottle/dareKissHand_" + g.internal.speaker + ".jpg");
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
                 chat(27, 23);
                 break;
-            case "dareTopless":
-                //if statement
-                g.internal.gamephase = 1;
+            case "dareTalent":
                 if (g.internal.speaker === "lola") {
-                    g.internal.speaker = "eva";
-                    room23.chatcatch("lolatalk");
-                    chat(30, 23);
+                    nav.killbutton("eva");
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 936,
+                        "top": 348,
+                        "width": 984,
+                        "height": 732,
+                        "image": "24_spinTheBottle/talent_lola.png"
+                    }, 13);
+                    room23.chatcatch("lolaWine");
+                    room23.chatcatch("evatalk");
+                    chat(42, 23);
                 }
                 else {
-                    g.internal.speaker = "lola";
-                    room23.chatcatch("evatalk");
-                    chat(31, 23);
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 450,
+                        "top": 0,
+                        "width": 648,
+                        "height": 732,
+                        "image": "24_spinTheBottle/talent_eva.png"
+                    }, 13);
+                    room23.chatcatch("evaWin");
+                    chat(42, 23);
                 }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                break;
+            case "dareTopless":
+                if (sc.getLevel(g.internal.speaker) > 3) {
+                    g.internal.gamephase = 1;
+                    if (g.internal.speaker === "lola") {
+                        g.internal.speaker = "eva";
+                        room23.chatcatch("lolatalk");
+                        chat(30, 23);
+                    }
+                    else {
+                        g.internal.speaker = "lola";
+                        room23.chatcatch("evatalk");
+                        chat(31, 23);
+                    }
+                }
+                else {
+                    if (g.internal.speaker === "lola")
+                        chat(44, 23);
+                    else
+                        chat(45, 23);
+                }
+                break;
+            case "dareTopless2":
+                if (sc.getLevel(g.internal.speaker) > 4) {
+                    g.internal.gamephase = 2;
+                    if (g.internal.speaker === "lola") {
+                        g.internal.speaker = "eva";
+                        room23.chatcatch("lolatalk");
+                        chat(54, 23);
+                    }
+                    else {
+                        g.internal.speaker = "lola";
+                        room23.chatcatch("evatalk");
+                        chat(55, 23);
+                    }
+                }
+                else {
+                    if (g.internal.speaker === "lola")
+                        chat(44, 23);
+                    else
+                        chat(45, 23);
+                }
+                break;
+            case "dareMast":
+                if (g.internal.speaker === "lola") {
+                    nav.killbutton("lola");
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 877,
+                        "top": 0,
+                        "width": 1043,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_mast.png"
+                    }, 13);
+                    if (g.internal.gamephase === 2)
+                        chat(58, 23);
+                    else
+                        chat(59, 23);
+                }
+                else {
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 177,
+                        "top": 57,
+                        "width": 1065,
+                        "height": 1023,
+                        "image": "24_spinTheBottle/sit_eva_" + g.internal.gamephase + "_mast.png"
+                    }, 13);
+                    if (g.internal.gamephase === 2)
+                        chat(60, 23);
+                    else
+                        chat(61, 23);
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                break;
+            case "dareButthole":
+                nav.kill();
+                nav.bg("24_spinTheBottle/" + g.internal.speaker + "_butthole.jpg");
+                if (g.internal.speaker === "eva")
+                    chat(77, 23);
+                else
+                    chat(78, 23);
+                break;
+            case "dareSitOnFace":
+                nav.killbutton("eva");
+                nav.killbutton("lola");
+
+                nav.button({
+                    "type": "img",
+                    "name": "eva",
+                    "left": 573,
+                    "top": 0,
+                    "width": 1196,
+                    "height": 1080,
+                    "image": "24_spinTheBottle/" + g.internal.speaker + "_sitFace.png"
+                }, 13);
+                if (g.internal.speaker === "eva")
+                    chat(75, 23);
+                else
+                    chat(76, 23);
+                break;
+            case "dareButtholeFinger":
+                nav.killbutton("eva");
+                nav.killbutton("lola");
+                nav.button({
+                    "type": "img",
+                    "name": "eva",
+                    "left": 650,
+                    "top": 3,
+                    "width": 1156,
+                    "height": 1077,
+                    "image": "24_spinTheBottle/" + g.internal.speaker + "_fingerbutt.png"
+                }, 13);
+                if (g.internal.speaker === "eva")
+                    chat(73, 23);
+                else
+                    chat(74, 23);
+                break;
+            
+            case "dareLickCock":
+                if (g.internal.speaker === "lola") {
+                    room23.chatcatch("evagiggle lolahappy");
+                    chat(79, 23);
+                }
+                else {
+                    room23.chatcatch("evascared lolasad");
+                    chat(80, 23);
+                }
+                nav.button({
+                    "type": "img",
+                    "name": g.internal.speaker,
+                    "left": 0,
+                    "top": 599,
+                    "width": 1920,
+                    "height": 481,
+                    "image": "24_spinTheBottle/mydick.png"
+                }, 23);
+                break;
+            case "dareWedgie":
+                nav.killall();
+                nav.bg("24_spinTheBottle/dareWedge_" + g.internal.speaker + "0.jpg");
+                chat(62, 23);
+                break;
+            case "darePantiesOff":
+                g.internal.gamephase = 3;
+                if (g.internal.speaker === "eva") {
+                    nav.killbutton("eva");
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 720,
+                        "top": 0,
+                        "width": 316,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/013_evaRemovePanties.png"
+                    }, 23);
+                    chat(64, 23);
+                }
+                else {
+                    nav.killbutton("lola"); 
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 1392,
+                        "top": 0,
+                        "width": 316,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/013_lolaRemovePanties.png"
+                    }, 23);
+                    chat(65, 23);
+                }
+                break;
+            case "dareMotoboat":
+                nav.killall();
+                nav.bg("24_spinTheBottle/daremotorboat.jpg");
+                if (g.internal.speaker === "lola") {
+                    chat(48, 23);
+                }
+                else {
+                    chat(49, 23);
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                break;
+            case "dareLickNipple":
+                nav.killall();
+                if (g.internal.speaker === "lola") {
+                    nav.bg("24_spinTheBottle/darelick_lola.jpg");
+                    chat(46, 23);
+                }
+                else {
+                    nav.bg("24_spinTheBottle/darelick_eva.jpg");
+                    chat(47, 23);
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                break;
+            case "dareClothesPin":
+                nav.killall();
+                if (g.internal.speaker === "lola") {
+                    nav.bg("24_spinTheBottle/darepin_lola.jpg");
+                    chat(50, 23);
+                }
+                else {
+                    nav.bg("24_spinTheBottle/darepin_eva.jpg");
+                    chat(51, 23);
+                }
+                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
                 break;
             case "askMe":
                 chat(25, 23);
                 break;
-            case "myTruth":
-                chat(700, 23);
-                break;
             case "lolalike":
+                //gamephase
                 sc.modLevel("lola", 5, 5);
                 break;
             case "evalike":
+                //gamephase
                 sc.modLevel("eva", 5, 5);
                 break;
             case "lolahate":
-                sc.modLevel("lola", -5, 5);
+                sc.modLevel("lola", -15, 5);
                 break;
             case "evahate":
                 sc.modLevel("eva", -5, 5);
@@ -944,6 +1646,159 @@ room23.chatcatch = function (callback) {
             case "arousal":
                 gv.mod("arousal", 10);
                 break;
+            case "dareWedgie1":
+                nav.bg("24_spinTheBottle/dareWedge_" + g.internal.speaker + ".jpg");
+                break;
+            case "lickDick":
+                nav.kill();
+                nav.bg("24_spinTheBottle/" + g.internal.speaker + "_lick.gif");
+                nav.next("theirTurn");
+                break;
+            case "medoggytongue":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meBeg.jpg");
+                chat(88, 23);
+                break;
+            case "medoggyroll":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meRollover.jpg");
+                chat(89, 23);
+                break;
+            case "mejump":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meJump.jpg");
+                chat(90, 23);
+                break;
+            case "mepushup":
+                nav.kill();
+                nav.bg("24_spinTheBottle/mepushup.jpg");
+                chat(91, 23);
+                break;
+            case "meflex":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meflex.jpg");
+                if (g.internal.speaker === "eva")
+                    chat(92, 23);
+                else
+                    chat(93, 23);
+                break;
+            case "meairguitare":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meairguitare.jpg");
+                chat(94, 23);
+                break;
+            case "meNipplelick":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meNipplelick.jpg");
+                chat(95, 23);
+                break;
+            case "meSuckToes":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meSuckToes1.jpg");
+                chat(97, 23);
+                break;
+            case "meSuckToes2":
+                nav.bg("24_spinTheBottle/meSuckToes2.jpg");
+                break;
+            case "meDrink":
+                nav.button({
+                    "type": "img",
+                    "name": "medrink",
+                    "left": 364,
+                    "top": 40,
+                    "width": 1297,
+                    "height": 1040,
+                    "image": "24_spinTheBottle/meDrink.png"
+                }, 23);
+                chat(502, 23);
+                break;
+            case "mebow":
+                nav.kill();
+                nav.bg("24_spinTheBottle/mebow.jpg");
+                chat(99, 23);
+                break;
+            case "meStripdance":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meStripdance.jpg");
+                break;
+            case "mepanties":
+                levels.mod("xdress", 25, 999);
+                nav.bg("24_spinTheBottle/mepanties.jpg");
+                cl.c.panties = "w";
+                cl.display();
+                break;
+            case "meButttouch":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meButttouch.jpg");
+                break;
+            case "meHeli":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meHeli.jpg");
+                break;
+            case "meDogtreat":
+                nav.kill();
+                nav.bg("24_spinTheBottle/meDogtreat.jpg");
+                nav.button({
+                    "type": "tongue",
+                    "name": "meDogtreat",
+                    "left": 925,
+                    "top": 599,
+                    "width": 124,
+                    "height": 136,
+                    "image": "24_spinTheBottle/meDogtreat.png"
+                }, 23);
+                break;
+            case "melicklola":
+                nav.kill();
+                g.internal.reuseCounter = 0;
+                nav.bg("24_spinTheBottle/melicklola.jpg");
+                nav.button({
+                    "type": "tongue",
+                    "name": "melicklola",
+                    "left": 1070,
+                    "top": 736,
+                    "width": 154,
+                    "height": 154,
+                    "image": "24_spinTheBottle/melicklola.png"
+                }, 23);
+                break;
+            case "melickbutthole":
+                g.internal.reuseCounter = 0;
+                nav.killbutton("eva");
+                nav.button({
+                    "type": "tongue",
+                    "name": "melickbutthole",
+                    "left": 214,
+                    "top": 135,
+                    "width": 943,
+                    "height": 945,
+                    "image": "24_spinTheBottle/sit_eva_butthole.png"
+                }, 23);
+                break;
+            case "melickbutthole2":
+                nav.kill();
+                nav.bg("24_spinTheBottle/melickbutthole2.jpg");
+                break;
+            case "melickbutthole3":
+                nav.bg("24_spinTheBottle/melickbutthole3");
+                break;
+            case "roomblack":
+                nav.killall();
+                nav.bg("999_phone/black.jpg");
+                break;
+            case "mequitPassout":
+                g.pass = 7;
+                char.room(28);
+                break;
+            case "endGame":
+                if (g.internal.lolaWine < 2)
+                    daily.set("loladrunk");
+                if (g.internal.evaWine < 2)
+                    daily.set("evadrunk");
+
+                char.settime(22, 17);
+                char.room(11);
+                break;
             default:
                 console.log("not found: " + cArray[i]);
                 break;
@@ -952,7 +1807,18 @@ room23.chatcatch = function (callback) {
 };
 
 room23.chat = function (chatID) {
-    if (chatID === 999) {
+    if (chatID === 1000) {
+        return {
+            chatID: 1000,
+            speaker: g.internal.speaker,
+            text: "That's too much. I don't feel comfortable removing that. I think that's enough " +
+                "for today. ",
+            button: [
+                { chatID: -1, text: "Ok. I guess that's the game. ", callback: "endGame" }
+            ]
+        };
+    }
+    else if (chatID === 999) {
         return {
             chatID: 999,
             speaker: "me",
@@ -985,7 +1851,7 @@ room23.chat = function (chatID) {
                 a: "Oh haha, you got me. I forgot it at school when I borrowed it. "
             },
             {
-                q: "When I asked why is my pillow wet and you said you didn't know, what it becuase you were humping it?",
+                q: "When I asked why is my pillow wet and you said you didn't know, what it because you were humping it?",
                 a: "Whaaaaa. You pillow is so much firmer than mine. I was going to change the pillow case, but you came in and started yelling at me. "
             },
             {
@@ -1046,8 +1912,6 @@ room23.chat = function (chatID) {
             },
         ];
         var laske = lqlist[Math.floor(Math.random() * lqlist.length)];
-        console.log(laske);
-        console.log("laske");
         var c800 = {
             chatID: 800,
             speaker: g.internal.speaker,
@@ -1067,11 +1931,40 @@ room23.chat = function (chatID) {
             text: g.internal.reply,
             button: [
                 {
-                    chatID: -1, text: "...", callback:
-                        "askMe"
+                    chatID: -1, text: "...", callback: "askMe"
                 }
             ]
         };
+    }
+    else if (chatID === 802) { //eva dares lola
+        g.internal.gamepointer = -1;
+        for (i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
+            if (g.internal.dares[g.internal.gamephase][i].u !== null) {
+                g.internal.gamepointer = i;
+                break;
+            }
+        }
+        if (g.internal.gamepointer < 0) {
+            return {
+                chatID: 802,
+                speaker: g.internal.speaker,
+                text: "I can't think of anything. Maybe I'm just tired. Let's get some sleep. ",
+                button: [
+                    { chatID: -1, text: "Awwww. ok. ", callback: "theyquit" }
+                ]
+            };
+        }
+        else {
+            g.internal.speaker = "eva";
+            return {
+                chatID: 802,
+                speaker: "lola",
+                text: sc.n("eva") + ", " + g.internal.dares[g.internal.gamephase][g.internal.gamepointer].u,
+                button: [
+                    { chatID: -1, text: "...", callback: g.internal.dares[g.internal.gamephase][g.internal.gamepointer].dCallback }
+                ]
+            };
+        }
     }
     else if (chatID === 850) { //eva asks lola
         var eqlist = [
@@ -1153,6 +2046,36 @@ room23.chat = function (chatID) {
         g.internal.reply = easkl.a;
         return c801;
     }
+    else if (chatID === 851) { //eva dares lola
+        g.internal.gamepointer = -1;
+        for (i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
+            if (g.internal.dares[g.internal.gamephase][i].u !== null) {
+                g.internal.gamepointer = i;
+                break;
+            }
+        }
+        if (g.internal.gamepointer < 0) {
+            return {
+                chatID: 851,
+                speaker: g.internal.speaker,
+                text: "I can't think of anything. Maybe I'm just tired. Let's get some sleep. ",
+                button: [
+                    { chatID: -1, text: "Awwww. ok. ", callback: "theyquit" }
+                ]
+            };
+        }
+        else {
+            g.internal.speaker = "lola";
+            return {
+                chatID: 851,
+                speaker: "eva",
+                text: sc.n("lola") + ", " + g.internal.dares[g.internal.gamephase][g.internal.gamepointer].u,
+                button: [
+                    { chatID: -1, text: "...", callback: g.internal.dares[g.internal.gamephase][g.internal.gamepointer].dCallback }
+                ]
+            };
+        }
+    }
     else if (chatID === 700) { //ask me truth either girl
         var askMeTruth = {
             chatID: 700,
@@ -1162,6 +2085,76 @@ room23.chat = function (chatID) {
         }; 
         g.internal.myTruth.shift();
         return askMeTruth;
+    }
+    else if (chatID === 701) {//strip dare
+        var stripDare = [
+            {
+                e: "Take your shirt off. Show us your man nipples. ",
+                l: "I dare you to take your shirt off and show off your chest!",
+                b: [{ chatID: -1, text: "Awww Really? [Take Shirt off]", callback: "mestrip" },
+                    { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
+            },
+            {
+                e: "If we're going to sit here in our panties, so are you. Stip off those pants. ",
+                l: "Take your pants off. Show me your legs! ",
+                b: [{ chatID: -1, text: "Awww yea! [Take pants off]", callback: "mestrip" },
+                { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
+            },
+            {
+                e: "Take off your underwear and show us your dick. ",
+                l: "Oh my. Hehehe. Uhhhh. Stip it off mister. ",
+                b: [{ chatID: -1, text: "Awww yea! [Take your panties off]", callback: "mestrip" },
+                { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
+            },
+        ]
+        return  {
+            chatID: 701,
+            speaker: g.internal.speaker,
+            text: g.internal.speaker === "eva" ? stripDare[g.internal.myphase].e : stripDare[g.internal.myphase].l,
+            button: stripDare[g.internal.myphase].b
+        }; 
+    }
+    else if (chatID === 702) {
+        var darepointer = null;
+        var mp = g.internal.myphase;
+        for (var gdare = 0; gdare < g.internal.myDare[mp].length; gdare++) {
+            if (g.internal.speaker === "eva") {
+                if (g.internal.myDare[mp][gdare].e !== null) {
+                    darepointer = gdare;
+                    break;
+                }
+            }
+            else {
+                if (g.internal.myDare[mp][gdare].l !== null) {
+                    darepointer = gdare;
+                    break;
+                }
+            }
+        }
+        if (darepointer === null) {
+            return {
+                chatID: 702,
+                speaker: g.internal.speaker,
+                text: "I can't think of anything. Maybe I'm just tired. Let's get some sleep. ",
+                button: [
+                    { chatID: -1, text: "Awwww. ok. ", callback: "theyquit" }
+                ]
+            }; 
+        }
+        else {
+            var mblist = g.internal.myDare[mp][darepointer].b;
+            mblist.push({ chatID: -1, text: "I'm not doing that. That's enough for tonight.", callback: "mequit" });
+            var mbtxt = g.internal.speaker === "eva" ? g.internal.myDare[mp][darepointer].e : g.internal.myDare[mp][darepointer].l;
+
+            g.internal.myDare[mp].splice(darepointer, 1);
+
+            return {
+                chatID: 702,
+                speaker: g.internal.speaker,
+                text: mbtxt,
+                button: mblist
+            }; 
+        }
     }
     else if (chatID === 500) {
         var otherSpeaker = g.internal.speaker === "lola" ? sc.n("eva") : sc.n("lola");
@@ -1184,12 +2177,46 @@ room23.chat = function (chatID) {
             ]
         }; 
     }
+    else if (chatID === 502) {
+        
+        if (g.internal.meWine === 0) {
+            return {
+                chatID: 0,
+                speaker: "me",
+                text: "I think I'm a bit too drunk. The room is really spinning.....",
+                button: [
+                    { chatID: 116, text: "...", callback: "roomblack" }
+                ]
+            };
+        }
+        else {
+            var meWineChat;
+            if (g.internal.meWine === 3)
+                meWineChat = "Yummy!";
+            else if (g.internal.meWine === 2)
+                meWineChat = "Oh wow. I'm starting to feel it.";
+            else if (g.internal.meWine === 1)
+                meWineChat = "I'm really feeling a bit drunk. ";
+
+            g.internal.meWine--;
+            return {
+                chatID: 0,
+                speaker: "me",
+                text: meWineChat,
+                button: [
+                    { chatID: -1, text: "...", callback: "killbutton theirTurn" }
+                ]
+            };
+        }
+        
+    }
     else {
         var cArray = [
             {
                 chatID: 0,
                 speaker: "lola",
-                text: "I'm so excited, I hope you don't make us do anything perverted... *wink* ",
+                text: "I'm so excited. I've never played Truth or Dare before, but I've heard so " +
+                    "much about it. I hope you don't make us do anything perverted... *wink* ",
                 button: [
                     { chatID: 1, text: "...", callback: "lolasit evatalk" }
                 ]
@@ -1207,7 +2234,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "Hahah you better creep-o!",
                 button: [
-                    { chatID: -1, text: "So I'll start this game!", callback: "evasit evatalk" }
+                    { chatID: -1, text: "So I'll start this game!", callback: "evasit lolaSit" }
                 ]
             },
             {
@@ -1392,8 +2419,8 @@ room23.chat = function (chatID) {
                 speaker: g.internal.speaker,
                 text: sc.n("me") + " truth or dare? ",
                 button: [
-                    { chatID: -1, text: "Truth", callback: "myTruth" },
                     { chatID: -1, text: "Dare", callback: "myDare" },
+                    { chatID: -1, text: "Truth", callback: "myTruth" },
                 ]
             },
             {
@@ -1460,7 +2487,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "Dare me!",
                 button: [
-                    { chatID: 34, text: "...", callback: "" },
+                    { chatID: (g.internal.gamephase === 1 ? 34 : 56), text: "...", callback: "" },
                 ]
             },
             {
@@ -1484,7 +2511,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "Dare me!",
                 button: [
-                    { chatID: 37, text: "...", callback: "" },
+                    { chatID: (g.internal.gamephase === 1 ? 37 : 57) , text: "...", callback: "" },
                 ]
             },
             {
@@ -1495,7 +2522,658 @@ room23.chat = function (chatID) {
                     { chatID: 25, text: "...", callback: "evatalk lolasit arousal" },
                 ]
             },
-        ];
+            {
+                chatID: 38,
+                speaker: "me",
+                text: "Ok! Since I asked for the game I'll start!  ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: g.internal.speaker,
+                text: "Ewwww. I need a shower. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: g.internal.speaker,
+                text: "*glug* ",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "eva",
+                text: "That's how she get's all the guys. With her weird random humor. ",
+                button: [
+                    { chatID: 43, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "eva",
+                text: "You all can hold your applause. I know how awesome I am! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "lola",
+                text: "Oh " + sc.n("eva") + ". You're just jealous of my flexability. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "lola",
+                text: "Oh my. I hate to be a big ol' chicken, but I don't think I feel comfortable " +
+                    "doing that right now. I think it's time for bed. ",
+                button: [
+                    { chatID: -1, text: "Oh. ok. [Need level 3]", callback: "endGame" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "eva",
+                text: "Oh so that's why you want to play truth or dare? To look at my small, but " +
+                    "perky tits? Pervert. We're going to bed! ",
+                button: [
+                    { chatID: -1, text: "Oh. ok. [Need level 3]", callback: "endGame" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "eva",
+                text: "Did you just moan while licking my nipple? You really need to get laid! ",
+                button: [
+                    { chatID: -1, text: "hahaha", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "lola",
+                text: "Ooooo. That makes me feel kinda funny.  ",
+                button: [
+                    { chatID: -1, text: "hahaha", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "lola",
+                text: "Oh hahaha. You look so silly with your face burried in my chest.   ",
+                button: [
+                    { chatID: -1, text: "blub blub blub blub", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "eva",
+                text: "Ok, ok. That's enough. My nipples are sensative. ",
+                button: [
+                    { chatID: -1, text: "Bwa hahaha", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "lola",
+                text: "Ow ow ow. Poop! Ow. I need to take this off it hurts too much..",
+                button: [
+                    { chatID: -1, text: "Oh sure. Yes. You can take them off. ", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "eva",
+                text: "FUCK ME IN THE ASS! This hurts like a mother fucker! That's enough. " +
+                    "My nipples! I'm taking these off!  ",
+                button: [
+                    { chatID: -1, text: "Hahaha ok", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "lola",
+                text: "I feel so silly holding my mouth like this. ",
+                button: [
+                    { chatID: -1, text: "But you do look sexy! ", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "eva",
+                text: "Awwww! I have the best BJ face here! ",
+                button: [
+                    { chatID: -1, text: "Yes you do", callback: "resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "lola",
+                text: "Hehehe, I feel funny sitting here in just my panties. ",
+                button: [
+                    { chatID: 32, text: "Your swimming has given you great legs. ", callback: "lolalike" },
+                    { chatID: 32, text: "Cute panties. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "eva",
+                text: "I hope my panties don't shift and my pussy falls out. ",
+                button: [
+                    { chatID: 35, text: "I hope it does. ", callback: "evalike" },
+                    { chatID: 35, text: "It won't", callback: "" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "lola",
+                text: "I dare you take your pants off too! Show him your cute panties! ",
+                button: [
+                    { chatID: 25, text: "...", callback: "evatalk lolasit arousal" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "eva",
+                text: "Take your pants off! I know you want him to see you naked! ",
+                button: [
+                    { chatID: 25, text: "...", callback: "evatalk lolasit arousal" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "lola",
+                text: "oh hahaha. My panties are getting wet! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "lola",
+                text: "Hehehe. My little clitty is starting to get hard! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "eva",
+                text: "I bet you want to see what's behind these panties. You'll have to earn " +
+                    "that. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "eva",
+                text: "This is the greatest day of your perverted life. Seeing a hot girl playing " +
+                    "with her pussy. I wouldn't be suprised if you started jacking off right now. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: g.internal.speaker === "eva" ? "lola": "eva",
+                text: "Stand up. I'm going to give you a real wedgie! ",
+                button: [
+                    { chatID: 63, text: "...", callback: "dareWedgie1" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: g.internal.speaker,
+                text: "OOOoooofffff! I can taste my panties. That really gets into the folds! ",
+                button: [
+                    { chatID: 63, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "eva",
+                text: "Usually I only take my panties off for sexy boys. ",
+                button: [
+                    { chatID: 71, text: "Hey! I'm sexy! ", callback: "evatalk" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "lola",
+                text: "Hehehe. I feel so dirty taking my panties off in front of everyone.",
+                button: [
+                    { chatID: 66, text: "...", callback: "lolatalk" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "lola",
+                text: "Since we always do everything together, there's no way I'm sitting here naked " +
+                    "by myself. " + sc.n("eva") + " you have to be naked too! ",
+                button: [
+                    { chatID: 67, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "eva",
+                text: "You didn't ask me truth or dare! How did you know I wouldn't say truth? ",
+                button: [
+                    { chatID: 68, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "lola",
+                text: "Would you say truth? ",
+                button: [
+                    { chatID: 69, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "eva",
+                text: "No.",
+                button: [
+                    { chatID: 70, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "lola",
+                text: "Then strip slut! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "eva",
+                text: "Haha! Not sexy. Maybe awkward! " + sc.n("lola") + " truth or dare. " +
+                    "Awww screw it. Take your panties off too. I don't want to spend the " +
+                    "rest of the game with him staring at my pussy. ",
+                button: [
+                    { chatID: 72, text: "...", callback: "lolatalk evasit" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "lola",
+                text: "I guess we have to stick together. I'll just sit here with my vagina " +
+                    "hanging out too. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "eva",
+                text: "Hey stop clenching your butthole. This is weird enough as is!",
+                button: [
+                    { chatID: 72, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "lola",
+                text: "It's so squishy and warm. I want to crawl inside and take a nap hehe. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "lola",
+                text: "Oh, oh oh. I've got to get off or I'm going to cum all over your face. ",
+                button: [
+                    { chatID: 72, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "eva",
+                text: "Hehe. I'm getting so wet! " + sc.n("lola") + " really is a great rug muncher! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "eva",
+                text: "No weird stuff! ... ok that's enough of looking up my asshole perv! ",
+                button: [
+                    { chatID: 72, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "lola",
+                text: "I'm so embarrased! Does it look good. I hope it looks good. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "lola",
+                text: "Yum... I mean oh no. It's a penis",
+                button: [
+                    { chatID: -1, text: "...", callback: "lickDick" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "eva",
+                text: "You better have washed your dick. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "lickDick" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "lola",
+                text: "Oh my. My heart's a flutter. ",
+                button: [
+                    { chatID: -1, text: "You're welcome. ", callback: "arousal resetbg evasit lolasit" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "lola",
+                text: "Did anyone say you have such a pretty smile. ",
+                button: [
+                    { chatID: 83, text: "Not till now. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "eva",
+                text: "Whatever. I can tell you're not staring at his smile. You're both perverts. ",
+                button: [
+                    { chatID: -1, text: "Yes we are. ", callback: "arousal resetbg lolasit evasit" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "eva",
+                text: "Hahaha! You're wearing a girl's bra! I didn't know you were a cross dresser! ",
+                button: [
+                    { chatID: -1, text: "I uhhh.. no. ", callback: "secretOut" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "eva",
+                text: "Hahaha! You're wearing a girl's panties! I didn't know you were a cross dresser! ",
+                button: [
+                    { chatID: -1, text: "I uhhh.. no. ", callback: "secretOut" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "eva",
+                text: "Oh My God! I know what that is! That's a chastity thingy. A boy at my school wears one " +
+                    "of those 'cause he's like a sissy and stuff. I didn't know you were a sissy! ",
+                button: [
+                    { chatID: -1, text: "I uhhh.. no. ", callback: "secretOut" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "lola",
+                text: "Oh my. That is a penis. ",
+                button: [
+                    { chatID: -1, text: "Yes it is. ", callback: "arousal resetbg killme lolasit evasit" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "eva",
+                text: "That's my good doggy. I might just give you a doggy treat later. ",
+                button: [
+                    { chatID: -1, text: "*arf*", callback: "evalike resetbg lolasit evasit" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "eva",
+                text: "Who's my good pathetic doggy!  ",
+                button: [
+                    { chatID: -1, text: "*arf*", callback: "evalike resetbg lolasit evasit" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "lola",
+                text: "Hehehe. You did it. I made you jump for joy ",
+                button: [
+                    { chatID: -1, text: "I'd do anything for my " + sc.n("el") + ". ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "lola",
+                text: "Oh my. You're so strong! If you were a fireman you could totally rescure me. ",
+                button: [
+                    { chatID: -1, text: "I would carry you in my arms. ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "eva",
+                text: "Hahaha. Those are girl muscles!  ",
+                button: [
+                    { chatID: -1, text: "Better than your manly hips! ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "lola",
+                text: "My heart is a flutter. You really are sexy. I mean strong! You're strong.  ",
+                button: [
+                    { chatID: -1, text: "It's ok. I am sexy ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "lola",
+                text: "*swoon* You really make a sexy rock star!  ",
+                button: [
+                    { chatID: -1, text: "Rock on baby! ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "lola",
+                text: "*moan* ",
+                button: [
+                    { chatID: 96, text: "....so. You've been licking my nipple for a few minutes. Are you done? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "lola",
+                text: "Shhhh. Almost done. ",
+                button: [
+                    { chatID: -1, text: "....", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "eva",
+                text: "Hehehe. Your tongue feels funny on the bottom of my toe. It's so slimy. ",
+                button: [
+                    { chatID: 98, text: "*suck*", callback: "meSuckToes2" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "eva",
+                text: "Gross. I have your slobber all over my toes. You have to wear your slobber for the rest " +
+                    "of the game! ",
+                button: [
+                    { chatID: -1, text: "ugh. ok", callback: "evalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "me",
+                text: "*sigh* I'm such your bitch " + sc.n("eva") + ". There are you happy. ",
+                button: [
+                    { chatID: 100, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "eva",
+                text: "Totally. Now that you know you're my bitch you can get up. ",
+                button: [
+                    { chatID: -1, text: "I was getting up anyways. ", callback: "evalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "lola",
+                text: "I don't know if I want a...",
+                button: [
+                    { chatID: 102, text: "Too bad. Gotta do the dare! ", callback: "meStripdance" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "lola",
+                text: "OOooo. Shake that money maker.. I mean. Good dancing. ",
+                button: [
+                    { chatID: 103, text: "Oh yeah", callback: "evalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "lola",
+                text: "He's a boy. Why would he wear girl's panties? That's really weird.  ",
+                button: [
+                    { chatID: 104, text: "Yeah. I would never wear panties. ", callback: "evalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "eva",
+                text: "You can always quit. ",
+                button: [
+                    { chatID: 105, text: "I'm no quitter. " + sc.n("lola") + " give me a pair of your panties. ", callback: "mepanties" },
+                    { chatID: -1, text: "I'm not doing that. That's enough for tonight.", callback: "mequit" }
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "lola",
+                text: "You better not get your gross stuff on my panties. ",
+                button: [
+                    { chatID: -1, text: "Hey. If it happens, it happens. Try not being so sexy. ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "lola",
+                text: "Hehehehe. butt ",
+                button: [
+                    { chatID: -1, text: "Your fingers are cold. ", callback: "lolalike resetbg lolasit evasit " },
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "eva",
+                text: "Why do the loser perverts always get such big dicks?",
+                button: [
+                    { chatID: -1, text: "Hey! ", callback: "lolalike evalike resetbg lolasit evasit" },
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "eva",
+                text: sc.n("landlord") + " promised me a puppy, but like always she changed her mind, but " +
+                    "only after I bought a bunch of stuff for my new little puppy. Now eat it doggy boy! ",
+                button: [
+                    { chatID: -1, text: "Hrumph. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "eva",
+                text: "Hahaha you totally ate it! Good doggy. Now bark my good doggy. ",
+                button: [
+                    { chatID: -1, text: "*arf* ", callback: "evalike resetbg lolasit evasit" },
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "lola",
+                text: "Why are you staring at it? Is it ugly? ",
+                button: [
+                    { chatID: -1, text: "No, It's the most beautiful thing I've seen. ", callback: "lolalike" },
+                    { chatID: -1, text: "Meh. I've seen better. ", callback: "lolahate" },
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "lola",
+                text: "Oh wow, wow, wow, wow. I really needed that. oh my. I'm a bit dizzy. I think we should " +
+                    "go to bed. You were amazing. I love you. er... I mean I loved what you did. ",
+                button: [
+                    { chatID: -1, text: "I love you too. I mean I loved it. ", callback: "lolalike theyquit" },
+                    { chatID: -1, text: "No problem. ", callback: "theyquit" }
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "eva",
+                text: "I've always wondered what it feels like. Start licking doggy. ",
+                button: [
+                    { chatID: -1, text: "Sigh, ok. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "me",
+                text: "*gag* aaak. You just farted inside my mouth! I can taste it! ",
+                button: [
+                    { chatID: 114, text: "...", callback: "melickbutthole2" }
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "eva",
+                text: "Hahaha! I can't stop farting! Hahahaha! You totally ate my fart! hahahahaha",
+                button: [
+                    { chatID: 115, text: "*blech!*", callback: "melickbutthole3" }
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "lola",
+                text: "Oh " + sc.n("eva") + ". So gross. I'm done. Lets open the window so you can put " +
+                    "your ass outside and air it out. This game's so over. ",
+                button: [
+                    { chatID: -1, text: "Yeah. It stinks in here I'm out too. ", callback: "theyquit" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "lola",
+                text: sc.n("me") + ".....",
+                button: [
+                    { chatID: -1, text: "...", callback: "mequitPassout" }
+                ]
+            },
+        ]; 
         retEntry = cArray[chatID];
         return retEntry;
     }

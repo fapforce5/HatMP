@@ -210,7 +210,7 @@ room220.chat = function (chatID) {
             chatID: 8,
             speaker: "missy",
             text: "From now on you'll " +
-                "clean my bathroom in only your panties. You might think that I'm doing this becuase I'm making you more " +
+                "clean my bathroom in only your panties. You might think that I'm doing this because I'm making you more " +
                 "confident in your panties, or I'm incrasing your boldness. Both would be wrong. I just think it's funny watching " +
                 "on you knees cleaning my dirty toilet in your panties. Now get to work panty boy. ",
             button: [
