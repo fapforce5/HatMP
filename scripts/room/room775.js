@@ -65,6 +65,7 @@ room775.chatcatch = function (callback) {
             nav.bg("775_church/basket1.jpg");
             break;
         case "collection1":
+            sc.modLevel("landlord", Math.floor(g.internal / 4), 3);
             gv.mod("money", -g.internal);
             nav.bg("775_church/basket2.jpg");
             break;

@@ -202,6 +202,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 16 },
                         { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "Sit down. Watch TV with me", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
@@ -216,7 +217,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                         { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 2, txt: "Helped first time. ", show: false, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Sperm Doner Assistant Nurse. ", show: false, mStatus: 0, roomId: 350 },
                     ]
             },
             {
@@ -225,6 +226,8 @@ sc.charMission = [
                         { id: 0, txt: "Talk about butts ", show: true, mStatus: 0, roomId: 14 },
                         { id: 1, txt: "Forbidden kiss.", show: true, mStatus: 0, roomId: 14 },
                         { id: 2, txt: "Wet Pussy Lips", show: true, mStatus: 0, roomId: 14 },
+                        { id: 3, txt: "Oral Pleasure. ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 4, txt: "Learn to eat pussy [Oral Level 4]", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {
@@ -523,11 +526,9 @@ sc.charMission = [
                 missionName: "bitch", mStatus: 0, title: "Her Honor", desc: "Will you save her honor? ", task:
                     [
                         { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
-                        { id: 1, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
-                        { id: 2, txt: "Is he getting closer? ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 3, txt: "Make a choice. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 4, txt: "I'm now the target. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 5, txt: "More to come later. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 1, txt: "Titty grabing perv", show: true, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
+                        { id: 3, txt: "Stop touching her!", show: true, mStatus: 0, roomId: 350 },
                     ]
             },
         ]
@@ -726,9 +727,8 @@ sc.modLevel = function (name, amount, targetLevel) {
 
         if (addedLevels > 0)
             g.popUpNotice("You gained " + addedLevels + " level(s) for: " + sc.char[i].display + "!");
-        else
+        else if(actualAmount > 0)
             g.popUpNotice(sc.char[i].display + " points have increased by " + actualAmount + "! ");
-
     }
     else if (amount < 0) {
         console.log(i);
@@ -743,8 +743,7 @@ sc.modLevel = function (name, amount, targetLevel) {
 //Mission ----------------------------------------------------------------------
 
 sc.startMission = function (name, missionName) {
-    var ml = sc.getMission(name, missionName);
-    sc.charMission[ml.i].mission[ml.j].mStatus = 1;
+    sc.setMission(name, missionName, 1);
 };
 
 sc.getMission = function (name, missionName) {
@@ -809,25 +808,11 @@ sc.getActiveMissions = function (name) {
 };
 
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
-    var ml = sc.getMission(name, missionName);
-    
-    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
-            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = success ? 100 : 101;
-            return;
-        }
-    }
+    sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
 };
 
-sc.startMissionTask = function(name, missionName, taskId) {
-    var ml = sc.getMission(name, missionName);
-
-    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
-            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = 1;
-            return;
-        }
-    }
+sc.startMissionTask = function (name, missionName, taskId) {
+    sc.setMissionTask(name, missionName, taskId, 1);
 };
 
 sc.modMissionTask = function (name, missionName, taskId, modNum) {
@@ -842,11 +827,7 @@ sc.modMissionTask = function (name, missionName, taskId, modNum) {
 };
 
 sc.completeMission = function (name, missionName, success) {
-    var i, j;
-    var mission = sc.getMission(name, missionName);
-    i = mission.i;
-    j = mission.j;
-    sc.charMission[i].mission[j].mStatus = success ? 100 : 101;
+    sc.setMission(name, missionName, success ? 100 : 101);
 };
 
 sc.taskGetStep = function (name, missionName) {
@@ -859,8 +840,24 @@ sc.taskGetStep = function (name, missionName) {
         if (sc.charMission[ml.i].mission[j].task[k].mStatus < 100)
             return sc.charMission[ml.i].mission[j].task[k].id;
     }
-    
+
     return sc.charMission[ml.i].mission[j].task.length;
+};
+
+sc.setMission = function (name, missionName, mStatus) {
+    var ml = sc.getMission(name, missionName);
+    sc.charMission[ml.i].mission[ml.j].mStatus = mStatus;
+};
+
+sc.setMissionTask = function (name, missionName, taskId, mStatus) {
+    var ml = sc.getMission(name, missionName);
+
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
+            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = mStatus;
+            return;
+        }
+    }
 }
 
 sc.modSecret = function (name, amount) {

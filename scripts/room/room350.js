@@ -15,9 +15,7 @@ room350.main = function () {
             }, 350);
             chat(18, 350);
         }
-        else if (sc.getMissionTask("landlord", "spermbank", 2).complete
-            && sc.getMission("raven", "bitch").notStarted
-            && g.dt.getDay() === 6) {
+        else if (sc.getMission("raven", "bitch").notStarted && g.dt.getDay() === 6) {
             nav.bg("350_spermBank/raven_0_1.jpg");
             chat(30, 350);
         }
@@ -58,9 +56,13 @@ room350.btnclick = function (name) {
         case "nurse":
             if (sc.getMission("landlord", "spermbank").inProgress) {
                 if (g.dt.getDay() === 6) {
-                    if (sc.getMissionTask("landlord", "spermbank", 2).notStarted)
+                    if (sc.getMission("raven", "bitch").notStarted) {
                         sc.completeMissionTask("landlord", "spermbank", 2);
-                    chat(6, 350);
+                        chat(30, 350);
+                    }
+                    else {
+                        chat(6, 350);
+                    }
                 }
                 else {
                     chat(5, 350);
@@ -69,70 +71,6 @@ room350.btnclick = function (name) {
             else {
                 chat(0, 350);
             }
-            //else if (sc.getEvent("landlord", 1)) {
-            //    if (g.dt.getDay() === 6) {
-            //        chat(20, 350);
-            //    }
-            //    else {
-            //        chat(3, 350);
-            //    }
-            //}
-            
-
-            //var mascotNum = gv.get("mascot");
-            //var llStep = sc.getstep("landlord");
-            //var access16 = g.hasAccess(16).access;
-            //if (sc.getEvent("landlord", -5) && !sc.getEvent("landlord", -6) && !access16)
-            //    chat(47, 350);
-            //else if (!access16) {
-            //    if (mascotNum === 0)
-            //        chat(43, 350);
-            //    else
-            //        chat(61, 350);
-            //}
-            //else if (llStep > 200) {
-            //    if (g.hourBetween(6, 10)) {
-            //        if (cl.getBodyHair() !== null)
-            //            chat(30, 350);
-            //        else if (cl.c.hairLength < 2)
-            //            chat(31, 350);
-            //        else if (!sc.getEvent("landlord", -7)) {
-            //            sc.setstep("landlord", -7);
-            //            chat(16, 350);
-            //        }
-            //        else if (!sc.getEvent("landlord", -8)) {
-
-            //            chat(51, 350);
-            //        }
-            //        else
-            //            chat(41, 350);
-            //    }
-            //    else
-            //        chat(29, 350);
-            //}
-            //else if (sc.getEvent("landlord", -3)) {
-            //    if (cl.getCum() < .75)
-            //        chat(3, 350);
-            //    else
-            //        chat(6, 350);
-            //}
-            //else if (llStep === 6) {
-            //    if (cl.appearance() > 0) {
-            //        sc.setstep("landlord", 7);
-            //        chat(11, 350);
-            //    }
-            //    else
-            //        chat(0, 350);
-            //}
-
-            //else if (sc.getEvent("landlord", -1)) {
-            //    if (mascotNum > 3)
-            //        chat(62, 350);
-            //    else
-            //        chat(9, 350);
-            //}
-            //else
-            //    chat(0, 350);
             break;
         default:
             break;
@@ -145,7 +83,7 @@ room350.chatcatch = function (callback) {
             char.room(0);
             break;
         case "leavemad":
-            sc.modLevel("landlord", -30, 999);
+            sc.modLevel("landlord", -10, 999);
             char.room(0);
             break;
         case "advertise":
@@ -165,7 +103,7 @@ room350.chatcatch = function (callback) {
             sc.startMission("raven", "bitch");
             sc.completeMissionTask("raven", "bitch", 0);
             sc.show("raven");
-            levels.mod("pi", 20, 999);
+            levels.mod("pi", 30, 999);
             char.addtime(20);
             nav.bg("350_spermBank/350_spermbank.jpg");
             nav.button({

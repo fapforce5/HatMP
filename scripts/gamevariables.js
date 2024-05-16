@@ -5,6 +5,7 @@ var weekly = {};
 var stats = {};
 var gv = {};
 var sissy = {};
+var qdress = {};
 var t = {}; //remove this
 var trophy = {};
 var future = {};
@@ -56,6 +57,7 @@ gv.init = function () {
         { n: "dildoanal", t: 0, q: "int" },
         { n: "fingeranal", t: 0, q: "int" },
         { n: "dildooral", t: 0, q: "int" },
+        { n: "xdressPoints", t: 0, q: "int" },
 
         //Settings
         { n: "fantasyCreatures", t: false, q: "bool" },
@@ -119,7 +121,7 @@ gv.init = function () {
 
 
         { n: "jobConstructionPay", t: 0, q: "zero" },
-
+        { n: "forbotenLove", t: 0, q: "zero" },
 
         //{ n: "sissy", t: 0, q: "sissy" },
         //{ n: "usedSissyPoints", t: 0, q: "sissy" },
@@ -364,6 +366,39 @@ gv.init = function () {
 
         { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
 
+    ];
+
+    qdress.st = [
+        { id: 0, pId: null, icon: "qpanties", p: 1, h: false, x: 341, y: 490, ach: false, name: "Panties", desc: "You can wear panties. " },
+        { id: 1, pId: 0, icon: "qbra", p: 1, h: false, x: 487, y: 490, ach: false, name: "Bra", desc: "If you have a bra, you don't feel comfortable going out without it. " },
+        { id: 2, pId: 1, icon: "qdildo", p: 1, h: false, x: 487, y: 359, ach: false, name: "Buy Sex Toys", desc: "You feel comfortable buying sex toys. " },
+        { id: 3, pId: 1, icon: "qxdress", p: 1, h: false, x: 636, y: 440, ach: false, name: "Public", desc: "You feel comfortable wearing girly clothes in public. " },
+
+        { id: 4, pId: 3, icon: "qearring", p: 1, h: false, x: 830, y: 212, ach: false, name: "Piercings", desc: "You feel comfortable getting piercings and wearing jewlery. " },
+        { id: 5, pId: 4, icon: "qmakup", p: 1, h: false, x: 981, y: 212, ach: false, name: "Makeup", desc: "You feel comfortable wearing makeup in public. " },
+        { id: 6, pId: 5, icon: "qtattoo", p: 2, h: false, x: 1132, y: 212, ach: false, name: "Tattoo", desc: "You feel comfortable getting tattoos." },
+
+        { id: 7, pId: 3, icon: "qxdress1", p: 1, h: false, x: 830, y: 359, ach: false, name: "Sexy", desc: "You feel comfortable buying sexy clothing. " },
+        { id: 8, pId: 7, icon: "qxdress2", p: 2, h: false, x: 981, y: 359, ach: false, name: "Bimbo", desc: "You feel comfortable buying stupid bimbo clothing. " },
+        { id: 9, pId: 8, icon: "qxdress3", p: 3, h: false, x: 1132, y: 359, ach: false, name: "Commando", desc: "You feel comfortable going out without bra and panties. " },
+        { id: 10, pId: 9, icon: "qxdress4", p: 4, h: false, x: 1283, y: 359, ach: false, name: "Nudist", desc: "You are comfortable enough with your body that you can wear anthing or nothing." },
+
+        { id: 11, pId: 3, icon: "qc2", p: 1, h: true, x: 830, y: 774, ach: false, name: "A Cup", desc: "Feminie Body" },
+        { id: 12, pId: 11, icon: "qc3", p: 1, h: true, x: 981, y: 774, ach: false, name: "B Cup", desc: "We must increase our bust!" },
+        { id: 13, pId: 12, icon: "qc4", p: 2, h: true, x: 1132, y: 774, ach: false, name: "C Cup", desc: "A good size" },
+        { id: 14, pId: 13, icon: "qc5", p: 3, h: true, x: 1283, y: 774, ach: false, name: "DDD Cup", desc: "A bit big" },
+        { id: 15, pId: 14, icon: "qc6", p: 4, h: true, x: 1434, y: 774, ach: false, name: "Ludicrous Cup", desc: "My back hurts!" },
+
+        { id: 16, pId: 3, icon: "ql1", p: 1, h: true, x: 830, y: 922, ach: false, name: "Butt", desc: "Sexy little butt" },
+        { id: 17, pId: 16, icon: "ql2", p: 1, h: true, x: 981, y: 922, ach: false, name: "Ass", desc: "Sexy Butt" },
+        { id: 18, pId: 17, icon: "ql3", p: 2, h: true, x: 1132, y: 922, ach: false, name: "Ass of a Goddess", desc: "She must work out" },
+        { id: 19, pId: 18, icon: "ql4", p: 3, h: true, x: 1283, y: 922, ach: false, name: "Dat ass", desc: "Thicker than a bowl of oatmeal" },
+        { id: 20, pId: 19, icon: "ql5", p: 4, h: true, x: 1434, y: 922, ach: false, name: "Ba donk a donk", desc: "Oh My God. Look at that butt!" },
+
+        { id: 21, pId: 3, icon: "qlip1", p: 1, h: true, x: 830, y: 628, ach: false, name: "Lips", desc: "Dick Sucking Lips" },
+        { id: 22, pId: 21, icon: "qlip2", p: 2, h: true, x: 981, y: 628, ach: false, name: "Bimbo Lips", desc: "Lips so fat you can't close your mouth" },
+
+        { id: 23, pId: 3, icon: "qwhore", p: 4, h: false, x: 830, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
     ];
 
     stats.st = [
@@ -1565,7 +1600,11 @@ sissy.getNumPassed = function () {
     return counter;
 };
 
-
+qdress.all = function () {
+    for (i = 0; i < qdress.st.length; i++) {
+        qdress.st[i].ach = true;
+    }
+}
 //to be removed
 //sissy.steps = [
 g.sissy = [
