@@ -220,6 +220,41 @@ room28.main = function () {
             "title": "xdress",
             "image": "28_transformation/q_forground.png"
         }, 28);
+
+        if (hormoneLevel < 75) {
+            nav.t({
+                type: "img",
+                name: "noop",
+                left: 850,
+                top: 500,
+                font: 40,
+                hex: "#def8ff",
+                text: "Estrogen level low. "
+            }, 28);
+            if (!qdress.st[15].ach) {
+                nav.t({
+                    type: "img",
+                    name: "noop",
+                    left: 850,
+                    top: 550,
+                    font: 20,
+                    hex: "#def8ff",
+                    text: "Progress in the game till you can take the FEM 201 Sissy Class"
+                }, 28);
+            }
+            else {
+                nav.t({
+                    type: "img",
+                    name: "noop",
+                    left: 850,
+                    top: 550,
+                    font: 20,
+                    hex: "#def8ff",
+                    text: "Take your pills sissy"
+                }, 28);
+            }
+        }
+
     }
     //else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp") {
     //    var thisImg = "";
@@ -328,7 +363,7 @@ room28.btnclick = function (name) {
             //tText += '<img src="./images/room/210_classSelection/gotoclass.png" class="room-btn rom-event" data-name="classselect_' + id + '" data-room="210" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
         }
         else if (qdress.st[id].h && gv.get("hormone") < 75) {
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise hormone</div>';
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise Estrogen</div>';
         }
         else if (points < qdress.st[id].p) {
             tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need ' + qdress.st[id].p + ' more ' + (qdress.st[id].p - points === 1 ? " Point" : " Points") + '</div>';

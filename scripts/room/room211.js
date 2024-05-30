@@ -7,8 +7,9 @@ room211.main = function () {
         gv.set("sissySchoolClass", "firstday");
         char.room(209);
     }
-    else if (classesPassed === 13) { //fix this
-        chat(1, 211);
+    else if (classesPassed === 13 && gv.get("sissySchoolClass") === null) { 
+        nav.bg("211_meeting/postTest.jpg");
+        chat(25, 211);
     }
     else if (classesPassed > 4 && philbert < 0) {
         sc.startMission("philbert", "bully");
@@ -286,6 +287,10 @@ room211.chatcatch = function (callback) {
         case "initviewtrainee":
             room211.btnclick("initviewtrainee");
             room211.btnclick("drawGroups");
+            break;
+        case "moveit":
+            g.pass = "moveitMoveIt";
+            char.room(174);
             break;
         default:
             break;
@@ -574,6 +579,14 @@ room211.chat = function (chatID) {
                 text: "Ok slut! You need to get changed into you sissy outfit anyway. ",
                 button: [
                     { chatID: -1, text: "hrumph", callback: "initviewtrainee" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "p",
+                text: "Ok sluts everyone upstairs to the White Room! Move that soft little tushies! Move it! Move it! ",
+                button: [
+                    { chatID: -1, text: "aaak", callback: "moveit" },
                 ]
             },
         ];

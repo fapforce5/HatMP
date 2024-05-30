@@ -16,7 +16,7 @@ room210.main = function () {
             nav.button({
                 "type": "clickthrough",
                 "name": v.icon,
-                "left": 45 + (v.x * 130),
+                "left": i === 10 ? (45 + (5.5 * 130)) : (45 + (v.x * 130)),
                 "top": 40 + (v.y * 130),
                 "width": 100,
                 "height": 100,

@@ -1,7 +1,12 @@
 ﻿//Room name
 var room174 = {};
 room174.main = function () {
-    if (missy.activecase().name === "case_goth") {
+    if (g.pass === "moveitMoveIt") {
+        g.pass = null;
+        nav.bg("174_oneOffCase/xdress0.jpg");
+        chat(35, 174);
+    }
+    else if (missy.activecase().name === "case_goth") {
         if (g.pass === 174) {
             if (cl.c.panties === "b" && cl.c.shirt === null && cl.c.pants === null && cl.c.dress === null) {
                 nav.bg("174_oneOffCase/goth6.jpg");
@@ -49,6 +54,17 @@ room174.btnclick = function (name) {
 
 room174.chatcatch = function (callback) {
     switch (callback) {
+        case "xdress1":
+        case "xdress2":
+        case "xdress3":
+        case "xdress4":
+        case "xdress5":
+        case "xdress6":
+        case "xdress7":
+        case "xdress8":
+        case "xdress9":
+            nav.bg("174_oneOffCase/" + callback + ".jpg");
+            break;
         case "goth1":
         case "goth2":
         case "goth3a":
@@ -107,6 +123,9 @@ room174.chatcatch = function (callback) {
             missy.set("reusableCaseCounter", 1);
             char.settime(17, 39);
             char.room(0);
+            break;
+        case "xdressEnd":
+            char.room(210);
             break;
         default:
             break;
@@ -416,6 +435,91 @@ room174.chat = function (chatID) {
                 "the train. I'm going to get dressed now lame-o.  ",
             button: [
                 { chatID: 31, text: "Sure what ever gets us going. ", callback: "goth12" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "martha",
+            text: "Ah,ladies! A most delightful welcome to you all. You've diligently traversed the path " +
+                "of a trainee, and now you stand proudly as full-fledged sissies.  To celebrate this momentous " +
+                "occasion, it's time to bid farewell to those, shall we say, less distinguished garments. " +
+                "Fear not, for I have prepared a selection of outfits far more befitting your newfound " +
+                "status. I shall call each of you forward in turn, and you'll receive your new attire for " +
+                "the remainder of your classes.",
+            button: [
+                { chatID: 36, text: "OOooo", callback: "xdress1" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "martha",
+            text: "Ah, Chris, isn't that simply delightful! Your youthful charm and slight frame are simply perfect for a darling baby doll dress. And what a simply smashing shade of pink!  I can just imagine how it will complement your complexion.  And don't forget the wig, my dear! A touch of whimsy never goes amiss.Why, I daresay you'll be the belle of the ball, turning heads and captivating hearts in such an ensemble. A true gentleman wouldn't be able to resist such a charming display!",
+            button: [
+                { chatID: 37, text: "...", callback: "xdress2" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "martha",
+            text: "Jeremy, my dear! Look at you, a true diamond in the rough. Today, we shall transform that gentlemanly spirit into the radiant lady you were always meant to be.This exquisite lace top, with its delicate frills, will dance around your form, creating a most charming silhouette.And fret not a single bit about your chest, for femininity comes in all shapes and sizes.Now, this cunning little girdle here will work wonders, nipping in your waist and emphasizing those delightful hips of yours. ",
+            button: [
+                { chatID: 38, text: "...", callback: "xdress3" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "martha",
+            text: "Kareem, that simply divine shade of purple! It absolutely accentuates your most charming legs, wouldn't you agree? A touch of boldness is just the ticket to draw out the marvelous woman I know resides within you. Remember, darling, confidence is the most exquisite accessory one can possess. Now, go forth and blossom, my dear. I can't wait to witness the truly remarkable woman you'll become.",
+            button: [
+                { chatID: 39, text: "...", callback: "xdress3" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "martha",
+            text: "Oh, Martin, my dear!  You simply must be the most delightful transformation we've ever had the pleasure of witnessing.  When you first arrived, a gruff little fellow indeed, wouldn't you agree? But look at you now, a positively charming and wonderful lady!  My heart simply brims with pride for all the progress you've made. Truly, a triumph!",
+            button: [
+                { chatID: 40, text: "...", callback: "xdress5" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "martha",
+            text: "Ah, Philbert, there you are. My most... challenging pupil. Today, I've selected a rather unassuming ensemble for your transformation. A long dress, wouldn't you know, perfect for keeping those... exuberant tendencies nicely under wraps. Now, do try to see if we can cultivate a touch of decorum, shall we?",
+            button: [
+                { chatID: 41, text: "...", callback: "xdress6" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "martha",
+            text: "Ah, Sporty, this simply darling ensemble will perfectly capture your inherent femininity.It allows for the utmost comfort and mobility, ensuring you can continue your active pursuits without a moment's worry.  Imagine, gracefully gliding through your day, a vision of both elegance and practicality. Now, wouldn't that be simply splendid?",
+            button: [
+                { chatID: 42, text: "...", callback: "xdress7" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "martha",
+            text: "My, my, how delightful to meet Sinéad!  What a charming name, indeed. It suits her so much better, wouldn't you agree? I remember when dear Thomas first arrived, a quiet little bookworm, nose always buried in a tome. One couldn't help but wonder if she'd ever blossom. But blossom she has! Look at her now, Sinéad, radiant and beautiful. It's truly heartwarming to see such a transformation. Quite a testament to finding one's true self, wouldn't you say?",
+            button: [
+                { chatID: 43, text: "...", callback: "xdress8" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "martha",
+            text: "My, my, isn't Trixy a vision? Formerly Timothy, you see. Quite the transformation, wouldn't you agree? Our little scientific marvel, the transformation pill, has done wonders, wouldn't you say? A touch of science to bring out the true you, the radiant woman just waiting to blossom. Just a little pill, and your inner beauty can finally take center stage.  ",
+            button: [
+                { chatID: 44, text: "...", callback: "xdress9" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "martha",
+            text: "In progress.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "xdressEnd" },
             ]
         },
     ];

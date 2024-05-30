@@ -523,7 +523,7 @@ cl.hasoutfit = function (ctype) {
                     missingClothing.push("shorts");
             break;
         case "public":
-            if (sissyLevel < 10) {
+            if (!qdress.st[10].ach) {
                 if (cl.c.swimsuit === null) {
                     if (cl.c.shoes === null)
                         missingClothing.push("shoes");
@@ -533,15 +533,16 @@ cl.hasoutfit = function (ctype) {
                         if (cl.c.pants === null)
                             missingClothing.push("pants");
                     }
-                    if (cl.c.panties === null && sissyLevel < 8) {
+                    if (cl.c.panties === null && !qdress.st[9].ach) {
                         if (cl.hasClothingType("panties"))
                             missingClothing.push("panties");
                     }
-                    if (cl.c.bra === null && sissyLevel > 3 && sissyLevel < 8) {
-                        if (cl.hasClothingType("bra"))
-                            missingClothing.push("bra");
+                    if (cl.c.bra === null && qdress.st[1].ach) {
+                        if (!qdress.st[9].ach) {
+                            if (cl.hasClothingType("bra"))
+                                missingClothing.push("bra");
+                        }
                     }
-
                 }  
             }
             break;
@@ -566,7 +567,7 @@ cl.hasoutfit = function (ctype) {
         case "swim":
         case "swimsuit":
             if (cl.c.swimsuit === null)
-                missingClothing.push("bikini");
+                missingClothing.push(gender.pronoun("bikini"));
             break;
         case "cheerleader":
             if (cl.c.shirt !== "cl")

@@ -38,6 +38,9 @@ gender.pronoun = function (ptype) {
         case "man":
         case "lady":
             return gender.isGirl() ? "lady" : "man";
+        case "bikini":
+        case "swimsuit":
+            return gender.isGirl() ? "bikini" : "swim trunks";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }
