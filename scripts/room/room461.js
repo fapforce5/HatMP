@@ -11,7 +11,7 @@ room461.main = function () {
             }
 
             if (whichOne === 0 || whichOne === 1) {
-                if (sc.getLevel("ppgirl") > 1) {
+                if (sc.taskGetStep("ppgirl", "pp") === 3) {
                     nav.bg("461_run/pee6.jpg");
                     chat(32, 461);
                 }
@@ -166,49 +166,46 @@ room461.btnclick = function (name) {
             break;
         case "ppdick":
             nav.killall();
-            sc.modLevel("ppgirl", -100, 0);
+            sc.modLevel("ppgirl", -1, 999);
             nav.bg("461_run/pee2.jpg");
             chat(24, 461);
             break;
         case "ppdick2":
             nav.killall();
-            sc.modLevel("ppgirl", -100, 0);
+            sc.modLevel("ppgirl", -1, 999);
             nav.bg("461_run/pee5.jpg");
             chat(24, 461);
             break;
         case "ppchat":
-            var ppgirlLevel = sc.getLevel("ppgirl");
-            if (ppgirlLevel < 1) {
-                sc.modLevel("ppgirl", 34, 2);
+            var ppgirlStep = sc.taskGetStep("ppgirl", "pp");
+            if (!sc.get("ppgirl").show)
+                sc.show("ppgirl");
+            if (sc.getMission("ppgirl", "pp").notStarted) {
+                sc.modLevel("ppgirl", 100, 2);
                 levels.mod("piss", 25, 1);
+                sc.startMission("ppgirl", "pp");
+                sc.completeMissionTask("ppgirl", "pp", 0);
                 nav.killall();
                 nav.bg("461_run/pee1.jpg");
                 chat(22, 461);
             }
+            else if (ppgirlStep === 1) {
+                levels.mod("piss", 25, 1);
+                nav.killall();
+                nav.bg("461_run/pee3.jpg");
+                chat(25, 461);
+            }
+            else if (ppgirlStep === 2) {
+                levels.mod("piss", 25, 1);
+                nav.killall();
+                nav.bg("461_run/pee3.jpg");
+                sc.setEvent("ppgirl", 2);
+                chat(30, 461);
+            }
             else {
-                if (!sc.getEvent("ppgirl", 1)) {
-                    levels.mod("piss", 25, 1);
-                    nav.killall();
-                    nav.bg("461_run/pee3.jpg");
-                    sc.setEvent("ppgirl", 1);
-                    chat(25, 461);
-                }
-                else if (!sc.getEvent("ppgirl", 2)) {
-                    levels.mod("piss", 25, 1);
-                    nav.killall();
-                    nav.bg("461_run/pee3.jpg");
-                    sc.setEvent("ppgirl", 2);
-                    chat(30, 461);
-                }
-                else {
-                    nav.killbutton("");
-                    nav.killbutton("");
-                    nav.killbutton("");
-                    nav.killbutton("");
-                    levels.mod("piss", 25, 1);
-                    sc.modLevel("ppgirl", 50, 2);
-                    chat(44, 461);
-                }
+                nav.kill();
+                nav.bg("461_run/pee6x.jpg")
+                chat(44, 461);
             }
             break;
         case "pppee":
@@ -217,8 +214,14 @@ room461.btnclick = function (name) {
                 levels.mod("piss", 25, 1);
                 chat(37, 461);
             }
-            else
+            else {
+                if (sc.getMission("ppgirl", "pp").inProgress) {
+                    sc.completeMissionTask("ppgirl", "pp", 3);
+                    sc.completeMission("ppgirl", "pp", true);
+                    sc.modLevel("ppgirl", 100, 5);
+                }
                 chat(33, 461);
+            }
             break;
         default:
             break;
@@ -346,7 +349,7 @@ room461.chatcatch = function (callback) {
             break;
         case "ppbad":
             nav.killall();
-            sc.modLevel("ppgirl", -100, 0);
+            //sc.modLevel("ppgirl", -100, 0);
             nav.bg("461_run/pee2.jpg");
             chat(24, 461);
             break;
@@ -378,8 +381,13 @@ room461.chatcatch = function (callback) {
         case "ppcharisma":
             levels.mod("charisma", 15, 999);
             break;
+        case "pp5":
+            sc.modLevel("ppgirl", 100, 4);
+            sc.completeMissionTask("ppgirl", "pp", 2);
+            break;
         case "canPeeOnMe":
-            sc.modLevel("ppgirl", 400, 2);
+            //sc.modLevel("ppgirl", 100, 2);
+            //sc.completeMissionTask("ppgirl", "pp", 2);
             nav.bg("461_run/path2.jpg");
             gv.mod("energy", -30);
             levels.mod("fitness", 30, 999);
@@ -754,7 +762,7 @@ room461.chat = function (chatID) {
             speaker: "ppgirl",
             text: "Oh. Hmmm. I hadn't thought about it like that. Hmmmmm",
             button: [
-                { chatID: 43, text: "...", callback: "pp4" },
+                { chatID: 43, text: "...", callback: "" },
             ]
         },
         {
@@ -769,9 +777,10 @@ room461.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "ppgirl",
-            text: "You really have an uncanny knack for catching me peeing.  ",
+            text: "Oh. You just want to chat? I thought you wanted something else. Sorry. I've " +
+                "got to run. ",
             button: [
-                { chatID: -1, text: "I know. ", callback: "completeRun" },
+                { chatID: -1, text: "Oh. See you later. ", callback: "completeRun" },
             ]
         },
     ];

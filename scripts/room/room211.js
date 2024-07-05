@@ -1,13 +1,13 @@
 ﻿//Room name
 var room211 = {};
 room211.main = function () {
-    var classesPassed = sissy.getNumPassed(); 
+    var classesPassed = sissy.getNumPassed();
     var philbert = sc.taskGetStep("philbert", "bully");
     if (!sissy.st[0].ach) { //firstday
         gv.set("sissySchoolClass", "firstday");
         char.room(209);
     }
-    else if (classesPassed === 13 && gv.get("sissySchoolClass") === null) { 
+    else if (classesPassed === 13 && !cl.hasClothing("shirt", "sq")) {
         nav.bg("211_meeting/postTest.jpg");
         chat(25, 211);
     }
@@ -22,10 +22,18 @@ room211.main = function () {
         nav.bg("211_meeting/event1_0.jpg");
         chat(22, 211);
     }
-    else if (classesPassed > 4) {
+    else if (classesPassed > 4 && classesPassed < 13) {
         if (cl.c.shirt !== "ss") {
             sc.select("icon_dress", "211_meeting/icon_dress.png", 0);
             nav.bg("211_meeting/change.jpg");
+        }
+        else
+            room211.btnclick("drawGroups");
+    }
+    else if (classesPassed > 12) {
+        if (cl.c.shirt !== "sq") {
+            sc.select("icon_dress1", "211_meeting/icon_dress1.png", 0);
+            nav.bg("211_meeting/change1.jpg");
         }
         else
             room211.btnclick("drawGroups");
@@ -128,7 +136,7 @@ room211.btnclick = function (name) {
             }
             break;
         case "icon_dress":
-            levels.mod("xdress", 20, 7);
+            levels.mod("xdress", 10, 7);
             cl.c.bra = "p";
             cl.c.pants = "ss";
             cl.c.shirt = "ss";
@@ -136,6 +144,18 @@ room211.btnclick = function (name) {
             cl.c.socks = "ss";
             cl.display();
             nav.killbutton("icon_dress");
+            nav.killbutton("icon_dressbg");
+            char.room(211);
+            break;
+        case "icon_dress1":
+            levels.mod("xdress", 20, 7);
+            cl.nude();
+            cl.c.pants = "sq";
+            cl.c.shirt = "sq";
+            cl.c.shoes = "sq";
+            cl.c.socks = "sq";
+            cl.display();
+            nav.killbutton("icon_dress1");
             nav.killbutton("icon_dressbg");
             char.room(211);
             break;

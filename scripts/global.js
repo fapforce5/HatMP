@@ -346,6 +346,9 @@ g.rooms = [
     { roomID: 555, name: "Back Gym", image: "555_backgym/gym.jpg", nightImage: "555_backgym/gym.jpg", houseID: 550, btn: "roomBtn_555.png" },
     { roomID: 556, name: "Spar Training", image: "555_backgym/ring.jpg", nightImage: "555_backgym/ring.jpg", houseID: 550, btn: "roomBtn_555.png" },
 
+    { roomID: 575, name: "Sausage", image: "575_fastfood/bg.jpg", nightImage: "575_fastfood/bg.jpg", houseID: 575, btn: "roomBtn_575.png" },
+
+
     { roomID: 600, name: "For Testing", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
 
     { roomID: 650, name: "Toys 'n Us", image: "650_toyStore/650_front.jpg", nightImage: "650_toyStore/650_front.jpg", houseID: 650, btn: "roomBtn_650.png" },
@@ -431,6 +434,7 @@ g.roomMapInit = function () {
         //{ roomID: 525, display: "Zoey's Bar", access: true, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },
         //{ roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },
         { roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
+        { roomID: 575, display: "Sausage", access: true, darkAccess: false, left: 589, top: 114, width: 93, height: 97, img: "map/575.png", night: "map/575_night.png", map: 1 },
         { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
         { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
         { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },

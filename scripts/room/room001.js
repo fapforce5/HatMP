@@ -58,6 +58,7 @@ room1.btnclick = function (name) {
             g.pass = "";
             g.newLoad = false;
             char.initGame();
+            dreams.add("work");
             $('.room-left').show();
             $('#room_footer').show();
             $(".room-topper").show();

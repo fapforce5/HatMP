@@ -13,6 +13,10 @@ room0.main = function () {
         room0.btnclick("map_2");
     else
         room0.btnclick("map_1");
+    if (!gv.get("panties") && cl.getEntry("panties", cl.c.panties).sex === "f") {
+        gv.set("panties", true);
+        dreams.add("firstTimeInPanties");
+    }
     setTimeout(function () { $('#room_footer').hide(); }, 200);
     
 };

@@ -57,6 +57,9 @@ missy.init = function () {
         { caseId: 10, name: "case_newclothes", show: true, complete: false, success: false },
         { caseId: 11, name: "case_shopping", show: true, complete: false, success: false },
         { caseId: 12, name: "case_bimbopanties", show: true, complete: false, success: false },
+        { caseId: 13, name: "case_elijah", show: true, complete: false, success: false },
+        { caseId: 14, name: "case_beaver", show: true, complete: false, success: false },
+        { caseId: 15, name: "case_elijah_origin", show: true, complete: false, success: false },
     ];
 }
 
@@ -127,6 +130,10 @@ missy.activecase = function () {
             { caseId: 10, name: "case_newclothes", txt: "Visit Tiffany at Toys 'n Us and pick up your new uniform.", m: [650], isComplete: activeCaseComplete },
             { caseId: 11, name: "case_shopping", txt: "Meet Tiffany at the Toys 'n Us.", m: [650], isComplete: activeCaseComplete },
             { caseId: 12, name: "case_bimbopanties", txt: "Steal the panties from the Bimbo", m: [75], isComplete: activeCaseComplete },
+            { caseId: 13, name: "case_elijah", txt: "Convince Elijah to spill the details", m: [575], isComplete: activeCaseComplete },
+            { caseId: 14, name: "case_beaver", txt: "Stolen money", m: [250], isComplete: activeCaseComplete },
+            { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
+
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -251,6 +258,54 @@ missy.getcases = function () {
                                 active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
                                 notReadyTxt: "Raise your PI Level and get the lock pick class. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_elijah_origin": 
+                        if (levels.get("pi").l > 2) {
+                            canDoCase = piLevel > 3;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_elijah":
+                        if (qdress.st[3].ach && missy.cases[15].success) {
+                            canDoCase = piLevel > 2;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_beaver":
+                        if (sissy.st[19].ach) {
+                            canDoCase = piLevel > 3;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_saveralph":
+                        if (sissy.st[10].ach) {
+                            canDoCase = piLevel > 4;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
                                 callback: missy.cases[i].name
                             });
                         }

@@ -159,6 +159,10 @@ room180.chatcatch = function (callback) {
             nav.bg("180_ballroom/enema205_4.jpg");
             zcl.assup(450, 160, .95);
             break;
+        case "enema205_6":
+            nav.bg("180_ballroom/enema205_6.jpg");
+            zcl.assup(750, 80, .5);
+            break;
         case "enema205_7":
             levels.mod("xdress", 50, 999);
             sissy.passclass(true);
@@ -879,7 +883,7 @@ room180.chat = function (chatID) {
                 "each of you has a smooth and moist anus, perfect for sliding phalluses in and out. Wash your " +
                 "bodies and the shower, then you can be on your way.",
             button: [
-                { chatID: 78, text: "[Clean up slut]", callback: "enema205_7" }
+                { chatID: -1, text: "[Clean up slut]", callback: "enema205_7" }
             ]
         },
     ];

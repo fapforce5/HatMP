@@ -202,14 +202,6 @@ room13.btnclick = function (name) {
             char.room(13);
             break;
         case "panties":
-            if (!gv.get("lolaPanties")) {
-                gv.set("lolaPanties", true);
-                levels.mod("xdress", 33, 1);
-            }
-
-            if (levels.get("xdress").l < 1) 
-                chat(5, 13);
-            else 
                 chat(6, 13);
             break;
         case "dresser":
@@ -676,7 +668,7 @@ room13.chatcatch = function (callback) {
                 break;
             case 'takePanties':
                 cl.add("panties", "w");
-                levels.mod("xdress", 33, 2);
+                levels.mod("xdress", 50, 999);
                 nav.killbutton("panties");
                 break;
             case "killPantyIcon":
@@ -789,10 +781,11 @@ room13.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "thinking",
-                text: "Should I take " + sc.n("lola") + "'s dirty panties?",
+                text: sc.n("lola") + "'s dirty panties! So simple and modest. And so dirty. The smell is so musky and sweet. " +
+                    "She must have worn these all day and peed a bit in them. So dirty, but so sexy!  ",
                 button: [
-                    { chatID: -1, text: "Gross... no", callback: "killPantyIcon" },
-                    { chatID: -1, text: "yea... ", callback: "takePanties" }
+                    { chatID: -1, text: "Put back her gross panties.", callback: "killPantyIcon" },
+                    { chatID: -1, text: "Steal her dirty peed stained panties. ", callback: "takePanties" }
                 ]
             },
              {

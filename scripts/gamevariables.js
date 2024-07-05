@@ -9,7 +9,7 @@ var qdress = {};
 var t = {}; //remove this
 var trophy = {};
 var future = {};
-
+var dreams = {};
 gv.difficulty = 0;
 
 sex.st = new Array();
@@ -21,6 +21,7 @@ sissy.st = new Array();
 trophy.st = new Array();
 gv.stats = new Array();
 future.st = new Array();
+dreams.st = new Array();
 
 t.modLevel = function (id, amount) {
     console.log("kill me");
@@ -85,7 +86,7 @@ gv.init = function () {
         { n: "momClosetMoney", t: 7, q: "int" },
         { n: "rent", t: 50, q: "zero" },
         { n: "rentOwed", t: 0, q: "zero" },
-        { n: "rentKnockOff", t: 0, q: "zero" },
+        //{ n: "rentKnockOff", t: 0, q: "zero" },
 
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
@@ -98,6 +99,7 @@ gv.init = function () {
         { n: "pamphletConstSite", t: false, q: "bool" },
         { n: "lolaPanties", t: false, q: "bool" },
         { n: "momsPanties", t: false, q: "bool" },
+        { n: "panties", t: false, q: "bool" },
 
         //sissyschool
         { n: "sissySchoolClass", t: null, q: "string" },
@@ -183,6 +185,7 @@ gv.init = function () {
     daily.st = [
         { n: "chloe", t: false },
         { n: "landlord", t: false },
+        { n: "landlordChat", t: false },
         { n: "landlordmolest", t: false },
         { n: "evamassage", t: false },
         { n: "evatalk", t: false },
@@ -354,15 +357,15 @@ gv.init = function () {
         { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 19], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
 
         { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: true },
-        { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 212", description: "Experaince the joy of being filled", ach: false, active: true },
+        { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 212", description: "Experaince the joy of being filled", ach: false, active: true, room: 175 },
         { id: 13, pID: [10], icon: "chastity201", x: 6, y: 4, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true },
-        { id: 14, pID: [10], icon: "enema205", x: 1, y: 4, name: "Enema 205", description: "A clean bussy makes everyone happy", ach: false, active: true },
+        { id: 14, pID: [10], icon: "enema205", x: 1, y: 4, name: "Enema 205", description: "A clean bussy makes everyone happy", ach: false, active: true, room: 180 },
         { id: 15, pID: [10], icon: "fem201", x: 0, y: 4, name: "Feminization 201", description: "Introduction to hormones", ach: false, active: true, room: 180 },
         { id: 16, pID: [10], icon: "fem212", x: 2, y: 4, name: "Feminization 212", description: "How to walk in high heels", ach: false, active: true },
 
         { id: 17, pID: [], icon: "invite", x: -1, y: -1, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
 
-        { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true },
+        { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true, room: 176 },
 
         { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
 
@@ -472,6 +475,8 @@ gv.init = function () {
     ];
 
     future.st = new Array();
+
+    dreams.st = new Array();
 };
 
 
@@ -665,6 +670,10 @@ stats.mod = function (t, n, amount) {
 
 future.add = function (name, daysleft) {
     future.st.push({ name: name, daysleft: daysleft });
+}
+
+dreams.add = function (dream) {
+    dreams.st.push(dream);
 }
 
 future.get = function (name) {
@@ -1440,7 +1449,8 @@ gv.save = function () {
         sissy: new Array(),
         stats: new Array(),
         trophy: new Array(),
-        future: new Array()
+        future: new Array(),
+        qdress: new Array(),
     };
     //save by name
     for (i = 0; i < gv.st.length; i++) {
@@ -1489,6 +1499,11 @@ gv.save = function () {
         retArray.future.push({ name: future.st[i].name, daysleft: future.st[i].daysleft });
     }
 
+    for (i = 0; i < qdress.st.length; i++) {
+        if (qdress.st[i].ach)
+            retArray.qdress.push(i);
+    }
+
     return retArray;
 };
 
@@ -1529,6 +1544,16 @@ gv.load = function (rma) {
         }
     }
 
+    for (i = 0; i < qdress.st.length; i++) {
+        qdress.st[i].ach = false;
+    }
+
+    if (typeof rma.qdress !== 'undefined') {
+        for (i = 0; i < rma.qdress.length; i++) {
+            qdress.st[rma.qdress[i]].ach = true;
+        }
+    }
+
     for (i = 0; i < rma.levels.length; i++) {
         levels.st[i].c = rma.levels[i].c;
         levels.st[i].l = rma.levels[i].l;
@@ -1558,6 +1583,12 @@ gv.load = function (rma) {
             future.st.push({ name: rma.future[i].name, daysleft: rma.future[i].daysleft });
         }
     }
+
+    if (typeof rma.dreams !== 'undefined') {
+        for (i = 0; i < rma.dreams.length; i++) {
+            dreams.st.push({ name: rma.future[i].name, daysleft: rma.future[i].daysleft });
+        }
+    }
 };
 
 
@@ -1565,7 +1596,7 @@ sissy.passclass = function (normalRoom) {
     var currentClass = gv.get("sissySchoolClass");
     gv.set("sissySchoolClass", null);
     gv.set("sissySchoolClassDays", 0);
-    
+    levels.mod("xdress", 30, 999);
     for (var i = 0; i < sissy.st.length; i++) {
         if (sissy.st[i].icon === currentClass) {
             sissy.st[i].ach = true;

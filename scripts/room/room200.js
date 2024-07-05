@@ -72,6 +72,18 @@ room200.btnclick = function (name) {
                     case 12:
                         chat(63, 200);
                         break;
+                    case 13:
+                        if (activeCaseComplete === 1)
+                            chat(71, 200);
+                        else
+                            chat(73, 200);
+                        break;
+                    case 15:
+                        if (activeCaseComplete === 1)
+                            chat(78, 200);
+                        else
+                            chat(77, 200);
+                        break;
                 }
             }
             else if (missyUniform > 0 && missy.get("uniformNew") === 0) {
@@ -269,6 +281,47 @@ room200.chatcatch = function (callback) {
             nav.killall();
             nav.bg("200_frontOffice/case_trash0.jpg");
             chat(36, 200);
+            break;
+        case "case_elijah":
+            nav.bg("200_frontOffice/case_elijah.jpg");
+            chat(67, 200);
+            break;
+        case "case_elijah_origin":
+            nav.bg("200_frontOffice/case_elijah_origin.jpg");
+            chat(74, 200);
+            break;
+        case "case_elijah_origin_start":
+            missy.set("activeCase", g.internal.activeCase.caseId);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
+            g.pass = "case_elijah_origin";
+            char.room(174);
+            break;
+        case "case_elijah_start":
+            pic.add("case_elijah");
+            room200.chatcatch("case_afterExplaniation");
+            break;
+        case "case_elijah_origin_endBad":
+            missy.mod("mood", -40);
+            missy.caseComplete(15);
+            char.room(217);
+            break;
+        case "case_elijah_origin_goodBad":
+            gv.mod("money", 100);
+            missy.mod("mood", 20);
+            missy.caseComplete(15);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_elijah_complete":
+            gv.mod("money", 150);
+            missy.mod("mood", 20);
+            missy.caseComplete(13);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_elijah_completeBad":
+            missy.mod("mood", -40);
+            missy.caseComplete(13);
+            char.room(217);
             break;
         case "case_trashcheck":
             if (missy.get("chastity") === 0) {
@@ -1085,6 +1138,131 @@ room200.chat = function (chatID) {
                 text: "Oh good. Just hand them over and I'll get you paid.  ",
                 button: [
                     { chatID: -1, text: "Thanks ma'am! ", callback: "bimboPantiesGoodEnd" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "missy",
+                text: "This is Elijah. The owner of the local Dance Club is certain he's the one " +
+                    "pooping in the middle of the dance floor in the middle of the day. A janitor " +
+                    "saw a flash of green hair, but not much else. The problem is we don't know  " +
+                    "if it's him, or how he would get in there. ",
+                button: [
+                    { chatID: 68, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "missy",
+                text: "I need you to find him and have a casual chat with him. Find out some information " +
+                    "on him, like where he works, what kind of free time he has during the day, and " + 
+                    "any possible motiviation he would have for pooping in the club. ",
+                button: [
+                    { chatID: 69, text: "Do I break into his house and find the information?", callback: "" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "missy",
+                text: "*sigh* no. Elijah is a total loser. From what I've gathered he has no friends, no " +
+                    "girl friend, and consistently posts to online dating websites how horny he is, and " +
+                    "how he'd do anything for some pussy. To get any information out of him you may want " +
+                    "to use your feminine charms. ",
+                button: [
+                    { chatID: 70, text: "My feminine charm?", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "missy",
+                text: "Yes. Your feminine charm. Find it within yourself, this loser is desperate for sex. " +
+                    "Chances you won't find him at the club. I do know he likes to jack off in the park, and " +
+                    "eat fast food. You can start your search at those places. Make yourself pretty and get " +
+                    "the information I need to help solve this case. I sent you a picture to your phone " +
+                    "so you can see what he looks like. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "case_elijah_start" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "me",
+                text: "... so then I found out he works as a lock smith, and is angry at the " +
+                    "club owner. Something to do with his sister. I wasn't able to get more " +
+                    "information on that.",
+                button: [
+                    { chatID: 72, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "missy",
+                text: "Oh. That's good. I'm glad you were able to get some information. This " +
+                    "will be very helpful. I'll look more into that. In the mean time here's your " +
+                    "$150 reward for a job well done. ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am", callback: "case_elijah_complete" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "missy",
+                text: "so you failed to get all the information I was looking for. At this point " +
+                    "I expected more of you. You know I'm going to have to punish you now, right? ",
+                button: [
+                    { chatID: -1, text: "*sigh* yes ma'am", callback: "case_elijah_completeBad" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "missy",
+                text: "This is Mr. Rex. Mr. Rex owns the local night club and has been having some " +
+                    "problems with his club. Apparently some kind of 'Mad Pooper' has been terrorizing " +
+                    "his club and deficating in the middle of the dance floor sometime after the club closes. ",
+                button: [
+                    { chatID: 75, text: "Oh. Gross", callback: "" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "missy",
+                text: "Yes. Very gross. You're going to go to his club tonight after they close and be on the " +
+                    "lookout for him. You're not to engage with him, just observe and report. Try to get " +
+                    "a picture of him. Better if you catch him in the act, but a picture will work. ",
+                button: [
+                    { chatID: 76, text: "Ok. Just a picture. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "missy",
+                text: "Go take a nap so you're fresh to work tonight then report to Mr. Rex " +
+                    "at his club after 2 in the morning. He'll show you around. ",
+                button: [
+                    { chatID: -1, text: "Ok. I'll go take a nap. ", callback: "case_elijah_origin_start" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "missy",
+                text: "You just had to take a picture of the mad pooper. Nothing else. Instead you're face deep " +
+                    "in some poor waitress. You know you fucked up, and the punishment for fucking " +
+                    "up has to be done. I had really thought better of you. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_elijah_origin_endBad" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "missy",
+                text: "I guess a partial picture of the mad pooper is better than nothing. " +
+                    "I have some contacts that I'll send around to see if I can get a better " +
+                    "idea of who this is. There's not that many men in this town with green hair, " +
+                    "and that parital necklace is unique. There may be enough to get him, I'll " +
+                    "have to see. But since you only got a partial image you'll only get a parital " +
+                    "payment. $100 will do. ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am", callback: "case_elijah_origin_goodBad" },
                 ]
             },
         ];

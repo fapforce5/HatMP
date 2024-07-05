@@ -6,6 +6,14 @@ room174.main = function () {
         nav.bg("174_oneOffCase/xdress0.jpg");
         chat(35, 174);
     }
+    else if (g.pass === "case_elijah_origin") {
+        g.pass = null;
+        g.internal = 0;
+        nav.bg("999_phone/black.jpg");
+        char.newdayfake();
+        char.settime(2, 0);
+        chat(46, 174);
+    }
     else if (missy.activecase().name === "case_goth") {
         if (g.pass === 174) {
             if (cl.c.panties === "b" && cl.c.shirt === null && cl.c.pants === null && cl.c.dress === null) {
@@ -62,7 +70,18 @@ room174.chatcatch = function (callback) {
         case "xdress6":
         case "xdress7":
         case "xdress8":
-        case "xdress9":
+        case "xdress10":
+        case "club0":
+        case "club1":
+        case "club2":
+        case "club3":
+        case "club4":
+        case "club5_a1":
+        case "club5_a2":
+        case "club5_a5":
+        case "club6":
+        case "club8":
+        case "club9":
             nav.bg("174_oneOffCase/" + callback + ".jpg");
             break;
         case "goth1":
@@ -124,8 +143,46 @@ room174.chatcatch = function (callback) {
             char.settime(17, 39);
             char.room(0);
             break;
+        case "xdress9":
+            nav.bg("174_oneOffCase/" + callback + ".jpg");
+            cl.nude();
+            cl.c.shoes = "sq";
+            cl.c.socks = "sq";
+            cl.c.shirt = "sq";
+            cl.c.pants = "sq";
+            cl.add("shoes", "sq");
+            cl.add("socks", "sq");
+            cl.add("shirt", "sq");
+            cl.add("dress", "sq");
+            cl.display();
+            zcl.displayMain(300, 800, .09, "clothes", false);
+            break;
         case "xdressEnd":
             char.room(210);
+            break;
+        case "club5_a3":
+        case "club5_a4":
+            var shirtGender = "m";
+            if (cl.c.shirt === "b")
+                shirtGender = "f";
+            else
+                shirtGender = gender.pronoun("m");
+            nav.bg("174_oneOffCase/" + callback + shirtGender + ".jpg");
+            break;
+        case "club5_badEnd":
+            missy.set("activeCaseComplete", 2);
+            char.addtime(60);
+            char.room(0);
+            break;
+        case "club_end":
+            missy.set("activeCaseComplete", 1);
+            levels.mod("pi", 75, 999);
+            char.addtime(60);
+            char.room(0);
+            break;
+        case "club7":
+            char.addtime(97);
+            nav.bg("174_oneOffCase/" + callback + ".jpg");
             break;
         default:
             break;
@@ -471,7 +528,7 @@ room174.chat = function (chatID) {
             speaker: "martha",
             text: "Kareem, that simply divine shade of purple! It absolutely accentuates your most charming legs, wouldn't you agree? A touch of boldness is just the ticket to draw out the marvelous woman I know resides within you. Remember, darling, confidence is the most exquisite accessory one can possess. Now, go forth and blossom, my dear. I can't wait to witness the truly remarkable woman you'll become.",
             button: [
-                { chatID: 39, text: "...", callback: "xdress3" },
+                { chatID: 39, text: "...", callback: "xdress4" },
             ]
         },
         {
@@ -487,7 +544,7 @@ room174.chat = function (chatID) {
             speaker: "martha",
             text: "Ah, Philbert, there you are. My most... challenging pupil. Today, I've selected a rather unassuming ensemble for your transformation. A long dress, wouldn't you know, perfect for keeping those... exuberant tendencies nicely under wraps. Now, do try to see if we can cultivate a touch of decorum, shall we?",
             button: [
-                { chatID: 41, text: "...", callback: "xdress6" },
+                { chatID: 45, text: "...", callback: "xdress10" },
             ]
         },
         {
@@ -517,9 +574,177 @@ room174.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "martha",
-            text: "In progress.  ",
+            text: "Finally our favorite pupil, " + sc.n("me") + ". Missy has personally chosen this outfit " +
+                "to accentuate what she calls 'Her slutty desires to be impaled by every cock in the room.' " +
+                "Her exposed midriff displays her toned figure, low cut top displays her femininity, " +
+                "and short skirt signals that she is ready for breeding. Now everyone return to the waiting room. " +
+                "Your next selection of classes await. I'm so excited to see you take the next step! ",
             button: [
                 { chatID: -1, text: "...", callback: "xdressEnd" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "martha",
+            text: "Here's Ralph. *sigh* ",
+            button: [
+                { chatID: 41, text: "...", callback: "xdress6" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "thinking",
+            text: "I'm just going to take a nap before I have to go to the club since it looks " +
+                "like I'll be up all night. ",
+            button: [
+                { chatID: 47, text: "[Wake up and go to the club]", callback: "club0" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "me",
+            text: "Hi Mr. Rex I'm here to...",
+            button: [
+                { chatID: 48, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "!rex",
+            text: "One sec. Hey tits! Careful with those glasses. If you break another glass " +
+                "tonight I'm going to have to punish you in my office. Now hurry up and finish cleaning " +
+                "up. You're not getting overtime for being lazy. ",
+            button: [
+                { chatID: 49, text: "...", callback: "club1" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "!rex",
+            text: "Let me take you to the dance floor where that piece of shit has been doing his " +
+                "thing.",
+            button: [
+                { chatID: 50, text: "ok", callback: "club2" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "!rex",
+            text: "I had that dumb waitress, tits, put this table here that you can hide under. " +
+                "Don't fuck this up. I fucking sick of ordering the busboy to clean up shit off " +
+                "my floor. Plus it's bad for business. It needs to stop tonight. ok?",
+            button: [
+                { chatID: 51, text: "I'll catch him tonight! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "!rex",
+            text: "Good. Now get under that table and don't fuck this up. ",
+            button: [
+                { chatID: 52, text: "Yes sir. ", callback: "club3" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "thinking",
+            text: "It's so cramped in here. Hopefully he comes quickly so I don't have to spen " +
+                "the entire night squatting under this table. Oh it's the waitress. She's so hot! " +
+                "hopefully it's her so I can get done with this case. ",
+            button: [
+                { chatID: 53, text: "...", callback: "club4" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "Not that is a tight pussy! I can smell her musky scent. So hot! I want to " +
+                "bury my face in that pussy. I wonder what she would do if I reached out and " +
+                "touched it. That's stupid. She'll totally get pissed. But she didn't seem to get " +
+                "mad when Mr. Rex called her tits. Maybe she's down. I shouldn't though. But she " +
+                "does seem like a slut. ",
+            button: [
+                { chatID: 59, text: "Just do your job ", callback: "club6" },
+                { chatID: 54, text: "Touch her pussy with your finger. ", callback: "club5_a1" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "thinking",
+            text: "It's so warm and moist. Oh. She just moaned. She's totally into it. " +
+                "I wonder if she'll let me slide down her shorts and see her pussy...",
+            button: [
+                { chatID: 55, text: "Slide down her shorts", callback: "club5_a2" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "thinking",
+            text: "Holy shit! She let me take down her shorts and she's not wearing panties! " +
+                "Fuck she's dripping wet. Fuck I have to taste her pussy.",
+            button: [
+                { chatID: 56, text: "[Eat her pussy]", callback: "club5_a3" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "thinking",
+            text: "Fuck yeah! I knew some girls were sluts, but I never knew I would be face " +
+                "deep in one! I love this girl!",
+            button: [
+                { chatID: 57, text: "...", callback: "club5_a4" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "!rex",
+            text: "What the FUCK!!!",
+            button: [
+                { chatID: 58, text: "huh?", callback: "club5_a5" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "!rex",
+            text: "The Mad Pooper stuck again! Tits, clean this shit up. And you PI Punk! " +
+                "Get the hell out of my club 'cause you're fucking fired. ",
+            button: [
+                { chatID: -1, text: "Aw crap. Missy's going to be pissed. ", callback: "club5_badEnd" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "thinking",
+            text: "I'm not going to grab her pussy. I'm not that kind of guy. But I can still " +
+                "smell her pussy. Those shorts must be holding all the sweat and pussy juice " +
+                "from working all night. I really should have tried to finger her. Oh well...",
+            button: [
+                { chatID: 60, text: "[Wait...]", callback: "club7" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "thinking",
+            text: "Holy crap. Someone's walking in. I just need to take a picture really quick.",
+            button: [
+                { chatID: 61, text: "[Take picture]", callback: "club8" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "thinking",
+            text: "Shit he moved! Crap I forgot to take off the camera sound effect. Crap crap crap!",
+            button: [
+                { chatID: 62, text: "[Chase after him]", callback: "club9" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "thinking",
+            text: "Damn! He's fast. Fuck. Hopefully there's enough here to figure out who he " +
+                "is. I'll send this to Missy and call it a night. ",
+            button: [
+                { chatID: -1, text: "[Send picture to Missy and go home]", callback: "club_end" },
             ]
         },
     ];

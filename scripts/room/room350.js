@@ -15,7 +15,7 @@ room350.main = function () {
             }, 350);
             chat(18, 350);
         }
-        else if (sc.getMission("raven", "bitch").notStarted && g.dt.getDay() === 6) {
+        else if (sc.getMission("raven", "bitch").notStarted && g.dt.getDay() === 6 && sc.getMissionTask("landlord", "talk", 1).complete) {
             nav.bg("350_spermBank/raven_0_1.jpg");
             chat(30, 350);
         }
@@ -54,15 +54,14 @@ room350.main = function () {
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
-            if (sc.getMission("landlord", "spermbank").inProgress) {
+            if (sc.getMissionTask("landlord", "talk", 1).complete) {
                 if (g.dt.getDay() === 6) {
-                    if (sc.getMission("raven", "bitch").notStarted) {
-                        sc.completeMissionTask("landlord", "spermbank", 2);
-                        chat(30, 350);
+                    if (sc.getMission("landlord", "spermbank").notStarted) {
+                        sc.startMission("landlord", "spermbank");
+                        sc.completeMissionTask("landlord", "spermbank", 0);
+                        sc.completeMissionTask("landlord", "talk", 2);
                     }
-                    else {
-                        chat(6, 350);
-                    }
+                    chat(6, 350);
                 }
                 else {
                     chat(5, 350);
@@ -83,7 +82,6 @@ room350.chatcatch = function (callback) {
             char.room(0);
             break;
         case "leavemad":
-            sc.modLevel("landlord", -10, 999);
             char.room(0);
             break;
         case "advertise":

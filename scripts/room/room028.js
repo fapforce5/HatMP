@@ -12,16 +12,7 @@ room28.main = function () {
     missy.daily();
     var i;
     var hormoneLevel, thisTinyPP;
-    if (g.pass === 502)
-        nav.bg("502_bedroom/sleepZoey.jpg");
-    else if (g.pass === 13)
-        nav.bg("28_transformation/twin.jpg");
-    else if (g.pass === 301)
-        nav.bg("301_living/envy159.jpg");
-    else if (g.pass === 701)
-        nav.bg("701_hospitalroom/sleep.jpg");
-    else if (g.pass === 181)
-        nav.bg("181_black/bondage101_12.jpg");
+    
 
     menu.save("HatMP_9", true);
     if (g.dt.getHours() > 6)
@@ -29,6 +20,7 @@ room28.main = function () {
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
     nav.buildclock();
 
+    var txtDisplay = room28.dreams();
     
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
@@ -42,30 +34,6 @@ room28.main = function () {
     
     for (i = 0; i < gv.st.length; i++) {
         switch (gv.st[i].n) {
-            //case "leg":
-            //    if (gv.st[i].t > 97) {
-            //        gv.st[i].t = 0;
-            //        gv.mod("legLevel", 1);
-            //        g.popUpNotice("Your kick is stronger");
-            //    }
-            //    break;
-            //case "body":
-            //    if (gv.st[i].t > 97) {
-            //        gv.st[i].t = 0;
-            //        gv.mod("bodyLevel", 1);
-            //        g.popUpNotice("Your punch is stronger");
-            //    }
-            //    break;
-            //case "d":
-            //    if (gv.st[i].t > 97) {
-            //        gv.st[i].t = 0;
-            //        gv.mod("dLevel", 1);
-            //        g.popUpNotice("Your defense has increased");
-            //    }
-            //    break;
-            //case "jobConstWorkToday":
-            //    gv.st[i].t = 0;
-            //    break;
             case "energy":
                 energyIndex = i;
                 //gv.st[i].t = Math.floor(maxE * .75);
@@ -171,135 +139,94 @@ room28.main = function () {
         }
     }
 
-    
-    //check Transformation
-    if (cl.c.chest === 0 && levels.st[12].l > 0) {
-        chat(0, 28);
-    }
-    else if (levels.get("xdress").l > 0 && cl.c.chest > 0) {
-        nav.button({
-            "type": "img",
-            "name": "xd",
-            "left": 0,
-            "top": 0,
-            "width": 1920,
-            "height": 1080,
-            "title": "xdress",
-            "image": "28_transformation/q_background.png"
-        }, 28);
-        for (i = 0; i < qdress.st.length; i++) {
-            var qdressIcon = qdress.st[i].ach ? qdress.st[i].icon : qdress.st[i].icon + "_x";
+    if (!txtDisplay) {
+        //check Transformation
+        if (cl.c.chest === 0 && levels.st[12].l > 0) {
+            chat(0, 28);
+        }
+        else if (levels.get("xdress").l > 0 && cl.c.chest > 0) {
+            nav.button({
+                "type": "img",
+                "name": "xd",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "title": "xdress",
+                "image": "28_transformation/q_background.png"
+            }, 28);
+            for (i = 0; i < qdress.st.length; i++) {
+                var qdressIcon = qdress.st[i].ach ? qdress.st[i].icon : qdress.st[i].icon + "_x";
+                nav.button({
+                    "type": "btn",
+                    "name": "qxdress_" + qdress.st[i].id,
+                    "left": qdress.st[i].x,
+                    "top": qdress.st[i].y,
+                    "width": i === 3 ? 200 : 100,
+                    "height": i === 3 ? 200 : 100,
+                    "title": "xdress",
+                    "image": "28_transformation/" + qdressIcon + ".png"
+                }, 28);
+            }
             nav.button({
                 "type": "btn",
-                "name": "qxdress_" + qdress.st[i].id,
-                "left": qdress.st[i].x,
-                "top": qdress.st[i].y,
-                "width": i === 3 ? 200 : 100,
-                "height": i === 3 ? 200 : 100,
+                "name": "qquit",
+                "left": 1434,
+                "top": 64,
+                "width": 100,
+                "height": 100,
+                "image": "28_transformation/q_quit.png"
+            }, 28);
+
+            nav.button({
+                "type": "clickthrough",
+                "name": "xd",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
                 "title": "xdress",
-                "image": "28_transformation/" + qdressIcon + ".png"
+                "image": "28_transformation/q_forground.png"
             }, 28);
-        }
-        nav.button({
-            "type": "btn",
-            "name": "qquit",
-            "left": 1434,
-            "top": 64,
-            "width": 100,
-            "height": 100,
-            "image": "28_transformation/q_quit.png"
-        }, 28);
 
-        nav.button({
-            "type": "clickthrough",
-            "name": "xd",
-            "left": 0,
-            "top": 0,
-            "width": 1920,
-            "height": 1080,
-            "title": "xdress",
-            "image": "28_transformation/q_forground.png"
-        }, 28);
-
-        if (hormoneLevel < 75) {
-            nav.t({
-                type: "img",
-                name: "noop",
-                left: 850,
-                top: 500,
-                font: 40,
-                hex: "#def8ff",
-                text: "Estrogen level low. "
-            }, 28);
-            if (!qdress.st[15].ach) {
+            if (hormoneLevel < 75) {
                 nav.t({
                     type: "img",
                     name: "noop",
                     left: 850,
-                    top: 550,
-                    font: 20,
+                    top: 500,
+                    font: 40,
                     hex: "#def8ff",
-                    text: "Progress in the game till you can take the FEM 201 Sissy Class"
+                    text: "Estrogen level low. "
                 }, 28);
+                if (!qdress.st[15].ach) {
+                    nav.t({
+                        type: "img",
+                        name: "noop",
+                        left: 850,
+                        top: 550,
+                        font: 20,
+                        hex: "#def8ff",
+                        text: "Progress in the game till you can take the FEM 201 Sissy Class"
+                    }, 28);
+                }
+                else {
+                    nav.t({
+                        type: "img",
+                        name: "noop",
+                        left: 850,
+                        top: 550,
+                        font: 20,
+                        hex: "#def8ff",
+                        text: "Take your pills sissy"
+                    }, 28);
+                }
             }
-            else {
-                nav.t({
-                    type: "img",
-                    name: "noop",
-                    left: 850,
-                    top: 550,
-                    font: 20,
-                    hex: "#def8ff",
-                    text: "Take your pills sissy"
-                }, 28);
-            }
+
         }
-
-    }
-    //else if (sissyTrans === "bigboobs" || sissyTrans === "bigass" || sissyTrans === "dslLips" || sissyTrans === "smolpp") {
-    //    var thisImg = "";
-    //    gv.set("oncase", null);
-    //    switch (sissyTrans) {
-    //        case "bigboobs":
-    //            cl.c.chest++;
-    //            thisImg = "chest_" + cl.c.chest + ".gif";
-    //            g.sissy[cl.c.chest + 33].ach = true;
-    //            break;
-    //        case "bigass":
-    //            cl.c.leg++;
-    //            thisImg = "leg_" + cl.c.leg + ".gif";
-    //            g.sissy[cl.c.leg + 39].ach = true;
-    //            break;
-    //        case "dslLips":
-    //            cl.c.lips++;
-    //            thisImg = "lip_" + cl.c.lips + ".gif";
-    //            g.sissy[cl.c.lips + 44].ach = true;
-    //            break;
-    //        case "smolpp":
-    //            cl.c.cock++;
-    //            thisImg = "cock_" + cl.c.cock + ".gif";
-    //            g.sissy[cl.c.cock + 6].ach = true;
-    //            break;
-    //        //case "lip":
-    //        //cl.c.lip++;
-    //        //thisImg = "lip_" + cl.c.lip + ".gif";
-    //        //break;
-    //    }
-    //    nav.bg("28_transformation/" + thisImg);
-    //    cl.display();
-    //    g.roomTimeout = setTimeout(function () {
-    //        returnRoomID = g.pass;
-    //        g.pass = "endSleepyTime";
-    //        char.room(returnRoomID);
-    //    }, 6000);
-
-    //}
-    else {
-        g.roomTimeout = setTimeout(function () {
-            var returnRoomID = g.pass;
-            g.pass = "endSleepyTime";
-            char.room(returnRoomID);
-        }, 1000);
+        else {
+            room28.endSleepyTime(true);
+        }
     }
 
     for (i = 0; i < future.st.length; i++) {
@@ -324,11 +251,70 @@ room28.main = function () {
     }
 };
 
+room28.dreams = function () {
+    var getFirstDream = null;
+    var hasText = false;
+    if (dreams.st.length > 0) {
+        getFirstDream = dreams.st[0];
+        dreams.st.splice(0, 1);
+    }
+    if (g.dt.getDay() === 6 && sc.getMission("landlord", "spermbank").inProgress) {
+        nav.bg("28_transformation/dream_spermbank.jpg");
+    }
+    else if (getFirstDream !== null) {
+        switch (getFirstDream) {
+            case "work":
+                if (gv.get("jobapplyconst") === 0) {
+                    nav.bg("28_transformation/dream_job.jpg");
+                }
+                else {
+                    nav.bg("28_transformation/dream_job2.jpg");
+                }
+                break;
+            case "firstTimeInPanties":
+                nav.bg("28_transformation/dream_firstTimeInPanties.jpg");
+                hastext = true;
+                chat(15, 28);
+                break;
+            case "dream_landlordHandjob":
+                nav.bg("28_transformation/dream_landlordHandjob.jpg");
+                hastext = true;
+                chat(16, 28);
+                break;
+        }
+    }
+    else {
+        if (g.pass === 502)
+            nav.bg("502_bedroom/sleepZoey.jpg");
+        else if (g.pass === 13)
+            nav.bg("28_transformation/twin.jpg");
+        else if (g.pass === 301)
+            nav.bg("301_living/envy159.jpg");
+        else if (g.pass === 701)
+            nav.bg("701_hospitalroom/sleep.jpg");
+        else if (g.pass === 181)
+            nav.bg("181_black/bondage101_12.jpg");
+    }
+    return hasText;
+};
+
+room28.endSleepyTime = function (hasTimeout) {
+    var returnRoomID = g.pass;
+    g.pass = "endSleepyTime";
+
+    if (hasTimeout) {
+        g.roomTimeout = setTimeout(function () {
+            char.room(returnRoomID);
+        }, 1800);
+    }
+    else {
+        char.room(returnRoomID);
+    }
+};
+
 room28.btnclick = function (name) {
     if (name === "qquit") {
-        var returnRoomID = g.pass;
-        g.pass = "endSleepyTime";
-        char.room(returnRoomID);
+        room28.endSleepyTime(false);
     }
     if (name.startsWith("qxdress_")) {
         var id = parseInt(name.replace("qxdress_", ""));
@@ -444,9 +430,7 @@ room28.btnclick = function (name) {
                 nav.bg("28_transformation/chest_" + cl.c.chest + ".gif");
                 cl.display();
                 g.roomTimeout = setTimeout(function () {
-                    returnRoomID = g.pass;
-                    g.pass = "endSleepyTime";
-                    char.room(returnRoomID);
+                    room28.endSleepyTime(false);
                 }, 6000);
                 break;
             case "ql1":
@@ -459,9 +443,7 @@ room28.btnclick = function (name) {
                 nav.bg("28_transformation/leg_" + cl.c.leg + ".gif");
                 cl.display();
                 g.roomTimeout = setTimeout(function () {
-                    returnRoomID = g.pass;
-                    g.pass = "endSleepyTime";
-                    char.room(returnRoomID);
+                    room28.endSleepyTime(false);
                 }, 6000);
                 break;
             case "qlip1":
@@ -471,9 +453,7 @@ room28.btnclick = function (name) {
                 nav.bg("28_transformation/lip_" + cl.c.lips + ".gif");
                 cl.display();
                 g.roomTimeout = setTimeout(function () {
-                    returnRoomID = g.pass;
-                    g.pass = "endSleepyTime";
-                    char.room(returnRoomID);
+                    room28.endSleepyTime(false);
                 }, 6000);
                 
                 break;
@@ -485,266 +465,6 @@ room28.btnclick = function (name) {
                 break;
         }
     };
-    //var id, xtop, xleft, xwidth, pid, tText, xline, i, returnRoomID;
-    //switch (name) {
-    //    case "init":
-    //        for (i = 0; i < g.sissy.length; i++) {
-    //            switch (g.sissy[i].icon) {
-    //                case "chest1":
-    //                case "chest2":
-    //                case "chest3":
-    //                case "chest4":
-    //                case "chest5":
-    //                case "chest6":
-    //                    g.sissy[i].ach = parseInt(g.sissy[i].icon.substring(5)) <= cl.c.chest;
-    //                    break;
-    //                case "leg1":
-    //                case "leg2":
-    //                case "leg3":
-    //                case "leg4":
-    //                case "leg5":
-    //                    g.sissy[i].ach = parseInt(g.sissy[i].icon.substring(3)) <= cl.c.leg;
-    //                    break;
-    //                case "cock1":
-    //                case "cock2":
-    //                case "cock3":
-    //                case "cock4":
-    //                case "cock5":
-    //                    g.sissy[i].ach = parseInt(g.sissy[i].icon.substring(4)) <= cl.c.cock;
-    //                    break;
-    //            }
-    //        }
-    //        room28.btnclick("drawBoard");
-    //        break;
-    //    case "drawBoard":
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "bgbar",
-    //            "left": 1620,
-    //            "top": 0,
-    //            "width": 300,
-    //            "height": 1080,
-    //            "image": "28_transformation/rightSide.png"
-    //        }, 28);
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "cancel",
-    //            "left": 1486,
-    //            "top": 251,
-    //            "width": 100,
-    //            "height": 100,
-    //            "title": "Cancel",
-    //            "image": "28_transformation/cancel.png"
-    //        }, 28);
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "money",
-    //            "left": 392,
-    //            "top": 251,
-    //            "width": 100,
-    //            "height": 100,
-    //            "title": "Money",
-    //            "image": "28_transformation/money.png"
-    //        }, 28);
-    //        $.each(g.sissy, function (i, v) {
-    //            if (v.active) {
-    //                nav.button({
-    //                    "type": "btn",
-    //                    "name": v.icon,
-    //                    "left": v.x,
-    //                    "top": v.y,
-    //                    "width": 100,
-    //                    "height": 100,
-    //                    "title": v.name,
-    //                    "image": "28_transformation/" + v.icon + (v.ach ? "" : "_u") + ".png"
-    //                }, 28);
-    //            }
-    //        });
-    //        break;
-    //    case "chest1":
-    //    case "chest2":
-    //    case "chest3":
-    //    case "chest4":
-    //    case "chest5":
-    //    case "chest6":
-    //    case "leg1":
-    //    case "leg2":
-    //    case "leg3":
-    //    case "leg4":
-    //    case "leg5":
-    //    case "cock1":
-    //    case "cock2":
-    //    case "cock3":
-    //    case "cock4":
-    //    case "cock5":
-    //    case "makeup0":
-    //    case "makeup1":
-    //    case "makeup2":
-    //    case "lip1":
-    //    case "lip2":
-    //    case "fight0":
-    //    case "fight1":
-    //    case "fight2":
-    //    case "fight3":
-    //    case "gloryhole0":
-    //    case "gloryhole1":
-    //    case "gloryhole2":
-    //    case "date0":
-    //    case "date1":
-    //    case "date2":
-    //    case "clothes0":
-    //    case "clothes1":
-    //    case "clothes2":
-    //    case "clothes3":
-    //        $.each(g.sissy, function (i, v) {
-    //            if (v.icon === name) {
-    //                id = v.id;
-    //                return;
-    //            }
-    //        });
-    //        pid = g.sissy[id].pID;
-    //        g.internal = id;
-    //        nav.killbutton("bigDisplay");
-    //        nav.killbutton("unlock");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "bigDisplay",
-    //            "left": 1645,
-    //            "top": 153,
-    //            "width": 250,
-    //            "height": 400,
-    //            "image": "28_transformation/" + name + "_d.png"
-    //        }, 28);
-
-    //        xtop = 600 * g.ratio;
-    //        xleft = 1634 * g.ratio;
-    //        xwidth = 271 * g.ratio;
-    //        tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">' + g.sissy[id].name + '</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">' + g.sissy[id].description + '</div>';
-    //        if (name === "clothes0")
-    //            tText += '<div style="color: #ffcccc; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">PREREQUISITE</div>Attend ' + sc.n('p') + '\'s crossdressing class</div>';
-    //        else if (name === "fight0")
-    //            tText += '<div style="color: #ffcccc; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">PREREQUISITE</div>Prove yourself worthy of the Red Room</div>';
-    //        else if (g.sissy[id].ach)
-    //            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ration + 'px;">Unlocked</div>';
-    //        else if (pid !== null) {
-    //            if (!g.sissy[pid].ach) {
-    //                tText += '<div style="color: #ffcccc; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">PREREQUISITE</div>' + g.sissy[g.sissy[id].pID].name + '</div>';
-    //            }
-    //        }
-
-    //        xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
-
-    //        $('#room-buttons').append(xline);
-    //        break;
-    //    case "cancel":
-    //        g.internal = null;
-    //        nav.killbutton("bigDisplay");
-    //        nav.killbutton("unlock");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "bigDisplay",
-    //            "left": 1645,
-    //            "top": 153,
-    //            "width": 250,
-    //            "height": 400,
-    //            "image": "28_transformation/cancel_d.png"
-    //        }, 28);
-
-    //        xtop = 600 * g.ratio;
-    //        xleft = 1634 * g.ratio;
-    //        xwidth = 271 * g.ratio;
-    //        tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Cancel</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Cancel and return to class</div>';
-
-    //        xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
-
-    //        $('#room-buttons').append(xline);
-
-    //        nav.button({
-    //            "type": "btn",
-    //            "name": "cancelcancel",
-    //            "left": 1634,
-    //            "top": 850,
-    //            "width": 271,
-    //            "height": 72,
-    //            "title": "Unlock",
-    //            "image": "28_transformation/cancel_b.png"
-    //        }, 28);
-
-    //        break;
-    //    case "money":
-    //        g.internal = null;
-    //        nav.killbutton("bigDisplay");
-    //        nav.killbutton("unlock");
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "bigDisplay",
-    //            "left": 1645,
-    //            "top": 153,
-    //            "width": 250,
-    //            "height": 400,
-    //            "image": "28_transformation/money_d.png"
-    //        }, 28);
-
-    //        xtop = 600 * g.ratio;
-    //        xleft = 1634 * g.ratio;
-    //        xwidth = 271 * g.ratio;
-    //        tText = '<div class="char-40" style="font-size: ' + 30 * g.ratio + 'px; margin-bottom:5px;">Money</div><div class="char-20" style="font-size: ' + 20 * g.ratio + 'px;">Trade 100 Sissy Points for $100</div>';
-    //        if (gv.get("sissy") > 100) {
-    //            alert('killme');
-    //        }
-    //        else
-    //            tText += '<div style="color: #ffffff; "><div style="font-weight:700; margin-top:' + (20 * g.ratio) + 'px; font-size:' + (20 * g.ratio) + 'px;">Not enough points</div>You only have ' + gv.get('sissy') + ' sissy points</div>';
-    //        xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
-    //        $('#room-buttons').append(xline);
-    //        break;
-    //    case "cancelcancel":
-    //        char.room(209);
-    //        break;
-    //    case "unlock":
-    //        if (g.internal === null) {
-    //            returnRoomID = g.pass;
-    //            g.pass = "endSleepyTime";
-    //            char.room(returnRoomID);
-    //        }
-    //        else {
-    //            g.sissy[g.internal].ach = true;
-    //            if (g.internal < 6) {
-    //                id = g.internal + 1;
-    //                nav.killall();
-    //                gv.set("pill", "boob");
-    //                nav.bg("28_transformation/pill.jpg");
-    //                chat(1000, 28);
-    //            }
-    //            else if (g.internal < 11) {
-    //                id = g.internal - 5;
-    //                nav.killall();
-    //                gv.set("pill", "leg");
-    //                nav.bg("28_transformation/pill.jpg");
-    //                chat(1001, 28);
-    //            }
-    //            else if (g.internal < 16) {
-    //                id = g.internal - 10;
-    //                nav.killall();
-    //                gv.set("pill", "cock");
-    //                nav.bg("28_transformation/pill.jpg");
-    //                chat(1002, 28);
-    //            }
-    //            else if (g.internal === 19 || g.internal === 20) {
-    //                id = g.internal - 18;
-    //                nav.killall();
-    //                gv.set("pill", "lip");
-    //                nav.bg("28_transformation/pill.jpg");
-    //                chat(1003, 28);
-    //            }
-    //            else {
-    //                //nav.modbutton(g.sissy[g.internal].icon, "28_transformation/" + g.sissy[g.internal].icon + ".png");
-    //                //chat(999, 28);
-    //            }
-    //        }
-    //        break;
-    //    default:
-    //        break;
-    //}
 };
 
 room28.chatcatch = function (callback) {
@@ -756,9 +476,7 @@ room28.chatcatch = function (callback) {
                 nav.killall();
                 nav.bg("28_transformation/chest_" + cl.c.chest + ".gif");
                 g.roomTimeout = setTimeout(function () {
-                    returnRoomID = g.pass;
-                    g.pass = "endSleepyTime";
-                    char.room(returnRoomID);
+                    room28.endSleepyTime(false);
                 }, 6000);
             }
 
@@ -772,9 +490,7 @@ room28.chatcatch = function (callback) {
             nav.bg("28_transformation/cock_" + cl.c.cock + ".gif");
             cl.display();
             g.roomTimeout = setTimeout(function () {
-                returnRoomID = g.pass;
-                g.pass = "endSleepyTime";
-                char.room(returnRoomID);
+                room28.endSleepyTime(false);
             }, 6000);
             break;
         case "chest0":
@@ -782,9 +498,7 @@ room28.chatcatch = function (callback) {
             nav.bg("28_transformation/chest_1.gif");
             cl.display();
             g.roomTimeout = setTimeout(function () {
-                returnRoomID = g.pass;
-                g.pass = "endSleepyTime";
-                char.room(returnRoomID);
+                room28.endSleepyTime(false);
             }, 6000);
             break;
         case "endPills":
@@ -967,6 +681,30 @@ room28.chat = function (chatID) {
                 text: "Words here. bimbo whore slut bla bla  ",
                 button: [
                     { chatID: -1, text: "[You can wear anything, or nothing]", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "thinking",
+                text: "That was so exhilarating wearing panties outside! I wonder if anyone " +
+                    "could tell I was wearing them. I hope I didn't have panty lines. I " +
+                    "did see that one girl looking at me strangely. I bet she knew. I wonder " +
+                    "if she thinks I'm some sort of sick weird-o. Crap. She probably did think " +  
+                    "I'm a pervert. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "thinking",
+                text: "Holy fuck that was hot. Her wet slippery tongue twisting around my mouth " +
+                    "and tongue while she played with my dick. Fuck!! This is so wrong! I really " +
+                    "shouldn't keep pushing it with my " + sc.n("landlord") + ". What would people " +
+                    "think. I should stop. I'm taking advantage of her just so I can nut, but I don't " +
+                    "know if I can stop. I need her. I need to be inside her.",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
                 ]
             },
         ];

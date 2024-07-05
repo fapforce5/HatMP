@@ -419,7 +419,7 @@ phone.characterSelect = function (name) {
         hex: "#aaaaaa",
         text: "Till Next Level"
     }, 1);
-    $('#room-buttons').append('<div class="room-img" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 600, 500) + ' z-index:2;">' +
+    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 600, 500) + ' z-index:2;">' +
         '<div style="background: #FF76FF; border-radius: 20px; height: ' + g.ratio * 10 + 'px; width: ' + thisChar.c + '%;" class="resize-height rl-bar"></div>' +
             '</div>');
     nav.t({
@@ -431,7 +431,7 @@ phone.characterSelect = function (name) {
         hex: "#ffffff",
         text: "Secret:"
     }, 1);
-    $('#room-buttons').append('<div class="room-img" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 650, 500) + ' z-index:2;">' +
+    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 650, 500) + ' z-index:2;">' +
         '<div style="background: #189000; border-radius: 20px; height: ' + g.ratio * 10 + 'px; width: ' + thisChar.secret + '%;" class="resize-height rl-bar"></div>' +
         '</div>');
     var thisTimeline = sc.getTimeline(name);
@@ -559,7 +559,7 @@ phone.passtime = function () {
 
     if (g.passtime.includes(g.roomID)) {
 
-        var time = [9, 12, 17, 20, 0];
+        var time = [9, 12, 17, 18, 20, 0];
         var clock = gv.get("clock24");
         var active;
 

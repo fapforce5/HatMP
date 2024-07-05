@@ -147,7 +147,25 @@ room316.main = function () {
         }
     }
     else {
-        chat(102, 316);
+        switch (sc.taskGetStep("janice", "bitch")) {
+            case -1:
+            case 0:
+                nav.kill();
+                var howManyFed = 0;
+                for (i = 0; i < 6; i++) {
+                    if (sc.getMissionTask("dog", "vacation", i).complete)
+                        howManyFed++;
+                }
+                if (howManyFed > 1) {
+                    nav.bg("316_livingroom/talk.jpg");
+                    chat(103, 316);
+                }
+                else {
+                    nav.bg("316_livingroom/breakup.jpg");
+                    chat(102, 316);
+                }
+                
+        }
     }
 };
 
@@ -322,7 +340,7 @@ room316.btnclick = function (name) {
                     break;
                 case 5:
                     sc.completeMissionTask("janice", "date", 5, true);
-                    sc.completeMission("janice", "date");
+                    sc.completeMission("janice", "date", true);
                     sc.startMission("dog", "vacation");
                     sc.startMissionTask("dog", "vacation", 1);
                     future.add("janicevacation", 7);
@@ -425,6 +443,7 @@ room316.btnclick = function (name) {
 
 room316.chatcatch = function (callback) {
     switch (callback) {
+        case "bg":
         case "walk":
         case "kiss":
         case "time":
@@ -458,6 +477,8 @@ room316.chatcatch = function (callback) {
         case "task4_9":
         case "task4_10":
         case "task0_1a":
+        case "bitch_0_d1":
+        case "bitch_0_1":
             nav.killall();
             nav.bg("316_livingroom/" + callback + ".jpg");
             break;
@@ -538,6 +559,10 @@ room316.chatcatch = function (callback) {
             sc.startMission("janice", "breakup");
             char.room(0);
             break;
+        case "breakupDogsit":
+            sc.startMission("janice", "breakup");
+            char.room(0);
+            break;
         case "completeTask1":
             sc.modLevel("dog", 50, 4);
             sc.modLevel("janice", 50, 999);
@@ -555,7 +580,7 @@ room316.chatcatch = function (callback) {
             sc.modLevel("dog", 20, 6);
             daily.set("dwalk");
             nav.bg("316_livingroom/walk_follow.jpg");
-            if (sc.getLevel("dog") > 7 && g.rand(0, 3) === 0) {
+            if (sc.getLevel("dog") > 7 && g.rand(0, 10) !== 0) {
                 g.internal = 0; 
                 nav.next("dwalkfuck");
             }
@@ -603,6 +628,35 @@ room316.chatcatch = function (callback) {
             break;
         case "reset":
             char.room(316);
+            break;
+        case "checkDog":
+            if (sc.getLevel("dog") > 6) {
+                cl.nude();
+                nav.bg("316_livingroom/bitch_0_d0.jpg");
+                chat(104, 316);
+            }
+            else
+                room316.chatcatch("checkPanties");
+            break;
+        case "checkPanties":
+            if (cl.hasClothing("panties", "j")) {
+                chat(107, 316);
+            }
+            else {
+                nav.bg("316_livingroom/bitch_0_1.jpg");
+                chat(108, 316);
+            }
+            break;
+        case "checkChastity":
+            nav.bg("316_livingroom/bitch_0_2.jpg");
+            if (cl.c.chastity !== null)
+                chat(109, 316);
+            else
+                chat(110, 316);
+            break;
+        case "bitch_0_end":
+            sc.startMission("janice", "bitch");
+            sc.completeMissionTask("janice", "bitch", 0);
             break;
         default:
             break;
@@ -1580,10 +1634,149 @@ room316.chat = function (chatID) {
             },
             {
                 chatID: 102,
-                speaker: "me",
-                text: "This is the end of this path for this release. More to come later. ",
+                speaker: "janice",
+                text: "You didn't feed my poor little doggy every day! The poor thing! If you " +
+                    "can't respect me enough to take care of my doggy, then you don't deserve " +
+                    "these big round beautiful tits! Take a long look, becuase this is the last " +
+                    "time you'll ever see them! We're over! Bye bye loser! Now get out before I sick " +
+                    sc.n("dog") + " on you! ",
                 button: [
-                    { chatID: -1, text: "...", callback: "leave" },
+                    { chatID: 103, text: "aw crap. Ok, bye", callback: "breakupDogsit" },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "janice",
+                text: "You're the greatest boyfriend ever! " + sc.n("dog") + " is going to be " +
+                    "so happy to see you too! ",
+                button: [
+                    { chatID: -1, text: "Awww thanks!", callback: "checkDog" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "janice",
+                text: sc.n("dog") + "!!! What are you doing!?!",
+                button: [
+                    { chatID: 105, text: "aaaakk!!", callback: "bitch_0_d1" },
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "janice",
+                text: "Bad doggy! Bad! Sorry about that. I don't know what got into him. He's " +
+                    "usually so lovable and cuddly. You can put your clothes back on, I'm going " +
+                    "to lock him in my room. ",
+                button: [
+                    { chatID: 106, text: "Thanks", callback: "bg" },
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "thinking",
+                text: "Oh wow, that was close. I was afraid he was going to rape my ass right in " +
+                    "front of her. I can't even imagine what she would do. Probably tell everyone " +
+                    "I'm a dog's bitch. I'd have to move and never show my face in this town again.",
+                button: [
+                    { chatID: 107, text: "...", callback: "checkPanties" },
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "janice",
+                text: "So. I seem to be missing a pair of panties and a bra that were there " +
+                    "before I left. You wouldn't know anything about that would you? ",
+                button: [
+                    { chatID: 108, text: "I uh.. what. No", callback: "" },
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "janice",
+                text: "So, anyways. I do owe you for watching my cuddly cute doggy! Give me that dick " +
+                    "I'm going to lose my virginity to you now! Please I need to be filled with your cum! ",
+                button: [
+                    { chatID: -1, text: "Oooh yeah", callback: "checkChastity" },
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "janice",
+                text: "Oh. Is that a chastity cage? Why are you wearing that? I thought you liked me. Do you " +
+                    "not want to have sex with me? ",
+                button: [
+                    { chatID: 110, text: "I do. I forgot I had it on. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "janice",
+                text: //change this to sex
+                    "So does it get hard? Why is it so floppy. Do you not think I'm sexy? " +
+                    "Maybe you don't want to have sex with me? ",
+                button: [
+                    { chatID: 111, text: "It gets hard! I don't know why it's not. I do like you, and I totally want to have sex with you!", callback: "" },
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "janice",
+                text: "Here I am throwing myself at you, completely naked, ready to lose my virginity " +
+                    "to you and you do this? Do you not know how much time I spent thinking of this " +
+                    "moment all week? I was going to show you how much I love you with my body. " +
+                    "You don't love me do you? You're just using me!",
+                button: [
+                    { chatID: 112, text: "No. I do love you. I'm sorry we can't have sex right now. I'll make it up to you! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "janice",
+                text: "Hrumph! Maybe I should just date that nice waiter from the restaurant. I'll " +
+                    "bet he would fuck me! He's not some pathetic dicked loser who can't fuck his girlfriend! ",
+                button: [
+                    { chatID: 113, text: "That guy's an asshole! You want to come? I'll bend you over this couch and eat your pussy right now! ", callback: "" },
+                    { chatID: 116  , text: "I am a pathetic dicked loser. You're right. ", callback: "" },
+
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "janice",
+                text: "I'm not horny anymore. Why don't you just go. I don't know if we should be " +
+                    "together anymore. ",
+                button: [
+                    { chatID: 114, text: "Because of this! You just want to fuck the waiter! ", callback: "" },
+
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "janice",
+                text: "It has nothing to do with the waiter. Just go. Let me think if you're worth " +
+                    "my time. ",
+                button: [
+                    { chatID: 115, text: "Baby...", callback: "" },
+
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "janice",
+                text: "No! Go. I need to think. ",
+                button: [
+                    { chatID: -1, text: "ok...", callback: "bitch_0_end" },
+
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "janice",
+                text: "I know. I don't know if I have room in my life for a loser like you. " +
+                    "You should go while I think about my future and if you're going to be a part of it.",
+                button: [
+                    { chatID: -1, text: "ok...", callback: "bitch_0_end" },
+
                 ]
             },
         ];

@@ -144,17 +144,17 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
+                missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
                     [
                         { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
-                missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
+                missionName: "date", mStatus: 0, title: "Practice dates", desc: "You two should practice for the real thing.", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 404 },
                     ]
             },
         ],
@@ -179,17 +179,11 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
+                missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
                     [
                         { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
-                    ]
-            },
-            {
-                missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
-                    [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
 
@@ -200,16 +194,13 @@ sc.charMission = [
             {
                 missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
                     [
-                        { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 16 },
-                        { id: 2, txt: "Sit down. Watch TV with me", show: true, mStatus: 0, roomId: 16 },
-                    ]
-            },
-            {
-                missionName: "chores", mStatus: 1, title: "Chores", desc: "Get an allowance for doing chores around the house. ", task:
-                    [
-                        { id: 0, txt: "Washt the dishes. ", show: true, mStatus: 1, roomId: 16 },
-                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 26 },
+                        { id: 1, txt: "Help at the sperm bank. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 2, txt: "Come to the sperm bank Saturday morning. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 3, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
+                        { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
+                        { id: 6, txt: "Your past", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
             {
@@ -226,14 +217,21 @@ sc.charMission = [
                         { id: 0, txt: "Talk about butts ", show: true, mStatus: 0, roomId: 14 },
                         { id: 1, txt: "Forbidden kiss.", show: true, mStatus: 0, roomId: 14 },
                         { id: 2, txt: "Wet Pussy Lips", show: true, mStatus: 0, roomId: 14 },
-                        { id: 3, txt: "Oral Pleasure. ", show: true, mStatus: 0, roomId: 14 },
-                        { id: 4, txt: "Learn to eat pussy [Oral Level 4]", show: true, mStatus: 0, roomId: 14 },
+                        { id: 3, txt: "Testing a new toy. ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 4, txt: "Oral Pleasure. ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 5, txt: "Learn to eat pussy [Oral Level 1]", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {
                 missionName: "misc", mStatus: -1, title: "random Events", desc: "Random", task:
                     [
                         { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 14 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: -1, title: "Naughty girl", desc: "You're her sissy now.", task:
+                    [
+                        { id: 0, txt: "Have the talk", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
         ]
@@ -333,7 +331,7 @@ sc.charMission = [
             {
                 missionName: "bitch", mStatus: 1, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
                     [
-                        { id: 0, txt: "Back from vacation", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
                     ]
             },
         ]
@@ -533,6 +531,20 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "ppgirl", mission: [
+            {
+                missionName: "pp", mStatus: 0, title: "PP Girl", desc: "Pee pee?", task:
+                    [
+                        { id: 0, txt: "Caught her peeing!", show: true, mStatus: 0, roomId: 461 },
+                        { id: 1, txt: "Interrupting pee", show: true, mStatus: 0, roomId: 461 },
+                        { id: 2, txt: "Really! Again!", show: true, mStatus: 0, roomId: 461 },
+                        { id: 3, txt: "You're her toilet", show: true, mStatus: 0, roomId: 461 },
+                    ]
+            },
+        ]
+    },
+    
 ];
 
 sc.mStatus = function (mStatus) {
@@ -550,6 +562,7 @@ sc.i = function (name) {
     for (var i = 0; i < sc.char.length; i++)
         if (sc.char[i].name === name)
             return i;
+    console.log("char not found. Name: " + name);
     return -1;
 };
 
@@ -826,7 +839,7 @@ sc.modMissionTask = function (name, missionName, taskId, modNum) {
     }
 };
 
-sc.completeMission = function (name, missionName, success) {
+sc.completeMission = function (name, missionName, success = true) {
     sc.setMission(name, missionName, success ? 100 : 101);
 };
 
@@ -1521,7 +1534,10 @@ sc.trivial = function (charname) {
             image = "sanaria.png";
             break;
         case "!kareem":
-            name = "Kareem";
+            if (sissy.st[10].ach)
+                name = "Kesia"
+            else
+                name = "Kareem";
             image = "kareem.png";
             break;
         case "!philbert":
@@ -1529,15 +1545,26 @@ sc.trivial = function (charname) {
             image = "philbert.png";
             break;
         case "!chris":
-            name = "Chris";
+            if (sissy.st[10].ach)
+                name = "Chrissy"
+            else
+                name = "Chris";
             image = "chris.png";
             break;
         case "!thomas":
-            name = "Thomas";
+            if (sissy.st[10].ach)
+                name = "Thomas";
+            else
+                name = "Sinéad";
             image = "thomas.png";
             break;
         case "!timothy":
-            name = "Timothy";
+            if (sissy.st[10].ach) {
+                name = "Trixy"
+            }
+            else {
+                name = "Timothy";
+            }
             image = "timothy.png";
             break;
         case "!sporty":
@@ -1631,6 +1658,14 @@ sc.trivial = function (charname) {
         case "!chem":
             name = "Chemist";
             image = "chem.png";
+            break;
+        case "!elijah":
+            name = "Elijah";
+            image = "elijah.png";
+            break;
+        case "!rex":
+            name = "Mr. Rex";
+            image = "rex.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

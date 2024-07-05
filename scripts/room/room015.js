@@ -51,7 +51,7 @@ room15.main = function () {
             });
         }
 
-        if (!daily.get("momChoreDishes") && sc.getstep("landlord") < 200) {
+        if (!daily.get("momChoreDishes") && sc.getMission("landlord", "sissy").notStarted) {
             btnList.push({
                 "type": "btn",
                 "name": "dishes",

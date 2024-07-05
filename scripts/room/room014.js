@@ -7,10 +7,10 @@ room14.main = function () {
             nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
         }
     }
-    
 
     var btnList = new Array();
     g.internal = { pussy: 0, asshole: 0 };
+    
     if (!g.hourBetween(6, 22)) {
         if (sc.getTimeline("bigguy").thisRoom) {
             btnList = [{
@@ -55,30 +55,26 @@ room14.main = function () {
             }
         }
         else {
-            btnList = [{
-                "type": "btn",
-                "name": "motherRobe",
-                "left": 844,
-                "top": 195,
-                "width": 499,
-                "height": 885,
-                "image": "14_motherRoom/14_motherRobe.png"
-            }];
+            if (sc.getMission("landlord", "man").notStarted && g.rand(0, 2) === 0 && sc.getLevel("landlord") < 5) {
+                nav.bg("14_motherRoom/mast.jpg");
+                chat(69, 14);
+                btnList = new Array();
+            }
+            else {
+                btnList = [{
+                    "type": "btn",
+                    "name": "motherRobe",
+                    "left": 844,
+                    "top": 195,
+                    "width": 499,
+                    "height": 885,
+                    "image": "14_motherRoom/14_motherRobe.png"
+                }];
+            }
         }
     }
     else {
-        if (daily.get("momChoreBed")) {
-            btnList.push({
-                "type": "img",
-                "name": "bedmade",
-                "left": 939,
-                "top": 755,
-                "width": 776,
-                "height": 325,
-                "image": "14_motherRoom/14_bedmade.png"
-            });
-        }
-        else {
+        if (!daily.get("momChoreBed")) {
             btnList.push({
                 "type": "btn",
                 "name": "bedMessy",
@@ -90,26 +86,24 @@ room14.main = function () {
                 "image": "14_motherRoom/14_bed.png"
             });
         }
-        btnList = [
-            {
-                "type": "btn",
-                "name": "closet",
-                "left": 414,
-                "top": 375,
-                "width": 461,
-                "height": 538,
-                "image": "14_motherRoom/14_closet.png"
-            },
-            {
-                "type": "btn",
-                "name": "dresser",
-                "left": 1569,
-                "top": 781,
-                "width": 317,
-                "height": 299,
-                "image": "14_motherRoom/dresserDay.png"
-            }];
-        
+        btnList.push({
+            "type": "btn",
+            "name": "closet",
+            "left": 414,
+            "top": 375,
+            "width": 461,
+            "height": 538,
+            "image": "14_motherRoom/14_closet.png"
+        });
+        btnList.push({
+            "type": "btn",
+            "name": "dresser",
+            "left": 1569,
+            "top": 781,
+            "width": 317,
+            "height": 299,
+            "image": "14_motherRoom/dresserDay.png"
+        });
     }
 
     navList = [16];
@@ -155,26 +149,9 @@ room14.btnclick = function (name) {
             break;
         case "bedMessy":
             nav.killbutton("bedMessy");
-            nav.button({
-                "type": "img",
-                "name": "bedmade",
-                "left": 939,
-                "top": 755,
-                "width": 776,
-                "height": 325,
-                "image": "14_motherRoom/14_bedmade.png"
-            }, 14);
-            nav.button({
-                "type": "btn",
-                "name": "dresser",
-                "left": 1569,
-                "top": 781,
-                "width": 317,
-                "height": 299,
-                "image": "14_motherRoom/dresserDay.png"
-            }, 14);
+            sc.modLevel("landlord", 15, 4);
             daily.set("momChoreBed");
-            gv.mod("rentKnockOff", 5);
+            gv.mod("money", 5);
             chat(9, 14);
             break;
         case "pic":
@@ -191,19 +168,31 @@ room14.btnclick = function (name) {
             char.room(14);
             break;
         case "motherRobe":
-            var llstep = sc.taskGetStep("landlord", "man");
             if (!daily.get("landlord")) {
                 if (gv.get("jobapplyconst") < 2)
                     chat(10, 14);
+                else if (sc.getLevel("landlord") < 5) {
+                    if (!daily.get("landlordChat")) {
+                        daily.set("landlordChat");
+                        chat(70, 14);
+                    }
+                    else
+                        chat(14, 14);
+                }
+                else if (daily.get("landlord")) {
+                    chat(14, 14);
+                }
                 else {
+                    var llstep = sc.taskGetStep("landlord", "man");
+                    daily.set("landlord");
                     switch (llstep) {
                         case -1: chat(15, 14); break;
-                        case 0: daily.set("landlord"); chat(11, 14); break;
+                        case 0: chat(11, 14); break;
                         case 1: chat(17, 14); break;
                         case 2: chat(26, 14); break;
-                        case 3: chat(45, 14); break;
-                        case 4: chat(54, 14); break;
-                        case 5: chat(59, 14); break;
+                        case 3: chat(59, 14); break;
+                        case 4: chat(45, 14); break;
+                        case 5: chat(54, 14); break;
                         default: chat(14, 14); break;
                     }
                 }
@@ -339,25 +328,25 @@ room14.btnclick = function (name) {
             break;
         case "task_3_3":
             nav.kill();
-            if (levels.get("oral").l < 4) {
+            if (levels.get("oral").l < 1) {
                 g.popUpNotice("Oral level too low. Her orgasm failed. ");
-                nav.bg("task_3_3.jpg");
+                nav.bg("14_motherRoom/task_3_3.jpg");
                 chat(50, 14);
             }
             else {
-                nav.bg("task_3_3a.jpg");
+                nav.bg("14_motherRoom/task_3_3a.jpg");
                 chat(51, 14);
             }
             break;
         case "task_4_1":
             nav.kill();
-            if (levels.get("oral").l < 4) {
+            if (levels.get("oral").l < 1) {
                 g.popUpNotice("Oral level too low. Her orgasm failed. ");
-                nav.bg("task_3_3.jpg");
+                nav.bg("14_motherRoom/task_3_3.jpg");
                 chat(56, 14);
             }
             else {
-                nav.bg("task_3_3a.jpg");
+                nav.bg("14_motherRoom/task_3_3a.jpg");
                 chat(51, 14);
             }
             break;
@@ -385,6 +374,7 @@ room14.chatcatch = function (callback) {
         case "task_5_4":
         case "task_5_5":
         case "task_5_6":
+        case "task_5_3":
             nav.bg("14_motherRoom/" + callback + ".jpg");
             break;
         case "task1_1":
@@ -422,7 +412,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task1_2":
-            if (sc.getLevel("landlord") > 1) {
+            if (sc.getLevel("landlord") > 5) {
                 nav.bg("14_motherRoom/task1_2.jpg");
                 g.internal = 0;
                 nav.next("task1_2");
@@ -489,7 +479,7 @@ room14.chatcatch = function (callback) {
             nav.next("task_3_4");
             break;
         case "task_2_end":
-            sc.modLevel("landlord", 999, 3);
+            sc.modLevel("landlord", 50, 10);
             sc.completeMissionTask("landlord", "man", 2, true);
             char.addtime(30);
             daily.set("landlord");
@@ -497,14 +487,16 @@ room14.chatcatch = function (callback) {
             break;
         case "task_3_end":
             levels.oralGive(3, false, false, "f");
+            levels.mod("oral", 50, 0);
             char.addtime(60);
-            levels.mod("landlord", 5, 3);
-            sc.completeMissionTask("landlord", "man", 3, true);
+            levels.mod("landlord", 50, 10);
+            sc.completeMissionTask("landlord", "man", 4, true);
             daily.set("landlord");
             char.room(16);
             break;
         case "task_4_end":
             levels.oralGive(3, false, false, "f");
+            levels.mod("oral", 50, 0);
             char.addtime(60);
             levels.mod("landlord", 5, 3);
             daily.set("landlord");
@@ -513,8 +505,11 @@ room14.chatcatch = function (callback) {
         case "task_4_goodend":
             levels.oralGive(3, false, false, "f");
             char.addtime(60);
-            levels.mod("landlord", 5, 3);
-            sc.completeMissionTask("landlord", "man", 4, true);
+            levels.mod("landlord", 75, 10);
+            if (!sc.getMissionTask("landlord", "man", 4).complete) {
+                sc.completeMissionTask("landlord", "man", 4, true);
+            }
+            sc.completeMissionTask("landlord", "man", 5, true);
             daily.set("landlord");
             char.room(16);
             break;
@@ -543,10 +538,13 @@ room14.chatcatch = function (callback) {
             if (cl.c.chastity !== null) {
                 chat(60, 14);
             }
+            else if (cl.getEntry("panties", cl.c.panties).sex === "f") {
+                chat(73, 14);
+            }
             else {
                 nav.killall();
                 nav.bg("14_motherRoom/task_5_0.jpg");
-                chat(61, 14);
+                chat(62, 14);
             }
             break;
         case "manFail":
@@ -557,6 +555,21 @@ room14.chatcatch = function (callback) {
         case "secretOut":
             sc.modSecret("landlord", 100);
             daily.set("landlord");
+            char.room(16);
+            break;
+        case "sub5End":
+            sc.modLevel("landlord", 30, 10);
+            break;
+        case "manMissionStart":
+            sc.modLevel("landlord", 15, 10);
+            sc.startMission("landlord", "man");
+            break;
+        case "task_5_end":
+            sc.modLevel("landlord", 50, 10);
+            sc.completeMissionTask("landlord", "man", 3);
+            char.addtime(79);
+            sex.mod("hand", false, "f", 1);
+            dreams.add("dream_landlordHandjob");
             char.room(16);
             break;
         default:
@@ -640,7 +653,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "thinking",
-                text: "$5 dollars knocked off the rent this week.",
+                text: "She must think I'm her maid, making her bed every day. ",
                 button: []
             },
             {
@@ -654,7 +667,7 @@ room14.chat = function (chatID) {
                 speaker: "landlord",
                 text: "You know a man with a job is the sexiest thing there is. With your good looks you'll have to beat those young " +
                     "girls away with a stick. If I was younger I would be all over you. Now you get that cute butt out of here so I " +
-                    "can dream. ",
+                    "can sleep. ",
                 button: [
                     { chatID: 12, text: "My cute butt wants to stare at your cute butt a bit longer.", callback: "domlaugh" },
                     { chatID: -1, text: "Ok. Good night.", callback: "leave" },
@@ -699,7 +712,7 @@ room14.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Ok, ok. Smart ass. Run along. I'm getting ready for bed.  ",
                 button: [
-                    { chatID: -1, text: "Good night. ", callback: "levelLeave" },
+                    { chatID: -1, text: "Good night. ", callback: "manMissionStart" },
                 ]
             },
             {
@@ -1067,9 +1080,9 @@ room14.chat = function (chatID) {
                 text: "Oh good you're here! I have a new device from work I need to try out and I don't have " +
                     "a penis. I get some free samples to try out at the Sperm Bank, but " + sc.n("bigguy") +
                     " hates using toys so I never get to try them. Pull down your pants and give me your " +
-                    "penis. ",
+                    "penis. So I can see if this really works. ",
                 button: [
-                    { chatID: -1, text: "Ok. ", callback: "task_5_0" },
+                    { chatID: 72, text: "What kind of device? ", callback: "" },
                     { chatID: -1, text: "I'm not ready for that yet. ", callback: "" },
                 ]
             },
@@ -1101,58 +1114,104 @@ room14.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 62,
+                chatID: 63,
                 speaker: "landlord",
                 text: "Oh sorry. I lost my thoughts for a minute. Yeah, the toy. Here it is. Let me lube it " +
                     "up. ",
                 button: [
-                    { chatID: 63, text: "...", callback: "task_5_2" },
+                    { chatID: 64, text: "...", callback: "task_5_2" },
                 ]
             },
             {
-                chatID: 63,
+                chatID: 64,
                 speaker: "landlord",
-                text: "You want to get the hole nice and lubed. Every guy like a wet sloppy pussy. This " +
+                text: "You want to get the hole nice and lubed. Every guy likes a wet sloppy pussy. This " +
                     "one is pretty tight, but I'll be able to squeeze your cock into it. ",
                 button: [
-                    { chatID: 64, text: "*gulp*", callback: "task_5_3" },
+                    { chatID: 65, text: "*gulp*", callback: "task_5_3" },
                 ]
             },
             {
-                chatID: 63,
+                chatID: 65,
                 speaker: "landlord",
                 text: "A little drip is good. That's how you know you have enough. Now I'm going to slide " +
                     "my tight little toy around your cock. You'll feel a slight grip as the ridges inside " +
                     "pull at your frenulum and penis crown. Now just relax and don't be afraid to cum right " +
                     "away. It's perfectly normal. ",
                 button: [
-                    { chatID: 64, text: "*gulp*", callback: "task_5_4" },
+                    { chatID: 66, text: "*gulp*", callback: "task_5_4" },
                 ]
             },
             {
-                chatID: 64,
+                chatID: 66,
                 speaker: "landlord",
                 text: "I can feel your breath on my cheek. You're so sexy when you give me control. I can't " +
                     "help myself. ",
                 button: [
-                    { chatID: 65, text: "Oooo mMMmmm", callback: "task_5_5" },
+                    { chatID: 67, text: "Oooo mMMmmm", callback: "task_5_5" },
                 ]
             },
             {
-                chatID: 64,
+                chatID: 67,
                 speaker: "landlord",
                 text: "Oh baby, cum for me. Shoot your load of cum into my pleasure sleeve.  ",
                 button: [
-                    { chatID: 65, text: "oooo... fffuck", callback: "task_5_6" },
+                    { chatID: 68, text: "oooo... fffuck", callback: "task_5_6" },
                 ]
             },
             {
-                chatID: 65,
+                chatID: 68,
                 speaker: "landlord",
                 text: "Good boy. I'll take this cum to work and analyze it. It's getting late. You go get some " +
                     "sleep. A well rested boy is a happy boy. ",
                 button: [
-                    { chatID: 65, text: "Yes " + sc.n("landlord") + ". ", callback: "task_5_end" },
+                    { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "task_5_end" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "thinking",
+                text: "Oh wow. She's so hot cumming all over that vibrator. She really is a " +
+                    "horny girl. I better close the door before she catches me. She would be " +
+                    "so pissed that I watched her in her private moment. ",
+                button: [
+                    { chatID: -1, text: "[Silently back out and close the door.]", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "landlord",
+                text: "I'm so glad you have a job! Such a big boy now!  ",
+                button: [
+                    { chatID: 71, text: "I am a big boy. Do you want to how big I am? ", callback: "" },
+                    { chatID: -1, text: "Thanks", callback: "" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "landlord",
+                text: "Stop trying to hit on your " + sc.n("landlord") + " or I'll bend you over " +
+                    "my knee again. Such a dirty boy!",
+                button: [
+                    { chatID: -1, text: "Sorry [Need to reach level 5 to go further]", callback: "sub5End" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "landlord",
+                text: "Stop being a little baby and show me your penis. I know you've been " +
+                    "looking forward to this, I've seen the way you stare at my tits. ",
+                button: [
+                    { chatID: -1, text: "Ok. [Pull down your pants]", callback: "task_5_0" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "landlord",
+                text: "Are you wearing panties? Oh honey. I know men that wear panties. You're a sissy " +
+                    "aren't you. It's ok. Tell " + sc.n("landlord") + " you're a sissy. ",
+                button: [
+                    { chatID: 61, text: "Oh. I'm a sissy " + sc.n("landlord") + ". ", callback: "" },
                 ]
             },
         ];

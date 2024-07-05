@@ -16,6 +16,10 @@ room175.main = function () {
                 chat(26, 175);
             }
             break;
+        case "anal212":
+            nav.bg("175_anal/anal212_0.jpg");
+            chat(44, 175);
+            break;
     }
 };
 
@@ -44,7 +48,27 @@ room175.chatcatch = function (callback) {
         case "anal102":
         case "anal103":
         case "lube0":
+        case "anal212_1":
+        case "anal212_2":
+        case "anal212_3":
+        case "anal212_4":
+        case "anal212_5":
+        case "anal212_6":
+        case "anal212_7":
+        case "anal212_9":
+        case "anal212_10":
+        case "anal212_11":
             nav.bg("175_anal/" + callback + ".jpg");
+            break;
+        case "anal212_3_w":
+        case "anal212_5_w":
+        case "anal212_7_w":
+            var tw = callback.replace("_w", "");
+            nav.bg("175_anal/" + tw + ".jpg");
+            levels.mod("anal", 15, 999);
+            break;
+        case "anal212_8":
+            nav.bg("175_anal/" + callback + ".gif");
             break;
         case "lube1":
         case "lube2":
@@ -109,6 +133,10 @@ room175.chatcatch = function (callback) {
             break;
         case "lubeEnd":
             inv.addMulti("lube", 3);
+            sissy.passclass(true);
+            break;
+        case "anal212_end":
+            levels.anal(4, false, "m", true, null);
             sissy.passclass(true);
             break;
         default:
@@ -511,6 +539,182 @@ room175.chat = function (chatID) {
                 "biggest dildo you can find and breaking your tender assholes before the fun begin. ",
             button: [
                 { chatID: -1, text: "[Get your lube and go]", callback: "lubeEnd" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "p",
+            text: "So many sluts for my anal class! This is my favorite class to teach. We're going to " +
+                "play a game called What's in my butt. I'm going to need a volunteer to bend over my bench " +
+                "facing the class. You're going to be blindfolded and I'm going to put different things " +
+                "up your butt and you try to guess what they are. This will teach you how to pay attention " +
+                "and focus on the feeling inside your sissy pussies. So who's my volunteer? ",
+            button: [
+                { chatID: 46, text: "I volunteer!", callback: "" },
+                { chatID: 45, text: "[Stay silent]", callback: "" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "philbert",
+            text: sc.n("me") + " said she wanted to volunteer, but is too shy. ",
+            button: [
+                { chatID: 46, text: "What? No I didn't!", callback: "" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "p",
+            text: "Excellent choice. " + sc.n("me") + " come up front and bend over my bench. I'll blind fold " +
+                "you and you tell us what's in your butt. ",
+            button: [
+                { chatID: 47, text: "..ok", callback: "anal212_1" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "p",
+            text: "Now class be quit. " + sc.n("me") + " needs to focus on her bussy and tell us what I inserted. " +
+                "Are you ready for your first object? ",
+            button: [
+                { chatID: 48, text: "Oh yes! So ready!", callback: "anal212_2" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "p",
+            text: "Now what object and color did I put in your pussy?",
+            button: [
+                { chatID: 49, text: "Black hammer ", callback: "anal212_3" },
+                { chatID: 50, text: "Little pink butt plug ", callback: "anal212_3_w" },
+                { chatID: 49, text: "Green cucumber ", callback: "anal212_3" },
+                { chatID: 49, text: "Little blue butt plug ", callback: "anal212_3" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "p",
+            text: "Nope! It was a little pink butt plug. Let's try something else. ",
+            button: [
+                { chatID: 51, text: "...", callback: "anal212_4" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "p",
+            text: "Correct! 15 points for Gryffindor. Let's see what's next. ",
+            button: [
+                { chatID: 51, text: "...", callback: "anal212_4" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "p",
+            text: "Same thing. Guess the color and object.  ",
+            button: [
+                { chatID: 52, text: "A big black cock", callback: "anal212_5" },
+                { chatID: 52, text: "Pink dildo", callback: "anal212_5" },
+                { chatID: 52, text: "Cucumber", callback: "anal212_5" },
+                { chatID: 53, text: "White dildo", callback: "anal212_5_w" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "p",
+            text: "Nope! A white cock dildo. ",
+            button: [
+                { chatID: 54, text: "Awwww", callback: "anal212_6" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "p",
+            text: "Impressive. You do know your cocks. ",
+            button: [
+                { chatID: 54, text: "Yeah", callback: "anal212_6" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "p",
+            text: "This is a tricky one, unless you've had one of these up your butt before. What is up your ass?",
+            button: [
+                { chatID: 56, text: "Barbie", callback: "anal212_7_w" },
+                { chatID: 55, text: "Pink dildo", callback: "anal212_7" },
+                { chatID: 55, text: "Toy soldier", callback: "anal212_7" },
+                { chatID: 55, text: "Cucumber", callback: "anal212_7" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "p",
+            text: "Nope. It's a barbie. I almost thought you would get thine one right. Ready for " +
+                "your final object?",
+            button: [
+                { chatID: 57, text: "I am", callback: "anal212_8" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "p",
+            text: "You are a little freak! I love it. Now for your final object. ",
+            button: [
+                { chatID: 57, text: "...", callback: "anal212_8" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "me",
+            text: "OOoo! Ow! Ow ow ow ow! OOOofff that really hurts! I'm not ready! It's a cock. There's " +
+                "a big black cock in my ass!",
+            button: [
+                { chatID: 58, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "p",
+            text: "Ooooo I do love a good guess. Let's take this blind fold off so you can see " +
+                "if you're right!",
+            button: [
+                { chatID: 59, text: "Oooofff ow ow ow ow!", callback: "anal212_9" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "p",
+            text: "It looks like you're right! Now time for your reward. Malik fill her sissy ass " +
+                "with a fresh load of cum. ",
+            button: [
+                { chatID: 60, text: "Oh yes! Fill my ass!", callback: "anal212_10" },
+                { chatID: 60, text: "Oh no! Please don't!", callback: "anal212_10" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "philbert",
+            text: "What a slut! You really are a cock whore!",
+            button: [
+                { chatID: 61, text: "UUgghhhh", callback: "" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "p",
+            text: "Yes she is. Something you should try harder to achieve. Now, " + sc.n("me") + 
+                ", turn around and clean his cock off. " + sc.n("!thomas") + ", get down there and " +
+                "clean her cum dripping pussy. I want all the leftover cum in both your bellies. ",
+            button: [
+                { chatID: 62, text: "ok", callback: "anal212_11" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "p",
+            text: "Good girls. This concludes the class. For those of you that didn't get fucked, " +
+                "too bad. Boring sluts don't get fucked. You can invite a friend over and practice at home. ",
+            button: [
+                { chatID: -1, text: "[Complete Class]", callback: "anal212_end" },
             ]
         },
     ];
