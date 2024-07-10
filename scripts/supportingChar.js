@@ -220,6 +220,10 @@ sc.charMission = [
                         { id: 3, txt: "Testing a new toy. ", show: true, mStatus: 0, roomId: 14 },
                         { id: 4, txt: "Oral Pleasure. ", show: true, mStatus: 0, roomId: 14 },
                         { id: 5, txt: "Learn to eat pussy [Oral Level 1]", show: true, mStatus: 0, roomId: 14 },
+                        { id: 6, txt: "Will they or won't they?", show: true, mStatus: 0, roomId: 14 },
+                        { id: 7, txt: "Dominance", show: true, mStatus: 0, roomId: 14 },
+                        { id: 8, txt: "Coitus interruptus", show: true, mStatus: 0, roomId: 14 },
+                        { id: 9, txt: "You've turned her into a cum sponge", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {

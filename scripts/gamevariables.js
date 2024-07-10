@@ -878,6 +878,11 @@ levels.oralGive = function (size, swallow, isDildo, gender = null) {
     }
 }
 
+levels.getBlowJob = function (who, gender) {
+    cl.doCum(false);
+    sex.mod("oral", false, gender, 1);
+};
+
 levels.anal = function (size, sissygasm = false, gender = null, creampie = false, beast = null) {
     switch (levels.analTake(size).n) {
         case "noop":
@@ -1277,6 +1282,7 @@ levels.fuckpussy = function (who) {
     sex.mod("pussy", true, "f", 1);
     if (gv.get("virginDick") === null) {
         gv.set("virginDick", who);
+        //dreams.add("virginDick_" + who);
         g.popUpNotice("You lost your virginity");
     }
 };

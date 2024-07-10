@@ -443,6 +443,10 @@ room9.btnclick = function (name) {
                 "image": "9_computer/09_close.png"
             }, 9);
             break;
+        case "jackoff4":
+            nav.killbutton("jackoff4");
+            chat(12, 9);
+            break;
         default:
             break;
     }
@@ -450,6 +454,15 @@ room9.btnclick = function (name) {
 
 room9.chatcatch = function (callback) {
     switch (callback) {
+        case "jackoff3":
+        case "jackoff5":
+        case "jackoff6":
+            nav.bg("9_computer/" + callback + ".jpg");
+            break;
+        case "jackoff4":
+            nav.bg("9_computer/" + callback + ".gif");
+            nav.next("jackoff4");
+            break;
         case "reset":
             char.room(9);
             break;
@@ -462,6 +475,12 @@ room9.chatcatch = function (callback) {
             break;
         case "powerOff":
             room9.btnclick("powerOff");
+            break;
+        case "jackoffEnd":
+            sex.mod("boob", false, "f", 1);
+            sc.modLevel("landlord", 20, 10);
+            cl.doCum();
+            char.room(10);
             break;
         default:
             break;
@@ -534,7 +553,7 @@ room9.chat = function(chatID){
                 sc.n("bigguy") + " on the other hand never masturbates. He says his hands don't feel as good " +
                 "as my.. well, you know. Masturbation is fine. Like practicing for real sex. ",
             button: [
-                { chatID: 8, text: sc.n("landlord") + ".", callback: "" }
+                { chatID: 8, text: "*blush*", callback: "" }
             ]
         },
         {
@@ -544,7 +563,7 @@ room9.chat = function(chatID){
                 "know I know a few tricks from the store. Show " + sc.n("landlord") + " you penis. I'll help you " +
                 "practice for the real thing. ",
             button: [
-                { chatID: 9, text: "[Show her your penis]", callback: "jackoff3" },
+                { chatID: 11, text: "[Show her your penis]", callback: "jackoff3" },
                 { chatID: 10, text: "Yelp and run away. ", callback: "runaway" },
             ]
         },
@@ -557,12 +576,48 @@ room9.chat = function(chatID){
             ]
         },
         {
-            chatID: 9,
+            chatID: 10,
             speaker: "thinking",
             text: "She totally caught me. I'm so embarrased. I'll never be able to look her in the eyes again. " +
                 "Fuck.",
             button: [
                 { chatID: 10, text: "...", callback: "powerOff" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "landlord",
+            text: "Such a waste of a good boner waste on mastrubation. Wouldn't you like to rub it " +
+                "betwen my big fat titties instead?",
+            button: [
+                { chatID: -1, text: "oh yeah!", callback: "jackoff4" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "landlord",
+            text: "Doesn't that feel good rubbing your penis between my juicy titties? So much " +
+                "better than your hand. Now cum for me. Show me how much you love rubbing your " +
+                "penis between my breasts. ",
+            button: [
+                { chatID: 13, text: "FFFfffff", callback: "jackoff5" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "landlord",
+            text: "My little boy is such a big cummer! Wow!",
+            button: [
+                { chatID: 14, text: "*panting*", callback: "jackoff6" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "landlord",
+            text: "It's a good thing your " + sc.n("el") + " never leave their room. I don't think " +
+                "I'ld be able to explain how your cum got all over me. ",
+            button: [
+                { chatID: -1, text: "haha yeah", callback: "jackoffEnd" }
             ]
         },
     ];

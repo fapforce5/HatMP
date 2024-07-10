@@ -138,7 +138,7 @@ room28.main = function () {
             g.popUpNotice("Took your hormone pill" + (inv.master[hx].entry ? "" : " - Out of pills"));
         }
     }
-
+    console.log(txtDisplay)
     if (!txtDisplay) {
         //check Transformation
         if (cl.c.chest === 0 && levels.st[12].l > 0) {
@@ -273,12 +273,12 @@ room28.dreams = function () {
                 break;
             case "firstTimeInPanties":
                 nav.bg("28_transformation/dream_firstTimeInPanties.jpg");
-                hastext = true;
+                hasText = true;
                 chat(15, 28);
                 break;
             case "dream_landlordHandjob":
                 nav.bg("28_transformation/dream_landlordHandjob.jpg");
-                hastext = true;
+                hasText = true;
                 chat(16, 28);
                 break;
         }
@@ -295,6 +295,7 @@ room28.dreams = function () {
         else if (g.pass === 181)
             nav.bg("181_black/bondage101_12.jpg");
     }
+    console.log(hasText);
     return hasText;
 };
 
