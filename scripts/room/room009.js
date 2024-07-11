@@ -369,6 +369,7 @@ room9.btnclick = function (name) {
                 weekly.set("momjerkoff");
                 nav.bg("9_computer/jackoff1.jpg");
                 if (sc.getLevel("landlord") < 2) {
+                    nav.killall();
                     chat(9, 9);
                 }
                 else {
@@ -447,6 +448,7 @@ room9.btnclick = function (name) {
             nav.killbutton("jackoff4");
             chat(12, 9);
             break;
+        
         default:
             break;
     }
@@ -481,6 +483,10 @@ room9.chatcatch = function (callback) {
             sc.modLevel("landlord", 20, 10);
             cl.doCum();
             char.room(10);
+            break;
+        case "porn":
+            nav.bg("9_computer/09_computer.jpg");
+            room9.btnclick("porn");
             break;
         default:
             break;
@@ -564,24 +570,25 @@ room9.chat = function(chatID){
                 "practice for the real thing. ",
             button: [
                 { chatID: 11, text: "[Show her your penis]", callback: "jackoff3" },
-                { chatID: 10, text: "Yelp and run away. ", callback: "runaway" },
+                { chatID: 15, text: sc.n("landlord") + "! AAAakkkk please leave!", callback: "" },
             ]
         },
         {
             chatID: 9,
             speaker: "landlord",
-            text: "Is that porn? Oh no. I'm so sorry. ",
+            text: "Is that porn? Are you masturbating?!? ",
             button: [
-                { chatID: 10, text: "aaak", callback: "jackoffCaught" }
+                { chatID: 10, text: "aaak " + sc.n("landlord") + "! You didn't knock! ", callback: "" }
             ]
         },
         {
             chatID: 10,
-            speaker: "thinking",
-            text: "She totally caught me. I'm so embarrased. I'll never be able to look her in the eyes again. " +
-                "Fuck.",
+            speaker: "landlord",
+            text: "It's my house. I don't need to knock. Now put your penis away and do something " +
+                "with your life. And stop wasting sperm. Ugh! I swear! I'm going to take your dirty " +
+                "laundry and clean it. I swear boys are so nasty.! ",
             button: [
-                { chatID: 10, text: "...", callback: "powerOff" }
+                { chatID: 16, text: "Yes " + sc.n("landlord") + ".", callback: "porn" }
             ]
         },
         {
@@ -618,6 +625,24 @@ room9.chat = function(chatID){
                 "I'ld be able to explain how your cum got all over me. ",
             button: [
                 { chatID: -1, text: "haha yeah", callback: "jackoffEnd" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "landlord",
+            text: "ok. If you play with it too much it will fall off. Try meeting some real girls " +
+                "honey. ",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "What terrible timing. She almost caught me jacking off. I'm so glad she didn't " +
+                "walk in when I was about to shoot my load. Fuck that would be embarrasing. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
             ]
         },
     ];

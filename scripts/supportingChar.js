@@ -146,9 +146,8 @@ sc.charMission = [
             {
                 missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
-                        { id: 2, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {

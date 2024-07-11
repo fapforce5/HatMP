@@ -319,8 +319,10 @@ room4.chatcatch = function (callback) {
             gv.mod("arousal", 53);
             sc.completeMissionTask("lola", "massage", g.internal.level, true);
             if (g.internal.level > 0) {
-                if (sc.getMission("lola", "spin").notStarted)
-                    sc.startMission("lola", "spin");
+                if (sc.getMission("lola", "games").notStarted) {
+                    sc.startMission("lola", "games");
+                    sc.completeMissionTask("lola", "games", 0);
+                }
             }
             sc.modLevel("lola", 38, g.internal.level);
             char.addtime(46);

@@ -188,8 +188,10 @@ room5.chatcatch = function (callback) {
             gv.mod("arousal", 53);
             sc.completeMissionTask("eva", "massage", g.internal.level, true);
             if (g.internal.level > 0) {
-                if (sc.getMission("eva", "spin").notStarted)
-                    sc.startMission("eva", "spin");
+                if (sc.getMission("eva", "games").notStarted) {
+                    sc.startMission("eva", "games");
+                    sc.completeMissionTask("eva", "games", 0);
+                }
             }
             if (g.internal.level > 2) {
                 sc.completeMission("eva", "massage", true);

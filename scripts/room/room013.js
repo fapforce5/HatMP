@@ -229,9 +229,9 @@ room13.btnclick = function (name) {
             sc.select("lolachat", "13_sisterRoom/icon_chatLola.png", 0);
             if (!sc.getMission("lola", "massage").notStarted)
                 sc.select("lolamassage", "13_sisterRoom/icon_massage.png", 1);
-            if (!sc.getMission("lola", "spin").notStarted)
+            if (sc.getMissionTask("lola", "games", 0).complete)
                 sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
-            if (!sc.getMission("lola", "tord").notStarted)
+            if (sc.getMissionTask("lola", "games", 1).complete)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
             //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
             sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
@@ -249,9 +249,9 @@ room13.btnclick = function (name) {
             sc.select("evachat", "13_sisterRoom/icon_chatEva.png", 0);
             if (!sc.getMission("eva", "massage").notStarted)
                 sc.select("evamassage", "13_sisterRoom/icon_feet.png", 1);
-            if (!sc.getMission("lola", "spin").notStarted)
+            if (sc.getMissionTask("eva", "games", 0).complete)
                 sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
-            if (sc.getMission("lola", "tord").inProgress)
+            if (sc.getMissionTask("eva", "games", 1).complete)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
             //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
             sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
@@ -301,6 +301,7 @@ room13.btnclick = function (name) {
             break;
         case "spin":
             if (!inv.has("wine")) {
+                room13.btnclick("clearChat");
                 chat(43, 13)
             }
             else if (!g.isNight()) {
