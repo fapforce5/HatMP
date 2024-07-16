@@ -16,7 +16,7 @@ room24.main = function () {
     };
     room24.chatcatch("evaTalk lolaSit");
     inv.use("wine");
-    if (sc.taskGetStep("eva", "spin") === 0) {
+    if (sc.taskGetStep("eva", "games") === 0) {
         sc.startMission("eva", "tord");
         sc.startMission("lola", "tord");
         sc.completeMissionTask("eva", "spin", 0);
@@ -532,7 +532,7 @@ room24.chatcatch = function (callback) {
                     sc.modLevel("eva", 10, 7);
                     break;
                 case "gameOver":
-                    if (sc.getMission("eva", "tord").notStarted) {
+                    if (sc.getMission("eva", "games").notStarted) {
                         sc.startMission("eva", "tord");
                         sc.startMission("lola", "tord");
                         chat(24, 24);
