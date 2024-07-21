@@ -38,6 +38,11 @@ room315.btnclick = function (name) {
             if (vacation.inProgress) {
                 char.room(316);
             }
+            else if (sc.getMission("janice", "breakup").inProgress) {
+                nav.killall();
+                nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg");
+                chat(14, 315);
+            }
             else {
                 var dateTask = sc.taskGetStep("janice", "date");
                 if (dateTask === 2) {
@@ -269,6 +274,14 @@ room315.chat = function (chatID) {
                 "$100 to take her out. ",
             button: [
                 { chatID: -1, text: "I'll have get more money. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "janice",
+            text: "Stop stalking me! We broke up! ",
+            button: [
+                { chatID: -1, text: "sigh.. ok ", callback: "reset" },
             ]
         },
     ];

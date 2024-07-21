@@ -111,7 +111,9 @@ room28.main = function () {
     }
 
     if (milkLevel > -1) {
-        milkLevel += (hormoneLevel / 100) / 3;
+        var levelsMilk = levels.get("milk").l;
+        var levelMult = 1 + ((levelsMilk + 1) / 5);
+        milkLevel += ((hormoneLevel / 100) / 5) * levelMult;
         if (milkLevel > 1)
             milkLevel = 1;
         else if (milkLevel < 0)

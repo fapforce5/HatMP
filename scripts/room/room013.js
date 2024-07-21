@@ -233,6 +233,9 @@ room13.btnclick = function (name) {
                 sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
             if (sc.getMissionTask("lola", "games", 1).complete)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
+            if (sc.getMission("lola", "date").inProgress) {
+                sc.select("practiceDate", "13_sisterRoom/icon_practice.png", 4);
+            }
             //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
             sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
             break;
@@ -266,21 +269,34 @@ room13.btnclick = function (name) {
             nav.killbutton("tord");
             nav.killbutton("dick");
             nav.killbutton("clearChat");
+            nav.killbutton("practiceDate");
             break
         case "lolachat":
             room13.btnclick("clearChat");
-            var massageStep = sc.taskGetStep("lola", "massage");
-            switch (sc.taskGetStep("lola", "talk")) {
-                case 0: chat(10, 13); break;
-                case 1: chat(14, 13); break;
-                case 2: if (massageStep > 0) chat(17, 13); else chat(14, 13); break;
+            if (daily.get("lolatalk")) {
+                chat(24, 13);
+            }
+            else {
+                daily.set("lolatalk");
+                var massageStep = sc.taskGetStep("lola", "massage");
+                switch (sc.taskGetStep("lola", "talk")) {
+                    case 0: chat(10, 13); break;
+                    case 1: chat(14, 13); break;
+                    case 2: if (massageStep > 0) chat(17, 13); else chat(14, 13); break;
+                }
             }
             break;
         case "evachat":
             room13.btnclick("clearChat");
-            switch (sc.taskGetStep("eva", "talk")) {
-                case 0: chat(26, 13); break;
-                case 1: chat(33, 13);
+            if (daily.get("evatalk")) {
+                chat(46, 13);
+            }
+            else {
+                daily.set("evatalk");
+                switch (sc.taskGetStep("eva", "talk")) {
+                    case 0: chat(26, 13); break;
+                    case 1: chat(33, 13);
+                }
             }
             break;
         case "lolamassage":
@@ -335,7 +351,8 @@ room13.btnclick = function (name) {
                 lolaPants: true,
                 evaPanties: true,
                 lolaPanties: true,
-                step: 0
+                step: 0,
+                dailyComplete: daily.get("elsleep")
             };
             nav.kill();
            
@@ -441,18 +458,26 @@ room13.btnclick = function (name) {
             }
            
             g.internal.step = 0;
-            sc.select("lolaStrip", "13_sisterRoom/icon_focuslola.png", 0);
-            sc.select("evaStrip", "13_sisterRoom/icon_focuseva.png", 1);
-            sc.selectCancel("leave", 2);
+            if (g.internal.lolaPanties)
+                sc.select("lolaStrip", "13_sisterRoom/icon_focuslola.png", 0);
+            if (g.internal.evaPanties)
+                sc.select("evaStrip", "13_sisterRoom/icon_focuseva.png", 1);
+            sc.select("bothRoll", "13_sisterRoom/icon_rollover.png", 2);
+            sc.selectCancel("leave", 3);
             break;
         case "lolaStrip":
             nav.killbutton("lolaStrip");
             nav.killbutton("evaStrip");
             nav.killbutton("leave");
+            nav.killbutton("bothRoll");
             if (g.internal.lolaPants) {
-                if (g.internal.step === 3) {
+                if (g.internal.dailyComplete) {
+                    //
+                }
+                else if (g.internal.step === 3) {
                     g.internal.lolaPants = false;
                     room13.btnclick("choice");
+                    daily.set("elsleep");
                 }
                 else {
                     nav.killbutton("lolapants");
@@ -528,10 +553,15 @@ room13.btnclick = function (name) {
             nav.killbutton("lolaStrip");
             nav.killbutton("evaStrip");
             nav.killbutton("leave");
+            nav.killbutton("bothRoll");
             if (g.internal.evaPants) {
-                if (g.internal.step === 4) {
+                if (g.internal.dailyComplete) {
+                    //
+                }
+                else if (g.internal.step === 4) {
                     g.internal.evaPants = false;
                     room13.btnclick("choice");
+                    daily.set("elsleep");
                 }
                 else {
                     nav.killbutton("evapants");
@@ -591,9 +621,130 @@ room13.btnclick = function (name) {
                 }
             }
             break;
+        case "bothRoll":
+            nav.killall();
+            var lolaImg, evaImg;
+            if (g.internal.lolaPants)
+                lolaImg = "lola_sleep_c_2.png";
+            else if (g.internal.lolaPanties)
+                lolaImg = "lola_sleep_c_1.png";
+            else
+                lolaImg = "lola_sleep_c_0.png";
+
+            if (g.internal.evaPants)
+                evaImg = "eva_sleep_c_2.png";
+            else if (g.internal.evaPanties)
+                evaImg = "eva_sleep_c_1.png";
+            else
+                evaImg = "eva_sleep_c_0.png";
+
+            nav.button({
+                "type": "btn",
+                "name": "lolaLay",
+                "left": 861,
+                "top": 77,
+                "width": 353,
+                "height": 931,
+                "image": "13_sisterRoom/" + lolaImg
+            }, 13);
+            nav.button({
+                "type": "clickthrough",
+                "name": "lolaLay",
+                "left": 861,
+                "top": 77,
+                "width": 353,
+                "height": 931,
+                "image": "13_sisterRoom/lola_sleep_f_sleep.png"
+            }, 13);
+
+            nav.button({
+                "type": "btn",
+                "name": "evaLay",
+                "left": 1193,
+                "top": 97,
+                "width": 516,
+                "height": 698,
+                "image": "13_sisterRoom/" + evaImg
+            }, 13);
+            nav.button({
+                "type": "clickthrough",
+                "name": "evaLay",
+                "left": 1193,
+                "top": 97,
+                "width": 516,
+                "height": 698,
+                "image": "13_sisterRoom/eva_sleep_f_sleep.png"
+            }, 13);
+            sc.selectCancel("leave", 13);
+            break;
         case "leave":
             char.addtime(30);
             char.room(11);
+            break;
+        case "lolaLay":
+            if (g.internal.lolaPants) {
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_lola_chest_0.jpg");
+                if (cl.c.chastity !== null) {
+                    chat(47, 13);
+                }
+                else {
+                    chat(50, 13);
+                }
+            }
+            else if (g.internal.lolaPanties) {
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_lola_panties_0.jpg");
+                if (cl.c.chastity !== null) {
+                    chat(47, 13);
+                }
+                else {
+                    chat(54, 13);
+                }
+            }
+            
+            break;
+        case "evaLay":
+            if (g.internal.evaPants) {
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_chest_0.jpg");
+                if (cl.c.chastity !== null) {
+                    chat(47, 13);
+                }
+                else {
+                    chat(48, 13);
+                }
+            }
+            else if (g.internal.evaPanties) {
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_panties_0.jpg");
+                if (cl.c.chastity !== null) {
+                    chat(47, 13);
+                }
+                else {
+                    chat(52, 13);
+                }
+            }
+            break;
+        case "evaSleepingJackTits1":
+            nav.killall();
+            nav.bg("13_sisterRoom/sleep_chest_1.jpg");
+            chat(49, 13);
+            break;
+        case "evaSleepingJackPanties1":
+            nav.killall();
+            nav.bg("13_sisterRoom/sleep_panties_1.jpg");
+            chat(53, 13);
+            break;
+        case "lolaSleepingJackTits1":
+            nav.killall();
+            nav.bg("13_sisterRoom/sleep_lola_chest_1.jpg");
+            chat(51, 13);
+            break;
+        case "lolaSleepingJackPanties1":
+            nav.killall();
+            nav.bg("13_sisterRoom/sleep_lola_panties_1.jpg");
+            chat(55, 13);
             break;
         default:
             break;
@@ -698,14 +849,12 @@ room13.chatcatch = function (callback) {
                 break;
             case "talkLola0":
                 char.addtime(20);
-                daily.set("lolatalk");
                 sc.completeMissionTask("lola", "talk", 0, true);
                 sc.modLevel("lola", 27, 4);
                 char.room(13);
                 break;
             case "talkLola1":
                 char.addtime(20);
-                daily.set("lolatalk");
                 sc.startMission("lola", "massage");
                 sc.completeMissionTask("lola", "talk", 1, true);
                 sc.modLevel("lola", 27, 4);
@@ -713,6 +862,61 @@ room13.chatcatch = function (callback) {
                 break;
             case "rollChrisma2":
                 charisma.init(g.internal.charisma, "massage2chanceWin", "massage2chanceLose", g.roomID);
+                break;
+            case "sleepReset":
+                nav.bg("13_sisterRoom/bedbg.jpg");
+                room13.btnclick("bothRoll");
+                break;
+            case "evaSleepingJackTits":
+                nav.button({
+                    "type": "img",
+                    "name": "jackDick",
+                    "left": 1072,
+                    "top": 280,
+                    "width": 800,
+                    "height": 800,
+                    "image": "13_sisterRoom/jackDick.gif"
+                }, 13);
+                nav.next("evaSleepingJackTits1");
+                break;
+            case "evaSleepingJackPanties":
+                nav.button({
+                    "type": "img",
+                    "name": "jackDick",
+                    "left": 1072,
+                    "top": 280,
+                    "width": 800,
+                    "height": 800,
+                    "image": "13_sisterRoom/jackDick.gif"
+                }, 13);
+                nav.next("evaSleepingJackPanties1");
+                break;
+            case "lolaSleepingJackTits":
+                nav.button({
+                    "type": "img",
+                    "name": "jackDick",
+                    "left": 1072,
+                    "top": 280,
+                    "width": 800,
+                    "height": 800,
+                    "image": "13_sisterRoom/jackDick.gif"
+                }, 13);
+                nav.next("lolaSleepingJackTits1");
+                break;
+            case "lolaSleepingJackPanties":
+                nav.button({
+                    "type": "img",
+                    "name": "jackDick",
+                    "left": 1072,
+                    "top": 280,
+                    "width": 800,
+                    "height": 800,
+                    "image": "13_sisterRoom/jackDick.gif"
+                }, 13);
+                nav.next("lolaSleepingJackPanties1");
+                break;
+            case "endEvaSleepEvent":
+                char.room(11);
                 break;
         };
     });
@@ -789,7 +993,7 @@ room13.chat = function (chatID) {
                     { chatID: -1, text: "Steal her dirty peed stained panties. ", callback: "takePanties" }
                 ]
             },
-             {
+            {
                 chatID: 7,
                 speaker: "me",
                 text: "Dammit! They locked their panty drawer. Try to jack off into their panties once and you're locked out forever.",
@@ -932,10 +1136,10 @@ room13.chat = function (chatID) {
                     { chatID: -1, text: "Nope. I would totally lick " + sc.n("eva") + "'s feet like a dog", callback: "lolaLevelDown evaLevelQuater sub beast lolaDayEvent" },
                 ]
             },
-             {
+            {
                 chatID: 23,
                 speaker: "thinking",
-                 text: "So fresh and so clean. Delicate and tiny just like " + sc.n('eva') + ". I bet they wouldn't notice if " +
+                text: "So fresh and so clean. Delicate and tiny just like " + sc.n('eva') + ". I bet they wouldn't notice if " +
                     "I steal just one pair. ",
                 button: [
                     { chatID: 2, text: "...", callback: "sniff2" }
@@ -944,7 +1148,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "lola",
-                text: "This is a work in progress. You'll see much much more in the next release.!",
+                text: "Hehe. Love your style. ",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
@@ -1125,6 +1329,102 @@ room13.chat = function (chatID) {
                     "without fun! ",
                 button: [
                     { chatID: -1, text: "Oh yeah. I'll go get some wine. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "eva",
+                text: "Hey booger brain, why don't you go fart on a pillow and stop staring at me.",
+                button: [
+                    { chatID: -1, text: "You're the fart... I mean.. I hate you.", callback: "" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "thinking",
+                text: "She's so hot. Too bad I'm in chastity or I might do something naughty. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "sleepReset" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "thinking",
+                text: "So soft and peaceful. She really does sleep deeply. I wonder if " +
+                    "she'll wake up if I jack off on her. I'm so horny right now. Just a " +
+                    "quick one all over those beautiful tits. I'm sure she won't mind. ",
+                button: [
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "Just a quick jack won't hurt", callback: "evaSleepingJackTits" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "thinking",
+                text: "Hahaha. I totally covered her in cum! She's a slut now. I better get going " +
+                    "before I get caught..",
+                button: [
+                    { chatID: -1, text: "Disappear into the night. Also you're a sick pervert. ", callback: "endEvaSleepEvent" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "thinking",
+                text: "So soft and peaceful. Her skin is so pale and smooth. My dick is so " +
+                    "hard right now it hurts. I don't think she'd mine if I took care of it " +
+                    "really quick...",
+                button: [
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "Just a quick jack won't hurt", callback: "lolaSleepingJackTits" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "thinking",
+                text: "Hahaha. I totally covered her in cum! She's a slut now. I better get going " +
+                    "before I get caught..",
+                button: [
+                    { chatID: -1, text: "Disappear into the night. Also you're a sick pervert. ", callback: "endEvaSleepEvent" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "thinking",
+                text: "Look at that soft pubic mound. She's such a natural slut with her legs " +
+                    "spread open and ready. Fuck that would look so sexy with my cum leaking " +
+                    "out of her. I so want to fuck her. I'm going to cum all over those little white panties. ",
+                button: [
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "Just a quick jack won't hurt", callback: "evaSleepingJackPanties" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "thinking",
+                text: "Fuck that cum needs to be in her and not dripping down those cute little " +
+                    "panties of hers. ",
+                button: [
+                    { chatID: -1, text: "Disappear into the night. Also you're a sick pervert. ", callback: "endEvaSleepEvent" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "thinking",
+                text: "What a tight ass! That swimming really is paying off. I so want to rub my " +
+                    "dick between those cheeks. Fuck I'm horny. I just really need to spank the monkey " +
+                    "really quick. ",
+                button: [
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "Just a quick jack won't hurt", callback: "lolaSleepingJackPanties" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "thinking",
+                text: "Fuck that cum needs to be in her and not dripping off that hot " +
+                    "ass of hers. ",
+                button: [
+                    { chatID: -1, text: "Disappear into the night. Also you're a sick pervert. ", callback: "endEvaSleepEvent" },
                 ]
             },
         ];

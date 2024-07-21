@@ -591,7 +591,7 @@ room23.main = function () {
             l: "Oh my. Show you my bare breasts? ",
             u: null,
             dCallback: "dareTopless",
-            i: "d_1_8"
+            i: "icon_undress"
         },
     ]);
     dares.push([
@@ -782,7 +782,9 @@ room23.main = function () {
     room23.chatcatch("mestrip");//set myphase
 
     room23.chatcatch("evasit lolatalk");
-    if (sc.taskGetStep("eva", "tord") === 0) {
+    if (sc.getMissionTask("eva", "games", 2).notStarted) {
+        sc.completeMissionTask("eva", "games", 2);
+        sc.completeMissionTask("lola", "games", 2);
         chat(0, 23);
     }
     else {
@@ -1780,7 +1782,7 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/melickbutthole2.jpg");
                 break;
             case "melickbutthole3":
-                nav.bg("24_spinTheBottle/melickbutthole3");
+                nav.bg("24_spinTheBottle/melickbutthole3.jpg");
                 break;
             case "roomblack":
                 nav.killall();

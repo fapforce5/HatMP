@@ -41,6 +41,8 @@ gender.pronoun = function (ptype) {
         case "bikini":
         case "swimsuit":
             return gender.isGirl() ? "bikini" : "swim trunks";
+        case "panties":
+            return gender.isGirl() ? "panties" : "underware";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

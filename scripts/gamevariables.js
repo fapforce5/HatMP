@@ -243,7 +243,8 @@ gv.init = function () {
 
         { n: "cop", t: false },
         { n: "loladrunk", t: false },
-        { n: "evadrunk", t: false }
+        { n: "evadrunk", t: false },
+        { n: "elsleep", t: false },
     ];
 
     weekly.st = [
@@ -276,6 +277,8 @@ gv.init = function () {
         { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
         { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
         { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 21, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true },
+
     ];
 
     sex.st = [

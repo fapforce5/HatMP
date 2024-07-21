@@ -135,6 +135,7 @@ room401.main = function () {
             room401.makeClothing("buttplug", "f");
             room401.makeInv(["d"], g.sissy[59].ach);
             room401.makeInv(["c"], true, 1);
+            room401.makeInv(["q"], gv.get("milk") > -1, 1);
             navList = [650, 0];
             break;
         case "happyGirl":
@@ -191,7 +192,11 @@ room401.main = function () {
 
         var thisMoney = gv.get("money");
 
-        if (thisItem.entry && thisItem.count === null) {
+        if (!thisCanBuy) {
+            $('#menu_displayAction').hide();
+            $('#menu_displayInfo').html("Too Girly");
+        }
+        else if (thisItem.entry && thisItem.count === null) {
             $('#menu_displayAction').hide();
             $('#menu_displayInfo').html("Already Purchased");
         }
@@ -371,7 +376,7 @@ room401.makeClothing = function (type, sex) {
 //    }
 //};
 
-room401.makeInv = function (typeArray, canbuy, priceMult) {
+room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
     var i, j;
 
     for (j = 0; j < typeArray.length; j++) {
@@ -385,7 +390,7 @@ room401.makeInv = function (typeArray, canbuy, priceMult) {
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                        $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
@@ -396,13 +401,13 @@ room401.makeInv = function (typeArray, canbuy, priceMult) {
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                        $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
                 else if (!canbuy) {
-                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
-                    $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
+                    $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                     $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                 }
                 else {

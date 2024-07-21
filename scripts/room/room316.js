@@ -1388,7 +1388,7 @@ room316.chat = function (chatID) {
                     "down on all fours and put your head to the floor to show you're not a threat. ",
                 button: [
                     { chatID: 76, text: "[Be the beta]", callback: "task0_2" },
-                    { chatID: 75, text: "I'm not getting on my knees! I'm the Alpha!", callback: "task0_1a" },
+                    { chatID: 117, text: "I'm not getting on my knees! I'm the Alpha!", callback: "task0_1a" },
                 ]
             },
             {
@@ -1777,6 +1777,17 @@ room316.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "ok...", callback: "bitch_0_end" },
 
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "janice",
+                text: "If you respect " + sc.n("dog") + " and I you will get down on all fours " +
+                    "and show him you're the beta. I can't date someone who is going to cause " +
+                    "problems with my little doggy!",
+                button: [
+                    { chatID: 76, text: "[Be the beta]", callback: "task0_2" },
+                    { chatID: 75, text: "Dating you isn't worth getting on my hands and knees! ", callback: "task0_1a" },
                 ]
             },
         ];

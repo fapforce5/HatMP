@@ -30,42 +30,65 @@ room325.main = function () {
 room325.btnclick = function (name) {
     switch (name) {
         case "rachel":
-            var rachelStep = sc.getstep("rachel");
-            switch (rachelStep) {
-                case 0:
-                    chat(0, 325);
-                    break;
-                case 1:
-                    var milkmilk = gv.get("milk");
-                    if (milkmilk > -1) {
-                        if (milkmilk < .6)
-                            chat(22, 325);
-                        else
-                            chat(23, 325);
-                    }
-                    else if (milkmilk === -1 && cl.c.chest > 3) {
-                        chat(11, 325);
-                    }
-                    else {
-                        chat(21, 325);
-                    }
-                    break;
-                case 2:
-                    if (sc.getstep("envy") === 14) {
-                        chat(37, 325);
-                        sc.setstep("envy", 15);
-                    }
-                    else if (gv.get("milk") < .6)
-                        chat(22, 325);
+            var notStartedMilk = sc.getMission("rachel", "milk").notStarted;
+            if (sc.getMission("rachel", "horse").notStarted) {
+                daily.set("rachel");
+                chat(0, 325);
+            }
+            else if (notStartedMilk && cl.c.chest > 2) {
+                chat(11, 325);
+            }
+            else if (!notStartedMilk) {
+                if (gv.get("milk") < .7) {
+                    chat(22, 325);
+                }
+                else {
+                    if (sc.getMissionTask("rachel", "milk", 0).notStarted)
+                        chat(23, 325);
                     else
                         chat(36, 325);
-                    break;
+                }
             }
+            else {
+                chat(21, 325);
+            }
+            //var rachelStep = sc.getstep("rachel");
+            //switch (rachelStep) {
+            //    case 0:
+            //        chat(0, 325);
+            //        break;
+            //    case 1:
+            //        var milkmilk = gv.get("milk");
+            //        if (milkmilk > -1) {
+            //            if (milkmilk < .6)
+            //                chat(22, 325);
+            //            else
+            //                chat(23, 325);
+            //        }
+            //        else if (milkmilk === -1 && cl.c.chest > 3) {
+            //            chat(11, 325);
+            //        }
+            //        else {
+            //            chat(21, 325);
+            //        }
+            //        break;
+            //    case 2:
+            //        if (sc.getstep("envy") === 14) {
+            //            chat(37, 325);
+            //            sc.setstep("envy", 15);
+            //        }
+            //        else if (gv.get("milk") < .6)
+            //            chat(22, 325);
+            //        else
+            //            chat(36, 325);
+            //        break;
+            //}
             break;
         case "pill":
             daily.set("rachel");
             nav.killall();
             gv.set("milk", 0);
+            sc.startMission("rachel", "milk");
             nav.bg("325_farm/bg.jpg", "325_farm/bg_night.jpg");
             nav.button({
                 "type": "img",
@@ -111,20 +134,22 @@ room325.chatcatch = function (callback) {
             }, 325);
             break;
         case "rachel1end":
-            
-            sc.setstep("rachel", 1);
+            sc.startMission("rachel", "horse");
+            sc.completeMissionTask("rachel", "horse", 0);
+            sc.show("rachel");
+            sc.show("horse");
             char.addtime(120);
-            daily.set("rachel");
-            if (cl.c.chest > 3)
+            if (cl.c.chest > 2)
                 chat(12, 325);
             else
                 char.room(0);
             break;
         case "pill":
             nav.killall();
+            sc.select("pill", "325_farm/icon_pill.png", 1);
             nav.bg("325_farm/pill.jpg");
             nav.button({
-                "type": "btn",
+                "type": "img",
                 "name": "pill",
                 "left": 909,
                 "top": 427,
@@ -168,11 +193,24 @@ room325.chatcatch = function (callback) {
             cl.undo();
             daily.set("rachel");
             gv.mod("money", 50);
-            sc.setstep("rachel", 2);
+            sc.show("kinsey");
+            sc.completeMissionTask("rachel", "milk", 0);
             char.room(0);
             break;
         case "milkme":
             char.room(327);
+            break;
+        case "outside":
+            nav.bg("325_farm/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "rachel",
+                "left": 1066,
+                "top": 74,
+                "width": 675,
+                "height": 1006,
+                "image": "325_farm/rachel.png"
+            }, 325);
             break;
         default:
             break;
@@ -285,9 +323,9 @@ room325.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "rachel",
-            text: "Lets step outside. I do want to say hello to those amazing milk jugs you have in the light. ",
+            text: "Wait a minute. Lets step outside. I do want to say hello to those amazing milk jugs you have in the light. ",
             button: [
-                { chatID: 13, text: "You like? ", callback: "" }
+                { chatID: 13, text: "You like? ", callback: "outside" }
             ]
         },
         {
@@ -338,7 +376,7 @@ room325.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "rachel",
-            text: "Don't worry just come here every three days and I'll give you a good milking and a decent paycheck. Breast " +
+            text: "Don't worry just come here when you're full and I'll give you a good milking and a decent paycheck. Breast " +
                 "milk from hucows are worth a pretty penny in these parts, and breasts your size will produce so much milk. ",
             button: [
                 { chatID: 19, text: "I can't believe you've done this to me.", callback: "" }
@@ -349,7 +387,7 @@ room325.chat = function (chatID) {
             speaker: "rachel",
             text: "I can't believe you just took a pill without knowing what it was. What's done is done. You'll make a fine " +
                 "addition to my farm. Now I've got some hucows to milk. Come back when you're at least half full. The more " +
-                "estorgen you have the more milk you produce. ",
+                "you pump the more milk you produce. ",
             button: [
                 { chatID: -1, text: "Grrrrr", callback: "leave" }
             ]
@@ -359,7 +397,7 @@ room325.chat = function (chatID) {
             speaker: "thinking",
             text: "I've already visited today. Maybe I'll come back tomorrow. ",
             button: [
-                { chatID: -1, text: "....", callback: "leave" }
+                { chatID: -1, text: "....", callback: "" }
             ]
         },
         {
@@ -396,7 +434,7 @@ room325.chat = function (chatID) {
             speaker: "rachel",
             text: "This is a big day. For you. Follow me into the big barn.  ",
             button: [
-                { chatID: 25, text: "I'm looking for my first milking. ", callback: "milk0" },
+                { chatID: 25, text: "...", callback: "milk0" },
             ]
         },
         {

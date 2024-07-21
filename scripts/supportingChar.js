@@ -148,6 +148,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
                         { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
@@ -180,9 +181,9 @@ sc.charMission = [
             {
                 missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
-                        { id: 2, txt: "Play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
 
@@ -547,7 +548,49 @@ sc.charMission = [
             },
         ]
     },
-    
+    {
+        name: "rachel", mission: [
+            {
+                missionName: "horse", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm. ", task:
+                    [
+                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+            {
+                missionName: "milk", mStatus: 0, title: "Hucow", desc: "Become her milking cow ", task:
+                    [
+                        { id: 0, txt: "Inspection.", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "Hucow.", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "kinsey", mission: [
+            {
+                missionName: "milk", mStatus: 0, title: "Fellow Hucow", desc: "Gain her trust", task:
+                    [
+                        { id: 0, txt: "Moooo", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "Fucking Moooo", show: true, mStatus: 0, roomId: 325 },
+                        { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 325 },
+                        { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 325 },
+                        { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 325 },
+                        { id: 5, txt: "End of path for nwo.", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "horse", mission: [
+            {
+                missionName: "sex", mStatus: 0, title: "Dirty boy", desc: "What are you doing?", task:
+                    [
+                        { id: 0, txt: "First handjob", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.mStatus = function (mStatus) {

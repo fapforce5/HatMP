@@ -30,6 +30,7 @@ inv.t = [
     { t: "m", n: "Makeup" },
     { t: "o", n: "Key" },
     { t: "p", n: "Phone Case" },
+    { t: "q", n: "Milk Pump" },
     { t: "r", n: "Room Decoration" },
     { t: "t", n: "Penis Cream" },
     { t: "x", n: "ID Card" },
@@ -106,6 +107,8 @@ inv.master = [
     { type: "d", name: "blackBallsDildo", display: "Anal Beads", entry: false, count: null, cost: 40, image: "butt_balls.png", n: false, desc: "Balls you put in your ass" },
     { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 90, image: "butt_tower.png", n: false, desc: "Stretch that sissy hole" },
     { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false, desc: "You'll blow your ass out" },
+
+    { type: "q", name: "pump", display: "Breast Pump", entry: false, count: null, cost: 120, image: "pump.png", n: false, desc: "BP-900 for sucking that milk from your titties!" },
 
     { type: "c", name: "handcuff", display: "Handcuffs", entry: false, count: null, cost: 36, image: "handcuffs.png", n: false, desc: "Handcuffs, you know, for your hands" },
 

@@ -671,7 +671,9 @@ cl.hasoutfitCanWearClothingUnder = function () {
     var bra = cl.c.bra === null ? null : cl.getEntry("bra", cl.c.bra).sex;
 
     if (panties === null) {
-        missing.push("panties");
+        if (cl.hasClothingType("panties")) {
+            missing.push(gender.pronoun("panties"));
+        }
         if (bra === null && qdress.st[1].ach)
             missing.push("bra");
         return missing;
@@ -681,7 +683,9 @@ cl.hasoutfitCanWearClothingUnder = function () {
         if (panties === null)
             missing.push("underwear");
         else if (panties === "f")
-            missing.push("boy's underwear");
+            if (cl.hasClothingTypeSex("panties", "m")) {
+                missing.push("boy's underwear");
+            }
 
         if (bra !== null)
             missing.push("Can't wear a bra");

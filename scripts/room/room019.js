@@ -12,11 +12,14 @@ room19.main = function () {
         "height": 1080,
         "image": "1001_rand/black_25.png"
     }, 19);
+    if (inv.has("pump")) {
+        sc.select("pump", "19_layInBed/icon_pump.png", 3);
+    }
     if (inv.has("lube")) {
         sc.select("bjBegin", "19_layInBed/icon_bj.png", 0);
         sc.select("fingerBegin", "19_layInBed/icon_finger.png", 1);
         sc.select("toyBegin", "19_layInBed/icon_dildo.png", 2);
-        sc.selectCancel("leave", 3)
+        sc.selectCancel("leave", 4)
     }
     else {
         sc.select("bjBegin", "19_layInBed/icon_bj.png", 0);
@@ -245,6 +248,16 @@ room19.btnclick = function (name) {
                 chat(9, 19);
             }, 2500);
             break;
+        case "pump":
+            nav.killall();
+            nav.bg("19_layInBed/pump.jpg");
+            if (gv.get("milk") < .4) {
+                chat(14, 19);
+            }
+            else {
+                chat(15, 19);
+            }
+            break;
         default:
             break;
     }
@@ -396,6 +409,18 @@ room19.chatcatch = function (callback) {
                     "image": "19_layInBed/horseDildo.png"
                 }, 19);
             }
+            if (inv.has("pump")) {
+                g.internal = true;
+                nav.button({
+                    "type": "img",
+                    "name": "pump",
+                    "left": 1676,
+                    "top": 506,
+                    "width": 244,
+                    "height": 410,
+                    "image": "19_layInBed/pump.png"
+                }, 19);
+            }
             break;
         case "bj":
             g.internal = "bj";
@@ -460,6 +485,22 @@ room19.chatcatch = function (callback) {
             levels.oral(g.internal.size);
             daily.set("dildoSuckPlay");
             char.room(g.pass);
+            break;
+        case "reset":
+            char.room(19);
+            break;
+        case "emptyMilk":
+            gv.set("milk", .0);
+            cl.display();
+            levels.mod("milk", 25, 999);
+            char.room(19);
+            break;
+        case "pumpDrink":
+            gv.set("milk", .0);
+            cl.display();
+            levels.mod("milk", 25, 999);
+            gv.mod("energy", 100);
+            nav.bg("19_layInBed/pumpDrink.jpg");
             break;
         default:
             break;
@@ -582,6 +623,31 @@ room19.chat = function (chatID) {
             text: "My jaw is tired from sucking cock. Maybe tomorrow. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "thinking",
+            text: "Totally empty. I'll have to wait for my milk ducts to fill back up. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "thinking",
+            text: "Oh my! It feels so good to empty these breasts, they were getting full!",
+            button: [
+                { chatID: 16, text: "Drink your own breast milk. ", callback: "pumpDrink" },
+                { chatID: -1, text: "Put it away", callback: "emptyMilk" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "*gulp* MMmmmMMmmmm yummy!",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
             ]
         },
     ];
