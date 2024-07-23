@@ -698,6 +698,9 @@ cl.hasoutfitCanWearClothingUnder = function () {
             return missing;
         }
     }
+
+    // Nothing found missing, so return an empty array
+    return missing;
 };
 
 cl.hasoutfitCanWearClothingOuter = function () {
