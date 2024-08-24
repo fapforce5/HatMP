@@ -90,8 +90,8 @@ sc.char = [
     { name: "juniper", display: "Juniper", image: "juniper.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
 
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "futared", display: "Red", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "futa1", display: "Fink", image: "futaYellow.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "futa2", display: "Frown", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "slime", display: "Slime Girl", image: "slime.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "stacy", display: "Stacy", image: "stacy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
@@ -113,6 +113,7 @@ sc.char = [
     { name: "philbert", display: "Philbert", image: "philbert.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
     { name: "sporty", display: "Sporty", image: "sporty.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
+    { name: "photo", display: "Photographer", image: "photo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -154,7 +155,12 @@ sc.charMission = [
             {
                 missionName: "date", mStatus: 0, title: "Practice dates", desc: "You two should practice for the real thing.", task:
                     [
-                        { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 404 },
+                        { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Come by before dark for our first practice date. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
+                        { id: 4, txt: "Meet her in her room. Go on dates. ", show: false, mStatus: 0, roomId: 13 },
+                        { id: 5, txt: "Creampie is the best pie. ", show: false, mStatus: 0, roomId: 13 },
                     ]
             },
         ],
@@ -186,7 +192,12 @@ sc.charMission = [
                         { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
-
+            {
+                missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now ", task:
+                    [
+                        { id: 0, txt: "Supervised blow job. ", show: true, mStatus: 0, roomId: 13 },
+                    ]
+            },
         ],
     },
     {
@@ -591,7 +602,59 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "black", mission: [
+            {
+                missionName: "punish", mStatus: 0, title: "Punishment", desc: "A proper punishment.", task:
+                    [
+                        { id: 0, txt: "First time.", show: true, mStatus: 0, roomId: 172 },
+                        { id: 1, txt: "Repeat customer ", show: true, mStatus: 0, roomId: 172 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "p", mission: [
+            {
+                missionName: "pink", mStatus: 0, title: "The Pink Room", desc: "A proper place for a sissy.", task:
+                    [
+                        { id: 0, txt: "Introducation", show: true, mStatus: 0, roomId: 213 },
+                        { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
+                        { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
+                        { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "construction", mission: [
+            {
+                missionName: "sex", mStatus: 0, title: "Slut", desc: "I didn't know you're a slut!", task:
+                    [
+                        { id: 0, txt: "Caught at the Pink Room", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "photo", mission: [
+            {
+                missionName: "photo", mStatus: 100, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+
+    
+    
 ];
+
+sc.el = function () {
+    return g.makeSingular(sc.n("el"));
+};
 
 sc.mStatus = function (mStatus) {
     if (mStatus < 1)
@@ -1165,6 +1228,7 @@ sc.getTimeline = function (char) {
             break;
         case "lola":
         case "eva":
+            
             timeline = [
             //sunday
                 { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
@@ -1198,6 +1262,9 @@ sc.getTimeline = function (char) {
                 { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
                 { d: [6], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
             ];
+            if (sc.getMissionTask("lola", "date", 3).complete && char === "lola") {
+                timeline[11].roomId = 13;
+            }
             break;
         case "cecilia":
             timeline = [
@@ -1281,7 +1348,7 @@ sc.select = function (name, img, i) {
     nav.button({
         "type": "btn",
         "name": name,
-        "left": 400 + (Math.floor(i % 2) * 700),
+        "left": 400 + ((i % 2) * 700),
         "top": 200 + (Math.floor(i / 2) * 120),
         "width": 600,
         "height": 100,
@@ -1614,11 +1681,17 @@ sc.trivial = function (charname) {
             image = "timothy.png";
             break;
         case "!sporty":
-            name = "Sport";
+            name = "Sporty";
             image = "sporty.png";
             break;
         case "!jeremy":
-            name = "Jeremy";
+            if (sissy.st[10].ach) {
+                name = "Jenny"
+            }
+            else {
+                name = "Jeremy";
+            }
+            
             image = "jeremy.png";
             break;
         case "!martin":
@@ -1712,6 +1785,26 @@ sc.trivial = function (charname) {
         case "!rex":
             name = "Mr. Rex";
             image = "rex.png";
+            break;
+        case "!gamerboy":
+            name = "Gamer";
+            image = "gamerboy.png";
+            break;
+        case "!gamergirl":
+            name = "Miss M.";
+            image = "gamergirl.png";
+            break;
+        case "!gameman":
+            name = "Some guy";
+            image = "gameman.png";
+            break;
+        case "!g":
+            name = "Geoffrey";
+            image = "g.png";
+            break;
+        case "!glory":
+            name = "Glory Hole Customer";
+            image = "unk.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

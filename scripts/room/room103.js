@@ -641,7 +641,9 @@ room103.chat = function (chatID) {
             chatID: 38,
             speaker: "cult",
             text: "Stop fighting. We each should just take turns. That's why they sent four of us. " +
-                "Why do you have to make it so difficult. ",
+                "Why do you have to make it so difficult. " + sc.n("ubel") + " warned us not " +
+                "to fuck up again. Let's just take him to the cult compound and don't get caught. " +
+                "Remember what happened last time you idiots messed this up? ",
             button: [
                 { chatID: 39, text: "Wha...", callback: "hole7" },
             ]

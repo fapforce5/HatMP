@@ -14,6 +14,9 @@ room181.main = function () {
                 chat(0, 181);
             }
             break;
+        case "bondage203":
+            
+            break;
     }
 };
 

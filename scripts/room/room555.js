@@ -193,6 +193,41 @@ room555.btnclick = function (name) {
                 }
             }
             break;
+        case "chad_situp":
+            if (g.internal < 9) {
+                var gendersitup = gender.pronoun("f");
+                var imagesitup = ["555_backgym/up.png", "555_backgym/down.png"];
+                var bgsitup = ["555_backgym/situp0_" + gendersitup + ".jpg", "555_backgym/situp1_" + gendersitup + ".jpg"];
+                nav.modbutton("chad_situp", imagesitup[g.internal % 2], null, null);
+                nav.bg(bgsitup[g.internal % 2]);
+                g.internal++;
+            }
+            else {
+                nav.killall();
+                chat(55, 555);
+            }
+            break;
+        case "chad_squats":
+            if (g.internal < 9) {
+                var gendersquat = gender.pronoun("f");
+                var imagesquat = ["555_backgym/down.png", "555_backgym/up.png"];
+                var bgsquat = ["555_backgym/squat0_" + gendersquat + ".jpg", "555_backgym/squat1_" + gendersquat + ".jpg"];
+                nav.modbutton("chad_squats", imagesquat[g.internal % 2], null, null);
+                nav.bg(bgsquat[g.internal % 2]);
+            }
+            else if (g.internal === 9) {
+                nav.killall();
+                nav.next("chad_squats");
+                nav.bg("555_backgym/squat2_" + gender.pronoun("f") + ".jpg");
+            }
+            else {
+                nav.killall();
+                nav.bg("555_backgym/squat3_" + gender.pronoun("f") + ".jpg");
+                chat(58, 555);
+            }
+
+            g.internal++;
+            break;
         case "g_yoga":
             if (g.internal > 13) {
                 nav.killall();
@@ -265,7 +300,31 @@ room555.btnclick = function (name) {
 
             break;
         case "icon_chad":
-            chat(51, 555);
+            nav.killall();
+            sc.select("icon_cockkiss", "555_backgym/icon_cockkiss.png", 0);
+            sc.select("icon_squat", "555_backgym/icon_cocksquat.png", 1);
+            sc.selectCancel("icon_back", 2);
+            //chat(51, 555);
+            break;
+        case "icon_cockkiss":
+            if (gv.get("energy") < 75) {
+                chat(34, 555);
+            }
+            else {
+                nav.killall();
+                nav.bg("555_backgym/situp0_" + gender.pronoun("m") + ".jpg");
+                chat(53, 555);
+            }
+            break;
+        case "icon_squat":
+            if (gv.get("energy") < 75) {
+                chat(34, 555);
+            }
+            else {
+                nav.killall();
+                nav.bg("555_backgym/squat0_" + gender.pronoun("m") + ".jpg");
+                chat(56, 555);
+            }
             break;
         default:
             break;
@@ -383,6 +442,14 @@ room555.chatcatch = function (callback) {
         case "exitLowercum":
             cl.doCum();
             room555.chatcatch("exitUpper");
+            break;
+        case "exitOral":
+            levels.mod("strength", 55, 999);
+            levels.mod("fitness", 15, 999);
+            gv.mod("energy", -75);
+            levels.oral(3);
+            char.addtime(60);
+            char.room(555);
             break;
         case "hips":
             if (sc.getEvent("g", -3)) {
@@ -541,6 +608,27 @@ room555.chatcatch = function (callback) {
         case "yoga1":
             g.internal = 0;
             nav.drawButton("555_backgym/yogastretch.png", "g_yoga");
+            break;
+        case "situp":
+            nav.bg("555_backgym/situp1_" + gender.pronoun("f") + ".jpg");
+            g.internal = 0;
+            nav.drawButton("555_backgym/down.png", "chad_situp");
+            break;
+        case "squatDown":
+            nav.bg("555_backgym/squat1_" + gender.pronoun("m") + ".jpg");
+            break;
+        case "squatGo":
+            nav.bg("555_backgym/squat0_" + gender.pronoun("f") + ".jpg");
+            g.internal = 1;
+            nav.drawButton("555_backgym/down.png", "chad_squats");
+            break;
+        case "squatEnd":
+            levels.mod("fitness", 50, 999);
+            levels.mod("strength", 25, 999);
+            gv.mod("energy", -75);
+            levels.anal(4, false, "m", true);
+            char.addtime(60);
+            char.room(555);
             break;
         default:
             break;
@@ -998,6 +1086,58 @@ room555.chat = function (chatID) {
                 "something. ", 
             button: [
                 { chatID: -1, text: "ok", callback: "exitUpper" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "chad",
+            text: "Allright " + gender.pronoun("faggot") + " sit up and kiss my supior cock. It's the closest to a " +
+                "real man's cock you'll ever get. ",
+            button: [
+                { chatID: 54, text: "[Situp]", callback: "situp" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "chad",
+            text: "Good " + gender.pronoun("fag") + ". I can tell you really love the cock. Keep giving my cock more kisses. ",
+            button: [
+                { chatID: -1, text: "[Situp]", callback: "situp" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "chad",
+            text: "So gay. Kissing a man's cock. ",
+            button: [
+                { chatID: -1, text: "...", callback: "exitOral" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "chad",
+            text: "Ready to take my cock up your " + gender.pronoun("faggot") + " " + gender.pronoun("asshole") + "?" +
+                "Now squat down you cock hungry slut! ",
+            button: [
+                { chatID: 57, text: "[Impale your ass on his cock]", callback: "squatDown" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "chad",
+            text: "Oh fuck you do have a tight fuck hole. Now get up and fuck yourself on my " +
+                "superior cock " + gender.pronoun("faggot") + ". ",
+            button: [
+                { chatID: -1, text: "[Fuck yourself on his magnificent cock]", callback: "squatGo" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "chad",
+            text: "You're welcome for the cum loser. Now you should make yourself usefule and " +
+                "suck some dick at the bus station whore. ",
+            button: [
+                { chatID: -1, text: "I am a dirty dirty whore", callback: "squatEnd" },
             ]
         },
     ];

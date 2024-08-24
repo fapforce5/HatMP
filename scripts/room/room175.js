@@ -151,7 +151,7 @@ room175.chat = function (chatID) {
             speaker: "p",
             text: "Ok my little butt sluts! Each one of you is going to bend over and take the pink torpedo all the way " +
                 "up to 'Porn Star.' After that warm up, we're going to really start having fun with those butts! When I'm " +
-                "done with today your colons are going to be hanging out of your hugh gaping assholes. Are you ready for " +
+                "done with today your colons are going to be hanging out of your huge gaping assholes. Are you ready for " +
                 "the most intense pain of your worthless sissy lives?",
             button: [
                 { chatID: 1, text: "...", callback: "anal1" }

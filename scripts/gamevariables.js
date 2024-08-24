@@ -90,6 +90,8 @@ gv.init = function () {
 
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
+        { n: "evaDrunk", t: 0, q: "bool" },
+        { n: "lolaDrunk", t: 0, q: "bool" },
 
         //room decoration
         { n: "painting", t: "", q: "string" },
@@ -125,6 +127,9 @@ gv.init = function () {
         { n: "jobConstructionPay", t: 0, q: "zero" },
         { n: "forbotenLove", t: 0, q: "zero" },
 
+        { n: "pink", t: 0, q: "int" },
+        { n: "pinkroomopen", t: false, q: "int" },
+        { n: "pinkGloryHole", t: 0, q: "int" },
         //{ n: "sissy", t: 0, q: "sissy" },
         //{ n: "usedSissyPoints", t: 0, q: "sissy" },
 
@@ -133,7 +138,7 @@ gv.init = function () {
 
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
-
+        //---------------------------------check not used------------------------------
         { n: "momearnbackhome", t: 0, q: "int" },
 
 
@@ -154,7 +159,7 @@ gv.init = function () {
 
         { n: "mascot", t: 0, q: "int" },
         { n: "subdom", t: 50, q: "hundred" },
-        { n: "pink", t: 0, q: "int" },
+        
         { n: "milk", t: -1, q: "int" },
         { n: "cat", t: -1, q: "int" },
         { n: "cheerleader", t: 0, q: "hundred" },
@@ -242,8 +247,6 @@ gv.init = function () {
         { n: "water", t: false },
 
         { n: "cop", t: false },
-        { n: "loladrunk", t: false },
-        { n: "evadrunk", t: false },
         { n: "elsleep", t: false },
     ];
 
@@ -277,7 +280,8 @@ gv.init = function () {
         { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
         { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
         { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 21, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 23, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true },
 
     ];
 
@@ -371,6 +375,9 @@ gv.init = function () {
         { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true, room: 176 },
 
         { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
+        { id: 20, pID: [10], icon: "bondage203", x: 7, y: 1, name: "Bondage 203", description: "Bad Penis!", ach: false, active: true, room: 181 },
+
+        { id: 21, pID: [10], icon: "final", x: 7, y: 1, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 181 },
 
     ];
 

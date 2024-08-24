@@ -1,4 +1,4 @@
-﻿ //Sister's Room
+﻿//Sister's Room
 var room13 = {};
 
 room13.main = function () {
@@ -16,8 +16,18 @@ room13.main = function () {
     //else
     if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
         nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
+        var lolaDrunk = gv.get("lolaDrunk");
+        var evaDrunk = gv.get("evaDrunk");
+        var drunkImg;
 
-        if(daily.get("loladrunk"))
+        if (lolaDrunk > 0) {
+            if (lolaDrunk === 1)
+                drunkImg = "lolaSleep1.png";
+            else if (lolaDrunk === 2)
+                drunkImg = "lolaSleep2.png";
+            else
+                drunkImg = "lolaSleep3.png";
+            
             btnList.push({
                 "type": "img",
                 "name": "bed",
@@ -25,9 +35,17 @@ room13.main = function () {
                 "top": 409,
                 "width": 141,
                 "height": 107,
-                "image": "13_sisterRoom/lolaSleep.png"
+                "image": "13_sisterRoom/" + drunkImg
             });
-        if (daily.get("evadrunk"))
+        }
+        if (evaDrunk > 0) {
+            if (evaDrunk === 1)
+                drunkImg = "evaSleep1.png";
+            else if (evaDrunk === 2)
+                drunkImg = "evaSleep2.png";
+            else
+                drunkImg = "evaSleep3.png";
+
             btnList.push({
                 "type": "img",
                 "name": "bed",
@@ -35,8 +53,9 @@ room13.main = function () {
                 "top": 408,
                 "width": 192,
                 "height": 143,
-                "image": "13_sisterRoom/evaSleep.png"
+                "image": "13_sisterRoom/" + drunkImg
             });
+        }
 
         btnList.push({
             "type": "btn",
@@ -375,6 +394,7 @@ room13.btnclick = function (name) {
                 "height": 801,
                 "image": "13_sisterRoom/13_sheet1.png"
             }, 13);
+            room13.chatcatch("displaySnore");
             break;
         case "sheet1":
             nav.killbutton("sheet1");
@@ -456,12 +476,12 @@ room13.btnclick = function (name) {
                     "image": "13_sisterRoom/pj_eva_pants.png"
                 }, 13);
             }
-           
+            room13.chatcatch("displaySnore");
             g.internal.step = 0;
             if (g.internal.lolaPanties)
-                sc.select("lolaStrip", "13_sisterRoom/icon_focuslola.png", 0);
+                sc.select("lolaStrip", "13_sisterRoom/icon_focuslolastrip.png", 0);
             if (g.internal.evaPanties)
-                sc.select("evaStrip", "13_sisterRoom/icon_focuseva.png", 1);
+                sc.select("evaStrip", "13_sisterRoom/icon_focusevastrip.png", 1);
             sc.select("bothRoll", "13_sisterRoom/icon_rollover.png", 2);
             sc.selectCancel("leave", 3);
             break;
@@ -476,6 +496,10 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 3) {
                     g.internal.lolaPants = false;
+                    if (gv.get("lolaDrunk") < 2) {
+                        room13.btnclick("sleepAngry");
+                        return;
+                    }
                     room13.btnclick("choice");
                     daily.set("elsleep");
                 }
@@ -545,6 +569,10 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 4) {
                     g.internal.lolaPanties = false;
+                    if (gv.get("lolaDrunk") < 3) {
+                        room13.btnclick("sleepAngry");
+                        return;
+                    }
                     room13.btnclick("choice");
                 }
             }
@@ -560,8 +588,14 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 4) {
                     g.internal.evaPants = false;
-                    room13.btnclick("choice");
-                    daily.set("elsleep");
+                    if (gv.get("evaDrunk") < 2) {
+                        room13.btnclick("sleepAngry");
+                        return;
+                    }
+                    else {
+                        room13.btnclick("choice");
+                        daily.set("elsleep");
+                    }
                 }
                 else {
                     nav.killbutton("evapants");
@@ -617,6 +651,10 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 3) {
                     g.internal.evaPanties = false;
+                    if (gv.get("evaDrunk") < 3) {
+                        room13.btnclick("sleepAngry");
+                        return;
+                    }
                     room13.btnclick("choice");
                 }
             }
@@ -702,7 +740,12 @@ room13.btnclick = function (name) {
                     chat(54, 13);
                 }
             }
-            
+            else {
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_lola_nude_0.jpg");
+                sc.select("fingerlola", "13_sisterRoom/icon_fingerlola.png", 0);
+                sc.selectCancel("bothRoll");
+            }
             break;
         case "evaLay":
             if (g.internal.evaPants) {
@@ -723,6 +766,26 @@ room13.btnclick = function (name) {
                 }
                 else {
                     chat(52, 13);
+                }
+            }
+            else {
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_nude_0.jpg");
+                if (cl.c.chastity !== null) {
+                    chat(47, 13);
+                }
+                else {
+                    g.internal.step = 1;
+                    nav.button({
+                        "type": "tongue",
+                        "name": "lickEva0",
+                        "left": 1010,
+                        "top": 465,
+                        "width": 126,
+                        "height": 279,
+                        "image": "13_sisterRoom/eva_sleep_nude_click.png"
+                    }, 13);
+                    chat(59, 13);
                 }
             }
             break;
@@ -746,13 +809,144 @@ room13.btnclick = function (name) {
             nav.bg("13_sisterRoom/sleep_lola_panties_1.jpg");
             chat(55, 13);
             break;
+        case "fingerlola":
+            nav.killall();
+            nav.bg("13_sisterRoom/sleep_lola_nude_1.gif");
+            nav.next("fingerlola1");
+            break;
+        case "fingerlola1":
+            nav.killbutton("fingerlola1");
+            nav.bg("13_sisterRoom/sleep_lola_nude_2.jpg");
+            chat(56, 13);
+            break;
+        case "fingerlola4":
+            nav.killbutton("fingerlola4");
+            nav.bg("13_sisterRoom/sleep_lola_nude_4.jpg");
+            nav.killbutton("fingerlola4");
+            nav.next("sleepAngry");
+            break;
+        case "lickEva0":
+            nav.bg("13_sisterRoom/sleep_nude_" + g.internal.step + ".jpg");
+            g.internal.step++;
+            if (g.internal.step > 3) {
+                chat(60, 13);
+            }
+            break;
+        case "evaLick2":
+            nav.bg("13_sisterRoom/sleep_nude_5.jpg");
+            nav.killbutton("evaLick2");
+            nav.next("sleepAngry");
+            break;
+        case "sleepAngry":
+            nav.killall();
+            nav.bg("13_sisterRoom/bedbg.jpg");
+            var angryEva, angryLola;
+            if (g.internal.evaPants)
+                angryEva = "eva_angry_pj.png"
+            else if (g.internal.evaPanties)
+                angryEva = "eva_angry_panties.png";
+            else
+                angryEva = "eva_angry_nude.png";
+
+            if (g.internal.lolaPants)
+                angryLola = "lola_angry_pj.png";
+            else if (g.internal.lolaPanties)
+                angryLola = "lola_angry_panties.png";
+            else
+                angryLola = "lola_angry_nude.png";
+
+            nav.button({
+                "type": "img",
+                "name": "eva",
+                "left": 1186,
+                "top": 25,
+                "width": 365,
+                "height": 1021,
+                "image": "13_sisterRoom/" + angryEva
+            }, 13);
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 960,
+                "top": 57,
+                "width": 259,
+                "height": 998,
+                "image": "13_sisterRoom/" + angryLola
+            }, 13);
+            chat(57, 13);
+            break;
+        case "practiceDate":
+            room13.btnclick("clearChat");
+            switch (sc.taskGetStep("lola", "date")) {
+                case 0: chat(61, 13); break;
+                case 1: chat(65, 13); break;
+                case 2:
+                    if (g.isNight())
+                        chat(66, 13);
+                    else
+                        chat(67, 13);
+                    break;
+                default:
+                    chat(99999, 13);
+                    //sc.select("datePark", "13_sisterRoom/icon_pdPark.png", 0);
+                    //sc.select("dateFair", "13_sisterRoom/icon_pdCarnival.png", 1);
+                    //sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2)
+                    //sc.selectCancel("dateCancel", 3);
+                    break;
+            }
+            break;
+        case "dateFair":
+            g.pass = { who: "lola", ferrisWheel: false, bong: false, ball: false };
+            char.room(625);
+            break;
+        case "datePark":
+            g.pass = "lolaPark2";
+            char.room(450);
+            break;
+        case "dateHere":
+            nav.killbutton("datePark");
+            nav.killbutton("dateFair");
+            nav.killbutton("dateHere");
+            nav.killbutton("dateCancel");
+            if (sc.getLevel("lola") < 7)
+                chat(68, 13);
+            else
+                chat(69, 13);
+            break;
+        case "date":
+            nav.bg("13_sisterRoom/date" + g.internal + ".jpg");
+            if (g.internal === 16) {
+                nav.bg("13_sisterRoom/datebg.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "lola",
+                    "left": 479,
+                    "top": 0,
+                    "width": 1200,
+                    "height": 1080,
+                    "image": "13_sisterRoom/date16.gif"
+                }, 13);
+            }
+            else if (g.internal === 17) {
+                nav.killbutton("lola");
+            }
+            else if (g.internal === 18) {
+                nav.killall();
+                chat(88, 13);
+            }
+            g.internal++;
+            break;
+        case "date25":
+            nav.bg("13_sisterRoom/date25.jpg");
+            nav.killbutton("date25");
+            chat(98, 13);
+            break;
         default:
             break;
     }
 };
 
 room13.chatcatch = function (callback) {
-
     $.each(callback.split(" "), function (i, v) {
         switch (v) {
             case "lolaDayEvent":
@@ -915,10 +1109,150 @@ room13.chatcatch = function (callback) {
                 }, 13);
                 nav.next("lolaSleepingJackPanties1");
                 break;
+            case "fingerlola2":
+                nav.bg("13_sisterRoom/sleep_lola_nude_3.jpg");
+                nav.next("fingerlola4")
+                break;
+            case "evaLick1":
+                nav.killall();
+                nav.bg("13_sisterRoom/sleep_nude_4.jpg");
+                nav.next("evaLick2");
+                break;
             case "endEvaSleepEvent":
                 char.room(11);
                 break;
-        };
+            case "leaveMad":
+                daily.set("elsleep");
+                char.addtime(65);
+                char.room(11);
+                break;
+            case "displaySnore":
+                var lolaDrunk = gv.get("lolaDrunk");
+                var evaDrunk = gv.get("evaDrunk");
+                var drunkImg;
+
+                if (lolaDrunk > 0) {
+                    if (lolaDrunk === 1)
+                        drunkImg = "lolaSleep1.png";
+                    else if (lolaDrunk === 2)
+                        drunkImg = "lolaSleep2.png";
+                    else
+                        drunkImg = "lolaSleep3.png";
+
+                    nav.button({
+                        "type": "img",
+                        "name": "bed",
+                        "left": 580,
+                        "top": 120,
+                        "width": 282,
+                        "height": 214,
+                        "image": "13_sisterRoom/" + drunkImg
+                    }, 13);
+                }
+                if (evaDrunk > 0) {
+                    if (evaDrunk === 1)
+                        drunkImg = "evaSleep1.png";
+                    else if (evaDrunk === 2)
+                        drunkImg = "evaSleep2.png";
+                    else
+                        drunkImg = "evaSleep3.png";
+
+                    nav.button({
+                        "type": "img",
+                        "name": "bed",
+                        "left": 1620,
+                        "top": 120,
+                        "width": 288,
+                        "height": 214,
+                        "image": "13_sisterRoom/evaSleep2.png"
+                    }, 13);
+                }
+                break;
+            case "practiceDate0_end":
+                sc.completeMissionTask("lola", "date", 0);
+                future.add("practiceDate0", 1);
+                char.room(13);
+                break;
+            case "lolaPark":
+                g.pass = "lolaPark";
+                char.room(450);
+                break;
+            case "drawDateIcons":
+                sc.select("datePark", "13_sisterRoom/icon_pdPark.png", 0);
+                sc.select("dateFair", "13_sisterRoom/icon_pdCarnival.png", 1);
+                sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2)
+                sc.selectCancel("dateCancel", 3);
+                break;
+            case "date0":
+                nav.killall();
+                nav.bg("13_sisterRoom/date0.jpg");
+                break;
+            case "date1":
+                nav.killall();
+                if (cl.pantiesTxt() === "panties") {
+                    chat(99, 13);
+                }
+                else if (cl.c.bra !== null) {
+                    chat(100, 13);
+                }
+                else if (!gender.canUseCock()) {
+                    if (cl.c.chastity !== null)
+                        chat(104, 13);
+                    else
+                        chat(105, 13);
+                }
+                cl.nude();
+                nav.bg("13_sisterRoom/date1.jpg");
+                if (cl.c.chastity !== null)
+                    chat(74, 13);
+                else {
+
+                }
+                break;
+            case "date2":
+            case "date3":
+            case "date4":
+            case "date5":
+            case "date6":
+            case "date7":
+            case "date8":
+            case "date9":
+            case "date10":
+            case "date20":
+            case "date21":
+            case "date22":
+            case "date23":
+                nav.bg("13_sisterRoom/" + v + ".jpg");
+                break;
+            case "date24":
+                nav.bg("13_sisterRoom/" + v + ".gif");
+                nav.next("date25");
+                break;
+            case "date11":
+                g.internal = 12;
+                nav.bg("13_sisterRoom/" + v + ".jpg");
+                nav.next("date");
+                break;
+            case "dateEnd":
+                levels.fuckpussy("lola");
+                levels.getBlowJob("eva", "f");
+                sc.completeMissionTask("lola", "date", 4);
+                sc.completeMissionTask("lola", "date", 5);
+                sc.startMission("eva", "fuck");
+                sc.completeMissionTask("eva", "fuck", 0);
+                char.addtime(192);
+                char.room(10);
+                break;
+            case "leaveSecret":
+                sc.modSecret("lola", 100);
+                char.room(10);
+                break;
+            case "dateFail":
+                sc.completeMission("lola", "date", false);
+                char.room(10);
+                break;
+            default: break;
+        }
     });
 };
 
@@ -1354,7 +1688,7 @@ room13.chat = function (chatID) {
                     "she'll wake up if I jack off on her. I'm so horny right now. Just a " +
                     "quick one all over those beautiful tits. I'm sure she won't mind. ",
                 button: [
-                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + sc.el() + ".", callback: "sleepReset" },
                     { chatID: -1, text: "Just a quick jack won't hurt", callback: "evaSleepingJackTits" },
                 ]
             },
@@ -1374,7 +1708,7 @@ room13.chat = function (chatID) {
                     "hard right now it hurts. I don't think she'd mine if I took care of it " +
                     "really quick...",
                 button: [
-                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + sc.el() + ".", callback: "sleepReset" },
                     { chatID: -1, text: "Just a quick jack won't hurt", callback: "lolaSleepingJackTits" },
                 ]
             },
@@ -1394,7 +1728,7 @@ room13.chat = function (chatID) {
                     "spread open and ready. Fuck that would look so sexy with my cum leaking " +
                     "out of her. I so want to fuck her. I'm going to cum all over those little white panties. ",
                 button: [
-                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + sc.el() + ".", callback: "sleepReset" },
                     { chatID: -1, text: "Just a quick jack won't hurt", callback: "evaSleepingJackPanties" },
                 ]
             },
@@ -1414,7 +1748,7 @@ room13.chat = function (chatID) {
                     "dick between those cheeks. Fuck I'm horny. I just really need to spank the monkey " +
                     "really quick. ",
                 button: [
-                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + g.makeSingular(sc.n("el")) + ".", callback: "sleepReset" },
+                    { chatID: -1, text: "No! That's fucked up. I'm not going to jack off on my sleeping " + sc.el() + ".", callback: "sleepReset" },
                     { chatID: -1, text: "Just a quick jack won't hurt", callback: "lolaSleepingJackPanties" },
                 ]
             },
@@ -1425,6 +1759,466 @@ room13.chat = function (chatID) {
                     "ass of hers. ",
                 button: [
                     { chatID: -1, text: "Disappear into the night. Also you're a sick pervert. ", callback: "endEvaSleepEvent" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "thinking",
+                text: sc.n("lola") + "'s pussy is so wet and warm. I so need to fuck my " +
+                    "hot, sexy " + sc.el() + "! Damn that pussy needs cock so bad! ",
+                button: [
+                    { chatID: -1, text: "Carefully slide your dick into her", callback: "fingerlola2" },
+                    { chatID: -1, text: "Do the right thing. ", callback: "sleepReset" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "lola",
+                text: "Aaaa what are you doing?",
+                button: [
+                    { chatID: 58, text: "Ohhh uh", callback: "" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "eva",
+                text: "Dirty dirty pervert!!! Get out of our room before we tell on you! ",
+                button: [
+                    { chatID: -1, text: "Yes, right away. Sorry...", callback: "leaveMad" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "thinking",
+                text: sc.n("eva") + "'s suck a slut! Just laying there with her legs open displaying " +
+                    "her pussy. She's so easy I could just start fucking her here. Looks a bit dry, " +
+                    "maybe I should like it first to lube her up before I fuck her. ",
+                button: [
+                    { chatID: -1, text: "Get her juices flowing and lick her pussy.", callback: "" },
+                    { chatID: -1, text: "Do the right thing. ", callback: "sleepReset" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "thinking",
+                text: "She's dripping wet and so hungry for my cock. Get ready slut. hehehe",
+                button: [
+                    { chatID: -1, text: "Gently slide your cock into your " + sc.el() + "'s pussy.", callback: "evaLick1" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "me",
+                text: "So uhhh, our " + sc.n("landlord") + " wanted me, er us, to go on a practice date. ",
+                button: [
+                    { chatID: 62, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "lola",
+                text: "Oh yeah. She's been trying to get me to date for a while, but she always picks " +
+                    "such terrible boys. I'll go on the date, but they're so terrible I usually end it " +
+                    "before we even get anywhere. She mentioned I needed to practice dating. I didn't know " +
+                    "this is what she came up with. ",
+                button: [
+                    { chatID: 63, text: "Yeah. She sprung it on me too. I thought it was werid, but you know. Why not. Did you want to go on a practice date? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "lola",
+                text: "Hmmmm. Sure. Why not. What can it hurt. I'll pick the spot. I don't want to run into " +
+                    "my friends to ask why I'm going on a date with.... well you know...",
+                button: [
+                    { chatID: 64, text: "Haha. Yeah. That would be weird. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "lola",
+                text: "Cool! Give me at leaste a day to get everything ready! Ask me before it gets dark. So excited! ",
+                button: [
+                    { chatID: -1, text: "Haha. Yeah. That would be weird. ", callback: "practiceDate0_end" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "lola",
+                text: "Ask me before it's dark tomorrow. I've got to get ready. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "lola",
+                text: "It's too late for a friendly date. Ask me before it's dark. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "lola",
+                text: "Oh goody! We're going to go to the park! Let's go! ",
+                button: [
+                    { chatID: -1, text: "Totally! ", callback: "lolaPark" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "lola",
+                text: "There isn't anything to do here. Let's go out somewhere.",
+                button: [
+                    { chatID: -1, text: "oh sure [Need Level 7]", callback: "drawDateIcons" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "lola",
+                text: "Here? What did you have in mind? ",
+                button: [
+                    { chatID: 70, text: "I was hoping we could practice making out. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "lola",
+                text: "So I know you like making out. I love making out with you, but I have " +
+                    "something that's been bothering me for a long long while that I need to " +
+                    "get out before we make out on the bed. ",
+                button: [
+                    { chatID: 71, text: "What's that? ", callback: "date0" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "lola",
+                text: "I love you. I think I've always loved you. I've never gone more than " +
+                    "a single date with any boy in my life becuase I always compare them to " +
+                    "you. I can't get you out of my mind. Do you love me back? ",
+                button: [
+                    { chatID: 72, text: "Sure ", callback: "" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "lola",
+                text: "Sure? Here I am practically throwing myself at you, and all you can say " +
+                    "is sure? Surely you have something, anything, more romantic than that! ",
+                button: [
+                    { chatID: 73, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "me",
+                text: sc.n("lola") + ". I've been chasing after you to get to this day for " +
+                    "years. There is nothing I want more than to be in this room right now " +
+                    "with you. You are all I think about. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "date1" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "lola",
+                text: "Come here you big beautiful man! I'm so ready to lose my virginity to you! ",
+                button: [
+                    { chatID: 75, text: "...", callback: "date2" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "landlord",
+                text: "And just what in the hell are you two doing? ",
+                button: [
+                    { chatID: 76, text: "eeep!", callback: "date3" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "lola",
+                text: "Where did you come from?",
+                button: [
+                    { chatID: 77, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "landlord",
+                text: "I've been watching from the window. You need to start locking that window. " +
+                    "But that's not important. " + sc.n("me") + " you were about to take " + sc.n("lola") +
+                    "'s virginity weren't you? A " + sc.n("landlord") + " can tell. Just a couple horny " +
+                    "teenagers about to have sex! ",
+                button: [
+                    { chatID: 78, text: "Uhhhhh, no, no, we were....", callback: "date4" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "landlord",
+                text: "Yes you were! I'm so happy. I was so afraid that " + sc.n("lola") + " would turn " +
+                    "into one of those weird lonly cat ladies and die a virgin. I'm so happy you have " +
+                    "a sex drive. ",
+                button: [
+                    { chatID: 79, text: "?", callback: "" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "lola",
+                text: "So, you aren't mad at us? ",
+                button: [
+                    { chatID: 80, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "landlord",
+                text: "I'm not mad. I'm so happy for you. Which is why I'm here. Losing your " +
+                    "virginity is a special time for a girl and I want to make sure it's " +
+                    "everything that it should be. " + sc.n("me") + " is a good boy, but he's " +
+                    "such an idiot. Let's make your first time memorable and not something you " +
+                    "regret later. Now you are taking those birth control pills I gave you right? ",
+                button: [
+                    { chatID: 87, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "landlord",
+                text: "Good girl, now lay down on the bed. " +
+                    sc.n("me") + " get on top of her, but don't you dare insert your penis into " +
+                    "her vagina till I tell you to.",
+                button: [
+                    { chatID: 82, text: "...ok", callback: "date5" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "landlord",
+                text: "Start by kissing her on the mouth and move down to her neck. " +
+                    "light kissing and sucking. ",
+                button: [
+                    { chatID: 83, text: "*suck* *lick*", callback: "date6" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "landlord",
+                text: "Good boy. Now move down to hear breasts. Lightly lick and suck her nipples. " +
+                    "Not too hard, she's got sensative nipples. ",
+                button: [
+                    { chatID: 84, text: "*lick* *suckle*", callback: "date7" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "landlord",
+                text: "Move down the belly, past her vagina to her inner thigh. Start kissing her " +
+                    "gengly, but you can get a little more rougher in there. Show her how aroused " +
+                    "you are, and how much to desire to insert your penis into her vagina. ",
+                button: [
+                    { chatID: 85, text: "*kiss*", callback: "date8" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "landlord",
+                text: "Good boy. That smell in the room is " + sc.n("lola") + "'s arousal. Her body " +
+                    "is getting ready for sex by lubricating her vagina. Now move your mouth up and " +
+                    "lick around her vaginal lips before flicking and licking her clitorus. ",
+                button: [
+                    { chatID: 86, text: "*lick* *suck*", callback: "date9" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "landlord",
+                text: "Notice how sopping wet she is. She is now ready to take your penis inside her " +
+                    "vagina. Now, " + sc.n("lola") + " since it's your first time you need to get on top " +
+                    "so you can control the speed and depth of " + sc.n("me") + "'s penis inside you. ",
+                button: [
+                    { chatID: 87, text: "...", callback: "date10" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "landlord",
+                text: "I was scared my first time, but I learned to enjoy it. Don't you worry " +
+                    "baby, just take it inside of you nice and slow.",
+                button: [
+                    { chatID: -1, text: "...", callback: "date11" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "eva",
+                text: "Why is everyone fucking in MY room?",
+                button: [
+                    { chatID: 89, text: "...", callback: "date19" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "landlord",
+                text: "Watch you language! I've told you a thousand times, no cussing in my " +
+                    "house. You remember what happened the last time you used such foul language " +
+                    "under my roof! " +
+                    "You just ruined " + sc.n("lola") + "'s experiance. " +
+                    "Unlike yourself losing her virginity is a big deal for your " + sc.el() + 
+                    ". ",
+                button: [
+                    { chatID: 90, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "eva",
+                text: "Fuck you! Your precious little " + sc.n("lola") + " is just too scared to " +
+                    "get laid doesn't mean she's better! Besides, you're both just jealous I can " +
+                    "get any man I want. ",
+                button: [
+                    { chatID: 91, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "landlord",
+                text: "Don't make me laugh. You know your last boyfriend, Jimmy? He stopped by my " +
+                    "work and we had a little talk about why he dumped you. It seems like you're " +
+                    "terrible at giving blow jobs. Since you've decided to behave unlady like and " +
+                    "cuss at me under my roof, you punishment will be how to give a proper deep throat. " +
+                    "Every punishement needs a lesson, and you're getting yours right now! ",
+                button: [
+                    { chatID: 92, text: "?", callback: "date20" },
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "eva",
+                text: "B-b-but, it's so dirty",
+                button: [
+                    { chatID: 93, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "landlord",
+                text: "Oh please. I know what you do in this room all night. This isn't the first time " +
+                    "you've tasted " + sc.n("lola") + "'s vaginal fluids. Put your hands to your side " +
+                    "and take his soft penis all the way into your mouth. ",
+                button: [
+                    { chatID: 94, text: "...", callback: "date21" },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "landlord",
+                text: "That's my good girl. Take it all the way into your throat. ",
+                button: [
+                    { chatID: 95, text: "...", callback: "date22" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "eva",
+                text: "He's hard! It hurts to take him all the way in my throat when he's hard like " +
+                    "that. Tell him to get soft again! ",
+                button: [
+                    { chatID: 96, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "landlord",
+                text: "Oh dear, you silly girl, you do need help. ",
+                button: [
+                    { chatID: 97, text: "...", callback: "date23" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "landlord",
+                text: "Just relax your throat and take his entire penis into your mouth like this! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "date24" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "landlord",
+                text: "That's my girl! It's such a gift to be given a man's cum! You look so " +
+                    "pretty covered in his white sticky goo. " + sc.n("me") + " go to your room " +
+                    "and let the girls clean up in private. After all, a girl has to have some " +
+                    "privacy. ", 
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "dateEnd" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "lola",
+                text: "Are you wearing panties? Why are you wearing panties? ",
+                button: [
+                    { chatID: 101, text: "Oh, what. Uhhh ", callback: "" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "lola",
+                text: "Are you wearing bra? Why are you wearing bra? ",
+                button: [
+                    { chatID: 101, text: "Oh, what. Uhhh ", callback: "" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "lola",
+                text: "You're crossdressing aren't you? It's ok you can tell me. I've known " +
+                    "you for a long time. You want to be a girl down't you? ",
+                button: [
+                    { chatID: 102, text: "What? Me, no.", callback: "" },
+                    { chatID: 103, text: "It's such a relief. Yes, I want to be a girl!", callback: "" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "lola",
+                text: "You don't have to lie to me. I know you do. Why would you wear girl's " +
+                    "underwear. You need to be true to yourself. It's time to come out and your true " +
+                    "self. ",
+                button: [
+                    { chatID: 103, text: "Fine, I want to be a girl. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "lola",
+                text: "I'm so proud of you. It takes guts to be the real you. I'm going to " +
+                    "run and catch up with some friends. Just know I'm very proud of you. ",
+                button: [
+                    { chatID: -1, text: "..oh. ok. Bye bye. ", callback: "leaveSecret" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "lola",
+                text: "Oh my. That's a chastity thing isn't it. I've heard about those. Boys who " +
+                    "want to be girls wear them. Do you want to be a girl? ",
+                button: [
+                    { chatID: 103, text: "It's such a relief. Yes, I want to be a girl!", callback: "" },
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "lola",
+                text: "Oh my. I didn't realise you have such a tiny penis. There's nothing wrong " +
+                    "with that. I just don't know if I can do this. I've got to go see some friends. ",
+                button: [
+                    { chatID: -1, text: "...ok", callback: "dateFail" },
                 ]
             },
         ];

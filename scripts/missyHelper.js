@@ -41,6 +41,8 @@ missy.init = function () {
         { id: 32, n: "cumMaidCounter", c: 0 },
         { id: 33, n: "trashSearchCounter", c: 0 },
         { id: 34, n: "subCounter197", c: 0 },
+
+        { id: 35, n: "pinkEntrance", c: 0 },
     ];
 
     missy.cases = [

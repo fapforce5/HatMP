@@ -16,29 +16,29 @@ room216.btnclick = function (name) {
         case "clean":
             nav.killall();
             if (g.rand(0, 2) === 0) {
-                nav.bg("216_pink/pull0_" + gender.pronoun("f") + ".jpg");
-                sc.select("plug0", "216_pink/icon_pull.png", 0);
-                sc.select("plugclean", "216_pink/icon_clean.png", 1);
+                nav.bg("216_pinkglory/pull0_" + gender.pronoun("f") + ".jpg");
+                sc.select("plug0", "216_pinkglory/icon_pull.png", 0);
+                sc.select("plugclean", "216_pinkglory/icon_clean.png", 1);
             }
             else {
-                nav.bg("216_pink/dirty_" + gender.pronoun("f") + ".jpg");
-                sc.select("cum0", "216_pink/icon_lick.png", 0);
-                sc.select("lickclean", "216_pink/icon_clean.png", 1);
+                nav.bg("216_pinkglory/dirty_" + gender.pronoun("f") + ".jpg");
+                sc.select("cum0", "216_pinkglory/icon_lick.png", 0);
+                sc.select("lickclean", "216_pinkglory/icon_clean.png", 1);
             }
             break;
         case "plug0":
             nav.killall();
-            nav.bg("216_pink/pull1_" + gender.pronoun("f") + ".jpg");
+            nav.bg("216_pinkglory/pull1_" + gender.pronoun("f") + ".jpg");
             nav.next("plug1");
             break;
         case "plug1":
             nav.killall();
-            nav.bg("216_pink/pull2_" + gender.pronoun("f") + ".jpg");
+            nav.bg("216_pinkglory/pull2_" + gender.pronoun("f") + ".jpg");
             nav.next("plug2");
             break;
         case "plug2":
             nav.killall();
-            nav.bg("216_pink/pull3_" + gender.pronoun("f") + ".jpg");
+            nav.bg("216_pinkglory/pull3_" + gender.pronoun("f") + ".jpg");
             cl.c.cumface = true;
             levels.mod("cum", 20, 999);
             chat(5, 216);
@@ -49,7 +49,7 @@ room216.btnclick = function (name) {
             break;
         case "lickclean":
             nav.killall();
-            nav.bg("216_pink/clean_" + gender.pronoun("f") + ".jpg");
+            nav.bg("216_pinkglory/clean_" + gender.pronoun("f") + ".jpg");
             chat(6, 216);
             break;
         case "cum0":
@@ -58,7 +58,7 @@ room216.btnclick = function (name) {
             }
             else {
                 nav.killall();
-                nav.bg("216_pink/ass.jpg");
+                nav.bg("216_pinkglory/ass.jpg");
                 nav.button({
                     "type": "tongue",
                     "name": "cum1",
@@ -66,7 +66,7 @@ room216.btnclick = function (name) {
                     "top": 354,
                     "width": 151,
                     "height": 717,
-                    "image": "216_pink/cum0.png",
+                    "image": "216_pinkglory/cum0.png",
                     "title": "Lick up slut"
                 }, 216);
             }
@@ -80,7 +80,7 @@ room216.btnclick = function (name) {
                 "top": 354,
                 "width": 151,
                 "height": 496,
-                "image": "216_pink/cum1.png",
+                "image": "216_pinkglory/cum1.png",
                 "title": "Lick up slut"
             }, 216);
             break;
@@ -93,13 +93,13 @@ room216.btnclick = function (name) {
                 "top": 354,
                 "width": 98,
                 "height": 232,
-                "image": "216_pink/cum2.png",
+                "image": "216_pinkglory/cum2.png",
                 "title": "Lick up slut"
             }, 216);
             break;
         case "cum3":
             nav.killall();
-            nav.bg("216_pink/clean_" + gender.pronoun("f") + ".jpg");
+            nav.bg("216_pinkglory/clean_" + gender.pronoun("f") + ".jpg");
             gv.mod("energy", 100);
             levels.mod("cum", 25, 999);
             chat(7, 216);
@@ -110,12 +110,18 @@ room216.btnclick = function (name) {
 room216.chatcatch = function (callback) {
     switch (callback) {
         case "pink0":
-            nav.bg("216_pink/intro.jpg");
+            nav.bg("216_pinkglory/intro.jpg");
             break;
         case "cumRoom":
             nav.killall();
-            nav.bg("216_pink/bg.jpg");
-            var holes = g.shuffleArray([0, 1, 2, 3, 4, 5, 6]);
+            nav.bg("216_pinkglory/bg.jpg");
+            var holes;
+            if (gv.get("pinkroomopen")) {
+                holes = g.shuffleArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            }
+            else {
+                holes = g.shuffleArray([0, 1, 2, 3, 4, 5, 6]);
+            }
             for (i = 0; i < 5; i++) {
                 nav.button({
                     "type": "img",
@@ -124,17 +130,17 @@ room216.chatcatch = function (callback) {
                     "top": 73,
                     "width": 335,
                     "height": 324,
-                    "image": "216_pink/" + holes[i] + "_s.png",
+                    "image": "216_pinkglory/" + holes[i] + "_s.png",
                     "title": "Free Use Slut"
                 }, 216);
                 nav.button({
                     "type": "img",
-                    "name": "ho_" + i,
+                    "name": "hox_" + i,
                     "left": 300 + (i * 335),
                     "top": 400,
                     "width": 335,
                     "height": 570,
-                    "image": "216_pink/" + holes[i] + "_d.png",
+                    "image": "216_pinkglory/" + holes[i] + "_d.png",
                     "title": "Free Use Slut"
                 }, 216);
             }
@@ -145,7 +151,7 @@ room216.chatcatch = function (callback) {
                 "top": 850,
                 "width": 231,
                 "height": 206,
-                "image": "216_pink/clean.png",
+                "image": "216_pinkglory/clean.png",
                 "title": "Clean Up"
             }, 216);
             break;
@@ -154,7 +160,7 @@ room216.chatcatch = function (callback) {
             char.room(224);
             break;
         case "clean":
-            nav.bg("216_pink/clean_" + gender.pronoun("f") + ".jpg");
+            nav.bg("216_pinkglory/clean_" + gender.pronoun("f") + ".jpg");
             break;
         default:
             break;
@@ -391,11 +397,11 @@ room216.chat = function (chatID) {
 //        case "right":
 //            if (g.internal.s === 0) {
 //                g.internal.s = 1;
-//                nav.bg("216_pink/m_" + g.internal.l + "_0.jpg");
+//                nav.bg("216_pinkglory/m_" + g.internal.l + "_0.jpg");
 //            }
 //            else {
 //                nav.killall();
-//                nav.bg("216_pink/holebg.jpg");
+//                nav.bg("216_pinkglory/holebg.jpg");
 //                if (g.internal.l === "d") {
 //                    nav.button({
 //                        "type": "img",
@@ -404,7 +410,7 @@ room216.chat = function (chatID) {
 //                        "top": 298,
 //                        "width": 645,
 //                        "height": 782,
-//                        "image": "216_pink/l_" + g.internal.l + "_" + g.internal.n + ".png"
+//                        "image": "216_pinkglory/l_" + g.internal.l + "_" + g.internal.n + ".png"
 //                    }, 216);
 //                }
 //                else {
@@ -415,7 +421,7 @@ room216.chat = function (chatID) {
 //                        "top": 0,
 //                        "width": 582,
 //                        "height": 1080,
-//                        "image": "216_pink/l_" + g.internal.l + "_" + g.internal.n + ".png"
+//                        "image": "216_pinkglory/l_" + g.internal.l + "_" + g.internal.n + ".png"
 //                    }, 216);
 //                }
 //                chat(7, 216);
@@ -456,12 +462,12 @@ room216.chat = function (chatID) {
 //            gv.mod("loadSwollowed", 1);
 //            gv.mod("money", 50);
 //            char.addtime(120);
-//            nav.bg("216_pink/clean4.jpg");
+//            nav.bg("216_pinkglory/clean4.jpg");
 //            break;
 //        case "clean4a":
 //            gv.mod("money", 50);
 //            char.addtime(120);
-//            nav.bg("216_pink/clean4.jpg");
+//            nav.bg("216_pinkglory/clean4.jpg");
 //            break;
 //        case "resetClean":
 //            nav.button(
@@ -472,10 +478,10 @@ room216.chat = function (chatID) {
 //                "top": 463,
 //                "width": 296,
 //                "height": 240,
-//                "image": "216_pink/gloryho.png",
+//                "image": "216_pinkglory/gloryho.png",
 //                "title": "Free Use Slut"
 //            }, 216);
-//            nav.bg("216_pink/cleansluts.jpg");
+//            nav.bg("216_pinkglory/cleansluts.jpg");
 //            nav.buildnav([213, 214, 215, 0]);
 //            break;
 //        case "reset":
@@ -492,13 +498,13 @@ room216.chat = function (chatID) {
 //                "top": 0,
 //                "width": 582,
 //                "height": 1080,
-//                "image": "216_pink/l_u_0.png"
+//                "image": "216_pinkglory/l_u_0.png"
 //            }, 216);
-//            nav.bg("216_pink/holebg.jpg");
+//            nav.bg("216_pinkglory/holebg.jpg");
 //            break;
 //        case "legdown":
 //            nav.killall();
-//            nav.bg("216_pink/holebg.jpg");
+//            nav.bg("216_pinkglory/holebg.jpg");
 //            nav.button(
 //                {
 //                    "type": "img",
@@ -507,7 +513,7 @@ room216.chat = function (chatID) {
 //                    "top": 298,
 //                    "width": 645,
 //                    "height": 782,
-//                    "image": "216_pink/l_d_0.png"
+//                    "image": "216_pinkglory/l_d_0.png"
 //                }, 216);
 //            g.internal = { l: "d", n: 0, s: 0, c: 0 };
 //            break;
@@ -527,7 +533,7 @@ room216.chat = function (chatID) {
 //                        "top": 0,
 //                        "width": 880,
 //                        "height": 1080,
-//                        "image": "216_pink/l_f_" + randcust + ".png"
+//                        "image": "216_pinkglory/l_f_" + randcust + ".png"
 //                    }, 216);
 //                chat(100, 216);
 //            }
@@ -538,7 +544,7 @@ room216.chat = function (chatID) {
 //                g.internal.n = 8;
 //            g.internal.s = 0;
 //            nav.killall();
-//            nav.bg("216_pink/m_" + g.internal.l + "_1.jpg");
+//            nav.bg("216_pinkglory/m_" + g.internal.l + "_1.jpg");
 //            nav.button({
 //                "type": "btn",
 //                "name": "right",
@@ -560,7 +566,7 @@ room216.chat = function (chatID) {
 //                    "top": 298,
 //                    "width": 645,
 //                    "height": 782,
-//                    "image": "216_pink/l_" + g.internal.l + "_" + g.internal.n + ".png"
+//                    "image": "216_pinkglory/l_" + g.internal.l + "_" + g.internal.n + ".png"
 //                }, 216);
 //            }
 //            else {
@@ -572,7 +578,7 @@ room216.chat = function (chatID) {
 //                    "top": 0,
 //                    "width": 582,
 //                    "height": 1080,
-//                    "image": "216_pink/l_" + g.internal.l + "_" + g.internal.n + ".png"
+//                    "image": "216_pinkglory/l_" + g.internal.l + "_" + g.internal.n + ".png"
 //                }, 216);
 //            }
 //            break;

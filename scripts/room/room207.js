@@ -39,6 +39,10 @@ room207.main = function () {
 room207.btnclick = function (name) {
     switch (name) {
         case "door_pink":
+            if (gv.get("pinkroomopen")) {
+                char.room(213);
+                return;
+            }
             chat(1, 207);
             break;
         case "door_school":

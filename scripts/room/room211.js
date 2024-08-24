@@ -3,15 +3,16 @@ var room211 = {};
 room211.main = function () {
     var classesPassed = sissy.getNumPassed();
     var philbert = sc.taskGetStep("philbert", "bully");
+    var hasFinalSissyOutfit = cl.hasClothing("shirt", "sq");
     if (!sissy.st[0].ach) { //firstday
         gv.set("sissySchoolClass", "firstday");
         char.room(209);
     }
-    else if (classesPassed === 13 && !cl.hasClothing("shirt", "sq")) {
+    else if (sissy.st[10].ach && hasFinalSissyOutfit) {
         nav.bg("211_meeting/postTest.jpg");
         chat(25, 211);
     }
-    else if (classesPassed > 4 && philbert < 0) {
+    else if (sissy.st[19].ach && philbert < 0) {
         sc.startMission("philbert", "bully");
         sc.completeMissionTask("philbert", "bully", 0, true);
         nav.bg("211_meeting/event0.jpg");
@@ -22,7 +23,7 @@ room211.main = function () {
         nav.bg("211_meeting/event1_0.jpg");
         chat(22, 211);
     }
-    else if (classesPassed > 4 && classesPassed < 13) {
+    else if (sissy.st[19].ach && !sissy.st[10].ach) {
         if (cl.c.shirt !== "ss") {
             sc.select("icon_dress", "211_meeting/icon_dress.png", 0);
             nav.bg("211_meeting/change.jpg");
@@ -30,7 +31,7 @@ room211.main = function () {
         else
             room211.btnclick("drawGroups");
     }
-    else if (classesPassed > 12) {
+    else if (sissy.st[10].ach) {
         if (cl.c.shirt !== "sq") {
             sc.select("icon_dress1", "211_meeting/icon_dress1.png", 0);
             nav.bg("211_meeting/change1.jpg");
@@ -81,8 +82,6 @@ room211.main = function () {
             "image": "211_meeting/jeremy.png",
             "title": "Chat"
         }, 211);
-
-
         nav.button({
             "type": "btn",
             "name": "classSelect",
@@ -202,71 +201,132 @@ room211.btnclick = function (name) {
         case "drawGroups":
             nav.bg("211_meeting/bg_traineeGroup.jpg");
             nav.killall();
-            nav.button({
-                "type": "btn",
-                "name": "group1",
-                "left": 380,
-                "top": 379,
-                "width": 289,
-                "height": 531,
-                "image": "211_meeting/group1.png"
-            }, 211);
-            nav.button({
-                "type": "btn",
-                "name": "group2",
-                "left": 1516,
-                "top": 473,
-                "width": 391,
-                "height": 607,
-                "image": "211_meeting/group2.png"
-            }, 211);
-            nav.button({
-                "type": "btn",
-                "name": "group3",
-                "left": 746,
-                "top": 671,
-                "width": 405,
-                "height": 98,
-                "image": "211_meeting/group3.png"
-            }, 211);
-            nav.button({
-                "type": "btn",
-                "name": "group4",
-                "left": 119,
-                "top": 463,
-                "width": 409,
-                "height": 617,
-                "image": "211_meeting/group4.png"
-            }, 211);
-            nav.button({
-                "type": "btn",
-                "name": "group5",
-                "left": 1239,
-                "top": 417,
-                "width": 151,
-                "height": 518,
-                "image": "211_meeting/group5.png"
-            }, 211);
-            nav.button({
-                "type": "btn",
-                "name": "classSelect",
-                "left": 716,
-                "top": 359,
-                "width": 464,
-                "height": 208,
-                "image": "211_meeting/class.png",
-                "title": "Class selection screen"
-            }, 211);
-            nav.button({
-                "type": "btn",
-                "name": "elevator",
-                "left": 1486,
-                "top": 345,
-                "width": 130,
-                "height": 395,
-                "image": "211_meeting/elevator.png",
-                "title": "Elevator"
-            }, 211);
+            if (sissy.st[10].ach) {
+                nav.button({
+                    "type": "btn",
+                    "name": "xgroup1",
+                    "left": 0,
+                    "top": 457,
+                    "width": 432,
+                    "height": 623,
+                    "image": "211_meeting/xgroup1.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "xgroup2",
+                    "left": 374,
+                    "top": 398,
+                    "width": 389,
+                    "height": 682,
+                    "image": "211_meeting/xgroup2.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "xgroup3",
+                    "left": 951,
+                    "top": 612,
+                    "width": 368,
+                    "height": 468,
+                    "image": "211_meeting/xgroup3.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "xgroup4",
+                    "left": 1476,
+                    "top": 540,
+                    "width": 444,
+                    "height": 540,
+                    "image": "211_meeting/xgroup4.png"
+                }, 211);
+
+                nav.button({
+                    "type": "btn",
+                    "name": "classSelect",
+                    "left": 716,
+                    "top": 359,
+                    "width": 464,
+                    "height": 208,
+                    "image": "211_meeting/class.png",
+                    "title": "Class selection screen"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "elevator",
+                    "left": 1486,
+                    "top": 345,
+                    "width": 130,
+                    "height": 395,
+                    "image": "211_meeting/elevator.png",
+                    "title": "Elevator"
+                }, 211);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "group1",
+                    "left": 380,
+                    "top": 379,
+                    "width": 289,
+                    "height": 531,
+                    "image": "211_meeting/group1.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "group2",
+                    "left": 1516,
+                    "top": 473,
+                    "width": 391,
+                    "height": 607,
+                    "image": "211_meeting/group2.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "group3",
+                    "left": 746,
+                    "top": 671,
+                    "width": 405,
+                    "height": 98,
+                    "image": "211_meeting/group3.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "group4",
+                    "left": 119,
+                    "top": 463,
+                    "width": 409,
+                    "height": 617,
+                    "image": "211_meeting/group4.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "group5",
+                    "left": 1239,
+                    "top": 417,
+                    "width": 151,
+                    "height": 518,
+                    "image": "211_meeting/group5.png"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "classSelect",
+                    "left": 716,
+                    "top": 359,
+                    "width": 464,
+                    "height": 208,
+                    "image": "211_meeting/class.png",
+                    "title": "Class selection screen"
+                }, 211);
+                nav.button({
+                    "type": "btn",
+                    "name": "elevator",
+                    "left": 1486,
+                    "top": 345,
+                    "width": 130,
+                    "height": 395,
+                    "image": "211_meeting/elevator.png",
+                    "title": "Elevator"
+                }, 211);
+            }
             break;
         case "group1":
             chat(501, 211);
@@ -282,6 +342,18 @@ room211.btnclick = function (name) {
             break;
         case "group5":
             chat(505, 211);
+            break;
+        case "xgroup1":
+            chat(26, 211);
+            break;
+        case "xgroup2":
+            chat(27, 211);
+            break;
+        case "xgroup3":
+            chat(28, 211);
+            break;
+        case "xgroup4":
+            chat(29, 211);
             break;
         default:
             break;
@@ -332,18 +404,21 @@ room211.chat = function (chatID) {
     else if (chatID === 501) {
         return {
             chatID: 501,
-            speaker: "me",
-            text: "Group 1",
+            speaker: "philbert",
+            text: "In that tight little shirt and skirt, you look like a chick! I would totally " +
+                "bang you. ",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "Thanks? ", callback: "" },
             ]
         };
     }
     else if (chatID === 502) {
         return {
             chatID: 501,
-            speaker: "me",
-            text: "Group 2",
+            speaker: "!chris",
+            text: "OOoooo! I'm so excited! I've always known deep down I was the wrong gender, " +
+                "but I've been too afraid to make the leap. This is just what I need to get " +
+                "over my fear and finally be the girl I was born to be. ",
             button: [
                 { chatID: -1, text: "...", callback: "" },
             ]
@@ -352,8 +427,8 @@ room211.chat = function (chatID) {
     else if (chatID === 503) {
         return {
             chatID: 501,
-            speaker: "me",
-            text: "Group 3",
+            speaker: "!timothy",
+            text: "zzZZzzzz Just give me 10 more minutes. ",
             button: [
                 { chatID: -1, text: "...", callback: "" },
             ]
@@ -362,20 +437,21 @@ room211.chat = function (chatID) {
     else if (chatID === 504) {
         return {
             chatID: 501,
-            speaker: "me",
-            text: "Group 4",
+            speaker: "!kareem",
+            text: "I'm so, like, nervous, ya know. This is so right, but I can't help but feel " +
+                "so wrong. ",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "Ya. Me too", callback: "" },
             ]
         };
     }
     else if (chatID === 505) {
         return {
             chatID: 501,
-            speaker: "me",
-            text: "Group 5",
+            speaker: "!jeremy",
+            text: "This is so dumb. I don't know why I've even here. ",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "oh", callback: "" },
             ]
         };
     }
@@ -607,6 +683,40 @@ room211.chat = function (chatID) {
                 text: "Ok sluts everyone upstairs to the White Room! Move that soft little tushies! Move it! Move it! ",
                 button: [
                     { chatID: -1, text: "aaak", callback: "moveit" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "!kareem",
+                text: "Hey baby girl! You lookin' fine today!  ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "!timothy",
+                text: "I just love how " + sc.n("!sporty") + " sucks that cock. She's so " +
+                    "enthusiastic!",
+                button: [
+                    { chatID: -1, text: "She sure is", callback: "" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "!thomas",
+                text: "I'm going to have the biggest bussy in the world! Just need more training. ",
+                button: [
+                    { chatID: -1, text: "Yes you will. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "!chris",
+                text: "I'm going to look so hot with a pair of giant boobs! Can't wait for them " +
+                    "to grow in. ",
+                button: [
+                    { chatID: -1, text: "Me too.", callback: "" },
                 ]
             },
         ];

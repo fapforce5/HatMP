@@ -6,6 +6,7 @@ charisma.getStats = function (charismaLevel) {
     var appearance = cl.appearance();
     var rollNeeded = baseRoll - myCharisma - appearance;
     
+    
     var stat = g.getSingleRoll(rollNeeded);
     return { n: stat, txt: "[Charisma Roll: " + stat + "%] ", baseRoll: baseRoll, rollNeeded: rollNeeded, myCharisma: myCharisma, appearance: appearance };
 };

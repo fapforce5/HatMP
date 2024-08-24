@@ -103,7 +103,7 @@ inv.master = [
     { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },
     { type: "d", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 60, image: "butt_whiteCock.png", n: false, desc: "Averge Dildo" },
     { type: "d", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: -1, image: "butt_blackCock.png", n: false, desc: "Slightly Larger than average dildo" },
-    { type: "d", name: "pinkFatDildo", display: "Fat Pink Dildo", entry: false, count: null, cost: 120, image: "butt_fat.png", n: false, desc: "Fat Man" },
+    { type: "d", name: "pinkFatDildo", display: "Fat Pink Dildo", entry: false, count: null, cost: -1, image: "butt_fat.png", n: false, desc: "Fat pink futa dildo dick" },
     { type: "d", name: "blackBallsDildo", display: "Anal Beads", entry: false, count: null, cost: 40, image: "butt_balls.png", n: false, desc: "Balls you put in your ass" },
     { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 90, image: "butt_tower.png", n: false, desc: "Stretch that sissy hole" },
     { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false, desc: "You'll blow your ass out" },
@@ -128,7 +128,9 @@ inv.master = [
     { type: "y", name: "hypno4", display: "Hypno Lesson #4", entry: false, count: null, cost: 50, image: "hypno4.png", n: false, desc: "Blondes have more fun!" },
     { type: "y", name: "hypno5", display: "Hypno Lesson #5", entry: false, count: null, cost: 50, image: "hypno5.png", n: false, desc: "Don't think too much" },
     { type: "y", name: "hypno6", display: "Hypno Lesson #6", entry: false, count: null, cost: 60, image: "hypno6.png", n: false, desc: "Bimbo is better" },
-    { type: "y", name: "hypno7", display: "Hypno Lesson #7", entry: false, count: null, cost: 100, image: "hypno7.png", n: false, desc: "You are an object. Let men use you. All your holes and fuck holes" }
+    { type: "y", name: "hypno7", display: "Hypno Lesson #7", entry: false, count: null, cost: 100, image: "hypno7.png", n: false, desc: "You are an object. Let men use you. All your holes and fuck holes" },
+
+    { type: "z", name: "teddybear", display: "Teddy Bear", entry: false, count: 0, cost: -1, image: "teddybear.png", n: false, desc: "Jar of Peanut Butter. " },
 
 ];
 

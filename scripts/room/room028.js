@@ -70,6 +70,10 @@ room28.main = function () {
             case "xdressPoints":
                 xdressPoints = gv.st[i].t;
                 break;
+            case "evaDrunk":
+            case "lolaDrunk":
+                gv.st[i].t = 0;
+                break;
         }
     }
     
@@ -233,7 +237,7 @@ room28.main = function () {
 
     for (i = 0; i < future.st.length; i++) {
         future.st[i].daysleft--;
-        if (future.st[i].daysleft === 0) {
+        if (future.st[i].daysleft < 1) {
             switch (future.st[i].name) {
                 case "janicevacation":
                     sc.completeMission("dog", "vacation", true);
@@ -246,6 +250,9 @@ room28.main = function () {
                         sc.startMission("envy", "breakup");
                         sc.completeMissionTask("envy", "breakup", 0, true);
                     }
+                    break;
+                case "practiceDate0":
+                    sc.completeMissionTask("lola", "date", 1);
                     break;
             }
             future.st.splice(i, 1);

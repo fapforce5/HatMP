@@ -43,6 +43,12 @@ gender.pronoun = function (ptype) {
             return gender.isGirl() ? "bikini" : "swim trunks";
         case "panties":
             return gender.isGirl() ? "panties" : "underware";
+        case "fag":
+            return gender.isGirl() ? "sissy" : "fag";
+        case "faggot":
+            return gender.isGirl() ? "sissy" : "faggot";
+        case "asshole":
+            return gender.isGirl() ? "bussy" : "asshole";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

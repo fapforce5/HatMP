@@ -240,6 +240,9 @@ nav.modbutton = function (name, newImage, newName, newType) {
 
     if (newType === "img")
         $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").addClass("room-img");
+    else if (newType === "btn")
+        $('img[data-name="' + name + '"]').addClass("room-btn rom-event");
+
 };
 
 nav.flash = function (thisImage, length) {
@@ -415,7 +418,7 @@ nav.cum = function (btnClickName) {
 
 nav.drawButton = function (image, btnClickName) {
     nav.button({
-        "type": "btn",
+        "type": "zbtn",
         "name": btnClickName,
         "left": 1695,
         "top": 920,
@@ -427,7 +430,7 @@ nav.drawButton = function (image, btnClickName) {
 
 nav.wait = function (btnClickName) {
     nav.button({
-        "type": "btn",
+        "type": "zbtn",
         "name": btnClickName,
         "left": 1695,
         "top": 920,

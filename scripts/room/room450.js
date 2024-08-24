@@ -6,145 +6,151 @@ var room450 = {};
 //tiffany laughs that she tricked him
 
 room450.main = function () {
-    var navList = new Array();
-    var btnList = new Array();
-    var doEvent = false;
-
-    if (g.isNight()) {
-        var copstep = sc.taskGetStep("cop", "bitch");
-        if (daily.get("cop")) {
-            nav.bg("450_park/peek.jpg");
-            chat(72, 450);
-        }
-        else if (copstep < 0) {
-            btnList.push({
-                "type": "img",
-                "name": "cop",
-                "left": 666,
-                "top": 0,
-                "width": 1000,
-                "height": 1080,
-                "image": "450_park/cop1.png"
-            });
-            sc.show("cop");
-            sc.startMission("cop", "bitch");
-            sc.completeMissionTask("cop", "bitch", 0);
-            daily.set("cop");
-            chat(2, 450);
-        }
-        else if (copstep === 1) {
-            btnList.push({
-                "type": "img",
-                "name": "cop",
-                "left": 666,
-                "top": 0,
-                "width": 1000,
-                "height": 1080,
-                "image": "450_park/cop3.png"
-            });
-            sc.completeMissionTask("cop", "bitch", 1);
-            daily.set("cop");
-            chat(59, 450);
-        }
-        else if (copstep === 2) {
-            sc.completeMissionTask("cop", "bitch", 2);
-            btnList.push({
-                "type": "img",
-                "name": "cop",
-                "left": 666,
-                "top": 0,
-                "width": 1000,
-                "height": 1080,
-                "image": "450_park/cop2.png"
-            });
-            daily.set("cop");
-            chat(60, 450);
-        }
-        else {
-            nav.bg("450_park/peek.jpg");
-            chat(74, 450);
-            //ol = levels.get("oral").l > 3;
-            //sl = levels.get("sissy").l > 3;
-            //if (ol && sl) {
-            //    btnList.push({
-            //        "type": "btn",
-            //        "name": "coprape",
-            //        "left": 666,
-            //        "top": 0,
-            //        "width": 1000,
-            //        "height": 1080,
-            //        "image": "450_park/cop1.png"
-            //    });
-            //}
-        }
+    if (g.pass === "lolaPark" || g.pass === "lolaPark2") {
+        room450.btnclick(g.pass);
+        g.pass = null;
     }
     else {
-        
-        btnList.push({
-            "type": "btn",
-            "name": "gbroom",
-            "left": 1288,
-            "top": 271,
-            "width": 63,
-            "height": 125,
-            "image": "450_park/450_girlBroom.png"
-        });
-        btnList.push({
-            "type": "btn",
-            "name": "bbroom",
-            "left": 1594,
-            "top": 273,
-            "width": 65,
-            "height": 126,
-            "image": "450_park/450_boyBroom.png"
-        });
-        btnList.push({
-            "type": "btn",
-            "name": "further",
-            "left": 603,
-            "top": 0,
-            "width": 314,
-            "height": 401,
-            "image": "450_park/450_further.png",
-            "night": "450_park/450_further_night.png"
-        });
-        if (missy.activecase().name === "case_lostgirl" && missy.get("activeCaseComplete") === 0) {
+        var navList = new Array();
+        var btnList = new Array();
+        var doEvent = false;
+
+        if (g.isNight()) {
+            var copstep = sc.taskGetStep("cop", "bitch");
+            if (daily.get("cop")) {
+                nav.bg("450_park/peek.jpg");
+                chat(72, 450);
+            }
+            else if (copstep < 0) {
+                btnList.push({
+                    "type": "img",
+                    "name": "cop",
+                    "left": 666,
+                    "top": 0,
+                    "width": 1000,
+                    "height": 1080,
+                    "image": "450_park/cop1.png"
+                });
+                sc.show("cop");
+                sc.startMission("cop", "bitch");
+                sc.completeMissionTask("cop", "bitch", 0);
+                daily.set("cop");
+                chat(2, 450);
+            }
+            else if (copstep === 1) {
+                btnList.push({
+                    "type": "img",
+                    "name": "cop",
+                    "left": 666,
+                    "top": 0,
+                    "width": 1000,
+                    "height": 1080,
+                    "image": "450_park/cop3.png"
+                });
+                sc.completeMissionTask("cop", "bitch", 1);
+                daily.set("cop");
+                chat(59, 450);
+            }
+            else if (copstep === 2) {
+                sc.completeMissionTask("cop", "bitch", 2);
+                btnList.push({
+                    "type": "img",
+                    "name": "cop",
+                    "left": 666,
+                    "top": 0,
+                    "width": 1000,
+                    "height": 1080,
+                    "image": "450_park/cop2.png"
+                });
+                daily.set("cop");
+                chat(60, 450);
+            }
+            else {
+                nav.bg("450_park/peek.jpg");
+                chat(74, 450);
+                //ol = levels.get("oral").l > 3;
+                //sl = levels.get("sissy").l > 3;
+                //if (ol && sl) {
+                //    btnList.push({
+                //        "type": "btn",
+                //        "name": "coprape",
+                //        "left": 666,
+                //        "top": 0,
+                //        "width": 1000,
+                //        "height": 1080,
+                //        "image": "450_park/cop1.png"
+                //    });
+                //}
+            }
+        }
+        else {
+
             btnList.push({
                 "type": "btn",
-                "name": "smokey",
-                "left": 910,
-                "top": 119,
-                "width": 816,
-                "height": 961,
-                "image": "450_park/smokey.png",
+                "name": "gbroom",
+                "left": 1288,
+                "top": 271,
+                "width": 63,
+                "height": 125,
+                "image": "450_park/450_girlBroom.png"
             });
-            
+            btnList.push({
+                "type": "btn",
+                "name": "bbroom",
+                "left": 1594,
+                "top": 273,
+                "width": 65,
+                "height": 126,
+                "image": "450_park/450_boyBroom.png"
+            });
+            btnList.push({
+                "type": "btn",
+                "name": "further",
+                "left": 603,
+                "top": 0,
+                "width": 314,
+                "height": 401,
+                "image": "450_park/450_further.png",
+                "night": "450_park/450_further_night.png"
+            });
+            if (missy.activecase().name === "case_lostgirl" && missy.get("activeCaseComplete") === 0) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "smokey",
+                    "left": 910,
+                    "top": 119,
+                    "width": 816,
+                    "height": 961,
+                    "image": "450_park/smokey.png",
+                });
+
+            }
+            navList = [460, 452, 451, 0];
+            doEvent = true;
         }
-        navList = [460, 452, 451, 0];
-        doEvent = true;
-    }
-    
 
-    if (g.hourBetween(12, 13) || g.hourBetween(18, 19)) {
-        btnList.push({
-            "type": "btn",
-            "name": "cult",
-            "left": 1481,
-            "top": 456,
-            "width": 264,
-            "height": 205,
-            "image": "450_park/cultEating.png"
+
+        if (g.hourBetween(12, 13) || g.hourBetween(18, 19)) {
+            btnList.push({
+                "type": "btn",
+                "name": "cult",
+                "left": 1481,
+                "top": 456,
+                "width": 264,
+                "height": 205,
+                "image": "450_park/cultEating.png"
+            });
+        }
+
+
+        $.each(btnList, function (i, v) {
+            nav.button(v, 450);
         });
+
+        nav.buildnav(navList);
+        //if (doEvent)
+        //    fame.event();
     }
-
-
-    $.each(btnList, function (i, v) {
-        nav.button(v, 450);
-    });
-
-    nav.buildnav(navList);
-    //if (doEvent)
-    //    fame.event();
 };
 
 room450.btnclick = function (name) {
@@ -191,7 +197,7 @@ room450.btnclick = function (name) {
             nav.bg("450_park/lola0.jpg");
             chat(15, 450);
             break;
-        case "lolaPark12":
+        case "lolaPark2":
             nav.killall();
             nav.bg("450_park/lola0.jpg");
             chat(38, 450);
@@ -222,6 +228,23 @@ room450.btnclick = function (name) {
             break;
         case "smokey":
             chat(75, 450);
+            break;
+        case "lola10kiss":
+            nav.killbutton("lola10kiss");
+            levels.oralGive(3, false, false, "f");
+            if (levels.get("oral").l < 3) {
+                nav.bg("450_park/lola11akiss.jpg");
+                chat(81, 450);
+            }
+            else {
+                nav.bg("450_park/lola10kiss.jpg");
+                nav.next("lola11kiss");
+            }
+            break;
+        case "lola11kiss":
+            nav.killbutton("lola11kiss");
+            nav.bg("450_park/lola11kiss.jpg");
+            chat(79, 450);
             break;
         default:
             break;
@@ -369,7 +392,41 @@ room450.chatcatch = function(callback){
             nav.bg("450_park/lola6.jpg");
             break;
         case "lola6kiss":
+            sc.modLevel("lola", 15, 7);
             nav.bg("450_park/lola6kiss.jpg");
+            break;
+        case "lola7kiss":
+            sc.modLevel("lola", 25, 7);
+            if (sc.getLevel("lola") < 4) {
+                nav.bg("450_park/lola6.jpg");
+                chat(46, 450);
+            }
+            else {
+                nav.bg("450_park/lola7kiss.jpg");
+                chat(47, 450);
+            }
+            break;
+        case "lola8kiss":
+            sc.modLevel("lola", 25, 7);
+            if (sc.getLevel("lola") < 5) {
+                nav.bg("450_park/lola6.jpg");
+                chat(48, 450);
+            }
+            else {
+                nav.bg("450_park/lola8kiss.jpg");
+                chat(49, 450);
+            }
+            break;
+        case "lola9kiss":
+            sc.modLevel("lola", 25, 7);
+            if (sc.getLevel("lola") < 6) {
+                nav.bg("450_park/lola6topless.jpg");
+                chat(78, 450);
+            }
+            else {
+                nav.bg("450_park/lola9kiss.jpg");
+                nav.next("lola10kiss");
+            }
             break;
         case "lola7a":
             sc.setstep("lola", -3);
@@ -379,8 +436,7 @@ room450.chatcatch = function(callback){
             char.room(450);
             break;
         case "lola7b":
-            sc.setstep("lola", -4);
-            sc.setstep("lola", 12);
+            sc.completeMissionTask("lola", "date", 2);
             daily.set("lola");
             char.addtime(120);
             char.room(450);
@@ -419,6 +475,29 @@ room450.chatcatch = function(callback){
             break;
         case "killsmokey":
             nav.killbutton("smokey");
+            break;
+        case "lola100":
+            sc.modLevel("lola", 100, 7);
+            break;
+        case "lola50":
+            sc.modLevel("lola", 50, 7);
+            break;
+        case "lola25":
+            sc.modLevel("lola", 50, 7);
+            break;
+        case "reset":
+            char.addtime(120);
+            char.room(450);
+            break;
+        case "backHome":
+            char.addtime(120);
+            char.room(11);
+            break;
+        case "lola11bkiss":
+            nav.bg("450_park/lola11bkiss.jpg");
+            break;
+        case "lola11kiss":
+            nav.bg("450_park/lola11kiss.jpg");
             break;
         default:
             break;
@@ -555,8 +634,8 @@ room450.chat = function(chatID){
         {
             chatID: 15,
             speaker: "lola",
-            text: "I'm so glad you called me out here on a date! I've been dreaming of this day for years, just you and me " +
-                "alone together. I can't believe you've waited this ong to ask me out.",
+            text: "I'm so glad " + sc.n("landlord") + " had us go on a practice date! " +
+                "I really needed to get out.  ",
             button: [
                 { chatID: 16, text: "...", callback: "" }
             ]
@@ -648,16 +727,19 @@ room450.chat = function(chatID){
         {
             chatID: 26,
             speaker: "lola",
-            text: "So I brought you out here so we could talk about us.",
+            text: "So uhhh. What do people talk about on a date? ",
             button: [
-                { chatID: 27, text: "Ok...", callback: "" }
+                { chatID: 27, text: "I don't know. Life I guess. ", callback: "" }
             ]
         },
         {
             chatID: 27,
             speaker: "lola",
-            text: "I was going to wait for you to say something, but I just can't. My stomach is fluttering with butterflies. I'm " +
-                "just so nervous since I put it all out there. So.... What's what do you think about me?",
+            text: "I uh.. My stomach is fluttering with butterflies. I'm " +
+                "just so nervous being on a date with you, even if it's fake. I don't know. " +
+                "This is a fake date right. It's not a real date is it? " +
+                "I know it's fake, but it feels kind of real to me. Is it real to you? " +
+                "So.... do you think about me? Like in a date way? ",
             button: [
                 { chatID: 28, text: "...", callback: "" }
             ]
@@ -665,9 +747,11 @@ room450.chat = function(chatID){
         {
             chatID: 28,
             speaker: "thinking",
-            text: "Oh man. " + sc.n("lola") + " is really serious about this. I've never seen her show any interest in any boy, for the " +
-                "longest time I just thought she was a lesbian. I know that she's going to want someone who is true to her, and there's no way " +
-                "I can be true to just her. On the other hand if I didn't return her feelings it would just break her. How do I keep her happy, " +
+            text: "Oh man. " + sc.n("lola") + " is really serious about this. I've never seen her " +
+                "show any interest in any boy. For the longest time I just thought she was a " +
+                "lesbian. I know that she's going to want someone who is true to her, and " +
+                "there's no way I can be true to just her. On the other hand if I didn't " +
+                "return her feelings it would just break her. How do I keep her happy, " +
                 "but not mislead her?",
             button: [
                 { chatID: 29, text: "...", callback: "" }
@@ -678,14 +762,14 @@ room450.chat = function(chatID){
             speaker: "lola",
             text: "You've been pretty quiet over there. I'm afraid of what that means.",
             button: [
-                { chatID: 30, text: "I want to tell you that I also have deep real feelings for you.", callback: "" },
-                { chatID: 34, text: "I care about you very much, but I'm not really at a stage that I can remain monogamous ", callback: "" }
+                { chatID: 30, text: "I want to tell you that I also have deep real feelings for you.", callback: "lola100" },
+                { chatID: 34, text: "I care about you very much, but I'm not really at a stage that I can remain monogamous ", callback: "lola50" }
             ]
         },
         {
             chatID: 30,
             speaker: "lola",
-            text: "Oh thank god! I was afraid you would think this was weird or gross. I've been sweating all week wondering what you " +
+            text: "Oh thank god! I was afraid you would think this was weird or gross. I've been sweating since you asked me out wondering what you " +
             "were thinking of me. I'm so relieved. Kiss me you fool!",
             button: [
                 { chatID: 31, text: "[Kiss her]", callback: "lola6kiss" }
@@ -759,95 +843,96 @@ room450.chat = function(chatID){
         {
             chatID: 39,
             speaker: "lola",
-            text: "So I know you think this is just another picnic and you're expecting me to pour my heart out to you, " +
-                "but that's not why we're here. I need something from you. Something I've needed for a while. ",
+            text: "I really love getting out and enjoying nature. The view is so beautiful. ",
             button: [
-                { chatID: 40, text: "What's that?", callback: "lolax1" }
+                { chatID: 40, text: "I love the view from here too.", callback: "lola25" },
+                { chatID: 41, text: "It really is.", callback: "" },
             ]
         },
         {
             chatID: 40,
             speaker: "lola",
-            text: "I need you to help me lose my virginity. I've wanted to lose it for a while and I can think of " +
-                "no better person than you to help me. ",
+            text: "Oh, you big flirt! You give me butterflies in my belly.  ",
             button: [
-                { chatID: 41, text: "Sure!", callback: "" }
+                { chatID: 41, text: "...", callback: "" }
             ]
         },
         {
             chatID: 41,
             speaker: "lola",
-            text: "Here I am practically throwing myself at you and all you can say is 'sure'? Surely you can say " +
-                "something more romantic! ",
+            text: "So if this wasn't a practice date, and was a real date, what would be your " +
+                "next move? ",
             button: [
-                { chatID: 42, text: "...", callback: "" }
+                { chatID: 43, text: "Probably start by giving you a kiss. You know. To practice kissing. ", callback: "" },
+                { chatID: 42, text: "I would kick back and enjoy this great picnic you packed. ", callback: "" },
             ]
         },
         {
             chatID: 42,
-            speaker: "me",
-            text: sc.n("lola") + " I've thought about this day for a while now. There is nothing I want more than to " +
-                "share in this moment with you. It would be an honor to be your first. ",
+            speaker: "lola",
+            text: "Oh. yeah. Thanks. I did try to make a nice picnic basket. Lets just enjoy the " +
+                "food and nature. ",
             button: [
-                { chatID: 43, text: "...", callback: "lolax2" }
+                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "reset" }
             ]
         },
         {
             chatID: 43,
             speaker: "lola",
-            text: "Come here you beautiful man! I'm going to eat you up!",
+            text: "Oh.. hehehe. I guess a kiss would be ok. You know, to practice. ",
             button: [
-                { chatID: 44, text: "Oh yeah", callback: "lolax3" }
+                { chatID: 44, text: "Lean in to kiss her. ", callback: "lola6kiss" }
             ]
         },
         {
             chatID: 44,
             speaker: "lola",
-            text: "Be gentle.",
+            text: "*Mwah*",
             button: [
-                { chatID: 45, text: "I will", callback: "lolax4" }
+                { chatID: -1, text: "[Push her on her back and make out with her]", callback: "lola7kiss" },
+                { chatID: 42, text: "Back to the picnic. [Finsih kissing her]", callback: "lola6" },
             ]
         },
         {
             chatID: 45,
-            speaker: "lola",
-            text: "OOOOOOOOOOOOoooooooooooooooooouch ouch ouch! Gentle!",
+            speaker: "me",
+            text: "That was fun, now lets just enjoy the food and nature. ",
             button: [
-                { chatID: 46, text: "Oh sorry. I'll be gentle", callback: "lolax5" }
+                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "reset" }
             ]
         },
         {
             chatID: 46,
             speaker: "lola",
-            text: "MMMMmmmm that's better. ",
+            text: "We shouldn't do this. Lets just enjoy the food and nature.  ",
             button: [
-                { chatID: 47, text: "Ooooo. Fuck. You're so tight.", callback: "lolax6" }
+                { chatID: -1, text: "Yum! [Neel level 4. Make small talk and finish the date]", callback: "reset" }
             ]
         },
         {
             chatID: 47,
             speaker: "lola",
-            text: "OOOoooo I can feel it twitch inside me. Did you cum?",
+            text: "This is so wrong, but you're such a good kisser. ",
             button: [
-                { chatID: 48, text: "Hahaha Yea ", callback: "lolax7" }
+                { chatID: -1, text: "Hahaha Yea [take off her shirt up and kiss on her belly]", callback: "lola8kiss" },
+                { chatID: 42, text: "Back to the picnic. [Finsih kissing her]", callback: "lola6" },
             ]
         },
         {
             chatID: 48,
             speaker: "lola",
-            text: "Ewwwww. You never told me it was going to drip out of me. That's so gross. How am I supposed to walk " +
-                "home like this? ",
+            text: "We shouldn't do this. Lets just enjoy the food and nature.  ",
             button: [
-                { chatID: 49, text: "Lol. I don't know. Maybe crab walk? ", callback: "lolax8" }
+                { chatID: -1, text: "Yum! [Neel level 5. Make small talk and finish the date]", callback: "reset" }
             ]
         },
         {
             chatID: 49,
             speaker: "lola",
-            text: "Well I guess I'm just going to walk home with your cum dripping out of my pussy. You were amazing, " +
-                "I'll see you at home. ",
+            text: "Oh wow. oh... it kinda tickles, but feels so good.  ",
             button: [
-                { chatID: -1, text: "Hahaha ok. Bye. ", callback: "lolax9" }
+                { chatID: -1, text: "[Pull down her skirt and lick her pussy]", callback: "lola9kiss" },
+                { chatID: 42, text: "Back to the picnic. [Finsih kissing her]", callback: "lola6" },
             ]
         },
         {
@@ -1093,6 +1178,59 @@ room450.chat = function(chatID){
                 "and loves to dance. ",
             button: [
                 { chatID: -1, text: "...loves to dance. Ok, thanks. ", callback: "killsmokey" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "lola",
+            text: "Oooo, smooth, but a bit fast for me. How about we finish our picnic, but I'll " +
+                "let you look at my boobs while we eat. ",
+            button: [
+                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "lola",
+            text: "Oohhhh wow. wow wow wow. oh my. You're going to have to give me a minute. " +
+                "I'm still getting after shocks. ",
+            button: [
+                { chatID: 80, text: "sure. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "lola",
+            text: "My legs are so shaky. You're going to have to dress and walk me home. " +
+                "You are amazing! ",
+            button: [
+                { chatID: -1, text: "Sure. Let's go", callback: "backHome" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "lola",
+            text: "That was good, but I'm so close and horny. I'm just going to get myself off " +
+                "really quick. You can watch. ",
+            button: [
+                { chatID: 82, text: "Sure. Let's go", callback: "lola11bkiss" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "lola",
+            text: "Fuck!!! aaaaaaaaaa. ",
+            button: [
+                { chatID: 83, text: "...", callback: "lola11kiss" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "lola",
+            text: "My legs are so shaky. You're going to have to dress and walk me home. " +
+                "That was amazing! ",
+            button: [
+                { chatID: -1, text: "Sure. Let's go", callback: "backHome" }
             ]
         },
     ];
