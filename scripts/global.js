@@ -220,6 +220,7 @@ g.rooms = [
     { roomID: 151, name: "Main", image: "151_jones/main.jpg", nightImage: "151_jones/main.jpg", houseID: 150, btn: "roomBtn_125.png" },
     { roomID: 152, name: "Mansion", image: "152_slave/entrance.jpg", nightImage: "152_slave/entrance.jpg", houseID: 150, btn: "roomBtn_125.png" },
 
+    { roomID: 170, name: "Stage", image: "151_jones/runway.jpg", nightImage: "151_jones/runway.jpg", houseID: 203, btn: "roomBtn_216.png" },
     { roomID: 171, name: "Glory Hole", image: "216_pinkglory/bg.jpg", nightImage: "216_pinkglory/bg.jpg", houseID: 203, btn: "roomBtn_216.png" },
     { roomID: 172, name: "Punishment2", image: "172_punishblack/bg.jpg", nightImage: "172_punishblack/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 173, name: "Trash Job", image: "173_trash/bg.jpg", nightImage: "173_trash/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },

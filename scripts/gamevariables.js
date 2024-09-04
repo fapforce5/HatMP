@@ -248,6 +248,8 @@ gv.init = function () {
 
         { n: "cop", t: false },
         { n: "elsleep", t: false },
+        { n: "zoeytalk", t: false },
+        { n: "orchid", t: false }
     ];
 
     weekly.st = [

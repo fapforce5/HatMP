@@ -4,49 +4,53 @@ room526.main = function () {
     var btnList = [{
         "type": "btn",
         "name": "zoey",
-        "left": 923,
-        "top": 175,
-        "width": 318,
-        "height": 140,
-        "image": "526_bar/barmaid.jpg"
-    },
-    {
-        "type": "btn",
-        "name": "bathroom",
-        "left": 546,
-        "top": 135,
-        "width": 53,
-        "height": 436,
-        "image": "526_bar/bathroom.png"
+        "left": 1581,
+        "top": 359,
+        "width": 146,
+        "height": 294,
+        "image": "526_bar/zoey.jpg"
     }];
 
-    if (sc.getstep("poppy") === 0) {
-        sc.setstep("poppy", 1);
-        daily.get("zbar");
-        btnList.push({
-            "type": "btn",
-            "name": "group",
-            "left": 500,
-            "top": 0,
-            "width": 1229,
-            "height": 1080,
-            "image": "526_bar/group1.png"
-        });
-        chat(0, 526);
+    if (g.rand(0, 4) === 0) {
+        if (sc.getMissionTask("holly", "bar", 0).notStarted) {
+            btnList.push({
+                "type": "btn",
+                "name": "h1",
+                "left": 0,
+                "top": 191,
+                "width": 627,
+                "height": 889,
+                "image": "526_bar/h1.png"
+            });
+        }
     }
     else {
-        if (!daily.get("zbar")) {
+        if (!daily.get("orchid")) {
             btnList.push({
                 "type": "btn",
                 "name": "g1",
-                "left": 1055,
-                "top": 0,
-                "width": 865,
-                "height": 1080,
+                "left": 0,
+                "top": 259,
+                "width": 509,
+                "height": 821,
                 "image": "526_bar/g1.png"
             });
         }
     }
+
+    var mid = g.rand(0, 4);
+    if (mid > 1 || !daily.get("keaton")) {
+        btnList.push({
+            "type": "btn",
+            "name": "m" + mid,
+            "left": 735,
+            "top": 316,
+            "width": 585,
+            "height": 764,
+            "image": "526_bar/m" + mid + ".png"
+        });
+    }
+
     $.each(btnList, function (i, v) {
         nav.button(v, 526);
     });
@@ -56,163 +60,192 @@ room526.main = function () {
 
 room526.btnclick = function (name) {
     switch (name) {
-        case "bathroom":
-            char.room(527);
-            break;
-        case "group2":
-            nav.killbutton("group2");
-            nav.bg("526_bar/group3.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "group3",
-                "left": 1120,
-                "top": 407,
-                "width": 266,
-                "height": 266,
-                "image": "526_bar/group3.png"
-            }, 526);
-            break;
-        case "group3":
-            nav.killbutton("group3");
-            nav.bg("526_bar/group4.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "group4",
-                "left": 1120,
-                "top": 407,
-                "width": 266,
-                "height": 266,
-                "image": "526_bar/group4.png"
-            }, 526);
-            break;
-        case "group4":
-            nav.killbutton("group4");
-            nav.bg("526_bar/group5.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "group5",
-                "left": 1120,
-                "top": 407,
-                "width": 266,
-                "height": 266,
-                "image": "526_bar/group5.png"
-            }, 526);
-            chat(8, 526);
-            break;
-        case "zoey":
-            nav.killall();
-            nav.bg("526_bar/bgclose.jpg");
-            if (!daily.get("keaton")) {
-                nav.button({
-                    "type": "btn",
-                    "name": "keaton0",
-                    "left": 731,
-                    "top": 408,
-                    "width": 184,
-                    "height": 672,
-                    "image": "526_bar/keaton0.png"
-                }, 526);
-            }
-            nav.button({
-                "type": "btn",
-                "name": "close",
-                "left": 1222,
-                "top": 374,
-                "width": 194,
-                "height": 290,
-                "image": "526_bar/close.png"
-            }, 526);
-            nav.buildnav([526, 0]);
-            break;
-        case "close":
-            var zoeyStep = sc.getstep("zoey");
-            if (!sc.getEvent("zoey", -3)) {
-                sc.setstep("zoey", -3);
-                chat(16, 526);
-            }
-            else if (zoeyStep < 300) {
-                chat(36, 526);
-            }
-            else {
-                chat(35, 526);
-            }
-            break;
         case "g1":
-                chat(19, 526);
-            break;
-        case "g1_big2":
-            if (g.internal < 6) {
-                nav.bg("526_bar/g1_big" + g.internal + ".jpg");
-                g.internal++;
-            }
-            else {
-                nav.killbutton("g1_big2");
-                gv.mod("giveOralMale", 1);
-                zcl.displayMain(-200, 1000, .25, "clothes", true);
-                nav.bg("526_bar/g1_big6.jpg");
-                chat(25, 526);
-            }
-            break;
-        case "g1_smol2":
-            nav.bg("526_bar/g1_smol" + g.internal + ".jpg");
-            if (g.internal < 5) {
-                g.internal++;
-            }
-            else {
-                nav.killbutton("g1_smol2");
-                gv.mod("receiveAnalMale", 1);
-                chat(30, 526);
-            }
-            break;
-        case "z13":
             nav.killall();
-            nav.bg("526_bar/z13_2.jpg");
-            nav.button({
-                "type": "tongue",
-                "name": "z131",
-                "left": 874,
-                "top": 461,
-                "width": 114,
-                "height": 295,
-                "image": "526_bar/z13_2click.png"
-            }, 526);
-            break;
-        case "z131":
-            nav.killall();
-            nav.bg("526_bar/z13_3.jpg");
-            chat(47, 526);
-            break;
-        case "keaton0":
-            nav.killbutton("keaton0");
-            nav.button({
-                "type": "btn",
-                "name": "keaton1",
-                "left": 623,
-                "top": 107,
-                "width": 428,
-                "height": 973,
-                "image": "526_bar/keaton1.png"
-            }, 526);
-            if (sc.getstep("keaton") === 0) {
-                sc.setstep("keaton", 1);
-                chat(54, 526);
-            }
-            else {
-                chat(64, 526);
-            }
-            break;
-        case "k03":
-            if (g.internal < 6)
-                nav.bg("526_bar/k0" + g.internal + ".jpg");
-            else if (g.internal > 10) {
-                nav.bg("526_bar/k03.jpg");
-                nav.killall();
-                chat(62, 526);
+            nav.bg("526_bar/g2.jpg");
+            if (sc.getMission("orchid", "slut").notStarted) {
+                sc.startMission("orchid", "slut");
+                sc.completeMissionTask("orchid", "slut", 0);
+                sc.show("orchid");
+                chat(0, 526);
             }
             else
-                nav.bg("526_bar/k0" + ((g.internal % 2) + 6) + ".jpg");
-            g.internal++;
+                chat(-1, 526);
             break;
+        case "h1":
+            nav.killall();
+            nav.bg("526_bar/h2.jpg");
+            chat(8, 526);
+            break;
+        case "m0":
+            nav.killall();
+            nav.bg("526_bar/m0_1.jpg");
+            daily.set("keaton");
+            chat(13, 526);
+            break;
+        case "m1":
+
+            break;
+        case "m2":
+
+            break;
+        case "m3":
+
+            break;
+        //case "group2":
+        //    nav.killbutton("group2");
+        //    nav.bg("526_bar/group3.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "group3",
+        //        "left": 1120,
+        //        "top": 407,
+        //        "width": 266,
+        //        "height": 266,
+        //        "image": "526_bar/group3.png"
+        //    }, 526);
+        //    break;
+        //case "group3":
+        //    nav.killbutton("group3");
+        //    nav.bg("526_bar/group4.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "group4",
+        //        "left": 1120,
+        //        "top": 407,
+        //        "width": 266,
+        //        "height": 266,
+        //        "image": "526_bar/group4.png"
+        //    }, 526);
+        //    break;
+        //case "group4":
+        //    nav.killbutton("group4");
+        //    nav.bg("526_bar/group5.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "group5",
+        //        "left": 1120,
+        //        "top": 407,
+        //        "width": 266,
+        //        "height": 266,
+        //        "image": "526_bar/group5.png"
+        //    }, 526);
+        //    chat(8, 526);
+        //    break;
+        //case "zoey":
+        //    nav.killall();
+        //    nav.bg("526_bar/bgclose.jpg");
+        //    if (!daily.get("keaton")) {
+        //        nav.button({
+        //            "type": "btn",
+        //            "name": "keaton0",
+        //            "left": 731,
+        //            "top": 408,
+        //            "width": 184,
+        //            "height": 672,
+        //            "image": "526_bar/keaton0.png"
+        //        }, 526);
+        //    }
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "close",
+        //        "left": 1222,
+        //        "top": 374,
+        //        "width": 194,
+        //        "height": 290,
+        //        "image": "526_bar/close.png"
+        //    }, 526);
+        //    nav.buildnav([526, 0]);
+        //    break;
+        //case "close":
+        //    var zoeyStep = sc.getstep("zoey");
+        //    if (!sc.getEvent("zoey", -3)) {
+        //        sc.setstep("zoey", -3);
+        //        chat(16, 526);
+        //    }
+        //    else if (zoeyStep < 300) {
+        //        chat(36, 526);
+        //    }
+        //    else {
+        //        chat(35, 526);
+        //    }
+        //    break;
+        //case "g1":
+        //        chat(19, 526);
+        //    break;
+        //case "g1_big2":
+        //    if (g.internal < 6) {
+        //        nav.bg("526_bar/g1_big" + g.internal + ".jpg");
+        //        g.internal++;
+        //    }
+        //    else {
+        //        nav.killbutton("g1_big2");
+        //        gv.mod("giveOralMale", 1);
+        //        zcl.displayMain(-200, 1000, .25, "clothes", true);
+        //        nav.bg("526_bar/g1_big6.jpg");
+        //        chat(25, 526);
+        //    }
+        //    break;
+        //case "g1_smol2":
+        //    nav.bg("526_bar/g1_smol" + g.internal + ".jpg");
+        //    if (g.internal < 5) {
+        //        g.internal++;
+        //    }
+        //    else {
+        //        nav.killbutton("g1_smol2");
+        //        gv.mod("receiveAnalMale", 1);
+        //        chat(30, 526);
+        //    }
+        //    break;
+        //case "z13":
+        //    nav.killall();
+        //    nav.bg("526_bar/z13_2.jpg");
+        //    nav.button({
+        //        "type": "tongue",
+        //        "name": "z131",
+        //        "left": 874,
+        //        "top": 461,
+        //        "width": 114,
+        //        "height": 295,
+        //        "image": "526_bar/z13_2click.png"
+        //    }, 526);
+        //    break;
+        //case "z131":
+        //    nav.killall();
+        //    nav.bg("526_bar/z13_3.jpg");
+        //    chat(47, 526);
+        //    break;
+        //case "keaton0":
+        //    nav.killbutton("keaton0");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "keaton1",
+        //        "left": 623,
+        //        "top": 107,
+        //        "width": 428,
+        //        "height": 973,
+        //        "image": "526_bar/keaton1.png"
+        //    }, 526);
+        //    if (sc.getstep("keaton") === 0) {
+        //        sc.setstep("keaton", 1);
+        //        chat(54, 526);
+        //    }
+        //    else {
+        //        chat(64, 526);
+        //    }
+        //    break;
+        //case "k03":
+        //    if (g.internal < 6)
+        //        nav.bg("526_bar/k0" + g.internal + ".jpg");
+        //    else if (g.internal > 10) {
+        //        nav.bg("526_bar/k03.jpg");
+        //        nav.killall();
+        //        chat(62, 526);
+        //    }
+        //    else
+        //        nav.bg("526_bar/k0" + ((g.internal % 2) + 6) + ".jpg");
+        //    g.internal++;
+        //    break;
         default:
             break;
     }
@@ -220,278 +253,292 @@ room526.btnclick = function (name) {
 
 room526.chatcatch = function (callback) {
     switch (callback) {
-        case "checkCock":
-            if (cl.c.chastity !== null)
-                chat(5, 526);
-            else if (cl.c.cock > 2)
-                chat(6, 526);
-            else {
-                nav.killall();
-                nav.bg("526_bar/group2.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "group2",
-                    "left": 1127,
-                    "top": 553,
-                    "width": 285,
-                    "height": 285,
-                    "image": "526_bar/group2.png"
-                }, 526);
-            }
-            break;
-        case "group6":
-            nav.killbutton("group5");
-            nav.bg("526_bar/group6.jpg");
-            break;
-        case "group7":
-            nav.bg("526_bar/group7.jpg");
-            cl.doCum(false);
-            gv.mod("giveAnalMale", 1);
-            break;
-        case "group8":
-            nav.bg("526_bar/group8.jpg");
-            zcl.displayMain(-100, 600, .23, "clothes", true);
-            nav.button({
-                "type": "img",
-                "name": "group8",
-                "left": 1140,
-                "top": 0,
-                "width": 743,
-                "height": 1080,
-                "image": "526_bar/group8.png"
-            }, 526);
-            break;
-        case "group9":
-            nav.killbutton("group8");
-            scc.love("zoey", -5, 80);
-            zcl.displayMain(-100, 600, .23, "clothes", false);
-            nav.button({
-                "type": "img",
-                "name": "group8",
-                "left": 1140,
-                "top": 0,
-                "width": 743,
-                "height": 1080,
-                "image": "526_bar/group8.png"
-            }, 526);
-            break;
-        case "seeZoey":
-            room526.btnclick("zoey");
-            room526.btnclick("close");
-            break;
-        case "killem":
-            nav.killbutton("g1");
-            break;
-        case "g1_1":
-            nav.killall();
-            char.changeMenu("hide", false, true);
-            if (cl.c.chastity !== null) {
-                nav.bg("526_bar/g1_chastity.jpg");
-                chat(27, 526);
-            }
-            else if (cl.c.cock < 2) {
-                nav.bg("526_bar/g1_big.jpg");
-                chat(21, 526);
-            }
-            else {
-                nav.bg("526_bar/g1_smol.jpg");
-                chat(34, 526);
-            }
-            break;
-        case "g1_big1":
-            nav.bg("526_bar/g1_big1.jpg");
-            break;
-        case "g1_big2":
-            g.internal = 3;
-            nav.bg("526_bar/g1_big2.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "g1_big2",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 526);
-            break;
-        case "g1_small1":
-            nav.killall();
-            g.internal = 2;
-            nav.bg("526_bar/g1_smol1.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "g1_smol2",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 526);
-            break;
-        case "g1_end":
-            sc.setstep("poppy", 2);
-            daily.set("zbar");
-            char.addtime(75);
+        case "hollyGood":
+            sc.completeMissionTask("holly", "bar", 0, true);
+            sc.modLevel("holly", 100, 1);
+            sc.modLevel("molly", 100, 1);
+            sc.modLevel("dolly", 100, 1);
             char.room(526);
             break;
-        case "g1_small2":
-            nav.bg("526_bar/bg.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "juniper",
-                "left": 1055,
-                "top": 0,
-                "width": 460,
-                "height": 1080,
-                "image": "526_bar/juniper.png"
-            }, 256);
-            break;
-        case "wash":
-            nav.killall();
-            nav.bg("526_bar/wash.jpg");
-            break;
-        case "wash1":
-            scc.love("zoey", 10, 100);
-            var zoeyy = sc.getstep("zoey");
-            if (g.gethourdecimal() > 12) {
-                g.dt.setDate(g.dt.getDate() + 1);
-            }
-            char.settime(2, 30);
-            nav.killall();
-            nav.bg("526_bar/bgclose.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "close",
-                "left": 1222,
-                "top": 374,
-                "width": 194,
-                "height": 290,
-                "image": "526_bar/close.png"
-            }, 526);
-            if (scc.get("zoey").love > 80 && zoeyy === 11) {
-                nav.killall();
-                nav.bg("526_bar/z1.jpg");
-                chat(40, 526);
-            }
-            else if (zoeyy === 13) {
-                nav.killall();
-                nav.bg("526_bar/z1.jpg");
-                chat(45, 526);
-            }
-            else {
-                chat(39, 526);
-            }
-            break;
-        case "checkHouse":
-            var hashc = inv.has("handcuff");
-            var hasc = cl.c.chastity !== null;
-            if (hashc && hasc) {
-                chat(43, 526);
-            }
-            else {
-                chat(44, 526);
-            }
-            break;
-        case "gotohouse":
-            sc.setstep("zoey", 12);
-            char.room(502);
-            break;
-        case "z13_1":
-            nav.killall();
-            nav.button({
-                "type": "tongue",
-                "name": "z13",
-                "left": 889,
-                "top": 707,
-                "width": 200,
-                "height": 200,
-                "image": "526_bar/z13_1click.jpg"
-            }, 526);
-            nav.bg("526_bar/z13_1.jpg");
-            break;
-        case "z13_4":
-            nav.bg("526_bar/z13_4.jpg");
-            break;
-        case "z13_5":
-            nav.killall();
-            sc.setstep("zoey", 14);
-            scc.love("zoey", 100, 100);
-            nav.bg("502_bedroom/sleepZoey.jpg");
-            g.pass = 502;
-            g.roomTimeout = setTimeout(function () {
-                char.room(28);
-            }, 500);
-            break;
-        case "k01":
-            nav.killall();
-            nav.bg("526_bar/k01.jpg");
-            break;
-        case "k02":
-            nav.killall();
-            if (cl.c.chastity !== null)
-                chat(58, 526);
-            else if (cl.c.cock > 2) {
-                nav.bg("526_bar/k02s.jpg");
-                chat(59, 526);
-            }
-            else {
-                nav.bg("526_bar/k02.jpg");
-                chat(60, 526);
-            }
-            break;
-        case "k03":
-            nav.bg("526_bar/k03.jpg");
-            g.internal = 4;
-            nav.button({
-                "type": "btn",
-                "name": "k03",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 526);
-            break;
-        case "k08":
-            nav.bg("526_bar/k08.jpg");
-            break;
-        case "k09":
-            gv.mod("giveAnalMale", 1);
-            gv.mod("giveOralMale", 1);
-            daily.set("keaton");
-            cl.doCum(false);
+        case "hollyBad":
+            sc.completeMissionTask("holly", "bar", 0, true);
             char.room(526);
-            break;
-        case "kno":
-            if (q3.activeSearch("keaton")) {
-                chat(65, 526);
-            }
-            else {
-                daily.set("keaton");
-                char.room(526);
-            }
-            break;
-        case "kno0":
-            nav.killall();
-            nav.bg("526_bar/kno0.jpg");
-            zcl.displayMain(-400, 250, .6, "clothes", true);
-            break;
-        case "kno1":
-            g.roomMapAccess(535, true, false);
-            sc.setstep("keaton", 2);
-            daily.set("keaton");
-            char.room(526);
-            break;
-        case "knoreset":
-            daily.set("keaton");
-            char.room(526);
-            break;
-        case "leave":
-            char.room(0);
             break;
         case "reset":
             char.room(526);
             break;
+        //case "checkCock":
+        //    if (cl.c.chastity !== null)
+        //        chat(5, 526);
+        //    else if (cl.c.cock > 2)
+        //        chat(6, 526);
+        //    else {
+        //        nav.killall();
+        //        nav.bg("526_bar/group2.jpg");
+        //        nav.button({
+        //            "type": "btn",
+        //            "name": "group2",
+        //            "left": 1127,
+        //            "top": 553,
+        //            "width": 285,
+        //            "height": 285,
+        //            "image": "526_bar/group2.png"
+        //        }, 526);
+        //    }
+        //    break;
+        //case "group6":
+        //    nav.killbutton("group5");
+        //    nav.bg("526_bar/group6.jpg");
+        //    break;
+        //case "group7":
+        //    nav.bg("526_bar/group7.jpg");
+        //    cl.doCum(false);
+        //    gv.mod("giveAnalMale", 1);
+        //    break;
+        //case "group8":
+        //    nav.bg("526_bar/group8.jpg");
+        //    zcl.displayMain(-100, 600, .23, "clothes", true);
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "group8",
+        //        "left": 1140,
+        //        "top": 0,
+        //        "width": 743,
+        //        "height": 1080,
+        //        "image": "526_bar/group8.png"
+        //    }, 526);
+        //    break;
+        //case "group9":
+        //    nav.killbutton("group8");
+        //    scc.love("zoey", -5, 80);
+        //    zcl.displayMain(-100, 600, .23, "clothes", false);
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "group8",
+        //        "left": 1140,
+        //        "top": 0,
+        //        "width": 743,
+        //        "height": 1080,
+        //        "image": "526_bar/group8.png"
+        //    }, 526);
+        //    break;
+        //case "seeZoey":
+        //    room526.btnclick("zoey");
+        //    room526.btnclick("close");
+        //    break;
+        //case "killem":
+        //    nav.killbutton("g1");
+        //    break;
+        //case "g1_1":
+        //    nav.killall();
+        //    char.changeMenu("hide", false, true);
+        //    if (cl.c.chastity !== null) {
+        //        nav.bg("526_bar/g1_chastity.jpg");
+        //        chat(27, 526);
+        //    }
+        //    else if (cl.c.cock < 2) {
+        //        nav.bg("526_bar/g1_big.jpg");
+        //        chat(21, 526);
+        //    }
+        //    else {
+        //        nav.bg("526_bar/g1_smol.jpg");
+        //        chat(34, 526);
+        //    }
+        //    break;
+        //case "g1_big1":
+        //    nav.bg("526_bar/g1_big1.jpg");
+        //    break;
+        //case "g1_big2":
+        //    g.internal = 3;
+        //    nav.bg("526_bar/g1_big2.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "g1_big2",
+        //        "left": 1687,
+        //        "top": 615,
+        //        "width": 233,
+        //        "height": 150,
+        //        "image": "526_bar/arrowRight.png"
+        //    }, 526);
+        //    break;
+        //case "g1_small1":
+        //    nav.killall();
+        //    g.internal = 2;
+        //    nav.bg("526_bar/g1_smol1.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "g1_smol2",
+        //        "left": 1687,
+        //        "top": 615,
+        //        "width": 233,
+        //        "height": 150,
+        //        "image": "526_bar/arrowRight.png"
+        //    }, 526);
+        //    break;
+        //case "g1_end":
+        //    sc.setstep("poppy", 2);
+        //    daily.set("zbar");
+        //    char.addtime(75);
+        //    char.room(526);
+        //    break;
+        //case "g1_small2":
+        //    nav.bg("526_bar/bg.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "juniper",
+        //        "left": 1055,
+        //        "top": 0,
+        //        "width": 460,
+        //        "height": 1080,
+        //        "image": "526_bar/juniper.png"
+        //    }, 256);
+        //    break;
+        //case "wash":
+        //    nav.killall();
+        //    nav.bg("526_bar/wash.jpg");
+        //    break;
+        //case "wash1":
+        //    scc.love("zoey", 10, 100);
+        //    var zoeyy = sc.getstep("zoey");
+        //    if (g.gethourdecimal() > 12) {
+        //        g.dt.setDate(g.dt.getDate() + 1);
+        //    }
+        //    char.settime(2, 30);
+        //    nav.killall();
+        //    nav.bg("526_bar/bgclose.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "close",
+        //        "left": 1222,
+        //        "top": 374,
+        //        "width": 194,
+        //        "height": 290,
+        //        "image": "526_bar/close.png"
+        //    }, 526);
+        //    if (scc.get("zoey").love > 80 && zoeyy === 11) {
+        //        nav.killall();
+        //        nav.bg("526_bar/z1.jpg");
+        //        chat(40, 526);
+        //    }
+        //    else if (zoeyy === 13) {
+        //        nav.killall();
+        //        nav.bg("526_bar/z1.jpg");
+        //        chat(45, 526);
+        //    }
+        //    else {
+        //        chat(39, 526);
+        //    }
+        //    break;
+        //case "checkHouse":
+        //    var hashc = inv.has("handcuff");
+        //    var hasc = cl.c.chastity !== null;
+        //    if (hashc && hasc) {
+        //        chat(43, 526);
+        //    }
+        //    else {
+        //        chat(44, 526);
+        //    }
+        //    break;
+        //case "gotohouse":
+        //    sc.setstep("zoey", 12);
+        //    char.room(502);
+        //    break;
+        //case "z13_1":
+        //    nav.killall();
+        //    nav.button({
+        //        "type": "tongue",
+        //        "name": "z13",
+        //        "left": 889,
+        //        "top": 707,
+        //        "width": 200,
+        //        "height": 200,
+        //        "image": "526_bar/z13_1click.jpg"
+        //    }, 526);
+        //    nav.bg("526_bar/z13_1.jpg");
+        //    break;
+        //case "z13_4":
+        //    nav.bg("526_bar/z13_4.jpg");
+        //    break;
+        //case "z13_5":
+        //    nav.killall();
+        //    sc.setstep("zoey", 14);
+        //    scc.love("zoey", 100, 100);
+        //    nav.bg("502_bedroom/sleepZoey.jpg");
+        //    g.pass = 502;
+        //    g.roomTimeout = setTimeout(function () {
+        //        char.room(28);
+        //    }, 500);
+        //    break;
+        //case "k01":
+        //    nav.killall();
+        //    nav.bg("526_bar/k01.jpg");
+        //    break;
+        //case "k02":
+        //    nav.killall();
+        //    if (cl.c.chastity !== null)
+        //        chat(58, 526);
+        //    else if (cl.c.cock > 2) {
+        //        nav.bg("526_bar/k02s.jpg");
+        //        chat(59, 526);
+        //    }
+        //    else {
+        //        nav.bg("526_bar/k02.jpg");
+        //        chat(60, 526);
+        //    }
+        //    break;
+        //case "k03":
+        //    nav.bg("526_bar/k03.jpg");
+        //    g.internal = 4;
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "k03",
+        //        "left": 1687,
+        //        "top": 615,
+        //        "width": 233,
+        //        "height": 150,
+        //        "image": "526_bar/arrowRight.png"
+        //    }, 526);
+        //    break;
+        //case "k08":
+        //    nav.bg("526_bar/k08.jpg");
+        //    break;
+        //case "k09":
+        //    gv.mod("giveAnalMale", 1);
+        //    gv.mod("giveOralMale", 1);
+        //    daily.set("keaton");
+        //    cl.doCum(false);
+        //    char.room(526);
+        //    break;
+        //case "kno":
+        //    if (q3.activeSearch("keaton")) {
+        //        chat(65, 526);
+        //    }
+        //    else {
+        //        daily.set("keaton");
+        //        char.room(526);
+        //    }
+        //    break;
+        //case "kno0":
+        //    nav.killall();
+        //    nav.bg("526_bar/kno0.jpg");
+        //    zcl.displayMain(-400, 250, .6, "clothes", true);
+        //    break;
+        //case "kno1":
+        //    g.roomMapAccess(535, true, false);
+        //    sc.setstep("keaton", 2);
+        //    daily.set("keaton");
+        //    char.room(526);
+        //    break;
+        //case "knoreset":
+        //    daily.set("keaton");
+        //    char.room(526);
+        //    break;
+        //case "leave":
+        //    char.room(0);
+        //    break;
+        //case "reset":
+        //    char.room(526);
+        //    break;
         default:
             break;
     }
@@ -501,15 +548,15 @@ room526.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "poppy",
+            speaker: "orchid",
             text: "Oh... hello. We wern't expecting any new girls here! ",
             button: [
-                { chatID: 1, text: "GULP", callback: "" }
+                { chatID: 1, text: "*GULP*", callback: "" }
             ]
         },
         {
             chatID: 1,
-            speaker: "orchid",
+            speaker: "!poppy",
             text: "Oh is there someone new here! Who is it! ",
             button: [
                 { chatID: 2, text: "...", callback: "" }
@@ -517,30 +564,154 @@ room526.chat = function (chatID) {
         },
         {
             chatID: 2,
-            speaker: "juniper",
+            speaker: "!juniper",
             text: "Yes, what's your name? ",
             button: [
-                { chatID: 3, text: "I'm " + sc.n("me") + ". What is this place?", callback: "" }
+                { chatID: 3, text: "I'm " + sc.n("me") + ". ", callback: "" }
             ]
         },
         {
             chatID: 3,
-            speaker: "poppy",
-            text: "Zoey's bar you silly sissy. The best damn bar in this town! So did you want to take a turn with " +
-                sc.n("orchid") + "? I bet you fuck like a freight train.",
+            speaker: "!poppy",
+            text: "OOooo that's such a pretty name. Do you have a pretty cock? We were about to " +
+                "bend Orchid over the table and fill her with our cocks. She lost the smallest " +
+                "cock game again. ",
             button: [
-                { chatID: -1, text: "Fuck Yes!", callback: "checkCock" },
-                { chatID: 4, text: "Oh no.... I'm a scared little bitch", callback: "" }
+                { chatID: 4, text: "Smallest cock game?", callback: "" }
             ]
         },
         {
             chatID: 4,
-            speaker: "orchid",
-            text: "Awwww, I was hoping for more cum in my bum!",
+            speaker: "!juniper",
+            text: "Oh sweet summer child. We each pull out our cocks and who ever has the smallest " +
+                "cock gets fucked by the bigger, superior cocks. Orchid always loses, I think she " +
+                "does it on purpose.  ",
             button: [
-                { chatID: -1, text: "I'm going to chat with Zoey. You girls have fun.", callback: "seeZoey" }
+                { chatID: 5, text: "...", callback: "" }
             ]
         },
+        {
+            chatID: 5,
+            speaker: "orchid",
+            text: "What! I do try! I can't get it any bigger! You have no idea how hard I strain to " +
+                "make my cock bigger! I love getting fucked, but just once I would love to do the " +
+                "fucking! You know I'm a top! ",
+            button: [
+                { chatID: 6, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "!poppy",
+            text: "Well, you know you're just going to lose again, unless... New girl, do you want to " +
+                "play the smallest cock game? Loser gets fucked, no backing out. ",
+            button: [
+                { chatID: 7, text: "I'm in!", callback: "" },
+                { chatID: -1, text: "Maybe some other time. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "!juniper",
+            text: "Ok new girl, let's see each other's cocks! ",
+            button: [
+                { chatID: -1, text: "Compare dicks with the girls", callback: "g3" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "holly",
+            text: "Oh hi there. What's up? ",
+            button: [
+                { chatID: 9, text: "What are you beautiful ladies doing here? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "molly",
+            text: "Ugh. We tried going to the club, but there's too many dudes trying to fuck " +
+                "us, so we drink at the gay bar to get away from being hit on every five minutes. ",
+            button: [
+                { chatID: 10, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "dolly",
+            text: "Heck yeah sugar! Them guys keep pervin' on us lil ol' girls. We just want ta " +
+                "hang with my girls and get a bit tipsy! YEEEHAAA! ",
+            button: [
+                { chatID: 11, text: "I know! I'm so tired of getting hit on all the time! ", callback: "" },
+                { chatID: 12, text: "Sooo... Do you have pussies or dicks? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "holly",
+            text: "I know. It's like guys only think with their penises. I'm so tired of being " +
+                "treated like my vagina is the only interesting thing about me. Anyway, the " +
+                "girls and I are going to bet back to it. See you around! ",
+            button: [
+                { chatID: -1, text: "See ya.", callback: "hollyGood" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "molly",
+            text: "What the fuck kind of question is that? Do we look like dudes to you? Our " +
+                "pussies are just fine! This guy is a jerk! C'mon girls, let's go somewhere that " +
+                "doesn't have assholes! ",
+            button: [
+                { chatID: -1, text: "oh.", callback: "hollyBad" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "black",
+            text: "Hi, " + sc.n("me") + ". I would love to tear your ass up, but I'm taking " +
+                "little Keaton home and this sissy demands all my time to properly break her. " +
+                "Let's go Keaton, I'm going to fuck you till you bleed. ",
+            button: [
+                { chatID: -1, text: "oh my.", callback: "reset" },
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         {
             chatID: 5,
             speaker: "me",

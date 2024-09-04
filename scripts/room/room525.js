@@ -6,10 +6,10 @@ room525.main = function () {
             {
                 "type": "btn",
                 "name": "cindy",
-                "left": 554,
-                "top": 303,
-                "width": 370,
-                "height": 747,
+                "left": 991,
+                "top": 249,
+                "width": 318,
+                "height": 501,
                 "image": "525_entrance/cindy.png"
             }
         ];
@@ -57,7 +57,7 @@ room525.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "random",
+            speaker: "!cindy",
             text: "Hey cutie I can't let you in. You have to meet the dress code, and by dress code, you have to wear a dress. lol!",
             button: [
                 { chatID: -1, text: "oh ok", callback: "" }
@@ -65,7 +65,7 @@ room525.chat = function (chatID) {
         },
         {
             chatID: 1,
-            speaker: "random",
+            speaker: "!cindy",
             text: "Looking great honey! Come on in!",
             button: [
                 { chatID: -1, text: "Sweet!", callback: "enter" }

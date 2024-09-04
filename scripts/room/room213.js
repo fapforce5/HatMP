@@ -62,7 +62,7 @@ room213.main = function () {
     }
     else {
         sc.select("icon_waitress", "213_pink/icon_waitress.png", 1);
-        nav.buildnav([214, 215, 171]);
+        nav.buildnav([214, 215, 171, 170]);
     }
 };
 

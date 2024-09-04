@@ -402,6 +402,13 @@ nav.room = function (roomID) {
     char.room(roomID);
 };
 
+nav.cancel = function (btnClickName) {
+    nav.drawButton("1001_rand/cancel.png", btnClickName);
+};
+
+nav.close = function (btnClickName) {
+    nav.drawButton("1001_rand/close.png", btnClickName);
+};
 
 nav.next = function (btnClickName) {
     nav.drawButton("1001_rand/next.png", btnClickName);

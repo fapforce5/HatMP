@@ -115,6 +115,8 @@ sc.char = [
 
     { name: "photo", display: "Photographer", image: "photo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
+    { name: "blade", display: "Blade", image: "blade.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
+
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
@@ -268,9 +270,38 @@ sc.charMission = [
     {
         name: "zoey", mission: [
             {
-                missionName: "friends", mStatus: 1, title: "Friends", desc: "Not ready yet", task:
+                missionName: "friends", mStatus: 1, title: "Friends", desc: "BFFs forever!", task:
                     [
-                        { id: 0, txt: "In development.", show: true, mStatus: 0, roomId: 0 },
+                        { id: 0, txt: "I'm a can opener", show: true, mStatus: 0, roomId: 501 },
+                        { id: 1, txt: "Back for a can of beat ass?", show: true, mStatus: 0, roomId: 501 },
+                        { id: 2, txt: "Meet my friend. ", show: true, mStatus: 0, roomId: 501 },
+                        { id: 3, txt: "Sleep over. ", show: true, mStatus: 0, roomId: 501 },
+                        { id: 4, txt: "I have a feeling", show: true, mStatus: 0, roomId: 501 },
+                        { id: 5, txt: "I need your help!", show: true, mStatus: 0, roomId: 501 },
+                    ]
+            },
+            {
+                missionName: "cheating", mStatus: -1, title: "Chloé", desc: "Find out if Chloé is cheating", task:
+                    [
+                        { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
+                        { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
+                        { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400 },
+                        { id: 3, txt: "Glory hole?.", show: true, mStatus: 0, roomId: 216 },
+                    ]
+            },
+            {
+                missionName: "sex", mStatus: -1, title: "Fuck me please", desc: "Will we be more than friends?", task:
+                    [
+                        { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
+                        { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
+                        { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400 },
+                        { id: 3, txt: "Glory hole?.", show: true, mStatus: 0, roomId: 216 },
+                    ]
+            },
+            {
+                missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
+                    [
+                        { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
                     ]
             },
         ]
@@ -344,7 +375,7 @@ sc.charMission = [
                 missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
             },
             {
-                missionName: "bitch", mStatus: 1, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
+                missionName: "bitch", mStatus: 0, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
                     [
                         { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
                     ]
@@ -637,9 +668,45 @@ sc.charMission = [
         ]
     },
     {
+        name: "holly", mission: [
+            {
+                missionName: "bar", mStatus: 0, title: "Caravaggio", desc: "Meet them", task:
+                    [
+                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "dolly", mission: [
+            {
+                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "molly", mission: [
+            {
+                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
         name: "photo", mission: [
             {
-                missionName: "photo", mStatus: 100, title: "Photos", desc: "Vacation images", task:
+                missionName: "photo", mStatus: 0, title: "Photos", desc: "Vacation images", task:
                     [
                         { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
                         { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
@@ -647,7 +714,17 @@ sc.charMission = [
             },
         ]
     },
-
+    {
+        name: "orchid", mission: [
+            {
+                missionName: "slut", mStatus: 0, title: "Party Bitches!", desc: "Slut, slut in da butt", task:
+                    [
+                        { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 526 },
+                        { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
     
     
 ];
@@ -864,8 +941,8 @@ sc.modLevel = function (name, amount, targetLevel) {
 
 //Mission ----------------------------------------------------------------------
 
-sc.startMission = function (name, missionName) {
-    sc.setMission(name, missionName, 1);
+sc.startMission = function (name, missionName, mStatus = 1) {
+    sc.setMission(name, missionName, mStatus);
 };
 
 sc.getMission = function (name, missionName) {
@@ -1277,8 +1354,8 @@ sc.getTimeline = function (char) {
             break;
         case "zoey":
             timeline = [
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 4, roomId: 525, alt: null }, //bar
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 4, hend: 12, roomId: 502, alt: null }, //bedroom
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 2, roomId: 525, alt: null }, //bar
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 2, hend: 12, roomId: 502, alt: null }, //bedroom
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 12, hend: 20, roomId: 501, alt: null }, //living room
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 525, alt: null }, //bar
             ];
@@ -1344,6 +1421,18 @@ sc.getTimeline = function (char) {
     return retVar;
 };
 
+sc.selectBg = function (name) {
+    nav.button({
+        "type": "img",
+        "name": name,
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1001_rand/black_25.png"
+    }, g.roomID);
+}
+
 sc.select = function (name, img, i) {
     nav.button({
         "type": "btn",
@@ -1359,6 +1448,8 @@ sc.select = function (name, img, i) {
 sc.selectCancel = function (name, i) {
     sc.select(name, "1001_rand/icon_cancel.png", i);
 };
+
+
 
 sc.zoey = function () {
     return { roomID: g.roomID, thisRoom: true };
@@ -1804,7 +1895,23 @@ sc.trivial = function (charname) {
             break;
         case "!glory":
             name = "Glory Hole Customer";
-            image = "unk.png";
+            image = "glory.png";
+            break;
+        case "!poppy":
+            name = "Poppy";
+            image = "poppy.png";
+            break;
+        case "!juniper":
+            name = "Juniper";
+            image = "juniper.png";
+            break;
+        case "!emily":
+            name = "Emily";
+            image = "emily.png";
+            break;
+        case "!cindy":
+            name = "Cindy";
+            image = "cindy.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

@@ -118,6 +118,8 @@ missy.activecase = function () {
         return { caseId: -1, name: "start", txt: "Get to work! ", m: [203], isComplete: true };
     }
     else {
+
+        //priapus (chloe notepad)
         var cases = [
             { caseId: 0, name: "start", txt: "Get a job. Check your computer in your room and apply. ", m: [16], isComplete: activeCaseComplete },
             { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100], isComplete: activeCaseComplete },

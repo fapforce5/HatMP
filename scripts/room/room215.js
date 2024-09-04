@@ -16,7 +16,7 @@ room215.main = function () {
     $.each(btnList, function (i, v) {
         nav.button(v, 215);
     });
-    nav.buildnav([213, 214, 171, 0]);
+    nav.buildnav([213, 214, 171, 170]);
 };
 
 room215.btnclick = function (name) {

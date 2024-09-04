@@ -76,7 +76,7 @@ room171.main = function () {
         }, 213);
         chat(8, 171);
     }
-    nav.buildnav([213, 214, 215]);
+    nav.buildnav([213, 214, 215, 170]);
 };
 
 room171.btnclick = function (name) {
@@ -185,7 +185,7 @@ room171.btnclick = function (name) {
                             "height": 75,
                             "image": "1001_rand/wait.png"
                         }, g.roomID);
-                        nav.buildnav([213, 214, 215]);
+                        nav.buildnav([213, 214, 215, 170]);
                     }
                     else {
                         nav.button({
