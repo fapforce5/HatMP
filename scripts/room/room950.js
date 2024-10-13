@@ -1,4 +1,8 @@
 ﻿//Room name
+
+//sissies get walked around like dogs on leashes
+
+
 var room950 = {};
 room950.main = function () {
     $('#room-menu').show();

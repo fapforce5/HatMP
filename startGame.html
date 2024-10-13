@@ -25,6 +25,9 @@
     <script src="./scripts/enemyEnd.js" type="text/javascript"></script>
     <script src="./scripts/trophy.js" type="text/javascript"></script>
     <script src="./scripts/rape.js" type="text/javascript"></script>
+    <script src="./scripts/randomEvents.js" type="text/javascript"></script>
+    <script src="./scripts/rape.js" type="text/javascript"></script>
+    <script src="./scripts/rapeChar.js" type="text/javascript"></script>
     <script src="./scripts/stats.js" type="text/javascript"></script>
     <script src="./scripts/quickFight.js" type="text/javascript"></script>
     <script src="./scripts/charisma.js" type="text/javascript"></script>
@@ -352,13 +355,6 @@
             </div>
             <div id="room_left_graph" class="left-menu">
                 <div style="padding:5px; color: #fff; text-align:center;" class="glob-bg">
-                    <!--<div class="mt-50x rl-selectButton" style="margin-top:50px;" id="rl_pageSelect">
-        <button data-number="0" class="char-20 rl-selectButton-active">General</button>
-        <button data-number="1" class="char-20">Cravings</button>
-        <button data-number="3" class="char-20">Missy</button>
-        <button data-number="2" class="char-20">Fight</button>
-    </div>-->
-                    <!--<div id="rl_page0">-->
                     <div class="char-charDisplay mt-50x" id="char_charDisplay"></div>
                     <div style="font-size:12px;" class="char-20 mb-10" id="rl_appearance">Boy</div>
 
@@ -373,7 +369,7 @@
                         <img src="./images/general/stat_energy.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold" style="text-align:left;">Energy</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="energy"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="energy"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="energy" style="background: #20C000; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -381,10 +377,21 @@
                     </div>
 
                     <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_xdress.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="xdress" style="text-align:left">Sissyness</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="xdress"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="xdress" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
                         <img src="./images/general/stat_hormone.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold" style="text-align:left;">Hormones</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="hormone"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="hormone"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position: absolute; bottom: 1%; left: 0; background: #4E99E0;">
                             <div data-name="hormone" style="background: #ff5ed1; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -397,7 +404,7 @@
                         <img src="./images/general/stat_fitness.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold" style="text-align:left">Fitness</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="fitness"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="fitness"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="fitness" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -408,7 +415,7 @@
                         <img src="./images/general/stat_strength.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="strength" style="text-align:left">Strength</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="strength"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="strength"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="strength" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -419,7 +426,7 @@
                         <img src="./images/general/stat_charisma.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="charisma" style="text-align:left">Charisma</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="charisma"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="charisma"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="charisma" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -430,21 +437,10 @@
                         <img src="./images/general/stat_fame.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="fame" style="text-align:left">Fame</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="fame"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="fame"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="fame" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="menu-box" style="position:relative;">
-                        <img src="./images/general/stat_int.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
-                        <div style="margin-left:26%; position:absolute; margin-top:7%">
-                            <div class="char-20 bold rl-levelheader" data-name="int" style="text-align:left">Intelligence</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="int"></div>
-                        </div>
-                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
-                            <div data-name="int" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
                         </div>
                     </div>
 
@@ -465,7 +461,7 @@
                         <img src="./images/general/stat_pi.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="pi" style="text-align:left">Invistigation</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="pi"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="pi"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="pi" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -474,22 +470,13 @@
 
                     <hr />
 
-                    <div class="menu-box" style="position:relative;">
-                        <img src="./images/general/stat_xdress.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
-                        <div style="margin-left:26%; position:absolute; margin-top:7%">
-                            <div class="char-20 bold rl-levelheader" data-name="xdress" style="text-align:left">Sissyness</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="xdress"></div>
-                        </div>
-                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
-                            <div data-name="xdress" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
-                        </div>
-                    </div>
+
 
                     <div class="menu-box" style="position:relative;">
                         <img src="./images/general/stat_sub.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="sub" style="text-align:left">Submissiveness</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="sub"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="sub"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="sub" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -500,7 +487,7 @@
                         <img src="./images/general/stat_bj.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="oral" style="text-align:left">Oral</div>
-                            <div style="font-size:12px" class="char-12 rl-level light-grey" data-name="oral"></div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="oral"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="oral" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
@@ -511,7 +498,7 @@
                         <img src="./images/general/stat_anal.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="anal" style="text-align:left">Anal</div>
-                            <div style="font-size:12px" class="char-12 rl-level light-grey" data-name="anal"></div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="anal"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="anal" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
@@ -522,7 +509,7 @@
                         <img src="./images/general/stat_cum.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="cum" style="text-align:left">Cum</div>
-                            <div style="font-size:12px" class="char-12 rl-level light-grey" data-name="cum"></div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="cum"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="cum" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
@@ -533,7 +520,7 @@
                         <img src="./images/general/stat_pee.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="piss" style="text-align:left">Watersports</div>
-                            <div style="font-size:12px" class="char-12 rl-level light-grey" data-name="piss"></div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="piss"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="piss" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
@@ -544,7 +531,7 @@
                         <img src="./images/general/stat_knot.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="beast" style="text-align:left">Knotty</div>
-                            <div style="font-size:12px" class="char-12 rl-level light-grey" data-name="beast"></div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="beast"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="beast" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
@@ -557,7 +544,7 @@
                         <img src="./images/general/stat_cheer.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="cheer" style="text-align:left">Cheerleader</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="cheer"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="cheer"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="cheer" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -568,7 +555,7 @@
                         <img src="./images/general/stat_strip.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="stripper" style="text-align:left">Stripper</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="stripper"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="stripper"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="stripper" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -579,7 +566,7 @@
                         <img src="./images/general/stat_whore.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
                         <div style="margin-left:26%; position:absolute; margin-top:7%">
                             <div class="char-20 bold rl-levelheader" data-name="whore" style="text-align:left">Whore</div>
-                            <div style="font-size: 12px; text-align: left;" class="char-12 rl-level light-grey" data-name="whore"></div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="whore"></div>
                         </div>
                         <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
                             <div data-name="whore" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
@@ -591,7 +578,7 @@
             </div>
         </div>
         <div class="room-footer" id="room_footer"></div>
-    </div>
+    
     <div class="room-chatOverlay" id="room_chatOverlay" style="display:none;">
         <div class="room-chatBox">
             <div class="room-speachGroup">

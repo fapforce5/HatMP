@@ -21,7 +21,8 @@ room28.main = function () {
     nav.buildclock();
 
     var txtDisplay = room28.dreams();
-    
+    var forcedTransformation = null
+
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
     var thisautohormone, hix, tix, xdressPoints;
@@ -77,11 +78,11 @@ room28.main = function () {
         }
     }
     
-    cl.c.butthole -= .05;
-    if (cl.c.butthole < 0)
-        cl.c.butthole = 0;
+    //cl.c.butthole -= .05;
+    //if (cl.c.butthole < 0)
+    //    cl.c.butthole = 0;
     //energy as propotion to horny
-    if (arousal > 97) {
+    if (arousal > 90) {
         gv.st[energyIndex].t = maxE * .5;
         message = "You're so horny you didn't recover much energy. ";
     }
@@ -114,6 +115,7 @@ room28.main = function () {
         cl.c.lastHairCut = 0;
     }
 
+    //milk
     if (milkLevel > -1) {
         var levelsMilk = levels.get("milk").l;
         var levelMult = 1 + ((levelsMilk + 1) / 5);
@@ -127,7 +129,38 @@ room28.main = function () {
         cl.display();
     }
 
+
+    //chastity
+    if (cl.c.cock < 5) {
+        if (cl.c.chastity !== null) {
+            var minDick = 0;
+            switch (cl.c.chastity) {
+                case "pink": minDick = 1; break;
+                case "pinkx2": minDick = 2; break;
+                case "metal": minDick = 3; break;
+                case "flat": minDick = 4; break;
+            }
+            if (cl.c.cock < minDick) {
+                var chastityCounter = gv.get("chastityCounter");
+                if (chastityCounter > 20) {
+                    forcedTransformation = "cock";
+                    gv.set("chastityCounter", 0);
+                }
+                else {
+                    if (hormoneLevel > 75)
+                        gv.mod("chastityCounter", 3);
+                    else
+                        gv.mod("chastityCounter", 2);
+                }
+            }
+        }
+        else {
+            gv.mod("chastityCounter", -1);
+        }
+    }
+
     daily.newday();
+    room28.future();
 
     if (thisautohormone) {
         var hx = inv.getIndex("hormone");
@@ -144,8 +177,31 @@ room28.main = function () {
             g.popUpNotice("Took your hormone pill" + (inv.master[hx].entry ? "" : " - Out of pills"));
         }
     }
-    console.log(txtDisplay)
-    if (!txtDisplay) {
+
+    if (forcedTransformation !== null) {
+        switch (forcedTransformation) {
+            case "cock":
+                nav.killall();
+                cl.c.cock++;
+                nav.bg("28_transformation/cock_" + cl.c.cock + ".gif");
+                cl.display();
+                g.roomTimeout = setTimeout(function () {
+                    if (cl.c.cock === 4)
+                        chat(17, 28);
+                    else if (cl.c.cock === 1)
+                        chat(20, 28);
+                    else if (cl.c.chastity === "flat")
+                        chat(18, 28);
+                    else
+                        chat(19, 28);
+                }, 6000);
+                break;
+            default:
+                room28.endSleepyTime(false);
+                break;
+        }
+    }
+    else if (!txtDisplay) {
         //check Transformation
         if (cl.c.chest === 0 && levels.st[12].l > 0) {
             chat(0, 28);
@@ -235,6 +291,10 @@ room28.main = function () {
         }
     }
 
+    
+};
+
+room28.future = function () {
     for (i = 0; i < future.st.length; i++) {
         future.st[i].daysleft--;
         if (future.st[i].daysleft < 1) {
@@ -293,8 +353,13 @@ room28.dreams = function () {
         }
     }
     else {
-        if (g.pass === 502)
+        if (g.pass === 502) {
             nav.bg("502_bedroom/sleepZoey.jpg");
+            if (cl.c.chest > 2)
+                nav.bg("502_bedroom/sleep_f.jpg");
+            else
+                nav.bg("502_bedroom/sleep_m.jpg");
+        }
         else if (g.pass === 13)
             nav.bg("28_transformation/twin.jpg");
         else if (g.pass === 301)
@@ -518,7 +583,7 @@ room28.chatcatch = function (callback) {
             char.room(203);
             break;
         case "endDream":
-            room28.btnclick("qquit");
+            room28.endSleepyTime(false);
             break;
         default:
             break;
@@ -713,6 +778,45 @@ room28.chat = function (chatID) {
                     "shouldn't keep pushing it with my " + sc.n("landlord") + ". What would people " +
                     "think. I should stop. I'm taking advantage of her just so I can nut, but I don't " +
                     "know if I can stop. I need her. I need to be inside her.",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "thinking",
+                text: "Perfect, well almost. I no longer have a penis, I have a cute " +
+                    "tiny sissy clitty. I'll never be able to penetrate anyone ever " +
+                    "again with such a small clitty. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "thinking",
+                text: "I love this chastity cage! If I keep wearing it I'll have just a " +
+                    "tiny little clitty where my penis once was. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "thinking",
+                text: "This chastity cage is so tight and I've been wearing it so long " +
+                    "I can actually feel my penis literally shrinking. If I want to " +
+                    "turn my penis into a real clit I need to get an even smaller cage!",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "thinking",
+                text: "Oh no! Wearing that tight cramped chastity cage shrunk my dick! " +
+                    "At least my dick is still pretty big, and now there's more room in " +
+                    "the cage. I better not get a small cage or it might just keep shrinking. ",
                 button: [
                     { chatID: -1, text: "...", callback: "endDream" }
                 ]

@@ -9,6 +9,10 @@ room180.main = function () {
             nav.bg("180_ballroom/fem0.jpg");
             chat(24, 180);
             break;
+        case "fem121":
+            nav.bg("180_ballroom/fem0.jpg");
+            chat(78, 180);
+            break;
         case "pee101":
             nav.bg("180_ballroom/pee0.jpg");
             chat(30, 180);
@@ -79,6 +83,12 @@ room180.chatcatch = function (callback) {
         case "fem201_3":
         case "fem201_4":
         case "enema205_5":
+        case "fem121_0":
+        case "fem121_1":
+        case "fem121_2":
+        case "fem121_3":
+        case "fem121_4":
+        case "fem121_5":
             nav.bg("180_ballroom/" + callback + ".jpg");
             break;
         case "fem103_0":
@@ -164,6 +174,11 @@ room180.chatcatch = function (callback) {
             zcl.assup(750, 80, .5);
             break;
         case "enema205_7":
+            levels.mod("xdress", 50, 999);
+            sissy.passclass(true);
+            break;
+        case "fem121_end":
+            levels.mod("heels", 100, 999);
             levels.mod("xdress", 50, 999);
             sissy.passclass(true);
             break;
@@ -884,6 +899,91 @@ room180.chat = function (chatID) {
                 "bodies and the shower, then you can be on your way.",
             button: [
                 { chatID: -1, text: "[Clean up slut]", callback: "enema205_7" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "martha",
+            text: "Ah, welcome, my dears, to a most delightful lesson on the art of walking in high heels. I do trust that you will all approach this endeavor with a touch of grace and poise. While it may seem daunting at first, with a bit of practice, you shall find yourselves gliding across the room with the elegance of a swan.",
+            button: [
+                { chatID: 79, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "martha",
+            text: "Now, my dears, to ensure a smooth transition into the world of high heels, I do suggest that we begin with a pair of low heels. These will allow you to acclimate yourselves to the sensation of elevated heels without the added challenge of extreme height. Do be mindful when donning them, however. A misstep can be quite unfortunate, and I would not wish for any of you to find yourselves in an undignified position.",
+            button: [
+                { chatID: 80, text: "[Put on your low heels]", callback: "fem121_0" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "thinking",
+            text: "I do love these kitten heels. They're so light and open. I can feel the " +
+                "soft kiss of the air and it passes over the top of my feet. I wonder if " +
+                "these low heels will push up my butt and make it pop more.",
+            button: [
+                { chatID: 81, text: "...", callback: "fem121_1" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "!philbert",
+            text: "You're so clumsy you're totally going to fall on your ass as soon " +
+                "as you try to get up! ",
+            button: [
+                { chatID: 82, text: "I'm just trying to enjoy class.", callback: "fem121_2" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "!thomas",
+            text: "Can't we ever get 5 minutes without you trying to ruin everything? ",
+            button: [
+                { chatID: 83, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "!philbert",
+            text: "I can't help if you ladies are awkward and clumsy, not as graceful " +
+                "as I...",
+            button: [
+                { chatID: 84, text: "...", callback: "fem121_3" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "!philbert",
+            text: "AAAAAKkkkkk",
+            button: [
+                { chatID: 85, text: "...", callback: "fem121_4" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "martha",
+            text: "A lady of refinement knows that true elegance lies in subtlety. To flaunt one's virtues is to diminish them. Let others notice our poise, our grace, our quiet strength. It is in these unseen qualities that we truly shine." +
+                "Please rise from your seats. May this day be filled with growth and refined discourse. ",
+            button: [
+                { chatID: 86, text: "...", callback: "fem121_5" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "martha",
+            text: "Keep your heads up and maintain your posture. A few more laps, and we shall conclude our walking lesson. Remember, the beauty of walking lies not only in the steps but also in the grace and elegance with which they are executed.",
+            button: [
+                { chatID: 87, text: "...", callback: "bg" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "martha",
+            text: "While our formal lesson may have concluded, the true test of your refinement lies in your everyday actions. Remember, a lady's walk is a silent expression of her grace and poise. Practice walking with your head held high, your shoulders back, and your steps measured. Your feet may protest initially, but with perseverance, you will find that high heels become an extension of your elegance.",
+            button: [
+                { chatID: -1, text: "[Return her shoes and finish the lesson.]", callback: "fem121_end" }
             ]
         },
     ];

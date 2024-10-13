@@ -72,6 +72,12 @@ privateChat.speakerInfo = function (charName) {
             name: getTrivial.display
         };
     }
+    else if (charName[0] === "*") {
+        return {
+            img: "./images/room/1004_rape" + rape.char.chat,
+            name: rape.char.displayName
+        };
+    }
     else {
         for (var i = 0; i < sc.char.length; i++) {
             if (sc.char[i].name === charName) {

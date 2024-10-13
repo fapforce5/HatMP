@@ -47,7 +47,7 @@ room213.main = function () {
         "image": "213_pink/rf" + g.rand(0, 3) + ".png",
     }, 213);
 
-    if (sc.getMissionTask("p", "pink", 0).notStarted) {
+    if (!gv.get("pinkroomopen")) {
         sc.completeMissionTask("p", "pink", 0);
         nav.button({
             "type": "btn",
@@ -58,11 +58,12 @@ room213.main = function () {
             "height": 986,
             "image": "213_pink/p.png",
         }, 213);
+        gv.set("pinkroomopen", true);
         chat(0, 213);
     }
     else {
         sc.select("icon_waitress", "213_pink/icon_waitress.png", 1);
-        nav.buildnav([214, 215, 171, 170]);
+        nav.buildnav([214, 215, 171, 170, 207]);
     }
 };
 
@@ -370,6 +371,86 @@ room213.chatcatch = function (callback) {
             }, 213);
             chat(32, 213);
             break;
+        case "tour_game":
+            nav.killall();
+            nav.bg("214_pinkgame/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "p",
+                "left": 587,
+                "top": 94,
+                "width": 684,
+                "height": 986,
+                "image": "213_pink/p.png",
+            }, 213);
+            break;
+        case "tour_gh":
+            nav.killall();
+            var holes = g.shuffleArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            var waiting = holes.splice(0, 5);
+            var fuckers = g.shuffleArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+
+            g.internal = {
+                i: 0,
+                holes: holes,
+                waiting: waiting,
+                fuckers: [null, g.rand(0, 6), null, null, g.rand(7, 14)],
+                fuckersWaiting: fuckers,
+                fuckersPointer: 0,
+                fuckersDick: [2, 1, 3, 2, 2, 1, 1, 2, 1, 1, 2, 1, 0, 1, 2, 2, 1],
+                cam: "cam1"
+            };
+
+            nav.bg("216_pinkglory/bg.jpg");
+            for (i = 0; i < 5; i++) {
+                    nav.button({
+                        "type": "img",
+                        "name": "ho_" + i,
+                        "left": 300 + (i * 335),
+                        "top": 73,
+                        "width": 335,
+                        "height": 324,
+                        "image": "216_pinkglory/" + g.internal.holes[i] + "_s.png",
+                        "title": "Free Use Slut"
+                    }, 171);
+                    nav.button({
+                        "type": "img",
+                        "name": "hox_" + i,
+                        "left": 300 + (i * 335),
+                        "top": 400,
+                        "width": 335,
+                        "height": 570,
+                        "image": "216_pinkglory/" + g.internal.holes[i] + "_d.png",
+                        "title": "Free Use Slut"
+                    }, 171);
+                }
+            room171.btnclick("fuckers");
+            nav.button({
+                "type": "btn",
+                "name": "p",
+                "left": 587,
+                "top": 94,
+                "width": 684,
+                "height": 986,
+                "image": "213_pink/p.png",
+            }, 213);
+            break;
+        case "tour_rooms":
+            nav.killall();
+            nav.bg("215_pinkroom/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "p",
+                "left": 587,
+                "top": 94,
+                "width": 684,
+                "height": 986,
+                "image": "213_pink/p.png",
+            }, 213);
+            break;
+        case "tour_stage":
+            nav.bg("151_jones/runway.jpg");
+            break;
         default:
             break;
     }
@@ -405,7 +486,7 @@ room213.chat = function (chatID) {
             text: "Yes. Just know that many of our cliets can get a little handsy. It can be surprising for a new girl. " +
                 "Now follow me to the game room. ",
             button: [
-                { chatID: 3, text: "[Follow her]", callback: "game" }
+                { chatID: 3, text: "[Follow her]", callback: "tour_game" }
             ]
         },
         {
@@ -414,34 +495,36 @@ room213.chat = function (chatID) {
             text: "This is the game room. Some of our patrons like to socialize while getting serviced. There's a few " +
                 "young gentlemen that spend more time here than at their own home. Let's continue the tour. ",
             button: [
-                { chatID: 4, text: "[Follow her]", callback: "hallway" }
+                { chatID: 4, text: "[Follow her]", callback: "tour_gh" }
             ]
         },
         {
             chatID: 4,
             speaker: "p",
-            text: "These are the rooms. Only the best get a room here. As you can see girls and boys get a steady run " +
-                "of clients. The last location I'm going to show you is a favorite of the local perverts. Come. ",
+            text: "These are my world famous glory holes. Most places just put a little " +
+                "hole to stick your dick into, but at the Pink Room we give the client " +
+                "the entire ass to grab on and pound away on the hole of their choosing. " +
+                "Now on to the next room. ",
             button: [
-                { chatID: 5, text: "[Follow her]", callback: "hole" }
+                { chatID: 5, text: "[Follow her]", callback: "tour_rooms" }
             ]
         },
         {
             chatID: 5,
             speaker: "p",
-            text: "This is the glory ho wall. Only the sluttiest of sluts can serve here. Sluts that live by the rule " +
-                "that the client can do anything they want to your holes. Let's return back to the main parlour.",
+            text: "These are the rental room. Once a girl has proven herself worthy she " +
+                "will be given one of the private rooms to service clients. This is where the " +
+                "real fun begins. Now to the last room. ",
             button: [
-                { chatID: 6, text: "[Return to the main parlour]", callback: "parlourx" }
+                { chatID: 6, text: "[Follow her]", callback: "tour_stage" }
             ]
         },
         {
             chatID: 6,
             speaker: "p",
-            text: "Now that you've viewed each room, I can't have an awkward virgin working in all the room. I use your " +
-                "Sissy points to determin your worth. The more sissy points you have the more options for work. ",
+            text: "This is the stage you can work. We put on nightly shows [in development]",
             button: [
-                { chatID: -1, text: "ok", callback: "" }
+                { chatID: 35, text: "ok", callback: "tour_main" }
             ]
         },
         {
@@ -700,6 +783,15 @@ room213.chat = function (chatID) {
             text: "Ugh. Back again. Let me get you ready. ",
             button: [
                 { chatID: -1, text: "Yes!", callback: "_0" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "p",
+            text: "That concludes the tour. I'll take you back to the main room where you " +
+                "can start working. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "reset" }
             ]
         },
     ];

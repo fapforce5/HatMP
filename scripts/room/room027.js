@@ -34,6 +34,11 @@ room27.main = function () {
             zcl.displayMirror();
             chat(0, 27);
             break;
+        case 527:
+            nav.bg("27_mirror/527.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
+            break;
         case 451:
         case 452:
             nav.bg("451_parkMensRoom/mirror.jpg");

@@ -292,16 +292,28 @@ sc.charMission = [
             {
                 missionName: "sex", mStatus: -1, title: "Fuck me please", desc: "Will we be more than friends?", task:
                     [
-                        { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
-                        { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
-                        { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400 },
-                        { id: 3, txt: "Glory hole?.", show: true, mStatus: 0, roomId: 216 },
+                        { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
+                        { id: 1, txt: "Mystery friend at night. ", show: true, mStatus: 0, roomId: 502 },
+                        { id: 2, txt: "Handcuffs and chastity. ", show: true, mStatus: 0, roomId: 525 },
+                        { id: 3, txt: "Mon cœur souffre pour toi", show: true, mStatus: 0, roomId: 525 },
+                        { id: 4, txt: "Sex at home, sex at work, sex everywhere", show: true, mStatus: 0, roomId: 502 },
                     ]
             },
             {
                 missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
                     [
                         { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "stormy", mission: [
+            {
+                missionName: "property", mStatus: 0, title: "Property", desc: "You're my property", task:
+                    [
+                        { id: 0, txt: "Marked by the piss. ", show: true, mStatus: 0, roomId: 550 },
+
                     ]
             },
         ]
@@ -759,6 +771,8 @@ sc.get = function (name) {
 sc.n = function (name) {
     if (name.startsWith("!"))
         return sc.trivial(name).display;
+    else if (name.startsWith("*"))
+        return rape.char.displayName;
     return sc.get(name).display;
 };
 
@@ -957,6 +971,7 @@ sc.getMission = function (name, missionName) {
                         notStarted: sc.charMission[i].mission[j].mStatus < 1,
                         inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
                         complete: sc.charMission[i].mission[j].mStatus > 99,
+                        success: sc.charMission[i].mission[j].mStatus === 100,
                         fail: sc.charMission[i].mission[j].mStatus === 101,
                         i: i,
                         j: j
@@ -1895,7 +1910,7 @@ sc.trivial = function (charname) {
             break;
         case "!glory":
             name = "Glory Hole Customer";
-            image = "glory.png";
+            image = "unk.png";
             break;
         case "!poppy":
             name = "Poppy";
@@ -1912,6 +1927,14 @@ sc.trivial = function (charname) {
         case "!cindy":
             name = "Cindy";
             image = "cindy.png";
+            break;
+        case "!missx":
+            name = "Mistress Anaru";
+            image = "missx.png";
+            break;
+        case "!jenna":
+            name = "Jenna";
+            image = "jenna.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

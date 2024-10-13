@@ -89,7 +89,6 @@ room176.btnclick = function (name) {
         case "clit":
             if (g.internal.love < 1) {
                 g.internal.chatid = 1002;
-                g.internal.love--;
             }
             else if (g.internal.love < 2) {
                 g.internal.chatid = 1002;
@@ -101,16 +100,12 @@ room176.btnclick = function (name) {
             room176.btnclick("drawNext");
             break;
         case "pphole":
-            g.internal.love--;
             g.internal.chatid = 1000;
             room176.btnclick("drawNext");
             break;
         case "pussy":
             if (g.internal.love === 1) {
                 g.internal.love++;
-            }
-            else if (g.internal.love < 1) {
-                g.internal.love--;
             }
             g.internal.chatid = 1003;
             room176.btnclick("drawNext");
@@ -119,14 +114,10 @@ room176.btnclick = function (name) {
             if (g.internal.love === 1) {
                 g.internal.love++;
             }
-            else if (g.internal.love < 1) {
-                g.internal.love--;
-            }
             g.internal.chatid = 1003;
             room176.btnclick("drawNext");
             break;
         case "asshole":
-            g.internal.love--;
             g.internal.chatid = 1001;
             room176.btnclick("drawNext");
             break;

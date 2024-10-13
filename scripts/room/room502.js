@@ -1,12 +1,29 @@
 ﻿//Zoey bedroom
 var room502 = {};
 room502.main = function () {
-    if (sc.getstep("zoey") === 12) {
-        nav.bg("502_bedroom/s1.jpg");
-        chat(23, 502);
+    var btnList = new Array();
+    if (g.pass === "endSleepyTime") {
+        if (sc.getTimeline("zoey").thisRoom) {
+            nav.button({
+                "type": "btn",
+                "name": "bed",
+                "left": 568,
+                "top": 77,
+                "width": 751,
+                "height": 927,
+                "image": "502_bedroom/bedZoey.png",
+                "night": "502_bedroom/bedNZoey.png"
+            }, 502);
+        }
+        g.pass = "";
+        chat(0, 502);
+    }
+    else if (inv.has("tifgift")) {
+        nav.bg("502_bedroom/502_zoeyRoom.jpg")
+        chat(2, 502);
     }
     else {
-        var btnList = [
+        btnList = [
             {
                 "type": "btn",
                 "name": "dresser",
@@ -17,7 +34,7 @@ room502.main = function () {
                 "image": "502_bedroom/dresser.png",
                 "night": "502_bedroom/dresserN.png"
             }];
-        if (sc.zoey().thisRoom) {
+        if (sc.getTimeline("zoey").thisRoom) {
             nav.bg("502_bedroom/bedroomZoey.jpg", "502_bedroom/bedroomnightZoey.jpg");
             btnList.push({
                 "type": "btn",
@@ -46,27 +63,85 @@ room502.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 502);
         });
-        if (g.pass === "endSleepyTime") {
-            g.pass = "";
-            chat(0, 502);
-        }
-        else if (inv.has("tifgift")) {
-            chat(2, 502);
+        var canGotOut = cl.hasoutfit("public");
+        if (canGotOut === null) {
+            nav.buildnav([501, 503, 0]);
         }
         else {
-            var canGotOut = cl.hasoutfit("public");
-            if (canGotOut === null) {
-                var navList = [501, 503, 0];
-                nav.buildnav(navList);
-            }
-            else {
-                g.internal = canGotOut;
-                g.pass = "";
-                g.pass = "I'm missing my " + canGotOut + ". I need to get dressed before I go out. ";
-                chat(999, 502);
-            }
+            g.pass = "I'm missing my " + canGotOut + ". I need to get dressed before I go out. ";
+            chat(999, 502);
         }
     }
+
+    
+
+
+    //if (sc.getstep("zoey") === 12) {
+    //    nav.bg("502_bedroom/s1.jpg");
+    //    chat(23, 502);
+    //}
+    //else {
+    //    var btnList = [
+    //        {
+    //            "type": "btn",
+    //            "name": "dresser",
+    //            "left": 1192,
+    //            "top": 0,
+    //            "width": 541,
+    //            "height": 426,
+    //            "image": "502_bedroom/dresser.png",
+    //            "night": "502_bedroom/dresserN.png"
+    //        }];
+    //    if (sc.zoey().thisRoom) {
+    //        nav.bg("502_bedroom/bedroomZoey.jpg", "502_bedroom/bedroomnightZoey.jpg");
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "bed",
+    //            "left": 568,
+    //            "top": 77,
+    //            "width": 751,
+    //            "height": 927,
+    //            "image": "502_bedroom/bedZoey.png",
+    //            "night": "502_bedroom/bedNZoey.png"
+    //        });
+    //    }
+    //    else {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "bed",
+    //            "left": 568,
+    //            "top": 77,
+    //            "width": 751,
+    //            "height": 927,
+    //            "image": "502_bedroom/bed.png",
+    //            "night": "502_bedroom/bedN.png"
+    //        });
+    //    }
+
+    //    $.each(btnList, function (i, v) {
+    //        nav.button(v, 502);
+    //    });
+    //    if (g.pass === "endSleepyTime") {
+    //        g.pass = "";
+    //        chat(0, 502);
+    //    }
+    //    else if (inv.has("tifgift")) {
+    //        chat(2, 502);
+    //    }
+    //    else {
+    //        var canGotOut = cl.hasoutfit("public");
+    //        if (canGotOut === null) {
+    //            var navList = [501, 503, 0];
+    //            nav.buildnav(navList);
+    //        }
+    //        else {
+    //            g.internal = canGotOut;
+    //            g.pass = "";
+    //            g.pass = "I'm missing my " + canGotOut + ". I need to get dressed before I go out. ";
+    //            chat(999, 502);
+    //        }
+    //    }
+    //}
 };
 
 room502.btnclick = function (name) {
@@ -76,35 +151,53 @@ room502.btnclick = function (name) {
             char.room(8);
             break;
         case "bed":
-            var zoeystepx = sc.getstep("zoey");
-            if (zoeystepx > 5 && zoeystepx < 10) {
-                sc.incstep("zoey", 1);
-                g.pass = 502;
-                char.room(28);
-            }
-            else if (zoeystepx === 10) {
-                if (g.dt.getHours() > 6)
-                    g.dt.setDate(g.dt.getDate() + 1);
-                g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 3, 7, 0, 0);
+            var zoeystepx = sc.taskGetStep("zoey", "sex");
+            if (zoeystepx === 1 && future.get("zoeySex0") === -1) {
+                if (g.gethourdecimal() < 25)
+                    char.addDays(1);
+                char.settime(3, 15);
                 nav.killall();
-                cl.c.shoes = cl.saveOutfit[4].shoes;
-                cl.c.socks = cl.saveOutfit[4].socks;
-                cl.c.pants = cl.saveOutfit[4].pants;
-                cl.c.panties = cl.saveOutfit[4].panties;
-                cl.c.bra = cl.saveOutfit[4].bra;
-                cl.c.shirt = cl.saveOutfit[4].shirt;
-                cl.c.dress = cl.saveOutfit[4].dress;
-                cl.c.swimsuit = cl.saveOutfit[4].swimsuit;
-                cl.c.accessories = cl.saveOutfit[4].accessories;
-                cl.c.pj = cl.saveOutfit[4].pj;
-                cl.display();
-                nav.bg("502_bedroom/single1.jpg");
+                cl.wearSavedOutfit(5);
+                nav.bg("502_bedroom/zoeySex0" + gender.pronoun("f") + ".jpg");
                 chat(13, 502);
             }
             else {
                 g.pass = 502;
                 char.room(28);
             }
+            //else if (zoeystepx === 10) {
+            //    if (g.dt.getHours() > 6)
+            //        g.dt.setDate(g.dt.getDate() + 1);
+            //    g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 3, 7, 0, 0);
+            //    nav.killall();
+            //    cl.c.shoes = cl.saveOutfit[4].shoes;
+            //    cl.c.socks = cl.saveOutfit[4].socks;
+            //    cl.c.pants = cl.saveOutfit[4].pants;
+            //    cl.c.panties = cl.saveOutfit[4].panties;
+            //    cl.c.bra = cl.saveOutfit[4].bra;
+            //    cl.c.shirt = cl.saveOutfit[4].shirt;
+            //    cl.c.dress = cl.saveOutfit[4].dress;
+            //    cl.c.swimsuit = cl.saveOutfit[4].swimsuit;
+            //    cl.c.accessories = cl.saveOutfit[4].accessories;
+            //    cl.c.pj = cl.saveOutfit[4].pj;
+            //    cl.display();
+            //    nav.bg("502_bedroom/single1.jpg");
+            //    chat(13, 502);
+            //}
+            //else {
+            //    g.pass = 502;
+            //    char.room(28);
+            //}
+            break;
+        case "zoeySex":
+            if (g.internal > 5) {
+                nav.killall();
+                chat(15, 502);
+            }
+            else {
+                nav.bg("502_bedroom/zoeySex" + g.internal + ".jpg");
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -113,82 +206,106 @@ room502.btnclick = function (name) {
 
 room502.chatcatch = function (callback) {
     switch (callback) {
+        case "zoeySex6":
+        case "zoeySex7":
+            nav.bg("502_bedroom/" + callback + ".jpg");
+            break;
+        case "zoeySex8":
+            sc.modLevel("zoey", 40, 7);
+            sc.completeMissionTask("zoey", "sex", 1);
+            g.pass = 502;
+            char.room(28);
+            break;
         case "sleep":
-            var sleepOutfit = 4;
-            var zoeyStep = sc.getstep("zoey");
-            if (zoeyStep >= 5 && zoeyStep <= 9)
-                sc.setstep("zoey", zoeyStep + 1);
-            if (zoeyStep >= 12 && zoeyStep <= 17)
-                sc.setstep("zoey", zoeyStep + 1);
-            if (zoeyStep >= 19 && zoeyStep <= 21)
-                sc.setstep("zoey", zoeyStep + 1);
-            if (zoeyStep === 10) {
-                nav.killall();
-                cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
-                cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
-                cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
-                cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
-                cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
-                cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
-                cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
-                cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
-                cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
-                cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
-                cl.display();
-                char.settime(4, 37);
-                nav.bg("502_bedroom/overlook.jpg");
-                chat(12, 502);
-            }
-            else if (zoeyStep === 17) {
-                nav.killall();
-                cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
-                cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
-                cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
-                cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
-                cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
-                cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
-                cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
-                cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
-                cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
-                cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
-                cl.display();
-                nav.bg("502_bedroom/single1.jpg");
-                char.settime(7, 37);
-                chat(67, 502);
-            }
+            //var sleepOutfit = 4;
+            //var zoeyStep = sc.getstep("zoey");
+            //if (zoeyStep >= 5 && zoeyStep <= 9)
+            //    sc.setstep("zoey", zoeyStep + 1);
+            //if (zoeyStep >= 12 && zoeyStep <= 17)
+            //    sc.setstep("zoey", zoeyStep + 1);
+            //if (zoeyStep >= 19 && zoeyStep <= 21)
+            //    sc.setstep("zoey", zoeyStep + 1);
+            //if (zoeyStep === 10) {
+            //    nav.killall();
+            //    cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
+            //    cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
+            //    cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
+            //    cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
+            //    cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
+            //    cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
+            //    cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
+            //    cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
+            //    cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
+            //    cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
+            //    cl.display();
+            //    char.settime(4, 37);
+            //    nav.bg("502_bedroom/overlook.jpg");
+            //    chat(12, 502);
+            //}
+            //else if (zoeyStep === 17) {
+            //    nav.killall();
+            //    cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
+            //    cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
+            //    cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
+            //    cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
+            //    cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
+            //    cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
+            //    cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
+            //    cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
+            //    cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
+            //    cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
+            //    cl.display();
+            //    nav.bg("502_bedroom/single1.jpg");
+            //    char.settime(7, 37);
+            //    chat(67, 502);
+            //}
             //else if (zoeyStep === 18 && sc.getstep("missy") >= 21) {
             //    char.settime(7, 37);
             //    nav.killall();
             //    nav.bg("502_bedroom/overlook.jpg");
             //    chat(45, 502);
             //}
-            else if (zoeyStep === 22) {
-                char.settime(7, 37);
-                nav.killall();
-                nav.bg("502_bedroom/overlook.jpg");
-                chat(57, 502);
-            }
-            else {
-                cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
-                cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
-                cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
-                cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
-                cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
-                cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
-                cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
-                cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
-                cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
-                cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
-                cl.display();
+            //else if (zoeyStep === 22) {
+            //    char.settime(7, 37);
+            //    nav.killall();
+            //    nav.bg("502_bedroom/overlook.jpg");
+            //    chat(57, 502);
+            //}
+            //else {
+            //cl.c.shoes = cl.saveOutfit[sleepOutfit].shoes;
+            //cl.c.socks = cl.saveOutfit[sleepOutfit].socks;
+            //cl.c.pants = cl.saveOutfit[sleepOutfit].pants;
+            //cl.c.panties = cl.saveOutfit[sleepOutfit].panties;
+            //cl.c.bra = cl.saveOutfit[sleepOutfit].bra;
+            //cl.c.shirt = cl.saveOutfit[sleepOutfit].shirt;
+            //cl.c.dress = cl.saveOutfit[sleepOutfit].dress;
+            //cl.c.swimsuit = cl.saveOutfit[sleepOutfit].swimsuit;
+            //cl.c.accessories = cl.saveOutfit[sleepOutfit].accessories;
+            //cl.c.pj = cl.saveOutfit[sleepOutfit].pj;
+            //cl.display();
 
-                g.pass = 502;
-                char.room(28);
+            g.pass = 502;
+            char.room(28);
 
-            }
+            //}
             break;
         case "newday":
             char.room(502);
             break;
+        case "zoeySex1":
+            nav.bg("502_bedroom/zoeySex1" + gender.pronoun("f") + ".jpg");
+            break;
+        case "zoeySex2":
+            nav.bg("502_bedroom/zoeySex2.jpg");
+            g.internal = 3;
+            nav.next("zoeySex");
+            break;
+
+
+
+
+
+
         case "zoeyBed":
             nav.bg("502_bedroom/sleepZoey.jpg");
             break;
@@ -201,6 +318,7 @@ room502.chatcatch = function (callback) {
         case "o1":
         case "o2":
         case "o3":
+        case "o4":
             var thisEntry = parseInt(callback[1]);
             cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
             cl.c.socks = cl.saveOutfit[thisEntry].socks;
@@ -215,7 +333,7 @@ room502.chatcatch = function (callback) {
             cl.display();
             char.room(502);
             break;
-        case "o4":
+        case "o5":
             char.room(502);
             break;
         case "overLook1":
@@ -279,20 +397,13 @@ room502.chatcatch = function (callback) {
             cl.add("pants", "k");
             cl.add("shoes", "fb");
             inv.update("tifgift", false, null);
-            nav.button({
-                "type": "img",
-                "name": "zoey",
-                "left": 860,
-                "top": 42,
-                "width": 677,
-                "height": 1038,
-                "image": "502_bedroom/zoeFace.png"
-            }, 502);
+            nav.bg("502_bedroom/tifgift.jpg");
+            zcl.displayMain(120, 1000, .11, "clothes", false);
             break;
         case "dressup":
             cl.nude();
             nav.killbutton("zoey");
-            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra", false);
+            zcl.displayMain(120, 1000, .11, "clothes", false);
             break;
         case "dressup1":
             cl.c.shirt = "r";
@@ -300,7 +411,7 @@ room502.chatcatch = function (callback) {
             cl.c.pants = "k";
             cl.c.shoes = "fb";
             cl.display();
-            zcl.displayMain(-60, 750, .20, "panties shirt pants socks shoes bra", false);
+            zcl.displayMain(120, 1000, .11, "clothes", false);
             break;
         case "zoeyLeave":
             nav.room(502);
@@ -426,7 +537,8 @@ room502.chat = function (chatID) {
                     { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
                     { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
                     { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
-                    { chatID: -1, text: "Get Up", callback: "o4" }
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o4" },
+                    { chatID: -1, text: "Get Up", callback: "o5" }
                 ]
             },
             {
@@ -530,11 +642,58 @@ room502.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "me",
-                text: "**Snore** **Snort** I think I heard something in the living room. ",
+                text: "**Snore** **Snort** huh? ",
                 button: [
-                    { chatID: 14, text: "[Check out noise]", callback: "single2" }
+                    { chatID: 14, text: "...", callback: "zoeySex1" }
                 ]
             },
+            {
+                chatID: 14,
+                speaker: "me",
+                text: "That came from the living room.... I guess I should check it out. Probably " +
+                    "just " + sc.n("zoey") + " throwing her controller at the TV again. ",
+                button: [
+                    { chatID: -1, text: "[Check out noise]", callback: "zoeySex2" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "stormy",
+                text: "Oh shit! F-f-f-f-fuck! I'm cumming! ",
+                button: [
+                    { chatID: 16, text: "...", callback: "zoeySex6" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "stormy",
+                text: "Fuck that was hot. I've never cum to an audiance before. I'll have to " +
+                    "get you to watch us again. " + sc.n("zoey") + " you can get your cuddles " +
+                    "the dish washer. " + gender.pronoun("he") + " looks cuddly. Lates! ",
+                button: [
+                    { chatID: 17, text: "Bye. ", callback: "zoeySex7" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "zoey",
+                text: "I am such a mess of wet and smells, but I am too tired to shower. Please " +
+                    "helping me to bed? Can you cuddle me till we sleep? Je sens comme la petite mort. ",
+                button: [
+                    { chatID: -1, text: "Sure. Let's get some sleep. ", callback: "zoeySex8" }
+                ]
+            },
+
+
+
+
+
+
+
+
+
+
+
             {
                 chatID: 14,
                 speaker: "zoey",

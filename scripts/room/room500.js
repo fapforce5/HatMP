@@ -27,25 +27,29 @@ room500.main = function () {
 room500.btnclick = function (name) {
     switch (name) {
         case "frontDoor":
-            
-            var zoeyLocation = sc.getTimeline("zoey");
-            if (daily.get("zoey")) {
-                chat(4, 500);
-            }
-            else if (zoeyLocation.roomID > 499 && zoeyLocation.roomID < 525) {
-                if (zoeyLocation.roomID === 502) { //sleeping
-                    nav.killall();
-                    nav.bg("500_jada/500_doorOpen2.jpg");
-                    chat(0, 500);
-                }
-                else {
-                    nav.killall();
-                    nav.bg("500_jada/500_doorOpen1.jpg");
-                    chat(1, 500);
-                }
+            if (sc.getMission("zoey", "cheating").success) {
+                char.room(501);
             }
             else {
-                chat(3, 500);
+                var zoeyLocation = sc.getTimeline("zoey");
+                if (daily.get("zoey")) {
+                    chat(4, 500);
+                }
+                else if (zoeyLocation.roomID > 499 && zoeyLocation.roomID < 525) {
+                    if (zoeyLocation.roomID === 502) { //sleeping
+                        nav.killall();
+                        nav.bg("500_jada/500_doorOpen2.jpg");
+                        chat(0, 500);
+                    }
+                    else {
+                        nav.killall();
+                        nav.bg("500_jada/500_doorOpen1.jpg");
+                        chat(1, 500);
+                    }
+                }
+                else {
+                    chat(3, 500);
+                }
             }
             //if (sc.getstep("zoey") > 300) {
             //    chat(15, 500);

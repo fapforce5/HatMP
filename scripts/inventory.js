@@ -53,10 +53,11 @@ inv.master = [
     { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 25, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
     { type: "e", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
-    { type: "e", name: "pissjar", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 50 energy" },
+    { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 40 energy" },
+    { type: "e", name: "pissjargirl", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "pissjargirl.png", n: false, desc: "Gain 60 energy" },
     { type: "e", name: "cumjar", display: "A Jar full of cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
-    { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 150 energy" },
-    { type: "e", name: "horsecumjar", display: "A Jar full of horse cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 200 energy" },
+    { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, image: "dogcumjar.png", n: false, desc: "Gain 150 energy" },
+    { type: "e", name: "horsecumjar", display: "A Jar full of horse cum", entry: false, count: 0, cost: -1, image: "horsecumjar.png", n: false, desc: "Gain 200 energy" },
     { type: "e", name: "pigcumjar", display: "A Jar full of pig cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 300 energy" },
 
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
@@ -672,6 +673,27 @@ inv.createElements = function () {
                                 break;
                             case "cumjar":
                                 gv.mod("energy", 100);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "pissjarboy":
+                                gv.mod("energy", 40);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "pissjargirl":
+                                gv.mod("energy", 60);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "dogcumjar":
+                                gv.mod("energy", 150);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "horsecumjar":
+                                gv.mod("energy", 200);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "pigcumjar":
+                                gv.mod("energy", 300);
+                                levels.mod("xdress", 10, 999);
                                 break;
                             default:
                                 console.log("UNK energy: " + thisName);

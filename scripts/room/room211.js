@@ -8,7 +8,7 @@ room211.main = function () {
         gv.set("sissySchoolClass", "firstday");
         char.room(209);
     }
-    else if (sissy.st[10].ach && hasFinalSissyOutfit) {
+    else if (sissy.st[10].ach && !hasFinalSissyOutfit) {
         nav.bg("211_meeting/postTest.jpg");
         chat(25, 211);
     }

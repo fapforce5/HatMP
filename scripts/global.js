@@ -19,7 +19,7 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 650, 750, 901, 902, 408, 478, 479, 480];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 650, 750, 901, 902, 408, 478, 479, 480];
 g.roomChange = [10, 12, 56, 201, 209, 318, 451, 452, 503, 552, 553, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
@@ -252,7 +252,7 @@ g.rooms = [
     { roomID: 212, name: "Gloryhole", image: "212_gloryhole/bg.jpg", nightImage: "212_gloryhole/bg.jpg", houseID: 203, btn: "roomBtn_212.png" },
     { roomID: 213, name: "Lounge", image: "213_pink/bg.jpg", nightImage: "213_pink/bg.jpg", houseID: 203, btn: "roomBtn_213.png" },
     { roomID: 214, name: "Game Room", image: "214_pinkgame/bg.jpg", nightImage: "214_pinkgame/bg.jpg", houseID: 203, btn: "roomBtn_214.png" },
-    { roomID: 215, name: "Private Room", image: "215_pinkroom/private1.jpg", nightImage: "215_pinkroom/private1.jpg", houseID: 203, btn: "roomBtn_215.png" },
+    { roomID: 215, name: "Private Room", image: "215_pinkroom/bg.jpg", nightImage: "215_pinkroom/bg.jpg", houseID: 203, btn: "roomBtn_215.png" },
     { roomID: 216, name: "Glory Hole", image: "216_pinkglory/bg.jpg", nightImage: "216_pinkglory/bg.jpg", houseID: 203, btn: "roomBtn_216.png" },
     { roomID: 217, name: "Punishment", image: "217_punish/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_217.png" },
     { roomID: 218, name: "masturbate", image: "218_masturbate/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_217.png" },
@@ -335,9 +335,9 @@ g.rooms = [
     { roomID: 502, name: "Zoey's Bedroom", image: "502_bedroom/bedroom.jpg", nightImage: "502_bedroom/bedroomnight.jpg", houseID: 500, btn: "roomBtn_501.png" },
     { roomID: 503, name: "Zoey's Bathroom", image: "503_bathroom/bathroom.jpg", nightImage: "503_bathroom/bathroom.jpg", houseID: 500, btn: "roomBtn_503.png" },
 
-    { roomID: 525, name: "Zoey's Bar", image: "525_entrance/bg.jpg", nightImage: "525_entrance/bgNight.jpg", houseID: 525, btn: "roomBtn_500.png" },
-    { roomID: 526, name: "Inside Bar", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
-    { roomID: 527, name: "Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
+    { roomID: 525, name: "Caravaggio", image: "525_entrance/bg.jpg", nightImage: "525_entrance/bgNight.jpg", houseID: 525, btn: "roomBtn_500.png" },
+    { roomID: 526, name: "Caravaggio", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
+    { roomID: 527, name: "Caravaggio Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
     { roomID: 535, name: "Keaton", image: "535_keaton/bg.jpg", nightImage: "535_keaton/bg.jpg", houseID: 525, btn: "535_keaton.png" },
 
@@ -436,7 +436,7 @@ g.roomMapInit = function () {
         { roomID: 405, display: "Hair Cut", access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
         { roomID: 406, display: "Contacts", access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
         //{ roomID: 407, display: "Makeup", access: false, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
-        //{ roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
+        { roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
         { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
         { roomID: 500, display: "Zoey's", access: true, darkAccess: true, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
         { roomID: 525, display: "Zoey's Bar", access: false, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },

@@ -1,21 +1,22 @@
 ﻿//Whore Room
 var room215 = {};
 room215.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "whore",
-            "left": 779,
-            "top": 544,
-            "width": 327,
-            "height": 486,
-            "image": "215_pinkroom/work.png",
-            "title": "Sell your sissy ass"
-        }
-    ];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 215);
-    });
+    //var btnList = [
+    //    {
+    //        "type": "btn",
+    //        "name": "whore",
+    //        "left": 779,
+    //        "top": 544,
+    //        "width": 327,
+    //        "height": 486,
+    //        "image": "215_pinkroom/work.png",
+    //        "title": "Sell your sissy ass"
+    //    }
+    //];
+    //$.each(btnList, function (i, v) {
+    //    nav.button(v, 215);
+    //});
+    chat(45, 215);
     nav.buildnav([213, 214, 171, 170]);
 };
 
@@ -774,6 +775,14 @@ room215.chat = function (chatID) {
                 "me. So I guess she did send that picture. Damn it!",
             button: [
                 { chatID: -1, text: "Answer phone. ", callback: "c7" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "random",
+            text: "This is still in progress. Future release",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

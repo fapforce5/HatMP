@@ -52,7 +52,7 @@ gv.init = function () {
         { n: "map", t: 1, q: "int" },
         { n: "bladder", t: 0, q: "bladder" },
         { n: "cum", t: g.startDate, q: "date" },
-        { n: "chastityLock", t: false, q: "bool" },
+        { n: "chastityCounter", t: 0, q: "zero" },
         { n: "missyWeekly", t: "", q: "string" },
         { n: "jackoff", t: 0, q: "int" },
         { n: "dildoanal", t: 0, q: "int" },
@@ -249,7 +249,8 @@ gv.init = function () {
         { n: "cop", t: false },
         { n: "elsleep", t: false },
         { n: "zoeytalk", t: false },
-        { n: "orchid", t: false }
+        { n: "orchid", t: false },
+        { n: "zoeypiss", t: false }
     ];
 
     weekly.st = [
@@ -267,7 +268,7 @@ gv.init = function () {
         { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true },
         { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true },
         { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 9, n: "int", d: "Intelligence", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true },
         { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true },
         { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true }, //how likely you are to get raped
 
@@ -283,7 +284,7 @@ gv.init = function () {
         { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
         { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true },
         { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 23, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: true },
 
     ];
 
@@ -363,23 +364,25 @@ gv.init = function () {
         { id: 8, pID: [19], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
         { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
 
-        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 19], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
+        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 16, 19], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
 
-        { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: true },
+        { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: false },
         { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 212", description: "Experaince the joy of being filled", ach: false, active: true, room: 175 },
-        { id: 13, pID: [10], icon: "chastity201", x: 6, y: 4, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true },
+        { id: 13, pID: [10], icon: "chastity201", x: 6, y: 4, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true, room: 177 },
         { id: 14, pID: [10], icon: "enema205", x: 1, y: 4, name: "Enema 205", description: "A clean bussy makes everyone happy", ach: false, active: true, room: 180 },
         { id: 15, pID: [10], icon: "fem201", x: 0, y: 4, name: "Feminization 201", description: "Introduction to hormones", ach: false, active: true, room: 180 },
-        { id: 16, pID: [10], icon: "fem212", x: 2, y: 4, name: "Feminization 212", description: "How to walk in high heels", ach: false, active: true },
+        { id: 16, pID: [19], icon: "fem121", x: 1, y: 2, name: "Feminization 121", description: "How to walk in high heels", ach: false, active: true, room: 180 },
 
         { id: 17, pID: [], icon: "invite", x: -1, y: -1, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
 
         { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true, room: 176 },
 
         { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
-        { id: 20, pID: [10], icon: "bondage203", x: 7, y: 1, name: "Bondage 203", description: "Bad Penis!", ach: false, active: true, room: 181 },
+        { id: 20, pID: [10], icon: "bondage203", x: 9, y: 4, name: "Bondage 203", description: "Pony girl races", ach: false, active: true, room: 181 },
 
-        { id: 21, pID: [10], icon: "final", x: 7, y: 1, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 181 },
+        { id: 21, pID: [12, 13, 14, 15, 18, 20], icon: "final", x: 0, y: 5, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 213 },
+
+        { id: 22, pID: [10], icon: "cum204", x: 8, y: 4, name: "Cum Eating 204", description: "Cecilia cum farts into cup - each sissy takes a drink (asks who's cum it it. Cecelia says, not so much who, but what...", ach: false, active: false, room: 181 },
 
     ];
 
@@ -594,6 +597,64 @@ gv.mod = function (name, amount) {
         console.log("unknown g.mod: " + name);
 };
 
+gv.getButtCum = function () {
+    var pig, horse, dog, human, cumType;
+    cumType = null;
+    pig = horse = dog = human = 0;
+    counter = 0;
+    for (i = 0; i < gv.st.length; i++) {
+        if (gv.st[i].n === "analCum") {
+            if (gv.st[i].t > 0) {
+                human = gv.st[i].t;
+                cumType = "cumjar";
+            }
+        }
+        else if (gv.st[i].n === "analCumDog") {
+            if (gv.st[i].t > 0) {
+                dog = gv.st[i].t;
+                cumType = "dogcumjar";
+            }
+        }
+        else if (gv.st[i].n === "analCumHorse") {
+            if (gv.st[i].t > 0) {
+                horse = gv.st[i].t;
+                cumType = "horsecumjar";
+            }
+        }
+        else if (gv.st[i].n === "analCumPig") {
+            if (gv.st[i].t > 0) {
+                pig = gv.st[i].t;
+                cumType = "pigcumjar";
+            }
+        }
+    }
+    return {
+        human: human,
+        dog: dog,
+        horse: horse,
+        pig: pig,
+        cumType: cumType,
+        total: human + dog + horse + pig
+    };
+};
+
+gv.clearButtCum = function () {
+    for (i = 0; i < gv.st.length; i++) {
+        if (gv.st[i].n === "analCum") {
+            gv.st[i].t = 0;
+        }
+        else if (gv.st[i].n === "analCumDog") {
+            gv.st[i].t = 0;
+        }
+        else if (gv.st[i].n === "analCumHorse") {
+            gv.st[i].t = 0;
+        }
+        else if (gv.st[i].n === "analCumPig") {
+            gv.st[i].t = 0;
+        }
+    }
+}
+
 levels.mod = function (name, amount, targetLevel = 999) {
     var actualAmount = 0;
     var i, j, fitnessStart;
@@ -725,22 +786,25 @@ levels.desc = function (name, level) {
     if (name === "strength") {
         return { count: -1, txt: "Level: " + level };
     }
+    if (name === "xdress") {
+        return { count: -1, txt: "Points: " + level };
+    }
     var levelsDesc = new Array();
     switch (name) {
-        case "xdress":
-            levelsDesc = [
-                { id: 0, txt: "Boys clothes only" },
-                { id: 1, txt: "Can wear panties" },
-                { id: 2, txt: "Can cross dress at home and Missy's" },
-                { id: 3, txt: "Can work cases crossdressing" },
-                { id: 4, txt: "Must wear bra" },
-                { id: 5, txt: "Can buy girly clothes." },
-                { id: 6, txt: "Can go out in girl clothes" },
-                { id: 7, txt: "Can buy slutty clothing" },
-                { id: 8, txt: "Don't have to wear panties and bra" }, 
-                { id: 9, txt: "Wear what ever, or nothing at all" }
-            ];
-            break;
+        //case "xdress":
+        //    levelsDesc = [
+        //        { id: 0, txt: "Boys clothes only" },
+        //        { id: 1, txt: "Can wear panties" },
+        //        { id: 2, txt: "Can cross dress at home and Missy's" },
+        //        { id: 3, txt: "Can work cases crossdressing" },
+        //        { id: 4, txt: "Must wear bra" },
+        //        { id: 5, txt: "Can buy girly clothes." },
+        //        { id: 6, txt: "Can go out in girl clothes" },
+        //        { id: 7, txt: "Can buy slutty clothing" },
+        //        { id: 8, txt: "Don't have to wear panties and bra" }, 
+        //        { id: 9, txt: "Wear what ever, or nothing at all" }
+        //    ];
+        //    break;
         case "sub":
             levelsDesc = [
                 { id: 0, txt: "Not submissive" },
@@ -793,7 +857,7 @@ levels.desc = function (name, level) {
                 { id: 0, txt: "Ewwww" },
                 { id: 1, txt: "You can taste your own" },
                 { id: 2, txt: "Can work in the sperm store" },
-                { id: 3, txt: "You can cum in your own mouth" },
+                { id: 3, txt: "Can save your creampie in a jar." },
                 { id: 4, txt: "You can swallow" },
                 { id: 5, txt: "You can get creampied" },
                 { id: 6, txt: "cum gains 5 energy" },
@@ -804,13 +868,13 @@ levels.desc = function (name, level) {
             break;
         case "pi":
             levelsDesc = [
-                { id: 0, txt: "Can watch things (first case)" },
-                { id: 1, txt: "Speach / influnce increased" },
+                { id: 0, txt: "Unlock first case" },
+                { id: 1, txt: "Unlock more cases" },
                 { id: 2, txt: "Pick pocket" },
                 { id: 3, txt: "unlock locked doors" },
-                { id: 4, txt: "Speach / influnce increased + 2" },
-                { id: 5, txt: "Pick pocket + 2" },
-                { id: 6, txt: "unlock locked doors + 2" },
+                { id: 4, txt: "Unlock cases" },
+                { id: 5, txt: "Unlock cases" },
+                { id: 6, txt: "Unlock cases" },
                 { id: 7, txt: "TBD" },
                 { id: 8, txt: "TBD" },
                 { id: 9, txt: "TBD" },
@@ -862,7 +926,7 @@ levels.desc = function (name, level) {
         
     };
     if (levelsDesc.length === 0) {
-        console.log("no level " + name);
+        //console.log("no level " + name);
         return { count: -1, txt: "not found" };
     }
     else if (level >= levelsDesc.length) {
@@ -920,7 +984,20 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     }
     if (creampie) {
         levels.mod("cum", 25, 999);
+        if (beast === null) {
+            gv.mod("analCum", 1);
+        }
+        else if (beast === "dog") {
+            gv.mod("analCumDog", 1);
+        }
+        else if (beast === "horse") {
+            gv.mod("analCumHorse", 1);
+        }
+        else if (beast === "pig") {
+            gv.mod("analCumPig", 1);
+        }
     }
+
     if (beast !== null) {
         sex.mod("beast", false, "m", 1);
         levels.mod("beast", 50, 10);
@@ -931,9 +1008,8 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
             case "pig": gv.mod("analCumPig", 1); break;
         }
     }
-    else if (gender !== null) {
+    else if (gender !== null && beast === null) {
         sex.mod("anal", false, gender, 1);
-        gv.mod("analCum", 1);
     }
 };
 
@@ -956,6 +1032,31 @@ levels.oral = function (size) {
             break;
     };
 };
+
+sex.piss = function (drankpiss, analpiss, pissedon, gender) {
+    if (analpiss) {
+        sex.mod("piss", false, gender, 1);
+        levels.mod("piss", 40, 999);
+        levels.mod("xdress", 40, 999);
+    }
+    else if (pissedon) {
+        sex.mod("piss", false, gender, 1);
+        levels.mod("piss", 30, 999);
+        levels.mod("xdress", 25, 999);
+    }
+    else if (drankpiss) {
+        sex.mod("piss", false, gender, 1);
+        levels.mod("piss", 50, 999);
+        var pissLevel = levels.get("piss").l - 4;
+        levels.mod("xdress", 40, 999);
+        if (pissLevel > 0)
+            gv.mod("energy", pissLevel * 5);
+    }
+    else {
+        levels.mod("xdress", 25, 999);
+        levels.mod("piss", 25, 999);
+    }
+}
 
 levels.analTake = function (size) {
     //0: 1 finger

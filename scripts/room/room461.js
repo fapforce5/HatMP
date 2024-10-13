@@ -11,7 +11,8 @@ room461.main = function () {
             }
 
             if (whichOne === 0 || whichOne === 1) {
-                if (sc.taskGetStep("ppgirl", "pp") === 3) {
+
+                if (sc.taskGetStep("ppgirl", "pp") > 2) {
                     nav.bg("461_run/pee6.jpg");
                     chat(32, 461);
                 }
@@ -186,6 +187,7 @@ room461.btnclick = function (name) {
                 sc.startMission("ppgirl", "pp");
                 sc.completeMissionTask("ppgirl", "pp", 0);
                 nav.killall();
+                sc.show("ppgirl");
                 nav.bg("461_run/pee1.jpg");
                 chat(22, 461);
             }
@@ -222,6 +224,38 @@ room461.btnclick = function (name) {
                 }
                 chat(33, 461);
             }
+            break;
+        case "ppcupx":
+            chat(45, 461);
+            break;
+        case "ppcup":
+            nav.killall();
+            if (levels.get("piss") < 2) {
+                levels.mod("piss", 25, 1);
+                chat(46, 461);
+            }
+            else {
+                if (sc.getMission("ppgirl", "pp").inProgress) {
+                    sc.completeMissionTask("ppgirl", "pp", 3);
+                    sc.completeMission("ppgirl", "pp", true);
+                    sc.modLevel("ppgirl", 100, 5);
+                }
+                chat(47, 461);
+            }
+
+            break;
+        case "pissjar1":
+            nav.killall();
+            nav.bg("461_run/pissjar1.jpg");
+            nav.next("pissjar2");
+            break;
+        case "pissjar2":
+            nav.killall();
+            nav.bg("461_run/pee5.jpg");
+            inv.use("emptyjar");
+            inv.add("pissjargirl");
+            levels.mod("piss", 15, 999);
+            chat(29, 461);
             break;
         default:
             break;
@@ -349,7 +383,6 @@ room461.chatcatch = function (callback) {
             break;
         case "ppbad":
             nav.killall();
-            //sc.modLevel("ppgirl", -100, 0);
             nav.bg("461_run/pee2.jpg");
             chat(24, 461);
             break;
@@ -362,16 +395,24 @@ room461.chatcatch = function (callback) {
             nav.bg("461_run/" + callback + ".jpg");
             break;
         case "pee7":
-            levels.mod("piss", 25, 2);
+            sex.piss(true, false, false, false, "f");
             nav.bg("461_run/pee7.jpg");
             break;
-        
+        case "ppgirlTask1":
+            sc.show("ppgirl");
+            sc.completeMissionTask("ppgirl", "pp", 1);
+            break;
         case "displayppgirl":
             sc.select("pprun", "461_run/ppgirl_run.png", 0);
             sc.select("ppchat", "461_run/ppgirl_chat.png", 1);
             sc.select("pppee", "461_run/ppgirl_pee.png", 2);
             sc.select("ppdick2", "461_run/ppgirl_dick.png", 3);
+            if (inv.has("emptyjar")) 
+                sc.select("ppcup", "461_run/icon_pissjar.png", 4);
+            else
+                sc.select("ppcupx", "461_run/icon_pissjarx.png", 4);
             break;
+       
         case "ppsub":
             levels.mod("sub", 15, 999);
             break;
@@ -397,6 +438,11 @@ room461.chatcatch = function (callback) {
                 chat(1, 461);
             else
                 chat(2, 461);
+            break;
+        case "pissjar0":
+            nav.killall();
+            nav.bg("461_run/pissjar0.jpg");
+            nav.next("pissjar1");
             break;
         default:
             break;
@@ -619,7 +665,7 @@ room461.chat = function (chatID) {
             text: "Why do you keep interrupting me when I'm trying to pee?",
             button: [
                 { chatID: -1, text: "Since you had your pussy out, I thought you wanted to fuck. ", callback: "ppbad" },
-                { chatID: 26, text: "You're peeing in the middle of the path.", callback: "" },
+                { chatID: 26, text: "You're peeing in the middle of the path.", callback: "ppgirlTask1" },
             ]
         },
         {
@@ -718,7 +764,7 @@ room461.chat = function (chatID) {
             text: "Oh gross. Did I really think of asking her to pee on me? I'm going to run. Running is better than getting " +
                 "peed on!",
             button: [
-                { chatID: -1, text: "Gotta run! Later!", callback: "completeRun" },
+                { chatID: -1, text: "[Need Pee Level 2]", callback: "completeRun" },
             ]
         },
         {
@@ -781,6 +827,31 @@ room461.chat = function (chatID) {
                 "got to run. ",
             button: [
                 { chatID: -1, text: "Oh. See you later. ", callback: "completeRun" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "thinking",
+            text: "I don't have an empty jar for her to piss in.",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "thinking",
+            text: "Oh gross. Did I really think of asking for a jar of her piss? I'm going to run. Running is better than getting " +
+                "getting a jar of piss!",
+            button: [
+                { chatID: -1, text: "[Need Pee Level 2]", callback: "completeRun" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "ppgirl",
+            text: "You want a jar of my piss? Werid... but ok! Give me a jar. ",
+            button: [
+                { chatID: -1, text: "[Hand her an empty jar]", callback: "pissjar0" },
             ]
         },
     ];

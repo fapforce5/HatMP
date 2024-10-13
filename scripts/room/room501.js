@@ -1,7 +1,32 @@
 ﻿//Room name
 var room501 = {};
 room501.main = function () {
-    if (sc.getTimeline("zoey").thisRoom) {
+    var navList = [0];
+    if (sc.getMission("zoey", "cheating").success) {
+        navList = [502, 503, 0];
+        nav.button({
+            "type": "btn",
+            "name": "door",
+            "left": 580,
+            "top": 29,
+            "width": 354,
+            "height": 721,
+            "title": "Bedroom",
+            "image": "501_jadaGame/door.png"
+        }, 501);
+        if (sc.getTimeline("zoey").thisRoom) {
+            nav.button({
+                "type": "btn",
+                "name": "zoey",
+                "left": 1035,
+                "top": 288,
+                "width": 549,
+                "height": 524,
+                "image": sc.getMissionTask("zoey", "sex", 3).success ? "501_jadaGame/zoeySitx.png" : "501_jadaGame/zoeySit.png"
+            }, 501);
+        }
+    }
+    else if (sc.getTimeline("zoey").thisRoom) {
         if (sc.taskGetStep("zoey", "friends") === 2 && !daily.get("zoeytalk")) {
             daily.set("zoey");
             sc.completeMissionTask("zoey", "friends", 2);
@@ -23,79 +48,8 @@ room501.main = function () {
     else {
         char.room(500);
     }
-
-    //var btnList = new Array();
-    //var navList = [0];
-    //var zoeyStep = sc.getstep("zoey");
-    //if (zoeyStep === 2) {
-    //    nav.button({
-    //        "type": "img",
-    //        "name": "ddduo",
-    //        "left": 820,
-    //        "top": 54,
-    //        "width": 658,
-    //        "height": 1026,
-    //        "image": "501_jadaGame/duo.png"
-    //    }, 501);
-    //    chat(53, 501);
-    //}
-    //else if (zoeyStep > 22) {
-    //    nav.button({
-    //        "type": "btn",
-    //        "name": "zoey",
-    //        "left": 1035,
-    //        "top": 288,
-    //        "width": 549,
-    //        "height": 524,
-    //        "image": "501_jadaGame/zoeySit.png"
-    //    }, 501);
-    //    nav.buildnav([0]);
-    //}
-    //else {
-    //    if (sc.getEvent("zoey", -2)) {
-    //        navList.push(502);
-    //        navList.push(503);
-    //        btnList.push({
-    //            "type": "btn",
-    //            "name": "door",
-    //            "left": 580,
-    //            "top": 29,
-    //            "width": 354,
-    //            "height": 721,
-    //            "title": "Bedroom",
-    //            "image": "501_jadaGame/door.png"
-    //        });
-    //    }
-    //    if (sc.zoey().thisRoom) {
-    //        if (zoeyStep > 13) {
-    //            btnList.push({
-    //                "type": "btn",
-    //                "name": "zoey",
-    //                "left": 1035,
-    //                "top": 288,
-    //                "width": 549,
-    //                "height": 524,
-    //                "image": "501_jadaGame/zoeySitx.png"
-    //            });
-    //        }
-    //        else {
-    //            btnList.push({
-    //                "type": "btn",
-    //                "name": "zoey",
-    //                "left": 1035,
-    //                "top": 288,
-    //                "width": 549,
-    //                "height": 524,
-    //                "image": "501_jadaGame/zoeySit.png"
-    //            });
-    //        }
-            
-    //    }
-    //    $.each(btnList, function (i, v) {
-    //        nav.button(v, 501);
-    //    });
-        nav.buildnav([0]);
-    //}
+   
+    nav.buildnav(navList);
 };
 
 room501.btnclick = function (name) {
@@ -110,10 +64,34 @@ room501.btnclick = function (name) {
             char.room(501);
             break;
         case "icon_game":
-            nav.killall();
-            nav.bg("501_jadaGame/game" + g.rand(0, 9) + ".jpg");
-            zcl.displayMain(0, -400, .4, "clothes", true);
-            chat(999, 501);
+            if (sc.getMissionTask("zoey", "sex", 3).success && !daily.get("zoey")) {
+                chat(107, 501);
+            }
+            else {
+                nav.killall();
+                nav.bg("501_jadaGame/game" + g.rand(0, 9) + ".jpg");
+                zcl.displayMain(0, -400, .4, "clothes", true);
+                chat(999, 501);
+            }
+            break;
+        case "win":
+            if (g.internal === 2)
+                nav.bg("501_jadaGame/win2.jpg");
+            else if (g.internal === 3)
+                nav.bg("501_jadaGame/win3_" + gender.pronoun("f") + ".jpg");
+            else if (g.internal === 4)
+                nav.bg("501_jadaGame/win4_" + (cl.c.chastity === null ? "n" : "c") + ".jpg");
+            else {
+                nav.killall();
+                daily.set("zoey");
+                char.addtime(60);
+                levels.anal(3, true, "f", false, null);
+                levels.mod("zoey", 30, 10);
+                nav.bg("501_jadaGame/win5.jpg");
+                chat(106, 501);
+            }
+
+            g.internal++;
             break;
         case "icon_chat":
             if (daily.get("zoeytalk")) {
@@ -178,6 +156,37 @@ room501.btnclick = function (name) {
                     chat(800, 501);
                 }
             }
+            else if (sc.getMission("zoey", "cheating").success) {
+                var zsex = sc.taskGetStep("zoey", "sex");
+                switch (zsex) {
+                    case -1:
+                    case 0:
+                        nav.killall();
+                        room501.chatcatch("zLook");
+                        chat(98, 501);
+                        break;
+                    case 1:
+                        nav.killall();
+                        room501.chatcatch("zLook");
+                        chat(99, 501);
+                        break;
+                    case 2:
+                        nav.killall();
+                        room501.chatcatch("zLook");
+                        chat(100, 501);
+                        break;
+                    case 3:
+                        nav.killall();
+                        room501.chatcatch("zLook");
+                        chat(101, 501);
+                        break;
+                    case 4:
+                        nav.killall();
+                        room501.chatcatch("zLookx");
+                        chat(102, 501);
+                        break;
+                }
+            }
             break;
         case "cheating3":
             nav.killbutton("cheatingx");
@@ -196,7 +205,6 @@ room501.btnclick = function (name) {
             break;
         case "cheating11":
             sc.completeMission("zoey", "cheating");
-            sc.startMission("zoey", "sex");
             g.pass = 502;
             char.room(28);
             break;
@@ -367,6 +375,53 @@ room501.btnclick = function (name) {
             nav.bg("501_jadaGame/cheating8.jpg");
             chat(87, 501);
             break;
+        case "lose0":
+            nav.killall();
+            g.internal = 2;
+            nav.bg("501_jadaGame/lose1.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "lose1",
+                "left": 1087,
+                "top": 583,
+                "width": 224,
+                "height": 355,
+                "image": "501_jadaGame/lose1.png"
+            }, 501);
+            nav.button({
+                "type": "img",
+                "name": "gif",
+                "left": 172,
+                "top": 71,
+                "width": 501,
+                "height": 502,
+                "image": "501_jadaGame/lose.gif"
+            }, 501);
+            nav.button({
+                "type": "img",
+                "name": "gif",
+                "left": 143,
+                "top": 42,
+                "width": 560,
+                "height": 560,
+                "image": "501_jadaGame/loseCircle.png"
+            }, 501);
+            break;
+        case "lose1":
+            nav.bg("501_jadaGame/lose" + g.internal + ".jpg");
+            if (g.internal > 5) {
+                nav.killall();
+                char.addtime(60);
+                levels.mod("zoey", 30, 10);
+                daily.set("zoey");
+                levels.oralGive(3, false, false, "f");
+                chat(104, 501);
+            }
+            else {
+                nav.modbutton("lose1", "501_jadaGame/lose" + g.internal + ".png", null, null);
+            }
+            g.internal++;
+            break;
         case "cancelPeek":
             room501.chatcatch("cheating6");
             break;
@@ -400,6 +455,18 @@ room501.chatcatch = function (callback) {
                 "width": 785,
                 "height": 626,
                 "image": "501_jadaGame/zoeyLookAtViewer.jpg"
+            }, 501);
+            break;
+        case "zLookx":
+            nav.killbutton("zoey");
+            nav.button({
+                "type": "img",
+                "name": "zoey",
+                "left": 963,
+                "top": 271,
+                "width": 785,
+                "height": 626,
+                "image": "501_jadaGame/zoeyLookAtViewerx.jpg"
             }, 501);
             break;
         case "zSuprise":
@@ -765,6 +832,54 @@ room501.chatcatch = function (callback) {
             char.settime(2, 0);
             sc.setstep("zoey", 12);
             char.room(502);
+            break;
+        case "win":
+            nav.killall();
+            cl.nude();
+            g.internal = 2;
+            nav.bg("501_jadaGame/win1_" + gender.pronoun("f") + ".jpg");
+            nav.next("win");
+            break;
+        case "room502":
+            char.room(502);
+            break;
+        case "regularPlay":
+            nav.killall();
+            nav.bg("501_jadaGame/game" + g.rand(0, 9) + ".jpg");
+            zcl.displayMain(0, -400, .4, "clothes", true);
+            chat(999, 501);
+            break;
+        case "playForSex":
+            nav.killall();
+            var playForSex = g.rand(0, 9);
+            nav.bg("501_jadaGame/game" + playForSex + ".jpg");
+            zcl.displayMain(0, -400, .4, "clothes", true);
+            if (playForSex < 5) {
+                chat(108, 501);
+            }
+            else {
+                chat(109, 501)
+            }
+            break;
+        case "gamelose":
+            nav.killall();
+            nav.bg("501_jadaGame/lose0.jpg");
+            g.internal = 0;
+            nav.button({
+                "type": "tongue",
+                "name": "lose0",
+                "left": 1087,
+                "top": 583,
+                "width": 224,
+                "height": 355,
+                "image": "501_jadaGame/lose0.png"
+            }, 501);
+            chat(103, 501);
+            break;
+        case "gamewin":
+            nav.killall();
+            nav.bg("501_jadaGame/win0.jpg");
+            chat(105, 501);
             break;
         default:
             break;
@@ -1675,15 +1790,112 @@ room501.chat = function (chatID) {
                     { chatID: 80, text: "...", callback: "cheating0" },
                 ]
             },
-
-
-
-
-
-
-
-
-
+            {
+                chatID: 98,
+                speaker: "zoey",
+                text: "Come visit me at my bar, Caravaggio. Love his use of clair-obscur. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "zoey",
+                text: "Isn't " + sc.n("stormy") + " une zouz? Love how fun she is, but she " +
+                    "can be so mean... I think I like that about her. Oh, feel free to sleep " +
+                    "over when ever you want. Ma maison est ta maison. No touching ma foufoune. ",
+                button: [
+                    { chatID: -1, text: "Awesome! Totally. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "zoey",
+                text: sc.n("stormy") + " asked if you want to watch us have dirty sex. C'est à vous. " +
+                    "Meet me at the bar if you want to watch us. Bring some handcuffs and wear " +
+                    "a dispositif de chasteté... uh chastity... uh thing. ",
+                button: [
+                    { chatID: -1, text: "Awesome! Totally. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "zoey",
+                text: "I can really use some help closing the bar at night. ",
+                button: [
+                    { chatID: -1, text: "Sure. I love helping by BFF! I'll see you at your bar tonight to help close. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "zoey",
+                text: "I will bet you. You beat my pants in video games and I will dildo your " +
+                    "garçon chatte. If I win you will eat my chatte.  ",
+                button: [
+                    { chatID: -1, text: "Always with the chatte with you", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "zoey",
+                text: "Lèche moi la chatte, or as I heard, nom nom nom my vagina. ",
+                button: [
+                    { chatID: -1, text: "Oh yeah!", callback: "" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "zoey",
+                text: "Oh la la. My foufoune is happy. We should play again tomorrow. ",
+                button: [
+                    { chatID: -1, text: "Totally! Love the taste of you. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "zoey",
+                text: "Awwww. I lost. I guess I have to use my strap-on on you! I will grab some " +
+                    "of my lubrifiant gluant blanc. We go to the room. I am going to make " +
+                    "you noises piggy! ",
+                button: [
+                    { chatID: -1, text: "Oh Yes!", callback: "win" },
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "zoey",
+                text: "ahahaha. You are my bitch. I have to go clean your éjaculation grossière " +
+                    " from my stomach. ",
+                button: [
+                    { chatID: -1, text: "Oh Yes!", callback: "room502" },
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "zoey",
+                text: "Oh good! You will be the licker of the ass! Do you want to just play, or " +
+                    "play for winner gets the sex?",
+                button: [
+                    { chatID: -1, text: "Winner gets the sex!", callback: "playForSex" },
+                    { chatID: -1, text: "Just want to play. ", callback: "regularPlay" },
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "zoey",
+                text: "I am really good at this game! You have not the chance! ",
+                button: [
+                    { chatID: -1, text: "[Totally lost this game - Try again sometime to get a game you can win]", callback: "gamelose" },
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "zoey",
+                text: "Awww I am poopies at this game. You are the winner. ",
+                button: [
+                    { chatID: -1, text: "[Totally won this game - Try again sometime to lose]", callback: "gamewin" },
+                ]
+            },
 
 
 
