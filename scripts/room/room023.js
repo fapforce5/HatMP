@@ -29,14 +29,29 @@ room23.nextTurn = function () {
     }
     g.internal.gamephaseCounter++;
 
-    var myDaresLeft = g.internal.myDare[g.internal.gamephase].length;
+    //var myDaresLeft = g.internal.myDare[g.internal.gamephase].length;
     var myTruthsLeft = g.internal.myTruth.length;
     var truthsLeft = g.internal.truths[g.internal.gamephase].length;
     var daresLeft = g.internal.dares[g.internal.gamephase].length;
 
-    if (myDaresLeft < 1 || myTruthsLeft < 1 || truthsLeft < 1 || daresLeft < 1 || g.internal.gamephaseCounter > 15) {
+    if (myTruthsLeft < 1 || truthsLeft < 1 || daresLeft < 1 || g.internal.gamephaseCounter > 15) {
+        room23.drawLola("sit");
+        room23.drawEva("talk");
         chat(122, 23);
         return;
+    }
+
+    if (g.internal.lolaWine === 0 || g.internal.evaWine === 0) {
+        if (g.internal.lolaWine === 0) {
+            room23.drawLola("talk");
+            room23.drawEva("sit");
+            chat(127, 23);
+        }
+        else {
+            room23.drawLola("sit");
+            room23.drawEva("talk");
+            chat(126, 23);
+        }
     }
 
     //keep lola and eva in the same phase
@@ -105,7 +120,7 @@ room23.nextTurn = function () {
         else {
             room23.drawLola("sit");
             room23.drawEva("sit");
-            //me choose
+            sc.selectCancel("quitGame", .5);
         }
     }
 };
@@ -177,8 +192,18 @@ room23.drawLola = function(position){
                 "image": "24_spinTheBottle/sit_lola_sad.png"
             }, 23);
             break;
+        case "twerk":
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 1169,
+                "top": 0,
+                "width": 650,
+                "height": 1080,
+                "image": "24_spinTheBottle/twerk_lola.gif"
+            }, 23);
+            break;
         case "bothkiss":
-            nav.killbutton("lola");
             nav.button({
                 "type": "btn",
                 "name": "lola",
@@ -270,6 +295,17 @@ room23.drawEva = function (position) {
                 "image": "24_spinTheBottle/sit_eva_giggle.png"
             }, 23);
             break;
+        case "twerk":
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 462,
+                "top": 0,
+                "width": 650,
+                "height": 1080,
+                "image": "24_spinTheBottle/twerk_eva.gif"
+            }, 23);
+            break;
         case "bothkiss":
             nav.killbutton("eva");
             break;
@@ -291,7 +327,31 @@ room23.tord = function () {
     var doTruth = g.rand(0, 3) === 0;
     if (g.internal.lolaphase !== g.internal.evaphase)
         doTruth = false;
-    doTruth = false;
+
+    else if (!(g.internal.whoTurn === "me" || g.internal.nextTurn === "me"))
+        doTruth = true;
+
+    else if (g.internal.nextTurn === "me" && !doTruth) {
+        var mp = g.internal.gamephase;
+        var darepointer = null;
+        for (var gdare = 0; gdare < g.internal.myDare[mp].length; gdare++) {
+            if (g.internal.whoTurn === "eva") {
+                if (g.internal.myDare[mp][gdare].e !== null) {
+                    darepointer = gdare;
+                    break;
+                }
+            }
+            else {
+                if (g.internal.myDare[mp][gdare].l !== null) {
+                    darepointer = gdare;
+                    break;
+                }
+            }
+        }
+        if (darepointer === null)
+            doTruth = true;
+    }
+
     if (doTruth)
         chat(400, 23);
     else
@@ -300,6 +360,11 @@ room23.tord = function () {
 
 room23.btnclick = function (name) {
     switch (name) {
+        case "quitGame":
+            nav.killbutton("quitGame");
+            g.internal.nextTurn = "me";
+            chat(128, 23); 
+            break;
         case "eva":
             g.internal.whoTurn = "me";
             g.internal.nextTurn = "eva";
@@ -365,7 +430,7 @@ room23.btnclick = function (name) {
                 case 0: nav.bg("24_spinTheBottle/melicklola1.jpg"); nav.next("melicklola"); break;
                 case 1: nav.bg("24_spinTheBottle/melicklola2.jpg"); nav.next("melicklola"); break;
                 case 2: nav.bg("24_spinTheBottle/melicklola3.jpg"); nav.next("melicklola"); break;
-                case 3: room23.drawLola("talk"); room23.drawEva("sit"); chat(111, 23); break;
+                case 3: nav.bg("24_spinTheBottle/013_spinBG.jpg"); room23.drawLola("talk"); room23.drawEva("sit"); chat(111, 23); break;
             }
             g.internal.reuseCounter++;
             break;
@@ -595,7 +660,7 @@ room23.chatcatch = function (callback) {
                 "height": 1056,
                 "image": "24_spinTheBottle/kiss_" + g.internal.gamephase + ".png"
             }, g.roomID);
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(26, 23);
             break;
         case "dareKissMe":
@@ -610,7 +675,7 @@ room23.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "24_spinTheBottle/dareKissMe_" + kissMeLevel + "_" + g.internal.nextTurn + ".png"
             }, 23);
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(26, 23);
             break;
         case "bjface":
@@ -624,13 +689,13 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/darebjface_eva.jpg");
                 chat(53, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
 
             break;
         case "dareSpin1":
             nav.killall();
             nav.bg("24_spinTheBottle/dareSpin_" + g.internal.nextTurn + ".jpg");
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(28, 23);
             break;
         case "dareSmellArmpits":
@@ -658,7 +723,7 @@ room23.chatcatch = function (callback) {
                     "image": "24_spinTheBottle/pitsniff_lola.png"
                 }, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(39, 23);
             break;
         case "dareDrinkWine":
@@ -674,7 +739,7 @@ room23.chatcatch = function (callback) {
                     "height": 1071,
                     "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_drink.png"
                 }, 13);
-                g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+                //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
                 nav.killbutton("lolaWine");
             }
             else {
@@ -691,7 +756,7 @@ room23.chatcatch = function (callback) {
                 }, 13);
                 nav.killbutton("evaWine");
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(40, 23);
             break;
         case "dareSpin2":
@@ -700,7 +765,7 @@ room23.chatcatch = function (callback) {
         case "dareKissHand":
             nav.killall();
             nav.bg("24_spinTheBottle/dareKissHand_" + g.internal.nextTurn + ".jpg");
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(27, 23);
             break;
         case "dareTalent":
@@ -734,7 +799,7 @@ room23.chatcatch = function (callback) {
                 room23.chatcatch("evaWin");
                 chat(42, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareTopless":
             if (sc.getLevel(g.internal.nextTurn) > 3) {
@@ -811,7 +876,7 @@ room23.chatcatch = function (callback) {
                 else
                     chat(61, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareButthole":
             nav.kill();
@@ -921,7 +986,7 @@ room23.chatcatch = function (callback) {
             else {
                 chat(49, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareLickNipple":
             nav.killall();
@@ -933,7 +998,7 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/darelick_eva.jpg");
                 chat(47, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareClothesPin":
             nav.killall();
@@ -945,17 +1010,15 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/darepin_eva.jpg");
                 chat(51, 23);
             }
-            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "askMe":
             chat(25, 23);
             break;
         case "lolalike":
-            //gamephase
             sc.modLevel("lola", 5, 5);
             break;
         case "evalike":
-            //gamephase
             sc.modLevel("eva", 5, 5);
             break;
         case "lolahate":
@@ -1118,11 +1181,21 @@ room23.chatcatch = function (callback) {
             g.pass = 7;
             char.room(28);
             break;
+        case "dareTwerk":
+            if (g.internal.nextTurn === "eva") {
+                room23.drawEva("twerk");
+                chat(125, 23);
+            }
+            else {
+                room23.drawLola("twerk");
+                chat(124, 23);
+            }
+            break;
         case "endGame":
             if (g.internal.lolaWine < 2)
-                daily.set("loladrunk");
+                daily.set("lolaDrunk");
             if (g.internal.evaWine < 2)
-                daily.set("evadrunk");
+                daily.set("evaDrunk");
 
             char.settime(22, 17);
             char.room(11);
@@ -1193,7 +1266,7 @@ room23.chat = function (chatID) {
         if (g.internal.gamepointer < 0) {
             return {
                 chatID: 802,
-                speaker: g.internal.nextTurn,
+                speaker: g.internal.whoTurn,
                 text: "I can't think of anything. Maybe I'm just tired. Let's get some sleep. ",
                 button: [
                     { chatID: -1, text: "Awwww. ok. ", callback: "endGame" }
@@ -1225,7 +1298,7 @@ room23.chat = function (chatID) {
                 speaker: g.internal.nextTurn,
                 text: "I can't think of anything. Maybe I'm just tired. Let's get some sleep. ",
                 button: [
-                    { chatID: -1, text: "Awwww. ok. ", callback: "theyquit" }
+                    { chatID: -1, text: "Awwww. ok. ", callback: "endGame" }
                 ]
             };
         }
@@ -1273,7 +1346,7 @@ room23.chat = function (chatID) {
         var darepointer = null;
         var mp = g.internal.myphase;
         for (var gdare = 0; gdare < g.internal.myDare[mp].length; gdare++) {
-            if (g.internal.nextTurn === "eva") {
+            if (g.internal.whoTurn === "eva") {
                 if (g.internal.myDare[mp][gdare].e !== null) {
                     darepointer = gdare;
                     break;
@@ -1292,7 +1365,7 @@ room23.chat = function (chatID) {
                 speaker: g.internal.nextTurn,
                 text: "I can't think of anything. Maybe I'm just tired. Let's get some sleep. ",
                 button: [
-                    { chatID: -1, text: "Awwww. ok. ", callback: "theyquit" }
+                    { chatID: -1, text: "Awwww. ok. ", callback: "endGame" }
                 ]
             }; 
         }
@@ -1305,7 +1378,7 @@ room23.chat = function (chatID) {
 
             return {
                 chatID: 702,
-                speaker: g.internal.nextTurn,
+                speaker: g.internal.whoTurn,
                 text: mbtxt,
                 button: mblist
             }; 
@@ -1468,8 +1541,8 @@ room23.chat = function (chatID) {
                 speaker: g.internal.whoTurn,
                 text: sc.n("me") + " truth or dare?",
                 button: [
-                    { chatID: 800, text: "Truth", callback: "" },
                     { chatID: 702, text: "Dare", callback: "" },
+                    { chatID: 800, text: "Truth", callback: "" }
                 ]
             },
             {
@@ -2397,8 +2470,8 @@ room23.chat = function (chatID) {
                 speaker: g.internal.whoTurn,
                 text: sc.n("me") + ", truth or dare? ",
                 button: [
-                    { chatID: 118, text: "Truth", callback: "" },
                     { chatID: 701, text: "Dare", callback: "" },
+                    { chatID: 118, text: "Truth", callback: "" }
                 ]
             },
             {
@@ -2453,6 +2526,47 @@ room23.chat = function (chatID) {
                 text: "Yeah. I guess it is a bit long. Night night! ",
                 button: [
                     { chatID: -1, text: "Good night. ", callback: "endGame" },
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "lola",
+                text: "Is this sexy. I've never tried this before. Do I look silly?",
+                button: [
+                    { chatID: -1, text: "You look great!", callback: "nextTurn" },
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "eva",
+                text: "Take a good look 'cause you'll never see me bound like this on you! ",
+                button: [
+                    { chatID: -1, text: "Gross. I would never let you bounce on me. Bleck!", callback: "nextTurn" },
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "eva",
+                text: "I totally can't keep going. I'm feeling so drunk. ",
+                button: [
+                    { chatID: -1, text: "ok. Night", callback: "endGame" },
+                ]
+            },
+            {
+                chatID: 127,
+                speaker: "eva",
+                text: "That wine really got to me. I'm feeling a bit dizzy. I've got to " +
+                    "go lay down. ",
+                button: [
+                    { chatID: -1, text: "ok. Night", callback: "endGame" },
+                ]
+            },
+            {
+                chatID: 128,
+                speaker: "me",
+                text: "It's getting late. I'm going to call it. ",
+                button: [
+                    { chatID: -1, text: "ok. Night", callback: "endGame" },
                 ]
             },
         ]; 
@@ -3102,6 +3216,14 @@ room23.buildInternal = function () {
             i: "d_2_4"
         },
         {
+            txt: "Take a drink! ",
+            e: "Trying to get me drunk. ",
+            l: "Oooo fun. I do love the taste of wine. ",
+            u: "Take a drink! ",
+            dCallback: "dareDrinkWine",
+            i: "d_1_6"
+        },
+        {
             txt: "Take your pants off. ",
             e: "Sure! It's only time you get to see a girl without her pants. ",
             l: "Sexy! hehe. I love this dare. ",
@@ -3122,7 +3244,7 @@ room23.buildInternal = function () {
         {
             txt: "Twerk for us. ",
             e: "I didn't think you were an ass boy. I thought you were more into feet. ",
-            l: "I feel so silly shaking my butt. Do I look dumb? ",
+            l: "I feel so silly shaking my butt, but ok. ",
             u: "I want to see your danicng moves. Twerk for us. ",
             dCallback: "dareTwerk",
             i: "d_3_1"
@@ -3144,6 +3266,14 @@ room23.buildInternal = function () {
             i: "d_3_3"
         },
         {
+            txt: "Take a drink! ",
+            e: "Trying to get me drunk. ",
+            l: "Oooo fun. I do love the taste of wine. ",
+            u: "Take a drink! ",
+            dCallback: "dareDrinkWine",
+            i: "d_1_6"
+        },
+        {
             txt: "Take your panties off. ",
             e: "I knew it! I knew you just played to get us naked! ",
             l: "Oh.... oh my. I suppose I have to since you dared me. hehehe",
@@ -3161,6 +3291,14 @@ room23.buildInternal = function () {
         //    dCallback: "dareKissOther",
         //    i: "d_1_2"
         //},
+        {
+            txt: "Take a drink! ",
+            e: "Trying to get me drunk. ",
+            l: "Oooo fun. I do love the taste of wine. ",
+            u: "Take a drink! ",
+            dCallback: "dareDrinkWine",
+            i: "d_1_6"
+        },
         {
             txt: "Play with your pussy and let us watch. ",
             e: "I'm going to blow your dirty little brain. ",
@@ -3212,11 +3350,9 @@ room23.buildInternal = function () {
     ]);
     //truth = g.shuffleArray(truth);
     myTruth = g.shuffleArray(myTruth);
-    //g.pass = {
-    //    truth: truth,
-    //    myTruth: myTruth,
-    //    myDare: myDare
-    //};
+    for (i = 0; i < myDare.length; i++) {
+        myDare[i] = g.shuffleArray(myDare[i]);
+    }
     g.internal = {
         eva: 0,
         lola: 0,

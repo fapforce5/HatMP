@@ -90,8 +90,7 @@ gv.init = function () {
 
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
-        { n: "evaDrunk", t: 0, q: "bool" },
-        { n: "lolaDrunk", t: 0, q: "bool" },
+        
 
         //room decoration
         { n: "painting", t: "", q: "string" },
@@ -250,7 +249,9 @@ gv.init = function () {
         { n: "elsleep", t: false },
         { n: "zoeytalk", t: false },
         { n: "orchid", t: false },
-        { n: "zoeypiss", t: false }
+        { n: "zoeypiss", t: false },
+        { n: "evaDrunk", t: false },
+        { n: "lolaDrunk", t: false }
     ];
 
     weekly.st = [
@@ -262,7 +263,7 @@ gv.init = function () {
         { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, display: true },
         { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true },
         { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 3, n: "dom", d: "Dominate", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true },
         { id: 4, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true, display: true },
         { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true },
         { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true },
@@ -801,10 +802,24 @@ levels.desc = function (name, level) {
         //        { id: 5, txt: "Can buy girly clothes." },
         //        { id: 6, txt: "Can go out in girl clothes" },
         //        { id: 7, txt: "Can buy slutty clothing" },
-        //        { id: 8, txt: "Don't have to wear panties and bra" }, 
+        //        { id: 8, txt: "Don't have to wear panties and bra" },
         //        { id: 9, txt: "Wear what ever, or nothing at all" }
         //    ];
         //    break;
+        case "dom":
+            levelsDesc = [
+                { id: 0, txt: "A bitch" },
+                { id: 1, txt: "Less of a bitch" },
+                { id: 2, txt: "Almost normal" },
+                { id: 3, txt: "normal" },
+                { id: 4, txt: "take charge" },
+                { id: 5, txt: "in charge" },
+                { id: 6, txt: "D 6" },
+                { id: 7, txt: "D 7" },
+                { id: 8, txt: "D 8" },
+                { id: 9, txt: "D 9" },
+            ];
+            break;
         case "sub":
             levelsDesc = [
                 { id: 0, txt: "Not submissive" },

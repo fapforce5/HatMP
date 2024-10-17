@@ -584,9 +584,9 @@ room24.chatcatch = function (callback) {
                     break;
                 case "gameOver":
                     if (g.internal.lolaWine < 2)
-                        daily.set("loladrunk");
+                        daily.set("lolaDrunk");
                     if (g.internal.evaWine < 2)
-                        daily.set("evadrunk");
+                        daily.set("evaDrunk");
                     char.settime(22, 7);
                     char.room(11);
                     //chat(24, 24);

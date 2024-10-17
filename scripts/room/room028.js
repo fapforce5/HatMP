@@ -71,10 +71,6 @@ room28.main = function () {
             case "xdressPoints":
                 xdressPoints = gv.st[i].t;
                 break;
-            case "evaDrunk":
-            case "lolaDrunk":
-                gv.st[i].t = 0;
-                break;
         }
     }
     

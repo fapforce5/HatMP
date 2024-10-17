@@ -16,17 +16,12 @@ room13.main = function () {
     //else
     if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
         nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
-        var lolaDrunk = gv.get("lolaDrunk");
-        var evaDrunk = gv.get("evaDrunk");
+        var lolaDrunk = daily.get("lolaDrunk");
+        var evaDrunk = daily.get("evaDrunk");
         var drunkImg;
 
-        if (lolaDrunk > 0) {
-            if (lolaDrunk === 1)
-                drunkImg = "lolaSleep1.png";
-            else if (lolaDrunk === 2)
-                drunkImg = "lolaSleep2.png";
-            else
-                drunkImg = "lolaSleep3.png";
+        if (lolaDrunk) {
+            drunkImg = "lolaSleep3.png";
             
             btnList.push({
                 "type": "img",
@@ -38,13 +33,8 @@ room13.main = function () {
                 "image": "13_sisterRoom/" + drunkImg
             });
         }
-        if (evaDrunk > 0) {
-            if (evaDrunk === 1)
-                drunkImg = "evaSleep1.png";
-            else if (evaDrunk === 2)
-                drunkImg = "evaSleep2.png";
-            else
-                drunkImg = "evaSleep3.png";
+        if (evaDrunk) {
+            drunkImg = "evaSleep3.png";
 
             btnList.push({
                 "type": "img",
@@ -365,36 +355,43 @@ room13.btnclick = function (name) {
             char.room(13);
             break;
         case "bed":
-            g.internal = {
-                evaPants: true,
-                lolaPants: true,
-                evaPanties: true,
-                lolaPanties: true,
-                step: 0,
-                dailyComplete: daily.get("elsleep")
-            };
-            nav.kill();
-           
-            nav.bg("13_sisterRoom/bedbg.jpg");
-            nav.button({
-                "type": "img",
-                "name": "pjs",
-                "left": 985,
-                "top": 93,
-                "width": 485,
-                "height": 883,
-                "image": "13_sisterRoom/13_pjs.png"
-            }, 13);
-            nav.button({
-                "type": "btn",
-                "name": "sheet1",
-                "left": 904,
-                "top": 259,
-                "width": 716,
-                "height": 801,
-                "image": "13_sisterRoom/13_sheet1.png"
-            }, 13);
-            room13.chatcatch("displaySnore");
+            if (daily.get("elsleep")) {
+                nav.killall();
+                nav.bg("13_sisterRoom/trouble_pj1.jpg");
+                chat(58, 13);
+            }
+            else {
+                g.internal = {
+                    evaPants: true,
+                    lolaPants: true,
+                    evaPanties: true,
+                    lolaPanties: true,
+                    step: 0,
+                    dailyComplete: daily.get("elsleep")
+                };
+                nav.kill();
+
+                nav.bg("13_sisterRoom/bedbg.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "pjs",
+                    "left": 985,
+                    "top": 93,
+                    "width": 485,
+                    "height": 883,
+                    "image": "13_sisterRoom/13_pjs.png"
+                }, 13);
+                nav.button({
+                    "type": "btn",
+                    "name": "sheet1",
+                    "left": 904,
+                    "top": 259,
+                    "width": 716,
+                    "height": 801,
+                    "image": "13_sisterRoom/13_sheet1.png"
+                }, 13);
+                room13.chatcatch("displaySnore");
+            }
             break;
         case "sheet1":
             nav.killbutton("sheet1");
@@ -496,7 +493,7 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 3) {
                     g.internal.lolaPants = false;
-                    if (gv.get("lolaDrunk") < 2) {
+                    if (!daily.get("lolaDrunk")) {
                         room13.btnclick("sleepAngry");
                         return;
                     }
@@ -569,7 +566,7 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 4) {
                     g.internal.lolaPanties = false;
-                    if (gv.get("lolaDrunk") < 3) {
+                    if (!daily.get("lolaDrunk")) {
                         room13.btnclick("sleepAngry");
                         return;
                     }
@@ -588,7 +585,7 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 4) {
                     g.internal.evaPants = false;
-                    if (gv.get("evaDrunk") < 2) {
+                    if (!daily.get("evaDrunk")) {
                         room13.btnclick("sleepAngry");
                         return;
                     }
@@ -651,7 +648,7 @@ room13.btnclick = function (name) {
                 }
                 else if (g.internal.step === 3) {
                     g.internal.evaPanties = false;
-                    if (gv.get("evaDrunk") < 3) {
+                    if (!daily.get("evaDrunk")) {
                         room13.btnclick("sleepAngry");
                         return;
                     }
@@ -1127,17 +1124,12 @@ room13.chatcatch = function (callback) {
                 char.room(11);
                 break;
             case "displaySnore":
-                var lolaDrunk = gv.get("lolaDrunk");
-                var evaDrunk = gv.get("evaDrunk");
+                var lolaDrunk = daily.get("lolaDrunk");
+                var evaDrunk = daily.get("evaDrunk");
                 var drunkImg;
 
-                if (lolaDrunk > 0) {
-                    if (lolaDrunk === 1)
-                        drunkImg = "lolaSleep1.png";
-                    else if (lolaDrunk === 2)
-                        drunkImg = "lolaSleep2.png";
-                    else
-                        drunkImg = "lolaSleep3.png";
+                if (lolaDrunk) {
+                    drunkImg = "lolaSleep3.png";
 
                     nav.button({
                         "type": "img",
@@ -1149,13 +1141,8 @@ room13.chatcatch = function (callback) {
                         "image": "13_sisterRoom/" + drunkImg
                     }, 13);
                 }
-                if (evaDrunk > 0) {
-                    if (evaDrunk === 1)
-                        drunkImg = "evaSleep1.png";
-                    else if (evaDrunk === 2)
-                        drunkImg = "evaSleep2.png";
-                    else
-                        drunkImg = "evaSleep3.png";
+                if (evaDrunk) {
+                    drunkImg = "evaSleep3.png";
 
                     nav.button({
                         "type": "img",
