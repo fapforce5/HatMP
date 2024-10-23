@@ -505,7 +505,7 @@ phone.thankyou = function () {
         "image": "999_phone/thankyou_bg.jpg",
     }, 9999);
     var l = [
-        "Arothiel", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
+        "Arothiel", "Asako", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
         "Rachel",
         "reverseclipse",
         "SirGuren (Contributor)", "WendyJ", "Wild86willie"

@@ -235,7 +235,6 @@ room204.chatcatch = function (callback) {
             g.internal = { cardsLeft: g.pass.length, pay: pay, numberWrong: numberWrong };
             if (piPoints > 0) {
                 levels.mod("pi", piPoints, 999);
-                levels.mod("int", Math.ceil(piPoints / 2), 4);
             }
 
             if (cardsComplete === 12 && numberWrong === 0) {

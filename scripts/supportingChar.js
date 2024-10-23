@@ -387,9 +387,19 @@ sc.charMission = [
                 missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
             },
             {
-                missionName: "bitch", mStatus: 0, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
+                missionName: "bitch", mStatus: 0, title: "Wonderful boyfriend", desc: "What a great guy! ", task:
                     [
                         { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Help me and I'll help you. [End of this path]", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+            {
+                missionName: "cuck", mStatus: 0, title: "Cuck", desc: "It's not cheating if you watch", task:
+                    [
+                        { id: 0, txt: "Found out", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "Open thigs up a bit", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "Video", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "In development [NOT MADE YET!]", show: true, mStatus: 0, roomId: 315 },
                     ]
             },
         ]
@@ -737,8 +747,26 @@ sc.charMission = [
             },
         ]
     },
-    
-    
+    {
+        name: "river", mission: [
+            {
+                missionName: "bully", mStatus: 0, title: "Bully", desc: "You're going to regret life", task:
+                    [
+                        { id: 0, txt: "Welcome back wedgie", show: true, mStatus: 0, roomId: 100 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "tina", mission: [
+            {
+                missionName: "cat", mStatus: 0, title: "Kitty", desc: "I'm a cat girl", task:
+                    [
+                        { id: 0, txt: "Saved your ass", show: true, mStatus: 0, roomId: 100 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.el = function () {
@@ -987,6 +1015,7 @@ sc.getMission = function (name, missionName) {
 
 sc.getMissionTask = function (name, missionName, taskId) {
     var ml = sc.getMission(name, missionName);
+    let i;
     for (i = 0; i < sc.charMission[ml.i].mission[ml.j].task.length; i++) {
         if (sc.charMission[ml.i].mission[ml.j].task[i].id === taskId) {
             var mstatus = sc.charMission[ml.i].mission[ml.j].task[i].mStatus;
@@ -1023,6 +1052,15 @@ sc.getActiveMissions = function (name) {
 
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
+};
+
+sc.rollbackMission = function (name, missionName) {
+    let m = sc.getMission(name, missionName);
+    let i;
+    for (i = 0; i < sc.charMission[m.i].mission[m.j].task.length; i++) {
+        sc.charMission[m.i].mission[m.j].task[i].mStatus = 0;
+    }
+    sc.charMission[m.i].mission[m.j].mStatus = 0;
 };
 
 sc.startMissionTask = function (name, missionName, taskId) {
@@ -1090,9 +1128,17 @@ sc.modSecret = function (name, amount) {
 sc.getSecret = function (name) {
     for (var i = 0; i < sc.char.length; i++) {
         if (sc.char[i].name === name) {
-            return sc.char[i].secret;
+            return {
+                secret: sc.char[i].secret,
+                secretOut: sc.char[i].secret > 99
+            };
         }
     }
+    console.log("Secret NOT found: " + name);
+    return {
+        secret: -1,
+        secretOut: false
+    };
 };
 
 sc.getstep = function (name) {

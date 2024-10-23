@@ -15,8 +15,18 @@ gender.isGirl = function () {
     var appearance = cl.appearance();
     if (appearance === 5)
         return cl.c.chest > 2;
-    return cl.appearance() > 2;
+    return cl.appearance() > 1;
 }
+
+gender.cock = function () {
+    if (cl.c.chastity)
+        return "c"; //chastity
+    if (cl.c.cock === 5)
+        return "v"; //vagina
+    if (gender.isCockTooSmallForSex())
+        return "t"; //tiny
+    return "d"; //dick
+};
 
 gender.pronoun = function (ptype) {
     switch (ptype) {

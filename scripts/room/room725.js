@@ -53,6 +53,7 @@ room725.btnclick = function (name) {
             else {
                 gv.mod("money", -4);
                 g.internal = "beer";
+                gv.mod("bladder", .3);
                 char.addtime(20);
                 levels.mod("beer", 15, 999);
                 chat(1000, 725);
@@ -65,6 +66,7 @@ room725.btnclick = function (name) {
             else {
                 gv.mod("money", -7);
                 g.internal = "whisky and soda";
+                gv.mod("bladder", .3);
                 char.addtime(20);
                 levels.mod("beer", 15, 999);
                 chat(1000, 725);
@@ -77,6 +79,7 @@ room725.btnclick = function (name) {
             else {
                 gv.mod("money", -10);
                 levels.mod("xdress", 2, 999);
+                gv.mod("bladder", .3);
                 g.internal = "Strawberry Daiquiri ";
                 char.addtime(20);
                 levels.mod("beer", 15, 999);
@@ -90,6 +93,7 @@ room725.btnclick = function (name) {
             else {
                 gv.mod("money", -15);
                 levels.mod("xdress", 4, 999);
+                gv.mod("bladder", .3);
                 g.internal = "Pink Barbie Cocktail ";
                 char.addtime(20);
                 levels.mod("beer", 15, 999);
@@ -224,7 +228,7 @@ room725.chatcatch = function (callback) {
             levels.oralGive(3, false, false, "f");
             levels.fuckass("chloe", "f");
             levels.fuckpussy("!emily");
-            levels.mod("sissy", 25, 999);
+            levels.mod("xdress", 25, 999);
             char.addtime(185);
             char.room(0);
             break;

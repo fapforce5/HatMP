@@ -320,7 +320,7 @@ room206.chatcatch = function (callback) {
                 if (g.internal[7].b[0].a) {
                     chat(21, 206);
                     img = g.internal[7].b[0].t;
-                    levels.mod("int", 20, 1);
+                    levels.mod("pi", 20, 1);
                 }
                 else if (g.internal[7].b[1].a) {
                     chat(22, 206);

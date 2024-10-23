@@ -1134,7 +1134,7 @@ room555.chat = function (chatID) {
         {
             chatID: 58,
             speaker: "chad",
-            text: "You're welcome for the cum loser. Now you should make yourself usefule and " +
+            text: "You're welcome for the cum loser. Now you should make yourself useful and " +
                 "suck some dick at the bus station whore. ",
             button: [
                 { chatID: -1, text: "I am a dirty dirty whore", callback: "squatEnd" },

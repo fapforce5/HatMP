@@ -291,6 +291,7 @@ room28.main = function () {
 };
 
 room28.future = function () {
+    let i;
     for (i = 0; i < future.st.length; i++) {
         future.st[i].daysleft--;
         if (future.st[i].daysleft < 1) {

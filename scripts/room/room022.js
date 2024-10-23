@@ -17,6 +17,9 @@ room22.main = function () {
         case 503:
             nav.bg("22_toilet/a_503.jpg");
             break;
+        case 527:
+            nav.bg("22_toilet/a_527.jpg");
+            break;
         case 727:
             nav.bg("22_toilet/a_727.jpg");
             break;
@@ -178,6 +181,9 @@ room22.btnclick = function (name) {
                     break;
                 case 503:
                     nav.bg("22_toilet/s_503.jpg");
+                    break;
+                case 527:
+                    nav.bg("22_toilet/s_527.jpg");
                     break;
                 case 727:
                     nav.bg("22_toilet/s_727.jpg");

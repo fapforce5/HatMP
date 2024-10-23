@@ -110,7 +110,7 @@ room203.chatcatch = function (callback) {
                         if ((cl.hasClothing("shirt", "s") && cl.hasClothing("pants", "s") &&
                             cl.hasClothing("socks", "b") && cl.hasClothing("shoes", "d")) ||
                             gv.get("money") > 245) {
-                            levels.mod("int", -10, 999);
+                            levels.mod("pi", -10, 999);
                             chat(9, 203);
                         }
                         else {
@@ -118,7 +118,7 @@ room203.chatcatch = function (callback) {
                         }
                     }
                     else {
-                        levels.mod("int", -10, 999);
+                        levels.mod("pi", -10, 999);
                         chat(9, 203);
                     }
                 }
@@ -136,7 +136,7 @@ room203.chatcatch = function (callback) {
                     }
                 }
                 else {
-                    levels.mod("int", -10, 999);
+                    levels.mod("pi", -10, 999);
                     chat(24, 203);
                 }
             }
@@ -156,7 +156,7 @@ room203.chatcatch = function (callback) {
                     }
                 }
                 else {
-                    levels.mod("int", -10, 999);
+                    levels.mod("pi", -10, 999);
                     chat(24, 203);
                 }
             }

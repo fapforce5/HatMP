@@ -377,7 +377,7 @@ room171.btnclick = function (name) {
                         depositCum = false;
                         break;
                 }
-                levels.mod("sissy", 25, 999);
+                levels.mod("xdress", 25, 999);
                 gv.mod("energy", -25);
 
                 if (depositCum && g.internal.i < 15) {

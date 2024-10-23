@@ -294,6 +294,10 @@ room450.chatcatch = function(callback){
         case "leavePark":
             char.room(0);
             break;
+        case "leaveAddTime":
+            char.addMinutes(120);
+            char.room(0);
+            break;
         case "cop2x":
             nav.killbutton("cop");
             nav.button({
@@ -439,7 +443,7 @@ room450.chatcatch = function(callback){
             sc.completeMissionTask("lola", "date", 2);
             daily.set("lola");
             char.addtime(120);
-            char.room(450);
+            char.room(0);
             break;
         case "lolax1":
             gv.mod("arousal", 100);
@@ -873,7 +877,7 @@ room450.chat = function(chatID){
             text: "Oh. yeah. Thanks. I did try to make a nice picnic basket. Lets just enjoy the " +
                 "food and nature. ",
             button: [
-                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "reset" }
+                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "leaveAddTime" }
             ]
         },
         {
@@ -898,7 +902,7 @@ room450.chat = function(chatID){
             speaker: "me",
             text: "That was fun, now lets just enjoy the food and nature. ",
             button: [
-                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "reset" }
+                { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "leaveAddTime" }
             ]
         },
         {
@@ -906,7 +910,7 @@ room450.chat = function(chatID){
             speaker: "lola",
             text: "We shouldn't do this. Lets just enjoy the food and nature.  ",
             button: [
-                { chatID: -1, text: "Yum! [Neel level 4. Make small talk and finish the date]", callback: "reset" }
+                { chatID: -1, text: "Yum! [Neel level 4. Make small talk and finish the date]", callback: "leaveAddTime" }
             ]
         },
         {
@@ -923,7 +927,7 @@ room450.chat = function(chatID){
             speaker: "lola",
             text: "We shouldn't do this. Lets just enjoy the food and nature.  ",
             button: [
-                { chatID: -1, text: "Yum! [Neel level 5. Make small talk and finish the date]", callback: "reset" }
+                { chatID: -1, text: "Yum! [Neel level 5. Make small talk and finish the date]", callback: "leaveAddTime" }
             ]
         },
         {

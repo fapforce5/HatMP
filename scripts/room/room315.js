@@ -38,6 +38,12 @@ room315.btnclick = function (name) {
             if (vacation.inProgress) {
                 char.room(316);
             }
+            else if (g.gethourdecimal() > 22 || g.gethourdecimal() < 6) {
+                if (inv.has("lockpick"))
+                    chat(15, 315);
+                else
+                    chat(3, 315);
+            }
             else if (sc.getMission("janice", "breakup").inProgress) {
                 nav.killall();
                 nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg");
@@ -120,6 +126,12 @@ room315.btnclick = function (name) {
                 }
             }
             break;
+        case "picked":
+            chat(17, 315);
+            break;
+        case "notpicked":
+            chat(16, 315);
+            break;
         default:
             break;
     }
@@ -147,6 +159,13 @@ room315.chatcatch = function (callback) {
             break;
         case "waitTask3":
             char.settime(19, 0);
+            char.room(316);
+            break;
+        case "picklock":
+            lockpick.init(2, "picked", "notpicked", 30, 315);
+            break;
+        case "picked":
+            g.pass = "picked_316";
             char.room(316);
             break;
         default:
@@ -282,6 +301,31 @@ room315.chat = function (chatID) {
             text: "Stop stalking me! We broke up! ",
             button: [
                 { chatID: -1, text: "sigh.. ok ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "thinking",
+            text: "It's too late to knock on her door. She's probably asleep. ",
+            button: [
+                { chatID: -1, text: "Try to pick her lock", callback: "picklock" },
+                { chatID: -1, text: "Leave her alone. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "Damn! Didn't get in ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "Sweet! I'm just going to sneak into her house late at night.",
+            button: [
+                { chatID: -1, text: "...", callback: "picked" },
             ]
         },
     ];

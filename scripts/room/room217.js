@@ -346,7 +346,7 @@ room217.chat = function (chatID) {
             text: "You are deserving of a proper punishment. Report to " + sc.n("black") +
                 " in the Black room immediately. ",
             button: [
-                { chatID: 25, text: "Yes ma'am", callback: "black" },
+                { chatID: -1, text: "Yes ma'am", callback: "black" },
             ]
         },
     ];

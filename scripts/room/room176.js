@@ -218,17 +218,17 @@ room176.chatcatch = function (callback) {
             break;
         case "oral21x":
             nav.bg("205_chastity/chast0_9_bad.jpg");
-            var lolaSecret = sc.getSecret("lola");
-            var evaSecret = sc.getSecret("eva");
-            if (lolaSecret > 99 || evaSecret > 99)
+            var lolaSecret = sc.getSecret("lola").secretOut;
+            var evaSecret = sc.getSecret("eva").secretOut;
+            if (lolaSecret || evaSecret)
                 chat(39, 176);
             else {
                 sc.modSecret("lola", 75);
                 sc.modSecret("eva", 75);
 
-                lolaSecret = sc.getSecret("lola");
-                evaSecret = sc.getSecret("eva");
-                if (lolaSecret > 99 || evaSecret > 99)
+                lolaSecret = sc.getSecret("lola").secretOut;
+                evaSecret = sc.getSecret("eva").secretOut;
+                if (lolaSecret || evaSecret)
                     chat(40, 176);
                 else
                     chat(41, 176);

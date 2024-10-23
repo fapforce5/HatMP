@@ -1441,7 +1441,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "zoey",
-                text: "Chloé!!! I'm not checking out " + sc.n("me") + "'s Une coucougnettes!",
+                text: "Chloé!!! I'm not checking out " + sc.n("me") + "'s coucougnettes!",
                 button: [
                     { chatID: 61, text: "...", callback: "" }
                 ]
@@ -1642,7 +1642,7 @@ room501.chat = function (chatID) {
                     "Nous n'aurons jamais de relations sexuelles! You are a pute infidèle! I " +
                     "am so so so angry right now, I can not even think in english! I am going to " +
                     "foot butt you so hard! " + sc.n("me") + " wait in my living room. This " +
-                    "will not take long. " + sc.n("chloe") + ", je vais te donner le fond de ma pensée!",
+                    "will not take long. " + sc.n("chloe") + ", je vais te faire savoir!",
                 button: [
                     { chatID: 84, text: "oh sure [Go wait in the living room]", callback: "cheating6" },
                 ]

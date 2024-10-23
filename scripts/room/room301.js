@@ -874,7 +874,7 @@ room301.chatcatch = function (callback) {
             break;
         case "gf_4_end":
             sc.completeMissionTask("envy", "gf", 4);
-            levels.mod("envy", 50, 1);
+            sc.modLevel("envy", 50, 1);
             daily.set("envy");
             inv.use("vib");
             char.room(0);
@@ -2227,7 +2227,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 138,
                 speaker: "envy",
-                text: "Oh thank god! I need you right now! I treid using that vibrator, I put it " +
+                text: "Oh thank god! I need you right now! I tried using that vibrator, I put it " +
                     "in my panties, but it just didn't do anything. My fingers are so sore from " +
                     "masturbating all the time. I need you to use your mouth and lick my clitoris " +
                     "right the fuck now before I lose my mind! ",

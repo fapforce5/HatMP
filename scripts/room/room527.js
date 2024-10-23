@@ -37,6 +37,10 @@ room527.btnclick = function (name) {
                 chat(5, 527);
             }
             break;
+        case "toilet":
+            g.pass = 527;
+            char.room(22);
+            break;
         case "sink":
             g.pass = 527;
             char.room(27);

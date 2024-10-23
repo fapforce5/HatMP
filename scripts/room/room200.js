@@ -673,8 +673,9 @@ room200.chat = function (chatID) {
             {
                 chatID: 17,
                 speaker: "missy",
-                text: "Good. Don't fuck around.  " +
-                    "refer to it when you're searching for her. ",
+                text: "Good. Don't fuck around. Just call me when you find her. " +
+                    "Don't try to do anything stupid and don't try to get in her " +
+                    "panties. Got it? ",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "case_lostgirl2" }
                 ]

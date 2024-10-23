@@ -2,16 +2,7 @@
 var room750 = {};
 room750.main = function () {
     if (g.isNight()) {
-        nav.button({
-            "type": "btn",
-            "name": "whoretent",
-            "left": 969,
-            "top": 443,
-            "width": 234,
-            "height": 139,
-            "image": "750_homeless/whore.png",
-            "night": "750_homeless/whoreNight.png"
-        }, 750);
+        
         //if (sc.getstep("doc") < 3) {
         //    nav.button({
         //        "type": "btn",
@@ -35,6 +26,16 @@ room750.main = function () {
     //        "image": "750_homeless/dale.png"
     //    }, 750);
     //}
+    nav.button({
+        "type": "btn",
+        "name": "whoretent",
+        "left": 969,
+        "top": 443,
+        "width": 234,
+        "height": 139,
+        "image": "750_homeless/whore.png",
+        "night": "750_homeless/whoreNight.png"
+    }, 750);
     nav.button({
         "type": "btn",
         "name": "crystal",
@@ -158,7 +159,7 @@ room750.chatcatch = function (callback) {
             levels.mod("charisma", 40, 999);
             break;
         case "int":
-            levels.mod("int", 40, 999);
+            levels.mod("pi", 40, 999);
             break;
         case "buy":
             g.pass = "dale";

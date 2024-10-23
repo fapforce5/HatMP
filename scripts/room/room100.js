@@ -14,7 +14,7 @@ room100.main = function () {
             if (gv.get("energy") < 60)
                 navList = [101, 0];
             else
-                navList = [103, 101, 0];
+                navList = [101, 0];
             btnList.push({
                 "type": "btn",
                 "name": "job",
@@ -83,6 +83,9 @@ room100.btnclick = function (name) {
             else if (!(cl.c.pants === "j" && (cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w"))) {
                 chat(2, 100);
             }
+            else if (missy.activecase().name === "apply") {
+                chat(5, 100);
+            }
             else
                 char.room(103);
             break;
@@ -135,6 +138,13 @@ room100.chat = function(chatID){
             speaker: "thinking",
             text: "I'm still working on this. Here's two girls in a rainstorm of cum. ",
             button: [{ chatID: -1, text: "[ok]", callback: "leave" }]
+        },
+        {
+            chatID: 5,
+            speaker: "thinking",
+            text: "I shouldn't go back here until I see what that Missy lady has. " +
+                "I should get a PI license and go her purple building in the city. ",
+            button: [{ chatID: -1, text: "...", callback: "leave" }]
         }
     ];
     return cArray[chatID];

@@ -12,6 +12,11 @@ room211.main = function () {
         nav.bg("211_meeting/postTest.jpg");
         chat(25, 211);
     }
+    else if (sissy.st[15].ach && !daily.get("pills")) {
+        daily.set("pills");
+        nav.bg("211_meeting/pills.jpg");
+        chat(30, 211);
+    }
     else if (sissy.st[19].ach && philbert < 0) {
         sc.startMission("philbert", "bully");
         sc.completeMissionTask("philbert", "bully", 0, true);
@@ -384,6 +389,10 @@ room211.chatcatch = function (callback) {
             g.pass = "moveitMoveIt";
             char.room(174);
             break;
+        case "pills":
+            inv.addMulti("hormone", 2);
+            char.room(211);
+            break;
         default:
             break;
     }
@@ -717,6 +726,14 @@ room211.chat = function (chatID) {
                     "to grow in. ",
                 button: [
                     { chatID: -1, text: "Me too.", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "martha",
+                text: "Now ladies, it's time to receive your pills. ",
+                button: [
+                    { chatID: -1, text: "Thank you [Get your 2 sissy hormone pills]", callback: "pills" },
                 ]
             },
         ];

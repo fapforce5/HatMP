@@ -78,7 +78,7 @@ gv.init = function () {
 
         //jobs
         { n: "jobapplynurse", t: 0, q: "int" },
-        { n: "jobapplyconst", t: 0, q: "int" },
+        { n: "jobapplyconst", t: 0, q: "hundred" },
         { n: "jobapplybeaver", t: 0, q: "int" },
 
         //landlord
@@ -251,7 +251,8 @@ gv.init = function () {
         { n: "orchid", t: false },
         { n: "zoeypiss", t: false },
         { n: "evaDrunk", t: false },
-        { n: "lolaDrunk", t: false }
+        { n: "lolaDrunk", t: false },
+        { n: "pills", t: false },
     ];
 
     weekly.st = [
@@ -260,32 +261,32 @@ gv.init = function () {
     ];
 
     levels.st = [
-        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 4, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true }, //how likely you are to get raped
+        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true, m: 7 },
+        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true, m: 4 },
+        { id: 4, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true, m: 8 },
+        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, m: 4 },
+        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, m: 6 }, //how likely you are to get raped
 
-        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 14, n: "notused", d: "Not used", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 15, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true },
-        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
+        { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
+        { id: 14, n: "notused", d: "Not used", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 15, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, m: 999 },
+        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
 
-        { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true },
-        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: true },
+        { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
+        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true, m: 2 },
+        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true, m: 4 },
+        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
 
     ];
 
@@ -658,68 +659,80 @@ gv.clearButtCum = function () {
 
 levels.mod = function (name, amount, targetLevel = 999) {
     var actualAmount = 0;
-    var i, j, fitnessStart;
+    let i, j, fitnessStart;
     fitnessStart = null;
     if (name === "fitness") {
         fitnessStart = levels.get("fitness").l;
     }
-    for (i = 0; i < levels.st.length; i++) {
-        if (levels.st[i].n === name) {
-            if (levels.st[i].c === null || isNaN(levels.st[i].c))
-                levels.st[i].c = 0;
-
-            if (amount > 0) {
-                if (levels.st[i].l <= targetLevel)
-                    actualAmount = amount;
-                else {
-                    if (levels.st[i].l <= targetLevel + 1)
-                        actualAmount = Math.floor(amount / 3) + 1; 
-                    else if (levels.st[i].l <= targetLevel + 2)
-                        actualAmount = 1;
-                }
-
-                var additionalLevels = Math.floor(actualAmount / 100);
-                var addedLevels = 0;
-                var remainderPoints = actualAmount % 100;
-                levels.st[i].c += remainderPoints;
-
-                if (additionalLevels > 0) {
-                    for (j = 0; j < additionalLevels; j++) { //i know. Shut up. this is easier
-                        if (levels.st[i].l < targetLevel) {
-                            levels.st[i].l++;
-                            addedLevels++;
-                        }
-                        else if (levels.st[i].l === targetLevel) {
-                            levels.st[i].l++;
-                            levels.st[i].c = 0;
-                            addedLevels++;
-                        }
-                    }
-                }
-
-                if (levels.st[i].c >= 100) {
-                    remainderPoints = levels.st[i].c % 100;
-                    levels.st[i].c = 0;
-                    levels.st[i].l++;
-                    addedLevels++;
-                    if (levels.st[i].l <= targetLevel)
-                        levels.st[i].c += remainderPoints;
-                }
-                
-                if (addedLevels > 0)
-                    g.popUpNotice("You gained " + addedLevels + " level(s) for: " + levels.st[i].d + "!");
-                else
-                    g.popUpNotice(levels.st[i].d + " points have increased by " + actualAmount + "! ");
-
-            }
-            else if (amount < 0) {
-                levels.st[i].c -= amount;
-                if (levels.st[i].c < 0)
-                    levels.st[i].c = 0;
-                g.popUpNotice(levels.st[i].d + " points have decreased. ");
-            }
+    for (j = 0; j < levels.st.length; j++) {
+        if (levels.st[j].n === name) {
+            i = j;
+            break;
         }
     }
+    if (levels.st[i].c === null || isNaN(levels.st[i].c))
+        levels.st[i].c = 0;
+
+    
+
+    if (amount > 0) {
+        if (levels.st[i].l > levels.st[i].m) {
+            let levelsOver = levels.st[i].m - levels.st[i].l;
+            amount = Math.round(amount / (levelsOver / 4));
+            if (amount < 1)
+                amount = 1;
+        }
+
+        if (levels.st[i].l <= targetLevel)
+            actualAmount = amount;
+        else {
+            if (levels.st[i].l <= targetLevel + 1)
+                actualAmount = Math.floor(amount / 3) + 1;
+            else if (levels.st[i].l <= targetLevel + 2)
+                actualAmount = 1;
+        }
+
+        var additionalLevels = Math.floor(actualAmount / 100);
+        var addedLevels = 0;
+        var remainderPoints = actualAmount % 100;
+        levels.st[i].c += remainderPoints;
+
+        if (additionalLevels > 0) {
+            for (j = 0; j < additionalLevels; j++) { //i know. Shut up. this is easier
+                if (levels.st[i].l < targetLevel) {
+                    levels.st[i].l++;
+                    addedLevels++;
+                }
+                else if (levels.st[i].l === targetLevel) {
+                    levels.st[i].l++;
+                    levels.st[i].c = 0;
+                    addedLevels++;
+                }
+            }
+        }
+
+        if (levels.st[i].c >= 100) {
+            remainderPoints = levels.st[i].c % 100;
+            levels.st[i].c = 0;
+            levels.st[i].l++;
+            addedLevels++;
+            if (levels.st[i].l <= targetLevel)
+                levels.st[i].c += remainderPoints;
+        }
+
+        if (addedLevels > 0)
+            g.popUpNotice("You gained " + addedLevels + " level(s) for: " + levels.st[i].d + "!");
+        else
+            g.popUpNotice(levels.st[i].d + " points have increased by " + actualAmount + "! ");
+
+    }
+    else if (amount < 0) {
+        levels.st[i].c -= amount;
+        if (levels.st[i].c < 0)
+            levels.st[i].c = 0;
+        g.popUpNotice(levels.st[i].d + " points have decreased. ");
+    }
+
     if (fitnessStart !== null) {
         var fitnessEnd = levels.get("fitness").l;
         if (fitnessStart !== fitnessEnd)
@@ -975,6 +988,14 @@ levels.getBlowJob = function (who, gender) {
 };
 
 levels.anal = function (size, sissygasm = false, gender = null, creampie = false, beast = null) {
+    //0: 1 finger
+    //1: tiny (finger)
+    //2: small
+    //3: regular (dick)
+    //4: large (large dick)
+    //5: huge
+    //6: giant
+    //7: ludicris
     switch (levels.analTake(size).n) {
         case "noop":
             //do nothing;

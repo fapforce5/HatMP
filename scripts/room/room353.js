@@ -383,7 +383,7 @@ room353.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "me",
-                text: "It's so hot and stuffy in here. I'm dieing. Also these wrist straps are the worst! I can't " +
+                text: "It's so hot and stuffy in here. I'm dying. Also these wrist straps are the worst! I can't " +
                     "even move my hands. What if I have to go to the bathroom? ",
                 button: [
                     { chatID: 7, text: "...", callback: "" }

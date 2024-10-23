@@ -216,8 +216,8 @@ room172.chatcatch = function (callback) {
             levels.anal(4, true, "m", true);
             break;
         case "complete":
-            levels.mod("sissy", 47, 999);
-            levels.mod("sub", 62, 999);
+            levels.mod("xdress", 30, 999);
+            levels.mod("sub", 45, 999);
             cl.c.chastity = g.pass;
             cl.display();
             char.addtime(238);

@@ -88,7 +88,7 @@ room214.btnclick = function (name) {
         case "gw4":
             nav.killall();
             nav.bg("214_pinkgame/gw1.jpg");
-            levels.mod("sissy", 20, 999);
+            levels.mod("xdress", 20, 999);
             gv.mod("energy", -25);
             levels.mod("fame", 20, 999);
             gv.mod("pink", 1);
@@ -138,7 +138,7 @@ room214.chatcatch = function (callback) {
             break;
         case "groupEnd":
             levels.mod("fame", 75, 999);
-            levels.mod("sissy", 40, 999);
+            levels.mod("xdress", 40, 999);
             gv.mod("pink", 1);
             levels.anal(3, true, "m", true);
             gv.mod("energy", -33);

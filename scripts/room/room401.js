@@ -130,10 +130,10 @@ room401.main = function () {
             break;
         case "fuckMyDirtyAssholeHard":
             nav.bg("650_toyStore/650_front.jpg", "650_toyStore/650_front.jpg");
-            room401.makeClothing("chastity", "m");
-            room401.makeClothing("chastity", "f");
+            //room401.makeClothing("chastity", "m");
+            //room401.makeClothing("chastity", "f");
             room401.makeClothing("buttplug", "f");
-            room401.makeInv(["d"], g.sissy[59].ach);
+            room401.makeInv(["d"], qdress.st[2].ach);
             room401.makeInv(["c"], true, 1);
             room401.makeInv(["q"], gv.get("milk") > -1, 1);
             navList = [650, 0];
@@ -323,11 +323,12 @@ room401.main = function () {
 
 room401.makeClothing = function (type, sex) {
     var i, lewdlevel, canbuy, inInv;
-    var sissyLevel = levels.get("xdress").l;
-    if (sissyLevel > 6)
+    if (qdress.st[8].ach)
         lewdlevel = [0, 1, 2, 3, 4];
-    else if (sissyLevel > 4)
+    else if (qdress.st[7])
         lewdlevel = [0, 1, 2, 3];
+    else if (qdress.st[3].ach)
+        lewdlevel[0, 1, 2];
     else
         lewdlevel = [0];
 
@@ -335,7 +336,7 @@ room401.makeClothing = function (type, sex) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
             canbuy = lewdlevel.includes(cl.list[i].daring);
             if (cl.list[i].type === "buttplug")
-                canbuy = g.sissy[59].ach;
+                canbuy = qdress.st[2].ach;
             inInv = cl.list[i].inv;
             if (!canbuy || inInv)
                 $('#menu-bg_' + g.internal).html('<img src="./images/room/8_wardrobe/icons/' + cl.list[i].img + '" title="' + type + '"/>');
