@@ -50,6 +50,7 @@ room527.btnclick = function (name) {
                 chat(13, 527);
             }
             else {
+                char.addtime(60);
                 var zoeyPee = false;
                 var wpee = false;
                 var selectPee = g.rand(0, 4);
@@ -76,60 +77,6 @@ room527.btnclick = function (name) {
                     g.popUpNotice("An hour passed");
                 }
             }
-            //else if (g.rand(0, 4) === 0) {
-            //    else if (app > 2) {
-            //        var thisr = Math.floor(Math.random() * 10);
-            //        if (app > thisr) {
-            //            if (Math.floor(Math.random() * 2) === 0) {
-            //                if (sc.getLevel("zoey") > 5) {
-            //                    g.roomTimeout = setTimeout(function () {
-            //                        nav.button({
-            //                            "type": "img",
-            //                            "name": "trouble",
-            //                            "left": 744,
-            //                            "top": 0,
-            //                            "width": 722,
-            //                            "height": 1080,
-            //                            "image": "527_bathroom/zoey.png"
-            //                        }, 526);
-            //                        chat(6, 527);
-            //                    }, 500);
-            //                }
-            //                else {
-            //                    nav.killall();
-            //                    nav.bg("527_bathroom/zoey0.jpg");
-            //                    chat(0, 527);
-            //                }
-            //            }
-            //            else {
-            //                g.roomTimeout = setTimeout(function () {
-            //                    zcl.displayMain(100, 300, .15, "clothes", false);
-            //                    nav.button({
-            //                        "type": "btn",
-            //                        "name": "trouble",
-            //                        "left": 584,
-            //                        "top": 0,
-            //                        "width": 1195,
-            //                        "height": 1080,
-            //                        "image": "527_bathroom/trouble.png"
-            //                    }, 526);
-            //                    chat(4, 527);
-            //                }, 500);
-            //            }
-            //        }
-            //        else {
-            //            zcl.displayMain(100, 300, .15, "clothes", false);
-            //            chat(3, 527);
-            //        }
-            //    }
-            //    else {
-            //        char.addtime(60);
-            //        chat(2, 527);
-            //    }
-            //}
-            //else {
-            //    chat(1, 527);
-            //}
             break;
         case "zoey11":
             if (g.internal < 13)

@@ -258,7 +258,7 @@ room526.chatcatch = function (callback) {
             break;
         case "z1":
             nav.killall();
-            if (g.gethourdecimal > 17)
+            if (g.gethourdecimal() > 12)
                 char.addDays(1);
             char.settime(2, 15);
 

@@ -653,6 +653,7 @@ char.addMinutes = function (date, minutes) {
 
 char.addDays = function (days) {
     g.dt.setDate(g.dt.getDate() + days);
+    nav.buildclock();
 };
 
 menu.initBuild = function (type) {

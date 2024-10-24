@@ -123,7 +123,7 @@ room180.chatcatch = function (callback) {
             char.addtime(60);
             break;
         case "peeend":
-            levels.mod("pee", 100, 2);
+            levels.mod("piss", 100, 7);
             sissy.passclass(true);
             break;
         case "fem103_1":
