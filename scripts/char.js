@@ -352,19 +352,43 @@ char.nexttime = function (hour) {
 char.map = function () {
     var exRoom = [226, 227, 475];
     var i;
-    if (!(exRoom.includes(g.roomID))) {
-        var tm = gv.get("map");
-        var ttop = 100;
+    let c1, c2, c3, c4;
+    c1 = c2 = c3 = c4 = null;
+    let characterMap = false;
+
+    if (g.roomID < 50) {
         $('#room_left_map').html('');
-        for (i = 0; i < g.roomMap.length; i++) {
-            if (g.roomMap[i].map === tm) {
-                var newRatio = 45 / g.roomMap[i].height;
-                var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
-                dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
-                $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
-                $('#room_left_map').append(dayNight);
-                $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
-                ttop += 50;
+        c1 = sc.getTimeline("lola");
+        c2 = sc.getTimeline("eva");
+        c3 = sc.getTimeline("landlord");
+        c4 = sc.getTimeline("bigguy");
+    }
+    else if (g.roomID < 75 || (g.roomID > 649 || g.roomID < 675)){
+        c1 = sc.getTimeline("tiffany");
+        c2 = sc.getTimeline("candy");
+    }
+    else if (g.roomID > 499 && g.roomID < 550) {
+        c1 = sc.getTimeline("zoey");
+    }
+
+    if (false) {
+
+    }
+    else {
+        if (!(exRoom.includes(g.roomID))) {
+            var tm = gv.get("map");
+            var ttop = 100;
+            $('#room_left_map').html('');
+            for (i = 0; i < g.roomMap.length; i++) {
+                if (g.roomMap[i].map === tm) {
+                    var newRatio = 45 / g.roomMap[i].height;
+                    var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
+                    dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
+                    $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
+                    $('#room_left_map').append(dayNight);
+                    $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
+                    ttop += 50;
+                }
             }
         }
     }
@@ -1346,21 +1370,12 @@ menu.load = function (cookieName, btn, saveID) {
     }
 
     g.pastSaves = new Array();
-    //Remove later, unfound bug, maybe old save
-    //if (sc.getstep("missy") > 1)
-    //    g.roomMapAccess(203, true, true);
 };
 
 menu.saveDel = function (cookieName) {
-    //var saveID = btn.data('save');
-    //var cookieName = 'HatMP_' + saveID;
     if (localStorage.getItem(cookieName) !== null) 
         localStorage.removeItem(cookieName);
     return true;
-    //$('.menu-save[data-save=' + saveID + ']').text('SAVE').attr('data-type', 'save');
-
-    //$('.menu-save-line[data-save=' + saveID + ']').html("");
-    //$('.menu-del[data-save=' + saveID + ']').prop('disabled', true);
 };
 
 char.init = function() {

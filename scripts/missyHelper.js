@@ -243,13 +243,13 @@ missy.getcases = function () {
                         });
                         break;
                     case "case_shopping":
-                        if (sissyLevel > 3) {
-                            canDoCase = sissyLevel > 4;
+                        if (qdress.st[1].ach) {
+                            canDoCase = qdress.st[3].ach;
                             caseList.push({
                                 caseId: i,
                                 active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Keep wearing your panties and attend the sissy school. [Sissy Level 5]",
+                                notReadyTxt: "Find it in yourself to wear women's clothing. [Unlock Women's clothing in your dreams]",
                                 callback: missy.cases[i].name
                             });
                         }

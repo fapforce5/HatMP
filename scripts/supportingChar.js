@@ -217,7 +217,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "spermbank", mStatus: -1, title: "Helping at the Sperm Bank", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
+                missionName: "spermbank", mStatus: -1, title: "Sperm Bank [Side Quest]", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                         { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
@@ -1511,11 +1511,6 @@ sc.selectCancel = function (name, i) {
 };
 
 
-
-sc.zoey = function () {
-    return { roomID: g.roomID, thisRoom: true };
-
-};
 
 sc.tiffany = function () {
     return { roomID: g.roomID, thisRoom: true };
