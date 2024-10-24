@@ -68,7 +68,7 @@ room4.btnclick = function (name) {
             break;
         case "charisma2Win":
             sc.completeMissionTask("lola", "massage", g.internal.level, true);
-            sc.modLevel("lola", 999, g.internal.level);
+            sc.modLevel("lola", 100, 7);
             g.internal.level++;
             chat(7, 4);
             break;
@@ -162,7 +162,7 @@ room4.btnclick = function (name) {
             }
             break;
         case "charisma6Win":
-            sc.modLevel("lola", 999, 4);
+            sc.modLevel("lola", 100, 7);
             room4.btnclick("massage5_2");
             break;
         case "massage5_2":
@@ -191,7 +191,7 @@ room4.btnclick = function (name) {
             }, 2500);
             break;
         case "charisma4Win":
-            sc.modLevel("lola", 999, 3);
+            sc.modLevel("lola", 100, 7);
             room4.btnclick("massage4");
             break;
         case "charisma5Win":
@@ -324,7 +324,7 @@ room4.chatcatch = function (callback) {
                     sc.completeMissionTask("lola", "games", 0);
                 }
             }
-            sc.modLevel("lola", 38, g.internal.level);
+            sc.modLevel("lola", 51, 7);
             char.addtime(46);
             if (g.hourBetween(7, 21))
                 char.room(13);

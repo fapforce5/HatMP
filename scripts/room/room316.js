@@ -174,12 +174,15 @@ room316.main = function () {
         switch (sc.taskGetStep("janice", "cuck")) {
             case 0:
             case 1:
+                nav.bg("316_livingroom/bitch_0_0.jpg");
                 chat(125, 316);
                 break;
             case 2:
+                nav.bg("316_livingroom/bitch_0_0.jpg");
                 chat(131, 316);
                 break;
             case 3:
+                nav.bg("316_livingroom/bitch_0_0.jpg");
                 chat(133, 316);
                 break;
         }
@@ -211,6 +214,7 @@ room316.main = function () {
                 break;
             case 1:
             case 2:
+                nav.bg("316_livingroom/bitch_0_0.jpg");
                 room316.btnclick("buildMenu");
                 break;
         }
@@ -769,9 +773,11 @@ room316.chatcatch = function (callback) {
             break;
         case "checkDogPantiesUndo":
             cl.undo();
-            nav.bg("316_livingroom/bj.jpg");
+            nav.bg("316_livingroom/bg.jpg");
             break;
         case "checkPanties":
+            nav.bg("316_livingroom/bitch_0_0.jpg");
+            
             if (cl.hasClothing("panties", "j")) {
                 sc.modSecret("janice", 100);
                 chat(107, 316);
@@ -869,7 +875,6 @@ room316.chatcatch = function (callback) {
             char.room(0);
             break;
         case "bedroom":
-            cl.nude();
             nav.killall();
             nav.bg("316_livingroom/bg.jpg");
             nav.buildnav([318]);
@@ -1873,7 +1878,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: sc.n("dog") + "!!! What are you doing!?!",
                 button: [
-                    { chatID: -1, text: "aaaakk!!", callback: "checkDogPanties" },
+                    { chatID: 105, text: "aaaakk!!", callback: "checkDogPanties" },
                 ]
             },
             {

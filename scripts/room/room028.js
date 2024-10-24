@@ -12,7 +12,7 @@ room28.main = function () {
     missy.daily();
     var i;
     var hormoneLevel, thisTinyPP;
-    
+    cl.c.cumface = false;
 
     menu.save("HatMP_9", true);
     if (g.dt.getHours() > 6)
@@ -324,7 +324,7 @@ room28.dreams = function () {
         getFirstDream = dreams.st[0];
         dreams.st.splice(0, 1);
     }
-    if (g.dt.getDay() === 6 && sc.getMission("landlord", "spermbank").inProgress) {
+    if (g.dt.getDay() === 6 && sc.getMissionTask("landlord", "talk", 1).complete) {
         nav.bg("28_transformation/dream_spermbank.jpg");
     }
     else if (getFirstDream !== null) {

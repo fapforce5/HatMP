@@ -61,6 +61,7 @@ room318.main = function () {
     else if (sc.getMission("janice", "cuck").inProgress) {
         switch (sc.taskGetStep("janice", "cuck")) {
             case 2:
+                cl.nude();
                 sc.completeMissionTask("janice", "cuck", 2);
                 nav.bg("318_janiceBedroom/b2_0.jpg");
                 g.internal = { gender: gender.pronoun("f"), step: 7 };

@@ -41,7 +41,10 @@ room203.btnclick = function (name) {
         case "recep":
             nav.kill("recep");
             nav.bg("203_entrance/203_frontDeskCloseup.jpg");
-            if (g.gethourdecimal() > 10) {
+            if (gv.get("jobapplyconst") < 100) {
+                chat(28, 203);
+            }
+            else if (g.gethourdecimal() > 10) {
                 chat(6, 203);
             }
             else if (missy.activecase().name === "apply") {
@@ -532,6 +535,14 @@ room203.chat = function (chatID) {
                     "find oneself's true calling",
                 button: [
                     { chatID: -1, text: "Thanks!", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "cecilia",
+                text: "Missy's PI, can I help you. ",
+                button: [
+                    { chatID: -1, text: "Oh, no. I should be going. ", callback: "leave" }
                 ]
             },
         ];

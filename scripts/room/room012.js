@@ -509,7 +509,7 @@ room12.chatcatch = function (callback) {
             char.room(11);
             break;
         case "badleave":
-            sc.modLevel("lola", -15, 999);
+            sc.modLevel("lola", 15, 7);
             char.room(11);
             break;
         default:

@@ -341,7 +341,7 @@ room13.btnclick = function (name) {
                 chat(45, 13)
             }
             else if (!g.isNight()) {
-                chat(44, 13);
+                chat(106, 13);
             }
             else {
                 char.room(23);
@@ -884,11 +884,10 @@ room13.btnclick = function (name) {
                         chat(67, 13);
                     break;
                 default:
-                    chat(99999, 13);
-                    //sc.select("datePark", "13_sisterRoom/icon_pdPark.png", 0);
-                    //sc.select("dateFair", "13_sisterRoom/icon_pdCarnival.png", 1);
-                    //sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2)
-                    //sc.selectCancel("dateCancel", 3);
+                    sc.select("datePark", "13_sisterRoom/icon_pdPark.png", 0);
+                    sc.select("dateFair", "13_sisterRoom/icon_pdCarnival.png", 1);
+                    sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2)
+                    sc.selectCancel("dateCancel", 3);
                     break;
             }
             break;
@@ -907,8 +906,10 @@ room13.btnclick = function (name) {
             nav.killbutton("dateCancel");
             if (sc.getLevel("lola") < 7)
                 chat(68, 13);
-            else
+            else {
+                nav.killbutton("eva");
                 chat(69, 13);
+            }
             break;
         case "date":
             nav.bg("13_sisterRoom/date" + g.internal + ".jpg");
@@ -1116,6 +1117,7 @@ room13.chatcatch = function (callback) {
                 nav.next("evaLick2");
                 break;
             case "endEvaSleepEvent":
+                cl.doCum();
                 char.room(11);
                 break;
             case "leaveMad":
@@ -1237,6 +1239,14 @@ room13.chatcatch = function (callback) {
             case "dateFail":
                 sc.completeMission("lola", "date", false);
                 char.room(10);
+                break;
+            case "room23":
+                char.settime(20, 0);
+                char.room(23);
+                break;
+            case "room24":
+                char.settime(20, 0);
+                char.room(24);
                 break;
             default: break;
         }
@@ -1640,7 +1650,8 @@ room13.chat = function (chatID) {
                 text: "It's too early in the day for wine. I still have so much to do and I don't " +
                     "want to ruin optimal study hours drinking wine.",
                 button: [
-                    { chatID: -1, text: "Ok. I'll come back after dark.  ", callback: "" },
+                    { chatID: -1, text: "Wiat till dark and play. ", callback: "room24" },
+                    { chatID: -1, text: "Ok. I'll come back after dark.  ", callback: "" }
                 ]
             },
             {
@@ -1905,7 +1916,7 @@ room13.chat = function (chatID) {
                     "years. There is nothing I want more than to be in this room right now " +
                     "with you. You are all I think about. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "date1" },
+                    { chatID: 74, text: "...", callback: "date1" },
                 ]
             },
             {
@@ -2206,6 +2217,16 @@ room13.chat = function (chatID) {
                     "with that. I just don't know if I can do this. I've got to go see some friends. ",
                 button: [
                     { chatID: -1, text: "...ok", callback: "dateFail" },
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "lola",
+                text: "It's too early in the day for games. I still have so much to do and I don't " +
+                    "want to ruin optimal study hours drinking wine.",
+                button: [
+                    { chatID: -1, text: "Wiat till dark and play. ", callback: "room23" },
+                    { chatID: -1, text: "Ok. I'll come back after dark.  ", callback: "" }
                 ]
             },
         ];

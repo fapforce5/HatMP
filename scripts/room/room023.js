@@ -3,20 +3,16 @@ var room23 = {};
 
 room23.main = function () {
     room23.buildInternal();
-    sc.modLevel("eva", 9999, 9999);
-    sc.modLevel("lola", 9999, 9999);
-    //room23.chatcatch("mestrip");//set myphase
 
     room23.drawLola("talk");
     room23.drawEva("sit");
-    //if (sc.getMissionTask("eva", "games", 2).notStarted) {
-    //    sc.completeMissionTask("eva", "games", 2);
-    //    sc.completeMissionTask("lola", "games", 2);
-    //    chat(0, 23);
-    //}
-    //else {
-    //    chat(38, 23);
-    //}
+    if (sc.getMissionTask("eva", "games", 2).notStarted) {
+        sc.completeMissionTask("eva", "games", 2);
+        sc.completeMissionTask("lola", "games", 2);
+    }
+    else {
+        chat(38, 23);
+    }
 };
 
 room23.nextTurn = function () {
@@ -366,17 +362,21 @@ room23.btnclick = function (name) {
             chat(128, 23); 
             break;
         case "eva":
+            sc.modLevel("eva", 10, 6);
             g.internal.whoTurn = "me";
             g.internal.nextTurn = "eva";
             room23.drawEva("evasit");
             room23.drawLola("sit");
+            nav.killbutton("quitGame");
             chat(3, 23);
             break;
         case "lola":
+            sc.modLevel("lola", 10, 6);
             g.internal.whoTurn = "me";
             g.internal.nextTurn = "lola";
             room23.drawEva("evasit");
             room23.drawLola("sit");
+            nav.killbutton("quitGame");
             chat(3, 23);
             break;
         case "t_0":
@@ -439,7 +439,7 @@ room23.btnclick = function (name) {
             if (g.internal.reuseCounter === 0) {
                 nav.bg("24_spinTheBottle/melickbutthole.jpg");
                 nav.button({
-                    "type": "btn",
+                    "type": "tongue",
                     "name": "melickbutthole",
                     "left": 987,
                     "top": 428,
@@ -802,7 +802,7 @@ room23.chatcatch = function (callback) {
             //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareTopless":
-            if (sc.getLevel(g.internal.nextTurn) > 3) {
+            if (sc.getLevel(g.internal.nextTurn) >= 3) {
                 g.internal.gamephase = 1;
                 if (g.internal.nextTurn === "lola") {
                     g.internal.lolaphase = 1;
@@ -816,6 +816,7 @@ room23.chatcatch = function (callback) {
                 }
             }
             else {
+                g.internal.levelDisplay = 3;
                 if (g.internal.nextTurn === "lola")
                     chat(44, 23);
                 else
@@ -823,7 +824,7 @@ room23.chatcatch = function (callback) {
             }
             break;
         case "dareTopless2":
-            if (sc.getLevel(g.internal.nextTurn) > 4) {
+            if (sc.getLevel(g.internal.nextTurn) >= 4) {
                 g.internal.gamephase = 2;
                 if (g.internal.nextTurn === "lola") {
                     g.internal.lolaphase = 2;
@@ -837,6 +838,7 @@ room23.chatcatch = function (callback) {
                 }
             }
             else {
+                g.internal.levelDisplay = 4;
                 if (g.internal.nextTurn === "lola")
                     chat(44, 23);
                 else
@@ -947,35 +949,45 @@ room23.chatcatch = function (callback) {
             chat(62, 23);
             break;
         case "darePantiesOff":
-            g.internal.gamephase = 3;
-            if (g.internal.nextTurn === "eva") {
-                nav.killbutton("eva");
-                g.internal.evaphase = 3;
-                nav.button({
-                    "type": "img",
-                    "name": "eva",
-                    "left": 720,
-                    "top": 0,
-                    "width": 316,
-                    "height": 1080,
-                    "image": "24_spinTheBottle/013_evaRemovePanties.png"
-                }, 23);
-                chat(64, 23);
+            if (sc.getLevel(g.internal.nextTurn) >= 5) {
+                g.internal.gamephase = 3;
+                if (g.internal.nextTurn === "eva") {
+                    nav.killbutton("eva");
+                    g.internal.evaphase = 3;
+                    nav.button({
+                        "type": "img",
+                        "name": "eva",
+                        "left": 720,
+                        "top": 0,
+                        "width": 316,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/013_evaRemovePanties.png"
+                    }, 23);
+                    chat(64, 23);
+                }
+                else {
+                    nav.killbutton("lola");
+                    g.internal.lolaphase = 3;
+                    nav.button({
+                        "type": "img",
+                        "name": "lola",
+                        "left": 1392,
+                        "top": 0,
+                        "width": 316,
+                        "height": 1080,
+                        "image": "24_spinTheBottle/013_lolaRemovePanties.png"
+                    }, 23);
+                    chat(65, 23);
+                }
             }
             else {
-                nav.killbutton("lola");
-                g.internal.lolaphase = 3;
-                nav.button({
-                    "type": "img",
-                    "name": "lola",
-                    "left": 1392,
-                    "top": 0,
-                    "width": 316,
-                    "height": 1080,
-                    "image": "24_spinTheBottle/013_lolaRemovePanties.png"
-                }, 23);
-                chat(65, 23);
+                g.internal.levelDisplay = 5;
+                if (g.internal.nextTurn === "lola")
+                    chat(44, 23);
+                else
+                    chat(45, 23);
             }
+            
             break;
         case "dareMotoboat":
             nav.killall();
@@ -1113,6 +1125,7 @@ room23.chatcatch = function (callback) {
             nav.bg("24_spinTheBottle/meStripdance.jpg");
             break;
         case "mepanties":
+            nav.killall();
             levels.mod("xdress", 25, 999);
             nav.bg("24_spinTheBottle/mepanties.jpg");
             cl.c.panties = "w";
@@ -1868,7 +1881,7 @@ room23.chat = function (chatID) {
                 text: "Oh my. I hate to be a big ol' chicken, but I don't think I feel comfortable " +
                     "doing that right now. I think it's time for bed. ",
                 button: [
-                    { chatID: -1, text: "Oh. ok. [Need level 3]", callback: "endGame" },
+                    { chatID: -1, text: "Oh. ok. [Need level " + g.internal.levelDisplay + "]", callback: "endGame" },
                 ]
             },
             {
@@ -1877,7 +1890,7 @@ room23.chat = function (chatID) {
                 text: "Oh so that's why you want to play truth or dare? To look at my small, but " +
                     "perky tits? Pervert. We're going to bed! ",
                 button: [
-                    { chatID: -1, text: "Oh. ok. [Need level 3]", callback: "endGame" },
+                    { chatID: -1, text: "Oh. ok. [Need level " + g.internal.levelDisplay + "]", callback: "endGame" },
                 ]
             },
             {
@@ -3366,7 +3379,7 @@ room23.buildInternal = function () {
         lolaphase: 0,
         evaphase: 0,
         whoTurn: "me",
-        nextTurn: null,
+        nextTurn: "lola",
         theirTurn: false,
         holder: "",
         gamepointer: 0,
@@ -3376,7 +3389,8 @@ room23.buildInternal = function () {
         myTruth: myTruth,
         myDare: myDare,
         reply: "",
-        reuseCounter: 0
+        reuseCounter: 0,
+        levelDisplay: 0
     };
 };
 

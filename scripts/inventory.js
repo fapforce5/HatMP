@@ -47,7 +47,7 @@ inv.master = [
     { type: "h", name: "hormone", display: "Sissy Bimbo Pills", entry: false, count: 0, cost: 5, image: "hormone.png", n: false, desc: "Take 1 pill a day to increase your female hormone level" },
     { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave your body" },
-    { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
+    { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
 
     { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 25, image: "acia.png", n: false, desc: "Gain 15 energy" },

@@ -433,8 +433,7 @@ room450.chatcatch = function(callback){
             }
             break;
         case "lola7a":
-            sc.setstep("lola", -3);
-            sc.setstep("lola", 12);
+            sc.completeMissionTask("lola", "date", 2);
             daily.set("lola");
             char.addtime(120);
             char.room(450);
