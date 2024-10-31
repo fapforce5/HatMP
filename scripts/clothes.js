@@ -535,7 +535,7 @@ cl.hasoutfit = function (ctype) {
                 underwear = cl.hasoutfitCanWearClothingUnder();
                 outerWearSexy = cl.hasoutfitCanWearClothingOuter();
                 if (underwear.length === 0 && outerWearSexy.length === 0) {
-                    if (cl.c.swimsuit === null || cl.c.dress === null) {
+                    if (cl.c.swimsuit === null && cl.c.dress === null) {
                         if (cl.c.shirt === null && cl.c.pants === null) {
                             missingClothing.push("shirt");
                             missingClothing.push("pants");

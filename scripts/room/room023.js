@@ -18,6 +18,9 @@ room23.main = function () {
 room23.nextTurn = function () {
     nav.killall();
     nav.bg("24_spinTheBottle/013_spinBG.jpg");
+    if (g.internal.gamephase > 1) {
+        gv.mod("arousal", 3);
+    }
 
     if (g.internal.prevGamephase !== g.internal.gamephase) {
         g.internal.prevGamephase = g.internal.gamephase;
@@ -3469,6 +3472,10 @@ room23.getTheirQuestion = function () {
             {
                 q: "Do you ever get a creepy vibe from " + sc.n("priest") + "?",
                 a: "Totally! He's so creepy! Everytime I confess something sexual he asks for more details. Once I swear I heard him stoking his dick! "
+            },
+            {
+                q: "Who did you lose your virginity to? ",
+                a: "Malcom. He was awkward. You remember he used to always come over. But he was sweet. "
             },
         ];
         selectedQustion = qlist[g.rand(0, qlist.length)];

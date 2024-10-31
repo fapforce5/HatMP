@@ -3,74 +3,66 @@
 var room901 = {};
 
 room901.main = function () {
-    var cindyStep = sc.getstep("cindy");
+    if (g.isNight()) {
+        chat(43, 901);
+    }
     if (cl.hasoutfit("swim") === null) {
-        if (cindyStep === 1 && g.dt.getDay() === 3 && g.gethourdecimal().between(15, 18)) {
+
+        nav.button({
+            "type": "btn",
+            "name": "swimming",
+            "left": 0,
+            "top": 409,
+            "width": 1575,
+            "height": 575,
+            "image": "901_pool/swim.png"
+        }, 901);
+        nav.button({
+            "type": "btn",
+            "name": "changeroom",
+            "left": 385,
+            "top": 273,
+            "width": 665,
+            "height": 151,
+            "title": "Change Room",
+            "image": "901_pool/changeroom.png"
+        }, 901);
+
+        if (sc.getTimeline("cindy").thisRoom) {
             nav.button({
                 "type": "btn",
-                "name": "girlchallenge",
-                "left": 651,
-                "top": 0,
-                "width": 816,
-                "height": 1080,
-                "image": "901_pool/girl2.png"
+                "name": "girl",
+                "left": 87,
+                "top": 453,
+                "width": 626,
+                "height": 627,
+                "title": "Dat Booty!!!",
+                "image": "901_pool/girl1.png"
             }, 901);
         }
-        else {
+        else if (sc.getTimeline("tim").thisRoom) {
             nav.button({
                 "type": "btn",
-                "name": "swimming",
-                "left": 0,
-                "top": 409,
-                "width": 1575,
-                "height": 575,
-                "image": "901_pool/swim.png"
+                "name": "boy",
+                "left": 1570,
+                "top": 334,
+                "width": 127,
+                "height": 342,
+                "title": "Soooo tan",
+                "image": "901_pool/boy1.png"
             }, 901);
+        }
+
+        if (sc.getTimeline("lola").thisRoom) {
             nav.button({
                 "type": "btn",
-                "name": "changeroom",
-                "left": 385,
-                "top": 273,
-                "width": 665,
-                "height": 151,
-                "title": "Change Room",
-                "image": "901_pool/changeroom.png"
+                "name": "lola",
+                "left": 573,
+                "top": 65,
+                "width": 288,
+                "height": 1015,
+                "image": "901_pool/lola.png"
             }, 901);
-            if (sc.swimgirl().thisRoom) {
-                nav.button({
-                    "type": "btn",
-                    "name": "girl",
-                    "left": 87,
-                    "top": 453,
-                    "width": 626,
-                    "height": 627,
-                    "title": "Dat Booty!!!",
-                    "image": "901_pool/girl1.png"
-                }, 901);
-            }
-            else {
-                nav.button({
-                    "type": "btn",
-                    "name": "boy",
-                    "left": 1570,
-                    "top": 334,
-                    "width": 127,
-                    "height": 342,
-                    "title": "Soooo tan",
-                    "image": "901_pool/boy1.png"
-                }, 901);
-            }
-            if (sc.getTimeline("lola").thisRoom) {
-                nav.button({
-                    "type": "btn",
-                    "name": "lola",
-                    "left": 573,
-                    "top": 65,
-                    "width": 288,
-                    "height": 1015,
-                    "image": "901_pool/lola.png"
-                }, 901);
-            }
         }
     }
     else {
@@ -110,7 +102,7 @@ room901.btnclick = function (name) {
     var i;
     switch (name) {
         case "girl":
-            var cindy = sc.getstep("cindy");
+            var cindy = sc.taskGetStep("cindy", "fuck");
             nav.killbutton("girl");
             nav.button({
                 "type": "img",
@@ -122,18 +114,28 @@ room901.btnclick = function (name) {
                 "image": "901_pool/girl2.png"
             }, 901);
             switch (cindy) {
-                case 0:
+                case -1:
+                    if (sc.getMission("cindy", "fuck").notStarted) {
+                        sc.startMission("cindy", "fuck");
+                        sc.show("cindy");
+                    }
                     chat(0, 901);
                     break;
-                case 1:
+                case 0:
                     chat(8, 901);
                     break;
+                case 1:
+                    if (cl.appearance() === 0)
+                        chat(18, 901);
+                    else
+                        chat(32, 901);
+                    break;
                 case 2:
+                case 3:
                     if (cl.appearance() === 0)
                         chat(31, 901);
                     else
                         chat(32, 901);
-                    break;
             }
             break;
         case "boy":
@@ -148,30 +150,25 @@ room901.btnclick = function (name) {
                 "height": 1080,
                 "image": "901_pool/boy2a.png"
             }, 901);
-            if (cl.appearanceBody() < 1)
+            if (sc.getMission("tim", "fuck").notStarted) {
+                sc.show("tim");
+                sc.startMission("tim", "fuck");
+            }
+            if (cl.appearance() < 1)
                 chat(33, 901);
-            else if (cl.appearanceBody() < 3)
+            else if (cl.appearance() < 3 || cl.c.chest < 3)
                 chat(34, 901);
             else {
-                var boyStep = sc.getstep("tim");
-                if (boyStep === 0)
+                if (!sc.getMissionTask("tim", "fuck", 1).complete)
                     chat(36, 901);
                 else 
                     chat(42, 901);
-
             }
             break;
         case "lola":
             nav.killbutton("boy");
-            var lolaStep = sc.getstep("lola");
-            if (lolaStep < 8)
+            if (levels.get("strength").l < 5)
                 chat(9, 901);
-            else if (lolaStep === 8) {
-                if (sc.getEvent("lola", -2))
-                    chat(12, 901);
-                else
-                    chat(16, 901);
-            }
             else
                 chat(17, 901);
             break;
@@ -220,6 +217,7 @@ room901.btnclick = function (name) {
             }
             else {
                 nav.killall();
+                cl.c.cumface = null;
                 nav.bg("901_pool/race.jpg");
                 char.changeMenu("hide", false, true);
                 g.internal = 150;
@@ -244,7 +242,7 @@ room901.btnclick = function (name) {
             }
             break;
         case "stroke":
-            g.internal += 100 + (gv.get("bodyLevel") * 28);
+            g.internal += 100 + (levels.get("strength").l * 28);
             if (g.internal > 1600)
                 g.internal = 1600;
             $('.room-img[data-name="swimman"]').css({ "left": (g.internal * g.ratio) + "px" });
@@ -256,16 +254,8 @@ room901.btnclick = function (name) {
                 g.roomTimeout = setTimeout(function () {
                     nav.modbutton("strokepause", "901_pool/stroke1.png", "stroke", "");
                 }, 500);
-                var xi;
-                for (i = 0; i < g.st.length; i++) {
-                    if (gv.st[i].n === "energy") {
-                        xi = i;
-                        i = 9999;
-                    }
-                }
-                gv.st[xi].t -= 5;
-                if (gv.st[xi].t < 1) {
-                    gv.st[xi].t = 0;
+                gv.mod("energy", -5);
+                if (gv.get("energy") < 1) {
                     nav.killbutton("stroke");
                     chat(20, 901);
                 }
@@ -273,7 +263,7 @@ room901.btnclick = function (name) {
             break;
         case "stroke_r":
             var girlAhead;
-            g.internal.m += 100 + (gv.get("bodyLevel") * 28);
+            g.internal.m += 100 + (levels.get("strength").l * 28);
             g.internal.f += 148.017;
             girlAhead = g.internal.f > g.internal.m;
 
@@ -308,21 +298,12 @@ room901.btnclick = function (name) {
                 g.roomTimeout = setTimeout(function () {
                     nav.modbutton("strokepause", "901_pool/stroke1.png", "stroke_r", "");
                 }, 500);
-                var yi;
-                for (i = 0; i < g.st.length; i++) {
-                    if (gv.st[i].n === "energy") {
-                        yi = i;
-                        i = 9999;
-                    }
-                }
-                gv.st[yi].t -= 8;
-                if (gv.st[yi].t < 1) {
-                    gv.st[yi].t = 0;
+                gv.mod("energy", -8);
+                if (gv.get("energy") < 1) {
                     nav.killbutton("stroke");
                     chat(23, 901);
                 }
             }
-
             break;
         default:
             break;
@@ -333,10 +314,10 @@ room901.chatcatch = function (callback) {
     switch (callback) {
         case "cindy0":
             if (cl.appearance() === 0) {
-                var cstep = sc.getstep("cindy");
+                var cstep = sc.taskGetStep("cindy", "fuck");
                 if (cstep === 0)
                     chat(1, 901);
-                else if (cstep === 1)
+                else //if (cstep === 1)
                     chat(6, 901);
             }
             else
@@ -347,27 +328,24 @@ room901.chatcatch = function (callback) {
             char.room(901);
             break;
         case "cindyInc1":
-            sc.setstep("cindy", 1);
             room901.chatcatch("reset");
             break;
         case "cindyInc2":
-            sc.setstep("cindy", 1);
+            sc.completeMissionTask("cindy", "fuck", 0);
             room901.chatcatch("reset");
             break;
         case "lola-2":
-            sc.setstep("lola", -2);
             char.addtime(120);
             char.room(901);
             break;
         case "swimbadend":
-            var badFitness = Math.round(g.internal / 200);
-            gv.mod("fitness", badFitness);
-            gv.mod("body", badFitness * 2);
+            levels.mod("fitness", 40);
+            levels.mod("strength", 30);
             char.room(901);
             break;
         case "swimgoodend":
-            gv.mod("fitness", 30);
-            gv.mod("body", 45);
+            levels.mod("fitness", 40);
+            levels.mod("strength", 30);
             char.room(901);
             break;
         case "swimfan":
@@ -429,14 +407,12 @@ room901.chatcatch = function (callback) {
                 "title": "Dat Booty!!!",
                 "image": "901_pool/girl1peek.png"
             }, 901);
-            sc.setstep("cindy", 2);
+            sc.completeMissionTask("cindy", "fuck", 1);
             char.addtime(100);
             break;
         case "checkboy":
-            var checkboy = sc.getstep("tim");
-            if (checkboy === 0)
+            if (sc.getMissionTask("tim", "fuck", 0).notStarted)
                 chat(37, 901);
-
             break;
         case "boycock":
             nav.killbutton("boy");
@@ -452,8 +428,11 @@ room901.chatcatch = function (callback) {
             }, 901);
             break;
         case "boy1":
-            sc.setstep("tim", 1);
+            sc.completeMissionTask("tim", "fuck", 0);
             room901.chatcatch("reset");
+            break;
+        case "leave":
+            char.room(0);
             break;
     }
 };
@@ -522,9 +501,9 @@ room901.chat = function(chatID){
         {
             chatID: 7,
             speaker: "cindy",
-            text: "OK! I do my laps every Wednesday between 4:00 PM and 6:00 PM. I'll see you there cutie!",
+            text: "OK! Catch me when I'm here and we'll see if you're man enough. I'll see you there cutie!",
             button: [
-                { chatID: -1, text: "You're on! I'll see you there!", callback: "cindyInc2" },
+                { chatID: -1, text: "You're on!", callback: "cindyInc2" },
             ]
         },
         {
@@ -620,7 +599,8 @@ room901.chat = function(chatID){
             speaker: "cindy",
             text: "Oh so you decided to show your face? You know I'm going to destroy you. No one can swim like me!",
             button: [
-                { chatID: 19, text: "You're on! And if I win you're going on that date!", callback: "" }
+                { chatID: 19, text: "You're on! And if I win you're going on that date!", callback: "" },
+                { chatID: -1, text: "I'm not ready yet. ", callback: "reset" }
             ]
         },
         {
@@ -722,7 +702,7 @@ room901.chat = function(chatID){
         {
             chatID: 31,
             speaker: "cindy",
-            text: "Hey sexy meet me at the club this weekind.",
+            text: "Hey sexy meet me at the club. I love dancing with a manly man!",
             button: [
                 { chatID: -1, text: "Cool see you there.", callback: "reset" }
             ]
@@ -817,6 +797,14 @@ room901.chat = function(chatID){
             text: "Hey sexy, I can't wait to see you at the club!",
             button: [
                 { chatID: -1, text: "I'll see you there", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "thinking",
+            text: "Looks like the pool's closed for the night. Better get going.",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "leave" },
             ]
         },
     ];

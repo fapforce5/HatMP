@@ -624,7 +624,8 @@ room28.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "me",
-                text: "All that working out has given me a sexier body! " + sc.n("missy") + " is going to be so happy to see the new me!",
+                text: "All that working out has given me a sexier body! Things " +
+                    "are going to be changing for me! ",
                 button: [
                     { chatID: -1, text: "You feel more in shape", callback: "chest0" }
                 ]

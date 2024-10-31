@@ -34,10 +34,10 @@ room26.main = function () {
             btnList.push({
                 "type": "btn",
                 "name": "all3",
-                "left": 416,
-                "top": 63,
-                "width": 1295,
-                "height": 1017,
+                "left": 501,
+                "top": 68,
+                "width": 1138,
+                "height": 1012,
                 "image": "26_livingRoom/all3.png"
             });
         }
@@ -78,17 +78,43 @@ room26.btnclick = function (name) {
             if (!daily.get("landlordChat")) {
                 sc.select("chat_landlord", "26_livingRoom/chat_landlord.png", 0);
             }
-            if (sc.getMissionTask("landlord", "talk", 2).complete)
+            if (sc.getMissionTask("landlord", "talk", 2).complete) {
                 sc.select("sit_landlord", "26_livingRoom/icon_tv.png", 1);
-
-            sc.selectCancel("chat_cancel", 2);
-
+                sc.select("sit_dick", "26_livingRoom/icon_dick.png", 2);
+            }
+            sc.selectCancel("chat_cancel", 3);
+            break;
+        case "sit_dick":
+            room26.btnclick("chat_cancel");
+            if (cl.c.chastity !== null) {
+                sc.modSecret("landlord", 100);
+                chat(59, 26);
+            }
+            else if (cl.pantiesTxt() === "panties") {
+                sc.modSecret("landlord", 100);
+                chat(60, 26);
+            }
+            else {
+                if (sc.getMissionTask("landlord", "man", 4).complete && !daily.get("landlordDick")) {
+                    daily.set("landlordDick");
+                    nav.killall();
+                    nav.bg("26_livingRoom/q0.jpg");
+                    chat(63, 26);
+                }
+                else {
+                    nav.killall();
+                    nav.bg("26_livingRoom/passtime8.jpg");
+                    chat(61, 26);
+                }
+            }
             break;
         case "chat_cancel":
             nav.killbutton("chatbg");
             nav.killbutton("chat_cancel");
             nav.killbutton("sit_landlord");
+            nav.killbutton("sit_dick");
             nav.killbutton("chat_landlord");
+            return;
             break;
         case "chat_landlord":
             room26.btnclick("chat_cancel");
@@ -96,29 +122,35 @@ room26.btnclick = function (name) {
             var jobapplyconst = gv.get("jobapplyconst");
             var chatEvent = sc.taskGetStep("landlord", "talk");
 
-            if (jobapplyconst < 2)
+            if (jobapplyconst < 2) {
                 chat(0, 26);
-            else if (chatEvent === 0)
-                chat(1, 26);
-            else if (chatEvent === 1)
-                chat(3, 26);
-            else if (chatEvent === 2)
-                chat(6, 26);
-            else if (chatEvent === 3)
-                chat(7, 26);
-            else if (chatEvent === 4)
-                chat(29, 26);
-            else if (chatEvent === 5)
-                chat(38, 26);
-            else if (chatEvent === 6)
-                chat(11, 26);
-            else
-                chat(11, 26);
+            }
+            else {
+                if (!daily.get("landlordChat"))
+                    sc.modLevel("landlord", 25, 7);
+                if (chatEvent === 0)
+                    chat(1, 26);
+                else if (chatEvent === 1)
+                    chat(3, 26);
+                else if (chatEvent === 2)
+                    chat(6, 26);
+                else if (chatEvent === 3)
+                    chat(7, 26);
+                else if (chatEvent === 4)
+                    chat(29, 26);
+                else if (chatEvent === 5)
+                    chat(38, 26);
+                else if (chatEvent === 6) {
+                    sc.completeMissionTask("landlord", "talk", 6);
+                    chat(11, 26);
+                }
+                else
+                    chat(11, 26);
+            }
             break;
         case "sit_landlord":
             nav.killall();
             g.internal = { s: 0, c: 0 };
-;
             nav.bg("26_livingRoom/sit0.jpg");
             sc.select("tv_chat", "26_livingRoom/chat_landlord.png", 10);
             sc.select("tv_closer", "26_livingRoom/icon_closer.png", 11);
@@ -147,7 +179,7 @@ room26.btnclick = function (name) {
                     if (sc.getLevel("landlord") < 2)
                         chat(31, 26);
                     else
-                        sc.modLevel("landlord", 10, 6);
+                        sc.modLevel("landlord", 25, 6);
                     break;
                 case 3:
                     g.internal.c = 4;
@@ -156,7 +188,7 @@ room26.btnclick = function (name) {
                         chat(31, 26);
                     else {
                         nav.killall();
-                        sc.modLevel("landlord", 10, 6);
+                        sc.modLevel("landlord", 25, 6);
                         g.roomTimeout = setTimeout(function () {
                             nav.bg("26_livingRoom/sit5.jpg");
                             chat(32, 26);
@@ -173,6 +205,72 @@ room26.btnclick = function (name) {
             char.addtime(120);
             char.room(26);
             break;
+        case "all3":
+            chat(40, 26);
+            break;
+        case "e_reset":
+            char.room(26);
+            break;
+        case "e_tv":
+            nav.killall();
+            char.settime(22, 0);
+            nav.bg("26_livingRoom/eend.jpg");
+            sc.modLevel("lola", 40, 7);
+            sc.modLevel("eva", 40, 7);
+            sc.modLevel("landlord", 40, 7);
+            chat(41, 26);
+            break;
+        case "e_molest":
+
+            break;
+        case "f1":
+            nav.killall();
+            gv.mod("arousal", 50);
+            nav.bg("26_livingRoom/f1.jpg");
+            chat(47, 26);
+            break;
+        case "f7":
+            if (g.internal > 13) {
+                nav.killall();
+                sc.completeMissionTask("landlord", "misc", 1);
+                levels.fuckpussy("eva");
+                levels.fuckpussy("lola");
+                levels.fuckpussy("landlord");
+                sc.modLevel("eva", 50, 10);
+                sc.modLevel("lola", 50, 10);
+                sc.modLevel("landlord", 50, 10);
+                chat(58, 26);
+            }
+            else {
+                nav.bg("26_livingRoom/f" + g.internal + ".jpg");
+                g.internal++;
+            }
+            break;
+        case "q4":
+            if (g.internal > 2) {
+                nav.killall();
+                nav.bg("26_livingRoom/q5.jpg");
+                g.internal = 6;
+                nav.next("q5");
+            }
+            else {
+                nav.bg("26_livingRoom/q4_" + g.internal + ".jpg");
+                g.internal++;
+            }
+            break;
+        case "q5":
+            if (g.internal === 8) {
+                nav.bg("26_livingRoom/q0.jpg");
+                sc.modLevel("landlord", 25, 10);
+                nav.killall();
+                levels.oralGive(3, false, false, "f");
+                chat(67, 26);
+            }
+            else {
+                nav.bg("26_livingRoom/q" + g.internal + ".jpg");
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -185,7 +283,53 @@ room26.chatcatch = function (callback) {
             case "bg_4":
             case "bg_5":
             case "bg_6":
+            case "f3":
+            case "f4":
+            case "passtime8a":
+            case "q1":
+            case "q2":
+            case "q3":
                 nav.bg("26_livingRoom/" + callback + ".jpg");
+                break;
+            case "f6":
+                if (cl.c.chastity !== null) {
+                    nav.bg("26_livingRoom/f6_bad.jpg");
+                    chat(55, 26);
+                }
+                else if (cl.pantiesTxt() === "panties") {
+                    nav.bg("26_livingRoom/f6_badp.jpg");
+                    chat(56, 26);
+                    
+                }
+                else {
+                    nav.killall();
+                    nav.bg("26_livingRoom/" + callback + ".jpg");
+                    chat(57, 26);
+                }
+                break;
+            case "f6BadEnd":
+                sc.modSecret("lola", 100);
+                sc.modSecret("eva", 100);
+                sc.modSecret("landlord", 100);
+                char.room(10);
+                break;
+            case "f2":
+                char.settime(21, 58);
+                nav.bg("26_livingRoom/" + callback + ".jpg");
+                break;
+            case "f5":
+                gv.mod("arousal", 100);
+                nav.bg("26_livingRoom/" + callback + ".jpg");
+                break;
+            case "f0_eva":
+            case "f1":
+                nav.killall();
+                nav.bg("26_livingRoom/" + callback + ".jpg");
+                break;
+            case "f7":
+                g.internal = 8;
+                nav.bg("26_livingRoom/" + callback + ".jpg");
+                nav.next("f7");
                 break;
             case "passtime":
                 char.addtime(30);
@@ -254,7 +398,7 @@ room26.chatcatch = function (callback) {
                 char.settime(23, 17);
                 break;
             case "tvEnd":
-                sc.modLevel("landlord", 20, 5);
+                sc.modLevel("landlord", 25, 5);
                 char.addtime(120);
                 char.room(26);
                 break;
@@ -266,6 +410,81 @@ room26.chatcatch = function (callback) {
                 break;
             case "reset":
                 char.room(26);
+                break;
+            case "e1":
+                nav.killall();
+                if (sc.getMissionTask("lola", "date", 5).complete) {
+                    nav.bg("26_livingRoom/e1.jpg");
+                    nav.next("f1");
+                    //nav.killall();
+                    //nav.button({
+                    //    "type": "img",
+                    //    "name": "f0",
+                    //    "left": 428,
+                    //    "top": 130,
+                    //    "width": 1178,
+                    //    "height": 918,
+                    //    "image": "26_livingRoom/f0.png"
+                    //}, 26);
+                    //chat(47, 26);
+                }
+                else if (sc.getLevel("lola") > 4 && sc.getLevel("eva") > 4) {
+                    nav.killall();
+                    nav.bg("26_livingRoom/night.jpg");
+                    char.settime(21, 58);
+                    nav.button({
+                        "type": "img",
+                        "name": "f0",
+                        "left": 428,
+                        "top": 130,
+                        "width": 1178,
+                        "height": 918,
+                        "image": "26_livingRoom/f0.png"
+                    }, 26);
+                    chat(43, 26);
+                }
+                else {
+                    nav.bg("26_livingRoom/e1.jpg");
+                    sc.select("e_molest", "26_livingRoom/icon_molest.png", 10);
+                    sc.select("e_tv", "26_livingRoom/icon_watch.png", 12);
+                    sc.selectCancel("e_reset", 13);
+                }
+                break;
+            case "f0_end":
+                sc.modLevel("lola", 40, 7);
+                sc.modLevel("eva", 40, 7);
+                sc.modLevel("landlord", 40, 7);
+                char.room(26);
+                break;
+            case "leave":
+                char.room(10);
+                break;
+            case "f3exit":
+                nav.killall();
+                nav.bg("26_livingRoom/night.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "all3",
+                    "left": 501,
+                    "top": 68,
+                    "width": 1138,
+                    "height": 1012,
+                    "image": "26_livingRoom/all3.png"
+                }, 26);
+                zcl.displayMain(-400, 500, .3, "clothes", true);
+                break;
+            case "q4":
+                nav.bg("26_livingRoom/q4.jpg");
+                g.internal = 0;
+                nav.button({
+                    "type": "tongue",
+                    "name": "q4",
+                    "left": 1191,
+                    "top": 367,
+                    "width": 135,
+                    "height": 135,
+                    "image": "26_livingRoom/butthole.png"
+                }, 26);
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -322,7 +541,7 @@ room26.chat = function (chatID) {
                 speaker: "landlord",
                 text: "I'm so glad you have such a manly job! You're really growing up. A few weeks working out there and you'll get " +
                     "some big sexy man muscles! Some lucky girls going to just love running her hands all over your hard veiny construction " +
-                    "muscles... Anyway, I'm so happy you aren't a lazy fuck up anymore. Now let me watch my shows. ",
+                    "muscles... Anyway, I'm so happy you aren't a lazy fuck up anymore. ",
                 button: [
                     { chatID: -1, text: "Thanks? ", callback: "passtime talk_0_complete" }
                 ]
@@ -662,6 +881,274 @@ room26.chat = function (chatID) {
                     "just to practice for when you two get real boyfriends and girlfriends.",
                 button: [
                     { chatID: -1, text: "Maybe. Let me think on it", callback: "talk_5_complete" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "lola",
+                text: "If it isn't my favorite boy. Come sit with us, watch some TV. ",
+                button: [
+                    { chatID: -1, text: "Sure!", callback: "e1" },
+                    { chatID: -1, text: "I'll pass", callback: "" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "thinking",
+                text: "Wow. What a pleasant and wholesome time. I really enjoyed " +
+                    "just haning out with everyone. ",
+                button: [
+                    { chatID: 42, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "landlord",
+                text: "It's getting late. Time to head to bed. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "landlord",
+                text: "What a great show! I hope you kids don't mind, but I got to let this thing air out " +
+                    "while we watch TV. It suddenly got really warm in here. ",
+                button: [
+                    { chatID: 44, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "eva",
+                text: "Oh gross " + sc.n("landlord") + ". No one wants to see your old " +
+                    "pussy! ",
+                button: [
+                    { chatID: 45, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "landlord",
+                text: "That boy Malcom that used to always come over seemed to like it. I " +
+                    "even let him eat it once! You said you two were just friends. ",
+                button: [
+                    { chatID: 46, text: "...", callback: "f0_eva" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "eva",
+                text: "YUK! yuk, yuk, yuk. I'm going to bed! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "f0_end" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "thinking",
+                text: sc.n("lola") + "'s leg keeps rubbing against my dick.  ",
+                button: [
+                    { chatID: 48, text: "...", callback: "f2" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "thinking",
+                text: "Is that her hand. I'm just trying to sit and watch some TV with " +
+                    "everyone and she can't keep her hands off my dick! ",
+                button: [
+                    { chatID: 51, text: "Lay back and see what happens", callback: "f3" },
+                    { chatID: 49, text: "Make an excuse to leave ", callback: "f3exit" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "me",
+                text: "Oh wow, it's getting late. Better head for bed. ",
+                button: [
+                    { chatID: 50, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "landlord",
+                text: "Nobody cares! Get out of the way so we can catch the end of our " +
+                    "show!!! Move!",
+                button: [
+                    { chatID: -1, text: "Oh. ok. 'night", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "eva",
+                text: "That show really turned us on. ",
+                button: [
+                    { chatID: 52, text: "?", callback: "f4" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "lola",
+                text: "Let's sneak upstairs to our room so we can show you how wet we are. ",
+                button: [
+                    { chatID: 53, text: "!", callback: "f5" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "landlord",
+                text: "Hold it right there you three! I know exactly what you're planning. " +
+                    "Girls, I can smell your arousal. You two must be soaking with all the " +
+                    "sexual tension. ",
+                button: [
+                    { chatID: 54, text: "We weren't doing anything...", callback: "" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "landlord",
+                text: "Really? Girls, pull his dick out. If it's hard I know you're lying. Show " +
+                    "us that you weren't planning something. ",
+                button: [
+                    { chatID: -1, text: "huh?", callback: "f6" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "landlord",
+                text: "Oh. I guess you wern't. That's a chastity cage isn't it? I know " +
+                    "the type of 'men' that wear those, and they aren't men. Girls, " +
+                    "go to bed. We'll talk about this in the morning. I have to process " +
+                    "the fact that my little boy is secretly a girl. ",
+                button: [
+                    { chatID: -1, text: "oh. 'night I guess. ", callback: "f6BadEnd" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "landlord",
+                text: "Oh. I guess you wern't. You're wearing women's panties. I know " +
+                    "the type of 'men' that wear those, and they aren't men. Girls, " +
+                    "go to bed. We'll talk about this in the morning. I have to process " +
+                    "the fact that my little boy is secretly a girl. ",
+                button: [
+                    { chatID: -1, text: "oh. 'night I guess. ", callback: "f6BadEnd" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "landlord",
+                text: "That looks pretty hard to me. Since we share in this house, " +
+                    sc.n("eva") + " you have ride it first, then " + sc.n("lola") + 
+                    ", and last me. You better keep that penis hard, becuse I could " +
+                    "use an orgasm. ",
+                button: [
+                    { chatID: -1, text: "oh yeah!", callback: "f7" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "landlord",
+                text: "That dick is amazing! Now girls, go wash your face, you don't want " +
+                    "to go to bed stinking of cum. And you, " + sc.n("me") + " be sure to " +
+                    "wash you dick since I just cleaned your sheets and I'm not doing it again " +
+                    "for a week. Night everyone. ",
+                button: [
+                    { chatID: -1, text: "'night", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "landlord",
+                text: "Oh honey. Is that a chastity cage. Are you trying to tell me " +
+                    "in your own weird way that you secretly desire to be my little girl. " +
+                    "I'm sorry. I wasn't expecting this. Why don't we talk in the morning " +
+                    "when I've had time to process this. ",
+                button: [
+                    { chatID: -1, text: "oh. ok. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "landlord",
+                text: "Oh honey. Are you wearing women's panties? Are you trying to tell me " +
+                    "in your own weird way that you secretly desire to be my little girl. " +
+                    "I'm sorry. I wasn't expecting this. Why don't we talk in the morning " +
+                    "when I've had time to process this. ",
+                button: [
+                    { chatID: -1, text: "oh. ok. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "landlord",
+                text: "Oh look, your penis. I bet you want to stick this inside me? ",
+                button: [
+                    { chatID: 62, text: "I sure do!", callback: "passtime8a" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "landlord",
+                text: "Put your dick away! I'm watching my shows! ",
+                button: [
+                    { chatID: -1, text: "OW! ow ow ow. *whipmer* ok", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "landlord",
+                text: "Oh wow! I love it when you just take your dick out! So forward. " +
+                    "It's like my dreams have come true! Do you want to shove it in " +
+                    "my tight wet pussy? Pump your dick in and out until you spread your " +
+                    "seed inside me?",
+                button: [
+                    { chatID: 64, text: "Oh yeah! ", callback: "q1" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "landlord",
+                text: "Well that's not going to happen! I'm just sitting here watching " +
+                    "my shows, trying to relax and you want to poke me with your dick! " +
+                    "The nerve! Bring you face over here! Stick your tongue out.",
+                button: [
+                    { chatID: 65, text: "Huh? ", callback: "q2" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "landlord",
+                text: "That's my boy, come closer. ",
+                button: [
+                    { chatID: 66, text: "...", callback: "q3" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "landlord",
+                text: "Give me that tongue. I'm going to shove it right up my ass. " +
+                    "Maybe that will teach you a lesson on how to leave me alone to " +
+                    "watch my shows! Now lick my clean! ",
+                button: [
+                    { chatID: -1, text: "Yeethhh", callback: "q4" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "landlord",
+                text: "Fuck I needed my ass eaten! You probably want your reward? ",
+                button: [
+                    { chatID: 68, text: "Oh yeah!", callback: "q1" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "landlord",
+                text: "Your reward is living in my house. Now scram. I'm watching my shows.  ",
+                button: [
+                    { chatID: -1, text: "Ok", callback: "reset" },
                 ]
             },
         ];

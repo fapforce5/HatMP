@@ -1,40 +1,36 @@
 ﻿//Room name
 var room30 = {};
 room30.main = function () {
-    if (!g.isNight()) {
-        if (sc.getTimeline("lola").roomID === 13) {
-            if (sc.getstep("lola") === 8) {
-                nav.bg("30_peek/lola9.jpg");
-                chat(7, 30);
-            }
-            else {
-                var overhear = Math.floor(Math.random() * 5) === 0;
-                if (!gv.get("puter"))
-                    overhear = !(Math.floor(Math.random() * 3) === 0);
-                if (overhear) {
-                    nav.bg("30_peek/password.jpg");
-                    chat(2, 30);
-                }
-                else
-                    nav.bg("30_peek/pillow.jpg");
-            }
+    var awake = g.gethourdecimal() > 7 && g.gethourdecimal() < 22;
+    if (sc.getTimeline("lola").roomID === 13 && awake) {
+        var popList = ["x0.jpg", "x1.jpg", "x2.jpg"];
+        if (g.isNight())
+            popList.push = ["pillow.jpg"];
+        if (g.rand(0, 3) > 0) {
+            nav.bg("30_peek/password.jpg");
+            chat(2, 30);
+        }
+        else {
+            nav.bg("30_peek/" + popList[g.rand(0, popList.length)]);
         }
     }
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "window",
-            "left": 240,
-            "top": 0,
-            "width": 1449,
-            "height": 1080,
-            "image": "30_peek/window.png"
-        }
-    ];
+    else {
+        var btnList = [
+            {
+                "type": "btn",
+                "name": "window",
+                "left": 240,
+                "top": 0,
+                "width": 1449,
+                "height": 1080,
+                "image": "30_peek/window.png"
+            }
+        ];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 30);
+        });
+    }
     var navList = [0, 29];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 30);
-    });
     nav.buildnav(navList);
 };
 
@@ -89,7 +85,6 @@ room30.chat = function (chatID) {
             text: "THEY'RE RIGHT THERE DUMBASS. I can't sneak in now.",
             button: [
                 { chatID: -1, text: "Oh yeah, I shouldn't go in there.", callback: "" },
-                { chatID: -1, text: "Fuck it. I'm going in anyway!", callback: "dumbass" }
             ]
         },
         {

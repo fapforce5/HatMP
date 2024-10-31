@@ -234,11 +234,19 @@ room775.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "priest",
-            text: sp[Math.floor(Math.random() * sp.length)],
+            text: "Church update in progress...",
             button: [
-                { chatID: 0, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         };
+        //return {
+        //    chatID: 999,
+        //    speaker: "priest",
+        //    text: sp[Math.floor(Math.random() * sp.length)],
+        //    button: [
+        //        { chatID: 0, text: "...", callback: "" }
+        //    ]
+        //};
     }
     else if (chatID === 998) {
         g.internal = gv.get("money");

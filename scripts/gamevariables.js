@@ -253,6 +253,8 @@ gv.init = function () {
         { n: "evaDrunk", t: false },
         { n: "lolaDrunk", t: false },
         { n: "pills", t: false },
+        { n: "landlordDick", t: false },
+        { n: "lolaDick", t: false }
     ];
 
     weekly.st = [
@@ -261,32 +263,32 @@ gv.init = function () {
     ];
 
     levels.st = [
-        { id: 0, n: "pi", d: "Investigation", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true, m: 7 },
-        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true, m: 4 },
-        { id: 4, n: "oral", d: "Cock Sucking", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true, m: 8 },
-        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, m: 4 },
-        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, m: 6 }, //how likely you are to get raped
+        { id: 0, n: "pi", d: "Intelligence", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: false },
+        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 4, n: "oral", d: "Oral", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true }, //how likely you are to get raped
 
-        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
-        { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
-        { id: 14, n: "notused", d: "Not used", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 15, n: "defense", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, m: 999 },
-        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
+        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 14, n: "notused", d: "Not used", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 15, n: "notused1", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: false },
+        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: false },
+        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
 
-        { id: 19, n: "lockpicking", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: true, m: 3 },
-        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
-        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: true, m: 2 },
-        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: true, m: 4 },
-        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: true, m: 999 },
+        { id: 19, n: "not used", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: false, m: 3 },
+        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
 
     ];
 
@@ -496,7 +498,7 @@ gv.init = function () {
     dreams.st = new Array();
 };
 
-
+gv.init();
 
 gv.i=function(n){var r=-1;for(i=0;i<gv.st.length;i++)if(gv.st[i].n===n){r=i;break}return r}; //returns index for g.st by name
 daily.i = function (n) { var r = -1; for (i = 0; i < daily.st.length; i++)if (daily.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
@@ -658,73 +660,60 @@ gv.clearButtCum = function () {
 }
 
 levels.mod = function (name, amount, targetLevel = 999) {
-    var actualAmount = 0;
-    let i, j, fitnessStart;
+    let i, fitnessStart, startingLevel;
     fitnessStart = null;
     if (name === "fitness") {
         fitnessStart = levels.get("fitness").l;
     }
-    for (j = 0; j < levels.st.length; j++) {
-        if (levels.st[j].n === name) {
-            i = j;
-            break;
-        }
-    }
+    i = levels.i(name);
+    startingLevel = levels.st[i].l;
+
+    //fix for old old level system - remove in the future;
     if (levels.st[i].c === null || isNaN(levels.st[i].c))
         levels.st[i].c = 0;
 
-    
 
     if (amount > 0) {
-        if (levels.st[i].l > levels.st[i].m) {
-            let levelsOver = levels.st[i].m - levels.st[i].l;
-            amount = Math.round(amount / (levelsOver / 4));
-            if (amount < 1)
-                amount = 1;
-        }
-
-        if (levels.st[i].l <= targetLevel)
-            actualAmount = amount;
-        else {
-            if (levels.st[i].l <= targetLevel + 1)
-                actualAmount = Math.floor(amount / 3) + 1;
-            else if (levels.st[i].l <= targetLevel + 2)
-                actualAmount = 1;
-        }
-
-        var additionalLevels = Math.floor(actualAmount / 100);
-        var addedLevels = 0;
-        var remainderPoints = actualAmount % 100;
-        levels.st[i].c += remainderPoints;
-
-        if (additionalLevels > 0) {
-            for (j = 0; j < additionalLevels; j++) { //i know. Shut up. this is easier
-                if (levels.st[i].l < targetLevel) {
-                    levels.st[i].l++;
-                    addedLevels++;
-                }
-                else if (levels.st[i].l === targetLevel) {
-                    levels.st[i].l++;
-                    levels.st[i].c = 0;
-                    addedLevels++;
-                }
+        if (levels.st[i].compoundLevel) {
+            levels.st[i].c += amount;
+            while (levels.st[i].c >= levels.getCap(levels.st[i].l)) {
+                levels.st[i].c -= levels.getCap(levels.st[i].l);
+                levels.st[i].l++;
             }
+            let levelsChange = levels.st[i].l - startingLevel;
+            console.log(levelsChange);
+            if (levelsChange > 0)
+                g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+            else
+                g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
         }
-
-        if (levels.st[i].c >= 100) {
-            remainderPoints = levels.st[i].c % 100;
-            levels.st[i].c = 0;
-            levels.st[i].l++;
-            addedLevels++;
-            if (levels.st[i].l <= targetLevel)
-                levels.st[i].c += remainderPoints;
+        else if (levels.st[i].autoLevel) {
+            levels.st[i].c += amount;
+            while (levels.st[i].c >= 100) {
+                levels.st[i].c -= 100;
+                levels.st[i].l++;
+            }
+            let levelsChange = levels.st[i].l - startingLevel;
+            if (levelsChange > 0)
+                g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+            else
+                g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
         }
+        else {
+            levels.st[i].c += amount;
+            while (levels.st[i].c >= 100 || levels.st[i].l >= targetLevel) {
+                levels.st[i].c -= 100;
+                levels.st[i].l++;
+            }
+            if (levels.st[i].c > 99)
+                levels.st[i].c = 99;
 
-        if (addedLevels > 0)
-            g.popUpNotice("You gained " + addedLevels + " level(s) for: " + levels.st[i].d + "!");
-        else
-            g.popUpNotice(levels.st[i].d + " points have increased by " + actualAmount + "! ");
-
+            let levelsChange = levels.st[i].l - startingLevel;
+            if (levelsChange > 0)
+                g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+            else
+                g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+        }
     }
     else if (amount < 0) {
         levels.st[i].c -= amount;
@@ -736,10 +725,27 @@ levels.mod = function (name, amount, targetLevel = 999) {
     if (fitnessStart !== null) {
         var fitnessEnd = levels.get("fitness").l;
         if (fitnessStart !== fitnessEnd)
-            gv.mod("maxenergy", (fitnessEnd - fitnessStart) * 3);
+            gv.mod("maxenergy", (fitnessEnd - fitnessStart) * 4);
     }
     sstat.makeGraph();
 };
+
+levels.getCap = function (levels) {
+    let interestRate = .18;
+    var initialComp = Math.floor(75 * Math.pow(1 + interestRate, levels));
+    if (initialComp > 500)
+        return 500;
+    return initialComp;
+};
+
+levels.compute = function (level) {
+    var total = 0;
+    let i;
+    for (i = 0; i < level; i++) {
+        total += levels.getCap(i);
+    }
+    return total;
+}
 
 sex.mod = function (type, give, gender, number) {
     for (var i = 0; i < sex.st.length; i++) {
@@ -783,42 +789,28 @@ daily.newday = function () {
 
 levels.desc = function (name, level) {
     if (name === "fitness") {
-        return { count: -1, txt: (level * 5) + " Energy Boost" };
+        return { count: -1, txt: (level * 4) + " Energy Boost" };
     }
-    if (name === "defense") {
-        return { count: -1, txt: (level * 5) + " Defense" };
-    }
-    if (name === "int") {
-        return { count: -1, txt: "+" + level + " Lock pick and Pick Pocket" };
-    }
-    if (name === "charisma") {
-        return { count: -1, txt: "Level: " + level };
-    }
-    if (name === "fame") {
-        return { count: -1, txt: "+" + level + " Random Encounters" };
-    }
-    if (name === "strength") {
-        return { count: -1, txt: "Level: " + level };
-    }
+    //if (name === "defense") {
+    //    return { count: -1, txt: (level * 5) + " Defense" };
+    //}
+    //if (name === "int") {
+    //    return { count: -1, txt: "+" + level + " Lock pick and Pick Pocket" };
+    //}
+    //if (name === "charisma") {
+    //    return { count: -1, txt: "Level: " + level };
+    //}
+    //if (name === "fame") {
+    //    return { count: -1, txt: "+" + level + " Random Encounters" };
+    //}
+    //if (name === "strength") {
+    //    return { count: -1, txt: "Level: " + level };
+    //}
     if (name === "xdress") {
         return { count: -1, txt: "Points: " + level };
     }
     var levelsDesc = new Array();
     switch (name) {
-        //case "xdress":
-        //    levelsDesc = [
-        //        { id: 0, txt: "Boys clothes only" },
-        //        { id: 1, txt: "Can wear panties" },
-        //        { id: 2, txt: "Can cross dress at home and Missy's" },
-        //        { id: 3, txt: "Can work cases crossdressing" },
-        //        { id: 4, txt: "Must wear bra" },
-        //        { id: 5, txt: "Can buy girly clothes." },
-        //        { id: 6, txt: "Can go out in girl clothes" },
-        //        { id: 7, txt: "Can buy slutty clothing" },
-        //        { id: 8, txt: "Don't have to wear panties and bra" },
-        //        { id: 9, txt: "Wear what ever, or nothing at all" }
-        //    ];
-        //    break;
         case "dom":
             levelsDesc = [
                 { id: 0, txt: "A bitch" },
@@ -854,14 +846,14 @@ levels.desc = function (name, level) {
             break;
         case "oral":
             levelsDesc = [
-                { id: 0, txt: "I'm not putting that in my mouth" },
-                { id: 1, txt: "Can suck small dildos at home" },
-                { id: 2, txt: "Can suck medium dildos at home" },
-                { id: 3, txt: "Can deepthroat dildos at home" },
-                { id: 4, txt: "Can suck a small cock" },
-                { id: 5, txt: "Can suck large cocks" },
-                { id: 6, txt: "Can deepthroat cock" },
-                { id: 7, txt: "Can deepthroat large cocks" },
+                { id: 0, txt: "Dick is gross" },
+                { id: 1, txt: "Suck small dildos" },
+                { id: 2, txt: "Suck medium dildos" },
+                { id: 3, txt: "Deepthroat dildos" },
+                { id: 4, txt: "Suck a small cock" },
+                { id: 5, txt: "Suck large cocks" },
+                { id: 6, txt: "Deepthroat cock" },
+                { id: 7, txt: "Deepthroat large cocks" },
                 { id: 8, txt: "Can suck horse cock" },
                 { id: 9, txt: "Need to suck cock everyday!" },
             ];
@@ -869,25 +861,25 @@ levels.desc = function (name, level) {
         case "anal":
             levelsDesc = [
                 { id: 0, txt: "My butt is for pooping" },
-                { id: 1, txt: "Can stick your finger in your butt" },
-                { id: 2, txt: "Can play with a tiny dildo" },
-                { id: 3, txt: "Can play with a small dildo" },
-                { id: 4, txt: "Can play with a medium dildo" },
-                { id: 5, txt: "Can take a dick in the ass" },
-                { id: 6, txt: "Can play with a large dildo" },
-                { id: 7, txt: "Can play with a huge dildo" },
-                { id: 8, txt: "Can take a horse cock in the ass" },
+                { id: 1, txt: "Finger in your butt" },
+                { id: 2, txt: "Tiny dildo" },
+                { id: 3, txt: "Small dildo" },
+                { id: 4, txt: "Medium dildo" },
+                { id: 5, txt: "Dick in the ass" },
+                { id: 6, txt: "Large dildo" },
+                { id: 7, txt: "Huge dildo" },
+                { id: 8, txt: "Horse cock" },
                 { id: 9, txt: "Need anal everyday!" },
             ];
             break;
         case "cum":
             levelsDesc = [
                 { id: 0, txt: "Ewwww" },
-                { id: 1, txt: "You can taste your own" },
-                { id: 2, txt: "Can work in the sperm store" },
-                { id: 3, txt: "Can save your creampie in a jar." },
+                { id: 1, txt: "Taste your own" },
+                { id: 2, txt: "Not bad" },
+                { id: 3, txt: "Don't mind the taste" },
                 { id: 4, txt: "You can swallow" },
-                { id: 5, txt: "You can get creampied" },
+                { id: 5, txt: "Creampies!" },
                 { id: 6, txt: "cum gains 5 energy" },
                 { id: 7, txt: "cum gains 15 energy" },
                 { id: 8, txt: "cum gains 25 energy" },
@@ -911,9 +903,9 @@ levels.desc = function (name, level) {
         case "piss":
             levelsDesc = [
                 { id: 0, txt: "Piss is gross" },
-                { id: 1, txt: "Likes to watch people piss" },
-                { id: 2, txt: "Can be pissed on by girl" },
-                { id: 3, txt: "Can be pissed on my guy" },
+                { id: 1, txt: "Likes to watch" },
+                { id: 2, txt: "Pissed on by girl" },
+                { id: 3, txt: "Pissed on my guy" },
                 { id: 4, txt: "Can drink piss" },
                 { id: 5, txt: "piss drink + 5 energy" },
                 { id: 6, txt: "piss drink + 10 energy" },
@@ -932,8 +924,8 @@ levels.desc = function (name, level) {
                 { id: 5, txt: "anal" },
                 { id: 6, txt: "Horse!" },
                 { id: 7, txt: "Loves animals" },
-                { id: 7, txt: "Being around animals raises energy" },
-                { id: 8, txt: "Subserviant to beasts (Can't stop it)" },
+                { id: 7, txt: "Loves Animales" },
+                { id: 8, txt: "Need it!" },
             ];
             break;
         case "cheer":
@@ -951,7 +943,6 @@ levels.desc = function (name, level) {
                 { id: 10, txt: "Cum Bucket" },
             ];
             break;
-        
     };
     if (levelsDesc.length === 0) {
         //console.log("no level " + name);
@@ -996,23 +987,28 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     //5: huge
     //6: giant
     //7: ludicris
-    switch (levels.analTake(size).n) {
-        case "noop":
-            //do nothing;
-            break;
-        case "easy":
-            levels.mod("anal", 10, 999);
-            break;
-        case "normal":
-            levels.mod("anal", 20, 999);
-            break;
-        case "brutal":
-            levels.mod("anal", 40, 999);
-            break;
-        case "broken":
-            levels.mod("anal", 100, 999);
-            break;
-    };
+    if (levels.get("anal").l > 3) {
+        switch (size) {
+            case 0: levels.mod("anal", 1); break;
+            case 1: levels.mod("anal", 5);  break;
+            case 2: levels.mod("anal", 10); break;
+            case 3: levels.mod("anal", 15); break;
+            case 4: levels.mod("anal", 20); break;
+            case 5: levels.mod("anal", 25); break;
+            case 6: levels.mod("anal", 30); break;
+            case 7: levels.mod("anal", 35); break;
+            default: console.log("BAD ANAL SIZE: " + size);
+        }
+    }
+    else {
+        switch (levels.analTake(size).n) {
+            case "noop": break;
+            case "easy": levels.mod("anal", 10); break;
+            case "normal": levels.mod("anal", 20); break;
+            case "brutal": levels.mod("anal", 40); break;
+            case "broken": levels.mod("anal", 100); break;
+        }
+    }
     if (sissygasm) {
         cl.doCum(false);
         if (gender !== null)
@@ -1050,23 +1046,28 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
 };
 
 levels.oral = function (size) {
-    switch (levels.oralTake(size).n) {
-        case "noop":
-            //do nothing;
-            break;
-        case "easy":
-            levels.mod("oral", 10, 999);
-            break;
-        case "normal":
-            levels.mod("oral", 20, 999);
-            break;
-        case "brutal":
-            levels.mod("oral", 40, 999);
-            break;
-        case "broken":
-            levels.mod("oral", 100, 999);
-            break;
-    };
+    if (levels.get("oral").l > 3) {
+        switch (size) {
+            case 0: levels.mod("oral", 1); break;
+            case 1: levels.mod("oral", 5); break;
+            case 2: levels.mod("oral", 10); break;
+            case 3: levels.mod("oral", 15); break;
+            case 4: levels.mod("oral", 20); break;
+            case 5: levels.mod("oral", 25); break;
+            case 6: levels.mod("oral", 30); break;
+            case 7: levels.mod("oral", 35); break;
+            default: console.log("BAD ORAL SIZE: " + size);
+        }
+    }
+    else {
+        switch (levels.oralTake(size).n) {
+            case "noop": break;
+            case "easy": levels.mod("oral", 10); break;
+            case "normal": levels.mod("oral", 20); break;
+            case "brutal": levels.mod("oral", 40); break;
+            case "broken": levels.mod("oral", 100); break;
+        };
+    }
 };
 
 sex.piss = function (drankpiss, analpiss, pissedon, gender) {
@@ -1131,7 +1132,7 @@ levels.analTake = function (size) {
             break;
         case 2:
             switch (size) {
-                case 0: retvar = "noop"; break;
+                case 0: retvar = "easy"; break;
                 case 1: retvar = "easy"; break;
                 case 2: retvar = "normal"; break;
                 case 3: retvar = "brutal"; break; //level 2 should be normal for anal 101
@@ -1143,7 +1144,7 @@ levels.analTake = function (size) {
             break;
         case 3:
             switch (size) {
-                case 0: retvar = "noop"; break;
+                case 0: retvar = "easy"; break;
                 case 1: retvar = "easy"; break;
                 case 2: retvar = "easy"; break;
                 case 3: retvar = "normal"; break;
@@ -1155,8 +1156,8 @@ levels.analTake = function (size) {
             break;
         case 4:
             switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
+                case 0: retvar = "easy"; break;
+                case 1: retvar = "easy"; break;
                 case 2: retvar = "easy"; break;
                 case 3: retvar = "normal"; break;
                 case 4: retvar = "brutal"; break;
@@ -1165,78 +1166,78 @@ levels.analTake = function (size) {
                 case 7: retvar = "broken"; break;
             };
             break;
-        case 5:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "easy"; break;
-                case 3: retvar = "normal"; break;
-                case 4: retvar = "normal"; break;
-                case 5: retvar = "brutal"; break;
-                case 6: retvar = "broken"; break;
-                case 7: retvar = "broken"; break;
-            };
-            break;
-        case 6:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "noop"; break;
-                case 3: retvar = "normal"; break;
-                case 4: retvar = "normal"; break;
-                case 5: retvar = "brutal"; break;
-                case 6: retvar = "broken"; break;
-                case 7: retvar = "broken"; break;
-            };
-            break;
-        case 7:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "noop"; break;
-                case 3: retvar = "easy"; break;
-                case 4: retvar = "normal"; break;
-                case 5: retvar = "brutal"; break;
-                case 6: retvar = "broken"; break;
-                case 7: retvar = "broken"; break;
-            };
-            break;
-        case 8:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "noop"; break;
-                case 3: retvar = "easy"; break;
-                case 4: retvar = "normal"; break;
-                case 5: retvar = "normal"; break;
-                case 6: retvar = "brutal"; break;
-                case 7: retvar = "broken"; break;
-            };
-            break;
-        case 9:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "noop"; break;
-                case 3: retvar = "easy"; break;
-                case 4: retvar = "easy"; break;
-                case 5: retvar = "normal"; break;
-                case 6: retvar = "normal"; break;
-                case 7: retvar = "broken"; break;
-            };
-            break;
-        case 10:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "noop"; break;
-                case 3: retvar = "easy"; break;
-                case 4: retvar = "easy"; break;
-                case 5: retvar = "easy"; break;
-                case 6: retvar = "normal"; break;
-                case 7: retvar = "brutal"; break;
-            };
-            break;
+        //case 5:
+        //    switch (size) {
+        //        case 0: retvar = "noop"; break;
+        //        case 1: retvar = "noop"; break;
+        //        case 2: retvar = "easy"; break;
+        //        case 3: retvar = "normal"; break;
+        //        case 4: retvar = "normal"; break;
+        //        case 5: retvar = "brutal"; break;
+        //        case 6: retvar = "broken"; break;
+        //        case 7: retvar = "broken"; break;
+        //    };
+        //    break;
+        //case 6:
+        //    switch (size) {
+        //        case 0: retvar = "noop"; break;
+        //        case 1: retvar = "noop"; break;
+        //        case 2: retvar = "noop"; break;
+        //        case 3: retvar = "normal"; break;
+        //        case 4: retvar = "normal"; break;
+        //        case 5: retvar = "brutal"; break;
+        //        case 6: retvar = "broken"; break;
+        //        case 7: retvar = "broken"; break;
+        //    };
+        //    break;
+        //case 7:
+        //    switch (size) {
+        //        case 0: retvar = "noop"; break;
+        //        case 1: retvar = "noop"; break;
+        //        case 2: retvar = "noop"; break;
+        //        case 3: retvar = "easy"; break;
+        //        case 4: retvar = "normal"; break;
+        //        case 5: retvar = "brutal"; break;
+        //        case 6: retvar = "broken"; break;
+        //        case 7: retvar = "broken"; break;
+        //    };
+        //    break;
+        //case 8:
+        //    switch (size) {
+        //        case 0: retvar = "noop"; break;
+        //        case 1: retvar = "noop"; break;
+        //        case 2: retvar = "noop"; break;
+        //        case 3: retvar = "easy"; break;
+        //        case 4: retvar = "normal"; break;
+        //        case 5: retvar = "normal"; break;
+        //        case 6: retvar = "brutal"; break;
+        //        case 7: retvar = "broken"; break;
+        //    };
+        //    break;
+        //case 9:
+        //    switch (size) {
+        //        case 0: retvar = "noop"; break;
+        //        case 1: retvar = "noop"; break;
+        //        case 2: retvar = "noop"; break;
+        //        case 3: retvar = "easy"; break;
+        //        case 4: retvar = "easy"; break;
+        //        case 5: retvar = "normal"; break;
+        //        case 6: retvar = "normal"; break;
+        //        case 7: retvar = "broken"; break;
+        //    };
+        //    break;
+        //case 10:
+        //    switch (size) {
+        //        case 0: retvar = "noop"; break;
+        //        case 1: retvar = "noop"; break;
+        //        case 2: retvar = "noop"; break;
+        //        case 3: retvar = "easy"; break;
+        //        case 4: retvar = "easy"; break;
+        //        case 5: retvar = "easy"; break;
+        //        case 6: retvar = "normal"; break;
+        //        case 7: retvar = "brutal"; break;
+        //    };
+        //    break;
         default:
             switch (size) {
                 case 0: retvar = "noop"; break;

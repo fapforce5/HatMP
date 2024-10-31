@@ -242,11 +242,11 @@ room13.btnclick = function (name) {
                 sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
             if (sc.getMissionTask("lola", "games", 1).complete)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-            if (sc.getMission("lola", "date").inProgress) {
+            if (sc.getMission("lola", "date").inProgress && !g.isNight()) {
                 sc.select("practiceDate", "13_sisterRoom/icon_practice.png", 4);
             }
-            //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
-            sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
+            sc.select("dick", "13_sisterRoom/icon_dick.png", 5);
+            sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 6);
             break;
         case "eva":
             nav.button({
@@ -265,7 +265,7 @@ room13.btnclick = function (name) {
                 sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
             if (sc.getMissionTask("eva", "games", 1).complete)
                 sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-            //sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
+            sc.select("dick", "13_sisterRoom/icon_dick.png", 4);
             sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 5);
             break;
         case "clearChat":
@@ -348,9 +348,62 @@ room13.btnclick = function (name) {
             }
             break;
         case "dick":
-
+            if (!daily.get("lolaDick")) {
+                daily.set("lolaDick");
+                room13.btnclick("clearChat");
+                if (cl.c.chastity !== null) {
+                    sc.modSecret("lola", 100);
+                    sc.modSecret("eva", 100);
+                    chat(104, 13);
+                }
+                else if (cl.pantiesTxt() === "panties") {
+                    sc.modSecret("lola", 100);
+                    sc.modSecret("eva", 100);
+                    chat(99, 13);
+                }
+                if (sc.getMissionTask("lola", "date", 5).complete) {
+                    nav.button({
+                        "type": "img",
+                        "name": "dick",
+                        "left": 1127,
+                        "top": 765,
+                        "width": 189,
+                        "height": 315,
+                        "image": "13_sisterRoom/dick.png"
+                    }, g.roomID);
+                    chat(114, 13);
+                }
+                else if (sc.getLevel("lola") > 3) {
+                    nav.button({
+                        "type": "img",
+                        "name": "dick",
+                        "left": 1127,
+                        "top": 765,
+                        "width": 189,
+                        "height": 315,
+                        "image": "13_sisterRoom/dick.png"
+                    }, g.roomID);
+                    chat(107, 13);
+                }
+                else {
+                    nav.button({
+                        "type": "img",
+                        "name": "dick",
+                        "left": 1127,
+                        "top": 765,
+                        "width": 189,
+                        "height": 315,
+                        "image": "13_sisterRoom/dick.png"
+                    }, g.roomID);
+                    sc.modLevel("lola", 10, 7);
+                    sc.modLevel("eva", 10, 7);
+                    chat(113, 13);
+                }
+            }
+            else {
+                chat(112, 13);
+            }
             break;
-        
         case "reset":
             char.room(13);
             break;
@@ -886,10 +939,18 @@ room13.btnclick = function (name) {
                 default:
                     sc.select("datePark", "13_sisterRoom/icon_pdPark.png", 0);
                     sc.select("dateFair", "13_sisterRoom/icon_pdCarnival.png", 1);
-                    sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2)
+                    if (!sc.getMissionTask("lola", "date", 4).complete)
+                        sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2);
                     sc.selectCancel("dateCancel", 3);
                     break;
             }
+            break;
+        case "dateCancel":
+            nav.killbutton("datePark");
+            nav.killbutton("dateFair");
+            nav.killbutton("dateHere");
+            nav.killbutton("dateCancel");
+            room13.btnclick("lola");
             break;
         case "dateFair":
             g.pass = { who: "lola", ferrisWheel: false, bong: false, ball: false };
@@ -938,6 +999,16 @@ room13.btnclick = function (name) {
             nav.bg("13_sisterRoom/date25.jpg");
             nav.killbutton("date25");
             chat(98, 13);
+            break;
+        case "f":
+            if (g.internal > 8) {
+                nav.killbutton("f");
+                chat(116, 13);
+            }
+            else {
+                nav.bg("13_sisterRoom/f" + g.internal + ".jpg");
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -1145,7 +1216,6 @@ room13.chatcatch = function (callback) {
                 }
                 if (evaDrunk) {
                     drunkImg = "evaSleep3.png";
-
                     nav.button({
                         "type": "img",
                         "name": "bed",
@@ -1169,7 +1239,8 @@ room13.chatcatch = function (callback) {
             case "drawDateIcons":
                 sc.select("datePark", "13_sisterRoom/icon_pdPark.png", 0);
                 sc.select("dateFair", "13_sisterRoom/icon_pdCarnival.png", 1);
-                sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2)
+                if (!sc.getMissionTask("lola", "date", 4).complete)
+                    sc.select("dateHere", "13_sisterRoom/icon_pdRoom.png", 2);
                 sc.selectCancel("dateCancel", 3);
                 break;
             case "date0":
@@ -1190,12 +1261,10 @@ room13.chatcatch = function (callback) {
                     else
                         chat(105, 13);
                 }
-                cl.nude();
-                nav.bg("13_sisterRoom/date1.jpg");
-                if (cl.c.chastity !== null)
-                    chat(74, 13);
                 else {
-
+                    cl.nude();
+                    nav.bg("13_sisterRoom/date1.jpg");
+                    chat(74, 13);
                 }
                 break;
             case "date2":
@@ -1247,6 +1316,64 @@ room13.chatcatch = function (callback) {
             case "room24":
                 char.settime(20, 0);
                 char.room(24);
+                break;
+            case "dickBad":
+                daily.set("eva");
+                daily.set("lola");
+                char.addtime(30);
+                char.room(11);
+                break;
+            case "bj1":
+                nav.killall();
+                nav.button({
+                    "type": "img",
+                    "name": "bed",
+                    "left": 887,
+                    "top": 19,
+                    "width": 990,
+                    "height": 1061,
+                    "image": "13_sisterRoom/bj1.png"
+                }, 13);
+                break;
+            case "bj2":
+                nav.killall();
+                
+                sc.modLevel("lola", 40, 7);
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1449,
+                    "top": 260,
+                    "width": 215,
+                    "height": 820,
+                    "image": (g.isNight() ? "13_sisterRoom/13_lola_pj.png" : "13_sisterRoom/13_lola_reading.png")
+                }, 13);
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 760,
+                    "top": 295,
+                    "width": 291,
+                    "height": 785,
+                    "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
+                }, 13);
+                break;
+            case "f0":
+                nav.killall();
+                g.internal = 1;
+                cl.nude();
+                nav.bg("13_sisterRoom/f0.jpg");
+                nav.next("f");
+                break;
+            case "fEnd":
+                levels.fuckpussy("eva");
+                levels.fuckpussy("lola");
+                sc.completeMissionTask("lola", "date", 6);
+                sc.completeMissionTask("eva", "fuck", 3);
+                sc.modLevel("eva", 100, 10);
+                sc.modLevel("lola", 100, 10);
+                g.pass = 13;
+                char.room(28);
                 break;
             default: break;
         }
@@ -2225,8 +2352,109 @@ room13.chat = function (chatID) {
                 text: "It's too early in the day for games. I still have so much to do and I don't " +
                     "want to ruin optimal study hours drinking wine.",
                 button: [
-                    { chatID: -1, text: "Wiat till dark and play. ", callback: "room23" },
+                    { chatID: -1, text: "Wait till dark and play. ", callback: "room23" },
                     { chatID: -1, text: "Ok. I'll come back after dark.  ", callback: "" }
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "lola",
+                text: "Oh my. That's your penis.",
+                button: [
+                    { chatID: 108, text: "Yes it is!", callback: "" }
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "lola",
+                text: "...um, do you mind if I lick it?",
+                button: [
+                    { chatID: 110, text: "Anything for you", callback: "bj1" },
+                    { chatID: 109, text: "Nope. This dick is for " + sc.n("eva") + ". ", callback: "" },
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "eva",
+                text: "Gross! I don't want that. No one wants that! Get out pervert!",
+                button: [
+                    { chatID: 109, text: "Oh. ok. ", callback: "dickBad" },
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "lola",
+                text: "oooo. It tastes a little salty. Is that cum? Did you cum?",
+                button: [
+                    { chatID: 111, text: "...huh. No, I didn't cum! That's just precum!", callback: "bj2" },
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "eva",
+                text: sc.n("lola") + " you're such a nerd! You need to get laid! ",
+                button: [
+                    { chatID: -1, text: "Yeah you do. *wink*", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "thinking",
+                text: "I already took my dick out. Don't want to be too weird about it.",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "lola",
+                text: "Oh my. That's your penis. You better put that away or " + sc.n("landlord") +
+                    " will come in and yell at us. ",
+                button: [
+                    { chatID: -1, text: "...oh. ok.", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "eva",
+                text: "Oh look. The pervert's waving his dick around again. ",
+                button: [
+                    { chatID: 115, text: "hehehe", callback: "" },
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "lola",
+                text: "Shut up " + sc.n("eva") + ". We need this! ",
+                button: [
+                    { chatID: -1, text: "😉", callback: "f0" },
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "lola",
+                text: "My legs won't stop shaking from my orgasm overload! Damn that " +
+                    "was fun. ",
+                button: [
+                    { chatID: 117, text: "Hahaha, yeah. I can feel the entire bed shake. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "eva",
+                text: "Yeah. For a weird pervert, you can sling that dick. The bed is just " +
+                    "a mess of sweat, cum, and squirt that we'll be laying in all night. ",
+                button: [
+                    { chatID: 118, text: "Well then stop squirting so much! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "lola",
+                text: "Life is just perfect right now. I just want to stay this moment " +
+                    "forever. ",
+                button: [
+                    { chatID: -1, text: "Me too. [Drift off to sleep]", callback: "fEnd" },
                 ]
             },
         ];

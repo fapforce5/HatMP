@@ -84,6 +84,8 @@ room8.main = function () {
         nav.bg("12_bathroom/blur.jpg");
     else if (g.pass === 354)
         nav.bg("8_wardrobe/354.jpg");
+    else if (g.pass === 727)
+        nav.bg("8_wardrobe/727.jpg");
     else if (g.pass === 0)
         nav.bg("8_wardrobe/8_wardrobe.jpg");
     else {
@@ -191,7 +193,7 @@ room8.btnclick = function (name) {
             case "bra": cl.c.bra = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
             case "shirt": cl.c.shirt = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.dress = null; break;
             case "dress": cl.c.dress = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.shirt = null; cl.c.pants = null; break;
-            case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; cl.c.dress = null; cl.c.shirt = null; cl.c.pants = null; break;
+            case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; cl.c.dress = null; cl.c.shirt = null; cl.c.pants = null; cl.c.socks = null; cl.c.shoes = null; break;
             case "pj": cl.nude(); cl.c.pj = clname; break;
             case "buttplug": cl.c.buttplug = clname; break;
             case "necklace": cl.c.necklace = clname; break;

@@ -250,7 +250,6 @@ room9.btnclick = function (name) {
 
             break;
         case "porn":
-            var sissylevel = levels.get("xdress").l;
             nav.killall();
             nav.button({
                 "type": "img",
@@ -279,7 +278,7 @@ room9.btnclick = function (name) {
                 hex: "#ffffff",
                 text: "Anal Porn"
             }, 9);
-            if (sissylevel > 1) {
+            if (qdress.st[0].ach) {
                 nav.t({
                     type: "btn",
                     name: "pStrapon",
@@ -290,7 +289,7 @@ room9.btnclick = function (name) {
                     text: "Strapon Porn"
                 }, 9);
             }
-            if (sissylevel > 2) {
+            if (qdress.st[1].ach) {
                 nav.t({
                     type: "btn",
                     name: "pfuta",
@@ -301,7 +300,7 @@ room9.btnclick = function (name) {
                     text: "Futa Porn"
                 }, 9);
             }
-            if (sissylevel > 3) {
+            if (qdress.st[3].ach) {
                 nav.t({
                     type: "btn",
                     name: "pSissy",
@@ -481,6 +480,7 @@ room9.chatcatch = function (callback) {
         case "jackoffEnd":
             sex.mod("boob", false, "f", 1);
             sc.modLevel("landlord", 20, 10);
+            sc.completeMissionTask("landlord", "misc", 0);
             cl.doCum();
             char.room(10);
             break;

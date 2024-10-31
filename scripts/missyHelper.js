@@ -174,7 +174,6 @@ missy.getcases = function () {
     var canDoCase;
     var piLevel = levels.get("pi").l;
     var completeCounter = 0;
-    var sissyLevel = levels.get("xdress").l;
 
     for (i = 4; i < missy.cases.length; i++) {
         if (missy.cases[i].complete)

@@ -118,48 +118,23 @@ room25.btnclick = function (name) {
             char.room(11);
             break;
         case "mom":
-            var ll = sc.getstep("landlord");
-            if (!daily.get("landlord")) {
-                if (!sc.getEvent("me", 2))
-                    chat(1, 25);
-                else if (ll === 0)
-                    chat(2, 25);
-                else if (ll === 1)
-                    chat(3, 25);
-                else if (ll === 2)
-                    chat(7, 25);
-                else if (ll === 3)
-                    chat(4, 25);
-                else if (ll === 4)
-                    chat(42, 25);
-                else if (ll === 5)
-                    chat(44, 25);
-                else if (ll > 199)
-                    chat(46, 25);
-                else if (ll === 200)
-                    chat(61, 26);
-                else
-                    chat(6, 25);
-            }
-            else
-                chat(6, 25);
+            room26.btnclick("chat_landlord");
             break;
         case "lolaAndEva":
-            var le = sc.getstep("lola");
+            var le = sc.getLevel("lola");
             switch (le) {
                 case 0:
-                case 1:
                     chat(10, 25);
                     break;
+                case 1:
                 case 2:
-                case 3:
-                    chat(11, 25);
+                    chat(18, 25);
                     break;
-                case 4:
+                case 3:
                     chat(28, 25);
                     break;
+                case 4:
                 case 5:
-                case 6:
                     chat(32, 25);
                     break;
                 default:
@@ -173,7 +148,7 @@ room25.btnclick = function (name) {
         default:
             break;
         case "dick":
-            chat(47, 25);
+            chat(0, 25);
             break;
     }
 };
@@ -218,7 +193,12 @@ room25.chatcatch = function (callback) {
         case "takekey":
             inv.update("landlordKey", true, null);
             break;
+        case "lolaLove":
+            sc.modLevel("lola", 75, 7);
+            break;
         case "passTimeLE":
+            sc.modLevel("lola", 25, 7);
+            sc.modLevel("eva", 25, 7);
             char.addtime(75);
             char.room(25);
             break;
@@ -231,30 +211,28 @@ room25.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "bigguy",
+            text: "Can't you see we're eating? In my day kids were seen, but not heard. In case you don't know what that means, " +
+                "fuck off. The adults are busy. ",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: 1, text: "ok ", callback: "" }
             ]
         },
         {
             chatID: 1,
             speaker: "landlord",
-            text: "Hey " + sc.n("me") + " everyone pays rent around here, even " + sc.n("lola") + " and " + sc.n("eva") +
-            ". You need to check the help wanted on your computer if you want to see what's available. ",
+            text: sc.n("bigguy") + ". ",
             button: [
-                { chatID: -1, text: "Got it " + sc.n("landlord"), callback: "" }
+                { chatID: 2, text: "...", callback: "" }
             ]
         },
         {
             chatID: 2,
-            speaker: "landlord",
-            text: "Hey " + sc.n("me") + ", I'm happy you're trying to improve yourself. It's what I've always wanted. " +
-                "I've got to get ready to work at the ol' Helping Hands Sperm Bank, we've got a big delivery due in today " +
-                "and I need to get them in the cryo unit. I think you would be impressed with the amount of sperm we have, lol. " +
-                "You keep working hard and maybe you won't have to be covered in sperm so make a buck.",
+            speaker: "bigguy",
+            text: "Look. I'm sorry if that's hard to hear, but it's rude to interrupt someone while they're eating. That kid needs " +
+                "to find something else to do and stop hanging on you so much. ",
             button: [
-                { chatID: -1, text: "I will " + sc.n("landlord"), callback: "passtime1" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
@@ -445,7 +423,7 @@ room25.chat = function (chatID) {
             text: "I really thought he was the one, but I guess not.",
             button: [
                 { chatID: 25, text: "You'll find the guy, you just have to keep looking.", callback: "" },
-                { chatID: 27, text: "I'm the guy you've been looking for.", callback: "" }
+                { chatID: 27, text: "I'm the guy you've been looking for.", callback: "lolaLove" }
             ]
         },
         {
@@ -461,7 +439,7 @@ room25.chat = function (chatID) {
             speaker: "eva",
             text: "Lets head out",
             button: [
-                { chatID: 26, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "passTimeLE" }
             ]
         },
         {
@@ -630,32 +608,7 @@ room25.chat = function (chatID) {
                 { chatID: -1, text: "ok " + sc.n("landlord"), callback: "" }
             ]
         },
-        {
-            chatID: 47,
-            speaker: "bigguy",
-            text: "Can't you see we're eating? In my day kids were seen, but not heard. In case you don't know what that means, " +
-                "fuck off. The adults are busy. ",
-            button: [
-                { chatID: 48, text: "ok ", callback: "" }
-            ]
-        },
-        {
-            chatID: 48,
-            speaker: "landlord",
-            text: sc.n("bigguy") + ". ",
-            button: [
-                { chatID: 49, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 49,
-            speaker: "bigguy",
-            text: "Look. I'm sorry if that's hard to hear, but it's rude to interrupt someone while they're eating. That kid needs " +
-                "to find something else to do and stop hanging on you so much. ",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
+        
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

@@ -163,6 +163,13 @@ sc.charMission = [
                         { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
                         { id: 4, txt: "Meet her in her room. Go on dates. ", show: false, mStatus: 0, roomId: 13 },
                         { id: 5, txt: "Creampie is the best pie. ", show: false, mStatus: 0, roomId: 13 },
+                        { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
+                    ]
+            },
+            {
+                missionName: "random", mStatus: 0, title: "Misc", desc: "Random Events", task:
+                    [
+                        { id: 0, txt: "Steal her clothes [Need locker combo]", show: true, mStatus: 0, roomId: 902 },
                     ]
             },
         ],
@@ -198,6 +205,8 @@ sc.charMission = [
                 missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now ", task:
                     [
                         { id: 0, txt: "Supervised blow job. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 10 },
+                        { id: 2, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
                     ]
             },
         ],
@@ -214,6 +223,10 @@ sc.charMission = [
                         { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
                         { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
                         { id: 6, txt: "Your past", show: true, mStatus: 0, roomId: 26 },
+                        { id: 7, txt: "She's catching feeling for you.", show: true, mStatus: 0, roomId: 26 },
+                        { id: 8, txt: "She loves your dick", show: true, mStatus: 0, roomId: 26 },
+                        { id: 9, txt: "Fucking!", show: true, mStatus: 0, roomId: 26 },
+                        { id: 10, txt: "Cum sponge", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
             {
@@ -240,9 +253,10 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "misc", mStatus: -1, title: "random Events", desc: "Random", task:
+                missionName: "misc", mStatus: -1, title: "Random", desc: "Random Event Tracker", task:
                     [
-                        { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 14 },
+                        { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
+                        { id: 1, txt: "Threesome! [After Lola's first time]", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
             {
@@ -767,6 +781,31 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "cindy", mission: [
+            {
+                missionName: "fuck", mStatus: 0, title: "Man enough?", desc: "A swimmer's body is hot.", task:
+                    [
+                        { id: 0, txt: "Be manly enough. ", show: true, mStatus: 0, roomId: 901 },
+                        { id: 1, txt: "Swim race! ", show: true, mStatus: 0, roomId: 901 },
+                        { id: 2, txt: "Swoon her ", show: true, mStatus: 0, roomId: 726 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "tim", mission: [
+            {
+                missionName: "fuck", mStatus: 0, title: "Girl enough?", desc: "Love big tits!", task:
+                    [
+                        { id: 0, txt: "Tits big enough? ", show: true, mStatus: 0, roomId: 901 },
+                        { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 726 },
+                        { id: 2, txt: "The jig is up.", show: true, mStatus: 0, roomId: 726 },
+                        { id: 3, txt: "I do love bussy.", show: true, mStatus: 0, roomId: 726 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.el = function () {
@@ -930,6 +969,9 @@ sc.modLevel = function (name, amount, targetLevel) {
     sc.getch
     i = sc.i(name);
     if (amount > 0) {
+        if (sc.char[i].l > 9)
+            return;
+
         if (sc.char[i].l <= targetLevel)
             actualAmount = amount;
         else if (sc.char[i].l <= targetLevel + 1)
@@ -1316,7 +1358,8 @@ sc.getTimeline = function (char) {
             //monday wednesday friday
                 
                 { d: [1, 3, 5], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-                { d: [1, 3, 5], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
+                { d: [1, 3, 5], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
+                { d: [1, 3, 5], hstart: 8, hend: 9, roomId: 25, alt: null }, //dining
                 { d: [1, 3, 5], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
                 { d: [1, 3, 5], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
                 { d: [1, 3, 5], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
@@ -1371,38 +1414,32 @@ sc.getTimeline = function (char) {
             //sunday
                 { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
                 { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
-                { d: [0], hstart: 10, hend: 12, roomId: 12, alt: null }, //bathroom
-                { d: [0], hstart: 12, hend: 18, roomId: 13, alt: null }, //living room
-                { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-                { d: [0], hstart: 19, hend: 24, roomId: 13, alt: null }, //bedroom
+                { d: [0], hstart: 10, hend: 11, roomId: 12, alt: null }, //bathroom
+                { d: [0], hstart: 11, hend: 24, roomId: 13, alt: null }, //their room
 
-                //wednesday friday
-                { d: [3, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-                { d: [3, 5], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
-                { d: [3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
-                { d: [3, 5], hstart: 14, hend: 17, roomId: char === "lola" ? 901 : 400, alt: null }, //pool
-                { d: [3, 5], hstart: 17, hend: 19, roomId: 25, alt: null }, //dining 
-                { d: [3, 5], hstart: 19, hend: 22, roomId: null, alt: "Out somewhere..?" }, //dining
-                { d: [3, 5], hstart: 22, hend: 24, roomId: 13, alt: null }, //dining
+                //monday, wed, frid
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //kitchen
+                { d: [1, 3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                { d: [1, 3, 5], hstart: 14, hend: 17, roomId: char === "lola" ? 901 : 400, alt: null }, //pool
+                { d: [1, 3, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                { d: [1, 3, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //room
 
-                //monday, tuesday, thursday
-                { d: [1, 2, 4], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-                { d: [1, 2, 4], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
-                { d: [1, 2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
-                { d: [1, 2, 4], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
-                { d: [1, 2, 4], hstart: 18, hend: 24, roomId: 13, alt: null }, //dining
+                //tuesday thursday
+                { d: [2, 4], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [2, 4], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
+                { d: [2, 4], hstart: 8, hend: 9, roomId: 25, alt: null }, //school
+                { d: [2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
+                { d: [2, 4], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                { d: [2, 4], hstart: 18, hend: 22, roomId: 26, alt: null }, //living room
+                { d: [2, 4], hstart: 22, hend: 24, roomId: 13, alt: null }, //dining
 
                 //saturday
-                { d: [6], hstart: 0, hend: 7, roomId: 13 }, //bathroom
-                { d: [6], hstart: 7, hend: 9, roomId: 25 }, //bathroom
-                { d: [6], hstart: 9, hend: 17, roomId: null, alt: "Out somewhere..?" }, //living room
-                { d: [6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
-                { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-                { d: [6], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
+                { d: [6], hstart: 0, hend: 7, roomId: 13, alt: null }, //bathroom
+                { d: [6], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
+                { d: [6], hstart: 9, hend: 24, roomId: 13, alt: null }, //living room
             ];
-            if (sc.getMissionTask("lola", "date", 3).complete && char === "lola") {
-                timeline[11].roomId = 13;
-            }
+           
             break;
         case "cecilia":
             timeline = [
@@ -1446,19 +1483,19 @@ sc.getTimeline = function (char) {
             break;
         case "cindy":
             timeline = [
-                { d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 901, alt: null }, //pool
-                { d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [1, 2, 6], hstart: 7, hend: 20, roomId: 900, alt: null }, //school
+                { d: [0, 2, 4, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [0, 2, 4, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //pool
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 20, roomId: 900, alt: null }, //school
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
             ];
             break;
         case "tim":
             timeline = [
-                { d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 900, alt: null }, //pool
-                { d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [1, 2, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
+                { d: [0, 2, 4, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [0, 2, 4, 6], hstart: 0, hend: 20, roomId: 900, alt: null }, //pool
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
             ];
             break;

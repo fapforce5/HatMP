@@ -32,6 +32,7 @@ room24.main = function () {
 room24.btnclick = function (name) {
     switch (name) {
         case "spin":
+            gv.mod("arousal", 3);
             nav.kill();
             room24.chatcatch("topbg evaTop lolaTop");
             if (g.internal.whoTurn === "eva") {

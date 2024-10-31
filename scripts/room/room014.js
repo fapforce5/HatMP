@@ -197,6 +197,8 @@ room14.btnclick = function (name) {
                         case 7: chat(81, 14); break;
                         case 8: chat(94, 14); break;
                         case 9:
+                        case 10:
+                            sc.completeMissionTask("landlord", "man", 9);
                             nav.modbutton("motherRobe", "14_motherRoom/14_motherRobeLaugh.png", null, "img");
                             sc.select("fuck_missionary", "14_motherRoom/icon_missionary.png", 0);
                             sc.select("fuck_doggy", "14_motherRoom/icon_doggy.png", 1);
@@ -370,7 +372,7 @@ room14.btnclick = function (name) {
             nav.killall();
             nav.bg("14_motherRoom/sleep_happy.jpg");
             daily.set("landlordmolest");
-            sc.modLevel("landlord", 26, 4);
+            sc.modLevel("landlord", 26, 7);
             chat(28, 14);
             break;
         case "couple":
@@ -585,7 +587,7 @@ room14.chatcatch = function (callback) {
             gv.mod("horny", 75);
             levels.mod("oral", 50, 0);
             char.addtime(60);
-            levels.mod("landlord", 50, 10);
+            sc.modLevel("landlord", 50, 10);
             sc.completeMissionTask("landlord", "man", 4, true);
             daily.set("landlord");
             char.room(16);
@@ -595,14 +597,14 @@ room14.chatcatch = function (callback) {
             gv.mod("horny", 75);
             levels.mod("oral", 50, 0);
             char.addtime(60);
-            levels.mod("landlord", 5, 3);
+            sc.modLevel("landlord", 5, 3);
             daily.set("landlord");
             char.room(16);
             break;
         case "task_4_goodend":
             levels.oralGive(3, false, false, "f");
             char.addtime(60);
-            levels.mod("landlord", 75, 10);
+            sc.modLevel("landlord", 75, 10);
             if (!sc.getMissionTask("landlord", "man", 4).complete) {
                 sc.completeMissionTask("landlord", "man", 4, true);
             }
