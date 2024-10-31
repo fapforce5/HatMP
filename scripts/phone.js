@@ -231,6 +231,8 @@ phone.settings = function () {
     var fantasyCreatures = gv.get("fantasyCreatures");
     var difficulty = gv.get("difficulty");
     var clock24 = gv.get("clock24");
+    let transformation = gv.get("transformation");
+    
     nav.button({
         "type": "zimg",
         "name": "phone_",
@@ -248,13 +250,16 @@ phone.settings = function () {
         { y: 1, x: 1, b: 2, n: "clock24", i: "clock24", active: clock24 === "24" },
         { y: 2, x: 0, b: 2, n: "fantOff", i: "fantOff", active: !fantasyCreatures },
         { y: 2, x: 1, b: 2, n: "fantOn", i: "fantOn", active: fantasyCreatures },
+        { y: 3, x: 0, b: 3, n: "d_on", i: "d_on", active: transformation === "voluntary" },
+        { y: 3, x: 1, b: 3, n: "d_off", i: "d_off", active: transformation === "voluntaryoff" },
+        { y: 3, x: 2, b: 3, n: "d_auto", i: "d_auto", active: transformation === "forced" },
     ];
     $.each(settings, function (i, v) {
         nav.button({
             "type": "zbtn",
             "name": "phone_setting_" + v.n,
             "left": 925 + (v.x * (600/v.b)),
-            "top": 300 + (v.y * 200),
+            "top": 240 + (v.y * 160),
             "width": 600/v.b,
             "height": 50,
             "image": "999_phone/" + v.i + "_" + (v.active ? "active" : "inactive") + ".png",
@@ -877,6 +882,18 @@ room9999.btnclick = function (name) {
             case "phone_setting_fantOff":
             case "phone_setting_fantOn":
                 gv.set("fantasyCreatures", name === "phone_setting_fantOn");
+                phone.settings();
+                break;
+            case "phone_setting_d_on":
+                gv.set("transformation", "voluntary");
+                phone.settings();
+                break;
+            case "phone_setting_d_off":
+                gv.set("transformation", "voluntaryoff");
+                phone.settings();
+                break;
+            case "phone_setting_d_auto":
+                gv.set("transformation", "forced");
                 phone.settings();
                 break;
             case "phone_save_save_0":

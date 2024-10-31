@@ -22,6 +22,7 @@ room28.main = function () {
 
     var txtDisplay = room28.dreams();
     var forcedTransformation = null
+    let trasnformationSetting = null;
 
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
@@ -70,6 +71,9 @@ room28.main = function () {
                 break;
             case "xdressPoints":
                 xdressPoints = gv.st[i].t;
+                break;
+            case "transformation":
+                trasnformationSetting = gv.st[i].t;
                 break;
         }
     }
@@ -202,7 +206,7 @@ room28.main = function () {
         if (cl.c.chest === 0 && levels.st[12].l > 0) {
             chat(0, 28);
         }
-        else if (levels.get("xdress").l > 0 && cl.c.chest > 0) {
+        else if (levels.get("xdress").l > 0 && cl.c.chest > 0 && trasnformationSetting !== "voluntaryoff") {
             nav.button({
                 "type": "img",
                 "name": "xd",
@@ -385,17 +389,49 @@ room28.endSleepyTime = function (hasTimeout) {
 };
 
 room28.btnclick = function (name) {
+    let tText = "";
+    let xline;
+    let xtop = 600 * g.ratio;
+    let xleft = 1634 * g.ratio;
+    let xwidth = 271 * g.ratio;
     if (name === "qquit") {
+        nav.button({
+            "type": "img",
+            "name": "bigDisplay",
+            "left": 1645,
+            "top": 153,
+            "width": 250,
+            "height": 400,
+            "image": "28_transformation/qquit.png"
+        }, 28);
+
+        //qquit
+        tText += '<img src="./images/room/28_transformation/qquit_close.png" class="room-btn rom-event" data-name="qquit_confirm" data-room="28" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (10 * g.ratio) + 'px;" />';
+
+        tText += '<div class="char-20" style="font-size: ' + 20 * g.ratio + 'px; margin-top: ' + (50 * g.ratio) + 'px;">' +
+            "Close and hide until you turn it back on in the settings. " +
+            '</div>';
+
+        tText += '<img src="./images/room/28_transformation/qquit_off.png" class="room-btn rom-event" data-name="qquit_hide" data-room="28" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+
+        xline = '<div class="room-img" data-name="bigDisplay" data-room="28" style="top:' + xtop + 'px; left:' + xleft + 'px; width:' + xwidth + 'px; color: #ffffff; text-align:center;" >' + tText + '</div>';
+
+        $('#room-buttons').append(xline);
+        //room28.endSleepyTime(false);
+    }
+    else if (name === "qquit_confirm") {
         room28.endSleepyTime(false);
     }
-    if (name.startsWith("qxdress_")) {
+    else if (name === "qquit_hide") {
+        gv.set("transformation", "voluntaryoff");
+        room28.endSleepyTime(false);
+    }
+    else if (name.startsWith("qxdress_")) {
         var id = parseInt(name.replace("qxdress_", ""));
         var points = levels.get("xdress").l
         var parentAch = null;
-        var tText = "";
-        xtop = 600 * g.ratio;
-        xleft = 1634 * g.ratio;
-        xwidth = 271 * g.ratio;
+        tText = "";
+        
         if (qdress.st[id].pId !== null) {
             parentAch = qdress.st[qdress.st[id].pId].ach ? null : qdress.st[qdress.st[id].pId].name;
         }

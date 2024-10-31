@@ -550,6 +550,9 @@ room316.btnclick = function (name) {
             cl.nude();
             chat(140, 316);
             break;
+        case "room318":
+            char.room(318);
+            break;
         case "reset":
             char.room(316);
             break;
@@ -877,6 +880,7 @@ room316.chatcatch = function (callback) {
         case "bedroom":
             nav.killall();
             nav.bg("316_livingroom/bg.jpg");
+            nav.next("room318")
             nav.buildnav([318]);
             break;
         default:

@@ -273,6 +273,9 @@ nav.killbuttonStartsWith = function (name) {
 
 nav.buildnav = function (roomIDList) {
     var i;
+    if (!$('#room_footer').is(":visible") && !$(".room-speachGroup").is(":visible"))
+        $('#room_footer').show();
+
     for (i = 0; i < roomIDList.length; i++) {
         $.each(g.rooms, function (j, u) {
             if (u.roomID === roomIDList[i]) {

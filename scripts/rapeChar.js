@@ -14,6 +14,7 @@
                 fight: g.rand(10, 30),
                 energy: 100,
                 rape0: "rape0_first.png",
+                rape1: "rape0_second.png"
             },
 
         ];

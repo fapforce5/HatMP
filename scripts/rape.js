@@ -342,6 +342,19 @@ room1004.btnclick = function (name) {
             nav.killbuttonStartsWith("b1004-");
             rape.rolldice(true);
             break;
+        case "struggleRape0":
+            nav.killbuttonStartsWith("b1004");
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape1
+            }, 1004);
+            break;
         case "submit":
             if (levels.get("sub").l < 4) {
                 chat(0, 1004); //not submissive enough
