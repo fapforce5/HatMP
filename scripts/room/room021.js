@@ -23,6 +23,11 @@ room21.main = function () {
         g.pass = 9;
         chat(8, 21);
     }
+    else if (g.pass === "finger") {
+        char.addtime(60);
+        g.pass = 9;
+        chat(10, 21);
+    }
 };
 
 room21.btnclick = function (name) {
@@ -160,6 +165,15 @@ room21.chat = function (chatID) {
             text: "That is how you spank and ass! ",
             button: [
                 { chatID: -1, text: "OOooooohch", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "landlord",
+            text: "You need to learn to keep your hands out of others! " +
+                "Now pull down your pants!",
+            button: [
+                { chatID: 1, text: "oh no", callback: "spank2" }
             ]
         }
     ];

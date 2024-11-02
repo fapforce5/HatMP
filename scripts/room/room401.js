@@ -328,7 +328,7 @@ room401.makeClothing = function (type, sex) {
     else if (qdress.st[7].ach)
         lewdlevel = [0, 1, 2, 3];
     else if (qdress.st[3].ach)
-        lewdlevel[0, 1, 2];
+        lewdlevel = [0, 1, 2];
     else
         lewdlevel = [0];
     console.log("lewdlevel: " + lewdlevel);

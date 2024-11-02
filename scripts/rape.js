@@ -159,7 +159,8 @@ rape.updateEnergy = function (enemyEnergyChange = null, myEnergyChange = null) {
 };
 
 rape.displayMenu = function () {
-    var btnList = new Array();
+    let btnList = new Array();
+    let i;
     nav.killbuttonStartsWith("b1004");
     switch (rape.menu) {
         case "init":
@@ -169,6 +170,9 @@ rape.displayMenu = function () {
             break;
         case "struggleWin":
             btnList.push({ n: "flee", i: "icon_flee.png" });
+            break;
+        case "takeit":
+            btnList.push({ n: "rapeStart", i: "icon_whimper.png" });
             break;
     }
 
@@ -325,7 +329,7 @@ rape.rolldice = function (updateEnergy = false) {
             if (fightDiff > 15)
                 fightDiff = 15;
             var enemyEnergyChange = (20 - fightDiff) * -1;
-            rape.updateEnergy(enemyEnergyChange, -5);
+            rape.updateEnergy(enemyEnergyChange, -15);
         }
     }
     //Object { punchPower: 9, energyMult: "0.50", total: 5, enemyFightLevel: 50, winProb: "Extremely Hard" }
@@ -345,6 +349,7 @@ room1004.btnclick = function (name) {
         case "struggleRape0":
             nav.killbuttonStartsWith("b1004");
             nav.killbutton("r1004bg");
+            
             nav.button({
                 "type": "img",
                 "name": "r1004bg",
@@ -354,6 +359,8 @@ room1004.btnclick = function (name) {
                 "height": 1080,
                 "image": "1004_rape/" + rape.char.rape1
             }, 1004);
+            rape.menu = "takeit";
+            rape.displayMenu();
             break;
         case "submit":
             if (levels.get("sub").l < 4) {

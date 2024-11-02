@@ -215,13 +215,71 @@ room26.btnclick = function (name) {
             nav.killall();
             char.settime(22, 0);
             nav.bg("26_livingRoom/eend.jpg");
-            sc.modLevel("lola", 40, 7);
-            sc.modLevel("eva", 40, 7);
-            sc.modLevel("landlord", 40, 7);
+            sc.modLevel("lola", 30, 7);
+            sc.modLevel("eva", 30, 7);
+            sc.modLevel("landlord", 30, 7);
             chat(41, 26);
             break;
         case "e_molest":
-
+            nav.killall();
+            g.internal = 0;
+            sc.select("e_molest1", "26_livingRoom/icon_molest0.png", 0);
+            sc.selectCancel("e_tv", 2);
+            nav.bg("26_livingRoom/m0.jpg");
+            break;
+        case "e_molest1":
+            nav.killall();
+            if (sc.getLevel("lola") > 1) {
+                nav.bg("26_livingRoom/m1_good.jpg");
+                sc.select("e_molest2", "26_livingRoom/icon_molest1.png", 0);
+                sc.selectCancel("e_tv", 2);
+            }
+            else {
+                nav.bg("26_livingRoom/m1_bad.jpg");
+                chat(69, 26);
+            }
+            break;
+        case "e_molest2":
+            nav.killall();
+            if (sc.getLevel("lola") > 2) {
+                nav.bg("26_livingRoom/m2_good.jpg");
+                sc.select("e_molest3", "26_livingRoom/icon_molest2.png", 0);
+                sc.selectCancel("e_tv", 2);
+            }
+            else {
+                nav.bg("26_livingRoom/m2_bad.jpg");
+                chat(69, 26);
+            }
+            break;
+        case "e_molest3":
+            nav.killall();
+            if (sc.getLevel("lola") > 3) {
+                nav.bg("26_livingRoom/m3_good.jpg");
+                sc.select("e_molest4", "26_livingRoom/icon_molest3.png", 0);
+                sc.selectCancel("e_tv", 2);
+            }
+            else {
+                nav.bg("26_livingRoom/m3_bad.jpg");
+                chat(69, 26);
+            }
+            break;
+        case "e_molest4":
+            nav.killall();
+            nav.bg("26_livingRoom/m4.jpg");
+            chat(70, 26);
+            break;
+        case "m6":
+            nav.killbutton("m6");
+            if (g.rand(0, 2) === 0) {
+                nav.bg("26_livingRoom/m6_bad.jpg");
+                chat(72, 26);
+            }
+            else {
+                sex.mod("hand", true, "f", 1);
+                sc.modLevel("lola", 30, 7);
+                nav.bg("26_livingRoom/m6.jpg");
+                chat(71, 26);
+            }
             break;
         case "f1":
             nav.killall();
@@ -416,17 +474,6 @@ room26.chatcatch = function (callback) {
                 if (sc.getMissionTask("lola", "date", 5).complete) {
                     nav.bg("26_livingRoom/e1.jpg");
                     nav.next("f1");
-                    //nav.killall();
-                    //nav.button({
-                    //    "type": "img",
-                    //    "name": "f0",
-                    //    "left": 428,
-                    //    "top": 130,
-                    //    "width": 1178,
-                    //    "height": 918,
-                    //    "image": "26_livingRoom/f0.png"
-                    //}, 26);
-                    //chat(47, 26);
                 }
                 else if (sc.getLevel("lola") > 4 && sc.getLevel("eva") > 4) {
                     nav.killall();
@@ -485,6 +532,24 @@ room26.chatcatch = function (callback) {
                     "height": 135,
                     "image": "26_livingRoom/butthole.png"
                 }, 26);
+                break;
+            case "e_tv":
+                room26.btnclick("e_tv");
+                break;
+            case "m5":
+                if (sc.getLevel("lola") > 4) {
+                    nav.bg("26_livingRoom/m5_good.jpg");
+                    nav.next("m6");
+                }
+                else {
+                    nav.bg("26_livingRoom/m5_bad.jpg");
+                    chat(69, 26);
+                }
+                break;
+            case "spanking":
+                char.addtime(60);
+                g.pass = "finger";
+                char.room(21);
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -1149,6 +1214,46 @@ room26.chat = function (chatID) {
                 text: "Your reward is living in my house. Now scram. I'm watching my shows.  ",
                 button: [
                     { chatID: -1, text: "Ok", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "thinking",
+                text: "She looks angry. I better stop here before she cuauses a scene. ",
+                button: [
+                    { chatID: -1, text: "[Increase your level with her]", callback: "e_tv" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "thinking",
+                text: "Oh wow. She hasn't stopped me. I can smell her pussy, but it's " +
+                    "really faint. I wonder if " + sc.n("eva") + " or " + sc.n("landlord") +
+                    " can smell her. They haven't looked over, so I'm probably good. I'm " +
+                    "just going to try dipping my fingers inside her pussy. Just to see " +
+                    "how it feels. ",
+                button: [
+                    { chatID: -1, text: "[Finger that slut]", callback: "m5" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "thinking",
+                text: "Yes! I totally fingered her! My fingers smell like her pussy. I'm " +
+                    "totally never washing them. Better put my finger away before we get caught. ",
+                button: [
+                    { chatID: -1, text: "[Sniff your fingers and watch TV]", callback: "e_tv" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "landlord",
+                text: "Get your fingers out of your " + g.makeSingular(sc.n("el")) + 
+                    "! Do you two really think I have lost my ability to smell of feel. " +
+                    sc.n("lola") + " go wash your vagina, it smells! " + sc.n("me") + " stop " +
+                    "fingering " + sc.n("lola") + ". Now follow me for your spanking!  ",
+                button: [
+                    { chatID: -1, text: "Awwwww", callback: "spanking" },
                 ]
             },
         ];

@@ -1431,8 +1431,8 @@ sc.getTimeline = function (char) {
                 { d: [2, 4], hstart: 8, hend: 9, roomId: 25, alt: null }, //school
                 { d: [2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
                 { d: [2, 4], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
-                { d: [2, 4], hstart: 18, hend: 22, roomId: 26, alt: null }, //living room
-                { d: [2, 4], hstart: 22, hend: 24, roomId: 13, alt: null }, //dining
+                { d: [2, 4], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
+                { d: [2, 4], hstart: 20, hend: 24, roomId: 13, alt: null }, //dining
 
                 //saturday
                 { d: [6], hstart: 0, hend: 7, roomId: 13, alt: null }, //bathroom
