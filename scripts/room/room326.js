@@ -1,6 +1,7 @@
 ﻿//Room name
 var room326 = {};
 room326.main = function () {
+    daily.set("rachel");
     nav.button({
         "type": "brush",
         "name": "horse",
@@ -32,21 +33,26 @@ room326.btnclick = function (name) {
             chat(0, 326);
             break;
         case "cock":
-            var horseLove2 = sc.getstep("horse");
-            if (horseLove2 < 40) {
-                chat(2, 326);
+            if (levels.get("beast").l < 3) {
+                chat(27, 326);
             }
             else {
-                nav.killbutton("cock");
-                nav.button({
-                    "type": "hand",
-                    "name": "cock1",
-                    "left": 865,
-                    "top": 623,
-                    "width": 250,
-                    "height": 263,
-                    "image": "326_stable/cock1.png"
-                }, 326);
+                var horseLove2 = sc.getLevel("horse");
+                if (horseLove2 < 2) {
+                    chat(2, 326);
+                }
+                else {
+                    nav.killbutton("cock");
+                    nav.button({
+                        "type": "hand",
+                        "name": "cock1",
+                        "left": 865,
+                        "top": 623,
+                        "width": 250,
+                        "height": 263,
+                        "image": "326_stable/cock1.png"
+                    }, 326);
+                }
             }
             break;
         case "cock1":
@@ -62,18 +68,23 @@ room326.btnclick = function (name) {
             }, 326);
             break;
         case "cock2":
-            var horseystep = sc.getstep("horse");
-            if (horseystep < 45) {
+            var horseLevel = sc.getLevel("horse").l;
+            if (horseLevel < 3) {
                 nav.killall();
                 nav.bg("326_stable/horse3.jpg");
+                chat(2, 326);
+            }
+            else if (sc.getMission("horse", "sex").notStarted) {
                 chat(3, 326);
             }
-            else if (horseystep < 60) {
+            else if (horseLevel < 4) {
                 nav.killall();
                 nav.bg("326_stable/horse5.jpg");
                 chat(9, 326);
             }
-            else if (horseystep < 100) {
+            else if (sc.getMissionTask("horse", "sex", 1).notStarted) {
+                nav.killall();
+                nav.bg("326_stable/horse5.jpg");
                 chat(14, 326);
             }
             else {
@@ -86,8 +97,9 @@ room326.btnclick = function (name) {
             nav.bg("326_stable/lick" + g.internal + ".jpg");
             if (g.internal === 11) {
                 cl.c.cumface = true;
-                gv.mod("giveOralMale", 1);
-                gv.mod("loadSwollowed", 1);
+                //gv.mod("giveOralMale", 1);
+                //gv.mod("loadSwollowed", 1);
+                levels.oralGive(5, false, false, "m");
                 nav.killbutton("bj");
                 chat(22, 326);
             }
@@ -102,14 +114,13 @@ room326.chatcatch = function (callback) {
     switch (callback) {
         case "brushEnd":
             g.internal = "brush";
-            room326.chatcatch("incrementHorse");
+            sc.modLevel("horse", 40, 4);
+            levels.mod("beast", 34, 3);
             gv.mod("money", 20);
-            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;
         case "badEnd":
-            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;
@@ -121,6 +132,7 @@ room326.chatcatch = function (callback) {
             nav.bg("326_stable/horse4.jpg");
             break;
         case "horse5":
+            nav.killall();
             nav.bg("326_stable/horse5.jpg");
             break;
         case "horse6":
@@ -151,23 +163,27 @@ room326.chatcatch = function (callback) {
             cl.display();
             break;
         case "horseJackitEnd":
+            if (sc.getMission("horse", "sex").notStarted) {
+                sc.startMission("horse", "sex");
+                sc.completeMissionTask("horse", "sex", 0);
+            }
             g.internal = "jack";
-            room326.chatcatch("incrementHorse");
+            sc.modLevel("horse", 80, 8);
+            levels.mod("beast", 50, 4);
             gv.mod("money", 20);
-            gv.mod("giveHandjobMale", 1);
-            daily.set("rachel");
+            sex.mod("hand", true, "m", 1);
             char.addtime(60);
             char.room(0);
             break;
         case "checkBrush":
-            var checkHorse = sc.getstep("horse");
-            if (checkHorse < 20)
+            var checkHorse = sc.getLevel("horse");
+            if (checkHorse === 0)
                 chat(1, 326);
-            else if (checkHorse < 40)
+            else if (checkHorse === 1)
                 chat(10, 326);
-            else if (checkHorse < 60)
+            else if (checkHorse === 2)
                 chat(11, 326);
-            else if (checkHorse < 80)
+            else if (checkHorse === 3)
                 chat(12, 326);
             else
                 chat(13, 326);
@@ -212,21 +228,24 @@ room326.chatcatch = function (callback) {
         case "lick6":
             nav.bg("326_stable/lick6.jpg");
             g.internal = 7;
-            nav.button({
-                "type": "btn",
-                "name": "bj",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 326);
+            nav.next("bj");
+            //nav.button({
+            //    "type": "btn",
+            //    "name": "bj",
+            //    "left": 1687,
+            //    "top": 615,
+            //    "width": 233,
+            //    "height": 150,
+            //    "image": "526_bar/arrowRight.png"
+            //}, 326);
             break;
         case "lick12":
             nav.bg("326_stable/lick12.jpg");
             break;
         case "lick13":
-            sc.setstep("horse", 100);
+            sc.completeMissionTask("horse", "sex", 1);
+            sc.modLevel("horse", 80, 8);
+            levels.mod("beast", 50, 5);
             char.addtime(120);
             char.room(0);
             break;
@@ -237,7 +256,6 @@ room326.chatcatch = function (callback) {
             nav.bg("326_stable/caught1.jpg");
             break;
         case "caught2":
-            daily.set("rachel");
             char.addtime(60);
             char.room(0);
             break;
@@ -277,7 +295,7 @@ room326.chat = function (chatID) {
             speaker: "thinking",
             text: "What the hell am I doing? I should stop this. ",
             button: [
-                { chatID: 4, text: "...", callback: "horse4" },
+                { chatID: 4, text: "Rub his penis", callback: "horse4" },
                 { chatID: 6, text: "Stop", callback: "stop" }
             ]
         },
@@ -286,7 +304,7 @@ room326.chat = function (chatID) {
             speaker: "thinking",
             text: "Really. I should stop, what a fucking degenerate I am. ",
             button: [
-                { chatID: 5, text: "...", callback: "horse5" },
+                { chatID: 5, text: "Stroke his penis", callback: "horse5" },
                 { chatID: 6, text: "Stop, Really", callback: "stop" }
             ]
         },
@@ -295,7 +313,7 @@ room326.chat = function (chatID) {
             speaker: "thinking",
             text: "STOP YOU SICK FUCK. Stop stop stop!",
             button: [
-                { chatID: 7, text: "...", callback: "horse6" },
+                { chatID: 7, text: "Stroke faster! ", callback: "horse6" },
                 { chatID: 6, text: "Stop or he's going to blow!", callback: "stop" }
             ]
         },
@@ -369,6 +387,7 @@ room326.chat = function (chatID) {
             text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
             button: [
                 { chatID: 15, text: "Lick it", callback: "lick0" },
+                { chatID: 9, text: "Rub his weiner", callback: "horse5" },
                 { chatID: -1, text: "Just brush it", callback: "horse" },
             ]
         },
@@ -470,6 +489,14 @@ room326.chat = function (chatID) {
                 "Gross, you little weird-o. Put your clothes back on and get out of here before you take a beating. ",
             button: [
                 { chatID: -1, text: "oh crap.", callback: "caught2" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "thinking",
+            text: "I'm not touching a horse cock! Gross! ",
+            button: [
+                { chatID: -1, text: "[Need beast level 3]", callback: "" },
             ]
         },
     ];

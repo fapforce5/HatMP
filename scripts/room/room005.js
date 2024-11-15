@@ -79,11 +79,11 @@ room5.chatcatch = function (callback) {
             nav.bg("5_evaMassage/laugh.jpg", "5_evaMassage/laugh_night.jpg");
             break;
         case "feet":
-            sc.modLevel("eva", 27, 5);
+            sc.modLevel("eva", 52, 7);
             nav.bg("5_evaMassage/bg.jpg", "5_evaMassage/bg_night.jpg");
             break;
         case "boobs":
-            sc.modLevel("lola", 27, 5);
+            sc.modLevel("lola", 52, 7);
             nav.bg("5_evaMassage/bg.jpg", "5_evaMassage/bg_night.jpg");
             break;
         case "massage0":
@@ -133,8 +133,8 @@ room5.chatcatch = function (callback) {
                 if (cl.c.chastity !== null) {
                     gender.setChanges("lola", "chastity");
                     gender.setChanges("eva", "chastity");
-                    sc.modSecret("lola", 5);
-                    sc.modSecret("eva", 5);
+                    sc.modSecret("lola", 25);
+                    sc.modSecret("eva", 25);
                     chat(26, 5);
                 }
                 else {
@@ -173,8 +173,8 @@ room5.chatcatch = function (callback) {
                 if (cl.c.chastity !== null) {
                     gender.setChanges("lola", "chastity");
                     gender.setChanges("eva", "chastity");
-                    sc.modSecret("lola", 5);
-                    sc.modSecret("eva", 5);
+                    sc.modSecret("lola", 50);
+                    sc.modSecret("eva", 50);
                     chat(26, 5);
                 }
                 else {
@@ -188,8 +188,10 @@ room5.chatcatch = function (callback) {
             gv.mod("arousal", 53);
             sc.completeMissionTask("eva", "massage", g.internal.level, true);
             if (g.internal.level > 0) {
-                if (sc.getMission("eva", "spin").notStarted)
-                    sc.startMission("eva", "spin");
+                if (sc.getMission("eva", "games").notStarted) {
+                    sc.startMission("eva", "games");
+                    sc.completeMissionTask("eva", "games", 0);
+                }
             }
             if (g.internal.level > 2) {
                 sc.completeMission("eva", "massage", true);
@@ -200,7 +202,7 @@ room5.chatcatch = function (callback) {
             }
             else if (g.internal.nude)
                 cl.undo();
-            sc.modLevel("eva", 38, g.internal.level);
+            sc.modLevel("eva", 52, 7);
             char.addtime(46);
             if (g.hourBetween(7, 21))
                 char.room(13);

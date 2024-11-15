@@ -90,8 +90,8 @@ sc.char = [
     { name: "juniper", display: "Juniper", image: "juniper.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
 
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "futayellow", display: "Yellow", image: "futaYellow.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "futared", display: "Red", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "futa1", display: "Fink", image: "futaYellow.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "futa2", display: "Frown", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "slime", display: "Slime Girl", image: "slime.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "stacy", display: "Stacy", image: "stacy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
@@ -113,6 +113,9 @@ sc.char = [
     { name: "philbert", display: "Philbert", image: "philbert.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
     { name: "sporty", display: "Sporty", image: "sporty.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
+    { name: "photo", display: "Photographer", image: "photo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
+
+    { name: "blade", display: "Blade", image: "blade.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -130,7 +133,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 13 },
                         { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 13 },
-                        { id: 2, txt: "Compliment massage massage started ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Massages", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
@@ -144,17 +147,35 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
+                missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
-                missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
+                missionName: "date", mStatus: 0, title: "Practice dates", desc: "You two should practice for the real thing.", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Come by before dark for our first practice date. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
+                        { id: 4, txt: "Meet her in her room. Go on dates. ", show: false, mStatus: 0, roomId: 13 },
+                        { id: 5, txt: "Creampie is the best pie. ", show: false, mStatus: 0, roomId: 13 },
+                        { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
+                    [
+                        { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
+            {
+                missionName: "random", mStatus: 0, title: "Misc", desc: "Random Events", task:
+                    [
+                        { id: 0, txt: "Steal her clothes [Need locker combo]", show: true, mStatus: 0, roomId: 902 },
                     ]
             },
         ],
@@ -179,20 +200,27 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "spin", mStatus: 0, title: "Spin the bottle", desc: "Play Spin the bottle with them. ", task:
+                missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
-                missionName: "tord", mStatus: 0, title: "Truth or Dare", desc: "Play Truth or Dare", task:
+                missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
                     [
-                        { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-                        { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
-
+            {
+                missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now ", task:
+                    [
+                        { id: 0, txt: "Supervised blow job. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 10 },
+                        { id: 2, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
+                    ]
+            },
         ],
     },
     {
@@ -200,23 +228,25 @@ sc.charMission = [
             {
                 missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
                     [
-                        { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 16 },
-                        { id: 1, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 26 },
+                        { id: 1, txt: "Help at the sperm bank. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 2, txt: "Come to the sperm bank Saturday morning. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 3, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
+                        { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
+                        { id: 6, txt: "Your past", show: true, mStatus: 0, roomId: 26 },
+                        { id: 7, txt: "She's catching feeling for you.", show: true, mStatus: 0, roomId: 26 },
+                        { id: 8, txt: "She loves your dick", show: true, mStatus: 0, roomId: 26 },
+                        { id: 9, txt: "Fucking!", show: true, mStatus: 0, roomId: 26 },
+                        { id: 10, txt: "Cum sponge", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
             {
-                missionName: "chores", mStatus: 1, title: "Chores", desc: "Get an allowance for doing chores around the house. ", task:
-                    [
-                        { id: 0, txt: "Washt the dishes. ", show: true, mStatus: 1, roomId: 16 },
-                        { id: 1, txt: "Make her bed. ", show: true, mStatus: 0, roomId: 16 },
-                    ]
-            },
-            {
-                missionName: "spermbank", mStatus: -1, title: "Helping at the Sperm Bank", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
+                missionName: "spermbank", mStatus: -1, title: "Sperm Bank [Side Quest]", desc: "On Saturday Morning visit the Sperm Bank to help out. ", task:
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                         { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 2, txt: "Helped first time. ", show: false, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Sperm Doner Assistant Nurse. ", show: false, mStatus: 0, roomId: 350 },
                     ]
             },
             {
@@ -225,12 +255,26 @@ sc.charMission = [
                         { id: 0, txt: "Talk about butts ", show: true, mStatus: 0, roomId: 14 },
                         { id: 1, txt: "Forbidden kiss.", show: true, mStatus: 0, roomId: 14 },
                         { id: 2, txt: "Wet Pussy Lips", show: true, mStatus: 0, roomId: 14 },
+                        { id: 3, txt: "Testing a new toy. ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 4, txt: "Oral Pleasure. ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 5, txt: "Learn to eat pussy [Oral Level 1]", show: true, mStatus: 0, roomId: 14 },
+                        { id: 6, txt: "Will they or won't they?", show: true, mStatus: 0, roomId: 14 },
+                        { id: 7, txt: "Dominance", show: true, mStatus: 0, roomId: 14 },
+                        { id: 8, txt: "Coitus interruptus", show: true, mStatus: 0, roomId: 14 },
+                        { id: 9, txt: "You've turned her into a cum sponge", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {
-                missionName: "misc", mStatus: -1, title: "random Events", desc: "Random", task:
+                missionName: "misc", mStatus: -1, title: "Random", desc: "Random Event Tracker", task:
                     [
-                        { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 14 },
+                        { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
+                        { id: 1, txt: "Threesome! [After Lola's first time]", show: true, mStatus: 0, roomId: 26 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: -1, title: "Naughty girl", desc: "You're her sissy now.", task:
+                    [
+                        { id: 0, txt: "Have the talk", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
         ]
@@ -252,9 +296,50 @@ sc.charMission = [
     {
         name: "zoey", mission: [
             {
-                missionName: "friends", mStatus: 1, title: "Friends", desc: "Not ready yet", task:
+                missionName: "friends", mStatus: 1, title: "Friends", desc: "BFFs forever!", task:
                     [
-                        { id: 0, txt: "In development.", show: true, mStatus: 0, roomId: 0 },
+                        { id: 0, txt: "I'm a can opener", show: true, mStatus: 0, roomId: 501 },
+                        { id: 1, txt: "Back for a can of beat ass?", show: true, mStatus: 0, roomId: 501 },
+                        { id: 2, txt: "Meet my friend. ", show: true, mStatus: 0, roomId: 501 },
+                        { id: 3, txt: "Sleep over. ", show: true, mStatus: 0, roomId: 501 },
+                        { id: 4, txt: "I have a feeling", show: true, mStatus: 0, roomId: 501 },
+                        { id: 5, txt: "I need your help!", show: true, mStatus: 0, roomId: 501 },
+                    ]
+            },
+            {
+                missionName: "cheating", mStatus: -1, title: "Chloé", desc: "Find out if Chloé is cheating", task:
+                    [
+                        { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
+                        { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
+                        { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400 },
+                        { id: 3, txt: "Glory hole?.", show: true, mStatus: 0, roomId: 216 },
+                    ]
+            },
+            {
+                missionName: "sex", mStatus: -1, title: "Fuck me please", desc: "Will we be more than friends?", task:
+                    [
+                        { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
+                        { id: 1, txt: "Mystery friend at night. ", show: true, mStatus: 0, roomId: 502 },
+                        { id: 2, txt: "Handcuffs and chastity. ", show: true, mStatus: 0, roomId: 525 },
+                        { id: 3, txt: "Mon cœur souffre pour toi", show: true, mStatus: 0, roomId: 525 },
+                        { id: 4, txt: "Sex at home, sex at work, sex everywhere", show: true, mStatus: 0, roomId: 502 },
+                    ]
+            },
+            {
+                missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
+                    [
+                        { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "stormy", mission: [
+            {
+                missionName: "property", mStatus: 0, title: "Property", desc: "You're my property", task:
+                    [
+                        { id: 0, txt: "Marked by the piss. ", show: true, mStatus: 0, roomId: 550 },
+
                     ]
             },
         ]
@@ -318,7 +403,7 @@ sc.charMission = [
                         { id: 0, txt: "Meet up. ", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Get to know her better. ", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "Friday or Saturday before " + nav.convertTime(20, 0) + ". ", show: true, mStatus: 0, roomId: 315 },
-                        { id: 3, txt: "A suprise, to be sure", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "A surprise, to be sure", show: true, mStatus: 0, roomId: 315 },
                         { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 315 },
                         { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 315 },
                         { id: 6, txt: "In development", show: true, mStatus: 0, roomId: 315 },
@@ -328,9 +413,19 @@ sc.charMission = [
                 missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
             },
             {
-                missionName: "bitch", mStatus: 1, title: "Are you a bitch? ", desc: "Deeper into her rabbit hole. ", task:
+                missionName: "bitch", mStatus: 0, title: "Wonderful boyfriend", desc: "What a great guy! ", task:
                     [
-                        { id: 0, txt: "Back from vacation", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Help me and I'll help you. [End of this path]", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+            {
+                missionName: "cuck", mStatus: 0, title: "Cuck", desc: "It's not cheating if you watch", task:
+                    [
+                        { id: 0, txt: "Found out", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "Open thigs up a bit", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "Video", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "In development [NOT MADE YET!]", show: true, mStatus: 0, roomId: 315 },
                     ]
             },
         ]
@@ -403,7 +498,7 @@ sc.charMission = [
     {
         name: "spanky", mission: [
             {
-                missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Bye some shit", task:
+                missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Buy some shit", task:
                     [
                         { id: 0, txt: "You're cool. I guess", show: true, mStatus: 0, roomId: 301 },
                     ]
@@ -505,8 +600,8 @@ sc.charMission = [
                         { id: 0, txt: "Blow job", show: false, mStatus: 0, roomId: 77 },
                         { id: 1, txt: "Pussy", show: false, mStatus: 0, roomId: 77 },
                         { id: 2, txt: "Anus", show: false, mStatus: 0, roomId: 77 },
-                        { id: 1, txt: "Sleepy pussy", show: false, mStatus: 0, roomId: 76 },
-                        { id: 2, txt: "Sleepy anal", show: false, mStatus: 0, roomId: 76 },
+                        { id: 3, txt: "Sleepy pussy", show: false, mStatus: 0, roomId: 76 },
+                        { id: 4, txt: "Sleepy anal", show: false, mStatus: 0, roomId: 76 },
                     ]
             },
             {
@@ -523,16 +618,211 @@ sc.charMission = [
                 missionName: "bitch", mStatus: 0, title: "Her Honor", desc: "Will you save her honor? ", task:
                     [
                         { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
-                        { id: 1, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
-                        { id: 2, txt: "Is he getting closer? ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 3, txt: "Make a choice. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 4, txt: "I'm now the target. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 5, txt: "More to come later. ", show: true, mStatus: 0, roomId: 350 },
+                        { id: 1, txt: "Titty grabing perv", show: true, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
+                        { id: 3, txt: "Stop touching her!", show: true, mStatus: 0, roomId: 350 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "ppgirl", mission: [
+            {
+                missionName: "pp", mStatus: 0, title: "PP Girl", desc: "Pee pee?", task:
+                    [
+                        { id: 0, txt: "Caught her peeing!", show: true, mStatus: 0, roomId: 461 },
+                        { id: 1, txt: "Interrupting pee", show: true, mStatus: 0, roomId: 461 },
+                        { id: 2, txt: "Really! Again!", show: true, mStatus: 0, roomId: 461 },
+                        { id: 3, txt: "You're her toilet", show: true, mStatus: 0, roomId: 461 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "rachel", mission: [
+            {
+                missionName: "horse", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm. ", task:
+                    [
+                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+            {
+                missionName: "milk", mStatus: 0, title: "Hucow", desc: "Become her milking cow ", task:
+                    [
+                        { id: 0, txt: "Inspection.", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "Hucow.", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "kinsey", mission: [
+            {
+                missionName: "milk", mStatus: 0, title: "Fellow Hucow", desc: "Gain her trust", task:
+                    [
+                        { id: 0, txt: "Moooo", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "Fucking Moooo", show: true, mStatus: 0, roomId: 325 },
+                        { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 325 },
+                        { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 325 },
+                        { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 325 },
+                        { id: 5, txt: "End of path for nwo.", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "horse", mission: [
+            {
+                missionName: "sex", mStatus: 0, title: "Dirty boy", desc: "What are you doing?", task:
+                    [
+                        { id: 0, txt: "First handjob", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "black", mission: [
+            {
+                missionName: "punish", mStatus: 0, title: "Punishment", desc: "A proper punishment.", task:
+                    [
+                        { id: 0, txt: "First time.", show: true, mStatus: 0, roomId: 172 },
+                        { id: 1, txt: "Repeat customer ", show: true, mStatus: 0, roomId: 172 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "p", mission: [
+            {
+                missionName: "pink", mStatus: 0, title: "The Pink Room", desc: "A proper place for a sissy.", task:
+                    [
+                        { id: 0, txt: "Introducation", show: true, mStatus: 0, roomId: 213 },
+                        { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
+                        { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
+                        { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "construction", mission: [
+            {
+                missionName: "sex", mStatus: 0, title: "Slut", desc: "I didn't know you're a slut!", task:
+                    [
+                        { id: 0, txt: "Caught at the Pink Room", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "holly", mission: [
+            {
+                missionName: "bar", mStatus: 0, title: "Caravaggio", desc: "Meet them", task:
+                    [
+                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "dolly", mission: [
+            {
+                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "molly", mission: [
+            {
+                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "photo", mission: [
+            {
+                missionName: "photo", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                    [
+                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "orchid", mission: [
+            {
+                missionName: "slut", mStatus: 0, title: "Party Bitches!", desc: "Slut, slut in da butt", task:
+                    [
+                        { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 526 },
+                        { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "river", mission: [
+            {
+                missionName: "bully", mStatus: 0, title: "Bully", desc: "You're going to regret life", task:
+                    [
+                        { id: 0, txt: "Welcome back wedgie", show: true, mStatus: 0, roomId: 100 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "tina", mission: [
+            {
+                missionName: "cat", mStatus: 0, title: "Kitty", desc: "I'm a cat girl", task:
+                    [
+                        { id: 0, txt: "Saved your ass", show: true, mStatus: 0, roomId: 100 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "cindy", mission: [
+            {
+                missionName: "fuck", mStatus: 0, title: "Man enough?", desc: "A swimmer's body is hot.", task:
+                    [
+                        { id: 0, txt: "Be manly enough. ", show: true, mStatus: 0, roomId: 901 },
+                        { id: 1, txt: "Swim race! ", show: true, mStatus: 0, roomId: 901 },
+                        { id: 2, txt: "Swoon her ", show: true, mStatus: 0, roomId: 726 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "tim", mission: [
+            {
+                missionName: "fuck", mStatus: 0, title: "Girl enough?", desc: "Love big tits!", task:
+                    [
+                        { id: 0, txt: "Tits big enough? ", show: true, mStatus: 0, roomId: 901 },
+                        { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 726 },
+                        { id: 2, txt: "The jig is up.", show: true, mStatus: 0, roomId: 726 },
+                        { id: 3, txt: "I do love bussy.", show: true, mStatus: 0, roomId: 726 },
                     ]
             },
         ]
     },
 ];
+
+sc.el = function () {
+    return g.makeSingular(sc.n("el"));
+};
 
 sc.mStatus = function (mStatus) {
     if (mStatus < 1)
@@ -549,6 +839,7 @@ sc.i = function (name) {
     for (var i = 0; i < sc.char.length; i++)
         if (sc.char[i].name === name)
             return i;
+    console.log("char not found. Name: " + name);
     return -1;
 };
 
@@ -559,6 +850,8 @@ sc.get = function (name) {
 sc.n = function (name) {
     if (name.startsWith("!"))
         return sc.trivial(name).display;
+    else if (name.startsWith("*"))
+        return rape.char.displayName;
     return sc.get(name).display;
 };
 
@@ -598,7 +891,7 @@ sc.levels = function (name, level) {
             else
                 tempLevel = [
                     { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at he mall for Sunday outing.", m: [16, 400] },
-                    { step: 1, txt: "[F] Talk to her in the living room for your suprise guest.", m: [16] },
+                    { step: 1, txt: "[F] Talk to her in the living room for your surprise guest.", m: [16] },
                     { step: 2, txt: "[F] No new content", m: [16] },
                 ];
             break;
@@ -609,9 +902,9 @@ sc.levels = function (name, level) {
                 { step: 2, txt: "Keep pestering them", m: [16] },
                 { step: 3, txt: "Keep pestering them - This time with cum reward!", m: [16] },
                 { step: 4, txt: "Pester them. This time with more cum! ", m: [16] },
-                { step: 5, txt: "Sleep at home - suprise wake up.", m: [16] },
+                { step: 5, txt: "Sleep at home - surprise wake up.", m: [16] },
                 { step: 6, txt: "Should I, or shouldn't I tell on him ", m: [16] },
-                { step: 7, txt: "Betrayed her for more suprises on Saturday 😉", m: [16] },
+                { step: 7, txt: "Betrayed her for more surprises on Saturday 😉", m: [16] },
             ];
             break;
         case "zoey":
@@ -688,6 +981,9 @@ sc.modLevel = function (name, amount, targetLevel) {
     sc.getch
     i = sc.i(name);
     if (amount > 0) {
+        if (sc.char[i].l > 9)
+            return;
+
         if (sc.char[i].l <= targetLevel)
             actualAmount = amount;
         else if (sc.char[i].l <= targetLevel + 1)
@@ -726,9 +1022,8 @@ sc.modLevel = function (name, amount, targetLevel) {
 
         if (addedLevels > 0)
             g.popUpNotice("You gained " + addedLevels + " level(s) for: " + sc.char[i].display + "!");
-        else
+        else if(actualAmount > 0)
             g.popUpNotice(sc.char[i].display + " points have increased by " + actualAmount + "! ");
-
     }
     else if (amount < 0) {
         console.log(i);
@@ -742,9 +1037,8 @@ sc.modLevel = function (name, amount, targetLevel) {
 
 //Mission ----------------------------------------------------------------------
 
-sc.startMission = function (name, missionName) {
-    var ml = sc.getMission(name, missionName);
-    sc.charMission[ml.i].mission[ml.j].mStatus = 1;
+sc.startMission = function (name, missionName, mStatus = 1) {
+    sc.setMission(name, missionName, mStatus);
 };
 
 sc.getMission = function (name, missionName) {
@@ -759,6 +1053,7 @@ sc.getMission = function (name, missionName) {
                         notStarted: sc.charMission[i].mission[j].mStatus < 1,
                         inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
                         complete: sc.charMission[i].mission[j].mStatus > 99,
+                        success: sc.charMission[i].mission[j].mStatus === 100,
                         fail: sc.charMission[i].mission[j].mStatus === 101,
                         i: i,
                         j: j
@@ -774,6 +1069,7 @@ sc.getMission = function (name, missionName) {
 
 sc.getMissionTask = function (name, missionName, taskId) {
     var ml = sc.getMission(name, missionName);
+    let i;
     for (i = 0; i < sc.charMission[ml.i].mission[ml.j].task.length; i++) {
         if (sc.charMission[ml.i].mission[ml.j].task[i].id === taskId) {
             var mstatus = sc.charMission[ml.i].mission[ml.j].task[i].mStatus;
@@ -809,25 +1105,20 @@ sc.getActiveMissions = function (name) {
 };
 
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
-    var ml = sc.getMission(name, missionName);
-    
-    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
-            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = success ? 100 : 101;
-            return;
-        }
-    }
+    sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
 };
 
-sc.startMissionTask = function(name, missionName, taskId) {
-    var ml = sc.getMission(name, missionName);
-
-    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
-            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = 1;
-            return;
-        }
+sc.rollbackMission = function (name, missionName) {
+    let m = sc.getMission(name, missionName);
+    let i;
+    for (i = 0; i < sc.charMission[m.i].mission[m.j].task.length; i++) {
+        sc.charMission[m.i].mission[m.j].task[i].mStatus = 0;
     }
+    sc.charMission[m.i].mission[m.j].mStatus = 0;
+};
+
+sc.startMissionTask = function (name, missionName, taskId) {
+    sc.setMissionTask(name, missionName, taskId, 1);
 };
 
 sc.modMissionTask = function (name, missionName, taskId, modNum) {
@@ -841,12 +1132,8 @@ sc.modMissionTask = function (name, missionName, taskId, modNum) {
     }
 };
 
-sc.completeMission = function (name, missionName, success) {
-    var i, j;
-    var mission = sc.getMission(name, missionName);
-    i = mission.i;
-    j = mission.j;
-    sc.charMission[i].mission[j].mStatus = success ? 100 : 101;
+sc.completeMission = function (name, missionName, success = true) {
+    sc.setMission(name, missionName, success ? 100 : 101);
 };
 
 sc.taskGetStep = function (name, missionName) {
@@ -859,29 +1146,95 @@ sc.taskGetStep = function (name, missionName) {
         if (sc.charMission[ml.i].mission[j].task[k].mStatus < 100)
             return sc.charMission[ml.i].mission[j].task[k].id;
     }
-    
+
     return sc.charMission[ml.i].mission[j].task.length;
+};
+
+sc.setMission = function (name, missionName, mStatus) {
+    var ml = sc.getMission(name, missionName);
+    sc.charMission[ml.i].mission[ml.j].mStatus = mStatus;
+};
+
+sc.setMissionTask = function (name, missionName, taskId, mStatus) {
+    var ml = sc.getMission(name, missionName);
+
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
+            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = mStatus;
+            return;
+        }
+    }
 }
 
 sc.modSecret = function (name, amount) {
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            sc.char[i].secret += amount;
-            if (sc.char[i].secret > 100)
-                sc.char[i].secret = 100;
-            g.popUpNotice(sc.char[i].display + " is more aware of your secret lifestyle. ");
+    let i = sc.i(name);
+    
+    //Don't modify, secret is already known
+    if (sc.char[i].secret > 99)
+        return;
 
+    sc.char[i].secret += amount;
+    if (sc.char[i].secret > 99) {
+        sc.char[i].secret = 100;
+        switch (name) {
+            case "lola":
+            case "eva":
+            case "landlord":
+                if (sc.getMission("lola", "sissy").notStarted) {
+                    let x = sc.i("lola");
+                    let y = sc.i("eva");
+                    let z = sc.i("landlord");
+                    sc.char[x].secret = 100;
+                    sc.char[y].secret = 100;
+                    sc.char[z].secret = 100;
+
+                    sc.startMission("lola", "sissy");
+                    sc.startMission("eva", "sissy");
+                    sc.startMission("landlord", "sissy");
+
+                    sc.completeMission("lola", "massage", sc.getMissionTask("lola", "massage", 3).complete);
+                    sc.completeMission("lola", "games", sc.getMissionTask("lola", "games", 2).complete);
+                    sc.completeMission("lola", "date", sc.getMissionTask("lola", "date", 5).complete);
+
+                    sc.completeMission("eva", "massage", sc.getMissionTask("eva", "massage", 3).complete);
+                    sc.completeMission("eva", "games", sc.getMissionTask("eva", "games", 1).complete);
+                    sc.completeMission("eva", "fuck", sc.getMissionTask("eva", "fuck", 1).complete);
+
+                    sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
+                    sc.completeMission("landlord", "man", sc.getMissionTask("landlord", "man", 8).complete);
+                    sc.startMissionTask("landlord", "spermbank", 2);
+                    if (sc.getMissionTask("landlord", "spermbank", 0).notStarted)
+                        sc.completeMissionTask("landlord", "spermbank", 0, false);
+                    if (sc.getMissionTask("landlord", "spermbank", 1).notStarted)
+                        sc.completeMissionTask("landlord", "spermbank", 1, false);
+                    g.popUpNotice(sc.char[x].display + ", " + sc.char[y].display + ", and " + sc.char[z].display +
+                        " all are new aware of your secret lifestyle. Sissy!");
+                }
+                
             break;
         }
     }
+
+    else {
+        g.popUpNotice(sc.char[i].display + " is more aware of your secret lifestyle. ");
+    }
+
 };
 
 sc.getSecret = function (name) {
     for (var i = 0; i < sc.char.length; i++) {
         if (sc.char[i].name === name) {
-            return sc.char[i].secret;
+            return {
+                secret: sc.char[i].secret,
+                secretOut: sc.char[i].secret > 99
+            };
         }
     }
+    console.log("Secret NOT found: " + name);
+    return {
+        secret: -1,
+        secretOut: false
+    };
 };
 
 sc.getstep = function (name) {
@@ -1030,6 +1383,19 @@ sc.load = function (ra) {
     //fix bad early data
     if (sc.getMission("landlord", "spermbank").complete)
         sc.startMission("landlord", "spermbank");
+    //fix v0.23 sissy
+    if (sc.getMission("lola", "sissy").notStarted) {
+        let x, y, z;
+        x = sc.i("lola");
+        y = sc.i("eva");
+        z = sc.i("landlord");
+        if (sc.char[x].secret > 95)
+            sc.char[x].secret = 95;
+        if (sc.char[y].secret > 95)
+            sc.char[y].secret = 95;
+        if (sc.char[z].secret > 95)
+            sc.char[z].secret = 95;
+    }
 };
 
 /*
@@ -1059,7 +1425,8 @@ sc.getTimeline = function (char) {
             //monday wednesday friday
                 
                 { d: [1, 3, 5], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-                { d: [1, 3, 5], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
+                { d: [1, 3, 5], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
+                { d: [1, 3, 5], hstart: 8, hend: 9, roomId: 25, alt: null }, //dining
                 { d: [1, 3, 5], hstart: 9, hend: 17, roomId: 350, alt: null }, //sperm store
                 { d: [1, 3, 5], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
                 { d: [1, 3, 5], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
@@ -1109,39 +1476,37 @@ sc.getTimeline = function (char) {
             break;
         case "lola":
         case "eva":
+            
             timeline = [
             //sunday
                 { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
                 { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
-                { d: [0], hstart: 10, hend: 12, roomId: 12, alt: null }, //bathroom
-                { d: [0], hstart: 12, hend: 18, roomId: 13, alt: null }, //living room
-                { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-                { d: [0], hstart: 19, hend: 24, roomId: 13, alt: null }, //bedroom
+                { d: [0], hstart: 10, hend: 11, roomId: 12, alt: null }, //bathroom
+                { d: [0], hstart: 11, hend: 24, roomId: 13, alt: null }, //their room
 
-                //wednesday friday
-                { d: [3, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-                { d: [3, 5], hstart: 7, hend: 9, roomId: 12, alt: null }, //bathroom
-                { d: [3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
-                { d: [3, 5], hstart: 14, hend: 17, roomId: char === "lola" ? 901 : 400, alt: null }, //pool
-                { d: [3, 5], hstart: 17, hend: 19, roomId: 25, alt: null }, //dining 
-                { d: [3, 5], hstart: 19, hend: 22, roomId: null, alt: "Out somewhere..?" }, //dining
-                { d: [3, 5], hstart: 22, hend: 24, roomId: 13, alt: null }, //dining
+                //monday, wed, frid
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //kitchen
+                { d: [1, 3, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                { d: [1, 3, 5], hstart: 14, hend: 17, roomId: char === "lola" ? 901 : 400, alt: null }, //pool
+                { d: [1, 3, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                { d: [1, 3, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //room
 
-                //monday, tuesday, thursday
-                { d: [1, 2, 4], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
-                { d: [1, 2, 4], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
-                { d: [1, 2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
-                { d: [1, 2, 4], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
-                { d: [1, 2, 4], hstart: 18, hend: 24, roomId: 13, alt: null }, //dining
+                //tuesday thursday
+                { d: [2, 4], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                { d: [2, 4], hstart: 7, hend: 8, roomId: 12, alt: null }, //bathroom
+                { d: [2, 4], hstart: 8, hend: 9, roomId: 25, alt: null }, //school
+                { d: [2, 4], hstart: 9, hend: 17, roomId: 900, alt: null }, //school
+                { d: [2, 4], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                { d: [2, 4], hstart: 18, hend: 20, roomId: 26, alt: null }, //living room
+                { d: [2, 4], hstart: 20, hend: 24, roomId: 13, alt: null }, //dining
 
                 //saturday
-                { d: [6], hstart: 0, hend: 7, roomId: 13 }, //bathroom
-                { d: [6], hstart: 7, hend: 9, roomId: 25 }, //bathroom
-                { d: [6], hstart: 9, hend: 17, roomId: null, alt: "Out somewhere..?" }, //living room
-                { d: [6], hstart: 17, hend: 18, roomId: 15, alt: null }, //kitchen
-                { d: [6], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-                { d: [6], hstart: 18, hend: 24, roomId: 13, alt: null }, //bedroom
+                { d: [6], hstart: 0, hend: 7, roomId: 13, alt: null }, //bathroom
+                { d: [6], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
+                { d: [6], hstart: 9, hend: 24, roomId: 13, alt: null }, //living room
             ];
+           
             break;
         case "cecilia":
             timeline = [
@@ -1154,8 +1519,8 @@ sc.getTimeline = function (char) {
             break;
         case "zoey":
             timeline = [
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 4, roomId: 525, alt: null }, //bar
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 4, hend: 12, roomId: 502, alt: null }, //bedroom
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 2, roomId: 525, alt: null }, //bar
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 2, hend: 12, roomId: 502, alt: null }, //bedroom
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 12, hend: 20, roomId: 501, alt: null }, //living room
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 525, alt: null }, //bar
             ];
@@ -1185,19 +1550,19 @@ sc.getTimeline = function (char) {
             break;
         case "cindy":
             timeline = [
-                { d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 901, alt: null }, //pool
-                { d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [1, 2, 6], hstart: 7, hend: 20, roomId: 900, alt: null }, //school
+                { d: [0, 2, 4, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [0, 2, 4, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //pool
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 20, roomId: 900, alt: null }, //school
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
             ];
             break;
         case "tim":
             timeline = [
-                { d: [0, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [0, 3, 4, 5], hstart: 0, hend: 20, roomId: 900, alt: null }, //pool
-                { d: [1, 2, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
-                { d: [1, 2, 6], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
+                { d: [0, 2, 4, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [0, 2, 4, 6], hstart: 0, hend: 20, roomId: 900, alt: null }, //pool
+                { d: [1, 3, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" }, //bedroom
+                { d: [1, 3, 5], hstart: 7, hend: 20, roomId: 901, alt: null }, //school
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
             ];
             break;
@@ -1221,11 +1586,23 @@ sc.getTimeline = function (char) {
     return retVar;
 };
 
+sc.selectBg = function (name) {
+    nav.button({
+        "type": "img",
+        "name": name,
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1001_rand/black_25.png"
+    }, g.roomID);
+}
+
 sc.select = function (name, img, i) {
     nav.button({
         "type": "btn",
         "name": name,
-        "left": 400 + (Math.floor(i % 2) * 700),
+        "left": 400 + ((i % 2) * 700),
         "top": 200 + (Math.floor(i / 2) * 120),
         "width": 600,
         "height": 100,
@@ -1237,10 +1614,7 @@ sc.selectCancel = function (name, i) {
     sc.select(name, "1001_rand/icon_cancel.png", i);
 };
 
-sc.zoey = function () {
-    return { roomID: g.roomID, thisRoom: true };
 
-};
 
 sc.tiffany = function () {
     return { roomID: g.roomID, thisRoom: true };
@@ -1264,7 +1638,7 @@ sc.phone = function (char) {
     var clist;
     var nophone = [950, 951];
     if (nophone.includes(g.roomID)) {
-        g.popUpNotice("No reciption here. Damn!");
+        g.popUpNotice("No reception here. Damn!");
     }
     else {
         switch (char) {
@@ -1312,9 +1686,9 @@ sc.phone = function (char) {
                 else if (step === 9) {
                     clist = [
                         { s: "me", t: "I'm so excited to be back in the house!" },
-                        { s: "eva", t: "I'm going to give you a big suprise... just wait for it!" },
-                        { s: "me", t: "What suprise?" },
-                        { s: "eva", t: "If I tell you, it won't a suprise!" },
+                        { s: "eva", t: "I'm going to give you a big surprise... just wait for it!" },
+                        { s: "me", t: "What surprise?" },
+                        { s: "eva", t: "If I tell you, it won't a surprise!" },
                     ];
                     sc.phoneChat(clist, char);
                 }
@@ -1477,7 +1851,7 @@ sc.phone = function (char) {
             case "zoey1":
                 sc.phoneChat([
                     { s: "zoey", t: "You'll never guess what " + sc.n("chloe") + " just sent me! " },
-                    { s: "me", t: "I can guess. She suprised me and tied me up. Took the picture of it to make you mad. " },
+                    { s: "me", t: "I can guess. She surprised me and tied me up. Took the picture of it to make you mad. " },
                     { s: "zoey", t: "MDR! That is so funny. She is such a idiot jaloux. I do not care if you fuck her in the brains. She is the crazy. " },
                     { s: "me", t: "LOL. good. I'm glad you don't hate me " },
                     { s: "zoey", t: "je ne te déteste pas. " + sc.n("chloe") + " does have a pussy délicieuse. I may eat it again when je suis excitée. " }
@@ -1524,7 +1898,10 @@ sc.trivial = function (charname) {
             image = "sanaria.png";
             break;
         case "!kareem":
-            name = "Kareem";
+            if (sissy.st[10].ach)
+                name = "Kesia"
+            else
+                name = "Kareem";
             image = "kareem.png";
             break;
         case "!philbert":
@@ -1532,23 +1909,40 @@ sc.trivial = function (charname) {
             image = "philbert.png";
             break;
         case "!chris":
-            name = "Chris";
+            if (sissy.st[10].ach)
+                name = "Chrissy"
+            else
+                name = "Chris";
             image = "chris.png";
             break;
         case "!thomas":
-            name = "Thomas";
+            if (sissy.st[10].ach)
+                name = "Thomas";
+            else
+                name = "Sinéad";
             image = "thomas.png";
             break;
         case "!timothy":
-            name = "Timothy";
+            if (sissy.st[10].ach) {
+                name = "Trixy"
+            }
+            else {
+                name = "Timothy";
+            }
             image = "timothy.png";
             break;
         case "!sporty":
-            name = "Sport";
+            name = "Sporty";
             image = "sporty.png";
             break;
         case "!jeremy":
-            name = "Jeremy";
+            if (sissy.st[10].ach) {
+                name = "Jenny"
+            }
+            else {
+                name = "Jeremy";
+            }
+            
             image = "jeremy.png";
             break;
         case "!martin":
@@ -1634,6 +2028,58 @@ sc.trivial = function (charname) {
         case "!chem":
             name = "Chemist";
             image = "chem.png";
+            break;
+        case "!elijah":
+            name = "Elijah";
+            image = "elijah.png";
+            break;
+        case "!rex":
+            name = "Mr. Rex";
+            image = "rex.png";
+            break;
+        case "!gamerboy":
+            name = "Gamer";
+            image = "gamerboy.png";
+            break;
+        case "!gamergirl":
+            name = "Miss M.";
+            image = "gamergirl.png";
+            break;
+        case "!gameman":
+            name = "Some guy";
+            image = "gameman.png";
+            break;
+        case "!g":
+            name = "Geoffrey";
+            image = "g.png";
+            break;
+        case "!glory":
+            name = "Glory Hole Customer";
+            image = "unk.png";
+            break;
+        case "!poppy":
+            name = "Poppy";
+            image = "poppy.png";
+            break;
+        case "!juniper":
+            name = "Juniper";
+            image = "juniper.png";
+            break;
+        case "!emily":
+            name = "Emily";
+            image = "emily.png";
+            break;
+        case "!cindy":
+            name = "Cindy";
+            image = "cindy.png";
+            break;
+        case "!missx":
+            name = "Mistress Anaru";
+            image = "missx.png";
+            break;
+        case "!jenna":
+            name = "Jenna";
+            image = "jenna.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

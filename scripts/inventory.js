@@ -30,6 +30,7 @@ inv.t = [
     { t: "m", n: "Makeup" },
     { t: "o", n: "Key" },
     { t: "p", n: "Phone Case" },
+    { t: "q", n: "Milk Pump" },
     { t: "r", n: "Room Decoration" },
     { t: "t", n: "Penis Cream" },
     { t: "x", n: "ID Card" },
@@ -46,16 +47,17 @@ inv.master = [
     { type: "h", name: "hormone", display: "Sissy Bimbo Pills", entry: false, count: 0, cost: 5, image: "hormone.png", n: false, desc: "Take 1 pill a day to increase your female hormone level" },
     { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, image: "razor.png", n: false, desc: "Shave your body" },
-    { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 50, image: "wine.png", n: false, desc: "Time to get drunk!" },
+    { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
 
-    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 25, image: "acia.png", n: false, desc: "Gain 15 energy" },
+    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
     { type: "e", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
-    { type: "e", name: "pissjar", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 50 energy" },
+    { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 40 energy" },
+    { type: "e", name: "pissjargirl", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "pissjargirl.png", n: false, desc: "Gain 60 energy" },
     { type: "e", name: "cumjar", display: "A Jar full of cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
-    { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 150 energy" },
-    { type: "e", name: "horsecumjar", display: "A Jar full of horse cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 200 energy" },
+    { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, image: "dogcumjar.png", n: false, desc: "Gain 150 energy" },
+    { type: "e", name: "horsecumjar", display: "A Jar full of horse cum", entry: false, count: 0, cost: -1, image: "horsecumjar.png", n: false, desc: "Gain 200 energy" },
     { type: "e", name: "pigcumjar", display: "A Jar full of pig cum", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 300 energy" },
 
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
@@ -63,9 +65,10 @@ inv.master = [
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "l", name: "lockpick", display: "Lock Pick Set", entry: false, count: null, cost: 0, image: "lockpick.png", n: false, desc: "Lock Pick Set for use on cases" },
     { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 1, image: "makeup.png", n: false, desc: "Make your face pretty" },
-    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 1, image: "redl.png", n: false, desc: "Red Lipstick" },
-    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: 0, cost: 1, image: "pinkl.png", n: false, desc: "Pink Lipstick" },
-    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 1, image: "purplel.png", n: false, desc: "Purple Lipstick" },
+    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 7, image: "redl.png", n: false, desc: "Red Lipstick" },
+    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: 0, cost: 7, image: "pinkl.png", n: false, desc: "Pink Lipstick" },
+    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 7, image: "purplel.png", n: false, desc: "Purple Lipstick" },
+    { type: "m", name: "blackl", display: "Black Lipstick", entry: false, count: 0, cost: -1, image: "lipstickBlack.png", n: false, desc: "Stolen Black Lipstick" },
     { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false, desc: "Landlord's Key" },
     { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false, desc: "Co-Tenant's Key" },
     { type: "o", name: "keyJanice", display: "Girl Friend's Key", entry: false, count: null, cost: 0, image: "keyJanice.png", n: false, desc: "Key to Girl Friend's house. " },
@@ -102,10 +105,12 @@ inv.master = [
     { type: "d", name: "pinkDildo", display: "Pink Dildo", entry: false, count: null, cost: -1, image: "dildoPink.png", n: false, desc: "Small Dildo" },
     { type: "d", name: "whiteDildo", display: "White Dildo", entry: false, count: null, cost: 60, image: "butt_whiteCock.png", n: false, desc: "Averge Dildo" },
     { type: "d", name: "blackDildo", display: "Black Dildo", entry: false, count: null, cost: -1, image: "butt_blackCock.png", n: false, desc: "Slightly Larger than average dildo" },
-    { type: "d", name: "pinkFatDildo", display: "Fat Pink Dildo", entry: false, count: null, cost: 120, image: "butt_fat.png", n: false, desc: "Fat Man" },
+    { type: "d", name: "pinkFatDildo", display: "Fat Pink Dildo", entry: false, count: null, cost: -1, image: "butt_fat.png", n: false, desc: "Fat pink futa dildo dick" },
     { type: "d", name: "blackBallsDildo", display: "Anal Beads", entry: false, count: null, cost: 40, image: "butt_balls.png", n: false, desc: "Balls you put in your ass" },
     { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 90, image: "butt_tower.png", n: false, desc: "Stretch that sissy hole" },
     { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false, desc: "You'll blow your ass out" },
+
+    { type: "q", name: "pump", display: "Breast Pump", entry: false, count: null, cost: 120, image: "pump.png", n: false, desc: "BP-900 for sucking that milk from your titties!" },
 
     { type: "c", name: "handcuff", display: "Handcuffs", entry: false, count: null, cost: 36, image: "handcuffs.png", n: false, desc: "Handcuffs, you know, for your hands" },
 
@@ -125,7 +130,9 @@ inv.master = [
     { type: "y", name: "hypno4", display: "Hypno Lesson #4", entry: false, count: null, cost: 50, image: "hypno4.png", n: false, desc: "Blondes have more fun!" },
     { type: "y", name: "hypno5", display: "Hypno Lesson #5", entry: false, count: null, cost: 50, image: "hypno5.png", n: false, desc: "Don't think too much" },
     { type: "y", name: "hypno6", display: "Hypno Lesson #6", entry: false, count: null, cost: 60, image: "hypno6.png", n: false, desc: "Bimbo is better" },
-    { type: "y", name: "hypno7", display: "Hypno Lesson #7", entry: false, count: null, cost: 100, image: "hypno7.png", n: false, desc: "You are an object. Let men use you. All your holes and fuck holes" }
+    { type: "y", name: "hypno7", display: "Hypno Lesson #7", entry: false, count: null, cost: 100, image: "hypno7.png", n: false, desc: "You are an object. Let men use you. All your holes and fuck holes" },
+
+    { type: "z", name: "teddybear", display: "Teddy Bear", entry: false, count: 0, cost: -1, image: "teddybear.png", n: false, desc: "Jar of Peanut Butter. " },
 
 ];
 
@@ -190,6 +197,9 @@ pic.save = function () {
 
 pic.load = function (picList) {
     var i, j;
+    for (i = 0; i < pic.master.length; i++) {
+        pic.master[i].entry = false;
+    }
     for (j = 0; j < picList.length; j++) {
         for (i = 0; i < pic.master.length; i++) {
             if (pic.master[i].name === picList[j].name) {
@@ -659,14 +669,34 @@ inv.createElements = function () {
                         inv.master[eindex].count--;
                         switch (thisName) {
                             case "acia":
-                                gv.mod("energy", 30);
+                                gv.mod("energy", 15);
                                 break;
                             case "soda":
-                                gv.mod("energy", 60);
-                                levels.mod("fitness", -25);
+                                gv.mod("energy", 50);
                                 break;
                             case "cumjar":
                                 gv.mod("energy", 100);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "pissjarboy":
+                                gv.mod("energy", 40);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "pissjargirl":
+                                gv.mod("energy", 60);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "dogcumjar":
+                                gv.mod("energy", 150);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "horsecumjar":
+                                gv.mod("energy", 200);
+                                levels.mod("xdress", 10, 999);
+                                break;
+                            case "pigcumjar":
+                                gv.mod("energy", 300);
+                                levels.mod("xdress", 10, 999);
                                 break;
                             default:
                                 console.log("UNK energy: " + thisName);

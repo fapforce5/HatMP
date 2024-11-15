@@ -156,6 +156,8 @@ room77.btnclick = function (name) {
             break;
         case "anal":
             nav.killall();
+            if (sc.getMissionTask("bimbo", "fuck", 2).notStarted)
+                sc.completeMissionTask("bimbo", "fuck", 2);
             chat(17, 77);
             break;
         case "anal2":
@@ -605,7 +607,7 @@ room77.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "bimbo",
-            text: "Shove it in dry. I love the suprise pain of anal.",
+            text: "Shove it in dry. I love the surprise pain of anal.",
             button: [
                 { chatID: -1, text: "Fuck yeah!", callback: "" },
             ]

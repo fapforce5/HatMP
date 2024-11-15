@@ -404,7 +404,7 @@ room350.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "landlord",
-            text: "Disgusting. Honestly I'm not even suprised. Get out of here and put some clothes on. ",
+            text: "Disgusting. Honestly I'm not even surprised. Get out of here and put some clothes on. ",
             button: [
                 { chatID: -1, text: "...", callback: "leavemad" }
             ]

@@ -16,11 +16,11 @@ room24.main = function () {
     };
     room24.chatcatch("evaTalk lolaSit");
     inv.use("wine");
-    if (sc.taskGetStep("eva", "spin") === 0) {
-        sc.startMission("eva", "tord");
-        sc.startMission("lola", "tord");
-        sc.completeMissionTask("eva", "spin", 0);
-        sc.completeMissionTask("lola", "spin", 0);
+    daily.set("lola");
+    daily.set("eva");
+    if (sc.getMissionTask("eva", "games", 1).notStarted) {
+        sc.completeMissionTask("eva", "games", 1);
+        sc.completeMissionTask("lola", "games", 1);
         chat(0, 24);
     }
     else {
@@ -32,9 +32,19 @@ room24.main = function () {
 room24.btnclick = function (name) {
     switch (name) {
         case "spin":
+            gv.mod("arousal", 3);
             nav.kill();
             room24.chatcatch("topbg evaTop lolaTop");
             if (g.internal.whoTurn === "eva") {
+                //nav.button({
+                //    "type": "img",
+                //    "name": "hlkill",
+                //    "left": 44,
+                //    "top": 209,
+                //    "width": 1121,
+                //    "height": 863,
+                //    "image": "24_spinTheBottle/eva_hl.png"
+                //}, 13);
                 nav.button({
                     "type": "img",
                     "name": "eva",
@@ -44,8 +54,18 @@ room24.btnclick = function (name) {
                     "height": 806,
                     "image": "24_spinTheBottle/evaTop_spin.png"
                 }, 13);
+
             }
             else if (g.internal.whoTurn === "lola") {
+                //nav.button({
+                //    "type": "img",
+                //    "name": "hlkill",
+                //    "left": 1047,
+                //    "top": 225,
+                //    "width": 873,
+                //    "height": 855,
+                //    "image": "24_spinTheBottle/lola_hl.png"
+                //}, 13);
                 nav.button({
                     "type": "img",
                     "name": "lola",
@@ -56,29 +76,56 @@ room24.btnclick = function (name) {
                     "image": "24_spinTheBottle/lolaTop_spin.png"
                 }, 13);
             }
-            switch (g.rand(0, 3)) {
-                case 0:
-                    $('.room-img[data-name="bottle"]').addClass('evaSpin');
-                    g.internal.prevWho = g.internal.whoTurn;
-                    g.internal.whoTurn = "eva";
-                    break;
-                case 1:
-                    $('.room-img[data-name="bottle"]').addClass('lolaSpin');
-                    g.internal.prevWho = g.internal.whoTurn;
-                    g.internal.whoTurn = "lola";
-                    break;
-                case 2:
-                    $('.room-img[data-name="bottle"]').addClass('meSpin');
-                    g.internal.prevWho = g.internal.whoTurn;
-                    g.internal.whoTurn = "me";
-                    break;
+            //else {
+            //    nav.button({
+            //        "type": "img",
+            //        "name": "hlkill",
+            //        "left": 507,
+            //        "top": 654,
+            //        "width": 1152,
+            //        "height": 426,
+            //        "image": "24_spinTheBottle/me_hl.png"
+            //    }, 13);
+            //}
+            if (g.internal.whoTurn !== "me" && g.internal.lolaWine > 0 && g.internal.evaWine > 0 && g.rand(0, 2) === 0) {
+                $('.room-img[data-name="bottle"]').addClass(g.internal.whoTurn + 'Spin');
+                g.internal.prevWho = g.internal.whoTurn;
+            }
+            else {
+                g.internal.prevWho = g.internal.whoTurn;
+                switch (g.rand(0, 3)) {
+                    case 0:
+                        $('.room-img[data-name="bottle"]').addClass('evaSpin');
+                        g.internal.whoTurn = "eva";
+                        break;
+                    case 1:
+                        $('.room-img[data-name="bottle"]').addClass('lolaSpin');
+                        g.internal.whoTurn = "lola";
+                        break;
+                    case 2:
+                        $('.room-img[data-name="bottle"]').addClass('meSpin');
+                        g.internal.whoTurn = "me";
+                        break;
+                }
             }
             setTimeout(function () {
-                room24.btnclick("spinStop");
+                room24.btnclick("spinStop1");
                 //$('.room-chatBox').show(); window.getSelection().removeAllRanges();
             }, 3000);
             break;
+        case "spinStop1":
+            if (g.internal.prevWho === g.internal.whoTurn) {
+                switch (g.internal.whoTurn) {
+                    case "lola": chat(30, 24); break;
+                    case "eva": chat(31, 24); break;
+                    case "me": chat(32, 24); break;
+                }
+            }
+            else 
+                room24.btnclick("spinStop");
+            break;
         case "spinStop":
+            nav.killbutton("hlkill");
             switch (g.internal.prevWho) {
                 case "lola":
                     if (g.internal.lolaWine < 2 && g.internal.lolaNude === 0 && g.rand(0, 2) !== 0) {
@@ -162,12 +209,14 @@ room24.btnclick = function (name) {
             nav.killbutton("kiss");
             nav.killbutton("undress");
             nav.killbutton("quit");
+            nav.killbutton("drink");
             chat(24, 24);
             break;
         case "undress":
             nav.killbutton("kiss");
             nav.killbutton("undress");
             nav.killbutton("quit");
+            nav.killbutton("drink");
             cl.c.shirt = null;
             cl.display();
             if (cl.c.bra === null) {
@@ -492,6 +541,9 @@ room24.chatcatch = function (callback) {
                 case "meSpin":
                     sc.select("spin", "24_spinTheBottle/spin.png", 8);
                     break;
+                case "spinStop":
+                    room24.btnclick("spinStop");
+                    break;
                 case "spinEnd":
                     char.settime(22, 37);
                     sc.setstep("eva", 4);
@@ -532,19 +584,13 @@ room24.chatcatch = function (callback) {
                     sc.modLevel("eva", 10, 7);
                     break;
                 case "gameOver":
-                    if (sc.getMission("eva", "tord").notStarted) {
-                        sc.startMission("eva", "tord");
-                        sc.startMission("lola", "tord");
-                        chat(24, 24);
-                    }
-                    else {
-                        if (g.internal.lolaWine < 2)
-                            daily.set("loladrunk");
-                        if (g.internal.evaWine < 2)
-                            daily.set("evadrunk");
-                        char.settime(22, 7);
-                        char.room(11);
-                    }
+                    if (g.internal.lolaWine < 2)
+                        daily.set("lolaDrunk");
+                    if (g.internal.evaWine < 2)
+                        daily.set("evaDrunk");
+                    char.settime(22, 7);
+                    char.room(11);
+                    //chat(24, 24);
                     break;
                 default:
                     console.log(callback + " - miss");
@@ -657,7 +703,7 @@ room24.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "lola",
-            text: "Pucker up you! I want a big kiss on my lips! ",
+            text: "Pucker up! I want a big kiss on my lips! ",
             button: [
                 { chatID: -1, text: "...", callback: "lolaSpin" },
             ]
@@ -725,7 +771,7 @@ room24.chat = function (chatID) {
             speaker: "eva",
             text: "This is the only way you'll ever kiss a real girl! *mwah*",
             button: [
-                { chatID: -1, text: "*mwah*", callback: "meSpin" },
+                { chatID: -1, text: "*mwah*", callback: "evaSpin" },
             ]
         },
         {
@@ -801,6 +847,30 @@ room24.chat = function (chatID) {
             text: "Well that was a fun game. I think I'm getting tired. Let's go to sleep. ",
             button: [
                 { chatID: -1, text: "ok. ", callback: "gameOver" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "lola",
+            text: "Drat. Landed on myself. ",
+            button: [
+                { chatID: -1, text: "... ", callback: "spinStop" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "eva",
+            text: "Oh good. I love me the best. ",
+            button: [
+                { chatID: -1, text: "... ", callback: "spinStop" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "me",
+            text: "Damn Landed on myself! ",
+            button: [
+                { chatID: -1, text: "...", callback: "spinStop" },
             ]
         },
     ];

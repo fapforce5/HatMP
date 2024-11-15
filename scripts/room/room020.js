@@ -16,8 +16,9 @@ room20.btnclick = function (name) {
 room20.chatcatch = function (callback) {
     switch (callback) {
         case "finish":
-            gv.mod("rentKnockOff", 5);
             daily.set("momChoreDishes");
+            sc.modLevel("landlord", 10, 4);
+            gv.mod("money", 5);
             char.addtime(20);
             char.room(15);
             break;
@@ -31,7 +32,7 @@ room20.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "me",
-            text: "Yea.. cleaning dishes again for $5 off rent. ",
+            text: "Yea.. cleaning dishes again for my $5. ",
             button: [
                 { chatID: -1, text: "Finished cleaning", callback: "finish" }
             ]

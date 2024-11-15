@@ -388,7 +388,7 @@ room197.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "missy",
-            text: "Come over here. I have a suprise for you. ",
+            text: "Come over here. I have a surprise for you. ",
             button: [
                 { chatID: 12, text: "*gulp*", callback: "legworship0" },
             ]

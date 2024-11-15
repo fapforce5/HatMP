@@ -47,7 +47,7 @@ room726.main = function () {
             }, 726);
         }
     }
-    var navList = [0, 725];
+    var navList = [0, 725, 727];
     nav.buildnav(navList);
     //fame.event();
 };
@@ -77,7 +77,7 @@ room726.btnclick = function (name) {
                 chat(3, 726);
             break;
         case "lifeguardGirl":
-            //var cindyStep = sc.getstep("cindy");
+            var cindyStep = sc.taskGetStep("cindy", "fuck");
             var mybody = cl.appearance();
             nav.killbutton("lifeguardGirl");
             nav.button({
@@ -96,19 +96,20 @@ room726.btnclick = function (name) {
             else if (mybody > 0) {
                 chat(5, 726);
             }
-            else {//if (cindyStep < 2) {
+            else if (cindyStep < 2) {
                 chat(6, 726);
             }
-            //else if (cindyStep === 2) {
-            //    chat(10, 726);
-            //}
-            //else {
-            //    chat(23, 726);
-            //}
+            else if (cindyStep === 2) {
+                chat(10, 726);
+            }
+            else {
+                chat(23, 726);
+            }
             break;
         case "lifeguardGuy":
-            //var timstep = sc.getstep("tim");
+            var timstep = sc.taskGetStep("tim", "fuck");
             var mybodyt = cl.appearance();
+            sc.show("tim");
             nav.killbutton("lifeguardGuy");
             nav.button({
                 "type": "img",
@@ -119,20 +120,22 @@ room726.btnclick = function (name) {
                 "height": 1080,
                 "image": "726_dance/lifeguarGuy2.png"
             }, 726);
-            if (mybodyt < 1)
+            if (mybodyt < 2)
                 chat(7, 726);
-            else if (mybodyt < 3)
+            else if (mybodyt < 3 || cl.c.chest < 3)
                 chat(8, 726);
             else {
-                chat(15, 726);
-                //if (timstep === 0)
-                //    chat(15, 726);
-                //else if (timstep === 1)
-                //    chat(20, 726);
-                //else if (timstep === 2)
-                //    chat(22, 726);
-                //else if (timstep > 2)
-                //    chat(42, 726);
+                if (timstep < 1) {
+                    sc.startMission("tim", "fuck");
+                    sc.completeMissionTask("tim", "fuck", 0);
+                    chat(15, 726);
+                }
+                else if (timstep === 1)
+                    chat(20, 726);
+                else if (timstep === 2)
+                    chat(22, 726);
+                else if (timstep > 2)
+                    chat(42, 726);
             }
             break;
         case "lostgirl":
@@ -283,11 +286,10 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "tim3_16":
-            gv.mod("giveOralMale", 1);
-            gv.mod("giveAnalMale", 1);
-            gv.mod("creamPied", 1);
+            levels.oralGive(3, false, false, "m");
+            levels.anal(3, false, "m", true);
             daily.set("tim");
-            sc.setstep("tim", 3);
+            sc.completeMissionTask("tim", "fuck", 2);
             char.addtime(72);
             char.room(726);
             break;
@@ -309,9 +311,11 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "t5":
-            gv.mod("giveOralMale", 1);
-            gv.mod("giveAnalMale", 1);
-            gv.mod("creamPied", 1);
+            levels.oralGive(3, false, false, "m");
+            levels.anal(3, false, "m", true);
+            if (!sc.getMissionTask("tim", "fuck", 3).complete) {
+                sc.completeMissionTask("tim", "fuck", 3);
+            }
             daily.set("tim");
             char.addtime(72);
             char.room(726);
@@ -520,9 +524,9 @@ room726.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "thinking",
-            text: sc.n("cindy") + " totally wants my cock now! I should sneak into the coed bathroom and suprise her in the stall.",
+            text: sc.n("cindy") + " totally wants my cock now! I should sneak into the coed bathroom and surprise her in the stall.",
             button: [
-                { chatID: -1, text: "Yeah, that's what I'll do. She wants suprise sex!", callback: "supriseSex" }
+                { chatID: -1, text: "Yeah, that's what I'll do. She wants surprise sex!", callback: "supriseSex" }
             ]
         },
         {

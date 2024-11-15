@@ -65,6 +65,7 @@ room775.chatcatch = function (callback) {
             nav.bg("775_church/basket1.jpg");
             break;
         case "collection1":
+            sc.modLevel("landlord", Math.floor(g.internal / 4), 3);
             gv.mod("money", -g.internal);
             nav.bg("775_church/basket2.jpg");
             break;
@@ -233,11 +234,19 @@ room775.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "priest",
-            text: sp[Math.floor(Math.random() * sp.length)],
+            text: "Church update in progress...",
             button: [
-                { chatID: 0, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         };
+        //return {
+        //    chatID: 999,
+        //    speaker: "priest",
+        //    text: sp[Math.floor(Math.random() * sp.length)],
+        //    button: [
+        //        { chatID: 0, text: "...", callback: "" }
+        //    ]
+        //};
     }
     else if (chatID === 998) {
         g.internal = gv.get("money");

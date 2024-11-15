@@ -1,7 +1,7 @@
 ﻿//Room name
 var room327 = {};
 room327.main = function () {
-    var kinseyStep = sc.getstep("kinsey");
+    var kinseyStep = sc.taskGetStep("kinsey", "milk");
     if (kinseyStep === 4) {
         g.internal = false;
         nav.button({
@@ -47,7 +47,7 @@ room327.main = function () {
 room327.btnclick = function (name) {
     switch (name) {
         case "getmilked":
-            if (sc.getstep("envy") > 15) {
+            if (false) {//sc.getstep("envy") > 15) {
                 nav.killall();
                 nav.bg("327_milking/trio_bg.jpg");
                 nav.button({
@@ -108,21 +108,22 @@ room327.btnclick = function (name) {
             break;
         case "chat":
             nav.killbutton("milk");
-            switch (sc.getstep("kinsey")) {
-                case 0:
-                    sc.setstep("kinsey", 1);
+            switch (sc.taskGetStep("kinsey", "milk")) {
+                case -1:
+                    sc.startMission("kinsey", "milk");
+                    sc.completeMissionTask("kinsey", "milk", 0);
                     chat(1, 327);
                     break;
                 case 1:
-                    sc.setstep("kinsey", 2);
+                    sc.completeMissionTask("kinsey", "milk", 1);
                     chat(3, 327);
                     break;
                 case 2:
-                    sc.setstep("kinsey", 3);
+                    sc.completeMissionTask("kinsey", "milk", 2);
                     chat(6, 327);
                     break;
                 case 3:
-                    sc.setstep("kinsey", 4);
+                    sc.completeMissionTask("kinsey", "milk", 3);
                     chat(8, 327);
                     break;
                 case 4:
@@ -150,33 +151,15 @@ room327.btnclick = function (name) {
             break;
         case "energy":
             if (inv.has("soda")) {
-                if (cl.c.butthole < 4) {
-                    nav.killbutton("energy");
-                    nav.button({
-                        "type": "btn",
-                        "name": "buttdisplay",
-                        "left": 400,
-                        "top": 300,
-                        "width": 1200,
-                        "height": 585,
-                        "image": "../mainChar/asshole/a" + Math.floor(cl.c.butthole) + ".png"
-                    }, 327);
-                    nav.button({
-                        "type": "btn",
-                        "name": "buttdisplay",
-                        "left": 400,
-                        "top": 500,
-                        "width": 511,
-                        "height": 511,
-                        "image": "327_milking/energy.png"
-                    }, 327);
+                if (levels.get("anal").l < 6) {
+                    //nav.killbutton("energy");
                     chat(16, 327);
                 }
                 else {
                     nav.killall();
                     g.internal = true;
                     nav.bg("327_milking/energy.jpg");
-                    sc.setstep("kinsey", 5);
+                    sc.completeMissionTask("kinsey", "milk", 4);
                     inv.use("soda");
                     chat(17, 327);
                 }
@@ -204,9 +187,9 @@ room327.chatcatch = function (callback) {
         case "kend":
             chat(999, 327);
             break;
-        case "killbtns":
-            nav.killbutton("buttdisplay");
-            break;
+        //case "killbtns":
+        //    nav.killbutton("buttdisplay");
+        //    break;
         case "kinsey40":
             nav.bg("327_milking/energy0.jpg");
             break;
@@ -400,7 +383,7 @@ room327.chat = function (chatID) {
             speaker: "thinking",
             text: "There's no way this giant can is fitting in my asshole. I need to stretch it more! ",
             button: [
-                { chatID: -1, text: "...", callback: "killbtns" }
+                { chatID: -1, text: "[Need anal level 6]", callback: "" }
             ]
         },
         {

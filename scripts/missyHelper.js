@@ -41,6 +41,8 @@ missy.init = function () {
         { id: 32, n: "cumMaidCounter", c: 0 },
         { id: 33, n: "trashSearchCounter", c: 0 },
         { id: 34, n: "subCounter197", c: 0 },
+
+        { id: 35, n: "pinkEntrance", c: 0 },
     ];
 
     missy.cases = [
@@ -57,6 +59,9 @@ missy.init = function () {
         { caseId: 10, name: "case_newclothes", show: true, complete: false, success: false },
         { caseId: 11, name: "case_shopping", show: true, complete: false, success: false },
         { caseId: 12, name: "case_bimbopanties", show: true, complete: false, success: false },
+        { caseId: 13, name: "case_elijah", show: true, complete: false, success: false },
+        { caseId: 14, name: "case_beaver", show: true, complete: false, success: false },
+        { caseId: 15, name: "case_elijah_origin", show: true, complete: false, success: false },
     ];
 }
 
@@ -113,6 +118,8 @@ missy.activecase = function () {
         return { caseId: -1, name: "start", txt: "Get to work! ", m: [203], isComplete: true };
     }
     else {
+
+        //priapus (chloe notepad)
         var cases = [
             { caseId: 0, name: "start", txt: "Get a job. Check your computer in your room and apply. ", m: [16], isComplete: activeCaseComplete },
             { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100], isComplete: activeCaseComplete },
@@ -127,6 +134,10 @@ missy.activecase = function () {
             { caseId: 10, name: "case_newclothes", txt: "Visit Tiffany at Toys 'n Us and pick up your new uniform.", m: [650], isComplete: activeCaseComplete },
             { caseId: 11, name: "case_shopping", txt: "Meet Tiffany at the Toys 'n Us.", m: [650], isComplete: activeCaseComplete },
             { caseId: 12, name: "case_bimbopanties", txt: "Steal the panties from the Bimbo", m: [75], isComplete: activeCaseComplete },
+            { caseId: 13, name: "case_elijah", txt: "Convince Elijah to spill the details", m: [575], isComplete: activeCaseComplete },
+            { caseId: 14, name: "case_beaver", txt: "Stolen money", m: [250], isComplete: activeCaseComplete },
+            { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
+
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -141,7 +152,7 @@ missy.jobs = [
     { id: 0, n: "Clean Toilet", img: "errand3.png", pay: 20, page: 220, thisWeek: 6 },
     { id: 1, n: "File Documents", img: "errand1.png", pay: 40, page: 204, thisWeek: 7 },
     { id: 2, n: "Data Entry", img: "errand0.png", pay: 25, page: 219, thisWeek: 5 },
-    { id: 3, n: "Work Reciption", img: "errand2.png", pay: 40, page: 221, thisWeek: 8 },
+    { id: 3, n: "Work Reception", img: "errand2.png", pay: 40, page: 221, thisWeek: 8 },
     { id: 4, n: "Run Errands", img: "errand5.png", pay: 30, page: 222, thisWeek: 9 },
     { id: 5, n: "Cum Dump Maid", img: "errand6.png", pay: 35, page: 216, thisWeek: 10 },
     { id: 6, n: "Glory Hole", img: "errand7.png", pay: 50, page: 212, thisWeek: 11 },
@@ -163,7 +174,6 @@ missy.getcases = function () {
     var canDoCase;
     var piLevel = levels.get("pi").l;
     var completeCounter = 0;
-    var sissyLevel = levels.get("xdress").l;
 
     for (i = 4; i < missy.cases.length; i++) {
         if (missy.cases[i].complete)
@@ -232,13 +242,13 @@ missy.getcases = function () {
                         });
                         break;
                     case "case_shopping":
-                        if (sissyLevel > 3) {
-                            canDoCase = sissyLevel > 4;
+                        if (qdress.st[1].ach) {
+                            canDoCase = qdress.st[3].ach;
                             caseList.push({
                                 caseId: i,
                                 active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Keep wearing your panties and attend the sissy school. [Sissy Level 5]",
+                                notReadyTxt: "Find it in yourself to wear women's clothing. [Unlock Women's clothing in your dreams]",
                                 callback: missy.cases[i].name
                             });
                         }
@@ -255,6 +265,54 @@ missy.getcases = function () {
                             });
                         }
                         break;
+                    case "case_elijah_origin": 
+                        if (levels.get("pi").l > 2) {
+                            canDoCase = piLevel > 3;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_elijah":
+                        if (qdress.st[3].ach && missy.cases[15].success) {
+                            canDoCase = piLevel > 2;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    //case "case_beaver":
+                    //    if (sissy.st[19].ach) {
+                    //        canDoCase = piLevel > 3;
+                    //        caseList.push({
+                    //            caseId: i,
+                    //            active: canDoCase,
+                    //            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                    //            notReadyTxt: "Raise your PI Level. ",
+                    //            callback: missy.cases[i].name
+                    //        });
+                    //    }
+                    //    break;
+                    //case "case_saveralph":
+                    //    if (sissy.st[10].ach) {
+                    //        canDoCase = piLevel > 4;
+                    //        caseList.push({
+                    //            caseId: i,
+                    //            active: canDoCase,
+                    //            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                    //            notReadyTxt: "Raise your PI Level. ",
+                    //            callback: missy.cases[i].name
+                    //        });
+                    //    }
+                    //    break;
                 }
             }
         }

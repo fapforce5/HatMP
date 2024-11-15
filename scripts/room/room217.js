@@ -47,7 +47,10 @@ room217.chatcatch = function (callback) {
         case "getPunishment":
             nav.killall();
             var subLevel = levels.get("sub").l;
-            if (subLevel < 2) {
+            if (sissy.st[0].ach) {
+                chat(24, 217);
+            }
+            else if (subLevel < 2) {
                 nav.bg("217_punish/rice0.jpg");
                 chat(14, 217);
             }
@@ -116,6 +119,9 @@ room217.chatcatch = function (callback) {
         case "rice4":
         case "rice5":
             nav.bg("217_punish/" + callback + ".jpg");
+            break;
+        case "black":
+            char.room(172);
             break;
         default:
             break;
@@ -332,6 +338,15 @@ room217.chat = function (chatID) {
             text: "This is unacceptable. You will be punished for your insubordination! ",
             button: [
                 { chatID: -1, text: "...", callback: "getPunishment" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "missy",
+            text: "You are deserving of a proper punishment. Report to " + sc.n("black") +
+                " in the Black room immediately. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "black" },
             ]
         },
     ];

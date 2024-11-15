@@ -1,62 +1,134 @@
 ﻿//Room name
 var room213 = {};
 room213.main = function () {
-    var thisPink = gv.get("pink");
-    if (thisPink === 0)
-        chat(0, 213);
-    else if (gv.get("energy") < 30)
-        chat(24, 213);
-    else {
+    nav.button({
+        "type": "img",
+        "name": "lb",
+        "left": 125,
+        "top": 456,
+        "width": 802,
+        "height": 409,
+        "image": "213_pink/lb" + g.rand(0, 3) + ".png",
+    }, 213);
+    nav.button({
+        "type": "img",
+        "name": "rb",
+        "left": 1101,
+        "top": 487,
+        "width": 683,
+        "height": 317,
+        "image": "213_pink/rb" + g.rand(0, 3) + ".png",
+    }, 213);
+    nav.button({
+        "type": "img",
+        "name": "c",
+        "left": 656,
+        "top": 440,
+        "width": 732,
+        "height": 570,
+        "image": "213_pink/c" + g.rand(0, 3) + ".png",
+    }, 213);
+    nav.button({
+        "type": "img",
+        "name": "lf",
+        "left": 20,
+        "top": 272,
+        "width": 661,
+        "height": 808,
+        "image": "213_pink/lf" + g.rand(0, 3) + ".png",
+    }, 213);
+    nav.button({
+        "type": "img",
+        "name": "rf",
+        "left": 1408,
+        "top": 383,
+        "width": 433,
+        "height": 651,
+        "image": "213_pink/rf" + g.rand(0, 3) + ".png",
+    }, 213);
+
+    if (!gv.get("pinkroomopen")) {
+        sc.completeMissionTask("p", "pink", 0);
         nav.button({
             "type": "btn",
-            "name": "start",
-            "left": 574,
-            "top": 39,
-            "width": 537,
-            "height": 1041,
-            "image": "213_pink/start.png",
-            "title": "Start Work"
+            "name": "p",
+            "left": 587,
+            "top": 94,
+            "width": 684,
+            "height": 986,
+            "image": "213_pink/p.png",
         }, 213);
-        nav.buildnav([214, 215, 216, 0]);
+        gv.set("pinkroomopen", true);
+        chat(0, 213);
+    }
+    else {
+        sc.select("icon_waitress", "213_pink/icon_waitress.png", 1);
+        nav.buildnav([214, 215, 171, 170, 207]);
     }
 };
 
 room213.btnclick = function (name) {
     switch (name) {
-        case "start":
-            nav.killbutton("start");
-            chat(7, 213);
-            break;
-        //case "gamegirl":
-        //    nav.killall();
-        //    nav.bg("213_pink/gmw1.jpg");
-        //    chat(21, 213);
-        //    break;
-        case "gw3":
-            nav.killall();
-            nav.bg("213_pink/gw3.jpg");
-            chat(22, 213);
-            break;
-        //case "gameboy":
-        //    nav.killall();
-        //    nav.bg("213_pink/gm1.jpg");
-        //    chat(25, 213);
-        //    break;
-        case "chatcum":
-            nav.killall();
-            nav.bg("213_pink/chat2.jpg");
-            chat(37, 213);
-            break;
-        case "cleancum":
-            if (g.internal === 3) {
-                nav.killbutton("cleancum");
-                nav.bg("213_pink/clean3.jpg");
-                chat(35, 213);
+        case "icon_waitress":
+            if (gv.get("energy") < 33) {
+                chat(33, 213);
+            }
+            else if (sc.getMissionTask("p", "pink", 2).notStarted) {
+                sc.completeMissionTask("p", "pink", 2);
+                nav.killall();
+                nav.bg("213_pink/bgc.jpg");
+                room213.btnclick("drawCloseupBgChar");
+
+                if (missy.get("pinkEntrance") === 0) {
+                    nav.button({
+                        "type": "img",
+                        "name": "pg",
+                        "left": 482,
+                        "top": 0,
+                        "width": 1249,
+                        "height": 1080,
+                        "image": "213_pink/pg.png",
+                    }, 213);
+                    chat(7, 213);
+                }
             }
             else {
-                nav.modbutton("cleancum", "213_pink/cum" + g.internal + ".png", null, null);
-                g.internal++;
+                nav.killall();
+                nav.bg("213_pink/bgc.jpg");
+                room213.btnclick("drawCloseupBgChar");
+                nav.button({
+                    "type": "img",
+                    "name": "g",
+                    "left": 1226,
+                    "top": 0,
+                    "width": 505,
+                    "height": 1080,
+                    "image": "213_pink/g.png",
+                }, 213);
+                chat(34, 213);
             }
+            break;
+        case "drawCloseupBgChar":
+            nav.killbutton("bgc");
+            nav.killbutton("bgc1")
+            nav.button({
+                "type": "img",
+                "name": "bgc",
+                "left": 806,
+                "top": 444,
+                "width": 597,
+                "height": 479,
+                "image": "213_pink/wc" + g.rand(0, 3) + ".png",
+            }, 213);
+            nav.button({
+                "type": "img",
+                "name": "bgc1",
+                "left": 0,
+                "top": 282,
+                "width": 1920,
+                "height": 798,
+                "image": "213_pink/we" + g.rand(0, 4) + ".png",
+            }, 213);
             break;
         default:
             break;
@@ -65,195 +137,321 @@ room213.btnclick = function (name) {
 
 room213.chatcatch = function (callback) {
     switch (callback) {
-        case "game":
-            nav.bg("214_pink/game.jpg");
-            break;
-        case "hallway":
-            nav.bg("213_pink/hall.jpg");
-            break;
-        case "hole":
-            nav.bg("213_pink/hole.jpg");
-            break;
-        case "parlourx":
-            gv.mod("pink", 1);
-            nav.bg("213_pink/bg.jpg");
-            break;
-        case "endparlour":
-            gv.mod("money", 50);
-            gv.mod("phum", 1);
-            gv.mod("pink", 1);
-            char.addtime(120);
-            gv.mod("energy", -30);
-            char.room(213);
-            break;
-        case "gamestart":
-            g.internal = 0;
-            nav.bg("214_pink/game.jpg");
-            break;
-        case "game0":
-            //nav.killall();
-            //nav.bg("213_pink/gm0.jpg");
-            //nav.button({
-            //    "type": "btn",
-            //    "name": "gamegirl",
-            //    "left": 1126,
-            //    "top": 0,
-            //    "width": 794,
-            //    "height": 1080,
-            //    "image": "213_pink/gm0_woman.png",
-            //    "title": "Girl"
-            //}, 213);
-            //nav.button({
-            //    "type": "btn",
-            //    "name": "gameboy",
-            //    "left": 119,
-            //    "top": 0,
-            //    "width": 1064,
-            //    "height": 1080,
-            //    "image": "213_pink/gm0_man.png",
-            //    "title": "Boy"
-            //}, 213);
-            break;
-        case "gw2":
-            nav.bg("213_pink/gw2.jpg");
-            nav.button({
-                "type": "hand",
-                "name": "gw3",
-                "left": 639,
-                "top": 37,
-                "width": 430,
-                "height": 1005,
-                "image": "213_pink/gw2.png",
-                "title": "Massage Feet"
-            }, 213);
-            break;
-        case "gw4":
-            gv.mod("energy", -15);
-            gv.mod("phum", 1);
-            gv.mod("money", 25);
-            nav.bg("214_pink/game.jpg");
-            char.room(214);
-            break;
-        case "gm2":
-            nav.killall();
-            nav.bg("213_pink/gm2.jpg");
-            break;
-        case "gm3":
-            nav.bg("213_pink/gm3.jpg");
-            break;
-        case "gmend":
-            gv.mod("energy", -15);
-            gv.mod("giveBoobJob", 1);
-            gv.mod("loadSwollowed", 1);
-            gv.mod("money", 25);
-            char.room(214);
-            break;
-        case "chat0":
-            nav.killall();
-            nav.bg("213_pink/chat0.jpg");
-            break;
-        case "chat1":
-            nav.bg("213_pink/chat1.jpg");
-            break;
-        case "chat2":
-            nav.button({
-                "type": "btn",
-                "name": "chatcum",
-                "left": 146,
-                "top": 78,
-                "width": 352,
-                "height": 289,
-                "image": "213_pink/chatcum.png",
-                "title": "Cum"
-            }, 213);
-            break;
-        case "chatEnd":
-            gv.mod("energy", -30);
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
-            gv.mod("sissygasm", 1);
-            gv.mod("money", 50);
-            char.room(214);
-            break;
         
         case "reset":
-            char.addtime(20);
             char.room(213);
             break;
-        case "end":
-            char.addtime(60);
-            char.room(0);
+        case "g0":
+            nav.killbutton("pg");
+            nav.button({
+                "type": "img",
+                "name": "g",
+                "left": 1226,
+                "top": 0,
+                "width": 505,
+                "height": 1080,
+                "image": "213_pink/g.png",
+            }, 213);
             break;
-        //case "private0":
-        //    g.sumSissy();
-        //    var points = (g.sp.total - gv.get("usedSissyPoints"));
-        //    if (points < 500)
-        //        chat(38, 213);
-        //    break;
-        //case "private1":
-        //    nav.killall();
-        //    nav.bg("215_pink/private1.jpg");
-        //    break;
-        //case "private2b":
-        //    nav.bg("213_pink/private2b.jpg");
-        //    g.internal = 1;
-        //    break;
-        //case "private2a":
-        //    nav.bg("213_pink/private2a.jpg");
-        //    g.internal = 0;
-        //    break;
-        //case "private3":
-        //    if (g.internal === 1) {
-        //        chat(42, 213);
-        //    }
-        //    else {
-        //        g.internal = Math.floor(Math.random() * 3);
-        //        if (g.internal === 0) {
-        //            nav.button({
-        //                "type": "img",
-        //                "name": "f",
-        //                "left": 317,
-        //                "top": 222,
-        //                "width": 409,
-        //                "height": 858,
-        //                "image": "213_pink/pri0.png"
-        //            }, 213);
-        //        }
-        //        else if (g.internal === 1) {
-        //            nav.button({
-        //                "type": "img",
-        //                "name": "f",
-        //                "left": 327,
-        //                "top": 213,
-        //                "width": 442,
-        //                "height": 867,
-        //                "image": "213_pink/pri1.png"
-        //            }, 213);
-        //        }
-        //        else if (g.internal === 2) {
-        //            nav.button({
-        //                "type": "img",
-        //                "name": "f",
-        //                "left": 56,
-        //                "top": 163,
-        //                "width": 856,
-        //                "height": 917,
-        //                "image": "213_pink/pri2.png"
-        //            }, 213);
-        //        }
-        //        chat(43, 213);
-        //    }
-        //    break;
-        //case "privateReset":
-        //    nav.killbutton("f");
-        //    char.addtime(30);
-        //    break;
-        case "resetGameRoom":
-            char.room(214);
+        case "g1":
+            room213.btnclick("drawCloseupBgChar");
+            nav.killbutton("g");
+            nav.button({
+                "type": "img",
+                "name": "g",
+                "left": 704,
+                "top": 1,
+                "width": 824,
+                "height": 1079,
+                "image": "213_pink/g1.png",
+            }, 213);
+            
+            break;
+        case "_0":
+            nav.killall();
+            room213.btnclick("drawCloseupBgChar");
+            room213.chatcatch("_0_" + g.rand(0, 3));
+            return;
+        case "_0_0":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 980,
+                "top": 148,
+                "width": 406,
+                "height": 932,
+                "image": "213_pink/_0_0.png",
+            }, 213);
+            chat(12, 213);
+            break;
+        case "_0_1":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 767,
+                "top": 109,
+                "width": 619,
+                "height": 958,
+                "image": "213_pink/_0_1.png",
+            }, 213);
+            chat(14, 213);
+            break;
+        case "_0_1a":
+            nav.killbutton("e");
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 767,
+                "top": 109,
+                "width": 822,
+                "height": 958,
+                "image": "213_pink/_0_1a.png",
+            }, 213);
+            break;
+        case "_0_1b":
+            nav.killbutton("e");
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 767,
+                "top": 109,
+                "width": 619,
+                "height": 958,
+                "image": "213_pink/_0_1.png",
+            }, 213);
+            break;
+        case "_0_2":
+            nav.killbutton("e");
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 700,
+                "top": 0,
+                "width": 686,
+                "height": 1080,
+                "image": "213_pink/_0_2.png",
+            }, 213);
+            if (sc.getMission("construction", "sex").notStarted) {
+                sc.startMission("construction", "sex");
+                sc.completeMissionTask("construction", "sex", 0);
+                sc.show("construction");
+                chat(18, 213);
+            }
+            else
+                chat(19, 213);
+            break;
+        case "_1":
+            nav.killall();
+            room213.btnclick("drawCloseupBgChar");
+            room213.chatcatch("_1_" + g.rand(0, 3));
+            break;
+        case "_1_0":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 635,
+                "top": 0,
+                "width": 966,
+                "height": 1080,
+                "image": "213_pink/_1_0.png",
+            }, 213);
+            chat(20, 213);
+            break;
+        case "_1_1":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 635,
+                "top": 89,
+                "width": 1117,
+                "height": 991,
+                "image": "213_pink/_1_1.png",
+            }, 213);
+            chat(21, 213);
+            break;
+        case "_1_2":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 635,
+                "top": 85,
+                "width": 931,
+                "height": 995,
+                "image": "213_pink/_1_2.png",
+            }, 213);
+            chat(24, 213);
+            break;
+        case "_2":
+            nav.killall();
+            nav.bg("213_pink/bgc.jpg");
+            room213.btnclick("drawCloseupBgChar");
+            room213.chatcatch("_2_" + g.rand(0, 3));
+            break;
+        case "_2_0":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 862,
+                "top": 160,
+                "width": 866,
+                "height": 920,
+                "image": "213_pink/_2_0.png",
+            }, 213);
+            chat(25, 213);
+            break;
+        case "_2_0a":
+            nav.killbutton("e");
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 793,
+                "top": 150,
+                "width": 569,
+                "height": 930,
+                "image": "213_pink/_2_0a.png",
+            }, 213);
+            break;
+        case "_2_0b":
+            nav.killall();
+            nav.bg("213_pink/_2_0b.jpg");
+            levels.anal(3, false, "m", true);
+            break;
+        case "_2_1":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 528,
+                "top": 62,
+                "width": 949,
+                "height": 1018,
+                "image": "213_pink/_2_1.png",
+            }, 213);
+            chat(29, 213);
+            break;
+        case "_2_1a":
+            sc.completeMissionTask("photo", "photo", 1);
+            nav.killbutton("e");
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 1109,
+                "top": 132,
+                "width": 368,
+                "height": 948,
+                "image": "213_pink/_2_1a.png",
+            }, 213);
+            break;
+        case "_2_2":
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 732,
+                "top": 39,
+                "width": 745,
+                "height": 1041,
+                "image": "213_pink/_2_2.png",
+            }, 213);
+            chat(31, 213);
+            break;
+        case "_3":
+            nav.killall();
+            nav.bg("213_pink/bgc.jpg");
+            room213.btnclick("drawCloseupBgChar");
+            gv.mod("energy", -33);
+            gv.mod("money", 25);
+            gv.mod("pink", 1);
+            nav.button({
+                "type": "img",
+                "name": "e",
+                "left": 623,
+                "top": 1,
+                "width": 856,
+                "height": 1079,
+                "image": "213_pink/_3.png",
+            }, 213);
+            chat(32, 213);
+            break;
+        case "tour_game":
+            nav.killall();
+            nav.bg("214_pinkgame/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "p",
+                "left": 587,
+                "top": 94,
+                "width": 684,
+                "height": 986,
+                "image": "213_pink/p.png",
+            }, 213);
+            break;
+        case "tour_gh":
+            nav.killall();
+            var holes = g.shuffleArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            var waiting = holes.splice(0, 5);
+            var fuckers = g.shuffleArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+
+            g.internal = {
+                i: 0,
+                holes: holes,
+                waiting: waiting,
+                fuckers: [null, g.rand(0, 6), null, null, g.rand(7, 14)],
+                fuckersWaiting: fuckers,
+                fuckersPointer: 0,
+                fuckersDick: [2, 1, 3, 2, 2, 1, 1, 2, 1, 1, 2, 1, 0, 1, 2, 2, 1],
+                cam: "cam1"
+            };
+
+            nav.bg("216_pinkglory/bg.jpg");
+            for (i = 0; i < 5; i++) {
+                    nav.button({
+                        "type": "img",
+                        "name": "ho_" + i,
+                        "left": 300 + (i * 335),
+                        "top": 73,
+                        "width": 335,
+                        "height": 324,
+                        "image": "216_pinkglory/" + g.internal.holes[i] + "_s.png",
+                        "title": "Free Use Slut"
+                    }, 171);
+                    nav.button({
+                        "type": "img",
+                        "name": "hox_" + i,
+                        "left": 300 + (i * 335),
+                        "top": 400,
+                        "width": 335,
+                        "height": 570,
+                        "image": "216_pinkglory/" + g.internal.holes[i] + "_d.png",
+                        "title": "Free Use Slut"
+                    }, 171);
+                }
+            room171.btnclick("fuckers");
+            nav.button({
+                "type": "btn",
+                "name": "p",
+                "left": 587,
+                "top": 94,
+                "width": 684,
+                "height": 986,
+                "image": "213_pink/p.png",
+            }, 213);
+            break;
+        case "tour_rooms":
+            nav.killall();
+            nav.bg("215_pinkroom/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "p",
+                "left": 587,
+                "top": 94,
+                "width": 684,
+                "height": 986,
+                "image": "213_pink/p.png",
+            }, 213);
+            break;
+        case "tour_stage":
+            nav.bg("151_jones/runway.jpg");
             break;
         default:
-            if (callback.startsWith("par"))
-                nav.bg("213_pink/" + callback + ".jpg");
             break;
     }
 };
@@ -288,7 +486,7 @@ room213.chat = function (chatID) {
             text: "Yes. Just know that many of our cliets can get a little handsy. It can be surprising for a new girl. " +
                 "Now follow me to the game room. ",
             button: [
-                { chatID: 3, text: "[Follow her]", callback: "game" }
+                { chatID: 3, text: "[Follow her]", callback: "tour_game" }
             ]
         },
         {
@@ -297,304 +495,305 @@ room213.chat = function (chatID) {
             text: "This is the game room. Some of our patrons like to socialize while getting serviced. There's a few " +
                 "young gentlemen that spend more time here than at their own home. Let's continue the tour. ",
             button: [
-                { chatID: 4, text: "[Follow her]", callback: "hallway" }
+                { chatID: 4, text: "[Follow her]", callback: "tour_gh" }
             ]
         },
         {
             chatID: 4,
             speaker: "p",
-            text: "These are the rooms. Only the best get a room here. As you can see girls and boys get a steady run " +
-                "of clients. The last location I'm going to show you is a favorite of the local perverts. Come. ",
+            text: "These are my world famous glory holes. Most places just put a little " +
+                "hole to stick your dick into, but at the Pink Room we give the client " +
+                "the entire ass to grab on and pound away on the hole of their choosing. " +
+                "Now on to the next room. ",
             button: [
-                { chatID: 5, text: "[Follow her]", callback: "hole" }
+                { chatID: 5, text: "[Follow her]", callback: "tour_rooms" }
             ]
         },
         {
             chatID: 5,
             speaker: "p",
-            text: "This is the glory ho wall. Only the sluttiest of sluts can serve here. Sluts that live by the rule " +
-                "that the client can do anything they want to your holes. Let's return back to the main parlour.",
+            text: "These are the rental room. Once a girl has proven herself worthy she " +
+                "will be given one of the private rooms to service clients. This is where the " +
+                "real fun begins. Now to the last room. ",
             button: [
-                { chatID: 6, text: "[Return to the main parlour]", callback: "parlourx" }
+                { chatID: 6, text: "[Follow her]", callback: "tour_stage" }
             ]
         },
         {
             chatID: 6,
             speaker: "p",
-            text: "Now that you've viewed each room, I can't have an awkward virgin working in all the room. I use your " +
-                "Sissy points to determin your worth. The more sissy points you have the more options for work. ",
+            text: "This is the stage you can work. We put on nightly shows [in development]",
             button: [
-                { chatID: 7, text: "ok", callback: "" }
+                { chatID: 35, text: "ok", callback: "tour_main" }
             ]
         },
         {
             chatID: 7,
             speaker: "p",
-            text: "So where do you want to work today? ",
+            text: "Oh great! I do need a sexy girl like you to mingle and entertain our arriving " +
+                "guests. Each person should get a friendly greeting once they walk in the door and " +
+                "a invitation to come back when they leave. If someone looks nervous, or lost " +
+                "I need you to help them feel welcome and guide them to the room they want. ",
             button: [
-                { chatID: 9, text: "Parlour Girl", callback: "" },
-                { chatID: -1, text: "Nothing", callback: "" }
+                { chatID: 8, text: "I can do that!", callback: "" }
             ]
         },
         {
             chatID: 8,
             speaker: "p",
-            text: "So where do you want to work today? ",
+            text: "Awesome! I know you'll do great! Geoffrey here will get you ready and show " +
+                "you the ropes. Listen to what he says. He really is the best! I've got to mingle. ", 
             button: [
-                { chatID: 20, text: "Game Room Entertainment", callback: "gamestart" },
-                { chatID: -1, text: "Private Room", callback: "private0" },
-                { chatID: -1, text: "Wall", callback: "" },
-                { chatID: 7, text: "Back", callback: "" },
+                { chatID: 9, text: "ok", callback: "g0" }
             ]
         },
         {
             chatID: 9,
-            speaker: "p",
-            text: "Oh good. Let's get you in costume and set up. ",
+            speaker: "!g",
+            text: "Ugh. Another idiot sissy. I don't know why " + sc.n("p") + " keeps you idiots " +
+                "around. I swear every one of you has two brain cells fighting for second place. " +
+                "*snort* You best fit will be a wind holder. I have just the setup to hold the wine " +
+                "and ensure you don't pester our customers with the drivel that pours out of your " +
+                "mouth. ",
             button: [
-                { chatID: 10, text: "Sweet!", callback: "par1" }
+                { chatID: 10, text: "..but how will I greet people? ", callback: "" }
             ]
         },
         {
             chatID: 10,
-            speaker: "p",
-            text: "There we go. Your job is to serve drinks to our guests as they arrive. I suppose you need a fresh " +
-                "tray of drinks. ",
+            speaker: "!g",
+            text: "That's the beauty. You won't. Leave that to me. We don't need you scaring off " +
+                "people when they arrive. Stand by while I get you set up in your new attire. ",
             button: [
-                { chatID: 11, text: "HHhmm", callback: "par2" }
+                { chatID: 11, text: "grrrr...", callback: "g1" }
             ]
         },
         {
             chatID: 11,
-            speaker: "p",
-            text: "Ok. Now don't drop the tray, I don't want stains on my 19th centure hardwood floors. ",
+            speaker: "!g",
+            text: "Perfect. Now you'll need to keep your mouth closed so you don't spill a drop. " +
+                "Now post here and serve our guests. ",
             button: [
-                { chatID: 12, text: "uuuuUMMmmMMmm", callback: "par3" }
+                { chatID: -1, text: "MMmmmMmmmm", callback: "_0" }
             ]
         },
         {
             chatID: 12,
-            speaker: "thinking",
-            text: "Well this is awkward. What am I supposed to do? Do I just stand here? I can't talk because as soon " +
-                "as I open my mouth the drink will go everywhere. ",
+            speaker: "!thomas",
+            text: "OOOoo hey baby! Isn't the Pink Room the best! ",
             button: [
-                { chatID: 13, text: "...", callback: "par4" }
+                { chatID: 13, text: "uhhmm hhmmmm", callback: "" }
             ]
         },
         {
             chatID: 13,
-            speaker: "random",
-            text: "Hi. Do you like your pussy eaten? I love to eat pussy. I bet your pussy smells like the lavender fields " +
-                "of the Provence region in southern France. I go there often. You should join me and be my personal fuck " +
-                "toy. I could show you this nice little village with a lovely cafe that makes a terrific tomato bisque. ",
+            speaker: "!thomas",
+            text: "I've swollow so much cum I don't even eat lunch anymore. Oh! I see my " +
+                "favorite customer. Let me grab a glass of wine for him. When he's drunk he lasts " +
+                "so much longer, and his dick hits me in just the right place! I'll catch you later " +
+                "baby. ",
             button: [
-                { chatID: 14, text: "MMmhHHmmmm", callback: "par5" }
+                { chatID: -1, text: "MMmm mmm", callback: "_1" }
             ]
         },
         {
             chatID: 14,
-            speaker: "thinking",
-            text: "I didn't ever think that guy would stop talking. Who tries to have a conversation with someone " +
-                "with their mouth full? ...Huh... Look at those two. They're totally gunna fuck right here.",
+            speaker: "!boy",
+            text: "Hi. You're pretty. Do you play Risk? I love playing Risk. It's a great board " +
+                "game. This one time I was playing I was stuck starting with Asia. I don't like " +
+                "starting with Asia... proceeds to tell you about his entire game....",
             button: [
-                { chatID: 15, text: "...", callback: "par6" }
+                { chatID: 15, text: ".....", callback: "" }
             ]
         },
         {
             chatID: 15,
-            speaker: "thinking",
-            text: "Oh hahaha. He totally came all over her before they could fuck. What a loser! Oh well, still got " +
-                "a nut I guess. ",
+            speaker: "!boy",
+            text: "I like you. You're easy to talk to. Would you like to come over and play " +
+                "Risk? I have the new version where you can be space pirates....",
             button: [
-                { chatID: 16, text: "...", callback: "par7" }
+                { chatID: 16, text: ".....", callback: "_0_1a" }
             ]
         },
         {
             chatID: 16,
-            speaker: "bimbo",
-            text: "Hey you. I could use some of that wine! Why do so many men ejaculate as soon as they see me naked? " +
-                "I'm here to get fucked, not dissapointed. At least there's more dicks inside. Later cutie.",
+            speaker: "!girl",
+            text: "HAhahahaha! What a loser! Can't you see she can't talk! No one would ever " +
+                "play Risk with you! Get a life! ",
             button: [
-                { chatID: 17, text: "HmmmUmmm", callback: "par8" }
+                { chatID: 17, text: ".....", callback: "_0_1b" }
             ]
         },
         {
             chatID: 17,
-            speaker: "random",
-            text: "Wine with a slut; my favorite combination. Come here girl, I want to play with those holes. ",
+            speaker: "!boy",
+            text: "Oh... I'm just going to get a wine... *sniffle* ",
             button: [
-                { chatID: 18, text: "Hmmm", callback: "par9" }
+                { chatID: -1, text: "Hmmmm", callback: "_1" }
             ]
         },
         {
             chatID: 18,
-            speaker: "random",
-            text: "Oh.. You're that kind of girl. I can still use that hole of yours. You've never had a cock " +
-                "as fat as mine in you. I'll see you inside if you want my cum leaking down your leg. ",
+            speaker: "bossman",
+            text: "Oh shit! " + sc.n("me") + "! I didn't know you're a slut! You should come " +
+                "put in some hours at the site, I could use some lunch time anal. ",
             button: [
-                { chatID: 19, text: "mmMmmmm", callback: "par10" }
+                { chatID: -1, text: "mmMmmMmmmm", callback: "_1" }
             ]
         },
         {
             chatID: 19,
-            speaker: "p",
-            text: "You did so well today and gave out all the dirnks. No one spends more money than drunks. " +
-                "Here's $50 for your time, come back anytime. ",
+            speaker: "bossman",
+            text: "Looking to spread those cheeks at lunch slut",
             button: [
-                { chatID: -1, text: "MMMmmmmUUummm", callback: "endparlour" }
+                { chatID: -1, text: "mmMmmMmmmm", callback: "_1" }
             ]
         },
         {
             chatID: 20,
-            speaker: "thinking",
-            text: "Should I visit the gamers or hang out back here? ",
+            speaker: "boy",
+            text: "It's a good thing we're in public. I would love to take you back to my " +
+                "trailer, skin you like a deer, and make you into sausages. ",
             button: [
-                { chatID: -1, text: "Visit the gamers", callback: "game0" },
-                { chatID: 28, text: "Chat with the group watching", callback: "chat0" }
+                { chatID: -1, text: "hhrrrrmmmm!", callback: "_2" }
             ]
         },
         {
             chatID: 21,
-            speaker: "random",
-            text: "Hay! I'm glad you stopped by. I was just thinking I needed someone to help me with my sore feet. " +
-                "I need you to rub them?",
+            speaker: "!chris",
+            text: "Oh my god! I so need a break. I just spent an hour in the glory hole, which  " +
+                "I usually love, but the last guy that came in stunk so bad I threw up in my " +
+                "mouth a little bit. Why is it so hard for men to take a quick shower before " +
+                "fucking me in my ass. It's like there's no respect here. ",
             button: [
-                { chatID: -1, text: "Sure!", callback: "gw2" }
+                { chatID: 22, text: "MMm hhhhmmmmm!", callback: "" }
             ]
         },
         {
             chatID: 22,
-            speaker: "random",
-            text: "MMmmmmm. Yeah. Right there.... mmmmmmmmmmmmm. ",
+            speaker: "!thomas",
+            text: "Speaking of resepct. I met the nicest dom. She had a private room that she took " +
+                "me too, tied me up, teased me for an hour, then made such beautiful love to me! " +
+                "I'm so totally in love right now. I'm so totally going to be her wife, cook her " +
+                "meals, clean the house, and dress in the prettiest dresses for her. Ohhhh wow. I'm " +
+                "so in love. ",
             button: [
-                { chatID: 23, text: "[Keep rubbing]", callback: "" }
+                { chatID: 23, text: "MMMMmmmm hhmmmm!", callback: "" }
             ]
         },
         {
             chatID: 23,
-            speaker: "random",
-            text: "That's a good girl. Thanks so much. ",
+            speaker: "!chris",
+            text: "That's so beautiful. I want my own mommy dommy. And a daddy dommy. I just want " +
+                "to be fucked. " + sc.n("me") + ", I'm going to grab a glass of your wine and get " +
+                "back to the glory holes. I need to get fucked some more!",
             button: [
-                { chatID: -1, text: "My pleasure", callback: "gw4" }
+                { chatID: -1, text: "hhhmmmm mmmm!", callback: "_2" }
             ]
         },
         {
             chatID: 24,
-            speaker: "p",
-            text: "You look tired. Get more energy before coming back. ",
+            speaker: "!girl",
+            text: "Oh darling. You're so hot. Love the bindings. Nothing hotter that a slut " +
+                "that knows their worth. Have you heard of the C.U.M. Cult? They would love " +
+                "a tasty treat like you. ",
             button: [
-                { chatID: -1, text: "Oh. ok.", callback: "end" }
+                { chatID: 25, text: "Mmmmm MMmmmm", callback: "_2" }
             ]
         },
         {
             chatID: 25,
-            speaker: "random",
-            text: "Nice. Start sucking and don't get in my way, I'm totally winning! ",
+            speaker: "!boy",
+            text: "Oooooo, nice ass! ",
             button: [
-                { chatID: 26, text: "MMmmmm", callback: "gm2" }
+                { chatID: 26, text: "?", callback: "_2_0a" }
             ]
         },
         {
             chatID: 26,
-            speaker: "random",
-            text: "Fuck yeah. Suck it! I'm totally gunna cum in your mouth when I give the kill shot!",
+            speaker: "!boy",
+            text: "Oooooo, nice ass! ",
             button: [
-                { chatID: 27, text: "*Slup* *suck*", callback: "gm3" }
+                { chatID: 27, text: "?", callback: "_2_0a" }
             ]
         },
         {
             chatID: 27,
-            speaker: "random",
-            text: "Oh fuck! Best head shot ever! Now swollow it! ",
+            speaker: "!boy",
+            text: "Oh fuck! Love an easy slut! FFuuuckkk you feel good!",
             button: [
-                { chatID: -1, text: "*gurgle* *swollow*", callback: "gmend" }
+                { chatID: 28, text: "hhMMmhhh mMMmhhhMmmmm", callback: "_2_0b" }
             ]
         },
         {
             chatID: 28,
-            speaker: "me",
-            text: "I couldn't help but notice your dick is sticking out. Also it's very erect. ",
+            speaker: "thinking",
+            text: "What the hell! I guess I'm just a free use whore now. I don't even know " +
+                "what he looked like, but I do know what his cum dribbling out of my ass " +
+                "feels like. ",
             button: [
-                { chatID: 29, text: "...", callback: "" }
+                { chatID: -1, text: "mmmmm", callback: "_3" }
             ]
         },
         {
             chatID: 29,
-            speaker: "random",
-            text: "I don't know why, but when ever I watch someone playing video games I get really excited. " +
-                "I love this game and these two ARE JUST SO AWESOME! Wathcing them makes my dick is so hard it hurts! " +
-                "Did you see that awesome move Javier did. Pure magic.",
+            speaker: "!boy",
+            text: "say qie zi!",
             button: [
-                { chatID: 30, text: "So.... do you want me to ride that?", callback: "" },
-                { chatID: -1, text: "Ok, cool. Loser.", callback: "resetGameRoom" }
+                { chatID: 30, text: "hmmmm", callback: "_2_1a" }
             ]
         },
         {
             chatID: 30,
-            speaker: "random",
-            text: "That would be awesome! Hop on up!",
+            speaker: "thinking",
+            text: "What the hell was that? Did I just become a photo for someone's vacation? ",
             button: [
-                { chatID: 31, text: "Yea!", callback: "chat1" }
+                { chatID: -1, text: "hmmmm", callback: "_3" }
             ]
         },
         {
             chatID: 31,
-            speaker: "random",
-            text: "Oh fuck! This is why I came here! Great games and easy sluts! You're the best, around.",
+            speaker: "missy",
+            text: "Aren't you just the cutest wine holder. I'd love to chat, but I do have " +
+                "an appointment to run to. I so am looking forward to using that ass though! " +
+                "I'm going to fuck you so deep you'll fart cum for a week! ",
             button: [
-                { chatID: -1, text: "Oh fuck my ass", callback: "chat2" }
+                { chatID: -1, text: "Hmmm mmmhhh", callback: "_3" }
             ]
         },
         {
             chatID: 32,
-            speaker: "thinking",
-            text: "They really are just absolutly covered in cum. Oh well, need to get to work.",
+            speaker: "!g",
+            text: "I suppose you earned your $25 pay. ",
             button: [
-                { chatID: 33, text: "...", callback: "clean1" }
+                { chatID: -1, text: "hhhmmm ooooo", callback: "reset" }
             ]
         },
         {
             chatID: 33,
             speaker: "thinking",
-            text: "These girls must be busy! It seems like such a waste to just put it in the cum bucket. I wonder if " +
-                "she'll mind if I have a little taste? Maybe I should ask first?",
+            text: "I'm too tired to work this room. ",
             button: [
-                { chatID: 34, text: "Can I eat the cum out of your pussy?", callback: "clean2" },
-                { chatID: 36, text: "[Just finish cleaning]", callback: "clean4a" }
+                { chatID: -1, text: "[Need at least 33 energy]", callback: "" }
             ]
         },
         {
             chatID: 34,
-            speaker: "random",
-            text: "Lick away. My pussy needs a tongue after all that cock!",
+            speaker: "!g",
+            text: "Ugh. Back again. Let me get you ready. ",
             button: [
-                { chatID: -1, text: "MMmmmmm", callback: "" }
+                { chatID: -1, text: "Yes!", callback: "_0" }
             ]
         },
         {
             chatID: 35,
-            speaker: "thinking",
-            text: "I'm so full! There's just so much cum!",
-            button: [
-                { chatID: 36, text: "*Gulp*", callback: "clean4" }
-            ]
-        },
-        {
-            chatID: 36,
             speaker: "p",
-            text: "Everyone's all clean! ",
+            text: "That concludes the tour. I'll take you back to the main room where you " +
+                "can start working. ",
             button: [
-                { chatID: -1, text: "[Return to the parlor]", callback: "reset" }
+                { chatID: -1, text: "ok", callback: "reset" }
             ]
         },
-        {
-            chatID: 37,
-            speaker: "random",
-            text: "You're my favorite slut! Come back and take my cock anytime!",
-            button: [
-                { chatID: -1, text: "[Return to the parlor]", callback: "chatEnd" }
-            ]
-        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

@@ -1,16 +1,16 @@
 ﻿//Girls Lockerroom
 var room902 = {};
 room902.main = function () {
-    if (cl.appearance() < 2) {
-        nav.button({
-            "type": "img",
-            "name": "woman",
-            "left": 1273,
-            "top": 48,
-            "width": 410,
-            "height": 1057,
-            "image": "452_parkWomansRoom/woman.png"
-        }, 902);
+    let manAppear = cl.appearance() < 2;
+    let caught = g.rand(0, 3) !== 0;
+
+    if (!manAppear) {
+        if (inv.has("lolalocker") && !sc.getMissionTask("lola", "random", 0).complete)
+            caught = false;
+    }
+
+    if (manAppear && caught) {
+        nav.bg("902_girl/bgbad.jpg");
         chat(0, 902);
     }
     else {
@@ -41,6 +41,8 @@ room902.main = function () {
             nav.button(v, 902);
         });
         nav.buildnav(navList);
+        if (manAppear)
+            chat(36, 902);
     }
 };
 
@@ -88,9 +90,8 @@ room902.btnclick = function (name) {
                 
                 if (sc.getTimeline("lola").roomID === 901) {
                     nav.bg("902_girl/unlockz.jpg");
-                    if (sc.getEvent("lola", -6)) {
+                    if (sc.getMissionTask("lola", "random", 0).complete)
                         chat(23, 902)
-                    }
                     else
                         chat(4, 902);
                 }
@@ -173,7 +174,7 @@ room902.chatcatch = function (callback) {
             break;
         case "s16":
             nav.killall();
-            sc.setstep("lola", -6);
+            sc.completeMissionTask("lola", "random", 0);
             char.settime(18, 0);
             nav.buildnav([0, 901, 902]);
             break;
@@ -203,7 +204,7 @@ room902.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "random",
+            speaker: "!girl",
             text: "AAAAAAAAAaaaaaaaaaaaaaaaaa WHAT ARE YOU DOING IN HERE! GET OUT!!!!",
             button: [{ chatID: -1, text: "Oh crap! I'm not a dirty pervert! Sorry", callback: "leave" }]
         },
@@ -493,6 +494,14 @@ room902.chat = function (chatID) {
                 "wipe your cum off my chest. ",
             button: [
                 { chatID: 19, text: "Sure. I'll run grab those. ", callback: "s12" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "thinking",
+            text: "The coast is clear. No one's in here. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

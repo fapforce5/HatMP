@@ -1,4 +1,5 @@
 ﻿//Room name
+//stumpy, snail, pinata, Ilean
 var room310 = {};
 room310.main = function () {
     var btnList = [

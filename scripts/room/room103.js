@@ -13,8 +13,14 @@ room103.main = function () {
         room103.chatcatch("sweep");
     }
     else if (jobapplyconst === 100) {
-        nav.bg("103_constSite/day1.jpg");
-        chat(67, 103);
+        if (sc.getMission("river", "bully").notStarted) {
+            nav.bg("103_constSite/day1.jpg");
+            chat(67, 103);
+        }
+        else {
+            g.internal = false;
+            room103.chatcatch("sweep");
+        }
     }
     else {
         room103.chatcatch("sweep");
@@ -69,15 +75,8 @@ room103.btnclick = function (name) {
             }, 103);
             chat(66, 103);
             break;
-        case "fight0lose":
-            char.room(701);
-            break;
-        case "fight0run":
-            char.room(0);
-            break;
-        case "fight0win":
+        case "fight1":
             nav.killall();
-            nav.bg("103_constSite/fight1.jpg");
             chat(69, 103);
             break;
     }
@@ -95,28 +94,33 @@ room103.chatcatch = function (callback) {
         case "sweep":
             nav.killall();
             nav.bg("103_constSite/103_sweep.jpg");
-            if (g.internal) {
-                nav.button({
-                    "type": "btn",
-                    "name": "hole",
-                    "left": 1302,
-                    "top": 531,
-                    "width": 135,
-                    "height": 124,
-                    "image": "103_constSite/holepussy.png",
-                }, 103);
+            if (sc.getMission("river", "bully").notStarted) {
+                if (g.internal) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "hole",
+                        "left": 1302,
+                        "top": 531,
+                        "width": 135,
+                        "height": 124,
+                        "image": "103_constSite/holepussy.png",
+                    }, 103);
+                }
+                else {
+                    nav.button({
+                        "type": "btn",
+                        "name": "hole",
+                        "left": 1302,
+                        "top": 531,
+                        "width": 135,
+                        "height": 124,
+                        "image": "103_constSite/hole.png",
+                        "night": "103_constSite/holenight.png"
+                    }, 103);
+                }
             }
             else {
-                nav.button({
-                    "type": "btn",
-                    "name": "hole",
-                    "left": 1302,
-                    "top": 531,
-                    "width": 135,
-                    "height": 124,
-                    "image": "103_constSite/hole.png",
-                    "night": "103_constSite/holenight.png"
-                }, 103);
+                chat(74, 103);
             }
             nav.button({
                 "type": "btn",
@@ -167,33 +171,38 @@ room103.chatcatch = function (callback) {
                     nav.bg("103_constSite/worker3.jpg");
                     chat(99, 103);
                     break;
+                case 100:
+                    chat(73, 103);
+                    break;
             }
             break;
         case "work2":
             nav.killall();
             nav.bg("103_constSite/103_sweep.jpg");
-            if (g.internal) {
-                nav.button({
-                    "type": "btn",
-                    "name": "hole",
-                    "left": 1302,
-                    "top": 531,
-                    "width": 135,
-                    "height": 124,
-                    "image": "103_constSite/holepussy.png",
-                }, 103);
-            }
-            else {
-                nav.button({
-                    "type": "btn",
-                    "name": "hole",
-                    "left": 1302,
-                    "top": 531,
-                    "width": 135,
-                    "height": 124,
-                    "image": "103_constSite/hole.png",
-                    "night": "103_constSite/holenight.png"
-                }, 103);
+            if (sc.getMission("river", "bully").notStarted) {
+                if (g.internal) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "hole",
+                        "left": 1302,
+                        "top": 531,
+                        "width": 135,
+                        "height": 124,
+                        "image": "103_constSite/holepussy.png",
+                    }, 103);
+                }
+                else {
+                    nav.button({
+                        "type": "btn",
+                        "name": "hole",
+                        "left": 1302,
+                        "top": 531,
+                        "width": 135,
+                        "height": 124,
+                        "image": "103_constSite/hole.png",
+                        "night": "103_constSite/holenight.png"
+                    }, 103);
+                }
             }
             nav.button({
                 "type": "btn",
@@ -255,6 +264,9 @@ room103.chatcatch = function (callback) {
         case "hole13":
         case "hole14":
         case "hole16":
+        case "fight2":
+        case "fight3":
+        case "fight4":
             nav.bg("103_constSite/" + callback + ".jpg");
             break;
         case "hole2":
@@ -298,11 +310,24 @@ room103.chatcatch = function (callback) {
             levels.mod("pi", 20, 999);
             break;
         case "intPlus":
-            levels.mod("int", 15, 999);
+            levels.mod("pi", 15, 999);
             break;
         case "fight0":
             nav.bg("103_constSite/fight0.jpg");
-            quickFight.init(18, sc.n("river"), "fight0win", "fight0lose", "fight0run", 103);
+            break;
+        case "fight1":
+            levels.mod("fame", 20);
+            levels.mod("xdress", 15);
+            nav.bg("103_constSite/fight1.jpg");
+            nav.next("fight1");
+            break;
+        case "fightEnd":
+            sc.show("river");
+            sc.show("tina");
+            sc.startMission("river", "bully");
+            sc.startMission("tina", "cat");
+            g.internal = false;
+            room103.chatcatch("sweep");
             break;
         default:
             break;
@@ -641,7 +666,9 @@ room103.chat = function (chatID) {
             chatID: 38,
             speaker: "cult",
             text: "Stop fighting. We each should just take turns. That's why they sent four of us. " +
-                "Why do you have to make it so difficult. ",
+                "Why do you have to make it so difficult. " + sc.n("ubel") + " warned us not " +
+                "to fuck up again. Let's just take him to the cult compound and don't get caught. " +
+                "Remember what happened last time you idiots messed this up? ",
             button: [
                 { chatID: 39, text: "Wha...", callback: "hole7" },
             ]
@@ -854,7 +881,7 @@ room103.chat = function (chatID) {
         {
             chatID: 62,
             speaker: "missy",
-            text: "Good. Get the licesnce from city hall and meet with my reciptionist. She'll help you on the " +
+            text: "Good. Get the licesnce from city hall and meet with my receptionist. She'll help you on the " +
                 "next step. ",
             button: [
                 { chatID: 63, text: "Thank you. ", callback: "hole16" },
@@ -900,7 +927,7 @@ room103.chat = function (chatID) {
             text: "What are you doing back loser? I thought after you showed everyone your ass you would never show your face " +
                 "around here. Get lost fuckwad.",
             button: [
-                { chatID: 68, text: "You tried to kidnap me! You should be in jail!", callback: "" },
+                { chatID: 68, text: "You tried to kidnap me! You should be in jail!", callback: "fight0" },
             ]
         },
         {
@@ -909,16 +936,63 @@ room103.chat = function (chatID) {
             text: "Don't come to my job site and start yelling lies. I'm going to beat your ass like I should have done in " +
                 "the first place. ",
             button: [
-                { chatID: -1, text: "Huh?", callback: "fight0" },
+                { chatID: -1, text: "Huh?", callback: "fight1" },
             ]
         },
         {
             chatID: 69,
-            speaker: "me",
-            text: "I did it! I kicked " + sc.n("river") + "'s ass. I totally did it! I beat that asshole up! He'll never live " +
-                "this down! I'm totally awesome! Take that punk ass! A beat down in front of everyone. ",
+            speaker: "river",
+            text: "Hey everyone! Look at this loser! Hahaha I hope his underwear " +
+                "holds up, 'cause it's a long fall! ",
             button: [
-                { chatID: -1, text: "I guess I get to go back to work here. ", callback: "sweep" },
+                { chatID: 70, text: "Why I ought-a ", callback: "fight2" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "tina",
+            text: sc.n("river") + "! Take him down now! I don't know why you have " +
+                "to bully everyone around here, but leave " + sc.n("me") + " alone! ",
+            button: [
+                { chatID: 71, text: "...", callback: "fight3" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "river",
+            text: "Sure " + sc.n("tina") + ". I was just playing around with my " +
+                "new buddy. You know how we like to joke around here. I was just " +
+                "going to take him down so he can get back to work. ",
+            button: [
+                { chatID: 72, text: "I wasn't playing.", callback: "fight4" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "river",
+            text: "Hrumph! Always having a girl save you. You're lucky this time chode sucker. " +
+                "I don't even know why you come around here. Ain't no one wants you around. " +
+                "You can work today, but if you come back I'm going to make your life hell! " +
+                "Later loser! ",
+            button: [
+                { chatID: -1, text: "...", callback: "fightEnd" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "thinking",
+            text: "I like lunch [This part in development]",
+            button: [
+                { chatID: -1, text: "...", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "thinking",
+            text: "This is so dumb. I don't know why I'm sweeping here when I should " +
+                "be working at Missy's",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

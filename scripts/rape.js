@@ -1,605 +1,662 @@
-﻿var fame = {};
-var room9998 = {};
-fame.rapechar;
-fame.rapereset = false;
-fame.returnBtn;
+﻿var rape = {};
+var room1004 = {};
+rape.type;
+rape.char;
+rape.roomId;
+rape.callbackWin;
+rape.callbackLost;
+rape.step;
+rape.type;
+rape.kickCounter;
 
-fame.event = function (returnBtn) {
-    var rapeDay = [0, 303, 451, 525, 750];
-    var rapeNight = [0, 225, 303, 451, 525, 750, 900];
-    var isRape;
-    if (g.isNight()) 
-        isRape = rapeNight.includes(g.roomID);
-    else
-        isRape = rapeDay.includes(g.roomID);
+rape.init = function (location, roomId, callbackWin, callbackLost, charNum = null) {
+    nav.killall();
+    inv.hide();
+    rape.step = 0;
+    rape.kickCounter = 1;
 
-    fame.returnBtn = returnBtn;
+    rape.type = (g.rand(0, 3) === 0) ? "oral" : "anal";
 
-    var thisFame = (levels.get("fame").l * 3);
-    if (thisFame > 50)
-        thisFame = 50;
-    var appearance = cl.appearance() * 16;
-    if (appearance < 0)
-        appearance = 0;
-    var chanceForRandom = (thisFame + appearance) / 400;
+    rape.callbackWin = callbackWin;
+    rape.callbackLost = callbackLost;
+    rape.roomId = roomId;
 
-    if (g.isNight() && g.dt.getDay() === 5) {
-        if (chanceForRandom < 1) {
-            chanceForRandom += (1 - chanceForRandom) / 2;
-        }
-    }
-    else if (!g.isNight()) {
-        chanceForRandom = chanceForRandom / 2;
-    }
+    rape.char = getRapeChar(location, charNum);
+    var wearing = cl.wearing();
 
-    if (Math.random() < chanceForRandom) {
-        if (!isRape) {
-            var char = fame.charList();
-            var chatAr = fame.getChat(char.nice);
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": char.left,
-                "top": char.top,
-                "width": char.width,
-                "height": char.height,
-                "title": char.title,
-                "image": char.image
-            }, 1);
+    rape.displayMenu("init");
+    
+    nav.button({
+        "type": "zimg",
+        "name": "r1004",
+        "left": 0,
+        "top": 902,
+        "width": 1920,
+        "height": 178,
+        "image": "1004_rape/charbar.png"
+    }, 1004);
+    nav.button({
+        "type": "zimg",
+        "name": "r1004",
+        "left": 1758,
+        "top": 918,
+        "width": 150,
+        "height": 150,
+        "image": "1004_rape/" + rape.char.img
+    }, 1004);
+    nav.t({
+        type: "zimg",
+        name: "charName",
+        left: 1450,
+        top: 985,
+        font: 20,
+        hex: "#ffffff",
+        text: rape.char.displayName
+    });
 
-            privateChat.makeChat({
-                chatID: 13,
-                speaker: "random",
-                text: chatAr.t,
-                button: [
-                    { chatID: -1, text: chatAr.r, callback: "killFame" },
-                ]
-            }, 9998, 1);
-            return true;
+    nav.t({
+        type: "zimg",
+        name: "charName",
+        left: 200,
+        top: 985,
+        font: 20,
+        hex: "#ffffff",
+        text: sc.n("me")
+    });
+
+    var stats = quickFight.getStats(rape.char.fight);
+    var opening = new Array();
+    if (rape.char.openingImg === null) {
+        if (wearing.outerwear) {
+
+            if (wearing.crossdressing) {
+                opening.push("o_1_girl.png");
+                if (cl.c.chest > 2) {
+                    opening.push("o_2_c_g.png");
+                }
+                else {
+                    opening.push("o_2_c_b.png");
+                }
+            } 
+            else {
+                opening.push("o_1_boy.png");
+                if (cl.c.chest > 2) {
+                    opening.push("o_2_n_g.png");
+                }
+                else {
+                    opening.push("o_2_n_b.png");
+                }
+            }
         }
         else {
-            if (!fame.rapereset) {
-                fame.rapereset = true;
-                fame.rapechar = fame.getRapeChar();
-                //chat(0, 9998);
-                fame.position0(fame.rapechar);
-                return true;
-                //fame.position0(fame.rapechar);
+            if (cl.c.chest > 2) {
+                opening.push("o_2_g.png");
             }
             else {
-                fame.rapereset = false;
+                opening.push("o_2_b.png");
             }
         }
+        rape.char.openingImg = opening[g.rand(0, opening.length)];
     }
-    return false;
+
+    nav.button({
+        "type": "img",
+        "name": "r1004bg",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1004_rape/" + rape.char.openingImg
+    }, 1004);
+    
+
+    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-name="myenergybase" data-room="1004" style=" ' + g.makeCss(10, 280, 1020, 1450) + '  background: #333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="damage" data-room="1004" style=" ' + g.makeCss(10, 100, 1020, 1450) + '  background: #ff3333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="energy" data-room="1004" style=" ' + g.makeCss(10, 100, 1020, 1450) + '  background: #33ff33; border-radius:10px;" ></div>');
+
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #ff3333; border-radius:10px;" ></div>');
+    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #33ff33; border-radius:10px;" ></div>');
+
+    rape.updateEnergy(null, null);
 };
 
-fame.charList = function () {
-    var rapeList = [
-        {
-            left: 857,
-            top: 69,
-            width: 524,
-            height: 1011,
-            image: "1001_rand/girl1.png",
-            title: "A nice young lady",
-            nice: true,
-        },
-        {
-            left: 800,
-            top: 193,
-            width: 445,
-            height: 887,
-            image: "1001_rand/femboy1.png",
-            title: "A nice young femboy",
-            nice: true
-        },
-        {
-            left: 815,
-            top: 61,
-            width: 508,
-            height: 1019,
-            image: "1001_rand/man1.png",
-            title: "A cocky man",
-            nice: false
-        },
-        {
-            left: 908,
-            top: 191,
-            width: 339,
-            height: 889,
-            image: "1001_rand/girl2.png",
-            title: "Bitchy Teen",
-            nice: false
-        },
-        {
-            left: 855,
-            top: 173,
-            width: 371,
-            height: 907,
-            image: "1001_rand/man2.png",
-            title: "Is it a CIS man or FTM man? We'll never know.",
-            nice: true
-        },
-        {
-            left: 920,
-            top: 148,
-            width: 465,
-            height: 932,
-            image: "1001_rand/girl3.png",
-            title: "Drunk Bitch",
-            nice: false
-        },
-        {
-            left: 900,
-            top: 127,
-            width: 342,
-            height: 953,
-            image: "1001_rand/man3.png",
-            title: "Transistioning man",
-            nice: true
-        },
-        {
-            left: 703,
-            top: 73,
-            width: 812,
-            height: 1007,
-            image: "1001_rand/man4.png",
-            title: "Transistioning man",
-            nice: true
-        },
+rape.kill = function () {
+    nav.killall();
 
+    inv.show();
 
-    ];
-    return rapeList[Math.floor(Math.random() * rapeList.length)];
-};
+    var name;
+    //if (g.fight.aftermath === "win")
+        name = rape.callbackWin;
+    //else
+      //  name = rape.callbackLost;
 
-fame.getChat = function (isNice) {
-    var thisAppearance = cl.appearance();
-    var smallcock = cl.c.cock > 2;
-    var bigcock = cl.c.cock < 2;
-    var sexy = thisAppearance > 2;
-    var manly = thisAppearance < 1;
-    var chatlist;
-    if (isNice) {
-        chatlist = [
-            {
-                t: "You are so very hot and sexy! ",
-                r: "You are sexy too!"
-            },
-            {
-                t: "I've been watching you for some time. I hope it's not spooky, but you always make me happy " +
-                    "when I catch your gaze. ",
-                r: "Not spooky at all. You make me happy too! "
-            },
-        ];
-        if (smallcock) {
-            chatlist.push({
-                t: "You have the cutest little pp! ",
-                r: "Oh. It's not that small is it? "
-            });
-        }
-        else if (bigcock) {
-            chatlist.push({
-                t: "You're the one with the huge cock? I'm so jelly! ",
-                r: "Thanks. I use it well! "
-            });
-        }
-        if (bigcock && manly) {
-            chatlist.push({
-                t: "Dude! I've heard about your cock! You must slay lots of pooty-tang with that with that giant thang! ",
-                r: "Totally! "
-            });
-            chatlist.push({
-                t: "A sexy body and huge penis! You are the man, man!",
-                r: "I am the man! "
-            });
-        }
-        if (sexy) {
-            chatlist.push({
-                t: "You are one hot chick! I want to take you home and keep you in my basement forever! ",
-                r: "oh. no."
-            });
-            chatlist.push({
-                t: "Your tits are so soft and squishy! I want to squeeze them and suck 'em. ",
-                r: "Drink up baby! "
-            });
-        }
-        
-    }
-    else {
-        chatlist = [
-            {
-                t: "I've heard about you. You're that nasty easy slut. ",
-                r: "Oh. I hate all the rumors being passed about me. "
-            },
-            {
-                t: "Hey slut! I bet you want to fuck. I just don't fuck sissies. Too easy. ",
-                r: "Well I don't want to fuck you either! "
-            },
-        ];
-        if (smallcock) {
-            chatlist.push({
-                t: "Hahaha! You're the one with the tiny dick? You look like someone that's not packing! ",
-                r: "Hey!"
-            });
-            chatlist.push({
-                t: "I heard your dick was smaller than a clit! You should be a chick with dick that small! ",
-                r: "I really should..."
-            });
-            chatlist.push({
-                t: "TINY DICK, TINY DICK! You have a tiny dick. 🤏🤏🤏 ",
-                r: "Not so loud! Shhhh."
-            });
-        }
-        else if (manly) {
-            chatlist.push({
-                t: "You might look like a dude, but I heard you act like a bitch! ",
-                r: "What was that about!"
-            });
-        }
-        else if (sexy) {
-            chatlist.push({
-                t: "You dress like you want to get raped in the asshole. ",
-                r: "I do. I really do."
-            });
-            chatlist.push({
-                t: "You dress like some kind of gutter slut. Trash like you should be left in the dumpster. ",
-                r: "That was harsh. "
-            });
-        }
-        else if (cl.c.cumface) {
-            chatlist.push({
-                t: "Oh gross. Is that cum on your face. Go wash up! ",
-                r: "Well this is embarrassing. "
-            });
-            chatlist.push({
-                t: "Sorry, there appears to be something on your face... Is that cum? What kind of sick pervert " +
-                    "walks around with cum on their face? You need to go clean up. ",
-                r: "Oh no. I forgot to wash up. "
-            });
-        }
-    }
-    return chatlist[Math.floor(Math.random() * chatlist.length)];
-};
-
-fame.getRapeChar = function () {
-    var charList = ["man1", "dom1", "man2", "man3"];
-    return charList[Math.floor(Math.random() * charList.length)];
+    window[g.room(rape.roomId)]["btnclick"](name);
 }
 
-fame.position0 = function () {
-    nav.killall();
-    var txt = "";
-    switch (fame.rapechar) {
-        case "man1":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 750,
-                "top": 28,
-                "width": 379,
-                "height": 1052,
-                "title": "Take it slut!",
-                "image": "1001_rand/rap_man0.png"
-            }, 1);
-            txt = "What's a slut like you doing all alone in a place like this? ";
-            break;
-        case "dom1":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 829,
-                "top": 27,
-                "width": 455,
-                "height": 1053,
-                "title": "Take it slut!",
-                "image": "1001_rand/rap_dom0.png"
-            }, 1);
-            txt = "What's a slut like you doing all alone in a place like this? ";
-            break;
-        case "man2":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 750,
-                "top": 19,
-                "width": 634,
-                "height": 1061,
-                "title": "Fat man with a stick",
-                "image": "1001_rand/rap_man_10.png"
-            }, 1);
-            txt = "What's a slut like you doing all alone in a place like this? ";
-            break;
-        case "man3":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 952,
-                "top": 64,
-                "width": 417,
-                "height": 1016,
-                "title": "Psycho business man",
-                "image": "1001_rand/rap_man_20.png"
-            }, 1);
-            txt = "I want to stab you to death and play around with your blood... maybe fucking your face will do. ";
-            break;
-    };
-    privateChat.makeChat({
-        chatID: 13,
-        speaker: "random",
-        text: txt,
-        button: [
-            { chatID: -1, text: "Fight!", callback: "fight1" },
-            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "talk1" },
-            { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
-        ]
-    }, 1, 9998);
+rape.updateEnergy = function (enemyEnergyChange = null, myEnergyChange = null) {
+    var startingEnemyEnergy = rape.char.energy;
+    var staringMyEnergy = gv.get("energy");
+    var maxenergy = gv.get("maxenergy");
+    var currentMyEnergy = staringMyEnergy;
+
+    if (enemyEnergyChange !== null)
+        rape.char.energy += enemyEnergyChange;
+
+    if (myEnergyChange !== null) {
+        gv.mod("energy", myEnergyChange);
+        currentMyEnergy = gv.get("energy");
+    }
+
+
+    $(".enemy-life[data-t='energy']").css({ "width": ((rape.char.energy / 100) * 280 * g.ratio) + "px" });
+    $(".enemy-life[data-t='damage']").css({ "width": ((startingEnemyEnergy / 100) * 280 * g.ratio) + "px" });
+
+    $(".my-life[data-t='energy']").css({ "width": ((currentMyEnergy / maxenergy) * 280 * g.ratio) + "px" });
+    $(".my-life[data-t='damage']").css({ "width": ((staringMyEnergy / maxenergy) * 280 * g.ratio) + "px" });
+
 };
 
-fame.position1 = function (char) {
-    nav.killbutton("fameRandomEvent");
-    switch (char) {
-        case "man1":
-            zcl.assup(650, 500, .7, "");
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 482,
-                "top": 104,
-                "width": 1280,
-                "height": 976,
-                "title": "Take it slut!",
-                "image": "1001_rand/rap_man1.png"
-            }, 1);
-            txt = "Ow ow ow.. It hurts so much! Why are you raping my ass mister?";
+rape.displayMenu = function (menu) {
+    let btnList = new Array();
+    let i;
+    nav.killbuttonStartsWith("b1004");
+    switch (menu) {
+        case "init":
+            btnList.push({ n: "struggle", i: "icon_struggle.png" });
+            btnList.push({ n: "kick", i: "icon_kick.png" });
+            btnList.push({ n: "submit", i: "icon_submit.png" });
+            btnList.push({ n: "increment", i: "icon_limp.png" });
             break;
-        case "dom1":
-            zcl.assup(650, 500, .7, "");
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 246,
-                "top": 75,
-                "width": 1483,
-                "height": 988,
-                "title": "Dominatrix",
-                "image": "1001_rand/rap_dom1.png"
-            }, 1);
-            txt = "It's so thick! You're tearing my ass open. Please stop, it hurts!";
+        case "struggleWin":
+            btnList.push({ n: "flee", i: "icon_flee.png" });
             break;
-        case "man2":
-            zcl.assup(650, 500, .7, "");
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 346,
-                "top": 0,
-                "width": 1160,
-                "height": 1080,
-                "title": "Fat man with a stick",
-                "image": "1001_rand/rap_man_11.png"
-            }, 1);
-            txt = "Please don't hurt me! I'll do what ever you want.";
+        case "rape":
+            btnList.push({ n: "struggle", i: "icon_struggle.png" });
+            btnList.push({ n: "kick", i: "icon_kick.png" });
+            btnList.push({ n: "submit", i: "icon_stickass.png" });
+            btnList.push({ n: "increment", i: "icon_whimper.png" });
             break;
-        case "man3":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 505,
-                "top": 0,
-                "width": 709,
-                "height": 1080,
-                "title": "Mouth full of his cock.",
-                "image": "1001_rand/rap_man_21.png"
-            }, 1);
-            zcl.kneelRedux(370, 600, .35, "", true);
-            txt = "Gggghhm mmmMMggggg gag.";
-            break;
-    };
-    privateChat.makeChat({
-        chatID: 13,
-        speaker: "me",
-        text: txt,
-        button: [
-            { chatID: -1, text: "...", callback: "rape2" },
-        ]
-    }, 1, 9998);
+    }
+
+    for (i = 0; i < btnList.length; i++) {
+        nav.button({
+            "type": "zbtn",
+            "name": "b1004-" + btnList[i].n,
+            "left": 1600,
+            "top": 150 + (i * 75),
+            "width": 300,
+            "height": 72,
+            "image": "1004_rape/" + btnList[i].i
+        }, 1004);
+    }
 };
 
-fame.position2 = function (char) {
-    switch (char) {
-        case "man1":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 705,
-                "top": 714,
-                "width": 672,
-                "height": 366,
-                "title": "",
-                "image": "1001_rand/rap_man12.png"
-            }, 1);
-            txt = "There's so much cum leaking out of me. Ugh.";
-            break;
-        case "dom1":
-            zcl.bent(400, 600, .7, "open");
-            txt = "My bussy is so sore!";
-            break;
-        case "man2":
-            zcl.bent(400, 600, .7, "cum");
-            txt = "I'm so glad he didn't hurt me. ";
-            break;
-        case "man3":
-            zcl.kneelRedux(370, 600, .35, "", true);
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 891,
-                "top": 0,
-                "width": 670,
-                "height": 1080,
-                "image": "1001_rand/rap_man_22.png"
-            }, 1);
-            txt = "GLURB.";
-            break;
-    };
-    privateChat.makeChat({
-        chatID: 13,
-        speaker: "me",
-        text: txt,
-        button: [
-            { chatID: -1, text: "...", callback: "rapeComplete" },
-        ]
-    }, 1, 9998);
-};
-
-room9998.btnclick = function (name) {
-    switch (name) {
-        case "fightWin":
-            var money = g.rand(10, 30);
-            gv.mod("money", money);
-            window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
-            break;
-        case "fightLose":
-            fame.position1(fame.rapechar);
-            break;
-        case "fightRun":
-            if (gv.get("energy") < 20) {
-                g.popUpNotice("Not enough energy to run away");
-                fame.position1(fame.rapechar);
+rape.increment = function () {
+    nav.killbuttonStartsWith("b1004-");
+    switch (rape.step) {
+        case 0:
+            rape.step = 1;
+            cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+            if (cl.c.panties === null && cl.c.bra === null) {
+                room1004.btnclick("increment");
+                return;
+            }
+            if (cl.c.bra !== null || cl.pantiesTxt() === "panties") {
+                if (cl.c.chest > 2)
+                    stuggleOuter = "o_3_b_4.png";
+                else
+                    stuggleOuter = "o_3_b_0.png";
             }
             else {
-                gv.mod("energy", -20);
-                window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
+                stuggleOuter = "o_3_b_1.png";
             }
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + stuggleOuter
+            }, 1004);
+            cl.display();
+            rape.displayMenu("rape");
             break;
-        case "charWin":
-            window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
+        case 1:
+            rape.step = 2;
+            nav.killbutton("r1004bg");
+            if (cl.c.chest > 2) {
+                stuggleUnder = "o_4_f.png";
+            }
+            else {
+                stuggleUnder = "o_4_m.png";
+            }
+
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape0
+            }, 1004);
+
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/speech0_anal.png"
+            }, 1004);
+
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + stuggleUnder
+            }, 1004);
+            nav.killbuttonStartsWith("b1004-");
+            cl.c.panties = cl.c.bra = null;
+            cl.display();
+            rape.displayMenu("rape");
             break;
-        case "charLose":
-            fame.position1(fame.rapechar);
+        case 2:
+            rape.step = 3;
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape1
+            }, 1004);
+            rape.displayMenu("rape");
+
             break;
-       
+        case 3:
+            rape.step = 4;
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape2
+            }, 1004);
+            rape.displayMenu("rape");
+            break;
+    }
+
+};
+
+rape.rolldice = function (updateEnergy = false) {
+    var myTotal, enemyTotal;
+    var xbtnList = new Array();
+    var fightStats = quickFight.getStats(rape.char.fight, rape.char.energy);
+    myTotal = enemyTotal = 0;
+
+    nav.button({
+        "type": "zimg",
+        "name": "b1004-d",
+        "left": 1600,
+        "top": 150,
+        "width": 300,
+        "height": 500,
+        "image": "1004_rape/icon_bg.png"
+    }, 1002);
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1660,
+        top: 170,
+        font: 20,
+        hex: "#ffffff",
+        text: "Me"
+    });
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1750,
+        top: 170,
+        font: 20,
+        hex: "#ffffff",
+        text: rape.char.displayName
+    });
+    for (var i = 0; i < 5; i++) {
+        var myTemp = Math.floor(Math.random() * 6) + 1;
+        var enemyTemp = Math.floor(Math.random() * 6) + 1;
+        myTotal += myTemp;
+        enemyTotal += enemyTemp;
+        
+        nav.button({
+            "type": "zimg",
+            "name": "b1004-d",
+            "left": 1660,
+            "top": 210 + (i * 60),
+            "width": 50,
+            "height": 50,
+            "image": "1001_rand/dice" + myTemp + ".png"
+        }, 1002);
+
+        nav.button({
+            "type": "zimg",
+            "name": "b1004-d",
+            "left": 1790,
+            "top": 210 + (i * 60),
+            "width": 50,
+            "height": 50,
+            "image": "1001_rand/dice" + enemyTemp + ".png"
+        }, 1002);
+    }
+
+    var myTotalWithFight = myTotal + fightStats.total;
+    var enemyTotalWithFight = enemyTotal + fightStats.enemyFightLevel;
+
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1620,
+        top: 510,
+        font: 20,
+        hex: "#ffffff",
+        text: "Me:"
+    });
+
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1620,
+        top: 540,
+        font: 20,
+        hex: "#ffffff",
+        text: "Roll: " + myTotal + " + Level: " + fightStats.total + " = " + myTotalWithFight
+    });
+
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1620,
+        top: 580,
+        font: 20,
+        hex: "#ffffff",
+        text: rape.char.displayName + ":"
+    });
+
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1620,
+        top: 610,
+        font: 20,
+        hex: "#ffffff",
+        text: "Roll: " + enemyTotal + " + Level: " + fightStats.enemyFightLevel + " = " + enemyTotalWithFight
+    });
+
+    if (myTotalWithFight >= enemyTotalWithFight) {
+        xbtnList.push({ n: "stugglewin", i: "icon_next_brokefree.png" });
+
+        //icon_next_brokefree
+    }
+    else {
+        var xcl = cl.wearing();
+        if(xcl.outerwear)
+            xbtnList.push({ n: "stuggleOuter", i: "icon_next_outer.png" });
+        else if (xcl.underwear)
+            xbtnList.push({ n: "stuggleUnder", i: "icon_next_under.png" });
+        else
+            xbtnList.push({ n: "struggleRape0", i: "icon_next_fuck.png" });
+    }
+
+    for (i = 0; i < xbtnList.length; i++) {
+        nav.button({
+            "type": "zbtn",
+            "name": "b1004-" + xbtnList[i].n,
+            "left": 1600,
+            "top": 660 + (i * 75),
+            "width": 300,
+            "height": 72,
+            "image": "1004_rape/" + xbtnList[i].i
+        }, 1004);
+    }
+
+    if (updateEnergy) {
+        if (myTotalWithFight >= enemyTotalWithFight) {
+            rape.char.energy = 0;
+            gv.mod("energy", -5);
+        }
+        else {
+            var fightDiff = enemyTotalWithFight - myTotalWithFight;
+            if (fightDiff > 15)
+                fightDiff = 15;
+            var enemyEnergyChange = (20 - fightDiff) * -1;
+            rape.updateEnergy(enemyEnergyChange, -15);
+        }
+    }
+    //Object { punchPower: 9, energyMult: "0.50", total: 5, enemyFightLevel: 50, winProb: "Extremely Hard" }
+
+};
+
+rape.kick = function () {
+    
+    let diceArray = new Array();
+    let i;
+    let kickSuccess = true;
+    nav.killbuttonStartsWith("b1004-");
+    if (rape.kickCounter > 3)
+        rape.kickCounter = 3;
+    if (rape.kickCounter < 1)
+        rape.kickCounter = 1;
+    for (i = 0; i < rape.kickCounter; i++) {
+        diceArray.push(g.rand(1, 7));
+        if (diceArray[i] !== 6)
+            kickSuccess = false;
+    }
+
+
+
+    rape.kickCounter++;
+    var myTotal, enemyTotal;
+
+    var xbtnList = new Array();
+    var fightStats = quickFight.getStats(rape.char.fight, rape.char.energy);
+    myTotal = enemyTotal = 0;
+
+    nav.button({
+        "type": "zimg",
+        "name": "b1004-d",
+        "left": 1600,
+        "top": 150,
+        "width": 300,
+        "height": 500,
+        "image": "1004_rape/icon_bg.png"
+    }, 1002);
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1660,
+        top: 170,
+        font: 20,
+        hex: "#ffffff",
+        text: "Kick! (Roll all 6's)"
+    });
+
+    for (i = 0; i < diceArray.length; i++) {
+
+        nav.button({
+            "type": "zimg",
+            "name": "b1004-d",
+            "left": 1700,
+            "top": 210 + (i * 100),
+            "width": 80,
+            "height": 80,
+            "image": "1001_rand/dice" + diceArray[i] + ".png"
+        }, 1002);
+    }
+
+    if (kickSuccess) {
+        nav.killbutton("r1004bg");
+        nav.button({
+            "type": "img",
+            "name": "r1004bg",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1004_rape/" + rape.char.kick
+        }, 1004);
+        nav.t({
+            type: "zimg",
+            name: "b1004-d",
+            left: 1650,
+            top: 575,
+            font: 20,
+            hex: "#ffffff",
+            text: "Success!"
+        });
+        nav.button({
+            "type": "zbtn",
+            "name": "b1004-flee",
+            "left": 1600,
+            "top": 660,
+            "width": 300,
+            "height": 72,
+            "image": "1004_rape/icon_next_brokefree.png"
+        }, 1004);
+    }
+    else {
+        nav.t({
+            type: "zimg",
+            name: "b1004-d",
+            left: 1650,
+            top: 575,
+            font: 20,
+            hex: "#ffffff",
+            text: "Kick failed!"
+        });
+        let xbtnList = new Array();
+        let xcl = cl.wearing();
+        if (xcl.outerwear)
+            xbtnList.push({ n: "increment", i: "icon_next_outer.png" });
+        else if (xcl.underwear)
+            xbtnList.push({ n: "increment", i: "icon_next_under.png" });
+        else
+            xbtnList.push({ n: "increment", i: "icon_next_fuck.png" });
+
+        for (i = 0; i < xbtnList.length; i++) {
+            nav.button({
+                "type": "zbtn",
+                "name": "b1004-" + xbtnList[i].n,
+                "left": 1600,
+                "top": 660,
+                "width": 300,
+                "height": 72,
+                "image": "1004_rape/" + xbtnList[i].i
+            }, 1004);
+        }
     }
 };
 
-room9998.chatcatch = function (callback) {
-    switch (callback) {
-        case "fight1":
-            quickFight.init(18, "random", "fightWin", "fightLose", "fightRun", 9998);
+room1004.btnclick = function (name) {
+    name = name.replace("b1004-", "");
+    switch (name) {
+        case "flee":
+            rape.kill();
             break;
-        case "talk1":
-            charisma.init(18, "charWin", "charLose", 9998);
+        case "struggle":
+            nav.killbuttonStartsWith("b1004-");
+            rape.rolldice(true);
             break;
-        case "rape1":
-            fame.position1(fame.rapechar);
+        case "kick":
+            rape.kick();
             break;
-        case "rapeComplete":
-            window[g.room(g.roomID)]["btnclick"](fame.returnBtn);
-            break;
-        case "killFame":
-            nav.killbutton("fameRandomEvent");
+        case "struggleRape0":
+            nav.killbuttonStartsWith("b1004");
+            nav.killbutton("r1004bg");
+            
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape1
+            }, 1004);
+            rape.displayMenu("rape");
             break;
         case "rape2":
-            nav.killall();
-            fame.position2(fame.rapechar);
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape2
+            }, 1004);
+            rape.displayMenu("rape"); 
             break;
-        case "rape3":
-            char.addtime(67);
-            char.room(g.roomID);
+        case "submit":
+            if (levels.get("sub").l < 4) {
+                chat(0, 1004); //not submissive enough
+                return;
+            }
+            //draw submissive menu
+            break;
+        case "stugglewin":
+            rape.menu = "struggleWin";
+            rape.displayMenu("struggleWin");
+            break;
+        case "increment":
+            rape.increment();
+
+            break;
+        case "stuggleOuter":
+            var stuggleOuter = "";
+            nav.killbuttonStartsWith("b1004-");
+            cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+            if (cl.c.panties === null && cl.c.bra === null) {
+                room1004.btnclick("stuggleUnder");
+                return;
+            }
+            if (cl.c.bra !== null || cl.pantiesTxt() === "panties") {
+                if (cl.c.chest > 2) 
+                    stuggleOuter = "o_3_b_4.png";
+                else 
+                    stuggleOuter = "o_3_b_0.png";
+            }
+            else {
+                stuggleOuter = "o_3_b_1.png";
+            }
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + stuggleOuter
+            }, 1004);
+            cl.display();
+            rape.displayMenu();
+            break;
+        case "stuggleUnder":
+            
             break;
     }
-};
-
-room9998.chat = function (chatID) {
-    //if (chatID === 0) {
-    //    return {
-    //        chatID: 13,
-    //        speaker: "random",
-    //        text: txt,
-    //        button: [
-    //            { chatID: -1, text: "Fight!", callback: "fight1" },
-    //            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "run1" },
-    //            { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
-    //        ]
-    //    };
-    //}
-
-   nav.killall();
-    var txt = "";
-    switch (fame.rapec1har) {
-        case "man1":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 750,
-                "top": 28,
-                "width": 379,
-                "height": 1052,
-                "title": "Take it slut!",
-                "image": "1001_rand/rap_man0.png"
-            }, 1);
-            txt = "What's a slut like you doing all alone in a place like this? ";
-            break;
-        case "dom1":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 829,
-                "top": 27,
-                "width": 455,
-                "height": 1053,
-                "title": "Take it slut!",
-                "image": "1001_rand/rap_dom0.png"
-            }, 1);
-            txt = "What's a slut like you doing all alone in a place like this? ";
-            break;
-        case "man2":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 750,
-                "top": 19,
-                "width": 634,
-                "height": 1061,
-                "title": "Fat man with a stick",
-                "image": "1001_rand/rap_man_10.png"
-            }, 1);
-            txt = "What's a slut like you doing all alone in a place like this? ";
-            break;
-        case "man3":
-            nav.button({
-                "type": "img",
-                "name": "fameRandomEvent",
-                "left": 952,
-                "top": 64,
-                "width": 417,
-                "height": 1016,
-                "title": "Psycho business man",
-                "image": "1001_rand/rap_man_20.png"
-            }, 1);
-            txt = "I want to stab you to death and play around with your blood... maybe fucking your face will do. ";
-            break;
-    };
-    return {
-        chatID: 13,
-        speaker: "random",
-        text: txt,
-        button: [
-            { chatID: -1, text: "Fight!", callback: "fight1" },
-            { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "talk1" },
-            { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
-        ]
-    };
-    //privateChat.makeChat({
-    //    chatID: 13,
-    //    speaker: "random",
-    //    text: txt,
-    //    button: [
-    //        { chatID: -1, text: "Fight!", callback: "fight1" },
-    //        { chatID: -1, text: "Talk your way out (dice) (charisma)", callback: "run1" },
-    //        { chatID: -1, text: "Bend over you slut (check for anal / rape)", callback: "rape1" },
-    //    ]
-    //}, 9998, 1);
 };

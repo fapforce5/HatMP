@@ -71,8 +71,8 @@ $(document).ready(function () {
             var l = $(this).css("left").replace('px', '') / ogRatio;
             var f = $(this).css("font-size").replace('px', '') / ogRatio;
             $(this).css({
-                "width": (w * g.ratio) + "px",
-                "height": (h * g.ratio) + "px",
+                //"width": (w * g.ratio) + "px",
+                //"height": (h * g.ratio) + "px",
                 "top": (t * g.ratio) + "px",
                 "left": (l * g.ratio) + "px",
                 "font-size": (f * g.ratio) + "px"
@@ -351,23 +351,90 @@ char.nexttime = function (hour) {
 
 char.map = function () {
     var exRoom = [226, 227, 475];
-    var i;
-    if (!(exRoom.includes(g.roomID))) {
-        var tm = gv.get("map");
-        var ttop = 100;
+    var i, j;
+    let cArray = new Array();
+    let ttop = 100;
+
+    if (g.roomID > 3 && g.roomID < 50) {
         $('#room_left_map').html('');
-        for (i = 0; i < g.roomMap.length; i++) {
-            if (g.roomMap[i].map === tm) {
-                var newRatio = 45 / g.roomMap[i].height;
-                var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
-                dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
-                $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
-                $('#room_left_map').append(dayNight);
-                $('#room_left_map').append('<div class="width-l resize killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
-                ttop += 50;
+        cArray.push({ t: sc.getTimeline("lola"), c: sc.n("lola") });
+        cArray.push({ t: sc.getTimeline("eva"), c: sc.n("eva") });
+        cArray.push({ t: sc.getTimeline("landlord"), c: sc.n("landlord") });
+        cArray.push({ t: sc.getTimeline("bigguy"), c: sc.n("bigguy") });
+    }
+    else if ((g.roomID > 49 && g.roomID < 75) || (g.roomID > 649 && g.roomID < 675)) {
+        cArray.push({ t: sc.getTimeline("tiffany"), c: sc.n("tiffany") });
+        cArray.push({ t: sc.getTimeline("candy"), c: sc.n("candy") });
+    }
+    else if (g.roomID > 499 && g.roomID < 550) {
+        cArray.push({ t: sc.getTimeline("zoey"), c: sc.n("zoey") });
+    }
+    else if (g.roomID > 899 && g.roomID < 905) {
+        cArray.push({ t: sc.getTimeline("cindy"), c: sc.n("cindy") });
+        cArray.push({ t: sc.getTimeline("tim"), c: sc.n("tim") });
+    }
+    else if (g.roomID > 74 && g.roomID < 80) {
+        cArray.push({ t: sc.getTimeline("bimbo"), c: sc.n("bimbo") });
+    }
+
+    if (cArray.length > 0) {
+        var ampm = gv.get("clock24") === "12";
+        $('#room_left_map').html('');
+        for (i = 0; i < cArray.length; i++) {
+            ttop += 20;
+            $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 10 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' +
+                cArray[i].c +
+                '</div>');
+            ttop += 30;
+            for (j = 0; j < cArray[i].t.subList.length; j++) {
+                if (cArray[i].t.subList[j].current) {
+                    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #fdd; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 15 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' +
+                        char.friendlyTime(cArray[i].t.subList[j].hstart, ampm) + " to " +
+                        char.friendlyTime(cArray[i].t.subList[j].hend, ampm) + " - " +
+                        cArray[i].t.subList[j].room + " *" +
+                        '</div>');
+                }
+                else {
+                    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #ccc; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 15 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' +
+                        char.friendlyTime(cArray[i].t.subList[j].hstart, ampm) + " - " +
+                        char.friendlyTime(cArray[i].t.subList[j].hend, ampm) + " - " +
+                        cArray[i].t.subList[j].room +
+                        '</div>');
+                }
+                ttop += 25;
             }
         }
     }
+    else {
+        if (!(exRoom.includes(g.roomID))) {
+            var tm = gv.get("map");
+            $('#room_left_map').html('');
+            for (i = 0; i < g.roomMap.length; i++) {
+                if (g.roomMap[i].map === tm) {
+                    var newRatio = 45 / g.roomMap[i].height;
+                    var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" class="resize" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
+                    dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" class="resize" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
+                    $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
+                    $('#room_left_map').append(dayNight);
+                    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
+                    ttop += 50;
+                }
+            }
+        }
+    }
+};
+
+char.friendlyTime = function (hour, ampm) {
+    if (ampm) {
+        if (hour === 0)
+            return "12AM";
+        if (hour < 12)
+            return hour + "AM";
+        if(hour === 12)
+            return hour + "PM";
+        return (hour - 12) + "PM";
+    }
+    return hour;
 };
 
 char.makeWalk = function () {
@@ -394,146 +461,6 @@ char.makeWalk = function () {
         g.pastSaves.splice(g.pastSaves.length - 1, 1);
         char.makeWalk();
     });
-    //var i;
-    //var mo = new Array();
-    //var maxi = 0;
-    //var prevEntry = "";
-    //if (g.walk === null) {
-    //    for (i = 0; i < sc.events.length; i++) {
-    //        if (sc.events[i].name === prevEntry) {
-    //            if (sc.events[i].step > maxi)
-    //                maxi = sc.events[i].step;
-    //        }
-    //        else {
-    //            mo.push({ name: prevEntry, max: maxi });
-    //            maxi = 0;
-    //            prevEntry = sc.events[i].name;
-    //        }
-    //    }
-    //    mo.push({ name: prevEntry, max: maxi });
-    //    $("#room_left_walk_sub").append('<div style="height:' + 100 * g.ratio + 'px;" class="resize"></div>');
-    //    $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="oncase">' +
-    //        '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
-    //        '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">What Do I Do?</div>' +
-    //        '</div>');
-    //    $.each(sc.char, function (i, v) {
-    //        if (v.show) {
-    //            $("#room_left_walk_sub").append('<div class="cursor-hover char-walkthrough" data-name="' + v.name + '">' +
-    //                '<img src="./images/speaker/' + v.image + '" style="width:' + 100 * g.ratio + 'px; display:inline-block" class="resize"/>' +
-    //                '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px;" class="char-20">' + v.display + '</div>' +
-    //                '</div>');
-    //        }
-    //    });
-    //    $('.char-walkthrough').click(function () {
-    //        g.walk = $(this).data("name");
-    //        char.makeWalk();
-    //    });
-    //}
-    //else {
-    //    if (g.walk === "oncase") {
-    //        //var oncase = gv.get("oncase");
-    //        var oncaseText = '';
-    //        $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
-    //        $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
-    //            '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
-    //            'Go Back</div>');
-    //        $("#room_left_walk_sub").append('<div style="text-align:center;">' +
-    //            '<img src="./images/general/magglass.png" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
-    //            '</div>' +
-    //            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">Active Case</div>');
-
-    //        oncaseText = missy.activecase().txt;
-
-    //        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list">' +
-    //            '<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-    //            oncaseText + '</li></ul>');
-    //        if (g.roomID === 0) {
-    //            room0.main();
-    //            //$("#room_left_walk").show();
-    //        }
-    //        $(".char-walkthrough-return").click(function () {
-    //            g.walk = null;
-    //            char.makeWalk();
-    //        });
-    //    }
-    //    else {
-    //        var reverseEvent = new Array();
-    //        var displayArray = new Array();
-    //        var timelineArray = new Array();
-    //        var thisChar = sc.get(g.walk);
-    //        var thisTimeline = sc.getTimeline(g.walk);
-    //        var pointer = 0;
-    //        for (i = 0; i < sc.events.length; i++) {
-    //            if (sc.events[i].name === g.walk && sc.events[i].step >= 0) {
-    //                reverseEvent.push({ step: sc.events[i].step, txt: sc.events[i].txt, ach: sc.events[i].ach });
-    //                if (sc.events[i].step <= thisChar.step)
-    //                    pointer = reverseEvent.length - 1;
-    //            }
-    //        }
-    //        $("#room_left_walk_sub").append('<div style="height:' + 80 * g.ratio + 'px;" class="resize"></div>');
-    //        $("#room_left_walk_sub").append('<div style="font-size:' + 20 * g.ratio + 'px;" class="cursor-hover resize char-walkthrough-return">' +
-    //            '<img src="./images/general/arrowLeft.png" style="dispay:inline-block; height:' + 60 * g.ratio + 'px; margin-right:' + 40 * g.ratio + 'px;"/>' +
-    //            'Go Back</div>');
-    //        $("#room_left_walk_sub").append('<div style="text-align:center;">' +
-    //            '<img src="./images/speaker/' + thisChar.image + '" style="width:' + 100 * g.ratio + 'px;" class="resize"/>' +
-    //            '</div>' +
-    //            '<div style="display:inline-block; font-size:' + 20 * g.ratio + 'px; text-align:center; width:100%;" class="char-20">' + thisChar.display + '</div>');
-
-    //        for (i = 0; i < thisTimeline.subList.length; i++) {
-    //            if (thisTimeline.subList[i].current)
-    //                timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-    //                    thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
-    //                    thisTimeline.subList[i].room +
-    //                    '</li>');
-    //            else {
-    //                timelineArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-    //                    thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " +
-    //                    thisTimeline.subList[i].room +
-    //                    '</li>');
-    //            }
-    //        }
-
-    //        for (i = 0; i < reverseEvent.length; i++) {
-    //            if (i === pointer)
-    //                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#ffff33;" class="char-20">' +
-    //                    reverseEvent[i].txt + '</li>');
-    //            //else if (i === pointer + 1)
-    //            //    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-    //            //        reverseEvent[i].txt + '</lii>');
-    //            else if (reverseEvent[i].step < thisChar.step) {
-    //                if (reverseEvent[i].ach || reverseEvent[i].step === 0)
-    //                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#aaa;" class="char-20">' +
-    //                        reverseEvent[i].txt + '</li>');
-    //                else
-    //                    displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666; text-decoration: line-through;" class="char-20">' +
-    //                        reverseEvent[i].txt + '</li>');
-    //            }
-    //            else
-    //                displayArray.push('<li style="font-size:' + 20 * g.ratio + 'px; color:#666;" class="char-20" type="circle">' +
-    //                    '...</li>');
-    //        }
-
-    //        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_timeline" style="list-style: none; padding:0;"></ul>');
-
-    //        $("#room_left_walk_sub").append('<ul id="room_left_walk_sub_list"></ul>');
-
-
-    //        for (i = displayArray.length - 1; i >= 0; i--)
-    //            $("#room_left_walk_sub_list").append(displayArray[i]);
-
-    //        for (i = 0; i < timelineArray.length; i++)
-    //            $("#room_left_walk_sub_timeline").append(timelineArray[i]);
-
-    //        if (g.roomID === 0) {
-    //            room0.main();
-    //            $("#room_left_walk").show();
-    //        }
-    //        $(".char-walkthrough-return").click(function () {
-    //            g.walk = null;
-    //            char.makeWalk();
-    //        });
-    //    }
-    //}
 };
 
 char.newdayfake = function () {
@@ -653,6 +580,7 @@ char.addMinutes = function (date, minutes) {
 
 char.addDays = function (days) {
     g.dt.setDate(g.dt.getDate() + days);
+    nav.buildclock();
 };
 
 menu.initBuild = function (type) {
@@ -681,7 +609,7 @@ menu.initBuild = function (type) {
         $('.menu-button[data-type="menu"]').remove();
         menu.mClick("save");
     }
-    sstat.init();
+    //sstat.init();
 };
 
 menu.mClick = function (type) {
@@ -834,7 +762,6 @@ menu.mClick = function (type) {
                     $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
                     $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
                     $("#menu_parent").append('<img src="./images/phone/sissy_wide.jpg" style="position:absolute; ' + g.makeCss(897, 1108, 94, 416) + '"/>');
-                    g.sissyview();
                 }, 800);
             });
             break;
@@ -1346,21 +1273,12 @@ menu.load = function (cookieName, btn, saveID) {
     }
 
     g.pastSaves = new Array();
-    //Remove later, unfound bug, maybe old save
-    //if (sc.getstep("missy") > 1)
-    //    g.roomMapAccess(203, true, true);
 };
 
 menu.saveDel = function (cookieName) {
-    //var saveID = btn.data('save');
-    //var cookieName = 'HatMP_' + saveID;
     if (localStorage.getItem(cookieName) !== null) 
         localStorage.removeItem(cookieName);
     return true;
-    //$('.menu-save[data-save=' + saveID + ']').text('SAVE').attr('data-type', 'save');
-
-    //$('.menu-save-line[data-save=' + saveID + ']').html("");
-    //$('.menu-del[data-save=' + saveID + ']').prop('disabled', true);
 };
 
 char.init = function() {

@@ -21,9 +21,32 @@ room503.main = function () {
             "height": 526,
             "title": "Look in the mirror",
             "image": "503_bathroom/mirror.png"
+        },
+        {
+            "type": "btn",
+            "name": "toilet",
+            "left": 542,
+            "top": 734,
+            "width": 227,
+            "height": 234,
+            "title": "Use the toilet",
+            "image": "503_bathroom/toilet.png"
         }
     ];
-    
+
+    if (!inv.has("blackl")) {
+        btnList.push({
+            "type": "btn",
+            "name": "lipstick",
+            "left": 1566,
+            "top": 661,
+            "width": 82,
+            "height": 56,
+            "title": "Steal her lipstick",
+            "image": "503_bathroom/lipstick.png"
+        })
+    }
+
     $.each(btnList, function (i, v) {
         nav.button(v, 503);
     });
@@ -34,26 +57,26 @@ room503.main = function () {
 room503.btnclick = function (name) {
     switch (name) {
         case "mirror":
-            nav.killall();
-            nav.bg("503_bathroom/mirror.jpg");
-            zcl.displayMirror();
-            chat(0, 503);
+            g.pass = 503;
+            char.room(27);
             break;
         case "shower":
-            if (g.diffDatesByDays(g.dt, gv.get("shower")) === 0)
-                chat(2, 503);
-            else {
-                nav.killall();
-                cl.c.cumface = false;
-                cl.nude();
-                zcl.displayMain(0, 400, .22, "shower", false);
-                nav.bg("503_bathroom/shower.jpg");
-                if (inv.get("razor").count > 0)
-                    chat(3, 503);
-                else
-                    chat(4, 503);
-
-            }
+            nav.killall();
+            cl.c.cumface = false;
+            cl.nude();
+            zcl.displayMain(0, 400, .22, "shower", false);
+            nav.bg("503_bathroom/shower.jpg");
+            if (inv.get("razor").count > 0)
+                chat(3, 503);
+            else
+                chat(4, 503);
+            break;
+        case "toilet":
+            g.pass = 503;
+            char.room(22);
+            break;
+        case "lipstick":
+            chat(7, 503);
             break;
         default:
             break;
@@ -67,22 +90,31 @@ room503.chatcatch = function (callback) {
             break;
         case "finishShowering":
             cl.undo();
-            gv.mod("energy", 30);
             char.addtime(30);
-            gv.set("shower", new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 0, 0, 0, 0));
-            char.room(503);
+            if (!daily.get("shower")) {
+                gv.mod("energy", 10000);
+                daily.set("shower");
+                char.room(503);
+            }
+            else
+                char.room(503);
             break;
         case "shaveBody":
-            cl.c.bodyhair = 0;
-            zcl.displayMain(0, 400, .22, "shower", false);
+            if (cl.c.bodyhair > 0)
+                cl.c.bodyhair = 0;
             inv.use("razor");
-            char.addtime(15);
+            zcl.displayMain(0, 400, .22, "shower", false);
             cl.display();
             break;
         case "cleanFace":
             cl.c.cumface = false;
             zcl.displayMirror();
             cl.display();
+            break;
+        case "steal":
+            inv.add("blackl");
+            nav.killbutton("lipstick");
+            g.popUpNotice("You stole her lipstick");
             break;
         default:
             break;
@@ -149,6 +181,15 @@ room503.chat = function (chatID) {
             text: "My face is so clean.",
             button: [
                 { chatID: -1, text: "...", callback: "reloadRoom" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "thinking",
+            text: "It's " + sc.n("zoey") + "'s black lipstick. Should I steal it from her?",
+            button: [
+                { chatID: -1, text: "Steal her lipstick", callback: "steal" },
+                { chatID: -1, text: "Leave it there. ", callback: "" },
             ]
         }
     ];

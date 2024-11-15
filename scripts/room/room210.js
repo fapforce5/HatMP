@@ -3,36 +3,52 @@ var room210 = {};
 room210.main = function () {
     var enrolled = gv.get("sissySchoolClass");
     $.each(sissy.st, function (i, v) {
-        nav.button({
-            "type": "btn",
-            "name": v.icon,
-            "left": 45 + (v.x * 130),
-            "top": 40 + (v.y * 130),
-            "width": i === 10 ? 1530 : 100,
-            "height": 100,
-            "image": "210_classSelection/" + (v.icon) + "_u.png"
-        }, 210);
-        if (v.ach) {
-            nav.button({
-                "type": "clickthrough",
-                "name": v.icon,
-                "left": 45 + (v.x * 130),
-                "top": 40 + (v.y * 130),
-                "width": 100,
-                "height": 100,
-                "image": "210_classSelection/complete_over.png"
-            }, 210);
-        }
-        else if (v.icon === enrolled) {
-            nav.button({
-                "type": "clickthrough",
-                "name": v.icon,
-                "left": 45 + (v.x * 130),
-                "top": 40 + (v.y * 130),
-                "width": 100,
-                "height": 100,
-                "image": "210_classSelection/enrolled_over.png"
-            }, 210);
+        if (v.active) {
+            if (i === 10 || i === 21) {
+                nav.button({
+                    "type": "btn",
+                    "name": v.icon,
+                    "left": 45 + (v.x * 130),
+                    "top": 40 + (v.y * 130),
+                    "width": 1530,
+                    "height": 100,
+                    "image": "210_classSelection/" + (v.icon) + "_u.png"
+                }, 210);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": v.icon,
+                    "left": 45 + (v.x * 130),
+                    "top": 40 + (v.y * 130),
+                    "width": i === 10 ? 1530 : 100,
+                    "height": 100,
+                    "image": "210_classSelection/" + (v.icon) + "_u.png"
+                }, 210);
+            }
+            
+            if (v.ach) {
+                nav.button({
+                    "type": "clickthrough",
+                    "name": v.icon,
+                    "left": i === 10 ? (45 + (5.5 * 130)) : (45 + (v.x * 130)),
+                    "top": 40 + (v.y * 130),
+                    "width": 100,
+                    "height": 100,
+                    "image": "210_classSelection/complete_over.png"
+                }, 210);
+            }
+            else if (v.icon === enrolled) {
+                nav.button({
+                    "type": "clickthrough",
+                    "name": v.icon,
+                    "left": 45 + (v.x * 130),
+                    "top": 40 + (v.y * 130),
+                    "width": 100,
+                    "height": 100,
+                    "image": "210_classSelection/enrolled_over.png"
+                }, 210);
+            }
         }
     });
     nav.buildnav([211]);

@@ -7,12 +7,24 @@ room177.main = function () {
             nav.bg("177_chastity/chastity0.jpg");
             chat(0, 177);
             break;
+        case "chastity201":
+            nav.bg("177_chastity/c201_0.jpg");
+            chat(28, 177);
+            break;
+       
     }
 };
 
 room177.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "c201_penis":
+            nav.killall();
+            nav.bg("177_chastity/c201_1.jpg");
+            chat(30, 177);
+            break;
+        case "c201_clit":
+            nav.killall();
+            chat(31, 177);
             break;
         default:
             break;
@@ -64,6 +76,31 @@ room177.chatcatch = function (callback) {
             break;
         case "chastity101end":
             sissy.passclass(true);
+            break;
+        case "c201_choice":
+            nav.button({
+                "type": "btn",
+                "name": "c201_penis",
+                "left": 345,
+                "top": 285,
+                "width": 511,
+                "height": 511,
+                "image": "177_chastity/c201_0p.png"
+            }, 177);
+            nav.button({
+                "type": "btn",
+                "name": "c201_clit",
+                "left": 1064,
+                "top": 285,
+                "width": 511,
+                "height": 511,
+                "image": "177_chastity/c201_0c.png"
+            }, 177);
+            break;
+        case "c201_2":
+            gv.set("castitycage", "flat");
+            cl.c.chastity = "flat";
+            cl.display();
             break;
         default:
             break;
@@ -326,6 +363,55 @@ room177.chat = function (chatID) {
             text: "So, uhhh. I don't suppose I can request to be let out too. I promise not to masturbate ma'am. ",
             button: [
                 { chatID: 14, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "missy",
+            text: "Hello girls. Today's class is a choice. You will decide if you're " +
+                "a true cum hole sissy who only exists to take phalic object into your " +
+                "holes, or are a fem boy that may want to use your penis someday. ",
+            button: [
+                { chatID: 29, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "missy",
+            text: "No doubt by now you have noticed that the smaller your cage is, the " +
+                "smaller your penis gets. So I will give you the choice. Do you still " +
+                "want your penis, or will you commit to a sissy clit. Choose, but choose " +
+                "wisely, becuase if you choose the clit, it will forever be a clit. ",
+            button: [
+                { chatID: -1, text: "*Gulp*", callback: "c201_choice" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "missy",
+            text: "Oh. I guess I'm a bit dissapointed. But I guess it's your choice. " +
+                "Class is dismissed. ",
+            button: [
+                { chatID: -1, text: "Ok. ", callback: "chastity101end" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "missy",
+            text: "When I first saved your ass, I knew I had a true sissy. Let's " +
+                "change you cage so you can 'shrink' to the girl you were always " +
+                "meant to be. ",
+            button: [
+                { chatID: 32, text: "Yes! ", callback: "c201_2" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "missy",
+            text: "DEV NOTE: this event is in progress, but you now have a flat chastity " +    
+                "cage that will shrink your penis into a sissy clitty.",
+            button: [
+                { chatID: -1, text: "Yes! ", callback: "chastity101end" }
             ]
         },
     ];

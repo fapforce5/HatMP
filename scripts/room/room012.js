@@ -93,7 +93,7 @@ room12.showerScene = function (scene) {
         case "sister1":
             return {
                 "type": "img",
-                "name": "sister1",
+                "name": "sister",
                 "left": 639,
                 "top": 137,
                 "width": 439,
@@ -103,7 +103,7 @@ room12.showerScene = function (scene) {
         case "sister2":
             return {
                 "type": "img",
-                "name": "sister2",
+                "name": "sister",
                 "left": 589,
                 "top": 134,
                 "width": 487,
@@ -113,7 +113,7 @@ room12.showerScene = function (scene) {
         case "sister3":
             return {
                 "type": "img",
-                "name": "sister3",
+                "name": "sister",
                 "left": 681,
                 "top": 112,
                 "width": 371,
@@ -123,7 +123,7 @@ room12.showerScene = function (scene) {
         case "sister4":
             return {
                 "type": "img",
-                "name": "sister4",
+                "name": "sister",
                 "left": 569,
                 "top": 199,
                 "width": 432,
@@ -133,7 +133,7 @@ room12.showerScene = function (scene) {
         case "sister5":
             return {
                 "type": "img",
-                "name": "sister4",
+                "name": "sister",
                 "left": 804,
                 "top": 124,
                 "width": 263,
@@ -143,7 +143,7 @@ room12.showerScene = function (scene) {
         case "sister8":
             return {
                 "type": "img",
-                "name": "sister4",
+                "name": "sister",
                 "left": 0,
                 "top": 0,
                 "width": 1920,
@@ -153,7 +153,7 @@ room12.showerScene = function (scene) {
         case "joinSisters":
             return {
                 "type": "img",
-                "name": "sister6",
+                "name": "sister",
                 "left": 560,
                 "top": 160,
                 "width": 497,
@@ -163,7 +163,7 @@ room12.showerScene = function (scene) {
         case "sisterButt":
             return {
                 "type": "img",
-                "name": "sister6",
+                "name": "sister",
                 "left": 413,
                 "top": 0,
                 "width": 1507,
@@ -246,10 +246,17 @@ room12.btnclick = function (name) {
         case "mirror":
             g.pass = 12;
             char.room(27);
-            //nav.killall();
-            //nav.bg("12_bathroom/012_brushTeeth.jpg", "12_bathroom/012_brushTeeth.jpg");
-            //zcl.displayMirror();
-            //chat(13, 12);
+            break;
+        case "sisterPeek":
+            if (g.internal > 5) {
+                nav.killbutton("sisterPeek");
+                chat(1, 12);
+            }
+            else {
+                nav.killbutton("sister");
+                nav.button(room12.showerScene("sister" + g.internal, 12));
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -263,13 +270,17 @@ room12.chatcatch = function (callback) {
             char.addtime(20);
             char.room(11);
             break;
+        case "runRoom":
+            char.addtime(60);
+            char.room(10);
+            break;
         case "stopPeekClothes":
             cl.undo();
             char.room(11);
             break;
         case "sister2":
-            nav.killbutton("sister1");
-            nav.button(room12.showerScene("sister2", 12));
+            nav.next("sisterPeek");
+            g.internal = 2;
             daily.set("homeShowerPeek");
             break;
         case "sister3":
@@ -287,6 +298,48 @@ room12.chatcatch = function (callback) {
         case "sister5":
             nav.killbutton("sister4");
             nav.button(room12.showerScene("sister5", 12));
+            break;
+        case "sisterStrip":
+            cl.nude();
+            zcl.displayMain(0, 800, .199, "", true); 
+            break;
+        case "sisterStrip1":
+            if (sc.getLevel("eva") > 6) {
+                nav.killall();
+                nav.bg("12_bathroom/sisterStrip1.jpg");
+                chat(46, 12);
+            }
+            else {
+                nav.killbutton("sister");
+                nav.button(room12.showerScene("joinSisters", 12));
+                zcl.displayMain(0, 800, .199, "", true); 
+                chat(45, 12);
+            }
+            break;
+        case "sisterStrip2":
+            nav.bg("12_bathroom/sisterStrip2.jpg");
+            nav.button({
+                "type": "img",
+                "name": "gif",
+                "left": 1300,
+                "top": 200,
+                "width": 501,
+                "height": 502,
+                "image": "501_jadaGame/lose.gif"
+            }, 501);
+            break;
+        case "sisterStrip3":
+            nav.killall();
+            nav.bg("12_bathroom/sisterStrip3.jpg");
+            break;
+        case "sisterStrip4":
+            nav.bg("12_bathroom/sisterStrip4.jpg");
+            break;
+        case "sisterStripEnd":
+            char.addtime(75);
+            levels.oralGive(3, false, false, "f");
+            sex.piss(false, false, true, "f");
+            char.room(12);
             break;
         case "joinSisters":
             if (sc.getstep("lola") < 200) {
@@ -509,7 +562,7 @@ room12.chatcatch = function (callback) {
             char.room(11);
             break;
         case "badleave":
-            sc.modLevel("lola", -15, 999);
+            sc.modLevel("lola", 15, 7);
             char.room(11);
             break;
         default:
@@ -524,24 +577,26 @@ room12.chat = function(chatID){
             speaker: "me",
             text: sc.n("eva") + " and " + sc.n("lola") + " are taking a shower. Do you want to continue peeking?",
             button: [
-                { chatID: 1, text: "Hell yes!", callback: "sister2" },
+                { chatID: -1, text: "Hell yes!", callback: "sister2" },
                 { chatID: -1, text: "I really shouldn't peek. I'm going to get out of here. ", callback: "stopPeek" }
             ]
         },
         {
             chatID: 1,
-            speaker: "me",
-            text: "",
+            speaker: "thinking",
+            text: "Those dirty dirty girls with their little shower secret. I " +
+                "wonder if they'll get mad if I strip off all my clothes and ask " +
+                "them if they need a hand washing each other's backs? ",
             button: [
-                { chatID: -1, text: "Continue watching your " + sc.n("el"), callback: "sister3" },
-                { chatID: -1, text: "That's enough. I'm going to get out of here. ", callback: "stopPeek" }
+                { chatID: 2, text: "[Strip down and show them your dick]", callback: "sisterStrip" },
+                { chatID: -1, text: "Naw. That's stupid. I'm going to get out of here. ", callback: "stopPeek" }
             ]
         },
         {
             chatID: 2,
             speaker: "me",
-            text: "It looks like they're just about done. I better leave before they see me.",
-            button: [{ chatID: -1, text: "Leave ", callback: "stopPeek" }]
+            text: "So... Do you like what you see? ",
+            button: [{ chatID: -1, text: "... ", callback: "sisterStrip1" }]
         },
         {
             chatID: 3,
@@ -888,6 +943,68 @@ room12.chat = function(chatID){
             text: "NO! " + sc.n("eva") + " was right. You are a pervert! Leave so I can pee! ",
             button: [
                 { chatID: -1, text: "Oh sorry. ", callback: "badleave" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "eva",
+            text: "GET THE FUCK OUT PERVERT! We're just trying to shower and you come in " +
+                "with your dick out? Get out! Get out! Get out!",
+            button: [
+                { chatID: -1, text: "YELP! Run away! ", callback: "runRoom" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "lola",
+            text: "Oh wow. Not expecting to be inturrupted. Nice penis, but I have " + 
+                "to get ready for school. ",
+            button: [
+                { chatID: 47, text: "... ", callback: "" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "eva",
+            text: "Get over here dweeb and eat me out. Love a good orgasm before " +
+                "school. ",
+            button: [
+                { chatID: 48, text: "...sure", callback: "sisterStrip2" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "thinking",
+            text: "She tastes so good! Nothing sweeter than post shower pussy eating. " +
+                "It's so so yummy!",
+            button: [
+                { chatID: 49, text: "...", callback: "sisterStrip3" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "eva",
+            text: "Oh fuck! I'm cumming all over your face! ",
+            button: [
+                { chatID: 50, text: "AAAkkkk! That's not cum, that's piss!", callback: "sisterStrip4" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "eva",
+            text: "That's not piss! It's cum stupid! You don't know anything about girls! ",
+            button: [
+                { chatID: 51, text: "It is piss! You're pissing right now", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "eva",
+            text: "Girls can have multiple orgams, in a row idiot. You should just be happy " +
+                "I came on you. Now I'm going to school so I don't have to waste more time talking " +
+                "to a big dummy like you! ",
+            button: [
+                { chatID: -1, text: "Well ok", callback: "sisterStripEnd" },
             ]
         },
     ];

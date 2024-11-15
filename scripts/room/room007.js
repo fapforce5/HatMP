@@ -12,6 +12,12 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(0, 7);
     }
+    else if (sc.taskGetStep("eva", "fuck") === 1) {
+        char.settime(6, 30);
+        nav.killall();
+        nav.bg("7_mainCharRoomAlt/e0.jpg");
+        chat(27, 7);
+    }
     else if (g.dt.getDay() === 0) { //sunday
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(7, 7);
@@ -120,6 +126,16 @@ room7.btnclick = function (name) {
             }, 7);
             chat(78, 7);
             break;
+        case "e":
+            if (g.internal > 10) {
+                nav.killbutton("e");
+                chat(34, 7);
+            }
+            else {
+                nav.bg("7_mainCharRoomAlt/e" + g.internal + ".jpg");
+                g.internal++;
+            }
+            break;
         default:
             break;
     }
@@ -127,6 +143,18 @@ room7.btnclick = function (name) {
 
 room7.chatcatch = function (callback) {
     switch (callback) {
+        case "e1":
+        case "e2":
+        case "e3":
+        case "e4":
+        case "e5":
+        case "e6":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
+        case "e7":
+            g.internal = 7;
+            nav.next("e");
+            break;
         case "money":
             gv.mod("money", 250);
             break;
@@ -610,6 +638,13 @@ room7.chatcatch = function (callback) {
         case "removeLlPanties":
             cl.remove("panties", "c");
             break;
+        case "eEnd":
+            sc.completeMissionTask("eva", "fuck", 1);
+            levels.fuckpussy("eva");
+            levels.fuckass("eva", "f");
+            char.addtime(30);
+            char.room(7);
+            break;
         default:
             break;
     }
@@ -853,6 +888,80 @@ room7.chat = function (chatID) {
                 "be in town, so get back before it gets dark. They are an aweful bunch. ",
             button: [
                 { chatID: 9, text: "ok", callback: "clearRoom" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "eva",
+            text: "I've been creaming all night thinking about your dick. Pull it out " +
+                "let me see it again. ",
+            button: [
+                { chatID: 28, text: "...wha?", callback: "e1" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "eva",
+            text: "You know what I said. I have to have your dick you big pervert. ",
+            button: [
+                { chatID: 29, text: "OOoooo", callback: "e2" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "eva",
+            text: "Uh oh. Shhhh I'm not here.",
+            button: [
+                { chatID: 30, text: "?", callback: "e3" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "lola",
+            text: "I just had to come and tell you what an amazing night I had last night. " +
+                "I've been dreaming about losing my virginity to you forever, and it finally " +
+                "happened! I'm so excited I just want to jump on you right now! But I've got " +
+                "to get ready, so another time. OOOooo I love you so so much! ",
+            button: [
+                { chatID: 31, text: "Love you too. ", callback: "e4" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "eva",
+            text: "She gone? Don't tell her I'm here. She'll get soooo mad I snuck " +
+                "in here to have sex with you. ",
+            button: [
+                { chatID: 32, text: "ok", callback: "e5" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "eva",
+            text: "Put it in my butt. We went off birth control months ago 'cause " +
+                "it killed our sex drive. " + sc.n("landlord") + " would kill us if " +
+                "she knew, so don't say anything. ",
+            button: [
+                { chatID: 33, text: "Oh yeah! [Put your dick in her butthole]", callback: "e6" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "eva",
+            text: "Oh fuck! Flip me over. I need it in my pussy! I'm so close to cumming! Promise you'll " +
+                "pull out before you cum in me!",
+            button: [
+                { chatID: -1, text: "Promise! ", callback: "e7" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "eva",
+            text: "You promised to pull out! Oh well. I don't think I can get pregnant. " +
+                "You're not the first man to have weak pullout game and I haven't gotten " +
+                "knocked up yet. Later loser. ",
+            button: [
+                { chatID: -1, text: "later?", callback: "eEnd" },
             ]
         },
     ];

@@ -51,7 +51,7 @@ room15.main = function () {
             });
         }
 
-        if (!daily.get("momChoreDishes") && sc.getstep("landlord") < 200) {
+        if (!daily.get("momChoreDishes") && sc.getMission("landlord", "sissy").notStarted) {
             btnList.push({
                 "type": "btn",
                 "name": "dishes",
@@ -170,8 +170,14 @@ room15.btnclick = function (name) {
             nav.killall();
             nav.bg("15_kitchen/butt1.jpg");
             g.roomTimeout = setTimeout(function () {
-                nav.bg("15_kitchen/butt_angry.jpg");
-                chat(11, 15);
+                if (sc.getLevel("landlord") < 3) {
+                    nav.bg("15_kitchen/butt_angry.jpg");
+                    chat(11, 15);
+                }
+                else {
+                    sc.modLevel("landlord", 20, 5);
+                    chat(12, 15)
+                }
             }, 1500);
             break;
         default:
@@ -253,6 +259,14 @@ room15.chatcatch = function (callback) {
         case "slap1":
             g.pass = "kitchen";
             char.room(21);
+            break;
+        case "slap2":
+            nav.killall();
+            nav.bg("15_kitchen/slap2.jpg");
+            break;
+        case "slap2End":
+            char.addtime(58);
+            char.room(15);
             break;
         default:
             break;
@@ -349,6 +363,30 @@ room15.chat = function (chatID) {
                 "Come with me to my room. Now! ",
             button: [
                 { chatID: -1, text: "Yes! ", callback: "slap1" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "landlord",
+            text: "Ooooo. I am a naughty girl! ",
+            button: [
+                { chatID: 13, text: "...", callback: "slap2" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "lola",
+            text: "Gross " + sc.n("landlord") + "! ",
+            button: [
+                { chatID: 14, text: "Oh hi " + sc.n("lola") + ". " , callback: "" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "landlord",
+            text: "Sit down and eat. I'm almost done here. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "slap2End" },
             ]
         },
     ];

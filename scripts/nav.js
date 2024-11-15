@@ -58,7 +58,6 @@ nav.killall = function () {
         g.roomTimeout2 = null;
     }
     $('#room-buttons').html("");
-    $('#room_footer').html('');
 };
 
 nav.kill = function () {
@@ -240,6 +239,9 @@ nav.modbutton = function (name, newImage, newName, newType) {
 
     if (newType === "img")
         $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").addClass("room-img");
+    else if (newType === "btn")
+        $('img[data-name="' + name + '"]').addClass("room-btn rom-event");
+
 };
 
 nav.flash = function (thisImage, length) {
@@ -270,6 +272,9 @@ nav.killbuttonStartsWith = function (name) {
 
 nav.buildnav = function (roomIDList) {
     var i;
+    if (!$('#room_footer').is(":visible") && !$(".room-speachGroup").is(":visible"))
+        $('#room_footer').show();
+
     for (i = 0; i < roomIDList.length; i++) {
         $.each(g.rooms, function (j, u) {
             if (u.roomID === roomIDList[i]) {
@@ -399,6 +404,13 @@ nav.room = function (roomID) {
     char.room(roomID);
 };
 
+nav.cancel = function (btnClickName) {
+    nav.drawButton("1001_rand/cancel.png", btnClickName);
+};
+
+nav.close = function (btnClickName) {
+    nav.drawButton("1001_rand/close.png", btnClickName);
+};
 
 nav.next = function (btnClickName) {
     nav.drawButton("1001_rand/next.png", btnClickName);
@@ -415,7 +427,7 @@ nav.cum = function (btnClickName) {
 
 nav.drawButton = function (image, btnClickName) {
     nav.button({
-        "type": "btn",
+        "type": "zbtn",
         "name": btnClickName,
         "left": 1695,
         "top": 920,
@@ -427,7 +439,7 @@ nav.drawButton = function (image, btnClickName) {
 
 nav.wait = function (btnClickName) {
     nav.button({
-        "type": "btn",
+        "type": "zbtn",
         "name": btnClickName,
         "left": 1695,
         "top": 920,

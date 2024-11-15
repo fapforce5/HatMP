@@ -1,53 +1,54 @@
 ﻿var quickFight = {};
 var room1002 = {};
 
-quickFight.getStats = function (enemyFightLevel) {
+//add dominate option - DOM - SUB = total player dom - each fighter will have a DOM level
+//if DOM achaived then same action as winning the fight
+
+//add hot click areas (easter eggs) - if player clicks the MC's penis he grabs his crotch
+//if nipple them MC covers nipples
+//find other places to put hot spots
+
+//need molestation before sex
+//fingering
+//spreading
+//if girl and penis then stroking
+//maybe some hitting / ass slapping
+
+//lose - go in a box - kidnapped
+//lose - abdubted by mr jones
+
+//suprise rape -  they decide
+
+//also need inside character's head / I'm in so much pain / I'm so horny / please don't based on user input
+
+quickFight.getStats = function (enemyFightLevel, enemyEnergy = 100) {
+    if (enemyEnergy < 1)
+        enemyFightLevel = 0;
+    else
+        enemyFightLevel = Math.round(enemyFightLevel * (enemyEnergy / 100));
     var punchPower = levels.get("strength").l;
     var energyMult = parseFloat(gv.get("energy") / 100).toFixed(2);
     var total = Math.round((punchPower) * energyMult);
-    //var prob = 0;
-    //var probTemp = total - enemyFightLevel;
-    //console.log(probTemp);
-    //if (probTemp > 30)
-    //    prob = 100;
-    //else if (probTemp < -30)
-    //    prob = 0;
-    //else {
-    //    probTempx = Math.abs(probTemp) * 1.6666666;
-    //    console.log(probTempx);
-    //    prob = probTemp > 0 ? Math.round(50 + probTempx) : Math.round(50 - probTempx);
-    //} 
 
-    return { punchPower: punchPower, energyMult: energyMult, total: total, winProb: quickFight.getProb(enemyFightLevel, total) };
+    return { punchPower: punchPower, energyMult: energyMult, total: total, enemyFightLevel: enemyFightLevel, winProb: quickFight.getProb(enemyFightLevel, total).txt };
 }
+
 
 quickFight.getProb = function (enemy, me) {
     var total = Math.abs(enemy - me)
-    if (total === 0)
-        return "Evan match";
-    if (total < 3 && enemy > me)
-        return "Might lose";
-    if (total < 3 && me > enemy)
-        return "Might win";
+    if (total < 2)
+        return { txt: "Even match", num: 0 };
     if (total < 6 && enemy > me)
-        return "Little hard";
+        return { txt: "Little hard", num: -1 };
     if (total < 6 && me > enemy)
-        return "Little easy";
+        return { txt: "Little easy", num: 1 };
     if (total < 12 && enemy > me)
-        return "Hard";
+        return { txt: "Hard", num: -2 };
     if (total < 12 && me > enemy)
-        return "Easy";
-    if (total < 20 && enemy > me)
-        return "Very Hard";
-    if (total < 20 && me > enemy)
-        return "Very Easy";
-    if (total < 30 && enemy > me)
-        return "Extremely Hard";
-    if (total < 30 && me > enemy)
-        return "Extremely Easy";
+        return { txt: "Easy", num: 2 };
     if (enemy > me)
-        return "Impossible";
-    return "Can't lose";
+        return { txt: "Extremely Hard", num: -3 };
+    return { txt: "Extremely Easy", num: 3 };
 };
 
 quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost, btnPressRun, roomID) {
@@ -248,7 +249,7 @@ quickFight.setStats = function () {
         nav.tmod("quickfight_enemymod", "-30 Strength");
     g.fight.fightLevel = g.fight.enemyInitFightLevel + (g.fight.pocketSand ? -30 : 0);
     nav.tmod("quickfight_enemytotal", "Enemy Total: " + g.fight.fightLevel);
-    nav.tmod("quickfight_chance", quickFight.getProb(g.fight.fightLevel, g.fight.myFight));
+    nav.tmod("quickfight_chance", quickFight.getProb(g.fight.fightLevel, g.fight.myFight).txt);
 };
 
 quickFight.drawFight = function () {

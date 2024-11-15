@@ -178,7 +178,7 @@ room300.btnclick = function (name) {
                     break;
                 case 29:
                     nav.bg("300_apartment/wait_envy2.jpg");
-                    levels.mod("envy", 50, 1);
+                    sc.modLevel("envy", 50, 1);
                     chat(33, 300);
                     randEvent = false;
                     break;

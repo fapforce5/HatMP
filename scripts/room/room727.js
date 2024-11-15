@@ -22,7 +22,7 @@ room727.main = function () {
             "height": 471,
             "image": "727_bathroom/tim1pants.png"
         }, 727);
-        var timStep = sc.getstep("tim");
+        var timStep = sc.taskGetStep("tim", "fuck"); 
         if (timStep < 2) {
             chat(0, 727);
         }
@@ -185,7 +185,7 @@ room727.chatcatch = function (callback) {
         case "tim2end":
             gv.mod("giveOralMale", 1);
             daily.set("tim");
-            sc.setstep("tim", 2);
+            sc.completeMissionTask("tim", "fuck", 1);
             char.addtime(60);
             char.room(727);
             break;
@@ -227,10 +227,10 @@ room727.chatcatch = function (callback) {
             cl.changeClothing();
             cl.display();
             g.pass = g.internal = null;
-            gv.mod("fuckPussy", 1);
+            levels.fuckpussy("cindy");
             daily.set("cindy");
             char.addtime(60);
-            sc.setstep("cindy", 3);
+            sc.completeMissionTask("cindy", "fuck", 2);
             char.room(727);
             break;
         case "girlBad":

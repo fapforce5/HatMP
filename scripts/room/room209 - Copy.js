@@ -2199,7 +2199,7 @@ room209.chat = function (chatID) {
                 chatID: 62,
                 speaker: "missy",
                 text: "Well the classroom is not an ideal place to do that. Go see my friend " + sc.n("tiffany") + ". " +
-                    "She's got a suprise for you.",
+                    "She's got a surprise for you.",
                 button: [
                     { chatID: -1, text: "Squeel in excitement", callback: "h_29" }
                 ]
@@ -2798,9 +2798,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 132,
                 speaker: "p",
-                text: "I'm going to give you a little lesson on how hormones help you achieve your true sissy potential. " +
-                    "Right now you have the mind of a sissy, but the body of a boy.That pesky testosterone is blocking your " +
-                    "true potential. We need to have your body match your mind.",
+                text: "I'm going to give you a little lesson on how hormones help you achieve your true sissy potential. Right now you have the mind of a sissy, but the body of a boy.That pesky testosterone is blocking your true potential. We need to have your body match your mind.",
                 button: [
                     { chatID: 133, text: "Help?", callback: "h51_2" }
                 ]

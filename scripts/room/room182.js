@@ -317,7 +317,7 @@ room182.chatcatch = function (callback) {
             var analImg = "";
             nav.kill();
             if (analLevel > 9) {
-                g.internal.analLevel = 100;
+                g.internal.analtest = 100;
                 analImg = "t1_20_6";
             }
             else {
@@ -741,7 +741,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 10,
                 speaker: "missy",
-                text: "Interesting. " + sc.n("me") + " I'm suprised that you've denied your true self. " +
+                text: "Interesting. " + sc.n("me") + " I'm surprised that you've denied your true self. " +
                     "Tell me you wouldn't want to be tied to my bed posts, bent over with your " +
                     "ass out. Ready to take my strap on in your anus. ",
                 button: [
@@ -886,7 +886,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 26,
                 speaker: "martha",
-                text: "Philbert, why am I not suprised that your disgusting penis is pointing right " +
+                text: "Philbert, why am I not surprised that your disgusting penis is pointing right " +
                     "at me? ",
                 button: [
                     { chatID: 28, text: "...", callback: "" },
@@ -895,7 +895,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "martha",
-                text: "Philbert, why am I not suprised that your disgusting penis is pointing right " +
+                text: "Philbert, why am I not surprised that your disgusting penis is pointing right " +
                     "at me? ",
                 button: [
                     { chatID: 28, text: "...", callback: "" },
@@ -1297,7 +1297,7 @@ room182.chat = function (chatID) {
                 chatID: 70,
                 speaker: "black",
                 text: "Don't worry my little baby. Let me rotate your toys. I'll take this out and " +
-                    "add the dildo gag and give you a nice suprise for lasting this long. ",
+                    "add the dildo gag and give you a nice surprise for lasting this long. ",
                 button: [
                     { chatID: 71, text: "...", callback: "t1_42" },
                 ]

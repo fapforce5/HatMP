@@ -125,16 +125,18 @@ room401.main = function () {
             else if (sc.getMissionTask("spanky", "hypno", 1).success) {
                 priceMult = .5;
             }
+            priceMult = 1;
             room401.makeInv(spankyInv, true, priceMult);
             navList = [404, 0];
             break;
         case "fuckMyDirtyAssholeHard":
             nav.bg("650_toyStore/650_front.jpg", "650_toyStore/650_front.jpg");
-            room401.makeClothing("chastity", "m");
-            room401.makeClothing("chastity", "f");
+            //room401.makeClothing("chastity", "m");
+            //room401.makeClothing("chastity", "f");
             room401.makeClothing("buttplug", "f");
-            room401.makeInv(["d"], g.sissy[59].ach);
+            room401.makeInv(["d"], qdress.st[2].ach);
             room401.makeInv(["c"], true, 1);
+            room401.makeInv(["q"], gv.get("milk") > -1, 1);
             navList = [650, 0];
             break;
         case "happyGirl":
@@ -191,7 +193,11 @@ room401.main = function () {
 
         var thisMoney = gv.get("money");
 
-        if (thisItem.entry && thisItem.count === null) {
+        if (!thisCanBuy) {
+            $('#menu_displayAction').hide();
+            $('#menu_displayInfo').html("Too Girly");
+        }
+        else if (thisItem.entry && thisItem.count === null) {
             $('#menu_displayAction').hide();
             $('#menu_displayInfo').html("Already Purchased");
         }
@@ -318,19 +324,20 @@ room401.main = function () {
 
 room401.makeClothing = function (type, sex) {
     var i, lewdlevel, canbuy, inInv;
-    var sissyLevel = levels.get("xdress").l;
-    if (sissyLevel > 6)
+    if (qdress.st[8].ach)
         lewdlevel = [0, 1, 2, 3, 4];
-    else if (sissyLevel > 4)
+    else if (qdress.st[7].ach)
         lewdlevel = [0, 1, 2, 3];
+    else if (qdress.st[3].ach)
+        lewdlevel = [0, 1, 2];
     else
         lewdlevel = [0];
-
+    console.log("lewdlevel: " + lewdlevel);
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
             canbuy = lewdlevel.includes(cl.list[i].daring);
             if (cl.list[i].type === "buttplug")
-                canbuy = g.sissy[59].ach;
+                canbuy = qdress.st[2].ach;
             inInv = cl.list[i].inv;
             if (!canbuy || inInv)
                 $('#menu-bg_' + g.internal).html('<img src="./images/room/8_wardrobe/icons/' + cl.list[i].img + '" title="' + type + '"/>');
@@ -371,7 +378,7 @@ room401.makeClothing = function (type, sex) {
 //    }
 //};
 
-room401.makeInv = function (typeArray, canbuy, priceMult) {
+room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
     var i, j;
 
     for (j = 0; j < typeArray.length; j++) {
@@ -385,7 +392,7 @@ room401.makeInv = function (typeArray, canbuy, priceMult) {
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                        $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
@@ -396,13 +403,13 @@ room401.makeInv = function (typeArray, canbuy, priceMult) {
                     }
                     else {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
-                        $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                        $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
                 }
                 else if (!canbuy) {
-                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '"  title="' + inv.master[i].display + '"/>');
-                    $('#menu-bg_' + g.internal).append('<img src="./images/inv/tooGirly.png"/>');
+                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
+                    $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                     $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                 }
                 else {

@@ -1229,7 +1229,7 @@ room26.chat = function (chatID) {
         {
             chatID: 83,
             speaker: "landlord",
-            text: "Oooo, I have a suprise for you! I've known a sissy for a while that comes into the sperm bank and thought it " +
+            text: "Oooo, I have a surprise for you! I've known a sissy for a while that comes into the sperm bank and thought it " +
                 "would be neat for you two to meet. Let me call him over. He's very obedient. ",
             button: [
                 { chatID: 84, text: "Oh, what, no. Thank's ok. I don't...", callback: "" }

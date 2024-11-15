@@ -341,13 +341,13 @@ room221.chatcatch = function (callback) {
                 chat(400, 221);
             }
             else {
-                levels.mod("int", 15, 999);
+                levels.mod("pi", 15, 999);
                 chat(401, 221);
             }
             break;
         case "appNo":
             if (g.pass.events[0].pcDisplay === "Nothing") {
-                levels.mod("int", 15, 999);
+                levels.mod("pi", 15, 999);
                 chat(500, 221);
             }
             else

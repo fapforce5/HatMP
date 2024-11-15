@@ -9,6 +9,10 @@ room180.main = function () {
             nav.bg("180_ballroom/fem0.jpg");
             chat(24, 180);
             break;
+        case "fem121":
+            nav.bg("180_ballroom/fem0.jpg");
+            chat(78, 180);
+            break;
         case "pee101":
             nav.bg("180_ballroom/pee0.jpg");
             chat(30, 180);
@@ -16,6 +20,14 @@ room180.main = function () {
         case "fem103":
             nav.bg("180_ballroom/fem103_0.jpg");
             chat(52, 180);
+            break;
+        case "fem201":
+            nav.bg("180_ballroom/fem201_1.jpg");
+            chat(65, 180);
+            break;
+        case "enema205":
+            nav.bg("180_ballroom/enema205_1.jpg");
+            chat(71, 180);
             break;
     }
     //var btnList = [
@@ -67,6 +79,16 @@ room180.chatcatch = function (callback) {
         case "pee5":
         case "fem103_2":
         case "fem103_3":
+        case "fem201_2":
+        case "fem201_3":
+        case "fem201_4":
+        case "enema205_5":
+        case "fem121_0":
+        case "fem121_1":
+        case "fem121_2":
+        case "fem121_3":
+        case "fem121_4":
+        case "fem121_5":
             nav.bg("180_ballroom/" + callback + ".jpg");
             break;
         case "fem103_0":
@@ -101,7 +123,7 @@ room180.chatcatch = function (callback) {
             char.addtime(60);
             break;
         case "peeend":
-            levels.mod("pee", 100, 2);
+            levels.mod("piss", 100, 7);
             sissy.passclass(true);
             break;
         case "fem103_1":
@@ -126,6 +148,37 @@ room180.chatcatch = function (callback) {
             cl.c.socks = "ss";
             cl.c.shoes = "ss";
             cl.display();
+            levels.mod("xdress", 50, 999);
+            sissy.passclass(true);
+            break;
+        case "fem201_end":
+            inv.addMulti("hormone", 10);
+            gv.mod("hormone", 30);
+            daily.set("tookHormonePill");
+            sissy.passclass(true);
+            break;
+        case "enema205_2":
+            nav.bg("180_ballroom/enema205_2.jpg");
+            zcl.assup(750, 80, .5);
+            break;
+        case "enema205_3":
+            nav.killall();
+            nav.bg("180_ballroom/enema205_3.jpg");
+            break;
+        case "enema205_4":
+            nav.bg("180_ballroom/enema205_4.jpg");
+            zcl.assup(450, 160, .95);
+            break;
+        case "enema205_6":
+            nav.bg("180_ballroom/enema205_6.jpg");
+            zcl.assup(750, 80, .5);
+            break;
+        case "enema205_7":
+            levels.mod("xdress", 50, 999);
+            sissy.passclass(true);
+            break;
+        case "fem121_end":
+            levels.mod("heels", 100, 999);
             levels.mod("xdress", 50, 999);
             sissy.passclass(true);
             break;
@@ -724,6 +777,213 @@ room180.chat = function (chatID) {
             text: "Hey! " + sc.n("me") + ". Are you daydreaming? ",
             button: [
                 { chatID: 56, text: "Huh? ", callback: "fem103_1" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "martha",
+            text: "Ladies, I am going to give you a little lesson on how hormones can help you " +
+                "achieve your true sissy potential. At the moment, you have the mind of a sissy but the " +
+                "body of a boy. That pesky testosterones are blocking your true potential and preventing " +
+                "your body from matching your mind.",
+            button: [
+                { chatID: 66, text: "... ", callback: "fem201_2" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "martha",
+            text: "Currently, your bodies are saturated with testosterone, which seeps into your brains " +
+                "and emanates through your pores. The scent it produces is rather unpleasant. This hormone, " +
+                "testosterone, forms the male body to a purely functional beast, lacking any aesthetic " +
+                "appeal.",
+            button: [
+                { chatID: 67, text: "... ", callback: "fem201_3" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "martha",
+            text: "Sexual desires is rooted in beauty. The large breasts, plump lips, wide hips, long hair, " +
+                "and smooth skin. Traits you lack. You have too look like an object of sex if you want to be desired. ",
+            button: [
+                { chatID: 68, text: "... ", callback: "fem201_4" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "martha",
+            text: "My, wouldn't we all love to be positively adored, wouldn't we? Well, fret no more, dears! Today, we embark on a delightful journey of enhancing your natural allure, all thanks to the marvels of modern science. Our brilliant chemist has concocted these very special little marvels – a bespoke pill for each of you! Now, these aren't your run-of-the-mill tonics, mind you. These clever creations work in perfect harmony with your own desires, triggering subtle changes within to bring forth your most captivating self. After all, true beauty comes not just from the outside, but from a confident spirit that shines through, wouldn't you agree?",
+            button: [
+                { chatID: 69, text: "... ", callback: "" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "martha",
+            text: "Oh my, these little treasures I have here can be quite the boon for a lady's allure! They work their magic in six delightful ways. First, they'll naturally encourage your lovely locks to grow thicker and faster, while keeping those pesky body hairs at bay for a delightfully smooth you.And wouldn't you know it, your skin will be positively radiant, your lips will have a touch more pout, and your figure will become even more divinely proportioned – fuller thighs and a more ample bosom, simply delightful! Now, for the gentlemen who appreciate a bit of... discretion, these might even have a delightfully shrinking effect down there, perfect for a smaller chastity device, if you know what I mean wink.",
+            button: [
+                { chatID: 70, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "martha",
+            text: "Now, darling, listen closely. Just one pill a day, that's all you need. Soon, while you slumber peacefully, you'll begin to notice a delightful transformation.To get you started on this marvelous journey, I'll provide each of you with ten precious pearls of change, ten little pills. Once those are gone, simply pop down to the Pink Room to replenish your supply. ",
+            button: [
+                { chatID: -1, text: "[Take your pill and be on your way. ]", callback: "fem201_end" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "martha",
+            text: "I'm so excited for this lesson. You are looking the part of true femininity, a vision " +
+                "that wouldn't fail to turn heads. But once you have seduced a gentleman, your must feel " +
+                "good when you envelop his penis into your Princess Hole. ",
+            button: [
+                { chatID: 72, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "martha",
+            text: "Now I'm going to apply an enema of my own making into each of your Princess Holes. This " +
+                "mixture will smooth out your skin and make your holes smooth and moist to the touch. " +
+                " Now I need each " +
+                "of you to strip down and place your knees and hands on the floor so I may administer it. After " +
+                "you've received your enema hold it in as long as you can to acheive maximum effectiveness. ",
+            button: [
+                { chatID: 73, text: "[Get ready for your enema]", callback: "enema205_2" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "martha",
+            text: "Now, now, there's no need to be tense, darling. You might feel a little pressure as my special concoction finds its way inside, filling you up ever so gently. It's quite natural to want to push it back, but trust me, the best thing to do is simply let it settle in. If you find yourself feeling a bit overwhelmed, why not close your eyes and allow your mind to drift away? Think of charming princes, enchanted forests, and happily ever afters. Let the magic of the mixture work its charm.",
+            button: [
+                { chatID: 74, text: "...", callback: "enema205_3" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "martha",
+            text: "Oh my, isn't that simply the most adorable little hole? Now, just let that feeling " +
+                "wash right over you, dear. Imagine that precious hole, so soft and smooth as silk. " +
+                "You're absorbing that very essence, my dear, velvety and delightful. " +
+                "Splendid work, simply splendid! Now I have to step away. Just hold it in as long as you can. ",
+            button: [
+                { chatID: 75, text: "Yes ma'am", callback: "enema205_4" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "!chris",
+            text: "UUgh! I can't hold it in any longer! It's getting out! I can't stop it!",
+            button: [
+                { chatID: 76, text: "You can do it! Just hold it in!", callback: "enema205_5" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "philbert",
+            text: "Hahaha! You should change your name from Sporty to Squirty! ",
+            button: [
+                { chatID: 77, text: "Shut up Philbert! We're all cramping here!", callback: "enema205_6" }
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "martha",
+            text: "From your shouts I can tell it's time to expel the liquids. Once you're done you'll find " +
+                "each of you has a smooth and moist anus, perfect for sliding phalluses in and out. Wash your " +
+                "bodies and the shower, then you can be on your way.",
+            button: [
+                { chatID: -1, text: "[Clean up slut]", callback: "enema205_7" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "martha",
+            text: "Ah, welcome, my dears, to a most delightful lesson on the art of walking in high heels. I do trust that you will all approach this endeavor with a touch of grace and poise. While it may seem daunting at first, with a bit of practice, you shall find yourselves gliding across the room with the elegance of a swan.",
+            button: [
+                { chatID: 79, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "martha",
+            text: "Now, my dears, to ensure a smooth transition into the world of high heels, I do suggest that we begin with a pair of low heels. These will allow you to acclimate yourselves to the sensation of elevated heels without the added challenge of extreme height. Do be mindful when donning them, however. A misstep can be quite unfortunate, and I would not wish for any of you to find yourselves in an undignified position.",
+            button: [
+                { chatID: 80, text: "[Put on your low heels]", callback: "fem121_0" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "thinking",
+            text: "I do love these kitten heels. They're so light and open. I can feel the " +
+                "soft kiss of the air and it passes over the top of my feet. I wonder if " +
+                "these low heels will push up my butt and make it pop more.",
+            button: [
+                { chatID: 81, text: "...", callback: "fem121_1" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "!philbert",
+            text: "You're so clumsy you're totally going to fall on your ass as soon " +
+                "as you try to get up! ",
+            button: [
+                { chatID: 82, text: "I'm just trying to enjoy class.", callback: "fem121_2" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "!thomas",
+            text: "Can't we ever get 5 minutes without you trying to ruin everything? ",
+            button: [
+                { chatID: 83, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "!philbert",
+            text: "I can't help if you ladies are awkward and clumsy, not as graceful " +
+                "as I...",
+            button: [
+                { chatID: 84, text: "...", callback: "fem121_3" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "!philbert",
+            text: "AAAAAKkkkkk",
+            button: [
+                { chatID: 85, text: "...", callback: "fem121_4" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "martha",
+            text: "A lady of refinement knows that true elegance lies in subtlety. To flaunt one's virtues is to diminish them. Let others notice our poise, our grace, our quiet strength. It is in these unseen qualities that we truly shine." +
+                "Please rise from your seats. May this day be filled with growth and refined discourse. ",
+            button: [
+                { chatID: 86, text: "...", callback: "fem121_5" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "martha",
+            text: "Keep your heads up and maintain your posture. A few more laps, and we shall conclude our walking lesson. Remember, the beauty of walking lies not only in the steps but also in the grace and elegance with which they are executed.",
+            button: [
+                { chatID: 87, text: "...", callback: "bg" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "martha",
+            text: "While our formal lesson may have concluded, the true test of your refinement lies in your everyday actions. Remember, a lady's walk is a silent expression of her grace and poise. Practice walking with your head held high, your shoulders back, and your steps measured. Your feet may protest initially, but with perseverance, you will find that high heels become an extension of your elegance.",
+            button: [
+                { chatID: -1, text: "[Return her shoes and finish the lesson.]", callback: "fem121_end" }
             ]
         },
     ];

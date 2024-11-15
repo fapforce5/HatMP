@@ -16,8 +16,8 @@ room500.main = function () {
         }
     ];
     var navList = [0];
-    if (sc.getEvent("zoey", -1))
-        navList.push(501);
+    //if (sc.getEvent("zoey", -1))
+    //    navList.push(501);
     $.each(btnList, function (i, v) {
         nav.button(v, 500);
     });
@@ -27,38 +27,62 @@ room500.main = function () {
 room500.btnclick = function (name) {
     switch (name) {
         case "frontDoor":
-            if (sc.getstep("zoey") > 300) {
-                chat(15, 500);
-            }
-            else if (sc.getEvent("zoey", -2)) {
+            if (sc.getMission("zoey", "cheating").success) {
                 char.room(501);
             }
-            else if (!g.hasAccess(16).access) {
-                nav.killall();
-                nav.bg("500_jada/500_doorOpen2.jpg");
-                chat(5, 500);
-            }
-            else if (daily.get("zoey")) {
-                nav.killall();
-                nav.bg("500_jada/500_doorClose.jpg");
-                chat(4, 500);
-            }
             else {
-                nav.killall();
-                var zoeyRoom = sc.zoey().roomID;
-                if (zoeyRoom === 502) {
-                    nav.bg("500_jada/500_doorOpen2.jpg");
-                    chat(0, 500);
+                var zoeyLocation = sc.getTimeline("zoey");
+                if (daily.get("zoey")) {
+                    chat(4, 500);
                 }
-                else if (zoeyRoom === 501 || zoeyRoom === 502) {
-                    nav.bg("500_jada/500_doorOpen1.jpg");
-                    chat(1, 500);
+                else if (zoeyLocation.roomID > 499 && zoeyLocation.roomID < 525) {
+                    if (zoeyLocation.roomID === 502) { //sleeping
+                        nav.killall();
+                        nav.bg("500_jada/500_doorOpen2.jpg");
+                        chat(0, 500);
+                    }
+                    else {
+                        nav.killall();
+                        nav.bg("500_jada/500_doorOpen1.jpg");
+                        chat(1, 500);
+                    }
                 }
                 else {
-                    nav.bg("500_jada/500_doorClose.jpg");
                     chat(3, 500);
                 }
             }
+            //if (sc.getstep("zoey") > 300) {
+            //    chat(15, 500);
+            //}
+            //else if (sc.getEvent("zoey", -2)) {
+            //    char.room(501);
+            //}
+            //else if (!g.hasAccess(16).access) {
+            //    nav.killall();
+            //    nav.bg("500_jada/500_doorOpen2.jpg");
+            //    chat(5, 500);
+            //}
+            //else if (daily.get("zoey")) {
+            //    nav.killall();
+            //    nav.bg("500_jada/500_doorClose.jpg");
+            //    chat(4, 500);
+            //}
+            //else {
+            //    nav.killall();
+            //    var zoeyRoom = sc.zoey().roomID;
+            //    if (zoeyRoom === 502) {
+            //        nav.bg("500_jada/500_doorOpen2.jpg");
+            //        chat(0, 500);
+            //    }
+            //    else if (zoeyRoom === 501 || zoeyRoom === 502) {
+            //        nav.bg("500_jada/500_doorOpen1.jpg");
+            //        chat(1, 500);
+            //    }
+            //    else {
+            //        nav.bg("500_jada/500_doorClose.jpg");
+            //        chat(3, 500);
+            //    }
+            //}
             break;
         case "zoey":
             chat(2, 500);
@@ -96,6 +120,9 @@ room500.chatcatch = function (callback) {
             g.pass = 502;
             char.room(28);
             break;
+        case "reset":
+            char.room(500);
+            break;
         default:
             break;
     }
@@ -108,7 +135,7 @@ room500.chat = function (chatID) {
             speaker: "zoey",
             text: "Hey " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
             button: [
-                { chatID: -1, text: "Of course. ", callback: "leave0" }
+                { chatID: -1, text: "Of course. ", callback: "reset" }
             ]
         },
         {
@@ -117,7 +144,7 @@ room500.chat = function (chatID) {
             text: "Hey " + sc.n("me") + "! It is so nice to see you! You want to come in and play some video games?",
             button: [
                 { chatID: -1, text: "Only if it's a retro game!", callback: "inside" },
-                { chatID: 2, text: "No, I have no idea why I knocked on your door. Bye", callback: "" }
+                { chatID: 2, text: "No, I have no idea why I knocked on your door. Bye", callback: "reset" }
             ]
         },
         {
@@ -133,15 +160,15 @@ room500.chat = function (chatID) {
             speaker: "me",
             text: "She must be working at the Freak Bar",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "leaveNoZoey" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
             chatID: 4,
             speaker: "me",
-            text: "I've already hung out with her today. I don't want her to think I'm crazy.",
+            text: "She's busy today. Maybe later. ",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "leaveNoZoey" }
+                { chatID: -1, text: "[Leave]", callback: "reset" }
             ]
         },
         {

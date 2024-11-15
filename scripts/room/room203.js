@@ -41,7 +41,10 @@ room203.btnclick = function (name) {
         case "recep":
             nav.kill("recep");
             nav.bg("203_entrance/203_frontDeskCloseup.jpg");
-            if (g.gethourdecimal() > 10) {
+            if (gv.get("jobapplyconst") < 100) {
+                chat(28, 203);
+            }
+            else if (g.gethourdecimal() > 10) {
                 chat(6, 203);
             }
             else if (missy.activecase().name === "apply") {
@@ -98,7 +101,7 @@ room203.chatcatch = function (callback) {
             var myUniform = missy.get("uniform");
             if (myUniform === 0) { //suit
                 if (cl.hasoutfit("suit") === null) {
-                    if (cl.list[cl.where("panties", cl.c.panties)].sex === "f") {
+                    if (cl.pantiesTxt() === "panties") {
                         chat(18, 203);
                     }
                     else {
@@ -110,7 +113,7 @@ room203.chatcatch = function (callback) {
                         if ((cl.hasClothing("shirt", "s") && cl.hasClothing("pants", "s") &&
                             cl.hasClothing("socks", "b") && cl.hasClothing("shoes", "d")) ||
                             gv.get("money") > 245) {
-                            levels.mod("int", -10, 999);
+                            levels.mod("pi", -10, 999);
                             chat(9, 203);
                         }
                         else {
@@ -118,7 +121,7 @@ room203.chatcatch = function (callback) {
                         }
                     }
                     else {
-                        levels.mod("int", -10, 999);
+                        levels.mod("pi", -10, 999);
                         chat(9, 203);
                     }
                 }
@@ -136,7 +139,7 @@ room203.chatcatch = function (callback) {
                     }
                 }
                 else {
-                    levels.mod("int", -10, 999);
+                    levels.mod("pi", -10, 999);
                     chat(24, 203);
                 }
             }
@@ -156,7 +159,7 @@ room203.chatcatch = function (callback) {
                     }
                 }
                 else {
-                    levels.mod("int", -10, 999);
+                    levels.mod("pi", -10, 999);
                     chat(24, 203);
                 }
             }
@@ -366,8 +369,8 @@ room203.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "cecilia",
-                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
-                    "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, and " +
+                    "some kind of underwear. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
                 button: [
                     { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
                 ]
@@ -532,6 +535,14 @@ room203.chat = function (chatID) {
                     "find oneself's true calling",
                 button: [
                     { chatID: -1, text: "Thanks!", callback: "enter" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "cecilia",
+                text: "Missy's PI, can I help you. ",
+                button: [
+                    { chatID: -1, text: "Oh, no. I should be going. ", callback: "leave" }
                 ]
             },
         ];

@@ -9,6 +9,8 @@ room27.main = function () {
         g.internal.push({ chatID: nextChat, text: "Pink lipstick", callback: "pink" });
     if (inv.has("purplel") || g.pass === 57 || g.pass === 151)
         g.internal.push({ chatID: nextChat, text: "Purple lipstick", callback: "purple" });
+    if (inv.has("blackl") || g.pass === 57 || g.pass === 151)
+        g.internal.push({ chatID: nextChat, text: "Black lipstick", callback: "black" });
     if (g.internal.length === 0)
         g.internal.push({ chatID: g.pass === 57 ? 12 : 0, text: "I don't have any lipstick", callback: "" });
 
@@ -34,9 +36,19 @@ room27.main = function () {
             zcl.displayMirror();
             chat(0, 27);
             break;
+        case 527:
+            nav.bg("27_mirror/527.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
+            break;
         case 451:
         case 452:
             nav.bg("451_parkMensRoom/mirror.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
+            break;
+        case 503:
+            nav.bg("503_bathroom/mirror.jpg");
             zcl.displayMirror();
             chat(0, 27);
             break;
@@ -135,6 +147,7 @@ room27.chatcatch = function (callback) {
         case "red":
         case "purple":
         case "pink":
+        case "black":
             cl.c.lipstick = callback;
             cl.display();
             zcl.displayMirror();

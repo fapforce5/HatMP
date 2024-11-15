@@ -1,22 +1,23 @@
 ﻿//Whore Room
 var room215 = {};
 room215.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "whore",
-            "left": 779,
-            "top": 544,
-            "width": 327,
-            "height": 486,
-            "image": "215_pink/work.png",
-            "title": "Sell your sissy ass"
-        }
-    ];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 215);
-    });
-    nav.buildnav([213, 214, 216, 0]);
+    //var btnList = [
+    //    {
+    //        "type": "btn",
+    //        "name": "whore",
+    //        "left": 779,
+    //        "top": 544,
+    //        "width": 327,
+    //        "height": 486,
+    //        "image": "215_pinkroom/work.png",
+    //        "title": "Sell your sissy ass"
+    //    }
+    //];
+    //$.each(btnList, function (i, v) {
+    //    nav.button(v, 215);
+    //});
+    chat(45, 215);
+    nav.buildnav([213, 214, 171, 170]);
 };
 
 room215.btnclick = function (name) {
@@ -32,18 +33,18 @@ room215.btnclick = function (name) {
             break;
         case "cock":
             nav.killbutton("cock");
-            nav.bg("215_pink/pr_" + g.internal.customer + "_1.jpg");
+            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_1.jpg");
             chat(101, 215);
             break;
         case "cock1":
             nav.killbutton("cock1");
-            nav.bg("215_pink/pr_" + g.internal.customer + "_2.jpg");
+            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_2.jpg");
             g.roomTimeout = setTimeout(function () {
                 chat(102, 215);
             }, 1000);
             break;
         case "trio":
-            nav.bg("215_pink/trio" + g.pass + ".jpg");
+            nav.bg("215_pinkroom/trio" + g.pass + ".jpg");
             g.pass++;
             if (g.pass === 7) {
                 nav.killbutton("trio");
@@ -59,7 +60,7 @@ room215.chatcatch = function (callback) {
     switch (callback) {
         case "private1":
             nav.killall();
-            nav.bg("215_pink/private1.jpg");
+            nav.bg("215_pinkroom/private1.jpg");
             break;
         case "private2b":
             if (gv.get("energy") < 25) {
@@ -67,7 +68,7 @@ room215.chatcatch = function (callback) {
             }
             else {
                 nav.killall();
-                nav.bg("215_pink/private2b.jpg");
+                nav.bg("215_pinkroom/private2b.jpg");
                 g.internal.assout = false;
             }
             break;
@@ -77,7 +78,7 @@ room215.chatcatch = function (callback) {
             }
             else {
                 nav.killall();
-                nav.bg("215_pink/private2a.jpg");
+                nav.bg("215_pinkroom/private2a.jpg");
                 g.internal.assout = true;
             }
             break;
@@ -98,7 +99,7 @@ room215.chatcatch = function (callback) {
                         "top": 153,
                         "width": 382,
                         "height": 927,
-                        "image": "215_pink/prill.png"
+                        "image": "215_pinkroom/prill.png"
                     }, 215);
                     chat(6, 215);
                 }
@@ -110,7 +111,7 @@ room215.chatcatch = function (callback) {
                         "top": 217,
                         "width": 402,
                         "height": 863,
-                        "image": "215_pink/pri3.png"
+                        "image": "215_pinkroom/pri3.png"
                     }, 215);
                     chat(11, 215);
                 }
@@ -124,7 +125,7 @@ room215.chatcatch = function (callback) {
                             "top": 278,
                             "width": 756,
                             "height": 802,
-                            "image": "215_pink/prtranny.png"
+                            "image": "215_pinkroom/prtranny.png"
                         }, 215);
                         chat(17, 215);
                     }
@@ -136,7 +137,7 @@ room215.chatcatch = function (callback) {
                             "top": 222,
                             "width": 409,
                             "height": 858,
-                            "image": "215_pink/pri0.png"
+                            "image": "215_pinkroom/pri0.png"
                         }, 215);
                         chat(100, 215);
                     }
@@ -148,7 +149,7 @@ room215.chatcatch = function (callback) {
                             "top": 163,
                             "width": 856,
                             "height": 917,
-                            "image": "215_pink/pri1.png"
+                            "image": "215_pinkroom/pri1.png"
                         }, 215);
                         chat(100, 215);
                     }
@@ -160,7 +161,7 @@ room215.chatcatch = function (callback) {
                             "top": 213,
                             "width": 442,
                             "height": 867,
-                            "image": "215_pink/pri2.png"
+                            "image": "215_pinkroom/pri2.png"
                         }, 215);
                         chat(100, 215);
                     }
@@ -178,7 +179,7 @@ room215.chatcatch = function (callback) {
             nav.killall();
             g.internal.s = 1;
             g.internal.t++;
-            nav.bg("215_pink/pr_" + g.internal.customer + "_0.jpg");
+            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_0.jpg");
             nav.button({
                 "type": "btn",
                 "name": "cock",
@@ -186,7 +187,7 @@ room215.chatcatch = function (callback) {
                 "top": 30,
                 "width": 429,
                 "height": 343,
-                "image": "215_pink/cock.png"
+                "image": "215_pinkroom/cock.png"
             }, 215);
             break;
         case "fuck1":
@@ -197,7 +198,7 @@ room215.chatcatch = function (callback) {
                 "top": 30,
                 "width": 429,
                 "height": 343,
-                "image": "215_pink/cock1.png"
+                "image": "215_pinkroom/cock1.png"
             }, 215);
             break;
         case "fuck2":
@@ -217,7 +218,7 @@ room215.chatcatch = function (callback) {
                     gv.mod("receiveAnalFemale", 1);
                     break;
             }
-            nav.bg("215_pink/pr_" + g.internal.customer + "_3.jpg");
+            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_3.jpg");
             break;
         case "reset":
             char.room(215);
@@ -227,7 +228,7 @@ room215.chatcatch = function (callback) {
             break;
         case "ll0":
             nav.killall();
-            nav.bg("215_pink/ll0.jpg");
+            nav.bg("215_pinkroom/ll0.jpg");
             break;
         case "ll1":
         case "ll2":
@@ -241,7 +242,7 @@ room215.chatcatch = function (callback) {
         case "ll10":
         case "ll11":
         case "ll12":
-            nav.bg("215_pink/" + callback + ".jpg");
+            nav.bg("215_pinkroom/" + callback + ".jpg");
             break;
         case "ll13":
             sc.setstep("landlord", -10);
@@ -251,27 +252,27 @@ room215.chatcatch = function (callback) {
             break;
         case "c0":
             nav.killall();
-            nav.bg("215_pink/c0.jpg");
+            nav.bg("215_pinkroom/c0.jpg");
             break;
         case "c1":
             nav.killall();
-            nav.bg("215_pink/c1.jpg");
+            nav.bg("215_pinkroom/c1.jpg");
             break;
         case "c2":
-            nav.bg("215_pink/c2.jpg");
+            nav.bg("215_pinkroom/c2.jpg");
             break;
         case "c3":
-            nav.bg("215_pink/c3.jpg");
+            nav.bg("215_pinkroom/c3.jpg");
             break;
         case "c4":
-            nav.bg("215_pink/c4.jpg");
+            nav.bg("215_pinkroom/c4.jpg");
             break;
         case "c5":
             pic.add("chloe");
-            nav.bg("215_pink/c5.jpg");
+            nav.bg("215_pinkroom/c5.jpg");
             break;
         case "c6":
-            nav.bg("215_pink/trio_bad.jpg");
+            nav.bg("215_pinkroom/trio_bad.jpg");
             break;
         case "c7":
             menu.initBuild("init");
@@ -286,17 +287,17 @@ room215.chatcatch = function (callback) {
             break;
         case "trio0":
             nav.killall();
-            nav.bg("215_pink/trio0.jpg");
+            nav.bg("215_pinkroom/trio0.jpg");
             if (sc.getEvent("holly", -1))
                 chat(18, 215);
             else
                 chat(21, 215);
             break;
         case "trio1":
-            nav.bg("215_pink/trio1.jpg");
+            nav.bg("215_pinkroom/trio1.jpg");
             break;
         case "trio2":
-            nav.bg("215_pink/trio2.jpg");
+            nav.bg("215_pinkroom/trio2.jpg");
             g.pass = 3;
             nav.button({
                 "type": "btn",
@@ -309,14 +310,14 @@ room215.chatcatch = function (callback) {
             }, 215);
             break;
         case "trio3":
-            nav.bg("215_pink/pr_1_3.jpg");
+            nav.bg("215_pinkroom/pr_1_3.jpg");
             gv.mod("receiveAnalFemale", 1);
             gv.mod("receiveOralFemale", 1);
             gv.mod("receiveHandjobFemale", 1);
             gv.mod("creamPied", 1);
             break;
         case "trio_bad":
-            nav.bg("215_pink/trio_bad.jpg");
+            nav.bg("215_pinkroom/trio_bad.jpg");
             break;
         case "resetWhore":
             nav.killbutton("f");
@@ -463,7 +464,7 @@ room215.chat = function (chatID) {
             chatID: 9,
             speaker: "river",
             text: "You got yelled at by your " + sc.n("landlord") + "! I always knew you were a loser, ever since I hung " +
-                "you up by your underware in the hallway and got the entire school to call you skid mark. ",
+                "you up by your underwear in the hallway and got the entire school to call you skid mark. ",
             button: [
                 { chatID: 10, text: "Shut up " + sc.n("river") + ". ", callback: "ll3" }
             ]
@@ -506,7 +507,7 @@ room215.chat = function (chatID) {
             chatID: 14,
             speaker: "chloe",
             text: "Now that you're cuffed and can't get away I can take this off and reveal myself. " +
-                "Suprised? I'm going to rape your tiny dicklette " +
+                "Surprised? I'm going to rape your tiny dicklette " +
                 "and shoot your cum into my dripping pussy. You're going to love it. Then I'm going to take " + 
                 "a picture and send it to " + sc.n("zoey") + " so you will know what it feels like to be betrayed. ",
             button: [
@@ -774,6 +775,14 @@ room215.chat = function (chatID) {
                 "me. So I guess she did send that picture. Damn it!",
             button: [
                 { chatID: -1, text: "Answer phone. ", callback: "c7" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "random",
+            text: "This is still in progress. Future release",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

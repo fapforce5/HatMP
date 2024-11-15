@@ -14,9 +14,19 @@ gender.isCockTooSmallForSex = function(){
 gender.isGirl = function () {
     var appearance = cl.appearance();
     if (appearance === 5)
-        return cl.c.chest > 1;
-    return cl.appearance() > 2;
+        return cl.c.chest > 2;
+    return cl.appearance() > 1;
 }
+
+gender.cock = function () {
+    if (cl.c.chastity)
+        return "c"; //chastity
+    if (cl.c.cock === 5)
+        return "v"; //vagina
+    if (gender.isCockTooSmallForSex())
+        return "t"; //tiny
+    return "d"; //dick
+};
 
 gender.pronoun = function (ptype) {
     switch (ptype) {
@@ -38,6 +48,17 @@ gender.pronoun = function (ptype) {
         case "man":
         case "lady":
             return gender.isGirl() ? "lady" : "man";
+        case "bikini":
+        case "swimsuit":
+            return gender.isGirl() ? "bikini" : "swim trunks";
+        case "panties":
+            return gender.isGirl() ? "panties" : "underwear";
+        case "fag":
+            return gender.isGirl() ? "sissy" : "fag";
+        case "faggot":
+            return gender.isGirl() ? "sissy" : "faggot";
+        case "asshole":
+            return gender.isGirl() ? "bussy" : "asshole";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

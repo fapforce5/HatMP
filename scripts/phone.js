@@ -10,9 +10,10 @@ phone.build = function (selection) {
         { n: "phone_rel", img: "bRelationships", x: 1, y: 0 },
         { n: "phone_contacts", img: "bContacts", x: 2, y: 0 },
         { n: "phone_pic", img: "bPic", x: 3, y: 0 },
-              
+        
         //{ n: "phone_stats", img: "bStats", x: 0, y: 1 },
         { n: "phone_time", img: "bTime", x: 0, y: 1 },
+        { n: "phone_purity", img: "bPurity", x: 1, y: 1 },
         { n: "phone_ach", img: "bAch", x: 2, y: 1 },
         { n: "phone_settings", img: "bSettings", x: 3, y: 1 },
 
@@ -230,6 +231,8 @@ phone.settings = function () {
     var fantasyCreatures = gv.get("fantasyCreatures");
     var difficulty = gv.get("difficulty");
     var clock24 = gv.get("clock24");
+    let transformation = gv.get("transformation");
+    
     nav.button({
         "type": "zimg",
         "name": "phone_",
@@ -247,13 +250,16 @@ phone.settings = function () {
         { y: 1, x: 1, b: 2, n: "clock24", i: "clock24", active: clock24 === "24" },
         { y: 2, x: 0, b: 2, n: "fantOff", i: "fantOff", active: !fantasyCreatures },
         { y: 2, x: 1, b: 2, n: "fantOn", i: "fantOn", active: fantasyCreatures },
+        { y: 3, x: 0, b: 3, n: "d_on", i: "d_on", active: transformation === "voluntary" },
+        { y: 3, x: 1, b: 3, n: "d_off", i: "d_off", active: transformation === "voluntaryoff" },
+        { y: 3, x: 2, b: 3, n: "d_auto", i: "d_auto", active: transformation === "forced" },
     ];
     $.each(settings, function (i, v) {
         nav.button({
             "type": "zbtn",
             "name": "phone_setting_" + v.n,
             "left": 925 + (v.x * (600/v.b)),
-            "top": 300 + (v.y * 200),
+            "top": 240 + (v.y * 160),
             "width": 600/v.b,
             "height": 50,
             "image": "999_phone/" + v.i + "_" + (v.active ? "active" : "inactive") + ".png",
@@ -363,7 +369,7 @@ phone.characterSelect = function (name) {
         "type": "zimg",
         "name": "phone_",
         "left": 500,
-        "top": 200,
+        "top": 170,
         "width": 250,
         "height": 250,
         "image": "../speaker/" + thisChar.image,
@@ -373,7 +379,7 @@ phone.characterSelect = function (name) {
             type: "zimg",
             name: "phone_",
             "left": 500,
-            "top": 460,
+            "top": 425,
             font: 40,
             hex: "#ffffff",
             text: thisChar.display
@@ -384,7 +390,7 @@ phone.characterSelect = function (name) {
             "type": "zimg",
             "name": "phone_charRenameDisplay",
             "left": 500,
-            "top": 460,
+            "top": 425,
             "width": 250,
             "height": 30,
             "title": thisChar.display,
@@ -393,34 +399,46 @@ phone.characterSelect = function (name) {
             "type": "zbtn",
             "name": "phone_charRename_" + thisChar.name,
             "left": 500,
-            "top": 525,
+            "top": 480,
             "width": 250,
             "height": 50,
             "image": "999_phone/char_rename.png",
         }, 9999);
     }
-   
     
-    
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 500,
+        "top": 540,
+        font: 30,
+        hex: "#ffffff",
+        text: "Level: " + thisChar.l
+    }, 1);
     nav.t({
         type: "zimg",
         name: "phone_",
         "left": 500,
         "top": 580,
-        font: 30,
-        hex: "#ffffff",
-        text: "Level: " + thisChar.l
+        font: 14,
+        hex: "#aaaaaa",
+        text: "Till Next Level"
     }, 1);
-
+    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 600, 500) + ' z-index:2;">' +
+        '<div style="background: #FF76FF; border-radius: 20px; height: ' + g.ratio * 10 + 'px; width: ' + thisChar.c + '%;" class="resize-height rl-bar"></div>' +
+            '</div>');
     nav.t({
         type: "zimg",
         name: "phone_",
         "left": 500,
-        "top": 615,
+        "top": 620,
         font: 30,
         hex: "#ffffff",
-        text: "Secret: " + thisChar.secret + "%"
+        text: "Secret:"
     }, 1);
+    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 650, 500) + ' z-index:2;">' +
+        '<div style="background: #189000; border-radius: 20px; height: ' + g.ratio * 10 + 'px; width: ' + thisChar.secret + '%;" class="resize-height rl-bar"></div>' +
+        '</div>');
     var thisTimeline = sc.getTimeline(name);
     
     for (i = 0; i < thisTimeline.subList.length; i++) {
@@ -428,7 +446,7 @@ phone.characterSelect = function (name) {
             type: "zimg",
             name: "phone_",
             "left": 500,
-            "top": 660 + (i*22),
+            "top": 680 + (i*22),
             font: 20,
             hex: thisTimeline.subList[i].current ? "#FF76FF" : "#ffffff",
             text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
@@ -492,7 +510,7 @@ phone.thankyou = function () {
         "image": "999_phone/thankyou_bg.jpg",
     }, 9999);
     var l = [
-        "Arothiel", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
+        "Arothiel", "Asako", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
         "Rachel",
         "reverseclipse",
         "SirGuren (Contributor)", "WendyJ", "Wild86willie"
@@ -546,7 +564,7 @@ phone.passtime = function () {
 
     if (g.passtime.includes(g.roomID)) {
 
-        var time = [9, 12, 17, 20, 0];
+        var time = [9, 12, 17, 18, 20, 0];
         var clock = gv.get("clock24");
         var active;
 
@@ -864,6 +882,18 @@ room9999.btnclick = function (name) {
             case "phone_setting_fantOff":
             case "phone_setting_fantOn":
                 gv.set("fantasyCreatures", name === "phone_setting_fantOn");
+                phone.settings();
+                break;
+            case "phone_setting_d_on":
+                gv.set("transformation", "voluntary");
+                phone.settings();
+                break;
+            case "phone_setting_d_off":
+                gv.set("transformation", "voluntaryoff");
+                phone.settings();
+                break;
+            case "phone_setting_d_auto":
+                gv.set("transformation", "forced");
                 phone.settings();
                 break;
             case "phone_save_save_0":
