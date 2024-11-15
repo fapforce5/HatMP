@@ -309,7 +309,7 @@ room350.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "landlord",
-            text: "Disgusting. Honestly I'm not even suprised. Get out of here and put some clothes on. ",
+            text: "Disgusting. Honestly I'm not even surprised. Get out of here and put some clothes on. ",
             button: [
                 { chatID: -1, text: "...", callback: "leavemad" }
             ]
@@ -358,7 +358,7 @@ room350.chat = function (chatID) {
             speaker: "raven",
             text: "Not my problem. Losing samples is a very serious violation, not only lawfully, but the " +
                 "trust between you and the clients. I'm going to continue to look into it, but expect to lose " +
-                "you License. This can't keep happening. ",
+                "your License. This can't keep happening. ",
             button: [
                 { chatID: 24, text: "...", callback: "" },
             ]

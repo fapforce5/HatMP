@@ -27,7 +27,7 @@ room100.main = function () {
         if (gv.get("energy") < 60)
             navList = [101, 0];
         else
-            navList = [101, 0];
+            navList = [101, 103, 0];
         btnList.push({
             "type": "btn",
             "name": "job",

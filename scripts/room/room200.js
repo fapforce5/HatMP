@@ -540,7 +540,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "missy",
-                text: "I have a suprise for you. Just a moment while I set up. ",
+                text: "I have a surprise for you. Just a moment while I set up. ",
                 button: [
                     { chatID: 5, text: "...", callback: "case_booth1" },
                 ]
@@ -1066,7 +1066,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 59,
                 speaker: "missy",
-                text: "Yes. Squeel. Now go meet " + sc.n("tiffany") + " at the mall and get your new " +
+                text: "Yes. Squeel. Now go meet " + sc.n("tiffany") + " at the Toys 'n Us and get your new " +
                     "set of clothing. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "case_afterExplaniation" },

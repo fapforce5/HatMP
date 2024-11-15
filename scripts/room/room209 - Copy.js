@@ -2199,7 +2199,7 @@ room209.chat = function (chatID) {
                 chatID: 62,
                 speaker: "missy",
                 text: "Well the classroom is not an ideal place to do that. Go see my friend " + sc.n("tiffany") + ". " +
-                    "She's got a suprise for you.",
+                    "She's got a surprise for you.",
                 button: [
                     { chatID: -1, text: "Squeel in excitement", callback: "h_29" }
                 ]

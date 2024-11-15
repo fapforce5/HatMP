@@ -307,7 +307,7 @@ room954.chat = function (chatID) {
             chatID: 19,
             speaker: "ubel",
             text: "I must comend you two. No one has lasted as long as either of you have. I expected that from " + sc.n("me") + 
-                ", for I know she has a higher purpose. But I was suprised by your performance, " + sc.n("daria") + ". It " +
+                ", for I know she has a higher purpose. But I was surprised by your performance, " + sc.n("daria") + ". It " +
                 "seems like " + sc.n("bodhi") + " is holding you back from your true potential. ", 
             button: [
                 { chatID: 20, text: "...", callback: "" }

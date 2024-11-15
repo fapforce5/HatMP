@@ -548,7 +548,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "!chris",
-                text: "Oh hi. I'm suprised we're all still here. I almost didn't come, I'm so scared " +
+                text: "Oh hi. I'm surprise we're all still here. I almost didn't come, I'm so scared " +
                     "of what's going to happen. ",
                 button: [
                     { chatID: -1, text: "I'm a little scared too, but in a good way. Like when when a skydiver jumps out of a plane.", callback: "" },

@@ -813,8 +813,8 @@ levels.desc = function (name, level) {
     switch (name) {
         case "dom":
             levelsDesc = [
-                { id: 0, txt: "A bitch" },
-                { id: 1, txt: "Less of a bitch" },
+                { id: 0, txt: "Total pushover" },
+                { id: 1, txt: "Pushover" },
                 { id: 2, txt: "Almost normal" },
                 { id: 3, txt: "normal" },
                 { id: 4, txt: "take charge" },

@@ -101,7 +101,7 @@ room203.chatcatch = function (callback) {
             var myUniform = missy.get("uniform");
             if (myUniform === 0) { //suit
                 if (cl.hasoutfit("suit") === null) {
-                    if (cl.list[cl.where("panties", cl.c.panties)].sex === "f") {
+                    if (cl.pantiesTxt() === "panties") {
                         chat(18, 203);
                     }
                     else {
@@ -369,8 +369,8 @@ room203.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "cecilia",
-                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, and black socks. " +
-                    "Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
+                text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, and " +
+                    "some kind of underwear. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you. ",
                 button: [
                     { chatID: -1, text: "Oh yea. I'm such an airhead I forgot.", callback: "" }
                 ]

@@ -753,7 +753,7 @@ room212.chat = function (chatID) {
         {
             chatID: 68,
             speaker: "black",
-            text: "Perfect. I have a little suprise for you. Just hold that there. ",
+            text: "Perfect. I have a little surprise for you. Just hold that there. ",
             button: [
                 { chatID: 69, text: "....", callback: "hor4" }
             ]

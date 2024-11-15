@@ -443,7 +443,7 @@ room174.chat = function (chatID) {
             chatID: 29,
             speaker: "!bill",
             text: "I almost had a heart attack when she came in. Sorry I couldn't warn you, I totally " +
-                "froze. It's a good thing I had your underware on or she would have seen my little boner " +
+                "froze. It's a good thing I had your underwear on or she would have seen my little boner " +
                 "sticking up. Hahaha",
             button: [
                 { chatID: 30, text: "haha.. oh wow. That would have been a different converstaion. ", callback: "" },

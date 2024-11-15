@@ -60,9 +60,14 @@ room13.main = function () {
     else {
         if (sc.getTimeline("lola").thisRoom) {
             if (cl.isLewd()) {
-                btnList = new Array();
-                nav.bg("13_sisterRoom/013_angryCaught.jpg");
-                chat(249, 13);
+                nav.bg("13_sisterRoom/angry.jpg");
+                chat(119, 13);
+                return;
+            }
+            else if (cl.c.shirt === null && cl.c.pants === null && cl.c.dress === null) {
+                nav.bg("13_sisterRoom/angry.jpg");
+                chat(119, 13);
+                return;
             }
             else {
                 btnList = [{
@@ -2378,7 +2383,7 @@ room13.chat = function (chatID) {
                 speaker: "eva",
                 text: "Gross! I don't want that. No one wants that! Get out pervert!",
                 button: [
-                    { chatID: 109, text: "Oh. ok. ", callback: "dickBad" },
+                    { chatID: -1, text: "Oh. ok. ", callback: "dickBad" },
                 ]
             },
             {
@@ -2455,6 +2460,14 @@ room13.chat = function (chatID) {
                     "forever. ",
                 button: [
                     { chatID: -1, text: "Me too. [Drift off to sleep]", callback: "fEnd" },
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "eva",
+                text: "Oh my god! Go put on some clothes!",
+                button: [
+                    { chatID: -1, text: "[In development]", callback: "leave" },
                 ]
             },
         ];

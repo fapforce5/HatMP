@@ -224,7 +224,7 @@ sc.levels = function (name, level) {
             else
                 tempLevel = [
                     { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at he mall for Sunday outing.", m: [16, 400] },
-                    { step: 1, txt: "[F] Talk to her in the living room for your suprise guest.", m: [16] },
+                    { step: 1, txt: "[F] Talk to her in the living room for your surprise guest.", m: [16] },
                     { step: 2, txt: "[F] No new content", m: [16] },
                 ];
             break;
@@ -235,9 +235,9 @@ sc.levels = function (name, level) {
                 { step: 2, txt: "Keep pestering them", m: [16] },
                 { step: 3, txt: "Keep pestering them - This time with cum reward!", m: [16] },
                 { step: 4, txt: "Pester them. This time with more cum! ", m: [16] },
-                { step: 5, txt: "Sleep at home - suprise wake up.", m: [16] },
+                { step: 5, txt: "Sleep at home - surprise wake up.", m: [16] },
                 { step: 6, txt: "Should I, or shouldn't I tell on him ", m: [16] },
-                { step: 7, txt: "Betrayed her for more suprises on Saturday 😉", m: [16] },
+                { step: 7, txt: "Betrayed her for more surprises on Saturday 😉", m: [16] },
             ];
             break;
         case "zoey":
@@ -1330,7 +1330,7 @@ sc.phone = function (char) {
     var clist;
     var nophone = [950, 951];
     if (nophone.includes(g.roomID)) {
-        g.popUpNotice("No reciption here. Damn!");
+        g.popUpNotice("No reception here. Damn!");
     }
     else {
         switch (char) {
@@ -1378,9 +1378,9 @@ sc.phone = function (char) {
                 else if (step === 9) {
                     clist = [
                         { s: "me", t: "I'm so excited to be back in the house!" },
-                        { s: "eva", t: "I'm going to give you a big suprise... just wait for it!" },
-                        { s: "me", t: "What suprise?" },
-                        { s: "eva", t: "If I tell you, it won't a suprise!" },
+                        { s: "eva", t: "I'm going to give you a big surprise... just wait for it!" },
+                        { s: "me", t: "What surprise?" },
+                        { s: "eva", t: "If I tell you, it won't a surprise!" },
                     ];
                     sc.phoneChat(clist, char);
                 }
@@ -1543,7 +1543,7 @@ sc.phone = function (char) {
             case "zoey1":
                 sc.phoneChat([
                     { s: "zoey", t: "You'll never guess what " + sc.n("chloe") + " just sent me! " },
-                    { s: "me", t: "I can guess. She suprised me and tied me up. Took the picture of it to make you mad. " },
+                    { s: "me", t: "I can guess. She surprised me and tied me up. Took the picture of it to make you mad. " },
                     { s: "zoey", t: "MDR! That is so funny. She is such a idiot jaloux. I do not care if you fuck her in the brains. She is the crazy. " },
                     { s: "me", t: "LOL. good. I'm glad you don't hate me " },
                     { s: "zoey", t: "je ne te déteste pas. " + sc.n("chloe") + " does have a pussy délicieuse. I may eat it again when je suis excitée. " }

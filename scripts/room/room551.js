@@ -84,7 +84,7 @@ room551.main = function () {
 room551.btnclick = function (name) {
     switch (name) {
         case "treadmill":
-            if (gv.get("energy") > 30) {
+            if (gv.get("energy") > 29) {
                 nav.killall();
                 nav.bg("551_gymInside/running.jpg");
                 chat(49, 551);

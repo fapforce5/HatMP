@@ -592,6 +592,8 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("Dress socks");
             if (cl.c.shoes !== "d")
                 missingClothing.push("Dress shoes");
+            if (cl.c.panties === null)
+                missingClothing.push("Underwear");
             break;
         case "suitwithpanties":
             var suitPanties = cl.where("panties", cl.c.panties);

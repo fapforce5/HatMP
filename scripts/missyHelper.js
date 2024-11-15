@@ -152,7 +152,7 @@ missy.jobs = [
     { id: 0, n: "Clean Toilet", img: "errand3.png", pay: 20, page: 220, thisWeek: 6 },
     { id: 1, n: "File Documents", img: "errand1.png", pay: 40, page: 204, thisWeek: 7 },
     { id: 2, n: "Data Entry", img: "errand0.png", pay: 25, page: 219, thisWeek: 5 },
-    { id: 3, n: "Work Reciption", img: "errand2.png", pay: 40, page: 221, thisWeek: 8 },
+    { id: 3, n: "Work Reception", img: "errand2.png", pay: 40, page: 221, thisWeek: 8 },
     { id: 4, n: "Run Errands", img: "errand5.png", pay: 30, page: 222, thisWeek: 9 },
     { id: 5, n: "Cum Dump Maid", img: "errand6.png", pay: 35, page: 216, thisWeek: 10 },
     { id: 6, n: "Glory Hole", img: "errand7.png", pay: 50, page: 212, thisWeek: 11 },

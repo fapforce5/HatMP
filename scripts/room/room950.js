@@ -1247,7 +1247,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "daria",
-                text: "Here's your phone. You won't be able to get reciption out here, no towers. I've got to go before someone " +
+                text: "Here's your phone. You won't be able to get reception out here, no towers. I've got to go before someone " +
                     "catches me. ",
                 button: [
                     { chatID: -1, text: "Thanks!", callback: "daria2" }
@@ -1468,9 +1468,9 @@ room950.chat = function (chatID) {
             {
                 chatID: 68,
                 speaker: "thinking",
-                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can suprise him..",
+                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
                 button: [
-                    { chatID: -1, text: "Suprise him", callback: "bb0" },
+                    { chatID: -1, text: "Surprise him", callback: "bb0" },
                     { chatID: 73, text: "Call out", callback: "b2" }
                 ]
             },

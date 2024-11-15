@@ -56,6 +56,8 @@ room76.btnclick = function (name) {
             break;
         case "butthole":
             if (gender.canUseCock()) {
+                if (sc.getMissionTask("bimbo", "fuck", 4).notStarted)
+                    sc.completeMissionTask("bimbo", "fuck", 4);
                 nav.killall();
                 nav.bg("76_bimboRoom/a1.gif");
                 chat(9, 76);
@@ -69,6 +71,8 @@ room76.btnclick = function (name) {
             break;
         case "pussy":
             if (gender.canUseCock()) {
+                if (sc.getMissionTask("bimbo", "fuck", 3).notStarted)
+                    sc.completeMissionTask("bimbo", "fuck", 3);
                 nav.killall();
                 nav.bg("76_bimboRoom/p1.jpg");
                 chat(11, 76);

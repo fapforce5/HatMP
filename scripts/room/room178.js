@@ -108,7 +108,7 @@ room178.chat = function (chatID) {
             chatID: 3,
             speaker: "missy",
             text: "That's a lot of cum Jeremy. It looks like you've been saving it up for some time. Save it up for next class " +
-                "too. I have a yummy suprise for you all. Next!",
+                "too. I have a yummy surprise for you all. Next!",
             button: [
                 { chatID: 4, text: "...", callback: "cum3" }
             ]

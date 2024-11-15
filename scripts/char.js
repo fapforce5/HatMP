@@ -373,6 +373,9 @@ char.map = function () {
         cArray.push({ t: sc.getTimeline("cindy"), c: sc.n("cindy") });
         cArray.push({ t: sc.getTimeline("tim"), c: sc.n("tim") });
     }
+    else if (g.roomID > 74 && g.roomID < 80) {
+        cArray.push({ t: sc.getTimeline("bimbo"), c: sc.n("bimbo") });
+    }
 
     if (cArray.length > 0) {
         var ampm = gv.get("clock24") === "12";

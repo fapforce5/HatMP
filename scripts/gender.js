@@ -52,7 +52,7 @@ gender.pronoun = function (ptype) {
         case "swimsuit":
             return gender.isGirl() ? "bikini" : "swim trunks";
         case "panties":
-            return gender.isGirl() ? "panties" : "underware";
+            return gender.isGirl() ? "panties" : "underwear";
         case "fag":
             return gender.isGirl() ? "sissy" : "fag";
         case "faggot":

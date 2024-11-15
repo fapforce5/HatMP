@@ -569,7 +569,7 @@ room151.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "govlady",
-            text: "I have a suprise for you. Strip down. ",
+            text: "I have a surprise for you. Strip down. ",
             button: [
                 { chatID: 32, text: "oh. ok.", callback: "c2_1" }
             ]

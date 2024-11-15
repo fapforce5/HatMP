@@ -84,6 +84,8 @@ room8.main = function () {
         nav.bg("12_bathroom/blur.jpg");
     else if (g.pass === 354)
         nav.bg("8_wardrobe/354.jpg");
+    else if (g.pass === 503)
+        nav.bg("8_wardrobe/503.jpg");
     else if (g.pass === 727)
         nav.bg("8_wardrobe/727.jpg");
     else if (g.pass === 0)

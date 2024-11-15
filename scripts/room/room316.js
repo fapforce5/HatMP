@@ -255,7 +255,7 @@ room316.btnclick = function (name) {
                     nav.killall();
                     nav.bg("316_livingroom/pbStand.jpg");
                     daily.set("dpb");
-                    levels.mod("dog", 50, 2);
+                    sc.modLevel("dog", 50, 2);
                     levels.mod("beast", 10, 0);
                     chat(88, 316);
                 }
@@ -309,7 +309,7 @@ room316.btnclick = function (name) {
             nav.bg("316_livingroom/pbStand.jpg");
             daily.set("dpb");
             levels.mod("beast", 10, 0);
-            levels.mod("dog", 50, 1);
+            sc.modLevel("dog", 50, 1);
             chat(88, 316);
             break;
         case "icon_dcrawlpbButt":
@@ -538,7 +538,7 @@ room316.btnclick = function (name) {
                 }
                 else {
                     nav.bg("316_livingroom/chastity.jpg");
-                    levels.mod("janice", 30, 999);
+                    sc.modLevel("janice", 30, 999);
                     sc.modSecret("janice", 100);
                     gv.mod("arousal", 50);
                     chat(83, 316);
@@ -1425,7 +1425,7 @@ room316.chat = function (chatID) {
                 chatID: 53,
                 speaker: "janice",
                 text: "Oh my god. No. I just bent over to pick up some trash and " + sc.n("dog") + 
-                    "here jumped on me and knocked me over! I'm so embarrassed. He suprised me.  ",
+                    " here jumped on me and knocked me over! I'm so embarrassed. He surprised me.  ",
                 button: [
                     { chatID: 54, text: "Oh...", callback: "task3_4" }
                 ]
@@ -1520,7 +1520,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: "It's ok. I know guys get horny. I'm super horny too. Look how wet you make " +
                     "me. because I'm such a great girlfriend I'll let you orally pleasure my " +
-                    "special little area. Plus you own me one. Do you want to lick my special area? ",
+                    "special little area. Plus you owe me one. Do you want to lick my special area? ",
                 button: [
                     { chatID: 66, text: "Yes I do. ", callback: "task4_6" },
                     { chatID: 65, text: "No! You're cheating on me and I deserve better! ", callback: "breakup" },
@@ -1566,7 +1566,7 @@ room316.chat = function (chatID) {
                     "so self-conscious and embarrased right now. Maybe we shouldn't do this. ",
                 button: [
                     { chatID: 70, text: "I'm so sorry. I didn't mean that. Your special area looks amazing. ", callback: "task4_9" },
-                    { chatID: 65, text: "Stop lying! That is cum! I'm not eating the wiater's creampie! ", callback: "breakupAlt" },
+                    { chatID: 65, text: "Stop lying! That is cum! I'm not eating the waiter's creampie! ", callback: "breakupAlt" },
                 ]
             },
             {
@@ -2159,7 +2159,7 @@ room316.chat = function (chatID) {
                 chatID: 132,
                 speaker: "janice",
                 text: "No way! Stip off your clothes! Follow me to the bedroom! I have " +
-                    "a suprise I think you'll love! Come! ",
+                    "a surprise I think you'll love! Come! ",
                 button: [
                     { chatID: -1, text: "Hell yeah!", callback: "bedroom" },
                 ]

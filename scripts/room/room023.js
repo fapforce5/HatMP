@@ -1717,7 +1717,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "lola",
-                text: "Wouldn't you rather wear boy's underware? Boxers would look super cute on you. ",
+                text: "Wouldn't you rather wear boy's underwear? Boxers would look super cute on you. ",
                 button: [
                     { chatID: -1, text: "I love what I love ", callback: "lolasit" },
                 ]
@@ -2024,7 +2024,7 @@ room23.chat = function (chatID) {
                 chatID: 61,
                 speaker: "eva",
                 text: "This is the greatest day of your perverted life. Seeing a hot girl playing " +
-                    "with her pussy. I wouldn't be suprised if you started jacking off right now. ",
+                    "with her pussy. I wouldn't be surprise if you started jacking off right now. ",
                 button: [
                     { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
@@ -2533,7 +2533,7 @@ room23.chat = function (chatID) {
                 text: "This game is taking too long! I'm done. Let's go to bed " + 
                     sc.n("lola") + ". ",
                 button: [
-                    { chatID: -1, text: "awww ", callback: "lolatalk" },
+                    { chatID: -1, text: "awww ", callback: "endGame" },
                 ]
             },
             {
@@ -3341,7 +3341,7 @@ room23.buildInternal = function () {
         },
         {
             txt: "Put your finger in #other#'s butthole. ",
-            e: "What! I know you're weird, but you still suprise me by how really weird you are. ",
+            e: "What! I know you're weird, but you still surprise me by how really weird you are. ",
             l: "She hates it when I put my finger in... I mean what. Sure. ",
             u: null,
             dCallback: "dareButtholeFinger",

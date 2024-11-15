@@ -3,10 +3,11 @@ var room751 = {};
 room751.main = function () {
     var navList = [750, 0];
     nav.buildnav(navList);
-    if (gv.get("money") > 14)
-        chat(0, 751);
-    else
-        chat(1, 751);
+    //if (gv.get("money") > 14)
+    //    chat(0, 751);
+    //else
+    //    chat(1, 751);
+    chat(3, 751);
 };
 
 room751.btnclick = function (name) {
@@ -78,7 +79,7 @@ room751.chatcatch = function (callback) {
                             "You need to either go to your room or " + sc.n("zoey") + "'s room and open that bag. </span>";
                     else
                         oncasetext = "It appears you're on the Crossdressing event. Your next step is to <span class='hl'>" +
-                            "You need to visit " + sc.n("tiffany") + " and get your suprise. </span>";
+                            "You need to visit " + sc.n("tiffany") + " and get your surprise. </span>";
                     break;
                 case "diner":
                     oncasetext = "It appears you're on the Diner Case. Your next step is to <span class='hl'>" +
@@ -194,6 +195,14 @@ room751.chat = function (chatID) {
             text: "Oh... interesting.... I can see it now...",
             button: [
                 { chatID: 999, text: "yes?", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "crystal",
+            text: "Future release",
+            button: [
+                { chatID: -1, text: "[In development]", callback: "" }
             ]
         },
     ];

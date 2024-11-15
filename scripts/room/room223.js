@@ -271,7 +271,7 @@ room223.chat = function (chatID) {
             chatID: 18,
             speaker: "missy",
             text: "Those are Bill's panties aren't they? I don't even want to know what you two " +
-                "did to get her panties. Can't say I'm suprised though. Strip off the rest of " +
+                "did to get her panties. Can't say I'm surprised though. Strip off the rest of " +
                 "you clothing. Let's see what you're working with.",
             button: [
                 { chatID: 8, text: "Strip? ", callback: "" },

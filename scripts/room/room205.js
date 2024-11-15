@@ -233,7 +233,7 @@ room205.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "missy",
-            text: "That's my good little idiot. I have one more suprise for you. ",
+            text: "That's my good little idiot. I have one more surprise for you. ",
             button: [
                 { chatID: 12, text: "...", callback: "chast0_5" },
             ]

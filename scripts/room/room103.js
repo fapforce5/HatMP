@@ -881,7 +881,7 @@ room103.chat = function (chatID) {
         {
             chatID: 62,
             speaker: "missy",
-            text: "Good. Get the licesnce from city hall and meet with my reciptionist. She'll help you on the " +
+            text: "Good. Get the licesnce from city hall and meet with my receptionist. She'll help you on the " +
                 "next step. ",
             button: [
                 { chatID: 63, text: "Thank you. ", callback: "hole16" },

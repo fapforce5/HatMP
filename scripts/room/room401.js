@@ -125,6 +125,7 @@ room401.main = function () {
             else if (sc.getMissionTask("spanky", "hypno", 1).success) {
                 priceMult = .5;
             }
+            priceMult = 1;
             room401.makeInv(spankyInv, true, priceMult);
             navList = [404, 0];
             break;

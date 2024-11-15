@@ -50,7 +50,7 @@ inv.master = [
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
 
-    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 25, image: "acia.png", n: false, desc: "Gain 15 energy" },
+    { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
     { type: "e", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
     { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, image: "cumjar.png", n: false, desc: "Gain 40 energy" },
@@ -197,6 +197,9 @@ pic.save = function () {
 
 pic.load = function (picList) {
     var i, j;
+    for (i = 0; i < pic.master.length; i++) {
+        pic.master[i].entry = false;
+    }
     for (j = 0; j < picList.length; j++) {
         for (i = 0; i < pic.master.length; i++) {
             if (pic.master[i].name === picList[j].name) {
@@ -666,11 +669,10 @@ inv.createElements = function () {
                         inv.master[eindex].count--;
                         switch (thisName) {
                             case "acia":
-                                gv.mod("energy", 30);
+                                gv.mod("energy", 15);
                                 break;
                             case "soda":
-                                gv.mod("energy", 60);
-                                levels.mod("fitness", -25);
+                                gv.mod("energy", 50);
                                 break;
                             case "cumjar":
                                 gv.mod("energy", 100);

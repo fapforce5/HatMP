@@ -133,7 +133,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 13 },
                         { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 13 },
-                        { id: 2, txt: "Compliment massage massage started ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Massages", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
@@ -164,6 +164,12 @@ sc.charMission = [
                         { id: 4, txt: "Meet her in her room. Go on dates. ", show: false, mStatus: 0, roomId: 13 },
                         { id: 5, txt: "Creampie is the best pie. ", show: false, mStatus: 0, roomId: 13 },
                         { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
+                    [
+                        { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
@@ -199,6 +205,12 @@ sc.charMission = [
                         { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
                         { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
                         { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
+                    [
+                        { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
@@ -391,7 +403,7 @@ sc.charMission = [
                         { id: 0, txt: "Meet up. ", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Get to know her better. ", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "Friday or Saturday before " + nav.convertTime(20, 0) + ". ", show: true, mStatus: 0, roomId: 315 },
-                        { id: 3, txt: "A suprise, to be sure", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "A surprise, to be sure", show: true, mStatus: 0, roomId: 315 },
                         { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 315 },
                         { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 315 },
                         { id: 6, txt: "In development", show: true, mStatus: 0, roomId: 315 },
@@ -486,7 +498,7 @@ sc.charMission = [
     {
         name: "spanky", mission: [
             {
-                missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Bye some shit", task:
+                missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Buy some shit", task:
                     [
                         { id: 0, txt: "You're cool. I guess", show: true, mStatus: 0, roomId: 301 },
                     ]
@@ -588,8 +600,8 @@ sc.charMission = [
                         { id: 0, txt: "Blow job", show: false, mStatus: 0, roomId: 77 },
                         { id: 1, txt: "Pussy", show: false, mStatus: 0, roomId: 77 },
                         { id: 2, txt: "Anus", show: false, mStatus: 0, roomId: 77 },
-                        { id: 1, txt: "Sleepy pussy", show: false, mStatus: 0, roomId: 76 },
-                        { id: 2, txt: "Sleepy anal", show: false, mStatus: 0, roomId: 76 },
+                        { id: 3, txt: "Sleepy pussy", show: false, mStatus: 0, roomId: 76 },
+                        { id: 4, txt: "Sleepy anal", show: false, mStatus: 0, roomId: 76 },
                     ]
             },
             {
@@ -879,7 +891,7 @@ sc.levels = function (name, level) {
             else
                 tempLevel = [
                     { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at he mall for Sunday outing.", m: [16, 400] },
-                    { step: 1, txt: "[F] Talk to her in the living room for your suprise guest.", m: [16] },
+                    { step: 1, txt: "[F] Talk to her in the living room for your surprise guest.", m: [16] },
                     { step: 2, txt: "[F] No new content", m: [16] },
                 ];
             break;
@@ -890,9 +902,9 @@ sc.levels = function (name, level) {
                 { step: 2, txt: "Keep pestering them", m: [16] },
                 { step: 3, txt: "Keep pestering them - This time with cum reward!", m: [16] },
                 { step: 4, txt: "Pester them. This time with more cum! ", m: [16] },
-                { step: 5, txt: "Sleep at home - suprise wake up.", m: [16] },
+                { step: 5, txt: "Sleep at home - surprise wake up.", m: [16] },
                 { step: 6, txt: "Should I, or shouldn't I tell on him ", m: [16] },
-                { step: 7, txt: "Betrayed her for more suprises on Saturday 😉", m: [16] },
+                { step: 7, txt: "Betrayed her for more surprises on Saturday 😉", m: [16] },
             ];
             break;
         case "zoey":
@@ -1155,16 +1167,58 @@ sc.setMissionTask = function (name, missionName, taskId, mStatus) {
 }
 
 sc.modSecret = function (name, amount) {
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].name === name) {
-            sc.char[i].secret += amount;
-            if (sc.char[i].secret > 100)
-                sc.char[i].secret = 100;
-            g.popUpNotice(sc.char[i].display + " is more aware of your secret lifestyle. ");
+    let i = sc.i(name);
+    
+    //Don't modify, secret is already known
+    if (sc.char[i].secret > 99)
+        return;
 
+    sc.char[i].secret += amount;
+    if (sc.char[i].secret > 99) {
+        sc.char[i].secret = 100;
+        switch (name) {
+            case "lola":
+            case "eva":
+            case "landlord":
+                if (sc.getMission("lola", "sissy").notStarted) {
+                    let x = sc.i("lola");
+                    let y = sc.i("eva");
+                    let z = sc.i("landlord");
+                    sc.char[x].secret = 100;
+                    sc.char[y].secret = 100;
+                    sc.char[z].secret = 100;
+
+                    sc.startMission("lola", "sissy");
+                    sc.startMission("eva", "sissy");
+                    sc.startMission("landlord", "sissy");
+
+                    sc.completeMission("lola", "massage", sc.getMissionTask("lola", "massage", 3).complete);
+                    sc.completeMission("lola", "games", sc.getMissionTask("lola", "games", 2).complete);
+                    sc.completeMission("lola", "date", sc.getMissionTask("lola", "date", 5).complete);
+
+                    sc.completeMission("eva", "massage", sc.getMissionTask("eva", "massage", 3).complete);
+                    sc.completeMission("eva", "games", sc.getMissionTask("eva", "games", 1).complete);
+                    sc.completeMission("eva", "fuck", sc.getMissionTask("eva", "fuck", 1).complete);
+
+                    sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
+                    sc.completeMission("landlord", "man", sc.getMissionTask("landlord", "man", 8).complete);
+                    sc.startMissionTask("landlord", "spermbank", 2);
+                    if (sc.getMissionTask("landlord", "spermbank", 0).notStarted)
+                        sc.completeMissionTask("landlord", "spermbank", 0, false);
+                    if (sc.getMissionTask("landlord", "spermbank", 1).notStarted)
+                        sc.completeMissionTask("landlord", "spermbank", 1, false);
+                    g.popUpNotice(sc.char[x].display + ", " + sc.char[y].display + ", and " + sc.char[z].display +
+                        " all are new aware of your secret lifestyle. Sissy!");
+                }
+                
             break;
         }
     }
+
+    else {
+        g.popUpNotice(sc.char[i].display + " is more aware of your secret lifestyle. ");
+    }
+
 };
 
 sc.getSecret = function (name) {
@@ -1329,6 +1383,19 @@ sc.load = function (ra) {
     //fix bad early data
     if (sc.getMission("landlord", "spermbank").complete)
         sc.startMission("landlord", "spermbank");
+    //fix v0.23 sissy
+    if (sc.getMission("lola", "sissy").notStarted) {
+        let x, y, z;
+        x = sc.i("lola");
+        y = sc.i("eva");
+        z = sc.i("landlord");
+        if (sc.char[x].secret > 95)
+            sc.char[x].secret = 95;
+        if (sc.char[y].secret > 95)
+            sc.char[y].secret = 95;
+        if (sc.char[z].secret > 95)
+            sc.char[z].secret = 95;
+    }
 };
 
 /*
@@ -1571,7 +1638,7 @@ sc.phone = function (char) {
     var clist;
     var nophone = [950, 951];
     if (nophone.includes(g.roomID)) {
-        g.popUpNotice("No reciption here. Damn!");
+        g.popUpNotice("No reception here. Damn!");
     }
     else {
         switch (char) {
@@ -1619,9 +1686,9 @@ sc.phone = function (char) {
                 else if (step === 9) {
                     clist = [
                         { s: "me", t: "I'm so excited to be back in the house!" },
-                        { s: "eva", t: "I'm going to give you a big suprise... just wait for it!" },
-                        { s: "me", t: "What suprise?" },
-                        { s: "eva", t: "If I tell you, it won't a suprise!" },
+                        { s: "eva", t: "I'm going to give you a big surprise... just wait for it!" },
+                        { s: "me", t: "What surprise?" },
+                        { s: "eva", t: "If I tell you, it won't a surprise!" },
                     ];
                     sc.phoneChat(clist, char);
                 }
@@ -1784,7 +1851,7 @@ sc.phone = function (char) {
             case "zoey1":
                 sc.phoneChat([
                     { s: "zoey", t: "You'll never guess what " + sc.n("chloe") + " just sent me! " },
-                    { s: "me", t: "I can guess. She suprised me and tied me up. Took the picture of it to make you mad. " },
+                    { s: "me", t: "I can guess. She surprised me and tied me up. Took the picture of it to make you mad. " },
                     { s: "zoey", t: "MDR! That is so funny. She is such a idiot jaloux. I do not care if you fuck her in the brains. She is the crazy. " },
                     { s: "me", t: "LOL. good. I'm glad you don't hate me " },
                     { s: "zoey", t: "je ne te déteste pas. " + sc.n("chloe") + " does have a pussy délicieuse. I may eat it again when je suis excitée. " }

@@ -250,7 +250,7 @@ room354.chat = function (chatID) {
                 chatID: 12,
                 speaker: "thinking",
                 text: "I hate that guy. " + sc.n("landlord") + " wanted me to leave it alone, but I have " +
-                    "to keep checking on her each Saturday to keep him away from her. I would want her to " +
+                    "to keep checking on her each Saturday to keep him away from her. I wouldn't want her to " +
                     "get hurt. ",
                 button: [
                     { chatID: -1, text: "[Pack up and leave. ]", callback: "event_2_end" }

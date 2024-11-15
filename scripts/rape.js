@@ -2,17 +2,18 @@
 var room1004 = {};
 rape.type;
 rape.char;
-rape.menu;
 rape.roomId;
 rape.callbackWin;
 rape.callbackLost;
 rape.step;
 rape.type;
+rape.kickCounter;
 
 rape.init = function (location, roomId, callbackWin, callbackLost, charNum = null) {
     nav.killall();
     inv.hide();
     rape.step = 0;
+    rape.kickCounter = 1;
 
     rape.type = (g.rand(0, 3) === 0) ? "oral" : "anal";
 
@@ -21,10 +22,9 @@ rape.init = function (location, roomId, callbackWin, callbackLost, charNum = nul
     rape.roomId = roomId;
 
     rape.char = getRapeChar(location, charNum);
-    rape.menu = "init";
     var wearing = cl.wearing();
 
-    rape.displayMenu();
+    rape.displayMenu("init");
     
     nav.button({
         "type": "zimg",
@@ -158,21 +158,25 @@ rape.updateEnergy = function (enemyEnergyChange = null, myEnergyChange = null) {
 
 };
 
-rape.displayMenu = function () {
+rape.displayMenu = function (menu) {
     let btnList = new Array();
     let i;
     nav.killbuttonStartsWith("b1004");
-    switch (rape.menu) {
+    switch (menu) {
         case "init":
             btnList.push({ n: "struggle", i: "icon_struggle.png" });
+            btnList.push({ n: "kick", i: "icon_kick.png" });
             btnList.push({ n: "submit", i: "icon_submit.png" });
-            btnList.push({ n: "limp", i: "icon_limp.png" });
+            btnList.push({ n: "increment", i: "icon_limp.png" });
             break;
         case "struggleWin":
             btnList.push({ n: "flee", i: "icon_flee.png" });
             break;
-        case "takeit":
-            btnList.push({ n: "rapeStart", i: "icon_whimper.png" });
+        case "rape":
+            btnList.push({ n: "struggle", i: "icon_struggle.png" });
+            btnList.push({ n: "kick", i: "icon_kick.png" });
+            btnList.push({ n: "submit", i: "icon_stickass.png" });
+            btnList.push({ n: "increment", i: "icon_whimper.png" });
             break;
     }
 
@@ -187,6 +191,115 @@ rape.displayMenu = function () {
             "image": "1004_rape/" + btnList[i].i
         }, 1004);
     }
+};
+
+rape.increment = function () {
+    nav.killbuttonStartsWith("b1004-");
+    switch (rape.step) {
+        case 0:
+            rape.step = 1;
+            cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+            if (cl.c.panties === null && cl.c.bra === null) {
+                room1004.btnclick("increment");
+                return;
+            }
+            if (cl.c.bra !== null || cl.pantiesTxt() === "panties") {
+                if (cl.c.chest > 2)
+                    stuggleOuter = "o_3_b_4.png";
+                else
+                    stuggleOuter = "o_3_b_0.png";
+            }
+            else {
+                stuggleOuter = "o_3_b_1.png";
+            }
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + stuggleOuter
+            }, 1004);
+            cl.display();
+            rape.displayMenu("rape");
+            break;
+        case 1:
+            rape.step = 2;
+            nav.killbutton("r1004bg");
+            if (cl.c.chest > 2) {
+                stuggleUnder = "o_4_f.png";
+            }
+            else {
+                stuggleUnder = "o_4_m.png";
+            }
+
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape0
+            }, 1004);
+
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/speech0_anal.png"
+            }, 1004);
+
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + stuggleUnder
+            }, 1004);
+            nav.killbuttonStartsWith("b1004-");
+            cl.c.panties = cl.c.bra = null;
+            cl.display();
+            rape.displayMenu("rape");
+            break;
+        case 2:
+            rape.step = 3;
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape1
+            }, 1004);
+            rape.displayMenu("rape");
+
+            break;
+        case 3:
+            rape.step = 4;
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape2
+            }, 1004);
+            rape.displayMenu("rape");
+            break;
+    }
+
 };
 
 rape.rolldice = function (updateEnergy = false) {
@@ -336,6 +449,126 @@ rape.rolldice = function (updateEnergy = false) {
 
 };
 
+rape.kick = function () {
+    
+    let diceArray = new Array();
+    let i;
+    let kickSuccess = true;
+    nav.killbuttonStartsWith("b1004-");
+    if (rape.kickCounter > 3)
+        rape.kickCounter = 3;
+    if (rape.kickCounter < 1)
+        rape.kickCounter = 1;
+    for (i = 0; i < rape.kickCounter; i++) {
+        diceArray.push(g.rand(1, 7));
+        if (diceArray[i] !== 6)
+            kickSuccess = false;
+    }
+
+
+
+    rape.kickCounter++;
+    var myTotal, enemyTotal;
+
+    var xbtnList = new Array();
+    var fightStats = quickFight.getStats(rape.char.fight, rape.char.energy);
+    myTotal = enemyTotal = 0;
+
+    nav.button({
+        "type": "zimg",
+        "name": "b1004-d",
+        "left": 1600,
+        "top": 150,
+        "width": 300,
+        "height": 500,
+        "image": "1004_rape/icon_bg.png"
+    }, 1002);
+    nav.t({
+        type: "zimg",
+        name: "b1004-d",
+        left: 1660,
+        top: 170,
+        font: 20,
+        hex: "#ffffff",
+        text: "Kick! (Roll all 6's)"
+    });
+
+    for (i = 0; i < diceArray.length; i++) {
+
+        nav.button({
+            "type": "zimg",
+            "name": "b1004-d",
+            "left": 1700,
+            "top": 210 + (i * 100),
+            "width": 80,
+            "height": 80,
+            "image": "1001_rand/dice" + diceArray[i] + ".png"
+        }, 1002);
+    }
+
+    if (kickSuccess) {
+        nav.killbutton("r1004bg");
+        nav.button({
+            "type": "img",
+            "name": "r1004bg",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1004_rape/" + rape.char.kick
+        }, 1004);
+        nav.t({
+            type: "zimg",
+            name: "b1004-d",
+            left: 1650,
+            top: 575,
+            font: 20,
+            hex: "#ffffff",
+            text: "Success!"
+        });
+        nav.button({
+            "type": "zbtn",
+            "name": "b1004-flee",
+            "left": 1600,
+            "top": 660,
+            "width": 300,
+            "height": 72,
+            "image": "1004_rape/icon_next_brokefree.png"
+        }, 1004);
+    }
+    else {
+        nav.t({
+            type: "zimg",
+            name: "b1004-d",
+            left: 1650,
+            top: 575,
+            font: 20,
+            hex: "#ffffff",
+            text: "Kick failed!"
+        });
+        let xbtnList = new Array();
+        let xcl = cl.wearing();
+        if (xcl.outerwear)
+            xbtnList.push({ n: "increment", i: "icon_next_outer.png" });
+        else if (xcl.underwear)
+            xbtnList.push({ n: "increment", i: "icon_next_under.png" });
+        else
+            xbtnList.push({ n: "increment", i: "icon_next_fuck.png" });
+
+        for (i = 0; i < xbtnList.length; i++) {
+            nav.button({
+                "type": "zbtn",
+                "name": "b1004-" + xbtnList[i].n,
+                "left": 1600,
+                "top": 660,
+                "width": 300,
+                "height": 72,
+                "image": "1004_rape/" + xbtnList[i].i
+            }, 1004);
+        }
+    }
+};
+
 room1004.btnclick = function (name) {
     name = name.replace("b1004-", "");
     switch (name) {
@@ -345,6 +578,9 @@ room1004.btnclick = function (name) {
         case "struggle":
             nav.killbuttonStartsWith("b1004-");
             rape.rolldice(true);
+            break;
+        case "kick":
+            rape.kick();
             break;
         case "struggleRape0":
             nav.killbuttonStartsWith("b1004");
@@ -359,8 +595,20 @@ room1004.btnclick = function (name) {
                 "height": 1080,
                 "image": "1004_rape/" + rape.char.rape1
             }, 1004);
-            rape.menu = "takeit";
-            rape.displayMenu();
+            rape.displayMenu("rape");
+            break;
+        case "rape2":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/" + rape.char.rape2
+            }, 1004);
+            rape.displayMenu("rape"); 
             break;
         case "submit":
             if (levels.get("sub").l < 4) {
@@ -369,16 +617,13 @@ room1004.btnclick = function (name) {
             }
             //draw submissive menu
             break;
-        case "limp":
-            if (levels.get("sub").l < 2) {
-                chat(1, 1004); //not submissive enough
-                return;
-            }
-            //do limp action
-            break;
         case "stugglewin":
             rape.menu = "struggleWin";
-            rape.displayMenu();
+            rape.displayMenu("struggleWin");
+            break;
+        case "increment":
+            rape.increment();
+
             break;
         case "stuggleOuter":
             var stuggleOuter = "";
@@ -411,73 +656,7 @@ room1004.btnclick = function (name) {
             rape.displayMenu();
             break;
         case "stuggleUnder":
-            nav.killbutton("r1004bg");
-            if (cl.c.chest > 2) {
-                stuggleUnder = "o_4_f.png";
-            }
-            else {
-                stuggleUnder = "o_4_m.png";
-            }
-
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1004_rape/" + rape.char.rape0
-            }, 1004);
-
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1004_rape/speech0_anal.png"
-            }, 1004);
-
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1004_rape/" + stuggleUnder
-            }, 1004);
-            nav.killbuttonStartsWith("b1004-");
-            cl.c.panties = cl.c.bra = null;
-            cl.display();
-            rape.displayMenu();
+            
             break;
     }
 };
-
-
-
-
-//rape.nextStep = function () {
-//    switch (rape.type) {
-//        case "getraped":
-//            if (rape.step === 0) {
-
-//            }
-//            break;
-//        case "dorape":
-
-//            break;
-//        case "happy":
-
-//            break;
-//        case "mad":
-
-//            break;
-//        default:
-//            console.log("rape.nextStep");
-//            //break for loop;
-//            break;
-//    }
-//};

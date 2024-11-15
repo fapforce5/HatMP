@@ -723,7 +723,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 39,
                 speaker: "thinking",
-                text: "What a douche! He really did it. I guess it's good that they already know everything, so no suprises from " +
+                text: "What a douche! He really did it. I guess it's good that they already know everything, so no surprise from " +
                     "them. At least class is over. ",
                 button: [
                     { chatID: -1, text: "...", callback: "oralEnd" },

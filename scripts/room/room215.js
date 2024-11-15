@@ -464,7 +464,7 @@ room215.chat = function (chatID) {
             chatID: 9,
             speaker: "river",
             text: "You got yelled at by your " + sc.n("landlord") + "! I always knew you were a loser, ever since I hung " +
-                "you up by your underware in the hallway and got the entire school to call you skid mark. ",
+                "you up by your underwear in the hallway and got the entire school to call you skid mark. ",
             button: [
                 { chatID: 10, text: "Shut up " + sc.n("river") + ". ", callback: "ll3" }
             ]
@@ -507,7 +507,7 @@ room215.chat = function (chatID) {
             chatID: 14,
             speaker: "chloe",
             text: "Now that you're cuffed and can't get away I can take this off and reveal myself. " +
-                "Suprised? I'm going to rape your tiny dicklette " +
+                "Surprised? I'm going to rape your tiny dicklette " +
                 "and shoot your cum into my dripping pussy. You're going to love it. Then I'm going to take " + 
                 "a picture and send it to " + sc.n("zoey") + " so you will know what it feels like to be betrayed. ",
             button: [

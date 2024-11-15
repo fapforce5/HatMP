@@ -314,7 +314,7 @@ room212.chat = function (chatID) {
                     " was here and helped so much, but she totally kept taking all the dicks. Luckily we got three " +
                     "dicks at once and she couldn't reach the third so I got to suck it. It was so fun! ",
                 button: [
-                    { chatID: 2, text: "Oh. I guess I'm not suprised she can be greedy with the dicks. How was the second day? ", callback: "" }
+                    { chatID: 2, text: "Oh. I guess I'm not surprised she can be greedy with the dicks. How was the second day? ", callback: "" }
                 ]
             },
             {
