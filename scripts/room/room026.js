@@ -66,23 +66,53 @@ room26.main = function () {
 room26.btnclick = function (name) {
     switch (name) {
         case "landlord":
-            nav.button({
-                "type": "img",
-                "name": "chatbg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1001_rand/black_25.png"
-            }, g.roomID);
-            if (!daily.get("landlordChat")) {
-                sc.select("chat_landlord", "26_livingRoom/chat_landlord.png", 0);
+            if (sc.getMission("landlord", "sissy").notStarted) {
+                nav.button({
+                    "type": "img",
+                    "name": "chatbg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1001_rand/black_25.png"
+                }, g.roomID);
+                if (!daily.get("landlordChat")) {
+                    sc.select("chat_landlord", "26_livingRoom/chat_landlord.png", 0);
+                }
+                if (sc.getMissionTask("landlord", "talk", 2).complete) {
+                    sc.select("sit_landlord", "26_livingRoom/icon_tv.png", 1);
+                    sc.select("sit_dick", "26_livingRoom/icon_dick.png", 2);
+                }
+                sc.select("sissy_confess", "26_livingRoom/icon_sissy.png", 3)
+                sc.selectCancel("chat_cancel", 4);
             }
-            if (sc.getMissionTask("landlord", "talk", 2).complete) {
-                sc.select("sit_landlord", "26_livingRoom/icon_tv.png", 1);
-                sc.select("sit_dick", "26_livingRoom/icon_dick.png", 2);
+            else {
+                if (daily.get("landlordChat")) {
+                    chat(80, 26);
+                }
+                else {
+                    daily.set("landlordChat");
+                    switch (sc.taskGetStep("landlord", "sissy")) {
+                        case -1:
+                        case 0:
+                            chat(79, 26);
+                            break;
+                        case 1:
+                            if (cl.c.dress === "pd") {
+                                sc.completeMissionTask("landlord", "sissy", 1);
+                                chat(83, 26);
+                            }
+                            else {
+                                chat(81, 26);
+                            }
+                            break;
+                    }
+                }
             }
-            sc.selectCancel("chat_cancel", 3);
+            break;
+        case "sissy_confess":
+            room26.btnclick("chat_cancel");
+            chat(73, 26);
             break;
         case "sit_dick":
             room26.btnclick("chat_cancel");
@@ -113,9 +143,9 @@ room26.btnclick = function (name) {
             nav.killbutton("chat_cancel");
             nav.killbutton("sit_landlord");
             nav.killbutton("sit_dick");
+            nav.killbutton("sissy_confess");
             nav.killbutton("chat_landlord");
             return;
-            break;
         case "chat_landlord":
             room26.btnclick("chat_cancel");
             daily.set("landlordChat");
@@ -206,7 +236,26 @@ room26.btnclick = function (name) {
             char.room(26);
             break;
         case "all3":
-            chat(40, 26);
+            if (sc.getMission("lola", "sissy").notStarted) {
+                chat(40, 26);
+            }
+            else {
+                switch (sc.taskGetStep("landlord", "sissy")) {
+                    case -1:
+                    case 0:
+                        chat(79, 26);
+                        break;
+                    case 1:
+                        if (cl.c.dress === "pd") {
+                            cl.c.completeMissionTask("landlord", "sissy", 1);
+                            chat(83, 26);
+                        }
+                        else {
+                            chat(81, 26);
+                        }
+                        break;
+                }
+            }
             break;
         case "e_reset":
             char.room(26);
@@ -550,6 +599,30 @@ room26.chatcatch = function (callback) {
                 char.addtime(60);
                 g.pass = "finger";
                 char.room(21);
+                break;
+            case "sissyEnd":
+                sc.modSecret("landlord", 100);
+                char.room(26);
+                break;
+            case "ll200":
+                nav.killall();
+                nav.button({
+                    "type": "img",
+                    "name": "ll200",
+                    "left": 800,
+                    "top": 0,
+                    "width": 700,
+                    "height": 1080,
+                    "image": "26_livingRoom/ll200.png"
+                }, 26);
+                break;
+            case "ll200_1":
+                nav.killall();
+                nav.bg("26_livingRoom/ll200_1.jpg");
+                break;
+            case "ll200_2":
+                char.addtime(180);
+                char.room(450);
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -1254,6 +1327,275 @@ room26.chat = function (chatID) {
                     "fingering " + sc.n("lola") + ". Now follow me for your spanking!  ",
                 button: [
                     { chatID: -1, text: "Awwwww", callback: "spanking" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "me",
+                text: sc.n("landlord") + ", I have something I need to tell you. ",
+                button: [
+                    { chatID: 74, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "landlord",
+                text: "Make it quick. You're interrupting my shows. ",
+                button: [
+                    { chatID: 75, text: "I'm a cock craving sissy. ", callback: "" },
+                    { chatID: 76, text: "Deep down I feel like I'm the wrong gender. ", callback: "" },
+                    { chatID: 78, text: "I don't know what gender I am. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "landlord",
+                text: "*sigh* I know dear. Everyone knows except " + sc.n("lola") + ", " +
+                    "that poor girl. I suppose I should be glad you've finally admitted " +
+                    "who you are to yourself. Go get the dicks and let me finish my shows. ",
+                button: [
+                    { chatID: -1, text: "Oh. ok.", callback: "sissyEnd" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "landlord",
+                text: "Oh my sweet baby girl, I know. I guess I've always known. You've " +
+                    "just been letting life pass you by while you try to find yourself. " +
+                    "admitting to me who you really are is your first step to being who " +
+                    "you are. Find yourself and start living the life you were meant to live. ",
+                button: [
+                    { chatID: 77, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "landlord",
+                text: "I know it's a huge step for you, but it's a big step for us all too. " +
+                    "Let me watch my shows and think about my next words before we talk further. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "sissyEnd" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "landlord",
+                text: "It sounds like you know who you are, but you're afraid to commit to " +
+                    "who you are. Take the day. Think about who you really are. We'll talk " +
+                    "more tomorrow. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "sissyEnd" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "landlord",
+                text: "I know you have a lot to talk about, but give me a day to process " +
+                    "it. In the mean time let me watch my shows. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "landlord",
+                text: "ssssshh. Let me watch my shows. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "landlord",
+                text: "Hi honey. I'm glad you've finally found your true self. If you " +
+                    "want to earn some extra money, now that you're a girl you can work " +
+                    "with me at the Sperm Bank. Make yourself pretty, because only pretty " +
+                    "girls can work with me. ",
+                button: [
+                    { chatID: -1, text: "oh cool!", callback: "" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "landlord",
+                text: "I also want to help you on your road to be a proper lady. " +
+                    "Meet me in the living room and we'll have a picnic. " +
+                    "Your first lesson on being a proper lady is proper clothing. " +
+                    "Wear a nice polka dot dress. Polka dots are the perfect dress " +
+                    "for a picnic outing. No rush. When you're ready to buy and wear " +
+                    "a dress I'll be here. ",
+                button: [
+                    { chatID: -1, text: "I will!", callback: "" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "landlord",
+                text: "You really do look pretty in that dress. Just a second let me " +
+                    "change into my dress and we'll go out. ",
+                button: [
+                    { chatID: 84, text: "Yes!", callback: "ll200" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "landlord",
+                text: "It's been too long since I've had a reason to wear this dress. Lets head to the park and have a nice picnic.",
+                button: [
+                    { chatID: 85, text: "[Head to the park]", callback: "ll200_1" }
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "landlord",
+                text: "Such a beautiful day, down't you think?",
+                button: [
+                    { chatID: 86, text: "Oh yes, it is wonderful.", callback: "" }
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "landlord",
+                text: "Such a beautiful day, down't you think?",
+                button: [
+                    { chatID: 87, text: "Oh yes, it is wonderful.", callback: "" }
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "landlord",
+                text: "So many changes. I'm so excited you've found your real self. I've always preferred " +
+                    "girls. I suppose when Harry left me for a 18 year old bimbo I've soured to men. I think that's why I've been so hard " +
+                    "on you. I've been afriad that you would turn out like him. ",
+                button: [
+                    { chatID: 88, text: "I'm nothing like Harry.", callback: "" }
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "landlord",
+                text: "Oh honey I know! Harry was a man's man. They kind of of guy that that would go hunting, clean his deer, then " +
+                    "spend the rest of the night drinking with the boys. You're not much of a hunter and " +
+                    "in your cute little dress drinking with the boys is going to be... different.",
+                button: [
+                    { chatID: 89, text: "Hehehe yeah", callback: "" }
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "landlord",
+                text: "So I've been a woman for a while, and I know that you're new to it. Do you have any questions about your new found " +
+                    "femininity that I could help you with?",
+                button: [
+                    { chatID: 91, text: "What's the best way to get rid of all this body hair!", callback: "" },
+                    { chatID: 92, text: "How do I measure my bra size?", callback: "" },
+                    { chatID: 93, text: "Is a bigger always better?", callback: "" },
+                    { chatID: 94, text: "Nothing", callback: "" }
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "landlord",
+                text: "Anymore questions?",
+                button: [
+                    { chatID: 91, text: "What's the best way to get rid of all this body hair!", callback: "" },
+                    { chatID: 92, text: "How do I measure my bra size?", callback: "" },
+                    { chatID: 93, text: "Is a bigger always better?", callback: "" },
+                    { chatID: 94, text: "Nothing", callback: "" }
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "landlord",
+                text: "Oh honey. Women have been trying to figure this out since we've first had to get rid of our body hair. " +
+                    "Personally I just wax. It hurts the first time, but after a while it hurts less. ",
+                button: [
+                    { chatID: 90, text: "I have more questions", callback: "" },
+                    { chatID: 94, text: "Nothing", callback: "" }
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "landlord",
+                text: "You look like a " + cl.cupsize() + ". I had that nice young girl at Popular Girl measure me. She's really good. ",
+                button: [
+                    { chatID: 90, text: "I have more questions", callback: "" },
+                    { chatID: 94, text: "Nothing", callback: "" }
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "landlord",
+                text: "Oh my... Yes! But not how you think. I like a thick penis, but it needs to be 8 inches (20 cm) or " +
+                    "shorter or it hits my cervix. I had a real bull of a man with the longest penis you've ever seen and he just " +
+                    "kept hitting me hard. Worst sex ever. I suppose since you don't have a cervix longer is fine, but you just " +
+                    "have to experiance many differnt penises to find what you like. ",
+                button: [
+                    { chatID: 90, text: "I have more questions", callback: "" },
+                    { chatID: 94, text: "Nothing", callback: "" }
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "landlord",
+                text: "So you may wonder why I brought you out here for a picnic. As you know I've been running the Sperm Bank, mostly " +
+                    "on my own. You may wonder how such a small town can have a Sperm Bank with so few people and still stay in business. ",
+                button: [
+                    { chatID: 95, text: "I never thought of that. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "landlord",
+                text: "I've been selling my excess sperm to the cult. No matter how much I get, they always want more. I have no idea " +
+                    "what they do with it. I probably send them a gallon a week. What someone does with a gallon of sperm I'll never know. " +
+                    "It's enough to impregnate every woman in this town and all the surrounding towns. ",
+                button: [
+                    { chatID: 96, text: "Oh wow. That's a lot of sperm.", callback: "" }
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "landlord",
+                text: "I need a delivery girl on the weekends. I had a girl, D.M., delivering it, but she just stopped coming in one day. " +
+                    "She was always irresponsible, but I just don't trust that cult. I think they are responsible for her disappearance. " +
+                    "Now that you're such a cute girl I need to warn you to stay away from them. Bad things happen. I've made them promise " +
+                    "not to go near your " + sc.n("el") + ". I just don't know what to do. I think the cops in this town are working for them.",
+                button: [
+                    { chatID: 97, text: "I could take it to " + sc.n("missy") + ". She's amazing.", callback: "" }
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "landlord",
+                text: "You know you're right. Maybe I can work with her to find D.M. She was odd, but a lovely girl. I would hate to " +
+                    "think she got mixed up with that cult. I'm just hoping she met a boy and ran off with him somewhere. ",
+                button: [
+                    { chatID: 98, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "thinking",
+                text: "I bet I could find her! I hope " + sc.n("landlord") + " takes this to " + sc.n("missy") + ". ",
+                button: [
+                    { chatID: 99, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "landlord",
+                text: "Well it's starting to get late. I'm going to pick up and head home. Do you need help getting home?",
+                button: [
+                    { chatID: 100, text: "I'm good. Thanks!", callback: "" }
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "landlord",
+                text: "I like you better as a girl. I know you'll discover your true self. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "ll200_2" }
                 ]
             },
         ];

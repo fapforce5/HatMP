@@ -7,7 +7,7 @@ room16.main = function () {
     var thisMomRoomID = sc.getTimeline("landlord");
     var thisBigguyId = sc.getTimeline("bigguy");
     //var llst = sc.getstep("landlord");
-    if (false) {// (cl.isCrossdressing() || cl.c.chest > 2) && sc.getstep('landlord') < 200) {
+    if (!sc.getSecret("lola").secretOut && (cl.isCrossdressing() || cl.c.chest > 2)) {
         nav.button({
             "type": "btn",
             "name": "caught",
@@ -243,36 +243,35 @@ room16.chatcatch = function (callback) {
             nav.killall();
             nav.bg("14_motherRoom/14_motherRoom.jpg", "14_motherRoom/14_motherRoomNightLight.jpg");
             nav.button({
-                "type": "btn",
-                "name": "dressup",
-                "left": 1193,
-                "top": 42,
-                "width": 466,
-                "height": 1038,
-                "image": "14_motherRoom/14_mother.png"
+                "type": "img",
+                "name": "motherRobe",
+                "left": 844,
+                "top": 195,
+                "width": 499,
+                "height": 885,
+                "image": "14_motherRoom/14_motherRobe.png"
             }, 16);
-            zcl.displayMain(150, 300, .19, "clothes", true);
+            zcl.displayMain(150, 900, .19, "clothes", true);
             break;
         case "girl2":
             cl.nude();
             nav.modbutton("dressup", "14_motherRoom/14_motherRobe.png", null, null);
-            zcl.displayMain(150, 300, .19, "clothes", true);
+            zcl.displayMain(150, 900, .19, "clothes", true);
             break;
         case "girl3":
             cl.c.pj = "b";
             cl.display();
-            zcl.displayMain(150, 300, .19, "clothes", true);
+            zcl.displayMain(150, 900, .19, "clothes", true);
             break;
         case "girl4":
-            zcl.displayMain(150, 300, .19, "clothes", false);
+            zcl.displayMain(150, 900, .19, "clothes", false);
             break;
         case "girl5":
-            sc.setstep("lola", 200);
-            sc.setstep("eva", 200);
-            sc.setstep("landlord", 200);
-            g.roomMapAccess(16, true, true);
+            sc.modSecret("lola", 100);
+            sc.completeMissionTask("landlord", "sissy", 0);
+            sc.completeMissionTask("lola", "sissy", 0);
+            sc.completeMissionTask("eva", "sissy", 0);
             cl.add("pj", "b");
-            gv.set("rentOwed", 0);
             char.room(10);
             break;
         case "l2":

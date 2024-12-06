@@ -163,13 +163,16 @@ sc.charMission = [
                         { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
                         { id: 4, txt: "Meet her in her room. Go on dates. ", show: false, mStatus: 0, roomId: 13 },
                         { id: 5, txt: "Creampie is the best pie. ", show: false, mStatus: 0, roomId: 13 },
-                        { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
+                        { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
                 missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
                     [
                         { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "The talk", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
             {
@@ -208,17 +211,22 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
-                    [
-                        { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
-                    ]
-            },
-            {
                 missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now ", task:
                     [
                         { id: 0, txt: "Supervised blow job. ", show: true, mStatus: 0, roomId: 13 },
                         { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 10 },
-                        { id: 2, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 10 },
+                        { id: 2, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
+                    [
+                        { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
+                        { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "Lick my feet. No chastity", show: true, mStatus: 0, roomId: 13 },
+                        { id: 4, txt: "Slave doggy. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 900 },
                     ]
             },
         ],
@@ -269,12 +277,14 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
                         { id: 1, txt: "Threesome! [After Lola's first time]", show: true, mStatus: 0, roomId: 26 },
+                        { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {
                 missionName: "sissy", mStatus: -1, title: "Naughty girl", desc: "You're her sissy now.", task:
                     [
                         { id: 0, txt: "Have the talk", show: true, mStatus: 0, roomId: 14 },
+                        { id: 1, txt: "When you're ready wear a polka dot dress", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
         ]
@@ -289,6 +299,17 @@ sc.charMission = [
                         { id: 2, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
                         { id: 3, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
 
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: 1, title: "Extra hole", desc: "Let's talk about sex baby. ", task:
+                    [
+                        { id: 0, txt: "Catch them having sex. ", show: true, mStatus: 0, roomId: 14 },
+                        { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 2, txt: "I drink your milk! ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 3, txt: "You're such my bitch. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 4, txt: "Suprise visit ", show: true, mStatus: 0, roomId: 10 },
+                        { id: 5, txt: "You're such my bitch. ", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
         ]
@@ -522,6 +543,9 @@ sc.charMission = [
                         { id: 1, txt: "Came inside her in the change room. ", show: true, mStatus: 0, roomId: 301 },
                         { id: 2, txt: "Sprayed your cum on her back in the change room. ", show: true, mStatus: 0, roomId: 301 },
                         { id: 3, txt: "Home. ", show: true, mStatus: 0, roomId: 51 },
+                        { id: 4, txt: "How to use your pussy", show: true, mStatus: 0, roomId: 54 },
+                        { id: 5, txt: "Pussy Palace", show: true, mStatus: 0, roomId: 54 },
+                        { id: 6, txt: "Help her get a ring to propose. ", show: true, mStatus: 0, roomId: 54 },
                     ]
             },
         ]
@@ -532,6 +556,12 @@ sc.charMission = [
                 missionName: "cuck", mStatus: 0, title: "Girlfriends", desc: "Do what two girlfriends do", task:
                     [
                         { id: 0, txt: "Home", show: true, mStatus: 0, roomId: 51 },
+                    ]
+            },
+            {
+                missionName: "cheer", mStatus: 0, title: "Cheerleader!", desc: "Be a cheerleader! ", task:
+                    [
+                        { id: 0, txt: "Meet Saturday morning", show: true, mStatus: 0, roomId: 875 },
                     ]
             },
         ]
@@ -814,6 +844,22 @@ sc.charMission = [
                         { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 726 },
                         { id: 2, txt: "The jig is up.", show: true, mStatus: 0, roomId: 726 },
                         { id: 3, txt: "I do love bussy.", show: true, mStatus: 0, roomId: 726 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "stacy", mission: [
+            {
+                missionName: "cheer", mStatus: 0, title: "Cheerleader", desc: "You're my bitch", task:
+                    [
+                        { id: 0, txt: "Need tits, ass, tiny pp, and smooth skin", show: true, mStatus: 0, roomId: 875 },
+                        { id: 1, txt: "Practice cartwheels at home", show: true, mStatus: 0, roomId: 875 },
+                        { id: 2, txt: "Keep practicing at home", show: true, mStatus: 0, roomId: 875 },
+                        { id: 3, txt: "Uniform!!!", show: true, mStatus: 0, roomId: 875 },
+                        { id: 4, txt: "Keep practicing at home", show: true, mStatus: 0, roomId: 875 },
+                        { id: 5, txt: "Sunday Big game! [Cheer level 7]", show: true, mStatus: 0, roomId: 875 },
+                        { id: 6, txt: "You're a cheerleader now  ", show: true, mStatus: 0, roomId: 875 },
                     ]
             },
         ]
@@ -1133,7 +1179,8 @@ sc.modMissionTask = function (name, missionName, taskId, modNum) {
 };
 
 sc.completeMission = function (name, missionName, success = true) {
-    sc.setMission(name, missionName, success ? 100 : 101);
+    if (!sc.getMission(name, missionName).complete)
+        sc.setMission(name, missionName, success ? 100 : 101);
 };
 
 sc.taskGetStep = function (name, missionName) {
@@ -1195,14 +1242,19 @@ sc.modSecret = function (name, amount) {
                     sc.completeMission("lola", "massage", sc.getMissionTask("lola", "massage", 3).complete);
                     sc.completeMission("lola", "games", sc.getMissionTask("lola", "games", 2).complete);
                     sc.completeMission("lola", "date", sc.getMissionTask("lola", "date", 5).complete);
+                    sc.completeMission("lola", "talk", sc.getMissionTask("lola", "talk", 2).complete);
 
+                    
                     sc.completeMission("eva", "massage", sc.getMissionTask("eva", "massage", 3).complete);
                     sc.completeMission("eva", "games", sc.getMissionTask("eva", "games", 1).complete);
                     sc.completeMission("eva", "fuck", sc.getMissionTask("eva", "fuck", 1).complete);
+                    sc.completeMission("eva", "talk", sc.getMissionTask("eva", "talk", 1).complete);
 
                     sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
                     sc.completeMission("landlord", "man", sc.getMissionTask("landlord", "man", 8).complete);
                     sc.startMissionTask("landlord", "spermbank", 2);
+                    sc.startMission("landlord", "spermbank");
+
                     if (sc.getMissionTask("landlord", "spermbank", 0).notStarted)
                         sc.completeMissionTask("landlord", "spermbank", 0, false);
                     if (sc.getMissionTask("landlord", "spermbank", 1).notStarted)
@@ -1244,30 +1296,6 @@ sc.getstep = function (name) {
 
 sc.setstep = function (name, step) {
     //alert(name + step);
-    console.log("error");
-};
-
-sc.getEventall = function (name) {
-    console.log("error");
-};
-
-sc.setstepAll = function (name, step) {
-    console.log("error");
-};
-
-sc.revokeStep = function(name, step){
-    console.log("error");
-};
-
-sc.getEventIndex = function (name, step) {
-    return 0;
-};
-
-sc.removeStep = function (name, step) {
-    console.log("error");
-};
-
-sc.rollback = function (name, backTo) {
     console.log("error");
 };
 
@@ -1528,13 +1556,16 @@ sc.getTimeline = function (char) {
         case "tiffany":
         case "candy":
             timeline = [
-                { d: [0, 6], hstart: 0, hend: 7, roomId: char === "tiffany" ? 54 : 53, alt: null }, //bedroom
-                { d: [0, 6], hstart: 7, hend: 16, roomId: null, alt: "Getting laid" },
-                { d: [0, 6], hstart: 16, hend: 24, roomId: char === "tiffany" ? 54 : 53, alt: null },
-                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: char === "tiffany" ? 54 : 53, alt: null }, //bedroom
-                { d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 650, alt: null }, //porn store
-                { d: [1, 2, 3, 4, 5], hstart: 16, hend: 20, roomId: 57, alt: null }, //pussy palace
-                { d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: char === "tiffany" ? 54 : 53, alt: null }, //bedroom
+                { d: [0], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
+                { d: [0], hstart: 7, hend: 16, roomId: null, alt: "Penisland" },
+                { d: [0], hstart: 16, hend: 24, roomId: 54, alt: null },
+                { d: [6], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
+                { d: [6], hstart: 7, hend: 16, roomId: char === "candy" ? 876 : 475, alt: null },
+                { d: [6], hstart: 16, hend: 24, roomId: 54, alt: null },
+                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 54, alt: null }, //bedroom
+                { d: [1, 2, 3, 4, 5], hstart: 7, hend: 18, roomId: 650, alt: null }, //porn store
+                { d: [1, 2, 3, 4, 5], hstart: 18, hend: 20, roomId: 57, alt: null }, //pussy palace
+                { d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: 54, alt: null }, //bedroom
             ];
             break;
         case "bimbo":
@@ -1612,17 +1643,6 @@ sc.select = function (name, img, i) {
 
 sc.selectCancel = function (name, i) {
     sc.select(name, "1001_rand/icon_cancel.png", i);
-};
-
-
-
-sc.tiffany = function () {
-    return { roomID: g.roomID, thisRoom: true };
-};
-
-
-sc.candy = function () {
-    return { roomID: g.roomID, thisRoom: true };
 };
 
 sc.swimgirl = function () {
@@ -2081,6 +2101,15 @@ sc.trivial = function (charname) {
             name = "Jenna";
             image = "jenna.png";
             break;
+        case "!footballguard":
+            name = "Security";
+            image = "footballguard.png";
+            break;
+        case "!airwrecka":
+            name = "Airwrecka";
+            image = "airwrecka.png";
+            break;
+            
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
             break;

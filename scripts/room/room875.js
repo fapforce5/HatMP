@@ -6,11 +6,11 @@ room875.main = function () {
         nav.buildnav([0]);
     }
     else {
-        var candyStep = sc.getstep("candy");
-        var cheerlevel = gv.get("cheerlevel");
+        var cheerlevel = levels.get("cheer").l;
+
         if (g.dt.getDay() === 0 && g.hourBetween(5, 12)) {
             nav.bg("875_entrance/gameday.jpg");
-            if (cheerlevel === 0) {
+            if (sc.getMission("candy", "cheer").notStarted) {
                 nav.bg("875_entrance/gamedayc.jpg");
                 chat(49, 875);
                 nav.buildnav([0]);
@@ -25,7 +25,7 @@ room875.main = function () {
                 chat(8, 875);
         }
         else if (g.dt.getDay() === 6) {
-            if (candyStep < 102) {
+            if (sc.getMission("candy", "cheer").notStarted) {
                 nav.bg("875_entrance/candy.jpg");
                 nav.buildnav([0]);
                 chat(1, 875);
@@ -35,21 +35,45 @@ room875.main = function () {
                 chat(7, 875);
             }
             else {
-                nav.bg("875_entrance/security.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "guard2",
+                    "left": 822,
+                    "top": 109,
+                    "width": 449,
+                    "height": 971,
+                    "title": "Guard",
+                    "image": "875_entrance/guard.png"
+                }, 875);
+
                 nav.buildnav([0]);
                 chat(2, 875);
             }
         }
         else {
-            nav.bg("875_entrance/security.jpg");
             nav.buildnav([0]);
-            chat(0, 875);
+            nav.button({
+                "type": "btn",
+                "name": "guard0",
+                "left": 822,
+                "top": 109,
+                "width": 449,
+                "height": 971,
+                "title": "Guard",
+                "image": "875_entrance/guard.png"
+            }, 875);
         }
     }
 };
 
 room875.btnclick = function (name) {
     switch (name) {
+        case "guard2":
+            chat(2, 875);
+            break;
+        case "guard0":
+            chat(0, 875);
+            break;
         case "strip":
             cl.nude();
             gv.mod("arousal", 50);
@@ -161,7 +185,7 @@ room875.chatcatch = function (callback) {
             char.room(0);
             break;
         case "practice":
-            var cheerLevel = gv.get("cheerlevel");
+            var cheerLevel = levels.get("cheer").l;
             if (cheerLevel < 3) {
                 g.internal = cl.hasoutfit("workout");
                 if (g.internal === null)
@@ -190,7 +214,7 @@ room875.chatcatch = function (callback) {
             else {
                 g.internal = cl.hasoutfit("cheerleader");
                 if (g.internal === null) {
-                    if (gv.get("cheerleader") < 95) {
+                    if (levels.get("cheer").c < 90) {
                         chat(9, 875);
                     }
                     else {
@@ -219,10 +243,13 @@ room875.chatcatch = function (callback) {
             cl.display();
             zcl.displayMain(0, 650, .2, "clothes", true);
             break;
+        case "cheer1_2xx":
+            cl.c.panties = null;
+            zcl.displayMain(0, 650, .2, "clothes", true);
+            cl.display();
+            break;
         case "cheer1_2x":
             cl.c.pants = "cl";
-            cl.c.panties = null;
-            cl.display();
             nav.killall();
             nav.bg("875_entrance/cheer1_2.jpg");
             break;
@@ -250,14 +277,13 @@ room875.chatcatch = function (callback) {
             break;
         case "cheer1_13":
             gv.mod("fame", 30);
-            gv.set("cheerlevel", 8);
-            gv.set("cheerleader", 100);
+            levels.set("cheer", 100, 8);
             char.settime(17, 12);
             char.room(51);
             break;
         case "cheer9_1":
             nav.bg("875_entrance/" + callback + ".jpg");
-            if (gv.get("cheerlevel") === 9)
+            if (levels.get("cheer").l === 9)
                 chat(32, 875);
             else
                 chat(31, 875);
@@ -269,7 +295,7 @@ room875.chatcatch = function (callback) {
             gv.mod("creamPied", 7);
             gv.mod("giveOralMale", 12);
             char.settime(20, 7);
-            gv.set("cheerlevel", 10);
+            levels.set("cheer", null, 10);
             char.room(0);
             break;
         default:
@@ -302,8 +328,8 @@ room875.chat = function (chatID) {
         var cArray = [
             {
                 chatID: 0,
-                speaker: "random",
-                text: "Campus security! You can't be here when there's no game person of unkown gender! Skidaddle.",
+                speaker: "!footballguard",
+                text: "Campus security! You can't be here when there's no game! Skidaddle.",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
@@ -319,7 +345,7 @@ room875.chat = function (chatID) {
             },
             {
                 chatID: 2,
-                speaker: "random",
+                speaker: "!footballguard",
                 text: "Cheerleader practice already started. They told me to tell you to scram and don't be late.",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
@@ -426,7 +452,7 @@ room875.chat = function (chatID) {
                     "bad luck. Ever cheerleader that isn't an idiot knows not to wear spankies to their first game! Take " +
                     "those off. Hurry up, we gotta get out there. ",
                 button: [
-                    { chatID: 15, text: "Oh. I didn't know that. Ok.", callback: "cheer1_2x" },
+                    { chatID: 50, text: "Oh. I didn't know that. Ok.", callback: "cheer1_2xx" },
                 ]
             },
             {
@@ -725,6 +751,14 @@ room875.chat = function (chatID) {
                     "cute enough to cheer. *wink*",
                 button: [
                     { chatID: 48, text: "I would love to! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "candy",
+                text: "Just be careful with your high kicks. Hehehehe. Now lets go cheer! ",
+                button: [
+                    { chatID: 15, text: "Oh yeah! ", callback: "cheer1_2x" }
                 ]
             },
         ];

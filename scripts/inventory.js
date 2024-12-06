@@ -64,11 +64,13 @@ inv.master = [
     { type: "x", name: "studentid", display: "Student ID", entry: false, count: null, cost: 0, image: "sudentid.png", n: false, desc: "Stolen Student ID" },
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "l", name: "lockpick", display: "Lock Pick Set", entry: false, count: null, cost: 0, image: "lockpick.png", n: false, desc: "Lock Pick Set for use on cases" },
-    { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 1, image: "makeup.png", n: false, desc: "Make your face pretty" },
-    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 7, image: "redl.png", n: false, desc: "Red Lipstick" },
-    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: 0, cost: 7, image: "pinkl.png", n: false, desc: "Pink Lipstick" },
-    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 7, image: "purplel.png", n: false, desc: "Purple Lipstick" },
-    { type: "m", name: "blackl", display: "Black Lipstick", entry: false, count: 0, cost: -1, image: "lipstickBlack.png", n: false, desc: "Stolen Black Lipstick" },
+    { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 47, image: "makeup.png", n: false, desc: "Makeup kit [Sold as 20 uses]" },
+    { type: "m", name: "eyeshadow", display: "Eyeshadow", entry: false, count: 0, cost: 22, image: "eyeshadow.png", n: false, desc: "Eyeshadow [Sold as 20 uses]" },
+    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 7, image: "redl.png", n: false, desc: "Red Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: 0, cost: 7, image: "pinkl.png", n: false, desc: "Pink Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 7, image: "purplel.png", n: false, desc: "Purple Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "bluel", display: "Blue Lipstick", entry: false, count: 0, cost: 7, image: "bluel.png", n: false, desc: "Blue Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "blackl", display: "Black Lipstick", entry: false, count: 0, cost: -1, image: "lipstickBlack.png", n: false, desc: "Stolen Black Lipstick [Sold as 20 uses]" },
     { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false, desc: "Landlord's Key" },
     { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false, desc: "Co-Tenant's Key" },
     { type: "o", name: "keyJanice", display: "Girl Friend's Key", entry: false, count: null, cost: 0, image: "keyJanice.png", n: false, desc: "Key to Girl Friend's house. " },
@@ -616,7 +618,10 @@ inv.createElements = function () {
                     if (isNaN(thisCount))
                         thisCount = 1;
                     var totalMoney = -1 * thisCount * thisInv.cost;
-                    inv.master[ti].count += thisCount;
+                    if(inv.master[ti].type === "m")
+                        inv.master[ti].count += (thisCount * 20);
+                    else
+                        inv.master[ti].count += thisCount;
                     inv.master[ti].entry = true;
                     gv.mod("money", totalMoney);
                     $("#menu_displayAction").hide();

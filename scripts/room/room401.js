@@ -146,8 +146,8 @@ room401.main = function () {
             nav.bg("401_purchase/paint.jpg", "401_purchase/paint.jpg");
             break;
         case "makeup":
-            navList = [0];
-            room401.makeInv(["m"], true, 1);
+            navList = [407, 0];
+            room401.makeInv(["m"], qdress.st[5].ach, 1);
             nav.bg("407_makeup/bg.jpg");
             break;
         case "dale":

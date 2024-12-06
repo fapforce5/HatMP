@@ -134,7 +134,15 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         zcl.displayMainSub(("lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png"), top, left, ratio);
         //cl.displayMainWhere(cl.lips, cl.c.lips, top, left, ratio, dback);
         //set eyes
-        zcl.displayMainSub("eyes_" + cl.c.eyes + ".png", top, left, ratio);
+        if (cl.c.pissface === null) {
+            zcl.displayMainSub("eyes_" + cl.c.eyes + ".png", top, left, ratio);
+        }
+        else {
+            zcl.displayMainSub("eyeliner_" + cl.c.pissface + ".png", top, left, ratio);
+            zcl.displayMainSub("eyes_" + cl.c.eyes + "_f.png", top, left, ratio);
+        }
+
+        
 
         //set cum
         if (cl.c.cumface && !dback)

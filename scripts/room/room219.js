@@ -85,17 +85,101 @@ room219.btnclick = function (name) {
             }, 219);
             
             g.roomTimeout = setTimeout(function () {
-                nav.killall();
-                //if (missy.get("uniform") > 2)
-
-                nav.bg("219_dataEntry/hypnobg.jpg");
-                g.internal = cl.c.eyes;
-                cl.c.eyes = "hypno";
-                zcl.displayMain(-100, -200, .6, "clothes", false);
-                missy.st[11].c++;
                 levels.mod("sub", 50, 1);
                 chat(6, 219);
+                room219.btnclick("hypnoComplete");
             }, 7000);
+            break;
+        case "hypno2":
+        case "hypno3":
+        case "hypno4":
+        case "hypno6":
+            var hchatid = 0;
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "hypno",
+                "left": 749,
+                "top": 122,
+                "width": 790,
+                "height": 411,
+                "image": "219_dataEntry/" + name + ".jpg"
+            }, 219);
+            switch (name) {
+                case "hypno2":
+                    hchatid = 10;
+                    levels.mod("xdress", 50);
+                    break;
+                case "hypno3":
+                    hchatid = 11;
+                    levels.mod("anal", 50);
+                    break;
+                case "hypno4":
+                    hchatid = 12;
+                    var wi = levels.i("strength");
+                    if (levels.st[wi].l > 0) {
+                        levels.st[wi].l--;
+                        g.popUpNotice("You are now weaker. ");
+                    }
+                    break;
+                case "hypno6":
+                    hchatid = 14;
+                    levels.mod("makeup", 50);
+                    break;
+            }
+            g.roomTimeout = setTimeout(function () {
+                chat(hchatid, 219);
+                room219.btnclick("hypnoComplete");
+            }, 3000);
+            break;
+        case "hypno5":
+            nav.killall();
+            if (cl.c.cock > 3) {
+                nav.button({
+                    "type": "img",
+                    "name": "hypno",
+                    "left": 749,
+                    "top": 122,
+                    "width": 790,
+                    "height": 411,
+                    "image": "219_dataEntry/hypno4.jpg"
+                }, 219);
+                var wi1 = levels.i("strength");
+                if (levels.st[wi1].l > 0) {
+                    levels.st[wi1].l--;
+                    g.popUpNotice("You are now weaker. ");
+                }
+                g.roomTimeout = setTimeout(function () {
+                    chat(12, 219);
+                    room219.btnclick("hypnoComplete");
+                }, 3000);
+            }
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "hypno",
+                    "left": 749,
+                    "top": 122,
+                    "width": 790,
+                    "height": 411,
+                    "image": "28_transformation/cock_" + cl.c.cock + ".gif"
+                }, 219);
+                g.popUpNotice("You cock got smaller. ");
+                cl.c.cock++;
+                g.roomTimeout = setTimeout(function () {
+                    chat(13, 219);
+                    room219.btnclick("hypnoComplete");
+                }, 6000);
+            }
+            break;
+        case "hypnoComplete":
+            nav.killall();
+            nav.bg("219_dataEntry/hypnobg.jpg");
+            g.internal = cl.c.eyes;
+            cl.c.eyes = "hypno";
+            zcl.displayMain(-100, -200, .6, "clothes", false);
+            missy.st[11].c++;
+            
             break;
         case "type0":
             nav.killall();
@@ -259,6 +343,48 @@ room219.chat = function (chatID) {
             text: "Hey, you're kinda zoned out. Take a break it's lunch time! ",
             button: [
                 { chatID: -1, text: "Oh, huh, yeah.", callback: "workLunch" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "Hapiness is a new pretty dress. Must wear dresses. Be a pretty girl. ",
+            button: [
+                { chatID: 7, text: "[Snap out of it]", callback: "snapoutHypno" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "me",
+            text: "Pussies need dick. Must get fucked. Anal is life. ",
+            button: [
+                { chatID: 7, text: "[Snap out of it]", callback: "snapoutHypno" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "me",
+            text: "Be a victim. Stay weak. Men love weak girls they can easily overpower. ",
+            button: [
+                { chatID: 7, text: "[Snap out of it]", callback: "snapoutHypno" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "me",
+            text: "Tiny dick losers never get the girl. I don't need a girl if I " +
+                "am the girl.",
+            button: [
+                { chatID: 7, text: "[Snap out of it]", callback: "snapoutHypno" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "me",
+            text: "Be pretty wear makeup. Attraction starts with appearances. Must " +
+                "appear to be a pretty girl. ",
+            button: [
+                { chatID: 7, text: "[Snap out of it]", callback: "snapoutHypno" },
             ]
         },
     ];

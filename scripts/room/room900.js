@@ -38,18 +38,19 @@ room900.main = function () {
 room900.btnclick = function (name) {
     switch (name) {
         case "building":
-            nav.killall();
-            nav.bg("900_college/frontDesk.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "lib",
-                "left": 978,
-                "top": 326,
-                "width": 185,
-                "height": 324,
-                "image": "900_college/lib.png"
-            }, 900);
-            nav.buildnav([0]);
+            char.room(905);
+            //nav.killall();
+            //nav.bg("900_college/frontDesk.jpg");
+            //nav.button({
+            //    "type": "btn",
+            //    "name": "lib",
+            //    "left": 978,
+            //    "top": 326,
+            //    "width": 185,
+            //    "height": 324,
+            //    "image": "900_college/lib.png"
+            //}, 900);
+            //nav.buildnav([0]);
             break;
         case "lib":
             if (inv.has("studentid")) {

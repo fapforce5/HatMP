@@ -132,7 +132,9 @@ gv.init = function () {
         //{ n: "sissy", t: 0, q: "sissy" },
         //{ n: "usedSissyPoints", t: 0, q: "sissy" },
 
-
+        { n: "lipstick", t: null, q: "string" },
+        { n: "eyeliner", t: null, q: "string" },
+        { n: "makeupx", t: "n", q: "string" },
 
 
 
@@ -142,7 +144,6 @@ gv.init = function () {
 
 
         { n: "reddoorloc", t: 1, q: "int" },
-        { n: "makeup", t: 0, q: "int" },
         { n: "sewerEnd", t: 0, q: "int" },
         { n: "sewerMap", t: "", q: "string" },
         { n: "sewerID", t: 0, q: "int" },
@@ -254,7 +255,11 @@ gv.init = function () {
         { n: "lolaDrunk", t: false },
         { n: "pills", t: false },
         { n: "landlordDick", t: false },
-        { n: "lolaDick", t: false }
+        { n: "lolaDick", t: false },
+
+        { n: "makeup", t: false },
+        { n: "lipstick", t: false },
+        { n: "eyeshadow", t: false }
     ];
 
     weekly.st = [
@@ -278,7 +283,7 @@ gv.init = function () {
 
         { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
         { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 14, n: "notused", d: "Not used", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 14, n: "makeup", d: "Makeup", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
         { id: 15, n: "notused1", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
         { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: false },
         { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: false },
@@ -659,6 +664,15 @@ gv.clearButtCum = function () {
     }
 }
 
+levels.set = function (name, c, l) {
+    let i = levels.i(name);
+    if(c !== null)
+        levels.st[i].c = c;
+    if(l !== null)
+        levels.st[i].l = l;
+    sstat.makeGraph();
+};
+
 levels.mod = function (name, amount, targetLevel = 999) {
     let i, fitnessStart, startingLevel;
     fitnessStart = null;
@@ -672,8 +686,22 @@ levels.mod = function (name, amount, targetLevel = 999) {
     if (levels.st[i].c === null || isNaN(levels.st[i].c))
         levels.st[i].c = 0;
 
-
-    if (amount > 0) {
+    if (!levels.st[i].autoLevel) {
+        levels.st[i].c += amount;
+        if (levels.st[i].c < 0)
+            levels.st[i].c = 0;
+        if (levels.st[i].c > 100)
+            levels.st[i].c = 100;
+        if (amount > 0) {
+            if (levels.st[i].c > 99)
+                g.popUpNotice("You're maxed out for " + levels.st[i].d);
+            else if(amount > 0)
+                g.popUpNotice("You gained "  + amount + " points for " + levels.st[i].d + "!");
+            else
+                g.popUpNotice("You lost " + Math.abs(amount) + " points for " + levels.st[i].d + "!");
+        }
+    }
+    else if (amount > 0) {
         if (levels.st[i].compoundLevel) {
             levels.st[i].c += amount;
             while (levels.st[i].c >= levels.getCap(levels.st[i].l)) {
@@ -699,21 +727,21 @@ levels.mod = function (name, amount, targetLevel = 999) {
             else
                 g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
         }
-        else {
-            levels.st[i].c += amount;
-            while (levels.st[i].c >= 100 || levels.st[i].l >= targetLevel) {
-                levels.st[i].c -= 100;
-                levels.st[i].l++;
-            }
-            if (levels.st[i].c > 99)
-                levels.st[i].c = 99;
+        //else {
+        //    levels.st[i].c += amount;
+        //    while (levels.st[i].c >= 100 || levels.st[i].l >= targetLevel) {
+        //        levels.st[i].c -= 100;
+        //        levels.st[i].l++;
+        //    }
+        //    if (levels.st[i].c > 99)
+        //        levels.st[i].c = 99;
 
-            let levelsChange = levels.st[i].l - startingLevel;
-            if (levelsChange > 0)
-                g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-            else
-                g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-        }
+        //    let levelsChange = levels.st[i].l - startingLevel;
+        //    if (levelsChange > 0)
+        //        g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+        //    else
+        //        g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+        //}
     }
     else if (amount < 0) {
         levels.st[i].c -= amount;
@@ -791,6 +819,15 @@ levels.desc = function (name, level) {
     if (name === "fitness") {
         return { count: -1, txt: (level * 4) + " Energy Boost" };
     }
+    else if (name === "fame") {
+        return { count: -1, txt: (level) + "x chance of rape " };
+    }
+    else if (name === "strength") {
+        return { count: -1, txt: "" };
+    }
+    else if (name === "charisma") {
+        return { count: -1, txt: "" };
+    }
     //if (name === "defense") {
     //    return { count: -1, txt: (level * 5) + " Defense" };
     //}
@@ -830,9 +867,9 @@ levels.desc = function (name, level) {
                 { id: 0, txt: "Not submissive" },
                 { id: 1, txt: "Can kiss Missy's feet" },
                 { id: 2, txt: "Can x Missy" },
-                { id: 3, txt: "Can offer mouth in violent situations" },
+                { id: 3, txt: "Can offer mouth" },
                 { id: 4, txt: "can y missy" },
-                { id: 5, txt: "Can offer ass in violent situations" },
+                { id: 5, txt: "Can offer ass" },
                 { id: 6, txt: "TBD" },
                 { id: 7, txt: "TBD" },
                 { id: 8, txt: "TBD" },
@@ -855,12 +892,12 @@ levels.desc = function (name, level) {
                 { id: 6, txt: "Deepthroat cock" },
                 { id: 7, txt: "Deepthroat large cocks" },
                 { id: 8, txt: "Can suck horse cock" },
-                { id: 9, txt: "Need to suck cock everyday!" },
+                { id: 9, txt: "Need cock!" },
             ];
             break;
         case "anal":
             levelsDesc = [
-                { id: 0, txt: "My butt is for pooping" },
+                { id: 0, txt: "Butt stuff is gross" },
                 { id: 1, txt: "Finger in your butt" },
                 { id: 2, txt: "Tiny dildo" },
                 { id: 3, txt: "Small dildo" },
@@ -883,7 +920,7 @@ levels.desc = function (name, level) {
                 { id: 6, txt: "cum gains 5 energy" },
                 { id: 7, txt: "cum gains 15 energy" },
                 { id: 8, txt: "cum gains 25 energy" },
-                { id: 9, txt: "You are addicted to cum" },
+                { id: 9, txt: "Addicted to cum" },
             ];
             break;
         case "pi":
@@ -907,18 +944,16 @@ levels.desc = function (name, level) {
                 { id: 2, txt: "Pissed on by girl" },
                 { id: 3, txt: "Pissed on my guy" },
                 { id: 4, txt: "Can drink piss" },
-                { id: 5, txt: "piss drink + 5 energy" },
-                { id: 6, txt: "piss drink + 10 energy" },
-                { id: 7, txt: "piss drink + 15 energy" },
-                { id: 8, txt: "piss drink + 25 energy" },
-                { id: 9, txt: "Addicted to piss" },
+                { id: 5, txt: "Love piss!" },
+                { id: 6, txt: "Yum yum piss" },
+                { id: 7, txt: "Addicted to piss" },
             ];
             break;
         case "beast":
             levelsDesc = [
-                { id: 0, txt: "Can pet / brush animals" },
-                { id: 1, txt: "Can 'play' with animals" },
-                { id: 2, txt: "Can get knotty dildo" },
+                { id: 0, txt: "Pet animals" },
+                { id: 1, txt: "'Play' with animals" },
+                { id: 2, txt: "Knotty dildo" },
                 { id: 3, txt: "Hand job" },
                 { id: 4, txt: "blow job" },
                 { id: 5, txt: "anal" },
@@ -937,10 +972,17 @@ levels.desc = function (name, level) {
                 { id: 4, txt: "Beginner" },
                 { id: 5, txt: "Stacy's Bitch" },
                 { id: 6, txt: "Konga Line" },
-                { id: 7, txt: "Can Cheer at the Games!" },
-                { id: 8, txt: "Small Dick Loser" },
+                { id: 7, txt: "Cheer at the Games!" },
+                { id: 8, txt: "Real Cheerleader!" },
                 { id: 9, txt: "Real Cheerleader!" },
                 { id: 10, txt: "Cum Bucket" },
+            ];
+            break;
+        case "makeup":
+            levelsDesc = [
+                { id: 0, txt: "Light makeup" },
+                { id: 1, txt: "Makeup" },
+                { id: 2, txt: "Bimbo Makeup" },
             ];
             break;
     };
@@ -949,7 +991,7 @@ levels.desc = function (name, level) {
         return { count: -1, txt: "not found" };
     }
     else if (level >= levelsDesc.length) {
-        return { count: levelsDesc.length, txt: levelsDesc[levelsDesc.length - 1].text };
+        return { count: levelsDesc.length, txt: levelsDesc[levelsDesc.length - 1].txt };
     }
     else {
         return { count: levelsDesc.length, txt: levelsDesc[level].txt };
@@ -1585,6 +1627,11 @@ sex.getFuck = function () {
     };
 
     return tempFuck;
+};
+
+qdress.unlock = function () {
+    for (let i = 0; i < qdress.st.length; i++)
+        qdress.st[i].ach = true;
 };
 
 gv.timeTxt = function (hour, minute) {

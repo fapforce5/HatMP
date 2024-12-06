@@ -22,7 +22,7 @@ room727.main = function () {
             "height": 471,
             "image": "727_bathroom/tim1pants.png"
         }, 727);
-        var timStep = sc.taskGetStep("tim", "fuck"); 
+        var timStep = sc.taskGetStep("tim", "fuck");
         if (timStep < 2) {
             chat(0, 727);
         }
@@ -66,7 +66,14 @@ room727.main = function () {
         $.each(btnList, function (i, v) {
             nav.button(v, 727);
         });
-        nav.buildnav(navList);
+        let cllist = cl.hasoutfit("public");
+        if (cllist === null) {
+            nav.buildnav(navList);
+        }
+        else {
+            g.internal = cllist;
+            chat(999, 727);
+        }
     }
 };
 
@@ -247,188 +254,198 @@ room727.chatcatch = function (callback) {
 };
 
 room727.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "tim",
-            text: "It's ok my sexy girl. My dick don't bite. Pull it out.",
-            button: [
-                { chatID: -1, text: "ok", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "tim",
-            text: "That's a sexy cock isn't it? Why don't you kiss it.",
-            button: [
-                { chatID: -1, text: "Like this?", callback: "" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "tim",
-            text: "That's a beautiful cock isn't it? I bet your pussy is dripping looking at it. Let me strip all this off " +
-            "so you can see my awesome abs while you suck it.",
-            button: [
-                { chatID: 3, text: "Oh yeah baby, make my pussy wet.", callback: "tim2b" }
-            ]
-        },
-        {
-            chatID: 3,
+    if (chatID === 999) {
+        return {
+            chatID: 999,
             speaker: "thinking",
-            text: "I can't believe he still thinks I'm a girl. I wonder what he would do if he found out.",
-            button: [
-                { chatID: 4, text: "...", callback: "tim2c" }
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "tim",
-            text: "Oh yeah slut, like what you see?",
-            button: [
-                { chatID: 5, text: "Uh huh.", callback: "tim2d" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "thinking",
-            text: "I can't wait for him to start fucking my face!",
-            button: [
-                { chatID: 6, text: "...", callback: "tim2da" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "tim",
-            text: "I'm going to throat fuck you.",
-            button: [
-                { chatID: -1, text: "GACKKKK", callback: "tim2e" }
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "tim",
-            text: "I'm going to cum all over your face so everyone knows that you sucked the best dick in this club!",
-            button: [
-                { chatID: 8, text: "Huh?", callback: "tim2f" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "tim",
-            text: "I'm going to take off. You do look beautiful wearing my cum. You should totally wear that home! ",
-            button: [
-                { chatID: -1, text: "You're right, I'm beautiful in my cum.", callback: "tim2end" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "thinking",
-            text: "She's probably in the stall. I'll just walk right in, or I can chicken out.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "cindy",
-            text: "...",
-            button: [
-                { chatID: 11, text: "Oh... hi... I thought you...", callback: "girl2" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "cindy",
-            text: "I was hoping to see you again, just didn't think it would be here... So what do ya got, let's see it.",
-            button: [
-                { chatID: -1, text: "[Pull out your cock]", callback: "girl3" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "cindy",
-            text: "Awww. Did you break your penis, it looks like it's got a cast. Poor little penis. ",
-            button: [
-                { chatID: 13, text: "Oh yeah... It's got a cast.", callback: "" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "cindy",
-            text: "That's ok. We can do this later when your penis is better. ",
-            button: [
-                { chatID: -1, text: "*Sad noises* ok, bye.", callback: "girlBad" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "cindy",
-            text: "You're kidding right? I like to enjoy getting fucked, and that little thing isn't going to please anyone. " +
-                "You should look into growing your penis little man, then maybe we can do this. ",
-            button: [
-                { chatID: 13, text: "*Sad noises* ok, bye.", callback: "" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "cindy",
-            text: "That is a beautiful penis, I love it! Do you know how to use it? ",
-            button: [
-                { chatID: 16, text: "Let me show you!", callback: "girl3a" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "cindy",
-            text: "Oh my my ",
-            button: [
-                { chatID: 17, text: "Grunt", callback: "girl4" }
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "cindy",
-            text: "Yes! Yes! YES! YES! ",
-            button: [
-                { chatID: 18, text: "Groan", callback: "girl5" }
-            ]
-        },
-        {
-            chatID: 18,
-            speaker: "cindy",
-            text: "I'm so close! Don't you dare cum yet!",
-            button: [
-                { chatID: 19, text: "MMmmmMMMMm", callback: "girl6" }
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "cindy",
-            text: "Fuck you're good! You can cum now!",
-            button: [
-                { chatID: 20, text: "Groan", callback: "girl7" }
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "cindy",
-            text: "Thanks! You're a good fuck!",
-            button: [
-                { chatID: 21, text: "You're welcome", callback: "" }
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "cindy",
-            text: "Come back and fuck me anytime!",
-            button: [
-                { chatID: -1, text: "Sweet!", callback: "girl8" }
-            ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+            text: "Before I leave I need to get dressed. <span class='hl'>I'm missing my " + g.internal + ".</span>",
+            button: []
+        }; 
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "tim",
+                text: "It's ok my sexy girl. My dick don't bite. Pull it out.",
+                button: [
+                    { chatID: -1, text: "ok", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "tim",
+                text: "That's a sexy cock isn't it? Why don't you kiss it.",
+                button: [
+                    { chatID: -1, text: "Like this?", callback: "" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "tim",
+                text: "That's a beautiful cock isn't it? I bet your pussy is dripping looking at it. Let me strip all this off " +
+                    "so you can see my awesome abs while you suck it.",
+                button: [
+                    { chatID: 3, text: "Oh yeah baby, make my pussy wet.", callback: "tim2b" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "thinking",
+                text: "I can't believe he still thinks I'm a girl. I wonder what he would do if he found out.",
+                button: [
+                    { chatID: 4, text: "...", callback: "tim2c" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "tim",
+                text: "Oh yeah slut, like what you see?",
+                button: [
+                    { chatID: 5, text: "Uh huh.", callback: "tim2d" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "thinking",
+                text: "I can't wait for him to start fucking my face!",
+                button: [
+                    { chatID: 6, text: "...", callback: "tim2da" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "tim",
+                text: "I'm going to throat fuck you.",
+                button: [
+                    { chatID: -1, text: "GACKKKK", callback: "tim2e" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "tim",
+                text: "I'm going to cum all over your face so everyone knows that you sucked the best dick in this club!",
+                button: [
+                    { chatID: 8, text: "Huh?", callback: "tim2f" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "tim",
+                text: "I'm going to take off. You do look beautiful wearing my cum. You should totally wear that home! ",
+                button: [
+                    { chatID: -1, text: "You're right, I'm beautiful in my cum.", callback: "tim2end" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "thinking",
+                text: "She's probably in the stall. I'll just walk right in, or I can chicken out.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "cindy",
+                text: "...",
+                button: [
+                    { chatID: 11, text: "Oh... hi... I thought you...", callback: "girl2" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "cindy",
+                text: "I was hoping to see you again, just didn't think it would be here... So what do ya got, let's see it.",
+                button: [
+                    { chatID: -1, text: "[Pull out your cock]", callback: "girl3" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "cindy",
+                text: "Awww. Did you break your penis, it looks like it's got a cast. Poor little penis. ",
+                button: [
+                    { chatID: 13, text: "Oh yeah... It's got a cast.", callback: "" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "cindy",
+                text: "That's ok. We can do this later when your penis is better. ",
+                button: [
+                    { chatID: -1, text: "*Sad noises* ok, bye.", callback: "girlBad" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "cindy",
+                text: "You're kidding right? I like to enjoy getting fucked, and that little thing isn't going to please anyone. " +
+                    "You should look into growing your penis little man, then maybe we can do this. ",
+                button: [
+                    { chatID: 13, text: "*Sad noises* ok, bye.", callback: "" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "cindy",
+                text: "That is a beautiful penis, I love it! Do you know how to use it? ",
+                button: [
+                    { chatID: 16, text: "Let me show you!", callback: "girl3a" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "cindy",
+                text: "Oh my my ",
+                button: [
+                    { chatID: 17, text: "Grunt", callback: "girl4" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "cindy",
+                text: "Yes! Yes! YES! YES! ",
+                button: [
+                    { chatID: 18, text: "Groan", callback: "girl5" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "cindy",
+                text: "I'm so close! Don't you dare cum yet!",
+                button: [
+                    { chatID: 19, text: "MMmmmMMMMm", callback: "girl6" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "cindy",
+                text: "Fuck you're good! You can cum now!",
+                button: [
+                    { chatID: 20, text: "Groan", callback: "girl7" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "cindy",
+                text: "Thanks! You're a good fuck!",
+                button: [
+                    { chatID: 21, text: "You're welcome", callback: "" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "cindy",
+                text: "Come back and fuck me anytime!",
+                button: [
+                    { chatID: -1, text: "Sweet!", callback: "girl8" }
+                ]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

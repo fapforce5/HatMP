@@ -23,7 +23,7 @@ room51.main = function () {
             "height": 437,
             "image": "51_livingRoom/hallway.png"
         }];
-        if (sc.tiffany().roomID === 57 || sc.candy().roomID === 57) {
+        if (sc.getTimeline("tiffany").roomID) {
             btnList.push({
                 "type": "btn",
                 "name": "reddooropen",
@@ -249,23 +249,6 @@ room51.chatcatch = function (callback) {
         case "t29":
 
             cl.display();
-            //for (i = 0; i < cl.list.length; i++) {
-            //    if (cl.list[i].sex === "m")
-            //        cl.list[i].inv = false;
-            //}
-            //cl.saveOutfit = [
-            //    { name: "Outfit 1", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Outfit 2", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Outfit 3", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
-            //];
-            //sc.setstep("tiffany", 16);
-            //sc.setstep("candy", 100);
-            //sc.revokeStep("tiffany", -1);
-            //sc.revokeStep("tiffany", -9);
-            //g.sissy[29].ach = true;
-            //gv.set("oncase", null);
             sc.completeMissionTask("tiffany", "friend", 3, true);
             sc.show("candy");
             sc.startMission("candy", "cuck");

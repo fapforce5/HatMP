@@ -1,8 +1,12 @@
 ﻿//Room name
 var room876 = {};
 room876.main = function () {
-    var cheerlevel = gv.get("cheerlevel");
+    var cheerlevel = levels.get("cheer").l;
     if (cheerlevel === 0) {
+        if (sc.getMission("stacy", "cheer").notStarted) {
+            sc.show("stacy");
+            sc.startMission("stacy", "cheer");
+        }
         nav.bg("876_gym/tryout.jpg");
         zcl.displayMain(350, 1000, .07, "clothes", false);
         chat(0, 876);
@@ -52,21 +56,13 @@ room876.btnclick = function (name) {
     switch (name) {
         case "1_1":
             nav.killbutton("1_1");
-            if (gv.get("cheerleader") > 90) {
+            if (levels.get("cheer").c > 90) {
                 nav.bg('876_gym/pn_hips.jpg');
                 chat(43, 876);
             }
             else {
                 nav.bg("876_gym/meet5.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "1_1x",
-                    "left": 1687,
-                    "top": 800,
-                    "width": 233,
-                    "height": 150,
-                    "image": "526_bar/arrowRight.png"
-                }, 876);
+                nav.next("1_1x");
             }
             break;
         case "1_1x":
@@ -110,10 +106,11 @@ room876.chatcatch = function (callback) {
                 tempList.push(" hair is too short");
             if (cl.getBodyHair() !== null)
                 tempList.push(" body hair is gross");
-            if (cl.c.cock < 4)
+            if (cl.c.cock < 3)
                 tempList.push(" cock is too big");
 
             if (tempList.length === 0) {
+                sc.completeMissionTask("stacy", "cheer", 0);
                 chat(15, 876);
             }
             else {
@@ -193,13 +190,11 @@ room876.chatcatch = function (callback) {
             break;
         case "meet18":
             cl.undo();
-            gv.mod("phum", 1);
-            gv.mod("cheerleader", 20);
-            gv.mod("cheerlevel", 1);
-            sc.setstep("candy", 104);
+            levels.mod("xdress", 50);
+            levels.mod("sub", 20);
+            levels.set("cheer", 20, 1);
             char.settime(15, 37);
             char.room(0);
-            sc.setstep("stacy", 1);
             break;
         case "1_0":
             cl.nude();
@@ -208,15 +203,7 @@ room876.chatcatch = function (callback) {
         case "1_1":
             nav.killall();
             nav.bg("876_gym/meet4.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "1_1",
-                "left": 1687,
-                "top": 800,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 876);
+            nav.next("1_1");
             break;
         case "leave":
             cl.undo();
@@ -306,18 +293,16 @@ room876.chatcatch = function (callback) {
             break;
         case "routine1_kick3":
             cl.undo();
-            gv.mod("phum", 1);
-            gv.set("cheerleader", 20);
-            gv.set("cheerlevel", 2);
-            char.makeGraph();
+            levels.mod("sub", 20);
+            sc.completeMissionTask("stacy", "cheer", 1)
+            levels.set("cheer", 20, 2);
             char.settime(15, 37);
             char.room(0);
-            sc.setstep("stacy", 2);
             break;
         case "routine1_1":
             nav.killall();
             nav.bg("876_gym/sn_hips.jpg");
-            if (gv.get("cheerleader") < 95) {
+            if (levels.get("cheer").c < 90) {
                 chat(51, 876);
             }
             else {
@@ -331,6 +316,8 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/routine1_2.jpg");
             break;
         case "routine1_3":
+            sc.completeMissionTask("stacy", "cheer", 2);
+            sc.completeMissionTask("stacy", "cheer", 3);
             cl.c.panties = "cl";
             cl.c.pants = "cl";
             cl.c.shirt = "cl";
@@ -345,10 +332,8 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/routine1_3.jpg");
             break;
         case "routine1_7":
-            gv.mod("phum", 1);
-            gv.set("cheerlevel", 3);
-            gv.set("cheerleader", 20);
-            char.makeGraph();
+            levels.mod("sub", 20);
+            levels.set("cheer", 20, 3);
             char.settime(20, 7);
             char.room(0);
             break;
@@ -360,10 +345,8 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/meet9.jpg");
             break;
         case "routine2_5":
-            gv.mod("phum", 1);
-            gv.set("cheerlevel", 4);
-            gv.set("cheerleader", 20);
-            char.makeGraph();
+            levels.mod("sub", 20);
+            levels.set("cheer", 20, 4);
             char.settime(20, 7);
             char.room(0);
             break;
@@ -377,59 +360,40 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/routine1_3.jpg");
             break;
         case "routine2_1_9":
-            gv.mod("giveOralFemale", 1);
-            gv.set("cheerlevel", 5);
-            gv.set("cheerleader", 20);
-            char.makeGraph();
+            levels.oralGive(4, false, false, "f");
+            levels.set("cheer", 20, 5);
             char.settime(20, 7);
             char.room(0);
             break;
         case "cheer5_4":
             g.internal = 5;
             nav.bg("876_gym/cheer5_4.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "cheer5",
-                "left": 1687,
-                "top": 800,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 876);
+            nav.next("cheer5");
             break;
         case "cheer5_10":
             nav.bg("876_gym/" + callback + ".jpg");
-            cl.stretchButt(null, 5);
             break;
         case "cheer5_14":
-            gv.mod("sissygasm", 1);
-            gv.set("cheerlevel", 6);
-            gv.set("cheerleader", 20);
+            levels.anal(5, true);
+            levels.set("cheer", 20, 6);
             cl.add("accessories", "pompom");
-            char.makeGraph();
             char.settime(20, 7);
             char.room(0);
             break;
         case "cheer6_9":
-            gv.set("cheerlevel", 7);
-            gv.set("cheerleader", 100);
-            char.makeGraph();
+            sc.completeMissionTask("stacy", "cheer", 4);
+            levels.set("cheer", 20, 7);
             char.settime(20, 7);
             char.room(0);
             break;
         case "cheer8_9":
-            gv.set("cheerlevel", 9);
-            gv.set("cheerleader", 100);
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
-            char.makeGraph();
+            levels.set("cheer", 20, 9);
+            levels.anal(5, false, "m", true);
             char.settime(17, 7);
             char.room(0);
             break;
         case "cheer8_9bad":
-            gv.set("cheerlevel", 9);
-            gv.set("cheerleader", 100);
-            char.makeGraph();
+            levels.set("cheer", 100, 9);
             char.settime(17, 7);
             char.room(0);
             break;
@@ -437,7 +401,6 @@ room876.chatcatch = function (callback) {
             char.settime(17, 7);
             gv.mod("receiveAnalMale", 1);
             gv.mod("creamPied", 1);
-            char.makeGraph();
             char.room(0);
             break;
         case "exit":
@@ -805,7 +768,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 38,
                 speaker: "thinking",
-                text: "What the hell would I want to come back. I thought I was just going to learn some cheers, but here I " +
+                text: "Why the hell would I want to come back. I thought I was just going to learn some cheers, but here I " +
                     "am covered in ketchup and mustard getting hosed off by the coldest water in this town naked in front " +
                     "of the gym with those people watching. Why couldn't I just use the shower! And these bitches! They think " +
                     "they're so much better than everyone! I should just quit! But I've always wanted to be a cheerleader and " +
@@ -1554,7 +1517,7 @@ room876.chat = function (chatID) {
                 text: "That poor boy's got it bad. He could really do better. Such a shame. But I'm so excited. I get to cheer " +
                     "in the game! I need to show up to the stadium tomorrow, on Sunday before 2PM, so I can cheer for real! ",
                 button: [
-                    { chatID: -1, text: "Yeah me! [End of this release]", callback: "cheer6_9" }
+                    { chatID: -1, text: "Yeah me!", callback: "cheer6_9" }
                 ]
             },
             {

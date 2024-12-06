@@ -12,6 +12,10 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(0, 7);
     }
+    else if (sc.getSecret("lola").secretOut && sc.getMissionTask("lola", "sissy", 0).notStarted) {
+        nav.bg("7_mainCharRoomAlt/secretout.jpg");
+        chat(7, 16);
+    }
     else if (sc.taskGetStep("eva", "fuck") === 1) {
         char.settime(6, 30);
         nav.killall();
@@ -75,6 +79,13 @@ room7.main = function () {
             chat(11, 7);
         }
     }
+    else if (sc.taskGetStep("bigguy", "sissy") > 3 && sc.getMission("bigguy", "sissy").inProgress) {
+        if (sc.getMissionTask("bigguy", "sissy", 4).notStarted)
+            sc.completeMissionTask("bigguy", "sissy", 4);
+        nav.bg("7_mainCharRoomAlt/bigguy0.jpg");
+        g.internal = 0;
+        nav.next("bigguy0");
+    }
     else {
         chat(12, 7);
     }
@@ -83,6 +94,28 @@ room7.main = function () {
 
 room7.btnclick = function (name) {
     switch (name) {
+        case "bigguy0":
+            if (g.internal === 0)
+                nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
+            else {
+                nav.killall();
+                chat(35, 7);
+            }
+            g.internal++;
+            break;
+        case "bigguy_x":
+            var chastx = [7, 8, 10, 12, 13];
+            var cx = "";
+            if (chastx.includes(g.internal) && cl.c.chastity !== null)
+                c = "_c";
+            nav.bg("7_mainCharRoomAlt/bigguy" + g.internal + cx + ".jpg");
+            
+            if (g.internal === 14) {
+                nav.killbutton("bigguy_x");
+                chat(38, 7);
+            }
+            g.internal++;
+            break;
         case "eva10b2":
             zcl.displayMain(220, -150, .47, "", true);
             chat(42, 7);
@@ -149,6 +182,8 @@ room7.chatcatch = function (callback) {
         case "e4":
         case "e5":
         case "e6":
+        case "bigguy2":
+        case "bigguy15":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
             break;
         case "e7":
@@ -645,6 +680,11 @@ room7.chatcatch = function (callback) {
             char.addtime(30);
             char.room(7);
             break;
+        case "bigguy3":
+            nav.bg("7_mainCharRoomAlt/bigguy3.jpg");
+            g.internal = 4;
+            nav.next("bigguy_x");
+            break;
         default:
             break;
     }
@@ -962,6 +1002,49 @@ room7.chat = function (chatID) {
                 "knocked up yet. Later loser. ",
             button: [
                 { chatID: -1, text: "later?", callback: "eEnd" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "bigguy",
+            text: "Hey little girl! Sleep well?",
+            button: [
+                { chatID: 36, text: "Huh?", callback: "" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "bigguy",
+            text: "I need to stick my dick in something, and you're something.",
+            button: [
+                { chatID: 37, text: "What? No, what would " + sc.n("landlord") + " say?", callback: "bigguy2" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "bigguy",
+            text: "She won't say nothing, 'cause you ain't saying nothing! ",
+            button: [
+                { chatID: -1, text: "*GAAAAK*", callback: "bigguy3" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "bigguy",
+            text: "Remember! Not one word to anyone or I'll break you in half! ",
+            button: [
+                { chatID: 39, text: "*sob*", callback: "bigguy15" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "thinking",
+            text: "What was that! He just raped me! Didn't care about me at all! Worst " +
+                "of all he's cheating on my " + sc.n("landlord") + "! I don't know if I " +
+                "should tell her. Maybe I should just keep it a secret. I don't want her to " +
+                "hate me forever. ",
+            button: [
+                { chatID: -1, text: "*sob*", callback: "lastWord" },
             ]
         },
     ];

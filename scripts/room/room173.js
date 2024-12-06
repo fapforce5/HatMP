@@ -146,7 +146,7 @@ room173.chat = function (chatID) {
                 "lacking. This is what happens when you put " + sc.n("cecilia") + " in charge " +
                 "of something. ",
             button: [
-                { chatID: 1, text: "It strinks back here ma'am.", callback: "" }
+                { chatID: 1, text: "It stinks back here ma'am.", callback: "" }
             ]
         },
         {

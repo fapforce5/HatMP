@@ -42,8 +42,42 @@ room406.btnclick = function (name) {
         case "doc":
             if (gv.get("money") < 180)
                 chat(0, 406);
-            else
-                chat(2, 406);
+            else {
+                sc.selectBg("406bg");
+                sc.select("blue", "406_eyes/icon_blue.png", 0);
+                sc.select("brown", "406_eyes/icon_brown.png", 1);
+                sc.select("gray", "406_eyes/icon_gray.png", 2);
+                sc.select("green", "406_eyes/icon_green.png", 3);
+                sc.select("hazel", "406_eyes/icon_hazel.png", 4);
+                sc.select("lightblue", "406_eyes/icon_lightblue.png", 5);
+                sc.select("purple", "406_eyes/icon_purple.png", 6);
+                sc.selectCancel("cancel", 7);
+            }
+            break;
+            case "blue":
+        case "brown":
+        case "gray":
+        case "green":
+        case "hazel":
+        case "lightblue":
+        case "purple":
+            room406.btnclick("cancel");
+            gv.mod("money", -40);
+            cl.c.eyes = name;
+            cl.display();
+            chat(5, 406);
+            break;
+        case "cancel":
+            nav.killall();
+            nav.button({
+                "type": "btn",
+                "name": "doc",
+                "left": 881,
+                "top": 166,
+                "width": 673,
+                "height": 806,
+                "image": "406_eyes/doc.png"
+            }, 406);
             break;
         default:
             break;
