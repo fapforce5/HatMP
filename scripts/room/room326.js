@@ -287,7 +287,7 @@ room326.chat = function (chatID) {
             speaker: "horse",
             text: "*Snort* *Groan*",
             button: [
-                { chatID: -1, text: "I don't think he liked that. Probably doens't trust me enough yet. ", callback: "" }
+                { chatID: -1, text: "I don't think he liked that. Probably doesn't trust me enough yet. ", callback: "" }
             ]
         },
         {
@@ -387,7 +387,7 @@ room326.chat = function (chatID) {
             text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
             button: [
                 { chatID: 15, text: "Lick it", callback: "lick0" },
-                { chatID: 9, text: "Rub his weiner", callback: "horse5" },
+                { chatID: 9, text: "Rub his wiener", callback: "horse5" },
                 { chatID: -1, text: "Just brush it", callback: "horse" },
             ]
         },

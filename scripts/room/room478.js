@@ -437,7 +437,7 @@ room478.chat = function (chatID) {
             speaker: "random",
             text: "All five kidnappers took turns raping us over the 10 hour drive to their compound. Poor Nala was a virgin " +
                 "before we were kidnapped. Some creep named River was really brutal with her. If I ever see him " +
-                "I'm going to cut his weiner right the fuck off! ",
+                "I'm going to cut his wiener right the fuck off! ",
             button: [
                 { chatID: 10, text: "I know River! He's such an asshole! I hate him too! ", callback: "trio4" },
             ]
@@ -480,7 +480,7 @@ room478.chat = function (chatID) {
             text: "No one knows. Everyone that made it that far is stuck in a pitch black room. They see different " +
                 "things, but Princess Fluffykins saw a dim, almost ghostly face and long white claw like hands floating " +
                 "around her. The only noise she heard was some growling sounds and moaning unworthy over and over. " +
-                "The moaning grew louder and louder till those ghoastly claws just sunk into her sockets and " +
+                "The moaning grew louder and louder till those ghostly claws just sunk into her sockets and " +
                 "ripped them out. ",
             button: [
                 { chatID: 14, text: "Oh fuck. Wow ", callback: "" },
@@ -546,7 +546,7 @@ room478.chat = function (chatID) {
             chatID: 20,
             speaker: "random",
             text: "You know what happened. The cult's reach is wide with members around the world. They " +
-                "find anyone they want to find. That's why we're all stuck here hiding in this gastly cave " +
+                "find anyone they want to find. That's why we're all stuck here hiding in this ghastly cave " +
                 "with a paltry collection of second hand outfits. ",
             button: [
                 { chatID: 21, text: "Where do these outfits come from? ", callback: "" },
@@ -556,7 +556,7 @@ room478.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "random",
-            text: "Oh lol! We may live in a cave, but there's little adventures out of here to aquire stuff " +
+            text: "Oh lol! We may live in a cave, but there's little adventures out of here to acquire stuff " +
                 "from the world. We have to be careful on our outings though. We only go out at night when the " +
                 "cult has gathered for their weekly gatherings. ",
             button: [

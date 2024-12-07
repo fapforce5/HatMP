@@ -404,7 +404,7 @@ room477.chat = function (chatID) {
             chatID: 18,
             speaker: "queen",
             text: "After some time I was selected to be bathed in the cum and undergo the transformation. " +
-                "As it turns out I was able to tranform into this beautiful body you see before you. I " +
+                "As it turns out I was able to transform into this beautiful body you see before you. I " +
                 "thought my transformation alone was going to bring about Azrael, but I learned that was just the first " +
                 "ritual with each ritual more horrible than the last. No one should go through that. I'm in a constant state " +
                 "of fear. ",
@@ -415,9 +415,9 @@ room477.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "queen",
-            text: "As a cherry on top Ubel made me his personal servent, if you know what I mean. I was made to serve hime for two years. " +
-                "But as the cult continued to grow and entwine with the town and as Ubel took on more personal servents I saw my " +
-                "oppurtunity to take on a new role and be the liason between the cult and the people of this town. ",
+            text: "As a cherry on top Ubel made me his personal servant, if you know what I mean. I was made to serve him for two years. " +
+                "But as the cult continued to grow and entwine with the town and as Ubel took on more personal servants I saw my " +
+                "opportunity to take on a new role and be the liaison between the cult and the people of this town. ",
             button: [
                 { chatID: 20, text: "How many people do you work with? ", callback: "c5" },
             ]

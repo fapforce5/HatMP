@@ -229,7 +229,7 @@ g.rooms = [
     { roomID: 176, name: "Oral", image: "176_oral/oral0.jpg", nightImage: "176_oral/oral0.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 177, name: "Chastity", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 178, name: "Cum", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
-    { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 180, name: "Femininity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 181, name: "Black Room", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 182, name: "Test 1", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 195, name: "Skill", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
@@ -237,7 +237,7 @@ g.rooms = [
     { roomID: 197, name: "Sub", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 198, name: "PI Training", image: "198_pi/bg.jpg", nightImage: "198_pi/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 199, name: "Workout", image: "217_punish/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_200.png" },
-    { roomID: 200, name: "Missy PI Entrace", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 200, name: "Missy PI Entrance", image: "200_frontOffice/200_frontOffice.jpg", nightImage: "200_frontOffice/200_frontOffice.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 201, name: "Missy's Bathroom", image: "201_bathroom/bg0.jpg", nightImage: "201_bathroom/bg0.jpg", houseID: 203, btn: "roomBtn_201.png" },
     { roomID: 202, name: "Desk Side", image: "202_sideDesk/202_sideDesk.jpg", nightImage: "202_sideDesk/202_sideDesk.jpg", houseID: 203, btn: "roomBtn_202.png" },
     { roomID: 203, name: "PI Entrance", image: "203_entrance/203_enter.jpg", nightImage: "203_entrance/203_enter.jpg", houseID: 203, btn: "roomBtn_203.png" },
@@ -267,7 +267,7 @@ g.rooms = [
     { roomID: 225, name: "Alley", image: "225_sewer/day.jpg", nightImage: "225_sewer/night.jpg", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 226, name: "Sewer", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: 225, btn: "roomBtn_225.png" },
     { roomID: 227, name: "Fight", image: "227_fight/welcome.jpg", nightImage: "227_fight/welcome.jpg", houseID: 225, btn: "roomBtn_225.png" },
-    { roomID: 228, name: "Sewer Entrace", image: "225_sewer/sewer.jpg", nightImage: "225_sewer/sewer.jpg", houseID: 225, btn: "roomBtn_225.png" },
+    { roomID: 228, name: "Sewer Entrance", image: "225_sewer/sewer.jpg", nightImage: "225_sewer/sewer.jpg", houseID: 225, btn: "roomBtn_225.png" },
 
 
     { roomID: 250, name: "Naked Beaver Diner", image: "250_beaver/250_beaver.jpg", nightImage: "250_beaver/250_beaver.jpg", houseID: 250, btn: "roomBtn_250.png" },

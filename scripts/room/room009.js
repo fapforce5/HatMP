@@ -594,8 +594,8 @@ room9.chat = function(chatID){
         {
             chatID: 11,
             speaker: "landlord",
-            text: "Such a waste of a good boner waste on mastrubation. Wouldn't you like to rub it " +
-                "betwen my big fat titties instead?",
+            text: "Such a waste of a good boner waste on masturbation. Wouldn't you like to rub it " +
+                "between my big fat titties instead?",
             button: [
                 { chatID: -1, text: "oh yeah!", callback: "jackoff4" }
             ]
@@ -640,7 +640,7 @@ room9.chat = function(chatID){
             chatID: 16,
             speaker: "thinking",
             text: "What terrible timing. She almost caught me jacking off. I'm so glad she didn't " +
-                "walk in when I was about to shoot my load. Fuck that would be embarrasing. ",
+                "walk in when I was about to shoot my load. Fuck that would be embarrassing. ",
             button: [
                 { chatID: -1, text: "...", callback: "reset" }
             ]

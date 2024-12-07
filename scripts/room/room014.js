@@ -798,7 +798,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "thinking",
-                text: "OOo it smells like butt. This has to be " + sc.n("landlord") + "'s butt plug. I didn't take her for someoene " +
+                text: "OOo it smells like butt. This has to be " + sc.n("landlord") + "'s butt plug. I didn't take her for someone " +
                     "that was into butt stuff. This is so disgusting. I really should put it back. ",
                 button: [
                     { chatID: -1, text: "[Put it back]", callback: "resetDresser" },
@@ -1022,7 +1022,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 34,
                 speaker: "landlord",
-                text: "Oh. You're in here late. I guess you shoud meet " + sc.n("bigguy") + ". ",
+                text: "Oh. You're in here late. I guess you should meet " + sc.n("bigguy") + ". ",
                 button: [
                     { chatID: 35, text: "hi", callback: "" },
                 ]
@@ -1186,7 +1186,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "landlord",
-                text: "If you're going to get a girlfirend you have to be able to please her. Stop by my " +
+                text: "If you're going to get a girlfriend you have to be able to please her. Stop by my " +
                     "bedroom at night before I go to sleep and I'll help you get better at pleasing a girl. " +
                     "Now you get some sleep sweetie. ",
                 button: [
@@ -1269,7 +1269,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 62,
                 speaker: "landlord",
-                text: "That is a beatuful cock. I really shouldn't be stroking it, but I just can't help " +
+                text: "That is a beautiful cock. I really shouldn't be stroking it, but I just can't help " +
                     "myself. It's so hard and thick. You really have grown into a man....",
                 button: [
                     { chatID: 63, text: sc.n("landlord") + "? ", callback: "task_5_1" },
@@ -1379,7 +1379,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 74,
                 speaker: "landlord",
-                text: "That guy is alwasy texting me. Has a bit of a jealous streak in him. I " +
+                text: "That guy is always texting me. Has a bit of a jealous streak in him. I " +
                     "guess that happens when you catch your wife in bed with another man. Anyway. " +
                     "what were we talking about. ",
                 button: [
@@ -1392,7 +1392,7 @@ room14.chat = function (chatID) {
                 text: "So did you come back for some lessons? ",
                 button: [
                     { chatID: 76, text: "I came back for more than lesson.", callback: "" },
-                    { chatID: -1, text: "No. I shoud go.", callback: "leave" },
+                    { chatID: -1, text: "No. I should go.", callback: "leave" },
                 ]
             },
             {
@@ -1400,7 +1400,7 @@ room14.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Oh really? What did you have in mind?",
                 button: [
-                    { chatID: 77, text: "Well I thought we would start with a cunnilugus lesson, then I would teach you a little something.", callback: "phone1" },
+                    { chatID: 77, text: "Well I thought we would start with a cunnilingus lesson, then I would teach you a little something.", callback: "phone1" },
                 ]
             },
             {
@@ -1464,7 +1464,7 @@ room14.chat = function (chatID) {
                 text: "*mwah* no.. This isn't right. I don't want it. ",
                 button: [
                     { chatID: 84, text: "[Stick your finger inside her]", callback: "task_7_2" },
-                    { chatID: -1, text: "[Snap out of it. Apoligize and leave]", callback: "apoligize" }
+                    { chatID: -1, text: "[Snap out of it. Apologize and leave]", callback: "apologize" }
                 ]
             },
             {
@@ -1482,17 +1482,17 @@ room14.chat = function (chatID) {
                 text: "Please. What about " + sc.n("bigguy") + "? ",
                 button: [
                     { chatID: 86, text: "I don't care about " + sc.n("bigguy") + ". [Slide off her lingerie]", callback: "task_7_5" },
-                    { chatID: -1, text: "[Snap out of it. Apoligize and leave]", callback: "apoligize" }
+                    { chatID: -1, text: "[Snap out of it. Apologize and leave]", callback: "apologize" }
                 ]
             },
             {
                 chatID: 86,
                 speaker: "landlord",
-                text: "This is so wrong. We really sholdn't do this. It doesn't matter how much we want " +
+                text: "This is so wrong. We really shouldn't do this. It doesn't matter how much we want " +
                     "it. ",
                 button: [
                     { chatID: 87, text: "I love you too much to not do this. [Slide your cock into her]", callback: "task_7_4" },
-                    { chatID: -1, text: "[Snap out of it. Apoligize and leave]", callback: "apoligize" }
+                    { chatID: -1, text: "[Snap out of it. Apologize and leave]", callback: "apologize" }
                 ]
             },
             {
@@ -1611,7 +1611,7 @@ room14.chat = function (chatID) {
                 text: "Sorry to bother you so late, but I need advice, I'm totally freaking out. You see there's this guy " +
                     "I like, Samual, and I would do anything to get him to like me back. But he's " +
                     "playing really hard to get. So he invited me over to his house the other night. " +
-                    "Well, anyway he has's being all mean to me and I thought I needed to do something " +
+                    "Well, anyway he was being all mean to me and I thought I needed to do something " +
                     "more so he likes me. Like you said, sometimes a girl's got to do what a girls got to do. ",
                 button: [
                     { chatID: 101, text: "...", callback: "" },
@@ -1628,7 +1628,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 102,
                 speaker: "eva",
-                text: "You know I really like dogs, so he has this german shepard. And I was petting " +
+                text: "You know I really like dogs, so he has this German shepherd. And I was petting " +
                     "him when he got this boner. Well on thing led to another and Samual talked me into " +
                     "having sex with his dog. I thought Samual would like me the way he was talking, but " +
                     "I got so lost in the sex that I let the dog cum in me! Now I'm worried that I'm " +

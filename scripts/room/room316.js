@@ -1563,7 +1563,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: "No! I'm a virgin. I already told you that. Those are my fluids. You make me " +
                     "so wet and creamy. Stop making me feel bad about my special area. You're making me " +
-                    "so self-conscious and embarrased right now. Maybe we shouldn't do this. ",
+                    "so self-conscious and embarrassed right now. Maybe we shouldn't do this. ",
                 button: [
                     { chatID: 70, text: "I'm so sorry. I didn't mean that. Your special area looks amazing. ", callback: "task4_9" },
                     { chatID: 65, text: "Stop lying! That is cum! I'm not eating the waiter's creampie! ", callback: "breakupAlt" },
@@ -1847,7 +1847,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 101,
                 speaker: "me",
-                text: "Oh man. That was the most embarrasing thing ever to happen to me. Do " +
+                text: "Oh man. That was the most embarrassing thing ever to happen to me. Do " +
                     "you think they posted that online. I would hate for anyone I know to see it. " +
                     "And " + sc.n("cecilia") + " seeing me and not helping. And you, " + sc.n("dog") +
                     "have to stop doing that in public! *sigh* I know you won't since I'm your bitch, " +
@@ -1861,7 +1861,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: "You didn't feed my poor little doggy every day! The poor thing! If you " +
                     "can't respect me enough to take care of my doggy, then you don't deserve " +
-                    "these big round beautiful tits! Take a long look, becuase this is the last " +
+                    "these big round beautiful tits! Take a long look, because this is the last " +
                     "time you'll ever see them! We're over! Bye bye loser! Now get out before I sick " +
                     sc.n("dog") + " on you! ",
                 button: [
@@ -1938,7 +1938,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 110,
                 speaker: "janice",
-                text: "Is that a chastity cage? Why would you wear that? Is it becuase " +
+                text: "Is that a chastity cage? Why would you wear that? Is it because " +
                     "you don't want to have a penis anymore? I saw a show about men like you! ",
                 button: [
                     { chatID: 114, text: "I uh...", callback: "task4_3" },
@@ -1957,7 +1957,7 @@ room316.chat = function (chatID) {
                 chatID: 112,
                 speaker: "janice",
                 text: "We need to talk about the fact you like to wear women's clothes. " +
-                    "It's so weird and offputting. I've watched shows about men like you! ",
+                    "It's so weird and off-putting. I've watched shows about men like you! ",
                 button: [
                     { chatID: 114, text: "I uh...", callback: "task4_3" },
                 ]
@@ -2021,7 +2021,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 118,
                 speaker: "me",
-                text: "*Squeel like a girl!*",
+                text: "*Squeal like a girl!*",
                 button: [
                     { chatID: -1, text: "[Run!]", callback: "leave" },
                 ]
@@ -2029,7 +2029,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 119,
                 speaker: "me",
-                text: "*whipsering* aak. give me my clothes back",
+                text: "*whispering* aak. give me my clothes back",
                 button: [
                     { chatID: -1, text: "...", callback: "picklock1" },
                 ]
@@ -2038,7 +2038,7 @@ room316.chat = function (chatID) {
                 chatID: 120,
                 speaker: "thinking",
                 text: "Akkk! I can't believe I'm face down ass up with a dog's penis " +
-                    "burried deep in my ass again! He's not even gentle. Just rams it " +
+                    "buried deep in my ass again! He's not even gentle. Just rams it " +
                     "it in. Knot and all! ",
                 button: [
                     { chatID: 121, text: "...", callback: "lockpick2" },
@@ -2066,7 +2066,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 123,
                 speaker: "me",
-                text: "*whipsering* Really " + sc.n("dog") + "? You're going " +
+                text: "*whispering* Really " + sc.n("dog") + "? You're going " +
                     "to bark at me after you've raped my ass? I guess I'm just " +
                     "a hole to fuck, and once you're done you don't want me around? ",
                 button: [
@@ -2130,7 +2130,7 @@ room316.chat = function (chatID) {
                 text: "It's not the olden days anymore. Many couples are doing it. I " +
                     "love you, and you love me. If you have to have sex with other men " +
                     "to be satisfied, then that's something I'm willing to do for you, " +
-                    "becuase of my love for you. ",
+                    "because of my love for you. ",
                 button: [
                     { chatID: 130, text: "...", callback: "" },
                 ]
@@ -2138,7 +2138,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 130,
                 speaker: "janice",
-                text: "*big exhale* Myabe. I like it the idea of it. You are such a great " +
+                text: "*big exhale* Maybe. I like it the idea of it. You are such a great " +
                     "boy friend and, I admit, there are so many men I would love to have sex " +
                     "with. You have no idea how often I get hit on. I never thought of " +
                     "doing something like this. Maybe. Let me think about it... ",
@@ -2158,7 +2158,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 132,
                 speaker: "janice",
-                text: "No way! Stip off your clothes! Follow me to the bedroom! I have " +
+                text: "No way! Strip off your clothes! Follow me to the bedroom! I have " +
                     "a surprise I think you'll love! Come! ",
                 button: [
                     { chatID: -1, text: "Hell yeah!", callback: "bedroom" },

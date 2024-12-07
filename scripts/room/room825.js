@@ -49,7 +49,7 @@ room825.chat = function (chatID) {
             speaker: "random",
             text: "This is our lot. You better get or we're going to sick chopper on you! ",
             button: [
-                { chatID: -1, text: "Squeel and run", callback: "leave" }
+                { chatID: -1, text: "Squeal and run", callback: "leave" }
             ]
         }
     ];

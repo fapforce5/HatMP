@@ -1586,7 +1586,7 @@ room13.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "lola",
-            text: "I hope so. There's no way I'm going back to school if everyday is like this. I dont' suppose you would be " +
+            text: "I hope so. There's no way I'm going back to school if everyday is like this. I don't suppose you would be " +
                 "up to give me a back rub so I feel better?",
             button: [
                 { chatID: 16, text: "Of course!", callback: "br1" },
@@ -2678,7 +2678,7 @@ room13.chat = function (chatID) {
             speaker: "lola",
             text: "We're going to have so much sister time fun! I can't believe I didn't see it before!",
             button: [
-                { chatID: 149, text: "Squeel", callback: "" }
+                { chatID: 149, text: "Squeal", callback: "" }
             ]
         },
         {
@@ -3037,7 +3037,7 @@ room13.chat = function (chatID) {
         {
             chatID: 191,
             speaker: "molly",
-            text: "Comming right up, and since " + sc.n("me") + " is such a terrific girl it's on the house. I was just telling " +
+            text: "Coming right up, and since " + sc.n("me") + " is such a terrific girl it's on the house. I was just telling " +
                 sc.n("molly") + " how great you are. We heard what " + sc.n("jeffery") + " did. He's such a terrible pervert. Free " +
                 "ice cream is the least we could do for such a wonderful girl.",
             button: [
@@ -3390,7 +3390,7 @@ room13.chat = function (chatID) {
             speaker: "eva",
             text: "Oh.. um ok, kiss my feet. ",
             button: [
-                { chatID: 233, text: "Absolutly!", callback: "lick8" }
+                { chatID: 233, text: "Absolutely!", callback: "lick8" }
             ]
         },
         {
@@ -3462,7 +3462,7 @@ room13.chat = function (chatID) {
         {
             chatID: 241,
             speaker: "lola",
-            text: "That's so embarrasing, she's had enough. Both of you should get dressed before we all get in trouble again. ",
+            text: "That's so embarrassing, she's had enough. Both of you should get dressed before we all get in trouble again. ",
             button: [
                 { chatID: 242, text: "...", callback: "" }
             ]
@@ -3478,7 +3478,7 @@ room13.chat = function (chatID) {
         {
             chatID: 243,
             speaker: "lola",
-            text: "You shouldn't lick her vag like that. I exptected you to be better since you're a girl now. You're on " +
+            text: "You shouldn't lick her vag like that. I expected you to be better since you're a girl now. You're on " +
                 "your own. I'm not helping!",
             button: [
                 { chatID: 236, text: "...", callback: "" }

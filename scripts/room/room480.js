@@ -237,7 +237,7 @@ room480.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "a",
-                text: "I do emplore you to stay for your own safety, but freedom is choice. " +
+                text: "I do implore you to stay for your own safety, but freedom is choice. " +
                     "The cave is yours to explore and any bed is free to use. Enjoy you stay here young one. ",
                 button: [
                     { chatID: -1, text: "Thanks! ", callback: "quest0" }
@@ -281,7 +281,7 @@ room480.chat = function (chatID) {
                 chatID: 11,
                 speaker: "vag",
                 text: "So I stole a pair from my sister and wore them into work the next day. My heart was beating " +
-                    "so fast all shift. I was afriad someone would find out beside Zuri. After the lunch rush she told " +
+                    "so fast all shift. I was afraid someone would find out beside Zuri. After the lunch rush she told " +
                     "me to show her my panties or she'll tell. I asked to go to the back room so everyone didn't see, " +
                     "but she gave me the angriest look and said 'now.' So I flashed her my panties and begged her not " +
                     "to get me in trouble. Everyone laughed at me and she called me a sissy loser. I was panty boy " +

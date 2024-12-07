@@ -372,7 +372,7 @@ sc.charMission = [
                 missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight. ", task:
                     [
                         { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 556 },
-                        { id: 1, txt: "Begginer Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
+                        { id: 1, txt: "Beginner Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
                         { id: 2, txt: "Advanced Spar. ", show: true, mStatus: 0, roomId: 556 },
 
                     ]
@@ -410,7 +410,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
+                missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just weren't meant for each other. It's over", task: new Array()
             },
             {
                 missionName: "bitch", mStatus: 0, title: "Wonderful boyfriend", desc: "What a great guy! ", task:
@@ -477,7 +477,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 301 },
                         { id: 1, txt: "Go Away!", show: true, mStatus: 0, roomId: 301 },
-                        { id: 2, txt: "Forgivness comes slowly.", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "Forgiveness comes slowly.", show: true, mStatus: 0, roomId: 301 },
                         { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
                         { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
                         { id: 5, txt: "See how her pussy is doing. ", show: true, mStatus: 0, roomId: 301 },
@@ -618,7 +618,7 @@ sc.charMission = [
                 missionName: "bitch", mStatus: 0, title: "Her Honor", desc: "Will you save her honor? ", task:
                     [
                         { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
-                        { id: 1, txt: "Titty grabing perv", show: true, mStatus: 0, roomId: 350 },
+                        { id: 1, txt: "Titty grabbing perv", show: true, mStatus: 0, roomId: 350 },
                         { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
                         { id: 3, txt: "Stop touching her!", show: true, mStatus: 0, roomId: 350 },
                     ]
@@ -665,7 +665,7 @@ sc.charMission = [
                         { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 325 },
                         { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 325 },
                         { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 325 },
-                        { id: 5, txt: "End of path for nwo.", show: true, mStatus: 0, roomId: 325 },
+                        { id: 5, txt: "End of path for now.", show: true, mStatus: 0, roomId: 325 },
                     ]
             },
         ]
@@ -697,7 +697,7 @@ sc.charMission = [
             {
                 missionName: "pink", mStatus: 0, title: "The Pink Room", desc: "A proper place for a sissy.", task:
                     [
-                        { id: 0, txt: "Introducation", show: true, mStatus: 0, roomId: 213 },
+                        { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 213 },
                         { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
                         { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
                         { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
@@ -879,13 +879,13 @@ sc.levels = function (name, level) {
                     { step: 2, txt: "She's liking you. ", m: [16] },
                     { step: 3, txt: "A little crush perhaps? ", m: [16] },
                     { step: 4, txt: "* Go in for the kiss!", m: [16] },
-                    { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },
+                    { step: 5, txt: "[M] Talk about her boyfriend.", m: [16] },
                     { step: 6, txt: "[M] Talk to her on the couch during the day or early evening. Eat that ass!", m: [16] },
                     { step: 7, txt: "[M] Talk to her on the couch during the day or early evening. Lesson learned.", m: [16] },
                     { step: 8, txt: "[M] On the couch - Pee pee slap.", img: "", m: [16] },
                     { step: 9, txt: "[M] Visit her in her room between 8PM and 10PM. It only happens after you've been kicked out due to playing truth or dare with the girls. ", m: [16] },
                     { step: 10, txt: "[M] Visit her in her room between 8PM and 10PM. ", m: [16] },
-                    { step: 11, txt: "[M] Progress Lola and Evas story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
+                    { step: 11, txt: "[M] Progress Lola and Eva's story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
                     { step: 12, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", m: [16] },
                 ];
             else
@@ -915,13 +915,13 @@ sc.levels = function (name, level) {
             //    { step: 3, txt: "Watch her eat out Chloé.", m: [500] },
             //    { step: 4, txt: "Talk to Zoey about her problems with Chloé.", m: [500] },
             //    { step: 5, txt: "Catch Chloé  Cheating (Only if your support your best friend)", m: [500] },
-            //    { step: 6, txt: "Sleep at Zoey's on five differnt nights.", m: [500] },
+            //    { step: 6, txt: "Sleep at Zoey's on five different nights.", m: [500] },
             //    { step: 10, txt: "Sleep once more to see her night visitor", m: [500] },
             //    {
             //        step: 11, txt: "Raise her love to max. You can help her clean up at the bar or play video games at her home. Once you're " +
-            //            "there wear a chasity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
+            //            "there wear a chastity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
             //    },
-            //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyer", m: [525] },
+            //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyeur", m: [525] },
             //    { step: 13, txt: "Eat her pussy after you finish cleaning up.", m: [500] },
             //    { step: 14, txt: "Relationship - no new content", m: [500] },
 
@@ -1667,7 +1667,7 @@ sc.phone = function (char) {
                 else if (step === 6) {
                     clist = [
                         { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
-                        { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
+                        { s: "eva", t: "I knew if I played with your wiener you'd get totally weird" },
                         { s: "me", t: "Oh no I didn't mean to be weird" },
                         { s: "eva", t: "whatever. " + sc.n("lola") + " and me want to play truth or dare, come by tonight." }
                     ];
@@ -2082,7 +2082,7 @@ sc.trivial = function (charname) {
             image = "jenna.png";
             break;
         default:
-            console.log("unknown trivial char: (check capitilazation)" + charname);
+            console.log("unknown trivial char: (check capitalization)" + charname);
             break;
     }
     return { display: name, image: image };

@@ -306,7 +306,7 @@ room954.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "ubel",
-            text: "I must comend you two. No one has lasted as long as either of you have. I expected that from " + sc.n("me") + 
+            text: "I must commend you two. No one has lasted as long as either of you have. I expected that from " + sc.n("me") + 
                 ", for I know she has a higher purpose. But I was surprised by your performance, " + sc.n("daria") + ". It " +
                 "seems like " + sc.n("bodhi") + " is holding you back from your true potential. ", 
             button: [
@@ -557,7 +557,7 @@ room954.chat = function (chatID) {
             chatID: 47,
             speaker: "daria",
             text: "First of all, you're not making it through the cave. There's too many of them. Then when you reach the compound " +
-                "you have to make it through all the guards everywhere, which is impossible. I had to blow around 20 differnt guards " +
+                "you have to make it through all the guards everywhere, which is impossible. I had to blow around 20 different guards " +
                 "so they would let me wander around in my regular clothes. ",
             button: [
                 { chatID: 48, text: "There's got to be a way in ", callback: "" }
@@ -688,7 +688,7 @@ room954.chat = function (chatID) {
             speaker: "cop2",
             text: "I don't think you really understand how the real world works. Maybe you've played too many video games. You come " +
                 "into my station, naked, and demand we storm the compound saying " + sc.n("missy") + " is trapped in there. Now I've " +
-                "dealt with her a few times with her crazy consiracies with the cult. Just because they worship some strange shit " +
+                "dealt with her a few times with her crazy conspiracies with the cult. Just because they worship some strange shit " +
                 "don't make illegal. We don't just go storming places of worship based on crazy stories made up by naked people " +
                 "that show up here. ",
             button: [

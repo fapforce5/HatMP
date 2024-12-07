@@ -528,7 +528,7 @@ room16.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "landlord",
-            text: "Squeel!! I'm so excited to have another girl in the house! We're going to play dress up! I'm going to put on my night " +
+            text: "Squeal!! I'm so excited to have another girl in the house! We're going to play dress up! I'm going to put on my night " +
                 "gown, you strip off those nasty clothes!",
             button: [
                 { chatID: 18, text: "Yes!", callback: "girl2" }
@@ -625,7 +625,7 @@ room16.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "landlord",
-            text: "Beleive me, I know it hurts You'll get used to it, " +
+            text: "Believe me, I know it hurts You'll get used to it, " +
                 "I've felt the pain myself. Just learn to enjoy it. " +
                 "Now get ready to take it deep my sweet little girl. ",
             button: [
@@ -685,7 +685,7 @@ room16.chat = function (chatID) {
         {
             chatID: 35,
             speaker: "landlord",
-            text: "I love the way you squeel.",
+            text: "I love the way you squeal.",
             button: [
                 { chatID: 36, text: "Yes!", callback: "s12" }
             ]
@@ -711,7 +711,7 @@ room16.chat = function (chatID) {
             speaker: "landlord",
             text: "And what do good girls do when there's cum on the floor?",
             button: [
-                { chatID: 39, text: "Lick it up and swollow every drop!", callback: "s15" }
+                { chatID: 39, text: "Lick it up and swallow every drop!", callback: "s15" }
             ]
         },
         {

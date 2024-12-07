@@ -248,7 +248,7 @@ room800.chat = function (chatID) {
             text: "A friend of mine is, but that's not the point. You see you go around kidnapping people for the ceremony " +
                 "at the commands from higher, but you're not quite sure why. In this case they don't have their facts straight " +
                 "about Ralph. To transform you have to want to transform in your heart. Ralph here just likes wearing crossdressing. " +
-                "He's doens't desire to be a girl, just to wear women's clothing. So you're about to kidnap some poor crossdresser " +
+                "He's doesn't desire to be a girl, just to wear women's clothing. So you're about to kidnap some poor crossdresser " +
                 "and subject him to all the evils and tortures for nothing. ",
             button: [
                 { chatID: 13, text: "...", callback: "" }

@@ -723,7 +723,7 @@ room180.chat = function (chatID) {
             chatID: 59,
             speaker: "ralph",
             text: "I saw the upcoming classes. I'm so looking forward to the high heel class! " +
-                "I trip so much when I try to wear them at home. Everytime I fall my two moms yells " +
+                "I trip so much when I try to wear them at home. Every time I fall my two moms yells " +
                 "yell at me wondering what I'm doing in my room. They think I'm the clumsiest person " +
                 "in the world.",
             button: [
@@ -743,7 +743,7 @@ room180.chat = function (chatID) {
             speaker: "missy",
             text: "This is your uniform. You won't be admitted to class without it. I don't care " +
                 "were you change your clothes, you can do it at home, or in the lobby before class. " + 
-                "Also wash it. I know most of you get embarrased wearing your cute little uniforms " +
+                "Also wash it. I know most of you get embarrassed wearing your cute little uniforms " +
                 "in public, but don't be the stinky girl in class. ",
             button: [
                 { chatID: 62, text: "...", callback: "" },

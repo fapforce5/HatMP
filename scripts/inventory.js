@@ -291,7 +291,7 @@ inv.addMulti = function (name, count) {
             inv.master[i].entry = true;
             if (inv.master[i].count !== null) {
                 inv.master[i].count = inv.master[i].count + count;
-                g.popUpNotice("You receved " + count + " " + inv.master[i].display);
+                g.popUpNotice("You received " + count + " " + inv.master[i].display);
             }
             else
                 g.popUpNotice(inv.master[i].display + " added to inventory. ");

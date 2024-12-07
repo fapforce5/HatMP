@@ -751,7 +751,7 @@ room461.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "thinking",
-            text: "Did I really just let a girl piss all over me in the forest? My sexual itnerests are really getting weird. " +
+            text: "Did I really just let a girl piss all over me in the forest? My sexual interests are really getting weird. " +
                 "It's a good think I'm running, it's hard to tell the difference between the piss and sweat. I probably should " +
                 "take a shower though. It'd be weird to sleep with her piss soaked into my body. ",
             button: [
@@ -799,7 +799,7 @@ room461.chat = function (chatID) {
             button: [
                 { chatID: 42, text: "I love the humiliation of being pissed on. Really shows what a submissive I am. ", callback: "ppsub" },
                 { chatID: 42, text: "I love how it smells and tastes. ", callback: "pporal" },
-                { chatID: 42, text: "I just find the act of urinating so mesmorizing. It really is a thing of beauty.", callback: "ppcharisma" },
+                { chatID: 42, text: "I just find the act of urinating so mesmerizing. It really is a thing of beauty.", callback: "ppcharisma" },
 
             ]
         },
@@ -849,7 +849,7 @@ room461.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "ppgirl",
-            text: "You want a jar of my piss? Werid... but ok! Give me a jar. ",
+            text: "You want a jar of my piss? Weird... but ok! Give me a jar. ",
             button: [
                 { chatID: -1, text: "[Hand her an empty jar]", callback: "pissjar0" },
             ]

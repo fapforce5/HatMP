@@ -413,7 +413,7 @@ room353.chat = function (chatID) {
                 chatID: 9,
                 speaker: "landlord",
                 text: "There isn't going to be a fire. Everything here is really green. Besides I'll come out and " +
-                    "rescue you, like I've always been doing. If you wern't so damn lazy I wouldn't have to do this. " +
+                    "rescue you, like I've always been doing. If you weren't so damn lazy I wouldn't have to do this. " +
                     "Really you did it to yourself. ",
                 button: [
                     { chatID: 10, text: "This is so dumb", callback: "" }
@@ -597,8 +597,8 @@ room353.chat = function (chatID) {
             {
                 chatID: 30,
                 speaker: "!girl",
-                text: "Oh hahaha! it's so tiny! After you have sex with a girl she would still be a virgin 'cuase " +
-                    "that is too small to penetrate her! Shimp dick! Let's go Becky. He obviously " +
+                text: "Oh hahaha! it's so tiny! After you have sex with a girl she would still be a virgin 'cause " +
+                    "that is too small to penetrate her! Shrimp dick! Let's go Becky. He obviously " +
                     "isn't a real man! Let everyone see it!",
                 button: [
                     { chatID: 31, text: "What, no, I can't move my arm. Pull my pants back up! ", callback: "g2_tiny2" },

@@ -667,7 +667,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "stormy",
-                text: "Fuck that was hot. I've never cum to an audiance before. I'll have to " +
+                text: "Fuck that was hot. I've never cum to an audience before. I'll have to " +
                     "get you to watch us again. " + sc.n("zoey") + " you can get your cuddles " +
                     "the dish washer. " + gender.pronoun("he") + " looks cuddly. Lates! ",
                 button: [

@@ -536,7 +536,7 @@ room221.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "!nips",
-                text: "I cheated on my husband.. again. I need Missy to help make sure he doens't find out. ",
+                text: "I cheated on my husband.. again. I need Missy to help make sure he doesn't find out. ",
                 button: [
                     { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
                     { chatID: -1, text: "Sorry, no. You have to make an appointment. ", callback: "appNo" },

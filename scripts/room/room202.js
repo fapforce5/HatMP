@@ -985,7 +985,7 @@ room202.chat = function (chatID) {
         {
             chatID: 67,
             speaker: "missy",
-            text: "I have a treat for you my little sissy. I bet you like whip cream, don't you. I like my little sissys full of cream.",
+            text: "I have a treat for you my little sissy. I bet you like whip cream, don't you. I like my little sissies full of cream.",
             button: [
                 { chatID: 68, text: "huh...", callback: "" }
             ]

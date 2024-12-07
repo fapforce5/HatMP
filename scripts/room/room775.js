@@ -697,7 +697,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "priest",
-                text: "It's a sin to take part in something sexually gratifing, even if it's gross.",
+                text: "It's a sin to take part in something sexually gratifying, even if it's gross.",
                 button: [
                     { chatID: 500, text: "I totally am. ", callback: "" }
                 ]
@@ -770,7 +770,7 @@ room775.chat = function (chatID) {
                 text: "We have joined here brothers and sisters in Christ to address the issue of biblical sexual morality " +
                     "on this particular Sunday. For example, Leviticus 18:22 states that You shall not lie with a male as with " +
                     "a woman; it is an abomination.' This passage has been used to argue that transgender people are sinful " +
-                    "and that they should be excluded from the church. We should not exclude them and turn them away from christ, " +
+                    "and that they should be excluded from the church. We should not exclude them and turn them away from Christ, " +
                     "instead we need to bring them in and covert their sinful ways! Lead them into the light of the bible! " ,
                 button: [
                     { chatID: 15, text: "...", callback: "zoomout" }
@@ -789,7 +789,7 @@ room775.chat = function (chatID) {
                 chatID: 16,
                 speaker: "thinking",
                 text: "Oh look. Here comes the collection plate. Not only is it boring, but they want money too. I hope she " +
-                    "doens't make me donate. It's not like I'm rich enough to give this guy money. Shit, she's looking at me " +
+                    "doesn't make me donate. It's not like I'm rich enough to give this guy money. Shit, she's looking at me " +
                     "like she's going to make me donate. Fuck. ",
                 button: [
                     { chatID: 998, text: "...", callback: "collection0" }
@@ -818,8 +818,8 @@ room775.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "priest",
-                text: "While this seems innocent, pleasures of the flesh can lead to futher sin. You must learn to control " +
-                    "youself while dating, and only after marriage should you partake in such activities. ",
+                text: "While this seems innocent, pleasures of the flesh can lead to further sin. You must learn to control " +
+                    "yourself while dating, and only after marriage should you partake in such activities. ",
                 button: [
                     { chatID: 500, text: "ok. ", callback: "" }
                 ]
@@ -859,7 +859,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "priest",
-                text: "Oh my, this is quite toubling. To lay with a woman as a wife takes commitment, and since I know you " +
+                text: "Oh my, this is quite troubling. To lay with a woman as a wife takes commitment, and since I know you " +
                     "I haven't married you, I know you aren't ready for this. While you have sinned, it is not too late to turn " +
                     "from this sinful path. When you lie with a girl who is not your wife you are forcing her from the path " +
                     "of holiness and purity. Consent is important and girls are weak in the ways of men. For both of your " +
@@ -923,7 +923,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 29,
                 speaker: "priest",
-                text: "I can't recall any part of the bible that strickly forbids urinating on another, I would caution you " +
+                text: "I can't recall any part of the bible that strictly forbids urinating on another, I would caution you " +
                     "against such practices. To bare the genitals to one who isn't your wife, priest, or doctor is can lead " +
                     "to sins of the flesh. ",
                 button: [
@@ -952,7 +952,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "priest",
-                text: "That is so sinful! Tell me about your experiance so I may absolve you from your sinful ways. ",
+                text: "That is so sinful! Tell me about your experience so I may absolve you from your sinful ways. ",
                 button: [
                     { chatID: 33, text: "...", callback: "" },
                 ]
@@ -996,7 +996,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "me",
-                text: "Oh yes. I could feel him pick up speed and really start fucking me. You know that hard focued fucking. " +
+                text: "Oh yes. I could feel him pick up speed and really start fucking me. You know that hard focused fucking. " +
                     "Then he pulled my hips back and thrust forward into me getting his dick as deep into me as he could. I " +
                     "could feel the pulses of his cock as he drained his dick into me. ",
                 button: [
@@ -1063,7 +1063,7 @@ room775.chat = function (chatID) {
                 chatID: 44,
                 speaker: "priest",
                 text: "My child, you mustn't treat your anus like a vagina. A man shall not lie with another man and " +
-                    "inserting a toy into yourself is a dangrous step in the path to damnation. You must stop abusing yourself " +
+                    "inserting a toy into yourself is a dangerous step in the path to damnation. You must stop abusing yourself " +
                     "if you wish to get into the kingdom of heaven. ",
                 button: [
                     { chatID: 500, text: "Yes Father. ", callback: "" },

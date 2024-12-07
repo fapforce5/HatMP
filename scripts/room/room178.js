@@ -76,7 +76,7 @@ room178.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "missy",
-            text: "Hello my cum piggies. You're all here because you're interested in swollowing cum, but you're too scared to do it on " +
+            text: "Hello my cum piggies. You're all here because you're interested in swallowing cum, but you're too scared to do it on " +
                 "your own. It's like the first time you try coffee. It can be a little bitter, have an unusual taste or texture, but " +
                 "you learn to enjoy it all. Even crave it. Like coffee cum isn't all the same. You'll learn where good smooth cum is, " +
                 "and where to avoid nasty cheap bitter cum. ",
@@ -87,11 +87,11 @@ room178.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "missy",
-            text: "Since this is your first class we're going to start out simple. Each of you will savor and swollow your own cum. It's " +
-                "in your body anyway, we're just putting it in a differt hole. Your mouth hole. Next class we'll have some more fun, but " +
+            text: "Since this is your first class we're going to start out simple. Each of you will savor and swallow your own cum. It's " +
+                "in your body anyway, we're just putting it in a different hole. Your mouth hole. Next class we'll have some more fun, but " +
                 "I'm a busy woman so this class will be quick. Luckily only " + sc.n("me") + " is in chastity, so you other two " +
                 "can just jack off in my hand. Martin and Jeremy go first. I'll do " + sc.n("me") + " last. I have a special gift " +
-                "for my chasity sissy. Now bring those cocks here. ",
+                "for my chastity sissy. Now bring those cocks here. ",
             button: [
                 { chatID: 2, text: "Yes ma'am", callback: "cum1" }
             ]

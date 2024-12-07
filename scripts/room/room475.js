@@ -89,7 +89,7 @@ room475.main = function () {
                 var te = Math.floor(Math.random() * 3);
                 if (gv.get("fantasyCreatures")) {
                     if (g.isNight())
-                        te = Math.floor(Math.random() * 9); //overload the warewolf at night
+                        te = Math.floor(Math.random() * 9); //overload the werewolf at night
                     else
                         te = Math.floor(Math.random() * 4);
                 }

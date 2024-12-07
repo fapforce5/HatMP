@@ -309,7 +309,7 @@ tEnemy.initEnemy = function (enemyName) {
                     { lbl: "lb_domFuckem", p: "fuck", p1: "fuck1", pose: "fuck", pose1: "fuck1", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["giveAnalMale"] },
                     { lbl: "lb_domPowerbottom", p: "powerbottom", p1: "powerbottom1", pose: "alsubmit", pose1: "leaking", gif: "gif_anal.gif", gif1: "png_anal.png", stats: ["receiveAnalMale", "creamPied"] }
                 ],
-                loss: "Oh fuck! I can't beleive I'm your bitch.",
+                loss: "Oh fuck! I can't believe I'm your bitch.",
                 intro: "I'm going to split you in half like a log!",
                 win: "Don't mess with real men. Go back to the city you sissy bitch. ",
                 submit: "Enjoy that cum. It's the only part of a real man in you."
@@ -364,7 +364,7 @@ tEnemy.initEnemy = function (enemyName) {
                 ],
                 loss: "Puny human. Why me lose",
                 intro: "I will eat you flesh and your ass!",
-                win: "How do you like my knot in your asshold? ",
+                win: "How do you like my knot in your asshole? ",
                 submit: "I'm always the alpha of the pack!"
             };
             break;
@@ -388,7 +388,7 @@ tEnemy.drawBackground = function (bg) {
             nav.bg("475_fight/clearing.jpg");
             break;
         default:
-            console.log("Unkown BG: " + bg + " in enemy");
+            console.log("Unknown BG: " + bg + " in enemy");
             break;
     }
 };
@@ -1656,7 +1656,7 @@ tEnemy.updatePlayerStats = function (money) {
                 gv.st[i].t += (g.fight.me.kickCount * 2);
                 if (gv.st[i].t > 100)
                     gv.st[i].t = 100;
-                popUpText += "Your legs are stonger <br/>";
+                popUpText += "Your legs are stronger <br/>";
             }
         }
         else if (gv.st[i].n === "body") {
@@ -1664,7 +1664,7 @@ tEnemy.updatePlayerStats = function (money) {
                 gv.st[i].t += (g.fight.me.punchCount * 2);
                 if (gv.st[i].t > 100)
                     gv.st[i].t = 100;
-                popUpText += "Your arms are stonger <br/>";
+                popUpText += "Your arms are stronger <br/>";
             }
         }
         else if (gv.st[i].n === "subdom") {

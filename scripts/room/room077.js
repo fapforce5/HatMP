@@ -555,7 +555,7 @@ room77.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "bimbo",
-            text: "Ok. My doctor told me to tell people not to cum inside me, 'cuase, uhhhh. " +
+            text: "Ok. My doctor told me to tell people not to cum inside me, 'cause, uhhhh. " +
                 "I don't remember why. Something about bills, or I have chills. I don't know. ",
             button: [
                 { chatID: -1, text: "...", callback: "" },
@@ -564,7 +564,7 @@ room77.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "bimbo",
-            text: "Oh no. My doctors's going to be so mad at me. I promised I wouldn't let anyone " +
+            text: "Oh no. My doctor's going to be so mad at me. I promised I wouldn't let anyone " +
                 "cum in me. Maybe I just won't tell him! He can't be mad if he doesn't know. ",
             button: [
                 { chatID: 15, text: "That sounds like a smart choice", callback: "" },

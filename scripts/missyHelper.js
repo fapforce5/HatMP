@@ -122,7 +122,7 @@ missy.activecase = function () {
         //priapus (chloe notepad)
         var cases = [
             { caseId: 0, name: "start", txt: "Get a job. Check your computer in your room and apply. ", m: [16], isComplete: activeCaseComplete },
-            { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100], isComplete: activeCaseComplete },
+            { caseId: 1, name: "construction", txt: "Go work at the construction site. ", m: [100], isComplete: activeCaseComplete },
             { caseId: 2, name: "apply", txt: "Go to city hall and purchase a P.I. license. Then go to Missy's. ", m: [910, 203] },
             { caseId: 3, name: "work", txt: "Purchase dress shirt, pants, socks, and black shoes from the mall. Then go to your first day of work. ", m: [203, 400], isComplete: activeCaseComplete },
             { caseId: 4, name: "case_usb", txt: "Get the USB drive from the back of the toilet at the park. ", m: [450], isComplete: activeCaseComplete },
@@ -184,7 +184,7 @@ missy.getcases = function () {
     if (missy.get("totalDaysWorked") < 5)
         return caseList;
 
-    //must do first case (Has explaination)
+    //must do first case (Has explanation)
     if (completeCounter === 0) {
         canDoCase = cl.c.chest > 0;
         caseList.push({
@@ -205,7 +205,7 @@ missy.getcases = function () {
                             caseId: i,
                             active: canDoCase,
                             icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 1).",
+                            notReadyTxt: "Need to increase improve your Investigation expertise (Level 1).",
                             callback: missy.cases[i].name
                         });
                         break;
@@ -215,7 +215,7 @@ missy.getcases = function () {
                             caseId: i,
                             active: canDoCase,
                             icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
+                            notReadyTxt: "Need to increase improve your Investigation expertise (Level 2).",
                             callback: missy.cases[i].name
                         });
                         break;
@@ -226,7 +226,7 @@ missy.getcases = function () {
                                 caseId: i,
                                 active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Need to increase improve your Invistation expertise (Level 3).",
+                                notReadyTxt: "Need to increase improve your Investigation expertise (Level 3).",
                                 callback: missy.cases[i].name
                             });
                         }
@@ -237,7 +237,7 @@ missy.getcases = function () {
                             caseId: i,
                             active: canDoCase,
                             icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
+                            notReadyTxt: "Need to increase improve your Investigation expertise (Level 2).",
                             callback: missy.cases[i].name
                         });
                         break;

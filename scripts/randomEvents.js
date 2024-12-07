@@ -136,7 +136,7 @@ fame.charList = function () {
             width: 342,
             height: 953,
             image: "1001_rand/man3.png",
-            title: "Transistioning man",
+            title: "Transitioning man",
             nice: true
         },
         {
@@ -145,7 +145,7 @@ fame.charList = function () {
             width: 812,
             height: 1007,
             image: "1001_rand/man4.png",
-            title: "Transistioning man",
+            title: "Transitioning man",
             nice: true
         },
 
