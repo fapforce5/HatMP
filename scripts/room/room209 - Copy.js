@@ -1777,8 +1777,8 @@ room209.chat = function (chatID) {
                 chatID: 14,
                 speaker: "thinking",
                 text: "What the hell! There's no way a program can track everything I do, can it? I must be crazy to keep going with " +
-                    "this, but I really need the job and the cult thing sounds bad. Hopefully she doens't make me do anything " +
-                    "too embarrassing. I dont' think it can get much worse that having to wear <span class='hl-pink'>panties</span>.",
+                    "this, but I really need the job and the cult thing sounds bad. Hopefully she doesn't make me do anything " +
+                    "too embarrassing. I don't think it can get much worse that having to wear <span class='hl-pink'>panties</span>.",
                 button: [
                     { chatID: 15, text: "...", callback: "missy0_2" }
                 ]
@@ -2136,7 +2136,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "missy",
-                text: "So you want to be a girly sissy, such a pretty little sissy. Well if you like wearing dreses so much " +
+                text: "So you want to be a girly sissy, such a pretty little sissy. Well if you like wearing dresses so much " +
                     "you can start reporting here in a nice pretty skirt to show off those pretty little legs of yours. " +
                     "Go down to the local store and get yourself a pretty little skirt.",
                 button: [
@@ -2201,15 +2201,15 @@ room209.chat = function (chatID) {
                 text: "Well the classroom is not an ideal place to do that. Go see my friend " + sc.n("tiffany") + ". " +
                     "She's got a surprise for you.",
                 button: [
-                    { chatID: -1, text: "Squeel in excitement", callback: "h_29" }
+                    { chatID: -1, text: "Squeal in excitement", callback: "h_29" }
                 ]
             },
             {
                 chatID: 63,
                 speaker: "missy",
-                text: "Making a permenet body modification is a serious step. I'm glad you've decided to go down this path. ",
+                text: "Making a permanent body modification is a serious step. I'm glad you've decided to go down this path. ",
                 button: [
-                    { chatID: 64, text: "* Squeel in excitement *", callback: "h_40" }
+                    { chatID: 64, text: "* Squeal in excitement *", callback: "h_40" }
                 ]
             },
             {
@@ -3256,7 +3256,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 183,
                 speaker: "p",
-                text: "These pills I'm going to give will help in 6 main areas of sexual attraction. They will natrually increase the " +
+                text: "These pills I'm going to give will help in 6 main areas of sexual attraction. They will naturally increase the " +
                     "speed and thickness that your hair grows while significantly slowing your body hair growth. ",
                 button: [
                     { chatID: 184, text: "...", callback: "" }
@@ -3319,7 +3319,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "So you want to tattoo yourself to everyone knows what a girly little slut you are? Perfect. I'm " +
                     "going to put a tattoo on you so everyone knows what a whore you are. Strip down my little slut " +
-                    "and lay accross these desks so I can permenetly mark you as my slut. ",
+                    "and lay across these desks so I can permanently mark you as my slut. ",
                 button: [
                     { chatID: 190, text: "What are you going to tattoo on me?", callback: "30_1" }
                 ]
@@ -3422,7 +3422,7 @@ room209.chat = function (chatID) {
                 speaker: "p",
                 text: "This is the Forest Queen. She started life as a boy, but was transformed in the CUM Bath ritual as the " +
                     "first to successfully undergo the transformation. She failed post transformation tests to bring about the " +  
-                    "coming of Azrael where she was forced to be the personal servent of Ubel for years. ",
+                    "coming of Azrael where she was forced to be the personal servant of Ubel for years. ",
                 button: [
                     { chatID: 201, text: "...", callback: "" }
                 ]

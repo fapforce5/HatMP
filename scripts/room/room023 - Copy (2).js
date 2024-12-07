@@ -160,7 +160,7 @@ room23.main = function () {
         {
             q: "What is your 'I'm getting laid tonight' outfit?",
             l: "Hmm. I borrowed " + sc.n("eva") + "'s thong once when I went on a date. I don't know why, I totally wasn't going to sleep with him. ",
-            e: "A skrit with no panties. I love bending over and catching them peeking. Hehehe",
+            e: "A skirt with no panties. I love bending over and catching them peeking. Hehehe",
             i: "q_3_7"
         },
         {
@@ -186,7 +186,7 @@ room23.main = function () {
         {
             q: "What was the most embarrassing time you got turned on?",
             l: "Oh. Hmmmm. That's a real thinker. I don't really know. ",
-            e: "I'm never embarrased when I'm turned on. I sometimes think that's the problem. ",
+            e: "I'm never embarrassed when I'm turned on. I sometimes think that's the problem. ",
             i: "q_4_3"
         },
         {
@@ -414,7 +414,7 @@ room23.main = function () {
         {
             e: "I want to you beg. Like a doggy with your tongue out! Then bark. ", 
             l: null,
-            b: [{ chatID: -1, text: "Werid, but ok.", callback: "medoggytongue" }]
+            b: [{ chatID: -1, text: "Weird, but ok.", callback: "medoggytongue" }]
         },
         {
             e: "Roll over doggy boy! ", 
@@ -450,7 +450,7 @@ room23.main = function () {
         },
         {
             e: null,
-            l: "Play air guitare to your favorite song",
+            l: "Play air guitar to your favorite song",
             b: [{ chatID: -1, text: "Get ready to be amazed by my awesome skills baby!", callback: "meairguitare" }]
         },
         {
@@ -459,7 +459,7 @@ room23.main = function () {
             b: [{ chatID: -1, text: "Awww yea! [Take pants off]", callback: "meNipplelick" }]
         },
         {
-            e: "I want you to suck my big toe like it's a thick tiny weiner! Suck " +
+            e: "I want you to suck my big toe like it's a thick tiny wiener! Suck " +
                 "it pervert. ",
             l: null,
             b: [{ chatID: -1, text: "Ugh! Ok. ", callback: "meSuckToes" }]
@@ -510,7 +510,7 @@ room23.main = function () {
         },
         {
             l: "I dare you to lick my vagina. But use only your tongue. I want to stay a virgin so this " +
-                "doens't count. ",
+                "doesn't count. ",
             e: null,
             b: [{ chatID: 110, text: "Fuck Yeah! ", callback: "melicklola" }]
         },
@@ -663,7 +663,7 @@ room23.main = function () {
             txt: "Twerk for us. ",
             e: "I didn't think you were an ass boy. I thought you were more into feet. ",
             l: "I feel so silly shaking my butt. Do I look dumb? ",
-            u: "I want to see your danicng moves. Twerk for us. ",
+            u: "I want to see your dancing moves. Twerk for us. ",
             dCallback: "dareTwerk",
             i: "d_3_1"
         },
@@ -734,10 +734,10 @@ room23.main = function () {
             i: "d_4_2"
         },
         {
-            txt: "Lick my weiner. ",
+            txt: "Lick my wiener. ",
             e: "Oh crap. I knew this was coming. You better not cum when I touch it. ",
             l: "Oh YES! I mean. Sure. That's cool. ",
-            u: "I dare you to lick his weiner! ",
+            u: "I dare you to lick his wiener! ",
             dCallback: "dareLickCock",
             i: "d_4_3"
         },
@@ -2074,7 +2074,7 @@ room23.chat = function (chatID) {
                 a: "I hate " + sc.n("chad") + " so much. He tried to grab my ass, several times. " + sc.n("me") + " is not a butthead, he would never do that. "
             },
             {
-                q: "Do you know what a weiner looks like? ",
+                q: "Do you know what a wiener looks like? ",
                 a: "Hrumph. You watched that porn with me. I hope real penises aren't that big. It was so huge! "
             },
             {
@@ -2162,14 +2162,14 @@ room23.chat = function (chatID) {
                     { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
             },
             {
-                e: "If we're going to sit here in our panties, so are you. Stip off those pants. ",
+                e: "If we're going to sit here in our panties, so are you. Strip off those pants. ",
                 l: "Take your pants off. Show me your legs! ",
                 b: [{ chatID: -1, text: "Awww yea! [Take pants off]", callback: "mestrip" },
                 { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
             },
             {
                 e: "Take off your underwear and show us your dick. ",
-                l: "Oh my. Hehehe. Uhhhh. Stip it off mister. ",
+                l: "Oh my. Hehehe. Uhhhh. Strip it off mister. ",
                 b: [{ chatID: -1, text: "Awww yea! [Take your panties off]", callback: "mestrip" },
                 { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
             },
@@ -2923,7 +2923,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 78,
                 speaker: "lola",
-                text: "I'm so embarrased! Does it look good. I hope it looks good. ",
+                text: "I'm so embarrassed! Does it look good. I hope it looks good. ",
                 button: [
                     { chatID: -1, text: "...", callback: "arousal resetbg theirTurn" },
                 ]

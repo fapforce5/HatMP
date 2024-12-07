@@ -1060,13 +1060,13 @@ room200.chat = function (chatID) {
                     "It's time for a shopping trip! I've given " + sc.n("tiffany") + " some money " +
                     "to take you out and get you some girly clothing. ",
                 button: [
-                    { chatID: 59, text: "*Squeel*", callback: "" },
+                    { chatID: 59, text: "*Squeal*", callback: "" },
                 ]
             },
             {
                 chatID: 59,
                 speaker: "missy",
-                text: "Yes. Squeel. Now go meet " + sc.n("tiffany") + " at the Toys 'n Us and get your new " +
+                text: "Yes. Squeal. Now go meet " + sc.n("tiffany") + " at the Toys 'n Us and get your new " +
                     "set of clothing. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "case_afterExplaniation" },

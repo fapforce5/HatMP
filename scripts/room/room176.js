@@ -428,7 +428,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "p",
-                text: "When I get done with you, you'll be able to actuall please someone. We're going to focus on the tongue. " +
+                text: "When I get done with you, you'll be able to actually please someone. We're going to focus on the tongue. " +
                     "When we're done you'll know how to please the head of a cock. Now every grab their dildo.  ",
                 button: [
                     { chatID: 7, text: "...", callback: "oral2" }
@@ -605,7 +605,7 @@ room176.chat = function (chatID) {
                 chatID: 26,
                 speaker: "p",
                 text: "Ouch! Ok. That's enough. Everyone naked now! On your hands and knees. That was the worst oral I've " +
-                    "ever recieved! Everyone fails. Make my human centipede and get your face in the ass in front of you. Now!",
+                    "ever received! Everyone fails. Make my human centipede and get your face in the ass in front of you. Now!",
                 button: [
                     { chatID: 27, text: "....", callback: "oral14" },
                 ]
@@ -732,9 +732,9 @@ room176.chat = function (chatID) {
             {
                 chatID: 40,
                 speaker: "thinking",
-                text: "Fuck! I just got a text from " + sc.n("eva") + " he really told them! They put together everthing! They " +
+                text: "Fuck! I just got a text from " + sc.n("eva") + " he really told them! They put together everything! They " +
                     "know I'm a sissy. I don't know if I can show my face at home ever again. Crap. Just because I didn't suck " +
-                    "his dick he goes and ruines my life. Fuck! ",
+                    "his dick he goes and ruins my life. Fuck! ",
                 button: [
                     { chatID: -1, text: "...", callback: "oralEnd" },
                 ]
@@ -795,7 +795,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 47,
                 speaker: "p",
-                text: "Allright lesbos. You're going to learn how to eat a pussy right! I can't tell you how " +
+                text: "Alright lesbos. You're going to learn how to eat a pussy right! I can't tell you how " +
                     "many times some pathetic loser tried sticking their tongue in my vagina hole or licked my " +
                     "piss hole and thought they were doing a good job! ",
                 button: [

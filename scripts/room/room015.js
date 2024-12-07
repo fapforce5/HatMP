@@ -327,7 +327,7 @@ room15.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "landlord",
-            text: "*hickup* Get in there and make " + sc.n("landlord") + " a happy girl! ",
+            text: "*hiccup* Get in there and make " + sc.n("landlord") + " a happy girl! ",
             button: [
                 { chatID: -1, text: "MMMmmmMMMMmm ", callback: "ll3" },
             ]
@@ -335,7 +335,7 @@ room15.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "landlord",
-            text: "Hey! *hickup* I poop from there! Get your tongue out of my asshole! ",
+            text: "Hey! *hiccup* I poop from there! Get your tongue out of my asshole! ",
             button: [
                 { chatID: -1, text: "oh whoops ", callback: "" },
             ]

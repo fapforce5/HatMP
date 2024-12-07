@@ -386,10 +386,10 @@ room952.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "daria",
-            text: "I'm not entirly sure, but I do know that they choose one of you from the cells. From what I understand " +
+            text: "I'm not entirely sure, but I do know that they choose one of you from the cells. From what I understand " +
                 "he picks the most feminine slave and forces them to take part. He gives them some drug then puts them in the tub " +
                 "of cum and they are forced to stay there until they drink the entire tub. It usually takes a few days to drink that " +
-                "much cum. I've been there on the third day and the smell is absolutly horrible. ",
+                "much cum. I've been there on the third day and the smell is absolutely horrible. ",
             button: [
                 { chatID: 7, text: "But why us?", callback: "" }
             ]
@@ -419,7 +419,7 @@ room952.chat = function (chatID) {
             chatID: 9,
             speaker: "daria",
             text: "After the way is cleared you'll need to follow me. I know a side trail in the swamp that will take us to the city, but once we reach " +  
-                "the city " + sc.n("bodhi") + " and I are going to disappear so you'll be on your own. Now the door to the side entrace is locked and I'll " +
+                "the city " + sc.n("bodhi") + " and I are going to disappear so you'll be on your own. Now the door to the side entrance is locked and I'll " +
                 "need your help unlocking it. ",
             button: [
                 { chatID: 10, text: "What do you need from me?", callback: "" }
@@ -438,7 +438,7 @@ room952.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "daria",
-            text: "Up your butt dummy. You can't get caught, so make sure you can fit those big skelton keys in your butt before " +    
+            text: "Up your butt dummy. You can't get caught, so make sure you can fit those big skeleton keys in your butt before " +    
                 "you try to steal them or this entire plan is sunk. ",
             button: [
                 { chatID: 12, text: "I can do that. ", callback: "" }
@@ -460,7 +460,7 @@ room952.chat = function (chatID) {
             text: "Having a pussy is great, but you don't want to be their chosen one. " +
                 "You'll be locked away in a special cell with no way to escape. You be made to bathe in the cum and one of two things will " +
                 "happen. One. The cult is real and Azreal will burst from your womb and split you open killing you. Or two, the cult is " +
-                "bullshit and they'll sacrafice you to appease Azreal. Either way you end up dead. It would take a full on FBI raid " +
+                "bullshit and they'll sacrifice you to appease Azreal. Either way you end up dead. It would take a full on FBI raid " +
                 "with a ton of bloodshed for you to ever see the light of day again. ",
             button: [
                 { chatID: 14, text: "Oh.", callback: "" }
@@ -622,7 +622,7 @@ room952.chat = function (chatID) {
             chatID: 32,
             speaker: "daria",
             text: "We didn't find the cult right away, so I got a job with your " + sc.n("landlord") + " working at the sperm bank so " +
-                "we wern't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
+                "we weren't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
                 "They offered to take us straight " +
                 "here. Even fed us on the way. I told them I was the only one that could milk " + sc.n("bodhi") + " and they readily " +
                 "agreed. No one jacks off my toy but me, and I get to make sure he only has sissygasms. No touching the clitty for him!",
@@ -804,7 +804,7 @@ room952.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "random",
-            text: "Now swollow this dick! ",
+            text: "Now swallow this dick! ",
             button: [
                 { chatID: 54, text: "glog", callback: "b3" },
             ]
@@ -830,14 +830,14 @@ room952.chat = function (chatID) {
             speaker: "random",
             text: "Should I shoot it down your throat, or all over your face?",
             button: [
-                { chatID: 57, text: "Swollow", callback: "b4s" },
+                { chatID: 57, text: "Swallow", callback: "b4s" },
                 { chatID: 57, text: "Cum on my face", callback: "b4f" },
             ]
         },
         {
             chatID: 57,
             speaker: "random",
-            text: "Allright slut. Get out. I need a nap. ",
+            text: "Alright slut. Get out. I need a nap. ",
             button: [
                 { chatID: -1, text: "ok", callback: "b5" }
             ]

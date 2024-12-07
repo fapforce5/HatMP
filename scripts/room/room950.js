@@ -1181,7 +1181,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 33,
                 speaker: "random",
-                text: "Ugh. She has the depth of an inflatable pool. You wern't trying to ask her out were you? She's incredibly loyal to " +
+                text: "Ugh. She has the depth of an inflatable pool. You weren't trying to ask her out were you? She's incredibly loyal to " +
                     "Ubel who treats her like a lap dog that he can fuck. ",
                 button: [
                     { chatID: 34, text: "No, no no. Just trying to learn more about this place. ", callback: "" }
@@ -1206,7 +1206,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "random",
-                text: "You again. If you wern't locked in a cell I would assume you're a stalker. ",
+                text: "You again. If you weren't locked in a cell I would assume you're a stalker. ",
                 button: [
                     { chatID: 37, text: "Oh hahaha. Hi. So what are you doing out here? ", callback: "" }
                 ]
@@ -1378,7 +1378,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 57,
                 speaker: "bodhi",
-                text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
+                text: "Totally awesome! Am I right? I get a blow-y every day and they give me a bed and free grub! Best time " +
                     "ever!",
                 button: [
                     { chatID: 58, text: "But aren't you trapped in there?", callback: "" }
@@ -1468,7 +1468,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 68,
                 speaker: "thinking",
-                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
+                text: "He doesn't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
                 button: [
                     { chatID: -1, text: "Surprise him", callback: "bb0" },
                     { chatID: 73, text: "Call out", callback: "b2" }
@@ -1666,7 +1666,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 92,
                 speaker: "bodhi",
-                text: "Oh totally. I love to share our experiances with others. Can " + sc.n("me") + " come over and play? " +
+                text: "Oh totally. I love to share our experiences with others. Can " + sc.n("me") + " come over and play? " +
                     "I told him to be a good. ",
                 button: [
                     { chatID: 93, text: "...", callback: "" }
@@ -1783,7 +1783,7 @@ room950.chat = function (chatID) {
                 chatID: 106,
                 speaker: "cult",
                 text: "I can see you're on the path to enlightenment. If you stay the path you may find yourself within the " +
-                    "Carnal Union of Motals. You still have much to learn, and much suffering to give before we will look at you, " +
+                    "Carnal Union of Mortals. You still have much to learn, and much suffering to give before we will look at you, " +
                     "but for now I shall let you stretch your legs and wander the hallway. ",
                 button: [
                     { chatID: 107, text: "Nice! ", callback: "" }
@@ -1837,15 +1837,15 @@ room950.chat = function (chatID) {
                 speaker: "cult",
                 text: "Oh fuck! Swallow my cum slut! ",
                 button: [
-                    { chatID: 113, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
+                    { chatID: 113, text: "GURGLE, Slurp, swallow", callback: "sweepHallway6" }
                 ]
             },
             {
                 chatID: 113,
                 speaker: "cult",
-                text: "Now thank me for allowing your to swollow my cum slut and get out of here.  ",
+                text: "Now thank me for allowing your to swallow my cum slut and get out of here.  ",
                 button: [
-                    { chatID: -1, text: "Thank you for letting me swollow your cum. ", callback: "sweepHallway6end" }
+                    { chatID: -1, text: "Thank you for letting me swallow your cum. ", callback: "sweepHallway6end" }
                 ]
             },
             {
@@ -1854,7 +1854,7 @@ room950.chat = function (chatID) {
                 text: "Those keys are so BIG! I need to stretch my ass out more if I want to fit them in! Maybe I'll use " +
                     "those vegetables to stretch me out more. ",
                 button: [
-                    { chatID: 113, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
+                    { chatID: 113, text: "GURGLE, Slurp, swallow", callback: "sweepHallway6" }
                 ]
             },
             {
@@ -1862,7 +1862,7 @@ room950.chat = function (chatID) {
                 speaker: "thinking",
                 text: "I'll just grab these keys really quick while he's got his eyes closed and shove them in my ass. ",
                 button: [
-                    { chatID: 116, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6x" }
+                    { chatID: 116, text: "GURGLE, Slurp, swallow", callback: "sweepHallway6x" }
                 ]
             },
             {

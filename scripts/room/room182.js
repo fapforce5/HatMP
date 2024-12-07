@@ -824,7 +824,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "martha",
-                text: "Jeremy. Unshaven, no chasity, messy hair, and you haven't showered today. " +
+                text: "Jeremy. Unshaven, no chastity, messy hair, and you haven't showered today. " +
                     "Simply disgraceful. You will get an F. ",
                 button: [
                     { chatID: 20, text: "...", callback: "" },
@@ -867,7 +867,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "!thomas",
-                text: "Missy put one on me, but it fell off. She said my tiny penis was chasity " +
+                text: "Missy put one on me, but it fell off. She said my tiny penis was chastity " +
                     "enough. That if I tried to show it to a girl, they would just laugh at me. ",
                 button: [
                     { chatID: 25, text: "...", callback: "" },
@@ -877,7 +877,7 @@ room182.chat = function (chatID) {
                 chatID: 25,
                 speaker: "martha",
                 text: "I would not blame the ladies for laughing at your small penis. You deserve " +
-                    "it. A man of your size doens't deserve to ejaculate. Perhaps a vaginal chastity " +
+                    "it. A man of your size doesn't deserve to ejaculate. Perhaps a vaginal chastity " +
                     "device would be more suited to your lack of genitalia. I shall give you a 'B'. ",
                 button: [
                     { chatID: 26, text: "...", callback: "t1_12" },
@@ -1377,7 +1377,7 @@ room182.chat = function (chatID) {
                     "sissy. This sissy is my personal favorite and I expected her to get this " +
                     "award. " + sc.n("me") + ", please set forward to receive your crown. ",
                 button: [
-                    { chatID: 79, text: "*squeel*", callback: "crown0" },
+                    { chatID: 79, text: "*squeal*", callback: "crown0" },
                 ]
             },
             {

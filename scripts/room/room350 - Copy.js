@@ -749,7 +749,7 @@ room350.chat = function (chatID) {
         //{
         //    chatID: 39,
         //    speaker: "landlord",
-        //    text: "Oh wow, I'm rarely suprised, but you have done just that. I'll take that back rent. Follow me into the break room.",
+        //    text: "Oh wow, I'm rarely surprised, but you have done just that. I'll take that back rent. Follow me into the break room.",
         //    button: [
         //        { chatID: -1, text: "Pay your " + sc.n("landlord") + " $500", callback: "follow352Chastity" }
         //    ]
@@ -932,7 +932,7 @@ room350.chat = function (chatID) {
         //{
         //    chatID: 60,
         //    speaker: "landlord",
-        //    text: "Disgusting. Honestly I'm not even suprised. Get out of here and put some clothes on. ",
+        //    text: "Disgusting. Honestly I'm not even surprised. Get out of here and put some clothes on. ",
         //    button: [
         //        { chatID: -1, text: "...", callback: "leave" }
         //    ]

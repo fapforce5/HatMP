@@ -1731,7 +1731,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 82,
                 speaker: "me",
-                text: "I'm wearing my chasity cage. Maybe later. ",
+                text: "I'm wearing my chastity cage. Maybe later. ",
                 button: [
                     { chatID: -1, text: "...", callback: "step13badend" }
                 ]

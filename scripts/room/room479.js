@@ -341,7 +341,7 @@ room479.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "random",
-            text: "It has been a rocky road, but my slave here has found a reason to live as my servent. It " +
+            text: "It has been a rocky road, but my slave here has found a reason to live as my servant. It " +
                 "may not be the story of Sleeping Beauty, but it is how we have chosen to survive our trauma. ",
             button: [
                 { chatID: 10, text: "oh wow", callback: "" },
@@ -401,7 +401,7 @@ room479.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "random",
-            text: "Normally people start a converstaion with a 'hello, how are you', but you go stright to my legs. ",
+            text: "Normally people start a conversation with a 'hello, how are you', but you go straight to my legs. ",
             button: [
                 { chatID: 17, text: "Oh. Hello. How are you? ", callback: "" },
             ]
@@ -459,7 +459,7 @@ room479.chat = function (chatID) {
             speaker: "random",
             text: "It's funny, before the cult crushed my legs no one would just come up to me and talk to me. " +
                 "Now that my legs are all fucked up that's all everyone wants to talk about. Did you know I was " +
-                "a wilderness guide and survival expert? I've trained hundereds of people who to get out of " +
+                "a wilderness guide and survival expert? I've trained hundreds of people who to get out of " +
                 "difficult situations in the forest with nothing buy a knife. ",
             button: [
                 { chatID: 24, text: "I didn't know that. ", callback: "" },
@@ -479,8 +479,8 @@ room479.chat = function (chatID) {
             chatID: 25,
             speaker: "random",
             text: "You know what's better than a prosthetic leg? My real leg. This place is stupid. The cult is " +
-                "stuipd. I'm done talking. Once my other leg is healed up I plan on getting out of here and " +
-                "hiding in the forest. so I don't have to have stupid converstations with people. ",
+                "stupid. I'm done talking. Once my other leg is healed up I plan on getting out of here and " +
+                "hiding in the forest. so I don't have to have stupid conversations with people. ",
             button: [
                 { chatID: -1, text: "Oh. Ouch", callback: "amputee3" },
             ]

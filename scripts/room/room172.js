@@ -233,9 +233,9 @@ room172.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "black",
-            text: "Welcome to my private lessons in the Black room. Stip off those clothes. " +
+            text: "Welcome to my private lessons in the Black room. Strip off those clothes. " +
                 "A slave is not permitted dignity in the Black room. I'm going to take off " +
-                "your chasity device, because you're " +
+                "your chastity device, because you're " +
                 "whole body is mine and only mine during the time you are here. ",
             button: [
                 { chatID: 1, text: "Yes ma'am", callback: "b0" }

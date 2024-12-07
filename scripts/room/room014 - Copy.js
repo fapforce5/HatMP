@@ -1129,7 +1129,7 @@ room14.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "me",
-            text: "OOo it smells like butt. This has to be " + sc.n("landlady") + "'s butt plug. I didn't take her for someoene " +
+            text: "OOo it smells like butt. This has to be " + sc.n("landlady") + "'s butt plug. I didn't take her for someone " +
                 "that was into butt stuff. This is so disgusting. I really should put it back. ",
             button: [
                 { chatID: -1, text: "[Put it back]", callback: "resetDresser" },
@@ -1395,9 +1395,9 @@ room14.chat = function (chatID) {
         //{
         //    chatID: 37,
         //    speaker: "bigguy",
-        //    text: "Hahahaha How's my cum taste little man? Now swollow it up for " + sc.n("landlord") + ".",
+        //    text: "Hahahaha How's my cum taste little man? Now swallow it up for " + sc.n("landlord") + ".",
         //    button: [
-        //        { chatID: 38, text: "[swollow it down]", callback: "couple3g" }
+        //        { chatID: 38, text: "[swallow it down]", callback: "couple3g" }
         //    ]
         //},
         //{
@@ -1467,8 +1467,8 @@ room14.chat = function (chatID) {
         //{
         //    chatID: 46,
         //    speaker: "landlord",
-        //    text: "You know, since your really connecting with your femanine side you need to know how to act like a lady in " +
-        //        "the bedroom. Just stand back and " + sc.n("landlord") + " is going to show you how to embrace your femanine side. ",
+        //    text: "You know, since your really connecting with your feminine side you need to know how to act like a lady in " +
+        //        "the bedroom. Just stand back and " + sc.n("landlord") + " is going to show you how to embrace your feminine side. ",
         //    button: [
         //        { chatID: 47, text: "huh?", callback: "bg4_1" }
         //    ]

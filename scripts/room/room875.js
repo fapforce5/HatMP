@@ -570,7 +570,7 @@ room875.chat = function (chatID) {
                 text: "Let's go to the locker room, we want some more that that ass of yours. ",
                 button: [
                     { chatID: 47, text: "Oh, anything for the team. ", callback: "cheer9_2" },
-                    { chatID: -1, text: "Squeel and run away. ", callback: "leaveLate" },
+                    { chatID: -1, text: "Squeal and run away. ", callback: "leaveLate" },
                 ]
             },
             {
@@ -588,7 +588,7 @@ room875.chat = function (chatID) {
                     "locker room for some post game celebration. You down? ",
                 button: [
                     { chatID: 34, text: "Oh, anything for the team. ", callback: "cheer9_2" },
-                    { chatID: -1, text: "Squeel and run away. ", callback: "leaveLate" },
+                    { chatID: -1, text: "Squeal and run away. ", callback: "leaveLate" },
                 ]
             },
             {
@@ -611,7 +611,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "football",
-                text: "Fuck them titties, I was to see that ass I 'bout to destory. Tell that slut to strip it off and show " +
+                text: "Fuck them titties, I was to see that ass I 'bout to destroy. Tell that slut to strip it off and show " +
                     "us all that fine booty. ",
                 button: [
                     { chatID: 37, text: "...", callback: "" },

@@ -133,8 +133,8 @@ room953.chat = function (chatID) {
             chatID: 5,
             speaker: "ubel",
             text: "... We shall bathe the chosen one in the semen of people and she will birth the demon from within her womb formed " +
-                "by the spirit of our beleif and power! But only if all of you truly believe. This is why all those that have lost " +
-                "their faith must be found and seperated by blood from our numbers...",
+                "by the spirit of our belief and power! But only if all of you truly believe. This is why all those that have lost " +
+                "their faith must be found and separated by blood from our numbers...",
             button: [
                 { chatID: 6, text: "...", callback: "" }
             ]
@@ -216,7 +216,7 @@ room953.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "cult",
-            text: "I know the nonbeliever among us! He pretends to follow the instuctions Azreal, but his actions are a lie! He " + 
+            text: "I know the nonbeliever among us! He pretends to follow the instructions of Azreal, but his actions are a lie! He " + 
                 "deceives us all in his treachery!",
             button: [
                 { chatID: 16, text: "GULP!", callback: "" }
@@ -354,7 +354,7 @@ room953.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "ubel",
-            text: "...my followers will command contries as the world leaders burn under the flame of our power... ",
+            text: "...my followers will command countries as the world leaders burn under the flame of our power... ",
             button: [
                 { chatID: 33, text: "...", callback: "" }
             ]
@@ -448,7 +448,7 @@ room953.chat = function (chatID) {
             chatID: 43,
             speaker: "ubel",
             text: sc.n("daria") + " and " + sc.n("bodhi") + " have we been fully accommodating with the both of you? I'm really " +
-                "dissapointed that you would choose to cross me and betray the teachings of Azreal. I expected this from you, " +
+                "disappointed that you would choose to cross me and betray the teachings of Azreal. I expected this from you, " +
                 sc.n("me") + " though. But all is fine. I have spoken with Azreal on what to do with your lives.",
             button: [
                 { chatID: 44, text: "Are you going to kill us?", callback: "" }
@@ -458,7 +458,7 @@ room953.chat = function (chatID) {
             chatID: 44,
             speaker: "ubel",
             text: sc.n("bodhi") + " you shall live. You are too simple a creature for the path, but you must be punished. " +
-                "I will have you watch everthing that happens to " + sc.n("daria") + " as she finds herself over the coming months. ",
+                "I will have you watch everything that happens to " + sc.n("daria") + " as she finds herself over the coming months. ",
             button: [
                 { chatID: 45, text: "...", callback: "breakout6" }
             ]
@@ -468,7 +468,7 @@ room953.chat = function (chatID) {
             speaker: "ubel",
             text: "Now your lives are on your own. You have strayed from the path of Azreal and only those on the path can remain. " +
                 "I will give you the choice. Choice one is to remain here and go though my personal intensive training. It will be " +
-                "filled with pain and suffering like you've never experainced. You will lose your very definition of self as you " +
+                "filled with pain and suffering like you've never experienced. You will lose your very definition of self as you " +
                 "are tortured and used by all who live here. ",
             button: [
                 { chatID: 46, text: "What's choice two?", callback: "" }
@@ -486,7 +486,7 @@ room953.chat = function (chatID) {
             chatID: 47,
             speaker: "thinking",
             text: "Oh wow, we really fucked up. I should have just waited in my cell. I'm sure " + sc.n("missy") + " or " +
-                sc.n("landlord") + " would have tried to save us by now. If the cell was them being nice, I'm afriad of what " +
+                sc.n("landlord") + " would have tried to save us by now. If the cell was them being nice, I'm afraid of what " +
                 "the intensive training is.",
             button: [
                 { chatID: 48, text: "...", callback: "" }

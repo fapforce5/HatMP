@@ -551,7 +551,7 @@ room251.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "jeffery",
-            text: "Ok, now go out there and start taking some orders. Dont forget to make friends with " + sc.n("holly") +
+            text: "Ok, now go out there and start taking some orders. Don't forget to make friends with " + sc.n("holly") +
             ", " + sc.n("molly") + ", and " + sc.n("dolly") + "!",
             button: [
                 { chatID: -1, text: "Ok boss [Get to work]", callback: "startWork" }
@@ -568,7 +568,7 @@ room251.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "jeffery",
-            text: "You need to fix your cock! If you want to work here you need to stuff that thing in something so it doens't " +
+            text: "You need to fix your cock! If you want to work here you need to stuff that thing in something so it doesn't " +
                 "hang down anymore! Next time you come in I don't want to see your cock!",
             button: [
                 { chatID: 36, text: "Can't I just wear panties?", callback: "" }
@@ -894,7 +894,7 @@ room251.chat = function (chatID) {
             speaker: "jeffery",
             text: "Maybe I will. You'll have to get me the panties to find out. ",
             button: [
-                { chatID: 59, text: "Ok. I'll get the panties you werid-o ", callback: "j5" }
+                { chatID: 59, text: "Ok. I'll get the panties you weird-o ", callback: "j5" }
             ]
         },
         {

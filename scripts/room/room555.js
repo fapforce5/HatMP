@@ -1066,7 +1066,7 @@ room555.chat = function (chatID) {
         {
             chatID: 50,
             speaker: "thinking",
-            text: "Oh fuck! I can feel it really streatching my legs and slutty hole!",
+            text: "Oh fuck! I can feel it really stretching my legs and slutty hole!",
             button: [
                 { chatID: -1, text: "...", callback: "exitMachine" },
             ]
@@ -1091,7 +1091,7 @@ room555.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "chad",
-            text: "Allright " + gender.pronoun("faggot") + " sit up and kiss my supior cock. It's the closest to a " +
+            text: "Alright " + gender.pronoun("faggot") + " sit up and kiss my superior cock. It's the closest to a " +
                 "real man's cock you'll ever get. ",
             button: [
                 { chatID: 54, text: "[Situp]", callback: "situp" },

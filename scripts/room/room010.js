@@ -785,7 +785,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 44,
                 speaker: "me",
-                text: "Fetvill Stars, Fetville Stars. Don't be shy, stand up and give your battle cry. V-I-C-T-O-R-Y<br/> " +
+                text: "Fetville Stars, Fetville Stars. Don't be shy, stand up and give your battle cry. V-I-C-T-O-R-Y<br/> " +
                     "We'll smash you like a fucking flea. We're the best around I guarantee. D-E-F-E-N-S-E<br/>" +
                     "Your quarterback is running dry. We'll fuck you in your P-U-S-S-Y. ",
                 button: [

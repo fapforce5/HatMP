@@ -369,7 +369,7 @@ room177.chat = function (chatID) {
             chatID: 28,
             speaker: "missy",
             text: "Hello girls. Today's class is a choice. You will decide if you're " +
-                "a true cum hole sissy who only exists to take phalic object into your " +
+                "a true cum hole sissy who only exists to take phallic object into your " +
                 "holes, or are a fem boy that may want to use your penis someday. ",
             button: [
                 { chatID: 29, text: "...", callback: "" }
@@ -381,7 +381,7 @@ room177.chat = function (chatID) {
             text: "No doubt by now you have noticed that the smaller your cage is, the " +
                 "smaller your penis gets. So I will give you the choice. Do you still " +
                 "want your penis, or will you commit to a sissy clit. Choose, but choose " +
-                "wisely, becuase if you choose the clit, it will forever be a clit. ",
+                "wisely, because if you choose the clit, it will forever be a clit. ",
             button: [
                 { chatID: -1, text: "*Gulp*", callback: "c201_choice" }
             ]
@@ -389,7 +389,7 @@ room177.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "missy",
-            text: "Oh. I guess I'm a bit dissapointed. But I guess it's your choice. " +
+            text: "Oh. I guess I'm a bit disappointed. But I guess it's your choice. " +
                 "Class is dismissed. ",
             button: [
                 { chatID: -1, text: "Ok. ", callback: "chastity101end" }

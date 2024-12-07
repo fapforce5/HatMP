@@ -328,7 +328,7 @@ room752.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "whore",
-            text: "Yeah. I told Dale I'll give him feebies anytime he wants, but he said he doens't put his sperm anywhere " +
+            text: "Yeah. I told Dale I'll give him freebies anytime he wants, but he said he doesn't put his sperm anywhere " +
                 "so the government can't track him or something. But yeah. You can have the locket. Just don't give it back to " +
                 "him. Fuck that guy! ",
             button: [

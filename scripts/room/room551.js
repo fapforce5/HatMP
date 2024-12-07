@@ -828,7 +828,7 @@ room551.chat = function (chatID) {
         {
             chatID: 43,
             speaker: "g",
-            text: "I'm going to make you squeel like the bitch you are.",
+            text: "I'm going to make you squeal like the bitch you are.",
             button: [
                 { chatID: -1, text: "Training", callback: "sparTrain" },
                 { chatID: -1, text: "Never mind", callback: "" },
@@ -837,7 +837,7 @@ room551.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "g",
-            text: "I'm going to make you squeel like the bitch you are.",
+            text: "I'm going to make you squeal like the bitch you are.",
             button: [
                 { chatID: -1, text: "Training", callback: "sparTrain" },
                 { chatID: -1, text: "Spar", callback: "spar" },

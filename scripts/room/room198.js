@@ -7,7 +7,7 @@ room198.main = function () {
         wrong: 0,
         slide: [
             {
-                i: 0, img: "i1.jpg", q: "What color was the vollyball?", a: [
+                i: 0, img: "i1.jpg", q: "What color was the volleyball?", a: [
                     { t: "blue", c: "x" },
                     { t: "white", c: "x" },
                     { t: "red", c: "x" },
@@ -43,13 +43,13 @@ room198.main = function () {
                     { t: "left", c: "x" },
                     { t: "right", c: "correct" },
                     { t: "there were 2 space ships", c: "x" },
-                    { t: "there wern't any space ships", c: "x" },
+                    { t: "there weren't any space ships", c: "x" },
                 ]
             },
             {
                 i: 5, img: "i6.jpg", q: "What shape is on the building on the red banner on the right of the image? ", a: [
                     { t: "hexagon", c: "correct" },
-                    { t: "triange", c: "x" },
+                    { t: "triangle", c: "x" },
                     { t: "square", c: "x" },
                     { t: "circle", c: "x" },
                 ]

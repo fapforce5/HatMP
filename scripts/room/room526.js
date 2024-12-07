@@ -393,7 +393,7 @@ room526.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "orchid",
-            text: "Oh... hello. We wern't expecting any new girls here! ",
+            text: "Oh... hello. We weren't expecting any new girls here! ",
             button: [
                 { chatID: 1, text: "*GULP*", callback: "" }
             ]
@@ -640,7 +640,7 @@ room526.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "keaton",
-            text: "Baby.I'm looking to get fucked, not tickeled. You need to put that tiny " +
+            text: "Baby.I'm looking to get fucked, not tickled. You need to put that tiny " +
                 "dick away and never show it to another human again. ",
             button: [
                 { chatID: -1, text: "Awwww", callback: "reset" },
@@ -922,7 +922,7 @@ room526.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "zoey",
-            text: "I just wanted to die, hearing the boy I thoguht I loved laugh at me with his friends. That night my best friend, Amélie, " +
+            text: "I just wanted to die, hearing the boy I thought I loved laugh at me with his friends. That night my best friend, Amélie, " +
                 "heard what had happened and came over to my room. I was so sad I just wanted to lay in bed and die. Amélie curled next to " +
                 "me and snuggled with me all night. I have never felt loved like that my entire life. She was so soft and caring I " +
                 "realized this is what I want. Not some garçon stupide, but a nice warm loving person. ",
@@ -970,7 +970,7 @@ room526.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "orchid",
-            text: "And I transfered it right to " + sc.n("me") + "'s ass! The cum " +
+            text: "And I transferred it right to " + sc.n("me") + "'s ass! The cum " +
                 "transfer is complete! ",
             button: [
                 { chatID: -1, text: "...my butt is so full of cum...", callback: "g7" }

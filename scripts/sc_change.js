@@ -124,7 +124,7 @@ scc.changesDifferntText = function (who, whichChange) {
             break;
         case "lola":
             comment = [
-                "Oh, you're wearing different clothes, I'm suprised. ",
+                "Oh, you're wearing different clothes, I'm surprised. ",
                 "Is you chest bigger? Are you ok? ",
                 "You should go swimming with me, it looks like you butt is getting bigger. ",
                 "You need a haircut, it's getting pretty long. ",
@@ -138,7 +138,7 @@ scc.changesDifferntText = function (who, whichChange) {
                 "Your chest is disgusting, you look less like my little boy and more like a girl each day. ",
                 "You need to go on a diet, you ass is getting fat. ",
                 "Go get your hair cut, you look like a girl. ",
-                girlyHairColor ? "That's a new hair color. You know every day I worry more and morea bout you." : "I liked your old hair color. ",
+                girlyHairColor ? "That's a new hair color. You know every day I worry more and more about you." : "I liked your old hair color. ",
                 "Why is your dick shrinking? "
             ];
             break;

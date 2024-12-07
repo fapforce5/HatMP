@@ -2,7 +2,7 @@
 var room1002 = {};
 
 //add dominate option - DOM - SUB = total player dom - each fighter will have a DOM level
-//if DOM achaived then same action as winning the fight
+//if DOM achieved then same action as winning the fight
 
 //add hot click areas (easter eggs) - if player clicks the MC's penis he grabs his crotch
 //if nipple them MC covers nipples
@@ -15,9 +15,9 @@ var room1002 = {};
 //maybe some hitting / ass slapping
 
 //lose - go in a box - kidnapped
-//lose - abdubted by mr jones
+//lose - abducted by mr jones
 
-//suprise rape -  they decide
+//surprise rape -  they decide
 
 //also need inside character's head / I'm in so much pain / I'm so horny / please don't based on user input
 

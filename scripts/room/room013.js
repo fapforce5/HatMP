@@ -1952,7 +1952,7 @@ room13.chat = function (chatID) {
                     "before we even get anywhere. She mentioned I needed to practice dating. I didn't know " +
                     "this is what she came up with. ",
                 button: [
-                    { chatID: 63, text: "Yeah. She sprung it on me too. I thought it was werid, but you know. Why not. Did you want to go on a practice date? ", callback: "" },
+                    { chatID: 63, text: "Yeah. She sprung it on me too. I thought it was weird, but you know. Why not. Did you want to go on a practice date? ", callback: "" },
                 ]
             },
             {
@@ -1967,7 +1967,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "lola",
-                text: "Cool! Give me at leaste a day to get everything ready! Ask me before it gets dark. So excited! ",
+                text: "Cool! Give me at least a day to get everything ready! Ask me before it gets dark. So excited! ",
                 button: [
                     { chatID: -1, text: "Haha. Yeah. That would be weird. ", callback: "practiceDate0_end" },
                 ]
@@ -2026,7 +2026,7 @@ room13.chat = function (chatID) {
                 chatID: 71,
                 speaker: "lola",
                 text: "I love you. I think I've always loved you. I've never gone more than " +
-                    "a single date with any boy in my life becuase I always compare them to " +
+                    "a single date with any boy in my life because I always compare them to " +
                     "you. I can't get you out of my mind. Do you love me back? ",
                 button: [
                     { chatID: 72, text: "Sure ", callback: "" },

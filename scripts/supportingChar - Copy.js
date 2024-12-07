@@ -157,13 +157,13 @@ sc.events = [
     //{ name: "lola", step: -4, txt: "Just play", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "lola", step: -3, txt: "Professed Love", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
+    //{ name: "lola", step: -1, txt: "Panty thief caught", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
 
     //{ name: "eva", step: -1, txt: "Caught peeking on shower", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
 
     //{ name: "spanky", step: -1, txt: "Hypno vids", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [404] },
 
-    //{ name: "jeffery", step: -2, txt: "Failed investiagion", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
+    //{ name: "jeffery", step: -2, txt: "Failed investigation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "jeffery", step: -1, txt: "Dimed out the waitresses", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
 
     //{ name: "holly", step: -1, txt: "NARC!!!", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
@@ -212,13 +212,13 @@ sc.levels = function (name, level) {
                     { step: 2, txt: "[M] Chat about sperm thief. ", m: [16] },
                     { step: 3, txt: "[M] Extra Money! Get key to her bedroom.", m: [16] },
                     { step: 4, txt: "[M] Chat about working at the sperm store.", m: [16] },
-                    { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },
+                    { step: 5, txt: "[M] Talk about her boyfriend.", m: [16] },
                     { step: 6, txt: "[M] Talk to her on the couch during the day or early evening. Eat that ass!", m: [16] },
                     { step: 7, txt: "[M] Talk to her on the couch during the day or early evening. Lesson learned.", m: [16] },
                     { step: 8, txt: "[M] On the couch - Pee pee slap.", img: "", m: [16] },
                     { step: 9, txt: "[M] Visit her in her room between 8PM and 10PM. It only happens after you've been kicked out due to playing truth or dare with the girls. ", m: [16] },
                     { step: 10, txt: "[M] Visit her in her room between 8PM and 10PM. ", m: [16] },
-                    { step: 11, txt: "[M] Progress Lola and Evas story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
+                    { step: 11, txt: "[M] Progress Lola and Eva's story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
                     { step: 12, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", m: [16] },
                 ];
             else
@@ -248,13 +248,13 @@ sc.levels = function (name, level) {
             //    { step: 3, txt: "Watch her eat out Chloé.", m: [500] },
             //    { step: 4, txt: "Talk to Zoey about her problems with Chloé.", m: [500] },
             //    { step: 5, txt: "Catch Chloé  Cheating (Only if your support your best friend)", m: [500] },
-            //    { step: 6, txt: "Sleep at Zoey's on five differnt nights.", m: [500] },
+            //    { step: 6, txt: "Sleep at Zoey's on five different nights.", m: [500] },
             //    { step: 10, txt: "Sleep once more to see her night visitor", m: [500] },
             //    {
             //        step: 11, txt: "Raise her love to max. You can help her clean up at the bar or play video games at her home. Once you're " +
-            //            "there wear a chasity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
+            //            "there wear a chastity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
             //    },
-            //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyer", m: [525] },
+            //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyeur", m: [525] },
             //    { step: 13, txt: "Eat her pussy after you finish cleaning up.", m: [500] },
             //    { step: 14, txt: "Relationship - no new content", m: [500] },
 
@@ -272,7 +272,7 @@ sc.levels = function (name, level) {
     ////{ name: "tiffany", step: 1, txt: "Investigate Cum Caper at The Toy Store.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
     ////{ name: "tiffany", step: 2, txt: "Continue to work at The Toy Store.", img: "cum", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
     ////{ name: "tiffany", step: 3, txt: "Go back to The Toy Store and continue working.", img: "dildo", show: false, row: 1, col: 1, ach: false, major: true, m: [650] },
-    ////{ name: "tiffany", step: 4, txt: "Continue the investiagion...", img: "nap", show: false, row: -1, col: 1, ach: false, major: true, m: [650] },
+    ////{ name: "tiffany", step: 4, txt: "Continue the investigation...", img: "nap", show: false, row: -1, col: 1, ach: false, major: true, m: [650] },
     //{ name: "tiffany", step: 5, txt: "You'll need to do the crossdressing event at Missy's Sissy School to continue with her", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [400] },
     //{ name: "tiffany", step: 6, txt: "Visit Tiffany's home for the first time", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
     //{ name: "tiffany", step: 10, txt: "UNK", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [650] },
@@ -292,7 +292,7 @@ sc.levels = function (name, level) {
     //{ name: "candy", step: 52, txt: "Sorry, I don't date nice guys - Complete the Public Cross Dress event at the sissy school ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [650] },
 
     //{ name: "candy", step: 100, txt: "Meet her in her room for some friendly advice!", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
-    //{ name: "candy", step: 101, txt: "Suprise visitor. Meet her in her room", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
+    //{ name: "candy", step: 101, txt: "Surprise visitor. Meet her in her room", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
     //{ name: "candy", step: 102, txt: "Cheerleading! Meet her in her room. ", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [50] },
     //{ name: "candy", step: 103, txt: "Cheerleader tryouts! Meet her at the football field Saturday Morning in workout clothes", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [875] },
     //{ name: "candy", step: 104, txt: "Talk to her in her room.", img: "", show: true, row: 0, col: 0, ach: false, major: false, m: [875] },
@@ -316,7 +316,7 @@ sc.levels = function (name, level) {
     //{ name: "lola", step: -4, txt: "Just play", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "lola", step: -3, txt: "Professed Love", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "lola", step: -2, txt: "Lola Swim after kick out", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
-    //{ name: "lola", step: -1, txt: "Panty theif caught", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
+    //{ name: "lola", step: -1, txt: "Panty thief caught", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "lola", step: 0, txt: "[M] Visit her in her room at your house. Typically she's there after 5PM. Talk to both of them. ", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
     //{ name: "lola", step: 1, txt: "[M] Rub her back with her clothes on.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
     //{ name: "lola", step: 2, txt: "[M] Pull her shirt up and rub her back.", img: "lolaMass", show: true, row: 0, col: 0, ach: false, major: false, m: [16] },
@@ -330,7 +330,7 @@ sc.levels = function (name, level) {
     //{ name: "lola", step: 10, txt: "[M] In bed confession. She'll visit you if you sleep in your bed. ", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
     //{ name: "lola", step: 11, txt: "[M] Text her in the park.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [450] },
     //{ name: "lola", step: 12, txt: "[M] Text her in the park again. ", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [450] },
-    //{ name: "lola", step: 13, txt: "[M] Progress Eva's storyline. You'll get a suprise when you wake up at home.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
+    //{ name: "lola", step: 13, txt: "[M] Progress Eva's storyline. You'll get a surprise when you wake up at home.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
     //{ name: "lola", step: 14, txt: "[M] Progress Landlord's storyline. Then talk to her", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
     //{ name: "lola", step: 15, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
     //{ name: "lola", step: 200, txt: "[F] Sissy! Get caught at home crossdressing. Then talk to them in their room.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
@@ -344,14 +344,14 @@ sc.levels = function (name, level) {
     //{ name: "eva", step: 2, txt: "[M] Massage her feet in her room.", img: "evaFoot", show: true, row: 0, col: 1, ach: false, major: false, m: [16] },
     //{ name: "eva", step: 3, txt: "[M] Get some wine from the convenience store.", img: "spinBottle", show: true, row: 0, col: 2, ach: false, major: true, m: [404] },
     //{ name: "eva", step: 4, txt: "[M] Suck her toes in her room.", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [16] },
-    //{ name: "eva", step: 5, txt: "[M] Suprise gift for you in her room.", img: "evaFootjob", show: true, row: 0, col: 3, ach: false, major: false, m: [16] },
+    //{ name: "eva", step: 5, txt: "[M] Surprise gift for you in her room.", img: "evaFootjob", show: true, row: 0, col: 3, ach: false, major: false, m: [16] },
     //{ name: "eva", step: 6, txt: "[M] Truth or Dare!", img: "", show: false, row: 0, col: 4, ach: false, major: false, m: [16] },
     //{ name: "eva", step: 7, txt: "[M] Get back into the house. Visit the Sperm Store. ", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [350] },
     //{ name: "eva", step: 8, txt: "[M] Welcoming in the house.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
     //{ name: "eva", step: 9, txt: "[M] In bed confession. She'll visit you if you sleep in your bed. ", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
     //{ name: "eva", step: 10, txt: "[M] Text her from your phone when you're in your bedroom.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
     //{ name: "eva", step: 11, txt: "[M] Had the sex - phone contacts", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
-    //{ name: "eva", step: 12, txt: "[M] Progress Lola's storyline. You'll get a suprise when you wake up at home.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
+    //{ name: "eva", step: 12, txt: "[M] Progress Lola's storyline. You'll get a surprise when you wake up at home.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
     //{ name: "eva", step: 13, txt: "[M] Progress Landlord's storyline. Then talk to her.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
     //{ name: "eva", step: 14, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", show: false, row: 0, col: 3, ach: false, major: true, m: [16] },
     //{ name: "eva", step: 200, txt: "[F] Sissy! Get caught at home crossdressing. Then talk to them in their room.", img: "", show: false, row: 0, col: 4, ach: false, major: true, m: [16] },
@@ -401,7 +401,7 @@ sc.levels = function (name, level) {
     //{ name: "cop", step: 1, txt: "First Meeting", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [450] },
     //{ name: "cop", step: 2, txt: "Will let you blow him", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [450] },
 
-    //{ name: "jeffery", step: -2, txt: "Failed investiagion", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
+    //{ name: "jeffery", step: -2, txt: "Failed investigation", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "jeffery", step: -1, txt: "Dimed out the waitresses", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "jeffery", step: 0, txt: "Nothing", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "jeffery", step: 1, txt: "Applied", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [250] },
@@ -444,7 +444,7 @@ sc.levels = function (name, level) {
     //{ name: "kei", step: 0, txt: "Meet at his home", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
     //{ name: "kei", step: 5, txt: "Jada visited game", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [] },
 
-    //{ name: "jada", step: 0, txt: "Havent' met yet", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
+    //{ name: "jada", step: 0, txt: "Haven't met yet", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
     //{ name: "jada", step: 1, txt: "Visited card game", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
     //{ name: "jada", step: 2, txt: "First Pair of Panties", img: "", show: false, row: 0, col: 0, ach: false, major: false, m: [50] },
 
@@ -1359,7 +1359,7 @@ sc.phone = function (char) {
                 else if (step === 6) {
                     clist = [
                         { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
-                        { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
+                        { s: "eva", t: "I knew if I played with your wiener you'd get totally weird" },
                         { s: "me", t: "Oh no I didn't mean to be weird" },
                         { s: "eva", t: "whatever. " + sc.n("lola") + " and me want to play truth or dare, come by tonight." }
                     ];
@@ -1670,7 +1670,7 @@ sc.trivial = function (charname) {
             image = "football.png";
             break;
         default:
-            console.log("unknown trivial char: (check capitilazation)" + charname);
+            console.log("unknown trivial char: (check capitalization)" + charname);
             break;
     }
     return { display: name, image: image };

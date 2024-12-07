@@ -343,7 +343,7 @@ room408.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "thinking",
-            text: "I don't know her that well. I need a way to get the converstaion started. ",
+            text: "I don't know her that well. I need a way to get the conversation started. ",
             button: [
                 { chatID: 9, text: "So, I've heard you attend C.U.M. I was wondering about attending myself. ", callback: "" },
             ]
@@ -354,7 +354,7 @@ room408.chat = function (chatID) {
             text: "Oh. Sure. I prefer tattooing while I talk. Care for a free tattoo while I tell you all about them? ",
             button: [
                 { chatID: 10, text: "Sure! ", callback: "" },
-                { chatID: -1, text: "Squeel and run away! ", callback: "leave" },
+                { chatID: -1, text: "Squeal and run away! ", callback: "leave" },
             ]
         },
         {
@@ -530,7 +530,7 @@ room408.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "stormy",
-            text: "So I don't know how to get there 'cuase " + sc.n("daddy") + " always drives me, but I do know the code to " +
+            text: "So I don't know how to get there 'cause " + sc.n("daddy") + " always drives me, but I do know the code to " +
                 "get into the compound. " + sc.n("daddy") + " makes me hop out and open the door since I ride shotgun. It " +
                 "would be fun to see you there.. I really shouldn't.",
             button: [

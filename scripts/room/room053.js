@@ -35,7 +35,7 @@ room53.main = function () {
     var navList = [51, 55];
     nav.buildnav(navList);
 };
-//---------------------------------------Female assisted rape -- main char doens't like brad, candy forces main char
+//---------------------------------------Female assisted rape -- main char doesn't like brad, candy forces main char
 //---------------------------------------to fuck him. Grabs his face, Spreads your ass and shoves
 //---------------------------------------brads' dick into you
 //---------------------------------------Cuckold stuff first. you watch while they fuck, no touching
@@ -596,7 +596,7 @@ room53.chat = function (chatID) {
             chatID: 23,
             speaker: "candy",
             text: "Oh that. Hehehe. Yes, only girls can come up here. Girls and studs like " + sc.n("chad") + ". " +
-                sc.n("treyvon") + " doens't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
+                sc.n("treyvon") + " doesn't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
                 "so that's how we got you in. You know he's taken a liking to you. I think he wants to fuck you. ",
             button: [
                 { chatID: 24, text: "What, no, why....", callback: "" }
@@ -614,7 +614,7 @@ room53.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "chad",
-            text: "I'm going to make this bitch squeel like a whore. ",
+            text: "I'm going to make this bitch squeal like a whore. ",
             button: [
                 { chatID: -1, text: "...", callback: "101_4" }
             ]
@@ -665,7 +665,7 @@ room53.chat = function (chatID) {
             chatID: 31,
             speaker: "candy",
             text: "I've never had a sissy best friend before, but I was trying to think of ways to thank you for cleaning " +
-                "me out and watching us. It was so hot. Did you masturbate to it later? It doens't matter. I masturbated " +
+                "me out and watching us. It was so hot. Did you masturbate to it later? It doesn't matter. I masturbated " +
                 "to it. I love being watched. I love having a sissy. So anyways, do you want to be a cheerleader with me? ",
             button: [
                 { chatID: 32, text: "What? ", callback: "" }
@@ -867,7 +867,7 @@ room53.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "candy",
-            text: "Squeel!! Quick lick it up before it drips onto the floor",
+            text: "Squeal!! Quick lick it up before it drips onto the floor",
             button: [
                 { chatID: -1, text: "...", callback: "bc4" }
             ]
