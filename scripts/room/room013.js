@@ -64,10 +64,9 @@ room13.main = function () {
                 chat(119, 13);
                 return;
             }
-            else if (cl.c.shirt === null && cl.c.pants === null && cl.c.dress === null) {
-                nav.bg("13_sisterRoom/angry.jpg");
-                chat(119, 13);
-                return;
+            else if (sc.taskGetStep("eva", "sissy") === 6) {
+                nav.bg("13_sisterRoom/evaSissy_6.jpg");
+                chat(196, 13);
             }
             else {
                 btnList = [{
@@ -79,6 +78,15 @@ room13.main = function () {
                     "height": 820,
                     "image": (g.isNight() ? "13_sisterRoom/13_lola_pj.png" : "13_sisterRoom/13_lola_reading.png")
                 },
+                    {
+                        "type": "btn",
+                        "name": "lolaboobs",
+                        "left": 1469,
+                        "top": 507,
+                        "width": 116,
+                        "height": 60,
+                        "image": (g.isNight() ? "13_sisterRoom/13_lola_pjboob.png" : "13_sisterRoom/13_lola_readingboob.png")
+                    },
                 {
                     "type": "btn",
                     "name": "eva",
@@ -87,7 +95,17 @@ room13.main = function () {
                     "width": 291,
                     "height": 785,
                     "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
-                }];
+                    },
+                    {
+                        "type": "btn",
+                        "name": "evaboobs",
+                        "left": 876,
+                        "top": 512,
+                        "width": 118,
+                        "height": 70,
+                        "image": (g.isNight() ? "13_sisterRoom/13_eva_pjboobs.png" : "13_sisterRoom/13_eva_sittingboobs.png")
+                    }
+                ];
                 g.internal = { lola: scc.getSet("lola"), eva: scc.getSet("eva") };
                 //if (g.internal.lola.anyanyChanges || g.internal.eva.anyanyChanges) {
                     //put logic for changes / secret here
@@ -230,6 +248,12 @@ room13.btnclick = function (name) {
         case "puter":
             char.room(31);
             break;
+        case "lolaboobs":
+            chat(194, 13);
+            break;
+        case "evaboobs":
+            chat(195, 13);
+            break;
         case "lola":
             if (sc.getMission("lola", "sissy").notStarted) {
                 nav.button({
@@ -309,6 +333,22 @@ room13.btnclick = function (name) {
                 }
                 else if (evaSissy === 4 || evaSissy === 5)
                     chat(187, 13);
+                else if (evaSissy === 7) {
+                    if (g.dt.getDay() === 5) {
+                        if (cl.c.chastity !== null) {
+                            chat(201, 13);
+                        }
+                        else if (cl.appearance() < 3) {
+                            chat(204, 13);
+                        }
+                        else {
+                            chat(203, 13);
+                        }
+                    }
+                    else {
+                        chat(200, 13);
+                    }
+                }
             }
             break;
         case "clearChat":
@@ -1569,6 +1609,19 @@ room13.chatcatch = function (callback) {
             case "sissyEva3_11":
                 sc.completeMissionTask("eva", "sissy", 3);
                 char.room(10);
+                break;
+            case "evaSissy6":
+                sc.completeMissionTask("eva", "sissy", 6);
+                char.addtime(15);
+                char.room(13);
+                break;
+            case "room585":
+                if (g.gethourdecimal() < 21)
+                    char.settime(21, 2);
+                else
+                    char.addtime(54);
+                g.pass = "room585First"
+                char.room(585);
                 break;
             default: break;
         }
@@ -3315,6 +3368,103 @@ room13.chat = function (chatID) {
                 text: "Good I'll see you at the library. Now get out of my room doggy! ",
                 button: [
                     { chatID: -1, text: "arf", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 194,
+                speaker: "lola",
+                text: "Hey! Hands off my boobs mister!",
+                button: [
+                    { chatID: -1, text: "ooop. Sorry", callback: "" },
+                ]
+            },
+            {
+                chatID: 195,
+                speaker: "eva",
+                text: "Stop groping my tits you pervert!",
+                button: [
+                    { chatID: -1, text: "hehehe, You said tits.", callback: "" },
+                ]
+            },
+            {
+                chatID: 196,
+                speaker: "eva",
+                text: "HAHAHAHA oh wow. You should have seen your face when that " +
+                    "librarian caught you! Classic! That really was so much fun! So " +
+                    "do you have the butt plug Deb brought? ",
+                button: [
+                    { chatID: 197, text: "No! It popped out when I was running away. That was really mean. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 197,
+                speaker: "lola",
+                text: "You know you don't have to embarrass yourself for her. It's often " +
+                    "embarrassing enough being a girl in this world with everyone trying to " +
+                    "hit on you all the time. You can just be a nice girl ",
+                button: [
+                    { chatID: 198, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 198,
+                speaker: "eva",
+                text: "She's not a nice kind of girl! She loves it and I'll prove it to you! " +
+                    "Deb throws a party every Friday at her place. It's mostly just our friends " +
+                    "from college. Meet me here on Friday and I'll take you there as my slave. " +
+                    "Wear something cute. And don't wear that stuipid chastity thing! ",
+                button: [
+                    { chatID: 199, text: "I'll think about it. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 199,
+                speaker: "lola",
+                text: "You don't have to do this. You can stand up for yourself if you want. ",
+                button: [
+                    { chatID: -1, text: "Maybe ", callback: "evaSissy6" },
+                ]
+            },
+            {
+                chatID: 200,
+                speaker: "eva",
+                text: "Prove me right. Come by Friday and show " + sc.n("lola") + " that " +
+                    "you're a dirty girl! Also Don't wear one of those stupid chastity things. ",
+                button: [
+                    { chatID: -1, text: "*ugh* ", callback: "" },
+                ]
+            },
+            {
+                chatID: 201,
+                speaker: "eva",
+                text: "Are you wearing one of those stupid chastity things? ",
+                button: [
+                    { chatID: 202, text: "oh yeah ", callback: "" },
+                ]
+            },
+            {
+                chatID: 202,
+                speaker: "eva",
+                text: "Maybe next week then. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 203,
+                speaker: "eva",
+                text: "Ready to go slave? ",
+                button: [
+                    { chatID: -1, text: "I am", callback: "room585" },
+                    { chatID: -1, text: "No! I'm standing up for myself! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "eva",
+                text: "You're not sexy enough. Go do something with yourself. ",
+                button: [
+                    { chatID: -1, text: "[Check self in mirror, need 'Sexy']", callback: "" },
                 ]
             },
         ];

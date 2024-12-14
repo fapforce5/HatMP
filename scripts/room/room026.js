@@ -247,7 +247,7 @@ room26.btnclick = function (name) {
                         break;
                     case 1:
                         if (cl.c.dress === "pd") {
-                            cl.c.completeMissionTask("landlord", "sissy", 1);
+                            sc.completeMissionTask("landlord", "sissy", 1);
                             chat(83, 26);
                         }
                         else {

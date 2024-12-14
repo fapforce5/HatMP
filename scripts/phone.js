@@ -605,7 +605,7 @@ phone.passtime = function () {
                 "image": "999_phone/time_" + time[i] + "_" + clock + "_" + (active ? "active" : "inactive") + ".png",
             }, 9999);
         }
-        active = currentTime > 6.9;
+        active = currentTime > 6.9 || currentTime < 2;
         nav.button({
             "type": active ? "zbtn" : "zimg",
             "name": "phone_modtime_x",

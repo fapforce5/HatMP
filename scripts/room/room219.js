@@ -83,7 +83,7 @@ room219.btnclick = function (name) {
                 "height": 411,
                 "image": "219_dataEntry/hypo1.gif"
             }, 219);
-            
+            missy.st[11].c++;
             g.roomTimeout = setTimeout(function () {
                 levels.mod("sub", 50, 1);
                 chat(6, 219);
@@ -107,14 +107,17 @@ room219.btnclick = function (name) {
             }, 219);
             switch (name) {
                 case "hypno2":
+                    missy.st[12].c++;
                     hchatid = 10;
                     levels.mod("xdress", 50);
                     break;
                 case "hypno3":
+                    missy.st[13].c++;
                     hchatid = 11;
                     levels.mod("anal", 50);
                     break;
                 case "hypno4":
+                    missy.st[14].c++;
                     hchatid = 12;
                     var wi = levels.i("strength");
                     if (levels.st[wi].l > 0) {
@@ -123,6 +126,7 @@ room219.btnclick = function (name) {
                     }
                     break;
                 case "hypno6":
+                    missy.st[16].c++;
                     hchatid = 14;
                     levels.mod("makeup", 50);
                     break;
@@ -134,6 +138,8 @@ room219.btnclick = function (name) {
             break;
         case "hypno5":
             nav.killall();
+            missy.st[15].c++;
+
             if (cl.c.cock > 3) {
                 nav.button({
                     "type": "img",
@@ -177,9 +183,7 @@ room219.btnclick = function (name) {
             nav.bg("219_dataEntry/hypnobg.jpg");
             g.internal = cl.c.eyes;
             cl.c.eyes = "hypno";
-            zcl.displayMain(-100, -200, .6, "clothes", false);
-            missy.st[11].c++;
-            
+            zcl.displayMain(-100, -200, .6, "clothes", false);            
             break;
         case "type0":
             nav.killall();

@@ -58,7 +58,7 @@ gv.init = function () {
         { n: "dildoanal", t: 0, q: "int" },
         { n: "fingeranal", t: 0, q: "int" },
         { n: "dildooral", t: 0, q: "int" },
-        { n: "xdressPoints", t: 0, q: "int" },
+        { n: "beer", t: 0, q: "zero" },
 
         //Settings
         { n: "fantasyCreatures", t: false, q: "bool" },
@@ -84,9 +84,9 @@ gv.init = function () {
         //landlord
         { n: "momClosetLube", t: 3, q: "int" },
         { n: "momClosetMoney", t: 7, q: "int" },
-        { n: "rent", t: 50, q: "zero" },
-        { n: "rentOwed", t: 0, q: "zero" },
-        //{ n: "rentKnockOff", t: 0, q: "zero" },
+        { n: "pastRent", t: 0, q: "zero" },
+        { n: "rentChores", t: 0, q: "zero" },
+        { n: "workMonday", t: false, q: "bool" },
 
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
@@ -259,7 +259,8 @@ gv.init = function () {
 
         { n: "makeup", t: false },
         { n: "lipstick", t: false },
-        { n: "eyeshadow", t: false }
+        { n: "eyeshadow", t: false },
+        { n: "raven", t: false },
     ];
 
     weekly.st = [
@@ -425,7 +426,9 @@ gv.init = function () {
         { id: 21, pId: 3, icon: "qlip1", p: 1, h: true, x: 830, y: 628, ach: false, name: "Lips", desc: "Dick Sucking Lips" },
         { id: 22, pId: 21, icon: "qlip2", p: 2, h: true, x: 981, y: 628, ach: false, name: "Bimbo Lips", desc: "Lips so fat you can't close your mouth" },
 
-        { id: 23, pId: 3, icon: "qwhore", p: 4, h: false, x: 830, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
+        { id: 23, pId: 24, icon: "qwhore", p: 4, h: false, x: 981, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
+        { id: 24, pId: 3, icon: "qsed", p: 1, h: false, x: 830, y: 64, ach: false, name: "Seduction", desc: "You can seduce men." },
+
     ];
 
     stats.st = [
@@ -505,13 +508,13 @@ gv.init = function () {
 
 gv.init();
 
-gv.i=function(n){var r=-1;for(i=0;i<gv.st.length;i++)if(gv.st[i].n===n){r=i;break}return r}; //returns index for g.st by name
+gv.i=function(n){var r=-1;for(i=0;i<gv.st.length;i++)if(gv.st[i].n===n){r=i;break}return r}; //returns index for gv.st by name
 daily.i = function (n) { var r = -1; for (i = 0; i < daily.st.length; i++)if (daily.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
 weekly.i = function (n) { var r = -1; for (i = 0; i < weekly.st.length; i++)if (weekly.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
 levels.i=function(n){var r=-1;for(i=0;i<levels.st.length;i++)if(levels.st[i].n===n){r=i;break}return r}; //returns index for levels.st by name
 stats.i = function (t, n) { for (var r = 0; r < stats.st.length; r++)if (t === stats.st[r].t && n === stats.st[r].n) return r; return -1 };
 
-gv.get = function (n) {var t=gv.i(n);return t>-1?gv.st[t].t:(console.log("gv.st missing name: "+n),null)}; //gets g.st
+gv.get = function (n) {var t=gv.i(n);return t>-1?gv.st[t].t:(console.log("gv.st missing name: "+n),null)}; //gets gv.st
 daily.get = function (n) { var t = daily.i(n); return t > -1 ? daily.st[t].t : (console.log("daily.st missing name: " + n), null) }; //gets daily.st
 weekly.get = function (n) { var t = weekly.i(n); return t > -1 ? weekly.st[t].t : (console.log("weekly.st missing name: " + n), null) }; //gets daily.st
 levels.get=function(l){var n=levels.i(l);return n>-1?{c:levels.st[n].c,l:levels.st[n].l}:(console.log("levels.st missing name: "+l),null)}; //gets levels
@@ -998,10 +1001,18 @@ levels.desc = function (name, level) {
     }
 };
 
+levels.handGive = function (gender) {
+    sex.mod("hand", true, gender, 1);
+    levels.mod("xdress", 15);
+}
+
 levels.oralGive = function (size, swallow, isDildo, gender = null) {
     //levels.mod("oral", 25, 999);
     levels.oral(size);
-    if (swallow) {
+    if (swallow === null) {
+        //noop
+    }
+    else if (swallow) {
         levels.mod("cum", 25, 999);
         stats.mod("cum", "swallow", 1);
     }
@@ -1490,14 +1501,18 @@ levels.fuckass = function (who, gender) {
     }
 };
 
-sex.takeAnal = function (who, size, creampie, gender, number) {
-    levels.anal(size);
-    if (gender !== null) {
-        sex.mod("anal", false, gender, number);
-    }
-    if (gv.get("virginAss") === null)
-        gv.set("virginAss", who);
+levels.beer = function (numBeers = 1) {
+    gv.mod("beer", numBeers);
+    levels.mod("beer", 15);
+    let totalBeers = gv.get("beer");
+    let beerLevel = levels.get("beer").l + 2;
+    if (totalBeers >= beerLevel)
+        return { totalBeers: totalBeers, beerLevel: beerLevel, passout: true, nextOneDrunk: true };
+
+    return { totalBeers: totalBeers, beerLevel: beerLevel, passout: false, nextOneDrunk: (beerLevel - totalBeers === 1) };
 };
+
+
 
 sex.getFuck = function () {
     var tempFuck = {
@@ -1629,9 +1644,9 @@ sex.getFuck = function () {
     return tempFuck;
 };
 
-qdress.unlock = function () {
+qdress.unlock = function (setting = true) {
     for (let i = 0; i < qdress.st.length; i++)
-        qdress.st[i].ach = true;
+        qdress.st[i].ach = setting;
 };
 
 gv.timeTxt = function (hour, minute) {
@@ -1793,7 +1808,6 @@ gv.load = function (rma) {
         }
     }
 };
-
 
 sissy.passclass = function (normalRoom) {
     var currentClass = gv.get("sissySchoolClass");

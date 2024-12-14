@@ -26,12 +26,11 @@ room28.main = function () {
 
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
-    var thisautohormone, hix, tix, xdressPoints;
+    var thisautohormone, hix, tix;
     tix = daily.get("tookHormonePill");
     //var sissyTrans = gv.get("oncase");
     var arousal, energyIndex;
     var message;
-    var buttholePlay;
     var milkLevel;
     
     for (i = 0; i < gv.st.length; i++) {
@@ -63,17 +62,14 @@ room28.main = function () {
                     gv.st[i].t = null;
                 }
                 break;
-            case "buttholePlay":
-                buttholePlay = gv.st[i].t;
-                break;
             case "milk":
                 milkLevel = gv.st[i].t;
                 break;
-            case "xdressPoints":
-                xdressPoints = gv.st[i].t;
-                break;
             case "transformation":
                 trasnformationSetting = gv.st[i].t;
+                break;
+            case "beer":
+                gv.st[i].t = 0;
                 break;
         }
     }
@@ -215,7 +211,7 @@ room28.main = function () {
                 "width": 1920,
                 "height": 1080,
                 "title": "xdress",
-                "image": "28_transformation/q_background.png"
+                "image": "28_transformation/q_background.jpg"
             }, 28);
             for (i = 0; i < qdress.st.length; i++) {
                 var qdressIcon = qdress.st[i].ach ? qdress.st[i].icon : qdress.st[i].icon + "_x";
@@ -290,8 +286,6 @@ room28.main = function () {
             room28.endSleepyTime(true);
         }
     }
-
-    
 };
 
 room28.future = function () {
@@ -330,6 +324,9 @@ room28.dreams = function () {
     }
     if (g.dt.getDay() === 6 && sc.getMissionTask("landlord", "talk", 1).complete) {
         nav.bg("28_transformation/dream_spermbank.jpg");
+    }
+    if (g.dt.getDay() === 6 && sc.getMissionTask("bigguy", "rent", 0).complete) {
+        gv.mod("pastRent", 75);
     }
     else if (getFirstDream !== null) {
         switch (getFirstDream) {
@@ -569,7 +566,11 @@ room28.btnclick = function (name) {
                 nav.killall();
                 nav.bg("28_transformation/d_whore.jpg");
                 chat(10, 28);
-                
+                break;
+            case "qsed":
+                nav.killall();
+                nav.bg("28_transformation/d_sed.jpg");
+                chat(21, 28);
                 break;
         }
     };
@@ -846,13 +847,23 @@ room28.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 19,
+                chatID: 20,
                 speaker: "thinking",
                 text: "Oh no! Wearing that tight cramped chastity cage shrunk my dick! " +
                     "At least my dick is still pretty big, and now there's more room in " +
                     "the cage. I better not get a small cage or it might just keep shrinking. ",
                 button: [
                     { chatID: -1, text: "...", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "thinking",
+                text: "I'm really turning into a sexy girl. I bet some men even " +
+                    "might even think I was born a girl. I wonder if I could seduce a " +
+                    "a man that's only into girls....",
+                button: [
+                    { chatID: -1, text: "[You can now try to seduce men]", callback: "endDream" }
                 ]
             },
         ];

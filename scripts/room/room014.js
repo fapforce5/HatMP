@@ -67,7 +67,7 @@ room14.main = function () {
                             chat(130, 14);
                             break;
                         case 1:
-                            if (cl.c.chest < 3) {
+                            if (cl.c.chest < 2) {
                                 nav.button({
                                     "type": "img",
                                     "name": "couple",
@@ -102,6 +102,18 @@ room14.main = function () {
                             break;
                         case 3:
                         case 4:
+                            nav.button(
+                                {
+                                    "type": "img",
+                                    "name": "couple",
+                                    "left": 737,
+                                    "top": 0,
+                                    "width": 714,
+                                    "height": 1080,
+                                    "image": "14_motherRoom/couple2.png"
+                                }, 14);
+                            chat(156, 14);
+                            break;
                         case 5:
                             if (sc.getMissionTask("bigguy", "sissy", 3).notStarted)
                                 sc.completeMissionTask("bigguy", "sissy", 3);
@@ -613,9 +625,15 @@ room14.btnclick = function (name) {
                 nav.killbutton("bigguy_30_dick");
                 levels.oralGive(5, true, false, "m");
                 if (g.internal.pussy > 4) {
-                    sc.completeMissionTask("bigguy", "sissy", 2);
                     char.addtime(120);
-                    chat(149, 14);
+                    if (!g.internal.mission2Complete) {
+                        sc.completeMissionTask("bigguy", "sissy", 2);
+                        chat(149, 14);
+                    }
+                    else {
+                        sc.completeMissionTask("bigguy", "sissy", 3);
+                        chat(161, 14);
+                    }
                 }
             }
             g.internal.dick++;
@@ -628,9 +646,15 @@ room14.btnclick = function (name) {
                 nav.killbutton("bigguy_30_pussy");
                 levels.oralGive(3, true, false, "f");
                 if (g.internal.dick > 4) {
-                    sc.completeMissionTask("bigguy", "sissy", 2);
                     char.addtime(120);
-                    chat(149, 14);
+                    if (!g.internal.mission2Complete) {
+                        sc.completeMissionTask("bigguy", "sissy", 2);
+                        chat(149, 14);
+                    }
+                    else {
+                        sc.completeMissionTask("bigguy", "sissy", 3);
+                        chat(161, 14);
+                    }
                 }
             }
             g.internal.pussy++;
@@ -643,6 +667,25 @@ room14.btnclick = function (name) {
                 levels.anal(5, false, "m", false);
                 levels.oralGive(5, true, false, "m");
                 chat(154, 14);
+            }
+            g.internal++;
+            break;
+        case "bigguy_x":
+            switch (g.internal) {
+                case 0:
+                    nav.bg("14_motherRoom/bigguy_x1.jpg");
+                    break;
+                case 1:
+                    nav.bg("14_motherRoom/bigguy_27.jpg");
+                    break;
+                case 2:
+                    nav.bg("14_motherRoom/bigguy_28.jpg");
+                    break;
+                case 3:
+                    nav.killall();
+                    gv.mod("arousal", 50);
+                    chat(159, 14);
+                    break;
             }
             g.internal++;
             break;
@@ -1105,7 +1148,8 @@ room14.chatcatch = function (callback) {
             nav.bg("14_motherRoom/bigguy_29.jpg");
             g.internal = {
                 dick: 1,
-                pussy: 1
+                pussy: 1,
+                mission2Complete: sc.getMissionTask("bigguy", "sissy", 2).complete 
             };
             nav.button({
                 "type": "tongue",
@@ -1132,6 +1176,12 @@ room14.chatcatch = function (callback) {
             g.internal = 41;
             nav.next("bigguy_40");
             break;
+        case "bigguy_x0":
+            nav.killall();
+            g.internal = 0;
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            nav.next("bigguy_x");
+            break
         default:
             break;
     }
@@ -2291,8 +2341,8 @@ room14.chat = function (chatID) {
                 chatID: 132,
                 speaker: "bigguy",
                 text: "Haha it's hard to talk with your mouth full of my cum. Looks like " +
-                    "little " + sc.n("me") + " wanted to see you with a take my dick. She " +   
-                    "looks like she wants a taste of it. ",
+                    "little " + sc.n("me") + " wanted to see you with a mouthful of my cum. She " +   
+                    "sure looks like she wants a taste of it. ",
                 button: [
                     { chatID: 133, text: "...", callback: "" }
                 ]
@@ -2500,6 +2550,59 @@ room14.chat = function (chatID) {
                     "throwing me off. If you want to watch grow some tits little girl. ",
                 button: [
                     { chatID: -1, text: "[Need larger breasts to progress]", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "bigguy",
+                text: "She keeps comming back. I think she really wants my dick.  ",
+                button: [
+                    { chatID: 157, text: "*drool*", callback: "" },
+                ]
+            },
+            {
+                chatID: 157,
+                speaker: "landlord",
+                text: "Oh " + sc.n("bigguy") + "! You know your cock is only for me. " +
+                    "She can watch and do clean up duty, but nothing more.",
+                button: [
+                    { chatID: 158, text: "*sad noises*", callback: "" },
+                ]
+            },
+            {
+                chatID: 158,
+                speaker: "landlord",
+                text: "Now go kneel over there and wait till we're finished. You can " +
+                    "clean up all the cum. ",
+                button: [
+                    { chatID: -1, text: "Ok [Kneel at the foot of the bed]", callback: "bigguy_x0" },
+                ]
+            },
+            {
+                chatID: 159,
+                speaker: "thinking",
+                text: "What I wouldn't give to be her right now. " + sc.n("bigguy") +
+                    " can really fuck hard and deep. I bet I would have cum 10 " +
+                    "times if that cock was up my ass. She really is lucky! ",
+                button: [
+                    { chatID: 160, text: "", callback: "bigguy_29" },
+                ]
+            },
+            {
+                chatID: 160,
+                speaker: "landlord",
+                text: "Ok honey, you can clean us up now. Mouth only! ",
+                button: [
+                    { chatID: -1, text: " oh yeah!", callback: "" },
+                ]
+            },
+            {
+                chatID: 161,
+                speaker: "landlord",
+                text: "Good girl! You'll make some man really happy some day. But now " +
+                    "I need all cum guzzlers out so I can snuggle with my man. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
         ];

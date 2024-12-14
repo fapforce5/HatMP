@@ -563,8 +563,15 @@ char.room = function (roomID) {
 
     if (g.roomChange.includes(g.roomID)) 
         $("#room-change").show();
+    else if (g.roomID === 354) {
+        if (sc.getMissionTask("landlord", "spermbank", 2).complete)
+            $("#room-change").show();
+        else
+            $("#room-change").hide();
+    }
     else 
         $("#room-change").hide();
+
 
     if (g.passtime.includes(g.roomID))
         $("#room-time").show();

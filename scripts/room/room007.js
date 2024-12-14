@@ -26,6 +26,26 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(7, 7);
     }
+    else if (g.dt.getDay() === 1 && gv.get("workMonday")) {
+        nav.bg("7_mainCharRoomAlt/bigguy_monday.jpg");
+        if (!sc.getSecret("bigguy").secretOut) {
+            if (cl.isCrossdressing()) {
+                sc.modSecret("landlord", 15);
+                sc.modSecret("bigguy", 15);
+                chat(51, 7);
+            }
+            else if (cl.pantiesTxt() === "panties") {
+                sc.modSecret("landlord", 5);
+                sc.modSecret("bigguy", 5);
+                chat(52, 7);
+            }
+            else
+                chat(53, 7);
+        }
+        else {
+            chat(53, 7);
+        }
+    }
     else if (g.dt.getDay() !== 6) {
         nav.bg("7_mainCharRoomAlt/wake_landlord_nightgown.jpg");
         gv.mod("arousal", 30);
@@ -38,7 +58,7 @@ room7.main = function () {
                     chat(17, 7);
             }
             else {
-                if (!gender.getChange("landlord","chastity")) {
+                if (!gender.getChange("landlord", "chastity")) {
                     gender.setChanges("landlord", "chastity");
                     sc.modSecret("landlord", 15);
                     chat(19, 7);
@@ -48,7 +68,7 @@ room7.main = function () {
                     chat(18, 7);
                 }
             }
-                
+
         }
         else if (cl.pantiesTxt() === "panties") {
             if (cl.c.panties === "c") { //ll panties
@@ -58,7 +78,7 @@ room7.main = function () {
                 gender.setChanges("landlord", "panties");
                 chat(24, 7);
             }
-            else if (!gender.getChange("landlord","panties")) {
+            else if (!gender.getChange("landlord", "panties")) {
                 sc.modSecret("landlord", 25);
                 gender.setChanges("landlord", "panties");
                 chat(21, 7);
@@ -79,16 +99,37 @@ room7.main = function () {
             chat(11, 7);
         }
     }
-    else if (sc.taskGetStep("bigguy", "sissy") > 3 && sc.getMission("bigguy", "sissy").inProgress) {
-        if (sc.getMissionTask("bigguy", "sissy", 4).notStarted)
-            sc.completeMissionTask("bigguy", "sissy", 4);
-        nav.bg("7_mainCharRoomAlt/bigguy0.jpg");
-        g.internal = 0;
-        nav.next("bigguy0");
-    }
     else {
-        chat(12, 7);
+        switch (sc.taskGetStep("bigguy", "rent")) {
+            case -1:
+            case 0:
+                nav.bg("7_mainCharRoomAlt/both.jpg");
+                sc.startMission("bigguy", "rent");
+                sc.completeMissionTask("bigguy", "rent", 0);
+                chat(40, 7);
+                break;
+            default:
+                nav.bg("7_mainCharRoomAlt/bigguy_zz.jpg");
+                if (cl.isCrossdressing() || cl.pantiesTxt() === "panties") {
+                    sc.modSecret("landlord", 10);
+                    sc.modSecret("bigguy", 10);
+                    chat(54, 7);
+                }
+                else
+                    chat(999, 7);
+                break;
+        }
     }
+    //else if (sc.taskGetStep("bigguy", "sissy") > 3 && sc.getMission("bigguy", "sissy").inProgress) {
+    //    if (sc.getMissionTask("bigguy", "sissy", 4).notStarted)
+    //        sc.completeMissionTask("bigguy", "sissy", 4);
+    //    nav.bg("7_mainCharRoomAlt/bigguy0.jpg");
+    //    g.internal = 0;
+    //    nav.next("bigguy0");
+    //}
+    //else {
+    //    chat(12, 7);
+    //}
     
 };
 
@@ -183,7 +224,17 @@ room7.chatcatch = function (callback) {
         case "e5":
         case "e6":
         case "bigguy2":
+        case "bigguy00":
+        case "bigguy01":
+        case "bigguy02":
+        case "bigguy1":
+            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
         case "bigguy15":
+            gv.set("pastRent", 0);
+            gv.set("rentChores", 0);
+            if (sc.getMissionTask("bigguy", "rent", 2).notStarted)
+                sc.completeMissionTask("bigguy", "rent", 2);
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
             break;
         case "e7":
@@ -685,372 +736,618 @@ room7.chatcatch = function (callback) {
             g.internal = 4;
             nav.next("bigguy_x");
             break;
+        case "payrent":
+            var payrent = gv.get("pastRent") - gv.get("rentChores");
+            var payRentMoney = gv.get("money");
+            
+            if (payrent > payRentMoney) {
+                if ((payRentMoney - payrent) < 7) {
+                    gv.set("money", 0);
+                    gv.set("pastRent", 0);
+                    gv.set("rentChores", 0);
+                    gv.set("workMonday", false);
+                    chat(45, 7);
+                }
+                else {
+                    gv.set("money", 0);
+                    gv.mod("pastRent", (-1 * payRentMoney));
+                    gv.set("rentChores", 0);
+                    gv.set("workMonday", true);
+                    chat(47, 7);
+                }
+            }
+            else {
+                gv.mod("money", (-1 * payrent));
+                gv.set("pastRent", 0);
+                gv.set("rentChores", 0);
+                gv.set("workMonday", false);
+                chat(46, 7);
+            }
+            break;
+        case "checksexy":
+            if (cl.c.chest < 2)
+                chat(48, 7);
+            else {
+                chat(49, 7);
+            }
+            break;
+        case "workmonday":
+            gv.set("workMonday", true);
+            room7.chatcatch("clearRoom");
+            break;
+        case "mondaywork":
+            g.pass = 40;
+            char.room(8);
+            break;
         default:
             break;
     }
 };
 
 room7.chat = function (chatID) {
-    
-    var tempRent, tempMoney, tempRentOwed;
-    if (chatID < 15) {
-        tempRent = gv.get("rent");
-        tempMoney = gv.get("money");
-        tempRentOwed = gv.get("rentOwed");
+    if (chatID === 999) {
+        let pastRent = gv.get("pastRent");
+        let tempMoney = gv.get("money");
+        let rentChores = gv.get("rentChores");
+        let totalRent = pastRent - rentChores;
+
+        if (pastRent <= rentChores) {
+            gv.set("pastRent", 0);
+            gv.set("rentChores", 0);
+            return {
+                chatID: 999,
+                speaker: "bigguy",
+                text: "You worked off all your rent. You're lucky your " + sc.n("landlord") +
+                    "is so generous.",
+                button: [
+                    { chatID: 9, text: "Sweet! [Wakeup]", callback: "clearRoom" }
+                ]
+            };
+        }
+
+        let tempButton = new Array();
+        if(tempMoney > 0) {
+            if (totalRent > tempMoney)
+                tempButton.push({ chatID: -1, text: "I only have $" + tempMoney, callback: "payrent" });
+            else
+                tempButton.push({ chatID: -1, text: "Here's your $" + totalRent, callback: "payrent" });
+        }
+        tempButton.push({ chatID: 998, text: "I don't have enough money. Is there something else I can do.", callback: "" });
+
+        return {
+            chatID: 999,
+            speaker: "bigguy",
+            text: "Wake up shit bag. Time to pay your rent! You owe me $" + pastRent + ". ",
+            button: tempButton
+        };
+    }
+    else if (chatID === 998) {
+        if (qdress.st[24].ach) {
+            return {
+                chatID: 999,
+                speaker: "bigguy",
+                text: "Fucking loser. You can work off the rest of your debt working in my garage. " +
+                    "I'll pick you up Monday. ",
+                button: [
+                    { chatID: 9, text: "Ok", callback: "workmonday" },
+                    { chatID: -1, text: "Isn't there any other way I can repay you? ", callback: "checksexy" },
+                ]
+            };
+        }
+        return {
+            chatID: 999,
+            speaker: "bigguy",
+            text: "Fucking loser. You can work off the rest of your debt working in my garage. " +
+                "I'll pick you up Monday. ",
+            button: [{ chatID: 9, text: "Ok [Unlock Seduction in the sissy menu for more choices]", callback: "workmonday" }]
+        };
     }
     else {
-        tempRent = tempMoney = tempRentOwed = 0;
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "landlord",
+                text: "Wake up " + sc.n("me") + "! I can't believe I allow you to live here, you lazy lay loafer! " +
+                    "First you failed out of college, then you get fired from The Burger Joint, and now you just lay around doing nothing! " +
+                    " .... NOTHING!",
+                button: [{ chatID: 1, text: "but ....", callback: "" }]
+            },
+            {
+                chatID: 1,
+                speaker: "landlord",
+                text: "Don't 'but...' me. It's time you start growing up. There's no more free rides for your lazy ass. " +
+                    "If you think I've been hard on you " +
+                    "up till now, you're going to see hard it can be. " + sc.n("lola") + " and " + sc.n("eva") + ", your " + sc.n('el') +
+                    ", just started college and you've been a terrible role model for them.",
+                button: [{ chatID: 2, text: "....", callback: "" }]
+            },
+            {
+                chatID: 2,
+                speaker: "landlord",
+                text: "Here's the deal " + sc.n("me") + ", you act like a lazy child, so I'm going to treat you like a lazy child! " +
+                    "Expect me to be up your ass everyday to make you into the man you were meant to be. You lack the motivation to " +
+                    "be a real man, so I'm going to show you how to be an adult. You're going to get a new job so you don't " +
+                    "find yourself out on the streets!  ",
+                button: [{ chatID: 3, text: "Yes " + sc.n('landlord'), callback: "payYouMom" }]
+            },
+            {
+                chatID: 3,
+                speaker: "landlord",
+                text: "Good.  You can start helping around the house <span class='hl'> If you want " +
+                    "to get a weekly allowance I'll give you $5 if you do the dishes in the sink</span>. I can give you " +
+                    "an allowance because I've been working at the Sperm Bank for years now. You should be able " +
+                    "to keep a job for a few weeks at least.",
+                button: [{ chatID: 4, text: "OK", callback: "" }]
+            },
+            {
+                chatID: 4,
+                speaker: "landlord",
+                text: "Also you're going to start going to church again. We're leaving as soon as you're dressed. ",
+                button: [{ chatID: 5, text: "Oh man.. ", callback: "clearRoom" }]
+            },
+            {
+                chatID: 5,
+                speaker: "me",
+                text: "Oh wow, that was intense! " + sc.n("landlord") + "'s been so brutal. She's been on the warpath since " +
+                    "she started dating " + sc.n("bigguy") + " , but since I've been fired she's really turned it up. " +
+                    "I better get out of bed, get ready for church, then start applying for jobs. Hopefully there is " +
+                    "something for a college drop-out.",
+                button: [{ chatID: 6, text: "...", callback: "" }]
+            },
+            {
+                chatID: 6,
+                speaker: "me",
+                text: "I did promise " + sc.n("zoey") + " I would stop by and play video games. " +
+                    sc.n("janice") + " also really wanted me to take her on a date. Better get going!",
+                button: [{ chatID: -1, text: "Get out of bed and get ready for church. ", callback: "goToChurch" }]
+            },
+            {
+                chatID: 7,
+                speaker: "landlord",
+                text: "Wake up sleepy head. Time for church. ",
+                button: [{ chatID: -1, text: "Ok, ok... ", callback: "goToChurch" }]
+            },
+            {
+                chatID: 8,
+                speaker: "landlord",
+                text: "You need to wake up and get your ass a job. c'mon. Stop being a waste of a human being. ",
+                button: [{ chatID: -1, text: "Ok, ok... ", callback: "lastWord" }]
+            },
+            {
+                chatID: 9,
+                speaker: "thinking",
+                text: "What to wear.",
+                button: [
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[0].name, callback: "o0" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "o4" },
+                    { chatID: -1, text: "Get Up", callback: "o5" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "landlord",
+                text: "You need to get the PI license and start working for that nice Missy lady. ",
+                button: [{ chatID: -1, text: "I am. ", callback: "lastWord" }]
+            },
+            {
+                chatID: 11,
+                speaker: "landlord",
+                text: "Wakey wakey. Get your ass to work! ",
+                button: [{ chatID: -1, text: "I am. ", callback: "lastWord" }]
+            },
+            {
+                chatID: 12,
+                speaker: "landlord",
+                text: "So " + sc.n("bigguy") + " and I were talking, and we decided that now you're an adult " +
+                    "you need to do adult things like help with rent. ",
+                button: [
+                    { chatID: 40, text: "What? Do my " + sc.n("el") + " have to pay too? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "landlord",
+                text: "Looks like someone is up extra hard this morning. Do you want me to help get rid of that so you can focus? ",
+                button: [
+                    { chatID: 14, text: "Huh? What? ", callback: "jack0" },
+                    { chatID: 16, text: "Oh, no. I'm saving that for someone. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "landlord",
+                text: "Doon't you worry, let " + sc.n("landlord") + " take care of it for you. ",
+                button: [
+                    { chatID: 15, text: "oooooOOooooo", callback: "jack1" },
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "landlord",
+                text: "That's a good boy. I'm going to wash my hands. You get ready for work. ",
+                button: [
+                    { chatID: -1, text: "... oh yeah", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "landlord",
+                text: "Well, she must be a special lady. Time to get ready for work honey. ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "landlord",
+                text: "You need to put some clothing between yourself and your sheets. I don't want to wash brown streaks from " +
+                    "your bed. ",
+                button: [
+                    { chatID: -1, text: "...gross", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "landlord",
+                text: "I don't know why you keep wearing that dick cage. If you keep it up, you'll break your penis and no girl will want you. ",
+                button: [
+                    { chatID: -1, text: "I know.", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "landlord",
+                text: "What the hell is that on your penis? ",
+                button: [
+                    { chatID: 20, text: "huh? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "landlord",
+                text: "There's some kind of weird dick cage around your penis! You know if you're going to take your weird sex stuff " +
+                    "to bed, you better put on some pajamas. I don't want to see that. No one wants to see that. If you pull that " +
+                    "out in front of a girl you'll scare her away. Now you should go take that thing off. Boys are supposed to have " +
+                    "fully erect penises. Not that thing. ",
+                button: [
+                    { chatID: -1, text: "I know.", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "landlord",
+                text: "Are you wearing panties! Why are you wearing panties? Why are you wearing panties? ",
+                button: [
+                    { chatID: 22, text: "I... uh... was a dare. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "landlord",
+                text: "I don't believe you. This is some of that weird sex stuff you kids do these days. Go put on some boy's underwear " +
+                    "before you go out. You don't want anyone to think you're some kind of panty pervert. Back in my youth you would " +
+                    "get a beating for doing something like this. I'm going to let it slide, but really! Stop. ",
+                button: [
+                    { chatID: -1, text: "Oh, sure. ", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "landlord",
+                text: "I see you're still wearing panties. I hope you find someone that is open enough to tolerate that.  ",
+                button: [
+                    { chatID: -1, text: "I will.", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "landlord",
+                text: "Those are MY panties! What kind fucked up shit are you doing in my panties! Give those back right now! I don't " +
+                    "want your butt sweat and cum in them! I've never! ",
+                button: [
+                    { chatID: 25, text: "Oh crap [Give her back her panties]", callback: "removeLlPanties" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "landlord",
+                text: "Now I have to go wash your nastyness off them. Get up and get going!  ",
+                button: [
+                    { chatID: -1, text: "ok", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "landlord",
+                text: "Don't forget, it's Friday. Those aweful people from the Carnal Union will " +
+                    "be in town, so get back before it gets dark. They are an aweful bunch. ",
+                button: [
+                    { chatID: 9, text: "ok", callback: "clearRoom" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "eva",
+                text: "I've been creaming all night thinking about your dick. Pull it out " +
+                    "let me see it again. ",
+                button: [
+                    { chatID: 28, text: "...wha?", callback: "e1" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "eva",
+                text: "You know what I said. I have to have your dick you big pervert. ",
+                button: [
+                    { chatID: 29, text: "OOoooo", callback: "e2" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "eva",
+                text: "Uh oh. Shhhh I'm not here.",
+                button: [
+                    { chatID: 30, text: "?", callback: "e3" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "lola",
+                text: "I just had to come and tell you what an amazing night I had last night. " +
+                    "I've been dreaming about losing my virginity to you forever, and it finally " +
+                    "happened! I'm so excited I just want to jump on you right now! But I've got " +
+                    "to get ready, so another time. OOOooo I love you so so much! ",
+                button: [
+                    { chatID: 31, text: "Love you too. ", callback: "e4" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "eva",
+                text: "She gone? Don't tell her I'm here. She'll get soooo mad I snuck " +
+                    "in here to have sex with you. ",
+                button: [
+                    { chatID: 32, text: "ok", callback: "e5" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "eva",
+                text: "Put it in my butt. We went off birth control months ago 'cause " +
+                    "it killed our sex drive. " + sc.n("landlord") + " would kill us if " +
+                    "she knew, so don't say anything. ",
+                button: [
+                    { chatID: 33, text: "Oh yeah! [Put your dick in her butthole]", callback: "e6" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "eva",
+                text: "Oh fuck! Flip me over. I need it in my pussy! I'm so close to cumming! Promise you'll " +
+                    "pull out before you cum in me!",
+                button: [
+                    { chatID: -1, text: "Promise! ", callback: "e7" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "eva",
+                text: "You promised to pull out! Oh well. I don't think I can get pregnant. " +
+                    "You're not the first man to have weak pullout game and I haven't gotten " +
+                    "knocked up yet. Later loser. ",
+                button: [
+                    { chatID: -1, text: "later?", callback: "eEnd" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "bigguy",
+                text: "Hey little girl! Sleep well?",
+                button: [
+                    { chatID: 36, text: "Huh?", callback: "" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "bigguy",
+                text: "I guess I do need to stick my dick in something, and you're something.",
+                button: [
+                    { chatID: 37, text: "Be gentle...", callback: "bigguy2" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "bigguy",
+                text: "Shut up. Holes don't talk, they just gag! ahahahhahaha ",
+                button: [
+                    { chatID: -1, text: "*GAAAAK*", callback: "bigguy3" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "bigguy",
+                text: "Not one word to anyone or I'll break you in half! ",
+                button: [
+                    { chatID: 39, text: "*sob*", callback: "bigguy15" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "thinking",
+                text: "What was that! I might have thown myself at him, but he " +
+                    "didn't need to be so rough! Didn't care about me at all! Worst " +
+                    "of all I made him cheat on my " + sc.n("landlord") + "! I don't know if I " +
+                    "should tell her. Maybe I should just keep it a secret. I don't want her to " +
+                    "hate me forever. ",
+                button: [
+                    { chatID: -1, text: "*sob*", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "landlord",
+                text: "Wake up honey. We have to talk about you growing up and being an adult. It's time you start " +
+                    "paying rent. " + sc.n("bigguy") + " is going to start coming by each Saturday to collect your " +
+                    "share of our mortgage. ",
+                button: [
+                    { chatID: 41, text: "Why? Are my " + sc.n("el") + " going to pay too? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "bigguy",
+                text: "What? Fuck no. They're girls, plus they're in college. Also they aren't fucking idiots like " +
+                    "you. ",
+                button: [
+                    { chatID: 42, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "landlord",
+                text: sc.n("bigguy") + "!",
+                button: [
+                    { chatID: 43, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "bigguy",
+                text: "...but...*ugh* Since I pay the majority of the mortgage I'll just come up here in the " +
+                    "morning to collect $75 a week a week from you. You better pay up, or you'll be working for " +
+                    "me at my repair shop. Don't think you'll be slacking off either. You'll do all the shit " +
+                    "work no one wants to do, like cleaning the rat traps. I'll start collecting next week.  ",
+                button: [
+                    { chatID: 44, text: "Really? So not fair", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "landlord",
+                text: "We talked about, and I think it's best. You can do some chores around the house and I'll pay " +
+                    "part of your debt. You can start with the dishes. We should just be really thankful for " +
+                    sc.n("bigguy") + " for helping us put a roof over our head for as long as he has. Now we'll " +
+                    "let you get dressed. ",
+                button: [
+                    { chatID: 9, text: "*sigh* ok", callback: "clearRoom" }
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "bigguy",
+                text: "Close enough. Have the entire payment next week. ",
+                button: [
+                    { chatID: 9, text: "ok", callback: "clearRoom" }
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "bigguy",
+                text: "A real " + gender.pronoun("man") + " pays their debts. I'm " +
+                    "proud of what I've done with you. ",
+                button: [
+                    { chatID: 9, text: "ok", callback: "clearRoom" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "bigguy",
+                text: "I'll take what you got, but I'll pick you up Monday to work " +
+                    "off the rest. ",
+                button: [
+                    { chatID: 9, text: "ok", callback: "clearRoom" }
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "bigguy",
+                text: "Hahahahahahahaha! No. See you Monday. ",
+                button: [
+                    { chatID: 9, text: "ok [Need tits]", callback: "clearRoom" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "bigguy",
+                text: "Hahahahahahahaha! No. See you Monday. ",
+                button: [
+                    { chatID: 55, text: "[Stroke his cock over his pants]", callback: "bigguy00" },
+                    { chatID: 9, text: "ok", callback: "workmonday" }
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "bigguy",
+                text: "Ok whore. Let's do this!",
+                button: [
+                    { chatID: 36, text: "*gulp*", callback: "bigguy1" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "bigguy",
+                text: "What the fuck are you wearing? Guys don't wear that, bitches do. " +
+                    "put on some real clothes and let's get to work. *Fucking weird-o*",
+                button: [
+                    { chatID: -1, text: "[Get Dressed]", callback: "mondaywork" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "bigguy",
+                text: "Are you wearing panties? Men don't wear panties. I'm going to " +
+                    "talk to your " + sc.n("landlord") + " about you wearing real underwear. " +
+                    "boxers are fine, but briefs hold it all together.  " +
+                    "Put on some real clothes and let's get to work.",
+                button: [
+                    { chatID: -1, text: "[Get Dressed]", callback: "mondaywork" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "bigguy",
+                text: "Wake up, time to man up and work off your debt. ",
+                button: [
+                    { chatID: -1, text: "[Get Dressed]", callback: "mondaywork" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "bigguy",
+                text: "I've got to tell your " + sc.n("landlord") + " the weird shit " +
+                    "you wear to bed. A man should sleep either in the nude, or in a " +
+                    "pair of briefs. That's sick what you're doing. ",
+                button: [
+                    { chatID: 999, text: "*ugh*", callback: "" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "bigguy",
+                text: "I know what you're trying to do and your " + sc.n("landlord") +
+                    " would be very pissed at the both of us if she found out. ",
+                button: [
+                    { chatID: 56, text: "[Pull his dick out]", callback: "bigguy01" },
+                    { chatID: 9, text: "You're right. I'll see you Monday", callback: "workmonday" }
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "bigguy",
+                text: "You better knock this off right now! For real",
+                button: [
+                    { chatID: 50, text: "[Lick the head of his cock]", callback: "bigguy02" },
+                    { chatID: 9, text: "You're right. I'll see you Monday", callback: "workmonday" }
+                ]
+            },
+        ];
+
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
     }
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "landlord",
-            text: "Wake up " + sc.n("me") + "! I can't believe I allow you to live here, you lazy lay loafer! " +
-                "First you failed out of college, then you get fired from The Burger Joint, and now you just lay around doing nothing! " +
-                " .... NOTHING!",
-            button: [{ chatID: 1, text: "but ....", callback: "" }]
-        },
-        {
-            chatID: 1,
-            speaker: "landlord",
-            text: "Don't 'but...' me. It's time you start growing up. There's no more free rides for your lazy ass. " +
-                "If you think I've been hard on you " +
-                "up till now, you're going to see hard it can be. " + sc.n("lola") + " and " + sc.n("eva") + ", your " + sc.n('el') +
-                ", just started college and you've been a terrible role model for them.",
-            button: [{ chatID: 2, text: "....", callback: "" }]
-        },
-        {
-            chatID: 2,
-            speaker: "landlord",
-            text: "Here's the deal " + sc.n("me") + ", you act like a lazy child, so I'm going to treat you like a lazy child! " +
-                "Expect me to be up your ass everyday to make you into the man you were meant to be. You lack the motivation to " +
-                "be a real man, so I'm going to show you how to be an adult. You're going to get a new job so you don't " +
-                "find yourself out on the streets!  ",
-            button: [{ chatID: 3, text: "Yes " + sc.n('landlord'), callback: "payYouMom" }]
-        },
-        {
-            chatID: 3,
-            speaker: "landlord",
-            text: "Good.  You can start helping around the house <span class='hl'> If you want " +
-                "to get a weekly allowance I'll give you $5 if you do the dishes in the sink</span>. I can give you " +
-                "an allowance because I've been working at the Sperm Bank for years now. You should be able " +
-                "to keep a job for a few weeks at least.",
-            button: [{ chatID: 4, text: "OK", callback: "" }]
-        },
-        {
-            chatID: 4,
-            speaker: "landlord",
-            text: "Also you're going to start going to church again. We're leaving as soon as you're dressed. ",
-            button: [{ chatID: 5, text: "Oh man.. ", callback: "clearRoom" }]
-        },
-        {
-            chatID: 5,
-            speaker: "me",
-            text: "Oh wow, that was intense! " + sc.n("landlord") + "'s been so brutal. She's been on the warpath since " +
-                "she started dating " + sc.n("bigguy") + " , but since I've been fired she's really turned it up. " +
-                "I better get out of bed, get ready for church, then start applying for jobs. Hopefully there is " +
-                "something for a college drop-out.",
-            button: [{ chatID: 6, text: "...", callback: "" }]
-        },
-        {
-            chatID: 6,
-            speaker: "me",
-            text: "I did promise " + sc.n("zoey") + " I would stop by and play video games. " +
-                sc.n("janice") + " also really wanted me to take her on a date. Better get going!",
-            button: [{ chatID: -1, text: "Get out of bed and get ready for church. ", callback: "goToChurch" }]
-        },
-        {
-            chatID: 7,
-            speaker: "landlord",
-            text: "Wake up sleepy head. Time for church. ",
-            button: [{ chatID: -1, text: "Ok, ok... ", callback: "goToChurch" }]
-        },
-        {
-            chatID: 8,
-            speaker: "landlord",
-            text: "You need to wake up and get your ass a job. c'mon. Stop being a waste of a human being. ",
-            button: [{ chatID: -1, text: "Ok, ok... ", callback: "lastWord" }]
-        },
-        {
-            chatID: 9,
-            speaker: "thinking",
-            text: "What to wear.",
-            button: [
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[0].name, callback: "o0" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "o4" },
-                { chatID: -1, text: "Get Up", callback: "o5" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "landlord",
-            text: "You need to get the PI license and start working for that nice Missy lady. ",
-            button: [{ chatID: -1, text: "I am. ", callback: "lastWord" }]
-        },
-        {
-            chatID: 11,
-            speaker: "landlord",
-            text: "Wakey wakey. Get your ass to work! ",
-            button: [{ chatID: -1, text: "I am. ", callback: "lastWord" }]
-        },
-        {
-            chatID: 12,
-            speaker: "thinking",
-            text: "Fuck yes! Saturday! ",
-            button: [
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[0].name, callback: "o0" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
-                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "o4" },
-                { chatID: -1, text: "Get Up", callback: "o5" }
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "landlord",
-            text: "Looks like someone is up extra hard this morning. Do you want me to help get rid of that so you can focus? ",
-            button: [
-                { chatID: 14, text: "Huh? What? ", callback: "jack0" },
-                { chatID: 16, text: "Oh, no. I'm saving that for someone. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "landlord",
-            text: "Doon't you worry, let " + sc.n("landlord") + " take care of it for you. ",
-            button: [
-                { chatID: 15, text: "oooooOOooooo", callback: "jack1" },
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "landlord",
-            text: "That's a good boy. I'm going to wash my hands. You get ready for work. ",
-            button: [
-                { chatID: -1, text: "... oh yeah", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "landlord",
-            text: "Well, she must be a special lady. Time to get ready for work honey. ",
-            button: [
-                { chatID: -1, text: "ok", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "landlord",
-            text: "You need to put some clothing between yourself and your sheets. I don't want to wash brown streaks from " +
-                "your bed. ",
-            button: [
-                { chatID: -1, text: "...gross", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 18,
-            speaker: "landlord",
-            text: "I don't know why you keep wearing that dick cage. If you keep it up, you'll break your penis and no girl will want you. ",
-            button: [
-                { chatID: -1, text: "I know.", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "landlord",
-            text: "What the hell is that on your penis? ",
-            button: [
-                { chatID: 20, text: "huh? ", callback: "" },
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "landlord",
-            text: "There's some kind of weird dick cage around your penis! You know if you're going to take your weird sex stuff " +
-                "to bed, you better put on some pajamas. I don't want to see that. No one wants to see that. If you pull that " +
-                "out in front of a girl you'll scare her away. Now you should go take that thing off. Boys are supposed to have " +
-                "fully erect penises. Not that thing. ",
-            button: [
-                { chatID: -1, text: "I know.", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "landlord",
-            text: "Are you wearing panties! Why are you wearing panties? Why are you wearing panties? ",
-            button: [
-                { chatID: 22, text: "I... uh... was a dare. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 22,
-            speaker: "landlord",
-            text: "I don't believe you. This is some of that weird sex stuff you kids do these days. Go put on some boy's underwear " +
-                "before you go out. You don't want anyone to think you're some kind of panty pervert. Back in my youth you would " +
-                "get a beating for doing something like this. I'm going to let it slide, but really! Stop. ",
-            button: [
-                { chatID: -1, text: "Oh, sure. ", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 23,
-            speaker: "landlord",
-            text: "I see you're still wearing panties. I hope you find someone that is open enough to tolerate that.  ",
-            button: [
-                { chatID: -1, text: "I will.", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 24,
-            speaker: "landlord",
-            text: "Those are MY panties! What kind fucked up shit are you doing in my panties! Give those back right now! I don't " +
-                "want your butt sweat and cum in them! I've never! ",
-            button: [
-                { chatID: 25, text: "Oh crap [Give her back her panties]", callback: "removeLlPanties" },
-            ]
-        },
-        {
-            chatID: 25,
-            speaker: "landlord",
-            text: "Now I have to go wash your nastyness off them. Get up and get going!  ",
-            button: [
-                { chatID: -1, text: "ok", callback: "lastWord" },
-            ]
-        },
-        {
-            chatID: 26,
-            speaker: "landlord",
-            text: "Don't forget, it's Friday. Those aweful people from the Carnal Union will " +
-                "be in town, so get back before it gets dark. They are an aweful bunch. ",
-            button: [
-                { chatID: 9, text: "ok", callback: "clearRoom" },
-            ]
-        },
-        {
-            chatID: 27,
-            speaker: "eva",
-            text: "I've been creaming all night thinking about your dick. Pull it out " +
-                "let me see it again. ",
-            button: [
-                { chatID: 28, text: "...wha?", callback: "e1" },
-            ]
-        },
-        {
-            chatID: 28,
-            speaker: "eva",
-            text: "You know what I said. I have to have your dick you big pervert. ",
-            button: [
-                { chatID: 29, text: "OOoooo", callback: "e2" },
-            ]
-        },
-        {
-            chatID: 29,
-            speaker: "eva",
-            text: "Uh oh. Shhhh I'm not here.",
-            button: [
-                { chatID: 30, text: "?", callback: "e3" },
-            ]
-        },
-        {
-            chatID: 30,
-            speaker: "lola",
-            text: "I just had to come and tell you what an amazing night I had last night. " +
-                "I've been dreaming about losing my virginity to you forever, and it finally " +
-                "happened! I'm so excited I just want to jump on you right now! But I've got " +
-                "to get ready, so another time. OOOooo I love you so so much! ",
-            button: [
-                { chatID: 31, text: "Love you too. ", callback: "e4" },
-            ]
-        },
-        {
-            chatID: 31,
-            speaker: "eva",
-            text: "She gone? Don't tell her I'm here. She'll get soooo mad I snuck " +
-                "in here to have sex with you. ",
-            button: [
-                { chatID: 32, text: "ok", callback: "e5" },
-            ]
-        },
-        {
-            chatID: 32,
-            speaker: "eva",
-            text: "Put it in my butt. We went off birth control months ago 'cause " +
-                "it killed our sex drive. " + sc.n("landlord") + " would kill us if " +
-                "she knew, so don't say anything. ",
-            button: [
-                { chatID: 33, text: "Oh yeah! [Put your dick in her butthole]", callback: "e6" },
-            ]
-        },
-        {
-            chatID: 33,
-            speaker: "eva",
-            text: "Oh fuck! Flip me over. I need it in my pussy! I'm so close to cumming! Promise you'll " +
-                "pull out before you cum in me!",
-            button: [
-                { chatID: -1, text: "Promise! ", callback: "e7" },
-            ]
-        },
-        {
-            chatID: 34,
-            speaker: "eva",
-            text: "You promised to pull out! Oh well. I don't think I can get pregnant. " +
-                "You're not the first man to have weak pullout game and I haven't gotten " +
-                "knocked up yet. Later loser. ",
-            button: [
-                { chatID: -1, text: "later?", callback: "eEnd" },
-            ]
-        },
-        {
-            chatID: 35,
-            speaker: "bigguy",
-            text: "Hey little girl! Sleep well?",
-            button: [
-                { chatID: 36, text: "Huh?", callback: "" },
-            ]
-        },
-        {
-            chatID: 36,
-            speaker: "bigguy",
-            text: "I need to stick my dick in something, and you're something.",
-            button: [
-                { chatID: 37, text: "What? No, what would " + sc.n("landlord") + " say?", callback: "bigguy2" },
-            ]
-        },
-        {
-            chatID: 37,
-            speaker: "bigguy",
-            text: "She won't say nothing, 'cause you ain't saying nothing! ",
-            button: [
-                { chatID: -1, text: "*GAAAAK*", callback: "bigguy3" },
-            ]
-        },
-        {
-            chatID: 38,
-            speaker: "bigguy",
-            text: "Remember! Not one word to anyone or I'll break you in half! ",
-            button: [
-                { chatID: 39, text: "*sob*", callback: "bigguy15" },
-            ]
-        },
-        {
-            chatID: 39,
-            speaker: "thinking",
-            text: "What was that! He just raped me! Didn't care about me at all! Worst " +
-                "of all he's cheating on my " + sc.n("landlord") + "! I don't know if I " +
-                "should tell her. Maybe I should just keep it a secret. I don't want her to " +
-                "hate me forever. ",
-            button: [
-                { chatID: -1, text: "*sob*", callback: "lastWord" },
-            ]
-        },
-    ];
-    
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
 };

@@ -6,7 +6,13 @@ var room450 = {};
 //tiffany laughs that she tricked him
 
 room450.main = function () {
-    if (g.pass === "lolaPark" || g.pass === "lolaPark2") {
+    if (g.pass === "endSleepyTime") {
+        g.pass = "";
+        nav.bg("172_punishblack/black.jpg");
+        gv.mod("energy", -9999);
+        chat(84, 450);
+    }
+    else if (g.pass === "lolaPark" || g.pass === "lolaPark2") {
         room450.btnclick(g.pass);
         g.pass = null;
     }
@@ -148,8 +154,6 @@ room450.main = function () {
         });
 
         nav.buildnav(navList);
-        //if (doEvent)
-        //    fame.event();
     }
 };
 
@@ -246,6 +250,7 @@ room450.btnclick = function (name) {
             nav.bg("450_park/lola11kiss.jpg");
             chat(79, 450);
             break;
+       
         default:
             break;
     }
@@ -501,6 +506,9 @@ room450.chatcatch = function(callback){
             break;
         case "lola11kiss":
             nav.bg("450_park/lola11kiss.jpg");
+            break;
+        case "456_tif":
+            nav.bg("450_park/456_tif.jpg");
             break;
         default:
             break;
@@ -1234,6 +1242,23 @@ room450.chat = function(chatID){
                 "That was amazing! ",
             button: [
                 { chatID: -1, text: "Sure. Let's go", callback: "backHome" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "thinking",
+            text: "Ow, my head! Why did I drink so much? ",
+            button: [
+                { chatID: 85, text: "[Try to open your eyes]", callback: "456_tif" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "tiffany",
+            text: "Wake up sleep head. I don't know what happened last night, but you " +
+                "need a better bed than this bench. ",
+            button: [
+                { chatID: -1, text: "heh, yeah", callback: "reset" }
             ]
         },
     ];

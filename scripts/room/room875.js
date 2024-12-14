@@ -273,13 +273,16 @@ room875.chatcatch = function (callback) {
         case "cheer9_8":
         case "cheer9_9":
         case "cheer9_10":
+        case "cheer1_13":
             nav.bg("875_entrance/" + callback + ".jpg");
             break;
-        case "cheer1_13":
+        case "cheer1_13x":
             gv.mod("fame", 30);
             levels.set("cheer", 100, 8);
             char.settime(17, 12);
-            char.room(51);
+            sc.show("chuck");
+            sc.startMission("chuck", "fuck");
+            char.room(575);
             break;
         case "cheer9_1":
             nav.bg("875_entrance/" + callback + ".jpg");
@@ -559,9 +562,9 @@ room875.chat = function (chatID) {
                 chatID: 27,
                 speaker: "candy",
                 text: "Really. I don't know how right now, but we'll think of a way. In the mean time why don't we " +
-                    "go home to get some ice cream and girl talk. Sound good? ",
+                    "go get some ice cream and girl talk. Sound good? ",
                 button: [
-                    { chatID: -1, text: "ok", callback: "cheer1_13" },
+                    { chatID: 51, text: "ok", callback: "cheer1_13" },
                 ]
             },
             {
@@ -759,6 +762,46 @@ room875.chat = function (chatID) {
                 text: "Just be careful with your high kicks. Hehehehe. Now lets go cheer! ",
                 button: [
                     { chatID: 15, text: "Oh yeah! ", callback: "cheer1_2x" }
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "candy",
+                text: sc.n("stacy") + " can be such a bitch sometimes. She needs to " +
+                    "be put in her place! I would embarrass her at the game, but I " +
+                    "hate ruining the game for everyone. If I wasn't  dating " + 
+                    sc.n("tiffany") + " I would just try to fuck her boyfriend. " +
+                    "That would really piss her off! ",
+                button: [
+                    { chatID: 52, text: "Yeah, to bad.", callback: "" }
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "candy",
+                text: "Wait! You're not dating anyone. Maybe you should try to fuck " +
+                    sc.n("chuck") + "! That would really piss her off. She's been using " +
+                    "him for years now! I don't know why he follows her around everywhere. ",
+                button: [
+                    { chatID: 53, text: "Hmmmmm. Maybe", callback: "" }
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "candy",
+                text: "No maybe! You're super hot! He would totally fuck you! Bonus if " +
+                    "you can get her to catch you with his dick in you! Hahahaha",
+                button: [
+                    { chatID: 54, text: "That would be awesome!", callback: "" }
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "candy",
+                text: "Well, I've got to run. Think about it. And if you do it, tell me " +
+                    "all the details. It would be the ultimate payback! ",
+                button: [
+                    { chatID: -1, text: "Totally", callback: "cheer1_13x" }
                 ]
             },
         ];

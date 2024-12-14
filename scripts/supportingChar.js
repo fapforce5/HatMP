@@ -6,6 +6,7 @@ sc.char = [
     { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: false },
     { name: "el", display: "Co-Tenant", image: "lolaEva.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "lola", display: "Lola", image: "lola.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: null },
+    { name: "tom", display: "Tom", image: "tom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
     { name: "eva", display: "Eva", image: "eva.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: false },
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
@@ -227,6 +228,9 @@ sc.charMission = [
                         { id: 3, txt: "Lick my feet. No chastity", show: true, mStatus: 0, roomId: 13 },
                         { id: 4, txt: "Slave doggy. ", show: true, mStatus: 0, roomId: 13 },
                         { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 900 },
+                        { id: 6, txt: "Stand up for yourself or not?", show: true, mStatus: 0, roomId: 13 },
+                        { id: 7, txt: "Meet her Friday night. ", show: true, mStatus: 0, roomId: 13 },
+                        { id: 8, txt: "Friday night - house part [end]", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
         ],
@@ -254,7 +258,8 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                         { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
-                        { id: 2, txt: "Sperm Doner Assistant Nurse. ", show: false, mStatus: 0, roomId: 350 },
+                        { id: 2, txt: "Assistant Nurse first day. ", show: false, mStatus: 0, roomId: 350 },
+                        { id: 3, txt: "Assistant Nurse loop. ", show: false, mStatus: 0, roomId: 350 },
                     ]
             },
             {
@@ -302,14 +307,34 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "sissy", mStatus: 1, title: "Extra hole", desc: "Let's talk about sex baby. ", task:
+                missionName: "rent", mStatus: 0, title: "Rent", desc: "You have to pay to stay. ", task:
+                    [
+                        { id: 0, txt: "Explained", show: true, mStatus: 0, roomId: 7 },
+                        { id: 1, txt: "First Day. ", show: true, mStatus: 0, roomId: 7 },
+                        { id: 2, txt: "To tell or not to tell. ", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
+            {
+                missionName: "sissy", mStatus: 0, title: "Extra hole", desc: "Let's talk about sex baby. ", task:
                     [
                         { id: 0, txt: "Catch them having sex. ", show: true, mStatus: 0, roomId: 14 },
                         { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
                         { id: 2, txt: "I drink your milk! ", show: true, mStatus: 0, roomId: 26 },
-                        { id: 3, txt: "You're such my bitch. ", show: true, mStatus: 0, roomId: 26 },
-                        { id: 4, txt: "Suprise visit ", show: true, mStatus: 0, roomId: 10 },
+                        { id: 3, txt: "My man! ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 4, txt: "Clean up duty", show: true, mStatus: 0, roomId: 10 },
                         { id: 5, txt: "You're such my bitch. ", show: true, mStatus: 0, roomId: 26 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "tom", mission: [
+            {
+                missionName: "chat", mStatus: 1, title: "Meet", desc: "Small talk", task:
+                    [
+                        { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 40 },
+                        { id: 1, txt: "Perfect girl", show: true, mStatus: 0, roomId: 40 },
+
                     ]
             },
         ]
@@ -864,6 +889,16 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "chuck", mission: [
+            {
+                missionName: "fuck", mStatus: 0, title: "Fuck Chuck", desc: "Payback", task:
+                    [
+                        { id: 0, txt: "Find him. Probably at a college party", show: true, mStatus: 0, roomId: 585 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.el = function () {
@@ -1101,6 +1136,7 @@ sc.getMission = function (name, missionName) {
                         complete: sc.charMission[i].mission[j].mStatus > 99,
                         success: sc.charMission[i].mission[j].mStatus === 100,
                         fail: sc.charMission[i].mission[j].mStatus === 101,
+                        startedOrComplete: sc.charMission[i].mission[j].mStatus > 0,
                         i: i,
                         j: j
                     };
@@ -1234,6 +1270,7 @@ sc.modSecret = function (name, amount) {
                     sc.char[x].secret = 100;
                     sc.char[y].secret = 100;
                     sc.char[z].secret = 100;
+                    sc.modSecret("bigguy", 100);
 
                     sc.startMission("lola", "sissy");
                     sc.startMission("eva", "sissy");
@@ -1252,7 +1289,6 @@ sc.modSecret = function (name, amount) {
 
                     sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
                     sc.completeMission("landlord", "man", sc.getMissionTask("landlord", "man", 8).complete);
-                    sc.startMissionTask("landlord", "spermbank", 2);
                     sc.startMission("landlord", "spermbank");
 
                     if (sc.getMissionTask("landlord", "spermbank", 0).notStarted)
@@ -1260,10 +1296,13 @@ sc.modSecret = function (name, amount) {
                     if (sc.getMissionTask("landlord", "spermbank", 1).notStarted)
                         sc.completeMissionTask("landlord", "spermbank", 1, false);
                     g.popUpNotice(sc.char[x].display + ", " + sc.char[y].display + ", and " + sc.char[z].display +
-                        " all are new aware of your secret lifestyle. Sissy!");
+                        " all are now aware of your secret lifestyle. Sissy!");
                 }
                 
-            break;
+                break;
+            default:
+                g.popUpNotice(sc.char[i].display + " is aware of your secret lifestyle. Sissy!");
+                break;
         }
     }
 
@@ -2109,7 +2148,26 @@ sc.trivial = function (charname) {
             name = "Airwrecka";
             image = "airwrecka.png";
             break;
-            
+        case "!boxes":
+            name = "Mike";
+            image = "boxes.png";
+            break;
+        case "!bwc":
+            name = "BWC";
+            image = "bwc.png";
+            break;
+        case "!bbc":
+            name = "BBC";
+            image = "bbc.png";
+            break;
+        case "!deb":
+            name = "Deb";
+            image = "deb.png";
+            break;
+        case "!latika":
+            name = "Latika";
+            image = "latika.png";
+            break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
             break;

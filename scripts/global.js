@@ -19,7 +19,7 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 650, 750, 901, 902, 408, 478, 479, 480];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
 g.roomChange = [10, 12, 56, 201, 209, 318, 451, 452, 503, 552, 553, 727, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
@@ -157,6 +157,8 @@ g.rooms = [
     { roomID: 29, name: "Back yard", image: "29_backyard/bg.jpg", nightImage: "29_backyard/night.jpg", houseID: 29, btn: "roomBtn_29.png" },
     { roomID: 30, name: "Girl's Room Peak", image: "30_peek/bg.jpg", nightImage: "30_peek/bgnight.jpg", houseID: 29, btn: "roomBtn_29.png" },
     { roomID: 31, name: "Lola's Puter", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 16, btn: "roomBtn_31.png" },
+
+    { roomID: 40, name: "Auto Repair", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 40, btn: "roomBtn_10.png" },
 
     { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Tif's Living Room", image: "51_livingRoom/livingroom.jpg", nightImage: "51_livingRoom/livingroom.jpg", houseID: 50, btn: "roomBtn_51.png" },
@@ -313,6 +315,12 @@ g.rooms = [
     { roomID: 556, name: "Spar Training", image: "555_backgym/ring.jpg", nightImage: "555_backgym/ring.jpg", houseID: 550, btn: "roomBtn_555.png" },
 
     { roomID: 575, name: "Sausage", image: "575_fastfood/bg.jpg", nightImage: "575_fastfood/bg.jpg", houseID: 575, btn: "roomBtn_575.png" },
+
+    { roomID: 585, name: "Living Room", image: "585_livingRoom/bg.jpg", nightImage: "585_livingRoom/bg.jpg", houseID: 575, btn: "roomBtn_585.png" },
+    { roomID: 586, name: "Kitchen", image: "586_kitchen/bg.jpg", nightImage: "586_kitchen/bg.jpg", houseID: 575, btn: "roomBtn_586.png" },
+    { roomID: 587, name: "Bathroom", image: "587_bathroom/bg.jpg", nightImage: "587_bathroom/bg.jpg", houseID: 575, btn: "roomBtn_587.png" },
+    { roomID: 588, name: "Doofus's Room", image: "588_doofus/bg.jpg", nightImage: "588_doofus/bg.jpg", houseID: 575, btn: "roomBtn_588.png" },
+    { roomID: 589, name: "Liam's Room", image: "589_liam/bg.jpg", nightImage: "589_liam/bg.jpg", houseID: 575, btn: "roomBtn_589.png" },
 
 
     { roomID: 600, name: "For Testing", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
