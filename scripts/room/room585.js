@@ -17,29 +17,22 @@ room585.main = function () {
                 nav.button({
                     "type": "btn",
                     "name": "utah",
-                    "left": 106,
-                    "top": 18,
-                    "width": 755,
-                    "height": 1062,
+                    "left": 1081,
+                    "top": 0,
+                    "width": 839,
+                    "height": 1080,
                     "image": "585_livingRoom/utah.png"
                 }, 586);
-                if(levels.get("cheer") > 8)
-                    chat(6, 585);
-                else
-                    chat(5, 585)
+                
                 break;
             case 22:
 
-                nav.bg("586_kitchen/bg_22.jpg");
                 break;
             case 23:
-                nav.bg("586_kitchen/bg_23.jpg");
                 break;
             case 0:
-                nav.bg("586_kitchen/bg_0.jpg");
                 break;
             default:
-                nav.bg("586_kitchen/bg_1.jpg");
                 break;
         }
         nav.buildnav([586, 587, 588, 589]);
@@ -49,7 +42,11 @@ room585.main = function () {
 
 room585.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "utah":
+            if (levels.get("cheer") > 8)
+                chat(6, 585);
+            else
+                chat(5, 585)
             break;
         default:
             break;
@@ -121,7 +118,7 @@ room585.chat = function (chatID) {
             speaker: "utah",
             text: "You're cute, but not cool enough for me to fuck. ",
             button: [
-                { chatID: 6, text: "rude", callback: "reset30" }
+                { chatID: -1, text: "rude", callback: "reset30" }
             ]
         },
         {
