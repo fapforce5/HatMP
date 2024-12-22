@@ -2,196 +2,203 @@
 var room14 = {};
 
 room14.main = function () {
+    var btnList = new Array();
+
     if (sc.getTimeline("landlord").thisRoom) {
         if (g.hourBetween(7, 22)) {
             nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
         }
     }
 
-    var btnList = new Array();
-    g.internal = { pussy: 0, asshole: 0 };
-    
-    if (!g.hourBetween(6, 22)) {
-        if (sc.getTimeline("bigguy").thisRoom) {
-            btnList = [{
-                "type": "btn",
-                "name": "dickSleep",
-                "left": 986,
-                "top": 696,
-                "width": 713,
-                "height": 193,
-                "image": "14_motherRoom/14_motherAsleepDick.png"
-            }];
-        }
-        else {
-            btnList = [{
-                "type": "btn",
-                "name": "motherSleep",
-                "left": 1031,
-                "top": 779,
-                "width": 591,
-                "height": 114,
-                "image": "14_motherRoom/14_motherAsleep.png"
-            }];
-        }
+    if (g.pass === "room14_confess1") {
+        g.pass = null;
+        nav.bg("14_motherRoom/confess0.jpg");
+        chat(162, 14);
     }
-    else if (sc.getTimeline("landlord").thisRoom) {
-        if (sc.getTimeline("bigguy").thisRoom) {
-            if (daily.get("bigguy")) {
+    else {
+
+        g.internal = { pussy: 0, asshole: 0 };
+
+        if (!g.hourBetween(6, 22)) {
+            if (sc.getTimeline("bigguy").thisRoom) {
                 btnList = [{
                     "type": "btn",
-                    "name": "couple",
-                    "left": 737,
-                    "top": 0,
-                    "width": 714,
-                    "height": 1080,
-                    "image": "14_motherRoom/couple.png"
+                    "name": "dickSleep",
+                    "left": 986,
+                    "top": 696,
+                    "width": 713,
+                    "height": 193,
+                    "image": "14_motherRoom/14_motherAsleepDick.png"
                 }];
             }
             else {
-                if (sc.getMission("landlord", "sissy").notStarted) {
-                    daily.set("bigguy");
-                    nav.bg("14_motherRoom/bg_1.jpg");
-                    chat(33, 14);
+                btnList = [{
+                    "type": "btn",
+                    "name": "motherSleep",
+                    "left": 1031,
+                    "top": 779,
+                    "width": 591,
+                    "height": 114,
+                    "image": "14_motherRoom/14_motherAsleep.png"
+                }];
+            }
+        }
+        else if (sc.getTimeline("landlord").thisRoom) {
+            if (sc.getTimeline("bigguy").thisRoom) {
+                if (daily.get("bigguy")) {
+                    btnList = [{
+                        "type": "btn",
+                        "name": "couple",
+                        "left": 737,
+                        "top": 0,
+                        "width": 714,
+                        "height": 1080,
+                        "image": "14_motherRoom/couple.png"
+                    }];
                 }
                 else {
-                    daily.set("bigguy");
-                    switch (sc.taskGetStep("bigguy", "sissy")) {
-                        case -1: 
-                        case 0:
-                            sc.modLevel("bigguy", 100, 10);
-                            sc.startMission("bigguy", "sissy");
-                            sc.show("bigguy");
-                            sc.completeMissionTask("bigguy", "sissy", 0);
-                            nav.bg("14_motherRoom/bigguy_0.jpg");
-                            chat(130, 14);
-                            break;
-                        case 1:
-                            if (cl.c.chest < 2) {
-                                nav.button({
-                                    "type": "img",
-                                    "name": "couple",
-                                    "left": 737,
-                                    "top": 0,
-                                    "width": 714,
-                                    "height": 1080,
-                                    "image": "14_motherRoom/couple1.png"
-                                }, 14);
-                                chat(155, 14);
-                            }
-                            else {
+                    if (sc.getMission("landlord", "sissy").notStarted) {
+                        daily.set("bigguy");
+                        nav.bg("14_motherRoom/bg_1.jpg");
+                        chat(33, 14);
+                    }
+                    else {
+                        daily.set("bigguy");
+                        switch (sc.taskGetStep("bigguy", "sissy")) {
+                            case -1:
+                            case 0:
                                 sc.modLevel("bigguy", 100, 10);
-                                nav.bg("14_motherRoom/bigguy_10.jpg");
-                                g.internal = 0;
-                                nav.next("bigguy_11");
-                            }
-                            break;
-                        case 2:
-                            sc.modLevel("bigguy", 200, 10);
-                            nav.button(
-                                {
-                                    "type": "img",
-                                    "name": "couple",
-                                    "left": 737,
-                                    "top": 0,
-                                    "width": 714,
-                                    "height": 1080,
-                                    "image": "14_motherRoom/couple1.png"
-                                }, 14);
-                            chat(137, 14);
-                            break;
-                        case 3:
-                        case 4:
-                            nav.button(
-                                {
-                                    "type": "img",
-                                    "name": "couple",
-                                    "left": 737,
-                                    "top": 0,
-                                    "width": 714,
-                                    "height": 1080,
-                                    "image": "14_motherRoom/couple2.png"
-                                }, 14);
-                            chat(156, 14);
-                            break;
-                        case 5:
-                            if (sc.getMissionTask("bigguy", "sissy", 3).notStarted)
-                                sc.completeMissionTask("bigguy", "sissy", 3);
-                            sc.modLevel("bigguy", 200, 10);
-                            nav.button(
-                                {
-                                    "type": "img",
-                                    "name": "couple",
-                                    "left": 737,
-                                    "top": 0,
-                                    "width": 714,
-                                    "height": 1080,
-                                    "image": "14_motherRoom/couple2.png"
-                                }, 14);
-                            chat(152, 14);
-                            break;
+                                sc.startMission("bigguy", "sissy");
+                                sc.show("bigguy");
+                                sc.completeMissionTask("bigguy", "sissy", 0);
+                                nav.bg("14_motherRoom/bigguy_0.jpg");
+                                chat(130, 14);
+                                break;
+                            case 1:
+                                if (cl.c.chest < 2) {
+                                    nav.button({
+                                        "type": "img",
+                                        "name": "couple",
+                                        "left": 737,
+                                        "top": 0,
+                                        "width": 714,
+                                        "height": 1080,
+                                        "image": "14_motherRoom/couple1.png"
+                                    }, 14);
+                                    chat(155, 14);
+                                }
+                                else {
+                                    sc.modLevel("bigguy", 100, 10);
+                                    nav.bg("14_motherRoom/bigguy_10.jpg");
+                                    g.internal = 0;
+                                    nav.next("bigguy_11");
+                                }
+                                break;
+                            case 2:
+                                sc.modLevel("bigguy", 200, 10);
+                                nav.button(
+                                    {
+                                        "type": "img",
+                                        "name": "couple",
+                                        "left": 737,
+                                        "top": 0,
+                                        "width": 714,
+                                        "height": 1080,
+                                        "image": "14_motherRoom/couple1.png"
+                                    }, 14);
+                                chat(137, 14);
+                                break;
+                            case 3:
+                            case 4:
+                                nav.button(
+                                    {
+                                        "type": "img",
+                                        "name": "couple",
+                                        "left": 737,
+                                        "top": 0,
+                                        "width": 714,
+                                        "height": 1080,
+                                        "image": "14_motherRoom/couple2.png"
+                                    }, 14);
+                                chat(156, 14);
+                                break;
+                            case 5:
+                                sc.modLevel("bigguy", 200, 10);
+                                nav.button(
+                                    {
+                                        "type": "img",
+                                        "name": "couple",
+                                        "left": 737,
+                                        "top": 0,
+                                        "width": 714,
+                                        "height": 1080,
+                                        "image": "14_motherRoom/couple2.png"
+                                    }, 14);
+                                chat(152, 14);
+                                break;
+                        }
                     }
                 }
             }
+            else {
+                if (sc.getMission("landlord", "man").notStarted && g.rand(0, 2) === 0 && sc.getLevel("landlord") < 5) {
+                    nav.bg("14_motherRoom/mast.jpg");
+                    chat(69, 14);
+                    btnList = new Array();
+                }
+                else {
+                    btnList = [{
+                        "type": "btn",
+                        "name": "motherRobe",
+                        "left": 844,
+                        "top": 195,
+                        "width": 499,
+                        "height": 885,
+                        "image": "14_motherRoom/14_motherRobe.png"
+                    }];
+                }
+            }
         }
         else {
-            if (sc.getMission("landlord", "man").notStarted && g.rand(0, 2) === 0 && sc.getLevel("landlord") < 5) {
-                nav.bg("14_motherRoom/mast.jpg");
-                chat(69, 14);
-                btnList = new Array();
-            }
-            else {
-                btnList = [{
+            if (!daily.get("momChoreBed")) {
+                btnList.push({
                     "type": "btn",
-                    "name": "motherRobe",
-                    "left": 844,
-                    "top": 195,
-                    "width": 499,
-                    "height": 885,
-                    "image": "14_motherRoom/14_motherRobe.png"
-                }];
+                    "name": "bedMessy",
+                    "title": "Make Bed?",
+                    "left": 939,
+                    "top": 755,
+                    "width": 776,
+                    "height": 325,
+                    "image": "14_motherRoom/14_bed.png"
+                });
             }
-        }
-    }
-    else {
-        if (!daily.get("momChoreBed")) {
             btnList.push({
                 "type": "btn",
-                "name": "bedMessy",
-                "title": "Make Bed?",
-                "left": 939,
-                "top": 755,
-                "width": 776,
-                "height": 325,
-                "image": "14_motherRoom/14_bed.png"
+                "name": "closet",
+                "left": 414,
+                "top": 375,
+                "width": 461,
+                "height": 538,
+                "image": "14_motherRoom/14_closet.png"
+            });
+            btnList.push({
+                "type": "btn",
+                "name": "dresser",
+                "left": 1569,
+                "top": 781,
+                "width": 317,
+                "height": 299,
+                "image": "14_motherRoom/dresserDay.png"
             });
         }
-        btnList.push({
-            "type": "btn",
-            "name": "closet",
-            "left": 414,
-            "top": 375,
-            "width": 461,
-            "height": 538,
-            "image": "14_motherRoom/14_closet.png"
+        console.log(btnList);
+        navList = [16];
+        $.each(btnList, function (i, v) {
+            nav.button(v, 14);
         });
-        btnList.push({
-            "type": "btn",
-            "name": "dresser",
-            "left": 1569,
-            "top": 781,
-            "width": 317,
-            "height": 299,
-            "image": "14_motherRoom/dresserDay.png"
-        });
-    }
-    console.log(btnList);
-    navList = [16];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 14);
-    });
 
-    nav.buildnav(navList);
+        nav.buildnav(navList);
+    }
 };
 
 room14.btnclick = function (name) {
@@ -625,7 +632,7 @@ room14.btnclick = function (name) {
                 nav.killbutton("bigguy_30_dick");
                 levels.oralGive(5, true, false, "m");
                 if (g.internal.pussy > 4) {
-                    char.addtime(120);
+                    char.addtime(180);
                     if (!g.internal.mission2Complete) {
                         sc.completeMissionTask("bigguy", "sissy", 2);
                         chat(149, 14);
@@ -689,6 +696,46 @@ room14.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "confess_fight_win":
+            nav.killall();
+            zcl.displayMain(-500, 600, .3, "clothes", true);
+            nav.bg("14_motherRoom/confess_win.jpg");
+            chat(183, 14);
+            break;
+        case "confess_fight":
+            nav.killall();
+            nav.bg("14_motherRoom/confess_fight.jpg");
+            quickFight.init(30, sc.n("bigguy"), "confess_fight_win", "confess_bitch", "confess_bitch", 14);
+            break;
+        case "confess_bitch":
+            nav.killall();
+            cl.nude();
+            nav.bg("14_motherRoom/confess3.jpg");
+            chat(177, 14);
+            break;
+        case "confess4":
+            if (g.internal > 45) {
+                nav.killbutton("confess4");
+                char.addtime(120);
+                levels.anal(5, false, "m", false);
+                levels.oralGive(5, true, false, "m");
+                nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "couple",
+                    "left": 737,
+                    "top": 0,
+                    "width": 714,
+                    "height": 1080,
+                    "image": "14_motherRoom/couple2.png"
+                }, 14);
+                chat(181, 14);
+            }
+            else {
+                nav.bg("14_motherRoom/bigguy_" + g.internal + ".jpg");
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -728,6 +775,11 @@ room14.chatcatch = function (callback) {
         case "bigguy_22":
         case "bigguy_23":
         case "bigguy_24":
+        case "confess2":
+            nav.bg("14_motherRoom/" + callback + ".jpg");
+            break;
+        case "confess1":
+            char.settime(20, 4);
             nav.bg("14_motherRoom/" + callback + ".jpg");
             break;
         case "task1_1":
@@ -1181,7 +1233,36 @@ room14.chatcatch = function (callback) {
             g.internal = 0;
             nav.bg("14_motherRoom/" + callback + ".jpg");
             nav.next("bigguy_x");
-            break
+            break;
+        case "confess3":
+            sc.select("confess_fight", "14_motherRoom/icon_fight.png", 0);
+            sc.select("confess_bitch", "14_motherRoom/icon_bitch.png", 1);
+            break;
+        case "confess4":
+            nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
+            g.internal = 41;
+            nav.next("confess4");
+            break;
+        case "confess5":
+            nav.bg("14_motherRoom/16_downStairsNight.jpg");
+            break;
+        case "confess_end":
+            sc.completeMissionTaskAll("bigguy", "sissy", 4);
+            sc.completeMissionTaskAll("bigguy", "rent", 2);
+            char.room(16);
+            break;
+        case "confess_win_0":
+            nav.killall();
+            nav.bg("14_motherRoom/task_8_5.jpg");
+            break;
+        case "confess_win_end":
+            sc.startMission("bigguy", "ex");
+            sc.completeMissionTask("bigguy", "ex", 0);
+            sc.completeMission("bigguy", "rent");
+            sc.completeMission("bigguy", "sissy");
+            char.addtime(120);
+            char.room(16);
+            break;
         default:
             break;
     }
@@ -2585,7 +2666,7 @@ room14.chat = function (chatID) {
                     " can really fuck hard and deep. I bet I would have cum 10 " +
                     "times if that cock was up my ass. She really is lucky! ",
                 button: [
-                    { chatID: 160, text: "", callback: "bigguy_29" },
+                    { chatID: 160, text: "...", callback: "bigguy_29" },
                 ]
             },
             {
@@ -2603,6 +2684,252 @@ room14.chat = function (chatID) {
                     "I need all cum guzzlers out so I can snuggle with my man. ",
                 button: [
                     { chatID: -1, text: "...", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 162,
+                speaker: "landlord",
+                text: "I've called him and he's on his way. While we wait you go stand " +
+                    "in the corner and stare at the wall until I tell you you can turn " +
+                    "around! ",
+                button: [
+                    { chatID: 163, text: "yes " + sc.n("landlord") + ". ", callback: "confess1" },
+                ]
+            },
+            {
+                chatID: 163,
+                speaker: "thinking",
+                text: "Oh man she's really pissed. I really shouldn't have done that. " +
+                    "I'm such a terrible person. I hope she doesn't kick me out. At least " +
+                    "I have friends I can stay with if she does. I do hope she forgives me. " +
+                    "I'll never do that again. I've got to be more chaste. Sex just keeps " +
+                    "getting me in trouble. ",
+                button: [
+                    { chatID: 164, text: "[Hear " + sc.n("bigguy") + " come in]", callback: "" },
+                ]
+            },
+            {
+                chatID: 164,
+                speaker: "bigguy",
+                text: "What's the emergency? I came as quick as I could. Why is she staring " +
+                    "at the wall? ",
+                button: [
+                    { chatID: 165, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 165,
+                speaker: "landlord",
+                text: "<span class='color:#61000a'>You're cheating on me! " + sc.n("me") +
+                    " told me all the dirty details of you two fucking behind my back in my " +
+                    "own home! DISGUSTING! We're OVER! I never want to see you again, I just " +
+                    "wanted to say it to your face so " + sc.n("me") + " could hear what a " +
+                    "horrible thing you two have done!</span>",
+                button: [
+                    { chatID: 166, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 166,
+                speaker: "bigguy",
+                text: "Now wait just a minute. I know you're mad, but can we talk about this. " +
+                    "Alone. Without her here? ",
+                button: [
+                    { chatID: 167, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 167,
+                speaker: "landlord",
+                text: "Anything you want to say to me you can say to her. It won't change anything. " +
+                    "She needs to hear the consequences of her actions! ",
+                button: [
+                    { chatID: 168, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 168,
+                speaker: "bigguy",
+                text: "It wasn't my fault. I just went up to get rent and she was all " +
+                    "over me. I told her no, but you know how she is. It was everything " +
+                    "I could to to keep her hands off my dick. ",
+                button: [
+                    { chatID: 169, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 169,
+                speaker: "landlord",
+                text: "Oh don't blame her. You're 5 times her size. If you didn't want to " +
+                    "put your dick in her all you had to do was walk out! You wanted to fuck " +
+                    "her! Admit it, ever since she changed you've been wanting to fuck her! ",
+                button: [
+                    { chatID: 170, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 170,
+                speaker: "bigguy",
+                text: "Well yeah. She's hot like you, but I'm not fucking anyone else. You " +
+                    "two are more than enough for me. C'mon, part of you liked parading her " +
+                    "in front of me, teasing me with her. ",
+                button: [
+                    { chatID: 171, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 171,
+                speaker: "landlord",
+                text: "I was teaching her how to be a proper girl! It doesn't mean you get " +
+                    "to fuck her! Stop blaming me and admit we're over!",
+                button: [
+                    { chatID: 172, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 172,
+                speaker: "bigguy",
+                text: "We're not done. If I leave I'll stop paying your mortgage, then you and " +
+                    "the girls will be out on the street! Is that what you want, to be homeless? " +
+                    "This is stupid, I won't let you leave me. ",
+                button: [
+                    { chatID: 173, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 173,
+                speaker: "landlord",
+                text: "You don't get to tell me if I can leave you! That's what breaking " +
+                    "up is! You no longer get to tell me what I can or can't do! ",
+                button: [
+                    { chatID: 174, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 174,
+                speaker: "bigguy",
+                text: "Oh I get to tell you what to do, 'cause we ain't done. It seems to " +
+                    "me you and you little girl need to learn some manners when it comes to " +
+                    "the man of the house and I'm going to teach you two some manners. ",
+                button: [
+                    { chatID: 175, text: "?", callback: "" },
+                ]
+            },
+            {
+                chatID: 175,
+                speaker: "landlord",
+                text: "Aaa stop! Don't...",
+                button: [
+                    { chatID: 176, text: "[Turn around]", callback: "" },
+                ]
+            },
+            {
+                chatID: 176,
+                speaker: "bigguy",
+                text: "You're both going to learn what a woman's place is in the house. " +
+                    sc.n("me") + " strip down and join your " + sc.n("landlord") + " bitch.",
+                button: [
+                    { chatID: -1, text: "oh no...", callback: "confess3" },
+                ]
+            },
+            {
+                chatID: 177,
+                speaker: "bigguy",
+                text: "The three of us are all going to make up and return to our proper " +
+                    "roles starting now. My role is that I help with your bills. Your role " +
+                    "is you make my cock hard and take my cum. Let me know you understand " +
+                    "by saying 'Yes sir'",
+                button: [
+                    { chatID: 178, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 178,
+                speaker: "landlord",
+                text: "Yes sir",
+                button: [
+                    { chatID: 180, text: "Yes sir", callback: "" },
+                ]
+            },
+            {
+                chatID: 179,
+                speaker: "landlord",
+                text: "Yes sir",
+                button: [
+                    { chatID: 180, text: "Yes sir", callback: "" },
+                ]
+            },
+            {
+                chatID: 180,
+                speaker: "bigguy",
+                text: "Good. Now make my cock hard so you can take my cum! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "confess4" },
+                ]
+            },
+            {
+                chatID: 181,
+                speaker: "bigguy",
+                text: "I'm so happy we all made up and stopped thinking silly things. " +
+                    "Come back anytime you want to be my hole. ",
+                button: [
+                    { chatID: 182, text: "uhhh yeah", callback: "confess5" },
+                ]
+            },
+            {
+                chatID: 182,
+                speaker: "thinking",
+                text: "I'm not so sure about that. Are we ok? " + sc.n("landlord") +
+                    " seemed to enjoy it. He does have a great dick and helps her so " +
+                    "much. I do feel sorry for her. She seems trapped. I don't know " +
+                    "if there's anything I can do. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "confess_end" },
+                ]
+            },
+            {
+                chatID: 183,
+                speaker: "thinking",
+                text: "She said she's done! You're done! Never come back, never talk " +
+                    "to us, never show your face here again! You got it?",
+                button: [
+                    { chatID: 184, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 184,
+                speaker: "bigguy",
+                text: "I was only kidding...",
+                button: [
+                    { chatID: 185, text: "No! You will not come back ever again!", callback: "" },
+                ]
+            },
+            {
+                chatID: 185,
+                speaker: "bigguy",
+                text: "She'll be back. You'll both be back. I'm out of here! ",
+                button: [
+                    { chatID: 186, text: "!", callback: "confess_win_0" },
+                ]
+            },
+            {
+                chatID: 186,
+                speaker: "landlord",
+                text: "That was crazy! I didn't expect that at all. I guess he really " +
+                    "showed his true self. I'm so you were able to get rid of him. I " +
+                    "have no idea what he would have done! ",
+                button: [
+                    { chatID: 187, text: "yeah. I didn't know I had it in me. How will you afford your bills?", callback: "" },
+                ]
+            },
+            {
+                chatID: 187,
+                speaker: "landlord",
+                text: "Don't worry about that. But if I get a new boyfriend, no more " +
+                    "fucking him ok? This night has been more than I can handle. Go " +
+                    "to bed and let me decompress. ok. ",
+                button: [
+                    { chatID: -1, text: "Ok. ", callback: "confess_win_end" },
                 ]
             },
         ];

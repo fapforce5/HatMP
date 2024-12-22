@@ -58,6 +58,7 @@ nav.killall = function () {
         g.roomTimeout2 = null;
     }
     $('#room-buttons').html("");
+    $('#room_footer').html("");
 };
 
 nav.kill = function () {

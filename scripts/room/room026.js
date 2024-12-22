@@ -66,16 +66,16 @@ room26.main = function () {
 room26.btnclick = function (name) {
     switch (name) {
         case "landlord":
+            nav.button({
+                "type": "img",
+                "name": "chatbg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1001_rand/black_25.png"
+            }, g.roomID);
             if (sc.getMission("landlord", "sissy").notStarted) {
-                nav.button({
-                    "type": "img",
-                    "name": "chatbg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1001_rand/black_25.png"
-                }, g.roomID);
                 if (!daily.get("landlordChat")) {
                     sc.select("chat_landlord", "26_livingRoom/chat_landlord.png", 0);
                 }
@@ -87,28 +87,44 @@ room26.btnclick = function (name) {
                 sc.selectCancel("chat_cancel", 4);
             }
             else {
-                if (daily.get("landlordChat")) {
-                    chat(80, 26);
-                }
-                else {
+                if (!daily.get("landlordChat")) {
+                    sc.select("chat_landlordSissy", "26_livingRoom/chat_landlord.png", 0);
                     daily.set("landlordChat");
-                    switch (sc.taskGetStep("landlord", "sissy")) {
-                        case -1:
-                        case 0:
-                            chat(79, 26);
-                            break;
-                        case 1:
-                            if (cl.c.dress === "pd") {
-                                sc.completeMissionTask("landlord", "sissy", 1);
-                                chat(83, 26);
-                            }
-                            else {
-                                chat(81, 26);
-                            }
-                            break;
-                    }
                 }
+                sc.select("sit_dickSissy", "26_livingRoom/icon_bussy.png", 1);
+                if (sc.getMissionTask("bigguy", "rent", 2).complete && sc.getMissionTask("bigguy", "rent", 3).notStarted) {
+                    sc.select("confess_bigguy", "26_livingRoom/icon_confess.png", 2);
+                }
+                
+                sc.selectCancel("chat_cancel", 3);
             }
+            break;
+        case "chat_landlordSissy":
+            room26.btnclick("chat_cancel");
+            switch (sc.taskGetStep("landlord", "sissy")) {
+                case -1:
+                case 0:
+                    chat(79, 26);
+                    break;
+                case 1:
+                    if (cl.c.dress === "pd") {
+                        sc.completeMissionTask("landlord", "sissy", 1);
+                        chat(83, 26);
+                    }
+                    else {
+                        chat(81, 26);
+                    }
+                    break;
+            }
+            break;
+        case "sit_dickSissy":
+            room26.btnclick("chat_cancel");
+            cl.nude();
+            chat(101, 26);
+            break;
+        case "confess_bigguy":
+            room26.btnclick("chat_cancel");
+            chat(106, 26);
             break;
         case "sissy_confess":
             room26.btnclick("chat_cancel");
@@ -145,6 +161,9 @@ room26.btnclick = function (name) {
             nav.killbutton("sit_dick");
             nav.killbutton("sissy_confess");
             nav.killbutton("chat_landlord");
+            nav.killbutton("chat_landlordSissy");
+            nav.killbutton("sit_dickSissy");
+            nav.killbutton("confess_bigguy");
             return;
         case "chat_landlord":
             room26.btnclick("chat_cancel");
@@ -378,6 +397,24 @@ room26.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "bussycry":
+            nav.killall();
+            nav.bg("26_livingRoom/bussy3.jpg");
+            nav.next("bussycry2");
+            break;
+        case "bussycry2":
+            nav.killall();
+            gv.mod("energy", -40);
+            chat(105, 26);
+            break;
+        case "bussyeat":
+            nav.killall();
+            var bchastity = cl.c.chastity === null ? "" : "_c";
+            nav.bg("26_livingRoom/bussy3_" + gender.pronoun("m") + bchastity + ".jpg");
+            levels.oralGive(3, false, false, "f");
+            char.settime(20, 2);
+            chat(104, 26);
+            break;
         default:
             break;
     }
@@ -396,6 +433,7 @@ room26.chatcatch = function (callback) {
             case "q1":
             case "q2":
             case "q3":
+            case "bussy1":
                 nav.bg("26_livingRoom/" + callback + ".jpg");
                 break;
             case "f6":
@@ -430,6 +468,8 @@ room26.chatcatch = function (callback) {
                 break;
             case "f0_eva":
             case "f1":
+            case "bussy0":
+            case "confess0":
                 nav.killall();
                 nav.bg("26_livingRoom/" + callback + ".jpg");
                 break;
@@ -623,6 +663,24 @@ room26.chatcatch = function (callback) {
             case "ll200_2":
                 char.addtime(180);
                 char.room(450);
+                break;
+            case "bussy2":
+                var bchastity = cl.c.chastity === null ? "" : "_c";
+                nav.bg("26_livingRoom/bussy2_" + gender.pronoun("m") + bchastity + ".jpg");
+                sc.select("bussyeat", "26_livingRoom/icon_bussyeat.png", 0);
+                sc.select("bussycry", "26_livingRoom/icon_bussycry.png", 2);
+                break;
+            case "bussy3":
+                nav.killall();
+                var bchastity1 = cl.c.chastity === null ? "" : "_c";
+                nav.bg("26_livingRoom/bussy3_" + gender.pronoun("m") + bchastity1 + ".jpg");
+                levels.oralGive(3, false, false, "f");
+                char.settime(20, 2);
+                chat(104, 26);
+                break;
+            case "confess1":
+                g.pass = "room14_confess1";
+                char.room(14);
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -1596,6 +1654,71 @@ room26.chat = function (chatID) {
                 text: "I like you better as a girl. I know you'll discover your true self. ",
                 button: [
                     { chatID: -1, text: "Thanks!", callback: "ll200_2" }
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "landlord",
+                text: "*sigh* Since you keep interrupting me when I'm trying to enjoy " +
+                    "my shows I'm going to have to put you somewhere where you can't " +
+                    "interrupt me anymore. ",
+                button: [
+                    { chatID: 102, text: "?", callback: "bussy0" }
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "landlord",
+                text: "Sit on the floor and lay your head on the couch. ",
+                button: [
+                    { chatID: 103, text: "ok", callback: "bussy1" }
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "landlord",
+                text: "If you're so obsessed with buttholes, you can eat my butthole " +
+                    "quietly while I watch my shows. ",
+                button: [
+                    { chatID: -1, text: "ooof", callback: "bussy2" }
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "landlord",
+                text: "Well, it's getting late, time for bed. I would say you did a " +
+                    "good job, but my butthole just feels slimy and wet. ",
+                button: [
+                    { chatID: -1, text: "*mumble into her butt*", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "landlord",
+                text: "Be quiet. Good girls don't whine with their mouth full. You " +
+                    "wanted this by showing your butt to me, so this is what you get. " +
+                    "Now let me watch my shows. ",
+                button: [
+                    { chatID: -1, text: "*cry into her butthole*", callback: "bussy3" }
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "me",
+                text: "[You Confess to being a dirty dirty whore and fucking your " + sc.n("landlord") +
+                    "'s boyfriend.]",
+                button: [
+                    { chatID: 107, text: "...", callback: "confess0" }
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "landlord",
+                text: "You what! That's my boyfriend! He would never, never cheat on " +
+                    "me! Follow me to my room! I'm going to call him over to get his side! " +
+                    "Both of you are in big big trouble! ",
+                button: [
+                    { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "confess1" }
                 ]
             },
         ];

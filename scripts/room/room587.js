@@ -1,4 +1,4 @@
-﻿//Room name
+﻿//bathroom
 var room587 = {};
 room587.main = function () {
     //var btnList = [
@@ -17,7 +17,7 @@ room587.main = function () {
     //    nav.button(v, 587);
     //});
     //nav.buildnav(navList);
-    nav.buildnav([585, 586, 588, 589]);
+    nav.buildnav([585]);
 };
 
 room587.btnclick = function (name) {

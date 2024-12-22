@@ -100,24 +100,37 @@ room7.main = function () {
         }
     }
     else {
-        switch (sc.taskGetStep("bigguy", "rent")) {
-            case -1:
-            case 0:
-                nav.bg("7_mainCharRoomAlt/both.jpg");
-                sc.startMission("bigguy", "rent");
-                sc.completeMissionTask("bigguy", "rent", 0);
-                chat(40, 7);
-                break;
-            default:
-                nav.bg("7_mainCharRoomAlt/bigguy_zz.jpg");
-                if (cl.isCrossdressing() || cl.pantiesTxt() === "panties") {
-                    sc.modSecret("landlord", 10);
-                    sc.modSecret("bigguy", 10);
-                    chat(54, 7);
-                }
-                else
-                    chat(999, 7);
-                break;
+        if (sc.getMission("bigguy", "ex").notStarted) {
+            switch (sc.taskGetStep("bigguy", "rent")) {
+                case -1:
+                case 0:
+                    nav.bg("7_mainCharRoomAlt/both.jpg");
+                    sc.startMission("bigguy", "rent");
+                    sc.completeMissionTask("bigguy", "rent", 0);
+                    chat(40, 7);
+                    break;
+                case 1:
+                case 2:
+                    nav.bg("7_mainCharRoomAlt/bigguy_zz.jpg");
+                    if (cl.isCrossdressing() || cl.pantiesTxt() === "panties") {
+                        sc.modSecret("landlord", 10);
+                        sc.modSecret("bigguy", 10);
+                        chat(54, 7);
+                    }
+                    else
+                        chat(999, 7);
+                    break;
+                case 3:
+                    nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
+                    chat(57, 7);
+                    break;
+                default:
+
+                    break;
+            }
+        }
+        else {
+            chat(9, 7);
         }
     }
     //else if (sc.taskGetStep("bigguy", "sissy") > 3 && sc.getMission("bigguy", "sissy").inProgress) {
@@ -210,6 +223,20 @@ room7.btnclick = function (name) {
                 g.internal++;
             }
             break;
+        case "rent4_0":
+            var chastx1 = [7, 8, 10, 12, 13];
+            var cx1 = "";
+            if (chastx1.includes(g.internal) && cl.c.chastity !== null)
+                c = "_c";
+            nav.bg("7_mainCharRoomAlt/bigguy" + g.internal + cx1 + ".jpg");
+
+            if (g.internal === 14) {
+                nav.killbutton("rent4_0");
+                chat(58, 7);
+            }
+            g.internal++;
+            g.internal;
+            break;
         default:
             break;
     }
@@ -236,6 +263,11 @@ room7.chatcatch = function (callback) {
             if (sc.getMissionTask("bigguy", "rent", 2).notStarted)
                 sc.completeMissionTask("bigguy", "rent", 2);
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+            break;
+        case "bigguy15_4":
+            gv.set("pastRent", 0);
+            gv.set("rentChores", 0);
+            nav.bg("7_mainCharRoomAlt/bigguy15.jpg");
             break;
         case "e7":
             g.internal = 7;
@@ -778,6 +810,11 @@ room7.chatcatch = function (callback) {
         case "mondaywork":
             g.pass = 40;
             char.room(8);
+            break;
+        case "rent4_0":
+            nav.bg("7_mainCharRoomAlt/bigguy3.jpg");
+            g.internal = 4;
+            nav.next("rent4_0");
             break;
         default:
             break;
@@ -1341,6 +1378,30 @@ room7.chat = function (chatID) {
                 button: [
                     { chatID: 50, text: "[Lick the head of his cock]", callback: "bigguy02" },
                     { chatID: 9, text: "You're right. I'll see you Monday", callback: "workmonday" }
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "bigguy",
+                text: "Wake up, Time to take my dick little girl.",
+                button: [
+                    { chatID: -1, text: "huh?", callback: "rent4_0" }
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "bigguy",
+                text: "I prefer taking your rent from your ass. So much sweeter. ",
+                button: [
+                    { chatID: 59, text: "*sob*", callback: "bigguy15_4" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "thinking",
+                text: "I still feel guilty about this, but damn that dick is good!",
+                button: [
+                    { chatID: -1, text: "...", callback: "lastWord" },
                 ]
             },
         ];

@@ -82,11 +82,14 @@ room905.chatcatch = function (callback) {
             if (cl.appearance() > 1) {
                 nav.killall();
                 nav.bg("905_library/inside.jpg");
-                if (sc.taskGetStep("eva", "sissy") === 5)
+                if (sc.taskGetStep("eva", "sissy") === 5) {
                     if (cl.c.chastity !== null)
                         chat(5, 905);
                     else
                         chat(6, 905);
+                }
+                else
+                    nav.buildnav([900, 0]);
             }
             else
                 chat(3, 905);

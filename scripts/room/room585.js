@@ -1,8 +1,17 @@
 ﻿//Room name
 var room585 = {};
+
 room585.main = function () {
     if (g.pass === "room585First") {
-        g.pass = "";
+        g.pass =
+            [
+                { t: 21, r5: null, r6: null, r7: null, r8: null, r9: null },
+                { t: 22, r5: null, r6: null, r7: null, r8: null, r9: null },
+                { t: 23, r5: null, r6: null, r7: null, r8: null, r9: null },
+                { t: 0, r5: null, r6: null, r7: null, r8: null, r9: null },
+                { t: 1, r5: null, r6: null, r7: null, r8: null, r9: null },
+                { t: 2, r5: null, r6: null, r7: null, r8: null, r9: null },
+            ];
     }
 
     if (sc.getMissionTask("eva", "sissy", 7).notStarted) {
@@ -22,7 +31,7 @@ room585.main = function () {
                     "width": 839,
                     "height": 1080,
                     "image": "585_livingRoom/utah.png"
-                }, 586);
+                }, 585);
                 
                 break;
             case 22:
@@ -35,18 +44,48 @@ room585.main = function () {
             default:
                 break;
         }
-        nav.buildnav([586, 587, 588, 589]);
+        nav.buildnav([586, 587, 588, 589, 0]);
     }
     
 };
 
+room585.getRoomsNow = function (room = null, time = null, who = null) {
+    if (room !== null && time !== null) {
+        for (let i = 0; i < g.pass.length; i++) {
+            if (g.pass[i].t === time) {
+                switch (room) {
+                    case 585: g.pass[i].r5 = who; break;
+                    case 586: g.pass[i].r6 = who; break;
+                    case 587: g.pass[i].r7 = who; break;
+                    case 588: g.pass[i].r8 = who; break;
+                    case 589: g.pass[i].r9 = who; break;
+                }
+                break;
+            }
+        }
+    }
+
+    let timenow = Math.floor(g.gethourdecimal());
+    if (timenow < 21 && timenow > 7)
+        timenow = 21;
+    for (let i = 0; i < g.pass.length; i++) {
+        if (timenow === g.pass[i].t)
+            return g.pass[i];
+    }
+    return g.pass[g.pass.length - 1];
+}
+
 room585.btnclick = function (name) {
     switch (name) {
         case "utah":
-            if (levels.get("cheer") > 8)
-                chat(6, 585);
+            if (qdress.st[24].ach) {
+                if (levels.get("cheer").l > 1)
+                    chat(6, 585);
+                else
+                    chat(5, 585)
+            }
             else
-                chat(5, 585)
+                chat(14, 585);
             break;
         default:
             break;
@@ -54,12 +93,37 @@ room585.btnclick = function (name) {
 };
 
 room585.chatcatch = function (callback) {
+    let roomEvents = room585.getRoomsNow(false);
+
     switch (callback) {
+        case "utah3":
+        case "utah4":
+        case "utah5":
+            nav.killall();
+            nav.bg("585_livingRoom/" + callback + ".jpg");
+            break;
         case "reset30":
             char.addtime(30);
             char.room(585);
             break;
+        case "utah2":
+            nav.killbutton("utah");
+            nav.button({
+                "type": "img",
+                "name": "utah",
+                "left": 876,
+                "top": 17,
+                "width": 411,
+                "height": 1063,
+                "image": "585_livingRoom/utah2.png"
+            }, 586);
+            break;
         case "reset":
+            char.room(585);
+            break;
+        case "utah6":
+            room585.getRoomsNow(589, 22, "stacy");
+            char.settime(22, 3);
             char.room(585);
             break;
         default:
@@ -116,7 +180,7 @@ room585.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "utah",
-            text: "You're cute, but not cool enough for me to fuck. ",
+            text: "You're cute, but I only fuck cheerleaders and models. ",
             button: [
                 { chatID: -1, text: "rude", callback: "reset30" }
             ]
@@ -144,8 +208,58 @@ room585.chat = function (chatID) {
                 "the running for best quarterback, maybe even of all time. Of " +
                 "course I couldn't be the best without Darius here. Hehehe",
             button: [
-                { chatID: 9, text: "So Darius do you want to get us a beer? ", callback: "" },
+                { chatID: 9, text: "So Darius do you want to get us a beer? ", callback: "utah2" },
                 { chatID: 10, text: "Yeah Darius really looks super strong. I love those big arms. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "utah",
+            text: "Good call. I needed a beer. That's what I like about Darius, " +
+                "always helping out. ",
+            button: [
+                { chatID: 10, text: "So have you thought about checking out the bedrooms? ", callback: "" },
+                { chatID: -1, text: "Yeah, he is a good guy. ", callback: "reset30" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "utah",
+            text: "Huh? Everyone is out here. Why would I go into the bedroom? ",
+            button: [
+                { chatID: 11, text: "[Rub his dick over his pants.]", callback: "utah3" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "utah",
+            text: "I love being me. Let's go slut! ",
+            button: [
+                { chatID: 12, text: "[Follow him to the bedroom]", callback: "utah4" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "utah",
+            text: "Bring that ass over here, I'm going to drop some blue chip spunk into it! ",
+            button: [
+                { chatID: 13, text: "[Get fucked]", callback: "utah5" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "stacy",
+            text: "Get out you slut! No one touches that dick but me! ",
+            button: [
+                { chatID: -1, text: "*eep* [run away]", callback: "utah6" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "thinking",
+            text: "I really don't feel confident enough to hit on Utah",
+            button: [
+                { chatID: -1, text: "[Unlock Confidence in the sissy menu]", callback: "" },
             ]
         },
     ];

@@ -427,7 +427,7 @@ gv.init = function () {
         { id: 22, pId: 21, icon: "qlip2", p: 2, h: true, x: 981, y: 628, ach: false, name: "Bimbo Lips", desc: "Lips so fat you can't close your mouth" },
 
         { id: 23, pId: 24, icon: "qwhore", p: 4, h: false, x: 981, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
-        { id: 24, pId: 3, icon: "qsed", p: 1, h: false, x: 830, y: 64, ach: false, name: "Seduction", desc: "You can seduce men." },
+        { id: 24, pId: 3, icon: "qsed", p: 1, h: false, x: 830, y: 64, ach: false, name: "Confidence", desc: "You can seduce men." },
 
     ];
 
@@ -1503,7 +1503,7 @@ levels.fuckass = function (who, gender) {
 
 levels.beer = function (numBeers = 1) {
     gv.mod("beer", numBeers);
-    levels.mod("beer", 15);
+    levels.mod("beer", 5);
     let totalBeers = gv.get("beer");
     let beerLevel = levels.get("beer").l + 2;
     if (totalBeers >= beerLevel)

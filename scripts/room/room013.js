@@ -333,7 +333,7 @@ room13.btnclick = function (name) {
                 }
                 else if (evaSissy === 4 || evaSissy === 5)
                     chat(187, 13);
-                else if (evaSissy === 7) {
+                else { //if (evaSissy === 7) {
                     if (g.dt.getDay() === 5) {
                         if (cl.c.chastity !== null) {
                             chat(201, 13);
@@ -3460,7 +3460,7 @@ room13.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 104,
+                chatID: 204,
                 speaker: "eva",
                 text: "You're not sexy enough. Go do something with yourself. ",
                 button: [

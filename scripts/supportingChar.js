@@ -311,7 +311,8 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Explained", show: true, mStatus: 0, roomId: 7 },
                         { id: 1, txt: "First Day. ", show: true, mStatus: 0, roomId: 7 },
-                        { id: 2, txt: "To tell or not to tell. ", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "To tell or not to tell. ", show: true, mStatus: 0, roomId: 26 },
+                        { id: 3, txt: "No rent, only ass", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {
@@ -323,6 +324,12 @@ sc.charMission = [
                         { id: 3, txt: "My man! ", show: true, mStatus: 0, roomId: 26 },
                         { id: 4, txt: "Clean up duty", show: true, mStatus: 0, roomId: 10 },
                         { id: 5, txt: "You're such my bitch. ", show: true, mStatus: 0, roomId: 26 },
+                    ]
+            },
+            {
+                missionName: "ex", mStatus: 0, title: "Ex", desc: "Not allowed back!", task:
+                    [
+                        { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 40 },
                     ]
             },
         ]
@@ -894,7 +901,9 @@ sc.charMission = [
             {
                 missionName: "fuck", mStatus: 0, title: "Fuck Chuck", desc: "Payback", task:
                     [
-                        { id: 0, txt: "Find him. Probably at a college party", show: true, mStatus: 0, roomId: 585 },
+                        { id: 0, txt: "Find him. Probably at a college party", show: true, mStatus: 0, roomId: 586 },
+                        { id: 1, txt: "Console him. ", show: true, mStatus: 0, roomId: 586 },
+                        { id: 2, txt: "Revenge! ", show: true, mStatus: 0, roomId: 586 },
                     ]
             },
         ]
@@ -1188,6 +1197,16 @@ sc.getActiveMissions = function (name) {
 
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
+};
+
+sc.completeMissionTaskAll = function (name, missionName, taskId, success = true) {
+    let ind = sc.getMission(name, missionName);
+    for (let i = 0; i < sc.charMission[ind.i].mission[ind.j].task.length; i++) {
+        if (sc.charMission[ind.i].mission[ind.j].task[i].id <= taskId)
+            sc.charMission[ind.i].mission[ind.j].task[i].id.mstatus = success ? 100 : 101;
+        else
+            break;
+    }
 };
 
 sc.rollbackMission = function (name, missionName) {
@@ -1515,31 +1534,43 @@ sc.getTimeline = function (char) {
             ];
             break;
         case "bigguy":
-            timeline = [
-            //Sunday
-                { d: [0], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
-                { d: [0], hstart: 7, hend: 10, roomId: null, alt: "In town" }, //church
-                { d: [0], hstart: 10, hend: 11, roomId: 25, alt: null }, //kitchen
-                { d: [0], hstart: 11, hend: 18, roomId: 26, alt: null }, //living room
-                { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
-                { d: [0], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
-                //week
-                { d: [1, 2, 3, 4], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
-                { d: [1, 2, 3, 4], hstart: 9, hend: 18, roomId: null, alt: "Work" }, //bathroom
-                { d: [1, 2, 3, 4], hstart: 18, hend: 24, roomId: null, alt: "His home" }, //bathroom
-                //friday
-                { d: [5], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
-                { d: [5], hstart: 9, hend: 17, roomId: null, alt: "Work" }, //bathroom
-                { d: [5], hstart: 17, hend: 18, roomId: null, alt: "Train" }, //bathroom
-                { d: [5], hstart: 18, hend: 20, roomId: 26, alt: null }, //bathroom
-                { d: [5], hstart: 20, hend: 24, roomId: 14, alt: null }, //bathroom
-                //saturday
-                { d: [6], hstart: 0, hend: 7, roomId: 14, alt: null }, //bathroom
-                { d: [6], hstart: 7, hend: 12, roomId: null, alt: "In town" }, //bathroom
-                { d: [6], hstart: 12, hend: 17, roomId: 26, alt: null }, //living room
-                { d: [6], hstart: 17, hend: 19, roomId: 25, alt: null }, //kitchen
-                { d: [6], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
-            ];
+            if (sc.getMission("bigguy", "ex").notStarted) {
+                timeline = [
+                    //Sunday
+                    { d: [0], hstart: 0, hend: 7, roomId: 14, alt: null }, //bedroom
+                    { d: [0], hstart: 7, hend: 10, roomId: null, alt: "In town" }, //church
+                    { d: [0], hstart: 10, hend: 11, roomId: 25, alt: null }, //kitchen
+                    { d: [0], hstart: 11, hend: 18, roomId: 26, alt: null }, //living room
+                    { d: [0], hstart: 18, hend: 19, roomId: 25, alt: null }, //dining
+                    { d: [0], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
+                    //week
+                    { d: [1, 2, 3, 4], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
+                    { d: [1, 2, 3, 4], hstart: 9, hend: 18, roomId: null, alt: "Work" }, //bathroom
+                    { d: [1, 2, 3, 4], hstart: 18, hend: 24, roomId: null, alt: "His home" }, //bathroom
+                    //friday
+                    { d: [5], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
+                    { d: [5], hstart: 9, hend: 17, roomId: null, alt: "Work" }, //bathroom
+                    { d: [5], hstart: 17, hend: 18, roomId: null, alt: "Train" }, //bathroom
+                    { d: [5], hstart: 18, hend: 20, roomId: 26, alt: null }, //bathroom
+                    { d: [5], hstart: 20, hend: 24, roomId: 14, alt: null }, //bathroom
+                    //saturday
+                    { d: [6], hstart: 0, hend: 7, roomId: 14, alt: null }, //bathroom
+                    { d: [6], hstart: 7, hend: 12, roomId: null, alt: "In town" }, //bathroom
+                    { d: [6], hstart: 12, hend: 17, roomId: 26, alt: null }, //living room
+                    { d: [6], hstart: 17, hend: 19, roomId: 25, alt: null }, //kitchen
+                    { d: [6], hstart: 19, hend: 24, roomId: 14, alt: null }, //bedroom
+                ];
+            }
+            else {
+                timeline = [
+                    //week
+                    { d: [1, 2, 3, 4], hstart: 0, hend: 9, roomId: null, alt: "His home" }, //bathroom
+                    { d: [1, 2, 3, 4], hstart: 9, hend: 18, roomId: null, alt: "Work" }, //bathroom
+                    { d: [1, 2, 3, 4], hstart: 18, hend: 24, roomId: null, alt: "His home" }, //bathroom
+                    //friday
+                    { d: [0, 6], hstart: 0, hend: 24, roomId: null, alt: "His home" }, //bathroom
+                ];
+            }
             break;
         case "lola":
         case "eva":
