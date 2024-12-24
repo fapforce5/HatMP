@@ -17,18 +17,14 @@ room554.main = function () {
         chat(2, 554);
     }
     else {
-        if (daily.get("shower"))
-            chat(0, 554);
-        else {
-            nav.killall();
-            cl.c.cumface = false;
-            cl.nude();
-            zcl.displayMain(120, 1200, .15, "shower", false);
-            chat(1, 554);
+        cl.clean("face");
+        cl.nude();
+        zcl.displayMain(120, 1200, .15, "shower", false);
+        chat(1, 554);
+        if (!daily.get("shower")) {
+            daily.set("shower");
+            gv.mod("energy", 1000);
         }
-        //$.each(btnList, function (i, v) {
-        //    nav.button(v, 554);
-        //});
     }
     nav.buildnav(navList);
 };
@@ -52,9 +48,7 @@ room554.chatcatch = function (callback) {
             break;
         case "leaveShower":
             cl.undo();
-            gv.mod("energy", 30);
             char.addtime(30);
-            daily.set("shower");
             if (g.pass === "boy")
                 char.room(552);
             else
@@ -87,7 +81,7 @@ room554.chat = function (chatID) {
             ]
         },
         {
-            chatID: 554,
+            chatID: 2,
             speaker: "random",
             text: "That's a penis!!!!!!!!! AAAAAaaaaaaa",
             button: [

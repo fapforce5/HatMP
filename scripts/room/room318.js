@@ -378,7 +378,7 @@ room318.chat = function (chatID) {
                 "don't get it. I'm a girl, how could it be gay if it's my fingers " +
                 "in their ass. I guess it's gay if I put my fingers in a girl's ass, " +
                 "but I don't care. " +
-                "Worring about what is or isn't gay is dumb. Sex is fun. ",
+                "Worrying about what is or isn't gay is dumb. Sex is fun. ",
             button: [
                 { chatID: 18, text: "oooohhh ", callback: "b2_5" },
             ]
@@ -439,7 +439,7 @@ room318.chat = function (chatID) {
             speaker: "janice",
             text: "Shhhh. Don't say anything. " + gender.pronoun("boy") + "'s don't " +
                 "think straight after an orgasm. Now I have to take " + sc.n("dog") + 
-                "for his walk. Can't wait to see you again. I think I'm totally falling " +
+                " for his walk. Can't wait to see you again. I think I'm totally falling " +
                 "for you.",
             button: [
                 { chatID: -1, text: "ok. Bye?", callback: "b2_end" },

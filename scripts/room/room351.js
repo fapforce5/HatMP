@@ -77,7 +77,7 @@ room351.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "!madison",
-            text: "So I want you to relax and have a good experiance. If at any time you feel uncomfortable just let me know. " +
+            text: "So I want you to relax and have a good experience. If at any time you feel uncomfortable just let me know. " +
                 "I'll need you to pull down your pants and underwear so that I can get access to your penis and extract the sample. " +
                 "Are you ready? ",
             button: [

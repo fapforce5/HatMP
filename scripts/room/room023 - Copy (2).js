@@ -414,7 +414,7 @@ room23.main = function () {
         {
             e: "I want to you beg. Like a doggy with your tongue out! Then bark. ", 
             l: null,
-            b: [{ chatID: -1, text: "Werid, but ok.", callback: "medoggytongue" }]
+            b: [{ chatID: -1, text: "Weird, but ok.", callback: "medoggytongue" }]
         },
         {
             e: "Roll over doggy boy! ", 
@@ -2162,14 +2162,14 @@ room23.chat = function (chatID) {
                     { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
             },
             {
-                e: "If we're going to sit here in our panties, so are you. Stip off those pants. ",
+                e: "If we're going to sit here in our panties, so are you. Strip off those pants. ",
                 l: "Take your pants off. Show me your legs! ",
                 b: [{ chatID: -1, text: "Awww yea! [Take pants off]", callback: "mestrip" },
                 { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
             },
             {
                 e: "Take off your underwear and show us your dick. ",
-                l: "Oh my. Hehehe. Uhhhh. Stip it off mister. ",
+                l: "Oh my. Hehehe. Uhhhh. Strip it off mister. ",
                 b: [{ chatID: -1, text: "Awww yea! [Take your panties off]", callback: "mestrip" },
                 { chatID: -1, text: "It's getting late. I think this is enough.", callback: "mequit" },]
             },

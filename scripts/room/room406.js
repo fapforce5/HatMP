@@ -78,6 +78,7 @@ room406.btnclick = function (name) {
                 "height": 806,
                 "image": "406_eyes/doc.png"
             }, 406);
+            nav.buildnav([0]);
             break;
         default:
             break;
@@ -101,6 +102,7 @@ room406.chatcatch = function (callback) {
             break;
         case "kill":
             nav.killbutton("zzz-clothing-kill");
+            nav.buildnav([0]);
             break;
         case "leave":
             char.room(0);

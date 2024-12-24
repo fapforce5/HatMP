@@ -90,6 +90,7 @@ room586.btnclick = function (name) {
                     case 0: chat(7, 586); break;
                     case 1: chat(12, 586); break;
                     case 2: chat(22, 586); break;
+                    case 3: chat(28, 586); break;
                 }
                 
             }
@@ -444,6 +445,14 @@ room586.chat = function (chatID) {
                 "I mean I loved this.. crap. Gotta run. Bye.",
             button: [
                 { chatID: -1, text: "Bye", callback: "chuck2_end" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "chuck",
+            text: "Future release. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

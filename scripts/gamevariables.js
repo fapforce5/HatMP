@@ -712,7 +712,6 @@ levels.mod = function (name, amount, targetLevel = 999) {
                 levels.st[i].l++;
             }
             let levelsChange = levels.st[i].l - startingLevel;
-            console.log(levelsChange);
             if (levelsChange > 0)
                 g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
             else

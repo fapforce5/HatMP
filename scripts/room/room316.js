@@ -1861,7 +1861,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: "You didn't feed my poor little doggy every day! The poor thing! If you " +
                     "can't respect me enough to take care of my doggy, then you don't deserve " +
-                    "these big round beautiful tits! Take a long look, becuase this is the last " +
+                    "these big round beautiful tits! Take a long look, because this is the last " +
                     "time you'll ever see them! We're over! Bye bye loser! Now get out before I sick " +
                     sc.n("dog") + " on you! ",
                 button: [
@@ -1938,7 +1938,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 110,
                 speaker: "janice",
-                text: "Is that a chastity cage? Why would you wear that? Is it becuase " +
+                text: "Is that a chastity cage? Why would you wear that? Is it because " +
                     "you don't want to have a penis anymore? I saw a show about men like you! ",
                 button: [
                     { chatID: 114, text: "I uh...", callback: "task4_3" },
@@ -2130,7 +2130,7 @@ room316.chat = function (chatID) {
                 text: "It's not the olden days anymore. Many couples are doing it. I " +
                     "love you, and you love me. If you have to have sex with other men " +
                     "to be satisfied, then that's something I'm willing to do for you, " +
-                    "becuase of my love for you. ",
+                    "because of my love for you. ",
                 button: [
                     { chatID: 130, text: "...", callback: "" },
                 ]
@@ -2158,7 +2158,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 132,
                 speaker: "janice",
-                text: "No way! Stip off your clothes! Follow me to the bedroom! I have " +
+                text: "No way! Strip off your clothes! Follow me to the bedroom! I have " +
                     "a surprise I think you'll love! Come! ",
                 button: [
                     { chatID: -1, text: "Hell yeah!", callback: "bedroom" },

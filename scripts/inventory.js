@@ -19,7 +19,7 @@ inv.leftMenu = true;
 inv.page = 0;
 
 inv.t = [
-    { t: "b", n: "Backpack" },
+    { t: "b", n: "Purse " },
     { t: "c", n: "Restraints" },
     { t: "d", n: "Dildo" },
     { t: "e", n: "Energy Snack" },
@@ -84,13 +84,15 @@ inv.master = [
     { type: "i", name: "smellingsalts", display: "Smelling Salts", entry: false, count: 0, cost: 200, image: "smellingsalts.png", n: false, desc: "Reroll your fight. " },
 
     { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false, desc: "Default Backpack" },
-    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false, desc: "Boring ol' briefase" },
+    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false, desc: "Boring ol' briefcase" },
     { type: "b", name: "slutPurse", display: "Slutty Pink Purse", entry: false, count: null, cost: 100, image: "purse_slut.png", n: false, desc: "Only a true slut can use this" },
     { type: "b", name: "pinkPurse", display: "Pink Purse", entry: false, count: null, cost: 100, image: "purse_pink.png", n: false, desc: "A cute purse" },
     { type: "b", name: "purseblack", display: "Black Purse", entry: false, count: null, cost: 80, image: "purse_black.png", n: false, desc: "Black Purse" },
-    { type: "b", name: "pinkcase", display: "Pink Briefcase", entry: false, count: null, cost: 80, image: "purse_briefcase.png", n: false, desc: "A cute Breifcase" },
+    { type: "b", name: "pinkcase", display: "Pink Briefcase", entry: false, count: null, cost: 80, image: "purse_briefcase.png", n: false, desc: "A cute briefcase" },
     { type: "b", name: "pursebag", display: "Bag", entry: false, count: null, cost: 30, image: "purse_bag.png", n: false, desc: "Bag" },
     { type: "b", name: "purseyellow", display: "Yellow Purse", entry: false, count: null, cost: 30, image: "purse_yellow.png", n: false, desc: "A Yellow Purse" },
+    { type: "b", name: "pursecoach", display: "Coach", entry: false, count: null, cost: 490, image: "purse_coach.png", n: false, desc: "Noalita 17 in Signature Style" },
+    { type: "b", name: "purseberkin", display: "Birkin Bag", entry: false, count: null, cost: 25900, image: "berkin.png", n: false, desc: "Hermès Sac à Main Fou Hors de Prix 17" },
     
     { type: "p", name: "phoneBasic", display: "Basic Phone", entry: true, count: null, cost: -1, image: "phone_basic.png", n: false, desc: "Default phone case" },
     { type: "p", name: "phoneTr", display: "Strong Woman", entry: false, count: null, cost: 35, image: "phone_tr.png", n: false, desc: "" },

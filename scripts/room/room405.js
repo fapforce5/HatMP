@@ -106,7 +106,7 @@ room405.chatcatch = function (callback) {
                 else {
                     var thisType = $(this).data('type');
                     if (thisType === "color") {
-                        if ((g.internal === "pink" || g.internal === "rainbow") && !g.sissy[31].ach) {
+                        if ((g.internal === "pink" || g.internal === "rainbow") && !qdress.st[3].ach) {
                             $('.hair-change[data-name="' + g.internal + '"]').after('<img src="./images/inv/tooGirly.png" />');
                             return;
                         }

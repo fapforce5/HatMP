@@ -135,8 +135,10 @@ room400.btnclick = function (name) {
             char.room(401);
         }
     }
-    else
+    else {
+        g.pass = name;
         char.room(401);
+    }
     //switch (name) {
     //    case "male":
     //        char.room(402);

@@ -17,7 +17,23 @@ room588.main = function () {
     //    nav.button(v, 588);
     //});
     //nav.buildnav(navList);
-    nav.buildnav([585, 586, 587, 589]);
+    if (g.pass === "sporty_588") {
+        zcl.displayMain(100, 500, .1, "clothes", false);
+        nav.button({
+            "type": "img",
+            "name": "sporty",
+            "left": 743,
+            "top": 0,
+            "width": 705,
+            "height": 1080,
+            "image": "589_liam/sporty.png"
+        }, 586);
+        chat(0, 586);
+    }
+    else {
+        nav.buildnav([585, 586, 587, 589]);
+
+    }
 };
 
 room588.btnclick = function (name) {
@@ -42,10 +58,10 @@ room588.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "sporty",
+            text: "So should we strip down and put on a show for him baby?",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "Oh yeah!", callback: "" }
             ]
         }
     ];

@@ -238,7 +238,7 @@ sc.charMission = [
     {
         name: "landlord", mission: [
             {
-                missionName: "talk", mStatus: 1, title: "Chat", desc: "Get to know her better. ", task:
+                missionName: "talk", mStatus: 1, title: "Living Room", desc: "Get to know her better. ", task:
                     [
                         { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 26 },
                         { id: 1, txt: "Help at the sperm bank. ", show: true, mStatus: 0, roomId: 26 },
@@ -247,10 +247,10 @@ sc.charMission = [
                         { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
                         { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
                         { id: 6, txt: "Your past", show: true, mStatus: 0, roomId: 26 },
-                        { id: 7, txt: "She's catching feeling for you.", show: true, mStatus: 0, roomId: 26 },
-                        { id: 8, txt: "She loves your dick", show: true, mStatus: 0, roomId: 26 },
-                        { id: 9, txt: "Fucking!", show: true, mStatus: 0, roomId: 26 },
-                        { id: 10, txt: "Cum sponge", show: true, mStatus: 0, roomId: 26 },
+                        //{ id: 7, txt: "She's catching feeling for you.", show: true, mStatus: 0, roomId: 26 },
+                        //{ id: 8, txt: "She loves your dick", show: true, mStatus: 0, roomId: 26 },
+                        //{ id: 9, txt: "Fucking!", show: true, mStatus: 0, roomId: 26 },
+                        //{ id: 10, txt: "Cum sponge", show: true, mStatus: 0, roomId: 26 },
                     ]
             },
             {
@@ -577,7 +577,7 @@ sc.charMission = [
                         { id: 3, txt: "Home. ", show: true, mStatus: 0, roomId: 51 },
                         { id: 4, txt: "How to use your pussy", show: true, mStatus: 0, roomId: 54 },
                         { id: 5, txt: "Pussy Palace", show: true, mStatus: 0, roomId: 54 },
-                        { id: 6, txt: "Help her get a ring to propose. ", show: true, mStatus: 0, roomId: 54 },
+                        { id: 6, txt: "Cheerleader! ", show: true, mStatus: 0, roomId: 54 },
                     ]
             },
         ]
@@ -1203,9 +1203,7 @@ sc.completeMissionTaskAll = function (name, missionName, taskId, success = true)
     let ind = sc.getMission(name, missionName);
     for (let i = 0; i < sc.charMission[ind.i].mission[ind.j].task.length; i++) {
         if (sc.charMission[ind.i].mission[ind.j].task[i].id <= taskId)
-            sc.charMission[ind.i].mission[ind.j].task[i].id.mstatus = success ? 100 : 101;
-        else
-            break;
+            sc.charMission[ind.i].mission[ind.j].task[i].mStatus = success ? 100 : 101;
     }
 };
 
@@ -2198,6 +2196,10 @@ sc.trivial = function (charname) {
         case "!latika":
             name = "Latika";
             image = "latika.png";
+            break;
+        case "!doofus":
+            name = "Doofus";
+            image = "doofus.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

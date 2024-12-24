@@ -56,7 +56,7 @@ room401.main = function () {
         case "purse":
             navList = [400];
             nav.bg("401_purchase/purse.jpg", "401_purchase/purse.jpg");
-            room401.makeInv(["b"], gv.get("xdress"), 1);
+            room401.makeInv(["b"], qdress.st[3].ach, 1);
             break;
         case "saucy":
             navList = [];

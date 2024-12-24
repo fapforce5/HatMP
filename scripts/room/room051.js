@@ -24,6 +24,15 @@ room51.main = function () {
             "image": "51_livingRoom/hallway.png"
         }];
         if (sc.getTimeline("tiffany").roomID) {
+            //btnList.push({
+            //    "type": "btn",
+            //    "name": "reddooropen",
+            //    "left": 1664,
+            //    "top": 214,
+            //    "width": 250,
+            //    "height": 603,
+            //    "image": "51_livingRoom/reddooropen.png"
+            //});
             btnList.push({
                 "type": "btn",
                 "name": "reddooropen",
@@ -31,20 +40,29 @@ room51.main = function () {
                 "top": 214,
                 "width": 250,
                 "height": 603,
-                "image": "51_livingRoom/reddooropen.png"
+                "image": "51_livingRoom/reddoor.png"
             });
             navList.push(57);
         }
         else {
             btnList.push({
                 "type": "btn",
-                "name": "reddoor",
+                "name": "reddooropen",
                 "left": 1664,
                 "top": 214,
                 "width": 250,
                 "height": 603,
                 "image": "51_livingRoom/reddoor.png"
             });
+            //btnList.push({
+            //    "type": "btn",
+            //    "name": "reddoor",
+            //    "left": 1664,
+            //    "top": 214,
+            //    "width": 250,
+            //    "height": 603,
+            //    "image": "51_livingRoom/reddoor.png"
+            //});
         }
         $.each(btnList, function (i, v) {
             nav.button(v, 51);
@@ -75,7 +93,7 @@ room51.btnclick = function (name) {
                 chat(49, 51);
             break;
         case "reddooropen":
-            char.room(57);
+            char.room(53);
             break;
         case "t19":
             chat(30, 51);

@@ -538,7 +538,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "!thomas",
-                text: "I'm so embarrased from that last class. But in a werid way it's arousing. " +
+                text: "I'm so embarrased from that last class. But in a weird way it's arousing. " +
                     "Like really arousing. I don't know why I'm sharing this, but it's nice to talk " +
                     "to someone that's going though this with me. ",
                 button: [

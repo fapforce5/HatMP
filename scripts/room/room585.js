@@ -35,9 +35,22 @@ room585.main = function () {
                 
                 break;
             case 22:
-
+                //if (sissy.get("test1").ach) {
+                //    nav.button({
+                //        "type": "btn",
+                //        "name": "sporty",
+                //        "left": 253,
+                //        "top": 0,
+                //        "width": 450,
+                //        "height": 857,
+                //        "image": "585_livingRoom/sporty.png"
+                //    }, 585);
+                //}
                 break;
             case 23:
+                //if (sc.taskGetStep("eva", "sissy") === 8) {
+
+                //}
                 break;
             case 0:
                 break;
@@ -87,6 +100,19 @@ room585.btnclick = function (name) {
             else
                 chat(14, 585);
             break;
+        case "sporty":
+            nav.killbutton("sporty");
+            nav.button({
+                "type": "img",
+                "name": "sporty",
+                "left": 750,
+                "top": 0,
+                "width": 806,
+                "height": 1080,
+                "image": "585_livingRoom/sporty1.png"
+            }, 585);
+            chat(15, 585);
+            break;
         default:
             break;
     }
@@ -125,6 +151,10 @@ room585.chatcatch = function (callback) {
             room585.getRoomsNow(589, 22, "stacy");
             char.settime(22, 3);
             char.room(585);
+            break;
+        case "sporty_588":
+            g.pass = "sporty_588";
+            char.room(588);
             break;
         default:
             break;
@@ -260,6 +290,51 @@ room585.chat = function (chatID) {
             text: "I really don't feel confident enough to hit on Utah",
             button: [
                 { chatID: -1, text: "[Unlock Confidence in the sissy menu]", callback: "" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "sporty",
+            text: "Hey! Just chatting with my old friend Doofus here. He knew me " +
+                "back before.. you know. ",
+            button: [
+                { chatID: 16, text: "Oh nice", callback: "" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "!doofus",
+            text: "Totally. You're totally hot now! Your friend is totally hot too! " +
+                "It's like you left high school and got hot and hot friends. Totally " +
+                "crazy. So you you two ever do each other since you're both so hot? ",
+            button: [
+                { chatID: 17, text: "Oh hahaha", callback: "" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "sporty",
+            text: "She is hot, but I prefer a more manly man. Like you. But she " +
+                "would be fun to play with. ",
+            button: [
+                { chatID: 18, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "!doofus",
+            text: "I would love to see that! Love to see two chicks dyke out! ",
+            button: [
+                { chatID: 19, text: "I would be down to dyke out with you two. ", callback: "" },
+                { chatID: -1, text: "Sounds fun, but I need another drink. ", callback: "reset30" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "sporty",
+            text: "Oh that's hot! Let's check out your bedroom! ",
+            button: [
+                { chatID: -1, text: "Yes, let's!", callback: "sporty_588" },
             ]
         },
     ];

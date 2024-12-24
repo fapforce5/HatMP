@@ -454,14 +454,12 @@ cl.load = function (ra) {
 };
 
 cl.where = function (type, name) {
-    
     var retList = null;
     for (var i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].name === name)
             retList = i;
     }
-    if (retList === null)
-        console.log(type, name);
+    
     return retList;
 };
 

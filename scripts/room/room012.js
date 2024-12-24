@@ -233,7 +233,7 @@ room12.btnclick = function (name) {
             break;
         case "shower":
             nav.killall();
-            cl.c.cumface = false;
+            cl.clean("face");
             cl.nude();
             zcl.displayMain(0, 400, .22, "shower", false);
             nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");

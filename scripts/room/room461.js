@@ -849,7 +849,7 @@ room461.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "ppgirl",
-            text: "You want a jar of my piss? Werid... but ok! Give me a jar. ",
+            text: "You want a jar of my piss? Weird... but ok! Give me a jar. ",
             button: [
                 { chatID: -1, text: "[Hand her an empty jar]", callback: "pissjar0" },
             ]

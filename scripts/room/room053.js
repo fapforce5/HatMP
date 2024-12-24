@@ -1,6 +1,9 @@
 ﻿//Candy room
 var room53 = {};
 room53.main = function () {
+    nav.buildnav([51]);
+    return;
+
     if (sc.getTimeline("candy").thisRoom) {
         
         if (g.hourBetween(7, 22)) {

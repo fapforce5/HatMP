@@ -394,7 +394,7 @@ room225.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "random",
-            text: "I'm glad we could share this experiance. It looks like we're here. I hope to play with you again. ",
+            text: "I'm glad we could share this experience. It looks like we're here. I hope to play with you again. ",
             button: [
                 { chatID: -1, text: "Uhhh yeah...", callback: "p25" },
             ]

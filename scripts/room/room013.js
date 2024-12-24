@@ -287,10 +287,10 @@ room13.btnclick = function (name) {
                 else if (lolaSissy === 2)
                     chat(141, 13);
                 else if (lolaSissy === 3) {
-                    if (sc.getMissionTask("lola", "date", 5).complete)
-                        chat(163, 13); //preganannte
-                    else
-                        chat(999, 13);
+                    //if (sc.getMissionTask("lola", "date", 5).complete)
+                    chat(163, 13); //preganannte
+                    //else
+                    //  chat(999, 13);
                 }
             }
             break;
@@ -1052,6 +1052,7 @@ room13.btnclick = function (name) {
                 chat(68, 13);
             else {
                 nav.killbutton("eva");
+                nav.killbutton("evaboobs");
                 chat(69, 13);
             }
             break;
@@ -1071,6 +1072,7 @@ room13.btnclick = function (name) {
             }
             else if (g.internal === 17) {
                 nav.killbutton("lola");
+                nav.killbutton("lolaboobs");
             }
             else if (g.internal === 18) {
                 nav.killall();
@@ -1165,8 +1167,8 @@ room13.chatcatch = function (callback) {
                 cl.c.panties = "m";
                 cl.c.bra = "l";
                 cl.display();
-                cl.add("m", "panties");
-                cl.add("l", "bra");
+                cl.add("panties", "m");
+                cl.add("bra", "l");
                 levels.mod("xdress", 10);
                 zcl.displayMain(-100, 500, .28, "clothes", true);
                 nav.bg("13_sisterRoom/" + callback + ".jpg");
@@ -1558,6 +1560,7 @@ room13.chatcatch = function (callback) {
                 break;
             case "killeva":
                 nav.killbutton("eva");
+                nav.killbutton("evaboobs");
                 break;
             case "sissyEva3_0":
                 nav.modbutton("eva", "13_sisterRoom/sissyEva3_0.png", null, null);
@@ -2195,7 +2198,7 @@ room13.chat = function (chatID) {
                     "before we even get anywhere. She mentioned I needed to practice dating. I didn't know " +
                     "this is what she came up with. ",
                 button: [
-                    { chatID: 63, text: "Yeah. She sprung it on me too. I thought it was werid, but you know. Why not. Did you want to go on a practice date? ", callback: "" },
+                    { chatID: 63, text: "Yeah. She sprung it on me too. I thought it was weird, but you know. Why not. Did you want to go on a practice date? ", callback: "" },
                 ]
             },
             {
@@ -2269,7 +2272,7 @@ room13.chat = function (chatID) {
                 chatID: 71,
                 speaker: "lola",
                 text: "I love you. I think I've always loved you. I've never gone more than " +
-                    "a single date with any boy in my life becuase I always compare them to " +
+                    "a single date with any boy in my life because I always compare them to " +
                     "you. I can't get you out of my mind. Do you love me back? ",
                 button: [
                     { chatID: 72, text: "Sure ", callback: "" },
@@ -2440,7 +2443,7 @@ room13.chat = function (chatID) {
                 text: "Watch you language! I've told you a thousand times, no cussing in my " +
                     "house. You remember what happened the last time you used such foul language " +
                     "under my roof! " +
-                    "You just ruined " + sc.n("lola") + "'s experiance. " +
+                    "You just ruined " + sc.n("lola") + "'s experience. " +
                     "Unlike yourself losing her virginity is a big deal for your " + sc.el() + 
                     ". ",
                 button: [
@@ -2980,7 +2983,7 @@ room13.chat = function (chatID) {
                 chatID: 149,
                 speaker: "eva",
                 text: "Hahahaha! I know what that is! I have a gay friend. He does it " +
-                    "becuase he likes to take it up the butt! ",
+                    "because he likes to take it up the butt! ",
                 button: [
                     { chatID: 150, text: "Well...", callback: "" },
                 ]
@@ -3100,9 +3103,9 @@ room13.chat = function (chatID) {
             {
                 chatID: 163,
                 speaker: "lola",
-                text: "text for future boyfriend",
+                text: "[In development - not ready]",
                 button: [
-                    { chatID: 164, text: "?", callback: "" },
+                    { chatID: -1, text: "?", callback: "" },
                 ]
             },
             {
@@ -3226,7 +3229,7 @@ room13.chat = function (chatID) {
                 chatID: 177,
                 speaker: "eva",
                 text: "Ok, ummm. You're going to be my slave. I've never had a slave " +
-                    "before. Show me what a good slave you are and stip!",
+                    "before. Show me what a good slave you are and strip!",
                 button: [
                     { chatID: 178, text: "oh yeah!", callback: "sissyEva3_4" },
                 ]
@@ -3332,7 +3335,7 @@ room13.chat = function (chatID) {
                 speaker: "eva",
                 text: "Since " + sc.n("lola") + " won't let us play here, but I know the " +
                     "perfect place. The university library never has anyone around " +
-                    "anymore. Probably becuase libraries are dumb. " +
+                    "anymore. Probably because libraries are dumb. " +
                     "Call me and wait till I get there. ",
                 button: [
                     { chatID: 193, text: "Oh yeah! I'll meet you there!", callback: "" },

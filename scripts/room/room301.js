@@ -1484,7 +1484,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 54,
                 speaker: "envy",
-                text: "Soooo. What do you think? Too differnt? Silly? More fun? I don't know. I haven't ever changed my hair before, " +
+                text: "Soooo. What do you think? Too different? Silly? More fun? I don't know. I haven't ever changed my hair before, " +
                     "but I don't know what's going on in my head. I'm like so obsessed! I don't want to study, I just want to " +
                     "be pretty!",
                 button: [

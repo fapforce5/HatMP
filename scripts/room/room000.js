@@ -137,7 +137,6 @@ room0.btnclick = function (name) {
         nav.killall();
         nav.bg("map/" + roomnum + "_close" + (g.isNight() ? "night" : "") + ".jpg");
         g.nextRoomId = roomnum;
-        console.log("roomnum: " + roomnum);
         if (g.rand(0, 20) === 0 && !daily.get("foundmoney")) {
             nav.button({
                 "type": "btn",
@@ -153,7 +152,6 @@ room0.btnclick = function (name) {
             }, 4000);
         }
         else if (fame.event("moveChar")) {
-            console.log(roomnum);
             console.log(g.nextRoomId);
         }
         else {

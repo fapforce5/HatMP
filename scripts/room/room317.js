@@ -45,7 +45,7 @@ room317.btnclick = function (name) {
         case "feed":
             daily.set("dfeed");
             var jv = future.get("janicevacation");
-            sc.modMissionTask("dog", "vacation", (7 - jv), 100);
+            sc.completeMissionTask("dog", "vacation", (7 - jv), 100);
             char.room(317);
             break;
         case "drink":
