@@ -381,7 +381,7 @@ room177.chat = function (chatID) {
             text: "No doubt by now you have noticed that the smaller your cage is, the " +
                 "smaller your penis gets. So I will give you the choice. Do you still " +
                 "want your penis, or will you commit to a sissy clit. Choose, but choose " +
-                "wisely, becuase if you choose the clit, it will forever be a clit. ",
+                "wisely, because if you choose the clit, it will forever be a clit. ",
             button: [
                 { chatID: -1, text: "*Gulp*", callback: "c201_choice" }
             ]
