@@ -1304,7 +1304,7 @@ sc.modSecret = function (name, amount) {
                     sc.completeMission("eva", "fuck", sc.getMissionTask("eva", "fuck", 1).complete);
                     sc.completeMission("eva", "talk", sc.getMissionTask("eva", "talk", 1).complete);
 
-                    sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
+                    //sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
                     sc.completeMission("landlord", "man", sc.getMissionTask("landlord", "man", 8).complete);
                     sc.startMission("landlord", "spermbank");
 

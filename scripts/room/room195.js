@@ -208,7 +208,7 @@ room195.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "missy",
-            text: "Excellent. Now trying the wrong key takes energy. You can't keey guessing incorrectly. " +
+            text: "Excellent. Now trying the wrong key takes energy. You can't keep guessing incorrectly. " +
                 "Also you can't just sit there all day picking a lock. Someone is bound to get suspicious. " +
                 "You have to get in and get done quickly. Now you'll try one for real. Pay attention to " +
                 "the timer. Ready? ",
