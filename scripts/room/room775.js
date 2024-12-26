@@ -952,7 +952,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "priest",
-                text: "That is so sinful! Tell me about your experiance so I may absolve you from your sinful ways. ",
+                text: "That is so sinful! Tell me about your experience so I may absolve you from your sinful ways. ",
                 button: [
                     { chatID: 33, text: "...", callback: "" },
                 ]

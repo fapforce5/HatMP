@@ -98,14 +98,17 @@
 .char-lips{
     z-index:24;
 }
-.char-eyes{
+.char-eyeliner{
     z-index:25;
 }
-.char-hair{
+.char-eyes{
     z-index:26;
 }
-.char-accHead{
+.char-hair{
     z-index:27;
+}
+.char-accHead{
+    z-index:28;
 }
 
 .char-stats{

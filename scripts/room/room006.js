@@ -334,7 +334,7 @@ room6.btnclick = function (name) {
                     "so we had to pay off " + sc.n("cop2") + " to stop the case and give " + sc.n("missy") + " trouble. " +
                     "He arrested her for tresspass on the compound and threatened her with jail time if she didn't " +
                     "leave C.U.M. alone. She stopped visiting the compound, but is still activly pursuing the church. " +
-                    "Ubel tried a few differnt ways to get rid of her, all unsuccessful. Now that she's been captured " +
+                    "Ubel tried a few different ways to get rid of her, all unsuccessful. Now that she's been captured " +
                     "Ubel is either going to torture her to death, or make an example for all to see. Either way it's going " +
                     "to be brutal. "
                 break;

@@ -1,6 +1,8 @@
 ﻿//Room name
 var room55 = {};
 room55.main = function () {
+    let pussyPalaceOpen = sc.getMissionTask("tiffany", "friend", 5).complete;
+
     var btnList = [
         {
             "type": "btn",
@@ -13,7 +15,7 @@ room55.main = function () {
             "night": "55_hallway/bedroomNight.png"
         }
     ];
-    if (sc.tiffany().roomID === 54) {
+    if (sc.getTimeline("tiffany").roomID === 54) {
         btnList.push({
             "type": "btn",
             "name": "tif",
@@ -35,21 +37,10 @@ room55.main = function () {
             "image": "55_hallway/tif.png"
         });
     }
-    if (sc.candy().roomID === 53) {
+    if (!pussyPalaceOpen) {
         btnList.push({
             "type": "btn",
-            "name": "candy",
-            "left": 1199,
-            "top": 141,
-            "width": 136,
-            "height": 825,
-            "image": "55_hallway/candyOpen.png"
-        });
-    }
-    else {
-        btnList.push({
-            "type": "btn",
-            "name": "candy",
+            "name": "pussyPalaceClosed",
             "left": 1199,
             "top": 141,
             "width": 136,
@@ -57,7 +48,18 @@ room55.main = function () {
             "image": "55_hallway/candy.png"
         });
     }
-    if (sc.tiffany().roomID === 56 || sc.candy().roomID === 56) {
+    else {
+        btnList.push({
+            "type": "btn",
+            "name": "pussyPalace",
+            "left": 1199,
+            "top": 141,
+            "width": 136,
+            "height": 825,
+            "image": "55_hallway/candyOpen.png"
+        });
+    }
+    if (sc.getTimeline("tiffany") === 56) {
         btnList.push({
             "type": "btn",
             "name": "bathroom",
@@ -79,7 +81,10 @@ room55.main = function () {
             "image": "55_hallway/bathroomOpen.png"
         });
     }
-    var navList = [51, 52, 53, 54, 56];
+    var navList = [51, 52, 54, 56];
+    if (pussyPalaceOpen)
+        navList = [51, 52, 53, 54, 56];
+
     $.each(btnList, function (i, v) {
         nav.button(v, 55);
     });
@@ -91,14 +96,17 @@ room55.btnclick = function (name) {
         case "myroom":
             char.room(52);
             break;
-        case "candy":
-            char.room(53);
+        case "pussyPalace":
+            char.room(57);
             break;
         case "tif":
             char.room(54);
             break;
         case "bathroom":
             char.room(56);
+            break;
+        case "pussyPalaceClosed":
+            chat(0, 55);
             break;
         default:
             break;
@@ -118,10 +126,11 @@ room55.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "thinking",
+            text: "It would be rude to barge into this room when they're letting me " +
+                "stay here. ",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         }
     ];

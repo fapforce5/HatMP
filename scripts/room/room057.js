@@ -1,7 +1,7 @@
 ﻿//Room name
 var room57 = {};
 room57.main = function () {
-    if (sc.tiffany().thisRoom && sc.candy().thisRoom) {
+    if (sc.getTimeline("tiffany").thisRoom) {
         nav.bg("57_pussyPalace/fuckbg.jpg");
         nav.button({
             "type": "img",
@@ -35,7 +35,7 @@ room57.main = function () {
                 "image": "57_pussyPalace/bed.png"
             },
         ];
-        var navList = [51];
+        var navList = [55];
         $.each(btnList, function (i, v) {
             nav.button(v, 57);
         });

@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mystery</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./style/global.css" />
+    <link rel="stylesheet" type="text/css" href="./style/char.css" />
+
+    <script src="./scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+
+    <script src="./scripts/global.js" type="text/javascript"></script>
+    <script src="./scripts/gamevariables.js" type="text/javascript"></script>
+    <script src="./scripts/clothes.js" type="text/javascript"></script>
+    <script src="./scripts/clothes_zcl.js" type="text/javascript"></script>
+    <script src="./scripts/nav.js" type="text/javascript"></script>
+    <script src="./scripts/supportingChar.js" type="text/javascript"></script>
+    <script src="./scripts/sc_change.js" type="text/javascript"></script>
+    <script src="./scripts/inventory.js" type="text/javascript"></script>
+    <script src="./scripts/quest3.js" type="text/javascript"></script>
+    <script src="./scripts/chat.js" type="text/javascript"></script>
+    <script src="./scripts/missyHelper.js" type="text/javascript"></script>
+    <script src="./scripts/char.js" type="text/javascript"></script>
+    <script src="./scripts/map.js" type="text/javascript"></script>
+    <script src="./scripts/enemy.js" type="text/javascript"></script>
+    <script src="./scripts/enemyEnd.js" type="text/javascript"></script>
+    <script src="./scripts/trophy.js" type="text/javascript"></script>
+    <script src="./scripts/rape.js" type="text/javascript"></script>
+    <script src="./scripts/randomEvents.js" type="text/javascript"></script>
+    <script src="./scripts/rape.js" type="text/javascript"></script>
+    <script src="./scripts/rapeChar.js" type="text/javascript"></script>
+    <script src="./scripts/stats.js" type="text/javascript"></script>
+    <script src="./scripts/quickFight.js" type="text/javascript"></script>
+    <script src="./scripts/charisma.js" type="text/javascript"></script>
+    <script src="./scripts/gender.js" type="text/javascript"></script>
+    <script src="./scripts/phone.js" type="text/javascript"></script>
+    <script src="./scripts/lockpick.js" type="text/javascript"></script>
+
+    <script src="./scripts/room/room000.js" type="text/javascript"></script>
+    <script src="./scripts/room/room001.js" type="text/javascript"></script>
+    <script src="./scripts/room/room002.js" type="text/javascript"></script>
+    <script src="./scripts/room/room003.js" type="text/javascript"></script>
+    <script src="./scripts/room/room004.js" type="text/javascript"></script>
+    <script src="./scripts/room/room005.js" type="text/javascript"></script>
+    <script src="./scripts/room/room006.js" type="text/javascript"></script>
+    <script src="./scripts/room/room007.js" type="text/javascript"></script>
+    <script src="./scripts/room/room008.js" type="text/javascript"></script>
+    <script src="./scripts/room/room009.js" type="text/javascript"></script>
+    <script src="./scripts/room/room010.js" type="text/javascript"></script>
+    <script src="./scripts/room/room011.js" type="text/javascript"></script>
+    <script src="./scripts/room/room012.js" type="text/javascript"></script>
+    <script src="./scripts/room/room013.js" type="text/javascript"></script>
+    <script src="./scripts/room/room014.js" type="text/javascript"></script>
+    <script src="./scripts/room/room015.js" type="text/javascript"></script>
+    <script src="./scripts/room/room016.js" type="text/javascript"></script>
+    <script src="./scripts/room/room017.js" type="text/javascript"></script>
+    <script src="./scripts/room/room018.js" type="text/javascript"></script>
+    <script src="./scripts/room/room019.js" type="text/javascript"></script>
+    <script src="./scripts/room/room020.js" type="text/javascript"></script>
+    <script src="./scripts/room/room021.js" type="text/javascript"></script>
+    <script src="./scripts/room/room022.js" type="text/javascript"></script>
+    <script src="./scripts/room/room023.js" type="text/javascript"></script>
+    <script src="./scripts/room/room024.js" type="text/javascript"></script>
+    <script src="./scripts/room/room025.js" type="text/javascript"></script>
+    <script src="./scripts/room/room026.js" type="text/javascript"></script>
+    <script src="./scripts/room/room027.js" type="text/javascript"></script>
+    <script src="./scripts/room/room028.js" type="text/javascript"></script>
+    <script src="./scripts/room/room029.js" type="text/javascript"></script>
+    <script src="./scripts/room/room030.js" type="text/javascript"></script>
+    <script src="./scripts/room/room031.js" type="text/javascript"></script>
+    <script src="./scripts/room/room040.js" type="text/javascript"></script>
+    <script src="./scripts/room/room050.js" type="text/javascript"></script>
+    <script src="./scripts/room/room051.js" type="text/javascript"></script>
+    <script src="./scripts/room/room052.js" type="text/javascript"></script>
+    <script src="./scripts/room/room053.js" type="text/javascript"></script>
+    <script src="./scripts/room/room054.js" type="text/javascript"></script>
+    <script src="./scripts/room/room055.js" type="text/javascript"></script>
+    <script src="./scripts/room/room056.js" type="text/javascript"></script>
+    <script src="./scripts/room/room057.js" type="text/javascript"></script>
+    <script src="./scripts/room/room058.js" type="text/javascript"></script>
+    <script src="./scripts/room/room075.js" type="text/javascript"></script>
+    <script src="./scripts/room/room076.js" type="text/javascript"></script>
+    <script src="./scripts/room/room077.js" type="text/javascript"></script>
+    <script src="./scripts/room/room078.js" type="text/javascript"></script>
+    <script src="./scripts/room/room100.js" type="text/javascript"></script>
+    <script src="./scripts/room/room101.js" type="text/javascript"></script>
+    <script src="./scripts/room/room102.js" type="text/javascript"></script>
+    <script src="./scripts/room/room103.js" type="text/javascript"></script>
+    <script src="./scripts/room/room125.js" type="text/javascript"></script>
+    <script src="./scripts/room/room150.js" type="text/javascript"></script>
+    <script src="./scripts/room/room151.js" type="text/javascript"></script>
+    <script src="./scripts/room/room152.js" type="text/javascript"></script>
+    <script src="./scripts/room/room170.js" type="text/javascript"></script>
+    <script src="./scripts/room/room171.js" type="text/javascript"></script>
+    <script src="./scripts/room/room172.js" type="text/javascript"></script>
+    <script src="./scripts/room/room173.js" type="text/javascript"></script>
+    <script src="./scripts/room/room174.js" type="text/javascript"></script>
+    <script src="./scripts/room/room175.js" type="text/javascript"></script>
+    <script src="./scripts/room/room176.js" type="text/javascript"></script>
+    <script src="./scripts/room/room177.js" type="text/javascript"></script>
+    <script src="./scripts/room/room178.js" type="text/javascript"></script>
+    <script src="./scripts/room/room180.js" type="text/javascript"></script>
+    <script src="./scripts/room/room181.js" type="text/javascript"></script>
+    <script src="./scripts/room/room182.js" type="text/javascript"></script>
+    <script src="./scripts/room/room195.js" type="text/javascript"></script>
+    <script src="./scripts/room/room196.js" type="text/javascript"></script>
+    <script src="./scripts/room/room197.js" type="text/javascript"></script>
+    <script src="./scripts/room/room198.js" type="text/javascript"></script>
+    <script src="./scripts/room/room199.js" type="text/javascript"></script>
+    <script src="./scripts/room/room200.js" type="text/javascript"></script>
+    <script src="./scripts/room/room201.js" type="text/javascript"></script>
+    <script src="./scripts/room/room202.js" type="text/javascript"></script>
+    <script src="./scripts/room/room203.js" type="text/javascript"></script>
+    <script src="./scripts/room/room204.js" type="text/javascript"></script>
+    <script src="./scripts/room/room205.js" type="text/javascript"></script>
+    <script src="./scripts/room/room206.js" type="text/javascript"></script>
+    <script src="./scripts/room/room207.js" type="text/javascript"></script>
+    <script src="./scripts/room/room208.js" type="text/javascript"></script>
+    <script src="./scripts/room/room209.js" type="text/javascript"></script>
+    <script src="./scripts/room/room210.js" type="text/javascript"></script>
+    <script src="./scripts/room/room211.js" type="text/javascript"></script>
+    <script src="./scripts/room/room212.js" type="text/javascript"></script>
+    <script src="./scripts/room/room213.js" type="text/javascript"></script>
+    <script src="./scripts/room/room214.js" type="text/javascript"></script>
+    <script src="./scripts/room/room215.js" type="text/javascript"></script>
+    <script src="./scripts/room/room216.js" type="text/javascript"></script>
+    <script src="./scripts/room/room217.js" type="text/javascript"></script>
+    <script src="./scripts/room/room218.js" type="text/javascript"></script>
+    <script src="./scripts/room/room219.js" type="text/javascript"></script>
+    <script src="./scripts/room/room220.js" type="text/javascript"></script>
+    <script src="./scripts/room/room221.js" type="text/javascript"></script>
+    <script src="./scripts/room/room222.js" type="text/javascript"></script>
+    <script src="./scripts/room/room223.js" type="text/javascript"></script>
+    <script src="./scripts/room/room224.js" type="text/javascript"></script>
+    <script src="./scripts/room/room225.js" type="text/javascript"></script>
+    <script src="./scripts/room/room226.js" type="text/javascript"></script>
+    <script src="./scripts/room/room227.js" type="text/javascript"></script>
+    <script src="./scripts/room/room228.js" type="text/javascript"></script>
+    <script src="./scripts/room/room250.js" type="text/javascript"></script>
+    <script src="./scripts/room/room251.js" type="text/javascript"></script>
+    <script src="./scripts/room/room300.js" type="text/javascript"></script>
+    <script src="./scripts/room/room301.js" type="text/javascript"></script>
+    <script src="./scripts/room/room303.js" type="text/javascript"></script>
+    <script src="./scripts/room/room304.js" type="text/javascript"></script>
+    <script src="./scripts/room/room310.js" type="text/javascript"></script>
+    <script src="./scripts/room/room314.js" type="text/javascript"></script>
+    <script src="./scripts/room/room315.js" type="text/javascript"></script>
+    <script src="./scripts/room/room316.js" type="text/javascript"></script>
+    <script src="./scripts/room/room317.js" type="text/javascript"></script>
+    <script src="./scripts/room/room318.js" type="text/javascript"></script>
+    <script src="./scripts/room/room319.js" type="text/javascript"></script>
+    <script src="./scripts/room/room325.js" type="text/javascript"></script>
+    <script src="./scripts/room/room326.js" type="text/javascript"></script>
+    <script src="./scripts/room/room327.js" type="text/javascript"></script>
+    <script src="./scripts/room/room350.js" type="text/javascript"></script>
+    <script src="./scripts/room/room351.js" type="text/javascript"></script>
+    <script src="./scripts/room/room352.js" type="text/javascript"></script>
+    <script src="./scripts/room/room353.js" type="text/javascript"></script>
+    <script src="./scripts/room/room354.js" type="text/javascript"></script>
+    <script src="./scripts/room/room375.js" type="text/javascript"></script>
+    <script src="./scripts/room/room400.js" type="text/javascript"></script>
+    <script src="./scripts/room/room401.js" type="text/javascript"></script>
+    <script src="./scripts/room/room402.js" type="text/javascript"></script>
+    <script src="./scripts/room/room403.js" type="text/javascript"></script>
+    <script src="./scripts/room/room404.js" type="text/javascript"></script>
+    <script src="./scripts/room/room405.js" type="text/javascript"></script>
+    <script src="./scripts/room/room406.js" type="text/javascript"></script>
+    <script src="./scripts/room/room407.js" type="text/javascript"></script>
+    <script src="./scripts/room/room408.js" type="text/javascript"></script>
+    <script src="./scripts/room/room425.js" type="text/javascript"></script>
+    <script src="./scripts/room/room450.js" type="text/javascript"></script>
+    <script src="./scripts/room/room451.js" type="text/javascript"></script>
+    <script src="./scripts/room/room452.js" type="text/javascript"></script>
+    <script src="./scripts/room/room453.js" type="text/javascript"></script>
+    <script src="./scripts/room/room454.js" type="text/javascript"></script>
+    <script src="./scripts/room/room456.js" type="text/javascript"></script>
+    <script src="./scripts/room/room460.js" type="text/javascript"></script>
+    <script src="./scripts/room/room461.js" type="text/javascript"></script>
+    <script src="./scripts/room/room475.js" type="text/javascript"></script>
+    <script src="./scripts/room/room476.js" type="text/javascript"></script>
+    <script src="./scripts/room/room477.js" type="text/javascript"></script>
+    <script src="./scripts/room/room478.js" type="text/javascript"></script>
+    <script src="./scripts/room/room479.js" type="text/javascript"></script>
+    <script src="./scripts/room/room480.js" type="text/javascript"></script>
+    <script src="./scripts/room/room481.js" type="text/javascript"></script>
+    <script src="./scripts/room/room500.js" type="text/javascript"></script>
+    <script src="./scripts/room/room501.js" type="text/javascript"></script>
+    <script src="./scripts/room/room502.js" type="text/javascript"></script>
+    <script src="./scripts/room/room503.js" type="text/javascript"></script>
+    <script src="./scripts/room/room525.js" type="text/javascript"></script>
+    <script src="./scripts/room/room526.js" type="text/javascript"></script>
+    <script src="./scripts/room/room527.js" type="text/javascript"></script>
+    <script src="./scripts/room/room535.js" type="text/javascript"></script>
+    <script src="./scripts/room/room550.js" type="text/javascript"></script>
+    <script src="./scripts/room/room551.js" type="text/javascript"></script>
+    <script src="./scripts/room/room552.js" type="text/javascript"></script>
+    <script src="./scripts/room/room553.js" type="text/javascript"></script>
+    <script src="./scripts/room/room554.js" type="text/javascript"></script>
+    <script src="./scripts/room/room555.js" type="text/javascript"></script>
+    <script src="./scripts/room/room556.js" type="text/javascript"></script>
+    <script src="./scripts/room/room575.js" type="text/javascript"></script>
+    <script src="./scripts/room/room585.js" type="text/javascript"></script>
+    <script src="./scripts/room/room586.js" type="text/javascript"></script>
+    <script src="./scripts/room/room587.js" type="text/javascript"></script>
+    <script src="./scripts/room/room588.js" type="text/javascript"></script>
+    <script src="./scripts/room/room589.js" type="text/javascript"></script>
+    <script src="./scripts/room/room600.js" type="text/javascript"></script>
+    <script src="./scripts/room/room625.js" type="text/javascript"></script>
+    <script src="./scripts/room/room626.js" type="text/javascript"></script>
+    <script src="./scripts/room/room627.js" type="text/javascript"></script>
+    <script src="./scripts/room/room628.js" type="text/javascript"></script>
+    <script src="./scripts/room/room650.js" type="text/javascript"></script>
+    <script src="./scripts/room/room651.js" type="text/javascript"></script>
+    <script src="./scripts/room/room661.js" type="text/javascript"></script>
+    <script src="./scripts/room/room700.js" type="text/javascript"></script>
+    <script src="./scripts/room/room701.js" type="text/javascript"></script>
+    <script src="./scripts/room/room725.js" type="text/javascript"></script>
+    <script src="./scripts/room/room726.js" type="text/javascript"></script>
+    <script src="./scripts/room/room727.js" type="text/javascript"></script>
+    <script src="./scripts/room/room750.js" type="text/javascript"></script>
+    <script src="./scripts/room/room751.js" type="text/javascript"></script>
+    <script src="./scripts/room/room752.js" type="text/javascript"></script>
+    <script src="./scripts/room/room775.js" type="text/javascript"></script>
+    <script src="./scripts/room/room800.js" type="text/javascript"></script>
+
+    <script src="./scripts/room/room825.js" type="text/javascript"></script>
+    <script src="./scripts/room/room875.js" type="text/javascript"></script>
+    <script src="./scripts/room/room876.js" type="text/javascript"></script>
+    <script src="./scripts/room/room900.js" type="text/javascript"></script>
+    <script src="./scripts/room/room901.js" type="text/javascript"></script>
+    <script src="./scripts/room/room902.js" type="text/javascript"></script>
+    <script src="./scripts/room/room903.js" type="text/javascript"></script>
+    <script src="./scripts/room/room904.js" type="text/javascript"></script>
+    <script src="./scripts/room/room905.js" type="text/javascript"></script>
+    <script src="./scripts/room/room910.js" type="text/javascript"></script>
+    <script src="./scripts/room/room911.js" type="text/javascript"></script>
+    <script src="./scripts/room/room950.js" type="text/javascript"></script>
+    <script src="./scripts/room/room951.js" type="text/javascript"></script>
+    <script src="./scripts/room/room952.js" type="text/javascript"></script>
+    <script src="./scripts/room/room953.js" type="text/javascript"></script>
+    <script src="./scripts/room/room954.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="room-full">
+        <div id="room_export" style="display:none;">
+            <div style="color:#fff; font-size:1.2rem;">
+                Game export / import
+            </div>
+            <div id="room-export-text">
+                Below is the save game text. To export your game to use on another computer or browser or share your
+                save game copy the text below. Make sure you copy all of it, or the data will be lost. Also make sure
+                you don't add anything to it, or it will become corrupted and unusable. Once you have the text you can click
+                the phone, click the save icon, then the import button. Finally copy the text into the text box.
+            </div>
+            <div id="room-import-text">
+                To import a saved game paste the save game text into the box below then click the load button.
+            </div>
+            <textarea id="room_export_data" rows="10"></textarea>
+            <div class="room-export-buttons">
+                <button type="button" id="room_export_load">Load</button>
+                <button type="button" id="room_export_load_file">Load From File</button>
+                <button type="button" id="room_export_file">Export To File</button>
+                <button type="button" id="room_export_hide">Cancel / Close</button>
+            </div>
+        </div>
+        <div class="room-topper">
+
+
+        </div>
+        <div class="room-main">
+            <div id="room-numbers" class="room-numbers hide-start" style="position:absolute;">
+                <div class="char-clock-container">
+                    <span class="char-clock resize-text" id="char_clock_time" style="float:left;">00:00</span>
+                    <span class="char-clock-dow resize-text" id="char_clock_dow" style="float:right;"></span>
+                </div>
+            </div>
+            <div id="room-time" class="room-menu hide-start">
+                <img src="./images/inv/time.png" title="Pass Time" />
+            </div>
+            <div id="room-change" class="room-menu hide-start">
+                <img src="./images/inv/change.png" title="Change Clothes" />
+            </div>
+            <div id="room-inv" class="room-menu hide-start">
+                <img src="./images/inv/backpack.png" title="Inventory" />
+            </div>
+            <div id="room-menu" class="room-menu hide-start">
+                <img src="./images/inv/phone_basic.png" title="menu" />
+            </div>
+            <div id="room-background"></div>
+            <div id="room-buttons"></div>
+            <div id="room-menuButtons" style="display:none;"></div>
+            <div id="room-videoBox" style="position:absolute; top:0; left:0; background:#000; display:none; ">
+                <span id="room_closeVideo" class="room-close rom-event">X</span>
+                <div style="margin-left:auto; margin-right:auto;margin-top:100px;">
+                    <video id="room-video" controls="controls"></video>
+                </div>
+            </div>
+            <div id="room-animationStandby" style="position:absolute;  top:0; left:0"></div>
+            <div id="room-animationFront" style="position:absolute;  top:0; left:0"></div>
+        </div>
+        <div class="room-left">
+            <button class="rl-change" data-type="body">
+                <img src="./images/general/btnTits.jpg" title="Body" style="width:100%;" />
+            </button>
+            <button class="resize rl-change" data-type="map">
+                <img src="./images/general/btnMap.jpg" title="Map" style="width:100%;" />
+            </button>
+            <button class="resize rl-change" data-type="graph">
+                <img src="./images/general/btnGraph.jpg" title="Graph" style="width:100%;" />
+            </button>
+            <button class="resize rl-change" data-type="walk">
+                <img src="./images/general/btnHide.jpg" title="Walkthrough" style="width:100%;" />
+            </button>
+            <div id="room_left_char">
+                <div class="char-container">
+                    <div class="char-layer char-bg" id="char-bg"></div>
+                    <div class="char-layer char-legs" id="char-legs"></div>
+                    <div class="char-layer char-buttplug" id="char-buttplug"></div>
+                    <div class="char-layer char-chest" id="char-chest"></div>
+                    <div class="char-layer char-head" id="char-head"></div>
+                    <div class="char-layer char-cock" id="char-cock"></div>
+                    <div class="char-layer char-accBody" id="char-accBody"></div>
+                    <div class="char-layer char-bodyHair" id="char-bodyHair"></div>
+                    <div class="char-layer char-cum" id="char-cum"></div>
+                    <div class="char-layer char-necklace" id="char-necklace"></div>
+                    <div class="char-layer char-panties" id="char-panties"></div>
+                    <div class="char-layer char-bra" id="char-bra"></div>
+                    <div class="char-layer char-socks" id="char-socks"></div>
+                    <div class="char-layer char-shoes" id="char-shoes"></div>
+                    <div class="char-layer char-pants" id="char-pants"></div>
+                    <div class="char-layer char-shirt" id="char-shirt"></div>
+                    <div class="char-layer char-lips" id="char-lips"></div>
+                    <div class="char-layer char-eyeliner" id="char-eyeliner"></div>
+                    <div class="char-layer char-eyes" id="char-eyes"></div>
+                    <div class="char-layer char-hair" id="char-hair"></div>
+                    <div class="char-layer char-accHead" id="char-accHead"></div>
+                </div>
+                <div class="char-divider"></div>
+                <button class="char-modBtn" data-t="f">
+                    <img src="./images/general/b1.png" title="Front" />
+                </button><button class="char-modBtn" data-t="b">
+                    <img src="./images/general/b2.png" title="Back" />
+                </button><button class="char-modBtn" data-t="p">
+                    <img src="./images/general/b3.png" title="Bladder" />
+                </button><button class="char-modBtn" data-t="a">
+                    <img src="./images/general/b4.png" title="Sissy Pussy" />
+                </button>
+                <div class="char-divider"></div>
+                <div class="char-statDisplay" id="char_cockDisplay"></div>
+                <div class="char-divider"></div>
+                <div class="char-stats" style="display:none;">
+                    <label id="char-arousal-label">Arousal</label>
+                    <div class="asset-container-outer">
+                        <div class="asset-container-inner asset-container-pink" id="char-arousal"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="room_left_map" class="left-menu">
+            </div>
+            <div id="room_left_walk" class="left-menu">
+                <div id="room_left_walk_sub" class="resize"></div>
+            </div>
+            <div id="room_left_graph" class="left-menu">
+                <div style="padding:5px; color: #fff; text-align:center;" class="glob-bg">
+                    <div class="char-charDisplay mt-50x" id="char_charDisplay"></div>
+                    <div style="font-size:12px;" class="char-20 mb-10" id="rl_appearance">Boy</div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_cash.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:10%">
+                            <div class="char-20 bold" style="text-align:left; margin-top:5%;" id="char_money">$0</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_energy.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold" style="text-align:left;">Energy</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="energy"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="energy" style="background: #20C000; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_xdress.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="xdress" style="text-align:left">Sissyness</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="xdress"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="xdress" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_hormone.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold" style="text-align:left;">Hormones</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="hormone"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position: absolute; bottom: 1%; left: 0; background: #4E99E0;">
+                            <div data-name="hormone" style="background: #ff5ed1; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_fitness.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold" style="text-align:left">Fitness</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="fitness"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="fitness" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_strength.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="strength" style="text-align:left">Strength</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="strength"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="strength" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_charisma.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="charisma" style="text-align:left">Charisma</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="charisma"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="charisma" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_makeup.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="makeup" style="text-align:left">Makeup</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="makeup"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="makeup" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_fame.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="fame" style="text-align:left">Fame</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="fame"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="fame" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div style="font-size:20px;" class="char-20 mt-50x">Missy</div>
+
+                    <div id="missy_mood">Mood: Happy! (Emoji)</div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_cash.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:10%">
+                            <div class="char-20 bold" style="text-align:left; margin-top:5%;" id="char_money">Pay: $0</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_pi.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="pi" style="text-align:left">Invistigation</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="pi"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="pi" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_sub.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="sub" style="text-align:left">Submissiveness</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="sub"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="sub" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_dom.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="dom" style="text-align:left">Dominance</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="dom"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="dom" style="background: #a976e9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_bj.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="oral" style="text-align:left">Oral</div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="oral"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="oral" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_anal.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="anal" style="text-align:left">Anal</div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="anal"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="anal" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_cum.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="cum" style="text-align:left">Cum</div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="cum"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="cum" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_pee.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="piss" style="text-align:left">Watersports</div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="piss"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="piss" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_knot.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="beast" style="text-align:left">Knotty</div>
+                            <div style="font-size:12px" class="char-20 rl-level light-grey" data-name="beast"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="beast" style="background: #cf25c9; border-radius: 20px " class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_cheer.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="cheer" style="text-align:left">Cheerleader</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="cheer"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="cheer" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative;">
+                        <img src="./images/general/stat_strip.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="stripper" style="text-align:left">Stripper</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="stripper"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="stripper" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="menu-box" style="position:relative; margin-bottom:150px;">
+                        <img src="./images/general/stat_whore.png" class="menu-box-img" style="position:absolute; left:0; top: 0;" />
+                        <div style="margin-left:26%; position:absolute; margin-top:7%">
+                            <div class="char-20 bold rl-levelheader" data-name="whore" style="text-align:left">Whore</div>
+                            <div style="font-size: 12px; text-align: left;" class="char-20 rl-level light-grey" data-name="whore"></div>
+                        </div>
+                        <div class="left-graph-char-bar resize-height" style="position:absolute; bottom:1%; left:0;">
+                            <div data-name="whore" style="background: #cf25c9; border-radius: 20px" class="resize-height rl-bar"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="room-footer" id="room_footer"></div>
+
+    <div class="room-chatOverlay" id="room_chatOverlay" style="display:none;">
+        <div class="room-chatBox">
+            <div class="room-speachGroup">
+                <div class="room-chatSpeaker" id="room_chatSpeaker"></div>
+                <div class="room-chatSpeach" id="room_footerSpeach"></div>
+            </div>
+            <button type="button" class="room-chatBtn room-chatBtnClick" id="room_chatBtn0" data-chatid="" data-roomid=""></button><button type="button" class="room-chatBtn room-chatBtnClick" id="room_chatBtn1" data-chatid="" data-roomid=""></button><button type="button" class="room-chatBtn room-chatBtnClick" id="room_chatBtn2" data-chatid="" data-roomid=""></button><button type="button" class="room-chatBtn room-chatBtnClick" id="room_chatBtn3" data-chatid="" data-roomid=""></button><button type="button" class="room-chatBtn room-chatBtnClick" id="room_chatBtn4" data-chatid="" data-roomid=""></button>
+        </div>
+    </div>
+    <div class="menu-parent" id="menu_parent">
+        <div class="menu-menu">
+            <div class="menu-tab" data-menu="save" data-child="menu-tab-save">Saves</div>
+            <div class="menu-tab" data-menu="pref">Help and Support</div>
+            <div class="menu-tab" data-menu="admin">Admin Menu</div>
+            <div class="menu-close"><img src="./images/general/close.png" /></div>
+            <div id="menu-tab-todo" class="menu-blockDisplay">
+                <div class="menu-list" id="menu_list"></div>
+            </div>
+            <div id="menu-tab-admin" class="menu-blockDisplay">
+                <div class="menu-list">
+                    <button type="button" class="admin-mod" data-type="money">+$1000</button> Add Money<br />
+                    <button type="button" class="admin-mod" data-type="horneyp">+</button> Horney <button type="button" class="admin-mod" data-type="horneyd">-</button><br />
+                    <button type="button" class="admin-mod" data-type="energyp">+</button> Energy <button type="button" class="admin-mod" data-type="energyd">-</button><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="char-alert" id="char_alert"> </div>
+    <div class="char-alert-bottom" id="char_alert_bottom"> </div>
+</body>
+</html>

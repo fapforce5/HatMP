@@ -894,7 +894,7 @@ room251.chat = function (chatID) {
             speaker: "jeffery",
             text: "Maybe I will. You'll have to get me the panties to find out. ",
             button: [
-                { chatID: 59, text: "Ok. I'll get the panties you werid-o ", callback: "j5" }
+                { chatID: 59, text: "Ok. I'll get the panties you weird-o ", callback: "j5" }
             ]
         },
         {

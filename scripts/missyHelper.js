@@ -254,13 +254,13 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_bimbopanties":
-                        if (levels.get("pi").l > 3) {
+                        if (levels.get("pi").l > 4) {
                             canDoCase = inv.has("lockpick");
                             caseList.push({
                                 caseId: i,
                                 active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level and get the lock pick class. ",
+                                notReadyTxt: "Work everyday till Missy decides you're worthy of the lock picking class. ",
                                 callback: missy.cases[i].name
                             });
                         }

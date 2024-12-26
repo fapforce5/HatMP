@@ -23,7 +23,16 @@ room51.main = function () {
             "height": 437,
             "image": "51_livingRoom/hallway.png"
         }];
-        if (sc.tiffany().roomID === 57 || sc.candy().roomID === 57) {
+        if (sc.getTimeline("tiffany").roomID) {
+            //btnList.push({
+            //    "type": "btn",
+            //    "name": "reddooropen",
+            //    "left": 1664,
+            //    "top": 214,
+            //    "width": 250,
+            //    "height": 603,
+            //    "image": "51_livingRoom/reddooropen.png"
+            //});
             btnList.push({
                 "type": "btn",
                 "name": "reddooropen",
@@ -31,20 +40,29 @@ room51.main = function () {
                 "top": 214,
                 "width": 250,
                 "height": 603,
-                "image": "51_livingRoom/reddooropen.png"
+                "image": "51_livingRoom/reddoor.png"
             });
             navList.push(57);
         }
         else {
             btnList.push({
                 "type": "btn",
-                "name": "reddoor",
+                "name": "reddooropen",
                 "left": 1664,
                 "top": 214,
                 "width": 250,
                 "height": 603,
                 "image": "51_livingRoom/reddoor.png"
             });
+            //btnList.push({
+            //    "type": "btn",
+            //    "name": "reddoor",
+            //    "left": 1664,
+            //    "top": 214,
+            //    "width": 250,
+            //    "height": 603,
+            //    "image": "51_livingRoom/reddoor.png"
+            //});
         }
         $.each(btnList, function (i, v) {
             nav.button(v, 51);
@@ -75,7 +93,7 @@ room51.btnclick = function (name) {
                 chat(49, 51);
             break;
         case "reddooropen":
-            char.room(57);
+            char.room(53);
             break;
         case "t19":
             chat(30, 51);
@@ -249,23 +267,6 @@ room51.chatcatch = function (callback) {
         case "t29":
 
             cl.display();
-            //for (i = 0; i < cl.list.length; i++) {
-            //    if (cl.list[i].sex === "m")
-            //        cl.list[i].inv = false;
-            //}
-            //cl.saveOutfit = [
-            //    { name: "Outfit 1", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Outfit 2", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Outfit 3", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Outfit 4", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, accessories: new Array(), isReg: true },
-            //    { name: "Sleep", shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: "gown", accessories: new Array(), isReg: false }
-            //];
-            //sc.setstep("tiffany", 16);
-            //sc.setstep("candy", 100);
-            //sc.revokeStep("tiffany", -1);
-            //sc.revokeStep("tiffany", -9);
-            //g.sissy[29].ach = true;
-            //gv.set("oncase", null);
             sc.completeMissionTask("tiffany", "friend", 3, true);
             sc.show("candy");
             sc.startMission("candy", "cuck");

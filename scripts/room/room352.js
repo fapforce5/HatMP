@@ -1,112 +1,66 @@
 ﻿//Room name
 var room352 = {};
 room352.main = function () {
-    if (g.pass === "follow352Chastity") {
-        g.pass = "";
-        nav.button({
-            "type": "img",
-            "name": "ll",
-            "left": 622,
-            "top": 23,
-            "width": 508,
-            "height": 1057,
-            "image": "352_jackoff/m.png"
-        }, 352);
-        nav.bg("352_jackoff/waitroom.jpg");
-        chat(31, 352);
+    //if (sc.getMissionTask("landlord", "spermbank", 2).notStarted) {
+    //    g.pass = "";
+    //    nav.button({
+    //        "type": "img",
+    //        "name": "ll",
+    //        "left": 622,
+    //        "top": 23,
+    //        "width": 508,
+    //        "height": 1057,
+    //        "image": "352_jackoff/m.png"
+    //    }, 352);
+    //    nav.bg("352_jackoff/waitroom.jpg");
+    //    chat(31, 352);
+    //}
+    //else {
+
+
+
+    let howMany = g.rand(2, 7);
+
+    let i, s, t, q, r;
+    
+    g.internal = {
+        success: 0,
+        fail: 0,
+        events: new Array()
+    };
+
+    howMany = 1;
+    for (i = 0; i < howMany; i++) {
+        q = Math.floor(Math.random() * 9);
+        let s = 1;
+        if (q < 4)
+            s = 2;
+        else if (q < 5)
+            s = 3;
+        else if (q < 7)
+            s = 4;
+        else 
+            s = 5;
+
+        r = Math.floor(Math.random() * 3);
+        if (r === 0) t = "boob";
+        else if (r === 1) t = "butt";
+        else t = "mouth";
+
+        g.internal.events.push({ t: t, s: s, c: Math.floor(Math.random() * 2), x: null });
     }
-    else {
-        g.pass = {
-            shirt: cl.c.shirt,
-            pants: cl.c.pants,
-            dress: cl.c.dress,
-            swimsuit: cl.c.swimsuit,
-            pj: cl.c.pj,
-            socks: cl.c.socks,
-            shoes: cl.c.shoes
-        };
-        cl.c.shirt = cl.c.pants = cl.c.swimsuit = cl.c.pj = null;
+
+    if (sc.getMissionTask("landlord", "spermbank", 2).complete) {
+        cl.nude();
+        cl.c.panties = cl.cTemp.panties;
+        cl.c.bra = cl.cTemp.bra;
         cl.c.dress = "nu";
         cl.c.socks = "s";
         cl.c.shoes = "nu";
         cl.display();
-        if (!sc.getEvent("landlord", -8)) {
-            sc.setstep("landlord", -8);
-            nav.button({
-                "type": "btn",
-                "name": "ll",
-                "left": 622,
-                "top": 23,
-                "width": 508,
-                "height": 1057,
-                "image": "352_jackoff/m.png"
-            }, 352);
-            zcl.displayMain(80, 750, .20, "panties shirt pants socks shoes bra", true);
-            chat(0, 352);
-            g.internal = {
-                success: 0,
-                fail: 0,
-                events: [
-                    { t: "boob", s: 1, c: 0, x: null },
-                    { t: "butt", s: 0, c: 1, x: null },
-                ]
-            };
-        }
-        else {
-            var howMany = Math.floor(Math.random() * 9);
-            var i, s, t, q, r, howmanyReally;
-            switch (howMany) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    howmanyReally = 1;
-                    break;
-                case 4:
-                case 5:
-                case 6:
-                    howmanyReally = 2;
-                    break;
-                case 7:
-                case 8:
-                    howmanyReally = 3;
-                    break;
-                default:
-                    howmanyReally = 4;
-                    break;
-            }
-
-            g.internal = {
-                success: 0,
-                fail: 0,
-                events: new Array()
-            };
-
-            for (i = 0; i < howmanyReally; i++) {
-                s = Math.floor(Math.random() * 3);
-                q = Math.floor(Math.random() * 9);
-                if (q < 2)
-                    s = 1;
-                else if (q < 4)
-                    s = 2;
-                else if (q < 7)
-                    s = 3;
-                else if (q < 8)
-                    s = 4;
-                else
-                    s = 5;
-
-                r = Math.floor(Math.random() * 3);
-                if (r === 0) t = "boob";
-                else if (r === 1) t = "butt";
-                else t = "mouth";
-
-                g.internal.events.push({ t: t, s: s, c: Math.floor(Math.random() * 2), x: null });
-                nav.bg("352_jackoff/waitroom.jpg");
-                chat(4, 352);
-            }
-        }
     }
+    nav.bg("352_jackoff/waitroom_x.jpg");
+    chat(4, 352);
 };
 
 room352.btnclick = function (name) {
@@ -134,22 +88,12 @@ room352.chatcatch = function (callback) {
     switch (callback) {
         case "waitroom":
             if (g.internal.events.length === 0) {
-                nav.killall();
-                nav.bg("352_jackoff/waitroom.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "ll",
-                    "left": 622,
-                    "top": 23,
-                    "width": 508,
-                    "height": 1057,
-                    "image": "352_jackoff/m.png"
-                }, 352);
+                nav.bg("352_jackoff/daycomplete.jpg")
                 chat(24, 352);
             }
             else {
                 nav.killall();
-                nav.bg("352_jackoff/waitroom.jpg");
+                nav.bg("352_jackoff/waitroom_x.jpg");
                 chat(4, 352);
             }
             break;
@@ -185,10 +129,24 @@ room352.chatcatch = function (callback) {
 
             break;
         case "showTittes":
-            //zcl.displayMain(-500, 100, .40, "panties socks shoes", false);
+            var mybewbs
             if (cl.c.chest >= g.internal.events[0].s) {
                 nav.killbutton("donor");
-                zcl.kneel(-1000, -1000, 1.6, "", true);
+                zcl.kill();
+                mybewbs = "breast_0.png";
+                if (cl.c.chest > 4)
+                    mybewbs = "breast_2.png";
+                else if (cl.c.chest > 2)
+                    mybewbs = "breast_1.png";
+                nav.button({
+                    "type": "zbtn",
+                    "name": "mybewbs",
+                    "left": 6,
+                    "top": 0,
+                    "width": 1018,
+                    "height": 1080,
+                    "image": "352_jackoff/" + mybewbs
+                }, 352);
                 if (g.internal.events[0].c === 0) {
                     nav.button({
                         "type": "zbtn",
@@ -211,29 +169,44 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
-                gv.mod("money", 20);
-                gv.mod("phum", 1);
-                gv.mod("giveHandjobMale", 1);
+                levels.handGive("m");
                 chat(13, 352);
             }
             else {
+                zcl.kill();
+                mybewbs = "breast_0.png";
+                if (cl.c.chest > 4)
+                    mybewbs = "breast_2.png";
+                else if (cl.c.chest > 2)
+                    mybewbs = "breast_1.png";
+                nav.button({
+                    "type": "zbtn",
+                    "name": "mybewbs",
+                    "left": 6,
+                    "top": 0,
+                    "width": 1018,
+                    "height": 1080,
+                    "image": "352_jackoff/" + mybewbs
+                }, 352);
                 chat(12, 352);
             }
             break;
         case "showass":
+            zcl.kill();
             nav.button({
                 "type": "zbtn",
-                "name": "mybutt",
+                "name": "mybewbs",
                 "left": 0,
                 "top": 0,
-                "width": 1141,
+                "width": 1162,
                 "height": 1080,
-                "image": "352_jackoff/butt.png"
+                "image": (cl.c.chastity === null ? "352_jackoff/butt.png" : "352_jackoff/butt_c.png")
             }, 352);
 
             if (cl.c.leg >= g.internal.events[0].s) {
                 nav.killbutton("donor");
-                zcl.kill();
+                //zcl.kill();
+                //nav.killbutton("mybewbs");
                 //zcl.kneel(-1000, -1000, 1.6, "", true);
                 if (g.internal.events[0].c === 0) {
                     nav.button({
@@ -257,9 +230,7 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
-                gv.mod("money", 20);
-                gv.mod("phum", 10);
-                gv.mod("giveHandjobMale", 1);
+                levels.handGive("m");
                 chat(20, 352);
             }
             else {
@@ -267,16 +238,14 @@ room352.chatcatch = function (callback) {
             }
             break;
         case "getLandlord":
-            zcl.kill();
-            nav.button({
-                "type": "btn",
-                "name": "ll",
-                "left": 622,
-                "top": 23,
-                "width": 508,
-                "height": 1057,
-                "image": "352_jackoff/m.png"
-            }, 352);
+            if (g.rand(0, 2) === 0) {
+                nav.bg("352_jackoff/help0.jpg");
+                chat(37, 352);
+            }
+            else {
+                nav.bg("352_jackoff/help1.jpg");
+                chat(7, 352);
+            }
             break;
         case "breakroomFail":
             g.internal.fail++;
@@ -285,16 +254,10 @@ room352.chatcatch = function (callback) {
             room352.chatcatch("waitroom");
             break;
         case "endRotation":
-
-            cl.c.shirt = g.pass.shirt;
-            cl.c.pants = g.pass.pants;
-            cl.c.dress = g.pass.dress;
-            cl.c.swimsuit = g.pass.swimsuit;
-            cl.c.pj = g.pass.pj;
-            cl.c.socks = g.pass.socks;
-            cl.c.shoes = g.pass.shoes;
-            cl.display();
-            char.room(0);
+            
+            levels.mod("fame", 15);
+            g.pass = "endRotation354";
+            char.room(354);
             break;
         case "jackit":
             nav.killbutton("donor");
@@ -349,7 +312,7 @@ room352.chatcatch = function (callback) {
             break;
         case "jackit2":
             nav.killbutton("donor");
-            zcl.kill();
+            nav.killbutton("mybewbs");
             if (g.internal.events[0].c === 0) {
                 nav.button({
                     "type": "zbtn",
@@ -383,7 +346,7 @@ room352.chatcatch = function (callback) {
             }, 352);
             break;
         case "jackit2ass":
-            nav.killbutton("mybutt");
+            nav.killbutton("mybewbs");
             room352.chatcatch("jackit2");
             break;
         case "jackit3":
@@ -400,45 +363,26 @@ room352.chatcatch = function (callback) {
         case "complete0":
             var thisSuccess = g.internal.success;
             var thisFail = g.internal.fail;
-            var llStepComplete = sc.getstep("landlord");
-            g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 17, 0, 0, 0);
-            if (llStepComplete < 15) {
-                llStepComplete += thisSuccess;
-                if (llStepComplete >= 15) {
-                    sc.setstep("landlord", 15);
-                    chat(30, 352);
-                }
-                else {
-                    sc.setstep("landlord", llStepComplete);
-                    if (thisSuccess === 0 && thisFail === 0)
-                        g.internal = "Sorry, it seems no one needed your help today. Don't worry honey if you keep working they'll cum.";
-                    else if (thisSuccess === 0)
-                        g.internal = "If you want to work your way back into my house you'll have to work harder to earn my trust.";
-                    else if (thisFail === 0)
-                        g.internal = "You did so good today honey! If you keep this up you may just work your way back into my home.";
-                    else
-                        g.internal = "";
 
-                    chat(999, 352);
-                }
-            }
-            else {
-                if (thisSuccess === 0 && thisFail === 0)
-                    g.internal = "Sorry, it seems no one needed your help today. Don't worry honey if you keep working they'll cum.";
-                else if (thisSuccess === 0)
-                    g.internal = "If you want to be a proper girl you need to work on being prettier.  ";
-                else if (thisFail === 0)
-                    g.internal = "You did so good today honey! You're such a pretty little girl!";
-                else
-                    g.internal = "I suppose you did fine. Just keep working harder and you'll be a sexy as your " + sc.n("landlord") + ".";
-                chat(999, 352);
-            }
-            
+            g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 17, 0, 0, 0);
+
+            gv.mod("money", thisSuccess * 10);
+
+            if (thisSuccess === 0 && thisFail === 0)
+                g.internal = "Sorry, it seems no one needed your help today. Don't worry honey if you keep working they'll cum. Now go change.";
+            else if (thisSuccess === 0)
+                g.internal = "If you want to be a proper girl you need to work on being prettier. Now go change.";
+            else if (thisFail === 0)
+                g.internal = "You did so good today honey! You're such a pretty little girl! Now go change.";
+            else
+                g.internal = "I suppose you did fine. Just keep working harder and you'll be a sexy little girl. Now go change.";
+            chat(999, 352);
+
+
             break;
         case "l1":
             nav.killall();
-            gv.mod("money", 20);
-            gv.mod("giveOralMale", 1);
+            levels.oralGive(4, null, false, "m");
             nav.bg(g.internal.events[0].c === 0 ? "352_jackoff/wl1.jpg" : "352_jackoff/bl1.jpg");
             break;
         case "l2":
@@ -487,6 +431,11 @@ room352.chatcatch = function (callback) {
 };
 
 room352.chat = function (chatID) {
+    let s = "random";
+    if (g.internal.length > 0) {
+        if (g.internal[0].c != undefined)
+            s = g.internal[0].c === 0 ? "!bwc" : "!bbc";
+    }
     if (chatID === 999) {
         return {
             chatID: 26,
@@ -553,7 +502,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 6,
-                speaker: "random",
+                speaker: s,
                 text: "Hey nurse! I need some help. Could you show me your titties while I do this?",
                 button: [
                     { chatID: -1, text: "Sure!", callback: "showTittes" },
@@ -563,7 +512,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "landlord",
-                text: "Don't worry honey, It's not your fault you're not pretty enough. I'll take care of this. Now run along.",
+                text: "Don't worry honey, It's not your fault you're not pretty enough. I'll take care of this. Now go change.",
                 button: [
                     { chatID: -1, text: "Go back to the break room ", callback: "breakroomFail" },
                 ]
@@ -571,7 +520,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "landlord",
-                text: "I looks like everyone was able to jack themselves off today. Maybe next time honey.",
+                text: "I looks like everyone was able to jack themselves off today. Now go change.",
                 button: [
                     { chatID: -1, text: "[Leave]", callback: "endRotation" },
                 ]
@@ -579,8 +528,8 @@ room352.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "landlord",
-                text: "Awwww baby, you did so well today! I always knew deep down you were just a slutty girl, just like your " +
-                    sc.n("landlord") + ".",
+                text: "Awwww baby, you did so well today! I always knew deep down you were just a slutty girl. " +
+                    "Now go change.",
                 button: [
                     { chatID: -1, text: "[Leave]", callback: "endRotation" },
                 ]
@@ -588,7 +537,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 10,
                 speaker: "landlord",
-                text: "Today was not your day. If you keep working on yourself I know you'll be pretty someday, you're just not pretty yet.",
+                text: "Today was not your day. If you keep working on yourself I know you'll be pretty someday, you're just not pretty yet. Now go change",
                 button: [
                     { chatID: -1, text: "[Leave]", callback: "endRotation" },
                 ]
@@ -596,14 +545,14 @@ room352.chat = function (chatID) {
             {
                 chatID: 11,
                 speaker: "landlord",
-                text: "I suppose you did fine honey. Just keep working at it and you'll be pretty enough. ",
+                text: "I suppose you did fine honey. Just keep working at it and you'll be pretty enough. Now go change. ",
                 button: [
                     { chatID: -1, text: "[Leave]", callback: "endRotation" },
                 ]
             },
             {
                 chatID: 12,
-                speaker: "random",
+                speaker: s,
                 text: "Oh, I like a bigger chest, those really aren't for me. Can you call in someone else?",
                 button: [
                     { chatID: 7, text: "Awww, ok I'll call in the other nurse. ", callback: "getLandlord" },
@@ -611,7 +560,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 13,
-                speaker: "random",
+                speaker: s,
                 text: "Oh wow! Those are perfect! I can definitely jack it to those!",
                 button: [
                     { chatID: 14, text: "...", callback: "jackit" },
@@ -619,7 +568,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 14,
-                speaker: "random",
+                speaker: s,
                 text: "Oh fuck I'm going to make a huge donation!!!!",
                 button: [
                     { chatID: 15, text: "...", callback: "jackit1" },
@@ -627,7 +576,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 15,
-                speaker: "random",
+                speaker: s,
                 text: "Ohhh YEAAAAAAAAAA",
                 button: [
                     { chatID: 16, text: "...", callback: "jackit2" },
@@ -651,7 +600,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 18,
-                speaker: "random",
+                speaker: s,
                 text: "Hey nurse! I need some help. Could you show me that ass while I do this?",
                 button: [
                     { chatID: -1, text: "Sure!", callback: "showass" },
@@ -660,7 +609,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 19,
-                speaker: "random",
+                speaker: s,
                 text: "Oh, I like a big phat ass. Can you get me a nurse with an ass?",
                 button: [
                     { chatID: 7, text: "Awww, ok I'll call in the other nurse. ", callback: "getLandlord" },
@@ -668,7 +617,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 20,
-                speaker: "random",
+                speaker: s,
                 text: "Now that a nice ass! It's making my cock hard baby!",
                 button: [
                     { chatID: 21, text: "...", callback: "jackit" },
@@ -676,7 +625,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 21,
-                speaker: "random",
+                speaker: s,
                 text: "Oh fuck I'm going to make a huge donation!!!!",
                 button: [
                     { chatID: 22, text: "...", callback: "jackit1" },
@@ -684,7 +633,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 22,
-                speaker: "random",
+                speaker: s,
                 text: "Ohhh YEAAAAAAAAAA",
                 button: [
                     { chatID: 23, text: "...", callback: "jackit2ass" },
@@ -708,7 +657,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 25,
-                speaker: "random",
+                speaker: s,
                 text: "Hey I can't seem to get hard. Could you help me with this so I can make my donation?",
                 button: [
                     { chatID: 26, text: "Sure. I can try licking it.", callback: "l1" },
@@ -717,7 +666,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 26,
-                speaker: "random",
+                speaker: s,
                 text: "Oh yeah. Keep going",
                 button: [
                     { chatID: 27, text: "*Slurp", callback: "l2" },
@@ -725,7 +674,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 27,
-                speaker: "random",
+                speaker: s,
                 text: "ohhhh yeah",
                 button: [
                     { chatID: 28, text: "*Lick", callback: "l3" },
@@ -733,7 +682,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 28,
-                speaker: "random",
+                speaker: s,
                 text: "You're getting me hard!",
                 button: [
                     { chatID: 29, text: "mmMMmMMmMMMMmmmmmm", callback: "l4" },
@@ -741,7 +690,7 @@ room352.chat = function (chatID) {
             },
             {
                 chatID: 29,
-                speaker: "random",
+                speaker: s,
                 text: "I got it from here sexy.",
                 button: [
                     { chatID: 14, text: "**slurp", callback: "l5" },
@@ -805,6 +754,14 @@ room352.chat = function (chatID) {
                 text: "Ok honey. You're room is just the way you left it. Feel free to come by anytime sweety.",
                 button: [
                     { chatID: -1, text: "Thank you " + sc.n("landlord") + ". See you at home!", callback: "backin" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "!madison",
+                text: "I got it from here darlin' I know what he likes. ",
+                button: [
+                    { chatID: -1, text: "Thanks! ", callback: "breakroomFail" },
                 ]
             },
         ];

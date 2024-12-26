@@ -426,13 +426,6 @@ room502.chatcatch = function (callback) {
             sc.setstep("zoey", 19);
             char.room(502);
             break;
-        case "wakeEnd1":
-            sc.setstep("zoey", 23);
-            sc.setstep("tiffany", 13);
-            sc.events[sc.getEventIndex("zoey", -1)].ach = false;
-            daily.set("zoey");
-            char.room(502);
-            break;
         case "single2":
             nav.bg("502_bedroom/single2.jpg");
             break;

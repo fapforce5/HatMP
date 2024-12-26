@@ -1157,7 +1157,7 @@ room26.chat = function (chatID) {
             text: "Oh my... Yes! But not how you think. I like a thick penis, but it needs to be 8 inches (20 cm) or " +    
                 "shorter or it hits my cervix. I had a real bull of a man with the longest penis you've ever seen and he just " +
                 "kept hitting me hard. Worst sex ever. I suppose since you don't have a cervix longer is fine, but you just " +
-                "have to experiance many differnt penises to find what you like. ",
+                "have to experience many different penises to find what you like. ",
             button: [
                 { chatID: 72, text: "I have more questions", callback: "" },
                 { chatID: 76, text: "Nothing", callback: "" }

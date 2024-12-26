@@ -459,6 +459,7 @@ cl.where = function (type, name) {
         if (cl.list[i].type === type && cl.list[i].name === name)
             retList = i;
     }
+    
     return retList;
 };
 
@@ -762,6 +763,15 @@ cl.hairStyle = ["straight", "wavy", "pig", "bang", "leia", "bun"];
 
 cl.makeup = [
     { name: "n", image: "body_head.png" },
+    { name: "natural", image: "head_natural.png" },
+    { name: "white", image: "head_white.png" },
+    { name: "orange", image: "head_orange.png" },
+    { name: "clown", image: "head_clown.png" },
+    { name: "blush", image: "head_blush.png" },
+    { name: "blushheavy", image: "head_blushheavy.png" },
+    { name: "brown", image: "head_brown.png" },
+    
+
     { name: "light", image: "body_head_med_black.png" },
     { name: "lb", image: "body_head_light_black.png" },
     { name: "lp", image: "body_head_light_purple.png" },
@@ -871,32 +881,44 @@ cl.getmakeup = function () {
 
 cl.getMakeupWeight = function () {
     var retValue = 0;
-    if (cl.c.makeup === null) {
-        retValue = 0;
-    }
-    else if (cl.c.makeup === "n") {
-        retValue = 0;
-    }
-    else if (cl.c.makeup === "light") {
-        retValue = 1;
-    }
-    else {
-        switch (cl.c.makeup[0]) {
-            case "l":
-                retValue = 1;
-                break;
-            case "m":
-                retValue = 2;
-                break;
-            case "h":
-            case "r":
-                retValue = 3;
-                break;
-            default:
-                retValue = 0;
-        }
-    }
+     if (cl.c.makeup === "natural")
+        retValue += 1;
+    else if (cl.c.makeup !== "n")
+        retValue += 2;
+
+    if (cl.c.lipstick !== null)
+        retValue++;
+
+    if (cl.c.pissface !== null)
+        retValue++;
     return retValue;
+
+    //if (cl.c.makeup === null) {
+    //    retValue = 0;
+    //}
+    //else if (cl.c.makeup === "n") {
+    //    retValue = 0;
+    //}
+    //else if (cl.c.makeup === "light") {
+    //    retValue = 1;
+    //}
+    //else {
+    //    switch (cl.c.makeup[0]) {
+    //        case "l":
+    //            retValue = 1;
+    //            break;
+    //        case "m":
+    //            retValue = 2;
+    //            break;
+    //        case "h":
+    //        case "r":
+    //            retValue = 3;
+    //            break;
+    //        default:
+    //            retValue = 0;
+    //    }
+    //}
+    //return retValue;
 };
 
 cl.getLips = function () {
@@ -912,13 +934,22 @@ cl.bodyhair = [
 ];
 
 cl.eyes = [
-    { name: "brown", image: "body_eyes_brown.png", back: null },
-    { name: "lightblue", image: "body_eyes_lightblue.png", back: null },
-    { name: "green", image: "body_eyes_green.png", back: null },
-    { name: "hazel", image: "body_eyes_hazel.png", back: null },
-    { name: "blue", image: "body_eyes_blue.png", back: null },
-    { name: "gray", image: "body_eyes_gray.png", back: null },
-    { name: "hypno", image: "body_eyes_hypno.png", back: null }
+    { name: "brown", image: "eyes_brown.png", back: null },
+    { name: "lightblue", image: "eyes_lightblue.png", back: null },
+    { name: "green", image: "eyes_green.png", back: null },
+    { name: "hazel", image: "eyes_hazel.png", back: null },
+    { name: "blue", image: "eyes_blue.png", back: null },
+    { name: "gray", image: "eyes_gray.png", back: null },
+    { name: "purple", image: "eyes_purple.png", back: null },
+    { name: "hypno", image: "eyes_hypno.png", back: null }
+];
+
+cl.eyeliner = [
+    { name: "green", image: "eyeliner_green.png", back: null },
+    { name: "light", image: "eyeliner_light.png", back: null },
+    { name: "purple", image: "eyeliner_purple.png", back: null },
+    { name: "black", image: "eyeliner_black.png", back: null },
+    { name: "pink", image: "eyeliner_pink.png", back: null },
 ];
 
 cl.eyebrows = [
@@ -1897,8 +1928,16 @@ cl.display = function () {
         //set mouth
         cl.subDisplay("char-lips", cback ? null : "lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png");
         //set eyes
-        cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + ".png");
-        //set cock
+        //body_eyes_brown_f
+        if (cl.c.pissface === null) {
+            cl.subDisplay("char-eyeliner", null);
+            cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + ".png");
+        }
+        else {
+            cl.subDisplay("char-eyeliner", cback ? null : "eyeliner_" + cl.c.pissface + ".png");
+            cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + "_f.png");
+        }
+            //set cock
         if (cl.c.chastity === null)
             cl.subDisplay("char-cock", cback ? null : "cock_" + cl.c.cock + ".png");
         else {
@@ -2563,7 +2602,7 @@ cl.appearanceBody = function () {
     var lipsTotal = cl.subscore(cl.getLips(), 2, 25); 
     lipsTotal += cl.c.lipstick === null ? 0 : 25; //300
     var bodyHairTotal = cl.subscore(cl.getBodyHair() === null ? 1 : 0, 1, 100); //350 
-    var makeupTotal = cl.subscore(cl.getMakeupWeight(), 3, 50); //400
+    var makeupTotal = cl.subscore(cl.getMakeupWeight(), 4, 50); //400
 
     pointStack.push({ n: "hair", earned: hairTotal, total: 50 });
     pointStack.push({ n: "makeup", earned: makeupTotal, total: 50 });
@@ -2597,7 +2636,7 @@ cl.clean = function (type) {
     cl.c.cumface = null;
     cl.c.makeup = "n";
     cl.c.lipstick = null;
-
+    cl.c.pissface = null;
     cl.display();
 };
 

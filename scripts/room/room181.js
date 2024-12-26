@@ -399,7 +399,7 @@ room181.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "black",
-            text: "Now stip down girls. I'll go fetch everyone so they can inspect you " +
+            text: "Now strip down girls. I'll go fetch everyone so they can inspect you " +
                 "and decide who to bet on. ",
             button: [
                 { chatID: 31, text: "...", callback: "" },
@@ -421,7 +421,7 @@ room181.chat = function (chatID) {
                 "fun, so here you are. I'm going to get the gamblers so they can inspect " +
                 "each of you. They want to be informed when they place their bets since " +
                 "none of you have raced before. Also most of them are just old perverts. " +
-                "Now stip down and be compliant or I'll cut each of your tits off. ",
+                "Now strip down and be compliant or I'll cut each of your tits off. ",
             button: [
                 { chatID: 33, text: "*gulp* [Strip down and wait]", callback: "b203_2" },
             ]

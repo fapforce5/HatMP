@@ -1,8 +1,43 @@
 ﻿//Room name
 var room354 = {};
 room354.main = function () {
-    char.settime(12, 0);
-    if (sc.getMission("raven", "bitch").inProgress) {
+    if (sc.getMissionTask("landlord", "spermbank", 2).complete || g.pass === "endRotation354") {
+        char.settime(17, 12);
+
+        if (g.pass === "endRotation354") {
+            g.pass = "";
+
+            if (sc.getMissionTask("landlord", "spermbank", 2).notStarted) {
+                sc.completeMissionTask("landlord", "spermbank", 2);
+                nav.bg("354_raven/madison.jpg");
+                chat(16, 354);
+            }
+            else {
+                if (cl.isLewd() && !daily.get("raven")) {
+                    daily.set("raven");
+                    nav.bg("354_raven/nude_" + gender.pronoun("m") + ".jpg");
+                    chat(19, 354);
+                }
+                else if (cl.hasoutfit("public") !== null)
+                    chat(999, 354);
+            }
+        }
+        if (cl.isLewd() && !daily.get("raven")) {
+            daily.set("raven");
+            nav.bg("354_raven/nude_" + gender.pronoun("m") + ".jpg");
+            chat(19, 354);
+        }
+        else if (cl.hasoutfit("public") !== null)
+            chat(999, 354);
+        else {
+            nav.buildnav([350, 0]);
+        }
+    }
+    else {
+        char.settime(12, 0);
+        if (sc.getMission("raven", "bitch").notStarted) {
+            sc.startMission("raven", "bitch");
+        }
         var ravenStep = sc.taskGetStep("raven", "bitch");
         switch (ravenStep) {
             case 0:
@@ -11,26 +46,16 @@ room354.main = function () {
                 chat(0, 354);
                 break;
             case 2:
-                if (sc.getMissionTask("landlord", "spermbank", 2).inProgress) {
-                    //
-                }
-                else {
-                    nav.bg("354_raven/e0.jpg");
-                    chat(6, 354);
-                }
+                nav.bg("354_raven/e0.jpg");
+                chat(6, 354);
                 break;
             case 3:
-                if (sc.getMissionTask("landlord", "spermbank", 2).inProgress) {
-                    //
+                switch (g.rand(0, 3)) {
+                    case 0: nav.bg("354_raven/grabBoobs.jpg"); break;
+                    case 1: nav.bg("354_raven/grabAss.jpg"); break;
+                    case 2: nav.bg("354_raven/nude.jpg"); break;
                 }
-                else {
-                    switch (g.rand(0, 3)) {
-                        case 0: nav.bg("354_raven/grabBoobs.jpg"); break;
-                        case 1: nav.bg("354_raven/grabAss.jpg"); break;
-                        case 2: nav.bg("354_raven/nude.jpg"); break;
-                    }
-                    chat(13, 354);
-                }
+                chat(13, 354);
                 break;
             case 4:
                 nav.bg("354_raven/e2.jpg");
@@ -53,9 +78,6 @@ room354.main = function () {
                 break;
         }
     }
-    else {
-        char.room(0);
-    }
 };
 
 room354.btnclick = function (name) {
@@ -74,6 +96,7 @@ room354.chatcatch = function (callback) {
         case "e1":
         case "e2":
         case "shock":
+        case "madison1":
             nav.bg("354_raven/" + callback + ".jpg");
             break;
         case "event_1_end":
@@ -91,6 +114,9 @@ room354.chatcatch = function (callback) {
             sc.modLevel("landlord", 15, 5);
             char.addtime(10);
             char.room(0);
+            break;
+        case "reload":
+            char.room(354);
             break;
         default:
             break;
@@ -138,6 +164,14 @@ room354.chat = function (chatID) {
                 ]
             };
         }
+    }
+    else if (chatID === 999) {
+        return {
+            chatID: 999,
+            speaker: "thinking",
+            text: "Before I leave I need to get dressed. <span class='hl'>I'm missing my " + cl.hasoutfit("public") + ".</span>",
+            button: []
+        };
     }
     else {
         var cArray = [
@@ -278,6 +312,44 @@ room354.chat = function (chatID) {
                 text: "Oh thank you again. I'll see you at home sweetie.  ",
                 button: [
                     { chatID: -1, text: "...", callback: "event_3_end" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "!madison",
+                text: "AAAAk! Changing in here! ",
+                button: [
+                    { chatID: 17, text: "Oh no! Sorry!", callback: "madison1" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "!madison",
+                text: "Oh no. I'm sorry. I thought it was that dreadful " + sc.n("raven") +
+                    " trying to get a peek again. You're good, we're both girls! I don't " +
+                    "have anything you don't have! ",
+                button: [
+                    { chatID: 18, text: "Oh yeah. Totally have the same stuff. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "!madison",
+                text: "So nice having you around. I think some of those pervy men " +
+                    "just come in to check out my breasts, but still more respectable " +
+                    "than being a stripper I guess. Hehehe. Well I've got to go. " +
+                    "If " + sc.n("raven") + " tries to peek on you just yell at him. " +
+                    "He's dirty, but he scares easily. ",
+                button: [
+                    { chatID: -1, text: "ok. See you later. ", callback: "reload" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "raven",
+                text: "Like mother like daughter. I knew you were a slut! ",
+                button: [
+                    { chatID: -1, text: "[More to come later]", callback: "reload" }
                 ]
             },
         ];

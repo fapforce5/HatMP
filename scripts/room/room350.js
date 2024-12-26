@@ -30,11 +30,6 @@ room350.main = function () {
                 "image": "350_spermBank/landlord.png"
             }, 350);
         }
-        //if (g.pass === "350_nursePay") {
-        //    g.pass = null;
-        //    chat(8, 350);
-        //}
-        
     }
     else {
         var thisDay = g.dt.getDay();
@@ -54,7 +49,21 @@ room350.main = function () {
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
-            if (sc.getMissionTask("landlord", "talk", 1).complete) {
+            if (sc.getMission("landlord", "sissy").inProgress) {
+               
+                if (cl.getBodyHair() !== null)
+                    chat(33, 350);
+                else if (cl.appearance() < 2)
+                    chat(34, 350);
+                else {
+                    if (sc.getMissionTask("landlord", "spermbank", 2).notStarted) {
+                        chat(35, 350);
+                    }
+                    else
+                        chat(55, 350);
+                }
+            }
+            else if (sc.getMissionTask("landlord", "talk", 1).complete) {
                 if (g.dt.getDay() === 6) {
                     if (sc.getMission("landlord", "spermbank").notStarted) {
                         sc.startMission("landlord", "spermbank");
@@ -78,6 +87,12 @@ room350.btnclick = function (name) {
 
 room350.chatcatch = function (callback) {
     switch (callback) {
+        case "boxes":
+        case "boxes0":
+            case "room1":
+            nav.killall();
+            nav.bg("350_spermBank/" + callback + ".jpg");
+            break;
         case "leave":
             char.room(0);
             break;
@@ -135,6 +150,24 @@ room350.chatcatch = function (callback) {
                 sc.completeMissionTask("landlord", "spermbank", 1);
                 chat(13, 350);
             }
+            break;
+        case "e0":
+            nav.killall();
+            nav.bg("354_raven/e0.jpg");
+            break;
+        case "e1":
+            cl.nude();
+            cl.c.panties = cl.cTemp.panties;
+            cl.c.bra = cl.cTemp.bra;
+            cl.c.dress = "nu";
+            cl.c.socks = "s";
+            cl.c.shoes = "nu";
+            cl.display();
+            zcl.displayMain(150, 900, .18, "clothes", true);
+
+            break;
+        case "room352":
+            char.room(352);
             break;
         default:
             break;
@@ -439,6 +472,231 @@ room350.chat = function (chatID) {
             text: "Excellent. Please try to get 3 or more people to donate. Let's go.",
             button: [
                 { chatID: -1, text: "Ok", callback: "advertise" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "landlord",
+            text: "You need to go home and shave. No one wants a hairy gorilla assisting " +
+                "them with their donation. ",
+            button: [
+                { chatID: -1, text: "Ok, I'll go shave. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "landlord",
+            text: "You look too manly for a nurse. You need to do something with your " +
+                "appearance. A nurse should be cute and inviting, not broodish. ",
+            button: [
+                { chatID: -1, text: "[Need minimum 'Cute' appearance]", callback: "" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "landlord",
+            text: "Well look at my cute little girl. Did you come in to help me with " +
+                "donations?",
+            button: [
+                { chatID: 36, text: "Yes I did! ", callback: "" },
+                { chatID: -1, text: "No, Sorry just came by to say hi.", callback: "" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "landlord",
+            text: "You know, I've watched you be a puddle of dissapointment for most " +
+                "of your life. After you graduated high school you've just been a lazy " +
+                "lazy waste of space. But now, but now look at you.",
+            button: [
+                { chatID: 37, text: "...yes...", callback: "" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "landlord",
+            text: "You've really put a lot of work into making yourself into a pretty " +
+                "little girl. I don't think I've seen you work harder on anything in " +
+                "your life. Maybe it was my fault for hoping you'll become a proper " +
+                "and successful young man when all the time you've just been a slutty " +
+                "whorish girl.",
+            button: [
+                { chatID: 38, text: "I'm not that slutty.", callback: "" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "landlord",
+            text: "I suppose this is my fault. You've been around girls the entire time. " +
+                "You've never been properly shown how to be a boy. From the looks of it, " +
+                "it seems too late to go down that path, this is the path you're on. " +
+                "As your " + sc.n("landlord") + " I suppose it's my resonsiblility to " +
+                "continue to help you on your path.",
+            button: [
+                { chatID: 39, text: "Help me?", callback: "" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "landlord",
+            text: "Yes. I'm going to help you honey. After all I've been a girl for " +
+                "far longer than you, so I know a thing or two. I'm going to make " +
+                "you my new project. What kind of girl are trying to be?",
+            button: [
+                { chatID: 40, text: "A nice sweet innocent girl", callback: "" },
+                { chatID: 41, text: "A cum slut", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "landlord",
+            text: "Oh hahaha. I don't believe you. I know you too well. Deep down I " +
+                "know you're the kind of girl that gives it up on the first date. " +
+                sc.n("lola") + " is the sweet innocent type. You're more like " +
+                sc.n("eva") + ", but dialed up to 11. ",
+            button: [
+                { chatID: 42, text: "oh.", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "landlord",
+            text: "That was just a test. I knew what a dirty dirty girl you are. " +
+                "I just wasn't sure if you knew yourself.",
+            button: [
+                { chatID: 42, text: "oh.", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "landlord",
+            text: "I need a girl like you to help me out around here doing all the things " +
+                "I hate doing. Organizaing samples, greeting customers, and most importantly " +
+                "assisting with the donors. ",
+            button: [
+                { chatID: 43, text: "Assisting the donors?", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "landlord",
+            text: "Some men come in and have a hard time creating a donation, so it will be your responsibility to assit them. Some " +
+                "just need a peek at your boobs, some need to check out your butt, and others need a help hand.",
+            button: [
+                { chatID: 44, text: "Helping hand, do you mean...", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "landlord",
+            text: "Yes, I mean you'll have to jack off their cocks. Now I know how much you love cum, but you can only use your hands. " +
+                "Anything else will ruin the sample. ",
+            button: [
+                { chatID: 46, text: "I will be the best sperm collecter you've seen!", callback: "" },
+                { chatID: 45, text: "I don't know if I can jack off stange men", callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "landlord",
+            text: "I didn't ask you to tell me what a selfish little girl you are. This is your chance to actually do some work and " +
+                "help your " + sc.n("landlord") + ". ",
+            button: [
+                { chatID: 47, text: ".... ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "landlord",
+            text: "I know. I suppose deep down I've always known. I suppose it's good " +
+                "to know that when I die, I'll have someone to hand the buisiness down " +
+                "to. ",
+            button: [
+                { chatID: 47, text: ".... ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "landlord",
+            text: "Now let's get started on your first day of work. " +
+                "I'll help you get ready, Follow me to the break room. ",
+            button: [
+                { chatID: 48, text: "[Follow her]", callback: "e0" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "landlord",
+            text: "You can change into your nurses outfit here. If " + sc.n("raven") +
+                " is in here, just ask him to leave. I've already spoken to him " +
+                "muliple times about trying to peek at my nurses. Now get changed. ",
+            button: [
+                { chatID: 49, text: "Oh my. [Change into nurse's outfit]", callback: "e1" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "landlord",
+            text: "You look really pretty.The guys will love you. Now I've got to " +
+                "move the new shipment of empty jars to the back.",
+            button: [
+                { chatID: 50, text: "[Follow her]", callback: "boxes" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "me",
+            text: "Let me give you hand moving those boxes.",
+            button: [
+                { chatID: 51, text: "[Help her]", callback: "boxes0" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "me",
+            text: "Oh hahahaha. Don't be silly, I need a man to move these boxes. " +
+                "There's no way you're strong enough. Mike here is going to move them " +
+                "for us. ",
+            button: [
+                { chatID: 52, text: "oh", callback: "" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "!boxes",
+            text: "Don't worry little girl, I've got this. Wouldn't want you to strain " +
+                "them tiny arms of yours. Let a real man do the work.",
+            button: [
+                { chatID: 53, text: "oh my", callback: "" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "landlord",
+            text: "Yes honey, I wouldn't want you to hurt yourself lifting these big " +
+                "heavy boxes. Come to the back, I have some work better suited for " +
+                "those weak girly arms of yours. Follow me. ",
+            button: [
+                { chatID: 54, text: "*sigh*", callback: "room1" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "landlord",
+            text: "This is the donation room. When I have a customer that needs a " +
+                "bit of extra help I'll call you in to help. You can wait in the " +
+                "the break room until I need you. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "room352" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "landlord",
+            text: "Did you come in to help me out?",
+            button: [
+                { chatID: -1, text: "Yes I am!", callback: "room352" },
+                { chatID: -1, text: "Nope, just saying hi. ", callback: "" },
             ]
         },
     ];

@@ -563,8 +563,15 @@ char.room = function (roomID) {
 
     if (g.roomChange.includes(g.roomID)) 
         $("#room-change").show();
+    else if (g.roomID === 354) {
+        if (sc.getMissionTask("landlord", "spermbank", 2).complete)
+            $("#room-change").show();
+        else
+            $("#room-change").hide();
+    }
     else 
         $("#room-change").hide();
+
 
     if (g.passtime.includes(g.roomID))
         $("#room-time").show();
@@ -764,128 +771,6 @@ menu.mClick = function (type) {
                     $("#menu_parent").append('<img src="./images/phone/sissy_wide.jpg" style="position:absolute; ' + g.makeCss(897, 1108, 94, 416) + '"/>');
                 }, 800);
             });
-            break;
-        case "admin":
-            //if (gv.get("cheatMode")) {
-            //    $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-            //        '<h2>Cheat Status: ACTIVE</h2>Thank you for your support!<hr/><br />' +
-            //        '<div style="font-size:' + 24 * g.ratio + 'px;">' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="money">Add Money</button><br/>' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="horneyp">Add Sissy Points</button><br />' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="energyp">Max Energy</button><br/>' +
-            //        '<hr/>' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="lolaEva" data-step="8">Lola and Eva: After truth or dare</button><br/>' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="missy" data-step="10">Missy: School</button><br/>' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="zoey" data-step="11">Zoey: After Meeting Chloe</button><br/>' +
-            //        '<div>Sissy School: Each event is skippable, click the Cheat Unlock button</div>' +
-            //        '<button type="button" style="font-size:' + 24 * g.ratio + 'px;" class="admin-mod menu-blueButton" data-type="uncheat" data-step="0">Turn off cheat status</button>' +
-            //        '</div></div>');
-            //    $(".admin-mod").click(function () {
-            //        switch ($(this).data("type")) {
-            //            case "money":
-            //                gv.set("money", 1000000);
-            //                //$('#char_money').text('$1000000');
-            //                break;
-            //            case "energyp":
-            //                gv.mod("energy", 10000);
-            //                break;
-            //            case "horneyp":
-            //                gv.set("cheatPoints", 10000);
-            //                break;
-            //            case "lolaEva":
-            //                var thisStep = $(this).data("step");
-            //                if (thisStep === 4) {
-            //                    if (sc.getstep("lola") < 5) {
-            //                        sc.setstep("me", -1);
-            //                        sc.setstepAll("eva", 4);
-            //                        sc.setstepAll("lola", 5);
-            //                        pic.add("lolaTopless");
-            //                        g.popUpNotice("You've skipped past Spin the bottle with Lola and Eva");
-            //                    }
-            //                    else
-            //                        g.popUpNotice("You've already passed this point. ");
-            //                }
-            //                else if (thisStep === 8) {
-            //                    if (sc.getstep("lola") < 8) {
-            //                        sc.setstep("me", -1);
-            //                        sc.setstep("landlord", -1);
-            //                        sc.setstep("lola", 8);
-            //                        sc.setstep("eva", 7);
-            //                        g.roomMapAccess(16, false, false);
-            //                        char.room(0);
-            //                        pic.add("lolaTopless");
-            //                        g.popUpNotice("You've skipped past Truth or Dare with Lola and Eva");
-            //                    }
-            //                    else
-            //                        g.popUpNotice("You've already passed this point.");
-            //                }
-            //                break;
-            //            case "missy":
-            //                var thisStepm = $(this).data("step");
-            //                if (thisStepm === 10) {
-            //                    if (sc.getstep("missy") < 10) {
-            //                        inv.add("pi_lic");
-            //                        cl.add("pants", "s");
-            //                        cl.add("shirt", "s");
-            //                        cl.add("shoes", "d");
-            //                        cl.add("socks", "b");
-            //                        cl.add("panties", "w");
-            //                        cl.add("accessories", "piggy");
-            //                        if (cl.c.chest === 0)
-            //                            cl.c.chest = 1;
-            //                        gv.mod("fitnessLevel", 1);
-            //                        sc.setstep("tiffany", -4);
-            //                        sc.setstep("tiffany", 5);
-            //                        sc.setstep("me", -1);
-            //                        sc.setstep("me", -2);
-            //                        sc.setstepAll("missy", 10);
-            //                        cl.c.bodyhair = 0;
-            //                        inv.add("razor", 1);
-            //                        sc.setstepAll("me", 2);
-            //                        g.roomMapAccess(203, true, false);
-            //                        cl.display();
-            //                        g.popUpNotice("You have skipped ahead to the sissy school.");
-            //                    }
-            //                    else
-            //                        g.popUpNotice("You've already passed this point.");
-            //                }
-            //                break;
-            //            case "zoey":
-            //                var zoeyStep = sc.getstep("zoey");
-            //                if (zoeyStep < 11) {
-            //                    sc.setstepAll("zoey", 11);
-            //                    sc.setstep("zoey", -1);
-            //                    sc.setstep("zoey", -2);
-            //                    scc.love("zoey", 100, 90);
-            //                    g.popUpNotice("You've advanced beyond Chloe's breakup and meeting Stormy. ");
-            //                }
-            //                else
-            //                    g.popUpNotice("You've already passed this point.");
-            //                break;
-            //            case "uncheat":
-            //                gv.mod("cheatMode", false);
-            //                menu.mClick("admin");
-            //                break;
-            //        }
-            //    });
-            //}
-            //else {
-            //    $('#menu_parent').append('<div id="cheat_Killme" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center; font-size:' + 24 * g.ratio + 'px;">' +
-            //        "<h2>Cheat Status: INACTIVE</h2>" +
-            //        "This cheat menu is a thank you to all the great support I've received from my $5 anf $10 Patrons." +
-            //        "The game is designed to be played without this cheat activated. So if you don't use cheat you're not missing anything. " +
-            //        '<button type="button" class="intro-button" id="cheat_passwordSubmit" style="font-size:' + 24 * g.ratio + 'px;">I\'m a Patreon Supporter<br/>Activate Cheats</button><br/>' +
-            //        '<button type="button" class="intro-button" id="cheat_cancel" style="font-size:' + 24 * g.ratio + 'px;">I\'m not a Patreon Supporter<br/>Cancel</button>' +
-            //        '<br/><br/>Thank you so much for playing.' +
-            //        '</div>');
-            //    $('#cheat_passwordSubmit').click(function () {
-            //        gv.mod("cheatMode", true);
-            //        menu.mClick("admin");
-            //    });
-            //    $("#heat_cancel").click(function () {
-            //        menu.mClick("menu");
-            //    });
-            //}
             break;
         case "time":
             $(".menu-buttonKill").remove();

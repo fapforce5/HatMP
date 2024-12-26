@@ -19,7 +19,7 @@ inv.leftMenu = true;
 inv.page = 0;
 
 inv.t = [
-    { t: "b", n: "Backpack" },
+    { t: "b", n: "Purse " },
     { t: "c", n: "Restraints" },
     { t: "d", n: "Dildo" },
     { t: "e", n: "Energy Snack" },
@@ -64,11 +64,13 @@ inv.master = [
     { type: "x", name: "studentid", display: "Student ID", entry: false, count: null, cost: 0, image: "sudentid.png", n: false, desc: "Stolen Student ID" },
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "l", name: "lockpick", display: "Lock Pick Set", entry: false, count: null, cost: 0, image: "lockpick.png", n: false, desc: "Lock Pick Set for use on cases" },
-    { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 1, image: "makeup.png", n: false, desc: "Make your face pretty" },
-    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 7, image: "redl.png", n: false, desc: "Red Lipstick" },
-    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: 0, cost: 7, image: "pinkl.png", n: false, desc: "Pink Lipstick" },
-    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 7, image: "purplel.png", n: false, desc: "Purple Lipstick" },
-    { type: "m", name: "blackl", display: "Black Lipstick", entry: false, count: 0, cost: -1, image: "lipstickBlack.png", n: false, desc: "Stolen Black Lipstick" },
+    { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 47, image: "makeup.png", n: false, desc: "Makeup kit [Sold as 20 uses]" },
+    { type: "m", name: "eyeshadow", display: "Eyeshadow", entry: false, count: 0, cost: 22, image: "eyeshadow.png", n: false, desc: "Eyeshadow [Sold as 20 uses]" },
+    { type: "m", name: "redl", display: "Red Lipstick", entry: false, count: 0, cost: 7, image: "redl.png", n: false, desc: "Red Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "pinkl", display: "Pink Lipstick", entry: false, count: 0, cost: 7, image: "pinkl.png", n: false, desc: "Pink Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "purplel", display: "Purple Lipstick", entry: false, count: 0, cost: 7, image: "purplel.png", n: false, desc: "Purple Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "bluel", display: "Blue Lipstick", entry: false, count: 0, cost: 7, image: "bluel.png", n: false, desc: "Blue Lipstick [Sold as 20 uses]" },
+    { type: "m", name: "blackl", display: "Black Lipstick", entry: false, count: 0, cost: -1, image: "lipstickBlack.png", n: false, desc: "Stolen Black Lipstick [Sold as 20 uses]" },
     { type: "o", name: "landlordKey", display: "Landlord's Key", entry: false, count: null, cost: 0, image: "llKey.png", n: false, desc: "Landlord's Key" },
     { type: "o", name: "flatmateKey", display: "Flatmate's Key", entry: false, count: null, cost: 0, image: "elKey.png", n: false, desc: "Co-Tenant's Key" },
     { type: "o", name: "keyJanice", display: "Girl Friend's Key", entry: false, count: null, cost: 0, image: "keyJanice.png", n: false, desc: "Key to Girl Friend's house. " },
@@ -82,13 +84,15 @@ inv.master = [
     { type: "i", name: "smellingsalts", display: "Smelling Salts", entry: false, count: 0, cost: 200, image: "smellingsalts.png", n: false, desc: "Reroll your fight. " },
 
     { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, image: "backpack.png", n: false, desc: "Default Backpack" },
-    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false, desc: "Boring ol' briefase" },
+    { type: "b", name: "briefcase", display: "Briefcase", entry: false, count: null, cost: 60, image: "breifcase.png", n: false, desc: "Boring ol' briefcase" },
     { type: "b", name: "slutPurse", display: "Slutty Pink Purse", entry: false, count: null, cost: 100, image: "purse_slut.png", n: false, desc: "Only a true slut can use this" },
     { type: "b", name: "pinkPurse", display: "Pink Purse", entry: false, count: null, cost: 100, image: "purse_pink.png", n: false, desc: "A cute purse" },
     { type: "b", name: "purseblack", display: "Black Purse", entry: false, count: null, cost: 80, image: "purse_black.png", n: false, desc: "Black Purse" },
-    { type: "b", name: "pinkcase", display: "Pink Briefcase", entry: false, count: null, cost: 80, image: "purse_briefcase.png", n: false, desc: "A cute Breifcase" },
+    { type: "b", name: "pinkcase", display: "Pink Briefcase", entry: false, count: null, cost: 80, image: "purse_briefcase.png", n: false, desc: "A cute briefcase" },
     { type: "b", name: "pursebag", display: "Bag", entry: false, count: null, cost: 30, image: "purse_bag.png", n: false, desc: "Bag" },
     { type: "b", name: "purseyellow", display: "Yellow Purse", entry: false, count: null, cost: 30, image: "purse_yellow.png", n: false, desc: "A Yellow Purse" },
+    { type: "b", name: "pursecoach", display: "Coach", entry: false, count: null, cost: 490, image: "purse_coach.png", n: false, desc: "Noalita 17 in Signature Style" },
+    { type: "b", name: "purseberkin", display: "Birkin Bag", entry: false, count: null, cost: 25900, image: "berkin.png", n: false, desc: "Hermès Sac à Main Fou Hors de Prix 17" },
     
     { type: "p", name: "phoneBasic", display: "Basic Phone", entry: true, count: null, cost: -1, image: "phone_basic.png", n: false, desc: "Default phone case" },
     { type: "p", name: "phoneTr", display: "Strong Woman", entry: false, count: null, cost: 35, image: "phone_tr.png", n: false, desc: "" },
@@ -616,7 +620,10 @@ inv.createElements = function () {
                     if (isNaN(thisCount))
                         thisCount = 1;
                     var totalMoney = -1 * thisCount * thisInv.cost;
-                    inv.master[ti].count += thisCount;
+                    if(inv.master[ti].type === "m")
+                        inv.master[ti].count += (thisCount * 20);
+                    else
+                        inv.master[ti].count += thisCount;
                     inv.master[ti].entry = true;
                     gv.mod("money", totalMoney);
                     $("#menu_displayAction").hide();

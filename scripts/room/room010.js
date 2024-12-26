@@ -84,7 +84,7 @@ room10.main = function () {
             });
         }
 
-        if (gv.get("cheerlevel") > 0) {
+        if (levels.get("cheer").l > 0) {
             btnList.push({
                 "type": "btn",
                 "name": "cheerleader",
@@ -167,11 +167,11 @@ room10.btnclick = function (name) {
             if (gv.get("energy") < 51)
                 chat(41, 10);
             else {
-                switch (gv.get("cheerlevel")) {
+                switch (levels.get("cheer").l) {
                     case 1:
                         nav.button({
                             "type": "img",
-                            "name": "cheer",
+                            "name": "cheerx",
                             "left": 623,
                             "top": 337,
                             "width": 711,
@@ -183,7 +183,7 @@ room10.btnclick = function (name) {
                     case 2:
                         nav.button({
                             "type": "img",
-                            "name": "cheer",
+                            "name": "cheerx",
                             "left": 641,
                             "top": 272,
                             "width": 503,
@@ -197,7 +197,7 @@ room10.btnclick = function (name) {
                     case 6:
                         nav.button({
                             "type": "img",
-                            "name": "cheer",
+                            "name": "cheerx",
                             "left": 641,
                             "top": 272,
                             "width": 503,
@@ -209,7 +209,7 @@ room10.btnclick = function (name) {
                     case 4:
                         nav.button({
                             "type": "img",
-                            "name": "cheer",
+                            "name": "cheerx",
                             "left": 641,
                             "top": 272,
                             "width": 503,
@@ -221,7 +221,7 @@ room10.btnclick = function (name) {
                     default:
                         nav.button({
                             "type": "img",
-                            "name": "cheer",
+                            "name": "cheerx",
                             "left": 641,
                             "top": 272,
                             "width": 503,
@@ -394,8 +394,8 @@ room10.chatcatch = function (callback) {
             break;
         case "cheerReset":
             gv.mod("energy", -51);
-            gv.mod("cheerleader", 30);
-            nav.killbutton("cheer");
+            levels.mod("cheer", 32);
+            nav.killbutton("cheerx");
             char.addtime(60);
             break;
         default:

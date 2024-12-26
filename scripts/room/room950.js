@@ -1666,7 +1666,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 92,
                 speaker: "bodhi",
-                text: "Oh totally. I love to share our experiances with others. Can " + sc.n("me") + " come over and play? " +
+                text: "Oh totally. I love to share our experience with others. Can " + sc.n("me") + " come over and play? " +
                     "I told him to be a good. ",
                 button: [
                     { chatID: 93, text: "...", callback: "" }
@@ -2052,7 +2052,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 138,
                 speaker: "cult",
-                text: "You are blessed to have such an experiance. I shall let you down, but don't forget the lesson you have learned. ",
+                text: "You are blessed to have such an experience. I shall let you down, but don't forget the lesson you have learned. ",
                 button: [
                     { chatID: -1, text: "*Grumble*", callback: "t6" }
                 ]

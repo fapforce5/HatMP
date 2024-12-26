@@ -1,9 +1,18 @@
 ﻿//hallway
 var room11 = {};
 room11.main = function () {
-    //if (cl.isCrossdressing() && sc.getstep("lola") < 200) {
-    //    char.room(16);
-    //}
+    if (!sc.getSecret("lola").secretOut && (cl.isCrossdressing() || cl.c.chest > 2)) {
+        nav.button({
+            "type": "btn",
+            "name": "caught",
+            "left": 513,
+            "top": 0,
+            "width": 1065,
+            "height": 1080,
+            "image": "16_livingRoom/allthree.png"
+        }, 16);
+        return;
+    }
     g.pass = '';
     if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;

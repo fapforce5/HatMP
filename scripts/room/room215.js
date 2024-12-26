@@ -640,7 +640,7 @@ room215.chat = function (chatID) {
             speaker: "landlord",
             text: "This may be a tough lesson to swallow, but he's right. You've made your choice of what kind of girl you " +
                 "are. Given your bad grades and inability to hold a job, this just may your best life, laying here on your " +
-                "back taking cocks for money. We all have a differnt path in life, and this looks like your path. Let " +
+                "back taking cocks for money. We all have a different path in life, and this looks like your path. Let " +
                 "me help guide you on your path. ",
             button: [
                 { chatID: 30, text: "hmmm....", callback: "ll6" }

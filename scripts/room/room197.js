@@ -338,7 +338,7 @@ room197.chat = function (chatID) {
             text: "Come kneel at my feet. ",
             button: [
                 { chatID: 6, text: "Yes ma'am", callback: "sideDesk" },
-                { chatID: 1, text: "Now way!", callback: "" },
+                { chatID: 1, text: "No way!", callback: "" },
             ]
         },
         {
@@ -366,7 +366,7 @@ room197.chat = function (chatID) {
                 "and stick out your tongue.",
             button: [
                 { chatID: 9, text: "Yes ma'am", callback: "sideDesk" },
-                { chatID: 1, text: "Now way!", callback: "" },
+                { chatID: 1, text: "No way!", callback: "" },
             ]
         },
         {

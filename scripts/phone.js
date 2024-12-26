@@ -1,5 +1,6 @@
 ﻿var phone = {};
 var room9999 = {};
+phone.charPointer = 0;
 //var pic = {};
 
 phone.build = function (selection) {
@@ -308,45 +309,65 @@ phone.characters = function () {
         "image": "999_phone/rel_bg.jpg",
     }, 9999);
     
-    var j = 0;
-    for (var i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].show) {
-            var secret = "Secret: " + sc.char[i].secret + "%";
-            nav.button({
-                "type": "zbtn",
-                "name": "phone_charselect_" + sc.char[i].name,
-                "left": 485 + ((j % 6) * 190),
-                "top": 180 + (Math.floor(j / 6) * 220),
-                "width": 150,
-                "height": 150,
-                "image": "../speaker/" + sc.char[i].image,
-            }, 9999);
+    let j = 0;
+    let i;
+    for (i = 0; i < sc.char.length; i++) {
+        if (i >= phone.charPointer && j < 18) {
+            if (sc.char[i].show) {
+                nav.button({
+                    "type": "zbtn",
+                    "name": "phone_charselect_" + sc.char[i].name,
+                    "left": 485 + ((j % 6) * 190),
+                    "top": 180 + (Math.floor(j / 6) * 220),
+                    "width": 150,
+                    "height": 150,
+                    "image": "../speaker/" + sc.char[i].image,
+                }, 9999);
 
-            nav.t({
-                type: "zimg",
-                name: "phone_char_",
-                "left": 485 + ((j % 6) * 190),
-                "top": 330 + (Math.floor(j / 6) * 220),
-                font: 30,
-                hex: "#ffffff",
-                text: "Level: " + sc.char[i].l,
-            }, 1);
+                nav.t({
+                    type: "zimg",
+                    name: "phone_char_",
+                    "left": 485 + ((j % 6) * 190),
+                    "top": 330 + (Math.floor(j / 6) * 220),
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Level: " + sc.char[i].l,
+                }, 1);
 
-            nav.t({
-                type: "zimg",
-                name: "phone_char_",
-                "left": 485 + ((j % 6) * 190),
-                "top": 360 + (Math.floor(j / 6) * 220),
-                font: 30,
-                hex: "#ffffff",
-                text: "Secret: " + sc.char[i].secret + "%",
-            }, 1);
-
-
-            j++;
-
+                nav.t({
+                    type: "zimg",
+                    name: "phone_char_",
+                    "left": 485 + ((j % 6) * 190),
+                    "top": 360 + (Math.floor(j / 6) * 220),
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Secret: " + sc.char[i].secret + "%",
+                }, 1);
+                j++;
+            }
         }
     }
+    let prevexists = phone.charPointer > 0;
+    let nextexist = j > 17;
+    nav.button({
+        "type": prevexists ? "zbtn" :"zimg",
+        "name": "phone_rel_prev",
+        "left": 1280,
+        "top": 880,
+        "width": 150,
+        "height": 50,
+        "image": "999_phone/prev_" + (prevexists ? "" : "in") + "active.png",
+    }, 9999);
+
+    nav.button({
+        "type": nextexist ? "zbtn" : "zimg",
+        "name": "phone_rel_next",
+        "left": 1430,
+        "top": 880,
+        "width": 150,
+        "height": 50,
+        "image": "999_phone/next_" + (nextexist ? "" : "in") + "active.png",
+    }, 9999);
 };
 
 phone.characterSelect = function (name) {
@@ -584,7 +605,7 @@ phone.passtime = function () {
                 "image": "999_phone/time_" + time[i] + "_" + clock + "_" + (active ? "active" : "inactive") + ".png",
             }, 9999);
         }
-        active = currentTime > 6.9;
+        active = currentTime > 6.9 || currentTime < 2;
         nav.button({
             "type": active ? "zbtn" : "zimg",
             "name": "phone_modtime_x",
@@ -821,6 +842,15 @@ room9999.btnclick = function (name) {
                 phone.saveMenu();
                 break;
             case "phone_rel":
+                phone.charPointer = 0;
+                phone.characters();
+                break;
+            case "phone_rel_next":
+                phone.charPointer += 18;
+                phone.characters();
+                break;
+            case "phone_rel_prev":
+                phone.charPointer -= 18;
                 phone.characters();
                 break;
             case "phone_settings":

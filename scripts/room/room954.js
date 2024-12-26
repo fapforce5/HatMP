@@ -557,7 +557,7 @@ room954.chat = function (chatID) {
             chatID: 47,
             speaker: "daria",
             text: "First of all, you're not making it through the cave. There's too many of them. Then when you reach the compound " +
-                "you have to make it through all the guards everywhere, which is impossible. I had to blow around 20 differnt guards " +
+                "you have to make it through all the guards everywhere, which is impossible. I had to blow around 20 different guards " +
                 "so they would let me wander around in my regular clothes. ",
             button: [
                 { chatID: 48, text: "There's got to be a way in ", callback: "" }

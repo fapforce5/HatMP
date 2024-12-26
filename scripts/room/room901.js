@@ -339,13 +339,15 @@ room901.chatcatch = function (callback) {
             char.room(901);
             break;
         case "swimbadend":
-            levels.mod("fitness", 40);
-            levels.mod("strength", 30);
+            gv.mod("energy", -40);
+            levels.mod("fitness", 25);
+            levels.mod("strength", 10);
             char.room(901);
             break;
         case "swimgoodend":
-            levels.mod("fitness", 40);
-            levels.mod("strength", 30);
+            gv.mod("energy", -40);
+            levels.mod("fitness", 25);
+            levels.mod("strength", 10);
             char.room(901);
             break;
         case "swimfan":

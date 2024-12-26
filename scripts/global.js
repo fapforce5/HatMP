@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 23.0;
-g.versionText = "0.23.0 -  2024";
+g.version = 24.1;
+g.versionText = "0.24.1 - DEC 2024";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -19,8 +19,8 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 201, 209, 318, 451, 452, 503, 552, 553, 727, 875, 902, 903];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
+g.roomChange = [10, 12, 56, 201, 209, 318, 451, 452, 503, 552, 553, 587, 727, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
 g.dt = g.startDate;
@@ -31,36 +31,6 @@ g.st = new Array();
 g.fmap;
 g.nextRoomId = 0;
 g.pastSaves = new Array();
-//g.i = function (name) {
-//    var thisIndex = -1;
-//    for (i = 0; i < g.st.length; i++) {
-//        if (gv.st[i].n === name) {
-//            thisIndex = i;
-//            type = gv.st[i].t;
-//            break;
-//        }
-//    }
-//    return thisIndex;
-//};
-
-//gv.set = function (name, amount) {
-//    var index = g.i(name);
-//    var oldAmount, newAmount;
-//    oldAmount = gv.st[index].t;
-//    gv.st[index].t = amount;
-
-//    newAmount = amount - oldAmount;
-//    g.checkPop(name, newAmount);
-//};
-
-//g.get = function (name) {
-//    var thisIndex = g.i(name);
-//    if(thisIndex > -1)
-//        return gv.st[thisIndex].t;
-//    console.log("get missing name: " + name);
-//    return null;
-//};
-
 
 g.gt = function (first, second) {
     return gv.get(first) > gv.get(second);
@@ -114,12 +84,6 @@ g.checkPop = function (name, amount) {
             g.popUpNotice("Your arms are " + (amount < 0 ? "weaker" : "stronger"));
             sstat.makeGraph();
             break;
-        //case "sissy":
-        //    if (amount > 0)
-        //        g.popUpNotice("Your sissy stats increased. ");
-        //    else
-        //        g.popUpNotice("You used " + amount + " Sissy Points. ");
-        //    break;
         case "fame":
             if (amount > 20)
                 g.popUpNotice("You became a lot more famous in this town. ");
@@ -194,10 +158,12 @@ g.rooms = [
     { roomID: 30, name: "Girl's Room Peak", image: "30_peek/bg.jpg", nightImage: "30_peek/bgnight.jpg", houseID: 29, btn: "roomBtn_29.png" },
     { roomID: 31, name: "Lola's Puter", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 16, btn: "roomBtn_31.png" },
 
+    { roomID: 40, name: "Auto Repair", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 40, btn: "roomBtn_10.png" },
+
     { roomID: 50, name: "Lobby", image: "50_lobby/50_lobby.jpg", nightImage: "50_lobby/50_lobbynight.jpg", houseID: 50, btn: "roomBtn_50.png" },
     { roomID: 51, name: "Tif's Living Room", image: "51_livingRoom/livingroom.jpg", nightImage: "51_livingRoom/livingroom.jpg", houseID: 50, btn: "roomBtn_51.png" },
     { roomID: 52, name: "Girly Room", image: "52_myroom/52_myroom.jpg", nightImage: "52_myroom/52_myroom_night.jpg", houseID: 50, btn: "roomBtn_52.png" },
-    { roomID: 53, name: "Candy's Room", image: "53_candy/53_candyRoom.jpg", nightImage: "53_candy/53_candyRoom_night.jpg", houseID: 50, btn: "roomBtn_53.png" },
+    { roomID: 53, name: "Candy's Room", image: "53_candy/bg.jpg", nightImage: "53_candy/bg.jpg", houseID: 50, btn: "roomBtn_53.png" },
     { roomID: 54, name: "Tiffany's Room", image: "54_tif/tif.jpg", nightImage: "54_tif/tifNight.jpg", houseID: 50, btn: "roomBtn_54.png" },
     { roomID: 55, name: "Tif's Hallway", image: "55_hallway/hallway.jpg", nightImage: "55_hallway/hallway.jpg", houseID: 50, btn: "roomBtn_55.png" },
     { roomID: 56, name: "Tif's Bathroom", image: "56_bathroom/bathroom.jpg", nightImage: "56_bathroom/bathroom.jpg", houseID: 50, btn: "roomBtn_56.png" },
@@ -320,10 +286,9 @@ g.rooms = [
     { roomID: 456, name: "Park Bench", image: "456_bench/456_bg.jpg", nightImage: "456_bench/456_bg_night.jpg", houseID: 450, btn: "roomBtn_454.png" },
     { roomID: 460, name: "Forest Path", image: "460_parkRun/path1.jpg", nightImage: "460_parkRun/path1Night.jpg", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 461, name: "Run", image: "461_run/path2.jpg", nightImage: "461_run/path2Night.jpg", houseID: 450, btn: "roomBtn_461.png" },
-    { roomID: 475, name: "Fight", image: "475_fight/475_path_1.jpg", nightImage: "475_fight/475_path_1.jpg", houseID: 450, btn: "roomBtn_460.png" },
+    { roomID: 475, name: "Forest", image: "475_fight/475_path_1.jpg", nightImage: "475_fight/475_path_1.jpg", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 476, name: "Wander", image: "475_fight/475_fightScene0.png", nightImage: "475_fight/475_fightScene0.png", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 477, name: "Cottage", image: "477_cottage/bg.jpg", nightImage: "477_cottage/bg.jpg", houseID: 450, btn: "roomBtn_477.png" },
-
 
     { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.jpg", nightImage: "478_kitchen/bg.jpg", houseID: 480, btn: "roomBtn_478.png" },
     { roomID: 479, name: "Cave Hall", image: "479_hall/bg.jpg", nightImage: "479_hall/bg.jpg", houseID: 480, btn: "roomBtn_479.png" },
@@ -350,6 +315,12 @@ g.rooms = [
     { roomID: 556, name: "Spar Training", image: "555_backgym/ring.jpg", nightImage: "555_backgym/ring.jpg", houseID: 550, btn: "roomBtn_555.png" },
 
     { roomID: 575, name: "Sausage", image: "575_fastfood/bg.jpg", nightImage: "575_fastfood/bg.jpg", houseID: 575, btn: "roomBtn_575.png" },
+
+    { roomID: 585, name: "Living Room", image: "585_livingRoom/bg.jpg", nightImage: "585_livingRoom/bg.jpg", houseID: 575, btn: "roomBtn_585.png" },
+    { roomID: 586, name: "Kitchen", image: "586_kitchen/bg.jpg", nightImage: "586_kitchen/bg.jpg", houseID: 575, btn: "roomBtn_586.png" },
+    { roomID: 587, name: "Bathroom", image: "587_bathroom/bg.jpg", nightImage: "587_bathroom/bg.jpg", houseID: 575, btn: "roomBtn_587.png" },
+    { roomID: 588, name: "Doofus's Room", image: "588_doofus/bg.jpg", nightImage: "588_doofus/bg.jpg", houseID: 575, btn: "roomBtn_588.png" },
+    { roomID: 589, name: "Liam's Room", image: "589_liam/bg.jpg", nightImage: "589_liam/bg.jpg", houseID: 575, btn: "roomBtn_589.png" },
 
 
     { roomID: 600, name: "For Testing", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
@@ -388,6 +359,7 @@ g.rooms = [
     { roomID: 902, name: "Girl's Swim Locker", image: "902_girl/bg.jpg", nightImage: "902_girl/bg.jpg", houseID: 901, btn: "roomBtn_902.png" },
     { roomID: 903, name: "Boy's Swim Locker", image: "903_boy/bg.jpg", nightImage: "903_boy/bg.jpg", houseID: 901, btn: "roomBtn_903.png" },
     { roomID: 904, name: "Test", image: "904_test/t1.jpg", nightImage: "904_test/t1.jpg", houseID: 901, btn: "roomBtn_903.png" },
+    { roomID: 905, name: "College Library", image: "905_library/frontDesk.jpg", nightImage: "905_library/frontDesk.jpg", houseID: 901, btn: "roomBtn_905.png" },
 
     { roomID: 910, name: "Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 911, btn: "roomBtn_910.png" },
     { roomID: 911, name: "City Hall", image: "911_cityhall/bg.jpg", nightImage: "911_cityhall/bg.jpg", houseID: 910, btn: "roomBtn_911.png" },
@@ -435,22 +407,22 @@ g.roomMapInit = function () {
         { roomID: 404, display: "Spankey's", access: true, darkAccess: true, left: 530, top: 375, width: 93, height: 126, img: "map/404.png", night: "map/404_night.png", map: 1 },
         { roomID: 405, display: "Hair Cut", access: true, darkAccess: false, left: 230, top: 469, width: 163, height: 129, img: "map/405.png", night: "map/405_night.png", map: 2 },
         { roomID: 406, display: "Contacts", access: true, darkAccess: false, left: 962, top: 408, width: 88, height: 95, img: "map/406.png", night: "map/406_night.png", map: 2 },
-        //{ roomID: 407, display: "Makeup", access: false, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
+        { roomID: 407, display: "Makeup", access: true, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
         { roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
         { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
         { roomID: 500, display: "Zoey's", access: true, darkAccess: true, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
         { roomID: 525, display: "Zoey's Bar", access: false, darkAccess: true, left: 1162, top: 693, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 2 },
         //{ roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },
         { roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
-        { roomID: 575, display: "Sausage", access: true, darkAccess: false, left: 589, top: 114, width: 93, height: 97, img: "map/575.png", night: "map/575_night.png", map: 1 },
+        { roomID: 575, display: "Sausage", access: true, darkAccess: true, left: 589, top: 114, width: 93, height: 97, img: "map/575.png", night: "map/575_night.png", map: 1 },
         { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
         { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
         { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },
         { roomID: 750, display: "Homeless Camp", access: true, darkAccess: true, left: 1663, top: 391, width: 162, height: 208, img: "map/750.png", night: "map/750_night.png", map: 2 },
         { roomID: 800, display: "Ralph's House", access: true, darkAccess: true, left: 1633, top: 414, width: 103, height: 137, img: "map/800.png", night: "map/800_night.png", map: 1 },
         //{ roomID: 825, display: "Dirty Lot", access: true, darkAccess: true, left: 1697, top: 737, width: 223, height: 233, img: "map/825.png", night: "map/825_night.png", map: 2 },
-        //{ roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
-        //{ roomID: 900, display: "University", access: true, darkAccess: true, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
+        { roomID: 875, display: "Football Field", access: true, darkAccess: true, left: 539, top: 683, width: 140, height: 258, img: "map/875.png", night: "map/875_night.png", map: 1 },
+        { roomID: 900, display: "University", access: true, darkAccess: true, left: 879, top: 630, width: 225, height: 235, img: "map/900.png", night: "map/900_night.png", map: 1 },
         { roomID: 901, display: "Pool", access: true, darkAccess: false, left: 714, top: 675, width: 142, height: 86, img: "map/901.png", night: "map/901_night.png", map: 1 },
         { roomID: 911, display: "City Hall", access: true, darkAccess: false, left: 1260, top: 646, width: 253, height: 162, img: "map/910.png", night: "map/910_night.png", map: 1 },
 
