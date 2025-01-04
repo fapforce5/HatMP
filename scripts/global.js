@@ -392,7 +392,7 @@ g.roomMapInit = function () {
         { roomID: 50, display: "Tif's Place", access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
         { roomID: 75, display: "Bimbo's Place", access: true, darkAccess: true, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
         { roomID: 100, display: "Construction", access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
-        //{ roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
+        { roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
         //{ roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
         { roomID: 203, display: "Missy's", access: true, darkAccess: true, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
         { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },

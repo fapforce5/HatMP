@@ -97,6 +97,10 @@ room405.chatcatch = function (callback) {
                 $('#menu-bg_4').html('<img src="./images/room/405_reds/color_' + colorTemp + '.png" data-name="' + colorTemp + '" data-type="color" class="hair-change"/>');
                 colorTemp = 'rainbow';
                 $('#menu-bg_5').html('<img src="./images/room/405_reds/color_' + colorTemp + '.png" data-name="' + colorTemp + '" data-type="color" class="hair-change"/>');
+                if (!qdress.st[3].ach) {
+                    $('#menu-bg_4').append('<img src="./images/inv/tooGirly.png" class="click-thru"/>');
+                    $('#menu-bg_5').append('<img src="./images/inv/tooGirly.png" class="click-thru"/>');
+                }
                 $('#menu-bg_6').html('<img src="./images/room/405_reds/cancel.png" data-name="cancel" data-type="cancel" class="hair-change"/>');
             }
             $('.hair-change').click(function () {
@@ -107,7 +111,7 @@ room405.chatcatch = function (callback) {
                     var thisType = $(this).data('type');
                     if (thisType === "color") {
                         if ((g.internal === "pink" || g.internal === "rainbow") && !qdress.st[3].ach) {
-                            $('.hair-change[data-name="' + g.internal + '"]').after('<img src="./images/inv/tooGirly.png" />');
+                            chat(5, 405);
                             return;
                         }
                     }
@@ -192,6 +196,14 @@ room405.chat = function (chatID) {
             chatID: 4,
             speaker: "red",
             text: "Love your boldness! I wish I could go out like that! So what will it be?",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "thinking",
+            text: "What am I thinking! There's no way I would EVER dye my hair like a girl. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

@@ -91,13 +91,8 @@ room503.chatcatch = function (callback) {
         case "finishShowering":
             cl.undo();
             char.addtime(30);
-            if (!daily.get("shower")) {
-                gv.mod("energy", 10000);
-                daily.set("shower");
-                char.room(503);
-            }
-            else
-                char.room(503);
+            daily.set("shower");
+            char.room(503);
             break;
         case "shaveBody":
             if (cl.c.bodyhair > 0)

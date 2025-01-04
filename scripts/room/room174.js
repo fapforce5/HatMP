@@ -586,7 +586,7 @@ room174.chat = function (chatID) {
         {
             chatID: 45,
             speaker: "martha",
-            text: "Here's Ralph. *sigh* ",
+            text: "Here's " + sc.n("ralph") + ". *sigh* ",
             button: [
                 { chatID: 41, text: "...", callback: "xdress6" },
             ]

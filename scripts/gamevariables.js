@@ -47,6 +47,7 @@ gv.init = function () {
         { n: "money", t: 100, q: "money" },
         { n: "arousal", t: 5, q: "hundred" },
         { n: "xdress", t: false, q: "bool" },
+        { n: "shower", t: g.startDate, q: "date" },
 
         //character
         { n: "map", t: 1, q: "int" },
@@ -411,7 +412,7 @@ gv.init = function () {
         { id: 9, pId: 8, icon: "qxdress3", p: 3, h: false, x: 1132, y: 359, ach: false, name: "Commando", desc: "You feel comfortable going out without bra and panties. " },
         { id: 10, pId: 9, icon: "qxdress4", p: 4, h: false, x: 1283, y: 359, ach: false, name: "Nudist", desc: "You are comfortable enough with your body that you can wear anthing or nothing." },
 
-        { id: 11, pId: 3, icon: "qc2", p: 1, h: true, x: 830, y: 774, ach: false, name: "A Cup", desc: "Feminie Body" },
+        { id: 11, pId: 3, icon: "qc2", p: 1, h: true, x: 830, y: 774, ach: false, name: "A Cup", desc: "Feminine Body" },
         { id: 12, pId: 11, icon: "qc3", p: 1, h: true, x: 981, y: 774, ach: false, name: "B Cup", desc: "We must increase our bust!" },
         { id: 13, pId: 12, icon: "qc4", p: 2, h: true, x: 1132, y: 774, ach: false, name: "C Cup", desc: "A good size" },
         { id: 14, pId: 13, icon: "qc5", p: 3, h: true, x: 1283, y: 774, ach: false, name: "DDD Cup", desc: "A bit big" },
@@ -522,7 +523,22 @@ stats.get = function (t, n) { return stats.st[stats.i(t, n)].c };
 
 daily.set = function (t, override = true) {
     var n = daily.i(t);
+    if (t === "shower") {
+        if (!daily.st[n].t) {
+            gv.set("shower", g.dt);
+            let maxEnergy = gv.get("maxenergy");
+            let energy = gv.get("energy");
+            if (energy < maxEnergy) {
+                gv.mod("energy", maxEnergy - energy);
+            }
+            else
+                g.popUpNotice("Already at Max energy");
+        }
+
+        cl.clean("face");
+    }
     n >= 0 ? daily.st[n].t = override : console.log("daily set " + t + " not found")
+    
 }; //sets daily to true
 
 weekly.set = function (t, override = true) {
@@ -1008,6 +1024,7 @@ levels.handGive = function (gender) {
 levels.oralGive = function (size, swallow, isDildo, gender = null) {
     //levels.mod("oral", 25, 999);
     levels.oral(size);
+    gv.mod("arousal", 15);
     if (swallow === null) {
         //noop
     }
@@ -1066,6 +1083,10 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
         if (gender !== null)
             stats.mod("sissygasm", gender, 1);
     }
+    else {
+        gv.mod("arousal", 30);
+    }
+
     if (creampie) {
         levels.mod("cum", 25, 999);
         if (beast === null) {
@@ -1304,11 +1325,11 @@ levels.analTake = function (size) {
             break;
     }
     switch (retvar) {
-        case "noop": return { n: retvar, c: 0 };
-        case "easy": return { n: retvar, c: 1 };
-        case "normal": return { n: retvar, c: 2 };
-        case "brutal": return { n: retvar, c: 3 };
-        case "broken": return { n: retvar, c: 4 };
+        case "noop": return { n: retvar, c: 0, canTake: true };
+        case "easy": return { n: retvar, c: 1, canTake: true };
+        case "normal": return { n: retvar, c: 2, canTake: true };
+        case "brutal": return { n: retvar, c: 3, canTake: true };
+        case "broken": return { n: retvar, c: 4, canTake: false };
     };
 };
 

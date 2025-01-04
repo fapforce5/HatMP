@@ -79,13 +79,13 @@ room13.main = function () {
                     "image": (g.isNight() ? "13_sisterRoom/13_lola_pj.png" : "13_sisterRoom/13_lola_reading.png")
                 },
                     {
-                        "type": "btn",
+                        "type": "grab",
                         "name": "lolaboobs",
                         "left": 1469,
                         "top": 507,
                         "width": 116,
                         "height": 60,
-                        "image": (g.isNight() ? "13_sisterRoom/13_lola_pjboob.png" : "13_sisterRoom/13_lola_readingboob.png")
+                        "image": "13_sisterRoom/13_lola_readingboob.png"
                     },
                 {
                     "type": "btn",
@@ -97,13 +97,13 @@ room13.main = function () {
                     "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
                     },
                     {
-                        "type": "btn",
+                        "type": "grab",
                         "name": "evaboobs",
                         "left": 876,
                         "top": 512,
                         "width": 118,
                         "height": 70,
-                        "image": (g.isNight() ? "13_sisterRoom/13_eva_pjboobs.png" : "13_sisterRoom/13_eva_sittingboobs.png")
+                        "image": "13_sisterRoom/13_eva_sittingboobs.png"
                     }
                 ];
                 g.internal = { lola: scc.getSet("lola"), eva: scc.getSet("eva") };
@@ -249,9 +249,24 @@ room13.btnclick = function (name) {
             char.room(31);
             break;
         case "lolaboobs":
+            nav.killbutton("lolaboobs");
+            if (g.isNight()) {
+                nav.modbutton("lola", "13_sisterRoom/13_lola_pj2.png", null, null);
+            }
+            else {
+                nav.modbutton("lola", "13_sisterRoom/13_lola_reading2.png", null, null);
+            }
             chat(194, 13);
             break;
         case "evaboobs":
+            nav.killbutton("evaboobs");
+            if (g.isNight()) {
+                nav.modbutton("eva", "13_sisterRoom/13_eva_pj2.png", null, null);
+
+            }
+            else {
+                nav.modbutton("eva", "13_sisterRoom/13_eva_sitting2.png", null, null);
+            }
             chat(195, 13);
             break;
         case "lola":

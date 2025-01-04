@@ -120,6 +120,8 @@ nav.button = function (btn, roomNum) {
             classes = "room-btn-brush rom-event";
         else if (btn.type === "hand")
             classes = "room-btn-hand rom-event";
+        else if (btn.type === "grab")
+            classes = "room-btn-grab rom-event";
         else if (btn.type === "vib")
             classes = "room-btn-vib rom-event";
         else if (btn.type === "btnflat")
@@ -162,6 +164,8 @@ nav.t = function (btn, roomNum) {
         classes = "room-btn-tongue rom-event";
     else if (btn.type === "hand")
         classes = "room-btn-hand rom-event";
+    else if (btn.type === "grab")
+        classes = "room-btn-grab rom-event";
     else if (btn.type === "btnflat")
         classes = "room-btnflat room-btn rom-event";
     else if (btn.type === "zimg")
@@ -214,6 +218,8 @@ nav.inputbox = function (btn, roomNum) {
         classes = "room-btn-brush rom-event";
     else if (btn.type === "hand")
         classes = "room-btn-hand rom-event";
+    else if (btn.type === "grab")
+        classes = "room-btn-grab rom-event";
     else if (btn.type === "btnflat")
         classes = "room-btnflat room-btn rom-event";
     else if (btn.type === "zimg")

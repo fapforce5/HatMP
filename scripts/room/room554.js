@@ -17,14 +17,10 @@ room554.main = function () {
         chat(2, 554);
     }
     else {
-        cl.clean("face");
         cl.nude();
         zcl.displayMain(120, 1200, .15, "shower", false);
         chat(1, 554);
-        if (!daily.get("shower")) {
-            daily.set("shower");
-            gv.mod("energy", 1000);
-        }
+        daily.set("shower");
     }
     nav.buildnav(navList);
 };

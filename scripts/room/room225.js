@@ -95,8 +95,7 @@ room225.btnclick = function (name) {
             nav.bg("225_sewer/p1_" + g.internal + ".jpg");
             if (g.internal === 5) {
                 nav.killbutton("p11");
-                gv.mod("giveOralMale", 1);
-                gv.mod("loadSwollowed", 1);
+                levels.oralGive(3, true, false, "m");
                 gv.mod("money", 20);
                 cl.c.cumface = true;
                 chat(14, 225);
@@ -140,8 +139,7 @@ room225.chatcatch = function (callback) {
             nav.bg("225_sewer/p0_3.jpg");
             break;
         case "p0end":
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
+            levels.anal(3, false, "m", true);
             char.addtime(120);
             gv.mod("money", 50);
             char.room(225);
@@ -150,15 +148,7 @@ room225.chatcatch = function (callback) {
             nav.killall();
             nav.bg("225_sewer/p1_1.jpg");
             g.internal = 2;
-            nav.button({
-                "type": "btn",
-                "name": "p11",
-                "left": 1687,
-                "top": 900,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 225);
+            nav.next("p11")
             break;
         case "p16":
             nav.bg("225_sewer/p1_6.jpg");
@@ -191,19 +181,10 @@ room225.chatcatch = function (callback) {
         case "p24":
             g.internal = 5;
             nav.bg("225_sewer/p2_4.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "p2",
-                "left": 1687,
-                "top": 900,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 225);
+            nav.next("p2");
             break;
         case "p25":
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
+            levels.anal(3, false, "m", true);
             gv.mod("money", 100);
             char.nexttime(7);
             char.room(225);

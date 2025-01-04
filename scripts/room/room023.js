@@ -1388,7 +1388,8 @@ room23.chat = function (chatID) {
         else {
             var mblist = g.internal.myDare[mp][darepointer].b;
             mblist.push({ chatID: -1, text: "I'm not doing that. That's enough for tonight.", callback: "endGame" });
-            var mbtxt = g.internal.nextTurn === "eva" ? g.internal.myDare[mp][darepointer].e : g.internal.myDare[mp][darepointer].l;
+            //var mbtxt = g.internal.nextTurn === "eva" ? g.internal.myDare[mp][darepointer].e : g.internal.myDare[mp][darepointer].l;
+            var mbtxt = g.internal.whoTurn === "eva" ? g.internal.myDare[mp][darepointer].e : g.internal.myDare[mp][darepointer].l;
 
             g.internal.myDare[mp].splice(darepointer, 1);
 

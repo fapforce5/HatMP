@@ -173,6 +173,8 @@ cl.init = function () {
         { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
         { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
 
+        
+        { type: "ear", name: "e_s", display: "Stud Earing", img: "ear_stud.png", sex: "m", inv: false, daring: 0, price: 20 },
         { type: "ear", name: "e_h", display: "Heart Earring", img: "ear_heart.png", sex: "f", inv: false, daring: 2, price: 50 },
         { type: "ear", name: "e_l", display: "Loop Earring", img: "ear_loop.png", sex: "f", inv: false, daring: 4, price: 10 },
         { type: "ear", name: "e_p", display: "Pearl Earring", img: "ear_pearl.png", sex: "f", inv: false, daring: 3, price: 120 },
@@ -793,6 +795,7 @@ cl.tattoo = [
 ];
 
 cl.earring = [
+    { name: "e_s", image: "ear_stud.png" },
     { name: "e_h", image: "ear_heart.png" },
     { name: "e_l", image: "ear_loop.png" },
     { name: "e_p", image: "ear_pearl.png" },
@@ -841,49 +844,26 @@ cl.nipplering = [
 ];
 
 cl.getmakeup = function () {
-    var i, ret;
-    ret = "";
-    if (cl.c.makeup === null || cl.c.makeup === "n")
-        return "none";
-    if (cl.c.makeup === "light")
-        return "Light Black";
+    if (cl.c.makeup === null)
+        cl.c.makeup = "n";
 
-    $.each(cl.makeup, function (i, v) {
-
-        if (cl.c.makeup === v.name) {
-            switch (v.name[0]) {
-                case "l":
-                    ret = "Light ";
-                    break;
-                case "m":
-                    ret = "Medium ";
-                    break;
-                case "h":
-                    ret = "Bimbo ";
-                    break;
-                case "r":
-                    ret = "Ruined ";
-                    break;
-            }
-            switch (v.name[1]) {
-                case "b":
-                    ret += "Black";
-                    break;
-                case "p":
-                    ret += "Purple";
-                    break;
-            }
-            return;
-        }
-    });
-    return ret;
+    let makeup = cl.c.makeup;
+    if (makeup === "n") {
+        if (g.diffDateByMinutes(g.dt, gv.get("shower")) < 4320)
+            makeup = "natural";
+    }
+    for (let i = 0; i < cl.makeup.length; i++) {
+        if (cl.makeup[i].name === makeup)
+            return { name: cl.makeup[i].name, image: cl.makeup[i].image };
+    }
 };
 
 cl.getMakeupWeight = function () {
     var retValue = 0;
-     if (cl.c.makeup === "natural")
+    let makeup = cl.getmakeup();
+    if (makeup === "natural")
         retValue += 1;
-    else if (cl.c.makeup !== "n")
+    else if (makeup !== "n")
         retValue += 2;
 
     if (cl.c.lipstick !== null)
@@ -892,33 +872,6 @@ cl.getMakeupWeight = function () {
     if (cl.c.pissface !== null)
         retValue++;
     return retValue;
-
-    //if (cl.c.makeup === null) {
-    //    retValue = 0;
-    //}
-    //else if (cl.c.makeup === "n") {
-    //    retValue = 0;
-    //}
-    //else if (cl.c.makeup === "light") {
-    //    retValue = 1;
-    //}
-    //else {
-    //    switch (cl.c.makeup[0]) {
-    //        case "l":
-    //            retValue = 1;
-    //            break;
-    //        case "m":
-    //            retValue = 2;
-    //            break;
-    //        case "h":
-    //        case "r":
-    //            retValue = 3;
-    //            break;
-    //        default:
-    //            retValue = 0;
-    //    }
-    //}
-    //return retValue;
 };
 
 cl.getLips = function () {
@@ -1928,7 +1881,6 @@ cl.display = function () {
         //set mouth
         cl.subDisplay("char-lips", cback ? null : "lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png");
         //set eyes
-        //body_eyes_brown_f
         if (cl.c.pissface === null) {
             cl.subDisplay("char-eyeliner", null);
             cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + ".png");
@@ -1937,7 +1889,8 @@ cl.display = function () {
             cl.subDisplay("char-eyeliner", cback ? null : "eyeliner_" + cl.c.pissface + ".png");
             cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + "_f.png");
         }
-            //set cock
+
+        //set cock
         if (cl.c.chastity === null)
             cl.subDisplay("char-cock", cback ? null : "cock_" + cl.c.cock + ".png");
         else {
@@ -1996,7 +1949,7 @@ cl.display = function () {
             for (i = 0; i < cl.bellyring.length; i++)
                 if (cl.bellyring[i].name === cl.c.bellyring) {
                     cl.subDisplayAppend("char-accBody", cl.bellyring[i].image);
-                    i = 99999;
+                    break;
                 }
         }
 
@@ -2013,15 +1966,10 @@ cl.display = function () {
         }
 
         //set Head
-        if (cl.c.makeup === null)
-            cl.c.makeup = "n";
         if (cback)
             cl.subDisplay("char-head", "body_head_back.png");
         else {
-            $.each(cl.makeup, function (i, v){
-                if (v.name === cl.c.makeup)
-                    cl.subDisplay("char-head", v.image);
-            });
+            cl.subDisplay("char-head", cl.getmakeup().image);
         }
         //set hair
         if (cl.c.wig !== null) {
@@ -2288,7 +2236,7 @@ cl.subDisplayAppend = function (id, image) {
     if (image !== null) {
         var btnWidth = 300 * g.ratio;
         var btnHeight = 600 * g.ratio;
-        $('#' + id).after('<div class="char-layer" style="top:' + 50*g.ratio + 'px;"><img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:0px; left:0px; position:absolute" /></div>');
+        $('#' + id).append('<img src="./images/mainChar/' + image + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:0px; left:0px; position:absolute" />');
     }
 };
 
@@ -2633,6 +2581,7 @@ cl.subscore = function (thisScore, levels, howManyPoints) {
 };
 
 cl.clean = function (type) {
+    gv.set("shower", g.dt);
     cl.c.cumface = null;
     cl.c.makeup = "n";
     cl.c.lipstick = null;

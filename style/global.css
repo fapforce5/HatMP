@@ -114,6 +114,11 @@ input[type=text]:disabled{
     cursor: url('../images/general/h.png'), auto;
 }
 
+.room-btn-grab {
+    position: absolute;
+    cursor: url('../images/general/grab.png'), auto;
+}
+
 .room-btn-vib {
     position: absolute;
     cursor: url('../images/general/vib.png'), auto;

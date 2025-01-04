@@ -102,17 +102,11 @@ room201.chatcatch = function (callback) {
             inv.use("razor");
             zcl.displayMain(0, 400, .22, "shower", false);
             cl.display();
-            if (!daily.get("shower")) {
-                gv.mod("energy", 10000);
-                daily.set("shower");
-            }
+            daily.set("shower");
             break;
         case "finishShowering":
             cl.undo();
-            if (!daily.get("shower")) {
-                gv.mod("energy", 10000);
-                daily.set("shower");
-            }
+            daily.set("shower");
             char.room(201);
             break;
         //case "step2FinishCleaning":

@@ -233,7 +233,6 @@ room12.btnclick = function (name) {
             break;
         case "shower":
             nav.killall();
-            cl.clean("face");
             cl.nude();
             zcl.displayMain(0, 400, .22, "shower", false);
             nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");
@@ -454,19 +453,16 @@ room12.chatcatch = function (callback) {
             cl.undo();
             char.addtime(30);
             if (!daily.get("shower")) {
-                gv.mod("energy", 10000);
                 daily.set("shower");
                 if (sc.getTimeline("landlord").roomID < 50) {
                     nav.killall();
                     nav.bg("12_bathroom/lotion1.jpg");
                     chat(39, 12);
-                }
-                else {
-                    char.room(12);
+                    return;
                 }
             }
-            else
-                char.room(12);
+            daily.set("shower");
+            char.room(12);
             break;
         case "lotion2":
             levels.mod("xdress", 10, 3);

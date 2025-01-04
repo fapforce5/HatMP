@@ -31,9 +31,7 @@ room56.main = function () {
 room56.btnclick = function (name) {
     switch (name) {
         case "shower":
-
             nav.killall();
-            cl.clean("all");
             cl.nude();
             zcl.displayMain(0, 400, .22, "shower", false);
             nav.bg("56_bathroom/shower.jpg", "56_bathroom/shower.jpg");
@@ -63,8 +61,6 @@ room56.chatcatch = function (callback) {
             break;
         case "finishShowering":
             cl.undo();
-            if (!daily.get("shower"))
-                gv.mod("energy", 10000);
             char.addtime(30);
             daily.set("shower");
             char.room(56);

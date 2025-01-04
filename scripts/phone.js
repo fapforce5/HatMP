@@ -311,9 +311,10 @@ phone.characters = function () {
     
     let j = 0;
     let i;
+    let showCharcterCounter = 0;
     for (i = 0; i < sc.char.length; i++) {
-        if (i >= phone.charPointer && j < 18) {
-            if (sc.char[i].show) {
+        if (sc.char[i].show) {
+            if (showCharcterCounter >= phone.charPointer && j < 18) {
                 nav.button({
                     "type": "zbtn",
                     "name": "phone_charselect_" + sc.char[i].name,
@@ -345,6 +346,7 @@ phone.characters = function () {
                 }, 1);
                 j++;
             }
+            showCharcterCounter++;
         }
     }
     let prevexists = phone.charPointer > 0;
@@ -842,7 +844,7 @@ room9999.btnclick = function (name) {
                 phone.saveMenu();
                 break;
             case "phone_rel":
-                phone.charPointer = 0;
+                //phone.charPointer = 0;
                 phone.characters();
                 break;
             case "phone_rel_next":

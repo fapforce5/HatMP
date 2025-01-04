@@ -26,7 +26,7 @@ room200.btnclick = function (name) {
             var activeCaseComplete = missy.get("activeCaseComplete");
             var missyUniform = missy.get("uniform");
             var sissyLevel = levels.get("xdress").l;
-
+            
             if (missy.get("totalDaysWorked") < 1)
                 chat(0, 200);
             else if (missy.get("totalDaysWorked") === 5 && missy.get("missyEventTracker") === 0) {
@@ -105,6 +105,9 @@ room200.btnclick = function (name) {
             else if (missy.st[31].c === 0 && sissy.st[7].ach) {
                 missy.st[31].c = 1;
                 chat(55, 200);
+            }
+            else if (cl.getmakeup().name === "n") {
+                chat(79, 200);
             }
             else
                 room200.chatcatch("selectJob");
@@ -478,6 +481,9 @@ room200.chatcatch = function (callback) {
                 chat(64, 200);
             else
                 chat(66, 200);
+            break;
+        case "punish":
+            char.room(217);
             break;
     };
 };
@@ -1264,6 +1270,18 @@ room200.chat = function (chatID) {
                     "payment. $100 will do. ",
                 button: [
                     { chatID: -1, text: "Thank you ma'am", callback: "case_elijah_origin_goodBad" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "missy",
+                text: "You know what's the most important thing about being a detective? " +
+                    "Blending in. You can't blend in if you stink like a homeless man " +
+                    "eating shit out of a public outhouse, and you stink. So I don't have " +
+                    "to keep reminding you to shower you must be punished. Don't come back " + 
+                    "without regularly showing. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "punish" },
                 ]
             },
         ];

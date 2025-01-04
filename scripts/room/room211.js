@@ -6,6 +6,12 @@ room211.main = function () {
     var hasFinalSissyOutfit = cl.hasClothing("shirt", "sq");
     if (!sissy.st[0].ach) { //firstday
         gv.set("sissySchoolClass", "firstday");
+        sc.show("philbert");
+        sc.modSecret("philbert", 100);
+        sc.show("ralph");
+        sc.modSecret("ralph", 100);
+        sc.show("sporty");
+        sc.modSecret("sporty", 100);
         char.room(209);
     }
     else if (sissy.st[10].ach && !hasFinalSissyOutfit) {

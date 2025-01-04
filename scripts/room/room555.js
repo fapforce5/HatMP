@@ -1,6 +1,10 @@
 ﻿//Room name
 var room555 = {};
 room555.main = function () {
+    if (gender.pronoun("m") === "f") {
+        sc.modSecret("g", 100);
+        sc.modSecret("chad", 100);
+    }
     if (sc.getMission("g", "secret").notStarted) {
         sc.startMission("g", "secret");
         sc.completeMissionTask("g", "secret", 0, true);
@@ -270,7 +274,7 @@ room555.btnclick = function (name) {
             if (gv.get("energy") < 75) {
                 chat(34, 555);
             }
-            else if (levels.analTake(3).canTake) {
+            else if (!levels.analTake(3).canTake) {
                 chat(48, 555);
             }
             else {
@@ -286,7 +290,7 @@ room555.btnclick = function (name) {
             if (gv.get("energy") < 75) {
                 chat(34, 555);
             }
-            else if (levels.analTake(4).canTake) {
+            else if (!levels.analTake(4).canTake) {
                 chat(48, 555);
             }
             else {

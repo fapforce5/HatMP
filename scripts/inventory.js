@@ -657,6 +657,22 @@ inv.createElements = function () {
                         $("#menu_displayAction").hide();
                         $("#menu_displayCountLine").hide();
                         $('#menu_displayInfo').html("PURCHASED");
+                        if (cl.list[tic].type === "ear") {
+                            cl.c.earring = cl.list[tic].name;
+                            cl.display();
+                        }
+                        if (cl.list[tic].type === "nose") {
+                            cl.c.nosering = cl.list[tic].name;
+                            cl.display();
+                        }
+                        if (cl.list[tic].type === "belly") {
+                            cl.c.bellyring = cl.list[tic].name;
+                            cl.display();
+                        }
+                        if (cl.list[tic].type === "nipple") {
+                            cl.c.nipplering = cl.list[tic].name;
+                            cl.display();
+                        }
                     }
                 }
             }

@@ -1,78 +1,131 @@
 ﻿//Tattoo name
 var room408 = {};
 room408.main = function () {
-    g.internal = {
-        fairy: {
-            name: "fairy",
-            img: "tattoo_fairy.png",
-            inv: false,
-            x: 600,
-            y: 200
-        },
-        trampstamp: {
-            name: "trampstamp",
-            img: "tattoo_trampstamp.png",
-            inv: false,
-            x: 800,
-            y: 200
-        },
-        bunny: {
-            name: "bunny",
-            img: "tattoo_bunny.png",
-            inv: false,
-            x: 600,
-            y: 400
-        },
-        sissy: {
-            name: "sissy",
-            img: "tattoo_sissy.png",
-            inv: false,
-            x: 800,
-            y: 400
-        },
-        //custom: {
-        //    name: "custom",
-        //    img: "tattoo_custom.png",
-        //    inv: false,
-        //    x: 600,
-        //    y: 600
-        //}
-    };
-    if (sc.getEvent("stormy", -1) && g.hourBetween(10, 20)) {
-        //sc.revokeStep("stormy", -1);
-        nav.bg("408_tattoo/inside.jpg");
-        chat(38, 408);
-    }
-    else if (g.sissy[27].ach || g.sissy[30].ach) {
-        if (g.hourBetween(10, 20)) {
-            nav.bg("408_tattoo/inside.jpg");
-            var activeCase = q3.activeSearch("stormy");
-            if (!g.sissy[30].ach) {
-                if (activeCase)
-                    chat(6, 408);
-                else
-                    chat(2, 408);
-            }
-            else {
-                if (activeCase)
-                    chat(7, 408)
-                else
-                    chat(3, 408);
-            }
-        }
-        else {
-            chat(0, 408);
-        }
-    }
-    else {
-        chat(1, 408);
-    }
-    var navList = [0];
-    nav.buildnav(navList);
+    nav.button({
+        "type": "btn",
+        "name": "door",
+        "left": 794,
+        "top": 142,
+        "width": 199,
+        "height": 307,
+        "image": "408_tattoo/door.png",
+        "night": "408_tattoo/door_night.png"
+    }, 408);
+    nav.buildnav([0]);
+    //g.internal = {
+    //    fairy: {
+    //        name: "fairy",
+    //        img: "tattoo_fairy.png",
+    //        inv: false,
+    //        x: 600,
+    //        y: 200
+    //    },
+    //    trampstamp: {
+    //        name: "trampstamp",
+    //        img: "tattoo_trampstamp.png",
+    //        inv: false,
+    //        x: 800,
+    //        y: 200
+    //    },
+    //    bunny: {
+    //        name: "bunny",
+    //        img: "tattoo_bunny.png",
+    //        inv: false,
+    //        x: 600,
+    //        y: 400
+    //    },
+    //    sissy: {
+    //        name: "sissy",
+    //        img: "tattoo_sissy.png",
+    //        inv: false,
+    //        x: 800,
+    //        y: 400
+    //    },
+    //    //custom: {
+    //    //    name: "custom",
+    //    //    img: "tattoo_custom.png",
+    //    //    inv: false,
+    //    //    x: 600,
+    //    //    y: 600
+    //    //}
+    //};
+    //if (sc.getEvent("stormy", -1) && g.hourBetween(10, 20)) {
+    //    //sc.revokeStep("stormy", -1);
+    //    nav.bg("408_tattoo/inside.jpg");
+    //    chat(38, 408);
+    //}
+    //else if (g.sissy[27].ach || g.sissy[30].ach) {
+    //    if (g.hourBetween(10, 20)) {
+    //        nav.bg("408_tattoo/inside.jpg");
+    //        var activeCase = q3.activeSearch("stormy");
+    //        if (!g.sissy[30].ach) {
+    //            if (activeCase)
+    //                chat(6, 408);
+    //            else
+    //                chat(2, 408);
+    //        }
+    //        else {
+    //            if (activeCase)
+    //                chat(7, 408)
+    //            else
+    //                chat(3, 408);
+    //        }
+    //    }
+    //    else {
+    //        chat(0, 408);
+    //    }
+    //}
+    //else {
+    //    chat(1, 408);
+    //}
+    //var navList = [0];
+    //nav.buildnav(navList);
 };
 
 room408.btnclick = function (name) {
     switch (name) {
+        case "door":
+            nav.kill();
+            nav.bg("408_tattoo/inside.jpg", "408_tattoo/inside_night.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "stormy",
+                "left": 1042,
+                "top": 101,
+                "width": 475,
+                "height": 979,
+                "image": "408_tattoo/stormy.png",
+            }, 408);
+            break;
+        case "stormy":
+            if (!qdress.st[4].ach && !qdress.st[6].ach) {
+                chat(40, 408);
+            }
+            else {
+                sc.selectBg("selectbg");
+                sc.select("pStart", "408_tattoo/icon_p.png", 0);
+                if (qdress.st[6].ach)
+                    sc.select("tattooStart", "408_tattoo/icon_tattoo.png", 1);
+                else
+                    sc.select("tattooStartNo", "408_tattoo/icon_tattoo_no.png", 1);
+                sc.selectCancel("selectCancel", 2)
+            }
+            break;
+        case "selectCancel":
+            nav.killbutton("selectbg");
+            nav.killbutton("tattooStart");
+            nav.killbutton("pStart");
+            nav.killbutton("tattooStartNo");
+            nav.killbutton("selectCancel");
+            return;
+        case "tattooStartNo":
+            room408.btnclick("selectCancel");
+            chat(41, 408);
+            break;
+        case "pStart":
+            g.pass = "nipple";
+            char.room(401);
+            break;
         case "cancel":
             char.room(408);
             break;
@@ -634,6 +687,22 @@ room408.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Let me try again. ", callback: "" },
                 { chatID: -1, text: "I changed my mind. ", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "stormy",
+            text: "What 'cha want?",
+            button: [
+                { chatID: -1, text: "Oh nothing. [Need to unlock piercings and tattoo in the sissy menu]", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "thinking",
+            text: "I'm not comfortable enough to get a tattoo yet. ",
+            button: [
+                { chatID: -1, text: "[Need to unlock tattoos in the sissy menu]", callback: "" }
             ]
         },
     ];

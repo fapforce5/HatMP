@@ -66,14 +66,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         zcl.displayMainSub("body_head_back.png", top, left, ratio);
     }
     else {
-        if (cl.c.makeup === null)
-            cl.c.makeup = "n";
-        else {
-            $.each(cl.makeup, function (i, v) {
-                if (v.name === cl.c.makeup)
-                    zcl.displayMainSub(v.image, top, left, ratio);
-            });
-        }
+        zcl.displayMainSub(cl.getmakeup().image, top, left, ratio);
     }
 
     if (displayCock) {

@@ -649,7 +649,8 @@ sc.charMission = [
             {
                 missionName: "gloryhole", mStatus: 0, title: "Glory hole!", desc: "Park bathroom on weekends ", task:
                     [
-                        { id: 0, txt: "In development (Not made)", show: false, mStatus: 0, roomId: 211 },
+                        { id: 0, txt: "Did we just become friends?", show: false, mStatus: 0, roomId: 211 },
+                        { id: 1, txt: "2 sissies. 1 gloryhole", show: false, mStatus: 0, roomId: 211 },
                     ]
             },
         ]
@@ -904,6 +905,44 @@ sc.charMission = [
                         { id: 0, txt: "Find him. Probably at a college party", show: true, mStatus: 0, roomId: 586 },
                         { id: 1, txt: "Console him. ", show: true, mStatus: 0, roomId: 586 },
                         { id: 2, txt: "Revenge! ", show: true, mStatus: 0, roomId: 586 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "kei", mission: [
+            {
+                missionName: "cards", mStatus: 0, title: "Boy's Game", desc: "Play some poker", task:
+                    [
+                        { id: 0, txt: "First time", show: true, mStatus: 0, roomId: 125 },
+                        { id: 1, txt: "New rule", show: true, mStatus: 0, roomId: 125 },
+                        { id: 2, txt: "Blowjob bitch", show: true, mStatus: 0, roomId: 125 },
+                        { id: 3, txt: "Me too", show: true, mStatus: 0, roomId: 125 },
+                        { id: 4, txt: "The new class", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "jimmy", mission: [
+            {
+                missionName: "cards", mStatus: 0, title: "Boy's Game", desc: "Play some poker", task:
+                    [
+                        { id: 0, txt: "Sucked his cock", show: true, mStatus: 0, roomId: 125 },
+                        { id: 1, txt: "Not there, my no-no square", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "ralph", mission: [
+            {
+                missionName: "cards", mStatus: 0, title: "Boy's Game", desc: "Play some poker", task:
+                    [
+                        { id: 0, txt: "Sucked his cock", show: true, mStatus: 0, roomId: 125 },
+                        { id: 1, txt: "Coming out", show: true, mStatus: 0, roomId: 125 },
+                        { id: 2, txt: "I guess I'm a cock sucker too", show: true, mStatus: 0, roomId: 125 },
+                        { id: 3, txt: "Why are you naked?", show: true, mStatus: 0, roomId: 125 },
                     ]
             },
         ]
@@ -1606,11 +1645,15 @@ sc.getTimeline = function (char) {
             break;
         case "cecilia":
             timeline = [
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" },
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 21, hend: 24, roomId: null, alt: "Home" },
-                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 16, hend: 21, roomId: null, alt: "Taking cocks in all holes (probably)" },
+                { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" },
                 { d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 203, alt: null }, //office
+                { d: [1, 2, 3, 4, 5], hstart: 16, hend: 20, roomId: 203, alt: "Taking cock" }, //office
+                { d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: 203, alt: "home" }, //office
+
+                { d: [0, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" },
                 { d: [0, 6], hstart: 7, hend: 16, roomId: 451, alt: null }, //blowjob
+                { d: [0, 6], hstart: 16, hend: 24, roomId: 203, alt: "Taking cock" }, //office
+                { d: [0, 6], hstart: 20, hend: 24, roomId: 203, alt: "home" }, //office
             ];
             break;
         case "zoey":

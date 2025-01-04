@@ -158,6 +158,7 @@ room401.main = function () {
         case "nipple":
             navList = [408];
             g.pass.roomID = 408;
+            room401.makeClothing("ear", "m");
             room401.makeClothing("ear", "f");
             room401.makeClothing("nose", "f");
             room401.makeClothing("nipple", "f");
