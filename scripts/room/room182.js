@@ -1361,9 +1361,9 @@ room182.chat = function (chatID) {
             {
                 chatID: 77,
                 speaker: "missy",
-                text: "The rest of you will move on. Some of you have an overall 'F', but managed to at least " +
-                    "one test. The next test is even harder so " +
-                    "I suggest you do you homework and be the best sissy you can if you want to pass. " +
+                text: "The rest of you will move on. Some of you have an overall 'F', but " +
+                    "managed to pass at least one test. The next test is even harder so " +
+                    "I suggest you do your homework and be the best sissy you can if you want to pass. " +
                     "I'll hand out the test results and post the list in the lobby so you can help each " +
                     "other where you are weak. ",
                 button: [
@@ -1395,7 +1395,7 @@ room182.chat = function (chatID) {
                 speaker: "missy",
                 text: "Now that you've all viewed your tests, it's time to announce our star " +
                     "sissy. This sissy is my personal favorite and I expected her to get this " +
-                    "award. Martin, please set forward to receive your crown. ", 
+                    "award. Martin, please step forward to receive your crown. ", 
                 button: [
                     { chatID: 79, text: "...", callback: "crown0a" },
                 ]
@@ -1435,7 +1435,7 @@ room182.chat = function (chatID) {
                 text: "This concludes your first test. Most of you are average. Stop being " +
                     "average and be great. To help you on your way to greatness, the next " +
                     "set of classes will really push you hard into your sissyness, but not " +
-                    "every class is manditory. You must seek greatness on your own. ",
+                    "every class is mandatory. You must seek greatness on your own. ",
                 button: [
                     { chatID: -1, text: "...", callback: "end" },
                 ]

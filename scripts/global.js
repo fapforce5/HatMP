@@ -20,7 +20,7 @@ g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
 g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 201, 209, 318, 451, 452, 503, 552, 553, 587, 727, 875, 902, 903];
+g.roomChange = [10, 12, 56, 201, 209, 318, 320, 451, 452, 503, 552, 553, 587, 727, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
 g.dt = g.startDate;
@@ -252,7 +252,7 @@ g.rooms = [
     { roomID: 317, name: "Kitchen", image: "317_janiceKitchen/kitchen.jpg", nightImage: "317_janiceKitchen/kitchen.jpg", houseID: 300, btn: "roomBtn_317.png" },
     { roomID: 318, name: "Bedroom", image: "318_janiceBedroom/bg.jpg", nightImage: "318_janiceBedroom/bg.jpg", houseID: 300, btn: "roomBtn_318.png" },
     { roomID: 319, name: "Backyard", image: "319_backyard/bg.jpg", nightImage: "319_backyard/bgnight.jpg", houseID: 300, btn: "roomBtn_319.png" },
-
+    { roomID: 320, name: "Bathroom", image: "320_bathroom/bg.jpg", nightImage: "320_bathroom/bgnight.jpg", houseID: 300, btn: "roomBtn_320.png" },
 
     { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
     { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },

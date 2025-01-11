@@ -5,6 +5,7 @@
 //add false transformations - like got an inch shorter / feet shrunk / skin smoother / hair more radiant, hair is finer
 var room28 = {};
 room28.main = function () {
+
     var pjRoom = [7, 10]
     if (pjRoom.includes(g.pass)) {
         cl.wearSavedOutfit(5);
@@ -366,6 +367,9 @@ room28.dreams = function () {
             nav.bg("701_hospitalroom/sleep.jpg");
         else if (g.pass === 181)
             nav.bg("181_black/bondage101_12.jpg");
+        else if (g.pass === 318)
+            nav.bg("28_transformation/318.jpg");
+            
     }
     console.log(hasText);
     return hasText;

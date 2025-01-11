@@ -16,7 +16,8 @@ room101.main = function () {
         chat(22, 101);
     }
     else {
-        if (daily.get("construction")) {
+        if (daily.get("construction") && !daily.get("constructionPay")) {
+            daily.set("constructionPay")
             nav.button({
                 "type": "btn",
                 "name": "tina",
@@ -56,8 +57,10 @@ room101.btnclick = function (name) {
                 chat(1, 101);
             else if (gv.get("jobapplyconst") === 1)
                 chat(3, 101);
-            else if (daily.get("construction")) 
+            else if (daily.get("construction") && !daily.get("constructionPay")) {
+                daily.set("constructionPay");
                 chat(5, 101);
+            }
             else if (g.hourBetween(6, 9))
                 chat(9, 101);
             else {

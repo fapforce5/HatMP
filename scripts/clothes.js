@@ -786,12 +786,35 @@ cl.makeup = [
 ];
 
 cl.tattoo = [
-    { name: "fairy", image: null, back: "tattoo_fairy.png" },
-    { name: "trampstamp", image: null, back: "tattoo_trampstamp.png" },
-    { name: "bunny", image: "tattoo_bunny.png", back: null },
-    { name: "sissy", image: "tattoo_sissy.png", back: null },
-    { name: "slut", image: "tattoo_slut.png", back: null },
-    { name: "cum", image: null, back: "tattoo_cum.png" }
+    { name: "back_rose", image: null, back: "tattoo_back_rose.png" },
+    { name: "back_fairy", image: null, back: "tattoo_back_fairy.png" },
+    { name: "back_wings", image: null, back: "tattoo_back_wings.png" },
+    { name: "back_butterfly", image: null, back: "tattoo_back_butterfly.png" },
+
+    { name: "tramp_butterfly", image: null, back: "tattoo_tramp_butterfly.png" },
+    { name: "tramp_design", image: null, back: "tattoo_tramp_design.png" },
+    { name: "tramp_bat", image: null, back: "tattoo_tramp_bat.png" },
+    { name: "tramp_handlebars", image: null, back: "tattoo_tramp_handlebars.png" },
+    { name: "tramp_jimmy", image: null, back: "tattoo_tramp_jimmy.png" },
+    { name: "tramp_guns", image: null, back: "tattoo_tramp_guns.png" },
+
+    { name: "butt_paws", image: null, back: "tattoo_butt_paws.png" },
+    { name: "butt_sperm", image: null, back: "tattoo_butt_sperm.png" },
+    { name: "butt_qos", image: null, back: "tattoo_butt_qos.png" },
+    { name: "butt_sissy", image: null, back: "tattoo_butt_sissy.png" },
+
+    { name: "womb_breed1", image: "tattoo_womb_breed1.png", back: null },
+    { name: "womb_bat", image: "tattoo_womb_bat.png", back: null },
+    { name: "womb_breed2", image: "tattoo_womb_breed2.png", back: null },
+    { name: "womb_qos", image: "tattoo_womb_qos.png", back: null },
+    { name: "womb_trans", image: "tattoo_womb_trans.png", back: null },
+    
+    { name: "ut_chastity", image: "tattoo_ut_chastity.png", back: null },
+    { name: "ut_qos", image: "tattoo_ut_qos.png", back: null },
+    { name: "ut_kiss", image: "tattoo_ut_kiss.png", back: null },
+    { name: "ut_rose", image: "tattoo_ut_rose.png", back: null },
+
+    { name: "chest_sub", image: "tattoo_chest_sub.png", back: null },
 ];
 
 cl.earring = [
@@ -1829,14 +1852,13 @@ cl.display = function () {
     $(".char-layer").css({
         "top": 50 * g.ratio + "px"
     });
-    $('.char-accBodyx').remove();
     $('#char-accHead').html("");
+    $('#char-accBody').html("");
     if (g.tview === "p" || g.tview === "a") {
         $('#char-legs').html("");
         $('#char-chest').html("");
         $('#char-head').html("");
         $('#char-cock').html("");
-        $('#char-accBody').html("");
         $('#char-bodyHair').html("");
         $('#char-cum').html("");
         $('#char-panties').html("");

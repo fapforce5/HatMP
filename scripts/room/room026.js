@@ -115,6 +115,8 @@ room26.btnclick = function (name) {
                         chat(81, 26);
                     }
                     break;
+                default:
+                    break;
             }
             break;
         case "sit_dickSissy":
@@ -272,6 +274,9 @@ room26.btnclick = function (name) {
                         else {
                             chat(81, 26);
                         }
+                        break;
+                    default:
+                        chat(108, 26);
                         break;
                 }
             }
@@ -681,6 +686,21 @@ room26.chatcatch = function (callback) {
             case "confess1":
                 g.pass = "room14_confess1";
                 char.room(14);
+                break;
+            case "watchTVSissy":
+                nav.killall();
+                char.settime(20, 1);
+                nav.bg("26_livingRoom/tv_c_bg_night.jpg");
+                zcl.displayMain(50, 50, .22, "clothes", false);
+                nav.button({
+                    "type": "img",
+                    "name": "tv_c_three",
+                    "left": 194,
+                    "top": 20,
+                    "width": 1726,
+                    "height": 1060,
+                    "image": "26_livingRoom/tv_c_three.png"
+                }, 26);
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -1719,6 +1739,15 @@ room26.chat = function (chatID) {
                     "Both of you are in big big trouble! ",
                 button: [
                     { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "confess1" }
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "landlord",
+                text: "Did you want to watch the TV with us? ",
+                button: [
+                    { chatID: 41, text: "Sure ", callback: "watchTVSissy" },
+                    { chatID: -1, text: "No thanks", callback: "" },
                 ]
             },
         ];

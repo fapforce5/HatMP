@@ -50,7 +50,7 @@ room196.chatcatch = function (callback) {
             }
             else if (mood > 30) {
                 newWp = wp * 1.5;
-                g.internal = "You've been doing fine. I'm incrasing your pay from $" + wp + " to $" + newWp + ". ";
+                g.internal = "You've been doing fine. I'm increasing your pay from $" + wp + " to $" + newWp + ". ";
             }
             else if (mood > 0) {
                 newWp = wp;

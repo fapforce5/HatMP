@@ -12,74 +12,6 @@ room408.main = function () {
         "night": "408_tattoo/door_night.png"
     }, 408);
     nav.buildnav([0]);
-    //g.internal = {
-    //    fairy: {
-    //        name: "fairy",
-    //        img: "tattoo_fairy.png",
-    //        inv: false,
-    //        x: 600,
-    //        y: 200
-    //    },
-    //    trampstamp: {
-    //        name: "trampstamp",
-    //        img: "tattoo_trampstamp.png",
-    //        inv: false,
-    //        x: 800,
-    //        y: 200
-    //    },
-    //    bunny: {
-    //        name: "bunny",
-    //        img: "tattoo_bunny.png",
-    //        inv: false,
-    //        x: 600,
-    //        y: 400
-    //    },
-    //    sissy: {
-    //        name: "sissy",
-    //        img: "tattoo_sissy.png",
-    //        inv: false,
-    //        x: 800,
-    //        y: 400
-    //    },
-    //    //custom: {
-    //    //    name: "custom",
-    //    //    img: "tattoo_custom.png",
-    //    //    inv: false,
-    //    //    x: 600,
-    //    //    y: 600
-    //    //}
-    //};
-    //if (sc.getEvent("stormy", -1) && g.hourBetween(10, 20)) {
-    //    //sc.revokeStep("stormy", -1);
-    //    nav.bg("408_tattoo/inside.jpg");
-    //    chat(38, 408);
-    //}
-    //else if (g.sissy[27].ach || g.sissy[30].ach) {
-    //    if (g.hourBetween(10, 20)) {
-    //        nav.bg("408_tattoo/inside.jpg");
-    //        var activeCase = q3.activeSearch("stormy");
-    //        if (!g.sissy[30].ach) {
-    //            if (activeCase)
-    //                chat(6, 408);
-    //            else
-    //                chat(2, 408);
-    //        }
-    //        else {
-    //            if (activeCase)
-    //                chat(7, 408)
-    //            else
-    //                chat(3, 408);
-    //        }
-    //    }
-    //    else {
-    //        chat(0, 408);
-    //    }
-    //}
-    //else {
-    //    chat(1, 408);
-    //}
-    //var navList = [0];
-    //nav.buildnav(navList);
 };
 
 room408.btnclick = function (name) {
@@ -98,7 +30,10 @@ room408.btnclick = function (name) {
             }, 408);
             break;
         case "stormy":
-            if (!qdress.st[4].ach && !qdress.st[6].ach) {
+            if (sc.taskGetStep("stormy", "property") === 1) {
+                chat(43, 408);
+            }
+            else if (!qdress.st[4].ach && !qdress.st[6].ach) {
                 chat(40, 408);
             }
             else {
@@ -118,6 +53,214 @@ room408.btnclick = function (name) {
             nav.killbutton("tattooStartNo");
             nav.killbutton("selectCancel");
             return;
+        case "tattooStart":
+            nav.killbutton("tattooStart");
+            nav.killbutton("pStart");
+            nav.killbutton("tattooStartNo");
+            nav.killbutton("selectCancel");
+            nav.killbutton("stormy");
+            zcl.displayMain(50, 1200, .14, "nude", false);
+
+            if (cl.c.tattoo.find(x => x.startsWith("womb_")) !== undefined)
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_womb_no.png", 0);
+            else
+                sc.select("tattoo_womb", "408_tattoo/icon_tattoo_womb.png", 0);
+
+            if (cl.c.tattoo.find(x => x.startsWith("back_")) !== undefined)
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_back_no.png", 1);
+            else
+                sc.select("tattoo_back", "408_tattoo/icon_tattoo_back.png", 1);
+
+            if (cl.c.tattoo.find(x => x.startsWith("ut_")) !== undefined)
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_upperthigh_no.png", 2);
+            else
+                sc.select("tattoo_ut", "408_tattoo/icon_tattoo_upperthigh.png", 2);
+
+            if (cl.c.tattoo.find(x => x.startsWith("tramp_")) !== undefined)
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_trampstamp_no.png", 3);
+            else
+                sc.select("tattoo_tramp", "408_tattoo/icon_tattoo_trampstamp.png", 3);
+
+            //if (cl.c.tattoo.find(x => x.startsWith("thigh_")) !== undefined)
+            //    sc.select("has_tattoo", "408_tattoo/icon_tattoo_thigh_no.png", 4);
+            //else
+            //    sc.select("tattoo_thigh", "408_tattoo/icon_tattoo_thigh.png", 4);
+
+            if (cl.c.tattoo.find(x => x.startsWith("butt_")) !== undefined)
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_butt_no.png", 5);
+            else
+                sc.select("tattoo_butt", "408_tattoo/icon_tattoo_butt.png", 5);
+
+            sc.selectCancel("tattoo_cancel1", 6);
+            break;
+        case "tattoo_cancel1":
+            nav.kill();
+            nav.button({
+                "type": "btn",
+                "name": "stormy",
+                "left": 1042,
+                "top": 101,
+                "width": 475,
+                "height": 979,
+                "image": "408_tattoo/stormy.png",
+            }, 408);
+            room408.btnclick("stormy");
+            break;
+        case "tattoo_cancel":
+            nav.kill();
+            room408.btnclick("tattooStart");
+            break;
+        case "tattoo_kill":
+            nav.killbutton("has_tattoo");
+            nav.killbutton("tattoo_womb");
+            nav.killbutton("tattoo_back");
+            nav.killbutton("tattoo_ut");
+            nav.killbutton("tattoo_butt");
+            nav.killbutton("tattoo_tramp");
+            nav.killbutton("tattoo_thigh");
+            nav.killbutton("tattoo_cancel");
+            return;
+        case "tattoo_womb":
+            room408.btnclick("tattoo_kill");
+            zcl.displayMain(50, 1200, .14, "nude", false);
+            sc.select("womb_trans", "408_tattoo/icon_womb_trans.png", 0);
+            sc.select("womb_qos", "408_tattoo/icon_womb_qos.png", 2);
+            sc.select("womb_breed2", "408_tattoo/icon_womb_breed2.png", 4);
+            sc.select("womb_bat", "408_tattoo/icon_womb_bat.png", 6);
+            sc.select("womb_breed1", "408_tattoo/icon_womb_breed1.png", 8);
+            sc.selectCancel("tattoo_cancel", 10);
+            break;
+        case "tattoo_ut":
+            room408.btnclick("tattoo_kill");
+            zcl.displayMain(50, 1200, .14, "nude", false);
+            sc.select("ut_rose", "408_tattoo/icon_ut_rose.png", 0);
+            sc.select("ut_kiss", "408_tattoo/icon_ut_kiss.png", 2);
+            sc.select("ut_qos", "408_tattoo/icon_ut_qos.png", 4);
+            sc.select("ut_chastity", "408_tattoo/icon_ut_chastity.png", 6);
+            sc.selectCancel("tattoo_cancel", 8);
+            break;
+        case "tattoo_butt":
+            room408.btnclick("tattoo_kill");
+            zcl.displayMain(50, 1200, .14, "nude", true);
+            sc.select("butt_paws", "408_tattoo/icon_butt_paws.png", 0);
+            sc.select("butt_sperm", "408_tattoo/icon_butt_sperm.png", 2);
+            sc.select("butt_qos", "408_tattoo/icon_butt_qos.png", 4);
+            sc.select("butt_sissy", "408_tattoo/icon_butt_sissy.png", 6);
+            sc.selectCancel("tattoo_cancel", 8);
+            break;
+        case "tattoo_tramp":
+            room408.btnclick("tattoo_kill");
+            zcl.displayMain(50, 1200, .14, "nude", true);
+            sc.select("tramp_butterfly", "408_tattoo/icon_tramp_butterfly.png", 0);
+            sc.select("tramp_design", "408_tattoo/icon_tramp_design.png", 2);
+            sc.select("tramp_bat", "408_tattoo/icon_tramp_bat.png", 4);
+            sc.select("tramp_handlebars", "408_tattoo/icon_tramp_handlebars.png", 6);
+            sc.select("tramp_jimmy", "408_tattoo/icon_tramp_jummy.png", 8);
+            sc.select("tramp_guns", "408_tattoo/icon_tramp_guns.png", 10);
+            sc.selectCancel("tattoo_cancel", 12);
+            break;
+        case "tattoo_back":
+            room408.btnclick("tattoo_kill");
+            zcl.displayMain(50, 1200, .14, "nude", true);
+            sc.select("back_butterfly", "408_tattoo/icon_back_butterfly.png", 0);
+            sc.select("back_rose", "408_tattoo/icon_back_rose.png", 2);
+            sc.select("back_fairy", "408_tattoo/icon_back_fairy.png", 4);
+            sc.select("back_wings", "408_tattoo/icon_back_wings.png", 6);
+            sc.selectCancel("tattoo_cancel", 8);
+            break;
+        case "ut_rose":
+        case "ut_kiss":
+        case "ut_qos":
+        case "ut_chastity":
+        case "womb_trans":
+        case "womb_qos":
+        case "womb_breed2":
+        case "womb_bat":
+        case "womb_breed1":
+            g.internal = {
+                t: name,
+                b: false,
+                s: 1
+            };
+            room408.btnclick("getit1");
+            break;
+        case "tramp_butterfly":
+        case "tramp_design":
+        case "tramp_bat":
+        case "tramp_handlebars":
+        case "tramp_jimmy":
+        case "tramp_guns":
+        case "back_butterfly":
+        case "back_rose":
+        case "back_fairy":
+        case "back_wings":
+        case "butt_paws":
+        case "butt_sperm":
+        case "butt_qos":
+        case "butt_sissy":
+            g.internal = {
+                t: name,
+                b: true,
+                s: 1
+            };
+            room408.btnclick("getit1");
+            break;
+        case "getit1":
+            nav.kill();
+            cl.c.tattoo.push(g.internal.t);
+            zcl.displayMain(50, 1200, .14, "nude", g.internal.b);
+            for (let i = 0; i < cl.c.tattoo.length; i++) {
+                if (cl.c.tattoo[i] === g.internal.t) {
+                    cl.c.tattoo.splice(i, 1);
+                }
+            }
+            sc.select("getit2", "408_tattoo/icon_getit.png", 0);
+            sc.selectCancel("tattoo_cancel_back", 2);
+            break;
+        case "getit2":
+            cl.c.tattoo.push(g.internal.t);
+            nav.killall();
+            nav.next("scratch");
+            nav.bg("408_tattoo/s0.jpg");
+            break;
+        case "scratch":
+            if (g.internal.s < 4) {
+                nav.bg("408_tattoo/s" + g.internal.s + ".jpg");
+            }
+            else {
+                cl.display();
+                nav.killbutton("scratch");
+                nav.bg("408_tattoo/inside.jpg", "408_tattoo/inside_night.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "stormy",
+                    "left": 1042,
+                    "top": 101,
+                    "width": 475,
+                    "height": 979,
+                    "image": "408_tattoo/stormy.png",
+                }, 408);
+
+                zcl.displayMain(-50, 500, .2, "nude", g.internal.b);
+                chat(42, 408);
+            }
+            g.internal.s++;
+            break;
+        case "tattoo_cancel_back":
+            nav.kill();
+            if (g.internal.t.startsWith("womb_"))
+                 room408.btnclick("tattoo_womb");
+            else if (g.internal.t.startsWith("ut_"))
+                room408.btnclick("tattoo_ut");
+            else if (g.internal.t.startsWith("back_"))
+                room408.btnclick("tattoo_back");
+            else if (g.internal.t.startsWith("tramp_"))
+                room408.btnclick("tattoo_tramp");
+            else if (g.internal.t.startsWith("butt_"))
+                room408.btnclick("tattoo_butt");
+
+            g.internal = null;
+            break;
         case "tattooStartNo":
             room408.btnclick("selectCancel");
             chat(41, 408);
@@ -128,38 +271,6 @@ room408.btnclick = function (name) {
             break;
         case "cancel":
             char.room(408);
-            break;
-        case "fairy":
-        case "trampstamp":
-            cl.c.tattoo.push(name);
-            nav.killall();
-            zcl.displayMain(-100, 300, .27, "nude", true);
-            cl.display();
-            g.roomTimeout = setTimeout(function () {
-                chat(5, 408);
-            }, 1500);
-            break;
-        case "bunny":
-        case "sissy":
-            cl.c.tattoo.push(name);
-            nav.killall();
-            zcl.displayMain(-100, 300, .27, "nude", false);
-            cl.display();
-            g.roomTimeout = setTimeout(function () {
-                chat(5, 408);
-            }, 1500);
-            break;
-        case "custom":
-            nav.input(408, "Enter your custom tattoo word");
-            break;
-        case "char_input":
-            var thisTattoo = nav.inputGet().trim();
-            if (thisTattoo.length === 0)
-                chat(39, 408);
-            else {
-                cl.c.bracelets = thisTattoo;
-                nav.killall();
-            }
             break;
         default:
             break;
@@ -173,86 +284,7 @@ room408.chatcatch = function (callback) {
             char.room(0);
             break;
         case "reset":
-            char.room(408);
-            break;
-        case "tattoo":
-            for (i = 0; i < cl.c.tattoo.length; i++) {
-                switch (cl.c.tattoo[i]) {
-                    case "fairy":
-                        g.internal.fairy.inv = true;
-                        break;
-                    case "bunny":
-                        g.internal.bunny.inv = true;
-                        break;
-                    case "sissy":
-                        g.internal.sissy.inv = true;
-                        break;
-                    case "trampstamp":
-                        g.internal.trampstamp.inv = true;
-                        break;
-                    case "custom":
-                        g.internal.custom.inv = true;
-                }
-            }
-            if (!g.internal.fairy.inv)
-                nav.button({
-                    "type": "btn",
-                    "name": "fairy",
-                    "left": g.internal.fairy.x,
-                    "top": g.internal.fairy.y,
-                    "width": 150,
-                    "height": 150,
-                    "image": "408_tattoo/" + g.internal.fairy.img
-                }, 408);
-            if (!g.internal.bunny.inv)
-                nav.button({
-                    "type": "btn",
-                    "name": "bunny",
-                    "left": g.internal.bunny.x,
-                    "top": g.internal.bunny.y,
-                    "width": 150,
-                    "height": 150,
-                    "image": "408_tattoo/" + g.internal.bunny.img
-                }, 408);
-            if (!g.internal.sissy.inv)
-                nav.button({
-                    "type": "btn",
-                    "name": "sissy",
-                    "left": g.internal.sissy.x,
-                    "top": g.internal.sissy.y,
-                    "width": 150,
-                    "height": 150,
-                    "image": "408_tattoo/" + g.internal.sissy.img
-                }, 408);
-            if (!g.internal.trampstamp.inv)
-                nav.button({
-                    "type": "btn",
-                    "name": "trampstamp",
-                    "left": g.internal.trampstamp.x,
-                    "top": g.internal.trampstamp.y,
-                    "width": 150,
-                    "height": 150,
-                    "image": "408_tattoo/" + g.internal.trampstamp.img
-                }, 408);
-            if (!g.internal.custom.inv)
-                nav.button({
-                    "type": "btn",
-                    "name": "custom",
-                    "left": g.internal.custom.x,
-                    "top": g.internal.custom.y,
-                    "width": 150,
-                    "height": 150,
-                    "image": "408_tattoo/" + g.internal.custom.img
-                }, 408);
-            nav.button({
-                "type": "btn",
-                "name": "cancel",
-                "left": 1000,
-                "top": 200,
-                "width": 150,
-                "height": 150,
-                "image": "19_layInBed/cancel.png"
-            }, 408);
+            room408.btnclick("door");
             break;
         case "nipple":
             g.pass = "nipple";
@@ -311,6 +343,24 @@ room408.chatcatch = function (callback) {
         case "s1":
         case "s2":
             nav.bg("408_tattoo/" + callback  + ".jpg");
+            break;
+        case "killchar":
+            zcl.kill();
+            nav.buildnav([0]);
+            break;
+        case "notawhore":
+            sc.completeMissionTask("stormy", "property", 1);
+            sc.completeMissionTask("stormy", "property", 2, false);
+            break;
+        case "imawhore":
+            sc.completeMissionTask("stormy", "property", 1, false);
+            sc.completeMissionTask("stormy", "property", 2);
+            g.internal = {
+                t: "chest_sub",
+                b: false,
+                s: 1
+            };
+            room408.btnclick("getit2");
             break;
         default:
             break;
@@ -703,6 +753,50 @@ room408.chat = function (chatID) {
             text: "I'm not comfortable enough to get a tattoo yet. ",
             button: [
                 { chatID: -1, text: "[Need to unlock tattoos in the sissy menu]", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "stormy",
+            text: "So hot my pussy is sweating! ",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "killchar" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "stormy",
+            text: "Well, well, well. If it isn't my little pee pee whore. ",
+            button: [
+                { chatID: 44, text: "Hey! You pissed on me. I didn't ask for it! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "stormy",
+            text: "You might not have asked for it, but you did want it. I'll tell you " +
+                "what pee pee girl; I know you're such a submissive slut you'll let anyone " +
+                "do whatever they want to your body. Let me give you a free tattoo, but submissive " +
+                "little bitches like you don't get to pick. ",
+            button: [
+                { chatID: 46, text: "Promise it won't be too bad?", callback: "" },
+                { chatID: 45, text: "No way! I won't let you mark me! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "stormy",
+            text: "Ok. I guess I was wrong about you. ",
+            button: [
+                { chatID: -1, text: "*hrumph* ", callback: "notawhore" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "stormy",
+            text: "Hahaha no! Now lay back and let me mark you! ",
+            button: [
+                { chatID: -1, text: "ok", callback: "imawhore" },
             ]
         },
     ];

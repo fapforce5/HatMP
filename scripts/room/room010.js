@@ -118,6 +118,9 @@ room10.main = function () {
                     "image": "10_mainchar/cat.png"
                 });
             }
+            let weekday = [1, 2, 3, 4, 5];
+            if (missy.get("totalDaysWorked") > 1 && g.hourBetween(7, 10) && weekday.includes(g.dt.getDay()))
+                navList.push(203);
         }
         else {
             g.internal = missingClothing;

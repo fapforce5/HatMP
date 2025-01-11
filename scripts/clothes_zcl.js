@@ -83,7 +83,12 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         }
     }
     for (i = 0; i < cl.c.tattoo.length; i++) {
-        cl.displayMainWhere(cl.tattoo, cl.c.tattoo[i], top, left, ratio, dback);
+        for (let j = 0; j < cl.tattoo.length; j++) {
+            if (cl.c.tattoo[i] === cl.tattoo[j].name) {
+                console.log((dback ? cl.tattoo[j].back : cl.tattoo[j].image));
+                zcl.displayMainSub((dback ? cl.tattoo[j].back : cl.tattoo[j].image), top, left, ratio);
+            }
+        }
     }
 
     if (cl.c.nipplering !== null && !dback) {

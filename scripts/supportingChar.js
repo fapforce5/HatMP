@@ -392,6 +392,8 @@ sc.charMission = [
                 missionName: "property", mStatus: 0, title: "Property", desc: "You're my property", task:
                     [
                         { id: 0, txt: "Marked by the piss. ", show: true, mStatus: 0, roomId: 550 },
+                        { id: 1, txt: "I'm not a submissive slut!", show: true, mStatus: 0, roomId: 408 },
+                        { id: 2, txt: "I guess I am a submissive slut", show: true, mStatus: 0, roomId: 408 },
 
                     ]
             },
@@ -477,6 +479,26 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Found out", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Open thigs up a bit", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "Video", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "Feel my feelings", show: true, mStatus: 0, roomId: 315 },
+                    ]
+            },
+            {
+                missionName: "datr", mStatus: 0, title: "Datr", desc: "Dating App", task:
+                    [
+                        { id: 0, txt: "Mike first time", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "Mike again", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "Jarome first time", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "Jarome again", show: true, mStatus: 0, roomId: 315 },
+                        { id: 4, txt: "Brad first time", show: true, mStatus: 0, roomId: 315 },
+                        { id: 5, txt: "Brad again", show: true, mStatus: 0, roomId: 315 },
+                    ]
+            },
+            {
+                missionName: "dog", mStatus: 0, title: "Bad dog!", desc: "You're a very naughty girl!", task:
+                    [
+                        { id: 0, txt: "Dish ran away without the spoon", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "Caught!", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "Video", show: true, mStatus: 0, roomId: 315 },
                         { id: 3, txt: "In development [NOT MADE YET!]", show: true, mStatus: 0, roomId: 315 },
                     ]
@@ -1110,8 +1132,10 @@ sc.modLevel = function (name, amount, targetLevel) {
     sc.getch
     i = sc.i(name);
     if (amount > 0) {
-        if (sc.char[i].l > 9)
+        if (sc.char[i].l > 9) {
+            g.popUpNotice("At maximum level for " + sc.char[i].display + ". ");
             return;
+        }
 
         if (sc.char[i].l <= targetLevel)
             actualAmount = amount;

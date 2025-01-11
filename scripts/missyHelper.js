@@ -289,18 +289,18 @@ missy.getcases = function () {
                             });
                         }
                         break;
-                    //case "case_beaver":
-                    //    if (sissy.st[19].ach) {
-                    //        canDoCase = piLevel > 3;
-                    //        caseList.push({
-                    //            caseId: i,
-                    //            active: canDoCase,
-                    //            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                    //            notReadyTxt: "Raise your PI Level. ",
-                    //            callback: missy.cases[i].name
-                    //        });
-                    //    }
-                    //    break;
+                    case "case_beaver":
+                        if (qdress.st[0].ach) {
+                            canDoCase = piLevel > 2;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
                     //case "case_saveralph":
                     //    if (sissy.st[10].ach) {
                     //        canDoCase = piLevel > 4;

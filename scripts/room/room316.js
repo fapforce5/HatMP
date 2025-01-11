@@ -182,8 +182,16 @@ room316.main = function () {
                 chat(131, 316);
                 break;
             case 3:
-                nav.bg("316_livingroom/bitch_0_0.jpg");
-                chat(133, 316);
+            case 4:
+                daily.set("janice");
+                if (gv.get("janiceDatr") !== null) {
+                    nav.bg("316_livingroom/talk.jpg");
+                    chat(152, 316);
+                }
+                else {
+                    g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, datr: false };
+                    room316.btnclick("buildMenuCuck");
+                }
                 break;
         }
     }
@@ -264,6 +272,115 @@ room316.btnclick = function (name) {
                 nav.killbutton("dpeanutbutter");
                 chat(87, 316);
             }
+            break;
+        case "iconWalkCuck":
+            nav.killall();
+            g.pass.dog = true;
+            nav.bg("316_livingroom/walk_cuck0.jpg");
+            sc.modLevel("dog", 25, 10);
+            if (sc.getMissionTask("janice", "dog", 0).complete) {
+                sc.completeMissionTask("janice", "dog", 1);
+                g.internal = 0;
+                nav.next("dogWalkCuckFuck0");
+            }
+            else if (sc.getLevel("dog") > 7 && g.rand(0, 2) === 0) {
+                sc.startMission("janice", "dog");
+                sc.completeMissionTask("janice", "dog", 0);
+                g.internal = 0;
+                nav.next("dogWalkCuckFuck0");
+            }
+            else {
+                nav.next("buildMenuCuck");
+            }
+            break;
+        case "dogWalkCuckFuck0":
+            nav.killall();
+            switch (g.internal) {
+                case 0:
+                    nav.bg("316_livingroom/walk_cuck1_" + gender.pronoun("f") + ".jpg");
+                    nav.next("dogWalkCuckFuck0");
+                    break;
+                case 1:
+                    cl.nude();
+                    nav.bg("316_livingroom/walk_cuck2.jpg");
+                    zcl.assup(550, 400, .8, "");
+                    nav.button({
+                        "type": "img",
+                        "name": "janice",
+                        "left": 552,
+                        "top": 309,
+                        "width": 1000,
+                        "height": 668,
+                        "image": "316_livingroom/df.png"
+                    }, 316);
+                    nav.next("dogWalkCuckFuck0");
+                    break;
+                case 2:
+                    levels.anal(3, false, "m", true, "dog");
+                    if (sc.getMissionTask("janice", "dog", 1).complete) {
+                        nav.bg("316_livingroom/walk_cuck3.jpg");
+                        zcl.assup(550, 400, .8, "");
+                        nav.button({
+                            "type": "img",
+                            "name": "janice",
+                            "left": 552,
+                            "top": 309,
+                            "width": 1000,
+                            "height": 668,
+                            "image": "316_livingroom/df.png"
+                        }, 316);
+                        nav.button({
+                            "type": "img",
+                            "name": "janice",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "316_livingroom/walk_cuck3x.png"
+                        }, 316);
+                        nav.next("dogWalkCuckFuck1");
+
+                    }
+                    else {
+                        nav.bg("316_livingroom/walk_cuck3.jpg");
+                        zcl.assup(550, 400, .8, "");
+                        nav.button({
+                            "type": "img",
+                            "name": "janice",
+                            "left": 552,
+                            "top": 309,
+                            "width": 1000,
+                            "height": 668,
+                            "image": "316_livingroom/df.png"
+                        }, 316);
+                        nav.button({
+                            "type": "img",
+                            "name": "janice",
+                            "left": 878,
+                            "top": 571,
+                            "width": 373,
+                            "height": 199,
+                            "image": "316_livingroom/walk_cuck3.png"
+                        }, 316);
+                        nav.next("dogWalkCuckFuck0");
+                    }
+                    break;
+                case 3:
+                    nav.bg("316_livingroom/walk_sex4.jpg");
+                    nav.next("dogWalkCuckFuck0");
+                    break;
+                case 4:
+                    nav.bg("316_livingroom/bitch_0_0.jpg");
+                    chat(143, 316);
+                    break;
+            }
+            g.internal++;
+            break;
+        case "dogWalkCuckFuck1":
+            nav.killall();
+            nav.bg("316_livingroom/walk_cuck4.jpg");
+            zcl.displayMain(-100, 500, .2, "clothes", true);
+            chat(145, 316);
             break;
         case "dwalk":
             nav.killall();
@@ -368,7 +485,39 @@ room316.btnclick = function (name) {
                 sc.select("iconDick", "316_livingroom/icon_dick.png", 9);
 
             sc.select("iconLeave", "316_livingroom/icon_leave.png", 10);
-            
+            break;
+        case "buildMenuCuck":
+            nav.killall();
+            nav.bg("316_livingroom/talk.jpg");
+
+            if (!g.pass.talk)
+                sc.select("iconTalkCuck", "316_livingroom/icon_talk.png", 1);
+
+            if (sc.getMissionTask("janice", "cuck", 3).complete) {
+                if (!g.pass.dog && !g.isNight() && !g.pass.datr)
+                    sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 2);
+
+                if (!g.pass.datr)
+                    sc.select("iconDatr", "316_livingroom/icon_datr.png", 0);
+                
+                if (!g.pass.pb)
+                    sc.select("iconPb", "316_livingroom/icon_peanutbutter.png", 4);
+            }
+            else {
+                if (!g.pass.pb)
+                    sc.select("iconPb", "316_livingroom/icon_peanutbutter.png", 0);
+            }
+
+            if (!g.pass.money) {
+                sc.select("icon25", "316_livingroom/icon_25.png", 3);
+                sc.select("icon50", "316_livingroom/icon_50.png", 5);
+                sc.select("icon100", "316_livingroom/icon_100.png", 7);
+            }
+
+            if (!g.pass.dick)
+                sc.select("iconDick", "316_livingroom/icon_dick.png", 9);
+
+            sc.select("iconLeave", "316_livingroom/icon_leave.png", 10);
             break;
         case "iconLeave":
             char.room(0);
@@ -472,7 +621,10 @@ room316.btnclick = function (name) {
                 inv.use("peanutbutter");
                 sc.modLevel("janice", 15, 5);
                 sc.modLevel("dog", 20, 4);
-                nav.next("buildMenu");
+                if (sc.getMission("janice", "cuck").notStarted)
+                    nav.next("buildMenu");
+                else
+                    nav.next("buildMenuCuck");
             }
             else
                 chat(77, 316);
@@ -545,6 +697,15 @@ room316.btnclick = function (name) {
                 }
             }
             break;
+        case "iconTalkCuck":
+            nav.killall();
+            switch (sc.taskGetStep("janice", "cuck")) {
+                case 3:
+                    nav.killall();
+                    chat(147, 316);
+                    break;
+            }
+            break;
         case "bitch_1_0":
             nav.killall();
             cl.nude();
@@ -552,6 +713,100 @@ room316.btnclick = function (name) {
             break;
         case "room318":
             char.room(318);
+            break;
+        case "iconDatr":
+            nav.killall();
+            nav.bg("316_livingroom/kiss.jpg");
+            chat(151, 316);
+            break;
+        case "datr":
+            nav.killall();
+            var datr = [
+                { n: "datr_mike", i: "datr_mike.jpg" },
+                { n: "datr_albert", i: "datr_albert.jpg" },
+                { n: "datr_chris", i: "datr_chris.jpg" },
+                { n: "datr_jarome", i: "datr_jarome.jpg" },
+                { n: "datr_bossman", i: "datr_bossman.jpg" },
+                { n: "datr_ian", i: "datr_ian.jpg" },
+                { n: "datr_cecilia", i: "datr_cecilia.jpg" },
+                { n: "datr_philbert", i: "datr_philbert.jpg" },
+                { n: "datr_orchid", i: "datr_orchid.jpg" },
+                { n: "datr_ralph", i: "datr_ralph.jpg" },
+                { n: "datr_brad", i: "datr_brad.jpg" },
+            ];
+            var tj = 0;
+            for (let i = g.internal.s; i < datr.length && tj < 4; i++) {
+                nav.button({
+                    "type": "btn",
+                    "name": datr[i].n,
+                    "left": 743,
+                    "top": 293 + (tj * 156),
+                    "width": 621,
+                    "height": 146,
+                    "image": "316_livingroom/" + datr[i].i
+                }, 316);
+                tj++;
+            }
+            nav.button({
+                "type": (g.internal.s === 0 ? "img" : "btn"),
+                "name": "datr_prev",
+                "left": 760,
+                "top": 915,
+                "width": 150,
+                "height": 50,
+                "image": "999_phone/" + (g.internal.s === 0 ? "prev_inactive.png" : "prev_p_active.png")
+            }, 316);
+            nav.button({
+                "type": (g.internal.s >= (datr.length - 4) ? "img" : "btn"),
+                "name": "datr_next",
+                "left": 1195,
+                "top": 915,
+                "width": 150,
+                "height": 50,
+                "image": "999_phone/" + (g.internal.s >= (datr.length - 4) ? "next_inactive.png" : "next_p_active.png")
+            }, 316);
+            nav.button({
+                "type": "btn",
+                "name": "buildMenuCuck",
+                "left": 1013,
+                "top": 915,
+                "width": 90,
+                "height": 90,
+                "image": "999_phone/power.png"
+            }, 316);
+            break;
+        case "datr_next":
+            g.internal.s += 4;
+            room316.btnclick("datr");
+            break;
+        case "datr_prev":
+            g.internal.s -= 4;
+            room316.btnclick("datr");
+            break;
+        case "datr_mike":
+        case "datr_albert": 
+        case "datr_chris":
+        case "datr_jarome": 
+        case "datr_bossman":
+        case "datr_ian":
+        case "datr_cecilia":
+        case "datr_philbert":
+        case "datr_orchid":
+        case "datr_ralph":
+        case "datr_brad":
+            g.internal.d = name.replace("datr_", "");
+            nav.killall();
+            switch (g.internal.d) {
+                case "mike":
+                case "jarome":
+                case "brad":
+                    nav.bg("316_livingroom/datr_happy.jpg");
+                    break;
+                default:
+                    nav.bg("316_livingroom/datr_nohappy.jpg");
+                    break;
+            }
+            chat(700, 316);
             break;
         case "reset":
             char.room(316);
@@ -602,6 +857,7 @@ room316.chatcatch = function (callback) {
         case "lockpick3":
         case "bitch_1_1":
         case "bitch_0_2":
+        case "bitch_0_0_x":
             nav.killall();
             nav.bg("316_livingroom/" + callback + ".jpg");
             break;
@@ -669,16 +925,25 @@ room316.chatcatch = function (callback) {
             nav.killall();
             nav.bg("316_livingroom/breakup.jpg");
             sc.completeMission("janice", "date", false);
+            sc.completeMission("janice", "bitch", false);
+            sc.completeMission("janice", "cuck", false);
+            sc.completeMission("janice", "dog", false);
             sc.startMission("janice", "breakup");
             break;
         case "breakupAlt":
             nav.killall();
             nav.bg("316_livingroom/task4_8a.jpg");
             sc.completeMission("janice", "date", false);
+            sc.completeMission("janice", "bitch", false);
+            sc.completeMission("janice", "cuck", false);
+            sc.completeMission("janice", "dog", false);
             sc.startMission("janice", "breakup");
             break;
         case "breakupFirst":
             sc.completeMission("janice", "date", false);
+            sc.completeMission("janice", "bitch", false);
+            sc.completeMission("janice", "cuck", false);
+            sc.completeMission("janice", "dog", false);
             sc.startMission("janice", "breakup");
             char.room(0);
             break;
@@ -721,7 +986,10 @@ room316.chatcatch = function (callback) {
             char.room(0);
             break;
         case "buildMenu":
-            room316.btnclick("buildMenu");
+            if(sc.getMission("janice", "cuck").notStarted)
+                room316.btnclick("buildMenu");
+            else
+                room316.btnclick("buildMenuCuck");
             break;
         case "dsex2":
             if (cl.c.chastity === null)
@@ -877,11 +1145,31 @@ room316.chatcatch = function (callback) {
             char.addtime(60);
             char.room(0);
             break;
+        case "cuck_3_complete":
+            sc.completeMissionTask("janice", "cuck", 3);
+            char.addtime(15);
+            g.popUpNotice("You can now choose her date. ");
+            room316.btnclick("buildMenuCuck");
+            break;
         case "bedroom":
             nav.killall();
             nav.bg("316_livingroom/bg.jpg");
             nav.next("room318")
             nav.buildnav([318]);
+            break;
+        case "bathroom":
+            char.room(320);
+            break;
+        case "datrScroll":
+            nav.killall();
+            nav.bg("316_livingroom/phoneBg.jpg");
+            g.internal = { s: 0, d: "" };
+            room316.btnclick("datr");
+            break;
+        case "datrScroll1":
+            nav.killall();
+            nav.bg("316_livingroom/phoneBg.jpg");
+            room316.btnclick("datr");
             break;
         default:
             break;
@@ -959,6 +1247,80 @@ room316.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "reset" }
             ]
         };
+    }
+    else if (chatID === 700) {
+        let foundhim = false;
+        let dtxt = "";
+        switch (g.internal.d) {
+            case "mike":
+                dtxt = "OOoooo he is sexy. Love those big manly arms and those eyes. " +
+                    "I could stare at them all day. ";
+                gv.set("janiceDatr", "mike");
+                foundhim = true;
+                break;
+            case "albert":
+                dtxt = "Gross! I don't want cheeze-poof crumbs on my bed! He looks " +
+                        "like he smells like sweat socks and farts. ";
+                break;
+            case "chris":
+                dtxt = "He's too small and girly. Not my type. ";
+                break;
+            case "jarome":
+                dtxt = "Nice. I saw him play in the game last week. He is the sexiest " +
+                    "man playing. Love that choice! ";
+                gv.set("janiceDatr", "jarome");
+                foundhim = true;
+                break;
+            case "bossman":
+                dtxt = "Hmmmm. I don't know if I want to do anal. What if he has a big " +
+                        "penis. He'll split me wide open. Sexy, but my butt is exit only. ";
+                break;
+            case "ian":
+                dtxt = "Ewwwww. Yuck. Too old. ";
+                break;
+            case "cecilia":
+                dtxt = "I want to date a man, not a girl. ";
+                break;
+            case "philbert":
+                dtxt = "Eh. I don't like red heads. Pass. Besides, he kind of looks gay. ";
+                break;
+            case "orchid":
+                dtxt = "Cute, but I'm looking for a man. ";
+                break;
+            case "ralph":
+                dtxt = "Hahahaha! He's going to die a virgin! What a loser. No chance " +
+                    "a guy like him ever gets a date! He would problably just talk about " +
+                    "what ever boring ass game he's playing. ";
+                break;
+            case "brad":
+                dtxt = "Ooooo sexy. I do love a man that plays sports! I don't remember " +
+                    "seeing him at the ball game, but there's a lot of players. Great choice! ";
+                gv.set("janiceDatr", "brad");
+                foundhim = true;
+                break;
+        }
+        if (foundhim) {
+            g.pass.datr = true;
+            return {
+                chatID: 700,
+                speaker: "janice",
+                text: dtxt + " I'll text him tonight and see if we can make a connection. " +
+                    "so excited to see your face when we make love. ",
+                button: [
+                    { chatID: -1, text: "Sweet!", callback: "buildMenu" }
+                ]
+            };
+        }
+        else {
+            return {
+                chatID: 700,
+                speaker: "janice",
+                text: dtxt + " Look for a better guy!",
+                button: [
+                    { chatID: -1, text: "ok", callback: "datrScroll1" }
+                ]
+            };
+        }
     }
     else {
         var cArray = [
@@ -2250,6 +2612,112 @@ room316.chat = function (chatID) {
                     "enough money! They're the worst! ",
                 button: [
                     { chatID: -1, text: "Totally", callback: "buildMenu" },
+                ]
+            },
+            {
+                chatID: 143,
+                speaker: "janice",
+                text: "Why are you naked? And where is " + sc.n("dog") + "? ",
+                button: [
+                    { chatID: 144, text: "Oh! Uhh... I was attacked in the park. They took my clothes and I lost " + sc.n("dog") + " during that attack! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "janice",
+                text: "Oh no! I'm going to look for " + sc.n("dog") +
+                    ". I'm so sorry. People are so terrible! You can change back in my " +
+                    "bathroom. ",
+                button: [
+                    { chatID: -1, text: "Ok! Thanks! ", callback: "bathroom" },
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "janice",
+                text: "Is this what you've been doing on your walks? When I found " +
+                    sc.n("dog") + " someone told me about your little endeavors. I " +
+                    "didn't believe them, but I had to see for myself, and here you are " +
+                    "having inappropriate relations in the middle of the park for everyone " +
+                    "to see! Every time I think it can't get any worse, you go and make it worse! " +
+                    "It looks like I'm going to have to keep you on a leash too to control your " +
+                    "terrible behavior! ",
+                button: [
+                    { chatID: 146, text: "...but he attacked me...", callback: "" },
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "janice",
+                text: "Don't you try to blame my sweet little " + sc.n("dog") + " for your " +
+                    "nastiness! This is all your doing. I'm going to have to think about if " +
+                    "I ever let you back into my house! You think about how big you owe me for " +
+                    "putting up with you! ",
+                button: [
+                    { chatID: -1, text: "...ok", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "janice",
+                text: "Showing you my sex video was such a rush! I've masturbated twice " +
+                    "last month just thinking about it! I want to do it again! ",
+                button: [
+                    { chatID: 149, text: "That's hot! Let's do it.", callback: "" },
+                    { chatID: 148, text: "I don't like how this makes me feel. [Break up]", callback: "" },
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "janice",
+                text: "*sigh* I don't see you as a man anymore. I don't want to date " +
+                    "a little girl, I need a real man to take care of me. If you're not " +
+                    "open to being my play partner while I search for a real man, I don't " +
+                    "want a relationship with you. I'm sorry, but we're over. ",
+                button: [
+                    { chatID: -1, text: "That's for the best. Good bye", callback: "breakupFirst" },
+                ]
+            },
+            {
+                chatID: 149,
+                speaker: "janice",
+                text: "That's such a relief. I've felt really guilty lying to you the " +
+                    "entire time we've been dating. Every time I cheated on you, it felt " +
+                    "hollow and empty, but the last time it was such a rush knowing I could " +
+                    "share this with you. Maybe this is what I've always needed! My own little " +
+                    "friend to share my dirty deeds with. ",
+                button: [
+                    { chatID: 150, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 150,
+                speaker: "janice",
+                text: "So a friend of mine told me about this thing on your phone to meet boys. " +
+                    "I got it, and there's so many boys! Some of them are so mean. I don't like " +
+                    "those, but some are really nice and so sexy. I don't know why they're still " +
+                    "single. But oh my. I had no idea there were so many men out there. You're lucky " +
+                    "we met before I found this, or I would totally be dating them instead! Hehehe, " +
+                    "just kidding.... maybe not. Doesn't matter. I need your help picking someone. ",
+                button: [
+                    { chatID: -1, text: "Awesome! I'm in! ", callback: "cuck_3_complete" },
+                ]
+            },
+            {
+                chatID: 151,
+                speaker: "janice",
+                text: "*Squeel* Yes! Let's pick out a man! ",
+                button: [
+                    { chatID: -1, text: "[Pick out a man for her]", callback: "datrScroll" },
+                ]
+            },
+            {
+                chatID: 152,
+                speaker: "janice",
+                text: "Great news! He replied. I'm going to go to my room and tell him " +
+                    "to come over. You can change in the bathroom and join me! ",
+                button: [
+                    { chatID: -1, text: "Sweet! ", callback: "bathroom" },
                 ]
             },
         ];

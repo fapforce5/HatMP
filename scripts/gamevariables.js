@@ -123,9 +123,10 @@ gv.init = function () {
         { n: "analCumHorse", t: 0, q: "int" },
         { n: "analCumPig", t: 0, q: "int" },
 
-
         { n: "jobConstructionPay", t: 0, q: "zero" },
         { n: "forbotenLove", t: 0, q: "zero" },
+
+        { n: "janiceDatr", t: null, q: "string" },
 
         { n: "pink", t: 0, q: "int" },
         { n: "pinkroomopen", t: false, q: "int" },
@@ -262,6 +263,8 @@ gv.init = function () {
         { n: "lipstick", t: false },
         { n: "eyeshadow", t: false },
         { n: "raven", t: false },
+
+        { n: "constructionPay", t: false }
     ];
 
     weekly.st = [
@@ -391,9 +394,10 @@ gv.init = function () {
         { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
         { id: 20, pID: [10], icon: "bondage203", x: 9, y: 4, name: "Bondage 203", description: "Pony girl races", ach: false, active: true, room: 181 },
 
-        { id: 21, pID: [12, 13, 14, 15, 18, 20], icon: "final", x: 0, y: 5, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 213 },
+        { id: 21, pID: [12, 13, 14, 15, 18, 20], icon: "final", x: 0, y: 6, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 213 },
 
         { id: 22, pID: [10], icon: "cum204", x: 8, y: 4, name: "Cum Eating 204", description: "Cecilia cum farts into cup - each sissy takes a drink (asks who's cum it it. Cecelia says, not so much who, but what...", ach: false, active: false, room: 181 },
+        { id: 23, pID: [12, 13, 14, 15, 18, 20], icon: "fem310", x: 1, y: 5, name: "Feminization 310", description: "Laser hair removal", ach: false, active: true, room: 180 },
 
     ];
 

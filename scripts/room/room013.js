@@ -435,7 +435,11 @@ room13.btnclick = function (name) {
             }
             break;
         case "tord":
-            if (!inv.has("wine")) {
+            if (cl.c.shirt === null || cl.c.pants === null) {
+                room13.btnclick("clearChat");
+                chat(205, 13);
+            }
+            else if (!inv.has("wine")) {
                 chat(45, 13)
             }
             else if (!g.isNight()) {
@@ -3483,6 +3487,14 @@ room13.chat = function (chatID) {
                 text: "You're not sexy enough. Go do something with yourself. ",
                 button: [
                     { chatID: -1, text: "[Check self in mirror, need 'Sexy']", callback: "" },
+                ]
+            },
+            {
+                chatID: 205,
+                speaker: "eva",
+                text: "No fair cheating. Go put on some pants and a shirt before we play! ",
+                button: [
+                    { chatID: -1, text: "oh. ok", callback: "reset" },
                 ]
             },
         ];
