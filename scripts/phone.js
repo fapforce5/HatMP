@@ -332,7 +332,7 @@ phone.characters = function () {
                     "top": 330 + (Math.floor(j / 6) * 220),
                     font: 30,
                     hex: "#ffffff",
-                    text: "Level: " + sc.char[i].l,
+                    text: sc.levelName(i),
                 }, 1);
 
                 nav.t({
@@ -436,7 +436,7 @@ phone.characterSelect = function (name) {
         "top": 540,
         font: 30,
         hex: "#ffffff",
-        text: "Level: " + thisChar.l
+        text: sc.levelName(sc.i(name))
     }, 1);
     nav.t({
         type: "zimg",

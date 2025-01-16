@@ -417,7 +417,8 @@ cl.save = function () {
     var ra = {
         list: new Array(),
         current: new Array(),
-        saveOutfit: new Array()
+        saveOutfit: new Array(),
+        ctemp: new Array()
     };
     var i;
     for (i = 0; i < cl.list.length; i++) {
@@ -430,6 +431,7 @@ cl.save = function () {
     }
     ra.saveOutfit = $.extend(true, {}, cl.saveOutfit);
     ra.current = $.extend(true, {}, cl.c);
+    ra.ctemp = $.extend(true, {}, cl.cTemp);
     return ra;
 };
 
@@ -451,6 +453,10 @@ cl.load = function (ra) {
         if (typeof cl.saveOutfit[i].accessories === "object")
             cl.saveOutfit[i].accessories = null;
     }
+
+    if (ra.ctemp !== undefined)
+        cl.cTemp = $.extend(true, {}, ra.ctemp);
+
     if (typeof cl.c.accessories === "object")
         cl.c.accessories = null;
 };

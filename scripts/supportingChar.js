@@ -25,7 +25,7 @@ sc.char = [
     { name: "tina", display: "Tina", image: "tina.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 12, p: true,  q3: null },
     { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
     { name: "govlady", display: "Ms. Pixie", image: "govlady.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: false },
-    { name: "chad", display: "Chad", image: "brad.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: false },
+    { name: "chad", display: "Chad", image: "brad.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "candy", display: "Candy", image: "candy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
@@ -490,8 +490,10 @@ sc.charMission = [
                         { id: 1, txt: "Mike again", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "Jarome first time", show: true, mStatus: 0, roomId: 315 },
                         { id: 3, txt: "Jarome again", show: true, mStatus: 0, roomId: 315 },
-                        { id: 4, txt: "Brad first time", show: true, mStatus: 0, roomId: 315 },
-                        { id: 5, txt: "Brad again", show: true, mStatus: 0, roomId: 315 },
+                        { id: 4, txt: "Chad first time", show: true, mStatus: 0, roomId: 315 },
+                        { id: 5, txt: "Chad again", show: true, mStatus: 0, roomId: 315 },
+                        { id: 6, txt: "Jabari first time", show: true, mStatus: 0, roomId: 315 },
+                        { id: 7, txt: "Jabari again", show: true, mStatus: 0, roomId: 315 },
                     ]
             },
             {
@@ -584,6 +586,12 @@ sc.charMission = [
                         { id: 0, txt: "Purchase Hypno Takes. ", show: true, mStatus: 0, roomId: 301 },
                         { id: 1, txt: "I love you man! 1/2 prices! ", show: true, mStatus: 0, roomId: 301 },
                         { id: 2, txt: "I hate you! Triple the prices! ", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "diner", mStatus: 0, title: "Diner", desc: "Hey! ", task:
+                    [
+                        { id: 0, txt: "First chat", show: true, mStatus: 0, roomId: 301 },
                     ]
             },
         ]
@@ -805,13 +813,28 @@ sc.charMission = [
             {
                 missionName: "bar", mStatus: 0, title: "Caravaggio", desc: "Meet them", task:
                     [
-                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 250 },
+                        { id: 0, txt: "Met at the bar", show: true, mStatus: 0, roomId: 250 },
                     ]
             },
             {
-                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                missionName: "case", mStatus: 0, title: "Gain her trust", desc: "Find out if she's been taking the money", task:
                     [
-                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 250 },
+                        { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
+                    [
+                        { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
+                    [
+                        { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
                     ]
             },
         ]
@@ -819,9 +842,25 @@ sc.charMission = [
     {
         name: "dolly", mission: [
             {
-                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                missionName: "case", mStatus: 0, title: "Gain her trust", desc: "Find out if she's been taking the money", task:
                     [
-                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
+                    [
+                        { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                        { id: 1, txt: "Warm cup of Gooey goo", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
+                    [
+                        { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
                     ]
             },
         ]
@@ -829,9 +868,34 @@ sc.charMission = [
     {
         name: "molly", mission: [
             {
-                missionName: "case", mStatus: 0, title: "Photos", desc: "Vacation images", task:
+                missionName: "case", mStatus: 0, title: "Gain her trust", desc: "Find out if she's been taking the money", task:
                     [
-                        { id: 0, txt: "Doggy in park", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
+                        { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
+                    [
+                        { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+            {
+                missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
+                    [
+                        { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "jeffery", mission: [
+            {
+                missionName: "work", mStatus: 0, title: "You're hired!", desc: "Waitress @ the Naked Beaver", task:
+                    [
+                        { id: 0, txt: "Get to work!", show: true, mStatus: 0, roomId: 250 },
                     ]
             },
         ]
@@ -1016,103 +1080,109 @@ sc.show = function(name){
 
 //Levels ----------------------------------------------------------------------
 
-sc.levels = function (name, level) {
-    var text = "";
-    var max = 0;
-    var tempLevel;
-    var secret = sc.get(name).secret;
-    switch (name) {
-        case "landlord":
-            if (secret < 100)
-                tempLevel = [
-                    { step: 0, txt: "Get a job loser. ", m: [16] },
-                    { step: 1, txt: "She's starting to warm up to you. ", m: [16] },
-                    { step: 2, txt: "She's liking you. ", m: [16] },
-                    { step: 3, txt: "A little crush perhaps? ", m: [16] },
-                    { step: 4, txt: "* Go in for the kiss!", m: [16] },
-                    { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },
-                    { step: 6, txt: "[M] Talk to her on the couch during the day or early evening. Eat that ass!", m: [16] },
-                    { step: 7, txt: "[M] Talk to her on the couch during the day or early evening. Lesson learned.", m: [16] },
-                    { step: 8, txt: "[M] On the couch - Pee pee slap.", img: "", m: [16] },
-                    { step: 9, txt: "[M] Visit her in her room between 8PM and 10PM. It only happens after you've been kicked out due to playing truth or dare with the girls. ", m: [16] },
-                    { step: 10, txt: "[M] Visit her in her room between 8PM and 10PM. ", m: [16] },
-                    { step: 11, txt: "[M] Progress Lola and Evas story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
-                    { step: 12, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", m: [16] },
-                ];
-            else
-                tempLevel = [
-                    { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at he mall for Sunday outing.", m: [16, 400] },
-                    { step: 1, txt: "[F] Talk to her in the living room for your surprise guest.", m: [16] },
-                    { step: 2, txt: "[F] No new content", m: [16] },
-                ];
-            break;
-        case "bigguy":
-            tempLevel = [
-                { step: 0, txt: "Get caught crossdressing at home. He comes to visit Friday thru Sunday at night. ", m: [16] },
-                { step: 1, txt: "Keep pestering them", m: [16] },
-                { step: 2, txt: "Keep pestering them", m: [16] },
-                { step: 3, txt: "Keep pestering them - This time with cum reward!", m: [16] },
-                { step: 4, txt: "Pester them. This time with more cum! ", m: [16] },
-                { step: 5, txt: "Sleep at home - surprise wake up.", m: [16] },
-                { step: 6, txt: "Should I, or shouldn't I tell on him ", m: [16] },
-                { step: 7, txt: "Betrayed her for more surprises on Saturday 😉", m: [16] },
-            ];
-            break;
-        case "zoey":
-            //tempLevel = [
-            //    { step: 0, txt: "Go to her house and play some video games after noon. ", m: [500] },
-            //    { step: 1, txt: "Visit her again at her house.", m: [500] },
-            //    { step: 2, txt: "Visit her house and meet Chloé.", m: [500] },
-            //    { step: 3, txt: "Watch her eat out Chloé.", m: [500] },
-            //    { step: 4, txt: "Talk to Zoey about her problems with Chloé.", m: [500] },
-            //    { step: 5, txt: "Catch Chloé  Cheating (Only if your support your best friend)", m: [500] },
-            //    { step: 6, txt: "Sleep at Zoey's on five differnt nights.", m: [500] },
-            //    { step: 10, txt: "Sleep once more to see her night visitor", m: [500] },
-            //    {
-            //        step: 11, txt: "Raise her love to max. You can help her clean up at the bar or play video games at her home. Once you're " +
-            //            "there wear a chasity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
-            //    },
-            //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyer", m: [525] },
-            //    { step: 13, txt: "Eat her pussy after you finish cleaning up.", m: [500] },
-            //    { step: 14, txt: "Relationship - no new content", m: [500] },
+sc.levelName = function (charIndex) {
+    let level = sc.char[charIndex].l;
+    switch (sc.char[charIndex].name) {
+        //case "landlord":
+        //    if (secret < 100)
+        //        tempLevel = [
+        //            { step: 0, txt: "Get a job loser. ", m: [16] },
+        //            { step: 1, txt: "She's starting to warm up to you. ", m: [16] },
+        //            { step: 2, txt: "She's liking you. ", m: [16] },
+        //            { step: 3, txt: "A little crush perhaps? ", m: [16] },
+        //            { step: 4, txt: "* Go in for the kiss!", m: [16] },
+        //            { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },
+        //            { step: 6, txt: "[M] Talk to her on the couch during the day or early evening. Eat that ass!", m: [16] },
+        //            { step: 7, txt: "[M] Talk to her on the couch during the day or early evening. Lesson learned.", m: [16] },
+        //            { step: 8, txt: "[M] On the couch - Pee pee slap.", img: "", m: [16] },
+        //            { step: 9, txt: "[M] Visit her in her room between 8PM and 10PM. It only happens after you've been kicked out due to playing truth or dare with the girls. ", m: [16] },
+        //            { step: 10, txt: "[M] Visit her in her room between 8PM and 10PM. ", m: [16] },
+        //            { step: 11, txt: "[M] Progress Lola and Evas story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
+        //            { step: 12, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", m: [16] },
+        //        ];
+        //    else
+        //        tempLevel = [
+        //            { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at he mall for Sunday outing.", m: [16, 400] },
+        //            { step: 1, txt: "[F] Talk to her in the living room for your surprise guest.", m: [16] },
+        //            { step: 2, txt: "[F] No new content", m: [16] },
+        //        ];
+        //    break;
+        //case "bigguy":
+        //    tempLevel = [
+        //        { step: 0, txt: "Get caught crossdressing at home. He comes to visit Friday thru Sunday at night. ", m: [16] },
+        //        { step: 1, txt: "Keep pestering them", m: [16] },
+        //        { step: 2, txt: "Keep pestering them", m: [16] },
+        //        { step: 3, txt: "Keep pestering them - This time with cum reward!", m: [16] },
+        //        { step: 4, txt: "Pester them. This time with more cum! ", m: [16] },
+        //        { step: 5, txt: "Sleep at home - surprise wake up.", m: [16] },
+        //        { step: 6, txt: "Should I, or shouldn't I tell on him ", m: [16] },
+        //        { step: 7, txt: "Betrayed her for more surprises on Saturday 😉", m: [16] },
+        //    ];
+        //    break;
+        //case "zoey":
+        //    //tempLevel = [
+        //    //    { step: 0, txt: "Go to her house and play some video games after noon. ", m: [500] },
+        //    //    { step: 1, txt: "Visit her again at her house.", m: [500] },
+        //    //    { step: 2, txt: "Visit her house and meet Chloé.", m: [500] },
+        //    //    { step: 3, txt: "Watch her eat out Chloé.", m: [500] },
+        //    //    { step: 4, txt: "Talk to Zoey about her problems with Chloé.", m: [500] },
+        //    //    { step: 5, txt: "Catch Chloé  Cheating (Only if your support your best friend)", m: [500] },
+        //    //    { step: 6, txt: "Sleep at Zoey's on five differnt nights.", m: [500] },
+        //    //    { step: 10, txt: "Sleep once more to see her night visitor", m: [500] },
+        //    //    {
+        //    //        step: 11, txt: "Raise her love to max. You can help her clean up at the bar or play video games at her home. Once you're " +
+        //    //            "there wear a chasity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
+        //    //    },
+        //    //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyer", m: [525] },
+        //    //    { step: 13, txt: "Eat her pussy after you finish cleaning up.", m: [500] },
+        //    //    { step: 14, txt: "Relationship - no new content", m: [500] },
 
-            //    { step: 300, txt: "No help, endless loop bad END", m: [500] },
-            //    { step: 301, txt: "Caught cheating - Zoey bad End", m: [500] },
-            //];
-            break;
-        case "tiffany":
-            break;
-        case "dog":
-            tempLevel = [
-                { step: 0, txt: "Meet", m: [316] },
-                { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
-                { step: 2, txt: "Will let you pet him. ", m: [16] },
-                { step: 3, txt: "Will play catch", m: [16] },
-                { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
-                { step: 5, txt: "More aggressive. ", m: [16] },
-                { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
-                { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
-                { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
-                { step: 9, txt: "You're so his bitch", m: [16] },
-            ];
-            break;
-        case "envy":
-            tempLevel = [
-                { step: 0, txt: "Meet", m: [316] },
-                { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
-                { step: 2, txt: "Will let you pet him. ", m: [16] },
-                { step: 3, txt: "Will play catch", m: [16] },
-                { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
-                { step: 5, txt: "More aggressive. ", m: [16] },
-                { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
-                { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
-                { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
-                { step: 9, txt: "You're so his bitch", m: [16] },
-            ];
-            break;
-        default:
-            console.log("sc.levels - not found: " + name);
-            break;
+        //    //    { step: 300, txt: "No help, endless loop bad END", m: [500] },
+        //    //    { step: 301, txt: "Caught cheating - Zoey bad End", m: [500] },
+        //    //];
+        //    break;
+        //case "tiffany":
+        //    break;
+        //case "dog":
+        //    tempLevel = [
+        //        { step: 0, txt: "Meet", m: [316] },
+        //        { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
+        //        { step: 2, txt: "Will let you pet him. ", m: [16] },
+        //        { step: 3, txt: "Will play catch", m: [16] },
+        //        { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
+        //        { step: 5, txt: "More aggressive. ", m: [16] },
+        //        { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
+        //        { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
+        //        { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
+        //        { step: 9, txt: "You're so his bitch", m: [16] },
+        //    ];
+        //    break;
+        //case "envy":
+        //    tempLevel = [
+        //        { step: 0, txt: "Meet", m: [316] },
+        //        { step: 1, txt: "You can enter her house when your girlfriend is not home. ", m: [16] },
+        //        { step: 2, txt: "Will let you pet him. ", m: [16] },
+        //        { step: 3, txt: "Will play catch", m: [16] },
+        //        { step: 4, txt: "Will try to knock you over you if you stand. ", m: [16] },
+        //        { step: 5, txt: "More aggressive. ", m: [16] },
+        //        { step: 6, txt: "Won't let you wear clothes in the house. ", m: [16] },
+        //        { step: 7, txt: "More likely to make you his bitch ", m: [16] }, //More likely to make you his bitch
+        //        { step: 8, txt: "You're his bitch", m: [16] }, //You're his bitch
+        //        { step: 9, txt: "You're so his bitch", m: [16] },
+        //    ];
+        //    break;
+        case "holly":
+        case "dolly":
+        case "molly":
+            switch (level) {
+                case -1: return "Enemies";
+                case 0: return "Gain trust";
+                case 1: return "Keep going";
+                case 2: return "Almsot there";
+                case 3: return "Complete";
+                default: return "Friends";
+            }
+        default: return "Level " + level;
     }
 };
 
@@ -1449,16 +1519,6 @@ sc.save = function () {
         });
     }
 
-    //name: "eva", mission: [
-    //    {
-    //        missionName: "getwine", mStatus: 0, title: "Get Wine!", desc: "Purchase some wine for truth or dare! ", task:
-    //            [
-    //                { id: 0, txt: "Get the wine from the corner store", show: true, mStatus: 0, roomId: 404 },
-    //                { id: 1, txt: "Bring it up after dinner. ", show: true, mStatus: 0, roomId: 16 },
-    //            ]
-    //    },
-    //],
-
     for (i = 0; i < sc.charMission.length; i++) {
         var charMission = { name: sc.charMission[i].name, mission: new Array() };
         for (j = 0; j < sc.charMission[i].mission.length; j++) {
@@ -1469,22 +1529,6 @@ sc.save = function () {
         }
         retArra.charMission.push(charMission);
     }
-
-    //{ name: "me", step: 0, txt: "Wake up buttercup.", img: "bed", show: true, row: 0, col: 0, ach: false, major: false },
-    //for (i = 0; i < sc.events.length; i++) {
-    //    retArra.events.push({
-    //        name: sc.events[i].name,
-    //        step: sc.events[i].step,
-    //        ach: sc.events[i].ach
-    //    });
-    //}
-    ////    { id: 0, name: "lola", missionname: "getwine", mStatus: 0, title: "Get Wine!", desc: "Purchase some wine for truth or dare! " },
-    //for (i = 0; i < sc.mission.length; i++) {
-    //    retArra.mission.push({
-    //        id: sc.mission[i].id,
-    //        mStatus: sc.mission[i].mStatus
-    //    });
-    //}
     
     return retArra;
 };
@@ -1509,7 +1553,6 @@ sc.load = function (ra) {
         }
     }
 
-    //console.log(ra.charMission);
     for (i = 0; i < ra.charMission.length; i++) {
 
         for (j = 0; j < ra.charMission[i].mission.length; j++) {
@@ -2267,6 +2310,14 @@ sc.trivial = function (charname) {
         case "!doofus":
             name = "Doofus";
             image = "doofus.png";
+            break;
+        case "!custbitch":
+            name = "Mean girl";
+            image = "custbitch.png";
+            break;
+        case "!jabari":
+            name = "Jabari";
+            image = "jabari.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

@@ -47,12 +47,7 @@
         i = g.rand(0, retVar.length);
     }
     else {
-        for (j = 0; j < retVar.length; j++) {
-            if (j.num === num) {
-                i = j;
-                break;
-            }
-        }
+        i = num;
     }
 
     if (i === -1)

@@ -78,6 +78,9 @@ room200.btnclick = function (name) {
                         else
                             chat(73, 200);
                         break;
+                    case 14:
+                        chat(90, 200);
+                        break;
                     case 15:
                         if (activeCaseComplete === 1)
                             chat(78, 200);
@@ -137,6 +140,17 @@ room200.btnclick = function (name) {
                 room200.chatcatch(g.internal.activeCase.callback);
             }
             break;
+        case "case_beaver_end_good":
+            
+            if (g.pass > 4) {
+                nav.killbutton("case_beaver_end_good");
+                chat(95, 200);
+            }
+            else {
+                nav.bg("200_frontOffice/case_beaver_l" + g.pass + ".jpg");
+            }
+            g.pass++;
+            break;
         default:
             break;
     }
@@ -144,6 +158,11 @@ room200.btnclick = function (name) {
 
 room200.chatcatch = function (callback) {
     switch (callback) {
+        case "bg":
+        case "case_beaver_bad1":
+        case "case_beaver0":
+            nav.bg("200_frontOffice/" + callback + ".jpg");
+            break;
         case "minorInfraction":
             missy.mod("weeklyPay", -10);
             break;
@@ -326,6 +345,10 @@ room200.chatcatch = function (callback) {
             missy.caseComplete(13);
             char.room(217);
             break;
+        case "case_beaver":
+            nav.bg("200_frontOffice/case_beaver0.jpg");
+            chat(80, 200);
+            break;
         case "case_trashcheck":
             if (missy.get("chastity") === 0) {
                 chat(38, 200);
@@ -481,6 +504,100 @@ room200.chatcatch = function (callback) {
                 chat(64, 200);
             else
                 chat(66, 200);
+            break;
+        case "case_beaver1":
+            cl.c.shirt = null;
+            zcl.displayMain(0, 400, .22, "clothes", true);
+            cl.display();
+            break;
+        case "case_beaver2":
+            cl.c.pants = null;
+            zcl.displayMain(0, 400, .22, "clothes", true);
+            cl.display();
+            break;
+        case "case_beaver_start":
+            sc.modSecret("jeffery", 100);
+            sc.show("jeffery");
+            sc.show("holly");
+            sc.show("dolly");
+            sc.show("molly");
+            sc.startMission("holly", "case");
+            sc.startMission("molly", "case");
+            sc.startMission("dolly", "case");
+            room200.chatcatch("case_afterExplaniation");
+            break;
+        case "case_beaver_end0":
+            nav.bg("200_frontOffice/case_beaver0.jpg");
+            if (missy.get("activeCaseComplete") === 1) {
+                chat(91, 200);
+            }
+            else {
+                chat(96, 200);
+            }
+            break;
+        case "case_beaver_end_good":
+            nav.killall();
+            nav.bg("200_frontOffice/case_beaver_l0.jpg");
+            g.pass = 1;
+            nav.button({
+                "type": "tongue",
+                "name": "case_beaver_end_good",
+                "left": 987,
+                "top": 369,
+                "width": 93,
+                "height": 93,
+                "image": "200_frontOffice/case_beaver_l.png"
+            }, 200);
+            break;
+        case "case_beaver_closeCase":
+            missy.mod("mood", 40);
+            missy.caseComplete(14);
+            gv.mod("money", 500);
+
+            sc.completeMission("holly", "happy", false);
+            sc.completeMissionTask("holly", "mad", 0);
+            sc.startMission("holly", "mad");
+
+            sc.completeMission("dolly", "happy", false);
+            sc.completeMissionTask("dolly", "mad", 0);
+            sc.startMission("dolly", "mad");
+
+            sc.completeMission("molly", "happy", false);
+            sc.completeMissionTask("molly", "mad", 0);
+            sc.startMission("molly", "mad");
+            
+            sc.show("jeffery");
+            sc.startMission("jeffery", "work");
+            sc.modSecret("jeffery", 100);
+
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_beaver_end_bad":
+            missy.mod("mood", -40);
+            missy.caseComplete(14);
+
+            sc.startMission("holly", "happy");
+            sc.completeMissionTask("holly", "happy", 0);
+            sc.completeMission("holly", "mad", false);
+
+            sc.startMission("dolly", "happy");
+            sc.completeMissionTask("dolly", "happy", 0);
+            sc.completeMission("dolly", "mad", false);
+
+            sc.startMission("molly", "happy");
+            sc.completeMissionTask("molly", "happy", 0);
+            sc.completeMission("molly", "mad", false);
+
+            sc.show("jeffery");
+            sc.startMission("jeffery", "work");
+            sc.modSecret("jeffery", 100);
+
+            char.room(217);
+            break;
+        case "case_beaver_bad0":
+            cl.remove("panties", cl.c.panties);
+            cl.nude();
+            zcl.displayMain(-1000, -700, .5, "clothes", true);
             break;
         case "punish":
             char.room(217);
@@ -1284,6 +1401,271 @@ room200.chat = function (chatID) {
                     { chatID: -1, text: "Yes ma'am", callback: "punish" },
                 ]
             },
+            {
+                chatID: 80,
+                speaker: "missy",
+                text: "Hello " + sc.n("me") + " this is " + sc.n("jeffery") + ". " + sc.n("jeffery") + " has a problem that I think " +
+                    "you can help him with. ",
+                button: [
+                    { chatID: 81, text: "Hi " + sc.n("jeffery"), callback: "" }
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "jeffery",
+                text: "H-H-H-H-H-Hello " + sc.n("me") + " I'm hoping you can h-h-help me with catch the waitress that has been stealing " +
+                    "from me. You'll need to pose as a waitress in my restaurant to gain their trust to try and catch the thief. " +
+                    "Do you think you can do that?",
+                button: [
+                    { chatID: 82, text: "Of course I can! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "missy",
+                text: "As you can see my sissy is well qualified and will fit that part nicely. I have full trust that " +
+                    "he will do well, because if he doesn't he'll find out what a St. Andrew's Cross is used for. ",
+                button: [
+                    { chatID: 83, text: "I can do it ", callback: "" }
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "jeffery",
+                text: "I-I-I-I don't know. She doesn't seem sexy enough to work at my store.",
+                button: [
+                    { chatID: 84, text: "huh?", callback: "" }
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "missy",
+                text: "Her sexiest trait is her obedience. Watch this. Sissy strip off your shirt. ",
+                button: [
+                    { chatID: 85, text: "Yes ma'am", callback: "case_beaver1" }
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "jeffery",
+                text: "Oh my! C-c-c-can she strip off her bottoms too?",
+                button: [
+                    { chatID: 86, text: "*groan*", callback: "" }
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "missy",
+                text: "Yes she can. Sissy strip off your bottoms.",
+                button: [
+                    { chatID: 87, text: "Yes ma'am", callback: "case_beaver2" }
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "jeffery",
+                text: "I love it! Tell her to strip of her panties!",
+                button: [
+                    { chatID: 88, text: "*GROAN* again", callback: "" }
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "missy",
+                text: "I'm paying him as an investigator, not a prostitute. If he fails you, you can have his panties. ",
+                button: [
+                    { chatID: 89, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "missy",
+                text: "Sissy. Get dressed. Tomorrow report to the Naked Beaver Diner and start invistigating the staff to see who and " +
+                    "how they are stealing form " + sc.n("jeffery") + " here. When you're done report back to me.",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_beaver_start" }
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "missy",
+                text: "Oh good Sissy, you're here. Let me call " + sc.n("jeffery") + " here. ",
+                button: [
+                    { chatID: -1, text: "Yes mistress", callback: "case_beaver_end0" }
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "missy",
+                text: "So " + sc.n("jeffery") + " how did my little detective do?",
+                button: [
+                    { chatID: 92, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "jeffery",
+                text: "He did great! Not only did he figure out how they've been stealing from me, but he's a great little " +
+                    "waitress! If you ever need to pick up some extra money you're welcome to work some shifts at the Naked Beaver!",
+                button: [
+                    { chatID: 93, text: "Thanks mister!", callback: "" }
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "missy",
+                text: "I am surprised! I guess you're ready for more responsibility around here. I think a bonus is in order for " +
+                    "all your hard work! I'll grant your $500 for not screwing up. I also have a little reward for you. " +
+                    sc.n("jeffery") + " I'm done with you, you may go now.",
+                button: [
+                    { chatID: 94, text: "Yes mistress! Thank you mistress. ", callback: "bg" }
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "missy",
+                text: "Sissies need to be rewarded as well and punished. Today sissy you've earned a reward for your work. I will " +
+                    "allow you to eat my ass. I don't often allow a sissy to eat my ass, but I'm so surprised with you, you " +
+                    "deserve it.",
+                button: [
+                    { chatID: -1, text: "Yes mistress !!!!", callback: "case_beaver_end_good" }
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "missy",
+                text: "You did well my personal slut. Maybe I'll reward you again someday. Now " +
+                    "I need to fix my skirt and get ready for the day. ",
+                button: [
+                    { chatID: -1, text: "[You take your place at the front of the desk aware that your mouth tastes like Missy's ass.]", callback: "case_beaver_closeCase" }
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "missy",
+                text: "So " + sc.n("jeffery") + " how did my little detective do?",
+                button: [
+                    { chatID: 97, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "jeffery",
+                text: "He was t-t-t-terrible! Absolutely the worst detective I know. Good waitress though. He's welcome to come back and keep " +
+                    "working anytime he wants... as a waitress, but a terrible detective.",
+                button: [
+                    { chatID: 98, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "missy",
+                text: "Well " + sc.n("jeffery") + " we don't tolerate failure here. Since he failed you how do you want to see " +
+                    "him punished?",
+                button: [
+                    { chatID: 99, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "jeffery",
+                text: "I w-w-w-want " + gender.pronoun("his") + " panties. I know " + gender.pronoun("he") + " wears panties. Give me the panties! ",
+                button: [
+                    { chatID: 100, text: "What?", callback: "" }
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "missy",
+                text: "Stop. Sissies don't get to say no. Strip all the way down. " +
+                    "Failures don't deserve clothes. ",
+                button: [
+                    { chatID: 102, text: "Yes mistress [disrobe]", callback: "case_beaver_bad0" },
+                    { chatID: 101, text: "You can't make me do that!", callback: "hate" }
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "missy",
+                text: "I did not hire you so you could act like a spoiled child and throw a temper tantrum. Now take off your " +
+                    "clothes or you're fired!",
+                button: [
+                    { chatID: 102, text: "Yes mistress", callback: "case_beaver_bad0" }
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "jeffery",
+                text: "Now give me his p-p-p-p-panties.  ",
+                button: [
+                    { chatID: 103, text: "*sigh*", callback: "" }
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "missy",
+                text: "I did promise him your panties. Sissy give " + sc.n("jeffery") + " your panties. NOW!",
+                button: [
+                    { chatID: 104, text: "[Give " + sc.n("jeffery") + " your panties]", callback: "case_beaver_bad1" }
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "jeffery",
+                text: "ooooOOooooOOhhh yesssss, that's so fresh! I love your scent! Can I keep these.. I'm going to keep these.",
+                button: [
+                    { chatID: 105, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "missy",
+                text: "Yes " + sc.n("jeffery") + " you can keep them. Now kindly put those in your pocket as we continue.",
+                button: [
+                    { chatID: 106, text: "...", callback: "case_beaver0" }
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "jeffery",
+                text: "Now make " + gender.pronoun("him") + " kiss my butt and apologise! N-n-n-no. Make " + gender.pronoun("him") +
+                    " my slave for a day, no wait a week! My slave for a week! ",
+                button: [
+                    { chatID: 107, text: "Wha!", callback: "" }
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "missy",
+                text: "Stop. This isn't a brothal. You always take things too far. " +
+                    gender.pronoun("she") + " will be punished, and you will be refunded " +
+                    "for our failure to solve such a simple case. ",
+                button: [
+                    { chatID: 108, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "jeffery",
+                text: "I deserve something! Maybe a blow job! Yes. I'm going make " +
+                    gender.pronoun("him") + " give me a blowjob! ",
+                button: [
+                    { chatID: 109, text: "!", callback: "" }
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "missy",
+                text: "UGH, " + sc.n("jeffery") + " if you pull that thing out I'm " +
+                    "going to cut it off. Now get out, I have work to do. And you. " +
+                    "put your clothes back on while I think of a proper punishment " +
+                    "for your failure. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_beaver_end_bad" }
+                ]
+            },
+            
+            
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

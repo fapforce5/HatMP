@@ -135,7 +135,7 @@ missy.activecase = function () {
             { caseId: 11, name: "case_shopping", txt: "Meet Tiffany at the Toys 'n Us.", m: [650], isComplete: activeCaseComplete },
             { caseId: 12, name: "case_bimbopanties", txt: "Steal the panties from the Bimbo", m: [75], isComplete: activeCaseComplete },
             { caseId: 13, name: "case_elijah", txt: "Convince Elijah to spill the details", m: [575], isComplete: activeCaseComplete },
-            { caseId: 14, name: "case_beaver", txt: "Stolen money", m: [250], isComplete: activeCaseComplete },
+            { caseId: 14, name: "case_beaver", txt: "Work at the Naked Beaver diner to find who has stolen the money. ", m: [250], isComplete: activeCaseComplete },
             { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
 
         ];
@@ -290,7 +290,7 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_beaver":
-                        if (qdress.st[0].ach) {
+                        if (missy.get("uniform") > 0) {
                             canDoCase = piLevel > 2;
                             caseList.push({
                                 caseId: i,

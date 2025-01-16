@@ -265,6 +265,7 @@ room526.chatcatch = function (callback) {
             nav.bg("526_bar/" + callback + ".jpg");
             break;
         case "hollyGood":
+            sc.startMission("holly", "bar");
             sc.completeMissionTask("holly", "bar", 0, true);
             sc.modLevel("holly", 100, 1);
             sc.modLevel("molly", 100, 1);

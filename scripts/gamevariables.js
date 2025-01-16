@@ -1033,8 +1033,7 @@ levels.oralGive = function (size, swallow, isDildo, gender = null) {
         //noop
     }
     else if (swallow) {
-        levels.mod("cum", 25, 999);
-        stats.mod("cum", "swallow", 1);
+        levels.cum();
     }
     else if(gender === "m") {
         cl.c.cumface = true;
@@ -1120,6 +1119,24 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     else if (gender !== null && beast === null) {
         sex.mod("anal", false, gender, 1);
     }
+};
+
+levels.cum = function (howMuch = 1) {
+    switch (levels.get("cum").l) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4: gv.mod("energy", 5); break;
+        case 5: gv.mod("energy", 10); break;
+        case 6: gv.mod("energy", 15); break;
+        case 7: gv.mod("energy", 20); break;
+        case 8: gv.mod("energy", 25); break;
+        case 9: gv.mod("energy", 30); break;
+        default: gv.mod("energy", 35); break;
+    }
+    levels.mod("cum", 25, 999);
+    stats.mod("cum", "swallow", 1);
 };
 
 levels.oral = function (size) {

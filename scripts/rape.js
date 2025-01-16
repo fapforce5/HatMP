@@ -5,27 +5,40 @@ rape.char;
 rape.roomId;
 rape.callbackWin;
 rape.callbackLost;
-rape.step;
 rape.type;
 rape.kickCounter;
 
-rape.init = function (location, roomId, callbackWin, callbackLost, charNum = null) {
+rape.phases = [
+    { i: 0, n: "fully clothed" },
+    { i: 1, n: "bra or panties" },
+    { i: 2, n: "pre rape" },
+    { i: 3, n: "Insert" },
+    { i: 4, n: "fuck" },
+    { i: 5, n: "cum" },
+    { i: 6, n: "post fight" },
+];
+rape.phase = 0;
+
+rape.init = function (location = "street", roomId = g.roomID, callbackWin = "", callbackLost = "", charNum = null) {
     nav.killall();
     inv.hide();
     rape.step = 0;
     rape.kickCounter = 1;
 
-    rape.type = (g.rand(0, 3) === 0) ? "oral" : "anal";
-
     rape.callbackWin = callbackWin;
     rape.callbackLost = callbackLost;
     rape.roomId = roomId;
-
-    rape.char = getRapeChar(location, charNum);
-    var wearing = cl.wearing();
-
-    rape.displayMenu("init");
     
+    rape.char = getRapeChar(location, charNum);
+    if (rape.char === undefined) {
+        alert("bad rape char");
+        return;
+    }
+    
+    //Save clothes 
+    cl.changeClothingSave();
+
+    //set
     nav.button({
         "type": "zimg",
         "name": "r1004",
@@ -64,50 +77,8 @@ rape.init = function (location, roomId, callbackWin, callbackLost, charNum = nul
         text: sc.n("me")
     });
 
-    var stats = quickFight.getStats(rape.char.fight);
-    var opening = new Array();
-    if (rape.char.openingImg === null) {
-        if (wearing.outerwear) {
-
-            if (wearing.crossdressing) {
-                opening.push("o_1_girl.png");
-                if (cl.c.chest > 2) {
-                    opening.push("o_2_c_g.png");
-                }
-                else {
-                    opening.push("o_2_c_b.png");
-                }
-            } 
-            else {
-                opening.push("o_1_boy.png");
-                if (cl.c.chest > 2) {
-                    opening.push("o_2_n_g.png");
-                }
-                else {
-                    opening.push("o_2_n_b.png");
-                }
-            }
-        }
-        else {
-            if (cl.c.chest > 2) {
-                opening.push("o_2_g.png");
-            }
-            else {
-                opening.push("o_2_b.png");
-            }
-        }
-        rape.char.openingImg = opening[g.rand(0, opening.length)];
-    }
-
-    nav.button({
-        "type": "img",
-        "name": "r1004bg",
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "1004_rape/" + rape.char.openingImg
-    }, 1004);
+    //var stats = quickFight.getStats(rape.char.fight);
+    
     
 
     $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-name="myenergybase" data-room="1004" style=" ' + g.makeCss(10, 280, 1020, 1450) + '  background: #333; border-radius:10px;" ></div>');
@@ -119,7 +90,115 @@ rape.init = function (location, roomId, callbackWin, callbackLost, charNum = nul
     $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #33ff33; border-radius:10px;" ></div>');
 
     rape.updateEnergy(null, null);
+    rape.callphase();
 };
+
+rape.callphase = function (increment = false) {
+    if (increment)
+        rape.phase++;
+    if (rape.phase > 6)
+        rape.phase = 6;
+
+    switch (rape.phase) {
+        case 0: //outerwear
+            if (cl.wearing().outerwear) {
+                rape.callphase(true);
+                return;
+            }
+            rape.phase0();
+            break;
+        case 1: //innerwear
+            if (cl.wearing().underwear) {
+                rape.callphase(true);
+                return;
+            }
+            rape.phase0();
+            break;
+        case 2: rape.phase2(); break;
+        case 3: rape.phase3(); break;
+        case 4: rape.phase4(); break;
+        case 5: rape.phase5(); break;
+        case 6: rape.phase6(); break;
+    }
+};
+
+rape.phase0 = function () {
+    let opening = new Array();
+    if (cl.wearing().crossdressing) {
+        opening.push("o_1_girl.png");
+        if (cl.c.chest > 2) {
+            opening.push("o_2_c_g.png");
+        }
+        else {
+            opening.push("o_2_c_b.png");
+        }
+    }
+    else {
+        opening.push("o_1_boy.png");
+        if (cl.c.chest > 2) {
+            opening.push("o_2_n_g.png");
+        }
+        else {
+            opening.push("o_2_n_b.png");
+        }
+    }
+
+    let img = opening[g.rand(0, opening.length)];
+
+    nav.button({
+        "type": "img",
+        "name": "r1004bg",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1004_rape/" + img
+    }, 1004);
+
+    rape.displayMenu("init");
+
+};
+rape.phase1 = function () {
+    //else {
+    //    if (cl.c.chest > 2) {
+    //        opening.push("o_2_g.png");
+    //    }
+    //    else {
+    //        opening.push("o_2_b.png");
+    //    }
+    //}
+    //rape.char.openingImg = opening[g.rand(0, opening.length)];
+    //nav.button({
+    //    "type": "img",
+    //    "name": "r1004bg",
+    //    "left": 0,
+    //    "top": 0,
+    //    "width": 1920,
+    //    "height": 1080,
+    //    "image": "1004_rape/" + rape.char.openingImg
+    //}, 1004);
+};
+
+
+rape.phase2 = function () {
+
+};
+rape.phase3 = function () {
+
+};
+rape.phase4 = function () {
+
+};
+
+rape.phase5 = function () {
+
+};
+
+rape.phase6 = function () {
+
+    //random can lose clothes - cl.undo();
+};
+
 
 rape.kill = function () {
     nav.killall();
@@ -382,7 +461,7 @@ rape.rolldice = function (updateEnergy = false) {
         top: 540,
         font: 20,
         hex: "#ffffff",
-        text: "Roll: " + myTotal + " + Level: " + fightStats.total + " = " + myTotalWithFight
+        text: myTotalWithFight + " &nbsp;&nbsp;(Roll: " + myTotal + " + STR: " + fightStats.total + ")"
     });
 
     nav.t({
@@ -402,7 +481,7 @@ rape.rolldice = function (updateEnergy = false) {
         top: 610,
         font: 20,
         hex: "#ffffff",
-        text: "Roll: " + enemyTotal + " + Level: " + fightStats.enemyFightLevel + " = " + enemyTotalWithFight
+        text: enemyTotalWithFight + " &nbsp;&nbsp;(Roll: " + enemyTotal + " + STR: " + fightStats.enemyFightLevel + ")"
     });
 
     if (myTotalWithFight >= enemyTotalWithFight) {

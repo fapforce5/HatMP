@@ -728,6 +728,7 @@ room316.btnclick = function (name) {
                 { n: "datr_jarome", i: "datr_jarome.jpg" },
                 { n: "datr_bossman", i: "datr_bossman.jpg" },
                 { n: "datr_ian", i: "datr_ian.jpg" },
+                { n: "datr_jabari", i: "datr_jabari.jpg" },
                 { n: "datr_cecilia", i: "datr_cecilia.jpg" },
                 { n: "datr_philbert", i: "datr_philbert.jpg" },
                 { n: "datr_orchid", i: "datr_orchid.jpg" },
@@ -794,12 +795,14 @@ room316.btnclick = function (name) {
         case "datr_orchid":
         case "datr_ralph":
         case "datr_brad":
+        case "datr_jabari":
             g.internal.d = name.replace("datr_", "");
             nav.killall();
             switch (g.internal.d) {
                 case "mike":
                 case "jarome":
                 case "brad":
+                case "jabari":
                     nav.bg("316_livingroom/datr_happy.jpg");
                     break;
                 default:
@@ -1296,6 +1299,12 @@ room316.chat = function (chatID) {
                 dtxt = "Ooooo sexy. I do love a man that plays sports! I don't remember " +
                     "seeing him at the ball game, but there's a lot of players. Great choice! ";
                 gv.set("janiceDatr", "brad");
+                foundhim = true;
+                break;
+            case "jabari":
+                dtxt = "Oh wow! Great choice. I looks like the kind of man that knows " +
+                    "how to put me in my place! ";
+                gv.set("janiceDatr", "jabari");
                 foundhim = true;
                 break;
         }

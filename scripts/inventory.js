@@ -19,6 +19,7 @@ inv.leftMenu = true;
 inv.page = 0;
 
 inv.t = [
+    { t: "a", n: "Givable gift" },
     { t: "b", n: "Purse " },
     { t: "c", n: "Restraints" },
     { t: "d", n: "Dildo" },
@@ -36,6 +37,7 @@ inv.t = [
     { t: "x", n: "ID Card" },
     { t: "y", n: "Hypno" },
     { t: "z", n: "Gift" }
+    
     
 ];
 
@@ -136,8 +138,12 @@ inv.master = [
     { type: "y", name: "hypno6", display: "Hypno Lesson #6", entry: false, count: null, cost: 60, image: "hypno6.png", n: false, desc: "Bimbo is better" },
     { type: "y", name: "hypno7", display: "Hypno Lesson #7", entry: false, count: null, cost: 100, image: "hypno7.png", n: false, desc: "You are an object. Let men use you. All your holes and fuck holes" },
 
-    { type: "z", name: "teddybear", display: "Teddy Bear", entry: false, count: 0, cost: -1, image: "teddybear.png", n: false, desc: "Jar of Peanut Butter. " },
-
+    { type: "z", name: "teddybear", display: "Teddy Bear", entry: false, count: 0, cost: -1, image: "teddybear.png", n: false, desc: "Teddy bear" },
+    { type: "a", name: "bouquet", display: "Bouquet ", entry: false, count: 0, cost: 24, image: "bouquet.png", n: false, desc: "Lovely bouquet of flowers" },
+    { type: "a", name: "roses", display: "Roses", entry: false, count: 0, cost: 45, image: "roses.png", n: false, desc: "A dozen red roses" },
+    { type: "a", name: "seal", display: "Seal", entry: false, count: 0, cost: 12, image: "seal.png", n: false, desc: "Seal plush toy" },
+    { type: "a", name: "mug", display: "Travel Mug", entry: false, count: 0, cost: 36, image: "mug.png", n: false, desc: "Pink travel mug" },
+    { type: "a", name: "whoopee", display: "Whoopee cushion", entry: false, count: 0, cost: 3, image: "whoopee.png", n: false, desc: "Whoopee cushion go fart! Hahaha" },
 ];
 
 inv.getall = function () {

@@ -148,7 +148,6 @@ room318.btnclick = function (name) {
             }
             break;
         case "brad1":
-            
             nav.bg("318_janiceBedroom/datr_brad_" + g.internal + ".jpg");
             if (g.internal === 3) {
                 zcl.kill();
@@ -177,6 +176,204 @@ room318.btnclick = function (name) {
                     chat(30, 318);
             }
             g.internal++;
+            break;
+        case "jabari":
+            if (g.internal.gamestep === 11) {
+                nav.killbutton("jabari_dog");
+            }
+
+            if (g.internal.gamestep > 11) {
+                nav.killall();
+                nav.bg("318_janiceBedroom/datr_brad_7.jpg");
+                chat(38, 318);
+                return;
+            }
+            else {
+                nav.bg("318_janiceBedroom/jabari" + g.internal.gamestep + ".jpg");
+            }
+
+            nav.killbutton("jabari_strip");
+            nav.killbutton("jabari_sub");
+            nav.killbutton("jabari_pet");
+
+            if ((g.internal.dogstep === 100 || g.internal.dogstep === 2) && g.internal.revert) {
+                console.log("revert");
+                nav.killbutton("jabari_dog");
+                nav.button({
+                    "type": "img",
+                    "name": "jabari_dog",
+                    "left": 1554,
+                    "top": 563,
+                    "width": 231,
+                    "height": 286,
+                    "image": "318_janiceBedroom/jabari_dog0.png"
+                }, 318);
+                g.internal.dogstep = 0;
+            }
+            else if (g.internal.dogstep === 10) {
+                nav.killbutton("jabari_dog");
+                nav.button({
+                    "type": "img",
+                    "name": "jabari_dog",
+                    "left": 552,
+                    "top": 309,
+                    "width": 1000,
+                    "height": 668,
+                    "image": "316_livingroom/df.png"
+                }, 316);
+                g.internal.dogstep = 11;
+            }
+            else if (g.internal.dogstep === 11) {
+                nav.modbutton("jabari_dog", "316_livingroom/df1.png");
+                g.internal.dogstep = 12;
+            }
+            else if (g.internal.dogstep === 12) {
+                nav.modbutton("jabari_dog", "316_livingroom/df2.png");
+                g.internal.dogstep = 13;
+            }
+            else if (g.internal.dogstep === 13) {
+                nav.killbutton("jabari_dog");
+                levels.anal(3, false, "m", true, "dog");
+                zcl.kill();
+                nav.button({
+                    "type": "img",
+                    "name": "jabari_dog",
+                    "left": 1554,
+                    "top": 563,
+                    "width": 231,
+                    "height": 286,
+                    "image": "318_janiceBedroom/jabari_dog0.png"
+                }, 318);
+                nav.button({
+                    "type": "img",
+                    "name": "jabari_dogkill",
+                    "left": 418,
+                    "top": 601,
+                    "width": 1172,
+                    "height": 433,
+                    "image": "318_janiceBedroom/jabari_dog13_" + gender.pronoun("f") + ".png"
+                }, 318);
+                g.internal.dogstep = 14;
+            }
+            else if (g.internal.dogstep === 14) {
+                nav.killbutton("jabari_dogkill");
+                g.internal.dogstep = 15;
+            }
+
+            g.internal.revert = true;
+            g.internal.gamestep++;
+            break;
+        case "jabari_dog":
+            room318.btnclick("jabari");
+            nav.killbutton("jabari_strip");
+            nav.killbutton("jabari_sub");
+            nav.killbutton("jabari_pet");
+            switch (g.internal.dogstep) {
+                case 0:
+                    if (g.internal.gamestep > 4) {
+                        nav.modbutton("jabari_dog", "318_janiceBedroom/jabari_dog100.png", null, null);
+                        g.internal.dogstep = 100;
+                        g.internal.revert = false;
+                    }
+                    else if (cl.isLewd()) {
+                        nav.killbutton("jabari_dog");
+                        nav.button({
+                            "type": "grab",
+                            "name": "jabari_dog",
+                            "left": 542,
+                            "top": 512,
+                            "width": 706,
+                            "height": 466,
+                            "image": "318_janiceBedroom/jabari_dog.png"
+                        }, 318);
+                        g.internal.dogstep = 1;
+                    }
+                    else {
+                        nav.modbutton("jabari_dog", "318_janiceBedroom/jabari_dog100.png", null, null);
+                        g.internal.dogstep = 100;
+                        g.internal.revert = false;
+                    }
+                    break;
+                case 1:
+                    if (g.internal.gamestep > 6) {
+                        nav.killbutton("jabari_dog");
+                        nav.button({
+                            "type": "grab",
+                            "name": "jabari_dog",
+                            "left": 1554,
+                            "top": 563,
+                            "width": 231,
+                            "height": 286,
+                            "image": "318_janiceBedroom/jabari_dog0.png"
+                        }, 318);
+                        g.internal.dogstep = 0;
+                        g.internal.revert = false;
+                    }
+                    else if (levels.get("beast").l > 4) {
+                        if (cl.isLewd()) {
+                            sc.select("jabari_sub", "316_livingroom/icon_sub.png", 1);
+                        }
+                        else {
+                            sc.select("jabari_strip", "318_janiceBedroom/icon_strip.png", 1);
+                        }
+                    }
+                    else {
+                        levels.mod("beast", 20, 5);
+                        nav.killbutton("jabari_dog");
+                        nav.button({
+                            "type": "img",
+                            "name": "jabari_dog",
+                            "left": 812,
+                            "top": 0,
+                            "width": 1050,
+                            "height": 1080,
+                            "image": "318_janiceBedroom/jabari_dog2.png"
+                        }, 318);
+                        g.internal.dogstep = 2;
+                        g.internal.revert = true;
+                    }
+                    break;
+                case 100:
+                    if (g.internal.gamestep > 5) {
+                        nav.modbutton("jabari_dog", "318_janiceBedroom/jabari_dog0.png", null, null);
+                        g.internal.dogstep = 0;
+                        g.internal.revert = false;
+                    }
+                    else {
+                        nav.killbutton("jabari_dog");
+                        nav.button({
+                            "type": "grab",
+                            "name": "jabari_dog",
+                            "left": 542,
+                            "top": 512,
+                            "width": 706,
+                            "height": 466,
+                            "image": "318_janiceBedroom/jabari_dog.png"
+                        }, 318);
+                        g.internal.dogstep = 1;
+                    }
+                    break;
+            }
+            
+            break;
+        case "jabari_strip":
+            cl.nude();
+            room318.btnclick("jabari_dog");
+            break;
+        case "jabari_sub":
+            nav.killbutton("jabari_sub");
+            nav.killbutton("jabari_dog");
+            zcl.assup(550, 400, .8, "");
+            nav.button({
+                "type": "img",
+                "name": "jabari_dog",
+                "left": 1081,
+                "top": 404,
+                "width": 571,
+                "height": 676,
+                "image": "318_janiceBedroom/jabari_dog3.png"
+            }, 318);
+            g.internal.dogstep = 10;
             break;
         default:
             break;
@@ -270,6 +467,17 @@ room318.chatcatch = function (callback) {
                     nav.bg("318_janiceBedroom/datr_brad_0.jpg");
                     chat("brad0", 318);
                     break;
+                case "jabari":
+                    nav.bg("318_janiceBedroom/jabari0.jpg");
+                    if (sc.getMissionTask("janice", "datr", 6).notStarted) {
+                        sc.completeMissionTask("janice", "datr", 6);
+                        chat(34, 318);
+                    }
+                    else {
+                        sc.completeMissionTask("janice", "datr", 7);
+                        chat(39, 318);
+                    }
+                    break;
             }
             break;
         case "brad1":
@@ -277,6 +485,20 @@ room318.chatcatch = function (callback) {
             zcl.displayMain(400, -1100, .65, "clothes", true);
             g.internal = 3;
             nav.next("brad1");
+            break;
+        case "jabari1":
+            nav.bg("318_janiceBedroom/jabari1.jpg");
+            nav.button({
+                "type": "grab",
+                "name": "jabari_dog",
+                "left": 1554,
+                "top": 563,
+                "width": 231,
+                "height": 286,
+                "image": "318_janiceBedroom/jabari_dog0.png"
+            }, 318);
+            g.internal = { gamestep: 2, dogstep: 0, revert: false };
+            nav.next("jabari");
             break;
         case "sleep":
             gv.set("janiceDatr", null);
@@ -689,6 +911,57 @@ room318.chat = function (chatID) {
                     { chatID: -1, text: "Yeah.", callback: "sleep" },
                 ]
             },
+            {
+                chatID: 34,
+                speaker: "!jabari",
+                text: "What's you doin' here? This some kinda setup?",
+                button: [
+                    { chatID: 35, text: "*nervous laughter* no. I'm just here to watch. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "!jabari",
+                text: "Whaaa? No. That's weird man. You's gots to go, or I've gots to go. ",
+                button: [
+                    { chatID: 36, text: "?", callback: "" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "janice",
+                text: "Awwww! I was looking forward to this. " + sc.n("me") + ", can you " +
+                    "just wait in the living room? You can still here us. ",
+                button: [
+                    { chatID: 37, text: "...but", callback: "" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "!jabari",
+                text: "You heard her man. Get the fuck out so we can get our fuck on. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "jabari1" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "janice",
+                text: "Thank you so much for waiting for me! Wow! My mind and pussy are " +
+                    "blown! He was amazing. He was totally worth kicking you out. But " +
+                    "now time for your reward. You can eat a real man's cum. Lucky girl! ",
+                button: [
+                    { chatID: 33, text: "sweet! ", callback: "datr_brad_8" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "!jabari",
+                text: "Hey freak. Get the fuck out so I can fuck yo' girl! ",
+                button: [
+                    { chatID: -1, text: "ok...", callback: "jabari1" },
+                ]
+            }
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

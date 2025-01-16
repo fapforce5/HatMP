@@ -39,6 +39,8 @@ gender.pronoun = function (ptype) {
         case "him":
         case "her":
             return gender.isGirl() ? "her" : "him"; 
+        case "his":
+            return gender.isGirl() ? "her" : "his"; 
         case "son":
         case "daughter":
             return gender.isGirl() ? "daughter" : "son";

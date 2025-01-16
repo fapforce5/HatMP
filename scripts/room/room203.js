@@ -62,6 +62,9 @@ room203.btnclick = function (name) {
                 chat(999, 203);
             break;
         case "icon_dress":
+            cl.c.dress = null
+            cl.c.pj = null;
+            cl.c.swimsuit = null;
             cl.c.shoes = "fb";
             cl.c.pants = "k";
             cl.c.shirt = "r";
