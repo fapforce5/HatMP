@@ -339,7 +339,7 @@ room13.btnclick = function (name) {
                 else if (evaSissy === 2)
                     chat(141, 13);
                 else if (evaSissy === 3) {
-                    if (cl.c.chest < 3)
+                    if (cl.c.chest < 2)
                         chat(192, 13)
                     else if (cl.c.chastity === null)
                         chat(168, 13);

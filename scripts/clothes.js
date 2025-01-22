@@ -245,7 +245,7 @@ cl.getSet = function (entry) {
 };
 
 cl.cTemp = {
-    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null
+    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, buttplug: null
 };
 
 
@@ -371,6 +371,7 @@ cl.nude = function () {
     cl.cTemp.dress = cl.c.dress;
     cl.cTemp.swimsuit = cl.c.swimsuit;
     cl.cTemp.pj = cl.c.pj;
+    cl.cTemp.buttplug = cl.c.buttplug;
 
     cl.c.shoes = null;
     cl.c.socks = null;
@@ -394,6 +395,7 @@ cl.changeClothingSave = function () {
     cl.cTemp.dress = cl.c.dress;
     cl.cTemp.swimsuit = cl.c.swimsuit;
     cl.cTemp.pj = cl.c.pj;
+    cl.cTemp.buttplug = cl.c.buttplug;
 };
 
 cl.changeClothing = function (p) {
@@ -407,6 +409,22 @@ cl.changeClothing = function (p) {
     cl.c.swimsuit = cl.cTemp.swimsuit;
     cl.c.pj = cl.cTemp.pj;
     cl.display();
+};
+
+cl.checkTemp = function () {
+    let nude = false;
+    if (
+        cl.cTemp.shoes === null &&
+        cl.cTemp.socks === null &&
+        cl.cTemp.pants === null &&
+        cl.cTemp.panties === null &&
+        cl.cTemp.bra === null &&
+        cl.cTemp.shirt === null &&
+        cl.cTemp.dress === null &&
+        cl.cTemp.swimsuit === null &&
+        cl.cTemp.pj === null)
+        nude = true;
+    return { nude: nude };
 };
 
 cl.undo = function(){
@@ -2228,6 +2246,14 @@ cl.display = function () {
         cl.cockDisplay();
         cl.energydisplay();
     }
+};
+
+cl.i = function (type, name) {
+    for (let i = 0; i < cl.list.length; i++) {
+        if (cl.list[i].type === type && cl.list[i].name === name)
+            return i;
+    }
+    return null;
 };
 
 cl.cWhere = function (thisArray, entry, id) {

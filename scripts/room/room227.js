@@ -2,6 +2,7 @@
 //Fight Room
 var room227 = {};
 room227.main = function () {
+    //after x steps put text("it appears I'm totally lost,")
     //g.pass = { enemy0: "goo", enemy1: null, bg: "sewer", roomID: 226 };
     char.changeMenu("hide", false, true);
     tEnemy.init(g.pass.enemy0, g.pass.enemy1, g.pass.bg, g.pass.roomID, 227);

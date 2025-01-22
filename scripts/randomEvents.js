@@ -5,6 +5,15 @@ fame.rapereset = false;
 fame.returnBtn;
 
 fame.event = function (returnBtn) {
+    fame.returnBtn = "moveChar";
+    //rape.init("street", 0, "moveChar", "moveChar");
+    //quickFight.init(18, "random", "fightWin", "fightLose", "fightRun", 9998);
+    if (g.nextRoomId === 575) {
+        rape.init("street", 0, "moveChar");
+        return true;
+    }
+
+    return false;
     var rapeDay = [0, 303, 451, 525, 750];
     var rapeNight = [0, 225, 303, 451, 525, 750, 900];
     var isRape;

@@ -394,25 +394,65 @@ zcl.kneelSub = function (thisImage, top, left, ratio, reverse) {
 };
 
 zcl.kneelRedux = function (top, left, ratio, mod, reverse) {
+    let w = 1200;
+    let h = 1600;
+    let f = "bjRedux"
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
-    zcl.kneelReduxSub(cl.c.chest > 2 ? "girl.png" : "boy.png", top, left, ratio, reverse);
+    zcl.kneelReduxSub(cl.c.chest > 2 ? "girl.png" : "boy.png", top, left, ratio, reverse, w, h, f);
     if (cl.c.hairLength > 1) {
-        zcl.kneelReduxSub("girlhead.png", top, left, ratio, reverse);
-        zcl.kneelReduxSub(cl.c.hairColor + "1.png", top, left, ratio, reverse);
+        zcl.kneelReduxSub("girlhead.png", top, left, ratio, reverse, w, h, f);
+        zcl.kneelReduxSub(cl.c.hairColor + "1.png", top, left, ratio, reverse, w, h, f);
     }
     else {
-        zcl.kneelReduxSub("boyhead.png", top, left, ratio, reverse);
-        zcl.kneelReduxSub(cl.c.hairColor + "0.png", top, left, ratio, reverse);
+        zcl.kneelReduxSub("boyhead.png", top, left, ratio, reverse, w, h, f);
+        zcl.kneelReduxSub(cl.c.hairColor + "0.png", top, left, ratio, reverse, w, h, f);
     }
 };
 
-zcl.kneelReduxSub = function (thisImage, top, left, ratio, reverse) {
+
+
+zcl.bj = function (top, left, ratio, mod, reverse) {
+    let w = 1200;
+    let h = 1900;
+    let f = "bj2";
+    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+    let chest = 0;
+    if (cl.c.chest > 5)
+        chest = 6;
+    else if (cl.c.chest > 4)
+        chest = 5;
+    else if (cl.c.chest > 2)
+        chest = 3;
+
+    zcl.kneelReduxSub("body_" + chest + ".png", top, left, ratio, reverse, w, h, f);
+    switch (mod) {
+        case "open":
+            zcl.kneelReduxSub("head_open.png", top, left, ratio, reverse, w, h, f);
+            break;
+        case "w":
+            zcl.kneelReduxSub("head_open.png", top, left, ratio, reverse, w, h, f);
+            zcl.kneelReduxSub("w.png", top, left, ratio, reverse, w, h, f);
+            break;
+        default:
+            zcl.kneelReduxSub("head.png", top, left, ratio, reverse, w, h, f);
+            break;
+    }
+
+    if (cl.c.hairLength > 1) {
+        zcl.kneelReduxSub("hair_2_black.png", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        zcl.kneelReduxSub("hair_1_black.png", top, left, ratio, reverse, w, h, f);
+    }
+};
+
+zcl.kneelReduxSub = function (thisImage, top, left, ratio, reverse, w, h, f) {
     var btnWidth, btnHeight;
-    btnWidth = 1200 * ratio * g.ratio;
-    btnWidth = 1600 * ratio * g.ratio;
+    btnWidth = w * ratio * g.ratio;
+    btnHeight = h * ratio * g.ratio;
     top = top * g.ratio;
     left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/bjRedux/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
+    $('#room-buttons').append('<img src="./images/mainChar/' + f + '/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
 };
 
 zcl.assup = function (top, left, ratio, mod) {

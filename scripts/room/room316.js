@@ -171,6 +171,11 @@ room316.main = function () {
         }
     }
     else if (sc.getMission("janice", "cuck").inProgress) {
+        if (sc.taskGetStep("janice", "dog") === 2) {
+            nav.bg("316_livingroom/bitch_0_0.jpg");
+            chat(153, 316);
+            return;
+        }
         switch (sc.taskGetStep("janice", "cuck")) {
             case 0:
             case 1:
@@ -494,7 +499,7 @@ room316.btnclick = function (name) {
                 sc.select("iconTalkCuck", "316_livingroom/icon_talk.png", 1);
 
             if (sc.getMissionTask("janice", "cuck", 3).complete) {
-                if (!g.pass.dog && !g.isNight() && !g.pass.datr)
+                if (!g.pass.dog && !g.isNight() && !g.pass.datr && sc.taskGetStep("janice", "dog") < 3 && !sc.getMission("janice", "dog").fail)
                     sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 2);
 
                 if (!g.pass.datr)
@@ -1173,6 +1178,25 @@ room316.chatcatch = function (callback) {
             nav.killall();
             nav.bg("316_livingroom/phoneBg.jpg");
             room316.btnclick("datr");
+            break;
+        case "failJaniceDog":
+            sc.completeMission("janice", "dog", false);
+            char.room(316);
+            break;
+        case "hasmoney100":
+            if (gv.get("money") > 99)
+                chat(156, 316);
+            else
+                chat(157, 316);
+            break;
+        case "givemoney100":
+            gv.mod("money", -100);
+            break;
+        case "janiceDoggy2complete":
+            sc.completeMissionTask("janice", "dog", 2);
+            char.addtime(60);
+            daily.set("janice");
+            char.room(0);  
             break;
         default:
             break;
@@ -2465,8 +2489,8 @@ room316.chat = function (chatID) {
             {
                 chatID: 126,
                 speaker: "janice",
-                text: "So. I've been thinking it all over. I love you, and I want you in " +
-                    "my life as my boyfriend. But I don't want to have sex with you. I love " +
+                text: "So. I've been thinking it all over. You are a great boyfriend. You're nice, " +
+                    "you buy me things, and you're amazing to hang out with, but I don't want to have sex with you. I love " +
                     "you with my heart but I'm no longer attracted to you. I want you in my " +
                     "life, but I don't want to have sex with you. Without sex, I don't see " +
                     "how this could work. ",
@@ -2482,17 +2506,20 @@ room316.chat = function (chatID) {
                     "to be with someone I love with my heart as well as my body. This isn't " +
                     "going to work. You should go. ",
                 button: [
-                    { chatID: 128, text: "What if there was another way. What if we open our relationship? ", callback: "" },
+                    { chatID: 128, text: "What if there was another way. I love you too and our time together. Is it just sex that is seperating us?? ", callback: "" },
                     { chatID: -1, text: "You're right. I deserve someone who loves me, for me [Breakup]", callback: "breakupCuck" },
                 ]
             },
             {
                 chatID: 128,
                 speaker: "janice",
-                text: "You mean we continue dating, but I get to have sex with other " +
-                    "people? I don't know...",
+                text: "It is. I love everything about you, I'm just not attracted to you  " +
+                    "anymore. I yearn to be with other men. To feel their manly arms hold " +
+                    "me down and make me feel like a little girl. I never get that feeling " +
+                    "from you. But I do love how you come over and our little dates, and " +
+                    "haning out with you. I need more than you can provide. ",
                 button: [
-                    { chatID: 129, text: "...", callback: "" },
+                    { chatID: 129, text: "I can't be without you even if you have to have sex with other men. ", callback: "" },
                 ]
             },
             {
@@ -2501,7 +2528,8 @@ room316.chat = function (chatID) {
                 text: "It's not the olden days anymore. Many couples are doing it. I " +
                     "love you, and you love me. If you have to have sex with other men " +
                     "to be satisfied, then that's something I'm willing to do for you, " +
-                    "because of my love for you. ",
+                    "because of my love for you. We can open up our relationship so you " +
+                    "can get what you need, and we can still be together. ",
                 button: [
                     { chatID: 130, text: "...", callback: "" },
                 ]
@@ -2729,6 +2757,56 @@ room316.chat = function (chatID) {
                     { chatID: -1, text: "Sweet! ", callback: "bathroom" },
                 ]
             },
+            {
+                chatID: 153,
+                speaker: "janice",
+                text: "So, just becuase I told you we wern't going to have sex anymore " +
+                    "you decided to have sex with " + sc.n("dog") + "? In a public park " +
+                    "no less! You're not a boyfriend, you're a bitch. Not a bitch like a " +
+                    "mean girl, but a bitch like a girl doggy. Is that what you are? " +
+                    "Are you a bitch? ",
+                button: [
+                    { chatID: 155, text: "Yes. I guess I'm a bitch. ", callback: "" },
+                    { chatID: 154, text: "I'm not a bitch! " + sc.n("me") + " attacked me! [Ends 'Bad dog!' path]", callback: "bathroom" },
+                ]
+            },
+            {
+                chatID: 154,
+                speaker: "janice",
+                text: "Oh I'm so sorry! I should have warned you more. He can be a little " +
+                    "rough sometimes, you poor " + gender.pronoun("boy") + ". I should be " +
+                    "the only one taking him for walks so he doesn't misbehave like that. ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "failJaniceDog" },
+                ]
+            },
+            {
+                chatID: 154,
+                speaker: "janice",
+                text: "That's what I thought. Really disgusting. Do you know how embarrased I was " +
+                    "walking in on that at the park and having get my poor little " + sc.n("dog") +
+                    " in front of everyone! ",
+                button: [
+                    { chatID: 156, text: "...well I uh...", callback: "" },
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "janice",
+                text: "This isn't the first time you've screwed up and made me angry. " +
+                    "Yet you always come back with your tail between your legs begging " +
+                    "for forgiveness. Since you can't seem to control your little urges " +
+                    "I'm going to control them for you! Now strip down. Bitches don't " +
+                    "wear human clothes. From now on you'll wear the bitch suit I got " +
+                    "yesterday for you! ",
+                button: [
+                    { chatID: 157, text: "Bitch suit?", callback: "" },
+                ]
+            },
+
+
+
+
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

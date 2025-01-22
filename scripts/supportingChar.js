@@ -501,8 +501,8 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Dish ran away without the spoon", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Caught!", show: true, mStatus: 0, roomId: 315 },
-                        { id: 2, txt: "Video", show: true, mStatus: 0, roomId: 315 },
-                        { id: 3, txt: "In development [NOT MADE YET!]", show: true, mStatus: 0, roomId: 315 },
+                        { id: 2, txt: "You're her bitch", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "[not made yet your dirty bitch]", show: true, mStatus: 0, roomId: 315 },
                     ]
             },
         ]
@@ -2318,6 +2318,10 @@ sc.trivial = function (charname) {
         case "!jabari":
             name = "Jabari";
             image = "jabari.png";
+            break;
+        case "!rape0":
+            name = "My rapist";
+            image = "rape0.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

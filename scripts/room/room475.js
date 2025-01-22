@@ -78,45 +78,45 @@ room475.main = function () {
             m.fmap[g.map.row][g.map.col - 1].visited = true;
         g.map.lastFight++;
 
-        if (((Math.floor(Math.random() * 8) === 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12)) {
-            if (gv.get("cat") === -1 && (Math.floor(Math.random() * 4) === 0)) {
-                nav.killall();
-                nav.bg("475_fight/cat.jpg");
-                g.map.lastFight = 0;
-                chat(3, 475);
-            }
-            else {
-                var te = Math.floor(Math.random() * 3);
-                if (gv.get("fantasyCreatures")) {
-                    if (g.isNight())
-                        te = Math.floor(Math.random() * 9); //overload the warewolf at night
-                    else
-                        te = Math.floor(Math.random() * 4);
-                }
-                var thisEnemy = null;
-                switch (te) {
-                    case 0:
-                        thisEnemy = "ag";
-                        break;
-                    case 1:
-                        thisEnemy = "al";
-                        break;
-                    case 2:
-                        thisEnemy = "af";
-                        break;
-                    case 3:
-                        thisEnemy = "m";
-                        break;
-                    default:
-                        thisEnemy = "aw";
-                        break;
-                }
-                char.changeMenu("hide", true, true);
-                g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "forest", roomID: 475 };
-                g.map.lastFight = 0;
-                char.room(227);
-            }
-        }
+        //if (((Math.floor(Math.random() * 8) === 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12)) {
+        //    if (gv.get("cat") === -1 && (Math.floor(Math.random() * 4) === 0)) {
+        //        nav.killall();
+        //        nav.bg("475_fight/cat.jpg");
+        //        g.map.lastFight = 0;
+        //        chat(3, 475);
+        //    }
+        //    else {
+        //        var te = Math.floor(Math.random() * 3);
+        //        if (gv.get("fantasyCreatures")) {
+        //            if (g.isNight())
+        //                te = Math.floor(Math.random() * 9); //overload the warewolf at night
+        //            else
+        //                te = Math.floor(Math.random() * 4);
+        //        }
+        //        var thisEnemy = null;
+        //        switch (te) {
+        //            case 0:
+        //                thisEnemy = "ag";
+        //                break;
+        //            case 1:
+        //                thisEnemy = "al";
+        //                break;
+        //            case 2:
+        //                thisEnemy = "af";
+        //                break;
+        //            case 3:
+        //                thisEnemy = "m";
+        //                break;
+        //            default:
+        //                thisEnemy = "aw";
+        //                break;
+        //        }
+        //        char.changeMenu("hide", true, true);
+        //        g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "forest", roomID: 475 };
+        //        g.map.lastFight = 0;
+        //        char.room(227);
+        //    }
+        //}
     }
 };
 

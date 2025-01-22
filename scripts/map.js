@@ -266,12 +266,12 @@ m.createFmapNew = function () {
         m.fmap[tf[i].row][tf[i].col].used = 'm';
     }
 
-    for (i = 0; i < Math.floor((m.col * m.row) / 3); i++) {
-        var tc = g.rand(1, m.col - 1);
-        var tr = g.rand(1, m.row - 1);
-        if (m.fmap[tr][tc].used !== 'm')
-            m.fmap[tr][tc].used = 'm'; //make u for test
-    }
+    //for (i = 0; i < Math.floor((m.col * m.row) / 3); i++) {
+    //    var tc = g.rand(1, m.col - 1);
+    //    var tr = g.rand(1, m.row - 1);
+    //    if (m.fmap[tr][tc].used !== 'm')
+    //        m.fmap[tr][tc].used = 'm'; //make u for test
+    //}
 
     for (i = 1; i < m.col - 1; i++) {
         m.fmap[50][i].used = 'x';
@@ -334,11 +334,22 @@ m.createFmapNew = function () {
     gv.set("forestVisit", tx);
     var forestString = "";
 
-    for (i = 1; i < 79; i++) {
-        for (j = 1; j < 19; j++)
-            forestString += m.fmap[i][j].used;
-    }
+    //for (i = 1; i < 79; i++) {
+    //    for (j = 1; j < 19; j++)
+    //        forestString += m.fmap[i][j].used;
+    //}
     gv.set("forestMap", forestString);
+};
+
+m.visitAll = function () {
+    gv.set("forestMap", null);
+    m.createFmap();
+    for (i = 0; i < m.row; i++) {
+        for (j = 0; j < m.col; j++) {
+            m.fmap[i][j].visited = true;
+        }
+    }
+    m.drawMap();
 };
 
 m.updateVisit = function () {
