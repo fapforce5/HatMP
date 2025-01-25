@@ -36,6 +36,7 @@ room725.main = function () {
 };
 
 room725.btnclick = function (name) {
+    let beer725;
     switch (name) {
         case "drink":
             nav.kill();
@@ -52,10 +53,9 @@ room725.btnclick = function (name) {
             }
             else {
                 gv.mod("money", -4);
-                g.internal = "beer";
-                gv.mod("bladder", .3);
                 char.addtime(20);
-                levels.mod("beer", 15, 999);
+                beer725 = levels.beer(1);
+                g.internal = { n: "beer", b: beer725 };
                 chat(1000, 725);
             }
             break;
@@ -65,10 +65,9 @@ room725.btnclick = function (name) {
             }
             else {
                 gv.mod("money", -7);
-                g.internal = "whisky and soda";
-                gv.mod("bladder", .3);
                 char.addtime(20);
-                levels.mod("beer", 15, 999);
+                beer725 = levels.beer(1);
+                g.internal = { n: "whisky and soda", b: beer725 };
                 chat(1000, 725);
             }
             break;
@@ -78,11 +77,10 @@ room725.btnclick = function (name) {
             }
             else {
                 gv.mod("money", -10);
-                levels.mod("xdress", 2, 999);
-                gv.mod("bladder", .3);
-                g.internal = "Strawberry Daiquiri ";
+                levels.mod("xdress", 2);
                 char.addtime(20);
-                levels.mod("beer", 15, 999);
+                beer725 = levels.beer(1);
+                g.internal = { n: "Strawberry Daiquiri ", b: beer725 };
                 chat(1000, 725);
             }
             break;
@@ -93,10 +91,9 @@ room725.btnclick = function (name) {
             else {
                 gv.mod("money", -15);
                 levels.mod("xdress", 4, 999);
-                gv.mod("bladder", .3);
-                g.internal = "Pink Barbie Cocktail ";
                 char.addtime(20);
-                levels.mod("beer", 15, 999);
+                beer725 = levels.beer(1);
+                g.internal = { n: "Pink Barbie Cocktail ", b: beer725 };
                 chat(1000, 725);
             }
             break;
@@ -232,6 +229,17 @@ room725.chatcatch = function (callback) {
             char.addtime(185);
             char.room(0);
             break;
+        case "passout":
+            nav.killall();
+            if (cl.appearance() > 3) {
+                g.pass = 225;
+                char.room(28);
+            }
+            else {
+                g.pass = 450;
+                char.room(28);
+            }
+            break;
         case "leave":
             char.room(0);
             break;
@@ -245,10 +253,32 @@ room725.chatcatch = function (callback) {
 
 room725.chat = function (chatID) {
     if (chatID === 1000) {
+        if (g.internal.b.passout) {
+            return {
+                chatID: 1000,
+                speaker: "thinking",
+                text: "You drank a " + g.internal.n + " and passout out. Looks like this " +
+                    "sissy doesn't know when to stop. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "passout" }
+                ]
+            };
+        }
+        else if (g.internal.nextOneDrunk) {
+            return {
+                chatID: 1000,
+                speaker: "thinking",
+                text: "You drank a " + g.internal.n + ". You're really drunk and are in " +
+                    "probably going to pass out if you have another drink. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            };
+        }
         return {
             chatID: 1000,
             speaker: "thinking",
-            text: "You drank a " + g.internal + ". Dev note - add over drinking, drinking level, and pass out ",
+            text: "You drank a " + g.internal.n + ". ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

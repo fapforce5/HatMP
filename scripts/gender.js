@@ -13,8 +13,13 @@ gender.isCockTooSmallForSex = function(){
 
 gender.isGirl = function () {
     var appearance = cl.appearance();
-    if (appearance === 5)
-        return cl.c.chest > 2;
+    if (appearance === 5) {
+        if (cl.c.chest > 2)
+            return true;
+        else if (cl.c.chest === 2 && cl.c.hairLength > 1)
+            return true;
+        return false;
+    }
     return cl.appearance() > 1;
 }
 
@@ -50,6 +55,8 @@ gender.pronoun = function (ptype) {
         case "man":
         case "lady":
             return gender.isGirl() ? "lady" : "man";
+        case "gentleman":
+            return gender.isGirl() ? "lady" : "gentleman";
         case "bikini":
         case "swimsuit":
             return gender.isGirl() ? "bikini" : "swim trunks";

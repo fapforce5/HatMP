@@ -8,7 +8,7 @@ rape.kickCounter;
 rape.clothingLost;
 rape.rapeType;
 rape.phaseChange = "";
-
+rape.phase = 0;
 rape.phases = [
     { i: 0, n: "fully clothed", c: 0 },
     { i: 1, n: "bra or panties", c: 0 },
@@ -19,7 +19,7 @@ rape.phases = [
     { i: 6, n: "post fight", c: 0 },
     { i: 7, n: "exit", c: 0 },
 ];
-rape.phase = 0;
+
 
 rape.init = function (location = "street", roomId = g.roomID, callbackWin = "", callbackLost = "", charNum = null) {
     nav.killall();
@@ -390,7 +390,11 @@ rape.phase2 = function () {
         chat(500, 1004);
     }
     else if (rape.phaseChange === "choiceOral") {
-        rape.rapeType = "oral";
+        if (rape.char.options.includes("cunnilugus"))
+            rape.rapeType = "cunnilugus";
+        else
+            rape.rapeType = "oral";
+
         zcl.bj(0, 600, .55, "close", true);
         //zcl.bj(0, 300, .7, "open", true);
         rape.phase = 1;
@@ -422,6 +426,7 @@ rape.phase2 = function () {
 };
 
 rape.phase3 = function () {
+    let img;
     nav.killbutton("r1004bg");
     if (rape.rapeType === null) {
         rape.rapeType = rape.char.options[g.rand(0, rape.char.options.length)];
@@ -431,6 +436,9 @@ rape.phase3 = function () {
     if (charPhase3.default) {
         if (rape.rapeType === "anal") {
             if (rape.phases[3].c === 0) {
+                img = "hover_cock_astart_" + rape.char.color + ".png";
+                if (rape.char.color === "w" && rape.char.cocksize < 4)
+                    img = "hover_cock_astart_w3.png";
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -438,11 +446,14 @@ rape.phase3 = function () {
                     "top": 0,
                     "width": 1920,
                     "height": 1080,
-                    "image": "1004_rape/hover_cock.png"
+                    "image": "1004_rape/" + img
                 }, 1004);
                 rape.message(["Please don't put", "that dirty dick in me"]);
             }
             else if (rape.phaseChange === "phase3cover") {
+                img = "hover_cock_block_" + rape.char.color + ".png";
+                if (rape.char.color === "w" && rape.char.cocksize < 4)
+                    img = "hover_cock_block_w3.png";
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -450,13 +461,17 @@ rape.phase3 = function () {
                     "top": 0,
                     "width": 1920,
                     "height": 1080,
-                    "image": "1004_rape/hover_cock_block.png"
+                    "image": "1004_rape/" + img
                 }, 1004);
                 rape.displayMenu("phase2");
                 rape.message(["Aaakk no! I don't want it"]);
                 return;
             }
             else if (rape.phaseChange === "phase3sub") {
+                img = "hover_cock_enter_" + rape.char.color + ".png";
+                if (rape.char.color === "w" && rape.char.cocksize < 4)
+                    img = "hover_cock_enter_w3.png";
+
                 rape.updateEnergy(null, null, 15);
                 nav.button({
                     "type": "img",
@@ -465,11 +480,15 @@ rape.phase3 = function () {
                     "top": 0,
                     "width": 1920,
                     "height": 1080,
-                    "image": "1004_rape/hover_cock_enter.png"
+                    "image": "1004_rape/" + img
                 }, 1004);
                 rape.message(["I am a dirty anal whore"]);
             }
             else if (rape.phaseChange === "struggle") {
+                img = "hover_cock_owie_" + rape.char.color + ".png";
+                if (rape.char.color === "w" && rape.char.cocksize < 4)
+                    img = "hover_cock_enter_w3.png";
+
                 rape.updateEnergy(null, null, 15);
                 nav.button({
                     "type": "img",
@@ -478,7 +497,7 @@ rape.phase3 = function () {
                     "top": 0,
                     "width": 1920,
                     "height": 1080,
-                    "image": "1004_rape/hover_cock_owie.png"
+                    "image": "1004_rape/" + img
                 }, 1004);
                 rape.message(["Fuck that cock hurts"]);
             }
@@ -488,7 +507,7 @@ rape.phase3 = function () {
                 return;
             }
         }
-        else if (rape.rapeType === "oral") {
+        else if (rape.rapeType === "oral" || rape.rapeType === "cunnilugus") {
             if (rape.phases[3].c === 0) {
                 nav.button({
                     "type": "img",
@@ -536,7 +555,7 @@ rape.phase3 = function () {
         }
     }
     else {
-        if (isComplete) {
+        if (charPhase3.complete) {
             rape.callphase(true);
             return;
         }
@@ -569,7 +588,7 @@ rape.phase4 = function () {
 
         pleasure = levels.analTake(rape.char.cocksize);
     }
-    else if (rape.rapeType === "oral") {
+    else if (rape.rapeType === "oral" || rape.rapeType === "cunnilugus") {
         if (rape.phaseChange === "phase4Sub") {
             rape.message(["Submissive oral whore"]);
             enemyPleasure = 14;
@@ -848,7 +867,7 @@ rape.displayMenu = function (menu) {
             else
                 btnList.push({ n: "kick", i: "icon_kick.png" });
 
-            if (rape.char.options.includes("oral")) {
+            if (rape.char.options.includes("oral") || rape.char.options.includes("cunnilugus")) {
                 if (subLevelChoice < 5)
                     btnList.push({ n: "sub5", i: "icon_choice_oral_x.png" });
                 else
@@ -893,6 +912,34 @@ rape.displayMenu = function (menu) {
                         btnList.push({ n: "phase4Sub", i: "anal_thust" + g.rand(2, 6) + ".png" });
 
                     btnList.push({ n: "phase4Limp", i: "anal_limp" + g.rand(2, 6) + ".png" });
+                }
+            }
+            else if (rape.rapeType === "cunnilugus") {
+                if (rape.phases[4].c === 0) {
+                    if (rapeDomLevel < 3)
+                        btnList.push({ n: "dom3oral", i: "oral_struggle_x.png" });
+                    else
+                        btnList.push({ n: "phase4Struggle", i: "oral_struggle_1.png" });
+
+                    if (rapeSubLevel < 5)
+                        btnList.push({ n: "sub5", i: "oral_cun_x.png" });
+                    else
+                        btnList.push({ n: "phase4Sub", i: "oral_cun_1.png" });
+
+                    btnList.push({ n: "phase4Limp", i: "oral_cun_limp_1.png" });
+                }
+                else {
+                    if (rapeDomLevel < 3)
+                        btnList.push({ n: "dom3oral", i: "oral_struggle_x.png" });
+                    else
+                        btnList.push({ n: "phase4Struggle", i: "oral_cun_struggle_" + g.rand(2, 6) + ".png" });
+
+                    if (rapeSubLevel < 5)
+                        btnList.push({ n: "sub5", i: "oral_cun_x.png" });
+                    else
+                        btnList.push({ n: "phase4Sub", i: "oral_cun_" + g.rand(2, 6) + ".png" });
+
+                    btnList.push({ n: "phase4Limp", i: "oral_cun_limp_" + g.rand(2, 6) + ".png" });
                 }
             }
             else if (rape.rapeType === "oral") {
@@ -965,15 +1012,24 @@ rape.displayMenu = function (menu) {
             btnList.push({ n: "next", i: "icon_limp.png" });
             break;
         case "oral":
+        case "cunnilugus":
             if (levels.get("dom").l < 3)
                 btnList.push({ n: "dom3", i: "icon_oral_no_x.png" });
             else
                 btnList.push({ n: "phase3cover", i: "icon_oral_no.png" });
 
-            if (levels.get("sub").l < 5)
-                btnList.push({ n: "sub5", i: "icon_oral_" + rape.char.gender + "_x.png" });
-            else
-                btnList.push({ n: "phase3sub", i: "icon_oral_" + rape.char.gender + ".png" });
+            if (menu === "cunnilugus") {
+                if (levels.get("sub").l < 5)
+                    btnList.push({ n: "sub5", i: "icon_oral_cunn_x.png" });
+                else
+                    btnList.push({ n: "phase3sub", i: "icon_oral_cunn.png" });
+            }
+            else {
+                if (levels.get("sub").l < 5)
+                    btnList.push({ n: "sub5", i: "icon_oral_" + rape.char.gender + "_x.png" });
+                else
+                    btnList.push({ n: "phase3sub", i: "icon_oral_" + rape.char.gender + ".png" });
+            }
 
             btnList.push({ n: "next", i: "icon_limp.png" });
             break;
@@ -1143,18 +1199,16 @@ rape.kick = function () {
     let i;
     let kickSuccess = true;
     nav.killbuttonStartsWith("b1004-");
+    nav.killbutton("m1004-d");
     if (rape.kickCounter > 3)
         rape.kickCounter = 3;
     if (rape.kickCounter < 1)
         rape.kickCounter = 1;
     for (i = 0; i < rape.kickCounter; i++) {
-        //diceArray.push(g.rand(1, 7));
-        diceArray.push(6);
+        diceArray.push(g.rand(1, 7));
         if (diceArray[i] !== 6)
             kickSuccess = false;
     }
-
-
 
     rape.kickCounter++;
     myTotal = enemyTotal = 0;
@@ -1174,10 +1228,10 @@ rape.kick = function () {
         nav.button({
             "type": "zimg",
             "name": "m1004-d",
-            "left": 1700,
-            "top": 210 + (i * 100),
-            "width": 80,
-            "height": 80,
+            "left": 1710,
+            "top": 210 + (i * 75),
+            "width": 60,
+            "height": 60,
             "image": "1001_rand/dice" + diceArray[i] + ".png"
         }, 1002);
     }
@@ -1196,8 +1250,8 @@ rape.kick = function () {
         nav.t({
             type: "zimg",
             name: "m1004-d",
-            left: 1650,
-            top: 575,
+            left: 1700,
+            top: 435,
             font: 20,
             hex: "#ffffff",
             text: "Success!"
@@ -1216,8 +1270,8 @@ rape.kick = function () {
         nav.t({
             type: "zimg",
             name: "m1004-d",
-            left: 1650,
-            top: 575,
+            left: 1700,
+            top: 435,
             font: 20,
             hex: "#ffffff",
             text: "Kick failed!"

@@ -716,7 +716,7 @@ levels.mod = function (name, amount, targetLevel = 999) {
         if (levels.st[i].c > 100)
             levels.st[i].c = 100;
         if (amount > 0) {
-            if (levels.st[i].c > 99)
+            if (levels.st[i].c > 15)
                 g.popUpNotice("You're maxed out for " + levels.st[i].d);
             else if(amount > 0)
                 g.popUpNotice("You gained "  + amount + " points for " + levels.st[i].d + "!");
@@ -732,7 +732,11 @@ levels.mod = function (name, amount, targetLevel = 999) {
                 levels.st[i].l++;
             }
             let levelsChange = levels.st[i].l - startingLevel;
-            if (levelsChange > 0)
+            if (levels.st[i].l >= 15) {
+                levels.st[i].l = 15;
+                g.popUpNotice("You've maxed out " + levels.st[i].d + "!");
+            }
+            else if (levelsChange > 0)
                 g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
             else
                 g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
@@ -1545,6 +1549,7 @@ levels.fuckass = function (who, gender) {
 levels.beer = function (numBeers = 1) {
     gv.mod("beer", numBeers);
     levels.mod("beer", 5);
+    gv.mod("bladder", .3);
     let totalBeers = gv.get("beer");
     let beerLevel = levels.get("beer").l + 2;
     if (totalBeers >= beerLevel)

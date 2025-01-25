@@ -1,6 +1,22 @@
 ﻿//Room name
 var room225 = {};
 room225.main = function () {
+    if (g.pass === "endSleepyTime") {
+        g.pass = null;
+        cl.nude();
+        levels.anal(3, false, "m", true);
+        levels.anal(2, false, "m", true);
+        levels.anal(4, false, "m", true);
+        levels.anal(3, false, "m", true);
+        levels.oralGive(4, false, false, "m");
+        levels.oralGive(3, true, false, "m");
+        levels.oralGive(2, false, false, "m");
+        gv.set("energy", 10);
+        nav.bg("225_sewer/drunk.jpg");
+        nav.next("drunk");
+        gv.set("bladder", 0);
+        return;
+    }
     var navList = [0];
     char.map();
     
@@ -114,6 +130,11 @@ room225.btnclick = function (name) {
                 chat(21, 225);
             }
             g.internal++;
+            break;
+        case "drunk":
+            nav.killbutton("drunk");
+            nav.bg("225_sewer/drunk1.jpg");
+            chat(22, 225);
             break;
         default:
             break;
@@ -378,6 +399,17 @@ room225.chat = function (chatID) {
             text: "I'm glad we could share this experience. It looks like we're here. I hope to play with you again. ",
             button: [
                 { chatID: -1, text: "Uhhh yeah...", callback: "p25" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "My head hurts so much! I only have small memories of what happened " +
+                "last night. I just remember so many dicks and bodies entering me. I think " +
+                "I pissed myself and now I'm laying in it. Just cum and piss. I need to " +
+                "get out of here. ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
             ]
         },
     ];

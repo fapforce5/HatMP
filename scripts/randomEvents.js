@@ -12,6 +12,10 @@ fame.event = function (returnBtn) {
         rape.init("street", 0, "moveChar");
         return true;
     }
+    else if (g.nextRoomId === 800) {
+        trap.init("street", 0, "moveChar");
+        return true;
+    }
 
     return false;
     var rapeDay = [0, 303, 451, 525, 750];
