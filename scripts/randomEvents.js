@@ -87,7 +87,7 @@ fame.event = function (returnBtn) {
     return false;
 };
 
-fame.charList = function () {
+fame.charList = function (i) {
     var rapeList = [
         {
             left: 857,
@@ -164,7 +164,7 @@ fame.charList = function () {
 
 
     ];
-    return rapeList[Math.floor(Math.random() * rapeList.length)];
+    return rapeList[i];
 };
 
 fame.getChat = function (isNice) {

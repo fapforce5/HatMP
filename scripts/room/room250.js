@@ -5,7 +5,7 @@ room250.main = function () {
     if (g.isNight()) {
         nav.bg("250_beaver/outside.jpg");
         nav.buildnav([0]);
-        chat(106, 250);
+        chat(25, 250);
         nav.buildnav([0]);
     }
     else if (cl.isLewd()) {
@@ -394,6 +394,14 @@ room250.chat = function (chatID) {
             text: "No way! I'm not going to serve you. Eat somewhere else!  ",
             button: [
                 { chatID: -1, text: "Still mad? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "holly",
+            text: "They must be closed for the night. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
     ];

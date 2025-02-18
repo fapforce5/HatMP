@@ -117,6 +117,7 @@ sc.char = [
     { name: "photo", display: "Photographer", image: "photo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
     { name: "blade", display: "Blade", image: "blade.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
+    { name: "wolf", display: "Lobo", image: "wolf.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -1029,6 +1030,28 @@ sc.charMission = [
                         { id: 1, txt: "Coming out", show: true, mStatus: 0, roomId: 125 },
                         { id: 2, txt: "I guess I'm a cock sucker too", show: true, mStatus: 0, roomId: 125 },
                         { id: 3, txt: "Why are you naked?", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "queen", mission: [
+            {
+                missionName: "meet", mStatus: 0, title: "Help", desc: "Hello weary traveler", task:
+                    [
+                        { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "wolf", mission: [
+            {
+                missionName: "pack", mStatus: 0, title: "Pack", desc: "Member of the pack", task:
+                    [
+                        { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 483 },
+                        { id: 1, txt: "Gain their trust", show: true, mStatus: 0, roomId: 483 },
+                        { id: 2, txt: "Welcome to the pack", show: true, mStatus: 0, roomId: 483 },
                     ]
             },
         ]
@@ -2322,6 +2345,34 @@ sc.trivial = function (charname) {
         case "!rape0":
             name = "My rapist";
             image = "rape0.png";
+            break;
+        case "!peggy":
+            name = "Peggy";
+            image = "peggy.png";
+            break;
+        case "!caveslave":
+            name = "Slave";
+            image = "caveslave.png";
+            break;
+        case "!damselle":
+            name = "Damselle";
+            image = "damselle.png";
+            break;
+        case "!futa0":
+            name = "Futa";
+            image = "futa0.png";
+            break;
+        case "!plant":
+            name = "Vines";
+            image = "futa0.png";
+            break;
+        case "!granola":
+            name = "Wild River"
+            image = "granola.png";
+            break;
+        case "!girl2":
+            name = "Tits McGee";
+            image = "girl2.png"
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

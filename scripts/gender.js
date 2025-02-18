@@ -8,7 +8,7 @@ gender.canUseCock = function () {
 };
 
 gender.isCockTooSmallForSex = function(){
-    return cl.c.cock > 2;
+    return cl.c.cock > 3;
 };
 
 gender.isGirl = function () {

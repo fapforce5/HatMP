@@ -62,6 +62,7 @@ missy.init = function () {
         { caseId: 13, name: "case_elijah", show: true, complete: false, success: false },
         { caseId: 14, name: "case_beaver", show: true, complete: false, success: false },
         { caseId: 15, name: "case_elijah_origin", show: true, complete: false, success: false },
+        { caseId: 16, name: "case_damselle", show: true, complete: false, success: false },
     ];
 }
 

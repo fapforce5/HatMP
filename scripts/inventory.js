@@ -52,6 +52,7 @@ inv.master = [
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
     { type: "g", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
+    { type: "g", name: "rawmeat", display: "Raw Meat", entry: false, count: 0, cost: -1, image: "meat.png", n: false, desc: "Raw Meat" },
 
     { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
@@ -706,26 +707,28 @@ inv.createElements = function () {
                             case "cumjar":
                                 gv.mod("energy", 100);
                                 levels.mod("xdress", 10, 999);
+                                levels.mod("cum", 25);
                                 break;
                             case "pissjarboy":
-                                gv.mod("energy", 40);
-                                levels.mod("xdress", 10, 999);
+                                sex.piss(true, false, false, "m");
                                 break;
                             case "pissjargirl":
-                                gv.mod("energy", 60);
-                                levels.mod("xdress", 10, 999);
+                                sex.piss(true, false, false, "f");
                                 break;
                             case "dogcumjar":
                                 gv.mod("energy", 150);
                                 levels.mod("xdress", 10, 999);
+                                levels.mod("cum", 25);
                                 break;
                             case "horsecumjar":
                                 gv.mod("energy", 200);
                                 levels.mod("xdress", 10, 999);
+                                levels.mod("cum", 25);
                                 break;
                             case "pigcumjar":
                                 gv.mod("energy", 300);
                                 levels.mod("xdress", 10, 999);
+                                levels.mod("cum", 25);
                                 break;
                             default:
                                 console.log("UNK energy: " + thisName);

@@ -44,8 +44,8 @@ cl.init = function () {
         { type: "necklace", name: "s", display: "Slut Choker", img: "necklace_s.png", sex: "f", inv: false, daring: 4, price: 35 },
         { type: "necklace", name: "d", display: "Dog Collar", img: "necklace_d.png", sex: "f", inv: false, daring: 4, price: 45 },
 
-        { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: -1 },
-        { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "panties", name: "u", display: "Blue Underwear", img: "panties_underwearblue.png", sex: "m", inv: true, daring: 0, price: 12 },
+        { type: "panties", name: "n", display: "Nut Huggers ", img: "panties_nugHugger.png", sex: "m", inv: true, daring: 0, price: 12 },
         { type: "panties", name: "boi", display: "Boi Shorts", img: "panties_boi.png", sex: "f", inv: false, daring: 1, price: 12 },
         { type: "panties", name: "f", display: "Fishy Panties", img: "panties_fishy.png", sex: "f", inv: false, daring: 1, price: 60 },
         { type: "panties", name: "w", display: "Lola's Panties", img: "panties_whitepanty.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -77,7 +77,7 @@ cl.init = function () {
         { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
 
 
-        { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: 20 },
         { type: "pants", name: "s", display: "Black Suit Pants", img: "pants_suit.png", sex: "m", inv: false, daring: 0, price: 80 },
         { type: "pants", name: "p", display: "Prison Pants", img: "pants_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
         { type: "pants", name: "r", display: "Red Shorts", img: "pants_redShort.png", sex: "m", inv: false, daring: 0, price: 60 },
@@ -94,7 +94,7 @@ cl.init = function () {
         { type: "pants", name: "dd", display: "Daisy Dukes", img: "pants_daisyDukes.png", sex: "f", inv: false, daring: 4, price: 160 },
         { type: "pants", name: "co", display: "Corset Skirt", img: "pants_co.png", sex: "f", inv: false, daring: 4, price: -1 },
 
-        { type: "shirt", name: "g", display: "Gray T-Shirt", img: "shirt_tgray.png", sex: "m", inv: true, daring: 0, price: -1 },
+        { type: "shirt", name: "g", display: "Gray T-Shirt", img: "shirt_tgray.png", sex: "m", inv: true, daring: 0, price: 18 },
         { type: "shirt", name: "c", display: "Cock T-Shirt", img: "shirt_tcock.png", sex: "m", inv: false, daring: 0, price: 50 },
         { type: "shirt", name: "s", display: "Suit Top", img: "shirt_suit.png", sex: "m", inv: false, daring: 0, price: 90 },
         { type: "shirt", name: "w", display: "Wife Beater", img: "shirt_wifeBeater.png", sex: "m", inv: false, daring: 0, price: 12 },
@@ -352,6 +352,30 @@ cl.remove = function (type, name) {
         case "pj":
             if (cl.c.pj === name)
                 cl.c.pj = null;
+            break;
+        case "buttplug":
+            if (cl.c.butthole === name)
+                cl.c.buttplug = null;
+            break;
+        case "nipple":
+            if (cl.c.nipplering === name)
+                cl.c.nipplering = null;
+            break;
+        case "ear":
+            if (cl.c.earring === name)
+                cl.c.earring = null;
+            break;
+        case "nose":
+            if (cl.c.nosering === name)
+                cl.c.nosering = null;
+            break;
+        case "necklace":
+            if (cl.c.necklace === name)
+                cl.c.necklace = null;
+            break;
+        case "belly":
+            if (cl.c.bellyring === name)
+                cl.c.bellyring = null;
             break;
         default:
             console.log("missing: " + type + ", " + name);

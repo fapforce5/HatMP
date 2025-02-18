@@ -154,7 +154,7 @@ room251.chatcatch = function (callback) {
             cl.display();
             zcl.displayMain(80, 650, .15, "panties shirt pants socks shoes bra", false);
             if (gender.canUseCock()) {
-                chat(24, 251);
+                chat(13, 251);
             }
             else
                 chat(25, 251);

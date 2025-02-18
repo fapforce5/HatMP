@@ -287,14 +287,17 @@ g.rooms = [
     { roomID: 456, name: "Park Bench", image: "456_bench/456_bg.jpg", nightImage: "456_bench/456_bg_night.jpg", houseID: 450, btn: "roomBtn_454.png" },
     { roomID: 460, name: "Forest Path", image: "460_parkRun/path1.jpg", nightImage: "460_parkRun/path1Night.jpg", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 461, name: "Run", image: "461_run/path2.jpg", nightImage: "461_run/path2Night.jpg", houseID: 450, btn: "roomBtn_461.png" },
-    { roomID: 475, name: "Forest", image: "475_fight/475_path_1.jpg", nightImage: "475_fight/475_path_1.jpg", houseID: 450, btn: "roomBtn_460.png" },
-    { roomID: 476, name: "Wander", image: "475_fight/475_fightScene0.png", nightImage: "475_fight/475_fightScene0.png", houseID: 450, btn: "roomBtn_460.png" },
-    { roomID: 477, name: "Cottage", image: "477_cottage/bg.jpg", nightImage: "477_cottage/bg.jpg", houseID: 450, btn: "roomBtn_477.png" },
+    { roomID: 475, name: "Wander", image: "475_fight/475_path_1.jpg", nightImage: "475_fight/475_path_1.jpg", houseID: 450, btn: "roomBtn_475.png" },
+    { roomID: 476, name: "Cabin", image: "476_cabin/bg.jpg", nightImage: "476_cabin/bg_night.png", houseID: 450, btn: "roomBtn_475.png" },
+    { roomID: 477, name: "Cottage", image: "477_cottage/bg1.jpg", nightImage: "477_cottage/bg1_n.jpg", houseID: 450, btn: "roomBtn_477.png" },
 
     { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.jpg", nightImage: "478_kitchen/bg.jpg", houseID: 480, btn: "roomBtn_478.png" },
     { roomID: 479, name: "Cave Hall", image: "479_hall/bg.jpg", nightImage: "479_hall/bg.jpg", houseID: 480, btn: "roomBtn_479.png" },
     { roomID: 480, name: "Cave Throne", image: "480_throne/bg.jpg", nightImage: "480_throne/bg.jpg", houseID: 480, btn: "roomBtn_480.png" },
     { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.jpg", nightImage: "481_bedroom/bg.jpg", houseID: 480, btn: "roomBtn_481.png" },
+
+    { roomID: 483, name: "Wolf's Den", image: "483_cave/bg.jpg", nightImage: "483_cave_bedroom/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },
+
 
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },
@@ -532,12 +535,13 @@ g.shuffleArray = function (array) {
     var temp, randIndex;
     if (array === null)
         return null;
-
-    for (i = 0; i < array.length; i++) {
-        randIndex = Math.floor(Math.random() * array.length);
-        temp = array[i];
-        array[i] = array[randIndex];
-        array[randIndex] = temp;
+    for (j = 0; i < 2; j++) {
+        for (i = 0; i < array.length; i++) {
+            randIndex = Math.floor(Math.random() * array.length);
+            temp = array[i];
+            array[i] = array[randIndex];
+            array[randIndex] = temp;
+        }
     }
     return array;
 };

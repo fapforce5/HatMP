@@ -22,46 +22,7 @@ room475.main = function () {
         char.room(450);
         mainLoop = false;
     }
-    else if (thisUsed === "g") {
-        if (!daily.get("gold0")) {
-            mainLoop = false;
-            daily.set("gold0");
-            nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "treasure",
-                "left": 657,
-                "top": 566,
-                "width": 501,
-                "height": 437,
-                "title": "Check for Treasure",
-                "image": "475_fight/treasure0.png"
-            }, 475);
-        }
-    }
-    else if (thisUsed === "i") {
-        mainLoop = false;
-        nav.bg("475_fight/cottage_day.jpg", "475_fight/cottage_night.jpg");
-        if (!g.isNight()) {
-            nav.button({
-                "type": "btn",
-                "name": "cottage",
-                "left": 923,
-                "top": 70,
-                "width": 590,
-                "height": 1010,
-                "title": "Cottage",
-                "image": "475_fight/queen.png"
-            }, 475);
-            chat(2, 475);
-        }
-        else {
-            if (gv.get("oncase") === "queen")
-                char.room(477);
-            else
-                chat(1, 475);
-        }
-    }
+    
     if (mainLoop) {
 
         m.drawBackground(g.map.row, g.map.col);
@@ -142,29 +103,22 @@ room475.btnclick = function (name) {
             m.updateVisit();
             char.room(475);
             break;
-        case "cottage":
-
+        case "visit":
+            if (m.fmap[g.map.row][g.map.col].used === "i") { //forest queen
+                char.room(477);
+            }
+            else if (m.fmap[g.map.row][g.map.col].used === "h") { //forest queen
+                char.room(476);
+            }
+            else if (m.fmap[g.map.row][g.map.col].used === "g") { //forest queen
+                trap.init("treasureAzrael", "forest", 475, "reload");
+            }
+            else if (m.fmap[g.map.row][g.map.col].used === "c") {
+                char.room(483);
+            }
             break;
-        case "treasure":
-            var tsuc = false;
-            if (m.fmap[g.map.row][g.map.col].used === "g") {
-                tsuc = true;
-            }
-
-            if (tsuc) {
-                nav.killbutton("treasure");
-                nav.button({
-                    "type": "btn",
-                    "name": "treasure",
-                    "left": 657,
-                    "top": 566,
-                    "width": 501,
-                    "height": 437,
-                    "title": "Weee!",
-                    "image": "475_fight/treasure2.png"
-                }, 475);
-                chat(900, 475);
-            }
+        case "reload":
+            char.room(475);
             break;
         case "exit":
             g.pass = null;

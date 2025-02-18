@@ -2,36 +2,39 @@
 var room1004 = {};
 rape.char;
 rape.roomId;
-rape.callbackWin;
-rape.callbackLost;
+rape.callback;
 rape.kickCounter;
 rape.clothingLost;
 rape.rapeType;
 rape.phaseChange = "";
 rape.phase = 0;
+rape.modifier = "";
+rape.charMessage;
 rape.phases = [
-    { i: 0, n: "fully clothed", c: 0 },
-    { i: 1, n: "bra or panties", c: 0 },
-    { i: 2, n: "character intro", c: 0 },
-    { i: 3, n: "pre rape", c: 0 },
-    { i: 4, n: "fuck", c: 0 },
-    { i: 5, n: "cum", c: 0 },
-    { i: 6, n: "post fight", c: 0 },
-    { i: 7, n: "exit", c: 0 },
+    { i: 0, n: "Suprise", c: 0 },
+    { i: 1, n: "fully clothed only", c: 0 },
+    { i: 2, n: "bra or panties only", c: 0 },
+    { i: 3, n: "intro - choice", c: 0 },
+    { i: 4, n: "your choice", c: 0 },
+    { i: 5, n: "fuck", c: 0 },
+    { i: 6, n: "cum", c: 0 },
+    { i: 7, n: "post rape", c: 0 },
+    { i: 8, n: "exit", c: 0 },
 ];
 
 
-rape.init = function (location = "street", roomId = g.roomID, callbackWin = "", callbackLost = "", charNum = null) {
+rape.init = function (charNum = null, location = "street", roomId = g.roomID, callback = "") {
     nav.killall();
     inv.hide();
     rape.phase = 0;
     rape.kickCounter = 1;
     rape.clothingLost = null;
     rape.rapeType = null;
-    rape.callbackWin = callbackWin;
-    rape.callbackLost = callbackLost;
+    rape.callback = callback;
     rape.roomId = roomId;
-    
+    rape.modifier = "";
+    rape.charMessage = null;
+
     rape.char = getRapeChar(location, charNum);
     rape.char.displayName = sc.n(rape.char.name);
     
@@ -42,6 +45,7 @@ rape.init = function (location = "street", roomId = g.roomID, callbackWin = "", 
     rape.phases[4].c = 0;
     rape.phases[5].c = 0;
     rape.phases[6].c = 0;
+    rape.phases[7].c = 0;
 
     if (rape.char === undefined) {
         alert("bad rape char");
@@ -125,93 +129,90 @@ rape.init = function (location = "street", roomId = g.roomID, callbackWin = "", 
 };
 
 rape.callphase = function (increment = false) {
+    rape.charMessage = null;
     if (increment) {
         rape.phase++;
     }
-    if (rape.phase > 7)
-        rape.phase = 7;
-
+    if (rape.phase > 8)
+        rape.phase = 8;
+    if (rape.phase === 1) {
+        let wearing = cl.wearing();
+        if (wearing.outerwear)
+            rape.phase = 1;
+        else if (wearing.underwear)
+            rape.phase = 2;
+        else
+            rape.phase = 3;
+    }
     switch (rape.phase) {
-        case 0: //outerwear
-            if (!cl.wearing().outerwear) {
-                rape.callphase(true);
-                return;
-            }
+        case 0: 
             rape.phase0();
             break;
         case 1: //innerwear
-            cl.c.dress = cl.c.swimsuit = cl.c.shirt = cl.c.pants = cl.c.pj = cl.c.socks = cl.c.shoes = null;
-            cl.display();
-            if (cl.c.panties === null && cl.c.bra === null && rape.phases[0].c > 0) {
-                rape.callphase(true);
-                return;
-            }
             rape.phase1();
             break;
         case 2:
+            cl.c.dress = cl.c.swimsuit = cl.c.shirt = cl.c.pants = cl.c.pj = cl.c.socks = cl.c.shoes = null;
+            cl.display();
+            if (cl.c.panties === null && cl.c.bra === null) {
+                rape.callphase(true);
+                return;
+            }
             rape.phase2();
             break;
-        case 3: rape.phase3(); break;
+        case 3:
+            cl.c.dress = cl.c.swimsuit = cl.c.shirt = cl.c.pants = cl.c.pj = cl.c.socks = cl.c.shoes = cl.c.panties = cl.c.bra = null;
+            cl.display();
+            rape.phase3(); break;
         case 4: rape.phase4(); break;
         case 5: rape.phase5(); break;
         case 6: rape.phase6(); break;
-        case 7: rape.phase7(false); break;
+        case 7: rape.phase7(); break;
+        case 8: rape.phase8(false); break;
     }
 };
 
 rape.phase0 = function () {
     nav.killbutton("r1004bg");
     let opening = new Array();
-    if (cl.wearing().crossdressing) {
-        rape.updateEnergy(null, null, 8); 
-        opening.push("o_1_girl.png");
-        if (cl.c.chest > 2) {
-            opening.push("o_2_c_g.png");
-        }
-        else {
-            opening.push("o_2_c_b.png");
-        }
-    }
-    else {
-        rape.updateEnergy(null, null, 5);
-        opening.push("o_1_boy.png");
-        if (cl.c.chest > 2) {
-            opening.push("o_2_n_g.png");
-        }
-        else {
-            opening.push("o_2_n_b.png");
-        }
-    }
-
-    nav.button({
-        "type": "img",
-        "name": "r1004bg",
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "1004_rape/" + opening[g.rand(0, opening.length)]
-    }, 1004);
-
-    rape.displayMenu("init");
-    rape.message(rape.char.openingLine);
-    rape.phases[0].c++;
-};
-
-rape.phase1 = function () {
-    nav.killbutton("r1004bg");
-    let opening = new Array();
+    let isComplete = rape.char.phase0();
     let wearing = cl.wearing();
-
-    if (rape.phases[0].c === 0) { //if skipped phase 0
-        rape.updateEnergy(null, null, 10);
-        if (wearing.underwear) {
+    if (!isComplete.default && isComplete.complete) {
+        rape.callphase(true);
+        return;
+    }
+    else if (isComplete.default) {
+        if (wearing.outerwear) {
+            if (cl.wearing().crossdressing) {
+                rape.updateEnergy(null, null, 8);
+                opening.push("o_1_girl.png");
+                if (cl.c.chest > 2) {
+                    opening.push("o_2_c_g.png");
+                }
+                else {
+                    opening.push("o_2_c_b.png");
+                }
+            }
+            else {
+                rape.updateEnergy(null, null, 5);
+                opening.push("o_1_boy.png");
+                if (cl.c.chest > 2) {
+                    opening.push("o_2_n_g.png");
+                }
+                else {
+                    opening.push("o_2_n_b.png");
+                }
+            }
+        }
+        else if (wearing.underwear) {
             if (cl.pantiesTxt() !== "panties")
                 opening.push("o_b_0.png");
-            if (cl.c.chest > 2)
-                opening.push("o_b_2.png");
-            else
-                opening.push("o_b_1.png");
+            else {
+                if (cl.c.chest > 2)
+                    opening.push("o_b_2.png");
+                else
+                    opening.push("o_b_1.png");
+            }
         }
         else {
             if (cl.c.chest > 2) {
@@ -222,6 +223,43 @@ rape.phase1 = function () {
                 opening.push("o_2_b.png");
                 rape.updateEnergy(null, null, 5);
             }
+        }
+        console.log(opening);
+
+        nav.button({
+            "type": "img",
+            "name": "r1004bg",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1004_rape/" + opening[g.rand(0, opening.length)]
+        }, 1004);
+    }
+    rape.displayMenu("init");
+    rape.message(rape.char.openingLine);
+    rape.phases[0].c++;
+};
+
+rape.phase1 = function () {
+    nav.killbutton("r1004bg");
+    let opening = new Array();
+    let wearing = cl.wearing();
+    let isComplete = rape.char.phase1();
+    rape.updateEnergy(null, null, 10);
+    
+    if (!isComplete.default) {
+        if (isComplete.complete) {
+            rape.callphase(true);
+            return;
+        }
+        else {
+            if (rape.phases[1].c === 0)
+                rape.displayMenu("init");
+            else
+                rape.displayMenu("scream");
+            rape.phases[1].c++;
+            return;
         }
     }
     else {
@@ -275,8 +313,8 @@ rape.phase1 = function () {
                 "image": "1004_rape/struggle_0_" + gender.pronoun("f") + "_" + rape.char.color + ".png"
             }, 1004);
             rape.updateEnergy(null, -15);
-            rape.phase = 0;
             rape.displayMenu("scream");
+            rape.phases[1].c++;
             rape.message(["If you struggle this will", "only go worse for", "you! "]);
             return;
         }
@@ -298,144 +336,177 @@ rape.phase1 = function () {
                 }
             }
         }
+
+        nav.button({
+            "type": "img",
+            "name": "r1004bg",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1004_rape/" + opening[g.rand(0, opening.length)]
+        }, 1004);
     }
-
-    nav.button({
-        "type": "img",
-        "name": "r1004bg",
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "1004_rape/" + opening[g.rand(0, opening.length)]
-    }, 1004);
-
     rape.displayMenu("init");
-    if (rape.phases[0].c === 0)
-        rape.message("I see you're ready for me!");
-    else
-        rape.message("Slut don't deserve clothing");
+    rape.message("Slut don't deserve clothing");
     rape.phases[1].c++;
+    return;
 };
 
 rape.phase2 = function () {
     nav.killbutton("r1004bg");
-    if (rape.phaseChange === "submit" && (cl.c.panties !== null || cl.c.bra !== null)) {
-        if (cl.pantiesTxt() === "underwear") {
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 661,
-                "top": 141,
-                "width": 637,
-                "height": 939,
-                "image": "1004_rape/struggle_2_mu.png"
-            }, 1004);
-        }
-        else {
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 661,
-                "top": 141,
-                "width": 637,
-                "height": 939,
-                "image": "1004_rape/struggle_2_" + (cl.c.hairLength > 2 ? "f" : "m") + ".png"
-            }, 1004);
-        }
-        cl.c.panties = null;
-        cl.c.bra = null;
-        cl.display();
-        rape.phase = 1;
-        rape.updateEnergy(null, null, 15, 3);
-        rape.displayMenu("moan");
-        rape.message(["That's right, bitch. ", "Show me what you got!"]);
-        return;
-    }
-    else if (rape.phaseChange === "struggle" && rape.char.slap && g.rand(0, 3) === 0 && (cl.c.panties !== null)) { //panty rip
-        let img = "";
-        if (gender.pronoun("f") === "f") {
-            img = "struggle_1_f_" + rape.char.color + ".png";
-        }
-        else {
-            let cli = cl.list[cl.i("panties", cl.cTemp.panties)].sex === "f" ? "p" : "u";
-            img = "struggle_1_m_" + cli + "_" + rape.char.color + ".png";
-        }
-        nav.button({
-            "type": "img",
-            "name": "r1004bg",
-            "left": 650,
-            "top": 0,
-            "width": 696,
-            "height": 1080,
-            "image": "1004_rape/" + img
-        }, 1004);
-        cl.c.panties = null;
-        cl.c.bra = null;
-        cl.cTemp.panties = null;
-        cl.cTemp.bra = null;
-        cl.display();
-        rape.updateEnergy(null, null, 5, 3);
-        rape.phase = 1;
-        rape.displayMenu("scream");
-        rape.message(["You don't need these!"]);
-        return;
-    }
-    else if (rape.phaseChange === "choiceAnal") {
-        rape.rapeType = "anal";
-        zcl.bent(100, 500, .8, "");
-        rape.phase = 1;
-        rape.updateEnergy(null, null, 15, 3);
-        rape.displayMenu("moan");
-        chat(500, 1004);
-    }
-    else if (rape.phaseChange === "choiceOral") {
-        if (rape.char.options.includes("cunnilugus"))
-            rape.rapeType = "cunnilugus";
-        else
-            rape.rapeType = "oral";
-
-        zcl.bj(0, 600, .55, "close", true);
-        //zcl.bj(0, 300, .7, "open", true);
-        rape.phase = 1;
-        rape.updateEnergy(null, null, 15, 3);
-        rape.displayMenu("moan");
-        chat(501, 1004);
-    }
+    let isComplete = rape.char.phase2();
     
-    else {
-        zcl.kill();
-        cl.c.panties = cl.c.bra = null;
-        cl.display();
-        isComplete = rape.char.phase2();
-        if (isComplete) {
+    if (!isComplete.default) {
+        if (isComplete.complete) {
             rape.callphase(true);
             return;
         }
-        if (rape.phases[2].c === 0) {
-            rape.displayMenu("choice");
-            rape.message(["Phase 2 message"]);
+        else {
+            rape.displayMenu("init");
+            rape.phases[2].c++;
+            return;
+        }
+    }
+    else {
+        if (rape.phaseChange === "submit") {
+            if (cl.pantiesTxt() === "underwear") {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 661,
+                    "top": 141,
+                    "width": 637,
+                    "height": 939,
+                    "image": "1004_rape/struggle_2_mu.png"
+                }, 1004);
+            }
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 661,
+                    "top": 141,
+                    "width": 637,
+                    "height": 939,
+                    "image": "1004_rape/struggle_2_" + (cl.c.hairLength > 2 ? "f" : "m") + ".png"
+                }, 1004);
+            }
+            cl.display();
+            rape.updateEnergy(null, null, 15, 3);
+            rape.displayMenu("moan");
+            rape.message(["That's right, bitch. ", "Show me what you got!"]);
+            return;
+        }
+        else if (rape.phaseChange === "struggle" && rape.char.slap && g.rand(0, 3) === 0 && (cl.c.panties !== null)) { //panty rip
+            let img = "";
+            if (gender.pronoun("f") === "f") {
+                img = "struggle_1_f_" + rape.char.color + ".png";
+            }
+            else {
+                let cli = cl.list[cl.i("panties", cl.cTemp.panties)].sex === "f" ? "p" : "u";
+                img = "struggle_1_m_" + cli + "_" + rape.char.color + ".png";
+            }
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 650,
+                "top": 0,
+                "width": 696,
+                "height": 1080,
+                "image": "1004_rape/" + img
+            }, 1004);
+            cl.cTemp.panties = null;
+            cl.cTemp.bra = null;
+            cl.display();
+            rape.updateEnergy(null, -10, 5, 3);
+            rape.displayMenu("scream_next");
+            rape.message(["You don't need these!"]);
+            return;
         }
         else {
-            rape.displayMenu("next");
-            rape.message(["random phase 2 message"]);
-        }
+            if (cl.c.chest > 2) {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/phase2_f.png"
+                }, 1004);
+            }
+            else if (cl.pantiesTxt() === "panties") {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/phase2_m_p.png"
+                }, 1004);
+            }
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/phase2_m_u.png"
+                }, 1004);
+            }
 
-        rape.phases[2].c++;
+        }
     }
+    rape.phases[2].c++;
 };
 
 rape.phase3 = function () {
-    let img;
     nav.killbutton("r1004bg");
+    let phase3Complete = rape.char.phase3();
+    if (phase3Complete)
+        rape.displayMenu("choice");
+    else
+        rape.displayMenu("whimper");
+    rape.phases[3].c++;
+}
+
+rape.phase4 = function () {
+    nav.killbutton("r1004bg");
+    zcl.kill();
     if (rape.rapeType === null) {
+        let rapeCharOptions = new Array();
+        if (rape.char.options.includes("cock") && !gender.canUseCock()) {
+            for (let i = 0; i < rape.char.options.length; i++) {
+                if (rape.char.options[i] !== "cock")
+                    rapeCharOptions.push(rape.char.options[i]);
+            }
+            rape.char.options = rapeCharOptions;
+        }
         rape.rapeType = rape.char.options[g.rand(0, rape.char.options.length)];
     }
+    let charPhase4 = rape.char.phase4();
 
-    let charPhase3 = rape.char.phase3();
-    if (charPhase3.default) {
+    if (!charPhase4.default) {
+        if (charPhase4.complete) {
+            rape.callphase(true);
+            return;
+        }
+        else {
+            if (rape.phases[4].c === 0)
+                rape.displayMenu(rape.rapeType);
+            else
+                rape.displayMenu("scream");
+            rape.phases[4].c++;
+            return;
+        }
+    }
+    else {
         if (rape.rapeType === "anal") {
-            if (rape.phases[3].c === 0) {
+            if (rape.phases[4].c === 0) {
                 img = "hover_cock_astart_" + rape.char.color + ".png";
                 if (rape.char.color === "w" && rape.char.cocksize < 4)
                     img = "hover_cock_astart_w3.png";
@@ -449,8 +520,11 @@ rape.phase3 = function () {
                     "image": "1004_rape/" + img
                 }, 1004);
                 rape.message(["Please don't put", "that dirty dick in me"]);
+                rape.displayMenu(rape.rapeType);
+                rape.phases[4].c++;
+                return;
             }
-            else if (rape.phaseChange === "phase3cover") {
+            if (rape.phaseChange === "phase3cover") {
                 img = "hover_cock_block_" + rape.char.color + ".png";
                 if (rape.char.color === "w" && rape.char.cocksize < 4)
                     img = "hover_cock_block_w3.png";
@@ -484,7 +558,7 @@ rape.phase3 = function () {
                 }, 1004);
                 rape.message(["I am a dirty anal whore"]);
             }
-            else if (rape.phaseChange === "struggle") {
+            else if (rape.phaseChange === "limp" || rape.phaseChange === "struggle") {
                 img = "hover_cock_owie_" + rape.char.color + ".png";
                 if (rape.char.color === "w" && rape.char.cocksize < 4)
                     img = "hover_cock_enter_w3.png";
@@ -503,24 +577,28 @@ rape.phase3 = function () {
             }
             else if (rape.phaseChange === "next") {
                 rape.callphase(true);
-                rape.message(["anal anal anal"]);
                 return;
             }
         }
-        else if (rape.rapeType === "oral" || rape.rapeType === "cunnilugus") {
-            if (rape.phases[3].c === 0) {
+        else if (rape.rapeType === "oral") {
+            if (rape.phases[4].c === 0) {
+                zcl.face(0, 300, 1, "up", rape.char.color, false);
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
                     "left": 0,
                     "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/oral_0_" + gender.pronoun("f") + ".png"
+                    "width": 749,
+                    "height": 518,
+                    "image": "1004_rape/dick_" + rape.char.color + ".png"
                 }, 1004);
-                rape.message(["I can smell the sweat","from his balls"]);
+                rape.message(["I can smell the sweat", "from his balls"]);
+                rape.displayMenu(rape.rapeType);
+                rape.phases[4].c++;
+                return;
             }
             else if (rape.phaseChange === "phase3cover") {
+                zcl.face(0, 300, 1, "grit", rape.char.color, false);
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -528,14 +606,23 @@ rape.phase3 = function () {
                     "top": 0,
                     "width": 1920,
                     "height": 1080,
-                    "image": "1004_rape/oral_1_slap_" + gender.pronoun("f") + ".png"
+                    "image": "1004_rape/oral_slap_" + rape.char.color + ".png"
                 }, 1004);
                 rape.displayMenu("phase2");
                 rape.message(["MMmmmMM NO!"]);
                 return;
             }
-            else if (rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
-                rape.updateEnergy(null, null, 15);
+            else if (rape.phaseChange === "limp" ||rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
+                zcl.face(0, 300, 1, "insert", rape.char.color, false);
+                rape.message(["GAK!"]);
+            }
+            else if (rape.phaseChange === "next") {
+                rape.callphase(true);
+                return;
+            }
+        }
+        else if (rape.rapeType === "cunnilugus") {
+            if (rape.phases[4].c === 0) {
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -543,35 +630,120 @@ rape.phase3 = function () {
                     "top": 0,
                     "width": 1920,
                     "height": 1080,
-                    "image": "1004_rape/oral_2_" + gender.pronoun("f") + ".png"
+                    "image": "1004_rape/pussy_0_" + rape.char.color + ".png"
+                }, 1004);
+                zcl.bj(50, -100, 1.4, "", true);
+                rape.message(["I can smell her sweet sweet pussy"]);
+                rape.displayMenu(rape.rapeType);
+                rape.phases[4].c++;
+                return;
+            }
+            else if (rape.phaseChange === "phase3cover") {
+                zcl.face(0, 300, 1, "grit", rape.char.color, false);
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/oral_slap_" + rape.char.color + ".png"
+                }, 1004);
+                rape.displayMenu("phase2");
+                rape.message(["MMmmmMM NO!"]);
+                return;
+            }
+            else if (rape.phaseChange === "limp" || rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/pussy_0_" + rape.char.color + ".png"
+                }, 1004);
+                zcl.bj(-170, 20, 1.4, "open", true);
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 1068,
+                    "top": 544,
+                    "width": 190,
+                    "height": 203,
+                    "image": "1004_rape/pussy_1.png"
+                }, 1004);
+
+                rape.message(["GAK!"]);
+            }
+            else if (rape.phaseChange === "next") {
+                rape.callphase(true);
+                return;
+            }
+        }
+        else if (rape.rapeType === "cock") {
+            let cocksize = cl.c.cock < 2 ? "b" : "s";
+            if (rape.phases[4].c === 0) {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/pussy_phase4_0_" + cocksize + ".png"
+                }, 1004);
+                rape.message(["She's so wet she's dripping down my cock!"]);
+                rape.displayMenu("phase2");
+                rape.phases[4].c++;
+                return;
+            }
+            else if (rape.phaseChange === "phase3cover") {
+                zcl.face(0, 300, 1, "grit", rape.char.color, false);
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/oral_slap_" + rape.char.color + ".png"
+                }, 1004);
+                rape.displayMenu("phase2");
+                rape.message(["MMmmmMM NO!"]);
+                return;
+            }
+            else if (rape.phaseChange === "limp" || rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/pussy_phase4_1_" + cocksize + ".png"
                 }, 1004);
                 rape.message(["GAK!"]);
             }
             else if (rape.phaseChange === "next") {
                 rape.callphase(true);
-                rape.message(["glug glug glug"]);
                 return;
             }
         }
     }
-    else {
-        if (charPhase3.complete) {
-            rape.callphase(true);
-            return;
-        }
-    }
 
-    if (rape.phases[3].c === 0)
-        rape.displayMenu(rape.rapeType);
-    else
-        rape.displayMenu("next");
-    
-    rape.phases[3].c++;
+    rape.displayMenu("next");
+    rape.phases[4].c++;
 };
 
-rape.phase4 = function () {
+rape.phase5 = function () {
+    if (rape.phases[5].c === 0) {
+        nav.killbutton("r1004bg");
+        zcl.kill();
+    }
     let pleasure;
     let enemyPleasure = 10;
+    let charPhase5 = rape.char.phase5();
     if (rape.rapeType === "anal") {
         if (rape.phaseChange === "phase4Sub") {
             rape.message(["Submissive anal whore"]);
@@ -610,15 +782,7 @@ rape.phase4 = function () {
         pleasure = { canTake: false, pleasure: 3 };
     }
 
-    if (rape.phases[4].c === 0) {
-        nav.killbutton("r1004bg");
-        isComplete = rape.char.phase4();
-        if (isComplete) {
-            rape.callphase(true);
-            return;
-        }
-    }
-    if (gv.get("arousal") > 95 && pleasure.canTake && rape.rapeType === "anal") {
+    if (gv.get("arousal") > 95 && pleasure.canTake && rape.rapeType === "anal" && rape.phases[5].c > 1) {
         nav.button({
             "type": "zimg",
             "name": "r1004fg",
@@ -647,47 +811,89 @@ rape.phase4 = function () {
     }
     rape.updateEnergy(null, -3, enemyPleasure, pleasure.pleasure);
     rape.displayMenu("rape");
-    rape.phases[4].c++;
+    rape.phases[5].c++;
 };
 
-rape.phase5 = function () {
+rape.phase6 = function () {
     rape.updateEnergy(null, null, -100, null);
     nav.killbutton("r1004bg");
-    isComplete = rape.char.phase5();
+    isComplete = rape.char.phase6();
     if (isComplete) {
         rape.callphase(true);
         rape.message(["cum dripping"]);
         return;
     }
     rape.displayMenu("next");
-    rape.phases[5].c++;
+    rape.phases[6].c++;
 };
 
-rape.phase6 = function () {
+rape.phase7 = function () {
+    zcl.kill();
     nav.killbutton("r1004bg");
-    isComplete = rape.char.phase6();
-    if (isComplete) {
-        rape.callphase(true);
-        return;
+    isDefault = rape.char.phase7();
+    if (isDefault) {
+        if (rape.rapeType === "anal") {
+            if (g.rand(0, 3) === 0) {
+                if (rape.char.gender === "m")
+                    zcl.asshole(261, 200, 1.4, "cum", false);
+                else
+                    zcl.asshole(261, 200, 1.4, "", false);
+            }
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 743,
+                    "top": 725,
+                    "width": 619,
+                    "height": 427,
+                    "image": "1004_rape/rapeman0/rape5.png"
+                }, 1004);
+            }
+        }
+        else if (rape.rapeType === "oral") {
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 456,
+                "top": 0,
+                "width": 1084,
+                "height": 1080,
+                "image": "1004_rape/phase6_oral_" + gender.pronoun("f") + ".png"
+            }, 1004);
+        }
+        else if (rape.rapeType === "cunnilugus") {
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 456,
+                "top": 0,
+                "width": 1084,
+                "height": 1080,
+                "image": "1004_rape/phase6_cun_" + gender.pronoun("f") + ".png"
+            }, 1004);
+        }
     }
+
     if (cl.checkTemp().nude)
         rape.displayMenu("complete");
     else
         rape.displayMenu("getdressed");
-    rape.phases[6].c++;
+    rape.phases[7].c++;
 
     //random can lose clothes - cl.undo();
 };
 
-rape.phase7 = function (firstTime) {
+rape.phase8 = function (firstTime) {
     rape.message([""]);
     nav.killbutton("r1004bg");
+    zcl.kill();
     let endRape = true;
     if (cl.checkTemp().nude || firstTime) {
         endRape = true;
     }
     else {
-        if (g.rand(0, 3) === 0) {
+        if (g.rand(0, 3) === 0 && rape.phases[7].c === 0) {
             if (cl.cTemp.shoes !== null || cl.cTemp.socks !== null) {
                 if (cl.cTemp.shoes !== null && cl.cTemp.socks !== null) {
                     rape.clothingLost = "socks and shoes";
@@ -756,6 +962,7 @@ rape.phase7 = function (firstTime) {
             endRape = true;
         }
     }
+    rape.phases[8].c++;
     if (endRape) {
         rape.kill();
     }
@@ -765,7 +972,7 @@ rape.kill = function () {
     nav.killall();
     inv.show();
     //char.room(0);
-    window[g.room(rape.roomId)]["btnclick"](rape.callbackWin);
+    window[g.room(rape.roomId)]["btnclick"](rape.callback);
 }
 
 rape.updateEnergy = function (enemyEnergyChange = null, myEnergyChange = null, enemyArousal = null, myarousal = null) {
@@ -820,52 +1027,56 @@ rape.displayMenu = function (menu) {
         case "init":
             var subLevelInit = levels.get("sub").l;
             var domLevelInit = levels.get("dom").l;
-
+            var initWearing = cl.wearing();
             btnList.push({ n: "struggle", i: "icon_struggle.png" });
 
-            if (rape.phase === 0) {
+            if (rape.char.kick !== null) {
                 if (domLevelInit < 3)
                     btnList.push({ n: "dom3", i: "icon_kick_x3.png" });
                 else
                     btnList.push({ n: "kick", i: "icon_kick.png" });
+            }
 
+            if (initWearing.outerwear) {
                 if (subLevelInit < 3)
                     btnList.push({ n: "sub3", i: "icon_submit1_x.png" });
                 else
                     btnList.push({ n: "submit", i: "icon_submit1.png" });
             }
-            else if (rape.phase === 1 && (cl.c.panties !== null || cl.c.bra !== null)) {
-                if (domLevelInit < 2)
-                    btnList.push({ n: "dom2", i: "icon_kick_x2.png" });
-                else
-                    btnList.push({ n: "kick", i: "icon_kick.png" });
-
+            else if (initWearing.underwear) {
                 if (subLevelInit < 4)
                     btnList.push({ n: "sub4", i: "icon_submit2_x.png" });
                 else
                     btnList.push({ n: "submit", i: "icon_submit2.png" });
             }
             else {
-                if (domLevelInit < 1)
-                    btnList.push({ n: "dom1", i: "icon_kick_x1.png" });
-                else
-                    btnList.push({ n: "kick", i: "icon_kick.png" });
-
                 if (subLevelInit < 4)
                     btnList.push({ n: "sub4", i: "icon_submit2_x.png" });
                 else
                     btnList.push({ n: "submit", i: "icon_submit.png" });
             }
+            
             btnList.push({ n: "next", i: "icon_limp.png" });
             break;
         case "choice":
             var subLevelChoice = levels.get("sub").l;
+            var domLevelChoice = levels.get("dom").l;
             btnList.push({ n: "struggle", i: "icon_struggle.png" });
 
-            if (levels.get("dom").l < 1)
-                btnList.push({ n: "dom1", i: "icon_kick_x1.png" });
-            else
-                btnList.push({ n: "kick", i: "icon_kick.png" });
+            if (rape.char.kick !== null) {
+                if (levels.get("dom").l < 1)
+                    btnList.push({ n: "dom1", i: "icon_kick_x1.png" });
+                else
+                    btnList.push({ n: "kick", i: "icon_kick.png" });
+            }
+
+            if (rape.char.options.includes("cock")) {
+                if (domLevelChoice < 2)
+                    btnList.push({ n: "dom2", i: "icon_choice_cock_x.png" });
+                else
+                    btnList.push({ n: "choiceCock", i: "icon_choice_cock.png" });
+            }
+            
 
             if (rape.char.options.includes("oral") || rape.char.options.includes("cunnilugus")) {
                 if (subLevelChoice < 5)
@@ -984,7 +1195,13 @@ rape.displayMenu = function (menu) {
             btnList.push({ n: "next", i: "icon_whimper.png" });
             break;
         case "scream":
+            btnList.push({ n: "rerun", i: "icon_cry.png" });
+            break;
+        case "scream_next":
             btnList.push({ n: "next", i: "icon_cry.png" });
+            break;
+        case "whimper":
+            btnList.push({ n: "rerun", i: "icon_whimper.png" });
             break;
         case "moan":
             btnList.push({ n: "next", i: "icon_moan.png" });
@@ -1009,7 +1226,7 @@ rape.displayMenu = function (menu) {
             else
                 btnList.push({ n: "phase3sub", i: "icon_anal_sub_" + rape.char.gender + ".png" });
 
-            btnList.push({ n: "next", i: "icon_limp.png" });
+            btnList.push({ n: "limp", i: "icon_limp.png" });
             break;
         case "oral":
         case "cunnilugus":
@@ -1031,7 +1248,7 @@ rape.displayMenu = function (menu) {
                     btnList.push({ n: "phase3sub", i: "icon_oral_" + rape.char.gender + ".png" });
             }
 
-            btnList.push({ n: "next", i: "icon_limp.png" });
+            btnList.push({ n: "limp", i: "icon_limp.png" });
             break;
     }
 
@@ -1050,6 +1267,18 @@ rape.displayMenu = function (menu) {
 
 rape.message = function (message) {
     nav.killbutton("m1004-d");
+    if (rape.phase === 0) {
+        nav.button({
+            "type": "zimg",
+            "name": "m1004-d",
+            "left": 1600,
+            "top": 150,
+            "width": 300,
+            "height": 318,
+            "image": "1004_rape/icon_bg_rape.png"
+        }, 1004);
+        return;
+    }
     if (typeof message === "string") {
         let temp = message;
         message = new Array();
@@ -1348,8 +1577,8 @@ room1004.btnclick = function (name) {
                 chat(4, 1004);
                 return;
             }
-            rape.phaseChange = "choiceAnal";
-            rape.callphase();
+            rape.rapeType = "anal";
+            rape.callphase(true);
             break;
         case "choiceOral":
             if (levels.get("sub").l < 5) {
@@ -1360,8 +1589,21 @@ room1004.btnclick = function (name) {
                 chat(5, 1004);
                 return;
             }
-            rape.phaseChange = "choiceOral";
-            rape.callphase();
+            if (rape.char.options.includes("oral"))
+                rape.rapeType = "oral";
+            else
+                rape.rapeType = "cunnilugus";
+            rape.callphase(true);
+            break;
+        case "choiceCock":
+            if (gender.canUseCock()) {
+                rape.rapeType = "cock";
+                rape.callphase(true);
+            }
+            else if (cl.c.chastity !== null)
+                chat(18, 1004);
+            else
+                chat(19, 1004);
             break;
         case "stugglewin":
             rape.menu = "struggleWin";
@@ -1369,14 +1611,22 @@ room1004.btnclick = function (name) {
             break;
         case "struggleLost":
             rape.phaseChange = "struggle";
-            if (rape.phase < 2)
+            if (rape.phase < 4)
                 rape.callphase(true);
             else
                 rape.callphase();
             break;
+        case "rerun":
+            rape.phaseChange = "next";
+            rape.callphase();
+            break;
+        case "limp":
+            rape.phaseChange = "limp";
+            rape.callphase();
+            break;
         case "next":
             rape.phaseChange = "next";
-            if (rape.phase < 2)
+            if (rape.phase < 4)
                 rape.callphase(true);
             else
                 rape.callphase();
@@ -1631,7 +1881,7 @@ room1004.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "thinking",
-            text: "I'm just a weak little " + gender.pronoun("girl") + ". I'm too scared to do that!",
+            text: "I'm just a weak little pussy. I'm too scared to do that!",
             button: [
                 { chatID: -1, text: "[Need Dominance (DOM) level 2]", callback: "" }
             ]
@@ -1696,6 +1946,23 @@ room1004.chat = function (chatID) {
                 "away from the thrusts. ",
             button: [
                 { chatID: -1, text: "[Need Dominance (DOM) level 3]", callback: "" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "How am I going to fuck her with my dick if it's locked away? ",
+            button: [
+                { chatID: -1, text: "[You're wearing chastity dumbass 😝]", callback: "" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: rape.char.name,
+            text: "You don't have a cock! That pathetic thing between your legs is just " +
+                "a tiny clit! How are you supposed to fuck me with such a tiny tiny clit? ",
+            button: [
+                { chatID: -1, text: "[You're 'dick' is too small for sex 😝]", callback: "" }
             ]
         },
     ];

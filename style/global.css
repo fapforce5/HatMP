@@ -902,7 +902,7 @@ input[type=text]:disabled{
 .map-tile-x {
     background: #000;
 }
-.map-tile-i, .map-tile-j, .map-tile-k {
+.map-tile-i, .map-tile-j, .map-tile-k, .map-tile-c, .map-tile-h, .map-tile-s, .map-tile-r {
     background: #ce2281;
 }
 .switch-group {

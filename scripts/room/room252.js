@@ -355,6 +355,7 @@ room252.chatcatch = function (callback) {
         case "cock5_chastity":
             nav.bg("252_waitress/gen3.jpg");
             cl.c.chastity = gv.get("castitycage");
+            cl.display();
             char.room(252);
             break;
         case "notip":

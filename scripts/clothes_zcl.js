@@ -360,7 +360,7 @@ zcl.displayMainSub = function (thisImage, top, left, ratio) {
 };
 
 zcl.kneel = function (top, left, ratio, mod, reverse) {
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+    zcl.kill();
 
     zcl.kneelSub("b" + (cl.c.chest === 1 ? 0 : cl.c.chest) + ".png", top, left, ratio, reverse);
     if (mod.indexOf("open") > -1)
@@ -393,29 +393,92 @@ zcl.kneelSub = function (thisImage, top, left, ratio, reverse) {
     $('#room-buttons').append('<img src="./images/mainChar/bj/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
 };
 
+zcl.amazon = function (top, left, ratio, mod, reverse) {
+    let w = 1600;
+    let h = 1600;
+    let f = "amazon";
+    zcl.kill();
+    if (cl.c.chest < 2)
+        zcl.subDisplay("body_m.png", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("body_f.png", top, left, ratio, reverse, w, h, f);
+
+    if (cl.c.hairLength > 1)
+        zcl.subDisplay("hair_f.png", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("hair_m.png", top, left, ratio, reverse, w, h, f);
+
+    if (mod !== "nodick") {
+        if (cl.c.chastity !== null)
+            zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
+        else if (cl.c.cock > 3)
+            zcl.subDisplay("dick_1.png", top, left, ratio, reverse, w, h, f);
+        else if (cl.c.cock > 1)
+            zcl.subDisplay("dick_3.png", top, left, ratio, reverse, w, h, f);
+        else
+            zcl.subDisplay("dick_5.png", top, left, ratio, reverse, w, h, f);
+    }
+};
 zcl.kneelRedux = function (top, left, ratio, mod, reverse) {
     let w = 1200;
     let h = 1600;
     let f = "bjRedux"
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
-    zcl.kneelReduxSub(cl.c.chest > 2 ? "girl.png" : "boy.png", top, left, ratio, reverse, w, h, f);
+    zcl.kill();
+    zcl.subDisplay(cl.c.chest > 2 ? "girl.png" : "boy.png", top, left, ratio, reverse, w, h, f);
     if (cl.c.hairLength > 1) {
-        zcl.kneelReduxSub("girlhead.png", top, left, ratio, reverse, w, h, f);
-        zcl.kneelReduxSub(cl.c.hairColor + "1.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay("girlhead.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay(cl.c.hairColor + "1.png", top, left, ratio, reverse, w, h, f);
     }
     else {
-        zcl.kneelReduxSub("boyhead.png", top, left, ratio, reverse, w, h, f);
-        zcl.kneelReduxSub(cl.c.hairColor + "0.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay("boyhead.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay(cl.c.hairColor + "0.png", top, left, ratio, reverse, w, h, f);
     }
 };
 
+zcl.asshole = function (top, left, ratio, mod, reverse) {
+    let w = 1200;
+    let h = 585;
+    let f = "asshole";
+    let img = "a6";
+    zcl.kill();
+    if (mod !== "cum")
+        mod = "";
 
+    switch (levels.get("anal").l) {
+        case 0:
+        case 1:
+            img = "a0";
+            break;
+        case 2:
+        case 3:
+            img = "a1";
+            break;
+        case 4:
+        case 5:
+            img = "a2";
+            break;
+        case 6:
+        case 7:
+            img = "a3";
+            break;
+        case 8:
+            img = "a4";
+            break;
+        case 9:
+            img = "a5";
+            break;
+        default:
+            img = "a6";
+            break;
+    }
+    zcl.subDisplay(img + mod + ".png", top, left, ratio, reverse, w, h, f);
+};
 
 zcl.bj = function (top, left, ratio, mod, reverse) {
     let w = 1200;
     let h = 1900;
     let f = "bj2";
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+    zcl.kill();
     let chest = 0;
     if (cl.c.chest > 5)
         chest = 6;
@@ -424,29 +487,84 @@ zcl.bj = function (top, left, ratio, mod, reverse) {
     else if (cl.c.chest > 2)
         chest = 3;
 
-    zcl.kneelReduxSub("body_" + chest + ".png", top, left, ratio, reverse, w, h, f);
+    zcl.subDisplay("body_" + chest + ".png", top, left, ratio, reverse, w, h, f);
     switch (mod) {
         case "open":
-            zcl.kneelReduxSub("head_open.png", top, left, ratio, reverse, w, h, f);
+            zcl.subDisplay("head_open.png", top, left, ratio, reverse, w, h, f);
             break;
         case "w":
-            zcl.kneelReduxSub("head_open.png", top, left, ratio, reverse, w, h, f);
-            zcl.kneelReduxSub("w.png", top, left, ratio, reverse, w, h, f);
+            zcl.subDisplay("head_open.png", top, left, ratio, reverse, w, h, f);
+            zcl.subDisplay("w.png", top, left, ratio, reverse, w, h, f);
             break;
         default:
-            zcl.kneelReduxSub("head.png", top, left, ratio, reverse, w, h, f);
+            zcl.subDisplay("head.png", top, left, ratio, reverse, w, h, f);
             break;
     }
 
     if (cl.c.hairLength > 1) {
-        zcl.kneelReduxSub("hair_2_black.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay("hair_2_black.png", top, left, ratio, reverse, w, h, f);
     }
     else {
-        zcl.kneelReduxSub("hair_1_black.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay("hair_1_black.png", top, left, ratio, reverse, w, h, f);
     }
 };
 
-zcl.kneelReduxSub = function (thisImage, top, left, ratio, reverse, w, h, f) {
+zcl.double = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 2000;
+    let h = 1500;
+    let f = "double";
+    if (cl.c.chest > 2) 
+        zcl.subDisplay("body_f.png", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("body_m.png", top, left, ratio, reverse, w, h, f);
+
+    if (mod === "open" && cl.c.hairLength > 1)
+        zcl.subDisplay("head_open_f.png", top, left, ratio, reverse, w, h, f);
+    else if(mod === "open")
+        zcl.subDisplay("head_open_m.png", top, left, ratio, reverse, w, h, f);
+    else if (cl.c.hairLength > 1)
+        zcl.subDisplay("head_f.png", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("head_m.png", top, left, ratio, reverse, w, h, f);
+};
+
+//mod -> up, open, insert, suck
+//color = w, b, d
+zcl.face = function (top, left, ratio, mod, color, reverse) {
+    zcl.kill();
+    let w = 1350;
+    let h = 1080;
+    let f = "face";
+    let hairLength = cl.c.hairLength < 2 ? 0 : 1;
+    let makeup = "m";
+    if (color === null)
+        color = "w";
+    else if (color.length === 0)
+        color = "w";
+    if (cl.c.makeup !== "n" || cl.c.lipstick !== null || cl.c.lips > 0)
+        makeup = "f";
+    if (mod === null)
+        mod = "open";
+    else if (mod.length === 0)
+        mod = "open";
+
+    if (mod === "grit") {
+        zcl.subDisplay("grit.png", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay("hair_" + hairLength + "_" + cl.c.hairColor + ".png", top, left, ratio, reverse, w, h, f);
+        return;
+    }
+    zcl.subDisplay("head.png", top, left, ratio, reverse, w, h, f);
+
+    zcl.subDisplay("hair_" + hairLength + "_" + cl.c.hairColor + ".png", top, left, ratio, reverse, w, h, f);
+
+    zcl.subDisplay(mod + "_" + makeup + ".png", top, left, ratio, reverse, w, h, f);
+
+    if(mod === "insert" || mod === "suck")
+        zcl.subDisplay("suck_" + makeup + "_" + color + ".png", top, left, ratio, reverse, w, h, f);
+};
+
+zcl.subDisplay = function (thisImage, top, left, ratio, reverse, w, h, f) {
     var btnWidth, btnHeight;
     btnWidth = w * ratio * g.ratio;
     btnHeight = h * ratio * g.ratio;
@@ -456,7 +574,7 @@ zcl.kneelReduxSub = function (thisImage, top, left, ratio, reverse, w, h, f) {
 };
 
 zcl.assup = function (top, left, ratio, mod) {
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+    zcl.kill();
 
     var hairLength = "2_";
     if (cl.c.chest < 3)
@@ -487,28 +605,28 @@ cl.assupSub = function (thisImage, top, left, ratio) {
 };
 
 zcl.bent = function (top, left, ratio, mod) {
-    $('.room-img[data-name="zzz-clothing-kill"]').remove();
+    zcl.kill();
 
     var hairLength = "head_1_";
     if (cl.c.hairLength < 3)
         hairLength = "head_0_";
-    cl.bentSub(hairLength + cl.c.hairColor + ".png", top, left, ratio);
+    zcl.bentSub(hairLength + cl.c.hairColor + ".png", top, left, ratio);
 
     if (cl.c.chest < 3)
-        cl.bentSub("body_boy.png", top, left, ratio);
+        zcl.bentSub("body_boy.png", top, left, ratio);
     else
-        cl.bentSub("body_girl.png", top, left, ratio);
+        zcl.bentSub("body_girl.png", top, left, ratio);
 
     if (cl.c.cock > 2)
         cl.bentSub("dick_small.png", top, left, ratio);
     else
-        cl.bentSub("dick_big.png", top, left, ratio);
+        zcl.bentSub("dick_big.png", top, left, ratio);
 
     if (mod === "cum")
-        cl.bentSub("cum.png", top, left, ratio);
+        zcl.bentSub("cum.png", top, left, ratio);
 };
 
-cl.bentSub = function (thisImage, top, left, ratio) {
+zcl.bentSub = function (thisImage, top, left, ratio) {
     var btnWidth, btnHeight;
     btnWidth = 2300 * ratio * g.ratio;
     btnWidth = 1699 * ratio * g.ratio;

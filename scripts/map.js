@@ -2,8 +2,19 @@
 m.fmap = null;
 m.row = 80;
 m.col = 20;
+
+//m -> path
+//i -> forest queen
+//g -> treasure
+//b -> door
+//c -> cave
+//h -> cabin
+//s -> cave [unk]
+//r -> swamp [unk]
+//q -> me
 m.drawBackground = function (row, col) {
     nav.killall();
+    console.log(row + " -- " + col);
     if (m.fmap[row][col].used === 'b') {
         nav.bg("475_fight/b.jpg");
         nav.button({
@@ -18,7 +29,7 @@ m.drawBackground = function (row, col) {
         }, 475);
         chat(0, 475);
     }
-    else {
+    else if (m.fmap[row][col].used === "m" || m.fmap[row][col].used === "x") {m
         var bg = m.drawBackgroundSub(row, col);
         var pathCounter = 0;
 
@@ -35,6 +46,16 @@ m.drawBackground = function (row, col) {
                     "height": 489,
                     "image": "475_fight/" + bg + "_n.jpg"
                 }, 475);
+                nav.button({
+                    "type": "clickthrough",
+                    "name": "north",
+                    "title": "North",
+                    "left": 840,
+                    "top": 200,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/dn.png"
+                }, 475);
                 pathCounter++;
             }
         }
@@ -49,6 +70,16 @@ m.drawBackground = function (row, col) {
                     "width": 458,
                     "height": 591,
                     "image": "475_fight/" + bg + "_s.jpg"
+                }, 475);
+                nav.button({
+                    "type": "clickthrough",
+                    "name": "south",
+                    "title": "South",
+                    "left": 840,
+                    "top": 880,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/ds.png"
                 }, 475);
                 pathCounter++;
             }
@@ -65,6 +96,16 @@ m.drawBackground = function (row, col) {
                     "height": 440,
                     "image": "475_fight/" + bg + "_w.jpg"
                 }, 475);
+                nav.button({
+                    "type": "clickthrough",
+                    "name": "west",
+                    "title": "West",
+                    "left": 300,
+                    "top": 460,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/dw.png"
+                }, 475);
                 pathCounter++;
             }
         }
@@ -80,11 +121,138 @@ m.drawBackground = function (row, col) {
                     "height": 440,
                     "image": "475_fight/" + bg + "_e.jpg"
                 }, 475);
+                nav.button({
+                    "type": "clickthrough",
+                    "name": "east",
+                    "title": "East",
+                    "left": 1600,
+                    "top": 460,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/de.png"
+                }, 475);
                 pathCounter++;
             }
         }
         if (pathCounter === 0)
             char.room(460);
+    }
+    else {
+        nav.bg("475_fight/z" + m.fmap[row][col].used + "1.jpg", "475_fight/z" + m.fmap[row][col].used + "1_n.jpg");
+        if (row > 0) {
+            if (m.fmap[row - 1][col].used !== 'x') {
+                nav.button({
+                    "type": "img",
+                    "name": "north",
+                    "title": "North",
+                    "left": 1063,
+                    "top": 315,
+                    "width": 259,
+                    "height": 260,
+                    "image": "475_fight/zn.png",
+                    "night": "475_fight/zn_n.png",
+                }, 475);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "north",
+                    "title": "North",
+                    "left": 712,
+                    "top": 0,
+                    "width": 458,
+                    "height": 489,
+                    "image": "475_fight/zn_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        if (row < m.row - 1) {
+            if (m.fmap[row + 1][col].used !== 'x') {
+                nav.button({
+                    "type": "img",
+                    "name": "south",
+                    "title": "South",
+                    "left": 553,
+                    "top": 461,
+                    "width": 1006,
+                    "height": 619,
+                    "image": "475_fight/zs.png",
+                    "night": "475_fight/zs_n.png",
+                }, 475);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "south",
+                    "title": "South",
+                    "left": 712,
+                    "top": 489,
+                    "width": 458,
+                    "height": 591,
+                    "image": "475_fight/zs_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        if (col > 0) {
+            if (m.fmap[row][col - 1].used !== 'x') {
+                nav.button({
+                    "type": "img",
+                    "name": "west",
+                    "title": "West",
+                    "left": 0,
+                    "top": 319,
+                    "width": 1278,
+                    "height": 256,
+                    "image": "475_fight/zw.png",
+                    "night": "475_fight/zw_n.png",
+                }, 475);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "west",
+                    "title": "West",
+                    "left": 0,
+                    "top": 316,
+                    "width": 712,
+                    "height": 440,
+                    "image": "475_fight/zw_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        if (col < m.col - 1) {
+            if (m.fmap[row][col + 1].used !== 'x') {
+                nav.button({
+                    "type": "img",
+                    "name": "east",
+                    "title": "East",
+                    "left": 1063,
+                    "top": 461,
+                    "width": 857,
+                    "height": 310,
+                    "image": "475_fight/ze.png",
+                    "night": "475_fight/ze_n.png",
+                }, 475);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "east",
+                    "title": "East",
+                    "left": 1170,
+                    "top": 316,
+                    "width": 750,
+                    "height": 440,
+                    "image": "475_fight/ze_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        nav.button({
+            "type": "zbtn",
+            "name": "visit",
+            "title": "Visit",
+            "left": 450,
+            "top": 100,
+            "width": 225,
+            "height": 75,
+            "image": "475_fight/visit.png"
+        }, 475);
     }
     
 };
@@ -158,8 +326,6 @@ m.createFmap = function () {
         m.createFmapNew();
     else {
         var y = gv.get("forestVisit");
-        //var z = gv.get("forestID");
-        //var xa = x.split(",");
         var ya = y.split(",");
         m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));
         for (i = 0; i < m.row; i++) {
@@ -262,16 +428,36 @@ m.createFmapNew = function () {
             };
         }
     }
+    let cave, cabin, caveunk, swampunk;
+    cave = false; cabin = caveunk = swampunk = false;
     for (i = 0; i < tf.length; i++) {
-        m.fmap[tf[i].row][tf[i].col].used = 'm';
+        if (tf[i].row === 67 && !cabin && tf[i].col > 0 && tf[i].col < 20) {
+            m.fmap[tf[i].row][tf[i].col].used = 'h';
+            cabin = true;
+        }
+        else if (tf[i].row === 54 && !cave && tf[i].col > 0 && tf[i].col < 20) {
+            m.fmap[tf[i].row][tf[i].col].used = 'c';
+            console.log(tf[i].row + " - " + tf[i].col);
+            cave = true;
+        }
+        else if (tf[i].row === 42 && !caveunk && tf[i].col > 0 && tf[i].col < 20) {
+            m.fmap[tf[i].row][tf[i].col].used = 's';
+            caveunk = true;
+        }
+        else if (tf[i].row === 6 && !swampunk && tf[i].col > 0 && tf[i].col < 20) {
+            m.fmap[tf[i].row][tf[i].col].used = 'r';
+            swampunk = true;
+        }
+        else if (m.fmap[tf[i].row][tf[i].col].used === "x")
+            m.fmap[tf[i].row][tf[i].col].used = 'm';
     }
 
-    //for (i = 0; i < Math.floor((m.col * m.row) / 3); i++) {
-    //    var tc = g.rand(1, m.col - 1);
-    //    var tr = g.rand(1, m.row - 1);
-    //    if (m.fmap[tr][tc].used !== 'm')
-    //        m.fmap[tr][tc].used = 'm'; //make u for test
-    //}
+    for (i = 0; i < Math.floor((m.col * m.row)); i++) {
+        var tc = g.rand(1, m.col - 1);
+        var tr = g.rand(1, m.row - 1);
+        if (m.fmap[tr][tc].used === 'x')
+            m.fmap[tr][tc].used = 'm'; //make u for test
+    }
 
     for (i = 1; i < m.col - 1; i++) {
         m.fmap[50][i].used = 'x';

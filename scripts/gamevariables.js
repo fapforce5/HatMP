@@ -122,6 +122,7 @@ gv.init = function () {
         { n: "analCumDog", t: 0, q: "int" },
         { n: "analCumHorse", t: 0, q: "int" },
         { n: "analCumPig", t: 0, q: "int" },
+        { n: "analCumPlant", t: 0, q: "int" },
 
         { n: "jobConstructionPay", t: 0, q: "zero" },
         { n: "forbotenLove", t: 0, q: "zero" },
@@ -264,7 +265,9 @@ gv.init = function () {
         { n: "eyeshadow", t: false },
         { n: "raven", t: false },
 
-        { n: "constructionPay", t: false }
+        { n: "constructionPay", t: false },
+        { n: "treasureAzrael", t: false }, 
+        { n: "wolfsniff", t: false } 
     ];
 
     weekly.st = [
@@ -497,7 +500,7 @@ gv.init = function () {
         { id: 41, t: "dog", n: "sex", c: 0 },
         { id: 42, t: "horse", n: "sex", c: 0 },
         { id: 43, t: "pig", n: "sex", c: 0 },
-        { id: 44, t: "bull", n: "sex", c: 0 },
+        { id: 44, t: "plant", n: "sex", c: 0 },
     ];
 
 
@@ -1118,6 +1121,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
             case "dog": gv.mod("analCumDog", 1); break;
             case "horse": gv.mod("analCumHorse", 1); break;
             case "pig": gv.mod("analCumPig", 1); break;
+            case "plant": gv.mod("analCumPlant", 1); break;
         }
     }
     else if (gender !== null && beast === null) {
@@ -1176,20 +1180,24 @@ sex.piss = function (drankpiss, analpiss, pissedon, gender) {
     }
     else if (pissedon) {
         sex.mod("piss", false, gender, 1);
-        levels.mod("piss", 30, 999);
-        levels.mod("xdress", 25, 999);
+        levels.mod("piss", 15, 999);
+        levels.mod("xdress", 5, 999);
     }
     else if (drankpiss) {
         sex.mod("piss", false, gender, 1);
-        levels.mod("piss", 50, 999);
+        levels.mod("piss", 25, 999);
         var pissLevel = levels.get("piss").l - 4;
-        levels.mod("xdress", 40, 999);
-        if (pissLevel > 0)
-            gv.mod("energy", pissLevel * 5);
+        levels.mod("xdress", 15, 999);
+        if (pissLevel > 0) {
+            let pissEnergy = pissLevel * 5;
+            if (gender === "f")
+                pissEnergy += 20;
+            gv.mod("energy", pissEnergy);
+        }
     }
     else {
-        levels.mod("xdress", 25, 999);
-        levels.mod("piss", 25, 999);
+        levels.mod("xdress", 5, 999);
+        levels.mod("piss", 15, 999);
     }
 }
 
