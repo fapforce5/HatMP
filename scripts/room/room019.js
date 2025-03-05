@@ -21,45 +21,16 @@ room19.main = function () {
         sc.select("toyBegin", "19_layInBed/icon_dildo.png", 2);
         sc.selectCancel("leave", 4)
     }
+    else if (!g.internal) {
+        nav.killbutton("lube");
+        sc.selectCancel("leave", 1);
+        chat(17, 19);
+    }
     else {
         sc.select("bjBegin", "19_layInBed/icon_bj.png", 0);
         sc.selectCancel("leave", 1);
         chat(0, 19);
     }
-    //g.cockDisplay = "a";
-    //cl.cockDisplay();
-    //g.internal = "";
-    //var lubeLevel = inv.get("lube").count;
-    //var thisImg = "0";
-
-    //if (lubeLevel === 0)
-    //    thisImg = "19_layInBed/l0.png";
-    //else if (lubeLevel < 3)
-    //    thisImg = "19_layInBed/l1.png";
-    //else if (lubeLevel < 6)
-    //    thisImg = "19_layInBed/l2.png";
-    //else if (lubeLevel < 12)
-    //    thisImg = "19_layInBed/l3.png";
-    //else
-    //    thisImg = "19_layInBed/l4.png";
-
-    //nav.button({
-    //    "type": "img",
-    //    "name": "lube",
-    //    "left": 488,
-    //    "top": 107,
-    //    "width": 1217,
-    //    "height": 789,
-    //    "image": thisImg
-    //}, 19);
-
-
-    //if (daily.get("buttholeplay"))
-    //    chat(7, 19);
-    //else if (lubeLevel === 0)
-    //    chat(0, 19);
-    //else
-    //    chat(1, 19);
 };
 
 room19.btnclick = function (name) {
@@ -648,6 +619,15 @@ room19.chat = function (chatID) {
             text: "*gulp* MMmmmMMmmmm yummy!",
             button: [
                 { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "This is where I keep any secret things I need hidden. No one ever " +
+                "looks in here. To bad I don't have anything to keep hidden. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

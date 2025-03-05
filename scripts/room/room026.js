@@ -83,7 +83,9 @@ room26.btnclick = function (name) {
                     sc.select("sit_landlord", "26_livingRoom/icon_tv.png", 1);
                     sc.select("sit_dick", "26_livingRoom/icon_dick.png", 2);
                 }
-                sc.select("sissy_confess", "26_livingRoom/icon_sissy.png", 3)
+
+                if (sissy.getNumPassed() > 5)
+                    sc.select("sissy_confess", "26_livingRoom/icon_sissy.png", 3);
                 sc.selectCancel("chat_cancel", 4);
             }
             else {

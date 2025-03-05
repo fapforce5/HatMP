@@ -385,6 +385,13 @@ room252.chatcatch = function (callback) {
             g.internal.eventpointer = 1;
             nav.next("jones");
             break;
+        case "toldJonesNo":
+            if (sc.getMission("jones", "invite").notStarted) {
+                sc.completeMission("jones", "invite", false);
+                sc.completeMission("jones", "fail");
+                sc.show("jones");
+            }
+            break;
         case "allSuccess":
             sc.completeMission("holly", "case");
             sc.completeMission("dolly", "case");
@@ -436,9 +443,9 @@ room252.chat = function (chatID) {
                 btn = [{ chatID: 998, text: "I uh...", callback: "" }];
                 break;
             case 2:
-                txt = "I seemed to have dropped my napkin. Could you get it for me? "
+                txt = "I dropped my napkin. Pick it up now. "
                 btn = [{ chatID: -1, text: "Sure!", callback: "jones0" },
-                { chatID: 998, text: "Get it yourself..", callback: "" }];
+                { chatID: 998, text: "Get it yourself..", callback: "toldJonesNo" }];
                 break;
             case 3:
                 txt = "I would like toast. Dry. Also a glass of orange juice, or as they say in places like this; o.j. please and thank you. "

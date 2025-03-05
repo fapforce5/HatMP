@@ -119,6 +119,8 @@ sc.char = [
     { name: "blade", display: "Blade", image: "blade.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
     { name: "wolf", display: "Lobo", image: "wolf.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
+    { name: "dr", display: "Dr. Degenerate", image: "dr.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
+
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
@@ -1052,6 +1054,45 @@ sc.charMission = [
                         { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 483 },
                         { id: 1, txt: "Gain their trust", show: true, mStatus: 0, roomId: 483 },
                         { id: 2, txt: "Welcome to the pack", show: true, mStatus: 0, roomId: 483 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "jones", mission: [
+            {
+                missionName: "invite", mStatus: 0, title: "Invitation", desc: "Serve me", task:
+                    [
+                        { id: 0, txt: "Cum rag", show: true, mStatus: 0, roomId: 450 },
+                        { id: 1, txt: "Visit me at my mansion", show: true, mStatus: 0, roomId: 150 },
+                    ]
+            },
+            {
+                missionName: "fail", mStatus: 0, title: "Failure", desc: "Failed me one, never again.", task:
+                    [
+                        { id: 0, txt: "Told Mr. Jones no", show: true, mStatus: 0, roomId: 150 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "dr", mission: [
+            {
+                missionName: "meet", mStatus: 0, title: "Monologuing", desc: "The greatest doctor ever!", task:
+                    [
+                        { id: 0, txt: "Caught in my trap!", show: true, mStatus: 0, roomId: 450 },
+                        { id: 1, txt: "Why not?", show: true, mStatus: 0, roomId: 150 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "cult", mission: [
+            {
+                missionName: "cabin", mStatus: 0, title: "Cabin", desc: "Highway to hell", task:
+                    [
+                        { id: 0, txt: "A new fuck toy?", show: true, mStatus: 0, roomId: 450 },
+                        { id: 1, txt: "You just can't get enough", show: true, mStatus: 0, roomId: 150 },
                     ]
             },
         ]
@@ -2373,6 +2414,14 @@ sc.trivial = function (charname) {
         case "!girl2":
             name = "Tits McGee";
             image = "girl2.png"
+            break;
+        case "!girl3":
+            name = "Delilah";
+            image = "girl3.png"
+            break;
+        case "!girl3a":
+            name = "Willow";
+            image = "girl3a.png"
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

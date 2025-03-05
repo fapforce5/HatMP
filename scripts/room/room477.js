@@ -480,7 +480,7 @@ room477.chat = function (chatID) {
         },
         {
             chatID: 21,
-            speaker: "jenna",
+            speaker: "!jenna",
             text: "You shouldn't be here after dark. The " + sc.n("queen") + " will be " +
                 "angry. You need to go. ",
             button: [

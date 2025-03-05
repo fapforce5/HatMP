@@ -10,7 +10,8 @@ trap.callbackWin;
 trap.name;
 trap.internal;
 
-trap.init = function (trapType = "hole", location = "forest", roomId = g.roomID, callbackWin = "", trapNum = null) {
+//hole, treasure, treasureAzrael, encounter, rope
+trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID, callbackWin = "", trapNum = null) {
     trap.phase = 0;
     trap.roomId = roomId;
     trap.callbackWin = callbackWin;
@@ -73,7 +74,7 @@ trap.roll = function () {
 
     var diceArray = new Array();
     var i;
-    var rollToBeat = 21 + g.rand(0, 16);
+    var rollToBeat = 24 + g.rand(0, 13);
     var totalRoll = 0;
     for (i = 0; i < 6; i++) {
         let thisRoll = g.rand(1, 7);
@@ -207,6 +208,10 @@ trap.displayMenu = function (menu) {
             btnList.push({ n: "charisma", i: "icon_talk.png" });
             btnList.push({ n: "flee", i: "icon_flee.png" });
             break;
+        case "rope":
+            btnList.push({ n: "freerope", i: "icon_freeself.png" });
+            btnList.push({ n: "waitrope", i: "icon_waitforhelp.png" });
+            break;
     }
 
     for (i = 0; i < btnList.length; i++) {
@@ -240,6 +245,178 @@ trap.message = function (message) {
             hex: "#ffffff",
             text: message[i]
         });
+    }
+};
+
+trap.rope = function () {
+    let ropeChar = new Array();
+    let flowers = ["fr", "fd", "fp"];
+    let sb, sa;
+    switch (trap.phase) {
+        case 0:
+            ropeChar = new Array();
+            if (cl.hasoutfit("nude") !== null) {
+                ropeChar.push({ id: 0, n: "!girl", ev: "clothes" });
+            }
+            else {
+                if (!flowers.includes(cl.c.buttplug)) {
+                    ropeChar.push({ id: 1, n: "!girl3", ev: "flower" });
+                }
+
+                if (future.get("drd") === -1 && sissy.st[10].ach) {
+                    ropeChar.push({ id: 2, n: "drd", ev: "drd" });
+                }
+
+                ropeChar.push({ id: 3, n: "!girl3", ev: "makeup" });
+            }
+
+            ropeChar.push({ n: "!jenna", ev: "free" });
+
+            trap.char = new Array();
+            g.shuffleArray(ropeChar);
+
+            trap.char.push(ropeChar[g.rand(0, ropeChar.length)]);
+            trap.name = trap.char[0].n;
+            nav.killbutton("r1004bg");
+            nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/rope/phase0.png"
+            }, 1005);
+            trap.displayMenu("next");
+            break;
+        case 1:
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1421,
+                "height": 390,
+                "image": "1005_trap/rope/branch.png"
+            }, 1005);
+            zcl.rope(0, 500, 1, "", false);
+            trap.phase = 2;
+            trap.displayMenu("wait");
+            break;
+        case 2:
+            char.addtime(30);
+            switch (trap.char[0].ev) {
+                case "clothes":
+                    zcl.rope(0, 500, 1, "", false);
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 597,
+                        "top": 223,
+                        "width": 769,
+                        "height": 690,
+                        "image": "1005_trap/rope/clothes0.png"
+                    }, 1005);
+                    trap.displayMenu("");
+                    chat(19, 1005);
+                    break;
+                case "flower":
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 493,
+                        "top": 115,
+                        "width": 880,
+                        "height": 898,
+                        "image": "1005_trap/rope/girl3.png"
+                    }, 1005);
+                    zcl.rope(0, 500, 1, "", false);
+                    trap.displayMenu("");
+                    chat(16, 1005);
+                    break;
+                case "makeup":
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 493,
+                        "top": 115,
+                        "width": 880,
+                        "height": 898,
+                        "image": "1005_trap/rope/girl3.png"
+                    }, 1005);
+                    zcl.rope(0, 500, 1, "", false);
+                    trap.displayMenu("");
+                    chat(43, 1005);
+                    break;
+                case "free":
+                    if (trap.char[0].n === "!jenna") {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 522,
+                            "top": 87,
+                            "width": 336,
+                            "height": 948,
+                            "image": "1005_trap/rope/jenna.png"
+                        }, 1005);
+                        zcl.rope(0, 500, 1, "", false);
+                    }
+                    trap.displayMenu("");
+                    chat(30, 1005);
+                    break;
+                case "drd":
+                    trap.displayMenu("");
+                    if (sc.getMission("dr", "meet").notStarted) {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 873,
+                            "top": 166,
+                            "width": 503,
+                            "height": 685,
+                            "image": "1005_trap/rope/dr0.png"
+                        }, 1005);
+                        zcl.rope(0, 500, 1, "", false);
+                        chat(31, 1005);
+                    }
+                    else {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 873,
+                            "top": 166,
+                            "width": 503,
+                            "height": 685,
+                            "image": "1005_trap/rope/dr0.png"
+                        }, 1005);
+                        zcl.rope(0, 500, 1, "", false);
+                        chat(41, 1005);
+                    }
+                    break;
+            }
+            break;
+        case 3:
+            nav.killbutton("r1004bg");
+            zcl.rope(0, 500, 1, "", false);
+            if (gv.get("energy") < 1) {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1001_rand/black_25.png"
+                }, 1005);
+                chat(22, 1005);
+                trap.displayMenu("rope");
+            }
+            else {
+
+            }
+            break;
     }
 };
 
@@ -593,6 +770,9 @@ room1005.btnclick = function (name) {
                 case "hole":
                     trap.hole();
                     break;
+                case "rope":
+                    trap.rope();
+                    break;
             }
             break;
         case "kill":
@@ -608,12 +788,18 @@ room1005.btnclick = function (name) {
                 case "treasureAzrael":
                     trap.treasure();
                     break;
+                case "rope":
+                    trap.rope();
+                    break;
             }
             break;
         case "wait":
             switch (trap.type) {
                 case "hole":
                     trap.hole();
+                    break;
+                case "rope":
+                    trap.rope();
                     break;
             }
             break;
@@ -769,6 +955,42 @@ room1005.btnclick = function (name) {
             }, 1005);
             chat(14, 1005);
             break;
+        case "freerope":
+            if (levels.get("strength").l < 5) {
+                chat(23, 1005);
+            }
+            else {
+                char.addtime(30);
+                gv.mod("energy", -25);
+                trap.kill();
+            }
+            break;
+        case "waitrope":
+            char.addtime(30);
+            if (g.rand(0, 3) === 0) {
+                if (sc.getMission("jones", "fail").notStarted) {
+                    sc.show("jones");
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 947,
+                        "top": 222,
+                        "width": 308,
+                        "height": 601,
+                        "image": "1005_trap/rope/jones0.png",
+                    }, 1005);
+                    chat(24, 1005);
+                }
+                else {
+                    
+                }
+            }
+            else {
+                gv.mod("energy", -10);
+                trap.phase = 3;
+                trap.rope();
+            }
+            break;
     }
 };
 
@@ -842,6 +1064,92 @@ room1005.chatcatch = function (callback) {
                 trap.kill(null);
             }
             break;
+        case "rope_rose":
+        case "rope_daisy":
+        case "rope_pink":
+        case "rope_pick":
+            var rsp_s = callback;
+            if (callback === "rope_pick") {
+                var rsp = ["rope_rose", "rope_daisy", "rope_pink"];
+                rsp_s = rsp[g.rand(0, rsp.length)];
+            }
+            switch (rsp_s) {
+                case "rope_rose": cl.c.buttplug = "fr"; break;
+                case "rope_daisy": cl.c.buttplug = "fd"; break;
+                case "rope_pink": cl.c.buttplug = "fp"; break;
+            }
+            cl.display();
+            zcl.rope(0, 500, 1, "", false);
+            break;
+        case "rope_clothes":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 698,
+                "top": 155,
+                "width": 969,
+                "height": 784,
+                "image": "1005_trap/rope/clothes1.png"
+            }, 1005);
+            zcl.rope(0, 500, 1, "", false);
+            cl.nude();
+            break;
+        case "rope_wait":
+            trap.phase = 3;
+            trap.rope();
+            break;
+        case "rope_fwump":
+            zcl.kill();
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/rope/fall.png",
+            }, 1005);
+            trap.displayMenu("leave");
+            break;
+        case "jonesFail":
+            sc.completeMission("jones", "invite", false);
+            sc.completeMission("jones", "fail");
+            sc.show("jones");
+            trap.phase = 3;
+            trap.rope();
+            break;
+        case "jonesCock0":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 592,
+                "top": 17,
+                "width": 337,
+                "height": 1012,
+                "image": "1005_trap/hole/jones1.png"
+            }, 1005);
+            break;
+        case "jonesCock1":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 592,
+                "top": 17,
+                "width": 337,
+                "height": 1012,
+                "image": "1005_trap/hole/jones2.png"
+            }, 1005);
+            break;
+        case "jonesCock2":
+            g.roomMapAccess(150, true, true);
+            sc.startMission("jones", "invite");
+            sc.completeMissionTask("jones", "invite", 0);
+            sc.show("jones");
+            break;
         case "passout":
             trap.kill(701);
             break;
@@ -850,6 +1158,182 @@ room1005.chatcatch = function (callback) {
             break;
         case "kill":
             trap.kill(null);
+            break;
+        case "dr1":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 359,
+                "top": 0,
+                "width": 587,
+                "height": 1080,
+                "image": "1005_trap/rope/dr1.png"
+            }, 1005);
+            break;
+        case "dr2":
+            future.add("drd", 3);
+            var dr2b = cl.c.chest < gv.get("breastSelect");
+            var dr2a = cl.c.leg < gv.get("assSelect");
+            var drSelect;
+            if (sc.getMission("dr", "meet").notStarted) {
+                if (dr2b)
+                    drSelect = "boobs";
+                else if (dr2a)
+                    drSelect = "ass";
+                else if (cl.c.cock < 4)
+                    drSelect = "cock";
+                else
+                    drSelect = "dumb";
+                sc.startMission("dr", "meet");
+                sc.completeMissionTask("dr", "meet", 0);
+                sc.show("dr");
+            }
+            else {
+                sc.completeMissionTask("dr", "meet", 1);
+                if (dr2b && dr2a)
+                    drSelect = ((g.rand(0, 2)) === 0 ? "ass" : "boobs");
+                else if (dr2b)
+                    drSelect = "boobs";
+                else if (dr2a)
+                    drSelect = "ass";
+                else if (cl.c.cock < 4)
+                    drSelect = "cock";
+                else
+                    drSelect = "dumb";
+            }
+            console.log(dr2b + " - " + dr2a + " - " + drSelect);
+            switch (drSelect) {
+                case "boobs":
+                    nav.killbutton("r1004bg");
+                    zcl.kill();
+                    cl.c.chest++;
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "28_transformation/chest_" + cl.c.chest + ".gif"
+                    }, 1005);
+                    cl.display();
+                    g.roomTimeout = setTimeout(function () {
+                        nav.killbutton("r1004bg");
+                        zcl.rope(0, 500, 1, "", false);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 359,
+                            "top": 0,
+                            "width": 587,
+                            "height": 1080,
+                            "image": "1005_trap/rope/dr1.png"
+                        }, 1005);
+                        chat(37, 1005);
+                    }, 6000);
+                    break;
+                case "ass":
+                    nav.killbutton("r1004bg");
+                    zcl.kill();
+                    cl.c.leg++;
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "28_transformation/leg_" + cl.c.leg + ".gif"
+                    }, 1005);
+                    cl.display();
+                    g.roomTimeout = setTimeout(function () {
+                        nav.killbutton("r1004bg");
+                        zcl.rope(0, 500, 1, "", false);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 359,
+                            "top": 0,
+                            "width": 587,
+                            "height": 1080,
+                            "image": "1005_trap/rope/dr1.png"
+                        }, 1005);
+                        chat(38, 1005);
+                    }, 6000);
+                    break;
+                case "cock":
+                    nav.killbutton("r1004bg");
+                    zcl.kill();
+                    cl.c.cock++;
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "28_transformation/cock_" + cl.c.cock + ".gif"
+                    }, 1005);
+                    cl.display();
+                    g.roomTimeout = setTimeout(function () {
+                        nav.killbutton("r1004bg");
+                        zcl.rope(0, 500, 1, "", false);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 359,
+                            "top": 0,
+                            "width": 587,
+                            "height": 1080,
+                            "image": "1005_trap/rope/dr1.png"
+                        }, 1005);
+                        chat(39, 1005);
+                    }, 6000);
+                    break;
+                default:
+                    var pil
+                    if (g.rand(0, 2) === 0) {
+                        pil = levels.get("pi");
+                        if (pil.l < 1)
+                            pil.l = 1;
+                        levels.set("pi", 0, pil.l - 1);
+                        g.popUpNotice("You have become dumber");
+                    }
+                    else {
+                        pil = levels.get("strength");
+                        if (pil.l < 1)
+                            pil.l = 1;
+                        levels.set("strength", 0, pil.l - 1);
+                        g.popUpNotice("You have become weaker");
+                    }
+                    chat(40, 1005);
+                    break;
+            }
+            break;
+        case "makeup":
+            nav.killbutton("r1004bg");
+            switch (g.rand(0, 6)) {
+                case 0: cl.c.makeup = "clown"; cl.c.lipstick = "red"; cl.c.pissface = "rainbow"; break;
+                case 1: cl.c.makeup = "white"; cl.c.lipstick = "black"; cl.c.pissface = "black"; break;
+                case 2: cl.c.makeup = "blush"; cl.c.lipstick = "pink"; cl.c.pissface = "pink"; break;
+                case 3: cl.c.makeup = "blushheavy"; cl.c.lipstick = "purple"; cl.c.pissface = "purple"; break;
+                case 4: cl.c.makeup = "blush"; cl.c.lipstick = "blue"; cl.c.pissface = "blue"; break;
+                case 5: cl.c.makeup = "blushheavy"; cl.c.lipstick = "red"; cl.c.pissface = "black"; break;
+            }
+            zcl.displayMirror();
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/rope/mirror_day.png",
+                "night": "1005_trap/rope/mirror_night.png"
+            }, 1005);
+            chat(47, 1005);
+
             break;
         default:
             break;
@@ -1343,7 +1827,317 @@ room1005.chat = function (chatID) {
                     { chatID: -1, text: "No way!", callback: "kill" },
                 ]
             },
+            {
+                chatID: 16,
+                speaker: "!girl3a",
+                text: "Caught another one wandering in OUR forest! What should we do " +
+                    "with " +gender.pronoun("her") + "? ",
+                button: [
+                    { chatID: 17, text: "uhhh, let me go?", callback: "" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "!girl3",
+                text: "Yeah. We should let " + gender.pronoun("her") + "go. But first " +
+                    "we need to cover that ugly butthole. What flower do you think we " +
+                    "should give you? ",
+                button: [
+                    { chatID: 18, text: "Rose", callback: "rope_rose" },
+                    { chatID: 18, text: "Daisy", callback: "rope_daisy" },
+                    { chatID: 18, text: "A pink one", callback: "rope_pink" },
+                    { chatID: 18, text: "You pick", callback: "rope_pick" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "!girl3a",
+                text: "Hehehe! So pretty! Now we can let you go. ",
+                button: [
+                    { chatID: -1, text: "...thanks", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "me",
+                text: "AAAk! What are you doing! ",
+                button: [
+                    { chatID: 20, text: "...", callback: "rope_clothes" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "girl",
+                text: "So sorry! The cult stole my clothes and I can't run around here " +
+                    "naked! I'm not some gutter whore. Good luck!",
+                button: [
+                    { chatID: 21, text: "But those are my clothes! ", callback: "rope_clothes" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "thinking",
+                text: "Crap now how am I going to get down? ",
+                button: [
+                    { chatID: -1, text: "*groan*", callback: "rope_wait" },
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "thinking",
+                text: "I'm so tired. I don't know if I can go on.... ",
+                button: [
+                    { chatID: -1, text: "pass out...", callback: "passout" },
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "thinking",
+                text: "I'm too weak to pull myself up.",
+                button: [
+                    { chatID: -1, text: "[Need strength level 5]", callback: "" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "jones",
+                text: "Well, well, what do we have here? Looks like a slut on a string. " +
+                    "I bet you want to get down don't you slut? Of course you don't want to get down. " +
+                    "You're where you want to me, tied up and naked. I must say I'm getting quite the " +
+                    "erection staring at your helpless ass. ",
+                button: [
+                    { chatID: 25, text: "Please just let me down..", callback: "" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "jones",
+                text: "Not quite yet. Keep your mouth shut so I can take care of this erection " +
+                    "and continue my hike. After all you made me horny on my hike and your voice " +
+                    "is quite annoying. Just relax so I can enjoy myself. ",
+                button: [
+                    { chatID: 28, text: "[Keep your mouth shut and let him do what he wants]", callback: "jonesCock0" },
+                    { chatID: 26, text: "[Yell for help!!!]", callback: "" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "me",
+                text: "HHHEEEELLLPPPP!!! There's a freak here! I need help!!!",
+                button: [
+                    { chatID: 27, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "jones",
+                text: "Very well. You shall stay up there. I don't take in brats. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "jonesFail" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "jones",
+                text: "Good slut. I just need to cum. ",
+                button: [
+                    { chatID: 29, text: "...", callback: "jonesCock1" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "jones",
+                text: "I needed that. I like a set of holes that knows when to be open " +
+                    "and when to be closed. Come by my mansion as I could " +
+                    "always use a new toy. It's in the North East section of the residential " +
+                    "part of the city. I'll see you there, since I never take no for an answer. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: trap.name,
+                text: "Oh my! That looks terrible. Let's get you down. ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "dr",
+                text: "Well, well, well. What do we have here! You will make a fine " +
+                    "test subject! ",
+                button: [
+                    { chatID: 32, text: "Test subject?", callback: "dr1" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "dr",
+                text: "Why yes my dear " + gender.pronoun("boy") + ". You see I have " +
+                    "such a hard time getting subjects to volunteer for my test that " +
+                    "I have to catch them in the wild so we may progress science! As the " +
+                    "greatest living mind of our time I must verify my hypothesis of my " +
+                    "newest compound to see if it does indeed work! That is where you come in. " +
+                    "You shall assist me with my test, in that you will be the test subject. ",
+                button: [
+                    { chatID: 33, text: "I don't want to be a test subject.", callback: "" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "dr",
+                text: "Well, that's the brillance of this little rope trap. You don't get " +
+                    "to deny the progress of science! You see, I used to have a lab in the " +
+                    "city until my lab assistant, who calls himself the Chemist, caused a " +
+                    "ruckus that drove me from the city and stole my formula. I do miss that " +
+                    "lab. But no bother, I have developed a new formula than that drivel he " +
+                    "peddles. A new faster transformation serum to turn the world into big " +
+                    "titty bimbos!!!!",
+                button: [
+                    { chatID: 34, text: "huh?", callback: "" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "dr",
+                text: "I shall turn all the people into giant titty, giant badonkadonk, wet " +
+                    "pussy bimbos! You see, even though I'm a brillant man, women seem to be " +
+                    "attracted more to men of small brains, big muscles, and large penises. " +
+                    "However, If I turn all the people on this earth into bimbos I shall be the only man remaining " +
+                    "and be able to have sex with a different bimbo for each hour of the day! " +
+                    "Now we shall see if the newest serum can in fact turn you instantly into my " +
+                    "dream bimbo! ",
+                button: [
+                    { chatID: 35, text: "Sweet!", callback: "" },
+                    { chatID: 36, text: "AAAKK NO! Keep that needle away from me!!!!", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "dr",
+                text: "Yes, quite sweet. Now let's see if it works. ",
+                button: [
+                    { chatID: -1, text: "yes!", callback: "dr2" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "dr",
+                text: "Did I not explain to you how this rope trap works? I could have sworn I " +
+                    "did. You don't get to say no. Now, think of this like prison rape. It's going " +
+                    "to happen whether you want it or not, so just try to relax and enjoy it. ",
+                button: [
+                    { chatID: -1, text: "You bastard!", callback: "dr2" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "dr",
+                text: "Drat! It's faster and has nice growth of the titties, but not a " +
+                    "full bimbo transformation! I must get back to my lab!",
+                button: [
+                    { chatID: -1, text: "Wait! Did you just make my breasts bigger? Let me down! ", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "dr",
+                text: "Drat! It's faster and has nice growth of the badonkadonk, but not a " +
+                    "full bimbo transformation! I must get back to my lab!",
+                button: [
+                    { chatID: -1, text: "Wait! Did you just make my ass bigger? Let me down! ", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "dr",
+                text: "Drat! It's faster and has shunk you penis, but not quite turned " +
+                    "it into a dripping wet pussy. I must get back to my lab!",
+                button: [
+                    { chatID: -1, text: "Wait! Did you just shrink my dick! Let me down! ", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "dr",
+                text: "Hmmmm. No noticeable effect. I must get back to my lab!",
+                button: [
+                    { chatID: -1, text: "Wait! Let me down! ", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "dr",
+                text: "Why hello again my dear " + gender.pronoun("boy") + ". Come to " +
+                    "assist me some more? ",
+                button: [
+                    { chatID: 42, text: "You again?", callback: "dr1" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "dr",
+                text: "Yes. I must say I haven't quite perfected it, but let us see " +
+                    "what what happens this time? ",
+                button: [
+                    { chatID: -1, text: "*groan*", callback: "dr2" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "girl3a",
+                text: "Looks like we caught another one. You know " + gender.pronoun("she") +
+                    " we should make her into a pretty little girl!",
+                button: [
+                    { chatID: 44, text: "huh?", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "girl3",
+                text: "Totally! Let's do " + gender.pronoun("her") + " makeup! I always " +
+                    "love doing someone else's makeup. It's so much fun! ",
+                button: [
+                    { chatID: 45, text: "Sweet! Make me into a pretty little girl!", callback: "" },
+                    { chatID: 46, text: "What? NO!", callback: "" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "girl3a",
+                text: "Yay! So much fun. Hmmm. How should we do her makeup? ",
+                button: [
+                    { chatID: 47, text: "...", callback: "makeup" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "girl3a",
+                text: "Shut up! You're our prisoner and we'll do you makeup however we want! ",
+                button: [
+                    { chatID: 47, text: "drat!", callback: "makeup" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "girl3",
+                text: "Aren't you a pretty girl! I love it!  ",
+                button: [
+                    { chatID: 48, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "girl3a",
+                text: "Best work yet! Now let's go and harass the cult! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "rope_fwump" },
+                ]
+            },
         ];
+        
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];
         else

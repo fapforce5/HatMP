@@ -1765,6 +1765,170 @@
                 return { default: true };
             }
         },
+        {
+            num: 11,
+            name: "!girl3",
+            displayName: "",
+            location: ["forest"],
+            img: "girl3/icon.png",
+            openingLine: ["You look like you ", "need a cock in you."],
+            openingImg: null,
+            fight: g.rand(8, 15),
+            energy: 100,
+            arousal: 0,
+            options: ["anal", "cock", "cock"],
+            slap: true,
+            color: "w",
+            gender: "f",
+            cocksize: 5,
+            kick: "rapeman0/kick.png",
+            phase0: function () { return { default: true, complete: null }; },
+            phase1: function () { return { default: true, complete: null }; },
+            phase2: function () { return { default: true, complete: null }; },
+            phase3: function () {
+                if (!gender.canUseCock()) {
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "1004_rape/girl3/introhaha.png"
+                    }, 1004);
+                }
+                else {
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 430,
+                        "top": 0,
+                        "width": 1148,
+                        "height": 1080,
+                        "image": "1004_rape/girl3/intro.png"
+                    }, 1004);
+                }
+                return true;
+            },
+            phase4: function () {
+                if (rape.rapeType === "cock") {
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 920,
+                        "height": 1080,
+                        "image": "1004_rape/girl3/phase4_dick.png"
+                    }, 1004);
+                }
+                else {
+                    if (rape.phases[4].c === 0) {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "1004_rape/girl3/phase4_anal.png"
+                        }, 1004);
+                        return { default: false, complete: false };
+                    }
+                    else
+                        return { default: false, complete: true };
+                }
+
+                return { default: true, complete: false };
+            },
+            phase5: function () {
+                //zcl.double(200, 100, .7, "open", false);
+                if (rape.phases[5].c === 0) {
+                    if (rape.rapeType === "anal") {
+                        zcl.double(360, 240, .6, "open", false)
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 400,
+                            "top": 0,
+                            "width": 867,
+                            "height": 459,
+                            "image": "1004_rape/girl3/phase5_fist.gif"
+                        }, 1004);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "1004_rape/girl3/phase5_fist.png"
+                        }, 1004);
+                        
+                    }
+                    else {
+                        zcl.bj(200, 200, .8, "open", true);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "1004_rape/girl3/phase5_dick.png"
+                        }, 1004);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 1020,
+                            "top": 0,
+                            "width": 300,
+                            "height": 300,
+                            "image": "1004_rape/girl3/gif_fourholes.gif"
+                        }, 1004);
+                    }
+                    return false;
+                }
+                return true;
+            },
+            phase6: function () {
+                if (rape.phases[6].c === 0) {
+                    if (rape.rapeType === "cock") {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "1004_rape/girl3/phase6_dick.png"
+                        }, 1004);
+                        levels.fuckpussy("!girl3");
+                        levels.fuckpussy("!girl3");
+                        levels.fuckass("!girl3", "f");
+                        levels.fuckass("!girl3", "f");
+                    }
+                    else {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "1004_rape/girl3/phase6_anal.png"
+                        }, 1004);
+                        zcl.asshole(261, 200, 1.4, "", false);
+                        levels.anal(5, false, "f", false);
+                    }
+                    return false;
+                }
+                return true;
+            },
+            phase7: function () {
+                return { default: true };
+            }
+        },
     ];
     if (num === null) {
         num = g.rand(0, retVar.length);

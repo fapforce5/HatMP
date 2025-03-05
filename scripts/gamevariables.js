@@ -139,7 +139,7 @@ gv.init = function () {
         { n: "eyeliner", t: null, q: "string" },
         { n: "makeupx", t: "n", q: "string" },
 
-
+        { n: "cultcabin", t: 0, q: "int" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -399,7 +399,9 @@ gv.init = function () {
 
         { id: 21, pID: [12, 13, 14, 15, 18, 20], icon: "final", x: 0, y: 6, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 213 },
 
-        { id: 22, pID: [10], icon: "cum204", x: 8, y: 4, name: "Cum Eating 204", description: "Cecilia cum farts into cup - each sissy takes a drink (asks who's cum it it. Cecelia says, not so much who, but what...", ach: false, active: false, room: 181 },
+        { id: 22, pID: [10], icon: "cum204", x: 8, y: 4, name: "Cum Eating 204", description: "What are the jars for?", ach: false, active: true, room: 178 },
+        { id: 9, pID: [19], icon: "cum307", x: 8, y: 5, name: "Cum Eating 307", description: "Eat cum from a sissy's ass", ach: false, active: true, room: 178 },
+
         { id: 23, pID: [12, 13, 14, 15, 18, 20], icon: "fem310", x: 1, y: 5, name: "Feminization 310", description: "Laser hair removal", ach: false, active: true, room: 180 },
 
     ];
@@ -1032,7 +1034,7 @@ levels.handGive = function (gender) {
     levels.mod("xdress", 15);
 }
 
-levels.oralGive = function (size, swallow, isDildo, gender = null) {
+levels.oralGive = function (size, swallow, isDildo, gender = null, beast = null) {
     //levels.mod("oral", 25, 999);
     levels.oral(size);
     gv.mod("arousal", 15);
@@ -1049,6 +1051,9 @@ levels.oralGive = function (size, swallow, isDildo, gender = null) {
 
     if (gender !== null) {
         sex.mod("oral", true, gender, 1);
+    }
+    if (beast !== null) {
+        levels.mod("beast", 25);
     }
 }
 

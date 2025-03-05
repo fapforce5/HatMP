@@ -12,12 +12,21 @@ room178.main = function () {
                 chat(13, 178);
             }
             break;
+        case "cum204":
+            nav.bg("178_cum/cum201_0.jpg");
+            chat(25, 178);
+            break;
     }
 };
 
 room178.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "cum201_2":
+            nav.killbutton("cum201_2");
+            gv.mod("energy", 200);
+            levels.mod("xdress", 10, 999);
+            levels.mod("cum", 25);
+            chat(29, 178);
             break;
         default:
             break;
@@ -38,6 +47,7 @@ room178.chatcatch = function (callback) {
         case "cum105":
         case "cum106":
         case "cum107":
+        case "cum201_1":
             nav.bg("178_cum/" + callback + ".jpg");
             break;
         case "cum6":
@@ -64,6 +74,22 @@ room178.chatcatch = function (callback) {
             char.room(201);
             break;
         case "cumend101Pass":
+            sissy.passclass(true);
+            break;
+        case "cum201_2":
+            nav.bg("178_cum/cum201_2.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "cum201_2",
+                "left": 804,
+                "top": 152,
+                "width": 676,
+                "height": 876,
+                "image": "178_cum/cum201_2.png"
+            }, 178);
+            break;
+        case "cumend204Pass":
+            g.popUpNotice("You can now fill cum jars when you go to the toilet!");
             sissy.passclass(true);
             break;
         default:
@@ -303,6 +329,74 @@ room178.chat = function (chatID) {
                 "Now go and find some cocks to slups down. ",
             button: [
                 { chatID: -1, text: "...", callback: "cumend101Pass" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "missy",
+            text: "I brought a treat today, or I should say " + sc.n("cecilia") +
+                " brought a treat. As a sissy the desire to swallow cum is strong, " +
+                "sometimes overwhelming. During those times you may find that " +
+                "there aren't any dicks around to fill that thirst. That's why you " +
+                "need to save that manly cum in jars so you can enjoy it when you need it.",
+            button: [
+                { chatID: 26, text: "huh?", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "missy",
+            text: sc.n("cecilia") + " squat down and fill up a jar of cum so these " +
+                "sissies can enjoy a nice warm cup of real man. ",
+            button: [
+                { chatID: 27, text: "huh?", callback: "cum201_1" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "cecilia",
+            text: "Hehehe! I love having an audiance! Too bad you didn't see me get " +
+                "filled up! It was so hot!",
+            button: [
+                { chatID: 28, text: "whoa! There's so much cum!", callback: "cum201_2" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "missy",
+            text: "Now each of you tip your jar back and enjoy your tall glass of " +
+                "cum. Feel the warmth travel over your tongue, down your throat and fill " +
+                "you body with the rejuvenating effects of a real man's sperm travel into " +
+                "your little feminine bodies. ",
+            button: [
+                { chatID: -1, text: "MMmmmmmm", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "!kareem",
+            text: "That was very different. " + sc.n("cecilia") + ", who did that come from?",
+            button: [
+                { chatID: 30, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "cecilia",
+            text: "Heheheh! Not so much who, but what!",
+            button: [
+                { chatID: 31, text: "What!", callback: "" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "missy",
+            text: "It doesn't matter. Cum is cum, and you sissies need your cum if you're " +
+                "going to grow to be slutty fuck holes. Now I'm giving you each a jar. Next " +
+                "time you're in the powder room with a load of cum in your bussy, just sqeeze " +
+                "it out into this jar so you can enjoy it anytime. ",
+            button: [
+                { chatID: -1, text: "Thank you ma'am!", callback: "cumend204Pass" },
             ]
         },
     ];

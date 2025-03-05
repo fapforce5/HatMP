@@ -209,6 +209,9 @@ cl.init = function () {
         { type: "buttplug", name: "b", display: "Blue Plug", img: "plug_blue.png", sex: "f", inv: false, daring: 1, price: 100 },
         { type: "buttplug", name: "g", display: "Green Plug", img: "plug_green.png", sex: "f", inv: false, daring: 1, price: 100 },
         { type: "buttplug", name: "v", display: "Vibrator", img: "plug_vibe.gif", sex: "f", inv: false, daring: 2, price: 180 },
+        { type: "buttplug", name: "fr", display: "Rose", img: "plug_rose.png", sex: "f", inv: false, daring: 1, price: -1 },
+        { type: "buttplug", name: "fd", display: "Daisy", img: "plug_daisy.png", sex: "f", inv: false, daring: 1, price: -1 },
+        { type: "buttplug", name: "fp", display: "Pink flower", img: "plug_pinkFlower.png", sex: "f", inv: false, daring: 1, price: -1 },
 
         { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
@@ -1838,7 +1841,28 @@ cl.buttplug = [
     { name: "v", leg: 1, image: "plug_v_0.png" },
     { name: "v", leg: 2, image: "plug_v_2.png" },
     { name: "v", leg: 3, image: "plug_v_3.png" },
-    { name: "v", leg: 4, image: "plug_v_4.png" }
+    { name: "v", leg: 4, image: "plug_v_4.png" },
+
+    { name: "fr", leg: 0, image: "plug_fr_0.png" },
+    { name: "fr", leg: 1, image: "plug_fr_0.png" },
+    { name: "fr", leg: 2, image: "plug_fr_2.png" },
+    { name: "fr", leg: 3, image: "plug_fr_3.png" },
+    { name: "fr", leg: 4, image: "plug_fr_4.png" },
+    { name: "fr", leg: 5, image: "plug_fr_5.png" },
+
+    { name: "fd", leg: 0, image: "plug_fd_0.png" },
+    { name: "fd", leg: 1, image: "plug_fd_0.png" },
+    { name: "fd", leg: 2, image: "plug_fd_2.png" },
+    { name: "fd", leg: 3, image: "plug_fd_4.png" },
+    { name: "fd", leg: 4, image: "plug_fd_4.png" },
+    { name: "fd", leg: 5, image: "plug_fd_4.png" },
+
+    { name: "fp", leg: 0, image: "plug_fp_0.png" },
+    { name: "fp", leg: 1, image: "plug_fp_0.png" },
+    { name: "fp", leg: 2, image: "plug_fp_2.png" },
+    { name: "fp", leg: 3, image: "plug_fp_3.png" },
+    { name: "fp", leg: 4, image: "plug_fp_4.png" },
+    { name: "fp", leg: 5, image: "plug_fp_5.png" }
 ];
 
 cl.accessories = [

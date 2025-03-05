@@ -288,7 +288,7 @@ g.rooms = [
     { roomID: 460, name: "Forest Path", image: "460_parkRun/path1.jpg", nightImage: "460_parkRun/path1Night.jpg", houseID: 450, btn: "roomBtn_460.png" },
     { roomID: 461, name: "Run", image: "461_run/path2.jpg", nightImage: "461_run/path2Night.jpg", houseID: 450, btn: "roomBtn_461.png" },
     { roomID: 475, name: "Wander", image: "475_fight/475_path_1.jpg", nightImage: "475_fight/475_path_1.jpg", houseID: 450, btn: "roomBtn_475.png" },
-    { roomID: 476, name: "Cabin", image: "476_cabin/bg.jpg", nightImage: "476_cabin/bg_night.png", houseID: 450, btn: "roomBtn_475.png" },
+    { roomID: 476, name: "Cabin", image: "476_cabin/bg.jpg", nightImage: "476_cabin/bg_night.jpg", houseID: 450, btn: "roomBtn_475.png" },
     { roomID: 477, name: "Cottage", image: "477_cottage/bg1.jpg", nightImage: "477_cottage/bg1_n.jpg", houseID: 450, btn: "roomBtn_477.png" },
 
     { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.jpg", nightImage: "478_kitchen/bg.jpg", houseID: 480, btn: "roomBtn_478.png" },
@@ -397,7 +397,7 @@ g.roomMapInit = function () {
         { roomID: 75, display: "Bimbo's Place", access: true, darkAccess: true, left: 895, top: 407, width: 102, height: 122, img: "map/75.png", night: "map/75_night.png", map: 1 },
         { roomID: 100, display: "Construction", access: false, darkAccess: false, left: 1458, top: 0, width: 323, height: 282, img: "map/100.png", night: "map/100_night.png", map: 2 },
         { roomID: 125, display: "Jimmy's", access: true, darkAccess: true, left: 714, top: 435, width: 60, height: 97, img: "map/125.png", night: "map/125_night.png", map: 1 },
-        //{ roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
+        { roomID: 150, display: "Mr. Jones", access: false, darkAccess: false, left: 1643, top: 20, width: 222, height: 211, img: "map/150.png", night: "map/150_night.png", map: 1 },
         { roomID: 203, display: "Missy's", access: true, darkAccess: true, left: 1456, top: 263, width: 207, height: 340, img: "map/203.png", night: "map/203_night.png", map: 2 },
         { roomID: 225, display: "Alley", access: true, darkAccess: true, left: 765, top: 760, width: 78, height: 190, img: "map/225.png", night: "map/225_night.png", map: 2 },
         { roomID: 250, display: "Naked Beaver Diner", access: true, darkAccess: true, left: 24, top: 304, width: 224, height: 160, img: "map/250.png", night: "map/250_night.png", map: 2 },
