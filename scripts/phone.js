@@ -475,49 +475,125 @@ phone.characterSelect = function (name) {
             text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
         }, 1);
     }
-    
-    for (i = 0; i < sc.charMission.length; i++) {
-        if (sc.charMission[i].name === thisChar.name) {
-            for (j = 0; j < sc.charMission[i].mission.length; j++) {
-                var tcolor = "#ffffff";
-                var mstatus;
-                switch (sc.mStatus(sc.charMission[i].mission[j].mStatus)) {
-                    case "Failed": tcolor = "#cc3333"; mstatus = " [Fail]"; break;
-                    case "Completed": tcolor = "#33cc33"; mstatus = " ☑"; break;
-                    case "Not Started": tcolor = "#999999"; mstatus = ""; break;
-                    default: tcolor = "#ffffff"; mstatus = "";
-                }
+
+    if (name === "missy" || name === "p" || name === "martha" || name === "black") {
+        switch (name) {
+            case "missy":
+                var sissySchoolInvite = "Attend classes on Monday, Wednesday, and Friday.";
+                if (!sissy.st[17].ach)
+                    sissySchoolInvite = g.linebreak("You haven't proven yourself worth of attending the sissy school. Easiest way is to go to work and complete the cases. ", 50);
+                else if (sissy.st[21].ach)
+                    sissySchoolInvite = g.linebreak("Congradulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
+                var mtxt = "Current case: <br/>" +
+                    g.linebreak(missy.activecase().txt, 50) + "<hr />" +
+                    "Sissy School: <br/>" +
+                    sissySchoolInvite;
                 nav.t({
                     type: "zimg",
-                    name: "phone_charsel_",
+                    name: "phone_charselx",
                     "left": 850,
                     "top": 180 + (j * 100),
                     font: 30,
-                    hex: tcolor,
-                    text: sc.charMission[i].mission[j].title + mstatus
+                    hex: "#ffffff",
+                    text: mtxt
                 }, 9999);
+                break;
+            case "p":
+                var ptxt = "Pink Room: <br />Must graduate from the Sissy School.";
                 nav.t({
                     type: "zimg",
-                    name: "phone_charsel_",
-                    "left": 900,
-                    "top": 220 + (j * 100),
-                    font: 20,
-                    hex: "#ffffff",
-                    text: sc.charMission[i].mission[j].desc
-                }, 1);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_charsel_" + sc.charMission[i].name + "_" + sc.charMission[i].mission[j].missionName,
-                    "left": 800,
+                    name: "phone_charselx",
+                    "left": 850,
                     "top": 180 + (j * 100),
-                    "width": 40,
-                    "height": 40,
-                    "image": "999_phone/char_left.png",
+                    font: 30,
+                    hex: "#ffffff",
+                    text: ptxt
                 }, 9999);
+                break;
+            case "martha":
+                var m1txt = "Classes completed: <br/>";
+                var m2txt = "Classes not taken: <br/>";
+                var c1 = new Array();
+                var c2 = new Array();
+                for (let mi = 0; mi < 8; mi++) {
+                    c1.push("");
+                    c2.push("");
+                }
+                for (let mi = 0; mi < sissy.st.length; mi++) {
+                    if (sissy.st[mi].active && sissy.st[mi].y > 0 && sissy.st[mi].y < 7) {
+                        if (sissy.st[mi].ach)
+                            c1[sissy.st[mi].y] += sissy.st[mi].name + ", ";
+                        else {
+                            c2[sissy.st[mi].y] += sissy.st[mi].name + ", ";
+                        }
+                    }
+                }
+                for (let mi = 1; mi < 7; mi++) {
+                    if (c1[mi].length > 0) {
+                        c1[mi] = c1[mi].replace(/,\s*$/, "");
+                        m1txt += g.linebreak(c1[mi], 50) + "<br/>";
+                    }
+                    if (c2[mi].length > 0) {
+                        c2[mi] = c2[mi].replace(/,\s*$/, "");
+                        m2txt += g.linebreak(c2[mi], 50) + "<br/>";
+                    }
+                }
+                
+                nav.t({
+                    type: "zimg",
+                    name: "phone_charselx",
+                    "left": 850,
+                    "top": 180 + (j * 100),
+                    font: 30,
+                    hex: "#ffffff",
+                    text: m1txt + "<br /><br />" + m2txt
+                }, 9999);
+                break;
+        }
+    }
+    else {
+        for (i = 0; i < sc.charMission.length; i++) {
+            if (sc.charMission[i].name === thisChar.name) {
+                for (j = 0; j < sc.charMission[i].mission.length; j++) {
+                    var tcolor = "#ffffff";
+                    var mstatus;
+                    switch (sc.mStatus(sc.charMission[i].mission[j].mStatus)) {
+                        case "Failed": tcolor = "#cc3333"; mstatus = " [Fail]"; break;
+                        case "Completed": tcolor = "#33cc33"; mstatus = " ☑"; break;
+                        case "Not Started": tcolor = "#999999"; mstatus = ""; break;
+                        default: tcolor = "#ffffff"; mstatus = "";
+                    }
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_charsel_",
+                        "left": 850,
+                        "top": 180 + (j * 100),
+                        font: 30,
+                        hex: tcolor,
+                        text: sc.charMission[i].mission[j].title + mstatus
+                    }, 9999);
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_charsel_",
+                        "left": 900,
+                        "top": 220 + (j * 100),
+                        font: 20,
+                        hex: "#ffffff",
+                        text: sc.charMission[i].mission[j].desc
+                    }, 1);
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "phone_charsel_" + sc.charMission[i].name + "_" + sc.charMission[i].mission[j].missionName,
+                        "left": 800,
+                        "top": 180 + (j * 100),
+                        "width": 40,
+                        "height": 40,
+                        "image": "999_phone/char_left.png",
+                    }, 9999);
+                }
             }
         }
     }
-    
 }
 
 phone.thankyou = function () {
@@ -787,26 +863,29 @@ room9999.btnclick = function (name) {
             "height": 40,
             "image": "999_phone/char_down.png",
         }, 9999);
-        
+        let taskcounter = 0;
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
-            roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
-            var tcolor = "#ffffff";
-            var mstatus;
-            switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
-                case "Failed": tcolor = "#cc3333"; mstatus = " ✘ "; break;
-                case "Completed": tcolor = "#33cc33"; mstatus = " ☑ "; break;
-                case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
-                default: tcolor = "#ffffff"; mstatus = " ";
+            if (sc.charMission[ch.i].mission[ch.j].task[i].show) {
+                roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
+                var tcolor = "#ffffff";
+                var mstatus;
+                switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
+                    case "Failed": tcolor = "#cc3333"; mstatus = " ✘ "; break;
+                    case "Completed": tcolor = "#33cc33"; mstatus = " ☑ "; break;
+                    case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
+                    default: tcolor = "#ffffff"; mstatus = " ";
+                }
+                nav.t({
+                    type: "zimg",
+                    name: "phone_charsel_",
+                    "left": 910,
+                    "top": 350 + (taskcounter * 40),
+                    font: 24,
+                    hex: tcolor,
+                    text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
+                }, 1);
+                taskcounter++;
             }
-            nav.t({
-                type: "zimg",
-                name: "phone_charsel_",
-                "left": 910,
-                "top": 350 + (i * 40),
-                font: 24,
-                hex: tcolor,
-                text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
-            }, 1);
         }
     }
     else if (name.startsWith("phone_cheatmod")) {

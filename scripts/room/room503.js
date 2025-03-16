@@ -95,8 +95,7 @@ room503.chatcatch = function (callback) {
             char.room(503);
             break;
         case "shaveBody":
-            if (cl.c.bodyhair > 0)
-                cl.c.bodyhair = 0;
+            cl.shave();
             inv.use("razor");
             zcl.displayMain(0, 400, .22, "shower", false);
             cl.display();

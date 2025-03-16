@@ -3,11 +3,6 @@ var room7 = {};
 room7.main = function () {
     
     g.pass = null; //clear end sleepy time
-    //var btnList = new Array();
-    //var lolaStep = sc.getstep("lola");
-    //var evaStep = sc.getstep("eva");
-    //var meStep = sc.getstep("me");
-    //var bigguyStep = sc.getstep("bigguy");
     if (g.dt.toDateString() === g.startDate.toDateString()) {
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(0, 7);

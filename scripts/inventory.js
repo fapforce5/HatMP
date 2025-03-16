@@ -776,7 +776,7 @@ inv.createElements = function () {
                     if ($("#menu_displayAction").html() === "Take Your Pill") {
                         daily.set("tookHormonePill");
                         var myPill = inv.getIndex("hormone");
-                        gv.mod("hormone", 30);
+                        gv.mod("hormone", 25);
                         inv.use("hormone");
                         $("#menu_displayCost").html(inv.master[myPill].count === 0 ? "All out, better get more." : "Count: " + inv.master[myPill].count);
                         //$("#menu_displayAction").hide();

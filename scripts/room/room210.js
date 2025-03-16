@@ -1,6 +1,8 @@
 ﻿//Room name
 var room210 = {};
 room210.main = function () {
+    if (!$('#room_left_map').is(":visible"))
+        char.changeMenu("hide", false, true);
     var enrolled = gv.get("sissySchoolClass");
     $.each(sissy.st, function (i, v) {
         if (v.active) {
@@ -97,14 +99,28 @@ room210.btnclick = function (name) {
                 i = 9999;
             }
         }
-        console.log(name);
-        for (i = 0; i < sissy.st[id].pID.length; i++) {
-            pid = sissy.st[id].pID[i];
-            if (!sissy.st[pid].ach) {
-                if (prevToUnlock === "")
-                    prevToUnlock = sissy.st[pid].name;
-                else
-                    prevToUnlock += ", " + sissy.st[pid].name;
+        console.log(id)
+        if (id === 21) {//final
+            let finalcounter = 0;
+            for (i = 0; i < sissy.st.length; i++) {
+                if (sissy.st[i].y === 5 && sissy.st[i].active && sissy.st[i].ach)
+                    finalcounter++;
+            }
+            if (finalcounter === 1)
+                prevToUnlock = "You need to take one more 400 level class.";
+            else if (finalcounter === 0)
+                prevToUnlock = "You need to take 2 400 level classes.";
+            console.log(finalcounter);
+        }
+        else {
+            for (i = 0; i < sissy.st[id].pID.length; i++) {
+                pid = sissy.st[id].pID[i];
+                if (!sissy.st[pid].ach) {
+                    if (prevToUnlock === "")
+                        prevToUnlock = sissy.st[pid].name;
+                    else
+                        prevToUnlock += ", " + sissy.st[pid].name;
+                }
             }
         }
 

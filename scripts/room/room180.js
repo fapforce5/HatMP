@@ -26,8 +26,11 @@ room180.main = function () {
             chat(65, 180);
             break;
         case "enema205":
-            nav.bg("180_ballroom/enema205_1.jpg");
             chat(71, 180);
+            break;
+        case "fem310":
+            nav.bg("180_ballroom/laser0.jpg");
+            chat(88, 180);
             break;
     }
     //var btnList = [
@@ -99,7 +102,7 @@ room180.chatcatch = function (callback) {
             levels.mod("charisma", 40, 999);
             break;
         case "shaveEnd":
-            cl.c.bodyhair = 0;
+            cl.shave();
             cl.display();
             missy.set("uniform", 2);
             sissy.passclass(true);
@@ -152,9 +155,6 @@ room180.chatcatch = function (callback) {
             sissy.passclass(true);
             break;
         case "fem201_end":
-            inv.addMulti("hormone", 10);
-            gv.mod("hormone", 30);
-            daily.set("tookHormonePill");
             sissy.passclass(true);
             break;
         case "enema205_2":
@@ -180,6 +180,19 @@ room180.chatcatch = function (callback) {
         case "fem121_end":
             levels.mod("heels", 100, 999);
             levels.mod("xdress", 50, 999);
+            sissy.passclass(true);
+            break;
+        case "laser1":
+            cl.nude();
+            nav.bg("999_phone/black.jpg");
+            break;
+        case "laser2":
+            cl.c.bodyhair = -9999999;
+            g.popUpNotice("You'll never need to shave again!");
+            nav.bg("180_ballroom/bg_empty.jpg");
+            zcl.displayMain(0, 500, .2, "clothes", false);
+            break;
+        case "laser3":
             sissy.passclass(true);
             break;
         default:
@@ -821,7 +834,7 @@ room180.chat = function (chatID) {
         {
             chatID: 69,
             speaker: "martha",
-            text: "Oh my, these little treasures I have here can be quite the boon for a lady's allure! They work their magic in six delightful ways. First, they'll naturally encourage your lovely locks to grow thicker and faster, while keeping those pesky body hairs at bay for a delightfully smooth you.And wouldn't you know it, your skin will be positively radiant, your lips will have a touch more pout, and your figure will become even more divinely proportioned – fuller thighs and a more ample bosom, simply delightful! Now, for the gentlemen who appreciate a bit of... discretion, these might even have a delightfully shrinking effect down there, perfect for a smaller chastity device, if you know what I mean wink.",
+            text: "Oh my, these little treasures I have here can be quite the boon for a lady's allure! They work their magic in six delightful ways. First, they'll naturally encourage your lovely locks to grow thicker and faster, while keeping those pesky body hairs at bay for a delightfully smooth you.And wouldn't you know it, your skin will be positively radiant, your lips will have a touch more pout, and your figure will become even more divinely proportioned – fuller thighs and a more ample bosom, simply delightful! Now, for the gentlemen who appreciate a bit of... discretion, these might even have a delightfully shrinking effect down there, perfect for a smaller chastity device, if you know what I mean *wink*.",
             button: [
                 { chatID: 70, text: "...", callback: "" }
             ]
@@ -829,9 +842,9 @@ room180.chat = function (chatID) {
         {
             chatID: 70,
             speaker: "martha",
-            text: "Now, darling, listen closely. Just one pill a day, that's all you need. Soon, while you slumber peacefully, you'll begin to notice a delightful transformation.To get you started on this marvelous journey, I'll provide each of you with ten precious pearls of change, ten little pills. Once those are gone, simply pop down to the Pink Room to replenish your supply. ",
+            text: "Commencing with our next gathering, I shall be personally administering your prescribed pharmaceuticals. These are, as I've mentioned, quite potent, and therefore, a regimen of no more than three doses per week is strictly advised. Exceeding this limit would, regrettably, result in an overabundance of... activity, leading to a most unpleasant state of indisposition. Consequently, the regulation of your dosage remains firmly within my purview.This, I understand, represents a significant milestone for many of you, and I am, indeed, quite thrilled to guide you through this crucial phase of your journey into sissyhood.",
             button: [
-                { chatID: -1, text: "[Take your pill and be on your way. ]", callback: "fem201_end" }
+                { chatID: -1, text: "[I wonder what exactly are these pharmaceuticals. I guess I'll have to wait.]", callback: "fem201_end" }
             ]
         },
         {
@@ -984,6 +997,54 @@ room180.chat = function (chatID) {
             text: "While our formal lesson may have concluded, the true test of your refinement lies in your everyday actions. Remember, a lady's walk is a silent expression of her grace and poise. Practice walking with your head held high, your shoulders back, and your steps measured. Your feet may protest initially, but with perseverance, you will find that high heels become an extension of your elegance.",
             button: [
                 { chatID: -1, text: "[Return her shoes and finish the lesson.]", callback: "fem121_end" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "bimbo",
+            text: "Are you the the " + gender.pronoun("girl") + " that needs the laser " +
+                "hair removal? ",
+            button: [
+                { chatID: 89, text: "I am", callback: "" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "bimbo",
+            text: "Hehehe cool! I've never done this before, but I had all the classes. " +
+                "They both were really hard, but the teacher said I passed. He even gave " +
+                "me a facy paper to say I can do this. So are you ready to be hairless " +
+                "from your head down?",
+            button: [
+                { chatID: 90, text: "I am!", callback: "" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "bimbo",
+            text: "Awesome! Body hair is soooo gross! I'll put on your fancy glasses and when " +
+                "I'm done you'll never grow another hair again! Or was it you might grow some in " +
+                "10 years. I don't know. Oh well, let's start!",
+            button: [
+                { chatID: 91, text: "[Put on the darkened glasses and lay down in the nude]", callback: "laser1" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "thinking",
+            text: "ouch. This kind of hurts. Damn it takes so long, but it will be " +
+                "so worth it to never have to shave again! No more razor bumbs, no " +
+                "more nasty body hair, hello smooth skin! ",
+            button: [
+                { chatID: 92, text: "...", callback: "laser2" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "me",
+            text: "YES! Smooth sexy body and never shaving again!!!! ",
+            button: [
+                { chatID: -1, text: "...", callback: "laser3" }
             ]
         },
     ];

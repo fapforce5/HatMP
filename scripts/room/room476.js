@@ -32,8 +32,13 @@ room476.main = function () {
     }
     else {
         if (g.isNight() && g.dt.getDay() !== 5) {
-            nav.bg("476_cabin/bg_night_cult.jpg");
-            chat(1, 476);
+            if (sissy.st[10].ach) {
+                nav.bg("476_cabin/bg_night_cult.jpg");
+                chat(1, 476);
+            }
+            else {
+
+            }
             return;
         }
 
@@ -115,7 +120,7 @@ room476.btnclick = function (name) {
 
             if (g.internal.rope < 1) {
                 zcl.displayMain(100, 800, .15, "clothes", false);
-                chat(19, 476);
+                chat(20, 476);
             }
             else {
                 chat(999, 476);
@@ -188,7 +193,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 14:
-                    levels.oralGive(3, true, false, "m");
                     nav.killbutton("sybianbg");
                     nav.bg("476_cabin/bg_night_cult14.jpg");
                     zcl.armsup(-200, 500, .85, "worried", false);
@@ -204,7 +208,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 15:
-                    levels.oralGive(5, true, false, "m");
                     nav.killbutton("sybianbg");
                     nav.bg("476_cabin/bg_night_cult15.jpg");
                     zcl.armsup(-200, 500, .85, "open", false);
@@ -235,7 +238,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 17:
-                    levels.oralGive(4, true, false, "m");
                     nav.killbutton("sybianbg");
                     zcl.armsup(-200, 500, .85, "open", false);
                     nav.button({
@@ -250,7 +252,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 18:
-                    levels.oralGive(2, true, false, "m");
                     nav.killbutton("sybianbg");
                     nav.bg("476_cabin/bg_night_cult18.jpg");
                     nav.button({
@@ -279,7 +280,7 @@ room476.btnclick = function (name) {
                     chat(16, 476);
                     break;
                 case 20:
-                    levels.anal(3, true);
+                    
                     nav.killbutton("sybianbg");
                     zcl.kill();
                     var sybian21body = cl.c.chest > 1 ? "m" : "f";
@@ -290,7 +291,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 21:
-                    levels.oralGive(3, true, false, "m");
                     nav.killbutton("sybianbg");
                     zcl.armsup(-200, 500, .85, "open", false);
                     nav.bg("476_cabin/bg_night_cult19.jpg");
@@ -306,7 +306,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 22:
-                    levels.oralGive(2, true, false, "m");
                     nav.killbutton("sybianbg");
                     nav.bg("476_cabin/bg_night_cult20.jpg");
                     nav.button({
@@ -321,7 +320,6 @@ room476.btnclick = function (name) {
                     gv.mod("energy", -15);
                     break;
                 case 23:
-                    levels.oralGive(4, true, false, "m");
                     nav.killbutton("sybianbg");
                     nav.bg("476_cabin/bg_night_cult21.jpg");
                     nav.button({
@@ -336,6 +334,14 @@ room476.btnclick = function (name) {
                     break;
                 case 24:
                     nav.kill();
+                    levels.anal(3, true);
+                    levels.oralGive(4, true, false, "m");
+                    levels.oralGive(2, true, false, "m");
+                    levels.oralGive(3, true, false, "m");
+                    levels.oralGive(2, true, false, "m");
+                    levels.oralGive(4, true, false, "m");
+                    levels.oralGive(5, true, false, "m");
+                    levels.oralGive(3, true, false, "m");
                     if (g.hourBetween(17, 24))
                         char.addDays(1);
                     char.settime(5, 59);
@@ -356,6 +362,36 @@ room476.btnclick = function (name) {
                         chat(13, 476);
                     break;
             }
+            g.internal++;
+            break;
+        case "pillory":
+            gv.mod("energy", -10);
+            if (g.internal === 16 || g.internal === 17)
+                nav.bg("476_cabin/pillory" + g.internal + ".jpg");
+            else if (g.internal === 19) {
+                levels.anal(5, false, "m", true);
+                levels.anal(3, false, "m", true);
+                levels.anal(3, false, "m", true);
+                levels.anal(3, false, "m", true);
+                levels.anal(4, false, "m", true);
+                levels.oralGive(3, false, false, "m");
+                levels.oralGive(2, false, false, "m");
+                levels.oralGive(2, false, false, "m");
+                levels.oralGive(4, false, false, "m");
+                levels.oralGive(3, false, false, "m");
+
+                nav.bg("476_cabin/pillory" + g.internal + ".jpg");
+                nav.killall();
+                if (g.hourBetween(17, 24))
+                    char.addDays(1);
+                char.settime(5, 59);
+                if (g.dt.getDay() === 5)
+                    chat(14, 476);
+                else
+                    chat(13, 476);
+            }
+            else
+                nav.bg("476_cabin/pillory" + g.internal + "_" + (cl.c.hairLength > 2 ? "f" : "m") + ".jpg");
 
             g.internal++;
             break;
@@ -370,10 +406,22 @@ room476.chatcatch = function (callback) {
         case "bg_night_cult2":
         case "bg_night_cult5":
         case "bg_night_cult7":
-        case "pillory2":
         case "pillory3":
         case "pillory4":
         case "pillory5":
+            nav.bg("476_cabin/" + callback + ".jpg");
+            break;
+        case "pillory8":
+            nav.bg("476_cabin/pillory8_" + (cl.c.chest > 2 ? "f" : "m") + ".jpg");
+            break;
+        case "pillory9":
+            nav.killall();
+            g.internal = 10;
+            nav.bg("476_cabin/pillory9_" + (cl.c.hairLength > 2 ? "f" : "m") + ".jpg");
+            nav.next("pillory");
+            break;
+        case "pillory2":
+            nav.killall();
             nav.bg("476_cabin/" + callback + ".jpg");
             break;
         case "bg_night_cult3":
@@ -441,7 +489,7 @@ room476.chatcatch = function (callback) {
                 "height": 784,
                 "image": "476_cabin/cross_end.png",
             }, 476);
-            chat(20, 476);
+            chat(21, 476);
             break;
         case "nextEvent1":
             nav.killall();
@@ -451,10 +499,11 @@ room476.chatcatch = function (callback) {
                 case 1:
                     nav.bg("476_cabin/pillory0_" + (cl.c.chest > 2 ? "f" : "m") + ".jpg");
                     zcl.head(200, 540, .31, "angryleft");
-                    chat(21, 476);
+                    chat(22, 476);
                     break;
                 case 2:
-
+                    nav.bg("476_cabin/cookie0_" + gender.pronoun("f") + ".jpg");
+                    chat(32, 476);
                     break;
             }
 
@@ -507,9 +556,19 @@ room476.chatcatch = function (callback) {
             zcl.head(200, 540, .31, "shock");
             break;
         case "pillory7":
-            nav.bg("476_cabin/pillory7.jpg");
-            zcl.face(0, 400, 1, "pillory suck", "w");
-            nav.next("pillory");
+            nav.bg("476_cabin/pillory7_" + (cl.c.chest > 2 ? "f" : "m") + ".jpg");
+            nav.button({
+                "type": "img",
+                "name": "cross_other",
+                "left": 882,
+                "top": 0,
+                "width": 684,
+                "height": 1080,
+                "image": "476_cabin/pillory7.png",
+            }, 476);
+            break;
+        case "cookie1":
+
             break;
         case "room460":
             char.room(460);
@@ -719,7 +778,7 @@ room476.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 18,
+                chatID: 19,
                 speaker: "!jenna",
                 text: "The forest is a dangerous place. Do you want me to take you to the " +
                     "park?",
@@ -729,7 +788,7 @@ room476.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 19,
+                chatID: 20,
                 speaker: "me",
                 text: "YES! I was able to pull myself free! Damn my wrists are sore! No more rape for me!",
                 button: [
@@ -737,7 +796,7 @@ room476.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 20,
+                chatID: 21,
                 speaker: "cult",
                 text: "Time to get you ready for the party!",
                 button: [
@@ -745,77 +804,107 @@ room476.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 21,
+                chatID: 22,
                 speaker: "river",
                 text: "I'm so happy I came by the cabin today! Looks like we get to " +
                     "rip your sissy ass open! Hope you love the taste of your own ass " +
                     "'cuase our cocks are going straight from your ass to your mouth! ",
                 button: [
-                    { chatID: 22, text: "Fuck you " + sc.n("river") + "!", callback: "" },
-                ]
-            },
-            {
-                chatID: 22,
-                speaker: "river",
-                text: "Oh no, I'm going to fuck you like the sissy slut I've always known you " +
-                    "to be. You know you want my cock balls deep in that ass. You've wanted it " +
-                    "ever since I first met you all those years ago. Tick tock, here comes my cock!",
-                button: [
-                    { chatID: 23, text: "*grrrrr*", callback: "pillory1" },
+                    { chatID: 23, text: "Fuck you " + sc.n("river") + "!", callback: "" },
                 ]
             },
             {
                 chatID: 23,
                 speaker: "river",
-                text: "Complain all you want, nothing you can do to stop me from sliding " +
-                    "my cock inside that unwilling hole of yours. I'm really going to enjoy this. ",
+                text: "Oh no, I'm going to fuck you like the sissy slut I've always known you " +
+                    "to be. You know you want my cock balls deep in that ass. You've wanted it " +
+                    "ever since I first met you all those years ago. Tick tock, here comes my cock!",
                 button: [
-                    { chatID: 24, text: "No! Stop! Not you!", callback: "pillory2" },
+                    { chatID: 24, text: "*grrrrr*", callback: "pillory1" },
                 ]
             },
             {
                 chatID: 24,
                 speaker: "river",
-                text: "I don't know. That mouth of yours says not, but that ass is saying yes. " +
-                    "Should I just shove it in dry and rip you open? ",
+                text: "Complain all you want, nothing you can do to stop me from sliding " +
+                    "my cock inside that unwilling hole of yours. I'm really going to enjoy this. ",
                 button: [
-                    { chatID: 25, text: "What no! Don't shove it in at all!", callback: "pillory3" },
+                    { chatID: 25, text: "No! Stop! Not you!", callback: "pillory2" },
                 ]
             },
             {
                 chatID: 25,
                 speaker: "river",
-                text: "*PTOO* Naw, I'll spit on your hole. I really am nice to my bitches. ",
+                text: "I don't know. That mouth of yours says not, but that ass is saying yes. " +
+                    "Should I just shove it in dry and rip you open? ",
                 button: [
-                    { chatID: 26, text: "STOP!", callback: "pillory4" },
+                    { chatID: 26, text: "What no! Don't shove it in at all!", callback: "pillory3" },
                 ]
             },
             {
                 chatID: 26,
                 speaker: "river",
-                text: "It's really gripping my finger. Your hole really does want my " +
-                    "cock doesn't it. ",
+                text: "*PTOO* Naw, I'll spit on your hole. I really am nice to my bitches. ",
                 button: [
-                    { chatID: 27, text: "No it doesn't. Get your finger out of my ass!", callback: "pillory5" },
+                    { chatID: 27, text: "STOP!", callback: "pillory4" },
                 ]
             },
             {
                 chatID: 27,
                 speaker: "river",
-                text: "So should I insert it slowly so you can get used to being filled " +
-                    "by a real man's cock, or just jam it in all at once so I can hear " +
-                    "you scream like the bitch you are? ",
+                text: "It's really gripping my finger. Your hole really does want my " +
+                    "cock doesn't it. ",
                 button: [
-                    { chatID: 28, text: "Don't shove it in at all!", callback: "pillory6" },
+                    { chatID: 28, text: "No it doesn't. Get your finger out of my ass!", callback: "pillory5" },
                 ]
             },
             {
                 chatID: 28,
                 speaker: "river",
-                text: "Fuck yeah! Balls deep bitch! hehehe. Hey Jimmy. Shove your dick " +
+                text: "So should I insert it slowly so you can get used to being filled " +
+                    "by a real man's cock, or just jam it in all at once so I can hear " +
+                    "you scream like the bitch you are? ",
+                button: [
+                    { chatID: 29, text: "Don't shove it in at all!", callback: "pillory6" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "river",
+                text: "Fuck yeah! Balls deep bitch! hehehe. Hey Billy. Shove your dick " +
                     "in this bitches mouth. Shut her up! ",
                 button: [
-                    { chatID: -1, text: "ow ow ow ow", callback: "pillory7" },
+                    { chatID: 30, text: "ow ow ow ow", callback: "pillory7" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "river",
+                text: "Damn! I'm about to fill this little fuck hole! I really wanted to " +
+                    "last longer and really tear that ass up!",
+                button: [
+                    { chatID: 31, text: "*glug* *glug*", callback: "pillory8" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "cult",
+                text: "Don't worry " + sc.n("river") + " I'll tear that ass up! When " +
+                    "I get done with this little sissy " + gender.pronoun("she") + 
+                    " won't be able to walk for a week! Hope you like it deep little " +
+                    "girl. ",
+                button: [
+                    { chatID: -1, text: "*glug* *glug*", callback: "pillory9" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "cult",
+                text: "Today we're going to play cookie and you're the cookie. Just " +
+                    "stay right there and don't move or we'll stomp the shit out of you. " +
+                    "Got it!",
+                button: [
+                    { chatID: 33, text: "y-y-yes", callback: "cookie1" },
                 ]
             },
         ];

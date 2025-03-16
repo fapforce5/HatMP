@@ -170,67 +170,64 @@ room316.main = function () {
             room316.btnclick("buildMenu");
         }
     }
-    else if (sc.getMission("janice", "cuck").inProgress) {
-        if (sc.taskGetStep("janice", "dog") === 2) {
-            nav.bg("316_livingroom/bitch_0_0.jpg");
-            chat(153, 316);
-            return;
-        }
-        switch (sc.taskGetStep("janice", "cuck")) {
-            case 0:
-            case 1:
-                nav.bg("316_livingroom/bitch_0_0.jpg");
-                chat(125, 316);
-                break;
-            case 2:
-                nav.bg("316_livingroom/bitch_0_0.jpg");
-                chat(131, 316);
-                break;
-            case 3:
-            case 4:
-                daily.set("janice");
-                if (gv.get("janiceDatr") !== null) {
-                    nav.bg("316_livingroom/talk.jpg");
-                    chat(152, 316);
-                }
-                else {
-                    g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, datr: false };
-                    room316.btnclick("buildMenuCuck");
-                }
-                break;
-        }
-    }
+    //else if (sc.getMission("janice", "cuck").inProgress) {
+    //    if (sc.taskGetStep("janice", "dog") === 2) {
+    //        nav.bg("316_livingroom/bitch_0_0.jpg");
+    //        chat(153, 316);
+    //        return;
+    //    }
+    //    switch (sc.taskGetStep("janice", "cuck")) {
+    //        case 0:
+    //        case 1:
+    //            nav.bg("316_livingroom/bitch_0_0.jpg");
+    //            chat(125, 316);
+    //            break;
+    //        case 2:
+    //            nav.bg("316_livingroom/bitch_0_0.jpg");
+    //            chat(131, 316);
+    //            break;
+    //        case 3:
+    //        case 4:
+    //            daily.set("janice");
+    //            if (gv.get("janiceDatr") !== null) {
+    //                nav.bg("316_livingroom/talk.jpg");
+    //                chat(152, 316);
+    //            }
+    //            else {
+    //                g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, datr: false };
+    //                room316.btnclick("buildMenuCuck");
+    //            }
+    //            break;
+    //    }
+    //}
     else {
         if (cl.isCrossdressing())
             sc.modSecret("janice", 100);
 
         g.pass = { money: false, dog: false, pb: false, talk: false, dick: false };
-        switch (sc.taskGetStep("janice", "bitch")) {
-            case -1:
-            case 0:
-                nav.kill();
-                var howManyFed = 0;
-                for (i = 0; i < 6; i++) {
-                    if (sc.getMissionTask("dog", "vacation", i).complete)
-                        howManyFed++;
-                }
-                if (howManyFed > 1) {
-                    nav.bg("316_livingroom/talk.jpg");
-                    sc.startMission("janice", "bitch");
-                    sc.completeMissionTask("janice", "bitch", 0);
-                    chat(103, 316);
-                }
-                else {
-                    nav.bg("316_livingroom/breakup.jpg");
-                    chat(102, 316);
-                }
-                break;
-            case 1:
-            case 2:
-                nav.bg("316_livingroom/bitch_0_0.jpg");
-                room316.btnclick("buildMenu");
-                break;
+        if (sc.taskGetStep("janice", "bitch") < 3) {
+            nav.kill();
+            var howManyFed = 0;
+            for (i = 0; i < 6; i++) {
+                if (sc.getMissionTask("dog", "vacation", i).complete)
+                    howManyFed++;
+            }
+            if (howManyFed > 2) {
+                nav.bg("316_livingroom/talk.jpg");
+                sc.startMission("janice", "bitch");
+                sc.completeMissionTask("janice", "bitch", 0);
+                chat(103, 316);
+            }
+            else {
+                nav.bg("316_livingroom/breakup.jpg");
+                chat(102, 316);
+            }
         }
+        else {
+            g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, datr: false, webcam: false };
+            room316.btnclick("buildMenuCuck");
+            return;
+        } 
     }
 };
 
@@ -500,17 +497,20 @@ room316.btnclick = function (name) {
 
             if (sc.getMissionTask("janice", "cuck", 3).complete) {
                 if (!g.pass.dog && !g.isNight() && !g.pass.datr && sc.taskGetStep("janice", "dog") < 3 && !sc.getMission("janice", "dog").fail)
-                    sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 2);
+                    sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 4);
 
                 if (!g.pass.datr)
                     sc.select("iconDatr", "316_livingroom/icon_datr.png", 0);
                 
                 if (!g.pass.pb)
-                    sc.select("iconPb", "316_livingroom/icon_peanutbutter.png", 4);
+                    sc.select("iconPb", "316_livingroom/icon_peanutbutter.png", 6);
             }
             else {
                 if (!g.pass.pb)
                     sc.select("iconPb", "316_livingroom/icon_peanutbutter.png", 0);
+
+                if (!g.pass.pb)
+                    sc.select("iconWebcam", "316_livingroom/icon_webcam.png", 2);
             }
 
             if (!g.pass.money) {
@@ -526,6 +526,9 @@ room316.btnclick = function (name) {
             break;
         case "iconLeave":
             char.room(0);
+            break;
+        case "iconWebcam":
+            char.room(321);
             break;
         case "iconTalk":
             g.pass.talk = true;
@@ -626,7 +629,7 @@ room316.btnclick = function (name) {
                 inv.use("peanutbutter");
                 sc.modLevel("janice", 15, 5);
                 sc.modLevel("dog", 20, 4);
-                if (sc.getMission("janice", "cuck").notStarted)
+                if (sc.getMission("janice", "bitch").notStarted)
                     nav.next("buildMenu");
                 else
                     nav.next("buildMenuCuck");
@@ -994,7 +997,7 @@ room316.chatcatch = function (callback) {
             char.room(0);
             break;
         case "buildMenu":
-            if(sc.getMission("janice", "cuck").notStarted)
+            if(sc.getMission("janice", "bitch").notStarted)
                 room316.btnclick("buildMenu");
             else
                 room316.btnclick("buildMenuCuck");
@@ -1039,11 +1042,13 @@ room316.chatcatch = function (callback) {
             if (sc.getLevel("dog") > 6) {
                 cl.nude();
                 nav.bg("316_livingroom/bitch_0_d0.jpg");
-                sc.modSecret("janice", 100);
+                if (cl.c.chastity !== null || cl.pantiesTxt === "panties")
+                    sc.modSecret("janice", 50);
                 chat(104, 316);
             }
             else {
-                room316.chatcatch("checkPanties");
+                room316.chatcatch("kiss");
+                chat(107, 316);
                 return;
             }
             break;
@@ -1197,6 +1202,12 @@ room316.chatcatch = function (callback) {
             char.addtime(60);
             daily.set("janice");
             char.room(0);  
+            break;
+        case "completeBitch_2":
+            sc.completeMissionTask("janice", "bitch", 2);
+            daily.set("janice");
+            char.addtime(30);
+            char.room(0);
             break;
         default:
             break;
@@ -2298,511 +2309,530 @@ room316.chat = function (chatID) {
                     "front of her. I can't even imagine what she would do. Probably tell everyone " +
                     "I'm a dog's bitch. I'd have to move and never show my face in this town again.",
                 button: [
-                    { chatID: -1, text: "...", callback: "checkPanties" },
+                    { chatID: 107, text: "...", callback: "kiss" },
                 ]
             },
             {
                 chatID: 107,
                 speaker: "janice",
-                text: "So. I seem to be missing a pair of panties and a bra that were there " +
-                    "before I left. You stole them didn't you! You stole them so you could " +
-                    "wear them! I saw a show about men like you! ",
+                text: "Whew! I'm so pooped from my trip. I do owe you big. Come back " +
+                    "tomorrow and I'll give you a proper thank you. Today I just want to " +
+                    "cuddle with " + sc.n("dog") + " and take the longest nap ever! ",
                 button: [
-                    { chatID: 114, text: "I uh.. what. No", callback: "task4_3" },
+                    { chatID: 108, text: "Ok", callback: "flash" },
                 ]
             },
             {
                 chatID: 108,
                 speaker: "janice",
-                text: "So I can see a pair of panties peeking over your pants! You're one " +
-                    "of those men who wears women's underwear aren't you! I've saw a show " +
-                    "about men like you! ",
+                text: "Here's a sneak peek at your reward baby! I'll see you later. Love you!",
                 button: [
-                    { chatID: 114, text: "I uh.. what. No", callback: "task4_3" },
+                    { chatID: -1, text: "Love you too", callback: "completeBitch_2" },
                 ]
             },
-            {
-                chatID: 109,
-                speaker: "janice",
-                text: "I love you and all that you do for me. It's time we lose our virginity " +
-                    "together. We get to be each other's first. Let me see that penis! ",
-                button: [
-                    { chatID: 110, text: "[Take your dick out]", callback: "task4_3" },
-                ]
-            },
-            {
-                chatID: 110,
-                speaker: "janice",
-                text: "Is that a chastity cage? Why would you wear that? Is it because " +
-                    "you don't want to have a penis anymore? I saw a show about men like you! ",
-                button: [
-                    { chatID: 114, text: "I uh...", callback: "task4_3" },
-                ]
-            },
-            {
-                chatID: 111,
-                speaker: "janice",
-                text: "I think it's time we talked about your body. Specifically the " +
-                    "fact you have tits. I've watched shows about men like you! ",
-                button: [
-                    { chatID: 114, text: "I uh...", callback: "task4_3" },
-                ]
-            },
-            {
-                chatID: 112,
-                speaker: "janice",
-                text: "We need to talk about the fact you like to wear women's clothes. " +
-                    "It's so weird and offputting. I've watched shows about men like you! ",
-                button: [
-                    { chatID: 114, text: "I uh...", callback: "task4_3" },
-                ]
-            },
-            {
-                chatID: 113,
-                speaker: "janice",
-                text: "So I need to talk to you about some of the weird behavior and " +
-                    "choices you made earlier. I didn't want to say anything at the time, " +
-                    "but as we grow closer, I feel icked out by them. I've watched shows " +
-                    "about men like you!",
-                button: [
-                    { chatID: 114, text: "I uh...", callback: "task4_3" },
 
-                ]
-            },
-            {
-                chatID: 114,
-                speaker: "janice",
-                text: "I wanted to date a man, but it turns out I'm dating a girl. I " +
-                    "desire hard, hairy, muscular men, not a girl like you. But there " +
-                    "is someplace deep down in my heart that still has feelings for you. " +
-                    "I do love how you look out for me, and are always there to talk to. ",
-                button: [
-                    { chatID: 115, text: "And I love you", callback: "" },
-                ]
-            },
-            {
-                chatID: 115,
-                speaker: "janice",
-                text: "I don't know if I can be in a relationship with you. I have to " +
-                    "think about it. Please give me a day to decide if we should be together. ",
-                button: [
-                    { chatID: 116, text: "...", callback: "" },
+            //{
+            //    chatID: 107,
+            //    speaker: "janice",
+            //    text: "So. I seem to be missing a pair of panties and a bra that were there " +
+            //        "before I left. You stole them didn't you! You stole them so you could " +
+            //        "wear them! I saw a show about men like you! ",
+            //    button: [
+            //        { chatID: 114, text: "I uh.. what. No", callback: "task4_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 108,
+            //    speaker: "janice",
+            //    text: "So I can see a pair of panties peeking over your pants! You're one " +
+            //        "of those men who wears women's underwear aren't you! I've saw a show " +
+            //        "about men like you! ",
+            //    button: [
+            //        { chatID: 114, text: "I uh.. what. No", callback: "task4_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 109,
+            //    speaker: "janice",
+            //    text: "I love you and all that you do for me. It's time we lose our virginity " +
+            //        "together. We get to be each other's first. Let me see that penis! ",
+            //    button: [
+            //        { chatID: 110, text: "[Take your dick out]", callback: "task4_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 110,
+            //    speaker: "janice",
+            //    text: "Is that a chastity cage? Why would you wear that? Is it because " +
+            //        "you don't want to have a penis anymore? I saw a show about men like you! ",
+            //    button: [
+            //        { chatID: 114, text: "I uh...", callback: "task4_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 111,
+            //    speaker: "janice",
+            //    text: "I think it's time we talked about your body. Specifically the " +
+            //        "fact you have tits. I've watched shows about men like you! ",
+            //    button: [
+            //        { chatID: 114, text: "I uh...", callback: "task4_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 112,
+            //    speaker: "janice",
+            //    text: "We need to talk about the fact you like to wear women's clothes. " +
+            //        "It's so weird and offputting. I've watched shows about men like you! ",
+            //    button: [
+            //        { chatID: 114, text: "I uh...", callback: "task4_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 113,
+            //    speaker: "janice",
+            //    text: "So I need to talk to you about some of the weird behavior and " +
+            //        "choices you made earlier. I didn't want to say anything at the time, " +
+            //        "but as we grow closer, I feel icked out by them. I've watched shows " +
+            //        "about men like you!",
+            //    button: [
+            //        { chatID: 114, text: "I uh...", callback: "task4_3" },
 
-                ]
-            },
-            {
-                chatID: 116,
-                speaker: "me",
-                text: "That hurts, but I understand. I will always love you, and I hope you find it " +
-                    "someplace in your heart to love me for who I am, and not who you want me to be. " +
-                    "No one is everything their partner wants, but maybe love is enough. I'll give you " +
-                    "a day to think. I hope you can love me like I love you. ",
-                button: [
-                    { chatID: -1, text: "[Leave]", callback: "cuck_0_complete" },
+            //    ]
+            //},
+            //{
+            //    chatID: 114,
+            //    speaker: "janice",
+            //    text: "I wanted to date a man, but it turns out I'm dating a girl. I " +
+            //        "desire hard, hairy, muscular men, not a girl like you. But there " +
+            //        "is someplace deep down in my heart that still has feelings for you. " +
+            //        "I do love how you look out for me, and are always there to talk to. ",
+            //    button: [
+            //        { chatID: 115, text: "And I love you", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 115,
+            //    speaker: "janice",
+            //    text: "I don't know if I can be in a relationship with you. I have to " +
+            //        "think about it. Please give me a day to decide if we should be together. ",
+            //    button: [
+            //        { chatID: 116, text: "...", callback: "" },
 
-                ]
-            },
-            {
-                chatID: 117,
-                speaker: "janice",
-                text: "If you respect " + sc.n("dog") + " and I you will get down on all fours " +
-                    "and show him you're the beta. I can't date someone who is going to cause " +
-                    "problems with my little doggy!",
-                button: [
-                    { chatID: 76, text: "[Be the beta]", callback: "task0_2" },
-                    { chatID: 75, text: "Dating you isn't worth getting on my hands and knees! ", callback: "task0_1a" },
-                ]
-            },
-            {
-                chatID: 118,
-                speaker: "me",
-                text: "*Squeel like a girl!*",
-                button: [
-                    { chatID: -1, text: "[Run!]", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 119,
-                speaker: "me",
-                text: "*whipsering* aak. give me my clothes back",
-                button: [
-                    { chatID: -1, text: "...", callback: "picklock1" },
-                ]
-            },
-            {
-                chatID: 120,
-                speaker: "thinking",
-                text: "Akkk! I can't believe I'm face down ass up with a dog's penis " +
-                    "burried deep in my ass again! He's not even gentle. Just rams it " +
-                    "it in. Knot and all! ",
-                button: [
-                    { chatID: 121, text: "...", callback: "lockpick2" },
-                ]
-            },
-            {
-                chatID: 121,
-                speaker: "thinking",
-                text: "gross. I can feel the doggy sperm dripping out of my hole and " +
-                    "down my leg. Is this what I am? Nothing more than a hole for " +
-                    "the dog to cum in? I'm such a bitch. ",
-                button: [
-                    { chatID: 122, text: "...", callback: "lockpick3" },
-                ]
-            },
-            {
-                chatID: 122,
-                speaker: "thinking",
-                text: "Oh no! We must have waken " + sc.n("janice") + "! I must get out " +
-                    "of here! ",
-                button: [
-                    { chatID: -1, text: "[Run away!]", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 123,
-                speaker: "me",
-                text: "*whipsering* Really " + sc.n("dog") + "? You're going " +
-                    "to bark at me after you've raped my ass? I guess I'm just " +
-                    "a hole to fuck, and once you're done you don't want me around? ",
-                button: [
-                    { chatID: -1, text: "[Run away!]", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 124,
-                speaker: "janice",
-                text: "Bad doggy! Bad! Sorry about that. He is only this way around... " +
-                    "wait. Are you wearing panties? You are! Hahaha. let me lock him up really " +
-                    "quick. ",
-                button: [
-                    { chatID: 106, text: "Thanks", callback: "bg" },
-                ]
-            },
-            {
-                chatID: 125,
-                speaker: "me",
-                text: "So.... ",
-                button: [
-                    { chatID: 126, text: "...", callback: "" },
-                ]
-            },
-            {
-                chatID: 126,
-                speaker: "janice",
-                text: "So. I've been thinking it all over. You are a great boyfriend. You're nice, " +
-                    "you buy me things, and you're amazing to hang out with, but I don't want to have sex with you. I love " +
-                    "you with my heart but I'm no longer attracted to you. I want you in my " +
-                    "life, but I don't want to have sex with you. Without sex, I don't see " +
-                    "how this could work. ",
-                button: [
-                    { chatID: 127, text: "Love is more than just sex. In time I'm sure you'll find the real me attractive. ", callback: "" },
-                ]
-            },
-            {
-                chatID: 127,
-                speaker: "janice",
-                text: "Love is great, but I'm still young and I get so aroused sometimes. " +
-                    "When I'm around you, I lose my arousal, and I don't like that. I deserve " +
-                    "to be with someone I love with my heart as well as my body. This isn't " +
-                    "going to work. You should go. ",
-                button: [
-                    { chatID: 128, text: "What if there was another way. I love you too and our time together. Is it just sex that is seperating us?? ", callback: "" },
-                    { chatID: -1, text: "You're right. I deserve someone who loves me, for me [Breakup]", callback: "breakupCuck" },
-                ]
-            },
-            {
-                chatID: 128,
-                speaker: "janice",
-                text: "It is. I love everything about you, I'm just not attracted to you  " +
-                    "anymore. I yearn to be with other men. To feel their manly arms hold " +
-                    "me down and make me feel like a little girl. I never get that feeling " +
-                    "from you. But I do love how you come over and our little dates, and " +
-                    "haning out with you. I need more than you can provide. ",
-                button: [
-                    { chatID: 129, text: "I can't be without you even if you have to have sex with other men. ", callback: "" },
-                ]
-            },
-            {
-                chatID: 129,
-                speaker: "me",
-                text: "It's not the olden days anymore. Many couples are doing it. I " +
-                    "love you, and you love me. If you have to have sex with other men " +
-                    "to be satisfied, then that's something I'm willing to do for you, " +
-                    "because of my love for you. We can open up our relationship so you " +
-                    "can get what you need, and we can still be together. ",
-                button: [
-                    { chatID: 130, text: "...", callback: "" },
-                ]
-            },
-            {
-                chatID: 130,
-                speaker: "janice",
-                text: "*big exhale* Myabe. I like it the idea of it. You are such a great " +
-                    "boy friend and, I admit, there are so many men I would love to have sex " +
-                    "with. You have no idea how often I get hit on. I never thought of " +
-                    "doing something like this. Maybe. Let me think about it... ",
-                button: [
-                    { chatID: -1, text: "I'll take maybe. I'll give you time to think about it. I love you and I'll see you later. ", callback: "cuck_1_complete" },
-                ]
-            },
-            {
-                chatID: 131,
-                speaker: "janice",
-                text: "You were so right! I love having you as my boyfriend! I've " +
-                    "never been this excited in my entire life! ",
-                button: [
-                    { chatID: 132, text: "Really! I was afraid you would hate me? ", callback: "bitch_0_2" },
-                ]
-            },
-            {
-                chatID: 132,
-                speaker: "janice",
-                text: "No way! Strip off your clothes! Follow me to the bedroom! I have " +
-                    "a surprise I think you'll love! Come! ",
-                button: [
-                    { chatID: -1, text: "Hell yeah!", callback: "bedroom" },
-                ]
-            },
-            {
-                chatID: 133,
-                speaker: "random",
-                text: "In development - probably next release my little cuck ",
-                button: [
-                    { chatID: -1, text: "...", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 134,
-                speaker: "janice",
-                text: "Oh. It's your dick. ",
-                button: [
-                    { chatID: 135, text: "Do you want to have sex? ", callback: "bitch_0_2" },
-                ]
-            },
-            {
-                chatID: 135,
-                speaker: "janice",
-                text: "Sure. I do love sex. Oh one sec, my phone is beeping. ",
-                button: [
-                    { chatID: 136, text: "ok.", callback: "bitch_0_3" },
-                ]
-            },
-            {
-                chatID: 136,
-                speaker: "janice",
-                text: "Oh it's the bank asking for money again! I need $100. Could " +
-                    "you give me the money, my favorite boyfriend? Pleeeease?",
-                button: [
-                    { chatID: 139, text: "Sure. It's only $100", callback: "bitchMoney" },
-                    { chatID: 138, text: "That's a lot of money. I don't think I should. ", callback: "" },
-                ]
-            },
-            {
-                chatID: 137,
-                speaker: "janice",
-                text: "Oh it's the bank asking for money again! I need $100. Could " +
-                    "you give me the money, my favorite boyfriend? Pleeeease?",
-                button: [
-                    { chatID: 138, text: "I don't have that much money. ", callback: "" },
-                ]
-            },
-            {
-                chatID: 138,
-                speaker: "janice",
-                text: "Awwww. I'm going to have call this date short to get some money " +
-                    "to pay the bank. I'll catch you later. ",
-                button: [
-                    { chatID: -1, text: "Oh. ok, bye.", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 139,
-                speaker: "janice",
-                text: "You're the best boyfriend ever! Now laydown on that floor. I'm " +
-                    "going to give you the best sex of your life! ",
-                button: [
-                    { chatID: -1, text: "Oh yeah!", callback: "bitch_1_0" },
-                ]
-            },
-            {
-                chatID: 140,
-                speaker: "janice",
-                text: "Oh yeah! Love how I ride your penis! Now cum for my baby. Fill " +
-                    "my juicy pussy with your cum! ",
-                button: [
-                    { chatID: 141, text: "FFFFFFFFFuckkkk", callback: "bitch_1_1" },
-                ]
-            },
-            {
-                chatID: 141,
-                speaker: "janice",
-                text: "Drippy pussy. I've got to give " + sc.n("dog") + " a walk. I'll " +
-                    "see you later baby. ",
-                button: [
-                    { chatID: -1, text: "Ok. Love you. ", callback: "bitch_1_end" }, 
-                ]
-            },
-            {
-                chatID: 142,
-                speaker: "janice",
-                text: "Ugh! I hate the bank! Always complaining about not having " +
-                    "enough money! They're the worst! ",
-                button: [
-                    { chatID: -1, text: "Totally", callback: "buildMenu" },
-                ]
-            },
-            {
-                chatID: 143,
-                speaker: "janice",
-                text: "Why are you naked? And where is " + sc.n("dog") + "? ",
-                button: [
-                    { chatID: 144, text: "Oh! Uhh... I was attacked in the park. They took my clothes and I lost " + sc.n("dog") + " during that attack! ", callback: "" },
-                ]
-            },
-            {
-                chatID: 144,
-                speaker: "janice",
-                text: "Oh no! I'm going to look for " + sc.n("dog") +
-                    ". I'm so sorry. People are so terrible! You can change back in my " +
-                    "bathroom. ",
-                button: [
-                    { chatID: -1, text: "Ok! Thanks! ", callback: "bathroom" },
-                ]
-            },
-            {
-                chatID: 145,
-                speaker: "janice",
-                text: "Is this what you've been doing on your walks? When I found " +
-                    sc.n("dog") + " someone told me about your little endeavors. I " +
-                    "didn't believe them, but I had to see for myself, and here you are " +
-                    "having inappropriate relations in the middle of the park for everyone " +
-                    "to see! Every time I think it can't get any worse, you go and make it worse! " +
-                    "It looks like I'm going to have to keep you on a leash too to control your " +
-                    "terrible behavior! ",
-                button: [
-                    { chatID: 146, text: "...but he attacked me...", callback: "" },
-                ]
-            },
-            {
-                chatID: 146,
-                speaker: "janice",
-                text: "Don't you try to blame my sweet little " + sc.n("dog") + " for your " +
-                    "nastiness! This is all your doing. I'm going to have to think about if " +
-                    "I ever let you back into my house! You think about how big you owe me for " +
-                    "putting up with you! ",
-                button: [
-                    { chatID: -1, text: "...ok", callback: "leave" },
-                ]
-            },
-            {
-                chatID: 147,
-                speaker: "janice",
-                text: "Showing you my sex video was such a rush! I've masturbated twice " +
-                    "last month just thinking about it! I want to do it again! ",
-                button: [
-                    { chatID: 149, text: "That's hot! Let's do it.", callback: "" },
-                    { chatID: 148, text: "I don't like how this makes me feel. [Break up]", callback: "" },
-                ]
-            },
-            {
-                chatID: 148,
-                speaker: "janice",
-                text: "*sigh* I don't see you as a man anymore. I don't want to date " +
-                    "a little girl, I need a real man to take care of me. If you're not " +
-                    "open to being my play partner while I search for a real man, I don't " +
-                    "want a relationship with you. I'm sorry, but we're over. ",
-                button: [
-                    { chatID: -1, text: "That's for the best. Good bye", callback: "breakupFirst" },
-                ]
-            },
-            {
-                chatID: 149,
-                speaker: "janice",
-                text: "That's such a relief. I've felt really guilty lying to you the " +
-                    "entire time we've been dating. Every time I cheated on you, it felt " +
-                    "hollow and empty, but the last time it was such a rush knowing I could " +
-                    "share this with you. Maybe this is what I've always needed! My own little " +
-                    "friend to share my dirty deeds with. ",
-                button: [
-                    { chatID: 150, text: "...", callback: "" },
-                ]
-            },
-            {
-                chatID: 150,
-                speaker: "janice",
-                text: "So a friend of mine told me about this thing on your phone to meet boys. " +
-                    "I got it, and there's so many boys! Some of them are so mean. I don't like " +
-                    "those, but some are really nice and so sexy. I don't know why they're still " +
-                    "single. But oh my. I had no idea there were so many men out there. You're lucky " +
-                    "we met before I found this, or I would totally be dating them instead! Hehehe, " +
-                    "just kidding.... maybe not. Doesn't matter. I need your help picking someone. ",
-                button: [
-                    { chatID: -1, text: "Awesome! I'm in! ", callback: "cuck_3_complete" },
-                ]
-            },
-            {
-                chatID: 151,
-                speaker: "janice",
-                text: "*Squeel* Yes! Let's pick out a man! ",
-                button: [
-                    { chatID: -1, text: "[Pick out a man for her]", callback: "datrScroll" },
-                ]
-            },
-            {
-                chatID: 152,
-                speaker: "janice",
-                text: "Great news! He replied. I'm going to go to my room and tell him " +
-                    "to come over. You can change in the bathroom and join me! ",
-                button: [
-                    { chatID: -1, text: "Sweet! ", callback: "bathroom" },
-                ]
-            },
-            {
-                chatID: 153,
-                speaker: "janice",
-                text: "So, just becuase I told you we wern't going to have sex anymore " +
-                    "you decided to have sex with " + sc.n("dog") + "? In a public park " +
-                    "no less! You're not a boyfriend, you're a bitch. Not a bitch like a " +
-                    "mean girl, but a bitch like a girl doggy. Is that what you are? " +
-                    "Are you a bitch? ",
-                button: [
-                    { chatID: 155, text: "Yes. I guess I'm a bitch. ", callback: "" },
-                    { chatID: 154, text: "I'm not a bitch! " + sc.n("me") + " attacked me! [Ends 'Bad dog!' path]", callback: "bathroom" },
-                ]
-            },
-            {
-                chatID: 154,
-                speaker: "janice",
-                text: "Oh I'm so sorry! I should have warned you more. He can be a little " +
-                    "rough sometimes, you poor " + gender.pronoun("boy") + ". I should be " +
-                    "the only one taking him for walks so he doesn't misbehave like that. ",
-                button: [
-                    { chatID: -1, text: "Thanks", callback: "failJaniceDog" },
-                ]
-            },
-            {
-                chatID: 154,
-                speaker: "janice",
-                text: "That's what I thought. Really disgusting. Do you know how embarrased I was " +
-                    "walking in on that at the park and having get my poor little " + sc.n("dog") +
-                    " in front of everyone! ",
-                button: [
-                    { chatID: 156, text: "...well I uh...", callback: "" },
-                ]
-            },
-            {
-                chatID: 156,
-                speaker: "janice",
-                text: "This isn't the first time you've screwed up and made me angry. " +
-                    "Yet you always come back with your tail between your legs begging " +
-                    "for forgiveness. Since you can't seem to control your little urges " +
-                    "I'm going to control them for you! Now strip down. Bitches don't " +
-                    "wear human clothes. From now on you'll wear the bitch suit I got " +
-                    "yesterday for you! ",
-                button: [
-                    { chatID: 157, text: "Bitch suit?", callback: "" },
-                ]
-            },
+            //    ]
+            //},
+            //{
+            //    chatID: 116,
+            //    speaker: "me",
+            //    text: "That hurts, but I understand. I will always love you, and I hope you find it " +
+            //        "someplace in your heart to love me for who I am, and not who you want me to be. " +
+            //        "No one is everything their partner wants, but maybe love is enough. I'll give you " +
+            //        "a day to think. I hope you can love me like I love you. ",
+            //    button: [
+            //        { chatID: -1, text: "[Leave]", callback: "cuck_0_complete" },
+
+            //    ]
+            //},
+            //{
+            //    chatID: 117,
+            //    speaker: "janice",
+            //    text: "If you respect " + sc.n("dog") + " and I you will get down on all fours " +
+            //        "and show him you're the beta. I can't date someone who is going to cause " +
+            //        "problems with my little doggy!",
+            //    button: [
+            //        { chatID: 76, text: "[Be the beta]", callback: "task0_2" },
+            //        { chatID: 75, text: "Dating you isn't worth getting on my hands and knees! ", callback: "task0_1a" },
+            //    ]
+            //},
+            //{
+            //    chatID: 118,
+            //    speaker: "me",
+            //    text: "*Squeel like a girl!*",
+            //    button: [
+            //        { chatID: -1, text: "[Run!]", callback: "leave" },
+            //    ]
+            //},
+            //{
+            //    chatID: 119,
+            //    speaker: "me",
+            //    text: "*whipsering* aak. give me my clothes back",
+            //    button: [
+            //        { chatID: -1, text: "...", callback: "picklock1" },
+            //    ]
+            //},
+            //{
+            //    chatID: 120,
+            //    speaker: "thinking",
+            //    text: "Akkk! I can't believe I'm face down ass up with a dog's penis " +
+            //        "burried deep in my ass again! He's not even gentle. Just rams it " +
+            //        "it in. Knot and all! ",
+            //    button: [
+            //        { chatID: 121, text: "...", callback: "lockpick2" },
+            //    ]
+            //},
+            //{
+            //    chatID: 121,
+            //    speaker: "thinking",
+            //    text: "gross. I can feel the doggy sperm dripping out of my hole and " +
+            //        "down my leg. Is this what I am? Nothing more than a hole for " +
+            //        "the dog to cum in? I'm such a bitch. ",
+            //    button: [
+            //        { chatID: 122, text: "...", callback: "lockpick3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 122,
+            //    speaker: "thinking",
+            //    text: "Oh no! We must have waken " + sc.n("janice") + "! I must get out " +
+            //        "of here! ",
+            //    button: [
+            //        { chatID: -1, text: "[Run away!]", callback: "leave" },
+            //    ]
+            //},
+            //{
+            //    chatID: 123,
+            //    speaker: "me",
+            //    text: "*whipsering* Really " + sc.n("dog") + "? You're going " +
+            //        "to bark at me after you've raped my ass? I guess I'm just " +
+            //        "a hole to fuck, and once you're done you don't want me around? ",
+            //    button: [
+            //        { chatID: -1, text: "[Run away!]", callback: "leave" },
+            //    ]
+            //},
+            //{
+            //    chatID: 124,
+            //    speaker: "janice",
+            //    text: "Bad doggy! Bad! Sorry about that. He is only this way around... " +
+            //        "wait. Are you wearing panties? You are! Hahaha. let me lock him up really " +
+            //        "quick. ",
+            //    button: [
+            //        { chatID: 106, text: "Thanks", callback: "bg" },
+            //    ]
+            //},
+            //{
+            //    chatID: 125,
+            //    speaker: "me",
+            //    text: "So.... ",
+            //    button: [
+            //        { chatID: 126, text: "...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 126,
+            //    speaker: "janice",
+            //    text: "So. I've been thinking it all over. You are a great boyfriend. You're nice, " +
+            //        "you buy me things, and you're amazing to hang out with, but I don't want to have sex with you. I love " +
+            //        "you with my heart but I'm no longer attracted to you. I want you in my " +
+            //        "life, but I don't want to have sex with you. Without sex, I don't see " +
+            //        "how this could work. ",
+            //    button: [
+            //        { chatID: 127, text: "Love is more than just sex. In time I'm sure you'll find the real me attractive. ", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 127,
+            //    speaker: "janice",
+            //    text: "Love is great, but I'm still young and I get so aroused sometimes. " +
+            //        "When I'm around you, I lose my arousal, and I don't like that. I deserve " +
+            //        "to be with someone I love with my heart as well as my body. This isn't " +
+            //        "going to work. You should go. ",
+            //    button: [
+            //        { chatID: 128, text: "What if there was another way. I love you too and our time together. Is it just sex that is seperating us?? ", callback: "" },
+            //        { chatID: -1, text: "You're right. I deserve someone who loves me, for me [Breakup]", callback: "breakupCuck" },
+            //    ]
+            //},
+            //{
+            //    chatID: 128,
+            //    speaker: "janice",
+            //    text: "It is. I love everything about you, I'm just not attracted to you  " +
+            //        "anymore. I yearn to be with other men. To feel their manly arms hold " +
+            //        "me down and make me feel like a little girl. I never get that feeling " +
+            //        "from you. But I do love how you come over and our little dates, and " +
+            //        "haning out with you. I need more than you can provide. ",
+            //    button: [
+            //        { chatID: 129, text: "I can't be without you even if you have to have sex with other men. ", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 129,
+            //    speaker: "me",
+            //    text: "It's not the olden days anymore. Many couples are doing it. I " +
+            //        "love you, and you love me. If you have to have sex with other men " +
+            //        "to be satisfied, then that's something I'm willing to do for you, " +
+            //        "because of my love for you. We can open up our relationship so you " +
+            //        "can get what you need, and we can still be together. ",
+            //    button: [
+            //        { chatID: 130, text: "...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 130,
+            //    speaker: "janice",
+            //    text: "*big exhale* Myabe. I like it the idea of it. You are such a great " +
+            //        "boy friend and, I admit, there are so many men I would love to have sex " +
+            //        "with. You have no idea how often I get hit on. I never thought of " +
+            //        "doing something like this. Maybe. Let me think about it... ",
+            //    button: [
+            //        { chatID: -1, text: "I'll take maybe. I'll give you time to think about it. I love you and I'll see you later. ", callback: "cuck_1_complete" },
+            //    ]
+            //},
+            //{
+            //    chatID: 131,
+            //    speaker: "janice",
+            //    text: "You were so right! I love having you as my boyfriend! I've " +
+            //        "never been this excited in my entire life! ",
+            //    button: [
+            //        { chatID: 132, text: "Really! I was afraid you would hate me? ", callback: "bitch_0_2" },
+            //    ]
+            //},
+            //{
+            //    chatID: 132,
+            //    speaker: "janice",
+            //    text: "No way! Strip off your clothes! Follow me to the bedroom! I have " +
+            //        "a surprise I think you'll love! Come! ",
+            //    button: [
+            //        { chatID: -1, text: "Hell yeah!", callback: "bedroom" },
+            //    ]
+            //},
+            //{
+            //    chatID: 133,
+            //    speaker: "random",
+            //    text: "In development - probably next release my little cuck ",
+            //    button: [
+            //        { chatID: -1, text: "...", callback: "leave" },
+            //    ]
+            //},
+            //{
+            //    chatID: 134,
+            //    speaker: "janice",
+            //    text: "Oh. It's your dick. ",
+            //    button: [
+            //        { chatID: 135, text: "Do you want to have sex? ", callback: "bitch_0_2" },
+            //    ]
+            //},
+            //{
+            //    chatID: 135,
+            //    speaker: "janice",
+            //    text: "Sure. I do love sex. Oh one sec, my phone is beeping. ",
+            //    button: [
+            //        { chatID: 136, text: "ok.", callback: "bitch_0_3" },
+            //    ]
+            //},
+            //{
+            //    chatID: 136,
+            //    speaker: "janice",
+            //    text: "Oh it's the bank asking for money again! I need $100. Could " +
+            //        "you give me the money, my favorite boyfriend? Pleeeease?",
+            //    button: [
+            //        { chatID: 139, text: "Sure. It's only $100", callback: "bitchMoney" },
+            //        { chatID: 138, text: "That's a lot of money. I don't think I should. ", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 137,
+            //    speaker: "janice",
+            //    text: "Oh it's the bank asking for money again! I need $100. Could " +
+            //        "you give me the money, my favorite boyfriend? Pleeeease?",
+            //    button: [
+            //        { chatID: 138, text: "I don't have that much money. ", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 138,
+            //    speaker: "janice",
+            //    text: "Awwww. I'm going to have call this date short to get some money " +
+            //        "to pay the bank. I'll catch you later. ",
+            //    button: [
+            //        { chatID: -1, text: "Oh. ok, bye.", callback: "leave" },
+            //    ]
+            //},
+            //{
+            //    chatID: 139,
+            //    speaker: "janice",
+            //    text: "You're the best boyfriend ever! Now laydown on that floor. I'm " +
+            //        "going to give you the best sex of your life! ",
+            //    button: [
+            //        { chatID: -1, text: "Oh yeah!", callback: "bitch_1_0" },
+            //    ]
+            //},
+            //{
+            //    chatID: 140,
+            //    speaker: "janice",
+            //    text: "Oh yeah! Love how I ride your penis! Now cum for my baby. Fill " +
+            //        "my juicy pussy with your cum! ",
+            //    button: [
+            //        { chatID: 141, text: "FFFFFFFFFuckkkk", callback: "bitch_1_1" },
+            //    ]
+            //},
+            //{
+            //    chatID: 141,
+            //    speaker: "janice",
+            //    text: "Drippy pussy. I've got to give " + sc.n("dog") + " a walk. I'll " +
+            //        "see you later baby. ",
+            //    button: [
+            //        { chatID: -1, text: "Ok. Love you. ", callback: "bitch_1_end" }, 
+            //    ]
+            //},
+            //{
+            //    chatID: 142,
+            //    speaker: "janice",
+            //    text: "Ugh! I hate the bank! Always complaining about not having " +
+            //        "enough money! They're the worst! ",
+            //    button: [
+            //        { chatID: -1, text: "Totally", callback: "buildMenu" },
+            //    ]
+            //},
+            //{
+            //    chatID: 143,
+            //    speaker: "janice",
+            //    text: "Why are you naked? And where is " + sc.n("dog") + "? ",
+            //    button: [
+            //        { chatID: 144, text: "Oh! Uhh... I was attacked in the park. They took my clothes and I lost " + sc.n("dog") + " during that attack! ", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 144,
+            //    speaker: "janice",
+            //    text: "Oh no! I'm going to look for " + sc.n("dog") +
+            //        ". I'm so sorry. People are so terrible! You can change back in my " +
+            //        "bathroom. ",
+            //    button: [
+            //        { chatID: -1, text: "Ok! Thanks! ", callback: "bathroom" },
+            //    ]
+            //},
+            //{
+            //    chatID: 145,
+            //    speaker: "janice",
+            //    text: "Is this what you've been doing on your walks? When I found " +
+            //        sc.n("dog") + " someone told me about your little endeavors. I " +
+            //        "didn't believe them, but I had to see for myself, and here you are " +
+            //        "having inappropriate relations in the middle of the park for everyone " +
+            //        "to see! Every time I think it can't get any worse, you go and make it worse! " +
+            //        "It looks like I'm going to have to keep you on a leash too to control your " +
+            //        "terrible behavior! ",
+            //    button: [
+            //        { chatID: 146, text: "...but he attacked me...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 146,
+            //    speaker: "janice",
+            //    text: "Don't you try to blame my sweet little " + sc.n("dog") + " for your " +
+            //        "nastiness! This is all your doing. I'm going to have to think about if " +
+            //        "I ever let you back into my house! You think about how big you owe me for " +
+            //        "putting up with you! ",
+            //    button: [
+            //        { chatID: -1, text: "...ok", callback: "leave" },
+            //    ]
+            //},
+            //{
+            //    chatID: 147,
+            //    speaker: "janice",
+            //    text: "Showing you my sex video was such a rush! I've masturbated twice " +
+            //        "last month just thinking about it! I want to do it again! ",
+            //    button: [
+            //        { chatID: 149, text: "That's hot! Let's do it.", callback: "" },
+            //        { chatID: 148, text: "I don't like how this makes me feel. [Break up]", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 148,
+            //    speaker: "janice",
+            //    text: "*sigh* I don't see you as a man anymore. I don't want to date " +
+            //        "a little girl, I need a real man to take care of me. If you're not " +
+            //        "open to being my play partner while I search for a real man, I don't " +
+            //        "want a relationship with you. I'm sorry, but we're over. ",
+            //    button: [
+            //        { chatID: -1, text: "That's for the best. Good bye", callback: "breakupFirst" },
+            //    ]
+            //},
+            //{
+            //    chatID: 149,
+            //    speaker: "janice",
+            //    text: "That's such a relief. I've felt really guilty lying to you the " +
+            //        "entire time we've been dating. Every time I cheated on you, it felt " +
+            //        "hollow and empty, but the last time it was such a rush knowing I could " +
+            //        "share this with you. Maybe this is what I've always needed! My own little " +
+            //        "friend to share my dirty deeds with. ",
+            //    button: [
+            //        { chatID: 150, text: "...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 150,
+            //    speaker: "janice",
+            //    text: "So a friend of mine told me about this thing on your phone to meet boys. " +
+            //        "I got it, and there's so many boys! Some of them are so mean. I don't like " +
+            //        "those, but some are really nice and so sexy. I don't know why they're still " +
+            //        "single. But oh my. I had no idea there were so many men out there. You're lucky " +
+            //        "we met before I found this, or I would totally be dating them instead! Hehehe, " +
+            //        "just kidding.... maybe not. Doesn't matter. I need your help picking someone. ",
+            //    button: [
+            //        { chatID: -1, text: "Awesome! I'm in! ", callback: "cuck_3_complete" },
+            //    ]
+            //},
+            //{
+            //    chatID: 151,
+            //    speaker: "janice",
+            //    text: "*Squeel* Yes! Let's pick out a man! ",
+            //    button: [
+            //        { chatID: -1, text: "[Pick out a man for her]", callback: "datrScroll" },
+            //    ]
+            //},
+            //{
+            //    chatID: 152,
+            //    speaker: "janice",
+            //    text: "Great news! He replied. I'm going to go to my room and tell him " +
+            //        "to come over. You can change in the bathroom and join me! ",
+            //    button: [
+            //        { chatID: -1, text: "Sweet! ", callback: "bathroom" },
+            //    ]
+            //},
+            //{
+            //    chatID: 153,
+            //    speaker: "janice",
+            //    text: "So, just becuase I told you we wern't going to have sex anymore " +
+            //        "you decided to have sex with " + sc.n("dog") + "? In a public park " +
+            //        "no less! You're not a boyfriend, you're a bitch. Not a bitch like a " +
+            //        "mean girl, but a bitch like a girl doggy. Is that what you are? " +
+            //        "Are you a bitch? ",
+            //    button: [
+            //        { chatID: 155, text: "Yes. I guess I'm a bitch. ", callback: "" },
+            //        { chatID: 154, text: "I'm not a bitch! " + sc.n("me") + " attacked me! [Ends 'Bad dog!' path]", callback: "bathroom" },
+            //    ]
+            //},
+            //{
+            //    chatID: 154,
+            //    speaker: "janice",
+            //    text: "Oh I'm so sorry! I should have warned you more. He can be a little " +
+            //        "rough sometimes, you poor " + gender.pronoun("boy") + ". I should be " +
+            //        "the only one taking him for walks so he doesn't misbehave like that. ",
+            //    button: [
+            //        { chatID: -1, text: "Thanks", callback: "failJaniceDog" },
+            //    ]
+            //},
+            //{
+            //    chatID: 154,
+            //    speaker: "janice",
+            //    text: "That's what I thought. Really disgusting. Do you know how embarrased I was " +
+            //        "walking in on that at the park and having get my poor little " + sc.n("dog") +
+            //        " in front of everyone! ",
+            //    button: [
+            //        { chatID: 156, text: "...well I uh...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 156,
+            //    speaker: "janice",
+            //    text: "This isn't the first time you've screwed up and made me angry. " +
+            //        "Yet you always come back with your tail between your legs begging " +
+            //        "for forgiveness. Since you can't seem to control your little urges " +
+            //        "I'm going to control them for you! Now strip down. Bitches don't " +
+            //        "wear human clothes. From now on you'll wear the bitch suit I got " +
+            //        "yesterday for you! ",
+            //    button: [
+            //        { chatID: 157, text: "Bitch suit?", callback: "" },
+            //    ]
+            //},
 
 
 

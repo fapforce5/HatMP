@@ -18,6 +18,16 @@ room181.main = function () {
             nav.bg("181_black/bg_black.jpg");
             chat(28, 181);
             break;
+        case "bondage310":
+            nav.bg("181_black/b303_0.jpg");
+            zcl.displayMain(100, 1000, .23, "clothes", true);
+            chat(73, 181);
+            break;
+        case "bondage107":
+            nav.bg("181_black/b107.jpg");
+            zcl.displayMain(150, 800, .22, "clothes", true);
+            chat(94, 181);
+            break;
     }
 };
 
@@ -58,6 +68,18 @@ room181.chatcatch = function (callback) {
         case "b203_20":
         case "b203_21":
         case "b203_22":
+        case "b303_1":
+        case "b303_2":
+        case "b303_3":
+        case "b303_4":
+        case "b303_5":
+        case "b303_6":
+        case "b303_7":
+        case "b303_8":
+        case "b303_9":
+        case "b303_10":
+        case "b303_11":
+        case "b303_12":
             nav.bg("181_black/" + callback + ".jpg");
             break;
         case "b203_2":
@@ -129,6 +151,35 @@ room181.chatcatch = function (callback) {
             cl.undo();
             sissy.passclass(false);
             char.room(201);
+            break;
+        case "black":
+            nav.killall();
+            cl.c.accessories = "ballgag";
+            cl.nude();
+            nav.bg("999_phone/black.jpg");
+            break;
+        case "b303_char":
+            levels.mod("charisma", 20);
+            break;
+        case "b303_sub":
+            levels.mod("sub", 20);
+            break;
+        case "b303_13":
+            levels.anal(3, true, "m", true);
+            levels.mod("xdress", 100);
+            nav.bg("181_black/" + callback + ".jpg");
+            break;
+        case "b303_14":
+            levels.mod("strength", 100);
+            nav.bg("181_black/" + callback + ".jpg");
+            break;
+        case "b303_15":
+            cl.c.accessories = null;
+            nav.bg("181_black/b303_15.jpg");
+            zcl.displayMain(100, 600, .23, "clothes", true);
+            break;
+        case "completeClass":
+            sissy.passclass(true);
             break;
         default:
             break;
@@ -818,7 +869,270 @@ room181.chat = function (chatID) {
                 { chatID: -1, text: "[Return home - also future pony races in development]", callback: "b203_23" },
             ]
         },
-        
+        {
+            chatID: 73,
+            speaker: "black",
+            text: "Girls, today is an exploration into your feelings and connecting " +
+                "those feeling to you mind, body, and soul. With all noise of the " +
+                "outside world telling you how to dress, who to be, what you should " +
+                "do, you'll focus on who you want to be, and who you are. " +
+                "My sensory deprovation device will allow you to focus on yourself " +
+                "and explore your thoughts.",
+            button: [
+                { chatID: 74, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "black",
+            text: "But most important, it will allow you to focus on your feelings " +
+                "so you can be the you, you really are. Now each of you will need " +
+                "to strip down and we're going to put on a hood with noise cancelling " +
+                "headphones, a soft ball and gag mask so you will not see, hear, taste, or make " +
+                "noise. Malik and I will then take you to a new suprise location " +
+                "where you'll be able to connect yourself to your body. ",
+            button: [
+                { chatID: 75, text: "Yes ma'am [Strip down and put on the hood and headphones]", callback: "black" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "thinking",
+            text: "Oh wow I really can't see or hear anything. I can feel some senses " +
+                "from the floor. I wonder if it's the other girls. Or maybe other " +
+                "people are coming in. I don't know. I wouldn't put anything past " +
+                sc.n("black") + ".",
+            button: [
+                { chatID: 76, text: "...", callback: "b303_1" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "thinking",
+            text: "Someone grabbed my hand and is leading me up the elevator. Such a " +
+                "big meaty hand. Must be Malik. He's such a big guy.... Oh we're getting " +
+                "in ...a van. Must be a van. I wonder where we're going. This can't be good. " +
+                "Or maybe it will be great. I don't know. I'm a little scared. ",
+            button: [
+                { chatID: 77, text: "...", callback: "b303_2" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "thinking",
+            text: "Ok now they're taking us out. I wonder if there's other people " +
+                "around. Can they see 4 sissies walking around with hoods on in the nude? " +
+                "That would be a sight. We can't be anywhere public. No way. Oh we've stopped " +
+                "walking. Where are we?",
+            button: [
+                { chatID: 78, text: "...", callback: "b303_3" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "thinking",
+            text: "I'm getting bent over something. Hard and cool. I think it's metal. " +
+                "It doesn't feel soft like wood or plastic. Has to be metal. " +
+                "And now we're being tied up. Of course we're being tied up. " +
+                "Damn it's tight. I can't move my hands or legs. " + sc.n("black") + 
+                " must have done the ties. Feels like her work. ",
+            button: [
+                { chatID: 79, text: "...", callback: "b303_4" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "thinking",
+            text: "ouch. My wrists and jaw are starting to get sore from this tie. I wonder " +
+                "how long I've been out here. Feels like an hour. Are they still there? " +
+                "Did they tie us up and leave us. I can feel the wind on my bare ass and " +
+                "the metal on my body. ",
+            button: [
+                { chatID: 80, text: "I find the feeling of the unknown exciting", callback: "b303_char" },
+                { chatID: 80, text: "I'm quite scared of what may come next. ", callback: "b303_sub" },
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "thinking",
+            text: "This is getting ridiculous. FFFFFfffff.. damn. I can't move my hands " +
+                "or legs at all. When I try to yell it's just super muffled. Is she going " +
+                "to leave us here overnight. Oh no. What if it's longer. What if she leaves " +
+                "us out here for a week! We have to eat and drink. She can't leave us out " +
+                "here for a week can she? ",
+            button: [
+                { chatID: 81, text: "...", callback: "b303_5" },
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "thinking",
+            text: "Something just poked me... Was it a finger. It felt soft like a finger. " +
+                "Why would they poke me? Is " + sc.n("black") + " checking if I'm still alive? " +
+                "Is it someone else? Maybe " + sc.n("black") + " left us out here and it's up " +
+                "to use to free ourselves. I should try to ask for help. ",
+            button: [
+                { chatID: 82, text: "*muffled noises*", callback: "b303_6" },
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "thinking",
+            text: "Ouchie ouchie ouchie! They pinched me! Hard! Damn that hurt. Stop " +
+                "it you! Who ever you are stop it!",
+            button: [
+                { chatID: 83, text: "*muffled noises*", callback: "b303_7" },
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "thinking",
+            text: "OOOofff! fuck. That was a hard slap. Why would you slap me? " +
+                "That really hurt! What the hell! ",
+            button: [
+                { chatID: 84, text: "*muffled noises*", callback: "b303_8" },
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "thinking",
+            text: "That's either the smallest penis in the world or they're poking " +
+                "my ass with their finger. Who slaps someone then sticks their " +
+                "finger up their butt? ",
+            button: [
+                { chatID: 85, text: "*muffled noises*", callback: "b303_9" },
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "thinking",
+            text: "Now what are they doing? Damn I wish I could see around. All I " +
+                "can feel is the wind on my naked ass. Did they leave? Are they " +
+                "going to do something else? What's going on out there? ",
+            button: [
+                { chatID: 86, text: "I really wish they would just fuck me!", callback: "b303_10" },
+                { chatID: 90, text: "I really hope they're just gone", callback: "b303_7" },
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "thinking",
+            text: "Oh wow. I just thought it and it happened! Oh my it feels really good " +
+                "They have the perfect size dick that just hits my sissy spot just right. " +
+                "Oh please don't stop! Please fuck me harder! ",
+            button: [
+                { chatID: 87, text: "*muffled moaning*", callback: "b303_11" },
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "thinking",
+            text: "I can feel my body shaking and sweating. That dick is so amazing! I love " +
+                "it! I so love it! My bussy is getting really sensative in a way I've never " +
+                "felt before! Fuck me fuck me fuck me fuck me fuck me fuck me!!!!!!",
+            button: [
+                { chatID: 88, text: "*muffled moaning*", callback: "b303_12" },
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "thinking",
+            text: "Yes! This is who I am! I'm a cum loving sissy! My clitty is worthless, " +
+                "I just need cocks fucking me all the time. It's who I really am! I'm " +
+                "a cock loving sissy for life! ",
+            button: [
+                { chatID: 89, text: "*muffled moaning*", callback: "b303_13" },
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "thinking",
+            text: "I hope there's another cock coming. Wow! I do love this class. ",
+            button: [
+                { chatID: 92, text: "*panting*", callback: "b303_2" },
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "thinking",
+            text: "OUCHIE! Really! Another slap? Am I just a punching bag for someone? ",
+            button: [
+                { chatID: 91, text: "*grrrrr*", callback: "b303_14" },
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "thinking",
+            text: "I can't wait to get out of this! I'm going to find that person and " +
+                "slap them around! This is so dumb! I'm not a sissy punching bag! I'm " +
+                "going to find them and make them pay! ",
+            button: [
+                { chatID: 92, text: "*grrrrr*", callback: "b303_2" },
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "thinking",
+            text: "Oh. Someone untying my hands. Finally. I guess we're getting back in " +
+                "the van. I guess we're going home? Maybe we're going to another place. " +
+                "Maybe something bigger. Then why would we go here first. We have to be " +
+                "going home. Maybe....",
+            button: [
+                { chatID: 93, text: "...", callback: "b303_15" },
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "black",
+            text: "I hope you've found who you really are " +
+                "on this little outing. I do know the crowd enjoyed the show. " + 
+                sc.n("!timothy") + " you performed wonderfully as always. I admit " +
+                "I've never witnessed anyone take as much as you did. I had to convince " +
+                "some of the men to go visit you other girls. This concludes our class. ",
+            button: [
+                { chatID: -1, text: "...", callback: "completeClass" },
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "black",
+            text: "Welcome to the Black Room. I used to teach basic knot tying, but a few of my students when home " +
+                "and really got themselves in some trouble when they couldn't free themselves. " +
+                "So now it's just a basic introduction so you idiots don't hurt yourselves. ",
+            button: [
+                { chatID: 95, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "black",
+            text: "Bondage and discipline is different for everyone. Some use it as an escape from " +
+                "their mundane lives. Some enjoy or may even be aroused by the pain " +
+                "inflicted by another. Some use it to relive trauma from their past. You " +
+                "will need to find your own reason, but bondage and discipline will be inflicted " +
+                "on you. Your true sissy strength comes from your ability to enjoy the pain. Just " +
+                "ask Sanaria here. She has found her inner strength. Isn't that right Sanaria?",
+            button: [
+                { chatID: 96, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "!sanaria",
+            text: "HmmmmmM mmMmmmm hHHmmmmmmffff",
+            button: [
+                { chatID: 97, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "black",
+            text: "That's enough for today. I've got to get back to Sanaria. She's been " +
+                "a naughty girl and needs to learn her own lessons. ",
+            button: [
+                { chatID: -1, text: "...", callback: "completeClass" },
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

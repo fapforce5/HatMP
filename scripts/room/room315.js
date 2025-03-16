@@ -30,9 +30,6 @@ room315.main = function () {
 
 room315.btnclick = function (name) {
     switch (name) {
-        case "stairs":
-            chat(0, 315);
-            break;
         case "door":
             var vacation = sc.getMission("dog", "vacation");
             if (vacation.inProgress) {
@@ -48,6 +45,9 @@ room315.btnclick = function (name) {
                 nav.killall();
                 nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg");
                 chat(14, 315);
+            }
+            else if (sc.taskGetStep("janice", "bitch") === 3) {
+                chat(18, 315);
             }
             else {
                 var dateTask = sc.taskGetStep("janice", "date");
@@ -139,11 +139,14 @@ room315.btnclick = function (name) {
 
 room315.chatcatch = function (callback) {
     switch (callback) {
-        case "300":
-            char.room(300);
+        case "bitch_1":
+        case "bitch_2":
+        case "bitch_3":
+            nav.bg("315_girlfriend/" + callback + ".jpg");
             break;
-        case "303":
-            char.room(303);
+        case "bitch_0":
+            nav.killall();
+            nav.bg("315_girlfriend/" + callback + ".jpg");
             break;
         case "reset":
             char.room(315);
@@ -168,6 +171,10 @@ room315.chatcatch = function (callback) {
             g.pass = "picked_316";
             char.room(316);
             break;
+        case "completeBitch3":
+            sc.completeMissionTask("janice", "bitch", 3);
+            char.room(316);
+            break;
         default:
             break;
     }
@@ -178,12 +185,8 @@ room315.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "thinking",
-            text: "I'm on the second floor. ",
-            button: [
-                { chatID: -1, text: "First floor", callback: "300" },
-                { chatID: -1, text: "Third floor", callback: "303" },
-                { chatID: 1, text: "Stay here", callback: "" },
-            ]
+            text: "not used ",
+            button: []
         },
         {
             chatID: 1,
@@ -326,6 +329,94 @@ room315.chat = function (chatID) {
             text: "Sweet! I'm just going to sneak into her house late at night.",
             button: [
                 { chatID: -1, text: "...", callback: "picked" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "Should I knock? I do still have her key, and she did say she loved me. " +
+                "Maybe I should just go in. See if that takes us to the next step. Yeah. Plus " +
+                "she says she's a virgin, but I get the feeling she's cheeting on me. I should " +
+                "just go in and see what she does all day! ",
+            button: [
+                { chatID: 19, text: "Just go in", callback: "bitch_0" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "janice",
+            text: "Ok viewers! This pussy is for you! Keep donating to turn my vibrator " +
+                "up soooo high I'll be spraying pussy juice all over my living room!",
+            button: [
+                { chatID: 20, text: sc.n("janice") + "!!!!", callback: "bitch_1" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "janice",
+            text: "AAAAAAkkkk! " + sc.n("me") + "!!! W-w-w-w",
+            button: [
+                { chatID: 21, text: "Who are you talking to!", callback: "bitch_2" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "janice",
+            text: "Shut up! Let me close this computer program thingy..... crap!",
+            button: [
+                { chatID: 22, text: "Close what! What are you up to! Let me see!", callback: "bitch_3" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "janice",
+            text: "Dammit! You ruined my stream! I only made $20 and I had this guy " +
+                "that might have given me 20 more! This could have really saved me! " +
+                "I could have been able to pay my bills and do a shopping trip at Sappho's Makeup!",
+            button: [
+                { chatID: 23, text: "Stream? What are you talking about. Were you talking to some guy?", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "janice",
+            text: "Hehehe. Is that what you're thinking? No I made an account on Whore " +
+                "Chat. On my trip I ran into my friend Piper and she told me about this " +
+                "website Whore Chat and how she uses it to pay her bills. She made like " +
+                "over $500 last week! She made me an account and we bought this cute little " +
+                "vibrator they can use. I don't know these men. I just use them to get money. " +
+                "I don't even know who they are. ",
+            button: [
+                { chatID: 24, text: "Really?", callback: "" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "janice",
+            text: "Yeah. This could really solve all my money problems! Hey!! I just " +
+                "thought of something! I was looking at the other girls and the ones " +
+                "that had sex on camera made WAYYYYY more money. Like it's not even " +
+                "close! You could help me so much if you would go on camera with me! ",
+            button: [
+                { chatID: 25, text: "me?", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "janice",
+            text: "Yes silly. We would make such a cute couple I'll bet we could even " +
+                "make more than $500! What do you say? Are you in? ",
+            button: [
+                { chatID: 26, text: "Let me think about it, but maybe. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "janice",
+            text: "You're the best! Let me throw my clothes back on so my pussy isn't hanging " +
+                "out everywhere. ",
+            button: [
+                { chatID: -1, text: "...", callback: "completeBitch3" },
             ]
         },
     ];

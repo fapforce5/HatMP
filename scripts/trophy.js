@@ -11,35 +11,35 @@ trophy.list = {
 trophy.build = function () {
     var i;
 
-    trophy.list.theboys.ach = trophy.list.llsissy.ach = trophy.list.bimboKnockedup.ach = false;
+    //trophy.list.theboys.ach = trophy.list.llsissy.ach = trophy.list.bimboKnockedup.ach = false;
 
 
-    for (i = 0; i < sc.events.length; i++) {
-        switch (sc.events[i].name) {
-            case "kei":
-                if (sc.events[i].step === -2 && sc.events[i].ach)
-                    t.theboys.ach = true;
-                break;
-            case "landlord":
+    //for (i = 0; i < sc.events.length; i++) {
+    //    switch (sc.events[i].name) {
+    //        case "kei":
+    //            if (sc.events[i].step === -2 && sc.events[i].ach)
+    //                t.theboys.ach = true;
+    //            break;
+    //        case "landlord":
 
-                break;
-            case "lola":
-                if (sc.events[i].step === 12 && sc.events[i].ach)
-                    t.fucklola.ach = true;
-                break;
-            case "eva":
-                if (sc.events[i].step === 11 && sc.events[i].ach)
-                    t.fuckeva.ach = true;
-                break;
-        }
-    }
-    for (i = 0; i < g.st.length; i++) {
-        switch (gv.st[i].n) {
-            case "knockedup":
-                trophy.list.bimboKnockedup.ach = gv.st[i].t !== null;
-                break;
-        }
-    }
+    //            break;
+    //        case "lola":
+    //            if (sc.events[i].step === 12 && sc.events[i].ach)
+    //                t.fucklola.ach = true;
+    //            break;
+    //        case "eva":
+    //            if (sc.events[i].step === 11 && sc.events[i].ach)
+    //                t.fuckeva.ach = true;
+    //            break;
+    //    }
+    //}
+    //for (i = 0; i < g.st.length; i++) {
+    //    switch (gv.st[i].n) {
+    //        case "knockedup":
+    //            trophy.list.bimboKnockedup.ach = gv.st[i].t !== null;
+    //            break;
+    //    }
+    //}
 };
 
 trophy.draw = function () {

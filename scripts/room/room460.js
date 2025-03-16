@@ -74,7 +74,12 @@ room460.btnclick = function (name) {
             if (gv.get("energy") < 5)
                 chat(4, 460);
             else {
-                g.map = { count: 0, lastGold: 0, lastFight: 0, row: 78, col: 10 };
+                g.map = null;
+                if (gv.get("difficulty") === 2) {
+                    gv.set("forestMapUpdate", null);
+                    gv.set("forestVisit", null);
+                    m.fmap = null;
+                }
                 char.room(475);
             }
             break;

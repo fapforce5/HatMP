@@ -15,6 +15,10 @@ room176.main = function () {
             nav.bg("176_oral/oral203_0.jpg");
             chat(47, 176);
             break;
+        case "finalx":
+            nav.bg("176_oral/final0.jpg");
+            chat(59, 176);
+            break;
     }
 };
 
@@ -907,6 +911,46 @@ room176.chat = function (chatID) {
                     "just let every guy ram their cock down my sissy slutty throat. That's what I'm really good at.",
                 button: [
                     { chatID: -1, text: "[Finish class]", callback: "oral203_lick_end" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "martha",
+                text: "Welcome. Welcome to your final, slash, graduation ceremony. For those of you who have, against all odds, managed to remain, one must offer a modicum of...congratulation. Some, of course, were born with an innate aptitude. Others, shall we say, demonstrated a commendable, if somewhat strenuous, dedication. Regardless, here we are.",
+                button: [
+                    { chatID: 60, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "martha",
+                text: "Now, I understand some of you are anticipating a rather... taxing examination. Perhaps even attempting to surpass your mid-term performances. However, there will be none of that today. The final task will be quite simple, a mere formality, really. Your true test, however, will commence when you venture forth into the world, armed with your newly acquired skills.",
+                button: [
+                    { chatID: 61, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "martha",
+                text: "Now, before we embark on the final task, I do wish to remind you that you are always welcome to return and visit your teachers. " + sc.n("p") + " has also expressed a, shall we say, keen interest in offering post-graduation opportunities for those so inclined, next door. And though you graduate today, you will always remain, in our eyes, our cherished pupils.",
+                button: [
+                    { chatID: 62, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "martha",
+                text: "Now, before I prattle on excessively, let us proceed to your final task.",
+                button: [
+                    { chatID: 63, text: "...", callback: "final1" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "martha",
+                text: "Ladies.",
+                button: [
+                    { chatID: 64, text: "...", callback: "final2" },
                 ]
             },
         ];

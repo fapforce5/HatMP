@@ -20,6 +20,10 @@ room175.main = function () {
             nav.bg("175_anal/anal212_0.jpg");
             chat(44, 175);
             break;
+        case "anal421":
+            nav.bg("175_anal/anal421_0.jpg");
+            chat(63, 175);
+            break;
     }
 };
 
@@ -58,6 +62,8 @@ room175.chatcatch = function (callback) {
         case "anal212_9":
         case "anal212_10":
         case "anal212_11":
+        case "anal421_1":
+        case "anal421_2":
             nav.bg("175_anal/" + callback + ".jpg");
             break;
         case "anal212_3_w":
@@ -138,6 +144,64 @@ room175.chatcatch = function (callback) {
         case "anal212_end":
             levels.anal(4, false, "m", true, null);
             sissy.passclass(true);
+            break;
+        case "anal421_3":
+            nav.bg("175_anal/anal421_3.jpg");
+            zcl.double(200, 500, .6, "", false);
+            nav.button({
+                "type": "img",
+                "name": "anal421",
+                "left": 917,
+                "top": 0,
+                "width": 1003,
+                "height": 1041,
+                "image": "175_anal/anal421_3.png"
+            }, 210);
+            break;
+        case "anal421_4":
+            nav.bg("175_anal/anal421_4.jpg");
+            break;
+        case "anal421_5":
+            nav.bg("175_anal/anal421_5.jpg");
+            nav.killbutton("anal421");
+            zcl.double(200, 500, .6, "open", false);
+            nav.button({
+                "type": "img",
+                "name": "anal421",
+                "left": 917,
+                "top": 0,
+                "width": 1003,
+                "height": 1041,
+                "image": "175_anal/anal421_3.png"
+            }, 210);
+            break;
+        case "anal421_6":
+            nav.bg("175_anal/anal421_6.jpg");
+            nav.killbutton("anal421");
+            zcl.double(200, 500, .6, "open", false);
+            nav.button({
+                "type": "img",
+                "name": "anal421",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "175_anal/anal421_6.png"
+            }, 210);
+            break;
+        case "anal421_7":
+            nav.bg("175_anal/anal421_7.jpg");
+            nav.kill();
+            zcl.displayMain(20, 300, .11, "", true);
+            nav.button({
+                "type": "img",
+                "name": "anal421",
+                "left": 289,
+                "top": 421,
+                "width": 387,
+                "height": 489,
+                "image": "175_anal/anal421_7.png"
+            }, 210);
             break;
         default:
             break;
@@ -709,12 +773,103 @@ room175.chat = function (chatID) {
             ]
         },
         {
-            chatID: 61,
+            chatID: 62,
             speaker: "p",
             text: "Good girls. This concludes the class. For those of you that didn't get fucked, " +
                 "too bad. Boring sluts don't get fucked. You can invite a friend over and practice at home. ",
             button: [
                 { chatID: -1, text: "[Complete Class]", callback: "anal212_end" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "p",
+            text: "Can I just say how proud I am for each and every one of you! " +
+                "Each one of you sluts are going to be world class cum dumps! " +
+                "The future really is open for each of you. You can be whores, " +
+                "stippers, even porn stars if you want! After graduation each of you " +
+                "are welcome to work in the Pink Room next door. If you don't know " +
+                "where you want to go in life, it's a great place to earn a bit of " +
+                "cash while you think about your futures. ",
+            button: [
+                { chatID: 64, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "p",
+            text: "On to today's class. I'm so excited for this final class! I can see only the true " +
+                "sluts are here today! Since this will be the last class before " +
+                "the final I want to go out with a bang! A gang bang! No more fake " +
+                "silicon dildos! No more more one hole at a time! All holes, all dick! " +
+                "I Love this class so much I'm going to join you! We're all GOING TO " +
+                "GET FUCKED!!!! Boys, come on in!",
+            button: [
+                { chatID: 65, text: "...", callback: "anal421_1" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "p",
+            text: "Ok sluts, Stip off those clothes and show your holes 'cause we're all going to get FUCKED! ",
+            button: [
+                { chatID: 66, text: "...", callback: "anal421_2" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "p",
+            text: "Boys, find some holes and fuck it! ",
+            button: [
+                { chatID: 67, text: "...", callback: "anal421_3" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "!bbc",
+            text: "Fuck yeah. You know what I like best about sissies? No matter how " +
+                "how bad my day is, at least I'm not taking dick like a sissy! hehehehe",
+            button: [
+                { chatID: 68, text: "*moaning from that big cock fucking your bussy*", callback: "anal421_4" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "!bwc",
+            text: "Hey, you're really pretty. Do you mind if I fuck your face? ",
+            button: [
+                { chatID: 69, text: "uh uh ..sure... uh *moan*", callback: "anal421_5" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "!bwc",
+            text: "Oh wow! You really are great at sucking dick! You ever work at the " +
+                "Pink Room? I could use a mouth like yours at the glory hole?  ",
+            button: [
+                { chatID: 70, text: "*gluck* *gluck* *gluck*", callback: "anal421_6" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "!bbc",
+            text: "Got my nut in yo' butt! Fuck yeah! ",
+            button: [
+                { chatID: 71, text: "*gluck* *swallow* *gulp*", callback: "anal421_7" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "p",
+            text: "Well, it smells like sweat, pussy, cocks, and cum in here. The " +
+                "janitor is really going to have to clean this place up well for " +
+                "the next class. I'm a little sad to see you all go, but all of you " +
+                "have a special invite to join us at the Pink Room. Not as a guest, " +
+                "of course, but as one of our many wonderful fuck holes. Next time I " +
+                "see you it will be at the graduation ceremony. Take care, and keep " +
+                "getting pounded those pussies and cute little faces of yours! ",
+            button: [
+                { chatID: -1, text: "*sniff*, we will", callback: "endclassPass101" },
             ]
         },
     ];

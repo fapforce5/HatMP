@@ -3,7 +3,14 @@
 //g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.char = [
     { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: false },
+
+    { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
+    { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
+    { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
+    { name: "black", display: "Ms. Black", image: "black.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
+    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
+
+    { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: false },
     { name: "el", display: "Co-Tenant", image: "lolaEva.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "lola", display: "Lola", image: "lola.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true,  q3: null },
     { name: "tom", display: "Tom", image: "tom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
@@ -13,12 +20,7 @@ sc.char = [
     { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
     { name: "dog", display: "Cooper the Mythical Demon", image: "dog.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
-    { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
-    { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
-    { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
-    { name: "black", display: "Ms. Black", image: "black.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
-    { name: "cecilia", display: "Cecilia", image: "cecilia.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
-
+   
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: false },
@@ -124,9 +126,6 @@ sc.char = [
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
-
-sc.events = new Array(); //delete
-
 
  //mStatus 0 = not started, 1 - 99 = inprogress, 100 = complete - success, 101 = complete - fail
 sc.charMission = [
@@ -464,17 +463,21 @@ sc.charMission = [
                         { id: 3, txt: "A surprise, to be sure", show: true, mStatus: 0, roomId: 315 },
                         { id: 4, txt: "A creamy center", show: true, mStatus: 0, roomId: 315 },
                         { id: 5, txt: "Emergency help!", show: true, mStatus: 0, roomId: 315 },
-                        { id: 6, txt: "In development", show: true, mStatus: 0, roomId: 315 },
                     ]
-            },
-            {
-                missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
             },
             {
                 missionName: "bitch", mStatus: 0, title: "Wonderful boyfriend", desc: "What a great guy! ", task:
                     [
-                        { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
-                        { id: 1, txt: "Help me and I'll help you. [End of this path]", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Not used", show: false, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Not used", show: false, mStatus: 0, roomId: 316 },
+                        { id: 2, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
+                        { id: 3, txt: "That's how you earn money!", show: true, mStatus: 0, roomId: 316 },
+                    ]
+            },
+            {
+                missionName: "webcam", mStatus: 0, title: "Webcam", desc: "Help her make some extra money", task:
+                    [
+                        { id: 0, txt: "First show", show: false, mStatus: 0, roomId: 316 },
                     ]
             },
             {
@@ -507,6 +510,9 @@ sc.charMission = [
                         { id: 2, txt: "You're her bitch", show: true, mStatus: 0, roomId: 315 },
                         { id: 3, txt: "[not made yet your dirty bitch]", show: true, mStatus: 0, roomId: 315 },
                     ]
+            },
+            {
+                missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
             },
         ]
     },
@@ -581,6 +587,7 @@ sc.charMission = [
                 missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Buy some shit", task:
                     [
                         { id: 0, txt: "You're cool. I guess", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "You can buy sissy bimbo pills!", show: true, mStatus: 0, roomId: 404 },
                     ]
             },
             {
@@ -589,12 +596,6 @@ sc.charMission = [
                         { id: 0, txt: "Purchase Hypno Takes. ", show: true, mStatus: 0, roomId: 301 },
                         { id: 1, txt: "I love you man! 1/2 prices! ", show: true, mStatus: 0, roomId: 301 },
                         { id: 2, txt: "I hate you! Triple the prices! ", show: true, mStatus: 0, roomId: 301 },
-                    ]
-            },
-            {
-                missionName: "diner", mStatus: 0, title: "Diner", desc: "Hey! ", task:
-                    [
-                        { id: 0, txt: "First chat", show: true, mStatus: 0, roomId: 301 },
                     ]
             },
         ]
@@ -1649,6 +1650,12 @@ sc.load = function (ra) {
             sc.char[y].secret = 95;
         if (sc.char[z].secret > 95)
             sc.char[z].secret = 95;
+    }
+    //fix v0.24 
+    if (sc.getMission("janice", "bitch").startedOrComplete) {
+        sc.startMission("janice", "bitch");
+        sc.completeMissionTask("janice", "bitch", 0);
+        sc.completeMissionTask("janice", "bitch", 1);
     }
 };
 

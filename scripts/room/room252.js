@@ -456,9 +456,8 @@ room252.chat = function (chatID) {
                     txt = "*Ugh* you. Wasted perfectly good hypno on you. I'm no longer hungry. Next time send one of the hot girls over.  "
                     btn = [{ chatID: 9, text: "Sure " + sc.n("spanky") + ". ", callback: "250_beaver" }];
                 }
-                else if (sc.getMissionTask("spanky", "diner", 0).notStarted) {
-                    sc.completeMission("spanky", "diner");
-                    sc.completeMissionTask("spanky", "diner", 0);
+                else if (sc.getMissionTask("spanky", "shop", 1).notStarted && sissy.st[21].ach) {
+                    sc.completeMissionTask("spanky", "shop", 1);
                     txt = "Oh hey dude, I didn't know you liked to dress like a chick.";
                     btn = [{ chatID: 38, text: "Oh, I had to", callback: "" }];
                 }

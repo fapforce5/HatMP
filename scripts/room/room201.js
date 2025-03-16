@@ -97,8 +97,7 @@ room201.btnclick = function (name) {
 room201.chatcatch = function (callback) {
     switch (callback) {
         case "shaveBody":
-            if (cl.c.bodyhair > 0)
-                cl.c.bodyhair = 0;
+            cl.shave();
             inv.use("razor");
             zcl.displayMain(0, 400, .22, "shower", false);
             cl.display();

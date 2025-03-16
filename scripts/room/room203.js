@@ -4,6 +4,10 @@ room203.main = function () {
     var outfit = cl.hasoutfit("public");
     var navList = new Array();
     var btnList = new Array();
+    let missyI = sc.i("missy");
+    if (!sc.char[missyI].show)
+        sc.char[missyI].show = true;
+
     if (sc.getTimeline("cecilia").thisRoom) {
         //g.pass = "203Elevator";
         btnList = [{

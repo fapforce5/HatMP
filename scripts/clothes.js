@@ -1918,6 +1918,12 @@ cl.getBodyHair = function () {
     return null;
 };
 
+cl.shave = function () {
+    if (cl.c.bodyhair > 0)
+        cl.c.bodyhair = 0;
+    cl.display();
+};
+
 cl.display = function () {
     var thisHair;
     $('.bladder-box').remove();

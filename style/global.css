@@ -64,6 +64,7 @@ input[type=text]:disabled{
     left:0;
     border-right:solid #000 2px;
     background:rgba(0,0,0,.7);
+    z-index:3;
 }
 
 .rl-change {
@@ -174,6 +175,7 @@ input[type=text]:disabled{
     position:absolute;
     bottom:0;
     left:0;
+    z-index:3;
 }
 .room-changeRoomBtn{
     background:none;

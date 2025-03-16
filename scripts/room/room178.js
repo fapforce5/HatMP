@@ -89,6 +89,7 @@ room178.chatcatch = function (callback) {
             }, 178);
             break;
         case "cumend204Pass":
+            inv.add("emptyjar");
             g.popUpNotice("You can now fill cum jars when you go to the toilet!");
             sissy.passclass(true);
             break;

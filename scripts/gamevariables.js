@@ -64,7 +64,7 @@ gv.init = function () {
         //Settings
         { n: "fantasyCreatures", t: false, q: "bool" },
         { n: "fightspeed", t: 1250, q: "int" },
-        { n: "difficulty", t: 1, q: "int" },
+        { n: "difficulty", t: 1, q: "int" }, //0: easy, 1: normal, 2: hard
         { n: "clock24", t: "12", q: "string" },
         { n: "cheatMode", t: false, q: "bool" },
         { n: "transformation", t: "voluntary", q: "string" },
@@ -113,6 +113,7 @@ gv.init = function () {
         //missy
         { n: "chastity", t: null, q: "date" },
         { n: "castitycage", t: null, q: "string" },
+        { n: "castity", t: null, q: "string" },
 
         //church
         { n: "confession", t: "", q: "string" },
@@ -150,7 +151,7 @@ gv.init = function () {
         { n: "sewerEnd", t: 0, q: "int" },
         { n: "sewerMap", t: "", q: "string" },
         { n: "sewerID", t: 0, q: "int" },
-        { n: "forestMap", t: null, q: "string" },
+        { n: "forestMapUpdate", t: null, q: "string" },
         { n: "forestVisit", t: null, q: "string" },
         { n: "shinkCock", t: false, q: "bool" },
         
@@ -368,42 +369,47 @@ gv.init = function () {
     ];
 
     sissy.st = [
-        { id: 0, pID: [17], icon: "firstday", x: -1, y: -1, name: "First Day", description: "First day of class", ach: false, active: false, room: 209 },
+        { id: 0, pID: [17], icon: "firstday", x: 6, y: 1, name: "Sissy Intro", description: "Introduction to being a sissy", ach: false, active: true, room: 209 },
 
         { id: 1, pID: [0], icon: "fem101", x: 1, y: 1, name: "Feminization 101", description: "A smooth sissy is a sexy sissy.", ach: false, active: true, room: 180 },
-        { id: 2, pID: [1], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
+        { id: 2, pID: [0], icon: "anal101", x: 4, y: 1, name: "Anal 101", description: "The importance and use of lube", ach: false, active: true, room: 175 },
 
-        { id: 3, pID: [19], icon: "fem102", x: 0, y: 2, name: "Feminization 110", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
-        { id: 4, pID: [19], icon: "anal102", x: 3, y: 2, name: "Anal 102", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
-        { id: 5, pID: [19], icon: "chastity101", x: 6, y: 2, name: "Chastity 101", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
-        { id: 6, pID: [19], icon: "pee101", x: 2, y: 2, name: "Pee 101", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
-        { id: 7, pID: [19], icon: "oral101", x: 5, y: 2, name: "Oral 101", description: "Learn the basics of oral", ach: false, active: true, room: 176 },
-        { id: 8, pID: [19], icon: "bondage101", x: 10, y: 2, name: "Bondage 101", description: "Ropes are your friend", ach: false, active: true, room: 181 },
-        { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum Eating 101", description: "Have a taste of your own", ach: false, active: true, room: 178 },
+        { id: 3, pID: [19], icon: "fem102", x: 0, y: 2, name: "Feminization 201", description: "Act like a lady (sitting)", ach: false, active: true, room: 180 },
+        { id: 4, pID: [19], icon: "anal102", x: 3, y: 2, name: "Anal 202", description: "Learn how to use the bussy", ach: false, active: true, room: 175 },
+        { id: 5, pID: [19], icon: "chastity101", x: 6, y: 2, name: "Chastity 201", description: "Get comfortable in chastity", ach: false, active: true, room: 177 },
+        { id: 6, pID: [19], icon: "pee101", x: 2, y: 2, name: "Toilet 207", description: "Learn how to pee like a lady", ach: false, active: true, room: 180 },
+        { id: 7, pID: [19], icon: "oral101", x: 5, y: 2, name: "Oral 206", description: "Learn the basics of oral", ach: false, active: true, room: 176 },
+        { id: 8, pID: [19], icon: "bondage101", x: 10, y: 2, name: "Bondage 202", description: "Ropes are your friend", ach: false, active: true, room: 181 },
+        { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum 234", description: "Have a taste of your own", ach: false, active: true, room: 178 },
 
-        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 16, 19], icon: "test1", x: 0, y: 3, name: "Beginner Sissy Test", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
+        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9], icon: "test1", x: 0, y: 3, name: "Sissy mid-term", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
 
         { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: false },
-        { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 212", description: "Experaince the joy of being filled", ach: false, active: true, room: 175 },
-        { id: 13, pID: [10], icon: "chastity201", x: 6, y: 4, name: "Chastity 201", description: "Expand your time in chastity", ach: false, active: true, room: 177 },
-        { id: 14, pID: [10], icon: "enema205", x: 1, y: 4, name: "Enema 205", description: "A clean bussy makes everyone happy", ach: false, active: true, room: 180 },
-        { id: 15, pID: [10], icon: "fem201", x: 0, y: 4, name: "Feminization 201", description: "Introduction to hormones", ach: false, active: true, room: 180 },
-        { id: 16, pID: [19], icon: "fem121", x: 1, y: 2, name: "Feminization 121", description: "How to walk in high heels", ach: false, active: true, room: 180 },
+        { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 312", description: "Experaince the joy of being filled", ach: false, active: true, room: 175 },
+        { id: 13, pID: [10], icon: "chastity201", x: 6, y: 4, name: "Chastity 302", description: "Smaller chastity, smaller clitty", ach: false, active: true, room: 177 },
+        { id: 14, pID: [10], icon: "enema205", x: 2, y: 4, name: "Enema 305", description: "A clean bussy makes everyone happy", ach: false, active: true, room: 180 },
+        { id: 15, pID: [10], icon: "fem201", x: 0, y: 4, name: "Feminization 301", description: "Introduction to hormones", ach: false, active: true, room: 180 },
+        { id: 16, pID: [19], icon: "fem121", x: 1, y: 2, name: "Feminization 202", description: "How to walk in high heels", ach: false, active: true, room: 180 },
 
         { id: 17, pID: [], icon: "invite", x: -1, y: -1, name: "Invited", description: "Payday told to be a sissy", ach: false, active: false },
 
-        { id: 18, pID: [10], icon: "oral203", x: 4, y: 4, name: "Oral 203", description: "How to properly perform cunnilingus", ach: false, active: true, room: 176 },
+        { id: 18, pID: [10], icon: "oral203", x: 5, y: 4, name: "Oral 310", description: "How to properly perform cunnilingus", ach: false, active: true, room: 176 },
 
-        { id: 19, pID: [2], icon: "fem103", x: 7, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
-        { id: 20, pID: [10], icon: "bondage203", x: 9, y: 4, name: "Bondage 203", description: "Pony girl races", ach: false, active: true, room: 181 },
+        { id: 19, pID: [1, 2, 26], icon: "fem103", x: 8, y: 1, name: "Feminization 102", description: "Given your first set of sissy clothes.", ach: false, active: true, room: 180 },
+        { id: 20, pID: [24], icon: "bondage203", x: 10, y: 5, name: "Bondage 436", description: "Pony girl races", ach: false, active: true, room: 181 },
 
-        { id: 21, pID: [12, 13, 14, 15, 18, 20], icon: "final", x: 0, y: 6, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 213 },
+        { id: 21, pID: [0], icon: "finalx", x: 0, y: 6, name: "Final", description: "Prove you're a true sissy", ach: false, active: true, room: 176 },
 
-        { id: 22, pID: [10], icon: "cum204", x: 8, y: 4, name: "Cum Eating 204", description: "What are the jars for?", ach: false, active: true, room: 178 },
-        { id: 9, pID: [19], icon: "cum307", x: 8, y: 5, name: "Cum Eating 307", description: "Eat cum from a sissy's ass", ach: false, active: true, room: 178 },
+        { id: 22, pID: [10], icon: "cum204", x: 8, y: 4, name: "Cum 304", description: "What are the jars for?", ach: false, active: true, room: 178 },
 
-        { id: 23, pID: [12, 13, 14, 15, 18, 20], icon: "fem310", x: 1, y: 5, name: "Feminization 310", description: "Laser hair removal", ach: false, active: true, room: 180 },
+        { id: 23, pID: [15, 14], icon: "fem310", x: 1, y: 5, name: "Feminization 423", description: "Permanent hair removal", ach: false, active: true, room: 180 },
+        { id: 24, pID: [10], icon: "bondage310", x: 10, y: 4, name: "Bondage 310", description: "Get in touch with your feelings", ach: false, active: true, room: 181 },
+        { id: 25, pID: [22], icon: "cum307", x: 8, y: 5, name: "Cum Eating 404", description: "Eat cum from a sissy's ass", ach: false, active: false, room: 178 },
+        { id: 26, pID: [0], icon: "bondage107", x: 10, y: 1, name: "Bondage 107", description: "Intro", ach: false, active: true, room: 181 },
+        { id: 27, pID: [13, 22], icon: "chastity442", x: 7, y: 5, name: "Chastity 442", description: "The ultimate choice", ach: false, active: true, room: 177 },
+        { id: 28, pID: [12, 18], icon: "anal421", x: 4, y: 5, name: "Anal/Oral 421", description: "Finger cuffs", ach: false, active: true, room: 175 },
 
+        
     ];
 
     qdress.st = [
@@ -1865,6 +1871,11 @@ gv.load = function (rma) {
         for (i = 0; i < rma.dreams.length; i++) {
             dreams.st.push({ name: rma.future[i].name, daysleft: rma.future[i].daysleft });
         }
+    }
+
+    if (gv.get("sissySchoolClass") === "final") {
+        gv.set("sissySchoolClass", null);
+        gv.set("sissySchoolClassDays", 0);
     }
 };
 

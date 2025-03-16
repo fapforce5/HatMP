@@ -1,9 +1,21 @@
 ﻿//Room name
 var room211 = {};
 room211.main = function () {
-    var classesPassed = sissy.getNumPassed();
+    //var classesPassed = sissy.getNumPassed();
+    
     var philbert = sc.taskGetStep("philbert", "bully");
     var hasFinalSissyOutfit = cl.hasClothing("shirt", "sq");
+
+    //Fix for past miss - remove at future date
+    if (!sc.char[sc.i("p")].show) {
+        sc.show("p");
+        sc.modSecret("p", 100);
+        sc.show("martha");
+        sc.modSecret("martha", 100);
+        sc.show("black");
+        sc.modSecret("black", 100);
+    }
+
     if (!sissy.st[0].ach) { //firstday
         gv.set("sissySchoolClass", "firstday");
         sc.show("philbert");
@@ -12,6 +24,12 @@ room211.main = function () {
         sc.modSecret("ralph", 100);
         sc.show("sporty");
         sc.modSecret("sporty", 100);
+        sc.show("p");
+        sc.modSecret("p", 100);
+        sc.show("martha");
+        sc.modSecret("martha", 100);
+        sc.show("black");
+        sc.modSecret("black", 100);
         char.room(209);
     }
     else if (sissy.st[10].ach && !hasFinalSissyOutfit) {
@@ -21,7 +39,16 @@ room211.main = function () {
     else if (sissy.st[15].ach && !daily.get("pills")) {
         daily.set("pills");
         nav.bg("211_meeting/pills.jpg");
-        chat(30, 211);
+        if (missy.get("sissySuppositories") === 0) {
+            missy.mod("sissySuppositories", 1);
+            chat(30, 211);
+            return;
+        }
+        else {
+            missy.mod("sissySuppositories", 1);
+            chat(35, 211);
+            return;
+        }
     }
     else if (sissy.st[19].ach && philbert < 0) {
         sc.startMission("philbert", "bully");
@@ -44,8 +71,14 @@ room211.main = function () {
     }
     else if (sissy.st[10].ach) {
         if (cl.c.shirt !== "sq") {
+            if (cl.c.chest < 2)
+                nav.bg("211_meeting/dressing0.jpg");
+            else if (cl.c.chest < 4)
+                nav.bg("211_meeting/dressing1.jpg");
+            else
+                nav.bg("211_meeting/dressing2.jpg");
             sc.select("icon_dress1", "211_meeting/icon_dress1.png", 0);
-            nav.bg("211_meeting/change1.jpg");
+            return;
         }
         else
             room211.btnclick("drawGroups");
@@ -395,9 +428,26 @@ room211.chatcatch = function (callback) {
             g.pass = "moveitMoveIt";
             char.room(174);
             break;
-        case "pills":
-            inv.addMulti("hormone", 2);
-            char.room(211);
+        case "pill0":
+            nav.bg("211_meeting/pills0.jpg");
+            break;
+        case "pill1":
+            nav.bg("211_meeting/pills1.jpg");
+            zcl.bent(0, 300, .8, "", false);
+            nav.button({
+                "type": "img",
+                "name": "pill",
+                "left": 1042,
+                "top": 374,
+                "width": 68,
+                "height": 51,
+                "image": "211_meeting/pills1.png",
+            }, 211);
+            gv.mod("hormone", 35);
+            break;
+        case "pill2":
+            nav.kill();
+            nav.bg("211_meeting/pills.jpg");
             break;
         default:
             break;
@@ -737,9 +787,59 @@ room211.chat = function (chatID) {
             {
                 chatID: 30,
                 speaker: "martha",
-                text: "Now ladies, it's time to receive your pills. ",
+                text: "After conferring with my esteemed colleagues, it has become apparent that a touch more... guidance is warranted to expedite your transformative journeys. Therefore, if you would be so kind as to remove your clothing and assume a forward-leaning posture, I shall personally administer a rather unique pharmaceutical suppository. It will, I assure you, be most beneficial.",
                 button: [
-                    { chatID: -1, text: "Thank you [Get your 2 sissy hormone pills]", callback: "pills" },
+                    { chatID: 31, text: "What is this pharmaceutical suppository?", callback: "" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "martha",
+                text: "Ah, a most astute inquiry, my dear. While this particular pharmaceutical preparation boasts a variety of nomenclatures, it is most commonly referred to simply as Sissy Bimbo Suppository. Its purpose, you see, is to gently, yet decisively, elevate one's inherent femininity to a most agreeable degree. These are, I must emphasize, quite potent concoctions, and thus, their administration is reserved exclusively for myself, within the confines of our instructional sessions. Now, if you would be so kind as to assume the aforementioned posture, we shall commence our day's endeavors.",
+                button: [
+                    { chatID: 32, text: "[Strip down and bend over]", callback: "pill0" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "martha",
+                text: "I do love the sight of so many eager sissies, with their holes open and waiting!",
+                button: [
+                    { chatID: 33, text: "...", callback: "pill1" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "thinking",
+                text: "I wonder how these suppository work? I do feel a rush of warm spreading " +
+                    "over my body. My bussy hole feels especially warm. I can't deny I'm really " +
+                    "excited! I can't wait to see what happens to my body! ",
+                button: [
+                    { chatID: 34, text: "...", callback: "pill2" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "martha",
+                text: "And there we have it, your inaugural dose of the Sissy Bimbo Suppository administered. The effects, while not instantaneous, will gradually manifest over time. During your slumber, you may experience subtle, yet persistent, physiological transformations. You shall awaken, I daresay, feeling as though you are blossoming into the very woman you were destined to be.",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "martha",
+                text: "Kindly strip and bend over for daily administration of your Sissy Bimbo Suppository.",
+                button: [
+                    { chatID: 36, text: "...", callback: "pill1" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "thinking",
+                text: "This may be my favorite part of the day! I wonder where I can get more....",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
                 ]
             },
         ];

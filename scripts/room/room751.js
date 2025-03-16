@@ -11,36 +11,36 @@ room751.main = function () {
 };
 
 room751.btnclick = function (name) {
-    var sci = sc.get(name);
-    var i, j;
-    nav.killall();
-    var te = sc.get(name);
-    var tse = -1;
-    var thisStep, nextStep;
-    thisStep = nextStep = null;
-    for (i = 0; i < sc.events.length; i++) {
-        if (sc.events[i].name === name) {
-            if (sc.events[i].step === sci.step) {
-                tse = i;
-                i = 9999;
-            }
-            else if (sc.events[i] > sci.step) {
-                tse = i;
-                i = 9999;
-                console.log("overflow");
-            }
-        }
-    }
-    if (tse > -1) {
-        thisStep = sc.events[tse].txt;
-        if (tse < sc.events.length - 1) {
-            if (sc.events[tse + 1].name === name && sc.events[tse + 1].step > 0)
-                nextStep = sc.events[tse + 1].txt;
-        }
-    }
-    g.pass = { name: te.display, thisStep: thisStep, nextStep: nextStep };
-    chat(998, 751);
-    nav.bg("751_crystal/bg1.jpg");
+    //var sci = sc.get(name);
+    //var i, j;
+    //nav.killall();
+    //var te = sc.get(name);
+    //var tse = -1;
+    //var thisStep, nextStep;
+    //thisStep = nextStep = null;
+    //for (i = 0; i < sc.events.length; i++) {
+    //    if (sc.events[i].name === name) {
+    //        if (sc.events[i].step === sci.step) {
+    //            tse = i;
+    //            i = 9999;
+    //        }
+    //        else if (sc.events[i] > sci.step) {
+    //            tse = i;
+    //            i = 9999;
+    //            console.log("overflow");
+    //        }
+    //    }
+    //}
+    //if (tse > -1) {
+    //    thisStep = sc.events[tse].txt;
+    //    if (tse < sc.events.length - 1) {
+    //        if (sc.events[tse + 1].name === name && sc.events[tse + 1].step > 0)
+    //            nextStep = sc.events[tse + 1].txt;
+    //    }
+    //}
+    //g.pass = { name: te.display, thisStep: thisStep, nextStep: nextStep };
+    //chat(998, 751);
+    //nav.bg("751_crystal/bg1.jpg");
 };
 
 room751.chatcatch = function (callback) {

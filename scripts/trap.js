@@ -183,6 +183,7 @@ trap.displayMenu = function (menu) {
             btnList.push({ n: "pplookaway", i: "icon_lookaway.png" });
             btnList.push({ n: "ppwatch", i: "icon_watch.png" });
             btnList.push({ n: "ppdrink", i: "icon_drink.png" });
+            btnList.push({ n: "ppjar", i: "icon_jar.png" });
             break;
         case "climb":
             btnList.push({ n: "holeclimb", i: "icon_holeClimbout.png" });
@@ -432,16 +433,16 @@ trap.hole = function () {
     switch (trap.phase) {
         case 0:
             holechar = [
-                { id: 0, n: "girl", rape: null, onlyAsk: false },
-                { id: 1, n: "ppgirl", rape: null, onlyAsk: false },
-                { id: 2, n: "girl", rape: null, onlyAsk: false },
-                { id: 3, n: "!rape0", rape: 0, onlyAsk: false },
-                { id: 4, n: "!futa0", rape: 2, onlyAsk: false },
-                { id: 5, n: "!peggy", rape: null, onlyAsk: true },
-                { id: 6, n: "!caveslave", rape: null, onlyAsk: true },
-                { id: 8, n: "!jenna", rape: null, onlyAsk: true },
-                { id: 9, n: "cult", rape: null, onlyAsk: false },
-                { id: 10, n: "!plant", rape: null, onlyAsk: false },
+                { id: 0, n: "girl", rape: null, onlyAsk: false, g: "f" },
+                { id: 1, n: "ppgirl", rape: null, onlyAsk: false, g: "f" },
+                { id: 2, n: "girl", rape: null, onlyAsk: false, g: "f" },
+                { id: 3, n: "!rape0", rape: 0, onlyAsk: false, g: "m" },
+                { id: 4, n: "!futa0", rape: 2, onlyAsk: false, g: "f" },
+                { id: 5, n: "!peggy", rape: null, onlyAsk: true, g: "f" },
+                { id: 6, n: "!caveslave", rape: null, onlyAsk: true, g: "f" },
+                { id: 8, n: "!jenna", rape: null, onlyAsk: true, g: "f" },
+                { id: 9, n: "cult", rape: null, onlyAsk: false, g: "m" },
+                { id: 10, n: "!plant", rape: null, onlyAsk: false, g: "f" },
             ];
 
             //if (missy.cases[16].complete) {
@@ -689,7 +690,7 @@ trap.encounter = function () {
             }
 
             trap.char = charList[g.rand(0, charList.length)];
-            trap.char = { n: "!girl", p: "girl", z: "foot1", loc: "forest", l: 674, t: 152, w: 503, h: 928, i: "girl4.png" };
+
             trap.name = trap.char.n;
             nav.button({
                 "type": "img",
@@ -701,7 +702,6 @@ trap.encounter = function () {
                 "image": "1005_trap/encounter/" + trap.char.i
             }, 1004);
 
-            console.log(trap.char.z)
             if (trap.char.z === "nice") {
                 chat(802, 1005);
             }
@@ -829,17 +829,20 @@ room1005.btnclick = function (name) {
             break;
         case "ppwatch":
         case "ppdrink":
-            nav.killbutton("r1004bg");
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 504,
-                "top": 0,
-                "width": 1100,
-                "height": 1080,
-                "image": "1005_trap/hole/g" + trap.char[0].id + "_1.png"
-            }, 1005);
-            if (name === "ppdrink") {
+            if (levels.get("piss").l < 4) {
+                chat(49, 1005);
+            }
+            else {
+                nav.killbutton("r1004bg");
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 504,
+                    "top": 0,
+                    "width": 1100,
+                    "height": 1080,
+                    "image": "1005_trap/hole/g" + trap.char[0].id + "_1.png"
+                }, 1005);
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -849,13 +852,45 @@ room1005.btnclick = function (name) {
                     "height": 335,
                     "image": "1005_trap/hole/drink.png"
                 }, 1005);
-                sex.piss(true, false, false, "f");
+                sex.piss(true, false, false, trap.char[0].g);
+                trap.message("Filthy pervert.");
+                trap.displayMenu("next");
+            }
+            break;
+        case "ppjar":
+            if (inv.has("emptyjar")) {
+                inv.use("emptyjar");
+                if (trap.char[0].g === "m")
+                    inv.add("pissjarboy");
+                else
+                    inv.add("pissjargirl");
+
+                nav.killbutton("r1004bg");
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 504,
+                    "top": 0,
+                    "width": 1100,
+                    "height": 1080,
+                    "image": "1005_trap/hole/g" + trap.char[0].id + "_1.png"
+                }, 1005);
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 790,
+                    "top": 693,
+                    "width": 446,
+                    "height": 387,
+                    "image": "1005_trap/hole/jar.png"
+                }, 1005);
+                sex.piss(false, false, false, "f");
+                trap.message("You filled a jar of piss. Gross.");
+                trap.displayMenu("next");
             }
             else {
-                sex.piss(false, false, false, "f");
+                chat(50, 1005);
             }
-            trap.message("Filthy pervert.");
-            trap.displayMenu("next");
             break;
         case "holestay":
             chat(2, 1005);
@@ -2134,6 +2169,22 @@ room1005.chat = function (chatID) {
                 text: "Best work yet! Now let's go and harass the cult! ",
                 button: [
                     { chatID: -1, text: "...", callback: "rope_fwump" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "thinking",
+                text: "That's disgusting! I'm not going to drink their piss! ",
+                button: [
+                    { chatID: -1, text: "[Need Piss Level 4]", callback: "" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "thinking",
+                text: "Drat! I don't have any empty jars! ",
+                button: [
+                    { chatID: -1, text: "[Need empty jar]", callback: "" },
                 ]
             },
         ];

@@ -11,7 +11,10 @@ room177.main = function () {
             nav.bg("177_chastity/c201_0.jpg");
             chat(28, 177);
             break;
-       
+        case "chastity442":
+            nav.bg("177_chastity/c442.jpg");
+            chat(33, 177);
+            break;
     }
 };
 
@@ -25,6 +28,49 @@ room177.btnclick = function (name) {
         case "c201_clit":
             nav.killall();
             chat(31, 177);
+            break;
+        case "442no":
+            nav.kill();
+            gv.set("castitycage", "");
+            gv.set("castityforever", "no");
+            cl.c.chastity = null;
+            cl.display();
+            chat(999, 177);
+            break;
+        case "442week":
+            nav.kill();
+            gv.set("castityforever", "week");
+            sc.select("442_cage", "177_chastity/icon_ch_cage.png", 0);
+            sc.select("442_pink", "177_chastity/icon_ch_pink.png", 2);
+            sc.select("442_flat", "177_chastity/icon_ch_flat.png", 4);
+            break;
+        case "442all":
+            nav.kill();
+            gv.set("castityforever", "forever");
+            sc.select("442_cage", "177_chastity/icon_ch_cage.png", 0);
+            sc.select("442_pink", "177_chastity/icon_ch_pink.png", 2);
+            sc.select("442_flat", "177_chastity/icon_ch_flat.png", 4);
+            break;
+        case "442_cage":
+            nav.kill();
+            gv.set("castitycage", "cage");
+            cl.c.chastity = "cage";
+            cl.display();
+            chat(999, 177);
+            break;
+        case "442_pink":
+            nav.kill();
+            gv.set("castitycage", "pink");
+            cl.c.chastity = "pink";
+            cl.display();
+            chat(999, 177);
+            break;
+        case "442_flat":
+            nav.kill();
+            gv.set("castitycage", "flat");
+            cl.c.chastity = "flat";
+            cl.display();
+            chat(999, 177);
             break;
         default:
             break;
@@ -100,7 +146,20 @@ room177.chatcatch = function (callback) {
         case "c201_2":
             gv.set("castitycage", "flat");
             cl.c.chastity = "flat";
+            zcl.displayMain(-1000, 200, .4, "", false);
             cl.display();
+            break;
+        case "chastity442choice":
+            sc.select("442no", "177_chastity/icon_442no.png", 0);
+            sc.select("442week", "177_chastity/icon_442week.png", 2);
+            sc.select("442all", "177_chastity/icon_442forever.png", 4);
+            break;
+        case "chastity442redo":
+            nav.kill();
+            nav.bg("177_chastity/c442.jpg");
+            sc.select("442no", "177_chastity/icon_442no.png", 0);
+            sc.select("442week", "177_chastity/icon_442week.png", 2);
+            sc.select("442all", "177_chastity/icon_442forever.png", 4);
             break;
         default:
             break;
@@ -108,6 +167,30 @@ room177.chatcatch = function (callback) {
 };
 
 room177.chat = function (chatID) {
+    if (chatID === 999) {
+        let chas = gv.get("castitycage");
+        let howlong = gv.get("castityforever");
+        let txt = "";
+        nav.bg("177_chastity/bg.jpg");
+        zcl.displayMain(-1000, 200, .4, "", false);
+        if (howlong === "no") {
+            txt = "To never wear a chastity cage again? ";
+        }
+        else {
+            txt = "To wear a " + cl.getEntry("chastity", chas).display +
+                (howlong === "week" ? " only during the week? " : " forever?");
+        }
+
+        return {
+            chatID: 999,
+            speaker: "missy",
+            text: txt,
+            button: [
+                { chatID: 34, text: "Yes it is", callback: "" },
+                { chatID: -1, text: "No. Let me redo that pick. ", callback: "chastity442redo" },
+            ]
+        };
+    }
     var cArray = [
         {
             chatID: 0,
@@ -408,10 +491,32 @@ room177.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "missy",
-            text: "DEV NOTE: this event is in progress, but you now have a flat chastity " +    
-                "cage that will shrink your penis into a sissy clitty.",
+            text: "So cute. You're almost a girl now! That peasky penis will be gone " +
+                "before you know it! I'm so proud of you my little sissy!",
             button: [
-                { chatID: -1, text: "Yes! ", callback: "chastity101end" }
+                { chatID: -1, text: "Yes ma'am! ", callback: "chastity101end" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "missy",
+            text: "I'm fairly proud of you. It's always sad to see a class graduate " +
+                "and move on with their lives, but move on we all must. You're a big " +
+                "girl now, and it's time you grow up and start making your own choices. " +
+                "So I'm going to let you choose. You can remove your chastity device " +
+                "for all time, we can keep doing what we're doing where you can free " +
+                "youself on the weekends, or you can truly devote yourself to the sissy " +
+                "lifestyle and wear it all the time. No weekends, no penis, only holes. ",
+            button: [
+                { chatID: -1, text: "OOooooo", callback: "chastity442choice" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "missy",
+            text: "Ok. Let's hope you don't regret this decision. ",
+            button: [
+                { chatID: -1, text: "Yes!", callback: "chastity101end" }
             ]
         },
     ];

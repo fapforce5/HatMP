@@ -170,7 +170,22 @@ room213.chatcatch = function (callback) {
         case "_0":
             nav.killall();
             room213.btnclick("drawCloseupBgChar");
-            room213.chatcatch("_0_" + g.rand(0, 3));
+            if (sc.getMissionTask("spanky", "shop", 1).notStarted) {
+                sc.completeMissionTask("spanky", "shop", 1);
+                nav.button({
+                    "type": "img",
+                    "name": "e",
+                    "left": 924,
+                    "top": 168,
+                    "width": 524,
+                    "height": 912,
+                    "image": "213_pink/_spanky.png",
+                }, 213);
+                chat(36, 213);
+            }
+            else {
+                room213.chatcatch("_0_" + g.rand(0, 3));
+            }
             return;
         case "_0_0":
             nav.button({
@@ -792,6 +807,95 @@ room213.chat = function (chatID) {
                 "can start working. ",
             button: [
                 { chatID: -1, text: "ok", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "spanky",
+            text: "Oh hi! I didn't know you worked here! I just love this palce. Any time " +
+                "my boner gets too hard I just come here for some nice wet pussy. Or ass. " +
+                "The funny thing is they're both just holes and I can cum in either of them " +
+                "but for some reason it's just different. Ya know. Like sometimes I want to " +
+                "fuck pussy, but other times nothing makes me harder than an asshole. ",
+            button: [
+                { chatID: 37, text: "Hmmm mmmhhh", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "spanky",
+            text: "You know you have a nice ass. How many guys have you let cum inside that " +
+                "nice asshole of yours? ",
+            button: [
+                { chatID: 38, text: "MMmhmmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "spanky",
+            text: "Fine. Keep your secrets. I know chicks like you don't like to give out " +
+                "real numbers anyways. Any time a chick tells me how many dudes she's fucked I " +
+                "always multiply it by seven. 'cause chicks are sluts, but like they don't let " +
+                "guys know what sluts they are. I know. I've fucked a lot of sluts. Really just " +
+                "sluts. Never fucked a virgin. I should find a virgin ass and fuck that! OOooo " +
+                "I really want to bury my cock in a nice tight virgin hole! But like a slutty virgin " +
+                "hole. I don't want her to back out when I'm trying to fuck her. You know what I'm sayin'?",
+            button: [
+                { chatID: 39, text: "HHmmMMhhh", callback: "" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "spanky",
+            text: "Yeah. You know. I bet the first cock in your ass hurt. You know if " +
+                "you want a bigger ass, or some bigger tits you can come by my store. " +
+                "I got these pill that some dude, told me the are like whore moans. " +
+                "Like dudes take them when they don't want to be dudes anymore. My " +
+                "buddy says you can take more, but it doesn't do anything, so he " +
+                "says just take one a day. His chemist says it still not totally " +
+                "ready, and work in a weird way, but all my customers says they're " +
+                "great and keep taking them. I know they work 'cause those dudes " +
+                "have some great titties, ya know. The kind you want to juggle around.",
+            button: [
+                { chatID: 40, text: "hmmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "spanky",
+            text: "One of the dudes says his dick shrunk up to the size of a penny, " +
+                "but his titties are huge! This one time this big titty dude comes in and " +
+                "just flashes me to show how awesome his titties are, just bare ass chest " +
+                "in my face. I don't care, 'cause titties, so I just start sucking them " +
+                "expecting that at any minute he's going to slap me, but get this he just " +
+                "lets me suck on them titties and shit, just letting me go to town, so I " +
+                "think what the hell and I slide my hand into into his pants and this bitch " +
+                "has no panties, so guess what",
+            button: [
+                { chatID: 41, text: "mmmmhmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "spanky",
+            text: "He starts moaning like a bitch in heat, so I'm like, what the hell " +
+                "and press my finger into his butt-hole and he's all like twerking on " +
+                "my finger, so I go what the hell and whip out my dick. This crazy " +
+                "bitch drops down and starts sucking my dick then turns around and " +
+                "shoves it right in his ass hole, no lube or nothin', just shoves " +
+                "it in and start fucking me like I'm the last dick on earth. That " +
+                "bitch was the best fuck I ever had. If you want them pills I got some",
+            button: [
+                { chatID: 42, text: "mmmm hhmmmm", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "spanky",
+            text: "You seen where I work, just come by and get some, I'll give you a good " +
+                "price. OOoooo who's that. Sorry, gotta get my dick wet! Hehehe",
+            button: [
+                { chatID: -1, text: "mmmm hhmmmm", callback: "_3" }
             ]
         },
     ];

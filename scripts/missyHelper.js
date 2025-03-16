@@ -43,6 +43,7 @@ missy.init = function () {
         { id: 34, n: "subCounter197", c: 0 },
 
         { id: 35, n: "pinkEntrance", c: 0 },
+        { id: 36, n: "sissySuppositories", c: 0 },
     ];
 
     missy.cases = [
@@ -279,7 +280,7 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_elijah":
-                        if (qdress.st[3].ach && missy.cases[15].success) {
+                        if (qdress.st[3].ach && sissy.st[10].ach && missy.cases[15].success) {
                             canDoCase = piLevel > 2;
                             caseList.push({
                                 caseId: i,

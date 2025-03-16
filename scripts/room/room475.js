@@ -1,83 +1,73 @@
 ﻿var room475 = {};
 room475.main = function () {
-    if (m.fmap == "undefined")
-        m.fmap = null;
+
+    if (g.map === null) {
+        g.map = {
+            col: 10,
+            row: 78,
+            ev: new Array(),
+            eventCounter: g.rand(3, 7)
+        };
+    }
+    
+    if (gv.get("energy") < 1) {
+        g.map = null;
+        g.pass = 701;
+        char.room(28);
+        return;
+    }
+    else if (g.map.row === 79 && g.map.col === 10) {
+        g.map = null;
+        char.room(450);
+        return;
+    }
+
     if (m.fmap === null) {
         m.createFmap();
     }
+
     $('#room_footer').hide();
     $("#room-inv").show();
     $("#room-menu").show();
 
-    var thisUsed = m.fmap[g.map.row][g.map.col].used;
-    var mainLoop = true;
+    m.drawBackground(g.map.row, g.map.col);
+    m.drawMap(g.map.row, g.map.col);
 
-    if (gv.get("energy") === 0) {
-        g.map = "";
-        char.room(450);
-        mainLoop = false;
+    m.fmap[g.map.row][g.map.col].visited = true;
+    if (g.map.row < 79)
+        m.fmap[g.map.row + 1][g.map.col].visited = true;
+    if (g.map.row > 0)
+        m.fmap[g.map.row - 1][g.map.col].visited = true;
+    if (g.map.col < 19)
+        m.fmap[g.map.row][g.map.col + 1].visited = true;
+    if (g.map.col > 0)
+        m.fmap[g.map.row][g.map.col - 1].visited = true;
+
+    if (g.map.ev.length === 0) {
+        g.map.ev = g.shuffleArray(["rape", "rape", "rope", "hole", "random", "random", "treasure"]);
+        g.map.eventCounter = g.rand(4, 7);
     }
-    else if (g.map.row === 79 && g.map.col === 10) {
-        g.map = "";
-        char.room(450);
-        mainLoop = false;
-    }
-    
-    if (mainLoop) {
-
-        m.drawBackground(g.map.row, g.map.col);
-        m.drawMap(g.map.row, g.map.col);
-
-        m.fmap[g.map.row][g.map.col].visited = true;
-        if (g.map.row < 79)
-            m.fmap[g.map.row + 1][g.map.col].visited = true;
-        if (g.map.row > 0)
-            m.fmap[g.map.row - 1][g.map.col].visited = true;
-        if (g.map.col < 19)
-            m.fmap[g.map.row][g.map.col + 1].visited = true;
-        if (g.map.col > 0)
-            m.fmap[g.map.row][g.map.col - 1].visited = true;
-        g.map.lastFight++;
-
-        //if (((Math.floor(Math.random() * 8) === 0) && (g.map.lastFight > 4)) || (g.map.lastFight > 12)) {
-        //    if (gv.get("cat") === -1 && (Math.floor(Math.random() * 4) === 0)) {
-        //        nav.killall();
-        //        nav.bg("475_fight/cat.jpg");
-        //        g.map.lastFight = 0;
-        //        chat(3, 475);
-        //    }
-        //    else {
-        //        var te = Math.floor(Math.random() * 3);
-        //        if (gv.get("fantasyCreatures")) {
-        //            if (g.isNight())
-        //                te = Math.floor(Math.random() * 9); //overload the warewolf at night
-        //            else
-        //                te = Math.floor(Math.random() * 4);
-        //        }
-        //        var thisEnemy = null;
-        //        switch (te) {
-        //            case 0:
-        //                thisEnemy = "ag";
-        //                break;
-        //            case 1:
-        //                thisEnemy = "al";
-        //                break;
-        //            case 2:
-        //                thisEnemy = "af";
-        //                break;
-        //            case 3:
-        //                thisEnemy = "m";
-        //                break;
-        //            default:
-        //                thisEnemy = "aw";
-        //                break;
-        //        }
-        //        char.changeMenu("hide", true, true);
-        //        g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "forest", roomID: 475 };
-        //        g.map.lastFight = 0;
-        //        char.room(227);
-        //    }
-        //}
+    if (g.map.eventCounter === 0) {
+        let thisEvent = g.map.ev[0];
+        g.map.ev.shift();
+        g.map.eventCounter = g.rand(3, 5);
+        switch (thisEvent) {
+            case "rape":
+                rape.init(null, "forest", 475, "reload");
+                break;
+            case "rope":
+                trap.init("rope", "forest", 475, "reload", null);
+                break;
+            case "hole":
+                trap.init("hole", "forest", 475, "reload", null);
+                break;
+            case "random":
+                trap.init("encounter", "forest", 475, "reload", null);
+                break;
+            case "treasure":
+                trap.init("treasure", "forest", 475, "reload", null);
+                break;
+        }
     }
 };
 
@@ -86,21 +76,25 @@ room475.btnclick = function (name) {
         case "north":
             g.map.row -= 1;
             m.updateVisit();
+            g.map.eventCounter--;
             char.room(475);
             break;
         case "south":
             g.map.row += 1;
             m.updateVisit();
+            g.map.eventCounter--;
             char.room(475);
             break;
         case "east":
             g.map.col += 1;
             m.updateVisit();
+            g.map.eventCounter--;
             char.room(475);
             break;
         case "west":
             g.map.col -= 1;
             m.updateVisit();
+            g.map.eventCounter--;
             char.room(475);
             break;
         case "visit":
@@ -129,7 +123,8 @@ room475.btnclick = function (name) {
         default:
             break;
     }
-    m.drawMap(g.map.row, g.map.col);
+    if (g.map !== null)
+        m.drawMap(g.map.row, g.map.col);
 };
 
 room475.chatcatch = function (callback) {

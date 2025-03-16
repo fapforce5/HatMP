@@ -53,7 +53,7 @@ room56.btnclick = function (name) {
 room56.chatcatch = function (callback) {
     switch (callback) {
         case "shaveBody":
-            cl.c.bodyhair = 0;
+            cl.shave();
             zcl.displayMain(0, 400, .22, "shower", false);
             inv.use("razor");
             char.addtime(15);

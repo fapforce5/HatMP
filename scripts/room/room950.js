@@ -776,8 +776,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/shave.jpg");
             break;
         case "shave2":
-            if (cl.c.bodyhair > 0)
-                cl.c.bodyhair = 0;
+            cl.shave();
             cl.display();
             room950.btnclick("increment");
             break;

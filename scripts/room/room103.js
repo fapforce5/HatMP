@@ -288,6 +288,7 @@ room103.chatcatch = function (callback) {
         case "hole17":
             gv.mod("money", 200);
             char.addtime(67);
+            sc.show("missy");
             gv.set("jobapplynurse", 2);
             gv.set("jobapplybeaver", 2);
             gv.set("jobapplyconst", 100);

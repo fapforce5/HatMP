@@ -277,7 +277,7 @@ m.drawBackgroundSub = function (row, col) {
 m.drawMap = function (r, c) {
     
     char.changeMenu("map", false, true);
-
+    let easyMode = gv.get("difficulty") === 0;
     var i, j;
     var st = "";
     $('#room_left_map').html('<div class="resize" style="margin-top:' + 100 * g.ratio + 'px; "></div>');
@@ -287,7 +287,7 @@ m.drawMap = function (r, c) {
         for (j = 0; j < m.col; j++) {
             if (i === r && c === j)
                 st = st.concat('<div class="map-box map-tile-q resize" title="' + i + ', ' + j + '" ' + style + '></div>');
-            else if (!m.fmap[i][j].visited)
+            else if (!m.fmap[i][j].visited && !easyMode)
                 st = st.concat('<div class="map-box resize" title="' + i + ', ' + j + '" ' + style + '></div>');
             else
                 st = st.concat('<div class="resize map-box map-tile-' + m.fmap[i][j].used + '" title="' + i + ', ' + j + '" ' + style + '></div>');
@@ -321,7 +321,7 @@ m.getDir = function (n, d) {
 m.createFmap = function () {
     var i, j, k, l, c, r, tf;
 
-    var x = gv.get("forestMap");
+    var x = gv.get("forestMapUpdate");
     if (x === null)
         m.createFmapNew();
     else {
@@ -354,15 +354,15 @@ m.createFmap = function () {
 };
 
 m.createFmapNew = function () {
-    var i, j, k, l, c, r;
-    var trow, tcol, goRight, howMany;
+    let i, j, k, l, c, r;
+    let trow, tcol, goRight, howMany;
 
     m.fmap = new Array(m.row).fill(0).map(() => new Array(m.col).fill(0));
-    var thisUpdate;
-    var prevDir = Math.floor(Math.random() * 2) === 1;
-    var tf = new Array();
+    let prevDir = Math.floor(Math.random() * 2) === 1;
+    let tf = new Array();
     trow = 78;
     tcol = 10;
+    //make paths to end
     while (trow > 1) {
         if (prevDir) {
             var moveAhead = (Math.floor(Math.random() * 6)) + 2;
@@ -430,6 +430,8 @@ m.createFmapNew = function () {
     }
     let cave, cabin, caveunk, swampunk;
     cave = false; cabin = caveunk = swampunk = false;
+    console.log(tf.length);
+    console.log(tf);
     for (i = 0; i < tf.length; i++) {
         if (tf[i].row === 67 && !cabin && tf[i].col > 0 && tf[i].col < 20) {
             m.fmap[tf[i].row][tf[i].col].used = 'h';
@@ -452,9 +454,10 @@ m.createFmapNew = function () {
             m.fmap[tf[i].row][tf[i].col].used = 'm';
     }
 
-    for (i = 0; i < Math.floor((m.col * m.row)); i++) {
-        var tc = g.rand(1, m.col - 1);
-        var tr = g.rand(1, m.row - 1);
+    //create randomness > bigger number more fills
+    for (i = 0; i < 600; i++) {
+        let tc = g.rand(1, m.col - 1);
+        let tr = g.rand(1, m.row - 1);
         if (m.fmap[tr][tc].used === 'x')
             m.fmap[tr][tc].used = 'm'; //make u for test
     }
@@ -520,15 +523,15 @@ m.createFmapNew = function () {
     gv.set("forestVisit", tx);
     var forestString = "";
 
-    //for (i = 1; i < 79; i++) {
-    //    for (j = 1; j < 19; j++)
-    //        forestString += m.fmap[i][j].used;
-    //}
-    gv.set("forestMap", forestString);
+    for (i = 1; i < 79; i++) {
+        for (j = 1; j < 19; j++)
+            forestString += m.fmap[i][j].used;
+    }
+    gv.set("forestMapUpdate", forestString);
 };
 
 m.visitAll = function () {
-    gv.set("forestMap", null);
+    gv.set("forestMapUpdate", null);
     m.createFmap();
     for (i = 0; i < m.row; i++) {
         for (j = 0; j < m.col; j++) {

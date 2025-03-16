@@ -711,28 +711,35 @@ zcl.face = function (top, left, ratio, mod, color, reverse) {
         zcl.subDisplay("suck_" + makeup + "_" + color + ".png", top, left, ratio, reverse, w, h, f);
 };
 
-zcl.assup = function (top, left, ratio, mod, reverse = false) {
-    zcl.kill();
-    let w = 2716;
-    let h = 1352;
-    let f = "assup";
+zcl.assup = function (top, left, ratio, mod) {
+    $('.room-img[data-name="zzz-clothing-kill"]').remove();
 
     var hairLength = "2_";
     if (cl.c.chest < 3)
-        zcl.subDisplay("body_male.png", top, left, ratio, reverse, w, h, f);
+        cl.assupSub("body_male.png", top, left, ratio);
     else
-        zcl.subDisplay("body_female.png", top, left, ratio, reverse, w, h, f);
+        cl.assupSub("body_female.png", top, left, ratio);
 
     switch (mod) {
         case "reddress":
-            zcl.subDisplay("reddress.png", top, left, ratio, reverse, w, h, f);
+            cl.assupSub("reddress.png", top, left, ratio);
             break;
     }
-    
+
     if (cl.c.hairLength < 3)
         hairLength = "1_";
 
-    zcl.subDisplay(hairLength + cl.c.hairColor + ".png", top, left, ratio, reverse, w, h, f);
+    cl.assupSub(hairLength + cl.c.hairColor + ".png", top, left, ratio);
+
+};
+
+cl.assupSub = function (thisImage, top, left, ratio) {
+    var btnWidth, btnHeight;
+    btnWidth = 2716 * ratio * g.ratio;
+    btnWidth = 1352 * ratio * g.ratio;
+    top = top * g.ratio;
+    left = left * g.ratio;
+    $('#room-buttons').append('<img src="./images/mainChar/assup/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 };
 
 zcl.bent = function (top, left, ratio, mod, reverse = false) {
@@ -751,8 +758,8 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
     else
         zcl.subDisplay("body_girl.png", top, left, ratio, reverse, w, h, f);
 
-    if (cl.c.cock > 2)
-        cl.subDisplay("dick_small.png", top, left, ratio, reverse, w, h, f);
+    if (gender.isCockTooSmallForSex())
+        zcl.subDisplay("dick_small.png", top, left, ratio, reverse, w, h, f);
     else
         zcl.subDisplay("dick_big.png", top, left, ratio, reverse, w, h, f);
 

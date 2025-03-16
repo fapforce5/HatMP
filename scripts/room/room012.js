@@ -443,8 +443,7 @@ room12.chatcatch = function (callback) {
             }, 12);
             break;
         case "shaveBody":
-            if (cl.c.bodyhair > 0)
-                cl.c.bodyhair = 0;
+            cl.shave();
             inv.use("razor");
             zcl.displayMain(0, 400, .22, "shower", false);
             cl.display();
@@ -475,7 +474,7 @@ room12.chatcatch = function (callback) {
             if (cl.c.bodyhair > 50) {
                 nav.killall();
                 zcl.displayMain(0, 500, .199, "", false);
-                cl.c.bodyhair = 0;
+                cl.shave();
                 cl.nude();
                 nav.bg("12_bathroom/200_1.jpg");
                 

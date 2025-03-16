@@ -115,8 +115,8 @@ room401.main = function () {
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
             var priceMult = 1;
             var spankyInv = ["e", "g"];
-            //if (sc.getEvent("spanky", 3) || g.sissy[51].ach)
-            //    spankyInv.push("h");
+            if (sc.getMissionTask("spanky", "shop", 1).complete)
+                spankyInv.push("h");
             if (sc.getMission("spanky", "hypno").inProgress)
                 spankyInv.push("y");
             if (sc.getMissionTask("spanky", "hypno", 2).success) {
