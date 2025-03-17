@@ -32,13 +32,14 @@ room476.main = function () {
     }
     else {
         if (g.isNight() && g.dt.getDay() !== 5) {
-            if (sissy.st[10].ach) {
+            //if (sissy.st[10].ach) {
                 nav.bg("476_cabin/bg_night_cult.jpg");
                 chat(1, 476);
-            }
-            else {
+            //}
+            //else {
+            //    nav.bg("476_cabin/bg_night_cult.jpg");
 
-            }
+            //}
             return;
         }
 
@@ -905,6 +906,14 @@ room476.chat = function (chatID) {
                     "Got it!",
                 button: [
                     { chatID: 33, text: "y-y-yes", callback: "cookie1" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "thinking",
+                text: "This place is creepy. I need to stay away from here. ",
+                button: [
+                    { chatID: -1, text: "Sneak away", callback: "leave" }
                 ]
             },
         ];

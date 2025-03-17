@@ -575,6 +575,7 @@
             },
             phase2: function () {
                 if (rape.phases[2].c === 0) {
+                    zcl.kill();
                     nav.button({
                         "type": "img",
                         "name": "r1004bg",

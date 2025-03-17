@@ -255,41 +255,65 @@ trap.rope = function () {
     let sb, sa;
     switch (trap.phase) {
         case 0:
-            ropeChar = new Array();
-            if (cl.hasoutfit("nude") !== null) {
-                ropeChar.push({ id: 0, n: "!girl", ev: "clothes" });
+            var rwearing = cl.wearing();
+            if (cl.c.sock !== null || cl.c.shoes !== null) {
+                nav.bg("1005_trap/rope/mud.jpg");
+                chat(51, 1005);
+            }
+            else if (rwearing.outerwear) {
+                cl.c.dress = cl.c.pj = cl.c.swimsuit = cl.c.shirt = cl.c.pants = null;
+                nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+                zcl.displayMain(100, 600, .13, "clothes", true)
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1005_trap/rope/hook_" + (rwearing.crossdressing ? "pink" : "blue") + ".png"
+                }, 1005);
+                chat(52, 1005);
             }
             else {
-                if (!flowers.includes(cl.c.buttplug)) {
-                    ropeChar.push({ id: 1, n: "!girl3", ev: "flower" });
+                ropeChar = new Array();
+                if (cl.hasoutfit("nude") !== null) {
+                    ropeChar.push({ id: 0, n: "!girl", ev: "clothes" });
+                    trap.phase = 1;
+                }
+                else {
+                    if (!flowers.includes(cl.c.buttplug)) {
+                        ropeChar.push({ id: 1, n: "!girl3", ev: "flower" });
+                    }
+
+                    if (future.get("drd") === -1 && sissy.st[10].ach) {
+                        ropeChar.push({ id: 2, n: "drd", ev: "drd" });
+                    }
+
+                    ropeChar.push({ id: 3, n: "!girl3", ev: "makeup" });
+                    ropeChar.push({ n: "!jenna", ev: "free" });
                 }
 
-                if (future.get("drd") === -1 && sissy.st[10].ach) {
-                    ropeChar.push({ id: 2, n: "drd", ev: "drd" });
-                }
+                
 
-                ropeChar.push({ id: 3, n: "!girl3", ev: "makeup" });
+                trap.char = new Array();
+                g.shuffleArray(ropeChar);
+
+                trap.char.push(ropeChar[g.rand(0, ropeChar.length)]);
+                trap.name = trap.char[0].n;
+                nav.killbutton("r1004bg");
+                nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1005_trap/rope/phase0.png"
+                }, 1005);
+                trap.displayMenu("next");
             }
-
-            ropeChar.push({ n: "!jenna", ev: "free" });
-
-            trap.char = new Array();
-            g.shuffleArray(ropeChar);
-
-            trap.char.push(ropeChar[g.rand(0, ropeChar.length)]);
-            trap.name = trap.char[0].n;
-            nav.killbutton("r1004bg");
-            nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
-            nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1005_trap/rope/phase0.png"
-            }, 1005);
-            trap.displayMenu("next");
             break;
         case 1:
             nav.killbutton("r1004bg");
@@ -510,7 +534,7 @@ trap.hole = function () {
                 }
                 else if (trap.char[0].n === "!plant") {
                     nav.bg("1005_trap/hole/ground.jpg");
-                    rape.init("forest", 1005, "rapeReturn", 3);
+                    rape.init(3, "forest", 1005, "rapeReturn");
                 }
                 else {
                     nav.button({
@@ -828,6 +852,19 @@ room1005.btnclick = function (name) {
             trap.displayMenu("next");
             break;
         case "ppwatch":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 504,
+                "top": 0,
+                "width": 1100,
+                "height": 1080,
+                "image": "1005_trap/hole/g" + trap.char[0].id + "_1.png"
+            }, 1005);
+            trap.message("Filthy pervert.");
+            trap.displayMenu("next");
+            break;
         case "ppdrink":
             if (levels.get("piss").l < 4) {
                 chat(49, 1005);
@@ -1093,7 +1130,7 @@ room1005.chatcatch = function (callback) {
         case "holeRape":
             if (trap.char[0].rape !== null) {
                 nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
-                rape.init("street", 1005, "kill", trap.char[0].rape);
+                rape.init(trap.char[0].rape, "forest", 1005, "kill");
             }
             else {
                 trap.kill(null);
@@ -1369,6 +1406,11 @@ room1005.chatcatch = function (callback) {
             }, 1005);
             chat(47, 1005);
 
+            break;
+        case "sockShoesRemove":
+            cl.c.socks = cl.c.shoes = null;
+            cl.display();
+            trap.kill(null);
             break;
         default:
             break;
@@ -2185,6 +2227,23 @@ room1005.chat = function (chatID) {
                 text: "Drat! I don't have any empty jars! ",
                 button: [
                     { chatID: -1, text: "[Need empty jar]", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "me",
+                text: "Oh dammit! My shoes are stuck in the mud! Gross ",
+                button: [
+                    { chatID: -1, text: "[Remove your socks and shoes to free yourself]", callback: "sockShoesRemove" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "me",
+                text: "Holy crap! That was close! That hook almost killed me! I guess I'm " +
+                    "lucky it only shredded my clothes. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "kill" },
                 ]
             },
         ];
