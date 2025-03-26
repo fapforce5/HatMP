@@ -73,7 +73,6 @@ sc.char = [
     { name: "ralphsmom", display: "Ralph's Mom", image: "ralphsmom.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
-    { name: "butler", display: "The Butler", image: "butler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -650,7 +649,7 @@ sc.charMission = [
                         { id: 0, txt: "Warning", show: true, mStatus: 0, roomId: 450 },
                         { id: 1, txt: "Final Warning", show: true, mStatus: 0, roomId: 450 },
                         { id: 2, txt: "Face rape", show: true, mStatus: 0, roomId: 450 },
-                        { id: 2, txt: "You know why you keep coming back.", show: true, mStatus: 0, roomId: 450 },
+                        { id: 3, txt: "You know why you keep coming back.", show: true, mStatus: 0, roomId: 450 },
                     ]
             },
         ]
@@ -1062,9 +1061,9 @@ sc.charMission = [
     {
         name: "jones", mission: [
             {
-                missionName: "invite", mStatus: 0, title: "Invitation", desc: "Serve me", task:
+                missionName: "invite", mStatus: 0, title: "Sevice", desc: "Be my submissive slut. ", task:
                     [
-                        { id: 0, txt: "Cum rag", show: true, mStatus: 0, roomId: 450 },
+                        { id: 0, txt: "Submissive piss whore", show: true, mStatus: 0, roomId: 170 },
                         { id: 1, txt: "Visit me at my mansion", show: true, mStatus: 0, roomId: 150 },
                     ]
             },
@@ -1098,6 +1097,17 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "wyatt", mission: [
+            {
+                missionName: "forest", mStatus: 0, title: "My hero!", desc: "Stay safe", task:
+                    [
+                        { id: 0, txt: "Saved from the cult", show: true, mStatus: 0, roomId: 450 },
+                    ]
+            },
+        ]
+    },
+
 ];
 
 sc.el = function () {
@@ -2429,6 +2439,10 @@ sc.trivial = function (charname) {
         case "!girl3a":
             name = "Willow";
             image = "girl3a.png"
+            break;
+        case "!butler":
+            name = "The Butler";
+            image = "butler.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

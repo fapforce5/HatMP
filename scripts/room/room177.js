@@ -31,7 +31,7 @@ room177.btnclick = function (name) {
             break;
         case "442no":
             nav.kill();
-            gv.set("castitycage", "");
+            gv.set("castitycage", null);
             gv.set("castityforever", "no");
             cl.c.chastity = null;
             cl.display();
@@ -39,35 +39,35 @@ room177.btnclick = function (name) {
             break;
         case "442week":
             nav.kill();
-            gv.set("castityforever", "week");
+            gv.set("chastityforever", "week");
             sc.select("442_cage", "177_chastity/icon_ch_cage.png", 0);
             sc.select("442_pink", "177_chastity/icon_ch_pink.png", 2);
             sc.select("442_flat", "177_chastity/icon_ch_flat.png", 4);
             break;
         case "442all":
             nav.kill();
-            gv.set("castityforever", "forever");
+            gv.set("chastityforever", "forever");
             sc.select("442_cage", "177_chastity/icon_ch_cage.png", 0);
             sc.select("442_pink", "177_chastity/icon_ch_pink.png", 2);
             sc.select("442_flat", "177_chastity/icon_ch_flat.png", 4);
             break;
         case "442_cage":
             nav.kill();
-            gv.set("castitycage", "cage");
+            gv.set("chastityforever", "cage");
             cl.c.chastity = "cage";
             cl.display();
             chat(999, 177);
             break;
         case "442_pink":
             nav.kill();
-            gv.set("castitycage", "pink");
+            gv.set("chastityforever", "pink");
             cl.c.chastity = "pink";
             cl.display();
             chat(999, 177);
             break;
         case "442_flat":
             nav.kill();
-            gv.set("castitycage", "flat");
+            gv.set("chastityforever", "flat");
             cl.c.chastity = "flat";
             cl.display();
             chat(999, 177);
@@ -169,7 +169,7 @@ room177.chatcatch = function (callback) {
 room177.chat = function (chatID) {
     if (chatID === 999) {
         let chas = gv.get("castitycage");
-        let howlong = gv.get("castityforever");
+        let howlong = gv.get("chastityforever");
         let txt = "";
         nav.bg("177_chastity/bg.jpg");
         zcl.displayMain(-1000, 200, .4, "", false);

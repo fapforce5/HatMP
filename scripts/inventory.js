@@ -65,6 +65,11 @@ inv.master = [
 
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, image: "piLic.png", n: false, desc: "License to work as a detective" },
     { type: "x", name: "studentid", display: "Student ID", entry: false, count: null, cost: 0, image: "sudentid.png", n: false, desc: "Stolen Student ID" },
+    { type: "x", name: "sissy0", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy0.png", n: false, desc: "Offical Sissy ID" },
+    { type: "x", name: "sissy1", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy1.png", n: false, desc: "Offical Sissy ID" },
+    { type: "x", name: "sissy2", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy2.png", n: false, desc: "Offical Sissy ID" },
+    { type: "x", name: "sissy3", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy3.png", n: false, desc: "Offical Sissy ID" },
+
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "l", name: "lockpick", display: "Lock Pick Set", entry: false, count: null, cost: 0, image: "lockpick.png", n: false, desc: "Lock Pick Set for use on cases" },
     { type: "m", name: "makeup", display: "Makeup", entry: false, count: 0, cost: 47, image: "makeup.png", n: false, desc: "Makeup kit [Sold as 20 uses]" },
@@ -168,6 +173,10 @@ pic.master = [
     { name: "chloe", display: "Chloe's cum face", entry: false, image: "chloe.jpg", thumb: "chloe.png" },
     { name: "candy", display: "Candy's cum hole", entry: false, image: "candy.jpg", thumb: "candy.png" },
     { name: "classbefore", display: "First Sissy Class", entry: false, image: "classbefore.jpg", thumb: "classbefore.png" },
+    { name: "sissy0", display: "Sissy ID Photo", entry: false, image: "sissy0.jpg", thumb: "sissy0.png" },
+    { name: "sissy1", display: "Sissy ID Photo", entry: false, image: "sissy1.jpg", thumb: "sissy1.png" },
+    { name: "sissy2", display: "Sissy ID Photo", entry: false, image: "sissy2.jpg", thumb: "sissy2.png" },
+    { name: "sissy3", display: "Sissy ID Photo", entry: false, image: "sissy3.jpg", thumb: "sissy3.png" },
 ];
 
 pic.getall = function () {

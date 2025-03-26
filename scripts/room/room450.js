@@ -72,21 +72,14 @@ room450.main = function () {
                 chat(60, 450);
             }
             else {
-                nav.bg("450_park/peek.jpg");
-                chat(74, 450);
-                //ol = levels.get("oral").l > 3;
-                //sl = levels.get("sissy").l > 3;
-                //if (ol && sl) {
-                //    btnList.push({
-                //        "type": "btn",
-                //        "name": "coprape",
-                //        "left": 666,
-                //        "top": 0,
-                //        "width": 1000,
-                //        "height": 1080,
-                //        "image": "450_park/cop1.png"
-                //    });
-                //}
+                if (daily.get("parkNight")) {
+                    room450.chatcatch("enterPark");
+                }
+                else {
+                    daily.set("parkNight");
+                    nav.bg("450_park/peek.jpg");
+                    chat(74, 450);
+                }
             }
         }
         else {
@@ -509,6 +502,38 @@ room450.chatcatch = function(callback){
             break;
         case "456_tif":
             nav.bg("450_park/456_tif.jpg");
+            break;
+        case "enterPark":
+            nav.bg("450_park/450_bg.jpg", "450_park/450_bg_night.jpg")
+            nav.button({
+                "type": "btn",
+                "name": "gbroom",
+                "left": 1288,
+                "top": 271,
+                "width": 63,
+                "height": 125,
+                "image": "450_park/450_girlBroom.png"
+            }, 450);
+            nav.button({
+                "type": "btn",
+                "name": "bbroom",
+                "left": 1594,
+                "top": 273,
+                "width": 65,
+                "height": 126,
+                "image": "450_park/450_boyBroom.png"
+            }, 450);
+            nav.button({
+                "type": "btn",
+                "name": "further",
+                "left": 603,
+                "top": 0,
+                "width": 314,
+                "height": 401,
+                "image": "450_park/450_further.png",
+                "night": "450_park/450_further_night.png"
+            }, 450);
+            nav.buildnav([460, 452, 451, 0]);
             break;
         default:
             break;
@@ -1160,9 +1185,9 @@ room450.chat = function(chatID){
         {
             chatID: 74,
             speaker: "thinking",
-            text: "No way I'm going back there after dark! That cop already raped my face one!",
+            text: "Let me hide here and wait for the face raping cop to move on. ",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "leavePark" }
+                { chatID: -1, text: "[wait...]", callback: "enterPark" }
             ]
         },
         {

@@ -11,9 +11,9 @@ room475.main = function () {
     }
     
     if (gv.get("energy") < 1) {
-        g.map = null;
-        g.pass = 701;
-        char.room(28);
+        nav.killall();
+        nav.bg("999_phone/black.jpg");
+        chat(6, 475);
         return;
     }
     else if (g.map.row === 79 && g.map.col === 10) {
@@ -48,6 +48,8 @@ room475.main = function () {
         g.map.eventCounter = g.rand(4, 7);
     }
     if (g.map.eventCounter === 0) {
+        //add fame / is night here also Friday!!!
+        //if night then rape happens more, rope happens less
         let thisEvent = g.map.ev[0];
         g.map.ev.shift();
         g.map.eventCounter = g.rand(3, 5);
@@ -68,6 +70,24 @@ room475.main = function () {
                 trap.init("treasure", "forest", 475, "reload", null);
                 break;
         }
+    }
+    else {
+        if (cl.isLewd()) {
+            nav.button({
+                "type": "img",
+                "name": "lewd",
+                "left": 1720,
+                "top": 940,
+                "width": 200,
+                "height": 100,
+                "image": "map/lewd.png"
+            }, 0);
+        }
+        let maxenergy = gv.get("maxenergy");
+        let currentMyEnergy = gv.get("energy");
+        $('#room-buttons').append('<div class="room-img resize my-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1040, 1630) + '  background: #333; border-radius:10px;" ></div>');
+        $('#room-buttons').append('<div class="room-img resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1040, 1630) + '  background: #33ff33; border-radius:10px;" ></div>');
+        $(".my-life[data-t='energy']").css({ "width": ((currentMyEnergy / maxenergy) * 280 * g.ratio) + "px" });
     }
 };
 
@@ -146,6 +166,11 @@ room475.chatcatch = function (callback) {
             gv.set("cat", 1);
             nav.bg("475_fight/catpet.jpg", "475_fight/catpetnight.jpg");
             break;
+        case "passout":
+            g.map = null;
+            g.pass = 701;
+            char.room(28);
+            break;
         default:
             break;
     }
@@ -220,6 +245,14 @@ room475.chat = function (chatID) {
                 text: "Hey little buddy, who's a nice kitty. Be safe out there in the forest. ",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "thinking",
+                text: "oh my. I'm so weak and tired.... I don't think I can go on....",
+                button: [
+                    { chatID: -1, text: "[You pass out due to low energy]", callback: "passout" }
                 ]
             },
         ];

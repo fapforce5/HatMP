@@ -66,6 +66,7 @@ room476.btnclick = function (name) {
             chat(0, 476);
             break;
         case "cry":
+            room476.btnclick("killRope");
             nav.button({
                 "type": "btn",
                 "name": "cross_other",
@@ -115,7 +116,9 @@ room476.btnclick = function (name) {
             break;
         case "free":
             room476.btnclick("killRope");
-            var points = math.floor((levels.get("strength").l * (gv.get("energy") / 100)) * 3);
+            var points = Math.floor((levels.get("strength").l * (gv.get("energy") / 100)) * 3);
+            if (points < 15)
+                points = 15;
             gv.mod("energy", -15);
             g.internal.rope -= points;
 
@@ -129,17 +132,16 @@ room476.btnclick = function (name) {
             break;
         case "rest1":
             gv.mod("energy", 10);
-            char.addtime(60);
             room476.chatcatch("cross_inc");
             break;
         case "rest3":
             gv.mod("energy", 35);
-            char.addtime(180);
+            char.addtime(120);
             room476.chatcatch("cross_inc");
             break;
         case "rest8":
             gv.mod("energy", 120);
-            char.addtime(480);
+            char.addtime(420);
             room476.chatcatch("cross_inc");
             break;
         case "killRope":
@@ -357,10 +359,7 @@ room476.btnclick = function (name) {
                         "height": 646,
                         "image": "476_cabin/bg_night_cult22.png",
                     }, 476);
-                    if (g.dt.getDay() === 5)
-                        chat(14, 476);
-                    else
-                        chat(13, 476);
+                    chat(13, 476);
                     break;
             }
             g.internal++;
@@ -396,6 +395,67 @@ room476.btnclick = function (name) {
 
             g.internal++;
             break;
+        case "cookie1":
+            nav.killbutton("cookie");
+            nav.killbutton("cookie1");
+            nav.button({
+                "type": "img",
+                "name": "cookie",
+                "left": 1035,
+                "top": 909,
+                "width": 327,
+                "height": 171,
+                "image": "476_cabin/cookie_2.png",
+            }, 476);
+            chat(34, 476);
+            break;
+        case "cookie9":
+            nav.kill();
+            nav.bg("476_cabin/cookie9_" + gender.pronoun("f") + ".jpg");
+            if (cl.c.chastity !== null) {
+                nav.button({
+                    "type": "img",
+                    "name": "cookie",
+                    "left": 920,
+                    "top": 656,
+                    "width": 161,
+                    "height": 144,
+                    "image": "476_cabin/cookie_chastity1.png",
+                }, 476);
+            }
+            chat(41, 476);
+            break;
+        case "cookie12":
+            if (g.internal > 18) {
+                nav.killbutton("cookie12");
+                levels.anal(5, false, "m", true);
+                levels.anal(4, false, "m", true);
+                levels.anal(4, false, "m", true);
+                levels.anal(4, false, "m", true);
+                levels.anal(5, false, "m", true);
+                chat(44, 476);
+                return;
+            }
+            if (g.internal % 2 === 1) {
+                nav.killbutton("cookie_chastity");
+                nav.bg("476_cabin/cookie" + g.internal + "_" + (cl.c.chastity === null ? "n" : "c") + ".jpg");
+            }
+            else {
+                nav.bg("476_cabin/cookie" + g.internal + "_" + gender.pronoun("f") + ".jpg");
+                if (cl.c.chastity !== null) {
+                    nav.button({
+                        "type": "img",
+                        "name": "cookie_chastity",
+                        "left": 920,
+                        "top": 656,
+                        "width": 161,
+                        "height": 144,
+                        "image": "476_cabin/cookie_chastity1.png",
+                    }, 476);
+                }
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -410,6 +470,7 @@ room476.chatcatch = function (callback) {
         case "pillory3":
         case "pillory4":
         case "pillory5":
+        case "cookie6":
             nav.bg("476_cabin/" + callback + ".jpg");
             break;
         case "pillory8":
@@ -472,42 +533,82 @@ room476.chatcatch = function (callback) {
             break;
         case "cross":
             gv.mod("cultcabin", 1);
-            if (g.gethourdecimal() < 6)
-                char.settime(6, 7);
+            char.newdayfake();
             g.pass = "room476_cross";
             char.room(476);
             break;
         case "nextEvent":
             nav.killall();
-            nav.bg("476_cabin/cross_end.jpg");
-            zcl.displayMain(280, 800, .11, "armsup", false);
-            nav.button({
-                "type": "img",
-                "name": "cross_end",
-                "left": 793,
-                "top": 296,
-                "width": 966,
-                "height": 784,
-                "image": "476_cabin/cross_end.png",
-            }, 476);
-            chat(21, 476);
+            if (g.dt.getDay() === 5) {
+                nav.button({
+                    "type": "img",
+                    "name": "cross_end",
+                    "left": 793,
+                    "top": 296,
+                    "width": 966,
+                    "height": 784,
+                    "image": "476_cabin/cross_end_0.png",
+                }, 476);
+                chat(45, 476);
+            }
+            else {
+                
+                nav.bg("476_cabin/cross_end.jpg");
+                zcl.displayMain(280, 800, .11, "armsup", false);
+                nav.button({
+                    "type": "img",
+                    "name": "cross_end",
+                    "left": 793,
+                    "top": 296,
+                    "width": 966,
+                    "height": 784,
+                    "image": "476_cabin/cross_end.png",
+                }, 476);
+                chat(21, 476);
+            }
             break;
         case "nextEvent1":
             nav.killall();
-            switch (gv.get("cultcabin") % 3) {
-                case 0:
-                    break;
-                case 1:
-                    nav.bg("476_cabin/pillory0_" + (cl.c.chest > 2 ? "f" : "m") + ".jpg");
-                    zcl.head(200, 540, .31, "angryleft");
-                    chat(22, 476);
-                    break;
-                case 2:
-                    nav.bg("476_cabin/cookie0_" + gender.pronoun("f") + ".jpg");
-                    chat(32, 476);
-                    break;
+            if (g.dt.getDay() === 5) {
+                nav.button({
+                    "type": "img",
+                    "name": "cross_end",
+                    "left": 793,
+                    "top": 296,
+                    "width": 966,
+                    "height": 784,
+                    "image": "476_cabin/cross_end_0.png",
+                }, 476);
+                chat(45, 476);
             }
-
+            else {
+                switch (gv.get("cultcabin") % 3) {
+                    case 0:
+                        nav.bg("476_cabin/bg_night_cult5.jpg");
+                        chat(8, 476);
+                        break;
+                    case 1:
+                        nav.bg("476_cabin/pillory0_" + (cl.c.chest > 2 ? "f" : "m") + ".jpg");
+                        zcl.head(200, 540, .31, "angryleft");
+                        chat(22, 476);
+                        break;
+                    case 2:
+                        nav.bg("476_cabin/cookie0_" + gender.pronoun("f") + ".jpg");
+                        if (cl.c.chastity !== null) {
+                            nav.button({
+                                "type": "img",
+                                "name": "cookie_chastity",
+                                "left": 1112,
+                                "top": 799,
+                                "width": 84,
+                                "height": 91,
+                                "image": "476_cabin/cookie_chastity0.png",
+                            }, 476);
+                        }
+                        chat(32, 476);
+                        break;
+                }
+            }
             break;
         case "cross_inc":
             room476.btnclick("killRope");
@@ -569,13 +670,78 @@ room476.chatcatch = function (callback) {
             }, 476);
             break;
         case "cookie1":
-
+            nav.button({
+                "type": "img",
+                "name": "cookie",
+                "left": 1035,
+                "top": 190,
+                "width": 422,
+                "height": 890,
+                "image": "476_cabin/cookie_1.png",
+            }, 476);
+            nav.next("cookie1");
+            
+            break;
+        case "cookie_3":
+            nav.kill("cookie");
+            if (cl.c.chastity !== null) {
+                nav.button({
+                    "type": "img",
+                    "name": "cookie_chastity",
+                    "left": 1112,
+                    "top": 799,
+                    "width": 84,
+                    "height": 91,
+                    "image": "476_cabin/cookie_chastity0.png",
+                }, 476);
+            }
+            nav.button({
+                "type": "img",
+                "name": "cookie",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "476_cabin/cookie_3.png",
+            }, 476);
+            break;
+        case "cookie4":
+            nav.killbutton("cookie");
+            nav.bg("476_cabin/cookie4_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "cookie5":
+            nav.killbutton("cookie_chastity");
+            nav.bg("476_cabin/cookie5_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "cookie7":
+            nav.bg("476_cabin/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "cookie8":
+            nav.bg("476_cabin/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            nav.next("cookie9");
+            break;
+        case "cookie10":
+            nav.killbutton("cookie");
+            nav.bg("476_cabin/" + callback + "_" + (cl.c.chastity === null ? "n" : "c") + ".jpg");
+            break;
+        case "cookie11":
+            nav.bg("476_cabin/" + callback + "_" + (cl.c.chastity === null ? "n" : "c") + ".jpg");
+            g.internal = 12;
+            nav.next("cookie12");
             break;
         case "room460":
             char.room(460);
             break;
         case "room475":
             char.room(475);
+            break;
+        case "friday":
+            nav.kill();
+            nav.bg("476_cabin/friday.jpg");
+            zcl.displayMain(250, 400, .12, "clothes", true);
+            break;
+        case "reset":
+            char.room(476);
             break;
         default:
             break;
@@ -596,7 +762,7 @@ room476.chat = function (chatID) {
             speaker: "thinking",
             text: message,
             button: [
-                { chatID: -1, text: g.internal.rope + " % free", callback: "cross_inc" }
+                { chatID: -1, text: g.internal.rope + "% free", callback: "cross_inc" }
             ]
         };
     }
@@ -901,11 +1067,11 @@ room476.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "cult",
-                text: "Today we're going to play cookie and you're the cookie. Just " +
+                text: "You must really love cock! Just " +
                     "stay right there and don't move or we'll stomp the shit out of you. " +
                     "Got it!",
                 button: [
-                    { chatID: 33, text: "y-y-yes", callback: "cookie1" },
+                    { chatID: -1, text: "y-y-yes", callback: "cookie1" },
                 ]
             },
             {
@@ -914,6 +1080,128 @@ room476.chat = function (chatID) {
                 text: "This place is creepy. I need to stay away from here. ",
                 button: [
                     { chatID: -1, text: "Sneak away", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "me",
+                text: "OW! You don't have to be so rough!",
+                button: [
+                    { chatID: 35, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "cult",
+                text: "Shut up slut! Holes don't get to complain. If you didn't want to " +
+                    "be raped by everyone here, you shouldn't have come! ",
+                button: [
+                    { chatID: 36, text: "*whimper*", callback: "cookie_3" }
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "cult",
+                text: "But you are here. You want all our dicks inside you. I could feel " +
+                    "you prostate twitch around my finger begging to get pounded again " +
+                    "and again by all these cocks! You should thank us. We're just giving " +
+                    "you what you want, but are too scared to ask for it. ",
+                button: [
+                    { chatID: 37, text: "...no", callback: "cookie4" }
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "cult",
+                text: "Shut up! Holes don't talk! ",
+                button: [
+                    { chatID: 38, text: "ooooffff!", callback: "cookie5" }
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "cult",
+                text: "OOhh. Is the little " + gender.pronoun("boy") + " going to cry?",
+                button: [
+                    { chatID: 39, text: "*whimper in pain*", callback: "cookie6" }
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "cult",
+                text: "I'm about to give you something to cry about you baby! ",
+                button: [
+                    { chatID: 40, text: "*whimper in pain*", callback: "cookie7" }
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "cult",
+                text: "You like my big stick toying with your ass? I know you do. Sluts " +
+                    "love my big stick toying up their ass! ",
+                button: [
+                    { chatID: -1, text: "*whimper in pain*", callback: "cookie8" }
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "cult",
+                text: "All right boys! Who wants to fuck the meat bag? ",
+                button: [
+                    { chatID: 42, text: "*sobbing in desperation*", callback: "cookie10" }
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "cult",
+                text: "Should I pull the club out of " + gender.pronoun("his") + " ass first? ",
+                button: [
+                    { chatID: 43, text: "p-p-p-please", callback: "" }
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "cult",
+                text: "Naw! Fuck " + gender.pronoun("him") + " with the club in; " + 
+                    gender.pronoun("she") + " can pretend like " + gender.pronoun("she") + 
+                    "'s getting fucked by two cocks at the same time! Hehehehe",
+                button: [
+                    { chatID: -1, text: "*whine*", callback: "cookie11" }
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "cult",
+                text: "Ok cum sack. Time to put you back on the cross. We're going " +
+                    "to enjoy raping you some more! I do love a broken sissy! ",
+                button: [
+                    { chatID: -1, text: "*whine*", callback: "cross" }
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "kei",
+                text: "Hey, what are you doing in the fuck cabin? ",
+                button: [
+                    { chatID: 46, text: "I was kidnapped and tied up here. Let me down dude?", callback: "" }
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "kei",
+                text: "Sure. Of course.  ",
+                button: [
+                    { chatID: 47, text: "Oh thank you! Thank you so much! ", callback: "friday" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "kei",
+                text: "You're lucky I stop by the cabin on Fridays or you would have been stuck up there all night! " +
+                    "I'd love to help you get back, but I have to get to the sermon. Can't " +
+                    "miss Friday Surmon! Later! ",
+                button: [
+                    { chatID: -1, text: "Sure. Later. ", callback: "reset" }
                 ]
             },
         ];

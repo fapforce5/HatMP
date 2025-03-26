@@ -10,7 +10,7 @@ room9.main = function () {
     $('.room-topper').hide();
 
     $.each(btnList, function (i, v) {
-        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb")
+        if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb" || v.name === "expose")
             nav.button(v, 9);
     });
 
@@ -65,7 +65,7 @@ function room9_btnList() {
             "width": 1424,
             "height": 53,
             "image": "9_computer/09_tabNavBar.jpg"
-        },
+        },     
         {
             "type": "btn",
             "name": "close",
@@ -101,6 +101,17 @@ function room9_btnList() {
         });
     }
 
+    if (sissy.st[29].ach) {
+        btnList.push({
+            "type": "btn",
+            "name": "expose",
+            "left": 800,
+            "top": 591,
+            "width": 157,
+            "height": 162,
+            "image": "9_computer/expose.png"
+        });
+    }
     return btnList;
 }
 
@@ -200,7 +211,7 @@ room9.btnclick = function (name) {
             $('#room-buttons').html('');
             btnList = room9_btnList();
             $.each(btnList, function (i, v) {
-                if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb")
+                if (v.name === "powerOff" || v.name === "files" || v.name === "internet" || v.name === "porn" || v.name === "usb" || v.name === "missyusb" || v.name === "expose")
                     nav.button(v, g.roomID);
             });
             break;
@@ -311,6 +322,57 @@ room9.btnclick = function (name) {
                     text: "Sissy Porn"
                 }, 9);
             }
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 450,
+                "top": 53,
+                "width": 42,
+                "height": 42,
+                "image": "9_computer/09_close.png"
+            }, 9);
+            break;
+        case "expose":
+            nav.killall();
+            var sissyType = "sissy3";
+            if (inv.has("sissy0"))
+                sissyType = "sissy0";
+            else if (inv.has("sissy1"))
+                sissyType = "sissy1";
+            else if (inv.has("sissy2"))
+                sissyType = "sissy3";
+            nav.button({
+                "type": "img",
+                "name": "pornbg",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/" + sissyType + ".jpg"
+            }, 9);
+            var qtxt = "Ms. Black<br/>" +
+                "Looking Sexy girl! I know these men will love what they see!</br><br/>" +
+                "Big Dick Daddy<br/>" +
+                "Looking good girl! Need to strip off that sissy suit and show us your pussy!<br/><br/>" +
+                "Stphanie<br/>" +
+                "So cute! <br/><br/>" +
+                "Sissy Sally<br/>" +
+                "Oh wow! Im jelly of your legs girl! <br/><br/>" +
+                "Ron<br/>" +
+                "I want to lick you from your toes to your holes<br/><br/>" +
+                "J.<br/>" +
+                "FFFUUUUUCCCKKKK!!!! I need that in my life! <br/><br/>" +
+                "Killa B<br/>" +
+                "I'm going to find you, tie you up, and fuck you hard bitch. <br/><br/>";
+            nav.t({
+                type: "img",
+                name: "pornbg",
+                left: 850,
+                top: 250,
+                font: 20,
+                hex: "#333333",
+                text: qtxt
+            }, 9);
             nav.button({
                 "type": "btn",
                 "name": "close",

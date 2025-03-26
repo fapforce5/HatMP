@@ -36,6 +36,11 @@ room27.main = function () {
             zcl.displayMirror();
             chat(0, 27);
             break;
+        case 170:
+            nav.bg("27_mirror/170.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
+            break;
         case 527:
             nav.bg("27_mirror/527.jpg");
             zcl.displayMirror();
@@ -145,7 +150,7 @@ room27.btnclick = function (name) {
             break;
         case "eyeshadow":
             room27.btnclick("clear");
-            if (makeuplevel > 2) {
+            if (makeuplevel > 2 || g.pass === 170) {
                 if (inv.get("eyeshadow").count < 1) {
                     chat(28, 27);
                 }
@@ -308,7 +313,7 @@ room27.chatcatch = function (callback) {
         case "makeup":
             if (inv.has("makeup") || g.pass === 57) {
                 sc.select("makeup_natural", "27_mirror/icon_natural.png", 5);
-                if (makeuplevel > 0)
+                if (makeuplevel > 0 || g.pass === 170)
                     sc.select("makeup_blush", "27_mirror/icon_blush.png", 6);
                 if (makeuplevel > 1)
                     sc.select("makeup_blushheavy", "27_mirror/icon_blushheavy.png", 7);
@@ -575,7 +580,7 @@ room27.chatcatch = function (callback) {
             zcl.displayMirror();
             break;
         case "checkmakeup":
-            if (qdress.st[5].ach) {
+            if (qdress.st[5].ach || g.pass === 170) {
                 nav.killall();
                 zcl.displayMirror();
                 sc.select("makeup", "27_mirror/icon_makeup.png", 6);

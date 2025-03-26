@@ -1,23 +1,23 @@
 ﻿//Room name
 var room150 = {};
 room150.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "door",
-            "left": 931,
-            "top": 452,
-            "width": 252,
-            "height": 221,
-            "image": "150_jones/door.png",
-            "night": "150_jones/doorNight.png"
-        }
-    ];
-    var navList = [0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 150);
-    });
-    nav.buildnav(navList);
+    if (sc.getMission("jones", "fail").startedOrComplete) {
+        nav.bg("150_jones/day.jpg", "150_jones/night.jpg");
+        chat(7, 150);
+    }
+    if (g.isNight()) {
+        nav.bg("150_jones/night.jpg");
+        chat(0, 150);
+    }
+
+    nav.bg("150_jones/jeeves.jpg");
+    switch (sc.taskGetStep("jones", "invite")) {
+        case 0: 
+        case 1:
+            chat(1, 150);
+
+            break;
+    }
 };
 
 room150.btnclick = function (name) {
@@ -59,9 +59,20 @@ room150.btnclick = function (name) {
 
 room150.chatcatch = function (callback) {
     switch (callback) {
-        case "enter":
-            g.pass = "";
-            char.room(151);
+        case "bitch":
+        case "bg":
+        case "bitch_smile":
+            nav.bg("150_jones/" + callback + ".jpg");
+            break;
+        case "endBad":
+            sc.completeMission("jones", "invite", false);
+            sc.startMission("jones", "fail");
+            char.addtime(60);
+            levels.mod("dom", 100);
+            char.room(0);
+            break;
+        case "leave":
+            char.room(0);
             break;
         default:
             break;
@@ -72,56 +83,101 @@ room150.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "jones",
-            text: "Did you come to serve me?",
+            speaker: "!boy",
+            text: sc.n("jones") + " doesn't accept guests after hours. You'll have to come " +
+                "back during the day. ",
             button: [
-                { chatID: 1, text: "Yes sir", callback: "" },
-                { chatID: -1, text: "oh no", callback: "" }
+                { chatID: 1, text: "Yes sir", callback: "leave" },
             ]
         },
         {
             chatID: 1,
-            speaker: "jones",
-            text: "If you serve me know I will not give a fuck about you your boundaries, or your dignity. I will slap your ass when you walk by and laugh " +
-                "when you tell me to stop. Put you in whatever clothes I want. I'll jerk off into your food as you eat it. I'll pull your sissy clit out when you try talk. Casually spit in your " +
-                "face everytime we go out. Piss on you while you sleep and take you whenever I want. You aren't my equal, I will never respect you. I will treat " +
-                "you like my inferior play thing to use and discard as I see fit. Are you ready my toy?",
+            speaker: "butler",
+            text: "Huh? I don't remember " + sc.n("jones") + " ordering a common trollop. " +
+                "hehe. So what can I do for you? ",
             button: [
-                { chatID: 2, text: "Yes sir", callback: "" },
-                { chatID: -1, text: "oh wow... uhhh no way", callback: "" }
+                { chatID: 2, text: sc.n("jones") + " asked me to come by. ", callback: "" }
             ]
         },
         {
             chatID: 2,
             speaker: "jones",
-            text: "Good slut. You're not ready to serve me until  you've proven yourself worthy to wear my piss infront of " +
-                "a croud of people. Now tell me what a dirty slut you are and fuck off",
+            text: "Oh! So it appears we did order a common trollop! And it's been delivered. " +
+                "How wonderful! I'll fetch " + sc.n("!bitch") + " straight away. A most lovely " +
+                "woman who can assist you. ",
             button: [
-                { chatID: -1, text: "I'm such a dirty dirty slut!", callback: "" }
+                { chatID: 3, text: "Oh thanks. ", callback: "bitch" }
             ]
         },
         {
             chatID: 3,
-            speaker: "jones",
-            text: sc.n("p") + " told me you were participating. Come in. ",
+            speaker: "!bitch",
+            text: "Fuck! I thought I told you to stay the fuck away! Fuck fuck fuck! " +
+                "You really are an idiot aren't you! fuck. Wait right here while I " +
+                "talk to " + sc.n("jones") + " on what to do with you. ",
             button: [
-                { chatID: -1, text: "Yes sir. ", callback: "enter" },
+                { chatID: 4, text: "ok [wait] ", callback: "bg" },
             ]
         },
         {
             chatID: 4,
-            speaker: "jones",
-            text: "I knew you would return, whore. Report downstairs for your next assignment. ",
+            speaker: "thinking",
+            text: "She's such a bitch! Maybe that's why everyone calls her " + sc.n("!bitch") +
+                ". I hope I get to talk just with " + sc.n("jones") + " and she leaves us " +
+                "alone. I just don't get why she's always so mean to me. ",
             button: [
-                { chatID: -1, text: "Yes sir. ", callback: "enter" }
+                { chatID: 5, text: "...", callback: "bitch_smile" }
             ]
         },
         {
             chatID: 5,
-            speaker: "jones",
-            text: "I can see your panty line. Remove those awful panties and bra and come back. ",
+            speaker: "!bitch",
+            text: sc.n("jones") + " decided that you aren't ready to attend to him until " +
+                "after I have properly trained you as his house bitch. Only after I have " +
+                "properly broken you down and created you into a proper house bitch can " +
+                "you attend to " + sc.n("jones") + ". You can leave now, or do what ever " +
+                "I tell you, and you won't like it! ",
             button: [
-                { chatID: -1, text: "Oh, sorry, yes sir. ", callback: "" }
+                { chatID: 8, text: "I'm in. I'll do anything to see " + sc.n("jones") + " again. ", callback: "bitch" },
+                { chatID: 6, text: "Life is too short. I'm not going to deal with your craziness.", callback: "" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "!bitch",
+            text: "Perfect. I'll let " + sc.n("butler") + " know you'll never be back. ",
+            button: [
+                { chatID: -1, text: "Do that. You're a terrible person and I hope I never see you again. ", callback: "endBad" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "!boy",
+            text: sc.n("jones") + " said you're aren't allowed on this property. ",
+            button: [
+                { chatID: -1, text: "Yeah. That sounds right. ", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "!bitch",
+            text: "pfffft. Fine! Strip off your clothes. You only wear what I tell you " +
+                "to wear. When you come here you will strip down get on your knees " +
+                "with your hands behind your back and wait for me. It's called the " +
+                "exposed position. You'll assume that position when told. " +
+                "Sometime you'll have to wait for " + +
+                "hours if I'm busy. But once you enter that is what you do until " +
+                sc.n("jones") + " or I tell you otherwise. Got it! ",
+            button: [
+                { chatID: 9, text: "Yeah ", callback: "" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "!bitch",
+            text: "Well.... I'm waiting! ",
+            button: [
+                { chatID: -1, text: "oh", callback: "" }
             ]
         },
     ];

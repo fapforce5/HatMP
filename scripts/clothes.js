@@ -251,7 +251,6 @@ cl.cTemp = {
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, buttplug: null
 };
 
-
 cl.pantiesTxt = function () {
     if (cl.c.panties !== null)
         return cl.list[cl.where("panties", cl.c.panties)].sex === "f" ? "panties" : "underwear";
@@ -563,7 +562,6 @@ cl.hasClothingTypeSex = function (type, sex) {
     return false;
 };
 
-
 cl.gimmieAll = function () {
     var i;
     for (i = 0; i < cl.list.length; i++)
@@ -691,6 +689,15 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("Bra");
             if (cl.getBodyHair() !== null)
                 missingClothing.push("A shave you hairy beast");
+            break;
+        case "heels":
+            if (cl.c.shoes === null)
+                missingClothing.push("heels");
+            else {
+                var shoes = cl.list[cl.where("shoes", cl.c.shoes)];
+                if (!(shoes.display.includes("heels") || shoes.display.includes("kitten") || shoes.display === "black boots"))
+                    missingClothing.push("heels");
+            }
             break;
     }
     

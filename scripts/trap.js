@@ -256,7 +256,7 @@ trap.rope = function () {
     switch (trap.phase) {
         case 0:
             var rwearing = cl.wearing();
-            if (cl.c.sock !== null || cl.c.shoes !== null) {
+            if (cl.c.socks !== null || cl.c.shoes !== null) {
                 nav.bg("1005_trap/rope/mud.jpg");
                 chat(51, 1005);
             }

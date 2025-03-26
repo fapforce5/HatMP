@@ -84,7 +84,7 @@ room220.btnclick = function (name) {
 room220.chatcatch = function (callback) {
     switch (callback) {
         case "takePills":
-            inv.addMulti("hormone", 3);
+            inv.addMulti("hormone", g.rand(1, 2));
             nav.killbutton("pills");
             break;
         case "clean1":

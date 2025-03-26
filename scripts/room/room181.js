@@ -28,6 +28,11 @@ room181.main = function () {
             zcl.displayMain(150, 800, .22, "clothes", true);
             chat(94, 181);
             break;
+        case "ex215":
+            nav.bg("181_black/ez215_0.jpg");
+            zcl.displayMain(120, 1100, .20, "clothes", true);
+            chat(98, 181);
+            break;
     }
 };
 
@@ -80,6 +85,8 @@ room181.chatcatch = function (callback) {
         case "b303_10":
         case "b303_11":
         case "b303_12":
+        case "ez215_2":
+        case "ez215_3":
             nav.bg("181_black/" + callback + ".jpg");
             break;
         case "b203_2":
@@ -178,8 +185,22 @@ room181.chatcatch = function (callback) {
             nav.bg("181_black/b303_15.jpg");
             zcl.displayMain(100, 600, .23, "clothes", true);
             break;
+        case "ez215_1":
+            nav.kill();
+            nav.bg("181_black/" + callback + ".jpg");
+            break;
         case "completeClass":
             sissy.passclass(true);
+            break;
+        case "ez215_sissy0":
+        case "ez215_sissy1":
+        case "ez215_sissy2":
+        case "ez215_sissy3":
+            levels.mod("fame", 20);
+            var sissyHolder = callback.replace("ez215_", "");
+            inv.add(sissyHolder);
+            pic.add(sissyHolder);
+            nav.bg("181_black/" + callback + ".jpg");
             break;
         default:
             break;
@@ -1131,6 +1152,169 @@ room181.chat = function (chatID) {
                 "a naughty girl and needs to learn her own lessons. ",
             button: [
                 { chatID: -1, text: "...", callback: "completeClass" },
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "black",
+            text: "No thrill is as delicious as exposing your slutty side to strangers " +
+                "you've never met. There is no greater rush than reading the lewd comments " +  
+                "these stange men will make about how they'll fuck you, tie you up. punish you, " +
+                "and gather all their friends to rape your tight little holes. ",
+            button: [
+                { chatID: 99, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "black",
+            text: "Now don't worry, my new little hatchlings. I know most of you haven't " +
+                "told a soul that you enjoy dressing up like a girl and long to get sexually " +
+                "molested and used. You're outing needs to be personal, so all pictures " +
+                "we take and post will use cleaver angles to hide your identity. ",
+            button: [
+                { chatID: 100, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "!chris",
+            text: "Post? Post like on the internet? Post where? ",
+            button: [
+                { chatID: 101, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "black",
+            text: "Of course on the internet. I'm going to take a picture of each of you " +
+                "to post on my favorite sissy exposure website. I'll add in some basic info " +
+                "about your sissy self so the dirty old men know more about your secret desires. " +
+                "Then I'll give you the link so you can see it at home and each of you will get " +
+                "an offical Sissy ID card! Isn't this so exciting!",
+            button: [
+                { chatID: 102, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "!thomas",
+            text: "I don't know. It's one thing wearing a skirt in here, but showing " +
+                "the world makes me scared. What if someone knows me looks at it? Can " +
+                "I delete it after? ",
+            button: [
+                { chatID: 103, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "black",
+            text: "No. You won't be able to delete it. It will be up there forever. " +
+                "If someone you knows is able to figure out that it's you, then you'll " +
+                "just have to have that uncomfortable talk with them. Who knows, you may " +
+                "find yourself a new sexual partner that is into sissies like each of you. " +
+                "Doing something for the first time is always a little scary, but once you " +
+                "get used to the idea you'll find yourself posting more revealing pictures " +
+                "of your slutty selves. Be careful it is addicting. ",
+            button: [
+                { chatID: 104, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "!timothy",
+            text: "Will we be naked in our pictures? ",
+            button: [
+                { chatID: 105, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "black",
+            text: "Hahaha, no. It's a sissy exposure site, not a naked boy site. You'll " +
+                "each wear your sissy uniforms, but you'll pick your pose for the website " +
+                "and your Sissy ID card. The pose is important, as it shows what kind of " +
+                "of sissy you are. Some like to flash their ass, some their clitty cage, their feet, " +
+                "or try to stuff their shirts so they appear to have breasts. You pose will say " +
+                "a lot about you, and what you're interested in. But don't overthink it too much. " +
+                "This will be your first picture of your sissy self online, but it won't be your last. ",
+            button: [
+                { chatID: 106, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "black",
+            text: sc.n("!timothy") + ", you're the sluttist girl here, we'll start with you " +
+                "so you can show the other girls good poses. ",
+            button: [
+                { chatID: 107, text: "...", callback: "ez215_1" },
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "black",
+            text: "Now girls, look at " + sc.n("!timothy") + "'s pose. It shows her confidence " +
+                "in who she is, with just a subtle display of her little chastity cage to " +
+                "show the viewer her tiny clitty is off limits. Simply sex. Such a bratty sissy " +
+                "I'm looking forward to breaking. ",
+            button: [
+                { chatID: 108, text: "...", callback: "ez215_2" },
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "black",
+            text: sc.n("!thomas") + " is on her knees. This is becuase she wants everyone " +
+                "to know that she's a submissive cock sucker. Isn't that right " + sc.n("!thomas") +
+                "?",
+            button: [
+                { chatID: 109, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "!thomas",
+            text: "Oh yes ma'am! I just love the idea of men gathering around me and " +
+                "making me suck on their penises. So hot!",
+            button: [
+                { chatID: 110, text: "...", callback: "ez215_3" },
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "black",
+            text: sc.n("!chris") + " here has turned her back to the camera. This shows " +
+                "she's still very afraid of showing her face, but does love to show off " +
+                "her tight little butt. " + sc.n("!chris") + " still needs a lot of work " +
+                "in finding her confidance, hopefully the comments in this post will help " +
+                "her. ",
+            button: [
+                { chatID: 111, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "black",
+            text: "Now finally what pose would you like to do? ",
+            button: [
+                { chatID: 112, text: "Front", callback: "ez215_sissy3" },
+                { chatID: 112, text: "Back", callback: "ez215_sissy1" },
+                { chatID: 112, text: "Upskirt", callback: "ez215_sissy2" },
+                { chatID: 112, text: "Clitty cage flash", callback: "ez215_sissy0" },
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "black",
+            text: "Cute! Really shows off your tight little body. I've sent the " +
+                "image to your phone. You can see your page on the sissy exposure " +
+                "site when you get home. For those that have never shown off before " +
+                "I'm sure you'll be excited to see all the great comments. These pictures  " +
+                "will be on the internet forever. Completely out of your control. Now go " +
+                "home and read the nasty things the dirty old men are saying about you. ",
+            button: [
+                { chatID: -1, text: "Weeee!", callback: "completeClass" },
             ]
         },
     ];

@@ -97,6 +97,19 @@ room10.main = function () {
             });
         }
 
+        if (sissy.st[16].ach) {
+            btnList.push({
+                "type": "btn",
+                "name": "heels",
+                "left": 783,
+                "top": 86,
+                "width": 236,
+                "height": 251,
+                "title": "Practice Walking in heels",
+                "image": "10_mainchar/heels.png",
+            });
+        }
+
         var navList = [];
         var missingClothing = cl.hasoutfit("public");
 

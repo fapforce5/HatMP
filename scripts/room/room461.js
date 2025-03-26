@@ -295,9 +295,10 @@ room461.chatcatch = function (callback) {
             nav.bg("461_run/cult2.jpg")
             break;
         case "cult3":
-            if (sc.getstep("cultboy") === 0) {
-                sc.setstep("cultboy", 1);
-                sc.setstep("wyatt", 1);
+            if (sc.getMission("wyatt", "forest").notStarted) {
+                sc.show("wyatt");
+                sc.startMission("wyatt", "forest");
+                sc.completeMissionTask("wyatt", "forest", 0);
                 nav.bg("461_run/cult3a.jpg");
                 chat(8, 461);
             }
@@ -350,6 +351,7 @@ room461.chatcatch = function (callback) {
             break;
         case "cult13":
             nav.killbutton("cult12");
+            levels.anal(3, false, "m", true);
             nav.bg("461_run/cult13.jpg");
             break;
         case "cult14":
@@ -357,12 +359,6 @@ room461.chatcatch = function (callback) {
             break;
         case "cult15":
             char.addtime(120);
-            if (sc.getstep("cultboy") === 1)
-                sc.setstep("cultboy", 2);
-            if (cl.c.butthole < 2)
-                cl.c.butthole += .2;
-            gv.mod("creamPied", 1);
-            gv.mod("receiveAnalMale", 1);
             daily.set("cultrun");
             cl.undo();
             char.room(450);
@@ -547,8 +543,7 @@ room461.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "wyatt",
-            text: "I'm going to get back to my office in the police station, but if you ever want to chat, please stop by. Oh, and " +
-            "please stay out of the park at night until we've had a chance to rid the town of this cult.",
+            text: "Please stay out of the park at night until we've had a chance to rid the town of this cult.",
             button: [
                 { chatID: -1, text: "Oh, thanks", callback: "cult3d" }
             ]
