@@ -165,7 +165,7 @@ room150.chat = function (chatID) {
                 "to wear. When you come here you will strip down get on your knees " +
                 "with your hands behind your back and wait for me. It's called the " +
                 "exposed position. You'll assume that position when told. " +
-                "Sometime you'll have to wait for " + +
+                "Sometime you'll have to wait for " + 
                 "hours if I'm busy. But once you enter that is what you do until " +
                 sc.n("jones") + " or I tell you otherwise. Got it! ",
             button: [
