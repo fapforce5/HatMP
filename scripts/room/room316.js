@@ -173,6 +173,10 @@ room316.main = function () {
         }
     }
     else {
+        if (sc.taskGetStep("janice", "femdom") === 4) {
+            chat(132, 316)
+            return;
+        }
         if (!sc.getSecret("janice").secretOut) {
             if (cl.isCrossdressing() || cl.c.chest > 2)
                 sc.modSecret("janice", 100);
@@ -2557,15 +2561,6 @@ room316.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 128,
-                speaker: "janice",
-                text: "You got the strap-on? Awesome! I'll get so many viewers! We " +
-                    "should do a show! ",
-                button: [
-                    { chatID: -1, text: "Let's go", callback: "buildMenu" },
-                ]
-            },
-            {
                 chatID: 129,
                 speaker: "janice",
                 text: "You need to get us a strap-on. I think the sex store might sell " +
@@ -2598,7 +2593,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: "This is very much in progress... check back later ",
                 button: [
-                    { chatID: -1, text: "Damn. Ok. ", callback: "breakupDogsit" },
+                    { chatID: -1, text: "Damn. Ok. ", callback: "leave" },
                 ]
             },
 
