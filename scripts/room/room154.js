@@ -1,30 +1,31 @@
 ﻿//Room name
-var room152 = {};
-room152.main = function () {
-    if (!daily.get("jonesCleanRoom1"))
+var room154 = {};
+room154.main = function () {
+    if (!daily.get("jonesCleanRoom3")) {
+        nav.bg("154_diningRoom/dirty.jpg");
         sc.select("clean", "152_sittingRoom/clean.png", 0);
-
-    nav.buildnav([150, 153, 154]);
+    }
+    nav.buildnav([150, 152, 153]);
 };
 
-room152.btnclick = function (name) {
+room154.btnclick = function (name) {
     switch (name) {
         case "clean":
             nav.killall();
             char.addtime(60);
-            nav.bg("152_sittingRoom/dust.jpg");
-            daily.set("jonesCleanRoom1");
+            nav.bg("154_diningRoom/clean.jpg");
+            daily.set("jonesCleanRoom3");
             nav.next("finishClean");
             break;
         case "finishClean":
-            char.room(152);
+            char.room(154);
             break;
         default:
             break;
     }
 };
 
-room152.chatcatch = function (callback) {
+room154.chatcatch = function (callback) {
     switch (callback) {
         case "inspect":
           
@@ -35,7 +36,7 @@ room152.chatcatch = function (callback) {
     }
 };
 
-room152.chat = function (chatID) {
+room154.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,

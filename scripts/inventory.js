@@ -33,6 +33,7 @@ inv.t = [
     { t: "p", n: "Phone Case" },
     { t: "q", n: "Milk Pump" },
     { t: "r", n: "Room Decoration" },
+    { t: "s", n: "Sex Toys" },
     { t: "t", n: "Penis Cream" },
     { t: "x", n: "ID Card" },
     { t: "y", n: "Hypno" },
@@ -122,9 +123,11 @@ inv.master = [
     { type: "d", name: "towerDildo", display: "Tower of Power", entry: false, count: null, cost: 90, image: "butt_tower.png", n: false, desc: "Stretch that sissy hole" },
     { type: "d", name: "horseDildo", display: "Horse Dildo", entry: false, count: null, cost: 180, image: "butt_horse.png", n: false, desc: "You'll blow your ass out" },
 
+
     { type: "q", name: "pump", display: "Breast Pump", entry: false, count: null, cost: 120, image: "pump.png", n: false, desc: "BP-900 for sucking that milk from your titties!" },
 
     { type: "c", name: "handcuff", display: "Handcuffs", entry: false, count: null, cost: 36, image: "handcuffs.png", n: false, desc: "Handcuffs, you know, for your hands" },
+    { type: "s", name: "straponSmall", display: "Small Strap-on", entry: false, count: null, cost: 180, image: "straponSmall.png", n: false, desc: "Beginner strap-on" },
 
     { type: "t", name: "tinypp", display: "Tiny PP", entry: false, count: null, cost: -1, image: "tinypp.png", n: false, desc: "Shrink your pp" },
     { type: "z", name: "tifgift", display: "Gift From Tiffany", entry: false, count: null, cost: -1, image: "tifGift.png", n: false, desc: "Go home and chek it out" },

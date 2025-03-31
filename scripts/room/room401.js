@@ -137,6 +137,7 @@ room401.main = function () {
             room401.makeInv(["d"], qdress.st[2].ach);
             room401.makeInv(["c"], true, 1);
             room401.makeInv(["q"], gv.get("milk") > -1, 1);
+            room401.makeInv(["s"], sc.getMissionTask("janice", "femdom", 2).complete || qdress.st[2].ach);
             navList = [650, 0];
             break;
         case "happyGirl":

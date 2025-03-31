@@ -297,9 +297,6 @@ room28.future = function () {
             switch (future.st[i].name) {
                 case "janicevacation":
                     sc.completeMission("dog", "vacation", true);
-                    sc.startMission("janice", "bitch");
-                    sc.completeMissionTask("janice", "bitch", 0);
-                    sc.completeMissionTask("janice", "bitch", 1);
                     break;
                 case "envytest":
                     if (sc.getMissionTask("envy", "gf", 6).notStarted) {

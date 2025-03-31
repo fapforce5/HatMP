@@ -269,7 +269,15 @@ gv.init = function () {
         { n: "constructionPay", t: false },
         { n: "treasureAzrael", t: false }, 
         { n: "wolfsniff", t: false },
-        { n: "parkNight", t: false }
+        { n: "parkNight", t: false },
+
+        { n: "jonesCleanStart", t: false },
+        { n: "jonesCleanEnd", t: false },
+        { n: "jonesCleanRoom1", t: false },
+        { n: "jonesCleanRoom2", t: false },
+        { n: "jonesCleanRoom3", t: false },
+
+        { n: "janiceWebcam", t: false },
     ];
 
     weekly.st = [

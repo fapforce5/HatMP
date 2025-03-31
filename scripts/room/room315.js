@@ -46,11 +46,22 @@ room315.btnclick = function (name) {
                 nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg");
                 chat(14, 315);
             }
-            else if (sc.taskGetStep("janice", "bitch") === 3) {
+            else if (sc.taskGetStep("janice", "femdom") === 1) {
+                sc.completeMissionTask("janice", "femdom", 1);
                 chat(18, 315);
             }
             else {
                 var dateTask = sc.taskGetStep("janice", "date");
+                if (cl.c.chest > 2)
+                    sc.modSecret("janice", 100);
+                if (cl.isLewd()) {
+                    if (cl.c.chastity !== null)
+                        sc.modSecret("janice", 50);
+                    nav.kill();
+                    nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg");
+                    chat(27, 315);
+                    return;
+                }
                 if (dateTask === 2) {
                     if (g.dt.getDay() === 5 || g.dt.getDay() === 6) {
                         if (gv.get("money") < 100) {
@@ -172,7 +183,6 @@ room315.chatcatch = function (callback) {
             char.room(316);
             break;
         case "completeBitch3":
-            sc.completeMissionTask("janice", "bitch", 3);
             char.room(316);
             break;
         default:
@@ -417,6 +427,14 @@ room315.chat = function (chatID) {
                 "out everywhere. ",
             button: [
                 { chatID: -1, text: "...", callback: "completeBitch3" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "janice",
+            text: "That's so disrespectful! Go put on clothes before coming here! ",
+            button: [
+                { chatID: -1, text: "oh. Of course. ", callback: "leave" },
             ]
         },
     ];

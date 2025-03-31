@@ -465,22 +465,27 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "bitch", mStatus: 0, title: "Wonderful boyfriend", desc: "What a great guy! ", task:
+                missionName: "femdom", mStatus: 0, title: "Mine!", desc: "Help her find herself", task:
                     [
-                        { id: 0, txt: "Not used", show: false, mStatus: 0, roomId: 316 },
-                        { id: 1, txt: "Not used", show: false, mStatus: 0, roomId: 316 },
-                        { id: 2, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
-                        { id: 3, txt: "That's how you earn money!", show: true, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Webcam to earn cash", show: true, mStatus: 0, roomId: 316 },
+                        { id: 2, txt: "She knows. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 3, txt: "Fist show was a bust. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 4, txt: "Get a strap-on. ", show: true, mStatus: 0, roomId: 316 },
                     ]
             },
             {
-                missionName: "webcam", mStatus: 0, title: "Webcam", desc: "Help her make some extra money", task:
+                missionName: "webcam", mStatus: 0, title: "Webcam", desc: "Fuck her pussy to make extra money", task:
                     [
-                        { id: 0, txt: "First show", show: false, mStatus: 0, roomId: 316 },
+                        { id: 0, txt: "First show", show: true, mStatus: 0, roomId: 316 },
+                        { id: 1, txt: "Ate her pussy", show: true, mStatus: 0, roomId: 321 },
+                        { id: 2, txt: "Came down her throat", show: true, mStatus: 0, roomId: 321 },
+                        { id: 3, txt: "Fuck her for the first time", show: true, mStatus: 0, roomId: 321 },
+                        { id: 4, txt: "Meet my femboy!", show: true, mStatus: 0, roomId: 321 },
                     ]
             },
             {
-                missionName: "cuck", mStatus: 0, title: "Cuck", desc: "It's not cheating if you watch", task:
+                missionName: "cuck-x", mStatus: 0, title: "Cuck", desc: "It's not cheating if you watch", task:
                     [
                         { id: 0, txt: "Found out", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Open thigs up a bit", show: true, mStatus: 0, roomId: 315 },
@@ -489,7 +494,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "datr", mStatus: 0, title: "Datr", desc: "Dating App", task:
+                missionName: "datr-x", mStatus: 0, title: "Datr", desc: "Dating App", task:
                     [
                         { id: 0, txt: "Mike first time", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Mike again", show: true, mStatus: 0, roomId: 315 },
@@ -502,7 +507,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "dog", mStatus: 0, title: "Bad dog!", desc: "You're a very naughty girl!", task:
+                missionName: "dog-x", mStatus: 0, title: "Bad dog!", desc: "You're a very naughty girl!", task:
                     [
                         { id: 0, txt: "Dish ran away without the spoon", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Caught!", show: true, mStatus: 0, roomId: 315 },
@@ -1271,7 +1276,7 @@ sc.getLevel = function (name) {
     return null;
 };
 
-sc.modLevel = function (name, amount, targetLevel) {
+sc.modLevel = function (name, amount, targetLevel = 10) {
     var actualAmount = 0;
     var i, j;
     sc.getch
@@ -1405,6 +1410,20 @@ sc.getActiveMissions = function (name) {
 
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
+};
+
+sc.completeAllUnstartedMissionAndTasks = function (name, missionName, success) {
+    if (success === undefined)
+        alert("undefined success");
+
+    let ind = sc.getMission(name, missionName);
+    if (sc.charMission[ind.i].mission[ind.j].mStatus < 100)
+        sc.charMission[ind.i].mission[ind.j].mStatus = success ? 100 : 101;
+
+    for (let i = 0; i < sc.charMission[ind.i].mission[ind.j].task.length; i++) {
+        if (sc.charMission[ind.i].mission[ind.j].task[i].mStatus < 100) //incomplete
+            sc.charMission[ind.i].mission[ind.j].task[i].mStatus = success ? 100 : 101;
+    }
 };
 
 sc.completeMissionTaskAll = function (name, missionName, taskId, success = true) {
@@ -1660,12 +1679,6 @@ sc.load = function (ra) {
             sc.char[y].secret = 95;
         if (sc.char[z].secret > 95)
             sc.char[z].secret = 95;
-    }
-    //fix v0.24 
-    if (sc.getMission("janice", "bitch").startedOrComplete) {
-        sc.startMission("janice", "bitch");
-        sc.completeMissionTask("janice", "bitch", 0);
-        sc.completeMissionTask("janice", "bitch", 1);
     }
 };
 

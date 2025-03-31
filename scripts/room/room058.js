@@ -563,4 +563,4 @@ room58.sidechat = function (metalk) {
             text: g.internal.chat[i].txt
         }, 58);
     }
-}
+};

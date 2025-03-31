@@ -711,6 +711,19 @@ zcl.face = function (top, left, ratio, mod, color, reverse) {
         zcl.subDisplay("suck_" + makeup + "_" + color + ".png", top, left, ratio, reverse, w, h, f);
 };
 
+zcl.poseExpose = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 2048;
+    let h = 2200;
+    let f = "poseExplore";
+    if (cl.c.chest > 2) 
+        zcl.subDisplay("body_3.png", top, left, ratio, reverse, w, h, f);
+    else 
+        zcl.subDisplay("body_0.png", top, left, ratio, reverse, w, h, f);
+    if (cl.c.chastity !== null)
+        zcl.subDisplay("chastity.png", top, left, ratio, reverse, w, h, f);
+};
+
 zcl.assup = function (top, left, ratio, mod) {
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
 

@@ -115,6 +115,10 @@ room170.chatcatch = function (callback) {
         case "bitch":
             nav.bg("170_stage/" + callback + ".jpg");
             break;
+        case "bitch1":
+            nav.kill();
+            nav.bg("170_stage/" + callback + ".jpg");
+            break;
         case "ex317_3":
             cl.add("dress", "rose");
             room170.chatcatch("dressingRoom");
@@ -739,7 +743,7 @@ room170.chat = function (chatID) {
                 speaker: "thinking",
                 text: "I am a submissive trashy piss whore and everyone knows it! ",
                 button: [
-                    { chatID: 30, text: "...", callback: "bitch" },
+                    { chatID: 30, text: "...", callback: "bitch1" },
                 ]
             },
             {
@@ -748,7 +752,7 @@ room170.chat = function (chatID) {
                 text: "*ugh* " + sc.n("jones") + " ordered me to tell you that he " +
                     "loves how you've modeled his creations. You are invited to his " +
                     "mansion in the North East corner of the residential section of the city " +
-                    "if you would like to do some more modeling. But I recommend you do not " +
+                    "if you would like to work for him. But I recommend you do not " +
                     "show your face there or I will make you life a living hell!",
                 button: [
                     { chatID: 31, text: "If you don't want me there, why did you tell me? ", callback: "" },
