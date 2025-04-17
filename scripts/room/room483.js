@@ -171,12 +171,13 @@ room483.btnclick = function (name) {
         case "enter":
             if (cl.isLewd()) {
                 nav.bg("483_cave/cave0.jpg");
+                nav.kill();
                 chat(8, 483);
             }
             else {
                 nav.killall();
                 nav.bg("483_cave/enter_bad.jpg");
-                chat(8, 483);
+                chat(9, 483);
             }
             break;
         default:
@@ -284,7 +285,7 @@ room483.chat = function (chatID) {
             speaker: "me",
             text: "Good doggies... Good doggies. I'm not going to hurt you. ",
             button: [
-                { chatID: 9, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {

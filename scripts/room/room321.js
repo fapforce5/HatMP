@@ -29,7 +29,7 @@ room321.main = function () {
     $.each(btnList, function (i, v) {
         nav.button(v, 321);
     });
-    if (sc.taskGetStep("janice", "femdom") > 1) {
+    if (sc.getSecret("janice").secretOut) {
         g.internal.maxviews = 20000;
         switch (sc.taskGetStep("janice", "femdom")) {
             case 2:
@@ -47,6 +47,52 @@ room321.main = function () {
                 g.internal.maxviews = 500;
                 sc.completeMissionTask("janice", "femdom", 3);
                 chat(8, 321);
+                break;
+            case 4:
+                if (inv.has("straponSmall")) {
+                    sc.completeMissionTask("janice", "femdom", 4);
+                    sc.completeMissionTask("janice", "webcam", 5);
+                    cl.nude()
+                    inv.use("straponSmall");
+                    g.internal.fame = 7;
+                    g.internal.excitement = 8;
+                    nav.bg("321_whorechat/strappose.jpg");
+                    zcl.bj(350, 900, .35, "", true);
+                    nav.killbutton("fg");
+                    nav.button({
+                        "type": "img",
+                        "name": "fb",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "58_camwhore/fg.png"
+                    }, 321);
+                    g.internal.maxviews = 500;
+                    
+                    chat(15, 321);
+                    daily.set("janiceWebcam");
+                }
+                else {
+                    nav.kill();
+                    nav.bg("316_livingroom/talk.jpg");
+                    chat(16, 321);
+                }
+                break;
+            case 5:
+                nav.kill();
+                nav.bg("316_livingroom/talk.jpg");
+                chat(22, 321);
+                break;
+            default:
+                if (sc.getMissionTask("janice", "webcam", 6).notStarted) {
+                    sc.completeMissionTask("janice", "webacm", 6);
+                    nav.bg("321_whorechat/strappose.jpg");
+                    chat(23, 321);
+                }
+                else {
+
+                }
                 break;
         }
     }
@@ -381,8 +427,45 @@ room321.chatcatch = function (callback) {
             char.addtime(60);
             char.room(0);
             break;
+        case "randchat":
+            room321.sidechat(null);
+            room321.sidechat(null);
+            room321.sidechat(null);
+            break;
+        case "suck":
+            nav.bg("321_whorechat/bg.jpg");
+            zcl.bj(150, 600, .7, "open", true);
+            nav.killbutton("fb");
+            nav.button({
+                "type": "img",
+                "name": "fb",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "321_whorechat/strapsuck.png"
+            }, 321);
+
+            break;
+        case "straponfuck":
+            nav.bg("321_whorechat/strapfuckBg.jpg");
+            zcl.amazon(150, 700, .7, "", false);
+            nav.killbutton("fb");
+            nav.button({
+                "type": "img",
+                "name": "fb",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "321_whorechat/strapfuck.png"
+            }, 321);
+            break;
         case "leave":
             room321.btnclick("icon_quit");
+            break;
+        case "room316":
+            char.room(316);
             break;
         default:
             break;
@@ -524,9 +607,88 @@ room321.chat = function (chatID) {
             text: "Hey baby. Could you run down to the store for me and get a strap-on? " +
                 "That show was a bust and I need my money to eat this week. Plus you know " +
                 "what guys want better than me. Get something cute though. I don't want " +
-                "some big ugle thing or some weird shape. ",
+                "some big ugly thing or some weird shape. ",
             button: [
                 { chatID: -1, text: "Yeah sure.", callback: "room0" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "janice",
+            text: "Hey guys! I'm back with my little femboy and a cute little strap on! " +
+                "What should I have my little femboy do?",
+            button: [
+                { chatID: 17, text: "...", callback: "randchat" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "janice",
+            text: "We need a strap-on to play first!",
+            button: [
+                { chatID: -1, text: "...", callback: "room316" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "janice",
+            text: "I know! Let's have my femboy suck my strap-on! I've always wanted to " +
+                "see what's it's like to ge a blow job! ",
+            button: [
+                { chatID: 18, text: "[Suck her strap-on]", callback: "suck" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "janice",
+            text: "Hahaha! My little femboy loves sucking on my dick! Suck it femboy! ",
+            button: [
+                { chatID: 19, text: "[Keep sucking]", callback: "suck" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "janice",
+            text: "So group, what should we do next? Should I take my femboy's virginity " +
+                "live on camera? I think my little femboy needs to get fucked! ",
+            button: [
+                { chatID: 20, text: "[Keep sucking]", callback: "straponfuck" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "janice",
+            text: "Oh... This is different... I hope you all like this. Be sure to donate. ",
+            button: [
+                { chatID: 21, text: "*moan*", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "janice",
+            text: "Oh. I guess we've had sex now. Ummm. I guess the stream is over. Come " +
+                "back later. ok. ",
+            button: [
+                { chatID: -1, text: "*moan*", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "janice",
+            text: "We need to talk first. ",
+            button: [
+                { chatID: -1, text: "oh. ok", callback: "room316" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "janice",
+            text: "Ok everyone I would like ot re-introduce my pussy free femboy! After our " +
+                "last show I realised what a complete loser he is and almost ended things with him! " +
+                "But he said I could fuck other guys if I would just stay with him. So here we are, " +
+                "the sexy girl with a big ass and her pussy free femboy! ",
+            button: [
+                { chatID: -1, text: "oh. ok", callback: "room316" }  
             ]
         },
     ];

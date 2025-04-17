@@ -250,13 +250,13 @@ g.rooms = [
     { roomID: 310, name: "Second Floor", image: "310_secondfloor/bg.jpg", nightImage: "310_secondfloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
     { roomID: 314, name: "Third Floor", image: "314_thirdFloor/bg.jpg", nightImage: "314_thirdFloor/bg.jpg", houseID: 300, btn: "roomBtn_303.png" },
 
-    { roomID: 315, name: "Girlfriend's House", image: "315_girlfriend/bg.jpg", nightImage: "315_girlfriend/bg_night.jpg", houseID: 300, btn: "roomBtn_315.png" },
-    { roomID: 316, name: "Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
-    { roomID: 317, name: "Kitchen", image: "317_janiceKitchen/kitchen.jpg", nightImage: "317_janiceKitchen/kitchen.jpg", houseID: 300, btn: "roomBtn_317.png" },
-    { roomID: 318, name: "Bedroom", image: "318_janiceBedroom/bg.jpg", nightImage: "318_janiceBedroom/bg.jpg", houseID: 300, btn: "roomBtn_318.png" },
-    { roomID: 319, name: "Backyard", image: "319_backyard/bg.jpg", nightImage: "319_backyard/bgnight.jpg", houseID: 300, btn: "roomBtn_319.png" },
-    { roomID: 320, name: "Bathroom", image: "320_bathroom/bg.jpg", nightImage: "320_bathroom/bgnight.jpg", houseID: 300, btn: "roomBtn_320.png" },
-    { roomID: 321, name: "Webcam", image: "321_whorechat/bg.jpg", nightImage: "321_whorechat/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
+    { roomID: 315, name: "GF's House", image: "315_girlfriend/bg.jpg", nightImage: "315_girlfriend/bg_night.jpg", houseID: 300, btn: "roomBtn_315.png" },
+    { roomID: 316, name: "GF's Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
+    { roomID: 317, name: "GF's Kitchen", image: "317_janiceKitchen/kitchen.jpg", nightImage: "317_janiceKitchen/kitchen.jpg", houseID: 300, btn: "roomBtn_317.png" },
+    { roomID: 318, name: "GF's Bedroom", image: "318_janiceBedroom/bg.jpg", nightImage: "318_janiceBedroom/bg.jpg", houseID: 300, btn: "roomBtn_318.png" },
+    { roomID: 319, name: "GF's Backyard", image: "319_backyard/bg.jpg", nightImage: "319_backyard/bgnight.jpg", houseID: 300, btn: "roomBtn_319.png" },
+    { roomID: 320, name: "GF's Bathroom", image: "320_bathroom/bg.jpg", nightImage: "320_bathroom/bgnight.jpg", houseID: 300, btn: "roomBtn_320.png" },
+    { roomID: 321, name: "GF's Webcam", image: "321_whorechat/bg.jpg", nightImage: "321_whorechat/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
 
     { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
     { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },
@@ -277,7 +277,7 @@ g.rooms = [
     { roomID: 404, name: "Spanky's", image: "404_spankys/404_bodega.jpg", nightImage: "404_spankys/404_bodega.jpg", houseID: 404, btn: "roomBtn_404.png" },
     { roomID: 405, name: "Reds", image: "405_reds/405_stylist.jpg", nightImage: "405_reds/405_stylist.jpg", houseID: 400, btn: "roomBtn_402.png" },
     { roomID: 406, name: "I Like Your Eyes", image: "406_eyes/bg.jpg", nightImage: "406_eyes/bg.jpg", houseID: 400, btn: "roomBtn_402.png" },
-    { roomID: 407, name: "Sappho's Makeup", image: "407_makeup/bg.jpg", nightImage: "407_makeup/bg.jpg", houseID: 400, btn: "roomBtn_402.png" },
+    { roomID: 407, name: "Sappho's Makeup", image: "407_makeup/bg.jpg", nightImage: "407_makeup/bg.jpg", houseID: 400, btn: "roomBtn_407.png" },
     { roomID: 408, name: "Stormy's", image: "408_tattoo/bg.jpg", nightImage: "408_tattoo/bgNight.jpg", houseID: 400, btn: "roomBtn_408.png" },
 
     { roomID: 425, name: "Jail", image: "425_Jail/jail.jpg", nightImage: "425_Jail/jail.jpg", houseID: 225, btn: "roomBtn_402.png" },
@@ -329,8 +329,9 @@ g.rooms = [
     { roomID: 588, name: "Doofus's Room", image: "588_doofus/bg.jpg", nightImage: "588_doofus/bg.jpg", houseID: 575, btn: "roomBtn_588.png" },
     { roomID: 589, name: "Liam's Room", image: "589_liam/bg.jpg", nightImage: "589_liam/bg.jpg", houseID: 575, btn: "roomBtn_589.png" },
 
-
-    { roomID: 600, name: "For Testing", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
+    { roomID: 600, name: "Strip Club", image: "600_body/bg.png", nightImage: "600_body/bg.png", houseID: 600, btn: "roomBtn_600.png" },
+    { roomID: 601, name: "Stage", image: "601_dance/bg.jpg", nightImage: "601_dance/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
+    { roomID: 602, name: "Change Room", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
 
     { roomID: 625, name: "Carnival", image: "625_fair/bg.jpg", nightImage: "625_fair/bg.jpg", houseID: 600, btn: "roomBtn_625.png" },
     { roomID: 626, name: "Ferris wheel", image: "626_ferris/bg.jpg", nightImage: "626_ferris/bg.jpg", houseID: 625, btn: "roomBtn_626.png" },

@@ -16,8 +16,14 @@ room176.main = function () {
             chat(47, 176);
             break;
         case "finalx":
-            nav.bg("176_oral/final0.jpg");
-            chat(59, 176);
+            if (gv.get("sissySchoolClassDays") === 0) {
+                nav.bg("180_ballroom/bg.jpg");
+                chat(59, 176);
+            }
+            else {
+                nav.bg("176_oral/final0.jpg");
+                
+            }
             break;
     }
 };
@@ -180,6 +186,7 @@ room176.chatcatch = function (callback) {
         case "oral203_1":
         case "oral203_2":
         case "oral203_bad":
+        case "final_a":
             nav.bg("176_oral/" + callback + ".jpg");
             break;
         case "oral5":
@@ -916,7 +923,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 59,
                 speaker: "martha",
-                text: "Welcome. Welcome to your final, slash, graduation ceremony. For those of you who have, against all odds, managed to remain, one must offer a modicum of...congratulation. Some, of course, were born with an innate aptitude. Others, shall we say, demonstrated a commendable, if somewhat strenuous, dedication. Regardless, here we are.",
+                text: "Welcome. Welcome to your final. For those of you who have, against all odds, managed to remain, one must offer a modicum of...congratulation. Some, of course, were born with an innate aptitude. Others, shall we say, demonstrated a commendable, if somewhat strenuous, dedication. Regardless, here we are.",
                 button: [
                     { chatID: 60, text: "...", callback: "" },
                 ]
@@ -924,35 +931,123 @@ room176.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "martha",
-                text: "Now, I understand some of you are anticipating a rather... taxing examination. Perhaps even attempting to surpass your mid-term performances. However, there will be none of that today. The final task will be quite simple, a mere formality, really. Your true test, however, will commence when you venture forth into the world, armed with your newly acquired skills.",
+                text: "Now to give your your assigned tasks, everyone welcome Mr. Tudor, our founder. ",
                 button: [
-                    { chatID: 61, text: "...", callback: "" },
+                    { chatID: 61, text: "...", callback: "final_a" },
                 ]
             },
             {
                 chatID: 61,
-                speaker: "martha",
-                text: "Now, before we embark on the final task, I do wish to remind you that you are always welcome to return and visit your teachers. " + sc.n("p") + " has also expressed a, shall we say, keen interest in offering post-graduation opportunities for those so inclined, next door. And though you graduate today, you will always remain, in our eyes, our cherished pupils.",
+                speaker: "!tudor",
+                text: "Thank you Martha for giving me the chance to give the final assignment. " +
+                    "It does give an old man glee so see so many wonderful sissies! When I " +
+                    "started this school those many years ago we had such a hard time filling " +
+                    "the seats we wern't sure if we should even continue the school. But look at " +
+                    "it now. So many beautiful smiling faces and perky breasts. ",
                 button: [
                     { chatID: 62, text: "...", callback: "" },
                 ]
             },
             {
                 chatID: 62,
-                speaker: "martha",
-                text: "Now, before I prattle on excessively, let us proceed to your final task.",
+                speaker: "!tudor",
+                text: "As you finish your time here and go out and do your assignment, I want you to " +
+                    "think about regret. Not in the things you'll do, but in the things you haven't done. " +
+                    "When I started this school it was to fill my own regret. You see, as a youth I always " +
+                    "wrestled with my own gender identity. Back then being a girl was something that was " +
+                    "out of the question for boys in my town. I may have worn some panties I found in a " +
+                    "garbage a few times, but I never gave in to living the lifestyle that I knew was the " +
+                    "real me. ",
                 button: [
-                    { chatID: 63, text: "...", callback: "final1" },
+                    { chatID: 63, text: "...", callback: "" },
                 ]
             },
             {
                 chatID: 63,
-                speaker: "martha",
-                text: "Ladies.",
+                speaker: "!tudor",
+                text: "I was lucky in business and made a sizeable amout of money. More money " +
+                    "than any one man can spend in his lifetime and was looking to invest it in " +
+                    "businesses that I found of interest. That's when I came across a young spitfire " +
+                    "Missy. She was working on building her PI business from her living room and I tell " +
+                    "you, after one conversation she knew more about me than I knew. She had a friend that " +
+                    "was wrestling with their own gender identity and high sex drive. Well I tell you, she " +
+                    "talked me into making this school. It was much much different in the beginning, but " +
+                    "over time it has evolved into what you see today. ",
                 button: [
-                    { chatID: 64, text: "...", callback: "final2" },
+                    { chatID: 64, text: "...", callback: "" },
                 ]
             },
+            {
+                chatID: 64,
+                speaker: "!tudor",
+                text: "In a way, this school is my way to live vicariously through you all. " +
+                    "I am much much too old to live the life I should have lived, but I can " +
+                    "give you the chance to live the life you should live. So to pass the class " +
+                    "you'll have a set of challenges that you must go out and do. ",
+                button: [
+                    { chatID: 65, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "!tudor",
+                text: "First, a sissy should be pretty. This Saturday we will have the biannual " +
+                    "fashon show. This is your chance to wear your prettiest clothes for a large private " +
+                    "audiance. <br/>" +
+                    "Second, a sissy should be charismatic. You will get a phone number from " + 
+                    "a boy or girl at the mall food court. <br/>" +
+                    "Third, a sissy should be sexy. This Friday night will be femboy Friday " +
+                    "at the Fat Tony's Gentlemen's Club. It will be a chance to show you know how " +
+                    "to use your body for seduction. <br/>" +
+                    "Forth, and finally, a sissy fucks! You must get fucked up your tight little " +
+                    "bussies. We'll use your Purity apps on your phones to track it. ",
+                button: [
+                    { chatID: 66, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "!tudor",
+                text: "So I know the life of a student is a busy one which is why I'll give you a full " +
+                    "week to get these tasks done. Don't forget to attend the event at the strip club on " +
+                    "Friday all night and our beauty contest in the Pink Room Next door on Saturday before " + 
+                    nav.convertTime(18, 0) + ". The girl with the highest score will get a special prize. ",
+                button: [
+                    { chatID: 66, text: "...", callback: "" },
+                ]
+            },
+            //{
+            //    chatID: 60,
+            //    speaker: "martha",
+            //    text: "Now, I understand some of you are anticipating a rather... taxing examination. Perhaps even attempting to surpass your mid-term performances. However, there will be none of that today. The final task will be quite simple, a mere formality, really. Your true test, however, will commence when you venture forth into the world, armed with your newly acquired skills.",
+            //    button: [
+            //        { chatID: 61, text: "...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 61,
+            //    speaker: "martha",
+            //    text: "Now, before we embark on the final task, I do wish to remind you that you are always welcome to return and visit your teachers. " + sc.n("p") + " has also expressed a, shall we say, keen interest in offering post-graduation opportunities for those so inclined, next door. And though you graduate today, you will always remain, in our eyes, our cherished pupils.",
+            //    button: [
+            //        { chatID: 62, text: "...", callback: "" },
+            //    ]
+            //},
+            //{
+            //    chatID: 62,
+            //    speaker: "martha",
+            //    text: "Now, before I prattle on excessively, let us proceed to your final task.",
+            //    button: [
+            //        { chatID: 63, text: "...", callback: "final1" },
+            //    ]
+            //},
+            //{
+            //    chatID: 63,
+            //    speaker: "martha",
+            //    text: "Ladies.",
+            //    button: [
+            //        { chatID: 64, text: "...", callback: "final2" },
+            //    ]
+            //},
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

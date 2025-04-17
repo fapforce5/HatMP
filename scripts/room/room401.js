@@ -21,7 +21,7 @@ room401.main = function () {
         shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null
     };
 
-    if (switchName === "saucy" || switchName === "shoe" || switchName === "mens" || switchName === "bra") {
+    if (switchName === "saucy" || switchName === "shoe" || switchName === "mens" || switchName === "bra" || switchName === "bling") {
         g.pass.shoes = cl.c.shoes;
         g.pass.socks = cl.c.socks;
         g.pass.pants = cl.c.pants;
@@ -31,7 +31,7 @@ room401.main = function () {
         g.pass.dress = cl.c.dress;
         g.pass.swimsuit = cl.c.swimsuit;
         g.pass.pj = cl.c.pj;
-        $("#room_footer").hide();
+        
         var changeRoomID = 400;
         //if (switchName === "bra" && sc.getstep("jada") < 2)
         //    changeRoomID = 402;
@@ -50,6 +50,9 @@ room401.main = function () {
                 return false;
             }
         });
+        setTimeout(function () {
+            $("#room_footer").hide();
+        }, 200);
     }
 
     switch (switchName) {
@@ -109,7 +112,11 @@ room401.main = function () {
             room401.makeClothing("bra", "f");
             room401.makeClothing("panties", "f");
             room401.makeClothing("pj", "f");
+            break;
+        case "bling":
+            navList = [400];
             room401.makeClothing("necklace", "f");
+            nav.bg("401_purchase/bling.jpg");
             break;
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
@@ -147,7 +154,7 @@ room401.main = function () {
             nav.bg("401_purchase/paint.jpg", "401_purchase/paint.jpg");
             break;
         case "makeup":
-            navList = [407, 0];
+            navList = [407, 400];
             room401.makeInv(["m"], qdress.st[5].ach, 1);
             nav.bg("407_makeup/bg.jpg");
             break;

@@ -13,22 +13,10 @@ room625.main = function () {
         sc.select("endDate", "625_fair/icon_enddate.png", 3);
     }
     else {
-        var btnList = [
-            {
-                "type": "btn",
-                "name": "name",
-                "left": 1741,
-                "top": 618,
-                "width": 130,
-                "height": 252,
-                "image": "625_folder/hole.png"
-            }
-        ];
-        var navList = [0];
-        $.each(btnList, function (i, v) {
-            nav.button(v, 625);
-        });
-        nav.buildnav(navList);
+            sc.select("ferris", "625_fair/icon_wheel.png", 0);
+            sc.select("bong", "625_fair/icon_bong.png", 1);
+            sc.select("ball", "625_fair/icon_ball.png", 2);
+        nav.buildnav([626, 627, 628, 0]);
     }
 };
 

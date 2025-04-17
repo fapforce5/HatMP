@@ -53,7 +53,10 @@ room626.chatcatch = function (callback) {
                 chat(0, 626);
                 nav.bg("626_ferris/lola_0.jpg");
             }
-            
+            else {
+                nav.bg("626_ferris/sit_" + gender.pronoun("m") + ".jpg");
+                chat(10, 626);
+            }
             break;
         case "lola_1":
             if (sc.getLevel("lola") < 2) {
@@ -195,7 +198,7 @@ room626.chat = function (chatID) {
                 speaker: "futa2",
                 text: "Step right up. Only $15 to ride the ferris wheel. ",
                 button: [
-                    { chatID: 0, text: "One ride please", callback: "who" },
+                    { chatID: -1, text: "One ride please", callback: "who" },
                     { chatID: -1, text: "Too much money. blech", callback: "" },
                 ]
             },
@@ -213,6 +216,14 @@ room626.chat = function (chatID) {
                 text: "Oh wow! That was so naughty! This is the best practice date I've could be on.",
                 button: [
                     { chatID: -1, text: "I had fun too [Need level 5 to go further]", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "thinking",
+                text: "Neat view, but it would be much better with someone else. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
         ];

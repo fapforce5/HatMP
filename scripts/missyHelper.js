@@ -64,6 +64,7 @@ missy.init = function () {
         { caseId: 14, name: "case_beaver", show: true, complete: false, success: false },
         { caseId: 15, name: "case_elijah_origin", show: true, complete: false, success: false },
         { caseId: 16, name: "case_damselle", show: true, complete: false, success: false },
+        { caseId: 17, name: "case_sissyfinal", show: true, complete: false, success: false },
     ];
 }
 
@@ -139,7 +140,8 @@ missy.activecase = function () {
             { caseId: 13, name: "case_elijah", txt: "Convince Elijah to spill the details", m: [575], isComplete: activeCaseComplete },
             { caseId: 14, name: "case_beaver", txt: "Work at the Naked Beaver diner to find who has stolen the money. ", m: [250], isComplete: activeCaseComplete },
             { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
-
+            { caseId: 16, name: "case_damselle", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
+            { caseId: 17, name: "case_sissyfinal", txt: "Sissy Final! 1. Saturday fashion show at the pink room. 2. Pick up someone at the mall food court. 3. Friday stip club. 4. Get fucked  ", m: [200], isComplete: activeCaseComplete },
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);

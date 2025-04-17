@@ -29,7 +29,7 @@ room406.main = function () {
             }
         ];
     }
-    var navList = [0];
+    var navList = [400];
     $.each(btnList, function (i, v) {
         nav.button(v, 406);
     });
@@ -105,7 +105,7 @@ room406.chatcatch = function (callback) {
             nav.buildnav([0]);
             break;
         case "leave":
-            char.room(0);
+            char.room(400);
             break;
         default:
             break;

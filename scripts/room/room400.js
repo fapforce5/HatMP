@@ -32,70 +32,100 @@ room400.main = function () {
             {
                 "type": "btn",
                 "name": "mens",
-                "left": 1435,
-                "top": 90,
-                "width": 291,
-                "height": 349,
+                "left": 1425,
+                "top": 442,
+                "width": 230,
+                "height": 229,
                 "title": "Male Fashion",
                 "image": "400_mall/male.png"
             },
             {
                 "type": "btn",
                 "name": "shoe",
-                "left": 1251,
-                "top": 178,
-                "width": 176,
-                "height": 257,
+                "left": 1671,
+                "top": 442,
+                "width": 230,
+                "height": 230,
                 "title": "Shoe Store",
                 "image": "400_mall/footsie.png"
             },
             {
                 "type": "btn",
                 "name": "saucy",
-                "left": 1112,
-                "top": 465,
-                "width": 208,
-                "height": 515,
-                "title": "Lady's Clothing Store",
+                "left": 1427,
+                "top": 732,
+                "width": 228,
+                "height": 283,
+                "title": "Saucy - Lady's Clothing Store",
                 "image": "400_mall/saucy.png"
+            }, 
+            {
+                "type": "btn",
+                "name": "bling",
+                "left": 477,
+                "top": 730,
+                "width": 301,
+                "height": 286,
+                "title": "Shiny Jewlery",
+                "image": "400_mall/bling.png"
+            },
+            {
+                "type": "btn",
+                "name": "eyes",
+                "left": 860,
+                "top": 732,
+                "width": 304,
+                "height": 284,
+                "title": "Contacts",
+                "image": "400_mall/eyes.png"
+            },
+            {
+                "type": "btn",
+                "name": "makeup",
+                "left": 232,
+                "top": 730,
+                "width": 229,
+                "height": 285,
+                "title": "Sappho's Makeup",
+                "image": "400_mall/makeup.png"
             },
             {
                 "type": "btn",
                 "name": "electronic",
-                "left": 950,
-                "top": 525,
-                "width": 162,
-                "height": 244,
+                "left": 231,
+                "top": 442,
+                "width": 231,
+                "height": 229,
                 "title": "Electronic Store",
                 "image": "400_mall/electronic.png"
             },
             {
                 "type": "btn",
                 "name": "bra",
-                "left": 1325,
-                "top": 497,
-                "width": 509,
-                "height": 583,
+                "left": 1181,
+                "top": 730,
+                "width": 229,
+                "height": 287,
                 "title": "Sissy Panties and Bras",
                 "image": "400_mall/girl.png"
             },
             {
                 "type": "btn",
                 "name": "purse",
-                "left": 1015,
-                "top": 214,
-                "width": 146,
-                "height": 217,
+                "left": 1181,
+                "top": 443,
+                "width": 229,
+                "height": 228,
                 "title": "Mommy's Purse Store",
                 "image": "400_mall/purse.png"
             },
             {
                 "type": "btn",
                 "name": "happyGirl",
-                "left": 301,
-                "top": 80,
-                "width": 98,
-                "height": 357,
+                "left": 1671,
+                "top": 730,
+                "width": 230,
+                "height": 286,
                 "title": "Happy Girl Home Goods",
                 "image": "400_mall/happyGirl.png"
             }
@@ -134,6 +164,12 @@ room400.btnclick = function (name) {
             g.pass = "happyGirl";
             char.room(401);
         }
+    }
+    else if (g.pass === "makeup") {
+        char.room(407);
+    }
+    else if (g.pass === "eyes") {
+        char.room(406)
     }
     else {
         g.pass = name;

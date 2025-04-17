@@ -457,26 +457,40 @@ zcl.amazon = function (top, left, ratio, mod, reverse) {
     let h = 1600;
     let f = "amazon";
     zcl.kill();
-    if (cl.c.chest < 2)
+    if (cl.c.chest < 3)
         zcl.subDisplay("body_m.png", top, left, ratio, reverse, w, h, f);
     else
         zcl.subDisplay("body_f.png", top, left, ratio, reverse, w, h, f);
 
+    
+    if (cl.c.bra !== null) {
+        if (cl.c.chest < 3)
+            zcl.subDisplay("body_m_bra.png", top, left, ratio, reverse, w, h, f);
+        else
+            zcl.subDisplay("body_f_bra.png", top, left, ratio, reverse, w, h, f);
+    }
+    if (cl.c.panties !== null) {
+        if (cl.c.chest < 3)
+            zcl.subDisplay("body_m_panties.png", top, left, ratio, reverse, w, h, f);
+        else
+            zcl.subDisplay("body_f_panties.png", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        if (mod !== "nodick") {
+            if (cl.c.chastity !== null)
+                zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
+            else if (cl.c.cock > 3)
+                zcl.subDisplay("dick_1.png", top, left, ratio, reverse, w, h, f);
+            else if (cl.c.cock > 1)
+                zcl.subDisplay("dick_3.png", top, left, ratio, reverse, w, h, f);
+            else
+                zcl.subDisplay("dick_5.png", top, left, ratio, reverse, w, h, f);
+        }
+    }
     if (cl.c.hairLength > 1)
         zcl.subDisplay("hair_f.png", top, left, ratio, reverse, w, h, f);
     else
         zcl.subDisplay("hair_m.png", top, left, ratio, reverse, w, h, f);
-
-    if (mod !== "nodick") {
-        if (cl.c.chastity !== null)
-            zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
-        else if (cl.c.cock > 3)
-            zcl.subDisplay("dick_1.png", top, left, ratio, reverse, w, h, f);
-        else if (cl.c.cock > 1)
-            zcl.subDisplay("dick_3.png", top, left, ratio, reverse, w, h, f);
-        else
-            zcl.subDisplay("dick_5.png", top, left, ratio, reverse, w, h, f);
-    }
 };
 
 zcl.rope = function (top, left, ratio, mod, reverse) {
@@ -716,11 +730,22 @@ zcl.poseExpose = function (top, left, ratio, mod, reverse) {
     let w = 2048;
     let h = 2200;
     let f = "poseExplore";
-    if (cl.c.chest > 2) 
+    if (cl.c.chest > 2) {
         zcl.subDisplay("body_3.png", top, left, ratio, reverse, w, h, f);
-    else 
+        if (cl.c.panties !== null)
+            zcl.subDisplay("body_3_panties.png", top, left, ratio, reverse, w, h, f);
+        if(cl.c.bra !== null)
+            zcl.subDisplay("body_3_bra.png", top, left, ratio, reverse, w, h, f);
+    }
+    else {
         zcl.subDisplay("body_0.png", top, left, ratio, reverse, w, h, f);
-    if (cl.c.chastity !== null)
+        if (cl.c.panties !== null)
+            zcl.subDisplay("body_0_panties.png", top, left, ratio, reverse, w, h, f);
+        if (cl.c.bra !== null)
+            zcl.subDisplay("body_0_bra.png", top, left, ratio, reverse, w, h, f);
+    }
+
+    if (cl.c.chastity !== null && cl.c.panties === null)
         zcl.subDisplay("chastity.png", top, left, ratio, reverse, w, h, f);
 };
 
@@ -771,7 +796,9 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
     else
         zcl.subDisplay("body_girl.png", top, left, ratio, reverse, w, h, f);
 
-    if (gender.isCockTooSmallForSex())
+    if (cl.c.panties !== null)
+        zcl.subDisplay("panties.png", top, left, ratio, reverse, w, h, f);
+    else if (gender.isCockTooSmallForSex())
         zcl.subDisplay("dick_small.png", top, left, ratio, reverse, w, h, f);
     else
         zcl.subDisplay("dick_big.png", top, left, ratio, reverse, w, h, f);

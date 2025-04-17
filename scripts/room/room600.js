@@ -3,191 +3,39 @@
 var room600 = {};
 
 room600.main = function () {
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "fat",
-            "left": 300,
-            "top": 100,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/fat.png"
-        },
-        {
-            "type": "btn",
-            "name": "man",
-            "left": 500,
-            "top": 100,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/MAN.png"
-        },
-        {
-            "type": "btn",
-            "name": "a",
-            "left": 700,
-            "top": 100,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/ACUP.png"
-        },
-        {
-            "type": "btn",
-            "name": "b",
-            "left": 900,
-            "top": 100,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/BCUP.png"
-        },
-        {
-            "type": "btn",
-            "name": "c",
-            "left": 1100,
-            "top": 100,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/DDCUP.png"
-        },
-        {
-            "type": "btn",
-            "name": "d",
-            "left": 1300,
-            "top": 100,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/DDCUP.png"
-        },
-        {
-            "type": "btn",
-            "name": "m",
-            "left": 300,
-            "top": 300,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/MANLEG.png"
-        },
-        {
-            "type": "btn",
-            "name": "f",
-            "left": 500,
-            "top": 300,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/WOMANLEG.png"
-        },
-        {
-            "type": "btn",
-            "name": "hairy",
-            "left": 300,
-            "top": 500,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/hairy.png"
-        },
-        {
-            "type": "btn",
-            "name": "nohair",
-            "left": 500,
-            "top": 500,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/noHair.png"
-        },
-        {
-            "type": "btn",
-            "name": "cl",
-            "left": 300,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
-        },
-        {
-            "type": "btn",
-            "name": "cm",
-            "left": 500,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
-        },
-        {
-            "type": "btn",
-            "name": "cs",
-            "left": 700,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
-        },
-        {
-            "type": "btn",
-            "name": "cs",
-            "left": 900,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
-        },
-        {
-            "type": "btn",
-            "name": "ct",
-            "left": 900,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
-        },
-        {
-            "type": "btn",
-            "name": "cv",
-            "left": 1100,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
-        },
-        {
-            "type": "btn",
-            "name": "cc",
-            "left": 1300,
-            "top": 700,
-            "width": 100,
-            "height": 100,
-            "image": "600_body/cock.png"
+    if (cl.isLewd()) {
+
+    }
+    else if (sc.getMission("tony", "strip").notStarted) {
+
+    }
+    else {
+        if (cl.appearance() > 2) {
+            chat(1, 600);
         }
-
-    ];
-
-    var navList = [0, 8];
-
-
-    $.each(btnList, function (i, v) {
-        nav.button(v, 600);
-    });
-
-    nav.buildnav(navList);
+        else {
+            chat(0, 600);
+        }
+    }
+    nav.buildnav([0]);
 };
 
 
 room600.btnclick = function (name) {
-    if (name === "fat" || name === "man" || name === "a" || name === "b" || name === "c" || name === "d")
-        cl.c.chest = name;
-    if (name === "m" || name === "f")
-        cl.c.leg = name;
-    if (name === "hairy")
-        cl.c.bodyhair = "hairy";
-    if (name === "nohair")
-        cl.c.bodyhair = null;
-    if (name === "cl" || name === "cm" || name === "cs" || name === "cv" || name === "cc" || name === "ct")
-        cl.c.cock = name;
-    cl.display();
+   
 };
 
 room600.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "office":
+        case "office1":
+            nav.bg("600_body/" + callback + ".jpg");
+            break;
+        case "office2":
+            zcl.bj(300, 400, .7, "", true);
+            break;
+        case "leave":
+            char.room(0);
             break;
         default:
             break;
@@ -198,12 +46,104 @@ room600.chat = function(chatID){
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "!freddy",
+            text: "This here's a gentlemen's club, slick, and you don't look like the " +
+                "kinda gentlemen we let in. Get lost before I get you lost. ",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "aww man!", callback: "leave" }
             ]
-        }
+        },
+        {
+            chatID: 1,
+            speaker: "!freddy",
+            text: "Hey! You're a hot piece of ass! You wanna job? ",
+            button: [
+                { chatID: 2, text: "Oh. Yeah, sure", callback: "" },
+                { chatID: -1, text: "Ewwww. gross. no.", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "!freddy",
+            text: "Thought so. You look like the kinda girl that works here. Let me take you " +
+                "to the big guy. See if you can pass the interview. ",
+            button: [
+                { chatID: 3, text: "[Follow him]", callback: "office" },
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "tony",
+            text: "Yeah. Wadda you want!",
+            button: [
+                { chatID: 4, text: "I came about working here", callback: "" },
+                { chatID: -1, text: "eeekk. Nothing [run away]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "tony",
+            text: "Oooo. You you's wanna be a stripper huh? Good body, nice and tight. " +
+                "You ever been a stripper before? ",
+            button: [
+                { chatID: 5, text: "No sir.", callback: "" },
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "tony",
+            text: "You think you can shake that pretty ass of yours on stage for a bunch " +
+                "of horny dudes? ",
+            button: [
+                { chatID: 6, text: "Yeah. I'm great at that! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "tony",
+            text: "How 'bout private dances? You good with being in a private room shaking " +
+                "your ass in there? ",
+            button: [
+                { chatID: 7, text: "Totally! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "tony",
+            text: "Hmmm... maybe. I don't know. I got lots of girls, and some girly boys. " +
+                "I don't really NEED another dancer, but you look like you could use some " +
+                "extra money. Tell you what. Let me see what 'cha got. Strip off your clothes.  ",
+            button: [
+                { chatID: 8, text: "That makes sense. Ok ", callback: "officea" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "tony",
+            text: "I don't know. You look a'right. Turn around. Show me your ass. ", 
+            button: [
+                { chatID: 9, text: "Ok ", callback: "officeb" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "tony",
+            text: "Nice butt. I would love to see you shake that on the stage. But I've got " +
+                "lot's a nice butts shaking on stage. Maybe too many. I don't know kid. " +
+                "How badly do you want this job? ",
+            button: [
+                { chatID: 9, text: "I want it. I really want it!", callback: "office1" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "tony",
+            text: "Don't tell my face. Tell my cock how much you want it ",
+            button: [
+                { chatID: 9, text: "[Suck Fat Tony's cock] ", callback: "office2" },
+                { chatID: -1, text: "You monster! [Run away crying] ", callback: "leave" },
+            ]
+        },
     ];
     return cArray[chatID];
 };

@@ -721,11 +721,8 @@ levels.set = function (name, c, l) {
 };
 
 levels.mod = function (name, amount, targetLevel = 999) {
-    let i, fitnessStart, startingLevel;
-    fitnessStart = null;
-    if (name === "fitness") {
-        fitnessStart = levels.get("fitness").l;
-    }
+    let i, startingLevel;
+    
     i = levels.i(name);
     startingLevel = levels.st[i].l;
 
@@ -740,7 +737,7 @@ levels.mod = function (name, amount, targetLevel = 999) {
         if (levels.st[i].c > 100)
             levels.st[i].c = 100;
         if (amount > 0) {
-            if (levels.st[i].c > 15)
+            if (levels.st[i].l > 15)
                 g.popUpNotice("You're maxed out for " + levels.st[i].d);
             else if(amount > 0)
                 g.popUpNotice("You gained "  + amount + " points for " + levels.st[i].d + "!");
@@ -749,6 +746,11 @@ levels.mod = function (name, amount, targetLevel = 999) {
         }
     }
     else if (amount > 0) {
+        if (levels.st[i].l >= 15) {
+            levels.st[i].l = 15;
+            g.popUpNotice("You've maxed out " + levels.st[i].d + "");
+            return;
+        }
         if (levels.st[i].compoundLevel) {
             levels.st[i].c += amount;
             while (levels.st[i].c >= levels.getCap(levels.st[i].l)) {
@@ -756,11 +758,8 @@ levels.mod = function (name, amount, targetLevel = 999) {
                 levels.st[i].l++;
             }
             let levelsChange = levels.st[i].l - startingLevel;
-            if (levels.st[i].l >= 15) {
-                levels.st[i].l = 15;
-                g.popUpNotice("You've maxed out " + levels.st[i].d + "!");
-            }
-            else if (levelsChange > 0)
+           
+            if (levelsChange > 0)
                 g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
             else
                 g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
@@ -777,32 +776,21 @@ levels.mod = function (name, amount, targetLevel = 999) {
             else
                 g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
         }
-        //else {
-        //    levels.st[i].c += amount;
-        //    while (levels.st[i].c >= 100 || levels.st[i].l >= targetLevel) {
-        //        levels.st[i].c -= 100;
-        //        levels.st[i].l++;
-        //    }
-        //    if (levels.st[i].c > 99)
-        //        levels.st[i].c = 99;
-
-        //    let levelsChange = levels.st[i].l - startingLevel;
-        //    if (levelsChange > 0)
-        //        g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-        //    else
-        //        g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-        //}
     }
     else if (amount < 0) {
+        if (levels.st[i].l >= 15) {
+            levels.st[i].l = 15;
+            return;
+        }
         levels.st[i].c -= amount;
         if (levels.st[i].c < 0)
             levels.st[i].c = 0;
         g.popUpNotice(levels.st[i].d + " points have decreased. ");
     }
 
-    if (fitnessStart !== null) {
+    if (name === "fitness") {
         var fitnessEnd = levels.get("fitness").l;
-        if (fitnessStart !== fitnessEnd)
+        if (startingLevel < fitnessEnd)
             gv.mod("maxenergy", (fitnessEnd - fitnessStart) * 4);
     }
     sstat.makeGraph();
@@ -1153,7 +1141,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     }
 };
 
-levels.cum = function (howMuch = 1) {
+levels.cum = function (howMuch = 1, beastType = null  ) {
     switch (levels.get("cum").l) {
         case 0:
         case 1:

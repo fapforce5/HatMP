@@ -9,6 +9,7 @@ trap.roomId;
 trap.callbackWin;
 trap.name;
 trap.internal;
+trap.location;
 
 //hole, treasure, treasureAzrael, encounter, rope
 trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID, callbackWin = "", trapNum = null) {
@@ -19,6 +20,7 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
     trap.internal;
     trap.name = "random";
     trap.type = trapType;
+    trap.location = location;
     nav.killall();
 
     if (trap.type === null) {
@@ -683,88 +685,101 @@ trap.treasure = function () {
 trap.encounter = function () {
     let charList = new Array();
     let wearing = cl.wearing();
-    switch (trap.counter) {
-        case 0:
-            nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
-            if (gv.get("cat") === -1 && g.rand(0, 4) === 0 && !g.isNight() && false) {
-                charList.push({ n: "!cat", z: "cat", loc: "street", l: 857, t: 69, w: 524, h: 1011, i: "girl1.png" });
-                nav.bg("475_fight/cat.jpg");
-            }
-            else {
-                charList.push({ n: "!girl", p: "girl", z: "nice", loc: "street", l: 857, t: 69, w: 524, h: 1011, i: "girl1.png" });
-                charList.push({ n: "!girl", p: "girl", z: "nice", loc: "street", l: 800, t: 193, w: 445, h: 887, i: "femboy1.png" });
-                charList.push({ n: "!boy", p: "boy", z: "mean", loc: null, l: 815, t: 61, w: 508, h: 1019, i: "man1.png" });
-                charList.push({ n: "!girl", p: "girl", z: "mean", loc: "street", l: 908, t: 191, w: 339, h: 889, i: "girl2.png" });
-                charList.push({ n: "!boy", p: "boy", z: "nice", loc: "forest", l: 855, t: 173, w: 371, h: 907, i: "man2.png" });
-                charList.push({ n: "!girl", p: "girl", z: "mean", loc: "street", l: 920, t: 148, w: 465, h: 932, i: "girl3.png" });
-                charList.push({ n: "!boy", p: "boy", z: "nice", loc: "forest", l: 900, t: 127, w: 342, h: 953, i: "man3.png" });
-                charList.push({ n: "!boy", p: "boy", z: "nice", loc: "forest", l: 703, t: 73, w: 812, h: 1007, i: "man4.png" });
+    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+    if (gv.get("cat") === -1 && g.rand(0, 4) === 0 && !g.isNight()) {
+        charList.push({ n: "!cat", z: "cat", loc: ["forest"], l: 0, t: 0, w: 1920, h: 1080, i: "cat.jpg" });
+    }
+    else if (wearing.outerwear || wearing.underwear && g.rand(0, 3) === 0) {
+        if (wearing.outerwear) {
+            charList.push({ n: "!boxes", p: "boy", z: "tits1", loc: ["forest"], l: 678, t: 60, w: 516, h: 1020, i: "man5.png" });
+        }
+        charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: ["forest"], l: 815, t: 61, w: 508, h: 1019, i: "granola1.png" });
+    }
+    for (let i = 0; i < charList.length; i++) {
+        if (!charList[i].loc.includes(trap.location))
+            charList.splice(i, 1);
+    }
 
-                //not really, add forest lesbians
-                charList.push({ n: "!granola", p: "girl", z: "granola1", loc: "forest", l: 426, t: 83, w: 966, h: 935, i: "granola1.png" });
-                charList.push({ n: "!girl", p: "girl", z: "foot1", loc: "forest", l: 674, t: 152, w: 503, h: 928, i: "girl4.png" });
-                if (wearing.outerwear) {
-                    charList.push({ n: "!boxes", p: "boy", z: "tits1", loc: "forest", l: 678, t: 60, w: 516, h: 1020, i: "man5.png" });
-                }
+    if (charList.length < 1) {
+        charList.push({ n: "!girl", p: "girl", z: "nice", loc: ["street"], l: 857, t: 69, w: 524, h: 1011, i: "girl1.png" });
+        charList.push({ n: "!girl", p: "girl", z: "nice", loc: ["street"], l: 800, t: 193, w: 445, h: 887, i: "femboy1.png" });
+        charList.push({ n: "!boy", p: "boy", z: "mean", loc: ["street", "forest"], l: 815, t: 61, w: 508, h: 1019, i: "man1.png" });
+        charList.push({ n: "!girl", p: "girl", z: "mean", loc: ["street"], l: 908, t: 191, w: 339, h: 889, i: "girl2.png" });
+        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest"], l: 855, t: 173, w: 371, h: 907, i: "man2.png" });
+        charList.push({ n: "!girl", p: "girl", z: "mean", loc: ["street"], l: 920, t: 148, w: 465, h: 932, i: "girl3.png" });
+        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest"], l: 900, t: 127, w: 342, h: 953, i: "man3.png" });
+        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest"], l: 703, t: 73, w: 812, h: 1007, i: "man4.png" });
 
-                if (wearing.outerwear || wearing.underwear) {
-                    charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: null, l: 815, t: 61, w: 508, h: 1019, i: "granola1.png" });
+        //not really, add forest lesbians
+        charList.push({ n: "!granola", p: "girl", z: "granola1", loc: ["forest"], l: 426, t: 83, w: 966, h: 935, i: "granola1.png" });
+        charList.push({ n: "!girl", p: "girl", z: "foot1", loc: ["forest"], l: 674, t: 152, w: 503, h: 928, i: "girl4.png" });
 
-                }
-            }
+        for (let i = 0; i < charList.length; i++) {
+            if (!charList[i].loc.includes(trap.location))
+                charList.splice(i, 1);
+        }
+    }
 
-            trap.char = charList[g.rand(0, charList.length)];
+    if (charList.length === 0) {
+        console.log(trap);
+        trap.kill();
+        return;
+    }
 
-            trap.name = trap.char.n;
+    trap.char = charList[g.rand(0, charList.length)];
+
+    trap.name = trap.char.n;
+    nav.button({
+        "type": "img",
+        "name": "r1004bg",
+        "left": trap.char.l,
+        "top": trap.char.t,
+        "width": trap.char.w,
+        "height": trap.char.h,
+        "image": "1005_trap/encounter/" + trap.char.i
+    }, 1005);
+
+    switch (trap.char.z) {
+        case "nice": chat(802, 1005); break;
+        case "mean": chat(801, 1005); break;
+        case "steal":
             nav.button({
-                "type": "img",
-                "name": "r1004bg",
-                "left": trap.char.l,
-                "top": trap.char.t,
-                "width": trap.char.w,
-                "height": trap.char.h,
-                "image": "1005_trap/encounter/" + trap.char.i
-            }, 1004);
-
-            if (trap.char.z === "nice") {
-                chat(802, 1005);
-            }
-            else if (trap.char.z === "mean") {
-                chat(801, 1005);
-            }
-            else if (trap.char.z === "steal") {
-                nav.button({
-                    "type": "zimg",
-                    "name": "m1004-dx",
-                    "left": 1600,
-                    "top": 150,
-                    "width": 300,
-                    "height": 318,
-                    "image": "1005_trap/trap_message_theft.png"
-                }, 1005);
-                chat(800, 1005);
-                trap.displayMenu("encounter");
-            }
-            else if (trap.char.z === "granola1") {
-                chat(12, 1005);
-            }
-            else if (trap.char.z === "foot1") {
-                nav.button({
-                    "type": "kiss",
-                    "name": "r1004bg-q",
-                    "left": 674,
-                    "top": 439,
-                    "width": 266,
-                    "height": 317,
-                    "image": "1005_trap/encounter/girl4_foot.png"
-                }, 1005);
-                chat(13, 1005);
-            }
-            else if (trap.char.z === "tits1") {
-                chat(15, 1005);
-            }
+                "type": "zimg",
+                "name": "m1004-dx",
+                "left": 1600,
+                "top": 150,
+                "width": 300,
+                "height": 318,
+                "image": "1005_trap/trap_message_theft.png"
+            }, 1005);
+            chat(800, 1005);
+            trap.displayMenu("encounter");
+            break;
+        case "granola1":
+            chat(12, 1005);
+            break;
+        case "foot1":
+            nav.button({
+                "type": "kiss",
+                "name": "r1004bg-q",
+                "left": 674,
+                "top": 439,
+                "width": 266,
+                "height": 317,
+                "image": "1005_trap/encounter/girl4_foot.png"
+            }, 1005);
+            chat(13, 1005);
+            break;
+        case "tits1":
+            chat(15, 1005);
+            zcl.displayMain(0, 900, .25, "clothes", true);
+            break;
+        case "cat":
+            chat(56, 1005);
             break;
     }
+
+
 };
 
 trap.kill = function (roomId = null) {
@@ -1412,6 +1427,50 @@ room1005.chatcatch = function (callback) {
             cl.display();
             trap.kill(null);
             break;
+        case "flash":
+            levels.mod("xdress", 15);
+            var ctemp;
+            if (cl.c.shirt !== null) {
+                ctemp = cl.c.shirt;
+                cl.c.shirt = null;
+                zcl.displayMain(0, 900, .25, "clothes", true);
+                cl.c.shirt = ctemp;
+            }
+            else if (cl.c.dress !== null) {
+                ctemp = cl.c.dress;
+                cl.c.dress = null;
+                zcl.displayMain(0, 900, .25, "clothes", true);
+                cl.c.dress = ctemp;
+            }
+            else if (cl.c.swimsuit !== null) {
+                ctemp = cl.c.swimsuit;
+                cl.c.swimsuit = null;
+                zcl.displayMain(0, 900, .25, "clothes", true);
+                cl.c.swimsuit = ctemp;
+            }
+            else if (cl.c.pj !== null) {
+                ctemp = cl.c.pj;
+                cl.c.pj = null;
+                zcl.displayMain(0, 900, .25, "clothes", true);
+                cl.c.pj = ctemp;
+            }
+            if (cl.c.chest > 4)
+                chat(53, 1005);
+            else if (cl.c.chest > 2)
+                chat(54, 1005);
+            else
+                chat(55, 1005);
+            break;
+        case "kittygood":
+            nav.killbutton("r1004bg");
+            gv.set("cat", 1);
+            nav.bg("1005_trap/encounter/catpet.jpg");
+            break;
+        case "kittybad":
+            nav.killbutton("r1004bg");
+            gv.set("cat", 0);
+            nav.bg("1005_trap/encounter/catx.jpg");
+            break;
         default:
             break;
     }
@@ -1448,7 +1507,7 @@ room1005.chat = function (chatID) {
             else if (cl.c.panties !== null || cl.c.bra !== null) {
                 if (cl.c.panties !== null && cl.c.bra !== null)
                     trap.internal = "bra and panties";
-                else if (cl.c.bra !== null0)
+                else if (cl.c.bra !== null)
                     trap.internal = "bra";
                 else
                     trap.internal = "panties";
@@ -1900,7 +1959,7 @@ room1005.chat = function (chatID) {
                 speaker: trap.name,
                 text: "You look like a slut. Show me your tits! ",
                 button: [
-                    { chatID: -1, text: "Sure!", callback: "kill" },
+                    { chatID: -1, text: "Sure!", callback: "flash" },
                     { chatID: -1, text: "No way!", callback: "kill" },
                 ]
             },
@@ -2242,6 +2301,56 @@ room1005.chat = function (chatID) {
                 speaker: "me",
                 text: "Holy crap! That was close! That hook almost killed me! I guess I'm " +
                     "lucky it only shredded my clothes. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: trap.name,
+                text: "Best tits I've seen this week! My day just got better and my dick " +
+                    "just got harder! ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: trap.name,
+                text: "Beatiful fucking tits! ",
+                button: [
+                    { chatID: -1, text: "Thanks", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: trap.name,
+                text: "You're a carpenter's dream. Flat as a board and easy to nail. ",
+                button: [
+                    { chatID: -1, text: "Thanks, I think", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "me",
+                text: "Hey! A kitty. ",
+                button: [
+                    { chatID: 57, text: "[Pet the kitty and take the kitty home]", callback: "kittygood" },
+                    { chatID: 58, text: "*bletch* I don't want a kitty. ", callback: "kittybad" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "me",
+                text: "Such a good kitty. I'm going to give you a home. ",
+                button: [
+                    { chatID: -1, text: "[Take the kitty home]", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "thinking",
+                text: "psh. Who want's a kitty ",
                 button: [
                     { chatID: -1, text: "...", callback: "kill" },
                 ]

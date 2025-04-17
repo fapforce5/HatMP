@@ -18,17 +18,22 @@ room407.main = function () {
         "height": 1046,
         "image": "407_makeup/worker.png"
     }, 407);
-    var navList = [0];
+    var navList = [400];
     nav.buildnav(navList);
 };
 
 room407.btnclick = function (name) {
     switch (name) {
         case "airwrecka":
-            if (cl.c.makeup === null)
-                chat(0, 407);
-            else
-                chat(1, 407);
+            if (!qdress.st[5].ach) {
+                chat(4, 407);
+            }
+            else {
+                if (cl.c.makeup === null)
+                    chat(0, 407);
+                else
+                    chat(1, 407);
+            }
             break;
         case "makeup":
             nav.killall();
@@ -110,7 +115,7 @@ room407.chatcatch = function (callback) {
     var i;
     switch (callback) {
         case "leave":
-            char.room(0);
+            char.room(400);
             break;
         case "buy":
             g.pass = "makeup";
@@ -168,7 +173,15 @@ room407.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Can I buy some make up?", callback: "buy" },
                 { chatID: -1, text: "Can you put on my makeup? [$60]", callback: "puton" },
-                { chatID: -1, text: "[Leave]", callback: "leave" },
+                { chatID: -1, text: "[Return to the mall]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "!airwrecka",
+            text: "*blech* You look hideous darling. Simply disgusting.",
+            button: [
+                { chatID: -1, text: "Can I buy some make up?", callback: "buy" },
             ]
         },
     ];

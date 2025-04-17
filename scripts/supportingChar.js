@@ -120,6 +120,8 @@ sc.char = [
     { name: "blade", display: "Blade", image: "blade.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
     { name: "wolf", display: "Lobo", image: "wolf.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
+    { name: "tony", display: "Fat Tony", image: "tony.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
+
     { name: "dr", display: "Dr. Degenerate", image: "dr.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
 
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -472,6 +474,9 @@ sc.charMission = [
                         { id: 2, txt: "She knows. ", show: true, mStatus: 0, roomId: 316 },
                         { id: 3, txt: "Fist show was a bust. ", show: true, mStatus: 0, roomId: 316 },
                         { id: 4, txt: "Get a strap-on. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 5, txt: "The talk. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 6, txt: "Suprise", show: true, mStatus: 0, roomId: 316 },
+                        { id: 7, txt: "A whole new world!", show: true, mStatus: 0, roomId: 316 },
                     ]
             },
             {
@@ -482,19 +487,13 @@ sc.charMission = [
                         { id: 2, txt: "Came down her throat", show: true, mStatus: 0, roomId: 321 },
                         { id: 3, txt: "Fuck her for the first time", show: true, mStatus: 0, roomId: 321 },
                         { id: 4, txt: "Meet my femboy!", show: true, mStatus: 0, roomId: 321 },
+                        { id: 5, txt: "Take my cute little strap-on", show: true, mStatus: 0, roomId: 321 },
+                        { id: 6, txt: "Reintroduce myself", show: true, mStatus: 0, roomId: 321 },
+                        { id: 7, txt: "You just keep cuming back fo rmore", show: true, mStatus: 0, roomId: 321 },
                     ]
             },
             {
-                missionName: "cuck-x", mStatus: 0, title: "Cuck", desc: "It's not cheating if you watch", task:
-                    [
-                        { id: 0, txt: "Found out", show: true, mStatus: 0, roomId: 315 },
-                        { id: 1, txt: "Open thigs up a bit", show: true, mStatus: 0, roomId: 315 },
-                        { id: 2, txt: "Video", show: true, mStatus: 0, roomId: 315 },
-                        { id: 3, txt: "Feel my feelings", show: true, mStatus: 0, roomId: 315 },
-                    ]
-            },
-            {
-                missionName: "datr-x", mStatus: 0, title: "Datr", desc: "Dating App", task:
+                missionName: "datr", mStatus: 0, title: "Datr", desc: "Dating App", task:
                     [
                         { id: 0, txt: "Mike first time", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Mike again", show: true, mStatus: 0, roomId: 315 },
@@ -1112,7 +1111,16 @@ sc.charMission = [
             },
         ]
     },
-
+    {
+        name: "tony", mission: [
+            {
+                missionName: "strip", mStatus: 0, title: "Stripper", desc: "Working for the fat man", task:
+                    [
+                        { id: 0, txt: "Want a job? ", show: true, mStatus: 0, roomId: 450 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.el = function () {
@@ -2456,6 +2464,22 @@ sc.trivial = function (charname) {
         case "!butler":
             name = "The Butler";
             image = "butler.png";
+            break;
+        case "!cat":
+            name = "Kitty";
+            image = "cat.png";
+            break;
+        case "!jarome":
+            name = "Jarome";
+            image = "jarome.png";
+            break;
+        case "!tudor":
+            name = "Mr. Tudor";
+            image = "tudor.png";
+            break;
+        case "!freddy":
+            name = "Fat Freddy";
+            image = "freddy.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

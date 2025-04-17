@@ -58,6 +58,13 @@ room318.main = function () {
         }
 
     }
+    else if (sc.taskGetStep("janice", "femdom") === 6) {
+        cl.nude();
+        sc.completeMissionTask("janice", "femdom", 6);
+        nav.bg("318_janiceBedroom/b2_0.jpg");
+        g.internal = { gender: gender.pronoun("f"), step: 7 };
+        chat(13, 318);
+    }
     else if (gv.get("janiceDatr") !== null) {
         if (sc.getMission("janice", "datr").notStarted) {
             sc.startMission("janice", "datr");
@@ -70,13 +77,7 @@ room318.main = function () {
 
         return;
     }
-    else if (sc.taskGetStep("janice", "cuck") === 2) {
-        cl.nude();
-        sc.completeMissionTask("janice", "cuck", 2);
-        nav.bg("318_janiceBedroom/b2_0.jpg");
-        g.internal = { gender: gender.pronoun("f"), step: 7 };
-        chat(13, 318);
-    }
+    
     else if (g.pass === "endSleepyTime") {
         g.pass = null;
         chat("sleepy", 318);
@@ -170,7 +171,7 @@ room318.btnclick = function (name) {
             }
             else if (g.internal === 6) {
                 nav.killall();
-                if (sc.getMissionTask("janice", "bitch", 1).complete)
+                if (sc.getMissionTask("janice", "webcam", 2).complete)
                     chat(29, 318);
                 else
                     chat(30, 318);
@@ -375,6 +376,14 @@ room318.btnclick = function (name) {
             }, 318);
             g.internal.dogstep = 10;
             break;
+        case "datr_jarome":
+            nav.bg("318_janiceBedroom/datr_jarome_" + g.internal + ".jpg");
+            if (g.internal === 6) {
+                nav.killbutton("datr_jarome");
+                chat(55, 318);
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -386,13 +395,25 @@ room318.chatcatch = function (callback) {
         case "bg":
         case "datr_brad_1":
         case "datr_brad_7":
-        case "datr_brad_8":
+        case "datr_mike_1":
+        case "datr_mike_4":
             nav.bg("318_janiceBedroom/" + callback + ".jpg");
+            break;
+        case "datr_mike_3":
+        case "datr_brad_8":
+            nav.kill();
+            levels.cum(1);
+            nav.bg("318_janiceBedroom/" + callback + ".jpg");
+            break;
+        case "datr_jarome_1":
+            nav.bg("318_janiceBedroom/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            g.internal = 2;
+            nav.next("datr_jarome");
             break;
         case "b2_1":
         case "b2_2":
         case "b2_3":
-        case "b2_4":
+        case "b2_4": 
         case "b2_5":
         case "b2_10":
             nav.bg("318_janiceBedroom/" + callback + "_" + g.internal.gender + ".jpg");
@@ -442,7 +463,7 @@ room318.chatcatch = function (callback) {
             nav.bg("318_janiceBedroom/" + (cl.c.chastity !== null ? "vib_chast2.jpg" : "vib_dick2.jpg"));
             break;
         case "breakup":
-            sc.completeMission("janice", "cuck", false);
+            sc.completeMission("janice", "datr", false);
             sc.startMission("janice", "breakup");
             daily.set("janice");
             cl.undo();
@@ -478,6 +499,31 @@ room318.chatcatch = function (callback) {
                         chat(39, 318);
                     }
                     break;
+                case "mike":
+                    nav.bg("318_janiceBedroom/datr_mike_0.jpg");
+                    if (sc.getMissionTask("janice", "datr", 0).notStarted) {
+                        sc.completeMissionTask("janice", "datr", 0);
+                        chat(40, 318);
+                    }
+                    else {
+                        sc.completeMissionTask("janice", "datr", 1);
+                        chat(56, 318);
+                    }
+                    
+                    break;
+                case "jarome":
+                    nav.bg("318_janiceBedroom/datr_jarome_0.jpg");
+                    if (sc.getMissionTask("janice", "datr", 2).notStarted) {
+                        sc.completeMissionTask("janice", "datr", 2);
+                        chat(50, 318);
+                    }
+                    else {
+                        sc.completeMissionTask("janice", "datr", 3);
+                        chat(49, 318);
+                    }
+                    
+
+                    break;
             }
             break;
         case "brad1":
@@ -499,6 +545,19 @@ room318.chatcatch = function (callback) {
             }, 318);
             g.internal = { gamestep: 2, dogstep: 0, revert: false };
             nav.next("jabari");
+            break;
+        case "datr_mike_2":
+            nav.bg("318_janiceBedroom/datr_mike_2.jpg");
+            zcl.bj(0, 600, 1, "open", true);
+            nav.button({
+                "type": "img",
+                "name": "mike",
+                "left": 1279,
+                "top": 0,
+                "width": 641,
+                "height": 1080,
+                "image": "318_janiceBedroom/datr_mike_2_o.png"
+            }, 318);
             break;
         case "sleep":
             gv.set("janiceDatr", null);
@@ -697,8 +756,10 @@ room318.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "janice",
-                text: "I'm so excited! I made this video for you yesterday " +
-                    "and I'm just dying to show you. Just lay down on my bed! ",
+                text: "I'm so excited! After our talk I called a friend of mine that's so " +
+                    "hot and has been trying to get in my panties all month. I knew I had " +
+                    "to try it and see if this could work for me so I made this video for " +
+                    "you yesterday and I'm just dying to show you. Just lay down on my bed! ",
                 button: [
                     { chatID: 14, text: "Sure!", callback: "b2_1" },
 
@@ -708,8 +769,7 @@ room318.chat = function (chatID) {
                 chatID: 14,
                 speaker: "janice",
                 text: "Do you like it when I rub my fingers over your balls? Tickles " +
-                    "doesn't it? I ran into a really nice man on my way back from the grocery " +
-                    "store and he let me film a video in his room for you. " +
+                    "doesn't it? He let me set up my phone so I could record it for you. " +
                     "It made me feel like you're in the room watching me. I love being watched. ",
                 button: [
                     { chatID: 15, text: "MMmmmmm", callback: "b2_2" },
@@ -719,8 +779,8 @@ room318.chat = function (chatID) {
             {
                 chatID: 15,
                 speaker: "janice",
-                text: "See I made the video just for you. I really hope you like it. I " +
-                    "do love a nice butt like yours. Have you ever had a girl play with " +
+                text: "This video is just for you. I really hope you like it. I " +
+                    "do love a nice butt like yours. Do you like it when a girl plays with " +
                     "your butt? ",
                 button: [
                     { chatID: 16, text: "Yeah", callback: "b2_3" },
@@ -752,7 +812,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "me",
-                text: "WAIT! IS THAT ANOTHER GUY IN YOUR HOTEL!",
+                text: "WAIT! Is that the guy? He's huge!",
                 button: [
                     { chatID: 19, text: "...", callback: "" },
                 ]
@@ -760,8 +820,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "janice",
-                text: "Hahaha. Yeah silly. I don't remember his " +
-                    "name, but he was more than happy to help me create my video for you. " +
+                text: "Hahaha. Yeah silly. He was more than happy to help me create my video for you. " +
                     "Can you see how powerful his arms are? He was so sexy and manly! As " +
                     "soon as I saw him I knew we would be back at his place. Now " +
                     "stop talking and just watch while I make you feel good. ",
@@ -955,13 +1014,173 @@ room318.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 38,
+                chatID: 39,
                 speaker: "!jabari",
                 text: "Hey freak. Get the fuck out so I can fuck yo' girl! ",
                 button: [
                     { chatID: -1, text: "ok...", callback: "jabari1" },
                 ]
-            }
+            },
+            {
+                chatID: 40,
+                speaker: "!boxes",
+                text: "Oh hi. I didn't know there were going to be 2 girls here. hehehe.  ",
+                button: [
+                    { chatID: 41, text: "*blush*", callback: "" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "janice",
+                text: "Let me introduce my fem-boyfriend " + sc.n("me") + "; " + gender.pronoun("he") +
+                    " likes to watch me have sex since " + gender.pronoun("he") + "'s not " +
+                    "manly enough to do it " + gender.pronoun("him") + "self. ",
+                button: [
+                    { chatID: 42, text: "*blush more*", callback: "" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "!boxes",
+                text: "That's so hot! Why don't we show your femboy what " + gender.pronoun("he") +
+                    "'s missing. ",
+                button: [
+                    { chatID: 43, text: "oh yeah! ", callback: "datr_mike_1" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "!boxes",
+                text: "I hate to see you sitting there just watching. I can see you staring at my dick. " +
+                    "Why don't you play the fluffer. Get me nice and hard so I can slide my dick " +
+                    "into your girlfriend. I know that's what you really want. ",
+                button: [
+                    { chatID: 44, text: "oh please! ", callback: "datr_mike_2" },
+                    { chatID: 44, text: "No thanks. I just like to watch. ", callback: "datr_mike_3" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "!boxes",
+                text: "You're such a good fem-boyfriend slobbering all over my dick and " +
+                    "getting it lubed up for your cute little girlfriend. Do you like " +
+                    "how it tastes? ",
+                button: [
+                    { chatID: 45, text: "MMmhmmmm ", callback: "" },
+                    { chatID: 45, text: "gluck gluck", callback: "" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "!boxes",
+                text: "I know you do! Now have a seat femboy and watch me give your " +
+                    "girlfriend orgasms like she's never had! ",
+                button: [
+                    { chatID: 46, text: "MMmmmmmmmMMmm", callback: "datr_mike_3" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "thinking",
+                text: "He's been fucking her hard for like 20 minutes! How does he last " +
+                    "that long? He must work out to have that kind of stamina. " +
+                    "I haven't heard " + sc.n("janice") + " scream like that ever! I so wish " +
+                    "I could orgasm like that for a solid 20 minutes. It's like waves, one " +
+                    "orgasm after another. I wish he'd fuck me like that... ",
+                button: [
+                    { chatID: 47, text: "...", callback: "datr_mike_4" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "!boxes",
+                text: "So how's about it. Want to clean me off fem-boyfriend? You can taste us " +
+                    "both at the same time. ",
+                button: [
+                    { chatID: 48, text: "I sure do!", callback: "datr_mike_2" },
+                    { chatID: 33, text: "I'll pass. Thanks!", callback: "datr_brad_8" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "!boxes",
+                text: "I can't tell if you really love the taste of your girlfriend, " +
+                    "or you just love sucking cock, but you are really good at it! ",
+                button: [
+                    { chatID: 33, text: "MMmmmMMmmm", callback: "datr_brad_8" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "!boxes",
+                text: "You two must really love my dick to keep calling me back! ",
+                button: [
+                    { chatID: 43, text: "Oh yeah!", callback: "datr_mike_1" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "!jarome",
+                text: "Hey sweetheart. Just got done with practice, thought I'd swing by, " +
+                    "see what's up",
+                button: [
+                    { chatID: 51, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "janice",
+                text: "Oh my! my my my! You are so big! Unlike my fem-boyfriend you could " +
+                    "scoop my up and carry me anywhere with those big strong arms of yours! ",
+                button: [
+                    { chatID: 52, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "!jarome",
+                text: "Yeah baby. I could even carry to that bed over there. So why don't " +
+                    "you tell your little friend to take off so I can take them close off cha",
+                button: [
+                    { chatID: 53, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "janice",
+                text: "Do you mind if " + gender.pronoun("he") + " stays. " + gender.pronoun("he") +
+                    " likes to watch. ",
+                button: [
+                    { chatID: 54, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "!jarome",
+                text: "Oh shit! It's like that. Ok. ya " + gender.pronoun("he") + " can watch a " +
+                    "real man pound this little girl here out. Come here femboy, we're going to give " +
+                    "you a front row seat! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "datr_jarome_1" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "!jarome",
+                text: "Have fun lickin' up that nut boy. ",
+                button: [
+                    { chatID: 33, text: "MMmmm", callback: "datr_brad_8" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "!jarome",
+                text: "Can't get enough of this dick huh? Go ahead and take your place " +
+                    "under a real woman and real man fem boy. ",
+                button: [
+                    { chatID: -1, text: "[Take your place]", callback: "datr_jarome_1" },
+                ]
+            },
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

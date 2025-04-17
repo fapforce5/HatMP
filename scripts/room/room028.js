@@ -309,6 +309,10 @@ room28.future = function () {
                 case "practiceDate0":
                     sc.completeMissionTask("lola", "date", 1);
                     break;
+                case "j-mike": gv.set("janiceDatr", "mike"); break;
+                case "j-jarome": gv.set("janiceDatr", "jarome"); break;
+                case "j-jabari": gv.set("janiceDatr", "jabari"); break;
+                case "j-brad": gv.set("janiceDatr", "brad"); break;
             }
             future.st.splice(i, 1);
         }
