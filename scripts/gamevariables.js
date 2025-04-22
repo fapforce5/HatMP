@@ -452,8 +452,9 @@ gv.init = function () {
         { id: 21, pId: 3, icon: "qlip1", p: 1, h: true, x: 830, y: 628, ach: false, name: "Lips", desc: "Dick Sucking Lips" },
         { id: 22, pId: 21, icon: "qlip2", p: 2, h: true, x: 981, y: 628, ach: false, name: "Bimbo Lips", desc: "Lips so fat you can't close your mouth" },
 
-        { id: 23, pId: 24, icon: "qwhore", p: 4, h: false, x: 981, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
-        { id: 24, pId: 3, icon: "qsed", p: 1, h: false, x: 830, y: 64, ach: false, name: "Confidence", desc: "You can seduce men." },
+        { id: 23, pId: 25, icon: "qwhore", p: 4, h: false, x: 1132, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
+        { id: 24, pId: 3, icon: "qs", p: 1, h: false, x: 830, y: 64, ach: false, name: "Confidence", desc: "You can seduce men." },
+        { id: 25, pId: 24, icon: "qsed", p: 3, h: false, x: 981, y: 64, ach: false, name: "Stripper", desc: "Feel comfortable taking your clothes off for money" },
 
     ];
 
@@ -791,7 +792,7 @@ levels.mod = function (name, amount, targetLevel = 999) {
     if (name === "fitness") {
         var fitnessEnd = levels.get("fitness").l;
         if (startingLevel < fitnessEnd)
-            gv.mod("maxenergy", (fitnessEnd - fitnessStart) * 4);
+            gv.mod("maxenergy", (fitnessEnd - startingLevel) * 4);
     }
     sstat.makeGraph();
 };

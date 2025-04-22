@@ -32,17 +32,18 @@ $(document).ready(function () {
     });
 
     char.resizewindow = function () {
-        var ogRatio = g.ratio === 0 ? .0001 : g.ratio;
+        let ogRatio = g.ratio === 0 ? .0001 : g.ratio;
         g.setRatio();
         var gameWidth = 1920 * g.ratio;
         var gameHeight = 1080 * g.ratio;
+        let w, h, t, l, f;
         cl.display();
         $('#room-background').find('img').css({ "width": gameWidth + "px", "height": gameHeight + "px" });
         $('#room-buttons').find('img').each(function () {
-            var w = $(this).css("width").replace('px', '') / ogRatio;
-            var h = $(this).css("height").replace('px', '') / ogRatio;
-            var t = $(this).css("top").replace('px', '') / ogRatio;
-            var l = $(this).css("left").replace('px', '') / ogRatio;
+            w = $(this).css("width").replace('px', '') / ogRatio;
+            h = $(this).css("height").replace('px', '') / ogRatio;
+            t = $(this).css("top").replace('px', '') / ogRatio;
+            l = $(this).css("left").replace('px', '') / ogRatio;
             $(this).css({
                 "width": (w * g.ratio) + "px",
                 "height": (h * g.ratio) + "px",
@@ -52,10 +53,10 @@ $(document).ready(function () {
         });
 
         $(".resize").each(function () {
-            var w = $(this).css("width").replace('px', '') / ogRatio;
-            var h = $(this).css("height").replace('px', '') / ogRatio;
-            var t = $(this).css("top").replace('px', '') / ogRatio;
-            var l = $(this).css("left").replace('px', '') / ogRatio;
+            w = $(this).css("width").replace('px', '') / ogRatio;
+            h = $(this).css("height").replace('px', '') / ogRatio;
+            t = $(this).css("top").replace('px', '') / ogRatio;
+            l = $(this).css("left").replace('px', '') / ogRatio;
             $(this).css({
                 "width": (w * g.ratio) + "px",
                 "height": (h * g.ratio) + "px",
@@ -65,11 +66,11 @@ $(document).ready(function () {
         });
 
         $(".resize-font").each(function () {
-            var w = $(this).css("width").replace('px', '') / ogRatio;
-            var h = $(this).css("height").replace('px', '') / ogRatio;
-            var t = $(this).css("top").replace('px', '') / ogRatio;
-            var l = $(this).css("left").replace('px', '') / ogRatio;
-            var f = $(this).css("font-size").replace('px', '') / ogRatio;
+            w = $(this).css("width").replace('px', '') / ogRatio;
+            h = $(this).css("height").replace('px', '') / ogRatio;
+            t = $(this).css("top").replace('px', '') / ogRatio;
+            l = $(this).css("left").replace('px', '') / ogRatio;
+            f = $(this).css("font-size").replace('px', '') / ogRatio;
             $(this).css({
                 //"width": (w * g.ratio) + "px",
                 //"height": (h * g.ratio) + "px",

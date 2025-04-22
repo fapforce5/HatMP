@@ -19,7 +19,7 @@ room352.main = function () {
 
 
 
-    let howMany = g.rand(2, 7);
+    let howMany = g.rand(2, 5);
 
     let i, s, t, q, r;
     
@@ -29,7 +29,6 @@ room352.main = function () {
         events: new Array()
     };
 
-    howMany = 1;
     for (i = 0; i < howMany; i++) {
         q = Math.floor(Math.random() * 9);
         let s = 1;

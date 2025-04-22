@@ -57,6 +57,11 @@ room27.main = function () {
             zcl.displayMirror();
             chat(0, 27);
             break;
+        case 602:
+            nav.bg("27_mirror/602.jpg");
+            zcl.displayMirror();
+            chat(0, 27);
+            break;
         case 727:
             nav.bg("27_mirror/727.jpg");
             zcl.displayMirror();

@@ -4,10 +4,11 @@ var room600 = {};
 
 room600.main = function () {
     if (cl.isLewd()) {
-
+        chat(15, 600);
     }
-    else if (sc.getMission("tony", "strip").notStarted) {
-
+    else if (sc.getMission("tony", "strip").startedOrComplete) {
+        char.room(602);
+        return;
     }
     else {
         if (cl.appearance() > 2) {
@@ -32,7 +33,39 @@ room600.chatcatch = function (callback) {
             nav.bg("600_body/" + callback + ".jpg");
             break;
         case "office2":
+            nav.bg("600_body/office2.jpg");
             zcl.bj(300, 400, .7, "", true);
+            break;
+        case "office3":
+            nav.bg("600_body/office3.jpg");
+            zcl.bj(300, 400, .7, "open", true);
+            nav.button({
+                "type": "img",
+                "name": "office3",
+                "left": 857,
+                "top": 0,
+                "width": 784,
+                "height": 1080,
+                "image": "600_body/office3.png"
+            }, 600);
+            break;
+        case "office4":
+            nav.killbutton("office3");
+            nav.bg("600_body/office4.jpg");
+            zcl.bj(300, 400, .7, "", true);
+            sc.show("tony");
+            sc.startMission("tony", "strip");
+            sc.completeMissionTask("tony", "strip", 0);
+            break;
+        case "job":
+            if (qdress.st[25].ach) {
+                chat(2, 600);
+            }
+            else
+                chat(16, 600);
+            break;
+        case "room602":
+            char.room(602);
             break;
         case "leave":
             char.room(0);
@@ -58,7 +91,7 @@ room600.chat = function(chatID){
             speaker: "!freddy",
             text: "Hey! You're a hot piece of ass! You wanna job? ",
             button: [
-                { chatID: 2, text: "Oh. Yeah, sure", callback: "" },
+                { chatID: -1, text: "Oh. Yeah, sure", callback: "job" },
                 { chatID: -1, text: "Ewwww. gross. no.", callback: "leave" },
             ]
         },
@@ -132,16 +165,71 @@ room600.chat = function(chatID){
                 "lot's a nice butts shaking on stage. Maybe too many. I don't know kid. " +
                 "How badly do you want this job? ",
             button: [
-                { chatID: 9, text: "I want it. I really want it!", callback: "office1" },
+                { chatID: 10, text: "I want it. I really want it!", callback: "office1" },
             ]
         },
         {
-            chatID: 8,
+            chatID: 10,
             speaker: "tony",
-            text: "Don't tell my face. Tell my cock how much you want it ",
+            text: "Don't tell my face. Tell my cock how much you want it. ",
             button: [
-                { chatID: 9, text: "[Suck Fat Tony's cock] ", callback: "office2" },
+                { chatID: 11, text: "[Get down on your knees] ", callback: "office2" },
                 { chatID: -1, text: "You monster! [Run away crying] ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "tony",
+            text: "That's right. That look in your eyes... it tells me you understand the way things work around here. You're sharp. You're hungry. And that's good. A bit of a tramp and a little bit of... eagerness... those are qualities I value. Now, let's not waste any more time on pleasantries. Get to sucking.",
+            button: [
+                { chatID: 12, text: "[Suck Fat Tony's cock you dirty dirty tramp] ", callback: "office3" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "tony",
+            text: "I like girls like you. Know your place and what you're good for. ",
+            button: [
+                { chatID: 13, text: "[Suck the cum out of Fat Tony's fat cock] ", callback: "office4" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "tony",
+            text: "Arright kid. You can work for me. I exepct loyalty, so do what I say. My cut is fifty percent " +
+                "of your tips, gotta keep the lights on. You need to wear a bra and panties when " +
+                "you're on stage. You can drop the bra, but don't drop them panties on stage or the " +
+                "cops give me a hard time. Capisce?",
+            button: [
+                { chatID: 14, text: "Yes sir! Thank you sir!", callback: "" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "tony",
+            text: "Now get dressed and get out of my office. I gots work to do. You can " +
+                "change backstage. You start tonight. And no sex with the clients. That'll " +
+                "get me in trouble with the cops too. Now go make me some moolah. ",
+            button: [
+                { chatID: -1, text: "Yes sir!", callback: "room602" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "!freddy",
+            text: "Whoa, whoa, whoa, whoa! This here's a respectable establishment! You's " +
+                "gotsta get some clothes on. ",
+            button: [
+                { chatID: -1, text: "Oh. Ok", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "What am I saying??? There's no way I'm comfortable enough stripping " +
+                "in front of a lot of strange horny men!",
+            button: [
+                { chatID: -1, text: "[Need to unlock Stripper]", callback: "leave" },
             ]
         },
     ];

@@ -20,7 +20,7 @@ g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
 g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 225, 450, 475, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 201, 209, 318, 320, 451, 452, 503, 552, 553, 587, 727, 875, 902, 903];
+g.roomChange = [10, 12, 56, 201, 209, 318, 320, 451, 452, 503, 552, 553, 587, 602, 727, 875, 902, 903];
 g.sp = {};
 g.roomID = 1;
 g.dt = g.startDate;
@@ -329,9 +329,9 @@ g.rooms = [
     { roomID: 588, name: "Doofus's Room", image: "588_doofus/bg.jpg", nightImage: "588_doofus/bg.jpg", houseID: 575, btn: "roomBtn_588.png" },
     { roomID: 589, name: "Liam's Room", image: "589_liam/bg.jpg", nightImage: "589_liam/bg.jpg", houseID: 575, btn: "roomBtn_589.png" },
 
-    { roomID: 600, name: "Strip Club", image: "600_body/bg.png", nightImage: "600_body/bg.png", houseID: 600, btn: "roomBtn_600.png" },
+    { roomID: 600, name: "Strip Club", image: "600_body/bg.jpg", nightImage: "600_body/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
     { roomID: 601, name: "Stage", image: "601_dance/bg.jpg", nightImage: "601_dance/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
-    { roomID: 602, name: "Change Room", image: "map/map.png", nightImage: "map/map.png", houseID: 600, btn: "roomBtn_600.png" },
+    { roomID: 602, name: "Change Room", image: "602_backroom/bg.jpg", nightImage: "602_backroom/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
 
     { roomID: 625, name: "Carnival", image: "625_fair/bg.jpg", nightImage: "625_fair/bg.jpg", houseID: 600, btn: "roomBtn_625.png" },
     { roomID: 626, name: "Ferris wheel", image: "626_ferris/bg.jpg", nightImage: "626_ferris/bg.jpg", houseID: 625, btn: "roomBtn_626.png" },

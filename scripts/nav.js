@@ -151,7 +151,6 @@ nav.t = function (btn, roomNum) {
     var left = btn.left * g.ratio;
 
     var classes = "room-img";
-    var charAttr = "";
     var thisHex = "#000000";
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
@@ -176,13 +175,13 @@ nav.t = function (btn, roomNum) {
         classes = "room-btn rom-event fight-hover";
 
     if (btn.font === 12)
-        classes += " char-12 resize ";
+        classes += " char-12 ";
     else if (btn.font === 20)
-        classes += " char-20 resize ";
+        classes += " char-20 ";
     if ("hex" in btn)
         thisHex = btn.hex;
 
-    line = '<div class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + ';" >' + btn.text + '</div>';
+    line = '<div class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + '; width: auto; height: auto;" >' + btn.text + '</div>';
 
     $('#room-buttons').append(line);
 
@@ -335,6 +334,99 @@ nav.convertTime = function (hour, minute) {
     }
     else {
         return hour + ":" + nav.twodigits(minute);
+    }
+};
+
+nav.progressBar = function (btn, roomId) {
+    let maxVal = btn.maxVal;
+    let val = btn.val;
+    let bgColor, fgColor;
+    let classes = "room-img";
+    if (val > maxVal)
+        val = maxVal;
+    if (val < 0)
+        val = 0;
+
+    let valPercentage = (val / maxVal) * btn.width;
+    let bgCss = g.makeCss(btn.height, btn.width, btn.top, btn.left);
+    let fgCss = g.makeCss(btn.height, valPercentage, btn.top, btn.left);
+    switch (btn.color) {
+        case "blue":
+            bgColor = "#333333";
+            fgColor = "#4E99E0";
+            break;
+        case "pink":
+            bgColor = "#333333";
+            fgColor = "#FF5ED1";
+            break;
+        case "purple":
+            bgColor = "#333333";
+            fgColor = "#CF25C9";
+            break;
+        case "bluepink":
+            bgColor = "#4E99E0";
+            fgColor = "#FF5ED1";
+            break;
+        case "green":
+            bgColor = "#333333";
+            fgColor = "#20C000";
+            break;
+        case "red":
+            bgColor = "#333333";
+            fgColor = "#e02626";
+            break;
+        default:
+            bgColor = "#333333";
+            fgColor = "#FF5ED1";
+            break;
+    }
+
+    if (btn.type === "dark")
+        classes = "room-img img-dark";
+    else if (btn.type === "btn")
+        classes = "room-btn rom-event";
+    else if (btn.type === "btnNoHover")
+        classes = "room-btnNoHover rom-event";
+    else if (btn.type === "kiss")
+        classes = "room-btn-lips rom-event";
+    else if (btn.type === "tongue")
+        classes = "room-btn-tongue rom-event";
+    else if (btn.type === "dick")
+        classes = "room-btn-dick rom-event";
+    else if (btn.type === "brush")
+        classes = "room-btn-brush rom-event";
+    else if (btn.type === "hand")
+        classes = "room-btn-hand rom-event";
+    else if (btn.type === "grab")
+        classes = "room-btn-grab rom-event";
+    else if (btn.type === "vib")
+        classes = "room-btn-vib rom-event";
+    else if (btn.type === "btnflat")
+        classes = "room-btnflat room-btn rom-event";
+    else if (btn.type === "zimg")
+        classes = "room-img room-zindex";
+    else if (btn.type === "zbtn")
+        classes = "room-btn rom-event room-zindex";
+    else if (btn.type === "btnhover")
+        classes = "room-btn rom-event fight-hover";
+    else if (btn.type === "imghover")
+        classes = "room-img fight-hover-element";
+    else if (btn.type === "clickthrough") {
+        classes = "room-img click-thru";
+    }
+    nav.killbutton(btn.name);
+    $('#room-buttons').append('<div class="resize ' + classes + '" data-name="' + btn.name + '" data-room="' + roomId + '" style=" ' + bgCss + '  background: ' + bgColor + '; border-radius:100px;" ></div>');
+    $('#room-buttons').append('<div class="resize ' + classes + '" data-name="' + btn.name + '" data-room="' + roomId + '" style=" ' + fgCss + '  background: ' + fgColor + '; border-radius:100px;" ></div>');
+    if ("title" in btn) {
+        nav.t({
+            type: btn.type,
+            name: btn.name,
+            left: btn.left,
+            top: btn.top - 25,
+            font: 20,
+            hex: ("titleColor" in btn ) ? btn.titleColor : "#ffffff",
+            text: btn.title
+        }, roomId)
     }
 };
 

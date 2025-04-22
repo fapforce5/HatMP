@@ -1116,7 +1116,8 @@ sc.charMission = [
             {
                 missionName: "strip", mStatus: 0, title: "Stripper", desc: "Working for the fat man", task:
                     [
-                        { id: 0, txt: "Want a job? ", show: true, mStatus: 0, roomId: 450 },
+                        { id: 0, txt: "Want a job? ", show: true, mStatus: 0, roomId: 600 },
+                        { id: 1, txt: "First day ", show: true, mStatus: 0, roomId: 600 },
                     ]
             },
         ]
@@ -1913,7 +1914,7 @@ sc.select = function (name, img, i) {
     nav.button({
         "type": "btn",
         "name": name,
-        "left": 400 + ((i % 2) * 700),
+        "left": 400 + ((Math.abs(i) % 2) * 700),
         "top": 200 + (Math.floor(i / 2) * 120),
         "width": 600,
         "height": 100,
@@ -2480,6 +2481,10 @@ sc.trivial = function (charname) {
         case "!freddy":
             name = "Fat Freddy";
             image = "freddy.png";
+            break;
+        case "!frank":
+            name = "Fat Franky";
+            image = "frank.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

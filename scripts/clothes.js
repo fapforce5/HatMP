@@ -699,6 +699,20 @@ cl.hasoutfit = function (ctype) {
                     missingClothing.push("heels");
             }
             break;
+        case "braAndPantiesIgnored":
+            if (cl.c.swimsuit !== null)
+                missingClothing.push("swimsuit");
+            if (cl.c.dress !== null)
+                missingClothing.push("dress");
+            if (cl.c.shirt !== null)
+                missingClothing.push("shirt");
+            if (cl.c.pants !== null)
+                missingClothing.push("pants");
+            if (cl.c.socks !== null)
+                missingClothing.push("socks");
+            if (cl.c.pj !== null)
+                missingClothing.push("PJs");
+            break;
     }
     
     var retMissing = null;
