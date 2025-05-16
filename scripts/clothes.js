@@ -2372,6 +2372,7 @@ cl.subDisplayAppend = function (id, image) {
 cl.cockDisplay = function () {
 
     if (g.cockDisplay === "c") {
+        let carousal = (Math.floor(gv.get("arousal") / 16.7));
         $("#char_cockDisplay").html('<img src="./images/mainChar/cock/erec_body_ball.png" />');
         var cumHeight = 35 * cl.getCum();
         $("#char_cockDisplay").append('<div style="' + g.makeCss(cumHeight, 25, 60 + (35 - cumHeight), 165) + ' background:rgba(255, 255, 255, 1); position:absolute; border-radius:' + 8 * g.ratio + 'px;"></div>');
@@ -2380,21 +2381,13 @@ cl.cockDisplay = function () {
 
         if (cl.c.chastity !== null) {
             $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("chastity", cl.c.chastity).img + '" />');
-        }
-        else {
-            var thisArousal = gv.get("arousal");
-            if (thisArousal < 15)
-                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_6.png" />');
-            else if (thisArousal < 25)
-                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_5.png" />');
-            else if (thisArousal < 45)
-                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_4.png" />');
-            else if (thisArousal < 65)
-                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_3.png" />');
-            else if (thisArousal < 85)
-                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_2.png" />');
+            if (carousal < 5)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/throb' + carousal + '.png" />');
             else
-                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_c_1.png" />');
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/throb5.gif" />');
+        }
+        else if(cl.c.cock < 5) {
+            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/cock_' + cl.c.cock + '_' + carousal + '.png" />');
         }
 
         if (cl.c.buttplug !== null) {

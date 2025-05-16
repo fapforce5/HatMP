@@ -143,11 +143,19 @@
     font-weight:700;
 }
 
+.txt-stroke-white {
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+
+.txt-stroke-black {
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
 .char-statDisplay {
     z-index: 1;
     margin-top: 5px;
     border-radius: 20px;
-    position:relative;
+    position: relative;
 }
 
 .char-statDisplay img{

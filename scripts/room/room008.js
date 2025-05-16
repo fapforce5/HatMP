@@ -207,7 +207,17 @@ room8.btnclick = function (name) {
             case "dress": cl.c.dress = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.shirt = null; cl.c.pants = null; break;
             case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; cl.c.dress = null; cl.c.shirt = null; cl.c.pants = null; cl.c.socks = null; cl.c.shoes = null; break;
             case "pj": cl.nude(); cl.c.pj = clname; break;
-            case "buttplug": cl.c.buttplug = clname; break;
+            case "buttplug":
+                var analLevel = levels.get("anal").l;
+                var plugLevel = cl.getEntry("buttplug", clname).daring * 2;
+                if (analLevel < 2)
+                    chat(12, 8);
+                else if (analLevel < plugLevel)
+                    chat(12, 8);
+                else {
+                    cl.c.buttplug = clname;
+                }
+                break;
             case "necklace": cl.c.necklace = clname; break;
             case "ear": cl.c.earring = clname; break;
             case "nose": cl.c.nosering = clname; break;

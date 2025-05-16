@@ -4,13 +4,13 @@ room0.chatInput;
 room0.main = function () {
     g.pass = g.internal = "";
     $('#room_footer').hide();
-    if (!$('#room_left_map').is(":visible"))
-        char.changeMenu("hide", false, true);
     var tempMap = gv.get("map");
     if (tempMap === 0)
         room0.btnclick("map_0");
     else if (tempMap === 2)
         room0.btnclick("map_2");
+    else if (tempMap === 3)
+        room0.btnclick("map_3");
     else
         room0.btnclick("map_1");
     if (!gv.get("panties") && cl.getEntry("panties", cl.c.panties).sex === "f") {
@@ -46,6 +46,12 @@ room0.btnclick = function (name) {
     else if (name === "map_2") {
         nav.bg("map/map2.jpg", "map/map2_night.jpg");
         gv.set("map", 2);
+        char.map();
+        room0.btnclick("redrawIcons");
+    }
+    else if (name === "map_3") {
+        nav.bg("map/map3.jpg", "map/map3_night.jpg");
+        gv.set("map", 3);
         char.map();
         room0.btnclick("redrawIcons");
     }
@@ -131,6 +137,12 @@ room0.btnclick = function (name) {
     }
     else {
         var roomnum = parseInt(name);
+        if (roomnum === 48)
+            roomnum = 49;
+        if (roomnum === 49) {
+            char.room(49);
+            return;
+        }
         $('.room-left').show();
         char.addtime(20);
         $('#room_footer').show();

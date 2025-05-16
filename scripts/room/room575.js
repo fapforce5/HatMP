@@ -16,7 +16,27 @@ room575.main = function () {
     //$.each(btnList, function (i, v) {
     //    nav.button(v, 575);
     //});
-    if (missy.activecase().name === "case_elijah" && missy.get("activeCaseComplete") === 0) {
+    if (cl.isLewd()) {
+        nav.bg("575_fastfood/lewd.webp");
+        chat(27, 575);
+        return;
+    }
+    if (gv.get("sissySchoolClass") === "finalx" && sc.getMission("brayden", "date").notStarted) {
+        g.internal = {
+            nextTo: false,
+            closer: 300
+        };
+        nav.button({
+            "type": "btn",
+            "name": "hit0",
+            "left": 1143,
+            "top": 485,
+            "width": 452,
+            "height": 254,
+            "image": "575_fastfood/hit0.webp"
+        }, 575);
+    }
+    else if (missy.activecase().name === "case_elijah" && missy.get("activeCaseComplete") === 0) {
         nav.button({
             "type": "btn",
             "name": "elijah",
@@ -27,7 +47,6 @@ room575.main = function () {
             "image": "575_fastfood/elijah.png"
         }, 575);
     }
-
     var navList = [0];
     nav.buildnav(navList);
 };
@@ -45,6 +64,17 @@ room575.btnclick = function (name) {
                 nav.bg("575_fastfood/e_chat.jpg");
                 chat(4, 575);
             }
+            break;
+        case "hit0":
+            nav.killall();
+            nav.bg("575_fastfood/hit1.jpg");
+            chat(22, 575);
+            break;
+        case "hitwin":
+            chat(28, 575);
+            break;
+        case "hitlose":
+            chat(30, 575);
             break;
         default:
             break;
@@ -84,12 +114,158 @@ room575.chatcatch = function (callback) {
             g.popUpNotice("Elijah liked that");
             levels.mod("pi", 20, 999);
             break;
+        case "hit1":
+            if (cl.c.cumface)
+                chat(37, 575);
+            else if (cl.appearance() < 3)
+                chat(23, 575);
+            else
+                chat(24, 575);
+            break;
+        case "hitNext":
+            g.internal.nextTo = true;
+            nav.killall();
+            nav.bg("575_fastfood/hit1.jpg");
+            zcl.displayMain(50, 700, .27, "clothes", false);
+            nav.button({
+                "type": "btn",
+                "name": "hittable",
+                "left": 0,
+                "top": 968,
+                "width": 1860,
+                "height": 112,
+                "image": "575_fastfood/table.webp"
+            }, 575);
+            break;
+        case "hitAcross":
+            g.internal.nextTo = false;
+            break;
+        case "hitCloser":
+            g.internal.closer -= 100;
+            nav.killall();
+            nav.bg("575_fastfood/hit1.jpg");
+            zcl.displayMain(50, 400 + g.internal.closer, .27, "clothes", false);
+            nav.button({
+                "type": "btn",
+                "name": "hittable",
+                "left": 0,
+                "top": 968,
+                "width": 1860,
+                "height": 112,
+                "image": "575_fastfood/table.webp"
+            }, 575);
+            break;
+        case "hitChance":
+            if (g.internal.nextTo)
+                charisma.init(7, "hitwin", "hitlose", 575);
+            else
+                charisma.init(9, "hitwin", "hitlose", 575);
+            break;
+        case "hit_fail":
+            sc.completeMission("brayden", "date", false);
+            sc.completeMissionTask("brayden", "date", 0, false);
+            char.addtime(30);
+            nav.bg("575_fastfood/emptyBooth.webp");
+            chat(31, 575);
+            break;
+        case "hit4":
+            nav.killall();
+            nav.bg("575_fastfood/hit4.webp");
+            break;
+        case "hit5":
+            nav.bg("575_fastfood/hit5.webp");
+            break;
+        case "hit_end":
+            sc.show("brayden");
+            sc.startMission("brayden", "date");
+            sc.completeMissionTask("brayden", "date", 0);
+            nav.button({
+                "type": "img",
+                "name": "hittable",
+                "left": 625,
+                "top": 52,
+                "width": 971,
+                "height": 977,
+                "image": "575_fastfood/hit_phone.webp"
+            }, 575);
+            char.addtime(30);
+            break;
+        case "reset":
+            char.room(575);
+            break;
+        case "emptyBooth":
+            nav.killall();
+            nav.bg("575_fastfood/emptyBooth.webp");
+            break;
         default:
             break;
     }
 };
 
 room575.chat = function (chatID) {
+    let buttonList;
+    
+    if (chatID === 999) {
+        buttonList = [{ chatID: 998, text: "...", callback: "" }];
+
+        if (g.internal.nextTo)
+            buttonList.push({ chatID: 998, text: "[Move closer to him]", callback: "hitCloser" });
+        return {
+            chatID: 999,
+            speaker: "brayden",
+            text: sc.n("brayden") + ". So what's a pretty girl like you doing today?",
+            button: buttonList
+        };
+    }
+    else if (chatID === 998) {
+        buttonList = [{ chatID: 997, text: "...", callback: "" }];
+
+        if (g.internal.nextTo)
+            buttonList.push({ chatID: 997, text: "[Move closer to him]", callback: "hitCloser" });
+        return {
+            chatID: 998,
+            speaker: "me",
+            text: "Just checking out handsom boys today. Saw you and had to meet you. ",
+            button: buttonList
+        };
+    }
+    else if (chatID === 997) {
+        nav.bg("575_fastfood/hit2.jpg");
+        buttonList = [{ chatID: 996, text: "...", callback: "" }];
+
+        if (g.internal.nextTo)
+            buttonList.push({ chatID: 996, text: "[Move closer to him]", callback: "hitCloser" });
+        return {
+            chatID: 997,
+            speaker: "brayden",
+            text: "Oh. hahaha. I don't think I've been called handsome by anyone but my " +
+                "mom before. ",
+            button: buttonList
+        };
+    }
+    else if (chatID === 996) {
+        if (g.internal.closer < 101) {
+            return {
+                chatID: 997,
+                speaker: "me",
+                text: "Well that's something your mom and I can agree on. I would love to get to " +
+                    "know you better.",
+                button: [
+                    { chatID: 32, text: "Put your hand on his lap", callback: "hit4" },
+                    { chatID: 26, text: "...", callback: "" },
+                ]
+            };
+        }
+        return {
+            chatID: 996,
+            speaker: "me",
+            text: "Well that's something your mom and I can agree on. I would love to get to " +
+                "know you better.",
+            button: [
+                { chatID: 26, text: "...", callback: "" }
+            ]
+        };
+    }
     var cArray = [
         {
             chatID: 0,
@@ -277,6 +453,147 @@ room575.chat = function (chatID) {
                 "Oh well. At least I get some free fries. ",
             button: [
                 { chatID: -1, text: "[Complete Case]", callback: "e_complete" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "me",
+            text: "Hello, I was wondering if I could sit with you while I eat? ",
+            button: [
+                { chatID: -1, text: "...", callback: "hit1" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "brayden",
+            text: "Oh.. uh. hi. No. I like to eat alone. Sorry. ",
+            button: [
+                { chatID: -1, text: "[You failed this task. Charisma begins with appearance]", callback: "hit_fail" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "brayden",
+            text: "Oh.. uh. hi. Sure, have a seat. ",
+            button: [
+                { chatID: 25, text: "[Sit next to him]", callback: "hitNext" },
+                { chatID: 25, text: "[Sit across from him]", callback: "hitAcross" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "me",
+            text: "I'm " + sc.n("me") + ". What's you name? ",
+            button: [
+                { chatID: 999, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "brayden",
+            text: "Maybe. I've got to run....",
+            button: [
+                { chatID: -1, text: "Can I get your phone number?", callback: "hitChance" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "me",
+            text: "Oh. How dumb of me to walk into a restaurant while I'm naked.. Sorry. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "brayden",
+            text: "Totally! I've never had a girl ask me for my phone number! Here you " +
+                "go! ",
+            button: [
+                { chatID: 29, text: "...", callback: "hit_end" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "me",
+            text: "Thanks sweetie! Call you later",
+            button: [
+                { chatID: 36, text: "...", callback: "emptyBooth" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "brayden",
+            text: "*blush* oh. no. Uhh.. sorry. I have to run! It was nice to meet you.",
+            button: [
+                { chatID: -1, text: "...", callback: "hit_fail" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "thinking",
+            text: "Damn! He got away. I guess I don't have the charisma I thought I " +
+                "had. I better do better with the other final tests!",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "brayden",
+            text: "Oh. Hehe. yeah. I'm sure we can get to know each other very well.",
+            button: [
+                { chatID: 33, text: "...", callback: "hit5" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "thinking",
+            text: "Oh. My heart is racing. I know I've done far worse, but this seems " +
+                "more real. Maybe he's genuinely interested in me, like the real me, and " +
+                "not just looking for sex. I love how his hand is just resting on mine, and " +
+                "not forcing me to his crotch. ",
+            button: [
+                { chatID: 35, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "brayden",
+            text: "Listen. I do have to run back to work. There's nothing I would like more than " +
+                "to spend more time with you, but I'll get fired if I'm late. If I give you my phone " +
+                "number will you call me? ",
+            button: [
+                { chatID: 35, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "brayden",
+            text: "Listen. I do have to run back to work. There's nothing I would like more than " +
+                "to spend more time with you, but I'll get fired if I'm late. If I give you my phone " +
+                "number will you call me? ",
+            button: [
+                { chatID: 29, text: "I totally will!", callback: "hit_end" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "thinking",
+            text: "Well it's nice to know that I can get a boy to like me. The real " +
+                "me without baring my ass. I should call him. But first I'll make him " +
+                "wait a few days so he doesn't think I'm desperate. I'll call him " +
+                "after my final! Plus I really need to focus on my final!",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "brayden",
+            text: "Oh gross. There's cum on your face. I'm trying to eat here!",
+            button: [
+                { chatID: -1, text: "...", callback: "hit_fail" },
             ]
         },
     ]; 

@@ -16,17 +16,21 @@ sc.char = [
     { name: "tom", display: "Tom", image: "tom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
     { name: "eva", display: "Eva", image: "eva.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: false },
     { name: "bigguy", display: "Dick", image: "bigman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "raven", display: "Raven", image: "raven.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
     { name: "janice", display: "Janice", image: "janice.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
     { name: "dog", display: "Cooper the Mythical Demon", image: "dog.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: -1, p: true, q3: null },
 
-   
     { name: "zoey", display: "Zoey", image: "zoey.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, q3: null },
     { name: "stormy", display: "Stormy", image: "stormy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "chloe", display: "Chloé", image: "chloe.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: false },
-    { name: "tina", display: "Tina", image: "tina.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 12, p: true,  q3: null },
+
+    { name: "tina", display: "Tina", image: "tina.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 12, p: true, q3: null },
     { name: "construction", display: "The Bossman", image: "bossman.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
-    { name: "govlady", display: "Ms. Pixie", image: "govlady.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: false },
+ 
+    { name: "brayden", display: "Brayden", image: "brayden.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
+
+    { name: "govlady", display: "Ms. Pixie", image: "govlady.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: false },
     { name: "chad", display: "Chad", image: "brad.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "g", display: "Gertrude", image: "gertrude.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
@@ -45,20 +49,14 @@ sc.char = [
     { name: "horse", display: "Jimmy Dingler", image: "horse.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
     { name: "dale", display: "Dale", image: "dale.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
-    { name: "fightman", display: "Bad Motherfucker", image: "fightMan.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "fightgirl", display: "Bad Motherfucker", image: "fightGirl.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "fighttrans", display: "Bad Motherfucker", image: "fightTrans.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "cult", display: "Cult", image: "cult.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "cultboy", display: "Cult", image: "cult_j_b.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "cultjgirl", display: "Cult", image: "cult_j_g.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "daria", display: "Morgan", image: "daria.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
-    { name: "jen", display: "Jen", image: "jen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
+    { name: "bodhi", display: "Bodhi", image: "bodhi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "jen", display: "Jen", image: "jen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "ubel", display: "Ubel", image: "ubel.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "ppgirl", display: "Pee Pee Girl", image: "pp.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
-    { name: "raven", display: "Raven", image: "raven.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
-
 
     { name: "river", display: "River", image: "river.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "jeffery", display: "Jeffery", image: "jeffery.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
@@ -76,11 +74,8 @@ sc.char = [
 
     { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "crystal", display: "Crystal", image: "crystal.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "whore", display: "Dirty Whore", image: "whore.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
-
-    { name: "bodhi", display: "Bodhi", image: "bodhi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
     { name: "tim", display: "Tim", image: "tim.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -94,7 +89,7 @@ sc.char = [
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "futa1", display: "Fink", image: "futaYellow.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "futa2", display: "Frown", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "slime", display: "Slime Girl", image: "slime.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    //{ name: "slime", display: "Slime Girl", image: "slime.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "stacy", display: "Stacy", image: "stacy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "courtney", display: "Courtney", image: "courtney.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
@@ -367,8 +362,8 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
                         { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
-                        { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400 },
-                        { id: 3, txt: "Glory hole?.", show: true, mStatus: 0, roomId: 216 },
+                        { id: 2, txt: "Catch her at the strip club?", show: false, mStatus: 0, roomId: 400 },
+                        { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216 },
                     ]
             },
             {
@@ -385,6 +380,16 @@ sc.charMission = [
                 missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
                     [
                         { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "chloe", mission: [
+            {
+                missionName: "random", mStatus: 1, title: "Random Events", desc: " ", task:
+                    [
+                        { id: 0, txt: "First meeting after caught cheeting", show: true, mStatus: 0, roomId: 600 },
                     ]
             },
         ]
@@ -677,6 +682,7 @@ sc.charMission = [
                 missionName: "corrupt", mStatus: 0, title: "Corrupt the sissy", desc: "Not made yet.", task:
                     [
                         { id: 0, txt: "In development (Not made)", show: false, mStatus: 0, roomId: 211 },
+                        { id: 1, txt: "strip club", show: false, mStatus: 0, roomId: 211 },
                     ]
             },
         ]
@@ -1118,6 +1124,18 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Want a job? ", show: true, mStatus: 0, roomId: 600 },
                         { id: 1, txt: "First day ", show: true, mStatus: 0, roomId: 600 },
+                        { id: 2, txt: "StripWithChris ", show: false, mStatus: 0, roomId: 600 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "brayden", mission: [
+            {
+                missionName: "date", mStatus: 0, title: "Date", desc: "Romance is in the air", task:
+                    [
+                        { id: 0, txt: "Got his phone number. ", show: true, mStatus: 0, roomId: 575 },
+                        { id: 1, txt: "Call him after the Final", show: true, mStatus: 0, roomId: 210 },
                     ]
             },
         ]
@@ -2237,13 +2255,13 @@ sc.trivial = function (charname) {
             image = "sporty.png";
             break;
         case "!jeremy":
-            if (sissy.st[10].ach) {
-                name = "Jenny"
-            }
-            else {
-                name = "Jeremy";
-            }
-            
+            //if (sissy.st[10].ach) {
+            //    name = "Jenny"
+            //}
+            //else {
+            //    name = "Jeremy";
+            //}
+            name = "Jeremy";
             image = "jeremy.png";
             break;
         case "!martin":
@@ -2423,8 +2441,20 @@ sc.trivial = function (charname) {
             image = "jabari.png";
             break;
         case "!rape0":
-            name = "My rapist";
+            name = "Rapist";
             image = "rape0.png";
+            break;
+        case "!rape12":
+            name = "Big Benny Cox";
+            image = "rape12.png";
+            break;
+        case "!duo13":
+            name = "Abbot";
+            image = "duo13.png";
+            break;
+        case "!duo13a":
+            name = "Costello";
+            image = "duo13a.png";
             break;
         case "!peggy":
             name = "Peggy";
@@ -2439,8 +2469,12 @@ sc.trivial = function (charname) {
             image = "damselle.png";
             break;
         case "!futa0":
-            name = "Futa";
+            name = "Domina Dix";
             image = "futa0.png";
+            break;
+        case "!futa1":
+            name = "Jessica";
+            image = "futa1.png";
             break;
         case "!plant":
             name = "Vines";
@@ -2485,6 +2519,14 @@ sc.trivial = function (charname) {
         case "!frank":
             name = "Fat Franky";
             image = "frank.png";
+            break;
+        case "!wolf":
+            name = "Dire wolf";
+            image = "wolf.png";
+            break;
+        case "!crystal":
+            name = "Crystal";
+            image = "crystal.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

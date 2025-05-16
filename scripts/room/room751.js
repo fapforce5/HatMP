@@ -1,173 +1,92 @@
 ﻿//Room name
 var room751 = {};
 room751.main = function () {
-    var navList = [750, 0];
-    nav.buildnav(navList);
-    //if (gv.get("money") > 14)
-    //    chat(0, 751);
-    //else
-    //    chat(1, 751);
-    chat(3, 751);
+    chat(0, 751);
+    nav.buildnav([750, 0]);
 };
 
 room751.btnclick = function (name) {
-    //var sci = sc.get(name);
-    //var i, j;
-    //nav.killall();
-    //var te = sc.get(name);
-    //var tse = -1;
-    //var thisStep, nextStep;
-    //thisStep = nextStep = null;
-    //for (i = 0; i < sc.events.length; i++) {
-    //    if (sc.events[i].name === name) {
-    //        if (sc.events[i].step === sci.step) {
-    //            tse = i;
-    //            i = 9999;
-    //        }
-    //        else if (sc.events[i] > sci.step) {
-    //            tse = i;
-    //            i = 9999;
-    //            console.log("overflow");
-    //        }
-    //    }
-    //}
-    //if (tse > -1) {
-    //    thisStep = sc.events[tse].txt;
-    //    if (tse < sc.events.length - 1) {
-    //        if (sc.events[tse + 1].name === name && sc.events[tse + 1].step > 0)
-    //            nextStep = sc.events[tse + 1].txt;
-    //    }
-    //}
-    //g.pass = { name: te.display, thisStep: thisStep, nextStep: nextStep };
-    //chat(998, 751);
-    //nav.bg("751_crystal/bg1.jpg");
+    nav.kill();
+    if (name === "mainMenu") {
+        sc.select("icon_main", "751_crystal/icon_main.webp", 0);
+        sc.select("icon_rel", "751_crystal/icon_rel.webp", 1);
+        sc.select("icon_other", "751_crystal/icon_other.webp", 2);
+    }
+    else if (name === "icon_main") {
+        chat(900, 751);
+    }
+    else if (name === "icon_other") {
+
+    }
+    else if (name === "icon_rel") {
+
+    }
 };
 
 room751.chatcatch = function (callback) {
     switch (callback) {
+        case "bg1":
+            nav.bg("751_crystal/" + callback + ".jpg");
+            break;
         case "leave":
             char.room(750);
             break;
         case "fortune":
-            var oncasetext = "";
-            switch (gv.get("oncase")) {
-                case "sewer":
-                    if (!inv.has("sewer"))
-                        oncasetext = "It appears you're on the Red Box case. Your next step is to <span class='hl'>" +
-                            "Visit " + sc.n("g") + " at the gym and learn how to spar. </span>";
-                    else if (!inv.has("redbox"))
-                        oncasetext = "It appears you're on the Red Box case. Your next step is to <span class='hl'>" +
-                            "Go to the alley next to the dance club and fight your way through the maze until you find " +
-                            "the red box. Get the box and return it to " + sc.n("missy") + ".</span>";
-                    else
-                        oncasetext = "It appears you're on the Red Box case. Your next step is to <span class='hl'>" +
-                            "Take the Red Box to " + sc.n("missy") + " in her office. </span>";
-                    break;
-                case "redroom":
-                    oncasetext = "It appears you're on the Red Room challenge. Your next step is to <span class='hl'>" +
-                        "You must go to " + sc.n("missy") + "'s and ride the elevator to the RED floor. There you must " +
-                        "pass her challenges. </span>";
-                    break;
-                case "gloryholebj":
-                    oncasetext = "It appears you're on the Bathroom Blow Job event. Your next step is to <span class='hl'>" +
-                        "Go see " + sc.n("cecilia") + " in the park bathroom during the weekend. " +
-                        "She'll show you how to suck a cock like the sissy you are. Go to the last toilet on the end. </span>";
-                    break;
-                case "shopping":
-                    if (inv.has("tifgift"))
-                        oncasetext = "It appears you're on the Crossdressing event. Your next step is to <span class='hl'>" +
-                            "You need to either go to your room or " + sc.n("zoey") + "'s room and open that bag. </span>";
-                    else
-                        oncasetext = "It appears you're on the Crossdressing event. Your next step is to <span class='hl'>" +
-                            "You need to visit " + sc.n("tiffany") + " and get your surprise. </span>";
-                    break;
-                case "diner":
-                    oncasetext = "It appears you're on the Diner Case. Your next step is to <span class='hl'>" +
-                        "You need to visit " + sc.n("jeffery") + " at the diner. If your wang is too long you'll " +
-                        "need to visit " + sc.n("candy") + " at Toy 'n Us and get a chastity cage. When you're done visit " +
-                        sc.n("missy") + " in her office. </span>";
-                    break;
-                case "dinerfail":
-                case "dinersuccess":
-                    oncasetext = "It appears you're on the Diner Case. Your next step is to <span class='hl'>" +
-                        "Visit " + sc.n("missy") + " in her office. If " + sc.n("cecilia") + " isn't there, just walk in. </span>";
-                    break;
-                case "bigboobs":
-                case "bigass":
-                case "dslLips":
-                case "smolpp":
-                    oncasetext = "Go home and go to sleep. When you wake up you'll see your changes. ";
-                    break;
-                case "clothes0":
-                    oncasetext = "You must go to " + sc.n("jones") + "'s house. He lives in the north east section of the residential " +
-                        "neighborhood. Go there before dark. ";
-                    break;
+            if (gv.get("money") < 5) {
+                chat(1, 751);
+                return;
             }
-            if (oncasetext !== "") {
-                g.pass = oncasetext;
-                chat(2, 751);
-            }
-            else {
-                var i, j;
-                var top = 0;
-                j = 0;
-                for (i = 0; i < sc.char.length; i++) {
-                    if (sc.char[i].max > 0) {
-                        if (j % 8 === 0)
-                            top += 150;
-                        nav.button({
-                            "type": "btn",
-                            "name": sc.char[i].name,
-                            "left": ((j % 8) * 150) + 450,
-                            "top": top,
-                            "width": 100,
-                            "height": 100,
-                            "image": "../speaker/" + sc.char[i].image
-                        }, 751);
-                        j++;
-                    }
-                }
-            }
+            gv.mod("money", -5);
+            chat(2, 751);
             break;
-
+        case "select":
+            room751.btnclick("mainMenu");
+            break;
+        case "fortune1":
+            if (gv.get("money") < 5) {
+                chat(1, 751);
+                return;
+            }
+            gv.mod("money", -5);
+            room751.btnclick("mainMenu");
+            break;
         default:
             break;
     }
 };
 
 room751.chat = function (chatID) {
-    if (chatID === 999) {
+    if (chatID === 900) {
+        let storyLine = "";
+        if (gv.get("jobapplyconst") > 1)
+            storyLine += "Complete: ";
+        storyLine += "Get a job at the construction site. Use you computer in your room to apply. <br/>";
+
+        if (missy.get("totalDaysWorked") > 0)
+            storyLine += "Complete: ";
+        storyLine += "Apply at Missy's detective Agency. <br/>";
+
+        if (missy.get("uniform") > 0)
+            storyLine += "Complete: ";
+        storyLine += "Find and wear panties to work. <br/>";
+
+        if (gv.get("castitycage") !== null)
+            storyLine += "Complete: ";
+        storyLine += "Work Missy's cases and raise your Intelligence until you prove worthy to join the Sissy School. <br/>";
+
+        if (sissy.st[21].ach)
+            storyLine += "Complete: ";
+        storyLine += "Attend the sissy school and do Missy's cases.<br/>";
+
+        storyLine += "End of main story line";
+
         return {
-            chatID: 999,
+            chatID: 0,
             speaker: "crystal",
-            text: g.pass,
+            text: storyLine,
             button: [
-                { chatID: -1, text: "Thanks!", callback: "leave" }
-            ]
-        };
-    }
-    if (chatID === 998) {
-        var thisText = "";
-        if (g.pass.thisStep !== null && g.pass.nextStep !== null) {
-            thisText = "For " + g.pass.name + " it looks like you just did <span class='hl-pink'>" + g.pass.thisStep +
-                "</span>. Your next step is to " +
-                "<span class='hl'>" + g.pass.nextStep + "</span>.";
-            gv.mod("money", -15);
-        }
-        else if (g.pass.thisStep !== null) {
-            thisText = "For " + g.pass.name + " it looks like you just did <span class='hl-pink'>" + g.pass.thisStep +
-                "</span>. It appears your at the end of this path. ";
-        }
-        else {
-            thisText = "Everything is cloudy. I can't see where you're going. ";
-        }
-        return {
-            chatID: 998,
-            speaker: "crystal",
-            text: thisText,
-            button: [
-                { chatID: -1, text: "Thanks!", callback: "leave" },
-                { chatID: -1, text: "Can I see another fortune?", callback: "fortune" }
+                { chatID: -1, text: "I do, here's $5", callback: "fortune1" },
+                { chatID: -1, text: "Nope", callback: "" }
             ]
         };
     }
@@ -175,34 +94,34 @@ room751.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "crystal",
-            text: "Would you like to hear your fortune for $15? [Work in progress]",
+            text: "Would you like to hear your fortune for $5? ",
             button: [
-                { chatID: -1, text: "I do, here's $15", callback: "fortune" },
-                { chatID: -1, text: "Nope", callback: "leave" }
+                { chatID: -1, text: "I do, here's $5", callback: "fortune" },
+                { chatID: -1, text: "Nope", callback: "" }
             ]
         },
         {
             chatID: 1,
             speaker: "crystal",
-            text: "I'm a fortune teller and I can tell you don't have enough money for my services. Come back when you have $15",
+            text: "I'm a fortune teller and I can tell you don't have enough money for my services. Come back when you have $5",
             button: [
-                { chatID: -1, text: "Oh, ok", callback: "leave" }
+                { chatID: -1, text: "Oh, ok", callback: "" }
             ]
         },
         {
             chatID: 2,
             speaker: "crystal",
-            text: "Oh... interesting.... I can see it now...",
+            text: "Now. In order to work I have to free myself. Hhhmmmm mMMmmm hhhMMmmm",
             button: [
-                { chatID: 999, text: "yes?", callback: "" }
+                { chatID: 3, text: "yes?", callback: "bg1" }
             ]
         },
         {
             chatID: 3,
             speaker: "crystal",
-            text: "Future release",
+            text: "What would you like to know?",
             button: [
-                { chatID: -1, text: "[In development]", callback: "" }
+                { chatID: -1, text: "Make you selection", callback: "select" }
             ]
         },
     ];

@@ -70,6 +70,7 @@ gv.init = function () {
         { n: "transformation", t: "voluntary", q: "string" },
         { n: "breastSelect", t: 0, q: "int" },
         { n: "assSelect", t: 0, q: "int" },
+        { n: "skipTrain", t: false, q: "bool" },
 
         //virgin
         { n: "virginMouth", t: 0, q: "string" },
@@ -107,6 +108,7 @@ gv.init = function () {
         { n: "sissySchoolClass", t: null, q: "string" },
         { n: "sissySchoolClassDays", t: 0, q: "int" },
         { n: "sissyGrades", t: "", q: "string" },
+        //sissy school final:
 
         { n: "pill", t: null, q: "string" },
 
@@ -168,8 +170,6 @@ gv.init = function () {
         { n: "cat", t: -1, q: "int" },
         { n: "cheerleader", t: 0, q: "hundred" },
         { n: "cheerlevel", t: 0, q: "int" },
-        { n: "stripper", t: 0, q: "hundred" },
-        { n: "stripperlevel", t: 0, q: "int" },
         { n: "waitressSteal", t: false, q: "bool" },
 
         { n: "fightsex", t: 1250, q: "int" },
@@ -191,94 +191,96 @@ gv.init = function () {
     ];
 
     //save by index
-    daily.st = [
-        { n: "chloe", t: false },
-        { n: "landlord", t: false },
-        { n: "landlordChat", t: false },
-        { n: "landlordmolest", t: false },
-        { n: "evamassage", t: false },
-        { n: "evatalk", t: false },
-        { n: "lolamassage", t: false },
-        { n: "lolatalk", t: false },
-        { n: "tif", t: false },
-        { n: "candy", t: false },
-        { n: "envy", t: false },
-        { n: "jones", t: false },
-        { n: "rachel", t: false },
-        { n: "zoey", t: false },
-        { n: "tim", t: false },
-        { n: "cindy", t: false },
-        { n: "keaton", t: false },
-        { n: "bigguy", t: false },
-        { n: "g", t: false },
-        { n: "doc", t: false },
-        { n: "ppgirl", t: false },
-        { n: "janice", t: false },
-        { n: "bimbo", t: false },
-        { n: "foundmoney", t: false },
+    daily.st = new Array();
+    //    [
+    //    { n: "chloe", t: false },
+    //    { n: "landlord", t: false },
+    //    { n: "landlordChat", t: false },
+    //    { n: "landlordmolest", t: false },
+    //    { n: "evamassage", t: false },
+    //    { n: "evatalk", t: false },
+    //    { n: "lolamassage", t: false },
+    //    { n: "lolatalk", t: false },
+    //    { n: "tif", t: false },
+    //    { n: "candy", t: false },
+    //    { n: "envy", t: false },
+    //    { n: "jones", t: false },
+    //    { n: "rachel", t: false },
+    //    { n: "zoey", t: false },
+    //    { n: "tim", t: false },
+    //    { n: "cindy", t: false },
+    //    { n: "keaton", t: false },
+    //    { n: "bigguy", t: false },
+    //    { n: "g", t: false },
+    //    { n: "doc", t: false },
+    //    { n: "ppgirl", t: false },
+    //    { n: "janice", t: false },
+    //    { n: "bimbo", t: false },
+    //    { n: "foundmoney", t: false },
 
-        { n: "momChoreBed", t: false },
-        { n: "momChoreDishes", t: false },
-        { n: "homeShowerPeek", t: false },
-        { n: "momRaidCloset", t: false },
-        { n: "spermbank", t: false },
-        { n: "shower", t: false },
+    //    { n: "momChoreBed", t: false },
+    //    { n: "momChoreDishes", t: false },
+    //    { n: "homeShowerPeek", t: false },
+    //    { n: "momRaidCloset", t: false },
+    //    { n: "spermbank", t: false },
+    //    { n: "shower", t: false },
 
-        { n: "construction", t: false },
-        { n: "buttholePlay", t: false },
-        { n: "dildoSuckPlay", t: false },
-        { n: "zbar", t: false },
-        { n: "gold0", t: false },
-        { n: "petcat", t: false },
-        { n: "cardgame", t: false },
-        { n: "cultrun", t: false },
-        { n: "tookHormonePill", t: false },
-        //dogsitting
-        { n: "dog", t: false },
-        { n: "dcrawl", t: false },
-        { n: "dfeed", t: false },
-        { n: "dpet", t: false },
-        { n: "dsniff", t: false },
-        { n: "dball", t: false },
-        { n: "dpb", t: false },
-        { n: "dinside", t: false },
-        { n: "dhump", t: false },
-        { n: "dlock", t: false },
-        { n: "dpee", t: false },
-        { n: "dsex", t: false },
-        { n: "dwalk", t: false },
+    //    { n: "construction", t: false },
+    //    { n: "buttholePlay", t: false },
+    //    { n: "dildoSuckPlay", t: false },
+    //    { n: "zbar", t: false },
+    //    { n: "gold0", t: false },
+    //    { n: "petcat", t: false },
+    //    { n: "cardgame", t: false },
+    //    { n: "cultrun", t: false },
+    //    { n: "tookHormonePill", t: false },
+    //    //dogsitting
+    //    { n: "dog", t: false },
+    //    { n: "dcrawl", t: false },
+    //    { n: "dfeed", t: false },
+    //    { n: "dpet", t: false },
+    //    { n: "dsniff", t: false },
+    //    { n: "dball", t: false },
+    //    { n: "dpb", t: false },
+    //    { n: "dinside", t: false },
+    //    { n: "dhump", t: false },
+    //    { n: "dlock", t: false },
+    //    { n: "dpee", t: false },
+    //    { n: "dsex", t: false },
+    //    { n: "dwalk", t: false },
 
-        { n: "water", t: false },
+    //    { n: "water", t: false },
 
-        { n: "cop", t: false },
-        { n: "elsleep", t: false },
-        { n: "zoeytalk", t: false },
-        { n: "orchid", t: false },
-        { n: "zoeypiss", t: false },
-        { n: "evaDrunk", t: false },
-        { n: "lolaDrunk", t: false },
-        { n: "pills", t: false },
-        { n: "landlordDick", t: false },
-        { n: "lolaDick", t: false },
+    //    { n: "cop", t: false },
+    //    { n: "elsleep", t: false },
+    //    { n: "zoeytalk", t: false },
+    //    { n: "orchid", t: false },
+    //    { n: "zoeypiss", t: false },
+    //    { n: "evaDrunk", t: false },
+    //    { n: "lolaDrunk", t: false },
+    //    { n: "pills", t: false },
+    //    { n: "landlordDick", t: false },
+    //    { n: "lolaDick", t: false },
 
-        { n: "makeup", t: false },
-        { n: "lipstick", t: false },
-        { n: "eyeshadow", t: false },
-        { n: "raven", t: false },
+    //    { n: "makeup", t: false },
+    //    { n: "lipstick", t: false },
+    //    { n: "eyeshadow", t: false },
+    //    { n: "raven", t: false },
 
-        { n: "constructionPay", t: false },
-        { n: "treasureAzrael", t: false }, 
-        { n: "wolfsniff", t: false },
-        { n: "parkNight", t: false },
+    //    { n: "constructionPay", t: false },
+    //    { n: "treasureAzrael", t: false }, 
+    //    { n: "wolfsniff", t: false },
+    //    { n: "parkNight", t: false },
 
-        { n: "jonesCleanStart", t: false },
-        { n: "jonesCleanEnd", t: false },
-        { n: "jonesCleanRoom1", t: false },
-        { n: "jonesCleanRoom2", t: false },
-        { n: "jonesCleanRoom3", t: false },
+    //    { n: "jonesCleanStart", t: false },
+    //    { n: "jonesCleanEnd", t: false },
+    //    { n: "jonesCleanRoom1", t: false },
+    //    { n: "jonesCleanRoom2", t: false },
+    //    { n: "jonesCleanRoom3", t: false },
 
-        { n: "janiceWebcam", t: false },
-    ];
+    //    { n: "janiceWebcam", t: false },
+    //    { n: "stripper", t: false }
+    //];
 
     weekly.st = [
         { n: "lolapee", t: false },
@@ -536,21 +538,28 @@ gv.init = function () {
 gv.init();
 
 gv.i=function(n){var r=-1;for(i=0;i<gv.st.length;i++)if(gv.st[i].n===n){r=i;break}return r}; //returns index for gv.st by name
-daily.i = function (n) { var r = -1; for (i = 0; i < daily.st.length; i++)if (daily.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
+daily.i = function (n) {
+    for (i = 0; i < daily.st.length; i++)
+        if (daily.st[i] === n) 
+            return i;
+    return null;
+}; //returns index for daily.st by name
 weekly.i = function (n) { var r = -1; for (i = 0; i < weekly.st.length; i++)if (weekly.st[i].n === n) { r = i; break } return r }; //returns index for daily.st by name
 levels.i=function(n){var r=-1;for(i=0;i<levels.st.length;i++)if(levels.st[i].n===n){r=i;break}return r}; //returns index for levels.st by name
 stats.i = function (t, n) { for (var r = 0; r < stats.st.length; r++)if (t === stats.st[r].t && n === stats.st[r].n) return r; return -1 };
 
 gv.get = function (n) {var t=gv.i(n);return t>-1?gv.st[t].t:(console.log("gv.st missing name: "+n),null)}; //gets gv.st
-daily.get = function (n) { var t = daily.i(n); return t > -1 ? daily.st[t].t : (console.log("daily.st missing name: " + n), null) }; //gets daily.st
+daily.get = function (n) {
+    return daily.i(n) !== null;
+}; //gets daily.st
 weekly.get = function (n) { var t = weekly.i(n); return t > -1 ? weekly.st[t].t : (console.log("weekly.st missing name: " + n), null) }; //gets daily.st
 levels.get=function(l){var n=levels.i(l);return n>-1?{c:levels.st[n].c,l:levels.st[n].l}:(console.log("levels.st missing name: "+l),null)}; //gets levels
 stats.get = function (t, n) { return stats.st[stats.i(t, n)].c };
 
-daily.set = function (t, override = true) {
-    var n = daily.i(t);
-    if (t === "shower") {
-        if (!daily.st[n].t) {
+daily.set = function (n, override = true) {
+    let i = daily.i(n);
+    if (n === "shower") {
+        if (i === null) {
             gv.set("shower", g.dt);
             let maxEnergy = gv.get("maxenergy");
             let energy = gv.get("energy");
@@ -563,8 +572,10 @@ daily.set = function (t, override = true) {
 
         cl.clean("face");
     }
-    n >= 0 ? daily.st[n].t = override : console.log("daily set " + t + " not found")
-    
+    if (override && i === null)
+        daily.st.push(n);
+    else if (!override && i !== null)
+        daily.st.splice(i, 1);
 }; //sets daily to true
 
 weekly.set = function (t, override = true) {
@@ -747,11 +758,6 @@ levels.mod = function (name, amount, targetLevel = 999) {
         }
     }
     else if (amount > 0) {
-        if (levels.st[i].l >= 15) {
-            levels.st[i].l = 15;
-            g.popUpNotice("You've maxed out " + levels.st[i].d + "");
-            return;
-        }
         if (levels.st[i].compoundLevel) {
             levels.st[i].c += amount;
             while (levels.st[i].c >= levels.getCap(levels.st[i].l)) {
@@ -798,10 +804,12 @@ levels.mod = function (name, amount, targetLevel = 999) {
 };
 
 levels.getCap = function (levels) {
-    let interestRate = .18;
-    var initialComp = Math.floor(75 * Math.pow(1 + interestRate, levels));
-    if (initialComp > 500)
-        return 500;
+    let interestRate = .3;
+    if (levels > 7)
+        interestRate = interestRate + .05;
+    var initialComp = Math.floor(55 * Math.pow(1 + interestRate, levels));
+    //if (initialComp > 500)
+    //    return 500;
     return initialComp;
 };
 
@@ -845,9 +853,8 @@ future.get = function (name) {
 }
 
 daily.newday = function () { 
+    daily.st = new Array();
     var i;
-    for (i = 0; i < daily.st.length; i++)
-        daily.st[i].t = false;
     if ((g.hourBetween(0, 7) && g.dt.getDay() === 0) || (g.hourBetween(7, 24) && g.dt.getDay() === 6)) {
         for (i = 0; i < weekly.st.length; i++)
             weekly.st[i].t = false;
@@ -1727,7 +1734,7 @@ gv.save = function () {
     var i;
     var retArray = {
         gv: new Array(),
-        daily: new Array(),
+        daily: daily.st.slice(),
         weekly: new Array(),
         levels: new Array(),
         sex: new Array(),
@@ -1745,10 +1752,7 @@ gv.save = function () {
         });
     };
     //save by name if true
-    for (i = 0; i < daily.st.length; i++) {
-        if (daily.st[i].t)
-            retArray.daily.push(daily.st[i].n);
-    }
+    
     for (i = 0; i < weekly.st.length; i++) {
         if (weekly.st[i].t)
             retArray.daily.push(weekly.st[i].n);
@@ -1809,14 +1813,7 @@ gv.load = function (rma) {
 
     //        { n: "chloe", t: false },
 
-    for (i = 0; i < rma.daily.length; i++) {
-        for (j = 0; j < daily.st.length; j++) {
-            if (rma.daily[i] === daily.st[j].n) {
-                daily.st[j].t = true;
-                break;
-            }
-        }
-    }
+    daily.st = rma.daily.slice();
 
     if (typeof rma.weekly !== 'undefined') {
         for (i = 0; i < rma.weekly.length; i++) {

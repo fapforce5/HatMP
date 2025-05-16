@@ -116,6 +116,7 @@ room401.main = function () {
         case "bling":
             navList = [400];
             room401.makeClothing("necklace", "f");
+            room401.makeInv(["a"], true, 1);
             nav.bg("401_purchase/bling.jpg");
             break;
         case "general":

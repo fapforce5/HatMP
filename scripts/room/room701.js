@@ -4,6 +4,7 @@ room701.main = function () {
     if (g.pass === "endSleepyTime") {
         char.settime(11, 53);
         cl.nude();
+        gv.set("map", 2);
         chat(0, 701);
     }
     else {

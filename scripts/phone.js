@@ -511,43 +511,62 @@ phone.characterSelect = function (name) {
                 }, 9999);
                 break;
             case "martha":
-                var m1txt = "Classes completed: <br/>";
-                var m2txt = "Classes not taken: <br/>";
-                var c1 = new Array();
-                var c2 = new Array();
-                for (let mi = 0; mi < 8; mi++) {
-                    c1.push("");
-                    c2.push("");
+                if (gv.get("sissySchoolClass") === "finalx") {
+                    var m1txtss = "Sissy School Final! <br/>" +
+                        "Days left: " + future.get("sissyfinal") + "<br/>" +
+                        "1. Friday Night: Strip at the stip club<br/>" +
+                        "2. Saturday Night: Visit the Pink Room at Missy's<br/> &nbsp;&nbsp;&nbsp;&nbsp; before " + nav.convertTime(18, 0) + "<br/>" +
+                        "3. At the fast food restaurant get a boy's phone number. <br/>" +
+                        "4. Get as many creampies as you can!";
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_charselx",
+                        "left": 850,
+                        "top": 180,
+                        font: 30,
+                        hex: "#ffffff",
+                        text: m1txtss
+                    }, 9999);
                 }
-                for (let mi = 0; mi < sissy.st.length; mi++) {
-                    if (sissy.st[mi].active && sissy.st[mi].y > 0 && sissy.st[mi].y < 7) {
-                        if (sissy.st[mi].ach)
-                            c1[sissy.st[mi].y] += sissy.st[mi].name + ", ";
-                        else {
-                            c2[sissy.st[mi].y] += sissy.st[mi].name + ", ";
+                else {
+                    var m1txt = "Classes completed: <br/>";
+                    var m2txt = "Classes not taken: <br/>";
+                    var c1 = new Array();
+                    var c2 = new Array();
+                    for (let mi = 0; mi < 8; mi++) {
+                        c1.push("");
+                        c2.push("");
+                    }
+                    for (let mi = 0; mi < sissy.st.length; mi++) {
+                        if (sissy.st[mi].active && sissy.st[mi].y > 0 && sissy.st[mi].y < 7) {
+                            if (sissy.st[mi].ach)
+                                c1[sissy.st[mi].y] += sissy.st[mi].name + ", ";
+                            else {
+                                c2[sissy.st[mi].y] += sissy.st[mi].name + ", ";
+                            }
                         }
                     }
-                }
-                for (let mi = 1; mi < 7; mi++) {
-                    if (c1[mi].length > 0) {
-                        c1[mi] = c1[mi].replace(/,\s*$/, "");
-                        m1txt += g.linebreak(c1[mi], 50) + "<br/>";
+                    for (let mi = 1; mi < 7; mi++) {
+                        if (c1[mi].length > 0) {
+                            c1[mi] = c1[mi].replace(/,\s*$/, "");
+                            m1txt += g.linebreak(c1[mi], 50) + "<br/>";
+                        }
+                        if (c2[mi].length > 0) {
+                            c2[mi] = c2[mi].replace(/,\s*$/, "");
+                            m2txt += g.linebreak(c2[mi], 50) + "<br/>";
+                        }
                     }
-                    if (c2[mi].length > 0) {
-                        c2[mi] = c2[mi].replace(/,\s*$/, "");
-                        m2txt += g.linebreak(c2[mi], 50) + "<br/>";
-                    }
+
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_charselx",
+                        "left": 850,
+                        "top": 180 + (j * 100),
+                        font: 30,
+                        hex: "#ffffff",
+                        text: m1txt + "<br /><br />" + m2txt
+                    }, 9999);
                 }
-                
-                nav.t({
-                    type: "zimg",
-                    name: "phone_charselx",
-                    "left": 850,
-                    "top": 180 + (j * 100),
-                    font: 30,
-                    hex: "#ffffff",
-                    text: m1txt + "<br /><br />" + m2txt
-                }, 9999);
                 break;
         }
     }

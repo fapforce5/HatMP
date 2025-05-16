@@ -576,10 +576,15 @@ room28.btnclick = function (name) {
                 nav.bg("28_transformation/d_whore.jpg");
                 chat(10, 28);
                 break;
-            case "qsed":
+            case "qs":
                 nav.killall();
                 nav.bg("28_transformation/d_sed.jpg");
                 chat(21, 28);
+                break;
+            case "qsed":
+                nav.killall();
+                nav.bg("28_transformation/d_stripper.jpg");
+                chat(22, 28);
                 break;
         }
     };
@@ -869,10 +874,20 @@ room28.chat = function (chatID) {
                 chatID: 21,
                 speaker: "thinking",
                 text: "I'm really turning into a sexy girl. I bet some men even " +
-                    "might even think I was born a girl. I wonder if I could seduce a " +
-                    "a man that's only into girls....",
+                    "might even think I was born a girl. I bet I could totally " +
+                    "secude a man that's only into girls....",
                 button: [
                     { chatID: -1, text: "[You can now try to seduce men]", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "thinking",
+                text: "I would be so hot to strip in front of a bunch of horny men! They " +
+                    "would want to touch me so bad, but they can't and empty their wallets " +
+                    "just for the chance to smell me as I rub my ass all over them!",
+                button: [
+                    { chatID: -1, text: "[You can work at the strip club]", callback: "endDream" }
                 ]
             },
         ];

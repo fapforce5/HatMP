@@ -512,7 +512,7 @@ room174.chat = function (chatID) {
             speaker: "martha",
             text: "Ah, Chris, isn't that simply delightful! Your youthful charm and slight frame are simply perfect for a darling baby doll dress. And what a simply smashing shade of pink!  I can just imagine how it will complement your complexion.  And don't forget the wig, my dear! A touch of whimsy never goes amiss.Why, I daresay you'll be the belle of the ball, turning heads and captivating hearts in such an ensemble. A true gentleman wouldn't be able to resist such a charming display!",
             button: [
-                { chatID: 37, text: "...", callback: "xdress2" },
+                { chatID: 38, text: "...", callback: "xdress3" },//xdress2
             ]
         },
         {

@@ -1,6 +1,10 @@
 ﻿//Room name
 var room211 = {};
 room211.main = function () {
+    if (gv.get("sissySchoolClass") === "finalx" && gv.get("sissySchoolClassDays") > 0) {
+        char.room(207);
+        return;
+    }
     //var classesPassed = sissy.getNumPassed();
     
     var philbert = sc.taskGetStep("philbert", "bully");
@@ -433,6 +437,7 @@ room211.chatcatch = function (callback) {
             break;
         case "pill1":
             nav.bg("211_meeting/pills1.jpg");
+            cl.nude();
             zcl.bent(0, 300, .8, "", false);
             nav.button({
                 "type": "img",

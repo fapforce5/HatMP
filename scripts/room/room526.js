@@ -236,6 +236,7 @@ room526.chatcatch = function (callback) {
             sc.startMission("stormy", "property");
             sc.completeMissionTask("stormy", "property", 0);
             g.pass = 502;
+            gv.set("map", 1);
             char.room(28);
             break;
         case "sex1_7":

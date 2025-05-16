@@ -267,6 +267,12 @@ room176.chatcatch = function (callback) {
             sc.select("kiss", "176_oral/icon_kiss.png", 0);
             sc.select("tongue", "176_oral/icon_lick.png", 1);
             break;
+        case "finalFirstEventEnd":
+            gv.mod("sissySchoolClassDays", 1);
+            char.settime(17, 18);
+            char.room(201);
+            future.add("sissyfinal", 6);
+            break;
         default:
             break;
     }
@@ -969,8 +975,7 @@ room176.chat = function (chatID) {
                     "than any one man can spend in his lifetime and was looking to invest it in " +
                     "businesses that I found of interest. That's when I came across a young spitfire " +
                     "Missy. She was working on building her PI business from her living room and I tell " +
-                    "you, after one conversation she knew more about me than I knew. She had a friend that " +
-                    "was wrestling with their own gender identity and high sex drive. Well I tell you, she " +
+                    "you, after one conversation she knew more about me than I knew. Well I tell you, she " +
                     "talked me into making this school. It was much much different in the beginning, but " +
                     "over time it has evolved into what you see today. ",
                 button: [
@@ -994,8 +999,8 @@ room176.chat = function (chatID) {
                 text: "First, a sissy should be pretty. This Saturday we will have the biannual " +
                     "fashon show. This is your chance to wear your prettiest clothes for a large private " +
                     "audiance. <br/>" +
-                    "Second, a sissy should be charismatic. You will get a phone number from " + 
-                    "a boy or girl at the mall food court. <br/>" +
+                    "Second, a sissy should be charismatic. You will get a phone number from " +
+                    "a boy at the fast food restaurant. <br/>" +
                     "Third, a sissy should be sexy. This Friday night will be femboy Friday " +
                     "at the Fat Tony's Gentlemen's Club. It will be a chance to show you know how " +
                     "to use your body for seduction. <br/>" +
@@ -1010,44 +1015,31 @@ room176.chat = function (chatID) {
                 speaker: "!tudor",
                 text: "So I know the life of a student is a busy one which is why I'll give you a full " +
                     "week to get these tasks done. Don't forget to attend the event at the strip club on " +
-                    "Friday all night and our beauty contest in the Pink Room Next door on Saturday before " + 
+                    "Friday all night and our beauty contest in the Pink Room Next door on Saturday before " +
                     nav.convertTime(18, 0) + ". The girl with the highest score will get a special prize. ",
                 button: [
-                    { chatID: 66, text: "...", callback: "" },
+                    { chatID: 67, text: "...", callback: "" },
                 ]
             },
-            //{
-            //    chatID: 60,
-            //    speaker: "martha",
-            //    text: "Now, I understand some of you are anticipating a rather... taxing examination. Perhaps even attempting to surpass your mid-term performances. However, there will be none of that today. The final task will be quite simple, a mere formality, really. Your true test, however, will commence when you venture forth into the world, armed with your newly acquired skills.",
-            //    button: [
-            //        { chatID: 61, text: "...", callback: "" },
-            //    ]
-            //},
-            //{
-            //    chatID: 61,
-            //    speaker: "martha",
-            //    text: "Now, before we embark on the final task, I do wish to remind you that you are always welcome to return and visit your teachers. " + sc.n("p") + " has also expressed a, shall we say, keen interest in offering post-graduation opportunities for those so inclined, next door. And though you graduate today, you will always remain, in our eyes, our cherished pupils.",
-            //    button: [
-            //        { chatID: 62, text: "...", callback: "" },
-            //    ]
-            //},
-            //{
-            //    chatID: 62,
-            //    speaker: "martha",
-            //    text: "Now, before I prattle on excessively, let us proceed to your final task.",
-            //    button: [
-            //        { chatID: 63, text: "...", callback: "final1" },
-            //    ]
-            //},
-            //{
-            //    chatID: 63,
-            //    speaker: "martha",
-            //    text: "Ladies.",
-            //    button: [
-            //        { chatID: 64, text: "...", callback: "final2" },
-            //    ]
-            //},
+            {
+                chatID: 67,
+                speaker: "martha",
+                text: "How perfectly thrilling! I have every confidence that each of you will be absolutely remarkable in this undertaking. Now, do remember your obligations for Friday and Saturday. We shall see you all in one week's time! And please, do make certain you arrive promptly!",
+                button: [
+                    { chatID: 68, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "thinking",
+                text: "I need to make sure I don't miss the Friday or Saturday events. If " +
+                    "I need a reminder on what to do I can check my phone and look for Mistress " +
+                    "Martha's icon in the Character screen to remind myself. The strip club is open " +
+                    "at night on Friday, and I can show up early to the fashion show, but I can't be late!",
+                button: [
+                    { chatID: -1, text: "...", callback: "finalFirstEventEnd" },
+                ]
+            }
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

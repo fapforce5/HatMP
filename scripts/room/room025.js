@@ -373,7 +373,7 @@ room25.chat = function (chatID) {
             speaker: "eva",
             text: "If it isn't the master masseuse. Come to see if you can touch us some more?",
             button: [
-                { chatID: 19, text:  "Good " + char.greeting() + " to you.", callback: "" }
+                { chatID: 19, text:  "Well hello to you.", callback: "" }
             ]
         },
         {

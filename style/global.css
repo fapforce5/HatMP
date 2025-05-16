@@ -24,6 +24,11 @@ input[type=text]:focus, input[type=text]:active {
     box-shadow: 0px 2px 3px 0px rgba(126,151,205,.3);
 }
 
+.popUpHistory {
+    margin-bottom: 3px;
+    border-bottom: 1px solid #666;
+}
+
 input[type=text]:disabled{
     cursor:not-allowed;
     background: rgba(200,210,220, .7);

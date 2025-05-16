@@ -89,8 +89,7 @@ room461.main = function () {
         }
     }
     else {
-        var clutNum = sc.getstep("cultboy");
-        if (!daily.get("cultrun") && (clutNum < 2 || Math.floor(Math.random() * 3) === 0)) {
+        if (!daily.get("cultrun") && (Math.floor(Math.random() * 3) === 0)) {
             nav.button({
                 "type": "btn",
                 "name": "cult",
@@ -500,7 +499,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 6,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "These paths are off limits at night. All who enter may pay the toll.",
             button: [
                 { chatID: 7, text: "Huh, what toll?", callback: "cult2" }
@@ -508,7 +507,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 7,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "The toll I'm going to collect from your ass!",
             button: [
                 { chatID: -1, text: "!!!", callback: "cult3" }
@@ -550,7 +549,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 12,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "You know the toll. Are you ready to pay up?",
             button: [
                 { chatID: 13, text: "[Run away!]", callback: "run" },
@@ -576,7 +575,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 15,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "You will not enjoy this choice.",
             button: [
                 { chatID: 18, text: "...", callback: "cult6" }
@@ -584,7 +583,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 16,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "OOOooooo you are sooooooooo tight!!!",
             button: [
                 { chatID: 17, text: "aaaaAAAAaaaaaa", callback: "cult11" }
@@ -592,7 +591,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 17,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "I'm sooooooo deep in your ass",
             button: [
                 { chatID: -1, text: "oooOOOOoooooooo", callback: "cult12" }
@@ -608,7 +607,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 19,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "OOOOhhhhh fuck I'm going to fill your ass up!",
             button: [
                 { chatID: 20, text: "OOOOOOOOOooooooooooooooo", callback: "cult13" }
@@ -616,7 +615,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 20,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "Stay out of the forest at night, or I'll fill your ass up again.",
             button: [
                 { chatID: 21, text: "oooo.........", callback: "cult14" }
@@ -624,7 +623,7 @@ room461.chat = function (chatID) {
         },
         {
             chatID: 21,
-            speaker: "cultboy",
+            speaker: "cult",
             text: "Slut",
             button: [
                 { chatID: -1, text: "Limp away", callback: "cult15" }

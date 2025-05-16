@@ -35,8 +35,9 @@ room628.chatcatch = function (callback) {
         case "check10":
             if (gv.get("money") < 10)
                 chat(1, 628);
-            else
+            else {
                 chat(2, 628);
+            }
             break;
         case "reset":
             char.room(628);
@@ -50,6 +51,9 @@ room628.chat = function (chatID) {
     if (chatID === 999) {
         nav.kill();
         var goodToss = g.rand(0, 2) === 0;
+        if (g.internal.c > 5)
+            goodToss = true;
+
         var gb = goodToss ? "g" : "b";
         var img;
         var btntxt = "[Throw the next]";

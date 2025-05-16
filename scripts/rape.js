@@ -247,7 +247,7 @@ rape.phase1 = function () {
     let wearing = cl.wearing();
     let isComplete = rape.char.phase1();
     rape.updateEnergy(null, null, 10);
-    
+
     if (!isComplete.default) {
         if (isComplete.complete) {
             rape.callphase(true);
@@ -298,6 +298,7 @@ rape.phase1 = function () {
                 }, 1004);
             }
             rape.displayMenu("init");
+            rape.message("Do you want to fuck me? I would fuck me so hard.", "me");
             rape.phases[1].c++;
             return;
         }
@@ -310,12 +311,21 @@ rape.phase1 = function () {
                 "top": 21,
                 "width": 1022,
                 "height": 1059,
-                "image": "1004_rape/struggle_0_" + gender.pronoun("f") + "_" + rape.char.color + ".png"
+                "image": "1004_rape/struggle_0_" + gender.pronoun("f") + "_" + (rape.char.color === "c" ? "w" : rape.char.color) + ".png"
             }, 1004);
             rape.updateEnergy(null, -15);
             rape.displayMenu("scream");
             rape.phases[1].c++;
-            rape.message(["If you struggle this will", "only go worse for", "you! "]);
+            if (rape.char.name === "!wolf")
+                rape.message("Grrrrr ", rape.char.name);
+            else if (rape.char.name === "!plant") 
+                rape.message("...", rape.char.name);
+            else if (rape.char.gender === "m")
+                rape.message("I'm going to beat you till you cry. Tears make my cock so hard! ", rape.char.name);
+            else if (rape.char.gender === "f")
+                rape.message("Your struggling only makes my pussy wetter!", rape.char.name);
+            else
+                rape.message("I'm going to beat you till you cry. Tears make my cock so hard! ", rape.char.name);
             return;
         }
         else {
@@ -348,7 +358,56 @@ rape.phase1 = function () {
         }, 1004);
     }
     rape.displayMenu("init");
-    rape.message("Slut don't deserve clothing");
+    let stripMsg;
+    if (rape.char.name === "!wolf") {
+        stripMsg = ["GGGGrrrrr"];
+    }
+    else if (rape.char.name === "!plant") {
+        stripMsg = ["..."];
+    }
+    if (rape.char.gender === "m") {
+        stripMsg = [
+            "Slut don't deserve clothing",
+            "I am going to fuck you till you bleed!",
+            "Give me your clothes, bitch!",
+            "Knock knock, here comes the cock!"
+        ];
+        if (gender.get("f") === "f") {
+            stripMsg.push("If you want to be a girl, I'm going to fuck you like one!");
+            stripMsg.push("You dress like you need dick!");
+            stripMsg.push("You're asking for this.");
+            stripMsg.push("You dress like you need a cock in you");
+        }
+        else {
+            stripMsg.push("Faggots don't need clothes to get fucked");
+            stripMsg.push("You might look like a boy, but I'm going to fuck you like a girl.");
+            stripMsg.push("Get ready for my dick beta boy!");
+        }
+    }
+    else if (rape.char.gender === "f") {
+        stripMsg = [
+            "Slut don't deserve clothing",
+            "Give me your clothes, bitch!",
+        ];
+        if (gender.get("f") === "f") {
+            stripMsg.push("I'm going to dyke out so hard on that hot body!");
+            stripMsg.push("You dress like you eat pussy!");
+            stripMsg.push("You're asking for this.");
+            stripMsg.push("No one dresses prettier than me!");
+        }
+        else {
+            stripMsg.push("I need dick! Now!");
+            stripMsg.push("You're so sexy, I need your cock!");
+            stripMsg.push("Fuck I need a man like you! ");
+        }
+    }
+    else {
+        stripMsg = [
+            "Slut don't deserve clothing",
+            "Give me your clothes, bitch!",
+        ];
+    }
+    rape.message(stripMsg[g.rand(0, stripMsg.length)], rape.char.name);
     rape.phases[1].c++;
     return;
 };
@@ -461,13 +520,59 @@ rape.phase2 = function () {
 
         }
     }
+    let stripMsg;
+    if (rape.char.name === "!wolf") {
+        stripMsg = ["GGGGrrrrr"];
+    }
+    else if (rape.char.name === "!plant") {
+        stripMsg = ["..."];
+    }
+    if (rape.char.gender === "m") {
+        stripMsg = [
+            "Give me those panties! ",
+            "Your panties are mine now!"
+        ];
+        if (gender.get("f") === "f") {
+            stripMsg.push("Let me see them titties girl.");
+            stripMsg.push("Nice panty bulge. I want to see what's underneath");
+            stripMsg.push("You know you want my dick.");
+        }
+        else {
+            stripMsg.push("I'm going to enjoy raping that ass boy!");
+            stripMsg.push("Hahaha! Your mouth says no, but your body says it need my dick! ");
+        }
+    }
+    else if (rape.char.gender === "f") {
+        stripMsg = [
+            "Give me those panties! ",
+            "Your panties are mine now!"
+        ];
+        if (gender.get("f") === "f") {
+            stripMsg.push("Love a girl in cute panties. Love it better when their panties are on the ground");
+            stripMsg.push("I'm going to love rubbing my clit all over your face.");
+            stripMsg.push("Those are fuck me underwear!");
+        }
+        else {
+            stripMsg.push("One last barrier between your dick and my pussy");
+            stripMsg.push("Stop fighting me and give me your dick!");
+            stripMsg.push("I need to see that penis!");
+        }
+    }
+    else {
+        stripMsg = [
+            "Give me those panties! ",
+            "Your panties are mine now!"
+        ];
+    }
+    rape.message(stripMsg[g.rand(0, stripMsg.length)], rape.char.name);
     rape.phases[2].c++;
 };
 
 rape.phase3 = function () {
     nav.killbutton("r1004bg");
     let phase3Complete = rape.char.phase3();
-    if (phase3Complete)
+    rape.message(phase3Complete.message, phase3Complete.s);
+    if (phase3Complete.complete)
         rape.displayMenu("choice");
     else
         rape.displayMenu("whimper");
@@ -519,7 +624,7 @@ rape.phase4 = function () {
                     "height": 1080,
                     "image": "1004_rape/" + img
                 }, 1004);
-                rape.message(["Please don't put", "that dirty dick in me"]);
+                rape.message("Please don't put that dirty dick in me", "me");
                 rape.displayMenu(rape.rapeType);
                 rape.phases[4].c++;
                 return;
@@ -538,7 +643,7 @@ rape.phase4 = function () {
                     "image": "1004_rape/" + img
                 }, 1004);
                 rape.displayMenu("phase2");
-                rape.message(["Aaakk no! I don't want it"]);
+                rape.message("Aaakk no! I don't want it", "me");
                 return;
             }
             else if (rape.phaseChange === "phase3sub") {
@@ -556,7 +661,7 @@ rape.phase4 = function () {
                     "height": 1080,
                     "image": "1004_rape/" + img
                 }, 1004);
-                rape.message(["I am a dirty anal whore"]);
+                rape.message("I am such a dirty anal whore", "me");
             }
             else if (rape.phaseChange === "limp" || rape.phaseChange === "struggle") {
                 img = "hover_cock_owie_" + rape.char.color + ".png";
@@ -573,7 +678,7 @@ rape.phase4 = function () {
                     "height": 1080,
                     "image": "1004_rape/" + img
                 }, 1004);
-                rape.message(["Fuck that cock hurts"]);
+                rape.message("Fuck that cock hurts", "me");
             }
             else if (rape.phaseChange === "next") {
                 rape.callphase(true);
@@ -592,7 +697,7 @@ rape.phase4 = function () {
                     "height": 518,
                     "image": "1004_rape/dick_" + rape.char.color + ".png"
                 }, 1004);
-                rape.message(["I can smell the sweat", "from his balls"]);
+                rape.message("I can smell the sweat from his balls", "me");
                 rape.displayMenu(rape.rapeType);
                 rape.phases[4].c++;
                 return;
@@ -609,12 +714,12 @@ rape.phase4 = function () {
                     "image": "1004_rape/oral_slap_" + rape.char.color + ".png"
                 }, 1004);
                 rape.displayMenu("phase2");
-                rape.message(["MMmmmMM NO!"]);
+                rape.message("MMmmmMM NO!", "me");
                 return;
             }
             else if (rape.phaseChange === "limp" ||rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
                 zcl.face(0, 300, 1, "insert", rape.char.color, false);
-                rape.message(["GAK!"]);
+                rape.message("GAK!", "me");
             }
             else if (rape.phaseChange === "next") {
                 rape.callphase(true);
@@ -633,7 +738,7 @@ rape.phase4 = function () {
                     "image": "1004_rape/pussy_0_" + rape.char.color + ".png"
                 }, 1004);
                 zcl.bj(50, -100, 1.4, "", true);
-                rape.message(["I can smell her sweet sweet pussy"]);
+                rape.message("I can smell her sweet sweet pussy", "me");
                 rape.displayMenu(rape.rapeType);
                 rape.phases[4].c++;
                 return;
@@ -650,7 +755,7 @@ rape.phase4 = function () {
                     "image": "1004_rape/oral_slap_" + rape.char.color + ".png"
                 }, 1004);
                 rape.displayMenu("phase2");
-                rape.message(["MMmmmMM NO!"]);
+                rape.message("MMmmmMM NO!", "me");
                 return;
             }
             else if (rape.phaseChange === "limp" || rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
@@ -674,7 +779,7 @@ rape.phase4 = function () {
                     "image": "1004_rape/pussy_1.png"
                 }, 1004);
 
-                rape.message(["GAK!"]);
+                rape.message("GAK!", "me");
             }
             else if (rape.phaseChange === "next") {
                 rape.callphase(true);
@@ -693,7 +798,7 @@ rape.phase4 = function () {
                     "height": 1080,
                     "image": "1004_rape/pussy_phase4_0_" + cocksize + ".png"
                 }, 1004);
-                rape.message(["She's so wet she's dripping down my cock!"]);
+                rape.message("She's so wet she's dripping down my cock!", "me");
                 rape.displayMenu("phase2");
                 rape.phases[4].c++;
                 return;
@@ -710,7 +815,7 @@ rape.phase4 = function () {
                     "image": "1004_rape/oral_slap_" + rape.char.color + ".png"
                 }, 1004);
                 rape.displayMenu("phase2");
-                rape.message(["MMmmmMM NO!"]);
+                rape.message("MMmmmMM NO!", "me");
                 return;
             }
             else if (rape.phaseChange === "limp" || rape.phaseChange === "phase3sub" || rape.phaseChange === "struggle") {
@@ -723,7 +828,7 @@ rape.phase4 = function () {
                     "height": 1080,
                     "image": "1004_rape/pussy_phase4_1_" + cocksize + ".png"
                 }, 1004);
-                rape.message(["GAK!"]);
+                rape.message("GAK!", "me");
             }
             else if (rape.phaseChange === "next") {
                 rape.callphase(true);
@@ -737,46 +842,393 @@ rape.phase4 = function () {
 };
 
 rape.phase5 = function () {
+    let rapeMsg = new Array();
+    let orgasmMult = 0;
+    if (rape.rapeType === "anal") {
+        orgasmMult = levels.get("anal").l;
+    }
+    else if (rape.rapeType === "oral" || rape.rapeType === "cunnilugus") {
+        orgasmMult = levels.get("oral").l;
+    }
+    else if (rape.rapeType === "penis") {
+        orgasmMult = levels.get("dom").l;
+    }
+    else {
+        orgasmMult = 5;
+    }
+    if (orgasmMult > 10)
+        orgasmMult = 10;
+    orgasmMult = Math.round(orgasmMult / 2);
+    if (orgasmMult < 1)
+        orgasmMult = 1;
+
+
     if (rape.phases[5].c === 0) {
         nav.killbutton("r1004bg");
         zcl.kill();
     }
     let pleasure;
-    let enemyPleasure = 10;
+    let enemyPleasure = 2 + orgasmMult;
+    if (rape.phaseChange === "phase4Sub") {
+        enemyPleasure += 4;
+    }
+    else if (rape.phaseChange === "phase4Struggle") {
+        enemyPleasure += 8;
+    }
+
     let charPhase5 = rape.char.phase5();
     if (rape.rapeType === "anal") {
         if (rape.phaseChange === "phase4Sub") {
-            rape.message(["Submissive anal whore"]);
-            enemyPleasure = 15;
+            if (rape.char.t === "duo") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK Mmmmm slurp GAK GAK" },
+                    { n: rape.char.name, m: "You a cock taking champ!" },
+                    { n: rape.char.name, m: "Fuck, so tight and warm. " },
+                    { n: rape.char.name, m: "This bitch is really into it!" },
+                    { n: rape.char.name, m: "I knew you wanted our dicks" },
+                    { n: rape.char.name, m: "Take our cocks in your tight little holes!" },
+                ];
+            }
+            else if (rape.char.t === "duowolf") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK Mmmmm slurp GAK GAK" },
+                    { n: rape.char.name, m: "arf" },
+                ];
+            }
+            else if (rape.char.t === "wolf") {
+                rapeMsg = [
+                    { n: "me", m: "uh uh uh *moan*" },
+                    { n: "me", m: "That dire wolf knot is so thick in my bussy!" },
+                    { n: "me", m: "So full!" },
+                    { n: "me", m: "I'm locked into that cock!" },
+                    { n: rape.char.name, m: "arf" },
+                    { n: rape.char.name, m: "grrrr" },
+                    { n: rape.char.name, m: "*panting*" },
+                ];
+            }
+            else if (rape.char.t === "plant") {
+                rapeMsg = [
+                    { n: "thinking", m: "Fuck me harder! I need it so bad!" },
+                    { n: "thinking", m: "I'm so full in all my holes! I love it" },
+                    { n: "thinking", m: "It's so slimy, but thick! " },
+                    { n: "thinking", m: "Fuck it feels so good!" }
+                ];
+            }
+            else {
+                rapeMsg = [
+                    { n: "me", m: "Fuck me harder! I need it so bad!" },
+                    { n: "me", m: "That feels so good. I love your cock in my ass! " },
+                    { n: "me", m: "I'm such an anal whore! I'm such an anal whore! I'm such an anal whore!" },
+                    { n: rape.char.name, m: "GRUNT!" },
+                    { n: rape.char.name, m: "MMMmmm yeah!" },
+                ];
+                if (rape.char.t === "male") {
+                    rapeMsg.push({ n: "me", m: "Fuck me harder daddy! I need it so bad!" });
+                    rapeMsg.push({ n: "me", m: "I love your cock up my ass! I love your cock up my ass! I love your cock up my ass!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Love a bitch that pushed back into my dick" });
+                    rapeMsg.push({ n: rape.char.name, m: "I knew you wanted to get fucked!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Keep pushing into my cock baby!" });
+                    if (gender.pronoun("f") === "f") {
+                        rapeMsg.push({ n: rape.char.name, m: "Love your bussy hole!" });
+                        rapeMsg.push({ n: rape.char.name, m: "You fuck like you look! Smooth and hot!" });
+                        rapeMsg.push({ n: rape.char.name, m: "Damn girl. I want to make you into my house wife!" });
+                    }
+                    else {
+                        rapeMsg.push({ n: rape.char.name, m: "Love turning straight boys into faggots" });
+                        rapeMsg.push({ n: rape.char.name, m: "I knew your fag ass needed cock!" });
+                    }
+                }
+                else if (rape.chat.t === "femdom") {
+                    rapeMsg.push({ n: rape.char.name, m: "You love my giant strap-on don't you bitch? " });
+                    rapeMsg.push({ n: rape.char.name, m: "You're a bigger pussy than me! " });
+                    rapeMsg.push({ n: rape.char.name, m: "Love that bounce on my strap" });
+                    rapeMsg.push({ n: rape.char.name, m: "Bounce harder. I can feel it on my clit!" });
+                }
+
+            }
         }
         else if (rape.phaseChange === "phase4Limp") {
-            rape.message(["Please be over soon!"]);
-            enemyPleasure = 9;
+            rapeMsg = [
+                { n: "thinking", m: "When will it end." },
+                { n: "thinking", m: "..." },
+            ];
+            if (rape.char.t === "duo") {
+                rapeMsg.push({ n: rape.char.name, m: "You suck as a flesh light. Do something. " });
+            }
+            else if (rape.char.t === "duowolf" || rape.char.t === "wolf") {
+                rapeMsg.push({ n: rape.char.name, m: "grrrrr" });
+                rapeMsg.push({ n: rape.char.name, m: "arf" });
+                rapeMsg.push({ n: rape.char.name, m: "*panting*" });
+            }
+            else if (rape.char.t === "plant") {
+                rapeMsg.push({ n: "me", m: "So gross and slimy" });
+
+            }
+            else {
+                rapeMsg.push({ n: rape.char.name, m: "You make a shity flesh light" });
+                rapeMsg.push({ n: rape.char.name, m: "Be a good victim and move a bit. " });
+                rapeMsg.push({ n: rape.char.name, m: "If you don't move, you're just going to make this rape take longer. " });
+            }
         }
         else if (rape.phaseChange === "phase4Struggle") {
-            rape.message(["You scream, but no", "one hears you"]);
-            enemyPleasure = 12;
+            if (rape.char.t === "duo") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK stahp GLUG GAK GAK" },
+                    { n: "me", m: "MMmdmmd mmhhhrrrr fffff" },
+                    { n: rape.char.name, m: "If I feel teeth I'm going to punch your face!" },
+                    { n: rape.char.name, m: "Love it when a bitch struggles. " },
+                    { n: rape.char.name, m: "Stop playing. We know you want this" },
+                    { n: rape.char.name, m: "If you didn't want our dicks, you wouldn't be acting like a whore!" },
+                    { n: rape.char.name, m: "Take our cocks in your tight little holes!" },
+                ];
+            }
+            else if (rape.char.t === "duowolf") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK Mmmmm stahp GAK GAK" },
+                    { n: "me", m: "MMmdmmd mmhhhrrrr fffff" },
+                    { n: rape.char.name, m: "grrrrrr" },
+                ];
+            }
+            else if (rape.char.t === "wolf") {
+                rapeMsg = [
+                    { n: "me", m: "Good doggy... Please stop raping my ass" },
+                    { n: "me", m: "That dire wolf knot hurts so much! Please stop. Shoo!" },
+                    { n: "me", m: "Owie owie owie!" },
+                    { n: "me", m: "HELP ME! I'm getting raped by a dire wolf!" },
+                    { n: rape.char.name, m: "arf" },
+                    { n: rape.char.name, m: "grrrr" },
+                    { n: rape.char.name, m: "*panting*" },
+                ];
+            }
+            else if (rape.char.t === "plant") {
+                rapeMsg = [
+                    { n: "thinking", m: "So gross! How do I get free?" },
+                    { n: "thinking", m: "Owie owie owie!" },
+                    { n: "thinking", m: "I hope it's over quick!" },
+                    { n: "thinking", m: "My mouth is so full of plant cock I can't call for help!" }
+                ];
+            }
+            else {
+                rapeMsg = [
+                    { n: "me", m: "STOP!! Please stop raping me!" },
+                    { n: "me", m: "HELP! HELP ME!" },
+                    { n: "me", m: "I'm being raped! Please someone help me!" },
+                    { n: "me", m: "GRUNT!" },
+                    { n: "me", m: "owie owie owie! Please stop raping my ass!" },
+                    { n: "me", m: "You're ripping my ass open! " },
+                    { n: "me", m: "*Crying*" },
+                    { n: "me", m: "*sob* *sob* *sob*" },
+                    { n: rape.char.name, m: "You're pretty when you cry" },
+                    { n: rape.char.name, m: "The more you squirm then hard I fuck!" },
+
+                ];
+                if (rape.char.t === "male" || rape.char.t === "futa") {
+                    rapeMsg.push({ n: "me", m: "Your dick hurts so bad! Please stop!" });
+                    rapeMsg.push({ n: "me", m: "Please take your dick out of my ass mister!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your tears only make my dick harder!" });
+                    rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this dick" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my dick says YES!" });
+
+                    if (gender.pronoun("f") === "f") {
+                        rapeMsg.push({ n: rape.char.name, m: "If you didn't want my dick, you should look like a bitch" });
+                        rapeMsg.push({ n: rape.char.name, m: "Girls don't get to say no to me!" });
+
+                    }
+                    else {
+                        rapeMsg.push({ n: rape.char.name, m: "Relax faggot. You need this." });
+                    }
+                }
+                else if (rape.chat.t === "femdom") {
+                    rapeMsg.push({ n: "me", m: "Your giant strap-on hurts so bad! Please stop!" });
+                    rapeMsg.push({ n: "me", m: "Please take your strap-on out of my ass mister!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your tears only my pussy wetter!" });
+                    rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this strap-on" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my strap-on says YES!" });
+                }
+            }
         }
 
         pleasure = levels.analTake(rape.char.cocksize);
     }
-    else if (rape.rapeType === "oral" || rape.rapeType === "cunnilugus") {
+    else if (rape.rapeType === "oral") {
         if (rape.phaseChange === "phase4Sub") {
-            rape.message(["Submissive oral whore"]);
-            enemyPleasure = 14;
+            if (rape.char.t === "wolf") {
+                rapeMsg = [
+                    { n: "me", m: "GLUCK GLUCK GLUCK mmmMmm GLUCK GLUCK" },
+                    { n: "thinking", m: "That dire wolf knot is so thick in my mouth!" },
+                    { n: "thinking", m: "I love doggy dick!" },
+                    { n: "thinking", m: "So yummy" },
+                    { n: rape.char.name, m: "arf" },
+                    { n: rape.char.name, m: "grrrr" },
+                    { n: rape.char.name, m: "*panting*" },
+                ];
+            }
+            else {
+                rapeMsg = [
+                    { n: "me", m: "GLUCK GLUCK GLUCK mmmMmm GLUCK GLUCK" },
+                    { n: "me", m: "Mmmm *lick* *slurp* *suck* mmmMMmmmm " },
+                    { n: rape.char.name, m: "GRUNT!" },
+                    { n: rape.char.name, m: "MMMmmm yeah!" },
+                ];
+                rapeMsg.push({ n: "thinking", m: "Cock is so yummy!" });
+                rapeMsg.push({ n: "thinking", m: "MMmmmm I love cock so much!" });
+                rapeMsg.push({ n: "thinking", m: "So deep down my throat!" });
+                rapeMsg.push({ n: rape.char.name, m: "Love the cocks lust in your eyes" });
+                rapeMsg.push({ n: rape.char.name, m: "Fuck yeah. Keep sucking baby." });
+                rapeMsg.push({ n: rape.char.name, m: "You were born for this" });
+                rapeMsg.push({ n: rape.char.name, m: "That's right girl. Worship this dick" });
+                if (gender.pronoun("f") === "f") {
+                    rapeMsg.push({ n: rape.char.name, m: "Your thick lips feel so soft" });
+                    rapeMsg.push({ n: rape.char.name, m: " " });
+                    rapeMsg.push({ n: rape.char.name, m: "Damn girl. I want to make you into my house wife!" });
+                }
+                else {
+                    rapeMsg.push({ n: rape.char.name, m: "Love turning straight boys into faggots" });
+                    rapeMsg.push({ n: rape.char.name, m: "I knew your fag face needed cock!" });
+                }
+            }
         }
         else if (rape.phaseChange === "phase4Limp") {
-            rape.message(["Glug glug gak! glug"]);
-            enemyPleasure = 8;
+            rapeMsg = [
+                { n: "thinking", m: "When will it end." },
+                { n: "thinking", m: "..." },
+            ];
+            if (rape.char.t === "wolf") {
+                rapeMsg.push({ n: rape.char.name, m: "GGRRrrrrrr" });
+            }
+            else {
+                rapeMsg.push({ n: rape.char.name, m: "You make a shity flesh light" });
+                rapeMsg.push({ n: rape.char.name, m: "Be a good victim and suck on it." });
+                rapeMsg.push({ n: rape.char.name, m: "If you don't suck harder, you're just going to make this rape take longer. " });
+            }
         }
         else if (rape.phaseChange === "phase4Struggle") {
-            rape.message(["You try to scream, but", "your mouth is full of cock"]);
-            enemyPleasure = 11;
+            
+            if (rape.char.t === "wolf") {
+                rapeMsg = [
+                    { n: "me", m: "GLUCK GLUCK hhhrrruuummm GLUCK" },
+                    { n: "thinking", m: "That dire wolf knot is so full in my mouth!" },
+                    { n: "me", m: "HRRUUMMMppp GLUCK GLUCK" },
+                    { n: "me", m: "HRUCK *gag* GLUCK" },
+                    { n: rape.char.name, m: "arf" },
+                    { n: rape.char.name, m: "grrrr" },
+                    { n: rape.char.name, m: "*panting*" },
+                ];
+            }
+            else {
+                rapeMsg = [
+                    { n: "me", m: "GLUCK GLUCK hhhrrruuummm GLUCK" },
+                    { n: "thinking", m: "That cock is so full in my mouth!" },
+                    { n: "me", m: "HRRUUMMMppp GLUCK GLUCK" },
+                    { n: "me", m: "HRUCK *gag* GLUCK" },
+                    { n: "me", m: "*Crying*" },
+                    { n: "me", m: "*sob* *sob* *sob*" },
+                    { n: rape.char.name, m: "You're pretty when you cry" },
+                    { n: rape.char.name, m: "The more you squirm then hard I fuck!" },
+                    { n: rape.char.name, m: "If I feel teeth I'm going to punch you in the face!" },
+
+                ];
+                rapeMsg.push({ n: rape.char.name, m: "Your tears only make my dick harder!" });
+                rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this dick" });
+                rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my dick says YES!" });
+
+                if (gender.pronoun("f") === "f") {
+                    rapeMsg.push({ n: rape.char.name, m: "If you didn't want my dick, you should look like a bitch" });
+                    rapeMsg.push({ n: rape.char.name, m: "Girls don't get to say no to me!" });
+
+                }
+                else {
+                    rapeMsg.push({ n: rape.char.name, m: "Relax faggot. You need this." });
+                }
+            }
+        }
+        pleasure = levels.oralTake(rape.char.cocksize);
+    }
+    else if (rape.rapeType === "cunnilugus") {
+        if (rape.phaseChange === "phase4Sub") {
+            rapeMsg = [
+                { n: "me", m: "*lick* *sssllluurrppp* YUM" },
+                { n: "me", m: "nom nom nom" },
+                { n: "me", m: "Tastes so yummy!" },
+                { n: "me", m: "munch munch" },
+                { n: "me", m: "MMmmmm lick" },
+                { n: "thinking", m: "Love the taste of wet pussy!" },
+                { n: "thinking", m: "MMMMmmmm yummy pussy in my mouth" },
+                { n: rape.char.name, m: "Oh yeah baby. Lick that clit!" },
+                { n: rape.char.name, m: "Fuck that feels good!" },
+                { n: rape.char.name, m: "Lick my honey pot. My pussy loves it a lot!" },
+                { n: rape.char.name, m: "Fuuuccckkk lick faster... I'm getting there!" },
+            ];
+        }
+        else if (rape.phaseChange === "phase4Limp") {
+            rapeMsg = [
+                { n: "thinking", m: "...." },
+                { n: "thinking", m: "Is she done yet?" },
+                { n: rape.char.name, m: "If you don't start licking I'm just going to grind my clit in your face!" },
+                { n: rape.char.name, m: "Put some effort into it! " },
+                { n: rape.char.name, m: "You suck at eating twat" },
+                { n: rape.char.name, m: "Do it better!" },
+            ];
+        }
+        else if (rape.phaseChange === "phase4Struggle") {
+            rapeMsg = [
+                { n: "me", m: "MMmrrrffff hhhelll" },
+                { n: "thinking", m: "She's really grinding her clit in my face!" },
+                { n: "me", m: "HRRUUMMMppp hhhh!!!!" },
+                { n: "me", m: "lick *gag* Akkk" },
+                { n: "me", m: "*Crying*" },
+                { n: "me", m: "*sob* *sob* *sob*" },
+                { n: rape.char.name, m: "You're pretty when you cry" },
+                { n: rape.char.name, m: "The more you squirm then hard I grind in your face!" },
+                { n: rape.char.name, m: "If I feel teeth I'm going to punch you in the face!" },
+
+            ];
+            rapeMsg.push({ n: rape.char.name, m: "Your tears only make my pussy wetter!" });
+            rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this cunt" });
+            rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my pussy says YES!" });
         }
         pleasure = levels.oralTake(rape.char.cocksize);
     }
     else if (rape.rapeType === "penis") {
-        pleasure = { canTake: false, pleasure: 5 };
+        if (rape.phaseChange === "phase4Sub") {
+            rapeMsg = [
+                { n: "me", m: "Oh fuck! Fuck me fuck me! " },
+                { n: "me", m: "Your pussy is so wet!" },
+                { n: "me", m: "I love fucking you!" },
+                { n: "me", m: "Yes yes yes!" },
+                { n: "me", m: "Ffffuck yes!" },
+                { n: rape.char.name, m: "Oh yeah baby. Fuck this pussy!" },
+                { n: rape.char.name, m: "Love your cock baby!!" },
+                { n: rape.char.name, m: "*moan*" },
+                { n: rape.char.name, m: "yes yes yes! I love your cock!" },
+            ];
+        }
+        else if (rape.phaseChange === "phase4Limp") {
+            rapeMsg = [
+                { n: "thinking", m: "...." },
+                { n: "thinking", m: "Is she done yet?" },
+                { n: rape.char.name, m: "You suck at fucking!" },
+                { n: rape.char.name, m: "You fuck like a virgin " },
+                { n: rape.char.name, m: "You suck at fucking twat" },
+                { n: rape.char.name, m: "Do it better!" },
+            ];
+        }
+        else if (rape.phaseChange === "phase4Struggle") {
+            rapeMsg = [
+                { n: "me", m: "HHHEEELLPPPP!!! I'm being raped! " },
+                { n: "me", m: "Someone get this crazy bitch off me!" },
+                { n: "me", m: "Get off my dick!" },
+                { n: "me", m: "*Crying*" },
+                { n: "me", m: "*sob* *sob* *sob*" },
+                { n: rape.char.name, m: "You're pretty when you cry" },
+                { n: rape.char.name, m: "The more you squirm then hard I'm going to ride your dick." },
+
+            ];
+            rapeMsg.push({ n: rape.char.name, m: "Your tears only make my pussy wetter!" });
+            rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this cunt" });
+            rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my pussy says YES!" });
+        }
+        pleasure = { canTake: false, pleasure: 10 };
     }
     else {
         pleasure = { canTake: false, pleasure: 3 };
@@ -806,8 +1258,14 @@ rape.phase5 = function () {
     }
     else if (rape.char.arousal > 95) {
         rape.callphase(true);
-        rape.message(["Cum sponge"]);
         return;
+    }
+    if (rapeMsg.length === 0) {
+        rape.message("", "rapeMessage");
+    }
+    else {
+        let selectedMessage = rapeMsg[g.rand(0, rapeMsg.length)];
+        rape.message(selectedMessage.m, selectedMessage.n);
     }
     rape.updateEnergy(null, -3, enemyPleasure, pleasure.pleasure);
     rape.displayMenu("rape");
@@ -818,12 +1276,12 @@ rape.phase6 = function () {
     rape.updateEnergy(null, null, -100, null);
     nav.killbutton("r1004bg");
     isComplete = rape.char.phase6();
-    if (isComplete) {
+    if (isComplete.c) {
         rape.callphase(true);
-        rape.message(["cum dripping"]);
         return;
     }
     rape.displayMenu("next");
+    rape.message(isComplete.m, isComplete.s);
     rape.phases[6].c++;
 };
 
@@ -1265,9 +1723,9 @@ rape.displayMenu = function (menu) {
     }
 };
 
-rape.message = function (message) {
+rape.message = function (message, speaker = null) {
     nav.killbutton("m1004-d");
-    if (rape.phase === 0) {
+    if (rape.phase === 0 || speaker === "rapeMessage") {
         nav.button({
             "type": "zimg",
             "name": "m1004-d",
@@ -1284,17 +1742,50 @@ rape.message = function (message) {
         message = new Array();
         message.push(temp);
     }
-
-    for (let i = 0; i < message.length; i++) {
+    if (speaker === null) {
+        for (let i = 0; i < message.length; i++) {
+            nav.t({
+                type: "zimg",
+                name: "m1004-d",
+                left: 1630,
+                top: 180 + (i * 30),
+                font: 20,
+                hex: "#ffffff",
+                text: g.newLine(message[i], 24)
+            });
+        }
+    }
+    else {
+        let char = privateChat.speakerInfo(speaker);
+        nav.button({
+            "type": "zimg",
+            "name": "m1004-d",
+            "left": 1630,
+            "top": 180,
+            "width": 40,
+            "height": 40,
+            "image": "../../" + char.img.replace("./", "")
+        }, 1004);
         nav.t({
             type: "zimg",
             name: "m1004-d",
-            left: 1630,
-            top: 180 + (i * 30),
+            left: 1680,
+            top: 190,
             font: 20,
             hex: "#ffffff",
-            text: message[i]
+            text: char.name
         });
+        for (let i = 0; i < message.length; i++) {
+            nav.t({
+                type: "zimg",
+                name: "m1004-d",
+                left: 1630,
+                top: 230 + (i * 40),
+                font: 26,
+                hex: "#ffffff",
+                text: g.newLine(message[i], 20)
+            });
+        }
     }
 };
 

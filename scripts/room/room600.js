@@ -3,8 +3,20 @@
 var room600 = {};
 
 room600.main = function () {
-    if (cl.isLewd()) {
+    if (g.gethourdecimal() > 3 && g.gethourdecimal() < 17) {
+        nav.bg("600_body/closed.jpg");
+        chat(18, 600);
+    }
+    else if (daily.get("stripper")) {
+        chat(17, 600);
+    }
+    else if (cl.isLewd()) {
         chat(15, 600);
+    }
+    else if (g.dt.getDay() === 5 && gv.get("sissySchoolClass") === "finalx") {
+        nav.bg("600_body/femboy.webp");
+        zcl.displayMain(500, 840, .09, "clothes", true);
+        chat(19, 600);
     }
     else if (sc.getMission("tony", "strip").startedOrComplete) {
         char.room(602);
@@ -230,6 +242,53 @@ room600.chat = function(chatID){
                 "in front of a lot of strange horny men!",
             button: [
                 { chatID: -1, text: "[Need to unlock Stripper]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "!freddy",
+            text: "Hey, youse are done for the night. I heard what you tried to do. You " +
+                "can come back tomrrow, just keep you panties on.",
+            button: [
+                { chatID: -1, text: "Oh. Ok", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thiking",
+            text: "Oh. They're closed..",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "p",
+            text: "Welcome everyone to the first ever FEMBOY FRIDAY at Fat Tony's!!!!" + 
+                "Now the rules are that whoever makes the most money tonight gets an A+ " +
+                "for the sexy part of their final! Wooooo! " + sc.n("!freddy") + " here will " +
+                "explain the rules, but you girls have fun!",
+            button: [
+                { chatID: 20, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "!freddy",
+            text: "Hehehee. I notice there's a few of youse that been working here a while. You " +
+                "already knows the rules. For the rest of youse, underwears only in the club, and " +
+                "no taking off youse panties. Take off your panties and you'll be 86th from here " +
+                "and youse won't get no tips. Got it?",
+            button: [
+                { chatID: 21, text: "[Nod]", callback: "" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "p",
+            text: "Ok girls! Get in there and shake your money makers!!!!!!!",
+            button: [
+                { chatID: -1, text: "Yea!!!!", callback: "room602" },
             ]
         },
     ];

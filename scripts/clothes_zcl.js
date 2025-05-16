@@ -623,6 +623,20 @@ zcl.bj = function (top, left, ratio, mod, reverse) {
     }
 };
 
+zcl.pucker = function (top, left, ratio, mod, reverse) {
+    let w = 1500;
+    let h = 2700;
+    let f = "pucker";
+    zcl.kill();
+    let pg = gender.pronoun("f");
+    zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    if (cl.c.panties !== null)
+        zcl.subDisplay("panties_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    if (cl.c.bra !== null)
+        zcl.subDisplay("bra_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+
+};
+
 zcl.armsup = function (top, left, ratio, mod, reverse) {
     let w = 2048;
     let h = 2400;
@@ -749,6 +763,14 @@ zcl.poseExpose = function (top, left, ratio, mod, reverse) {
         zcl.subDisplay("chastity.png", top, left, ratio, reverse, w, h, f);
 };
 
+zcl.facedown = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 2092;
+    let h = 1129;
+    let f = "facedown";
+    zcl.subDisplay("body_" + gender.pronoun("f") + ".webp", top, left, ratio, reverse, w, h, f);
+};
+
 zcl.assup = function (top, left, ratio, mod) {
     $('.room-img[data-name="zzz-clothing-kill"]').remove();
 
@@ -779,6 +801,8 @@ cl.assupSub = function (thisImage, top, left, ratio) {
     left = left * g.ratio;
     $('#room-buttons').append('<img src="./images/mainChar/assup/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
 };
+
+
 
 zcl.bent = function (top, left, ratio, mod, reverse = false) {
     zcl.kill();

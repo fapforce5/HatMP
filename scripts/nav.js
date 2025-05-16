@@ -154,7 +154,9 @@ nav.t = function (btn, roomNum) {
     var thisHex = "#000000";
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
+
     
+
     if (btn.type === "btn")
         classes = "room-btn rom-event";
     else if (btn.type === "kiss")
@@ -180,6 +182,13 @@ nav.t = function (btn, roomNum) {
         classes += " char-20 ";
     if ("hex" in btn)
         thisHex = btn.hex;
+
+    if (typeof btn.stroke !== "undefined") {
+        if(btn.stroke === "white")
+            classes += " txt-stroke-white";
+        else
+            classes += " txt-stroke-black";
+    }
 
     line = '<div class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + '; width: auto; height: auto;" >' + btn.text + '</div>';
 

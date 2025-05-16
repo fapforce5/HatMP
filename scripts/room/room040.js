@@ -101,7 +101,7 @@ room40.chatcatch = function (callback) {
         case "leave":
             gv.set("workMonday", false);
             char.settime(15, 12);
-            gv.set("map", 0);
+            gv.set("map", 3);
             char.room(0);
             break;
         default:

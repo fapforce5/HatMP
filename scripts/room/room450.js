@@ -184,10 +184,7 @@ room450.btnclick = function (name) {
                 "height": 1080,
                 "image": "450_park/cultTalk.png"
             }, 450);
-            if (sc.getstep("cultjgirl") < 1)
-                chat(8, 450);
-            else
-                chat(13, 450);
+            chat(8, 450);
             break;
         case "lolaPark":
             nav.killall();
@@ -325,13 +322,11 @@ room450.chatcatch = function(callback){
             nav.killbutton("cop");
             break;
         case "killCopx":
-            sc.setstep("cop", 1);
             char.room(450);
             break;
         case "cultLeave1":
             char.addtime(60);
             nav.killbutton("cult1");
-            sc.setstep("cultjgirl", 1);
             break;
         case "cultLeave2":
             char.addtime(60);
@@ -461,7 +456,6 @@ room450.chatcatch = function(callback){
             zcl.displayMain(-700, 500, .4, "clothes", true);
             break;
         case "lolax9":
-            sc.setstep("lola", 13);
             char.addtime(120);
             gv.mod("fuckPussy", 1);
             daily.set("lola");
@@ -611,7 +605,7 @@ room450.chat = function(chatID){
         },
         {
             chatID: 8,
-            speaker: "cultjgirl",
+            speaker: "cult",
             text: "Yes my friend, what can we do for your?",
             button: [
                 { chatID: 9, text: "Who are you?", callback: "" }
@@ -619,7 +613,7 @@ room450.chat = function(chatID){
         },
         {
             chatID: 9,
-            speaker: "cultjgirl",
+            speaker: "cult",
             text: "We are everything, we are everywhere, we are love. Have you been loved?",
             button: [
                 { chatID: 10, text: "Have I what?", callback: "" }
@@ -627,7 +621,7 @@ room450.chat = function(chatID){
         },
         {
             chatID: 10,
-            speaker: "cultjgirl",
+            speaker: "cult",
             text: "Silly boy, have you been loved? Our group has so much love, we would like to love you. ",
             button: [
                 { chatID: 11, text: "Oh yea?", callback: "" }
@@ -635,7 +629,7 @@ room450.chat = function(chatID){
         },
         {
             chatID: 11,
-            speaker: "cultjgirl",
+            speaker: "cult",
             text: "Yes, you can join us for free love, just follow the forest, it will guide you to us. When you get near " +
                 "our home disrobe your earthly clothes for they serve no purpose when you have love in your heart.",
             button: [
@@ -644,7 +638,7 @@ room450.chat = function(chatID){
         },
         {
             chatID: 12,
-            speaker: "cultjgirl",
+            speaker: "cult",
             text: "The time draws near for us to share out love in the forest, be well new friend. ",
             button: [
                 { chatID: -1, text: "Be well?", callback: "cultLeave1" }
@@ -652,7 +646,7 @@ room450.chat = function(chatID){
         },
         {
             chatID: 13,
-            speaker: "cultjgirl",
+            speaker: "cult",
             text: "Hello again friend. Meet us naked, in the forest so we can share our love. Only the nude body can " +
                 "can receive the gifts of our creator. ",
             button: [
