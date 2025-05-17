@@ -70,7 +70,6 @@ gv.init = function () {
         { n: "transformation", t: "voluntary", q: "string" },
         { n: "breastSelect", t: 0, q: "int" },
         { n: "assSelect", t: 0, q: "int" },
-        { n: "skipTrain", t: false, q: "bool" },
 
         //virgin
         { n: "virginMouth", t: 0, q: "string" },

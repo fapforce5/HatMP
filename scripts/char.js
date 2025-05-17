@@ -168,21 +168,21 @@ $(document).ready(function () {
     //    char.export(parseInt($(this).data("save")));
     //});
 
-    //$("#room_export_load").click(function () {
-    //    char.import(null);
-    //});
+    $("#room_export_load").click(function () {
+        char.import(null);
+    });
 
-    //$("#room_export_load_file").click(function () {
-    //    char.file_import();
-    //});
+    $("#room_export_load_file").click(function () {
+        char.file_import();
+    });
 
-    //$("#room_export_file").click(function () {
-    //    char.file_export($("#room_export_file").data('saveID'));
-    //});
+    $("#room_export_file").click(function () {
+        char.file_export($("#room_export_file").data('saveID'));
+    });
 
-    //$("#room_export_hide").click(function () {
-    //    $("#room_export").slideUp();
-    //});
+    $("#room_export_hide").click(function () {
+        $("#room_export").slideUp();
+    });
 
     //$("#menu_parent").on('click', '#menu-import', function () {
     //    $('#room-export-text').hide();
@@ -468,11 +468,6 @@ char.makeWalk = function () {
         //console.log("hit")
         //var j = g.pastSaves.length - 2;
         g.pastSaves.splice(g.pastSaves.length - 1, 1);
-        if (g.pastSaves.length > 1) {
-            if (g.pastSaves[g.pastSaves.length - 1].name === "Train") {
-                g.pastSaves.splice(g.pastSaves.length - 1, 1);
-            }
-        }
         privateChat.kill();
         clearTimeout(g.roomTimeout);
         clearTimeout(g.roomTimeout2);

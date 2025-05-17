@@ -1732,7 +1732,7 @@ room501.chat = function (chatID) {
                 chatID: 92,
                 speaker: "zoey",
                 text: "I am so angry at " + sc.n("chloe") + ", but I knew it! I knew she was always " +
-                    "a cheater! Any you! You didn't have to sex her to find out! You could have just " +
+                    "a cheater! And you! You didn't have to sex her to find out! You could have just " +
                     "told me they were at the club. I should be mad at you, but you did what I asked. " +
                     "I am not heureux with you, but I am not mad. Right now I am just tired. So very " +
                     "weak and tired. I feel like liquid on the floor. ",

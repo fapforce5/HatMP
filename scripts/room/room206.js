@@ -540,7 +540,7 @@ room206.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "missy",
-            text: "So " + sc.n("me") + ", you want to be a Private Investigator? Do what kind of college degree do you have?",
+            text: "So " + sc.n("me") + ", you want to be a Private Investigator? So what kind of college degree do you have?",
             button: [
                 { chatID: 1, text: "I don't have a degree, you see what happened...", callback: "" }
             ]

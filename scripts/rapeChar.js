@@ -2089,8 +2089,8 @@
             gender: "m",
             t: "duo",
             cocksize: 3,
-            kick: "duo13/kick.png",
-            phase0: function () { rape.kick = 3; return { default: true, complete: null }; },
+            kick: "duo13/kick.webp",
+            phase0: function () { return { default: true, complete: null }; },
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {

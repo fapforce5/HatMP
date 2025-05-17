@@ -19,6 +19,28 @@ room170.main = function () {
                 break;
         }
     }
+    else if (gv.get("sissySchoolClass") === "finalx") {
+        nav.bg("170_stage/final_bg.webp");
+        if (g.gethourdecimal() < 5.5) {
+            nav.button({
+                "type": "btn",
+                "name": "finalWander",
+                "left": 173,
+                "top": 0,
+                "width": 354,
+                "height": 596,
+                "image": "170_stage/final_door.webp"
+            }, 170);
+
+            sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
+            sc.select("final_hallway", "170_stage/icon_catwalk.png", 3);
+            sc.select("final_wait", "527_bathroom/icon_wait.png", 5);
+        }
+        else {
+            sc.select("final_hallway", "170_stage/icon_catwalk.png", 1);
+            sc.select("final_wait", "527_bathroom/icon_wait.png", 3);
+        }
+    }
     else {
         chat(0, 170);
         nav.buildnav([213, 214, 171, 215]);

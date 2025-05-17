@@ -1,15 +1,6 @@
 ﻿//Room name
 var room49 = {};
 room49.main = function () {
-    if (gv.get("skipTrain")) {
-        if (gv.get("map") === 0)
-            gv.set("map", 3);
-        else
-            gv.set("map", 0);
-        char.room(0);
-        return;
-    }
-    g.internal = null;
     if (g.isNight() && g.rand(0, 3) === 0) {
         g.internal = "g1";
         nav.button({

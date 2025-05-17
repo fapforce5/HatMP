@@ -2047,7 +2047,7 @@ room13.chat = function (chatID) {
                 text: "It's too early in the day for wine. I still have so much to do and I don't " +
                     "want to ruin optimal study hours drinking wine.",
                 button: [
-                    { chatID: -1, text: "Wiat till dark and play. ", callback: "room24" },
+                    { chatID: -1, text: "Wiat 'til dark and play. ", callback: "room24" },
                     { chatID: -1, text: "Ok. I'll come back after dark.  ", callback: "" }
                 ]
             },
