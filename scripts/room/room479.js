@@ -401,7 +401,7 @@ room479.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "random",
-            text: "Normally people start a converstaion with a 'hello, how are you', but you go stright to my legs. ",
+            text: "Normally people start a conversation with a 'hello, how are you', but you go stright to my legs. ",
             button: [
                 { chatID: 17, text: "Oh. Hello. How are you? ", callback: "" },
             ]

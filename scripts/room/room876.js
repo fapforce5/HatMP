@@ -1112,7 +1112,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 79,
                 speaker: "stacy",
-                text: "I get so horny after practice. You're good at cleaning our uniforms, lets see how good you are at " +
+                text: "I get so horny after practice. You're good at cleaning our uniforms, let's see how good you are at " +
                     " cleaning my pussy. ",
                 button: [
                     { chatID: 80, text: "huh? ", callback: "" }

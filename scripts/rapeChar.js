@@ -1537,7 +1537,7 @@
                         "height": 1059,
                         "image": "1004_rape/futa1/phase3_1.png"
                     }, 1004);
-                    return { complete: false, s: "!futa1", message: "Oh no! You made my cock fell out!" };
+                    return { complete: false, s: "!futa1", message: "Oh no! You made my cock fall out!" };
                 }
                 nav.button({
                     "type": "img",

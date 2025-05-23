@@ -2143,7 +2143,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 80,
                 speaker: "janice",
-                text: "That was just the plumber. My shower drain always gets clogged! Haivng " +
+                text: "That was just the plumber. My shower drain always gets clogged! Having " +
                     "all this hair can be so annoying sometimes! So what's up? ",
                 button: [
                     { chatID: -1, text: "...", callback: "buildMenu" },

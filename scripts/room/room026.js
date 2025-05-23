@@ -1554,7 +1554,7 @@ room26.chat = function (chatID) {
             {
                 chatID: 88,
                 speaker: "landlord",
-                text: "Oh honey I know! Harry was a man's man. They kind of of guy that that would go hunting, clean his deer, then " +
+                text: "Oh honey I know! Harry was a man's man. The kind of of guy that that would go hunting, clean his deer, then " +
                     "spend the rest of the night drinking with the boys. You're not much of a hunter and " +
                     "in your cute little dress drinking with the boys is going to be... different.",
                 button: [

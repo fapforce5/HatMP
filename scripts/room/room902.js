@@ -294,7 +294,7 @@ room902.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "thinking",
-            text: "Awww. I should resuce her from this prank. I think she's going to have a complete break down. " + sc.n("lola") +
+            text: "Awww. I should rescue her from this prank. I think she's going to have a complete breakdown. " + sc.n("lola") +
                 " was never good at public embarrassment. ",
             button: [
                 { chatID: 13, text: "...", callback: "s7" },

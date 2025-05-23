@@ -428,7 +428,10 @@ char.map = function () {
     }
 };
 
-char.friendlyTime = function (hour, ampm) {
+char.friendlyTime = function (hour, ampm = null) {
+    if (ampm === null)
+        ampm = gv.get("clock24") === "12";
+
     if (ampm) {
         if (hour === 0)
             return "12AM";
@@ -438,7 +441,7 @@ char.friendlyTime = function (hour, ampm) {
             return hour + "PM";
         return (hour - 12) + "PM";
     }
-    return hour;
+    return hour.toString();
 };
 
 char.makeWalk = function () {

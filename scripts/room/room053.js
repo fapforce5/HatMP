@@ -839,7 +839,7 @@ room53.chat = function (chatID) {
             "eat. And you can eat it straight from my pussy! I bet that sounds yummy!",
             button: [
                 { chatID: 25, text: "Oh no, no, no, no", callback: "" },
-                { chatID: 26, text: "That' awesome! I really want to eat cum from your pussy!", callback: "bc1" }
+                { chatID: 26, text: "That's awesome! I really want to eat cum from your pussy!", callback: "bc1" }
             ]
         },
         {

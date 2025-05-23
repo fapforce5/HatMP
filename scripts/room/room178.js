@@ -290,7 +290,7 @@ room178.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "missy",
-            text: "No. Your last orgasm was a one time gift. Castity sluts don't get to cum, but lucky for you I'll let you " +
+            text: "No. Your last orgasm was a one time gift. Chastity sluts don't get to cum, but lucky for you I'll let you " +
                 "participate even if you didn't contribute. Now let slip into something more arousing for your feeding. ",
             button: [
                 { chatID: 21, text: "...", callback: "cum104" },
@@ -327,7 +327,7 @@ room178.chat = function (chatID) {
             chatID: 24,
             speaker: "missy",
             text: "Such eager mouths. You've done well and passed the class. Remember, a good slut swallows, a bad whore spits. " +
-                "Now go and find some cocks to slups down. ",
+                "Now go and find some cocks to slurp on. ",
             button: [
                 { chatID: -1, text: "...", callback: "cumend101Pass" },
             ]

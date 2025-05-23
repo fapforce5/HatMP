@@ -1094,8 +1094,8 @@ room7.chat = function (chatID) {
             {
                 chatID: 26,
                 speaker: "landlord",
-                text: "Don't forget, it's Friday. Those aweful people from the Carnal Union will " +
-                    "be in town, so get back before it gets dark. They are an aweful bunch. ",
+                text: "Don't forget, it's Friday. Those awful people from the Carnal Union will " +
+                    "be in town, so get back before it gets dark. They are an awful bunch. ",
                 button: [
                     { chatID: 9, text: "ok", callback: "clearRoom" },
                 ]

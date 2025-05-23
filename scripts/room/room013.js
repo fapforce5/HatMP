@@ -2232,7 +2232,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "lola",
-                text: "Cool! Give me at leaste a day to get everything ready! Ask me before it gets dark. So excited! ",
+                text: "Cool! Give me at least a day to get everything ready! Ask me before it gets dark. So excited! ",
                 button: [
                     { chatID: -1, text: "Haha. Yeah. That would be weird. ", callback: "practiceDate0_end" },
                 ]

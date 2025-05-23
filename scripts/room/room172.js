@@ -601,7 +601,7 @@ room172.chat = function (chatID) {
         {
             chatID: 43,
             speaker: "black",
-            text: "You've been playing with your slut hole haven't you? Lets see if we can go deeper...",
+            text: "You've been playing with your slut hole haven't you? Let's see if we can go deeper...",
             button: [
                 { chatID: -1, text: "Ooooo", callback: "xtie6" }
             ]

@@ -744,7 +744,7 @@ room321.sidechat = function (metalk) {
             case "femdom_message0":
                 g.internal.chat.push({ user: "Twekle98", txt: "Show the femboy's ass! ", hex: "#34e5eb" });
                 g.internal.chat.push({ user: "Jim", txt: "Bend your femboy over and fuck him! ", hex: "#0d915a" });
-                g.internal.chat.push({ user: "Daddy", txt: "I love a sexy femboy butt bby. Lets see it!", hex: "#13914a" });
+                g.internal.chat.push({ user: "Daddy", txt: "I love a sexy femboy butt bby. Let's see it!", hex: "#13914a" });
                 g.internal.chat.push({ user: "Fufu Faroo", txt: "Show us his butt ", hex: "#474c61" });
                 g.internal.chat.push({ user: "BigD", txt: "I want to see his ass too1 ", hex: "#475a61" });
                 g.internal.chat.push({ user: "Al", txt: "BUTT BUTT BUTT BUTT ", hex: "#1d6640" });

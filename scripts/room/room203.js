@@ -37,6 +37,9 @@ room203.main = function () {
         nav.button(v, 203);
     });
     nav.buildnav(navList);
+    if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
+        sc.select("icon_fashion", "203_entrance/icon_fashion.webp", 0)
+    }
 };
 
 room203.btnclick = function (name) {
@@ -76,6 +79,9 @@ room203.btnclick = function (name) {
             cl.c.socks = null;
             cl.display();
             char.room(203);
+            break;
+        case "icon_fashion":
+            char.room(207);
             break;
         default:
             break;

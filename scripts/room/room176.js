@@ -268,6 +268,7 @@ room176.chatcatch = function (callback) {
             sc.select("tongue", "176_oral/icon_lick.png", 1);
             break;
         case "finalFirstEventEnd":
+            sc.show("tudor");
             gv.mod("sissySchoolClassDays", 1);
             char.settime(17, 18);
             char.room(201);
@@ -944,7 +945,7 @@ room176.chat = function (chatID) {
             },
             {
                 chatID: 61,
-                speaker: "!tudor",
+                speaker: "tudor",
                 text: "Thank you Martha for giving me the chance to give the final assignment. " +
                     "It does give an old man glee so see so many wonderful sissies! When I " +
                     "started this school those many years ago we had such a hard time filling " +
@@ -956,7 +957,7 @@ room176.chat = function (chatID) {
             },
             {
                 chatID: 62,
-                speaker: "!tudor",
+                speaker: "tudor",
                 text: "As you finish your time here and go out and do your assignment, I want you to " +
                     "think about regret. Not in the things you'll do, but in the things you haven't done. " +
                     "When I started this school it was to fill my own regret. You see, as a youth I always " +
@@ -970,7 +971,7 @@ room176.chat = function (chatID) {
             },
             {
                 chatID: 63,
-                speaker: "!tudor",
+                speaker: "tudor",
                 text: "I was lucky in business and made a sizeable amout of money. More money " +
                     "than any one man can spend in his lifetime and was looking to invest it in " +
                     "businesses that I found of interest. That's when I came across a young spitfire " +
@@ -984,7 +985,7 @@ room176.chat = function (chatID) {
             },
             {
                 chatID: 64,
-                speaker: "!tudor",
+                speaker: "tudor",
                 text: "In a way, this school is my way to live vicariously through you all. " +
                     "I am much much too old to live the life I should have lived, but I can " +
                     "give you the chance to live the life you should live. So to pass the class " +
@@ -995,7 +996,7 @@ room176.chat = function (chatID) {
             },
             {
                 chatID: 65,
-                speaker: "!tudor",
+                speaker: "tudor",
                 text: "First, a sissy should be pretty. This Saturday we will have the biannual " +
                     "fashon show. This is your chance to wear your prettiest clothes for a large private " +
                     "audiance. <br/>" +
@@ -1012,7 +1013,7 @@ room176.chat = function (chatID) {
             },
             {
                 chatID: 66,
-                speaker: "!tudor",
+                speaker: "tudor",
                 text: "So I know the life of a student is a busy one which is why I'll give you a full " +
                     "week to get these tasks done. Don't forget to attend the event at the strip club on " +
                     "Friday all night and our beauty contest in the Pink Room Next door on Saturday before " +

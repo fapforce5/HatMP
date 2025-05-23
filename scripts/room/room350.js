@@ -581,7 +581,7 @@ room350.chat = function (chatID) {
             chatID: 43,
             speaker: "landlord",
             text: "Some men come in and have a hard time creating a donation, so it will be your responsibility to assit them. Some " +
-                "just need a peek at your boobs, some need to check out your butt, and others need a help hand.",
+                "just need a peek at your boobs, some need to check out your butt, and others need a helping hand.",
             button: [
                 { chatID: 44, text: "Helping hand, do you mean...", callback: "" }
             ]

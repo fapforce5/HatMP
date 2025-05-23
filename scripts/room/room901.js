@@ -762,7 +762,7 @@ room901.chat = function(chatID){
         {
             chatID: 38,
             speaker: "tim",
-            text: "With a body like this I never have to stroke it. But I am great at diving, ever girl has complimented me when I " +
+            text: "With a body like this I never have to stroke it. But I am great at diving, every girl has complimented me when I " +
                 "go down.",
             button: [
                 { chatID: 39, text: "You may be good, but my blowjob.. er I mean going down.. crap. I want to suck your dick.", callback: "" },

@@ -446,13 +446,13 @@ room174.chat = function (chatID) {
                 "froze. It's a good thing I had your underwear on or she would have seen my little boner " +
                 "sticking up. Hahaha",
             button: [
-                { chatID: 30, text: "haha.. oh wow. That would have been a different converstaion. ", callback: "" },
+                { chatID: 30, text: "haha.. oh wow. That would have been a different conversation. ", callback: "" },
             ]
         },
         {
             chatID: 30,
             speaker: "!bill",
-            text: "So, I think the moments passed. You should wear my panties when we walk to " +
+            text: "So, I think the moment's passed. You should wear my panties when we walk to " +
                 "the train. I'm going to get dressed.  ",
             button: [
                 { chatID: 31, text: "Yeah. I guess we should get going. ", callback: "goth12" },

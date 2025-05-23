@@ -286,7 +286,7 @@ room403.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "tiffany",
-            text: "This is so exciting!!! You know the dress you choose says a lot about you. Lets see what we have....",
+            text: "This is so exciting!!! You know the dress you choose says a lot about you. Let's see what we have....",
             button: [
                 { chatID: 1, text: "[Follow " + sc.n("tiffany") + " around the store]", callback: "tif2" }
             ]
@@ -310,7 +310,7 @@ room403.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "tiffany",
-            text: "AH HA! This is prefect for you!",
+            text: "AH HA! This is perfect for you!",
             button: [
                 { chatID: 4, text: "What?", callback: "tif5" }
             ]
@@ -342,7 +342,7 @@ room403.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "Awww Don't worry about that. You're so cute no one will think you're a boy.!",
+            text: "Awww, don't worry about that. You're so cute no one will think you're a boy.!",
             button: [
                 { chatID: 8, text: "No, I'm manly...", callback: "tif6" }
             ]
@@ -374,7 +374,7 @@ room403.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "tiffany",
-            text: "Yes silly, You need socks to match your pretty new dress! Follow me",
+            text: "Yes, silly, You need socks to match your pretty new dress! Follow me",
             button: [
                 { chatID: 12, text: "[Follow her]", callback: "tif8" }
             ]
@@ -439,8 +439,8 @@ room403.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "tiffany",
-            text: "Oh honey.. panties are more than just something to cover you cock, it's about the feeling of soft silky goodness " +
-                "rubbing your fun stuff! Trust me you'll love a nice pair of panties in your new dress, the breeze is refreshing!",
+            text: "Oh honey, panties are more than just something to cover you cock, it's about the feeling of soft silky goodness " +
+                "rubbing your fun stuff! Trust me, you'll love a nice pair of panties in your new dress, the breeze is refreshing!",
             button: [
                 { chatID: 20, text: "Ok, let's get some panties and a bra", callback: "tifPanty1" }
             ]
@@ -548,7 +548,7 @@ room403.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "tiffany",
-            text: "I have lots of chastity keys. One of the perks of owning my own dirty sex store "
+            text: "I have lots of chastity keys. One of the perks of owning my own dirty sex store. "
                 + sc.n("missy") + " will need to lock you back up!",
             button: [
                 { chatID: 34, text: "Well....", callback: "changeRoom3b" }
@@ -582,8 +582,7 @@ room403.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "tiffany",
-            text: "This second pair is a slutty pink G-string panties. These say you want a bunch of big strong men " +
-                "savagely penetrate my tender face and asshole with their giant throbbing cocks. ",
+            text: "This second pair are slutty pink G-string panties. These say you want a bunch of big strong men to savagely penetrate my tender face and asshole with their giant throbbing cocks ",
             button: [
                 { chatID: 37, text: "...", callback: "changeRoom6" }
             ]
@@ -825,7 +824,7 @@ room403.chat = function (chatID) {
         {
             chatID: 65,
             speaker: "tiffany",
-            text: "Ok honey lets see how you look in your new clothes! I bet you'll look so pretty.",
+            text: "Ok honey let's see how you look in your new clothes! I bet you'll look so pretty.",
             button: [
                 { chatID: 66, text: "[Get Dressed]", callback: "changeRoom11a" }
             ]

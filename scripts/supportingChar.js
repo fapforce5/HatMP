@@ -5,6 +5,7 @@ sc.char = [
     { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
+    { name: "tudor", display: "Mr. Tudor", image: "tudor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
     { name: "p", display: "Ms. Pussywinks", image: "princess.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "martha", display: "Mistress Martha", image: "martha.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "black", display: "Ms. Black", image: "black.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
@@ -2308,6 +2309,10 @@ sc.trivial = function (charname) {
             name = "Boy's Voice";
             image = "boy.png";
             break;
+        case "!man":
+            name = "Man";
+            image = "boy.png";
+            break;
         case "!girl":
             name = "Girl's Voice";
             image = "girl.png";
@@ -2508,10 +2513,6 @@ sc.trivial = function (charname) {
             name = "Jarome";
             image = "jarome.png";
             break;
-        case "!tudor":
-            name = "Mr. Tudor";
-            image = "tudor.png";
-            break;
         case "!freddy":
             name = "Fat Freddy";
             image = "freddy.png";
@@ -2527,6 +2528,10 @@ sc.trivial = function (charname) {
         case "!crystal":
             name = "Crystal";
             image = "crystal.png";
+            break;
+        case "!judge":
+            name = "Reginald Esq. III";
+            image = "judge.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

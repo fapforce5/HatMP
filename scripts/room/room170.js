@@ -21,10 +21,10 @@ room170.main = function () {
     }
     else if (gv.get("sissySchoolClass") === "finalx") {
         nav.bg("170_stage/final_bg.webp");
-        if (g.gethourdecimal() < 5.5) {
+        if (g.gethourdecimal() < 17) {
             nav.button({
                 "type": "btn",
-                "name": "finalWander",
+                "name": "final_wander",
                 "left": 173,
                 "top": 0,
                 "width": 354,
@@ -33,13 +33,35 @@ room170.main = function () {
             }, 170);
 
             sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
-            sc.select("final_hallway", "170_stage/icon_catwalk.png", 3);
+            sc.select("final_wander", "170_stage/icon_sneak.webp", 3);
             sc.select("final_wait", "527_bathroom/icon_wait.png", 5);
         }
-        else {
-            sc.select("final_hallway", "170_stage/icon_catwalk.png", 1);
+        else if (g.gethourdecimal() < 18) {
+            sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
             sc.select("final_wait", "527_bathroom/icon_wait.png", 3);
         }
+        else {
+            //g.pass = {
+            //    event: 0,
+            //    score0: 0,
+            //    score1: 0,
+            //    score2: 0,
+            //    score3: 0
+            //    gavebj: false
+            //};
+            if (g.map.event === 0) {
+                g.map.event = 1;
+                nav.kill();
+                nav.bg("170_stage/fashion20.webp");
+                chat(45, 170);
+            }
+            else if (g.map.event === 1 || g.map.event === 2) {
+                sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
+                sc.select("wardrobe", "316_livingroom/icon_wardrobe.png", 3);
+                sc.select("final_show", "170_stage/icon_catwalk.png", 5);
+            }
+        }
+        return;
     }
     else {
         chat(0, 170);
@@ -65,6 +87,78 @@ room170.main = function () {
 
 room170.btnclick = function (name) {
     switch (name) {
+        case "final_show":
+            switch (g.map.event) {
+                case 0:
+                case 1:
+                    nav.kill();
+                    nav.bg("170_stage/fashion21" + g.map.ralph + ".webp");
+                    zcl.displayMain(200, 890, .037, "clothes", false);
+                    nav.button({
+                        "type": "btn",
+                        "name": "catwalk",
+                        "left": 811,
+                        "top": 110,
+                        "width": 334,
+                        "height": 432,
+                        "image": "170_stage/fashion21_o.webp"
+                    }, 170);
+                    chat(47, 170);
+                    break;
+                case 2:
+                    if (cl.hasoutfit("swimsuit") !== null) {
+                        chat(54, 170);
+                    }
+                    else {
+                        nav.kill();
+                        nav.bg("170_stage/stage.jpg");
+                        zcl.displayMain(250, 800, .09, "clothes", false);
+                        chat(55, 170);
+                    }
+                    break;
+            }
+
+            break;
+        case "final_wait":
+            char.settime(18, 0);
+            char.room(170);
+            break;
+        case "final_wander":
+            nav.kill();
+            nav.bg("170_stage/hallway.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "final_catwalk",
+                "left": 1143,
+                "top": 548,
+                "width": 101,
+                "height": 414,
+                "image": "170_stage/catwalkDoor.png"
+            }, 170);
+            nav.button({
+                "type": "btn",
+                "name": "final_dressing",
+                "left": 1361,
+                "top": 73,
+                "width": 175,
+                "height": 959,
+                "image": "170_stage/dressingRoomDoor.png"
+            }, 170);
+            break;
+        case "final_catwalk":
+            nav.kill();
+            nav.bg("170_stage/lightson.webp");
+            zcl.displayMain(400, 870, .05, "clothes", false);
+            chat(33, 170);
+            break;
+        case "final_dressing":
+            char.addtime(5);
+            char.room(170);
+            break;
+        case "final_makeup":
+            g.pass = 170;
+            char.room(27);
+            break;
         case "dressingRoom":
             nav.kill();
             var askForMakeup = false;
@@ -115,7 +209,6 @@ room170.btnclick = function (name) {
                     chat(15, 170);
                     break;
             }
-            
             break;
         default:
             break;
@@ -136,6 +229,20 @@ room170.chatcatch = function (callback) {
         case "ex317_105":
         case "bitch":
             nav.bg("170_stage/" + callback + ".jpg");
+            break;
+        case "fashion0":
+        case "fashion4":
+        case "fashion5":
+        case "fashion20":
+        case "fashion23":
+        case "fashion24":
+        case "fashion25":
+        case "fashion26":
+            nav.bg("170_stage/" + callback + ".webp");
+            break;
+        case "fashion22":
+            nav.kill();
+            nav.bg("170_stage/" + callback + ".webp");
             break;
         case "bitch1":
             nav.kill();
@@ -231,6 +338,81 @@ room170.chatcatch = function (callback) {
             sc.modSecret("jones", 100);
             levels.mod("fame", 200);
             sissy.passclass(true);
+            break;
+        case "final_dressingRoom":
+            char.settime(17, 30);
+            char.room(170);
+            break;
+        case "final_dressingRoom_good":
+            g.map.gavebj = true;
+            char.settime(17, 30);
+            char.room(170);
+            break;
+        case "fashion1":
+            nav.bg("170_stage/fashion1.webp");
+            zcl.displayMain(200, 550, .23, "clothes", true);
+            break;
+        case "fashion2":
+        case "fashion3":
+        case "fashion6":
+            nav.bg("170_stage/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "outfitSelect":
+            sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
+            sc.select("wardrobe", "316_livingroom/icon_wardrobe.png", 3);
+            sc.select("final_show", "170_stage/icon_catwalk.png", 5);
+            break;
+        case "fashion_event2":
+            g.map.event = 2;
+            char.addtime(30);
+            char.room(170);
+            break;
+        case "scorecard":
+            nav.kill();
+            nav.bg("170_stage/scorecardbg.webp");
+            var xcoord = [163, 572, 908, 1272, 1609];
+            for (let i = 0; i < xcoord.length; i++) {
+                nav.button({
+                    "type": "img",
+                    "name": "scorecard",
+                    "left": xcoord[i],
+                    "top": 737,
+                    "width": 176,
+                    "height": 226,
+                    "image": "170_stage/scorecard.webp"
+                }, 170);
+                nav.t({
+                    type: "zimg",
+                    name: "scorecard",
+                    left: xcoord[i] + 40,
+                    top: 760,
+                    font: 150,
+                    hex: "#000000",
+                    text: "9"
+                }, 1);
+            }
+            var scapp = cl.appearance();
+            var scfitness = levels.get("fitness").l;
+            var scstrength = levels.get("strength").l;
+            var baseScore;
+            switch (g.map.event) {
+                case 2:
+                    baseScore = ((scfitness > 10 ? 10 : scfitness) / 3)
+                        + ((scstrength > 10 ? 10 : scstrength) / 4) + ((scapp * 2) / 3);
+                    
+
+                    break;
+            }
+            var scoreSheets = [
+                Math.floor(baseScore + (g.map.gavebj ? 2 : 0)),
+                Math.floor(baseScore),
+                Math.floor(baseScore),
+                Math.floor(baseScore),
+                Math.floor(baseScore),
+            ];
+            break;
+        case "reset":
+            char.room(170);
             break;
         default:
             break;
@@ -798,6 +980,228 @@ room170.chat = function (chatID) {
                     "barrow some from this open kit... ",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "thinking",
+                text: "It's so open and bright in here. I wonder how many people are " +
+                    "to be here to judge us. I feel the butterflies in my stomach I'm " +
+                    "so very much more nervous now!",
+                button: [
+                    { chatID: 34, text: "...", callback: "fashion0" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "!man",
+                text: "Why hello there. A bit early aren't you? I don't believe this " +
+                    "show start for a number of hours still.",
+                button: [
+                    { chatID: 35, text: "Oh! hehehe. Yeah. I was just looking around. Do you work here?", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "me",
+                text: "Aaaaah. The curious mind. I do love a lady that is always looking for that little " +
+                    "more. I'm " + sc.n("!judge") + ", one of the judges for the show. Tell me are you one of the " +
+                    "contestants?",
+                button: [
+                    { chatID: 37, text: "[Walk closer to the mysterious man]", callback: "fashion1" },
+                    { chatID: 36, text: "Oh I am. I'm so excited to be here!", callback: "" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "!man",
+                text: "Well. Best of luck to you. I must be on my way. Don't want to " +
+                    "give you an early advantage! ",
+                button: [
+                    { chatID: -1, text: "Oh. Ok. bye. [Return to the dressing room]", callback: "final_dressingRoom" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "me",
+                text: "I am. Did you know you have a smudge on your " +
+                    "beautiful suit?",
+                button: [
+                    { chatID: 39, text: "[Lick up the stain]", callback: "fashion2" },
+                    { chatID: 38, text: "...", callback: "" },
+
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "!judge",
+                text: "How dreadful. I'll need to get this cleaned right away.  ",
+                button: [
+                    { chatID: -1, text: "Oh. Ok. bye. [Return to the dressing room]", callback: "final_dressingRoom" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "!judge",
+                text: "Oh! Well that's one way to remove a stain. hehehe",
+                button: [
+                    { chatID: 40, text: "You seem to have a stain on your neck too", callback: "fashion3" },
+
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "!judge",
+                text: "Oohhhh feisty little minx, aren't you. This needs to end here. My integrity as " +
+                    "a judge is too important. ",
+                button: [
+                    { chatID: 41, text: "[Suck his neck and run your fingers along his inner thigh]", callback: "fashion4" },
+
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "!judge",
+                text: "I do appreciate the attention, but this is wrong. I don't want to give " +
+                    "you any ideas of us dating. Plus my wife would be so angry if she saw this. ",
+                button: [
+                    { chatID: 42, text: "[Strock his cock outside his pants]", callback: "fashion5" },
+                    { chatID: -1, text: "Oh! sorry mister. [Return to the dressing room]", callback: "final_dressingRoom" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "me",
+                text: "I've been working so hard to win this beauty contest. You have " +
+                    "no idea how much I've put in and would do anything to win. ",
+                button: [
+                    { chatID: 43, text: "[Kneel before his cock]", callback: "fashion6" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "!judge",
+                text: "Oh. I do see you are a hard worker. mmmMmmmm. I do declare that " +
+                    "I can see you doing... yeah almost there ... very well in this " +
+                    "contest. ",
+                button: [
+                    { chatID: 44, text: "[Swallow his cum you dirty bitch]", callback: "fashion7" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "!judge",
+                text: "That was quite the suprise. I've heard about you sissies, but " +
+                    "hadn't met one in the wild 'til now. I must remain impartial in my " +
+                    "voting, but I'm sure you'll be amazing tonight. I must run along so " +
+                    "no one questions me. Best of luck tonight. ",
+                button: [
+                    { chatID: -1, text: "Awww thanks mister!", callback: "final_dressingRoom_good" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "martha",
+                text: "Right then, ladies! I trust you're all feeling quite prepared for this evening's delightful competition. We shall proceed with the opening number, followed immediately by your introductions. After a brief interlude for any necessary adjustments, we shall move on to the swimsuit presentation, where the judges will be observing your fitness. Following that, we have the talent showcase, a wonderful opportunity for you to display your chosen skills. Then, we shall admire your poise and grace in the evening gown segment. And finally, we will conclude with the on-stage questions, a chance for you to demonstrate your communication abilities under a touch of pressure. You'll have a few moments between each event to ensure you're looking your absolute best. Good luck to you all!",
+                button: [
+                    { chatID: 46, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "martha",
+                text: "For our opening presentation, I'd like each of you to choose the outfit you believe showcases you best for this occasion. Once you've made your selection, please do meet me in the hallway. I shall be waiting there for you all.",
+                button: [
+                    { chatID: -1, text: "...", callback: "outfitSelect" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "p",
+                text: "We have a very exciting evening for you all tonight! A chance to " +
+                    "celebrate these young ladies blossoming into womanhood! When they " +
+                    "started this journey they were all just frumpy boys with no direction " +
+                    "in life, but look at them now! Beautiful radiant women with so much " +
+                    "good to put into this world! Now let's introduce our judges. ",
+                button: [
+                    { chatID: 48, text: "...", callback: "fashion22" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "p",
+                text: "Our first judge is " + sc.n("!judge") + ", the world famous " +
+                    "pathfinder. He doesn't just visit places, he immerses himself in " +
+                    "them. With a well-worn passport and an open heart, he seeks out " +
+                    "authentic experiences and untold stories, bringing the world's " +
+                    "diverse beauty to life through his explorations. ",
+                button: [
+                    { chatID: 49, text: "...", callback: "fashion23" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "p",
+                text: "Our next judge is " + sc.n("!airwrecka") + ", " + (new Date().getFullYear() - 3) +
+                    "'s Miss Fetville. She went to win State and has been an a member of our community " +
+                    "helping future young ladies in their own pageant journey. ",
+                button: [
+                    { chatID: 50, text: "...", callback: "fashion24" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "p",
+                text: sc.n("tudor") + " our wonderful financier and a huge supporter " +
+                    "of the arts in Fetville. He's not only built multinational businesses, " +
+                    "but he's also built a community of love and understanding. ",
+                button: [
+                    { chatID: 51, text: "...", callback: "fashion25" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "p",
+                text: "Next is the legend " + sc.n("jones") + ". A man who not just knows " +
+                    "fashion, but has molded and shaped it. ",
+                button: [
+                    { chatID: 52, text: "...", callback: "fashion26" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "p",
+                text: "Finally, our own lovely " + sc.n("orchid") + ". Last years winner " +
+                    "of this compition and a rapidly growning flower of our town. She's going " +
+                    "to come up here and speak on the importance of finding yourself while our " +
+                    "ladies get ready for the swimsuit compition. ",
+                button: [
+                    { chatID: 53, text: "...", callback: "fashion20" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "martha",
+                text: "Ok ladies, get ready for the swimsuit compition. Once you've " +
+                    "adorned the proper attire meet me in the hallway. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion_event2" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "thinking",
+                text: "What am I doing? I need a swimsuit.  ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "p",
+                text: "Isn't she lovely and toned, let's see what the judges think. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "scorecard" },
                 ]
             },
         ];

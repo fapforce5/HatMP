@@ -1042,9 +1042,13 @@ hr{
     border:none;
 }
 
+#hideThisNoJavascript{
+    display:none;
+}
+
 @keyframes lolaSpin {
     0% { transform:rotate(0deg);}
-100% { transform:rotate(2160deg);}
+    100% { transform:rotate(2160deg);}
 }
 
 @keyframes tile-q {

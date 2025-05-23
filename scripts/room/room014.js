@@ -1908,7 +1908,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 74,
                 speaker: "landlord",
-                text: "That guy is alwasy texting me. Has a bit of a jealous streak in him. I " +
+                text: "That guy is always texting me. Has a bit of a jealous streak in him. I " +
                     "guess that happens when you catch your wife in bed with another man. Anyway. " +
                     "what were we talking about. ",
                 button: [
@@ -1963,7 +1963,7 @@ room14.chat = function (chatID) {
                 chatID: 80,
                 speaker: "thinking",
                 text: "Fucking " + sc.n("bigguy") + " always cock blocking me! And " + sc.n("landlord") +
-                    " keeps falling for it. If she stops me again I have I have to do something more " +
+                    " keeps falling for it. If she stops me again I have to do something more " +
                     "drastic. I know she wants me, I just have to push her into it.",
                 button: [
                     { chatID: -1, text: "...", callback: "task_6_end" },
@@ -2138,7 +2138,7 @@ room14.chat = function (chatID) {
                 chatID: 100,
                 speaker: "eva",
                 text: "Sorry to bother you so late, but I need advice, I'm totally freaking out. You see there's this guy " +
-                    "I like, Samual, and I would do anything to get him to like me back. But he's " +
+                    "I like, Samuel, and I would do anything to get him to like me back. But he's " +
                     "playing really hard to get. So he invited me over to his house the other night. " +
                     "Well, anyway he has's being all mean to me and I thought I needed to do something " +
                     "more so he likes me. Like you said, sometimes a girl's got to do what a girls got to do. ",
@@ -2157,9 +2157,9 @@ room14.chat = function (chatID) {
             {
                 chatID: 102,
                 speaker: "eva",
-                text: "You know I really like dogs, so he has this german shepard. And I was petting " +
-                    "him when he got this boner. Well on thing led to another and Samual talked me into " +
-                    "having sex with his dog. I thought Samual would like me the way he was talking, but " +
+                text: "You know I really like dogs, so he has this German shepherd. And I was petting " +
+                    "him when he got this boner. Well on thing led to another and Samuel talked me into " +
+                    "having sex with his dog. I thought Samuel would like me the way he was talking, but " +
                     "I got so lost in the sex that I let the dog cum in me! Now I'm worried that I'm " +
                     "pregnant from the dog and I don't know what to do! I don't want to have puppies. " +
                     "Everyone at school will laugh at me if I have puppies. They'll all know what I did! ",
@@ -2170,7 +2170,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 103,
                 speaker: "landlord",
-                text: "Oh my dear sweet " + sc.n("eva") + ". That' not how it works... ",
+                text: "Oh my dear sweet " + sc.n("eva") + ". That's not how it works... ",
                 button: [
                     { chatID: 104, text: "[Wait for them to finish talking]", callback: "task_8_5" },
                 ]

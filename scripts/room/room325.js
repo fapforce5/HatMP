@@ -370,7 +370,7 @@ room325.chat = function (chatID) {
                 "lasting. My first hucow took it 3 years ago and she's still producing some of the finest quality milk. Just " +
                 "don't go too long without a milking or you'll wake up squirting milk all over. ",
             button: [
-                { chatID: 18, text: "But I don't to squirt milk.", callback: "" }
+                { chatID: 18, text: "But I don't want to squirt milk.", callback: "" }
             ]
         },
         {

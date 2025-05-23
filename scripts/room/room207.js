@@ -34,12 +34,24 @@ room207.main = function () {
         "night": "207_door/door_outside_night.png"
     }, 207);
     nav.buildnav([203, 0]);
+    if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
+        sc.select("door_pink", "207_door/icon_fashion.webp", 0)
+    }
 };
 
 room207.btnclick = function (name) {
     switch (name) {
         case "door_pink":
-            if (gv.get("pinkroomopen")) {
+            if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
+                if (g.gethourdecimal() > 18)
+                    chat(3, 207);
+                else if (g.gethourdecimal() > 16)
+                    chat(4, 207);
+                else
+                    chat(5, 207);
+                return;
+            }
+            else if (gv.get("pinkroomopen")) {
                 char.room(213);
                 return;
             }
@@ -60,6 +72,18 @@ room207.chatcatch = function (callback) {
     switch (callback) {
         case "enterRed":
             break;
+        case "fashionShow":
+            g.map = {
+                event: 0,
+                ralph: missy.cases[7].complete && !missy.cases[7].success ? "_n" : "",
+                score0: 0,
+                score1: 0,
+                score2: 0,
+                score3: 0,
+                gavebj: false
+            };
+            char.room(170);
+            break;
         default:
             break;
     }
@@ -77,7 +101,7 @@ room207.chat = function (chatID) {
         },
         {
             chatID: 1,
-            speaker: g.isNight() ? "!missyguardday" : "!missyguardnight",
+            speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
             text: "Only the finest people and dirtiest whores are allowed in here; you are neither.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -85,10 +109,37 @@ room207.chat = function (chatID) {
         },
         {
             chatID: 2,
-            speaker: g.isNight() ? "!missyguardday" : "!missyguardnight",
+            speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
             text: sissy.st[17].ach ? "Schools only open on Tuesdays and Thursdays after you've worked for Missy." : "You have to be a student to enter the class. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
+            text: "You're late. The show's almost over. Better luck being on time " +
+                "next time. ",
+            button: [
+                { chatID: -1, text: "Drat!!!", callback: "" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
+            text: "Just in time for the fashion show. Head on in and get ready. ",
+            button: [
+                { chatID: -1, text: "Ok!", callback: "fashionShow" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
+            text: "You're a bit early. Show starts at " + char.friendlyTime(18) +
+                " Did you want to go in and wait, or come back?",
+            button: [
+                { chatID: -1, text: "I'll go in early. ", callback: "fashionShow" },
+                { chatID: -1, text: "I'll come back ", callback: "" },
             ]
         },
     ];

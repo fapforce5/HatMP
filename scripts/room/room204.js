@@ -324,7 +324,7 @@ room204.chat = function (chatID) {
             {
                 chatID: 2,
                 speaker: "missy",
-                text: "The last picture, Samual, is one of my favorite cases. His wife thought he " +
+                text: "The last picture, Samuel, is one of my favorite cases. His wife thought he " +
                     "was back on drugs because he would come home late smelling " +
                     "like piss all the time. Since he was so fat she never dreamed he would cheat on her. " +
                     "His wife let me on their computer where I found hundreds of videos with him getting " +
@@ -377,8 +377,8 @@ room204.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "missy",
-                text: "No dummy, that's Samual Shepard the piss bag. You need to click on " +
-                    "Allen since his name is alphabetically before Samual. ",
+                text: "No dummy, that's Samuel Shepard the piss bag. You need to click on " +
+                    "Allen since his name is alphabetically before Samuel. ",
                 button: [
                     { chatID: -1, text: "Try again.", callback: "mhate" }
                 ]
@@ -398,7 +398,7 @@ room204.chat = function (chatID) {
                     "the right one you picked the wrong one! " +
                     "I can't tell if you're as big of an airhead as " + sc.n('cecilia') +
                     ", or you just don't pay attention. The alphabet goes o, p, q, r, s, t... " +
-                    "so Ralph comes before Samual the piss sucker. Select the picture with Ralph. ",
+                    "so Ralph comes before Samuel the piss sucker. Select the picture with Ralph. ",
                 button: [
                     { chatID: -1, text: "Try Again", callback: "mhate" }
                 ]
@@ -424,7 +424,7 @@ room204.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "missy",
-                text: "Samual now has a red border and is darker, that means you picked the wrong one. " +
+                text: "Samuel now has a red border and is darker, that means you picked the wrong one. " +
                     "Finally since I can't have you filing " +
                     "all day you'll be timed. in the top center there's a black box that states: " +
                     "'Seconds left: 30', that's how much " +

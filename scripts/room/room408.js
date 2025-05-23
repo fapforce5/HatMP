@@ -446,7 +446,7 @@ room408.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "thinking",
-            text: "I don't know her that well. I need a way to get the converstaion started. ",
+            text: "I don't know her that well. I need a way to get the conversation started. ",
             button: [
                 { chatID: 9, text: "So, I've heard you attend C.U.M. I was wondering about attending myself. ", callback: "" },
             ]
