@@ -10,6 +10,7 @@ var t = {}; //remove this
 var trophy = {};
 var future = {};
 var dreams = {};
+var confession = {};
 gv.difficulty = 0;
 
 sex.st = new Array();
@@ -51,6 +52,7 @@ gv.init = function () {
 
         //character
         { n: "map", t: 1, q: "int" },
+        { n: "mapopen", t: false, q: "bool" },
         { n: "bladder", t: 0, q: "bladder" },
         { n: "cum", t: g.startDate, q: "date" },
         { n: "chastityCounter", t: 0, q: "zero" },
@@ -114,10 +116,7 @@ gv.init = function () {
         //missy
         { n: "chastity", t: null, q: "date" },
         { n: "castitycage", t: null, q: "string" },
-        { n: "chastityforever", t: null, q: "string" },
-
-        //church
-        { n: "confession", t: "", q: "string" },
+        { n: "chastityOverride", t: null, q: "string" },
 
         //analfill
         { n: "analCum", t: 0, q: "int" },
@@ -142,6 +141,15 @@ gv.init = function () {
         { n: "makeupx", t: "n", q: "string" },
 
         { n: "cultcabin", t: 0, q: "int" },
+
+        { n: "sissyfinal_brayden", t: false, q: "bool" },
+        { n: "sissyfinal_stripper", t: false, q: "bool" },
+        { n: "sissyfinal_pageant", t: null, q: "bool" },
+        { n: "sissyfinal_cumcounter", t: 0, q: "int" },
+
+        //jail
+        { n: "jail", t: 0, q: "int" },
+
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -267,7 +275,7 @@ gv.init = function () {
     //    { n: "raven", t: false },
 
     //    { n: "constructionPay", t: false },
-    //    { n: "treasureAzrael", t: false }, 
+    //    { n: "treasureAzrael", t: false },
     //    { n: "wolfsniff", t: false },
     //    { n: "parkNight", t: false },
 
@@ -279,6 +287,7 @@ gv.init = function () {
 
     //    { n: "janiceWebcam", t: false },
     //    { n: "stripper", t: false }
+    // evaTalkSecret
     //];
 
     weekly.st = [
@@ -317,65 +326,65 @@ gv.init = function () {
     ];
 
     sex.st = [
-        { id: 0, type: "anal", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 1, type: "anal", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 2, type: "anal", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 3, type: "anal", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 0, type: "anal", give: true, gender: "m", c: 0, sin: 8 },
+        { id: 1, type: "anal", give: true, gender: "f", c: 0, sin: 8 },
+        { id: 2, type: "anal", give: false, gender: "m", c: 0, sin: 8 },
+        { id: 3, type: "anal", give: false, gender: "f", c: 0, sin: 8 },
 
-        { id: 4, type: "oral", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 5, type: "oral", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 6, type: "oral", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 7, type: "oral", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 4, type: "oral", give: true, gender: "m", c: 0, sin: 1 },
+        { id: 5, type: "oral", give: true, gender: "f", c: 0, sin: 1 },
+        { id: 6, type: "oral", give: false, gender: "m", c: 0, sin: 1 },
+        { id: 7, type: "oral", give: false, gender: "f", c: 0, sin: 1 },
 
         { id: 8, type: "hand", give: true, gender: "m", c: 0, sin: 0 },
         { id: 9, type: "hand", give: true, gender: "f", c: 0, sin: 0 },
         { id: 10, type: "hand", give: false, gender: "m", c: 0, sin: 0 },
         { id: 11, type: "hand", give: false, gender: "f", c: 0, sin: 0 },
 
-        { id: 12, type: "fist", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 13, type: "fist", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 14, type: "fist", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 15, type: "fist", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 12, type: "fist", give: true, gender: "m", c: 0, sin: 7 },
+        { id: 13, type: "fist", give: true, gender: "f", c: 0, sin: 7 },
+        { id: 14, type: "fist", give: false, gender: "m", c: 0, sin: 7 },
+        { id: 15, type: "fist", give: false, gender: "f", c: 0, sin: 7 },
 
-        { id: 16, type: "foot", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 17, type: "foot", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 18, type: "foot", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 19, type: "foot", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 16, type: "foot", give: true, gender: "m", c: 0, sin: 4 },
+        { id: 17, type: "foot", give: true, gender: "f", c: 0, sin: 4 },
+        { id: 18, type: "foot", give: false, gender: "m", c: 0, sin: 4 },
+        { id: 19, type: "foot", give: false, gender: "f", c: 0, sin: 4 },
 
-        { id: 20, type: "footworship", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 21, type: "footworship", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 22, type: "footworship", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 23, type: "footworship", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 20, type: "footworship", give: true, gender: "m", c: 0, sin: -1 },
+        { id: 21, type: "footworship", give: true, gender: "f", c: 0, sin: -1 },
+        { id: 22, type: "footworship", give: false, gender: "m", c: 0, sin: -1 },
+        { id: 23, type: "footworship", give: false, gender: "f", c: 0, sin: -1 },
 
-        { id: 24, type: "pussy", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 25, type: "pussy", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 26, type: "pussy", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 27, type: "pussy", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 24, type: "pussy", give: true, gender: "m", c: 0, sin: 3 },
+        { id: 25, type: "pussy", give: true, gender: "f", c: 0, sin: 3 },
+        { id: 26, type: "pussy", give: false, gender: "m", c: 0, sin: 3 },
+        { id: 27, type: "pussy", give: false, gender: "f", c: 0, sin: 3 },
 
-        { id: 28, type: "piss", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 29, type: "piss", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 30, type: "piss", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 31, type: "piss", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 28, type: "piss", give: true, gender: "m", c: 0, sin: 5 },
+        { id: 29, type: "piss", give: true, gender: "f", c: 0, sin: 5 },
+        { id: 30, type: "piss", give: false, gender: "m", c: 0, sin: 5 },
+        { id: 31, type: "piss", give: false, gender: "f", c: 0, sin: 5 },
 
-        { id: 32, type: "drankpiss", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 33, type: "drankpiss", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 34, type: "drankpiss", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 35, type: "drankpiss", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 32, type: "drankpiss", give: true, gender: "m", c: 0, sin: 6 },
+        { id: 33, type: "drankpiss", give: true, gender: "f", c: 0, sin: 6 },
+        { id: 34, type: "drankpiss", give: false, gender: "m", c: 0, sin: 6 },
+        { id: 35, type: "drankpiss", give: false, gender: "f", c: 0, sin: 6 },
 
-        { id: 36, type: "spit", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 37, type: "spit", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 38, type: "spit", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 39, type: "spit", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 36, type: "spit", give: true, gender: "m", c: 0, sin: -1 },
+        { id: 37, type: "spit", give: true, gender: "f", c: 0, sin: -1 },
+        { id: 38, type: "spit", give: false, gender: "m", c: 0, sin: -1 },
+        { id: 39, type: "spit", give: false, gender: "f", c: 0, sin: -1 },
 
-        { id: 40, type: "boob", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 41, type: "boob", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 42, type: "boob", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 43, type: "boob", give: false, gender: "f", c: 0, sin: 0 },
+        { id: 40, type: "boob", give: true, gender: "m", c: 0, sin: 2 },
+        { id: 41, type: "boob", give: true, gender: "f", c: 0, sin: 2 },
+        { id: 42, type: "boob", give: false, gender: "m", c: 0, sin: 2 },
+        { id: 43, type: "boob", give: false, gender: "f", c: 0, sin: 2 },
 
-        { id: 44, type: "beast", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 45, type: "beast", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 46, type: "beast", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 47, type: "beast", give: false, gender: "f", c: 0, sin: 0 }
+        { id: 44, type: "beast", give: true, gender: "m", c: 0, sin: 9 },
+        { id: 45, type: "beast", give: true, gender: "f", c: 0, sin: 9 },
+        { id: 46, type: "beast", give: false, gender: "m", c: 0, sin: 9 },
+        { id: 47, type: "beast", give: false, gender: "f", c: 0, sin: 9 }
     ];
 
     sissy.st = [
@@ -532,6 +541,23 @@ gv.init = function () {
     future.st = new Array();
 
     dreams.st = new Array();
+
+    confession.st = [
+        { id: 0, icon: "icon_masturbate", n: null, ach: false, c: false },
+        { id: 1, icon: "icon_peek", n: null, ach: false, c: false },
+        { id: 2, icon: "icon_job", n: null, ach: false, c: false },
+        { id: 3, icon: "icon_finger", n: null, ach: false, c: false },
+        { id: 4, icon: "icon_dildo", n: null, ach: false, c: false },
+        { id: 5, icon: "icon_dildosuck", n: null, ach: false, c: false },
+        { id: 6, icon: "icon_penis", n: null, ach: false, c: false },
+        { id: 7, icon: "icon_sissyschool", n: null, ach: false, c: false },
+        { id: 8, icon: "icon_oral_f", n: null, ach: false, c: false },
+        { id: 9, icon: "icon_oral_m", n: null, ach: false, c: false },
+        { id: 10, icon: "icon_anal", n: null, ach: false, c: false },
+        { id: 11, icon: "icon_beast", n: null, ach: false, c: false },
+
+        
+    ];
 };
 
 gv.init();
@@ -731,6 +757,24 @@ levels.set = function (name, c, l) {
     sstat.makeGraph();
 };
 
+levels.modLevel = function (name, amount) {
+    let i = levels.i(name);
+    let startLevel = levels.st[i].l;
+    levels.st[i].l += amount;
+    
+    if (levels.st[i].l < 0) {
+        levels.st[i].l = 0;
+        levels.st[i].c = 0;
+    }
+
+    let levelsChange = levels.st[i].l - startLevel;
+
+    if (levelsChange < 0)
+        g.popUpNotice("You lost " + Math.abs(levelsChange) + " LEVEL" + (levelsChange === -1 ? "" : "S") + " for " + levels.st[i].d + "!");
+    else if (levelsChange > 0)
+        g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+};
+
 levels.mod = function (name, amount, targetLevel = 999) {
     let i, startingLevel;
     
@@ -749,11 +793,11 @@ levels.mod = function (name, amount, targetLevel = 999) {
             levels.st[i].c = 100;
         if (amount > 0) {
             if (levels.st[i].l > 15)
-                g.popUpNotice("You're maxed out for " + levels.st[i].d);
+                g.popUpNoticeBottom("You're maxed out for " + levels.st[i].d);
             else if(amount > 0)
-                g.popUpNotice("You gained "  + amount + " points for " + levels.st[i].d + "!");
+                g.popUpNoticeBottom("You gained "  + amount + " points for " + levels.st[i].d + "!");
             else
-                g.popUpNotice("You lost " + Math.abs(amount) + " points for " + levels.st[i].d + "!");
+                g.popUpNoticeBottom("You lost " + Math.abs(amount) + " points for " + levels.st[i].d + "!");
         }
     }
     else if (amount > 0) {
@@ -766,9 +810,9 @@ levels.mod = function (name, amount, targetLevel = 999) {
             let levelsChange = levels.st[i].l - startingLevel;
            
             if (levelsChange > 0)
-                g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+                g.popUpNoticeBottom("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
             else
-                g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+                g.popUpNoticeBottom("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
         }
         else if (levels.st[i].autoLevel) {
             levels.st[i].c += amount;
@@ -778,9 +822,9 @@ levels.mod = function (name, amount, targetLevel = 999) {
             }
             let levelsChange = levels.st[i].l - startingLevel;
             if (levelsChange > 0)
-                g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+                g.popUpNoticeBottom("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
             else
-                g.popUpNotice("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+                g.popUpNoticeBottom("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
         }
     }
     else if (amount < 0) {
@@ -791,7 +835,7 @@ levels.mod = function (name, amount, targetLevel = 999) {
         levels.st[i].c -= amount;
         if (levels.st[i].c < 0)
             levels.st[i].c = 0;
-        g.popUpNotice(levels.st[i].d + " points have decreased. ");
+        g.popUpNoticeBottom(levels.st[i].d + " points have decreased. ");
     }
 
     if (name === "fitness") {
@@ -873,22 +917,10 @@ levels.desc = function (name, level) {
     else if (name === "charisma") {
         return { count: -1, txt: "" };
     }
-    //if (name === "defense") {
-    //    return { count: -1, txt: (level * 5) + " Defense" };
-    //}
-    //if (name === "int") {
-    //    return { count: -1, txt: "+" + level + " Lock pick and Pick Pocket" };
-    //}
-    //if (name === "charisma") {
-    //    return { count: -1, txt: "Level: " + level };
-    //}
-    //if (name === "fame") {
-    //    return { count: -1, txt: "+" + level + " Random Encounters" };
-    //}
-    //if (name === "strength") {
-    //    return { count: -1, txt: "Level: " + level };
-    //}
+    
     if (name === "xdress") {
+        if (!sissy.st[0].ach)
+            return { count: -1, txt: "Unlock Sissy School" };
         return { count: -1, txt: "Points: " + level };
     }
     var levelsDesc = new Array();
@@ -1048,9 +1080,9 @@ levels.handGive = function (gender) {
     levels.mod("xdress", 15);
 }
 
-levels.oralGive = function (size, swallow, isDildo, gender = null, beast = null) {
+levels.oral = function (size, swallow, isDildo, gender = null, beast = null, who = null) {
     //levels.mod("oral", 25, 999);
-    levels.oral(size);
+    levels.oralGive(size);
     gv.mod("arousal", 15);
     if (swallow === null) {
         //noop
@@ -1065,6 +1097,10 @@ levels.oralGive = function (size, swallow, isDildo, gender = null, beast = null)
 
     if (gender !== null) {
         sex.mod("oral", true, gender, 1);
+        if (gender === "m")
+            sc.startMissionTask("priest", "confession", 10);
+        else if(gender === "f")
+            sc.startMissionTask("priest", "confession", 9);
     }
     if (beast !== null) {
         levels.mod("beast", 25);
@@ -1076,7 +1112,7 @@ levels.getBlowJob = function (who, gender) {
     sex.mod("oral", false, gender, 1);
 };
 
-levels.anal = function (size, sissygasm = false, gender = null, creampie = false, beast = null) {
+levels.anal = function (size, sissygasm = false, gender = null, creampie = false, beast = null, who = null) {
     //0: 1 finger
     //1: tiny (finger)
     //2: small
@@ -1142,9 +1178,12 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
             case "pig": gv.mod("analCumPig", 1); break;
             case "plant": gv.mod("analCumPlant", 1); break;
         }
+        sc.startMissionTask("priest", "confession", 12);
     }
     else if (gender !== null && beast === null) {
         sex.mod("anal", false, gender, 1);
+        if (gender === "m")
+            sc.startMissionTask("priest", "confession", 11);
     }
 };
 
@@ -1166,7 +1205,7 @@ levels.cum = function (howMuch = 1, beastType = null  ) {
     stats.mod("cum", "swallow", 1);
 };
 
-levels.oral = function (size) {
+levels.oralGive = function (size) {
     if (levels.get("oral").l > 3) {
         switch (size) {
             case 0: levels.mod("oral", 1); break;
@@ -1188,6 +1227,26 @@ levels.oral = function (size) {
             case "brutal": levels.mod("oral", 40); break;
             case "broken": levels.mod("oral", 100); break;
         };
+    }
+};
+
+sex.masturbate = function (t = null) {
+    switch (t) {
+        case "penis":
+        case null:
+            sc.startMissionTask("priest", "confession", 1);
+            stats.mod("masturbate", "dick", 1);
+            cl.doCum(false);
+            break;
+        case "finger":
+            sc.startMissionTask("priest", "confession", 4);
+            break;
+        case "anal":
+            sc.startMissionTask("priest", "confession", 5);
+            break;
+        case "oral":
+            sc.startMissionTask("priest", "confession", 6);
+            break;
     }
 };
 
@@ -1559,6 +1618,7 @@ levels.fuckpussy = function (who) {
         gv.set("virginDick", who);
         //dreams.add("virginDick_" + who);
         g.popUpNotice("You lost your virginity");
+        sc.startMissionTask("priest", "confession", 7);
     }
 };
 
@@ -1584,8 +1644,6 @@ levels.beer = function (numBeers = 1) {
 
     return { totalBeers: totalBeers, beerLevel: beerLevel, passout: false, nextOneDrunk: (beerLevel - totalBeers === 1) };
 };
-
-
 
 sex.getFuck = function () {
     var tempFuck = {
@@ -1729,6 +1787,24 @@ gv.timeTxt = function (hour, minute) {
         return hour + ":" + (minute < 10 ? ("0" + minute.toString()) : minute)
 };
 
+qdress.stx = new Array();
+
+qdress.getPoints = function (i, points, hormones) {
+    console.log(qdress.st[i].name);
+    if (!qdress.st[i].ach) {
+        qdress.stx.push(qdress.st[i]);
+        return;
+    }
+
+    for (let j = 0; j < qdress.st.length; j++) {
+        if (qdress.st[j].pId === i) {
+            if (qdress.st[j].p <= points && ((qdress.st[j].h && hormones) || !qdress.st[j].h)) {
+                qdress.getPoints(j, points, hormones);
+            }
+        }
+    }
+};
+
 gv.save = function () {
     var i;
     var retArray = {
@@ -1765,7 +1841,7 @@ gv.save = function () {
     }
     //save by index
     for (i = 0; i < sex.st.length; i++) {
-        retArray.sex.push({ c: sex.st[i].c, sin: sex.st[i].sin });
+        retArray.sex.push({ c: sex.st[i].c });
     }
     
     //save by index
@@ -1842,7 +1918,6 @@ gv.load = function (rma) {
     
     for (i = 0; i < rma.sex.length; i++) {
         sex.st[i].c = rma.sex[i].c;
-        sex.st[i].sin = rma.sex[i].sin;
     }
 
     for (i = 0; i < rma.sissy.length; i++) {

@@ -134,6 +134,10 @@ $(document).ready(function () {
         $(".resize-height").css({
             height: 12 * g.ratio + "px"
         });
+        $("#room_chatskip").css({
+            "height": (54 * g.ratio) + "px",
+            "width": (72 * g.ratio) + "px"
+        });
         $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
         $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
         $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
@@ -561,6 +565,21 @@ char.room = function (roomID) {
         $('#room_footer').show();
     if ($('#room-menuButtons').is(":visible"))
         inv.close();
+    let ignoreShoeRooms = [8, 28];
+    if (g.prevRoom !== roomID && !ignoreShoeRooms.includes(roomID)) {
+        let shoedaring = cl.getEntry("shoes", cl.c.shoes).daring;
+        let shoeLevel = Math.round(levels.get("heels").l / 2);
+        if (shoedaring > 1 && shoeLevel < 8) {
+            if (shoeLevel < shoedaring) {
+                let energyLoss = (shoeLevel - shoedaring) * 3;
+                if (gv.get("energy") > 0) {
+                    gv.mod("energy", energyLoss);
+                    g.popUpNoticeBottom("The heels hurt your feet");
+                }
+            }
+            levels.mod("heels", shoedaring * 3);
+        }
+    }
     g.prevRoom = g.roomID;
     g.internal = null;
 
@@ -1063,6 +1082,7 @@ menu.makeSaves = function () {
 
     g.saveState = {
         savename: "",
+        saveDt: new Date(),
         version: g.version,
         pass: g.pass,
         internal: g.internal,

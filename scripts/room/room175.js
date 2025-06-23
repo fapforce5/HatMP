@@ -91,11 +91,11 @@ room175.chatcatch = function (callback) {
             break;
         case "anal15":
             nav.bg("175_anal/" + callback + ".jpg");
-            levels.anal(2, false, "f");
+            levels.anal(2, false, "f", false, null, "p");
             break;
         case "anal101":
             nav.bg("175_anal/" + callback + ".jpg");
-            levels.anal(2, false, "f");
+            levels.anal(2, false, "f", false, null, "p");
             break;
         case "anal104":
             if (levels.analTake(3).c < 3) {
@@ -117,7 +117,7 @@ room175.chatcatch = function (callback) {
             }
             break;
         case "anal105":
-            levels.anal(3, false, "f");
+            levels.anal(3, false, "f", false, null, "p");
             nav.bg("175_anal/endclass.jpg");
             break;
         case "endclassEnd":
@@ -142,7 +142,7 @@ room175.chatcatch = function (callback) {
             sissy.passclass(true);
             break;
         case "anal212_end":
-            levels.anal(4, false, "m", true, null);
+            levels.anal(4, false, "m", true, null, "unk");
             sissy.passclass(true);
             break;
         case "anal421_3":

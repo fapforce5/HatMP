@@ -19,6 +19,8 @@ room196.chatcatch = function (callback) {
             g.internal = "";
             var counter = 0;
             var weeklyPay = missy.get("weeklyPay");
+
+            gv.set("missyWeekly", null);
             for (var i = 0; i < missy.jobs.length; i++) {
                 if (missy.st[missy.jobs[i].thisWeek].c > 0) {
                     counter++;

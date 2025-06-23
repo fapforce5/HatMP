@@ -6,7 +6,7 @@ room197.main = function () {
     var sublist = [
         { n: "rubfeet", chatid: 0 },
         { n: "rubfeet", chatid: 0 },
-        { n: "kissfeet", chatid: 0 },
+        { n: "kissfeet", chatid: 5},
         { n: "kissfeet", chatid: 5 },
         { n: "lickfeet", chatid: 8 },
         { n: "legworship", chatid: 11 },
@@ -15,20 +15,23 @@ room197.main = function () {
         { n: "anal", chatid: 28 },
     ];
 
-    if (lastEvent < sub && lastEvent < 7) {
+    if (lastEvent < 8) {
         lastEvent++;
         missy.mod("subCounter197", lastEvent);
         selected = sublist[lastEvent];
+        if (selected.n === "anal")
+            nav.bg("197_sub/anal0.jpg");
+        chat(selected.chatid, 197);
     }
     else {
+        switch (g.rand(0, 4)) {
+            case 0: nav.bg("197_sub/anal0.jpg"); chat(28, 197); break;
+            case 1: chat(34, 197); break;
+            case 2: chat(39, 197); break;
+            default: chat(44, 197); break;
+        }
         selected = sublist[g.rand(0, sublist.length)];
     }
-
-    if (selected.n === "anal")
-        nav.bg("197_sub/anal0.jpg");
-    chat(selected.chatid, 197);
-
-    
 };
 
 room197.btnclick = function (name) {
@@ -89,7 +92,7 @@ room197.btnclick = function (name) {
             
             nav.bg("197_sub/bj" + g.internal + "_" + gender.pronoun("f") + ".jpg");
             if (g.internal === 8) {
-                levels.oralGive(5, false, true, null);
+                levels.oral(5, false, true, null, null);
                 nav.killall();
                 chat(22, 197);
             }
@@ -110,7 +113,7 @@ room197.btnclick = function (name) {
         case "eatassbtn7":
             nav.killall();
             nav.bg("197_sub/eatass8.jpg");
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", "missy");
             chat(27, 197);
             break;
         case "anal3":
@@ -135,7 +138,7 @@ room197.btnclick = function (name) {
                 "height": 172,
                 "image": "197_sub/anal5.png"
             }, 197);
-            levels.anal(6, true, "f", false, null);
+            levels.anal(6, true, "f", false, null, "missy");
             chat(31, 197);
             break;
         case "anal6":
@@ -170,6 +173,9 @@ room197.chatcatch = function (callback) {
             cl.nude();
             nav.bg("197_sub/" + callback + ".jpg");
             break;
+        case "cleanfoot1":
+            nav.bg("197_sub/" + callback + ".webp");
+            break;
         case "eatass3":
             nav.bg("197_sub/" + callback + "_" + gender.pronoun("f") + ".jpg");
             g.internal = 4;
@@ -192,7 +198,8 @@ room197.chatcatch = function (callback) {
             nav.next("anal3");
             break;
         case "anal7":
-            nav.bg("206_questions/sideEmpty.jpg");
+            cl.undo();
+            nav.bg("203_entrance/203_enter.jpg");
             break;
         case "bj4":
             nav.bg("197_sub/" + callback + "_" + gender.pronoun("f") + ".jpg");
@@ -271,16 +278,60 @@ room197.chatcatch = function (callback) {
             levels.mod("sub", 5, 5);
             break;
         case "oralup":
-            levels.mod("oral", 15, 999);
+            levels.oral(4, false, false, "f", null, "missy");
             break;
         case "analup":
-            levels.mod("anal", 15, 999);
+            levels.anal(4, false, "f", false, null, "missy");
             break;
         case "complete":
-            levels.mod("sub", 40, 999); //UPDATE THIS WITH NEW EVENTS
+            levels.mod("sub", 40);
             missy.mod("mood", 30);
-            char.settime(17, 5);
-            char.room(203);
+            if (g.pass === "morning") {
+                g.pass = null;
+                char.settime(11, 30);
+                char.room(224);
+            }
+            else {
+                char.settime(17, 5);
+                char.room(203);
+            }
+            break;
+        case "pp0":
+        case "pp1":
+        case "pp2":
+            nav.kill();
+            var pp0 = cl.c.shirt = "s" ? "m" : "f";
+            nav.bg("197_sub/" + callback + "_" + pp0 + ".webp");
+            if (callback === "pp2") {
+                sex.piss(true, false, false, "f");
+            }
+            break;
+        case "desk":
+            nav.bg("200_frontOffice/bg.jpg");
+            break;
+        case "two":
+            nav.kill();
+            nav.bg("197_sub/bg1.webp");
+            zcl.displayMain(50, 900, .21, "clothes", true);
+            break;
+        case "two_kneel":
+            nav.kill();
+            nav.bg("197_sub/two_kneel.webp");
+            break;
+        case "lick":
+        case "lick1":
+            nav.kill();
+            nav.bg("197_sub/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "back":
+            nav.kill();
+            missy.mod("mood", 30);
+            nav.bg("197_sub/back.webp");
+            break;
+        case "cleanfoot":
+            nav.kill();
+            var bgg = cl.c.shirt === "r" ? "f" : "m"; 
+            nav.bg("197_sub/cleanfoot_" + bgg + ".webp");
             break;
         default:
             break;
@@ -596,6 +647,127 @@ room197.chat = function (chatID) {
                 "a slutty girl!",
             button: [
                 { chatID: -1, text: "...", callback: "complete" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "missy",
+            text: "Oh good, you're here. Look. I haven't had time to piss and I have a very important call coming " +
+                "in now. Get over here and open your mouth. Don't spill a drop!",
+            button: [
+                { chatID: 35, text: "Yes ma'am", callback: "pp0" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "thinking",
+            text: "What the hell, am I just a toilet now? I'm not even a human to her, just a portable toilet. At leaste " +
+                "I get to put my mouth on her pussy. She does have a smooth pussy.",
+            button: [
+                { chatID: 36, text: "Yes ma'am", callback: "pp1" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "thinking",
+            text: "She really gushes and it's so warm. ",
+            button: [
+                { chatID: 37, text: "Yes ma'am", callback: "pp2" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "me",
+            text: "*GULP* ",
+            button: [
+                { chatID: 38, text: "...", callback: "desk" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "missy",
+            text: "shoo shoo. I've got to finish this.",
+            button: [
+                { chatID: -1, text: "...", callback: "complete" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "missy",
+            text: sc.n("cecilia") + " get in here! ",
+            button: [
+                { chatID: 40, text: "...", callback: "two" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "missy",
+            text: "I'm stressed and need a break. You two eat my holes!",
+            button: [
+                { chatID: 41, text: "Yes ma'am!", callback: "lick" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "missy",
+            text: "That's my good little girls. You are both such excellent oral sluts. Almost there, just keep " +
+                "licking mommy",
+            button: [
+                { chatID: 42, text: "Yes ma'am!", callback: "lick1" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "cecilia",
+            text: "*sluurrrppp* *lick* mmmmMmm ",
+            button: [
+                { chatID: 43, text: "Yes ma'am!", callback: "back" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "missy",
+            text: "Good girl. Now I have work to do and so do you two. Get to it.",
+            button: [
+                { chatID: -1, text: "Yes ma'am!", callback: "complete" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "missy",
+            text: sc.n("cecilia") + " get in here!",
+            button: [
+                { chatID: 45, text: "...", callback: "two" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "missy",
+            text: "I stepped in something sticky on my floor. This is unaccptable! " +
+                sc.n("cecilia") + " become a chair, " + sc.n("me") + " clean this nasty " +
+                "sticky gunk off me feet. Now!",
+            button: [
+                { chatID: 46, text: "Yes ma'am!", callback: "cleanfoot" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "missy",
+            text: "You two nasties need to stop using my office like a frat house! " +
+                "You're both lucky that I don't know which of you left some strange " +
+                "man's cum on my floor, but you need to get fucked at your own homes! ",
+            button: [
+                { chatID: 47, text: "MMmfmmfmmfm", callback: "cleanfoot1" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "cecilia",
+            text: "Thanks for not ratting me out! " + sc.n("chad") + " stopped by this morning and " +
+                "I can't help but say yes every time he pulls his dick out! I guess " +
+                "some of his cum leaked out again. ",
+            button: [
+                { chatID: -1, text: "No worries. I totally get it", callback: "complete" },
             ]
         },
     ];

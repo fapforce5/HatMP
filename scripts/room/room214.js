@@ -118,7 +118,7 @@ room214.chatcatch = function (callback) {
         case "gmEnd":
             gv.mod("energy", -33);
             levels.mod("fame", 10, 999);
-            levels.oralGive(3, true, false, "m");
+            levels.oral(3, true, false, "m", null, "unk");
             gv.mod("pink", 1);
             char.addtime(37);
             char.room(214);
@@ -140,7 +140,7 @@ room214.chatcatch = function (callback) {
             levels.mod("fame", 20, 999);
             levels.mod("xdress", 40, 999);
             gv.mod("pink", 1);
-            levels.anal(3, true, "m", true);
+            levels.anal(3, true, "m", true, null, "unk");
             gv.mod("energy", -33);
             char.addtime(37);
             char.room(214);

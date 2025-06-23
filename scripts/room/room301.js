@@ -294,7 +294,7 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/" + callback + ".jpg");
             break;
         case "gf_5_7":
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "evny");
             nav.bg("301_living/" + callback + ".jpg");
             break;
         case "gf_5_9":

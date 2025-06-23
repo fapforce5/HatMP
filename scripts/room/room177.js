@@ -32,21 +32,20 @@ room177.btnclick = function (name) {
         case "442no":
             nav.kill();
             gv.set("castitycage", null);
-            gv.set("castityforever", "no");
+            gv.set("chastityOverride", "never");
             cl.c.chastity = null;
             cl.display();
             chat(999, 177);
             break;
         case "442week":
             nav.kill();
-            gv.set("chastityforever", "week");
             sc.select("442_cage", "177_chastity/icon_ch_cage.png", 0);
             sc.select("442_pink", "177_chastity/icon_ch_pink.png", 2);
             sc.select("442_flat", "177_chastity/icon_ch_flat.png", 4);
             break;
         case "442all":
             nav.kill();
-            gv.set("chastityforever", "forever");
+            gv.set("chastityOverride", "forever");
             sc.select("442_cage", "177_chastity/icon_ch_cage.png", 0);
             sc.select("442_pink", "177_chastity/icon_ch_pink.png", 2);
             sc.select("442_flat", "177_chastity/icon_ch_flat.png", 4);

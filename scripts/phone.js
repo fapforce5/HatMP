@@ -113,7 +113,9 @@ phone.backbutton = function (icon) {
 };
 
 phone.saveMenu = function () {
-    var minVersion = 21;
+    let minVersion = 21;
+    let mostRecent = new Date(1999, 1, 1);
+    let mostRecentRow = null;
     phone.clear(false);
     nav.button({
         "type": "zimg",
@@ -479,12 +481,29 @@ phone.characterSelect = function (name) {
     if (name === "missy" || name === "p" || name === "martha" || name === "black") {
         switch (name) {
             case "missy":
-                var sissySchoolInvite = "Attend classes on Monday, Wednesday, and Friday.";
+                var sissySchoolInvite = "Attend Sissy School Monday - Thursday.";
+                var mmood = missy.get("mood");
+                var mmoodtxt = "";
                 if (!sissy.st[17].ach)
                     sissySchoolInvite = g.linebreak("You haven't proven yourself worth of attending the sissy school. Easiest way is to go to work and complete the cases. ", 50);
                 else if (sissy.st[21].ach)
-                    sissySchoolInvite = g.linebreak("Congradulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
-                var mtxt = "Current case: <br/>" +
+                    sissySchoolInvite = g.linebreak("Congratulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
+
+                if (mmood > 70) 
+                    mmoodtxt = "Loves her little " + gender.pronoun("sissy") + ".";
+                else if (mmood > 30) 
+                    mmoodtxt = "Good " + gender.pronoun("sissy") + ", but do better.";
+                else if (mmood > 0) 
+                    mmoodtxt = "You're ok, try harder";
+                else if (mmood > -30) 
+                    mmoodtxt = "Disappointed in her " + gender.pronoun("sissy") + ". ";
+                else 
+                    mmoodtxt = "Angry at her " + gender.pronoun("sissy") + ". ";
+
+                var mtxt =
+                    "Mood: " + mmoodtxt + "<br/>" + 
+                    "Weekly Pay: $" + missy.get("weeklyPay") + "<br/><hr/>" +
+                    "Current case: <br/>" +
                     g.linebreak(missy.activecase().txt, 50) + "<hr />" +
                     "Sissy School: <br/>" +
                     sissySchoolInvite;
@@ -492,7 +511,7 @@ phone.characterSelect = function (name) {
                     type: "zimg",
                     name: "phone_charselx",
                     "left": 850,
-                    "top": 180 + (j * 100),
+                    "top": 180,
                     font: 30,
                     hex: "#ffffff",
                     text: mtxt
@@ -806,6 +825,150 @@ phone.cheat = function () {
             "height": 100,
             "image": "999_phone/cheat_button.png",
         }, 9999);
+    }
+};
+
+phone.purity = function () {
+    phone.clear(false);
+    let txtLeft, txtRight;
+
+    nav.button({
+        "type": "zimg",
+        "name": "phone_",
+        "left": 451,
+        "top": 155,
+        "width": 1185,
+        "height": 815,
+        "image": "999_phone/purity_bg.jpg",
+    }, 9999);
+    
+    let c = 0;
+    
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 800,
+        "top": 200,
+        font: 24,
+        hex: "#000",
+        text: "Penis"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 900,
+        "top": 200,
+        font: 24,
+        hex: "#000",
+        text: "Vag"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 1400,
+        "top": 200,
+        font: 24,
+        hex: "#000",
+        text: "Penis"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 1500,
+        "top": 200,
+        font: 24,
+        hex: "#000",
+        text: "Vag"
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 500,
+        "top": 600,
+        font: 24,
+        hex: "#000 ",
+        text: "Sissygasms: " 
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 800,
+        "top": 600,
+        font: 24,
+        hex: "#000 ",
+        text: stats.st[12].c
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": 900,
+        "top": 600,
+        font: 24,
+        hex: "#000 ",
+        text: stats.st[13].c 
+    }, 9999);
+
+    for (let i = 0; i < sex.st.length; i++) {
+        if (sex.st[i].sin > -1) {
+            
+            if (i % 4 === 0) {
+                switch (sex.st[i].type) {
+                    case "anal": txtLeft = "Fucked up the ass"; txtRight = "Fucked an ass"; break;
+                    case "oral": txtLeft = "Performed Oral"; txtRight = "Got blowjob"; break;
+                    case "hand": txtLeft = "Handjob given"; txtRight = "Received Handjob"; break;
+                    case "fist": txtLeft = "Got fisted"; txtRight = "Fisted"; break;
+                    case "foot": txtLeft = "Footjob given"; txtRight = "Footjob"; break;
+                    case "pussy": txtLeft = "Fucked in pussy"; txtRight = "Fucked Pussy"; break;
+                    case "piss": txtLeft = "Pisson on"; txtRight = ""; break;
+                    case "drankpiss": txtLeft = "Drank piss"; txtRight = ""; break;
+                    case "boob": txtLeft = "Boobjob given"; txtRight = "Boobjob"; break;
+                    case "beast": txtLeft = "Fucked by beast"; txtRight = ""; break;
+                }
+                nav.t({
+                    type: "zimg",
+                    name: "phone_",
+                    "left": 500,
+                    "top": 260 + (sex.st[i].sin * 30),
+                    font: 24,
+                    hex: "#000",
+                    text: txtLeft + ":"
+                }, 9999);
+                nav.t({
+                    type: "zimg",
+                    name: "phone_",
+                    "left": 1100,
+                    "top": 260 + (sex.st[i].sin * 30),
+                    font: 24,
+                    hex: "#000",
+                    text: txtRight + ":"
+                }, 9999);
+            }
+            if (!sex.st[i].give) {
+                nav.t({
+                    type: "zimg",
+                    name: "phone_",
+                    "left": 800 + ((i % 2) * 100),
+                    "top": 260 + (sex.st[i].sin * 30),
+                    font: 24,
+                    hex: "#000 ",
+                    text: sex.st[i].c
+                }, 9999);
+            }
+            else {
+                nav.t({
+                    type: "zimg",
+                    name: "phone_",
+                    "left": 1400 + ((i % 2) * 100),
+                    "top": 260 + (sex.st[i].sin * 30),
+                    font: 24,
+                    hex: "#000 ",
+                    text: sex.st[i].c
+                }, 9999);
+            }
+        }
     }
 };
 
@@ -1257,6 +1420,9 @@ room9999.btnclick = function (name) {
                 $('#room_export_load').show();
                 $('#room_export_load_file').show();
                 $('#room_export_file').hide();
+                break;
+            case "phone_purity":
+                phone.purity();
                 break;
             default:
                 break;

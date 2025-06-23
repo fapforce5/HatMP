@@ -107,6 +107,7 @@ sc.char = [
     //add her to sissy cave
 
     { name: "priest", display: "Father O'Mally", image: "priest.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, q3: false },
+    { name: "nun", display: "Sister Jane", image: "nun.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, q3: false },
 
     { name: "philbert", display: "Philbert", image: "philbert.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
     { name: "sporty", display: "Sporty", image: "sporty.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, q3: false },
@@ -123,6 +124,26 @@ sc.char = [
     { name: "random", display: " ", image: "rand.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "thinking", display: "Thinking", image: "thinking.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
 ];
+
+sc.i = function (name) {
+    for (var i = 0; i < sc.char.length; i++)
+        if (sc.char[i].name === name)
+            return i;
+    console.log("char not found. Name: " + name);
+    return -1;
+};
+
+sc.get = function (name) {
+    return sc.char[sc.i(name)];
+};
+
+sc.n = function (name) {
+    if (name.startsWith("!"))
+        return sc.trivial(name).display;
+    else if (name.startsWith("*"))
+        return rape.char.displayName;
+    return sc.get(name).display;
+};
 
  //mStatus 0 = not started, 1 - 99 = inprogress, 100 = complete - success, 101 = complete - fail
 sc.charMission = [
@@ -155,7 +176,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "date", mStatus: 0, title: "Practice dates", desc: "You two should practice for the real thing.", task:
+                missionName: "date", mStatus: 0, title: "Practice dates", desc: "Landlady suggests practice for the real thing.", task:
                     [
                         { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 13 },
                         { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
@@ -172,7 +193,11 @@ sc.charMission = [
                         { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
                         { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
                         { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
-                        { id: 3, txt: "The talk", show: true, mStatus: 0, roomId: 13 },
+                        { id: 3, txt: "No! Not him!", show: true, mStatus: 0, roomId: 13 },
+                        { id: 4, txt: "Worse than we thought", show: true, mStatus: 0, roomId: 11 },
+                        { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 0               },
+                        { id: 6, txt: "Found him! Tell " + sc.n("eva") + "!", show: true, mStatus: 0, roomId: 13 },
+
                     ]
             },
             {
@@ -1141,6 +1166,41 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "priest", mission: [
+            {
+                missionName: "confession", mStatus: 0, title: "Confess", desc: "Free yourself of sin", task:
+                    [
+                        { id: 0, txt: "First day", show: true, mStatus: 0, roomId: 775 },
+                        { id: 1, txt: "Masterbate", show: true, mStatus: 0, roomId: 775 },
+                        { id: 2, txt: "Peeked", show: true, mStatus: 0, roomId: 775 },
+                        { id: 3, txt: "New Job", show: true, mStatus: 0, roomId: 775 },
+                        { id: 4, txt: "Inserted my finger in my butthole", show: true, mStatus: 0, roomId: 775 },
+                        { id: 5, txt: "Put a dildo in me bum", show: true, mStatus: 0, roomId: 775 },
+                        { id: 6, txt: "Sucked a dildo", show: true, mStatus: 0, roomId: 775 },
+                        { id: 7, txt: "Had sex. With a girl", show: true, mStatus: 0, roomId: 775 },
+                        { id: 8, txt: "Started Sissy School", show: true, mStatus: 0, roomId: 775 },
+                        { id: 9, txt: "Licked a vagina", show: true, mStatus: 0, roomId: 775 },
+                        { id: 10, txt: "Sucked a penis", show: true, mStatus: 0, roomId: 775 },
+                        { id: 11, txt: "Had a penis in my butt", show: true, mStatus: 0, roomId: 775 },
+                        { id: 12, txt: "Lay with one of God's creatures", show: true, mStatus: 0, roomId: 775 },
+                        { id: 13, txt: "Corrupted Sister Mary", show: true, mStatus: 0, roomId: 775 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "nun", mission: [
+            {
+                missionName: "sin", mStatus: 0, title: "Penance", desc: "I can't help myself", task:
+                    [
+                        { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 775 },
+                        { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 775 },
+                        { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 775 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.el = function () {
@@ -1157,26 +1217,6 @@ sc.mStatus = function (mStatus) {
     return "In Progress";
 
 }
-
-sc.i = function (name) {
-    for (var i = 0; i < sc.char.length; i++)
-        if (sc.char[i].name === name)
-            return i;
-    console.log("char not found. Name: " + name);
-    return -1;
-};
-
-sc.get = function (name) {
-    return sc.char[sc.i(name)];
-};
-
-sc.n = function (name) {
-    if (name.startsWith("!"))
-        return sc.trivial(name).display;
-    else if (name.startsWith("*"))
-        return rape.char.displayName;
-    return sc.get(name).display;
-};
 
 sc.setcharname = function (name, newName) {
     sc.char[sc.i(name)].display = newName;
@@ -1369,7 +1409,8 @@ sc.modLevel = function (name, amount, targetLevel = 10) {
 //Mission ----------------------------------------------------------------------
 
 sc.startMission = function (name, missionName, mStatus = 1) {
-    sc.setMission(name, missionName, mStatus);
+    if (sc.getMission(name, missionName).notStarted)
+        sc.setMission(name, missionName, mStatus);
 };
 
 sc.getMission = function (name, missionName) {
@@ -1472,7 +1513,8 @@ sc.rollbackMission = function (name, missionName) {
 };
 
 sc.startMissionTask = function (name, missionName, taskId) {
-    sc.setMissionTask(name, missionName, taskId, 1);
+    if (sc.getMissionTask(name, missionName, taskId).notStarted)
+        sc.setMissionTask(name, missionName, taskId, 1);
 };
 
 sc.modMissionTask = function (name, missionName, taskId, modNum) {
@@ -1836,13 +1878,13 @@ sc.getTimeline = function (char) {
             timeline = [
                 { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: null, alt: "Home" },
                 { d: [1, 2, 3, 4, 5], hstart: 7, hend: 16, roomId: 203, alt: null }, //office
-                { d: [1, 2, 3, 4, 5], hstart: 16, hend: 20, roomId: 203, alt: "Taking cock" }, //office
-                { d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: 203, alt: "home" }, //office
+                { d: [1, 2, 3, 4, 5], hstart: 16, hend: 20, roomId: null, alt: "Taking cock" }, //office
+                { d: [1, 2, 3, 4, 5], hstart: 20, hend: 24, roomId: null, alt: "home" }, //office
 
                 { d: [0, 6], hstart: 0, hend: 7, roomId: null, alt: "Home" },
                 { d: [0, 6], hstart: 7, hend: 16, roomId: 451, alt: null }, //blowjob
-                { d: [0, 6], hstart: 16, hend: 24, roomId: 203, alt: "Taking cock" }, //office
-                { d: [0, 6], hstart: 20, hend: 24, roomId: 203, alt: "home" }, //office
+                { d: [0, 6], hstart: 16, hend: 24, roomId: null, alt: "Taking cock" }, //office
+                { d: [0, 6], hstart: 20, hend: 24, roomId: null, alt: "home" }, //office
             ];
             break;
         case "zoey":
@@ -2532,6 +2574,22 @@ sc.trivial = function (charname) {
         case "!judge":
             name = "Reginald Esq. III";
             image = "judge.png";
+            break;
+        case "!fatnun":
+            name = "Sister Edna";
+            image = "fatnun.png";
+            break;
+        case "!jail0":
+            name = "Prisoner";
+            image = "jail0.png";
+            break;
+        case "!jail1":
+            name = "Prisoner";
+            image = "jail1.png";
+            break;
+        case "!music":
+            name = "";
+            image = "music.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

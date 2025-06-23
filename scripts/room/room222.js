@@ -81,7 +81,7 @@ room222.btnclick = function (name) {
             nav.next("case0-6");
             break;
         case "case0-6":
-            levels.oralGive(3, true, false, "m");
+            levels.oral(3, true, false, "m", null, "cop");
             nav.killall();
             nav.bg("222_errands/case0-2.jpg");
             chat(29, 222);
@@ -281,7 +281,7 @@ room222.chatcatch = function (callback) {
             break;
         case "case-2-jail":
             missy.didJob(4, 0, null);
-            char.room(425);
+            char.room(376);
             break;
         case "case-2-records":
             nav.killall();

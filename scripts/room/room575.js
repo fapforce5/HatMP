@@ -179,6 +179,7 @@ room575.chatcatch = function (callback) {
             sc.show("brayden");
             sc.startMission("brayden", "date");
             sc.completeMissionTask("brayden", "date", 0);
+            gv.set("sissyfinal_brayden", true);
             nav.button({
                 "type": "img",
                 "name": "hittable",
@@ -196,6 +197,9 @@ room575.chatcatch = function (callback) {
         case "emptyBooth":
             nav.killall();
             nav.bg("575_fastfood/emptyBooth.webp");
+            break;
+        case "leave":
+            char.room(0);
             break;
         default:
             break;

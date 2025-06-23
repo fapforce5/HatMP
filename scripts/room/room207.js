@@ -33,6 +33,16 @@ room207.main = function () {
         "image": "207_door/door_outside.png",
         "night": "207_door/door_outside_night.png"
     }, 207);
+    nav.button({
+        "type": "btn",
+        "name": "pageant",
+        "left": 1437,
+        "top": 401,
+        "width": 79,
+        "height": 136,
+        "title": "Pageant Winners",
+        "image": gv.get("sissyfinal_pageant") === null ? "207_door/pageant.webp" : "207_door/pageant_x.webp",
+    }, 207);
     nav.buildnav([203, 0]);
     if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
         sc.select("door_pink", "207_door/icon_fashion.webp", 0)
@@ -41,6 +51,17 @@ room207.main = function () {
 
 room207.btnclick = function (name) {
     switch (name) {
+        case "pageant":
+            nav.kill();
+            var pag = gv.get("sissyfinal_pageant");
+            if (pag === null)
+                nav.bg("207_door/pageantbg.webp");
+            else if (pag)
+                nav.bg("207_door/pageantbg_me.webp");
+            else
+                nav.bg("207_door/pageantbg_not.webp");
+            nav.back("reload");
+            break;
         case "door_pink":
             if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
                 if (g.gethourdecimal() > 18)
@@ -63,6 +84,9 @@ room207.btnclick = function (name) {
         case "door_outside":
             char.room(0);
             break;
+        case "reload":
+            char.room(207);
+            break;
         default:
             break;
     }
@@ -80,7 +104,18 @@ room207.chatcatch = function (callback) {
                 score1: 0,
                 score2: 0,
                 score3: 0,
-                gavebj: false
+                gavebj: false,
+                card0: 0,
+                card1: 0,
+                card2: 0,
+                card3: 0,
+                card4: 0,
+                talent: "",
+                j1: 0,
+                j2: 0,
+                j3: 0,
+                j4: 0,
+                j5: 0
             };
             char.room(170);
             break;

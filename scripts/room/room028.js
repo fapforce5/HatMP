@@ -5,7 +5,7 @@
 //add false transformations - like got an inch shorter / feet shrunk / skin smoother / hair more radiant, hair is finer
 var room28 = {};
 room28.main = function () {
-
+    let transformationOrder = [0, 1, 2, 3, 4, 24, 7, 11, 16, 5, 8, 12, 17, 25, 13, 18, 21, 6, 9, 23, 14, 19, 10, 15, 20, 22];
     var pjRoom = [7, 10]
     if (pjRoom.includes(g.pass)) {
         cl.wearSavedOutfit(5);
@@ -24,7 +24,9 @@ room28.main = function () {
     var txtDisplay = room28.dreams();
     var forcedTransformation = null
     let trasnformationSetting = null;
-
+    let breastSelect, assSelect;
+    breastSelect = [11, 12, 13, 14, 15];
+    assSelect = [16, 17, 18, 19, 20];
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
     var thisautohormone, hix, tix;
@@ -54,6 +56,12 @@ room28.main = function () {
                     thisTinyPP = gv.st[i].t;
                     gv.st[i].t = false;
                 }
+                break;
+            case "breastSelect":
+                breastSelect.splice(gv.st[i].t);
+                break;
+            case "assSelect":
+                assSelect.splice(gv.st[i].t);
                 break;
             case "autohormone":
                 thisautohormone = gv.st[i].t;
@@ -200,93 +208,142 @@ room28.main = function () {
     }
     else if (!txtDisplay) {
         //check Transformation
+        let transformationPoints = levels.get("xdress").l;
+        let validTransformationHormone = hormoneLevel > 75;
+
         if (cl.c.chest === 0 && levels.st[12].l > 0) {
             chat(0, 28);
         }
-        else if (levels.get("xdress").l > 0 && cl.c.chest > 0 && trasnformationSetting !== "voluntaryoff") {
-            nav.button({
-                "type": "img",
-                "name": "xd",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "title": "xdress",
-                "image": "28_transformation/q_background.jpg"
-            }, 28);
-            for (i = 0; i < qdress.st.length; i++) {
-                var qdressIcon = qdress.st[i].ach ? qdress.st[i].icon : qdress.st[i].icon + "_x";
-                nav.button({
-                    "type": "btn",
-                    "name": "qxdress_" + qdress.st[i].id,
-                    "left": qdress.st[i].x,
-                    "top": qdress.st[i].y,
-                    "width": i === 3 ? 200 : 100,
-                    "height": i === 3 ? 200 : 100,
-                    "title": "xdress",
-                    "image": "28_transformation/" + qdressIcon + ".png"
-                }, 28);
+        else if (transformationPoints > 0 && cl.c.chest > 0) {
+            let validForcedTransformation = false;
+
+            if (trasnformationSetting === "forced") {
+                for (let i = 0; i < transformationOrder.length; i++) {
+                    if (!qdress.st[transformationOrder[i]].ach) {
+                        console.log(qdress.st[transformationOrder[i]])
+                        if (transformationOrder[i] > 10 && transformationOrder[i] < 16) {
+                            if (breastSelect.includes(transformationOrder[i]))
+                                validForcedTransformation = true;
+                        }
+                        else if (transformationOrder[i] > 15 && transformationOrder[i] < 21) {
+                            if (assSelect.includes(transformationOrder[i]))
+                                validForcedTransformation = true;
+                        }
+                        else
+                            validForcedTransformation = true;
+
+                        if (validForcedTransformation) {
+                            if (qdress.st[transformationOrder[i]].p <= transformationPoints) {
+                                if ((qdress.st[transformationOrder[i]].h && validTransformationHormone) || !qdress.st[transformationOrder[i]].h) {
+                                    room28.btnclick("qgrow_" + transformationOrder[i]);
+                                    return;
+                                }
+                                else {
+                                    g.popUpNotice("Need to increase your Sissy Hormones.");
+                                }
+                            }
+                            i = 999;
+                            break;
+                        }
+                    }
+                }
+                room28.endSleepyTime(true);
             }
-            nav.button({
-                "type": "btn",
-                "name": "qquit",
-                "left": 1434,
-                "top": 64,
-                "width": 100,
-                "height": 100,
-                "image": "28_transformation/q_quit.png"
-            }, 28);
-
-            nav.button({
-                "type": "clickthrough",
-                "name": "xd",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "title": "xdress",
-                "image": "28_transformation/q_forground.png"
-            }, 28);
-
-            if (hormoneLevel < 75) {
-                nav.t({
-                    type: "img",
-                    name: "noop",
-                    left: 850,
-                    top: 500,
-                    font: 40,
-                    hex: "#def8ff",
-                    text: "Estrogen level low. "
-                }, 28);
-                if (!qdress.st[15].ach) {
-                    nav.t({
-                        type: "img",
-                        name: "noop",
-                        left: 850,
-                        top: 550,
-                        font: 20,
-                        hex: "#def8ff",
-                        text: "Progress in the game till you can take the FEM 201 Sissy Class"
+            else if (trasnformationSetting === "voluntary") {
+                qdress.stx = new Array();
+                qdress.getPoints(0, transformationPoints, validTransformationHormone);
+                for (let i = qdress.stx.length - 1; i > 0; i--) {
+                    if (breastSelect.includes(qdress.stx[i]) || assSelect.includes(qdress.stx[i])) {
+                        qdress.stx.splice(i, 1);
+                    }
+                }
+                if (qdress.stx.length > 0) {
+                    nav.button({
+                        "type": "img",
+                        "name": "xd",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "title": "xdress",
+                        "image": "28_transformation/q_background.jpg"
                     }, 28);
+                    for (i = 0; i < qdress.st.length; i++) {
+                        var qdressIcon = qdress.st[i].ach ? qdress.st[i].icon : qdress.st[i].icon + "_x";
+                        nav.button({
+                            "type": "btn",
+                            "name": "qxdress_" + qdress.st[i].id,
+                            "left": qdress.st[i].x,
+                            "top": qdress.st[i].y,
+                            "width": i === 3 ? 200 : 100,
+                            "height": i === 3 ? 200 : 100,
+                            "title": "xdress",
+                            "image": "28_transformation/" + qdressIcon + ".png"
+                        }, 28);
+                    }
+                    nav.button({
+                        "type": "btn",
+                        "name": "qquit",
+                        "left": 1434,
+                        "top": 64,
+                        "width": 100,
+                        "height": 100,
+                        "image": "28_transformation/q_quit.png"
+                    }, 28);
+
+                    nav.button({
+                        "type": "clickthrough",
+                        "name": "xd",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "title": "xdress",
+                        "image": "28_transformation/q_forground.png"
+                    }, 28);
+
+                    if (hormoneLevel < 75) {
+                        nav.t({
+                            type: "img",
+                            name: "noop",
+                            left: 850,
+                            top: 500,
+                            font: 40,
+                            hex: "#def8ff",
+                            text: "Estrogen level low. "
+                        }, 28);
+                        if (!qdress.st[15].ach) {
+                            nav.t({
+                                type: "img",
+                                name: "noop",
+                                left: 850,
+                                top: 550,
+                                font: 20,
+                                hex: "#def8ff",
+                                text: "Progress in the game till you can take the FEM 201 Sissy Class"
+                            }, 28);
+                        }
+                        else {
+                            nav.t({
+                                type: "img",
+                                name: "noop",
+                                left: 850,
+                                top: 550,
+                                font: 20,
+                                hex: "#def8ff",
+                                text: "Take your pills sissy"
+                            }, 28);
+                        }
+                    }
                 }
                 else {
-                    nav.t({
-                        type: "img",
-                        name: "noop",
-                        left: 850,
-                        top: 550,
-                        font: 20,
-                        hex: "#def8ff",
-                        text: "Take your pills sissy"
-                    }, 28);
+                    room28.endSleepyTime(true);
                 }
             }
-
         }
-        else {
-            room28.endSleepyTime(true);
-        }
+        
     }
+    room28.endSleepyTime(true);
 };
 
 room28.future = function () {
@@ -313,6 +370,14 @@ room28.future = function () {
                 case "j-jarome": gv.set("janiceDatr", "jarome"); break;
                 case "j-jabari": gv.set("janiceDatr", "jabari"); break;
                 case "j-brad": gv.set("janiceDatr", "brad"); break;
+                case "lolaboy":
+                    
+                    break;
+                case "case_dam":
+                    if (missy.get("activeCaseComplete") === 0) {
+                        missy.set("activeCaseComplete", 2);
+                    }
+                    break;
             }
             future.st.splice(i, 1);
         }
@@ -374,14 +439,15 @@ room28.dreams = function () {
             nav.bg("28_transformation/318.jpg");
         else if (g.pass === 225)
             nav.bg("28_transformation/225.jpg");
-            
+        else if (g.pass === 376)
+            nav.bg("28_transformation/376.jpg");
     }
-    console.log(hasText);
+    //console.log(hasText);
     return hasText;
 };
 
 room28.endSleepyTime = function (hasTimeout) {
-    var returnRoomID = g.pass;
+    let returnRoomID = g.pass;
     g.pass = "endSleepyTime";
 
     if (hasTimeout) {

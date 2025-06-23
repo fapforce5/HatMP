@@ -236,7 +236,9 @@ room12.btnclick = function (name) {
             cl.nude();
             zcl.displayMain(0, 400, .22, "shower", false);
             nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");
-            if (inv.get("razor").count > 0)
+            if (cl.c.bodyhair < -999)
+                chat(11, 12);
+            else if (inv.get("razor").count > 0)
                 chat(15, 12);
             else
                 chat(11, 12);
@@ -279,6 +281,7 @@ room12.chatcatch = function (callback) {
             break;
         case "sister2":
             nav.next("sisterPeek");
+            sc.startMission("priest", "confession", 2);
             g.internal = 2;
             daily.set("homeShowerPeek");
             break;
@@ -336,7 +339,7 @@ room12.chatcatch = function (callback) {
             break;
         case "sisterStripEnd":
             char.addtime(75);
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "eva");
             sex.piss(false, false, true, "f");
             char.room(12);
             break;

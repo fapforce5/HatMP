@@ -1,6 +1,7 @@
 ﻿//Room name
 var room40 = {};
 room40.main = function () {
+    daily.set("bigguyGarage")
     g.internal = cl.hasoutfit("public");
     if (g.internal === null) {
         nav.bg("40_garage/bg_all.jpg");
@@ -97,6 +98,19 @@ room40.chatcatch = function (callback) {
             nav.bg("40_garage/chatOrClean.jpg");
             char.settime(12, 17);
             sc.select("clean", "40_garage/icon_clean.png", 1);
+            break;
+        case "dateLola":
+            if (sc.taskGetStep("lola", "sissy", 5)) {
+                sc.completeMissionTask("lola", "sissy", 5);
+                nav.kill();
+                nav.bg("40_garage/bg.jpg");
+                chat(16, 40);
+            }
+            else {
+                nav.bg("40_garage/chatOrClean.jpg");
+                char.settime(12, 17);
+                sc.select("clean", "40_garage/icon_clean.png", 1);
+            }
             break;
         case "leave":
             gv.set("workMonday", false);
@@ -293,6 +307,16 @@ room40.chat = function (chatID) {
                 speaker: "tom",
                 text: "Is she... aww never mind. I gotta get some work done. I'll have " +
                     "to chat later. ",
+                button: [
+                    { chatID: -1, text: "ok ", callback: "dateLola" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "thinking",
+                text: "Hmmmm. He's really nice, and I don't think he would even have sex with " + sc.n("eva") + " since " +
+                    "she's way to wild for him. You know, they might make a good couple. I should tell " + sc.n("eva") + 
+                    " about him. See if she'll get them together. ",
                 button: [
                     { chatID: -1, text: "ok ", callback: "cleanOnly" }
                 ]

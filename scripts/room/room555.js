@@ -630,7 +630,7 @@ room555.chatcatch = function (callback) {
             levels.mod("fitness", 50, 999);
             levels.mod("strength", 25, 999);
             gv.mod("energy", -75);
-            levels.anal(4, false, "m", true);
+            levels.anal(4, false, "m", true, null, "chad");
             char.addtime(60);
             char.room(555);
             break;

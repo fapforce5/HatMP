@@ -225,7 +225,7 @@ room450.btnclick = function (name) {
             break;
         case "lola10kiss":
             nav.killbutton("lola10kiss");
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "lola");
             if (levels.get("oral").l < 3) {
                 nav.bg("450_park/lola11akiss.jpg");
                 chat(81, 450);
@@ -258,7 +258,7 @@ room450.chatcatch = function(callback){
             break;
         case "cop9":
             nav.killall();
-            levels.oralGive(4, false, false, "m");
+            levels.oral(4, false, false, "m", null, "cop");
             cl.c.cumface = true;
             cl.display();
             gv.mod("arousal", 40);

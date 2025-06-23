@@ -4,99 +4,84 @@ var room452 = {};
 
 room452.main = function () {
 
-    //if (true) {
-    if (sc.getstep("bimbo") === 0 && !g.isNight()) {
+    var thisApp = cl.appearance();
+    if (Math.floor(Math.random() * 4) === 0 && thisApp < 2 && !g.isNight()) {
         nav.button({
             "type": "img",
-            "name": "bimbo",
-            "left": 924,
-            "top": 22,
-            "width": 670,
-            "height": 1058,
-            "image": "452_parkWomansRoom/bimbo1.png"
+            "name": "cop",
+            "left": 870,
+            "top": 39,
+            "width": 784,
+            "height": 1041,
+            "image": "452_parkWomansRoom/cop.png"
         }, 452);
-        chat(2, 452);
+        chat(5, 452);
+    }
+    else if (Math.floor(Math.random() * 3) === 0 && thisApp < 2 && !g.isNight()) {
+        nav.button({
+            "type": "img",
+            "name": "woman",
+            "left": 1273,
+            "top": 48,
+            "width": 410,
+            "height": 1057,
+            "image": "452_parkWomansRoom/woman.png"
+        }, 452);
+        chat(1, 452);
     }
     else {
-        var thisApp = cl.appearance();
-        if (Math.floor(Math.random() * 4) === 0 && thisApp < 2 && !g.isNight()) {
-            nav.button({
-                "type": "img",
-                "name": "cop",
-                "left": 870,
-                "top": 39,
-                "width": 784,
-                "height": 1041,
-                "image": "452_parkWomansRoom/cop.png"
-            }, 452);
-            chat(5, 452);
-        }
-        else if (Math.floor(Math.random() * 3) === 0 && thisApp < 2 && !g.isNight()) {
-            nav.button({
-                "type": "img",
-                "name": "woman",
-                "left": 1273,
-                "top": 48,
-                "width": 410,
-                "height": 1057,
-                "image": "452_parkWomansRoom/woman.png"
-            }, 452);
-            chat(1, 452);
+        var canGoOut = cl.hasoutfit("public");
+        if (canGoOut === null) {
+            var btnList = [
+                {
+                    "type": "btn",
+                    "name": "stall1",
+                    "left": 1225,
+                    "top": 172,
+                    "width": 166,
+                    "height": 546,
+                    "image": "451_parkMensRoom/451_stall1.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "stall2",
+                    "left": 1001,
+                    "top": 149,
+                    "width": 184,
+                    "height": 586,
+                    "image": "451_parkMensRoom/451_stall2.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "stall3",
+                    "left": 750,
+                    "top": 118,
+                    "width": 207,
+                    "height": 632,
+                    "image": "451_parkMensRoom/451_stall3.png"
+                },
+                {
+                    "type": "btn",
+                    "name": "mirror",
+                    "left": 1621,
+                    "top": 76,
+                    "width": 233,
+                    "height": 490,
+                    "image": "451_parkMensRoom/sink.png"
+                },
+            ];
+
+            var navList1 = [450];
+
+            $.each(btnList, function (i, v) {
+                nav.button(v, 452);
+            });
+
+            nav.buildnav(navList1);
         }
         else {
-            var canGoOut = cl.hasoutfit("public");
-            if (canGoOut === null) {
-                var btnList = [
-                    {
-                        "type": "btn",
-                        "name": "stall1",
-                        "left": 1225,
-                        "top": 172,
-                        "width": 166,
-                        "height": 546,
-                        "image": "451_parkMensRoom/451_stall1.png"
-                    },
-                    {
-                        "type": "btn",
-                        "name": "stall2",
-                        "left": 1001,
-                        "top": 149,
-                        "width": 184,
-                        "height": 586,
-                        "image": "451_parkMensRoom/451_stall2.png"
-                    },
-                    {
-                        "type": "btn",
-                        "name": "stall3",
-                        "left": 750,
-                        "top": 118,
-                        "width": 207,
-                        "height": 632,
-                        "image": "451_parkMensRoom/451_stall3.png"
-                    },
-                    {
-                        "type": "btn",
-                        "name": "mirror",
-                        "left": 1621,
-                        "top": 76,
-                        "width": 233,
-                        "height": 490,
-                        "image": "451_parkMensRoom/sink.png"
-                    },
-                ];
-
-                var navList1 = [450];
-
-                $.each(btnList, function (i, v) {
-                    nav.button(v, 452);
-                });
-
-                nav.buildnav(navList1);
-            }
-            else {
-                g.internal = canGoOut;
-                chat(0, 452);
-            }
+            g.internal = canGoOut;
+            chat(0, 452);
         }
     }
 };
@@ -146,7 +131,7 @@ room452.chatcatch = function(callback){
             break;
         case "tojail":
             g.pass = "jail";
-            char.room(425);
+            char.room(376);
             break;
         case "woman1":
             nav.killbutton("woman");

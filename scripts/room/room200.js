@@ -89,13 +89,16 @@ room200.btnclick = function (name) {
                         break;
                 }
             }
+            else if (missyUniform === 0 && cl.pantiesTxt() === "panties") {
+                char.room(223);
+            }
             else if (missyUniform > 0 && missy.get("uniformNew") === 0) {
                 missy.set("uniformNew", 1);
                 if (missy.get("uniform") === 1) {
                     chat(21, 200);
                 }
             }
-            else if (missy.get("chastity") > 0 && cl.c.chastity === null) {
+            else if (missy.get("chastity") > 0 && cl.c.chastity === null && gv.get("chastityOverride") !== "never") {
                 chat(23, 200);
             }
             else if (missyUniform === 2 && sissy.get("fem103").ach) {
@@ -111,6 +114,10 @@ room200.btnclick = function (name) {
             }
             else if (cl.getmakeup().name === "n") {
                 chat(79, 200);
+            }
+            else if (inv.has("lockpick") && sissy.st[17].ach && g.rand(0, 5) === 0) {
+                g.pass = "morning";
+                char.room(197);
             }
             else
                 room200.chatcatch("selectJob");
@@ -175,26 +182,50 @@ room200.chatcatch = function (callback) {
             var showJob;
             nav.killall();
             nav.bg("200_frontOffice/work.jpg");
-            $.each(missy.jobs, function (i, v) {
-                showJob = true;
-                if (i === 6 && missy.st[31].c < 1)
-                    showJob = false;
-                if (i === 5 && missy.st[32].c < 1)
-                    showJob = false;
+            
 
-                if (missy.st[v.thisWeek].c === 0 && showJob) {
+            let activeCounter = 0;
+            $.each(g.internal.caseList, function (i, v) {
+                if (i < 4) {
                     nav.button({
                         "type": "btn",
-                        "name": "job_" + i,
-                        "left": 400 + (Math.floor(i / 4) * 700),
-                        "top": 450 + ((i % 4) * 120),
+                        "name": "case_" + i,
+                        "left": 400 + (Math.floor(i / 2) * 700),
+                        "top": 100 + ((i % 2) * 120),
                         "width": 600,
                         "height": 100,
-                        "image": "200_frontOffice/" + v.img
+                        "image": "200_frontOffice/" + v.icon
                     }, 200);
-                    jobCounter++;
+                    if (g.internal.caseList.active)
+                        activeCounter++;
                 }
             });
+
+            if (gv.get("sissySchoolClass") === "finalx")
+                activeCounter = 0;
+                
+            if (activeCounter < 4) {
+                $.each(missy.jobs, function (i, v) {
+                    showJob = true;
+                    if (i === 6 && missy.st[31].c < 1)
+                        showJob = false;
+                    if (i === 5 && missy.st[32].c < 1)
+                        showJob = false;
+
+                    if (missy.st[v.thisWeek].c === 0 && showJob) {
+                        nav.button({
+                            "type": "btn",
+                            "name": "job_" + i,
+                            "left": 400 + (Math.floor(i / 4) * 700),
+                            "top": 450 + ((i % 4) * 120),
+                            "width": 600,
+                            "height": 100,
+                            "image": "200_frontOffice/" + v.img
+                        }, 200);
+                        jobCounter++;
+                    }
+                });
+            }
 
             //friday reset fix if jobs are empty
             if (jobCounter === 0) {
@@ -221,19 +252,7 @@ room200.chatcatch = function (callback) {
                 });
             }
 
-            $.each(g.internal.caseList, function (i, v) {
-                if (i < 4) {
-                    nav.button({
-                        "type": "btn",
-                        "name": "case_" + i,
-                        "left": 400 + (Math.floor(i / 2) * 700),
-                        "top": 100 + ((i % 2) * 120),
-                        "width": 600,
-                        "height": 100,
-                        "image": "200_frontOffice/" + v.icon
-                    }, 200);
-                }
-            });
+            
             break;
         case "case_booth":
             chat(4, 200);
@@ -248,6 +267,11 @@ room200.chatcatch = function (callback) {
         case "case_trash1":
             nav.killall();
             nav.bg("200_frontOffice/" + callback + ".jpg");
+            break;
+        case "case_dam1":
+        case "case_dam2":
+            nav.killall();
+            nav.bg("200_frontOffice/" + callback + ".webp");
             break;
         case "case_booth3":
             missy.set("activeCase", 4);
@@ -598,6 +622,18 @@ room200.chatcatch = function (callback) {
             cl.remove("panties", cl.c.panties);
             cl.nude();
             zcl.displayMain(-1000, -700, .5, "clothes", true);
+            break;
+                            canDoCase = piLevel > 2;
+        case "case_damselle":
+            nav.kill();
+            nav.bg("200_frontOffice/case_dam0.webp");
+            chat(110, 200);
+            break;
+        case "case_dam_start":
+            inv.addMulti("soda", 3);
+            future.add("case_dam", 6 - g.dt.getDay());
+            gv.set("mapopen", true);
+            room200.chatcatch("case_afterExplaniation");
             break;
         case "punish":
             char.room(217);
@@ -1664,8 +1700,69 @@ room200.chat = function (chatID) {
                     { chatID: -1, text: "Yes ma'am", callback: "case_beaver_end_bad" }
                 ]
             },
-            
-            
+            {
+                chatID: 110,
+                speaker: "missy",
+                text: "This case is going to be quite dangerous, but very important. There's a girl " +
+                    "that needs rescued in cabin in the woods. For her sake speed is essential. To " +
+                    "find her you'll need to head to the park.",
+                button: [
+                    { chatID: 111, text: "...", callback: "case_dam1" }
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "missy",
+                text: "Once you've entered the park, go into the forest..",
+                button: [
+                    { chatID: 112, text: "...", callback: "case_dam2" }
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "missy",
+                text: "Then there's a path to the left. Take that path. The forest is very dense and " +
+                    "extremely dangerous. I can't stress that enough. You'll only go into the forest " +
+                    "during the day, never at night. Tell me you understand you'll only go into the " +
+                    "forest during the day.",
+                button: [
+                    { chatID: 113, text: "I'll only go into the forest during the day ma'am", callback: "" }
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "missy",
+                text: "Good. In the forest there's a cabin. You'll only enter during the day. If it's " +
+                    "dark you'll need to leave. In that cabin there should be a girl. I need you to find " +
+                    "her and free her before Friday night. The cabin may be hard to find, but it's not too " +
+                    "deep in the forest. If you walk all the way to the mountains then you've gone way too far. ",
+                button: [
+                    { chatID: 114, text: "What happens on Firday night ma'am?", callback: "" }
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "missy",
+                text: "Hmm...I suppose I should tell you. The cabin is occupied by the Carnal Union of Mortals or " +
+                    "the C.U.M. Cult. The women they kidnap to work as Milk Maids are held at the cabin unitl Friday " +
+                    "night, where they are then taken to their ceremony and begin their indoctrination into the cult. " +
+                    "If you don't find and free her before Friday she'll be lost to the cult forever. ",
+                button: [
+                    { chatID: 115, text: "Oh wow. I'll free her ma'am!", callback: "" }
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "missy",
+                text: "Be careful, the forest has many dangers. Careful not to overexert yourself and pass out. " +
+                    "I'm going to give you 3 energy drinks to help you on your journey. Take a shower, eat some " +
+                    "food, get your energy up before you go and drink an energy drink if you are running low " +
+                    "on energy. Remember if you don't save her, she'll be lost to the cult forever. Now go " +
+                    "save that poor girl.",
+                button: [
+                    { chatID: -1, text: "Yes ma'am!", callback: "case_dam_start" }
+                ]
+            },
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

@@ -118,7 +118,7 @@ room586.btnclick = function (name) {
                 chat(27, 586);
             }
             else if (g.internal === 10) {
-                levels.anal(2, true, "m", true);
+                levels.anal(2, true, "m", true, null, "chuck");
                 nav.bg("586_kitchen/chuck2_10.jpg");
             }
             else {
@@ -168,7 +168,7 @@ room586.chatcatch = function (callback) {
             break;
         case "chuck_7_end":
             sc.completeMissionTask("chuck", "fuck", 1);
-            levels.oralGive(2, true, false, "m");
+            levels.oral(2, true, false, "m", null, "chuck");
             char.settime(23, 2);
             char.room(585);
             break;

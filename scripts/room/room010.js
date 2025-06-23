@@ -96,8 +96,8 @@ room10.main = function () {
                 "image": "10_mainchar/cheerleader.png",
             });
         }
-
-        if (sissy.st[16].ach) {
+        let shoeLevels = levels.get("heels").l < 8;
+        if (sissy.st[16].ach && !daily.get("practiceHeels") && shoeLevels) {
             btnList.push({
                 "type": "btn",
                 "name": "heels",
@@ -248,6 +248,31 @@ room10.btnclick = function (name) {
                         break;
                 }
             }
+            break;
+        case "heels":
+            var shoeDaring = cl.getEntry("shoes", cl.c.shoes).daring;
+            if (shoeDaring > 1) {
+                nav.kill();
+                daily.set("practiceHeels");
+                nav.button({
+                    "type": "img",
+                    "name": "heels",
+                    "left": 614,
+                    "top": 401,
+                    "width": 848,
+                    "height": 679,
+                    "image": "10_mainchar/heels0.webp"
+                }, 10);
+                levels.mod("heels", shoeDaring * 10);
+                nav.back("reset");
+            }
+            else {
+                levels.mod("pi", -10);
+                chat(46, 10);
+            }
+            break;
+        case "reset":
+            char.room(10);
             break;
         default:
             break;
@@ -814,6 +839,14 @@ room10.chat = function (chatID) {
                 text: "I get to cheer in a game now. I don't have to practice if I don't want to. ",
                 button: [
                     { chatID: -1, text: "...", callback: "cheerReset" }
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "me",
+                text: "I'm such a bimbo brain! I'm not wearing heels",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
                 ]
             },
         ];

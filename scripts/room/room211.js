@@ -34,6 +34,7 @@ room211.main = function () {
         sc.modSecret("martha", 100);
         sc.show("black");
         sc.modSecret("black", 100);
+        sc.startMissionTask("priest", "confession", 8);
         char.room(209);
     }
     else if (sissy.st[10].ach && !hasFinalSissyOutfit) {

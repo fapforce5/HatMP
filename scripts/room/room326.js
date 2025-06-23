@@ -97,9 +97,7 @@ room326.btnclick = function (name) {
             nav.bg("326_stable/lick" + g.internal + ".jpg");
             if (g.internal === 11) {
                 cl.c.cumface = true;
-                //gv.mod("giveOralMale", 1);
-                //gv.mod("loadSwollowed", 1);
-                levels.oralGive(5, false, false, "m");
+                levels.oral(5, false, false, "m", "horse", "horse");
                 nav.killbutton("bj");
                 chat(22, 326);
             }

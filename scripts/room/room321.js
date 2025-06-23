@@ -85,13 +85,16 @@ room321.main = function () {
                 chat(22, 321);
                 break;
             default:
+                cl.nude();
                 if (sc.getMissionTask("janice", "webcam", 6).notStarted) {
-                    sc.completeMissionTask("janice", "webacm", 6);
+                    sc.completeMissionTask("janice", "webcam", 6);
                     nav.bg("321_whorechat/strappose.jpg");
                     chat(23, 321);
                 }
                 else {
-
+                    g.internal.button = "main";
+                    room321.btnclick("buttons");
+                    nav.bg("321_whorechat/wait_" + gender.pronoun("f") + ".jpg");
                 }
                 break;
         }
@@ -104,7 +107,7 @@ room321.main = function () {
     }
     else {
         cl.nude();
-        nav.bg("321_whorechat/wait.jpg");
+        nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
         g.internal.button = "main";
         room321.btnclick("buttons");
     }
@@ -174,18 +177,42 @@ room321.btnclick = function (name) {
                 ];
             }
             else if (g.internal.button === "show") {
+                if (sc.getMissionTask("janice", "webcam", 6).complete) {
+                    butList = [
+                        { img: "button_eatpussy.png", txt: "icon_eatpussy" },
+                        { img: "button_show_strap.png", txt: "icon_suckdildo" },
+                        { img: "button_fuck.png", txt: "icon_anal" },
+                        { img: "button_back.png", txt: "icon_main" }
+                    ];
+                }
+                else {
+                    butList = [
+                        { img: "button_eatpussy.png", txt: "icon_eatpussy" },
+                        { img: "button_getsucked.png", txt: "icon_suckdick" },
+                        { img: "button_fuck.png", txt: "icon_fuck" },
+                        { img: "button_back.png", txt: "icon_main" }
+                    ];
+                }
+            }
+            else if (g.internal.button === "strap") {
                 butList = [
-                    { img: "button_eatpussy.png", txt: "icon_eatpussy" },
-                    { img: "button_getsucked.png", txt: "icon_suckdick" },
-                    { img: "button_fuck.png", txt: "icon_fuck" },
-                    { img: "button_back.png", txt: "icon_main" }
+                    { img: "button_strap.png", txt: "icon_strap" },
+                    { img: "button_back.png", txt: "icon_mainRedraw" }
                 ];
             }
             else if (g.internal.button === "getsucked1") {
-                butList = [
-                    { img: "button_getsucked1.png", txt: "icon_suckdick" },
-                    { img: "button_back.png", txt: "icon_main" }
-                ];
+                if (sc.getMissionTask("janice", "webcam", 6).complete) {
+                    butList = [
+                        { img: "button_getsucked1.png", txt: "icon_suckdildo" },
+                        { img: "button_back.png", txt: "icon_mainRedraw" }
+                    ];
+                }
+                else {
+                    butList = [
+                        { img: "button_getsucked1.png", txt: "icon_suckdick" },
+                        { img: "button_back.png", txt: "icon_main" }
+                    ];
+                }
                 
             }
             else if (g.internal.button === "suckdick2") {
@@ -196,6 +223,11 @@ room321.btnclick = function (name) {
             else if (g.internal.button === "suckdick3") {
                 butList = [
                     { img: "button_next.png", txt: "icon_suckdick3" }
+                ];
+            }
+            else if (g.internal.button === "sissygasm") {
+                butList = [
+                    { img: "button_show_cum.png", txt: "icon_sissygasm" }
                 ];
             }
             else if (g.internal.button === "fuckcum") {
@@ -225,6 +257,52 @@ room321.btnclick = function (name) {
                 }, 321);
             }
             break;
+        case "icon_strap":
+            g.internal.viewers += 20;
+            gv.mod("arousal", 35);
+            if (gv.get("arousal") > 95){
+                g.internal.button = "sissygasm";
+                room321.btnclick("buttons");
+                return;
+            }
+            else {
+                room321.sidechat("w1_0");
+                g.internal.excitement += 50;
+            }
+            break;
+        case "icon_sissygasm":
+            sc.modLevel("janice", 20, 10);
+            levels.anal(2, true, "f", false, null, "janice");
+            zcl.amazon(150, 700, .7, "", false);
+            nav.killbutton("fb");
+            nav.button({
+                "type": "img",
+                "name": "fb",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "321_whorechat/strapfuck2.png"
+            }, 321);
+            g.internal.button = "quit";
+            room321.btnclick("buttons");
+            break;
+        case "icon_mainRedraw":
+            zcl.kill();
+            nav.killbutton("fb");
+            nav.button({
+                "type": "img",
+                "name": "fb",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "58_camwhore/fg.png"
+            }, 321);
+            nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
+            g.internal.button = "main";
+            room321.btnclick("buttons");
+            break;
         case "icon_main":
             g.internal.button = "main";
             room321.btnclick("buttons");
@@ -240,29 +318,47 @@ room321.btnclick = function (name) {
         case "icon_chattips":
             g.internal.button = "main";
             room321.btnclick("buttons");
-            nav.bg("321_whorechat/wait.jpg");
+            nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.money += 2;
             room321.sidechat("tips");
             break;
         case "icon_chatflirt":
             g.internal.button = "main";
             room321.btnclick("buttons");
-            nav.bg("321_whorechat/wait.jpg");
+            nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.money += 4;
             room321.sidechat("flirt");
             break;
         case "icon_chatInsult":
             g.internal.button = "main";
             room321.btnclick("buttons");
-            nav.bg("321_whorechat/wait.jpg");
+            nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.money += 4;
             room321.sidechat("insult");
             break;
         case "icon_wait":
             g.internal.button = "main";
             room321.btnclick("buttons");
-            nav.bg("321_whorechat/wait.jpg");
+            nav.bg("321_whorechat/wait_" + gender.pronoun("f") + ".jpg");
             room321.sidechat(null);
+            break;
+        case "icon_suckdildo":
+            g.internal.excitement++;
+            gv.mod("arousal", 10);
+            nav.bg("321_whorechat/bg.jpg");
+            zcl.bj(150, 600, .7, "open", true);
+            nav.killbutton("fb");
+            nav.button({
+                "type": "img",
+                "name": "fb",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "321_whorechat/strapsuck.png"
+            }, 321);
+            g.internal.button = "getsucked1";
+            room321.btnclick("buttons");
             break;
         case "icon_suckdick":
             g.internal.excitement++;
@@ -288,6 +384,10 @@ room321.btnclick = function (name) {
             room321.sidechat("suckeddick");
             g.internal.button = "quit";
             room321.btnclick("buttons");
+            break;
+        case "icon_anal":
+            nav.bg("321_whorechat/anal1.jpg");
+            chat(25, 321);
             break;
         case "icon_fuck":
             if (sc.getMissionTask("janice", "webcam", 3).notStarted) {
@@ -333,7 +433,7 @@ room321.btnclick = function (name) {
         case "icon_eatpussy":
             gv.mod("arousal", 15);
             sc.completeMissionTask("janice", "webcam", 1);
-            nav.bg("321_whorechat/eatpussy_m.jpg");
+            nav.bg("321_whorechat/eatpussy_" + gender.pronoun("f") + ".jpg");
             g.internal.excitement += 2;
             g.internal.button = "main";
             room321.btnclick("buttons");
@@ -373,7 +473,7 @@ room321.chatcatch = function (callback) {
         case "straightLoop":
             if (cl.c.chastity === null) {
                 cl.nude();
-                nav.bg("321_whorechat/wait.jpg");
+                nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
                 g.internal.button = "main";
                 room321.btnclick("buttons");
             }
@@ -445,7 +545,6 @@ room321.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "321_whorechat/strapsuck.png"
             }, 321);
-
             break;
         case "straponfuck":
             nav.bg("321_whorechat/strapfuckBg.jpg");
@@ -461,11 +560,30 @@ room321.chatcatch = function (callback) {
                 "image": "321_whorechat/strapfuck.png"
             }, 321);
             break;
+        case "straponfuck1":
+            nav.bg("321_whorechat/strapfuckBg.jpg");
+            zcl.amazon(150, 700, .7, "", false);
+            nav.killbutton("fb");
+            nav.button({
+                "type": "img",
+                "name": "fb",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "321_whorechat/strapfuck1.png"
+            }, 321);
+            g.internal.button = "strap";
+            room321.btnclick("buttons");
+            break;
         case "leave":
             room321.btnclick("icon_quit");
             break;
         case "room316":
             char.room(316);
+            break;
+        case "begin":
+            room321.btnclick("buttons");
             break;
         default:
             break;
@@ -688,7 +806,26 @@ room321.chat = function (chatID) {
                 "But he said I could fuck other guys if I would just stay with him. So here we are, " +
                 "the sexy girl with a big ass and her pussy free femboy! ",
             button: [
-                { chatID: -1, text: "oh. ok", callback: "room316" }  
+                { chatID: 24, text: "Hey!", callback: "" }  
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "janice",
+            text: "Aww is the pussy free femboy mad? Chat, should we shut his loser " +
+                "face with a dick in the mouth, or in the ass? Hahaha!",
+            button: [
+                { chatID: -1, text: "Hey!", callback: "begin" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "janice",
+            text: "I'm going to shove my cute little dildo in my pussy free femboy. " +
+                "This is so hot. I wish I had a real man right now to put his alpha " +
+                "dick in my sopping wet pussy, but I guess fucking my femboy will have to do. ",
+            button: [
+                { chatID: -1, text: "Mmmm please put it in me", callback: "straponfuck1" }
             ]
         },
     ];

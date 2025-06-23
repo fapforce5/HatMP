@@ -630,7 +630,7 @@ room14.btnclick = function (name) {
             }
             else {
                 nav.killbutton("bigguy_30_dick");
-                levels.oralGive(5, true, false, "m");
+                levels.oral(5, true, false, "m", null, "bigguy");
                 if (g.internal.pussy > 4) {
                     char.addtime(180);
                     if (!g.internal.mission2Complete) {
@@ -651,7 +651,7 @@ room14.btnclick = function (name) {
             }
             else {
                 nav.killbutton("bigguy_30_pussy");
-                levels.oralGive(3, true, false, "f");
+                levels.oral(3, true, false, "f", null, "landlord");
                 if (g.internal.dick > 4) {
                     char.addtime(120);
                     if (!g.internal.mission2Complete) {
@@ -671,8 +671,8 @@ room14.btnclick = function (name) {
             if (g.internal > 44) {
                 char.addtime(120, 14);
                 nav.killbutton("bigguy_40");
-                levels.anal(5, false, "m", false);
-                levels.oralGive(5, true, false, "m");
+                levels.anal(5, false, "m", false, null, "bigguy");
+                levels.oral(5, true, false, "m", null, "bigguy");
                 chat(154, 14);
             }
             g.internal++;
@@ -718,7 +718,7 @@ room14.btnclick = function (name) {
                 nav.killbutton("confess4");
                 char.addtime(120);
                 levels.anal(5, false, "m", false);
-                levels.oralGive(5, true, false, "m");
+                levels.oral(5, true, false, "m", null, "bigguy", null, "bigguy");
                 nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
                 nav.button({
                     "type": "img",
@@ -908,7 +908,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task_3_end":
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "landlord");
             gv.mod("horny", 75);
             levels.mod("oral", 50, 0);
             char.addtime(60);
@@ -918,7 +918,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task_4_end":
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "landlord");
             gv.mod("horny", 75);
             levels.mod("oral", 50, 0);
             char.addtime(60);
@@ -927,7 +927,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task_4_goodend":
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "landlord");
             char.addtime(60);
             sc.modLevel("landlord", 75, 10);
             if (!sc.getMissionTask("landlord", "man", 4).complete) {

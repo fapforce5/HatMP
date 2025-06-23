@@ -253,7 +253,7 @@ nav.modbutton = function (name, newImage, newName, newType) {
         $('img[data-name="' + name + '"]').attr("data-name", newName);
 
     if (newType === "img")
-        $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").addClass("room-img");
+        $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").removeClass("room-btn-lips").addClass("room-img");
     else if (newType === "btn")
         $('img[data-name="' + name + '"]').addClass("room-btn rom-event");
 

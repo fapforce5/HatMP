@@ -138,7 +138,7 @@ room172.chatcatch = function (callback) {
             break;
         case "mouthEnd":
             nav.bg("172_punishblack/mouth3.jpg");
-            levels.oral(7);
+            levels.oral(4);
             gv.mod("energy", -9999);
             break;
         case "sitEnd":
@@ -213,7 +213,7 @@ room172.chatcatch = function (callback) {
             break;
         case "cock":
             nav.bg("172_punishblack/cock.jpg");
-            levels.anal(4, true, "m", true);
+            levels.anal(4, true, "m", true, null, "black");
             break;
         case "complete":
             levels.mod("xdress", 30, 999);

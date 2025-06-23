@@ -222,7 +222,7 @@ room725.chatcatch = function (callback) {
         case "chloeGoodEnd":
             sc.completeMissionTask("zoey", "cheating", 1);
             levels.getBlowJob("!emily", "f");
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "chloe");
             levels.fuckass("chloe", "f");
             levels.fuckpussy("!emily");
             levels.mod("xdress", 25, 999);

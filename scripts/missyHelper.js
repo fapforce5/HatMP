@@ -140,7 +140,7 @@ missy.activecase = function () {
             { caseId: 13, name: "case_elijah", txt: "Convince Elijah to spill the details", m: [575], isComplete: activeCaseComplete },
             { caseId: 14, name: "case_beaver", txt: "Work at the Naked Beaver diner to find who has stolen the money. ", m: [250], isComplete: activeCaseComplete },
             { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
-            { caseId: 16, name: "case_damselle", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
+            { caseId: 16, name: "case_damselle", txt: "Rescue the girl in the woods", m: [435], isComplete: activeCaseComplete },
             { caseId: 17, name: "case_sissyfinal", txt: "Sissy Final! 1. Saturday fashion show at the pink room. 2. Pick up someone at the mall food court. 3. Friday stip club. 4. Get fucked  ", m: [200], isComplete: activeCaseComplete },
         ];
         if (activecase > cases.length) {
@@ -177,6 +177,8 @@ missy.getcases = function () {
     var caseList = new Array();
     var canDoCase;
     var piLevel = levels.get("pi").l;
+    if (sissy.st[17].ach)
+        piLevel = 999;
     var completeCounter = 0;
 
     for (i = 4; i < missy.cases.length; i++) {
@@ -305,18 +307,30 @@ missy.getcases = function () {
                             });
                         }
                         break;
-                    //case "case_saveralph":
-                    //    if (sissy.st[10].ach) {
-                    //        canDoCase = piLevel > 4;
-                    //        caseList.push({
-                    //            caseId: i,
-                    //            active: canDoCase,
-                    //            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                    //            notReadyTxt: "Raise your PI Level. ",
-                    //            callback: missy.cases[i].name
-                    //        });
-                    //    }
-                    //    break;
+                    case "case_saveralph":
+                        if (sissy.st[10].ach) {
+                            canDoCase = true;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_damselle":
+                        if (cl.c.panties !== null && cl.c.chest > 0 && g.dt.getDay() < 4)  {
+                            canDoCase = piLevel > 2;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
                 }
             }
         }
@@ -385,17 +399,16 @@ missy.afterLunch = function () {
     if (g.dt.getDay() === 1 || weekly === null || weekly.length < 7) {
         var subweek;
         if (sissy.st[17].ach) {
-            if (Math.floor(Math.random() * 2) === 0)
-                subweek = "pcsc";
+            if (inv.has("lockpick"))
+                subweek = "cccc";
             else
-                subweek = "scpc";
+                subweek = "pcpc";
         }
         else {
-
             if (cl.c.chest < 1)
                 subweek = "eeps";
             else {
-                if (Math.floor(Math.random() * 2 === 0))
+                if (!inv.has("lockpick"))
                     subweek = "epps";
                 else
                     subweek = "epss";

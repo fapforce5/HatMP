@@ -1,10 +1,13 @@
-﻿//Room name
+﻿  //Room name
 var room775 = {};
 room775.main = function () {
     g.internal = cl.hasoutfit("public");
+    if (g.internal === null && !cl.wearing().outerwear) {
+        g.internal = "respectable clothing"
+    }
     if (g.internal === null) {
         nav.bg("775_church/trainride.jpg");
-        if (sc.getLevel("priest") === 0) {
+        if (sc.getMission("priest", "confession").notStarted) {
             chat(10, 775);
         }
         else {
@@ -42,8 +45,7 @@ room775.main = function () {
                 "image": "10_mainchar/10_wardrobe.png"
             }, 775);
         }
-        
-        chat(1000, 775);
+         chat(1000, 775);
     }
     
 };
@@ -53,6 +55,84 @@ room775.btnclick = function (name) {
         case "wardrobe":
             g.pass = 775;
             char.room(8);
+            break;
+        case "icon_masturbate":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 1);
+            chat(50, 775);
+            break;
+        case "icon_peek":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 2);
+            chat(51, 775);
+            break;
+        case "icon_job":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 3);
+            chat(55, 775);
+            break;
+        case "icon_finger":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 4);
+            chat(57, 775);
+            break;
+        case "icon_dildo":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 5);
+            chat(59, 775);
+            break;
+        case "icon_dildosuck":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 6);
+            chat(58, 775);
+            break;
+        case "icon_penis":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 7);
+            chat(60, 775);
+            break;
+        case "icon_sissyschool":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 8);
+            chat(66, 775);
+            break;
+        case "icon_oral_f":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 9);
+            chat(61, 775);
+            break;
+        case "icon_oral_m":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 10);
+            chat(62, 775);
+            break;
+        case "icon_anal":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 11);
+            chat(63, 775);
+            break;
+        case "icon_beast":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 12);
+            chat(64, 775);
+            break;
+        case "icon_nun":
+            nav.kill();
+            sc.modLevel("priest", 34);
+            sc.completeMissionTask("priest", "confession", 13);
+            chat(71, 775);
             break;
         default:
             break;
@@ -95,109 +175,42 @@ room775.chatcatch = function (callback) {
                 char.room(10);
             }, 1200);
             break;
-        case "level1":
-            sc.modLevel("priest", 100, 1);
-            break;
         case "confession0":
-            g.internal = { sincount: 0, counter: 0, n: new Array(), o: new Array() };
+            nav.kill();
             nav.bg("775_church/confession0.jpg");
-            var dildoanal = stats.get("masturbate", "dildo");// gv.get("dildoanal");
-            var fingeranal = stats.get("masturbate", "finger"); //gv.get("fingeranal");
-            var dildooral = stats.get("masturbate", "oral"); //gv.get("dildooral");
-            var jackoff = stats.get("masturbate", "dick"); //gv.get("jackoff");
-
-            var temp = sex.getFuck();
-            var didthat = gv.get("confession").split(" ");
-
-            if ((temp.anal.take.f.sin + temp.anal.take.m.sin) > 0) {
-                if (didthat.includes("anal"))
-                    g.internal.o.push({ n: "anal", c: temp.anal.take.f.sin + temp.anal.take.m.sin });
-                else
-                    g.internal.n.push({ n: "anal", c: temp.anal.take.f.sin + temp.anal.take.m.sin });
-            }
-
-            if (temp.anal.give.m.sin > 0)
-                if (didthat.includes("fuckedGuy"))
-                    g.internal.o.push({ n: "fuckedGuy", c: temp.anal.give.m.sin });
-                else
-                    g.internal.n.push({ n: "fuckedGuy", c: temp.anal.give.m.sin });
-
-            if ((temp.piss.take.m.sin + temp.piss.take.f.sin + temp.drankpiss.take.f.sin + temp.drankpiss.take.m.sin) > 0)
-                if (didthat.includes("piss"))
-                    g.internal.o.push({ n: "piss", c: temp.anal.give.m.sin });
-                else
-                    g.internal.n.push({ n: "piss", c: temp.anal.give.m.sin });
-
-            if (temp.oral.give.m.sin > 0)
-                if (didthat.includes("blewGuy"))
-                    g.internal.o.push({ n: "blewGuy", c: temp.anal.give.m.sin });
-                else
-                    g.internal.n.push({ n: "blewGuy", c: temp.anal.give.m.sin });
-
-            if (temp.oral.take.m.sin > 0)
-                if (didthat.includes("bjguy"))
-                    g.internal.o.push({ n: "bjguy", c: temp.anal.give.m.sin });
-                else
-                    g.internal.n.push({ n: "bjguy", c: temp.anal.give.m.sin });
-
-            if ((temp.hand.give.m.sin + temp.fist.give.m.sin) > 0)
-                if (didthat.includes("jackedGuyOff"))
-                    g.internal.o.push({ n: "jackedGuyOff", c: temp.oral.give.f.sin });
-                else
-                    g.internal.n.push({ n: "jackedGuyOff", c: temp.oral.give.f.sin });
-
-            if (temp.pussy.give.f.sin > 0)
-                if (didthat.includes("sexwithgirl"))
-                    g.internal.o.push({ n: "sexwithgirl", c: temp.anal.give.m.sin });
-                else
-                    g.internal.n.push({ n: "sexwithgirl", c: temp.anal.give.m.sin });
-
-            if (temp.oral.take.f.sin > 0)
-                if (didthat.includes("bjgirl"))
-                    g.internal.o.push({ n: "bjgirl", c: temp.oral.give.f.sin });
-                else
-                    g.internal.n.push({ n: "bjgirl", c: temp.oral.give.f.sin });
-
-            if (temp.oral.give.f.sin > 0)
-                if (didthat.includes("atepussy"))
-                    g.internal.o.push({ n: "atepussy", c: temp.oral.give.f.sin });
-                else
-                    g.internal.n.push({ n: "atepussy", c: temp.oral.give.f.sin });
-
-            if ((temp.hand.give.f.sin + temp.fist.give.f.sin) > 0)
-                if (didthat.includes("fingeredChick"))
-                    g.internal.o.push({ n: "fingeredChick", c: temp.oral.give.f.sin });
-                else
-                    g.internal.n.push({ n: "fingeredChick", c: temp.oral.give.f.sin });
-
-            if ((temp.hand.take.f.sin + temp.hand.take.m.sin) > 0)
-                if (didthat.includes("gotHandJob"))
-                    g.internal.o.push({ n: "gotHandJob", c: temp.oral.give.f.sin });
-                else
-                    g.internal.n.push({ n: "gotHandJob", c: temp.oral.give.f.sin });
-
-            if (dildoanal > 0 && !didthat.includes("dildoanal"))
-                g.internal.n.push({ n: "dildoanal", c: 1 });
-
-            if (dildooral > 0 && !didthat.includes("dildooral"))
-                g.internal.n.push({ n: "dildooral", c: 1 });
-
-            if (fingeranal > 0 && !didthat.includes("fingeranal"))
-                g.internal.n.push({ n: "fingeranal", c: 1 });
-
-            if (jackoff > 0 && !didthat.includes("jackoff"))
-                g.internal.n.push({ n: "jackoff", c: 1 });
-
-            if (g.internal.o.length === 0 && g.internal.n.length === 0)
-                g.internal.o.push({ n: "empty", c: 0 });
-
-            
-
-            var priestLevelCon = sc.getLevel("priest");
-            if (priestLevelCon === 0)
+            if (sc.getMission("priest", "confession").notStarted) {
+                sc.startMission("priest", "confession");
+                sc.show("priest");
                 chat(17, 775);
-            else
-                chat(4, 775);
+                return;
+            }
+            let counter = 0;
+            var prp = sc.getMission("priest", "confession");
+            let sclist;
+            for (let i = 0; i < sc.charMission[prp.i].mission[prp.j].task.length; i++) {
+                if (sc.charMission[prp.i].mission[prp.j].task[i].mStatus > 0 &&
+                    sc.charMission[prp.i].mission[prp.j].task[i].mStatus < 100 && counter < 10) {
+                    switch (i) {
+                        case 1: sclist = "icon_masturbate"; break;
+                        case 2: sclist = "icon_peek"; break;
+                        case 3: sclist = "icon_job"; break;
+                        case 4: sclist = "icon_finger"; break;
+                        case 5: sclist = "icon_dildo"; break;
+                        case 6: sclist = "icon_dildosuck"; break;
+                        case 7: sclist = "icon_penis"; break;
+                        case 8: sclist = "icon_sissyschool"; break;
+                        case 9: sclist = "icon_oral_f"; break;
+                        case 10: sclist = "icon_oral_m"; break;
+                        case 11: sclist = "icon_anal"; break;
+                        case 12: sclist = "icon_beast"; break;
+                        case 13: sclist = "icon_nun"; break;
+                    }
+                    sc.select(sclist, "775_church/" + sclist + ".webp", counter);
+                    counter++;
+                }
+            }
+            if (counter === 0)
+                chat(48, 775);
             break;
         default:
             break;
@@ -234,26 +247,18 @@ room775.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "priest",
-            text: "Church update in progress...",
+            text: sp[g.rand(0, sp.length)],
             button: [
-                { chatID: -1, text: "...", callback: "leave" }
+                { chatID: 0, text: "...", callback: "" }
             ]
         };
-        //return {
-        //    chatID: 999,
-        //    speaker: "priest",
-        //    text: sp[Math.floor(Math.random() * sp.length)],
-        //    button: [
-        //        { chatID: 0, text: "...", callback: "" }
-        //    ]
-        //};
     }
     else if (chatID === 998) {
         g.internal = gv.get("money");
 
         if (g.internal > 100)
             g.internal = 100;
-        else if(g.internal < 1)
+        else if (g.internal < 1)
             g.internal = 0;
 
         if (g.internal > 0)
@@ -277,373 +282,7 @@ room775.chat = function (chatID) {
             };
 
     }
-    else if (chatID === 500) {
-        var sexchat = null;
-        var isNew = false;
-        if (g.internal.n.length > 0) {
-            sexchat = g.internal.n.pop();
-            isNew = true;
-        }
-        else if(g.internal.o.length > 0)
-            sexchat = g.internal.o.pop();
-        
-        var qq = g.internal.counter > 4
-        g.internal.counter++;
 
-        if (sexchat === null) {
-            if (g.internal.sincount === 0)
-                return room775.chat(8);
-            else if (g.internal.sincount < 50)
-                return room775.chat(45);
-            else if (g.internal.sincount < 100)
-                return room775.chat(46);
-            else
-                return room775.chat(47);
-        }
-        else {
-            switch (sexchat.n) {
-                case "anal":
-                    g.internal.sincount += 100;
-                    if (isNew) {
-                        gv.mod("confession", "anal ");
-                        sc.modLevel("priest", 150, 7);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I have been anally penetrated by another man's penis. ",
-                            button: [
-                                { chatID: qq ? 9 : 31, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 50, 7);
-                    if (sexchat.c > 1) {
-                        sc.modLevel("priest", 30, 7);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I've had " + sexchat.c + " people anally penetrate me. My butt is still sore from all the dick I've taken. ",
-                            button: [
-                                { chatID: qq ? 9 : 5, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    else {
-                        sc.modLevel("priest", 25, 7);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I had anal sex. ",
-                            button: [
-                                { chatID: qq ? 9 : 5, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                case "fuckedGuy":
-                    g.internal.sincount += 80;
-                    if (isNew) {
-                        gv.mod("confession", "fuckedGuy ");
-                        sc.modLevel("priest", 80, 7);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I put my penis in another man's anus. ",
-                            button: [
-                                { chatID: qq ? 9 : 30, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 25, 7);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I stuck my penis in another man's butthole. Totally gay sex! ",
-                        button: [
-                            { chatID: qq ? 9 : 5, text: "...", callback: "" }
-                        ]
-                    };
-                case "piss":
-                    g.internal.sincount += 80;
-                    if (isNew) {
-                        sc.modLevel("priest", 80, 5);
-                        gv.mod("confession", "piss ");
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I was peed on by another. ",
-                            button: [
-                                { chatID: qq ? 9 : 29, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 25, 7);
-                    if (chat.c > 1)
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I've been pissed on many times since last we spoke. ",
-                            button: [
-                                { chatID: qq ? 9 : 6, text: "...", callback: "" }
-                            ]
-                        };
-                    else
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "Someone pissed on me. ",
-                            button: [
-                                { chatID: qq ? 9 : 6, text: "...", callback: "" }
-                            ]
-                        };
-                case "blewGuy":
-                    g.internal.sincount += 60;
-                    if (isNew) {
-                        sc.modLevel("priest", 100, 7);
-                        gv.mod("confession", "blewGuy ");
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I gave a guy a bro-job. You know, when you give a guy you know a friendly blow job. ",
-                            button: [
-                                { chatID: qq ? 9 : 26, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 20, 7);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I've had " + (sexchat.c > 1 ? "a penis " : "many penises ") + "in my mouth giving blowjobs. ",
-                        button: [
-                            { chatID: qq ? 9 : 6, text: "...", callback: "" }
-                        ]
-                    };
-                case "bjguy":
-                    g.internal.sincount += 60;
-                    if (isNew) {
-                        gv.mod("confession", "bjguy ");
-                        sc.modLevel("priest", 60, 7);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "A guy gave me a blow job. ",
-                            button: [
-                                { chatID: qq ? 9 : 25, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 15, 7);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "A guy gave me oral sex. ",
-                        button: [
-                            { chatID: qq ? 9 : 7, text: "...", callback: "" }
-                        ]
-                    };
-
-                case "jackedGuyOff":
-                    g.internal.sincount += 50;
-                    if (isNew) {
-                        gv.mod("confession", "jackedGuyOff ");
-                        sc.modLevel("priest", 50, 7);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I... uh... masturbated with a guy. ",
-                            button: [
-                                { chatID: qq ? 9 : 24, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 40, 7);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I jacked a guy off ",
-                        button: [
-                            { chatID: qq ? 9 : 6, text: "...", callback: "" }
-                        ]
-                    };
-                case "sexwithgirl":
-                    g.internal.sincount += 50;
-                    if (isNew) {
-                        gv.mod("confession", "sexwithgirl ");
-                        sc.modLevel("priest", 75, 5);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I had sex... with a girl! ",
-                            button: [
-                                { chatID: qq ? 9 : 23, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 25, 5);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I had sex... With a girl! ",
-                        button: [
-                            { chatID: qq ? 9 : 7, text: "...", callback: "" }
-                        ]
-                    };
-                case "bjgirl":
-                    g.internal.sincount += 30;
-                    if (isNew) {
-                        gv.mod("confession", "bjgirl ");
-                        sc.modLevel("priest", 25, 5);
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "A girl gave me oral sex. It was fantastic! ",
-                            button: [
-                                { chatID: qq ? 9 : 22, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 5, 5);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "A girl gave me oral sex. ",
-                        button: [
-                            { chatID: qq ? 9 : 7, text: "...", callback: "" }
-                        ]
-                    };
-
-                case "atepussy":
-                    g.internal.sincount += 30;
-                    if (isNew) {
-                        sc.modLevel("priest", 25, 5);
-                        gv.mod("confession", "atepussy ");
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I admit I performed oral sex on a girl. ",
-                            button: [
-                                { chatID: qq ? 9 : 21, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 10, 5);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I licked a vagina. ",
-                        button: [
-                            { chatID: qq ? 9 : 7, text: "...", callback: "" }
-                        ]
-                    };
-
-                case "fingeredChick":
-                    g.internal.sincount += 20;
-                    if (isNew) {
-                        sc.modLevel("priest", 25, 5);
-                        gv.mod("confession", "fingeredChick ");
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I must admit, I've touched a girl's vagina with my fingers. ",
-                            button: [
-                                { chatID: qq ? 9 : 20, text: "...", callback: "" }
-                            ]
-                        };
-
-                    }
-                    sc.modLevel("priest", 5, 5);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I touched a vagina. ",
-                        button: [
-                            { chatID: qq ? 9 : 7, text: "...", callback: "" }
-                        ]
-                    };
-
-                case "gotHandJob":
-                    g.internal.sincount += 20;
-                    if (isNew) {
-                        sc.modLevel("priest", 20, 5);
-                        gv.mod("confession", "gotHandJob ");
-                        return {
-                            chatID: 500,
-                            speaker: "me",
-                            text: "I have to confess I was jacked off. It felt great, but I know it's wrong. ",
-                            button: [
-                                { chatID: qq ? 9 : 19, text: "...", callback: "" }
-                            ]
-                        };
-                    }
-                    sc.modLevel("priest", 5, 5);
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I was jacked off. ",
-                        button: [
-                            { chatID: qq ? 9 : 7, text: "...", callback: "" }
-                        ]
-                    };
-                case "jackoff":
-                    g.internal.sincount += 10;
-                    sc.modLevel("priest", 20, 3);
-                    gv.mod("confession", "jackoff ");
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I masturbated to porn. It was a mess. I got cum all over. ",
-                        button: [
-                            { chatID: qq ? 9 : 40, text: "...", callback: "" }
-                        ]
-                    };
-                case "fingeranal":
-                    g.internal.sincount += 10;
-                    sc.modLevel("priest", 20, 3);
-                    gv.mod("confession", "fingeranal ");
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I inserted my finger into my rectum.  ",
-                        button: [
-                            { chatID: qq ? 9 : 41, text: "...", callback: "" }
-                        ]
-                    };
-                case "dildooral":
-                    g.internal.sincount += 10;
-                    sc.modLevel("priest", 20, 3);
-                    gv.mod("confession", "dildooral ");
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I sucked on a dildo with my mouth. ",
-                        button: [
-                            { chatID: qq ? 9 : 42, text: "...", callback: "" }
-                        ]
-                    };
-                case "dildoanal":
-                    g.internal.sincount += 20;
-                    sc.modLevel("priest", 20, 3);
-                    gv.mod("confession", "dildoanal ");
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I inserted a dildo into my anus and had sex with it. ",
-                        button: [
-                            { chatID: qq ? 9 : 44, text: "...", callback: "" }
-                        ]
-                    };
-                case "empty":
-                    return {
-                        chatID: 500,
-                        speaker: "me",
-                        text: "I am free of sin. ",
-                        button: [
-                            { chatID: qq ? 9 : 8, text: "...", callback: "" }
-                        ]
-                    };
-            }
-        }
-    }
     else {
         var cArray = [
             {
@@ -771,7 +410,7 @@ room775.chat = function (chatID) {
                     "on this particular Sunday. For example, Leviticus 18:22 states that You shall not lie with a male as with " +
                     "a woman; it is an abomination.' This passage has been used to argue that transgender people are sinful " +
                     "and that they should be excluded from the church. We should not exclude them and turn them away from christ, " +
-                    "instead we need to bring them in and covert their sinful ways! Lead them into the light of the bible! " ,
+                    "instead we need to bring them in and covert their sinful ways! Lead them into the light of the bible! ",
                 button: [
                     { chatID: 15, text: "...", callback: "zoomout" }
                 ]
@@ -812,7 +451,7 @@ room775.chat = function (chatID) {
                 text: "I know. A young man needs to be careful out there. You don't want to spoil your trip to heaven by partaking in " +
                     "pleasures of the flesh. I know you'll do what's right. So tell be all your sins so I may absolve you. ",
                 button: [
-                    { chatID: 500, text: "...", callback: "level1" }
+                    { chatID: 49, text: "I've been a good boy. I don't have anything to confess. ", callback: "" }
                 ]
             },
             {
@@ -821,7 +460,7 @@ room775.chat = function (chatID) {
                 text: "While this seems innocent, pleasures of the flesh can lead to futher sin. You must learn to control " +
                     "youself while dating, and only after marriage should you partake in such activities. ",
                 button: [
-                    { chatID: 500, text: "ok. ", callback: "" }
+                    { chatID: 49, text: "ok. ", callback: "" }
                 ]
             },
             {
@@ -832,7 +471,7 @@ room775.chat = function (chatID) {
                     "advantage of the poor innocent young ladies. They are the weaker sex and they can freeze in fear of your " +
                     "wandering hands. ",
                 button: [
-                    { chatID: 500, text: "Yes Father.", callback: "" }
+                    { chatID: 49, text: "Yes Father.", callback: "" }
                 ]
             },
             {
@@ -842,7 +481,7 @@ room775.chat = function (chatID) {
                     "most delicate areas of a young lady. So not only are you walking down the path to hell, but you lead that " +
                     "poor girl along that path with your forked tongue. ",
                 button: [
-                    { chatID: 500, text: "Yes Father.", callback: "" }
+                    { chatID: 49, text: "Yes Father.", callback: "" }
                 ]
             },
             {
@@ -853,7 +492,7 @@ room775.chat = function (chatID) {
                     "but you have planted the seeds of sin in another. You two should practice wholesome dating in public to fend " +
                     "away temptations of the flesh. ",
                 button: [
-                    { chatID: 500, text: "Yes Father.", callback: "" }
+                    { chatID: 49, text: "Yes Father.", callback: "" }
                 ]
             },
             {
@@ -865,7 +504,7 @@ room775.chat = function (chatID) {
                     "of holiness and purity. Consent is important and girls are weak in the ways of men. For both of your " +
                     "sakes, you must turn from this path or you will forever wander in the fires of sin. ",
                 button: [
-                    { chatID: 500, text: "Yes Father.", callback: "" }
+                    { chatID: 49, text: "Yes Father.", callback: "" }
                 ]
             },
             {
@@ -876,7 +515,7 @@ room775.chat = function (chatID) {
                     "sins. Never be alone with your male friends. Hang out with them in public where sins can not happen. Once " +
                     "you settle down and marry a nice girl, all this will be forgotten. ",
                 button: [
-                    { chatID: 500, text: "Yes Father.", callback: "" }
+                    { chatID: 49, text: "Yes Father.", callback: "" }
                 ]
             },
             {
@@ -888,7 +527,7 @@ room775.chat = function (chatID) {
                     "a nice wholesome girl to show you how to live a proper life. There are many in this church and the community, " +
                     "you need to better yourself and find her. ",
                 button: [
-                    { chatID: 500, text: "Yes Father.", callback: "" }
+                    { chatID: 49, text: "Yes Father.", callback: "" }
                 ]
             },
             {
@@ -907,7 +546,7 @@ room775.chat = function (chatID) {
                 text: "Well that's a relief. This is the first step on the road to salvation. You must live a life of chastity until " +
                     "your marriage vows are complete in the church. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -917,7 +556,7 @@ room775.chat = function (chatID) {
                     "to enjoy those same pleasures with a man is the greatest sin. You must seek a life of chastity until you " +
                     "find a monogamous relationship with the right girl. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -927,7 +566,7 @@ room775.chat = function (chatID) {
                     "against such practices. To bare the genitals to one who isn't your wife, priest, or doctor is can lead " +
                     "to sins of the flesh. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -937,7 +576,7 @@ room775.chat = function (chatID) {
                     "entire life. You must seek god, and ask him to send you a innocent young wife so that you may use your  " +
                     "penis to create a family. Seek not the pleasures of the flesh, but the life of servitude to god and family. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -998,7 +637,7 @@ room775.chat = function (chatID) {
                 speaker: "me",
                 text: "Oh yes. I could feel him pick up speed and really start fucking me. You know that hard focued fucking. " +
                     "Then he pulled my hips back and thrust forward into me getting his dick as deep into me as he could. I " +
-                    "could feel the pulses of his cock as he drained his dick into me. ",
+                    "could feel the pulses of his cock as he drained his cum inside me. ",
                 button: [
                     { chatID: 38, text: "...", callback: "confessionAnal1" }, //add cum shot
                 ]
@@ -1018,7 +657,7 @@ room775.chat = function (chatID) {
                 text: "That was odd. I'm pretty sure that priest just masturbated and came all over the booth. Does he want " +
                     "to fuck me? No. Can't be that. He's a priest. I'm sure it's just stress or something. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "leave" }, 
+                    { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
             {
@@ -1029,7 +668,7 @@ room775.chat = function (chatID) {
                     "into her so she may raise your children. A woman's purpose is to raise children, and man's is to pollinate " +
                     "her so she may fulfil her purpose. Plant your seeds, son, don't waste them. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -1038,7 +677,7 @@ room775.chat = function (chatID) {
                 text: "Oh, haha. It is only natural to be curious about one's own body. It's ok to explore as long as you don't " +
                     "take it further. In the future try only to touch your anus when cleaning it. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -1056,7 +695,7 @@ room775.chat = function (chatID) {
                     "to meet. The penis is designed to create children, not as a lolly. For your own sanity, refrain from " +
                     "putting fake penises in your mouth. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -1066,7 +705,7 @@ room775.chat = function (chatID) {
                     "inserting a toy into yourself is a dangrous step in the path to damnation. You must stop abusing yourself " +
                     "if you wish to get into the kingdom of heaven. ",
                 button: [
-                    { chatID: 500, text: "Yes Father. ", callback: "" },
+                    { chatID: 49, text: "Yes Father. ", callback: "" },
                 ]
             },
             {
@@ -1094,6 +733,228 @@ room775.chat = function (chatID) {
                     "soul if it's not already too late. Change your ways or dark will be the path you walk. ",
                 button: [
                     { chatID: -1, text: "Yes Father. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "me",
+                text: "I have nothing new to confess. ",
+                button: [
+                    { chatID: 49, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "priest",
+                text: "Very well. You may go in peace. Spread love to your fellow man. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "me",
+                text: "I masturbated to porn. It was a mess. I got cum all over. ",
+                button: [
+                    { chatID: 40, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "me",
+                text: "I peeked on my " + sc.n("el") + " while they were taking a shower. ",
+                button: [
+                    { chatID: 52, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "priest",
+                text: "That is quite troubling. Lusting after a nude girl is a sin, but lusting after your own " + sc.n("el") +
+                    " is truly sickening. Why did you do this? ",
+                button: [
+                    { chatID: 53, text: "I was curious about their bodies. ", callback: "" },
+                    { chatID: 54, text: "I really really want to have sex with them!", callback: "" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "priest",
+                text: "Oh. hahaha. In that case, it is normal to be curious about the opposit sex. But you must refrain from " +
+                    "lusting after those so close to you. Go outside your own house and find members of the opposit sex to " +
+                    "learn about their mind and sould before you start lusting after their body.",
+                button: [
+                    { chatID: 49, text: "Oh hehe ok.", callback: "" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "priest",
+                text: "Oh no. You must refrain from such evil thoughts. As the good word states, you shall not " +
+                    "indulge in familiarities with relatives, such as kissing, embracing, winking, peeping, " +
+                    "which may lead to incest. Go think on the evils of your sin and learn to control these  " +
+                    "lustftul thought. ",
+                button: [
+                    { chatID: 49, text: "I will", callback: "" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "me",
+                text: "I started a new job, but my boss, Missy, seems... a little different. She asked me some " +
+                    "very personal questions about my sexuality. It made me feel very uncomfortable.",
+                button: [
+                    { chatID: 56, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "priest",
+                text: "Hmmm.... I know a young man, like yourself, needs employment for idle hands are the devils " +
+                    "plaything. You know what's right and what's wrong. If you find yourself doing the wrong things " +
+                    "then you have the choice. A sin is committed when you make the wrong choice. You must have the  " +
+                    "moral fortitude to do the right thing if you feel this job is taking your down the dark path. ",
+                button: [
+                    { chatID: 49, text: "I will make the right choice when if it comes.", callback: "" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "me",
+                text: "I inserted my finger into my rectum.  ",
+                button: [
+                    { chatID: 41, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "me",
+                text: "I sucked on a dildo with my mouth. ",
+                button: [
+                    { chatID: 42, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "me",
+                text: "I inserted a dildo into my anus and had sex with it. ",
+                button: [
+                    { chatID: 44, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "me",
+                text: "I had sex... with a girl! ",
+                button: [
+                    { chatID: 23, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "me",
+                text: "I admit I performed oral sex on a girl. ",
+                button: [
+                    { chatID: 21, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "me",
+                text: "I gave a guy a bro-job. You know, when you give a guy you know a friendly blow job. ",
+                button: [
+                    { chatID: 26, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "me",
+                text: "I have been anally penetrated by another man's penis. ",
+                button: [
+                    { chatID: 31, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "me",
+                text: "I bent over so a beast may anally penetrate me. ",
+                button: [
+                    { chatID: 65, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "priest",
+                text: "What? Gross. No. So gross. I don't know what to say. You disgust me. Get out of here so I may " +
+                    "take confessions from someone that may actually make it to heaven.",
+                button: [
+                    { chatID: -1, text: "Yes father.", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "me",
+                text: "Recently I have joined a school for sissies. ",
+                button: [
+                    { chatID: 67, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "priest",
+                text: "A school for sissies? I'm not familiar with this. Please tell me more. ",
+                button: [
+                    { chatID: 68, text: "I learn how to be a girl", callback: "" },
+                    { chatID: 68, text: "I learn to be a slutty femboy", callback: "" },
+                    { chatID: 68, text: "I become a hole for all the cocks!", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "priest",
+                text: "This is most troubling. Do you enjoy this school? ",
+                button: [
+                    { chatID: 69, text: "I feel pressured to take the course", callback: "" },
+                    { chatID: 70, text: "I love it so very very much!", callback: "" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "priest",
+                text: "That is a relief. Pressured into sin does not absolve you from commiting the sin. The role of " +
+                    "a man is sacred. A man shall not take the role of a woman, for it is an affront to God. " +
+                    "even under pressure, you find find your strength and save yourself from this horrid school.",
+                button: [
+                    { chatID: 49, text: "Yes father", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "priest",
+                text: "Oh my. You must save yourself before you're so deep in sin that's it's too late. The role of " +
+                    "a man is sacred. A man shall not take the role of a woman, for it is an affront to God. " +
+                    "even under pressure, you find find your strength and save yourself from this horrid school.",
+                button: [
+                    { chatID: 49, text: "Yes father", callback: "" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "me",
+                text: "I must confess. I've been corrupted by " + sc.n("nun") + ". It started innocent enough, but you could " +
+                    "say I've met her in the biblical way. ",
+                button: [
+                    { chatID: 72, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "priest",
+                text: "That is quite troublesome. Sister Mary has always had her rough edges, but I would never thought " +
+                    "she would corrupt a promising youth like yourself. This is not your doing, but hers. Have no worries, " +
+                    "the church will help her find the path lost to her. Thank you for your honesty in such a delicate matter. ",
+                button: [
+                    { chatID: 49, text: "...", callback: "" },
                 ]
             },
         ];

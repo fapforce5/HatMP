@@ -757,14 +757,15 @@ room601.chatcatch = function (callback) {
             if (g.gethourdecimal() > 17)
                 char.addDays(1);
             char.settime(3, 0);
-            levels.oralGive(3, true, false, "m");
-            levels.oralGive(2, false, false, "m");
-            levels.oralGive(4, false, false, "m");
-            levels.anal(3, false, "m", true);
+            levels.oral(3, true, false, "m", null, "unk");
+            levels.oral(2, false, false, "m");
+            levels.oral(4, false, false, "m");
+            levels.anal(3, false, "m", true, null, "unk");
             levels.anal(2, false, "m", true);
             levels.anal(4, false, "m", true);
             gv.mod("money", 1000);
             daily.set("stripper");
+            gv.set("sissyfinal_stripper", true);
             char.room(602);
             break;
         default:

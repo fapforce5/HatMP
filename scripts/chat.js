@@ -45,7 +45,18 @@ privateChat.makeChat = function (entry, chatID, roomID) {
             });
         }
         counter = (counter === 0 ? counter = 1 : counter);
-        $('.room-chatBtn').css('width', (99 / counter) + '%');
+        $('.room-chatBtn').css('width', "calc(" + (100 / counter) + '% - ' + ((72 * g.ratio) / counter) + "px)");
+        if (g.skipChat) {
+            setTimeout(function () {
+                privateChat.skipChat();
+            }, 100);
+        }
+        else {
+            if(counter === 1)
+                $("#room_chatskip").show();
+            else
+                $("#room_chatskip").hide();
+        }
     }
     else {
         g.error("chat", "chatID:" + chatID + " roomID: " + roomID);
@@ -101,36 +112,55 @@ privateChat.speakerInfo = function (charName) {
     }
 };
 
+privateChat.skipChat = function () {
+    if (g.roomTimeout === null && g.roomTimeout2 === null) {
+        if ($('#room_chatBtn0').is(":visible")) {
+            if (!$('#room_chatBtn1').is(":visible") && !$('#room_chatBtn2').is(":visible")) {
+                $('#room_chatBtn0').click();
+            }
+            else {
+                g.skipChat = false;
+            }
+        }
+    }
+};
+
 $(document).ready(function () {
     $(document).bind('keyup', function (e) {
         if (e.which === 32) {//space bar
-            if (g.roomTimeout === null && g.roomTimeout2 === null) {
-                if ($('#room_chatBtn0').is(":visible")) {
-                    if (!$('#room_chatBtn1').is(":visible") && !$('#room_chatBtn2').is(":visible")) {
-                        $('#room_chatBtn0').click();
-                    }
-                }
+            privateChat.skipChat();
+        }
+        else if(e.which === 83){
+            if($("#room_chatskip").is(":visible")){
+                g.skipChat = true;
+                privateChat.skipChat();
             }
         }
     });
+
+    $("#room_chatskip").click(function () {
+        g.skipChat = true;
+        privateChat.skipChat();
+    });
+
     $('.room-chatBtnClick').click(function () {
         var roomID = $(this).data('roomid');
         var chatID = $(this).data('chatid');
         var callback = $(this).data('callback');
-        if (chatID === 0 && roomID === 0) { console.log("chatID 0 and roomId 0");}
-        else {
-            if (chatID < 0) {
-                $('#room_chatOverlay').hide();
-                $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
-                $('#room_footerSpeach').html("");
-                $('#room_chatSpeaker').html('');
-                $('#room_footer').show();
-                //$('#char_charDisplay').show();
-            }
-            else
-                chat(chatID, roomID);
-            if (callback !== '')
-                window[g.room(roomID)]["chatcatch"](callback);
+
+        if (chatID < 0) {
+            $('#room_chatOverlay').hide();
+            $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
+            $('#room_footerSpeach').html("");
+            $('#room_chatSpeaker').html('');
+            $('#room_footer').show();
+            g.skipChat = false;
+            //$('#char_charDisplay').show();
         }
+        else
+            chat(chatID, roomID);
+        if (callback !== '')
+            window[g.room(roomID)]["chatcatch"](callback);
+
     });
 });

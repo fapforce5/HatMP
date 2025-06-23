@@ -379,18 +379,17 @@ input[type=text]:disabled{
 
 .char-alert-bottom {
     position: fixed;
-    width: 60%;
-    left: 15%;
-    top: 80vh;
+    width: 40%;
+    right: 0;
+    top: 90vh;
     background: #e75480;
     color: #fff;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
-    padding: 10px;
+    padding: 2px;
     display: none;
     border-radius: 5px;
-    margin-left: 10px;
     z-index: 999;
 }
 

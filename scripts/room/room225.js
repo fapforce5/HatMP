@@ -4,13 +4,13 @@ room225.main = function () {
     if (g.pass === "endSleepyTime") {
         g.pass = null;
         cl.nude();
-        levels.anal(3, false, "m", true);
+        levels.anal(3, false, "m", true, null, "unk");
         levels.anal(2, false, "m", true);
         levels.anal(4, false, "m", true);
         levels.anal(3, false, "m", true);
-        levels.oralGive(4, false, false, "m");
-        levels.oralGive(3, true, false, "m");
-        levels.oralGive(2, false, false, "m");
+        levels.oral(4, false, false, "m", null, "unk");
+        levels.oral(3, true, false, "m", null, "unk");
+        levels.oral(2, false, false, "m", null, "unk");
         gv.set("energy", 10);
         nav.bg("225_sewer/drunk.jpg");
         nav.next("drunk");
@@ -111,7 +111,7 @@ room225.btnclick = function (name) {
             nav.bg("225_sewer/p1_" + g.internal + ".jpg");
             if (g.internal === 5) {
                 nav.killbutton("p11");
-                levels.oralGive(3, true, false, "m");
+                levels.oral(3, true, false, "m", null, "unk");
                 gv.mod("money", 20);
                 cl.c.cumface = true;
                 chat(14, 225);
@@ -145,7 +145,7 @@ room225.chatcatch = function (callback) {
     switch (callback) {
         case "tojail":
             g.pass = "jail";
-            char.room(425);
+            char.room(376);
             break;
         case "reset":
             char.room(225);
@@ -160,7 +160,7 @@ room225.chatcatch = function (callback) {
             nav.bg("225_sewer/p0_3.jpg");
             break;
         case "p0end":
-            levels.anal(3, false, "m", true);
+            levels.anal(3, false, "m", true, null, "unk");
             char.addtime(120);
             gv.mod("money", 50);
             char.room(225);
@@ -205,7 +205,7 @@ room225.chatcatch = function (callback) {
             nav.next("p2");
             break;
         case "p25":
-            levels.anal(3, false, "m", true);
+            levels.anal(3, false, "m", true, null, "unk");
             gv.mod("money", 100);
             char.nexttime(7);
             char.room(225);

@@ -266,7 +266,7 @@ room221.chatcatch = function (callback) {
             nav.bg("221_recip/" + callback + ".jpg");
             break;
         case "zpunk4":
-            levels.oralGive(3, true, false, "m");
+            levels.oral(3, true, false, "m", null, "unk");
             nav.killall();
             nav.bg("221_recip/" + callback + ".jpg");
             break;
@@ -299,7 +299,7 @@ room221.chatcatch = function (callback) {
             break;
         case "zm4":
             nav.killall();
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "unk");
             nav.bg("221_recip/z_m.jpg");
             break;
         case "jefferyPanties":

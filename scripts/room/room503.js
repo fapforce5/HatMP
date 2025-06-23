@@ -66,7 +66,9 @@ room503.btnclick = function (name) {
             cl.nude();
             zcl.displayMain(0, 400, .22, "shower", false);
             nav.bg("503_bathroom/shower.jpg");
-            if (inv.get("razor").count > 0)
+            if (cl.c.bodyhair < -999)
+                chat(4, 503);
+            else if (inv.get("razor").count > 0)
                 chat(3, 503);
             else
                 chat(4, 503);

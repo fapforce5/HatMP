@@ -350,7 +350,7 @@ room461.chatcatch = function (callback) {
             break;
         case "cult13":
             nav.killbutton("cult12");
-            levels.anal(3, false, "m", true);
+            levels.anal(3, false, "m", true, null, "unk");
             nav.bg("461_run/cult13.jpg");
             break;
         case "cult14":

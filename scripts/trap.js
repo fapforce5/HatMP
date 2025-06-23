@@ -1105,24 +1105,24 @@ room1005.chatcatch = function (callback) {
             break;
         case "hole_giveItem":
             switch (trap.internal) {
-                case "shoes and socks": cl.remove("shoes", cl.c.shoes); cl.remove("socks", cl.c.socks); break;
-                case "shoes": cl.remove("shoes", cl.c.shoes); break;
-                case "socks": cl.remove("socks", cl.c.socks); break;
-                case "shirt and pants": cl.remove("shirt", cl.c.shirt); cl.remove("pants", cl.c.pants); break;
-                case "shirt": cl.remove("shirt", cl.c.shirt); break;
-                case "pants": cl.remove("pants", cl.c.pants); break;
-                case "dress": cl.remove("dress", cl.c.dress); break;
-                case "pajamas": cl.remove("pj", cl.c.pj); break;
-                case "swimsuit": cl.remove("swimsuit", cl.c.swimsuit); break;
-                case "bra and panties": cl.remove("bra", cl.c.bra); cl.remove("panties", cl.c.panties); break;
-                case "bra": cl.remove("bra", cl.c.bra); break;
-                case "panties": cl.remove("panties", cl.c.panties); break;
-                case "buttplug": cl.remove("buttplug", cl.c.buttplug); break;
-                case "earrings": cl.remove("ear", cl.c.earring); break;
-                case "necklace": cl.remove("necklace", cl.c.necklace); break;
-                case "belly ring": cl.remove("belly", cl.c.bellyring); break;
-                case "nipple rings": cl.remove("nipple", cl.c.nipplering); break;
-                case "nose ring": cl.remove("nose", cl.c.nosering); break;
+                case "shoes and socks": cl.c.shoes = null; cl.c.socks = null; break; //cl.remove("shoes", cl.c.shoes); cl.remove("socks", cl.c.socks); break;
+                case "shoes": cl.c.shoes = null; break; // cl.remove("shoes", cl.c.shoes); break;
+                case "socks": cl.c.socks = null; break; //cl.remove("socks", cl.c.socks); break;
+                case "shirt and pants": cl.c.shirt = null; cl.c.pants = null; break; //cl.remove("shirt", cl.c.shirt); cl.remove("pants", cl.c.pants); break;
+                case "shirt": cl.c.shirt = null; break; //cl.remove("shirt", cl.c.shirt); break;
+                case "pants": cl.c.pants = null; break;// cl.remove("pants", cl.c.pants); break;
+                case "dress": cl.c.dress = null; break;// cl.remove("dress", cl.c.dress); break;
+                case "pajamas": cl.c.pj = null; break;// cl.remove("pj", cl.c.pj); break;
+                case "swimsuit": cl.c.swimsuit = null; break;// cl.remove("swimsuit", cl.c.swimsuit); break;
+                case "bra and panties": cl.c.bra = null; cl.c.panties = null; break;// cl.remove("bra", cl.c.bra); cl.remove("panties", cl.c.panties); break;
+                case "bra": cl.c.bra = null; break;// cl.remove("bra", cl.c.bra); break;
+                case "panties": cl.c.panties = null; break;// cl.remove("panties", cl.c.panties); break;
+                case "buttplug": cl.c.buttplug = null; break;// cl.remove("buttplug", cl.c.buttplug); break;
+                case "earrings": cl.c.earring = null; break;// cl.remove("ear", cl.c.earring); break;
+                case "necklace": cl.c.necklace = null; break;// cl.remove("necklace", cl.c.necklace); break;
+                case "belly ring": cl.c.bellyring = null; break;// cl.remove("belly", cl.c.bellyring); break;
+                case "nipple rings": cl.c.nipplering = null; break;// cl.remove("nipple", cl.c.nipplering); break;
+                case "nose ring": cl.c.nosering = null; break;// cl.remove("nose", cl.c.nosering); break;
                 default: console.log("missing: " + trap.internal); break;
             }
             g.popUpNotice("You gave away your " + trap.internal + ".");

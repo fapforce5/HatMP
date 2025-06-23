@@ -338,7 +338,7 @@ room526.chatcatch = function (callback) {
                 chat(62, 526);
             break;
         case "g7":
-            levels.anal(3, true, "m", true);
+            levels.anal(3, true, "m", true, null, "juniper");
             char.room(526);
             break;
         case "g14":
@@ -355,7 +355,7 @@ room526.chatcatch = function (callback) {
             break;
         case "z13_5":
             sc.completeMissionTask("zoey", "sex", 3);
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "zoey");
             sc.modLevel("zoey", 100, 7);
             g.pass = 502;
             char.room(28);
@@ -374,7 +374,7 @@ room526.chatcatch = function (callback) {
             }, 526);
             break;
         case "s4_end":
-            levels.oralGive(3, false, false, "f");
+            levels.oral(3, false, false, "f", null, "zoey");
             sc.modLevel("zoey", 20, 7);
             g.pass = 502;
             char.room(28);

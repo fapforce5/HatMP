@@ -167,7 +167,8 @@ cl.init = function () {
         { type: "accessories", name: "piggy", display: "Piggy Nose", img: "acc_piggy.png", sex: "f", inv: false, daring: 0, price: -1 },
         { type: "accessories", name: "ballgag", display: "Ball Gag", img: "acc_ballgag.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "accessories", name: "pompom", display: "Pom-pom", img: "pompom.png", sex: "f", inv: false, daring: 3, price: -1 },
-        { type: "accessories", name: "crown", display: "Sissy Crown", img: "crown.png", sex: "f", inv: false, daring: 4, price: -1 },
+        { type: "accessories", name: "crown", display: "Mid-term Crown", img: "crown.png", sex: "f", inv: false, daring: 4, price: -1 },
+        { type: "accessories", name: "crownsissy", display: "Sissy Pageant Crown", img: "crownsissy.png", sex: "f", inv: false, daring: 4, price: -1 },
 
         { type: "nipple", name: "n_r", display: "Nipple Ring", img: "nipple_ring.png", sex: "f", inv: false, daring: 1, price: 20 },
         { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
@@ -225,7 +226,7 @@ cl.set = [
     { entry: 2, name: "Cute", p: 400 },
     { entry: 3, name: "Sexy", p: 650 },
     { entry: 4, name: "Bimbo Slut", p: 900 },
-    { entry: 5, name: "Cum Dumpster", p: 3000 }
+    { entry: 5, name: "Cum Dumpster (Lewd)", p: 3000 }
 ];
 
 cl.fem = [
@@ -635,6 +636,14 @@ cl.hasoutfit = function (ctype) {
             if (cl.c.panties !== "cl")
                 missingClothing.push("Cheer spanks");
             break;
+        case "cheerleaderOptional":
+            if (cl.c.shirt !== "cl")
+                missingClothing.push("Cheerleader top");
+            if (cl.c.pants !== "cl")
+                missingClothing.push("Cheerleader skirt");
+            if (cl.c.shoes !== "cl")
+                missingClothing.push("Cheer shoes");
+            break;
         case "suit":
             if (cl.c.shirt !== "s")
                 missingClothing.push("Button up shirt");
@@ -938,13 +947,24 @@ cl.nipplering = [
     { name: "n_g", chest: 0, image: "ring_n_g_1.png" },
 ];
 
+cl.stinky = function () {
+    if (g.diffDateByMinutes(g.dt, gv.get("shower")) < 5760) {
+        if ($('#char-bg-1').children('img').length > 0)
+            $('#char-bg-1').html("");
+        return false;
+    }
+    if ($('#char-bg-1').children('img').length < 1)
+        cl.subDisplayAppend("char-bg-1", "stinky.png");
+    return true;
+};
+
 cl.getmakeup = function () {
     if (cl.c.makeup === null)
         cl.c.makeup = "n";
 
     let makeup = cl.c.makeup;
     if (makeup === "n") {
-        if (g.diffDateByMinutes(g.dt, gv.get("shower")) < 4320)
+        if(!cl.stinky())
             makeup = "natural";
     }
     for (let i = 0; i < cl.makeup.length; i++) {
@@ -1954,6 +1974,7 @@ cl.display = function () {
     $('#char-accHead').html("");
     $('#char-accBody').html("");
     if (g.tview === "p" || g.tview === "a") {
+        $("#char-bg-1").html("");
         $('#char-legs').html("");
         $('#char-chest').html("");
         $('#char-head').html("");
@@ -1994,6 +2015,11 @@ cl.display = function () {
     }
     else {
         var cback = g.tview === "b";
+
+        $("#char-bg-1").html("");
+        if (cl.stinky()) {
+            cl.subDisplayAppend("char-bg-1", "stinky.png");
+        }
 
         //set Legs
         cl.subDisplay("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
@@ -2546,13 +2572,18 @@ cl.appearanceClothes = function () {
 
     var tb = cl.appearanceClothesTB();
     var tp;
-
-    pointStack.push({ n: "top", an: tb.atop, earned: tb.top, total: 250, image: tb.topImg });
+    if (cl.c.chest > 1 && cl.c.swimsuit === "m")
+        pointStack.push({ n: "top", an: tb.atop, earned: 250, total: 250, image: tb.topImg });
+    else
+        pointStack.push({ n: "top", an: tb.atop, earned: tb.top, total: 250, image: tb.topImg });
     pointStack.push({ n: "bottom", an: tb.abot, earned: tb.bottom, total: 250, image: tb.botImg });
     
     if (cl.c.swimsuit !== null) {
         pointStack.push({ n: "panties", an: tb.abot, earned: Math.floor(tb.bottom / 5), total: 50, image: tb.botImg });
-        pointStack.push({ n: "bra", an: tb.atop, earned: Math.floor(tb.top / 5), total: 50, image: tb.topImg });
+        if (cl.c.chest > 1 && cl.c.swimsuit === "m") 
+            pointStack.push({ n: "bra", an: tb.atop, earned: 50, total: 50, image: tb.topImg });
+        else
+            pointStack.push({ n: "bra", an: tb.atop, earned: Math.floor(tb.top / 5), total: 50, image: tb.topImg });
     }
     else {
         pointStack.push(cl.appearanceClothesSub("panties", cl.c.panties, 50, true));

@@ -41,21 +41,32 @@ room170.main = function () {
             sc.select("final_wait", "527_bathroom/icon_wait.png", 3);
         }
         else {
-            //g.pass = {
-            //    event: 0,
-            //    score0: 0,
-            //    score1: 0,
-            //    score2: 0,
-            //    score3: 0
-            //    gavebj: false
-            //};
             if (g.map.event === 0) {
                 g.map.event = 1;
                 nav.kill();
                 nav.bg("170_stage/fashion20.webp");
                 chat(45, 170);
             }
-            else if (g.map.event === 1 || g.map.event === 2) {
+            else {
+                let eventTitle = "";
+                switch (g.map.event) {
+                    case 1:
+                    case 2: eventTitle = "SWIMSUIT"; break;
+                    case 3: eventTitle = g.map.talent; break;
+                    case 4: eventTitle = "Q and A"; break;
+                    case 5: eventTitle = "Evening Dress"; break;
+                    case 6: eventTitle = "Coronation"; break;
+                }
+                nav.t({
+                    type: "img",
+                    name: "x",
+                    left: 1100,
+                    top: 120,
+                    font: 60,
+                    hex: "#f7d4e3",
+                    text: eventTitle,
+                    stroke: "black"
+                }, 170);
                 sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
                 sc.select("wardrobe", "316_livingroom/icon_wardrobe.png", 3);
                 sc.select("final_show", "170_stage/icon_catwalk.png", 5);
@@ -67,22 +78,6 @@ room170.main = function () {
         chat(0, 170);
         nav.buildnav([213, 214, 171, 215]);
     }
-    //var btnList = [
-    //    {
-    //        "type": "btn",
-    //        "name": "name",
-    //        "left": 1741,
-    //        "top": 618,
-    //        "width": 130,
-    //        "height": 252,
-    //        "image": "170_folder/hole.png"
-    //    }
-    //];
-    //var navList = [0];
-    //$.each(btnList, function (i, v) {
-    //    nav.button(v, 170);
-    //});
-    
 };
 
 room170.btnclick = function (name) {
@@ -115,6 +110,68 @@ room170.btnclick = function (name) {
                         zcl.displayMain(250, 800, .09, "clothes", false);
                         chat(55, 170);
                     }
+                    break;
+                case 3:
+                    if (g.map.talent === "cheerleader") {
+                        if (cl.hasoutfit("cheerleaderOptional") === null) {
+                            nav.kill();
+                            nav.bg("170_stage/fashion_cheer0.webp");
+                            chat(58, 170);
+                        }
+                        else {
+                            nav.kill();
+                            nav.bg("170_stage/stage.jpg");
+                            zcl.displayMain(250, 800, .09, "clothes", false);
+                            chat(60, 170);
+                        }
+                    }
+                    else if (g.map.talent === "stripper") {
+                        if (cl.hasoutfit("braAndPantiesIgnored") === null) {
+                            nav.kill();
+                            nav.bg("170_stage/fashion_strip0.webp");
+                            chat(61, 170);
+                        }
+                        else {
+                            nav.kill();
+                            nav.bg("170_stage/fashion_strip-1.webp");
+                            zcl.displayMain(200, 700, .12, "clothes", true);
+                            chat(64, 170);
+
+                        }
+                    }
+                    else if (g.map.talent === "whore") {
+                        nav.kill();
+                        nav.bg("170_stage/stage.jpg");
+                        zcl.displayMain(250, 800, .09, "clothes", false);
+                        chat(65, 170);
+                    }
+                    break;
+                case 4:
+                    if (cl.hasoutfit("nude") === null) {
+                        nav.kill();
+                        nav.bg("170_stage/fashion30.webp");
+                        zcl.displayMain(-2000, -1000, .7, "clothes", true);
+                        chat(76, 170);
+                    }
+                    else {
+                        chat(75, 170);
+                    }
+                    break;
+                case 5:
+                    nav.kill();
+                    nav.bg("170_stage/stage.jpg");
+                    zcl.displayMain(250, 800, .09, "clothes", false);
+                    if (cl.isLewd()) {
+                        chat(94, 170);
+                    }
+                    else {
+                        chat(95, 170);
+                    }
+                    break;
+                case 6:
+                    nav.bg("170_stage/fashion21" + g.map.ralph + ".webp");
+                    zcl.displayMain(200, 890, .037, "clothes", false);
+                    chat(97, 170);
                     break;
             }
 
@@ -233,20 +290,29 @@ room170.chatcatch = function (callback) {
         case "fashion0":
         case "fashion4":
         case "fashion5":
-        case "fashion20":
         case "fashion23":
         case "fashion24":
         case "fashion25":
         case "fashion26":
+        case "fashion_cheer1":
+        case "fashion31":
+        case "fashion32":
+        case "fashion33":
             nav.bg("170_stage/" + callback + ".webp");
             break;
+        case "fashion20":
         case "fashion22":
+        case "fashion_strip1":
+        case "fashion_strip2":
+        case "fashion_whore2":
+        case "fashion_whore4":
+        case "fashion_whore5":
             nav.kill();
             nav.bg("170_stage/" + callback + ".webp");
             break;
         case "bitch1":
             nav.kill();
-            nav.bg("170_stage/" + callback + ".jpg");
+            nav.bg("170_stage/bitch.jpg");
             break;
         case "ex317_3":
             cl.add("dress", "rose");
@@ -358,6 +424,25 @@ room170.chatcatch = function (callback) {
             nav.bg("170_stage/" + callback + "_" + gender.pronoun("f") + ".webp");
             break;
         case "outfitSelect":
+            var eventTitle = "";
+            switch (g.map.event) {
+                case 1:
+                case 2: eventTitle = "SWIMSUIT"; break;
+                case 3: eventTitle = g.map.talent; break;
+                case 4: eventTitle = "Q and A"; break;
+                case 5: eventTitle = "Evening Dress"; break;
+                case 6: eventTitle = "Coronation"; break;
+            }
+            nav.t({
+                type: "img",
+                name: "x",
+                left: 1100,
+                top: 120,
+                font: 60,
+                hex: "#f7d4e3",
+                text: eventTitle,
+                stroke: "black"
+            }, 170);
             sc.select("final_makeup", "27_mirror/icon_makeup.png", 1);
             sc.select("wardrobe", "316_livingroom/icon_wardrobe.png", 3);
             sc.select("final_show", "170_stage/icon_catwalk.png", 5);
@@ -367,52 +452,363 @@ room170.chatcatch = function (callback) {
             char.addtime(30);
             char.room(170);
             break;
-        case "scorecard":
+        case "fashion27":
             nav.kill();
-            nav.bg("170_stage/scorecardbg.webp");
-            var xcoord = [163, 572, 908, 1272, 1609];
+            nav.bg("170_stage/fashion27.webp");
+            room170.chatcatch("makeScore");
+            break;
+        case "fashion28": //cheerleader
+            nav.kill();
+            nav.bg("170_stage/fashion28.webp");
+            room170.chatcatch("makeScore");
+            var xcoord1 = [359, 653, 894, 1195, 1453];
+            if (cl.hasoutfit("cheerleaderOptional") === null) {
+                var cheerLevel = levels.get("cheer").l - 2;
+                g.map.score1 = 0;
+                var scorec1 = new Array(5);
+                for (i = 0; i < 5; i++) {
+                    scorec1[i] = cheerLevel + g.rand(0, 3);
+                    if (scorec1[i] > 10)
+                        scorec1[i] = 10;
+                    if (scorec1[i] < 4)
+                        scorec1[i] = g.rand(3, 6);
+                }
+                for (let i = 0; i < xcoord1.length; i++) {
+                    nav.button({
+                        "type": "img",
+                        "name": "scorecard",
+                        "left": xcoord1[i],
+                        "top": 447,
+                        "width": 176,
+                        "height": 226,
+                        "image": "170_stage/scorecard.webp"
+                    }, 170);
+
+                    nav.t({
+                        type: "img",
+                        name: "scorecard",
+                        left: xcoord1[i] + (scorec1[i] < 10 ? 40 : -5),
+                        top: 470,
+                        font: 160,
+                        hex: "#000000",
+                        text: scorec1[i]
+                    }, 170);
+                    g.map.score1 += scorec1[i];
+                }
+                chat(800, 170);
+            }
+            else {
+                room170.chatcatch("makeScore");
+            }
+            break;
+        case "fashion28-s": //stripper
+            nav.kill();
+            nav.bg("170_stage/fashion28.webp");
+            room170.chatcatch("makeScore");
+            var xcoord1s = [359, 653, 894, 1195, 1453];
+            if (cl.hasoutfit("braAndPantiesIgnored") === null) {
+                var stripLevel = levels.get("stripper").l - 2;
+                g.map.score1 = 0;
+                scorec1s = new Array(5);
+                for (i = 0; i < 5; i++) {
+                    scorec1s[i] = stripLevel + g.rand(0, 3);
+                    if (scorec1s[i] > 10)
+                        scorec1s[i] = 10;
+                    if (scorec1s[i] < 4)
+                        scorec1s[i] = g.rand(3, 6);
+                }
+                for (let i = 0; i < xcoord1s.length; i++) {
+                    nav.button({
+                        "type": "img",
+                        "name": "scorecard",
+                        "left": xcoord1s[i],
+                        "top": 447,
+                        "width": 176,
+                        "height": 226,
+                        "image": "170_stage/scorecard.webp"
+                    }, 170);
+
+                    nav.t({
+                        type: "img",
+                        name: "scorecard",
+                        left: xcoord1s[i] + (scorec1s[i] < 10 ? 40 : -5),
+                        top: 470,
+                        font: 160,
+                        hex: "#000000",
+                        text: scorec1s[i]
+                    }, 170);
+                    g.map.score1 += scorec1s[i];
+                }
+                chat(800, 170);
+            }
+            else {
+                room170.chatcatch("makeScore");
+            }
+            break;
+        case "fashion28-w":
+            nav.bg("170_stage/fashion28.webp");
+            //room170.chatcatch("makeScore");
+            var xcoord1w = [359, 653, 894, 1195, 1453];
+            var whoreLevel = levels.get("whore").l - 2;
+            levels.anal(4, false, "m", true, null, "unk");
+            g.map.score1 = 0;
+            var scorec1w = new Array();
+            for (let i = 0; i < 5; i++) {
+                scorec1w[i] = whoreLevel + g.rand(0, 3);
+                if (scorec1w[i] > 10)
+                    scorec1w[i] = 10;
+                if (scorec1w[i] < 4)
+                    scorec1w[i] = g.rand(3, 6);
+            }
+
+            for (let i = 0; i < xcoord1w.length; i++) {
+                nav.button({
+                    "type": "img",
+                    "name": "scorecard",
+                    "left": xcoord1w[i],
+                    "top": 447,
+                    "width": 176,
+                    "height": 226,
+                    "image": "170_stage/scorecard.webp"
+                }, 170);
+
+                nav.t({
+                    type: "img",
+                    name: "scorecard",
+                    left: xcoord1w[i] + (scorec1w[i] < 10 ? 40 : -5),
+                    top: 470,
+                    font: 160,
+                    hex: "#000000",
+                    text: scorec1w[i]  
+                }, 170);
+                g.map.score1 += scorec1w[i];
+            }
+            chat(800, 170);
+            break;
+        case "fashion29":
+            nav.kill();
+            nav.bg("170_stage/fashion29.webp");
+            room170.chatcatch("makeScore");
+            break;
+        case "fashion35":
+            nav.kill();
+            nav.bg("170_stage/fashion35.webp");
+            var xcoord1q = [359, 653, 894, 1195, 1453];
+            var scorec1q = new Array(5);
+            scorec1q[0] = g.map.j1;
+            scorec1q[1] = g.map.j2;
+            scorec1q[2] = g.map.j3;
+            scorec1q[3] = g.map.j4;
+            scorec1q[4] = g.map.j5;
+            g.map.score2 = 0;
+
+            for (let i = 0; i < xcoord1q.length; i++) {
+                nav.button({
+                    "type": "img",
+                    "name": "scorecard",
+                    "left": xcoord1q[i],
+                    "top": 447,
+                    "width": 176,
+                    "height": 226,
+                    "image": "170_stage/scorecard.webp"
+                }, 170);
+
+                nav.t({
+                    type: "img",
+                    name: "scorecard",
+                    left: xcoord1q[i] + (scorec1q[i] < 10 ? 40 : -5),
+                    top: 470,
+                    font: 160,
+                    hex: "#000000",
+                    text: scorec1q[i]
+                }, 170);
+                g.map.score2 += scorec1q[i];
+            }
+            chat(800, 170);
+            break;
+        case "makeScore":
+            var totals = 0;
+            var scorec = new Array(5);
+            var swc = cl.appearanceClothes();
+            var totalApp = (swc.earnedPoints / swc.totalPoints) * 10;
+            var swa = cl.appearance() * 2;
+            var jonesMission = sc.taskGetStep("jones", "invite");
+            if (jonesMission > 3)
+                jonesMission = 3;
+            var shoes = cl.getEntry("shoes", cl.c.shoes).daring * 2;
+            if (shoes < 0)
+                shoes = 1;
+
+            scorec[0] = Math.round((swa - 2) + (g.map.gavebj ? 2 : 0)); //oldman
+            scorec[1] = Math.round(totalApp);
+            scorec[2] = Math.round((swa - 3) + g.rand(0, 4));
+            scorec[3] = Math.round((((totalApp + swa) / 2) - 3) + jonesMission);
+            scorec[4] = Math.round(shoes + g.rand(0, 2));
+            if (g.map.event === 3) {
+                for (let i = 0; i < 5; i++)
+                    scorec[i] = Math.floor(scorec[i] / 3);
+            }
+            for (let i = 0; i < 5; i++) {
+                if (scorec[i] > 10)
+                    scorec = 10;
+                if (scorec < 1)
+                    scorec = 1;
+
+                totals += scorec[i];
+            }
+           
+            var xcoord = [359, 653, 894, 1195, 1453];
             for (let i = 0; i < xcoord.length; i++) {
                 nav.button({
                     "type": "img",
                     "name": "scorecard",
                     "left": xcoord[i],
-                    "top": 737,
+                    "top": 447,
                     "width": 176,
                     "height": 226,
                     "image": "170_stage/scorecard.webp"
                 }, 170);
+                
                 nav.t({
-                    type: "zimg",
+                    type: "img",
                     name: "scorecard",
-                    left: xcoord[i] + 40,
-                    top: 760,
-                    font: 150,
+                    left: xcoord[i] + (scorec[i] < 10 ? 40 : -5),
+                    top: 470,
+                    font: 160,
                     hex: "#000000",
-                    text: "9"
-                }, 1);
+                    text: scorec[i]
+                }, 170);
             }
-            var scapp = cl.appearance();
-            var scfitness = levels.get("fitness").l;
-            var scstrength = levels.get("strength").l;
-            var baseScore;
             switch (g.map.event) {
-                case 2:
-                    baseScore = ((scfitness > 10 ? 10 : scfitness) / 3)
-                        + ((scstrength > 10 ? 10 : scstrength) / 4) + ((scapp * 2) / 3);
-                    
-
-                    break;
+                case 1:
+                case 2: g.map.score0 = totals; break;
+                case 3: g.map.score1 = totals; break;
+                case 4: g.map.score2 = totals; break;
+                case 5: g.map.score3 = totals; break;
             }
-            var scoreSheets = [
-                Math.floor(baseScore + (g.map.gavebj ? 2 : 0)),
-                Math.floor(baseScore),
-                Math.floor(baseScore),
-                Math.floor(baseScore),
-                Math.floor(baseScore),
-            ];
+            chat(800, 170);
+            break;
+        case "fashion_whore0":
+            nav.button({
+                "type": "img",
+                "name": "whore",
+                "left": 713,
+                "top": 285,
+                "width": 856,
+                "height": 795,
+                "image": "170_stage/fashion_whore0.webp"
+            }, 170);
+            break;
+        case "fashion_whore1":
+        case "fashion_whore3":
+            nav.kill();
+            cl.nude();
+            nav.bg("170_stage/" + callback + "_" + gender.pronoun("f") + ".webp")
+            break;
+        case "cheerleader":
+        case "stripper":
+        case "whore":
+            g.map.talent = callback;
+            g.map.event = 3;
+            char.room(170);
+            break;
+        case "fashion34":
+            nav.bg("170_stage/" + callback + ".webp");
+            if (gender.canUseCock()) {
+                chat(90, 170);
+            }
+            else {
+                chat(91, 170);
+            }
+            break;
+        case "formalEvent":
+            g.map.event = 5;
+            char.room(170);
             break;
         case "reset":
             char.room(170);
+            break;
+        case "qanda":
+            cl.c.chastity = null;
+            g.map.event = 4;
+            char.room(170);
+            break;
+        case "pfinal":
+            g.map.event = 6;
+            char.room(170);
+            break;
+        case "j1-1":
+            g.map.j1 = 10;
+            break;
+        case "j1-2":
+            g.map.j1 = 6;
+            break;
+        case "j1-3":
+            if (g.map.gavebj) {
+                g.map.j1 = 1;
+                chat(79, 170);
+            }
+            else {
+                g.map.j1 = 4;
+                chat(80, 170);
+            }
+            break;
+        case "j2-1":
+            g.map.j2 = 10;
+            break;
+        case "j2-2":
+            g.map.j2 = g.rand(4, 7);
+            break;
+        case "j3-1":
+            g.map.j3 = g.rand(8, 11);
+            break;
+        case "j4-1":
+            g.map.j4 = 10;
+            break;
+        case "j4-2":
+            g.map.j4 = 7;
+            break;
+        case "j4-3":
+            g.map.j4 = 1;
+            break;
+        case "j5-1":
+            g.map.j5 = 10;
+            break;
+        case "j5-2":
+            g.map.j5 = 7;
+            break;
+        case "j5-3":
+            g.map.j5 = 4;
+            break;
+        case "crown0":
+            nav.kill();
+            nav.bg("170_stage/fashion50_1.webp");
+            break;
+        case "crown1":
+            if (g.map.score0 + g.map.score1 + g.map.score2 + g.map.score3 < 140) {
+                gv.set("sissyfinal_pageant", false);
+                nav.bg("170_stage/fashion50_2.webp");
+                gv.mod("sissyfinal_pageant", false);
+                chat(99, 170);
+            }
+            else {
+                gv.set("sissyfinal_pageant", true);
+                cl.add("accessories", "crownsissy");
+                cl.c.accessories = "crownsissy";
+                cl.display();
+                nav.bg("170_stage/fashion50_3.webp");
+                zcl.displayMain(110, 750, .115, "clothes", false);
+                gv.mod("sissyfinal_pageant", true);
+                levels.mod("fame", 500);
+                chat(101, 170);
+            }
+            break;
+        case "crownEnd":
+            if (g.map.score0 + g.map.score1 + g.map.score2 + g.map.score3 < 140) {
+                levels.mod("fame", 200);
+            }
+            char.addtime(400);
+            char.room(207);
             break;
         default:
             break;
@@ -641,6 +1037,53 @@ room170.chat = function (chatID) {
                 "can go. I'll take it from here. ",
             button: [
                 { chatID: 20, text: "...", callback: "ex317_102" }
+            ]
+        };
+    }
+    else if (chatID === 800) {
+        let txt = "";
+        let txtAppend = "";
+        let tscore = 0;
+        let nextChat = 0;
+        switch (g.map.event) {
+            case 1:
+            case 2:
+                txtAppend = "Let's see how this fine young woman did in the swimsuit competition. "
+                tscore = g.map.score0;
+                nextChat = 56;
+                break;
+            case 3:
+                txtAppend = "Let's see how this fine young woman did in the talent competition. "
+                tscore = g.map.score1;
+                nextChat = 74;
+                break;
+            case 4:
+                txtAppend = "Judges? "
+                tscore = g.map.score2;
+                nextChat = 72;
+                break;
+            case 5:
+                txtAppend = "Judges? "
+                tscore = g.map.score3;
+                nextChat = 96;
+                break;
+        }
+        if (tscore < 25)
+            txt = "We have a dissapointing score of " + tscore + ". ";
+        else if (tscore < 37)
+            txt = "We have a respectable score of " + tscore + ". ";
+        else if (tscore < 45)
+            txt = "We have an amazing score of " + tscore + ". ";
+        else if (tscore < 50)
+            txt = "I am stunned! She has a truly spectaular score of " + tscore + ". ";
+        else
+            txt = "I have never seen this before for this competition! A perfect score from all the judges!!!";
+        return {
+            chatID: 0,
+            speaker: "p",
+            text: txtAppend + txt,
+            button: [
+                { chatID: nextChat, text: "[Return to the dressing room]", callback: "fashion20" }
             ]
         };
     }
@@ -1201,7 +1644,453 @@ room170.chat = function (chatID) {
                 speaker: "p",
                 text: "Isn't she lovely and toned, let's see what the judges think. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "scorecard" },
+                    { chatID: -1, text: "...", callback: "fashion27" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "martha",
+                text: "It's time for the talent portion of our delightful gathering. I want each of you to close your eyes for a moment, and truly envision the magnificent talent you are going to display. Let that vision take hold, let it shimmer and sparkle in your mind's eye. And then, my dears, I want you to dress for that vision. Adorn yourselves in a manner that not only complements but truly embodies the very essence of your chosen brilliance. I simply cannot wait to see what marvels you all unfold!",
+                button: [
+                    { chatID: 57, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "thinking",
+                text: "What talent am I going to do? What ever I pick, I need to dress for the part! ",
+                button: [
+                    { chatID: -1, text: "Cheerleader", callback: "cheerleader" },
+                    { chatID: -1, text: "Stripper", callback: "stripper" },
+                    { chatID: -1, text: "Whore", callback: "whore" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "me",
+                text: "Ready, set, strut and pose!<br/>" +
+                    "Ignore our clitty everyone knows<br/>" +
+                    "Flip us over, rip off our clothes<br/>" +
+                    "Fuck our bussy till the cum stream flows!!!!",
+                button: [
+                    { chatID: 59, text: "...", callback: "fashion_cheer1" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "me",
+                text: "YEAH!!! Go Sissy School Beauty Pageant!!!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion28" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "me",
+                text: "Ready, set, strut and pose!<br/>" +
+                    "Ignore our clitty everyone knows<br/>" +
+                    "Flip us over our bussy's exposed!!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion28" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "!music",
+                text: "🎵She's my cherry pie🎵",
+                button: [
+                    { chatID: 62, text: "...", callback: "fashion_strip1" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "!music",
+                text: "🎵Tastes so good, make a grown man cry🎵",
+                button: [
+                    { chatID: 63, text: "...", callback: "fashion_strip2" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "!music",
+                text: "🎵Sweet cherry pie🎵",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion28-s" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "!music",
+                text: "🎵Sweet cherry pie🎵",
+                button: [
+                    { chatID: 63, text: "...", callback: "fashion_strip2" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "me",
+                text: "For my talent can I get a volunteer from the audiance please? ",
+                button: [
+                    { chatID: 66, text: "...", callback: "fashion_whore0" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "me",
+                text: "Perfect. Come on up! ",
+                button: [
+                    { chatID: 67, text: "...", callback: "fashion_whore1" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "me",
+                text: "Everyone, for my talent I'm going to take it up the ass in front " +
+                    "of you all to show what a giant whore I am! Now please, sir, can " +
+                    "you take your dick out so I can make you cum in me in front of everyone!",
+                button: [
+                    { chatID: 68, text: "...", callback: "fashion_whore2" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "me",
+                text: "Oh my! You're all so lucky. I picked a fat cock to take up " +
+                    "my tight little bussy! And look at the huge balls! I'm going to " +
+                    "drip buckets of cum for you all! Now watch me as I shove this fat " +
+                    "cock right up my ass!",
+                button: [
+                    { chatID: 69, text: "...", callback: "fashion_whore3" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "me",
+                text: "Don't we all love a man that just shoves his cock deep with " +
+                    "one powerful slam! He's so big it's gone past my rectum right into " +
+                    "my colon! And look at those powerful thrusts! A normal sissy would " +
+                    "break on the power of that cock, but not me! I'm a " +
+                    "giant whore! ",
+                button: [
+                    { chatID: 70, text: "...", callback: "fashion_whore4" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "me",
+                text: "There it is folks! The cum shot! He must have been saving that load " +
+                    "just for me! He came so deep I'll be burping up his future kids all day. ",
+                button: [
+                    { chatID: 71, text: "...", callback: "fashion_whore5" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "p",
+                text: "A round of applause for the biggest whore in the " +
+                    "Sissy School. Let's see what the judges think.",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion28-w" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "martha",
+                text: "Esteemed ladies, we now come to the concluding event of the evening: the presentation of evening attire. This distinguished occasion affords you the honour of demonstrating your utmost grace, composure, and refined elegance. Conduct yourselves with the decorum and dignity befitting a true lady of distinction.",
+                button: [
+                    { chatID: -1, text: "...", callback: "formalEvent" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "p",
+                text: "Isn't she beautiful? When " + sc.n("me") + " first came to our " +
+                    "school, she, or I should say, he, was just another ugly boy. Now look " +
+                    "at here, the envy of women and the desire of men. Let's see what the " +
+                    "judges think.",
+                button: [
+                    { chatID: -1, text: "...", callback: "formal29" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "martha",
+                text: "And now, we arrive at the moment of truth—the question and answer portion. As the judges most assuredly have no interest in hearing a sissy’s sentimental notions on world peace, each shall instead present you with a question to uncover the depths of your character. In this round, you shall stand exposed, of course—with naught to conceal the essence of who you truly are. Let the veil fall, my dear, and show us the soul beneath the sparkle. Now to remove those ridged chastity devices from those that still wear them. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "qanda" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "thinking",
+                text: "What am I doing? I have to be nude.  ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "!judge",
+                text: "If you had to choose between being the center of a gangbang, a lovely date with " +
+                    "a nice boy, or sex with a girl, which would you choose? ",
+                button: [
+                    { chatID: 77, text: "A Gangbang!", callback: "j1-1" },
+                    { chatID: 78, text: "Date with a nice boy.", callback: "j1-2" },
+                    { chatID: -1, text: "Sex with a girl.", callback: "j1-3" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "!judge",
+                text: "Excellent answer. You do look like the centerpiece of a " +
+                    "giant cock gangbang. I would very much enjoy watching that. ",
+                button: [
+                    { chatID: 81, text: "...", callback: "fashion31" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "!judge",
+                text: "A fine answer, I suppose. Such a waste of a body like yours to " +
+                    "only be used by one boy. But we have our preferences. ",
+                button: [
+                    { chatID: 81, text: "...", callback: "fashion31" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "!judge",
+                text: "Don't lie. We all know you're a cock hungy sissy. Earlier today " +
+                    "you came up to me to suck my penis without any prompting from me. " +
+                    "I'm dissapointed in your lie to us and yourself. ",
+                button: [
+                    { chatID: 81, text: "oh damn", callback: "fashion31" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "!judge",
+                text: "You say that, but you have turned your body into a very desirable " +    
+                    "vessle for cock. I find your answer stinks, like moldy cum.  ",
+                button: [
+                    { chatID: 81, text: "?", callback: "fashion31" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "!airwrecka",
+                text: "If youse had to pick a cock to suck, what kinda cock do youse choose?",
+                button: [
+                    { chatID: 83, text: "Any cock", callback: "j2-2" },
+                    { chatID: 83, text: "Uncircumcised", callback: "j2-2" },
+                    { chatID: 83, text: "Musky Cock", callback: "j2-2" },
+                    { chatID: 82, text: "BBC", callback: "j2-1" },
+                    { chatID: 83, text: "A big cock", callback: "j2-2" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "!airwrecka",
+                text: "O.M.G! Me too! You go girl! Youse know a cock worth taking! " +
+                    "That's my bad bitch! ",
+                button: [
+                    { chatID: 84, text: "...", callback: "fashion32" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "!airwrecka",
+                text: "eh. Youse haven't tried enough different cocks if that's what " +
+                    "you think. Ya basic. ",
+                button: [
+                    { chatID: 84, text: "...", callback: "fashion32" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "tudor",
+                text: "Very delighted to see you up there. I know your journey has been " +
+                    "long and hard, like the many cocks you've taken, hehehe. So tell us, " +
+                    "why do you do it? Why be the sissy we see before us?",
+                button: [
+                    { chatID: 85, text: "Men love a curvy body, I love a hard cock.", callback: "j3-1" },
+                    { chatID: 85, text: "I may have a penis, but deep down I am a woman.", callback: "j3-1" },
+                    { chatID: 85, text: "Just bored I guess", callback: "j3-1" },
+                    { chatID: 85, text: "The sissygasms! ", callback: "j3-1" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "tudor",
+                text: "Interesting. When I started this school I had my reason, but over " +
+                    "the years I have found that each sissy had their own reasons for being " +
+                    "here. Of course most just wanted to get fucked like a woman, but some. " +
+                    "Some had some truly interesting stories. I'm glad we could help you " +
+                    "create your own story. ",
+                button: [
+                    { chatID: 86, text: "...", callback: "fashion33" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "jones",
+                text: "The only real reason to have a sissy is to own your own submissive " +
+                    "cock hole that you can punish and toy with however you like. If I ever " +
+                    "let you choose your punishment for my amusement, what would you choose? ",
+                button: [
+                    { chatID: 87, text: "Over the knee spanking", callback: "j4-2" },
+                    { chatID: 88, text: "Whipped till I'm bleeding", callback: "j4-1" },
+                    { chatID: 88, text: "Used as a urinal for you and your friends", callback: "j4-1" },
+                    { chatID: 88, text: "Double fisted while bound", callback: "j4-1" },
+                    { chatID: 89, text: "Oh no. No way", callback: "j4-3" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "jones",
+                text: "Far too tame for an ass like yours. You need to try harder. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion34" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "jones",
+                text: "I can see you know your place. You will make a fine sissy.  ",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion34" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "jones",
+                text: "I love a sissy that fights back. I would love to break you.",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion34" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "orchid",
+                text: "That is a fat cock honey! With a cock like that my only question " +
+                    "is if you could use me however you wanted, would you stuff that cock " +
+                    "in my mouth or bussy?",
+                button: [
+                    { chatID: 92, text: "mouth", callback: "j5-3" },
+                    { chatID: 92, text: "bussy", callback: "j5-2" },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "orchid",
+                text: "Awww, look at that tiny little clitty! Does it even work anymore? " +
+                    "Hahahaha! Has a girl even seen it? I'll bet any girl that sees it just " +
+                    "laughs and leaves you with your pants down!!!",
+                button: [
+                    { chatID: 93, text: "No girls has seen my tiny clitty", callback: "j5-1" },
+                    { chatID: 93, text: "They all just laugh at my tiny clitty", callback: "j5-1" },
+                    { chatID: 93, text: "One girl tried, but gave up because it's too small", callback: "j5-1" },
+                    { chatID: 93, text: "Boys laugh at it before bending me over and fucking me.", callback: "j5-1" },
+
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "p",
+                text: "I'm sure those two are going to meet up after the show!  ",
+                button: [
+                    { chatID: -1, text: "bussy", callback: "fashion35" },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "p",
+                text: "I'm sure we can all agree that this sissy is no longer a man " +
+                    "and is only worth the cocks in her holes!",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion35" },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "p",
+                text: "Oh wow, someone's horny! When we asked for an evening dress we didn't mean how " +
+                    "you dress on date in the evening! Let's see what the judges think " +
+                    "of this slut!",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion29" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "p",
+                text: "Isn't she lovely folks. Style, grace, a cute little face. The kind " +
+                    "of girl that you can take home to meet your parents, then take home " +
+                    "and put it in any hole. Let's see what the judges think. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "fashion29" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "martha",
+                text: "And so, this most enchanting evening draws to its splendid close. The hour is upon us to bestow the crown — a symbol of grace, poise, and true refinement — upon the lady deemed most worthy of such an honour. Let all assembled now make their way to the grand stage, where the coronation shall commence! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "pfinal" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "p",
+                text: "And now we will celebrate the sissiest sissy. The boy that is " +
+                    "the most girly. The object of our desires! ",
+                button: [
+                    { chatID: 98, text: "...", callback: "crown0" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "p",
+                text: "Our Sissy Runner up is.... " + sc.n("!kareem") + "! She has " +
+                    "shown real growth and poise on her transformation from just another " +
+                    "lame boy to this radiant girl you see before you. I remember the first " +
+                    "penis she put in her mouth! She was so scared. But look at her now. Men " +
+                    "will be lined around the block to put their penis inside her!",
+                button: [
+                    { chatID: -1, text: "...", callback: "crown1" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "p",
+                text: "And the winner is.... " + sc.n("!timothy") + "!!! Sissies " +
+                    "everywhere want to be her; men want to breed her. Her brain is " +
+                    "empty, her tits are perky, her clitty is a nub, and her bussy is both " +
+                    "bottomless and tight! Everyone meet this year's Sissy School Pageant winner! ",
+                button: [
+                    { chatID: 100, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "p",
+                text: "That's all for tonight folks! You'll be able to visit your favorite sissy " +
+                    "in the Pink Room next week! Don't forget to tip them! Sexy clothes and makeup " +
+                    "aren't cheap. G'night folks! Don't forget to visit the glory wall " +
+                    "on you way out! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "crownEnd" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "p",
+                text: "And the winner is.... " + sc.n("me") + "!!! Sissies " +
+                    "everywhere want to be her; men want to breed her. She has come " +
+                    "such a long way on this journey and has proven she is the sissiest of " +
+                    "all sissies! Everyone meet your Sissy School Pageant Winner!!!!",
+                button: [
+                    { chatID: -1, text: "Yeah me!!", callback: "crownEnd" },
                 ]
             },
         ];

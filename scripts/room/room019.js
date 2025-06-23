@@ -401,31 +401,6 @@ room19.chatcatch = function (callback) {
             g.internal = "anal";
             room19.chatcatch("toybox");
             break;
-        case "fingerStart":
-            //inv.use("lube");
-            //nav.killall();
-            //nav.bg("19_layInBed/bg52.jpg");
-            //var startingFingers = 1;
-            //for (var fi = 4; fi > 0; fi--) {
-            //    if (levels.analTake(inv.anal(fi + "finger")).c < 3) {
-            //        startingFingers = fi;
-            //        break;
-            //    }
-            //}
-
-            //g.internal = { f: startingFingers - 1, i: 0, size: startingFingers - 1, more: false };
-
-            //nav.killbutton("butt");
-            //nav.button({
-            //    "type": "btnflat",
-            //    "name": "finger",
-            //    "left": 298,
-            //    "top": 0,
-            //    "width": 1447,
-            //    "height": 1080,
-            //    "image": "19_layInBed/" + g.internal.f + "_0.png"
-            //}, 19);
-            break;
         case "addFinger":
             g.internal.f += 1;
             g.internal.size += 1;
@@ -444,7 +419,11 @@ room19.chatcatch = function (callback) {
             break;
         case "Stop":
             cl.display();
-            levels.anal(g.internal.size, false, null, false, null);
+            levels.anal(g.internal.size);
+            if (g.internal.f === undefined)
+                sex.masturbate("anal");
+            else
+                sex.masturbate("finger");
             daily.set("buttholeplay");
             char.room(g.pass);
             break;
@@ -454,6 +433,7 @@ room19.chatcatch = function (callback) {
             break;
         case "stopSuck":
             levels.oral(g.internal.size);
+            sex.masturbate("oral");
             daily.set("dildoSuckPlay");
             char.room(g.pass);
             break;
@@ -493,7 +473,7 @@ room19.chat = function (chatID) {
             speaker: "me",
             text: "I'm such a weird-o... what shall I shove in my asshole?",
             button: [
-                { chatID: -1, text: "Shove my fingers in my butt.", callback: "fingerStart" },
+                { chatID: -1, text: "Shove my fingers in my butt.", callback: "" },
                 { chatID: -1, text: "Impale my poor anus on a toy. ", callback: "analtoy" },
                 { chatID: -1, text: "Practice giving blowjobs", callback: "bj" },
                 { chatID: -1, text: "Nothing, return to my room.", callback: "quit" },

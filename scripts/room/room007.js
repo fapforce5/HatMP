@@ -333,6 +333,14 @@ room7.chatcatch = function (callback) {
             cl.wearSavedOutfit(callback[1]);
             char.room(10);
             break;
+        case "c0":
+        case "c1":
+        case "c2":
+        case "c3":
+        case "c4":
+            cl.wearSavedOutfit(callback[1]);
+            char.room(775);
+            break;
         case "o5":
             char.room(10);
             break;
@@ -937,7 +945,14 @@ room7.chat = function (chatID) {
                 chatID: 7,
                 speaker: "landlord",
                 text: "Wake up sleepy head. Time for church. ",
-                button: [{ chatID: -1, text: "Ok, ok... ", callback: "goToChurch" }]
+                button: [
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[0].name, callback: "c0" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "c1" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "c2" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "c3" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "c4" },
+                    { chatID: -1, text: "Get Up", callback: "goToChurch" }
+                ]
             },
             {
                 chatID: 8,

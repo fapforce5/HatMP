@@ -294,18 +294,27 @@ room13.btnclick = function (name) {
                 sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 6);
             }
             else {
-                let lolaSissy = sc.taskGetStep("lola", "sissy");
-                if (lolaSissy < 1)
-                    chat(166, 13);
-                else if (lolaSissy < 2)
-                    chat(120, 13);
-                else if (lolaSissy === 2)
-                    chat(141, 13);
-                else if (lolaSissy === 3) {
-                    //if (sc.getMissionTask("lola", "date", 5).complete)
-                    chat(163, 13); //preganannte
-                    //else
-                    //  chat(999, 13);
+                if (daily.get("lola")) {
+                    chat(24, 13);
+                }
+                else {
+                    daily.set("lola");
+                    let lolaSissy = sc.taskGetStep("lola", "sissy");
+                    if (lolaSissy < 1)
+                        chat(166, 13);
+                    else if (lolaSissy < 2)
+                        chat(120, 13);
+                    else if (lolaSissy === 2)
+                        chat(141, 13);
+                    else if (lolaSissy === 3) {
+                        sc.completeMissionTask("lola", "sissy", 3);
+                        daily.set("lola");
+                        daily.set("evaTalkSecret")
+                        chat(163, 13);
+                    }
+                    else if (lolaSissy === 4) {
+
+                    }
                 }
             }
             break;
@@ -1581,6 +1590,9 @@ room13.chatcatch = function (callback) {
                 nav.killbutton("eva");
                 nav.killbutton("evaboobs");
                 break;
+            case "killLola":
+                nav.killbutton("lola");
+                break;
             case "sissyEva3_0":
                 nav.modbutton("eva", "13_sisterRoom/sissyEva3_0.png", null, null);
                 break;
@@ -1644,6 +1656,10 @@ room13.chatcatch = function (callback) {
                     char.addtime(54);
                 g.pass = "room585First"
                 char.room(585);
+                break;
+            case "hallway":
+                nav.killall();
+                nav.bg("11_hallway/11_hallway.jpg", "11_hallway/11_hallwayNight.jpg");
                 break;
             default: break;
         }
@@ -3122,9 +3138,9 @@ room13.chat = function (chatID) {
             {
                 chatID: 163,
                 speaker: "lola",
-                text: "[In development - not ready]",
+                text: "OOoo! One minute, just got a call!",
                 button: [
-                    { chatID: -1, text: "?", callback: "" },
+                    { chatID: 206, text: "?", callback: "killLola" },
                 ]
             },
             {
@@ -3497,6 +3513,52 @@ room13.chat = function (chatID) {
                     { chatID: -1, text: "oh. ok", callback: "reset" },
                 ]
             },
+            {
+                chatID: 206,
+                speaker: "eva",
+                text: "Ugh! She's such a goob! Talking to him again!",
+                button: [
+                    { chatID: 207, text: "who? Who is she talking to?", callback: "" },
+                ]
+            },
+            {
+                chatID: 207,
+                speaker: "eva",
+                text: sc.n("chad") + ". He's really is a dick. I told her he's just trying to sleep with her, but she " +
+                    "thinks he's cute and nice to her. Sheesh. ",
+                button: [
+                    { chatID: 208, text: "What? She can't really be talking to him. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 208,
+                speaker: "eva",
+                text: "For real! When you came out as a sissy it really broke her heart. She's just gone completely boy " +
+                    "crazy. And that " + sc.n("chad") + " has been trying to get in her panties for a while. He is silky smooth ",
+                button: [
+                    { chatID: 209, text: "oh no. We've got to break them up somehow. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 209,
+                speaker: "eva",
+                text: "That's one thing you and I agree on booger eater. I'll snoop on her phone, see what's he's up to. I'll " +
+                    "let you know if we should be worried. ",
+                button: [
+                    { chatID: 210, text: "Do that. Let me know. We can't let those two get together! ", callback: "hallway" },
+                ]
+            },
+            {
+                chatID: 210,
+                speaker: "thinking",
+                text: "I can't let " + sc.n("chad") + " date my " + g.makeSingular(sc.n("el")) + "! She's such a nice girl " +
+                    "she'll totally fall for his games. That asshole! I must think of something to make sure she doens't " +
+                    "use her and dump her. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
+                ]
+            },
+            
         ];
         return cArray[chatID];
     }

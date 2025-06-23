@@ -68,6 +68,8 @@ gender.pronoun = function (ptype) {
             return gender.isGirl() ? "sissy" : "faggot";
         case "asshole":
             return gender.isGirl() ? "bussy" : "asshole";
+        case "sissy":
+            return sissy.st[0].ach ? "sissy" : "boy";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

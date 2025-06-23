@@ -37,7 +37,7 @@ room49.btnclick = function (name) {
             nav.kill();
             var pantlist = ["v", "bs", "cl", "co", "h", "d", "ss", "sq", "k"];
             if ((cl.c.dress !== null || pantlist.includes(cl.c.pants)) &&
-                (!g.isNight() && cl.appearance() > 2 && g.rand(0, 3) === 2)) {
+                (!g.isNight() && gender.pronoun("f") === "f" && g.rand(0, 3) === 2)) {
                 nav.bg("49_train/stand_bg_1.webp");
                 zcl.displayMain(150, 1200, .11, "clothes", true);
                 nav.button({
@@ -122,7 +122,7 @@ room49.chatcatch = function (callback) {
                 nav.bg("49_train/stand_bg_1g_panties.webp");
             break;
         case "stand_1h":
-            levels.anal(4, false, "m", true);
+            levels.anal(4, false, "m", true, null, "unk");
             nav.bg("49_train/stand_bg_1h.webp");
             zcl.displayMain(150, 1100, .11, "clothes", true);
             break;

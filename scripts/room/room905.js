@@ -76,7 +76,7 @@ room905.chatcatch = function (callback) {
             break;
         case "jail":
             g.pass = "jail";
-            char.room(425);
+            char.room(376);
             break;
         case "showid":
             if (cl.appearance() > 1) {

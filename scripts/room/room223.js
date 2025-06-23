@@ -56,7 +56,7 @@ room223.chatcatch = function (callback) {
             zcl.displayMain(0, 900, .25, "clothes", true);
             break;
         case "panties5End":
-            char.settime(17, 17);
+            //char.settime(17, 17);
             missy.set("uniform", 1);
             missy.set("uniformNew", 0);
             if (missy.payday().paydayHasPay)
@@ -218,7 +218,7 @@ room223.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "cecilia",
-            text: "Hey. I'm so glad you've found yourself. Take care sexy! ",
+            text: "Hey. I'm so glad you've found yourself. Take care sexy! Now go get lunch.",
             button: [
                 { chatID: -1, text: "Thanks. ", callback: "panties5End" },
             ]

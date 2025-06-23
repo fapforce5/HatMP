@@ -56,10 +56,10 @@ room203.btnclick = function (name) {
             }
             else if (missy.activecase().name === "apply") {
                 chat(1, 203);
-                
             }
             else if (missy.get("totalDaysWorked") === 0) {
                 missy.set("activeCase", -1);
+                sc.startMissionTask("priest", "confession", 3);
                 chat(11, 203);
             }
             else if (missy.get("activeCase") > 3 && missy.get("activeCaseComplete") === 0) {
@@ -77,6 +77,14 @@ room203.btnclick = function (name) {
             cl.c.shirt = "r";
             cl.c.bra = "p";
             cl.c.socks = null;
+            if (cl.c.panties === null) {
+                if (cl.hasClothing("panties", "w"))
+                    cl.c.panties = "w";
+                else if (cl.hasClothing("panties", "missy"))
+                    cl.c.panties = "missy";
+                else if (cl.hasClothing("panties", "c"))
+                    cl.c.panties = "c";
+            }
             cl.display();
             char.room(203);
             break;

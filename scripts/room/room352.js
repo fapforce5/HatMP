@@ -381,7 +381,7 @@ room352.chatcatch = function (callback) {
             break;
         case "l1":
             nav.killall();
-            levels.oralGive(4, null, false, "m");
+            levels.oral(4, null, false, "m", null, "unk");
             nav.bg(g.internal.events[0].c === 0 ? "352_jackoff/wl1.jpg" : "352_jackoff/bl1.jpg");
             break;
         case "l2":

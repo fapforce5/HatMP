@@ -140,7 +140,7 @@ room318.btnclick = function (name) {
         case "b2":
             if (g.internal.step === 10) {
                 nav.killbutton("b2");
-                levels.anal(1, true, "f", false);
+                levels.anal(1, true, "f", false, null, "janice");
                 chat(21, 318);
             }
             else {
@@ -519,7 +519,7 @@ room318.chatcatch = function (callback) {
                     }
                     else {
                         sc.completeMissionTask("janice", "datr", 3);
-                        chat(49, 318);
+                        chat(50, 318);
                     }
                     
 

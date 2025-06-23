@@ -13,6 +13,35 @@ room11.main = function () {
         }, 16);
         return;
     }
+    else if (!daily.get("evaTalkSecret") && sc.taskGetStep("lola", "sissy") === 4) {
+        sc.completeMissionTask("lola", "sissy", 4);
+        future.add("lolaboy", 7);
+        nav.button({
+            "type": "img",
+            "name": "eva",
+            "left": 760,
+            "top": 295,
+            "width": 518,
+            "height": 785,
+            "image": "11_hallway/eva.webp"
+        }, 11);
+        chat(7, 11);
+        return;
+    }
+    else if (sc.taskGetStep("lola", "sissy") === 6) {
+        sc.completeMissionTask("lola", "sissy", 6);
+        nav.button({
+            "type": "img",
+            "name": "eva",
+            "left": 760,
+            "top": 295,
+            "width": 291,
+            "height": 785,
+            "image": "11_hallway/eva.webp"
+        }, 11);
+        chat(10, 11);
+        return;
+    }
     g.pass = '';
     if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;
@@ -187,6 +216,9 @@ room11.chatcatch = function (chatcatch) {
         case "kickouot":
             char.room(0);
             break;
+        case "reset":
+            char.room(11);
+            break;
     }
 };
 
@@ -243,7 +275,48 @@ room11.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "...", callback: "kickouot" }
             ]
-        }
+        },
+        {
+            chatID: 7,
+            speaker: "eva",
+            text: "I have to talk to you! It's worse than I thought. I was snooping in her phone and I found her chat history " +
+                "with " + sc.n("chad") + "! He totally pressured her into sending him a naked picture. She sent him a picture " +
+                "of herself in her underwear, but it's going faster than I thought!  We should try to find a nice boy for her. Someone " +
+                "that will treat her right, but I don't know anyone I would match them with. Think you could help me find " +
+                "a nice boy? And it can't be someone that's fucked either of us. Too icky.",
+            button: [
+                { chatID: 8, text: "Well... I don't know if there's any good looking boys left in this town that haven't been with you. hahahah ", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "eva",
+            text: "That's becuase all the boys want this booty, so thbptttttttt. We have to break them up! I haven't told anyone, " +
+                "but I found the recordings " + sc.n("chad") + " made when we had sex. I told him to delete it, but he make me " +
+                "blow all his friends before he would! He's such an ass, but I was afraid he would post them to those porn sites. " +
+                "We can't let her date him. She's too naive for a guy like him.",
+            button: [
+                { chatID: 9, text: "Agreed. I'll go find a nice boy to distract her from that asshole! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "eva",
+            text: "You do that. I'll keep trying to talk her out of dating that creep. We must stop them! I think they have a " +
+                "date in a week. You find a good boy for her, I'll intorduce them. Deal?",
+            button: [
+                { chatID: -1, text: "Deal!", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "eva",
+            text: "I have to know if you found someone! That pervert " + sc.n("chad") + " is really slithering his way " +
+                "into her panties. ",
+            button: [
+                { chatID: -1, text: "Deal!", callback: "reset" },
+            ]
+        },
     ];
     return cArray[chatID];
 };

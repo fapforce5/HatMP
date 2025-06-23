@@ -113,7 +113,7 @@ room250.chatcatch = function (callback) {
             char.room(0);
             break;
         case "jail":
-            char.room(425);
+            char.room(376);
             break;
         case "backOffice":
             if (g.hourBetween(6, 11)) {

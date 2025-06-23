@@ -31,7 +31,7 @@ g.st = new Array();
 g.fmap;
 g.nextRoomId = 0;
 g.pastSaves = new Array();
-
+g.skipChat = false;
 g.gt = function (first, second) {
     return gv.get(first) > gv.get(second);
 };
@@ -173,6 +173,7 @@ g.rooms = [
     { roomID: 31, name: "Lola's Puter", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 16, btn: "roomBtn_31.png" },
 
     { roomID: 40, name: "Auto Repair", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 40, btn: "roomBtn_10.png" },
+    { roomID: 41, name: "Auto Repair", image: "41_garage/bg.jpg", nightImage: "41_garage/bg.jpg", houseID: 40, btn: "roomBtn_10.png" },
 
     { roomID: 49, name: "Train", image: "49_train/bg.webp", nightImage: "49_train/night.webp", houseID: 40, btn: "roomBtn_10.png" },
 
@@ -285,6 +286,7 @@ g.rooms = [
     { roomID: 354, name: "Break Room", image: "352_jackoff/waitroom.jpg", nightImage: "352_jackoff/waitroom.jpg", houseID: 350, btn: "roomBtn_352.png" },
 
     { roomID: 375, name: "Mascot", image: "375_cop/bg.jpg", nightImage: "375_cop/bg.jpg", houseID: 375, btn: "roomBtn_375.png" },
+    { roomID: 376, name: "Jail", image: "376_jail/welcome.webp", nightImage: "376_jail/welcome.webp", houseID: 375, btn: "roomBtn_375.png" },
 
     { roomID: 400, name: "Mall", image: "400_mall/400_mall_bg.jpg", nightImage: "400_mall/400_mall_bg.jpg", houseID: 400, btn: "roomBtn_400.png" },
     { roomID: 401, name: "Purchase", image: "401_purchase/401_buy.jpg", nightImage: "401_purchase/401_buy.jpg", houseID: 400, btn: "roomBtn_401.png" },
@@ -295,8 +297,6 @@ g.rooms = [
     { roomID: 406, name: "I Like Your Eyes", image: "406_eyes/bg.jpg", nightImage: "406_eyes/bg.jpg", houseID: 400, btn: "roomBtn_402.png" },
     { roomID: 407, name: "Sappho's Makeup", image: "407_makeup/bg.jpg", nightImage: "407_makeup/bg.jpg", houseID: 400, btn: "roomBtn_407.png" },
     { roomID: 408, name: "Stormy's", image: "408_tattoo/bg.jpg", nightImage: "408_tattoo/bgNight.jpg", houseID: 400, btn: "roomBtn_408.png" },
-
-    { roomID: 425, name: "Jail", image: "425_Jail/jail.jpg", nightImage: "425_Jail/jail.jpg", houseID: 225, btn: "roomBtn_402.png" },
 
     { roomID: 450, name: "Park Entrance", image: "450_park/450_bg.jpg", nightImage: "450_park/450_bg_night.jpg", houseID: 450, btn: "roomBtn_450.png" },
     { roomID: 451, name: "Men's Room", image: "451_parkMensRoom/mensroom.jpg", nightImage: "451_parkMensRoom/mensroom.jpg", houseID: 450, btn: "roomBtn_451.png" },
@@ -372,7 +372,7 @@ g.rooms = [
     { roomID: 752, name: "Dirty Whore's Tent", image: "752_whore/bg.jpg", nightImage: "752_whore/bg.jpg", houseID: 750, btn: "roomBtn_752.png" },
 
     { roomID: 775, name: "Church", image: "775_church/boy.jpg", nightImage: "775_church/boy.jpg", houseID: 775, btn: "roomBtn_10.png" },
-    { roomID: 776, name: "Church", image: "775_church/boy.jpg", nightImage: "775_church/boy.jpg", houseID: 775, btn: "roomBtn_10.png" },
+    { roomID: 776, name: "Church", image: "776_church/bg.webp", nightImage: "776_church/bg.webp", houseID: 775, btn: "roomBtn_10.png" },
 
     { roomID: 800, name: "Ralph's House", image: "800_ralph/bg.jpg", nightImage: "800_ralph/bg_night.jpg", houseID: 800, btn: "roomBtn_800.png" },
 
@@ -416,7 +416,7 @@ g.roomMapInit = function () {
     g.roomMap = [
         { roomID: 16, display: "My House", access: true, darkAccess: true, left: 1425, top: 399, width: 102, height: 146, img: "map/10.png", night: "map/10_night.png", map: 1 },
         { roomID: 29, display: "Back Yard", access: true, darkAccess: true, left: 1353, top: 393, width: 70, height: 158, img: "map/29.png", night: "map/29_night.png", map: 1 },
-        { roomID: 40, display: "Dick's Garage", access: true, darkAccess: false, left: 318, top: 518, width: 118, height: 104, img: "map/40.png", night: "map/40_night.png", map: 3 },
+        { roomID: 41, display: "Dick's Garage", access: true, darkAccess: false, left: 318, top: 518, width: 118, height: 104, img: "map/40.png", night: "map/40_night.png", map: 3 },
         { roomID: 48, display: "Train", access: true, darkAccess: true, left: 438, top: 828, width: 373, height: 200, img: "map/48.png", night: "map/48_night.png", map: 3 },
         { roomID: 49, display: "Train", access: true, darkAccess: true, left: 744, top: 802, width: 373, height: 200, img: "map/49.png", night: "map/49_night.png", map: 0 },
         { roomID: 50, display: "Tif's Place", access: true, darkAccess: true, left: 1665, top: 559, width: 218, height: 319, img: "map/50.png", night: "map/50_night.png", map: 1 },
