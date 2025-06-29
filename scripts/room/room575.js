@@ -21,7 +21,7 @@ room575.main = function () {
         chat(27, 575);
         return;
     }
-    if (gv.get("sissySchoolClass") === "finalx" && sc.getMission("brayden", "date").notStarted) {
+    if (future.get("sissyfinal") > -1 && sc.getMission("brayden", "date").notStarted) {
         g.internal = {
             nextTo: false,
             closer: 300

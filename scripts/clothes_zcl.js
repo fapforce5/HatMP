@@ -85,7 +85,6 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
     for (i = 0; i < cl.c.tattoo.length; i++) {
         for (let j = 0; j < cl.tattoo.length; j++) {
             if (cl.c.tattoo[i] === cl.tattoo[j].name) {
-                console.log((dback ? cl.tattoo[j].back : cl.tattoo[j].image));
                 zcl.displayMainSub((dback ? cl.tattoo[j].back : cl.tattoo[j].image), top, left, ratio);
             }
         }
@@ -695,7 +694,7 @@ zcl.double = function (top, left, ratio, mod, reverse) {
         zcl.subDisplay("head_m.png", top, left, ratio, reverse, w, h, f);
 };
 
-//mod -> up, open, insert, suck
+//mod -> up, open, insert, suck, cum, cumface
 //color = w, b, d
 zcl.face = function (top, left, ratio, mod, color, reverse) {
     zcl.kill();
@@ -716,6 +715,7 @@ zcl.face = function (top, left, ratio, mod, color, reverse) {
         color = "w";
     if (cl.c.makeup !== "n" || cl.c.lipstick !== null || cl.c.lips > 0)
         makeup = "f";
+    
     if (mod === null)
         mod = "open";
     else if (mod.length === 0)
@@ -738,6 +738,37 @@ zcl.face = function (top, left, ratio, mod, color, reverse) {
     if(mod === "insert" || mod === "suck")
         zcl.subDisplay("suck_" + makeup + "_" + color + ".png", top, left, ratio, reverse, w, h, f);
 };
+
+zcl.backOfHead = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let dback = true;
+    let thisHair;
+    
+    zcl.displayMainSub("top_" + cl.c.chest + (dback ? "_back" : "") + ".png", top, left, ratio);
+    zcl.displayMainSub("body_head_back.png", top, left, ratio);
+    if (cl.c.wig !== null) {
+            $.each(cl.wig, function (i, v) {
+                if (v.name === cl.c.wig)
+                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+            });
+        }
+        else {
+            if (cl.c.hairLength !== null) {
+                if (cl.c.hairLength < 2) {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor;
+                    zcl.displayMainSub((dback ? thisHair + "_back.png" : thisHair + ".png"), top, left, ratio);
+                }
+                else if (cl.c.hairStyle === "leia" || cl.c.hairStyle === "bun") {
+                    thisHair = "hair_2_" + cl.c.hairColor + "_" + cl.c.hairStyle;
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+                else {
+                    thisHair = "hair_" + cl.c.hairLength.toString() + "_" + cl.c.hairColor + "_" + cl.c.hairStyle;
+                    zcl.displayMainSub(dback ? thisHair + "_back.png" : thisHair + ".png", top, left, ratio);
+                }
+            }
+        }
+}
 
 zcl.poseExpose = function (top, left, ratio, mod, reverse) {
     zcl.kill();

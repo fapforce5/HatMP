@@ -85,7 +85,7 @@ room501.btnclick = function (name) {
                 nav.killall();
                 daily.set("zoey");
                 char.addtime(60);
-                levels.anal(3, true, "f", false, null, "zoey");
+                levels.anal(3, true, "f", false, "zoey");
                 sc.modLevel("zoey", 30, 10);
                 nav.bg("501_jadaGame/win5.jpg");
                 chat(106, 501);
@@ -414,7 +414,7 @@ room501.btnclick = function (name) {
                 char.addtime(60);
                 sc.modLevel("zoey", 30, 10);
                 daily.set("zoey");
-                levels.oral(3, false, false, "f", null, "zoey");
+                levels.oral(3, "f", "zoey");
                 chat(104, 501);
             }
             else {

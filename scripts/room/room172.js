@@ -180,22 +180,22 @@ room172.chatcatch = function (callback) {
             }
             break;
         case "xtieEnd0":
-            levels.anal(1);
+            levels.anal(1, false, "n", false, "black");
             gv.mod("energy", -9999);
             room172.chatcatch("snuggle");
             return;
         case "xtieEnd1":
-            levels.anal(3);
+            levels.anal(3, false, "n", false, "black");
             gv.mod("energy", -9999);
             room172.chatcatch("snuggle");
             return;
         case "xtieEnd2":
-            levels.anal(5);
+            levels.anal(5, false, "n", false, "black");
             gv.mod("energy", -9999);
             room172.chatcatch("snuggle");
             return;
         case "xtieEnd3":
-            levels.anal(6);
+            levels.anal(6, false, "n", false, "black");
             gv.mod("energy", -9999);
             room172.chatcatch("snuggle");
             return;
@@ -213,7 +213,7 @@ room172.chatcatch = function (callback) {
             break;
         case "cock":
             nav.bg("172_punishblack/cock.jpg");
-            levels.anal(4, true, "m", true, null, "black");
+            levels.anal(4, true, "m", true, "black");
             break;
         case "complete":
             levels.mod("xdress", 30, 999);

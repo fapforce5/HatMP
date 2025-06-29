@@ -286,8 +286,8 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "tim3_16":
-            levels.oral(3, false, false, "m", null, "tim");
-            levels.anal(3, false, "m", true, null, "tim");
+            levels.oral(3, "m", "tim", false);
+            levels.anal(3, false, "m", true, "tim");
             daily.set("tim");
             sc.completeMissionTask("tim", "fuck", 2);
             char.addtime(72);
@@ -311,8 +311,8 @@ room726.chatcatch = function (callback) {
             nav.bg("726_dance/tim3_15.jpg");
             break;
         case "t5":
-            levels.oral(3, false, false, "m", null, "tim");
-            levels.anal(3, false, "m", true, null, "tim");
+            levels.oral(3, "m", "tim", false);
+            levels.anal(3, false, "m", true, "tim");
             if (!sc.getMissionTask("tim", "fuck", 3).complete) {
                 sc.completeMissionTask("tim", "fuck", 3);
             }

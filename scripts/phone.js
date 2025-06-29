@@ -95,7 +95,8 @@ phone.backbutton = function (icon) {
 
         { n: "phone_help", img: "bHelp", x: 0, y: 2 },
         { n: "phone_patron", img: "bPatron", x: 2, y: 2 },
-        { n: "phone_thankyou", img: "bPatreon", x: 3, y: 2 }
+        { n: "phone_thankyou", img: "bPatreon", x: 3, y: 2 },
+        { n: "phone_purity", img: "bPurity", x: 1, y: 1 }
     ];
     for (i = 0; i < btnList.length; i++) {
         if (icon === btnList[i].n) {
@@ -126,14 +127,21 @@ phone.saveMenu = function () {
         "height": 815,
         "image": "999_phone/save_bg.jpg",
     }, 9999);
+    let newestSave = new Date(1900, 0, 0);
+    let newestSaveId = -1;
+    let savedt;
     for (var i = 0; i < 10; i++) {
         var cookieName = 'HatMP_' + i;
         const top = 180 + (i * 60);
         if (localStorage.getItem(cookieName) !== null) {
             var initTemp = JSON.parse(localStorage[cookieName]);
-
-            
-
+            if (initTemp.saveDt !== undefined && i < 10) {
+                savedt = new Date(initTemp.saveDt);
+                if (savedt > newestSave) {
+                    newestSave = savedt;
+                    newestSaveId = i;
+                }
+            }
             if (initTemp.version < minVersion) {
                 nav.t({
                     type: "zimg",
@@ -215,6 +223,9 @@ phone.saveMenu = function () {
                 "image": "999_phone/save.png",
             }, 9999);
         }
+    }
+    if (newestSaveId > -1) {
+        $("div[data-name='phone_save_load_name_" + newestSaveId + "']").css({ "color": "#ffc7f6" });
     }
 
     nav.button({
@@ -830,11 +841,14 @@ phone.cheat = function () {
 
 phone.purity = function () {
     phone.clear(false);
-    let txtLeft, txtRight;
+    let penisvirgin = sex.getvirgin(25);
+    let oralvirgin = sex.getvirgin(27);
+    let pussyvirgin = sex.getvirgin(26);
+    let analvirgin = sex.getvirgin(24);
 
     nav.button({
         "type": "zimg",
-        "name": "phone_",
+        "name": "phone_purity",
         "left": 451,
         "top": 155,
         "width": 1185,
@@ -842,134 +856,200 @@ phone.purity = function () {
         "image": "999_phone/purity_bg.jpg",
     }, 9999);
     
-    let c = 0;
-    
     nav.t({
         type: "zimg",
-        name: "phone_",
-        "left": 800,
+        name: "phone_purity",
+        "left": 850,
         "top": 200,
         font: 24,
         hex: "#000",
-        text: "Penis"
+        text: "Boy"
     }, 9999);
     nav.t({
         type: "zimg",
-        name: "phone_",
+        name: "phone_purity",
         "left": 900,
         "top": 200,
         font: 24,
         hex: "#000",
-        text: "Vag"
+        text: "Girl"
     }, 9999);
     nav.t({
         type: "zimg",
-        name: "phone_",
-        "left": 1400,
+        name: "phone_purity",
+        "left": 950,
         "top": 200,
         font: 24,
         hex: "#000",
-        text: "Penis"
+        text: "NB"
     }, 9999);
     nav.t({
         type: "zimg",
-        name: "phone_",
+        name: "phone_purity",
+        "left": 1450,
+        "top": 200,
+        font: 24,
+        hex: "#fff",
+        text: "Boy"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_purity",
         "left": 1500,
         "top": 200,
         font: 24,
-        hex: "#000",
-        text: "Vag"
+        hex: "#fff",
+        text: "Girl"
     }, 9999);
-
     nav.t({
         type: "zimg",
-        name: "phone_",
-        "left": 500,
-        "top": 600,
+        name: "phone_purity",
+        "left": 1550,
+        "top": 200,
         font: 24,
-        hex: "#000 ",
-        text: "Sissygasms: " 
+        hex: "#fff",
+        text: "NB"
     }, 9999);
-
-    nav.t({
-        type: "zimg",
-        name: "phone_",
-        "left": 800,
-        "top": 600,
-        font: 24,
-        hex: "#000 ",
-        text: stats.st[12].c
-    }, 9999);
-
-    nav.t({
-        type: "zimg",
-        name: "phone_",
-        "left": 900,
-        "top": 600,
-        font: 24,
-        hex: "#000 ",
-        text: stats.st[13].c 
-    }, 9999);
-
-    for (let i = 0; i < sex.st.length; i++) {
-        if (sex.st[i].sin > -1) {
-            
-            if (i % 4 === 0) {
-                switch (sex.st[i].type) {
-                    case "anal": txtLeft = "Fucked up the ass"; txtRight = "Fucked an ass"; break;
-                    case "oral": txtLeft = "Performed Oral"; txtRight = "Got blowjob"; break;
-                    case "hand": txtLeft = "Handjob given"; txtRight = "Received Handjob"; break;
-                    case "fist": txtLeft = "Got fisted"; txtRight = "Fisted"; break;
-                    case "foot": txtLeft = "Footjob given"; txtRight = "Footjob"; break;
-                    case "pussy": txtLeft = "Fucked in pussy"; txtRight = "Fucked Pussy"; break;
-                    case "piss": txtLeft = "Pisson on"; txtRight = ""; break;
-                    case "drankpiss": txtLeft = "Drank piss"; txtRight = ""; break;
-                    case "boob": txtLeft = "Boobjob given"; txtRight = "Boobjob"; break;
-                    case "beast": txtLeft = "Fucked by beast"; txtRight = ""; break;
-                }
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    "left": 500,
-                    "top": 260 + (sex.st[i].sin * 30),
-                    font: 24,
-                    hex: "#000",
-                    text: txtLeft + ":"
-                }, 9999);
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    "left": 1100,
-                    "top": 260 + (sex.st[i].sin * 30),
-                    font: 24,
-                    hex: "#000",
-                    text: txtRight + ":"
-                }, 9999);
-            }
-            if (!sex.st[i].give) {
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    "left": 800 + ((i % 2) * 100),
-                    "top": 260 + (sex.st[i].sin * 30),
-                    font: 24,
-                    hex: "#000 ",
-                    text: sex.st[i].c
-                }, 9999);
-            }
-            else {
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    "left": 1400 + ((i % 2) * 100),
-                    "top": 260 + (sex.st[i].sin * 30),
-                    font: 24,
-                    hex: "#000 ",
-                    text: sex.st[i].c
-                }, 9999);
-            }
+    
+    let subcount, domcounter, l, t, col, lm, lf, ln;
+    subcount = domcounter = 0;
+    
+    for (let i = 0; i < 26; i++) {
+        if (sex.st[i].subdom === "sub") {
+            l = 500;
+            t = (subcount * 30) + 240;
+            col = "#000000";
+            lm = 850;
+            lf = 900;
+            ln = 950;
+            subcount++;
         }
+        else {
+            l = 1100;
+            t = (domcounter * 30) + 240;
+            col = "#ffffff";
+            lm = 1450;
+            lf = 1500;
+            ln = 1550;
+            domcounter++;
+        }
+
+        nav.t({
+            type: "zbtn",
+            name: "phone_purity_" + sex.st[i].id,
+            "left": l,
+            "top": t,
+            font: 24,
+            hex: col,
+            text: sex.st[i].d
+        }, 9999);
+        nav.t({
+            type: "zbtn",
+            name: "phone_purity_" + sex.st[i].id,
+            "left": lm,
+            "top": t,
+            font: 24,
+            hex: col,
+            text: sex.st[i].ent[0].c
+        }, 9999);
+        nav.t({
+            type: "zbtn",
+            name: "phone_purity_" + sex.st[i].id,
+            "left": lf,
+            "top": t,
+            font: 24,
+            hex: col,
+            text: sex.st[i].ent[1].c
+        }, 9999);
+        nav.t({
+            type: "zbtn",
+            name: "phone_purity_" + sex.st[i].id,
+            "left": ln,
+            "top": t,
+            font: 24,
+            hex: col,
+            text: sex.st[i].ent[2].c
+        }, 9999);
     }
+    let penisVirginTxt, analVirginTxt, pussyVirginTxt, oralVirginTxt;
+    if (penisvirgin.virgin) {
+        if (cl.c.cock === 5)
+            penisVirginTxt = "Lost your penis and never used it.";
+        else
+            penisVirginTxt = "Virgin";
+    }
+    else {
+        penisVirginTxt = "Penis virginity lost to " + penisvirgin.who + " on day: " + penisvirgin.day;
+    }
+
+    if (oralvirgin.virgin) {
+        oralVirginTxt = "Haven't performed oral on anyone. ";
+    }
+    else {
+        if (oralvirgin.gender === "f")
+            oralVirginTxt = "First cunnilingus on " + oralvirgin.who + " on day: " + oralvirgin.day;
+        else
+            oralVirginTxt = "First cock sucked " + oralvirgin.who + " on day: " + oralvirgin.day;
+    }
+
+    if (cl.c.cock === 5) {
+        if (pussyvirgin.virgin)
+            pussyVirginTxt = "Never been fucked in your pussy";
+        else
+            pussyVirginTxt = "Lost your pussy virginity to " + pussyvirgin.who + " on day: " + pussyvirgin.day;
+    }
+    else {
+        pussyVirginTxt = ""
+    }
+
+    if (cl.c.cock === 5) {
+        pussyVirginTxt = "Lost your pussy virginity to " + pussyvirgin.who + " on day: " + pussyvirgin.day;
+    }
+    else {
+        pussyVirginTxt = "No pussy"
+    }
+
+    if (analvirgin.virgin)
+        analVirginTxt = "Never been fucked up your ass";
+    else
+        analVirginTxt = "Lost your anal virginity to " + analvirgin.who + " on day: " + analvirgin.day;
+
+    nav.t({
+        type: "zimg",
+        name: "phone_purity",
+        "left": 750,
+        "top": 850,
+        font: 24,
+        hex: "#ffffff",
+        text: penisVirginTxt
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_purity",
+        "left": 750,
+        "top": 880,
+        font: 24,
+        hex: "#ffffff",
+        text: analVirginTxt
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_purity",
+        "left": 750,
+        "top": 910,
+        font: 24,
+        hex: "#ffffff",
+        text: oralVirginTxt
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_purity",
+        "left": 750,
+        "top": 940,
+        font: 24,
+        hex: "#ffffff",
+        text: pussyVirginTxt
+    }, 9999);
 };
 
 room9999.btnclick = function (name) {
@@ -1016,8 +1096,6 @@ room9999.btnclick = function (name) {
         var varstep2 = charstep1.split("_");
         var ch = sc.getMission(varstep2[0], varstep2[1]);
         var roomList = "";
-        console.log(charstep1);
-        console.log(varstep2);
         nav.t({
             type: "zimg",
             name: "phone_charsel_" + sc.charMission[ch.i].name + "_" + sc.charMission[ch.i].mission[ch.j].missionName,
@@ -1091,6 +1169,151 @@ room9999.btnclick = function (name) {
         var charrename = name.replace("phone_charRename_", "");
         sc.setcharname(charrename, $(".room-img[data-name='phone_charRenameDisplay']").val());
         g.popUpNoticeBottom(sc.n(charrename) + " has been renamed.");
+    }
+    else if (name.startsWith("phone_purity_")) {
+        let purid = parseInt(name.replace("phone_purity_", ""));
+        nav.killbuttonStartsWith("phone_purity");
+        phone.backbutton("phone_purity");
+        nav.button({
+            "type": "zimg",
+            "name": "phone_purity",
+            "left": 451,
+            "top": 155,
+            "width": 1185,
+            "height": 815,
+            "image": "999_phone/purity_bg.jpg",
+        }, 9999);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 500,
+            top: 200,
+            font: 60,
+            hex: "#000000",
+            text: sex.st[purid].d
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 500,
+            top: 300,
+            font: 24,
+            hex: "#000000",
+            text: "Boys: "
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 500,
+            top: 350,
+            font: 24,
+            hex: "#000000",
+            text: "Girls: "
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 500,
+            top: 400,
+            font: 24,
+            hex: "#000000",
+            text: "Non-binary: "
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 650,
+            top: 300,
+            font: 24,
+            hex: "#000000",
+            text: sex.st[purid].ent[0].c
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 650,
+            top: 350,
+            font: 24,
+            hex: "#000000",
+            text: sex.st[purid].ent[1].c
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 650,
+            top: 400,
+            font: 24,
+            hex: "#000000",
+            text: sex.st[purid].ent[2].c
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 750,
+            top: 300,
+            font: 24,
+            hex: "#000000",
+            text: sex.st[purid].ent[0].day === null ? "" : "First time: Day " + sex.st[purid].ent[0].day
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 750,
+            top: 350,
+            font: 24,
+            hex: "#000000",
+            text: sex.st[purid].ent[1].day === null ? "" : "First time: Day " + sex.st[purid].ent[1].day
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 750,
+            top: 400,
+            font: 24,
+            hex: "#000000",
+            text: sex.st[purid].ent[2].day === null ? "" : "First time: Day " + sex.st[purid].ent[2].day
+        }, 1);
+        //who
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 1100,
+            top: 300,
+            font: 24,
+            hex: "#ffffff",
+            text: "Boys: "
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 1250,
+            top: 300,
+            font: 24,
+            hex: "#ffffff",
+            text: "Girls: "
+        }, 1);
+        nav.t({
+            type: "zimg",
+            name: "phone_purity",
+            left: 1400,
+            top: 300,
+            font: 24,
+            hex: "#ffffff",
+            text: "Non-binary: "
+        }, 1);
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < sex.st[purid].ent[i].names.length; j++) {
+                nav.t({
+                    type: "zimg",
+                    name: "phone_purity",
+                    left: 1100 + (i * 150),
+                    top: 350 + (j * 25),
+                    font: 20,
+                    hex: "#ffffff",
+                    text: g.trunc(sex.st[purid].ent[i].names[j], 15)
+                }, 1);
+            }
+        }
     }
     else {
         switch (name) {

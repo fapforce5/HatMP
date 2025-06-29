@@ -246,6 +246,7 @@ room221.btnclick = function (name) {
             chat(43, 221);
             break;
         case "zpeeguy":
+            levels.piss(false, false, true, "m", "!peeguy");
             chat(44, 221);
             break;
         default:
@@ -266,7 +267,7 @@ room221.chatcatch = function (callback) {
             nav.bg("221_recip/" + callback + ".jpg");
             break;
         case "zpunk4":
-            levels.oral(3, true, false, "m", null, "unk");
+            levels.oral(3, "m", "!man", true);
             nav.killall();
             nav.bg("221_recip/" + callback + ".jpg");
             break;
@@ -299,7 +300,7 @@ room221.chatcatch = function (callback) {
             break;
         case "zm4":
             nav.killall();
-            levels.oral(3, false, false, "f", null, "unk");
+            levels.oral(3, "f", "!girl");
             nav.bg("221_recip/z_m.jpg");
             break;
         case "jefferyPanties":

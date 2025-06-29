@@ -138,7 +138,7 @@ room181.chatcatch = function (callback) {
             sc.startMission("cecilia", "gloryhole");
             break;
         case "bondage101_9":
-            levels.oral(1, true, false, "m", null, "cecilia");
+            levels.oral(1, "n", "ceclia", true);
             nav.bg("181_black/" + callback + ".jpg");
             break;
         case "bondage101_3":
@@ -172,7 +172,7 @@ room181.chatcatch = function (callback) {
             levels.mod("sub", 20);
             break;
         case "b303_13":
-            levels.anal(3, true, "m", true, null, "unk");
+            levels.anal(3, true, "m", true, "!man");
             levels.mod("xdress", 100);
             nav.bg("181_black/" + callback + ".jpg");
             break;

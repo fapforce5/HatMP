@@ -77,7 +77,7 @@ room19.btnclick = function (name) {
             nav.bg("19_layInBed/bg52.jpg");
             var startingFingers = 1;
             for (var fi = 4; fi > 0; fi--) {
-                if (levels.analTake(inv.anal(fi + "finger")).c < 3) {
+                if (levels.analSize(inv.anal(fi + "finger")).c < 3) {
                     startingFingers = fi;
                     break;
                 }
@@ -147,7 +147,7 @@ room19.btnclick = function (name) {
         case "pinkFatDildo":
         case "horseDildo":
             if (g.internal === "anal") {
-                var analEase = levels.analTake(inv.anal(name));
+                var analEase = levels.analSize(inv.anal(name));
                 if (analEase.c > 2) {
                     chat(10, 19);
                 }

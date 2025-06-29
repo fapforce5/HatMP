@@ -224,7 +224,6 @@ rape.phase0 = function () {
                 rape.updateEnergy(null, null, 5);
             }
         }
-        console.log(opening);
 
         nav.button({
             "type": "img",
@@ -938,7 +937,7 @@ rape.phase5 = function () {
                         rapeMsg.push({ n: rape.char.name, m: "I knew your fag ass needed cock!" });
                     }
                 }
-                else if (rape.chat.t === "femdom") {
+                else if (rape.char.t === "femdom") {
                     rapeMsg.push({ n: rape.char.name, m: "You love my giant strap-on don't you bitch? " });
                     rapeMsg.push({ n: rape.char.name, m: "You're a bigger pussy than me! " });
                     rapeMsg.push({ n: rape.char.name, m: "Love that bounce on my strap" });
@@ -1038,7 +1037,7 @@ rape.phase5 = function () {
                         rapeMsg.push({ n: rape.char.name, m: "Relax faggot. You need this." });
                     }
                 }
-                else if (rape.chat.t === "femdom") {
+                else if (rape.char.t === "femdom") {
                     rapeMsg.push({ n: "me", m: "Your giant strap-on hurts so bad! Please stop!" });
                     rapeMsg.push({ n: "me", m: "Please take your strap-on out of my ass mister!" });
                     rapeMsg.push({ n: rape.char.name, m: "Your tears only my pussy wetter!" });
@@ -1048,7 +1047,7 @@ rape.phase5 = function () {
             }
         }
 
-        pleasure = levels.analTake(rape.char.cocksize);
+        pleasure = levels.analSize(rape.char.cocksize);
     }
     else if (rape.rapeType === "oral") {
         if (rape.phaseChange === "phase4Sub") {
@@ -2064,7 +2063,7 @@ room1004.btnclick = function (name) {
                 chat(2, 1004); //not submissive enough
                 return;
             }
-            if (levels.analTake(rape.char.cocksize).c > 2) {
+            if (levels.analSize(rape.char.cocksize).c > 2) {
                 chat(4, 1004);
                 return;
             }

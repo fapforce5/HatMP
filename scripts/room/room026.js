@@ -396,7 +396,7 @@ room26.btnclick = function (name) {
                 nav.bg("26_livingRoom/q0.jpg");
                 sc.modLevel("landlord", 25, 10);
                 nav.killall();
-                levels.oral(3, false, false, "f", null, "landlord");
+                levels.oral(3, "f", "landlord");
                 chat(67, 26);
             }
             else {
@@ -418,7 +418,7 @@ room26.btnclick = function (name) {
             nav.killall();
             var bchastity = cl.c.chastity === null ? "" : "_c";
             nav.bg("26_livingRoom/bussy3_" + gender.pronoun("m") + bchastity + ".jpg");
-            levels.oral(3, false, false, "f", null, "landlord");
+            levels.oral(3, "f", "landlord");
             char.settime(20, 2);
             chat(104, 26);
             break;
@@ -681,7 +681,7 @@ room26.chatcatch = function (callback) {
                 nav.killall();
                 var bchastity1 = cl.c.chastity === null ? "" : "_c";
                 nav.bg("26_livingRoom/bussy3_" + gender.pronoun("m") + bchastity1 + ".jpg");
-                levels.oral(3, false, false, "f", null, "landlord");
+                levels.oralass("f", "landlord");
                 char.settime(20, 2);
                 chat(104, 26);
                 break;

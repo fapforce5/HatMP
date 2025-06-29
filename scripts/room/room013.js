@@ -1489,7 +1489,7 @@ room13.chatcatch = function (callback) {
                 break;
             case "dateEnd":
                 levels.fuckpussy("lola");
-                levels.getBlowJob("eva", "f");
+                levels.gotbj("f", "eva");
                 sc.completeMissionTask("lola", "date", 4);
                 sc.completeMissionTask("lola", "date", 5);
                 sc.startMission("eva", "fuck");

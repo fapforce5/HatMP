@@ -435,7 +435,7 @@ char.map = function () {
 char.friendlyTime = function (hour, ampm = null) {
     if (ampm === null)
         ampm = gv.get("clock24") === "12";
-
+    
     if (ampm) {
         if (hour === 0)
             return "12AM";
@@ -504,6 +504,11 @@ char.settime = function (newTimeHour, newTimeMinute) {
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), newTimeHour, newTimeMinute, 0, 0);
     nav.buildclock();
 };
+
+char.getDaysPlayed = function () {
+    var timeDiff = Math.abs(g.dt.getTime() - g.startDate.getTime());
+    return Math.ceil(timeDiff / (1000 * 3600 * 24));
+}
 
 //char.greeting = function () {
 //    var thisHour = g.dt.getHours;
@@ -1152,6 +1157,7 @@ menu.load = function (cookieName, btn, saveID) {
 
     var tp = JSON.parse(localStorage[cookieName]);
     var i;
+    let saveVersion = tp.version;
     g.pass = tp.pass;
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
@@ -1161,7 +1167,7 @@ menu.load = function (cookieName, btn, saveID) {
     cl.load(tp.cl);
     sc.load(tp.sc);
     scc.load(tp.scc);
-    gv.load(tp.gv);
+    gv.load(tp.gv, saveVersion);
     missy.load(tp.missy);
     
     try {
@@ -1338,12 +1344,13 @@ char.import = function (importData) {
     g.pass = tp.pass;
     g.internal = tp.internal;
     g.prevRoom = tp.prevRoom;
+    let saveVersion = tp.version;
 
     g.load(tp.g);
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
-    gv.load(tp.gv);
+    gv.load(tp.gv, saveVersion);
     missy.load(tp.missy);
     try {
         pic.load(tp.pic);

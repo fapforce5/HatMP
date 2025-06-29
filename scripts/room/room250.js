@@ -105,7 +105,7 @@ room250.chatcatch = function (callback) {
             nav.bg("250_beaver/" + callback + ".jpg");
             break;
         case "d3":
-            levels.cum();
+            levels.swallowCum("n", "dolly");
             char.addtime(20);
             char.room(0);
             break;

@@ -110,7 +110,7 @@ room626.chatcatch = function (callback) {
             nav.next("lola_5");
             break;
         case "lola_6":
-            levels.getBlowJob("lola", "f");
+            levels.gotbj("f", "lola");
             char.room(625);
             break;
         case "leave":

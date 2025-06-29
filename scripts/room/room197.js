@@ -89,10 +89,9 @@ room197.btnclick = function (name) {
             chat(13, 197);
             break;
         case "bj5":
-            
             nav.bg("197_sub/bj" + g.internal + "_" + gender.pronoun("f") + ".jpg");
             if (g.internal === 8) {
-                levels.oral(5, false, true, null, null);
+                levels.oral(5, "f", "missy");
                 nav.killall();
                 chat(22, 197);
             }
@@ -113,7 +112,7 @@ room197.btnclick = function (name) {
         case "eatassbtn7":
             nav.killall();
             nav.bg("197_sub/eatass8.jpg");
-            levels.oral(3, false, false, "f", "missy");
+            levels.oral(3, "f", "missy");
             chat(27, 197);
             break;
         case "anal3":
@@ -138,7 +137,7 @@ room197.btnclick = function (name) {
                 "height": 172,
                 "image": "197_sub/anal5.png"
             }, 197);
-            levels.anal(6, true, "f", false, null, "missy");
+            levels.anal(6, true, "f", false, "missy");
             chat(31, 197);
             break;
         case "anal6":
@@ -278,10 +277,10 @@ room197.chatcatch = function (callback) {
             levels.mod("sub", 5, 5);
             break;
         case "oralup":
-            levels.oral(4, false, false, "f", null, "missy");
+            levels.oral(5, "f", "missy");
             break;
         case "analup":
-            levels.anal(4, false, "f", false, null, "missy");
+            levels.anal(4, false, "f", false, "missy");
             break;
         case "complete":
             levels.mod("sub", 40);
@@ -303,7 +302,7 @@ room197.chatcatch = function (callback) {
             var pp0 = cl.c.shirt = "s" ? "m" : "f";
             nav.bg("197_sub/" + callback + "_" + pp0 + ".webp");
             if (callback === "pp2") {
-                sex.piss(true, false, false, "f");
+                levels.piss(true, false, false, "f", "missy");
             }
             break;
         case "desk":
@@ -642,7 +641,7 @@ room197.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "thinking",
-            text: "Oh fuck! My ass hurts so bad, but I can orgasm tingling in my ass. That orgasm " +
+            text: "Oh fuck! My ass hurts so bad, but that orgasm " +
                 "was soooo good my entire body is still shaking! Fuck that was good! I'm such " +
                 "a slutty girl!",
             button: [

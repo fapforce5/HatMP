@@ -1397,7 +1397,6 @@ sc.modLevel = function (name, amount, targetLevel = 10) {
             g.popUpNotice(sc.char[i].display + " points have increased by " + actualAmount + "! ");
     }
     else if (amount < 0) {
-        console.log(i);
         sc.char[i].c -= amount;
         if (sc.char[i].c < 0)
             sc.char[i].c = 0;
@@ -2580,11 +2579,11 @@ sc.trivial = function (charname) {
             image = "fatnun.png";
             break;
         case "!jail0":
-            name = "Prisoner";
+            name = "Fat dick prisoner";
             image = "jail0.png";
             break;
         case "!jail1":
-            name = "Prisoner";
+            name = "Long dick prisoner";
             image = "jail1.png";
             break;
         case "!music":

@@ -169,6 +169,7 @@ room170.btnclick = function (name) {
                     }
                     break;
                 case 6:
+                    nav.kill();
                     nav.bg("170_stage/fashion21" + g.map.ralph + ".webp");
                     zcl.displayMain(200, 890, .037, "clothes", false);
                     chat(97, 170);
@@ -419,6 +420,9 @@ room170.chatcatch = function (callback) {
             zcl.displayMain(200, 550, .23, "clothes", true);
             break;
         case "fashion2":
+            zcl.kill();
+            nav.bg("170_stage/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
         case "fashion3":
         case "fashion6":
             nav.bg("170_stage/" + callback + "_" + gender.pronoun("f") + ".webp");
@@ -463,7 +467,7 @@ room170.chatcatch = function (callback) {
             room170.chatcatch("makeScore");
             var xcoord1 = [359, 653, 894, 1195, 1453];
             if (cl.hasoutfit("cheerleaderOptional") === null) {
-                var cheerLevel = levels.get("cheer").l - 2;
+                var cheerLevel = levels.get("cheer").l;
                 g.map.score1 = 0;
                 var scorec1 = new Array(5);
                 for (i = 0; i < 5; i++) {
@@ -507,7 +511,7 @@ room170.chatcatch = function (callback) {
             room170.chatcatch("makeScore");
             var xcoord1s = [359, 653, 894, 1195, 1453];
             if (cl.hasoutfit("braAndPantiesIgnored") === null) {
-                var stripLevel = levels.get("stripper").l - 2;
+                var stripLevel = levels.get("stripper").l;
                 g.map.score1 = 0;
                 scorec1s = new Array(5);
                 for (i = 0; i < 5; i++) {
@@ -549,8 +553,8 @@ room170.chatcatch = function (callback) {
             nav.bg("170_stage/fashion28.webp");
             //room170.chatcatch("makeScore");
             var xcoord1w = [359, 653, 894, 1195, 1453];
-            var whoreLevel = levels.get("whore").l - 2;
-            levels.anal(4, false, "m", true, null, "unk");
+            var whoreLevel = levels.get("whore").l;
+            levels.anal(4, false, "m", true, "!man");
             g.map.score1 = 0;
             var scorec1w = new Array();
             for (let i = 0; i < 5; i++) {
@@ -639,11 +643,11 @@ room170.chatcatch = function (callback) {
             if (shoes < 0)
                 shoes = 1;
 
-            scorec[0] = Math.round((swa - 2) + (g.map.gavebj ? 2 : 0)); //oldman
+            scorec[0] = Math.round((swa - 2) + (g.map.gavebj ? 3 : 0)); //oldman
             scorec[1] = Math.round(totalApp);
-            scorec[2] = Math.round((swa - 3) + g.rand(0, 4));
+            scorec[2] = Math.round(swa + g.rand(1, 3));
             scorec[3] = Math.round((((totalApp + swa) / 2) - 3) + jonesMission);
-            scorec[4] = Math.round(shoes + g.rand(0, 2));
+            scorec[4] = Math.round(shoes + 2);
             if (g.map.event === 3) {
                 for (let i = 0; i < 5; i++)
                     scorec[i] = Math.floor(scorec[i] / 3);

@@ -33,7 +33,6 @@ room552.main = function () {
                 "height": 345,
                 "image": "552_boy/treyvonTowel.png"
             });
-            console.log("2");
         }
         var navList = [551, 554, 0];
         $.each(btnList, function (i, v) {

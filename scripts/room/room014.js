@@ -191,7 +191,6 @@ room14.main = function () {
                 "image": "14_motherRoom/dresserDay.png"
             });
         }
-        console.log(btnList);
         navList = [16];
         $.each(btnList, function (i, v) {
             nav.button(v, 14);
@@ -532,7 +531,7 @@ room14.btnclick = function (name) {
         case "towerDildo":
         case "pinkFatDildo":
         case "horseDildo":
-            if (levels.analTake(inv.anal(name)).c > 2) {
+            if (levels.analSize(inv.anal(name)).c > 2) {
                 chat(124, 14);
             }
             else {
@@ -630,7 +629,7 @@ room14.btnclick = function (name) {
             }
             else {
                 nav.killbutton("bigguy_30_dick");
-                levels.oral(5, true, false, "m", null, "bigguy");
+                levels.oral(5, "m", "bigguy", true);
                 if (g.internal.pussy > 4) {
                     char.addtime(180);
                     if (!g.internal.mission2Complete) {
@@ -651,7 +650,7 @@ room14.btnclick = function (name) {
             }
             else {
                 nav.killbutton("bigguy_30_pussy");
-                levels.oral(3, true, false, "f", null, "landlord");
+                levels.oral(3, "f", "landlord");
                 if (g.internal.dick > 4) {
                     char.addtime(120);
                     if (!g.internal.mission2Complete) {
@@ -671,8 +670,8 @@ room14.btnclick = function (name) {
             if (g.internal > 44) {
                 char.addtime(120, 14);
                 nav.killbutton("bigguy_40");
-                levels.anal(5, false, "m", false, null, "bigguy");
-                levels.oral(5, true, false, "m", null, "bigguy");
+                levels.anal(5, false, "m", false, "bigguy");
+                levels.oral(5, "m", "bigguy", true);
                 chat(154, 14);
             }
             g.internal++;
@@ -717,8 +716,8 @@ room14.btnclick = function (name) {
             if (g.internal > 45) {
                 nav.killbutton("confess4");
                 char.addtime(120);
-                levels.anal(5, false, "m", false);
-                levels.oral(5, true, false, "m", null, "bigguy", null, "bigguy");
+                levels.anal(5, false, "m", false, "bigguy");
+                levels.oral(5, "m", "bigguy", true);
                 nav.bg("14_motherRoom/14_motherRoomNightLight.jpg");
                 nav.button({
                     "type": "img",
@@ -908,7 +907,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task_3_end":
-            levels.oral(3, false, false, "f", null, "landlord");
+            levels.oral(3, "f", "landlord");
             gv.mod("horny", 75);
             levels.mod("oral", 50, 0);
             char.addtime(60);
@@ -918,7 +917,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task_4_end":
-            levels.oral(3, false, false, "f", null, "landlord");
+            levels.oral(3, "f", "landlord");
             gv.mod("horny", 75);
             levels.mod("oral", 50, 0);
             char.addtime(60);
@@ -927,7 +926,7 @@ room14.chatcatch = function (callback) {
             char.room(16);
             break;
         case "task_4_goodend":
-            levels.oral(3, false, false, "f", null, "landlord");
+            levels.oral(3, "f", "landlord");
             char.addtime(60);
             sc.modLevel("landlord", 75, 10);
             if (!sc.getMissionTask("landlord", "man", 4).complete) {
@@ -1055,7 +1054,7 @@ room14.chatcatch = function (callback) {
             
             break;
         case "task_9_b_end":
-            levels.getBlowJob("landlord", "f");
+            levels.gotbj("f", "landlord");
             char.addtime(97);
             char.room(16);
             break;
@@ -1190,7 +1189,7 @@ room14.chatcatch = function (callback) {
         case "butt4":
             nav.killall();
             nav.bg("14_motherRoom/butt4.jpg");
-            levels.anal(inv.anal(g.internal), true, null, false, null);
+            levels.anal(inv.anal(g.internal), true, "f", false, "landlord");
             break;
         case "butt5":
             char.addtime(120);

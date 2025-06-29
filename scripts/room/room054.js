@@ -111,7 +111,7 @@ room54.btnclick = function (name) {
                 nav.bg("54_tif/e4_7" + chastity45 + ".jpg");
             }
             else {
-                levels.anal(3, true);
+                levels.anal(3, true, "f", false, "tiffany");
                 nav.killall();
                 nav.bg("54_tif/e4_4.jpg");
                 chat(7, 54);

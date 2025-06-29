@@ -52,13 +52,13 @@ room212.btnclick = function (name) {
         case "swallow":
             nav.killall();
             nav.bg("212_gloryhole/c" + g.internal.dk + "_" + g.internal.appearance + "_s.jpg");
-            levels.oral(g.internal.dk === "1" ? 4 : 3, true, false, "m", null, "unk");
+            levels.oral(g.internal.dk === "1" ? 4 : 3, "m", "!man", true);
             gv.mod("energy", -10);
             chat(5, 212);
             break;
         case "facial":
             nav.bg("212_gloryhole/c" + g.internal.dk + "_" + g.internal.appearance + "_f.jpg");
-            levels.oral(g.internal.dk === "1" ? 4 : 3, false, false, "m", null, "unk");
+            levels.oral(g.internal.dk === "1" ? 4 : 3, "m", "!man", false);
             cl.c.cumface = true;
             gv.mod("energy", -10);
             chat(6, 212);

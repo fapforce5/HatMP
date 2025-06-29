@@ -350,7 +350,7 @@ room461.chatcatch = function (callback) {
             break;
         case "cult13":
             nav.killbutton("cult12");
-            levels.anal(3, false, "m", true, null, "unk");
+            levels.anal(3, false, "m", true, "cult");
             nav.bg("461_run/cult13.jpg");
             break;
         case "cult14":
@@ -390,7 +390,7 @@ room461.chatcatch = function (callback) {
             nav.bg("461_run/" + callback + ".jpg");
             break;
         case "pee7":
-            sex.piss(true, false, false, false, "f");
+            levels.piss(true, false, false, false, "f", "ppgirl");
             nav.bg("461_run/pee7.jpg");
             break;
         case "ppgirlTask1":

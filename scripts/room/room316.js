@@ -382,7 +382,7 @@ room316.btnclick = function (name) {
                     nav.next("dogWalkCuckFuck0");
                     break;
                 case 2:
-                    levels.anal(3, false, "m", true, "dog");
+                    levels.anal(3, false, "m", true, "dog", "dog");
                     if (sc.getMissionTask("janice", "dog-x", 1).complete) {
                         sc.completeMissionTask("janice", "dog-x", 2);
                         nav.bg("316_livingroom/walk_cuck3.jpg");
@@ -465,7 +465,7 @@ room316.btnclick = function (name) {
                 nav.bg("316_livingroom/walk_sex" + g.internal + ".jpg");
             }
             if (g.internal === 5) {
-                levels.anal(3, false, "m", true, "dog");
+                levels.anal(3, false, "m", true, "dog", "dog");
                 levels.mod("fame", 25, 999);
                 nav.killbutton("dwalkfuck");
                 chat(101, 316);
@@ -1091,7 +1091,7 @@ room316.chatcatch = function (callback) {
                 nav.bg("316_livingroom/dsex4_c.jpg");
             break;
         case "dsex5":
-            levels.anal(3, false, "m", true, "dog");
+            levels.anal(3, false, "m", true, "dog", "dog");
             sc.modLevel("dog", 30, 10);
             daily.set("dsex");
             char.room(316);
@@ -1186,7 +1186,7 @@ room316.chatcatch = function (callback) {
             nav.killall();
             daily.set("dsex");
             nav.bg("316_livingroom/lockpick2.jpg");
-            levels.anal(3, false, "m", true, "dog");
+            levels.anal(3, false, "m", true, "dog", "dog");
             break;
         //case "cuck_0_complete":
         //    sc.completeMission("janice", "bitch", sc.getMissionTask("janice", "bitch", 1).complete);

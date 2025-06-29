@@ -107,7 +107,6 @@ room17.main = function(){
 
 room17.btnclick = function (name) {
     if (name.startsWith("c_")) {
-        console.log(name + " " + g.internal.c2);
         if (name === g.internal.panties) {
             nav.button({
                 "type": "img",
@@ -126,7 +125,6 @@ room17.btnclick = function (name) {
         nav.killbutton(name);
     }
     else if (name.startsWith("b_")) {
-        console.log(name + " " + g.internal.b1);
         if (name === g.internal.b1 || name === g.internal.b2) {
             inv.addMulti("lube", Math.floor(g.randn_bm() * 5) + 1);
         }

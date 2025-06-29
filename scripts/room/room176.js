@@ -22,7 +22,7 @@ room176.main = function () {
             }
             else {
                 nav.bg("176_oral/final0.jpg");
-                
+                chat(69, 176);
             }
             break;
     }
@@ -154,6 +154,22 @@ room176.btnclick = function (name) {
                 chat(g.internal.chatid, 176);
             }
             break;
+        case "final4":
+            nav.modbutton("final4", "176_oral/final4_1.webp", null, null);
+            chat(77, 176);
+            break;
+        case "final5":
+            nav.modbutton("final5", "176_oral/final5_1.webp", null, null);
+            chat(78, 176);
+            break;
+        case "final6":
+            nav.modbutton("final6", "176_oral/final6_1.webp", null, null);
+            chat(79, 176);
+            break;
+        case "final7":
+            nav.modbutton("final7", "176_oral/final7_1.webp", null, null);
+            chat(80, 176);
+            break;
         default:
             break;
     }
@@ -187,6 +203,8 @@ room176.chatcatch = function (callback) {
         case "oral203_2":
         case "oral203_bad":
         case "final_a":
+        case "final1":
+        case "final2":
             nav.bg("176_oral/" + callback + ".jpg");
             break;
         case "oral5":
@@ -246,7 +264,7 @@ room176.chatcatch = function (callback) {
             }
             break;
         case "oral26":
-            levels.oral(3, false);
+            levels.oral(3, "m", "philbert", true);
             sc.completeMissionTask("philbert", "bully", 1);
             sc.show("philbert");
             nav.bg("205_chastity/chast0_9_bad.jpg");
@@ -273,6 +291,83 @@ room176.chatcatch = function (callback) {
             char.settime(17, 18);
             char.room(201);
             future.add("sissyfinal", 6);
+            break;
+        case "final4":
+            nav.bg("176_oral/final4.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "final4",
+                "left": 871,
+                "top": 499,
+                "width": 248,
+                "height": 90,
+                "image": "176_oral/final4.webp"
+            }, 176);
+            break;
+        case "final5":
+            nav.bg("176_oral/final5.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "final5",
+                "left": 962,
+                "top": 345,
+                "width": 268,
+                "height": 184,
+                "image": "176_oral/final5.webp"
+            }, 176);
+            break;
+        case "final6":
+            nav.bg("176_oral/final6.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "final6",
+                "left": 744,
+                "top": 392,
+                "width": 470,
+                "height": 290,
+                "image": "176_oral/final6.webp"
+            }, 176);
+            break;
+        case "final7":
+            nav.bg("176_oral/final7.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "final7",
+                "left": 742,
+                "top": 180,
+                "width": 396,
+                "height": 530,
+                "image": "176_oral/final7.webp"
+            }, 176);
+            break;
+        case "final8":
+            nav.bg("176_oral/final8.jpg");
+            zcl.displayMain(350, 520, .08, "clothes", true);
+            inv.add("diploma");
+            break;
+        case "final9":
+            zcl.kill();
+            break;
+        case "final10":
+            if (missy.cases[7].complete && !missy.cases[7].success) {
+                pic.add("class_0");
+                nav.bg("176_oral/final10_0.jpg");
+            }
+            else {
+                pic.add("class_1");
+                nav.bg("176_oral/final10_1.jpg");
+            }
+            break;
+        case "final11":
+            nav.bg("176_oral/final11.jpg");
+            break;
+        case "finalfinal":
+            char.addtime(156);
+            gv.set("sissySchoolClass", null);
+            gv.set("sissySchoolClassDays", 0);
+            levels.mod("xdress", 200);
+            sissy.st[21].ach = true;
+            char.room(207);
             break;
         default:
             break;
@@ -1040,7 +1135,179 @@ room176.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "...", callback: "finalFirstEventEnd" },
                 ]
-            }
+            },
+            {
+                chatID: 69,
+                speaker: "martha",
+                text: "My dears, I find myself in a rather curious state today, feeling both utterly delighted to see you all here and, I must confess, quite dreadfully sad that this chapter is now closing. Your journey has been a formidable one, filled with many a marvelous high, and, to be sure, a few rather daunting lows. Yet, each and every one of you has shown such magnificent resolve, persevering through what has undoubtedly been one of the most trying and difficult events of your lives. And for that, we, your teachers, are simply bursting with pride to have had the distinct privilege of being a part of it all. It has been our greatest honour.",
+                button: [
+                    { chatID: 70, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "martha",
+                text: "My dearest girls, I daresay that a certain query has been weighing upon your minds this afternoon, and that is, naturally, the matter of your final assessment. Well, it is with the most profound pleasure that I am able to report that each and every one of you has, in fact, succeeded. You must understand that this particular exercise was never intended to be an event upon which one might be graded. Instead, it was conceived as an invaluable opportunity—a rather splendid one, if I do say so myself—for you to apply all that you have so diligently absorbed to the world beyond these walls, unburdened by the usual constraints or tiresome restrictions. Indeed, I am confident in asserting that there is not a single soul among you who has failed to blossom into a truly refined and remarkable young woman. You have, without exception, succeeded in the very essence of our purpose here: you have become proper ladies!",
+                button: [
+                    { chatID: 71, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "martha",
+                text: "I must now ready myself for the graduation ceremony.",
+                button: [
+                    { chatID: 72, text: "...", callback: "final1" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "martha",
+                text: "Though your time here has drawn to its dignified close, let it be known that the doors of guidance remain ever open to you. Should any among you require further assistance—be it in the form of a refined hormonal supplement or the expertise of my most trusted and distinguished associate here you need only proceed by elevator to the white floor. Your continued grace, health, and composure shall ever remain a matter of deepest concern to me.",
+                button: [
+                    { chatID: 73, text: "...", callback: "final2" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "black",
+                text: "Like " + sc.n("martha") + " was saying. The school will remain unlocked between " +
+                    "classes. For those of you that know you're still disgusting little piggies that " +
+                    "need to be punished you can take the elevator to the black room and recieve your " +
+                    "much needed punishments. ",
+                button: [
+                    { chatID: 74, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "p",
+                text: "While you will find both " + sc.n("martha") + " and " + sc.n("black") +
+                    " here at the school, you'll find me across the hallway in the Pink Room. " +
+                    "We all know that makeup, dresses, panties, and sexy lingerie is really " +
+                    "expensive. There's no easier, or pleasureable way to make some extra money " +
+                    "than working for as long as you like in the pink room. I've already moved " +
+                    "your records over so as soon as you walk in, you can start working those sexy " +
+                    "bussies of yours! ",
+                button: [
+                    { chatID: 75, text: "...", callback: "final2" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "missy",
+                text: "It really is a great place to work. Now that you're all officially Sissies " +
+                    "it is your duty, but not required, to give back to the community in the Pink Room. " +
+                    "But enough about your futures, now it's time for the graduation. We have a " +
+                    "little ceremony, as we call each of you up to receive your diploma you will " +
+                    "kiss the head of each of our dicks and thank us for the pleasure of serving " +
+                    "us then receive you diploma. ",
+                button: [
+                    { chatID: 76, text: "[Wait for your turn]", callback: "final3" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "missy",
+                text: "...I can't say enough nice things about " + sc.n("!thomas") + 
+                    "here. And finally " + sc.n("me") + ". A diamond in the rough " +
+                    "when I found her. Step up to thank each of us. ",
+                button: [
+                    { chatID: -1, text: "[Kiss each cock]", callback: "final4" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "me",
+                text: "Thank you " + sc.n("p") + " for the pleasure of serving you " +
+                    "and for teaching me how to open up and use my holes. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "final5" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "me",
+                text: "Thank you " + sc.n("black") + " for the pleasure of serving you " +
+                    "and for teaching me how to handle the pain of servitude. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "final6" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "me",
+                text: "Thank you " + sc.n("martha") + " for the pleasure of serving you " +
+                    "and for teaching me to be a proper lady. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "final7" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "me",
+                text: "Thank you " + sc.n("missy") + " for the pleasure of serving you " +
+                    "and for teaching me that I am truly a sissy. ",
+                button: [
+                    { chatID: 81, text: "...", callback: "final8" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "missy",
+                text: "Congratulations for this amazing achievement. I know we're all " +
+                    "proud of everything you've accomplished. ",
+                button: [
+                    { chatID: 82, text: "...", callback: "final9" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "missy",
+                text: "And this concludes today's graduation. Let's all take a picture " +
+                    "to remember this amazing event!",
+                button: [
+                    { chatID: 83, text: "...", callback: "final10" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "p",
+                text: "Now time to head to the Pink Room to celebrate!!!!",
+                button: [
+                    { chatID: 84, text: "...", callback: "final11" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "!kareem",
+                text: "It's so crazy that it's over. I feel like a totally new girl " +
+                    "and can't remember life before this school. I'll miss seeing all " +
+                    "of you, but I guess I'll see you around. Hey, where's " + sc.n("!chris") +
+                    "?",
+                button: [
+                    { chatID: 85, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "!thomas",
+                text: "She's already inside. A better question is why are you naked " + 
+                    sc.n("sporty") + "? We're in the middle of a public hallway!",
+                button: [
+                    { chatID: 86, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "!sporty",
+                text: "'cause I need to get laid! Like right now! I don't care if it's " +
+                    "a suprise penis, which is my favorite penis, but I'm going in. Let's " +
+                    "go get laid girls! ",
+                button: [
+                    { chatID: 88, text: "...", callback: "" },
+                ]
+            },
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

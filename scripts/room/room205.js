@@ -102,25 +102,25 @@ room205.chatcatch = function (callback) {
 
 room205.chat = function (chatID) {
     if (chatID === 999) {
-        var sexCheck = sex.getFuck();
-        var btn = new Array();
-        if (sexCheck.virginDick)
-            btn.push({ chatID: 1, text: "No ma'am, I'm a virgin. ", callback: "" });
-        else if (sexCheck.pussy)
-            btn.push({ chatID: 2, text: "Yes I have ma'am. ", callback: "" });
-        else if (sexCheck.anal)
-            btn.push({ chatID: 3, text: "No ma'am, but I've fucked a butt. ", callback: "" });
-        else if (sexCheck.oral)
-            btn.push({ chatID: 4, text: "No ma'am, but I've had a blow job. ", callback: "" });
-        else if (sexCheck.tits)
-            btn.push({ chatID: 5, text: "No ma'am, but I've had sex with some boobs. ", callback: "" });
-        else if (sexCheck.foot)
-            btn.push({ chatID: 5, text: "No ma'am, but I've received a foot job. ", callback: "" });
-        else if (sexCheck.hand)
-            btn.push({ chatID: 5, text: "No ma'am, but I've had a hand job. ", callback: "" });
-        else if (sexCheck.beast)
-            btn.push({ chatID: 1, text: "No ma'am, I'm kind of a virgin with girls. ", callback: "" });
-
+        //var sexCheck = sex.getFuck();
+        //var btn = new Array();
+        //if (sexCheck.virginDick)
+        //    btn.push({ chatID: 1, text: "No ma'am, I'm a virgin. ", callback: "" });
+        //else if (sexCheck.pussy)
+        //    btn.push({ chatID: 2, text: "Yes I have ma'am. ", callback: "" });
+        //else if (sexCheck.anal)
+        //    btn.push({ chatID: 3, text: "No ma'am, but I've fucked a butt. ", callback: "" });
+        //else if (sexCheck.oral)
+        //    btn.push({ chatID: 4, text: "No ma'am, but I've had a blow job. ", callback: "" });
+        //else if (sexCheck.tits)
+        //    btn.push({ chatID: 5, text: "No ma'am, but I've had sex with some boobs. ", callback: "" });
+        //else if (sexCheck.foot)
+        //    btn.push({ chatID: 5, text: "No ma'am, but I've received a foot job. ", callback: "" });
+        //else if (sexCheck.hand)
+        //    btn.push({ chatID: 5, text: "No ma'am, but I've had a hand job. ", callback: "" });
+        //else if (sexCheck.beast)
+        //    btn.push({ chatID: 1, text: "No ma'am, I'm kind of a virgin with girls. ", callback: "" });
+        btn.push({ chatID: 1, text: "Need to update this with new sex tracker", callback: "" });
         return {
             chatID: 1,
             speaker: "missy",

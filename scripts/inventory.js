@@ -35,6 +35,7 @@ inv.t = [
     { t: "r", n: "Room Decoration" },
     { t: "s", n: "Sex Toys" },
     { t: "t", n: "Penis Cream" },
+    { t: "u", n: "Graduate of" },
     { t: "x", n: "ID Card" },
     { t: "y", n: "Hypno" },
     { t: "z", n: "Gift" }
@@ -70,6 +71,8 @@ inv.master = [
     { type: "x", name: "sissy1", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy1.png", n: false, desc: "Offical Sissy ID" },
     { type: "x", name: "sissy2", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy2.png", n: false, desc: "Offical Sissy ID" },
     { type: "x", name: "sissy3", display: "Sissy ID", entry: false, count: null, cost: 0, image: "sissy3.png", n: false, desc: "Offical Sissy ID" },
+
+    { type: "u", name: "diploma", display: "Diploma", entry: false, count: null, cost: 0, image: "diploma.png", n: false, desc: "Missy's Finishing School for Sissies" },
 
     { type: "o", name: "gym", display: "Gym Pass", entry: false, count: null, cost: 0, image: "gymPass.png", n: false, desc: "Get entry to the gym" },
     { type: "l", name: "lockpick", display: "Lock Pick Set", entry: false, count: null, cost: 0, image: "lockpick.png", n: false, desc: "Lock Pick Set for use on cases" },
@@ -175,6 +178,8 @@ pic.master = [
     { name: "chloe", display: "Chloe's cum face", entry: false, image: "chloe.jpg", thumb: "chloe.png" },
     { name: "candy", display: "Candy's cum hole", entry: false, image: "candy.jpg", thumb: "candy.png" },
     { name: "classbefore", display: "First Sissy Class", entry: false, image: "classbefore.jpg", thumb: "classbefore.png" },
+    { name: "class_0", display: "Sissy Graduation", entry: false, image: "class_0.jpg", thumb: "class_0.png" },
+    { name: "class_1", display: "Sissy Graduation", entry: false, image: "class_1.jpg", thumb: "class_1.png" },
     { name: "sissy0", display: "Sissy ID Photo", entry: false, image: "sissy0.jpg", thumb: "sissy0.png" },
     { name: "sissy1", display: "Sissy ID Photo", entry: false, image: "sissy1.jpg", thumb: "sissy1.png" },
     { name: "sissy2", display: "Sissy ID Photo", entry: false, image: "sissy2.jpg", thumb: "sissy2.png" },
@@ -721,10 +726,10 @@ inv.createElements = function () {
                                 levels.mod("cum", 25);
                                 break;
                             case "pissjarboy":
-                                sex.piss(true, false, false, "m");
+                                levels.piss(true, false, false, "m");
                                 break;
                             case "pissjargirl":
-                                sex.piss(true, false, false, "f");
+                                levels.piss(true, false, false, "f");
                                 break;
                             case "dogcumjar":
                                 gv.mod("energy", 150);

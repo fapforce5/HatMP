@@ -44,6 +44,7 @@ missy.init = function () {
 
         { id: 35, n: "pinkEntrance", c: 0 },
         { id: 36, n: "sissySuppositories", c: 0 },
+        { id: 37, n: "193caseExplain", c: 0 },
     ];
 
     missy.cases = [
@@ -393,6 +394,7 @@ missy.afterLunch = function () {
         { id: 4, name: "sub", char: "s", room: 197 },
         { id: 5, name: "panties", char: "q", room: 223 },
         { id: 6, name: "Sissy School", char: "c", room: 211 },
+        { id: 7, name: "Afternoon", char: "a", room: 193 },
     ];
     
     //build weekly schedule
@@ -400,7 +402,10 @@ missy.afterLunch = function () {
         var subweek;
         if (sissy.st[17].ach) {
             if (inv.has("lockpick"))
-                subweek = "cccc";
+                if (sissy.st[0].ach)
+                    subweek = "ccac";
+                else
+                    subweek = "cccc";
             else
                 subweek = "pcpc";
         }

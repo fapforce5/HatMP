@@ -261,7 +261,7 @@ room555.btnclick = function (name) {
             if (gv.get("energy") < 75) {
                 chat(34, 555);
             }
-            else if (levels.analTake(3).c > 2) {
+            else if (levels.analSize(3).c > 2) {
                 chat(48, 555);
             }
             else {
@@ -274,7 +274,7 @@ room555.btnclick = function (name) {
             if (gv.get("energy") < 75) {
                 chat(34, 555);
             }
-            else if (!levels.analTake(3).canTake) {
+            else if (!levels.analSize(3).canTake) {
                 chat(48, 555);
             }
             else {
@@ -290,7 +290,7 @@ room555.btnclick = function (name) {
             if (gv.get("energy") < 75) {
                 chat(34, 555);
             }
-            else if (!levels.analTake(4).canTake) {
+            else if (!levels.analSize(4).canTake) {
                 chat(48, 555);
             }
             else {
@@ -630,7 +630,7 @@ room555.chatcatch = function (callback) {
             levels.mod("fitness", 50, 999);
             levels.mod("strength", 25, 999);
             gv.mod("energy", -75);
-            levels.anal(4, false, "m", true, null, "chad");
+            levels.anal(4, false, "m", true, "chad");
             char.addtime(60);
             char.room(555);
             break;

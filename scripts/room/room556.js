@@ -95,7 +95,7 @@ room556.btnclick = function (name) {
                 var appendString = gender.isGirl() ? "_g" : "_b";
                 nav.bg("556_spar/loss" + g.internal + appendString + ".jpg");
                 if (g.internal === 6) {
-                    levels.anal(3, true, "f", false, null, "zoey");
+                    levels.anal(3, true, "f", false, "zoey");
                     levels.mod("fame", 30, 999);
                 }
             }

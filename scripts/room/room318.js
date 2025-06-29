@@ -140,7 +140,7 @@ room318.btnclick = function (name) {
         case "b2":
             if (g.internal.step === 10) {
                 nav.killbutton("b2");
-                levels.anal(1, true, "f", false, null, "janice");
+                levels.anal(1, true, "f", false, "janice");
                 chat(21, 318);
             }
             else {
@@ -198,7 +198,6 @@ room318.btnclick = function (name) {
             nav.killbutton("jabari_pet");
 
             if ((g.internal.dogstep === 100 || g.internal.dogstep === 2) && g.internal.revert) {
-                console.log("revert");
                 nav.killbutton("jabari_dog");
                 nav.button({
                     "type": "img",
@@ -234,7 +233,7 @@ room318.btnclick = function (name) {
             }
             else if (g.internal.dogstep === 13) {
                 nav.killbutton("jabari_dog");
-                levels.anal(3, false, "m", true, "dog");
+                levels.anal(3, false, "m", true, "dog", "dog");
                 zcl.kill();
                 nav.button({
                     "type": "img",
@@ -402,7 +401,12 @@ room318.chatcatch = function (callback) {
         case "datr_mike_3":
         case "datr_brad_8":
             nav.kill();
-            levels.cum(1);
+            switch (gv.get("janiceDatr")) {
+                case "brad": levels.swallowCum("m", "chad"); break;
+                case "jabari": levels.swallowCum("m", "!jabari"); break;
+                case "mike": levels.swallowCum("m", "!boxes"); break;
+                case "jarome": levels.swallowCum("m", "!jarome"); break;
+            }
             nav.bg("318_janiceBedroom/" + callback + ".jpg");
             break;
         case "datr_jarome_1":
@@ -521,8 +525,6 @@ room318.chatcatch = function (callback) {
                         sc.completeMissionTask("janice", "datr", 3);
                         chat(50, 318);
                     }
-                    
-
                     break;
             }
             break;

@@ -163,9 +163,6 @@ room0.btnclick = function (name) {
                 char.room(roomnum);
             }, 4000);
         }
-        //else if (fame.event("moveChar")) {
-        //    console.log(g.nextRoomId);
-        //}
         else {
             setTimeout(function () {
                 char.room(roomnum);

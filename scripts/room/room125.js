@@ -489,7 +489,7 @@ room125.btnclick = function (name) {
             nav.killbutton("suck_kei_1");
             g.internal.keiStep = 4;
             nav.modbutton("kei", "125_poker/dick_kei_4.png", null, null);
-            levels.oral(3, true, false, "m", null, "kei");
+            levels.oral(3, "m", "kei", true);
             chat(86, 125);
             break;
         case "suck_philbert":
@@ -540,7 +540,7 @@ room125.btnclick = function (name) {
             nav.next("suck_philbert6");
             break;
         case "suck_philbert6":
-            levels.oral(3, true, false, "m", null, "philbert");
+            levels.oral(3, "m", "philbert", true);
             nav.killbutton("suck_philbert6");
             chat(87, 125);
             break;

@@ -76,7 +76,6 @@ cl.init = function () {
         { type: "bra", name: "f", display: "Purple Bra", img: "bra_fancy.png", sex: "f", inv: false, daring: 3, price: 65 },
         { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
 
-
         { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: 20 },
         { type: "pants", name: "s", display: "Black Suit Pants", img: "pants_suit.png", sex: "m", inv: false, daring: 0, price: 80 },
         { type: "pants", name: "p", display: "Prison Pants", img: "pants_prison.png", sex: "m", inv: false, daring: 0, price: -1 },
@@ -948,7 +947,7 @@ cl.nipplering = [
 ];
 
 cl.stinky = function () {
-    if (g.diffDateByMinutes(g.dt, gv.get("shower")) < 5760) {
+    if (g.diffDateByMinutes(g.dt, gv.get("shower")) < 8640) {
         if ($('#char-bg-1').children('img').length > 0)
             $('#char-bg-1').html("");
         return false;

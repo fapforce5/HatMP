@@ -721,7 +721,6 @@ trap.encounter = function () {
     }
 
     if (charList.length === 0) {
-        console.log(trap);
         trap.kill();
         return;
     }
@@ -904,7 +903,7 @@ room1005.btnclick = function (name) {
                     "height": 335,
                     "image": "1005_trap/hole/drink.png"
                 }, 1005);
-                sex.piss(true, false, false, trap.char[0].g);
+                levels.piss(true, false, false, trap.char[0].g, trap.name);
                 trap.message("Filthy pervert.");
                 trap.displayMenu("next");
             }
@@ -936,7 +935,7 @@ room1005.btnclick = function (name) {
                     "height": 387,
                     "image": "1005_trap/hole/jar.png"
                 }, 1005);
-                sex.piss(false, false, false, "f");
+                levels.piss(false, false, false, "f");
                 trap.message("You filled a jar of piss. Gross.");
                 trap.displayMenu("next");
             }
@@ -1289,7 +1288,6 @@ room1005.chatcatch = function (callback) {
                 else
                     drSelect = "dumb";
             }
-            console.log(dr2b + " - " + dr2a + " - " + drSelect);
             switch (drSelect) {
                 case "boobs":
                     nav.killbutton("r1004bg");
@@ -1647,7 +1645,6 @@ room1005.chat = function (chatID) {
                 txt.push("Love your tits! I want to bury my face in them!");
             }
         }
-        console.log(txt)
         return {
             chatID: 802,
             speaker: trap.name,

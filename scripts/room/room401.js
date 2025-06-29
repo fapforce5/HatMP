@@ -342,7 +342,6 @@ room401.makeClothing = function (type, sex) {
         lewdlevel = [0, 1, 2];
     else
         lewdlevel = [0];
-    console.log("lewdlevel: " + lewdlevel);
     for (i = 0; i < cl.list.length; i++) {
         if (cl.list[i].type === type && cl.list[i].sex === sex && cl.list[i].price > 0) {
             canbuy = lewdlevel.includes(cl.list[i].daring);

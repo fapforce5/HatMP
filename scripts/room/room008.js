@@ -270,7 +270,6 @@ room8.drawClothingIcons = function (list) {
     var clothingList = new Array();
     nav.killbutton("next");
     nav.killbutton("prev");
-    console.log(list === 0)
     if (list === 0) {
         if (sissy.get("fem103").ach) {
             clothingList = [

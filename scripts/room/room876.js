@@ -360,7 +360,7 @@ room876.chatcatch = function (callback) {
             nav.bg("876_gym/routine1_3.jpg");
             break;
         case "routine2_1_9":
-            levels.oral(4, false, false, "f", null, "stacy");
+            levels.oral(4, "f", "stacy");
             levels.set("cheer", 20, 5);
             char.settime(20, 7);
             char.room(0);
@@ -388,7 +388,7 @@ room876.chatcatch = function (callback) {
             break;
         case "cheer8_9":
             levels.set("cheer", 20, 9);
-            levels.anal(5, false, "m", true, null, "football");
+            levels.anal(5, false, "m", true, "!football");
             char.settime(17, 7);
             char.room(0);
             break;

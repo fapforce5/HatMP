@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 25.0;
-g.versionText = "0.25.0 - MAR 2025";
+g.version = 25.5;
+g.versionText = "0.25.4 - JUL 2025";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -217,6 +217,7 @@ g.rooms = [
     { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 181, name: "Black Room", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 182, name: "Test 1", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
+    { roomID: 193, name: "Missy", image: "193_afternoon/cop0.webp", nightImage: "193_afternoon/cop0.webp", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 195, name: "Skill", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 196, name: "Pay Day", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 197, name: "Sub", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
@@ -637,6 +638,12 @@ g.makeSingular = function (text) {
     return text;
 };
 
+g.trunc = function (str, maxLength) {
+    if (str.length > maxLength)
+        return str.substr(0, maxLength - 1) + "..";
+    return str;
+};
+
 g.newLine = function (str, maxLength) {
     var stringArray = str.split(" ");
     var counter = 0;
@@ -646,7 +653,6 @@ g.newLine = function (str, maxLength) {
         if (counter + stringArray[i].length > maxLength) {
             newString += "</br>" + stringArray[i] + " ";
             counter = stringArray[i].length + 1;
-            console.log(counter + "?");
         }
         else {
             newString += stringArray[i] + " ";

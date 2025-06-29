@@ -92,6 +92,7 @@ room527.btnclick = function (name) {
             nav.bg("527_bathroom/w" + g.internal + "_" + gender.pronoun("f") + w3chastity + ".jpg");
             if (g.internal > 4) {
                 nav.killall();
+                levels.piss(false, false, true, "n", "!cindy");
                 chat(12, 527);
             }
             g.internal++;
@@ -114,7 +115,7 @@ room527.chatcatch = function (callback) {
             chat(1, 527);
             break;
         case "zoey4":
-            sex.piss(true, false, false, "f");
+            levels.piss(true, false, false, "f", "zoey");
             char.addtime(30);
             char.room(527);
             break;
@@ -131,7 +132,7 @@ room527.chatcatch = function (callback) {
             nav.next("zoey11");
             break;
         case "zoey12":
-            sex.piss(true, false, false, "f");
+            levels.piss(true, false, false, "f", "zoey");
             sc.modLevel("zoey", 20, 7);
             char.addtime(30);
             char.room(527);

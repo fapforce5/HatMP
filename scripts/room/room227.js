@@ -85,7 +85,6 @@ room227.btnclick = function (name) {
             g.fight.me.counterAction = name.substring(3);
             tEnemy.drawButtonList("close");
             var ea = tEnemy.getEnemyAction();
-            console.log(name, ea);
             if ((name === "lb_blockkick" && ea.a === "kick")
                 || (name === "lb_blockpunch" && ea.a === "punch")
                 || (name === "lb_blockgrapple" && ea.a === "grapple" || name === "lb_blockgrapple" && ea.a === "strip")) {
@@ -322,7 +321,6 @@ room227.btnclick = function (name) {
             room227.btnclick("drawDom");
             break;
         case "lb_domFoot":
-            console.log("hi");
             g.internal = tEnemy.getDomEnemy(name);
             room227.btnclick("drawDom");
             break;

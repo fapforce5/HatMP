@@ -13,7 +13,7 @@ room600.main = function () {
     else if (cl.isLewd()) {
         chat(15, 600);
     }
-    else if (g.dt.getDay() === 5 && gv.get("sissySchoolClass") === "finalx") {
+    else if (g.dt.getDay() === 5 && future.get("sissyfinal") > -1) {
         nav.bg("600_body/femboy.webp");
         zcl.displayMain(500, 840, .09, "clothes", true);
         chat(19, 600);

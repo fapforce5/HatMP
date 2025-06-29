@@ -220,7 +220,6 @@ room28.main = function () {
             if (trasnformationSetting === "forced") {
                 for (let i = 0; i < transformationOrder.length; i++) {
                     if (!qdress.st[transformationOrder[i]].ach) {
-                        console.log(qdress.st[transformationOrder[i]])
                         if (transformationOrder[i] > 10 && transformationOrder[i] < 16) {
                             if (breastSelect.includes(transformationOrder[i]))
                                 validForcedTransformation = true;

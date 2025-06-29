@@ -52,21 +52,21 @@ room177.btnclick = function (name) {
             break;
         case "442_cage":
             nav.kill();
-            gv.set("chastityforever", "cage");
+            gv.set("castitycage", "cage");
             cl.c.chastity = "cage";
             cl.display();
             chat(999, 177);
             break;
         case "442_pink":
             nav.kill();
-            gv.set("chastityforever", "pink");
+            gv.set("castitycage", "pink");
             cl.c.chastity = "pink";
             cl.display();
             chat(999, 177);
             break;
         case "442_flat":
             nav.kill();
-            gv.set("chastityforever", "flat");
+            gv.set("castitycage", "flat");
             cl.c.chastity = "flat";
             cl.display();
             chat(999, 177);
@@ -168,16 +168,16 @@ room177.chatcatch = function (callback) {
 room177.chat = function (chatID) {
     if (chatID === 999) {
         let chas = gv.get("castitycage");
-        let howlong = gv.get("chastityforever");
+        let howlong = gv.get("chastityOverride");
         let txt = "";
         nav.bg("177_chastity/bg.jpg");
         zcl.displayMain(-1000, 200, .4, "", false);
-        if (howlong === "no") {
+        if (howlong === "never") {
             txt = "To never wear a chastity cage again? ";
         }
         else {
             txt = "To wear a " + cl.getEntry("chastity", chas).display +
-                (howlong === "week" ? " only during the week? " : " forever?");
+                (howlong === null ? " only during the week? " : " forever?");
         }
 
         return {

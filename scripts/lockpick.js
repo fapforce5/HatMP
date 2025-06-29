@@ -224,28 +224,28 @@ room1003.btnclick = function (callback) {
     }
     else {
         nav.killbutton(callback);
-        gv.mod("energy", -10);
-        if (gv.get("energy") < 15) {
-            clearTimeout(g.roomTimeout2);
-            nav.button({
-                "type": "img",
-                "name": "lockpickq_kill",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1001_rand/black_25.png"
-            }, 1003);
-
-            nav.button({
-                "type": "btn",
-                "name": "lockpickq_fail",
-                "left": 915,
-                "top": 360,
-                "width": 400,
-                "height": 100,
-                "image": "1003_lockpick/fail.png"
-            }, 1003);
-        }
+        g.fight.timer -= 5;
+        //if (gv.get("energy") < 15) {
+        //    clearTimeout(g.roomTimeout2);
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "lockpickq_kill",
+        //        "left": 0,
+        //        "top": 0,
+        //        "width": 1920,
+        //        "height": 1080,
+        //        "image": "1001_rand/black_25.png"
+        //    }, 1003);
+        //
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "lockpickq_fail",
+        //        "left": 915,
+        //        "top": 360,
+        //        "width": 400,
+        //        "height": 100,
+        //        "image": "1003_lockpick/fail.png"
+        //    }, 1003);
+        //}
     }
 };

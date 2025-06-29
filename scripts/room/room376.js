@@ -79,9 +79,9 @@ room376.btnclick = function (name) {
                 nav.bg("376_jail/cell" + g.internal + ".webp");
             }
             if (g.internal === 7)
-                levels.anal(4, false, "m", true, null, "!jail1");
+                levels.anal(4, false, "m", true, "!jail1");
             if (g.internal === 9)
-                levels.anal(4, false, "m", true, null, "!jail0");
+                levels.anal(4, false, "m", true, "!jail0");
             g.internal++;
             break;
         default:

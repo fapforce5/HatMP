@@ -339,8 +339,8 @@ room12.chatcatch = function (callback) {
             break;
         case "sisterStripEnd":
             char.addtime(75);
-            levels.oral(3, false, false, "f", null, "eva");
-            sex.piss(false, false, true, "f");
+            levels.oral(3, "f", "eva");
+            levels.piss(false, false, true, "f", "eva");
             char.room(12);
             break;
         case "joinSisters":

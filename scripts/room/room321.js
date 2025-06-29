@@ -272,7 +272,7 @@ room321.btnclick = function (name) {
             break;
         case "icon_sissygasm":
             sc.modLevel("janice", 20, 10);
-            levels.anal(2, true, "f", false, null, "janice");
+            levels.anal(2, true, "f", false, "janice");
             zcl.amazon(150, 700, .7, "", false);
             nav.killbutton("fb");
             nav.button({
@@ -343,6 +343,7 @@ room321.btnclick = function (name) {
             room321.sidechat(null);
             break;
         case "icon_suckdildo":
+            levels.oral(3, "f", "janice");
             g.internal.excitement++;
             gv.mod("arousal", 10);
             nav.bg("321_whorechat/bg.jpg");
@@ -380,7 +381,7 @@ room321.btnclick = function (name) {
             g.internal.excitement++;
             sc.completeMissionTask("janice", "webcam", 2);
             nav.bg("321_whorechat/bj2.jpg");
-            levels.getBlowJob("janice", "f");
+            levels.gotbj("f", "janice");
             room321.sidechat("suckeddick");
             g.internal.button = "quit";
             room321.btnclick("buttons");
@@ -434,6 +435,7 @@ room321.btnclick = function (name) {
             gv.mod("arousal", 15);
             sc.completeMissionTask("janice", "webcam", 1);
             nav.bg("321_whorechat/eatpussy_" + gender.pronoun("f") + ".jpg");
+            levels.oral(3, "f", "janice");
             g.internal.excitement += 2;
             g.internal.button = "main";
             room321.btnclick("buttons");

@@ -401,7 +401,7 @@ room451.btnclick = function (name) {
             break;
         case "gh_anal":
             if (g.internal.step === 0) {
-                if (levels.analTake(g.internal.s).canTake) {
+                if (levels.analSize(g.internal.s).canTake) {
                     nav.killall();
                     nav.bg("451_parkMensRoom/a0.jpg");
                     nav.next("gh_anal");
@@ -416,7 +416,7 @@ room451.btnclick = function (name) {
                 nav.bg("451_parkMensRoom/a1" + (cl.c.chastity === null ? "" : "_c") + ".jpg");
             }
             else {
-                levels.anal(g.internal.s, false, "m", true, null, "unk");
+                levels.anal(g.internal.s, false, "m", true, "!man");
                 nav.killall();
                 if (g.internal.m) {
                     nav.bg("451_parkMensRoom/g_bg.jpg");
@@ -456,13 +456,13 @@ room451.btnclick = function (name) {
             break;
         case "gh_swallow":
             nav.killall();
-            levels.oral(g.internal.s, true, false, "m", null, "unk");
+            levels.oral(g.internal.s, "m", "!man", true);
             nav.bg("451_parkMensRoom/g_2_" + g.internal.c + (cl.c.cumface ? "_c" : "") + ".jpg");
             nav.next("gh_oral2");
             break;
         case "gh_facial":
             nav.killall();
-            levels.oral(g.internal.s, false, false, "m", null, "unk");
+            levels.oral(g.internal.s, "m", "!man", false);
             nav.bg("451_parkMensRoom/g_2_" + g.internal.c + "_f.jpg");
             nav.next("gh_oral2");
             break;
@@ -513,12 +513,12 @@ room451.chatcatch = function (callback) {
             break;
         case "c8_f":
             cl.c.cumface = true;
-            levels.oral(4, false, false, "m");
+            levels.oral(3, "m", "!man", false);
             cl.display();
             nav.bg("451_parkMensRoom/" + callback + ".jpg");
             break;
         case "c9_s":
-            levels.oral(4, true, false, "m", null, "unk");
+            levels.oral(4, "m", "!man", false);
             nav.bg("451_parkMensRoom/" + callback + ".jpg");
             break;
         case "cleanface":
@@ -839,7 +839,7 @@ room451.chatcatch = function (callback) {
             sc.modLevel("cecilia", 20, 999);
             if (sc.getMissionTask("cecilia", "gloryhole", 1).notStarted)
                 sc.completeMissionTask("cecilia", "gloryhole", 1);
-            levels.oral(4, true, false, "m", null, "unk");
+            levels.oral(4, "m", "!man", false);
             char.addtime(60);
             break;
         case "duo3":
@@ -850,7 +850,7 @@ room451.chatcatch = function (callback) {
             nav.bg("451_parkMensRoom/duo4.jpg");
             break;
         case "duo5":
-            levels.anal(4, false, "m", true, null, "unk");
+            levels.anal(4, false, "m", true, "!man");
             gv.mod("energy", -20);
             sc.modLevel("cecilia", 20, 999);
             if (sc.getMissionTask("cecilia", "gloryhole", 1).notStarted)

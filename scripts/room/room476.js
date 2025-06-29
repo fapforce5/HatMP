@@ -338,13 +338,13 @@ room476.btnclick = function (name) {
                 case 24:
                     nav.kill();
                     levels.anal(3, true);
-                    levels.oral(4, true, false, "m", null, "unk");
-                    levels.oral(2, true, false, "m");
-                    levels.oral(3, true, false, "m");
-                    levels.oral(2, true, false, "m");
-                    levels.oral(4, true, false, "m");
-                    levels.oral(5, true, false, "m");
-                    levels.oral(3, true, false, "m");
+                    levels.oral(4, "m", "cult", true);
+                    levels.oral(2, "m", "cult", true);
+                    levels.oral(3, "m", "cult", true);
+                    levels.oral(2, "m", "cult", true);
+                    levels.oral(4, "m", "cult", true);
+                    levels.oral(5, "m", "cult", true);
+                    levels.oral(3, "m", "cult", true);
                     if (g.hourBetween(17, 24))
                         char.addDays(1);
                     char.settime(5, 59);
@@ -369,16 +369,16 @@ room476.btnclick = function (name) {
             if (g.internal === 16 || g.internal === 17)
                 nav.bg("476_cabin/pillory" + g.internal + ".jpg");
             else if (g.internal === 19) {
-                levels.anal(5, false, "m", true, null, "unk");
+                levels.anal(5, false, "m", true, null, "cult");
                 levels.anal(3, false, "m", true);
                 levels.anal(3, false, "m", true);
                 levels.anal(3, false, "m", true);
                 levels.anal(4, false, "m", true);
-                levels.oral(3, false, false, "m", null, "unk");
-                levels.oral(2, false, false, "m");
-                levels.oral(2, false, false, "m");
-                levels.oral(4, false, false, "m");
-                levels.oral(3, false, false, "m");
+                levels.oral(3, "m", "cult", false);
+                levels.oral(2, "m", "cult", false);
+                levels.oral(2, "m", "cult", false);
+                levels.oral(4, "m", "cult", false);
+                levels.oral(3, "m", "cult", false);
 
                 nav.bg("476_cabin/pillory" + g.internal + ".jpg");
                 nav.killall();
@@ -428,7 +428,7 @@ room476.btnclick = function (name) {
         case "cookie12":
             if (g.internal > 18) {
                 nav.killbutton("cookie12");
-                levels.anal(5, false, "m", true, null, "unk");
+                levels.anal(5, false, "m", true, null, "cult");
                 levels.anal(4, false, "m", true);
                 levels.anal(4, false, "m", true);
                 levels.anal(4, false, "m", true);

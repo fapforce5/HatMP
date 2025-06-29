@@ -329,7 +329,7 @@ room213.chatcatch = function (callback) {
         case "_2_0b":
             nav.killall();
             nav.bg("213_pink/_2_0b.jpg");
-            levels.anal(3, false, "m", true, null, "unk");
+            levels.anal(3, false, "m", true, "!man");
             break;
         case "_2_1":
             nav.button({

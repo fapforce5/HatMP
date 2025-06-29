@@ -1,8 +1,9 @@
 ﻿//Room name
 var room211 = {};
 room211.main = function () {
-    if (gv.get("sissySchoolClass") === "finalx" && gv.get("sissySchoolClassDays") > 0) {
-        char.room(207);
+    if (gv.get("sissySchoolClass") === "finalx" && future.get("sissyfinal") > -1) {
+        nav.bg("200_frontOffice/bg.jpg");
+        chat(37, 211);
         return;
     }
     //var classesPassed = sissy.getNumPassed();
@@ -425,6 +426,9 @@ room211.chatcatch = function (callback) {
         case "leave":
             char.room(0);
             break;
+        case "room203":
+            char.room(203);
+            break;
         case "initviewtrainee":
             room211.btnclick("initviewtrainee");
             room211.btnclick("drawGroups");
@@ -846,6 +850,15 @@ room211.chat = function (chatID) {
                 text: "This may be my favorite part of the day! I wonder where I can get more....",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "missy",
+                text: "I'm going to give you the afteroon off so you can focus on " +
+                    "your sissy final. ",
+                button: [
+                    { chatID: -1, text: "Thanks ma'am!", callback: "room203" },
                 ]
             },
         ];

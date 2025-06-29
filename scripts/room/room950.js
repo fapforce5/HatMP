@@ -475,7 +475,7 @@ room950.btnclick = function (name) {
         case "foodApple":
 
             //update this!
-            if (levels.analTake(inv.anal(name)).c < 3) {
+            if (levels.analSize(inv.anal(name)).c < 3) {
                 nav.killall();
                 gv.mod('dildobutt', 1);
                 cl.stretchButt(name, null);

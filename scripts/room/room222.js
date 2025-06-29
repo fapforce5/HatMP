@@ -1,7 +1,7 @@
 ﻿//Room name
 var room222 = {};
 room222.main = function () {
-    if (levels.get("xdress").l < 2) {
+    if (missy.get("jobRunErrands") < 2) {
         chat(14, 222);
     }
     else {
@@ -21,6 +21,8 @@ room222.main = function () {
                 break;
         }
     }
+
+    missy.mod("jobRunErrands", 1);
 };
 
 room222.btnclick = function (name) {
@@ -81,7 +83,7 @@ room222.btnclick = function (name) {
             nav.next("case0-6");
             break;
         case "case0-6":
-            levels.oral(3, true, false, "m", null, "cop");
+            levels.oral(4, "m", "cop", true);
             nav.killall();
             nav.bg("222_errands/case0-2.jpg");
             chat(29, 222);

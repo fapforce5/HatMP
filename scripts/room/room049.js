@@ -122,7 +122,7 @@ room49.chatcatch = function (callback) {
                 nav.bg("49_train/stand_bg_1g_panties.webp");
             break;
         case "stand_1h":
-            levels.anal(4, false, "m", true, null, "unk");
+            levels.anal(4, false, "m", true, "!man");
             nav.bg("49_train/stand_bg_1h.webp");
             zcl.displayMain(150, 1100, .11, "clothes", true);
             break;

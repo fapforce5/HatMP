@@ -757,12 +757,12 @@ room601.chatcatch = function (callback) {
             if (g.gethourdecimal() > 17)
                 char.addDays(1);
             char.settime(3, 0);
-            levels.oral(3, true, false, "m", null, "unk");
-            levels.oral(2, false, false, "m");
-            levels.oral(4, false, false, "m");
-            levels.anal(3, false, "m", true, null, "unk");
-            levels.anal(2, false, "m", true);
-            levels.anal(4, false, "m", true);
+            levels.oral(3, "m", "!man", true);
+            levels.oral(2, "m", "!man", true);
+            levels.oral(4, "m", "!man", true);
+            levels.anal(3, false, "m", true, "!man");
+            levels.anal(2, false, "m", true, "!man");
+            levels.anal(4, false, "m", true, "!man");
             gv.mod("money", 1000);
             daily.set("stripper");
             gv.set("sissyfinal_stripper", true);
@@ -862,7 +862,7 @@ room601.chat = function (chatID) {
                             "a bit more handsy today and one even said he was going to cum so " +
                             "deep in me I'll be coughing his cum up. Usually he's really nice. ",
                         button: [
-                            { chatID: -1, text: "I'm sure it's nothing. Probably " + sc.n("timothy") + " getting them all worked up.", callback: "mingleInc" }
+                            { chatID: -1, text: "I'm sure it's nothing. Probably " + sc.n("!timothy") + " getting them all worked up.", callback: "mingleInc" }
                         ]
                     };
                 }
@@ -1395,7 +1395,7 @@ room601.chat = function (chatID) {
             text: "Youse all did good! Each a you is gunna get $1,000. Now go get " +
                 "dressed an get outta 'ere. I gosta get home. ",
             button: [
-                { chatID: 10, text: "...", callback: "sissyEventEnd" },
+                { chatID: -1, text: "...", callback: "sissyEventEnd" },
             ]
         },
     ];

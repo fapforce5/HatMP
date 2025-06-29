@@ -296,7 +296,7 @@ room252.btnclick = function (name) {
             }
             else {
                 gv.mod("money", 100);
-                levels.anal(4, false, "m", true, null, "unk");
+                levels.anal(4, false, "m", true, "!missyguardnight");
                 room252.btnclick("chat");
             }
             g.internal.eventpointer++;
@@ -307,7 +307,7 @@ room252.btnclick = function (name) {
             }
             else {
                 gv.mod("money", 100);
-                levels.oral(3, true, false, "m", null, "unk");
+                levels.oral(3, "m", "!man", true);
                 room252.btnclick("chat");
             }
             g.internal.eventpointer++;

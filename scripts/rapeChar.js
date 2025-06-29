@@ -118,7 +118,7 @@
                             "height": 622,
                             "image": "1004_rape/rapeman0/rape4.png"
                         }, 1004);
-                        levels.anal(4, false, "m", true, null, "rape");
+                        levels.anal(4, false, "m", true, "!rape0");
                         return { c: false, s: "me", m: "You fucking raped me! Came in me! And didn't even bother to pull out! Fuck I feel so used. "}
                     }
                     else {
@@ -132,7 +132,7 @@
                             "height": 557,
                             "image": "1004_rape/rapeman0/oralcum.png"
                         }, 1004);
-                        levels.oral(4, true, false, "m", null, "rape");
+                        levels.oral(4, "m", "!rape0", true);
                         return { c: false, s: rape.char.name, m: "Fuck your throat is tight! Enjoy my cum " + gender.pronoun("faggot") + "!" };
                     }
                 }
@@ -473,7 +473,7 @@
                             "height": 595,
                             "image": "1004_rape/futa0/phase5_anal_top.png"
                         }, 1004);
-                        levels.anal(3, false, "m", true, null, "rape");
+                        levels.anal(3, false, "n", true, "!futa0");
                         return { c: false, s: rape.char.name, m: "The best pussy to cum in is a smooth sissy bussy!" }
                     }
                     else {
@@ -730,8 +730,8 @@
             },
             phase7: function () {
                 if (rape.phases[7].c === 0) {
-                    levels.anal(6, false, "m", true, "plant");
-                    levels.oral(5, true, false, "m", null, "rape");
+                    levels.anal(6, false, "m", true, "!plant", "vines");
+                    levels.oral(5, "m", "!plant", true, "vines");
                     if (rape.rapeType === "anal") {
                         zcl.kill();
                         nav.button({
@@ -901,8 +901,8 @@
             },
             phase6: function () {
                 if (rape.phases[6].c === 0) {
-                    levels.anal(5, false, "m", true, "dog");
-                    levels.oral(4, true, false, "m", null, "rape");
+                    levels.anal(5, false, "m", true, "!wolf", "dog");
+                    levels.oral(4, "m", "!wolf", true, "dog");
                     zcl.double(250, 700, 1, "", false);
 
                     nav.button({
@@ -1073,7 +1073,7 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "oral") {
-                        levels.oral(4, true, false, "m", null, "rape");
+                        levels.oral(4, "m", "!wolf", true, "dog");
                         zcl.double(250, 700, 1, "", false);
                         nav.button({
                             "type": "img",
@@ -1088,7 +1088,7 @@
 
                     }
                     else {
-                        levels.anal(5, false, "m", true, "dog");
+                        levels.anal(5, false, "m", true, "!wolf", "dog");
                         zcl.double(-100, -200, 1, "", false);
                         nav.button({
                             "type": "img",
@@ -1210,9 +1210,9 @@
                             "image": "1004_rape/cult/phase6_anal_" + rape.modifier + ".png"
                         }, 1004);
                         if(rape.modifier === 2)
-                            levels.anal(4, false, "m", true, null, "rape");
+                            levels.anal(4, false, "m", true, "cult");
                         else
-                            levels.anal(3, false, "m", true, null, "rape");
+                            levels.anal(3, false, "m", true, "cult");
                         return { c: false, s: rape.char.name, m: "The seed of Azrael has been implanted! " }
                     }
                     else {
@@ -1226,7 +1226,7 @@
                             "height": 557,
                             "image": "1004_rape/rapeman0/oralcum.png"
                         }, 1004);
-                        levels.oral(4, true, false, "m", null, "rape");
+                        levels.oral(3, "m", "cult", true);
                         return { c: false, s: rape.char.name, m: "You're a better cock sucker than the milk maids!" }
                     }
                 }
@@ -1338,9 +1338,9 @@
                             "image": "1004_rape/cult/phase6_anal_" + rape.modifier + ".png"
                         }, 1004);
                         if (rape.modifier === 2)
-                            levels.anal(4, false, "m", true, null, "rape");
+                            levels.anal(4, false, "m", true, "cult");
                         else
-                            levels.anal(3, false, "m", true, null, "rape");
+                            levels.anal(3, false, "m", true, "cult");
                         return { c: false, s: rape.char.name, m: "Fucking cum dump!" }
                     }
                     else {
@@ -1354,7 +1354,7 @@
                             "height": 557,
                             "image": "1004_rape/rapeman0/oralcum.png"
                         }, 1004);
-                        levels.oral(4, true, false, "m", null, "rape");
+                        levels.oral(4, "m", "cult", true);
                         return { c: false, s: rape.char.name, m: "Your only worth is draining my balls" }
                     }
                 }
@@ -1466,9 +1466,9 @@
                             "image": "1004_rape/cult/phase6_anal_" + rape.modifier + ".png"
                         }, 1004);
                         if (rape.modifier === 2)
-                            levels.anal(4, false, "m", true, null, "rape");
+                            levels.anal(4, false, "m", true, "cult");
                         else
-                            levels.anal(3, false, "m", true, null, "rape");
+                            levels.anal(3, false, "m", true, "cult");
                         return { c: false, s: rape.char.name, m: "I just broke that ass! You're going to be farting my cum for a week " + gender.pronoun("faggot") + "!" };
 
                     }
@@ -1483,7 +1483,7 @@
                             "height": 557,
                             "image": "1004_rape/rapeman0/oralcum.png"
                         }, 1004);
-                        levels.oral(4, true, false, "m", null, "rape");
+                        levels.oral(4, "m", "cult", true);
                         return { c: false, s: rape.char.name, m: "Hows that BBC seed taste? I love face fucking pretty white " + gender.pronoun("boy") + "s like you." };
                     }
                 }
@@ -1623,7 +1623,7 @@
                             "height": 594,
                             "image": "1004_rape/futa1/phase6_anal_f.png"
                         }, 1004);
-                        levels.anal(5, false, "m", true, null, "rape");
+                        levels.anal(5, false, "n", true, "!futa1");
                         return { c: false, s: rape.char.name, m: "Oh fuck! I'm cummin'!!!!!" };
                     }
                     else {
@@ -1637,7 +1637,7 @@
                             "height": 1080,
                             "image": "1004_rape/futa1/phase7_oral.png"
                         }, 1004);
-                        levels.oral(4, true, false, "m", null, "rape");
+                        levels.oral(4, "n", "!futa1", true);
                         return { c: false, s: rape.char.name, m: "Oh yeah! Feels so good baby!" };
                     }
                 }
@@ -1936,7 +1936,7 @@
                             "image": "1004_rape/girl3/phase6_anal.png"
                         }, 1004);
                         zcl.asshole(261, 200, 1.4, "", false);
-                        levels.anal(5, false, "f", false, null, "rape");
+                        sex.mod("gotfisted", "f", "!girl3");
                         return { c: false, s: rape.char.name, m: "We love fisting loser sissy boys like you!" };
                     }
                 }
@@ -2063,7 +2063,7 @@
                         "height": 1080,
                         "image": "1004_rape/rapeman12/phase6.webp"
                     }, 1004);
-                    levels.anal(4, false, "m", true, null, "rape");
+                    levels.anal(4, false, "m", true, "!rape12");
                     return { c: false, s: rape.char.name, m: "I love breeding sissy " + gender.pronoun("girl") + "s like you. It's what you are here for. " };
                 }
                 return { c: true, s: null, m: null };

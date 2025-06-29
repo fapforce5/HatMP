@@ -82,7 +82,6 @@ room586.btnclick = function (name) {
                 chat(1, 586);
             else
                 chat(2, 586);
-            console.log(thisBeer)
             break;
         case "chuck":
             if (sc.getMission("chuck", "fuck").inProgress) {
@@ -118,7 +117,7 @@ room586.btnclick = function (name) {
                 chat(27, 586);
             }
             else if (g.internal === 10) {
-                levels.anal(2, true, "m", true, null, "chuck");
+                levels.anal(2, true, "m", true, "chuck");
                 nav.bg("586_kitchen/chuck2_10.jpg");
             }
             else {
@@ -168,7 +167,7 @@ room586.chatcatch = function (callback) {
             break;
         case "chuck_7_end":
             sc.completeMissionTask("chuck", "fuck", 1);
-            levels.oral(2, true, false, "m", null, "chuck");
+            levels.oral(2, "m", "chuck", true);
             char.settime(23, 2);
             char.room(585);
             break;

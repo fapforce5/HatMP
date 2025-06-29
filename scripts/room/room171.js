@@ -364,16 +364,16 @@ room171.btnclick = function (name) {
 
                 switch (g.internal.fuckersDick[g.internal.fuckers[2]]) {
                     case 0:
-                        levels.anal(2, false, "m", true, null, "unk");
+                        levels.anal(2, false, "m", true, "!man");
                         break;
                     case 1:
-                        levels.anal(3, false, "m", true, null, "unk");
+                        levels.anal(3, false, "m", true, "!man");
                         break;
                     case 2:
-                        levels.anal(4, false, "m", true, null, "unk");
+                        levels.anal(4, false, "m", true, "!man");
                         break;
                     case 3:
-                        levels.anal(5, false, "f", false, null, "unk");
+                        levels.anal(5, false, "n", false, "!boy");
                         depositCum = false;
                         break;
                 }

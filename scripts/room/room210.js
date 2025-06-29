@@ -65,7 +65,6 @@ room210.btnclick = function (name) {
         if (currentclass === null) {
             nav.killbutton(name);
             var selectedId = parseInt(name.replace("classselect_", ""));
-            console.log(selectedId);
             g.internal = selectedClass = sissy.st[selectedId];
             gv.set("sissySchoolClass", g.internal.icon);
             gv.set("sissySchoolClassDays", 0);
@@ -99,7 +98,6 @@ room210.btnclick = function (name) {
                 i = 9999;
             }
         }
-        console.log(id)
         if (id === 21) {//final
             let finalcounter = 0;
             for (i = 0; i < sissy.st.length; i++) {
@@ -110,7 +108,6 @@ room210.btnclick = function (name) {
                 prevToUnlock = "You need to take one more 400 level class.";
             else if (finalcounter === 0)
                 prevToUnlock = "You need to take 2 400 level classes.";
-            console.log(finalcounter);
         }
         else {
             for (i = 0; i < sissy.st[id].pID.length; i++) {

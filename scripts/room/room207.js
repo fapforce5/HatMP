@@ -63,7 +63,7 @@ room207.btnclick = function (name) {
             nav.back("reload");
             break;
         case "door_pink":
-            if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
+            if (g.dt.getDay() === 6 && future.get("sissyfinal") > -1) {
                 if (g.gethourdecimal() > 18)
                     chat(3, 207);
                 else if (g.gethourdecimal() > 16)
@@ -72,7 +72,7 @@ room207.btnclick = function (name) {
                     chat(5, 207);
                 return;
             }
-            else if (gv.get("pinkroomopen")) {
+            else if (sissy.st[21].ach) {
                 char.room(213);
                 return;
             }

@@ -252,11 +252,23 @@ nav.modbutton = function (name, newImage, newName, newType) {
     else
         $('img[data-name="' + name + '"]').attr("data-name", newName);
 
-    if (newType === "img")
-        $('img[data-name="' + name + '"]').removeClass("room-btn").removeClass("rom-event").removeClass("room-btn-lips").addClass("room-img");
-    else if (newType === "btn")
-        $('img[data-name="' + name + '"]').addClass("room-btn rom-event");
+    if (newType !== null) {
+        $('img[data-name="' + name + '"]')
+            .removeClass("room-btn")
+            .removeClass("room-btn-grab")
+            .removeClass("rom-event")
+            .removeClass("rom-tongue")
+            .removeClass("room-btn-lips");
 
+        if (newType === "img")
+            $('img[data-name="' + name + '"]').addClass("room-img");
+        else if (newType === "btn")
+            $('img[data-name="' + name + '"]').addClass("room-btn rom-event");
+        else if (newType === "kiss")
+            $('img[data-name="' + name + '"]').addClass("room-btn-lips rom-event");
+        else if (newType === "tongue")
+            $('img[data-name="' + name + '"]').addClass("room-btn-tongue rom-event");
+    }
 };
 
 nav.flash = function (thisImage, length) {

@@ -72,9 +72,13 @@ room196.chatcatch = function (callback) {
             chat(998, 196);
             break;
         case "checkBeforeComplete":
+            var chastityOverride1 = gv.get("chastityOverride");
             if (cl.c.chastity !== null && cl.getEntry("panties", cl.c.panties).sex === "f" && !sissy.st[17].ach) {
                 sissy.st[17].ach = true;
                 chat(5, 196);
+            }
+            else if (chastityOverride1 === "forever") {
+                chat(1, 196);
             }
             else if (cl.c.chastity !== null && missy.get("chastity") === 1)
                 chat(2, 196);
@@ -82,6 +86,13 @@ room196.chatcatch = function (callback) {
                 chat(1, 196);
             break;
         case "complete":
+            if (future.get("sissyfinal") > -1 && !daily.get("sissyfinalChat")) {
+                nav.kill();
+                nav.bg("200_frontOffice/bg.jpg");
+                daily.set("sissyfinalChat");
+                chat(13, 196);
+                return;
+            }
             var newMood = Math.floor(missy.get("mood") / 2);
             missy.st[0].c = newMood;
             missy.set("weeklyPay", 0);
@@ -253,6 +264,17 @@ room196.chat = function (chatID) {
                 text: "I don't know if you're clueless, or are lying to both yourself, and me.  ",
                 button: [
                     { chatID: 6, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "missy",
+                text: "Don't forget your Sissy Final. Tonight you need to dance at the " +
+                    "strip club. Take the train south of the forest to get there. It opens " +
+                    "at night. Then tomorrow come to the pink room before " + char.friendlyTime(18) +
+                    ". You should be early, but don't be late. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am!", callback: "complete" },
                 ]
             },
         ];

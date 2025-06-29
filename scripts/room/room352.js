@@ -128,7 +128,7 @@ room352.chatcatch = function (callback) {
 
             break;
         case "showTittes":
-            var mybewbs
+            var mybewbs, showTittesname;
             if (cl.c.chest >= g.internal.events[0].s) {
                 nav.killbutton("donor");
                 zcl.kill();
@@ -147,6 +147,7 @@ room352.chatcatch = function (callback) {
                     "image": "352_jackoff/" + mybewbs
                 }, 352);
                 if (g.internal.events[0].c === 0) {
+                    showTittesname = "!bwc";
                     nav.button({
                         "type": "zbtn",
                         "name": "donor",
@@ -158,6 +159,7 @@ room352.chatcatch = function (callback) {
                     }, 352);
                 }
                 else {
+                    showTittesname = "!bbc";
                     nav.button({
                         "type": "zbtn",
                         "name": "donor",
@@ -168,7 +170,7 @@ room352.chatcatch = function (callback) {
                         "image": "352_jackoff/b2.png"
                     }, 352);
                 }
-                levels.handGive("m");
+                levels.gavehandjob("m", showTittesname);
                 chat(13, 352);
             }
             else {
@@ -204,9 +206,7 @@ room352.chatcatch = function (callback) {
 
             if (cl.c.leg >= g.internal.events[0].s) {
                 nav.killbutton("donor");
-                //zcl.kill();
-                //nav.killbutton("mybewbs");
-                //zcl.kneel(-1000, -1000, 1.6, "", true);
+                var showassname; 
                 if (g.internal.events[0].c === 0) {
                     nav.button({
                         "type": "zbtn",
@@ -217,6 +217,7 @@ room352.chatcatch = function (callback) {
                         "height": 788,
                         "image": "352_jackoff/w2.png"
                     }, 352);
+                    showassname = "!bwc";
                 }
                 else {
                     nav.button({
@@ -228,8 +229,9 @@ room352.chatcatch = function (callback) {
                         "height": 830,
                         "image": "352_jackoff/b2.png"
                     }, 352);
+                    showassname = "!bbc";
                 }
-                levels.handGive("m");
+                levels.gavehandjob("m", showassname);
                 chat(20, 352);
             }
             else {
@@ -381,7 +383,7 @@ room352.chatcatch = function (callback) {
             break;
         case "l1":
             nav.killall();
-            levels.oral(4, null, false, "m", null, "unk");
+            levels.oral(4, "m", "!man", false);
             nav.bg(g.internal.events[0].c === 0 ? "352_jackoff/wl1.jpg" : "352_jackoff/bl1.jpg");
             break;
         case "l2":
@@ -431,6 +433,10 @@ room352.chatcatch = function (callback) {
 
 room352.chat = function (chatID) {
     let s = "random";
+    if (g.internal.events !== undefined) {
+        if (g.internal.events.length > 0)
+            s = g.internal.events[0].c === 1 ? "!bbc" : "!bwc";
+    }
     if (g.internal.length > 0) {
         if (g.internal[0].c != undefined)
             s = g.internal[0].c === 0 ? "!bwc" : "!bbc";

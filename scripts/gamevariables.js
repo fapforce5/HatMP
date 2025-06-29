@@ -73,12 +73,6 @@ gv.init = function () {
         { n: "breastSelect", t: 0, q: "int" },
         { n: "assSelect", t: 0, q: "int" },
 
-        //virgin
-        { n: "virginMouth", t: 0, q: "string" },
-        { n: "virginDick", t: 0, q: "string" },
-        { n: "virginAss", t: 0, q: "string" },
-        { n: "virginPussy", t: 0, q: "string" },
-
         //jobs
         { n: "jobapplynurse", t: 0, q: "int" },
         { n: "jobapplyconst", t: 0, q: "hundred" },
@@ -116,7 +110,7 @@ gv.init = function () {
         //missy
         { n: "chastity", t: null, q: "date" },
         { n: "castitycage", t: null, q: "string" },
-        { n: "chastityOverride", t: null, q: "string" },
+        { n: "chastityOverride", t: null, q: "string" },//null = weekly, "never", "forever"
 
         //analfill
         { n: "analCum", t: 0, q: "int" },
@@ -313,11 +307,11 @@ gv.init = function () {
         { id: 13, n: "strength", d: "Strength [STR]", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
         { id: 14, n: "makeup", d: "Makeup", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
         { id: 15, n: "notused1", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: false },
-        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: false },
+        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: true },
+        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
         { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
 
-        { id: 19, n: "not used", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: false, m: 3 },
+        { id: 19, n: "not used", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
         { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
         { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
         { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
@@ -326,65 +320,229 @@ gv.init = function () {
     ];
 
     sex.st = [
-        { id: 0, type: "anal", give: true, gender: "m", c: 0, sin: 8 },
-        { id: 1, type: "anal", give: true, gender: "f", c: 0, sin: 8 },
-        { id: 2, type: "anal", give: false, gender: "m", c: 0, sin: 8 },
-        { id: 3, type: "anal", give: false, gender: "f", c: 0, sin: 8 },
+        //pussy
+        {
+            id: 0, type: "fuckedinpussy", subdom: "sub", d: "Fucked my pussy", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 1, type: "pussiesfucked", subdom: "dom", d: "Pussies fucked", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //anal
+        {
+            id: 2, type: "tookituptheass", subdom: "sub", d: "Anal", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 3, type: "fuckass", subdom: "dom", d: "Assholes fucked", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //sissygasm
+        {
+            id: 4, type: "sissygasm", subdom: "sub", d: "Sissygasms", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //oral
+        {
+            id: 5, type: "gavebj", subdom: "sub", d: "Dicks Sucked", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 6, type: "cunny", subdom: "dom", d: "Pussies Eaten", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 7, type: "oralass", subdom: "sub", d: "Assholes licked", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 8, type: "gotbj", subdom: "dom", d: "Received Oral", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //tits
+        {
+            id: 9, type: "gavetitjob", subdom: "sub", d: "Gave tit fucked", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 10, type: "gottitjob", subdom: "dom", d: "Fucked tits", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //hand
+        {
+            id: 11, type: "gavehandjob", subdom: "sub", d: "Hand job / fingered", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 12, type: "gothandjob", subdom: "dom", d: "Got hand job", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //fist
+        {
+            id: 13, type: "gotfisted", subdom: "sub", d: "Got fisted", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //foot
+        {
+            id: 14, type: "gotfootjob", subdom: "sub", d: "Got foot job", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 15, type: "gavefootjob", subdom: "dom", d: "Gave foot job", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //piss
+        {
+            id: 16, type: "piss", subdom: "sub", d: "Pissed on", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 17, type: "drankpiss", subdom: "sub", d: "Drank piss", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 18, type: "analpiss", subdom: "sub", d: "Pissed in your ass", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //cum
+        {
+            id: 19, type: "drankcum", subdom: "sub", d: "Drank Cum", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 20, type: "creampie", subdom: "sub", d: "Pussy Creampies", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 21, type: "mudpie", subdom: "sub", d: "Anal Creampies", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        //beast
+        {
+            id: 22, type: "dog", subdom: "sub", d: "Dog", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 23, type: "horse", subdom: "sub", d: "Horse", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 24, type: "pig", subdom: "sub", d: "Pig", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 25, type: "vines", subdom: "sub", d: "Vines", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
 
-        { id: 4, type: "oral", give: true, gender: "m", c: 0, sin: 1 },
-        { id: 5, type: "oral", give: true, gender: "f", c: 0, sin: 1 },
-        { id: 6, type: "oral", give: false, gender: "m", c: 0, sin: 1 },
-        { id: 7, type: "oral", give: false, gender: "f", c: 0, sin: 1 },
-
-        { id: 8, type: "hand", give: true, gender: "m", c: 0, sin: 0 },
-        { id: 9, type: "hand", give: true, gender: "f", c: 0, sin: 0 },
-        { id: 10, type: "hand", give: false, gender: "m", c: 0, sin: 0 },
-        { id: 11, type: "hand", give: false, gender: "f", c: 0, sin: 0 },
-
-        { id: 12, type: "fist", give: true, gender: "m", c: 0, sin: 7 },
-        { id: 13, type: "fist", give: true, gender: "f", c: 0, sin: 7 },
-        { id: 14, type: "fist", give: false, gender: "m", c: 0, sin: 7 },
-        { id: 15, type: "fist", give: false, gender: "f", c: 0, sin: 7 },
-
-        { id: 16, type: "foot", give: true, gender: "m", c: 0, sin: 4 },
-        { id: 17, type: "foot", give: true, gender: "f", c: 0, sin: 4 },
-        { id: 18, type: "foot", give: false, gender: "m", c: 0, sin: 4 },
-        { id: 19, type: "foot", give: false, gender: "f", c: 0, sin: 4 },
-
-        { id: 20, type: "footworship", give: true, gender: "m", c: 0, sin: -1 },
-        { id: 21, type: "footworship", give: true, gender: "f", c: 0, sin: -1 },
-        { id: 22, type: "footworship", give: false, gender: "m", c: 0, sin: -1 },
-        { id: 23, type: "footworship", give: false, gender: "f", c: 0, sin: -1 },
-
-        { id: 24, type: "pussy", give: true, gender: "m", c: 0, sin: 3 },
-        { id: 25, type: "pussy", give: true, gender: "f", c: 0, sin: 3 },
-        { id: 26, type: "pussy", give: false, gender: "m", c: 0, sin: 3 },
-        { id: 27, type: "pussy", give: false, gender: "f", c: 0, sin: 3 },
-
-        { id: 28, type: "piss", give: true, gender: "m", c: 0, sin: 5 },
-        { id: 29, type: "piss", give: true, gender: "f", c: 0, sin: 5 },
-        { id: 30, type: "piss", give: false, gender: "m", c: 0, sin: 5 },
-        { id: 31, type: "piss", give: false, gender: "f", c: 0, sin: 5 },
-
-        { id: 32, type: "drankpiss", give: true, gender: "m", c: 0, sin: 6 },
-        { id: 33, type: "drankpiss", give: true, gender: "f", c: 0, sin: 6 },
-        { id: 34, type: "drankpiss", give: false, gender: "m", c: 0, sin: 6 },
-        { id: 35, type: "drankpiss", give: false, gender: "f", c: 0, sin: 6 },
-
-        { id: 36, type: "spit", give: true, gender: "m", c: 0, sin: -1 },
-        { id: 37, type: "spit", give: true, gender: "f", c: 0, sin: -1 },
-        { id: 38, type: "spit", give: false, gender: "m", c: 0, sin: -1 },
-        { id: 39, type: "spit", give: false, gender: "f", c: 0, sin: -1 },
-
-        { id: 40, type: "boob", give: true, gender: "m", c: 0, sin: 2 },
-        { id: 41, type: "boob", give: true, gender: "f", c: 0, sin: 2 },
-        { id: 42, type: "boob", give: false, gender: "m", c: 0, sin: 2 },
-        { id: 43, type: "boob", give: false, gender: "f", c: 0, sin: 2 },
-
-        { id: 44, type: "beast", give: true, gender: "m", c: 0, sin: 9 },
-        { id: 45, type: "beast", give: true, gender: "f", c: 0, sin: 9 },
-        { id: 46, type: "beast", give: false, gender: "m", c: 0, sin: 9 },
-        { id: 47, type: "beast", give: false, gender: "f", c: 0, sin: 9 }
+        //virginity
+        {
+            id: 26, type: "analvirgin", subdom: "sub", d: "Anal Virginity", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 27, type: "penisvirgin", subdom: "dom", d: "Virginity", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 28, type: "pussyvirgin", subdom: "sub", d: "Got pussy fucked", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 29, type: "oralvirgin", subdom: "sub", d: "Oral Virgin", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
     ];
 
     sissy.st = [
@@ -541,23 +699,6 @@ gv.init = function () {
     future.st = new Array();
 
     dreams.st = new Array();
-
-    confession.st = [
-        { id: 0, icon: "icon_masturbate", n: null, ach: false, c: false },
-        { id: 1, icon: "icon_peek", n: null, ach: false, c: false },
-        { id: 2, icon: "icon_job", n: null, ach: false, c: false },
-        { id: 3, icon: "icon_finger", n: null, ach: false, c: false },
-        { id: 4, icon: "icon_dildo", n: null, ach: false, c: false },
-        { id: 5, icon: "icon_dildosuck", n: null, ach: false, c: false },
-        { id: 6, icon: "icon_penis", n: null, ach: false, c: false },
-        { id: 7, icon: "icon_sissyschool", n: null, ach: false, c: false },
-        { id: 8, icon: "icon_oral_f", n: null, ach: false, c: false },
-        { id: 9, icon: "icon_oral_m", n: null, ach: false, c: false },
-        { id: 10, icon: "icon_anal", n: null, ach: false, c: false },
-        { id: 11, icon: "icon_beast", n: null, ach: false, c: false },
-
-        
-    ];
 };
 
 gv.init();
@@ -758,6 +899,9 @@ levels.set = function (name, c, l) {
 };
 
 levels.modLevel = function (name, amount) {
+    if (name === "xdress" && !sissy.st[0].ach)
+        return;
+
     let i = levels.i(name);
     let startLevel = levels.st[i].l;
     levels.st[i].l += amount;
@@ -865,15 +1009,92 @@ levels.compute = function (level) {
     return total;
 }
 
-sex.mod = function (type, give, gender, number) {
-    for (var i = 0; i < sex.st.length; i++) {
-        if (sex.st[i].type === type && sex.st[i].give === give && sex.st[i].gender === gender) {
-            sex.st[i].c += number;
-            sex.st[i].sin += number;
-            break;
+sex.get = function (type, gender) {
+    let gr;
+    switch (gender) {
+        case "m": gr = 0; break; 
+        case "f": gr = 1; break;
+        case "n": gr = 2; break;
+    }
+    for (let i = 0; i < sex.st.length; i++) {
+        if (type === sex.st[i].type) {
+            return { i: i, j: gr };
         }
     }
-}
+    return { i: null, gr: null };
+};
+
+sex.mod = function (type, gender, name) {
+    if (gender !== null) {
+        var idx = sex.get(type, gender);
+        sex.st[idx.i].ent[idx.j].c++;
+        if (sex.st[idx.i].ent[idx.j].day === null) {
+            sex.st[idx.i].ent[idx.j].day = char.getDaysPlayed();
+        }
+        if (name === null)
+            name = "Random person";
+        else
+            name = sc.n(name);
+        if (!sex.st[idx.i].ent[idx.j].names.includes(name))
+            sex.st[idx.i].ent[idx.j].names.push(name);
+        levels.mod(sex.st[idx.i].subdom, 10);
+        if (sex.st[idx.i].subdom === "sub")
+            levels.mod("xdress", 20);
+        let virginid = -1;
+        switch (type) {
+            case "fuckedinpussy": virginid = 28; break;
+            case "tookituptheass": virginid = 26; break;
+            case "pussiesfucked": virginid = 27; break;
+            case "fuckedasshole": virginid = 27; break;
+            case "gavebj": virginid = 29; break;
+            case "cunny": virginid = 29; break;
+            case "oralass": virginid = 29; break;
+        };
+
+        if (virginid > -1) {
+            let gid;
+            if (sex.st[virginid].ent[0].c === 0 && sex.st[virginid].ent[1].c === 0 && sex.st[virginid].ent[1].c === 0) {
+                switch (gender) {
+                    case "m": gid = 0; break;
+                    case "f": gid = 1; break;
+                    case "n": gid = 2; break;
+                }
+                sex.st[virginid].ent[gid].c = 1;
+                sex.st[virginid].ent[gid].day = char.getDaysPlayed();
+                sex.st[virginid].ent[gid].names.push(name);
+            }
+        }
+    }
+    else
+        console.log("Missing gender in sex.mod type: " + type);
+};
+
+sex.getvirgin = function (id) {
+    let gender = null;
+    let who = "Unknown";
+    let day = 0;
+    if (sex.st[id].ent[0].c > 0) {
+        gender = "m";
+        day = sex.st[id].ent[0].day;
+        if (sex.st[id].ent[0].names.length > 0)
+            who = sex.st[id].ent[0].names[0];
+    }
+    if (sex.st[id].ent[1].c > 0) {
+        gender = "f";
+        day = sex.st[id].ent[1].day;
+        if (sex.st[id].ent[1].names.length > 0)
+            who = sex.st[id].ent[1].names[0];
+    }
+    if (sex.st[id].ent[1].c > 0) {
+        gender = "n";
+        day = sex.st[id].ent[2].day;
+        if (sex.st[id].ent[2].names.length > 0)
+            who = sex.st[id].ent[2].names[0];
+    }
+    if (gender === null)
+        return { virgin: true, gender: null, day: null, who: null };
+    return { virgin: false, gender: gender, day: day, who: who };
+};
 
 stats.mod = function (t, n, amount) {
     stats.st[stats.i(t, n)].c += amount;
@@ -1075,44 +1296,16 @@ levels.desc = function (name, level) {
     }
 };
 
-levels.handGive = function (gender) {
-    sex.mod("hand", true, gender, 1);
-    levels.mod("xdress", 15);
-}
-
-levels.oral = function (size, swallow, isDildo, gender = null, beast = null, who = null) {
-    //levels.mod("oral", 25, 999);
-    levels.oralGive(size);
-    gv.mod("arousal", 15);
-    if (swallow === null) {
-        //noop
-    }
-    else if (swallow) {
-        levels.cum();
-    }
-    else if(gender === "m") {
-        cl.c.cumface = true;
-        cl.display();
-    }
-
-    if (gender !== null) {
-        sex.mod("oral", true, gender, 1);
-        if (gender === "m")
-            sc.startMissionTask("priest", "confession", 10);
-        else if(gender === "f")
-            sc.startMissionTask("priest", "confession", 9);
-    }
-    if (beast !== null) {
-        levels.mod("beast", 25);
-    }
-}
-
-levels.getBlowJob = function (who, gender) {
-    cl.doCum(false);
-    sex.mod("oral", false, gender, 1);
+levels.gavehandjob = function (gender, who = null) {
+    sex.mod("gavehandjob", gender, who);
 };
 
-levels.anal = function (size, sissygasm = false, gender = null, creampie = false, beast = null, who = null) {
+levels.gotbj = function (gender, who = null) {
+    cl.doCum(false);
+    sex.mod("gotbj", gender, who);
+};
+
+levels.anal = function (size, sissygasm = false, gender = null, creampie = false, who = null, beast = null) {
     //0: 1 finger
     //1: tiny (finger)
     //2: small
@@ -1135,7 +1328,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
         }
     }
     else {
-        switch (levels.analTake(size).n) {
+        switch (levels.analSize(size).n) {
             case "noop": break;
             case "easy": levels.mod("anal", 10); break;
             case "normal": levels.mod("anal", 20); break;
@@ -1146,7 +1339,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     if (sissygasm) {
         cl.doCum(false);
         if (gender !== null)
-            stats.mod("sissygasm", gender, 1);
+            sex.mod("sissygasm", gender, who);
     }
     else {
         gv.mod("arousal", 30);
@@ -1154,6 +1347,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
 
     if (creampie) {
         levels.mod("cum", 25, 999);
+        sex.mod("mudpie", gender, who);
         if (beast === null) {
             gv.mod("analCum", 1);
         }
@@ -1169,117 +1363,22 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     }
 
     if (beast !== null) {
-        sex.mod("beast", false, "m", 1);
+        sex.mod(beast, "m", who);
         levels.mod("beast", 50, 10);
-        stats.mod(beast, "sex", 1);
         switch (beast) {
             case "dog": gv.mod("analCumDog", 1); break;
             case "horse": gv.mod("analCumHorse", 1); break;
             case "pig": gv.mod("analCumPig", 1); break;
-            case "plant": gv.mod("analCumPlant", 1); break;
-        }
-        sc.startMissionTask("priest", "confession", 12);
-    }
-    else if (gender !== null && beast === null) {
-        sex.mod("anal", false, gender, 1);
-        if (gender === "m")
-            sc.startMissionTask("priest", "confession", 11);
-    }
-};
-
-levels.cum = function (howMuch = 1, beastType = null  ) {
-    switch (levels.get("cum").l) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4: gv.mod("energy", 5); break;
-        case 5: gv.mod("energy", 10); break;
-        case 6: gv.mod("energy", 15); break;
-        case 7: gv.mod("energy", 20); break;
-        case 8: gv.mod("energy", 25); break;
-        case 9: gv.mod("energy", 30); break;
-        default: gv.mod("energy", 35); break;
-    }
-    levels.mod("cum", 25, 999);
-    stats.mod("cum", "swallow", 1);
-};
-
-levels.oralGive = function (size) {
-    if (levels.get("oral").l > 3) {
-        switch (size) {
-            case 0: levels.mod("oral", 1); break;
-            case 1: levels.mod("oral", 5); break;
-            case 2: levels.mod("oral", 10); break;
-            case 3: levels.mod("oral", 15); break;
-            case 4: levels.mod("oral", 20); break;
-            case 5: levels.mod("oral", 25); break;
-            case 6: levels.mod("oral", 30); break;
-            case 7: levels.mod("oral", 35); break;
-            default: console.log("BAD ORAL SIZE: " + size);
+            case "vines": gv.mod("analCumPlant", 1); break;
         }
     }
-    else {
-        switch (levels.oralTake(size).n) {
-            case "noop": break;
-            case "easy": levels.mod("oral", 10); break;
-            case "normal": levels.mod("oral", 20); break;
-            case "brutal": levels.mod("oral", 40); break;
-            case "broken": levels.mod("oral", 100); break;
-        };
+
+    if (gender !== null) {
+        sex.mod("tookituptheass", gender, who);
     }
 };
 
-sex.masturbate = function (t = null) {
-    switch (t) {
-        case "penis":
-        case null:
-            sc.startMissionTask("priest", "confession", 1);
-            stats.mod("masturbate", "dick", 1);
-            cl.doCum(false);
-            break;
-        case "finger":
-            sc.startMissionTask("priest", "confession", 4);
-            break;
-        case "anal":
-            sc.startMissionTask("priest", "confession", 5);
-            break;
-        case "oral":
-            sc.startMissionTask("priest", "confession", 6);
-            break;
-    }
-};
-
-sex.piss = function (drankpiss, analpiss, pissedon, gender) {
-    if (analpiss) {
-        sex.mod("piss", false, gender, 1);
-        levels.mod("piss", 40, 999);
-        levels.mod("xdress", 40, 999);
-    }
-    else if (pissedon) {
-        sex.mod("piss", false, gender, 1);
-        levels.mod("piss", 15, 999);
-        levels.mod("xdress", 5, 999);
-    }
-    else if (drankpiss) {
-        sex.mod("piss", false, gender, 1);
-        levels.mod("piss", 25, 999);
-        var pissLevel = levels.get("piss").l - 4;
-        levels.mod("xdress", 15, 999);
-        if (pissLevel > 0) {
-            let pissEnergy = pissLevel * 5;
-            if (gender === "f")
-                pissEnergy += 20;
-            gv.mod("energy", pissEnergy);
-        }
-    }
-    else {
-        levels.mod("xdress", 5, 999);
-        levels.mod("piss", 15, 999);
-    }
-}
-
-levels.analTake = function (size) {
+levels.analSize = function (size) {
     //0: 1 finger
     //1: tiny (finger)
     //2: small
@@ -1444,6 +1543,57 @@ levels.analTake = function (size) {
     };
 };
 
+levels.oral = function (size, gender = null, who = null, swallow = false, beast = null) {
+    //levels.mod("oral", 25, 999);
+    levels.oralSizes(size);
+    gv.mod("arousal", 15);
+
+    if (swallow && gender !== null) {
+        levels.swallowCum(gender, who);
+    }
+    else if ((gender === "m" || gender === "n") && !swallow) {
+        cl.c.cumface = true;
+        cl.display();
+    }
+
+    if (gender === "f") {
+        sex.mod("cunny", gender, who);
+    }
+    else if (gender !== null) {
+        sex.mod("gavebj", gender, who);
+    }
+
+    if (beast !== null) {
+        sex.mod(beast, "m", who);
+        levels.mod("beast", 25);
+    }
+}
+
+levels.oralSizes = function (size) {
+    if (levels.get("oral").l > 3) {
+        switch (size) {
+            case 0: levels.mod("oral", 2); break;
+            case 1: levels.mod("oral", 6); break;
+            case 2: levels.mod("oral", 10); break;
+            case 3: levels.mod("oral", 15); break;
+            case 4: levels.mod("oral", 20); break;
+            case 5: levels.mod("oral", 25); break;
+            case 6: levels.mod("oral", 30); break;
+            case 7: levels.mod("oral", 35); break;
+            default: console.log("BAD ORAL SIZE: " + size);
+        }
+    }
+    else {
+        switch (levels.oralTake(size).n) {
+            case "noop": levels.mod("oral", 2); break;
+            case "easy": levels.mod("oral", 10); break;
+            case "normal": levels.mod("oral", 20); break;
+            case "brutal": levels.mod("oral", 40); break;
+            case "broken": levels.mod("oral", 100); break;
+        };
+    }
+};
+
 levels.oralTake = function (size) {
     //0: 1 finger
     //1: tiny (finger)
@@ -1575,18 +1725,6 @@ levels.oralTake = function (size) {
                 case 7: retvar = "normal"; break;
             };
             break;
-        case 10:
-            switch (size) {
-                case 0: retvar = "noop"; break;
-                case 1: retvar = "noop"; break;
-                case 2: retvar = "noop"; break;
-                case 3: retvar = "easy"; break;
-                case 4: retvar = "easy"; break;
-                case 5: retvar = "easy"; break;
-                case 6: retvar = "normal"; break;
-                case 7: retvar = "normal"; break;
-            };
-            break;
         default:
             switch (size) {
                 case 0: retvar = "noop"; break;
@@ -1609,28 +1747,88 @@ levels.oralTake = function (size) {
     };
 };
 
-levels.fuckpussy = function (who) {
-    cl.doCum(false);
-    levels.mod("dom", 20, 999);
-    levels.mod("dick", 20, 999);
-    sex.mod("pussy", true, "f", 1);
-    if (gv.get("virginDick") === null) {
-        gv.set("virginDick", who);
-        //dreams.add("virginDick_" + who);
-        g.popUpNotice("You lost your virginity");
-        sc.startMissionTask("priest", "confession", 7);
+levels.swallowCum = function (gender = "m", name = null) {
+    switch (levels.get("cum").l) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4: gv.mod("energy", 5); break;
+        case 5: gv.mod("energy", 10); break;
+        case 6: gv.mod("energy", 15); break;
+        case 7: gv.mod("energy", 20); break;
+        case 8: gv.mod("energy", 25); break;
+        case 9: gv.mod("energy", 30); break;
+        default: gv.mod("energy", 35); break;
+    }
+    levels.mod("cum", 25);
+    sex.mod("drankcum", gender, name);
+};
+
+levels.oralass = function(gender, who = null){
+    sex.mod("oralass", gender, who);
+    levels.oralSizes(3);
+};
+
+sex.masturbate = function (t = null) {
+    switch (t) {
+        case "penis":
+        case null:
+            sc.startMissionTask("priest", "confession", 1);
+            stats.mod("masturbate", "dick", 1);
+            cl.doCum(false);
+            break;
+        case "finger":
+            sc.startMissionTask("priest", "confession", 4);
+            break;
+        case "anal":
+            sc.startMissionTask("priest", "confession", 5);
+            break;
+        case "oral":
+            sc.startMissionTask("priest", "confession", 6);
+            break;
     }
 };
 
-levels.fuckass = function (who, gender) {
-    cl.doCum(false);
-    levels.mod("dom", 20, 999);
-    levels.mod("dick", 20, 999);
-    sex.mod("anal", true, gender, 1);
-    if (gv.get("virginDick") === null) {
-        gv.set("virginDick", who);
-        g.popUpNotice("You lost your virginity");
+levels.piss = function (drankpiss, analpiss, pissedon, gender, who = null) {
+    if (analpiss) {
+        sex.mod("analpiss", gender, who);
+        levels.mod("piss", 40, 999);
+        levels.mod("xdress", 40, 999);
     }
+    else if (pissedon) {
+        sex.mod("piss", gender, who);
+        levels.mod("piss", 15, 999);
+        levels.mod("xdress", 5, 999);
+    }
+    else if (drankpiss) {
+        sex.mod("drankpiss", gender, who);
+        levels.mod("piss", 25, 999);
+        var pissLevel = levels.get("piss").l - 4;
+        levels.mod("xdress", 15, 999);
+
+        if (pissLevel > 0) {
+            let pissEnergy = pissLevel * 5;
+            if (gender === "f")
+                pissEnergy += 20;
+            gv.mod("energy", pissEnergy);
+        }
+    }
+    else {
+        levels.mod("xdress", 5, 999);
+        levels.mod("piss", 15, 999);
+    }
+}
+
+levels.fuckpussy = function (who, gender = "f") {
+    cl.doCum(false);
+    levels.mod("dick", 20, 999);
+    sex.mod("pussiesfucked", gender, who);
+};
+
+levels.fuckass = function (who = null, gender = "f") {
+    cl.doCum(false);
+    sex.mod("fuckass", gender, who);
 };
 
 levels.beer = function (numBeers = 1) {
@@ -1643,136 +1841,6 @@ levels.beer = function (numBeers = 1) {
         return { totalBeers: totalBeers, beerLevel: beerLevel, passout: true, nextOneDrunk: true };
 
     return { totalBeers: totalBeers, beerLevel: beerLevel, passout: false, nextOneDrunk: (beerLevel - totalBeers === 1) };
-};
-
-sex.getFuck = function () {
-    var tempFuck = {
-        anal: {
-            give: {
-                m: { c: sex.st[0].c, sin: sex.st[0].sin },
-                f: { c: sex.st[1].c, sin: sex.st[1].sin },
-            },
-            take: {
-                m: { c: sex.st[2].c, sin: sex.st[2].sin },
-                f: { c: sex.st[3].c, sin: sex.st[3].sin },
-            }
-        },
-        oral: {
-            give: {
-                m: { c: sex.st[4].c, sin: sex.st[4].sin },
-                f: { c: sex.st[5].c, sin: sex.st[5].sin },
-            },
-            take: {
-                m: { c: sex.st[6].c, sin: sex.st[6].sin },
-                f: { c: sex.st[7].c, sin: sex.st[7].sin },
-            }
-        },
-        hand: {
-            give: {
-                m: { c: sex.st[8].c, sin: sex.st[8].sin },
-                f: { c: sex.st[9].c, sin: sex.st[9].sin },
-            },
-            take: {
-                m: { c: sex.st[10].c, sin: sex.st[10].sin },
-                f: { c: sex.st[11].c, sin: sex.st[11].sin },
-            }
-        },
-        fist: {
-            give: {
-                m: { c: sex.st[12].c, sin: sex.st[12].sin },
-                f: { c: sex.st[13].c, sin: sex.st[13].sin },
-            },
-            take: {
-                m: { c: sex.st[14].c, sin: sex.st[14].sin },
-                f: { c: sex.st[15].c, sin: sex.st[15].sin },
-            }
-        },
-        foot: {
-            give: {
-                m: { c: sex.st[16].c, sin: sex.st[16].sin },
-                f: { c: sex.st[17].c, sin: sex.st[17].sin },
-            },
-            take: {
-                m: { c: sex.st[18].c, sin: sex.st[18].sin },
-                f: { c: sex.st[19].c, sin: sex.st[19].sin },
-            }
-        },
-        footworship: {
-            give: {
-                m: { c: sex.st[20].c, sin: sex.st[20].sin },
-                f: { c: sex.st[21].c, sin: sex.st[21].sin },
-            },
-            take: {
-                m: { c: sex.st[22].c, sin: sex.st[22].sin },
-                f: { c: sex.st[23].c, sin: sex.st[23].sin },
-            }
-        },
-        pussy: {
-            give: {
-                m: { c: sex.st[24].c, sin: sex.st[24].sin },
-                f: { c: sex.st[25].c, sin: sex.st[25].sin },
-            },
-            take: {
-                m: { c: sex.st[26].c, sin: sex.st[26].sin },
-                f: { c: sex.st[27].c, sin: sex.st[27].sin },
-            }
-        },
-        piss: {
-            give: {
-                m: { c: sex.st[28].c, sin: sex.st[28].sin },
-                f: { c: sex.st[29].c, sin: sex.st[29].sin },
-            },
-            take: {
-                m: { c: sex.st[30].c, sin: sex.st[30].sin },
-                f: { c: sex.st[31].c, sin: sex.st[31].sin },
-            }
-        },
-        drankpiss: {
-            give: {
-                m: { c: sex.st[32].c, sin: sex.st[32].sin },
-                f: { c: sex.st[33].c, sin: sex.st[33].sin },
-            },
-            take: {
-                m: { c: sex.st[34].c, sin: sex.st[34].sin },
-                f: { c: sex.st[35].c, sin: sex.st[35].sin },
-            }
-        },
-        spit: {
-            give: {
-                m: { c: sex.st[36].c, sin: sex.st[36].sin },
-                f: { c: sex.st[37].c, sin: sex.st[37].sin },
-            },
-            take: {
-                m: { c: sex.st[38].c, sin: sex.st[38].sin },
-                f: { c: sex.st[39].c, sin: sex.st[39].sin },
-            }
-        },
-        boob: {
-            give: {
-                m: { c: sex.st[40].c, sin: sex.st[40].sin },
-                f: { c: sex.st[41].c, sin: sex.st[41].sin },
-            },
-            take: {
-                m: { c: sex.st[42].c, sin: sex.st[42].sin },
-                f: { c: sex.st[43].c, sin: sex.st[43].sin },
-            }
-        },
-        beast: {
-            give: {
-                m: { c: sex.st[44].c, sin: sex.st[44].sin },
-                f: { c: sex.st[45].c, sin: sex.st[45].sin },
-            },
-            take: {
-                m: { c: sex.st[46].c, sin: sex.st[46].sin },
-                f: { c: sex.st[47].c, sin: sex.st[47].sin },
-            }
-        },
-        virginDick: true,
-        virginAss: true,
-        virginMouth: true
-    };
-
-    return tempFuck;
 };
 
 qdress.unlock = function (setting = true) {
@@ -1840,8 +1908,15 @@ gv.save = function () {
         });
     }
     //save by index
-    for (i = 0; i < sex.st.length; i++) {
-        retArray.sex.push({ c: sex.st[i].c });
+    for (let i = 0; i < sex.st.length; i++) {
+        for (let j = 0; j < 3; j++)
+            retArray.sex.push({
+                i: i,
+                j: j,
+                c: sex.st[i].ent[j].c,
+                day: sex.st[i].ent[j].day,
+                names: sex.st[i].ent[j].names
+            });
     }
     
     //save by index
@@ -1871,7 +1946,7 @@ gv.save = function () {
     return retArray;
 };
 
-gv.load = function (rma) {
+gv.load = function (rma, saveVersion) {
     gv.init();
 
     for (i = 0; i < rma.gv.length; i++) {
@@ -1915,9 +1990,13 @@ gv.load = function (rma) {
         levels.st[i].c = rma.levels[i].c;
         levels.st[i].l = rma.levels[i].l;
     }
-    
-    for (i = 0; i < rma.sex.length; i++) {
-        sex.st[i].c = rma.sex[i].c;
+
+    if (saveVersion > 25.4) {
+        for (let i = 0; i < rma.sex.length; i++) {
+            sex.st[rma.sex[i].i].ent[rma.sex[i].j].c = rma.sex[i].c;
+            sex.st[rma.sex[i].i].ent[rma.sex[i].j].day = rma.sex[i].day;
+            sex.st[rma.sex[i].i].ent[rma.sex[i].j].names = rma.sex[i].names;
+        }
     }
 
     for (i = 0; i < rma.sissy.length; i++) {
