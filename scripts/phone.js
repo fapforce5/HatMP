@@ -489,7 +489,7 @@ phone.characterSelect = function (name) {
         }, 1);
     }
 
-    if (name === "missy" || name === "p" || name === "martha" || name === "black") {
+    if (name === "missy" || name === "p" || name === "martha" || name === "black" || name === "me") {
         switch (name) {
             case "missy":
                 var sissySchoolInvite = "Attend Sissy School Monday - Thursday.";
@@ -597,6 +597,38 @@ phone.characterSelect = function (name) {
                         text: m1txt + "<br /><br />" + m2txt
                     }, 9999);
                 }
+                break;
+            case "me":
+                //[0, 1, 2, 3, 4, 24, 7, 5, 8, 25, 6, 9, 23, 10, 15, 20, 22];
+                var locked = '<span style="color:#cc3333">Locked</span>';
+                var unlocked = '<span style="color:#33cc33">Unlocked</span>';
+                var metxt =
+                    "Cup size: " + cl.cupsize() + "<br/>" +
+                    "Ass: " + cl.buttsize() + "<br/>" +
+                    "Lips: " + cl.lipsize() + "<br/>" +
+                    "Cock: " + cl.cocksize() + "<br/><br/>" +
+                    "Wear panties: " + (qdress.st[0].ach ? unlocked : locked) + "<br/>" +
+                    "Wear bra: " + (qdress.st[1].ach ? unlocked : locked) + "<br/>" +
+                    "Buy dildos: " + (qdress.st[2].ach ? unlocked : locked) + "<br/>" +
+                    "Cross dress in public: " + (qdress.st[3].ach ? unlocked : locked) + "<br/>" +
+                    "Wear earrings: " + (qdress.st[4].ach ? unlocked : locked) + "<br/>" +
+                    "Seduce men: " + (qdress.st[24].ach ? unlocked : locked) + "<br/>" +
+                    "Buy sexy clothes: " + (qdress.st[7].ach ? unlocked : locked) + "<br/>" +
+                    "Wear makeup: " + (qdress.st[5].ach ? unlocked : locked) + "<br/>" +
+                    "Buy bimbo clothes: " + (qdress.st[8].ach ? unlocked : locked) + "<br/>" +
+                    "Work as a stripper: " + (qdress.st[25].ach ? unlocked : locked) + "<br/>" +
+                    "Panties and bra are optional: " + (qdress.st[9].ach ? unlocked : locked) + "<br/>" +
+                    "Work as a whore: " + (qdress.st[23].ach ? unlocked : locked) + "<br/>" +
+                    "Lewd in public: " + (qdress.st[10].ach ? unlocked : locked) + "<br/>";
+                nav.t({
+                    type: "zimg",
+                    name: "phone_charselx",
+                    "left": 850,
+                    "top": 180,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: metxt
+                }, 9999);
                 break;
         }
     }

@@ -1,7 +1,7 @@
 ﻿//Room name
 var room222 = {};
 room222.main = function () {
-    if (missy.get("jobRunErrands") < 2) {
+    if (missy.get("jobRunErrands") === 0) {
         chat(14, 222);
     }
     else {

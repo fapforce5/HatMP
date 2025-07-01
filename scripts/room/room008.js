@@ -100,6 +100,8 @@ room8.main = function () {
         nav.bg("8_wardrobe/602.jpg");
     else if (g.pass === 170)
         nav.bg("8_wardrobe/170.jpg");
+    else if (g.pass === 185)
+        nav.bg("8_wardrobe/185.jpg");
     else {
         g.pass = 451;
         nav.bg("8_wardrobe/451.jpg");

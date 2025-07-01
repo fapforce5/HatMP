@@ -466,9 +466,9 @@ room10.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "me",
-                text: "How Long do you want to sleep?",
+                text: "Sleep until morning?",
                 button: [
-                    { chatID: -1, text: "Sleep till morning", callback: "nap_sleep" },
+                    { chatID: -1, text: "Sleep", callback: "nap_sleep" },
                     { chatID: -1, text: "Cancel", callback: "" }
                 ]
             },

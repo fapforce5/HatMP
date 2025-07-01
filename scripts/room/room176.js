@@ -293,6 +293,7 @@ room176.chatcatch = function (callback) {
             future.add("sissyfinal", 6);
             break;
         case "final4":
+            nav.kill();
             nav.bg("176_oral/final4.jpg");
             nav.button({
                 "type": "kiss",
@@ -305,6 +306,7 @@ room176.chatcatch = function (callback) {
             }, 176);
             break;
         case "final5":
+            nav.kill();
             nav.bg("176_oral/final5.jpg");
             nav.button({
                 "type": "kiss",
@@ -317,6 +319,7 @@ room176.chatcatch = function (callback) {
             }, 176);
             break;
         case "final6":
+            nav.kill();
             nav.bg("176_oral/final6.jpg");
             nav.button({
                 "type": "kiss",
@@ -329,6 +332,7 @@ room176.chatcatch = function (callback) {
             }, 176);
             break;
         case "final7":
+            nav.kill();
             nav.bg("176_oral/final7.jpg");
             nav.button({
                 "type": "kiss",
@@ -341,6 +345,7 @@ room176.chatcatch = function (callback) {
             }, 176);
             break;
         case "final8":
+            nav.kill();
             nav.bg("176_oral/final8.jpg");
             zcl.displayMain(350, 520, .08, "clothes", true);
             inv.add("diploma");
@@ -366,6 +371,7 @@ room176.chatcatch = function (callback) {
             gv.set("sissySchoolClass", null);
             gv.set("sissySchoolClassDays", 0);
             levels.mod("xdress", 200);
+            gv.set("pinkroomopen", true);
             sissy.st[21].ach = true;
             char.room(207);
             break;
@@ -1305,7 +1311,7 @@ room176.chat = function (chatID) {
                     "a suprise penis, which is my favorite penis, but I'm going in. Let's " +
                     "go get laid girls! ",
                 button: [
-                    { chatID: 88, text: "...", callback: "" },
+                    { chatID: -1, text: "...", callback: "finalfinal" },
                 ]
             },
         ];

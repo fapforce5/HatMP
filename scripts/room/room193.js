@@ -2,7 +2,7 @@
 var room193 = {};
 room193.main = function () {
 
-    switch (g.rand(1, 2)) {
+    switch (g.rand(0, 3)) {
         case 0:
             nav.bg("193_afternoon/cop0.webp");
             chat(0, 193);
@@ -738,7 +738,7 @@ room193.chat = function (chatID) {
                 speaker: "thinking",
                 text: "Now I have to break in to this poor girl's house to steal her panties. ",
                 button: [
-                    { chatID: -1, text: "Yes ma'am I'll get those panties! ", callback: "panty1" }
+                    { chatID: -1, text: "[Pick her lock]", callback: "panty1" }
                 ]
             },
             {

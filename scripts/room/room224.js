@@ -48,6 +48,12 @@ room224.chatcatch = function (callback) {
     switch (callback) {
         case "endlunch":
             char.settime(13, 15);
+            var missyAfterlunch = missy.afterLunch();
+            if (missyAfterlunch === 211 && sissy.st[21].ach) {
+                nav.bg("200_frontOffice/bg.jpg");
+                chat(4, 224);
+                return;
+            }
             char.room(missy.afterLunch());
             break;
         case "endlunchEnergy":
@@ -60,6 +66,9 @@ room224.chatcatch = function (callback) {
             break;
         case "standInCorner":
             nav.bg("224_lunch/punish0.jpg");
+            break;
+        case "leave":
+            char.room(203);
             break;
         default:
             break;
@@ -99,6 +108,15 @@ room224.chat = function (chatID) {
             text: "More to come later....",
             button: [
                 { chatID: -1, text: "[End lunch]", callback: "endlunch" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "missy",
+            text: "I don't have any cases today. Go work in the pink room or start " +
+                "working on the bigger cases.",
+            button: [
+                { chatID: -1, text: "[End Day]", callback: "leave" }
             ]
         },
     ];

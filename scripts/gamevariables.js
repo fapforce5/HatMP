@@ -156,7 +156,6 @@ gv.init = function () {
         { n: "sewerID", t: 0, q: "int" },
         { n: "forestMapUpdate", t: null, q: "string" },
         { n: "forestVisit", t: null, q: "string" },
-        { n: "shinkCock", t: false, q: "bool" },
         
         { n: "puter", t: false, q: "bool" },
         { n: "slimeMonsters", t: true, q: "bool" },
@@ -559,7 +558,7 @@ gv.init = function () {
         { id: 8, pID: [19], icon: "bondage101", x: 11, y: 2, name: "Bondage 202", description: "Ropes are your friend", ach: false, active: true, room: 181 },
         { id: 9, pID: [19], icon: "cum101", x: 8, y: 2, name: "Cum 234", description: "Have a taste of your own", ach: false, active: true, room: 178 },
 
-        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 29], icon: "test1", x: 0, y: 3, name: "Sissy mid-term", description: "Sissy Test 1! Once you pass you will be issued your first sissy uniform!", ach: false, active: true, room: 182 },
+        { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 29], icon: "test1", x: 0, y: 3, name: "Sissy mid-term", description: "Show your progress!", ach: false, active: true, room: 182 },
 
         { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: false },
         { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 312", description: "Experaince the joy of being filled", ach: false, active: true, room: 175 },
@@ -1543,7 +1542,7 @@ levels.analSize = function (size) {
     };
 };
 
-levels.oral = function (size, gender = null, who = null, swallow = false, beast = null) {
+levels.oral = function (size, gender = null, who = null, swallow = false, beast = null, facialOverride = false) {
     //levels.mod("oral", 25, 999);
     levels.oralSizes(size);
     gv.mod("arousal", 15);
@@ -1552,8 +1551,10 @@ levels.oral = function (size, gender = null, who = null, swallow = false, beast 
         levels.swallowCum(gender, who);
     }
     else if ((gender === "m" || gender === "n") && !swallow) {
-        cl.c.cumface = true;
-        cl.display();
+        if (!facialOverride) {
+            cl.c.cumface = true;
+            cl.display();
+        }
     }
 
     if (gender === "f") {
@@ -1843,6 +1844,11 @@ levels.beer = function (numBeers = 1) {
     return { totalBeers: totalBeers, beerLevel: beerLevel, passout: false, nextOneDrunk: (beerLevel - totalBeers === 1) };
 };
 
+levels.gothandjob = function (gender, who = null) {
+    cl.doCum();
+    sex.mod("gothandjob", gender, who);
+};
+
 qdress.unlock = function (setting = true) {
     for (let i = 0; i < qdress.st.length; i++)
         qdress.st[i].ach = setting;
@@ -2075,6 +2081,192 @@ qdress.all = function () {
         qdress.st[i].ach = true;
     }
 }
+
+sex.stObject = function () {
+    return {
+        fuckedinpussy: {
+            male: sex.st[0].ent[0].c,
+            female: sex.st[0].ent[1].c,
+            nb: sex.st[0].ent[2].c,
+            total: sex.st[0].ent[0].c + sex.st[0].ent[1].c + sex.st[0].ent[2].c
+        },
+        pussiesfucked: {
+            male: sex.st[1].ent[0].c,
+            female: sex.st[1].ent[1].c,
+            nb: sex.st[1].ent[2].c,
+            total: sex.st[1].ent[0].c + sex.st[1].ent[1].c + sex.st[1].ent[2].c
+        },
+        tookituptheass: {
+            male: sex.st[2].ent[0].c,
+            female: sex.st[2].ent[1].c,
+            nb: sex.st[2].ent[2].c,
+            total: sex.st[2].ent[0].c + sex.st[2].ent[1].c + sex.st[2].ent[2].c
+        },
+        fuckass: {
+            male: sex.st[3].ent[0].c,
+            female: sex.st[3].ent[1].c,
+            nb: sex.st[3].ent[2].c,
+            total: sex.st[3].ent[0].c + sex.st[3].ent[1].c + sex.st[3].ent[2].c
+        },
+        sissygasm: {
+            male: sex.st[4].ent[0].c,
+            female: sex.st[4].ent[1].c,
+            nb: sex.st[4].ent[2].c,
+            total: sex.st[4].ent[0].c + sex.st[4].ent[1].c + sex.st[4].ent[2].c
+        },
+        gavebj: {
+            male: sex.st[5].ent[0].c,
+            female: sex.st[5].ent[1].c,
+            nb: sex.st[5].ent[2].c,
+            total: sex.st[5].ent[0].c + sex.st[5].ent[1].c + sex.st[5].ent[2].c
+        },
+        cunny: {
+            male: sex.st[6].ent[0].c,
+            female: sex.st[6].ent[1].c,
+            nb: sex.st[6].ent[2].c,
+            total: sex.st[6].ent[0].c + sex.st[6].ent[1].c + sex.st[6].ent[2].c
+        },
+        oralass: {
+            male: sex.st[7].ent[0].c,
+            female: sex.st[7].ent[1].c,
+            nb: sex.st[7].ent[2].c,
+            total: sex.st[7].ent[0].c + sex.st[7].ent[1].c + sex.st[7].ent[2].c
+        },
+        gotbj: {
+            male: sex.st[8].ent[0].c,
+            female: sex.st[8].ent[1].c,
+            nb: sex.st[8].ent[2].c,
+            total: sex.st[8].ent[0].c + sex.st[8].ent[1].c + sex.st[8].ent[2].c
+        },
+        gavetitjob: {
+            male: sex.st[9].ent[0].c,
+            female: sex.st[9].ent[1].c,
+            nb: sex.st[9].ent[2].c,
+            total: sex.st[9].ent[0].c + sex.st[9].ent[1].c + sex.st[9].ent[2].c
+        },
+        gottitjob: {
+            male: sex.st[10].ent[0].c,
+            female: sex.st[10].ent[1].c,
+            nb: sex.st[10].ent[2].c,
+            total: sex.st[10].ent[0].c + sex.st[10].ent[1].c + sex.st[10].ent[2].c
+        },
+        gavehandjob: {
+            male: sex.st[11].ent[0].c,
+            female: sex.st[11].ent[1].c,
+            nb: sex.st[11].ent[2].c,
+            total: sex.st[11].ent[0].c + sex.st[11].ent[1].c + sex.st[11].ent[2].c
+        },
+        gothandjob: {
+            male: sex.st[12].ent[0].c,
+            female: sex.st[12].ent[1].c,
+            nb: sex.st[12].ent[2].c,
+            total: sex.st[12].ent[0].c + sex.st[12].ent[1].c + sex.st[12].ent[2].c
+        },
+        gotfisted: {
+            male: sex.st[13].ent[0].c,
+            female: sex.st[13].ent[1].c,
+            nb: sex.st[13].ent[2].c,
+            total: sex.st[13].ent[0].c + sex.st[13].ent[1].c + sex.st[13].ent[2].c
+        },
+        gotfootjob: {
+            male: sex.st[14].ent[0].c,
+            female: sex.st[14].ent[1].c,
+            nb: sex.st[14].ent[2].c,
+            total: sex.st[14].ent[0].c + sex.st[14].ent[1].c + sex.st[14].ent[2].c
+        },
+        gavefootjob: {
+            male: sex.st[15].ent[0].c,
+            female: sex.st[15].ent[1].c,
+            nb: sex.st[15].ent[2].c,
+            total: sex.st[15].ent[0].c + sex.st[15].ent[1].c + sex.st[15].ent[2].c
+        },
+        piss: {
+            male: sex.st[16].ent[0].c,
+            female: sex.st[16].ent[1].c,
+            nb: sex.st[16].ent[2].c,
+            total: sex.st[16].ent[0].c + sex.st[16].ent[1].c + sex.st[16].ent[2].c
+        },
+        drankpiss: {
+            male: sex.st[17].ent[0].c,
+            female: sex.st[17].ent[1].c,
+            nb: sex.st[17].ent[2].c,
+            total: sex.st[17].ent[0].c + sex.st[17].ent[1].c + sex.st[17].ent[2].c
+        },
+        analpiss: {
+            male: sex.st[18].ent[0].c,
+            female: sex.st[18].ent[1].c,
+            nb: sex.st[18].ent[2].c,
+            total: sex.st[18].ent[0].c + sex.st[18].ent[1].c + sex.st[18].ent[2].c
+        },
+        drankcum: {
+            male: sex.st[19].ent[0].c,
+            female: sex.st[19].ent[1].c,
+            nb: sex.st[19].ent[2].c,
+            total: sex.st[19].ent[0].c + sex.st[19].ent[1].c + sex.st[19].ent[2].c
+        },
+        creampie: {
+            male: sex.st[20].ent[0].c,
+            female: sex.st[20].ent[1].c,
+            nb: sex.st[20].ent[2].c,
+            total: sex.st[20].ent[0].c + sex.st[20].ent[1].c + sex.st[20].ent[2].c
+        },
+        mudpie: {
+            male: sex.st[21].ent[0].c,
+            female: sex.st[21].ent[1].c,
+            nb: sex.st[21].ent[2].c,
+            total: sex.st[21].ent[0].c + sex.st[21].ent[1].c + sex.st[21].ent[2].c
+        },
+        dog: {
+            male: sex.st[22].ent[0].c,
+            female: sex.st[22].ent[1].c,
+            nb: sex.st[22].ent[2].c,
+            total: sex.st[22].ent[0].c + sex.st[22].ent[1].c + sex.st[22].ent[2].c
+        },
+        horse: {
+            male: sex.st[23].ent[0].c,
+            female: sex.st[23].ent[1].c,
+            nb: sex.st[23].ent[2].c,
+            total: sex.st[23].ent[0].c + sex.st[23].ent[1].c + sex.st[23].ent[2].c
+        },
+        pig: {
+            male: sex.st[24].ent[0].c,
+            female: sex.st[24].ent[1].c,
+            nb: sex.st[24].ent[2].c,
+            total: sex.st[24].ent[0].c + sex.st[24].ent[1].c + sex.st[24].ent[2].c
+        },
+        vines: {
+            male: sex.st[25].ent[0].c,
+            female: sex.st[25].ent[1].c,
+            nb: sex.st[25].ent[2].c,
+            total: sex.st[25].ent[0].c + sex.st[25].ent[1].c + sex.st[25].ent[2].c
+        },
+        analvirgin: {
+            male: sex.st[26].ent[0].c,
+            female: sex.st[26].ent[1].c,
+            nb: sex.st[26].ent[2].c,
+            total: sex.st[26].ent[0].c + sex.st[26].ent[1].c + sex.st[26].ent[2].c
+        },
+        penisvirgin: {
+            male: sex.st[27].ent[0].c,
+            female: sex.st[27].ent[1].c,
+            nb: sex.st[27].ent[2].c,
+            total: sex.st[27].ent[0].c + sex.st[27].ent[1].c + sex.st[27].ent[2].c
+        },
+        pussyvirgin: {
+            male: sex.st[28].ent[0].c,
+            female: sex.st[28].ent[1].c,
+            nb: sex.st[28].ent[2].c,
+            total: sex.st[28].ent[0].c + sex.st[28].ent[1].c + sex.st[28].ent[2].c
+        },
+        oralvirgin: {
+            male: sex.st[29].ent[0].c,
+            female: sex.st[29].ent[1].c,
+            nb: sex.st[29].ent[2].c,
+            total: sex.st[29].ent[0].c + sex.st[29].ent[1].c + sex.st[29].ent[2].c
+        },
+    };
+};
+
 //to be removed
 //sissy.steps = [
 g.sissy = [

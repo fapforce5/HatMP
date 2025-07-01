@@ -1,6 +1,21 @@
 ﻿//Room name
 var room211 = {};
 room211.main = function () {
+    if (sissy.st[21].ach) {
+        nav.bg("211_meeting/bg_empty.jpg");
+        nav.button({
+            "type": "btn",
+            "name": "elevator",
+            "left": 1486,
+            "top": 345,
+            "width": 130,
+            "height": 395,
+            "image": "211_meeting/elevator.png",
+            "title": "Elevator"
+        }, 211);
+        nav.buildnav([207, 0]);
+        return;
+    }
     if (gv.get("sissySchoolClass") === "finalx" && future.get("sissyfinal") > -1) {
         nav.bg("200_frontOffice/bg.jpg");
         chat(37, 211);

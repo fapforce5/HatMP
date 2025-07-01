@@ -83,7 +83,10 @@ room171.btnclick = function (name) {
     var i, j;
     switch (name) {
         case "start":
-            if (gv.get("energy") < 33) {
+            if (!sissy.st[23].ach) {
+                chat(13, 171);
+            }
+            else if (gv.get("energy") < 33) {
                 chat(6, 171);
             }
             else {
@@ -571,6 +574,15 @@ room171.chat = function (chatID) {
                     "the more money. Now get up in there slut and take some cock!",
                 button: [
                     { chatID: -1, text: "...ok. I'll give it a try. ", callback: "cumRoom" },
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "thinking",
+                text: "Gross! I'm not some cum dump!!!! There's no way I'll let a bunch " +
+                    "of anonymous men stick their penis in my butt for money!",
+                button: [
+                    { chatID: -1, text: "[Need to unlock Whore in the sissy menu]", callback: "" },
                 ]
             },
         ];

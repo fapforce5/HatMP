@@ -1,55 +1,202 @@
 ﻿//Whore Room
 var room215 = {};
 room215.main = function () {
-    //var btnList = [
-    //    {
-    //        "type": "btn",
-    //        "name": "whore",
-    //        "left": 779,
-    //        "top": 544,
-    //        "width": 327,
-    //        "height": 486,
-    //        "image": "215_pinkroom/work.png",
-    //        "title": "Sell your sissy ass"
-    //    }
-    //];
-    //$.each(btnList, function (i, v) {
-    //    nav.button(v, 215);
-    //});
-    chat(45, 215);
+    if (g.pass === "dirtydirtywhore") {
+        zcl.displayMain(300, 800, .09, "clothes", false);
+        sc.select("relax", "215_pink/icon_relax.webp", 0);
+        sc.select("wait", "193_afternoon/icon_wait.webp", 1);
+    }
+    else if (!sissy.st[23].ach) {
+        chat(0, 215);
+    }
+    else if (sc.getMissionTask("p", "pink", 4).notStarted) {
+        nav.bg("215_pink/p_first.jpg");
+        chat(1, 215);
+    }
+    else {
+        sc.select("relax", "215_pink/icon_relax.webp", 0);
+        sc.select("whore", "215_pink/icon_whore.webp", 1);
+    }
     nav.buildnav([213, 214, 171, 170]);
 };
 
 room215.btnclick = function (name) {
     switch (name) {
+        case "relax":
+            char.room(185);
+            break;
         case "whore":
-            if (gv.get("energy") < 25)
-                char.room(213);
+            nav.kill();
+            zcl.displayMain(300, 800, .09, "clothes", false);
+            sc.select("relax", "215_pink/icon_relax.webp", 0);
+            sc.select("wait", "193_afternoon/icon_wait.webp", 1);
+            break;
+        case "wait":
+            if (g.gethourdecimal() > 3 && g.gethourdecimal() < 7) {
+                chat(4, 215);
+                return;
+            }
+            char.addtime(30);
+            if (g.rand(0, 4) === 0) {
+                nav.button({
+                    "type": "btn",
+                    "name": "skank",
+                    "left": 1315,
+                    "top": 371,
+                    "width": 217,
+                    "height": 662,
+                    "image": "215_pink/skank.webp"
+                }, 215);
+            }
+
+            var thisFame = Math.floor(10 - levels.get("fame").l / 2);
+            if (thisFame < 1)
+                thisFame = 1;
+
+            if (g.rand(0, thisFame) === 0) {
+                nav.killbutton("relax");
+                nav.killbutton("wait");
+
+                var customerList = [1, 2, 3, 4];
+                if (!daily.get("whore_river") && sc.getMission("landlord", "sissy").startedOrComplete) 
+                    customerList.push(0);
+                if (!daily.get("whore_beaver"))
+                    customerList.push(5);
+
+                var thisCustomer = customerList[g.rand(0, customerList.length)];
+
+                switch (thisCustomer) {
+                    case 0: //riverstart0
+                        daily.set("riverwhore");
+                        if (sc.getMission("landlord", "sissy").notStarted) {
+                            nav.killbutton("skank");
+                            nav.button({
+                                "type": "img",
+                                "name": "skank",
+                                "left": 1315,
+                                "top": 371,
+                                "width": 217,
+                                "height": 662,
+                                "image": "215_pink/skank.webp"
+                            }, 215);
+                            nav.button({
+                                "type": "img",
+                                "name": "river",
+                                "left": 937,
+                                "top": 121,
+                                "width": 465,
+                                "height": 959,
+                                "image": "215_pink/river0.webp"
+                            }, 215);
+                            chat(5, 215);
+                        }
+                        else {
+                            nav.button({
+                                "type": "img",
+                                "name": "river",
+                                "left": 937,
+                                "top": 121,
+                                "width": 465,
+                                "height": 959,
+                                "image": "215_pink/river0.webp"
+                            }, 215);
+                            chat(8, 215);
+                        }
+                        break;
+                    case 1: //triostart0
+                        nav.killbutton("sporty");
+                        nav.button({
+                            "type": "img",
+                            "name": "sporty",
+                            "left": 347,
+                            "top": 316,
+                            "width": 184,
+                            "height": 698,
+                            "image": "215_pink/sporty.webp"
+                        }, 215);
+
+                        nav.button({
+                            "type": "img",
+                            "name": "trio",
+                            "left": 439,
+                            "top": 151,
+                            "width": 1392,
+                            "height": 929,
+                            "image": "215_pink/trio.webp"
+                        }, 215);
+                        chat(10, 215);
+                        break;
+                    case 2://femdom0
+                        nav.button({
+                            "type": "img",
+                            "name": "femdom0",
+                            "left": 881,
+                            "top": 243,
+                            "width": 460,
+                            "height": 837,
+                            "image": "215_pink/femdom0.webp"
+                        }, 215);
+                        chat(12, 215);
+                        break;
+                    case 3: //bbc
+                        nav.button({
+                            "type": "img",
+                            "name": "femdom0",
+                            "left": 814,
+                            "top": 0,
+                            "width": 686,
+                            "height": 1080,
+                            "image": "215_pink/bbc0.webp"
+                        }, 215);
+                        chat(17, 215);
+                        break;
+                    case 4: //bwc
+                        nav.button({
+                            "type": "img",
+                            "name": "femdom0",
+                            "left": 992,
+                            "top": 0,
+                            "width": 787,
+                            "height": 1080,
+                            "image": "215_pink/bwc.webp"
+                        }, 215);
+                        chat(18, 215);
+                        break;
+                    case 5: //beaver girls
+                        nav.killbutton("skank");
+                        nav.button({
+                            "type": "btn",
+                            "name": "skank",
+                            "left": 1315,
+                            "top": 371,
+                            "width": 217,
+                            "height": 662,
+                            "image": "215_pink/skank.webp"
+                        }, 215);
+                        nav.button({
+                            "type": "img",
+                            "name": "femdom0",
+                            "left": 615,
+                            "top": 248,
+                            "width": 1130,
+                            "height": 832,
+                            "image": "215_pink/beaver0.webp"
+                        }, 215);
+                        if (sc.getMission("holly", "mad").startedOrComplete) {
+                            chat(14, 215);
+                        }
+                        else {
+                            chat(16, 215);
+                        }
+                        
+                }
+            }
             else {
-                g.internal = { assout: true, customer: 0, s: 0, t: 0 };
-                nav.killbutton("whore");
-                chat(0, 215);
+                g.popUpNoticeBottom("No customers. Try raising your fame to reduce your wait. ");
             }
             break;
-        case "cock":
-            nav.killbutton("cock");
-            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_1.jpg");
-            chat(101, 215);
-            break;
-        case "cock1":
-            nav.killbutton("cock1");
-            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_2.jpg");
-            g.roomTimeout = setTimeout(function () {
-                chat(102, 215);
-            }, 1000);
-            break;
-        case "trio":
-            nav.bg("215_pinkroom/trio" + g.pass + ".jpg");
-            g.pass++;
-            if (g.pass === 7) {
-                nav.killbutton("trio");
-                chat(40, 215);
-            }
+        case "skank":
+            chat(900, 215);
             break;
         default:
             break;
@@ -58,269 +205,60 @@ room215.btnclick = function (name) {
 
 room215.chatcatch = function (callback) {
     switch (callback) {
-        case "private1":
-            nav.killall();
-            nav.bg("215_pinkroom/private1.jpg");
-            break;
-        case "private2b":
-            if (gv.get("energy") < 25) {
-                chat(5, 215);
-            }
-            else {
-                nav.killall();
-                nav.bg("215_pinkroom/private2b.jpg");
-                g.internal.assout = false;
-            }
-            break;
-        case "private2a":
-            if (gv.get("energy") < 25) {
-                chat(5, 215);
-            }
-            else {
-                nav.killall();
-                nav.bg("215_pinkroom/private2a.jpg");
-                g.internal.assout = true;
-            }
-            break;
-        case "private3":
-            var customer = true;
-            if (g.internal.assout) {
-                customer = true;
-            }
-            else {
-                customer = Math.floor(Math.random() * 3) === 0;
-            }
-            if (customer) {
-                if (!sc.getEvent("landlord", -10) && sc.getstep("landlord") > 201) {
-                    nav.button({
-                        "type": "img",
-                        "name": "f",
-                        "left": 490,
-                        "top": 153,
-                        "width": 382,
-                        "height": 927,
-                        "image": "215_pinkroom/prill.png"
-                    }, 215);
-                    chat(6, 215);
-                }
-                else if (sc.getstep("chloe") > 2 && !sc.getEvent("chloe", -1)) {
-                    nav.button({
-                        "type": "img",
-                        "name": "f",
-                        "left": 423,
-                        "top": 217,
-                        "width": 402,
-                        "height": 863,
-                        "image": "215_pinkroom/pri3.png"
-                    }, 215);
-                    chat(11, 215);
-                }
-                else {
-                    g.internal.customer = Math.floor(Math.random() * 4);
-                    if (g.internal.customer === 3) {
-                        nav.button({
-                            "type": "img",
-                            "name": "f",
-                            "left": 227,
-                            "top": 278,
-                            "width": 756,
-                            "height": 802,
-                            "image": "215_pinkroom/prtranny.png"
-                        }, 215);
-                        chat(17, 215);
-                    }
-                    else if (g.internal.customer === 0) {
-                        nav.button({
-                            "type": "img",
-                            "name": "f",
-                            "left": 317,
-                            "top": 222,
-                            "width": 409,
-                            "height": 858,
-                            "image": "215_pinkroom/pri0.png"
-                        }, 215);
-                        chat(100, 215);
-                    }
-                    else if (g.internal.customer === 1) {
-                        nav.button({
-                            "type": "img",
-                            "name": "f",
-                            "left": 300,
-                            "top": 163,
-                            "width": 856,
-                            "height": 917,
-                            "image": "215_pinkroom/pri1.png"
-                        }, 215);
-                        chat(100, 215);
-                    }
-                    else {
-                        nav.button({
-                            "type": "img",
-                            "name": "f",
-                            "left": 327,
-                            "top": 213,
-                            "width": 442,
-                            "height": 867,
-                            "image": "215_pinkroom/pri2.png"
-                        }, 215);
-                        chat(100, 215);
-                    }
-                }
-            }
-            else {
+        case "pay200":
+            if (gv.get("money") > 199) {
+                sc.completeMissionTask("p", "pink", 4);
+                gv.mod("money", -200);
                 chat(3, 215);
             }
-            break;
-        case "privateReset":
-            nav.killbutton("f");
-            char.addtime(30);
-            break;
-        case "fuck0":
-            nav.killall();
-            g.internal.s = 1;
-            g.internal.t++;
-            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_0.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "cock",
-                "left": 1450,
-                "top": 30,
-                "width": 429,
-                "height": 343,
-                "image": "215_pinkroom/cock.png"
-            }, 215);
-            break;
-        case "fuck1":
-            nav.button({
-                "type": "btn",
-                "name": "cock1",
-                "left": 1450,
-                "top": 30,
-                "width": 429,
-                "height": 343,
-                "image": "215_pinkroom/cock1.png"
-            }, 215);
-            break;
-        case "fuck2":
-            gv.mod("energy", -25);
-            gv.mod("money", 50);
-            switch (g.internal.customer) {
-                case 0:
-                    gv.mod("receiveAnalMale", 1);
-                    gv.mod("creamPied", 1);
-                    break;
-                case 1:
-                    gv.mod("receiveAnalMale", 3);
-                    gv.mod("giveHandjobMale", 3);
-                    gv.mod("creamPied", 1);
-                    break;
-                case 2:
-                    gv.mod("receiveAnalFemale", 1);
-                    break;
+            else {
+                chat(2, 215);
             }
-            nav.bg("215_pinkroom/pr_" + g.internal.customer + "_3.jpg");
+            break;
+        case "river1":
+            nav.killbutton("river");
+            nav.button({
+                "type": "img",
+                "name": "river",
+                "left": 627,
+                "top": 121,
+                "width": 855,
+                "height": 959,
+                "image": "215_pink/river1.webp"
+            }, 215);
+            break;
+        case "riverstart0":
+            g.pass = "riverstart0";
+            char.room(183);
+            break;
+        case "triostart0":
+            g.pass = "triostart0";
+            char.room(183);
+            break;
+        case "femdom0":
+            g.pass = "femdom0";
+            char.room(183);
+            break;
+        case "beaver0":
+            g.pass = "beaver0";
+            char.room(183);
+            break;
+        case "bbc0":
+            g.pass = "bbc0";
+            char.room(183);
+            break;
+        case "bwc0":
+            g.pass = "bwc0";
+            char.room(183);
+            break;
+        case "resetwhore":
+            nav.kill();
+            zcl.displayMain(300, 800, .09, "clothes", false);
+            sc.select("relax", "215_pink/icon_relax.webp", 0);
+            sc.select("wait", "193_afternoon/icon_wait.webp", 1);
             break;
         case "reset":
             char.room(215);
-            break;
-        case "reset0":
-            char.room(215);
-            break;
-        case "ll0":
-            nav.killall();
-            nav.bg("215_pinkroom/ll0.jpg");
-            break;
-        case "ll1":
-        case "ll2":
-        case "ll3":
-        case "ll4":
-        case "ll5":
-        case "ll6":
-        case "ll7":
-        case "ll8":
-        case "ll9":
-        case "ll10":
-        case "ll11":
-        case "ll12":
-            nav.bg("215_pinkroom/" + callback + ".jpg");
-            break;
-        case "ll13":
-            sc.setstep("landlord", -10);
-            gv.mod("receiveAnalMale", 3);
-            gv.mod("receiveOralMale", 3);
-            gv.mod("creamPied", 1);
-            break;
-        case "c0":
-            nav.killall();
-            nav.bg("215_pinkroom/c0.jpg");
-            break;
-        case "c1":
-            nav.killall();
-            nav.bg("215_pinkroom/c1.jpg");
-            break;
-        case "c2":
-            nav.bg("215_pinkroom/c2.jpg");
-            break;
-        case "c3":
-            nav.bg("215_pinkroom/c3.jpg");
-            break;
-        case "c4":
-            nav.bg("215_pinkroom/c4.jpg");
-            break;
-        case "c5":
-            pic.add("chloe");
-            nav.bg("215_pinkroom/c5.jpg");
-            break;
-        case "c6":
-            nav.bg("215_pinkroom/trio_bad.jpg");
-            break;
-        case "c7":
-            menu.initBuild("init");
-            nav.buildnav([215]);
-            gv.mod("fuckPussy", 1);
-            gv.mod("loadSwollowed", 1);
-            sc.setstep("chloe", -1);
-            setTimeout(function () {
-                menu.mClick("contact");
-                sc.phone("zoey1");
-            }, 1000);
-            break;
-        case "trio0":
-            nav.killall();
-            nav.bg("215_pinkroom/trio0.jpg");
-            if (sc.getEvent("holly", -1))
-                chat(18, 215);
-            else
-                chat(21, 215);
-            break;
-        case "trio1":
-            nav.bg("215_pinkroom/trio1.jpg");
-            break;
-        case "trio2":
-            nav.bg("215_pinkroom/trio2.jpg");
-            g.pass = 3;
-            nav.button({
-                "type": "btn",
-                "name": "trio",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 215);
-            break;
-        case "trio3":
-            nav.bg("215_pinkroom/pr_1_3.jpg");
-            gv.mod("receiveAnalFemale", 1);
-            gv.mod("receiveOralFemale", 1);
-            gv.mod("receiveHandjobFemale", 1);
-            gv.mod("creamPied", 1);
-            break;
-        case "trio_bad":
-            nav.bg("215_pinkroom/trio_bad.jpg");
-            break;
-        case "resetWhore":
-            nav.killbutton("f");
             break;
         default:
             break;
@@ -328,461 +266,214 @@ room215.chatcatch = function (callback) {
 };
 
 room215.chat = function (chatID) {
-    if (chatID === 100) {
-        var chat100 = [
-            "I want to take you to pound town! ",
-            "Hey whore! ",
-            "I love an easy lay ",
-            "You should meet my cock. I'm sure you'll get along great! ",
-            "I want to fuck you like a whorthless whore",
-            "Fuck me if I'm wrong, but you look easy. ",
-            "I'm going to fuck you like I hate you",
-            "My favorite whore is out today, I guess you'll do",
-            "You piece of shit! I fucking hate whores like you. You only live to take cock. ",
-        ];
-        return {
-            chatID: 0,
-            speaker: "random",
-            text: chat100[Math.floor(Math.random() * chat100.length)],
-            button: [
-                { chatID: -1, text: "Come on in.", callback: "fuck0" },
-                { chatID: 0, text: "I'm going to pass", callback: "resetWhore" }
-            ]
-        };
-    }
-    if (chatID === 101) {
-        var chat101 = [
-            "You are such a tight little slut! My BBC loves little white sissy whores",
-            "We're going to fill you with out cum whore! We've never met someone so hungry for all our cocks!",
-            "My purple cock loves your tight little hole! I'm going to bend you over and really fuck your hole!"
-        ];
-        return {
-            chatID: 0,
-            speaker: "random",
-            text: chat101[g.internal.customer],
-            button: [
-                { chatID: -1, text: "OoooooOOoooOOo", callback: "fuck1" }
-            ]
-        };
-    }
-    if (chatID === 102) {
-        var chat102 = [
-            "You'll be farting out my cum all day. ",
-            "Such a cock hungry tasty cum whore! We'll be back to fill you up again. ",
-            "Oh fuck! I've never fucked a slut like you! You're really the best! "
-        ];
-        return {
-            chatID: 0,
-            speaker: "random",
-            text: chat102[g.internal.customer],
-            button: [
-                { chatID: 4, text: "UUuugghhhhhh", callback: "fuck2" }
-            ]
-        };
+    if (chatID === 900) {
+        if (cl.stinky()) {
+            return {
+                chatID: 900,
+                speaker: "!skank",
+                text: "Bitch, you small like an unflushed toilet. You need to take your " +
+                    "ass out of here. You're scaring away MY customers.",
+                button: [
+                    { chatID: -1, text: "...bitch", callback: "" }
+                ]
+            };
+        }
+        if (cl.isLewd() && gender.canUseCock()) {
+            return {
+                chatID: 900,
+                speaker: "!skank",
+                text: "You need to take that big dick of yours and swing it out of here! ",
+                button: [
+                    { chatID: -1, text: "I do have a big dick 😊", callback: "" }
+                ]
+            };
+        }
+        else {
+            let txtRand = [
+                "Hahaha! You have such a tiny dick I would charge you double if you tried to fuck me since it would take so long to find it!",
+                "Go back to your room. We all know these guys want to fuck a pussy.",
+                "I don't know why you're trying to sell your ass. Everyone knows sissies give it up for free.",
+                "Your farts smell like cum. ",
+            ];
+            return {
+                chatID: 900,
+                speaker: "!skank",
+                text: txtRand[g.rand(0, txtRand.length)],
+                button: [
+                    { chatID: -1, text: "...bitch", callback: "" }
+                ]
+            };
+        }
     }
     var cArray = [
         {
             chatID: 0,
             speaker: "thinking",
-            text: "I can't believe I'm going to whore myself out. ",
+            text: "Gross! I'm not some whore!!!! There's no way I'll let a bunch " +
+                "of anonymous men stick their penis in my butt for money!",
             button: [
-                { chatID: 1, text: "[Stand at the door]", callback: "private2b" },
-                { chatID: 2, text: "[Stick your ass out the door]", callback: "private2a" },
-                { chatID: -1, text: "[Leave]", callback: "reset" }
+                { chatID: -1, text: "[Need to unlock Whore in the sissy menu]", callback: "" },
             ]
         },
         {
             chatID: 1,
-            speaker: "thinking",
-            text: "I hope I meet someone nice ",
+            speaker: "p",
+            text: "So, you want to be a dirty dirty whore! That's my sissy slut! " +
+                "I'll tell you what, usually I make my dirty whores pay $1000 a month, " +
+                "plus a percentage of their profits for one of my private rooms, but " +
+                "for you I'll make you a deal since you're Missy's favorite sissy. " +
+                "You can have the room for $200 with no monthly rent and I'll only " +
+                "take a percentage of your profits. Deal? ",
             button: [
-                { chatID: -1, text: "[Wait for a customer]", callback: "private3" }
+                { chatID: -1, text: "Sweet! That's a deal!", callback: "pay200" },
+                { chatID: -1, text: "Oh, no. I'm just looking. ", callback: "" },
             ]
         },
         {
             chatID: 2,
-            speaker: "thinking",
-            text: "I feel so exposed with my asshole haning open for anyone that comes by. ",
+            speaker: "me",
+            text: "Oh crap. I don't have $200. I'll be back to get the room after I've " +
+                "earned it!",
             button: [
-                { chatID: -1, text: "[Wait for a customer]", callback: "private3" }
+                { chatID: -1, text: "Ok. I'll be here.", callback: "" },
             ]
         },
         {
             chatID: 3,
-            speaker: "thinking",
-            text: "Damn, got passed by for one of those other sluts! ",
+            speaker: "p",
+            text: "That's my cock hungry bitch! Feel free to explore the room befor you " +
+                "bend that fine ass over for those thick gooey cum loads! ",
             button: [
-                { chatID: 0, text: "...", callback: "" }
+                { chatID: -1, text: "You're the best! ", callback: "reset" },
             ]
         },
         {
             chatID: 4,
             speaker: "thinking",
-            text: "My ass is so sore! Better get back out there. So many cocks to empty. ",
+            text: "It's so late, no one is coming by. ",
             button: [
-                { chatID: 1, text: "[Stand at the door]", callback: "private2b" },
-                { chatID: 2, text: "[Stick your ass out the door]", callback: "private2a" },
-                { chatID: -1, text: "[Leave]", callback: "reset0" }
+                { chatID: -1, text: "[Give up]", callback: "" },
             ]
         },
         {
             chatID: 5,
-            speaker: "thinking",
-            text: "I need more energy to work. ",
+            speaker: "river",
+            text: "Hey slut! You want my dick up your butt? ",
             button: [
-                { chatID: -1, text: "[Leave]", callback: "reset0" }
+                { chatID: 6, text: "Fuck off " + sc.n("river") + "! I'm never fucking you! ", callback: "" },
             ]
         },
         {
             chatID: 6,
-            speaker: "river",
-            text: "Hey skidmark. figures a loser like you would be in here. I'm going to show you what a real man's cock " + 
-                "looks like.",
+            speaker: "!skank",
+            text: "Aren't you a real man! Shove that huge cock up my pussy baby! ",
             button: [
-                { chatID: 7, text: "No. Go away " + sc.n("river") + " ! I'm not going to do anything with you! You ruined my life. ", callback: "ll0" },
+                { chatID: 7, text: "*grrrrr*", callback: "" },
             ]
         },
         {
             chatID: 7,
-            speaker: "landlord",
-            text: sc.n("me") + "! What the hell! Both of you, get in that room this instant!",
+            speaker: "river",
+            text: "Later loser! Gunna get my dick wet!",
             button: [
-                { chatID: 8, text: sc.n("landlord") + "! What are you doing here?", callback: "ll1" }
+                { chatID: -1, text: "*sigh*", callback: "resetwhore" },
             ]
         },
         {
             chatID: 8,
-            speaker: "landlord",
-            text: "What the hell do you think you're doing! I can't believe you're selling your ass like a common " +
-                "whore! I take that back, I do believe it. Bending over for this man that you don't even know to " +
-                "show your sissy pussy and get violated by his cock. I don't even know what to say! ",
+            speaker: "river",
+            text: "Hey skidmark. figures a loser like you would be in here. I'm going to show you what a real man's cock " +
+                "looks like.",
             button: [
-                { chatID: 9, text: sc.n("landlord") + "?", callback: "ll2" }
+                { chatID: 9, text: "Fuck off " + sc.n("river") + "! I'm never fucking you! ", callback: "river1" },
             ]
         },
         {
             chatID: 9,
-            speaker: "river",
-            text: "You got yelled at by your " + sc.n("landlord") + "! I always knew you were a loser, ever since I hung " +
-                "you up by your underwear in the hallway and got the entire school to call you skid mark. ",
+            speaker: "landlord",
+            text: sc.n("me") + "! What the hell! Both of you, get in that room this instant!",
             button: [
-                { chatID: 10, text: "Shut up " + sc.n("river") + ". ", callback: "ll3" }
+                { chatID: -1, text: sc.n("landlord") + "! What are you doing here?", callback: "riverstart0" }
             ]
         },
         {
             chatID: 10,
-            speaker: "landlord",
-            text: "You were going to have sex with this boy that made fun of you for money? I had hoped I raised you better, " +
-                "but I guess this is what you are. ",
+            speaker: "!boy",
+            text: "Hey! We saw you in the other room and uhh. Yout're like really hot, " +
+                "and uhhh can we all fuck you?",
             button: [
-                { chatID: 26, text: "I wasn't going to have sex with him! ", callback: "ll4" }
+                { chatID: -1, text: "Yeah! I can totally take 3 cocks at once!", callback: "triostart0" },
+                { chatID: 11, text: "I'll pass", callback: "" }
             ]
         },
         {
             chatID: 11,
-            speaker: "random",
-            text: "Hey you. I need some of that girl dick. you down? ",
+            speaker: "sporty",
+            text: "OH sweet! I'll take you all at once!!! ",
             button: [
-                { chatID: 12, text: "I sure am!", callback: "c0" },
-                { chatID: 0, text: "I'm going to pass", callback: "resetWhore" }
+                { chatID: -1, text: "...", callback: "resetwhore" }
             ]
         },
         {
             chatID: 12,
-            speaker: "random",
-            text: "First I'm going to tie you up. ",
+            speaker: "!girl",
+            text: "I've had the worst day and need to break a little thing youself in half! You in?",
             button: [
-                { chatID: 13, text: "OOoo I like this!", callback: "c1" }
+                { chatID: -1, text: "I'm ready to be hurt again. ", callback: "femdom0" },
+                { chatID: 13, text: "I'll pass", callback: "" }
             ]
         },
         {
             chatID: 13,
-            speaker: "random",
-            text: "Then I'm so going to fuck you!",
+            speaker: "!girl",
+            text: "Your loss little thing. ",
             button: [
-                { chatID: 14, text: "Why the full body stocking?", callback: "c2" }
+                { chatID: -1, text: "I'll pass", callback: "resetwhore" }
             ]
         },
         {
             chatID: 14,
-            speaker: "chloe",
-            text: "Now that you're cuffed and can't get away I can take this off and reveal myself. " +
-                "Surprised? I'm going to rape your tiny dicklette " +
-                "and shoot your cum into my dripping pussy. You're going to love it. Then I'm going to take " + 
-                "a picture and send it to " + sc.n("zoey") + " so you will know what it feels like to be betrayed. ",
+            speaker: "holly",
+            text: "Oh look, it's that traitor bitch! ",
             button: [
-                { chatID: 15, text: "What! No no no no no", callback: "c3" }
+                { chatID: 15, text: "...", callback: "" }
             ]
         },
         {
             chatID: 15,
-            speaker: "chloe",
-            text: "Like how easily my sloppy dripping pussy rides up and down your cock. I can feel how " +
-                "hard you are. " + sc.n("zoey") + " is going to be so mad. She'll probably never speak to you " +
-                "again and you won't have any friends. It's really better this way. A slut like you will always be " +  
-                "a terrible firend. ",
+            speaker: "dolly",
+            text: "We're lookin' for a lil fun, and, honey, you ain't it. We're going " +   
+                "to choose anyone else but you! You're like a mouthful of bees!",
             button: [
-                { chatID: 16, text: "Get off of me! Please don't tell her! ", callback: "" }
+                { chatID: -1, text: "...", callback: "resetwhore" }
             ]
         },
         {
             chatID: 16,
-            speaker: "chloe",
-            text: "You fucking ruined my chances with her. Now I'm going to fucking ruin both of your lives! Go ahead, " +
-                "beg me not to tell. Tell me you'll do anything for me to keep my mouth shut. " +
-                "Beg me you asshole! ",
+            speaker: "molly",
+            text: "Why hello. We're so happy you're working today! You want to go and " +
+                "have a little fun?",
             button: [
-                { chatID: 42, text: "I'm begging. I'll do anything! ", callback: "c4" }
+                { chatID: -1, text: "That's my kind fun! ", callback: "beaver0" },
+                { chatID: -1, text: "I'll pass", callback: "resetwhore" }
             ]
         },
         {
             chatID: 17,
-            speaker: "random",
-            text: "You want to take us for a ride bby?",
+            speaker: "!bbc",
+            text: "Yo. I wanna fill that ass! ",
             button: [
-                { chatID: -1, text: "Come on in.", callback: "trio0" },
-                { chatID: 0, text: "I'm going to pass", callback: "resetWhore" }
+                { chatID: -1, text: "My ass was made to be filled! ", callback: "bbc0" },
+                { chatID: -1, text: "I'll pass", callback: "resetwhore" }
             ]
         },
         {
             chatID: 18,
-            speaker: "holly",
-            text: "We were going to fuck fuck, but asshole's like you don't deserve us. ",
+            speaker: "!bwc",
+            text: "Great butt! You go ass to mouth?",
             button: [
-                { chatID: 19, text: "Uhh", callback: "" }
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "molly",
-            text: "You're a real piece of shit. I was going to eat your ass like a pussy. ",
-            button: [
-                { chatID: 20, text: "Huh?", callback: "" }
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "dolly",
-            text: "You're lower than a doodle bug. Let's go girls. ",
-            button: [
-                { chatID: 0, text: "bye....", callback: "trio_bad" }
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "holly",
-            text: "We wanted to reward you for helping us out. ",
-            button: [
-                { chatID: 22, text: "hum?", callback: "" }
-            ]
-        },
-        {
-            chatID: 22,
-            speaker: "dolly",
-            text: "And you're as pretty as a spotted horse in a daisy pasture. ",
-            button: [
-                { chatID: 23, text: "*blush*", callback: "" }
-            ]
-        },
-        {
-            chatID: 23,
-            speaker: "molly",
-            text: "So we have a present for you.",
-            button: [
-                { chatID: 24, text: "Yes", callback: "trio1" }
-            ]
-        },
-        {
-            chatID: 24,
-            speaker: "molly",
-            text: "It's our cocks. We're going to fuck you. ",
-            button: [
-                { chatID: 25, text: "Oh", callback: "" }
-            ]
-        },
-        {
-            chatID: 25,
-            speaker: "dolly",
-            text: "Get ready to put the dill in our pickle cutie.",
-            button: [
-                { chatID: 39, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 26,
-            speaker: "river",
-            text: "Oh yes you are. I came in here to fuck something, and you look like something to me. Nurse lady you can join " +
-                "in too. I do love fuckin' MILFs. ",
-            button: [
-                { chatID: 27, text: "Uhhh no", callback: "" }
-            ]
-        },
-        {
-            chatID: 27,
-            speaker: "landlord",
-            text: "Oh my. You are cute but I was just here because I heard my little girl was working as a prostitute. I " +
-                "had to see for myself. But.... If she's going to be a whore I guess this may be a good lesson for her. " +
-                "Get up. Get on your knees. Open your mouth like a good prostitute. ",
-            button: [
-                { chatID: 28, text: "!", callback: "ll5" }
-            ]
-        },
-        {
-            chatID: 28,
-            speaker: "river",
-            text: "That's why I'm talking about! I used to kick your ass, now I'm going to fuck your ass! ",
-            button: [
-                { chatID: 30, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 29,
-            speaker: "landlord",
-            text: "This may be a tough lesson to swallow, but he's right. You've made your choice of what kind of girl you " +
-                "are. Given your bad grades and inability to hold a job, this just may your best life, laying here on your " +
-                "back taking cocks for money. We all have a different path in life, and this looks like your path. Let " +
-                "me help guide you on your path. ",
-            button: [
-                { chatID: 30, text: "hmmm....", callback: "ll6" }
-            ]
-        },
-        {
-            chatID: 30,
-            speaker: "landlord",
-            text: "Don't think about the man attached to the dick. Just think about that big fat juicy dick entering your wet " + 
-                "warm mouth. That's what you're here for isn't it. That dick. ",
-            button: [
-                { chatID: 31, text: "mmmMMmmmm", callback: "ll7" }
-            ]
-        },
-        {
-            chatID: 31,
-            speaker: "river",
-            text: "Oh yeah she likes that dick! I can feel her tongue licking up and down my cock shaft. ",
-            button: [
-                { chatID: 32, text: "*slurp* Huh?", callback: "ll8" }
-            ]
-        },
-        {
-            chatID: 32,
-            speaker: "landlord",
-            text: "Even when you hate this bully you can't help but show what a cock hungry whore you are.  " +
-                "Bend over my little slutty girl and show him how hungry for cock you are. ",
-            button: [
-                { chatID: 33, text: "What? No no no no no! Not him! Please don't do this. ", callback: "ll9" }
-            ]
-        },
-        {
-            chatID: 33,
-            speaker: "landlord",
-            text: "Jam your cock in my little sissy girl. Make her squal like a whore. ",
-            button: [
-                { chatID: 34, text: "....Oh no...", callback: "ll10" }
-            ]
-        },
-        {
-            chatID: 34,
-            speaker: "river",
-            text: "Oh yes! ",
-            button: [
-                { chatID: 35, text: "*moan*", callback: "ll11" }
-            ]
-        },
-        {
-            chatID: 35,
-            speaker: "landlord",
-            text: "That's a good girl. Take it all the way. Be a good little cum dump for " + sc.n("landlord") + ". ",
-            button: [
-                { chatID: 36, text: "Gaaaaa  mmMMmmmmm", callback: "" }
-            ]
-        },
-        {
-            chatID: 36,
-            speaker: "river",
-            text: "ffff-f-f-fuck I'm going to cum in this sweet ass! ",
-            button: [
-                { chatID: 37, text: "OohhoOOoooooo MmmmMMmmmmm", callback: "ll12" }
-            ]
-        },
-        {
-            chatID: 37,
-            speaker: "landlord",
-            text: "See. Doesn't that feel right. When " + sc.n("bigguy") + " makes love to me there is no better feeling than " +
-                "letting his cum drip out before I run to my toilet and squeeze it out. I see this is what you are now, " +
-                "A dum dump whore. Wear it with pride. Cum is what built our home amd put food on our table...",
-            button: [
-                { chatID: 38, text: "...", callback: "ll13" }
-            ]
-        },
-        {
-            chatID: 38,
-            speaker: "landlord",
-            text: "...and cum is my greatest love in life. You keep making something of yourself, even if that something " +
-                "is a whore. ",
-            button: [
-                { chatID: 1, text: "[Stand at the door]", callback: "private2b" },
-                { chatID: 2, text: "[Stick your ass out the door]", callback: "private2a" },
-                { chatID: -1, text: "[Leave]", callback: "reset0" }
-            ]
-        },
-        {
-            chatID: 39,
-            speaker: "holly",
-            text: "I hope you're ready sugar, 'cause you're in for one hell of a pounding. ",
-            button: [
-                { chatID: -1, text: "oh yeah!", callback: "trio2" }
-            ]
-        },
-        {
-            chatID: 40,
-            speaker: "molly",
-            text: "Well that was more fun than a possum riding down a greased up slip 'n slide! We'll have to do this again! ",
-            button: [
-                { chatID: 41, text: "oh yeah!", callback: "trio3" }
-            ]
-        },
-        {
-            chatID: 41,
-            speaker: "thinking",
-            text: "That was awesome. I'm so full of cum.... ",
-            button: [
-                { chatID: 1, text: "[Stand at the door]", callback: "private2b" },
-                { chatID: 2, text: "[Stick your ass out the door]", callback: "private2a" },
-                { chatID: -1, text: "[Leave]", callback: "reset0" }
-            ]
-        },
-        {
-            chatID: 42,
-            speaker: "chloe",
-            text: "Fuck you. Eat your cum out of my pussy asshole. I'm going to send your precious friend a picture of " +
-                "you eating my dirty wet pussy dripping with your cum. Rot in hell you son of a bitch! ",
-            button: [
-                { chatID: 43, text: "HhhmmmHHHmmmm mmmm", callback: "c5" }
-            ]
-        },
-        {
-            chatID: 43,
-            speaker: "p",
-            text: "Looks like you got yourself a bit tied up. I'll get you free. You should be more careful with who you let in. ",
-            button: [
-                { chatID: 44, text: "I will, thanks. ", callback: "c6" }
-            ]
-        },
-        {
-            chatID: 44,
-            speaker: "thinking",
-            text: "Wow that was crazy. I hope she didn't send that photo..... Oh. It looks like " + sc.n("zoey") + " is calling " +
-                "me. So I guess she did send that picture. Damn it!",
-            button: [
-                { chatID: -1, text: "Answer phone. ", callback: "c7" }
-            ]
-        },
-        {
-            chatID: 45,
-            speaker: "random",
-            text: "This is still in progress. Future release",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: -1, text: "I do what ever you want! ", callback: "bwc0" },
+                { chatID: -1, text: "I'll pass", callback: "resetwhore" }
             ]
         },
     ];

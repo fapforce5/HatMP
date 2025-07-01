@@ -8,6 +8,7 @@ room22.main = function () {
             nav.bg("22_toilet/a_12.jpg");
             break;
         case 201:
+        case 184:
             nav.bg("22_toilet/a_201.jpg");
             break;
         case 451:

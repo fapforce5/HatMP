@@ -2,7 +2,7 @@
 
 //g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.char = [
-    { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
+    { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: false, phone: -1, p: false,  q3: null },
 
     { name: "missy", display: "Missy", image: "missy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
     { name: "tudor", display: "Mr. Tudor", image: "tudor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 2, p: true, q3: null },
@@ -307,6 +307,7 @@ sc.charMission = [
                         { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
                         { id: 1, txt: "Threesome! [After Lola's first time]", show: true, mStatus: 0, roomId: 26 },
                         { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
+                        { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
                     ]
             },
             {
@@ -833,6 +834,7 @@ sc.charMission = [
                         { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
                         { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
                         { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
+                        { id: 4, txt: "Your own room", show: true, mStatus: 0, roomId: 213 },
                     ]
             },
         ]
@@ -1749,6 +1751,8 @@ sc.load = function (ra) {
         if (sc.char[z].secret > 95)
             sc.char[z].secret = 95;
     }
+
+    sc.show("me");
 };
 
 /*
@@ -2589,6 +2593,10 @@ sc.trivial = function (charname) {
         case "!music":
             name = "";
             image = "music.png";
+            break;
+        case "!skank":
+            name = "Skanky Bitch";
+            image = "skank.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

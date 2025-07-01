@@ -12,6 +12,15 @@ room201.main = function () {
     }, 201);
     nav.button({
         "type": "btn",
+        "name": "toilet",
+        "left": 1168,
+        "top": 714,
+        "width": 135,
+        "height": 164,
+        "image": "201_bathroom/toilet.png"
+    }, 201);
+    nav.button({
+        "type": "btn",
         "name": "sink",
         "left": 1326,
         "top": 611,
@@ -26,6 +35,10 @@ room201.main = function () {
 
 room201.btnclick = function (name) {
     switch (name) {
+        case "toilet":
+            g.pass = 201;
+            char.room(22);
+            break;
         case "shower":
             nav.killall();
             cl.c.cumface = false;

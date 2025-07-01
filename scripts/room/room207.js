@@ -2,14 +2,14 @@
 var room207 = {};
 room207.main = function () {
     nav.button({
-            "type": "btn",
-            "name": "door_pink",
-            "left": 33,
-            "top": 216,
-            "width": 157,
-            "height": 751,
-            "title": "Pink Pleasure Club",
-            "image": "207_door/door_pink.png"
+        "type": "btn",
+        "name": "door_pink",
+        "left": 33,
+        "top": 216,
+        "width": 400,
+        "height": 751,
+        "title": "Pink Pleasure Club",
+        "image": "207_door/door_pink.png"
     }, 207);
     nav.button({
         "type": "btn",
@@ -72,14 +72,23 @@ room207.btnclick = function (name) {
                     chat(5, 207);
                 return;
             }
-            else if (sissy.st[21].ach) {
+            else if (gv.get("pinkroomopen")) {
                 char.room(213);
                 return;
             }
             chat(1, 207);
             break;
         case "door_school":
-            chat(2, 207);
+            if (sissy.st[21].ach) {
+                char.room(211);
+            }
+            else if (sissy.st[17].ach) {
+                chat(2, 207);
+            }
+            else {
+                chat(6, 207);
+            }
+            
             break;
         case "door_outside":
             char.room(0);
@@ -145,7 +154,8 @@ room207.chat = function (chatID) {
         {
             chatID: 2,
             speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
-            text: sissy.st[17].ach ? "Schools only open on Tuesdays and Thursdays after you've worked for Missy." : "You have to be a student to enter the class. ",
+            text: "Missy informed me that since she's paying your tuition she'll only " +
+                "let you go to class if you've worked for her today.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -175,6 +185,16 @@ room207.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "I'll go in early. ", callback: "fashionShow" },
                 { chatID: -1, text: "I'll come back ", callback: "" },
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: !g.isNight() ? "!missyguardday" : "!missyguardnight",
+            text: "For privacy reasons only students can enter the Sissy School. " +
+                "You look like a good kid, so I don't recommend going there, " +
+                "but if you really need in you have to prove to Missy you're a sissy.",
+            button: [
+                { chatID: -1, text: "Oh. Thanks.", callback: "" },
             ]
         },
     ];

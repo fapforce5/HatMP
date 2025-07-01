@@ -17,6 +17,7 @@ room27.main = function () {
     switch (g.pass) {
         case 12:
         case 201:
+        case 184:
             nav.bg("12_bathroom/012_brushTeeth.jpg");
             zcl.displayMirror();
             chat(0, 27);

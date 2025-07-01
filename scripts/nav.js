@@ -544,6 +544,10 @@ nav.back = function (btnClickName) {
     nav.drawButton("1001_rand/back.png", btnClickName);
 };
 
+nav.takeit = function (btnClickName) {
+    nav.drawButton("1001_rand/takeit.png", btnClickName);
+};
+
 nav.cum = function (btnClickName) {
     nav.drawButton("1001_rand/cum.png", btnClickName);
 };

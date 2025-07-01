@@ -2536,13 +2536,23 @@ cl.isLewd = function () {
 };
 
 cl.cupsize = function () {
-    var sizes = ["fat", "A", "A", "B", "C", "DDD", "Fucking Huge"];
-    return sizes[cl.c.chest + 1];
+    var sizes = ["Chubby", "Manly", "A", "B", "C", "DDD", "Fucking Huge"];
+    return sizes[cl.c.chest];
 };
 
 cl.buttsize = function () {
-    var sizes = ["manly", "tiny", "nice", "phat", "super plump", "porn star"];
+    var sizes = ["Manly", "Tiny", "Trim", "Phat Ass!", "Plump", "Porn star"];
     return sizes[cl.c.leg];
+};
+
+cl.lipsize = function () {
+    var sizes = ["Thin", "Plump", "Bimbo cock sucker"];
+    return sizes[cl.c.lips];
+};
+
+cl.cocksize = function () {
+    var sizes = ["Porn star", "Large", "average", "Small", "Clitty", "Pussy"];
+    return sizes[cl.c.cock];
 };
 
 cl.appearance = function () {

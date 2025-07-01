@@ -12,7 +12,8 @@ room28.main = function () {
     }
     missy.daily();
     var i;
-    var hormoneLevel, thisTinyPP;
+    var hormoneLevel;
+
     cl.c.cumface = false;
 
     menu.save("HatMP_9", true);
@@ -50,12 +51,6 @@ room28.main = function () {
                 hormoneLevel = gv.st[i].t;
                 if (gv.st[i].t > 15)
                     gv.st[i].t -= 2;
-                break;
-            case "shinkCock":
-                if (cl.c.cock < 4) {
-                    thisTinyPP = gv.st[i].t;
-                    gv.st[i].t = false;
-                }
                 break;
             case "breastSelect":
                 breastSelect.splice(gv.st[i].t);
@@ -370,12 +365,15 @@ room28.future = function () {
                 case "j-jabari": gv.set("janiceDatr", "jabari"); break;
                 case "j-brad": gv.set("janiceDatr", "brad"); break;
                 case "lolaboy":
-                    
                     break;
                 case "case_dam":
                     if (missy.get("activeCaseComplete") === 0) {
                         missy.set("activeCaseComplete", 2);
                     }
+                    break;
+                case "sissyfinal":
+                    if (gv.get("sissyfinal_pageant") === null)
+                        gv.set("sissyfinal_pageant", false);
                     break;
             }
             future.st.splice(i, 1);

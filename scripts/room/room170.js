@@ -654,9 +654,9 @@ room170.chatcatch = function (callback) {
             }
             for (let i = 0; i < 5; i++) {
                 if (scorec[i] > 10)
-                    scorec = 10;
-                if (scorec < 1)
-                    scorec = 1;
+                    scorec[i] = 10;
+                if (scorec[i] < 1)
+                    scorec[i] = 1;
 
                 totals += scorec[i];
             }

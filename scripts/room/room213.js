@@ -47,7 +47,7 @@ room213.main = function () {
         "image": "213_pink/rf" + g.rand(0, 3) + ".png",
     }, 213);
 
-    if (!gv.get("pinkroomopen")) {
+    if (sc.getMissionTask("p", "pink", 0).notStarted) {
         sc.completeMissionTask("p", "pink", 0);
         nav.button({
             "type": "btn",
