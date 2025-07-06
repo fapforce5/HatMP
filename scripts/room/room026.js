@@ -350,7 +350,7 @@ room26.btnclick = function (name) {
                 chat(72, 26);
             }
             else {
-                sex.mod("hand", true, "f", 1);
+                levels.gavehandjob("f", "lola");
                 sc.modLevel("lola", 30, 7);
                 nav.bg("26_livingRoom/m6.jpg");
                 chat(71, 26);

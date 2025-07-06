@@ -46,8 +46,7 @@ room205.chatcatch = function (callback) {
         case "chast0_3":
             nav.killall();
             nav.bg("205_chastity/chast0_3.jpg");
-            cl.doCum(false);
-            sex.mod("hand", false, "f", 1);
+            levels.gothandjob("f", "missy");
             break;
         case "chast0_4":
         case "chast0_5":

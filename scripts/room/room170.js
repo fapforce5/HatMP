@@ -221,15 +221,15 @@ room170.btnclick = function (name) {
             nav.kill();
             var askForMakeup = false;
             if (inv.get("makeup").count < 1) {
-                inv.add("makeup", 5);
+                inv.addMulti("makeup", 5);
                 askForMakeup = true;
             }
             if (inv.get("redl").count < 1) {
-                inv.add("redl", 5);
+                inv.addMulti("redl", 5);
                 askForMakeup = true;
             }
             if (inv.get("eyeshadow").count < 1) {
-                inv.add("eyeshadow", 5);
+                inv.addMulti("eyeshadow", 5);
                 askForMakeup = true;
             }
 
@@ -866,7 +866,7 @@ room170.chat = function (chatID) {
             return {
                 chatID: 0,
                 speaker: "!bitch",
-                text: "Why the fuck are you wearing sock! This isn't a gym. Go take those off " +
+                text: "Why the fuck are you wearing socks! This isn't a gym. Go take those off " +
                     "you dumb bimbo!",
                 button: [
                     { chatID: -1, text: "Oh. I'll take off my socks. ", callback: "gotoDressingRoom" }

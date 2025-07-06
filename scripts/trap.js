@@ -693,7 +693,7 @@ trap.encounter = function () {
         if (wearing.outerwear) {
             charList.push({ n: "!boxes", p: "boy", z: "tits1", loc: ["forest"], l: 678, t: 60, w: 516, h: 1020, i: "man5.png" });
         }
-        charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: ["forest"], l: 815, t: 61, w: 508, h: 1019, i: "granola1.png" });
+        charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: ["forest"], l: 815, t: 61, w: 508, h: 1019, i: "man1.png" });
     }
     for (let i = 0; i < charList.length; i++) {
         if (!charList[i].loc.includes(trap.location))
@@ -992,7 +992,7 @@ room1005.btnclick = function (name) {
             var lwearing = cl.wearing();
             if (lwearing.outerwear) {
                 cl.c.shirt = null; cl.c.pants = null; cl.c.dress = null; cl.c.pj = null; cl.c.swimsuit = null; cl.c.socks = null; cl.c.shoes = null;
-                g.popUpNoticeBottom("Your clothes were stolen!");
+                g.popUpNoticeBottom("Your adolen!");
             }
             else {
                 cl.c.panties = null; cl.c.bra = null;

@@ -309,19 +309,19 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_saveralph":
-                        if (sissy.st[10].ach) {
-                            canDoCase = true;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
-                        }
+                        //if (sissy.st[10].ach) {
+                        //    canDoCase = true;
+                        //    caseList.push({
+                        //        caseId: i,
+                        //        active: canDoCase,
+                        //        icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                        //        notReadyTxt: "Raise your PI Level. ",
+                        //        callback: missy.cases[i].name
+                        //    });
+                        //}
                         break;
                     case "case_damselle":
-                        if (cl.c.panties !== null && cl.c.chest > 0 && g.dt.getDay() < 4)  {
+                        if (cl.pantiesTxt() === "panties" && cl.c.chest > 0 && g.dt.getDay() < 4)  {
                             canDoCase = piLevel > 2;
                             caseList.push({
                                 caseId: i,

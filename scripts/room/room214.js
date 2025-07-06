@@ -32,7 +32,7 @@ room214.main = function () {
         });
         
     }
-    nav.buildnav([213, 215, 171]);
+    nav.buildnav([213, 215, 186, 171]);
 };
 
 room214.btnclick = function (name) {

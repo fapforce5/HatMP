@@ -873,10 +873,10 @@ phone.cheat = function () {
 
 phone.purity = function () {
     phone.clear(false);
-    let penisvirgin = sex.getvirgin(25);
-    let oralvirgin = sex.getvirgin(27);
-    let pussyvirgin = sex.getvirgin(26);
-    let analvirgin = sex.getvirgin(24);
+    let penisvirgin = sex.getvirgin(27);
+    let oralvirgin = sex.getvirgin(29);
+    let pussyvirgin = sex.getvirgin(28);
+    let analvirgin = sex.getvirgin(26);
 
     nav.button({
         "type": "zimg",
@@ -892,7 +892,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 850,
-        "top": 200,
+        "top": 170,
         font: 24,
         hex: "#000",
         text: "Boy"
@@ -901,7 +901,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 900,
-        "top": 200,
+        "top": 170,
         font: 24,
         hex: "#000",
         text: "Girl"
@@ -910,7 +910,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 950,
-        "top": 200,
+        "top": 170,
         font: 24,
         hex: "#000",
         text: "NB"
@@ -919,7 +919,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 1450,
-        "top": 200,
+        "top": 170,
         font: 24,
         hex: "#fff",
         text: "Boy"
@@ -928,7 +928,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 1500,
-        "top": 200,
+        "top": 170,
         font: 24,
         hex: "#fff",
         text: "Girl"
@@ -937,7 +937,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 1550,
-        "top": 200,
+        "top": 170,
         font: 24,
         hex: "#fff",
         text: "NB"
@@ -946,62 +946,64 @@ phone.purity = function () {
     let subcount, domcounter, l, t, col, lm, lf, ln;
     subcount = domcounter = 0;
     
-    for (let i = 0; i < 26; i++) {
-        if (sex.st[i].subdom === "sub") {
-            l = 500;
-            t = (subcount * 30) + 240;
-            col = "#000000";
-            lm = 850;
-            lf = 900;
-            ln = 950;
-            subcount++;
-        }
-        else {
-            l = 1100;
-            t = (domcounter * 30) + 240;
-            col = "#ffffff";
-            lm = 1450;
-            lf = 1500;
-            ln = 1550;
-            domcounter++;
-        }
+    for (let i = 0; i < sex.st.length; i++) {
+        if (i < 26 || i > 29) {
+            if (sex.st[i].subdom === "sub") {
+                l = 500;
+                t = (subcount * 30) + 210;
+                col = "#000000";
+                lm = 850;
+                lf = 900;
+                ln = 950;
+                subcount++;
+            }
+            else {
+                l = 1100;
+                t = (domcounter * 30) + 210;
+                col = "#ffffff";
+                lm = 1450;
+                lf = 1500;
+                ln = 1550;
+                domcounter++;
+            }
 
-        nav.t({
-            type: "zbtn",
-            name: "phone_purity_" + sex.st[i].id,
-            "left": l,
-            "top": t,
-            font: 24,
-            hex: col,
-            text: sex.st[i].d
-        }, 9999);
-        nav.t({
-            type: "zbtn",
-            name: "phone_purity_" + sex.st[i].id,
-            "left": lm,
-            "top": t,
-            font: 24,
-            hex: col,
-            text: sex.st[i].ent[0].c
-        }, 9999);
-        nav.t({
-            type: "zbtn",
-            name: "phone_purity_" + sex.st[i].id,
-            "left": lf,
-            "top": t,
-            font: 24,
-            hex: col,
-            text: sex.st[i].ent[1].c
-        }, 9999);
-        nav.t({
-            type: "zbtn",
-            name: "phone_purity_" + sex.st[i].id,
-            "left": ln,
-            "top": t,
-            font: 24,
-            hex: col,
-            text: sex.st[i].ent[2].c
-        }, 9999);
+            nav.t({
+                type: "zbtn",
+                name: "phone_purity_" + sex.st[i].id,
+                "left": l,
+                "top": t,
+                font: 24,
+                hex: col,
+                text: sex.st[i].d
+            }, 9999);
+            nav.t({
+                type: "zbtn",
+                name: "phone_purity_" + sex.st[i].id,
+                "left": lm,
+                "top": t,
+                font: 24,
+                hex: col,
+                text: sex.st[i].ent[0].c
+            }, 9999);
+            nav.t({
+                type: "zbtn",
+                name: "phone_purity_" + sex.st[i].id,
+                "left": lf,
+                "top": t,
+                font: 24,
+                hex: col,
+                text: sex.st[i].ent[1].c
+            }, 9999);
+            nav.t({
+                type: "zbtn",
+                name: "phone_purity_" + sex.st[i].id,
+                "left": ln,
+                "top": t,
+                font: 24,
+                hex: col,
+                text: sex.st[i].ent[2].c
+            }, 9999);
+        }
     }
     let penisVirginTxt, analVirginTxt, pussyVirginTxt, oralVirginTxt;
     if (penisvirgin.virgin) {
@@ -1050,7 +1052,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 750,
-        "top": 850,
+        "top": 840,
         font: 24,
         hex: "#ffffff",
         text: penisVirginTxt
@@ -1059,7 +1061,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 750,
-        "top": 880,
+        "top": 870,
         font: 24,
         hex: "#ffffff",
         text: analVirginTxt
@@ -1068,7 +1070,7 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 750,
-        "top": 910,
+        "top": 900,
         font: 24,
         hex: "#ffffff",
         text: oralVirginTxt
@@ -1077,10 +1079,73 @@ phone.purity = function () {
         type: "zimg",
         name: "phone_purity",
         "left": 750,
-        "top": 940,
+        "top": 930,
         font: 24,
         hex: "#ffffff",
         text: pussyVirginTxt
+    }, 9999);
+
+    domcounter = 13;
+    if (cl.c.cock === 5) {
+        nav.t({
+            type: "zbtn",
+            name: "phone_purity",
+            "left": 1100,
+            "top": (domcounter * 30) + 240,
+            font: 24,
+            hex: "#ffffff",
+            text: "Times you played with your pussy: " + gv.get("masturbate_pussy")
+        }, 9999);
+    }
+    domcounter++;
+    nav.t({
+        type: "zbtn",
+        name: "phone_purity",
+        "left": 1100,
+        "top": (domcounter * 30) + 240,
+        font: 24,
+        hex: "#ffffff",
+        text: "Times you played with your penis: " + gv.get("masturbate_dick")
+    }, 9999);
+    domcounter++;
+    nav.t({
+        type: "zbtn",
+        name: "phone_purity",
+        "left": 1100,
+        "top": (domcounter * 30) + 240,
+        font: 24,
+        hex: "#ffffff",
+        text: "Times you used a vibrator on your penis: " + gv.get("masturbate_vibrator")
+    }, 9999);
+    domcounter++;
+    nav.t({
+        type: "zbtn",
+        name: "phone_purity",
+        "left": 1100,
+        "top": (domcounter * 30) + 240,
+        font: 24,
+        hex: "#ffffff",
+        text: "Times sucked on a dildo: " + gv.get("masturbate_oral")
+    }, 9999);
+    domcounter++;
+    nav.t({
+        type: "zbtn",
+        name: "phone_purity",
+        "left": 1100,
+        "top": (domcounter * 30) + 240,
+        font: 24,
+        hex: "#ffffff",
+        text: "Times slid your finger in your anus: " + gv.get("masturbate_finger")
+    }, 9999);
+    domcounter++;
+    nav.t({
+        type: "zbtn",
+        name: "phone_purity",
+        "left": 1100,
+        "top": (domcounter * 30) + 240,
+        font: 24,
+        hex: "#ffffff",
+        text: "Times you fucked a dildo: " + gv.get("masturbate_dildo")
     }, 9999);
 };
 

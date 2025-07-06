@@ -1936,7 +1936,7 @@
                             "image": "1004_rape/girl3/phase6_anal.png"
                         }, 1004);
                         zcl.asshole(261, 200, 1.4, "", false);
-                        sex.mod("gotfisted", "f", "!girl3");
+                        levels.gotfisted("f", "!girl3");
                         return { c: false, s: rape.char.name, m: "We love fisting loser sissy boys like you!" };
                     }
                 }

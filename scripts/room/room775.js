@@ -145,7 +145,7 @@ room775.chatcatch = function (callback) {
             nav.bg("775_church/basket1.jpg");
             break;
         case "collection1":
-            sc.modLevel("landlord", Math.floor(g.internal / 4), 3);
+            sc.modLevel("landlord", Math.floor(g.internal / 2), 3);
             gv.mod("money", -g.internal);
             nav.bg("775_church/basket2.jpg");
             break;
@@ -177,40 +177,106 @@ room775.chatcatch = function (callback) {
             break;
         case "confession0":
             nav.kill();
-            nav.bg("775_church/confession0.jpg");
-            if (sc.getMission("priest", "confession").notStarted) {
+            if (sc.getMissionTask("priest", "confession", 0).notStarted) {
                 sc.startMission("priest", "confession");
                 sc.show("priest");
-                chat(17, 775);
+                sc.completeMissionTask("priest", "confession", 0);
+                nav.bg("775_church/meet.webp");
+                chat(73, 775);
                 return;
             }
-            let counter = 0;
+            nav.bg("775_church/sit_" + gender.pronoun("f") + ".webp");
             var prp = sc.getMission("priest", "confession");
-            let sclist;
+            var sexstobj = sex.stObject();
+            var counter = 0;
+            var sclist = null;
             for (let i = 0; i < sc.charMission[prp.i].mission[prp.j].task.length; i++) {
-                if (sc.charMission[prp.i].mission[prp.j].task[i].mStatus > 0 &&
-                    sc.charMission[prp.i].mission[prp.j].task[i].mStatus < 100 && counter < 10) {
+                sclist = null;
+                if (sc.charMission[prp.i].mission[prp.j].task[i].mStatus < 100) {
                     switch (i) {
-                        case 1: sclist = "icon_masturbate"; break;
-                        case 2: sclist = "icon_peek"; break;
-                        case 3: sclist = "icon_job"; break;
-                        case 4: sclist = "icon_finger"; break;
-                        case 5: sclist = "icon_dildo"; break;
-                        case 6: sclist = "icon_dildosuck"; break;
-                        case 7: sclist = "icon_penis"; break;
-                        case 8: sclist = "icon_sissyschool"; break;
-                        case 9: sclist = "icon_oral_f"; break;
-                        case 10: sclist = "icon_oral_m"; break;
-                        case 11: sclist = "icon_anal"; break;
-                        case 12: sclist = "icon_beast"; break;
-                        case 13: sclist = "icon_nun"; break;
+                        case 1:
+                            if (gv.get("masturbate_dick") > 0)
+                                sclist = "icon_masturbate";
+                            break;
+                        case 2:
+                            if (gv.get("lolaEvaShowerPeek"))
+                                sclist = "icon_peek";
+                            break;
+                        case 3:
+                            if (missy.get("totalDaysWorked") > 1)
+                                sclist = "icon_job";
+                            break;
+                        case 4:
+                            if (gv.get("masturbate_finger") > 0)
+                                sclist = "icon_finger";
+                            break;
+                        case 5: 
+                            if (gv.get("masturbate_dildo") > 0)
+                                sclist = "icon_dildo";
+                            break;
+                        case 6:
+                            if (gv.get("masturbate_oral") > 0)
+                                sclist = "icon_dildosuck";
+                            break;
+                        case 7:
+                            if (sexstobj.penisvirgin.total > 0)
+                                sclist = "icon_penis";
+                            break;
+                        case 8:
+                            if(sissy.st[0].ach)
+                                sclist = "icon_sissyschool";
+                            break;
+                        case 9:
+                            if (sexstobj.cunny.female > 0)
+                                sclist = "icon_oral_f";
+                            break;
+                        case 10:
+                            if(sexstobj.gavebj.total > 0)
+                                sclist = "icon_oral_m";
+                            break;
+                        case 11:
+                            if (sexstobj.tookituptheass.male > 0)
+                                sclist = "icon_anal";
+                            break;
+                        case 12:
+                            if(sexstobj.dog.total > 0)
+                                sclist = "icon_beast";
+                            break;
+                        case 13:
+                            if (sc.getMissionTask("priest", "confession", 13).inProgress)
+                                sclist = "icon_nun";
+                            break;
                     }
-                    sc.select(sclist, "775_church/" + sclist + ".webp", counter);
-                    counter++;
+                    if (sclist !== null) {
+                        sc.select(sclist, "775_church/" + sclist + ".webp", counter);
+                        counter++;
+                    }
                 }
             }
             if (counter === 0)
                 chat(48, 775);
+            break;
+        case "sit":
+            nav.kill();
+            nav.bg("775_church/sit_" + gender.pronoun("f") + ".webp");
+            break;
+        case "purity":
+            nav.bg("775_church/purity.webp");
+            break;
+        case "wiggle":
+            nav.bg("775_church/sit_" + gender.pronoun("f") + "_wiggle.webp");
+            break;
+        case "dirtyFail":
+            sc.completeMission("priest", "dirty", false);
+            break;
+        case "sit_stroke":
+            levels.gavehandjob("m", "priest");
+            sc.startMission("priest", "dirty");
+            sc.completeMissionTask("priest", "dirty", 0);
+            nav.bg("775_church/sit_stroke.webp");
+            break;
+        case "sit_smile":
+            nav.bg("775_church/sit_" + gender.pronoun("f") + "_smile.webp");
             break;
         default:
             break;
@@ -256,8 +322,8 @@ room775.chat = function (chatID) {
     else if (chatID === 998) {
         g.internal = gv.get("money");
 
-        if (g.internal > 100)
-            g.internal = 100;
+        if (g.internal > 50)
+            g.internal = 50;
         else if (g.internal < 1)
             g.internal = 0;
 
@@ -584,8 +650,8 @@ room775.chat = function (chatID) {
                 speaker: "priest",
                 text: "This is the greatest sin one can partake in. Tell me son, did you enjoy it? ",
                 button: [
-                    { chatID: 32, text: "Yes Father. ", callback: "confessionAnal0" },
-                    { chatID: 27, text: "No Father. ", callback: "" },
+                    { chatID: 32, text: "Yes Father. ", callback: "" },//"confessionAnal0" },
+                    { chatID: 27, text: "No Father. ", callback: "dirtyFail" }
                 ]
             },
             {
@@ -635,11 +701,11 @@ room775.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "me",
-                text: "Oh yes. I could feel him pick up speed and really start fucking me. You know that hard focued fucking. " +
+                text: "Oh yes. I could feel him pick up speed and really start fucking me. You know that hard focused fucking. " +
                     "Then he pulled my hips back and thrust forward into me getting his dick as deep into me as he could. I " +
                     "could feel the pulses of his cock as he drained his cum inside me. ",
                 button: [
-                    { chatID: 38, text: "...", callback: "confessionAnal1" }, //add cum shot
+                    { chatID: 82, text: "...", callback: "" },//"confessionAnal1" }, //add cum shot
                 ]
             },
             {
@@ -648,7 +714,7 @@ room775.chat = function (chatID) {
                 text: "That is... uhh.... terrible sin. You are forgiven. Go now in peace. Also close this confessional booth, I " +
                     "uh.. have other matters to attend to. Thank you. ",
                 button: [
-                    { chatID: 39, text: "Oh, ok. ", callback: "confessionAnal2" },
+                    { chatID: -1, text: "Oh, ok. ", callback: "leave" },//"confessionAnal2" },
                 ]
             },
             {
@@ -869,7 +935,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 63,
                 speaker: "me",
-                text: "I have been anally penetrated by another man's penis. ",
+                text: "I have been anally penetrated with another man's penis. ",
                 button: [
                     { chatID: 31, text: "...", callback: "" }
                 ]
@@ -877,7 +943,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "me",
-                text: "I bent over so a beast may anally penetrate me. ",
+                text: "I bent over so a doggy could anally penetrate me. ",
                 button: [
                     { chatID: 65, text: "...", callback: "" }
                 ]
@@ -955,6 +1021,133 @@ room775.chat = function (chatID) {
                     "the church will help her find the path lost to her. Thank you for your honesty in such a delicate matter. ",
                 button: [
                     { chatID: 49, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "priest",
+                text: "If it isn't little " + sc.n("me") + ". It's nice to see you back in the church. " +
+                    "It's been so long since I've " +
+                    "seen you. Welcome back. I must say I'm a bit suprised. I don't " +
+                    "remember you coming to confess in the past. ",
+                button: [
+                    { chatID: 74, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "me",
+                text: "Yeah, my " + sc.n("landlord") + " made me. Aren't you supposed to be on " +
+                    "the other side of the screen?",
+                button: [
+                    { chatID: 75, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "priest",
+                text: "Here at the Church of the Unification of Men we believe that there is an " +
+                    "intimate connection between the priest and the sinner and the walls only seek " +
+                    "the hide the sin. Come sit on my lap and tell me what bothers you. ",
+                button: [
+                    { chatID: 76, text: "Oh... I guess", callback: "sit" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "priest",
+                text: "Isn't that comfortable. Now tell me you sins. ",
+                button: [
+                    { chatID: 77, text: "I don't really have any. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "priest",
+                text: "Oh my. Still teasing your " + sc.n("el") + "? I remember you when you were just a small baby when " +
+                    "I first started preaching here. Right after church I asked to hold you and you threw up all over my robes. You " +
+                    "were such a cute kid that grew into a handsome man. I'll bet you can't keep the young ladies away. ",
+                button: [
+                    { chatID: 78, text: "Oh well. I just started dating this girl.", callback: "" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "priest",
+                text: "Oh, young love. It's ripe for sin. Young people like yourselves can't " +
+                    "help their raging hormones. But you must stay pure of mind, body and soul. " +
+                    "You two haven't sinned yet have you?",
+                button: [
+                    { chatID: 79, text: "Oh! Hahaha. No. We've just been hanging out really. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "priest",
+                text: "Good, Really good. Let me see your phone... ",
+                button: [
+                    { chatID: 80, text: "I guess that's ok?", callback: "purity" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "priest",
+                text: "This is the Purity App. The curch is putting on everyone's phones. A member of " +
+                    "our sister church designed it to help motivate their young flock to making the " +
+                    "right choices. As you sin it will detect that sin through your phone inputs and " +
+                    "report back so that I may help guide you to a better life. ",
+                button: [
+                    { chatID: 81, text: "What? No how do I take it off!", callback: "sit" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "priest",
+                text: "Only I can remove it. It's for your own good. God has granted his children " +
+                    "the gift of free will, but the church is here to guide you on the path of " +
+                    "free will with the best possible information. Now go. Live the good life " +
+                    "through marriage and procreation. ",
+                button: [
+                    { chatID: -1, text: "*grrr* Yes father.", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "thinking",
+                text: "Oh my. I think my story is starting to give " + sc.n("priest") + " a stiffy. I " + 
+                    "can feel it growing against my bottom. I wonder if it will get harder if I " +
+                    "wiggle my butt? ",
+                button: [
+                    { chatID: 83, text: "[Wiggle your butt against his penis]", callback: "wiggle" },
+                    { chatID: 38, text: "[Don't do anything]", callback: "dirtyFail" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "priest",
+                text: "I uhhh... oh no. *muttering* ",
+                button: [
+                    { chatID: 84, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "thinking",
+                text: "Oh yes. I can totally feel his hard twitching penis pressing against me. " +
+                    "He can't control his desire to slide it between my cheeks.",
+                button: [
+                    { chatID: 85, text: "[Rub his penis with your hand]", callback: "sit_stroke" },
+                    { chatID: 38, text: "[Don't do anything]", callback: "dirtyFail" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "thinking",
+                text: "Oh wow. I can feel the wet sticky cum absorbing into his robe. That " +
+                    "was fast. He probably hasn't cum in years to cum so quickly from just a " +
+                    "light touch on my hand. ",
+                button: [
+                    { chatID: 38, text: "...", callback: "sit_smile" },
                 ]
             },
         ];

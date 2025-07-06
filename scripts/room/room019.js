@@ -72,7 +72,7 @@ room19.btnclick = function (name) {
         case "fingerBegin":
             inv.use("lube");
             //gv.mod("fingeranal", 1);
-            stats.mod("masturbate", "finger", 1);
+            gv.mod("masturbate_finger", 1);
             nav.killall();
             nav.bg("19_layInBed/bg52.jpg");
             var startingFingers = 1;
@@ -153,7 +153,7 @@ room19.btnclick = function (name) {
                 }
                 else {
                     //gv.mod("dildoanal", 1);
-                    stats.mod("masturbate", "dildo", 1);
+                    gv.mod("masturbate_dildo", 1);
                     nav.bg("19_layInBed/bg52.jpg");
                     nav.killall();
                     inv.use("lube");
@@ -178,7 +178,7 @@ room19.btnclick = function (name) {
                 }
                 else {
                     gv.mod("dildooral", 1);
-                    stats.mod("masturbate", "oral", 1);
+                    gv.mod("masturbate_oral", 1);
                     nav.killall();
                     g.internal = { name: name, size: inv.anal(name) };
 

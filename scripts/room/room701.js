@@ -51,8 +51,7 @@ room701.chatcatch = function (callback) {
             break;
         case "wake3":
             nav.bg("701_hospitalroom/wake3.jpg");
-            sex.mod("boob", false, "f", 1);
-            cl.doCum(false);
+            levels.gottitjob("f", "bimbo");
             break;
         case "wake2":
             nav.bg("701_hospitalroom/wake2.jpg");

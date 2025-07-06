@@ -78,7 +78,7 @@ input[type=text]:disabled{
     z-index: 999;
     border: none;
     background: none;
-    position: absolute;
+    position: fixed;
     cursor:pointer;
 }
 

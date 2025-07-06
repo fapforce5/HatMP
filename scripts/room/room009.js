@@ -449,7 +449,7 @@ room9.btnclick = function (name) {
                     "height": 810,
                     "image": "9_computer/splat.png"
                 }, 9);
-                sex.masturbate("penis");
+                gv.mod("masturbate_dick", 1)
                 chat(5, 9);
             }
             break;
@@ -538,10 +538,9 @@ room9.chatcatch = function (callback) {
             room9.btnclick("powerOff");
             break;
         case "jackoffEnd":
-            sex.mod("boob", false, "f", 1);
+            levels.gottitjob("f", "landlord");
             sc.modLevel("landlord", 20, 10);
             sc.completeMissionTask("landlord", "misc", 0);
-            cl.doCum();
             char.room(10);
             break;
         case "porn":

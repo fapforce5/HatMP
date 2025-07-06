@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 25.5;
-g.versionText = "0.25.4 - JUL 2025";
+g.version = 25.6;
+g.versionText = "0.25.6 - JUL 2025";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -19,8 +19,8 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, 503, 527, 552, 553, 587, 602, 727, 875, 902, 903];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, 483, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
+g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, 483, 503, 527, 552, 553, 587, 602, 727, 875, 902, 903];
 g.popArray = new Array();
 g.roomID = 1;
 g.dt = g.startDate;
@@ -221,6 +221,7 @@ g.rooms = [
     { roomID: 183, name: "My Whore Room", image: "185_bedroom/bg.webp", nightImage: "185_bedroom/bg.webp", houseID: 203, btn: "roomBtn_185.png" },
     { roomID: 184, name: "My Powder room", image: "184_bathroom/bg.webp", nightImage: "184_bathroom/bg.webp", houseID: 203, btn: "roomBtn_184.png" },
     { roomID: 185, name: "My Whore Room", image: "185_bedroom/bg.webp", nightImage: "185_bedroom/bg.webp", houseID: 203, btn: "roomBtn_185.png" },
+    { roomID: 186, name: "Talent Show", image: "186_talenshow/bg.webp", nightImage: "186_talenshow/bg.webp", houseID: 203, btn: "roomBtn_186.png" },
 
     { roomID: 193, name: "Missy", image: "193_afternoon/cop0.webp", nightImage: "193_afternoon/cop0.webp", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 195, name: "Skill", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
@@ -243,7 +244,7 @@ g.rooms = [
     { roomID: 212, name: "Gloryhole", image: "212_gloryhole/bg.jpg", nightImage: "212_gloryhole/bg.jpg", houseID: 203, btn: "roomBtn_212.png" },
     { roomID: 213, name: "Lounge", image: "213_pink/bg.jpg", nightImage: "213_pink/bg.jpg", houseID: 203, btn: "roomBtn_213.png" },
     { roomID: 214, name: "Game Room", image: "214_pinkgame/bg.jpg", nightImage: "214_pinkgame/bg.jpg", houseID: 203, btn: "roomBtn_214.png" },
-    { roomID: 215, name: "Private Room", image: "215_pinkroom/bg.jpg", nightImage: "215_pinkroom/bg.jpg", houseID: 203, btn: "roomBtn_215.png" },
+    { roomID: 215, name: "Whore Hallway", image: "215_pinkroom/bg.jpg", nightImage: "215_pinkroom/bg.jpg", houseID: 203, btn: "roomBtn_215.png" },
     { roomID: 216, name: "Glory Hole", image: "216_pinkglory/bg.jpg", nightImage: "216_pinkglory/bg.jpg", houseID: 203, btn: "roomBtn_216.png" },
     { roomID: 217, name: "Punishment", image: "217_punish/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_217.png" },
     { roomID: 218, name: "masturbate", image: "218_masturbate/punish1.jpg", nightImage: "217_punish/punish1.jpg", houseID: 203, btn: "roomBtn_217.png" },
@@ -545,7 +546,11 @@ g.hourBetween = function (startTime, endTime) {
 };
 
 g.diffDatesByDays = function (startDate, endDate) {
-    return Math.floor((startDate - endDate) / (1000 * 60 * 60 * 24));
+    const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    const end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
 };
 
 g.diffDateByMinutes = function (startDate, endDate) {

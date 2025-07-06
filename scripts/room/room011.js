@@ -28,21 +28,7 @@ room11.main = function () {
         chat(7, 11);
         return;
     }
-    else if (sc.taskGetStep("lola", "sissy") === 6) {
-        sc.completeMissionTask("lola", "sissy", 6);
-        nav.button({
-            "type": "img",
-            "name": "eva",
-            "left": 760,
-            "top": 295,
-            "width": 291,
-            "height": 785,
-            "image": "11_hallway/eva.webp"
-        }, 11);
-        chat(10, 11);
-        return;
-    }
-    g.pass = '';
+    g.pass = null;
     if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;
         var sisterLocation = sc.getTimeline("lola").roomID;
@@ -304,15 +290,6 @@ room11.chat = function (chatID) {
             speaker: "eva",
             text: "You do that. I'll keep trying to talk her out of dating that creep. We must stop them! I think they have a " +
                 "date in a week. You find a good boy for her, I'll intorduce them. Deal?",
-            button: [
-                { chatID: -1, text: "Deal!", callback: "reset" },
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "eva",
-            text: "I have to know if you found someone! That pervert " + sc.n("chad") + " is really slithering his way " +
-                "into her panties. ",
             button: [
                 { chatID: -1, text: "Deal!", callback: "reset" },
             ]

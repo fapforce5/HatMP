@@ -166,10 +166,8 @@ room326.chatcatch = function (callback) {
                 sc.completeMissionTask("horse", "sex", 0);
             }
             g.internal = "jack";
-            sc.modLevel("horse", 80, 8);
-            levels.mod("beast", 50, 4);
             gv.mod("money", 20);
-            sex.mod("hand", true, "m", 1);
+            levels.gavehandjob("m", "horse", "horse");
             char.addtime(60);
             char.room(0);
             break;
@@ -243,7 +241,7 @@ room326.chatcatch = function (callback) {
         case "lick13":
             sc.completeMissionTask("horse", "sex", 1);
             sc.modLevel("horse", 80, 8);
-            levels.mod("beast", 50, 5);
+            levels.oral(5, "m", "horse", false, "horse");
             char.addtime(120);
             char.room(0);
             break;

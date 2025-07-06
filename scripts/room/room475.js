@@ -43,16 +43,39 @@ room475.main = function () {
     if (g.map.col > 0)
         m.fmap[g.map.row][g.map.col - 1].visited = true;
 
+    let howOften, fameLevel;
+    if (g.map.ev.length === 0 || g.map.eventCounter === 0) {
+        let fameOften;
+        let appearanceOften;
+
+        fameLevel = levels.get("fame").l;
+        appearanceOften = 5 - cl.appearance();
+        fameOften = 10 - fameLevel;
+        if (fameLevel > 10)
+            fameLevel = 10;
+
+        howOften = Math.floor((appearanceOften + fameOften) / 2);
+        if (g.isNight())
+            howOften -= 2;
+        if (howOften < 2)
+            howOften = 2;
+        if (howOften > 10)
+            howOften = 10;
+    }
     if (g.map.ev.length === 0) {
-        g.map.ev = g.shuffleArray(["rape", "rape", "rope", "hole", "random", "random", "treasure"]);
-        g.map.eventCounter = g.rand(4, 7);
+        eventArray = ["rope", "hole", "random", "random", "treasure"];
+        for (let i = 0; i < fameLevel - 4; i++) {
+            eventArray.push("rape");
+        }
+        eventArray.push("rape");
+
+        g.map.ev = g.shuffleArray(eventArray);
+        g.map.eventCounter = g.rand(howOften, howOften + 3);
     }
     if (g.map.eventCounter === 0) {
-        //add fame / is night here also Friday!!!
-        //if night then rape happens more, rope happens less
         let thisEvent = g.map.ev[0];
         g.map.ev.shift();
-        g.map.eventCounter = g.rand(3, 5);
+        g.map.eventCounter = g.rand(howOften, howOften + 3);
         switch (thisEvent) {
             case "rape":
                 rape.init(null, "forest", 475, "reload");

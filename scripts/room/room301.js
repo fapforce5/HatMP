@@ -735,9 +735,8 @@ room301.chatcatch = function (callback) {
             nav.next("step11e");
             break;
         case "step11end":
+            levels.fuckpussy("envy", "f");
             sc.completeMissionTask("envy", "hypno", 6);
-            sex.mod("pussy", true, "f", 1);
-            cl.doCum(false);
             char.addtime(120);
             daily.set("envy");
             char.room(0);
@@ -789,8 +788,7 @@ room301.chatcatch = function (callback) {
             sc.completeMissionTask("envy", "hypno", 8);
             sc.completeMissionTask("spanky", "hypno", 1);
             sc.completeMissionTask("spanky", "hypno", 2, false);
-            sex.mod("oral", false, "f", 1);
-            cl.doCum(false);
+            levels.gotbj("f", "envy");
             char.room(0);
             break;
         case "envy150":
@@ -844,8 +842,7 @@ room301.chatcatch = function (callback) {
             char.room(0);
             break;
         case "step14e":
-            cl.doCum(false);
-            sex.mod("pussy", true, "f", 1);
+            levels.fuckpussy("envy", "f");
             char.room(0);
             break;
         case "gf_1":

@@ -2,6 +2,12 @@
 var room483 = {};
 //mesh dress and hooker boots inside the cave
 room483.main = function () {
+    if (g.pass === 483 && cl.isLewd()) {
+        g.pass = null;
+        room483.btnclick("enter");
+        return;
+    }
+    g.pass = null;
     switch (sc.taskGetStep("wolf", "pack")) {
         case -1:
         case 0:
@@ -21,6 +27,7 @@ room483.main = function () {
             nav.bg("483_cave/bg_x.jpg", "483_cave/bg_x_night.jpg");
             sc.select("enter", "483_cave/icon_enter.png", 0);
             sc.select("leave", "483_cave/icon_leave.png", 1);
+            sc.select("wardrobe", "483_cave/icon_leave.png", 1);
             break;
     }
     nav.buildnav([475]);
@@ -42,7 +49,7 @@ room483.btnclick = function (name) {
                 }, 451);
                 g.internal.meat++;
                 levels.mod("beast", 5);
-                sc.modLevel("wolf", 20, 3);
+                sc.modLevel("wolf", 90, 3);
             }
             else {
                 chat(2, 483);
@@ -172,7 +179,7 @@ room483.btnclick = function (name) {
             if (cl.isLewd()) {
                 nav.bg("483_cave/cave0.jpg");
                 nav.kill();
-                chat(8, 483);
+                //chat(8, 483);
             }
             else {
                 nav.killall();

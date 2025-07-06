@@ -43,11 +43,12 @@ room1.main = function () {
     nav.t({
         type: "zimg",
         name: "version",
-        left: 1520,
-        top: 1010,
-        font: 20,
+        left: 1350,
+        top: 950,
+        font: 40,
         hex: "#ffffff",
-        text: g.versionText
+        stroke: "black",
+        text: g.versionText + "<br/>Stops after Sissy School Final"
     }, 1);
 
 };

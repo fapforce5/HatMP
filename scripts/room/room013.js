@@ -68,25 +68,45 @@ room13.main = function () {
                 nav.bg("13_sisterRoom/evaSissy_6.jpg");
                 chat(196, 13);
             }
-            else {
-                btnList = [{
+            else if (future.get("lolaboy") > -1) {
+                nav.button({
                     "type": "btn",
-                    "name": "lola",
-                    "left": 1449,
-                    "top": 260,
-                    "width": 215,
-                    "height": 820,
-                    "image": (g.isNight() ? "13_sisterRoom/13_lola_pj.png" : "13_sisterRoom/13_lola_reading.png")
+                    "name": "eva_lolaboy",
+                    "left": 760,
+                    "top": 295,
+                    "width": 291,
+                    "height": 785,
+                    "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
+                }, 13);
+            }
+            else {
+                let lolaImg = g.isNight() ? "13_sisterRoom/13_lola_pj.png" : "13_sisterRoom/13_lola_reading.png";
+                if (sc.getMissionTask("lola", "sissy", 5).fail) {
+                    if (sc.taskGetStep("lola", "sissy") === 6)
+                        lolaImg = "13_sisterRoom/13_lola_slutty0.png";
+                    else
+                        lolaImg = "13_sisterRoom/13_lola_slutty_happy.png";
+                }
+                if (!daily.get("lolahide")) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "lola",
+                        "left": 1449,
+                        "top": 260,
+                        "width": 215,
+                        "height": 820,
+                        "image": lolaImg
+                    }, 13);
+                }
+                btnList = [{
+                    "type": "grab",
+                    "name": "lolaboobs",
+                    "left": 1469,
+                    "top": 507,
+                    "width": 116,
+                    "height": 60,
+                    "image": "13_sisterRoom/13_lola_readingboob.png"
                 },
-                    {
-                        "type": "grab",
-                        "name": "lolaboobs",
-                        "left": 1469,
-                        "top": 507,
-                        "width": 116,
-                        "height": 60,
-                        "image": "13_sisterRoom/13_lola_readingboob.png"
-                    },
                 {
                     "type": "btn",
                     "name": "eva",
@@ -95,17 +115,16 @@ room13.main = function () {
                     "width": 291,
                     "height": 785,
                     "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
-                    },
-                    {
-                        "type": "grab",
-                        "name": "evaboobs",
-                        "left": 876,
-                        "top": 512,
-                        "width": 118,
-                        "height": 70,
-                        "image": "13_sisterRoom/13_eva_sittingboobs.png"
-                    }
-                ];
+                },
+                {
+                    "type": "grab",
+                    "name": "evaboobs",
+                    "left": 876,
+                    "top": 512,
+                    "width": 118,
+                    "height": 70,
+                    "image": "13_sisterRoom/13_eva_sittingboobs.png"
+                }];
                 g.internal = { lola: scc.getSet("lola"), eva: scc.getSet("eva") };
                 //if (g.internal.lola.anyanyChanges || g.internal.eva.anyanyChanges) {
                     //put logic for changes / secret here
@@ -293,7 +312,7 @@ room13.btnclick = function (name) {
                 sc.select("dick", "13_sisterRoom/icon_dick.png", 5);
                 sc.select("clearChat", "13_sisterRoom/icon_cancel.png", 6);
             }
-            else {
+            else if (sc.getMission("lola", "sissy").inProgress) {
                 if (daily.get("lola")) {
                     chat(24, 13);
                 }
@@ -312,9 +331,35 @@ room13.btnclick = function (name) {
                         daily.set("evaTalkSecret")
                         chat(163, 13);
                     }
-                    else if (lolaSissy === 4) {
-
+                    else if (lolaSissy === 4 || lolaSissy === 5) {
+                        chat(213, 13);
                     }
+                    else if (lolaSissy === 6) {
+                        chat(214, 13);
+                    }
+                    else if (lolaSissy === 7) {
+                        chat(218, 13);
+                    }
+                }
+            }
+            else {
+                if (daily.get("lola")) {
+                    if (sc.taskGetStep("lola", "top") === 1)
+                        chat(233, 13);
+                    else
+                        chat(234, 13);
+                }
+                switch (sc.taskGetStep("lola", "tom")) {
+                    case 0:
+                    case 1:
+                        sc.completeMissionTask("lola", "tom", 1);
+                        chat(235, 13);
+                        break;
+                    case 2:
+                        sc.completeMissionTask("lola", "tom", 1);
+                        chat(237, 13);
+                        break;
+                    default: chat(234, 13); break;
                 }
             }
             break;
@@ -1149,6 +1194,9 @@ room13.btnclick = function (name) {
             nav.bg("13_sisterRoom/sissyEva3_2.jpg");
             chat(174, 13);
             break;
+        case "eva_lolaboy":
+            chat(211, 13);
+            break;
         default:
             break;
     }
@@ -1660,6 +1708,52 @@ room13.chatcatch = function (callback) {
             case "hallway":
                 nav.killall();
                 nav.bg("11_hallway/11_hallway.jpg", "11_hallway/11_hallwayNight.jpg");
+                break;
+            case "lolaSissy6End":
+                daily.set("lolahide");
+                sc.completeMissionTask("lola", "sissy", 6);
+                nav.killbutton("lola");
+                break;
+            case "lolaSissy7_0":
+                nav.kill();
+                nav.bg("13_sisterRoom/sissy7_0_day.jpg", "13_sisterRoom/sissy7_0_night.jpg");
+                break;
+            case "lolaSissy7_1":
+                nav.bg("13_sisterRoom/sissy7_1_day.jpg", "13_sisterRoom/sissy7_1_night.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "lolaSissy7",
+                    "left": 318,
+                    "top": 0,
+                    "width": 967,
+                    "height": 1080,
+                    "image": "13_sisterRoom/sissy7_1.png"
+                }, 13);
+                break;
+            case "lolaSissy7_2":
+                nav.modbutton("lolaSissy7", "13_sisterRoom/sissy7_2.png", null, null);
+                break;
+            case "lolaSissy7_3":
+                nav.modbutton("lolaSissy7", "13_sisterRoom/sissy7_3.png", null, null);
+                break;
+            case "lolaSissy7_4":
+                nav.kill();
+                nav.bg("13_sisterRoom/sissy7_4.jpg");
+                break;
+            case "lolaSissy7_5":
+                nav.kill();
+                sc.completeMissionTask("lola", "sissy", 7);
+                daily.set("lolahide");
+                nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 760,
+                    "top": 295,
+                    "width": 291,
+                    "height": 785,
+                    "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
+                }, 13);
                 break;
             default: break;
         }
@@ -3558,7 +3652,283 @@ room13.chat = function (chatID) {
                     { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
-            
+            {
+                chatID: 211,
+                speaker: "me",
+                text: "Where's " + sc.n("lola") + "?",
+                button: [
+                    { chatID: 212, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 212,
+                speaker: "eva",
+                text: "With " + sc.n("chad") + "! Why are you here! I told you to go find a boy " +
+                    "that we haven't fucked! Go. Go find a boy for her! ",
+                button: [
+                    { chatID: -1, text: "ok. I'll keep looking", callback: "" },
+                ]
+            },
+            {
+                chatID: 213,
+                speaker: "lola",
+                text: "Sorry, I'm lost in thought. I'll have to rain check. Too much on my mind.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 214,
+                speaker: "me",
+                text: "Whoa! What are you wearing?",
+                button: [
+                    { chatID: 215, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 215,
+                speaker: "lola",
+                text: "Oh. " + sc.n("chad") + " said I dress lame like I'm going to church, and not like " +
+                    "a girl my age. So I hemmed these up to make him happy. He said they're still lame, " +
+                    "but not super lame anymore. I'm going hem it up higher, just need to get used to " +
+                    "walking around school like this. Hehehe. The breeze does feel nice against my thighs ",
+                button: [
+                    { chatID: 216, text: "wha", callback: "" },
+                ]
+            },
+            {
+                chatID: 216,
+                speaker: "eva",
+                text: "Yeah, " + sc.n("chad") + " is going to ruin you if you keep dating him you know. " +
+                    "This isn't you at all. ",
+                button: [
+                    { chatID: 217, text: "yeah", callback: "" },
+                ]
+            },
+            {
+                chatID: 217,
+                speaker: "lola",
+                text: "Oh you. tbbbth. You're just mad my skirt is shorter than yours. Maybe this is me. " +
+                    "Well me now. I told you I don't want to talk about it anymore. I'm going to meet up " +
+                    "with " + sc.n("chad") + "! ",
+                button: [
+                    { chatID: -1, text: "ugh", callback: "lolaSissy6End" },
+                ]
+            },
+            {
+                chatID: 218,
+                speaker: "lola",
+                text: "I'm so in love! " + sc.n("chad") + " is the man I've always dreamed of, " +
+                    "but didn't know it was him I was dreaming of! ",
+                button: [
+                    { chatID: 219, text: "You know he's kind of a jerk", callback: "" },
+                ]
+            },
+            {
+                chatID: 219,
+                speaker: "lola",
+                text: "He's not! He's amazing! You should....",
+                button: [
+                    { chatID: 220, text: "?", callback: "lolaSissy7_0" },
+                ]
+            },
+            {
+                chatID: 220,
+                speaker: "chad",
+                text: "Hey babe, babe's almost as hot twin sister, and small dick loser! You know you should lock " +
+                    "your window. Anyone can just use that ladder out there and get in. ",
+                button: [
+                    { chatID: 221, text: sc.n("chad") + "....", callback: "lolaSissy7_0" },
+                ]
+            },
+            {
+                chatID: 221,
+                speaker: "chad",
+                text: "Hey babe, babe's almost as hot twin sister, and small dick loser! You know you should lock " +
+                    "your window. Anyone can just use that ladder out there and get in. ",
+                button: [
+                    { chatID: 222, text: sc.n("chad") + "....", callback: "lolaSissy7_1" },
+                ]
+            },
+            {
+                chatID: 222,
+                speaker: "thinking",
+                text: "He just comes in here and grabs her butt right in front of me! " +
+                    "What a beast! ",
+                button: [
+                    { chatID: 223, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 223,
+                speaker: "chad",
+                text: "You all should have been there! I had a huge game today! Totally got " +
+                    "a double and triple with 2 RBIs! If it wasn't for me the team would've " +
+                    "totally lost out today. The majors should really start scoping me out more. ",
+                button: [
+                    { chatID: 224, text: "...", callback: "lolaSissy7_2" },
+                ]
+            },
+            {
+                chatID: 224,
+                speaker: "thinking",
+                text: "bla bla bla. I'm the best, bla bla bla... wait where did his hand go? " +
+                    "She seems kinda red. What's he doing to her?",
+                button: [
+                    { chatID: 225, text: "...", callback: "lolaSissy7_3" },
+                ]
+            },
+            {
+                chatID: 225,
+                speaker: "lola",
+                text: "a-a-a-ahhh. erp!",
+                button: [
+                    { chatID: 226, text: sc.n("lola") + "?", callback: "" },
+                ]
+            },
+            {
+                chatID: 226,
+                speaker: "me",
+                text: "What's wrong? Are you ok?",
+                button: [
+                    { chatID: 227, text: "...", callback: "lolaSissy7_4" },
+                ]
+            },
+            {
+                chatID: 227,
+                speaker: "chad",
+                text: "Hahaha. She's great! I just fingered her to orgasm! Man your " +
+                    g.makeSingular(sc.n("el")) + "'s got a wet pussy! Here smell my fingers. She's " +
+                    "totally dripping. It's a good thing I told her to stop wearing panties " +
+                    "or they'd be a mess! I bet you wish you had a wet pussy now. I'd totally fuck " +
+                    "it too! ",
+                button: [
+                    { chatID: 228, text: "*sniff*", callback: "" },
+                ]
+            },
+            {
+                chatID: 228,
+                speaker: "chad",
+                text: "I should be mad, but he's right, her pussy does smell amazing. I wish I had " +
+                    "a pussy that smelled like that...",
+                button: [
+                    { chatID: 229, text: "[Snap out of it]", callback: "" },
+                ]
+            },
+            {
+                chatID: 229,
+                speaker: "eva",
+                text: "You bastard! " + sc.n("lola") + " tell he he's an asshole and dump his ass! " +
+                    "He's an even bigger perv than " + sc.n("me") + "! You don't deserve this! ",
+                button: [
+                    { chatID: 230, text: "yeah", callback: "lolaSissy7_1" },
+                ]
+            },
+            {
+                chatID: 230,
+                speaker: "chad",
+                text: "Hahah! You losers are just mad my fingers aren't knuckle deep in either of you! " +
+                    "Hey, there's a big party at the old mining quarry. Let's go have some fun! " +
+                    "I parked out back, so you can just follow me down the ladder. Tell these " +
+                    "chicken heads they can't come. ",
+                button: [
+                    { chatID: 231, text: "!", callback: "" },
+                ]
+            },
+            {
+                chatID: 231,
+                speaker: "lola",
+                text: "Sorry girls. I promised I would go to this party. I'll see you both tomorrow. ",
+                button: [
+                    { chatID: 232, text: "*sigh*", callback: "lolaSissy7_5" },
+                ]
+            },
+            {
+                chatID: 232,
+                speaker: "eva",
+                text: "*sigh* I should be mad, but he is so sexy. And amazing. And strong. " +
+                    "I just hope he doens't hurt her too bad. ",
+                button: [
+                    { chatID: -1, text: "Yeah. He is sexy, er an ass", callback: "" },
+                ]
+            },
+            {
+                chatID: 233,
+                speaker: "lola",
+                text: sc.n("eva") + " told me about this Tom. I'm not sure, but I'll give him a chance. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 234,
+                speaker: "lola",
+                text: "Thanks you two! I'm so in love! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 235,
+                speaker: "lola",
+                text: "I'm so in love!!! Oh wow! I didn't think I would ever love again, but " +
+                    "Tom is so sweet and nice! He was on his high school swim team and got bronze " +
+                    "in his big swim meet! ",
+                button: [
+                    { chatID: 236, text: "Love again?", callback: "" },
+                ]
+            },
+            {
+                chatID: 236,
+                speaker: "lola",
+                text: "He grew up poor, and often was starving, so now he volunteers at the " +
+                    "homeless shelter. He really is a great guy! I'm so happy you two set me up! ",
+                button: [
+                    { chatID: -1, text: "Yeah. We're so happy for you too. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 237,
+                speaker: "eva",
+                text: "Oh my god! Don't talk to her! All day bla bla bla about Tom! My god! " +
+                    "It's sweet you two are in love, but damn! If I knew you were going to be this " +
+                    "annoying about it I would have let you date " + sc.n("chad") + "!",
+                button: [
+                    { chatID: 238, text: "oh snap!", callback: "" },
+                ]
+            },
+            {
+                chatID: 238,
+                speaker: "lola",
+                text: "hrumph! " + sc.n("chad") + " was a total jerk. I see that now. Always trying to " +
+                    "stick his fingers in my pussy. He would even pull his penis out and rub it on my leg. " +
+                    "We were at a party and he refused to take me home till I have him a blowie, but I said no! " +
+                    "He ended up jacking off and shooting his cum on the back of my dress. I had to wash it by hand so " +
+                    sc.n("landlord") + " didn't know. I'm just really happy to be with a good boy like Tom. And " +
+                    "I'm just excited and wanted to share so tbbbth",
+                button: [
+                    { chatID: 239, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 239,
+                speaker: "eva",
+                text: "*sigh* I know " + sc.n("chad") + " is a giant dick head, and I'm really " +
+                    "happy you're dating Tom, but damn girl! We get it. He's the best boy ever. ",
+                button: [
+                    { chatID: 240, text: "Yeah", callback: "" },
+                ]
+            },
+            {
+                chatID: 240,
+                speaker: "lola",
+                text: "Oh. oooohhhhh. I'm so sorry. I get it. I've found the one and you're both " +
+                    "still searching for your one. You'll find your one. Your funny, nice, and " +
+                    "a little hottie like me! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
         ];
         return cArray[chatID];
     }

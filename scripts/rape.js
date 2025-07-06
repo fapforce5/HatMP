@@ -458,12 +458,13 @@ rape.phase2 = function () {
         }
         else if (rape.phaseChange === "struggle" && rape.char.slap && g.rand(0, 3) === 0 && (cl.c.panties !== null)) { //panty rip
             let img = "";
+            let rapecharcolor = rape.char.color === "c" ? "w" : rape.char.color;
             if (gender.pronoun("f") === "f") {
-                img = "struggle_1_f_" + rape.char.color + ".png";
+                img = "struggle_1_f_" + rapecharcolor + ".png";
             }
             else {
                 let cli = cl.list[cl.i("panties", cl.cTemp.panties)].sex === "f" ? "p" : "u";
-                img = "struggle_1_m_" + cli + "_" + rape.char.color + ".png";
+                img = "struggle_1_m_" + cli + "_" + rapecharcolor + ".png";
             }
             nav.button({
                 "type": "img",

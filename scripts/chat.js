@@ -4,7 +4,6 @@ function chat(chatID, roomID) {
 
     if (chatID !== -1) {
         privateChat.makeChat(window[g.room(roomID)]["chat"](chatID), chatID, roomID);
-        
     }
     if (window.getSelection) {
         window.getSelection().removeAllRanges();

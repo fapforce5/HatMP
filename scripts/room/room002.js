@@ -137,7 +137,7 @@ room2.chatcatch = function (callback) {
         });
 
         $("#room_002SetName").click(function () {
-
+            $(".rl-change").show();
             $('.room2-getName').each(function () {
                 var entry = $(this).data('name');
                 sc.char[entry].display = g.cleanText($(this).val());

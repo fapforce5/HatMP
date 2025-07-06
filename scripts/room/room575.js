@@ -89,7 +89,7 @@ room575.chatcatch = function (callback) {
             break;
         case "e_footsie3":
             nav.bg("575_fastfood/" + callback + ".jpg");
-            sex.mod("foot", true, "m", 1);
+            levels.gavefootjob("m", "!elijah");
             levels.mod("xdress", 50, 999);
             break;
         case "e_horny2":

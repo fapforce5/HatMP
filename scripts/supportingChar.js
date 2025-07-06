@@ -195,9 +195,19 @@ sc.charMission = [
                         { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
                         { id: 3, txt: "No! Not him!", show: true, mStatus: 0, roomId: 13 },
                         { id: 4, txt: "Worse than we thought", show: true, mStatus: 0, roomId: 11 },
-                        { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 0               },
-                        { id: 6, txt: "Found him! Tell " + sc.n("eva") + "!", show: true, mStatus: 0, roomId: 13 },
-
+                        { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 0 },
+                        { id: 6, txt: "Fuck you, I won't do what you tell me", show: true, mStatus: 0, roomId: 0 },
+                        { id: 7, txt: "Unexpected visitor", show: true, mStatus: 0, roomId: 13 },
+                        { id: 8, txt: "Not made yet - probably end up fucking all three to compare assholes", show: true, mStatus: 0, roomId: 0 },
+                    ]
+            },
+            {
+                missionName: "tom", mStatus: 0, title: "Tom", desc: "True love in another's arms", task:
+                    [
+                        { id: 0, txt: "Set up on date with Tom", show: true, mStatus: 0, roomId: 16 },
+                        { id: 1, txt: "He's the best", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "Bla bla bla", show: true, mStatus: 0, roomId: 16 },
+                        { id: 3, txt: "Not made yet - but he's really the best", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
@@ -305,7 +315,7 @@ sc.charMission = [
                 missionName: "misc", mStatus: -1, title: "Random", desc: "Random Event Tracker", task:
                     [
                         { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
-                        { id: 1, txt: "Threesome! [After Lola's first time]", show: true, mStatus: 0, roomId: 26 },
+                        { id: 1, txt: "Threesome! [After first time]", show: true, mStatus: 0, roomId: 26 },
                         { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
                         { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
                     ]
@@ -823,6 +833,13 @@ sc.charMission = [
                         { id: 1, txt: "Repeat customer ", show: true, mStatus: 0, roomId: 172 },
                     ]
             },
+            {
+                missionName: "talent", mStatus: 0, title: "Talent show", desc: "Expose yourself to the people", task:
+                    [
+                        { id: 0, txt: "Explain", show: true, mStatus: 0, roomId: 172 },
+                        { id: 1, txt: "Repeat customer ", show: true, mStatus: 0, roomId: 172 },
+                    ]
+            },
         ]
     },
     {
@@ -1171,7 +1188,7 @@ sc.charMission = [
     {
         name: "priest", mission: [
             {
-                missionName: "confession", mStatus: 0, title: "Confess", desc: "Free yourself of sin", task:
+                missionName: "confession", mStatus: 0, title: "confession", desc: "Free yourself of sin", task:
                     [
                         { id: 0, txt: "First day", show: true, mStatus: 0, roomId: 775 },
                         { id: 1, txt: "Masterbate", show: true, mStatus: 0, roomId: 775 },
@@ -1187,6 +1204,13 @@ sc.charMission = [
                         { id: 11, txt: "Had a penis in my butt", show: true, mStatus: 0, roomId: 775 },
                         { id: 12, txt: "Lay with one of God's creatures", show: true, mStatus: 0, roomId: 775 },
                         { id: 13, txt: "Corrupted Sister Mary", show: true, mStatus: 0, roomId: 775 },
+                    ]
+            },
+            {
+                missionName: "dirty", mStatus: 0, title: "Web of lies", desc: "Get trapped in the web of lies", task:
+                    [
+                        { id: 0, txt: "Dirty girl", show: true, mStatus: 0, roomId: 775 },
+                        { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
                     ]
             },
         ]
@@ -1750,6 +1774,12 @@ sc.load = function (ra) {
             sc.char[y].secret = 95;
         if (sc.char[z].secret > 95)
             sc.char[z].secret = 95;
+    }
+
+    //fix for v 0.25.3 for people that started it 
+    if (sc.getMissionTask("lola", "sissy", 5).startedOrComplete && future.get("lolaboy") < 0) {
+        sc.completeMissionTask("lola", "sissy", 5, false);
+        sc.completeMission("lola", "tom", false); 
     }
 
     sc.show("me");

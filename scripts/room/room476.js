@@ -61,9 +61,26 @@ room476.main = function () {
 room476.btnclick = function (name) {
     switch (name) {
         case "door":
-            nav.kill();
-            nav.bg("476_cabin/bg_empty.jpg", "476_cabin/bg_empty_night.jpg");
-            chat(0, 476);
+            var case_damselleCabin = missy.activecase();
+            if (case_damselleCabin.name === "case_damselle" && !case_damselleCabin.isComplete) {
+                nav.kill();
+                nav.bg("476_cabin/bg_empty.jpg", "476_cabin/bg_empty_night.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "dam",
+                    "left": 495,
+                    "top": 273 ,
+                    "width": 251,
+                    "height": 488,
+                    "image": "476_cabin/dam0.png",
+                }, 476);
+                chat(48, 476);
+            }
+            else {
+                nav.kill();
+                nav.bg("476_cabin/bg_empty.jpg", "476_cabin/bg_empty_night.jpg");
+                chat(0, 476);
+            }
             break;
         case "cry":
             room476.btnclick("killRope");
@@ -743,6 +760,14 @@ room476.chatcatch = function (callback) {
         case "reset":
             char.room(476);
             break;
+        case "dam1":
+            nav.kill();
+            nav.bg("476_cabin/dam1.jpg");
+            break;
+        case "finishDam":
+            missy.set("activeCaseComplete", 1);
+            char.room(476);
+            break;
         default:
             break;
     }
@@ -1202,6 +1227,58 @@ room476.chat = function (chatID) {
                     "miss Friday Surmon! Later! ",
                 button: [
                     { chatID: -1, text: "Sure. Later. ", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "!damselle",
+                text: "You're a little short for a Cum Cultist ",
+                button: [
+                    { chatID: 49, text: "What? No. I'm " + sc.n("me") + ". I'm here to rescue you.", callback: "" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "!damselle",
+                text: "You're who? ",
+                button: [
+                    { chatID: 50, text: "I'm here to rescue you. I was sent by Missy.", callback: "" }
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "!damselle",
+                text: "Thank the maker! I've been tied up here for days and I think they broke " +
+                    "my poor bussy. It won't close all the way anymore! Quick get me down! Please!",
+                button: [
+                    { chatID: 52, text: "Get her down. ", callback: "dam1" },
+                    { chatID: 51, text: "Leave her up there.", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "!damselle",
+                text: "What are you doing? Get me down!",
+                button: [
+                    { chatID: -1, text: "[Leave her for the cultist to rape.]", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "!damselle",
+                text: "My hero! I know where to go from here. You should leave the forest and never " +
+                    "come back! Ever! Now go! Save yourself!",
+                button: [
+                    { chatID: 53, text: "Ok. Take care of yourself.", callback: "finishDam" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "thiking",
+                text: "She's right. Everyone says the forest is dangerous. I really should get " +
+                    "out of here. Like now.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
         ];

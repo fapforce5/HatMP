@@ -281,7 +281,7 @@ room12.chatcatch = function (callback) {
             break;
         case "sister2":
             nav.next("sisterPeek");
-            sc.startMission("priest", "confession", 2);
+            gv.set("lolaEvaShowerPeek", true);
             g.internal = 2;
             daily.set("homeShowerPeek");
             break;

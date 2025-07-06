@@ -17,7 +17,7 @@ room215.main = function () {
         sc.select("relax", "215_pink/icon_relax.webp", 0);
         sc.select("whore", "215_pink/icon_whore.webp", 1);
     }
-    nav.buildnav([213, 214, 171, 170]);
+    nav.buildnav([213, 214, 171, 186]);
 };
 
 room215.btnclick = function (name) {

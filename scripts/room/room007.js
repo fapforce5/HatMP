@@ -751,8 +751,7 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/jack0.gif");
             break;
         case "jack1":
-            cl.doCum();
-            sex.mod("hand", false, "f", 1);
+            levels.gothandjob("f", "landlord");
             sc.modLevel("landlord", 15, 999);
             nav.bg("7_mainCharRoomAlt/jack1.jpg");
             break;

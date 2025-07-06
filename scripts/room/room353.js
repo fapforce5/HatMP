@@ -172,8 +172,7 @@ room353.chatcatch = function (callback) {
             }
             break;
         case "g2_big2":
-            cl.doCum();
-            sex.mod("hand", false, "f", 1);
+            levels.gothandjob("f", "!girl");
             nav.bg("353_mascot/g2_big2.jpg");
             break;
         default:

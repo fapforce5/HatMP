@@ -26,6 +26,17 @@ room185.main = function () {
             "image": "185_bedroom/bathroom.webp"
         }
     ];
+    if (!daily.get("whoreRoomWater")) {
+        btnList.push({
+            "type": "btn",
+            "name": "water",
+            "left": 1464,
+            "top": 449,
+            "width": 56,
+            "height": 91,
+            "image": "15_kitchen/water.png"
+        });
+    }
     var navList = [184, 215];
     $.each(btnList, function (i, v) {
         nav.button(v, 185);
@@ -40,6 +51,30 @@ room185.btnclick = function (name) {
             break;
         case "bed":
             chat(0, 185);
+            break;
+        case "water":
+            daily.set("whoreRoomWater");
+            var thisBladder = gv.get("bladder");
+            if (thisBladder > .98)
+                chat(3, 15);
+            else {
+                nav.killbutton("water");
+                nav.button({
+                    "type": "img",
+                    "name": "drink",
+                    "left": 632,
+                    "top": 233,
+                    "width": 635,
+                    "height": 614,
+                    "image": "15_kitchen/drink.png"
+                }, 15);
+                gv.mod("bladder", .3);
+                cl.display();
+                if (thisBladder > .68)
+                    chat(4, 15);
+                else
+                    chat(5, 15);
+            }
             break;
         default:
             break;

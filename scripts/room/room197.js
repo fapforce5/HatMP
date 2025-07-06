@@ -142,9 +142,7 @@ room197.btnclick = function (name) {
             break;
         case "anal6":
             nav.killall();
-            levels.mod("cum", 25, 999);
-            stats.mod("cum", "swallow", 1);
-            gv.mod("energy", 80);
+            levels.swallowCum("m", "me");
             chat(32, 197);
             break;
         default:
@@ -299,7 +297,7 @@ room197.chatcatch = function (callback) {
         case "pp1":
         case "pp2":
             nav.kill();
-            var pp0 = cl.c.shirt = "s" ? "m" : "f";
+            var pp0 = cl.c.shirt === "s" ? "m" : "f";
             nav.bg("197_sub/" + callback + "_" + pp0 + ".webp");
             if (callback === "pp2") {
                 levels.piss(true, false, false, "f", "missy");

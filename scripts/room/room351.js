@@ -39,18 +39,14 @@ room351.chatcatch = function (callback) {
             nav.bg("351_spermJackoff/" + callback + ".jpg");
             break;
         case "chastity3":
-            cl.doCum();
-            stats.mod("sissygasm", "f", 1);
             nav.bg("351_spermJackoff/" + callback + ".gif");
             break;
         case "chastity4":
-            cl.doCum();
-            sex.mod("hand", false, "f", 1);
+            levels.gothandjob("f", "!madison", true);
             nav.bg("351_spermJackoff/" + callback + ".jpg");
             break;
         case "sperm3":
-            cl.doCum();
-            sex.mod("hand", false, "f", 1);
+            levels.gothandjob("f", "!madison");
             nav.bg("351_spermJackoff/" + callback + ".jpg");
             break;
         case "paymeEnd":

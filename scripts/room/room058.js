@@ -292,7 +292,7 @@ room58.btnclick = function (name) {
             g.internal.excitement += 4;
             gv.mod("energy", -15);
             cl.doCum(false);
-            stats.mod("masturbate", "dick", 1);
+            gv.mod("masturbate_dick", 1);
             g.internal.button = "quit";
             room58.btnclick("buttons");
             break;

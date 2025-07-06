@@ -92,10 +92,8 @@ room77.btnclick = function (name) {
             break;
         case "bj2":
             nav.killall();
-            cl.doCum(false);
-            sex.mod("oral", false, "f", 1);
             sc.completeMissionTask("bimbo", "fuck", 0);
-            levels.mod("dom", 20, 999);
+            levels.gotbj("f", "bimbo");
             nav.bg("77_bimboLiving/bj3.jpg");
             chat(8, 77);
             break;

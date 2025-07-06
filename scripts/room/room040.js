@@ -48,18 +48,23 @@ room40.btnclick = function (name) {
         case "chat":
             nav.killall();
             nav.bg("40_garage/tom.jpg");
-            switch (sc.taskGetStep("tom", "chat")) {
-                case -1:
-                case 0:
-                    sc.startMission("tom", "chat");
-                    sc.show("tom");
-                    sc.completeMissionTask("tom", "chat", 0);
-                    chat(8, 40);
-                    break;
-                case 1:
-                    sc.completeMissionTask("tom", "chat", 0);
-                    chat(13, 40);
-                    break;
+            if (future.get("lolaboy") > -1) {
+                chat(16, 40);
+            }
+            else {
+                switch (sc.taskGetStep("tom", "chat")) {
+                    case -1:
+                    case 0:
+                        sc.startMission("tom", "chat");
+                        sc.show("tom");
+                        sc.completeMissionTask("tom", "chat", 0);
+                        chat(8, 40);
+                        break;
+                    case 1:
+                        sc.completeMissionTask("tom", "chat", 0);
+                        chat(13, 40);
+                        break;
+                }
             }
             break;
         default:
@@ -99,24 +104,25 @@ room40.chatcatch = function (callback) {
             char.settime(12, 17);
             sc.select("clean", "40_garage/icon_clean.png", 1);
             break;
-        case "dateLola":
-            if (sc.taskGetStep("lola", "sissy", 5)) {
-                sc.completeMissionTask("lola", "sissy", 5);
-                nav.kill();
-                nav.bg("40_garage/bg.jpg");
-                chat(16, 40);
-            }
-            else {
-                nav.bg("40_garage/chatOrClean.jpg");
-                char.settime(12, 17);
-                sc.select("clean", "40_garage/icon_clean.png", 1);
-            }
-            break;
         case "leave":
             gv.set("workMonday", false);
             char.settime(15, 12);
             gv.set("map", 3);
             char.room(0);
+            break;
+        case "endlolaboyTom":
+            daily.set("lola");
+            future.kill("lolaboy");
+            sc.completeMissionTask("lola", "sissy", 5);
+            sc.completeMission("lola", "sissy");
+            sc.startMission("lola", "tom");
+            sc.completeMissionTask("lola", "tom", 0);
+            room40.chatcatch("cleanOnly");
+            break;
+        case "endlolaboyChad":
+            sc.completeMissionTask("lola", "sissy", 5, false);
+            sc.completeMission("lola", "tom", false);
+            room40.chatcatch("cleanOnly");
             break;
         default:
             break;
@@ -308,17 +314,82 @@ room40.chat = function (chatID) {
                 text: "Is she... aww never mind. I gotta get some work done. I'll have " +
                     "to chat later. ",
                 button: [
-                    { chatID: -1, text: "ok ", callback: "dateLola" }
+                    { chatID: -1, text: "ok ", callback: "cleanOnly" }
                 ]
             },
             {
                 chatID: 16,
                 speaker: "thinking",
                 text: "Hmmmm. He's really nice, and I don't think he would even have sex with " + sc.n("eva") + " since " +
-                    "she's way to wild for him. You know, they might make a good couple. I should tell " + sc.n("eva") + 
-                    " about him. See if she'll get them together. ",
+                    "she's way to wild for him. He might make a good boyfriend for " + sc.n("lola") + ". " +
+                    "Way better than " + sc.n("chad") + ". But maybe " + sc.n("lola") + " needs a bad boy to " +
+                    "snap her into reality. Hmmm. I wonder if I should try to set he up or let " + sc.n("lola") +
+                    " date " + sc.n("chad") + ". ",
                 button: [
-                    { chatID: -1, text: "ok ", callback: "cleanOnly" }
+                    { chatID: 17, text: "Try to set up " + sc.n("tom") + " with " + sc.n("lola") + ". ", callback: "" },
+                    { chatID: 23, text: "Let " + sc.n("lola") + " date " + sc.n("chad") + ". ", callback: "" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "me",
+                text: "Hey " + sc.n("tom") + " what do you think of " + sc.n("lola") + "? ",
+                button: [
+                    { chatID: 18, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "tom",
+                text: "She's the best. Really my dream girl. I would give anything to hang out with " +
+                    "her. ",
+                button: [
+                    { chatID: 19, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "me",
+                text: "So you'd be ok if I try to set you up on a date with her? ",
+                button: [
+                    { chatID: 20, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "tom",
+                text: "REALLY!!!!! Really? YES!! Please, please, please. She's so amazing! " +
+                    "Please set me up! Pleeeaaasseeee!!!!",
+                button: [
+                    { chatID: 21, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "me",
+                text: "Hahah. Ok. I'll text " + sc.n("eva") + " now and have her set it up. Be " +
+                    "good to her or " + sc.n("eva") + " will get one of her boyfriends to beat " +
+                    "you up! ",
+                button: [
+                    { chatID: 22, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "tom",
+                text: "Oh wow! You're the best ever! I'll be the best boyfriend she's ever had! " +
+                    "thank you thank you thank you!",
+                button: [
+                    { chatID: -1, text: "...", callback: "endlolaboyTom" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "thinking",
+                text: "Hehehe! I'm going to see how far " + sc.n("lola") + "goes with " + sc.n("chad") +
+                    ". Way more entertaining than boring lame Tom. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "endlolaboyChad" }
                 ]
             },
         ];

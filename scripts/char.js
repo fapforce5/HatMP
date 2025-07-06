@@ -26,6 +26,16 @@ $(document).ready(function () {
         nav.killvideo();
     });
 
+    $('.help-history').click(function () {
+        console.log(g.pastSaves.length);
+        g.pastSaves.splice(g.pastSaves.length - 1, 1);
+        privateChat.kill();
+        clearTimeout(g.roomTimeout);
+        clearTimeout(g.roomTimeout2);
+        char.import(g.pastSaves[g.pastSaves.length - 1].data);
+        g.pastSaves.splice(g.pastSaves.length - 1, 1);
+        char.makeWalk();
+    });
 
     $(window).on('resize', function () {
         char.resizewindow();
@@ -80,7 +90,7 @@ $(document).ready(function () {
             });
         });
 
-        $('.room-left').css({ height: 1080 * g.ratio + "px" });
+        $('.room-left').css({ "height": 1050 * g.ratio + "px", "top": (30 * g.ratio) + "px" });
 
         $('.char-container').css({ "height": 670 * g.ratio + "px" });
         $('.glob-bg').css({ "height": 1080 * g.ratio + "px" });
@@ -142,6 +152,7 @@ $(document).ready(function () {
         $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
         $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
         $(".menu-box-img").css({ "width": (296 * g.ratio) + "px", "height": (90 * g.ratio) + "px" });
+        $("#help_backButton").css({"width": (200 * g.ratio) + "px", "height": (66.6 * g.ratio) + "px", "top": (75 * g.ratio) + "px", "left": (30 * g.ratio) + "px" });
         char.menu();
     };
 
@@ -151,27 +162,8 @@ $(document).ready(function () {
 
     $('#room-menu').click(function () {
         phone.build(null);
-        //menu.initBuild("init");
     });
-    //$("#menu_parent").on('click', '.menu-save', function () {
-    //    menu.saveBtn($(this));
-    //});
-    //$("#menu_parent").on('click', '.menu-del', function () {
-    //    if ($(this).data('foo') === 't') {
-    //        $(this).data('foo', 'x');
-    //        $(this).text("R U SURE?");
-    //    }
-    //    else {
-    //        $(this).data('foo', 't');
-    //        $(this).text("DELETE");
-    //        menu.saveDel($(this));
-    //    }
-    //});
-
-    //$("#menu_parent").on('click', '.menu-export', function () {
-    //    char.export(parseInt($(this).data("save")));
-    //});
-
+    
     $("#room_export_load").click(function () {
         char.import(null);
     });
@@ -187,16 +179,6 @@ $(document).ready(function () {
     $("#room_export_hide").click(function () {
         $("#room_export").slideUp();
     });
-
-    //$("#menu_parent").on('click', '#menu-import', function () {
-    //    $('#room-export-text').hide();
-    //    $('#room-import-text').show();
-    //    $("#room_export").slideDown();
-    //    $("#room_export_data").val('');
-    //    $('#room_export_load').show();
-    //    $('#room_export_load_file').show();
-    //    $('#room_export_file').hide();
-    //});
 
     $('.char-modBtn').click(function () {
         var td = $(this).data('t');
@@ -290,6 +272,7 @@ $(document).ready(function () {
 char.changeMenu = function (menu, update, override) {
     if (update)
         g.prevview = menu;
+    $("#help_backButton").hide();
     switch (menu) {
         case "body":
             if (override)
@@ -324,8 +307,9 @@ char.changeMenu = function (menu, update, override) {
             $("#room_left_char").hide();
             $("#room_left_map").hide();
             $("#room_left_graph").hide();
-            if (override)
+            if (override) {
                 $("#room_left_walk").show();
+            }
             else
                 $("#room_left_walk").is(":visible") ? $("#room_left_walk").hide() : $("#room_left_walk").show();
             char.makeWalk();
@@ -449,39 +433,24 @@ char.friendlyTime = function (hour, ampm = null) {
 };
 
 char.makeWalk = function () {
-    var btnWidth = 200 * g.ratio;
-    var btnHeight = 66.6 * g.ratio;
-    var mgtop = 100 * g.ratio;
-    var mgleft = 25 * g.ratio;
     $("#room_left_walk_sub").html("'<br/><br/>");
     if (g.pastSaves.length > 1) {
-        $("#room_left_walk_sub").append('Go back a room to: ' + g.pastSaves[g.pastSaves.length - 2].name);
-        $("#room_left_walk_sub").append('<img src="./images/room/1001_rand/back_1.png" class="help-history hover-noevent" title="Back" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; z-index: 100; margin-top: ' + mgtop + 'px; margin-left:' + mgleft + 'px; position:relative;" />');
-        //$("#room_left_walk_sub").append('<div style="margin-top:' + (mgtop / 2) + 'px;">' + g.pastSaves[g.pastSaves.length - 2].name + "</div>");
-    }
-    if (g.popArray.length === 0) {
-        $("#room_left_walk_sub").append("<br/>No pop up history. <br/><br/>For help in finding what " +
-            "to do next visit the fortune teller in the homeless camp.");
-    }
-    else {
-        $("#room_left_walk_sub").append("<br/>Popup History:<br/>");
-        for (let i = 0; i < g.popArray.length; i++) {
-            $("#room_left_walk_sub").append('<div class="popUpHistory resize-font" style="font-size: ' + 20 * g.ratio + 'px">' + g.popArray[i] + '</div>');
+        $("#room_left_walk_sub").append('<div class="resize-font"><br/><br/><br/><br/>Go back a room to: ' + g.pastSaves[g.pastSaves.length - 2].name + '</div>');
+        if ($("#room_left_walk").is(":visible")) {
+            $("#help_backButton").show();
         }
     }
-
-
-    $('.help-history').click(function () {
-        //console.log("hit")
-        //var j = g.pastSaves.length - 2;
-        g.pastSaves.splice(g.pastSaves.length - 1, 1);
-        privateChat.kill();
-        clearTimeout(g.roomTimeout);
-        clearTimeout(g.roomTimeout2);
-        char.import(g.pastSaves[g.pastSaves.length - 1].data);
-        g.pastSaves.splice(g.pastSaves.length - 1, 1);
-        char.makeWalk();
-    });
+    else {
+        $("#room_left_walk_sub").append('<div class="resize-font" style="font-size: ' + 20 * g.ratio + 'px"><br/><br/><br/><br/></div>');
+        $("#help_backButton").hide();
+    }
+    $("#room_left_walk_sub").append('<div class="resize-font" style="font-size: ' + 30 * g.ratio + 'px;"><br/>Popup History:</div>');
+    if (g.popArray.length === 0) {
+        $("#room_left_walk_sub").append('<div class="popUpHistory resize-font" style="font-size: ' + 20 * g.ratio + 'px">None</div>');
+    }
+    for (let i = 0; i < g.popArray.length; i++) {
+        $("#room_left_walk_sub").append('<div class="popUpHistory resize-font" style="font-size: ' + 20 * g.ratio + 'px">' + g.popArray[i] + '</div>');
+    }
 };
 
 char.newdayfake = function () {
@@ -596,6 +565,9 @@ char.room = function (roomID) {
     cl.energydisplay();
     if ($('#room_left_map').is(":visible"))
         char.map();
+    else if ($("#room_left_walk_sub").is(":visible")) {
+        char.makeWalk();
+    }
     if (g.prevRoom === 0 || g.prevRoom === 28){
         if (g.prevview !== null)
             char.changeMenu(g.prevview, false, true);
@@ -631,440 +603,6 @@ char.addDays = function (days) {
     g.dt.setDate(g.dt.getDate() + days);
     nav.buildclock();
 };
-
-//menu.initBuild = function (type) {
-//    $('#menu_parent').html('<img src="./images/phone/' + inv.get(inv.phone).image + '" style="position:absolute; ' + g.makeCss(1000, 700, 40, 610) + '" class="menu-phoneBG" />');
-//    $('#menu_parent').append('<img src="./images/phone/bSave.png" style="position:absolute; ' + g.makeCss(150, 150, 180, 660) + '" data-type="save" class="menu-button menu-buttonKill" />');
-//    $('#menu_parent').append('<img src="./images/phone/bRelationships.png" style="position:absolute; ' + g.makeCss(150, 150, 180, 810) + '" data-type="rel" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bContacts.png" style="position:absolute; ' + g.makeCss(150, 150, 180, 960) + '" data-type="contact" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bHelp.png" style="position:absolute; ' + g.makeCss(150, 150, 180, 1110) + '" data-type="help" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bTime.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 660) + '" data-type="time" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bPic.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 810) + '" data-type="pic" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bSettings.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 960) + '" data-type="settings" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bHormone.png" style="position:absolute; ' + g.makeCss(150, 150, 330, 1110) + '" data-type="hormone" class="menu-button menu-buttonKill"/>');
-//    if (g.sissy[54].ach)
-//        $('#menu_parent').append('<img src="./images/phone/bStats.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 660) + '" data-type="stats" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bPatron.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 960) + '" data-type="patron" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bAch.png" style="position:absolute; ' + g.makeCss(150, 150, 480, 810) + '" data-type="ach" class="menu-button menu-buttonKill"/>');
-//    //cheat menu
-//    //$('#menu_parent').append('<img src="./images/phone/bAdmin.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 660) + '" data-type="admin" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/bPatreon.png" style="position:absolute; ' + g.makeCss(150, 150, 780, 1110) + '" data-type="patreon" class="menu-button menu-buttonKill"/>');
-//    $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
-//    $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
-//    if (type === "init" || type === "save")
-//        $('#menu_parent').slideDown();
-
-//    if (type === "save") {
-//        $('.menu-button[data-type="menu"]').remove();
-//        menu.mClick("save");
-//    }
-//    //sstat.init();
-//};
-
-//menu.mClick = function (type) {
-//    switch (type) {
-//        case "close":
-//            $('#menu_parent').slideUp('normal', function () {
-//                $('#menu_parent').html('');
-//            });
-//            break;
-//        case "menu":
-//            phone.build(null);
-//            //menu.initBuild("");
-//            break;
-//        case "rel":
-//            //menu.mClick("close");
-//            $('.menu-buttonKill').remove();
-//            $('.menu-button').remove();
-//            $('.menu-phoneBG').addClass('menu-phoneBGRotate');
-//            setTimeout(function () {
-//                var thisImg = inv.get(inv.phone).image.split('.');
-//                thisImg = thisImg[0] + "_rotate." + thisImg[1];
-//                $('#menu_parent').html('<img src="./images/phone/' + thisImg + '" style="position:absolute; ' + g.makeCss(1015, 1450, 32, 235) + '" class="menu-phoneBG" />');
-//                $('#menu_parent').append('<img src="./images/phone/power_rotate.png" style="position:absolute; ' + g.makeCss(131, 131, 474, 1533) + '" data-type="close" class="menu-button"/>');
-//                $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
-//                $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
-//                scc.buildIcons();
-//            }, 800);
-//            break;
-//        case "save":
-//            $(".menu-buttonKill").remove();
-//            $('#menu_parent').append('<div id="menu_normal" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
-//                '<ul>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="0">SAVE</button><div class="menu-save-line" data-save="0"></div><button type="button" class="menu-del" data-save="0" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="0"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="1">SAVE</button><div class="menu-save-line" data-save="1"></div><button type="button" class="menu-del" data-save="1" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="1"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="2">SAVE</button><div class="menu-save-line" data-save="2"></div><button type="button" class="menu-del" data-save="2" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="2"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="3">SAVE</button><div class="menu-save-line" data-save="3"></div><button type="button" class="menu-del" data-save="3" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="3"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="4">SAVE</button><div class="menu-save-line" data-save="4"></div><button type="button" class="menu-del" data-save="4" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="4"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="5">SAVE</button><div class="menu-save-line" data-save="5"></div><button type="button" class="menu-del" data-save="5" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="5"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="6">SAVE</button><div class="menu-save-line" data-save="6"></div><button type="button" class="menu-del" data-save="6" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="6"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="7">SAVE</button><div class="menu-save-line" data-save="7"></div><button type="button" class="menu-del" data-save="7" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="7"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="8">SAVE</button><div class="menu-save-line" data-save="8"></div><button type="button" class="menu-del" data-save="8" disabled="disabled" data-foo="t">DELETE</button><button type="button" class="menu-export" data-save="8"><img class="menu-export-image" src="./images/general/export.png"/></button></li>' +
-//                '<li><button type="button" class="menu-save" data-type="save" data-save="9">LOAD</button><div class="menu-save-line" data-save="9"></div><span class="resize-text" style="font-size:.8rem">[Auto Save]</span></li>' +
-//                '<li><button type="button" id="menu-import" data-type="import">IMPORT <img class="menu-export-image" src="./images/general/import.png"/></button></li>' +
-//                '</ul>' +
-//                '</div>');
-//            var i;
-//            for (i = 0; i < 11; i++) {
-//                var cookieName = 'HatMP_' + i;
-//                if (localStorage.getItem(cookieName) !== null) {
-//                    var initTemp = JSON.parse(localStorage[cookieName]);
-//                    $('.menu-del[data-save=' + i + ']').prop('disabled', false);
-//                    if (initTemp.version >= 7) {
-//                        $('.menu-save[data-save=' + i + ']').text('LOAD').attr('data-type', 'load');
-//                        $('.menu-save-line[data-save=' + i + ']').html(initTemp.savename);
-//                    }
-//                    else {
-//                        $('.menu-save-line[data-save=' + i + ']').text("Old Version - Can't Load. ");
-//                    }
-//                }
-//            }
-//            $('.menu-save-line').css({ 'width': 300 * g.ratio + 'px' });
-//            $('.menu-save-line').css({ 'font-size': 20 * g.ratio + 'px', 'margin-top': 10 * g.ratio + 'px' });
-//            $('.menu-save').css({ 'font-size': 20 * g.ratio + 'px', 'padding': 5 * g.ratio + "px " + 10 * g.ratio + "px" });
-//            $('.menu-del').css({ 'font-size': 20 * g.ratio + 'px', 'padding': 5 * g.ratio + "px " + 10 * g.ratio + "px" });
-//            $('.menu-export').css({ 'padding': 5 * g.ratio + "px " + 10 * g.ratio + "px" });
-//            $('.menu-export-image').css({ 'width': 15 * g.ratio + 'px' });
-//            $('.menu-load').css({ 'font-size': 20 * g.ratio + 'px' });
-//            break;
-//        case "help":
-//            window.open("http://fapforce5.com"); 
-//            break;
-//        case "ach":
-//            $('.menu-buttonKill').remove();
-//            $('.menu-button').remove();
-//            $('.menu-phoneBG').addClass('menu-phoneBGRotate');
-//            setTimeout(function () {
-//                var thisImg = inv.get(inv.phone).image.split('.');
-//                thisImg = thisImg[0] + "_rotate." + thisImg[1];
-//                $('#menu_parent').html('<img src="./images/phone/' + thisImg + '" style="position:absolute; ' + g.makeCss(1015, 1450, 32, 235) + '" class="menu-phoneBG" />');
-//                $('#menu_parent').append('<img src="./images/phone/power_rotate.png" style="position:absolute; ' + g.makeCss(131, 131, 474, 1533) + '" data-type="close" class="menu-button"/>');
-//                $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
-//                $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
-//                trophy.draw();
-//            }, 800);
-//            break;
-//        case "patron":
-//            window.open("https://www.patreon.com/FF5", "_blank"); 
-//            break;
-//        //case "hormone":
-//        //    var tempEnergy = Math.floor((gv.get("energy") / gv.get("maxenergy")) * 100);
-//        //    $('#menu_parent').append('<div class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
-//        //        '<div style="padding:10%;">' +
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-bottom:5px;">Hormone Levels</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#00abff; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + gv.get("hormone") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Sissyness</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + g.sissyPoints() + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Appearance</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + cl.appearance() + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Energy</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + tempEnergy + '%; height:' + 15 * g.ratio + 'px; background:#20C000; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Fitness Level: ' + gv.get("fitnessLevel") + '</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + gv.get("fitness") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Leg Level: ' + gv.get("legLevel") + '</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + gv.get("leg") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '<div style="font-size:' + 20 * g.ratio + 'px; margin-top:10px; margin-bottom:5px;">Upper Body Level: ' + gv.get("bodyLevel") + '</div>' +
-//        //        '<div style="width: 100%; height:' + 15 * g.ratio + 'px; background:#333333; border-radius:20px; border:solid 1px #000000;">' +
-//        //        '<div style="width: ' + gv.get("body") + '%; height:' + 15 * g.ratio + 'px; background:#ff5ed1; border-radius:20px 0 0 20px;"></div>' +
-//        //        '</div>' +
-
-//        //        '</div></div>');
-
-//        //    break;
-//        //case "stats":
-//        //    g.sumSissy();
-//        //    $('#menu_parent').append('<img class="sissyai-kill" src="./images/phone/sissy.jpg" class="menu-center" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + '"/>');
-//        //    $('#menu_parent').append('<div class="sissyai-kill" style="color:#e1018f; position:absolute; ' + g.makeCss(250, 500, 650, 700) + ' font-size:' + (40 * g.ratio) + 'px;">' +
-//        //        '<table style="width:100%;">' +
-//        //        '<tr><td>SISSY Points: </td><td> ' + (g.sp.total - gv.get("usedSissyPoints")) + '</td></tr>' +
-//        //        '<tr><td>&nbsp;</td><td></td></tr>' +
-//        //        '<tr><td colspan="2"><button id="sissyai_view" type="button" class="sissy-btn" style="font-size:' + (40 * g.ratio) + 'px;">View Sissyness</button></tr></td>' +
-//        //        '</table></div>');
-//        //    $("#sissyai_view").click(function () {
-//        //        $('.menu-buttonKill').remove();
-//        //        $('.menu-button').remove();
-//        //        $('.sissyai-kill').remove();
-//        //        $('.menu-phoneBG').addClass('menu-phoneBGRotate');
-//        //        setTimeout(function () {
-//        //            var thisImg = inv.get(inv.phone).image.split('.');
-//        //            thisImg = thisImg[0] + "_rotate." + thisImg[1];
-//        //            $('#menu_parent').html('<img src="./images/phone/' + thisImg + '" style="position:absolute; ' + g.makeCss(1015, 1450, 32, 235) + '" class="menu-phoneBG" />');
-//        //            $('#menu_parent').append('<img src="./images/phone/power_rotate.png" style="position:absolute; ' + g.makeCss(131, 131, 474, 1533) + '" data-type="close" class="menu-button"/>');
-//        //            $('#menu_parent').append('<img src="./images/phone/menu_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 720, 1560) + '" data-type="menu" class="menu-button"/>');
-//        //            $('#menu_parent').append('<img src="./images/phone/back_rotate.png" style="position:absolute; ' + g.makeCss(144, 101, 200, 1560) + '" data-type="back" class="sc-menu-button"/>');
-//        //            $("#menu_parent").append('<img src="./images/phone/sissy_wide.jpg" style="position:absolute; ' + g.makeCss(897, 1108, 94, 416) + '"/>');
-//        //        }, 800);
-//        //    });
-//        //    break;
-//        case "time":
-//            $(".menu-buttonKill").remove();
-//            if (!g.passtime.includes(g.roomID)) {
-//                var places = "";
-//                $.each(g.rooms, function (i, v) {
-//                    if (g.passtime.includes(v.roomID))
-//                        places = places.concat("<br/>" + v.name);
-//                });
-//                $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-//                    "<h2>Wait a bit</h2>" +
-//                    "Sorry You can't wait here, but you can wait at the following locations: " + places +
-//                    "</div>");
-//            }
-//            else if (g.dt.getHours() > 21 || g.dt.getHours() < 6) {
-//                $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-//                    "<h2>Wait a bit</h2>" +
-//                    "It's after 10:00 PM. You need to get some sleep. " +
-//                    "</div>");
-//            }
-//            else {
-//                $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc;">' +
-//                    '<div style="width:100%; text-align:center;"><h2>Wait a bit</h2></div>' +
-//                    '<table style="margin-left:auto; margin-right:auto; text-align:left;">' +
-//                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="pass" data-num="1">1 Hour</button> </td><td>Wait for an hour </td></tr>' +
-//                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="12">Noon</button> </td><td>Wait till Noon </td></tr>' +
-//                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="17">5:00 PM</button> </td><td>Wait till 5:00PM </td></tr>' +
-//                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="20">8:00 PM</button> </td><td>Wait till 8:00PM </td></tr>' +
-//                    '<tr><td><button type="button" class="menu-waitABit menu-blueButton" data-wait="specific" data-num="22">10:00 PM</button> </td><td>Wait till 10:00PM </td></tr>' +
-//                    '</table>' +
-//                    '<div id="admin-wait-message" style="width:100%; text-align:center; font-size: 1.1rem;">Time: ' + nav.friendlyTime() + '</div>' +
-//                    '</div>');
-//                $(".menu-waitABit").click(function () {
-//                    var num = parseInt($(this).data('num'));
-//                    var currentTime = g.dt.getHours();
-//                    var currentMinutes = g.dt.getMinutes();
-//                    if (currentTime < 22 || currentTime > 6) {
-//                        if ($(this).data("wait") === "pass") {
-//                            currentTime += num;
-//                            if (currentTime > 21) {
-//                                currentTime = 22;
-//                                currentMinutes = 0;
-//                            }
-//                            char.settime(currentTime, currentMinutes);
-//                            $("#admin-wait-message").text("Time: " + nav.friendlyTime());
-//                            char.room(g.roomID);
-//                        }
-//                        else {
-//                            if (currentTime < num) {
-//                                char.settime(num, 0);
-//                                $("#admin-wait-message").text("Time: " + nav.friendlyTime());
-//                                char.room(g.roomID);
-//                            }
-//                            else
-//                                $("#admin-wait-message").html("That Hour has passed.<br />Time: " + nav.friendlyTime());
-//                        }
-//                    }
-//                    else {
-//                        $("#admin-wait-message").text("Sorry, it's after 10:00 PM, You need to get some sleep.");
-//                    }
-//                });
-//            }
-
-//            break;
-//        case "contact":
-//            var contacTop, contactLeft;
-//            var contactCounter = 0;
-//            var contactList = "";
-//            for (i = 0; i < sc.char.length; i++) {
-//                if (sc.char[i].phone <= sc.char[i].step && sc.char[i].phone > -1) {
-//                    contacTop = (Math.floor(contactCounter / 4) * 150) + 150;
-//                    contactLeft = (contactCounter % 4) * 150;
-//                    contactList += '<img src="./images/phone/char/' + sc.char[i].image + '" style="position:absolute; ' + g.makeCss(150, 150, contacTop, contactLeft) +
-//                        '" data-name="' + sc.char[i].name + '" class="hover-pointer phone-contact"/>';
-//                    contactCounter++;
-//                }
-//            }
-//            $(".menu-buttonKill").remove();
-//            $('#menu_parent').append('<div class="contact-body" style="position:absolute; ' + g.makeCss(760, 615, 167, 651) + ' background:#ccc; text-align:center;">' +
-//                '<h2>Contacts</h2>' + 
-//                contactList +
-//                '</div>');
-//            $('.phone-contact').click(function () {
-//                sc.phone($(this).data("name"));
-//            });
-//            break;
-//        case "pic":
-//            $(".menu-buttonKill").remove();
-//            var picI, counter;
-//            counter = 0;
-//            for (picI = 0; picI < pic.master.length; picI++) {
-//                if (pic.master[picI].entry) {
-//                    var pLeft, pTop;
-//                    pLeft = ((counter % 4) * 150) + 660;
-//                    pTop = (Math.floor(counter / 4) * 150) + 180;
-//                    $('#menu_parent').append('<img src="./images/inv/pics/' + pic.master[picI].thumb + '" style="position:absolute; ' + g.makeCss(150, 150, pTop, pLeft) + '" data-name="' + pic.master[picI].name + '" class="menu-button menu-buttonKill menu-phoneimage" />');
-//                    counter++;
-//                }
-//            }
-            
-//            $('.menu-phoneimage').click(function () {
-//                var subPicName = $(this).data("name");
-//                var subPicFileName = null;
-//                for (var subPicI = 0; subPicI < pic.master.length; subPicI++) {
-//                    if (pic.master[subPicI].name === subPicName) {
-//                        subPicFileName = pic.master[subPicI].image;
-//                        subPicI = pic.master.length;
-//                    }
-//                }
-//                if (subPicFileName !== null) {
-//                    $(".menu-buttonKill").remove();
-//                    $('#menu_parent').append('<img src="./images/inv/pics/' + subPicFileName + '" style="position:absolute; ' + g.makeCss(761, 617, 167, 649) + '" class="menu-button menu-buttonKill" />');
-//                    $('#menu_parent').append('<img src="./images/phone/bBack.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 1075) + ' " data-type="back" class="menu-pic-goback menu-button menu-buttonKill">');
-//                    $('.menu-pic-goback').click(function () {
-//                        menu.mClick("pic");
-//                    });
-//                }
-//            });
-
-//            break;
-//        case "settings":
-//            $('.menu-buttonKill').remove();
-//            $('.menu-button').remove();
-//            $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(761, 617, 167, 649) + ' background:#000;">' +
-//                '<div style="color:#fff; font-size:' + 36 * g.ratio + 'px; margin-bottom:10px; width:100%; text-align:center;">⚙️ Settings</div>' +
-//                '<div class="switch-group char-20">' +
-//                'Fantasy Creatures' +
-//                '<div class="switch-field">' +
-//                '<input type="radio" id="radio-fantasy-false" name="switch-fantasy" value="off" />' +
-//                '<label for="radio-fantasy-false">Off</label>' +
-//                '<input type="radio" id="radio-fantasy-true" name="switch-fantasy" value="on" />' +
-//                '<label for="radio-fantasy-true">On</label>' +
-//                '</div>' +
-//                '</div>' +
-//                '<div class="switch-group char-20">' +
-//                'Fight Speed' +
-//                '<div class="switch-field" >' +
-//                '<input type="radio" id="radio-fightspeed-3500" name="switch-fightspeed" value="3500" />' +
-//                '<label for="radio-fightspeed-3500">Slow</label>' +
-//                '<input type="radio" id="radio-fightspeed-1250" name="switch-fightspeed" value="1250" />' +
-//                '<label for="radio-fightspeed-1250">Normal</label>' +
-//                '<input type="radio" id="radio-fightspeed-600" name="switch-fightspeed" value="600" />' +
-//                '<label for="radio-fightspeed-600">Fast</label>' +
-//                '<input type="radio" id="radio-fightspeed-100" name="switch-fightspeed" value="100" />' +
-//                '<label for="radio-fightspeed-100">Very Fast</label>' +
-//                '</div>' +
-//                '</div>' +
-//                '<div class="switch-group char-20">' +
-//                'Fight Sex Scenes' +
-//                '<div class="switch-field" >' +
-//                '<input type="radio" id="radio-fightsex-3500" name="switch-fightsex" value="3500" />' +
-//                '<label for="radio-fightsex-3500">Slow</label>' +
-//                '<input type="radio" id="radio-fightsex-1250" name="switch-fightsex" value="1250" />' +
-//                '<label for="radio-fightsex-1250">Normal</label>' +
-//                '<input type="radio" id="radio-fightsex-600" name="switch-fightsex" value="600" />' +
-//                '<label for="radio-fightsex-600">Fast</label>' +
-//                '<input type="radio" id="radio-fightsex-100" name="switch-fightsex" value="100" />' +
-//                '<label for="radio-fightsex-100">Very Fast</label>' +
-//                '</div>' +
-//                '</div>' +
-//                '<div class="switch-group char-20">' +
-//                'Difficulty' +
-//                '<div class="switch-field" >' +
-//                '<input type="radio" id="radio-diff-0" name="switch-difficulty" value="0" />' +
-//                '<label for="radio-diff-0">Easy</label>' +
-//                '<input type="radio" id="radio-diff-1" name="switch-difficulty" value="1" />' +
-//                '<label for="radio-diff-1">Medium</label>' +
-//                '<input type="radio" id="radio-diff-2" name="switch-difficulty" value="2" />' +
-//                '<label for="radio-diff-2">Hard</label>' +
-//                '</div>' +
-//                '</div>' +
-//                '<div class="switch-group char-20">' +
-//                ' Clock' +
-//                '<div class="switch-field" >' +
-//                '<input type="radio" id="radio-12" name="switch-clock" value="12" />' +
-//                '<label for="radio-12">12 Hour</label>' +
-//                '<input type="radio" id="radio-24" name="switch-clock" value="24" />' +
-//                '<label for="radio-24">24 Hour</label>' +
-//                '</div>' +
-//                '</div>' +
-//                '</div>');
-//            $('#menu_parent').append('<img src="./images/phone/power.png" style="position:absolute; ' + g.makeCss(90, 90, 937, 915) + '" data-type="close" class="menu-button"/>');
-//            $('#menu_parent').append('<img src="./images/phone/menu.png" style="position:absolute; ' + g.makeCss(70, 100, 950, 750) + '" data-type="menu" class="menu-button"/>');
-//            $('#radio-fantasy-' + gv.get("fantasyCreatures")).prop("checked", true);
-//            $('#radio-fightspeed-' + gv.get("fightspeed")).prop("checked", true);
-//            $('#radio-fightsex-' + gv.get("fightsex")).prop("checked", true);
-//            $('#radio-' + gv.get("clock24")).prop("checked", true);
-//            $('#radio-diff-' + gv.get("difficulty")).prop("checked", true);
-
-//            $('input[type=radio][name=switch-fantasy]').change(function () {
-//                gv.set("fantasyCreatures", $(this).val() === "on");
-//            });
-//            $('input[type=radio][name=switch-clock]').change(function () {
-//                gv.set("clock24", $(this).val());
-//                nav.buildclock();
-//            });
-//            $('input[type=radio][name=switch-difficulty]').change(function () {
-//                gv.set("difficulty", parseInt($(this).val()));
-//            });
-//            $('input[type=radio][name=switch-fightspeed]').change(function () {
-//                gv.set("fightspeed", parseInt($(this).val()));
-//                if (g.fight !== null)
-//                    g.fight.fighttimer = parseInt($(this).val());
-//            });
-//            $('input[type=radio][name=switch-fightsex]').change(function () {
-//                gv.set("fightsex", parseInt($(this).val()));
-//                if (g.fight !== null)
-//                    g.fight.fightsex = parseInt($(this).val());
-//            });
-//            $('.switch-group').css({ "font-size": (20 * g.ratio) + "px" });
-//            break;
-//        case "patreon":
-//            $(".menu-buttonKill").remove();
-//            $('#menu_parent').append('<div style="position:absolute; ' + g.makeCss(730, 585, 167, 651) + ' background:#ccc; padding:' + 15 * g.ratio + 'px; text-align:center;">' +
-//                "I want to thank <strong>All</strong> my patrons and supporters of this game. " +
-//                "Without your support this game would not have anywhere near the quality it has!<hr />" +
-//                "Below are those Patrons that went above an beyond in their support of this game by " +
-//                "contributing $10 a month to its making! <br />" +
-//                "<div style='font-size:.8rem; color:#666; margin-bottom:10px;'>Listed in alphabetical order:</div>" +
-//                "Arothiel<br/>" +
-//                "Discretlysinful (Aaron M ) <br /> " +
-//                "John R. (AngryJ)<br />" +
-//                "Krueschen <br />" +
-//                "Kylie V. <br/>" +
-//                "Merchanto<br/>" +
-//                "Orrin <br/>" +
-//                "reverseclipse<br/>" +
-//                "SirGuren (Contributor)<br/>" +
-//                "WendyJ<br/>" +
-//                "Wild86willie<br/>" +
-//                '</div>');
-//            break;
-//    }
-//};
-
-//menu.build = function(itemClicked) {
-//    $('.menu-tab').removeClass('menu-tab-active');
-//    $('.menu-tab[data-menu=' + itemClicked + ']').addClass('menu-tab-active');
-//    $('.menu-blockDisplay').hide();
-//    switch (itemClicked) {
-//        case "save":
-//            $('#menu-tab-save').slideDown();
-//            break;
-//        case "pref":
-//            $('#menu-tab-pref').slideDown();
-//            break;
-//        case "admin":
-//            $("#menu-tab-admin").slideDown();
-//            break;
-//    }
-    
-//};
 
 menu.makeSaves = function () {
     var tempRoomMap = new Array();
@@ -1200,7 +738,7 @@ menu.load = function (cookieName, btn, saveID) {
         sissy.st[7].ach = false;
         sissy.st[8].ach = false;
     }
-
+    $(".rl-change").show();
     g.pastSaves = new Array();
 };
 
@@ -1371,6 +909,7 @@ char.import = function (importData) {
     $('.menu-button[data-type="close"]').click();
 
     $("#room_export").slideUp();
+    $(".rl-change").show();
 };
 
 char.file_export = function (saveID) {

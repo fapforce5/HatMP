@@ -144,6 +144,15 @@ gv.init = function () {
         //jail
         { n: "jail", t: 0, q: "int" },
 
+        //masturbate
+        { n: "masturbate_dick", t: 0, q: "int" },
+        { n: "masturbate_pussy", t: 0, q: "int" },
+        { n: "masturbate_vibrator", t: 0, q: "int" },
+        { n: "masturbate_oral", t: 0, q: "int" },
+        { n: "masturbate_finger", t: 0, q: "int" },
+        { n: "masturbate_dildo", t: 0, q: "int" },
+
+        { n: "lolaEvaShowerPeek", t: false, q: "bool" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -485,7 +494,7 @@ gv.init = function () {
         },
         //beast
         {
-            id: 22, type: "dog", subdom: "sub", d: "Dog", ent: [
+            id: 22, type: "dog", subdom: "sub", d: "Canine", ent: [
                 { id: 0, gender: "m", c: 0, day: null, names: new Array() },
                 { id: 1, gender: "f", c: 0, day: null, names: new Array() },
                 { id: 2, gender: "n", c: 0, day: null, names: new Array() },
@@ -537,6 +546,13 @@ gv.init = function () {
         },
         {
             id: 29, type: "oralvirgin", subdom: "sub", d: "Oral Virgin", ent: [
+                { id: 0, gender: "m", c: 0, day: null, names: new Array() },
+                { id: 1, gender: "f", c: 0, day: null, names: new Array() },
+                { id: 2, gender: "n", c: 0, day: null, names: new Array() },
+            ]
+        },
+        {
+            id: 30, type: "milk", subdom: "sub", d: "Got Milked", ent: [
                 { id: 0, gender: "m", c: 0, day: null, names: new Array() },
                 { id: 1, gender: "f", c: 0, day: null, names: new Array() },
                 { id: 2, gender: "n", c: 0, day: null, names: new Array() },
@@ -1071,28 +1087,28 @@ sex.mod = function (type, gender, name) {
 sex.getvirgin = function (id) {
     let gender = null;
     let who = "Unknown";
-    let day = 0;
+    let dayz = 0;
     if (sex.st[id].ent[0].c > 0) {
         gender = "m";
-        day = sex.st[id].ent[0].day;
+        dayz = sex.st[id].ent[0].day;
         if (sex.st[id].ent[0].names.length > 0)
             who = sex.st[id].ent[0].names[0];
     }
     if (sex.st[id].ent[1].c > 0) {
         gender = "f";
-        day = sex.st[id].ent[1].day;
+        dayz = sex.st[id].ent[1].day;
         if (sex.st[id].ent[1].names.length > 0)
             who = sex.st[id].ent[1].names[0];
     }
-    if (sex.st[id].ent[1].c > 0) {
+    if (sex.st[id].ent[2].c > 0) {
         gender = "n";
-        day = sex.st[id].ent[2].day;
+        dayz = sex.st[id].ent[2].day;
         if (sex.st[id].ent[2].names.length > 0)
             who = sex.st[id].ent[2].names[0];
     }
     if (gender === null)
         return { virgin: true, gender: null, day: null, who: null };
-    return { virgin: false, gender: gender, day: day, who: who };
+    return { virgin: false, gender: gender, day: dayz, who: who };
 };
 
 stats.mod = function (t, n, amount) {
@@ -1100,8 +1116,15 @@ stats.mod = function (t, n, amount) {
 };
 
 future.add = function (name, daysleft) {
-    future.st.push({ name: name, daysleft: daysleft });
-}
+    let alreadyExists = false;
+    for (let i = 0; i < future.st.length; i++) {
+        if (future.st[i] === name) {
+            alreadyExists = true;
+        }
+    }
+    if (!alreadyExists)
+        future.st.push({ name: name, daysleft: daysleft });
+};
 
 dreams.add = function (dream) {
     dreams.st.push(dream);
@@ -1114,6 +1137,15 @@ future.get = function (name) {
     }
     return -1;
 }
+
+future.kill = function (name) {
+    for (let i = 0; i < future.st.length; i++) {
+        if (future.st[i] === name) {
+            future.st.splice(i, 1);
+            return;
+        }
+    }
+};
 
 daily.newday = function () { 
     daily.st = new Array();
@@ -1295,8 +1327,21 @@ levels.desc = function (name, level) {
     }
 };
 
-levels.gavehandjob = function (gender, who = null) {
+levels.gavehandjob = function (gender, who = null, beast = null) {
+    gv.mod("arousal", 40);
     sex.mod("gavehandjob", gender, who);
+    if (beast !== null)
+        levels.beast(beast, gender, who, "hand");
+};
+
+levels.gothandjob = function (gender, who = null, sissygasm = false, came = true) {
+    if (came)
+        cl.doCum();
+    else
+        gv.mod("arousal", 50);
+    sex.mod("gothandjob", gender, who);
+    if (sissygasm)
+        sex.mod("sissygasm", gender, who);
 };
 
 levels.gotbj = function (gender, who = null) {
@@ -1545,7 +1590,7 @@ levels.analSize = function (size) {
 levels.oral = function (size, gender = null, who = null, swallow = false, beast = null, facialOverride = false) {
     //levels.mod("oral", 25, 999);
     levels.oralSizes(size);
-    gv.mod("arousal", 15);
+    gv.mod("arousal", 25);
 
     if (swallow && gender !== null) {
         levels.swallowCum(gender, who);
@@ -1564,10 +1609,7 @@ levels.oral = function (size, gender = null, who = null, swallow = false, beast 
         sex.mod("gavebj", gender, who);
     }
 
-    if (beast !== null) {
-        sex.mod(beast, "m", who);
-        levels.mod("beast", 25);
-    }
+    levels.beast(beast, gender, who, "oral");
 }
 
 levels.oralSizes = function (size) {
@@ -1745,8 +1787,15 @@ levels.oralTake = function (size) {
         case "normal": return { n: retvar, c: 2, canTake: true, pleasure: 5 };
         case "brutal": return { n: retvar, c: 3, canTake: true, pleasure: 2 };
         case "broken": return { n: retvar, c: 4, canTake: false, pleasure: -2 };
-    };
+    }
 };
+
+levels.gotfisted = function(gender, who = null, sissygasm = false){
+    if (sissygasm)
+        cl.doCum();
+    sex.mod("gotfisted", "f", who);
+    levels.anal(gender === "m" ? 6 : 5);
+}
 
 levels.swallowCum = function (gender = "m", name = null) {
     switch (levels.get("cum").l) {
@@ -1768,6 +1817,7 @@ levels.swallowCum = function (gender = "m", name = null) {
 
 levels.oralass = function(gender, who = null){
     sex.mod("oralass", gender, who);
+    gv.mod("arousal", 40);
     levels.oralSizes(3);
 };
 
@@ -1827,9 +1877,24 @@ levels.fuckpussy = function (who, gender = "f") {
     sex.mod("pussiesfucked", gender, who);
 };
 
+levels.beast = function (beast, gender = "m", who = null, type = "anal") {
+    if (beast !== null)
+        sex.mod(beast, gender, who);
+    switch (type) {
+        case "hand": levels.mod("beast", 25); break;
+        case "oral": levels.mod("beast", 45); break;
+        case "anal": levels.mod("beast"), 60; break;
+    }
+};
+
 levels.fuckass = function (who = null, gender = "f") {
     cl.doCum(false);
     sex.mod("fuckass", gender, who);
+};
+
+levels.gottitjob = function (gender, who = null) {
+    sex.mod("gottitjob", gender, who);
+    cl.doCum();
 };
 
 levels.beer = function (numBeers = 1) {
@@ -1844,9 +1909,19 @@ levels.beer = function (numBeers = 1) {
     return { totalBeers: totalBeers, beerLevel: beerLevel, passout: false, nextOneDrunk: (beerLevel - totalBeers === 1) };
 };
 
-levels.gothandjob = function (gender, who = null) {
+levels.gotfootjob = function (gender, who = null, came = true) {
+    if (came)
+        cl.doCum();
+    sex.mod("gotfootjob", gender, who);
+};
+
+levels.gavefootjob = function (gender, who = null) {
+    sex.mod("gavefootjob", gender, who);
+};
+
+levels.sissygasm = function (gender, who = null) {
     cl.doCum();
-    sex.mod("gothandjob", gender, who);
+    sex.mod("sissygasm", gender, who);
 };
 
 qdress.unlock = function (setting = true) {

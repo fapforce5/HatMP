@@ -463,7 +463,7 @@ room318.chatcatch = function (callback) {
             break;
         case "vib2":
             cl.doCum(false);
-            stats.mod("masturbate", "vibrator", 1);
+            gv.mod("masturbate_vibrator", 1);
             nav.bg("318_janiceBedroom/" + (cl.c.chastity !== null ? "vib_chast2.jpg" : "vib_dick2.jpg"));
             break;
         case "breakup":

@@ -947,7 +947,7 @@ cl.nipplering = [
 ];
 
 cl.stinky = function () {
-    if (g.diffDateByMinutes(g.dt, gv.get("shower")) < 8640) {
+    if (g.diffDatesByDays(g.dt, gv.get("shower")) < 8) {
         if ($('#char-bg-1').children('img').length > 0)
             $('#char-bg-1').html("");
         return false;
@@ -2469,7 +2469,7 @@ cl.getCum = function () {
     return timeSince > 1 ? 1 : timeSince;
 };
 
-cl.doCum = function (bigCum) {
+cl.doCum = function (bigCum = false) {
     var checkCum = cl.getCum();
 
     if (checkCum === 1) {

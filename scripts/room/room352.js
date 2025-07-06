@@ -87,6 +87,7 @@ room352.chatcatch = function (callback) {
     switch (callback) {
         case "waitroom":
             if (g.internal.events.length === 0) {
+                nav.killall();
                 nav.bg("352_jackoff/daycomplete.jpg")
                 chat(24, 352);
             }

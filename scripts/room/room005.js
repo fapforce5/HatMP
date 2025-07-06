@@ -158,8 +158,7 @@ room5.chatcatch = function (callback) {
             }, 2000);
             break;
         case "massge3_3":
-            cl.doCum(false);
-            sex.mod("foot", false, "f", 1);
+            levels.gotfootjob("f", "eva");
             nav.bg("5_evaMassage/013_footjob4.jpg");
             break;
         case "nude":

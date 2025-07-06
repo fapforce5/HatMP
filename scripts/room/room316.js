@@ -577,8 +577,8 @@ room316.btnclick = function (name) {
                 sc.select("icontv", "316_livingroom/icon_tv.png", 4);
             if (!g.pass.datr)
                 sc.select("iconDatr", "316_livingroom/icon_datr.png", 6);
-            if (!g.pass.dog)
-                sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 8);
+            //if (!g.pass.dog)
+            //    sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 8);
 
             if (!g.pass.dick)
                 sc.select("iconDickx", "316_livingroom/icon_dick.png", 9);
@@ -631,8 +631,7 @@ room316.btnclick = function (name) {
                 g.internal = 1;
             }
             else {
-                sex.mod("oral", false, "f", 1);
-                cl.doCum();
+                levels.gotbj("f", "janice");
                 nav.bg("316_livingroom/bj3.jpg");
                 nav.killbutton("bj");
                 chat(49, 316);

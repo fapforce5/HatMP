@@ -430,20 +430,20 @@ room14.btnclick = function (name) {
             break;
         case "icon_finger":
             nav.killall();
-            sex.mod("hand", true, "f", 1);
+            levels.gavehandjob("f", "landlord");
             gv.mod("horny", 50);
             nav.bg("14_motherRoom/Sleeping_FingerPussy.gif");
             nav.next("icon_finish");
             break;
         case "icon_ass":
             nav.killall();
-            sex.mod("hand", true, "f", 1);
-            gv.mod("horny", 50);
+            levels.gavehandjob("f", "landlord");
             nav.bg("14_motherRoom/Sleeping_FingerAhole.gif");
             nav.next("icon_finish");
             break;
         case "icon_lickass":
             nav.killall();
+            levels.oralass("f", "landlord");
             nav.button({
                 "type": "img",
                 "name": "sleep",
@@ -991,7 +991,7 @@ room14.chatcatch = function (callback) {
             sc.modLevel("landlord", 50, 10);
             sc.completeMissionTask("landlord", "man", 3);
             char.addtime(79);
-            sex.mod("hand", false, "f", 1);
+            levels.gothandjob("f", "landlord");
             dreams.add("dream_landlordHandjob");
             char.room(16);
             break;

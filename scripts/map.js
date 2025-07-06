@@ -14,7 +14,6 @@ m.col = 20;
 //q -> me
 m.drawBackground = function (row, col) {
     nav.killall();
-    console.log(row + " -- " + col);
     if (m.fmap[row][col].used === 'b') {
         nav.bg("475_fight/b.jpg");
         nav.button({
@@ -430,8 +429,6 @@ m.createFmapNew = function () {
     }
     let cave, cabin, caveunk, swampunk;
     cave = false; cabin = caveunk = swampunk = false;
-    console.log(tf.length);
-    console.log(tf);
     for (i = 0; i < tf.length; i++) {
         if (tf[i].row === 67 && !cabin && tf[i].col > 0 && tf[i].col < 20) {
             m.fmap[tf[i].row][tf[i].col].used = 'h';
@@ -439,7 +436,6 @@ m.createFmapNew = function () {
         }
         else if (tf[i].row === 54 && !cave && tf[i].col > 0 && tf[i].col < 20) {
             m.fmap[tf[i].row][tf[i].col].used = 'c';
-            console.log(tf[i].row + " - " + tf[i].col);
             cave = true;
         }
         else if (tf[i].row === 42 && !caveunk && tf[i].col > 0 && tf[i].col < 20) {

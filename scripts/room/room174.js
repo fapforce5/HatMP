@@ -46,8 +46,7 @@ room174.btnclick = function (name) {
     switch (name) {
         case "goth4":
             nav.killbutton("goth4");
-            sex.mod("bj", true, "f", 1);
-            gv.mod("arousal", 20);
+            levels.oral(2, "n", "!bill", true);
             nav.bg("174_oneOffCase/goth4.jpg");
             chat(6, 174);
             break;
