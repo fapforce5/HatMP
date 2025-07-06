@@ -44,27 +44,27 @@ room219.btnclick = function (name) {
                 },
                 {
                     "name": "hypno1",
-                    "image": missy.st[11].c === 0 ? "file1.png" : "file1Unlock.png"
+                    "image": missy.st[13].c === 0 ? "file1.png" : "file1Unlock.png"
                 },
                 {
                     "name": "hypno2",
-                    "image": missy.st[12].c === 0 ? "file2.png" : "file2Unlock.png"
+                    "image": missy.st[14].c === 0 ? "file2.png" : "file2Unlock.png"
                 },
                 {
                     "name": "hypno3",
-                    "image": missy.st[13].c === 0 ? "file3.png" : "file3Unlock.png"
+                    "image": missy.st[15].c === 0 ? "file3.png" : "file3Unlock.png"
                 },
                 {
                     "name": "hypno4",
-                    "image": missy.st[14].c === 0 ? "file4.png" : "file4Unlock.png"
+                    "image": missy.st[16].c === 0 ? "file4.png" : "file4Unlock.png"
                 },
                 {
                     "name": "hypno5",
-                    "image": missy.st[15].c === 0 ? "file5.png" : "file5Unlock.png"
+                    "image": missy.st[17].c === 0 ? "file5.png" : "file5Unlock.png"
                 },
                 {
                     "name": "hypno6",
-                    "image": missy.st[16].c === 0 ? "file6.png" : "file6Unlock.png"
+                    "image": missy.st[18].c === 0 ? "file6.png" : "file6Unlock.png"
                 },
             ];
             room219.btnclick("makeScreen");
@@ -83,7 +83,7 @@ room219.btnclick = function (name) {
                 "height": 411,
                 "image": "219_dataEntry/hypo1.gif"
             }, 219);
-            missy.st[11].c++;
+            missy.st[13].c++;
             g.roomTimeout = setTimeout(function () {
                 levels.mod("sub", 50, 1);
                 chat(6, 219);
@@ -107,17 +107,17 @@ room219.btnclick = function (name) {
             }, 219);
             switch (name) {
                 case "hypno2":
-                    missy.st[12].c++;
+                    missy.st[14].c++;
                     hchatid = 10;
                     levels.mod("xdress", 50);
                     break;
                 case "hypno3":
-                    missy.st[13].c++;
+                    missy.st[15].c++;
                     hchatid = 11;
                     levels.mod("anal", 50);
                     break;
                 case "hypno4":
-                    missy.st[14].c++;
+                    missy.st[16].c++;
                     hchatid = 12;
                     var wi = levels.i("strength");
                     if (levels.st[wi].l > 0) {
@@ -126,7 +126,7 @@ room219.btnclick = function (name) {
                     }
                     break;
                 case "hypno6":
-                    missy.st[16].c++;
+                    missy.st[18].c++;
                     hchatid = 14;
                     levels.mod("makeup", 50);
                     break;
@@ -138,7 +138,7 @@ room219.btnclick = function (name) {
             break;
         case "hypno5":
             nav.killall();
-            missy.st[15].c++;
+            missy.st[17].c++;
 
             if (cl.c.cock > 3) {
                 nav.button({

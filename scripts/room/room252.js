@@ -4,15 +4,18 @@ var room252 = {};
 room252.main = function () {
     g.pass = null;
     if (gender.canUseCock()) {
+        if (missy.activecase().caseId === 14)
+            missy.mod("reusableCaseCounter", 1);
         nav.bg("252_waitress/wait1.jpg");
         zcl.displayMain(50, 950, .17, "panties shirt pants socks shoes bra", false);
         chat(0, 252);
     }
     else {
-        missy.mod("reusableCaseCounter", 1);
+        if (missy.activecase().caseId === 14)
+            missy.mod("reusableCaseCounter", 1);
         g.internal = {
             custList: new Array(),
-            isMission: true, //(missy.activecase().caseId === 14),
+            isMission: (missy.activecase().caseId === 14),
             taskstep: 0,
             pointer: 0,
             girl: "",
@@ -349,6 +352,7 @@ room252.chatcatch = function (callback) {
             cl.c.pants = "s";
             cl.c.socks = "b";
             cl.c.shoes = "d";
+            cl.c.wig = null;
             cl.display();
             char.room(205);
             break;

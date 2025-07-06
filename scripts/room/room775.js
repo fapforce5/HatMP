@@ -1092,7 +1092,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 80,
                 speaker: "priest",
-                text: "This is the Purity App. The curch is putting on everyone's phones. A member of " +
+                text: "This is the Purity App. The church is putting it on everyone's phones. A member of " +
                     "our sister church designed it to help motivate their young flock to making the " +
                     "right choices. As you sin it will detect that sin through your phone inputs and " +
                     "report back so that I may help guide you to a better life. ",

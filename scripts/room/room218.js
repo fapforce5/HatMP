@@ -86,7 +86,6 @@ room218.chatcatch = function (callback) {
             break;
         case "jack2":
             //if g.pass === 2
-            cl.doCum(false);
             nav.bg("218_masturbate/desk1.jpg");
             break;
         case "jack3":
@@ -94,7 +93,7 @@ room218.chatcatch = function (callback) {
             nav.bg("218_masturbate/desk2.jpg");
             break;
         case "jack4":
-            //if g.pass === 2
+            levels.gotbj("n", "cecilia");
             nav.bg("218_masturbate/desk3.jpg");
             //sc.setstep("cecilia", 1);//verfiy this
             break;

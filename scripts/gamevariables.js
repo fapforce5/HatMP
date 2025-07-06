@@ -145,12 +145,12 @@ gv.init = function () {
         { n: "jail", t: 0, q: "int" },
 
         //masturbate
-        { n: "masturbate_dick", t: 0, q: "int" },
-        { n: "masturbate_pussy", t: 0, q: "int" },
-        { n: "masturbate_vibrator", t: 0, q: "int" },
-        { n: "masturbate_oral", t: 0, q: "int" },
-        { n: "masturbate_finger", t: 0, q: "int" },
-        { n: "masturbate_dildo", t: 0, q: "int" },
+        { n: "masturbate_dick", t: 0, q: "masturbate" },
+        { n: "masturbate_pussy", t: 0, q: "masturbate" },
+        { n: "masturbate_vibrator", t: 0, q: "masturbate" },
+        { n: "masturbate_oral", t: 0, q: "masturbate" },
+        { n: "masturbate_finger", t: 0, q: "masturbate" },
+        { n: "masturbate_dildo", t: 0, q: "masturbate" },
 
         { n: "lolaEvaShowerPeek", t: false, q: "bool" },
 
@@ -833,6 +833,19 @@ gv.mod = function (name, amount) {
                 }
                 else if (gv.st[index].t > .5)
                     g.popUpNotice("You feel the need to pee. ");
+                break;
+            case "masturbate":
+                gv.st[index].t += amount;
+                switch (gv.st[index].n) {
+                    case "masturbate_dick":
+                    case "masturbate_vibrator":
+                    case "masturbate_pussy":
+                        cl.doCum();
+                        break;
+                    default:
+                        gv.mod("arousal", 50);
+                        break;
+                }
                 break;
             case "string":
                 gv.st[index].t += amount;

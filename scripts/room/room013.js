@@ -1022,6 +1022,7 @@ room13.btnclick = function (name) {
             break;
         case "fingerlola1":
             nav.killbutton("fingerlola1");
+            levels.gavehandjob("f", "lola");
             nav.bg("13_sisterRoom/sleep_lola_nude_2.jpg");
             chat(56, 13);
             break;
@@ -1035,6 +1036,7 @@ room13.btnclick = function (name) {
             nav.bg("13_sisterRoom/sleep_nude_" + g.internal.step + ".jpg");
             g.internal.step++;
             if (g.internal.step > 3) {
+                levels.oral(3, "f", "eva");
                 chat(60, 13);
             }
             break;
@@ -1267,10 +1269,10 @@ room13.chatcatch = function (callback) {
                 char.room(13);
                 break;
             case "lolaLevelDown":
-                sc.modLevel("lola", -48, 999);
+                sc.modLevel("lola", 5, 999);
                 break;
             case "evaLevelDown":
-                sc.modLevel("eva", -48, 999);
+                sc.modLevel("eva", 5, 999);
                 break;
             case "lolaLevelQuater":
                 sc.modLevel("lola", 26, 999);

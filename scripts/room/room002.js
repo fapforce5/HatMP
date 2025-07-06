@@ -177,9 +177,9 @@ room2.chat = function(chatID){
         {
             chatID: 0,
             speaker: "thinking",
-            text: "This release ends during the Sissy School final.",
+            text: "This release ends after the Sissy School final.",
             button: [
-                { chatID: -1, text: "Next Patreon Release March", callback: "proceed" }
+                { chatID: -1, text: "Next release around October", callback: "proceed" }
             ]
         },
     ];

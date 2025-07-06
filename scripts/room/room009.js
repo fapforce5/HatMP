@@ -449,7 +449,7 @@ room9.btnclick = function (name) {
                     "height": 810,
                     "image": "9_computer/splat.png"
                 }, 9);
-                gv.mod("masturbate_dick", 1)
+                gv.mod("masturbate_dick", 1);
                 chat(5, 9);
             }
             break;

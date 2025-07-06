@@ -70,12 +70,7 @@ room250.btnclick = function (name) {
         case "hollyStand":
             if (missy.activecase().caseId === 14) {
                 if (missy.get("reusableCaseCounter") === 0) {
-                    if (g.hourBetween(6, 11)) {
-                        chat(10, 250);
-                    }
-                    else {
-                        chat(8, 250);
-                    }
+                    chat(10, 250);
                 }
                 else {
                     chat(22, 250);
