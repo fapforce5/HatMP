@@ -231,6 +231,7 @@ room28.main = function () {
             nav.bg("28_transformation/d_panties_bill.jpg");
         }
         chat(28, 28);
+        return;
     }
     else if (chastityTransformation) {
         nav.killall();
@@ -250,7 +251,7 @@ room28.main = function () {
         }, 6000);
         return;
     }
-    else if (!txtDisplay) {
+    else if (!txtDisplay && sissy.st[0].ach) {
         //check Transformation
         let transformationPoints = levels.get("xdress").l;
         let validTransformationHormone = hormoneLevel > 75;

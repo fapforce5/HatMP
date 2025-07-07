@@ -30,7 +30,7 @@ room197.main = function () {
             case 2: chat(39, 197); break;
             default: chat(44, 197); break;
         }
-        selected = sublist[g.rand(0, sublist.length)];
+        //selected = sublist[g.rand(0, sublist.length)];
     }
 };
 
