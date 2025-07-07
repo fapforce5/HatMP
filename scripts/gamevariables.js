@@ -1153,7 +1153,7 @@ future.get = function (name) {
 
 future.kill = function (name) {
     for (let i = 0; i < future.st.length; i++) {
-        if (future.st[i] === name) {
+        if (future.st[i].name === name) {
             future.st.splice(i, 1);
             return;
         }

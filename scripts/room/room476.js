@@ -61,8 +61,7 @@ room476.main = function () {
 room476.btnclick = function (name) {
     switch (name) {
         case "door":
-            var case_damselleCabin = missy.activecase();
-            if (case_damselleCabin.name === "case_damselle" && !case_damselleCabin.isComplete) {
+            if (future.get("case_dam") > -1) {
                 nav.kill();
                 nav.bg("476_cabin/bg_empty.jpg", "476_cabin/bg_empty_night.jpg");
                 nav.button({
@@ -540,6 +539,11 @@ room476.chatcatch = function (callback) {
         case "leave":
             char.room(475);
             break;
+        case "leavedam":
+            future.kill("case_dam");
+            missy.set("activeCaseComplete", 2);
+            char.room(475);
+            break;
         case "fridayFreedom":
             if (g.isNight())
                 char.settime(6, 5);
@@ -569,7 +573,6 @@ room476.chatcatch = function (callback) {
                 chat(45, 476);
             }
             else {
-                
                 nav.bg("476_cabin/cross_end.jpg");
                 zcl.displayMain(280, 800, .11, "armsup", false);
                 nav.button({
@@ -765,6 +768,7 @@ room476.chatcatch = function (callback) {
             nav.bg("476_cabin/dam1.jpg");
             break;
         case "finishDam":
+            future.kill("case_dam");
             missy.set("activeCaseComplete", 1);
             char.room(476);
             break;
@@ -1260,7 +1264,7 @@ room476.chat = function (chatID) {
                 speaker: "!damselle",
                 text: "What are you doing? Get me down!",
                 button: [
-                    { chatID: -1, text: "[Leave her for the cultist to rape.]", callback: "leave" },
+                    { chatID: -1, text: "[Leave her for the cultist to rape.]", callback: "leavedam" },
                 ]
             },
             {

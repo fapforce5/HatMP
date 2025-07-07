@@ -635,17 +635,19 @@ room200.chatcatch = function (callback) {
             break;
         case "case_dam_start":
             inv.addMulti("soda", 3);
-            future.add("case_dam", 6 - g.dt.getDay());
+            future.add("case_dam", 6 - g.dt.getDay() - 1);
             gv.set("mapopen", true);
             room200.chatcatch("case_afterExplaniation");
             break;
         case "case_dam_end":
+            future.kill("case_dam");
             gv.mod("money", 100);
             missy.mod("mood", 100);
             missy.caseComplete(16);
             room200.chatcatch("case_complete_end");
             break;
         case "case_dam_end_bad":
+            future.kill("case_dam");
             missy.mod("mood", -100);
             missy.caseComplete(16);
             char.room(172);

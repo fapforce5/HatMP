@@ -754,10 +754,10 @@ room28.chatcatch = function (callback) {
                 chat(24, 28);
             }
             else if (gv.get("transformation") === "voluntary") {
-
+                chat(26, 28);
             }
             else {
-
+                chat(25, 28);
             }
             break;
         default:
