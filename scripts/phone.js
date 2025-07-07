@@ -488,46 +488,104 @@ phone.characterSelect = function (name) {
             text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
         }, 1);
     }
+    if (name === "me") {
+        if (sissy.st[0].ach) {
+            var locked = '<span style="color:#cc3333">Locked</span>';
+            var unlocked = '<span style="color:#33cc33">Unlocked</span>';
+            var metxt =
+                "Cup size: " + cl.cupsize() + "<br/>" +
+                "Ass: " + cl.buttsize() + "<br/>" +
+                "Lips: " + cl.lipsize() + "<br/>" +
+                "Cock: " + cl.cocksize() + "<br/><br/>" +
+                "Wear panties: " + (qdress.st[0].ach ? unlocked : locked) + "<br/>" +
+                "Wear bra: " + (qdress.st[1].ach ? unlocked : locked) + "<br/>" +
+                "Buy dildos: " + (qdress.st[2].ach ? unlocked : locked) + "<br/>" +
+                "Cross dress in public: " + (qdress.st[3].ach ? unlocked : locked) + "<br/>" +
+                "Wear earrings: " + (qdress.st[4].ach ? unlocked : locked) + "<br/>" +
+                "Seduce men: " + (qdress.st[24].ach ? unlocked : locked) + "<br/>" +
+                "Buy sexy clothes: " + (qdress.st[7].ach ? unlocked : locked) + "<br/>" +
+                "Wear makeup: " + (qdress.st[5].ach ? unlocked : locked) + "<br/>" +
+                "Buy bimbo clothes: " + (qdress.st[8].ach ? unlocked : locked) + "<br/>" +
+                "Work as a stripper: " + (qdress.st[25].ach ? unlocked : locked) + "<br/>" +
+                "Panties and bra are optional: " + (qdress.st[9].ach ? unlocked : locked) + "<br/>" +
+                "Work as a whore: " + (qdress.st[23].ach ? unlocked : locked) + "<br/>" +
+                "Lewd in public: " + (qdress.st[10].ach ? unlocked : locked) + "<br/>";
+            nav.t({
+                type: "zimg",
+                name: "phone_charselx",
+                "left": 850,
+                "top": 180,
+                font: 30,
+                hex: "#ffffff",
+                text: metxt
+            }, 9999);
+        }
+        else if (qdress.st[0].ach) {
+            nav.t({
+                type: "zimg",
+                name: "phone_charselx",
+                "left": 850,
+                "top": 180,
+                font: 30,
+                hex: "#ffffff",
+                text: "I really like wearing panties. <br />" +
+                    "It's like my own private secret that no one knows. <br/>" +
+                    "I really need to just wear panties all the time. <br/><br/>"
+            }, 9999);
+        }
+        else {
+            nav.t({
+                type: "zimg",
+                name: "phone_charselx",
+                "left": 850,
+                "top": 180,
+                font: 30,
+                hex: "#ffffff",
+                text: "I don't know why I'm obsessed with women's panties. <br/>" +
+                    "I just like the smell and fell of them. <br/>" +
+                    "I should steal some panties."
+            }, 9999);
+        }
+    }
+    if (name === "missy") {
+        var sissySchoolInvite = "Attend Sissy School Monday - Thursday.";
+        var mmood = missy.get("mood");
+        var mmoodtxt = "";
+        if (!sissy.st[17].ach)
+            sissySchoolInvite = g.linebreak("You haven't proven yourself worth of attending the sissy school. Easiest way is to go to work and complete the cases. ", 50);
+        else if (sissy.st[21].ach)
+            sissySchoolInvite = g.linebreak("Congratulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
 
-    if (name === "missy" || name === "p" || name === "martha" || name === "black" || name === "me") {
+        if (mmood > 70)
+            mmoodtxt = "Loves her little " + gender.pronoun("sissy") + ".";
+        else if (mmood > 30)
+            mmoodtxt = "Good " + gender.pronoun("sissy") + ", but do better.";
+        else if (mmood > 0)
+            mmoodtxt = "You're ok, try harder";
+        else if (mmood > -30)
+            mmoodtxt = "Disappointed in her " + gender.pronoun("sissy") + ". ";
+        else
+            mmoodtxt = "Angry at her " + gender.pronoun("sissy") + ". ";
+
+        var mtxt =
+            "Mood: " + mmoodtxt + "<br/>" +
+            "Weekly Pay: $" + missy.get("weeklyPay") + "<br/><hr/>" +
+            "Current case: <br/>" +
+            g.linebreak(missy.activecase().txt, 50) + "<hr />" +
+            "Sissy School: <br/>" +
+            sissySchoolInvite;
+        nav.t({
+            type: "zimg",
+            name: "phone_charselx",
+            "left": 850,
+            "top": 180,
+            font: 30,
+            hex: "#ffffff",
+            text: mtxt
+        }, 9999);
+    }
+    if ((name === "p" || name === "martha") && !sissy.st[21].ach) {
         switch (name) {
-            case "missy":
-                var sissySchoolInvite = "Attend Sissy School Monday - Thursday.";
-                var mmood = missy.get("mood");
-                var mmoodtxt = "";
-                if (!sissy.st[17].ach)
-                    sissySchoolInvite = g.linebreak("You haven't proven yourself worth of attending the sissy school. Easiest way is to go to work and complete the cases. ", 50);
-                else if (sissy.st[21].ach)
-                    sissySchoolInvite = g.linebreak("Congratulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
-
-                if (mmood > 70) 
-                    mmoodtxt = "Loves her little " + gender.pronoun("sissy") + ".";
-                else if (mmood > 30) 
-                    mmoodtxt = "Good " + gender.pronoun("sissy") + ", but do better.";
-                else if (mmood > 0) 
-                    mmoodtxt = "You're ok, try harder";
-                else if (mmood > -30) 
-                    mmoodtxt = "Disappointed in her " + gender.pronoun("sissy") + ". ";
-                else 
-                    mmoodtxt = "Angry at her " + gender.pronoun("sissy") + ". ";
-
-                var mtxt =
-                    "Mood: " + mmoodtxt + "<br/>" + 
-                    "Weekly Pay: $" + missy.get("weeklyPay") + "<br/><hr/>" +
-                    "Current case: <br/>" +
-                    g.linebreak(missy.activecase().txt, 50) + "<hr />" +
-                    "Sissy School: <br/>" +
-                    sissySchoolInvite;
-                nav.t({
-                    type: "zimg",
-                    name: "phone_charselx",
-                    "left": 850,
-                    "top": 180,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: mtxt
-                }, 9999);
-                break;
             case "p":
                 var ptxt = "Pink Room: <br />Must graduate from the Sissy School.";
                 nav.t({
@@ -597,38 +655,6 @@ phone.characterSelect = function (name) {
                         text: m1txt + "<br /><br />" + m2txt
                     }, 9999);
                 }
-                break;
-            case "me":
-                //[0, 1, 2, 3, 4, 24, 7, 5, 8, 25, 6, 9, 23, 10, 15, 20, 22];
-                var locked = '<span style="color:#cc3333">Locked</span>';
-                var unlocked = '<span style="color:#33cc33">Unlocked</span>';
-                var metxt =
-                    "Cup size: " + cl.cupsize() + "<br/>" +
-                    "Ass: " + cl.buttsize() + "<br/>" +
-                    "Lips: " + cl.lipsize() + "<br/>" +
-                    "Cock: " + cl.cocksize() + "<br/><br/>" +
-                    "Wear panties: " + (qdress.st[0].ach ? unlocked : locked) + "<br/>" +
-                    "Wear bra: " + (qdress.st[1].ach ? unlocked : locked) + "<br/>" +
-                    "Buy dildos: " + (qdress.st[2].ach ? unlocked : locked) + "<br/>" +
-                    "Cross dress in public: " + (qdress.st[3].ach ? unlocked : locked) + "<br/>" +
-                    "Wear earrings: " + (qdress.st[4].ach ? unlocked : locked) + "<br/>" +
-                    "Seduce men: " + (qdress.st[24].ach ? unlocked : locked) + "<br/>" +
-                    "Buy sexy clothes: " + (qdress.st[7].ach ? unlocked : locked) + "<br/>" +
-                    "Wear makeup: " + (qdress.st[5].ach ? unlocked : locked) + "<br/>" +
-                    "Buy bimbo clothes: " + (qdress.st[8].ach ? unlocked : locked) + "<br/>" +
-                    "Work as a stripper: " + (qdress.st[25].ach ? unlocked : locked) + "<br/>" +
-                    "Panties and bra are optional: " + (qdress.st[9].ach ? unlocked : locked) + "<br/>" +
-                    "Work as a whore: " + (qdress.st[23].ach ? unlocked : locked) + "<br/>" +
-                    "Lewd in public: " + (qdress.st[10].ach ? unlocked : locked) + "<br/>";
-                nav.t({
-                    type: "zimg",
-                    name: "phone_charselx",
-                    "left": 850,
-                    "top": 180,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: metxt
-                }, 9999);
                 break;
         }
     }

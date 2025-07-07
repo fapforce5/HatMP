@@ -6,6 +6,7 @@
 var room28 = {};
 room28.main = function () {
     let transformationOrder = [0, 1, 2, 3, 4, 24, 7, 11, 16, 5, 8, 12, 17, 25, 13, 18, 21, 6, 9, 23, 14, 19, 10, 15, 20, 22];
+    let sissySchoolDream = false;
     var pjRoom = [7, 10]
     if (pjRoom.includes(g.pass)) {
         cl.wearSavedOutfit(5);
@@ -23,7 +24,7 @@ room28.main = function () {
     nav.buildclock();
 
     var txtDisplay = room28.dreams();
-    var forcedTransformation = null
+    var chastityTransformation = false;
     let trasnformationSetting = null;
     let breastSelect, assSelect;
     breastSelect = [11, 12, 13, 14, 15];
@@ -75,6 +76,9 @@ room28.main = function () {
             case "beer":
                 gv.st[i].t = 0;
                 break;
+            case "sissySchoolDream":
+                sissySchoolDream = gv.st[i].t;
+                break;
         }
     }
     
@@ -99,7 +103,7 @@ room28.main = function () {
     //growhair
     var initHairGrowth = 4;
     if (hormoneLevel > 50)
-        Math.floor(hormoneLevel / 12) - 2;
+        initHairGrowth += Math.floor(hormoneLevel / 12) - 2;
     if (initHairGrowth < 5)
         initHairGrowth = 5;
 
@@ -143,8 +147,7 @@ room28.main = function () {
             if (cl.c.cock < minDick) {
                 var chastityCounter = gv.get("chastityCounter");
                 if (chastityCounter > 20) {
-                    forcedTransformation = "cock";
-                    gv.set("chastityCounter", 0);
+                    chastityTransformation = true;
                 }
                 else {
                     if (hormoneLevel > 75)
@@ -178,28 +181,74 @@ room28.main = function () {
         }
     }
 
-    if (forcedTransformation !== null) {
-        switch (forcedTransformation) {
-            case "cock":
-                nav.killall();
-                cl.c.cock++;
-                nav.bg("28_transformation/cock_" + cl.c.cock + ".gif");
-                cl.display();
-                g.roomTimeout = setTimeout(function () {
-                    if (cl.c.cock === 4)
-                        chat(17, 28);
-                    else if (cl.c.cock === 1)
-                        chat(20, 28);
-                    else if (cl.c.chastity === "flat")
-                        chat(18, 28);
-                    else
-                        chat(19, 28);
-                }, 6000);
-                break;
-            default:
-                room28.endSleepyTime(false);
-                break;
+    //start events
+    if (sissy.st[0].ach && !sissySchoolDream) {
+        gv.set("sissySchoolDream", true);
+        nav.kill();
+        nav.bg("28_transformation/q_background.jpg");
+        nav.button({
+            "type": "clickthrough",
+            "name": "xd",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "title": "xdress",
+            "image": "28_transformation/q_forground.png"
+        }, 28);
+        for (i = 0; i < qdress.st.length; i++) {
+            let qdressIconx = qdress.st[i].ach ? qdress.st[i].icon : qdress.st[i].icon + "_x";
+            nav.button({
+                "type": "btn",
+                "name": "qxdress_" + qdress.st[i].id,
+                "left": qdress.st[i].x,
+                "top": qdress.st[i].y,
+                "width": i === 3 ? 200 : 100,
+                "height": i === 3 ? 200 : 100,
+                "title": "xdress",
+                "image": "28_transformation/" + qdressIconx + ".png"
+            }, 28);
         }
+        chat(23, 28);
+        return;
+    }
+    else if (!qdress.st[0].ach && cl.hasClothingTypeSex("panties", "f")) {
+        nav.kill();
+        qdress.st[0].ach = true;
+        if (cl.hasClothing("panties", "w")) {
+            nav.bg("28_transformation/d_panties.jpg");
+        }
+        else if (cl.hasClothing("panties", "missy")) {
+            nav.bg("28_transformation/d_panties_missy.jpg");
+        }
+        else if (cl.hasClothing("panties", "j")) {
+            nav.bg("28_transformation/d_panties_janice.jpg");
+        }
+        else if (cl.hasClothing("panties", "c")) {
+            nav.bg("28_transformation/d_panties_landlord.jpg");
+        }
+        else {
+            nav.bg("28_transformation/d_panties_bill.jpg");
+        }
+        chat(28, 28);
+    }
+    else if (chastityTransformation) {
+        nav.killall();
+        gv.set("chastityCounter", 0);
+        cl.c.cock++;
+        nav.bg("28_transformation/cock_" + cl.c.cock + ".gif");
+        cl.display();
+        g.roomTimeout = setTimeout(function () {
+            if (cl.c.cock === 4)
+                chat(17, 28);
+            else if (cl.c.cock === 1)
+                chat(20, 28);
+            else if (cl.c.chastity === "flat")
+                chat(18, 28);
+            else
+                chat(19, 28);
+        }, 6000);
+        return;
     }
     else if (!txtDisplay) {
         //check Transformation
@@ -208,6 +257,7 @@ room28.main = function () {
 
         if (cl.c.chest === 0 && levels.st[12].l > 0) {
             chat(0, 28);
+            return;
         }
         else if (transformationPoints > 0 && cl.c.chest > 0) {
             let validForcedTransformation = false;
@@ -699,6 +749,17 @@ room28.chatcatch = function (callback) {
         case "endDream":
             room28.endSleepyTime(false);
             break;
+        case "sleepunlock":
+            if (gv.get("transformation") === "forced") {
+                chat(24, 28);
+            }
+            else if (gv.get("transformation") === "voluntary") {
+
+            }
+            else {
+
+            }
+            break;
         default:
             break;
     }
@@ -954,6 +1015,70 @@ room28.chat = function (chatID) {
                     "just for the chance to smell me as I rub my ass all over them!",
                 button: [
                     { chatID: -1, text: "[You can work at the strip club]", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "thinking",
+                text: "I'm so excited for this new school. I don't know what changes are coming, " +
+                    "but I can feel my mind and body wanting to change to something I'm currently " +
+                    "not. But I'm scared to change. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "sleepunlock" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "thinking",
+                text: "As you gain sissy points you'll be able to trade them in to unlock " +
+                    "achievements from this menu. When you sleep this menu will appear if you " +
+                    "have enough points to unlock any choice. Just select the transformation you " +
+                    "wish to unlock. ",
+                button: [
+                    { chatID: 27, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "thinking",
+                text: "As you gain sissy points you'll be able to trade them in to unlock " +
+                    "achievements from this menu. When you sleep this menu will appear if you " +
+                    "have enough points to unlock a choice. Your setting " +
+                    "is currently set to OFF. You probably want to set that to ON.",
+                button: [
+                    { chatID: 27, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "thinking",
+                text: "You're currently set to auto transformation. So when you go to sleep, if " +
+                    "you have enough points the transformations will happen on their own and you " +
+                    "will naturally transform into the sissy slut you were meant to be. ",
+                button: [
+                    { chatID: 27, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "thinking",
+                text: "In the phone settings you can change how the transformations work at any time. " +
+                    "To make your own choices set transformations to ON. To let the game decide swith it " +
+                    "to AUTO. If you have all the transformations you want switch it to off. You can see your " +
+                    "current status anytime by selecting your own avatar in your phone CHARACTERS page. ",
+                button: [
+                    { chatID: -1, text: "[Sissy transformations unlocked]", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "thinking",
+                text: "I can't believe I have panties! I know they're dirty, but that makes them " +
+                    "so much better! I should wear them! I need to wear them out in public. But " +
+                    "under my clothes so no one knows. It will be my little secret that no one " +
+                    "will ever know about! I do so much love wearing girl panties!",
+                button: [
+                    { chatID: -1, text: "[Wearing panties in public is now unlocked]", callback: "endDream" }
                 ]
             },
         ];

@@ -62,6 +62,7 @@ gv.init = function () {
         { n: "fingeranal", t: 0, q: "int" },
         { n: "dildooral", t: 0, q: "int" },
         { n: "beer", t: 0, q: "zero" },
+        { n: "sissySchoolDream", t: false, q: "bool" },
 
         //Settings
         { n: "fantasyCreatures", t: false, q: "bool" },
@@ -156,8 +157,6 @@ gv.init = function () {
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
-        { n: "momearnbackhome", t: 0, q: "int" },
-
 
         { n: "reddoorloc", t: 1, q: "int" },
         { n: "sewerEnd", t: 0, q: "int" },
@@ -177,8 +176,8 @@ gv.init = function () {
         
         { n: "milk", t: -1, q: "int" },
         { n: "cat", t: -1, q: "int" },
-        { n: "cheerleader", t: 0, q: "hundred" },
-        { n: "cheerlevel", t: 0, q: "int" },
+        //{ n: "cheerleader", t: 0, q: "hundred" },
+        //{ n: "cheerlevel", t: 0, q: "int" },
         { n: "waitressSteal", t: false, q: "bool" },
 
         { n: "fightsex", t: 1250, q: "int" },
@@ -927,8 +926,9 @@ levels.set = function (name, c, l) {
 };
 
 levels.modLevel = function (name, amount) {
-    if (name === "xdress" && !sissy.st[0].ach)
+    if (name === "xdress" && !sissy.st[0].ach) {
         return;
+    }
 
     let i = levels.i(name);
     let startLevel = levels.st[i].l;
@@ -947,7 +947,7 @@ levels.modLevel = function (name, amount) {
         g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
 };
 
-levels.mod = function (name, amount, targetLevel = 999) {
+levels.mod = function (name, amount) {
     let i, startingLevel;
     
     i = levels.i(name);

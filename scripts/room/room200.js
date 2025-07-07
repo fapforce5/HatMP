@@ -25,7 +25,6 @@ room200.btnclick = function (name) {
             var activeCase = missy.get("activeCase");
             var activeCaseComplete = missy.get("activeCaseComplete");
             var missyUniform = missy.get("uniform");
-            var sissyLevel = levels.get("xdress").l;
             
             if (missy.get("totalDaysWorked") < 1)
                 chat(0, 200);
@@ -86,6 +85,12 @@ room200.btnclick = function (name) {
                             chat(78, 200);
                         else
                             chat(77, 200);
+                        break;
+                    case 16:
+                        if (activeCaseComplete === 1)
+                            chat(116, 200);
+                        else
+                            chat(117, 200);
                         break;
                 }
             }
@@ -623,7 +628,6 @@ room200.chatcatch = function (callback) {
             cl.nude();
             zcl.displayMain(-1000, -700, .5, "clothes", true);
             break;
-                            canDoCase = piLevel > 2;
         case "case_damselle":
             nav.kill();
             nav.bg("200_frontOffice/case_dam0.webp");
@@ -634,6 +638,17 @@ room200.chatcatch = function (callback) {
             future.add("case_dam", 6 - g.dt.getDay());
             gv.set("mapopen", true);
             room200.chatcatch("case_afterExplaniation");
+            break;
+        case "case_dam_end":
+            gv.mod("money", 100);
+            missy.mod("mood", 100);
+            missy.caseComplete(16);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_dam_end_bad":
+            missy.mod("mood", -100);
+            missy.caseComplete(16);
+            char.room(172);
             break;
         case "punish":
             char.room(217);
@@ -1707,13 +1722,13 @@ room200.chat = function (chatID) {
                     "that needs rescued in cabin in the woods. For her sake speed is essential. To " +
                     "find her you'll need to head to the park.",
                 button: [
-                    { chatID: 111, text: "...", callback: "case_dam1" }
+                    { chatID: 111, text: "Why don't you call the police? ", callback: "case_dam1" }
                 ]
             },
             {
                 chatID: 111,
                 speaker: "missy",
-                text: "Once you've entered the park, go into the forest..",
+                text: "Stop interrupting. We've gone over this before. Once you've entered the park, go into the forest..",
                 button: [
                     { chatID: 112, text: "...", callback: "case_dam2" }
                 ]
@@ -1746,9 +1761,12 @@ room200.chat = function (chatID) {
                 text: "Hmm...I suppose I should tell you. The cabin is occupied by the Carnal Union of Mortals or " +
                     "the C.U.M. Cult. The women they kidnap to work as Milk Maids are held at the cabin unitl Friday " +
                     "night, where they are then taken to their ceremony and begin their indoctrination into the cult. " +
-                    "If you don't find and free her before Friday she'll be lost to the cult forever. ",
+                    "If you don't find and free her before Friday she'll be lost to the cult forever. As to " +
+                    "your previous question as to why I don't call the police is that they are members of the cult. " +
+                    "It's like getting eaten by a lion and complaining to another lion. Now you're being eaten by " +
+                    "two lions. ",
                 button: [
-                    { chatID: 115, text: "Oh wow. I'll free her ma'am!", callback: "" }
+                    { chatID: 115, text: "Oh wow. Ok. I'll free her ma'am!", callback: "" }
                 ]
             },
             {
@@ -1761,6 +1779,30 @@ room200.chat = function (chatID) {
                     "save that poor girl.",
                 button: [
                     { chatID: -1, text: "Yes ma'am!", callback: "case_dam_start" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "missy",
+                text: "I recieved word from a friend of mine that you rescued that poor girl. " +
+                    "Becuase of your bravery she will not be used as a sex slave at the C.U.M. " +
+                    "cult where they would not only ruin her body, but her mind. I am proud " +
+                    "of the detective you're becoming, and you should be proud of yourself. ",
+                button: [
+                    { chatID: -1, text: "Thanks ma'am!", callback: "case_dam_end" }
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "missy",
+                text: "All I needed you to do was walk to a cabin and free a poor girl. Now the " +
+                    "C.U.M. cult has taken her back to their compound. They are currently " +
+                    "raping her, beating her, and probably eventually kill her. But that's ok. " +
+                    "You couldn't be bothered to walk into the forest and untie her, so I guess " +
+                    "she's dead now. I don't even want to look at you anymore. Go see " + sc.n("black") +
+                    ".",
+                button: [
+                    { chatID: -1, text: "Sorry ma'am!", callback: "case_dam_end_bad" }
                 ]
             },
         ];
