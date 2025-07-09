@@ -41,10 +41,10 @@ missy.init = function () {
         { id: 32, n: "cumMaidCounter", c: 0 },
         { id: 33, n: "trashSearchCounter", c: 0 },
         { id: 34, n: "subCounter197", c: 0 },
-
         { id: 35, n: "pinkEntrance", c: 0 },
         { id: 36, n: "sissySuppositories", c: 0 },
         { id: 37, n: "193caseExplain", c: 0 },
+        { id: 38, n: "jobRunErrandsTotalDaysWorked", c: 0 },
     ];
 
     missy.cases = [

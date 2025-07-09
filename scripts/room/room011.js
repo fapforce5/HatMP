@@ -156,14 +156,14 @@ room11.btnclick = function (name) {
             char.room(12);
             break;
         case "bathroomClose":
-            if (!daily.get("homeShowerPeek")) {
-                if (sc.getTimeline("landlord").roomID === 12)
-                    char.room(12);
-                else
-                    char.room(12);//chat(0, 11);
-            }
-            else
+            var motherLocation = sc.getTimeline("landlord").roomID;
+            var sisterLocation = sc.getTimeline("lola").roomID;
+            if ((motherLocation === 12 || sisterLocation === 12) && daily.get("homeShowerPeek")) {
                 chat(0, 11);
+            }
+            else {
+                char.room(12);
+            }
             break;
         case "sisterOpen":
             char.room(13);
@@ -289,7 +289,7 @@ room11.chat = function (chatID) {
             chatID: 9,
             speaker: "eva",
             text: "You do that. I'll keep trying to talk her out of dating that creep. We must stop them! I think they have a " +
-                "date in a week. You find a good boy for her, I'll intorduce them. Deal?",
+                "date in a week. You find a good boy for her, I'll introduce them. Deal?",
             button: [
                 { chatID: -1, text: "Deal!", callback: "reset" },
             ]

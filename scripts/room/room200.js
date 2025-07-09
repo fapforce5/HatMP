@@ -120,7 +120,7 @@ room200.btnclick = function (name) {
             else if (cl.getmakeup().name === "n") {
                 chat(79, 200);
             }
-            else if (inv.has("lockpick") && sissy.st[17].ach && g.rand(0, 5) === 0) {
+            else if (inv.has("lockpick") && sissy.st[17].ach && g.rand(0, 6) === 0) {
                 g.pass = "morning";
                 char.room(197);
             }

@@ -104,7 +104,7 @@ room181.chatcatch = function (callback) {
             nav.bg("181_black/" + callback + "_" + gender.pronoun("f") + ".jpg");
             break;
         case "b203_11":
-            levels.anal(3, false, "m", true, null, "unk");
+            levels.anal(3, false, "m", true, "!man");
             nav.bg("181_black/" + callback + "_" + gender.pronoun("f") + ".jpg");
             break;
         case "b203_1":
@@ -138,7 +138,7 @@ room181.chatcatch = function (callback) {
             sc.startMission("cecilia", "gloryhole");
             break;
         case "bondage101_9":
-            levels.oral(1, "n", "ceclia", true);
+            levels.oral(1, "n", "cecilia", true);
             nav.bg("181_black/" + callback + ".jpg");
             break;
         case "bondage101_3":

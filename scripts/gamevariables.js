@@ -24,20 +24,6 @@ gv.stats = new Array();
 future.st = new Array();
 dreams.st = new Array();
 
-t.modLevel = function (id, amount) {
-    console.log("kill me");
-    g.popUpNotice(sissy.levels[id] + " changed ")
-}
-
-t.statsUpdate = function (num) {
-    sissy.stats[num].c++;
-    g.popUpNotice("Your love of " + sissy.stats[num].n + " increased");
-}
-
-t.makeGraph = function () {
-
-};
-
 gv.init = function () {
     gv.st = [
         //stats
@@ -1329,7 +1315,6 @@ levels.desc = function (name, level) {
             break;
     };
     if (levelsDesc.length === 0) {
-        //console.log("no level " + name);
         return { count: -1, txt: "not found" };
     }
     else if (level >= levelsDesc.length) {
@@ -1891,12 +1876,13 @@ levels.fuckpussy = function (who, gender = "f") {
 };
 
 levels.beast = function (beast, gender = "m", who = null, type = "anal") {
-    if (beast !== null)
+    if (beast !== null) {
         sex.mod(beast, gender, who);
-    switch (type) {
-        case "hand": levels.mod("beast", 25); break;
-        case "oral": levels.mod("beast", 45); break;
-        case "anal": levels.mod("beast"), 60; break;
+        switch (type) {
+            case "hand": levels.mod("beast", 25); break;
+            case "oral": levels.mod("beast", 45); break;
+            case "anal": levels.mod("beast"), 60; break;
+        }
     }
 };
 
@@ -1952,7 +1938,6 @@ gv.timeTxt = function (hour, minute) {
 qdress.stx = new Array();
 
 qdress.getPoints = function (i, points, hormones) {
-    console.log(qdress.st[i].name);
     if (!qdress.st[i].ach) {
         qdress.stx.push(qdress.st[i]);
         return;

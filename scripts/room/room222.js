@@ -1,28 +1,30 @@
 ﻿//Room name
 var room222 = {};
 room222.main = function () {
-    if (missy.get("jobRunErrands") === 0) {
+    if (missy.get("jobRunErrandsTotalDaysWorked") === 0) {
         chat(14, 222);
     }
     else {
-        var errand = g.rand(0, 4);
+        var errand = g.rand(0, 8);
+        console.log(errand);
         switch (errand) {
             case 0:
+            case 1:
                 chat(0, 222);
                 break;
-            case 1:
+            case 2:
                 chat(14, 222);
                 break;
-            case 2:
-                chat(33, 222);
+            case 3:
+            case 4:
+                chat(11, 222);
                 break;
             default:
-                chat(11, 222);
+                chat(33, 222);
                 break;
         }
     }
-
-    missy.mod("jobRunErrands", 1);
+    missy.mod("jobRunErrandsTotalDaysWorked", 1);
 };
 
 room222.btnclick = function (name) {

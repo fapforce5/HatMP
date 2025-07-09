@@ -161,6 +161,7 @@ room219.btnclick = function (name) {
                 }, 3000);
             }
             else {
+                cl.c.cock++;
                 nav.button({
                     "type": "img",
                     "name": "hypno",
@@ -171,7 +172,6 @@ room219.btnclick = function (name) {
                     "image": "28_transformation/cock_" + cl.c.cock + ".gif"
                 }, 219);
                 g.popUpNotice("You cock got smaller. ");
-                cl.c.cock++;
                 g.roomTimeout = setTimeout(function () {
                     chat(13, 219);
                     room219.btnclick("hypnoComplete");

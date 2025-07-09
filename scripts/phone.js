@@ -592,7 +592,7 @@ phone.characterSelect = function (name) {
                     type: "zimg",
                     name: "phone_charselx",
                     "left": 850,
-                    "top": 180 + (j * 100),
+                    "top": 180,
                     font: 30,
                     hex: "#ffffff",
                     text: ptxt
@@ -649,7 +649,7 @@ phone.characterSelect = function (name) {
                         type: "zimg",
                         name: "phone_charselx",
                         "left": 850,
-                        "top": 180 + (j * 100),
+                        "top": 180,
                         font: 30,
                         hex: "#ffffff",
                         text: m1txt + "<br /><br />" + m2txt
@@ -716,7 +716,10 @@ phone.thankyou = function () {
         "image": "999_phone/thankyou_bg.jpg",
     }, 9999);
     var l = [
-        "Arothiel", "Asako", "Discretlysinful (Aaron M )", "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
+        "Arothiel", "Asako", "Discretlysinful (Aaron M )",
+        "Fuck you Arin",
+        "geebster",
+        "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
         "Rachel",
         "reverseclipse",
         "SirGuren (Contributor)", "WendyJ", "Wild86willie"
@@ -726,7 +729,7 @@ phone.thankyou = function () {
             type: "zimg",
             name: "phone_",
             left: 475,
-            top: 180 + (i * 25),
+            top: 180 + (i * 28),
             font: 25,
             hex: "#ffffff",
             text: v

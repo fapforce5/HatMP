@@ -390,7 +390,7 @@ room461.chatcatch = function (callback) {
             nav.bg("461_run/" + callback + ".jpg");
             break;
         case "pee7":
-            levels.piss(true, false, false, false, "f", "ppgirl");
+            levels.piss(false, false, true, "f", "ppgirl");
             nav.bg("461_run/pee7.jpg");
             break;
         case "ppgirlTask1":

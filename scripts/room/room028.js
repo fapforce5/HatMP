@@ -251,16 +251,15 @@ room28.main = function () {
         }, 6000);
         return;
     }
+    if (cl.c.chest === 0 && levels.st[12].l > 0) {
+        chat(0, 28);
+        return;
+    }
     else if (!txtDisplay && sissy.st[0].ach) {
         //check Transformation
         let transformationPoints = levels.get("xdress").l;
         let validTransformationHormone = hormoneLevel > 75;
-
-        if (cl.c.chest === 0 && levels.st[12].l > 0) {
-            chat(0, 28);
-            return;
-        }
-        else if (transformationPoints > 0 && cl.c.chest > 0) {
+        if (transformationPoints > 0 && cl.c.chest > 0) {
             let validForcedTransformation = false;
 
             if (trasnformationSetting === "forced") {

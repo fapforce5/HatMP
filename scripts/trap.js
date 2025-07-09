@@ -666,7 +666,6 @@ trap.treasure = function () {
                 chat(8, 1005);
             }
             else {
-                daily.set("treasureAzrael");
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -1787,16 +1786,19 @@ room1005.chat = function (chatID) {
         let coins = g.rand(100, 200);
         let jars = g.rand(2, 5);
         let lube = g.rand(20, 50);
+        let meat = g.rand(1, 4);
+
         gv.mod("money", coins);
         inv.addMulti("emptyjar", jars);
         inv.addMulti("lube", lube);
+        inv.addMulti("rawmeat", meat);
         if (g.rand(0, 2) === 1)
             inv.add("rawmeat");
 
         return {
             chatID: 1,
             speaker: "thinking",
-            text: "Jackpot! I got $" + coins + ", " + jars + " empty jars, and " + lube + 
+            text: "Jackpot! I got $" + coins + ", " + jars + " empty jars, " + meat + " raw meat, and " + lube + 
                 " applications of lube! Love this place! ",
             button: [
                 { chatID: -1, text: "[Take everything!]", callback: "kill_r1004bg" }

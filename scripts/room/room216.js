@@ -218,7 +218,7 @@ room216.chat = function (chatID) {
                 "or as most people simply call it, the Pink Room. I would give you the tour, but " +
                 "I'm far too busy. I just need you to come in and do a quick job for me. ",
             button: [
-                { chatID: 4, text: "Awesome! What is it?", callback: "clean1" }
+                { chatID: 4, text: "Awesome! What is it?", callback: "cumRoom" }
             ]
         },
         {
@@ -230,7 +230,7 @@ room216.chat = function (chatID) {
                 "here, but I'll have you wear an apron so the VIPs know you're only a maid. Now clean " +
                 "those dirty pussies and assholes. ",
             button: [
-                { chatID: -1, text: "Will do. ", callback: "cumRoom" }
+                { chatID: -1, text: "Will do. ", callback: "" }
             ]
         },
         {
@@ -263,9 +263,9 @@ room216.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "thinking",
-            text: "Ewwww. Gross. I'm not going to lick that!  ",
+            text: "Ewwww. Gross. I'm not going to lick that!  *gag*",
             button: [
-                { chatID: 6, text: "*gag*", callback: "clean" }
+                { chatID: 6, text: "[Need Cum level 2]", callback: "clean" }
             ]
         },
         {

@@ -464,7 +464,7 @@ room213.chatcatch = function (callback) {
             }, 213);
             break;
         case "tour_stage":
-            nav.bg("151_jones/runway.jpg");
+            nav.bg("186_talenshow/bg.webp");
             break;
         default:
             break;

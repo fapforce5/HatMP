@@ -53,6 +53,9 @@ room150.btnclick = function (name) {
                     }, 150);
                     chat(10, 150);
                     break;
+                case 2:
+                    chat(22, 150);
+                    break;
             }
             break;
         case "exposedClean":
@@ -467,6 +470,14 @@ room150.chat = function (chatID) {
                 "You don't deserve clothes. Bye bimbo! [End of loop - work in progress]",
             button: [
                 { chatID: -1, text: "oh. ok ", callback: "end" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "End of loop - [work in progress]",
+            button: [
+                { chatID: -1, text: "Next release", callback: "leave" }
             ]
         },
     ];

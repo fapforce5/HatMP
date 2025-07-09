@@ -362,7 +362,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "ex", mStatus: 0, title: "Ex", desc: "Not allowed back!", task:
+                missionName: "ex", mStatus: 0, title: "Ex [Not built yet]", desc: "Not allowed back!", task:
                     [
                         { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 40 },
                     ]
