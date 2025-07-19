@@ -1571,7 +1571,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 47,
                 speaker: "thinking",
-                text: "Holy shit! I just blew all my frinds. What the hell am I becomming. And they are spraying my face with their cum, " +
+                text: "Holy shit! I just blew all my friends. What the hell am I becomming. And they are spraying my face with their cum, " +
                     "and I LOVE it. I am such a sissy slut!",
                 button: [
                     { chatID: 48, text: "...", callback: "t11" }

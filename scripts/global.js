@@ -19,8 +19,8 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, 483, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, 483, 503, 527, 552, 553, 587, 602, 727, 875, 902, 903];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, /*483,*/ 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
+g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, /*483,*/ 503, 527, 552, 553, 587, 602, 727, 875, 902, 903];
 g.popArray = new Array();
 g.roomID = 1;
 g.dt = g.startDate;
@@ -365,7 +365,7 @@ g.rooms = [
     { roomID: 651, name: "T'n U Hallway", image: "651_wackHallway/651_hallway.jpg", nightImage: "651_wackHallway/651_hallway.jpg", houseID: 650, btn: "roomBtn_651.png" },
     { roomID: 661, name: "Peep Hole", image: "661_peephole/661_backroom.jpg", nightImage: "661_peephole/661_backroom.jpg", houseID: 650, btn: "roomBtn_661.png" },
 
-    { roomID: 675, name: "Beach", image: "661_peephole/661_backroom.jpg", nightImage: "661_peephole/661_backroom.jpg", houseID: 650, btn: "roomBtn_661.png" },
+    //{ roomID: 675, name: "Beach", image: "661_peephole/661_backroom.jpg", nightImage: "661_peephole/661_backroom.jpg", houseID: 650, btn: "roomBtn_661.png" },
 
     { roomID: 700, name: "Waiting Room", image: "700_waitingroom/waitingroom.jpg", nightImage: "700_waitingroom/night.jpg", houseID: 700, btn: "roomBtn_700.png" },
     { roomID: 701, name: "Hospital Room", image: "701_hospitalroom/wake0.jpg", nightImage: "701_hospitalroom/wake0.jpg", houseID: 700, btn: "roomBtn_701.png" },
@@ -457,7 +457,7 @@ g.roomMapInit = function () {
         { roomID: 600, display: "Strip Club", access: false, darkAccess: true, left: 869, top: 394, width: 235, height: 222, img: "map/600.png", night: "map/600_night.png", map: 3 },
         { roomID: 625, display: "Carnival", access: true, darkAccess: true, left: 1605, top: 106, width: 232, height: 173, img: "map/625.png", night: "map/625_night.png", map: 3 },
         { roomID: 650, display: "Toy's In Us", access: true, darkAccess: true, left: 1459, top: 712, width: 222, height: 215, img: "map/650.png", night: "map/650_night.png", map: 2 },
-        { roomID: 675, display: "Beach", access: true, darkAccess: true, left: 1349, top: 699, width: 117, height: 64, img: "map/675.png", night: "map/675_night.png", map: 3 },
+        //{ roomID: 675, display: "Beach", access: true, darkAccess: true, left: 1349, top: 699, width: 117, height: 64, img: "map/675.png", night: "map/675_night.png", map: 3 },
 
         { roomID: 700, display: "Hospital", access: true, darkAccess: true, left: 506, top: 246, width: 392, height: 282, img: "map/700.png", night: "map/700_night.png", map: 2 },
         { roomID: 725, display: "Discotheque", access: false, darkAccess: true, left: 531, top: 688, width: 206, height: 194, img: "map/725.png", night: "map/725_night.png", map: 2 },

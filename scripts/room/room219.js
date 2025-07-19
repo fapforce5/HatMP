@@ -287,7 +287,7 @@ room219.chat = function (chatID) {
             text: "You'll be working here next to me all day! Yeah! Data Entry is super easy. Just open the " +
                 "program and type what you see on these papers into the computer! Well, it's kind of easy. Missy " +    
                 "had me doing it, but I didn't type too good, so she punished me and told me never use a computer " +
-                "again. But you're here now! I never have to computer again. ",
+                "again. But you're here now! I never have to use a computer again. ",
             button: [
                 { chatID: 3, text: "Cool. So is that it?", callback: "" },
             ]

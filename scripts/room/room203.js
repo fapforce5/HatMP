@@ -19,7 +19,7 @@ room203.main = function () {
             "height": 197,
             "image": "203_entrance/203_enterRecep.png"
         }];
-        if (missy.get("uniform") > 2 && cl.c.shirt !== "r") {
+        if (missy.get("uniform") > 2 && cl.c.shirt !== "r" && cl.hasClothing("shirt", "r")) {
             sc.select("icon_dress", "203_entrance/icon_dress.png", 9);
         }
     }

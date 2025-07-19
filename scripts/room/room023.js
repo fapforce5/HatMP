@@ -2602,7 +2602,7 @@ room23.buildInternal = function () {
         {
             q: "Have you ever kissed a boy?",
             l: "Ewwww, never!",
-            e: "I dunno, probably not as many as your butthead!",
+            e: "I dunno, probably not as many as you butthead!",
             i: "q_1_1"
         },
         {

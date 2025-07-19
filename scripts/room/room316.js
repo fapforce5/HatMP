@@ -755,6 +755,9 @@ room316.btnclick = function (name) {
                         nav.bg("316_livingroom/cry.jpg");
                         chat(132, 316);
                         break;
+                    default:
+                        chat(154, 316);
+                        break;
                 }
             }
 
@@ -2850,7 +2853,14 @@ room316.chat = function (chatID) {
                     { chatID: -1, text: "This is in progress - need to add a lot of assets doggy", callback: "leave" },
                 ]
             },
-            
+            {
+                chatID: 154,
+                speaker: "janice",
+                text: "You are such my bitch! ",
+                button: [
+                    { chatID: -1, text: "I really am. ", callback: "reset" },
+                ]
+            },
 
 
 

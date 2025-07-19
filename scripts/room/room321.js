@@ -435,7 +435,10 @@ room321.btnclick = function (name) {
             gv.mod("arousal", 15);
             sc.completeMissionTask("janice", "webcam", 1);
             nav.bg("321_whorechat/eatpussy_" + gender.pronoun("f") + ".jpg");
-            levels.oral(3, "f", "janice");
+            if (!daily.get("janiceEatPussy")) {
+                levels.oral(3, "f", "janice");
+                daily.set("janiceEatPussy");
+            }
             g.internal.excitement += 2;
             g.internal.button = "main";
             room321.btnclick("buttons");

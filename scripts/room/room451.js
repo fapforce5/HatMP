@@ -547,6 +547,7 @@ room451.chatcatch = function (callback) {
             }
             break;
         case "bj8":
+            levels.gotbj("n", "cecilia");
             nav.killbutton("bj8");
             nav.bg("451_parkMensRoom/bj8.jpg");
             break;

@@ -194,8 +194,17 @@ room19.btnclick = function (name) {
                             "top": 0,
                             "width": 1200,
                             "height": 1080,
-                            "image": "19_layInBed/bj_" + name + "_" + gender.pronoun("boy") + ".gif"
+                            "image": "19_layInBed/bj_whiteDildo_" + gender.pronoun("boy") + ".gif"
                         }, 19);
+                        //nav.button({
+                        //    "type": "img",
+                        //    "name": "bj",
+                        //    "left": 500,
+                        //    "top": 0,
+                        //    "width": 1200,
+                        //    "height": 1080,
+                        //    "image": "19_layInBed/bj_" + name + "_" + gender.pronoun("boy") + ".gif"
+                        //}, 19);
                     }
                     g.roomTimeout = setTimeout(function () {
                         chat(12, 19);

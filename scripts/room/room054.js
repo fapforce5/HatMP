@@ -38,29 +38,22 @@ room54.btnclick = function (name) {
         case "couple":
             if (!daily.get("tif")) {
                 daily.set("tif");
-                switch (sc.taskGetStep("tiffany", "friend")) {
-                    case -1:
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        chat(1, 54);
-                        break;
-                    case 5: chat(12, 54); break;
-                    case 6:
-                        nav.killbutton("couple");
-                        nav.button({
-                            "type": "btn",
-                            "name": "couple",
-                            "left": 597,
-                            "top": 20,
-                            "width": 1057,
-                            "height": 1060,
-                            "image": "54_tif/e6_1.png"
-                        }, 54);
-                        chat(27, 54);
-                        break;
+                if (sc.getMissionTask("tiffany", "friend", 4).notStarted)
+                    chat(1, 54);
+                else if (sc.getMissionTask("tiffany", "friend", 5).notStarted)
+                    chat(12, 54);
+                else {
+                    nav.killbutton("couple");
+                    nav.button({
+                        "type": "btn",
+                        "name": "couple",
+                        "left": 597,
+                        "top": 20,
+                        "width": 1057,
+                        "height": 1060,
+                        "image": "54_tif/e6_1.png"
+                    }, 54);
+                    chat(27, 54);
                 }
             }
             else {

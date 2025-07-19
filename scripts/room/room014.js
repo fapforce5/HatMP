@@ -1451,7 +1451,7 @@ room14.chat = function (chatID) {
                 speaker: "landlord",
                 text: "We can't do this. It's so very very wrong. What would " + sc.n("bigguy") + " say? ",
                 button: [
-                    { chatID: 23, text: "I don't care what he says. I just know that I only to feel your lips on mine. ", callback: "" }
+                    { chatID: 23, text: "I don't care what he says. I just know that I only want to feel your lips on mine. ", callback: "" }
                 ]
             },
             {

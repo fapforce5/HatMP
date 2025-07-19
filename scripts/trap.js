@@ -76,7 +76,7 @@ trap.roll = function () {
 
     var diceArray = new Array();
     var i;
-    var rollToBeat = 24 + g.rand(0, 13);
+    var rollToBeat = 28 + g.rand(0, 8);
     var totalRoll = 0;
     for (i = 0; i < 6; i++) {
         let thisRoll = g.rand(1, 7);

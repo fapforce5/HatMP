@@ -156,7 +156,7 @@ room551.btnclick = function (name) {
             else {
                 if (secretRoom.inProgress || spar.inProgress) {
                     sc.select("icon_workout", "551_gymInside/icon_workout.png", 0);
-                    if (spar.inProgress)
+                    if (spar.startedOrComplete)
                         sc.select("icon_spar", "551_gymInside/icon_spar.png", 1);
                     if (secretRoom.inProgress)
                         sc.select("icon_secret", "551_gymInside/icon_secret.png", 2);

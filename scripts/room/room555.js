@@ -189,10 +189,12 @@ room555.btnclick = function (name) {
             else {
                 nav.killall();
                 if (cl.c.chastity === null) {
+                    levels.fuckpussy("g");
                     nav.bg("555_backgym/thrust3.jpg");
                     chat(40, 555);
                 }
                 else {
+                    
                     chat(52, 555);
                 }
             }
@@ -235,6 +237,7 @@ room555.btnclick = function (name) {
         case "g_yoga":
             if (g.internal > 13) {
                 nav.killall();
+                levels.gotbj("f", "g");
                 nav.bg("555_backgym/yoga3.jpg");
                 chat(46, 555);
             }

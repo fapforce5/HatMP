@@ -35,7 +35,12 @@ room585.main = function () {
                 
                 break;
             case 22:
-                //if (sissy.get("test1").ach) {
+                //if (sc.getMissionTask("eva", "sissy", 8).notStarted) {
+                //    nav.bg("585_livingRoom/eva0.webp");
+                //    chat(20, 585);
+                //    return;
+                //}
+                //else if (sissy.get("test1").ach) {
                 //    nav.button({
                 //        "type": "btn",
                 //        "name": "sporty",
@@ -48,6 +53,11 @@ room585.main = function () {
                 //}
                 break;
             case 23:
+                //if (sc.getMissionTask("eva", "sissy", 8).notStarted) {
+                //    nav.bg("585_livingRoom/eva0.webp");
+                //    chat(20, 585);
+                //    return;
+                //}
                 //if (sc.taskGetStep("eva", "sissy") === 8) {
 
                 //}
@@ -122,6 +132,9 @@ room585.chatcatch = function (callback) {
     let roomEvents = room585.getRoomsNow(false);
 
     switch (callback) {
+        case "eva1":
+            nav.bg("585_livingRoom/" + callback + ".webp");
+            break;
         case "utah3":
         case "utah4":
         case "utah5":
@@ -155,6 +168,12 @@ room585.chatcatch = function (callback) {
         case "sporty_588":
             g.pass = "sporty_588";
             char.room(588);
+            break;
+        case "evaFail8":
+            sc.completeMissionTask("eva", "sissy", 8, false);
+            char.addtime(30);
+            gv.set("map", 3);
+            char.room(0);
             break;
         default:
             break;
@@ -335,6 +354,60 @@ room585.chat = function (chatID) {
             text: "Oh that's hot! Let's check out your bedroom! ",
             button: [
                 { chatID: -1, text: "Yes, let's!", callback: "sporty_588" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "eva",
+            text: "Oh is my little doggy wandering around? Doggies don't deserve clothes. Strip and " +
+                "get on all fours doggy! ",
+            button: [
+                { chatID: 21, text: "Huh? Not here. There's too many poeple around. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "!deb",
+            text: "Doggies don't talk! You owe me for losing my favorite butt plug bitch! ",
+            button: [
+                { chatID: 22, text: "*whimper* ", callback: "" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "!latika",
+            text: "Doofus is my best friend. If you don't do what ever she says I'll kick you " +
+                "out of the party and you'll never be allowed back EVER again. Now stip you slutty " +
+                "bitch! ",
+            button: [
+                { chatID: 24, text: "[Strip in front of everyone]", callback: "eva1" },
+                { chatID: 23, text: "[Stand up for yourself]", callback: "" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "me",
+            text: "No! I'm not your bitch! I'm a strong independent " + gender.pronoun("girl") + "! " +
+                "You are the bitches! I'm never coming back! ",
+            button: [
+                { chatID: -1, text: "[Leave on your own accord]", callback: "evaFail8" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "eva",
+            text: "See everyone! I told you my " + g.makeSingular("el") + " is my new doggy! Now " +
+                "bark my dumb little doggy! ",
+            button: [
+                { chatID: 25, text: "[bark]", callback: "eva2" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "eva",
+            text: "Since you owe ",
+            button: [
+                { chatID: 25, text: "[bark]", callback: "eva3" },
             ]
         },
     ];

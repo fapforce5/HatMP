@@ -444,6 +444,9 @@ missy.afterLunch = function () {
             returnRoomId = 195;
         }
     }
+    if (g.dt.getDay() === 5) {
+        returnRoomId = 196;
+    }
     return returnRoomId;
 };
 

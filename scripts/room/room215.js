@@ -481,4 +481,4 @@ room215.chat = function (chatID) {
         return cArray[chatID];
     else
         return [];
-};
+}; 
