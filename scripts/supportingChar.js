@@ -97,6 +97,7 @@ sc.char = [
     { name: "chuck", display: "Chuck", image: "chuck.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "utah", display: "Utah", image: "utah.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "football", display: "Player", image: "football.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "liam", display: "Liam", image: "liam.png", step: 0, secret: 100, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "queen", display: "Forest Queen", image: "queen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "a", display: "Aethelreda", image: "aethelreda.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
@@ -264,7 +265,8 @@ sc.charMission = [
                         { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 900 },
                         { id: 6, txt: "Stand up for yourself or not?", show: true, mStatus: 0, roomId: 13 },
                         { id: 7, txt: "Meet her Friday night. ", show: true, mStatus: 0, roomId: 13 },
-                        { id: 8, txt: "Friday night - house part [end]", show: true, mStatus: 0, roomId: 13 },
+                        { id: 8, txt: "Do you embarrass yourself?", show: true, mStatus: 0, roomId: 585 },
+                        { id: 9, txt: "Apology", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
         ],
@@ -1223,6 +1225,24 @@ sc.charMission = [
                         { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 775 },
                         { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 775 },
                         { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 775 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "liam", mission: [
+            {
+                missionName: "date", mStatus: 0, title: "Lose Virginity", desc: "Help him find true love, at least for a bit", task:
+                    [
+                        { id: 0, txt: "Chat", show: true, mStatus: 0, roomId: 585 },
+                        { id: 1, txt: "Meet the girl", show: true, mStatus: 0, roomId: 585 },
+                        { id: 2, txt: "Give the info to Liam", show: true, mStatus: 0, roomId: 585 },
+                        { id: 3, txt: "Said she works as a waitress", show: true, mStatus: 0, roomId: 585 },
+                        { id: 4, txt: "Said she's a marine biology student", show: true, mStatus: 0, roomId: 585 },
+                        { id: 5, txt: "Said she likes milk", show: true, mStatus: 0, roomId: 585 },
+                        { id: 6, txt: "Favorite animal is elephant", show: true, mStatus: 0, roomId: 585 },
+                        { id: 7, txt: "Favorite animal is turtle", show: true, mStatus: 0, roomId: 585 },
+                        { id: 8, txt: "Favorite animal is seal", show: true, mStatus: 0, roomId: 585 },
                     ]
             },
         ]
@@ -2627,6 +2647,10 @@ sc.trivial = function (charname) {
         case "!skank":
             name = "Skanky Bitch";
             image = "skank.png";
+            break;
+        case "!belle":
+            name = "Belle";
+            image = "belle.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

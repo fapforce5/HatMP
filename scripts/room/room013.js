@@ -130,7 +130,14 @@ room13.main = function () {
                     //put logic for changes / secret here
                 //}
                 if (cl.c.cumface) {
-                    //secret increases
+                    if (sc.getSecret("lola").secretOut) {
+                        chat(241, 13);
+                    }
+                    else {
+                        sc.modSecret("lola", 50);
+                        sc.modSecret("eva", 50);
+                        chat(242, 13);
+                    }
                 }
             }
         }
@@ -340,6 +347,11 @@ room13.btnclick = function (name) {
                     else if (lolaSissy === 7) {
                         chat(218, 13);
                     }
+                    else if (lolaSissy === 8) {
+                        nav.kill();
+                        nav.bg("13_sisterRoom/sissy7_0_day.jpg", "13_sisterRoom/sissy7_0_night.jpg");
+                        chat(252, 13);
+                    }
                 }
             }
             else {
@@ -402,12 +414,19 @@ room13.btnclick = function (name) {
                 }
                 else if (evaSissy === 4 || evaSissy === 5)
                     chat(187, 13);
+                else if (evaSissy === 9) {
+                    sc.completeMissionTask("eva", "sissy", 9);
+                    sc.completeMission("eva", "sissy");
+                    if (sc.getMissionTask("eva", "sissy", 8).fail) {
+                        chat(244, 13);   
+                    }
+                    else {
+                        chat(248, 13);
+                    }
+                }
                 else { //if (evaSissy === 7) {
-                    if (g.dt.getDay() === 5) {
-                        if (cl.c.chastity !== null) {
-                            chat(201, 13);
-                        }
-                        else if (cl.appearance() < 3) {
+                    if (g.dt.getDay() === 5 || g.dt.getDay() === 6) {
+                        if (cl.appearance() < 3) {
                             chat(204, 13);
                         }
                         else {
@@ -3731,7 +3750,7 @@ room13.chat = function (chatID) {
                 speaker: "lola",
                 text: "He's not! He's amazing! You should....",
                 button: [
-                    { chatID: 220, text: "?", callback: "lolaSissy7_0" },
+                    { chatID: 221, text: "?", callback: "lolaSissy7_0" },
                 ]
             },
             {
@@ -3927,6 +3946,145 @@ room13.chat = function (chatID) {
                 text: "Oh. oooohhhhh. I'm so sorry. I get it. I've found the one and you're both " +
                     "still searching for your one. You'll find your one. Your funny, nice, and " +
                     "a little hottie like me! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 241,
+                speaker: "eva",
+                text: "*ugh* gross. There's cum all over your face. You should just swallow it. " +
+                    "Go clean that up so we don't have some random guy's cum drip over our floor. ",
+                button: [
+                    { chatID: -1, text: "oh hahhaha. ok", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 242,
+                speaker: "lola",
+                text: "What's all over your face? ",
+                button: [
+                    { chatID: 243, text: "My face?", callback: "" },
+                ]
+            },
+            {
+                chatID: 243,
+                speaker: "eva",
+                text: "Hahahah! That's totally cum on your face! You sucked a dick didn't you! ",
+                button: [
+                    { chatID: -1, text: "Huh?! Oh That's uhhhh.... lotion! Yeah lotion. Gotta clean that up!", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 244,
+                speaker: "eva",
+                text: "Hey, I was talking to Doofus and he said we went pretty far for his party " +
+                    "and maybe he was right. He made me promise that if we want to do sex stuff " +
+                    "with you we do it in the room. Forgive me?",
+                button: [
+                    { chatID: 245, text: "I forgive you. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 245,
+                speaker: "lola",
+                text: "I've never head " + sc.n("eva") + " aplologize before. What did she make you do? ",
+                button: [
+                    { chatID: 246, text: "She made me strip in front of everyone at the party", callback: "" },
+                ]
+            },
+            {
+                chatID: 246,
+                speaker: "lola",
+                text: sc.n("eva") + "! You beast!",
+                button: [
+                    { chatID: 247, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 247,
+                speaker: "eva",
+                text: "Heh. I thought she would be into it. I didn't know. Besides I said I was sorry! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 248,
+                speaker: "eva",
+                text: "Hahahaha!!! How did Latika's ass taste you dirty dirty pervert!! ",
+                button: [
+                    { chatID: 249, text: "ech", callback: "" },
+                ]
+            },
+            {
+                chatID: 249,
+                speaker: "lola",
+                text: "What happened? ",
+                button: [
+                    { chatID: 250, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 250,
+                speaker: "eva",
+                text: sc.n("me") + " pulled Latika's butt plug out, in front of everyone! " +
+                    "Then she ran out of the house naked crying!!! You were the talk of the night! " +
+                    "Doofus said you were never allowed back, but Liam " +
+                    "talked to him and Doofus agreed that a slut like you can come back anytime. Just do " +
+                    "the sex stuff in the bedrooms. I think Liam wants to fuck you. hehehehe",
+                button: [
+                    { chatID: 251, text: "Really?", callback: "" },
+                ]
+            },
+            {
+                chatID: 251,
+                speaker: "lola",
+                text: sc.n("eva") + "! You know " + sc.n("me") + " can't control her dirty impulses! " +
+                    "You two can really be too much sometimes. This is the reason I don't go to those " +
+                    "house parties. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 252,
+                speaker: "chad",
+                text: "Hey " + sc.n("lola") + " and her loser friends. Hey what are you wearing! ",
+                button: [
+                    { chatID: 253, text: "*groan*", callback: "lolaSissy7_1" },
+                ]
+            },
+            {
+                chatID: 253,
+                speaker: "lola",
+                text: "I wasn't planning on going out, I was just talking with my " + sc.n("el") +
+                    ". ",
+                button: [
+                    { chatID: 254, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 254,
+                speaker: "chad",
+                text: "Doesn't matter. I told you to stop dressing like you decorate ginger bread houses. " +
+                    "Take that shit off. ",
+                button: [
+                    { chatID: 255, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 255,
+                speaker: "lola",
+                text: "...but I'm not wearing underwear.",
+                button: [
+                    { chatID: 256, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 256,
+                speaker: "chad",
+                text: "I know. Do what I tell you.",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
                 ]

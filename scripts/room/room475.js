@@ -63,7 +63,7 @@ room475.main = function () {
             howOften = 10;
     }
     if (g.map.ev.length === 0) {
-        eventArray = ["rope", "hole", "random", "random", "treasure"];
+        eventArray = ["rope", "rope", "hole", "random", "random", "treasure"];
         for (let i = 0; i < fameLevel - 4; i++) {
             eventArray.push("rape");
         }

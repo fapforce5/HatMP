@@ -153,6 +153,8 @@ inv.master = [
     { type: "a", name: "bouquet", display: "Bouquet ", entry: false, count: 0, cost: 24, image: "bouquet.png", n: false, desc: "Lovely bouquet of flowers" },
     { type: "a", name: "roses", display: "Roses", entry: false, count: 0, cost: 45, image: "roses.png", n: false, desc: "A dozen red roses" },
     { type: "a", name: "seal", display: "Seal", entry: false, count: 0, cost: 12, image: "seal.png", n: false, desc: "Seal plush toy" },
+    { type: "a", name: "turtle", display: "Turtle", entry: false, count: 0, cost: 12, image: "turtle.png", n: false, desc: "Turtle plush toy" },
+    { type: "a", name: "elephant", display: "Elephant", entry: false, count: 0, cost: 12, image: "elephant.png", n: false, desc: "Elephant plush toy" },
     { type: "a", name: "mug", display: "Travel Mug", entry: false, count: 0, cost: 36, image: "mug.png", n: false, desc: "Pink travel mug" },
     { type: "a", name: "whoopee", display: "Whoopee cushion", entry: false, count: 0, cost: 3, image: "whoopee.png", n: false, desc: "Whoopee cushion go fart! Hahaha" },
 ];

@@ -1,7 +1,6 @@
 ﻿//Liam
 var room589 = {};
 room589.main = function () {
-    let roomEvents = room585.getRoomsNow(false);
     switch (Math.floor(g.gethourdecimal())) {
         case 20:
         case 21:

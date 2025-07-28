@@ -1,7 +1,6 @@
 ﻿//Room name
 var room586 = {};
 room586.main = function () {
-    let roomEvents = room585.getRoomsNow(false);
     nav.button({
         "type": "btn",
         "name": "keg",
@@ -13,43 +12,48 @@ room586.main = function () {
         "image": "586_kitchen/keg.png"
     }, 586);
 
+    if (g.rand(0, 5) === 0 && !daily.get("pp586") && (g.gethourdecimal() > 22 || g.gethourdecimal() < 3)) {
+        daily.set("pp586");
+        nav.button({
+            "type": "btn",
+            "name": "chuck",
+            "left": 856,
+            "top": 338,
+            "width": 385,
+            "height": 455,
+            "image": "586_kitchen/pp.webp"
+        }, 586);
+        chat(29, 586);
+    }
+    else if (daily.get("utahFuck") && !daily.get("chuck")) {
+        nav.button({
+            "type": "btn",
+            "name": "chuck",
+            "left": 158,
+            "top": 32,
+            "width": 540,
+            "height": 1048,
+            "image": "586_kitchen/chuck.png"
+        }, 586);
+    }
+    else if (!daily.get("utahFuck")) {
+        nav.button({
+            "type": "btn",
+            "name": "stacy",
+            "left": 106,
+            "top": 18,
+            "width": 755,
+            "height": 1062,
+            "image": "586_kitchen/stacy.png"
+        }, 586);
+    }
+
     switch (Math.floor(g.gethourdecimal())) {
-        case 20:
-        case 21:
-            nav.button({
-                "type": "btn",
-                "name": "stacy",
-                "left": 106,
-                "top": 18,
-                "width": 755,
-                "height": 1062,
-                "image": "586_kitchen/stacy.png"
-            }, 586);
-            nav.bg("586_kitchen/bg.jpg");
-            break;
-        case 22:
-            if (roomEvents.r9 === "stacy") {
-                nav.button({
-                    "type": "btn",
-                    "name": "chuck",
-                    "left": 158,
-                    "top": 32,
-                    "width": 540,
-                    "height": 1048,
-                    "image": "586_kitchen/chuck.png"
-                }, 586);
-            }
-            nav.bg("586_kitchen/bg_22.jpg");
-            break;
-        case 23:
-            nav.bg("586_kitchen/bg_23.jpg");
-            break;
-        case 0:
-            nav.bg("586_kitchen/bg_0.jpg");
-            break;
-        default:
-            nav.bg("586_kitchen/bg_1.jpg");
-            break;
+        case 20: nav.bg("586_kitchen/bg.jpg"); break;
+        case 21: nav.bg("586_kitchen/bg_22.jpg"); break;
+        case 22: nav.bg("586_kitchen/bg_23.jpg"); break;
+        case 23: nav.bg("586_kitchen/bg_0.jpg"); break;
+        default: nav.bg("586_kitchen/bg_1.jpg"); break;
     }
     nav.buildnav([585, 587, 588, 589]);
 };
@@ -85,16 +89,17 @@ room586.btnclick = function (name) {
             break;
         case "chuck":
             if (sc.getMission("chuck", "fuck").inProgress) {
+                daily.set("chuck");
                 switch (sc.taskGetStep("chuck", "fuck")) {
                     case 0: chat(7, 586); break;
                     case 1: chat(12, 586); break;
                     case 2: chat(22, 586); break;
                     case 3: chat(28, 586); break;
                 }
-                
             }
             else {
                 chat(5, 586);
+                daily.set("chuck");
             }
             break;
         case "suckchuck":
@@ -452,6 +457,14 @@ room586.chat = function (chatID) {
             text: "Future release. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "ppgirl",
+            text: "You didn't see a damn thing! ",
+            button: [
+                { chatID: -1, text: "huh?", callback: "reset" }
             ]
         },
     ];

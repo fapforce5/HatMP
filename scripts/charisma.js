@@ -189,7 +189,7 @@ charisma.drawRoll = function () {
 
     if (myTotal > g.fight.rollNeeded) {
         g.fight.aftermath = "win";
-        gv.mod("energy", -20);
+        gv.mod("energy", -5);
         nav.t({
             type: "img",
             name: "quickfight",
@@ -239,7 +239,7 @@ charisma.complete = function () {
     nav.killbutton("charismaComplete");
     var name;
     var roomId = g.fight.roomID;
-    gv.mod("charisma", 15, 999);
+    levels.mod("charisma", 20);
     if (g.fight.aftermath === "win")
         name = g.fight.btnPressWin;
     else

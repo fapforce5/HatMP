@@ -120,6 +120,7 @@ room40.chatcatch = function (callback) {
             room40.chatcatch("cleanOnly");
             break;
         case "endlolaboyChad":
+            future.kill("lolaboy");
             sc.completeMissionTask("lola", "sissy", 5, false);
             sc.completeMission("lola", "tom", false);
             room40.chatcatch("cleanOnly");

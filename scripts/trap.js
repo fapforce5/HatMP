@@ -24,7 +24,7 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
     nav.killall();
 
     if (trap.type === null) {
-        let tt = ["treasure", "encounter", "encounter", "hole", "fight"];
+        let tt = ["treasure", "encounter", "lewd", "hole", "fight"];
         trap.type = tt[g.rand(0, tt.length)];
     }
 
@@ -44,6 +44,10 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
     }
     else if (trap.type === "encounter") {
         trap.encounter(trapNum);
+        return;
+    }
+    else if (trap.type === "lewd") {
+        trap.lewd(trapNum);
         return;
     }
 
@@ -459,9 +463,9 @@ trap.hole = function () {
     switch (trap.phase) {
         case 0:
             holechar = [
-                { id: 0, n: "girl", rape: null, onlyAsk: false, g: "f" },
+                { id: 0, n: "!girl", rape: null, onlyAsk: false, g: "f" },
                 { id: 1, n: "ppgirl", rape: null, onlyAsk: false, g: "f" },
-                { id: 2, n: "girl", rape: null, onlyAsk: false, g: "f" },
+                { id: 2, n: "!girl", rape: null, onlyAsk: false, g: "f" },
                 { id: 3, n: "!rape0", rape: 0, onlyAsk: false, g: "m" },
                 { id: 4, n: "!futa0", rape: 2, onlyAsk: false, g: "f" },
                 { id: 5, n: "!peggy", rape: null, onlyAsk: true, g: "f" },
@@ -683,21 +687,11 @@ trap.treasure = function () {
 
 trap.encounter = function () {
     let charList = new Array();
-    let wearing = cl.wearing();
     nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
-    if (gv.get("cat") === -1 && g.rand(0, 4) === 0 && !g.isNight()) {
+    if (gv.get("cat") === -1 && g.rand(0, 4) === 0 && !g.isNight() && trap.location === "forest") {
         charList.push({ n: "!cat", z: "cat", loc: ["forest"], l: 0, t: 0, w: 1920, h: 1080, i: "cat.jpg" });
     }
-    else if (wearing.outerwear || wearing.underwear && g.rand(0, 3) === 0) {
-        if (wearing.outerwear) {
-            charList.push({ n: "!boxes", p: "boy", z: "tits1", loc: ["forest"], l: 678, t: 60, w: 516, h: 1020, i: "man5.png" });
-        }
-        charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: ["forest"], l: 815, t: 61, w: 508, h: 1019, i: "man1.png" });
-    }
-    for (let i = 0; i < charList.length; i++) {
-        if (!charList[i].loc.includes(trap.location))
-            charList.splice(i, 1);
-    }
+   
 
     if (charList.length < 1) {
         charList.push({ n: "!girl", p: "girl", z: "nice", loc: ["street"], l: 857, t: 69, w: 524, h: 1011, i: "girl1.png" });
@@ -740,19 +734,6 @@ trap.encounter = function () {
     switch (trap.char.z) {
         case "nice": chat(802, 1005); break;
         case "mean": chat(801, 1005); break;
-        case "steal":
-            nav.button({
-                "type": "zimg",
-                "name": "m1004-dx",
-                "left": 1600,
-                "top": 150,
-                "width": 300,
-                "height": 318,
-                "image": "1005_trap/trap_message_theft.png"
-            }, 1005);
-            chat(800, 1005);
-            trap.displayMenu("encounter");
-            break;
         case "granola1":
             chat(12, 1005);
             break;
@@ -768,16 +749,74 @@ trap.encounter = function () {
             }, 1005);
             chat(13, 1005);
             break;
-        case "tits1":
-            chat(15, 1005);
-            zcl.displayMain(0, 900, .25, "clothes", true);
-            break;
         case "cat":
             chat(56, 1005);
             break;
     }
+};
 
+trap.lewd = function () {
+    let charList = new Array();
+    let wearing = cl.wearing();
 
+    if (wearing.outerwear || wearing.underwear && g.rand(0, 3) === 0) {
+        if (wearing.outerwear) {
+            charList.push({ n: "!boxes", p: "boy", z: "tits1", loc: ["forest"], l: 678, t: 60, w: 516, h: 1020, i: "man5.png" });
+            charList.push({ n: "!girl", p: "girl", z: "tits12", loc: ["forest"], l: 862, t: 184, w: 417, h: 896, i: "girl5.png" });
+        }
+        charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: ["forest"], l: 815, t: 61, w: 508, h: 1019, i: "man1.png" });
+    }
+    
+
+    if (levels.get("fame").l > 4 && cl.appearance() > 2 && g.rand(0, 3) === 0) {
+        charList.push({ n: "!m", p: "girl", z: "lickass0", loc: ["forest", "street"], l: 899, t: 33, w: 557, h: 1047, i: "girl6.png" });
+    }
+    if (charList.length === 0) {
+        trap.kill();
+        return;
+    }
+    for (let i = 0; i < charList.length; i++) {
+        if (!charList[i].loc.includes(trap.location))
+            charList.splice(i, 1);
+    }
+    trap.char = charList[g.rand(0, charList.length)];
+
+    trap.name = trap.char.n;
+    nav.button({
+        "type": "img",
+        "name": "r1004bg",
+        "left": trap.char.l,
+        "top": trap.char.t,
+        "width": trap.char.w,
+        "height": trap.char.h,
+        "image": "1005_trap/encounter/" + trap.char.i
+    }, 1005);
+    switch (trap.char.z) {
+        case "steal":
+            nav.button({
+                "type": "zimg",
+                "name": "m1004-dx",
+                "left": 1600,
+                "top": 150,
+                "width": 300,
+                "height": 318,
+                "image": "1005_trap/trap_message_theft.png"
+            }, 1005);
+            chat(800, 1005);
+            trap.displayMenu("encounter");
+            break;
+        case "tits1":
+            chat(15, 1005);
+            zcl.displayMain(0, 900, .25, "clothes", true);
+            break;
+        case "tits12":
+            chat(59, 1005);
+            zcl.displayMain(-100, 900, .25, "clothes", true);
+            break;
+        case "lickass0":
+            chat(61, 1005);
+            break;
+    }
 };
 
 trap.kill = function (roomId = null) {
@@ -1074,6 +1113,28 @@ room1005.btnclick = function (name) {
                 gv.mod("energy", -10);
                 trap.phase = 3;
                 trap.rope();
+            }
+            break;
+        case "r1004bg_lick":
+            switch (trap.internal) {
+                case 0: g.popUpNotice("It's so bitter!"); break;
+                case 1: g.popUpNotice("I love licking her dirty asshole"); break;
+                case 2: g.popUpNotice("I really am a dirty ass licking slut"); break;
+                case 3:
+                    levels.oralass("f", "!m");
+                    nav.killbutton("r1004bg_lick");
+                    nav.killbutton("r1004bg");
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 899,
+                        "top": 33,
+                        "width": 557,
+                        "height": 1047,
+                        "image": "1005_trap/encounter/girl6.png",
+                    }, 1005);
+                    chat(63, 1005);
+                    break;
             }
             break;
     }
@@ -1426,18 +1487,22 @@ room1005.chatcatch = function (callback) {
             break;
         case "flash":
             levels.mod("xdress", 15);
-            var ctemp;
+            var ctemp, ctempBra;
             if (cl.c.shirt !== null) {
                 ctemp = cl.c.shirt;
-                cl.c.shirt = null;
+                ctempBra = cl.c.bra;
+                cl.c.shirt = cl.c.bra = null;
                 zcl.displayMain(0, 900, .25, "clothes", true);
                 cl.c.shirt = ctemp;
+                cl.c.bra = ctempBra;
             }
             else if (cl.c.dress !== null) {
                 ctemp = cl.c.dress;
-                cl.c.dress = null;
+                ctempBra = cl.c.bra;
+                cl.c.dress = cl.c.bra = null;
                 zcl.displayMain(0, 900, .25, "clothes", true);
                 cl.c.dress = ctemp;
+                cl.c.bra = ctempBra;
             }
             else if (cl.c.swimsuit !== null) {
                 ctemp = cl.c.swimsuit;
@@ -1467,6 +1532,35 @@ room1005.chatcatch = function (callback) {
             nav.killbutton("r1004bg");
             gv.set("cat", 0);
             nav.bg("1005_trap/encounter/catx.jpg");
+            break;
+        case "gimmeClothes":
+            cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.pj = cl.c.swimsuit = null;
+            zcl.displayMain(-100, 900, .25, "clothes", true);
+            levels.mod("xdress", 10);
+            nav.killbutton("r1004bg");
+            cl.display();
+            break;
+        case "lickass0":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 803,
+                "top": 0,
+                "width": 772,
+                "height": 1080,
+                "image": "1005_trap/encounter/girl6_a.png",
+            }, 1005);
+            nav.button({
+                "type": "tongue",
+                "name": "r1004bg_lick",
+                "left": 1076,
+                "top": 589,
+                "width": 106,
+                "height": 100  ,
+                "image": "1005_trap/encounter/girl6_l.png",
+            }, 1005);
+            trap.internal = 0;
             break;
         default:
             break;
@@ -2002,7 +2096,7 @@ room1005.chat = function (chatID) {
             },
             {
                 chatID: 20,
-                speaker: "girl",
+                speaker: "!girl",
                 text: "So sorry! The cult stole my clothes and I can't run around here " +
                     "naked! I'm not some gutter whore. Good luck!",
                 button: [
@@ -2352,6 +2446,49 @@ room1005.chat = function (chatID) {
                 text: "psh. Who want's a kitty ",
                 button: [
                     { chatID: -1, text: "...", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "!girl",
+                text: "They're after me! I need your clothes now! Please before they get here! ",
+                button: [
+                    { chatID: 60, text: "Oh. Sure, here's my clothes!", callback: "gimmeClothes" },
+                    { chatID: -1, text: "Psshhht! No way! Then I'll be naked!", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "thinking",
+                text: "Why did I do that. Now I'm out here without any clothes. I'm such a bimbo brain. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "!m",
+                text: "If it isn't the famouse little slut. I can't believe the stories about you and " +
+                    "have to know if they're all true. ",
+                button: [
+                    { chatID: 62, text: "Stories?", callback: "lickass0" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "!m",
+                text: "That you're a filthy slut. Prove them true and lick my asshole. ",
+                button: [
+                    { chatID: -1, text: "I am a filthy slut", callback: "" },
+                    { chatID: -1, text: "Gross. I'm not doing that", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "!m",
+                text: "Dirty girl! Enjoy the taste of my ass in your mouth. hehe",
+                button: [
+                    { chatID: -1, text: "Yeah. Your ass has totally coated my tongue. ", callback: "kill" }
                 ]
             },
         ];
