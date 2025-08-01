@@ -6,6 +6,25 @@ room174.main = function () {
         nav.bg("174_oneOffCase/xdress0.jpg");
         chat(35, 174);
     }
+    else if (g.pass === "privateMomFuck") {
+        //
+    }
+    else if (g.pass === "evalolateachme") {
+        g.pass = null;
+        nav.bg("174_oneOffCase/teach0_0.jpg");
+        zcl.displayMain(100, 800, .15, "clothes", false);
+        if (sc.getMission("eva", "teach").notStarted) {
+            sc.startMission("eva", "teach");
+            chat(63, 174);
+            return;
+        }
+        sc.select("teach_brush", "174_oneOffCase/icon_brush.png", 0);
+        sc.select("teach_makeup", "174_oneOffCase/icon_makeup.png", 1);
+        sc.select("teach_kiss", "174_oneOffCase/icon_kissing.png", 2);
+        sc.select("teach_bj", "174_oneOffCase/icon_bj.png", 3);
+        sc.select("teach_twat", "174_oneOffCase/icon_twat.png", 4);
+        sc.select("teach_anal", "174_oneOffCase/icon_anal.png", 5);
+    }
     else if (g.pass === "case_elijah_origin") {
         g.pass = null;
         g.internal = 0;
@@ -53,6 +72,37 @@ room174.btnclick = function (name) {
         case "wardrobe":
             g.pass = 174;
             char.room(8);
+            break;
+        case "teach_brush":
+            nav.kill();
+            nav.bg("174_oneOffCase/eva_brush.webp");
+            cl.c.lastHairCut += 10;
+            levels.mod("xdress", 20);
+            chat(67, 174);
+            break;
+        case "teach_makeup":
+            chat(69, 174);
+            break;
+        case "teach_kiss":
+            chat(72, 174);
+            break;
+        case "teach_bj":
+            chat(72, 174);
+
+            break;
+        case "teach_twat":
+
+            break;
+        case "teach_anal":
+
+            break;
+        case "teachKissLola":
+            levels.mod("xdress", 20);
+            chat(74, 174);
+            break;
+        case "teachKissEva":
+            levels.mod("xdress", 20);
+            chat(75, 174);
             break;
         default:
             break;
@@ -182,6 +232,45 @@ room174.chatcatch = function (callback) {
         case "club7":
             char.addtime(97);
             nav.bg("174_oneOffCase/" + callback + ".jpg");
+            break;
+        case "evalolateachme1":
+            g.pass = "evalolateachme";
+            char.room(174);
+            break;
+        case "evalolateachme":
+            char.addtime(90);
+            g.pass = "evalolateachme";
+            char.room(174);
+            break;
+        case "teachMakeup":
+            levels.mod("makeup", 50);
+            levels.mod("xdress", 20);
+            nav.kill();
+            nav.bg("174_oneOffCase/eva_makeup.webp");
+            break;
+        case "teachLolaKiss":
+            nav.bg("24_spinTheBottle/013_spinBG.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "teachKissLola",
+                "left": 700,
+                "top": 0,
+                "width": 830,
+                "height": 1080,
+                "image": "24_spinTheBottle/dareKissMe_0_lola.png"
+            }, 174);
+            break;
+        case "teachEvaKiss":
+            nav.bg("24_spinTheBottle/013_spinBG.jpg");
+            nav.button({
+                "type": "kiss",
+                "name": "teachKissEva",
+                "left": 700,
+                "top": 0,
+                "width": 830,
+                "height": 1080,
+                "image": "24_spinTheBottle/dareKissMe_0_eva.png"
+            }, 174);
             break;
         default:
             break;
@@ -744,6 +833,140 @@ room174.chat = function (chatID) {
                 "is. I'll send this to Missy and call it a night. ",
             button: [
                 { chatID: -1, text: "[Send picture to Missy and go home]", callback: "club_end" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "me",
+            text: "I uh... don't suppose you two could teach me stuff?",
+            button: [
+                { chatID: 64, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "lola",
+            text: "Stuff?",
+            button: [
+                { chatID: 65, text: "Yeah.. you know. I know you two like...", callback: "" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "eva",
+            text: "Oh hahahaha! I know what she wants! You want to dyke out with us don't you? " +
+                "What do you think " + sc.n("lola") + "? ",
+            button: [
+                { chatID: 66, text: "oh. uhhh. I was thinking something else.", callback: "" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "lola",
+            text: "Oh. huh. I guess we're all girls so it's ok. Unless you mean you just want to " +
+                "talk about makeup and boys. Then that's ok too. I know being a girl is new so " +
+                "we'll leave it up to you. ",
+            button: [
+                { chatID: -1, text: "Oh cool. Ok", callback: "evalolateachme1" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "lola",
+            text: "I totally love your hair. It's so soft and smooth. I swear new girls have the " +
+                "best hair without even trying. You know brushing your hair makes it grow faster. ",
+            button: [
+                { chatID: 68, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "eva",
+            text: "Awww. I guess even perverts make pretty girls! ",
+            button: [
+                { chatID: -1, text: "That's why you're so hot!", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "lola",
+            text: "I can't look like a clown, maybe should practice on " + sc.n("eva") + ". " +
+                "Besides she owes me one for helping her pass Introduction to Nutrition 101. ",
+            button: [
+                { chatID: 70, text: "I'm offended", callback: "" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "eva",
+            text: "It's cool. But you're going to owe me some study time with Introduction " +
+                "to Communications. Also I'm going to take my shirt off. Can't have your sloppy makeup " +
+                "skills getting my shirt all dirty. Makeup can be a bitch to get out. ",
+            button: [
+                { chatID: 71, text: "Oh sweet! I get to practice! ", callback: "teachMakeup" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "eva",
+            text: "Ugh. I look like a clown and a stripper got in a head on crash and smashed " +
+                "their faces together. ",
+            button: [
+                { chatID: -1, text: "...", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "eva",
+            text: "I taught " + sc.n("lola") + " everything she knows about kissing! ",
+            button: [
+                { chatID: 73, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "lola",
+            text: "She did. I do love the french kissing, but only when I'm all worked up, " +
+                "otherwise it's kind gross. So who do you want to practice kissing with? ",
+            button: [
+                { chatID: -1, text: sc.n("lola"), callback: "teachLolaKiss" },
+                { chatID: -1, text: sc.n("eva"), callback: "teachEvaKiss" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "lola",
+            text: "MMmmm the pefect amout of tongue. You're really a great kisser you know.",
+            button: [
+                { chatID: -1, text: "MMmmmMMmm", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "eva",
+            text: "Sometimes I think you're just this pervert that is trying to sneak into the " +
+                "girls locker room, but sometimes I think you're a girl, like the way you kiss. " +
+                "It's so feminine, like " + sc.n("lola") + ". ",
+            button: [
+                { chatID: -1, text: "MMmmMMmm", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "lola",
+            text: "Oh fun. I am so bad at taking it the penis deep in my mouth, I do need the " +
+                "practice. ",
+            button: [
+                { chatID: 77, text: "totally", callback: "" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "eva",
+            text: "When we play the blow job game " + sc.n("lola") + " and I like to wear these " +
+                "costumes I got us for fun. One second while we change! ",
+            button: [
+                { chatID: 78, text: "ok", callback: "" },
             ]
         },
     ];

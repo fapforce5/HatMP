@@ -94,7 +94,7 @@ room252.btnclick = function (name) {
                 lev.push({ n: "holly", l: sc.getLevel("holly") });
                 lev.push({ n: "dolly", l: sc.getLevel("dolly") });
                 lev.push({ n: "molly", l: sc.getLevel("molly") });
-                 for (let i = lev.length - 1; i >= 0; i--) {
+                for (let i = lev.length - 1; i >= 0; i--) {
                     if (lev[i].l > 2)
                         lev.splice(i, 1);
                 }
@@ -107,6 +107,37 @@ room252.btnclick = function (name) {
                     lev.sort((a, b) => a.l - b.l);
                     room252.btnclick(lev[0].n);
                     return;
+                }
+            }
+            else {
+                nav.kill();
+                var hollyMadSub = sc.getMission("holly", "happy").fail ? "mad" : "";
+                var hollyMadWho;
+                switch (g.rand(0, 3)) {
+                    case 0: hollyMadWho = "holly"; break;
+                    case 1: hollyMadWho = "dolly"; break;
+                    case 2: hollyMadWho = "molly"; break;
+                }
+                nav.bg("252_waitress/" + hollyMadWho + hollyMadSub + ".jpg");
+                switch (hollyMadWho) {
+                    case "holly":
+                        if (hollyMadSub === "mad")
+                            chat(501, 252);
+                        else
+                            chat(500, 252);
+                        break;
+                    case "dolly":
+                        if (hollyMadSub === "mad")
+                            chat(511, 252);
+                        else
+                            chat(510, 252);
+                        break;
+                    case "molly":
+                        if (hollyMadSub === "mad")
+                            chat(521, 252);
+                        else
+                            chat(520, 252);
+                        break;
                 }
             }
             break;
@@ -433,6 +464,9 @@ room252.chatcatch = function (callback) {
             nav.bg("252_waitress/wait8_0.jpg");
             nav.next("wait8");
             break;
+        case "customer":
+            room252.btnclick("customer");
+            break;
         default:
             break;
     }
@@ -696,6 +730,134 @@ room252.chat = function (chatID) {
             text: "I already have one of these. You don't have to give me another one. ",
             button: [
                 { chatID: -1, text: "Oh hahaha. Yeah. forgot. ", callback: "fail" }
+            ]
+        };
+    }
+    else if (chatID === 500) {
+        if (g.rand(0, 5) === 0) {
+            gv.mod("money", 15);
+            return {
+                chatID: 0,
+                speaker: "holly",
+                text: "I snagged an extra $15 for you. Girls gotta pay rent, am I right!",
+                button: [
+                    { chatID: 1, text: "Thanks! You're so right!", callback: "customer" }
+                ]
+            };
+        }
+        let htxt1 = [
+            "I just love working with you!",
+            "You're cute, you know that!  ",
+            "I just love your hair!",
+        ];
+        return {
+            chatID: 0,
+            speaker: "holly",
+            text: htxt1[g.rand(0, htxt1.length)],
+            button: [
+                { chatID: 1, text: "*sigh*", callback: "customer" }
+            ]
+        };
+    }
+    else if (chatID === 501) {
+        //holly mad
+        let htxt = [
+            "Fucking narc!",
+            "We had a talk and decided that everyone hates you. ",
+            "You aren't a friend, you're a bitch",
+            "Why are you even here?"
+        ];
+        return {
+            chatID: 0,
+            speaker: "holly",
+            text: htxt[g.rand(0, htxt.length)],
+            button: [
+                { chatID: 1, text: "*sigh*", callback: "customer" }
+            ]
+        };
+    }
+    else if (chatID === 510) {
+        if (g.rand(0, 5) === 0) {
+            gv.mod("money", 10);
+            return {
+                chatID: 0,
+                speaker: "dolly",
+                text: "I snagged an extra $10 for you. Girls gotta pay rent, am I right!",
+                button: [
+                    { chatID: 1, text: "Thanks! You're so right!", callback: "customer" }
+                ]
+            };
+        }
+        let htxt1 = [
+            "You know you're cuter than a pen full of kittens!",
+            "We have a word for you back on the farm. Cutie pie!",
+            "You're so cute you'ld get first prize at the county fair!",
+        ];
+        return {
+            chatID: 0,
+            speaker: "dolly",
+            text: htxt1[g.rand(0, htxt1.length)],
+            button: [
+                { chatID: 1, text: "Awwww", callback: "customer" }
+            ]
+        };
+    }
+    else if (chatID === 511) {
+        let htxt = [
+            "You're as sour as an unripe crab apple",
+            "I wouldn't pee on you if you was on fire darlin' ",
+            "You smell like a cattle pen. ",
+            "My momma had a name for people like you, but I won't say it. "
+        ];
+        return {
+            chatID: 0,
+            speaker: "dolly",
+            text: htxt[g.rand(0, htxt.length)],
+            button: [
+                { chatID: 1, text: "*sigh*", callback: "customer" }
+            ]
+        };
+    }
+    else if (chatID === 520) {
+        if (g.rand(0, 5) === 0) {
+            gv.mod("money", 40);
+            return {
+                chatID: 0,
+                speaker: "dolly",
+                text: "I snagged an extra $40 for you. Girls gotta pay rent, am I right!",
+                button: [
+                    { chatID: 1, text: "Thanks! You're so right!", callback: "customer" }
+                ]
+            };
+        }
+        let htxt2 = [
+            "Why is it whenever I tell a boy he can stick it where ever he wants he just shoves it up my ass?",
+            "Watch out for slippery spots on the floor. I got fucked back in the dumpster and I'm farting cum everywhere.",
+            "*ugh* my throat is so sore! I do love huge cocks, but it does hurt when you get violently face fucked! ",
+            "Take my advice girl, always gobble those balls! "
+        ];
+        return {
+            chatID: 0,
+            speaker: "molly",
+            text: htxt2[g.rand(0, htxt2.length)],
+            button: [
+                { chatID: 1, text: "Hahaha ok!", callback: "customer" }
+            ]
+        };
+    }
+    else if (chatID === 521) {
+        let htxt = [
+            "You're a fucking bitch! ",
+            "I thought you were different than Jeffery, but you're a sick fucker like him too. ",
+            "I hope you die and get ass raped by red hot pokers in hell. ",
+            "You really fucked us, you know. Poor Dolly had to give him a blow job just to afford her part of the rent. "
+        ];
+        return {
+            chatID: 0,
+            speaker: "molly",
+            text: htxt[g.rand(0, htxt.length)],
+            button: [
+                { chatID: 1, text: "*sigh*", callback: "customer" }
             ]
         };
     }

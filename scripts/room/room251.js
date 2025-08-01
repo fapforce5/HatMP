@@ -61,7 +61,7 @@ room251.btnclick = function (name) {
                     }
                 }
                 else {
-                    if (sc.getMission("holly", "happy").startedOrComplete) {
+                    if (!sc.getMission("holly", "happy").fail) {
                         chat(27, 251);
                     }
                     else {

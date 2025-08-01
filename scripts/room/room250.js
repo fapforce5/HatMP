@@ -9,7 +9,7 @@ room250.main = function () {
         nav.buildnav([0]);
     }
     else if (cl.isLewd()) {
-        if (sc.getMission("dolly", "happy").inProgress()) {
+        if (sc.getMission("dolly", "happy").inProgress) {
             
             if (sc.getMissionTask("dolly", "happy", 1).complete) {
                 nav.bg("250_beaver/d1.jpg");
@@ -39,7 +39,7 @@ room250.main = function () {
         }
     }
     else {
-        if (sc.getMission("holly", "mad").startedOrComplete) {
+        if (!sc.getMission("holly", "mad").fail) {
             nav.button({
                 "type": "btn",
                 "name": "hollyStand",

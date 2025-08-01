@@ -269,6 +269,12 @@ sc.charMission = [
                         { id: 9, txt: "Apology", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
+            {
+                missionName: "teach", mStatus: 0, title: "Teach me", desc: "Show me how to be a girl", task:
+                    [
+                        { id: 0, txt: "Lesson 1", show: true, mStatus: 0, roomId: 16 },
+                    ]
+            },
         ],
     },
     {

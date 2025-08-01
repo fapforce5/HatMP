@@ -425,18 +425,49 @@ room13.btnclick = function (name) {
                     }
                 }
                 else { //if (evaSissy === 7) {
-                    if (g.dt.getDay() === 5 || g.dt.getDay() === 6) {
-                        if (cl.appearance() < 3) {
-                            chat(204, 13);
-                        }
-                        else {
-                            chat(203, 13);
-                        }
-                    }
-                    else {
-                        chat(200, 13);
-                    }
+                    
+                    nav.button({
+                        "type": "img",
+                        "name": "chatbg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "1001_rand/black_25.png"
+                    }, g.roomID);
+                    sc.select("chatSissy10", "13_sisterRoom/icon_chatEva.png", 0);
+                    sc.select("icon_teach", "13_sisterRoom/icon_teach.png", 1);
+                    sc.selectCancel("icon_evaCancel", 2);
                 }
+            }
+            break;
+        case "icon_evaCancel":
+            nav.killbutton("chatSissy10");
+            nav.killbutton("icon_teach");
+            nav.killbutton("chatbg");
+            break;
+        case "icon_teach":
+            if (!daily.get("lolahide")) {
+                g.pass = "evalolateachme";
+                char.room(174);
+            }
+            else
+                chat(268, 13);
+            break;
+        case "chatSissy10":
+            nav.killbutton("chatSissy10");
+            nav.killbutton("icon_teach");
+            nav.killbutton("chatbg");
+            if (g.dt.getDay() === 5 || g.dt.getDay() === 6) {
+                if (cl.appearance() < 3) {
+                    chat(204, 13);
+                }
+                else {
+                    chat(203, 13);
+                }
+            }
+            else {
+                chat(200, 13);
             }
             break;
         case "clearChat":
@@ -1237,6 +1268,8 @@ room13.chatcatch = function (callback) {
             case "sissyEva3_8":
             case "sissyEva3_9":
             case "sissyEva3_10":
+            case "lolaSissy8_0":
+            case "lolaSissy8_1":
                 nav.killall();
                 nav.bg("13_sisterRoom/" + callback + ".jpg");
                 break;
@@ -1775,6 +1808,45 @@ room13.chatcatch = function (callback) {
                     "height": 785,
                     "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
                 }, 13);
+                break;
+            case "evanude":
+                nav.kill();
+                nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "eva",
+                    "left": 1163,
+                    "top": 110,
+                    "width": 488,
+                    "height": 970,
+                    "image": "13_sisterRoom/lolanude.png"
+                }, 13);
+                nav.button({
+                    "type": "btn",
+                    "name": "eva_lolaboy",
+                    "left": 760,
+                    "top": 295,
+                    "width": 291,
+                    "height": 785,
+                    "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
+                }, 13);
+                break;
+            case "lolaSissy8_3":
+                nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "lola",
+                    "left": 643,
+                    "top": 37,
+                    "width": 1092,
+                    "height": 1043,
+                    "image": "13_sisterRoom/lolaSissy8_3.png"
+                }, 13);
+                zcl.displayMain(260, 1400, .083, "clothes", false);
+                break;
+            case "privateMomFuck":
+                g.pass = "privateMomFuck";
+                char.room(174);
                 break;
             default: break;
         }
@@ -4086,7 +4158,111 @@ room13.chat = function (chatID) {
                 speaker: "chad",
                 text: "I know. Do what I tell you.",
                 button: [
-                    { chatID: -1, text: "...", callback: "" },
+                    { chatID: 257, text: "...", callback: "evanude" },
+                ]
+            },
+            {
+                chatID: 257,
+                speaker: "chad",
+                text: "You know. I've seen you both naked, but never together. Are your tits the " +
+                    "same size?",
+                button: [
+                    { chatID: 258, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 258,
+                speaker: "eva",
+                text: "Nope! Mind are bigger! So tbbbbtthhhh",
+                button: [
+                    { chatID: 259, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 259,
+                speaker: "lola",
+                text: "Hey! You know we're the same size!",
+                button: [
+                    { chatID: 260, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 260,
+                speaker: "chad",
+                text: "I don't know about the same. I remember " + sc.n('eva') + "'a being a bit smaller than " +
+                    "you. ",
+                button: [
+                    { chatID: 261, text: "...", callback: "lolaSissy8_0" },
+                ]
+            },
+            {
+                chatID: 261,
+                speaker: "eva",
+                text: "I am bigger! ",
+                button: [
+                    { chatID: 262, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 262,
+                speaker: "lola",
+                text: "No! You aren't! ",
+                button: [
+                    { chatID: 263, text: "...", callback: "lolaSissy8_1" },
+                ]
+            },
+            {
+                chatID: 263,
+                speaker: "eva",
+                text: "Yes I am! ",
+                button: [
+                    { chatID: 264, text: "...", callback: "lolaSissy8_2" },
+                ]
+            },
+            {
+                chatID: 264,
+                speaker: "chad",
+                text: "Girls, girls, girls. You're forgetting what's really important. My exetremely " +
+                    "large penis. Do I need to remind you two that I can stay hard for hours and cum " +
+                    "again and again?",
+                button: [
+                    { chatID: 265, text: "*gasp*", callback: "lolaSissy8_3" },
+                ]
+            },
+            {
+                chatID: 265,
+                speaker: "landlord",
+                text: "What the hell is going o.... holy shit! That's your penis? How is it " +
+                    "so big? Girls, that penis is wayyyy to big for either of you! There's no " +
+                    "way either of you can take it all the way down. ",
+                button: [
+                    { chatID: 266, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 266,
+                speaker: "eva",
+                text: "What! Now I have a shallow vagina too?   ",
+                button: [
+                    { chatID: 267, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 267,
+                speaker: "landlord",
+                text: "That's not what I meant! " + sc.n("lola") + " and " + sc.n("eva") + " you " +
+                    "two get dressed. New boy and " + sc.n("me") + " follow me to my room right now! " +
+                    "And I do mean now before I call the cops new boy! ",
+                button: [
+                    { chatID: -1, text: "me?", callback: "privateMomFuck" },
+                ]
+            },
+            {
+                chatID: 268,
+                speaker: "eva",
+                text: "it doesn't feel right without " + sc.n("lola") + " here. ",
+                button: [
+                    { chatID: -1, text: "Yeah", callback: "" },
                 ]
             },
         ];
