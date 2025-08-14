@@ -1585,6 +1585,22 @@ levels.analSize = function (size) {
     };
 };
 
+levels.gavebj = function (size, gender, who, swallow = false, facialOverride = false) {
+    levels.oralSizes(size);
+    gv.mod("arousal", 25);
+
+    if (swallow && gender !== null) {
+        levels.swallowCum(gender, who);
+    }
+    if (facialOverride) {
+        cl.c.cumface = true;
+        cl.display();
+    }
+    else if (gender !== null) {
+        sex.mod("gavebj", gender, who);
+    }
+};
+
 levels.oral = function (size, gender = null, who = null, swallow = false, beast = null, facialOverride = false) {
     //levels.mod("oral", 25, 999);
     levels.oralSizes(size);

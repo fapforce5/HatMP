@@ -385,15 +385,16 @@ room476.btnclick = function (name) {
             if (g.internal === 16 || g.internal === 17)
                 nav.bg("476_cabin/pillory" + g.internal + ".jpg");
             else if (g.internal === 19) {
-                levels.anal(5, false, "m", true, null, "cult");
-                levels.anal(3, false, "m", true);
-                levels.anal(3, false, "m", true);
-                levels.anal(3, false, "m", true);
-                levels.anal(4, false, "m", true);
+                levels.anal(5, false, "m", true, "river");
+                levels.anal(3, false, "m", true, "cult");
+                levels.anal(3, false, "m", true, "cult");
+                levels.anal(3, false, "m", true, "cult");
+                levels.anal(4, false, "m", true, "cult");
+
                 levels.oral(3, "m", "cult", false);
-                levels.oral(2, "m", "cult", false);
-                levels.oral(2, "m", "cult", false);
-                levels.oral(4, "m", "cult", false);
+                levels.oralass("n", "cult");
+                levels.oral(2, "n", "cult", true);
+                levels.oral(4, "m", "cult", true);
                 levels.oral(3, "m", "cult", false);
 
                 nav.bg("476_cabin/pillory" + g.internal + ".jpg");
@@ -444,11 +445,12 @@ room476.btnclick = function (name) {
         case "cookie12":
             if (g.internal > 18) {
                 nav.killbutton("cookie12");
-                levels.anal(5, false, "m", true, null, "cult");
-                levels.anal(4, false, "m", true);
-                levels.anal(4, false, "m", true);
-                levels.anal(4, false, "m", true);
-                levels.anal(5, false, "m", true);
+                levels.anal(5, false, "m", true, "cult");
+                levels.anal(4, false, "m", true, "cult");
+                levels.anal(3, false, "m", true, "cult");
+                levels.anal(3, false, "m", true, "cult");
+                levels.anal(5, false, "m", true, "cult");
+
                 chat(44, 476);
                 return;
             }

@@ -26,7 +26,12 @@ m.drawBackground = function (row, col) {
             "height": 362,
             "image": "475_fight/b_s.jpg"
         }, 475);
-        chat(0, 475);
+        if (inv.has("cavekey")) {
+            chat(7, 475);
+        }
+        else {
+            chat(0, 475);
+        }
     }
     else if (m.fmap[row][col].used === "m" || m.fmap[row][col].used === "x") {m
         var bg = m.drawBackgroundSub(row, col);

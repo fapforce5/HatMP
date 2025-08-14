@@ -13,17 +13,30 @@ room174.main = function () {
         g.pass = null;
         nav.bg("174_oneOffCase/teach0_0.jpg");
         zcl.displayMain(100, 800, .15, "clothes", false);
-        if (sc.getMission("eva", "teach").notStarted) {
-            sc.startMission("eva", "teach");
+        if (sc.getMissionTask("eva", "teach", 0).notStarted) {
+            sc.completeMissionTask("eva", "teach", 0);
             chat(63, 174);
             return;
         }
-        sc.select("teach_brush", "174_oneOffCase/icon_brush.png", 0);
-        sc.select("teach_makeup", "174_oneOffCase/icon_makeup.png", 1);
-        sc.select("teach_kiss", "174_oneOffCase/icon_kissing.png", 2);
-        sc.select("teach_bj", "174_oneOffCase/icon_bj.png", 3);
-        sc.select("teach_twat", "174_oneOffCase/icon_twat.png", 4);
-        sc.select("teach_anal", "174_oneOffCase/icon_anal.png", 5);
+        if (g.gethourdecimal() > 22.0 || g.gethourdecimal() < 6) {
+            chat(115, 174);
+            return;
+        }
+        if (cl.c.shirt === "pl" && (cl.c.pants === "pl" || cl.c.pants === "pl1")) {
+            cl.c.pants = "pl1";
+            cl.display();
+            sc.select("teach_bj", "174_oneOffCase/icon_bj.png", 0);
+            sc.select("teach_twat", "174_oneOffCase/icon_twat.png", 1);
+            sc.select("teach_anal", "174_oneOffCase/icon_anal.png", 2);
+            sc.selectCancel("teach_end", 3);
+        }
+        else {
+            sc.select("teach_brush", "174_oneOffCase/icon_brush.png", 0);
+            sc.select("teach_makeup", "174_oneOffCase/icon_makeup.png", 1);
+            sc.select("teach_kiss", "174_oneOffCase/icon_kissing.png", 2);
+            sc.select("teach_practice", "174_oneOffCase/icon_practice.png", 3);
+            sc.selectCancel("teach_end", 4);
+        }
     }
     else if (g.pass === "case_elijah_origin") {
         g.pass = null;
@@ -76,33 +89,111 @@ room174.btnclick = function (name) {
         case "teach_brush":
             nav.kill();
             nav.bg("174_oneOffCase/eva_brush.webp");
-            cl.c.lastHairCut += 10;
-            levels.mod("xdress", 20);
+            if (!daily.get("teach_brushsister")) {
+                daily.set("teach_brushsister")
+                cl.c.lastHairCut += 10;
+                levels.mod("xdress", 20);
+            }
             chat(67, 174);
             break;
         case "teach_makeup":
+            nav.kill();
+            zcl.displayMain(100, 800, .15, "clothes", false);
             chat(69, 174);
             break;
         case "teach_kiss":
+            nav.kill();
+            zcl.displayMain(100, 800, .15, "clothes", false);
             chat(72, 174);
+            break;
+        case "teach_end":
+            if (cl.c.pants === "pl1") {
+                cl.c.pants = "pl";
+                cl.display();
+            }
+            g.pass = null;
+            char.room(13);
+            break;
+        case "teach_practice":
+            if (cl.hasClothing("shirt", "pl")) {
+                chat(95, 174);
+            }
+            else {
+                nav.killbutton("teach_brush");
+                nav.killbutton("teach_makeup"); 
+                nav.killbutton("teach_kiss");
+                nav.killbutton("teach_practice");
+                nav.killbutton("teach_end");
+                chat(76, 174);
+            }
             break;
         case "teach_bj":
-            chat(72, 174);
-
+            nav.killbutton("teach_bj");
+            nav.killbutton("teach_twat");
+            nav.killbutton("teach_anal");
+            nav.killbutton("teach_end");
+            chat(86, 174);
             break;
         case "teach_twat":
-
+            nav.kill();
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 740,
+                "top": 55,
+                "width": 993,
+                "height": 1025,
+                "image": "174_oneOffCase/el_sex0.webp"
+            }, 174);
+            chat(96, 174);
             break;
         case "teach_anal":
-
+            nav.kill();
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 740,
+                "top": 55,
+                "width": 993,
+                "height": 1025,
+                "image": "174_oneOffCase/el_sex0.webp"
+            }, 174);
+            chat(104, 174);
             break;
         case "teachKissLola":
-            levels.mod("xdress", 20);
+            if (!daily.get("teachKisssisters")) {
+                daily.set("teachKisssisters");
+                levels.mod("xdress", 20);
+            }
             chat(74, 174);
             break;
         case "teachKissEva":
-            levels.mod("xdress", 20);
+            if (!daily.get("teachKisssisters")) {
+                daily.set("teachKisssisters");
+                levels.mod("xdress", 20);
+            }
             chat(75, 174);
+            break;
+        case "el_bj2":
+            nav.killbutton("el_bj2");
+            chat(90, 174);
+            break;
+        case "el_twat2":
+            nav.kill();
+            nav.bg("174_oneOffCase/el_twat2.webp");
+            nav.next("el_twat3");
+            break;
+        case "el_twat3":
+            nav.kill();
+            nav.bg("174_oneOffCase/el_twat3_" + gender.pronoun("f") + ".webp");
+            if (!daily.get("eatEvaTwat3")) {
+                daily.set("eatEvaTwat3");
+                levels.oral(3, "f", "eva", false);
+                levels.piss(false, false, true, "f", "eva");
+            }
+            chat(101, 174);
             break;
         default:
             break;
@@ -145,6 +236,28 @@ room174.chatcatch = function (callback) {
             char.addtime(5);
             gv.mod("arousal", 3);
             nav.bg("174_oneOffCase/" + callback + ".jpg");
+            break;
+        case "el_bj1":
+        case "el_bj3":
+        case "el_bj4":
+        case "el_asshole1":
+        case "el_asshole6":
+            nav.bg("174_oneOffCase/" + callback + ".webp");
+            break;
+        case "el_asshole5":
+            nav.kill();
+            nav.bg("174_oneOffCase/" + callback + ".webp");
+            break;
+        case "el_asshole2":
+            if (!daily.get("evaEatAsshole2")) {
+                daily.set("evaEatAsshole2");
+                levels.oralass("f", "eva");
+            }
+            nav.bg("174_oneOffCase/" + callback + ".webp");
+            break;
+        case "el_bj2":
+            nav.bg("174_oneOffCase/" + callback + ".webp");
+            nav.next("el_bj2");
             break;
         case "goth12":
             char.addtime(5);
@@ -242,9 +355,19 @@ room174.chatcatch = function (callback) {
             g.pass = "evalolateachme";
             char.room(174);
             break;
+        case "evalolateachmechange":
+            cl.nude();
+            cl.c.shirt = "pl";
+            cl.c.pants = "pl1";
+            g.pass = "evalolateachme";
+            char.room(174);
+            break;
         case "teachMakeup":
-            levels.mod("makeup", 50);
-            levels.mod("xdress", 20);
+            if (!daily.get("teachMakeupsister")) {
+                daily.set("teachMakeupsister");
+                levels.mod("makeup", 50);
+                levels.mod("xdress", 20);
+            }
             nav.kill();
             nav.bg("174_oneOffCase/eva_makeup.webp");
             break;
@@ -271,6 +394,153 @@ room174.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "24_spinTheBottle/dareKissMe_0_eva.png"
             }, 174);
+            break;
+        case "el_sex0":
+            zcl.kill();
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 740,
+                "top": 55,
+                "width": 993,
+                "height": 1025,
+                "image": "174_oneOffCase/el_sex0.webp"
+            }, 174);
+            
+            break;
+        case "el_sex1":
+            cl.nude();
+            cl.add("shirt", "pl");
+            cl.add("pants", "pl");
+            cl.c.shirt = "pl";
+            cl.c.pants = "pl1";
+            cl.display();
+            zcl.displayMain(100, 930, .17, "clothes", false);
+            nav.killbutton("el_sex0");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 740,
+                "top": 55,
+                "width": 993,
+                "height": 1025,
+                "image": "174_oneOffCase/el_sex0.webp"
+            }, 174);
+            break;
+        case "el_bj0":
+            nav.kill();
+            nav.bg("174_oneOffCase/el_bj0.webp");
+            break;
+        case "el_bj5":
+            nav.bg("174_oneOffCase/el_bg.webp");
+            zcl.bj(100, 500, 1.3, "open", false);
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 275,
+                "top": 0,
+                "width": 983,
+                "height": 1080,
+                "image": "174_oneOffCase/el_bj5.webp"
+            }, 174);
+            break;
+        case "el_bj6":
+            zcl.bj(100, 500, 1.3, "", false);
+            nav.killbutton("el_sex0");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 128,
+                "top": 0,
+                "width": 983,
+                "height": 1080,
+                "image": "174_oneOffCase/el_bj6.webp"
+            }, 174);
+            if (!daily.get("el_bj6")) {
+                daily.set("el_bj6");
+                levels.gavebj(3, "f", "eva");
+            }
+            break;
+        case "el_twat0":
+            nav.kill();
+            nav.bg("174_oneOffCase/el_twat0.webp");
+            break;
+        case "el_twat1":
+            nav.bg("174_oneOffCase/el_twat1.webp");
+            zcl.double(450, 50, .45, "", true);
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "174_oneOffCase/el_twat1_t.webp"
+            }, 174);
+            nav.next("el_twat2");
+            break;
+        case "el_twat4":
+            nav.kill();
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 740,
+                "top": 55,
+                "width": 993,
+                "height": 1025,
+                "image": "174_oneOffCase/el_sex0.webp"
+            }, 174);
+            break;
+        case "el_asshole7":
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 740,
+                "top": 55,
+                "width": 993,
+                "height": 1025,
+                "image": "174_oneOffCase/el_sex0.webp"
+            }, 174);
+            if (!daily.get("lolaEatsAsshole7")) {
+                daily.set("lolaEatsAsshole7");
+                levels.gotbj("f", "lola");
+                levels.sissygasm("f", "lola");
+            }
+            break;
+        case "el_asshole0":
+            nav.kill();
+            nav.bg("174_oneOffCase/el_asshole0.webp");
+            break;
+        case "el_asshole3":
+            nav.bg("174_oneOffCase/el_asshole3.webp");
+            cl.c.panties = null;
+            zcl.bent(220, 300, .5, "", true);
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "174_oneOffCase/el_asshole3_o.webp"
+            }, 174);
+            break;
+        case "el_asshole4":
+            nav.button({
+                "type": "img",
+                "name": "el_sex0",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "174_oneOffCase/el_asshole4.webp"
+            }, 174);
+            break;
+        case "leave11":
+            char.room(11);
             break;
         default:
             break;
@@ -855,9 +1125,10 @@ room174.chat = function (chatID) {
             chatID: 65,
             speaker: "eva",
             text: "Oh hahahaha! I know what she wants! You want to dyke out with us don't you? " +
-                "What do you think " + sc.n("lola") + "? ",
+                "What do you think " + sc.n("lola") + ", does she want to learn how to be a girl " +
+                "or get a taste of our girl dicks? ",
             button: [
-                { chatID: 66, text: "oh. uhhh. I was thinking something else.", callback: "" },
+                { chatID: 66, text: "oh. uhhh. yeah", callback: "" },
             ]
         },
         {
@@ -953,20 +1224,345 @@ room174.chat = function (chatID) {
         },
         {
             chatID: 76,
-            speaker: "lola",
-            text: "Oh fun. I am so bad at taking it the penis deep in my mouth, I do need the " +
-                "practice. ",
+            speaker: "eva",
+            text: "Should we tell her?",
             button: [
-                { chatID: 77, text: "totally", callback: "" },
+                { chatID: 77, text: "hmmm?", callback: "" },
             ]
         },
         {
             chatID: 77,
-            speaker: "eva",
-            text: "When we play the blow job game " + sc.n("lola") + " and I like to wear these " +
-                "costumes I got us for fun. One second while we change! ",
+            speaker: "lola",
+            text: "Yeah! Totally. I got her, a new costume! ",
             button: [
-                { chatID: 78, text: "ok", callback: "" },
+                { chatID: 78, text: "Got what? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "eva",
+            text: "Really? You are too nice. I would have made her play in her panties, but I'm " +
+                "totally excited to see what you got! ",
+            button: [
+                { chatID: 79, text: "What!", callback: "" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "lola",
+            text: "I couldn't let her be the only one not dressed up. It's might be a little much, " +
+                "but I think she'll like it. The pink really fits her. ",
+            button: [
+                { chatID: 80, text: "GOT ME WHAT?!?!?!", callback: "el_sex0" },
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "eva",
+            text: "Our practice sex clothes dummy! Now put on the clothes " + sc.n("lola") + 
+                " got for you! ",
+            button: [
+                { chatID: 81, text: "!", callback: "el_sex1" },
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "thinking",
+            text: "Holy crap! I'm so giddy like a school girl! This is the best! ",
+            button: [
+                { chatID: 82, text: "!", callback: "" },
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "me",
+            text: "So why do I have a strap on?",
+            button: [
+                { chatID: 83, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "lola",
+            text: "Oh. Becuase you're a girl. Girl's don't have penises. ",
+            button: [
+                { chatID: 84, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "eva",
+            text: "Also it's sex practice, not try and fuck us you pervert! " + sc.n("lola") +
+                " and I started doing this when I lost my virginity. I was so scared and bad " +
+                "at sex we promised each other we would help get better at sex and make it not " +
+                "so scary. ",
+            button: [
+                { chatID: 85, text: "Oh.", callback: "" },
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "lola",
+            text: "Yeah. She was a mess. Also I just like the purple dildo. I thought it would " +
+                "look super cute on you! ",
+            button: [
+                { chatID: -1, text: "Thanks! It does look cute on me. You're the best! ", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "eva",
+            text: "Sweet! We usually take turns. I'll blow " + sc.n("lola") + " first! ",
+            button: [
+                { chatID: 87, text: "ok!", callback: "el_bj0" },
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "eva",
+            text: "She's so gentle with her dick. I wish guys were this nice when they put their " +
+                "dicks in my mouth. Now " + sc.n("lola") + " it's your turn to blow " + sc.n("me") +
+                ". You'll love her blow jobs. She's so caring when she sucks a dick. ",
+            button: [
+                { chatID: 88, text: "sweet!", callback: "el_bj1" },
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "lola",
+            text: "lalalala  ",
+            button: [
+                { chatID: 89, text: "What are you doing? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "lola",
+            text: "I was told it's sexy when a girl sings to your penis and licks the bottom. ",
+            button: [
+                { chatID: -1, text: "Girl, just suck the penis", callback: "el_bj2" },
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "lola",
+            text: "Holy crap girl! You need to breathe! ",
+            button: [
+                { chatID: 91, text: "...", callback: "el_bj3" },
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "lola",
+            text: "How was that? When I swim I've been practicing holding my breathe. " +
+                "Would that make you cum if you were a boy? ",
+            button: [
+                { chatID: 92, text: "That would scare me! You don't just go deep, you have to move your head! ", callback: "el_bj4" },
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "eva",
+            text: "You like my penis? I wanted a bigger one, but " + sc.n("lola") + " said " +
+                "no way in hell! Go on, show " + sc.n("lola") + " how to properly suck a cock! ",
+            button: [
+                { chatID: 93, text: "MMmm yes!", callback: "el_bj5" },
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "eva",
+            text: "Take notes " + sc.n("lola") + "! That's a real cock sucker! See how she " +
+                "makes love to my strap on with her mouth! Wow! You're going to make some " +
+                "boy really happy someday. Hehehehe!",
+            button: [
+                { chatID: 94, text: "*sssllluuurrrppp*", callback: "el_bj6" },
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "lola",
+            text: "Hehehe. You are cute when you suck on her penis. That was so much fun! ",
+            button: [
+                { chatID: -1, text: "Yeahhhh ❤️❤️❤️", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "lola",
+            text: "Yeah! Let's get changed! ",
+            button: [
+                { chatID: -1, text: "[Change]", callback: "evalolateachmechange" },
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "lola",
+            text: "Yeah. When it's just " + sc.n("eva") + " and I she always takes bottom " +
+                "'cause she's so lazy!",
+            button: [
+                { chatID: 97, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "eva",
+            text: "No. I get bottom becuase you try to thrust your hips into me and nearly broke " +    
+                "my nose! Also it like to grab and spread you butt. Hehe. ",
+            button: [
+                { chatID: 98, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "lola",
+            text: "*ugh* I know. You also like to sneak attack my butthole with your finger. I " +
+                "get the couch you two get to kneel!",
+            button: [
+                { chatID: 99, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "eva",
+            text: "I get next! " + sc.n("me") + " you have to eat my pussy! ",
+            button: [
+                { chatID: 100, text: "oh. Sweet!", callback: "el_twat0" },
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "thinking",
+            text: "I love how her ass is just out waiting to let me eat it. My " + sc.n("el") +
+                "are the best! ",
+            button: [
+                { chatID: -1, text: "Eat that pussy!", callback: "el_twat1" },
+            ]
+        },
+        {
+            chatID: 101,
+            speaker: "eva",
+            text: "Hahaha Oh my god! Sorry! Sometimes when I orgasm I squirt. Like really hard! ",
+            button: [
+                { chatID: 102, text: "bluuuffffff", callback: "el_twat4" },
+            ]
+        },
+        {
+            chatID: 102,
+            speaker: "lola",
+            text: "Ehhhh. Let me get a towel and wipe your face. That's another reason why I " +
+                "get to be on top when it's the two of us. Gives me a chance to move my head before " +
+                "being covered in her piss. ",
+            button: [
+                { chatID: 103, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "eva",
+            text: "*hrumph* I keep saying, it's not piss, it's cum! That's how I cum. I'm just a " +
+                "squirter!!! dammit!",
+            button: [
+                { chatID: -1, text: "...", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "eva",
+            text: "I'm not eating your ass! " + sc.n("lola") + " can do that. She's the one that " +
+                "loves licking buttholes! You can eat my ass! ",
+            button: [
+                { chatID: 105, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "lola",
+            text: "I wouldn't say I love it, but I it is nice to see if I can make you cum just " +
+                "from licking your butthole. Makes me happy. But I don't mind eating " + sc.n("me") +
+                "'s butthole. I'm pretty good at it! ",
+            button: [
+                { chatID: 106, text: "...", callback: "el_asshole0" },
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "eva",
+            text: "Lick up doggy! Eat my butthole! I know you dream about this every night! ",
+            button: [
+                { chatID: 107, text: "nom", callback: "el_asshole1" },
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "eva",
+            text: "MMmmm tickle my insides with your wet slimy tounge. I want to fart your saliva. ",
+            button: [
+                { chatID: 108, text: "[Eat that asshole]", callback: "el_asshole2" },
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "eva",
+            text: "OOoooo I like that. You're a great ass eater! So how's it taste pervert?",
+            button: [
+                { chatID: 109, text: "Hmmm. Like licking pennies", callback: "" },
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "lola",
+            text: "Ok. My turn! Spread those cheeks so I can bury my face in your butthole!!",
+            button: [
+                { chatID: 110, text: "[Give " + sc.n("lola") + " a turn eating your ass]", callback: "el_asshole3" },
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "me",
+            text: "Eat up buttercup!",
+            button: [
+                { chatID: 111, text: "...", callback: "el_asshole4" },
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "eva",
+            text: "Haha! Get in there! Really show her you know how to eat ass!",
+            button: [
+                { chatID: 112, text: "*happy noises*", callback: "el_asshole5" },
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "me",
+            text: "*uuugghhhh* ...feels so good... ...push harder....  uhhhhh",
+            button: [
+                { chatID: 113, text: "...", callback: "el_asshole6" },
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "eva",
+            text: "Hahaha! You came from getting your ass eaten! You are a slut!!!",
+            button: [
+                { chatID: 114, text: "*content moaning*", callback: "el_asshole7" },
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "lola",
+            text: "I don't do anything half-assed. I whole ass everthing I do! ",
+            button: [
+                { chatID: -1, text: "MMmMMmmmmm", callback: "evalolateachme" },
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "lola",
+            text: "*yawn* It's getting late. We're going to go to bed. ",
+            button: [
+                { chatID: -1, text: "ok. ", callback: "leave11" },
             ]
         },
     ];

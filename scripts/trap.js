@@ -269,7 +269,8 @@ trap.rope = function () {
             else if (rwearing.outerwear) {
                 cl.c.dress = cl.c.pj = cl.c.swimsuit = cl.c.shirt = cl.c.pants = null;
                 nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
-                zcl.displayMain(100, 600, .13, "clothes", true)
+                zcl.displayMain(100, 600, .13, "clothes", true);
+                cl.display();
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",

@@ -1,14 +1,18 @@
 ﻿//Room name
 var room456 = {};
 room456.main = function () {
-    if (true) {
-        nav.bg("456_bench/cop1.jpg");
-        chat(14, 456);
-    }
-    else {
-        sc.setstep("cop", 2);
-        room456.chatcatch("morning");
-    }
+    g.pass = null;
+    gv.mod("energy", -30);
+    chat(33, 456);
+
+    //if (true) {
+    //    nav.bg("456_bench/cop1.jpg");
+    //    chat(14, 456);
+    //}
+    //else {
+    //    sc.setstep("cop", 2);
+    //    room456.chatcatch("morning");
+    //}
 };
 
 room456.btnclick = function (name) {
@@ -119,6 +123,9 @@ room456.chatcatch = function (callback) {
             else {
                 nav.room(450);
             }
+            break;
+        case "leave":
+            char.room(450);
             break;
         default:
             break;
@@ -397,6 +404,14 @@ room456.chat = function (chatID) {
             text: "Time to get up!",
             button: [
                 { chatID: -1, text: "....", callback: "newday" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "thinking",
+            text: "Worst sleep ever! Oh well, time to get up. ",
+            button: [
+                { chatID: -1, text: "....", callback: "leave" }
             ]
         },
     ];

@@ -89,6 +89,7 @@ inv.master = [
     { type: "o", name: "kkey", display: "Jeffery's Desk Key", entry: false, count: null, cost: 0, image: "kkey.png", n: false, desc: "Desk key for Jeffery's side drawer" },
     { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, image: "redroom.png", n: false, desc: "Red Door Key" },
     { type: "o", name: "key202", display: "Apartment 202 Key", entry: false, count: null, cost: 0, image: "key202.png", n: false, desc: "Key for Holly, Dolly, and Molly's Apartment" },
+    { type: "o", name: "cavekey", display: "Cave Key", entry: false, count: null, cost: 0, image: "cavekey.png", n: false, desc: "Key to get into the forest cave." },
     { type: "o", name: "lolalocker", display: "Lola's Locker combo", entry: false, count: null, cost: 0, image: "lolalocker.png", n: false, desc: "Lola's Swim Locker Combo" },
     { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
 

@@ -153,6 +153,13 @@ room475.btnclick = function (name) {
             else if (m.fmap[g.map.row][g.map.col].used === "c") {
                 char.room(483);
             }
+            else if (m.fmap[g.map.row][g.map.col].used === "s") {
+                //row 49 exit map
+                char.room(485); //row 42 can buy things 
+            }
+            else if (m.fmap[g.map.row][g.map.col].used === "j") {
+                //middle event char.room(???);
+            }
             break;
         case "reload":
             char.room(475);
@@ -193,6 +200,11 @@ room475.chatcatch = function (callback) {
             g.map = null;
             g.pass = 701;
             char.room(28);
+            break;
+        case "entercave":
+            g.map.row -= 1;
+            g.map.ev = new Array();
+            char.room(475);
             break;
         default:
             break;
@@ -276,6 +288,15 @@ room475.chat = function (chatID) {
                 text: "oh my. I'm so weak and tired.... I don't think I can go on....",
                 button: [
                     { chatID: -1, text: "[You pass out due to low energy]", callback: "passout" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "thinking",
+                text: "OooOoooo Spooky cave! Should I use the cave key to go in?",
+                button: [
+                    { chatID: -1, text: "[Enter the spooky cave]", callback: "entercave" },
+                    { chatID: -1, text: "[Nope! Too spooky]", callback: "" },
                 ]
             },
         ];

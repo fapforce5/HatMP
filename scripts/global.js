@@ -19,8 +19,8 @@ g.cockDisplay = "c";
 g.prevRoom;
 g.displaymenu = true;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, /*483,*/ 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, /*483,*/ 503, 527, 552, 553, 602, 727, 875, 902, 903];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, 484, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
+g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, 484, 503, 527, 552, 553, 602, 727, 875, 902, 903];
 g.popArray = new Array();
 g.roomID = 1;
 g.dt = g.startDate;
@@ -322,8 +322,8 @@ g.rooms = [
     { roomID: 480, name: "Cave Throne", image: "480_throne/bg.jpg", nightImage: "480_throne/bg.jpg", houseID: 480, btn: "roomBtn_480.png" },
     { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.jpg", nightImage: "481_bedroom/bg.jpg", houseID: 480, btn: "roomBtn_481.png" },
 
-    { roomID: 483, name: "Wolf's Den", image: "483_cave/bg.jpg", nightImage: "483_cave/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },
-
+    { roomID: 483, name: "Den Entrance", image: "483_cave/bg.jpg", nightImage: "483_cave/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 484, name: "Wolf's Den", image: "483_cave/cave0.jpg", nightImage: "483_cave/cave0.jpg.jpg", houseID: 480, btn: "roomBtn_483.png" },
 
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },

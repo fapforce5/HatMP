@@ -91,7 +91,7 @@ room197.btnclick = function (name) {
         case "bj5":
             nav.bg("197_sub/bj" + g.internal + "_" + gender.pronoun("f") + ".jpg");
             if (g.internal === 8) {
-                levels.oral(5, "f", "missy");
+                levels.gavebj(5, "f", "missy");
                 nav.killall();
                 chat(22, 197);
             }
@@ -275,7 +275,7 @@ room197.chatcatch = function (callback) {
             levels.mod("sub", 5, 5);
             break;
         case "oralup":
-            levels.oral(5, "f", "missy");
+            levels.gavebj(5, "f", "missy");
             break;
         case "analup":
             levels.anal(4, false, "f", false, "missy");

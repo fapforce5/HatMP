@@ -130,9 +130,14 @@ $(document).ready(function () {
             privateChat.skipChat();
         }
         else if(e.which === 83){
-            if($("#room_chatskip").is(":visible")){
-                g.skipChat = true;
-                privateChat.skipChat();
+            if ($("#room_chatskip").is(":visible")) {
+                if (g.skipChat) {
+                    g.skipChat = false;
+                }
+                else {
+                    g.skipChat = true;
+                    privateChat.skipChat();
+                }
             }
         }
     });

@@ -19,7 +19,6 @@ room450.main = function () {
     else {
         var navList = new Array();
         var btnList = new Array();
-        var doEvent = false;
 
         if (g.isNight()) {
             var copstep = sc.taskGetStep("cop", "bitch");
@@ -112,6 +111,18 @@ room450.main = function () {
                 "image": "450_park/450_further.png",
                 "night": "450_park/450_further_night.png"
             });
+            if (sc.getMissionTask("landlord", "misc", 4).startedOrComplete) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "sleep",
+                    "left": 306,
+                    "top": 406,
+                    "width": 148,
+                    "height": 122,
+                    "image": "450_park/sleep.png",
+                    "night": "450_park/sleepday.png"
+                });
+            }
             if (missy.activecase().name === "case_lostgirl" && missy.get("activeCaseComplete") === 0) {
                 btnList.push({
                     "type": "btn",
@@ -165,9 +176,6 @@ room450.btnclick = function (name) {
             char.room(460);
             break;
         case "sleep":
-            if (sc.getEvent("me", 7))
-                char.room(456);
-            else
                 chat(14, 450);
             break;
         case "":
@@ -529,6 +537,10 @@ room450.chatcatch = function(callback){
             }, 450);
             nav.buildnav([460, 452, 451, 0]);
             break;
+        case "sleep":
+            g.pass = 456;
+            char.room(28);
+            break;
         default:
             break;
     }
@@ -656,9 +668,10 @@ room450.chat = function(chatID){
         {
             chatID: 14,
             speaker: "me",
-            text: "Better wear my normal clothes, it's cold out here..",
+            text: "Ugh. I can't believe I'm going to sleep on a park bench. ",
             button: [
-                { chatID: -1, text: "...", callback: "redress" }
+                { chatID: -1, text: "Go to sleep", callback: "sleep" },
+                { chatID: -1, text: "Don't sleep", callback: "" },
             ]
         },
         {

@@ -2,6 +2,36 @@
 var room16 = {};
 
 room16.main = function () {
+    if (sc.getMissionTask("landlord", "misc", 4).inProgress) {
+        nav.button({
+            "type": "img",
+            "name": "caught",
+            "left": 853,
+            "top": 21,
+            "width": 640,
+            "height": 1059,
+            "image": "16_livingRoom/llmad.webp"
+        }, 16);
+        chat(40, 16);
+        return;
+    }
+    else if (sc.getMissionTask("landlord", "misc", 5).inProgress) {
+        if ((g.prevRoom === 0 && !daily.get("momchastitycheck")) || cl.c.chastity === null) {
+            daily.set("momchastitycheck");
+            zcl.displayMain(200, 700, .08, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "inspect",
+                "left": 349,
+                "top": 110,
+                "width": 540,
+                "height": 970,
+                "image": "16_livingRoom/inspect0.webp"
+            }, 16);
+            chat(42, 16);
+            return;
+        }
+    }
     var btnList = new Array();
     var thisSisterRoomID = sc.getTimeline("lola");
     var thisMomRoomID = sc.getTimeline("landlord");
@@ -380,6 +410,36 @@ room16.chatcatch = function (callback) {
         case "myRoom":
             char.room(10);
             break;
+        case "inspect":
+            nav.killbutton("inspect");
+            cl.showdick();
+            zcl.displayMain(200, 700, .08, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "inspect",
+                "left": 575,
+                "top": 540,
+                "width": 470,
+                "height": 540,
+                "image": "16_livingRoom/inspect.webp"
+            }, 16);
+            if (cl.c.chastity !== null)
+                chat(43, 16);
+            else
+                chat(44, 16);
+            break;
+        case "resetundo":
+            cl.undo();
+            char.room(16);
+            break;
+        case "spank":
+            cl.undo();
+            g.pass = "chastity";
+            char.room(21);
+            break;
+        case "leave":
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -720,7 +780,49 @@ room16.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "s16x" }
             ]
-        }
+        },
+        {
+            chatID: 40,
+            speaker: "landlord",
+            text: "You have lost you mind thinking you can just waltz in here after what you pulled. " +
+                "I'm not ready to let you back into MY house!",
+            button: [
+                { chatID: 41, text: "Yes " + sc.n("landlord"), callback: "leave" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "thinking",
+            text: "Maybe if I catch her at work she'll be more open to listening to me. ",
+            button: [
+                { chatID: -1, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "landlord",
+            text: "Let's check to make sure you're wearing your chastity cage if you're coming into " +
+                "my home. Show it to me. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord") + ".", callback: "inspect" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "landlord",
+            text: "That's a good " + gender.pronoun("girl") + ". ",
+            button: [
+                { chatID: -1, text: "🤭", callback: "resetundo" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "landlord",
+            text: "You're not wearing your chastity cage!!! Come with me!",
+            button: [
+                { chatID: -1, text: "ok", callback: "spank" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

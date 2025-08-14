@@ -7,6 +7,14 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(0, 7);
     }
+    else if (sc.getMissionTask("landlord", "misc", 4).mStatus === 1) {
+        nav.killall();
+        nav.bg("7_mainCharRoomAlt/kickout.webp");
+        if (sc.getMissionTask("lola", "random", 1).complete)
+            chat(60, 7);
+        else
+            chat(61, 7);
+    }
     else if (sc.getSecret("lola").secretOut && sc.getMissionTask("lola", "sissy", 0).notStarted) {
         nav.bg("7_mainCharRoomAlt/secretout.jpg");
         chat(7, 16);
@@ -818,6 +826,9 @@ room7.chatcatch = function (callback) {
             g.internal = 4;
             nav.next("rent4_0");
             break;
+        case "room0":
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -1411,6 +1422,62 @@ room7.chat = function (chatID) {
                 text: "I still feel guilty about this, but damn that dick is good!",
                 button: [
                     { chatID: -1, text: "...", callback: "lastWord" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "landlord",
+                text: "I know you fucked " + sc.n("lola") + " in her sleep and came inside her! " +
+                    "She came crying in my room early this morning with cum dripping out of her vagina, and " +
+                    "only one of us can cum inside her! ",
+                button: [
+                    { chatID: 62, text: "What? No I...", callback: "" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "landlord",
+                text: "I know you fucked " + sc.n("eva") + " in her sleep and came inside her! " +
+                    "She came crying in my room with cum dripping out of her vagina, and " +
+                    "only one of us can cum inside her! ",
+                button: [
+                    { chatID: 62, text: "What? No I...", callback: "" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "landlord",
+                text: "Don't try to lie your way out of this! You're not welcome here anymore! " +
+                    "This isn't your home anymore, you can find yourself a new place to live! ",
+                button: [
+                    { chatID: 63, text: "I don't have another home", callback: "" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "landlord",
+                text: "You should have thought of this before cumming in your " + g.makeSingular(sc.n("el")) +
+                    " while she slept! Get out! Get out now! ",
+                button: [
+                    { chatID: 64, text: "I need to get dressed...", callback: "" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "landlord",
+                text: "I don't want to look at you another minute! GET OUT NOW! And don't come back! ",
+                button: [
+                    { chatID: 65, text: "Oooff! [Leave]", callback: "room0" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "me",
+                text: "Aww crap! I really fucked up this time! I have no idea where I can sleep. " +
+                    "maybe " + sc.n("zoey") + " will let me sleep over, or I could go to sleep " +
+                    "in the park. That will be rough. Damn damn damn!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
         ];

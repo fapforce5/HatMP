@@ -83,10 +83,7 @@ room171.btnclick = function (name) {
     var i, j;
     switch (name) {
         case "start":
-            if (!sissy.st[23].ach) {
-                chat(13, 171);
-            }
-            else if (gv.get("energy") < 33) {
+            if (gv.get("energy") < 33) {
                 chat(6, 171);
             }
             else {

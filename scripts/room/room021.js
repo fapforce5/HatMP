@@ -28,6 +28,11 @@ room21.main = function () {
         g.pass = 9;
         chat(10, 21);
     }
+    else if (g.pass === "chastity") {
+        char.addtime(60);
+        g.pass = 12;
+        chat(11, 21);
+    }
 };
 
 room21.btnclick = function (name) {
@@ -49,10 +54,7 @@ room21.btnclick = function (name) {
 room21.chatcatch = function (callback) {
     switch (callback) {
         case "spank2":
-            g.internal = { pants: cl.c.pants, panties: cl.c.panties };
-            cl.c.pants = null;
-            cl.c.panties = null;
-            cl.display();
+            cl.showdick();
             break;
         case "spank3":
             nav.killbutton("spank1");
@@ -71,10 +73,13 @@ room21.chatcatch = function (callback) {
             break;
         case "leave":
             sc.modLevel("landlord", 15, 4);
-            cl.c.pants = g.internal.pants;
-            cl.c.panties = g.internal.panties;
-            cl.display();
+            cl.undo();
             char.room(16);
+            break;
+        case "leave0":
+            cl.undo();
+            sc.modLevel("landlord", 15, 7);
+            char.room(0);
             break;
         default:
             break;
@@ -174,6 +179,24 @@ room21.chat = function (chatID) {
                 "Now pull down your pants!",
             button: [
                 { chatID: 1, text: "oh no", callback: "spank2" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "landlord",
+            text: "You are not allowed into this house if you're not wearing your chastity " +
+                "cage. I can't have you raping my other little girls! ",
+            button: [
+                { chatID: 1, text: "oh no", callback: "spank2" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "landlord",
+            text: "Now get out out of my house and don't come back till that little pecker " +
+                "is locked away! ",
+            button: [
+                { chatID: -1, text: "Ok", callback: "leave0" }
             ]
         }
     ];

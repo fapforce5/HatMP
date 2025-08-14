@@ -176,16 +176,7 @@ room483.btnclick = function (name) {
             }
             break;
         case "enter":
-            if (cl.isLewd()) {
-                nav.bg("483_cave/cave0.jpg");
-                nav.kill();
-                //chat(8, 483);
-            }
-            else {
-                nav.killall();
-                nav.bg("483_cave/enter_bad.jpg");
-                chat(9, 483);
-            }
+            char.room(484);
             break;
         default:
             break;

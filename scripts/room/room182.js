@@ -549,7 +549,7 @@ room182.chat = function (chatID) {
             ]
         };
     }
-    if (chatID === 999) {
+    else if (chatID === 999) {
         var hairtxt, bdyhair, cumface, chastity, shower;
         var grade = 100;
         if (cl.c.hairLength > 2) {
@@ -590,7 +590,7 @@ room182.chat = function (chatID) {
         else
             chastity = "Chastity cage.. check. ";
 
-        if (daily.get("shower"))
+        if (!cl.stinky())
             shower = "Your smell is lovely. ";
         else {
             shower = "You need to shower. You smell like a vagrant. ";

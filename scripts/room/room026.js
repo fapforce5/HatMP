@@ -95,10 +95,11 @@ room26.btnclick = function (name) {
                 }
                 sc.select("sit_dickSissy", "26_livingRoom/icon_bussy.png", 1);
                 if (sc.getMissionTask("bigguy", "rent", 2).complete && sc.getMissionTask("bigguy", "rent", 3).notStarted) {
-                    sc.select("confess_bigguy", "26_livingRoom/icon_confess.png", 2);
+                    sc.select("confess_bigguy", "26_livingRoom/icon_confess.png", 3);
                 }
+                sc.select("icon_girl", "26_livingRoom/icon_girl.png", 2);
                 
-                sc.selectCancel("chat_cancel", 3);
+                sc.selectCancel("chat_cancel", 4);
             }
             break;
         case "chat_landlordSissy":
@@ -120,6 +121,10 @@ room26.btnclick = function (name) {
                 default:
                     break;
             }
+            break;
+        case "icon_girl":
+            room26.btnclick("chat_cancel");
+            chat(109, 26);
             break;
         case "sit_dickSissy":
             room26.btnclick("chat_cancel");
@@ -168,6 +173,7 @@ room26.btnclick = function (name) {
             nav.killbutton("chat_landlordSissy");
             nav.killbutton("sit_dickSissy");
             nav.killbutton("confess_bigguy");
+            nav.killbutton("icon_girl");
             return;
         case "chat_landlord":
             room26.btnclick("chat_cancel");
@@ -703,6 +709,9 @@ room26.chatcatch = function (callback) {
                     "height": 1060,
                     "image": "26_livingRoom/tv_c_three.png"
                 }, 26);
+                break;
+            case "bettergirl":
+
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -1750,6 +1759,14 @@ room26.chat = function (chatID) {
                 button: [
                     { chatID: 41, text: "Sure ", callback: "watchTVSissy" },
                     { chatID: -1, text: "No thanks", callback: "" },
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "me",
+                text: "Can you help me be a better girl?",
+                button: [
+                    { chatID: -1, text: "...", callback: "bettergirl" },
                 ]
             },
         ];

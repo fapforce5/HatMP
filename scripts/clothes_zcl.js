@@ -38,11 +38,8 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
     }
     if (displayCock) {
         if (spec.indexOf("clothes") > -1 || spec.indexOf("pants") > -1) {
-            if (cl.c.pants !== null) {
-                if (cl.c.pants === "s" || cl.c.pants === "j" || cl.c.pants === "b" || cl.c.pants === "r" || cl.c.pants === "dd" || cl.c.pants === "p" || cl.c.pants === "ps")
-                    displayCock = false;
-
-            }
+            if (cl.noDickPants())
+                displayCock = false;
         }
     }
 
@@ -59,7 +56,12 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         else
             zcl.displayMainSub("top_" + cl.c.chest + (dback ? "_back" : "") + ".png", top, left, ratio);
         //set legs
+        let cumdrip = cl.cumdrip();
+        if (!dback && cumdrip)
+            zcl.displayMainSub("cumdrip_front.gif", top, left, ratio);
         zcl.displayMainSub("leg_" + cl.c.leg + (dback ? "_back" : "") + ".png", top, left, ratio);
+        if (dback && cumdrip)
+            zcl.displayMainSub("cumdrip_back.gif", top, left, ratio);
     }
     //set Head
     if (dback) {
@@ -853,6 +855,8 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
 
     if (cl.c.panties !== null)
         zcl.subDisplay("panties.png", top, left, ratio, reverse, w, h, f);
+    else if (cl.c.chastity !== null) 
+        zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
     else if (gender.isCockTooSmallForSex())
         zcl.subDisplay("dick_small.png", top, left, ratio, reverse, w, h, f);
     else

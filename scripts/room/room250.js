@@ -39,7 +39,7 @@ room250.main = function () {
         }
     }
     else {
-        if (!sc.getMission("holly", "mad").fail) {
+        if (sc.getMission("holly", "mad").fail) {
             nav.button({
                 "type": "btn",
                 "name": "hollyStand",

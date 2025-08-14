@@ -491,6 +491,8 @@ room28.dreams = function () {
             nav.bg("28_transformation/225.jpg");
         else if (g.pass === 376)
             nav.bg("28_transformation/376.jpg");
+        else if (g.pass === 456)
+            nav.bg("456_bench/456_benchNightBG.png");
     }
     //console.log(hasText);
     return hasText;

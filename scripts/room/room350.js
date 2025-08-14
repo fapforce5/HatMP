@@ -49,7 +49,11 @@ room350.main = function () {
 room350.btnclick = function (name) {
     switch (name) {
         case "nurse":
-            if (sc.getMission("landlord", "sissy").inProgress) {
+            if (sc.getMissionTask("landlord", "misc", 4).inProgress) {
+                chat(56, 350);
+                return;
+            }
+            else if (sc.getMission("landlord", "sissy").inProgress) {
                
                 if (cl.getBodyHair() !== null)
                     chat(33, 350);
@@ -92,6 +96,36 @@ room350.chatcatch = function (callback) {
             case "room1":
             nav.killall();
             nav.bg("350_spermBank/" + callback + ".jpg");
+            break;
+        case "inspect1":
+        case "inspect2":
+        case "inspect9":
+        case "inspect10":
+            nav.bg("350_spermBank/" + callback + ".webp");
+            break;
+        case "inspect7":
+        case "inspect8":
+            nav.kill();
+            nav.bg("350_spermBank/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "inspect5":
+            cl.nude();
+            nav.kill();
+            nav.bg("350_spermBank/inspect5_b.webp");
+            zcl.head(-150, -500, .6, "shock");
+            nav.button({
+                "type": "img",
+                "name": "nurse",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "350_spermBank/inspect5_t.webp"
+            }, 350);
+            break;
+        case "inspect6":
+            nav.kill();
+            nav.bg("350_spermBank/inspect6.webp");
             break;
         case "leave":
             char.room(0);
@@ -164,10 +198,58 @@ room350.chatcatch = function (callback) {
             cl.c.shoes = "nu";
             cl.display();
             zcl.displayMain(150, 900, .18, "clothes", true);
-
             break;
         case "room352":
             char.room(352);
+            break;
+        case "checkchastity":
+            if (cl.c.chastity === null) {
+                chat(58, 350);
+            }
+            else {
+                chat(59, 350);
+            }
+            break;
+        case "inspect":
+            nav.kill();
+            cl.changeClothingSave();
+            cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = cl.c.panties = null;
+            zcl.displayMain(-100, 700, .22, "clothes", true);
+            nav.bg("350_spermBank/inspect.webp");
+            break;
+        case "inspect3":
+            cl.undo();
+            nav.bg("350_spermBank/inspect3.webp");
+            zcl.displayMain(-100, 700, .22, "clothes", true);
+            break;
+        case "inspect13":
+            nav.kill();
+            nav.bg("350_spermBank/inspect3.webp");
+            zcl.displayMain(-100, 700, .22, "clothes", true);
+            break;
+        case "inspect4":
+            cl.changeClothingSave();
+            cl.c.pants = cl.c.dress = cl.c.swimsuit = cl.c.pj = cl.c.panties = null;
+            zcl.displayMain(-100, 700, .22, "clothes", true);
+            break;
+        case "insepct11":
+            nav.bg("350_spermBank/inspect11_b.webp");
+            zcl.asshole(100, 100, 1.7, "cum");
+            nav.button({
+                "type": "img",
+                "name": "dick",
+                "left": 1005,
+                "top": 0,
+                "width": 228,
+                "height": 299,
+                "image": "350_spermBank/inspect11_f.webp"
+            }, 350);
+            levels.anal(4, false, "m", true, "!boxes");
+            break;
+        case "inspectEnd":
+            sc.modSecret("landlord", 100);
+            sc.completeMissionTask("landlord", "misc", 4);
+            sc.startMissionTask("landlord", "misc", 5);
             break;
         default:
             break;
@@ -697,6 +779,232 @@ room350.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Yes I am!", callback: "room352" },
                 { chatID: -1, text: "Nope, just saying hi. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "landlord",
+            text: "You have some nerve coming into my place of work after what you've done! " +
+                "I would put you over my knee if I didn't need to stay up here!",
+            button: [
+                { chatID: 57, text: "I'm so sorry! I promise I won't cum in my " + g.makeSingular(sc.n("el")) + " while she sleeps anymore! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "landlord",
+            text: "I don't trust you. I will never trust you again! I need some kind of proof " +
+                "you'll never rape my little girls! As long as you have a penis you'll never " +
+                "come back into my house! ",
+            button: [
+                { chatID: -1, text: "...", callback: "checkchastity" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "thinking",
+            text: "If only there was some way to make it so I couldn't use my penis while I'm at " +
+                "home! Gah! I'll have to find a way to make my penis unusable and come back!",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "thinking",
+            text: "oh! I should tell her I'm wearing a chastity cage! That will show her I'm not going to use " +
+                "my penis at home! ",
+            button: [
+                { chatID: 60, text: "[Tell her about your chastity cage]", callback: "" },
+                { chatID: -1, text: "[Keep it a secret]", callback: "" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "me",
+            text: "*ahem* I can't do anything with my penis anymore! I'm wearing a chastity cage! " +
+                "Can I come back into the house now?",
+            button: [
+                { chatID: 61, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "landlord",
+            text: "What! I don't trust you. Show me. ",
+            button: [
+                { chatID: 62, text: "...right here?", callback: "" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "landlord",
+            text: "Yes right here! Show me your this cage! ",
+            button: [
+                { chatID: 64, text: "*sigh* ok [pull down your pants]", callback: "inspect" },
+                { chatID: -1, text: "I'm not going to pull down my pants right here!", callback: "" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "landlord",
+            text: "noop",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "landlord",
+            text: "Huh. I don't know what I expected, but this wasn't it. ",
+            button: [
+                { chatID: 65, text: "*sigh* ok [pull down your pants]", callback: "inspect1" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "!boxes",
+            text: "Hey! I'm here to pick up that box... ",
+            button: [
+                { chatID: 66, text: "?", callback: "inspect2" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "!boxes",
+            text: "Oh! HAHAHAHAHAHA! You must have a tiny little pecker to wear that! I can see " +
+                "you're both busy, I'll just grab the boxes from the usually place. ",
+            button: [
+                { chatID: 67, text: "*blush* [Pull your pants up really quick!]", callback: "inspect3" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "landlord",
+            text: "I didn't say you could pull up your pants. Take them back down. Keep displaying " +
+                "your little cage. ",
+            button: [
+                { chatID: 68, text: ".... ok [Display your chastity cage again]", callback: "inspect4" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "landlord",
+            text: "I am going to teach you a lesson. A lesson on consent and why it's important. " +
+                "I'll let you back into the house on two conditions. <br/>One. You're only allowed in " +
+                "if you're wearing your little cage. I'll inspect you each time you come in. ",
+            button: [
+                { chatID: 69, text: "Ok. I can do that. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "landlord",
+            text: "Two. Strip down and put your arms over the my counter. You deserve to be " +
+                "be punished by what you've done! ",
+            button: [
+                { chatID: 70, text: "uhhh... ok", callback: "inspect5" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "me",
+            text: "Akkk! What are you doing?",
+            button: [
+                { chatID: 71, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "landlord",
+            text: "Tying up your wrists, idiot. What does it look like? Now stay there until I get " +
+                "back. ",
+            button: [
+                { chatID: 72, text: "but why?", callback: "inspect6" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "thinking",
+            text: "This hurts so much! I can feel the edges of this desk dig into my ribcage " +
+                "and the ropes are digging into my wrists. I wonder " +
+                "what she's up to? I can hear her talking, but I can make it out. What is she planning. " +
+                "I hope she isn't going to bare bottom spank me in front of " + sc.n("!boxes") + ". I would " +
+                "die of embarrassment! ",
+            button: [
+                { chatID: 73, text: "...", callback: "inspect7" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "landlord",
+            text: "Do you know who's fault it is when someone get's raped? ",
+            button: [
+                { chatID: 74, text: "who?", callback: "" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "landlord",
+            text: "The rapiest! Now I can go on and on about how wrong it was, what you did, but " +
+                "I won't. I think the best way to let you know how terrible your actions are is to show " +
+                "you. That's why " + sc.n("!boxes") + " here is going to rape you up your ass. Dry. So you " +
+                "know you know how it feels to have consent taken away. ",
+            button: [
+                { chatID: 75, text: "What??", callback: "inspect8" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "!boxes",
+            text: "Oh boy! I do love doing suprise anal! You really are the best " + sc.n("me") +
+                "'s " + sc.n("landlord") + "!",
+            button: [
+                { chatID: 76, text: "!", callback: "inspect9" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "landlord",
+            text: "That's a good boy! Fuck " + gender.pronoun("her") + " hard! She needs to learn " +
+                "her lessons! ",
+            button: [
+                { chatID: 77, text: "aaak!!", callback: "inspect10" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "!boxes",
+            text: "Oh shit that's tight! I don't know how long I can last! ",
+            button: [
+                { chatID: 78, text: "*whiper* please just cum", callback: "inspect11" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "me",
+            text: "Oh thank you! That hurt so much! I'm so sore! ",
+            button: [
+                { chatID: 79, text: "...", callback: "inspect12" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "landlord",
+            text: "You're lucky to be ass raped by such a fine young man. He really does have the " +
+                "best tasting sperm in the entire town. Let me untie you and let you up. ",
+            button: [
+                { chatID: 80, text: "...", callback: "inspect13" },
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "landlord",
+            text: "You can come back home. But I'm going to inspect your chastity cage everytime " +
+                "you come in to make sure you're wearing it. If you're not wearing your cage I " +
+                "won't let you in. Got it! ",
+            button: [
+                { chatID: -1, text: "Got it. ", callback: "inspectEnd" },
             ]
         },
     ];

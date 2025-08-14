@@ -207,14 +207,14 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Set up on date with Tom", show: true, mStatus: 0, roomId: 16 },
                         { id: 1, txt: "He's the best", show: true, mStatus: 0, roomId: 16 },
-                        { id: 2, txt: "Bla bla bla", show: true, mStatus: 0, roomId: 16 },
-                        { id: 3, txt: "Not made yet - but he's really the best", show: true, mStatus: 0, roomId: 16 },
+                        { id: 2, txt: "Bla bla bla [End]", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
                 missionName: "random", mStatus: 0, title: "Misc", desc: "Random Events", task:
                     [
                         { id: 0, txt: "Steal her clothes [Need locker combo]", show: true, mStatus: 0, roomId: 902 },
+                        { id: 1, txt: "Sneaky sleep fuck", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
         ],
@@ -275,6 +275,12 @@ sc.charMission = [
                         { id: 0, txt: "Lesson 1", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
+            {
+                missionName: "random", mStatus: 0, title: "Random", desc: "Random Events", task:
+                    [
+                        { id: 0, txt: "Sneaky sleep fuck", show: true, mStatus: 0, roomId: 13 },
+                    ]
+            },
         ],
     },
     {
@@ -326,6 +332,8 @@ sc.charMission = [
                         { id: 1, txt: "Threesome! [After first time]", show: true, mStatus: 0, roomId: 26 },
                         { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
                         { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
+                        { id: 4, txt: "Kicked out", show: true, mStatus: 0, roomId: 13 },
+                        { id: 5, txt: "Chastity Check", show: true, mStatus: 0, roomId: 16 },
                     ]
             },
             {
@@ -1504,6 +1512,7 @@ sc.getMissionTask = function (name, missionName, taskId) {
                 complete: mstatus > 99,
                 success: mstatus === 100,
                 fail: mstatus === 101,
+                startedOrComplete: mstatus > 0,
                 i: i
             };
         }

@@ -133,6 +133,7 @@ cl.init = function () {
         { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
         { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
         { type: "swimsuit", name: "r", display: "Red Swimsuit", img: "swim_red.png", sex: "f", inv: false, daring: 3, price: 140 },
+        { type: "swimsuit", name: "w", display: "Wolf Swimsuit", img: "swim_wolf.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "swimsuit", name: "p", display: "Pink Swimsuit", img: "swim_pink.png", sex: "f", inv: false, daring: 4, price: 80 },
 
         { type: "shoes", name: "w", display: "Workboots", img: "shoes_workboots.png", sex: "m", inv: true, daring: 0, price: -1 },
@@ -386,6 +387,26 @@ cl.remove = function (type, name) {
     }
     cl.display();
     g.popUpNotice("You lost your " + cl.list[clindex].display + ". ");
+};
+
+cl.showdick = function () {
+    cl.cTemp.shoes = cl.c.shoes;
+    cl.cTemp.socks = cl.c.socks;
+    cl.cTemp.pants = cl.c.pants;
+    cl.cTemp.panties = cl.c.panties;
+    cl.cTemp.bra = cl.c.bra;
+    cl.cTemp.shirt = cl.c.shirt;
+    cl.cTemp.dress = cl.c.dress;
+    cl.cTemp.swimsuit = cl.c.swimsuit;
+    cl.cTemp.pj = cl.c.pj;
+    cl.cTemp.buttplug = cl.c.buttplug;
+
+    cl.c.pants = null;
+    cl.c.panties = null;
+    cl.c.dress = null;
+    cl.c.swimsuit = null;
+    cl.c.pj = null;
+    cl.display();
 };
 
 cl.nude = function () {
@@ -1146,12 +1167,12 @@ cl.pants = [
     { name: "pl", leg: 1, image: "dress_pl_b_1.png", back: "dress_pl_b_0_back.png" },
     { name: "pl", leg: 0, image: "dress_pl_b_0.png", back: "dress_pl_b_0_back.png" },
 
-    { name: "pl1", leg: 5, image: "dress_pl1_b_5.png", back: "dress_pl1_b_5_back.png" },
-    { name: "pl1", leg: 4, image: "dress_pl1_b_4.png", back: "dress_pl1_b_4_back.png" },
-    { name: "pl1", leg: 3, image: "dress_pl1_b_3.png", back: "dress_pl1_b_3_back.png" },
-    { name: "pl1", leg: 2, image: "dress_pl1_b_1.png", back: "dress_pl1_b_2_back.png" },
-    { name: "pl1", leg: 1, image: "dress_pl1_b_1.png", back: "dress_pl1_b_0_back.png" },
-    { name: "pl1", leg: 0, image: "dress_pl1_b_0.png", back: "dress_pl1_b_0_back.png" },
+    { name: "pl1", leg: 5, image: "dress_pl1_b_5.png", back: "dress_pl_b_5_back.png" },
+    { name: "pl1", leg: 4, image: "dress_pl1_b_4.png", back: "dress_pl_b_4_back.png" },
+    { name: "pl1", leg: 3, image: "dress_pl1_b_3.png", back: "dress_pl_b_3_back.png" },
+    { name: "pl1", leg: 2, image: "dress_pl1_b_1.png", back: "dress_pl_b_2_back.png" },
+    { name: "pl1", leg: 1, image: "dress_pl1_b_1.png", back: "dress_pl_b_0_back.png" },
+    { name: "pl1", leg: 0, image: "dress_pl1_b_0.png", back: "dress_pl_b_0_back.png" },
 ];
 
 cl.wig = [
@@ -1373,7 +1394,7 @@ cl.shirt = [
     { name: "sq", chest: 0, image: "shirt_sq_0.png", back: "shirt_sq_0_back.png" },
 
     { name: "pl", chest: 6, image: "dress_pl_6.png", back: "dress_pl_6_back.png" },
-    { name: "pl", chest: 5, image: "dress_pl_5.png", back: "dress_pl_5_back.png" },
+    { name: "pl", chest: 5, image: "dress_pl_5.png", back: "dress_pl_6_back.png" },
     { name: "pl", chest: 4, image: "dress_pl_4.png", back: "dress_pl_4_back.png" },
     { name: "pl", chest: 3, image: "dress_pl_3.png", back: "dress_pl_3_back.png" },
     { name: "pl", chest: 2, image: "dress_pl_2.png", back: "dress_pl_2_back.png" },
@@ -1622,8 +1643,15 @@ cl.swimsuitTop = [
     { name: "p", chest: 3, image: "swim_p_t_3.png", back: "swim_p_t_3_back.png" },
     { name: "p", chest: 2, image: "swim_p_t_2.png", back: "swim_p_t_2_back.png" },
     { name: "p", chest: 1, image: "swim_p_t_0.png", back: "swim_p_t_0_back.png" },
-    { name: "p", chest: 0, image: "swim_p_t_0.png", back: "swim_p_t_0_back.png" }
+    { name: "p", chest: 0, image: "swim_p_t_0.png", back: "swim_p_t_0_back.png" },
 
+    { name: "w", chest: 6, image: "swim_w_t_6.png", back: "swim_w_t_6_back.png" },
+    { name: "w", chest: 5, image: "swim_w_t_5.png", back: "swim_w_t_5_back.png" },
+    { name: "w", chest: 4, image: "swim_w_t_4.png", back: "swim_w_t_4_back.png" },
+    { name: "w", chest: 3, image: "swim_w_t_3.png", back: "swim_w_t_3_back.png" },
+    { name: "w", chest: 2, image: "swim_w_t_2.png", back: "swim_w_t_2_back.png" },
+    { name: "w", chest: 1, image: "swim_w_t_0.png", back: "swim_w_t_0_back.png" },
+    { name: "w", chest: 0, image: "swim_w_t_0.png", back: "swim_w_t_0_back.png" }
 ];
 
 
@@ -1654,7 +1682,14 @@ cl.swimsuitBottom = [
     { name: "p", leg: 3, pussy: "swim_p_b_3_v.png", cock: "swim_p_b_3_c.png", back: "swim_p_b_3_back.png" },
     { name: "p", leg: 2, pussy: "swim_p_b_1_v.png", cock: "swim_p_b_1_c.png", back: "swim_p_b_2_back.png" },
     { name: "p", leg: 1, pussy: "swim_p_b_1_v.png", cock: "swim_p_b_1_c.png", back: "swim_p_b_0_back.png" },
-    { name: "p", leg: 0, pussy: "swim_p_b_0_v.png", cock: "swim_p_b_0_c.png", back: "swim_p_b_0_back.png" }
+    { name: "p", leg: 0, pussy: "swim_p_b_0_v.png", cock: "swim_p_b_0_c.png", back: "swim_p_b_0_back.png" },
+
+    { name: "w", leg: 5, pussy: "swim_w_b_5.png", cock: "swim_w_b_5.png", back: "swim_p_b_5_back.png" },
+    { name: "w", leg: 4, pussy: "swim_w_b_4.png", cock: "swim_w_b_4.png", back: "swim_p_b_4_back.png" },
+    { name: "w", leg: 3, pussy: "swim_w_b_3.png", cock: "swim_w_b_3.png", back: "swim_p_b_3_back.png" },
+    { name: "w", leg: 2, pussy: "swim_w_b_1.png", cock: "swim_w_b_1.png", back: "swim_p_b_2_back.png" },
+    { name: "w", leg: 1, pussy: "swim_w_b_1.png", cock: "swim_w_b_1.png", back: "swim_p_b_0_back.png" },
+    { name: "w", leg: 0, pussy: "swim_w_b_0.png", cock: "swim_w_b_0.png", back: "swim_p_b_0_back.png" }
 ];
 
 cl.socks = [
@@ -1990,6 +2025,23 @@ cl.shave = function () {
     cl.display();
 };
 
+cl.noDickPants = function () {
+    if (cl.c.pants === null)
+        return false;
+    let noDickPantsx = ["s", "j", "b", "r", "dd", "p", "ps", "pl", "pl1"];
+    return noDickPantsx.includes(cl.c.pants);
+};
+
+cl.cumdrip = function () {
+    let noDickPants = cl.noDickPants();
+    let waringPanties = (cl.c.panties === "inv" || cl.c.panties === null);
+    if (!waringPanties || noDickPants || cl.c.swimsuit !== null || cl.c.pj !== null)
+        return false;
+    if (cl.c.buttplug !== null)
+        return false;
+    return true;
+};
+
 cl.display = function () {
     var thisHair;
     $('.bladder-box').remove();
@@ -2047,7 +2099,20 @@ cl.display = function () {
         }
 
         //set Legs
-        cl.subDisplay("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
+        if (cl.cumdrip() && gv.getButtCum()) {
+            $("#char-legs").html("");
+            if (!cback) {
+                cl.subDisplay("char-legs", "cumdrip_front.gif");
+                cl.subDisplayAppend("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
+            }
+            else {
+                cl.subDisplay("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
+                cl.subDisplayAppend("char-legs", "cumdrip_back.gif");
+            }
+        }
+        else {
+            cl.subDisplay("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
+        }
         //set Chest
         cl.subDisplay("char-chest", "top_" + cl.c.chest + (cback ? "_back" : "") + ".png");
         //set mouth
@@ -2200,8 +2265,7 @@ cl.display = function () {
         //set pants
         if (cl.c.pants !== null) {
             cl.c.pj = null;
-            let noDickPants = ["s", "j", "b", "r", "dd", "p", "ps", "pl", "pl1"];
-            if (noDickPants.includes(cl.c.pants)) {
+            if (cl.noDickPants()) {
                 cl.subDisplay("char-cock", null);
             }
             $.each(cl.pants, function (i, v) {
