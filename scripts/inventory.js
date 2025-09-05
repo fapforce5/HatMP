@@ -90,8 +90,8 @@ inv.master = [
     { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, image: "redroom.png", n: false, desc: "Red Door Key" },
     { type: "o", name: "key202", display: "Apartment 202 Key", entry: false, count: null, cost: 0, image: "key202.png", n: false, desc: "Key for Holly, Dolly, and Molly's Apartment" },
     { type: "o", name: "cavekey", display: "Cave Key", entry: false, count: null, cost: 0, image: "cavekey.png", n: false, desc: "Key to get into the forest cave." },
-    { type: "o", name: "lolalocker", display: "Lola's Locker combo", entry: false, count: null, cost: 0, image: "lolalocker.png", n: false, desc: "Lola's Swim Locker Combo" },
-    { type: "o", name: "evaphoto", display: "Eva's Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
+    { type: "o", name: "lolalocker", display: "Locker combo", entry: false, count: null, cost: 0, image: "lolalocker.png", n: false, desc: "Lola's Swim Locker Combo" },
+    { type: "o", name: "evaphoto", display: "Boobie Pictures", entry: false, count: 0, cost: 0, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
 
     { type: "i", name: "pocketsand", display: "Pocket Sand", entry: false, count: 0, cost: 50, image: "pocketsand.png", n: false, desc: "Decrease Enemy's fight total by 30 points." },
     { type: "i", name: "smellingsalts", display: "Smelling Salts", entry: false, count: 0, cost: 200, image: "smellingsalts.png", n: false, desc: "Reroll your fight. " },
@@ -141,6 +141,7 @@ inv.master = [
     { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, image: "chisel.png", n: false, desc: "Used to break out of prison. " },
     { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
     { type: "g", name: "peanutbutter", display: "Peanut Butter", entry: false, count: 0, cost: 12, image: "peanutbutter.png", n: false, desc: "Jar of Peanut Butter. " },
+    { type: "g", name: "sleepingpills", display: "Sleeping pills", entry: false, count: 0, cost: -1, image: "sleepingpills.png", n: false, desc: "Sleeping pills for you know who" },
 
     { type: "y", name: "hypno1", display: "Hypno Lesson #1", entry: false, count: null, cost: 20, image: "hypno1.png", n: false, desc: "Horny Girls Masturbate" },
     { type: "y", name: "hypno2", display: "Hypno Lesson #2", entry: false, count: null, cost: 40, image: "hypno2.png", n: false, desc: "Pretty girl's wear makeup" },

@@ -552,6 +552,10 @@ nav.cum = function (btnClickName) {
     nav.drawButton("1001_rand/cum.png", btnClickName);
 };
 
+nav.custom = function (btnClickName, img = "next") {
+    nav.drawButton("1001_rand/" + img + ".png", btnClickName);
+};
+
 nav.drawButton = function (image, btnClickName) {
     nav.button({
         "type": "zbtn",

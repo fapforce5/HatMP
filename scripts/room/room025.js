@@ -76,6 +76,9 @@ room25.main = function () {
             "height": 1038,
             "image": "25_dining/bigguy.png"
         });
+        if (sc.taskGetStep("lola", "sissy") === 12) {
+            chat(110, 26);
+        }
     }
     else if (thisMother.thisRoom) {
         nav.bg("25_dining/025_diningRoomMom.jpg");
@@ -102,8 +105,6 @@ room25.main = function () {
             "image": "25_dining/lAndE.png"
         });
     }
-
-
 
     var navList = [16];
     $.each(btnList, function (i, v) {

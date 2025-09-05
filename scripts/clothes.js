@@ -214,6 +214,7 @@ cl.init = function () {
         { type: "buttplug", name: "fr", display: "Rose", img: "plug_rose.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fd", display: "Daisy", img: "plug_daisy.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fp", display: "Pink flower", img: "plug_pinkFlower.png", sex: "f", inv: false, daring: 1, price: -1 },
+        { type: "buttplug", name: "t", display: "Tampon", img: "plug_tampon.png", sex: "f", inv: false, daring: 1, price: -1 },
 
         { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
@@ -1963,7 +1964,14 @@ cl.buttplug = [
     { name: "fp", leg: 2, image: "plug_fp_2.png" },
     { name: "fp", leg: 3, image: "plug_fp_3.png" },
     { name: "fp", leg: 4, image: "plug_fp_4.png" },
-    { name: "fp", leg: 5, image: "plug_fp_5.png" }
+    { name: "fp", leg: 5, image: "plug_fp_5.png" },
+
+    { name: "t", leg: 0, image: "plug_t_0.png" },
+    { name: "t", leg: 1, image: "plug_t_0.png" },
+    { name: "t", leg: 2, image: "plug_t_2.png" },
+    { name: "t", leg: 3, image: "plug_t_3.png" },
+    { name: "t", leg: 4, image: "plug_t_4.png" },
+    { name: "t", leg: 5, image: "plug_t_5.png" }
 ];
 
 cl.accessories = [

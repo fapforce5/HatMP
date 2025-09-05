@@ -614,6 +614,7 @@ room27.chat = function (chatID) {
             text: "Hey good looking",
             button: [
                 { chatID: -1, text: "Makeup", callback: "checkmakeup" },
+                { chatID: 0, text: "Wash face", callback: "wash" },
                 { chatID: -1, text: "Check Self", callback: "checkem" },
                 { chatID: -1, text: "Finish", callback: "return" }
             ]

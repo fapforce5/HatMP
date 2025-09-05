@@ -9,6 +9,49 @@ room174.main = function () {
     else if (g.pass === "privateMomFuck") {
         //
     }
+    else if (g.pass === "everyoneGetsFucked") {
+        g.pass = null;
+        g.internal = {
+            hole: [
+                { i: "pussy", w: "l", c: 367, b: 134, f: false, n: "lola", cum: "6som_lola_pussy", x: 660, y: 634, wi: 57, h: 412 }, 
+                { i: "anal", w: "l", c: 367, b: 134, f: false, n: "lola", cum: "6som_lola_anal", x: 658, y: 562, wi: 49, h: 476 }, 
+                { i: "pussy", w: "l", c: -131, b: -422, f: false, n: "eva", cum: "6som_eva_pussy", x: 207, y: 614, wi: 52, h: 452 }, 
+                { i: "anal", w: "l", c: -131, b: -422, f: false, n: "eva", cum: "6som_eva_anal", x: 207, y: 458, wi: 161, h: 222 }, 
+                { i: "anal", w: "r", c: 751, b: 668, f: false, n: "me", cum: "6som_me_anal", x: 1112, y: 575, wi: 43, h: 212 }, 
+                { i: "pussy", w: "r", c: 1219, b: 1187, f: false, n: "mom", cum: "6som_mom_pussy", x: 1627, y: 636, wi: 50, h: 193 }, 
+                { i: "anal", w: "r", c: 1219, b: 1187, f: false, n: "mom", cum: "6som_mom_anal", x: 1630, y: 501, wi: 112, h: 239 }
+            ],
+            turn: g.rand(0, 2) === 0 ? "bg" : "chad",
+            howMany: g.rand(4, 7),
+            counter: 0,
+            activeHole: -1
+        };
+        nav.bg("14_motherRoom/phone2.jpg");
+        chat(137, 174);
+    }
+    else if (g.pass === "lolaGetFucked") {
+        g.pass = null;
+        nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+        nav.button({
+            "type": "img",
+            "name": "lola",
+            "left": 1449,
+            "top": 260,
+            "width": 215,
+            "height": 820,
+            "image": "13_sisterRoom/13_lola_nude.png"
+        }, 13);
+        nav.button({
+            "type": "img",
+            "name": "eva",
+            "left": 760,
+            "top": 295,
+            "width": 291,
+            "height": 785,
+            "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
+        }, 13);
+        chat(116, 174);
+    }
     else if (g.pass === "evalolateachme") {
         g.pass = null;
         nav.bg("174_oneOffCase/teach0_0.jpg");
@@ -195,6 +238,11 @@ room174.btnclick = function (name) {
             }
             chat(101, 174);
             break;
+        case "sissy10":
+            nav.killbutton("sissy10");
+            nav.bg("174_oneOffCase/sissy11.webp");
+            chat(133, 174);
+            break;
         default:
             break;
     }
@@ -242,11 +290,64 @@ room174.chatcatch = function (callback) {
         case "el_bj4":
         case "el_asshole1":
         case "el_asshole6":
+        case "sissy1":
+        case "sissy2":
+        case "sissy7":
+        case "sissy8":
+        case "sissy9":
+        case "sissy12":
             nav.bg("174_oneOffCase/" + callback + ".webp");
             break;
         case "el_asshole5":
+        case "sissy0":
+        case "sissy4":
+        case "sissy6":
+        case "6some_1":
             nav.kill();
             nav.bg("174_oneOffCase/" + callback + ".webp");
+            break;
+        case "sissy3":
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "sissy3",
+                "left": 928,
+                "top": 37,
+                "width": 790,
+                "height": 1043,
+                "title": "Wardrobe",
+                "image": "174_oneOffCase/sissy3.webp"
+            }, 174);
+            break;
+        case "sissy5":
+            nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+            nav.button({
+                "type": "img",
+                "name": "eva",
+                "left": 760,
+                "top": 295,
+                "width": 291,
+                "height": 785,
+                "image":"13_sisterRoom/13_eva_nude.png"
+            }, 174);
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 1449,
+                "top": 260,
+                "width": 215,
+                "height": 820,
+                "image": "13_sisterRoom/13_lola_nude.png"
+            }, 13);
+            break;
+        case "sissy10":
+            nav.bg("174_oneOffCase/" + callback + ".webp");
+            nav.next("sissy10");
+            break;
+        case "sissy13":
+            sc.completeMissionTask("lola", "sissy", 10);
+            char.settime(22, 1);
+            char.room(11);
             break;
         case "el_asshole2":
             if (!daily.get("evaEatAsshole2")) {
@@ -542,1032 +643,1467 @@ room174.chatcatch = function (callback) {
         case "leave11":
             char.room(11);
             break;
+        case "6some_0":
+            nav.bg("174_oneOffCase/6some_0.webp");
+            cl.nude();
+            zcl.displayMain(400, 550, .08, "clothes", false);
+            break;
+        case "6some_turn":
+            var allFalse = true;
+            for (let i = 0; i < g.internal.hole.length; i++) {
+                if (!g.internal.hole[i].f)
+                    allFalse = false;
+            }
+            if (allFalse) {
+                nav.killbutton("fuckerbg");
+                nav.killbutton("fuckerchad");
+                chat(141, 174);
+                return;
+            }
+            g.internal.turn = (g.internal.turn === "bg") ? "chad" : "bg";
+
+            var whoGetsFucked = g.rand(0, g.internal.hole.length);
+            for (let i = 0; i < g.internal.hole.length; i++) {
+                if (whoGetsFucked >= g.internal.hole.length)
+                    whoGetsFucked = 0;
+
+                if (!g.internal.hole[whoGetsFucked].f) {
+                    break;
+                }
+                whoGetsFucked++;
+            }
+            var wcharName = g.internal.hole[whoGetsFucked].n;
+            for (let i = 0; i < g.internal.hole.length; i++) {
+                if (g.internal.hole[i].n === wcharName)
+                    g.internal.hole[i].f = true;
+            }
+            g.internal.activeHole = whoGetsFucked;
+            nav.button({
+                "type": "img",
+                "name": "cum",
+                "left": g.internal.hole[whoGetsFucked].x,
+                "top": g.internal.hole[whoGetsFucked].y,
+                "width": g.internal.hole[whoGetsFucked].wi,
+                "height": g.internal.hole[whoGetsFucked].h,
+                "image": "174_oneOffCase/" + g.internal.hole[whoGetsFucked].cum + ".webp"
+            }, 174);
+            if (g.internal.turn === "bg") {
+                nav.killbutton("fuckerbg");
+                nav.button({
+                    "type": "zimg",
+                    "name": "fuckerbg",
+                    "left": g.internal.hole[whoGetsFucked].b,
+                    "top": 0,
+                    "width": 1111,
+                    "height": 1080,
+                    "image": "174_oneOffCase/6som_bg_" + g.internal.hole[whoGetsFucked].w + ".webp"
+                }, 174);
+            }
+            else {
+                nav.killbutton("fuckerchad");
+                nav.button({
+                    "type": "zimg",
+                    "name": "fuckerchad",
+                    "left": g.internal.hole[whoGetsFucked].c,
+                    "top": 0,
+                    "width": 768,
+                    "height": 1080,
+                    "image": "174_oneOffCase/6som_chad_" + g.internal.hole[whoGetsFucked].w + ".webp"
+                }, 174);
+            }
+            nav.killbutton("fuckeroverlay");
+            nav.button({
+                "type": "zimg",
+                "name": "fuckeroverlay",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "174_oneOffCase/6som_" + g.internal.hole[whoGetsFucked].n + "_start_" + g.internal.turn + ".webp"
+            }, 174);
+            chat(900, 174);
+            g.internal.counter++;
+            break;
+        case "6som_End":
+            char.settime(23, 7);
+            char.room(25);
+            break;
         default:
             break;
     }
 };
 
 room174.chat = function (chatID) {
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "me",
-            text: "So we have to kill a few hours. Is there anywhere you want to go? ",
-            button: [
-                { chatID: 1, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "!bill",
-            text: "Take me to your house! I want to see how you live! ",
-            button: [
-                { chatID: 2, text: "I'm not taking you to my house. I don't even know you. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "!bill",
-            text: "Fine! Take me to Toys 'n Us. I need to crank one out. ",
-            button: [
-                { chatID: 3, text: "Yeah. Lets go to Toys 'n Us", callback: "goth1" },
-                { chatID: 10, text: "We can't go there! ", callback: "" },
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "Candy",
-            text: "Oh hi! I see you got yourself a little girlfriend. Are you here for some toys " +
-                "or did you want to visit one of our booths? ",
-            button: [
-                { chatID: 4, text: "Hi, Just visiting the booths today. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "Candy",
-            text: "Cool! Leave the cum on the walls. I love cleaning it up! ",
-            button: [
-                { chatID: 5, text: "Sure. ", callback: "goth2" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "!bill",
-            text: "So, do you want to suck it, or should I just paint the glass on my own? ",
-            button: [
-                { chatID: -1, text: "Oh yeah! ", callback: "goth3" },
-                { chatID: 9, text: "Oh. No thanks ", callback: "goth3a" },
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "!bill",
-            text: "You look so pretty with my cum on your face.  ",
-            button: [
-                { chatID: 7, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "thinking",
-            text: "What the fuck am I doing? I just blew someone I just met. I'm supposed to be " +
-                "working, and here I am sucking her dick at an adult porn store! Am I turning into " +
-                "a real sissy? Am I a slut? ",
-            button: [
-                { chatID: 8, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "!bill",
-            text: "Hehe. Let's clean you face and go to your place. I need a place to relax. ",
-            button: [
-                { chatID: 10, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "!bill",
-            text: "That whore dancing is the best! I needed that. I clears my head. Let's head over " +
-                "to your place. ",
-            button: [
-                { chatID: 10, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "me",
-            text: "I've never brought a girl over. Everyone would flip if they saw you. We should just " +
-                "hang out at the mall. ",
-            button: [
-                { chatID: 11, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "!bill",
-            text: "I hate the mall. Bunch of the sunshine people there. All fake happy and empty. " +
-                "I love seeing how other people live. Take me to your home or I'm leaving and you " +
-                "won't find me!",
-            button: [
-                { chatID: 12, text: "Fine! But we're going straight to my room and you have to stay quiet and hidden.", callback: "" },
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "!bill",
-            text: "Deal! No one will hear or see me. Let's go! ",
-            button: [
-                { chatID: 13, text: "Deal.", callback: "goth5" },
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "!bill",
-            text: "So this is your room. It feels so incredibly... normal. No dirty plates, " +
-                "no death metal posters, clothes put away. You're a normie aren't ya? ",
-            button: [
-                { chatID: 14, text: "What. No way. I'm not a normie. My life is so vida loca", callback: "" },
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "!bill",
-            text: "Prove it. I want to do a fashion show. ",
-            button: [
-                { chatID: 15, text: "I guess. Everyone's gone for the day. What do you want to fashion? ", callback: "" },
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "!bill",
-            text: "Hahaha Great! We'll try on each other's underwear. I'll model yours, and you model mine. ",
-            button: [
-                { chatID: 16, text: "Sure. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "!bill",
-            text: "You first. Change in the closet then come out and put on a show for me.  ",
-            button: [
-                { chatID: -1, text: "Yes! Gimmie your panties! I'll go in the closet and change. ", callback: "goth6" },
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "!bill",
-            text: "Just come out in my panties. Nothing else chicken! ",
-            button: [
-                { chatID: -1, text: "Oh yeah. ok ", callback: "" },
-            ]
-        },
-        {
-            chatID: 18,
-            speaker: "!bill",
-            text: "Sexy! Now hop on that bed and show me that butt! ",
-            button: [
-                { chatID: 19, text: "Ok! ", callback: "goth7" },
-            ]
-        },
-        {
-            chatID: 19,
-            speaker: "!bill",
-            text: "You have such a great butt! I love it! I want to bury my face in it! Ok. " +
-                "it's my turn to fashion show you! ",
-            button: [
-                { chatID: 20, text: "Yeah! ", callback: "goth7a" },
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "thinking",
-            text: "Ohhh. I wonder which pair she'll wear? Can't wait to see her hot body. ",
-            button: [
-                { chatID: 21, text: "...", callback: "goth8" },
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "me",
-            text: "Wow! Nice. You look hot in my underwear! ",
-            button: [
-                { chatID: 22, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 22,
-            speaker: "!bill",
-            text: "These are really comphy and soft. So are you ready for round two?  ",
-            button: [
-                { chatID: 23, text: "Round two?", callback: "" },
-            ]
-        },
-        {
-            chatID: 23,
-            speaker: "!bill",
-            text: "We're moving to the socks and shoes. Just the socks and shoes. You put on my " +
-                "stockings and heels, and I'll wear your socks and shoes. Just your socks and shoes. ",
-            button: [
-                { chatID: 25, text: "Fuck yeah! I'm going to the closet to change! ", callback: "goth9" },
-                { chatID: 34, text: "No. That's too far. I don't want to do that. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 24,
-            speaker: "!bill",
-            text: "Not used ",
-            button: []
-        },
-        {
-            chatID: 25,
-            speaker: "thinking",
-            text: "My legs feel so silky smoothing in these stockings! I should get some. I'm going " +
-                "to look so sexy for Bill. Fuck that, I'm going to look so sexy for me! ",
-            button: [
-                { chatID: 26, text: "...", callback: "goth10" },
-            ]
-        },
-        {
-            chatID: 26,
-            speaker: "landlord",
-            text: "Why is there a half naked girl in your room! And why are you naked in the closet trying " +
-                "on women's stockings? ",
-            button: [
-                { chatID: 27, text: "I uhh...", callback: "" },
-            ]
-        },
-        {
-            chatID: 27,
-            speaker: "landlord",
-            text: "Don't even talk, 'cause I know you're going to lie! She's cute, but back in my day " +
-                "we took off each other's clothing, not traded clothes. I'm going to have to teach " +
-                "you two how to have sex properly. But right now I have to get back to work. I just " +
-                "needed to grab my lunch. Be gentle and listen to what she says. Bye honey. ",
-            button: [
-                { chatID: 28, text: "ok", callback: "goth11" },
-            ]
-        },
-        {
-            chatID: 28,
-            speaker: "me",
-            text: "Sorry about that. I didn't know my " + sc.n("landlord") + " would be here. ",
-            button: [
-                { chatID: 29, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 29,
-            speaker: "!bill",
-            text: "I almost had a heart attack when she came in. Sorry I couldn't warn you, I totally " +
-                "froze. It's a good thing I had your underwear on or she would have seen my little boner " +
-                "sticking up. Hahaha",
-            button: [
-                { chatID: 30, text: "haha.. oh wow. That would have been a different conversation. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 30,
-            speaker: "!bill",
-            text: "So, I think the moment's passed. You should wear my panties when we walk to " +
-                "the train. I'm going to get dressed.  ",
-            button: [
-                { chatID: 31, text: "Yeah. I guess we should get going. ", callback: "goth12" },
-            ]
-        },
-        {
-            chatID: 31,
-            speaker: "!bill",
-            text: "Bye! It was nice just spending time with you. Sometimes it's nice just to " +
-                "be normal. I've been on the run from the cult for so long I've forgotten what " +
-                "a normal house looks like. Thank you.",
-            button: [
-                { chatID: 32, text: "I had fun too. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 32,
-            speaker: "!bill",
-            text: "By the way, I know a future sissy when I " +
-                "see one, so when I was in your closet I helped you out! Bye bye! ",
-            button: [
-                { chatID: 33, text: "Helped me out? Wait.. ", callback: "goth13" },
-            ]
-        },
-        {
-            chatID: 33,
-            speaker: "thinking",
-            text: "What did she mean that she helped me out when she was in my closet? ",
-            button: [
-                { chatID: -1, text: "Wait... ", callback: "goth14" },
-            ]
-        },
-        {
-            chatID: 34,
-            speaker: "!bill",
-            text: "Oh, ok. I'll go if you should wear my panties when we walk to " +
-                "the train. I'm going to get dressed now lame-o.  ",
-            button: [
-                { chatID: 31, text: "Sure what ever gets us going. ", callback: "goth12" },
-            ]
-        },
-        {
-            chatID: 35,
-            speaker: "martha",
-            text: "Ah,ladies! A most delightful welcome to you all. You've diligently traversed the path " +
-                "of a trainee, and now you stand proudly as full-fledged sissies.  To celebrate this momentous " +
-                "occasion, it's time to bid farewell to those, shall we say, less distinguished garments. " +
-                "Fear not, for I have prepared a selection of outfits far more befitting your newfound " +
-                "status. I shall call each of you forward in turn, and you'll receive your new attire for " +
-                "the remainder of your classes.",
-            button: [
-                { chatID: 36, text: "OOooo", callback: "xdress1" },
-            ]
-        },
-        {
-            chatID: 36,
-            speaker: "martha",
-            text: "Ah, Chris, isn't that simply delightful! Your youthful charm and slight frame are simply perfect for a darling baby doll dress. And what a simply smashing shade of pink!  I can just imagine how it will complement your complexion.  And don't forget the wig, my dear! A touch of whimsy never goes amiss.Why, I daresay you'll be the belle of the ball, turning heads and captivating hearts in such an ensemble. A true gentleman wouldn't be able to resist such a charming display!",
-            button: [
-                { chatID: 38, text: "...", callback: "xdress3" },//xdress2
-            ]
-        },
-        {
-            chatID: 37,
-            speaker: "martha",
-            text: "Jeremy, my dear! Look at you, a true diamond in the rough. Today, we shall transform that gentlemanly spirit into the radiant lady you were always meant to be.This exquisite lace top, with its delicate frills, will dance around your form, creating a most charming silhouette.And fret not a single bit about your chest, for femininity comes in all shapes and sizes.Now, this cunning little girdle here will work wonders, nipping in your waist and emphasizing those delightful hips of yours. ",
-            button: [
-                { chatID: 38, text: "...", callback: "xdress3" },
-            ]
-        },
-        {
-            chatID: 38,
-            speaker: "martha",
-            text: "Kareem, that simply divine shade of purple! It absolutely accentuates your most charming legs, wouldn't you agree? A touch of boldness is just the ticket to draw out the marvelous woman I know resides within you. Remember, darling, confidence is the most exquisite accessory one can possess. Now, go forth and blossom, my dear. I can't wait to witness the truly remarkable woman you'll become.",
-            button: [
-                { chatID: 39, text: "...", callback: "xdress4" },
-            ]
-        },
-        {
-            chatID: 39,
-            speaker: "martha",
-            text: "Oh, Martin, my dear!  You simply must be the most delightful transformation we've ever had the pleasure of witnessing.  When you first arrived, a gruff little fellow indeed, wouldn't you agree? But look at you now, a positively charming and wonderful lady!  My heart simply brims with pride for all the progress you've made. Truly, a triumph!",
-            button: [
-                { chatID: 40, text: "...", callback: "xdress5" },
-            ]
-        },
-        {
-            chatID: 40,
-            speaker: "martha",
-            text: "Ah, Philbert, there you are. My most... challenging pupil. Today, I've selected a rather unassuming ensemble for your transformation. A long dress, wouldn't you know, perfect for keeping those... exuberant tendencies nicely under wraps. Now, do try to see if we can cultivate a touch of decorum, shall we?",
-            button: [
-                { chatID: 45, text: "...", callback: "xdress10" },
-            ]
-        },
-        {
-            chatID: 41,
-            speaker: "martha",
-            text: "Ah, Sporty, this simply darling ensemble will perfectly capture your inherent femininity.It allows for the utmost comfort and mobility, ensuring you can continue your active pursuits without a moment's worry.  Imagine, gracefully gliding through your day, a vision of both elegance and practicality. Now, wouldn't that be simply splendid?",
-            button: [
-                { chatID: 42, text: "...", callback: "xdress7" },
-            ]
-        },
-        {
-            chatID: 42,
-            speaker: "martha",
-            text: "My, my, how delightful to meet Sinéad!  What a charming name, indeed. It suits her so much better, wouldn't you agree? I remember when dear Thomas first arrived, a quiet little bookworm, nose always buried in a tome. One couldn't help but wonder if she'd ever blossom. But blossom she has! Look at her now, Sinéad, radiant and beautiful. It's truly heartwarming to see such a transformation. Quite a testament to finding one's true self, wouldn't you say?",
-            button: [
-                { chatID: 43, text: "...", callback: "xdress8" },
-            ]
-        },
-        {
-            chatID: 43,
-            speaker: "martha",
-            text: "My, my, isn't Trixy a vision? Formerly Timothy, you see. Quite the transformation, wouldn't you agree? Our little scientific marvel, the transformation pill, has done wonders, wouldn't you say? A touch of science to bring out the true you, the radiant woman just waiting to blossom. Just a little pill, and your inner beauty can finally take center stage.  ",
-            button: [
-                { chatID: 44, text: "...", callback: "xdress9" },
-            ]
-        },
-        {
-            chatID: 44,
-            speaker: "martha",
-            text: "Finally our favorite pupil, " + sc.n("me") + ". Missy has personally chosen this outfit " +
-                "to accentuate what she calls 'Her slutty desires to be impaled by every cock in the room.' " +
-                "Her exposed midriff displays her toned figure, low cut top displays her femininity, " +
-                "and short skirt signals that she is ready for breeding. Now everyone return to the waiting room. " +
-                "Your next selection of classes await. I'm so excited to see you take the next step! ",
-            button: [
-                { chatID: -1, text: "...", callback: "xdressEnd" },
-            ]
-        },
-        {
-            chatID: 45,
-            speaker: "martha",
-            text: "Here's " + sc.n("ralph") + ". *sigh* ",
-            button: [
-                { chatID: 41, text: "...", callback: "xdress6" },
-            ]
-        },
-        {
-            chatID: 46,
-            speaker: "thinking",
-            text: "I'm just going to take a nap before I have to go to the club since it looks " +
-                "like I'll be up all night. ",
-            button: [
-                { chatID: 47, text: "[Wake up and go to the club]", callback: "club0" },
-            ]
-        },
-        {
-            chatID: 47,
-            speaker: "me",
-            text: "Hi Mr. Rex I'm here to...",
-            button: [
-                { chatID: 48, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 48,
-            speaker: "!rex",
-            text: "One sec. Hey tits! Careful with those glasses. If you break another glass " +
-                "tonight I'm going to have to punish you in my office. Now hurry up and finish cleaning " +
-                "up. You're not getting overtime for being lazy. ",
-            button: [
-                { chatID: 49, text: "...", callback: "club1" },
-            ]
-        },
-        {
-            chatID: 49,
-            speaker: "!rex",
-            text: "Let me take you to the dance floor where that piece of shit has been doing his " +
-                "thing.",
-            button: [
-                { chatID: 50, text: "ok", callback: "club2" },
-            ]
-        },
-        {
-            chatID: 50,
-            speaker: "!rex",
-            text: "I had that dumb waitress, tits, put this table here that you can hide under. " +
-                "Don't fuck this up. I fucking sick of ordering the busboy to clean up shit off " +
-                "my floor. Plus it's bad for business. It needs to stop tonight. ok?",
-            button: [
-                { chatID: 51, text: "I'll catch him tonight! ", callback: "" },
-            ]
-        },
-        {
-            chatID: 51,
-            speaker: "!rex",
-            text: "Good. Now get under that table and don't fuck this up. ",
-            button: [
-                { chatID: 52, text: "Yes sir. ", callback: "club3" },
-            ]
-        },
-        {
-            chatID: 52,
-            speaker: "thinking",
-            text: "It's so cramped in here. Hopefully he comes quickly so I don't have to spen " +
-                "the entire night squatting under this table. Oh it's the waitress. She's so hot! " +
-                "hopefully it's her so I can get done with this case. ",
-            button: [
-                { chatID: 53, text: "...", callback: "club4" },
-            ]
-        },
-        {
-            chatID: 53,
-            speaker: "thinking",
-            text: "Not that is a tight pussy! I can smell her musky scent. So hot! I want to " +
-                "bury my face in that pussy. I wonder what she would do if I reached out and " +
-                "touched it. That's stupid. She'll totally get pissed. But she didn't seem to get " +
-                "mad when Mr. Rex called her tits. Maybe she's down. I shouldn't though. But she " +
-                "does seem like a slut. ",
-            button: [
-                { chatID: 59, text: "Just do your job ", callback: "club6" },
-                { chatID: 54, text: "Touch her pussy with your finger. ", callback: "club5_a1" }
-            ]
-        },
-        {
-            chatID: 54,
-            speaker: "thinking",
-            text: "It's so warm and moist. Oh. She just moaned. She's totally into it. " +
-                "I wonder if she'll let me slide down her shorts and see her pussy...",
-            button: [
-                { chatID: 55, text: "Slide down her shorts", callback: "club5_a2" },
-            ]
-        },
-        {
-            chatID: 55,
-            speaker: "thinking",
-            text: "Holy shit! She let me take down her shorts and she's not wearing panties! " +
-                "Fuck she's dripping wet. Fuck I have to taste her pussy.",
-            button: [
-                { chatID: 56, text: "[Eat her pussy]", callback: "club5_a3" },
-            ]
-        },
-        {
-            chatID: 56,
-            speaker: "thinking",
-            text: "Fuck yeah! I knew some girls were sluts, but I never knew I would be face " +
-                "deep in one! I love this girl!",
-            button: [
-                { chatID: 57, text: "...", callback: "club5_a4" },
-            ]
-        },
-        {
-            chatID: 57,
-            speaker: "!rex",
-            text: "What the FUCK!!!",
-            button: [
-                { chatID: 58, text: "huh?", callback: "club5_a5" },
-            ]
-        },
-        {
-            chatID: 58,
-            speaker: "!rex",
-            text: "The Mad Pooper stuck again! Tits, clean this shit up. And you PI Punk! " +
-                "Get the hell out of my club 'cause you're fucking fired. ",
-            button: [
-                { chatID: -1, text: "Aw crap. Missy's going to be pissed. ", callback: "club5_badEnd" },
-            ]
-        },
-        {
-            chatID: 59,
-            speaker: "thinking",
-            text: "I'm not going to grab her pussy. I'm not that kind of guy. But I can still " +
-                "smell her pussy. Those shorts must be holding all the sweat and pussy juice " +
-                "from working all night. I really should have tried to finger her. Oh well...",
-            button: [
-                { chatID: 60, text: "[Wait...]", callback: "club7" },
-            ]
-        },
-        {
-            chatID: 60,
-            speaker: "thinking",
-            text: "Holy crap. Someone's walking in. I just need to take a picture really quick.",
-            button: [
-                { chatID: 61, text: "[Take picture]", callback: "club8" },
-            ]
-        },
-        {
-            chatID: 61,
-            speaker: "thinking",
-            text: "Shit he moved! Crap I forgot to take off the camera sound effect. Crap crap crap!",
-            button: [
-                { chatID: 62, text: "[Chase after him]", callback: "club9" },
-            ]
-        },
-        {
-            chatID: 62,
-            speaker: "thinking",
-            text: "Damn! He's fast. Fuck. Hopefully there's enough here to figure out who he " +
-                "is. I'll send this to Missy and call it a night. ",
-            button: [
-                { chatID: -1, text: "[Send picture to Missy and go home]", callback: "club_end" },
-            ]
-        },
-        {
-            chatID: 63,
-            speaker: "me",
-            text: "I uh... don't suppose you two could teach me stuff?",
-            button: [
-                { chatID: 64, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 64,
-            speaker: "lola",
-            text: "Stuff?",
-            button: [
-                { chatID: 65, text: "Yeah.. you know. I know you two like...", callback: "" },
-            ]
-        },
-        {
-            chatID: 65,
-            speaker: "eva",
-            text: "Oh hahahaha! I know what she wants! You want to dyke out with us don't you? " +
-                "What do you think " + sc.n("lola") + ", does she want to learn how to be a girl " +
-                "or get a taste of our girl dicks? ",
-            button: [
-                { chatID: 66, text: "oh. uhhh. yeah", callback: "" },
-            ]
-        },
-        {
-            chatID: 66,
-            speaker: "lola",
-            text: "Oh. huh. I guess we're all girls so it's ok. Unless you mean you just want to " +
-                "talk about makeup and boys. Then that's ok too. I know being a girl is new so " +
-                "we'll leave it up to you. ",
-            button: [
-                { chatID: -1, text: "Oh cool. Ok", callback: "evalolateachme1" },
-            ]
-        },
-        {
-            chatID: 67,
-            speaker: "lola",
-            text: "I totally love your hair. It's so soft and smooth. I swear new girls have the " +
-                "best hair without even trying. You know brushing your hair makes it grow faster. ",
-            button: [
-                { chatID: 68, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 68,
-            speaker: "eva",
-            text: "Awww. I guess even perverts make pretty girls! ",
-            button: [
-                { chatID: -1, text: "That's why you're so hot!", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 69,
-            speaker: "lola",
-            text: "I can't look like a clown, maybe should practice on " + sc.n("eva") + ". " +
-                "Besides she owes me one for helping her pass Introduction to Nutrition 101. ",
-            button: [
-                { chatID: 70, text: "I'm offended", callback: "" },
-            ]
-        },
-        {
-            chatID: 70,
-            speaker: "eva",
-            text: "It's cool. But you're going to owe me some study time with Introduction " +
-                "to Communications. Also I'm going to take my shirt off. Can't have your sloppy makeup " +
-                "skills getting my shirt all dirty. Makeup can be a bitch to get out. ",
-            button: [
-                { chatID: 71, text: "Oh sweet! I get to practice! ", callback: "teachMakeup" },
-            ]
-        },
-        {
-            chatID: 71,
-            speaker: "eva",
-            text: "Ugh. I look like a clown and a stripper got in a head on crash and smashed " +
-                "their faces together. ",
-            button: [
-                { chatID: -1, text: "...", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 72,
-            speaker: "eva",
-            text: "I taught " + sc.n("lola") + " everything she knows about kissing! ",
-            button: [
-                { chatID: 73, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 73,
-            speaker: "lola",
-            text: "She did. I do love the french kissing, but only when I'm all worked up, " +
-                "otherwise it's kind gross. So who do you want to practice kissing with? ",
-            button: [
-                { chatID: -1, text: sc.n("lola"), callback: "teachLolaKiss" },
-                { chatID: -1, text: sc.n("eva"), callback: "teachEvaKiss" },
-            ]
-        },
-        {
-            chatID: 74,
-            speaker: "lola",
-            text: "MMmmm the pefect amout of tongue. You're really a great kisser you know.",
-            button: [
-                { chatID: -1, text: "MMmmmMMmm", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 75,
-            speaker: "eva",
-            text: "Sometimes I think you're just this pervert that is trying to sneak into the " +
-                "girls locker room, but sometimes I think you're a girl, like the way you kiss. " +
-                "It's so feminine, like " + sc.n("lola") + ". ",
-            button: [
-                { chatID: -1, text: "MMmmMMmm", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 76,
-            speaker: "eva",
-            text: "Should we tell her?",
-            button: [
-                { chatID: 77, text: "hmmm?", callback: "" },
-            ]
-        },
-        {
-            chatID: 77,
-            speaker: "lola",
-            text: "Yeah! Totally. I got her, a new costume! ",
-            button: [
-                { chatID: 78, text: "Got what? ", callback: "" },
-            ]
-        },
-        {
-            chatID: 78,
-            speaker: "eva",
-            text: "Really? You are too nice. I would have made her play in her panties, but I'm " +
-                "totally excited to see what you got! ",
-            button: [
-                { chatID: 79, text: "What!", callback: "" },
-            ]
-        },
-        {
-            chatID: 79,
-            speaker: "lola",
-            text: "I couldn't let her be the only one not dressed up. It's might be a little much, " +
-                "but I think she'll like it. The pink really fits her. ",
-            button: [
-                { chatID: 80, text: "GOT ME WHAT?!?!?!", callback: "el_sex0" },
-            ]
-        },
-        {
-            chatID: 80,
-            speaker: "eva",
-            text: "Our practice sex clothes dummy! Now put on the clothes " + sc.n("lola") + 
-                " got for you! ",
-            button: [
-                { chatID: 81, text: "!", callback: "el_sex1" },
-            ]
-        },
-        {
-            chatID: 81,
-            speaker: "thinking",
-            text: "Holy crap! I'm so giddy like a school girl! This is the best! ",
-            button: [
-                { chatID: 82, text: "!", callback: "" },
-            ]
-        },
-        {
-            chatID: 82,
-            speaker: "me",
-            text: "So why do I have a strap on?",
-            button: [
-                { chatID: 83, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 83,
-            speaker: "lola",
-            text: "Oh. Becuase you're a girl. Girl's don't have penises. ",
-            button: [
-                { chatID: 84, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 84,
-            speaker: "eva",
-            text: "Also it's sex practice, not try and fuck us you pervert! " + sc.n("lola") +
-                " and I started doing this when I lost my virginity. I was so scared and bad " +
-                "at sex we promised each other we would help get better at sex and make it not " +
-                "so scary. ",
-            button: [
-                { chatID: 85, text: "Oh.", callback: "" },
-            ]
-        },
-        {
-            chatID: 85,
-            speaker: "lola",
-            text: "Yeah. She was a mess. Also I just like the purple dildo. I thought it would " +
-                "look super cute on you! ",
-            button: [
-                { chatID: -1, text: "Thanks! It does look cute on me. You're the best! ", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 86,
-            speaker: "eva",
-            text: "Sweet! We usually take turns. I'll blow " + sc.n("lola") + " first! ",
-            button: [
-                { chatID: 87, text: "ok!", callback: "el_bj0" },
-            ]
-        },
-        {
-            chatID: 87,
-            speaker: "eva",
-            text: "She's so gentle with her dick. I wish guys were this nice when they put their " +
-                "dicks in my mouth. Now " + sc.n("lola") + " it's your turn to blow " + sc.n("me") +
-                ". You'll love her blow jobs. She's so caring when she sucks a dick. ",
-            button: [
-                { chatID: 88, text: "sweet!", callback: "el_bj1" },
-            ]
-        },
-        {
-            chatID: 88,
-            speaker: "lola",
-            text: "lalalala  ",
-            button: [
-                { chatID: 89, text: "What are you doing? ", callback: "" },
-            ]
-        },
-        {
-            chatID: 89,
-            speaker: "lola",
-            text: "I was told it's sexy when a girl sings to your penis and licks the bottom. ",
-            button: [
-                { chatID: -1, text: "Girl, just suck the penis", callback: "el_bj2" },
-            ]
-        },
-        {
-            chatID: 90,
-            speaker: "lola",
-            text: "Holy crap girl! You need to breathe! ",
-            button: [
-                { chatID: 91, text: "...", callback: "el_bj3" },
-            ]
-        },
-        {
-            chatID: 91,
-            speaker: "lola",
-            text: "How was that? When I swim I've been practicing holding my breathe. " +
-                "Would that make you cum if you were a boy? ",
-            button: [
-                { chatID: 92, text: "That would scare me! You don't just go deep, you have to move your head! ", callback: "el_bj4" },
-            ]
-        },
-        {
-            chatID: 92,
-            speaker: "eva",
-            text: "You like my penis? I wanted a bigger one, but " + sc.n("lola") + " said " +
-                "no way in hell! Go on, show " + sc.n("lola") + " how to properly suck a cock! ",
-            button: [
-                { chatID: 93, text: "MMmm yes!", callback: "el_bj5" },
-            ]
-        },
-        {
-            chatID: 93,
-            speaker: "eva",
-            text: "Take notes " + sc.n("lola") + "! That's a real cock sucker! See how she " +
-                "makes love to my strap on with her mouth! Wow! You're going to make some " +
-                "boy really happy someday. Hehehehe!",
-            button: [
-                { chatID: 94, text: "*sssllluuurrrppp*", callback: "el_bj6" },
-            ]
-        },
-        {
-            chatID: 94,
-            speaker: "lola",
-            text: "Hehehe. You are cute when you suck on her penis. That was so much fun! ",
-            button: [
-                { chatID: -1, text: "Yeahhhh ❤️❤️❤️", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 95,
-            speaker: "lola",
-            text: "Yeah! Let's get changed! ",
-            button: [
-                { chatID: -1, text: "[Change]", callback: "evalolateachmechange" },
-            ]
-        },
-        {
-            chatID: 96,
-            speaker: "lola",
-            text: "Yeah. When it's just " + sc.n("eva") + " and I she always takes bottom " +
-                "'cause she's so lazy!",
-            button: [
-                { chatID: 97, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 97,
-            speaker: "eva",
-            text: "No. I get bottom becuase you try to thrust your hips into me and nearly broke " +    
-                "my nose! Also it like to grab and spread you butt. Hehe. ",
-            button: [
-                { chatID: 98, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 98,
-            speaker: "lola",
-            text: "*ugh* I know. You also like to sneak attack my butthole with your finger. I " +
-                "get the couch you two get to kneel!",
-            button: [
-                { chatID: 99, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 99,
-            speaker: "eva",
-            text: "I get next! " + sc.n("me") + " you have to eat my pussy! ",
-            button: [
-                { chatID: 100, text: "oh. Sweet!", callback: "el_twat0" },
-            ]
-        },
-        {
-            chatID: 100,
-            speaker: "thinking",
-            text: "I love how her ass is just out waiting to let me eat it. My " + sc.n("el") +
-                "are the best! ",
-            button: [
-                { chatID: -1, text: "Eat that pussy!", callback: "el_twat1" },
-            ]
-        },
-        {
-            chatID: 101,
-            speaker: "eva",
-            text: "Hahaha Oh my god! Sorry! Sometimes when I orgasm I squirt. Like really hard! ",
-            button: [
-                { chatID: 102, text: "bluuuffffff", callback: "el_twat4" },
-            ]
-        },
-        {
-            chatID: 102,
-            speaker: "lola",
-            text: "Ehhhh. Let me get a towel and wipe your face. That's another reason why I " +
-                "get to be on top when it's the two of us. Gives me a chance to move my head before " +
-                "being covered in her piss. ",
-            button: [
-                { chatID: 103, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 103,
-            speaker: "eva",
-            text: "*hrumph* I keep saying, it's not piss, it's cum! That's how I cum. I'm just a " +
-                "squirter!!! dammit!",
-            button: [
-                { chatID: -1, text: "...", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 104,
-            speaker: "eva",
-            text: "I'm not eating your ass! " + sc.n("lola") + " can do that. She's the one that " +
-                "loves licking buttholes! You can eat my ass! ",
-            button: [
-                { chatID: 105, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 105,
-            speaker: "lola",
-            text: "I wouldn't say I love it, but I it is nice to see if I can make you cum just " +
-                "from licking your butthole. Makes me happy. But I don't mind eating " + sc.n("me") +
-                "'s butthole. I'm pretty good at it! ",
-            button: [
-                { chatID: 106, text: "...", callback: "el_asshole0" },
-            ]
-        },
-        {
-            chatID: 106,
-            speaker: "eva",
-            text: "Lick up doggy! Eat my butthole! I know you dream about this every night! ",
-            button: [
-                { chatID: 107, text: "nom", callback: "el_asshole1" },
-            ]
-        },
-        {
-            chatID: 107,
-            speaker: "eva",
-            text: "MMmmm tickle my insides with your wet slimy tounge. I want to fart your saliva. ",
-            button: [
-                { chatID: 108, text: "[Eat that asshole]", callback: "el_asshole2" },
-            ]
-        },
-        {
-            chatID: 108,
-            speaker: "eva",
-            text: "OOoooo I like that. You're a great ass eater! So how's it taste pervert?",
-            button: [
-                { chatID: 109, text: "Hmmm. Like licking pennies", callback: "" },
-            ]
-        },
-        {
-            chatID: 109,
-            speaker: "lola",
-            text: "Ok. My turn! Spread those cheeks so I can bury my face in your butthole!!",
-            button: [
-                { chatID: 110, text: "[Give " + sc.n("lola") + " a turn eating your ass]", callback: "el_asshole3" },
-            ]
-        },
-        {
-            chatID: 110,
-            speaker: "me",
-            text: "Eat up buttercup!",
-            button: [
-                { chatID: 111, text: "...", callback: "el_asshole4" },
-            ]
-        },
-        {
-            chatID: 111,
-            speaker: "eva",
-            text: "Haha! Get in there! Really show her you know how to eat ass!",
-            button: [
-                { chatID: 112, text: "*happy noises*", callback: "el_asshole5" },
-            ]
-        },
-        {
-            chatID: 112,
-            speaker: "me",
-            text: "*uuugghhhh* ...feels so good... ...push harder....  uhhhhh",
-            button: [
-                { chatID: 113, text: "...", callback: "el_asshole6" },
-            ]
-        },
-        {
-            chatID: 113,
-            speaker: "eva",
-            text: "Hahaha! You came from getting your ass eaten! You are a slut!!!",
-            button: [
-                { chatID: 114, text: "*content moaning*", callback: "el_asshole7" },
-            ]
-        },
-        {
-            chatID: 114,
-            speaker: "lola",
-            text: "I don't do anything half-assed. I whole ass everthing I do! ",
-            button: [
-                { chatID: -1, text: "MMmMMmmmmm", callback: "evalolateachme" },
-            ]
-        },
-        {
-            chatID: 115,
-            speaker: "lola",
-            text: "*yawn* It's getting late. We're going to go to bed. ",
-            button: [
-                { chatID: -1, text: "ok. ", callback: "leave11" },
-            ]
-        },
-    ];
-    if (cArray.length > chatID && chatID > -1)
-        return cArray[chatID];
-    else
-        return [];
+    if (chatID === 900) { //start
+        let startTxt = "";
+        switch (g.internal.hole[g.internal.activeHole].n) {
+            case "lola":
+                startTxt = "hehe. Is it my turn now? ";
+                break;
+            case "eva":
+                startTxt = "I don't care where you put that, just don't put it up my ass!";
+                break;
+            case "me":
+                startTxt = "Yeah! I get to get dicked down! Or is it up, don't care, I get a dick in my butt!";
+                break;
+            case "mom":
+                startTxt = "You ready to fill some milf-y pussy? "
+                break;
+        }
+        return {
+            chatID: 900,
+            speaker: g.internal.hole[g.internal.activeHole].n === "mom" ? "landlord" : g.internal.hole[g.internal.activeHole].n,
+            text: startTxt,
+            button: [
+                { chatID: 901, text: "...", callback: "" }
+            ]
+        };
+    }
+    if (chatID === 901) {
+        let chat901;
+        if (g.internal.turn === "bg" && g.internal.hole[g.internal.activeHole].i === "pussy") {
+            chat901 = "I do love a wet drippy pussy!";
+        }
+        else if (g.internal.turn === "bg" && g.internal.hole[g.internal.activeHole].i === "anal") {
+            chat901 = "You better relax your butt, 'cause I'm about to fuck it.";
+        }
+        else if (g.internal.turn === "chad" && g.internal.hole[g.internal.activeHole].i === "pussy") {
+            chat901 = "I can smell your desire to get fucked in the pussy! ";
+        }
+        else if (g.internal.turn === "chad" && g.internal.hole[g.internal.activeHole].i === "anal") {
+            chat901 = "That brown eye is winking at my dick!";
+        }
+        return {
+            chatID: 901,
+            speaker: g.internal.turn === "bg" ? "bigguy" : g.internal.turn,
+            text: chat901,
+            button: [
+                { chatID: 902, text: "...", callback: "" }
+            ]
+        };
+    }
+    else if (chatID === 902) {
+        nav.modbutton("fuckeroverlay", "174_oneOffCase/6som_" + g.internal.hole[g.internal.activeHole].n + "_" + g.internal.hole[g.internal.activeHole].i + "_" + g.internal.turn + ".webp", null, null);
+        let chat902 = "";
+        if (g.internal.hole[g.internal.activeHole].i === "pussy") {
+            switch (g.internal.hole[g.internal.activeHole].n) {
+                case "lola": chat902 = "Oh god, you feel so good inside me!"; break;
+                case "eva": chat902 = "Fuck me harder! Make me cum too!"; break;
+                case "mom": chat902 = "I bet you love that Milfy-pussy!"; break;
+            }
+        }
+        else if (g.internal.hole[g.internal.activeHole].i === "anal") {
+            switch (g.internal.hole[g.internal.activeHole].n) {
+                case "lola": chat902 = "Owie owie owie! Please hurry, it really hurts by poor little anus!"; break;
+                case "eva": chat902 = "You know I poop from there! "; break;
+                case "me": chat902 = "Oh yeah! Fuck me just like that!"; break;
+                case "mom": chat902 = "What is it with dirty men and their desire to fuck a girls asshole?"; break;
+            }
+        }
+        return {
+            chatID: 902,
+            speaker: g.internal.hole[g.internal.activeHole].n,
+            text: chat902,
+            button: [
+                { chatID: 903, text: "...", callback: "" }
+            ]
+        };
+    }
+    else if (chatID === 903) {
+        nav.killbutton("fuckeroverlay");
+        let chat903;
+        if (g.internal.hole[g.internal.activeHole].n === "me") {
+            levels.anal(4, false, "m", true, (g.internal.turn === "bg" ? "bigguy" : g.internal.turn));
+        }
+        if (g.internal.turn === "bg" && g.internal.hole[g.internal.activeHole].i === "pussy") {
+            chat903 = "Love fucking this pussy!";
+        }
+        else if (g.internal.turn === "bg" && g.internal.hole[g.internal.activeHole].i === "anal") {
+            chat903 = "Oh yeah! Squeeze it tighter! I'm going to blow my cum up that ass!";
+        }
+        else if (g.internal.turn === "chad" && g.internal.hole[g.internal.activeHole].i === "pussy") {
+            chat903 = "This is so sweet! Fuck that's a great pussy!";
+        }
+        else if (g.internal.turn === "chad" && g.internal.hole[g.internal.activeHole].i === "anal") {
+            chat903 = "Oh shit, I'm going to fill that ass up!";
+        }
+        return {
+            chatID: 902,
+            speaker: g.internal.turn === "bg" ? "bigguy" : g.internal.turn,
+            text: chat903,
+            button: [
+                { chatID: -1, text: "...", callback: "6some_turn" }
+            ]
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "me",
+                text: "So we have to kill a few hours. Is there anywhere you want to go? ",
+                button: [
+                    { chatID: 1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "!bill",
+                text: "Take me to your house! I want to see how you live! ",
+                button: [
+                    { chatID: 2, text: "I'm not taking you to my house. I don't even know you. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "!bill",
+                text: "Fine! Take me to Toys 'n Us. I need to crank one out. ",
+                button: [
+                    { chatID: 3, text: "Yeah. Lets go to Toys 'n Us", callback: "goth1" },
+                    { chatID: 10, text: "We can't go there! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "Candy",
+                text: "Oh hi! I see you got yourself a little girlfriend. Are you here for some toys " +
+                    "or did you want to visit one of our booths? ",
+                button: [
+                    { chatID: 4, text: "Hi, Just visiting the booths today. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "Candy",
+                text: "Cool! Leave the cum on the walls. I love cleaning it up! ",
+                button: [
+                    { chatID: 5, text: "Sure. ", callback: "goth2" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "!bill",
+                text: "So, do you want to suck it, or should I just paint the glass on my own? ",
+                button: [
+                    { chatID: -1, text: "Oh yeah! ", callback: "goth3" },
+                    { chatID: 9, text: "Oh. No thanks ", callback: "goth3a" },
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "!bill",
+                text: "You look so pretty with my cum on your face.  ",
+                button: [
+                    { chatID: 7, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "thinking",
+                text: "What the fuck am I doing? I just blew someone I just met. I'm supposed to be " +
+                    "working, and here I am sucking her dick at an adult porn store! Am I turning into " +
+                    "a real sissy? Am I a slut? ",
+                button: [
+                    { chatID: 8, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "!bill",
+                text: "Hehe. Let's clean you face and go to your place. I need a place to relax. ",
+                button: [
+                    { chatID: 10, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "!bill",
+                text: "That whore dancing is the best! I needed that. I clears my head. Let's head over " +
+                    "to your place. ",
+                button: [
+                    { chatID: 10, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "me",
+                text: "I've never brought a girl over. Everyone would flip if they saw you. We should just " +
+                    "hang out at the mall. ",
+                button: [
+                    { chatID: 11, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "!bill",
+                text: "I hate the mall. Bunch of the sunshine people there. All fake happy and empty. " +
+                    "I love seeing how other people live. Take me to your home or I'm leaving and you " +
+                    "won't find me!",
+                button: [
+                    { chatID: 12, text: "Fine! But we're going straight to my room and you have to stay quiet and hidden.", callback: "" },
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "!bill",
+                text: "Deal! No one will hear or see me. Let's go! ",
+                button: [
+                    { chatID: 13, text: "Deal.", callback: "goth5" },
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "!bill",
+                text: "So this is your room. It feels so incredibly... normal. No dirty plates, " +
+                    "no death metal posters, clothes put away. You're a normie aren't ya? ",
+                button: [
+                    { chatID: 14, text: "What. No way. I'm not a normie. My life is so vida loca", callback: "" },
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "!bill",
+                text: "Prove it. I want to do a fashion show. ",
+                button: [
+                    { chatID: 15, text: "I guess. Everyone's gone for the day. What do you want to fashion? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "!bill",
+                text: "Hahaha Great! We'll try on each other's underwear. I'll model yours, and you model mine. ",
+                button: [
+                    { chatID: 16, text: "Sure. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "!bill",
+                text: "You first. Change in the closet then come out and put on a show for me.  ",
+                button: [
+                    { chatID: -1, text: "Yes! Gimmie your panties! I'll go in the closet and change. ", callback: "goth6" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "!bill",
+                text: "Just come out in my panties. Nothing else chicken! ",
+                button: [
+                    { chatID: -1, text: "Oh yeah. ok ", callback: "" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "!bill",
+                text: "Sexy! Now hop on that bed and show me that butt! ",
+                button: [
+                    { chatID: 19, text: "Ok! ", callback: "goth7" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "!bill",
+                text: "You have such a great butt! I love it! I want to bury my face in it! Ok. " +
+                    "it's my turn to fashion show you! ",
+                button: [
+                    { chatID: 20, text: "Yeah! ", callback: "goth7a" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "thinking",
+                text: "Ohhh. I wonder which pair she'll wear? Can't wait to see her hot body. ",
+                button: [
+                    { chatID: 21, text: "...", callback: "goth8" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "me",
+                text: "Wow! Nice. You look hot in my underwear! ",
+                button: [
+                    { chatID: 22, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "!bill",
+                text: "These are really comphy and soft. So are you ready for round two?  ",
+                button: [
+                    { chatID: 23, text: "Round two?", callback: "" },
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "!bill",
+                text: "We're moving to the socks and shoes. Just the socks and shoes. You put on my " +
+                    "stockings and heels, and I'll wear your socks and shoes. Just your socks and shoes. ",
+                button: [
+                    { chatID: 25, text: "Fuck yeah! I'm going to the closet to change! ", callback: "goth9" },
+                    { chatID: 34, text: "No. That's too far. I don't want to do that. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "!bill",
+                text: "Not used ",
+                button: []
+            },
+            {
+                chatID: 25,
+                speaker: "thinking",
+                text: "My legs feel so silky smoothing in these stockings! I should get some. I'm going " +
+                    "to look so sexy for Bill. Fuck that, I'm going to look so sexy for me! ",
+                button: [
+                    { chatID: 26, text: "...", callback: "goth10" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "landlord",
+                text: "Why is there a half naked girl in your room! And why are you naked in the closet trying " +
+                    "on women's stockings? ",
+                button: [
+                    { chatID: 27, text: "I uhh...", callback: "" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "landlord",
+                text: "Don't even talk, 'cause I know you're going to lie! She's cute, but back in my day " +
+                    "we took off each other's clothing, not traded clothes. I'm going to have to teach " +
+                    "you two how to have sex properly. But right now I have to get back to work. I just " +
+                    "needed to grab my lunch. Be gentle and listen to what she says. Bye honey. ",
+                button: [
+                    { chatID: 28, text: "ok", callback: "goth11" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "me",
+                text: "Sorry about that. I didn't know my " + sc.n("landlord") + " would be here. ",
+                button: [
+                    { chatID: 29, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "!bill",
+                text: "I almost had a heart attack when she came in. Sorry I couldn't warn you, I totally " +
+                    "froze. It's a good thing I had your underwear on or she would have seen my little boner " +
+                    "sticking up. Hahaha",
+                button: [
+                    { chatID: 30, text: "haha.. oh wow. That would have been a different conversation. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "!bill",
+                text: "So, I think the moment's passed. You should wear my panties when we walk to " +
+                    "the train. I'm going to get dressed.  ",
+                button: [
+                    { chatID: 31, text: "Yeah. I guess we should get going. ", callback: "goth12" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "!bill",
+                text: "Bye! It was nice just spending time with you. Sometimes it's nice just to " +
+                    "be normal. I've been on the run from the cult for so long I've forgotten what " +
+                    "a normal house looks like. Thank you.",
+                button: [
+                    { chatID: 32, text: "I had fun too. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "!bill",
+                text: "By the way, I know a future sissy when I " +
+                    "see one, so when I was in your closet I helped you out! Bye bye! ",
+                button: [
+                    { chatID: 33, text: "Helped me out? Wait.. ", callback: "goth13" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "thinking",
+                text: "What did she mean that she helped me out when she was in my closet? ",
+                button: [
+                    { chatID: -1, text: "Wait... ", callback: "goth14" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "!bill",
+                text: "Oh, ok. I'll go if you should wear my panties when we walk to " +
+                    "the train. I'm going to get dressed now lame-o.  ",
+                button: [
+                    { chatID: 31, text: "Sure what ever gets us going. ", callback: "goth12" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "martha",
+                text: "Ah,ladies! A most delightful welcome to you all. You've diligently traversed the path " +
+                    "of a trainee, and now you stand proudly as full-fledged sissies.  To celebrate this momentous " +
+                    "occasion, it's time to bid farewell to those, shall we say, less distinguished garments. " +
+                    "Fear not, for I have prepared a selection of outfits far more befitting your newfound " +
+                    "status. I shall call each of you forward in turn, and you'll receive your new attire for " +
+                    "the remainder of your classes.",
+                button: [
+                    { chatID: 36, text: "OOooo", callback: "xdress1" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "martha",
+                text: "Ah, Chris, isn't that simply delightful! Your youthful charm and slight frame are simply perfect for a darling baby doll dress. And what a simply smashing shade of pink!  I can just imagine how it will complement your complexion.  And don't forget the wig, my dear! A touch of whimsy never goes amiss.Why, I daresay you'll be the belle of the ball, turning heads and captivating hearts in such an ensemble. A true gentleman wouldn't be able to resist such a charming display!",
+                button: [
+                    { chatID: 38, text: "...", callback: "xdress3" },//xdress2
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "martha",
+                text: "Jeremy, my dear! Look at you, a true diamond in the rough. Today, we shall transform that gentlemanly spirit into the radiant lady you were always meant to be.This exquisite lace top, with its delicate frills, will dance around your form, creating a most charming silhouette.And fret not a single bit about your chest, for femininity comes in all shapes and sizes.Now, this cunning little girdle here will work wonders, nipping in your waist and emphasizing those delightful hips of yours. ",
+                button: [
+                    { chatID: 38, text: "...", callback: "xdress3" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "martha",
+                text: "Kareem, that simply divine shade of purple! It absolutely accentuates your most charming legs, wouldn't you agree? A touch of boldness is just the ticket to draw out the marvelous woman I know resides within you. Remember, darling, confidence is the most exquisite accessory one can possess. Now, go forth and blossom, my dear. I can't wait to witness the truly remarkable woman you'll become.",
+                button: [
+                    { chatID: 39, text: "...", callback: "xdress4" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "martha",
+                text: "Oh, Martin, my dear!  You simply must be the most delightful transformation we've ever had the pleasure of witnessing.  When you first arrived, a gruff little fellow indeed, wouldn't you agree? But look at you now, a positively charming and wonderful lady!  My heart simply brims with pride for all the progress you've made. Truly, a triumph!",
+                button: [
+                    { chatID: 40, text: "...", callback: "xdress5" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "martha",
+                text: "Ah, Philbert, there you are. My most... challenging pupil. Today, I've selected a rather unassuming ensemble for your transformation. A long dress, wouldn't you know, perfect for keeping those... exuberant tendencies nicely under wraps. Now, do try to see if we can cultivate a touch of decorum, shall we?",
+                button: [
+                    { chatID: 45, text: "...", callback: "xdress10" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "martha",
+                text: "Ah, Sporty, this simply darling ensemble will perfectly capture your inherent femininity.It allows for the utmost comfort and mobility, ensuring you can continue your active pursuits without a moment's worry.  Imagine, gracefully gliding through your day, a vision of both elegance and practicality. Now, wouldn't that be simply splendid?",
+                button: [
+                    { chatID: 42, text: "...", callback: "xdress7" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "martha",
+                text: "My, my, how delightful to meet Sinéad!  What a charming name, indeed. It suits her so much better, wouldn't you agree? I remember when dear Thomas first arrived, a quiet little bookworm, nose always buried in a tome. One couldn't help but wonder if she'd ever blossom. But blossom she has! Look at her now, Sinéad, radiant and beautiful. It's truly heartwarming to see such a transformation. Quite a testament to finding one's true self, wouldn't you say?",
+                button: [
+                    { chatID: 43, text: "...", callback: "xdress8" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "martha",
+                text: "My, my, isn't Trixy a vision? Formerly Timothy, you see. Quite the transformation, wouldn't you agree? Our little scientific marvel, the transformation pill, has done wonders, wouldn't you say? A touch of science to bring out the true you, the radiant woman just waiting to blossom. Just a little pill, and your inner beauty can finally take center stage.  ",
+                button: [
+                    { chatID: 44, text: "...", callback: "xdress9" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "martha",
+                text: "Finally our favorite pupil, " + sc.n("me") + ". Missy has personally chosen this outfit " +
+                    "to accentuate what she calls 'Her slutty desires to be impaled by every cock in the room.' " +
+                    "Her exposed midriff displays her toned figure, low cut top displays her femininity, " +
+                    "and short skirt signals that she is ready for breeding. Now everyone return to the waiting room. " +
+                    "Your next selection of classes await. I'm so excited to see you take the next step! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "xdressEnd" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "martha",
+                text: "Here's " + sc.n("ralph") + ". *sigh* ",
+                button: [
+                    { chatID: 41, text: "...", callback: "xdress6" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "thinking",
+                text: "I'm just going to take a nap before I have to go to the club since it looks " +
+                    "like I'll be up all night. ",
+                button: [
+                    { chatID: 47, text: "[Wake up and go to the club]", callback: "club0" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "me",
+                text: "Hi Mr. Rex I'm here to...",
+                button: [
+                    { chatID: 48, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "!rex",
+                text: "One sec. Hey tits! Careful with those glasses. If you break another glass " +
+                    "tonight I'm going to have to punish you in my office. Now hurry up and finish cleaning " +
+                    "up. You're not getting overtime for being lazy. ",
+                button: [
+                    { chatID: 49, text: "...", callback: "club1" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "!rex",
+                text: "Let me take you to the dance floor where that piece of shit has been doing his " +
+                    "thing.",
+                button: [
+                    { chatID: 50, text: "ok", callback: "club2" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "!rex",
+                text: "I had that dumb waitress, tits, put this table here that you can hide under. " +
+                    "Don't fuck this up. I fucking sick of ordering the busboy to clean up shit off " +
+                    "my floor. Plus it's bad for business. It needs to stop tonight. ok?",
+                button: [
+                    { chatID: 51, text: "I'll catch him tonight! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "!rex",
+                text: "Good. Now get under that table and don't fuck this up. ",
+                button: [
+                    { chatID: 52, text: "Yes sir. ", callback: "club3" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "thinking",
+                text: "It's so cramped in here. Hopefully he comes quickly so I don't have to spen " +
+                    "the entire night squatting under this table. Oh it's the waitress. She's so hot! " +
+                    "hopefully it's her so I can get done with this case. ",
+                button: [
+                    { chatID: 53, text: "...", callback: "club4" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "thinking",
+                text: "Not that is a tight pussy! I can smell her musky scent. So hot! I want to " +
+                    "bury my face in that pussy. I wonder what she would do if I reached out and " +
+                    "touched it. That's stupid. She'll totally get pissed. But she didn't seem to get " +
+                    "mad when Mr. Rex called her tits. Maybe she's down. I shouldn't though. But she " +
+                    "does seem like a slut. ",
+                button: [
+                    { chatID: 59, text: "Just do your job ", callback: "club6" },
+                    { chatID: 54, text: "Touch her pussy with your finger. ", callback: "club5_a1" }
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "thinking",
+                text: "It's so warm and moist. Oh. She just moaned. She's totally into it. " +
+                    "I wonder if she'll let me slide down her shorts and see her pussy...",
+                button: [
+                    { chatID: 55, text: "Slide down her shorts", callback: "club5_a2" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "thinking",
+                text: "Holy shit! She let me take down her shorts and she's not wearing panties! " +
+                    "Fuck she's dripping wet. Fuck I have to taste her pussy.",
+                button: [
+                    { chatID: 56, text: "[Eat her pussy]", callback: "club5_a3" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "thinking",
+                text: "Fuck yeah! I knew some girls were sluts, but I never knew I would be face " +
+                    "deep in one! I love this girl!",
+                button: [
+                    { chatID: 57, text: "...", callback: "club5_a4" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "!rex",
+                text: "What the FUCK!!!",
+                button: [
+                    { chatID: 58, text: "huh?", callback: "club5_a5" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "!rex",
+                text: "The Mad Pooper stuck again! Tits, clean this shit up. And you PI Punk! " +
+                    "Get the hell out of my club 'cause you're fucking fired. ",
+                button: [
+                    { chatID: -1, text: "Aw crap. Missy's going to be pissed. ", callback: "club5_badEnd" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "thinking",
+                text: "I'm not going to grab her pussy. I'm not that kind of guy. But I can still " +
+                    "smell her pussy. Those shorts must be holding all the sweat and pussy juice " +
+                    "from working all night. I really should have tried to finger her. Oh well...",
+                button: [
+                    { chatID: 60, text: "[Wait...]", callback: "club7" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "thinking",
+                text: "Holy crap. Someone's walking in. I just need to take a picture really quick.",
+                button: [
+                    { chatID: 61, text: "[Take picture]", callback: "club8" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "thinking",
+                text: "Shit he moved! Crap I forgot to take off the camera sound effect. Crap crap crap!",
+                button: [
+                    { chatID: 62, text: "[Chase after him]", callback: "club9" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "thinking",
+                text: "Damn! He's fast. Fuck. Hopefully there's enough here to figure out who he " +
+                    "is. I'll send this to Missy and call it a night. ",
+                button: [
+                    { chatID: -1, text: "[Send picture to Missy and go home]", callback: "club_end" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "me",
+                text: "I uh... don't suppose you two could teach me stuff?",
+                button: [
+                    { chatID: 64, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "lola",
+                text: "Stuff?",
+                button: [
+                    { chatID: 65, text: "Yeah.. you know. I know you two like...", callback: "" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "eva",
+                text: "Oh hahahaha! I know what she wants! You want to dyke out with us don't you? " +
+                    "What do you think " + sc.n("lola") + ", does she want to learn how to be a girl " +
+                    "or get a taste of our girl dicks? ",
+                button: [
+                    { chatID: 66, text: "oh. uhhh. yeah", callback: "" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "lola",
+                text: "Oh. huh. I guess we're all girls so it's ok. Unless you mean you just want to " +
+                    "talk about makeup and boys. Then that's ok too. I know being a girl is new so " +
+                    "we'll leave it up to you. ",
+                button: [
+                    { chatID: -1, text: "Oh cool. Ok", callback: "evalolateachme1" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "lola",
+                text: "I totally love your hair. It's so soft and smooth. I swear new girls have the " +
+                    "best hair without even trying. You know brushing your hair makes it grow faster. ",
+                button: [
+                    { chatID: 68, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "eva",
+                text: "Awww. I guess even perverts make pretty girls! ",
+                button: [
+                    { chatID: -1, text: "That's why you're so hot!", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "lola",
+                text: "I can't look like a clown, maybe should practice on " + sc.n("eva") + ". " +
+                    "Besides she owes me one for helping her pass Introduction to Nutrition 101. ",
+                button: [
+                    { chatID: 70, text: "I'm offended", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "eva",
+                text: "It's cool. But you're going to owe me some study time with Introduction " +
+                    "to Communications. Also I'm going to take my shirt off. Can't have your sloppy makeup " +
+                    "skills getting my shirt all dirty. Makeup can be a bitch to get out. ",
+                button: [
+                    { chatID: 71, text: "Oh sweet! I get to practice! ", callback: "teachMakeup" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "eva",
+                text: "Ugh. I look like a clown and a stripper got in a head on crash and smashed " +
+                    "their faces together. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "eva",
+                text: "I taught " + sc.n("lola") + " everything she knows about kissing! ",
+                button: [
+                    { chatID: 73, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "lola",
+                text: "She did. I do love the french kissing, but only when I'm all worked up, " +
+                    "otherwise it's kind gross. So who do you want to practice kissing with? ",
+                button: [
+                    { chatID: -1, text: sc.n("lola"), callback: "teachLolaKiss" },
+                    { chatID: -1, text: sc.n("eva"), callback: "teachEvaKiss" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "lola",
+                text: "MMmmm the pefect amout of tongue. You're really a great kisser you know.",
+                button: [
+                    { chatID: -1, text: "MMmmmMMmm", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "eva",
+                text: "Sometimes I think you're just this pervert that is trying to sneak into the " +
+                    "girls locker room, but sometimes I think you're a girl, like the way you kiss. " +
+                    "It's so feminine, like " + sc.n("lola") + ". ",
+                button: [
+                    { chatID: -1, text: "MMmmMMmm", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "eva",
+                text: "Should we tell her?",
+                button: [
+                    { chatID: 77, text: "hmmm?", callback: "" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "lola",
+                text: "Yeah! Totally. I got her, a new costume! ",
+                button: [
+                    { chatID: 78, text: "Got what? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "eva",
+                text: "Really? You are too nice. I would have made her play in her panties, but I'm " +
+                    "totally excited to see what you got! ",
+                button: [
+                    { chatID: 79, text: "What!", callback: "" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "lola",
+                text: "I couldn't let her be the only one not dressed up. It's might be a little much, " +
+                    "but I think she'll like it. The pink really fits her. ",
+                button: [
+                    { chatID: 80, text: "GOT ME WHAT?!?!?!", callback: "el_sex0" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "eva",
+                text: "Our practice sex clothes dummy! Now put on the clothes " + sc.n("lola") +
+                    " got for you! ",
+                button: [
+                    { chatID: 81, text: "!", callback: "el_sex1" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "thinking",
+                text: "Holy crap! I'm so giddy like a school girl! This is the best! ",
+                button: [
+                    { chatID: 82, text: "!", callback: "" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "me",
+                text: "So why do I have a strap on?",
+                button: [
+                    { chatID: 83, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "lola",
+                text: "Oh. Becuase you're a girl. Girl's don't have penises. ",
+                button: [
+                    { chatID: 84, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "eva",
+                text: "Also it's sex practice, not try and fuck us you pervert! " + sc.n("lola") +
+                    " and I started doing this when I lost my virginity. I was so scared and bad " +
+                    "at sex we promised each other we would help get better at sex and make it not " +
+                    "so scary. ",
+                button: [
+                    { chatID: 85, text: "Oh.", callback: "" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "lola",
+                text: "Yeah. She was a mess. Also I just like the purple dildo. I thought it would " +
+                    "look super cute on you! ",
+                button: [
+                    { chatID: -1, text: "Thanks! It does look cute on me. You're the best! ", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "eva",
+                text: "Sweet! We usually take turns. I'll blow " + sc.n("lola") + " first! ",
+                button: [
+                    { chatID: 87, text: "ok!", callback: "el_bj0" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "eva",
+                text: "She's so gentle with her dick. I wish guys were this nice when they put their " +
+                    "dicks in my mouth. Now " + sc.n("lola") + " it's your turn to blow " + sc.n("me") +
+                    ". You'll love her blow jobs. She's so caring when she sucks a dick. ",
+                button: [
+                    { chatID: 88, text: "sweet!", callback: "el_bj1" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "lola",
+                text: "lalalala  ",
+                button: [
+                    { chatID: 89, text: "What are you doing? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "lola",
+                text: "I was told it's sexy when a girl sings to your penis and licks the bottom. ",
+                button: [
+                    { chatID: -1, text: "Girl, just suck the penis", callback: "el_bj2" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "lola",
+                text: "Holy crap girl! You need to breathe! ",
+                button: [
+                    { chatID: 91, text: "...", callback: "el_bj3" },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "lola",
+                text: "How was that? When I swim I've been practicing holding my breathe. " +
+                    "Would that make you cum if you were a boy? ",
+                button: [
+                    { chatID: 92, text: "That would scare me! You don't just go deep, you have to move your head! ", callback: "el_bj4" },
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "eva",
+                text: "You like my penis? I wanted a bigger one, but " + sc.n("lola") + " said " +
+                    "no way in hell! Go on, show " + sc.n("lola") + " how to properly suck a cock! ",
+                button: [
+                    { chatID: 93, text: "MMmm yes!", callback: "el_bj5" },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "eva",
+                text: "Take notes " + sc.n("lola") + "! That's a real cock sucker! See how she " +
+                    "makes love to my strap on with her mouth! Wow! You're going to make some " +
+                    "boy really happy someday. Hehehehe!",
+                button: [
+                    { chatID: 94, text: "*sssllluuurrrppp*", callback: "el_bj6" },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "lola",
+                text: "Hehehe. You are cute when you suck on her penis. That was so much fun! ",
+                button: [
+                    { chatID: -1, text: "Yeahhhh ❤️❤️❤️", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "lola",
+                text: "Yeah! Let's get changed! ",
+                button: [
+                    { chatID: -1, text: "[Change]", callback: "evalolateachmechange" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "lola",
+                text: "Yeah. When it's just " + sc.n("eva") + " and I she always takes bottom " +
+                    "'cause she's so lazy!",
+                button: [
+                    { chatID: 97, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "eva",
+                text: "No. I get bottom becuase you try to thrust your hips into me and nearly broke " +
+                    "my nose! Also it like to grab and spread you butt. Hehe. ",
+                button: [
+                    { chatID: 98, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "lola",
+                text: "*ugh* I know. You also like to sneak attack my butthole with your finger. I " +
+                    "get the couch you two get to kneel!",
+                button: [
+                    { chatID: 99, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "eva",
+                text: "I get next! " + sc.n("me") + " you have to eat my pussy! ",
+                button: [
+                    { chatID: 100, text: "oh. Sweet!", callback: "el_twat0" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "thinking",
+                text: "I love how her ass is just out waiting to let me eat it. My " + sc.n("el") +
+                    "are the best! ",
+                button: [
+                    { chatID: -1, text: "Eat that pussy!", callback: "el_twat1" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "eva",
+                text: "Hahaha Oh my god! Sorry! Sometimes when I orgasm I squirt. Like really hard! ",
+                button: [
+                    { chatID: 102, text: "bluuuffffff", callback: "el_twat4" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "lola",
+                text: "Ehhhh. Let me get a towel and wipe your face. That's another reason why I " +
+                    "get to be on top when it's the two of us. Gives me a chance to move my head before " +
+                    "being covered in her piss. ",
+                button: [
+                    { chatID: 103, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "eva",
+                text: "*hrumph* I keep saying, it's not piss, it's cum! That's how I cum. I'm just a " +
+                    "squirter!!! dammit!",
+                button: [
+                    { chatID: -1, text: "...", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "eva",
+                text: "I'm not eating your ass! " + sc.n("lola") + " can do that. She's the one that " +
+                    "loves licking buttholes! You can eat my ass! ",
+                button: [
+                    { chatID: 105, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "lola",
+                text: "I wouldn't say I love it, but I it is nice to see if I can make you cum just " +
+                    "from licking your butthole. Makes me happy. But I don't mind eating " + sc.n("me") +
+                    "'s butthole. I'm pretty good at it! ",
+                button: [
+                    { chatID: 106, text: "...", callback: "el_asshole0" },
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "eva",
+                text: "Lick up doggy! Eat my butthole! I know you dream about this every night! ",
+                button: [
+                    { chatID: 107, text: "nom", callback: "el_asshole1" },
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "eva",
+                text: "MMmmm tickle my insides with your wet slimy tounge. I want to fart your saliva. ",
+                button: [
+                    { chatID: 108, text: "[Eat that asshole]", callback: "el_asshole2" },
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "eva",
+                text: "OOoooo I like that. You're a great ass eater! So how's it taste pervert?",
+                button: [
+                    { chatID: 109, text: "Hmmm. Like licking pennies", callback: "" },
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "lola",
+                text: "Ok. My turn! Spread those cheeks so I can bury my face in your butthole!!",
+                button: [
+                    { chatID: 110, text: "[Give " + sc.n("lola") + " a turn eating your ass]", callback: "el_asshole3" },
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "me",
+                text: "Eat up buttercup!",
+                button: [
+                    { chatID: 111, text: "...", callback: "el_asshole4" },
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "eva",
+                text: "Haha! Get in there! Really show her you know how to eat ass!",
+                button: [
+                    { chatID: 112, text: "*happy noises*", callback: "el_asshole5" },
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "me",
+                text: "*uuugghhhh* ...feels so good... ...push harder....  uhhhhh",
+                button: [
+                    { chatID: 113, text: "...", callback: "el_asshole6" },
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "eva",
+                text: "Hahaha! You came from getting your ass eaten! You are a slut!!!",
+                button: [
+                    { chatID: 114, text: "*content moaning*", callback: "el_asshole7" },
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "lola",
+                text: "I don't do anything half-assed. I whole ass everthing I do! ",
+                button: [
+                    { chatID: -1, text: "MMmMMmmmmm", callback: "evalolateachme" },
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "lola",
+                text: "*yawn* It's getting late. We're going to go to bed. ",
+                button: [
+                    { chatID: -1, text: "ok. ", callback: "leave11" },
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "lola",
+                text: "Called him. He's on his way. ",
+                button: [
+                    { chatID: 117, text: "Why are you already naked!", callback: "" },
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "lola",
+                text: "'cause he's just going to complain about my clothes again. So much easier to " +
+                    "just be naked when he's around. ",
+                button: [
+                    { chatID: 119, text: "oh. ", callback: "sissy0" },
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "lola",
+                text: "Called him. He's on his way. ",
+                button: [
+                    { chatID: 119, text: "Yea!", callback: "sissy0" },
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "chad",
+                text: "Fuck yeah! My best girl friend and her two " + sc.n("el") + "! All of you, " +
+                    "up on the bed. Face down ass up. I want to see what I'm working with! ",
+                button: [
+                    { chatID: 120, text: "*blush*", callback: "sissy1" },
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "chad",
+                text: "I do love choices. I know who I'm going to finish in, but not only do I " +
+                    "get to pick a girl, I get to pick a hole... So where should I stick my dick first? ",
+                button: [
+                    { chatID: 121, text: "*giddy noises*", callback: "sissy2" },
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "landlord",
+                text: "What the fuck! Why am I staring straight into the assholes of all three of my girls!!! " +
+                    "And who is this! I don't remember you coming into MY house!",
+                button: [
+                    { chatID: 122, text: "*gulp*", callback: "sissy3" },
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "chad",
+                text: "Hey lady. Relax. There's plenty of dick to go around. I'm " + sc.n("chad") +
+                    ". Good to meet 'cha. I can see you're sexually frustrated, but don't you worry " +
+                    "your pretty little head, I can help. Now you may think, how can one guy possbily " +
+                    "please four girls in the same night. But that's 'cause you haven't experienced my " +
+                    "dick yet. I'm going to give you the type " +
+                    "of orgasm you'll think about when you masturbate. ",
+                button: [
+                    { chatID: 123, text: "?", callback: "sissy4" },
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "landlord",
+                text: "YOU HAVE LOST YOUR GODDAMN MIND!!! Take your clothes and that dick and go to my " +
+                    "room! Right NOW! A bad boy like you needs to be punished!!!! Now go! You three " +
+                    "stay right here till I'm done so I can properly punish you all! ",
+                button: [
+                    { chatID: 124, text: "...", callback: "sissy5" },
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "lola",
+                text: "I am SO embarrased! Do you think she'll ground us? I can't get grounded, I have " +
+                    "a swim meet. Maybe we'll say he broke in and we got scared! ",
+                button: [
+                    { chatID: 125, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "eva",
+                text: "Hmmmmm. You know... She didn't kick him out; she brought him to her room. There's " +
+                    "no way she's spanking him. Why did she take him to her room? Do you think....",
+                button: [
+                    { chatID: 126, text: "Think what?", callback: "" },
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "eva",
+                text: "She's fucking him! She's fucking him right now! She just " +
+                    "took him to her room. ",
+                button: [
+                    { chatID: 127, text: "Hmmmm", callback: "" },
+                ]
+            },
+            {
+                chatID: 127,
+                speaker: "lola",
+                text: "That's crazy. She wouldn't do that! It's like you don't even know her.  ",
+                button: [
+                    { chatID: 128, text: "yeah", callback: "" },
+                ]
+            },
+            {
+                chatID: 128,
+                speaker: "eva",
+                text: "You are both idiots. I can prove it. I've heard her moans when " + sc.n("bigguy") +
+                    " is here. She can't control it. I bet if we listen to the door we'll hear her moans. " +
+                    "If there aren't any moans then you can both call me the idiot. C'mon let's go. I'll " +
+                    "prove it to you! ",
+                button: [
+                    { chatID: 129, text: "ok", callback: "sissy6" },
+                ]
+            },
+            {
+                chatID: 129,
+                speaker: "eva",
+                text: "*whispering* see I told ya! Come here. Listen to the door. I bet you can her " +
+                    "their thighs slapping. ",
+                button: [
+                    { chatID: 130, text: "...", callback: "sissy7" },
+                ]
+            },
+            {
+                chatID: 130,
+                speaker: "eva",
+                text: "*whispering* hehehe! They're totally are fucking! Shhhh. His grunts are changing. " +
+                    "He's totally going to cum. I know that grunt anywhere. ",
+                button: [
+                    { chatID: 131, text: "...", callback: "sissy8" },
+                ]
+            },
+            {
+                chatID: 131,
+                speaker: "lola",
+                text: "That's my boyfriend! He can't cum inside my " + sc.n("landlord") + " without me! " +
+                    "GRRRR!!!!!",
+                button: [
+                    { chatID: 132, text: "Shhh!!! Wait!", callback: "sissy9" },
+                ]
+            },
+            {
+                chatID: 132,
+                speaker: "lola",
+                text: "Are you having sex with my boyfriend!!!!",
+                button: [
+                    { chatID: -1, text: "....", callback: "sissy10" },
+                ]
+            },
+            {
+                chatID: 133,
+                speaker: "landlord",
+                text: "I don't suppose you'd believe me if I said no? Listen honey, I know this " +
+                    "looks bad, but really I couldn't resist. When you get to my age you need a large " +
+                    "penis to get off, and well... I saw it, and just had to have it. ",
+                button: [
+                    { chatID: 134, text: "....", callback: "" },
+                ]
+            },
+            {
+                chatID: 134,
+                speaker: "lola",
+                text: "That was MY penis, not yours! This is poop! I'm going to my room! I'm so done " +
+                    "with you both! Grrrr!",
+                button: [
+                    { chatID: 135, text: "....", callback: "sissy12" },
+                ]
+            },
+            {
+                chatID: 135,
+                speaker: "landlord",
+                text: "*sigh* You two kids should go too. Let me talk to this boy. See what I can do. " +
+                    "We'll talk tomorrow. ",
+                button: [
+                    { chatID: 136, text: "g'night", callback: "sissy13" },
+                ]
+            },
+            {
+                chatID: 136,
+                speaker: "thinking",
+                text: "Wow! I didn't think she would do something like that! I hope " + sc.n("lola") +
+                    " doesn't do anything crazy. Poor girl. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 137,
+                speaker: "landlord",
+                text: "I had a feeling you girls were on your way down. I'll call " + sc.n("bigguy") +
+                    " " + sc.n("lola") + " you give " + sc.n("chad") + " a call. ",
+                button: [
+                    { chatID: 138, text: "YES!", callback: "6some_0" },
+                ]
+            },
+            {
+                chatID: 138,
+                speaker: "chad",
+                text: "Fuck yeah! Oh shit I don't even know what I'm going to do!! How should we do " +
+                    "this? Me to top, all you licking my dick? Uhhhh",
+                button: [
+                    { chatID: 139, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 139,
+                speaker: "bigguy",
+                text: "Relax kid. Girls, get on the bed and bend over. We're going to fuck you all. ",
+                button: [
+                    { chatID: 140, text: "*giddy*", callback: "6some_1" },
+                ]
+            },
+            {
+                chatID: 140,
+                speaker: "bigguy",
+                text: "See kid, these girls were raised right. Presenting their holes for real men " +
+                    "like us to use. Pick a hole and fuck it. ",
+                button: [
+                    { chatID: -1, text: "*twitch*", callback: "6some_turn" },
+                ]
+            },
+            {
+                chatID: 141,
+                speaker: "chad",
+                text: "Isn't that beautiful! Four cream filled cum dumpsters! I guess it's true what " +
+                    "they say about that girls do follow after their " + sc.n("landlord") + ". ",
+                button: [
+                    { chatID: 142, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 142,
+                speaker: "bigguy",
+                text: "Ey kid. Also it's rude to call these girls cum dumpsters. I'm thirsty and tired. " +
+                    "It's time to go home kid. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "6som_End" },
+                ]
+            },
+        ];
+        if (cArray.length > chatID && chatID > -1)
+            return cArray[chatID];
+        else
+            return [];
+    }
 };

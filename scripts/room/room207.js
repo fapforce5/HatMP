@@ -47,6 +47,12 @@ room207.main = function () {
     if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
         sc.select("door_pink", "207_door/icon_fashion.webp", 0)
     }
+    else if (sissy.st[21].ach) {
+        if (sc.getMissionTask("martha", "sissy", 0).notStarted) {
+            sc.completeMissionTask("martha", "sissy", 0);
+            chat(7, 207);
+        }
+    }
 };
 
 room207.btnclick = function (name) {
@@ -195,6 +201,15 @@ room207.chat = function (chatID) {
                 "but if you really need in you have to prove to Missy you're a sissy.",
             button: [
                 { chatID: -1, text: "Oh. Thanks.", callback: "" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "thinking",
+            text: "Martha did invite us back to the school if we wanted sissy pills. I wonder if " +
+                "she's still here. I could go check in the sissy school. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

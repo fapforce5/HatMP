@@ -5,7 +5,11 @@ room26.main = function () {
 
     if (sc.getTimeline("landlord").thisRoom) {
         if (sc.getTimeline("bigguy").thisRoom) {
-            if (daily.get("bigguy")) {
+            if (sc.taskGetStep("lola", "sissy") === 12) {
+                nav.bg("26_livingRoom/bg_1.jpg");
+                chat(110, 26);
+            }
+            else if (daily.get("bigguy")) {
                 nav.bg("26_livingRoom/bg_1.jpg");
                 chat(27, 26);
             }
@@ -428,6 +432,12 @@ room26.btnclick = function (name) {
             char.settime(20, 2);
             chat(104, 26);
             break;
+        case "pills13":
+            nav.kill();
+            nav.bg("26_livingRoom/pills13.webp");
+            levels.oral(3, "f", "landlord");
+            chat(131, 26);
+            break;
         default:
             break;
     }
@@ -448,6 +458,27 @@ room26.chatcatch = function (callback) {
             case "q3":
             case "bussy1":
                 nav.bg("26_livingRoom/" + callback + ".jpg");
+                break;
+            case "pills1":
+            case "pills4":
+            case "pills5":
+            case "pills6":
+            case "pills7":
+            case "pills8":
+            case "pills9":
+            case "pills10":
+            case "pills11":
+            case "pills13":
+            case "pills14":
+                nav.bg("26_livingRoom/" + callback + ".webp");
+                break;
+            case "pills3":
+            case "girl_brush":
+                nav.kill();
+                nav.bg("26_livingRoom/" + callback + ".webp");
+                break;
+            case "pills15":
+                nav.bg("26_livingRoom/" + callback + "_" + gender.pronoun("f") + ".webp");
                 break;
             case "f6":
                 if (cl.c.chastity !== null) {
@@ -712,6 +743,112 @@ room26.chatcatch = function (callback) {
                 break;
             case "bettergirl":
 
+                break;
+            case "pills0":
+                nav.killall();
+                nav.bg("26_livingRoom/pills0.webp");
+                inv.use("sleepingpills");
+                break;
+            case "pills12":
+                nav.bg("26_livingRoom/pills12.webp");
+                nav.button({
+                    "type": "tongue",
+                    "name": "pills13",
+                    "left": 1695,
+                    "top": 920,
+                    "width": 225,
+                    "height": 75,
+                    "image": "1001_rand/lick.png"
+                }, 26);
+                break;
+            case "room16":
+                char.room(16);
+                break;
+            case "pills2":
+                nav.bg("13_sisterRoom/rooml.jpg", "13_sisterRoom/roomNightl.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "lola",
+                    "left": 1449,
+                    "top": 260,
+                    "width": 215,
+                    "height": 820,
+                    "image": "13_sisterRoom/13_lola_pj.png"
+                }, 26);
+                nav.button({
+                    "type": "img",
+                    "name": "eva",
+                    "left": 760,
+                    "top": 295,
+                    "width": 291,
+                    "height": 785,
+                    "image": "13_sisterRoom/13_eva_pj.png"
+                }, 26);
+                break;
+            case "pillsEnd":
+                char.settime(23, 15);
+                sc.completeMissionTask("lola", "sissy", 12);
+                char.room(26);
+                break;
+            case "girl_brush0":
+                if (!daily.get("girl_brush26")) {
+                    daily.set("girl_brush26")
+                    cl.c.lastHairCut += 10;
+                    levels.mod("xdress", 20);
+                }
+                char.addtime(30);
+                char.room(26);
+                break;
+            case "girl_tampon0":
+                nav.kill();
+                cl.c.buttplug = null;
+                cl.display();
+                nav.bg("26_livingRoom/girl_tampon0" + (cl.c.chastity === null ? "_n" : "_c") + ".webp");
+                break;
+            case "girl_tampon1":
+                nav.kill();
+                cl.c.buttplug = "t";
+                cl.display();
+                if (!daily.get("girl_tampon26")) {
+                    levels.mod("xdress", 15);
+                    daily.set("girl_tampon26");
+                }
+                char.addtime(30);
+                nav.bg("26_livingRoom/girl_tampon1" + (cl.c.chastity === null ? "_n" : "_c") + ".webp");
+                break;
+            case "girl_boy0":
+                if (!daily.get("girl_boy26")) {
+                    levels.mod("xdress", 15);
+                    daily.set("girl_boy26");
+                }
+                char.addtime(30);
+                char.room(26);
+                break;
+            case "girl_boobs":
+                nav.kill();
+                nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
+                if (!daily.get("girl_boobs26")) {
+                    levels.mod("xdress", 15);
+                    daily.set("girl_boobs26");
+                }
+                char.addtime(30);
+                nav.button({
+                    "type": "img",
+                    "name": "boobs",
+                    "left": 750,
+                    "top": 0,
+                    "width": 710,
+                    "height": 1080,
+                    "image": "26_livingRoom/girl_boobs.webp"
+                }, 26);
+                break;
+            case "girl_boobs0":
+                if (!daily.get("girl_boobs26")) {
+                    levels.mod("xdress", 15);
+                    daily.set("girl_boobs26");
+                }
+                char.addtime(30);
+                char.room(26);
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -1766,7 +1903,385 @@ room26.chat = function (chatID) {
                 speaker: "me",
                 text: "Can you help me be a better girl?",
                 button: [
-                    { chatID: -1, text: "...", callback: "bettergirl" },
+                    { chatID: 140, text: "...", callback: "bettergirl" },
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "thinking",
+                text: "Should I offer them some drinks so I can put " + sc.n("lola") + "'s " +
+                    "sleeping pills in them? ",
+                button: [
+                    { chatID: 111, text: "Offer them a drink", callback: "" },
+                    { chatID: -1, text: "Naw. I'll just leave them alone. ", callback: "room16" },
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "me",
+                text: "You look like you could use some more wine. Can I get you a glass? ",
+                button: [
+                    { chatID: 112, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "landlord",
+                text: "Oh. That would be lovely.  ",
+                button: [
+                    { chatID: 113, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "bigguy",
+                text: "Wine is for girls and faggots. Get me a beer. It's in the fridge. ",
+                button: [
+                    { chatID: 114, text: "Oh, of course. ", callback: "pills0" },
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "thinking",
+                text: "It really is too far, but god damn do I want to see " + sc.n("lola") +
+                    " pull this off. I just hope she can handle the eventual fall out. ",
+                button: [
+                    { chatID: 115, text: "...", callback: "pills1" },
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "landlord",
+                text: "Thank you honey, now please go play quietly in your room. ",
+                button: [
+                    { chatID: 116, text: "Yes " + sc.n("landlord"), callback: "" },
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "thinking",
+                text: "I guess it's too late to turn back now, I better just " + sc.n("lola") +
+                    " it's begun and let her take it. Plus I kinda want to see crazy " + sc.n("lola") +
+                    " come out. ",
+                button: [
+                    { chatID: 117, text: "...", callback: "pills2" },
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "lola",
+                text: "Hey what's up?",
+                button: [
+                    { chatID: 118, text: "It's done. They're drinking the sleeping pills now. ", callback: "pills3" },
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "lola",
+                text: "Perfect. Now to get my revenge! Come, help me move them into position. ",
+                button: [
+                    { chatID: 119, text: "Awww I thought I was only giving them the pills. You didn't say anything about this. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "lola",
+                text: "You're done when I say you're done. Now come!",
+                button: [
+                    { chatID: 120, text: "Ok evil " + sc.n("lola") + ". ", callback: "pills4" },
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "lola",
+                text: "All tied up and ready! She's going to learn to never fuck my boyfriend " +
+                    "again! I'm going to call " + sc.n("chad") + " so he knows his isn't the " +
+                    "only penis for me, then wake these two up.  ",
+                button: [
+                    { chatID: 121, text: "...", callback: "pills5" },
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "lola",
+                text: "Finally you two are awake. " + sc.n("landlord") + " I love you very much, " +
+                    "but you can't go sleeping with my boyfriend again. And to make sure you know " +
+                    "how angry I am, I'm going to have sex with your boyfriend. ",
+                button: [
+                    { chatID: 122, text: "...", callback: "pills6" },
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "landlord",
+                text: "I said I was sorry! You're taking this too far again! You always take it " +
+                    "too far! Now untie us and we can forget this ever happend! Untie me now! ",
+                button: [
+                    { chatID: 123, text: "...", callback: "pills7" },
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "lola",
+                text: "I'm not untying anyone till *grunt* " + sc.n("bigguy") + " finished! " +
+                    "I had no idea penises could get so big. There's no way I can go further *ugh* than " +
+                    "this! It's totally hitting my right in my cervix!!",
+                button: [
+                    { chatID: 124, text: "...", callback: "pills8" },
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "landlord",
+                text: "I said get off him or all three of you are in big big trouble!!!",
+                button: [
+                    { chatID: 125, text: "...", callback: "pills7" },
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "eva",
+                text: "Hey!!! What am I in trouble for!! I'm not doing anything!!",
+                button: [
+                    { chatID: 126, text: "me neither", callback: "pills9" },
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "chad",
+                text: "What the fuck? " + sc.n("lola") + " what the fuck are you doing! ",
+                button: [
+                    { chatID: 127, text: "...", callback: "pills7" },
+                ]
+            },
+            {
+                chatID: 127,
+                speaker: "eva",
+                text: "Relax " + sc.n("chad") + ". She thinks she's getting back at you and " +
+                    sc.n("landlord") + " for fucking each other behind her back. Just hang back " +
+                    "here with us till she's done. No use getting mad, you did fuck her " + 
+                    sc.n("landlord") + ". ",
+                button: [
+                    { chatID: 128, text: "Yeah!", callback: "pills8" },
+                ]
+            },
+            {
+                chatID: 128,
+                speaker: "chad",
+                text: "That's so hot! Fuck I'm getting so hard right now! I tottally need to " +
+                    "put my dick in something. You can be something, " + sc.n("eva") +
+                    ". Bend over I'm make sure you cum too! like right now! ",
+                button: [
+                    { chatID: 129, text: "...", callback: "pills10" },
+                ]
+            },
+            {
+                chatID: 129,
+                speaker: "eva",
+                text: "Fuck it. I'm dripping wet and already in trouble. Pound the fuck out of " +
+                    "my pussy. No anal! 'k? ",
+                button: [
+                    { chatID: 130, text: "...", callback: "pills11" },
+                ]
+            },
+            {
+                chatID: 130,
+                speaker: "landlord",
+                text: "You two have lost your minds!! *ugh* Fuck! Now I'm horny too! " + sc.n("me") +
+                    " get over here and eat my pussy! I don't care anymore. I just  need to cum!",
+                button: [
+                    { chatID: -1, text: "Oh. sweet!!", callback: "pills12" },
+                ]
+            },
+            {
+                chatID: 131,
+                speaker: "bigguy",
+                text: "Oh crap I can't hold back anymore! Get off or I'm going to cum in your " +
+                    "tight little pussy!",
+                button: [
+                    { chatID: 132, text: "nom nom nom", callback: "pills14" },
+                ]
+            },
+            {
+                chatID: 132,
+                speaker: "landlord",
+                text: "*sigh* " + sc.n("me") + " you can stop eating my pussy. I've already cum " +
+                    "twice. We're all going to sit down and talk about this. ",
+                button: [
+                    { chatID: 133, text: "slurp... huh?", callback: "pills15" },
+                ]
+            },
+            {
+                chatID: 133,
+                speaker: "landlord",
+                text: "Now look at what you've done " + sc.n("lola") + ". It smells like pussy and " +
+                    "and cum in here. What do you have to say for yourself? ",
+                button: [
+                    { chatID: 134, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 134,
+                speaker: "lola",
+                text: "*meekly* My vagina hurts. ",
+                button: [
+                    { chatID: 135, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 135,
+                speaker: "eva",
+                text: "Hahaha! I told you this was a bad idea. ",
+                button: [
+                    { chatID: 136, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 136,
+                speaker: "chad",
+                text: "Totally no way! This was the best idea! That. Was. Awesome! I so want " +
+                    "to do it again, but I get " + sc.n("lola") + " next! No wait, I get... uhh " +
+                    "no wait! I want to fuck you all. Except you big guy. You can fuck them too though. ",
+                button: [
+                    { chatID: 137, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 137,
+                speaker: "bigguy",
+                text: "It's like I told you babe. Your three girls are just like you. They'll do anything " +
+                    "for the cock. You can't control them your entire life, it's time you accept they are " +
+                    "all just like you. It's time to stop fighting it. Plus they'll be safe if we do this at " +
+                    "home. You know how " + sc.n("eva") + " can get into trouble. ",
+                button: [
+                    { chatID: 138, text: "huh?", callback: "" },
+                ]
+            },
+            {
+                chatID: 138,
+                speaker: "landlord",
+                text: "*sigh* You may be right " + sc.n("bigguy") + ". I do admit it was a little " +
+                    "fun, but next time don't tie me up. My wrists still hurt. Also I get a dick in " +
+                    "me too. " + sc.n("me") + " your tongue is amazing, but dick beats tongue all day. " +
+                    "Since my little " + sc.n("lola") + " started this all we'll only do this if she " +
+                    "comes to me and asks. Now it's late. " + sc.n("chad") + " go home. Everyone else " +
+                    "go to your room and get some sleep. ",
+                button: [
+                    { chatID: 139, text: "ok g'night", callback: "pillsEnd" },
+                ]
+            },
+            {
+                chatID: 139,
+                speaker: "thinking",
+                text: "I don't know what I expected, but it wasn't that! I wonder if I can get a dick " +
+                    "in me too? Hmmm. I know " + sc.n("lola") + " won't ask on her own. I'll have to " +
+                    "ask her to ask if I ever want to do that again!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 140,
+                speaker: "landlord",
+                text: "Of course honey. What would you like to do? ",
+                button: [
+                    { chatID: 141, text: "Brush my hair", callback: "girl_brush" },
+                    { chatID: 142, text: "Teach me about tampons", callback: "" },
+                    { chatID: 145, text: "Tell me about boys", callback: "" },
+                    { chatID: 147, text: "Skin care", callback: "" },
+                    { chatID: 148, text: "Perky breasts", callback: "girl_boobs" },
+                ]
+            },
+            {
+                chatID: 141,
+                speaker: "landlord",
+                text: "You do have such pretty hair. You know back in my day big hair was everything; " +
+                    "the bigger the better. Now it's a full head of pretty hair that really turns the " +
+                    "boy's heads. ",
+                button: [
+                    { chatID: -1, text: "Thank's " + sc.n("landlord") + ". You're the best. ", callback: "girl_brush0" },
+                ]
+            },
+            {
+                chatID: 142,
+                speaker: "landlord",
+                text: "Oh my. I guess my little girl, is becoming a big girl now. You see when a girl " +
+                    "gets older, there's changes that happen to her body. One of those changes, besides " +
+                    "growing breasts, is your body will want to have babies. So you body will drop and egg " +
+                    "into your uterine lining where it will wait for a man's sperm to find it's way to that " +
+                    "egg and fertalize it and make that baby. Now, usually, if that egg hasn't been fertalized " +
+                    "within the month you body will flush the egg and uterine lining which makes the red discharge " +
+                    "that may appear in your panties. It really is a normal part of being a girl. Now lay back " +
+                    "and I'll show about tampons. ",
+                button: [
+                    { chatID: 143, text: "Ok!", callback: "girl_tampon0" },
+                ]
+            },
+            {
+                chatID: 143,
+                speaker: "landlord",
+                text: "There's lots of different tampons, I use ones with a plastic applicator. " +
+                    "It makes it easier to insert the tampon into your vaginal opening. Now we'll " +
+                    "just slide the applicator into your vagina like so...",
+                button: [
+                    { chatID: 144, text: "Oooo", callback: "girl_tampon1" },
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "landlord",
+                text: "Now when your body discharges the uterine lining the tampon will stop " +
+                    "it from leaking into your panties and making a big mess. Now be sure not " +
+                    "to wear it for too long or you'll have problems. Now run along sweetie. I've " +
+                    "got to get back to my shows. ",
+                button: [
+                    { chatID: -1, text: "Oooo", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "landlord",
+                text: "Oh honey. I'm guessing you're asking because some boy has caught your eye. " +
+                    "Now you need to know that the way a girl likes a boy is different than the way " +
+                    "a boy likes a girl. ",
+                button: [
+                    { chatID: 146, text: "How so?", callback: "" },
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "landlord",
+                text: "So when a girl, like us, fall for a boy we see a future of creating babies, and " +
+                    "building a loving family. Now most boys only think about spreading their seed to as many " +
+                    "girls as they can. When you date a boy, you need to be careful that he's not just using " +
+                    "you to spread his seed. You need to make him wait to make sure he really likes you the " +
+                    "same way you like him. That way you know you're not just another notch on his bedpost. ",
+                button: [
+                    { chatID: -1, text: "Hehe ok.", callback: "girl_boy0" },
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "landlord",
+                text: "Skin care is one of the best thing a girl can do for herself. Becuase we " +
+                    "wear makup we need to take care of our skin, becuase the makeup can block our " +
+                    "pores. Also shaving and waxing can do a number on the skin. Be sure to use " +
+                    "lotion after every shave and shower, clean and exfoliate your face and body, " +   
+                    "and don't get too much sun. It makes you wrinkle and look all old. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "girl_boy0" },
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "landlord",
+                text: "Perky breasts are a gift to the young and small breasted. Now if you look at " +
+                    "my breats, they're no longer perky, but they are big and soft. Men may say " +
+                    "they have a preference, but really they just want some boobs in their face. " +
+                    "Don't worry about how anyone else sees your brests, just as long as you're happy " +
+                    "with them. ",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "girl_boobs0" },
                 ]
             },
         ];

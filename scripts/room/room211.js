@@ -5,7 +5,7 @@ room211.main = function () {
         nav.bg("211_meeting/bg_empty.jpg");
         nav.button({
             "type": "btn",
-            "name": "elevator",
+            "name": "elevator-x",
             "left": 1486,
             "top": 345,
             "width": 130,
@@ -14,6 +14,12 @@ room211.main = function () {
             "title": "Elevator"
         }, 211);
         nav.buildnav([207, 0]);
+        if (sissy.st[21].ach) {
+            if (sc.getMissionTask("martha", "sissy", 1).notStarted) {
+                sc.completeMissionTask("martha", "sissy", 1);
+                chat(38, 211);
+            }
+        }
         return;
     }
     if (gv.get("sissySchoolClass") === "finalx" && future.get("sissyfinal") > -1) {
@@ -175,6 +181,44 @@ room211.btnclick = function (name) {
     switch (name) {
         case "classSelect":
             char.room(210);
+            break;
+        case "elevator-x":
+            nav.bg("211_meeting/elevator.jpg");
+            $.each(["button_penthouse", "button_white", "button_red", "button_pink", "button_lobby", "button_black"], function (i, v) {
+                nav.button({
+                    "type": "btn",
+                    "name": v + "_x",
+                    "left": 835,
+                    "top": 201 + (i * 101),
+                    "width": 410,
+                    "height": 80,
+                    "image": "211_meeting/" + v + ".png"
+                }, 211);
+            });
+            break;
+        case "button_white_x":
+            g.pass = "white";
+            char.room(187);
+            break;
+        case "button_red_x":
+            g.pass = "red";
+            char.room(187);
+            break;
+        case "button_pink_x":
+            g.pass = "pink";
+            char.room(187);
+            break;
+        case "button_lobby_x":
+            char.room(211);
+            break;
+        case "button_black_x":
+            if (!daily.get("button_black_x")) {
+                daily.set("button_black_x")
+                char.room(172);
+            }
+            else {
+                chat(39, 211);
+            }
             break;
         case "elevator":
             var sissySchoolClass = gv.get("sissySchoolClass");
@@ -874,6 +918,23 @@ room211.chat = function (chatID) {
                     "your sissy final. ",
                 button: [
                     { chatID: -1, text: "Thanks ma'am!", callback: "room203" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "thinking",
+                text: "So empty in here. If I want to visit Martha I should go into the elevator " +
+                    "on the right and go to the white floor. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "thinking",
+                text: "I think that kind of punishment once a day is more than enough!!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
         ];

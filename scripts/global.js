@@ -222,6 +222,7 @@ g.rooms = [
     { roomID: 184, name: "My Powder room", image: "184_bathroom/bg.webp", nightImage: "184_bathroom/bg.webp", houseID: 203, btn: "roomBtn_184.png" },
     { roomID: 185, name: "My Whore Room", image: "185_bedroom/bg.webp", nightImage: "185_bedroom/bg.webp", houseID: 203, btn: "roomBtn_185.png" },
     { roomID: 186, name: "Talent Show", image: "186_talenshow/bg.webp", nightImage: "186_talenshow/bg.webp", houseID: 203, btn: "roomBtn_186.png" },
+    { roomID: 187, name: "Sissy School", image: "186_talenshow/bg.webp", nightImage: "186_talenshow/bg.webp", houseID: 203, btn: "roomBtn_186.png" },
 
     { roomID: 193, name: "Missy", image: "193_afternoon/cop0.webp", nightImage: "193_afternoon/cop0.webp", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 195, name: "Skill", image: "200_frontOffice/bg.jpg", nightImage: "200_frontOffice/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },

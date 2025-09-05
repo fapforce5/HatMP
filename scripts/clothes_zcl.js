@@ -34,7 +34,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         displayCock = false;
     else if (spec.indexOf("panties") > -1 || spec.indexOf("clothes") > -1) {
         if (cl.c.panties !== null || cl.c.swimsuit !== null || cl.c.pj !== null)
-        displayCock = false;
+            displayCock = false;
     }
     if (displayCock) {
         if (spec.indexOf("clothes") > -1 || spec.indexOf("pants") > -1) {
@@ -59,7 +59,19 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
         let cumdrip = cl.cumdrip();
         if (!dback && cumdrip)
             zcl.displayMainSub("cumdrip_front.gif", top, left, ratio);
+        
         zcl.displayMainSub("leg_" + cl.c.leg + (dback ? "_back" : "") + ".png", top, left, ratio);
+        if (cl.c.buttplug !== null && dback) {
+            let notWearingPanties = (cl.c.panties === "inv" || cl.c.panties === null);
+            if (notWearingPanties || cl.c.swimsuit === null || cl.c.pj === null) {
+                $.each(cl.buttplug, function (i, v) {
+                    if (v.name === cl.c.buttplug && cl.c.leg === v.leg) {
+                        zcl.displayMainSub(v.image, top, left, ratio);
+                        return false;
+                    }
+                });
+            }
+        }
         if (dback && cumdrip)
             zcl.displayMainSub("cumdrip_back.gif", top, left, ratio);
     }

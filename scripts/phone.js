@@ -117,6 +117,7 @@ phone.saveMenu = function () {
     let minVersion = 21;
     let mostRecent = new Date(1999, 1, 1);
     let mostRecentRow = null;
+    let saveByOrder = new Array();
     phone.clear(false);
     nav.button({
         "type": "zimg",
@@ -134,9 +135,11 @@ phone.saveMenu = function () {
         var cookieName = 'HatMP_' + i;
         const top = 180 + (i * 60);
         if (localStorage.getItem(cookieName) !== null) {
+            
             var initTemp = JSON.parse(localStorage[cookieName]);
             if (initTemp.saveDt !== undefined && i < 10) {
                 savedt = new Date(initTemp.saveDt);
+                saveByOrder.push({ id: i, dt: savedt, order: 0 });
                 if (savedt > newestSave) {
                     newestSave = savedt;
                     newestSaveId = i;
@@ -175,7 +178,6 @@ phone.saveMenu = function () {
                     text: initTemp.savename
                 }, 1);
             }
-           
 
             if (i !== 9) {
                 nav.button({
@@ -223,6 +225,12 @@ phone.saveMenu = function () {
                 "image": "999_phone/save.png",
             }, 9999);
         }
+    }
+
+    saveByOrder.sort((a, b) => b.dt.getTime() - a.dt.getTime());
+    for (i = 0; i < saveByOrder.length; i++) {
+        $("div[data-name='phone_save_load_name_" + saveByOrder[i].id + "']")
+            .prepend('<span style="font-size:' + (15 * g.ratio) + 'px;">' + (i + 1) + '. </span>');
     }
     if (newestSaveId > -1) {
         $("div[data-name='phone_save_load_name_" + newestSaveId + "']").css({ "color": "#ffc7f6" });
