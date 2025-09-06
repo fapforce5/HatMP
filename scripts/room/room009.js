@@ -389,7 +389,8 @@ room9.btnclick = function (name) {
         case "pfuta":
         case "pSissy":
             nav.killall();
-            gv.mod("arousal", 50);
+            g.internal = name;
+            
             nav.button({
                 "type": "img",
                 "name": "pornbg",
@@ -400,17 +401,46 @@ room9.btnclick = function (name) {
                 "image": "9_computer/" + name + ".jpg"
             }, 9);
             if (cl.c.chastity !== null) {
-                nav.button({
-                    "type": "btn",
-                    "name": "jackitNo",
-                    "left": 1056,
-                    "top": 816,
-                    "width": 255,
-                    "height": 255,
-                    "image": "9_computer/jackitNo.png"
-                }, 9);
+                if (inv.has("vib0")) {
+                    if (gv.get("arousal") < 1) {
+                        nav.button({
+                            "type": "btn",
+                            "name": "jackitNo1",
+                            "left": 1056,
+                            "top": 816,
+                            "width": 255,
+                            "height": 255,
+                            "image": "9_computer/jackitVibclose.png"
+                        }, 9);
+                        nav.buildnav([g.pass]);
+                    }
+                    else {
+                        nav.button({
+                            "type": "btn",
+                            "name": "jackitVib",
+                            "left": 801,
+                            "top": 848,
+                            "width": 547,
+                            "height": 192,
+                            "image": "9_computer/jackitVib.png"
+                        }, 9);
+                    }
+                }
+                else {
+                    gv.mod("arousal", 50);
+                    nav.button({
+                        "type": "btn",
+                        "name": "jackitNo",
+                        "left": 1056,
+                        "top": 816,
+                        "width": 255,
+                        "height": 255,
+                        "image": "9_computer/jackitNo.png"
+                    }, 9);
+                }
             }
             else {
+                gv.mod("arousal", 50);
                 nav.button({
                     "type": "btn",
                     "name": "jackit",
@@ -424,6 +454,27 @@ room9.btnclick = function (name) {
             break;
         case "jackitNo":
             chat(4, 9);
+            break;
+        case "jackitVib":
+            nav.kill();
+            nav.bg("9_computer/vib0.webp");
+            nav.cum("jackitVib0");
+            break;
+        case "jackitVib0":
+            nav.kill();
+            sex.masturbate("penis");
+            nav.bg("9_computer/vib1.webp");
+            nav.next("jackitVib1");
+            break;
+        case "jackitVib1":
+            if (g.pass === 52)
+                nav.bg("9_computer/52_computer.jpg");
+            else
+                nav.bg("9_computer/09_computer.jpg");
+            room9.btnclick(g.internal);
+            break;
+        case "jackitNo1":
+            char.room(9);
             break;
         case "jackit":
             if (!weekly.get("momjerkoff") && g.pass === 10) {

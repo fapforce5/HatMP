@@ -2050,6 +2050,13 @@ cl.cumdrip = function () {
     return true;
 };
 
+cl.cumdisplay = function (back) {
+    if (back) {
+        let legcum = (cl.c.leg === 1 ? 0 : cl.c.leg);
+        return "cum_" + legcum + ".png";
+    }
+};
+
 cl.display = function () {
     var thisHair;
     $('.bladder-box').remove();
@@ -2115,7 +2122,7 @@ cl.display = function () {
             }
             else {
                 cl.subDisplay("char-legs", "leg_" + cl.c.leg + (cback ? "_back" : "") + ".png");
-                cl.subDisplayAppend("char-legs", "cumdrip_back.gif");
+                cl.subDisplayAppend("char-legs", cl.cumdisplay(cback));
             }
         }
         else {

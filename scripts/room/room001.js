@@ -48,7 +48,7 @@ room1.main = function () {
         font: 40,
         hex: "#ffffff",
         stroke: "black",
-        text: g.versionText + "<br/>Stops after Sissy School Final"
+        text: g.versionText + "<br/>Lola / Eva / Landlord Release"
     }, 1);
 
 };
