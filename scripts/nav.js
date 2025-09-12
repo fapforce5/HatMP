@@ -146,6 +146,15 @@ nav.button = function (btn, roomNum) {
     $('img').on('dragstart', function (event) { event.preventDefault(); });
 };
 
+nav.tcenter = function (btn, roomNum) {
+    let stringLen = btn.text.length * btn.font * .4;
+    let width = btn.width;
+    let x = btn.left;
+    let txtWidth = (width / 2) - (stringLen / 2);
+    btn.left = x + txtWidth;
+    nav.t(btn, roomNum);
+};
+
 nav.t = function (btn, roomNum) {
     var top = btn.top * g.ratio;
     var left = btn.left * g.ratio;
@@ -154,8 +163,6 @@ nav.t = function (btn, roomNum) {
     var thisHex = "#000000";
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
-
-    
 
     if (btn.type === "btn")
         classes = "room-btn rom-event";
@@ -175,6 +182,8 @@ nav.t = function (btn, roomNum) {
         classes = "room-btn rom-event room-zindex";
     else if(btn.type === "btnhover")
         classes = "room-btn rom-event fight-hover";
+    else if (btn.type === "clickthrough")
+        classes = "room-img click-thru";
 
     if (btn.font === 12)
         classes += " char-12 ";
@@ -193,8 +202,6 @@ nav.t = function (btn, roomNum) {
     line = '<div class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" style="top:' + top + 'px; left:' + left + 'px; font-size: ' + btn.font * g.ratio + 'px; color: ' + thisHex + '; width: auto; height: auto;" >' + btn.text + '</div>';
 
     $('#room-buttons').append(line);
-
-    
 };
 
 nav.tmod = function (name, text) {

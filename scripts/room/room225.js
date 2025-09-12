@@ -162,6 +162,7 @@ room225.chatcatch = function (callback) {
         case "p0end":
             levels.anal(3, false, "m", true, "!man");
             char.addtime(120);
+            levels.mod("whore", 25);
             gv.mod("money", 50);
             char.room(225);
             break;
@@ -207,6 +208,7 @@ room225.chatcatch = function (callback) {
         case "p25":
             levels.anal(3, false, "m", true, "!man");
             gv.mod("money", 100);
+            levels.mod("whore", 25);
             char.nexttime(7);
             char.room(225);
             break;

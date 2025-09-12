@@ -63,6 +63,11 @@ room203.btnclick = function (name) {
                 chat(11, 203);
             }
             else if (missy.get("activeCase") > 3 && missy.get("activeCaseComplete") === 0) {
+                if (missy.activecase().caseId === 12 && cl.hasClothing("panties", "bi")) {
+                    missy.set("activeCaseComplete", 1);
+                    chat(999, 203);
+                    return;
+                }
                 chat(998, 203);
             }
             else

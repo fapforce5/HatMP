@@ -345,12 +345,12 @@ room316.btnclick = function (name) {
             nav.killall();
             g.pass.dog = true;
             nav.bg("316_livingroom/walk_cuck0.jpg");
-            sc.modLevel("dog", 25, 10);
+            sc.modLevel("dog", 34, 10);
             if (sc.getMission("janice", "dog-x").notStarted) {
                 sc.startMission("janice", "dog-x");
                 nav.next("buildMenuCuck");
             }
-            else if (sc.getLevel("dog") > 7 && g.rand(0, 2) === 0) {
+            else if (sc.getLevel("dog") > 5) {
                 sc.completeMissionTask("janice", "dog-x", 0);
                 g.internal = 0;
                 nav.next("dogWalkCuckFuck0");
@@ -929,6 +929,14 @@ room316.chatcatch = function (callback) {
         case "bitch_0_0_x":
         case "bitch_0_0":
         case "dog0":
+        case "dog2":
+        case "dog3":
+        case "dog4":
+        case "dog5":
+        case "dog6":
+        case "dog7":
+        case "dog8":
+        case "dog9":
             nav.killall();
             nav.bg("316_livingroom/" + callback + ".jpg");
             break;
@@ -1287,6 +1295,9 @@ room316.chatcatch = function (callback) {
             break;
         case "room321":
             char.room(321);
+            break;
+        case "room322":
+            char.room(322);
             break;
         default:
             break;
@@ -2850,7 +2861,7 @@ room316.chat = function (chatID) {
                 text: "That's my good doggy! Now I'm going to lock this so you don't get in " +
                     "trouble. I've got to do some shopping for my new doggy! ",
                 button: [
-                    { chatID: -1, text: "This is in progress - need to add a lot of assets doggy", callback: "leave" },
+                    { chatID: 156, text: "*whine*", callback: "dog3" },
                 ]
             },
             {
@@ -2861,10 +2872,98 @@ room316.chat = function (chatID) {
                     { chatID: -1, text: "I really am. ", callback: "reset" },
                 ]
             },
-
-
-
-
+            {
+                chatID: 155,
+                speaker: "thinking",
+                text: "Crap! There's no way I'm breaking out of this. I'm totally trapped! I really " +
+                    "screwed up again. I can't I got caught like that. How embarrasing! ",
+                button: [
+                    { chatID: 156, text: "...", callback: "dog3" },
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "me",
+                text: "Oh hey buddy! Can you help me out and get the keys? Or maybe a candy bar. She's " +
+                    "been gone for quite a while and I'm so hungry. Please buddy! ",
+                button: [
+                    { chatID: 157, text: "...", callback: "dog4" },
+                ]
+            },
+            {
+                chatID: 157,
+                speaker: "me",
+                text: "Bad doggy! Bad! Don't pee on me! Oooofff it's so pungent. I get no respect, not  " +
+                    "even from " + sc.n("dog") + ".",
+                button: [
+                    { chatID: 158, text: "...", callback: "dog2" },
+                ]
+            },
+            {
+                chatID: 158,
+                speaker: "me",
+                text: "Great now I just have to lay here next to dog piss and hope that " + sc.n("janice") +
+                    " comes back soon! She's been gone so long!",
+                button: [
+                    { chatID: 159, text: "[Wait even longer]", callback: "dog1" },
+                ]
+            },
+            {
+                chatID: 159,
+                speaker: "janice",
+                text: "What the fuck! You pissed outside your dog cage while I was gone! You are " +
+                    "a really bad doggy!!!! I'm just can't! I'm so mad right now! ",
+                button: [
+                    { chatID: 160, text: "It wasn't me it was " + sc.n("dog") + "! ", callback: "dog5" },
+                ]
+            },
+            {
+                chatID: 160,
+                speaker: "janice",
+                text: sc.n("dog") + " is house broken and NEVER pees inside!!! How dare you blame " +
+                    "him! First you don't tell me you're a crossdresser, then I catch you getting " +
+                    "fucked by my dog in the park, and now, the cherry on top, you piss on my floor " +
+                    "and try to blame " + sc.n("dog") + "! You are a really bad boy! I'm going to really  " +
+                    "punish you, but first put this on! This is who you are now! ",
+                button: [
+                    { chatID: 161, text: "[Grab the outfit and put it on]", callback: "dog6" },
+                ]
+            },
+            {
+                chatID: 161,
+                speaker: "janice",
+                text: "There we go. It's called a bitch suit, since, well, you're such my bitch. Oh whoops, " +
+                    "almost forgot your tail.",
+                button: [
+                    { chatID: 162, text: "*mumble into you ball gag*", callback: "dog7" },
+                ]
+            },
+            {
+                chatID: 162,
+                speaker: "janice",
+                text: "There we go! A proper doggy. Now I'm bored. We're going to go in the back yard and " +
+                    "You'll fetch my ball! Come doggy! ",
+                button: [
+                    { chatID: 163, text: "[follow her]", callback: "dog8" },
+                ]
+            },
+            {
+                chatID: 163,
+                speaker: "janice",
+                text: "Go fetch doggy! ",
+                button: [
+                    { chatID: 164, text: "*muffled arf*", callback: "dog9" },
+                ]
+            },
+            {
+                chatID: 164,
+                speaker: "janice",
+                text: "Awww poor doggy. Does that mouth gag get in the way. It stays in. Doggies " +
+                    "don't talk. Let's go inside. ",
+                button: [
+                    { chatID: -1, text: "[Follow her]", callback: "room322" },
+                ]
+            },
 
 
 

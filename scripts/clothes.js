@@ -2041,6 +2041,8 @@ cl.noDickPants = function () {
 };
 
 cl.cumdrip = function () {
+    if (gv.getButtCum().total < 1)
+        return false;
     let noDickPants = cl.noDickPants();
     let waringPanties = (cl.c.panties === "inv" || cl.c.panties === null);
     if (!waringPanties || noDickPants || cl.c.swimsuit !== null || cl.c.pj !== null)

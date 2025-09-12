@@ -80,6 +80,7 @@ room183.btnclick = function (name) {
                         levels.oral(3, "m", "!bwc", true);
                         break;
                 }
+                levels.mod("whore", 25);
                 nav.killbutton("fuck2");
                 gv.mod("money", 30 + (levels.get("whore").l * 5));
                 levels.mod("whore", 30);
@@ -146,6 +147,7 @@ room183.chatcatch = function (callback) {
             sc.completeMissionTask("landlord", "misc", 3);
             sc.modLevel("landlord", 50, 10);
             sc.modLevel("river", 100, 10);
+            levels.mod("whore", 25);
             levels.anal(4, false, "m", true, "river");
             levels.oral(4, "m", "river", false, null, true);
             break;
@@ -208,6 +210,7 @@ room183.chatcatch = function (callback) {
             levels.anal(4, true, "n", true, "holly");
             levels.oral(4, "n", "molly", true);
             levels.gothandjob("n", "molly");
+            levels.mod("whore", 25);
             break;
         case "trio_bad":
             nav.bg("183_pinkroom/trio_bad.jpg");

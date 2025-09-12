@@ -14,7 +14,10 @@ m.col = 20;
 //q -> me
 m.drawBackground = function (row, col) {
     nav.killall();
-    if (m.fmap[row][col].used === 'b') {
+    let webplogic = row < 50;
+    let webpbuttons = [];
+    
+    if (m.fmap[row][col].used === 'b') { //cave
         nav.bg("475_fight/b.jpg");
         nav.button({
             "type": "btn",
@@ -27,19 +30,80 @@ m.drawBackground = function (row, col) {
             "image": "475_fight/b_s.jpg"
         }, 475);
         if (inv.has("cavekey")) {
-            chat(7, 475);
+            nav.button({
+                "type": "btn",
+                "name": "north",
+                "title": "North",
+                "left": 840,
+                "top": 200,
+                "width": 225,
+                "height": 75,
+                "image": "475_fight/dn.png"
+            }, 475);
+            nav.button({
+                "type": "zbtn",
+                "name": "south",
+                "title": "South",
+                "left": 712,
+                "top": 489,
+                "width": 458,
+                "height": 591,
+                "image": "475_fight/zs_b.png"
+            }, 475);
+            if (gv.get("caveDoorEnter")) {
+                gv.set("caveDoorEnter", false);
+                chat(7, 475);
+            }
         }
         else {
             chat(0, 475);
         }
     }
-    else if (m.fmap[row][col].used === "m" || m.fmap[row][col].used === "x") {m
+    else if (m.fmap[row][col].used === 'c' && row === 25) { //cave
+        nav.bg("475_fight/c.webp");
+        nav.back("south");
+        chat(0, 475);
+    }
+    else if (m.fmap[row][col].used === "m" ||
+        m.fmap[row][col].used === "x" ||
+        m.fmap[row][col].used === "s") { //normal
         var bg = m.drawBackgroundSub(row, col);
         var pathCounter = 0;
 
-        nav.bg("475_fight/" + bg + ".jpg");
+        if (webplogic)
+            nav.bg("475_fight/" + bg + ".webp");
+        else
+            nav.bg("475_fight/" + bg + ".jpg");
+
         if (row > 0) {
-            if (m.fmap[row - 1][col].used !== 'x') {
+            if (webplogic) {
+                if (m.fmap[row - 1][col].used !== 'x') {
+                    webpbuttons.push({
+                        "type": "btn",
+                        "name": "north",
+                        "title": "North",
+                        "left": 840,
+                        "top": 200,
+                        "width": 225,
+                        "height": 75,
+                        "image": "475_fight/dn.png"
+                    });
+                    pathCounter++;
+                }
+                else {
+                    nav.button({
+                        "type": "img",
+                        "name": "north",
+                        "title": "North",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "475_fight/" + bg + "_n.webp"
+                    }, 475);
+                }
+            }
+            else if (m.fmap[row - 1][col].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "north",
@@ -64,7 +128,34 @@ m.drawBackground = function (row, col) {
             }
         }
         if (row < m.row - 1) {
-            if (m.fmap[row + 1][col].used !== 'x') {
+            if (webplogic) {
+                if (m.fmap[row + 1][col].used !== 'x') {
+                    webpbuttons.push({
+                        "type": "btn",
+                        "name": "south",
+                        "title": "South",
+                        "left": 840,
+                        "top": 880,
+                        "width": 225,
+                        "height": 75,
+                        "image": "475_fight/ds.png"
+                    });
+                    pathCounter++;
+                }
+                else {
+                    nav.button({
+                        "type": "img",
+                        "name": "south",
+                        "title": "South",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "475_fight/" + bg + "_s.webp"
+                    }, 475);
+                }
+            }
+            else if (m.fmap[row + 1][col].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "south",
@@ -89,7 +180,34 @@ m.drawBackground = function (row, col) {
             }
         }
         if (col > 0) {
-            if (m.fmap[row][col - 1].used !== 'x') {
+            if (webplogic) {
+                if (m.fmap[row][col - 1].used !== 'x') {
+                    webpbuttons.push({
+                        "type": "btn",
+                        "name": "west",
+                        "title": "West",
+                        "left": 300,
+                        "top": 460,
+                        "width": 225,
+                        "height": 75,
+                        "image": "475_fight/dw.png"
+                    });
+                    pathCounter++;
+                }
+                else {
+                    nav.button({
+                        "type": "img",
+                        "name": "west",
+                        "title": "West",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "475_fight/" + bg + "_w.webp"
+                    }, 475);
+                }
+            }
+            else if (m.fmap[row][col - 1].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "west",
@@ -112,9 +230,37 @@ m.drawBackground = function (row, col) {
                 }, 475);
                 pathCounter++;
             }
+
         }
         if (col < m.col - 1) {
-            if (m.fmap[row][col + 1].used !== 'x') {
+            if (webplogic) {
+                if (m.fmap[row][col + 1].used !== 'x') {
+                    webpbuttons.push({
+                        "type": "btn",
+                        "name": "east",
+                        "title": "East",
+                        "left": 1600,
+                        "top": 460,
+                        "width": 225,
+                        "height": 75,
+                        "image": "475_fight/de.png"
+                    });
+                    pathCounter++;
+                }
+                else {
+                    nav.button({
+                        "type": "img",
+                        "name": "east",
+                        "title": "East",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "475_fight/" + bg + "_e.webp"
+                    }, 475);
+                }
+            }
+            else if (m.fmap[row][col + 1].used !== 'x') {
                 nav.button({
                     "type": "btn",
                     "name": "east",
@@ -140,6 +286,79 @@ m.drawBackground = function (row, col) {
         }
         if (pathCounter === 0)
             char.room(460);
+    }
+    else if (webplogic) {
+        nav.bg("475_fight/z" + m.fmap[row][col].used + ".webp");
+        if (row > 0) {
+            if (m.fmap[row - 1][col].used !== 'x') {
+                nav.button({
+                    "type": "zbtn",
+                    "name": "north",
+                    "title": "North",
+                    "left": 712,
+                    "top": 0,
+                    "width": 458,
+                    "height": 489,
+                    "image": "475_fight/zn_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        if (row < m.row - 1) {
+            if (m.fmap[row + 1][col].used !== 'x') {
+                nav.button({
+                    "type": "zbtn",
+                    "name": "south",
+                    "title": "South",
+                    "left": 712,
+                    "top": 489,
+                    "width": 458,
+                    "height": 591,
+                    "image": "475_fight/zs_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        if (col > 0) {
+            if (m.fmap[row][col - 1].used !== 'x') {
+                nav.button({
+                    "type": "zbtn",
+                    "name": "west",
+                    "title": "West",
+                    "left": 0,
+                    "top": 316,
+                    "width": 712,
+                    "height": 440,
+                    "image": "475_fight/zw_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        if (col < m.col - 1) {
+            if (m.fmap[row][col + 1].used !== 'x') {
+                nav.button({
+                    "type": "zbtn",
+                    "name": "east",
+                    "title": "East",
+                    "left": 1170,
+                    "top": 316,
+                    "width": 750,
+                    "height": 440,
+                    "image": "475_fight/ze_b.png"
+                }, 475);
+                pathCounter++;
+            }
+        }
+        nav.button({
+            "type": "zbtn",
+            "name": "visit",
+            "title": "Visit",
+            "left": 450,
+            "top": 100,
+            "width": 225,
+            "height": 75,
+            "image": "475_fight/visit.png"
+        }, 475);
     }
     else {
         nav.bg("475_fight/z" + m.fmap[row][col].used + "1.jpg", "475_fight/z" + m.fmap[row][col].used + "1_n.jpg");
@@ -258,11 +477,18 @@ m.drawBackground = function (row, col) {
             "image": "475_fight/visit.png"
         }, 475);
     }
-    
+    for (let i = 0; i < webpbuttons.length; i++) {
+        nav.button(webpbuttons[i], 475);
+    }
+
+    if (m.fmap[row][col].used === "s" && row === 49) {
+        chat(8, 475);
+    }
 };
 
 m.drawBackgroundSub = function (row, col) {
     var bg = "f1";
+    let ignoreNight = false;
     if (row > 67) {
         bg = (col + row) % 2 === 0 ? "f0" : "f1";
     }
@@ -272,9 +498,18 @@ m.drawBackgroundSub = function (row, col) {
         else
             bg = (col + row) % 2 === 0 ? "o0" : "o1";
     }
-    else {
+    else if (row > 50) {
         bg = (col + row) % 2 === 0 ? "o0" : "o1";
     }
+    else {
+        ignoreNight = true;
+        if (row > 75)
+            bg = (col + row) % 2 === 0 ? "c0" : "c1";
+        else
+            bg = (col + row) % 2 === 0 ? "c1" : "c2";
+    }
+    if (ignoreNight)
+        return bg;
     return bg + (g.isNight() ? "n" : "");
 };
 

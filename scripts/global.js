@@ -282,6 +282,7 @@ g.rooms = [
     { roomID: 319, name: "GF's Backyard", image: "319_backyard/bg.jpg", nightImage: "319_backyard/bgnight.jpg", houseID: 300, btn: "roomBtn_319.png" },
     { roomID: 320, name: "GF's Bathroom", image: "320_bathroom/bg.jpg", nightImage: "320_bathroom/bgnight.jpg", houseID: 300, btn: "roomBtn_320.png" },
     { roomID: 321, name: "GF's Webcam", image: "321_whorechat/bg.jpg", nightImage: "321_whorechat/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
+    { roomID: 322, name: "GF's Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
 
     { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
     { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },
@@ -324,7 +325,8 @@ g.rooms = [
     { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.jpg", nightImage: "481_bedroom/bg.jpg", houseID: 480, btn: "roomBtn_481.png" },
 
     { roomID: 483, name: "Den Entrance", image: "483_cave/bg.jpg", nightImage: "483_cave/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },
-    { roomID: 484, name: "Wolf's Den", image: "483_cave/cave0.jpg", nightImage: "483_cave/cave0.jpg.jpg", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 484, name: "Wolf's Den", image: "483_cave/cave0.jpg", nightImage: "483_cave/cave0.jpg", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 485, name: "Seller", image: "485_seller/bg.webp", nightImage: "485_seller/bg.webp", houseID: 480, btn: "roomBtn_483.png" },
 
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },

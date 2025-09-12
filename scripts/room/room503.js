@@ -108,7 +108,7 @@ room503.chatcatch = function (callback) {
             cl.display();
             break;
         case "steal":
-            inv.add("blackl");
+            inv.addMulti("blackl", 100);
             nav.killbutton("lipstick");
             g.popUpNotice("You stole her lipstick");
             break;

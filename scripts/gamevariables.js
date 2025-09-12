@@ -141,6 +141,9 @@ gv.init = function () {
 
         { n: "lolaEvaShowerPeek", t: false, q: "bool" },
 
+        { n: "caveDoorEnter", t: false, q: "bool" },
+
+
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
 
@@ -1402,6 +1405,8 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
         else if (beast === "pig") {
             gv.mod("analCumPig", 1);
         }
+        if (gv.getButtCum().total === 1) //only fire off on the first instance of cream pie
+            cl.display();
     }
 
     if (beast !== null) {

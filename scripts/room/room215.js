@@ -6,7 +6,7 @@ room215.main = function () {
         sc.select("relax", "215_pink/icon_relax.webp", 0);
         sc.select("wait", "193_afternoon/icon_wait.webp", 1);
     }
-    else if (!sissy.st[23].ach) {
+    else if (!qdress.st[23].ach) {
         chat(0, 215);
     }
     else if (sc.getMissionTask("p", "pink", 4).notStarted) {

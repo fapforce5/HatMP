@@ -542,8 +542,9 @@ char.room = function (roomID) {
     let ignoreShoeRooms = [8, 28];
     if (g.prevRoom !== roomID && !ignoreShoeRooms.includes(roomID)) {
         let shoedaring = cl.getEntry("shoes", cl.c.shoes).daring;
-        let shoeLevel = Math.round(levels.get("heels").l / 2);
-        if (shoedaring > 1 && shoeLevel < 8) {
+        let actualshoeLevel = levels.get("heels").l;
+        let shoeLevel = Math.round(actualshoeLevel / 2);
+        if (shoedaring > 1 && actualshoeLevel < 8) {
             if (shoeLevel < shoedaring) {
                 let energyLoss = (shoeLevel - shoedaring) * 3;
                 if (gv.get("energy") > 0) {

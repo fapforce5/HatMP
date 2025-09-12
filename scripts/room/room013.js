@@ -59,7 +59,7 @@ room13.main = function () {
     }
     else {
         if (sc.getTimeline("lola").thisRoom) {
-            if (sc.taskGetStep("eva", "sissy") > 6 && sc.getMission("eva", "teach").notStarted) {
+            if (sc.taskGetStep("eva", "sissy") > 6 && sc.getMission("eva", "teach").notStarted && !daily.get("evaTeach")) {
                 nav.button({
                     "type": "img",
                     "name": "fuckin",
@@ -1943,6 +1943,7 @@ room13.chatcatch = function (callback) {
             case "evaSissy6":
                 sc.completeMissionTask("eva", "sissy", 6);
                 char.addtime(15);
+                daily.set("evaTeach");
                 char.room(13);
                 break;
             case "room585":
@@ -4551,7 +4552,7 @@ room13.chat = function (chatID) {
                     "practice sessions. It was only time until this little pervert was able " +
                     "to get a peek of my butthole. ",
                 button: [
-                    { chatID: 275, text: "...", callback: "fuckin1" },
+                    { chatID: 276, text: "...", callback: "fuckin1" },
                 ]
             },
             {

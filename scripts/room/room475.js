@@ -1,6 +1,5 @@
 ﻿var room475 = {};
 room475.main = function () {
-
     if (g.map === null) {
         g.map = {
             col: 10,
@@ -72,25 +71,27 @@ room475.main = function () {
         g.map.ev = g.shuffleArray(eventArray);
         g.map.eventCounter = g.rand(howOften, howOften + 3);
     }
+
+    let currentLocation = g.map.row < 50 ? "cave" : "forest";
     if (g.map.eventCounter === 0) {
         let thisEvent = g.map.ev[0];
         g.map.ev.shift();
         g.map.eventCounter = g.rand(howOften, howOften + 3);
         switch (thisEvent) {
             case "rape":
-                rape.init(null, "forest", 475, "reload");
+                rape.init(null, currentLocation, 475, "reload");
                 break;
             case "rope":
-                trap.init("rope", "forest", 475, "reload", null);
+                trap.init("rope", currentLocation, 475, "reload", null);
                 break;
             case "hole":
-                trap.init("hole", "forest", 475, "reload", null);
+                trap.init("hole", currentLocation, 475, "reload", null);
                 break;
             case "random":
-                trap.init("encounter", "forest", 475, "reload", null);
+                trap.init("encounter", currentLocation, 475, "reload", null);
                 break;
             case "treasure":
-                trap.init("treasure", "forest", 475, "reload", null);
+                trap.init("treasure", currentLocation, 475, "reload", null);
                 break;
         }
     }
@@ -206,6 +207,9 @@ room475.chatcatch = function (callback) {
             g.map.ev = new Array();
             char.room(475);
             break;
+        case "leave":
+            char.room(0);
+            break;
         default:
             break;
     }
@@ -236,7 +240,7 @@ room475.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "thinking",
-                text: "Damn! I need to find a way into this door. [Work in progress]",
+                text: "Damn! Another door! I wonder what I need to get through this door.",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
@@ -293,10 +297,19 @@ room475.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "thinking",
-                text: "OooOoooo Spooky cave! Should I use the cave key to go in?",
+                text: "OooOoooo Spooky cave! I did find this skull key, maybe it will open the door? ",
                 button: [
-                    { chatID: -1, text: "[Enter the spooky cave]", callback: "entercave" },
-                    { chatID: -1, text: "[Nope! Too spooky]", callback: "" },
+                    { chatID: -1, text: "[Use the key]", callback: "" },
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "thinking",
+                text: "I think I can make out a tiny drop and opening that may lead back to the road. " +
+                    "Should I take it?",
+                button: [
+                    { chatID: -1, text: "[Leave]", callback: "leave" },
+                    { chatID: -1, text: "Explore some more", callback: "" },
                 ]
             },
         ];

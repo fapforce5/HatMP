@@ -377,6 +377,7 @@ room171.btnclick = function (name) {
                         depositCum = false;
                         break;
                 }
+                levels.mod("whore", 25);
                 levels.mod("xdress", 25, 999);
                 gv.mod("energy", -25);
 

@@ -2709,6 +2709,10 @@ sc.trivial = function (charname) {
             name = "Belle";
             image = "belle.png";
             break;
+        case "!seller":
+            name = "LeRoy";
+            image = "seller.png";
+            break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
             break;

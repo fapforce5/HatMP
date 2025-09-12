@@ -73,7 +73,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             }
         }
         if (dback && cumdrip)
-            zcl.displayMainSub("cumdrip_back.gif", top, left, ratio);
+            zcl.displayMainSub(cl.cumdisplay(dback), top, left, ratio)
     }
     //set Head
     if (dback) {

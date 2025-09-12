@@ -51,8 +51,12 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
         return;
     }
 
-    nav.bg("1005_trap/trap_" + (g.isNight() ? "n" : "d") + ".jpg");
-    
+    if (location === "forest") {
+        nav.bg("1005_trap/trap_" + (g.isNight() ? "n" : "d") + ".jpg");
+    }
+    else if (location === "cave") {
+        nav.bg("1005_trap/trap_c.jpg");
+    }
     nav.button({
         "type": "zimg",
         "name": "m1004-dx",
@@ -268,7 +272,12 @@ trap.rope = function () {
             }
             else if (rwearing.outerwear) {
                 cl.c.dress = cl.c.pj = cl.c.swimsuit = cl.c.shirt = cl.c.pants = null;
-                nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+                if (trap.location === "cave") {
+                    nav.bg("475_fight/clearingCave.jpg");
+                }
+                else
+                    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+
                 zcl.displayMain(100, 600, .13, "clothes", true);
                 cl.display();
                 nav.button({
@@ -309,7 +318,11 @@ trap.rope = function () {
                 trap.char.push(ropeChar[g.rand(0, ropeChar.length)]);
                 trap.name = trap.char[0].n;
                 nav.killbutton("r1004bg");
-                nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+                if (trap.location === "cave") 
+                    nav.bg("475_fight/clearingCave.jpg");
+                else
+                    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -443,10 +456,9 @@ trap.rope = function () {
                     "image": "1001_rand/black_25.png"
                 }, 1005);
                 chat(22, 1005);
-                trap.displayMenu("rope");
             }
             else {
-
+                trap.displayMenu("rope");
             }
             break;
     }
@@ -624,7 +636,10 @@ trap.treasure = function () {
             nav.bg("1005_trap/treasure/a.jpg", "1005_trap/treasure/a_night.jpg");
         }
         else {
-            nav.bg("1005_trap/treasure/t.jpg", "1005_trap/treasure/t_night.jpg");
+            if (trap.location === "cave")
+                nav.bg("1005_trap/treasure/tc.jpg");
+            else
+                nav.bg("1005_trap/treasure/t.jpg", "1005_trap/treasure/t_night.jpg");
         }
         trap.displayMenu("treasure");
     }
@@ -688,7 +703,11 @@ trap.treasure = function () {
 
 trap.encounter = function () {
     let charList = new Array();
-    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+    if (trap.location === "cave")
+        nav.bg("475_fight/clearingCave.jpg");
+    else
+        nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+
     if (gv.get("cat") === -1 && g.rand(0, 4) === 0 && !g.isNight() && trap.location === "forest") {
         charList.push({ n: "!cat", z: "cat", loc: ["forest"], l: 0, t: 0, w: 1920, h: 1080, i: "cat.jpg" });
     }
@@ -1204,7 +1223,11 @@ room1005.chatcatch = function (callback) {
             break;
         case "holeRape":
             if (trap.char[0].rape !== null) {
-                nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+                if (trap.location === "cave")
+                    nav.bg("475_fight/clearingCave.jpg");
+                else
+                    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+
                 rape.init(trap.char[0].rape, "forest", 1005, "kill");
             }
             else {
@@ -1276,7 +1299,7 @@ room1005.chatcatch = function (callback) {
                 "top": 17,
                 "width": 337,
                 "height": 1012,
-                "image": "1005_trap/hole/jones1.png"
+                "image": "1005_trap/rope/jones1.png"
             }, 1005);
             break;
         case "jonesCock1":
@@ -1288,7 +1311,7 @@ room1005.chatcatch = function (callback) {
                 "top": 17,
                 "width": 337,
                 "height": 1012,
-                "image": "1005_trap/hole/jones2.png"
+                "image": "1005_trap/rope/jones2.png"
             }, 1005);
             break;
         case "jonesCock2":
